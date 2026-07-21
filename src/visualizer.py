@@ -7,12 +7,14 @@ Backends:
     university GPU in a later step.
 """
 from __future__ import annotations
+import json
 import textwrap
 from pathlib import Path
 from typing import List
 
 from PIL import Image, ImageDraw, ImageFont
 
+from . import retrieval
 from .models import Plan
 
 
@@ -56,6 +58,10 @@ def _hsl_to_rgb(h, s, l):
 def visualize(plans: List[Plan], work_dir: Path, backend: str = "placeholder",
               size=(1280, 720)) -> List[Plan]:
     img_dir = work_dir / "images"
+    img_dir.mkdir(parents=True, exist_ok=True)
+    for stale in img_dir.glob("seg_*.png"):   # drop orphans from previous runs
+        stale.unlink()
+    credits: dict[int, dict] = {}
     for p in plans:
         if not p.visualize:
             p.image_path = None
@@ -63,12 +69,23 @@ def visualize(plans: List[Plan], work_dir: Path, backend: str = "placeholder",
         out = img_dir / f"seg_{p.index:04d}.png"
         if backend == "placeholder":
             render_placeholder(p, out, size=size)
+        elif backend == "retrieve":
+            attr = retrieval.fetch(p.subject or p.text, out, size)
+            if attr is None:
+                render_placeholder(p, out, size=size)   # graceful fallback
+                credits[p.index] = {"fallback": "placeholder (no image found)"}
+            else:
+                credits[p.index] = attr
         elif backend == "diffusion":
             raise NotImplementedError(
                 "diffusion backend not wired yet — run on the university GPU. "
-                "Use --visualizer placeholder for now."
+                "Use --visualizer retrieve or placeholder for now."
             )
         else:
             raise ValueError(f"unknown visualizer backend: {backend}")
         p.image_path = str(out)
+
+    if credits:
+        (work_dir / "credits.json").write_text(
+            json.dumps(credits, indent=2, ensure_ascii=False), encoding="utf-8")
     return plans

@@ -25,7 +25,7 @@ def main():
     ap.add_argument("--input", required=True, help="path to input video")
     ap.add_argument("--planner", default="rule", choices=["rule", "llm"])
     ap.add_argument("--visualizer", default="placeholder",
-                    choices=["placeholder", "diffusion"])
+                    choices=["placeholder", "retrieve", "diffusion"])
     ap.add_argument("--whisper-model", default=config.WHISPER_MODEL)
     args = ap.parse_args()
 
