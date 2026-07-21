@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell($w = \\(Get-Command winget -ErrorAction SilentlyContinue\\).Source; if \\($w\\) { Write-Output \"winget: $w\"; Write-Output \"Installing Python 3.11...\"; winget install --id Python.Python.3.11 -e --source winget --accept-package-agreements --accept-source-agreements --silent } else { Write-Output \"winget NOT available\" })",
+      "PowerShell(py -3.11 --version 2>&1; Write-Output \"path:\"; \\(Get-Command py\\).Source)"
+    ]
+  }
+}

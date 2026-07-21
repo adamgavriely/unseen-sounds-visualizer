@@ -1,0 +1,15 @@
+# Core (walking skeleton — runs with no API keys / no strong GPU)
+faster-whisper>=1.0.0
+Pillow>=10.0.0
+
+# Stage 3 — LLM planner (enable once you have an Anthropic API key)
+# anthropic>=0.40.0
+
+# Stage 4 — local diffusion (enable on the university GPU)
+# torch                 # install the CUDA build from pytorch.org, not from PyPI blindly
+# diffusers>=0.30.0
+# transformers>=4.44.0
+# accelerate>=0.33.0
+
+# Evaluation (later)
+# open-clip-torch
