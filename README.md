@@ -29,23 +29,32 @@ pip install -r requirements.txt
 
 ffmpeg must be on PATH (already installed at C:\ffmpeg\bin).
 
-## Run (walking skeleton — no keys / GPU needed)
+## Run
 
 Drop a video in `data/input/`, then:
 
 ```powershell
 conda activate msproj
+
+# Full real pipeline: Gemini planner + free image retrieval (needs GEMINI_API_KEY in .env)
+python main.py --input data/input/clip.mp4 --planner llm --visualizer retrieve
+
+# Offline smoke test (no key/network): rule planner + placeholder frames
 python main.py --input data/input/clip.mp4
 ```
 
-Output lands in `data/output/`. This uses the placeholder visualizer (caption on
-a coloured frame) and the rule-based planner, to validate timing and sync.
+Output lands in `data/output/`. Intermediates (audio, `segments.json`,
+`plans.json`, `images/`, `credits.json`) are under `data/work/<clip-name>/`.
+
+`--planner`: `rule` (stub) | `llm` (Gemini, the real component).
+`--visualizer`: `placeholder` | `retrieve` (Openverse) | `diffusion` (TODO, uni GPU).
 
 ## Roadmap
 
-- [ ] LLM planner (`--planner llm`) — needs `ANTHROPIC_API_KEY` + `pip install anthropic`
+- [x] LLM planner (`--planner llm`) — Gemini, `GEMINI_API_KEY` in `.env`
+- [x] Image retrieval backend (`--visualizer retrieve`) — Openverse, free
 - [ ] Diffusion visualizer (`--visualizer diffusion`) — on the university GPU
-- [ ] Image retrieval backend (comparison / hallucination mitigation)
+- [ ] Better retrieval queries + generate-vs-retrieve routing in the visualizer
+- [ ] Evaluation (visualizability accuracy; retrieve vs generate relevance)
 - [ ] Ken Burns motion + optional image-to-video (SVD)
-- [ ] Evaluation
 ```
