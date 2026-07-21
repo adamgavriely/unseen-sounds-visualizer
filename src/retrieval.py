@@ -42,28 +42,46 @@ def _cover_crop(img: Image.Image, size: tuple[int, int]) -> Image.Image:
     return img.crop((left, top, left + tw, top + th))
 
 
+def _query_variants(query: str) -> list[str]:
+    """Full query first, then progressively shorter keyword queries. Long,
+    over-specific subjects often return zero hits; the head keywords do better."""
+    words = query.split()
+    variants, seen = [], set()
+    for n in (len(words), 6, 4, 3, 2):
+        v = " ".join(words[:n]).strip()
+        if v and v.lower() not in seen:
+            seen.add(v.lower())
+            variants.append(v)
+    return variants
+
+
 def fetch(query: str, out_path: Path, size: tuple[int, int]) -> Optional[dict]:
-    """Download a relevant image to out_path. Returns attribution dict, or None."""
+    """Download a relevant image to out_path. Returns attribution dict, or None.
+
+    Tries the full query, then shorter keyword variants, until an image downloads.
+    """
     out_path.parent.mkdir(parents=True, exist_ok=True)
-    try:
-        results = _search(query)
-    except Exception:
-        return None
-    for r in results:
-        url = r.get("url") or r.get("thumbnail")
-        if not url:
-            continue
+    for q in _query_variants(query):
         try:
-            img = Image.open(io.BytesIO(_http_get(url))).convert("RGB")
-            _cover_crop(img, size).save(out_path)
-            return {
-                "query": query,
-                "title": r.get("title"),
-                "creator": r.get("creator"),
-                "license": r.get("license"),
-                "license_url": r.get("license_url"),
-                "source": r.get("foreign_landing_url") or url,
-            }
+            results = _search(q)
         except Exception:
             continue
+        for r in results:
+            url = r.get("url") or r.get("thumbnail")
+            if not url:
+                continue
+            try:
+                img = Image.open(io.BytesIO(_http_get(url))).convert("RGB")
+                _cover_crop(img, size).save(out_path)
+                return {
+                    "requested": query,
+                    "matched_query": q,
+                    "title": r.get("title"),
+                    "creator": r.get("creator"),
+                    "license": r.get("license"),
+                    "license_url": r.get("license_url"),
+                    "source": r.get("foreign_landing_url") or url,
+                }
+            except Exception:
+                continue
     return None

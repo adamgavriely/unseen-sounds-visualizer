@@ -11,4 +11,7 @@ __pycache__/
 data/work/
 data/output/
 
-# The synthetic test clip in data/input/ IS committed (small, for reproducibility).
+# Input videos: keep only the small synthetic test clip; ignore downloaded videos.
+data/input/*
+!data/input/.gitkeep
+!data/input/clip.mp4
