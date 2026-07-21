@@ -2,8 +2,9 @@
 faster-whisper>=1.0.0
 Pillow>=10.0.0
 
-# Stage 3 — LLM planner (enable once you have an Anthropic API key)
-# anthropic>=0.40.0
+# Stage 3 — LLM planner (Gemini)
+google-genai>=0.8.0
+python-dotenv>=1.0.0
 
 # Stage 4 — local diffusion (enable on the university GPU)
 # torch                 # install the CUDA build from pytorch.org, not from PyPI blindly

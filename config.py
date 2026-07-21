@@ -12,9 +12,10 @@ WHISPER_MODEL = "base"        # tiny | base | small | medium | large-v3
 WHISPER_DEVICE = "cpu"        # "cpu" (robust) or "cuda" (needs CUDA-enabled ctranslate2)
 WHISPER_COMPUTE = "int8"      # "int8" on cpu, "float16" on cuda
 
-# Stage 3 — LLM planner
-PLANNER_MODEL = "claude-haiku-4-5-20251001"   # cheap + good enough for planning
+# Stage 3 — LLM planner (Gemini)
+PLANNER_MODEL = "gemini-flash-latest"   # stable alias for the current flash model
 PLANNER_CONTEXT = 3          # how many previous segments to feed as context
+PLANNER_CHUNK = 25           # segments planned per API call (batching for rate limits)
 
 # Stage 4 — visualizer
 RESOLUTION = (1280, 720)     # all frames rendered at this size

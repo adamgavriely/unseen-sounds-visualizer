@@ -12,8 +12,12 @@ import argparse
 import json
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 import config
 from src import audio, asr, planner, visualizer, compositor
+
+load_dotenv()  # make GEMINI_API_KEY (from .env) available to the planner
 
 
 def main():
@@ -47,7 +51,8 @@ def main():
 
     print(f"[3/5] planning ({args.planner})...")
     plans = planner.plan(segments, backend=args.planner,
-                         model=config.PLANNER_MODEL, context=config.PLANNER_CONTEXT)
+                         model=config.PLANNER_MODEL, context=config.PLANNER_CONTEXT,
+                         chunk_size=config.PLANNER_CHUNK)
     (work / "plans.json").write_text(
         json.dumps([p.to_dict() for p in plans], indent=2, ensure_ascii=False),
         encoding="utf-8")
