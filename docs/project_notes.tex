@@ -417,6 +417,15 @@ Stage~5 decides, per detected sound, \emph{whether} to augment (is it meaningful
 already visible?) and \emph{how} (what to depict). This is the project's novelty, so its design
 deserves explicit treatment.
 
+\subsection{Worked example on real data (validates the premise)}\label{sec:stage5example}
+A CC-licensed London NHS-protest clip (Wikimedia) was run through Stage~4. At $\sim$5.5\,s PANNs
+detects \emph{Vehicle} (0.55), \emph{Truck}, \emph{honking} and \emph{air horn}; the video frame at
+that instant shows only the marching crowd and a storefront --- \textbf{no vehicle is visible}. This
+is exactly the target case: an ambient sound whose source is off-screen, detected in audio but absent
+from the picture, and therefore lost to a Deaf viewer relying on the visuals. It concretely validates
+both the detector and the ``augment what is heard but not seen'' premise --- and shows why Stage~2
+(what \emph{is} visible) is needed to make the gating decision rather than augmenting every sound.
+
 \subsection{The decision, decomposed}
 For each candidate audio event $e$ (from Stage~4, with time span) the stage answers:
 \begin{enumerate}
@@ -728,6 +737,10 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-07 --- Off-screen-sound premise validated on real data}
+    (Section~\ref{sec:stage5example}). On a London NHS-protest clip, PANNs detected Vehicle/Truck/horn
+    at $\sim$5.5\,s while the frame showed only the crowd (no vehicle visible) --- a real instance of
+    ``heard but not seen''. Also verified detection on a CC dog-barking video (dog cluster fired).
   \item \textbf{2026-08-06 --- Stage 4 coverage assessment} (Section~\ref{sec:coverage}). Confirmed
     the sounds of interest (water/cat/dog/rain/siren/footsteps) ARE in AudioSet's 527 classes;
     documented the three real limits (music over-representation, coarse granularity, closed-set) and
