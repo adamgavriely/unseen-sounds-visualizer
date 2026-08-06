@@ -19,25 +19,30 @@ from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
 def plan_augmentations(scene: SceneContext,
                        segments: List[SpeechSegment],
                        events: List[AudioEvent],
-                       threshold: float = 0.3) -> List[AugmentationSpec]:
-    print("       [stage5] STUB - transparent rule-based gate "
-          "(TODO: localization + grounded LLM).")
+                       threshold: float = 0.3,
+                       gate_enabled: bool = False) -> List[AugmentationSpec]:
+    mode = "rule-based gate" if gate_enabled else "PASS-THROUGH (detect-all)"
+    print(f"       [stage5] STUB - {mode} (TODO: localization + grounded LLM).")
     visible = {e.lower() for e in scene.visible_entities}
     specs: List[AugmentationSpec] = []
     for i, ev in enumerate(events):
-        # Gate rule (placeholder logic):
-        #  - drop low-confidence events
-        #  - if the source is known on-screen (or the label matches a visible
-        #    entity), stay silent (visual redundancy).
-        salient = ev.confidence >= threshold
-        redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
-        augment = salient and not redundant
-        if not salient:
-            reason = f"below salience threshold ({ev.confidence:.2f} < {threshold})"
-        elif redundant:
-            reason = "source already visible on screen (stay silent)"
+        if not gate_enabled:
+            # Detect-everything-first: keep every event, no filtering.
+            augment, reason = True, "gate disabled (detect-all mode)"
         else:
-            reason = "salient non-speech sound, source not visible -> augment"
+            # Gate rule (placeholder logic):
+            #  - drop low-confidence events
+            #  - if the source is known on-screen (or the label matches a visible
+            #    entity), stay silent (visual redundancy).
+            salient = ev.confidence >= threshold
+            redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
+            augment = salient and not redundant
+            if not salient:
+                reason = f"below salience threshold ({ev.confidence:.2f} < {threshold})"
+            elif redundant:
+                reason = "source already visible on screen (stay silent)"
+            else:
+                reason = "salient non-speech sound, source not visible -> augment"
         specs.append(AugmentationSpec(
             index=i, event_label=ev.label, start=ev.start, end=ev.end,
             augment=augment, reason=reason,

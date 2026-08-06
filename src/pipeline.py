@@ -66,13 +66,16 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
 
     print("[4/6] audio event detection...")
     events = detect_events(Path(media.wav_path), threshold=config.AED_THRESHOLD,
-                           model=config.AED_MODEL, device=config.DEVICE)
+                           min_dur=config.AED_MIN_DUR, model=config.AED_MODEL,
+                           device=config.DEVICE, plot_path=work / "events_plot.png",
+                           plot_top_k=config.AED_PLOT_TOP_K)
     _dump(work / "events.json", [e.to_dict() for e in events])
-    print(f"       {len(events)} non-speech event(s)")
+    print(f"       {len(events)} event span(s)")
 
     print("[5/6] cross-modal gating...")
     specs = plan_augmentations(scene, segments, events,
-                               threshold=config.AED_THRESHOLD)
+                               threshold=config.AED_THRESHOLD,
+                               gate_enabled=config.GATE_ENABLED)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
     n_aug = sum(1 for s in specs if s.augment)
     print(f"       {n_aug}/{len(specs)} event(s) selected to augment")

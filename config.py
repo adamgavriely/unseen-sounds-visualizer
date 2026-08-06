@@ -25,13 +25,16 @@ NUM_FRAMES = 8               # frames sampled from the clip for scene analysis
 WHISPER_MODEL = "base"       # tiny | base | small | medium | large-v3
 WHISPER_COMPUTE = "int8"     # "int8" on cpu, "float16" on cuda
 
-# Stage 4 — audio event detection  [stub in skeleton]
-AED_MODEL = "PANNs/Cnn14"    # -> BEATs for quality
-AED_THRESHOLD = 0.3          # min confidence to keep a detected event
+# Stage 4 — audio event detection (PANNs CNN14 SED)
+AED_MODEL = "PANNs/Cnn14_DecisionLevelMax"    # -> BEATs for quality later
+AED_THRESHOLD = 0.05         # LOW on purpose: detect-everything-first (incl. faint background)
+AED_MIN_DUR = 0.2            # min span length (s) to count as an event
+AED_PLOT_TOP_K = 15          # classes shown in the timeline plot
 
 # Stage 5 — cross-modal semantic analysis (the gate)  [stub in skeleton]
 LLM_MODEL = "meta-llama/Llama-3.1-8B-Instruct"   # or Qwen3; or a hosted API
 USE_LOCALIZATION = False     # feed an on/off-screen localization signal into the gate
+GATE_ENABLED = False         # detect-everything-first: keep ALL events (no filtering yet)
 
 # Stage 6 — visual augmentation generation  [stub in skeleton]
 GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"   # or FLUX.1

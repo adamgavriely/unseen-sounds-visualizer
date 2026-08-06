@@ -1,20 +1,22 @@
-# Core (walking skeleton - runs with no API keys / no strong GPU)
+# Core (runs on CPU, no strong GPU needed)
 faster-whisper>=1.0.0        # Stage 3 ASR
 Pillow>=10.0.0               # Stage 6 placeholder images
 python-dotenv>=1.0.0         # optional: load API keys from .env
 # ffmpeg/ffprobe must be on PATH (Stage 1) - installed at C:\ffmpeg\bin
 
+# Stage 4 - audio event detection (PANNs CNN14 SED) [implemented]
+torch>=2.0                   # CPU build: pip install torch --index-url https://download.pytorch.org/whl/cpu
+panns-inference>=0.1.0       # auto-downloads a ~327 MB CNN14 checkpoint on first run
+librosa>=0.10                # audio loading/resampling to 32 kHz
+matplotlib>=3.7              # Stage 4 timeline plot
+soundfile>=0.12
+
 # --- Heavier backends: enable per stage as they are implemented ---
 
 # Stage 2 - video understanding (VLM)
-# torch                      # install the CUDA build from pytorch.org, not blindly from PyPI
 # transformers>=4.49.0
 # accelerate>=0.34.0
 # qwen-vl-utils              # for Qwen2.5-VL frame handling
-
-# Stage 4 - audio event detection
-# panns-inference            # PANNs/CNN14 tagging
-# torch, torchaudio          # (BEATs / frame-level models)
 
 # Stage 5 - cross-modal LLM gate
 # transformers               # local Llama-3.1 / Qwen3 (quantised)

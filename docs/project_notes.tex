@@ -508,6 +508,49 @@ build locally in the meantime. A hosted API for the Stage-5 LLM is a viable fall
 delayed.
 
 % ======================================================================
+\section{Model Cards --- Executive Summaries}\label{sec:modelcards}
+% ======================================================================
+A plain-language summary of every model actually wired into the pipeline, so the
+choices are understandable at a glance. Each card is added when its stage is
+implemented (research/candidate models live in Section~\ref{sec:litreview}).
+
+\subsection{PANNs CNN14 (Sound Event Detection) --- Stage 4 \emph{[implemented]}}
+\textbf{What it is.} PANNs (``Pretrained Audio Neural Networks'', Kong et
+al.~\cite{panns}) are convolutional networks trained on Google's AudioSet to
+recognise 527 kinds of sound. We use the CNN14 ``DecisionLevelMax'' variant,
+which produces \emph{frame-level} predictions (a probability for each sound class
+at each instant), so we know not just \emph{what} sounds occur but \emph{when}.
+
+\textbf{What it does for us.} It is the detector at the heart of Stage~4: given
+the clip's audio it outputs, for every $\sim$10\,ms frame, the probability of each
+of the 527 AudioSet classes (speech, crowd, siren, dog, rain, applause, \dots).
+We turn those probabilities into (label, start, end, confidence) events and into
+the timeline heat-map used to ``detect everything and plot it''.
+
+\textbf{How it works (simply).} The audio is converted to a log-mel spectrogram (a
+picture of energy across frequency and time); a CNN reads that picture and scores
+each sound class over time. It was pretrained on $\sim$2\,M labelled YouTube clips,
+so it generalises to everyday sounds without any training on our part.
+
+\textbf{Why we chose it.} Light and fast (runs a 20\,s clip in $<$1\,s on CPU ---
+no GPU needed), permissively usable, backed by the standard AudioSet vocabulary,
+and it gives time boundaries. It is the recommended ``first implementation'' in
+Section~\ref{sec:models}; \textbf{BEATs} is the planned quality upgrade later.
+
+\textbf{Inputs / outputs.} In: mono audio (resampled to 32\,kHz). Out: a
+$[\text{frames}\times 527]$ probability matrix $\rightarrow$ event spans + a plot.
+
+\textbf{Cost / footprint.} $\sim$327\,MB checkpoint (auto-downloaded once to
+\texttt{\textasciitilde/panns\_data/}); CPU inference is sub-second for short clips.
+
+\textbf{Limitations to keep in mind.} In speech-dominated clips, background sounds
+(crowd, cheering) score \emph{low} probabilities, so a low detection threshold
+(currently 0.05) is needed to surface them --- which also lets in more noise. The
+527-class ontology is broad but fixed. Frame timing is approximate. These are the
+reasons the ``which sounds matter'' decision (Stage~5) is deferred rather than
+baked into detection.
+
+% ======================================================================
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
 \subsection{Automatic protocol (primary)}
@@ -637,6 +680,14 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-06 --- Strategy: detect-everything-first.} Decision (Adam): at first,
+    detect \emph{all} ambient sounds (even faint background dog barks, sirens) and visualise them;
+    decide which matter \emph{later}. Implemented: Stage~4 now runs \textbf{PANNs CNN14 SED} for real
+    (executive summary in Section~\ref{sec:modelcards}), with a low threshold (0.05) and a timeline
+    heat-map plot per clip; Stage~5 gate is set to \emph{pass-through} (\texttt{GATE\_ENABLED=False})
+    so nothing is filtered yet. Verified on the synthetic clip and a real 20.9\,s news clip
+    (surfaced Speech + Crowd, Outside-urban, Basketball bounce, Vehicle, etc.). Next: use video
+    frames to disambiguate confusing sounds (Stage~2 VLM).
   \item \textbf{2026-08-06 --- Divided-attention design constraints} (Section~\ref{sec:placement})
     and \textbf{Stage~5 cross-modal gating design} (Section~\ref{sec:stage5}) researched and written.
     Key outcomes: augmentation placement is a real design/eval variable and aggressive gating helps
