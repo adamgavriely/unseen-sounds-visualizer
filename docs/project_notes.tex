@@ -550,6 +550,47 @@ $[\text{frames}\times 527]$ probability matrix $\rightarrow$ event spans + a plo
 reasons the ``which sounds matter'' decision (Stage~5) is deferred rather than
 baked into detection.
 
+\subsection{Is AudioSet's 527-class ontology enough? (coverage assessment)}\label{sec:coverage}
+An honest assessment, because it shapes whether PANNs is sufficient or needs an open-vocabulary
+companion.
+
+\textbf{What 527 covers well.} It is the de-facto standard audio ontology and covers the common
+ambient/environmental sounds this project targets. The specific cases raised in discussion are all
+present: \emph{water flowing} $\rightarrow$ Water, Stream, Waterfall, Gurgling, Trickle/dribble,
+Drip, Water tap/faucet; \emph{cat} $\rightarrow$ Cat, Meow, Purr, Caterwaul; plus Dog/Bark,
+Rain/Raindrop, multiple Siren types, Wind, Walk/footsteps, glass, applause, machinery. So a sound
+being ``absent from a clip'' in our demos reflects the clip's content, not a blind spot in PANNs.
+
+\textbf{Three real limitations (not just class count).}
+\begin{enumerate}
+  \item \textbf{Music over-represented.} A large share of the 527 are music genres/instruments, which
+    are mostly irrelevant to ambient accessibility --- so the \emph{effective useful} vocabulary is
+    smaller than 527. \TODO{decide whether to filter/ignore the music/instrument classes for this
+    task, and quantify exactly how many of the 527 are environmental vs.\ music (pull the AudioSet
+    ontology and count).}
+  \item \textbf{Granularity is coarse and uneven.} ``Vehicle'', ``Water'', ``Door'' don't capture
+    direction (a car \emph{approaching from behind}), intensity (gentle stream vs.\ raging river), or
+    implication --- exactly the information most useful to a DHH viewer. Different appliance beeps
+    collapse toward ``Beep, bleep''.
+  \item \textbf{Closed-set.} PANNs can only emit one of the 527 labels; a genuinely novel or
+    culturally-specific sound is mapped to the nearest class with low confidence, never a new label.
+\end{enumerate}
+
+\textbf{The deeper point.} Even a perfect ontology would not suffice, because \emph{a label is a
+low-bandwidth token --- the same limitation as SDH subtitles} (\texttt{[water]}, \texttt{[siren]}).
+The semantic richness in this project must come from Stage~5 reasoning + image generation, not from
+the detector's label. The detector only needs to reliably say ``water, here, off-screen''.
+
+\textbf{Open-vocabulary alternative (undecided).} If 527 classes prove too restrictive, the fix is an
+open-vocabulary detector: \textbf{CLAP}~\cite{clap} (match audio against \emph{any} text description,
+zero-shot) or an \textbf{audio-language model} / captioner (Qwen2-Audio~\cite{qwenaudio}) that
+describes sounds in free text. This is both a robustness upgrade and a legitimate research
+comparison. \TODO{decide whether to add an open-vocabulary path (CLAP or audio-LLM) as a
+\emph{comparison} against closed-set PANNs tagging --- potentially a headline experiment:
+``closed-set tagging vs.\ open-vocab captioning for accessibility augmentation''.}
+\TODO{the current detection threshold (0.05) and min-duration (0.2\,s) are provisional --- tune them
+on real ambient clips once the benchmark exists.}
+
 % ======================================================================
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
@@ -664,6 +705,13 @@ Section~\ref{sec:changelog}.
   \item \textbf{Stage 5 gate signal.} Decide whether to add an on/off-screen \emph{sound-source
     localization} model as a grounding signal feeding the LLM gate (recommended), and set up the
     ablation LLM-only vs.\ LLM+localization (Section~\ref{sec:stage5}).
+  \item \textbf{Open-vocabulary detection (Stage 4).} Decide whether to add a CLAP / audio-LLM
+    open-vocabulary path as a comparison against closed-set PANNs tagging --- possibly a headline
+    experiment (Section~\ref{sec:coverage}).
+  \item \textbf{Prune the AudioSet vocabulary.} Decide whether to ignore the music/instrument classes
+    for this task; quantify the environmental-vs-music split of the 527 classes.
+  \item \textbf{Tune detection parameters.} The detection threshold (0.05) and min-duration (0.2\,s)
+    are provisional; tune on real ambient clips once the benchmark exists.
 \end{enumerate}
 
 % ======================================================================
@@ -680,6 +728,11 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-06 --- Stage 4 coverage assessment} (Section~\ref{sec:coverage}). Confirmed
+    the sounds of interest (water/cat/dog/rain/siren/footsteps) ARE in AudioSet's 527 classes;
+    documented the three real limits (music over-representation, coarse granularity, closed-set) and
+    the open-vocabulary alternative (CLAP / audio-LLM) as an undecided comparison. New tasks
+    A12--A14.
   \item \textbf{2026-08-06 --- Strategy: detect-everything-first.} Decision (Adam): at first,
     detect \emph{all} ambient sounds (even faint background dog barks, sirens) and visualise them;
     decide which matter \emph{later}. Implemented: Stage~4 now runs \textbf{PANNs CNN14 SED} for real
