@@ -20,6 +20,10 @@
 \titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
 \setlist{nosep, leftmargin=1.4em}
 
+% Inline action-item marker for things Adam must verify/decide.
+% All such items are collected in Section "Action Items -- Tasks for Adam".
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{[TODO--Adam: #1]}}}
+
 \title{\textbf{Visual Augmentation of Audio Semantics for Accessibility}\\[4pt]
 \large Working Knowledge Base: Literature Review, Design Notes \& Project Plan}
 \author{Adam Gavriely \\ \small MSc Final Project}
@@ -273,6 +277,13 @@ information \emph{only partially} present in the visuals (the property that make
 non-trivial). VGGSound for clean ambient/event clips, UnAV-100 for mixed/overlapping events,
 MovieNet for narrative acoustic events. Record licence/source per clip.
 
+\smallskip
+\noindent\TODO{verify dataset access and terms before committing to the benchmark plan --- MovieNet
+may require a signed agreement/application; VGGSound is distributed as YouTube links (some videos are
+offline, so a download + availability check is needed); UnAV-100 is CC-BY 4.0 (fine).}
+\TODO{confirm the 300-clip target is feasible within the timeline, or set a fallback (e.g.\ 100--150
+clips).}
+
 % ======================================================================
 \section{Model and Tooling Recommendations}\label{sec:models}
 % ======================================================================
@@ -298,6 +309,12 @@ option for the university GPU.
 \footnotesize *Verify each model's exact licence at integration time; FLUX.1 has \texttt{dev}
 (non-commercial) vs.\ \texttt{schnell} (Apache-2.0) variants, and some audio-event checkpoints are
 research-only. \normalsize
+\smallskip
+
+\noindent\TODO{confirm the university GPU VRAM once granted --- the split between ``local-first'' and
+``quality'' columns above depends on it.} \TODO{confirm an acceptable FLUX.1 licence variant
+(\texttt{dev} non-commercial vs.\ \texttt{schnell} Apache-2.0) for an academic deliverable; check
+with the supervisor whether a non-commercial model is acceptable.}
 
 \medskip
 \noindent\textbf{Hardware reality check.} The GTX~1060 (6\,GB) can run FFmpeg, faster-whisper
@@ -341,6 +358,10 @@ audio--visual gap.
 If time allows: a small qualitative study comparing ``subtitles alone'' vs.\ ``subtitles +
 augmentation'' on scene-understanding questions. Given the two-month scope and ethics/recruitment
 overhead, treat this as optional and keep the automatic protocol as the primary evidence.
+\smallskip
+
+\noindent\TODO{decide whether to attempt the human study at all; if yes, check the department's
+ethics/IRB requirements and lead time early --- recruitment/ethics can be the schedule bottleneck.}
 
 % ======================================================================
 \section{Project Plan (approx.\ 8 weeks)}\label{sec:plan}
@@ -382,6 +403,38 @@ sampled clips). (3) Scope creep on the human study and audio-to-video --- both e
 (4) Evaluation validity --- validate the LLM judge against a small human-labelled subset early.
 
 % ======================================================================
+\section{Action Items --- Tasks for Adam}\label{sec:tasks}
+% ======================================================================
+Open questions and external actions that only Adam can resolve. These are the inline
+\TODO{}\ markers, collected. Tick them off as they are settled and note the outcome in
+Section~\ref{sec:changelog}.
+
+\begin{enumerate}[label=\textbf{A\arabic*.}]
+  \item \textbf{Compute --- submit the university GPU request now.} Lead time is the schedule's top
+    risk. Confirm the granted \textbf{VRAM} on approval; it decides which models run locally vs.\ on
+    the cluster (Section~\ref{sec:models}).
+  \item \textbf{Dataset access \& terms.} MovieNet may need a signed agreement/application; VGGSound
+    is YouTube links (check availability, plan downloads); UnAV-100 is CC-BY 4.0 (fine). Verify
+    before committing to the benchmark plan (Section~\ref{sec:datasets}).
+  \item \textbf{Benchmark size.} Confirm $\sim$300 clips is feasible in the timeline, or agree a
+    fallback (100--150) with the supervisor.
+  \item \textbf{Model licences.} Confirm an acceptable \textbf{FLUX.1} variant (\texttt{dev}
+    non-commercial vs.\ \texttt{schnell} Apache-2.0); check specific \textbf{audio-event checkpoints}
+    (some BEATs/DCASE checkpoints are research-only).
+  \item \textbf{Human study decision.} Decide whether to run the optional qualitative study; if yes,
+    check department ethics/IRB requirements and lead time early.
+  \item \textbf{Scope of ``background music''.} The proposal lists music as a possible audio
+    component but the focus is ambient/environmental sound. Confirm with the supervisor whether music
+    is in or out of scope for augmentation.
+  \item \textbf{Stages 3--4 design choice.} After a small pilot, decide the default: modular
+    (Whisper + PANNs/BEATs) vs.\ a single LALM (Qwen2-Audio). Keep the other as an ablation.
+  \item \textbf{Reference details.} Before the final report, verify the flagged bibliography entries
+    (exact author lists/venues) --- see \TODO{} in Section~\ref{sec:litreview}/References.
+  \item \textbf{Security carry-over.} Confirm the previously leaked GitHub PAT was revoked/regenerated
+    (flagged in an earlier session).
+\end{enumerate}
+
+% ======================================================================
 \section{Decisions and Notes Log}\label{sec:changelog}
 % ======================================================================
 \begin{itemize}
@@ -402,6 +455,9 @@ sampled clips). (3) Scope creep on the human study and audio-to-video --- both e
 \begin{thebibliography}{99}
 % ======================================================================
 \footnotesize
+\noindent\TODO{verify the exact author lists/venues/years of the entries marked ``[verify]'' below
+before the final report --- these were assembled from search results and not all are fully
+confirmed.}\par\smallskip
 \bibitem{audioset} J.\ F.\ Gemmeke et al., ``AudioSet: An ontology and human-labeled dataset for audio events,'' \emph{ICASSP}, 2017.
 \bibitem{panns} Q.\ Kong et al., ``PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition,'' \emph{IEEE/ACM TASLP}, 2020. arXiv:1912.10211.
 \bibitem{ast} Y.\ Gong, Y.-A.\ Chung, J.\ Glass, ``AST: Audio Spectrogram Transformer,'' \emph{Interspeech}, 2021. arXiv:2104.01778.
@@ -409,20 +465,20 @@ sampled clips). (3) Scope creep on the human study and audio-to-video --- both e
 \bibitem{audiocaps} C.\ D.\ Kim et al., ``AudioCaps: Generating Captions for Audios in The Wild,'' \emph{NAACL}, 2019.
 \bibitem{clotho} K.\ Drossos et al., ``Clotho: An Audio Captioning Dataset,'' \emph{ICASSP}, 2020.
 \bibitem{clap} B.\ Elizalde et al., ``CLAP: Learning Audio Concepts from Natural Language Supervision,'' \emph{ICASSP}, 2023.
-\bibitem{enclap} J.\ Kim et al., ``EnCLAP: Combining Neural Audio Codec and Audio-Text Joint Embedding for Automated Audio Captioning,'' \emph{ICASSP}, 2024.
+\bibitem{enclap} J.\ Kim et al., ``EnCLAP: Combining Neural Audio Codec and Audio-Text Joint Embedding for Automated Audio Captioning,'' \emph{ICASSP}, 2024. [verify authors]
 \bibitem{slamaac} W.\ Chen et al., ``SLAM-AAC: Enhancing Audio Captioning with Paraphrasing Augmentation and CLAP-Refine through LLMs,'' 2024. arXiv:2410.09503.
 \bibitem{qwenaudio} Y.\ Chu et al., ``Qwen-Audio / Qwen2-Audio: Advancing Universal Audio Understanding,'' 2023--2024. arXiv:2311.07919.
 \bibitem{salmonn} C.\ Tang et al., ``SALMONN: Towards Generic Hearing Abilities for Large Language Models,'' \emph{ICLR}, 2024.
-\bibitem{audioflamingo3} A.\ Ghosh et al., ``Audio Flamingo 3: Advancing Audio Intelligence,'' 2025. arXiv:2507.08128.
+\bibitem{audioflamingo3} ``Audio Flamingo 3: Advancing Audio Intelligence,'' 2025. arXiv:2507.08128. [verify authors]
 \bibitem{mmau} S.\ Sakshi et al., ``MMAU: A Massive Multi-Task Audio Understanding and Reasoning Benchmark,'' 2024. arXiv:2410.19168.
 \bibitem{qwenvl} Qwen Team, ``Qwen2.5-VL Technical Report,'' 2025. arXiv:2502.13923.
-\bibitem{internvl} Z.\ Chen et al., ``InternVL3: Native Multimodal Pretraining,'' 2025.
+\bibitem{internvl} ``InternVL3: Native Multimodal Pretraining,'' 2025. [verify authors/venue]
 \bibitem{llava} H.\ Liu et al., ``Visual Instruction Tuning (LLaVA),'' \emph{NeurIPS}, 2023.
 \bibitem{sound2scene} K.\ Sung-Bin et al., ``Sound to Visual Scene Generation by Audio-to-Visual Latent Alignment (Sound2Scene),'' \emph{CVPR}, 2023. arXiv:2306.11504.
-\bibitem{sonicdiffusion} B.\ Y{\i}ld{\i}r{\i}m et al., ``SonicDiffusion: Audio-Driven Image Generation and Editing with Pretrained Diffusion Models,'' 2024.
+\bibitem{sonicdiffusion} ``SonicDiffusion: Audio-Driven Image Generation and Editing with Pretrained Diffusion Models,'' 2024. [verify authors]
 \bibitem{sdxl} D.\ Podell et al., ``SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis,'' 2023. arXiv:2307.01952.
 \bibitem{flux} Black Forest Labs, ``FLUX.1,'' 2024. \url{https://blackforestlabs.ai/}.
-\bibitem{captionlimits} V.\ Gerber-Morón et al.\ / related, ``Limitations of Standard Accessible Captioning of Sounds and Music for DHH People: An EEG Study,'' \emph{Frontiers in Integrative Neuroscience}, 2020.
+\bibitem{captionlimits} ``Limitations of Standard Accessible Captioning of Sounds and Music for DHH People: An EEG Study,'' \emph{Frontiers in Integrative Neuroscience}, 2020. [verify authors]
 \bibitem{prosodycaptions} ``Visualization of Speech Prosody and Emotion in Captions: Accessibility for Deaf and Hard-of-Hearing Users,'' \emph{CHI}, 2023.
 \bibitem{soundwatch} D.\ Jain et al., ``SoundWatch: Smartwatch-based Deep Learning Approaches to Support Sound Awareness for DHH Users,'' \emph{ASSETS}, 2020.
 \bibitem{homesound} D.\ Jain et al., ``HomeSound: An Iterative Field Deployment of an In-Home Sound Awareness System for DHH Users,'' \emph{CHI}, 2020.
