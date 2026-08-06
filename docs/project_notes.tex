@@ -1,0 +1,437 @@
+\documentclass[11pt,a4paper]{article}
+
+% ----------------------------------------------------------------------
+%  Working knowledge base / executive record for the MSc project
+%  "Visual Augmentation of Audio Semantics for Accessibility"
+%  Maintained as a living document. Compiles on Overleaf or with pdflatex.
+% ----------------------------------------------------------------------
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{colorlinks=true, linkcolor=blue!50!black, urlcolor=blue!60!black, citecolor=blue!50!black}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\setlist{nosep, leftmargin=1.4em}
+
+\title{\textbf{Visual Augmentation of Audio Semantics for Accessibility}\\[4pt]
+\large Working Knowledge Base: Literature Review, Design Notes \& Project Plan}
+\author{Adam Gavriely \\ \small MSc Final Project}
+\date{Last updated: \today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent This document is the living record of the MSc project. It summarises the refined
+project definition, a grounded literature review across the eight areas named in the proposal,
+concrete model and dataset recommendations with hardware implications, the evaluation design,
+and a two-month work plan. It also logs the key decisions taken so far so that the full history
+of the project is recoverable from a single place. Sections are updated as the work progresses;
+a dated changelog is kept in Section~\ref{sec:changelog}.
+\end{abstract}
+
+\tableofcontents
+
+% ======================================================================
+\section{Executive Summary}
+% ======================================================================
+The project builds a system that makes the \emph{non-speech} information in a video's soundtrack
+accessible to deaf and hard-of-hearing (DHH) viewers. Subtitles and sign-language interpretation
+convey \emph{speech}, but they largely discard ambient and environmental sound --- flowing water,
+approaching footsteps, a distant siren, rain, birds, a reacting crowd, machinery --- which carries
+real meaning and atmosphere. The system detects this missing audio semantics and renders it as
+\textbf{complementary visual augmentations displayed alongside the original video}, supplementing
+(not replacing) the video and its captions.
+
+The distinctive idea is \textbf{cross-modal gating}: because the \emph{video} is also analysed,
+the system augments only what the audio conveys but the picture does \emph{not} already show.
+A siren whose source is already on screen needs no augmentation; a siren from off-screen is
+exactly what is worth illustrating. This ``reason about the gap between what is heard and what is
+seen'' framing is the core contribution and the axis on which the method is compared to baselines
+that ignore the visual stream.
+
+No models are trained. The contribution is (i) the \emph{task formulation}, (ii) an inference
+pipeline that orchestrates existing open-source foundation models, (iii) a curated benchmark, and
+(iv) an automatic evaluation protocol. Work is scoped to roughly two months on a modest local GPU
+(GTX~1060 6\,GB) with a university GPU requested for the diffusion and large-VLM stages.
+
+\medskip
+\noindent\textbf{Status at time of writing.} Project definition refined and locked; literature
+review drafted (this document); model/dataset shortlist and hardware plan produced; two-month
+schedule produced. Implementation of the new pipeline not yet started --- a prior code skeleton
+(FFmpeg audio extraction, Whisper ASR wiring, modular stage architecture) is reusable.
+
+% ======================================================================
+\section{Project Definition and Scope}
+% ======================================================================
+\subsection{Problem statement}
+Given a short video clip (10--20\,s) with synchronised audio and video, identify semantic
+information in the audio --- with emphasis on ambient and environmental sound --- that is
+\emph{insufficiently conveyed by the visual stream}, and generate complementary visual
+augmentations that communicate it to a DHH viewer.
+
+\subsection{Inputs and outputs}
+\textbf{Input:} a short clip with synchronised video + audio. Candidate sources: movie/TV scenes,
+documentaries, real-world recordings. The audio may contain speech, ambient sound, environmental
+sound, discrete acoustic events, and background music.
+\textbf{Output:} a set of complementary visual augmentations shown alongside the original video.
+Static, storyboard-style images first; short generated video segments are a stretch goal.
+
+\subsection{The seven-stage pipeline}
+The proposal defines a modular inference pipeline in which each stage can be evaluated or replaced
+independently:
+\begin{enumerate}
+  \item \textbf{Audio extraction} --- FFmpeg.
+  \item \textbf{Video understanding} --- what is already visible (Qwen2.5-VL / LLaVA / InternVL).
+  \item \textbf{Speech recognition} --- transcribe speech (Whisper Large V3 / Qwen2-Audio).
+  \item \textbf{Audio event detection} --- non-speech sounds (BEATs / PANNs / AudioSet models).
+  \item \textbf{Cross-modal semantic analysis} --- fuse scene context, speech and audio events;
+        decide which cues matter, are \emph{not} already visible, and how to depict them
+        (Qwen3 / Llama~3.1).
+  \item \textbf{Visual augmentation generation} --- FLUX.1 / Stable Diffusion XL.
+  \item \textbf{Evaluation}.
+\end{enumerate}
+
+\subsection{Scope boundaries and the ``no training'' constraint}
+Off-the-shelf open-source foundation models are glued together; nothing is trained or fine-tuned.
+The intellectual contribution is task formulation, cross-modal orchestration (especially stage~5),
+benchmark construction, and evaluation methodology.
+
+\subsection{Note on the change of direction}
+An earlier version of this project illustrated the \emph{speech} of news clips for Deaf viewers.
+The current proposal is a deliberate pivot: the star is now \emph{non-speech ambient/environmental
+sound}, the \emph{video} stream is analysed (previously ignored), audio event detection and
+cross-modal gating are new core components, output is overlaid alongside the original video, and a
+formal 300-clip benchmark replaces ad-hoc news clips. Reusable from the earlier build: FFmpeg audio
+extraction, Whisper ASR wiring, and the modular pluggable-stage architecture.
+
+% ======================================================================
+\section{Research Questions (from the proposal)}
+% ======================================================================
+\begin{itemize}
+  \item Which types of audio information contribute most to scene understanding when presented visually?
+  \item What level of semantic granularity should be used to represent ambient/environmental sounds?
+  \item Can automatically generated visual augmentations improve accessibility beyond subtitles?
+  \item How should semantic audio augmentation systems be evaluated?
+  \item How does the proposed pipeline compare with representative audio-to-visual approaches?
+\end{itemize}
+
+% ======================================================================
+\section{Literature Review}\label{sec:litreview}
+% ======================================================================
+This review covers the eight areas named in the proposal. It is deliberately organised around the
+\emph{role each area plays in the pipeline} so that model choices in Section~\ref{sec:models}
+follow directly from it.
+
+% ----------------------------------------------------------------------
+\subsection{Audio Event Detection and Tagging (Stage 4)}
+% ----------------------------------------------------------------------
+This is the engine that turns the soundtrack into a set of labelled non-speech sound events ---
+the raw material for augmentation. The field is anchored by \textbf{AudioSet}~\cite{audioset}, a
+2\,M-clip ontology of 527 sound classes that underpins nearly all modern systems. Two families
+dominate:
+\begin{itemize}
+  \item \textbf{CNN-based tagging --- PANNs}~\cite{panns}. Large-scale pretrained audio neural
+    networks (notably the CNN14 backbone) established strong general-purpose audio features and a
+    then-state-of-the-art mAP of 0.439 on AudioSet tagging. PANNs remain a robust, lightweight,
+    easy-to-run baseline and are ideal for a first implementation on a 6\,GB GPU.
+  \item \textbf{Transformer-based tagging --- AST and BEATs}. The Audio Spectrogram Transformer
+    (AST)~\cite{ast} applied a pure-transformer patch model to spectrograms. \textbf{BEATs}~\cite{beats}
+    (audio pre-training with acoustic tokenizers) is the current practical state of the art and is
+    used as the baseline encoder in the DCASE 2023/2024 Sound Event Detection challenges. For frame-
+    level \emph{detection} (with time boundaries, not just clip-level tags), CRNN+BEATs and
+    frame-level transformer variants (e.g.\ ATST-Frame) lead recent DCASE results.
+\end{itemize}
+\textbf{Relevance / choice.} We need both \emph{what} sound and \emph{when} (time boundaries) so
+augmentations can be time-aligned. Recommendation: start with PANNs (CNN14) for fast, dependency-light
+clip tagging; move to a BEATs-based tagger for quality; use a CRNN/frame-level model only if precise
+onset/offset timing proves necessary. AudioSet's 527-class ontology also gives us a ready-made
+vocabulary for the ``which sounds matter'' analysis in Stage~5.
+
+% ----------------------------------------------------------------------
+\subsection{Audio Captioning (Stage 4/5 alternative representation)}
+% ----------------------------------------------------------------------
+Where tagging outputs labels, \emph{automated audio captioning} (AAC) outputs a free-text sentence
+describing the soundscape (e.g.\ ``a train approaches as birds chirp in the background''). This is a
+richer, more compositional representation and a natural bridge to an image-generation prompt. The
+canonical datasets are \textbf{AudioCaps}~\cite{audiocaps} (AudioSet-derived, $\sim$46\,k clips) and
+\textbf{Clotho}~\cite{clotho}. Modern AAC systems pair a strong audio encoder with a language
+decoder: \textbf{EnCLAP}~\cite{enclap} (neural-codec + CLAP + LLM) and \textbf{SLAM-AAC}~\cite{slamaac}
+(current SOTA on Clotho/AudioCaps, using paraphrase augmentation and CLAP-based re-ranking) are
+representative. \textbf{CLAP}~\cite{clap} (contrastive language--audio pretraining) is the workhorse
+embedding underneath much of this and is directly useful to us as an audio$\leftrightarrow$text
+relevance scorer in evaluation.
+\textbf{Relevance / choice.} Captioning is attractive as the ``description'' that feeds image
+generation, and it is a natural \textbf{baseline} (``audio captioning only, no visual output'').
+It also provides the \emph{audio captioning} baseline the proposal requires.
+
+% ----------------------------------------------------------------------
+\subsection{Audio Understanding / Large Audio-Language Models (Stages 3--5)}
+% ----------------------------------------------------------------------
+Large Audio-Language Models (LALMs) fold ASR, audio-event reasoning, and captioning into a single
+instructable model: an audio encoder + a modality connector + an LLM. Key systems: \textbf{Qwen2-Audio}
+\cite{qwenaudio} (strong general audio understanding; can be prompted for both transcription and
+sound description), \textbf{SALMONN}~\cite{salmonn} (speech + audio-event + music encoders on a
+frozen LLM), and \textbf{Audio Flamingo~3}~\cite{audioflamingo3} (fully open, long-context,
+multi-audio dialogue). Evaluation of these models is itself an active area; \textbf{MMAU}~\cite{mmau}
+is a multi-task audio understanding/reasoning benchmark worth citing for how the community measures
+these capabilities.
+\textbf{Relevance / choice.} A LALM is an appealing way to \emph{collapse Stages 3--4} into one
+component and to reason about audio directly in language. Trade-off: a single 7B+ LALM is heavier
+and less individually inspectable than PANNs + Whisper as separate, swappable modules. Plan: keep
+the modular ASR+AED path as the dependable default; treat a LALM (Qwen2-Audio) as an alternative
+Stage-3/4 backend and a possible ablation (``LALM vs.\ specialised modules'').
+
+% ----------------------------------------------------------------------
+\subsection{Vision-Language and Multimodal LLMs (Stages 2 and 5)}
+% ----------------------------------------------------------------------
+Stage~2 (what is already visible) and Stage~5 (cross-modal fusion) both lean on vision-language
+models. \textbf{Qwen2.5-VL}~\cite{qwenvl} is the leading open option: native dynamic-resolution
+vision, explicit video understanding with temporal grounding (it can localise events to video
+segments), and 3B/7B/72B sizes --- the 7B fits our hardware budget and the 3B is a fallback for the
+local GPU. \textbf{InternVL3}~\cite{internvl} and the \textbf{LLaVA}~\cite{llava} family are the
+principal alternatives. These same models double as the \textbf{VLM describer} in evaluation
+(Section~\ref{sec:eval}).
+\textbf{Relevance / choice.} Qwen2.5-VL-7B for video understanding and as the evaluation describer;
+Qwen2.5-VL-3B or a frame-sampled call on the local GPU as fallback. Because the same model family
+spans understanding \emph{and} evaluation, we should use \emph{different} model instances/prompts
+for generation vs.\ judging to avoid a model grading its own output.
+
+% ----------------------------------------------------------------------
+\subsection{Audio-to-Image Generation (Stage 6 --- and a key baseline)}
+% ----------------------------------------------------------------------
+Two philosophies exist. (1) \textbf{Direct audio-to-image}: \textbf{Sound2Scene}~\cite{sound2scene}
+learns to map audio into the latent space of a pretrained image generator and synthesises a scene
+directly from sound, trained only on unlabelled video; \textbf{SonicDiffusion}~\cite{sonicdiffusion}
+conditions a pretrained diffusion model on audio. These are exactly the proposal's ``direct
+audio-to-image'' \textbf{baseline}. (2) \textbf{Text-conditioned generation} driven by a
+language description of the sound: \textbf{Stable Diffusion XL}~\cite{sdxl} and
+\textbf{FLUX.1}~\cite{flux} are the open state of the art. Our proposed method sits in camp (2) but
+with the crucial extra step that the \emph{prompt is chosen by cross-modal reasoning} (Stage~5),
+not produced blindly from audio.
+\textbf{Relevance / choice.} Use SDXL / FLUX.1 for augmentation generation (text-conditioned on a
+Stage-5 prompt); use Sound2Scene as the direct-audio-to-image baseline. This contrast --- reasoned,
+gap-aware prompting vs.\ blind audio$\to$image --- is precisely what the evaluation must isolate.
+
+% ----------------------------------------------------------------------
+\subsection{Audio-to-Video Generation (Stage 6 stretch goal)}
+% ----------------------------------------------------------------------
+Extending static augmentations to short motion clips is the proposal's stretch. Directly
+audio-conditioned video generation is still maturing; the pragmatic route is \emph{image-to-video}
+applied to a generated keyframe (e.g.\ Stable Video Diffusion-style motion), keeping the reasoning
+in Stages 2--5 and treating motion as a rendering choice. This keeps the stretch goal cheap and
+optional and avoids depending on a fast-moving, heavyweight research area.
+
+% ----------------------------------------------------------------------
+\subsection{Accessibility Technologies for DHH Users (motivation \& evaluation grounding)}
+% ----------------------------------------------------------------------
+This literature justifies the whole project and shapes what ``useful'' means. Two threads matter:
+\begin{itemize}
+  \item \textbf{Limits of captioning for non-speech sound.} Standard captioning represents only a
+    narrow slice of the soundtrack; substantial atmospheric and emotional information is lost, and
+    non-speech sounds are inconsistently or poorly captioned~\cite{captionlimits}. Work on
+    visualising prosody/emotion in captions~\cite{prosodycaptions} shows the community actively
+    augmenting text with visual cues --- directly adjacent to our idea, but for speech rather than
+    ambient sound.
+  \item \textbf{Sound-awareness systems.} Jain et al.'s \textbf{SoundWatch}~\cite{soundwatch}
+    (smartwatch sound classification/alerts) and \textbf{HomeSound}~\cite{homesound} (in-home sound
+    visualisation, deployed with DHH households) establish, from field studies, \emph{which} sounds
+    DHH users want to be aware of and how visual sound feedback is received. \textbf{ProtoSound}
+    \cite{protosound} personalises sound recognition for DHH users. These ground our choice of
+    ``which sounds matter'' and provide real user-centred motivation and evaluation framing.
+\end{itemize}
+\textbf{Relevance.} This is the section that separates the project from a generic multimodal demo:
+it names the accessibility gap (non-speech sound), cites evidence that it is real and unmet, and
+gives a principled basis for the ``which audio cues are worth showing'' decision in Stage~5.
+
+% ----------------------------------------------------------------------
+\subsection{Benchmark Datasets}\label{sec:datasets}
+% ----------------------------------------------------------------------
+The proposal names three sources for the $\sim$300-clip benchmark:
+\begin{itemize}
+  \item \textbf{VGGSound}~\cite{vggsound} --- $\sim$200\,k 10-second YouTube clips, 309 classes, each
+    with a \emph{visible} sound source. Excellent for clean single-event ambient/environmental
+    scenarios; its ``sound source is on screen'' property is useful both as positive material and,
+    inverted, to construct ``sound source \emph{off} screen'' cases that stress cross-modal gating.
+  \item \textbf{UnAV-100}~\cite{unav100} --- $\sim$10.8\,k untrimmed videos, 30\,k+ audio-visual
+    events, 100 categories, avg 2.8 (often overlapping) events per video. Ideal for \emph{mixed
+    audio scenes} and for cases with multiple concurrent sounds. CC-BY 4.0.
+  \item \textbf{MovieNet}~\cite{movienet} --- 1{,}100 movies with rich annotations (42\,k scene
+    boundaries, character/place/action/cinematic-style tags). Best source for cinematic
+    \emph{acoustic-event} scenes (sirens, glass, explosions, applause) with narrative context.
+\end{itemize}
+\textbf{Selection strategy.} Sample across the three proposal scenarios --- ambient environmental
+sound, localised acoustic events, mixed scenes --- prioritising clips where the audio carries
+information \emph{only partially} present in the visuals (the property that makes the task
+non-trivial). VGGSound for clean ambient/event clips, UnAV-100 for mixed/overlapping events,
+MovieNet for narrative acoustic events. Record licence/source per clip.
+
+% ======================================================================
+\section{Model and Tooling Recommendations}\label{sec:models}
+% ======================================================================
+Shortlist per stage, with a ``local-first'' option that fits the GTX~1060 (6\,GB) and a ``quality''
+option for the university GPU.
+
+\begin{center}
+\begin{longtable}{@{}p{2.7cm}p{4.3cm}p{4.6cm}p{2.4cm}@{}}
+\toprule
+\textbf{Stage} & \textbf{Local-first (6\,GB) / dev} & \textbf{Quality (uni GPU)} & \textbf{Licence} \\
+\midrule
+\endhead
+1. Audio extract & FFmpeg & FFmpeg & permissive \\
+2. Video understanding & Qwen2.5-VL-3B (frame sampling) & Qwen2.5-VL-7B / InternVL3 & Apache-2.0* \\
+3. Speech recognition & faster-whisper (small/medium) & Whisper Large V3 & MIT/Apache \\
+4. Audio events & PANNs (CNN14) & BEATs tagger & MIT / research \\
+5. Cross-modal analysis & Llama~3.1-8B / Qwen3-8B (quant.) & Qwen3-14B+ or hosted API & varies \\
+6. Generation & SD 1.5 / SDXL-Turbo (test) & SDXL / FLUX.1-dev & CreativeML/Apache* \\
+7. Evaluation & CLAP + CLIP scores & VLM describe + LLM judge & --- \\
+\bottomrule
+\end{longtable}
+\end{center}
+\footnotesize *Verify each model's exact licence at integration time; FLUX.1 has \texttt{dev}
+(non-commercial) vs.\ \texttt{schnell} (Apache-2.0) variants, and some audio-event checkpoints are
+research-only. \normalsize
+
+\medskip
+\noindent\textbf{Hardware reality check.} The GTX~1060 (6\,GB) can run FFmpeg, faster-whisper
+(small/medium), PANNs, and SD~1.5 / SDXL-Turbo for development, plus quantised small LLMs slowly.
+It \emph{cannot} comfortably run SDXL/FLUX at quality, a 7B VLM, or a 14B+ LLM. \textbf{Action:
+request the university GPU early} (lead time) for the quality runs; do all wiring and the benchmark
+build locally in the meantime. A hosted API for the Stage-5 LLM is a viable fallback if the GPU is
+delayed.
+
+% ======================================================================
+\section{Evaluation Methodology}\label{sec:eval}
+% ======================================================================
+\subsection{Automatic protocol (primary)}
+Following the proposal:
+\begin{enumerate}
+  \item Analyse the original video + audio.
+  \item Generate the complementary visual augmentation(s).
+  \item A VLM \emph{describes} the augmented scene (video + augmentation).
+  \item Derive a \emph{semantic reference} from the original multimodal input via an LLM --- i.e.\
+    what a hearing viewer would take from the soundtrack that is not visible.
+  \item An independent \textbf{LLM judge} scores the semantic consistency between the augmentation's
+    described content and the reference.
+\end{enumerate}
+\textbf{Design cautions.} (a) Use \emph{different} models/prompts for generation and judging to
+avoid self-preference bias. (b) Complement the LLM judge with cheaper, less gameable signals:
+\textbf{CLAP} audio$\leftrightarrow$image and \textbf{CLIP}~\cite{clip} text$\leftrightarrow$image
+relevance. (c) Report the judge's agreement with a small human-labelled subset to validate it.
+
+\subsection{Metrics}
+Semantic-consistency score (LLM judge, rubric-based); augmentation relevance (CLIP/CLAP);
+\emph{gating accuracy} --- did the system correctly \emph{withhold} augmentation when the sound is
+already visible, and add it when not? This last metric is the direct measure of the core
+contribution and should be built on a hand-labelled subset.
+
+\subsection{Baselines (required by the proposal)}
+(1) Direct audio-to-image (Sound2Scene) --- no visual analysis; (2) Audio captioning only --- text,
+no visual; (3) Proposed cross-modal method. The comparison isolates the value of reasoning about the
+audio--visual gap.
+
+\subsection{Human evaluation (optional)}
+If time allows: a small qualitative study comparing ``subtitles alone'' vs.\ ``subtitles +
+augmentation'' on scene-understanding questions. Given the two-month scope and ethics/recruitment
+overhead, treat this as optional and keep the automatic protocol as the primary evidence.
+
+% ======================================================================
+\section{Project Plan (approx.\ 8 weeks)}\label{sec:plan}
+% ======================================================================
+Assumes $\sim$2 months, local GTX~1060 for development, university GPU requested in Week~1. Weeks are
+indicative and overlap; the benchmark build (data-gathering) runs in parallel with implementation.
+
+\begin{center}
+\begin{longtable}{@{}p{1.5cm}p{6.4cm}p{5.2cm}@{}}
+\toprule
+\textbf{Week} & \textbf{Focus} & \textbf{Deliverable / milestone} \\
+\midrule
+\endhead
+0 (now) & Refine scope; literature review; plan; \textbf{request uni GPU}; set up fresh repo structure.
+  & This document; GPU request submitted; repo scaffold. \\
+1 & Stage 1--3 skeleton (FFmpeg, faster-whisper, and a first VLM call for video understanding);
+    reuse old wiring. & End-to-end stub runs on one clip. \\
+2 & Stage 4 audio event detection (PANNs first, then BEATs); produce labelled+timed events. &
+    Sound events extracted on sample clips. \\
+3 & Stage 5 cross-modal analysis: the gap-aware ``what to augment'' component (LLM prompt design). &
+    First real augmentation prompts; qualitative check. \\
+4 & Stage 6 generation (SDXL/FLUX on uni GPU) + compositing augmentations alongside video. &
+    First full augmented clips end-to-end. \\
+5 & \textbf{Benchmark build}: curate $\sim$100 (scaling to 300) clips from VGGSound/UnAV-100/MovieNet
+    across the three scenarios; record licences. & Benchmark v1 + selection criteria documented. \\
+6 & Evaluation harness: VLM-describe + LLM-judge + CLIP/CLAP; implement gating-accuracy metric;
+    wire the two baselines. & Automatic evaluation runs; baseline numbers. \\
+7 & Full experiments across the benchmark; ablations (modular vs.\ LALM; with/without cross-modal
+    gating); error analysis. & Results tables + qualitative examples. \\
+8 & Write-up: technical report, polish prototype, finalise deliverables. &
+    Report draft; reproducible code; curated benchmark. \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textbf{Critical path \& risks.} (1) University GPU lead time --- request in Week~0; hosted
+API fallback for Stage~5. (2) Dataset access/download volume (VGGSound is large; download only
+sampled clips). (3) Scope creep on the human study and audio-to-video --- both explicitly optional.
+(4) Evaluation validity --- validate the LLM judge against a small human-labelled subset early.
+
+% ======================================================================
+\section{Decisions and Notes Log}\label{sec:changelog}
+% ======================================================================
+\begin{itemize}
+  \item \textbf{2026-08-06 --- Project pivot confirmed.} Definition changed from ``illustrate the
+    speech of news clips'' to ``augment video with visuals of missing non-speech audio semantics,
+    gated by video understanding.'' New definition is authoritative.
+  \item \textbf{2026-08-06 --- Codebase decision.} Fresh start, reusing pieces (FFmpeg audio,
+    Whisper wiring, modular architecture) from the earlier skeleton.
+  \item \textbf{2026-08-06 --- First deliverables.} Literature review + project plan (this document).
+  \item \textbf{2026-08-06 --- Constraints unchanged.} $\sim$2 months; local GTX~1060 6\,GB;
+    university GPU to be requested.
+  \item \textbf{Open items.} Confirm university GPU VRAM once granted; finalise exact benchmark
+    composition after a first pass over the datasets; decide modular-vs-LALM default for Stages 3--4
+    after a small pilot.
+\end{itemize}
+
+% ======================================================================
+\begin{thebibliography}{99}
+% ======================================================================
+\footnotesize
+\bibitem{audioset} J.\ F.\ Gemmeke et al., ``AudioSet: An ontology and human-labeled dataset for audio events,'' \emph{ICASSP}, 2017.
+\bibitem{panns} Q.\ Kong et al., ``PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition,'' \emph{IEEE/ACM TASLP}, 2020. arXiv:1912.10211.
+\bibitem{ast} Y.\ Gong, Y.-A.\ Chung, J.\ Glass, ``AST: Audio Spectrogram Transformer,'' \emph{Interspeech}, 2021. arXiv:2104.01778.
+\bibitem{beats} S.\ Chen et al., ``BEATs: Audio Pre-Training with Acoustic Tokenizers,'' \emph{ICML}, 2023. arXiv:2212.09058.
+\bibitem{audiocaps} C.\ D.\ Kim et al., ``AudioCaps: Generating Captions for Audios in The Wild,'' \emph{NAACL}, 2019.
+\bibitem{clotho} K.\ Drossos et al., ``Clotho: An Audio Captioning Dataset,'' \emph{ICASSP}, 2020.
+\bibitem{clap} B.\ Elizalde et al., ``CLAP: Learning Audio Concepts from Natural Language Supervision,'' \emph{ICASSP}, 2023.
+\bibitem{enclap} J.\ Kim et al., ``EnCLAP: Combining Neural Audio Codec and Audio-Text Joint Embedding for Automated Audio Captioning,'' \emph{ICASSP}, 2024.
+\bibitem{slamaac} W.\ Chen et al., ``SLAM-AAC: Enhancing Audio Captioning with Paraphrasing Augmentation and CLAP-Refine through LLMs,'' 2024. arXiv:2410.09503.
+\bibitem{qwenaudio} Y.\ Chu et al., ``Qwen-Audio / Qwen2-Audio: Advancing Universal Audio Understanding,'' 2023--2024. arXiv:2311.07919.
+\bibitem{salmonn} C.\ Tang et al., ``SALMONN: Towards Generic Hearing Abilities for Large Language Models,'' \emph{ICLR}, 2024.
+\bibitem{audioflamingo3} A.\ Ghosh et al., ``Audio Flamingo 3: Advancing Audio Intelligence,'' 2025. arXiv:2507.08128.
+\bibitem{mmau} S.\ Sakshi et al., ``MMAU: A Massive Multi-Task Audio Understanding and Reasoning Benchmark,'' 2024. arXiv:2410.19168.
+\bibitem{qwenvl} Qwen Team, ``Qwen2.5-VL Technical Report,'' 2025. arXiv:2502.13923.
+\bibitem{internvl} Z.\ Chen et al., ``InternVL3: Native Multimodal Pretraining,'' 2025.
+\bibitem{llava} H.\ Liu et al., ``Visual Instruction Tuning (LLaVA),'' \emph{NeurIPS}, 2023.
+\bibitem{sound2scene} K.\ Sung-Bin et al., ``Sound to Visual Scene Generation by Audio-to-Visual Latent Alignment (Sound2Scene),'' \emph{CVPR}, 2023. arXiv:2306.11504.
+\bibitem{sonicdiffusion} B.\ Y{\i}ld{\i}r{\i}m et al., ``SonicDiffusion: Audio-Driven Image Generation and Editing with Pretrained Diffusion Models,'' 2024.
+\bibitem{sdxl} D.\ Podell et al., ``SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis,'' 2023. arXiv:2307.01952.
+\bibitem{flux} Black Forest Labs, ``FLUX.1,'' 2024. \url{https://blackforestlabs.ai/}.
+\bibitem{captionlimits} V.\ Gerber-Morón et al.\ / related, ``Limitations of Standard Accessible Captioning of Sounds and Music for DHH People: An EEG Study,'' \emph{Frontiers in Integrative Neuroscience}, 2020.
+\bibitem{prosodycaptions} ``Visualization of Speech Prosody and Emotion in Captions: Accessibility for Deaf and Hard-of-Hearing Users,'' \emph{CHI}, 2023.
+\bibitem{soundwatch} D.\ Jain et al., ``SoundWatch: Smartwatch-based Deep Learning Approaches to Support Sound Awareness for DHH Users,'' \emph{ASSETS}, 2020.
+\bibitem{homesound} D.\ Jain et al., ``HomeSound: An Iterative Field Deployment of an In-Home Sound Awareness System for DHH Users,'' \emph{CHI}, 2020.
+\bibitem{protosound} D.\ Jain et al., ``ProtoSound: A Personalized and Scalable Sound Recognition System for DHH Users,'' \emph{CHI}, 2022. arXiv:2202.11134.
+\bibitem{vggsound} H.\ Chen et al., ``VGGSound: A Large-scale Audio-Visual Dataset,'' \emph{ICASSP}, 2020. arXiv:2004.14368.
+\bibitem{unav100} T.\ Geng et al., ``Dense-Localizing Audio-Visual Events in Untrimmed Videos (UnAV-100),'' \emph{CVPR}, 2023. arXiv:2303.12930.
+\bibitem{movienet} Q.\ Huang et al., ``MovieNet: A Holistic Dataset for Movie Understanding,'' \emph{ECCV}, 2020. arXiv:2007.10937.
+\bibitem{clip} A.\ Radford et al., ``Learning Transferable Visual Models From Natural Language Supervision (CLIP),'' \emph{ICML}, 2021.
+\bibitem{whisper} A.\ Radford et al., ``Robust Speech Recognition via Large-Scale Weak Supervision (Whisper),'' 2022. arXiv:2212.04356.
+\end{thebibliography}
+
+\end{document}
