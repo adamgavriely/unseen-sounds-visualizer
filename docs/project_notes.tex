@@ -382,6 +382,91 @@ SDH text, (b) automatable unlike interpretation, and (c) grounded in a principle
 endorse. \TODO{frame the report's introduction around this three-way comparison --- it is the
 clearest articulation of the contribution.}
 
+\subsection{Divided attention: design constraints for augmentation placement}\label{sec:placement}
+Because our augmentations are \emph{visual}, they compete for the same visual channel as the video
+and the captions --- the divided-attention problem raised in Section~\ref{sec:gap} could be made
+worse, not better, if we are careless. The HCI literature gives concrete constraints:
+\begin{itemize}
+  \item \textbf{DHH viewers already spend most gaze on text and use peripheral vision for the
+    scene.} An eye-tracking study found viewers fixate captions $\sim$84\% of the time and watch the
+    video peripherally~\cite{captionvstranscript}; deaf viewers' peripheral vision is more
+    attention-sensitive than hearing viewers'. \emph{Implication:} augmentations can live in the
+    periphery and still be perceived --- they need not seize central gaze.
+  \item \textbf{Bottom-center placement forces costly gaze switching.} Subtitles at the bottom cause
+    frequent focus switches and raise cognitive load; work like \textbf{LightSub}~\cite{lightsub}
+    explicitly reduces eye movement. \emph{Implication:} pick a stable, predictable augmentation zone
+    and avoid making the eye ping-pong between scene, caption, and augmentation.
+  \item \textbf{Concurrent visual sources fragment attention.} Presenting many visual materials at
+    once fragments perception and raises load~\cite{captionsigncoexist}. \emph{Implication:} this is
+    a direct argument \emph{for} aggressive gating --- show \emph{few}, well-chosen augmentations, not
+    a busy stream. The core contribution (deciding when to stay silent) is also the main lever for
+    keeping cognitive load acceptable.
+  \item \textbf{Referential/spatial cues reduce load.} A gaze/pointing cue toward the referent lowers
+    processing effort. \emph{Implication:} an augmentation that indicates \emph{where} an off-screen
+    sound comes from (e.g.\ a directional cue) may help more than a free-floating picture.
+\end{itemize}
+\TODO{treat augmentation placement/timing/salience as an explicit design variable and a candidate
+evaluation dimension --- e.g.\ compare a fixed peripheral panel vs.\ a spatially-anchored cue, and
+check it does not increase missed on-screen content. This is a genuine research sub-question, not a
+cosmetic choice.}
+
+% ======================================================================
+\section{Designing Stage 5: Cross-Modal Gating (the core)}\label{sec:stage5}
+% ======================================================================
+Stage~5 decides, per detected sound, \emph{whether} to augment (is it meaningful \emph{and} not
+already visible?) and \emph{how} (what to depict). This is the project's novelty, so its design
+deserves explicit treatment.
+
+\subsection{The decision, decomposed}
+For each candidate audio event $e$ (from Stage~4, with time span) the stage answers:
+\begin{enumerate}
+  \item \textbf{Salience:} is $e$ semantically meaningful for scene understanding (vs.\ incidental
+    noise)? Grounded in the user-validated sound taxonomy (Section~\ref{sec:gap}).
+  \item \textbf{Visual redundancy (the gate):} is $e$'s source/meaning \emph{already visible} in the
+    scene (Stage~2)? If yes $\rightarrow$ stay silent (mirrors the DCMP ``don't caption what's on
+    screen'' rule).
+  \item \textbf{Depiction:} if augmenting, produce a generation prompt + timing + (optionally) a
+    spatial hint for placement (Section~\ref{sec:placement}).
+\end{enumerate}
+
+\subsection{Two signal sources for the gate --- and why to combine them}
+\begin{itemize}
+  \item \textbf{(a) LLM reasoning over structured evidence.} Feed a text LLM the Stage-2 visible-object
+    list, the Stage-3 transcript, and the Stage-4 event labels, and ask it to reason about redundancy
+    and salience with structured output. Flexible and explainable, but LLMs \emph{hallucinate} in
+    multimodal reasoning --- ``more thinking, less seeing'' amplifies it, and models over-attend to
+    one modality~\cite{forkmerge, avattn}. \TODO{mitigate: ground the decision in explicit
+    structured inputs (labels/lists), force structured JSON output with a required ``reason'' field,
+    and keep the LLM from inventing sounds/objects not in its inputs.}
+  \item \textbf{(b) Direct on-/off-screen localization.} There is a mature line of work on whether a
+    sound's source is visible: sound-source localization via cross-modal
+    alignment~\cite{ssloc}, object-aware localization through audio-visual scene
+    understanding~\cite{objaware}, and explicit on-screen-vs-off-screen probability estimation /
+    off-screen separation~\cite{offscreensep}. This yields a \emph{quantitative} ``is the source
+    on-screen?'' signal --- exactly the gate --- without relying on an LLM's judgement.
+\end{itemize}
+\textbf{Recommendation:} use (b) as a grounding signal that \emph{feeds} (a). The localization model
+proposes an on/off-screen likelihood per event; the LLM then makes the final salience+depiction
+decision conditioned on it. This reduces hallucinated gating and gives the core mechanism a
+defensible, measurable basis (and a natural ablation: LLM-only vs.\ LLM+localization).
+
+\subsection{Architecture options}
+\begin{itemize}
+  \item \textbf{Modular (recommended default):} Stage 2 (VLM) + Stage 3 (Whisper) + Stage 4
+    (PANNs/BEATs) + optional localization $\rightarrow$ Stage 5 (text LLM). Maximally inspectable and
+    ablatable; each signal can be evaluated alone.
+  \item \textbf{Omni single-model:} a model that ingests audio+video+text jointly (e.g.\ Qwen2.5-Omni /
+    Video-SALMONN-class) could collapse Stages 2--5. \TODO{consider as an ablation/upper-bound, but
+    verify such a model can be run within our hardware budget and that its decisions stay
+    inspectable; do not make it the default.}
+\end{itemize}
+
+\subsection{Evaluation hooks specific to Stage 5}
+The gating decision needs its own metric: on a hand-labelled subset, measure \emph{gating accuracy}
+--- correctly staying silent when the source is visible, correctly augmenting when it is not
+(precision/recall on the ``augment'' decision). This directly measures the contribution and is
+independent of downstream image quality.
+
 % ======================================================================
 \section{Model and Tooling Recommendations}\label{sec:models}
 % ======================================================================
@@ -530,6 +615,12 @@ Section~\ref{sec:changelog}.
     (exact author lists/venues) --- see \TODO{} in Section~\ref{sec:litreview}/References.
   \item \textbf{Security carry-over.} Confirm the previously leaked GitHub PAT was revoked/regenerated
     (flagged in an earlier session).
+  \item \textbf{Augmentation placement (design + eval).} Decide how augmentations are shown ---
+    stable peripheral panel vs.\ spatially-anchored directional cue --- and treat it as an evaluation
+    dimension that must not increase missed on-screen content (Section~\ref{sec:placement}).
+  \item \textbf{Stage 5 gate signal.} Decide whether to add an on/off-screen \emph{sound-source
+    localization} model as a grounding signal feeding the LLM gate (recommended), and set up the
+    ablation LLM-only vs.\ LLM+localization (Section~\ref{sec:stage5}).
 \end{enumerate}
 
 % ======================================================================
@@ -546,6 +637,11 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-06 --- Divided-attention design constraints} (Section~\ref{sec:placement})
+    and \textbf{Stage~5 cross-modal gating design} (Section~\ref{sec:stage5}) researched and written.
+    Key outcomes: augmentation placement is a real design/eval variable and aggressive gating helps
+    cognitive load; combine an on/off-screen \emph{localization} signal with a \emph{grounded} LLM
+    decision to curb hallucination; keep a modular, ablatable architecture; measure gating accuracy.
   \item \textbf{2026-08-06 --- Constraints unchanged.} $\sim$2 months; local GTX~1060 6\,GB;
     university GPU to be requested.
   \item \textbf{Open items.} Confirm university GPU VRAM once granted; finalise exact benchmark
@@ -590,6 +686,14 @@ Section~\ref{sec:changelog}.
 \bibitem{livecaptions} ``How Users Experience Closed Captions on Live Television: Quality Metrics Remain a Challenge,'' 2024. arXiv:2404.10153. \url{https://arxiv.org/abs/2404.10153} [verify authors]
 \bibitem{captune} ``CapTune: Adapting Non-Speech Captions With Anchored Generative Models,'' 2025. arXiv:2508.19971. \url{https://arxiv.org/abs/2508.19971} [verify authors]
 \bibitem{speechstyles} ``Visualizing Speech Styles in Captions for Deaf and Hard-of-Hearing Viewers,'' \emph{Int.\ J.\ Human-Computer Studies}, 2024. \url{https://www.sciencedirect.com/science/article/abs/pii/S1071581924001691} [verify authors]
+\bibitem{captionvstranscript} R.\ Kushalnagar et al., ``Captions versus Transcripts for Online Video Content,'' \emph{W4A}, 2013. \url{https://www.cs.cmu.edu/~jbigham/pubs/pdfs/2013/captionvstranscripts.pdf} [verify authors]
+\bibitem{lightsub} ``LightSub: Unobtrusive Subtitles with Reduced Information and Decreased Eye Movement,'' \emph{Multimodal Technologies and Interaction}, 2024. \url{https://doi.org/10.3390/mti8060051} [verify authors]
+\bibitem{captionsigncoexist} ``On the Coexistence of Captions and Sign Language as Accessibility Solutions in Educational Settings,'' \emph{MDPI}, 2024. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC12922059/} [verify authors]
+\bibitem{ssloc} A.\ Senocak et al., ``Sound Source Localization is All about Cross-Modal Alignment,'' \emph{ICCV}, 2023. arXiv:2309.10724. \url{https://arxiv.org/abs/2309.10724}
+\bibitem{objaware} ``Object-aware Sound Source Localization via Audio-Visual Scene Understanding,'' 2025. arXiv:2506.18557. \url{https://arxiv.org/abs/2506.18557} [verify authors]
+\bibitem{offscreensep} ``Off-Screen Sound Separation Based on Audio-visual Pre-training Using Binaural Audio,'' 2023. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC10181533/} [verify authors]
+\bibitem{forkmerge} ``Fork-Merge Decoding: Enhancing Multimodal Understanding in Audio-Visual Large Language Models,'' 2025. arXiv:2505.20873. \url{https://arxiv.org/abs/2505.20873} [verify authors]
+\bibitem{avattn} ``Pay More Attention To Audio: Mitigating Imbalance of Cross-Modal Attention in Large Audio Language Models,'' 2025. arXiv:2509.18816. \url{https://arxiv.org/abs/2509.18816} [verify authors]
 \bibitem{vggsound} H.\ Chen et al., ``VGGSound: A Large-scale Audio-Visual Dataset,'' \emph{ICASSP}, 2020. arXiv:2004.14368.
 \bibitem{unav100} T.\ Geng et al., ``Dense-Localizing Audio-Visual Events in Untrimmed Videos (UnAV-100),'' \emph{CVPR}, 2023. arXiv:2303.12930.
 \bibitem{movienet} Q.\ Huang et al., ``MovieNet: A Holistic Dataset for Movie Understanding,'' \emph{ECCV}, 2020. arXiv:2007.10937.
@@ -668,6 +772,31 @@ screen'' means professional captioners already perform \emph{manual cross-modal 
 automates an endorsed principle. (4) Sign language conveys sound richly but is unavailable at scale
 and not automatable for ambient sound, so it marks the expressive ceiling rather than a deployable
 channel. Together these motivate gap-aware visual augmentation as a complementary channel.
+
+\subsection*{Divided attention \& augmentation placement (design constraints)}
+Key links: captions vs transcripts eye-tracking
+\url{https://www.cs.cmu.edu/~jbigham/pubs/pdfs/2013/captionvstranscripts.pdf}; LightSub
+\url{https://doi.org/10.3390/mti8060051}; captions+sign coexistence
+\url{https://pmc.ncbi.nlm.nih.gov/articles/PMC12922059/}; eye-gaze in sports captions
+\url{https://dl.acm.org/doi/10.1145/3806043}.
+\textbf{Conclusion:} DHH viewers fixate text $\sim$84\% of the time and use peripheral vision for the
+scene, so augmentations can sit in a stable peripheral zone; bottom-center placement and many
+concurrent visuals raise load, which argues \emph{for} aggressive gating (few, well-chosen
+augmentations) and for spatially-anchored cues. Placement/timing/salience is a real design + eval
+variable (see Section~\ref{sec:placement}).
+
+\subsection*{Stage 5 --- cross-modal gating (on/off-screen + grounded LLM decision)}
+Key links: sound-source localization via cross-modal alignment \url{https://arxiv.org/abs/2309.10724};
+object-aware localization \url{https://arxiv.org/abs/2506.18557}; off-screen separation
+\url{https://pmc.ncbi.nlm.nih.gov/articles/PMC10181533/}; Fork-Merge decoding
+\url{https://arxiv.org/abs/2505.20873}; cross-modal attention imbalance
+\url{https://arxiv.org/abs/2509.18816}.
+\textbf{Conclusion:} there is a mature ``is the sound source on-screen?'' research line that yields a
+quantitative gate signal; combine it with a text LLM reasoning over structured Stage-2/3/4 evidence
+(not raw media) to curb the known MLLM hallucination/attention-imbalance failure modes. Default to a
+modular architecture (inspectable, ablatable); treat an omni single-model as an ablation subject to
+the hardware budget. Gating accuracy on a hand-labelled subset is the metric that isolates the
+contribution (Section~\ref{sec:stage5}).
 \normalsize
 
 \end{document}
