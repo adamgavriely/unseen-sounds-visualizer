@@ -237,6 +237,35 @@ applied to a generated keyframe (e.g.\ Stable Video Diffusion-style motion), kee
 in Stages 2--5 and treating motion as a rendering choice. This keeps the stretch goal cheap and
 optional and avoids depending on a fast-moving, heavyweight research area.
 
+\textbf{TempoTokens (Yariv et al.~\cite{tempotokens}) --- highly relevant; co-authored by
+I.\ Schwartz.} This is a direct audio$\rightarrow$video method: a \emph{lightweight adapter}
+(``AudioMapper'', an MLP) maps \textbf{BEATs} audio embeddings into pseudo-text-tokens that condition
+a \emph{frozen} \textbf{ModelScope} text-to-video diffusion model, so the video is aligned to the
+audio both globally (semantics) and temporally (per-segment); it can be conditioned on audio, text,
+or both. Only the adapter is trained --- the T2V model and audio encoder stay frozen --- which fits
+this project's ``glue frozen foundation models'' ethos. Trained/evaluated on Landscape,
+AudioSet-Drums and VGGSound; introduces the \textbf{AV-Align} metric (energy-peak alignment between
+audio and video). Code + pretrained models released (project ``TempoTokens'').
+\textbf{How it helps us --- three concrete ways:}
+\begin{enumerate}
+  \item \textbf{As a baseline (primary use).} It is the audio$\rightarrow$\emph{video} analogue of
+    Sound2Scene: it generates footage \emph{from audio alone}, with \emph{no} analysis of the
+    existing video and \emph{no} gap-aware gating. That makes it an ideal ``direct audio-to-video''
+    baseline to contrast against our cross-modal method (Section~\ref{sec:eval}).
+  \item \textbf{As the Stage-6 motion stretch backend.} If we pursue moving augmentations, it is an
+    off-the-shelf, frozen-model audio-to-video generator we could plug in.
+  \item \textbf{Its AV-Align metric} is directly reusable to score temporal alignment of our
+    augmentations with the sound (Section~\ref{sec:eval}).
+\end{enumerate}
+It shares components with us (BEATs, VGGSound). \textbf{What it does \emph{not} do:} it replaces/
+creates footage rather than augmenting an existing video alongside it, and it never reasons about
+what is \emph{already visible} --- i.e.\ it does not perform the cross-modal gating that is our core
+contribution. So it is a component/baseline, not the whole system. Compute is non-trivial (ModelScope
+T2V + adapter, GPU; temporal conditioning capped at 24 frames), so it is university-GPU / stretch
+territory. \TODO{decide TempoTokens' role: (a) the direct audio-to-video \emph{baseline} (recommended,
+low effort, strong contrast), and/or (b) the motion-generation stretch backend; check its
+licence/compute before committing.}
+
 % ----------------------------------------------------------------------
 \subsection{Accessibility Technologies for DHH Users (motivation \& evaluation grounding)}
 % ----------------------------------------------------------------------
@@ -636,12 +665,15 @@ relevance. (c) Report the judge's agreement with a small human-labelled subset t
 Semantic-consistency score (LLM judge, rubric-based); augmentation relevance (CLIP/CLAP);
 \emph{gating accuracy} --- did the system correctly \emph{withhold} augmentation when the sound is
 already visible, and add it when not? This last metric is the direct measure of the core
-contribution and should be built on a hand-labelled subset.
+contribution and should be built on a hand-labelled subset. For \emph{moving} augmentations,
+\textbf{AV-Align}~\cite{tempotokens} (energy-peak alignment between audio and video) measures whether
+the motion is temporally synced to the sound.
 
 \subsection{Baselines (required by the proposal)}
 (1) Direct audio-to-image (Sound2Scene) --- no visual analysis; (2) Audio captioning only --- text,
 no visual; (3) Proposed cross-modal method. The comparison isolates the value of reasoning about the
-audio--visual gap.
+audio--visual gap. For the \emph{video} variant, \textbf{TempoTokens}~\cite{tempotokens} is the
+concrete ``direct audio-to-video, no visual analysis'' baseline (Section~\ref{sec:litreview}).
 
 \subsection{Human evaluation (optional)}
 If time allows: a small qualitative study comparing ``subtitles alone'' vs.\ ``subtitles +
@@ -734,6 +766,10 @@ Section~\ref{sec:changelog}.
     for this task; quantify the environmental-vs-music split of the 527 classes.
   \item \textbf{Tune detection parameters.} The detection threshold (0.05) and min-duration (0.2\,s)
     are provisional; tune on real ambient clips once the benchmark exists.
+  \item \textbf{TempoTokens role (audio-to-video).} Decide whether to adopt TempoTokens
+    \cite{tempotokens} as the direct audio-to-video \emph{baseline} (recommended) and/or the
+    motion-generation stretch backend; reuse its \textbf{AV-Align} metric for temporal alignment.
+    Check licence/compute (Section~\ref{sec:litreview}). NB: co-authored by I.\ Schwartz.
 \end{enumerate}
 
 % ======================================================================
@@ -750,6 +786,10 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-07 --- Reviewed TempoTokens} (arXiv:2309.16429, co-authored by I.\ Schwartz).
+    Added to the literature review (audio-to-video), baselines, evaluation (AV-Align metric),
+    references, and Research Log. Best fit: the direct audio-to-video \emph{baseline} + optional
+    motion-stretch backend; it does not do our cross-modal gating. New task A15.
   \item \textbf{2026-08-07 --- Red-alert siren MISSED, impacts detected} (Section~\ref{sec:coverage}).
     On a real CC red-alert (Tzeva Adom) recording, PANNs detected explosions/impacts well but scored
     the alert siren at only 0.025 --- a concrete closed-set/training-distribution limitation that
@@ -807,6 +847,7 @@ Section~\ref{sec:changelog}.
 \bibitem{internvl} ``InternVL3: Native Multimodal Pretraining,'' 2025. [verify authors/venue]
 \bibitem{llava} H.\ Liu et al., ``Visual Instruction Tuning (LLaVA),'' \emph{NeurIPS}, 2023.
 \bibitem{sound2scene} K.\ Sung-Bin et al., ``Sound to Visual Scene Generation by Audio-to-Visual Latent Alignment (Sound2Scene),'' \emph{CVPR}, 2023. arXiv:2306.11504.
+\bibitem{tempotokens} G.\ Yariv, I.\ Gat, S.\ Benaim, L.\ Wolf, I.\ Schwartz, Y.\ Adi, ``Diverse and Aligned Audio-to-Video Generation via Text-to-Video Model Adaptation (TempoTokens),'' \emph{AAAI}, 2024. arXiv:2309.16429. \url{https://arxiv.org/abs/2309.16429}, code: \url{https://pages.cs.huji.ac.il/adiyoss-lab/TempoTokens}
 \bibitem{sonicdiffusion} ``SonicDiffusion: Audio-Driven Image Generation and Editing with Pretrained Diffusion Models,'' 2024. [verify authors]
 \bibitem{sdxl} D.\ Podell et al., ``SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis,'' 2023. arXiv:2307.01952.
 \bibitem{flux} Black Forest Labs, ``FLUX.1,'' 2024. \url{https://blackforestlabs.ai/}.
@@ -906,6 +947,17 @@ screen'' means professional captioners already perform \emph{manual cross-modal 
 automates an endorsed principle. (4) Sign language conveys sound richly but is unavailable at scale
 and not automatable for ambient sound, so it marks the expressive ceiling rather than a deployable
 channel. Together these motivate gap-aware visual augmentation as a complementary channel.
+
+\subsection*{Audio-to-video generation --- TempoTokens (arXiv:2309.16429)}
+Read on request. Link: \url{https://arxiv.org/abs/2309.16429}; code:
+\url{https://pages.cs.huji.ac.il/adiyoss-lab/TempoTokens}.
+\textbf{Conclusion:} directly relevant (and co-authored by I.\ Schwartz). A frozen-model audio-to-video
+generator (BEATs $\rightarrow$ light adapter $\rightarrow$ ModelScope T2V) that aligns video to audio
+globally + temporally. Best used as (1) the ``direct audio-to-video, no visual reasoning'' baseline
+--- the video analogue of Sound2Scene, contrasting with our gap-aware method; (2) an off-the-shelf
+Stage-6 motion-stretch backend; (3) its AV-Align metric for scoring temporal alignment. It does NOT
+do cross-modal gating (never looks at what is already visible), so it complements rather than replaces
+our contribution. Compute-heavy (GPU; 24-frame cap).
 
 \subsection*{Divided attention \& augmentation placement (design constraints)}
 Key links: captions vs transcripts eye-tracking
