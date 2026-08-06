@@ -1,16 +1,28 @@
-# Core (walking skeleton — runs with no API keys / no strong GPU)
-faster-whisper>=1.0.0
-Pillow>=10.0.0
+# Core (walking skeleton - runs with no API keys / no strong GPU)
+faster-whisper>=1.0.0        # Stage 3 ASR
+Pillow>=10.0.0               # Stage 6 placeholder images
+python-dotenv>=1.0.0         # optional: load API keys from .env
+# ffmpeg/ffprobe must be on PATH (Stage 1) - installed at C:\ffmpeg\bin
 
-# Stage 3 — LLM planner (Gemini)
-google-genai>=0.8.0
-python-dotenv>=1.0.0
+# --- Heavier backends: enable per stage as they are implemented ---
 
-# Stage 4 — local diffusion (enable on the university GPU)
-# torch                 # install the CUDA build from pytorch.org, not from PyPI blindly
-# diffusers>=0.30.0
-# transformers>=4.44.0
-# accelerate>=0.33.0
+# Stage 2 - video understanding (VLM)
+# torch                      # install the CUDA build from pytorch.org, not blindly from PyPI
+# transformers>=4.49.0
+# accelerate>=0.34.0
+# qwen-vl-utils              # for Qwen2.5-VL frame handling
 
-# Evaluation (later)
-# open-clip-torch
+# Stage 4 - audio event detection
+# panns-inference            # PANNs/CNN14 tagging
+# torch, torchaudio          # (BEATs / frame-level models)
+
+# Stage 5 - cross-modal LLM gate
+# transformers               # local Llama-3.1 / Qwen3 (quantised)
+# (or a hosted LLM API SDK)
+
+# Stage 6 - diffusion generation (university GPU)
+# diffusers>=0.30.0          # SDXL / FLUX.1
+
+# Stage 7 - evaluation
+# open-clip-torch            # CLIP image/text relevance
+# laion-clap                 # CLAP audio/text relevance

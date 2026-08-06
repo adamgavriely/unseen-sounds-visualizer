@@ -11,6 +11,16 @@ __pycache__/
 data/work/
 data/output/
 
+# LaTeX build artifacts (regenerated from docs/*.tex)
+docs/*.aux
+docs/*.bbl
+docs/*.blg
+docs/*.log
+docs/*.out
+docs/*.toc
+docs/*.synctex.gz
+docs/*.pdf
+
 # Input videos: keep only the small synthetic test clip; ignore downloaded videos.
 data/input/*
 !data/input/.gitkeep

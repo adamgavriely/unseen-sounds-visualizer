@@ -9,7 +9,8 @@ video (not replacing it). Static storyboard-style images first; short motion cli
 **Candidate models:** Stable Diffusion XL / FLUX.1 (quality, uni GPU); SD 1.5 / SDXL-Turbo (local
 dev). Stretch: image-to-video (Stable Video Diffusion-style) on a generated keyframe.
 
-**Status:** Not implemented (research phase).
+**Status:** Stub wired into the pipeline — `generate_augmentations()` writes labelled placeholder
+PNGs (PIL, no GPU); SDXL/FLUX generation and `composite_alongside()` are TODO.
 **Salvage:** the alongside-video compositing can reuse ffmpeg logic from
 `archive/legacy_speech_pipeline/compositor.py` (note: old code *replaced* the video; here we display
 augmentations *beside/over* it — layout differs).

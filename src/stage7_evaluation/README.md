@@ -12,6 +12,7 @@ scores semantic consistency. Complement with CLIP/CLAP relevance and a **gating-
 **Input:** benchmark clips + system outputs.
 **Output:** per-clip scores, aggregate tables, baseline comparison.
 
-**Status:** Not implemented (research phase). New component — no legacy code.
+**Status:** Partial — `gating_accuracy()` (the core gate metric) is implemented; the automatic
+VLM-describe → LLM-judge protocol is TODO. New component — no legacy code.
 **TODO (Adam):** decide whether to run the optional human study; if yes, check department
 ethics/IRB requirements and timeline early.

@@ -9,6 +9,7 @@ time boundaries. This is the core signal the whole system augments.
 **Candidate models:** PANNs / CNN14 (fast, light, good first implementation) → BEATs tagger
 (quality) → CRNN/frame-level (ATST-Frame-style) only if precise onset/offset timing is needed.
 
-**Status:** Not implemented (research phase). New component — no legacy code.
+**Status:** Stub wired into the pipeline — `detect_events()` returns `[]`; PANNs/BEATs is TODO.
+New component — no legacy code.
 **TODO (Adam):** check licences of specific checkpoints — some BEATs/DCASE checkpoints are
 research-only.

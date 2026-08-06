@@ -10,5 +10,6 @@ subtitles already cover.
 **Candidate models:** Whisper Large V3 (quality) / faster-whisper small–medium (local); Qwen2-Audio
 as an alternative that also covers Stage 4 (see LALM note in `docs/project_notes.tex`).
 
-**Status:** Not implemented (research phase).
-**Salvage:** reuse `archive/legacy_speech_pipeline/asr.py` — the faster-whisper wiring carries over.
+**Status:** Implemented (skeleton) — `transcribe()` returns `SpeechSegment`s via faster-whisper
+(salvaged from `archive/legacy_speech_pipeline/asr.py`); degrades gracefully to `[]` if the package
+is missing.

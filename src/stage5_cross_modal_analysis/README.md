@@ -11,7 +11,9 @@ timing}`.
 
 **Candidate models:** Qwen3 / Llama 3.1 (8B local-quant, 14B+ on uni GPU or hosted API).
 
-**Status:** Not implemented (research phase). New component — no legacy code.
+**Status:** Stub wired into the pipeline — `plan_augmentations()` runs a transparent rule-based gate
+(salience threshold + "stay silent if source visible"); the localization signal + grounded LLM are
+TODO (see `docs/project_notes.tex` sec:stage5). New component — no legacy code.
 **Note:** conceptually related to the old `planner.py` (an LLM deciding what to visualize), but the
 decision criterion is now *visual-gap-aware*, not speech-content-based. Study `planner.py` in
 archive for prompt-structure ideas only.

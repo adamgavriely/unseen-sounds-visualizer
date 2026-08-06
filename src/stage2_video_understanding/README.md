@@ -10,6 +10,7 @@ on screen.
 
 **Candidate models:** Qwen2.5-VL (7B quality / 3B local), InternVL3, LLaVA.
 
-**Status:** Not implemented (research phase). New component — no legacy code.
+**Status:** Stub wired into the pipeline — `analyze_video()` returns an empty `SceneContext`; the
+VLM call is TODO. New component — no legacy code.
 **Note:** the same VLM family is reused as the *describer* in Stage 7 evaluation — use separate
 prompts/instances so a model never grades its own output.

@@ -33,9 +33,21 @@ Each stage is a self-contained module with its own README (purpose, I/O, models,
 
 ## Status
 
-**Research phase.** Project scope refined; literature review, model/dataset recommendations,
-evaluation design, and an 8-week plan are in [`docs/project_notes.tex`](docs/project_notes.tex).
-Implementation not started; the 7-stage skeleton under `src/` holds design stubs only.
+**Runnable skeleton.** The 7-stage pipeline is wired end-to-end and runs with no GPU or downloaded
+models:
+
+```bash
+python main.py --input data/input/clip.mp4
+```
+
+Stages **1 (ffmpeg audio)** and **3 (whisper ASR)** are real; **2/4/5/6** are typed stubs that pass
+placeholder data through so the architecture is exercised (Stage 5 runs a transparent rule-based
+gate; Stage 6 writes placeholder images); **7** has the core `gating_accuracy()` metric, with the
+VLM-describe → LLM-judge protocol still TODO. Artifacts land in `data/work/<stem>/`
+(`media.json`, `scene.json`, `segments.json`, `events.json`, `augmentations.json`, `augmentations/`).
+
+Research and design (literature review, model/dataset recommendations, evaluation design, 8-week
+plan, tasks) are in [`docs/project_notes.tex`](docs/project_notes.tex).
 
 The previous speech-illustration pipeline is preserved under
 [`archive/legacy_speech_pipeline/`](archive/legacy_speech_pipeline) — salvageable pieces (FFmpeg

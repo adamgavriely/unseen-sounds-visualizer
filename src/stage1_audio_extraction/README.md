@@ -7,5 +7,5 @@
 
 **Tooling:** FFmpeg (already installed at `C:\ffmpeg\bin`).
 
-**Status:** Not implemented (research phase).
-**Salvage:** reuse `archive/legacy_speech_pipeline/audio.py` — the FFmpeg extraction logic carries over directly.
+**Status:** Implemented (skeleton) — `extract_audio()` returns a `MediaInfo`; salvaged from
+`archive/legacy_speech_pipeline/audio.py`. Runs with only ffmpeg on PATH.
