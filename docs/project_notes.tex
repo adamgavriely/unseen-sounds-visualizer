@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{article}
-
+\hbadness=10000   % Silences ALL "Underfull \hbox" warnings
+\hfuzz=100pt      % Silences "Overfull \hbox" warnings up to 100 points
 % ----------------------------------------------------------------------
 %  Working knowledge base / executive record for the MSc project
 %  "Visual Augmentation of Audio Semantics for Accessibility"
@@ -14,6 +15,9 @@
 \usepackage{enumitem}
 \usepackage{xcolor}
 \usepackage{titlesec}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}  % Scalable vector version of Computer Modern
+\usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
 \hypersetup{colorlinks=true, linkcolor=blue!50!black, urlcolor=blue!60!black, citecolor=blue!50!black}
 
@@ -285,6 +289,100 @@ offline, so a download + availability check is needed); UnAV-100 is CC-BY 4.0 (f
 clips).}
 
 % ======================================================================
+\section{The Accessibility Gap: Ambient Sound vs.\ Subtitles vs.\ Sign Language}\label{sec:gap}
+% ======================================================================
+This section is the motivational core of the project: \emph{what} non-speech audio information DHH
+viewers miss, and \emph{how} the two dominant accessibility channels --- subtitles and sign language
+--- handle (or fail to handle) it. It is the evidence base that justifies adding a visual channel.
+
+\subsection{What ambient/non-speech sound do DHH users miss and want?}
+Field studies of sound-awareness systems give a concrete, user-grounded answer. Jain et al.'s
+\textbf{HomeSound}~\cite{homesound} and \textbf{SoundWatch}~\cite{soundwatch} were built around a set
+of $\sim$19 everyday sounds ($\sim$31\,h of data) that DHH users said they wanted to know about:
+door knocks/doorbells, a microwave or appliance beeping, a baby crying, a dog barking, a cat
+meowing, running water, alarms, sirens, a running vehicle, birds chirping. Two observations matter
+for this project:
+\begin{itemize}
+  \item \textbf{These are mostly \emph{alerting / functional / safety} sounds} --- things that
+    prompt an action or signal danger in the user's real environment. That is a different need from
+    \emph{media consumption}, where the missing sounds are often \emph{atmospheric and narrative}
+    (rain setting a mood, an off-screen crowd, ominous music, distant thunder). Existing
+    sound-awareness tech targets the former; this project targets the latter, comparatively
+    under-served niche.
+  \item \textbf{The taxonomy still transfers.} The categories --- environmental/ambient, discrete
+    acoustic events, human/animal sounds --- line up with the proposal's three benchmark scenarios
+    and with the AudioSet ontology used in Stage~4. \TODO{when defining the benchmark's ``which
+    sounds matter'' labels, reuse this user-validated taxonomy rather than inventing one.}
+\end{itemize}
+
+\subsection{How subtitles / SDH handle non-speech sound}
+The relevant caption type is \textbf{SDH} (Subtitles for the Deaf and Hard-of-hearing), the most
+complete form, which --- unlike plain subtitles --- is expected to represent non-dialogue audio:
+sound effects, music, speaker identity, manner of speaking, and audience reaction. Conventions are
+codified in style guides such as the \textbf{DCMP Captioning Key}~\cite{dcmp}: sound effects are set
+in square brackets, e.g.\ \texttt{[applause]}, \texttt{[glass shatters]}; music is marked with note
+symbols. \emph{Its guidance is strikingly close to this project's core idea:} ``the source of the
+sound effect should be included \dots \textbf{unless the source is clearly seen on screen}'' and
+``if it can be inferred through the visuals, it is not necessary to caption it.'' In other words,
+\textbf{professional captioners already apply cross-modal gating by hand} --- describe the sound only
+when it is not already visible. Stage~5 of this project \emph{automates a principle the captioning
+industry endorses but performs manually}. This is a strong justification to foreground.
+
+\medskip\noindent\textbf{Where SDH falls short (the opportunity):}
+\begin{itemize}
+  \item \textbf{Low bandwidth / lost granularity.} A rich soundscape is compressed to a terse text
+    label. A University of Sheffield study found that in \emph{Jaws}, captions told viewers there was
+    ``famous music'' but \emph{not} that the music signalled the shark approaching --- so DHH viewers
+    lost the suspense the score was built to create~\cite{sheffield}.
+  \item \textbf{Emotional/atmospheric information is lost.} An EEG study found that attending only to
+    standard compliant captions loses substantial emotional information, and that non-verbal-sound
+    captions tend to trigger extra \emph{attentional} effort rather than an emotional
+    response~\cite{captionlimits}.
+  \item \textbf{Divided attention.} Reading captions competes with watching the scene; DHH viewers
+    split visual attention between two sources, causing fatigue and missed on-screen content (visual
+    gags, who is speaking)~\cite{livecaptions}. \TODO{design risk to validate: our augmentations are
+    \emph{also} visual, so they must not \emph{worsen} divided attention --- placement/timing/salience
+    of augmentations is a real design question and a candidate evaluation dimension.}
+  \item \textbf{No spatial or continuous information.} SDH cannot easily convey \emph{where} a sound
+    is (off-screen left? approaching?) or how it evolves --- exactly the information a visual
+    augmentation can carry.
+  \item \textbf{Inconsistency.} Non-speech captioning quality varies by provider/regulation; recent
+    HCI work is actively trying to enrich it (visualizing speech style~\cite{prosodycaptions,
+    speechstyles}; adapting non-speech captions generatively --- CapTune~\cite{captune}), which shows
+    the community sees the same gap this project addresses.
+\end{itemize}
+
+\subsection{How sign language handles non-speech sound}
+Sign language can carry \emph{more} than subtitles: skilled interpreters convey music and sound
+through classifiers, mimed sound sources (air-guitar, an instrument), sustained holds for long
+notes, rhythm, and \textbf{non-manual markers} (facial expression for pitch/intensity), aiming to
+transmit the \emph{feeling} of the sound, not just its name --- as seen in theatrical and concert
+interpreting. Limits for this project's setting:
+\begin{itemize}
+  \item \textbf{Availability.} Interpretation is live, human, and costly; the vast majority of
+    recorded/broadcast media has no interpreter, and where present it centres on \emph{speech} (and
+    sometimes music), rarely systematic \emph{ambient/environmental} sound.
+  \item \textbf{Automation is unsolved.} Automatic sign-language \emph{generation} remains an open
+    research problem (noted in the proposal's related work), so it is not a deployable channel for
+    ambient sound today.
+  \item \textbf{Takeaway.} Sign language shows the \emph{ceiling} --- rich, expressive, affective
+    conveyance of sound --- that terse SDH text does not reach. A generated \emph{visual}
+    augmentation is a pragmatic, automatable middle path: higher-bandwidth and more atmospheric than
+    a bracketed label, without requiring a human interpreter or solved sign-language synthesis.
+\end{itemize}
+
+\subsection{Synthesis --- why this project}
+DHH viewers miss real semantic and atmospheric information in non-speech sound. Subtitles/SDH capture
+it only as low-bandwidth text that loses granularity, emotion, spatial and temporal nuance, and adds
+reading/attention load; and they already \emph{manually} decide to describe a sound only when it is
+not visible --- the very gating this project automates. Sign language conveys sound richly but is
+unavailable at scale and not automatable for ambient sound. This positions automatically generated,
+gap-aware \emph{visual augmentation} as a complementary channel that is (a) higher-bandwidth than
+SDH text, (b) automatable unlike interpretation, and (c) grounded in a principle captioners already
+endorse. \TODO{frame the report's introduction around this three-way comparison --- it is the
+clearest articulation of the contribution.}
+
+% ======================================================================
 \section{Model and Tooling Recommendations}\label{sec:models}
 % ======================================================================
 Shortlist per stage, with a ``local-first'' option that fits the GTX~1060 (6\,GB) and a ``quality''
@@ -444,6 +542,10 @@ Section~\ref{sec:changelog}.
   \item \textbf{2026-08-06 --- Codebase decision.} Fresh start, reusing pieces (FFmpeg audio,
     Whisper wiring, modular architecture) from the earlier skeleton.
   \item \textbf{2026-08-06 --- First deliverables.} Literature review + project plan (this document).
+  \item \textbf{2026-08-06 --- Accessibility deep-dive added} (Section~\ref{sec:gap}): what ambient
+    sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
+    performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
+    automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
   \item \textbf{2026-08-06 --- Constraints unchanged.} $\sim$2 months; local GTX~1060 6\,GB;
     university GPU to be requested.
   \item \textbf{Open items.} Confirm university GPU VRAM once granted; finalise exact benchmark
@@ -452,12 +554,12 @@ Section~\ref{sec:changelog}.
 \end{itemize}
 
 % ======================================================================
-\begin{thebibliography}{99}
+% Note moved outside the environment to prevent list parsing errors
 % ======================================================================
-\footnotesize
-\noindent\TODO{verify the exact author lists/venues/years of the entries marked ``[verify]'' below
-before the final report --- these were assembled from search results and not all are fully
-confirmed.}\par\smallskip
+\noindent\TODO{verify the exact author lists/venues/years of the entries marked ``[verify]'' below before the final report --- these were assembled from search results and not all are fully confirmed.}\par\smallskip
+
+\begin{thebibliography}{99}
+
 \bibitem{audioset} J.\ F.\ Gemmeke et al., ``AudioSet: An ontology and human-labeled dataset for audio events,'' \emph{ICASSP}, 2017.
 \bibitem{panns} Q.\ Kong et al., ``PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition,'' \emph{IEEE/ACM TASLP}, 2020. arXiv:1912.10211.
 \bibitem{ast} Y.\ Gong, Y.-A.\ Chung, J.\ Glass, ``AST: Audio Spectrogram Transformer,'' \emph{Interspeech}, 2021. arXiv:2104.01778.
@@ -482,12 +584,90 @@ confirmed.}\par\smallskip
 \bibitem{prosodycaptions} ``Visualization of Speech Prosody and Emotion in Captions: Accessibility for Deaf and Hard-of-Hearing Users,'' \emph{CHI}, 2023.
 \bibitem{soundwatch} D.\ Jain et al., ``SoundWatch: Smartwatch-based Deep Learning Approaches to Support Sound Awareness for DHH Users,'' \emph{ASSETS}, 2020.
 \bibitem{homesound} D.\ Jain et al., ``HomeSound: An Iterative Field Deployment of an In-Home Sound Awareness System for DHH Users,'' \emph{CHI}, 2020.
-\bibitem{protosound} D.\ Jain et al., ``ProtoSound: A Personalized and Scalable Sound Recognition System for DHH Users,'' \emph{CHI}, 2022. arXiv:2202.11134.
+\bibitem{protosound} D.\ Jain et al., ``ProtoSound: A Personalized and Scalable Sound Recognition System for DHH Users,'' \emph{CHI}, 2022. arXiv:2202.11134. \url{https://arxiv.org/abs/2202.11134}
+\bibitem{dcmp} Described and Captioned Media Program (DCMP), ``Captioning Key --- Guidelines and Preferred Techniques'' (Sound Effects, Music, Non-Speech Information sections). \url{https://dcmp.org/learn/captioningkey}
+\bibitem{sheffield} University of Sheffield / SubTxt Creative, study on captions and suspense in film and TV, 2024. \emph{[verify: locate the primary publication; currently via project coverage]} \url{https://liamodell.com/2024/05/09/captions-cinema-suspense-university-of-sheffield-paper-research-project-survey-subtxt-creative/}
+\bibitem{livecaptions} ``How Users Experience Closed Captions on Live Television: Quality Metrics Remain a Challenge,'' 2024. arXiv:2404.10153. \url{https://arxiv.org/abs/2404.10153} [verify authors]
+\bibitem{captune} ``CapTune: Adapting Non-Speech Captions With Anchored Generative Models,'' 2025. arXiv:2508.19971. \url{https://arxiv.org/abs/2508.19971} [verify authors]
+\bibitem{speechstyles} ``Visualizing Speech Styles in Captions for Deaf and Hard-of-Hearing Viewers,'' \emph{Int.\ J.\ Human-Computer Studies}, 2024. \url{https://www.sciencedirect.com/science/article/abs/pii/S1071581924001691} [verify authors]
 \bibitem{vggsound} H.\ Chen et al., ``VGGSound: A Large-scale Audio-Visual Dataset,'' \emph{ICASSP}, 2020. arXiv:2004.14368.
 \bibitem{unav100} T.\ Geng et al., ``Dense-Localizing Audio-Visual Events in Untrimmed Videos (UnAV-100),'' \emph{CVPR}, 2023. arXiv:2303.12930.
 \bibitem{movienet} Q.\ Huang et al., ``MovieNet: A Holistic Dataset for Movie Understanding,'' \emph{ECCV}, 2020. arXiv:2007.10937.
 \bibitem{clip} A.\ Radford et al., ``Learning Transferable Visual Models From Natural Language Supervision (CLIP),'' \emph{ICML}, 2021.
 \bibitem{whisper} A.\ Radford et al., ``Robust Speech Recognition via Large-Scale Weak Supervision (Whisper),'' 2022. arXiv:2212.04356.
 \end{thebibliography}
+
+% ======================================================================
+\appendix
+\section{Research Log --- Sources Consulted and Conclusions}\label{sec:researchlog}
+% ======================================================================
+A record of the background research behind this document: the topics investigated, the key primary
+links, and the conclusion drawn from each. Web searches were run in August 2026; where a claim rests
+on secondary coverage rather than a confirmed primary paper it is tagged for verification.
+
+\footnotesize
+\subsection*{Audio event detection (Stage 4)}
+Key links: PANNs \url{https://arxiv.org/abs/1912.10211}; AST \url{https://arxiv.org/abs/2104.01778};
+BEATs \url{https://arxiv.org/abs/2212.09058}; AudioSet tagging code
+\url{https://github.com/qiuqiangkong/audioset_tagging_cnn}.
+\textbf{Conclusion:} PANNs/CNN14 is the light, dependable first implementation; BEATs is the quality
+upgrade and the DCASE baseline encoder; use a frame-level model only if precise onset/offset timing
+is required. AudioSet's 527-class ontology is our sound vocabulary.
+
+\subsection*{Audio captioning (baseline + prompt source)}
+Key links: SLAM-AAC \url{https://arxiv.org/abs/2410.09503}; AudioSetCaps
+\url{https://arxiv.org/abs/2411.18953}.
+\textbf{Conclusion:} captioning gives a compositional soundscape description usable as a generation
+prompt and doubles as the required ``audio captioning only'' baseline; CLAP is reusable as an
+audio$\leftrightarrow$text relevance scorer in evaluation.
+
+\subsection*{Large audio-language models (Stages 3--4 alternative)}
+Key links: Qwen-Audio/Qwen2-Audio \url{https://arxiv.org/abs/2311.07919}; Audio Flamingo 3
+\url{https://arxiv.org/abs/2507.08128}; MMAU benchmark \url{https://arxiv.org/abs/2410.19168}.
+\textbf{Conclusion:} a LALM can collapse ASR+AED into one instructable component; keep modular
+Whisper+PANNs as the inspectable default and treat the LALM as an ablation.
+
+\subsection*{Vision-language models (Stages 2 and 7)}
+Key links: Qwen2.5-VL \url{https://arxiv.org/abs/2502.13923}; Qwen2.5-VL-7B weights
+\url{https://huggingface.co/Qwen/Qwen2.5-VL-7B-Instruct}.
+\textbf{Conclusion:} Qwen2.5-VL-7B for video understanding and as the evaluation describer (3B as
+local fallback); it has explicit temporal grounding. Use different instances/prompts for generation
+vs.\ judging.
+
+\subsection*{Audio-to-image / diffusion (Stage 6 + direct baseline)}
+Key links: Sound2Scene \url{https://sound2scene.github.io/} (code
+\url{https://github.com/kaist-ami/Sound2Scene}); SonicDiffusion
+\url{https://cyberiada.github.io/SonicDiffusion/}; SDXL \url{https://arxiv.org/abs/2307.01952};
+FLUX.1 \url{https://blackforestlabs.ai/}.
+\textbf{Conclusion:} generate with text-conditioned SDXL/FLUX driven by the Stage-5 (gap-aware)
+prompt; use Sound2Scene as the ``direct audio-to-image, no visual reasoning'' baseline --- the
+contrast is exactly what the evaluation isolates.
+
+\subsection*{Benchmark datasets}
+Key links: VGGSound \url{https://arxiv.org/abs/2004.14368} / \url{https://github.com/hche11/VGGSound};
+UnAV-100 \url{https://unav100.github.io/} / \url{https://arxiv.org/abs/2303.12930}; MovieNet
+\url{https://arxiv.org/abs/2007.10937} / \url{https://movienet.github.io/}.
+\textbf{Conclusion:} VGGSound for clean ambient/event clips (visible source; invert for
+``off-screen'' cases), UnAV-100 for mixed/overlapping events (CC-BY 4.0), MovieNet for narrative
+acoustic events. Access/terms need checking (Task~A2).
+
+\subsection*{Accessibility --- what DHH users miss and how subtitles/sign language cope}
+Key links: SoundWatch \url{https://dl.acm.org/doi/10.1145/3373625.3416991}; HomeSound
+\url{https://soundability.eecs.umich.edu/img/portfolio/Jain_HomeSound_CHI2020.pdf}; DCMP Captioning
+Key \url{https://dcmp.org/learn/captioningkey}; EEG caption-limitation study
+\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7040021/}; live-caption UX
+\url{https://arxiv.org/abs/2404.10153}; CapTune \url{https://arxiv.org/abs/2508.19971}; Sheffield
+suspense/captions coverage
+\url{https://liamodell.com/2024/05/09/captions-cinema-suspense-university-of-sheffield-paper-research-project-survey-subtxt-creative/}.
+\textbf{Conclusions:} (1) DHH users' desired sounds are mostly \emph{alerting/functional}
+(SoundWatch/HomeSound); media \emph{atmospheric} sound is the under-served niche this project targets.
+(2) SDH is the only caption type that covers non-speech sound, but it is low-bandwidth text that loses
+granularity (the \emph{Jaws} suspense example), emotion (EEG study), and spatial/temporal nuance, and
+adds divided-attention load. (3) The DCMP rule ``don't caption a sound whose source is visible on
+screen'' means professional captioners already perform \emph{manual cross-modal gating} --- Stage~5
+automates an endorsed principle. (4) Sign language conveys sound richly but is unavailable at scale
+and not automatable for ambient sound, so it marks the expressive ceiling rather than a deployable
+channel. Together these motivate gap-aware visual augmentation as a complementary channel.
+\normalsize
 
 \end{document}
