@@ -600,6 +600,19 @@ comparison. \TODO{decide whether to add an open-vocabulary path (CLAP or audio-L
 \TODO{the current detection threshold (0.05) and min-duration (0.2\,s) are provisional --- tune them
 on real ambient clips once the benchmark exists.}
 
+\textbf{Concrete limitation found on real data (2026-08-07).} A 105\,s CC-BY-SA recording of the
+Israeli ``Red Color'' (Tzeva Adom) rocket-alert siren + impacts (Sderot) was run through Stage~4.
+PANNs reliably detected the \emph{off-screen impacts} --- Explosion (0.34), Burst/pop, Boom,
+Artillery fire, Gunshot --- i.e.\ the ``something was hit but you don't see it'' sounds. But it
+\textbf{missed the alert siren itself}: the ``Siren'' class peaked at only 0.025 and ``Civil defense
+siren'' at 0.006. The regional electronic warning tone does not match AudioSet's siren classes (which
+are dominated by emergency-vehicle wails); the alarm tone + Hebrew announcement were read mostly as
+Speech. This is a textbook motivation for the open-vocabulary path: CLAP or an audio-LLM could match a
+text description (``rising-and-falling electronic air-raid warning tone'') that PANNs' fixed 527
+classes cannot. \TODO{critical-alert sounds (air-raid / red-alert sirens, regional alarms) are NOT
+reliably covered by PANNs --- plan for CLAP/audio-LLM open-vocab detection or a small dedicated
+detector for such safety-critical alerts if they are in scope.}
+
 % ======================================================================
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
@@ -737,6 +750,10 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-07 --- Red-alert siren MISSED, impacts detected} (Section~\ref{sec:coverage}).
+    On a real CC red-alert (Tzeva Adom) recording, PANNs detected explosions/impacts well but scored
+    the alert siren at only 0.025 --- a concrete closed-set/training-distribution limitation that
+    strengthens the case for an open-vocabulary (CLAP / audio-LLM) path for safety-critical alerts.
   \item \textbf{2026-08-07 --- Off-screen-sound premise validated on real data}
     (Section~\ref{sec:stage5example}). On a London NHS-protest clip, PANNs detected Vehicle/Truck/horn
     at $\sim$5.5\,s while the frame showed only the crowd (no vehicle visible) --- a real instance of
