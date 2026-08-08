@@ -8,6 +8,7 @@ required by CC-BY / CC-BY-SA. Video files themselves are **not** committed (they
 |---------|--------|---------|----------------------|--------------|
 | london_protest_01 | wikimedia | CC-BY-SA-4.0 | See Commons file page | [NHS No Cuts protest in London 5March2017.webm](https://commons.wikimedia.org/wiki/File:NHS_No_Cuts_protest_in_London_5March2017.webm) |
 | dog_barking_01 | wikimedia | CC-BY-SA-4.0 | See Commons file page | [Barking Dog Reaction.webm](https://commons.wikimedia.org/wiki/File:Barking_Dog_Reaction.webm) |
+| waterfall_kawaida_01 | wikimedia | CC-BY-SA-4.0 | See Commons file page | [Front view video of Kawaida Waterfall, Cianda, Kiambu County.webm](https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm) |
 
 ## Source notes
 - **Wikimedia Commons** clips: licence and author are taken from the file's Commons page; retain the

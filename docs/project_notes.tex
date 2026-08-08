@@ -304,18 +304,26 @@ The proposal names three sources for the $\sim$300-clip benchmark:
     boundaries, character/place/action/cinematic-style tags). Best source for cinematic
     \emph{acoustic-event} scenes (sirens, glass, explosions, applause) with narrative context.
 \end{itemize}
-\textbf{Selection strategy.} Sample across the three proposal scenarios --- ambient environmental
-sound, localised acoustic events, mixed scenes --- prioritising clips where the audio carries
-information \emph{only partially} present in the visuals (the property that makes the task
-non-trivial). VGGSound for clean ambient/event clips, UnAV-100 for mixed/overlapping events,
-MovieNet for narrative acoustic events. Record licence/source per clip.
+\textbf{Selection strategy (decided 2026-08-07 --- hybrid, pilot-first, assisted labeling).} The
+benchmark's ground truth is the gating judgement itself: per non-speech sound, \emph{is its source
+visible on-screen?} Clips are categorised \texttt{positive\_offscreen} (salient sound, source not
+visible $\to$ system should augment), \texttt{negative\_control} (sound present but source visible
+$\to$ show nothing), or \texttt{mixed}; speech-only clips are excluded. Ground truth is
+\emph{human-labeled} from extracted keyframes, independent of the detector (so PANNs' misses do not
+bias it).
+Sourcing is hybrid: \textbf{hand-curated CC clips} (Wikimedia Commons: protests, streets, transport,
+weather/nature, emergency) for off-screen positives; \textbf{UnAV-100} (CC-BY) for mixed/overlapping
+scale; \textbf{VGGSound} (HF mirror) for negative controls, since it is built so the sound source is
+\emph{visible}. \textbf{MovieNet is dropped for clips} --- it ships no raw video (registration +
+agreement, movies excluded). Composition: pilot $\sim$30 $\to$ $\sim$120 (fallback) $\to$ $\sim$300
+(stretch). Tooling + labels live in \texttt{benchmark/} (\texttt{curate.py}, \texttt{manifest.json},
+\texttt{ATTRIBUTIONS.md}); clips are gitignored.
 
 \smallskip
-\noindent\TODO{verify dataset access and terms before committing to the benchmark plan --- MovieNet
-may require a signed agreement/application; VGGSound is distributed as YouTube links (some videos are
-offline, so a download + availability check is needed); UnAV-100 is CC-BY 4.0 (fine).}
-\TODO{confirm the 300-clip target is feasible within the timeline, or set a fallback (e.g.\ 100--150
-clips).}
+\noindent\TODO{decide whether background music is a salient augmentation target or excluded
+(currently flagged, non-salient) --- ties to task A6.}
+\TODO{confirm the $\sim$300-clip target is feasible within the timeline, or settle on the $\sim$120
+fallback.}
 
 % ======================================================================
 \section{The Accessibility Gap: Ambient Sound vs.\ Subtitles vs.\ Sign Language}\label{sec:gap}
@@ -734,11 +742,11 @@ Section~\ref{sec:changelog}.
   \item \textbf{Compute --- submit the university GPU request now.} Lead time is the schedule's top
     risk. Confirm the granted \textbf{VRAM} on approval; it decides which models run locally vs.\ on
     the cluster (Section~\ref{sec:models}).
-  \item \textbf{Dataset access \& terms.} MovieNet may need a signed agreement/application; VGGSound
-    is YouTube links (check availability, plan downloads); UnAV-100 is CC-BY 4.0 (fine). Verify
-    before committing to the benchmark plan (Section~\ref{sec:datasets}).
-  \item \textbf{Benchmark size.} Confirm $\sim$300 clips is feasible in the timeline, or agree a
-    fallback (100--150) with the supervisor.
+  \item \textbf{Dataset access \& terms} --- \emph{resolved 2026-08-07.} MovieNet dropped (ships no
+    raw video). Hybrid sourcing adopted: curated CC (Wikimedia) for off-screen positives, UnAV-100
+    (CC-BY) for scale, VGGSound (HF mirror) for source-visible controls (Section~\ref{sec:datasets}).
+  \item \textbf{Benchmark size.} Pilot-first agreed ($\sim$30 built first). Still confirm whether to
+    push to $\sim$300 or settle on the $\sim$120 fallback given the timeline.
   \item \textbf{Model licences.} Confirm an acceptable \textbf{FLUX.1} variant (\texttt{dev}
     non-commercial vs.\ \texttt{schnell} Apache-2.0); check specific \textbf{audio-event checkpoints}
     (some BEATs/DCASE checkpoints are research-only).
@@ -786,6 +794,13 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-07 --- Benchmark construction started} (Section~\ref{sec:datasets}). Decided
+    hybrid sourcing + pilot-first + assisted labeling; dropped MovieNet (no raw video). Built
+    \texttt{benchmark/curate.py} (ingest clip $\to$ Stage 1+4 $\to$ keyframes $\to$ draft manifest
+    entry) and a human-labeled \texttt{manifest.json}. First 3 clips validate all categories:
+    \texttt{london\_protest\_01} (positive, traffic off-screen), \texttt{dog\_barking\_01} (positive,
+    dog off-screen over a chem-demo), \texttt{waterfall\_kawaida\_01} (negative control, water source
+    fully visible $\to$ empty gt).
   \item \textbf{2026-08-07 --- Reviewed TempoTokens} (arXiv:2309.16429, co-authored by I.\ Schwartz).
     Added to the literature review (audio-to-video), baselines, evaluation (AV-Align metric),
     references, and Research Log. Best fit: the direct audio-to-video \emph{baseline} + optional
