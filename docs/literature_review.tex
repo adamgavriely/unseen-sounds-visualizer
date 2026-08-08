@@ -49,20 +49,13 @@ close by positioning the project against everything that already exists.
 % ======================================================================
 \section{Orientation: the problem and how the pieces fit}
 % ======================================================================
-A hearing viewer of a film or news clip receives two synchronised streams: what they \emph{see} and
-what they \emph{hear}. The soundtrack carries speech, but also a great deal of non-speech meaning ---
-a siren approaching from off-screen, rain establishing a mood, a crowd reacting, a door slamming
-somewhere unseen. Existing accessibility tools (subtitles, sign-language interpreting) were built
-around \emph{speech}; the non-speech layer is largely dropped or compressed to a bracketed word.
-
-This project treats that gap as a task: \emph{given a short clip, detect the semantically meaningful
-non-speech sounds, decide which are not already obvious from the visuals, and generate visual content
-that conveys them.} The technical pipeline therefore needs: audio event detection (what sounds?),
-video understanding (what is already visible?), cross-modal reasoning (which sounds are worth showing,
-and how?), and image/video generation (show it). Each of those maps onto a mature research area
-reviewed below. Crucially, no single existing system does the whole thing --- the contribution is the
-\emph{formulation} and the \emph{orchestration}, especially the ``reason about the audio--visual
-gap'' step.
+The project's pipeline maps onto four mature research areas, which also organise this review:
+\textbf{audio event detection} (what sounds are present, and when?), \textbf{video understanding}
+(what is already visible?), \textbf{cross-modal reasoning} (which sounds are \emph{not} conveyed by
+the picture, and how to depict them?), and \textbf{image/video generation} (show it). No existing
+system spans all four for accessibility. The review begins with the accessibility motivation (the
+``why''), then works through these building blocks (the ``how''), and closes by positioning the
+project against what already exists.
 
 % ======================================================================
 \section{Accessibility: subtitles, sign language, and the case for visual augmentation}
