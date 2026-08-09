@@ -597,6 +597,36 @@ $[\text{frames}\times 527]$ probability matrix $\rightarrow$ event spans + a plo
 reasons the ``which sounds matter'' decision (Stage~5) is deferred rather than
 baked into detection.
 
+\subsection{CLIP (ViT-B/32) --- Stage 2 visibility gate \emph{[implemented, v2-a]}}
+\textbf{What it is.} CLIP (Contrastive Language--Image Pre-training) is a model that maps images and
+short text descriptions into the \emph{same} vector space, trained so a picture and its caption land
+close together. It lets us ask, zero-shot, ``does this image match this phrase?'' without any
+task-specific training.
+
+\textbf{What it does for us.} It is the lightweight ``what is already visible?'' check (Stage 2). We
+sample a few frames and, for each candidate sound-source phrase (``a photo of a dog'', ``\dots a car
+on a road'', ``\dots water/a river''), CLIP scores how well the frame matches it (softmax against
+distractor phrases). Sources that score above a threshold are marked \emph{visible}, and the Stage-5
+gate then stays silent on those sounds --- so we augment only what is heard but \emph{not} seen.
+
+\textbf{How it works (simply).} Two encoders (one for images, one for text) were trained on
+$\sim$400\,M image--caption pairs to agree; at run time we embed the frame and each phrase and compare
+by cosine similarity. Sources with no persistent visible object (thunder, explosion, siren) are simply
+not in the candidate list, so they are never marked visible.
+
+\textbf{Why we chose it.} Small (ViT-B/32, $\sim$600\,MB), runs on CPU, no training, and it directly
+gives a per-source ``is it on screen?'' signal --- exactly the gate. It is the pragmatic stand-in for
+a full VLM (Qwen2.5-VL), which is the planned upgrade once the university GPU is available.
+
+\textbf{Inputs / outputs.} In: sampled video frames + candidate source phrases. Out: the set of
+visible sources (with per-source scores), consumed by the Stage-5 gate.
+
+\textbf{Cost / footprint.} $\sim$600\,MB checkpoint (auto-downloaded once); a few CPU forward passes
+per clip. \textbf{Limitations.} Zero-shot CLIP is approximate --- it can miss a small/partial source
+or fire on a look-alike (in testing, a bright lab flame read as ``Fire'' (correct) but also nudged
+``Bell''); the threshold needs tuning; it judges whole frames, not precise localization. A full VLM
+or a sound-source-localization model (Section~\ref{sec:stage5}) would sharpen this.
+
 \subsection{Is AudioSet's 527-class ontology enough? (coverage assessment)}\label{sec:coverage}
 An honest assessment, because it shapes whether PANNs is sufficient or needs an open-vocabulary
 companion.
@@ -795,6 +825,12 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-07 --- v2-(a): CLIP ``not-seen'' gate working.} Roadmap set by Adam:
+    polish v1 $\to$ (a) lightweight gate $\to$ (b) diffusion when GPU. Implemented Stage 2 as a
+    lightweight \textbf{CLIP} visibility check (model card, Section~\ref{sec:modelcards}) and enabled
+    the Stage-5 gate. Verified the core premise end-to-end: waterfall (water visible) $\to$ shows
+    nothing; dog off-screen $\to$ shows a dog; London $\to$ shows the off-screen Vehicle but suppresses
+    the on-screen Crowd. Runs on CPU. Next: benchmark gating-accuracy; diffusion generation (b).
   \item \textbf{2026-08-07 --- v1 PROTOTYPE working (end-to-end illustrated video).} Decision (Adam):
     ship a working prototype first, then grow. v1 = detect all non-speech sounds (PANNs) $\to$ keep
     distinct sounds above a display threshold (no seen/not-seen gate yet) $\to$ \emph{retrieve} a free
