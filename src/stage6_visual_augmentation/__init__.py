@@ -88,11 +88,14 @@ def _query_variants(query: str) -> list:
 def _retrieve(query: str, out_path: Path, size: Tuple[int, int]) -> Optional[dict]:
     """Download a relevant CC image to out_path; return attribution dict or None."""
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    kw = query.split()[0].lower() if query else ""
     for q in _query_variants(query):
         try:
             results = _search(q)
         except Exception:
             continue
+        # prefer results whose title actually mentions the keyword (mild on-topic bias)
+        results.sort(key=lambda r: 0 if kw and kw in (r.get("title") or "").lower() else 1)
         for r in results:
             url = r.get("url") or r.get("thumbnail")
             if not url:

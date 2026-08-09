@@ -30,13 +30,24 @@ MUSIC_LABELS = {
 }
 
 
+# Generic superclasses: too vague to visualize well, and usually redundant with a
+# specific sibling (PANNs fires "Animal" + "Domestic animals" alongside "Dog").
+GENERIC_LABELS = {
+    "Animal", "Domestic animals, pets", "Wild animals",
+    "Livestock, farm animals, working animals", "Sounds of things", "Mechanisms",
+    "Human sounds", "Domestic sounds, home sounds", "Human group actions",
+    "Generic impact sounds", "Surface contact", "Onomatopoeia",
+}
+
+
 def is_music(label: str) -> bool:
     return label in MUSIC_LABELS or label.endswith("music")
 
 
 def is_salient_nonspeech(label: str) -> bool:
     """True for a discrete non-speech sound worth (potentially) visualizing."""
-    return not (label in SPEECH_LABELS or label in SCENE_LABELS or is_music(label))
+    return not (label in SPEECH_LABELS or label in SCENE_LABELS
+                or label in GENERIC_LABELS or is_music(label))
 
 
 # PANNs fires a whole family of labels for one real source. Map the common
@@ -71,12 +82,12 @@ def canonical(label: str) -> str:
 # Better image-search phrases than the bare AudioSet label (e.g. "Vehicle" alone
 # returns toy photos). Used by Stage 6 retrieval. v2 (diffusion) won't need these.
 QUERY_HINTS = {
-    "Vehicle": "cars traffic street", "Dog": "dog barking", "Water": "waterfall river",
-    "Thunder": "lightning thunderstorm sky", "Rain": "heavy rain", "Bird": "wild bird",
-    "Crowd": "crowd of people", "Siren": "ambulance emergency siren",
-    "Wind": "windy trees storm", "Fire": "fire flames", "Explosion": "explosion blast",
-    "Aircraft": "airplane sky", "Helicopter": "helicopter flying", "Train": "train railway",
-    "Bell": "church bell tower", "Gunshot, gunfire": "gunfire",
+    "Vehicle": "traffic cars street", "Dog": "dog", "Cat": "cat", "Water": "waterfall",
+    "Thunder": "lightning", "Rain": "rain", "Bird": "bird", "Crowd": "crowd",
+    "Siren": "ambulance", "Wind": "storm wind", "Fire": "fire flames",
+    "Explosion": "explosion", "Aircraft": "airplane", "Helicopter": "helicopter",
+    "Train": "train railway", "Bell": "church bell", "Gunshot, gunfire": "gun",
+    "Applause": "applause audience", "Insect": "insect", "Horse": "horse",
 }
 
 
