@@ -17,9 +17,10 @@ DEVICE = "cpu"               # "cpu" locally; "cuda" on the university GPU
 # Stage 1 — audio extraction
 SAMPLE_RATE = 16000
 
-# Stage 2 — video understanding (VLM)  [stub in skeleton]
-VIDEO_MODEL = "Qwen/Qwen2.5-VL-3B-Instruct"   # 7B on the uni GPU
-NUM_FRAMES = 8               # frames sampled from the clip for scene analysis
+# Stage 2 — video understanding (lightweight CLIP visibility check)
+VIDEO_MODEL = "openai/clip-vit-base-patch32"   # full VLM (Qwen2.5-VL) is a later upgrade
+NUM_FRAMES = 6              # frames sampled from the clip for scene analysis
+VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on screen"
 
 # Stage 3 — speech recognition (Whisper)
 WHISPER_MODEL = "base"       # tiny | base | small | medium | large-v3
@@ -34,7 +35,7 @@ AED_PLOT_TOP_K = 15          # classes shown in the timeline plot
 # Stage 5 — cross-modal semantic analysis (the gate)  [stub in skeleton]
 LLM_MODEL = "meta-llama/Llama-3.1-8B-Instruct"   # or Qwen3; or a hosted API
 USE_LOCALIZATION = False     # feed an on/off-screen localization signal into the gate
-GATE_ENABLED = False         # detect-everything-first: keep ALL events (no filtering yet)
+GATE_ENABLED = True          # v2-(a): gate on the CLIP seen/not-seen check (Stage 2)
 
 # Stage 5 display threshold — min confidence for a sound to get an image (v1 pass-through)
 DISPLAY_THRESHOLD = 0.15

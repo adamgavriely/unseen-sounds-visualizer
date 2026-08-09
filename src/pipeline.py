@@ -57,7 +57,8 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
 
     print("[2/7] video understanding...")
     scene = analyze_video(video_path, num_frames=config.NUM_FRAMES,
-                          model=config.VIDEO_MODEL, device=config.DEVICE)
+                          model=config.VIDEO_MODEL, device=config.DEVICE,
+                          threshold=config.VISIBILITY_THRESHOLD)
     _dump(work / "scene.json", scene.to_dict())
 
     print("[3/7] speech recognition (whisper)...")

@@ -44,11 +44,11 @@ def plan_augmentations(scene: SceneContext,
                       if augment else
                       f"below display threshold ({ev.confidence:.2f} < {display_threshold})")
         else:
-            salient = ev.confidence >= threshold
+            salient = ev.confidence >= display_threshold
             redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
             augment = salient and not redundant
             if not salient:
-                reason = f"below salience threshold ({ev.confidence:.2f} < {threshold})"
+                reason = f"below display threshold ({ev.confidence:.2f} < {display_threshold})"
             elif redundant:
                 reason = "source already visible on screen (stay silent)"
             else:
