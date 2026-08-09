@@ -795,6 +795,14 @@ Section~\ref{sec:changelog}.
     sound DHH users miss, and how SDH subtitles and sign language handle it. Key finding: SDH already
     performs \emph{manual} cross-modal gating (don't caption a visible sound source), which Stage~5
     automates. Full source trail in the Research Log (Section~\ref{sec:researchlog}).
+  \item \textbf{2026-08-07 --- v1 PROTOTYPE working (end-to-end illustrated video).} Decision (Adam):
+    ship a working prototype first, then grow. v1 = detect all non-speech sounds (PANNs) $\to$ keep
+    distinct sounds above a display threshold (no seen/not-seen gate yet) $\to$ \emph{retrieve} a free
+    CC image per sound (Openverse, no GPU) $\to$ composite \emph{alongside} the original video
+    (side-by-side, time-aligned, audio kept). Runs in $\sim$24\,s on CPU. Verified on the London
+    protest clip: off-screen ``Vehicle'' sound $\to$ real street-traffic photo beside the crowd. The
+    benchmark grind was paused (off critical path). Next (v2): the seen/not-seen gate (Stage~2 VLM)
+    and diffusion generation. Image backend chosen: retrieval now, generation as v2 (Adam).
   \item \textbf{2026-08-07 --- Benchmark construction started} (Section~\ref{sec:datasets}). Decided
     hybrid sourcing + pilot-first + assisted labeling; dropped MovieNet (no raw video). Built
     \texttt{benchmark/curate.py} (ingest clip $\to$ Stage 1+4 $\to$ keyframes $\to$ draft manifest
