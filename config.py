@@ -36,9 +36,14 @@ LLM_MODEL = "meta-llama/Llama-3.1-8B-Instruct"   # or Qwen3; or a hosted API
 USE_LOCALIZATION = False     # feed an on/off-screen localization signal into the gate
 GATE_ENABLED = False         # detect-everything-first: keep ALL events (no filtering yet)
 
-# Stage 6 — visual augmentation generation  [stub in skeleton]
-GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"   # or FLUX.1
-RESOLUTION = (1024, 1024)    # generated augmentation image size
+# Stage 5 display threshold — min confidence for a sound to get an image (v1 pass-through)
+DISPLAY_THRESHOLD = 0.15
+
+# Stage 6 — visual augmentation generation
+GEN_BACKEND = "retrieve"     # v1: retrieve (Openverse, free) | placeholder | diffusion (v2 TODO)
+GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"   # for the v2 diffusion backend
+RESOLUTION = (1024, 1024)    # augmentation image size
+PANEL_SIZE = 720             # side-by-side augmentation panel size (px)
 FPS = 25
 
 # Stage 7 — evaluation  [stub in skeleton]

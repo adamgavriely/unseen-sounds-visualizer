@@ -8,32 +8,42 @@ STUB: a transparent rule-based gate so the pipeline runs and its decisions are
 inspectable. TODO: combine an on/off-screen sound-source-localization signal with
 a GROUNDED LLM decision (structured JSON over the Stage-2 entity list, Stage-3
 transcript, Stage-4 events) - never over raw media - to curb MLLM hallucination.
+
+Even in PASS-THROUGH (gate disabled, v1 prototype) we still drop speech, ambience
+and music, and merge PANNs' label families to one entry per real source, so we
+visualize a handful of distinct non-speech sounds rather than 20 near-duplicates.
 """
 from __future__ import annotations
 
 from typing import List
 
 from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
+from src.labels import is_salient_nonspeech, consolidate_families
 
 
 def plan_augmentations(scene: SceneContext,
                        segments: List[SpeechSegment],
                        events: List[AudioEvent],
                        threshold: float = 0.3,
-                       gate_enabled: bool = False) -> List[AugmentationSpec]:
+                       gate_enabled: bool = False,
+                       display_threshold: float = 0.15) -> List[AugmentationSpec]:
     mode = "rule-based gate" if gate_enabled else "PASS-THROUGH (detect-all)"
-    print(f"       [stage5] STUB - {mode} (TODO: localization + grounded LLM).")
+    print(f"       [stage5] {mode} (TODO: localization + grounded LLM).")
     visible = {e.lower() for e in scene.visible_entities}
+
+    # Keep only discrete non-speech sounds, collapse label families to one/source.
+    candidates = consolidate_families([e for e in events if is_salient_nonspeech(e.label)])
+
     specs: List[AugmentationSpec] = []
-    for i, ev in enumerate(events):
+    for i, ev in enumerate(candidates):
         if not gate_enabled:
-            # Detect-everything-first: keep every event, no filtering.
-            augment, reason = True, "gate disabled (detect-all mode)"
+            # v1 prototype: visualize every distinct non-speech sound above a
+            # light display threshold (no seen/not-seen gating yet).
+            augment = ev.confidence >= display_threshold
+            reason = ("detect-all mode: distinct non-speech sound"
+                      if augment else
+                      f"below display threshold ({ev.confidence:.2f} < {display_threshold})")
         else:
-            # Gate rule (placeholder logic):
-            #  - drop low-confidence events
-            #  - if the source is known on-screen (or the label matches a visible
-            #    entity), stay silent (visual redundancy).
             salient = ev.confidence >= threshold
             redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
             augment = salient and not redundant
@@ -47,7 +57,6 @@ def plan_augmentations(scene: SceneContext,
             index=i, event_label=ev.label, start=ev.start, end=ev.end,
             augment=augment, reason=reason,
             subject=ev.label if augment else "",
-            image_prompt=(f"A clear, simple illustration of: {ev.label}"
-                          if augment else ""),
+            image_prompt=(f"A clear, simple illustration of: {ev.label}" if augment else ""),
         ))
     return specs

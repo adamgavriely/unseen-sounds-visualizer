@@ -40,35 +40,13 @@ import config
 from src.stage1_audio_extraction import extract_audio, media_duration
 from src.stage4_audio_event_detection import _infer, _extract_events, plot_timeline
 from src.types import AudioEvent
+from src.labels import SPEECH_LABELS, SCENE_LABELS, MUSIC_LABELS, is_music, merge_by_label as _merge_by_label
 
 ROOT = Path(__file__).resolve().parent.parent
 CLIPS_DIR = ROOT / "data" / "input" / "benchmark"
 WORK_DIR = ROOT / "data" / "work" / "benchmark"
 MANIFEST = ROOT / "benchmark" / "manifest.json"
-
-# Labels that are speech/silence, not the non-speech ambient sound we care about.
-SPEECH_LABELS = {"Speech", "Male speech, man speaking", "Female speech, woman speaking",
-                 "Narration, monologue", "Conversation", "Speech synthesizer", "Child speech, kid speaking",
-                 "Hubbub, speech noise, speech babble", "Chatter"}
-MUSIC_LABELS = {"Music", "Scary music", "Background music", "Musical instrument", "Soundtrack music"}
-# Acoustic-environment / ambience descriptors: real but not a discrete "source" to visualize.
-SCENE_LABELS = {"Inside, small room", "Inside, large room or hall", "Inside, public space",
-                "Outside, urban or manmade", "Outside, rural or natural", "Reverberation", "Echo",
-                "Noise", "Environmental noise", "Background noise", "White noise", "Silence"}
-
-
-def _merge_by_label(events: List[AudioEvent]) -> List[AudioEvent]:
-    """Collapse repeated labels into one span (min start, max end, max confidence)."""
-    by_label = {}
-    for e in events:
-        if e.label in by_label:
-            m = by_label[e.label]
-            m.start = min(m.start, e.start)
-            m.end = max(m.end, e.end)
-            m.confidence = max(m.confidence, e.confidence)
-        else:
-            by_label[e.label] = AudioEvent(e.label, e.start, e.end, e.confidence)
-    return sorted(by_label.values(), key=lambda e: -e.confidence)
+# Label sets + merge helper are shared with the pipeline via src/labels.py.
 
 
 def _download(url: str, dest: Path) -> None:

@@ -1,12 +1,13 @@
-"""Pipeline orchestrator: video -> (audio, scene, speech, events) -> gate -> augmentations.
+"""Pipeline orchestrator: video -> audio/scene/speech/events -> gate -> images -> composited mp4.
 
-Runs stages 1-6 and writes inspectable artifacts under ``data/work/<stem>/``:
-    audio.wav, media.json, scene.json, segments.json, events.json,
-    augmentations.json, augmentations/aug_*.png
+v1 prototype (detect-all, no gating): stages 1 (ffmpeg), 3 (whisper) and 4 (PANNs)
+are real; Stage 5 passes through every distinct non-speech sound; Stage 6 retrieves
+a CC image per sound (Openverse) and composites it alongside the original video.
+Stage 2 (video understanding) is still a stub -> the seen/not-seen gate is v2.
 
-Stage 7 (evaluation) runs separately over the benchmark, not here.
-Stages 2/4/5/6 are currently stubs (see each module) so this runs end-to-end
-without a GPU or downloaded models.
+Writes inspectable artifacts under ``data/work/<stem>/`` (audio.wav, *.json,
+events_plot.png, augmentations/aug_*.png, credits.json) and the final
+``data/output/<stem>_augmented.mp4``.
 """
 from __future__ import annotations
 
@@ -23,7 +24,7 @@ from src.stage2_video_understanding import analyze_video
 from src.stage3_speech_recognition import transcribe
 from src.stage4_audio_event_detection import detect_events
 from src.stage5_cross_modal_analysis import plan_augmentations
-from src.stage6_visual_augmentation import generate_augmentations
+from src.stage6_visual_augmentation import generate_augmentations, composite_alongside
 
 
 @dataclass
@@ -34,6 +35,7 @@ class PipelineResult:
     events: List[AudioEvent]
     specs: List[AugmentationSpec]
     work_dir: Path
+    output_path: Path = None
 
 
 def _dump(path: Path, obj) -> None:
@@ -48,23 +50,23 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     work = work_root / video_path.stem
     work.mkdir(parents=True, exist_ok=True)
 
-    print("[1/6] extracting audio (ffmpeg)...")
+    print("[1/7] extracting audio (ffmpeg)...")
     media = extract_audio(video_path, work / "audio.wav", config.SAMPLE_RATE)
     _dump(work / "media.json", media.to_dict())
     print(f"       {media.duration:.1f}s @ {media.sample_rate} Hz")
 
-    print("[2/6] video understanding...")
+    print("[2/7] video understanding...")
     scene = analyze_video(video_path, num_frames=config.NUM_FRAMES,
                           model=config.VIDEO_MODEL, device=config.DEVICE)
     _dump(work / "scene.json", scene.to_dict())
 
-    print("[3/6] speech recognition (whisper)...")
+    print("[3/7] speech recognition (whisper)...")
     segments = transcribe(Path(media.wav_path), model_size=config.WHISPER_MODEL,
                           device=config.DEVICE, compute_type=config.WHISPER_COMPUTE)
     _dump(work / "segments.json", [s.to_dict() for s in segments])
     print(f"       {len(segments)} speech segment(s)")
 
-    print("[4/6] audio event detection...")
+    print("[4/7] audio event detection...")
     events = detect_events(Path(media.wav_path), threshold=config.AED_THRESHOLD,
                            min_dur=config.AED_MIN_DUR, model=config.AED_MODEL,
                            device=config.DEVICE, plot_path=work / "events_plot.png",
@@ -72,18 +74,24 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     _dump(work / "events.json", [e.to_dict() for e in events])
     print(f"       {len(events)} event span(s)")
 
-    print("[5/6] cross-modal gating...")
+    print("[5/7] cross-modal gating...")
     specs = plan_augmentations(scene, segments, events,
                                threshold=config.AED_THRESHOLD,
-                               gate_enabled=config.GATE_ENABLED)
+                               gate_enabled=config.GATE_ENABLED,
+                               display_threshold=config.DISPLAY_THRESHOLD)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
     n_aug = sum(1 for s in specs if s.augment)
-    print(f"       {n_aug}/{len(specs)} event(s) selected to augment")
+    print(f"       {n_aug}/{len(specs)} sound(s) selected to visualize")
 
-    print("[6/6] visual augmentation generation...")
-    specs = generate_augmentations(specs, work, size=config.RESOLUTION,
-                                   model=config.GEN_MODEL, device=config.DEVICE)
+    print(f"[6/7] visual augmentation ({config.GEN_BACKEND})...")
+    specs = generate_augmentations(specs, work, backend=config.GEN_BACKEND,
+                                   size=config.RESOLUTION, model=config.GEN_MODEL,
+                                   device=config.DEVICE)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
 
-    print(f"\nDone -> artifacts in {work}")
-    return PipelineResult(media, scene, segments, events, specs, work)
+    print("[7/7] compositing alongside the video...")
+    out_mp4 = config.OUTPUT_DIR / f"{video_path.stem}_augmented.mp4"
+    composite_alongside(video_path, specs, out_mp4, duration=media.duration,
+                        panel=config.PANEL_SIZE, fps=config.FPS)
+    print(f"\nDone -> {out_mp4}\n       artifacts in {work}")
+    return PipelineResult(media, scene, segments, events, specs, work, out_mp4)
