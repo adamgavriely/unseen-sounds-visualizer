@@ -32,8 +32,11 @@ VISIBLE_CONCEPTS = {
     "Train": "a photo of a train", "Aircraft": "a photo of an airplane in the sky",
     "Helicopter": "a photo of a helicopter", "Horse": "a photo of a horse",
     "Fire": "a photo of fire or flames", "Rain": "a photo of rain falling",
-    "Applause": "a photo of an audience clapping", "Bell": "a photo of a church bell tower",
-    "Insect": "a photo of an insect",
+    "Applause": "a photo of an audience clapping", "Bell": "a photo of a church, bell or bell tower",
+    "Insect": "a photo of an insect", "Boat": "a photo of a boat or ship on water",
+    "Siren": "a photo of an ambulance, police car or fire truck",
+    "Fireworks": "a photo of fireworks exploding in the sky",
+    "Saxophone": "a photo of a person playing a saxophone or brass instrument",
 }
 _DISTRACTORS = ["a photo of an indoor scene", "a photo of an empty street",
                 "a photo of the sky", "a random photo of something else"]

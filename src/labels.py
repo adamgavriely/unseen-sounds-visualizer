@@ -81,6 +81,17 @@ FAMILY = {
     "Cluck": "Bird", "Coo": "Bird", "Caw": "Bird",
     # crowd
     "Cheering": "Crowd", "Applause": "Crowd", "Children shouting": "Crowd", "Hubbub": "Crowd",
+    # bell
+    "Church bell": "Bell", "Chime": "Bell", "Chimes": "Bell", "Wind chime": "Bell",
+    "Change ringing (campanology)": "Bell", "Bell": "Bell",
+    # emergency siren -> canonical Siren (has its own visible concept: an emergency vehicle)
+    "Ambulance (siren)": "Siren", "Police car (siren)": "Siren", "Emergency vehicle": "Siren",
+    "Fire engine, fire truck (siren)": "Siren", "Civil defense siren": "Siren",
+    # fireworks
+    "Firecracker": "Fireworks", "Fireworks": "Fireworks",
+    # instruments (a visible musician) -> canonical Saxophone concept
+    "Brass instrument": "Saxophone", "Wind instrument, woodwind instrument": "Saxophone",
+    "Saxophone": "Saxophone",
 }
 
 
