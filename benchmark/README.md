@@ -51,12 +51,23 @@ python -m benchmark.curate --input data/input/london_protest.webm --clip-id lond
 Then review `data/work/benchmark/<clip_id>/` (frames + `events_plot.png`), set `source_visible` per
 event and the clip `category` in `draft.json`, and merge into `manifest.json`.
 
-## Gathered data
-Raw candidate clips are downloaded to `data/input/benchmark/` (gitignored). Their source pages,
-direct URLs, licences (CC — verify per page) and scenario hints are logged in **`sources.json`**
-(committed). Current inventory: ~21 clips spanning rain, church bells, trains, birdsong/forest,
-ambulance/siren, sea waves, street musician, helicopter, fireworks, plus the earlier
-dog/protest/waterfall/thunder/news clips. Labels are not yet assigned — that's the next step
-(assisted labeling via `curate.py`).
+## Gathered data — organised into 3 folders (gitignored)
+Clips live in `data/input/benchmark/<folder>/` (videos gitignored; the split is recorded in
+**`splits.json`**, committed). All normalised to <=~20 s. Sources: Wikimedia Commons (CC) and the
+Internet Archive (public-domain films, e.g. Prelinger's *Duck and Cover*). Per-clip licence
+verification is done at labeling time; source URLs are in `sources.json`.
 
-**Status:** tooling built; ~21 candidate clips gathered (`sources.json`); labeling next.
+| folder | meaning | count |
+|--------|---------|-------|
+| `unseen_ambient/` | ambient sound present, source **not** visible → system should augment | 20 |
+| `seen_ambient/` | ambient sound present, source **visible** → system should stay silent | 13 |
+| `no_ambient/` | no environmental ambient sound (speech / music / silence) | 10 |
+
+**How they were sorted:** each candidate was auto-classified with `screen.py` (PANNs detection + CLIP
+visibility + the gate) into complex / control / empty, plus scenario heuristics. This is a
+**candidate sort, not ground truth** — the CLIP/PANNs screening makes mistakes, so folder placement
+must be confirmed during assisted labeling (`curate.py`), which sets the per-sound `source_visible`
+truth.
+
+**Status:** ~43 clips gathered and organised into the 3 folders (`splits.json`); assisted labeling
+next.

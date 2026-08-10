@@ -1,0 +1,195 @@
+{
+  "description": "Benchmark clips organised by audio-visual relationship. Videos gitignored (data/input/benchmark/<folder>/); this file records the split.",
+  "folders": {
+    "unseen_ambient": {
+      "description": "ambient sound present, source NOT visible on-screen (system should augment)",
+      "count": 20,
+      "clips": [
+        {
+          "file": "bell_miami.webm",
+          "duration": 15.6
+        },
+        {
+          "file": "birds_forest.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "birds_forest_02.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "dog_barking_01.mp4",
+          "duration": 12.0
+        },
+        {
+          "file": "dutch_traffic_kids.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "london_protest_01.mp4",
+          "duration": 11.1
+        },
+        {
+          "file": "market_iwakuni.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "protest_brazil.webm",
+          "duration": 8.2
+        },
+        {
+          "file": "row_boat.webm",
+          "duration": 21.0
+        },
+        {
+          "file": "ship_ccgs.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "station_bangkok.mp4",
+          "duration": 4.2
+        },
+        {
+          "file": "station_kwasa1.webm",
+          "duration": 21.6
+        },
+        {
+          "file": "station_kwasa2.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "station_panki.webm",
+          "duration": 8.4
+        },
+        {
+          "file": "station_warszawa.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "thunder_sofia_01.mp4",
+          "duration": 15.0
+        },
+        {
+          "file": "train_china_hs.webm",
+          "duration": 9.6
+        },
+        {
+          "file": "train_liminka.webm",
+          "duration": 20.6
+        },
+        {
+          "file": "train_yuyaobei.webm",
+          "duration": 7.8
+        },
+        {
+          "file": "voa_worldseries.mp4",
+          "duration": 18.0
+        }
+      ]
+    },
+    "seen_ambient": {
+      "description": "ambient sound present, source visible on-screen (system should stay silent)",
+      "count": 13,
+      "clips": [
+        {
+          "file": "ambulance_dunedin.ogv",
+          "duration": 8.9
+        },
+        {
+          "file": "bell_kazansky.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "bell_pribyslav.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "fireworks_london_nye.webm",
+          "duration": 20.2
+        },
+        {
+          "file": "fireworks_springville.webm",
+          "duration": 11.1
+        },
+        {
+          "file": "helicopter_ossetia.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "puddles_rain.webm",
+          "duration": 12.6
+        },
+        {
+          "file": "rain_road.webm",
+          "duration": 15.5
+        },
+        {
+          "file": "sax_guitar.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "station_passenger.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "waterfall_kawaida_01.mp4",
+          "duration": 11.2
+        },
+        {
+          "file": "waves_eforie.ogv",
+          "duration": 17.2
+        },
+        {
+          "file": "waves_herzliya.webm",
+          "duration": 12.6
+        }
+      ]
+    },
+    "no_ambient": {
+      "description": "no environmental ambient sound (speech/music/silence only)",
+      "count": 10,
+      "clips": [
+        {
+          "file": "interview_mickharvey.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "interview_peterbuck.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "kit_piano.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "nasa_symphony.mp4",
+          "duration": 18.0
+        },
+        {
+          "file": "pdfilm_duckcover_200.mp4",
+          "duration": 16.0
+        },
+        {
+          "file": "pdfilm_duckcover_260.mp4",
+          "duration": 16.0
+        },
+        {
+          "file": "pdfilm_duckcover_30.mp4",
+          "duration": 16.0
+        },
+        {
+          "file": "pdfilm_duckcover_420.mp4",
+          "duration": 16.0
+        },
+        {
+          "file": "pdfilm_duckcover_520.mp4",
+          "duration": 16.0
+        },
+        {
+          "file": "pdfilm_duckcover_90.mp4",
+          "duration": 16.0
+        }
+      ]
+    }
+  }
+}

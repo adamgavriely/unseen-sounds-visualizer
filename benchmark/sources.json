@@ -30,7 +30,7 @@
     "clip_id": "bell_pribyslav",
     "file": "bell_pribyslav.webm",
     "scenario_hint": "acoustic_event",
-    "commons_page": "https://commons.wikimedia.org/wiki/File:Bell_Ringing_in_Tower_of_PÅ™Ã­byslav_(video).webm",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Bell_Ringing_in_Tower_of_PÃ…â„¢ÃƒÂ­byslav_(video).webm",
     "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bell_Ringing_in_Tower_of_P%C5%99ibyslav_%28video%29.webm",
     "license": "CC (verify on Commons page)",
     "size_mb": 3.1
@@ -93,7 +93,7 @@
     "clip_id": "waves_eforie",
     "file": "waves_eforie.ogv",
     "scenario_hint": "ambient",
-    "commons_page": "https://commons.wikimedia.org/wiki/File:Beach_and_waves_from_Eforie_Sud,_ConstanÈ›a_County,_Romania_-_20090720.ogv",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Beach_and_waves_from_Eforie_Sud,_ConstanÃˆâ€ºa_County,_Romania_-_20090720.ogv",
     "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Beach_and_waves_from_Eforie_Sud%2C_Constan%C5%A3a_County%2C_Romania_-_20090720.ogv",
     "license": "CC (verify on Commons page)",
     "size_mb": 1.6
@@ -151,5 +151,59 @@
     "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Douglas_Emhoff_and_Kamala_Harris_watching_fireworks_on_Inauguration_night.ogv",
     "license": "CC (verify on Commons page)",
     "size_mb": 4.8
+  },
+  {
+    "clip_id": "market_zagreb18",
+    "file": "market_zagreb18.webm",
+    "scenario_hint": "mixed",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Flea_market_in_Zagreb_18.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Flea_market_in_Zagreb_18.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 5.5
+  },
+  {
+    "clip_id": "market_iwakuni",
+    "file": "market_iwakuni.webm",
+    "scenario_hint": "mixed",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Atago_Outdoor_Flea_Market,_Iwakuni,_Japan,_2026_(B-Roll)_(1006122).webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/3/31/Atago_Outdoor_Flea_Market%2C_Iwakuni%2C_Japan%2C_2026_%28B-Roll%29_%281006122%29.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 18.4
+  },
+  {
+    "clip_id": "station_kwasa1",
+    "file": "station_kwasa1.webm",
+    "scenario_hint": "mixed",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Kwasa_Damansara_Station_1.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/ad/Kwasa_Damansara_Station_1.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 13.0
+  },
+  {
+    "clip_id": "station_kwasa2",
+    "file": "station_kwasa2.webm",
+    "scenario_hint": "mixed",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Kwasa_Damansara_Station_2.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/61/Kwasa_Damansara_Station_2.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 20.0
+  },
+  {
+    "clip_id": "station_warszawa",
+    "file": "station_warszawa.ogv",
+    "scenario_hint": "mixed",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Warszawa-centralna-pociag-wyjezdza-ku-wschodzie.ogv",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/aa/Warszawa-centralna-pociag-wyjezdza-ku-wschodzie.ogv",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 5.7
+  },
+  {
+    "clip_id": "station_passenger",
+    "file": "station_passenger.webm",
+    "scenario_hint": "mixed",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Passenger-kihifune-merodi.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/27/Passenger-kihifune-merodi.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 20.8
   }
 ]
