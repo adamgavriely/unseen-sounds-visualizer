@@ -51,4 +51,12 @@ python -m benchmark.curate --input data/input/london_protest.webm --clip-id lond
 Then review `data/work/benchmark/<clip_id>/` (frames + `events_plot.png`), set `source_visible` per
 event and the clip `category` in `draft.json`, and merge into `manifest.json`.
 
-**Status:** tooling built; pilot curation in progress.
+## Gathered data
+Raw candidate clips are downloaded to `data/input/benchmark/` (gitignored). Their source pages,
+direct URLs, licences (CC — verify per page) and scenario hints are logged in **`sources.json`**
+(committed). Current inventory: ~21 clips spanning rain, church bells, trains, birdsong/forest,
+ambulance/siren, sea waves, street musician, helicopter, fireworks, plus the earlier
+dog/protest/waterfall/thunder/news clips. Labels are not yet assigned — that's the next step
+(assisted labeling via `curate.py`).
+
+**Status:** tooling built; ~21 candidate clips gathered (`sources.json`); labeling next.

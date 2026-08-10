@@ -1,0 +1,155 @@
+[
+  {
+    "clip_id": "rain_road",
+    "file": "rain_road.webm",
+    "scenario_hint": "ambient",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Rain_falling_on_road_-_gnangarra.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Rain_falling_on_road_-_gnangarra.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 20.7
+  },
+  {
+    "clip_id": "puddles_rain",
+    "file": "puddles_rain.webm",
+    "scenario_hint": "ambient",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Puddles_of_rain.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Puddles_of_rain.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 12.9
+  },
+  {
+    "clip_id": "bell_miami",
+    "file": "bell_miami.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:USA_Tour_2019_P146_Miami_Gesu_Church_bells_ringing.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/b/b2/USA_Tour_2019_P146_Miami_Gesu_Church_bells_ringing.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 4.8
+  },
+  {
+    "clip_id": "bell_pribyslav",
+    "file": "bell_pribyslav.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Bell_Ringing_in_Tower_of_PÅ™Ã­byslav_(video).webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Bell_Ringing_in_Tower_of_P%C5%99ibyslav_%28video%29.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 3.1
+  },
+  {
+    "clip_id": "bell_kazansky",
+    "file": "bell_kazansky.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Kazansky_Bogoroditsky_Monastery_bell_ringing_(2022-07-05)_02.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/82/Kazansky_Bogoroditsky_Monastery_bell_ringing_%282022-07-05%29_02.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 5.2
+  },
+  {
+    "clip_id": "train_china_hs",
+    "file": "train_china_hs.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:China_Railway_High-speed_train_passing_through_station.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/2/26/China_Railway_High-speed_train_passing_through_station.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 2.0
+  },
+  {
+    "clip_id": "train_liminka",
+    "file": "train_liminka.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Train_passing_liminka_station.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/6/6a/Train_passing_liminka_station.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 2.2
+  },
+  {
+    "clip_id": "train_yuyaobei",
+    "file": "train_yuyaobei.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:A_train_passing_through_Yuyaobei_Station_202001081121.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/8b/A_train_passing_through_Yuyaobei_Station_202001081121.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 7.4
+  },
+  {
+    "clip_id": "birds_forest",
+    "file": "birds_forest.webm",
+    "scenario_hint": "ambient",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Zgornja_Kungota_Slovenija_-_Ptice,_petelini,_gozd,_zgodnje_jutro.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/8/89/Zgornja_Kungota_Slovenija_-_Ptice%2C_petelini%2C_gozd%2C_zgodnje_jutro.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 20.4
+  },
+  {
+    "clip_id": "ambulance_dunedin",
+    "file": "ambulance_dunedin.ogv",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:St_John_ambulance,_Dunedin,_New_Zealand.ogv",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/c/c4/St_John_ambulance%2C_Dunedin%2C_New_Zealand.ogv",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 1.2
+  },
+  {
+    "clip_id": "waves_eforie",
+    "file": "waves_eforie.ogv",
+    "scenario_hint": "ambient",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Beach_and_waves_from_Eforie_Sud,_ConstanÈ›a_County,_Romania_-_20090720.ogv",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Beach_and_waves_from_Eforie_Sud%2C_Constan%C5%A3a_County%2C_Romania_-_20090720.ogv",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 1.6
+  },
+  {
+    "clip_id": "waves_herzliya",
+    "file": "waves_herzliya.webm",
+    "scenario_hint": "ambient",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Water_waves_in_Herzliya_beach.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/09/Water_waves_in_Herzliya_beach.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 20.6
+  },
+  {
+    "clip_id": "sax_guitar",
+    "file": "sax_guitar.ogv",
+    "scenario_hint": "control",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Saxophone_and_Guitar.ogv",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/0/02/Saxophone_and_Guitar.ogv",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 5.4
+  },
+  {
+    "clip_id": "helicopter_ossetia",
+    "file": "helicopter_ossetia.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:A_military_helicopter_flying_near_the_ABL_in_South_Ossetia,_Georgia._2022.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/7/75/A_military_helicopter_flying_near_the_ABL_in_South_Ossetia%2C_Georgia._2022.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 2.0
+  },
+  {
+    "clip_id": "fireworks_springville",
+    "file": "fireworks_springville.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Fireworks_over_Springville,_Utah,_Jun_18.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Fireworks_over_Springville%2C_Utah%2C_Jun_18.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 8.7
+  },
+  {
+    "clip_id": "fireworks_london_nye",
+    "file": "fireworks_london_nye.webm",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:New_Year's_Eve_London_fireworks_20-21_01.webm",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d7/New_Year%27s_Eve_London_fireworks_20-21_01.webm",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 37.9
+  },
+  {
+    "clip_id": "fireworks_watching",
+    "file": "fireworks_watching.ogv",
+    "scenario_hint": "acoustic_event",
+    "commons_page": "https://commons.wikimedia.org/wiki/File:Douglas_Emhoff_and_Kamala_Harris_watching_fireworks_on_Inauguration_night.ogv",
+    "direct_url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Douglas_Emhoff_and_Kamala_Harris_watching_fireworks_on_Inauguration_night.ogv",
+    "license": "CC (verify on Commons page)",
+    "size_mb": 4.8
+  }
+]
