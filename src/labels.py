@@ -64,12 +64,21 @@ FAMILY = {
     # water
     "Waves, surf": "Water", "Ocean": "Water", "Waterfall": "Water", "Stream": "Water",
     "Gurgling": "Water", "Slosh": "Water", "Trickle, dribble": "Water", "Drip": "Water",
+    # train / rail
+    "Railroad car, train wagon": "Train", "Rail transport": "Train",
+    "Subway, metro, underground": "Train", "Train wheels squealing": "Train",
+    "Train horn": "Train", "Train whistle": "Train", "Clickety-clack": "Train",
+    # aircraft / boat
+    "Jet engine": "Aircraft", "Fixed-wing aircraft, airplane": "Aircraft",
+    "Motorboat, speedboat": "Boat", "Motor vehicle (road)": "Vehicle",
     # thunder / storm
     "Thunderstorm": "Thunder", "Rumble": "Thunder",
     # rain
     "Raindrop": "Rain", "Rain on surface": "Rain",
-    # bird
+    # bird / poultry
     "Bird vocalization, bird call, bird song": "Bird", "Chirp, tweet": "Bird", "Pigeon, dove": "Bird",
+    "Chicken, rooster": "Bird", "Crowing, cock-a-doodle-doo": "Bird", "Fowl": "Bird",
+    "Cluck": "Bird", "Coo": "Bird", "Caw": "Bird",
     # crowd
     "Cheering": "Crowd", "Applause": "Crowd", "Children shouting": "Crowd", "Hubbub": "Crowd",
 }
