@@ -33,9 +33,14 @@ PORT = 8000
 _LOCK = threading.Lock()
 
 TAG_OPTIONS = [
-    ("unseen_ambient", "1  Sound source NOT visible", "#2e7d32"),
-    ("seen_ambient",   "2  Sound source IS visible",  "#1565c0"),
-    ("no_ambient",     "3  No ambient sound (speech/music)", "#6a1b9a"),
+    ("unseen_ambient", "Heard, not seen", "#2e7d32",
+     "A meaningful sound whose source is OFF-screen (e.g. traffic behind a crowd)."),
+    ("seen_ambient", "Heard and seen", "#1565c0",
+     "Every real sound's source is visible ON screen (e.g. a waterfall you can see)."),
+    ("mixed", "Both / mixed", "#00838f",
+     "Some sources on-screen, some off (e.g. visible train + off-screen birds)."),
+    ("no_ambient", "No ambient sound", "#6a1b9a",
+     "Only speech or music — no environmental/background sound."),
 ]
 
 
@@ -79,9 +84,13 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
  .name{font-size:15px;color:#ddd;word-break:break-all}
  .cur{font-size:13px;color:#888;margin-top:2px;min-height:18px}
  .tagged{color:#7c7}.badt{color:#f77}.unk{color:#fb3}
- .btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0 8px}
- button.tag{padding:16px 10px;font-size:15px;border:none;border-radius:8px;color:#fff;cursor:pointer;opacity:.92}
+ .btns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 6px}
+ .cell{display:flex;flex-direction:column;gap:5px}
+ button.tag{padding:15px 8px;font-size:15px;border:none;border-radius:8px;color:#fff;cursor:pointer;opacity:.92}
+ button.tag b{opacity:.7;margin-right:4px}
  button.tag:hover{opacity:1}button.tag.sel{outline:3px solid #fff}
+ .cap{font-size:11.5px;color:#9a9a9a;line-height:1.35;padding:0 2px;min-height:44px}
+ .cap2{font-size:11.5px;color:#8a8a8a;margin:2px 0 2px}
  .row2{display:flex;gap:8px;margin:4px 0;align-items:center}
  button.unknown{padding:12px 14px;font-size:14px;border:none;border-radius:6px;background:#ef6c00;color:#fff;cursor:pointer;white-space:nowrap}
  .row2 input{flex:1;padding:10px;border-radius:6px;border:1px solid #444;background:#1b1b1b;color:#eee;font-size:14px}
@@ -110,6 +119,7 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
      <input id=reason placeholder="reason this clip is bad (required for BAD)">
      <button class=bad onclick="markBad()">&#10007; BAD (B)</button>
    </div>
+   <div class=cap2><b>U</b> = not sure, revisit later &nbsp;&middot;&nbsp; <b>B</b> = broken/unusable clip (type why; it gets discarded).</div>
    <div class=nav>
      <button onclick="go(-1)">&larr; Prev (P)</button>
      <button onclick="go(1)">Next (N) &rarr;</button>
@@ -117,7 +127,7 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
  </div>
  <div class=done id=done style=display:none></div>
  <div class=hint>Default shows <b>only untagged</b> clips, so nothing you've tagged comes back.
-   Keys: <b>Space</b> play/pause &middot; <b>&larr;/&rarr;</b> or P/N move &middot; <b>1/2/3</b> tag &middot;
+   Keys: <b>Space</b> play/pause &middot; <b>&larr;/&rarr;</b> or P/N move &middot; <b>1&ndash;4</b> tag &middot;
    <b>U</b> I don't know &middot; <b>B</b> bad. Saved to <code>benchmark/tags.json</code>.</div>
 </div>
 <script>
@@ -125,8 +135,12 @@ let clips=[],tags={},filter='untagged',view=[],vi=0;const TAGS=__TAGS__;
 async function boot(){
   const d=await (await fetch('/api/clips')).json();clips=d.clips;tags=d.tags||{};
   const b=document.getElementById('btns');b.innerHTML='';
-  TAGS.forEach(t=>{const el=document.createElement('button');el.className='tag';el.style.background=t[2];
-    el.textContent=t[1];el.dataset.k=t[0];el.onclick=()=>act({tag:t[0]});b.appendChild(el);});
+  TAGS.forEach((t,idx)=>{
+    const cell=document.createElement('div');cell.className='cell';
+    const el=document.createElement('button');el.className='tag';el.style.background=t[2];
+    el.innerHTML='<b>'+(idx+1)+'</b>'+t[1];el.dataset.k=t[0];el.onclick=()=>act({tag:t[0]});
+    const cap=document.createElement('div');cap.className='cap';cap.textContent=t[3];
+    cell.appendChild(el);cell.appendChild(cap);b.appendChild(cell);});
   buildView();vi=0;show();
 }
 function buildView(){
@@ -169,8 +183,8 @@ document.addEventListener('keydown',e=>{
   if(e.code==='Space'){e.preventDefault();const v=document.getElementById('vid');v.paused?v.play():v.pause();}
   else if(e.key==='ArrowRight'||e.key==='n'||e.key==='N')go(1);
   else if(e.key==='ArrowLeft'||e.key==='p'||e.key==='P')go(-1);
-  else if(e.key==='1')act({tag:TAGS[0][0]});else if(e.key==='2')act({tag:TAGS[1][0]});
-  else if(e.key==='3')act({tag:TAGS[2][0]});else if(e.key==='u'||e.key==='U')act({tag:'unknown'});
+  else if(['1','2','3','4'].includes(e.key)){const t=TAGS[+e.key-1];if(t)act({tag:t[0]});}
+  else if(e.key==='u'||e.key==='U')act({tag:'unknown'});
   else if(e.key==='b'||e.key==='B')markBad();
 });
 boot();
