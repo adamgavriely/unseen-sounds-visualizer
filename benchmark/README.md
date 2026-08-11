@@ -69,5 +69,17 @@ visibility + the gate) into complex / control / empty, plus scenario heuristics.
 must be confirmed during assisted labeling (`curate.py`), which sets the per-sound `source_visible`
 truth.
 
-**Status:** ~43 clips gathered and organised into the 3 folders (`splits.json`); assisted labeling
-next.
+**Status:** ~43 clips gathered and organised into the 3 folders (`splits.json`); human tagging via
+`tagger.py`.
+
+## Tagging the clips — `tagger.py`
+A tiny local web app to review every clip and tag it into one of the 3 categories (this human tag is
+the source of truth; the folders were only an automated guess).
+```bash
+python benchmark/tagger.py
+```
+Then open **http://localhost:8000**. For each clip: play it (normal controls — play/pause, seek bar
+to rewind, volume), then click one of the 3 buttons (or press **1 / 2 / 3**):
+1. Sound source **NOT** visible &nbsp; 2. Sound source **IS** visible &nbsp; 3. **No** ambient sound.
+Navigate with **&larr;/&rarr;** (or P/N); **Space** = play/pause. Tagging auto-advances to the next
+untagged clip. Tags save immediately to **`benchmark/tags.json`**.
