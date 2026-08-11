@@ -1,16 +1,16 @@
 """Simple local web app to tag benchmark clips.
 
-Walk back and forth through every clip in data/input/benchmark/<folders>, play it
-with normal video controls (play/pause/seek/volume), and tag it with one click:
-  1 = sound source NOT visible, 2 = source IS visible, 3 = no ambient sound,
-  plus a red "BAD" button (with a required reason) to discard a clip.
+By default it shows ONLY clips you have not tagged yet, so nothing you have already
+done can reappear. Play each clip (play/pause/seek/volume) and tag it:
+  1 = source NOT visible, 2 = source IS visible, 3 = no ambient sound,
+  ? = "I don't know" (revisit later, via the Unsure filter),
+  BAD (red, key B) = discard this clip (a reason is required).
 
-Tags save immediately to benchmark/tags.json.
+Tags save immediately to benchmark/tags.json (existing tags are never deleted).
 
-RUN IT IN YOUR OWN TERMINAL (not through the Claude app):
+RUN IT IN YOUR OWN TERMINAL (or double-click tag_videos.bat):
     python benchmark/tagger.py
-It opens http://localhost:8000 in your default browser. Press Ctrl+C in the
-terminal to stop it when you are done.
+It opens http://localhost:8000 in your default browser. Ctrl+C to stop.
 """
 from __future__ import annotations
 
@@ -26,7 +26,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BENCH = ROOT / "data" / "input" / "benchmark"
-FOLDERS = ["unseen_ambient", "seen_ambient", "no_ambient"]
+FOLDERS = ["unseen_ambient", "seen_ambient", "no_ambient", "unsorted"]
 TAGS_FILE = ROOT / "benchmark" / "tags.json"
 EXT = {".webm", ".ogv", ".mp4"}
 PORT = 8000
@@ -40,13 +40,16 @@ TAG_OPTIONS = [
 
 
 def list_clips():
-    out = []
+    seen, out = set(), []
     for f in FOLDERS:
         d = BENCH / f
         if d.exists():
             for v in sorted(d.glob("*")):
                 if v.suffix.lower() in EXT:
-                    out.append(f"{f}/{v.name}")
+                    key = f"{f}/{v.name}"
+                    if key not in seen:      # defensive de-dup
+                        seen.add(key)
+                        out.append(key)
     return out
 
 
@@ -68,78 +71,106 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
 <style>
  body{margin:0;background:#111;color:#eee;font-family:system-ui,Arial,sans-serif}
  .wrap{max-width:1000px;margin:0 auto;padding:16px}
- .top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+ .top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
  h1{font-size:16px;margin:0;font-weight:600;color:#bbb}
  .prog{font-size:14px;color:#9ad}
- video{width:100%;max-height:60vh;background:#000;border-radius:8px;margin:10px 0}
+ select{background:#1b1b1b;color:#eee;border:1px solid #444;border-radius:6px;padding:6px}
+ video{width:100%;max-height:58vh;background:#000;border-radius:8px;margin:10px 0}
  .name{font-size:15px;color:#ddd;word-break:break-all}
  .cur{font-size:13px;color:#888;margin-top:2px;min-height:18px}
- .tagged{color:#7c7}.badt{color:#f77}
+ .tagged{color:#7c7}.badt{color:#f77}.unk{color:#fb3}
  .btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:12px 0 8px}
  button.tag{padding:16px 10px;font-size:15px;border:none;border-radius:8px;color:#fff;cursor:pointer;opacity:.92}
  button.tag:hover{opacity:1}button.tag.sel{outline:3px solid #fff}
- .badrow{display:flex;gap:8px;margin:4px 0}
- .badrow input{flex:1;padding:10px;border-radius:6px;border:1px solid #444;background:#1b1b1b;color:#eee;font-size:14px}
- button.bad{padding:10px 16px;font-size:14px;border:none;border-radius:6px;background:#b71c1c;color:#fff;cursor:pointer}
+ .row2{display:flex;gap:8px;margin:4px 0;align-items:center}
+ button.unknown{padding:12px 14px;font-size:14px;border:none;border-radius:6px;background:#ef6c00;color:#fff;cursor:pointer;white-space:nowrap}
+ .row2 input{flex:1;padding:10px;border-radius:6px;border:1px solid #444;background:#1b1b1b;color:#eee;font-size:14px}
+ button.bad{padding:10px 16px;font-size:14px;border:none;border-radius:6px;background:#b71c1c;color:#fff;cursor:pointer;white-space:nowrap}
  .nav{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
  .nav button{padding:10px 18px;font-size:14px;border:none;border-radius:6px;background:#333;color:#eee;cursor:pointer}
+ .done{text-align:center;padding:40px;color:#7c7;font-size:18px}
  .hint{font-size:12px;color:#777;margin-top:14px;line-height:1.6}
 </style></head><body><div class=wrap>
- <div class=top><h1>Benchmark tagger</h1><div class=prog id=prog></div></div>
- <video id=vid controls></video>
- <div class=name id=name></div>
- <div class=cur id=cur></div>
- <div class=btns id=btns></div>
- <div class=badrow>
-   <input id=reason placeholder="reason this clip is bad (required for BAD)">
-   <button class=bad onclick="markBad()">&#10007; BAD &mdash; discard (B)</button>
+ <div class=top><h1>Benchmark tagger</h1>
+   <div><label style="font-size:13px;color:#999">show:
+     <select id=filter onchange="setFilter(this.value)">
+       <option value=untagged>Untagged only</option>
+       <option value=unsure>Unsure (I don't know)</option>
+       <option value=all>All</option>
+     </select></label></div>
+   <div class=prog id=prog></div>
  </div>
- <div class=nav>
-   <button onclick="go(-1)">&larr; Prev (P)</button>
-   <button onclick="nextUntagged()">Next untagged</button>
-   <button onclick="go(1)">Next (N) &rarr;</button>
+ <div id=main>
+   <video id=vid controls></video>
+   <div class=name id=name></div>
+   <div class=cur id=cur></div>
+   <div class=btns id=btns></div>
+   <div class=row2>
+     <button class=unknown onclick="act({tag:'unknown'})">?  I don't know (U)</button>
+     <input id=reason placeholder="reason this clip is bad (required for BAD)">
+     <button class=bad onclick="markBad()">&#10007; BAD (B)</button>
+   </div>
+   <div class=nav>
+     <button onclick="go(-1)">&larr; Prev (P)</button>
+     <button onclick="go(1)">Next (N) &rarr;</button>
+   </div>
  </div>
- <div class=hint>Keys: <b>Space</b> play/pause &middot; <b>&larr;/&rarr;</b> or P/N prev/next &middot;
-   <b>1 / 2 / 3</b> tag &middot; <b>B</b> mark bad &middot; drag video bar to seek, right side = volume.
-   Tags save to <code>benchmark/tags.json</code>; tagging auto-advances to the next untagged clip.</div>
+ <div class=done id=done style=display:none></div>
+ <div class=hint>Default shows <b>only untagged</b> clips, so nothing you've tagged comes back.
+   Keys: <b>Space</b> play/pause &middot; <b>&larr;/&rarr;</b> or P/N move &middot; <b>1/2/3</b> tag &middot;
+   <b>U</b> I don't know &middot; <b>B</b> bad. Saved to <code>benchmark/tags.json</code>.</div>
 </div>
 <script>
-let clips=[],tags={},i=0;const TAGS=__TAGS__;
+let clips=[],tags={},filter='untagged',view=[],vi=0;const TAGS=__TAGS__;
 async function boot(){
-  const d=await (await fetch('/api/clips')).json();
-  clips=d.clips;tags=d.tags||{};
+  const d=await (await fetch('/api/clips')).json();clips=d.clips;tags=d.tags||{};
   const b=document.getElementById('btns');b.innerHTML='';
   TAGS.forEach(t=>{const el=document.createElement('button');el.className='tag';el.style.background=t[2];
-    el.textContent=t[1];el.dataset.k=t[0];el.onclick=()=>tag(t[0]);b.appendChild(el);});
-  i=clips.findIndex(c=>!tags[c]);if(i<0)i=0;show();
+    el.textContent=t[1];el.dataset.k=t[0];el.onclick=()=>act({tag:t[0]});b.appendChild(el);});
+  buildView();vi=0;show();
 }
+function buildView(){
+  if(filter==='untagged')view=clips.filter(c=>!tags[c]);
+  else if(filter==='unsure')view=clips.filter(c=>tags[c]&&tags[c].tag==='unknown');
+  else view=clips.slice();
+}
+function setFilter(f){filter=f;buildView();vi=0;show();}
 function show(){
-  const c=clips[i],v=document.getElementById('vid');
+  const total=clips.length,done=Object.keys(tags).length;
+  document.getElementById('prog').textContent=done+' / '+total+' tagged  ('+view.length+' in view)';
+  if(view.length===0){document.getElementById('main').style.display='none';
+    const dv=document.getElementById('done');dv.style.display='block';
+    dv.textContent=(filter==='untagged')?'✓ All clips tagged. Nothing left untagged!':'Nothing in this view.';return;}
+  document.getElementById('main').style.display='';document.getElementById('done').style.display='none';
+  if(vi>=view.length)vi=view.length-1;if(vi<0)vi=0;
+  const c=view[vi],v=document.getElementById('vid');
   v.src='/media/'+c.split('/').map(encodeURIComponent).join('/');v.load();
-  document.getElementById('name').textContent=(i+1)+' / '+clips.length+'   '+c.split('/')[1];
-  const cur=tags[c];let s='folder guess: <b>'+c.split('/')[0]+'</b> &middot; ';
-  if(!cur)s+='not tagged yet';
+  document.getElementById('name').textContent=(vi+1)+' / '+view.length+'   '+c.split('/')[1];
+  const cur=tags[c];let s='folder: <b>'+c.split('/')[0]+'</b> &middot; ';
+  if(!cur)s+='not tagged';
   else if(cur.tag==='bad')s+='<span class=badt>BAD: '+(cur.reason||'')+'</span>';
+  else if(cur.tag==='unknown')s+='<span class=unk>marked: unsure</span>';
   else s+='<span class=tagged>tagged: '+cur.tag+'</span>';
   document.getElementById('cur').innerHTML=s;
   document.querySelectorAll('button.tag').forEach(el=>el.classList.toggle('sel',cur&&cur.tag===el.dataset.k));
   document.getElementById('reason').value=(cur&&cur.tag==='bad')?(cur.reason||''):'';
-  document.getElementById('prog').textContent=Object.keys(tags).length+' / '+clips.length+' tagged';
 }
 async function post(body){await fetch('/api/tag',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});}
-async function tag(k){const c=clips[i];await post({clip:c,tag:k});tags[c]={tag:k};show();setTimeout(nextUntagged,250);}
-async function markBad(){const r=document.getElementById('reason').value.trim();
-  if(!r){alert('Please type why this clip is bad first.');document.getElementById('reason').focus();return;}
-  const c=clips[i];await post({clip:c,tag:'bad',reason:r});tags[c]={tag:'bad',reason:r};show();setTimeout(nextUntagged,250);}
-function go(d){i=Math.max(0,Math.min(clips.length-1,i+d));show();}
-function nextUntagged(){let j=clips.findIndex((c,idx)=>idx>i&&!tags[c]);
-  if(j<0)j=clips.findIndex(c=>!tags[c]);if(j>=0){i=j;show();}else{i=Math.min(i+1,clips.length-1);show();}}
+async function act(entry){
+  const c=view[vi];if(!c)return;await post({clip:c,...entry});tags[c]=entry;
+  buildView();show();                     // in 'untagged' view the clip drops out -> auto next
+}
+function markBad(){const r=document.getElementById('reason').value.trim();
+  if(!r){alert('Type why this clip is bad first.');document.getElementById('reason').focus();return;}
+  act({tag:'bad',reason:r});}
+function go(d){vi=Math.max(0,Math.min(view.length-1,vi+d));show();}
 document.addEventListener('keydown',e=>{
   if(e.target.tagName==='INPUT')return;
   if(e.code==='Space'){e.preventDefault();const v=document.getElementById('vid');v.paused?v.play():v.pause();}
   else if(e.key==='ArrowRight'||e.key==='n'||e.key==='N')go(1);
   else if(e.key==='ArrowLeft'||e.key==='p'||e.key==='P')go(-1);
-  else if(e.key==='1')tag(TAGS[0][0]);else if(e.key==='2')tag(TAGS[1][0]);else if(e.key==='3')tag(TAGS[2][0]);
+  else if(e.key==='1')act({tag:TAGS[0][0]});else if(e.key==='2')act({tag:TAGS[1][0]});
+  else if(e.key==='3')act({tag:TAGS[2][0]});else if(e.key==='u'||e.key==='U')act({tag:'unknown'});
   else if(e.key==='b'||e.key==='B')markBad();
 });
 boot();
@@ -154,7 +185,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         try:
             self.wfile.write(data)
         except (BrokenPipeError, ConnectionResetError, ConnectionAbortedError, OSError):
-            pass  # browser aborted the (range) request -- normal for <video>
+            pass
 
     def _send(self, code, ctype, body):
         try:
@@ -247,7 +278,7 @@ def main():
     try:
         httpd = Server(("127.0.0.1", port), Handler)
     except OSError as e:
-        print(f"Could not start on port {port} ({e}). Try another: python benchmark/tagger.py 8010")
+        print(f"Could not start on port {port} ({e}). Try: python benchmark/tagger.py 8010")
         return
     print(f"Tagger running: {url}   ({n} clips)")
     print("Opening your browser... press Ctrl+C here to stop.")

@@ -25,3 +25,6 @@ docs/*.pdf
 data/input/*
 !data/input/.gitkeep
 !data/input/clip.mp4
+
+# tagger backup
+benchmark/tags.json.bak
