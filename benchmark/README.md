@@ -73,13 +73,18 @@ truth.
 `tagger.py`.
 
 ## Tagging the clips — `tagger.py`
-A tiny local web app to review every clip and tag it into one of the 3 categories (this human tag is
-the source of truth; the folders were only an automated guess).
+A tiny local web app to review every clip and tag it (this human tag is the source of truth; the
+folders were only an automated guess). **Run it in your OWN terminal** (not through the Claude app),
+so Ctrl+C fully stops it:
 ```bash
 python benchmark/tagger.py
 ```
-Then open **http://localhost:8000**. For each clip: play it (normal controls — play/pause, seek bar
-to rewind, volume), then click one of the 3 buttons (or press **1 / 2 / 3**):
-1. Sound source **NOT** visible &nbsp; 2. Sound source **IS** visible &nbsp; 3. **No** ambient sound.
+It auto-opens **http://localhost:8000** in your default browser. For each clip: play it (normal
+controls — play/pause, seek bar to rewind, volume), then click a button (or press the key):
+- **1** source **NOT** visible &middot; **2** source **IS** visible &middot; **3** **No** ambient sound
+- **B** (red button) = **BAD** — discard this clip; a **reason is required** (typed in the box). Bad
+  clips are removed from the benchmark and their reasons guide future sourcing.
+
 Navigate with **&larr;/&rarr;** (or P/N); **Space** = play/pause. Tagging auto-advances to the next
-untagged clip. Tags save immediately to **`benchmark/tags.json`**.
+untagged clip. Tags save immediately to **`benchmark/tags.json`**. Press **Ctrl+C** in the terminal
+to stop the app when done.
