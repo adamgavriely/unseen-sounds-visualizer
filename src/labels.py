@@ -15,6 +15,16 @@ SPEECH_LABELS = {
     "Speech", "Male speech, man speaking", "Female speech, woman speaking",
     "Narration, monologue", "Conversation", "Speech synthesizer",
     "Child speech, kid speaking", "Hubbub, speech noise, speech babble", "Chatter",
+    "Whispering", "Shout", "Yell", "Children shouting", "Screaming",
+}
+# Musical instruments / score elements — treat as music (non-salient for now, A6),
+# so film/trailer soundtracks aren't mistaken for real ambient sound.
+INSTRUMENTS = {
+    "Piano", "Electric piano", "Organ", "Keyboard (musical)", "Synthesizer", "Sampler",
+    "Orchestra", "Violin, fiddle", "Cello", "Bowed string instrument", "Plucked string instrument",
+    "Guitar", "Acoustic guitar", "Electric guitar", "Bass guitar", "Banjo", "Harp",
+    "Drum", "Drum kit", "Percussion", "Cymbal", "Snare drum", "Timpani",
+    "Trumpet", "Trombone", "French horn", "Flute", "Choir", "Singing", "Mantra", "Theremin",
 }
 # Acoustic-environment / ambience descriptors: real, but not a discrete source to depict.
 SCENE_LABELS = {
@@ -41,7 +51,7 @@ GENERIC_LABELS = {
 
 
 def is_music(label: str) -> bool:
-    return label in MUSIC_LABELS or label.endswith("music")
+    return label in MUSIC_LABELS or label in INSTRUMENTS or label.endswith("music")
 
 
 def is_salient_nonspeech(label: str) -> bool:

@@ -71,6 +71,18 @@ def save_tags(tags):
     TAGS_FILE.write_text(json.dumps(tags, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
+SUGG_FILE = ROOT / "benchmark" / "suggestions.json"
+
+
+def load_suggestions():
+    if SUGG_FILE.exists():
+        try:
+            return json.loads(SUGG_FILE.read_text(encoding="utf-8"))
+        except Exception:
+            return {}
+    return {}
+
+
 PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
 <title>Benchmark tagger</title>
 <style>
@@ -83,7 +95,7 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
  video{width:100%;max-height:58vh;background:#000;border-radius:8px;margin:10px 0}
  .name{font-size:15px;color:#ddd;word-break:break-all}
  .cur{font-size:13px;color:#888;margin-top:2px;min-height:18px}
- .tagged{color:#7c7}.badt{color:#f77}.unk{color:#fb3}
+ .tagged{color:#7c7}.badt{color:#f77}.unk{color:#fb3}.sug{color:#e0b25a}
  .btns{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:12px 0 6px}
  .cell{display:flex;flex-direction:column;gap:5px}
  button.tag{padding:15px 8px;font-size:15px;border:none;border-radius:8px;color:#fff;cursor:pointer;opacity:.92}
@@ -131,9 +143,10 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
    <b>U</b> I don't know &middot; <b>B</b> bad. Saved to <code>benchmark/tags.json</code>.</div>
 </div>
 <script>
-let clips=[],tags={},filter='untagged',view=[],vi=0;const TAGS=__TAGS__;
+let clips=[],tags={},suggestions={},filter='untagged',view=[],vi=0;const TAGS=__TAGS__;
+const SUGNAME={unseen_ambient:'Heard, not seen',seen_ambient:'Heard and seen',mixed:'Both/mixed',no_ambient:'No ambient','?':'?'};
 async function boot(){
-  const d=await (await fetch('/api/clips')).json();clips=d.clips;tags=d.tags||{};
+  const d=await (await fetch('/api/clips')).json();clips=d.clips;tags=d.tags||{};suggestions=d.suggestions||{};
   const b=document.getElementById('btns');b.innerHTML='';
   TAGS.forEach((t,idx)=>{
     const cell=document.createElement('div');cell.className='cell';
@@ -161,7 +174,9 @@ function show(){
   v.src='/media/'+c.split('/').map(encodeURIComponent).join('/');v.load();
   document.getElementById('name').textContent=(vi+1)+' / '+view.length+'   '+c.split('/')[1];
   const cur=tags[c];let s='folder: <b>'+c.split('/')[0]+'</b> &middot; ';
-  if(!cur)s+='not tagged';
+  if(!cur){s+='not tagged';
+    const sg=suggestions[c];
+    if(sg&&sg.suggest)s+=' &middot; <span class=sug>suggest: <b>'+(SUGNAME[sg.suggest]||sg.suggest)+'</b> &mdash; '+sg.reason+'</span>';}
   else if(cur.tag==='bad')s+='<span class=badt>BAD: '+(cur.reason||'')+'</span>';
   else if(cur.tag==='unknown')s+='<span class=unk>marked: unsure</span>';
   else s+='<span class=tagged>tagged: '+cur.tag+'</span>';
@@ -218,7 +233,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                        PAGE.replace("__TAGS__", json.dumps(TAG_OPTIONS)).encode("utf-8"))
         elif path == "/api/clips":
             self._send(200, "application/json",
-                       json.dumps({"clips": list_clips(), "tags": load_tags()}).encode())
+                       json.dumps({"clips": list_clips(), "tags": load_tags(),
+                                   "suggestions": load_suggestions()}).encode())
         elif path.startswith("/media/"):
             self._serve_media(BENCH / urllib.parse.unquote(path[len("/media/"):]))
         else:
