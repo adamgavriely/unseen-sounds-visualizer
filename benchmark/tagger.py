@@ -26,7 +26,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 BENCH = ROOT / "data" / "input" / "benchmark"
-FOLDERS = ["unseen_ambient", "seen_ambient", "no_ambient", "unsorted"]
+FOLDERS = ["unseen_ambient", "seen_ambient", "mixed", "no_ambient", "unsorted"]
+# where a tagged clip's file should live (unknown -> stay put; bad -> _bad, out of view)
+TAG_FOLDER = {"unseen_ambient": "unseen_ambient", "seen_ambient": "seen_ambient",
+              "mixed": "mixed", "no_ambient": "no_ambient", "bad": "_bad"}
 TAGS_FILE = ROOT / "benchmark" / "tags.json"
 EXT = {".webm", ".ogv", ".mp4"}
 PORT = 8000
@@ -81,6 +84,42 @@ def load_suggestions():
         except Exception:
             return {}
     return {}
+
+
+def move_for_tag(clip_key, tag):
+    """Move a tagged clip's FILE into its category folder; return the new key.
+    unknown -> stays put (revisit later); bad -> _bad/ (out of view)."""
+    tf = TAG_FOLDER.get(tag)
+    if not tf:
+        return clip_key
+    src = BENCH / clip_key
+    if not src.exists():
+        return clip_key
+    (BENCH / tf).mkdir(exist_ok=True)
+    dest = BENCH / tf / src.name
+    try:
+        if src.resolve() == dest.resolve():
+            return clip_key
+        if dest.exists():
+            dest.unlink()
+        src.rename(dest)
+    except OSError:
+        return clip_key
+    return f"{tf}/{src.name}"
+
+
+def reconcile():
+    """One-time at startup: move already-tagged clips into their folders."""
+    with _LOCK:
+        tags = load_tags()
+        new, changed = {}, False
+        for k, v in tags.items():
+            nk = move_for_tag(k, v.get("tag"))
+            new[nk] = v
+            changed = changed or (nk != k)
+        if changed:
+            save_tags(new)
+            print(f"reconciled: moved tagged clips into their folders")
 
 
 PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
@@ -248,8 +287,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if data.get("reason"):
                 entry["reason"] = data["reason"]
             with _LOCK:
+                newkey = move_for_tag(data["clip"], data["tag"])   # move file to its folder
                 tags = load_tags()
-                tags[data["clip"]] = entry
+                if newkey != data["clip"]:
+                    tags.pop(data["clip"], None)
+                tags[newkey] = entry
                 save_tags(tags)
             self._send(200, "application/json", b'{"ok":true}')
         else:
@@ -303,6 +345,7 @@ class Server(socketserver.ThreadingTCPServer):
 
 def main():
     port = int(sys.argv[1]) if len(sys.argv) > 1 else PORT
+    reconcile()   # move any already-tagged clips into their folders on startup
     n = len(list_clips())
     url = f"http://localhost:{port}"
     try:
