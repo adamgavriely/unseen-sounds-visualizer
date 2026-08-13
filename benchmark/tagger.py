@@ -225,8 +225,13 @@ function show(){
 }
 async function post(body){await fetch('/api/tag',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});}
 async function act(entry){
-  const c=view[vi];if(!c)return;await post({clip:c,...entry});tags[c]=entry;
-  buildView();show();                     // in 'untagged' view the clip drops out -> auto next
+  const c=view[vi];if(!c)return;
+  tags[c]=entry;
+  // advance the UI IMMEDIATELY so the clip never re-shows; real categories + bad are
+  // removed from this session entirely (unknown stays, to revisit via the Unsure filter).
+  if(entry.tag!=='unknown'){const idx=clips.indexOf(c);if(idx>=0)clips.splice(idx,1);}
+  buildView();if(vi>=view.length)vi=view.length-1;show();
+  try{await post({clip:c,...entry});}catch(e){console.error('save failed',e);}   // move/save in background
 }
 function markBad(){const r=document.getElementById('reason').value.trim();
   if(!r){alert('Type why this clip is bad first.');document.getElementById('reason').focus();return;}
