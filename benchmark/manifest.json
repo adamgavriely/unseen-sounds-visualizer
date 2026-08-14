@@ -302,6 +302,122 @@
       "gt_should_augment": [
         "Vehicle"
       ]
+    },
+    {
+      "clip_id": "waterfall_kawaida_01",
+      "source": "wikimedia",
+      "url": "https://commons.wikimedia.org/wiki/File:Front_view_video_of_Kawaida_Waterfall,_Cianda,_Kiambu_County.webm",
+      "license": "CC-BY-SA-4.0",
+      "attribution": "See Commons file page",
+      "orig_duration": 11.2,
+      "clip_start": 0.0,
+      "clip_end": 14.0,
+      "duration": 11.2,
+      "scenario": "ambient",
+      "category": "negative_control",
+      "events": [
+        {
+          "label": "Speech",
+          "start": 0.0,
+          "end": 11.25,
+          "confidence": 0.633,
+          "salient": false,
+          "music": false,
+          "source_visible": null,
+          "note": ""
+        },
+        {
+          "label": "Waves, surf",
+          "start": 5.76,
+          "end": 8.96,
+          "confidence": 0.327,
+          "salient": true,
+          "music": false,
+          "source_visible": true,
+          "note": "waterfall fills the frame; sound source fully visible"
+        },
+        {
+          "label": "Ocean",
+          "start": 6.08,
+          "end": 8.96,
+          "confidence": 0.305,
+          "salient": true,
+          "music": false,
+          "source_visible": true,
+          "note": "waterfall fills the frame; sound source fully visible"
+        },
+        {
+          "label": "Wind",
+          "start": 6.4,
+          "end": 8.64,
+          "confidence": 0.125,
+          "salient": false,
+          "music": false,
+          "source_visible": null,
+          "note": "ambient/mic wind artifact"
+        },
+        {
+          "label": "Wind noise (microphone)",
+          "start": 6.4,
+          "end": 8.32,
+          "confidence": 0.108,
+          "salient": false,
+          "music": false,
+          "source_visible": null,
+          "note": "ambient/mic wind artifact"
+        },
+        {
+          "label": "Waterfall",
+          "start": 8.0,
+          "end": 8.96,
+          "confidence": 0.097,
+          "salient": true,
+          "music": false,
+          "source_visible": true,
+          "note": "waterfall fills the frame; sound source fully visible"
+        },
+        {
+          "label": "Vehicle",
+          "start": 1.6,
+          "end": 10.24,
+          "confidence": 0.091,
+          "salient": false,
+          "music": false,
+          "source_visible": null,
+          "note": "spurious low-confidence FP; no vehicle in scene"
+        },
+        {
+          "label": "Hubbub, speech noise, speech babble",
+          "start": 1.6,
+          "end": 11.25,
+          "confidence": 0.08,
+          "salient": false,
+          "music": false,
+          "source_visible": null,
+          "note": ""
+        },
+        {
+          "label": "Pink noise",
+          "start": 7.04,
+          "end": 7.68,
+          "confidence": 0.058,
+          "salient": false,
+          "music": false,
+          "source_visible": null,
+          "note": "ambient/mic wind artifact"
+        },
+        {
+          "label": "Slosh",
+          "start": 2.56,
+          "end": 2.88,
+          "confidence": 0.052,
+          "salient": true,
+          "music": false,
+          "source_visible": true,
+          "note": "waterfall fills the frame; sound source fully visible"
+        }
+      ],
+      "gt_should_augment": []
     }
   ]
 }
