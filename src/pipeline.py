@@ -90,9 +90,10 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                                    device=config.DEVICE)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
 
-    print("[7/7] compositing alongside the video...")
+    print(f"[7/7] compositing alongside the video (mode={config.RENDER_MODE})...")
     out_mp4 = config.OUTPUT_DIR / f"{video_path.stem}_augmented.mp4"
     composite_alongside(video_path, specs, out_mp4, duration=media.duration,
-                        panel=config.PANEL_SIZE, fps=config.FPS)
+                        panel=config.PANEL_SIZE, fps=config.FPS,
+                        mode=config.RENDER_MODE)
     print(f"\nDone -> {out_mp4}\n       artifacts in {work}")
     return PipelineResult(media, scene, segments, events, specs, work, out_mp4)

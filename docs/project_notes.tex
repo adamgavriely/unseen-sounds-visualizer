@@ -848,7 +848,10 @@ Section~\ref{sec:changelog}.
     visuals (not captions/sign) measurably affect DHH users; lit review gained a dedicated section.
     Derived six evidence-backed presentation upgrades (glance/detail layers, stable slots, loudness
     $\to$ visual weight, stereo-panning direction, presets, onset pulse) --- see
-    Section~\ref{sec:stage5}.
+    Section~\ref{sec:stage5}. Implemented the three cheap ones the same day: stable per-sound
+    slots (fixed position, dim label when inactive), confidence-weighted opacity, and
+    \texttt{RENDER\_MODE} presets (\texttt{full/minimal/off}); verified end-to-end on the London
+    clip in all three modes, including multi-slot.
   \item \textbf{2026-08-06 --- Project pivot confirmed.} Definition changed from ``illustrate the
     speech of news clips'' to ``augment video with visuals of missing non-speech audio semantics,
     gated by video understanding.'' New definition is authoritative.

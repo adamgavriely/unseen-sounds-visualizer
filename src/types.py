@@ -83,6 +83,7 @@ class AugmentationSpec:
     start: float
     end: float
     augment: bool                    # the gate decision
+    confidence: float = 0.0          # detector confidence; drives visual weight (opacity)
     reason: str = ""                 # why augment / why not (required for auditability)
     subject: str = ""                # short description of what to depict
     image_prompt: str = ""           # full prompt for the generator

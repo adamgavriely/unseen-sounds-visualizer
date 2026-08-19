@@ -42,6 +42,11 @@ DISPLAY_THRESHOLD = 0.15
 
 # Stage 6 — visual augmentation generation
 GEN_BACKEND = "retrieve"     # v1: retrieve (Openverse, free) | placeholder | diffusion (v2 TODO)
+# Presentation preset (DHH evidence: users want choices; see notes "Rendering improvements"):
+#   full    = stable per-sound slots with imagery, opacity weighted by confidence
+#   minimal = same slots, compact label chips instead of imagery (icon set is a TODO)
+#   off     = no augmentation panel (control condition; output = original video)
+RENDER_MODE = "full"
 GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"   # for the v2 diffusion backend
 RESOLUTION = (1024, 1024)    # augmentation image size
 PANEL_SIZE = 720             # side-by-side augmentation panel size (px)

@@ -55,7 +55,7 @@ def plan_augmentations(scene: SceneContext,
                 reason = "salient non-speech sound, source not visible -> augment"
         specs.append(AugmentationSpec(
             index=i, event_label=ev.label, start=ev.start, end=ev.end,
-            augment=augment, reason=reason,
+            augment=augment, confidence=ev.confidence, reason=reason,
             subject=ev.label if augment else "",
             image_prompt=(f"A clear, simple illustration of: {ev.label}" if augment else ""),
         ))

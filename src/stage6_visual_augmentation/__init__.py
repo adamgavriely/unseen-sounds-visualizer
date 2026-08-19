@@ -154,11 +154,26 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
 
 # ----------------------------------------------------------------------
 # alongside-video compositor
+#
+# Panel layout follows the DHH-visualization evidence (notes, "Rendering
+# improvements"): each augmented sound gets a FIXED slot for the whole clip
+# (moving/popping visuals distract DHH viewers), and an active slot's opacity
+# scales with detector confidence (loudness -> visual weight). TODO: temporal
+# fade at slot activation (needs per-frame rendering, not a concat slideshow).
 # ----------------------------------------------------------------------
+def _slot_order(specs: List[AugmentationSpec]) -> List[str]:
+    """One slot per sound label, ordered by first appearance; stable all clip."""
+    order = []
+    for s in sorted([s for s in specs if s.augment and s.image_path],
+                    key=lambda s: s.start):
+        if s.event_label not in order:
+            order.append(s.event_label)
+    return order
+
+
 def _timeline(specs: List[AugmentationSpec], duration: float):
-    """Contiguous segments over [0,duration]; each carries the active image+label
-    (the most recently-started augmentation covering that time), or None."""
-    ev = sorted([s for s in specs if s.augment and s.image_path], key=lambda s: s.start)
+    """Contiguous segments over [0,duration]; each carries {label: active spec}."""
+    ev = [s for s in specs if s.augment and s.image_path]
     bounds = sorted({0.0, duration} | {s.start for s in ev}
                     | {min(s.end, duration) for s in ev})
     segs = []
@@ -166,35 +181,86 @@ def _timeline(specs: List[AugmentationSpec], duration: float):
         if b - a < 0.05:
             continue
         mid = (a + b) / 2
-        active = [s for s in ev if s.start <= mid < s.end]
-        chosen = max(active, key=lambda s: s.start) if active else None
-        segs.append((chosen.image_path if chosen else None,
-                     chosen.event_label if chosen else "", b - a))
-    return segs or [(None, "", duration)]
+        active = {}
+        for s in ev:
+            if s.start <= mid < s.end:
+                active[s.event_label] = s
+        segs.append((active, b - a))
+    return segs or [({}, duration)]
+
+
+def _opacity(confidence: float) -> float:
+    """Confidence -> visual weight: faint sounds render translucent, strong ones
+    solid (evidence: SoundVizVR loudness encoding / Fortnite distance-as-opacity)."""
+    return 0.45 + 0.55 * max(0.0, min(1.0, confidence / 0.6))
+
+
+def _chip_color(label: str) -> tuple:
+    palette = [(214, 93, 76), (76, 145, 214), (98, 180, 106), (206, 164, 66),
+               (160, 108, 208), (72, 180, 178)]
+    return palette[hash(label) % len(palette)]
+
+
+def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpec],
+                 label: str, mode: str) -> None:
+    """Draw one fixed slot: image/chip when its sound is active, dim label when not."""
+    x0, y0, x1, y1 = box
+    w, h = x1 - x0, y1 - y0
+    d = ImageDraw.Draw(canvas, "RGBA")
+    if spec is None:                       # inactive: dark slot, dim label placeholder
+        d.rectangle(box, fill=(16, 18, 24))
+        d.text((x0 + 14, (y0 + y1) // 2 - 6), label, fill=(70, 76, 90))
+    elif mode == "minimal":                # active chip: color band + label, no imagery
+        d.rectangle(box, fill=(24, 26, 34))
+        r, g, b = _chip_color(label)
+        a = int(255 * _opacity(spec.confidence))
+        d.rectangle([x0, y0, x0 + 10, y1], fill=(r, g, b, a))
+        d.text((x0 + 24, (y0 + y1) // 2 - 6), label, fill=(230, 232, 240, a))
+    else:                                  # active image, opacity = confidence weight
+        img = _caption(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
+                       label).convert("RGBA")
+        img.putalpha(int(255 * _opacity(spec.confidence)))
+        base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
+        canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
+    d.line([x0, y1 - 1, x1, y1 - 1], fill=(40, 44, 56))
 
 
 def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
                         out_path: Path, duration: float,
-                        panel: int = 720, fps: int = 25) -> Path:
-    """Side-by-side: original video (left) + time-aligned augmentation panel (right)."""
+                        panel: int = 720, fps: int = 25,
+                        mode: str = "full") -> Path:
+    """Side-by-side: original video (left) + time-aligned augmentation panel (right).
+
+    mode: "full" (imagery in stable slots) | "minimal" (label chips) |
+    "off" (no panel: re-encode the original as-is, the control condition)."""
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    if mode == "off":
+        subprocess.run(["ffmpeg", "-y", "-i", str(video_path), "-c:v", "libx264",
+                        "-preset", "veryfast", "-crf", "28", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", str(out_path)], check=True, capture_output=True)
+        return out_path
     work = out_path.parent / f"_{out_path.stem}_panels"
     work.mkdir(parents=True, exist_ok=True)
     for old in work.glob("*.png"):
         old.unlink()
 
-    # build the panel slideshow inputs
+    # build the panel slideshow inputs: fixed slot per sound, stacked vertically
+    slots = _slot_order(specs)
     segs = _timeline(specs, duration)
     lines = []
-    for i, (img, label, dur) in enumerate(segs):
+    for i, (active, dur) in enumerate(segs):
         p = work / f"p{i:04d}.png"
-        if img:
-            _caption(_cover_crop(Image.open(img).convert("RGB"), (panel, panel)), label).save(p)
-        else:
-            base = Image.new("RGB", (panel, panel), (16, 18, 24))
-            d = ImageDraw.Draw(base)
+        canvas = Image.new("RGB", (panel, panel), (16, 18, 24))
+        if not slots:
+            d = ImageDraw.Draw(canvas)
             d.text((panel // 2 - 40, panel // 2), "(no sound)", fill=(90, 96, 110))
-            base.save(p)
+        else:
+            sh = panel // len(slots)
+            for k, label in enumerate(slots):
+                y1 = panel if k == len(slots) - 1 else (k + 1) * sh
+                _render_slot(canvas, (0, k * sh, panel, y1), active.get(label),
+                             label, mode)
+        canvas.save(p)
         # concat resolves 'file' paths relative to concat.txt's own dir -> use basenames
         lines += [f"file '{p.name}'", f"duration {dur:.3f}"]
     lines.append(f"file 'p{len(segs)-1:04d}.png'")
