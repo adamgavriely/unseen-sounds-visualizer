@@ -514,6 +514,35 @@ The gating decision needs its own metric: on a hand-labelled subset, measure \em
 (precision/recall on the ``augment'' decision). This directly measures the contribution and is
 independent of downstream image quality.
 
+\subsection{Rendering improvements grounded in the DHH-visualization evidence (2026-08-19)}
+Follow-up research on non-text sound visualization for DHH users (details in the literature review,
+\S``Beyond subtitles and sign language'') yields concrete, train-nothing upgrades to our
+\emph{presentation} layer, ranked by evidence strength and cost:
+\begin{enumerate}
+  \item \textbf{Two-level rendering: glance layer + detail layer.} Pattern/icon recognition is faster
+    than reading, and colour registers in peripheral vision; deaf viewers' peripheral vision is
+    unusually acute. Show a small persistent \emph{icon} per active off-screen sound (glanceable),
+    and the rich retrieved/generated \emph{image} only for high-salience events. Cheap: we already
+    have the label $\to$ icon set is a static asset.
+  \item \textbf{Stable slots, no popping.} Eye-tracking work on dynamic (speaker-following) captions
+    found moving text \emph{distracts} DHH viewers; static placement is preferred. Keep each sound
+    family in a fixed panel slot for the clip's duration; fade in/out, never jump.
+  \item \textbf{Loudness $\to$ visual weight.} SoundVizVR encodes loudness/duration; Fortnite encodes
+    distance as opacity; deaf users preferred displays with amplitude+position over spectral detail.
+    Map per-frame event confidence/RMS to icon size or image opacity --- one compositor change.
+  \item \textbf{Direction from stereo panning.} A pointing cue helps DHH viewers link a sound to a
+    place. For stereo soundtracks, per-channel RMS difference gives a free left/right estimate ---
+    render a small arrow on the augmentation. \TODO{Adam: many benchmark clips may be mono; check
+    what fraction of the benchmark has usable stereo before investing.}
+  \item \textbf{Customization presets.} The strongest DHH finding is heterogeneity (``Choices? That's
+    the dream''): offer \texttt{off / icons-only / full-imagery} modes --- a config flag, and a
+    natural ablation axis for the user study.
+  \item \textbf{Onset pulse.} Peripheral vision is contrast/motion sensitive: a brief pulse at event
+    onset, then static, draws attention without sustained distraction.
+\end{enumerate}
+Items 2, 3 and 5 are one-file changes to the Stage-6 compositor/config; item 1 needs an icon set
+(e.g.\ CC icons per sound family); item 4 is a small analysis utility.
+
 % ======================================================================
 \section{Model and Tooling Recommendations}\label{sec:models}
 % ======================================================================
@@ -815,6 +844,11 @@ Section~\ref{sec:changelog}.
 \section{Decisions and Notes Log}\label{sec:changelog}
 % ======================================================================
 \begin{itemize}
+  \item \textbf{2026-08-19 --- Non-text visualization evidence + rendering roadmap.} Deep-dive on how
+    visuals (not captions/sign) measurably affect DHH users; lit review gained a dedicated section.
+    Derived six evidence-backed presentation upgrades (glance/detail layers, stable slots, loudness
+    $\to$ visual weight, stereo-panning direction, presets, onset pulse) --- see
+    Section~\ref{sec:stage5}.
   \item \textbf{2026-08-06 --- Project pivot confirmed.} Definition changed from ``illustrate the
     speech of news clips'' to ``augment video with visuals of missing non-speech audio semantics,
     gated by video understanding.'' New definition is authoritative.
