@@ -161,13 +161,24 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
 # scales with detector confidence (loudness -> visual weight). TODO: temporal
 # fade at slot activation (needs per-frame rendering, not a concat slideshow).
 # ----------------------------------------------------------------------
+MAX_SLOTS = 3   # granularity requirement (notes sec:granularity): >=3 simultaneous
+                # sources never observed on the benchmark; more would split attention
+
+
 def _slot_order(specs: List[AugmentationSpec]) -> List[str]:
-    """One slot per sound label, ordered by first appearance; stable all clip."""
+    """One slot per sound label, ordered by first appearance; stable all clip.
+    Capped at MAX_SLOTS keeping the highest-confidence sources."""
+    aug = [s for s in specs if s.augment and s.image_path]
     order = []
-    for s in sorted([s for s in specs if s.augment and s.image_path],
-                    key=lambda s: s.start):
+    for s in sorted(aug, key=lambda s: s.start):
         if s.event_label not in order:
             order.append(s.event_label)
+    if len(order) > MAX_SLOTS:
+        best = {}
+        for s in aug:
+            best[s.event_label] = max(best.get(s.event_label, 0.0), s.confidence)
+        keep = sorted(order, key=lambda lb: -best[lb])[:MAX_SLOTS]
+        order = [lb for lb in order if lb in keep]
     return order
 
 

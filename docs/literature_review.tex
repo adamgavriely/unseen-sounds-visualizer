@@ -524,6 +524,38 @@ combination --- task formulation, cross-modal gating, benchmark, and an evaluati
 is the contribution. Everything reviewed here is either a component we glue together or a baseline we
 measure against.
 
+\subsection{Comparative scope: positioning against the five alternatives}
+\begin{center}
+\small
+\begin{longtable}{@{}p{2.6cm}p{2.5cm}p{2.3cm}p{2.2cm}p{2.2cm}p{2.6cm}@{}}
+\toprule
+& \textbf{Subtitles / SDH} & \textbf{Sign language} & \textbf{Audio-to-Image (SonicDiffusion etc.)} & \textbf{Sound2Scene} & \textbf{Audio-to-Video (TempoTokens)} \\
+\midrule
+\endhead
+Output for a sound & bracketed text label & interpreted signing & generated image & generated image & generated video \\
+Sees the existing video? & captioner does (manual gating) & interpreter does & \textbf{no --- blind} & \textbf{no --- blind} & \textbf{no --- blind} \\
+Decides \emph{which} sounds need conveying & by hand (DCMP rule) & by hand & no & no & no \\
+Accessibility-purposed & yes & yes & no & no & no \\
+Automatable at scale & yes (ASR for speech; NSI rarely) & no & yes (GPU) & yes (GPU) & yes (heavy GPU) \\
+Emotional/atmospheric bandwidth & low & high & high & high & high \\
+Preserves original frame & overlays text & separate window & replaces (no video) & replaces (no video) & generates new video \\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\noindent\textbf{This project} is the only column that would tick every row: it \emph{sees the video}
+(Stage~2), \emph{decides} which sounds are unconveyed (Stage~5 automates the DCMP editorial rule that
+captioners apply by hand), produces a \emph{high-bandwidth image} (Stage~6), is
+\emph{accessibility-purposed} with a DHH-grounded design (\S2), runs \emph{train-nothing} on
+off-the-shelf models, and composites \emph{alongside} the untouched original frame. Against each
+alternative the unique contribution is one sharp delta: vs.\ SDH --- bandwidth and automation of the
+non-speech layer; vs.\ sign language --- availability and automatability; vs.\ audio-to-image/video
+generation (SonicDiffusion, Sound2Scene, TempoTokens) --- \emph{cross-modal selectivity}: they render
+whatever they hear, blind to the picture, whereas our gate renders only what the picture fails to
+show. Those blind generators are therefore our natural baselines: on the benchmark they should
+over-generate (augment visible sources), and the gating-accuracy gap between them and us \emph{is}
+the measured contribution.
+
 % ======================================================================
 \begin{thebibliography}{99}
 % ======================================================================

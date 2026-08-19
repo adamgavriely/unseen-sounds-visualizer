@@ -508,6 +508,41 @@ defensible, measurable basis (and a natural ablation: LLM-only vs.\ LLM+localiza
     inspectable; do not make it the default.}
 \end{itemize}
 
+\subsection{Sound granularity requirements (2026-08-20)}\label{sec:granularity}
+Decided from a measurement over 16 real benchmark clips (PANNs at our thresholds):
+raw salient events fire at $8.2$/clip, but after family consolidation and the display threshold this
+collapses to $\mathbf{0.9}$ canonical sources/clip (max 2, never 3+ simultaneous); median event span
+$1.6$\,s with 37\% under 1\,s; without consolidation, sub-labels would duplicate massively
+(Vehicle-family fired 28 times, Bird 17, Rain 11 across the sample).
+
+\begin{description}
+  \item[Taxonomic: the ``depictable source'' level.] Work at the granularity of a nameable,
+    depictable real-world source (Dog, Vehicle, Train, Bird, Siren, Rain) --- \emph{not} AudioSet
+    leaves (``Yip'', ``Clickety-clack'': undepictable, unreliable) and \emph{not} superclasses
+    (``Animal'': too vague to depict or gate). This is the level at which (a) DCMP says to name a
+    sound source, (b) CLIP can check visibility, (c) retrieval/generation has a subject. Split a
+    family only when depiction \emph{and} the visible concept both differ (Siren $\ne$ Vehicle;
+    Thunder $\ne$ Rain). The \texttt{FAMILY} map in \texttt{src/labels.py} implements this and the
+    data shows it is load-bearing.
+  \item[Temporal: detect fine, display coarse.] Keep detection at PANNs' frame resolution
+    (min span 0.2\,s), but never \emph{display} below glanceability: minimum display duration
+    $\approx$2\,s (median event is only 1.6\,s; 37\% would otherwise flash). v1 currently merges all
+    same-source firings into one span (coarsest option) --- acceptable for gating evaluation.
+    \TODO{Adam: decide gap-aware splitting (e.g.\ split a source's span at silent gaps $>$3\,s) if
+    the single-span display feels dishonest on longer clips.}
+  \item[Simultaneity: cap at 3 slots.] Max observed simultaneous sources is 2; divided-attention
+    evidence (Section~\ref{sec:stage5}) says fewer is better. Requirement: panel supports at most 3
+    slots; overflow drops the lowest-confidence source.
+  \item[Intensity: continuous, no levels.] Confidence $\to$ opacity is already continuous; the
+    benchmark ground truth needs only binary salience, not loudness levels.
+  \item[Benchmark ground truth at the same level.] Label GT events with the canonical-source
+    vocabulary (the \texttt{FAMILY} parents), binary \texttt{source\_visible}, spans at $\sim$1\,s
+    precision --- finer timing does not change gating accuracy and would waste labeling effort.
+\end{description}
+\noindent 4 of the 16 sampled clips had zero sources above the display threshold. \TODO{Adam: after
+tagging, check those against your labels --- if you tagged them unseen/seen ambient, the display
+threshold (0.15) is slightly too strict and should be tuned on the benchmark.}
+
 \subsection{Evaluation hooks specific to Stage 5}
 The gating decision needs its own metric: on a hand-labelled subset, measure \emph{gating accuracy}
 --- correctly staying silent when the source is visible, correctly augmenting when it is not
