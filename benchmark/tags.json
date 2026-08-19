@@ -1,0 +1,346 @@
+{
+  "unseen_ambient/bell_miami.webm": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/birds_forest.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/birds_forest_02.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/dog_barking_01.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "no_ambient/dutch_traffic_kids.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/london_protest_01.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/market_iwakuni.mp4": {
+    "tag": "bad",
+    "reason": "audio really low"
+  },
+  "unseen_ambient/protest_brazil.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/row_boat.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/ship_ccgs.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/station_bangkok.mp4": {
+    "tag": "bad",
+    "reason": "only 3 seconds and no audio"
+  },
+  "seen_ambient/station_kwasa1.webm": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/station_kwasa2.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/station_panki.webm": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/station_warszawa.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/thunder_sofia_01.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/train_china_hs.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/train_liminka.webm": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/train_yuyaobei.webm": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/voa_worldseries.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/ambulance_dunedin.ogv": {
+    "tag": "bad",
+    "reason": "only audio"
+  },
+  "unseen_ambient/bell_kazansky.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/bell_pribyslav.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/fireworks_london_nye.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/fireworks_springville.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/puddles_rain.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/rain_road.webm": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/sax_guitar.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/station_passenger.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/waterfall_kawaida_01.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/waves_eforie.ogv": {
+    "tag": "bad",
+    "reason": "no video"
+  },
+  "seen_ambient/waves_herzliya.webm": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/interview_mickharvey.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/interview_peterbuck.mp4": {
+    "tag": "bad",
+    "reason": "no audio"
+  },
+  "no_ambient/kit_piano.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/nasa_symphony.mp4": {
+    "tag": "bad",
+    "reason": "no audio"
+  },
+  "no_ambient/pdfilm_duckcover_200.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/pdfilm_duckcover_30.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/pdfilm_duckcover_420.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/pdfilm_duckcover_520.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/pdfilm_duckcover_90.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/helicopter_ossetia.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/pdfilm_duckcover_260.mp4": {
+    "tag": "bad",
+    "reason": "looks duplicated"
+  },
+  "no_ambient/movie_bladerunner_49.mp4": {
+    "tag": "no_ambient"
+  },
+  "unseen_ambient/movie_bladerunner_91.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "no_ambient/movie_blueplanet_115.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_blueplanet_62.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_dunkirk_48.mp4": {
+    "tag": "unknown"
+  },
+  "seen_ambient/movie_dunkirk_90.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unsorted/movie_hauntedhill_1100.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_hauntedhill_2200.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_hauntedhill_3100.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_hisgirlfriday_1400.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_hisgirlfriday_2750.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unsorted/movie_hisgirlfriday_4100.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_interstellar_52.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_interstellar_98.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_junglebook_51.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_junglebook_95.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_madmax_106.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_madmax_57.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_mybrunette_1300.mp4": {
+    "tag": "no_ambient"
+  },
+  "unsorted/movie_planetearth_108.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/movie_planetearth_58.mp4": {
+    "tag": "no_ambient"
+  },
+  "unseen_ambient/ambient_citywalk_cairo_834.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/ambient_citywalk_mumbai_2737.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/ambient_citywalk_mumbai_782.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/ambient_citywalk_nyc_1689.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "mixed/ambient_citywalk_nyc_2627.mp4": {
+    "tag": "mixed"
+  },
+  "seen_ambient/ambient_citywalk_nyc_750.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unsorted/ambient_citywalk_tokyo_1548.mp4": {
+    "tag": "unknown"
+  },
+  "seen_ambient/ambient_citywalk_tokyo_5420.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unsorted/ambient_desert_wind_148.mp4": {
+    "tag": "unknown"
+  },
+  "no_ambient/ambient_desert_wind_74.mp4": {
+    "tag": "no_ambient"
+  },
+  "_bad/ambient_everyday_cafe_10800.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "unseen_ambient/ambient_everyday_farm_2166.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/ambient_field_stormchaser_312.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/ambient_harbour_boats_1449.mp4": {
+    "tag": "mixed"
+  },
+  "no_ambient/ambient_harbour_boats_724.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/ambient_market_bangkok_1237.mp4": {
+    "tag": "no_ambient"
+  },
+  "_bad/ambient_market_bangkok_2785.mp4": {
+    "tag": "bad",
+    "reason": "too similar to existing"
+  },
+  "no_ambient/ambient_market_bangkok_4332.mp4": {
+    "tag": "no_ambient"
+  },
+  "_bad/ambient_market_istanbul_1446.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/ambient_market_istanbul_413.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/ambient_market_istanbul_930.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "seen_ambient/ambient_market_marrakech_3102.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/ambient_nature_forest_1441.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/ambient_nature_forest_3244.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/ambient_nature_ocean2_3294.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/ambient_nature_ocean2_6588.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/ambient_nature_rainforest_2179.mp4": {
+    "tag": "mixed"
+  },
+  "_bad/ambient_nature_rainforest_4904.mp4": {
+    "tag": "bad",
+    "reason": "mostly music over the video"
+  },
+  "mixed/ambient_nature_rainforest_7629.mp4": {
+    "tag": "mixed"
+  },
+  "_bad/ambient_nature_savanna_4954.mp4": {
+    "tag": "bad",
+    "reason": "too loud music on top"
+  },
+  "_bad/ambient_snow_walk_465.mp4": {
+    "tag": "bad",
+    "reason": "similar to existing"
+  },
+  "mixed/ambient_snow_walk_930.mp4": {
+    "tag": "mixed"
+  },
+  "no_ambient/ambient_temple_india_1438.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/ambient_temple_india_2877.mp4": {
+    "tag": "no_ambient"
+  },
+  "_bad/ambient_transport_airport_1629.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/ambient_transport_airport_2534.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/ambient_transport_station_121.mp4": {
+    "tag": "bad",
+    "reason": "stil image"
+  },
+  "_bad/ambient_transport_station_272.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/ambient_transport_station_423.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "seen_ambient/ambient_transport_subway_10800.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/ambient_transport_subway_21600.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/ambient_waterfall_hike_18078.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/ambient_waterfall_hike_9039.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "mixed/ambient_weather_storm_16200.mp4": {
+    "tag": "mixed"
+  }
+}

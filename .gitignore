@@ -19,7 +19,10 @@ docs/*.log
 docs/*.out
 docs/*.toc
 docs/*.synctex.gz
+# compiled deliverable PDFs ARE tracked (process documentation)
 docs/*.pdf
+!docs/project_notes.pdf
+!docs/literature_review.pdf
 
 # Input videos: keep only the small synthetic test clip; ignore downloaded videos.
 data/input/*
