@@ -132,16 +132,107 @@ grounds it.
     deployed with DHH families) establish, from field studies, \emph{which} sounds DHH users want to
     know about --- doorbells, appliance beeps, alarms, a baby crying, a dog, running water, sirens,
     a running vehicle. \textbf{ProtoSound}~\cite{protosound} lets users personalise a sound
-    recogniser with a few examples. Key lesson for us: these target \emph{alerting/functional} sounds
-    in the user's own environment; \emph{media} accessibility for \emph{atmospheric/narrative} sound
-    is a different, comparatively under-served need. But the sound taxonomy transfers.
+    recogniser with a few examples. A large survey of DHH adults' preferences for wearable/mobile
+    sound-awareness technology~\cite{jainprefs} further found that users want the sound's
+    \emph{identity} and \emph{direction}, want filtering by \emph{importance} (not every sound), and
+    that preferences differ markedly across hearing profiles. Key lesson for us: these target
+    \emph{alerting/functional} sounds in the user's own environment; \emph{media} accessibility for
+    \emph{atmospheric/narrative} sound is a different, comparatively under-served need. But the sound
+    taxonomy --- and the ``identity + direction + importance filtering'' requirement --- transfers.
   \item \textbf{Enriching captions (media).} A line of HCI work augments \emph{text} with visual cues:
     visualising speech prosody and emotion in captions~\cite{prosodycaptions}, visualising speech
     styles~\cite{speechstyles}, and generatively adapting non-speech captions
     (\textbf{CapTune}~\cite{captune}). These show the community sees the same gap we do --- text alone
-    is insufficient --- but they stay within the caption/text paradigm and focus on \emph{speech}
+    is insufficient --- but they stay within the caption/text paradigm and focus mostly on \emph{speech}
     paralinguistics, not generated imagery for ambient sound.
 \end{itemize}
+
+\subsection{Beyond subtitles and sign language: non-text visualizations and their measured effects}
+The user's question ``does a \emph{visual} (not a caption, not an interpreter) actually help DHH
+viewers?'' has been answered piecemeal across four literatures. Read together they form the strongest
+empirical support for this project.
+
+\medskip\noindent\textbf{(a) Expressive (``affective''/``emotive'') captions --- text made visual.}
+The earliest evidence that going beyond plain text helps comes from \textbf{emotive
+captioning}~\cite{emotivecaptions}: captions enhanced with graphics, colour and animation to carry
+sound effects, music and emotion. In the evaluation, eleven DHH viewers compared static and dynamic
+enhanced captions with conventional closed captions; \emph{hard-of-hearing} viewers were
+significantly more positive and reported an enhanced viewing experience, while several \emph{deaf}
+viewers disliked the style (seeing niche value, e.g.\ children's programming). This
+deaf-vs-hard-of-hearing split is the field's first clear demonstration that \emph{DHH is not one
+audience} --- a finding that recurs everywhere below. Modern follow-ups confirm the benefit with
+better designs: an emotion-visualising caption model outperformed conventional captions at conveying
+emotion and emphasis for 16 DHH participants at only a moderate legibility cost~\cite{prosodycaptions},
+and \textbf{Caption Royale}~\cite{captionroyale} mapped the design space of affective typography with
+39 DHH participants across three studies, finding that users judge any visual enhancement first on
+\textbf{readability, minimal distraction, intuitiveness, and emotional clarity} --- criteria that any
+visual channel we add must also satisfy.
+
+\medskip\noindent\textbf{(b) Iconic and graphic sound representations in media.} Closer to our
+proposal, a thread replaces or supplements the \emph{word} with a \emph{picture}. An early pilot,
+\textbf{SoundSign}~\cite{soundsign}, rendered sound effects as icons with a compass showing
+direction and proximity. \textbf{Sound-word animation}~\cite{soundwords} overlaid animated
+onomatopoeia (comic-style sound words) on videos; its user study found animated sound words
+``effectively and naturally visualise the dynamics of sound while clarifying the \emph{position of the
+source}'' and increase enjoyment and visual impact. However, formative work with Deaf participants
+warns that onomatopoeia is \emph{phonetic}: ``as a Deaf person, sometimes we might not understand the
+phonetic aspect of it''~\cite{captune} --- a person who has never heard ``swish'' cannot decode it.
+This is a direct argument for \emph{depicting the source} (imagery), which requires no phonological
+knowledge, over sound-words. Most directly relevant, \textbf{Beyond Subtitles}~\cite{beyondsubtitles}
+(Adobe Research, ASSETS~2022) interviewed 11 DHH viewers and built an authoring tool (on top of
+automatic sound event detection) for text \emph{and graphic} captions of non-speech sounds --- GIFs
+and animated stickers overlaid on video. Its findings: DHH viewers want \emph{important} non-speech
+sounds represented; which representation is appropriate depends on the \emph{sound type, the video
+genre, and the audience}; and there are real trade-offs between text (precise, but low-bandwidth) and
+graphics (evocative, but potentially ambiguous or distracting). Critical-design work at
+ASSETS~2023~\cite{nsicritical} similarly probes richer renderings of non-speech information beyond
+bracketed text. Note, though, that in all of these the representation is \emph{author-selected} and
+caption-anchored; none decides \emph{automatically} which sounds need visualising given what the
+picture already shows.
+
+\medskip\noindent\textbf{(c) First-person environments: AR, VR, and games.} Where sound carries
+actionable spatial information, visual substitution is the norm and is well measured.
+Jain et al.~\cite{hmdsound} designed head-mounted-display sound visualizations (arrows, pulses,
+varying directional granularity) with 24 DHH participants, who valued glanceable localization support.
+\textbf{SoundVizVR}~\cite{soundvizvr} visualised loudness, duration, location and \emph{type} (icons)
+of sound sources in VR: with 14 DHH participants, a full mini-map plus on-object indicators performed
+best, all icon variants let users locate sources, and in a follow-up VR game deployment most DHH
+players reported the indicators helped gameplay. Mirzaei et al.~\cite{mirzaeivr} compared visual
+(LED), haptic, and combined feedback for 3D sound localization: conditions \emph{with the visual
+channel} were significantly faster than haptic alone --- evidence that vision is the dominant usable
+substitute for spatial hearing. Industry has converged on the same conclusion at scale:
+Fortnite's \emph{Visualize Sound Effects}~\cite{fortniteviz} renders a radial directional indicator
+with per-sound icons (footsteps, gunfire, chests), colour-coded threat and opacity-coded distance ---
+a mainstream, shipping deployment of exactly the ``icon + direction for sounds you cannot hear''
+idea, widely credited by DHH players. These systems prove that non-text sound visuals are
+\emph{learnable, fast, and preferred} --- but all operate in \emph{first-person, live} settings
+(your environment, your game), not recorded media.
+
+\medskip\noindent\textbf{(d) What DHH viewers say is still missing (field-wide surveys).} Two recent
+studies frame the gap our project targets. An analysis of non-speech audio captioning on
+YouTube~\cite{unspoken} found most non-speech sounds are simply \emph{not captioned at all}, with
+ambient/environmental audio the least covered category --- the layer this project targets is the
+\emph{most} neglected in practice. And a mixed-methods study combining a review of 36 papers with 168
+DHH participants and 5 professional captioners~\cite{choices} found DHH users want, beyond a text
+label: the sound's \emph{emotional tone}, its \emph{spatial location}, and its \emph{narrative
+significance} --- and above all \emph{customization} (``Choices? That's the dream'').
+
+\medskip\noindent\textbf{Takeaways for this project.} (1)~The demand is real and the ambient layer is
+the least served: most non-speech sound goes uncaptioned~\cite{unspoken}, and what DHH viewers ask
+for --- emotion, location, narrative significance~\cite{choices} --- is what a text label carries
+worst. (2)~Non-text visuals demonstrably work for DHH users: icons and imagery convey source identity
+and location quickly~\cite{soundvizvr,hmdsound,mirzaeivr}, and animated visuals add dynamics and
+enjoyment~\cite{soundwords,emotivecaptions}. (3)~Users judge any added visual first on readability
+and \emph{minimal distraction}~\cite{captionroyale} --- so \emph{selection} (showing few,
+well-chosen augmentations) matters more than rendering; our cross-modal gate is precisely a selection
+mechanism. (4)~DHH audiences are heterogeneous (deaf vs.\ hard-of-hearing reactions
+diverge~\cite{emotivecaptions}) and want control~\cite{choices,jainprefs} --- augmentation should be
+a toggleable, complementary layer, which is why we composite \emph{alongside} the video rather than
+altering the frame. (5)~Phonetic devices (onomatopoeia) exclude some Deaf users~\cite{captune};
+\emph{depicting the source} does not --- supporting imagery over sound-words. (6)~Every deployed
+non-text system is either first-person/live (AR/VR/games) or author-in-the-loop (graphic caption
+authoring); \emph{automatic} visual augmentation of recorded media, gated by what the picture already
+shows, is the unoccupied slot this project fills.
 
 \subsection{The case for visual augmentation --- a three-way comparison}
 Putting it together, the three channels have complementary strengths:
@@ -167,10 +258,13 @@ Added cognitive load & competes with scene & separate focus point & must be desi
 automatable unlike interpreting, and it targets exactly the non-speech layer both other channels
 under-serve. It does not replace subtitles or sign language --- it complements them, adding the
 missing ``what does it look like / where is it / what mood does it set'' that a label cannot carry.
-Two design cautions follow directly from the literature above: (1) because it is visual, it must not
-worsen divided attention --- argue for \emph{few, well-chosen} augmentations (aggressive gating) and a
-stable, peripheral placement; (2) atmospheric/emotional fidelity, not just correct labels, is what
-actually helps DHH viewers, which is why generation (imagery) beats classification (a word).
+Three design cautions follow directly from the literature above: (1) because it is visual, it must not
+worsen divided attention --- users rank readability and minimal distraction above expressiveness
+\cite{captionroyale} --- which argues for \emph{few, well-chosen} augmentations (aggressive gating) and
+a stable, peripheral placement; (2) atmospheric/emotional fidelity, not just correct labels, is what
+actually helps DHH viewers \cite{choices}, which is why generation (imagery) beats classification (a
+word); (3) DHH audiences are heterogeneous and want control \cite{emotivecaptions,choices}, so the
+augmentation must remain an optional, complementary layer that leaves the original frame untouched.
 
 \rel{This is the project's justification. The novelty is not ``visualise sound'' (others visualise
 sound) but ``\emph{decide} which sounds are unconveyed by the picture and depict \emph{those}, for
@@ -413,9 +507,11 @@ complements, not replaces, our contribution. (Co-authored by I.\ Schwartz.)}
 Reading across the areas, the landscape is:
 \begin{itemize}
   \item \textbf{Accessibility} research has thoroughly documented that non-speech sound is poorly
-    served by subtitles, that sign language is expressive but unavailable/unautomatable, and has built
-    sound-\emph{awareness} tools for real environments and caption-\emph{enrichment} tools for speech
-    --- but not generated imagery for ambient sound in media, gated by what is already visible.
+    served by subtitles, that sign language is expressive but unavailable/unautomatable, and has
+    measured --- with DHH participants --- that non-text sound visuals (icons, animated graphics,
+    directional indicators) are learnable, fast and preferred in AR/VR/games and welcomed in media
+    when author-selected. What it has \emph{not} built is generated imagery for ambient sound in
+    recorded media, selected \emph{automatically} and gated by what is already visible.
   \item \textbf{Detection, captioning, LALMs, VLMs, localization} are all mature enough to assemble
     off-the-shelf; the pieces exist.
   \item \textbf{Generation} (audio-to-image, audio-to-video) exists but in a \emph{blind} form ---
@@ -469,6 +565,19 @@ measure against.
 \bibitem{soundwatch} D.\ Jain et al., ``SoundWatch: Smartwatch-based Deep Learning Approaches to Support Sound Awareness for DHH Users,'' \emph{ASSETS}, 2020.
 \bibitem{homesound} D.\ Jain et al., ``HomeSound: An Iterative Field Deployment of an In-Home Sound Awareness System for DHH Users,'' \emph{CHI}, 2020.
 \bibitem{protosound} D.\ Jain et al., ``ProtoSound: A Personalized and Scalable Sound Recognition System for DHH Users,'' \emph{CHI}, 2022. arXiv:2202.11134.
+\bibitem{jainprefs} L.\ Findlater, B.\ Chinh, D.\ Jain, J.\ Froehlich, R.\ Kushalnagar, ``Deaf and Hard-of-hearing Individuals' Preferences for Wearable and Mobile Sound Awareness Technologies,'' \emph{CHI}, 2019. [verify author order]
+\bibitem{emotivecaptions} D.\ I.\ Fels, D.\ G.\ Lee, C.\ Branje, M.\ Hornburg, ``Emotive Captioning,'' \emph{ACM Computers in Entertainment}, 2007 (and Fels et al., ``Emotive Captioning and Access to Television,'' \emph{AMCIS}, 2005). [verify]
+\bibitem{captionroyale} C.\ de Lacerda Pataca, S.\ Hassan, N.\ Tinker, R.\ Peiris, M.\ Huenerfauth, ``Caption Royale: Exploring the Design Space of Affective Captions from the Perspective of Deaf and Hard-of-Hearing Individuals,'' \emph{CHI}, 2024. [verify author list]
+\bibitem{soundsign} ``Visualized sound effect icons for improved multimedia accessibility: A pilot study (SoundSign),'' \emph{Entertainment Computing}, 2011. [verify authors]
+\bibitem{soundwords} ``Visualizing Video Sounds With Sound Word Animation to Enrich User Experience,'' \emph{IEEE Trans.\ Multimedia}, 2016. [verify authors]
+\bibitem{beyondsubtitles} O.\ Alonzo, H.\ V.\ Shin, D.\ Li, ``Beyond Subtitles: Captioning and Visualizing Non-speech Sounds to Improve Accessibility of User-Generated Videos,'' \emph{ASSETS}, 2022.
+\bibitem{nsicritical} ``Enhancing Non-Speech Information Communicated in Closed Captioning Through Critical Design,'' \emph{ASSETS}, 2023. [verify authors]
+\bibitem{unspoken} L.\ May et al., ``Unspoken Sound: Identifying Trends in Non-Speech Audio Captioning on YouTube,'' 2024. \url{https://sinc-lab.com/files/may2024unspoken.pdf}
+\bibitem{choices} L.\ May et al., ```Choices? That's the dream': Challenges and Opportunities in Non-Speech Information Closed-Captioning,'' 2025. [verify venue]
+\bibitem{hmdsound} D.\ Jain et al., ``Head-Mounted Display Visualizations to Support Sound Awareness for the Deaf and Hard of Hearing,'' \emph{CHI}, 2015.
+\bibitem{soundvizvr} Z.\ Li, S.\ Connell, W.\ Dannels, R.\ Peiris, ``SoundVizVR: Sound Indicators for Accessible Sounds in Virtual Reality for Deaf or Hard-of-Hearing Users,'' \emph{ASSETS}, 2022. [verify author list]
+\bibitem{mirzaeivr} M.\ Mirzaei, P.\ K\'an, H.\ Kaufmann, ``Head Up Visualization of Spatial Sound Sources in Virtual Reality for Deaf and Hard-of-Hearing People,'' \emph{IEEE VR}, 2021.
+\bibitem{fortniteviz} Epic Games, ``Visualize Sound Effects'' (Fortnite accessibility feature: directional radial sound indicators with per-sound icons). Industry deployment; see \url{https://gamingaccessibility.org/how-fortnites-visualize-sound-effects-shows-the-direction-of-selected-sounds/}
 \bibitem{vggsound} H.\ Chen et al., ``VGGSound: A Large-scale Audio-Visual Dataset,'' \emph{ICASSP}, 2020. arXiv:2004.14368.
 \bibitem{unav100} T.\ Geng et al., ``Dense-Localizing Audio-Visual Events in Untrimmed Videos (UnAV-100),'' \emph{CVPR}, 2023. arXiv:2303.12930.
 \bibitem{movienet} Q.\ Huang et al., ``MovieNet: A Holistic Dataset for Movie Understanding,'' \emph{ECCV}, 2020. arXiv:2007.10937.
