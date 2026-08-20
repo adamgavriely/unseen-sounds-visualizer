@@ -26,7 +26,10 @@ def plan_augmentations(scene: SceneContext,
                        events: List[AudioEvent],
                        threshold: float = 0.3,
                        gate_enabled: bool = False,
-                       display_threshold: float = 0.15) -> List[AugmentationSpec]:
+                       display_threshold: float = 0.15,
+                       augment_threshold: float | None = None) -> List[AugmentationSpec]:
+    if augment_threshold is None:
+        augment_threshold = display_threshold
     mode = "rule-based gate" if gate_enabled else "PASS-THROUGH (detect-all)"
     print(f"       [stage5] {mode} (TODO: localization + grounded LLM).")
     visible = {e.lower() for e in scene.visible_entities}
@@ -46,7 +49,7 @@ def plan_augmentations(scene: SceneContext,
         else:
             salient = ev.confidence >= display_threshold
             redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
-            augment = salient and not redundant
+            augment = salient and not redundant and ev.confidence >= augment_threshold
             if not salient:
                 reason = f"below display threshold ({ev.confidence:.2f} < {display_threshold})"
             elif redundant:

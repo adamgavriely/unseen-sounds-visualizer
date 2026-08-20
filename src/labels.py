@@ -37,6 +37,9 @@ SCENE_LABELS = {
 MUSIC_LABELS = {
     "Music", "Scary music", "Background music", "Musical instrument", "Soundtrack music",
     "Theme music", "Sad music", "Happy music", "Exciting music",
+    # genre labels that don't end in "music" (leaked into a benchmark clip as "Dubstep")
+    "Dubstep", "Techno", "Disco", "Reggae", "Jazz", "Blues", "Funk", "Opera",
+    "Swing music", "Beatboxing", "Rapping", "Drum and bass", "House music",
 }
 
 
@@ -71,6 +74,8 @@ FAMILY = {
     # dog
     "Bark": "Dog", "Bow-wow": "Dog", "Yip": "Dog", "Whimper (dog)": "Dog",
     "Canidae, dogs, wolves": "Dog", "Growling": "Dog", "Howl": "Dog",
+    # cat
+    "Meow": "Cat", "Purr": "Cat", "Hiss": "Cat", "Cat communication": "Cat",
     # water
     "Waves, surf": "Water", "Ocean": "Water", "Waterfall": "Water", "Stream": "Water",
     "Gurgling": "Water", "Slosh": "Water", "Trickle, dribble": "Water", "Drip": "Water",
@@ -78,9 +83,18 @@ FAMILY = {
     "Railroad car, train wagon": "Train", "Rail transport": "Train",
     "Subway, metro, underground": "Train", "Train wheels squealing": "Train",
     "Train horn": "Train", "Train whistle": "Train", "Clickety-clack": "Train",
+    # engines: generic engine sounds are almost always road traffic in our clips
+    "Engine": "Vehicle", "Engine starting": "Vehicle", "Idling": "Vehicle",
+    "Accelerating, revving, vroom": "Vehicle",
+    "Light engine (high frequency)": "Vehicle", "Medium engine (mid frequency)": "Vehicle",
+    "Heavy engine (low frequency)": "Vehicle",
     # aircraft / boat
     "Jet engine": "Aircraft", "Fixed-wing aircraft, airplane": "Aircraft",
-    "Motorboat, speedboat": "Boat", "Motor vehicle (road)": "Vehicle",
+    "Aircraft engine": "Aircraft", "Propeller, airscrew": "Aircraft",
+    "Motorboat, speedboat": "Boat", "Boat, Water vehicle": "Boat", "Ship": "Boat",
+    "Sailboat, sailing ship": "Boat", "Motor vehicle (road)": "Vehicle",
+    # wind
+    "Rustling leaves": "Wind", "Wind": "Wind",
     # thunder / storm
     "Thunderstorm": "Thunder", "Rumble": "Thunder",
     # rain

@@ -79,7 +79,8 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     specs = plan_augmentations(scene, segments, events,
                                threshold=config.AED_THRESHOLD,
                                gate_enabled=config.GATE_ENABLED,
-                               display_threshold=config.DISPLAY_THRESHOLD)
+                               display_threshold=config.DISPLAY_THRESHOLD,
+                               augment_threshold=config.AUGMENT_THRESHOLD)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
     n_aug = sum(1 for s in specs if s.augment)
     print(f"       {n_aug}/{len(specs)} sound(s) selected to visualize")

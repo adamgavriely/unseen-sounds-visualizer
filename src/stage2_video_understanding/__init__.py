@@ -36,6 +36,8 @@ VISIBLE_CONCEPTS = {
     "Insect": "a photo of an insect", "Boat": "a photo of a boat or ship on water",
     "Siren": "a photo of an ambulance, police car or fire truck",
     "Fireworks": "a photo of fireworks exploding in the sky",
+    "Thunder": "a photo of a dark stormy sky, storm clouds or lightning",
+    "Wind": "a photo of trees, flags or objects blowing in strong wind",
     "Saxophone": "a photo of a person playing a saxophone or brass instrument",
 }
 _DISTRACTORS = ["a photo of an indoor scene", "a photo of an empty street",
