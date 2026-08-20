@@ -50,8 +50,11 @@ def _probe(f: Path):
 
 
 def _meanvol(f: Path):
-    o = subprocess.run(["ffmpeg", "-i", str(f), "-af", "volumedetect", "-f", "null", "-"],
-                       capture_output=True, text=True, timeout=120).stderr
+    try:
+        o = subprocess.run(["ffmpeg", "-i", str(f), "-af", "volumedetect", "-f", "null", "-"],
+                           capture_output=True, text=True, timeout=120).stderr or ""
+    except Exception:
+        return -99.0
     m = re.search(r"mean_volume:\s*(-?[\d.]+) dB", o)
     return float(m.group(1)) if m else -99.0
 
@@ -95,7 +98,10 @@ def _log(entry: dict):
 
 
 def _accept(tmp: Path, name: str, meta: dict) -> bool:
-    why = screen(tmp)
+    try:
+        why = screen(tmp)
+    except Exception as e:
+        why = f"screen error {type(e).__name__}"
     if why:
         print(f"    reject {name}: {why}")
         tmp.unlink(missing_ok=True)
@@ -208,6 +214,98 @@ YT_QUERIES = [
     ("fireworks_festival", "fireworks festival crowd watching"),
     ("marina_masts", "marina sailboat masts clinking wind"),
     ("food_court", "food court mall lunchtime ambience"),
+    # wave 2 — fresh themes for the resume pass
+    ("walk_tokyo_rain", "tokyo rain night walk umbrella"),
+    ("walk_ny_chinatown", "new york chinatown street walk"),
+    ("walk_paris_morning", "paris morning walk cafe street"),
+    ("walk_dubai_souk", "dubai gold souk walk"),
+    ("walk_moscow_winter", "moscow winter street walk snow"),
+    ("walk_buenosaires", "buenos aires san telmo street walk"),
+    ("walk_manila", "manila street walk jeepney"),
+    ("walk_addis", "addis ababa street walk market"),
+    ("horse_ranch", "horse ranch stable sounds"),
+    ("cow_farm", "dairy farm cows milking sounds"),
+    ("chicken_coop", "chicken farm rooster sounds village"),
+    ("bee_apiary", "beekeeper apiary bees buzzing"),
+    ("frog_pond", "frog pond night chorus video"),
+    ("bat_cave", "cave tour dripping echo sounds"),
+    ("geyser_hotspring", "geyser eruption yellowstone sound"),
+    ("glacier_hike", "glacier hike crunching ice wind"),
+    ("volcano_tour", "volcano crater tour steam sounds"),
+    ("sand_dunes", "sand dunes wind quad bikes"),
+    ("vineyard_harvest", "vineyard grape harvest sounds"),
+    ("olive_press", "olive oil mill press sounds"),
+    ("pottery_wheel", "pottery workshop wheel sounds"),
+    ("glass_blowing", "glass blowing workshop furnace"),
+    ("printing_press", "printing press machine sounds"),
+    ("textile_loom", "weaving loom workshop sounds"),
+    ("laundromat", "laundromat machines ambience"),
+    ("gym_weights", "gym weights dropping sounds ambience"),
+    ("boxing_gym", "boxing gym training bags sounds"),
+    ("ice_rink", "ice skating rink sounds ambience"),
+    ("tennis_court", "tennis match court sounds amateur"),
+    ("golf_course", "golf course driving range sounds"),
+    ("horse_race", "horse race track sounds crowd"),
+    ("regatta_sailing", "sailing regatta start sounds"),
+    ("drone_field", "rc drone flying field sounds"),
+    ("gokart_track", "go kart track sounds racing"),
+    ("paintball_field", "paintball field game sounds"),
+    ("climbing_gym", "climbing gym ambience sounds"),
+    ("night_market_food", "street food frying sizzling night market"),
+    ("butcher_market", "butcher meat market sounds"),
+    ("flower_market", "flower market morning sounds"),
+    ("auction_livestock", "livestock auction auctioneer sounds"),
+    # wave 3 — final fill to 150
+    ("medina_fes", "fes morocco medina walk donkeys"),
+    ("bazaar_tehran", "tehran grand bazaar walk"),
+    ("oldtown_prague", "prague old town walk tourists"),
+    ("oldtown_krakow", "krakow main square walk pigeons"),
+    ("township_capetown", "cape town township street walk"),
+    ("favela_rio", "rio favela street walk sounds"),
+    ("walk_kyoto_gion", "kyoto gion evening walk"),
+    ("walk_lisbon_alfama", "lisbon alfama walk fado streets"),
+    ("walk_istanbul_ferry", "istanbul ferry bosphorus seagulls"),
+    ("walk_varanasi_ghats", "varanasi ghats morning walk boats"),
+    ("gas_station", "gas station ambience pumps sounds"),
+    ("car_repair", "car repair shop garage sounds impact wrench"),
+    ("drive_through", "drive through order window sounds"),
+    ("street_cleaning", "street sweeper cleaning truck sounds"),
+    ("garbage_truck", "garbage truck collection morning sounds"),
+    ("snowplow_street", "snowplow clearing street sounds"),
+    ("bakery_morning", "bakery morning ambience oven trays"),
+    ("coffee_roastery", "coffee roasting machine sounds"),
+    ("brewery_tour", "brewery bottling line sounds tour"),
+    ("fish_auction", "fish auction market morning shouting"),
+    ("ferry_terminal", "ferry terminal announcements crowd"),
+    ("subway_busker", "subway station busker music crowd passing"),
+    ("botanic_garden", "botanical garden walk birds fountain"),
+    ("waterpark_slides", "waterpark slides screaming splashing"),
+    ("amusement_rides", "amusement park rides screams ambience"),
+    ("ski_lift", "ski lift ride sounds wind"),
+    ("sledding_hill", "sledding hill children winter sounds"),
+    ("surf_beach", "surf beach waves surfers ambience"),
+    ("dog_park", "dog park barking playing sounds"),
+    ("horse_carriage", "horse carriage ride city clip clop"),
+    ("rickshaw_ride", "cycle rickshaw ride street sounds"),
+    ("rooftop_city", "rooftop view city traffic ambience below"),
+    ("university_campus", "university campus walk between classes"),
+    ("hospital_lobby", "hospital lobby waiting ambience"),
+    ("hotel_lobby", "hotel lobby ambience fountain piano"),
+    ("casino_floor", "casino floor slot machines ambience"),
+    ("bingo_hall", "bingo hall caller ambience"),
+    ("flea_market", "flea market browsing haggling sounds"),
+    ("antique_shop", "antique shop clock ticking ambience"),
+    ("pet_shop", "pet shop birds puppies sounds"),
+    ("aviary_birds", "aviary tropical birds walk"),
+    ("butterfly_house", "butterfly house greenhouse walk"),
+    ("koi_pond", "koi pond garden fountain sounds"),
+    ("windfarm_turbines", "wind turbines close sound field"),
+    ("hydro_dam", "hydroelectric dam spillway sounds"),
+    ("quarry_blast", "quarry machinery rock crusher sounds"),
+    ("logging_forest", "logging chainsaw forest sounds"),
+    ("orchard_picking", "apple orchard picking sounds autumn"),
+    ("pumpkin_patch", "pumpkin patch farm visit sounds"),
+    ("corn_maze", "corn maze walk rustling"),
 ]
 
 
@@ -251,7 +349,12 @@ WM_TERMS = ["walking tour city", "street market video", "harbor boats",
             "traffic street sound", "festival crowd", "rain street",
             "waterfall river", "construction site", "farm animals video",
             "airport", "playground", "beach waves people", "protest demonstration",
-            "village street", "fountain square", "birds park city"]
+            "village street", "fountain square", "birds park city",
+            # wave 2
+            "parade procession", "bus station", "ferry port", "fair fairground",
+            "carnival", "windmill", "helicopter", "fire truck", "storm wind",
+            "river boat", "sheep goats", "school yard", "swimming", "snow ski",
+            "night city", "temple ceremony", "church mass", "wedding dance"]
 
 
 def _wm_api(params: dict) -> dict:
@@ -329,6 +432,14 @@ IA_QUERIES = [
     'travelogue color city', 'home movie color vacation sound',
     'street scenes color 16mm sound', 'documentary color village daily life',
     'promotional film color 1970s city', 'nature film color sound',
+    # wave 2
+    'tourism film color 1980s', 'industrial film color factory',
+    'documentary color market bazaar', 'travel film color asia sound',
+    'documentary color harbor fishing', 'news footage color street 1990s',
+    # wave 3
+    'educational film color transportation', 'documentary color festival celebration',
+    'travel film color europe sound', 'documentary color river boat',
+    'film color zoo animals sound', 'documentary color construction building',
 ]
 
 
