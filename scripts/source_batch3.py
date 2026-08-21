@@ -18,6 +18,7 @@ Usage: python scripts/source_batch3.py [yt|wm|ia|all]
 from __future__ import annotations
 
 import json
+import random
 import re
 import statistics
 import subprocess
@@ -33,7 +34,13 @@ STAGE = ROOT / "data" / "work" / "batch3_staging"
 LOG = ROOT / "benchmark" / "sources_batch3.json"
 ARCHIVE = STAGE / "yt_archive.txt"
 HDRS = {"User-Agent": "MscFinalProject/0.1 (academic research; benchmark curation)"}
-CLIP_SEC = 28
+CLIP_SEC = 28          # waves 1-3 used a fixed cut
+
+
+def _clip_len() -> int:
+    """Waves 4+: varied clip lengths so the benchmark isn't uniform.
+    16 s floor keeps a keyframe-imprecise cut above the >=15 s screen."""
+    return random.randint(16, 25)
 
 # ---------------------------------------------------------------- quality screen
 def _probe(f: Path):
@@ -124,11 +131,12 @@ def _accept(tmp: Path, name: str, meta: dict) -> bool:
     return True
 
 
-def _cut_middle(src: Path, out: Path):
+def _cut_middle(src: Path, out: Path, sec: int | None = None):
+    sec = sec or _clip_len()
     dur, _, _ = _probe(src)
-    start = max(0.0, dur / 2 - CLIP_SEC / 2)
+    start = max(0.0, dur / 2 - sec / 2)
     subprocess.run(["ffmpeg", "-y", "-ss", f"{start:.1f}", "-i", str(src),
-                    "-t", str(CLIP_SEC), "-c:v", "libx264", "-preset", "veryfast",
+                    "-t", str(sec), "-c:v", "libx264", "-preset", "veryfast",
                     "-crf", "26", "-c:a", "aac", str(out)],
                    capture_output=True, timeout=300)
 
@@ -306,6 +314,67 @@ YT_QUERIES = [
     ("orchard_picking", "apple orchard picking sounds autumn"),
     ("pumpkin_patch", "pumpkin patch farm visit sounds"),
     ("corn_maze", "corn maze walk rustling"),
+    # wave 4 — distinct ambient SOUND sources, varied lengths
+    ("icecream_truck", "ice cream truck jingle street children"),
+    ("lawnmower_suburb", "lawn mowing suburb sounds neighborhood"),
+    ("leafblower_fall", "leaf blower autumn leaves sounds"),
+    ("pressure_washer", "pressure washing driveway sounds"),
+    ("siren_passing", "ambulance siren passing street pedestrians"),
+    ("crossing_bells", "railroad crossing bells cars waiting"),
+    ("foghorn_harbor", "foghorn lighthouse fog harbor"),
+    ("buoy_bell", "bell buoy waves sailing"),
+    ("steamtrain_ride", "steam train ride whistle countryside"),
+    ("balloon_burner", "hot air balloon burner ride"),
+    ("seaplane_takeoff", "seaplane takeoff water sounds"),
+    ("helicopter_tour", "helicopter tour cabin sounds city"),
+    ("sail_flapping", "sailing boat sails flapping wind deck"),
+    ("tent_rain", "rain on tent camping sounds"),
+    ("creaky_house", "old house creaking floorboards tour"),
+    ("cowbells_alps", "alps hiking cowbells meadow"),
+    ("goat_herd", "goat herd bells crossing road"),
+    ("call_to_prayer", "call to prayer street istanbul evening"),
+    ("church_organ", "church organ playing visitors walking"),
+    ("gospel_outside", "gospel choir heard from street"),
+    ("drum_circle", "drum circle beach sunset crowd"),
+    ("bagpipes_street", "bagpiper edinburgh street tourists"),
+    ("accordion_metro", "accordion player metro passage"),
+    ("moped_alley", "moped passing narrow alley italy"),
+    ("elevator_ride", "old elevator ride sounds"),
+    ("escalator_mall", "mall escalators ambience shoppers"),
+    ("parking_garage", "parking garage echoes tires squeal"),
+    ("toll_booth", "toll booth highway sounds"),
+    ("car_ferry_load", "car ferry loading ramp sounds"),
+    ("chairlift_summer", "summer chairlift ride mountain sounds"),
+    ("zipline_forest", "zipline canopy tour sounds"),
+    ("mtb_trail", "mountain bike trail pov sounds"),
+    ("hooves_cobbles", "horse hooves cobblestone street"),
+    ("fountain_show", "musical fountain show crowd"),
+    ("sprinklers_park", "park sprinklers morning joggers"),
+    ("hail_roof", "hail hitting roof car sounds"),
+    ("creek_bridge", "creek under wooden bridge hiking"),
+    ("tidepools_rocks", "tide pools rocky shore waves birds"),
+    ("penguin_colony", "penguin colony sounds visitors"),
+    ("sealions_dock", "sea lions barking pier tourists"),
+    ("monkeys_temple", "monkeys temple stealing sounds tourists"),
+    ("elephant_sanctuary", "elephant sanctuary sounds bathing"),
+    ("starling_flock", "starling murmuration flock wings"),
+    ("owls_night", "owl hooting night forest camera"),
+    ("woodpecker_forest", "woodpecker drumming forest walk"),
+    ("cicadas_summer", "cicadas loud summer walk"),
+    ("thunder_porch", "thunderstorm from porch distant thunder"),
+    ("typewriter_office", "typewriter museum office sounds"),
+    ("clocktower_chimes", "clock tower chimes town square"),
+    ("windchimes_porch", "wind chimes porch breeze"),
+    ("schoolbell_recess", "school bell recess children running"),
+    ("blackfriday_doors", "store opening rush crowd doors"),
+    ("stadium_fireworks", "stadium fireworks celebration crowd"),
+    ("newyear_street", "new years eve street celebration fireworks"),
+    ("hanami_park", "cherry blossom park hanami crowd picnic"),
+    ("oktoberfest_tent", "oktoberfest beer tent outside sounds"),
+    ("christmas_market", "christmas market evening walk sounds"),
+    ("ramadan_iftar", "ramadan iftar street cannon sounds"),
+    ("chinese_newyear", "chinese new year firecrackers lion dance"),
+    ("holi_festival", "holi festival colors crowd sounds"),
 ]
 
 
@@ -317,10 +386,11 @@ def source_yt(target: int = 70):
             break
         tmp = STAGE / f"yt_{name}.mp4"
         tmp.unlink(missing_ok=True)
-        print(f"  [yt] {name}: {query}")
+        sec = _clip_len()
+        print(f"  [yt] {name} ({sec}s): {query}")
         r = subprocess.run(
             ["yt-dlp", f"ytsearch1:{query}",
-             "--download-sections", f"*180-{180 + CLIP_SEC}",
+             "--download-sections", f"*180-{180 + sec}",
              "-f", "mp4[height<=720]/best[height<=720]/best",
              "--no-playlist", "--force-keyframes-at-cuts",
              "--match-filter", "duration>240",
@@ -490,7 +560,7 @@ def source_ia(target: int = 40):
                 slug = re.sub(r"[^a-z0-9]+", "_", ident.lower())[:28].strip("_")
                 cut = STAGE / f"ia_{slug}_{si}.mp4"
                 subprocess.run(["ffmpeg", "-y", "-ss", f"{start:.0f}", "-i", url,
-                                "-t", str(CLIP_SEC), "-c:v", "libx264", "-preset",
+                                "-t", str(_clip_len()), "-c:v", "libx264", "-preset",
                                 "veryfast", "-crf", "26", "-c:a", "aac", str(cut)],
                                capture_output=True, timeout=300)
                 if cut.exists() and cut.stat().st_size > 500_000 and _accept(

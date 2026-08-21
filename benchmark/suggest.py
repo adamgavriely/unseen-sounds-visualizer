@@ -65,6 +65,9 @@ def main():
         else ["unsorted"]
     out = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
     clips = [p for f in folders for p in sorted((BENCH / f).glob("*")) if p.suffix.lower() in EXT]
+    # incremental: only analyze clips without a stored suggestion (--force redoes all)
+    if "--force" not in sys.argv:
+        clips = [p for p in clips if f"{p.parent.name}/{p.name}" not in out]
     for i, p in enumerate(clips, 1):
         key = f"{p.parent.name}/{p.name}"
         try:
