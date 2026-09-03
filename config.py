@@ -17,8 +17,10 @@ DEVICE = "cpu"               # "cpu" locally; "cuda" on the university GPU
 # Stage 1 — audio extraction
 SAMPLE_RATE = 16000
 
-# Stage 2 — video understanding (lightweight CLIP visibility check)
-VIDEO_MODEL = "openai/clip-vit-base-patch32"   # full VLM (Qwen2.5-VL) is a later upgrade
+# Stage 2 — video understanding
+VIDEO_BACKEND = "clip"      # "clip" (CPU, v2-a) | "vlm" (Qwen2.5-VL, university GPU, v2-b)
+VIDEO_MODEL = "openai/clip-vit-base-patch32"
+VLM_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"      # used when VIDEO_BACKEND == "vlm"
 NUM_FRAMES = 6              # frames sampled from the clip for scene analysis
 VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on screen"
 

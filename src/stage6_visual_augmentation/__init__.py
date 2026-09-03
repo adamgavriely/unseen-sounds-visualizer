@@ -51,6 +51,36 @@ def _caption(img: Image.Image, text: str) -> Image.Image:
     return img
 
 
+_PIPE = None
+
+
+def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
+                     model: str = "stabilityai/stable-diffusion-xl-base-1.0",
+                     device: str = "cuda") -> bool:
+    """v2-b backend: generate the augmentation with SDXL (GPU). One pipeline is
+    kept loaded across calls -- model load dominates cost, generation is ~2 s."""
+    global _PIPE
+    try:
+        import torch
+        from diffusers import StableDiffusionXLPipeline
+        if _PIPE is None:
+            _PIPE = StableDiffusionXLPipeline.from_pretrained(
+                model, torch_dtype=torch.float16 if device == "cuda" else torch.float32,
+                variant="fp16" if device == "cuda" else None, use_safetensors=True)
+            _PIPE = _PIPE.to(device)
+            _PIPE.set_progress_bar_config(disable=True)
+        img = _PIPE(prompt=prompt,
+                    negative_prompt="text, watermark, logo, caption, blurry, distorted",
+                    width=size[0], height=size[1],
+                    num_inference_steps=28, guidance_scale=6.0).images[0]
+        img.save(path)
+        return True
+    except Exception as e:
+        print(f"       [stage6] diffusion failed ({type(e).__name__}: {e}); "
+              f"falling back to placeholder")
+        return False
+
+
 def _placeholder_image(path: Path, caption: str, size=(1024, 1024)) -> None:
     img = Image.new("RGB", size, color=(20, 22, 30))
     d = ImageDraw.Draw(img)
@@ -139,7 +169,16 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
                 _placeholder_image(path, query, size)
                 spec.image_path = str(path)
                 spec.backend = "placeholder"
-        else:                                       # 'placeholder' (or diffusion TODO)
+        elif backend == "diffusion":                # v2-b, university GPU
+            prompt = spec.image_prompt or f"A clear, simple photograph of {query}"
+            if _diffusion_image(path, prompt, size, model=model, device=device):
+                spec.image_path = str(path)
+                spec.backend = "diffusion"
+            else:
+                _placeholder_image(path, query, size)
+                spec.image_path = str(path)
+                spec.backend = "placeholder"
+        else:                                       # 'placeholder'
             _placeholder_image(path, spec.image_prompt or query, size)
             spec.image_path = str(path)
             spec.backend = "placeholder"

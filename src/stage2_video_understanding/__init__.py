@@ -110,3 +110,21 @@ def analyze_video(video_path: Path, num_frames: int = 6,
               f"no visibility info (gate will augment all).")
         return SceneContext(summary="", visible_entities=[], frames_analyzed=0,
                             raw={"error": str(e)})
+
+
+def analyze(video_path, backend: str = "clip", **kw) -> SceneContext:
+    """Backend dispatcher: 'clip' (CPU, v2-a) or 'vlm' (Qwen2.5-VL, GPU, v2-b).
+
+    Keeps callers (pipeline, benchmark/evaluate) agnostic of which gate is in use
+    so the two can be compared by flipping one config flag.
+    """
+    if backend == "vlm":
+        from src.stage2_video_understanding.vlm import analyze_video_vlm  # lazy: GPU deps
+        return analyze_video_vlm(
+            video_path, num_frames=kw.get("num_frames", 6),
+            model=kw.get("vlm_model", "Qwen/Qwen2.5-VL-7B-Instruct"),
+            device=kw.get("device", "cuda"), candidates=kw.get("candidates"))
+    return analyze_video(video_path, num_frames=kw.get("num_frames", 6),
+                         model=kw.get("model", "openai/clip-vit-base-patch32"),
+                         device=kw.get("device", "cpu"),
+                         threshold=kw.get("threshold", 0.30))

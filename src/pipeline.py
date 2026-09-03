@@ -20,7 +20,7 @@ import config
 from src.types import (MediaInfo, SceneContext, SpeechSegment, AudioEvent,
                        AugmentationSpec)
 from src.stage1_audio_extraction import extract_audio
-from src.stage2_video_understanding import analyze_video
+from src.stage2_video_understanding import analyze
 from src.stage3_speech_recognition import transcribe
 from src.stage4_audio_event_detection import detect_events
 from src.stage5_cross_modal_analysis import plan_augmentations
@@ -55,10 +55,11 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     _dump(work / "media.json", media.to_dict())
     print(f"       {media.duration:.1f}s @ {media.sample_rate} Hz")
 
-    print("[2/7] video understanding...")
-    scene = analyze_video(video_path, num_frames=config.NUM_FRAMES,
-                          model=config.VIDEO_MODEL, device=config.DEVICE,
-                          threshold=config.VISIBILITY_THRESHOLD)
+    print(f"[2/7] video understanding ({config.VIDEO_BACKEND})...")
+    scene = analyze(video_path, backend=config.VIDEO_BACKEND,
+                    num_frames=config.NUM_FRAMES, model=config.VIDEO_MODEL,
+                    vlm_model=config.VLM_MODEL, device=config.DEVICE,
+                    threshold=config.VISIBILITY_THRESHOLD)
     _dump(work / "scene.json", scene.to_dict())
 
     print("[3/7] speech recognition (whisper)...")

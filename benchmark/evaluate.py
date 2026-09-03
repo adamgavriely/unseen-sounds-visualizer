@@ -29,8 +29,10 @@ from src.labels import is_salient_nonspeech, consolidate_families
 
 BENCH = _ROOT / "data" / "input" / "benchmark"
 TAGS = _ROOT / "benchmark" / "tags.json"
-CACHE = _ROOT / "benchmark" / "eval_cache.json"
-RESULTS = _ROOT / "benchmark" / "eval_results.json"
+# per-backend files so the CLIP-gate and VLM-gate runs can be compared, not overwritten
+_SFX = "" if config.VIDEO_BACKEND == "clip" else f"_{config.VIDEO_BACKEND}"
+CACHE = _ROOT / "benchmark" / f"eval_cache{_SFX}.json"
+RESULTS = _ROOT / "benchmark" / f"eval_results{_SFX}.json"
 EXT = {".webm", ".ogv", ".mp4"}
 CATEGORIES = ["unseen_ambient", "mixed", "seen_ambient", "no_ambient"]
 SHOULD_AUGMENT = {"unseen_ambient": True, "mixed": True,
@@ -49,16 +51,22 @@ def _analyze(path: Path) -> dict:
     """Run stages 1+4+2 once; return the cacheable raw signals."""
     from src.stage1_audio_extraction import extract_audio
     from src.stage4_audio_event_detection import detect_events
-    from src.stage2_video_understanding import analyze_video
+    from src.stage2_video_understanding import analyze
+    from src.labels import canonical
     with tempfile.TemporaryDirectory() as td:
         media = extract_audio(path, Path(td) / "a.wav", config.SAMPLE_RATE)
         events = detect_events(Path(media.wav_path), threshold=config.AED_THRESHOLD,
                                min_dur=config.AED_MIN_DUR)
-        scene = analyze_video(path, num_frames=config.NUM_FRAMES, model=config.VIDEO_MODEL,
-                              device=config.DEVICE, threshold=config.VISIBILITY_THRESHOLD)
+        # VLM: ask only about sounds actually heard (faster, less hallucination)
+        cands = sorted({canonical(e.label) for e in events}) \
+            if config.VIDEO_BACKEND == "vlm" else None
+        scene = analyze(path, backend=config.VIDEO_BACKEND, num_frames=config.NUM_FRAMES,
+                        model=config.VIDEO_MODEL, vlm_model=config.VLM_MODEL,
+                        device=config.DEVICE, threshold=config.VISIBILITY_THRESHOLD,
+                        candidates=cands)
     return {"duration": media.duration,
             "events": [[e.label, e.start, e.end, e.confidence] for e in events],
-            "visible": scene.visible_entities}
+            "visible": scene.visible_entities, "backend": config.VIDEO_BACKEND}
 
 
 def _predict(entry: dict, display_threshold: float,
