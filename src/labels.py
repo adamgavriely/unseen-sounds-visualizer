@@ -30,6 +30,10 @@ INSTRUMENTS = {
     "Saxophone", "Brass instrument", "Wind instrument, woodwind instrument",
     "Bagpipes", "Accordion", "Harmonica", "Gong", "Singing bowl", "Bell cymbal",
     "Male singing", "Female singing", "Child singing", "Humming", "Whistling",
+    # found polluting benchmark suggestions as "off-screen ambient sound" (2026-08-22)
+    "Strum", "String section", "Double bass", "Marimba, xylophone", "Glockenspiel",
+    "Electronic organ", "Hammond organ", "Tuning fork", "Cowbell", "Steelpan",
+    "Zither", "Ukulele", "Mandolin", "Sitar", "Tabla", "Vibraphone", "Rimshot",
 }
 # Acoustic-environment / ambience descriptors: real, but not a discrete source to depict.
 SCENE_LABELS = {
@@ -45,6 +49,8 @@ MUSIC_LABELS = {
     # genre labels that don't end in "music" (leaked into a benchmark clip as "Dubstep")
     "Dubstep", "Techno", "Disco", "Reggae", "Jazz", "Blues", "Funk", "Opera",
     "Swing music", "Beatboxing", "Rapping", "Drum and bass", "House music",
+    "Punk rock", "Heavy metal", "Rock and roll", "Bluegrass", "Flamenco", "Salsa",
+    "Soul music", "Gospel music", "Ska", "Grunge", "Progressive rock", "Psychedelic rock",
 }
 
 
