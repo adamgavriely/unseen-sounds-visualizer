@@ -87,6 +87,22 @@ QUERIES = [
     ("classroom_bell", "school bell rings students react"),
     ("stadium_roar_offscreen", "fans react to goal noise outside stadium"),
     ("skate_bail_crash", "skateboard crash sound bystanders react"),
+    # wave 2 -- camera types whose audio is raw (no added soundtrack)
+    ("ring_doorbell_dog", "ring doorbell camera dog barking inside"),
+    ("cctv_glass_break", "cctv footage glass break shop"),
+    ("security_cam_crash", "security camera car crash sound street"),
+    ("bodycam_dog_bark", "bodycam dog barking officer"),
+    ("livestream_noise", "live stream interrupted loud noise streamer reacts"),
+    ("baby_monitor_noise", "baby monitor dog barking wakes"),
+    ("zoom_call_noise", "video call interrupted dog barking background"),
+    ("news_live_bang", "live news broadcast loud bang startles anchor"),
+    ("field_report_siren", "field report interrupted siren passing"),
+    ("classroom_fire_drill", "fire alarm drill school students leave"),
+    ("kitchen_pan_drop", "pan drops kitchen loud clatter"),
+    ("garage_door_slam", "garage door loud slam camera"),
+    ("thunder_dog_scared", "dog scared of thunder reaction home video"),
+    ("cat_knocks_glass", "cat pushes glass off table breaks"),
+    ("bird_window_hit", "bird hits window sound reaction"),
 ]
 
 
@@ -108,8 +124,13 @@ def _pick_event(events):
     return best
 
 
-def _music_dominant(events) -> bool:
-    return max((e.confidence for e in events if e.label in MUSIC_HINTS), default=0.0) >= 0.55
+def _music_dominant(events, ev=None) -> bool:
+    """Reject only when music really drowns the clip: loud music AND louder than
+    the event itself. (0.55 with no comparison rejected 7/17 usable clips.)"""
+    m = max((e.confidence for e in events if e.label in MUSIC_HINTS), default=0.0)
+    if ev is None:
+        return m >= 0.85
+    return m >= 0.70 and m > ev.confidence * 1.3
 
 
 def main(want: int = 15):
@@ -124,16 +145,20 @@ def main(want: int = 15):
         raw = STAGE / f"ev_{name}_raw.mp4"
         raw.unlink(missing_ok=True)
         print(f"  [ev] {name}: {query}", flush=True)
-        subprocess.run(
-            ["yt-dlp", f"ytsearch1:{query}",
-             "--download-sections", f"*0-{WINDOW}",
-             "-f", "mp4[height<=720]/best[height<=720]/best",
-             "--no-playlist", "--force-keyframes-at-cuts",
-             "--match-filter", "duration>45 & duration<3600",
-             "--download-archive", str(ARCHIVE),
-             "--print-to-file", "%(webpage_url)s|%(title)s", str(STAGE / f"ev_{name}.meta"),
-             "--no-warnings", "-o", str(raw)],
-            capture_output=True, text=True, timeout=420)
+        for rank in (1, 2, 3):          # a single search hit misses too often
+            subprocess.run(
+                ["yt-dlp", f"ytsearch{rank}:{query}", "--playlist-items", str(rank),
+                 "--download-sections", f"*0-{WINDOW}",
+                 "-f", "mp4[height<=720]/best[height<=720]/best",
+                 "--force-keyframes-at-cuts",
+                 "--match-filter", "duration>30 & duration<7200",
+                 "--download-archive", str(ARCHIVE),
+                 "--print-to-file", "%(webpage_url)s|%(title)s",
+                 str(STAGE / f"ev_{name}.meta"),
+                 "--no-warnings", "-o", str(raw)],
+                capture_output=True, text=True, timeout=420)
+            if raw.exists():
+                break
         if not raw.exists():
             print("    skip (no download)")
             continue
@@ -145,13 +170,13 @@ def main(want: int = 15):
             print(f"    skip (audio: {type(e).__name__})")
             raw.unlink(missing_ok=True)
             continue
-        if _music_dominant(events):
-            print("    reject: music dominates the soundtrack")
-            raw.unlink(missing_ok=True)
-            continue
         ev = _pick_event(events)
         if ev is None:
             print("    reject: no discrete target event found")
+            raw.unlink(missing_ok=True)
+            continue
+        if _music_dominant(events, ev):
+            print("    reject: music drowns the event")
             raw.unlink(missing_ok=True)
             continue
         # place the event ~40% in, so the on-screen reaction after it is captured
