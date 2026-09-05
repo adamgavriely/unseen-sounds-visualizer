@@ -25,6 +25,11 @@ INSTRUMENTS = {
     "Guitar", "Acoustic guitar", "Electric guitar", "Bass guitar", "Banjo", "Harp",
     "Drum", "Drum kit", "Percussion", "Cymbal", "Snare drum", "Timpani",
     "Trumpet", "Trombone", "French horn", "Flute", "Choir", "Singing", "Mantra", "Theremin",
+    # brass/woodwind: were slipping through as a "salient ambient sound" and got
+    # suggested as off-screen sources on film-score soundtracks (2026-08-22).
+    "Saxophone", "Brass instrument", "Wind instrument, woodwind instrument",
+    "Bagpipes", "Accordion", "Harmonica", "Gong", "Singing bowl", "Bell cymbal",
+    "Male singing", "Female singing", "Child singing", "Humming", "Whistling",
 }
 # Acoustic-environment / ambience descriptors: real, but not a discrete source to depict.
 SCENE_LABELS = {
@@ -53,8 +58,20 @@ GENERIC_LABELS = {
 }
 
 
+_MUSIC_RE = None
+
+
 def is_music(label: str) -> bool:
-    return label in MUSIC_LABELS or label in INSTRUMENTS or label.endswith("music")
+    """Music/instrument check. Also catches AudioSet's open-ended genre and
+    regional-music labels ("Music of Asia", "Music of Bollywood", "Bluegrass"),
+    which no fixed list can enumerate."""
+    global _MUSIC_RE
+    if label in MUSIC_LABELS or label in INSTRUMENTS or label.endswith("music"):
+        return True
+    if _MUSIC_RE is None:
+        import re
+        _MUSIC_RE = re.compile(r"music|singing|soundtrack", re.I)
+    return bool(_MUSIC_RE.search(label))
 
 
 def is_salient_nonspeech(label: str) -> bool:
