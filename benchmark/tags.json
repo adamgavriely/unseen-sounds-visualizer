@@ -147,9 +147,6 @@
   "no_ambient/movie_blueplanet_62.mp4": {
     "tag": "no_ambient"
   },
-  "unsorted/movie_dunkirk_48.mp4": {
-    "tag": "unknown"
-  },
   "seen_ambient/movie_dunkirk_90.mp4": {
     "tag": "seen_ambient"
   },
@@ -216,14 +213,8 @@
   "seen_ambient/ambient_citywalk_nyc_750.mp4": {
     "tag": "seen_ambient"
   },
-  "unsorted/ambient_citywalk_tokyo_1548.mp4": {
-    "tag": "unknown"
-  },
   "seen_ambient/ambient_citywalk_tokyo_5420.mp4": {
     "tag": "seen_ambient"
-  },
-  "unsorted/ambient_desert_wind_148.mp4": {
-    "tag": "unknown"
   },
   "no_ambient/ambient_desert_wind_74.mp4": {
     "tag": "no_ambient"
@@ -342,5 +333,247 @@
   },
   "mixed/ambient_weather_storm_16200.mp4": {
     "tag": "mixed"
+  },
+  "no_ambient/ambient_nature_savanna_7706.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/ambient_nightlife_neon_97.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/ambient_weather_storm_25200.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/ambient_weather_storm_7200.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_airport_terminal.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/b3_aquarium_walk.mp4": {
+    "tag": "no_ambient"
+  },
+  "mixed/b3_aviary_birds.mp4": {
+    "tag": "mixed"
+  },
+  "unseen_ambient/b3_bakery_morning.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "no_ambient/b3_balloon_burner.mp4": {
+    "tag": "no_ambient"
+  },
+  "unseen_ambient/b3_barbershop.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_bat_cave.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/b3_botanic_garden.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "mixed/b3_butcher_market.mp4": {
+    "tag": "mixed"
+  },
+  "unseen_ambient/b3_cablecar_ride.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_campfire_night.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/b3_car_repair.mp4": {
+    "tag": "bad",
+    "reason": "images only"
+  },
+  "mixed/b3_carnival_parade.mp4": {
+    "tag": "mixed"
+  },
+  "_bad/b3_casino_floor.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "mixed/b3_chicken_coop.mp4": {
+    "tag": "mixed"
+  },
+  "seen_ambient/b3_chinese_newyear.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_christmas_market.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/b3_coffee_roastery.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_construction_site.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_cow_farm.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/b3_creek_bridge.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_crossing_bells.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/b3_favela_rio.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_ia_81974_9th_infantry_vietnam_v_0.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_ia_81974_9th_infantry_vietnam_v_1.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_ia_ix3e97pz1sd5dpdfrasb6k8azdt7_0.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/b3_ia_somewherebetweenhereandnow_1.mp4": {
+    "tag": "bad",
+    "reason": "audio not matching the lips probably a dubbed video"
+  },
+  "seen_ambient/b3_farm_tractor.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_flea_market.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/b3_forest_rain.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_garbage_truck.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_glacier_hike.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/b3_gokart_track.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/b3_golf_course.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_bad/b3_gospel_outside.mp4": {
+    "tag": "bad",
+    "reason": "music is not ambient sound i think since its just music"
+  },
+  "seen_ambient/b3_hail_roof.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/b3_harbor_fishing.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/b3_horse_race.mp4": {
+    "tag": "bad",
+    "reason": "still image"
+  },
+  "_bad/b3_horse_ranch.mp4": {
+    "tag": "bad",
+    "reason": "semi still image"
+  },
+  "seen_ambient/b3_ia_0001_let_us_break_bread_toge_1.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_ia_62934flighttothesuncountryvw_0.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/b3_ia_62934flighttothesuncountryvw_1.mp4": {
+    "tag": "no_ambient"
+  },
+  "_bad/b3_ia_72432wingstovikingland_0.mp4": {
+    "tag": "bad",
+    "reason": "mostly music"
+  },
+  "_bad/b3_ia_85724panamfiestacentralameri_0.mp4": {
+    "tag": "bad",
+    "reason": "mostly music"
+  },
+  "_bad/b3_ia_87954yourchancetolivenuclear_0.mp4": {
+    "tag": "bad",
+    "reason": "images"
+  },
+  "no_ambient/b3_ia_87954yourchancetolivenuclear_1.mp4": {
+    "tag": "no_ambient"
+  },
+  "unseen_ambient/b3_ia_alcf_heydari_0005_0.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_bad/b3_ia_alcf_heydari_0005_1.mp4": {
+    "tag": "bad",
+    "reason": "too similar to other"
+  },
+  "_bad/b3_ia_alcfjameskilgoreclip5221_0.mp4": {
+    "tag": "bad",
+    "reason": "mostly musicb"
+  },
+  "no_ambient/b3_ia_youtube_skxtz9foauw_0.mp4": {
+    "tag": "no_ambient"
+  },
+  "unseen_ambient/b3_jungle_hike.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/b3_kayak_river.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_kitchen_restaurant.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_koi_pond.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_laundromat.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/b3_mountain_stream.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_petting_zoo.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_quarry_blast.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/b3_township_capetown.mp4": {
+    "tag": "bad",
+    "reason": "bad sound"
+  },
+  "unseen_ambient/b3_pet_shop.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_toll_booth.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_wm_waterfall_vid_venezuela_ogv.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/online_citywalk_869.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_ia_destinationamerica5cityofthe_0.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/b3_ia_somewherebetweenhereandnow_0.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/b3_ia_theshockofthenewcultureasnat_1.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/b3_ia_theveryremarkableyamatofamil_0.mp4": {
+    "tag": "no_ambient"
+  },
+  "_bad/b3_ia_tw1wy3vhu9wgkaenoavhguyw7iwn_0.mp4": {
+    "tag": "bad",
+    "reason": "too much music"
+  },
+  "seen_ambient/b3_ice_rink.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/b3_leafblower_fall.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_library_hall.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/b3_logging_forest.mp4": {
+    "tag": "seen_ambient"
   }
 }
