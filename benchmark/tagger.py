@@ -157,7 +157,9 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
        <option value=untagged>Untagged only</option>
        <option value=unsure>Unsure (I don't know)</option>
        <option value=all>All</option>
-     </select></label></div>
+     </select></label>
+     <label id=sublab style="font-size:13px;color:#999;margin-left:12px">suggested:
+     <select id=subfilter onchange="setSub(this.value)"></select></label></div>
    <div class=prog id=prog></div>
  </div>
  <div id=main>
@@ -182,8 +184,8 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
    <b>U</b> I don't know &middot; <b>B</b> bad. Saved to <code>benchmark/tags.json</code>.</div>
 </div>
 <script>
-let clips=[],tags={},suggestions={},filter='untagged',view=[],vi=0;const TAGS=__TAGS__;
-const SUGNAME={unseen_ambient:'Heard, not seen',seen_ambient:'Heard and seen',mixed:'Both/mixed',no_ambient:'No ambient','?':'?'};
+let clips=[],tags={},suggestions={},filter='untagged',sub='all',view=[],vi=0;const TAGS=__TAGS__;
+const SUGNAME={unseen_ambient:'Heard, not seen',seen_ambient:'Heard and seen',mixed:'Both/mixed',no_ambient:'No ambient','?':'?',none:'no suggestion'};
 async function boot(){
   const d=await (await fetch('/api/clips')).json();clips=d.clips;tags=d.tags||{};suggestions=d.suggestions||{};
   const b=document.getElementById('btns');b.innerHTML='';
@@ -193,20 +195,36 @@ async function boot(){
     el.innerHTML='<b>'+(idx+1)+'</b>'+t[1];el.dataset.k=t[0];el.onclick=()=>act({tag:t[0]});
     const cap=document.createElement('div');cap.className='cap';cap.textContent=t[3];
     cell.appendChild(el);cell.appendChild(cap);b.appendChild(cell);});
-  buildView();vi=0;show();
+  buildSub();buildView();vi=0;show();
 }
+function sugOf(c){const s=suggestions[c];return (s&&s.suggest&&s.suggest!=='?')?s.suggest:'none';}
+function buildSub(){
+  const sel=document.getElementById('subfilter'),lab=document.getElementById('sublab');
+  lab.style.display=(filter==='untagged')?'':'none';
+  if(filter!=='untagged')return;
+  const un=clips.filter(c=>!tags[c]),cnt={};
+  un.forEach(c=>{const k=sugOf(c);cnt[k]=(cnt[k]||0)+1;});
+  let html='<option value=all>all ('+un.length+')</option>';
+  ['unseen_ambient','mixed','seen_ambient','no_ambient','none'].forEach(k=>{
+    if(cnt[k])html+='<option value="'+k+'">'+SUGNAME[k]+' ('+cnt[k]+')</option>';});
+  sel.innerHTML=html;
+  if(!cnt[sub]&&sub!=='all')sub='all';
+  sel.value=sub;
+}
+function setSub(v){sub=v;buildView();vi=0;show();}
 function buildView(){
-  if(filter==='untagged')view=clips.filter(c=>!tags[c]);
+  if(filter==='untagged'){view=clips.filter(c=>!tags[c]);
+    if(sub!=='all')view=view.filter(c=>sugOf(c)===sub);}
   else if(filter==='unsure')view=clips.filter(c=>tags[c]&&tags[c].tag==='unknown');
   else view=clips.slice();
 }
-function setFilter(f){filter=f;buildView();vi=0;show();}
+function setFilter(f){filter=f;sub='all';buildSub();buildView();vi=0;show();}
 function show(){
   const total=clips.length,done=Object.keys(tags).length;
   document.getElementById('prog').textContent=done+' / '+total+' tagged  ('+view.length+' in view)';
   if(view.length===0){document.getElementById('main').style.display='none';
     const dv=document.getElementById('done');dv.style.display='block';
-    dv.textContent=(filter==='untagged')?'✓ All clips tagged. Nothing left untagged!':'Nothing in this view.';return;}
+    dv.textContent=(filter!=='untagged')?'Nothing in this view.':(sub==='all'?'✓ All clips tagged. Nothing left untagged!':'None left with this suggestion — pick another in "suggested".');return;}
   document.getElementById('main').style.display='';document.getElementById('done').style.display='none';
   if(vi>=view.length)vi=view.length-1;if(vi<0)vi=0;
   const c=view[vi],v=document.getElementById('vid');
@@ -230,7 +248,7 @@ async function act(entry){
   // advance the UI IMMEDIATELY so the clip never re-shows; real categories + bad are
   // removed from this session entirely (unknown stays, to revisit via the Unsure filter).
   if(entry.tag!=='unknown'){const idx=clips.indexOf(c);if(idx>=0)clips.splice(idx,1);}
-  buildView();if(vi>=view.length)vi=view.length-1;show();
+  buildSub();buildView();if(vi>=view.length)vi=view.length-1;show();
   try{await post({clip:c,...entry});}catch(e){console.error('save failed',e);}   // move/save in background
 }
 function markBad(){const r=document.getElementById('reason').value.trim();
