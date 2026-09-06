@@ -59,9 +59,17 @@ def list_clips():
                     if key not in seen:      # defensive de-dup
                         seen.add(key)
                         out.append(key)
-    # Discrete-event clips (ev_*: glass shatter, sudden bark, alarms) sort first --
-    # they are the scarcest and most valuable "heard but not seen" cases.
-    out.sort(key=lambda k: (0 if Path(k).name.startswith("ev_") else 1, k))
+    # Tag the most promising sources FIRST. Yield measured on 2026-08-22 tags:
+    # authored film/TV sound design is the hypothesis worth testing before grinding
+    # through lower-yield material (AudioSet ~19% useful, scraped ambience ~20%).
+    _PRIORITY = ("mv_", "tv_", "ev_", "as_")
+    def _rank(k):
+        n = Path(k).name
+        for i, pre in enumerate(_PRIORITY):
+            if n.startswith(pre):
+                return i
+        return len(_PRIORITY)
+    out.sort(key=lambda k: (_rank(k), k))
     return out
 
 
