@@ -114,9 +114,12 @@ def _accept(tmp: Path, name: str, meta: dict) -> bool:
         tmp.unlink(missing_ok=True)
         return False
     dest = UNSORTED / f"{name}.mp4"
-    if dest.exists():
-        tmp.unlink(missing_ok=True)
-        return False
+    # A clip Adam already tagged has been MOVED to its category folder, so checking
+    # only unsorted/ let re-runs re-download and duplicate it. Check every folder.
+    for d in UNSORTED.parent.iterdir():
+        if d.is_dir() and (d / f"{name}.mp4").exists():
+            tmp.unlink(missing_ok=True)
+            return False
     if tmp.suffix != ".mp4":
         subprocess.run(["ffmpeg", "-y", "-i", str(tmp), "-c:v", "libx264", "-preset",
                         "veryfast", "-crf", "26", "-c:a", "aac", str(dest)],
