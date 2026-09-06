@@ -29,7 +29,8 @@ BENCH = ROOT / "data" / "input" / "benchmark"
 FOLDERS = ["unseen_ambient", "seen_ambient", "mixed", "no_ambient", "unsorted"]
 # where a tagged clip's file should live (unknown -> stay put; bad -> _bad, out of view)
 TAG_FOLDER = {"unseen_ambient": "unseen_ambient", "seen_ambient": "seen_ambient",
-              "mixed": "mixed", "no_ambient": "no_ambient", "bad": "_bad"}
+              "mixed": "mixed", "no_ambient": "no_ambient", "bad": "_bad",
+              "drop": "_dropped"}
 TAGS_FILE = ROOT / "benchmark" / "tags.json"
 EXT = {".webm", ".ogv", ".mp4"}
 PORT = 8000
@@ -149,6 +150,7 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
  button.unknown{padding:12px 14px;font-size:14px;border:none;border-radius:6px;background:#ef6c00;color:#fff;cursor:pointer;white-space:nowrap}
  .row2 input{flex:1;padding:10px;border-radius:6px;border:1px solid #444;background:#1b1b1b;color:#eee;font-size:14px}
  button.bad{padding:10px 16px;font-size:14px;border:none;border-radius:6px;background:#b71c1c;color:#fff;cursor:pointer;white-space:nowrap}
+ button.drop{padding:12px 14px;font-size:14px;border:none;border-radius:6px;background:#455a64;color:#fff;cursor:pointer;white-space:nowrap}
  .nav{display:flex;justify-content:space-between;gap:10px;margin-top:10px}
  .nav button{padding:10px 18px;font-size:14px;border:none;border-radius:6px;background:#333;color:#eee;cursor:pointer}
  .done{text-align:center;padding:40px;color:#7c7;font-size:18px}
@@ -172,10 +174,13 @@ PAGE = r"""<!doctype html><html><head><meta charset=utf-8>
    <div class=btns id=btns></div>
    <div class=row2>
      <button class=unknown onclick="act({tag:'unknown'})">?  I don't know (U)</button>
+     <button class=drop onclick="act({tag:'drop'})">&#8681; Drop (D)</button>
      <input id=reason placeholder="reason this clip is bad (required for BAD)">
      <button class=bad onclick="markBad()">&#10007; BAD (B)</button>
    </div>
-   <div class=cap2><b>U</b> = not sure, revisit later &nbsp;&middot;&nbsp; <b>B</b> = broken/unusable clip (type why; it gets discarded).</div>
+   <div class=cap2><b>U</b> = not sure, revisit later &nbsp;&middot;&nbsp;
+     <b>D</b> = fine clip, just not a case I need (set aside, not counted) &nbsp;&middot;&nbsp;
+     <b>B</b> = broken/unusable clip (type why; it gets discarded).</div>
    <div class=nav>
      <button onclick="go(-1)">&larr; Prev (P)</button>
      <button onclick="go(1)">Next (N) &rarr;</button>
@@ -265,6 +270,7 @@ document.addEventListener('keydown',e=>{
   else if(e.key==='ArrowLeft'||e.key==='p'||e.key==='P')go(-1);
   else if(['1','2','3','4'].includes(e.key)){const t=TAGS[+e.key-1];if(t)act({tag:t[0]});}
   else if(e.key==='u'||e.key==='U')act({tag:'unknown'});
+  else if(e.key==='d'||e.key==='D')act({tag:'drop'});
   else if(e.key==='b'||e.key==='B')markBad();
 });
 boot();
