@@ -26,7 +26,10 @@ from src.stage1_audio_extraction import media_duration
 # `ev.label.lower() in visible_entities` check matches directly.
 VISIBLE_CONCEPTS = {
     "Dog": "a photo of a dog", "Cat": "a photo of a cat",
-    "Vehicle": "a photo of a car, bus or vehicle on a road",
+    # machinery is acoustically indistinguishable from traffic at this model scale, so
+    # the VISIBILITY side is made forgiving: a visible machine suppresses the augmentation
+    # instead of yielding a phantom off-screen car (notes sec:annotation)
+    "Vehicle": "a photo of a car, bus, truck or machinery, engine or heavy equipment",
     "Water": "a photo of water, a river, waterfall or the sea",
     "Bird": "a photo of a bird", "Crowd": "a photo of a crowd of people",
     "Train": "a photo of a train", "Aircraft": "a photo of an airplane in the sky",
@@ -37,7 +40,6 @@ VISIBLE_CONCEPTS = {
     "Siren": "a photo of an ambulance, police car or fire truck",
     "Fireworks": "a photo of fireworks exploding in the sky",
     "Thunder": "a photo of a dark stormy sky, storm clouds or lightning",
-    "Wind": "a photo of trees, flags or objects blowing in strong wind",
     "Saxophone": "a photo of a person playing a saxophone or brass instrument",
 }
 _DISTRACTORS = ["a photo of an indoor scene", "a photo of an empty street",

@@ -25,7 +25,7 @@ import config
 from src.stage1_audio_extraction import extract_audio
 from src.stage4_audio_event_detection import detect_events
 from src.stage2_video_understanding import analyze_video
-from src.labels import is_salient_nonspeech, consolidate_families
+from src.labels import is_salient_nonspeech, consolidate_families, min_confidence
 
 BENCH = _ROOT / "data" / "input" / "benchmark"
 OUT = _ROOT / "benchmark" / "suggestions.json"
@@ -40,7 +40,7 @@ def suggest_clip(path: Path):
         scene = analyze_video(path, num_frames=config.NUM_FRAMES, model=config.VIDEO_MODEL,
                               device=config.DEVICE, threshold=config.VISIBILITY_THRESHOLD)
     salient = [e for e in consolidate_families([x for x in events if is_salient_nonspeech(x.label)])
-               if e.confidence >= config.DISPLAY_THRESHOLD]
+               if e.confidence >= min_confidence(e.label, config.DISPLAY_THRESHOLD)]
     visible = {v.lower() for v in scene.visible_entities}
     offscreen = [e.label for e in salient if e.label.lower() not in visible]
     seen = [e.label for e in salient if e.label.lower() in visible]

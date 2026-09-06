@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import List
 
 from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
-from src.labels import is_salient_nonspeech, consolidate_families
+from src.labels import is_salient_nonspeech, consolidate_families, min_confidence
 
 
 def plan_augmentations(scene: SceneContext,
@@ -47,9 +47,10 @@ def plan_augmentations(scene: SceneContext,
                       if augment else
                       f"below display threshold ({ev.confidence:.2f} < {display_threshold})")
         else:
-            salient = ev.confidence >= display_threshold
+            salient = ev.confidence >= min_confidence(ev.label, display_threshold)
             redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
-            augment = salient and not redundant and ev.confidence >= augment_threshold
+            augment = (salient and not redundant
+                       and ev.confidence >= min_confidence(ev.label, augment_threshold))
             if not salient:
                 reason = f"below display threshold ({ev.confidence:.2f} < {display_threshold})"
             elif redundant:

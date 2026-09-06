@@ -25,7 +25,7 @@ if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
 import config
-from src.labels import is_salient_nonspeech, consolidate_families
+from src.labels import is_salient_nonspeech, consolidate_families, min_confidence
 
 BENCH = _ROOT / "data" / "input" / "benchmark"
 TAGS = _ROOT / "benchmark" / "tags.json"
@@ -77,11 +77,12 @@ def _predict(entry: dict, display_threshold: float,
     events = [AudioEvent(*e) for e in entry["events"]]
     salient = [e for e in consolidate_families(
                    [x for x in events if is_salient_nonspeech(x.label)])
-               if e.confidence >= display_threshold]
+               if e.confidence >= min_confidence(e.label, display_threshold)]
     visible = {v.lower() for v in entry["visible"]}
     # asymmetric: an off-screen (augment) claim needs the higher bar
     offscreen = [e.label for e in salient
-                 if e.label.lower() not in visible and e.confidence >= aug_thr]
+                 if e.label.lower() not in visible
+                 and e.confidence >= min_confidence(e.label, aug_thr)]
     seen = [e.label for e in salient if e.label.lower() in visible]
     if offscreen and seen:
         cat = "mixed"

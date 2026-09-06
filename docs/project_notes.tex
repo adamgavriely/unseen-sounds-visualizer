@@ -543,6 +543,83 @@ $1.6$\,s with 37\% under 1\,s; without consolidation, sub-labels would duplicate
 tagging, check those against your labels --- if you tagged them unseen/seen ambient, the display
 threshold (0.15) is slightly too strict and should be tuned on the benchmark.}
 
+\subsection{Annotation guidelines and labelling dilemmas}\label{sec:annotation}
+These questions arose while hand-labelling the benchmark. They are recorded here so the labels
+stay internally consistent, so the protocol can be stated in the thesis, and because several are
+genuine design decisions rather than bookkeeping.
+
+\begin{description}
+  \item[The redundancy test (the central rule).] The question is \emph{not} ``is the sound's
+    physical source visible in frame?'' but \textbf{``does the picture already tell the viewer
+    that this sound is happening?''} If it does, the sound is redundant and must not be
+    augmented. Worked example: a rider filmed on a moving motorcycle with wind roar on the
+    soundtrack. No ``wind'' object is visible, yet the visible speed and motion already convey
+    it, so it is labelled \textbf{seen}. Likewise waves when the sea fills the frame, visibly
+    falling rain, and crowd noise over a visible crowd. This is exactly the DCMP captioning rule
+    (``do not caption a sound if it can be inferred from the visuals'', Section~\ref{sec:gap})
+    that Stage~5 automates, so the ground truth stays aligned with professional captioning
+    practice rather than a naive object-detection notion of ``visible''.
+  \item[Microphone artifacts are not events in the world.] Wind noise from airflow over the
+    microphone (riding, cycling, a handheld camera in a breeze) is a recording artifact, not an
+    environmental sound with a depictable source. AudioSet's \texttt{Wind noise (microphone)} is
+    already non-salient; bare \texttt{Wind} on a motion clip is usually the same artifact and
+    caused three false augmentations in the first benchmark evaluation.
+  \item[Broadband noise is systematically mis-labelled, and it dominates the error profile.]
+    \texttt{Wind}, \texttt{Rain}, \texttt{Vehicle} and machinery are all wide-band, low-structure
+    textures, and PANNs confuses them with each other and with plain recording noise --- at the
+    low operating threshold the detect-everything policy requires, hiss on a mediocre microphone
+    is regularly reported as rain or distant traffic. Consequences: (a)~a large share of
+    \emph{suggested} unseen/mixed clips are spurious, so the annotator must judge from the clip
+    and ignore the hint; (b)~the same errors are the gate's errors, making this the single
+    largest accuracy limitation of the v2-(a) pipeline; (c)~it motivates the VLM upgrade and a
+    higher evidence bar for the noise-like classes specifically.
+  \item[Machinery heard as ``Vehicle''.] Industrial machinery, engines and power tools are
+    routinely reported as \texttt{Vehicle}. Because the two are barely separable acoustically at
+    this model scale, the fix belongs on the \emph{visibility} side rather than the detection
+    side: the Stage-2 concept for \texttt{Vehicle} also covers visible machinery and equipment,
+    so a machine on screen correctly suppresses the augmentation instead of producing a phantom
+    off-screen car.
+  \item[Music is out of scope, including when it is the only ``off-screen'' sound.] Film scores
+    and soundtrack instruments are not ambient sound to depict (decision A6). This bit
+    repeatedly: PANNs reported \texttt{Saxophone}, \texttt{Music of Asia}, \texttt{Strum} and
+    \texttt{Double bass} as salient off-screen sources on scored documentary and film footage,
+    producing clips that looked like strong ``heard but not seen'' cases but were pure
+    soundtrack. Such clips were removed and the labels folded into the music sets. The real
+    boundary is \emph{diegetic vs.\ non-diegetic}, not ``musical'': a busker playing in the scene
+    is a genuine source, though still out of scope for v1.
+  \item[Faint background sources with no narrative weight.] Birds behind a passing train,
+    distant traffic under a conversation. These are genuine non-speech ambient sound and are
+    labelled as such; two mechanisms stop them cluttering the output instead of a special label:
+    the display threshold (Section~\ref{sec:granularity}) and the three-slot panel cap. The
+    ground truth records what is \emph{there}; the system decides what is \emph{worth showing}.
+  \item[Trust the clip, not the suggestion.] The tagger shows the current pipeline's suggested
+    label, which is wrong often enough to matter. The label must follow what the annotator hears
+    and sees. These disagreements are useful in themselves: they localise detector errors, and
+    the \texttt{Vehicle}/machinery confusion above is the largest single error cluster.
+  \item[``Mixed'' is the selective-gating case, and the scarce one.] A clip is \texttt{mixed}
+    when at least one salient source is visible \emph{and} at least one is not (a visible dog
+    barking on a street with unseen traffic). It is the category that demonstrates the system
+    augments \emph{selectively} rather than augmenting everything --- the core claim against
+    blind audio-to-image baselines --- and it is the hardest to source, hence a dedicated pass.
+  \item[Three distinct ways to exclude a clip.] \textbf{BAD} = technically defective (no audio,
+    no video, inaudible, still image, near-duplicate); a written reason is required and retained
+    as a defect record that filters future sourcing. \textbf{Drop} = a fine clip that is simply
+    not a case the benchmark needs (another \texttt{seen\_ambient} when that class is full);
+    set aside in \texttt{\_dropped/}, not deleted, and excluded from the metric.
+    \textbf{I don't know} = deferral, not a final state.
+  \item[Clip admissibility, learned from the BAD tags.] Every candidate must have both a video
+    and an audible audio stream (mean volume above roughly $-50$\,dB), last at least 15\,s, show
+    real motion (no still-image ``ambience'' uploads), be in colour, come from a distinct source
+    video (no two clips from one video, no adjacent segments), and not be so dominated by added
+    music that the ambient layer is inaudible. These are enforced automatically before a clip
+    reaches the tagging queue.
+  \item[Never select benchmark clips by the model's own prediction.] A sourcing pass that kept
+    only candidates the gate already classified as the wanted category was abandoned: choosing
+    the test set with the system under test is circular and inflates the reported accuracy by
+    construction. The inclusion criterion is model-independent --- ``contains a detected
+    non-speech sound'' --- and the human tag alone determines the category.
+\end{description}
+
 \subsection{Evaluation hooks specific to Stage 5}
 The gating decision needs its own metric: on a hand-labelled subset, measure \emph{gating accuracy}
 --- correctly staying silent when the source is visible, correctly augmenting when it is not
@@ -879,6 +956,7 @@ Section~\ref{sec:changelog}.
 \section{Decisions and Notes Log}\label{sec:changelog}
 % ======================================================================
 \begin{itemize}
+  \item \textbf{2026-08-22 --- Annotation protocol written up} (Section~\ref{sec:annotation}): the redundancy test (``does the picture already convey it?'', so wind heard while riding is \emph{seen}), mic artifacts vs.\ real events, broadband-noise mis-labelling as the dominant error mode, machinery-as-Vehicle, music out of scope, BAD vs.\ Drop vs.\ unsure, and why clips must never be selected by the model's own prediction.
   \item \textbf{2026-08-19 --- Non-text visualization evidence + rendering roadmap.} Deep-dive on how
     visuals (not captions/sign) measurably affect DHH users; lit review gained a dedicated section.
     Derived six evidence-backed presentation upgrades (glance/detail layers, stable slots, loudness

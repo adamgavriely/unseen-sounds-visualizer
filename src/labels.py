@@ -41,6 +41,10 @@ SCENE_LABELS = {
     "Outside, urban or manmade", "Outside, rural or natural", "Reverberation", "Echo",
     "Noise", "Environmental noise", "Background noise", "White noise", "Pink noise",
     "Silence", "Field recording", "Sound effect", "Wind noise (microphone)",
+    # Bare "Wind" is almost always mic/airflow artifact in our clips (riding, cycling,
+    # handheld outdoors) rather than a depictable event -- and it was a repeat source of
+    # false augmentations. Treated as ambience. See notes sec:annotation.
+    "Wind", "Rustling leaves", "Howl (wind)",
 }
 # Music: flagged; non-salient for now (decision: handle diegetic music later, task A6).
 MUSIC_LABELS = {
@@ -116,8 +120,6 @@ FAMILY = {
     "Aircraft engine": "Aircraft", "Propeller, airscrew": "Aircraft",
     "Motorboat, speedboat": "Boat", "Boat, Water vehicle": "Boat", "Ship": "Boat",
     "Sailboat, sailing ship": "Boat", "Motor vehicle (road)": "Vehicle",
-    # wind
-    "Rustling leaves": "Wind", "Wind": "Wind",
     # thunder / storm
     "Thunderstorm": "Thunder", "Rumble": "Thunder",
     # rain
@@ -140,6 +142,16 @@ FAMILY = {
     "Brass instrument": "Saxophone", "Wind instrument, woodwind instrument": "Saxophone",
     "Saxophone": "Saxophone",
 }
+
+
+# Wide-band, low-structure textures that PANNs routinely reports on noisy recordings
+# (mic hiss read as rain, room rumble read as traffic). They need more evidence than a
+# structured sound like a bark or a siren before we act on them. See notes sec:annotation.
+NOISE_LIKE_MIN_CONF = {"Rain": 0.30, "Vehicle": 0.20, "Water": 0.25, "Thunder": 0.25}
+
+
+def min_confidence(label: str, default: float) -> float:
+    return max(default, NOISE_LIKE_MIN_CONF.get(label, 0.0))
 
 
 def canonical(label: str) -> str:
