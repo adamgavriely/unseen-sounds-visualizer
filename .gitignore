@@ -32,3 +32,4 @@ data/input/*
 # tagger backup
 benchmark/tags.json.bak
 benchmark/suggestions.json
+data/work/audioset/*.tsv
