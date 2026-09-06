@@ -180,7 +180,7 @@ def main(want: int = 15):
             raw.unlink(missing_ok=True)
             continue
         # place the event ~40% in, so the on-screen reaction after it is captured
-        length = random.randint(16, 25)
+        length = random.randint(16, 20)
         start = max(0.0, ev.start - length * 0.4)
         cut = STAGE / f"ev_{name}.mp4"
         subprocess.run(["ffmpeg", "-y", "-ss", f"{start:.1f}", "-i", str(raw),

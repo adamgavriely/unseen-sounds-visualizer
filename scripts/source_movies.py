@@ -288,7 +288,7 @@ def main(want: int = 30):
             print("    reject: black & white")
             raw.unlink(missing_ok=True)
             continue
-        length = random.randint(16, 25)
+        length = random.randint(16, 20)
         start = max(0.0, ev.start - length * 0.45)   # keep the on-screen reaction after it
         cut = STAGE / f"{name}.mp4"
         subprocess.run(["ffmpeg", "-y", "-ss", f"{start:.1f}", "-i", str(raw),

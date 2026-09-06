@@ -38,9 +38,9 @@ CLIP_SEC = 28          # waves 1-3 used a fixed cut
 
 
 def _clip_len() -> int:
-    """Waves 4+: varied clip lengths so the benchmark isn't uniform.
-    16 s floor keeps a keyframe-imprecise cut above the >=15 s screen."""
-    return random.randint(16, 25)
+    """Varied clip lengths within the proposal spec (10-20 s, sec 5). Floor of 16 s
+    keeps a keyframe-imprecise cut above the >=15 s admissibility screen."""
+    return random.randint(16, 20)
 
 # ---------------------------------------------------------------- quality screen
 def _probe(f: Path):
