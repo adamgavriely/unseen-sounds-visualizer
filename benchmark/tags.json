@@ -575,5 +575,52 @@
   },
   "seen_ambient/b3_logging_forest.mp4": {
     "tag": "seen_ambient"
+  },
+  "unseen_ambient/ev_car_alarm_street.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/ev_fire_alarm_office.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/ev_horn_startle.mp4": {
+    "tag": "bad",
+    "reason": "its tiktok screenshot"
+  },
+  "seen_ambient/ev_kitchen_pan_drop.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/ev_knock_door_night.mp4": {
+    "tag": "bad",
+    "reason": "still"
+  },
+  "unseen_ambient/ev_smoke_alarm_kitchen.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/b3_night_market_food.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/ev_bodycam_noise.mp4": {
+    "tag": "drop",
+    "reason": "converted from 'I don't know'"
+  },
+  "_dropped/ev_dog_bark_vlog.mp4": {
+    "tag": "drop",
+    "reason": "converted from 'I don't know'"
+  },
+  "_dropped/ev_stadium_roar_offscreen.mp4": {
+    "tag": "drop",
+    "reason": "converted from 'I don't know'"
+  },
+  "_dropped/b3_market_marrakech.mp4": {
+    "tag": "drop",
+    "reason": "converted from 'I don't know'"
+  },
+  "_dropped/b3_oldtown_prague.mp4": {
+    "tag": "drop",
+    "reason": "converted from 'I don't know'"
+  },
+  "_dropped/b3_olive_press.mp4": {
+    "tag": "drop",
+    "reason": "converted from 'I don't know'"
   }
 }
