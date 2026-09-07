@@ -39,6 +39,22 @@ VISIBLE_CONCEPTS = {
     "Insect": "a photo of an insect", "Boat": "a photo of a boat or ship on water",
     "Siren": "a photo of an ambulance, police car or fire truck",
     "Fireworks": "a photo of fireworks exploding in the sky",
+    # Added 2026-08-23: 54% of off-screen claims named a label with NO concept here,
+    # so the gate could never mark them visible -- e.g. a video showing nothing but
+    # sheep was still reported as "sheep heard, source not visible".
+    "Sheep": "a photo of sheep or goats",
+    "Cattle": "a photo of cows or cattle",
+    "Pig": "a photo of pigs",
+    "Gunshot": "a photo of a person firing a gun, soldiers shooting",
+    "Explosion": "a photo of an explosion, blast or fireball",
+    "Glass": "a photo of broken glass or a shattered window",
+    "Alarm": "a photo of an alarm device, smoke detector or warning light",
+    "Telephone": "a photo of a telephone or a person holding a phone",
+    "Dishes": "a photo of dishes, plates, pots or cutlery",
+    "Cooking": "a photo of food cooking in a pan on a stove",
+    "Door": "a photo of a door",
+    "Footsteps": "a photo of people walking or running",
+    "Engine": "a photo of a machine or engine running",
     "Thunder": "a photo of a dark stormy sky, storm clouds or lightning",
     "Saxophone": "a photo of a person playing a saxophone or brass instrument",
 }

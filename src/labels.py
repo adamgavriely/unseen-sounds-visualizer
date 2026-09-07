@@ -138,6 +138,37 @@ FAMILY = {
     "Fire engine, fire truck (siren)": "Siren", "Civil defense siren": "Siren",
     # fireworks
     "Firecracker": "Fireworks", "Fireworks": "Fireworks",
+    # guns / blasts -> one canonical source
+    "Machine gun": "Gunshot", "Gunshot, gunfire": "Gunshot", "Fusillade": "Gunshot",
+    "Artillery fire": "Gunshot", "Cap gun": "Gunshot",
+    "Boom": "Explosion", "Eruption": "Explosion", "Bang": "Explosion",
+    # breaking glass
+    "Shatter": "Glass", "Breaking": "Glass", "Smash, crash": "Glass",
+    # horse
+    "Clip-clop": "Horse", "Neigh, whinny": "Horse",
+    # livestock (kept distinct from Horse: different depiction)
+    "Bleat": "Sheep", "Sheep": "Sheep", "Goat": "Sheep",
+    "Moo": "Cattle", "Cattle, bovinae": "Cattle", "Cowbell (livestock)": "Cattle",
+    "Oink": "Pig", "Pig": "Pig",
+    # racing = road vehicles
+    "Race car, auto racing": "Vehicle", "Skidding": "Vehicle", "Tire squeal": "Vehicle",
+    "Reversing beeps": "Vehicle",
+    # alarms
+    "Car alarm": "Alarm", "Fire alarm": "Alarm", "Alarm clock": "Alarm",
+    "Smoke detector, smoke alarm": "Alarm", "Buzzer": "Alarm", "Beep, bleep": "Alarm",
+    # telephone
+    "Telephone bell ringing": "Telephone", "Ringtone": "Telephone",
+    "Telephone dialing, DTMF": "Telephone",
+    # kitchen / household
+    "Dishes, pots, and pans": "Dishes", "Cutlery, silverware": "Dishes",
+    "Frying (food)": "Cooking", "Chopping (food)": "Cooking", "Sizzle": "Cooking",
+    "Door": "Door", "Slam": "Door", "Cupboard open or close": "Door",
+    "Creak": "Door", "Squeak": "Door",
+    # people moving
+    "Walk, footsteps": "Footsteps", "Run": "Footsteps", "Shuffle": "Footsteps",
+    # liquids -> Water
+    "Liquid": "Water", "Pour": "Water", "Fill (with liquid)": "Water",
+    "Water tap, faucet": "Water", "Sink (filling or washing)": "Water",
     # instruments (a visible musician) -> canonical Saxophone concept
     "Brass instrument": "Saxophone", "Wind instrument, woodwind instrument": "Saxophone",
     "Saxophone": "Saxophone",
@@ -147,7 +178,8 @@ FAMILY = {
 # Wide-band, low-structure textures that PANNs routinely reports on noisy recordings
 # (mic hiss read as rain, room rumble read as traffic). They need more evidence than a
 # structured sound like a bark or a siren before we act on them. See notes sec:annotation.
-NOISE_LIKE_MIN_CONF = {"Rain": 0.30, "Vehicle": 0.20, "Water": 0.25, "Thunder": 0.25}
+NOISE_LIKE_MIN_CONF = {"Rain": 0.30, "Vehicle": 0.20, "Water": 0.25,
+                       "Thunder": 0.25, "Boat": 0.30, "Wind": 0.35}
 
 
 def min_confidence(label: str, default: float) -> float:
