@@ -62,7 +62,7 @@ def list_clips():
     # Tag the most promising sources FIRST. Yield measured on 2026-08-22 tags:
     # authored film/TV sound design is the hypothesis worth testing before grinding
     # through lower-yield material (AudioSet ~19% useful, scraped ambience ~20%).
-    _PRIORITY = ("mv_", "tv_", "ev_", "as_")
+    _PRIORITY = ("un_", "mv_", "tv_", "mc_", "rx_", "wc_", "gn_")
     def _rank(k):
         n = Path(k).name
         for i, pre in enumerate(_PRIORITY):
