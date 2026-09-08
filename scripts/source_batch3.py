@@ -99,9 +99,24 @@ def screen(f: Path) -> str | None:
 
 # ---------------------------------------------------------------- helpers
 def _log(entry: dict):
-    log = json.loads(LOG.read_text(encoding="utf-8")) if LOG.exists() else []
+    """Append to the source log atomically.
+
+    Two sourcing waves running at once previously interleaved a read-modify-write
+    and left a truncated file with a second JSON document pasted on the end. Write
+    to a temp file and os.replace() it, which is atomic on Windows and POSIX, and
+    tolerate a damaged read rather than compounding it.
+    """
+    import os
+    try:
+        log = json.loads(LOG.read_text(encoding="utf-8")) if LOG.exists() else []
+        if not isinstance(log, list):
+            log = []
+    except Exception:
+        log = []                       # unreadable: start fresh rather than corrupt
     log.append(entry)
-    LOG.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
+    tmp = LOG.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(log, indent=2, ensure_ascii=False), encoding="utf-8")
+    os.replace(tmp, LOG)
 
 
 def _accept(tmp: Path, name: str, meta: dict) -> bool:

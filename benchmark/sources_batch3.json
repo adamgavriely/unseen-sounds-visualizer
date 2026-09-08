@@ -1946,5 +1946,3430 @@
     "title": "How to Use Bird Scare Tape!",
     "targeted": "unseen_ambient",
     "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_market_chase_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=IIdGxR-aU6o",
+    "title": "The Blues Brothers (1980) - Mall Chase Scene (2/9) | Movieclips",
+    "event_label": "Skidding",
+    "event_conf": 0.572,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_plane_emergency.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=9F3iBMYvQOs",
+    "title": "Madagascar: Escape 2 Africa (2008) - Penguin Plane Crash Scene (2/10) | Movieclips\nhttps://www.youtube.com/watch?v=xC4x4rEbgaU|\"Non-stop\" emergency landing scene with C-BooL music\nhttps://www.youtube.com/watch?v=EmbqdTZ82Zc|Captain \"Sully\" (Tom Hanks) Emergency Lands a Plane Full of Passengers [CLIP] | Sully (2016) | TNT",
+    "event_label": "Thunder",
+    "event_conf": 0.471,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "tv_war_series_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=kWgxHwsh4Mo",
+    "title": "American Revolution War Battle Fight Scene Cinematic 4K ULTRA HD Assassin's Creed 3 Cinematics\nhttps://www.youtube.com/watch?v=nEKOWpt1AvI|The Battle of Geonosis War Scenes [4K HDR] - Star Wars: Attack of the Clones\nhttps://www.youtube.com/watch?v=kWgxHwsh4Mo|American Revolution War Battle Fight Scene Cinematic 4K ULTRA HD Assassin's Creed 3 Cinematics",
+    "event_label": "Gunshot, gunfire",
+    "event_conf": 0.349,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_courtroom_outside.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=IgloGWshcj0",
+    "title": "The IT Crowd - Series 4 - Episode 6 - Moss Testifies\nhttps://www.youtube.com/watch?v=DvkYRhu-TP0|Jimmy Tricks The Court | Namaste | Better Call Saul\nhttps://www.youtube.com/watch?v=ii50SWTJSoA|Court Cam: Crowd Cheers for Wrongfully Convicted Man Found NOT Guilty (Season 1) | A&E",
+    "event_label": "Applause",
+    "event_conf": 0.587,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_car_alarm_0Hz4R_m0.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "0Hz4R_m0hmI",
+    "segment_id": "0Hz4R_m0hmI_80000",
+    "event_label": "Car alarm",
+    "event_abs_time": 80.34,
+    "title": "2007 Ssang Yong Kyron. Start Up, Engine, and In Depth Tour.",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_jackhammer_opEiRsc8.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "opEiRsc87BM",
+    "segment_id": "opEiRsc87BM_390000",
+    "event_label": "Jackhammer",
+    "event_abs_time": 390.25,
+    "title": "Argo snow plow attachment points",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_doorbell_DIBtzsFJ.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "DIBtzsFJSVU",
+    "segment_id": "DIBtzsFJSVU_30000",
+    "event_label": "Doorbell",
+    "event_abs_time": 33.25,
+    "title": "Moluccan Cockatoo Barks like a dog when the doorbell rings, Toni Guthrie is Beakers chosen person!",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunderstorm_RrkewUCE.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "RrkewUCEgUs",
+    "segment_id": "RrkewUCEgUs_30000",
+    "event_label": "Thunderstorm",
+    "event_abs_time": 31.11,
+    "title": "Water wheel boat powered by water Ram pump in Elgin, Texas.Organic Mike",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_prison_alarm_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=Iz8tBQo8EDo",
+    "title": "Scofield's on the roof of the Prison! English, Fitz or Percy? Prison Break s01 pt.21, 2160p (4K)",
+    "event_label": "Emergency vehicle",
+    "event_conf": 0.53,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_car_alarm_6w5BNOcB.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "6w5BNOcBnu4",
+    "segment_id": "6w5BNOcBnu4_0",
+    "event_label": "Car alarm",
+    "event_abs_time": 8.73,
+    "title": "BMW 120D e87 2004 Clutch Rattle, Dual Mass Flywheel???",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_siren_i4JvkuR0.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "i4JvkuR0ncI",
+    "segment_id": "i4JvkuR0ncI_520000",
+    "event_label": "Siren",
+    "event_abs_time": 528.03,
+    "title": "Part 4 of our 5 Part Series on Confidence Building! The Importance of Obedience",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fireworks_rskUahE5.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "rskUahE5VDE",
+    "segment_id": "rskUahE5VDE_0",
+    "event_label": "Fireworks",
+    "event_abs_time": 0.0,
+    "title": "Excalibur Fireworks\nExcalibur Fireworks",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_earthquake_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=OUfUeXsjE6Y",
+    "title": "Disastrous Earthquake in China! Scene - ASHFALL (2020)",
+    "event_label": "Boom",
+    "event_conf": 0.457,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_car_alarm_6CcQg_Ji.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "6CcQg_JiDW4",
+    "segment_id": "6CcQg_JiDW4_30000",
+    "event_label": "Car alarm",
+    "event_abs_time": 37.07,
+    "title": "AMERICAN TRUCK RUTA EN SOLITARIO 40 TONELADAS",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fire_engine_fire_truck_HcLqWMIW.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "HcLqWMIWizQ",
+    "segment_id": "HcLqWMIWizQ_110000",
+    "event_label": "Fire engine, fire truck (siren)",
+    "event_abs_time": 117.06,
+    "title": "EMT Training",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_ambulance_siren_1uMkgVRU.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "1uMkgVRURSg",
+    "segment_id": "1uMkgVRURSg_70000",
+    "event_label": "Ambulance (siren)",
+    "event_abs_time": 77.19,
+    "title": "Modrá Hviezda-vyhodnoťovanie súťaže záchranárov v Nitre 12.9.2009(part.1)",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_bark_3AzacBpr.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "3AzacBprTzU",
+    "segment_id": "3AzacBprTzU_60000",
+    "event_label": "Bark",
+    "event_abs_time": 60.0,
+    "title": "Jack Russell barking or talking until you play with him or give him treats",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_police_car_siren_yZ9Yd57K.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "yZ9Yd57Ks3s",
+    "segment_id": "yZ9Yd57Ks3s_30000",
+    "event_label": "Police car (siren)",
+    "event_abs_time": 34.75,
+    "title": "Siren Çakar led mondeo başbakanlık koruma eskort. shn",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_police_car_siren_vfUgQTKg.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "vfUgQTKgKDI",
+    "segment_id": "vfUgQTKgKDI_30000",
+    "event_label": "Police car (siren)",
+    "event_abs_time": 36.64,
+    "title": "Driver San Francisco Cadillac Escalade Police Car",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_ambulance_siren_YNIr0HEI.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "YNIr0HEI718",
+    "segment_id": "YNIr0HEI718_160000",
+    "event_label": "Ambulance (siren)",
+    "event_abs_time": 163.44,
+    "title": "MadTV   - Girlicious   Nicole Parker",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_gunshot_gunfire_cscMXSv9.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "cscMXSv9hOo",
+    "segment_id": "cscMXSv9hOo_460000",
+    "event_label": "Gunshot, gunfire",
+    "event_abs_time": 461.29,
+    "title": "Let's Play Caribbean! Episode 11",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_firecracker_VTgN794a.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "VTgN794aF_o",
+    "segment_id": "VTgN794aF_o_21000",
+    "event_label": "Firecracker",
+    "event_abs_time": 22.31,
+    "title": "explosion de la cebolla",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunderstorm_0YsXXGEV.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "0YsXXGEVmy8",
+    "segment_id": "0YsXXGEVmy8_30000",
+    "event_label": "Thunderstorm",
+    "event_abs_time": 35.24,
+    "title": "Summer Rain Storm",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_funeral_rain_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=8DQPU9XB55M",
+    "title": "RAINY FUNERAL\nhttps://www.youtube.com/watch?v=GU9Z4i245Q4|Four Weddings and a Funeral - Is It Still Raining?",
+    "event_label": "Rain",
+    "event_conf": 0.553,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fireworks_jZ9mYtCA.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "jZ9mYtCAGf8",
+    "segment_id": "jZ9mYtCAGf8_150000",
+    "event_label": "Fireworks",
+    "event_abs_time": 150.46,
+    "title": "★LOTR Fellowship of the Ring - Bilbo's Birthday Party (Pt.1/2) [Blu-ray HD]★",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunder_h4PCmd_N.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "h4PCmd_N8TE",
+    "segment_id": "h4PCmd_N8TE_0",
+    "event_label": "Thunder",
+    "event_abs_time": 0.06,
+    "title": "CSST Safety Campaign",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_gunshot_gunfire_rq_QUUmE.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "rq_QUUmErm4",
+    "segment_id": "rq_QUUmErm4_10000",
+    "event_label": "Gunshot, gunfire",
+    "event_abs_time": 17.47,
+    "title": "Deer Hunting With The Benjamin Pioneer Airbow - The Management Advantage #83",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_jackhammer_Gm7nLucM.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "Gm7nLucM1e0",
+    "segment_id": "Gm7nLucM1e0_10000",
+    "event_label": "Jackhammer",
+    "event_abs_time": 15.43,
+    "title": "three bobcats breaking & loading concrete",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_glass_GAGt_UEF.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "GAGt_UEFh8E",
+    "segment_id": "GAGt_UEFh8E_190000",
+    "event_label": "Glass",
+    "event_abs_time": 198.31,
+    "title": "Equilibrium Demonstration",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_helicopter_mVjQigOw.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "mVjQigOwnmw",
+    "segment_id": "mVjQigOwnmw_30000",
+    "event_label": "Helicopter",
+    "event_abs_time": 37.37,
+    "title": "Door Gunner Training YT.mov",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_helicopter_i57RXxfJ.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "i57RXxfJWvM",
+    "segment_id": "i57RXxfJWvM_30000",
+    "event_label": "Helicopter",
+    "event_abs_time": 30.0,
+    "title": "Angwin Fire Department - Helicopter Training with CHP",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_storm_scene_house.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=Ou0QkuBmQCg",
+    "title": "Into the Storm - Clip [HD]\nhttps://www.youtube.com/watch?v=0zIlsi8XD3U|Make a SUPER REALISTIC Storm Scene in After Effects Tutorial",
+    "event_label": "Thunder",
+    "event_conf": 0.628,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_car_alarm_VC9nqtFU.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "VC9nqtFULW4",
+    "segment_id": "VC9nqtFULW4_280000",
+    "event_label": "Car alarm",
+    "event_abs_time": 289.38,
+    "title": "topi bazar.AVI",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_church_bell_DbL6PFuq.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "DbL6PFuqBhc",
+    "segment_id": "DbL6PFuqBhc_0",
+    "event_label": "Church bell",
+    "event_abs_time": 1.43,
+    "title": "BoLS Battle Report #129 Khador vs. Legion | Warmachine",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_chainsaw_0tray-Ds.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "0tray-DsgLA",
+    "segment_id": "0tray-DsgLA_60000",
+    "event_label": "Chainsaw",
+    "event_abs_time": 60.61,
+    "title": "HALLOWSCREAM | Hallowscream 2012 - Teaser Trailer",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_helicopter_bW3_XVcK.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "bW3_XVcKxqE",
+    "segment_id": "bW3_XVcKxqE_130000",
+    "event_label": "Helicopter",
+    "event_abs_time": 130.0,
+    "title": "키아사르철도 1부",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_police_car_siren_AS5TajMQ.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "AS5TajMQHWk",
+    "segment_id": "AS5TajMQHWk_0",
+    "event_label": "Police car (siren)",
+    "event_abs_time": 6.54,
+    "title": "5 meter per medlem - Stannar en glassbil med megafon!",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_bark_AvDk6B7v.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "AvDk6B7vCtE",
+    "segment_id": "AvDk6B7vCtE_0",
+    "event_label": "Bark",
+    "event_abs_time": 0.7,
+    "title": "Barking Orso",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_knock_Af_uFXzp.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "Af_uFXzpQxg",
+    "segment_id": "Af_uFXzpQxg_30000",
+    "event_label": "Knock",
+    "event_abs_time": 33.6,
+    "title": "michaela's doggy door part 2",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_train_horn_WR83qQPQ.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "WR83qQPQSoE",
+    "segment_id": "WR83qQPQSoE_200000",
+    "event_label": "Train horn",
+    "event_abs_time": 207.91,
+    "title": "OLEX Sick Laming Cull Cows Loaded",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fire_engine_fire_truck_THm-c9XQ.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "THm-c9XQxiw",
+    "segment_id": "THm-c9XQxiw_290000",
+    "event_label": "Fire engine, fire truck (siren)",
+    "event_abs_time": 290.01,
+    "title": "Sharon, WI  4th of July Parade of Emergency Vehicles",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_car_alarm_zuA6PvZo.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "zuA6PvZoZ9Q",
+    "segment_id": "zuA6PvZoZ9Q_30000",
+    "event_label": "Car alarm",
+    "event_abs_time": 33.05,
+    "title": "ประตูไฟฟ้า hyundai H1 standard version.wmv,automatic sliding door hyundai",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_bark_zxEWn0uq.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "zxEWn0uqw0A",
+    "segment_id": "zxEWn0uqw0A_30000",
+    "event_label": "Bark",
+    "event_abs_time": 33.02,
+    "title": "Belle the Beagle Barking",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fireworks_bbFxpiDU.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "bbFxpiDUB5w",
+    "segment_id": "bbFxpiDUB5w_90000",
+    "event_label": "Fireworks",
+    "event_abs_time": 92.21,
+    "title": "Munising MI 4th of July 2009",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_glass_EiqYND8G.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "EiqYND8GKNQ",
+    "segment_id": "EiqYND8GKNQ_30000",
+    "event_label": "Glass",
+    "event_abs_time": 34.07,
+    "title": "Natalie Cook - Glass Walking (part 1)",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_smash_crash_YFdnwI2w.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "YFdnwI2wYkM",
+    "segment_id": "YFdnwI2wYkM_40000",
+    "event_label": "Smash, crash",
+    "event_abs_time": 44.19,
+    "title": "Sneezeman... Telephone",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_siren_q4R18YN6.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "q4R18YN6Jzk",
+    "segment_id": "q4R18YN6Jzk_16000",
+    "event_label": "Siren",
+    "event_abs_time": 16.0,
+    "title": "LTS mad max siren",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_eEdaLHC0.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "eEdaLHC0yA4",
+    "segment_id": "eEdaLHC0yA4_30000",
+    "event_label": "Explosion",
+    "event_abs_time": 31.85,
+    "title": "Gta San Andreas nuclear explosion",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_firecracker_MZObvb2m.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "MZObvb2msOE",
+    "segment_id": "MZObvb2msOE_50000",
+    "event_label": "Firecracker",
+    "event_abs_time": 59.53,
+    "title": "Probando Silba Boom , petando objetos , mierda etc ...",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_chainsaw_TIL8jEw8.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "TIL8jEw8pSc",
+    "segment_id": "TIL8jEw8pSc_30000",
+    "event_label": "Chainsaw",
+    "event_abs_time": 38.99,
+    "title": "Firewood chainsaw processing on chainsaw bench Malkas zāģis",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_smoke_detector_smoke_a_YmsNoKDf.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "YmsNoKDfWUE",
+    "segment_id": "YmsNoKDfWUE_120000",
+    "event_label": "Smoke detector, smoke alarm",
+    "event_abs_time": 125.52,
+    "title": "My Smoke Alarm Collection",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_apartment_street_noise.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=M9cJMXmQ_ZU",
+    "title": "DT L.A.Day: Relaxing Sleep Video and Sound for Meditation, Stress Relief & Relaxation for Anxiety\nhttps://www.youtube.com/watch?v=nIbewTc6vNM|Eddie \"I’m So Sorry About Your Friends\" - Apartment Fight Scene - Venom (2018) Movie CLIP HD",
+    "event_label": "Shatter",
+    "event_conf": 0.603,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_smash_crash_NkU_Vavi.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "NkU_VaviZnk",
+    "segment_id": "NkU_VaviZnk_40000",
+    "event_label": "Smash, crash",
+    "event_abs_time": 41.21,
+    "title": "White Horse Happy Hour",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_machine_gun_x5awxHEl.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "x5awxHElUc0",
+    "segment_id": "x5awxHElUc0_60000",
+    "event_label": "Machine gun",
+    "event_abs_time": 60.0,
+    "title": "Battlefield 3: 100 Kills - The Series, Episode: M16A3",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_evacuation_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=J9CqREun_Bg",
+    "title": "Alien - Emergency Destruct System Activated [HD]",
+    "event_label": "Civil defense siren",
+    "event_conf": 0.592,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_smoke_detector_smoke_a_5DJjRwzI.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "5DJjRwzIEG4",
+    "segment_id": "5DJjRwzIEG4_240000",
+    "event_label": "Smoke detector, smoke alarm",
+    "event_abs_time": 248.53,
+    "title": "How to change the backup battery in a Simon XT security panel",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_jackhammer_8CdOjt_8.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "8CdOjt_83qY",
+    "segment_id": "8CdOjt_83qY_70000",
+    "event_label": "Jackhammer",
+    "event_abs_time": 70.0,
+    "title": "Ines with Makita hammer",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_chainsaw_vZBYwYgZ.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "vZBYwYgZcU8",
+    "segment_id": "vZBYwYgZcU8_30000",
+    "event_label": "Chainsaw",
+    "event_abs_time": 36.66,
+    "title": "Stihl ms 661 + Kőris (14m3)",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_siren_tbOqkgPO.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "tbOqkgPOmVM",
+    "segment_id": "tbOqkgPOmVM_30000",
+    "event_label": "Siren",
+    "event_abs_time": 36.73,
+    "title": "for sale\" Police car REAL LIGHT BAR CHIP CONTROLLER lights and real siren chip",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_police_raid_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=X2FV2E34Bwo",
+    "title": "The Dark Knight 4K HDR | Joker Party Scene\nhttps://www.youtube.com/watch?v=YFXYBu8AXwM|Vibranium Heist : Marvel’s Black Panther Wakanda Forever",
+    "event_label": "Shatter",
+    "event_conf": 0.656,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_knock_-AIHL5EI.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "-AIHL5EIKUg",
+    "segment_id": "-AIHL5EIKUg_30000",
+    "event_label": "Knock",
+    "event_abs_time": 32.56,
+    "title": "Wolf at the Door",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_helicopter_4-x8CPm2.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "4-x8CPm2qk4",
+    "segment_id": "4-x8CPm2qk4_30000",
+    "event_label": "Helicopter",
+    "event_abs_time": 36.4,
+    "title": "Heavy Rain (PS3) Playthrough - Part 59",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_siren_S-vJ8WKy.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "S-vJ8WKyLP4",
+    "segment_id": "S-vJ8WKyLP4_60000",
+    "event_label": "Siren",
+    "event_abs_time": 62.67,
+    "title": "Hazleton Tire Fire, Hazle Auto Parts, Hazle Township, Hazleton PA, July 26, 2010",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_doorbell_hLdklwjN.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "hLdklwjNybI",
+    "segment_id": "hLdklwjNybI_40000",
+    "event_label": "Doorbell",
+    "event_abs_time": 41.02,
+    "title": "Lovely Frog Welcome Doorbell Wireless Light Sensor  @ Meritline( item#414-149)",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_shipwreck_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=9VsHtn_RSHY",
+    "title": "Poseidon (1/10) Movie CLIP - Capsized (2006) HD\nhttps://www.youtube.com/watch?v=wpTqKdzd-Mk|All Poseidon {2006} Ship Sinking scenes",
+    "event_label": "Thunder",
+    "event_conf": 0.35,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_ambulance_siren_qmESqQW5.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "qmESqQW545I",
+    "segment_id": "qmESqQW545I_170000",
+    "event_label": "Ambulance (siren)",
+    "event_abs_time": 170.0,
+    "title": "A1 Compilatie Video Ambulance Zorg Rotterdam Rijnmond (AZRR) met 25 korte video's!!!!!",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_train_horn_-GCwoyCn.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "-GCwoyCnYsY",
+    "segment_id": "-GCwoyCnYsY_0",
+    "event_label": "Train horn",
+    "event_abs_time": 0.16,
+    "title": "How I built my bandsaw mill.",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_church_bell_pJRAWkLM.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "pJRAWkLM7UE",
+    "segment_id": "pJRAWkLM7UE_110000",
+    "event_label": "Church bell",
+    "event_abs_time": 110.36,
+    "title": "Hampton Court Palace a virtual tour",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_screaming_NvE-dkEi.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "NvE-dkEiKrQ",
+    "segment_id": "NvE-dkEiKrQ_10000",
+    "event_label": "Screaming",
+    "event_abs_time": 18.75,
+    "title": "powder puff cheerleading",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fire_engine_fire_truck_4arad6my.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "4arad6my08E",
+    "segment_id": "4arad6my08E_25000",
+    "event_label": "Fire engine, fire truck (siren)",
+    "event_abs_time": 25.0,
+    "title": "Fire  Truck Ladder Almost Flips!",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunder_QTESQTLM.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "QTESQTLM-qg",
+    "segment_id": "QTESQTLM-qg_290000",
+    "event_label": "Thunder",
+    "event_abs_time": 296.39,
+    "title": "Splinter Cell Blacklist - Fabbrica Abbandonata Londra, 6/13 [Gameplay Completo ITA PC HD]",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_helicopter_kBe-sWng.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "kBe-sWnga_8",
+    "segment_id": "kBe-sWnga_8_30000",
+    "event_label": "Helicopter",
+    "event_abs_time": 32.55,
+    "title": "Ratchet & Clank 2 Dev Commentary: 5B - Endako",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_Zr0TnoiH.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "Zr0TnoiHJc0",
+    "segment_id": "Zr0TnoiHJc0_10000",
+    "event_label": "Explosion",
+    "event_abs_time": 10.61,
+    "title": "Toyota Supra 1200 HorsePower",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunderstorm_D2LLtou5.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "D2LLtou5w2g",
+    "segment_id": "D2LLtou5w2g_30000",
+    "event_label": "Thunderstorm",
+    "event_abs_time": 33.61,
+    "title": "RIVER PARKER AZ RAIN STORM 5-08",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_alarm_Ih0QuB3t.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "Ih0QuB3tQ-c",
+    "segment_id": "Ih0QuB3tQ-c_30000",
+    "event_label": "Alarm",
+    "event_abs_time": 33.02,
+    "title": "All New Fully Keyless Car Alarm System with Push Start And Engine Auto Start Universal for All Cars",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_uXvHaJcI.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "uXvHaJcIleI",
+    "segment_id": "uXvHaJcIleI_40000",
+    "event_label": "Explosion",
+    "event_abs_time": 42.41,
+    "title": "Lego Batman vs Two-face",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunderstorm__yJHk260.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "_yJHk260i-w",
+    "segment_id": "_yJHk260i-w_190000",
+    "event_label": "Thunderstorm",
+    "event_abs_time": 198.56,
+    "title": "The Origin of the Thirty Year's War",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_jackhammer_Be5MdQBt.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "Be5MdQBteuM",
+    "segment_id": "Be5MdQBteuM_210000",
+    "event_label": "Jackhammer",
+    "event_abs_time": 219.26,
+    "title": "PERMANENT REMOVE CLOSE IN FILL IN GROUND POOL",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fire_engine_fire_truck_ZANp2W2q.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "ZANp2W2q0XA",
+    "segment_id": "ZANp2W2q0XA_30000",
+    "event_label": "Fire engine, fire truck (siren)",
+    "event_abs_time": 36.33,
+    "title": "Teaneck Ambulance Compilation #1 (AIR HORN, POWERCALL, Q-SIREN) HAPPY 4TH OF JULY",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_glass_t6e0Rjul.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "t6e0RjulUWM",
+    "segment_id": "t6e0RjulUWM_170000",
+    "event_label": "Glass",
+    "event_abs_time": 173.12,
+    "title": "Pipoca de Microondas com milho Comum !",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_haunted_house_noises.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=u-x6yqZ0duQ",
+    "title": "When A Stranger Calls: Mysterious Noises (Horror Movie Scene)",
+    "event_label": "Telephone bell ringing",
+    "event_conf": 0.55,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_screaming_EfYf7arP.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "EfYf7arPeNk",
+    "segment_id": "EfYf7arPeNk_110000",
+    "event_label": "Screaming",
+    "event_abs_time": 119.4,
+    "title": "Parry Gripp Ukulele Cover: Soccer Ball (Hit Me In The Face)",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_alarm_71Xl_uAS.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "71Xl_uASHI4",
+    "segment_id": "71Xl_uASHI4_440000",
+    "event_label": "Alarm",
+    "event_abs_time": 440.3,
+    "title": "sony dream machine alarm clock review and unboxing",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_church_bell_PVGChCsr.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "PVGChCsrCuk",
+    "segment_id": "PVGChCsrCuk_20000",
+    "event_label": "Church bell",
+    "event_abs_time": 20.28,
+    "title": "High water in Venice",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_glass_oHil9Ip_.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "oHil9Ip_xQo",
+    "segment_id": "oHil9Ip_xQo_460000",
+    "event_label": "Glass",
+    "event_abs_time": 460.4,
+    "title": "How To Light For A Glass Beverage Photo Shoot | PRO EDU Tutorial",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_slam_GOu2vuQ3.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "GOu2vuQ35Gs",
+    "segment_id": "GOu2vuQ35Gs_180000",
+    "event_label": "Slam",
+    "event_abs_time": 187.69,
+    "title": "Redline Red 2016 Dodge Challenger R/T Scat Pack 485 HP",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_siren_hRdkmwuv.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "hRdkmwuv13s",
+    "segment_id": "hRdkmwuv13s_220000",
+    "event_label": "Siren",
+    "event_abs_time": 227.3,
+    "title": "Mini Pumper Saves the Day! | Fire Truck | Car Stories | PINKFONG Story Time for Children",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_arrest_street_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=TIbZNmvyLBI",
+    "title": "Fast Five (5/10) Movie CLIP - You're Under Arrest (2011) HD\nhttps://www.youtube.com/watch?v=7jMaubICbu8|Coronation Street - David Platt Destroys the Street and is Arrested (2008)\nhttps://www.youtube.com/watch?v=TIbZNmvyLBI|Fast Five (5/10) Movie CLIP - You're Under Arrest (2011) HD\nhttps://www.youtube.com/watch?v=tjzg9GN1Eew|Chase Through Radiator Springs | Pixar Cars | @disneyjr",
+    "event_label": "Skidding",
+    "event_conf": 0.501,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_siren_EwKKRbVh.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "EwKKRbVhOIM",
+    "segment_id": "EwKKRbVhOIM_0",
+    "event_label": "Siren",
+    "event_abs_time": 0.0,
+    "title": "ahhh",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunder_65UfUlkB.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "65UfUlkBE8o",
+    "segment_id": "65UfUlkBE8o_30000",
+    "event_label": "Thunder",
+    "event_abs_time": 34.19,
+    "title": "Rain in Morning 05 July 2012",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_church_bell_otz4AffL.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "otz4AffLKKA",
+    "segment_id": "otz4AffLKKA_320000",
+    "event_label": "Church bell",
+    "event_abs_time": 325.59,
+    "title": "Le campane di Abbiategrasso (MI) Basilica di Santa Maria Assunta - VENERDI' SANTO",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_ambulance_siren_De4XiKi3.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "De4XiKi35xg",
+    "segment_id": "De4XiKi35xg_90000",
+    "event_label": "Ambulance (siren)",
+    "event_abs_time": 97.86,
+    "title": "Carros CB Chillan, arribando a alarma de incendio en la comuna",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_fire_alarm_kGKZ0YK4.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "kGKZ0YK4_rk",
+    "segment_id": "kGKZ0YK4_rk_30000",
+    "event_label": "Fire alarm",
+    "event_abs_time": 38.92,
+    "title": "Fire Alarm Test",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_smoke_detector_smoke_a_nRRjKdRX.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "nRRjKdRX-Ko",
+    "segment_id": "nRRjKdRX-Ko_50000",
+    "event_label": "Smoke detector, smoke alarm",
+    "event_abs_time": 50.0,
+    "title": "Smoke detector test... 5-27-08",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunder_4gKvZMFU.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "4gKvZMFUIyQ",
+    "segment_id": "4gKvZMFUIyQ_210000",
+    "event_label": "Thunder",
+    "event_abs_time": 211.93,
+    "title": "The Clarke Tinwhistle Story DVD Trailer",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_alarm_wicNPOr_.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "wicNPOr_gVE",
+    "segment_id": "wicNPOr_gVE_180000",
+    "event_label": "Alarm",
+    "event_abs_time": 183.49,
+    "title": "Home Made Fire alarm System With Panel",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "tv_medical_drama_emergency.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=1Dk8EW8EacE",
+    "title": "ER | Every Opening Scene (Season 1, Part 1)",
+    "event_label": "Telephone",
+    "event_conf": 0.323,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_alarm_xnMerCib.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "xnMerCib9Ow",
+    "segment_id": "xnMerCib9Ow_60000",
+    "event_label": "Alarm",
+    "event_abs_time": 60.03,
+    "title": "16th - Call point alarm",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_Oqhfyddk.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "OqhfyddkPPw",
+    "segment_id": "OqhfyddkPPw_30000",
+    "event_label": "Explosion",
+    "event_abs_time": 35.26,
+    "title": "Explosion of Mr. Wormy",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_aUEhd0op.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "aUEhd0opNDc",
+    "segment_id": "aUEhd0opNDc_30000",
+    "event_label": "Explosion",
+    "event_abs_time": 31.46,
+    "title": "BPVMA - 5º GAC AP - DIA DA ARTILHARIA - 2009",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_protest_scene_movie.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=nYg5Xg5sgss",
+    "title": "Marie Antoinette (2006) - The Angry Mob Scene | Movieclips\nhttps://www.youtube.com/watch?v=K_qhM2Ms5E8|Police Academy | The Riot Begins | ClipZone: Comedy Callbacks",
+    "event_label": "Emergency vehicle",
+    "event_conf": 0.502,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_civil_defense_siren_mHUc3agm.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "mHUc3agmskc",
+    "segment_id": "mHUc3agmskc_0",
+    "event_label": "Civil defense siren",
+    "event_abs_time": 6.22,
+    "title": "the random siren shorts",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_alarm_5tP7Xrrx.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "5tP7Xrrxfxc",
+    "segment_id": "5tP7Xrrxfxc_30000",
+    "event_label": "Alarm",
+    "event_abs_time": 31.94,
+    "title": "News anchor laughs uncontrollably about Chris P Bacon the pig",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_police_car_siren_ZftXfAXm.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "ZftXfAXmTRw",
+    "segment_id": "ZftXfAXmTRw_530000",
+    "event_label": "Police car (siren)",
+    "event_abs_time": 533.03,
+    "title": "HTC EVO 4G - Custom ROM - Myn rsl 5 Warm 2.2",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_machine_gun_AiAwMWUy.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "AiAwMWUy-rg",
+    "segment_id": "AiAwMWUy-rg_70000",
+    "event_label": "Machine gun",
+    "event_abs_time": 71.13,
+    "title": "Стрельба с ПКМ",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_XJ8lc3I6.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "XJ8lc3I6x-c",
+    "segment_id": "XJ8lc3I6x-c_20000",
+    "event_label": "Explosion",
+    "event_abs_time": 22.43,
+    "title": "Rage Moar! Synapse Scrambler. Why I love it!",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_explosion_p6lhCxNw.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "p6lhCxNwojQ",
+    "segment_id": "p6lhCxNwojQ_0",
+    "event_label": "Explosion",
+    "event_abs_time": 9.24,
+    "title": "Trasnformers trailer with music",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_breaking_3wstXl8v.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "3wstXl8vdno",
+    "segment_id": "3wstXl8vdno_130000",
+    "event_label": "Breaking",
+    "event_abs_time": 132.8,
+    "title": "breaking are old TV",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunderstorm_GtPLlcyL.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "GtPLlcyLykQ",
+    "segment_id": "GtPLlcyLykQ_30000",
+    "event_label": "Thunderstorm",
+    "event_abs_time": 36.13,
+    "title": "Resident Evil 4 - Giant Ashley on the boat",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_civil_defense_siren_ZduE8Mt5.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "ZduE8Mt5UP8",
+    "segment_id": "ZduE8Mt5UP8_0",
+    "event_label": "Civil defense siren",
+    "event_abs_time": 6.42,
+    "title": "Air Raid Sirens : French - Réseau national d'alerte",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_thunder_ShMduN78.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "ShMduN78IlA",
+    "segment_id": "ShMduN78IlA_20000",
+    "event_label": "Thunder",
+    "event_abs_time": 29.74,
+    "title": "Fly Fishing Aitutaki  -  GT - Bluefin - Bonefish",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "as_screaming_1NZV0Kxu.mp4",
+    "source": "audioset-strong",
+    "youtube_id": "1NZV0KxuZok",
+    "segment_id": "1NZV0KxuZok_30000",
+    "event_label": "Screaming",
+    "event_abs_time": 32.72,
+    "title": "MJB Sound System Stage Setup @ TERNATE CAVITE",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_funeral_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=8DQPU9XB55M",
+    "title": "RAINY FUNERAL",
+    "event_label": "Rain",
+    "event_conf": 0.701,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_phone_ringing_tense.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=7k9bFzgXeXE",
+    "title": "Valkyrie (9/11) Movie CLIP - A Phone Call (2008) HD\nhttps://www.youtube.com/watch?v=yNeCLVMhIFA|Argo | A Tense Takeoff | ClipZone: High Octane Hits\nhttps://www.youtube.com/watch?v=1t4EmYkrHw0|Scariest Jump Scares from Horror Movies",
+    "event_label": "Emergency vehicle",
+    "event_conf": 0.426,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_helicopter_arrival.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=6M6cpjP7GIo",
+    "title": "We Were Soldiers (5/9) Movie CLIP - Arriving in North Vietnam (2002) HD\nhttps://www.youtube.com/watch?v=B6wyzPP5mUs|Kong vs Helicopters - \"Is That a Monkey?\" - Kong: Skull Island (2017) Movie Clip HD",
+    "event_label": "Gunshot, gunfire",
+    "event_conf": 0.465,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_parade_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=O-QpfLV8dQw",
+    "title": "Paprika (2006) ~ Parade Scene",
+    "event_label": "Crowd",
+    "event_conf": 0.428,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_desert_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=uhYLfK8GSr0",
+    "title": "The Best Western Opening Scene Ever",
+    "event_label": "Dog",
+    "event_conf": 0.536,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_fire_rescue.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=KrwlDh465HQ",
+    "title": "Backdraft (2/11) Movie CLIP - Stephen the Hero (1991) HD",
+    "event_label": "Rain",
+    "event_conf": 0.708,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_plane_crash_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=IyOu9xCNMK0",
+    "title": "Cast Away (2/8) Movie CLIP - Plane Crash (2000) HD",
+    "event_label": "Thunder",
+    "event_conf": 0.53,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_hotel_corridor.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=CMbI7DmLCNI",
+    "title": "The Shining (1980) - Come Play With Us Scene (2/7) | Movieclips",
+    "event_label": "Civil defense siren",
+    "event_conf": 0.29,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "wc_japanese_drama.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=rSB9VJcwQsc",
+    "title": "The Last Samurai (1/4) Movie CLIP - Never Say Die (2003) HD",
+    "event_label": "Rain",
+    "event_conf": 0.812,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_storm_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=ECDKjStq8Eg",
+    "title": "Warcraft - Lightning Barrier Battle Scene (4/10) | Movieclips",
+    "event_label": "Aircraft",
+    "event_conf": 0.362,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_getaway_chase_sirens.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=RiUDUiauPys",
+    "title": "Police Chase Scene | THE FIFTH ELEMENT (1997) Bruce Willis, Movie CLIP HD\nhttps://www.youtube.com/watch?v=PXIZdhoJmY4|One of The Best Car Chases in Movie History\nhttps://www.youtube.com/watch?v=YyD86BSMgeU|The Town ( 2010 ) Car Chase Scene 2",
+    "event_label": "Emergency vehicle",
+    "event_conf": 0.513,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_thriller_basement.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=2F4ExP0q6RU",
+    "title": "A Quiet Place (2018) - The Flooded Basement Scene (5/10) | Movieclips",
+    "event_label": "Rain",
+    "event_conf": 0.381,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "rx_aftermath_quiet.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=q4hcNuKPmZw",
+    "title": "Disaster Aftermath Scene with Heavy Blaze and Distant Airplanes Pass\nhttps://www.youtube.com/watch?v=HSRxeXV0T8Y|Lone Survivor: Thank You Scene (HD CLIP)",
+    "event_label": "Helicopter",
+    "event_conf": 0.714,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_earthquake_disaster.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=D6M2cXhnMaI",
+    "title": "Earthquake (2016) - Gyumri Earthquake Scene [HD] [English Subtitles]\nhttps://www.youtube.com/watch?v=xGon_kZAVtU|San Andreas (2015) - The Big One (4/10) | Movieclips",
+    "event_label": "Boom",
+    "event_conf": 0.427,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_war_bombardment.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=NS4qydgfdxM",
+    "title": "The Longest Day (1962)- The attack begins\nhttps://www.youtube.com/watch?v=v4b0_OVfewk|Naval Bombardment of Iwo Jima - Flags of our Fathers",
+    "event_label": "Explosion",
+    "event_conf": 0.399,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_helicopter_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=yWeMWD-Yagg",
+    "title": "The Dictator (2012) - The Helicopter Scene (7/10) | Movieclips",
+    "event_label": "Screaming",
+    "event_conf": 0.541,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_western_standoff.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=5PgAKzmWmuk",
+    "title": "The Good, the Bad and the Ugly (11/12) Movie CLIP - Three-Way Standoff (1966) HD\nhttps://www.youtube.com/watch?v=tNZKO_68_WI|Butch Cassidy and the Sundance Kid (1969) - The Shootout Scene (4/5) | Movieclips",
+    "event_label": "Machine gun",
+    "event_conf": 0.387,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_bank_robbery_alarm.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=mr834Cs9ncs",
+    "title": "Oceans Twelve Laser Dance\nhttps://www.youtube.com/watch?v=CW5oGRx9CLM|The Weeknd - False Alarm (Official Video)",
+    "event_label": "Skidding",
+    "event_conf": 0.431,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_train_station_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=QJpRSf4q-hI",
+    "title": "The Stairway Shootout - The Untouchables (8/10) Movie CLIP (1987) HD",
+    "event_label": "Machine gun",
+    "event_conf": 0.432,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_subway_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=GnP1yVOHvEc",
+    "title": "Scream VI (2023) - Subway Stabbing Scene | Movieclips\nhttps://www.youtube.com/watch?v=0hAe6J2Reqc|Godzilla (2014) 4K  - Nuclear Train Attack Scene | Movieclips\nhttps://www.youtube.com/watch?v=Sn-QzD02pvQ|Crocodile Dundee: Love declaration in the subway platform\nhttps://www.youtube.com/watch?v=lQR3ZpuSdlU|Nimona Underground Station Scene",
+    "event_label": "Shatter",
+    "event_conf": 0.402,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_bridge_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=sb3J5aP0gOQ",
+    "title": "Sicario Movie CLIP - Bridge (2015) - Emily Blunt, Benicio Del Toro Action Movie HD",
+    "event_label": "Helicopter",
+    "event_conf": 0.766,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_snow_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=eA-V5wUcWos",
+    "title": "Everest (2015) - The Ice Storm Scene (6/10) | Movieclips",
+    "event_label": "Explosion",
+    "event_conf": 0.29,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_basement_scene_noise.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=J6PGpjz_3so",
+    "title": "Don’t breathe (2016) - the secret in the basement scene\nhttps://www.youtube.com/watch?v=hWqjrVe8kKk|Basement: Official Trailer (2011) | Thomas Grieser, Ursula Grieser, Wolfgang Grieser\nhttps://www.youtube.com/watch?v=oclpsXDhclk|The Weird Noises in the Basement 🐵 Curious George 🐵 Kids Cartoon 🐵 Kids Movies",
+    "event_label": "Dog",
+    "event_conf": 0.277,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_jungle_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=VdYPqVZIB9M",
+    "title": "The Rundown (6/10) Movie CLIP - Establish Dominance (2003) HD",
+    "event_label": "Dog",
+    "event_conf": 0.358,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_siren_arrival.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=1IioQhCu3po",
+    "title": "A fishhook hanging from her eyelid !!! #911 #chicagofire #firefighter\nhttps://www.youtube.com/watch?v=2UuM47BOqNA|Police Academy 4 (1987) - Yama Yama Scene (6/9) | Movieclips",
+    "event_label": "Dog",
+    "event_conf": 0.484,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_beach_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=W9Tdw5nG4dQ",
+    "title": "The Giant Wave - The Perfect Storm (3/5) Movie CLIP (2000) HD",
+    "event_label": "Thunder",
+    "event_conf": 0.555,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_monster_offscreen.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=I8wBCaNWLEY",
+    "title": "Shin Godzilla - Atomic Breath Scene (No Background Music)",
+    "event_label": "Vehicle horn, car horn, honking",
+    "event_conf": 0.461,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_flood_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=AssBKgNYO_U",
+    "title": "The Great Flood | 2012 | CineClips",
+    "event_label": "Boom",
+    "event_conf": 0.408,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_air_raid_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=uPMIYyapLF4",
+    "title": "The Warning (1939) - extract\nhttps://www.youtube.com/watch?v=i-W_ArPy2yE|Silent Hill Clip \"Air Raid Siren\"\nhttps://www.youtube.com/watch?v=nlxCJxSAguY|Silent Hill (2006) - Shelter of old church needed as town transitions into dark dimension",
+    "event_label": "Civil defense siren",
+    "event_conf": 0.318,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_detective_crime_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=yle4geBBwiI",
+    "title": "They Came to Investigate a Murder—Now They’re Fighting to Survive | Remote | Crime Thriller\nhttps://www.youtube.com/watch?v=FSH41MASZK0|Detective Tryon Encounters a Horrifying Crime Scene - Scene | Grotesquerie | FX",
+    "event_label": "Telephone bell ringing",
+    "event_conf": 0.599,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_horror_scream_offscreen.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=JEcfknHqMyc",
+    "title": "Scream 4 (9/9) Movie CLIP - Horror Movie Quiz (2011) HD\nhttps://www.youtube.com/watch?v=AFOpT2ihigY|absolute horror movie moment",
+    "event_label": "Shatter",
+    "event_conf": 0.571,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_shootout_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=CPy2NimLCAw",
+    "title": "RoboCop (1987) - Cocaine Factory Shootout Scene | Movieclips",
+    "event_label": "Smash, crash",
+    "event_conf": 0.459,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "tv_police_procedural.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=D5BW2mwew-8",
+    "title": "Cases That Deeply Upset Law & Order Fans | Sirens\nhttps://www.youtube.com/watch?v=9ncY-bixLfk|Sirens 1993 S02E16 The Abduction",
+    "event_label": "Emergency vehicle",
+    "event_conf": 0.553,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_forest_chase.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=6SDFxGZ5fJw",
+    "title": "Sherlock Holmes: A Game of Shadows (2011) - Forest Chase Scene (6/10) | Movieclips",
+    "event_label": "Rain",
+    "event_conf": 0.496,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_car_chase_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=7DXP7HsnL2A",
+    "title": "Infinite (2021) - Crazy Car Chase Scene | Movieclips",
+    "event_label": "Skidding",
+    "event_conf": 0.554,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_airport_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=Bbv5B71KmkA",
+    "title": "Airplane 2 - \"Out of Coffee\" scene\nhttps://www.youtube.com/watch?v=RJ9xuvyGiBY|Airplane 2 1982: Breaking news scene",
+    "event_label": "Cheering",
+    "event_conf": 0.399,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "wc_brazilian_film.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=nFJPEGpbuBo",
+    "title": "Favela Chase in Rio de Janeiro | Fast Five",
+    "event_label": "Shatter",
+    "event_conf": 0.524,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_construction_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=ry55--J4_VQ",
+    "title": "Apollo 13 (1995) - Square Peg in a Round Hole Scene (7/11) | Movieclips\nhttps://www.youtube.com/watch?v=VkD1dhWMYts|Chicken Run (2000) - Building Suspense Scene (7/10) | Movieclips)",
+    "event_label": "Shatter",
+    "event_conf": 0.399,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "wc_nordic_thriller.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=j_uvK8ZvZ4w",
+    "title": "A Goldsmith’s Death Sparks a Deadly Chain | Beck",
+    "event_label": "Shatter",
+    "event_conf": 0.611,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_tornado_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=4xKCVNzwxjU",
+    "title": "Into the Storm 2014 pete's death scene\nhttps://www.youtube.com/watch?v=IYnytCW0sT0|Tornado Hotel Evacuation scene",
+    "event_label": "Civil defense siren",
+    "event_conf": 0.427,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_hospital_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=YKClO4h0hBc",
+    "title": "BASEketball (1998) - Hilarious Hospital Emergency Scene | Movieclips",
+    "event_label": "Shatter",
+    "event_conf": 0.4,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_zombie_horde.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=NCsgsOxbCzA",
+    "title": "The Horde approaches [2x01] [TWD]\nhttps://www.youtube.com/watch?v=BekQImHNoO4|Mortal Engines (2018) - Zombie Cyborg Attack Scene (5/10) | Movieclips\nhttps://www.youtube.com/watch?v=BekQImHNoO4|Mortal Engines (2018) - Zombie Cyborg Attack Scene (5/10) | Movieclips",
+    "event_label": "Shatter",
+    "event_conf": 0.257,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_fight_bar_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=hXCaF68sDPU",
+    "title": "Serenity (2/10) Movie CLIP - The Miranda Fight (2006) HD",
+    "event_label": "Shatter",
+    "event_conf": 0.324,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_ship_deck_storm.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=G95g0vzTAKI",
+    "title": "Master and Commander (3/5) Movie CLIP - Attack on the Acheron (2003) HD",
+    "event_label": "Gunshot, gunfire",
+    "event_conf": 0.434,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_break_in_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=rvqm61CcOLo",
+    "title": "Deep Blue Sea (1999) - Breaking Into the Lab Scene (4/10) | Movieclips",
+    "event_label": "Shatter",
+    "event_conf": 0.723,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mv_glass_break_intruder.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=oOB12hgqmo0",
+    "title": "Intruders break into a house, unaware that the owner is even more dangerous\nhttps://www.youtube.com/watch?v=OBuAfIjsFVk|epic fight scene top secret!.avi",
+    "event_label": "Shatter",
+    "event_conf": 0.5,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_riot_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=nzPzEaUEtDI",
+    "title": "They Live - Camp cleared by riot police",
+    "event_label": "Thunder",
+    "event_conf": 0.59,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "gn_docudrama_reenactment.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=hh89h8FxNhQ",
+    "title": "The Demon Core 1945",
+    "event_label": "Shatter",
+    "event_conf": 0.301,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "rx_indoors_storm_outside.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=WlsuFy-HaG0",
+    "title": "A Deadly Storm Sealed Their House For 5 Years… But The Monster Outside Was Saving Them",
+    "event_label": "Explosion",
+    "event_conf": 0.268,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_spaceship_alarm.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=vjFG-4Ge668",
+    "title": "Independence Day (1/5) Movie CLIP - Time's Up (1996) HD\nhttps://www.youtube.com/watch?v=4CmmKmlXD9I|A Quiet Place (2018) - Beau's Death Scene (1/10) | Movieclips",
+    "event_label": "Ringtone",
+    "event_conf": 0.254,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "gn_western_town_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=p8_GIpHmNSI",
+    "title": "The Book Of Eli | Shootout with Carnegie's Gang | ClipZone: High Octane Hits",
+    "event_label": "Fusillade",
+    "event_conf": 0.269,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_apartment_argument.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=QtR3XGEmsII",
+    "title": "Ted 2 2015 fight with the neighbors funny scene HD\nhttps://www.youtube.com/watch?v=FKQpU3iItXg|The Big Bang Theory: New Neighbors (Clip) | TBS\nhttps://www.youtube.com/watch?v=QtR3XGEmsII|Ted 2 2015 fight with the neighbors funny scene HD",
+    "event_label": "Shatter",
+    "event_conf": 0.274,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "mc_courtroom_verdict.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=q7CX_5D6y6E",
+    "title": "To Kill a Mockingbird (8/10) Movie CLIP - Your Father's Passing (1962) HD\nhttps://www.youtube.com/watch?v=7HlSKPTYZhs|Batman v Superman: Dawn of Justice (2016) - Superman on Trial Scene (3/10) | Movieclips",
+    "event_label": "Shatter",
+    "event_conf": 0.711,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "rx_phone_call_bad_news.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=v-8u7gSFqsU",
+    "title": "When A Stranger Calls: It's Coming From Inside The House (Horror Movie Scene)",
+    "event_label": "Telephone",
+    "event_conf": 0.45,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "rx_radio_broadcast_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=8EdOdfCM1hM",
+    "title": "That Thing You Do! (2/5) Movie CLIP - Radio Debut (1996) HD",
+    "event_label": "Screaming",
+    "event_conf": 0.523,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "rx_indoors_crowd_outside.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=whtz44p9oII",
+    "title": "Panicking Crowd | Realistic Ambience | 1 Hour #DnD #RPG\nhttps://www.youtube.com/watch?v=whtz44p9oII|Panicking Crowd | Realistic Ambience | 1 Hour #DnD #RPG",
+    "event_label": "Cheering",
+    "event_conf": 0.321,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "rx_bunker_bombing.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=8e5OF-jF56U",
+    "title": "Blast From The Past (1999) - Entering the bunker.avi",
+    "event_label": "Shatter",
+    "event_conf": 0.382,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "wc_german_film_scene.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=C_VjtxZYBCI",
+    "title": "\"Victoria\" shoot out scene, Kreuzberg, Berlin, seen from my window",
+    "event_label": "Dog",
+    "event_conf": 0.662,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "wc_korean_thriller.mp4",
+    "source": "youtube(movie scene)",
+    "url": "https://www.youtube.com/watch?v=vVdIf3GxM-Y",
+    "title": "The shocking earthquake that hit Seoul!  Tense hit D-Day 3 times",
+    "event_label": "Skidding",
+    "event_conf": 0.377,
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "un_sheep_bleating_F3-_b8Wf.mp4",
+    "source": "unav-100",
+    "youtube_id": "F3-_b8WfcuE",
+    "secondary_event": "sheep bleating",
+    "primary_event": "people shouting",
+    "overlap_time": 10.29,
+    "license": "research use; not redistributed",
+    "title": "250 sheep"
+  },
+  {
+    "file": "un_people_clapping_OVhPqvG0.mp4",
+    "source": "unav-100",
+    "youtube_id": "OVhPqvG0ezA",
+    "secondary_event": "people clapping",
+    "primary_event": "man speaking",
+    "overlap_time": 36.2,
+    "license": "research use; not redistributed",
+    "title": "SPRINGS vs SHUG MACK QOTR CLOSED ROOM presented by BABS BUNNY & VAGUE"
+  },
+  {
+    "file": "un_people_clapping_00ay4DMx.mp4",
+    "source": "unav-100",
+    "youtube_id": "00ay4DMxod8",
+    "secondary_event": "people clapping",
+    "primary_event": "child singing",
+    "overlap_time": 18.5,
+    "license": "research use; not redistributed",
+    "title": "Leana Singing Superbass for David Foster"
+  },
+  {
+    "file": "un_people_clapping__bAVmK7n.mp4",
+    "source": "unav-100",
+    "youtube_id": "_bAVmK7n0fs",
+    "secondary_event": "people clapping",
+    "primary_event": "man speaking",
+    "overlap_time": 16.33,
+    "license": "research use; not redistributed",
+    "title": "опора дыхания . Диафрагмальное давление."
+  },
+  {
+    "file": "un_sheep_bleating_-78SgLvt.mp4",
+    "source": "unav-100",
+    "youtube_id": "-78SgLvt7_k",
+    "secondary_event": "sheep bleating",
+    "primary_event": "wind noise",
+    "overlap_time": 54.45,
+    "license": "research use; not redistributed",
+    "title": "Barbados Blackbelly sheep"
+  },
+  {
+    "file": "un_people_crowd_W1e3xWnc.mp4",
+    "source": "unav-100",
+    "youtube_id": "W1e3xWncgVI",
+    "secondary_event": "people crowd",
+    "primary_event": "bull bellowing",
+    "overlap_time": 3.01,
+    "license": "research use; not redistributed",
+    "title": "44 | Qurbani 2020, Indian Bolods, Sharif Agro Collection, Village haat Paragram Diaries | ZbGH"
+  },
+  {
+    "file": "un_sea_waves_39lhrblv.mp4",
+    "source": "unav-100",
+    "youtube_id": "39lhrblviZ4",
+    "secondary_event": "sea waves",
+    "primary_event": "wind noise",
+    "overlap_time": 24.2,
+    "license": "research use; not redistributed",
+    "title": "Aruba Beach Club:Drifting From Casa del Mar to Manchebo."
+  },
+  {
+    "file": "un_sea_waves_19Jb7pa3.mp4",
+    "source": "unav-100",
+    "youtube_id": "19Jb7pa3NHs",
+    "secondary_event": "sea waves",
+    "primary_event": "sailing",
+    "overlap_time": 13.47,
+    "license": "research use; not redistributed",
+    "title": "fast sailing... lake michigan 16 ft rebel sailboat"
+  },
+  {
+    "file": "un_sea_waves_SQ71Y_g1.mp4",
+    "source": "unav-100",
+    "youtube_id": "SQ71Y_g116A",
+    "secondary_event": "sea waves",
+    "primary_event": "wind noise",
+    "overlap_time": 17.62,
+    "license": "research use; not redistributed",
+    "title": "Poaching Vessel, Thunder, Sinks in Suspicious Circumstances"
+  },
+  {
+    "file": "un_wind_noise_CiSmL4nm.mp4",
+    "source": "unav-100",
+    "youtube_id": "CiSmL4nmic0",
+    "secondary_event": "wind noise",
+    "primary_event": "sea waves",
+    "overlap_time": 29.2,
+    "license": "research use; not redistributed",
+    "title": "Heavy Weather Sailing- Shannon 38"
+  },
+  {
+    "file": "un_car_passing_by_CyP_qZV9.mp4",
+    "source": "unav-100",
+    "youtube_id": "CyP_qZV94Ww",
+    "secondary_event": "car passing by",
+    "primary_event": "raining",
+    "overlap_time": 2.64,
+    "license": "research use; not redistributed",
+    "title": "Kolkata-র পাশাপাশি চলছে মুষলধারা বৃষ্টি জেলাতেও"
+  },
+  {
+    "file": "un_wind_noise_BcynOvIy.mp4",
+    "source": "unav-100",
+    "youtube_id": "BcynOvIyeg4",
+    "secondary_event": "wind noise",
+    "primary_event": "people running",
+    "overlap_time": 25.29,
+    "license": "research use; not redistributed",
+    "title": "100m races u18   open at 5th ttNAAA developmental meet 2014"
+  },
+  {
+    "file": "un_vehicle_honking_461duo87.mp4",
+    "source": "unav-100",
+    "youtube_id": "461duo87KF0",
+    "secondary_event": "vehicle honking",
+    "primary_event": "engine knocking",
+    "overlap_time": 7.41,
+    "license": "research use; not redistributed",
+    "title": "04 mustang gt vs 11 camaro rs"
+  },
+  {
+    "file": "un_train_horning_9-b18y3N.mp4",
+    "source": "unav-100",
+    "youtube_id": "9-b18y3Nexg",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 12.54,
+    "license": "research use; not redistributed",
+    "title": "MTA/CDOT Metro-North Danbury Branch Train Action in Norwalk, CT with Horn!"
+  },
+  {
+    "file": "un_dog_barking_4V8ndetG.mp4",
+    "source": "unav-100",
+    "youtube_id": "4V8ndetGMCA",
+    "secondary_event": "dog barking",
+    "primary_event": "dog howling",
+    "overlap_time": 26.73,
+    "license": "research use; not redistributed",
+    "title": "My Dogs Howl With Husky On YouTube"
+  },
+  {
+    "file": "un_wind_noise_ck13el7V.mp4",
+    "source": "unav-100",
+    "youtube_id": "ck13el7VmW8",
+    "secondary_event": "wind noise",
+    "primary_event": "sea waves",
+    "overlap_time": 45.23,
+    "license": "research use; not redistributed",
+    "title": "Sea waves hitting the shores"
+  },
+  {
+    "file": "un_thunder_08A9CKS5.mp4",
+    "source": "unav-100",
+    "youtube_id": "08A9CKS5GNA",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 4.98,
+    "license": "research use; not redistributed",
+    "title": "Relaxing Rain"
+  },
+  {
+    "file": "un_wind_noise_1OctTl0h.mp4",
+    "source": "unav-100",
+    "youtube_id": "1OctTl0hkTw",
+    "secondary_event": "wind noise",
+    "primary_event": "playing harp",
+    "overlap_time": 16.17,
+    "license": "research use; not redistributed",
+    "title": "Harp player"
+  },
+  {
+    "file": "un_sea_waves_Bvgbafvm.mp4",
+    "source": "unav-100",
+    "youtube_id": "Bvgbafvm8ds",
+    "secondary_event": "sea waves",
+    "primary_event": "sailing",
+    "overlap_time": 17.0,
+    "license": "research use; not redistributed",
+    "title": "Around the Cape of Good Hope pt. 4"
+  },
+  {
+    "file": "un_car_passing_by_-uD_w-t4.mp4",
+    "source": "unav-100",
+    "youtube_id": "-uD_w-t4T2Q",
+    "secondary_event": "car passing by",
+    "primary_event": "ambulance siren",
+    "overlap_time": 28.97,
+    "license": "research use; not redistributed",
+    "title": "RTW Rotes Kreuz Steiermark [Zusammenschnitt]"
+  },
+  {
+    "file": "un_thunder_1gDcPnV9.mp4",
+    "source": "unav-100",
+    "youtube_id": "1gDcPnV9CDM",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 38.09,
+    "license": "research use; not redistributed",
+    "title": "Thunderstorm @ home 18-06-2011 Zoetermeer"
+  },
+  {
+    "file": "un_thunder_G8NuOLfZ.mp4",
+    "source": "unav-100",
+    "youtube_id": "G8NuOLfZ5s8",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 12.43,
+    "license": "research use; not redistributed",
+    "title": "Risen 2 Rifle power Demonstration on Storm  Island"
+  },
+  {
+    "file": "un_dog_howling_0bvgm0bO.mp4",
+    "source": "unav-100",
+    "youtube_id": "0bvgm0bORBA",
+    "secondary_event": "dog howling",
+    "primary_event": "baby babbling",
+    "overlap_time": 30.86,
+    "license": "research use; not redistributed",
+    "title": "Husky Dog Mimics Baby's Babble"
+  },
+  {
+    "file": "un_car_passing_by_01v-xdP2.mp4",
+    "source": "unav-100",
+    "youtube_id": "01v-xdP2e5E",
+    "secondary_event": "car passing by",
+    "primary_event": "wind noise",
+    "overlap_time": 20.84,
+    "license": "research use; not redistributed",
+    "title": "Wind Turbines/Generators"
+  },
+  {
+    "file": "un_train_horning_0IpYF91F.mp4",
+    "source": "unav-100",
+    "youtube_id": "0IpYF91Fdt0",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 15.85,
+    "license": "research use; not redistributed",
+    "title": "Martin Luther King Jr. Station To Hatcher Station"
+  },
+  {
+    "file": "un_ambulance_siren_9NjKwk4P.mp4",
+    "source": "unav-100",
+    "youtube_id": "9NjKwk4P9vY",
+    "secondary_event": "ambulance siren",
+    "primary_event": "car passing by",
+    "overlap_time": 17.55,
+    "license": "research use; not redistributed",
+    "title": "FULL LED RTW 12/83/1 + NEF 11/82/1 Einsatzfahrt Rettung Dithm.RKiSH | Rettungsdienst"
+  },
+  {
+    "file": "un_thunder_4VMy_t0u.mp4",
+    "source": "unav-100",
+    "youtube_id": "4VMy_t0usWk",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 12.9,
+    "license": "research use; not redistributed",
+    "title": "BURJ KHALIFA || THUNDER AND LIGHTING AT BURJ KHALIFA || HEAVY RAIN IN DUBAI || THUNDER  BURJ KHALIFA"
+  },
+  {
+    "file": "un_dog_barking_2bYyywE9.mp4",
+    "source": "unav-100",
+    "youtube_id": "2bYyywE97aA",
+    "secondary_event": "dog barking",
+    "primary_event": "vacuum cleaner cleaning floors",
+    "overlap_time": 10.54,
+    "license": "research use; not redistributed",
+    "title": "Dog vs Vacuum Cleaner"
+  },
+  {
+    "file": "un_train_horning_ZQqgwiTn.mp4",
+    "source": "unav-100",
+    "youtube_id": "ZQqgwiTnKII",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 10.3,
+    "license": "research use; not redistributed",
+    "title": "Tri-Rail Commuter Trains!"
+  },
+  {
+    "file": "un_driving_motorcycle_1GI75yXl.mp4",
+    "source": "unav-100",
+    "youtube_id": "1GI75yXlrTk",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "man speaking",
+    "overlap_time": 44.43,
+    "license": "research use; not redistributed",
+    "title": "Slapping People In Public | Streets Swaggers"
+  },
+  {
+    "file": "un_car_passing_by_0PGINPWt.mp4",
+    "source": "unav-100",
+    "youtube_id": "0PGINPWtn20",
+    "secondary_event": "car passing by",
+    "primary_event": "driving buses",
+    "overlap_time": 16.2,
+    "license": "research use; not redistributed",
+    "title": "CENTRO 1999 Orion V CNG 9927"
+  },
+  {
+    "file": "un_skidding_asKuYgAc.mp4",
+    "source": "unav-100",
+    "youtube_id": "asKuYgAcyIk",
+    "secondary_event": "skidding",
+    "primary_event": "car passing by",
+    "overlap_time": 17.4,
+    "license": "research use; not redistributed",
+    "title": "Best of Jean Ragnotti & Renault Clio Kit Car - with pure engine sounds"
+  },
+  {
+    "file": "un_vehicle_honking_09S4On2T.mp4",
+    "source": "unav-100",
+    "youtube_id": "09S4On2TfGw",
+    "secondary_event": "vehicle honking",
+    "primary_event": "engine knocking",
+    "overlap_time": 19.34,
+    "license": "research use; not redistributed",
+    "title": "MaBSTOA Bus: XD60 [#4736] Bx41 +SBS at Webster Ave & E. 167th St"
+  },
+  {
+    "file": "un_train_horning_KKFdi5WQ.mp4",
+    "source": "unav-100",
+    "youtube_id": "KKFdi5WQ0V0",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 37.16,
+    "license": "research use; not redistributed",
+    "title": "Chasing CSX Military Train, Amtrak horn show, and more!!"
+  },
+  {
+    "file": "un_driving_motorcycle_00pANbTP.mp4",
+    "source": "unav-100",
+    "youtube_id": "00pANbTPix8",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "car passing by",
+    "overlap_time": 53.51,
+    "license": "research use; not redistributed",
+    "title": "Samsung PL120 Digital Camera test video 2 (Record HD with sound and zoom)"
+  },
+  {
+    "file": "un_driving_motorcycle_DgdHSmwA.mp4",
+    "source": "unav-100",
+    "youtube_id": "DgdHSmwA1ak",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "people running",
+    "overlap_time": 11.57,
+    "license": "research use; not redistributed",
+    "title": "Mezza maratona del brembo 2012"
+  },
+  {
+    "file": "un_airplane_flyby_1FOKvagR.mp4",
+    "source": "unav-100",
+    "youtube_id": "1FOKvagRg3U",
+    "secondary_event": "airplane flyby",
+    "primary_event": "wind noise",
+    "overlap_time": 22.45,
+    "license": "research use; not redistributed",
+    "title": "Flying my R2F P-51 Mustang with lots of wind"
+  },
+  {
+    "file": "un_driving_motorcycle_4O3bZRYO.mp4",
+    "source": "unav-100",
+    "youtube_id": "4O3bZRYOLZA",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "car passing by",
+    "overlap_time": 45.46,
+    "license": "research use; not redistributed",
+    "title": "Klakson Telolet mobil oky"
+  },
+  {
+    "file": "un_dog_barking_5yMvxKLD.mp4",
+    "source": "unav-100",
+    "youtube_id": "5yMvxKLDku0",
+    "secondary_event": "dog barking",
+    "primary_event": "dog howling",
+    "overlap_time": 24.76,
+    "license": "research use; not redistributed",
+    "title": "Dogs HOWLING Like Wolves 🐺 Guaranteed to make your dog howl 🐶"
+  },
+  {
+    "file": "un_helicopter_-wv-pMA5.mp4",
+    "source": "unav-100",
+    "youtube_id": "-wv-pMA5r1w",
+    "secondary_event": "helicopter",
+    "primary_event": "wind noise",
+    "overlap_time": 18.46,
+    "license": "research use; not redistributed",
+    "title": "RC Helicopter flying in heavy wind - crash from RF interference"
+  },
+  {
+    "file": "un_vehicle_honking_nGqzNDdh.mp4",
+    "source": "unav-100",
+    "youtube_id": "nGqzNDdhGrk",
+    "secondary_event": "vehicle honking",
+    "primary_event": "car passing by",
+    "overlap_time": 31.01,
+    "license": "research use; not redistributed",
+    "title": "RRVT #867 coming down the hill"
+  },
+  {
+    "file": "un_dog_howling_2OcsicqV.mp4",
+    "source": "unav-100",
+    "youtube_id": "2OcsicqVoDg",
+    "secondary_event": "dog howling",
+    "primary_event": "dog barking",
+    "overlap_time": 23.18,
+    "license": "research use; not redistributed",
+    "title": "Siberian Husky Howl Howling Dog"
+  },
+  {
+    "file": "un_vehicle_honking_MxNcMyAz.mp4",
+    "source": "unav-100",
+    "youtube_id": "MxNcMyAzZ8o",
+    "secondary_event": "vehicle honking",
+    "primary_event": "people crowd",
+    "overlap_time": 42.83,
+    "license": "research use; not redistributed",
+    "title": "Khillar bail market / खिल्लार बैल मार्केट."
+  },
+  {
+    "file": "un_police_car_siren_-Pg4vVPs.mp4",
+    "source": "unav-100",
+    "youtube_id": "-Pg4vVPs4bE",
+    "secondary_event": "police car siren",
+    "primary_event": "driving motorcycle",
+    "overlap_time": 14.22,
+    "license": "research use; not redistributed",
+    "title": "White lightbar & Senken siren on Panther Grand Touring (unmarked police car).mp4"
+  },
+  {
+    "file": "un_dog_howling_4W0AJGC9.mp4",
+    "source": "unav-100",
+    "youtube_id": "4W0AJGC99p8",
+    "secondary_event": "dog howling",
+    "primary_event": "dog barking",
+    "overlap_time": 49.27,
+    "license": "research use; not redistributed",
+    "title": "Wolfspark Werner Freund: Bellender Wolf"
+  },
+  {
+    "file": "un_police_car_siren_W2aR6tTq.mp4",
+    "source": "unav-100",
+    "youtube_id": "W2aR6tTqGx0",
+    "secondary_event": "police car siren",
+    "primary_event": "car passing by",
+    "overlap_time": 40.72,
+    "license": "research use; not redistributed",
+    "title": "Fast 6: Dom and Letty's London Chase"
+  },
+  {
+    "file": "un_dog_barking_Glz9M145.mp4",
+    "source": "unav-100",
+    "youtube_id": "Glz9M145Xyc",
+    "secondary_event": "dog barking",
+    "primary_event": "baby laughter",
+    "overlap_time": 22.86,
+    "license": "research use; not redistributed",
+    "title": "Baby Belly Laughing"
+  },
+  {
+    "file": "un_dog_howling_UUjSLYdR.mp4",
+    "source": "unav-100",
+    "youtube_id": "UUjSLYdRfb8",
+    "secondary_event": "dog howling",
+    "primary_event": "people sobbing",
+    "overlap_time": 29.96,
+    "license": "research use; not redistributed",
+    "title": "Kid loses to a dog on a cookie fight"
+  },
+  {
+    "file": "un_raining_afvKRNCf.mp4",
+    "source": "unav-100",
+    "youtube_id": "afvKRNCfIXA",
+    "secondary_event": "raining",
+    "primary_event": "thunder",
+    "overlap_time": 17.94,
+    "license": "research use; not redistributed",
+    "title": "雷５百発Lightning500s"
+  },
+  {
+    "file": "un_fire_truck_siren_0vC_cm4m.mp4",
+    "source": "unav-100",
+    "youtube_id": "0vC_cm4mv9I",
+    "secondary_event": "fire truck siren",
+    "primary_event": "car passing by",
+    "overlap_time": 29.95,
+    "license": "research use; not redistributed",
+    "title": "Gerätewagen BF Hamburg F14 Osdorf"
+  },
+  {
+    "file": "un_ambulance_siren_-diPczRE.mp4",
+    "source": "unav-100",
+    "youtube_id": "-diPczRE_-M",
+    "secondary_event": "ambulance siren",
+    "primary_event": "car passing by",
+    "overlap_time": 11.44,
+    "license": "research use; not redistributed",
+    "title": "LAS Ambulance responding on blue lights and siren."
+  },
+  {
+    "file": "un_church_bell_ringin_-_-SejUs.mp4",
+    "source": "unav-100",
+    "youtube_id": "-_-SejUs_VI",
+    "secondary_event": "church bell ringing",
+    "primary_event": "wind noise",
+    "overlap_time": 10.5,
+    "license": "research use; not redistributed",
+    "title": "150.: Тюменская Церковь-Звон Колоколов(23.11.2015)"
+  },
+  {
+    "file": "un_skidding_3l5G7_j5.mp4",
+    "source": "unav-100",
+    "youtube_id": "3l5G7_j5fEI",
+    "secondary_event": "skidding",
+    "primary_event": "driving buses",
+    "overlap_time": 15.96,
+    "license": "research use; not redistributed",
+    "title": "Last B37 Third Avenue Bus"
+  },
+  {
+    "file": "un_helicopter_T2F6euNV.mp4",
+    "source": "unav-100",
+    "youtube_id": "T2F6euNVT5Y",
+    "secondary_event": "helicopter",
+    "primary_event": "machine gun shooting",
+    "overlap_time": 9.12,
+    "license": "research use; not redistributed",
+    "title": "'Vishwaroopam' -  Theatrical Trailer | Tamil"
+  },
+  {
+    "file": "un_police_car_siren_-lyPnABQ.mp4",
+    "source": "unav-100",
+    "youtube_id": "-lyPnABQhCI",
+    "secondary_event": "police car siren",
+    "primary_event": "ambulance siren",
+    "overlap_time": 3.98,
+    "license": "research use; not redistributed",
+    "title": "OLSZTYN24: Parada karetek"
+  },
+  {
+    "file": "un_fireworks_banging_J-QMhDo_.mp4",
+    "source": "unav-100",
+    "youtube_id": "J-QMhDo_PYs",
+    "secondary_event": "fireworks banging",
+    "primary_event": "raining",
+    "overlap_time": 7.91,
+    "license": "research use; not redistributed",
+    "title": "World Pyro Olympics 2008 (Canada) part 1 of 2"
+  },
+  {
+    "file": "un_ambulance_siren_3qIzU14N.mp4",
+    "source": "unav-100",
+    "youtube_id": "3qIzU14NNaY",
+    "secondary_event": "ambulance siren",
+    "primary_event": "wind noise",
+    "overlap_time": 16.36,
+    "license": "research use; not redistributed",
+    "title": "救急車　ambulance"
+  },
+  {
+    "file": "un_ambulance_siren_0qhLBcvr.mp4",
+    "source": "unav-100",
+    "youtube_id": "0qhLBcvreA8",
+    "secondary_event": "ambulance siren",
+    "primary_event": "car passing by",
+    "overlap_time": 17.49,
+    "license": "research use; not redistributed",
+    "title": "[HD - Sirena Ambulanza / RARE!] Ambulanza AVEL in Sirena! / Ambulance Responding Siren"
+  },
+  {
+    "file": "un_skidding_LX5Y1jco.mp4",
+    "source": "unav-100",
+    "youtube_id": "LX5Y1jcoUXE",
+    "secondary_event": "skidding",
+    "primary_event": "auto racing",
+    "overlap_time": 7.55,
+    "license": "research use; not redistributed",
+    "title": "Strangest \"Things\" at the NÜRBURGRING - You Can Drive Just About Anything to the Nordschleife!"
+  },
+  {
+    "file": "un_raining_R40DkjVS.mp4",
+    "source": "unav-100",
+    "youtube_id": "R40DkjVSHl0",
+    "secondary_event": "raining",
+    "primary_event": "thunder",
+    "overlap_time": 12.69,
+    "license": "research use; not redistributed",
+    "title": "Neurje nad Štajersko-7-oktober 2012"
+  },
+  {
+    "file": "un_train_wheels_squea_jEP-WEbl.mp4",
+    "source": "unav-100",
+    "youtube_id": "jEP-WEblweY",
+    "secondary_event": "train wheels squealing",
+    "primary_event": "train horning",
+    "overlap_time": 53.98,
+    "license": "research use; not redistributed",
+    "title": "Train Hornz Pt 2"
+  },
+  {
+    "file": "un_skidding_LhRNnXaS.mp4",
+    "source": "unav-100",
+    "youtube_id": "LhRNnXaSsCk",
+    "secondary_event": "skidding",
+    "primary_event": "driving buses",
+    "overlap_time": 3.94,
+    "license": "research use; not redistributed",
+    "title": "King County Metro & Sound Transit:  NE 8th Street & 106th Avenue NE [ Routes 246, 271 & 535 ]"
+  },
+  {
+    "file": "un_driving_buses_Wu--g0m8.mp4",
+    "source": "unav-100",
+    "youtube_id": "Wu--g0m8oWA",
+    "secondary_event": "driving buses",
+    "primary_event": "car passing by",
+    "overlap_time": 19.26,
+    "license": "research use; not redistributed",
+    "title": "Stuck on wrong bus Extreme funny"
+  },
+  {
+    "file": "un_helicopter_1PCkIkol.mp4",
+    "source": "unav-100",
+    "youtube_id": "1PCkIkolqy4",
+    "secondary_event": "helicopter",
+    "primary_event": "wind noise",
+    "overlap_time": 18.71,
+    "license": "research use; not redistributed",
+    "title": "HK 450 TT Pro fbl BeastX - First hover, strong wind"
+  },
+  {
+    "file": "un_helicopter_1eHHBEe6.mp4",
+    "source": "unav-100",
+    "youtube_id": "1eHHBEe6BVk",
+    "secondary_event": "helicopter",
+    "primary_event": "wind noise",
+    "overlap_time": 28.64,
+    "license": "research use; not redistributed",
+    "title": "Milk River Valley Fire - August 30, 2015 - Alberta Wildfire"
+  },
+  {
+    "file": "un_raining_71I9l62a.mp4",
+    "source": "unav-100",
+    "youtube_id": "71I9l62agtM",
+    "secondary_event": "raining",
+    "primary_event": "thunder",
+    "overlap_time": 9.46,
+    "license": "research use; not redistributed",
+    "title": "Storm Chasing with Jackie McCann - BBC Newsline Weather Presenter - Glenshane Pass"
+  },
+  {
+    "file": "un_machine_gun_shooti_5t4vQjw3.mp4",
+    "source": "unav-100",
+    "youtube_id": "5t4vQjw30_A",
+    "secondary_event": "machine gun shooting",
+    "primary_event": "people shouting",
+    "overlap_time": 10.4,
+    "license": "research use; not redistributed",
+    "title": "B-MOVIE BINGO TRAINING VIDEO - SCREAMING"
+  },
+  {
+    "file": "un_driving_buses_3iVMMcgK.mp4",
+    "source": "unav-100",
+    "youtube_id": "3iVMMcgKSZ4",
+    "secondary_event": "driving buses",
+    "primary_event": "car passing by",
+    "overlap_time": 22.74,
+    "license": "research use; not redistributed",
+    "title": "61 STM montreal bus stuck in snow"
+  },
+  {
+    "file": "un_police_car_siren_HWAeBWk6.mp4",
+    "source": "unav-100",
+    "youtube_id": "HWAeBWk6O-g",
+    "secondary_event": "police car siren",
+    "primary_event": "driving motorcycle",
+    "overlap_time": 6.01,
+    "license": "research use; not redistributed",
+    "title": "Harley Davidson Police Motorcycles Responding Lights and Sirens (MBTA Transit Police)"
+  },
+  {
+    "file": "un_fire_truck_siren_AkAdDFHQ.mp4",
+    "source": "unav-100",
+    "youtube_id": "AkAdDFHQars",
+    "secondary_event": "fire truck siren",
+    "primary_event": "car passing by",
+    "overlap_time": 36.28,
+    "license": "research use; not redistributed",
+    "title": "Sirens Gone Beserk 2013 edition"
+  },
+  {
+    "file": "un_airplane_flyby_8F00hSy8.mp4",
+    "source": "unav-100",
+    "youtube_id": "8F00hSy8wgI",
+    "secondary_event": "airplane flyby",
+    "primary_event": "wind noise",
+    "overlap_time": 38.21,
+    "license": "research use; not redistributed",
+    "title": "Final Tomcat Flyby"
+  },
+  {
+    "file": "un_fire_truck_siren_5dbDin4u.mp4",
+    "source": "unav-100",
+    "youtube_id": "5dbDin4ucNg",
+    "secondary_event": "fire truck siren",
+    "primary_event": "car passing by",
+    "overlap_time": 29.06,
+    "license": "research use; not redistributed",
+    "title": "AMBULANCE, FIRE TRUCK RESPONDING | Jason Asselin"
+  },
+  {
+    "file": "un_airplane_flyby_-Jcl3FrH.mp4",
+    "source": "unav-100",
+    "youtube_id": "-Jcl3FrHFCc",
+    "secondary_event": "airplane flyby",
+    "primary_event": "wind noise",
+    "overlap_time": 23.48,
+    "license": "research use; not redistributed",
+    "title": "1/3 Scale Mitsubishi A6M Zero 第１４回中島飛行機スケール大会"
+  },
+  {
+    "file": "un_church_bell_ringin_BVciNXg8.mp4",
+    "source": "unav-100",
+    "youtube_id": "BVciNXg8-OI",
+    "secondary_event": "church bell ringing",
+    "primary_event": "wind noise",
+    "overlap_time": 20.88,
+    "license": "research use; not redistributed",
+    "title": "Pontefract St Giles Church Clock Chimes 12 o'clock"
+  },
+  {
+    "file": "un_airplane_flyby_5_aRF2s3.mp4",
+    "source": "unav-100",
+    "youtube_id": "5_aRF2s3e30",
+    "secondary_event": "airplane flyby",
+    "primary_event": "raining",
+    "overlap_time": 17.34,
+    "license": "research use; not redistributed",
+    "title": "321 Angkor land 11L VVNB in a heavy rain"
+  },
+  {
+    "file": "un_machine_gun_shooti_7RFRiTA8.mp4",
+    "source": "unav-100",
+    "youtube_id": "7RFRiTA8OE0",
+    "secondary_event": "machine gun shooting",
+    "primary_event": "wind noise",
+    "overlap_time": 21.81,
+    "license": "research use; not redistributed",
+    "title": "50 DTC Edm windrunner 96 with pivoting bipod"
+  },
+  {
+    "file": "un_skidding_2fpyWh6L.mp4",
+    "source": "unav-100",
+    "youtube_id": "2fpyWh6LWCI",
+    "secondary_event": "skidding",
+    "primary_event": "driving buses",
+    "overlap_time": 19.26,
+    "license": "research use; not redistributed",
+    "title": "MTA Bus: Hybrid Orion VII OG #3619 from LGA w/ new decal scheme."
+  },
+  {
+    "file": "un_hair_dryer_drying_IQhYdSTN.mp4",
+    "source": "unav-100",
+    "youtube_id": "IQhYdSTNeCo",
+    "secondary_event": "hair dryer drying",
+    "primary_event": "man speaking",
+    "overlap_time": 35.72,
+    "license": "research use; not redistributed",
+    "title": "How to wrap dry hair  - Part 2/6"
+  },
+  {
+    "file": "un_dog_barking_-JMHRrms.mp4",
+    "source": "unav-100",
+    "youtube_id": "-JMHRrms_Cg",
+    "secondary_event": "dog barking",
+    "primary_event": "dog howling",
+    "overlap_time": 8.11,
+    "license": "research use; not redistributed",
+    "title": "Dog howling to Law and Order"
+  },
+  {
+    "file": "un_vehicle_honking_EQh-EIlf.mp4",
+    "source": "unav-100",
+    "youtube_id": "EQh-EIlfCe8",
+    "secondary_event": "vehicle honking",
+    "primary_event": "car passing by",
+    "overlap_time": 5.82,
+    "license": "research use; not redistributed",
+    "title": "Traffic in Naples"
+  },
+  {
+    "file": "un_car_passing_by_0IStDugr.mp4",
+    "source": "unav-100",
+    "youtube_id": "0IStDugr5uA",
+    "secondary_event": "car passing by",
+    "primary_event": "chainsawing trees",
+    "overlap_time": 32.78,
+    "license": "research use; not redistributed",
+    "title": "Stihl MS201T Upgrade Kit"
+  },
+  {
+    "file": "ly_motorcycle_3eARk5K.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "3eARk5KMbcw",
+    "segment_id": "3eARk5KMbcw_220000",
+    "event_label": "Motorcycle",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Motorcycle Road Trip on my 2003 Honda Shadow 750 Spirit - Day 8:  4,000 Mile Journey"
+  },
+  {
+    "file": "ly_explosion_Z7okNMA.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "Z7okNMArRW8",
+    "segment_id": "Z7okNMArRW8_30000",
+    "event_label": "Explosion",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Massive Explosion Levels Several City Blocks"
+  },
+  {
+    "file": "un_thunder_QISybl0-.mp4",
+    "source": "unav-100",
+    "youtube_id": "QISybl0-Dtc",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 43.98,
+    "license": "research use; not redistributed",
+    "title": "Morning Thunderstorm With Close Lightning - May 12, 2014, Grand Rapids, MI"
+  },
+  {
+    "file": "ly_screaming_bNepQ4h.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "bNepQ4h1H6Q",
+    "segment_id": "bNepQ4h1H6Q_350000",
+    "event_label": "Screaming",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "BTS At the Yangon International Airport [ma fancam]  ✌"
+  },
+  {
+    "file": "un_raining_4iWXpUNp.mp4",
+    "source": "unav-100",
+    "youtube_id": "4iWXpUNpXtw",
+    "secondary_event": "raining",
+    "primary_event": "ambulance siren",
+    "overlap_time": 7.64,
+    "license": "research use; not redistributed",
+    "title": "[XXXL Horneinsatz] RettMobil 2016 Fulda Abschlusskonvoi mit Feuerwehr- und Rettungsdienstfahrzeugen\n[XXXL Horneinsatz] RettMobil 2016 Fulda Abschlusskonvoi mit Feuerwehr- und Rettungsdienstfahrzeugen"
+  },
+  {
+    "file": "ly_helicopter_Q8WprKi.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "Q8WprKiJ6M8",
+    "segment_id": "Q8WprKiJ6M8_50000",
+    "event_label": "Helicopter",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Russian Mil Mi-2 Helicopter landing in Giebelstadt Germany Panasonic HC-V100 Camera"
+  },
+  {
+    "file": "un_hair_dryer_drying_WWu24rJs.mp4",
+    "source": "unav-100",
+    "youtube_id": "WWu24rJscDI",
+    "secondary_event": "hair dryer drying",
+    "primary_event": "woman speaking",
+    "overlap_time": 37.56,
+    "license": "research use; not redistributed",
+    "title": "How To Replicate My At-Home Blow Dry | Hair Tutorial | Trinny"
+  },
+  {
+    "file": "ly_crowd_Q_FvbcP.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "Q_FvbcPieNo",
+    "segment_id": "Q_FvbcPieNo_30000",
+    "event_label": "Crowd",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Crunch Time Szczerbiak Makes Carlesimo Angry"
+  },
+  {
+    "file": "un_thunder_T3f3Y-eO.mp4",
+    "source": "unav-100",
+    "youtube_id": "T3f3Y-eO7Bo",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 6.53,
+    "license": "research use; not redistributed",
+    "title": "Lightning, thunder and rain  Takoma Park, MD"
+  },
+  {
+    "file": "ly_applause_62ZYD0u.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "62ZYD0usLEQ",
+    "segment_id": "62ZYD0usLEQ_250000",
+    "event_label": "Applause",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Loose Women│Should Women Chase After Men?│17th February 2010"
+  },
+  {
+    "file": "ly_crowd_2KE3miF.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "2KE3miFwmmQ",
+    "segment_id": "2KE3miFwmmQ_30000",
+    "event_label": "Crowd",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "GHFL Black Sox Rona home run.mpg"
+  },
+  {
+    "file": "un_vacuum_cleaner_cle_7bHrke6z.mp4",
+    "source": "unav-100",
+    "youtube_id": "7bHrke6zbLk",
+    "secondary_event": "vacuum cleaner cleaning floors",
+    "primary_event": "dog barking",
+    "overlap_time": 20.1,
+    "license": "research use; not redistributed",
+    "title": "Display Case Unboxing and Funny Dog Barking at Vacuum"
+  },
+  {
+    "file": "ly_crowd_7moNk3m.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "7moNk3mQ_vg",
+    "segment_id": "7moNk3mQ_vg_30000",
+    "event_label": "Crowd",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Yoheswaran MP Speech"
+  },
+  {
+    "file": "un_vehicle_honking_3kWzeKKT.mp4",
+    "source": "unav-100",
+    "youtube_id": "3kWzeKKT3vc",
+    "secondary_event": "vehicle honking",
+    "primary_event": "driving motorcycle",
+    "overlap_time": 1.23,
+    "license": "research use; not redistributed",
+    "title": "Байкеры. Закрытие сезона 2012"
+  },
+  {
+    "file": "un_vehicle_honking_2KxW-XXQ.mp4",
+    "source": "unav-100",
+    "youtube_id": "2KxW-XXQWdI",
+    "secondary_event": "vehicle honking",
+    "primary_event": "car passing by",
+    "overlap_time": 15.45,
+    "license": "research use; not redistributed",
+    "title": "Old Fire Trucks Parade Lights & Sirens - C-Kent FireFest 2019 + C-Kent EMS 1129"
+  },
+  {
+    "file": "ly_screaming_Ht_IiME.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "Ht_IiMEbMJk",
+    "segment_id": "Ht_IiMEbMJk_70000",
+    "event_label": "Screaming",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Best Disney Surprise Reaction video ever"
+  },
+  {
+    "file": "un_vehicle_honking_O_SKumO3.mp4",
+    "source": "unav-100",
+    "youtube_id": "O_SKumO328I",
+    "secondary_event": "vehicle honking",
+    "primary_event": "driving buses",
+    "overlap_time": 17.76,
+    "license": "research use; not redistributed",
+    "title": "6 year old driving double decker bus"
+  },
+  {
+    "file": "ly_rain_aTzCrxi.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "aTzCrxi1a-Y",
+    "segment_id": "aTzCrxi1a-Y_30000",
+    "event_label": "Rain",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Heavy Rain Theater 3000 Ep 3.  Square House Traded in For Shithole.  Upgrade!"
+  },
+  {
+    "file": "ly_fire_engine_fire_truck_(si_3FV3g_y.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "3FV3g_yjhDA",
+    "segment_id": "3FV3g_yjhDA_30000",
+    "event_label": "Fire engine, fire truck (siren)",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Engine 4 Responding"
+  },
+  {
+    "file": "ly_rain_rzLIwsg.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "rzLIwsgq0lo",
+    "segment_id": "rzLIwsgq0lo_30000",
+    "event_label": "Rain",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Riding a bicycle in the rain.AVI"
+  },
+  {
+    "file": "un_dog_barking_2Xdpc8PO.mp4",
+    "source": "unav-100",
+    "youtube_id": "2Xdpc8POnkc",
+    "secondary_event": "dog barking",
+    "primary_event": "dog howling",
+    "overlap_time": 12.3,
+    "license": "research use; not redistributed",
+    "title": "Labrador uivando papo sério entre ele e eu"
+  },
+  {
+    "file": "ly_drill_dxgxlgS.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "dxgxlgSj3js",
+    "segment_id": "dxgxlgSj3js_170000",
+    "event_label": "Drill",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "088 - Router Table Fence (for tablesaw router wings)"
+  },
+  {
+    "file": "ly_bark_OaNdt46.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "OaNdt461UgY",
+    "segment_id": "OaNdt461UgY_30000",
+    "event_label": "Bark",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "AUSTRALIAN CATTLE DOG BLUE HEELER"
+  },
+  {
+    "file": "un_car_passing_by_0N6S5OoG.mp4",
+    "source": "unav-100",
+    "youtube_id": "0N6S5OoG7Vg",
+    "secondary_event": "car passing by",
+    "primary_event": "wind noise",
+    "overlap_time": 48.4,
+    "license": "research use; not redistributed",
+    "title": "pożar Frygnowo"
+  },
+  {
+    "file": "un_car_passing_by_4-J2Wi0u.mp4",
+    "source": "unav-100",
+    "youtube_id": "4-J2Wi0utx4",
+    "secondary_event": "car passing by",
+    "primary_event": "wind noise",
+    "overlap_time": 22.48,
+    "license": "research use; not redistributed",
+    "title": "31.03.15 Landung Airbus A380 in Zürich bei Unwetter und Wind"
+  },
+  {
+    "file": "un_skidding_1bjZQVkb.mp4",
+    "source": "unav-100",
+    "youtube_id": "1bjZQVkbOdY",
+    "secondary_event": "skidding",
+    "primary_event": "auto racing",
+    "overlap_time": 8.84,
+    "license": "research use; not redistributed",
+    "title": "rallye ruppeen 2012"
+  },
+  {
+    "file": "ly_traffic_noise_roadway_nois_PoCyybd.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "PoCyybdrF7k",
+    "segment_id": "PoCyybdrF7k_250000",
+    "event_label": "Traffic noise, roadway noise",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "How to Pass Your MOST P Test"
+  },
+  {
+    "file": "un_thunder_0kuIP7fL.mp4",
+    "source": "unav-100",
+    "youtube_id": "0kuIP7fLNpM",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 20.28,
+    "license": "research use; not redistributed",
+    "title": "Washington DC Area Storm On approach (Derecho) (June 29th 2012)"
+  },
+  {
+    "file": "ly_dog_RUISGGA.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "RUISGGABSlY",
+    "segment_id": "RUISGGABSlY_50000",
+    "event_label": "Dog",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "red doberman protecting pup"
+  },
+  {
+    "file": "un_hammering_nails_OwbF9baV.mp4",
+    "source": "unav-100",
+    "youtube_id": "OwbF9baVlN4",
+    "secondary_event": "hammering nails",
+    "primary_event": "man speaking",
+    "overlap_time": 22.21,
+    "license": "research use; not redistributed",
+    "title": "How to join 2 pieces of wood at the corner"
+  },
+  {
+    "file": "un_car_passing_by_7RLPEEjS.mp4",
+    "source": "unav-100",
+    "youtube_id": "7RLPEEjSShM",
+    "secondary_event": "car passing by",
+    "primary_event": "ambulance siren",
+    "overlap_time": 36.2,
+    "license": "research use; not redistributed",
+    "title": "London Ambulance Mercedes Sprinter x2"
+  },
+  {
+    "file": "un_thunder_3X6ETq3F.mp4",
+    "source": "unav-100",
+    "youtube_id": "3X6ETq3FwKw",
+    "secondary_event": "thunder",
+    "primary_event": "raining",
+    "overlap_time": 0.69,
+    "license": "research use; not redistributed",
+    "title": "Next Day: Survival [DEV Rain Test] - Первый тест обновленных погодных условий"
+  },
+  {
+    "file": "un_hair_dryer_drying_07I7v5IS.mp4",
+    "source": "unav-100",
+    "youtube_id": "07I7v5ISD7Y",
+    "secondary_event": "hair dryer drying",
+    "primary_event": "woman speaking",
+    "overlap_time": 2.07,
+    "license": "research use; not redistributed",
+    "title": "Blow Dry talk through for big, bouncy, volumized hair!"
+  },
+  {
+    "file": "ly_dog_X40dESS.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "X40dESSXYjk",
+    "segment_id": "X40dESSXYjk_0",
+    "event_label": "Dog",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Funny Miniature Schnauzer Dog Bark"
+  },
+  {
+    "file": "un_train_horning_5ShuxGIp.mp4",
+    "source": "unav-100",
+    "youtube_id": "5ShuxGIpTXM",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 12.67,
+    "license": "research use; not redistributed",
+    "title": "Chennai Mumbai Express Arriving in solapur city Awesome horning"
+  },
+  {
+    "file": "ly_dog_4nNLrN8.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "4nNLrN8QmsY",
+    "segment_id": "4nNLrN8QmsY_30000",
+    "event_label": "Dog",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Dog cries for his dead brother - Bell calling Taco"
+  },
+  {
+    "file": "un_hair_dryer_drying_jmlpavrE.mp4",
+    "source": "unav-100",
+    "youtube_id": "jmlpavrEd8c",
+    "secondary_event": "hair dryer drying",
+    "primary_event": "man speaking",
+    "overlap_time": 5.84,
+    "license": "research use; not redistributed",
+    "title": "How To Blow Dry Bangs With a Cowlick"
+  },
+  {
+    "file": "ly_thunder_cM93xfz.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "cM93xfzcbro",
+    "segment_id": "cM93xfzcbro_30000",
+    "event_label": "Thunder",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "The Elder Scrolls V: Skyrim - More Rain/Thunder Sounds/Lighting Mod"
+  },
+  {
+    "file": "un_skidding_S_yxvb7P.mp4",
+    "source": "unav-100",
+    "youtube_id": "S_yxvb7P0B4",
+    "secondary_event": "skidding",
+    "primary_event": "engine knocking",
+    "overlap_time": 29.68,
+    "license": "research use; not redistributed",
+    "title": "GTA SA train horn mod with custom sounds"
+  },
+  {
+    "file": "un_skidding_4mX-FX8A.mp4",
+    "source": "unav-100",
+    "youtube_id": "4mX-FX8A9uQ",
+    "secondary_event": "skidding",
+    "primary_event": "driving buses",
+    "overlap_time": 31.12,
+    "license": "research use; not redistributed",
+    "title": "中巴 - Used ISUZU mini bus ( Coaster ) - [ 471-DD ] -  2001 - 23座"
+  },
+  {
+    "file": "ly_power_tool_B_bTQ77.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "B_bTQ77OfTE",
+    "segment_id": "B_bTQ77OfTE_40000",
+    "event_label": "Power tool",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Making a Radius Dish"
+  },
+  {
+    "file": "ly_alarm_R-CLGsw.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "R-CLGswiUpU",
+    "segment_id": "R-CLGswiUpU_30000",
+    "event_label": "Alarm",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "LC BOX ALARM 64 LANCASTER CITY 4A House Fire 11.12.10"
+  },
+  {
+    "file": "un_driving_motorcycle_-e4lzT3P.mp4",
+    "source": "unav-100",
+    "youtube_id": "-e4lzT3PHs0",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "helicopter",
+    "overlap_time": 15.89,
+    "license": "research use; not redistributed",
+    "title": "Arma Helicopter Stunt"
+  },
+  {
+    "file": "ly_civil_defense_siren_3U2JPY2.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "3U2JPY2spvA",
+    "segment_id": "3U2JPY2spvA_30000",
+    "event_label": "Civil defense siren",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Centralia AKA Silent Hill Siren"
+  },
+  {
+    "file": "un_dog_barking_3doKyrCe.mp4",
+    "source": "unav-100",
+    "youtube_id": "3doKyrCe1lA",
+    "secondary_event": "dog barking",
+    "primary_event": "dog howling",
+    "overlap_time": 35.37,
+    "license": "research use; not redistributed",
+    "title": "Dog howling at fire truck"
+  },
+  {
+    "file": "ly_helicopter_-v62cK1.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "-v62cK1oN7Y",
+    "segment_id": "-v62cK1oN7Y_30000",
+    "event_label": "Helicopter",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Helicopter NVG - Lian Digital Media.mp4"
+  },
+  {
+    "file": "un_engine_knocking_3UPXKVOz.mp4",
+    "source": "unav-100",
+    "youtube_id": "3UPXKVOz_PU",
+    "secondary_event": "engine knocking",
+    "primary_event": "car passing by",
+    "overlap_time": 35.73,
+    "license": "research use; not redistributed",
+    "title": "Bracket Racing 5/7/11"
+  },
+  {
+    "file": "ly_ambulance_(siren)_-yPSgCn.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "-yPSgCn9AWo",
+    "segment_id": "-yPSgCn9AWo_30000",
+    "event_label": "Ambulance (siren)",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "A1 Rit Ambulance Rotterdam."
+  },
+  {
+    "file": "ly_fire_engine_fire_truck_(si_O5PYSnI.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "O5PYSnI7vT8",
+    "segment_id": "O5PYSnI7vT8_30000",
+    "event_label": "Fire engine, fire truck (siren)",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "FDNY Rescue 1 [Spare Mack]"
+  },
+  {
+    "file": "un_driving_motorcycle_29leW_wE.mp4",
+    "source": "unav-100",
+    "youtube_id": "29leW_wEi2E",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "ambulance siren",
+    "overlap_time": 8.22,
+    "license": "research use; not redistributed",
+    "title": "Italy Ambulance Siren Sound"
+  },
+  {
+    "file": "un_engine_knocking_g_DBLppD.mp4",
+    "source": "unav-100",
+    "youtube_id": "g_DBLppDZAs",
+    "secondary_event": "engine knocking",
+    "primary_event": "police car siren",
+    "overlap_time": 3.31,
+    "license": "research use; not redistributed",
+    "title": "When a Police car joins the Drift show"
+  },
+  {
+    "file": "un_driving_motorcycle_5lERP3rc.mp4",
+    "source": "unav-100",
+    "youtube_id": "5lERP3rc5H8",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "car passing by",
+    "overlap_time": 49.97,
+    "license": "research use; not redistributed",
+    "title": "Top Tram Bus Basel"
+  },
+  {
+    "file": "ly_applause_uJ1tFbr.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "uJ1tFbrIkYo",
+    "segment_id": "uJ1tFbrIkYo_490000",
+    "event_label": "Applause",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "AKB48组曲 by 上海铜管乐团.in shanghai CHINA"
+  },
+  {
+    "file": "un_train_horning_3DBebXDp.mp4",
+    "source": "unav-100",
+    "youtube_id": "3DBebXDpCus",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 19.05,
+    "license": "research use; not redistributed",
+    "title": "Okha-Deharadun express with VaTvA WDM 3D 11196 tremendous departure from Jaliya-Devani station."
+  },
+  {
+    "file": "ly_truck_X-t-4sb.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "X-t-4sb4ZPg",
+    "segment_id": "X-t-4sb4ZPg_30000",
+    "event_label": "Truck",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "2006 Peterbilt 379 semi truck for sale | sold at auction June 19, 2013"
+  },
+  {
+    "file": "un_dog_barking_Ky4xWbj7.mp4",
+    "source": "unav-100",
+    "youtube_id": "Ky4xWbj7zX4",
+    "secondary_event": "dog barking",
+    "primary_event": "baby laughter",
+    "overlap_time": 28.54,
+    "license": "research use; not redistributed",
+    "title": "Baby belly laughing at dog - 994386\nBaby belly laughing at dog - 994386"
+  },
+  {
+    "file": "ly_truck_wh6EAvN.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "wh6EAvNm_I0",
+    "segment_id": "wh6EAvNm_I0_60000",
+    "event_label": "Truck",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Tatra 148 - SDH Francova Lhota"
+  },
+  {
+    "file": "ly_traffic_noise_roadway_nois_dgYFJb5.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "dgYFJb5-UHA",
+    "segment_id": "dgYFJb5-UHA_50000",
+    "event_label": "Traffic noise, roadway noise",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Vision Zero Crack Down On Ocean Pkwy & Ave L"
+  },
+  {
+    "file": "ly_truck_nwIsfJo.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "nwIsfJoBUVs",
+    "segment_id": "nwIsfJoBUVs_70000",
+    "event_label": "Truck",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Moody AFB Screens Inside Inside Combat Rescue from NatGeo"
+  },
+  {
+    "file": "ly_explosion_UM0jtD_.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "UM0jtD_OWLU",
+    "segment_id": "UM0jtD_OWLU_80000",
+    "event_label": "Explosion",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "BLEVE (Boiling Liquid Expanding Vapor Explosion) Demonstration - How it Happens Training Video"
+  },
+  {
+    "file": "ly_chainsaw_SSR__W5.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "SSR__W5W1fE",
+    "segment_id": "SSR__W5W1fE_40000",
+    "event_label": "Chainsaw",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "1945 Mercury Disston 2 Man Chain Saw"
+  },
+  {
+    "file": "un_driving_motorcycle_39IDY6ff.mp4",
+    "source": "unav-100",
+    "youtube_id": "39IDY6ff1V4",
+    "secondary_event": "driving motorcycle",
+    "primary_event": "raining",
+    "overlap_time": 21.58,
+    "license": "research use; not redistributed",
+    "title": "Cone air filters that work in the rain. Demak d7"
+  },
+  {
+    "file": "ly_bark_5WDY0fr.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "5WDY0frmH9U",
+    "segment_id": "5WDY0frmH9U_70000",
+    "event_label": "Bark",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Hunting Dog Training - Developing Steady to Release - Step 2"
+  },
+  {
+    "file": "un_train_horning_-ntbsw9I.mp4",
+    "source": "unav-100",
+    "youtube_id": "-ntbsw9IoAU",
+    "secondary_event": "train horning",
+    "primary_event": "train wheels squealing",
+    "overlap_time": 26.81,
+    "license": "research use; not redistributed",
+    "title": "450 horn at Surbiton"
+  },
+  {
+    "file": "ly_fire_engine_fire_truck_(si_H7ZugYM.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "H7ZugYM2-gM",
+    "segment_id": "H7ZugYM2-gM_0",
+    "event_label": "Fire engine, fire truck (siren)",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Both Engines and Air Unit Respond to Tractor Trailer Fire on York Rd (Fire Box 17-19)"
+  },
+  {
+    "file": "un_engine_knocking_a_xgmS6w.mp4",
+    "source": "unav-100",
+    "youtube_id": "a_xgmS6wZKo",
+    "secondary_event": "engine knocking",
+    "primary_event": "police car siren",
+    "overlap_time": 11.56,
+    "license": "research use; not redistributed",
+    "title": "Thames valley police IRV responding on blue lights and siren (sorry for the camera)"
+  },
+  {
+    "file": "ly_bus_a-cyYxQ.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "a-cyYxQtiKo",
+    "segment_id": "a-cyYxQtiKo_0",
+    "event_label": "Bus",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Neeta volvo multiexle showing gangam style..."
+  },
+  {
+    "file": "un_police_car_siren_WEROVWDp.mp4",
+    "source": "unav-100",
+    "youtube_id": "WEROVWDp3n0",
+    "secondary_event": "police car siren",
+    "primary_event": "auto racing",
+    "overlap_time": 31.15,
+    "license": "research use; not redistributed",
+    "title": "The Greatest R/C Car Chase Ever"
+  },
+  {
+    "file": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "G5bAKWqGgLU",
+    "segment_id": "G5bAKWqGgLU_50000",
+    "event_label": "Traffic noise, roadway noise",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Indian Traffic: Electronic City"
+  },
+  {
+    "file": "un_engine_knocking_3DK7ovnD.mp4",
+    "source": "unav-100",
+    "youtube_id": "3DK7ovnDdYo",
+    "secondary_event": "engine knocking",
+    "primary_event": "car passing by",
+    "overlap_time": 15.55,
+    "license": "research use; not redistributed",
+    "title": "Center City Buses 4"
+  },
+  {
+    "file": "ly_bus_kRbHSGt.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "kRbHSGt1xg8",
+    "segment_id": "kRbHSGt1xg8_30000",
+    "event_label": "Bus",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "1988 Crown Coach School Bus"
+  },
+  {
+    "file": "ly_applause_L9UMvfK.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "L9UMvfKBaZI",
+    "segment_id": "L9UMvfKBaZI_30000",
+    "event_label": "Applause",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Tommy Cooper - Glass Bottle Trick Video"
+  },
+  {
+    "file": "un_dog_howling_0u3ViA0J.mp4",
+    "source": "unav-100",
+    "youtube_id": "0u3ViA0JEtw",
+    "secondary_event": "dog howling",
+    "primary_event": "dog barking",
+    "overlap_time": 11.75,
+    "license": "research use; not redistributed",
+    "title": "Guaranteed to make your dog howl dachshund edition!"
+  },
+  {
+    "file": "ly_alarm_qCVdVav.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "qCVdVavRUWI",
+    "segment_id": "qCVdVavRUWI_80000",
+    "event_label": "Alarm",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "1979 Rabbit 1.5 liter Diesel 4 speed"
+  },
+  {
+    "file": "un_dog_howling_8VZs-wTE.mp4",
+    "source": "unav-100",
+    "youtube_id": "8VZs-wTEuCE",
+    "secondary_event": "dog howling",
+    "primary_event": "baby crying",
+    "overlap_time": 2.41,
+    "license": "research use; not redistributed",
+    "title": "Funny Video - Dog Cries With Baby.flv"
+  },
+  {
+    "file": "ly_police_car_(siren)_Y33Fr72.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "Y33Fr72njNg",
+    "segment_id": "Y33Fr72njNg_30000",
+    "event_label": "Police car (siren)",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "1985 Chevy Caprice Police Car Burnout"
+  },
+  {
+    "file": "un_train_horning__bkX5VkZ.mp4",
+    "source": "unav-100",
+    "youtube_id": "_bkX5VkZg8U",
+    "secondary_event": "train horning",
+    "primary_event": "auto racing",
+    "overlap_time": 1.42,
+    "license": "research use; not redistributed",
+    "title": "[HOONIGAN] Ken Block's GYMKHANA NINE: Raw Industrial Playground"
+  },
+  {
+    "file": "un_hammering_nails_CoXP3bLX.mp4",
+    "source": "unav-100",
+    "youtube_id": "CoXP3bLXLyM",
+    "secondary_event": "hammering nails",
+    "primary_event": "man speaking",
+    "overlap_time": 34.68,
+    "license": "research use; not redistributed",
+    "title": "Забивание гвоздей 2 на BikeWeekEnd 2011 в Пушкино"
+  },
+  {
+    "file": "ly_drill_HeuQV6G.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "HeuQV6G9_FI",
+    "segment_id": "HeuQV6G9_FI_440000",
+    "event_label": "Drill",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "RF-31 mill/drill CNC retrofit kit"
+  },
+  {
+    "file": "ly_explosion_AFVzauL.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "AFVzauLzK_Q",
+    "segment_id": "AFVzauLzK_Q_300000",
+    "event_label": "Explosion",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "El Reno, Oklahoma Tornado, May 31st, 2013"
+  },
+  {
+    "file": "un_police_car_siren_5RgHBmX2.mp4",
+    "source": "unav-100",
+    "youtube_id": "5RgHBmX2HLw",
+    "secondary_event": "police car siren",
+    "primary_event": "car passing by",
+    "overlap_time": 4.76,
+    "license": "research use; not redistributed",
+    "title": "Police responding - Metropolitan Police Riot Vans x4"
+  },
+  {
+    "file": "ly_power_tool_KP9Wn3b.mp4",
+    "source": "audioset-strong/unseen",
+    "youtube_id": "KP9Wn3bGCU8",
+    "segment_id": "KP9Wn3bGCU8_150000",
+    "event_label": "Power tool",
+    "with": "speech",
+    "license": "research use; not redistributed",
+    "title": "Forging titanium blacksmith tongs by Bernhard Heer"
+  },
+  {
+    "file": "un_police_car_siren_ANWU9Hiy.mp4",
+    "source": "unav-100",
+    "youtube_id": "ANWU9Hiy_5k",
+    "secondary_event": "police car siren",
+    "primary_event": "driving motorcycle",
+    "overlap_time": 35.9,
+    "license": "research use; not redistributed",
+    "title": "MATRIX  Reloaded - Awesome Bike stunt"
+  },
+  {
+    "file": "lx_chainsaw_and_power_tool_BBukw6J.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "BBukw6JpCeg",
+    "segment_id": "BBukw6JpCeg_70000",
+    "event_label": "Chainsaw+Power tool",
+    "with": "Power tool",
+    "license": "research use; not redistributed",
+    "title": "Holzbündler Stihl MS880"
+  },
+  {
+    "file": "un_ambulance_siren_3zJYPgvl.mp4",
+    "source": "unav-100",
+    "youtube_id": "3zJYPgvlwJs",
+    "secondary_event": "ambulance siren",
+    "primary_event": "car passing by",
+    "overlap_time": 32.9,
+    "license": "research use; not redistributed",
+    "title": "BSPP VSAV 140 - CS Château-Landon // Paris Fire Dept. Ambulance"
+  },
+  {
+    "file": "lx_crowd_and_screaming_7pUd5gV.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "7pUd5gV0De8",
+    "segment_id": "7pUd5gV0De8_30000",
+    "event_label": "Crowd+Screaming",
+    "with": "Screaming",
+    "license": "research use; not redistributed",
+    "title": "ACLC Caloocan Dance Society Shout Out 2014"
+  },
+  {
+    "file": "lx_chainsaw_and_power_tool_W1VYWwY.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "W1VYWwYdJRQ",
+    "segment_id": "W1VYWwYdJRQ_370000",
+    "event_label": "Chainsaw+Power tool",
+    "with": "Power tool",
+    "license": "research use; not redistributed",
+    "title": "Giant Pumpkin Jack O Lantern carved with a Chainsaw"
+  },
+  {
+    "file": "un_fire_truck_siren_3CjS1h8n.mp4",
+    "source": "unav-100",
+    "youtube_id": "3CjS1h8nkYs",
+    "secondary_event": "fire truck siren",
+    "primary_event": "car passing by",
+    "overlap_time": 32.1,
+    "license": "research use; not redistributed",
+    "title": "West Paterson Fire Department Rescue 1 Responding 3-5-19"
+  },
+  {
+    "file": "lx_rain_and_thunder_-3-4qmW.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "-3-4qmWSJXU",
+    "segment_id": "-3-4qmWSJXU_30000",
+    "event_label": "Rain+Thunder",
+    "with": "Thunder",
+    "license": "research use; not redistributed",
+    "title": "Hebron ET-5 shed fire in thunderstorm"
+  },
+  {
+    "file": "lx_police_car_(siren)_and_cro_7J7_OGw.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "7J7_OGwI2O4",
+    "segment_id": "7J7_OGwI2O4_0",
+    "event_label": "Police car (siren)+Crowd",
+    "with": "Crowd",
+    "license": "research use; not redistributed",
+    "title": "Sobredosis albiroja (recibiendo al club en plaza patria)"
+  },
+  {
+    "file": "un_wind_noise_-z9Iv2Qj.mp4",
+    "source": "unav-100",
+    "youtube_id": "-z9Iv2QjWvQ",
+    "secondary_event": "wind noise",
+    "primary_event": "man speaking",
+    "overlap_time": 38.03,
+    "license": "research use; not redistributed",
+    "title": "Brian Delate, St.Crispin Day Speech, 2013"
+  },
+  {
+    "file": "un_wind_noise_-k199QGb.mp4",
+    "source": "unav-100",
+    "youtube_id": "-k199QGbju0",
+    "secondary_event": "wind noise",
+    "primary_event": "horse clip-clop",
+    "overlap_time": 17.16,
+    "license": "research use; not redistributed",
+    "title": "Snow Canter With My Horse"
+  },
+  {
+    "file": "lx_applause_and_crowd_QVuLXMp.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "QVuLXMpGHt0",
+    "segment_id": "QVuLXMpGHt0_30000",
+    "event_label": "Applause+Crowd",
+    "with": "Crowd",
+    "license": "research use; not redistributed",
+    "title": "تصفيق حاد بملعب الكامب نو لحظة دخول أبيدال ويقرأ الفاتحة فبل دخوله"
+  },
+  {
+    "file": "un_people_crowd_1YGJDa3a.mp4",
+    "source": "unav-100",
+    "youtube_id": "1YGJDa3aCGo",
+    "secondary_event": "people crowd",
+    "primary_event": "fire truck siren",
+    "overlap_time": 33.19,
+    "license": "research use; not redistributed",
+    "title": "火災現場2016、消火活動。2016年5月,Fire fighting,火灾,消防"
+  },
+  {
+    "file": "lx_bus_and_traffic_noise_road_x0eIFdK.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "x0eIFdKvvtw",
+    "segment_id": "x0eIFdKvvtw_10000",
+    "event_label": "Bus+Traffic noise, roadway noise",
+    "with": "Traffic noise, roadway noise",
+    "license": "research use; not redistributed",
+    "title": "00759"
+  },
+  {
+    "file": "un_people_cheering_-nJoxcmx.mp4",
+    "source": "unav-100",
+    "youtube_id": "-nJoxcmxz5g",
+    "secondary_event": "people cheering",
+    "primary_event": "people clapping",
+    "overlap_time": 34.41,
+    "license": "research use; not redistributed",
+    "title": "방귀대장 뿡뿡이 - Farting King Pung Pung_재미난 색깔 놀이_#001"
+  },
+  {
+    "file": "lx_air_horn_truck_horn_and_fi_jyDKlyL.mp4",
+    "source": "audioset-strong/mixed",
+    "youtube_id": "jyDKlyLf95o",
+    "segment_id": "jyDKlyLf95o_29000",
+    "event_label": "Air horn, truck horn+Fire engine, fire truck (siren)",
+    "with": "Fire engine, fire truck (siren)",
+    "license": "research use; not redistributed",
+    "title": "Engine 514 enroute to working apartment fire in Aberdeen"
+  },
+  {
+    "file": "un_people_shouting_0SL91QFy.mp4",
+    "source": "unav-100",
+    "youtube_id": "0SL91QFyAEE",
+    "secondary_event": "people shouting",
+    "primary_event": "people running",
+    "overlap_time": 43.48,
+    "license": "research use; not redistributed",
+    "title": "Homemade Steadicam run test"
   }
 ]
