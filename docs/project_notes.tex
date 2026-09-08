@@ -823,6 +823,86 @@ reliably covered by PANNs --- plan for CLAP/audio-LLM open-vocab detection or a 
 detector for such safety-critical alerts if they are in scope.}
 
 % ======================================================================
+\section{Results and Findings (2026-08-24)}\label{sec:findings}
+Three findings from the first full evaluation. They are reported here in the form an
+examiner would check them, because each is more damaging if discovered than if stated.
+
+\subsection{The gate does not yet beat its own ablation}
+On 274 hand-labelled clips (73 positive, 201 negative):
+
+\begin{center}
+\begin{tabular}{lrr}
+\hline
+System & Accuracy & F1 \\
+\hline
+Cross-modal gate (CLIP backend) & 49.3\% & 48.0\% \\
+Always augment --- \emph{no gate at all} & 29.7\% & 45.8\% \\
+Always stay silent & \textbf{70.3\%} & 0.0\% \\
+\hline
+\end{tabular}
+\end{center}
+
+\noindent Two observations, and the second is the important one. Accuracy is dominated
+by the negative class, so a constant ``never augment'' predictor scores 70.3\% and beats
+the gate by 21 points; accuracy is therefore the wrong headline metric here. More
+seriously, \textbf{``always augment'' is exactly the blind audio-to-image baseline this
+project claims to beat}, and the gate improves on it by only $+0.023$ F1. The central
+contribution is, at this operating point, not distinguishable from not gating at all.
+The error is one-sided: 71 of 103 \texttt{seen\_ambient} clips receive a false
+augmentation, i.e.\ the gate declares sources invisible when they are plainly on screen.
+
+\subsection{Object presence is not event visibility (the substantive finding)}
+A blind re-adjudication (Section~\ref{sec:readjudication}) recovered, in the annotator's
+own words, what the labelling decision actually turns on:
+
+\begin{quote}\small
+``bells heard not seen --- only \emph{building} seen but bell is heard''\
+``alarm ringing and \emph{is seen} but the `ring' is not indicated''\
+``bird \emph{is seen, not singing} but is seen. so this is confusing''
+\end{quote}
+
+\noindent The annotator is judging whether the \emph{sound-producing event} is visible.
+Every model used in Stage~2 --- CLIP, SigLIP and OWLv2 alike --- answers whether the
+\emph{object} is visible. A bell tower is on screen while the bell ringing is not; an
+alarm housing is visible while its ringing is not; a bird is visible while not singing.
+
+This single distinction accounts for all three symptoms at once: the annotator's own
+inconsistency on the positive class, OWLv2 ``correctly'' locating sources that the
+annotator had called off-screen, and the 71 false augmentations above. It also predicts
+that better object grounding --- a larger CLIP, a detector, a VLM --- cannot fix the
+gate, because the models are answering a different question from the one the task asks.
+\textbf{Contrastive and detection-based vision--language models expose object presence,
+not event visibility, and the cross-modal gating task requires the latter.}
+
+\subsection{Label stability, and what it licenses}\label{sec:readjudication}
+60 already-tagged clips (20 \texttt{drop}, 20 \texttt{seen\_ambient}, 20
+\texttt{unseen\_ambient}) were replayed shuffled with the label hidden, the
+\texttt{drop} option removed and a written reason required.
+
+\begin{itemize}
+  \item Self-agreement 78\%, Cohen's $\kappa = 0.60$ --- moderate. The instability is
+    concentrated in the positive class: \texttt{seen\_ambient} was reproduced 19/20,
+    \texttt{unseen\_ambient} only 12/20. Part of the gate's measured error is therefore
+    label noise on exactly the category the contribution depends on, which is consistent
+    with the object/event confusion above rather than with careless annotation.
+  \item Of 20 clips originally dropped, only 1 became a positive; 13 became
+    \texttt{seen\_ambient} and 6 \texttt{no\_ambient}. The \texttt{drop} bucket is
+    therefore genuine negatives, not withheld positives, so the benchmark cannot be
+    completed from material already collected.
+\end{itemize}
+
+\subsection{Sourcing yield, and why the benchmark is frozen}
+Yield of usable positives did not plateau, it declined as filtering grew more
+elaborate: 22.2\% (naive keyword scraping) $\rightarrow$ 19.7\% $\rightarrow$ 15.4\%,
+while the unexplained discard rate rose from 0\% to 46\%. Four independent strategies
+(Wikimedia/keyword, AudioSet temporally-strong, curated film scenes, UnAV-100 overlap
+moments) and a three-stage automatic filter all landed in the same 15--20\% band.
+Yet 36\% of clips that contain ambient sound at all are unseen or mixed, so the
+phenomenon is not rare --- the acquisition funnel was discarding it.
+\TODO{Adam: the honest reading is that per-clip labelling of a per-event decision is
+the bottleneck; report the scarcity itself as a dataset finding rather than as a
+shortfall against the 300-clip target.}
+
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
 \subsection{Automatic protocol (primary)}
