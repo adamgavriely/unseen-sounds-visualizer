@@ -960,6 +960,49 @@ measured only mixed-audio clips --- the scenario that most flatters the blind au
 baseline, because there the gate suppresses sounds by design. Clip selection is now stratified
 round-robin across the four human tags under a fixed seed, so a 100-clip run draws 25 from each.
 
+\subsection{The reference must be able to say ``nothing is missing'' (2026-09-08)}\label{sec:reference}
+Fixing the abstention rule (Section~\ref{sec:abstain}) immediately exposed a second defect underneath
+it. The corrected pilot reported, for all three systems, that silence was \emph{never} the right
+answer: not once in 36 records did a system that showed nothing receive credit for it.
+
+The cause is that the sentinel phrase ``nothing beyond the picture'' --- the only route by which
+staying silent can score above zero --- was produced \textbf{0 times out of 36}. The reference prompt
+asks for it explicitly, and the model simply does not comply. On a clip containing no non-speech
+audio at all, it wrote that \emph{``a hearing viewer would notice the crowd's movement and potential
+excitement''} in the same sentence as \emph{``there are no non-speech sounds present''}: it had the
+fact and fabricated a reference regardless. The surrounding prompt primes a ``what a hearing viewer
+would notice'' template strongly enough to override the escape clause.
+
+Left in place, this is the exact mirror of the bug it followed. Removing the judge's charity toward
+empty augmentations was correct, but it left a floor beneath which correct silence scores 0, and the
+gated system abstains far more often than either baseline by construction. Two corrections:
+
+\begin{enumerate}
+  \item \textbf{No detections means nothing is missing, decided in code.} If Stage 4 found no salient
+    non-speech sound, the reference is the sentinel and the LLM is not consulted. The decision comes
+    from the detector's own output, so model compliance leaves the loop entirely.
+  \item \textbf{A human-grounded reference variant.} The model-derived reference still reports a
+    sound as missing when the annotator recorded its source as plainly on screen. Since
+    \texttt{seen\_ambient} accounts for 128 of the 274 labelled clips, this is not an edge case: it
+    would systematically punish the behaviour the whole thesis is about and hand the comparison to
+    the blind audio-to-image baseline for the wrong reason. On clips tagged \texttt{seen\_ambient} or
+    \texttt{no\_ambient} the grounded reference is the sentinel.
+\end{enumerate}
+
+\textbf{Why the human tag and not Stage 2.} The obvious alternative --- declare the reference
+satisfied when Stage 2 reports the sound's source as visible --- is circular: the gate would be
+graded against its own decision and would agree with the reference by construction, which is the
+self-evaluation objection this protocol was designed to avoid (Section~\ref{sec:eval}). The
+annotator's tag is independent of every model in the pipeline, and is the one non-circular source
+available. The cost is that the grounded number is only computable on labelled clips; it is an
+evaluation-time correction, not a component the deployed system could use.
+
+\textbf{Both numbers are reported.} Judging is cheap and needs no vision, so a single describe pass
+feeds two scoring passes and the report states the proposal-faithful number and the human-grounded
+number side by side, each with its assumption made explicit. Checked against the real pilot records,
+the correction raises \texttt{proposed} by 12 points and each baseline by 8 --- it removes a bias
+rather than installing one, which is the property that makes it reportable at all.
+
 \subsection{Metrics}
 Semantic-consistency score (LLM judge, rubric-based); augmentation relevance (CLIP/CLAP);
 \emph{gating accuracy} --- did the system correctly \emph{withhold} augmentation when the sound is
