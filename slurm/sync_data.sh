@@ -11,6 +11,17 @@ LOCAL_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 echo "creating remote dirs..."
 ssh "$USER_AT" "mkdir -p $REMOTE/data/input/benchmark $REMOTE/logs"
 
+# Upload the CODE too. The repo is private and GitHub no longer accepts password
+# auth, so cloning on the cluster would mean putting a token on a shared machine.
+# Pushing the working tree over ssh avoids that entirely and is what we already do
+# for the clips.
+echo "uploading code..."
+if command -v rsync >/dev/null 2>&1; then
+    rsync -az --delete         --include="*/"         --include="*.py" --include="*.sh" --include="*.json" --include="*.md"         --include="*.txt" --include="*.bat"         --exclude="*"         --exclude=".git/" --exclude="data/" --exclude="__pycache__/"         "$LOCAL_ROOT/" "$USER_AT:$REMOTE/"
+else
+    tar -C "$LOCAL_ROOT" --exclude=.git --exclude=data --exclude=__pycache__         -czf - src benchmark scripts slurm config.py main.py requirements.txt         | ssh "$USER_AT" "tar -C $REMOTE -xzf -"
+fi
+
 if command -v rsync >/dev/null 2>&1; then
     echo "rsync benchmark clips (resumable, skips unchanged)..."
     rsync -avz --partial --progress \
