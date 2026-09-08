@@ -29,11 +29,18 @@ A2=$(sbatch --parsable --dependency=afterany:"$A" \
      --export=LIMIT="${LIMIT:-100}" slurm/job_main.sh)
 echo "A2 continuation        $A2"
 
-B=$(sbatch --parsable --dependency=afterok:"$A2" --kill-on-invalid-dep=yes \
+# Rendering 300 clips with SDXL, describing them and judging them runs close to the
+# 12 h wall, so a second continuation is cheap insurance; it exits in seconds when
+# there is nothing left to do.
+A3=$(sbatch --parsable --dependency=afterany:"$A2" \
+     --export=LIMIT="${LIMIT:-100}" slurm/job_main.sh)
+echo "A3 continuation        $A3"
+
+B=$(sbatch --parsable --dependency=afterok:"$A3" --kill-on-invalid-dep=yes \
     slurm/job_judge2.sh)
 echo "B  judge reliability   $B"
 
-C=$(sbatch --parsable --dependency=afterok:"$A2" --kill-on-invalid-dep=yes \
+C=$(sbatch --parsable --dependency=afterok:"$A3" --kill-on-invalid-dep=yes \
     --export=LIMIT="${LIMIT:-100}" slurm/job_ablation_gen.sh)
 echo "C  generator ablation  $C"
 
