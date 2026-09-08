@@ -58,16 +58,36 @@ Day-6 judge-agreement run needs no vision work at all.
 
 ## Day 2 -- prove the judge discriminates
 
+The Day-1 pilot ran, and reading its records found two defects that would each have
+invalidated the comparison on their own. Both are fixed; both need re-running before
+anything is scaled up.
+
+**1. An empty augmentation scored 2/4.** When the gate showed nothing, the judge read
+`no augmentation was shown` as a weak-but-not-absurd answer and gave partial credit --
+four of six `proposed` records in the pilot. That rewarded the gated system for total
+failure on clips carrying real audio information, and denied it credit on clips where
+staying silent is the correct behaviour and the gate's whole reason to exist. Since the
+gated system abstains far more than the baselines by construction, the error applied
+asymmetrically to the system under test. Empty candidates are now scored in code, not
+by the judge: 4 if the reference says nothing was missing, 0 otherwise. Written up in
+`docs/project_notes.tex` §Scoring an abstention.
+
+**2. The pilot measured one scenario.** Clips were taken alphabetically and `mixed/`
+sorts first, so every record came from the scenario that most flatters the blind
+baseline. Selection is now stratified round-robin over the four tags, fixed seed.
+
 ```bash
-sbatch --export=LIMIT=12,GEN=retrieve slurm/job_protocol.sh
+sbatch --export=PHASE=judge,RESCORE=1 slurm/job_protocol.sh   # T1: rescore, ~10 min
+sbatch --export=LIMIT=12,GEN=retrieve slurm/job_protocol.sh   # T2: balanced pilot
 ```
 
-Then read `benchmark/protocol_results.json` and check three things:
+Then read `benchmark/protocol_results.json` and check four things:
 
-1. scores **vary** -- all 4s or all 0s means a broken judge, not a good system;
-2. the `why` text names the actual sound rather than praising generically;
-3. `audio_caption` scores **differently** from `proposed` -- if all three systems tie,
-   the protocol is not measuring the systems.
+1. no record scores 2 with an empty description -- 0 or 4 only;
+2. scores **vary** -- all 4s or all 0s means a broken judge, not a good system;
+3. the `why` text names the actual sound rather than praising generically;
+4. `audio_caption` scores **differently** from `proposed` -- if all three tie, the
+   protocol is not measuring the systems.
 
 If any fail, the fix is prompt wording in `src/stage7_evaluation/protocol.py`, where
 the three prompts are module constants for exactly this reason. Iterate here; do not
@@ -76,11 +96,12 @@ scale up on a judge that cannot discriminate.
 ## Day 3 -- the main experiment
 
 ```bash
-sbatch --export=LIMIT=100 slurm/job_protocol.sh     # 100 clips x 3 systems, ~6-8 h
+sbatch --export=LIMIT=100 slurm/job_protocol.sh     # T3: 100 clips x 3 systems, ~6-8 h
 ```
 
-100 clips gives roughly +/-10% per mean, enough to separate three systems. 274 clips
-costs two days for precision the argument does not need.
+100 clips gives roughly +/-10% per mean, enough to separate three systems, and now
+draws 25 from each of the four tags. 274 clips costs two days for precision the
+argument does not need.
 
 ## Day 4 -- results
 
@@ -114,10 +135,13 @@ augmentation dynamics if a fresh set is wanted.
 point. Because the run is split into two passes, re-scoring costs no vision work:
 
 ```bash
-python -m benchmark.run_protocol --phase judge --judge Qwen/Qwen3-8B --tag judge2
+sbatch slurm/job_judge2.sh                                    # T4
+python scripts/compare_runs.py protocol_results.json protocol_results_judge2.json
 ```
 
-Report Spearman correlation plus exact-match rate between the two judges. High
+Reports Spearman rho, exact-match rate and quadratic-weighted kappa between the two
+judges, paired on (clip, system), plus the records they disagree on most -- those are
+the ones worth reading by hand. High
 agreement means the scores are a property of the augmentations; low agreement bounds
 how far any LLM-judged number in this area can be trusted -- which is itself an answer
 to RQ "how should such systems be evaluated?".
@@ -129,7 +153,7 @@ is scored on. Split 50/50, tune on one half, report the other, state both number
 
 | ablation | question it settles |
 |---|---|
-| SDXL vs Openverse retrieval | does *generating* the image beat *retrieving* one? The proposal names diffusion; nobody has checked it helps |
+| SDXL vs Openverse retrieval (`sbatch --export=LIMIT=100 slurm/job_ablation_gen.sh`, T5) | does *generating* the image beat *retrieving* one? The proposal names diffusion; nobody has checked it helps, and a tie removes the GPU dependency from an accessibility tool meant to run on ordinary hardware |
 | BEATs vs PANNs | is the detector the bottleneck? (already measured: no -- an oracle detector moved accuracy 49.3 -> 49.1) |
 | gate on/off, same generator | the gate's contribution to the OUTPUT score, not to an intermediate label |
 

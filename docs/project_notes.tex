@@ -921,6 +921,45 @@ avoid self-preference bias. (b) Complement the LLM judge with cheaper, less game
 \textbf{CLAP} audio$\leftrightarrow$image and \textbf{CLIP}~\cite{clip} text$\leftrightarrow$image
 relevance. (c) Report the judge's agreement with a small human-labelled subset to validate it.
 
+\subsection{Scoring an abstention (2026-09-08)}\label{sec:abstain}
+The first pilot run exposed a flaw serious enough to have invalidated the whole comparison. When a
+system produced \emph{no augmentation at all}, the describing VLM emitted the string \texttt{no
+augmentation was shown}, and the judge --- reading it as a weak but not absurd answer --- awarded it
+\textbf{2 out of 4}. Four of the six \texttt{proposed} records in the pilot were scored this way.
+
+This is not a small calibration error. It cuts in both directions at once:
+\begin{itemize}
+  \item on clips where the soundtrack carries information the picture does not, a system that showed
+    nothing was \emph{rewarded} with half marks for a total failure;
+  \item on clips where the sound adds nothing beyond what is on screen, a system that correctly
+    stayed silent --- which is precisely the behaviour the cross-modal gate exists to produce ---
+    was \emph{denied} the credit it had earned.
+\end{itemize}
+Since the gated system abstains far more often than the two baselines by construction, the error
+was not noise: it applied asymmetrically to the very system under test, and it blurred the one
+comparison the thesis turns on.
+
+The fix removes the judge from this decision entirely. An empty candidate is scored
+deterministically in code (\texttt{src/stage7\_evaluation/protocol.py}, function \texttt{judge}):
+if the reference is the sentinel \emph{``nothing beyond the picture''}, silence was the correct
+behaviour and scores \textbf{4}; otherwise the reference names information the viewer is missing,
+none of it was conveyed, and the score is \textbf{0}. Silence is never partially correct. The rule
+covers both empty forms, the image systems' \texttt{no augmentation was shown} and the caption
+baseline's \texttt{no notable non-speech sound}, so all three systems are scored under one
+convention rather than the judge's ad-hoc reading of each phrasing.
+
+Because a mean score can now be reached either by describing sounds well or by abstaining where
+abstaining happens to pay, the results table reports two further columns per system: the fraction of
+clips on which it showed nothing, and --- among those --- the fraction where nothing was the right
+answer. A system cannot post a respectable mean by strategic silence without that being visible.
+
+\smallskip
+\noindent\textbf{Related sampling fix.} The same pilot reported results for a single scenario. Clips
+were being taken in alphabetical order and the \texttt{mixed/} folder sorts first, so the run
+measured only mixed-audio clips --- the scenario that most flatters the blind audio-to-image
+baseline, because there the gate suppresses sounds by design. Clip selection is now stratified
+round-robin across the four human tags under a fixed seed, so a 100-clip run draws 25 from each.
+
 \subsection{Metrics}
 Semantic-consistency score (LLM judge, rubric-based); augmentation relevance (CLIP/CLAP);
 \emph{gating accuracy} --- did the system correctly \emph{withhold} augmentation when the sound is
