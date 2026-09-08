@@ -18,8 +18,13 @@ DEVICE = "cpu"               # "cpu" locally; "cuda" on the university GPU
 SAMPLE_RATE = 16000
 
 # Stage 2 — video understanding
-VIDEO_BACKEND = "clip"      # "clip" (CPU, v2-a) | "vlm" (Qwen2.5-VL, university GPU, v2-b)
-VIDEO_MODEL = "openai/clip-vit-base-patch32"
+# "siglip" (default) | "clip" (baseline) | "vlm" (Qwen2.5-VL, university GPU)
+# SigLIP scores each concept with an independent sigmoid, so visibility is a real
+# per-source yes/no; CLIP's softmax made concepts compete (see stage2/siglip.py).
+VIDEO_BACKEND = "siglip"
+VIDEO_MODEL = "openai/clip-vit-base-patch32"          # used when backend == "clip"
+SIGLIP_MODEL = "google/siglip-base-patch16-224"
+SIGLIP_THRESHOLD = -7.5   # raw logit, not a probability (see stage2/siglip.py)
 VLM_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"      # used when VIDEO_BACKEND == "vlm"
 NUM_FRAMES = 6              # frames sampled from the clip for scene analysis
 VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on screen"

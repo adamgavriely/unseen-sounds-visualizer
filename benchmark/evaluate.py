@@ -2,7 +2,7 @@
 
 Ground truth (benchmark/tags.json): unseen_ambient & mixed = the system SHOULD
 augment; seen_ambient & no_ambient = it should NOT. The prediction replicates
-the pipeline's gate (PANNs + family consolidation + CLIP visibility) per clip.
+the pipeline gate (PANNs + family consolidation + the Stage-2 visibility backend).
 
 Model outputs are cached (benchmark/eval_cache.json) so threshold sweeps and
 re-scoring are instant after the first pass.
@@ -61,7 +61,8 @@ def _analyze(path: Path) -> dict:
         cands = sorted({canonical(e.label) for e in events}) \
             if config.VIDEO_BACKEND == "vlm" else None
         scene = analyze(path, backend=config.VIDEO_BACKEND, num_frames=config.NUM_FRAMES,
-                        model=config.VIDEO_MODEL, vlm_model=config.VLM_MODEL,
+                        model=config.VIDEO_MODEL, vlm_model=config.VLM_MODEL, siglip_model=config.SIGLIP_MODEL,
+                        siglip_threshold=config.SIGLIP_THRESHOLD,
                         device=config.DEVICE, threshold=config.VISIBILITY_THRESHOLD,
                         candidates=cands)
     return {"duration": media.duration,

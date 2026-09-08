@@ -161,11 +161,19 @@ def analyze_video(video_path: Path, num_frames: int = 6,
 
 
 def analyze(video_path, backend: str = "clip", **kw) -> SceneContext:
-    """Backend dispatcher: 'clip' (CPU, v2-a) or 'vlm' (Qwen2.5-VL, GPU, v2-b).
+    """Backend dispatcher: 'siglip' (default), 'clip' (baseline) or 'vlm' (GPU).
 
     Keeps callers (pipeline, benchmark/evaluate) agnostic of which gate is in use
     so the two can be compared by flipping one config flag.
     """
+    if backend == "siglip":
+        from src.stage2_video_understanding.siglip import analyze_video_siglip
+        return analyze_video_siglip(
+            video_path, num_frames=kw.get("num_frames", 6),
+            model=kw.get("siglip_model", "google/siglip-base-patch16-224"),
+            device=kw.get("device", "cpu"),
+            threshold=kw.get("siglip_threshold", 0.30),
+            candidates=kw.get("candidates"))
     if backend == "vlm":
         from src.stage2_video_understanding.vlm import analyze_video_vlm  # lazy: GPU deps
         return analyze_video_vlm(
