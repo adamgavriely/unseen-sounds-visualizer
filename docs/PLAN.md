@@ -4,23 +4,35 @@ Rewritten 2026-09-08 against the real repo state. Supersedes the earlier 5/8-day
 
 ## Where the project actually stands
 
+Updated 2026-09-09, after the experiment ran.
+
 | Proposal deliverable (sec 11) | State |
 |---|---|
 | Source code | done -- 7 stages, runs on CPU and GPU |
 | Curated benchmark | done -- 274 labels, **frozen** |
-| Automatic evaluation protocol (sec 6.1) | **built, never successfully run** <- the blocker |
-| Experimental evaluation vs baselines (sec 7) | blocked on the above |
-| Technical report | 26 pp, framed around the wrong metric |
-| Prototype system | done -- 13 demo videos already rendered |
+| Automatic evaluation protocol (sec 6.1) | **done and run** |
+| Experimental evaluation vs baselines (sec 7) | **done** -- 100 clips x 3 systems, 300 records |
+| Technical report | results, judge reliability and the ablation written up |
+| Prototype system | done -- demo videos rendered |
 
-Component results already secured, and they do not need re-running:
+### Results secured (all in `benchmark/results/`)
 
-* four Stage-2 backends within ~2 points of each other (CLIP 49.3, SigLIP 49.6,
-  OWLv2 50.4, Qwen2.5-VL 51.2 accuracy) -- architecture does not decide this task;
-* event-level AUROC 0.647 (SigLIP) / 0.616 (OWLv2) -- weak but above chance;
-* trivial baselines: always-augment 26.6% acc / 42.1 F1, always-silent 73.4% / 0 F1;
-* object presence != event visibility, evidenced by the annotator's own words;
-* label stability kappa = 0.60, instability concentrated in the positive class.
+| experiment | outcome |
+|---|---|
+| main comparison, model-derived reference | blind 2.94 > caption 2.68 > **proposed 2.41** |
+| same, human-grounded reference | blind 3.09 > **proposed 2.94** > caption 2.79 |
+| per category, grounded | gate **wins** where silence is correct (3.36 / 3.48 vs 3.24 / 3.28), **loses** where it must choose what to show (2.64 / 2.28 vs 3.04 / 2.80) |
+| judge reliability (2nd judge) | kappa 0.753; blind-proposed gap **+0.53 under both judges** |
+| generator ablation | **retrieval beats SDXL** (+0.18 blind, +0.17 proposed, +0.00 caption control) |
+
+Earlier component results still stand: four Stage-2 backends within ~2 points; event-level
+AUROC 0.647; trivial baselines; object presence != event visibility; label stability kappa 0.60.
+
+### What the numbers say
+
+The gate does not beat direct audio-to-image generation overall, on either reference, under
+either judge. It does beat it on the two categories where the correct output is nothing --
+186 of the 274 labelled clips. **Its suppression is worth having; its selection is not.**
 
 **Standing rules.** No more sourcing. No more tagging. No more chasing gating accuracy.
 The missing deliverable is the protocol and the baseline comparison built on it.

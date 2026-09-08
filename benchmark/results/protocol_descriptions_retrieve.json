@@ -1,0 +1,4910 @@
+[
+ {
+  "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the siren and vehicle sounds, which provide additional context to the scene involving a train and vehicle, while a deaf viewer would only see the train and vehicle on screen.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_EiqYND8G.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_mountain_stream.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a boat in the water, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water",
+   "Boat"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_jungle_hike.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the presence of a vehicle, while a deaf viewer would miss this detail as it is not visually represented in the image.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_airport_terminal.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_police_car_siren_WEROVWDp.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a siren and a vehicle in addition to the visible gunshots and vehicles, while a deaf viewer would miss this auditory detail.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ly_helicopter_-v62cK1.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear the sounds of a vehicle and a helicopter in addition to the aircraft, while a deaf viewer would only see the aircraft.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound associated with this image is likely the cheering and excitement of a crowd, as indicated by the text \"helicopter\" which might refer to the cheerleaders' formation resembling a helicopter.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Aircraft",
+   "Helicopter"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-lyPnABQ.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear the siren and vehicle sounds, which provide additional context to the scene involving the crowd, while a deaf viewer would only see the crowd, siren, and vehicle on screen.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_pov_dry_leaves.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that footsteps are present in the scene, while a deaf viewer would miss this detail as there are no visual cues for the sound sources.",
+  "description": "A viewer would learn that the sound is footsteps, and the source appears to be a child walking on a path.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Footsteps"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_1FOKvagR.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of a vehicle, boat, and water from the non-speech sounds, while a deaf viewer would only see an aircraft, bird, and helicopter on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Aircraft",
+   "Boat",
+   "Water"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Helicopter"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bakery_morning.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the actions of opening and closing doors and drawers from the sounds, whereas a deaf viewer would miss this information as there are no visual cues for such actions.",
+  "description": "A viewer would learn that the sound source is likely an old door creaking or groaning due to age and wear, as suggested by the peeling paint and weathered appearance of the door. A viewer would learn that the sound source is likely a drawer opening or closing based on the text \"Drawer open or close\" at the bottom of the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Door",
+   "Drawer open or close"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "as_explosion_XJ8lc3I6.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sounds of a gunshot, glass shattering, and an explosion, which complement the visual elements of fire and a train, while a deaf viewer would only see the fire and train without the additional context provided by the sounds.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Gunshot",
+   "Glass",
+   "Explosion"
+  ],
+  "visible": [
+   "Fire",
+   "Gunshot",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sound of water, which a deaf viewer would miss as there are no visual cues for the sound source.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_funeral_rain_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is rain falling, while a deaf viewer would miss this detail as there are no visual cues for the sound of rain.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_barbershop.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of electrical appliances like a mains hum, an electric shaver, and an electric razor based on the sounds, whereas a deaf viewer would only see the absence of any visual cues for these items.",
+  "description": "A viewer would learn that the sound \"Mains hum\" is likely associated with electrical power lines and is a low-frequency noise often heard in urban environments. A viewer would learn that the sound \"Hum\" is produced by a hummingbird, as indicated by its long beak and small size. A viewer would learn that the sound associated with this image is likely the smooth, quiet operation of an electric shaver or razor as it glides over skin.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Mains hum",
+   "Hum",
+   "Electric shaver, electric razor"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "wc_korean_thriller.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sound of a vehicle, while a deaf viewer would miss this auditory detail as it is not visually represented in the image.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer hears the sound of sheep, which a deaf viewer would miss as there are no sheep depicted in the image.",
+  "description": "A viewer would learn that the sound of sheep in a field is likely to be heard as a gentle, repetitive bleat or low rumble, and the source is the sheep themselves.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Sheep"
+  ],
+  "visible": [
+   "Crowd",
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "london_protest_01.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear the vehicle and siren sounds, which provide additional context to the scene involving the crowd, while a deaf viewer would only see the crowd and saxophone, missing out on the sounds of the vehicle and siren.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Crowd"
+  ],
+  "visible": [
+   "Crowd",
+   "Saxophone",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_church_bell_pJRAWkLM.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the bell ringing and the crowd's presence, while a deaf viewer misses this auditory information.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bell"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_harbour_boats_1449.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Cattle",
+   "Crowd",
+   "Saxophone",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_desert_wind_74.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that thunder and rain are occurring, while a deaf viewer would miss this as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm. A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Thunder",
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_ia_0001_let_us_break_bread_toge_1.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Applause",
+   "Saxophone"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_driving_motorcycle_DgdHSmwA.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there are fireworks and a vehicle, which adds context to the scene with the crowd, while a deaf viewer would only see the crowd and vehicle without the additional auditory cues.",
+  "description": "A viewer would learn that fireworks produce a loud, explosive sound when ignited, and the image shows a burst of colorful sparks against a dark sky.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Fireworks",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_aviary_birds.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the sound of a bird, which adds an auditory element to the visual scene of a bird, while a deaf viewer would miss this auditory detail as it is not present in the image.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_wind_noise_-z9Iv2Qj.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that a vehicle is present in the scene, while a deaf viewer would miss this detail as there are no visual cues for the vehicle's presence.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "waves_herzliya.webm",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sound of water, which a deaf viewer would miss as there are no additional visual cues for the sound source.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_explosion_eEdaLHC0.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can discern the sounds of an explosion, burst, pop, boat, thunder, and rain, which complement the visual elements of an explosion, gunshot, helicopter, train, and vehicle, while a deaf viewer would miss these auditory cues.",
+  "description": "A viewer would learn that the sound \"burst, pop\" likely corresponds to the popping of seeds within the fruit shown, which is a horned melon.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Explosion",
+   "Burst, pop",
+   "Boat",
+   "Thunder",
+   "Rain"
+  ],
+  "visible": [
+   "Explosion",
+   "Gunshot",
+   "Helicopter",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "lx_rain_and_thunder_-3-4qmW.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information about rain, thunder, and water sounds, which complement the visual of a siren and vehicle, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder",
+   "Water"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_flea_market.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a boat through the non-speech sounds, while a deaf viewer would only see an aircraft, boat, siren, and vehicle on screen.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Boat"
+  ],
+  "visible": [
+   "Aircraft",
+   "Boat",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_crossing_bells.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information that there is water and steam present, as indicated by the sounds \"Water\" and \"Steam,\" which a deaf viewer would miss from the picture alone.",
+  "description": "A viewer would learn that the sound is likely a cat's meow, as indicated by the cat's expression and the word \"cat\" at the bottom of the image. A viewer would learn that the sound associated with this image is likely the mechanical whir and hum of a steam engine, as indicated by the visible components such as the piston and connecting rod.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Train",
+   "Water",
+   "Cat",
+   "Steam",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_botanic_garden.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_tornado_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the presence of a siren, footsteps, and a vehicle, which a deaf viewer would miss as they are not visually represented in the image.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself. A viewer would learn that the sound is footsteps, and the source appears to be a child walking on a path. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Horse",
+   "Siren",
+   "Footsteps",
+   "Vehicle"
+  ],
+  "visible": [
+   "Applause",
+   "Cat",
+   "Horse",
+   "Saxophone"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_raining_71I9l62a.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a basketball being bounced, while a deaf viewer would miss this auditory information as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound of basketballs bouncing is likely coming from the many basketballs in the air, suggesting a lively and energetic environment.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Basketball bounce"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_market_marrakech_3102.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sounds of a vehicle, bell, crowd, and siren, while a deaf viewer would only see the visual elements of the bell, crowd, and siren.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_pet_shop.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the sound of a bird, which adds an auditory element to the visual scene of a bird, while a deaf viewer would miss this auditory detail as it is not present in the image.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_chicken_coop.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets information about the presence of a bird, vehicle, and sheep through their respective sounds, which a deaf viewer would miss as they rely solely on visual cues for the visible objects like cattle, dog, pig, and sheep.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird",
+   "Vehicle",
+   "Sheep"
+  ],
+  "visible": [
+   "Bird",
+   "Cattle",
+   "Dog",
+   "Pig",
+   "Sheep"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_glacier_hike.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can discern the presence of a horse, vehicle, and bird through their respective sounds, which a deaf viewer would miss entirely.",
+  "description": "A viewer would learn that the sound of the horse running is likely a gallop, which is characterized by its rhythmic and powerful movement. The sound source is a horse. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Horse",
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_construction_site.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle, rain, and thunder in the scene, while a deaf viewer would only see the vehicle.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_driving_motorcycle_4O3bZRYO.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear the sounds of a vehicle, laughter, a dog, baby laughter, an air horn, a truck horn, and belly laughs, which provide additional context to the scene beyond what is visible in the picture.",
+  "description": "A viewer would learn that the sound \"Laughter\" is associated with the image of a ceiling with light panels, suggesting a joyful or lighthearted atmosphere. The sound source is likely people laughing. A viewer would learn that the sound is likely coming from a dog, as indicated by the image of a dog lying down on a tiled floor. A viewer would learn that the sound of baby laughter is joyful and carefree, as depicted by the smiling baby on a swing. The sound source is a baby's laughter.",
+  "n_augmentations": 6,
+  "sounds": [
+   "Vehicle",
+   "Laughter",
+   "Dog",
+   "Baby laughter",
+   "Air horn, truck horn",
+   "Belly laugh",
+   "Giggle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_train_horning_KKFdi5WQ.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle and a cat in the scene, while a deaf viewer would only see the train and vehicle on screen.",
+  "description": "A viewer would learn that the sound is likely a cat's meow, as indicated by the cat's expression and the word \"cat\" at the bottom of the image.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Cat"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_temple_india_2877.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_5_aRF2s3.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sounds of a vehicle and rain, while a deaf viewer would miss these auditory cues as they are not depicted in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Rain"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_protest_scene_movie.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the Glass, Hoot, Owl, Siren, and Sheep sounds, which provide additional context to the scene, while a deaf viewer would only see the Applause, Crowd, and Explosion on screen.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound source is likely a bird, as indicated by the owl figure on the cake, which could represent a bird's call or a playful imitation of one. A viewer would learn that the owl's hoot is a deep, resonant sound often associated with nighttime and forest environments.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Glass",
+   "Hoot",
+   "Owl",
+   "Siren",
+   "Sheep"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Explosion"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_nature_rainforest_7629.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information that there is a bird and a whistle in the video, while a deaf viewer would only see the bird on screen.",
+  "description": "A viewer would learn that the sound \"Whistle\" is associated with the image of a person sitting on a ledge, possibly indicating the sound's context or origin.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird",
+   "Whistle"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "helicopter_ossetia.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a vehicle in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Bird",
+   "Dog",
+   "Helicopter",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_ambulance_siren_3qIzU14N.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear the siren and vehicle sounds, which provide additional context to the scene, while a deaf viewer would only see the siren and vehicle on screen.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "station_kwasa2.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sound of a vehicle, which a deaf viewer would miss as there are no visual cues for this sound source in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Alarm",
+   "Bird",
+   "Crowd",
+   "Train"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_weather_storm_16200.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that rain and thunder are occurring, with the boat and train being the specific sound sources, while a deaf viewer would miss this auditory detail as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Boat",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_distant_train_valley.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of a train, vehicle, and bird sounds, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Train",
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "rain_road.webm",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear the sounds of rain and water, which complement the visual elements of rain and water on screen, while a deaf viewer would only see the visual elements without the auditory context.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Water"
+  ],
+  "visible": [
+   "Rain",
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "bell_miami.webm",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information that there is a bell and a vehicle in the scene, which a deaf viewer would miss as they rely solely on visual cues.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bell",
+   "Vehicle"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd",
+   "Thunder",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_storm_scene_house.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sounds of a vehicle and a siren, which complement the visual elements of an explosion and thunder, while a deaf viewer would only see the explosion and thunder on screen.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Siren"
+  ],
+  "visible": [
+   "Explosion",
+   "Thunder",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_ice_cracking_lake.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices footsteps, which indicate someone's movement in the scene, while a deaf viewer would miss this auditory cue as there are no visual elements to suggest it.",
+  "description": "A viewer would learn that the sound is footsteps, and the source appears to be a child walking on a path.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Footsteps"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mc_snow_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sounds of an explosion, water, boat, burst, and pop, which complement the visual of a gunshot, while a deaf viewer would only see the gun being fired.",
+  "description": "A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks. A viewer would learn that the sound \"burst, pop\" likely corresponds to the popping of seeds within the fruit shown, which is a horned melon.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Explosion",
+   "Water",
+   "Boat",
+   "Burst, pop"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_car_alarm_VC9nqtFU.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the alarm and gunshot sounds, which a deaf viewer would miss as they are not visually represented in the image.",
+  "description": "A viewer would learn that the sound is an alarm, likely used for fire or emergency alerts, and the image shows two red alarm bells mounted on a brick wall.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Alarm",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_applause_62ZYD0u.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of a crowd, laughter, snickers, chuckles, and chortles, which provide context to the scene but are not visually represented in the image.",
+  "description": "A viewer would learn that the sound source is likely a sports event or public gathering, as indicated by the stadium seating and the presence of spectators. A viewer would learn that the sound \"Laughter\" is associated with the image of a ceiling with light panels, suggesting a joyful or lighthearted atmosphere. The sound source is likely people laughing. A viewer would learn that the sound of breaking a Snickers ice cream bar is likely to be a satisfying crunch, as depicted by the image showing the bar being broken open.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Crowd",
+   "Laughter",
+   "Snicker",
+   "Chuckle, chortle"
+  ],
+  "visible": [],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_destinationamerica5cityofthe_0.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the clicking sound, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "A viewer would learn that the sound \"clicking\" is associated with the opening of a soda can, as depicted by the image showing the pull-tab being lifted.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Clicking"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_logging_forest.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the impression of construction or woodworking activities involving chainsaws and power tools, while a deaf viewer would miss this context as there is no speech and only the visual of a gunshot is present.",
+  "description": "A viewer would learn that the sound being described is likely the roar of a chainsaw, as indicated by the image of a person holding a chainsaw. A viewer would learn that the sound source is likely the rustling of leaves and branches in the wind, which is a common sound in a wooded area like the one depicted. A viewer would learn that the sound associated with this image is likely the loud, high-pitched whine of a circular saw cutting metal, accompanied by the sharp, metallic scraping and the hiss of coolant spraying. The sound source is a large industrial circular saw.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Chainsaw",
+   "Wood",
+   "Sawing",
+   "Tools",
+   "Power tool"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_citywalk_cairo_834.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd",
+   "Dog",
+   "Rain",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_wm_road_traffic_cobblestone_road_we.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle and possibly a bird making noise in the background, while a deaf viewer would only see the vehicle on screen.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "movie_blueplanet_115.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Explosion",
+   "Thunder",
+   "Water"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_engine_knocking_3UPXKVOz.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, while a deaf viewer would miss this detail as it is not visually represented and there is no accompanying speech.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "voa_worldseries.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sound of a door opening or closing, while a deaf viewer would miss this auditory cue as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound source is likely an old door creaking or groaning due to age and wear, as suggested by the peeling paint and weathered appearance of the door.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Door"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Dog"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-Pg4vVPs.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of an aircraft and a vehicle based on the non-speech sounds, while a deaf viewer would only see the siren and vehicle on screen.",
+  "description": "A viewer would learn that the sound source is an airplane, and the image suggests the sound might be the engine's roar or propeller noise.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Aircraft"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_laundromat.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a train through the non-speech sounds, while a deaf viewer would only see an alarm on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Train"
+  ],
+  "visible": [
+   "Alarm"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mc_earthquake_disaster.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there are explosive and gunshot sounds, indicating potential danger or conflict, while a deaf viewer would miss this context as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops. A viewer would learn that the sound is likely a gunshot, as indicated by the label and the small dark object near the arrows on the ground.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "visible": [
+   "Rain"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_golf_course.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there are birds present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Cattle",
+   "Horse"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_butcher_market.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets information about the presence of a sliding door and a vehicle, which a deaf viewer would miss as there is no speech, but the visual elements do not provide additional context for these sounds.",
+  "description": "A viewer would learn that the sound source is likely an old door creaking or groaning due to age and wear, as suggested by the peeling paint and weathered appearance of the door. A viewer would learn that the sound is likely associated with the sliding door mechanism, which may produce a smooth or creaky sliding sound as it moves. The sound source is the sliding door itself.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Door",
+   "Sliding door",
+   "Vehicle"
+  ],
+  "visible": [
+   "Pig"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_harbour_boats_724.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sound of a vehicle, which a deaf viewer would miss as there are no visual cues for this sound source in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Boat",
+   "Water"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_arrest_street_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sounds of Glass, Snicker, Chuckle, and Chortle, which provide additional context to the scene involving the vehicle, while a deaf viewer would only see the vehicle without these auditory cues.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound of breaking a Snickers ice cream bar is likely to be a satisfying crunch, as depicted by the image showing the bar being broken open. A viewer would learn that the sound \"chuckle\" or \"chortle\" is associated with the cat's behavior of looking up and possibly reacting to something off-camera. The sound source appears to be the cat itself.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Glass",
+   "Snicker",
+   "Chuckle, chortle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is an alarm and a whistle in the video, while a deaf viewer would miss the sounds of the alarm and whistle as they are not visually represented.",
+  "description": "A viewer would learn that the sound \"Whistle\" is associated with the image of a person sitting on a ledge, possibly indicating the sound's context or origin.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Alarm",
+   "Whistle"
+  ],
+  "visible": [
+   "Alarm"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_nature_rainforest_2179.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "kit_piano.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Saxophone"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "waterfall_kawaida_01.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sound of water, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Bird",
+   "Gunshot",
+   "Pig"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_plane_emergency.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of a glass breaking and a printer operating, while a deaf viewer would only see an aircraft, bird, gunshot, and helicopter.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound is likely related to a printer, as indicated by the text on the image and the presence of a printer.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Glass",
+   "Printer"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Gunshot",
+   "Helicopter"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_carnival_parade.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets information about the presence of a bass drum and a drum roll, which suggest a lively or celebratory atmosphere, while a deaf viewer would miss this auditory context as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound of the bass drum is produced by a white toy figure hitting a drum head, and the sound is likely deep and resonant. A viewer would learn that the sound \"Drum roll\" is associated with rhythmic percussion, and the image visually represents the dynamic and repetitive nature of drumming. The sound source is a drum or drums.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Bass drum",
+   "Drum roll"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Saxophone"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_people_clapping__bAVmK7n.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "wc_japanese_drama.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can hear rain and thunder, while a deaf viewer would only see the dog, gun, and pig, missing the environmental sounds.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Dog",
+   "Gunshot",
+   "Pig"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_kayak_river.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the impression of various watercraft and bird sounds, including a goose, rowboat, canoe, kayak, honking, and birds, which complement the visual of boats and water, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound source is likely a soft, gentle clucking or honking, which is characteristic of a goose, as indicated by the text \"Goose\" in the image. A viewer would learn that the sound of paddling a kayak on calm water is likely to be heard, and the sound source is the movement of the paddle through the water. A viewer would learn that the sound \"Honk\" is likely coming from the person in the foreground, who appears to be wearing a costume and is possibly part of a parade or public event.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Goose",
+   "Rowboat, canoe, kayak",
+   "Honk",
+   "Boat",
+   "Bird",
+   "Vehicle"
+  ],
+  "visible": [
+   "Boat",
+   "Water"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mc_fight_bar_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would notice the sound of glass breaking, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Glass"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Helicopter"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_people_crowd_1YGJDa3a.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would get the information about the train and vehicle sounds, which complement the visual elements of an explosion, fire, rain, and siren, while a deaf viewer would miss this auditory context.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Explosion",
+   "Fire",
+   "Rain",
+   "Siren",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_war_bombardment.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of a boat, crowd, helicopter, and train based on the visual elements, while a deaf viewer would miss the specific sounds of an explosion, gunshot, burst, and pop, which provide additional context to the scene.",
+  "description": "A viewer would learn that the sound \"burst, pop\" likely corresponds to the popping of seeds within the fruit shown, which is a horned melon.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Explosion",
+   "Gunshot",
+   "Burst, pop"
+  ],
+  "visible": [
+   "Boat",
+   "Crowd",
+   "Explosion",
+   "Fire",
+   "Gunshot",
+   "Helicopter",
+   "Train",
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "birds_forest.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_citywalk_nyc_2627.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, which a deaf viewer would miss as the sounds of the vehicle are not present in the visual content.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Glass",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_oHil9Ip_.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the clinking of dishes, which a deaf viewer would miss as there are no visual cues for the sound.",
+  "description": "A viewer would learn that the sound of a dishwasher being opened and closed is associated with the action depicted in the image. The sound source is the dishwasher.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Dishes"
+  ],
+  "visible": [
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_police_raid_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sound of glass breaking, while a deaf viewer would miss this detail as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Glass"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_detective_crime_scene.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the sounds of a telephone ringing and a hiccup, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "A viewer would learn that the sound is likely associated with a telephone keypad, as indicated by the \"Telephone\" label at the bottom of the image. A viewer would learn that the sound source is likely a playful and energetic environment, possibly a convention or event, where people are dressed up in costumes and engaging in lively activities.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Telephone",
+   "Hiccup"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_basement_scene_noise.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the dog and pig sounds, while a deaf viewer misses the non-speech sounds of \"Dog\" and \"Babbling.\"",
+  "description": "A viewer would learn that the sound of babbling brook is associated with the flowing water in the image.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Dog",
+   "Babbling"
+  ],
+  "visible": [
+   "Dog",
+   "Pig"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_thunder_1gDcPnV9.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer hears a dog barking and water splashing, while a deaf viewer misses this auditory information as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound is likely coming from a dog, as indicated by the image of a dog lying down on a tiled floor.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Dog",
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_weather_storm_7200.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that rain and thunder are occurring, with the train visible on screen, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Train"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_favela_rio.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would get information about the presence of a train and a vehicle from the non-speech sounds, while a deaf viewer would only see an aircraft and a cat in the picture.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Cat"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_thunder_08A9CKS5.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the additional information of rain, thunder, and water sounds, which complement the visual presence of a helicopter, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder",
+   "Water"
+  ],
+  "visible": [
+   "Helicopter"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_hair_dryer_drying_WWu24rJs.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices the typing and computer keyboard sounds, which provide context to the activity happening on screen, while a deaf viewer would miss this information as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound is likely related to typing on a keyboard, as indicated by the word \"Typing\" at the bottom of the image. A viewer would learn that the sound associated with this image is likely the clicking or typing sound produced by a computer keyboard, specifically when keys like \"W,\" \"A,\" and \"S\" are pressed.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Typing",
+   "Computer keyboard"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_transport_subway_10800.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a train and possibly other vehicles in motion, while a deaf viewer would only see the train on screen.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_citywalk_nyc_1689.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_snow_walk_930.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Cat",
+   "Crowd",
+   "Rain",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_cow_farm.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Alarm",
+   "Cattle",
+   "Gunshot"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bat_cave.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer can infer the presence of water and sonar sounds, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks. A viewer would learn that the sound source is likely the distant hum of a city or the echo of wind through the fort's walls, as suggested by the architecture and environment depicted.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Water",
+   "Sonar"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ev_car_alarm_street.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer notices an alarm and bird sounds, while a deaf viewer would miss these auditory cues as they are not depicted in the visual elements of the video.",
+  "description": "A viewer would learn that the sound is an alarm, likely used for fire or emergency alerts, and the image shows two red alarm bells mounted on a brick wall. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Alarm",
+   "Bird"
+  ],
+  "visible": [
+   "Dog",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the siren and vehicle sounds, which provide additional context to the scene involving a train and vehicle, while a deaf viewer would only see the train and vehicle on screen.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_EiqYND8G.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_mountain_stream.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a boat in the water, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks. A viewer would learn that the sound of the water gently lapping against the boats and the soft rustling of sails could be heard, suggesting a peaceful harbor environment.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Water",
+   "Boat"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_jungle_hike.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the presence of a vehicle, while a deaf viewer would miss this detail as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_airport_terminal.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_police_car_siren_WEROVWDp.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a siren and a vehicle in addition to the visible gunshots and vehicles, while a deaf viewer would miss this auditory detail.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ly_helicopter_-v62cK1.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear the sounds of a vehicle and a helicopter in addition to the aircraft, while a deaf viewer would only see the aircraft.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound source is an airplane, and the image suggests the sound might be the engine's roar or propeller noise. A viewer would learn that the sound associated with this image is likely the cheering and excitement of a crowd, as indicated by the text \"helicopter\" which might refer to the cheerleaders' formation resembling a helicopter.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Vehicle",
+   "Aircraft",
+   "Helicopter"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-lyPnABQ.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear the siren and vehicle sounds, which provide additional context to the scene involving the crowd, while a deaf viewer would only see the crowd, siren, and vehicle on screen.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_pov_dry_leaves.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that footsteps are present in the scene, while a deaf viewer would miss this detail as there are no visual cues for the sound sources.",
+  "description": "A viewer would learn that the sound is footsteps, and the source appears to be a child walking on a path.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Footsteps"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_1FOKvagR.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of a vehicle, boat, and water from the non-speech sounds, while a deaf viewer would only see an aircraft, bird, and helicopter on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound source is an airplane, and the image suggests the sound might be the engine's roar or propeller noise. A viewer would learn that the sound of the water gently lapping against the boats and the soft rustling of sails could be heard, suggesting a peaceful harbor environment.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Vehicle",
+   "Aircraft",
+   "Boat",
+   "Water"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Helicopter"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bakery_morning.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the actions of opening and closing doors and drawers from the sounds, whereas a deaf viewer would miss this information as there are no visual cues for such actions.",
+  "description": "A viewer would learn that the sound source is likely an old door creaking or groaning due to age and wear, as suggested by the peeling paint and weathered appearance of the door. A viewer would learn that the sound source is likely a drawer opening or closing based on the text \"Drawer open or close\" at the bottom of the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Door",
+   "Drawer open or close"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "as_explosion_XJ8lc3I6.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sounds of a gunshot, glass shattering, and an explosion, which complement the visual elements of fire and a train, while a deaf viewer would only see the fire and train without the additional context provided by the sounds.",
+  "description": "A viewer would learn that the sound is likely a gunshot, as indicated by the label and the small dark object near the arrows on the ground. A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Gunshot",
+   "Glass",
+   "Explosion"
+  ],
+  "visible": [
+   "Fire",
+   "Gunshot",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sound of water, which a deaf viewer would miss as there are no visual cues for the sound source.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_funeral_rain_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is rain falling, while a deaf viewer would miss this detail as there are no visual cues for the sound of rain.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_barbershop.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of electrical appliances like a mains hum, an electric shaver, and an electric razor based on the sounds, whereas a deaf viewer would only see the absence of any visual cues for these items.",
+  "description": "A viewer would learn that the sound \"Mains hum\" is likely associated with electrical power lines and is a low-frequency noise often heard in urban environments. A viewer would learn that the sound \"Hum\" is produced by a hummingbird, as indicated by its long beak and small size. A viewer would learn that the sound associated with this image is likely the smooth, quiet operation of an electric shaver or razor as it glides over skin.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Mains hum",
+   "Hum",
+   "Electric shaver, electric razor"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "wc_korean_thriller.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sound of a vehicle, while a deaf viewer would miss this auditory detail as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer hears the sound of sheep, which a deaf viewer would miss as there are no sheep depicted in the image.",
+  "description": "A viewer would learn that the sound of sheep in a field is likely to be heard as a gentle, repetitive bleat or low rumble, and the source is the sheep themselves.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Sheep"
+  ],
+  "visible": [
+   "Crowd",
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "london_protest_01.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear the vehicle and siren sounds, which provide additional context to the scene involving the crowd, while a deaf viewer would only see the crowd and saxophone, missing out on the sounds of the vehicle and siren.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound source is likely a sports event or public gathering, as indicated by the stadium seating and the presence of spectators.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Crowd"
+  ],
+  "visible": [
+   "Crowd",
+   "Saxophone",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_church_bell_pJRAWkLM.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the bell ringing and the crowd's presence, while a deaf viewer misses this auditory information.",
+  "description": "A viewer would learn that the sound is produced by church bells, which typically produce a resonant, melodic tone when rung.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bell"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_harbour_boats_1449.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Cattle",
+   "Crowd",
+   "Saxophone",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_desert_wind_74.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that thunder and rain are occurring, while a deaf viewer would miss this as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm. A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Thunder",
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_ia_0001_let_us_break_bread_toge_1.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Applause",
+   "Saxophone"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_driving_motorcycle_DgdHSmwA.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there are fireworks and a vehicle, which adds context to the scene with the crowd, while a deaf viewer would only see the crowd and vehicle without the additional auditory cues.",
+  "description": "A viewer would learn that fireworks produce a loud, explosive sound when ignited, and the image shows a burst of colorful sparks against a dark sky. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Fireworks",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_aviary_birds.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the sound of a bird, which adds an auditory element to the visual scene of a bird, while a deaf viewer would miss this auditory detail as it is not present in the image.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_wind_noise_-z9Iv2Qj.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that a vehicle is present in the scene, while a deaf viewer would miss this detail as there are no visual cues for the vehicle's presence.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "waves_herzliya.webm",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sound of water, which a deaf viewer would miss as there are no additional visual cues for the sound source.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_explosion_eEdaLHC0.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can discern the sounds of an explosion, burst, pop, boat, thunder, and rain, which complement the visual elements of an explosion, gunshot, helicopter, train, and vehicle, while a deaf viewer would miss these auditory cues.",
+  "description": "A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops. A viewer would learn that the sound \"burst, pop\" likely corresponds to the popping of seeds within the fruit shown, which is a horned melon. A viewer would learn that the sound of the water gently lapping against the boats and the soft rustling of sails could be heard, suggesting a peaceful harbor environment.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Explosion",
+   "Burst, pop",
+   "Boat",
+   "Thunder",
+   "Rain"
+  ],
+  "visible": [
+   "Explosion",
+   "Gunshot",
+   "Helicopter",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "lx_rain_and_thunder_-3-4qmW.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information about rain, thunder, and water sounds, which complement the visual of a siren and vehicle, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Rain",
+   "Thunder",
+   "Water"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_flea_market.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a boat through the non-speech sounds, while a deaf viewer would only see an aircraft, boat, siren, and vehicle on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound of the water gently lapping against the boats and the soft rustling of sails could be heard, suggesting a peaceful harbor environment.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Boat"
+  ],
+  "visible": [
+   "Aircraft",
+   "Boat",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_crossing_bells.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information that there is water and steam present, as indicated by the sounds \"Water\" and \"Steam,\" which a deaf viewer would miss from the picture alone.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks. A viewer would learn that the sound is likely a cat's meow, as indicated by the cat's expression and the word \"cat\" at the bottom of the image.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Train",
+   "Water",
+   "Cat",
+   "Steam",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_botanic_garden.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_tornado_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the presence of a siren, footsteps, and a vehicle, which a deaf viewer would miss as they are not visually represented in the image.",
+  "description": "A viewer would learn that the sound of the horse running is likely a gallop, which is characterized by its rhythmic and powerful movement. The sound source is a horse. A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself. A viewer would learn that the sound is footsteps, and the source appears to be a child walking on a path.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Horse",
+   "Siren",
+   "Footsteps",
+   "Vehicle"
+  ],
+  "visible": [
+   "Applause",
+   "Cat",
+   "Horse",
+   "Saxophone"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_raining_71I9l62a.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a basketball being bounced, while a deaf viewer would miss this auditory information as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound of basketballs bouncing is likely coming from the many basketballs in the air, suggesting a lively and energetic environment.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Basketball bounce"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_market_marrakech_3102.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sounds of a vehicle, bell, crowd, and siren, while a deaf viewer would only see the visual elements of the bell, crowd, and siren.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_pet_shop.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the sound of a bird, which adds an auditory element to the visual scene of a bird, while a deaf viewer would miss this auditory detail as it is not present in the image.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_chicken_coop.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets information about the presence of a bird, vehicle, and sheep through their respective sounds, which a deaf viewer would miss as they rely solely on visual cues for the visible objects like cattle, dog, pig, and sheep.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound of sheep in a field is likely to be heard as a gentle, repetitive bleat or low rumble, and the source is the sheep themselves.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Bird",
+   "Vehicle",
+   "Sheep"
+  ],
+  "visible": [
+   "Bird",
+   "Cattle",
+   "Dog",
+   "Pig",
+   "Sheep"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_glacier_hike.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can discern the presence of a horse, vehicle, and bird through their respective sounds, which a deaf viewer would miss entirely.",
+  "description": "A viewer would learn that the sound of the horse running is likely a gallop, which is characterized by its rhythmic and powerful movement. The sound source is a horse. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Horse",
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_construction_site.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle, rain, and thunder in the scene, while a deaf viewer would only see the vehicle.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Vehicle",
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_driving_motorcycle_4O3bZRYO.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear the sounds of a vehicle, laughter, a dog, baby laughter, an air horn, a truck horn, and belly laughs, which provide additional context to the scene beyond what is visible in the picture.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound \"Laughter\" is associated with the image of a ceiling with light panels, suggesting a joyful or lighthearted atmosphere. The sound source is likely people laughing. A viewer would learn that the sound is likely coming from a dog, as indicated by the image of a dog lying down on a tiled floor.",
+  "n_augmentations": 7,
+  "sounds": [
+   "Vehicle",
+   "Laughter",
+   "Dog",
+   "Baby laughter",
+   "Air horn, truck horn",
+   "Belly laugh",
+   "Giggle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_train_horning_KKFdi5WQ.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle and a cat in the scene, while a deaf viewer would only see the train and vehicle on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound is likely a cat's meow, as indicated by the cat's expression and the word \"cat\" at the bottom of the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Cat"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_temple_india_2877.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_5_aRF2s3.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sounds of a vehicle and rain, while a deaf viewer would miss these auditory cues as they are not depicted in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Rain"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_protest_scene_movie.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the Glass, Hoot, Owl, Siren, and Sheep sounds, which provide additional context to the scene, while a deaf viewer would only see the Applause, Crowd, and Explosion on screen.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound source is likely a bird, as indicated by the owl figure on the cake, which could represent a bird's call or a playful imitation of one. A viewer would learn that the owl's hoot is a deep, resonant sound often associated with nighttime and forest environments.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Glass",
+   "Hoot",
+   "Owl",
+   "Siren",
+   "Sheep"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Explosion"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_nature_rainforest_7629.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information that there is a bird and a whistle in the video, while a deaf viewer would only see the bird on screen.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself. A viewer would learn that the sound \"Whistle\" is associated with the image of a person sitting on a ledge, possibly indicating the sound's context or origin.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Bird",
+   "Whistle"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "helicopter_ossetia.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a vehicle in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Bird",
+   "Dog",
+   "Helicopter",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_ambulance_siren_3qIzU14N.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear the siren and vehicle sounds, which provide additional context to the scene, while a deaf viewer would only see the siren and vehicle on screen.",
+  "description": "A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "station_kwasa2.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sound of a vehicle, which a deaf viewer would miss as there are no visual cues for this sound source in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Alarm",
+   "Bird",
+   "Crowd",
+   "Train"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_weather_storm_16200.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that rain and thunder are occurring, with the boat and train being the specific sound sources, while a deaf viewer would miss this auditory detail as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Boat",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_distant_train_valley.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of a train, vehicle, and bird sounds, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Train",
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "rain_road.webm",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear the sounds of rain and water, which complement the visual elements of rain and water on screen, while a deaf viewer would only see the visual elements without the auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Water"
+  ],
+  "visible": [
+   "Rain",
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "bell_miami.webm",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information that there is a bell and a vehicle in the scene, which a deaf viewer would miss as they rely solely on visual cues.",
+  "description": "A viewer would learn that the sound is produced by church bells, which typically produce a resonant, melodic tone when rung. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Bell",
+   "Vehicle"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd",
+   "Thunder",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_storm_scene_house.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sounds of a vehicle and a siren, which complement the visual elements of an explosion and thunder, while a deaf viewer would only see the explosion and thunder on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound of a horse-drawn ambulance is likely to be heard as a gentle, rhythmic clatter from the wheels and a steady, low hum from the horse's movement. The sound source is the horse-drawn ambulance itself.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Siren"
+  ],
+  "visible": [
+   "Explosion",
+   "Thunder",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_ice_cracking_lake.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices footsteps, which indicate someone's movement in the scene, while a deaf viewer would miss this auditory cue as there are no visual elements to suggest it.",
+  "description": "A viewer would learn that the sound is footsteps, and the source appears to be a child walking on a path.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Footsteps"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mc_snow_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sounds of an explosion, water, boat, burst, and pop, which complement the visual of a gunshot, while a deaf viewer would only see the gun being fired.",
+  "description": "A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks. A viewer would learn that the sound of the water gently lapping against the boats and the soft rustling of sails could be heard, suggesting a peaceful harbor environment.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Explosion",
+   "Water",
+   "Boat",
+   "Burst, pop"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_car_alarm_VC9nqtFU.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the alarm and gunshot sounds, which a deaf viewer would miss as they are not visually represented in the image.",
+  "description": "A viewer would learn that the sound is an alarm, likely used for fire or emergency alerts, and the image shows two red alarm bells mounted on a brick wall. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Alarm",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_applause_62ZYD0u.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of a crowd, laughter, snickers, chuckles, and chortles, which provide context to the scene but are not visually represented in the image.",
+  "description": "A viewer would learn that the sound source is likely a sports event or public gathering, as indicated by the stadium seating and the presence of spectators. A viewer would learn that the sound \"Laughter\" is associated with the image of a ceiling with light panels, suggesting a joyful or lighthearted atmosphere. The sound source is likely people laughing. A viewer would learn that the sound of breaking a Snickers ice cream bar is likely to be a satisfying crunch, as depicted by the image showing the bar being broken open.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Crowd",
+   "Laughter",
+   "Snicker",
+   "Chuckle, chortle"
+  ],
+  "visible": [],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_destinationamerica5cityofthe_0.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the clicking sound, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "A viewer would learn that the sound \"clicking\" is associated with the opening of a soda can, as depicted by the image showing the pull-tab being lifted.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Clicking"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_logging_forest.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the impression of construction or woodworking activities involving chainsaws and power tools, while a deaf viewer would miss this context as there is no speech and only the visual of a gunshot is present.",
+  "description": "A viewer would learn that the sound being described is likely the roar of a chainsaw, as indicated by the image of a person holding a chainsaw. A viewer would learn that the sound source is likely the rustling of leaves and branches in the wind, which is a common sound in a wooded area like the one depicted. A viewer would learn that the sound associated with this image is likely the loud, high-pitched whine of a circular saw cutting metal, accompanied by the sharp, metallic scraping and the hiss of coolant spraying. The sound source is a large industrial circular saw.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Chainsaw",
+   "Wood",
+   "Sawing",
+   "Tools",
+   "Power tool"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_citywalk_cairo_834.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd",
+   "Dog",
+   "Rain",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_wm_road_traffic_cobblestone_road_we.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle and possibly a bird making noise in the background, while a deaf viewer would only see the vehicle on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "movie_blueplanet_115.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Explosion",
+   "Thunder",
+   "Water"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_engine_knocking_3UPXKVOz.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, while a deaf viewer would miss this detail as it is not visually represented and there is no accompanying speech.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "voa_worldseries.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sound of a door opening or closing, while a deaf viewer would miss this auditory cue as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound source is likely an old door creaking or groaning due to age and wear, as suggested by the peeling paint and weathered appearance of the door.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Door"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Dog"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-Pg4vVPs.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of an aircraft and a vehicle based on the non-speech sounds, while a deaf viewer would only see the siren and vehicle on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound source is an airplane, and the image suggests the sound might be the engine's roar or propeller noise.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Aircraft"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_laundromat.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a train through the non-speech sounds, while a deaf viewer would only see an alarm on screen.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles. A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Vehicle",
+   "Train"
+  ],
+  "visible": [
+   "Alarm"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mc_earthquake_disaster.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there are explosive and gunshot sounds, indicating potential danger or conflict, while a deaf viewer would miss this context as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops. A viewer would learn that the sound is likely a gunshot, as indicated by the label and the small dark object near the arrows on the ground.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "visible": [
+   "Rain"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_golf_course.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there are birds present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Cattle",
+   "Horse"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_butcher_market.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets information about the presence of a sliding door and a vehicle, which a deaf viewer would miss as there is no speech, but the visual elements do not provide additional context for these sounds.",
+  "description": "A viewer would learn that the sound source is likely an old door creaking or groaning due to age and wear, as suggested by the peeling paint and weathered appearance of the door. A viewer would learn that the sound is likely associated with the sliding door mechanism, which may produce a smooth or creaky sliding sound as it moves. The sound source is the sliding door itself. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Door",
+   "Sliding door",
+   "Vehicle"
+  ],
+  "visible": [
+   "Pig"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_harbour_boats_724.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sound of a vehicle, which a deaf viewer would miss as there are no visual cues for this sound source in the image.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Boat",
+   "Water"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_arrest_street_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sounds of Glass, Snicker, Chuckle, and Chortle, which provide additional context to the scene involving the vehicle, while a deaf viewer would only see the vehicle without these auditory cues.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound of breaking a Snickers ice cream bar is likely to be a satisfying crunch, as depicted by the image showing the bar being broken open. A viewer would learn that the sound \"chuckle\" or \"chortle\" is associated with the cat's behavior of looking up and possibly reacting to something off-camera. The sound source appears to be the cat itself.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Glass",
+   "Snicker",
+   "Chuckle, chortle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is an alarm and a whistle in the video, while a deaf viewer would miss the sounds of the alarm and whistle as they are not visually represented.",
+  "description": "A viewer would learn that the sound is an alarm, likely used for fire or emergency alerts, and the image shows two red alarm bells mounted on a brick wall. A viewer would learn that the sound \"Whistle\" is associated with the image of a person sitting on a ledge, possibly indicating the sound's context or origin.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Alarm",
+   "Whistle"
+  ],
+  "visible": [
+   "Alarm"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_nature_rainforest_2179.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "kit_piano.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Saxophone"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "waterfall_kawaida_01.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sound of water, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Bird",
+   "Gunshot",
+   "Pig"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_plane_emergency.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of a glass breaking and a printer operating, while a deaf viewer would only see an aircraft, bird, gunshot, and helicopter.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds. A viewer would learn that the sound is likely related to a printer, as indicated by the text on the image and the presence of a printer.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Glass",
+   "Printer"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Gunshot",
+   "Helicopter"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_carnival_parade.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets information about the presence of a bass drum and a drum roll, which suggest a lively or celebratory atmosphere, while a deaf viewer would miss this auditory context as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound of the bass drum is produced by a white toy figure hitting a drum head, and the sound is likely deep and resonant. A viewer would learn that the sound \"Drum roll\" is associated with rhythmic percussion, and the image visually represents the dynamic and repetitive nature of drumming. The sound source is a drum or drums.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Bass drum",
+   "Drum roll"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Saxophone"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_people_clapping__bAVmK7n.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "wc_japanese_drama.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can hear rain and thunder, while a deaf viewer would only see the dog, gun, and pig, missing the environmental sounds.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Dog",
+   "Gunshot",
+   "Pig"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_kayak_river.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the impression of various watercraft and bird sounds, including a goose, rowboat, canoe, kayak, honking, and birds, which complement the visual of boats and water, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound source is likely a soft, gentle clucking or honking, which is characteristic of a goose, as indicated by the text \"Goose\" in the image. A viewer would learn that the sound of paddling a kayak on calm water is likely to be heard, and the sound source is the movement of the paddle through the water. A viewer would learn that the sound \"Honk\" is likely coming from the person in the foreground, who appears to be wearing a costume and is possibly part of a parade or public event.",
+  "n_augmentations": 6,
+  "sounds": [
+   "Goose",
+   "Rowboat, canoe, kayak",
+   "Honk",
+   "Boat",
+   "Bird",
+   "Vehicle"
+  ],
+  "visible": [
+   "Boat",
+   "Water"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mc_fight_bar_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would notice the sound of glass breaking, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Glass"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Helicopter"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_people_crowd_1YGJDa3a.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would get the information about the train and vehicle sounds, which complement the visual elements of an explosion, fire, rain, and siren, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Explosion",
+   "Fire",
+   "Rain",
+   "Siren",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_war_bombardment.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of a boat, crowd, helicopter, and train based on the visual elements, while a deaf viewer would miss the specific sounds of an explosion, gunshot, burst, and pop, which provide additional context to the scene.",
+  "description": "A viewer would learn that the sound of rustling leaves and falling rain can be associated with the vibrant autumn scene reflected in the still water. The sound source could include wind, leaves, and raindrops. A viewer would learn that the sound is likely a gunshot, as indicated by the label and the small dark object near the arrows on the ground. A viewer would learn that the sound \"burst, pop\" likely corresponds to the popping of seeds within the fruit shown, which is a horned melon.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Explosion",
+   "Gunshot",
+   "Burst, pop"
+  ],
+  "visible": [
+   "Boat",
+   "Crowd",
+   "Explosion",
+   "Fire",
+   "Gunshot",
+   "Helicopter",
+   "Train",
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "birds_forest.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_citywalk_nyc_2627.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, which a deaf viewer would miss as the sounds of the vehicle are not present in the visual content.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Glass",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_oHil9Ip_.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the clinking of dishes, which a deaf viewer would miss as there are no visual cues for the sound.",
+  "description": "A viewer would learn that the sound of a dishwasher being opened and closed is associated with the action depicted in the image. The sound source is the dishwasher.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Dishes"
+  ],
+  "visible": [
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_police_raid_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sound of glass breaking, while a deaf viewer would miss this detail as it is not visually represented in the image.",
+  "description": "A viewer would learn that the sound source is likely a glass being tapped or clinked, as the image shows a close-up of a glass with a stem and bowl, which is commonly associated with such sounds.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Glass"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_detective_crime_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the sounds of a telephone ringing and a hiccup, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "A viewer would learn that the sound is likely associated with a telephone keypad, as indicated by the \"Telephone\" label at the bottom of the image. A viewer would learn that the sound source is likely a playful and energetic environment, possibly a convention or event, where people are dressed up in costumes and engaging in lively activities.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Telephone",
+   "Hiccup"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_basement_scene_noise.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the dog and pig sounds, while a deaf viewer misses the non-speech sounds of \"Dog\" and \"Babbling.\"",
+  "description": "A viewer would learn that the sound is likely coming from a dog, as indicated by the image of a dog lying down on a tiled floor. A viewer would learn that the sound of babbling brook is associated with the flowing water in the image.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Dog",
+   "Babbling"
+  ],
+  "visible": [
+   "Dog",
+   "Pig"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_thunder_1gDcPnV9.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer hears a dog barking and water splashing, while a deaf viewer misses this auditory information as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound is likely coming from a dog, as indicated by the image of a dog lying down on a tiled floor. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Dog",
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_weather_storm_7200.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that rain and thunder are occurring, with the train visible on screen, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Train"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_favela_rio.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would get information about the presence of a train and a vehicle from the non-speech sounds, while a deaf viewer would only see an aircraft and a cat in the picture.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Cat"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_thunder_08A9CKS5.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the additional information of rain, thunder, and water sounds, which complement the visual presence of a helicopter, while a deaf viewer would miss this auditory context.",
+  "description": "A viewer would learn that the sound is rain falling on a window, as indicated by the water droplets and the word \"rain\" at the bottom of the image. A viewer would learn that the sound associated with this image is thunder, produced by lightning striking during a storm. A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Rain",
+   "Thunder",
+   "Water"
+  ],
+  "visible": [
+   "Helicopter"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_hair_dryer_drying_WWu24rJs.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices the typing and computer keyboard sounds, which provide context to the activity happening on screen, while a deaf viewer would miss this information as there are no visual cues for the sounds.",
+  "description": "A viewer would learn that the sound is likely related to typing on a keyboard, as indicated by the word \"Typing\" at the bottom of the image. A viewer would learn that the sound associated with this image is likely the clicking or typing sound produced by a computer keyboard, specifically when keys like \"W,\" \"A,\" and \"S\" are pressed.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Typing",
+   "Computer keyboard"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_transport_subway_10800.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a train and possibly other vehicles in motion, while a deaf viewer would only see the train on screen.",
+  "description": "A viewer would learn that the sound likely originates from the train railway depicted at the bottom of the image, suggesting the sound could be related to train movement or the environment around Lake Wanaka. A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_citywalk_nyc_1689.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_snow_walk_930.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "A viewer would learn that the sound of traffic cars on a busy street is present, and the sound source is the movement of vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Cat",
+   "Crowd",
+   "Rain",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_cow_farm.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Alarm",
+   "Cattle",
+   "Gunshot"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bat_cave.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer can infer the presence of water and sonar sounds, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "A viewer would learn that the sound of the waterfall is likely a soothing and continuous gurgling or rushing noise as water flows over rocks. A viewer would learn that the sound source is likely the distant hum of a city or the echo of wind through the fort's walls, as suggested by the architecture and environment depicted.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Water",
+   "Sonar"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ev_car_alarm_street.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer notices an alarm and bird sounds, while a deaf viewer would miss these auditory cues as they are not depicted in the visual elements of the video.",
+  "description": "A viewer would learn that the sound is an alarm, likely used for fire or emergency alerts, and the image shows two red alarm bells mounted on a brick wall. A viewer would learn that the bird perched on the post likely makes a chirping or rustling sound as it moves its wings and tail feathers. The sound source is the bird itself.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Alarm",
+   "Bird"
+  ],
+  "visible": [
+   "Dog",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the siren and vehicle sounds, which provide additional context to the scene involving a train and vehicle, while a deaf viewer would only see the train and vehicle on screen.",
+  "description": "The soundtrack contains: Siren, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_EiqYND8G.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_mountain_stream.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a boat in the water, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Water, Boat",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water",
+   "Boat"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_jungle_hike.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the presence of a vehicle, while a deaf viewer would miss this detail as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_airport_terminal.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_police_car_siren_WEROVWDp.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a siren and a vehicle in addition to the visible gunshots and vehicles, while a deaf viewer would miss this auditory detail.",
+  "description": "The soundtrack contains: Siren, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ly_helicopter_-v62cK1.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear the sounds of a vehicle and a helicopter in addition to the aircraft, while a deaf viewer would only see the aircraft.",
+  "description": "The soundtrack contains: Vehicle, Aircraft, Helicopter",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Aircraft",
+   "Helicopter"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-lyPnABQ.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear the siren and vehicle sounds, which provide additional context to the scene involving the crowd, while a deaf viewer would only see the crowd, siren, and vehicle on screen.",
+  "description": "The soundtrack contains: Siren, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_pov_dry_leaves.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that footsteps are present in the scene, while a deaf viewer would miss this detail as there are no visual cues for the sound sources.",
+  "description": "The soundtrack contains: Footsteps",
+  "n_augmentations": 0,
+  "sounds": [
+   "Footsteps"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_1FOKvagR.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of a vehicle, boat, and water from the non-speech sounds, while a deaf viewer would only see an aircraft, bird, and helicopter on screen.",
+  "description": "The soundtrack contains: Vehicle, Aircraft, Boat, Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Aircraft",
+   "Boat",
+   "Water"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Helicopter"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bakery_morning.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the actions of opening and closing doors and drawers from the sounds, whereas a deaf viewer would miss this information as there are no visual cues for such actions.",
+  "description": "The soundtrack contains: Door, Drawer open or close",
+  "n_augmentations": 0,
+  "sounds": [
+   "Door",
+   "Drawer open or close"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "as_explosion_XJ8lc3I6.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sounds of a gunshot, glass shattering, and an explosion, which complement the visual elements of fire and a train, while a deaf viewer would only see the fire and train without the additional context provided by the sounds.",
+  "description": "The soundtrack contains: Gunshot, Glass, Explosion",
+  "n_augmentations": 0,
+  "sounds": [
+   "Gunshot",
+   "Glass",
+   "Explosion"
+  ],
+  "visible": [
+   "Fire",
+   "Gunshot",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sound of water, which a deaf viewer would miss as there are no visual cues for the sound source.",
+  "description": "The soundtrack contains: Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_funeral_rain_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is rain falling, while a deaf viewer would miss this detail as there are no visual cues for the sound of rain.",
+  "description": "The soundtrack contains: Rain",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_barbershop.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of electrical appliances like a mains hum, an electric shaver, and an electric razor based on the sounds, whereas a deaf viewer would only see the absence of any visual cues for these items.",
+  "description": "The soundtrack contains: Mains hum, Hum, Electric shaver, electric razor",
+  "n_augmentations": 0,
+  "sounds": [
+   "Mains hum",
+   "Hum",
+   "Electric shaver, electric razor"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "wc_korean_thriller.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sound of a vehicle, while a deaf viewer would miss this auditory detail as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer hears the sound of sheep, which a deaf viewer would miss as there are no sheep depicted in the image.",
+  "description": "The soundtrack contains: Sheep",
+  "n_augmentations": 0,
+  "sounds": [
+   "Sheep"
+  ],
+  "visible": [
+   "Crowd",
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "london_protest_01.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear the vehicle and siren sounds, which provide additional context to the scene involving the crowd, while a deaf viewer would only see the crowd and saxophone, missing out on the sounds of the vehicle and siren.",
+  "description": "The soundtrack contains: Vehicle, Crowd",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Crowd"
+  ],
+  "visible": [
+   "Crowd",
+   "Saxophone",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_church_bell_pJRAWkLM.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the bell ringing and the crowd's presence, while a deaf viewer misses this auditory information.",
+  "description": "The soundtrack contains: Bell",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bell"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_harbour_boats_1449.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Cattle",
+   "Crowd",
+   "Saxophone",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_desert_wind_74.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that thunder and rain are occurring, while a deaf viewer would miss this as there are no visual cues for the sounds.",
+  "description": "The soundtrack contains: Thunder, Rain",
+  "n_augmentations": 0,
+  "sounds": [
+   "Thunder",
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_ia_0001_let_us_break_bread_toge_1.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Applause",
+   "Saxophone"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_driving_motorcycle_DgdHSmwA.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there are fireworks and a vehicle, which adds context to the scene with the crowd, while a deaf viewer would only see the crowd and vehicle without the additional auditory cues.",
+  "description": "The soundtrack contains: Fireworks, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Fireworks",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_aviary_birds.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the sound of a bird, which adds an auditory element to the visual scene of a bird, while a deaf viewer would miss this auditory detail as it is not present in the image.",
+  "description": "The soundtrack contains: Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_wind_noise_-z9Iv2Qj.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that a vehicle is present in the scene, while a deaf viewer would miss this detail as there are no visual cues for the vehicle's presence.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "waves_herzliya.webm",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sound of water, which a deaf viewer would miss as there are no additional visual cues for the sound source.",
+  "description": "The soundtrack contains: Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_explosion_eEdaLHC0.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can discern the sounds of an explosion, burst, pop, boat, thunder, and rain, which complement the visual elements of an explosion, gunshot, helicopter, train, and vehicle, while a deaf viewer would miss these auditory cues.",
+  "description": "The soundtrack contains: Explosion, Burst, pop, Boat, Thunder, Rain",
+  "n_augmentations": 0,
+  "sounds": [
+   "Explosion",
+   "Burst, pop",
+   "Boat",
+   "Thunder",
+   "Rain"
+  ],
+  "visible": [
+   "Explosion",
+   "Gunshot",
+   "Helicopter",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "lx_rain_and_thunder_-3-4qmW.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information about rain, thunder, and water sounds, which complement the visual of a siren and vehicle, while a deaf viewer would miss this auditory context.",
+  "description": "The soundtrack contains: Rain, Thunder, Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Thunder",
+   "Water"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_flea_market.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a boat through the non-speech sounds, while a deaf viewer would only see an aircraft, boat, siren, and vehicle on screen.",
+  "description": "The soundtrack contains: Vehicle, Boat",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Boat"
+  ],
+  "visible": [
+   "Aircraft",
+   "Boat",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_crossing_bells.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information that there is water and steam present, as indicated by the sounds \"Water\" and \"Steam,\" which a deaf viewer would miss from the picture alone.",
+  "description": "The soundtrack contains: Train, Water, Cat, Steam, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Water",
+   "Cat",
+   "Steam",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_botanic_garden.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_tornado_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the presence of a siren, footsteps, and a vehicle, which a deaf viewer would miss as they are not visually represented in the image.",
+  "description": "The soundtrack contains: Horse, Siren, Footsteps, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Horse",
+   "Siren",
+   "Footsteps",
+   "Vehicle"
+  ],
+  "visible": [
+   "Applause",
+   "Cat",
+   "Horse",
+   "Saxophone"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_raining_71I9l62a.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a basketball being bounced, while a deaf viewer would miss this auditory information as there are no visual cues for the sounds.",
+  "description": "The soundtrack contains: Vehicle, Basketball bounce",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Basketball bounce"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_market_marrakech_3102.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sounds of a vehicle, bell, crowd, and siren, while a deaf viewer would only see the visual elements of the bell, crowd, and siren.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_pet_shop.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the sound of a bird, which adds an auditory element to the visual scene of a bird, while a deaf viewer would miss this auditory detail as it is not present in the image.",
+  "description": "The soundtrack contains: Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_chicken_coop.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets information about the presence of a bird, vehicle, and sheep through their respective sounds, which a deaf viewer would miss as they rely solely on visual cues for the visible objects like cattle, dog, pig, and sheep.",
+  "description": "The soundtrack contains: Bird, Vehicle, Sheep",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird",
+   "Vehicle",
+   "Sheep"
+  ],
+  "visible": [
+   "Bird",
+   "Cattle",
+   "Dog",
+   "Pig",
+   "Sheep"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_glacier_hike.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can discern the presence of a horse, vehicle, and bird through their respective sounds, which a deaf viewer would miss entirely.",
+  "description": "The soundtrack contains: Horse, Vehicle, Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Horse",
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_construction_site.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle, rain, and thunder in the scene, while a deaf viewer would only see the vehicle.",
+  "description": "The soundtrack contains: Vehicle, Rain, Thunder",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_driving_motorcycle_4O3bZRYO.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear the sounds of a vehicle, laughter, a dog, baby laughter, an air horn, a truck horn, and belly laughs, which provide additional context to the scene beyond what is visible in the picture.",
+  "description": "The soundtrack contains: Vehicle, Laughter, Dog, Baby laughter, Air horn, truck horn, Belly laugh, Giggle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Laughter",
+   "Dog",
+   "Baby laughter",
+   "Air horn, truck horn",
+   "Belly laugh",
+   "Giggle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_train_horning_KKFdi5WQ.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle and a cat in the scene, while a deaf viewer would only see the train and vehicle on screen.",
+  "description": "The soundtrack contains: Vehicle, Cat",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Cat"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_temple_india_2877.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_5_aRF2s3.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sounds of a vehicle and rain, while a deaf viewer would miss these auditory cues as they are not depicted in the image.",
+  "description": "The soundtrack contains: Vehicle, Rain",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Rain"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_protest_scene_movie.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the Glass, Hoot, Owl, Siren, and Sheep sounds, which provide additional context to the scene, while a deaf viewer would only see the Applause, Crowd, and Explosion on screen.",
+  "description": "The soundtrack contains: Glass, Hoot, Owl, Siren, Sheep",
+  "n_augmentations": 0,
+  "sounds": [
+   "Glass",
+   "Hoot",
+   "Owl",
+   "Siren",
+   "Sheep"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Explosion"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_nature_rainforest_7629.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information that there is a bird and a whistle in the video, while a deaf viewer would only see the bird on screen.",
+  "description": "The soundtrack contains: Bird, Whistle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird",
+   "Whistle"
+  ],
+  "visible": [
+   "Bird"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "helicopter_ossetia.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a vehicle in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Bird",
+   "Dog",
+   "Helicopter",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_ambulance_siren_3qIzU14N.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear the siren and vehicle sounds, which provide additional context to the scene, while a deaf viewer would only see the siren and vehicle on screen.",
+  "description": "The soundtrack contains: Siren, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "station_kwasa2.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sound of a vehicle, which a deaf viewer would miss as there are no visual cues for this sound source in the image.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Alarm",
+   "Bird",
+   "Crowd",
+   "Train"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_weather_storm_16200.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that rain and thunder are occurring, with the boat and train being the specific sound sources, while a deaf viewer would miss this auditory detail as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Rain, Thunder",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Boat",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_distant_train_valley.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of a train, vehicle, and bird sounds, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "The soundtrack contains: Train, Vehicle, Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "rain_road.webm",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear the sounds of rain and water, which complement the visual elements of rain and water on screen, while a deaf viewer would only see the visual elements without the auditory context.",
+  "description": "The soundtrack contains: Rain, Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Water"
+  ],
+  "visible": [
+   "Rain",
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "bell_miami.webm",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information that there is a bell and a vehicle in the scene, which a deaf viewer would miss as they rely solely on visual cues.",
+  "description": "The soundtrack contains: Bell, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bell",
+   "Vehicle"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd",
+   "Thunder",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_storm_scene_house.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sounds of a vehicle and a siren, which complement the visual elements of an explosion and thunder, while a deaf viewer would only see the explosion and thunder on screen.",
+  "description": "The soundtrack contains: Vehicle, Siren",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Siren"
+  ],
+  "visible": [
+   "Explosion",
+   "Thunder",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_ice_cracking_lake.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices footsteps, which indicate someone's movement in the scene, while a deaf viewer would miss this auditory cue as there are no visual elements to suggest it.",
+  "description": "The soundtrack contains: Footsteps",
+  "n_augmentations": 0,
+  "sounds": [
+   "Footsteps"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mc_snow_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sounds of an explosion, water, boat, burst, and pop, which complement the visual of a gunshot, while a deaf viewer would only see the gun being fired.",
+  "description": "The soundtrack contains: Explosion, Water, Boat, Burst, pop",
+  "n_augmentations": 0,
+  "sounds": [
+   "Explosion",
+   "Water",
+   "Boat",
+   "Burst, pop"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_car_alarm_VC9nqtFU.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the alarm and gunshot sounds, which a deaf viewer would miss as they are not visually represented in the image.",
+  "description": "The soundtrack contains: Alarm, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Alarm",
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_applause_62ZYD0u.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of a crowd, laughter, snickers, chuckles, and chortles, which provide context to the scene but are not visually represented in the image.",
+  "description": "The soundtrack contains: Crowd, Laughter, Snicker, Chuckle, chortle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Crowd",
+   "Laughter",
+   "Snicker",
+   "Chuckle, chortle"
+  ],
+  "visible": [],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_destinationamerica5cityofthe_0.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the clicking sound, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "The soundtrack contains: Clicking",
+  "n_augmentations": 0,
+  "sounds": [
+   "Clicking"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_logging_forest.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the impression of construction or woodworking activities involving chainsaws and power tools, while a deaf viewer would miss this context as there is no speech and only the visual of a gunshot is present.",
+  "description": "The soundtrack contains: Chainsaw, Wood, Sawing, Tools, Power tool",
+  "n_augmentations": 0,
+  "sounds": [
+   "Chainsaw",
+   "Wood",
+   "Sawing",
+   "Tools",
+   "Power tool"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_citywalk_cairo_834.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd",
+   "Dog",
+   "Rain",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_wm_road_traffic_cobblestone_road_we.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information that there is a vehicle and possibly a bird making noise in the background, while a deaf viewer would only see the vehicle on screen.",
+  "description": "The soundtrack contains: Vehicle, Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Bird"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "movie_blueplanet_115.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Explosion",
+   "Thunder",
+   "Water"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_engine_knocking_3UPXKVOz.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, while a deaf viewer would miss this detail as it is not visually represented and there is no accompanying speech.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "voa_worldseries.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sound of a door opening or closing, while a deaf viewer would miss this auditory cue as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Door",
+  "n_augmentations": 0,
+  "sounds": [
+   "Door"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Dog"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-Pg4vVPs.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of an aircraft and a vehicle based on the non-speech sounds, while a deaf viewer would only see the siren and vehicle on screen.",
+  "description": "The soundtrack contains: Vehicle, Aircraft",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Aircraft"
+  ],
+  "visible": [
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_laundromat.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can discern the presence of a vehicle and a train through the non-speech sounds, while a deaf viewer would only see an alarm on screen.",
+  "description": "The soundtrack contains: Vehicle, Train",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Train"
+  ],
+  "visible": [
+   "Alarm"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mc_earthquake_disaster.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there are explosive and gunshot sounds, indicating potential danger or conflict, while a deaf viewer would miss this context as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Explosion, Gunshot",
+  "n_augmentations": 0,
+  "sounds": [
+   "Explosion",
+   "Gunshot"
+  ],
+  "visible": [
+   "Rain"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_golf_course.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there are birds present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [
+   "Cattle",
+   "Horse"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_butcher_market.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets information about the presence of a sliding door and a vehicle, which a deaf viewer would miss as there is no speech, but the visual elements do not provide additional context for these sounds.",
+  "description": "The soundtrack contains: Door, Sliding door, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Door",
+   "Sliding door",
+   "Vehicle"
+  ],
+  "visible": [
+   "Pig"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "ambient_harbour_boats_724.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sound of a vehicle, which a deaf viewer would miss as there are no visual cues for this sound source in the image.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Boat",
+   "Water"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_arrest_street_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sounds of Glass, Snicker, Chuckle, and Chortle, which provide additional context to the scene involving the vehicle, while a deaf viewer would only see the vehicle without these auditory cues.",
+  "description": "The soundtrack contains: Glass, Snicker, Chuckle, chortle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Glass",
+   "Snicker",
+   "Chuckle, chortle"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is an alarm and a whistle in the video, while a deaf viewer would miss the sounds of the alarm and whistle as they are not visually represented.",
+  "description": "The soundtrack contains: Alarm, Whistle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Alarm",
+   "Whistle"
+  ],
+  "visible": [
+   "Alarm"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_nature_rainforest_2179.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "kit_piano.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Saxophone"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "waterfall_kawaida_01.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sound of water, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "The soundtrack contains: Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Bird",
+   "Gunshot",
+   "Pig"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_plane_emergency.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of a glass breaking and a printer operating, while a deaf viewer would only see an aircraft, bird, gunshot, and helicopter.",
+  "description": "The soundtrack contains: Glass, Printer",
+  "n_augmentations": 0,
+  "sounds": [
+   "Glass",
+   "Printer"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Gunshot",
+   "Helicopter"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "b3_carnival_parade.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets information about the presence of a bass drum and a drum roll, which suggest a lively or celebratory atmosphere, while a deaf viewer would miss this auditory context as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Bass drum, Drum roll",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bass drum",
+   "Drum roll"
+  ],
+  "visible": [
+   "Applause",
+   "Crowd",
+   "Saxophone"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_people_clapping__bAVmK7n.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "wc_japanese_drama.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can hear rain and thunder, while a deaf viewer would only see the dog, gun, and pig, missing the environmental sounds.",
+  "description": "The soundtrack contains: Rain, Thunder",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Dog",
+   "Gunshot",
+   "Pig"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_kayak_river.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the impression of various watercraft and bird sounds, including a goose, rowboat, canoe, kayak, honking, and birds, which complement the visual of boats and water, while a deaf viewer would miss this auditory context.",
+  "description": "The soundtrack contains: Goose, Rowboat, canoe, kayak, Honk, Boat, Bird, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Goose",
+   "Rowboat, canoe, kayak",
+   "Honk",
+   "Boat",
+   "Bird",
+   "Vehicle"
+  ],
+  "visible": [
+   "Boat",
+   "Water"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mc_fight_bar_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would notice the sound of glass breaking, which a deaf viewer would miss as there are no visual cues for this sound source.",
+  "description": "The soundtrack contains: Glass",
+  "n_augmentations": 0,
+  "sounds": [
+   "Glass"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Helicopter"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_people_crowd_1YGJDa3a.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would get the information about the train and vehicle sounds, which complement the visual elements of an explosion, fire, rain, and siren, while a deaf viewer would miss this auditory context.",
+  "description": "The soundtrack contains: Train, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Explosion",
+   "Fire",
+   "Rain",
+   "Siren",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_war_bombardment.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of a boat, crowd, helicopter, and train based on the visual elements, while a deaf viewer would miss the specific sounds of an explosion, gunshot, burst, and pop, which provide additional context to the scene.",
+  "description": "The soundtrack contains: Explosion, Gunshot, Burst, pop",
+  "n_augmentations": 0,
+  "sounds": [
+   "Explosion",
+   "Gunshot",
+   "Burst, pop"
+  ],
+  "visible": [
+   "Boat",
+   "Crowd",
+   "Explosion",
+   "Fire",
+   "Gunshot",
+   "Helicopter",
+   "Train",
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "birds_forest.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a bird present in the scene, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bird"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_citywalk_nyc_2627.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, which a deaf viewer would miss as the sounds of the vehicle are not present in the visual content.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Glass",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_oHil9Ip_.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the clinking of dishes, which a deaf viewer would miss as there are no visual cues for the sound.",
+  "description": "The soundtrack contains: Dishes",
+  "n_augmentations": 0,
+  "sounds": [
+   "Dishes"
+  ],
+  "visible": [
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_police_raid_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sound of glass breaking, while a deaf viewer would miss this detail as it is not visually represented in the image.",
+  "description": "The soundtrack contains: Glass",
+  "n_augmentations": 0,
+  "sounds": [
+   "Glass"
+  ],
+  "visible": [
+   "Gunshot"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_detective_crime_scene.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the sounds of a telephone ringing and a hiccup, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "The soundtrack contains: Telephone, Hiccup",
+  "n_augmentations": 0,
+  "sounds": [
+   "Telephone",
+   "Hiccup"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "mv_basement_scene_noise.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the dog and pig sounds, while a deaf viewer misses the non-speech sounds of \"Dog\" and \"Babbling.\"",
+  "description": "The soundtrack contains: Dog, Babbling",
+  "n_augmentations": 0,
+  "sounds": [
+   "Dog",
+   "Babbling"
+  ],
+  "visible": [
+   "Dog",
+   "Pig"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_thunder_1gDcPnV9.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer hears a dog barking and water splashing, while a deaf viewer misses this auditory information as there are no visual cues for the sounds.",
+  "description": "The soundtrack contains: Dog, Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Dog",
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_weather_storm_7200.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that rain and thunder are occurring, with the train visible on screen, while a deaf viewer would miss this auditory context.",
+  "description": "The soundtrack contains: Rain, Thunder",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Thunder"
+  ],
+  "visible": [
+   "Train"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_favela_rio.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would get information about the presence of a train and a vehicle from the non-speech sounds, while a deaf viewer would only see an aircraft and a cat in the picture.",
+  "description": "The soundtrack contains: Train, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Cat"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_thunder_08A9CKS5.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the additional information of rain, thunder, and water sounds, which complement the visual presence of a helicopter, while a deaf viewer would miss this auditory context.",
+  "description": "The soundtrack contains: Rain, Thunder, Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain",
+   "Thunder",
+   "Water"
+  ],
+  "visible": [
+   "Helicopter"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "un_hair_dryer_drying_WWu24rJs.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices the typing and computer keyboard sounds, which provide context to the activity happening on screen, while a deaf viewer would miss this information as there are no visual cues for the sounds.",
+  "description": "The soundtrack contains: Typing, Computer keyboard",
+  "n_augmentations": 0,
+  "sounds": [
+   "Typing",
+   "Computer keyboard"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_transport_subway_10800.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a train and possibly other vehicles in motion, while a deaf viewer would only see the train on screen.",
+  "description": "The soundtrack contains: Train, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Train",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ambient_citywalk_nyc_1689.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ambient_snow_walk_930.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer gets the information that there is a vehicle in motion, while a deaf viewer would miss this detail as it is not visually represented.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Cat",
+   "Crowd",
+   "Rain",
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_cow_farm.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Alarm",
+   "Cattle",
+   "Gunshot"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bat_cave.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer can infer the presence of water and sonar sounds, which a deaf viewer would miss as there are no visual cues for these sounds.",
+  "description": "The soundtrack contains: Water, Sonar",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water",
+   "Sonar"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ev_car_alarm_street.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer notices an alarm and bird sounds, while a deaf viewer would miss these auditory cues as they are not depicted in the visual elements of the video.",
+  "description": "The soundtrack contains: Alarm, Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Alarm",
+   "Bird"
+  ],
+  "visible": [
+   "Dog",
+   "Vehicle"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ }
+]

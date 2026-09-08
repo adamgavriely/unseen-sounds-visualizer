@@ -965,6 +965,47 @@ the system shows nothing at all while the blind baseline shows the siren and sco
 \emph{object presence mistaken for event visibility} (Section~\ref{sec:findings}), now measured on the
 system's output rather than on an intermediate label --- which is what the proposal asked for.
 
+\subsection{Ablation: generating the image is worse than retrieving one}\label{sec:genablation}
+The proposal names diffusion (SDXL) as the source of the augmentation image. That choice had never
+been tested against the obvious cheaper alternative --- retrieving a stock image for the same sound
+label --- so the identical 100 clips were run again end to end with retrieval, scored by the same
+judge against the same references.
+
+\begin{center}\begin{tabular}{lccc}
+\toprule
+system & SDXL & retrieval & $\Delta$ \\
+\midrule
+blind audio-to-image & 2.94 & \textbf{3.12} & $+0.18$ \\
+proposed (gated)     & 2.41 & \textbf{2.58} & $+0.17$ \\
+audio captioning     & 2.68 & 2.68 & $+0.00$ \\
+\bottomrule
+\end{tabular}\end{center}
+
+\textbf{Retrieval beats generation, consistently and on both image systems.} Paired over 300 records
+the two runs agree closely overall ($\kappa = 0.839$, 96\% within one point), so this is a small,
+stable shift rather than noise: the ranking of the three systems is unchanged, and both systems that
+actually use an image improve by the same amount when the image is retrieved instead of generated.
+
+The third row is the control, and it validates the comparison. Audio captioning produces no image at
+all, so its score must be untouched by the generator --- and it is, to two decimal places, across 100
+independently re-rendered and re-described clips. A difference there would have meant the two runs
+differed in something other than the generator.
+
+\textbf{Why this matters beyond a number.} SDXL is the single heaviest component in the pipeline: it
+is what forced rendering into its own pass (Section~\ref{sec:mainresult}), it is why the run needs a
+24\,GB card, and the render pass with it took roughly half again as long as with retrieval. Dropping
+it makes the augmentations \emph{better}, removes the GPU requirement from generation entirely, and
+makes the system runnable on ordinary hardware --- which for an accessibility tool intended to be
+deployed rather than demonstrated is arguably worth more than the 0.17 points.
+
+The plausible reason is that a retrieved photograph of a siren is an unambiguous photograph of a
+siren, whereas SDXL renders a plausible-looking scene whose subject the describing VLM must infer.
+The protocol scores what a viewer would \emph{learn} from the image, and a stock photograph is easier
+to learn from than a synthesised one. Attribution for retrieved images is already handled
+(\texttt{credits.json}, \texttt{benchmark/ATTRIBUTIONS.md}); a deployed system would need to respect
+those licences, which a generated image sidesteps. That is the one real argument left for diffusion,
+and it is a legal argument, not a quality one.
+
 \subsection{Judge reliability: which conclusions survive a change of judge}\label{sec:judgerel}
 A single 7B model deciding every score is the protocol's softest point, so the 300 cached
 descriptions were re-scored by a second, unrelated judge (Qwen3-8B against Mistral-7B). Because the
