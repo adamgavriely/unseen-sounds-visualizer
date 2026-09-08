@@ -53,7 +53,8 @@ if str(_ROOT) not in sys.path:
 
 import config
 from src import pipeline
-from src.stage7_evaluation.protocol import Backends, describe_clip, judge_record
+from src.stage7_evaluation.protocol import (Backends, describe_clip, judge_record,
+                                            UNPARSED)
 
 BENCH = _ROOT / "data" / "input" / "benchmark"
 DESCRIPTIONS = _ROOT / "benchmark" / "protocol_descriptions.json"
@@ -273,6 +274,13 @@ def phase_judge(backends, tag: str = "", rescore: bool = False,
                             encoding="utf-8")
         print(f"  [{i}/{len(recs)}] {rec['system']:14} {rec['clip'][:30]:30} "
               f"score={ev.score}  {ev.why[:40]}", flush=True)
+    # An unparsed judge reply is not a score of 0 and must never be averaged as one.
+    # The first judge-agreement run averaged 263 of them and produced a confident
+    # kappa of 0.164 that was purely an artefact of the parser.
+    bad = sum(1 for r in results if str(r.get("why", "")).startswith(UNPARSED))
+    if bad:
+        print(f"[judge] {bad}/{len(results)} replies could not be parsed", flush=True)
+    guard(len(results) - bad, bad, "judge")
     report(results)
     print(f"\nfull records -> {out_file}")
 

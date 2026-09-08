@@ -207,8 +207,15 @@ class Backends:
         if judging:
             mdl, tok = self._load_judge()
             msgs = [{"role": "user", "content": prompt}]
-            text = tok.apply_chat_template(msgs, tokenize=False,
-                                           add_generation_prompt=True)
+            try:
+                # Qwen3 and friends default to emitting a <think> block; the judge is
+                # asked for one JSON object, so turn it off where the template allows.
+                text = tok.apply_chat_template(msgs, tokenize=False,
+                                               add_generation_prompt=True,
+                                               enable_thinking=False)
+            except TypeError:
+                text = tok.apply_chat_template(msgs, tokenize=False,
+                                               add_generation_prompt=True)
             inputs = tok(text, return_tensors="pt").to(mdl.device)
             with torch.no_grad():
                 out = mdl.generate(**inputs, max_new_tokens=max_new_tokens,
@@ -277,6 +284,48 @@ def is_empty_candidate(candidate: str) -> bool:
     return any(c.startswith(m) for m in EMPTY_CANDIDATES)
 
 
+# Reasoning models spend their budget thinking before answering, so the judge needs
+# room to reach the JSON at all: Qwen3-8B, given 100 tokens, never emitted a score.
+JUDGE_TOKENS = 400
+UNPARSED = "UNPARSED: "
+_THINK = re.compile(r"<think>.*?</think>", re.S)
+
+
+def parse_judge_output(raw: str):
+    """Pull (score, why) out of a judge's reply, or None if it did not answer.
+
+    Returning None rather than a default matters more than the parsing does. The first
+    judge-agreement run scored 263 of 300 records as 0 and reported quadratic kappa
+    0.164 -- which reads as "the two judges disagree almost entirely", a publishable
+    claim about how far LLM-judged numbers can be trusted. It was nothing of the kind:
+    the second judge is a reasoning model, every reply opened with a <think> block that
+    never finished inside the token budget, no JSON was ever produced, and the fallback
+    "first digit found" rule turned each non-answer into a confident 0.
+
+    So: strip the reasoning block, look for JSON, then for an explicit score, and if
+    none of that is present say so instead of inventing a number.
+    """
+    if not raw:
+        return None
+    txt = _THINK.sub("", raw).strip()
+    if "<think>" in txt:                    # opened a block and never closed it
+        txt = txt.split("<think>")[0].strip()
+    m = re.search(r'\{[^{}]*"score".*?\}', txt, re.S)
+    if m:
+        try:
+            d = json.loads(m.group(0))
+            return int(d.get("score", 0)), str(d.get("why", ""))[:200]
+        except Exception:
+            pass
+    m = re.search(r'"?score"?\s*[:=]\s*([0-4])', txt, re.I)
+    if m:
+        return int(m.group(1)), txt[:200]
+    m = re.match(r'\s*([0-4])', txt)      # a bare score on its own
+    if m:
+        return int(m.group(1)), txt[:200]
+    return None
+
+
 def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]:
     """Step 5: independent scoring of semantic consistency.
 
@@ -298,16 +347,14 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
         return 0, "information was missing but no augmentation was shown"
     raw = backends.complete(JUDGE_PROMPT.format(reference=reference,
                                                 candidate=candidate),
-                            max_new_tokens=100, judging=True)
-    m = re.search(r'\{.*\}', raw, re.S)
-    if m:
-        try:
-            d = json.loads(m.group(0))
-            return int(d.get("score", 0)), str(d.get("why", ""))[:200]
-        except Exception:
-            pass
-    m = re.search(r'([0-4])', raw)          # fall back to the first digit
-    return (int(m.group(1)) if m else 0), raw[:200]
+                            max_new_tokens=JUDGE_TOKENS, judging=True)
+    parsed = parse_judge_output(raw)
+    if parsed is None:
+        # Never silently score an unparsed answer as 0. The first judge-agreement run
+        # did exactly that and produced a confident kappa of 0.164 that was entirely an
+        # artefact of the parser (see parse_judge_output).
+        return 0, UNPARSED + raw[:180]
+    return parsed
 
 
 # Human tags under which the annotator judged that the soundtrack adds nothing a
