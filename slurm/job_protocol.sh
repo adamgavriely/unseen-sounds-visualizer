@@ -2,11 +2,11 @@
 #SBATCH --job-name=protocol
 #SBATCH --output=logs/protocol_%j.out
 #SBATCH --error=logs/protocol_%j.err
-#SBATCH --partition=L4-4h
+#SBATCH --partition=L4-12h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
-#SBATCH --time=04:00:00
+#SBATCH --time=12:00:00
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=adamgavriely@gmail.com
 #
@@ -24,8 +24,15 @@
 # never resident together -- they do not co-fit on a 24 GB card, and the large-memory
 # partitions are often draining. Pass 1 caches descriptions, pass 2 scores them.
 #
-# Results append after every clip (descriptions to protocol_descriptions.json, scores
-# to protocol_results.json), so a requeued job resumes instead of restarting.
+# Results append after every clip, so a requeued job resumes instead of restarting.
+#
+# Parameters, all via --export:
+#   LIMIT=100     clips to run (stratified evenly across the four human tags)
+#   GEN=diffusion|retrieve      how the augmentation image is produced
+#   TAG=sdxl      keep this run's descriptions and results in their own files
+#   PHASE=all|describe|judge    default all
+#   JUDGE=<hf id> override the judge model (second judge for agreement)
+#   DESC_TAG=...  judge a different run's cached descriptions
 
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
@@ -37,7 +44,18 @@ export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 # which is exactly how the 11 GB GTX 1080 Ti failure on 'generic' presented itself.
 export PYTHONUNBUFFERED=1
 
-# Refuse to start on a card too small for the describer rather than dying silently.
+GEN="${GEN:-diffusion}"
+LIMIT="${LIMIT:-}"
+TAG="${TAG:-}"
+PHASE="${PHASE:-all}"
+JUDGE="${JUDGE:-}"
+DESC_TAG="${DESC_TAG:-}"
+RESCORE="${RESCORE:-}"
+echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
+
+# The judge pass is text-only and fits on a small card; the describe pass is not.
+# Refuse to start on a card too small rather than dying silently mid-load.
+if [ "$PHASE" != "judge" ]; then
 python - <<'PY'
 import torch, sys
 if torch.cuda.is_available():
@@ -47,35 +65,35 @@ if torch.cuda.is_available():
         sys.exit(f"GPU too small: Qwen2.5-VL 7B needs ~16 GB, this card has {gb:.0f} GB. "
                  "Use --partition=L4-4h (23 GB), A100-4h or L40s-4h.")
 PY
+fi
 
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 
-# Generation backend for the augmentation images. SDXL is the proposal's candidate;
-# set GEN=retrieve to fall back to Openverse retrieval if the GPU is busy.
-GEN="${GEN:-diffusion}"
-LIMIT="${LIMIT:-}"          # e.g. sbatch --export=LIMIT=30 for a quick pass
-
-python - <<PY
+run_phase () {   # $1 = describe | judge
+python - "$1" <<PY
+import sys
+phase = sys.argv[1]
 import config
 config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"     # strongest visibility backend (see sec:findings)
 config.GEN_BACKEND = "${GEN}"
 config.GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"
-import sys
-sys.argv = (["run_protocol", "--phase", "describe"]
-            + (["--limit", "${LIMIT}"] if "${LIMIT}" else []))
+argv = ["run_protocol", "--phase", phase]
+if "${LIMIT}":    argv += ["--limit", "${LIMIT}"]
+if "${TAG}":      argv += ["--tag", "${TAG}"]
+if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
+if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]
+if "${RESCORE}" and phase == "judge": argv += ["--rescore"]
+sys.argv = argv
+print("[argv]", " ".join(argv), flush=True)
 from benchmark.run_protocol import main
 main()
 PY
+}
 
-# pass 2: judge only. Separate process so the VLM's memory is definitely released.
-python - <<PY
-import config
-config.DEVICE = "cuda"
-import sys
-sys.argv = ["run_protocol", "--phase", "judge"]
-from benchmark.run_protocol import main
-main()
-PY
+# Separate processes, so the describer's memory is definitely released before the
+# judge is loaded -- unload_vlm() frees the weights but not always the allocator.
+[ "$PHASE" = "judge" ] || run_phase describe
+[ "$PHASE" = "describe" ] || run_phase judge
 
-echo "DONE -> benchmark/protocol_results.json"
+echo "DONE -> benchmark/protocol_results${TAG:+_$TAG}.json"
