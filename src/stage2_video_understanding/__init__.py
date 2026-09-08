@@ -30,7 +30,7 @@ VISIBLE_CONCEPTS = {
     # the VISIBILITY side is made forgiving: a visible machine suppresses the augmentation
     # instead of yielding a phantom off-screen car (notes sec:annotation)
     "Vehicle": "a photo of a car, bus, truck or machinery, engine or heavy equipment",
-    "Water": "a photo of water, a river, waterfall or the sea",
+    "Water": "a photo of the sea, ocean waves, a river or a waterfall",
     "Bird": "a photo of a bird", "Crowd": "a photo of a crowd of people",
     "Train": "a photo of a train", "Aircraft": "a photo of an airplane in the sky",
     "Helicopter": "a photo of a helicopter", "Horse": "a photo of a horse",
@@ -45,21 +45,30 @@ VISIBLE_CONCEPTS = {
     "Sheep": "a photo of sheep or goats",
     "Cattle": "a photo of cows or cattle",
     "Pig": "a photo of pigs",
-    "Gunshot": "a photo of a person firing a gun, soldiers shooting",
-    "Explosion": "a photo of an explosion, blast or fireball",
+    "Gunshot": "a photo of soldiers or police firing guns in combat",
+    "Explosion": "a photo of a large explosion with a fireball and smoke",
     "Glass": "a photo of broken glass or a shattered window",
     "Alarm": "a photo of an alarm device, smoke detector or warning light",
-    "Telephone": "a photo of a telephone or a person holding a phone",
-    "Dishes": "a photo of dishes, plates, pots or cutlery",
-    "Cooking": "a photo of food cooking in a pan on a stove",
-    "Door": "a photo of a door",
-    "Footsteps": "a photo of people walking or running",
-    "Engine": "a photo of a machine or engine running",
     "Thunder": "a photo of a dark stormy sky, storm clouds or lightning",
     "Saxophone": "a photo of a person playing a saxophone or brass instrument",
 }
 _DISTRACTORS = ["a photo of an indoor scene", "a photo of an empty street",
                 "a photo of the sky", "a random photo of something else"]
+# Relative visibility rule (see analyze_video): a concept counts as visible when it
+# reaches VIS_RATIO of the best-scoring concept for that frame, and clears VIS_FLOOR.
+VIS_RATIO = 0.55
+VIS_FLOOR = 0.12
+NEGATIVE_TEMPLATE = "a photo with no {thing} anywhere in it"
+_NEG_NOUN = {
+    "Vehicle": "car, truck or machine", "Water": "water, sea or river",
+    "Crowd": "crowd of people", "Siren": "emergency vehicle",
+    "Bell": "bell or bell tower", "Applause": "audience",
+    "Gunshot": "gun or shooting", "Explosion": "explosion or fire",
+    "Glass": "broken glass", "Alarm": "alarm device", "Dishes": "dishes or cutlery",
+    "Cooking": "food cooking", "Footsteps": "people walking", "Engine": "machine or engine",
+    "Fireworks": "fireworks", "Saxophone": "musician", "Insect": "insect",
+    "Sheep": "sheep or goats", "Cattle": "cows", "Telephone": "telephone",
+}
 
 _CLIP = None  # lazy (model, processor)
 
@@ -102,8 +111,26 @@ def analyze_video(video_path: Path, num_frames: int = 6,
             raise RuntimeError("no frames sampled")
         clip_model, processor = _get_clip(model, device)
         labels = list(VISIBLE_CONCEPTS.keys())
+        # Each concept gets its OWN yes/no pair. Scoring a concept against generic
+        # distractors made CLIP prefer any specific prompt (a sea clip came back with
+        # "Pig" and "Explosion" visible); scoring it against a softmax over all
+        # concepts made the answer depend on how many concepts exist. A matched
+        # negative fixes both: the comparison is "X present" vs "X absent" only.
         prompts = [VISIBLE_CONCEPTS[l] for l in labels] + _DISTRACTORS
 
+        # Visibility is a per-concept YES/NO question, not a "pick one of N" choice.
+        # A softmax over every concept made the score depend on HOW MANY concepts
+        # exist: growing the list from 20 to 33 diluted each probability and pushed
+        # obviously-visible sources (a clip that is entirely sea) below threshold.
+        # Instead score each concept against the distractors alone, so the result is
+        # independent of the size of VISIBLE_CONCEPTS.
+        # A softmax over all prompts ranks the concepts well, but its ABSOLUTE values
+        # shrink as concepts are added (20 -> 33 pushed an all-sea clip below a fixed
+        # 0.30 bar). Two alternatives failed: scoring against generic distractors made
+        # every specific prompt win, and matched negatives fail because CLIP does not
+        # represent negation. So keep the softmax and threshold RELATIVELY: a concept
+        # is visible when it is a top contender for this frame, with a small absolute
+        # floor to reject frames where nothing matches.
         visible = set()
         scores = {l: 0.0 for l in labels}
         for img in frames:
@@ -111,10 +138,13 @@ def analyze_video(video_path: Path, num_frames: int = 6,
                                padding=True).to(device)
             with torch.no_grad():
                 probs = clip_model(**inputs).logits_per_image.softmax(dim=1)[0]
+            lab_probs = [float(probs[i]) for i in range(len(labels))]
+            top = max(lab_probs) if lab_probs else 0.0
+            bar = max(VIS_FLOOR, VIS_RATIO * top)
             for i, l in enumerate(labels):
-                p = float(probs[i])
+                p = lab_probs[i]
                 scores[l] = max(scores[l], p)
-                if p >= threshold:
+                if p >= bar and top >= VIS_FLOOR:
                     visible.add(l)
         vis = sorted(visible)
         summary = ("visible sources: " + ", ".join(vis)) if vis else "no target sources visible"
