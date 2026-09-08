@@ -2,11 +2,11 @@
 #SBATCH --job-name=abl_gen
 #SBATCH --output=logs/abl_gen_%j.out
 #SBATCH --error=logs/abl_gen_%j.err
-#SBATCH --partition=L4-4h
+#SBATCH --partition=L4-12h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
-#SBATCH --time=04:00:00
+#SBATCH --time=10:00:00
 #
 # ABLATION: does GENERATING the augmentation image beat RETRIEVING one?
 # (docs/PLAN.md, Day 7)
