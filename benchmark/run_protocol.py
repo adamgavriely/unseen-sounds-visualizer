@@ -40,6 +40,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import random
 import sys
 import warnings
 from collections import defaultdict
@@ -65,19 +66,51 @@ SCENARIO_OF = {"unseen_ambient": "acoustic_event_or_ambient",
                "no_ambient": "ambient_environmental"}
 
 
+def desc_file(tag: str) -> Path:
+    """Cached descriptions, per run tag.
+
+    The cache is keyed by (clip, system) only, so an ablation that changes HOW the
+    image is produced -- SDXL instead of retrieval, say -- would otherwise be skipped
+    as already-described and would silently score the other run's images. A tagged
+    run gets its own cache; an untagged run reads the main one.
+    """
+    return DESCRIPTIONS if not tag else DESCRIPTIONS.with_name(
+        f"protocol_descriptions_{tag}.json")
+
+
 def clips_to_run(limit):
-    """Benchmark clips that carry a human label, so results can be broken down."""
+    """Benchmark clips that carry a human label, sampled EVENLY across the tags.
+
+    Taking the first N alphabetically silently returned only `mixed/` clips (that
+    folder sorts first), so the pilot measured a single scenario and the comparison
+    was not interpretable -- on mixed clips the gate suppresses sounds by design, so
+    the blind baseline is flattered. Sample round-robin across the four tags instead,
+    with a fixed seed so runs are reproducible and resumable.
+    """
     tags = json.loads(TAGS.read_text(encoding="utf-8")) if TAGS.exists() else {}
-    out = []
+    by_tag = {}
     for key, val in tags.items():
-        if val.get("tag") not in SCENARIO_OF:
+        tag = val.get("tag")
+        if tag not in SCENARIO_OF:
             continue
         folder, _, base = key.partition("/")
         p = BENCH / folder / base
         if p.exists():
-            out.append((p, val["tag"]))
-    out.sort()
-    return out[:limit] if limit else out
+            by_tag.setdefault(tag, []).append((p, tag))
+    rng = random.Random(7)
+    for v in by_tag.values():
+        v.sort()
+        rng.shuffle(v)
+    if not limit:
+        return [c for v in by_tag.values() for c in v]
+    out, i = [], 0
+    order = sorted(by_tag)                       # deterministic tag order
+    while len(out) < limit and any(len(by_tag[t]) > i for t in order):
+        for t in order:
+            if len(by_tag[t]) > i and len(out) < limit:
+                out.append(by_tag[t][i])
+        i += 1
+    return out
 
 
 def configure(system: str):
@@ -109,14 +142,15 @@ def caption_from_artifacts(work: Path) -> str:
 # ----------------------------------------------------------------------
 def phase_describe(args, backends):
     clips = clips_to_run(args.limit)
+    cache = desc_file(args.tag)
     print(f"[describe] {len(clips)} clips x {len(args.systems)} systems", flush=True)
-    recs = json.loads(DESCRIPTIONS.read_text(encoding="utf-8")) \
-        if DESCRIPTIONS.exists() else []
+    recs = json.loads(cache.read_text(encoding="utf-8")) if cache.exists() else []
     done = {(r["clip"], r["system"]) for r in recs}
 
     for system in args.systems:
         configure(system)
-        work_root = _ROOT / "data" / "work" / f"protocol_{system}"
+        work_root = _ROOT / "data" / "work" / (
+            f"protocol_{system}" + (f"_{args.tag}" if args.tag else ""))
         for i, (clip, tag) in enumerate(clips, 1):
             if (clip.name, system) in done:
                 continue
@@ -136,23 +170,32 @@ def phase_describe(args, backends):
             rec["human_tag"] = tag
             rec["scenario"] = SCENARIO_OF[tag]
             recs.append(rec)
-            DESCRIPTIONS.write_text(json.dumps(recs, indent=1, ensure_ascii=False),
-                                    encoding="utf-8")
+            cache.write_text(json.dumps(recs, indent=1, ensure_ascii=False),
+                             encoding="utf-8")
             print(f"  [{system} {i}/{len(clips)}] {clip.name[:32]:32} "
                   f"{rec['description'][:52]}", flush=True)
-    print(f"[describe] cached -> {DESCRIPTIONS}", flush=True)
+    print(f"[describe] cached -> {cache}", flush=True)
 
 
 # ----------------------------------------------------------------------
 # pass 2 -- judge the cached pairs. Only the judge is loaded.
 # ----------------------------------------------------------------------
-def phase_judge(backends, tag: str = ""):
-    if not DESCRIPTIONS.exists():
+def phase_judge(backends, tag: str = "", rescore: bool = False,
+                desc_tag=None):
+    # A judge-agreement run re-scores the MAIN descriptions but writes its results
+    # under a new tag, so cache and results file are tagged independently.
+    cache = desc_file(desc_tag if desc_tag is not None else tag)
+    if not cache.exists():
+        cache = DESCRIPTIONS
+    if not cache.exists():
         sys.exit("no descriptions cached -- run --phase describe first")
     recs = json.loads(DESCRIPTIONS.read_text(encoding="utf-8"))
     out_file = OUT if not tag else OUT.with_name(f"protocol_results_{tag}.json")
-    results = json.loads(out_file.read_text(encoding="utf-8")) \
-        if out_file.exists() else []
+    # --rescore discards previous scores and judges the cached pairs again. Needed
+    # whenever the scoring RULE changes (as when empty augmentations stopped getting
+    # a charitable 2/4): the descriptions are unaffected, so re-rendering is waste.
+    results = [] if rescore else (json.loads(out_file.read_text(encoding="utf-8"))
+                                  if out_file.exists() else [])
     done = {(r["clip"], r["system"]) for r in results}
     print(f"[judge] {len(recs)} cached pairs, {len(done)} already scored", flush=True)
 
@@ -174,20 +217,32 @@ def phase_judge(backends, tag: str = ""):
 
 
 def report(results):
+    from src.stage7_evaluation.protocol import is_empty_candidate
     by_sys = defaultdict(list)
     by_sys_scn = defaultdict(list)
+    silent = defaultdict(list)          # per system: was the augmentation empty?
     for r in results:
         by_sys[r["system"]].append(r["score"])
         by_sys_scn[(r["system"], r.get("scenario", "?"))].append(r["score"])
-    print("\n" + "=" * 66)
+        silent[r["system"]].append(is_empty_candidate(r.get("description", "")))
+    print("\n" + "=" * 76)
     print("STAGE-7 SEMANTIC CONSISTENCY (proposal sec 6.1), judge score 0-4\n")
-    print(f"{'system':16}{'n':>5}{'mean':>8}{'>=3 (conveys it)':>20}")
+    # "silent" and "right to be" are reported because the gate's whole claim is about
+    # WHEN to show nothing, and a mean score hides that: a system can reach a decent
+    # mean by abstaining on the clips where abstaining happens to be correct.
+    print(f"{'system':16}{'n':>5}{'mean':>8}{'>=3':>7}{'silent':>9}{'right to be':>13}")
     for s in SYSTEMS:
         v = by_sys.get(s, [])
         if not v:
             continue
         good = sum(1 for x in v if x >= 3)
-        print(f"{s:16}{len(v):>5}{sum(v)/len(v):>8.2f}{100*good/len(v):>19.0f}%")
+        sil = silent[s]
+        n_sil = sum(sil)
+        # among the clips it stayed silent on, how often was silence the right call?
+        ok_sil = sum(1 for q, z in zip(v, sil) if z and q == 4)
+        rt = f"{100 * ok_sil / n_sil:>12.0f}%" if n_sil else f"{'-':>13}"
+        print(f"{s:16}{len(v):>5}{sum(v) / len(v):>8.2f}{100 * good / len(v):>6.0f}%"
+              f"{100 * n_sil / len(v):>8.0f}%{rt}")
     print("\nper scenario (proposal sec 5.1):")
     scns = sorted({k[1] for k in by_sys_scn})
     print(f"  {'scenario':30}" + "".join(f"{s[:12]:>14}" for s in SYSTEMS))
@@ -207,6 +262,11 @@ def main():
                     help="override config.JUDGE_MODEL (for judge-agreement runs)")
     ap.add_argument("--tag", default="",
                     help="suffix for the results file, e.g. --tag judge2")
+    ap.add_argument("--desc-tag", default=None,
+                    help="read descriptions from this run's cache; use with --tag "
+                         "to score the main descriptions under a second judge")
+    ap.add_argument("--rescore", action="store_true",
+                    help="discard existing scores and re-judge the cached descriptions")
     ap.add_argument("--skip-render", action="store_true",
                     help="reuse existing pipeline artifacts instead of re-rendering")
     args = ap.parse_args()
@@ -221,7 +281,7 @@ def main():
         backends.unload_vlm()        # free ~16 GB before the judge is loaded
         print("[protocol] describer unloaded", flush=True)
     if args.phase in ("all", "judge"):
-        phase_judge(backends, args.tag)
+        phase_judge(backends, args.tag, args.rescore, args.desc_tag)
 
 
 if __name__ == "__main__":

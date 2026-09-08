@@ -248,8 +248,38 @@ def describe_augmentation(image_paths: List[Path], backends: Backends) -> str:
     return " ".join(parts)
 
 
+NO_AUG = "no augmentation was shown"
+# The caption baseline has its own way of saying "I showed nothing", so both empty
+# forms must hit the same rule -- otherwise the baselines are scored under different
+# conventions and the comparison is not like-for-like.
+EMPTY_CANDIDATES = (NO_AUG, "no notable non-speech sound")
+NOTHING_MISSING = "nothing beyond the picture"
+
+
+def is_empty_candidate(candidate: str) -> bool:
+    c = candidate.strip().lower()
+    return any(c.startswith(m) for m in EMPTY_CANDIDATES)
+
+
 def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]:
-    """Step 5: independent scoring of semantic consistency."""
+    """Step 5: independent scoring of semantic consistency.
+
+    The EMPTY-CANDIDATE case is decided in code, not by the judge. In the pilot the
+    judge handed "no augmentation was shown" a charitable 2/4, which both rewarded the
+    gated system for showing nothing and denied it credit on clips where showing
+    nothing is the right answer. Silence is not partially correct -- it is either
+    exactly right or a total miss:
+
+      reference says nothing is missing  -> staying silent is the correct behaviour, 4
+      reference names missing information -> the system conveyed none of it, 0
+
+    Scoring this deterministically also means the gate's core claim (stay silent when
+    the source is already visible) is actually measured rather than blurred.
+    """
+    if is_empty_candidate(candidate):
+        if NOTHING_MISSING in reference.lower():
+            return 4, "nothing was missing and the system correctly showed nothing"
+        return 0, "information was missing but no augmentation was shown"
     raw = backends.complete(JUDGE_PROMPT.format(reference=reference,
                                                 candidate=candidate),
                             max_new_tokens=100, judging=True)
