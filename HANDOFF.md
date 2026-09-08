@@ -20,8 +20,10 @@ ALONGSIDE the original video (never replacing it).
 1. Formulate the semantic audio augmentation task — ✅ done
 2. Inference pipeline from existing foundation models — ✅ done (7 stages)
 3. Evaluation benchmark (~300 clips, 10–20 s) — 🟡 274 labelled
-4. **Automatic evaluation protocol (§6.1)** — ❌ **NOT BUILT — highest priority**
-5. Comparison with baselines (§7) — ❌ not done
+4. **Automatic evaluation protocol (§6.1)** — ✅ BUILT (`src/stage7_evaluation/protocol.py`,
+   `benchmark/run_protocol.py`, `slurm/job_protocol.sh`) but ❌ **never successfully run** —
+   the pilot job vanished without writing a log. Unblocking it is the current priority.
+5. Comparison with baselines (§7) — ❌ blocked on 4 actually running
 
 **Research questions (§2), status:**
 - Which audio information contributes most to scene understanding? — ❌ open
@@ -42,7 +44,7 @@ ALONGSIDE the original video (never replacing it).
 | 4 Audio event detection | `stage4_audio_event_detection` | PANNs CNN14 SED, real |
 | 5 Cross-modal gate | `stage5_cross_modal_analysis` | ⚠️ **rule-based stub**; proposal §4.5 specifies an LLM (Qwen3/Llama 3.1) |
 | 6 Visual augmentation | `stage6_visual_augmentation` | `retrieve` (Openverse), `diffusion` (SDXL), `placeholder`; compositor renders a side panel with stable per-sound slots |
-| 7 Evaluation | `stage7_evaluation` | ⚠️ only `gating_accuracy()`; the §6.1 protocol is missing |
+| 7 Evaluation | `stage7_evaluation` | `gating_accuracy()` + the §6.1 protocol in `protocol.py` (separate judge model, refuses to run if describer == judge). Built, not yet run |
 
 Entry point: `python main.py --input <video>`. Config in `config.py`.
 
@@ -148,7 +150,9 @@ comparison + AUROC), `slurm/job_diffusion.sh` (12 SDXL demo renders from
 
 ## 7. Next work, in priority order
 
-1. **Build the Stage 7 automatic evaluation protocol exactly as proposal §6.1 specifies:**
+**See `docs/PLAN.md` for the dated two-week plan.**
+
+1. **Run** the Stage 7 protocol (already built to proposal §6.1):
    analyse the original → generate augmentations → a VLM describes the augmented scene →
    an LLM derives a semantic reference from the original multimodal input → an *independent*
    LLM judge scores semantic consistency. `config.JUDGE_MODEL` is set to

@@ -1,215 +1,155 @@
-# Five-day plan to a defensible submission
+# Two-week plan to submission
 
-Written 2026-09-08. The benchmark is frozen (256 labelled clips), no human study,
-GPU access working. What remains is the proposal's own deliverable list (sec 11):
-**experimental evaluation** and a **technical report** framed around it.
+Rewritten 2026-09-08 against the real repo state. Supersedes the earlier 5/8-day drafts.
 
-Standing rule for these five days: **no more clip sourcing and no more tagging.**
-Every hour there is an hour not spent on the deliverables.
+## Where the project actually stands
 
----
-
-## What is already done
-
-| Deliverable (proposal sec 11) | State |
+| Proposal deliverable (sec 11) | State |
 |---|---|
-| Source code | done -- 7-stage pipeline, runs on CPU and GPU |
-| Curated benchmark dataset | done -- 256 labelled clips, 3 scenarios |
-| Automatic evaluation protocol | **built**, never run |
-| Experimental evaluation | **not started** |
+| Source code | done -- 7 stages, runs on CPU and GPU |
+| Curated benchmark | done -- 274 labels, **frozen** |
+| Automatic evaluation protocol (sec 6.1) | **built, never successfully run** <- the blocker |
+| Experimental evaluation vs baselines (sec 7) | blocked on the above |
 | Technical report | 26 pp, framed around the wrong metric |
-| Prototype system | works; needs watchable demo output |
+| Prototype system | done -- 13 demo videos already rendered |
 
-Component result already secured: four visibility backends (CLIP, SigLIP, OWLv2,
-Qwen2.5-VL) score within ~1 point of each other on the gating decision. Since these
-span contrastive embedding, sigmoid embedding and open-vocabulary detection, the
-uniformity is the finding -- the models answer *object presence* where the task needs
-*event visibility*. That analysis is finished; it does not need more runs.
+Component results already secured, and they do not need re-running:
+
+* four Stage-2 backends within ~2 points of each other (CLIP 49.3, SigLIP 49.6,
+  OWLv2 50.4, Qwen2.5-VL 51.2 accuracy) -- architecture does not decide this task;
+* event-level AUROC 0.647 (SigLIP) / 0.616 (OWLv2) -- weak but above chance;
+* trivial baselines: always-augment 26.6% acc / 42.1 F1, always-silent 73.4% / 0 F1;
+* object presence != event visibility, evidenced by the annotator's own words;
+* label stability kappa = 0.60, instability concentrated in the positive class.
+
+**Standing rules.** No more sourcing. No more tagging. No more chasing gating accuracy.
+The missing deliverable is the protocol and the baseline comparison built on it.
 
 ---
 
-## Day 1 -- prove the protocol discriminates
+# Week 1 -- get the numbers
 
-The whole plan rests on the judge producing meaningful scores. Find out immediately.
+## Day 1 (today) -- unblock the protocol
 
-**On the cluster**
+The pilot job vanished with no log, so nothing is known about why. Diagnose it
+interactively, where errors print live instead of disappearing:
+
 ```bash
-cd ~/MscProj && sed -i 's/\r$//' slurm/*.sh
+sacct -j 28267981 --format=JobID,JobName%16,State,ExitCode,Elapsed,Reason%30
+
+srun --partition=L4-4h --gres=gpu:1 --mem=32G --time=0:30:00 --pty bash
+cd ~/MscProj && source ~/miniconda3/etc/profile.d/conda.sh && conda activate msproj
+sed -i 's/\r$//' slurm/*.sh
+python -m benchmark.run_protocol --limit 2 --systems proposed
+```
+
+Likely causes, in order: CRLF in the job script; the Mistral judge weights not yet
+downloaded on the compute node; Qwen2.5-VL + Mistral together exceeding a 23 GB L4
+(they fit on H200/A100, and the two models can be run as sequential passes if not).
+
+**Done when** two clips produce a reference, a description and a score.
+
+## Day 2 -- prove the judge discriminates
+
+```bash
 sbatch --export=LIMIT=12,GEN=retrieve slurm/job_protocol.sh
 ```
-`GEN=retrieve` keeps the pilot fast; SDXL comes later.
 
-**Check, in `benchmark/protocol_results.json`:**
-1. Do scores vary, or is everything 4 (or 0)? A constant judge is a broken judge.
-2. Read five `why` fields. Do they refer to the actual sound?
-3. Does `audio_caption` differ from `proposed`? If all three systems score identically
+Then read `benchmark/protocol_results.json` and check three things:
+
+1. scores **vary** -- all 4s or all 0s means a broken judge, not a good system;
+2. the `why` text names the actual sound rather than praising generically;
+3. `audio_caption` scores **differently** from `proposed` -- if all three systems tie,
    the protocol is not measuring the systems.
 
-**If it fails:** the fix is prompt wording in `src/stage7_evaluation/protocol.py`
-(the three prompts are module constants for exactly this reason). Budget the whole
-day for one or two iterations. Do not scale up until scores discriminate.
+If any fail, the fix is prompt wording in `src/stage7_evaluation/protocol.py`, where
+the three prompts are module constants for exactly this reason. Iterate here; do not
+scale up on a judge that cannot discriminate.
 
----
+## Day 3 -- the main experiment
 
-## Day 2 -- the main experiment
-
-**On the cluster, in the morning**
 ```bash
-sbatch --export=LIMIT=100 slurm/job_protocol.sh      # ~6-8 h, SDXL generation
-```
-100 clips x 3 systems. That gives roughly +/-10% on each mean, which is enough to
-separate the systems; 256 clips would cost two days and buy precision the argument
-does not need.
-
-**In parallel, same day**
-```bash
-python -m benchmark.select_demo --write 12
-sbatch slurm/job_diffusion.sh                        # ~1-2 h, demo renders
+sbatch --export=LIMIT=100 slurm/job_protocol.sh     # 100 clips x 3 systems, ~6-8 h
 ```
 
-**Meanwhile (no GPU needed):** restructure the report skeleton -- move gating
-accuracy out of the headline and into a component-analysis section, leave the
-results chapter empty for Day 3.
+100 clips gives roughly +/-10% per mean, enough to separate three systems. 274 clips
+costs two days for precision the argument does not need.
+
+## Day 4 -- results
+
+Fetch (`bash slurm/fetch_results.sh`), then build the table the thesis turns on:
+
+| system | mean judge score | % scoring >= 3 |
+|---|---|---|
+| proposed (gated) | | |
+| blind audio-to-image | | |
+| audio captioning | | |
+
+plus the same broken down by the three proposal sec 5.1 scenarios. Both directions
+are publishable: *proposed > blind* means the gate earns its place measured on
+output, not on an intermediate label; *proposed ~ blind* is a coherent negative
+result alongside the four-backend uniformity.
+
+## Day 5 -- watch the demos, fix what looks wrong
+
+13 videos are already in `data/output/`. Watch them. Any where the panel is on for
+the whole clip, or the image is unreadable, is a presentation bug worth an hour --
+this is the artefact an advisor reacts to. `benchmark/select_demo.py` ranks clips by
+augmentation dynamics if a fresh set is wanted.
 
 ---
 
-## Day 3 -- results and demos
+# Week 2 -- make it defensible, then write
 
-1. Pull everything back: `bash slurm/fetch_results.sh` (from the PC).
-2. Watch the 12 demo videos. Discard any where the panel is on the whole time --
-   `select_demo.py` ranks against that, but confirm by eye.
-3. Write the results chapter around the one table that matters:
+## Day 6 -- close two methodological holes
 
-   | system | mean judge score | % scoring >= 3 |
-   |---|---|---|
-   | proposed (gated) | | |
-   | blind audio-to-image | | |
-   | audio captioning | | |
+**Judge reliability.** One 7B model deciding every score is the protocol's softest
+point. Re-run only the judging step (descriptions are cached) with a second judge
+from a different family and report Spearman correlation plus exact-match rate. High
+agreement means the scores are a property of the augmentations; low agreement bounds
+how far any LLM-judged number in this area can be trusted -- which is itself an answer
+to RQ "how should such systems be evaluated?".
 
-   Plus the same table broken down by the three proposal scenarios.
+**Stop tuning on the test set.** Every threshold so far was swept on the same clips it
+is scored on. Split 50/50, tune on one half, report the other, state both numbers.
 
-4. **The interpretation is decided by the data, and both directions are publishable:**
-   - proposed > blind: the gate earns its place, measured on output rather than on an
-     intermediate label. This is the positive result.
-   - proposed ~ blind: selective augmentation does not improve semantic delivery.
-     State it plainly; combined with the four-backend uniformity it becomes a
-     coherent negative result about off-the-shelf cross-modal grounding.
+## Day 7 -- ablations (GPU only, no annotation)
 
----
+| ablation | question it settles |
+|---|---|
+| SDXL vs Openverse retrieval | does *generating* the image beat *retrieving* one? The proposal names diffusion; nobody has checked it helps |
+| BEATs vs PANNs | is the detector the bottleneck? (already measured: no -- an oracle detector moved accuracy 49.3 -> 49.1) |
+| gate on/off, same generator | the gate's contribution to the OUTPUT score, not to an intermediate label |
 
-## Day 4 -- write
+## Days 8-9 -- write
 
-Full pass over `docs/project_notes.tex`, in this order of importance:
+1. **Results chapter** -- the Day 4 table and the per-scenario breakdown.
+2. **Method** -- the protocol as a named contribution: the five steps, the separate
+   judge, why the describer never sees the reference.
+3. **Component analysis** -- four backends, trivial baselines, AUROC, and the
+   object-vs-event finding with the annotator quotes.
+4. **Limitations, stated before an examiner finds them:** single annotator with
+   kappa 0.60; 15-20% sourcing yield hence 274 clips not 300 (report the scarcity as
+   a dataset finding); part of the queue was model-enriched while the first 209 tags
+   predate any filter and are the unbiased sample; a single 7B judge, not a panel.
 
-1. **Results chapter** (Day 3's table + the per-scenario breakdown).
-2. **Component analysis**: the four-backend comparison, the trivial baselines, and
-   the object-vs-event finding with the annotator quotes.
-3. **Method**: the protocol itself -- the five steps, the separate judge, and why the
-   describer never sees the reference. This is a named contribution (sec 11) and
-   deserves its own section.
-4. **Limitations, stated before an examiner finds them:**
-   - single annotator, kappa 0.60, instability concentrated in the positive class;
-   - sourcing yield 15-20% across four independent strategies, hence 256 clips
-     rather than 300 -- report the scarcity as a dataset finding;
-   - part of the queue was model-enriched; the first 209 tags predate any filter and
-     are the unbiased sample;
-   - the judge is a single 7B LLM, not a human panel.
+## Day 10 -- package
+
+Recompile both PDFs, complete `benchmark/ATTRIBUTIONS.md`, README with how to run the
+pipeline on one video and how to reproduce the evaluation, and assemble the advisor
+package: results table, 2-3 demo videos, the two PDFs.
 
 ---
 
-## Day 5 -- package
-
-1. Recompile `project_notes.pdf` and `literature_review.pdf`.
-2. Assemble the advisor package: the results table, 2-3 demo videos, the two PDFs.
-3. `benchmark/ATTRIBUTIONS.md` complete for every clip source.
-4. README: how to run the pipeline on one video, and how to reproduce the evaluation.
-
-**Questions for the advisor**, prepared in advance:
-- Is a rigorous negative result on cross-modal gating acceptable as the core
-  contribution, given the proposal framed the work as a feasibility study?
-- 256 clips rather than ~300: acceptable, given measured yield?
-- Should the judge be a stronger or second model, or a small human panel?
-- Is a DHH user study wanted at all, and if so does the ethics timeline allow it?
-
----
-
-## Risks, and what to do about each
+## Risks and responses
 
 | Risk | Signal | Response |
 |---|---|---|
-| Judge does not discriminate | Day 1 scores all equal | rewrite the judge prompt; if still flat, score with CLIP image-text similarity instead and report the judge as a limitation |
-| SDXL too slow for 300 runs | Day 2 job hits the 12 h wall | it requeues and resumes; failing that, `GEN=retrieve` for the baselines and SDXL only for demos |
-| Qwen2.5-VL will not fit beside Mistral | OOM on Day 1 | run describe and judge as two sequential passes over the same clips |
-| Nothing works by Day 3 | | fall back to the component results already secured: four backends, trivial baselines, object-vs-event, kappa. That alone is a thesis, just a thinner one |
+| Judge does not discriminate | Day 2 scores all equal | rewrite the judge prompt; if still flat, fall back to CLIP image-text similarity as the metric and report the LLM judge as a limitation |
+| Models will not co-fit on the GPU | OOM | run describe and judge as two sequential passes over cached intermediates |
+| SDXL too slow for 300 runs | Day 3 hits the wall | the job requeues and resumes; else `GEN=retrieve` for baselines, SDXL for demos only |
+| Nothing works by Day 5 | | fall back to the secured component results -- four backends, trivial baselines, AUROC, object-vs-event, kappa. A thinner thesis, but a complete one |
 
-## Explicitly out of scope
-More sourcing, more tagging, tagger features, DHH user study, TempoTokens /
-audio-to-video, icon-based rendering, stereo direction cues.
-
-
----
-
-# If there are 8 days, not 5
-
-The extra three days should NOT go on more clips. Yield is 15-20% and the benchmark
-is not the weak part -- the *methodology* is. Three known holes can each be closed
-with GPU time and no additional annotation, and each removes an objection an examiner
-would otherwise raise.
-
-## Day 6 -- make the evaluation itself defensible
-
-**a) Judge reliability.** One 7B model deciding every score is the protocol's softest
-point. Re-run the judging step only (descriptions and references are already cached)
-with a second judge from a different family, and report agreement:
-
-```bash
-sbatch --export=JUDGE2=Qwen/Qwen3-8B slurm/job_judge_agreement.sh
-```
-
-Report Spearman correlation and exact-match rate between the two judges. High
-agreement means the scores are a property of the augmentations, not of one model's
-quirks. Low agreement is equally worth reporting -- it bounds how much any
-LLM-judged number in this area should be trusted, which is a contribution to
-proposal RQ4 ("how should such systems be evaluated?").
-
-**b) Fix tuning on the test set.** Every threshold reported so far was chosen by
-sweeping on the same 256 clips it is evaluated on. Split the benchmark 50/50, tune on
-the first half, report on the second, and state both numbers. Cheap, and it removes a
-guaranteed question.
-
-## Day 7 -- ablations that answer "was it the components?"
-
-All GPU-only, no human time. Each isolates one stage so the report can say which
-choices mattered:
-
-| ablation | question it settles | cost |
-|---|---|---|
-| SDXL vs Openverse retrieval | does *generating* the image beat *retrieving* one? | ~2 h |
-| BEATs vs PANNs (Stage 4) | is the detector the bottleneck? (measured: no -- an oracle detector moved accuracy 49.3% -> 49.1%) | ~2 h |
-| gate on vs off, same generator | isolates the gate's contribution to the OUTPUT score | free, already in the protocol |
-
-The SDXL-vs-retrieval one is the most interesting: the proposal names diffusion as the
-generation method, and nobody has checked whether it actually helps a DHH viewer more
-than a stock photograph does.
-
-## Day 8 -- qualitative analysis, then buffer
-
-1. **Worked examples for the report.** Three clips where the system clearly helps,
-   three where it clearly fails, each with the frame, the augmentation, the reference
-   and the judge's reasoning. Examiners remember these far longer than tables.
-2. **Failure taxonomy** from the protocol's low-scoring cases -- group them (wrong
-   source depicted, right source but uninformative image, augmented something already
-   visible, missed the salient sound) and count each.
-3. Buffer. Something will have slipped.
-
-## Optional, if a labmate can spare two hours
-
-**Inter-annotator agreement.** A second person labels 30 clips; report Cohen's kappa
-against Adam's labels. This is annotation reliability, not a user study -- no ethics
-process, no DHH participants. It is the single highest-value number still missing,
-because it separates "the model is bad" from "the task is not yet well-defined", and
-it strengthens contribution (a). Either outcome helps: high kappa validates the task,
-low kappa explains the 50% gate and makes the task-definition finding rigorous.
-
-## Still out of scope, even with 8 days
-More sourcing, more tagging by Adam, DHH user study, audio-to-video generation.
+## Out of scope for both weeks
+More sourcing, more tagging, tagger features, DHH user study, audio-to-video
+generation, icon rendering, stereo direction cues.
