@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=eval_vlm
+#SBATCH --job-name=eval_gates
 #SBATCH --output=logs/eval_vlm_%j.out
 #SBATCH --error=logs/eval_vlm_%j.err
 #SBATCH --partition=A100-4h
@@ -29,7 +29,14 @@ import config; config.VIDEO_BACKEND = "clip"; config.DEVICE = "cuda"
 import importlib, benchmark.evaluate as ev; importlib.reload(ev); ev.main()
 PY
 
-# 2. VLM gate
+# 2. OWLv2 detection gate -- the strongest CPU-verified backend, near real-time on GPU
+echo "===== OWLv2 detection gate ====="
+python - <<'PY'
+import config; config.VIDEO_BACKEND = "owlv2"; config.DEVICE = "cuda"
+import importlib, benchmark.evaluate as ev; importlib.reload(ev); ev.main()
+PY
+
+# 3. VLM gate
 echo "===== Qwen2.5-VL gate ====="
 python - <<'PY'
 import config; config.VIDEO_BACKEND = "vlm"; config.DEVICE = "cuda"
@@ -43,6 +50,8 @@ import json
 from pathlib import Path
 rows = []
 for name, f in [("CLIP gate (v2-a)", "benchmark/eval_results.json"),
+                ("SigLIP gate", "benchmark/eval_results_siglip.json"),
+                ("OWLv2 detection gate", "benchmark/eval_results_owlv2.json"),
                 ("Qwen2.5-VL gate (v2-b)", "benchmark/eval_results_vlm.json")]:
     p = Path(f)
     if not p.exists():
