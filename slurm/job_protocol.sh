@@ -52,6 +52,7 @@ JUDGE="${JUDGE:-}"
 DESC_TAG="${DESC_TAG:-}"
 RESCORE="${RESCORE:-}"
 GROUNDED="${GROUNDED:-}"
+SKIP_RENDER="${SKIP_RENDER:-}"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
 
 # The judge pass is text-only and fits on a small card; the describe pass is not.
@@ -86,6 +87,7 @@ if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
 if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]
 if "${RESCORE}" and phase == "judge": argv += ["--rescore"]
 if "${GROUNDED}" and phase == "judge": argv += ["--grounded"]
+if "${SKIP_RENDER}" and phase == "describe": argv += ["--skip-render"]
 sys.argv = argv
 print("[argv]", " ".join(argv), flush=True)
 from benchmark.run_protocol import main
@@ -95,7 +97,13 @@ PY
 
 # Separate processes, so the describer's memory is definitely released before the
 # judge is loaded -- unload_vlm() frees the weights but not always the allocator.
-[ "$PHASE" = "judge" ] || run_phase describe
-[ "$PHASE" = "describe" ] || run_phase judge
+# One large model resident per process: SDXL renders, then the VLM describes, then
+# the judge scores. SDXL and the VLM together overflow a 24 GB card.
+case "$PHASE" in
+  render)   run_phase render ;;
+  describe) run_phase describe ;;
+  judge)    run_phase judge ;;
+  all)      run_phase describe; run_phase judge ;;
+esac
 
 echo "DONE -> benchmark/protocol_results${TAG:+_$TAG}.json"

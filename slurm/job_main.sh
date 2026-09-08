@@ -60,16 +60,21 @@ if [ ! -f "$STAMP/gate_passed" ]; then
 fi
 
 # ---------------------------------------------------------------- T3: main run
-echo "=== T3: main run, $LIMIT clips x 3 systems (SDXL) ==="
-GEN=diffusion LIMIT="$LIMIT" PHASE=describe bash slurm/job_protocol.sh
-GEN=diffusion LIMIT="$LIMIT" PHASE=judge   bash slurm/job_protocol.sh
+echo "=== T3a: render $LIMIT clips x 3 systems with SDXL (no VLM resident) ==="
+GEN=diffusion LIMIT="$LIMIT" PHASE=render bash slurm/job_protocol.sh
+
+echo "=== T3b: describe the rendered augmentations (no SDXL resident) ==="
+GEN=diffusion LIMIT="$LIMIT" PHASE=describe SKIP_RENDER=1 bash slurm/job_protocol.sh
+
+echo "=== T3c: judge ==="
+GEN=diffusion LIMIT="$LIMIT" PHASE=judge bash slurm/job_protocol.sh
 
 # A second scoring of the SAME descriptions against the human-corrected reference. The
 # model-derived reference reports a sound as missing even when the annotator recorded
 # its source as plainly on screen, which scores correct silence at 0 -- on 128 of the
 # 274 labelled clips. Judging is cheap and needs no vision, so both numbers come out of
 # the one expensive describe pass and the report can state each with its assumption.
-echo "=== T3b: re-score against the human-grounded reference ==="
+echo "=== T3d: re-score against the human-grounded reference ==="
 GEN=diffusion LIMIT="$LIMIT" PHASE=judge GROUNDED=1 TAG=grounded DESC_TAG=""     bash slurm/job_protocol.sh
 
 touch "$STAMP/main_done"

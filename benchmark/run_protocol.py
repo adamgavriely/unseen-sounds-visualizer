@@ -137,8 +137,66 @@ def caption_from_artifacts(work: Path) -> str:
             if labels else "no notable non-speech sound")
 
 
+def work_root_for(system: str, tag: str) -> Path:
+    return _ROOT / "data" / "work" / (f"protocol_{system}" + (f"_{tag}" if tag else ""))
+
+
 # ----------------------------------------------------------------------
-# pass 1 -- render and describe. Only the VLM is loaded.
+# pass 0 -- render only. SDXL is loaded; the describing VLM is not.
+# ----------------------------------------------------------------------
+def phase_render(args):
+    """Run the pipeline for every clip and system, and describe nothing.
+
+    SDXL (~7 GB) is loaded by Stage 6 and stays resident, and Qwen2.5-VL (~16 GB) is
+    loaded by the describer. On a 24 GB card they do not co-fit: the first attempt at
+    this run rendered clip 1, loaded the VLM to describe it, and then every subsequent
+    clip died at Stage 4 with "CUDA failed with error out of memory". The failures were
+    caught per clip, so the job reported COMPLETED having produced 2 records out of 300.
+
+    Splitting rendering from describing is the same separation already used for the
+    describer and the judge, one level further down: each phase runs in its own process
+    with one large model resident.
+    """
+    clips = clips_to_run(args.limit)
+    print(f"[render] {len(clips)} clips x {len(args.systems)} systems", flush=True)
+    ok = fail = 0
+    for system in args.systems:
+        configure(system)
+        work_root = work_root_for(system, args.tag)
+        for i, (clip, _tag) in enumerate(clips, 1):
+            work = work_root / clip.stem
+            if (work / "augmentations.json").exists():
+                ok += 1
+                continue
+            try:
+                pipeline.run(clip, work_root=work_root)
+                ok += 1
+            except Exception as e:
+                fail += 1
+                print(f"  ! render {clip.name}: {type(e).__name__}: {e}", flush=True)
+            if i % 10 == 0:
+                print(f"  [{system}] {i}/{len(clips)}  ok={ok} fail={fail}", flush=True)
+    print(f"[render] done: ok={ok} fail={fail}", flush=True)
+    guard(ok, fail, "render")
+
+
+def guard(ok: int, fail: int, what: str):
+    """Fail the job loudly when most clips failed.
+
+    Each clip's exception is caught so that one bad file cannot end a ten-hour run.
+    The cost of that is a run which fails almost completely and still exits 0 -- which
+    is exactly what happened, and the chain went on to judge two records and declare
+    itself finished. Past a quarter failed, something systematic is wrong and the chain
+    should stop rather than produce a confident table built on nothing.
+    """
+    total = ok + fail
+    if total and fail > total // 4:
+        sys.exit(f"[{what}] ABORT: {fail}/{total} clips failed -- this is systematic, "
+                 "not a handful of bad files. Fix the cause before continuing.")
+
+
+# ----------------------------------------------------------------------
+# pass 1 -- describe the rendered augmentations. Only the VLM is loaded.
 # ----------------------------------------------------------------------
 def phase_describe(args, backends):
     clips = clips_to_run(args.limit)
@@ -146,11 +204,11 @@ def phase_describe(args, backends):
     print(f"[describe] {len(clips)} clips x {len(args.systems)} systems", flush=True)
     recs = json.loads(cache.read_text(encoding="utf-8")) if cache.exists() else []
     done = {(r["clip"], r["system"]) for r in recs}
+    missing = 0
 
     for system in args.systems:
         configure(system)
-        work_root = _ROOT / "data" / "work" / (
-            f"protocol_{system}" + (f"_{args.tag}" if args.tag else ""))
+        work_root = work_root_for(system, args.tag)
         for i, (clip, tag) in enumerate(clips, 1):
             if (clip.name, system) in done:
                 continue
@@ -159,10 +217,12 @@ def phase_describe(args, backends):
                 try:
                     pipeline.run(clip, work_root=work_root)
                 except Exception as e:
+                    missing += 1
                     print(f"  ! render {clip.name}: {type(e).__name__}: {e}", flush=True)
                     continue
             rec = describe_clip(clip.name, system, work, backends)
             if rec is None:
+                missing += 1
                 continue
             if system == "audio_caption":     # the caption IS the augmentation
                 rec["description"] = caption_from_artifacts(work)
@@ -175,6 +235,7 @@ def phase_describe(args, backends):
             print(f"  [{system} {i}/{len(clips)}] {clip.name[:32]:32} "
                   f"{rec['description'][:52]}", flush=True)
     print(f"[describe] cached -> {cache}", flush=True)
+    guard(len(recs), missing, "describe")
 
 
 # ----------------------------------------------------------------------
@@ -257,7 +318,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--systems", nargs="*", default=list(SYSTEMS))
     ap.add_argument("--limit", type=int, default=None)
-    ap.add_argument("--phase", choices=("all", "describe", "judge"), default="all")
+    ap.add_argument("--phase", choices=("all", "render", "describe", "judge"),
+                    default="all")
     ap.add_argument("--judge", default=None,
                     help="override config.JUDGE_MODEL (for judge-agreement runs)")
     ap.add_argument("--tag", default="",
@@ -280,6 +342,9 @@ def main():
     print(f"[protocol] describer = {config.VLM_MODEL}", flush=True)
     print(f"[protocol] judge     = {judge_model}   (independent model)", flush=True)
 
+    if args.phase == "render":
+        phase_render(args)
+        return
     if args.phase in ("all", "describe"):
         phase_describe(args, backends)
         backends.unload_vlm()        # free ~16 GB before the judge is loaded
