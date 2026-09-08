@@ -22,13 +22,20 @@ else
 fi
 
 # --- create / reuse the env ---------------------------------------------------
+# conda-forge only, with --override-channels: Anaconda's own default channels
+# (repo.anaconda.com/pkgs/main and /pkgs/r) now require accepting a commercial
+# Terms of Service, which an academic install has no reason to agree to. Everything
+# needed here is on conda-forge.
+conda config --system --add channels conda-forge 2>/dev/null || true
+conda config --system --remove channels defaults 2>/dev/null || true
+
 if ! conda env list | grep -q "^${ENV_NAME} "; then
-    conda create -y -n "$ENV_NAME" "python=${PY_VER}"
+    conda create -y -n "$ENV_NAME" "python=${PY_VER}"         -c conda-forge --override-channels
 fi
 conda activate "$ENV_NAME"
 
 # ffmpeg (Stage 1) — no root needed via conda-forge
-conda install -y -c conda-forge ffmpeg
+conda install -y -c conda-forge --override-channels ffmpeg
 
 # --- python deps --------------------------------------------------------------
 pip install --upgrade pip
