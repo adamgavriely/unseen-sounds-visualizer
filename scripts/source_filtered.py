@@ -84,18 +84,30 @@ def unav_candidates():
 
 
 def audible(path: Path, target: str):
-    """(conf, loudest speech/music) for the target sound in the actual cut."""
+    """Return (top salient sound, its confidence, loudest speech/music).
+
+    Originally this demanded PANNs confirm the DATASET's label, and 60 of 89
+    candidates were rejected as "inaudible" -- but the clips were mostly fine; the
+    two taxonomies simply disagree (UnAV "car passing by" vs PANNs "Vehicle"), and
+    ambient textures score lower than the 0.25 asked of them. What the benchmark
+    actually needs is that SOME clear non-speech sound is present to judge, so we
+    now take PANNs' own strongest salient sound and use that as the target for the
+    visibility check. It is also more honest: the label we test for visibility is
+    the one the pipeline itself would act on.
+    """
     from src.stage1_audio_extraction import extract_audio
     from src.stage4_audio_event_detection import detect_events
+    from src.labels import is_salient_nonspeech, consolidate_families
     with tempfile.TemporaryDirectory() as td:
         media = extract_audio(path, Path(td) / "a.wav", config.SAMPLE_RATE)
         evs = detect_events(Path(media.wav_path), threshold=0.05, min_dur=0.1)
-    ok = set(accepted_labels(target))
-    conf = max((e.confidence for e in evs if e.label in ok), default=0.0)
+    salient = consolidate_families([e for e in evs if is_salient_nonspeech(e.label)])
+    salient = [e for e in salient if e.label in OWL_QUERY]      # must be checkable
+    top = max(salient, key=lambda e: e.confidence) if salient else None
     loud = max((e.confidence for e in evs
                 if e.label.startswith(("Speech", "Male speech", "Female speech"))
                 or is_music(e.label)), default=0.0)
-    return conf, loud
+    return (top.label if top else None), (top.confidence if top else 0.0), loud
 
 
 def visible(path: Path, target: str, mdl, proc):
@@ -136,7 +148,7 @@ def main(want=80):
         if per[target] >= 6:
             continue
         tried += 1
-        name = f"fx_{target.replace(' ', '_')[:18]}_{ytid[:8]}"
+        name = f"fx_{target.replace(' ', '_')[:16]}_{ytid[:8]}"
         raw = STAGE / f"{name}.mp4"
         raw.unlink(missing_ok=True)
         start = max(0.0, min(mid - CLIP_LEN * 0.45, max(0.0, dur - CLIP_LEN)))
@@ -156,32 +168,33 @@ def main(want=80):
             raw.unlink(missing_ok=True)
             continue
         try:
-            conf, loud = audible(raw, target)
+            heard, conf, loud = audible(raw, target)
         except Exception:
             reasons["audio error"] += 1
             raw.unlink(missing_ok=True)
             continue
-        if conf < MIN_CONF:
-            reasons["inaudible"] += 1
+        if heard is None or conf < 0.30:
+            reasons["no clear ambient sound"] += 1
             raw.unlink(missing_ok=True)
             continue
         if loud > 0 and conf < loud * DROWN_RATIO:
-            reasons["drowned"] += 1
+            reasons["drowned by speech/music"] += 1
             raw.unlink(missing_ok=True)
             continue
-        vis = visible(raw, target, mdl, proc)
+        vis = visible(raw, heard, mdl, proc)
         if vis >= DETECT_THR:
             reasons["source on screen"] += 1
             raw.unlink(missing_ok=True)
             continue
         if _accept(raw, name, {"source": "unav-100/filtered", "youtube_id": ytid,
-                               "secondary_event": target, "audible_conf": round(conf, 3),
+                               "secondary_event": heard, "unav_label": target,
+                               "audible_conf": round(conf, 3),
                                "owl_score": round(vis, 3), "prescreen": "enriched",
                                "license": "research use; not redistributed"}):
             got += 1
             per[target] += 1
-            print(f"    KEEP {got}/{want}  {target}  audible={conf:.2f} "
-                  f"owl={vis:.2f}", flush=True)
+            print(f"    KEEP {got}/{want}  heard={heard} ({conf:.2f}) "
+                  f"owl={vis:.2f}  [unav said {target}]", flush=True)
     print(f"\nfiltered: kept {got} of {tried} tried")
     print("rejections:", dict(reasons.most_common()))
     print("classes:", dict(per))
