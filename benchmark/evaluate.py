@@ -66,13 +66,19 @@ def _analyze(path: Path) -> dict:
                         siglip_threshold=config.SIGLIP_THRESHOLD,
                         device=config.DEVICE, threshold=config.VISIBILITY_THRESHOLD,
                         candidates=cands)
+    # Cache the RAW per-concept visibility scores as well as the thresholded list.
+    # Storing only visible_entities meant the visibility threshold could never be
+    # swept -- the one knob on the module responsible for ~76% of the errors.
     return {"duration": media.duration,
             "events": [[e.label, e.start, e.end, e.confidence] for e in events],
-            "visible": scene.visible_entities, "backend": config.VIDEO_BACKEND}
+            "visible": scene.visible_entities,
+            "vis_scores": (scene.raw or {}).get("scores", {}),
+            "backend": config.VIDEO_BACKEND}
 
 
 def _predict(entry: dict, display_threshold: float,
-             augment_threshold: float | None = None) -> dict:
+             augment_threshold: float | None = None,
+             vis_threshold: float | None = None) -> dict:
     """Replicate the gate from cached signals -> clip-level decision."""
     from src.types import AudioEvent
     aug_thr = config.AUGMENT_THRESHOLD if augment_threshold is None else augment_threshold
@@ -80,7 +86,11 @@ def _predict(entry: dict, display_threshold: float,
     salient = [e for e in consolidate_families(
                    [x for x in events if is_salient_nonspeech(x.label)])
                if e.confidence >= min_confidence(e.label, display_threshold)]
-    visible = {v.lower() for v in entry["visible"]}
+    scores = entry.get("vis_scores") or {}
+    if scores and vis_threshold is not None:
+        visible = {k.lower() for k, v in scores.items() if v >= vis_threshold}
+    else:
+        visible = {v.lower() for v in entry["visible"]}
     # asymmetric: an off-screen (augment) claim needs the higher bar
     offscreen = [e.label for e in salient
                  if e.label.lower() not in visible
@@ -99,7 +109,8 @@ def _predict(entry: dict, display_threshold: float,
 
 
 def _score(tags: dict, cache: dict, display_threshold: float,
-           augment_threshold: float | None = None) -> dict:
+           augment_threshold: float | None = None,
+           vis_threshold: float | None = None) -> dict:
     tp = fp = tn = fn = 0
     confusion = {t: {p: 0 for p in CATEGORIES} for t in CATEGORIES}
     errors = []
@@ -110,7 +121,8 @@ def _score(tags: dict, cache: dict, display_threshold: float,
         base = key.split("/", 1)[1]
         if base not in cache:
             continue
-        pred = _predict(cache[base], display_threshold, augment_threshold)
+        pred = _predict(cache[base], display_threshold, augment_threshold,
+                        vis_threshold)
         confusion[tag][pred["category"]] += 1
         gt, decided = SHOULD_AUGMENT[tag], pred["augment"]
         if gt and decided:
