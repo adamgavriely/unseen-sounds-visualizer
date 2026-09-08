@@ -1,12 +1,12 @@
 #!/bin/bash
-#SBATCH --job-name=diffusion
+#SBATCH --job-name=demo
 #SBATCH --output=logs/diffusion_%j.out
 #SBATCH --error=logs/diffusion_%j.err
 #SBATCH --partition=H200-12h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
-#SBATCH --time=12:00:00
+#SBATCH --time=04:00:00
 #SBATCH --mail-type=END,FAIL
 #SBATCH --mail-user=adamgavriely@gmail.com
 # v2-b: run the FULL pipeline with the VLM gate + SDXL generation over benchmark
@@ -23,7 +23,7 @@ export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 
 # how many clips per category to render (override: sbatch --export=N_PER_CAT=10 ...)
-N_PER_CAT="${N_PER_CAT:-8}"
+N_PER_CAT="${N_PER_CAT:-4}"
 
 python - <<PY
 import config
@@ -42,7 +42,9 @@ out.mkdir(parents=True, exist_ok=True)
 n_per = int("${N_PER_CAT}")
 
 clips = []
-for cat in ["unseen_ambient", "mixed", "seen_ambient", "no_ambient"]:
+# demo set: mostly positives (they show the system doing something) plus a couple of
+# negatives (they show it correctly staying silent -- that IS the contribution)
+for cat in ["unseen_ambient", "mixed", "seen_ambient"]:
     ps = sorted(p for p in (bench / cat).glob("*")
                 if p.suffix.lower() in (".mp4", ".webm", ".ogv"))
     clips += [(cat, p) for p in ps[:n_per]]

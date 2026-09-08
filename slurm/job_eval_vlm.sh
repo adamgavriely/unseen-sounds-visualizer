@@ -66,4 +66,8 @@ if len(rows) == 2:
     d = rows[1][1]["f1"] - rows[0][1]["f1"]
     print(f"\nVLM gate F1 delta: {d:+.1%}")
 PY
-echo "DONE -> benchmark/eval_results.json + eval_results_vlm.json"
+# 5. threshold-free comparison: does the visibility signal carry information at all?
+echo "===== AUROC (threshold-free) + trivial baselines ====="
+python -m benchmark.auroc
+
+echo "DONE -> benchmark/eval_results*.json"
