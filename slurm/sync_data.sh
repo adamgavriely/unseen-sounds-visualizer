@@ -3,9 +3,11 @@
 # Uploads the benchmark clips + tags (gitignored, so not in the repo clone).
 #   bash slurm/sync_data.sh
 set -euo pipefail
+export MSYS_NO_PATHCONV=1   # stop Git Bash rewriting remote paths
 
 USER_AT=adamg@slurm-login1.lnx.biu.ac.il
-REMOTE=~/MscProj
+REMOTE=MscProj          # relative to the remote $HOME: a literal "~"
+                        # is expanded by Git Bash into a Windows path
 LOCAL_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 echo "creating remote dirs..."
