@@ -2,7 +2,7 @@
 #SBATCH --job-name=protocol
 #SBATCH --output=logs/protocol_%j.out
 #SBATCH --error=logs/protocol_%j.err
-#SBATCH --partition=generic
+#SBATCH --partition=L4-4h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
@@ -33,6 +33,20 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
     source "$HOME/anaconda3/etc/profile.d/conda.sh"
 conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
+# Unbuffered, or a crash mid-model-load loses every print and leaves an empty log --
+# which is exactly how the 11 GB GTX 1080 Ti failure on 'generic' presented itself.
+export PYTHONUNBUFFERED=1
+
+# Refuse to start on a card too small for the describer rather than dying silently.
+python - <<'PY'
+import torch, sys
+if torch.cuda.is_available():
+    gb = torch.cuda.get_device_properties(0).total_memory / 1e9
+    print(f"[check] GPU {torch.cuda.get_device_name(0)}  {gb:.0f} GB", flush=True)
+    if gb < 20:
+        sys.exit(f"GPU too small: Qwen2.5-VL 7B needs ~16 GB, this card has {gb:.0f} GB. "
+                 "Use --partition=L4-4h (23 GB), A100-4h or L40s-4h.")
+PY
 
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 

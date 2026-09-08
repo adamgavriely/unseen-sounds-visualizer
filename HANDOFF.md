@@ -134,7 +134,11 @@ Gotchas that cost real time:
   protocol therefore runs as two passes (`--phase describe`, then `--phase judge`) so
   the describer and the judge are never resident together.
 - A partition state ending in `-` (e.g. `mixed-`) means **draining**: a job submitted
-  there pends forever with no log. `generic` usually has idle nodes.
+  there pends forever with no log. `generic` usually has idle nodes but they are
+  **GTX 1080 Ti with only 11 GB** — too small for Qwen2.5-VL 7B, which dies during
+  model load leaving an empty `.err` and a truncated `.out`. Use `L4-4h` (23 GB),
+  `A100-4h` or `L40s-4h` for anything with a 7B model. `job_protocol.sh` now
+  preflights the card size and exits with a clear message instead.
 - H200 partitions are often drained; `L40s-4h` and `generic` usually have idle nodes.
   Check with `sinfo -o "%15P %5a %8T %6D %N"`.
 
