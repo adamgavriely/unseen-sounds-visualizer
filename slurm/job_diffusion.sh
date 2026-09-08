@@ -46,13 +46,25 @@ out = config.OUTPUT_DIR
 out.mkdir(parents=True, exist_ok=True)
 n_per = int("${N_PER_CAT}")
 
+# Taking the first N alphabetically gave 6 of 12 clips the gate stays silent on, so
+# half the demo rendered an empty panel. benchmark/demo_set.json lists clips that are
+# BOTH correctly positive (Adam tagged them unseen/mixed) and visually populated
+# (an augmentation is on screen for most of the clip).
 clips = []
-# demo set: mostly positives (they show the system doing something) plus a couple of
-# negatives (they show it correctly staying silent -- that IS the contribution)
-for cat in ["unseen_ambient", "mixed", "seen_ambient"]:
-    ps = sorted(p for p in (bench / cat).glob("*")
-                if p.suffix.lower() in (".mp4", ".webm", ".ogv"))
-    clips += [(cat, p) for p in ps[:n_per]]
+demo_list = Path("benchmark/demo_set.json")
+if demo_list.exists():
+    import json as _j
+    wanted = _j.loads(demo_list.read_text())
+    for cat in ["unseen_ambient", "mixed", "seen_ambient", "no_ambient"]:
+        for p in sorted((bench / cat).glob("*")):
+            if p.name in wanted:
+                clips.append((cat, p))
+    clips = clips[:12]
+if not clips:                       # fallback: first n_per per category
+    for cat in ["unseen_ambient", "mixed", "seen_ambient"]:
+        ps = sorted(p for p in (bench / cat).glob("*")
+                    if p.suffix.lower() in (".mp4", ".webm", ".ogv"))
+        clips += [(cat, p) for p in ps[:n_per]]
 print(f"rendering {len(clips)} clips ({n_per}/category)", flush=True)
 
 for i, (cat, p) in enumerate(clips, 1):

@@ -252,14 +252,27 @@ def _chip_color(label: str) -> tuple:
 
 
 def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpec],
-                 label: str, mode: str) -> None:
-    """Draw one fixed slot: image/chip when its sound is active, dim label when not."""
+                 label: str, mode: str, idle_image: Optional[str] = None) -> None:
+    """Draw one fixed slot: image/chip when its sound is active, dimmed when not.
+
+    An inactive slot used to be a black rectangle, which a viewer reads as a broken
+    player rather than as "this sound is not currently present". Keeping the image
+    visible but heavily dimmed conveys "heard a moment ago" and keeps the panel
+    legible, while still making the active moment obvious.
+    """
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     d = ImageDraw.Draw(canvas, "RGBA")
-    if spec is None:                       # inactive: dark slot, dim label placeholder
-        d.rectangle(box, fill=(16, 18, 24))
-        d.text((x0 + 14, (y0 + y1) // 2 - 6), label, fill=(70, 76, 90))
+    if spec is None:                       # inactive
+        if idle_image and mode != "minimal":
+            img = _cover_crop(Image.open(idle_image).convert("RGB"), (w, h)).convert("RGBA")
+            img.putalpha(48)               # ~19%: present but clearly not active
+            base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
+            canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
+            d.text((x0 + 14, y1 - 24), label, fill=(120, 128, 145))
+        else:
+            d.rectangle(box, fill=(16, 18, 24))
+            d.text((x0 + 14, (y0 + y1) // 2 - 6), label, fill=(70, 76, 90))
     elif mode == "minimal":                # active chip: color band + label, no imagery
         d.rectangle(box, fill=(24, 26, 34))
         r, g, b = _chip_color(label)
@@ -296,20 +309,30 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
 
     # build the panel slideshow inputs: fixed slot per sound, stacked vertically
     slots = _slot_order(specs)
+    # one image per slot, so an inactive slot can still show its (dimmed) picture
+    slot_image = {}
+    for sp in specs:
+        if sp.augment and sp.image_path and sp.event_label not in slot_image:
+            slot_image[sp.event_label] = sp.image_path
     segs = _timeline(specs, duration)
     lines = []
     for i, (active, dur) in enumerate(segs):
         p = work / f"p{i:04d}.png"
         canvas = Image.new("RGB", (panel, panel), (16, 18, 24))
         if not slots:
+            # No augmentation at all is a DECISION, not a failure: say so, or the
+            # blank panel looks like the renderer broke.
             d = ImageDraw.Draw(canvas)
-            d.text((panel // 2 - 40, panel // 2), "(no sound)", fill=(90, 96, 110))
+            d.text((28, panel // 2 - 20), "no off-screen sound detected",
+                   fill=(150, 158, 175))
+            d.text((28, panel // 2 + 4), "nothing to add for this scene",
+                   fill=(95, 101, 116))
         else:
             sh = panel // len(slots)
             for k, label in enumerate(slots):
                 y1 = panel if k == len(slots) - 1 else (k + 1) * sh
                 _render_slot(canvas, (0, k * sh, panel, y1), active.get(label),
-                             label, mode)
+                             label, mode, slot_image.get(label))
         canvas.save(p)
         # concat resolves 'file' paths relative to concat.txt's own dir -> use basenames
         lines += [f"file '{p.name}'", f"duration {dur:.3f}"]
