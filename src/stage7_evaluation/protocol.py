@@ -37,6 +37,18 @@ BASELINES (proposal sec 7) share every step except how the image is produced:
                      direct audio-to-image baseline)
   audio_caption   -- text only, no image; the "description" is the caption itself
 
+The protocol runs in TWO SEQUENTIAL PASSES so the describer and the judge never sit in
+GPU memory at the same time (Qwen2.5-VL ~16 GB + Mistral ~15 GB will not co-fit on a
+24 GB card):
+
+  pass 1 "describe"  load the VLM, produce the reference and the description for every
+                     clip, write them to benchmark/protocol_descriptions.json, then
+                     free the weights;
+  pass 2 "judge"     load the judge alone and score the cached pairs.
+
+Besides fitting anywhere, this makes the Day-6 judge-reliability experiment cheap: a
+second judge can re-score the same cached descriptions without re-running any vision.
+
 Backends are pluggable so the protocol can run with a local VLM/LLM on the cluster
 or with a hosted API; see config.JUDGE_MODEL and config.VLM_MODEL.
 """
@@ -150,6 +162,30 @@ class Backends:
             self._judge = (mdl, tok)
         return self._judge
 
+    def unload_vlm(self):
+        """Free the describer before the judge is loaded (see the two-pass note)."""
+        if self._vlm is not None:
+            del self._vlm
+            self._vlm = None
+        self._free()
+
+    def unload_judge(self):
+        if self._judge is not None:
+            del self._judge
+            self._judge = None
+        self._free()
+
+    @staticmethod
+    def _free():
+        import gc
+        gc.collect()
+        try:
+            import torch
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except Exception:
+            pass
+
     def describe_image(self, image_path: Path, prompt: str = DESCRIBE_PROMPT) -> str:
         import torch
         from PIL import Image
@@ -228,9 +264,61 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
     return (int(m.group(1)) if m else 0), raw[:200]
 
 
+def describe_clip(clip_name: str, system: str, work_dir: Path,
+                  backends: Backends) -> Optional[dict]:
+    """Pass 1: build the reference and the description. No judging, no judge model.
+
+    Returns a plain dict so it can be cached to JSON and scored later by any judge.
+    """
+    try:
+        events_f = work_dir / "events.json"
+        scene_f = work_dir / "scene.json"
+        augs_f = work_dir / "augmentations.json"
+        if not (events_f.exists() and augs_f.exists()):
+            return None
+        from src.labels import is_salient_nonspeech, consolidate_families
+        from src.types import AudioEvent
+        import config
+
+        raw_events = json.loads(events_f.read_text(encoding="utf-8"))
+        evs = [AudioEvent(e["label"], e["start"], e["end"], e["confidence"])
+               for e in raw_events]
+        salient = [e.label for e in consolidate_families(
+            [x for x in evs if is_salient_nonspeech(x.label)])
+            if e.confidence >= config.DISPLAY_THRESHOLD]
+        scene = json.loads(scene_f.read_text(encoding="utf-8")) if scene_f.exists() else {}
+        visible = scene.get("visible_entities", [])
+        seg_f = work_dir / "segments.json"
+        transcript = " ".join(s.get("text", "") for s in
+                              json.loads(seg_f.read_text(encoding="utf-8")))             if seg_f.exists() else ""
+
+        specs = json.loads(augs_f.read_text(encoding="utf-8"))
+        images = [Path(s["image_path"]) for s in specs
+                  if s.get("augment") and s.get("image_path")
+                  and Path(s["image_path"]).exists()]
+
+        return {"clip": clip_name, "system": system,
+                "reference": build_reference(salient, visible, transcript, backends),
+                "description": describe_augmentation(images, backends),
+                "n_augmentations": len(images),
+                "sounds": salient, "visible": visible}
+    except Exception as e:
+        print(f"    ! describe {clip_name}: {type(e).__name__}: {e}")
+        return None
+
+
+def judge_record(rec: dict, backends: Backends) -> ClipEvaluation:
+    """Pass 2: score one cached (reference, description) pair."""
+    score, why = judge(rec["reference"], rec["description"], backends)
+    return ClipEvaluation(clip=rec["clip"], system=rec["system"],
+                          reference=rec["reference"], description=rec["description"],
+                          score=score, why=why,
+                          n_augmentations=rec.get("n_augmentations", 0))
+
+
 def evaluate_clip(clip_name: str, system: str, work_dir: Path,
                   backends: Backends) -> Optional[ClipEvaluation]:
-    """Run the whole protocol for one clip whose pipeline artifacts exist."""
+    """Single-pass convenience path (both models resident). Prefer the two passes."""
     try:
         events_f = work_dir / "events.json"
         scene_f = work_dir / "scene.json"

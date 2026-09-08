@@ -14,10 +14,27 @@ Systems compared (proposal sec 7):
 All three are scored by the SAME judge against the SAME reference, so the only
 variable is what the system chose to show.
 
+TWO PASSES, and why
+-------------------
+The describing VLM (Qwen2.5-VL, ~16 GB) and the judging LLM (Mistral-7B, ~15 GB) do
+not co-fit on a 24 GB card, and the cluster's large-memory partitions are frequently
+draining. So the run is split so that only one model is resident at a time:
+
+  --phase describe   render, then build the reference and the description for every
+                     clip, cache to benchmark/protocol_descriptions.json, free the VLM
+  --phase judge      load the judge alone and score the cached pairs
+  --phase all        (default) both, sequentially, unloading in between
+
+The split also makes judge reliability cheap to measure: a second judge re-scores the
+same cached descriptions with no vision work at all --
+    python -m benchmark.run_protocol --phase judge --judge Qwen/Qwen3-8B --tag judge2
+which is exactly the Day-6 experiment in docs/PLAN.md.
+
 Usage:
-    python -m benchmark.run_protocol                     # all systems, all clips
+    python -m benchmark.run_protocol --limit 12          # small end-to-end pass
+    python -m benchmark.run_protocol --phase describe    # vision pass only
+    python -m benchmark.run_protocol --phase judge       # scoring pass only
     python -m benchmark.run_protocol --systems proposed  # one system
-    python -m benchmark.run_protocol --limit 20          # quick pass
 """
 from __future__ import annotations
 
@@ -35,9 +52,10 @@ if str(_ROOT) not in sys.path:
 
 import config
 from src import pipeline
-from src.stage7_evaluation.protocol import Backends, evaluate_clip, ClipEvaluation
+from src.stage7_evaluation.protocol import Backends, describe_clip, judge_record
 
 BENCH = _ROOT / "data" / "input" / "benchmark"
+DESCRIPTIONS = _ROOT / "benchmark" / "protocol_descriptions.json"
 OUT = _ROOT / "benchmark" / "protocol_results.json"
 TAGS = _ROOT / "benchmark" / "tags.json"
 SYSTEMS = ("proposed", "blind_a2i", "audio_caption")
@@ -47,7 +65,7 @@ SCENARIO_OF = {"unseen_ambient": "acoustic_event_or_ambient",
                "no_ambient": "ambient_environmental"}
 
 
-def clips_to_run(limit: int | None):
+def clips_to_run(limit):
     """Benchmark clips that carry a human label, so results can be broken down."""
     tags = json.loads(TAGS.read_text(encoding="utf-8")) if TAGS.exists() else {}
     out = []
@@ -86,23 +104,15 @@ def caption_from_artifacts(work: Path) -> str:
             if labels else "no notable non-speech sound")
 
 
-def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--systems", nargs="*", default=list(SYSTEMS))
-    ap.add_argument("--limit", type=int, default=None)
-    ap.add_argument("--skip-render", action="store_true",
-                    help="reuse existing pipeline artifacts instead of re-running it")
-    args = ap.parse_args()
-
+# ----------------------------------------------------------------------
+# pass 1 -- render and describe. Only the VLM is loaded.
+# ----------------------------------------------------------------------
+def phase_describe(args, backends):
     clips = clips_to_run(args.limit)
-    print(f"[protocol] {len(clips)} labelled clips x {len(args.systems)} systems",
-          flush=True)
-    backends = Backends(config.VLM_MODEL, config.JUDGE_MODEL, config.DEVICE)
-    print(f"[protocol] describer = {config.VLM_MODEL}", flush=True)
-    print(f"[protocol] judge     = {config.JUDGE_MODEL}   (independent model)",
-          flush=True)
-    results = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else []
-    done = {(r["clip"], r["system"]) for r in results}
+    print(f"[describe] {len(clips)} clips x {len(args.systems)} systems", flush=True)
+    recs = json.loads(DESCRIPTIONS.read_text(encoding="utf-8")) \
+        if DESCRIPTIONS.exists() else []
+    done = {(r["clip"], r["system"]) for r in recs}
 
     for system in args.systems:
         configure(system)
@@ -111,30 +121,56 @@ def main():
             if (clip.name, system) in done:
                 continue
             work = work_root / clip.stem
-            if not args.skip_render or not (work / "augmentations.json").exists():
+            if not (work / "augmentations.json").exists() or not args.skip_render:
                 try:
                     pipeline.run(clip, work_root=work_root)
                 except Exception as e:
                     print(f"  ! render {clip.name}: {type(e).__name__}: {e}", flush=True)
                     continue
-            ev = evaluate_clip(clip.name, system, work, backends)
-            if ev is None:
+            rec = describe_clip(clip.name, system, work, backends)
+            if rec is None:
                 continue
-            if system == "audio_caption":       # score the caption text, not an image
-                from src.stage7_evaluation.protocol import judge
-                cand = caption_from_artifacts(work)
-                sc, why = judge(ev.reference, cand, backends)
-                ev = ClipEvaluation(ev.clip, system, ev.reference, cand, sc, why, 0)
-            rec = ev.to_dict()
+            if system == "audio_caption":     # the caption IS the augmentation
+                rec["description"] = caption_from_artifacts(work)
+                rec["n_augmentations"] = 0
             rec["human_tag"] = tag
             rec["scenario"] = SCENARIO_OF[tag]
-            results.append(rec)
-            OUT.write_text(json.dumps(results, indent=1, ensure_ascii=False),
-                           encoding="utf-8")
-            print(f"  [{system} {i}/{len(clips)}] {clip.name[:34]:34} "
-                  f"score={ev.score}  {ev.description[:46]}", flush=True)
+            recs.append(rec)
+            DESCRIPTIONS.write_text(json.dumps(recs, indent=1, ensure_ascii=False),
+                                    encoding="utf-8")
+            print(f"  [{system} {i}/{len(clips)}] {clip.name[:32]:32} "
+                  f"{rec['description'][:52]}", flush=True)
+    print(f"[describe] cached -> {DESCRIPTIONS}", flush=True)
 
+
+# ----------------------------------------------------------------------
+# pass 2 -- judge the cached pairs. Only the judge is loaded.
+# ----------------------------------------------------------------------
+def phase_judge(backends, tag: str = ""):
+    if not DESCRIPTIONS.exists():
+        sys.exit("no descriptions cached -- run --phase describe first")
+    recs = json.loads(DESCRIPTIONS.read_text(encoding="utf-8"))
+    out_file = OUT if not tag else OUT.with_name(f"protocol_results_{tag}.json")
+    results = json.loads(out_file.read_text(encoding="utf-8")) \
+        if out_file.exists() else []
+    done = {(r["clip"], r["system"]) for r in results}
+    print(f"[judge] {len(recs)} cached pairs, {len(done)} already scored", flush=True)
+
+    for i, rec in enumerate(recs, 1):
+        if (rec["clip"], rec["system"]) in done:
+            continue
+        ev = judge_record(rec, backends)
+        row = ev.to_dict()
+        row["human_tag"] = rec.get("human_tag")
+        row["scenario"] = rec.get("scenario")
+        row["judge_model"] = backends.judge_model
+        results.append(row)
+        out_file.write_text(json.dumps(results, indent=1, ensure_ascii=False),
+                            encoding="utf-8")
+        print(f"  [{i}/{len(recs)}] {rec['system']:14} {rec['clip'][:30]:30} "
+              f"score={ev.score}  {ev.why[:40]}", flush=True)
     report(results)
+    print(f"\nfull records -> {out_file}")
 
 
 def report(results):
@@ -160,7 +196,32 @@ def report(results):
             f"{(sum(by_sys_scn[(s, scn)]) / len(by_sys_scn[(s, scn)])):>14.2f}"
             if by_sys_scn.get((s, scn)) else f"{'-':>14}" for s in SYSTEMS)
         print(f"  {scn:30}{row}")
-    print(f"\nfull records -> {OUT}")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--systems", nargs="*", default=list(SYSTEMS))
+    ap.add_argument("--limit", type=int, default=None)
+    ap.add_argument("--phase", choices=("all", "describe", "judge"), default="all")
+    ap.add_argument("--judge", default=None,
+                    help="override config.JUDGE_MODEL (for judge-agreement runs)")
+    ap.add_argument("--tag", default="",
+                    help="suffix for the results file, e.g. --tag judge2")
+    ap.add_argument("--skip-render", action="store_true",
+                    help="reuse existing pipeline artifacts instead of re-rendering")
+    args = ap.parse_args()
+
+    judge_model = args.judge or config.JUDGE_MODEL
+    backends = Backends(config.VLM_MODEL, judge_model, config.DEVICE)
+    print(f"[protocol] describer = {config.VLM_MODEL}", flush=True)
+    print(f"[protocol] judge     = {judge_model}   (independent model)", flush=True)
+
+    if args.phase in ("all", "describe"):
+        phase_describe(args, backends)
+        backends.unload_vlm()        # free ~16 GB before the judge is loaded
+        print("[protocol] describer unloaded", flush=True)
+    if args.phase in ("all", "judge"):
+        phase_judge(backends, args.tag)
 
 
 if __name__ == "__main__":

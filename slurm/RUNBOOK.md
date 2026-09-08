@@ -89,6 +89,35 @@ bash slurm/fetch_results.sh      # run this on your PC
 
 ---
 
+---
+
+## Step 4 — the main experiment: does the output actually help? (~2-4 h)
+
+```bash
+sbatch --export=LIMIT=12,GEN=retrieve slurm/job_protocol.sh   # pilot
+sbatch --export=LIMIT=100 slurm/job_protocol.sh               # full run, SDXL
+```
+
+This is proposal sec 6.1 + sec 7: each clip is rendered under three systems (gated,
+blind audio-to-image, audio caption), a VLM describes what each augmentation conveys,
+an LLM builds the reference of what a deaf viewer is missing, and an INDEPENDENT judge
+model scores the match 0-4.
+
+It runs in **two passes** -- describe, then judge -- so the two 7B models are never in
+memory together. Partition defaults to `generic`, which usually has idle nodes;
+`H200` is frequently draining, which will leave a job pending forever. Check first:
+
+```bash
+sinfo -o "%15P %5a %8T %6D %N"      # a trailing dash on the state means draining
+```
+
+Judge agreement (Day 6) reuses the cached descriptions, so it needs no GPU vision:
+```bash
+python -m benchmark.run_protocol --phase judge --judge Qwen/Qwen3-8B --tag judge2
+```
+
+---
+
 ## Monitoring
 
 ```bash

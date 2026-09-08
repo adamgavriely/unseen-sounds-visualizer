@@ -43,9 +43,16 @@ sed -i 's/\r$//' slurm/*.sh
 python -m benchmark.run_protocol --limit 2 --systems proposed
 ```
 
-Likely causes, in order: CRLF in the job script; the Mistral judge weights not yet
-downloaded on the compute node; Qwen2.5-VL + Mistral together exceeding a 23 GB L4
-(they fit on H200/A100, and the two models can be run as sequential passes if not).
+Cause found (2026-09-08): nothing was wrong with the code -- the job was queued on
+`H200-12h`, whose only node shows `mixed-` (draining), so it pended indefinitely.
+`sinfo` showed 8 idle nodes on `generic`; the job now defaults there.
+
+**The protocol runs in two passes** so the describing VLM (~16 GB) and the judging
+LLM (~15 GB) are never resident together, since they do not co-fit on a 24 GB card
+and the large-memory partitions are often draining:
+`--phase describe` caches references and descriptions, frees the VLM, then
+`--phase judge` loads the judge alone and scores the cache. A second benefit: the
+Day-6 judge-agreement run needs no vision work at all.
 
 **Done when** two clips produce a reference, a description and a score.
 
@@ -104,8 +111,13 @@ augmentation dynamics if a fresh set is wanted.
 ## Day 6 -- close two methodological holes
 
 **Judge reliability.** One 7B model deciding every score is the protocol's softest
-point. Re-run only the judging step (descriptions are cached) with a second judge
-from a different family and report Spearman correlation plus exact-match rate. High
+point. Because the run is split into two passes, re-scoring costs no vision work:
+
+```bash
+python -m benchmark.run_protocol --phase judge --judge Qwen/Qwen3-8B --tag judge2
+```
+
+Report Spearman correlation plus exact-match rate between the two judges. High
 agreement means the scores are a property of the augmentations; low agreement bounds
 how far any LLM-judged number in this area can be trusted -- which is itself an answer
 to RQ "how should such systems be evaluated?".
@@ -146,7 +158,7 @@ package: results table, 2-3 demo videos, the two PDFs.
 | Risk | Signal | Response |
 |---|---|---|
 | Judge does not discriminate | Day 2 scores all equal | rewrite the judge prompt; if still flat, fall back to CLIP image-text similarity as the metric and report the LLM judge as a limitation |
-| Models will not co-fit on the GPU | OOM | run describe and judge as two sequential passes over cached intermediates |
+| Models will not co-fit on the GPU | OOM | already handled -- the run is two sequential passes, one model resident at a time |
 | SDXL too slow for 300 runs | Day 3 hits the wall | the job requeues and resumes; else `GEN=retrieve` for baselines, SDXL for demos only |
 | Nothing works by Day 5 | | fall back to the secured component results -- four backends, trivial baselines, AUROC, object-vs-event, kappa. A thinner thesis, but a complete one |
 

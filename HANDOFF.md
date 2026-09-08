@@ -130,7 +130,11 @@ Gotchas that cost real time:
   script fails, run `sed -i 's/\r$//' slurm/*.sh`.
 - Never clone on the cluster (private repo, GitHub refuses password auth) — the sync
   script uploads code over ssh instead.
-- Qwen2.5-VL (~16 GB) + SDXL (~7 GB) will **not** both fit on a 23 GB L4.
+- Qwen2.5-VL (~16 GB) + SDXL (~7 GB) will **not** both fit on a 23 GB L4. The Stage-7
+  protocol therefore runs as two passes (`--phase describe`, then `--phase judge`) so
+  the describer and the judge are never resident together.
+- A partition state ending in `-` (e.g. `mixed-`) means **draining**: a job submitted
+  there pends forever with no log. `generic` usually has idle nodes.
 - H200 partitions are often drained; `L40s-4h` and `generic` usually have idle nodes.
   Check with `sinfo -o "%15P %5a %8T %6D %N"`.
 
