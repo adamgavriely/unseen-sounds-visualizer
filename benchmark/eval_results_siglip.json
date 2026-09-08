@@ -1,0 +1,1376 @@
+{
+  "main": {
+    "display_threshold": 0.12,
+    "augment_threshold": 0.12,
+    "n_clips": 256,
+    "accuracy": 0.49609375,
+    "precision": 0.31901840490797545,
+    "recall": 0.7428571428571429,
+    "f1": 0.44635193133047213,
+    "tp": 52,
+    "fp": 111,
+    "tn": 75,
+    "fn": 18,
+    "confusion": {
+      "unseen_ambient": {
+        "unseen_ambient": 30,
+        "mixed": 7,
+        "seen_ambient": 6,
+        "no_ambient": 2
+      },
+      "mixed": {
+        "unseen_ambient": 7,
+        "mixed": 8,
+        "seen_ambient": 7,
+        "no_ambient": 3
+      },
+      "seen_ambient": {
+        "unseen_ambient": 50,
+        "mixed": 34,
+        "seen_ambient": 31,
+        "no_ambient": 13
+      },
+      "no_ambient": {
+        "unseen_ambient": 27,
+        "mixed": 0,
+        "seen_ambient": 1,
+        "no_ambient": 30
+      }
+    },
+    "errors": [
+      {
+        "clip": "bell_miami.webm",
+        "truth": "unseen_ambient",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "london_protest_01.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "row_boat.webm",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "ship_ccgs.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Rain",
+          "Thunder"
+        ]
+      },
+      {
+        "clip": "station_kwasa1.webm",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "station_warszawa.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "train_liminka.webm",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Water",
+          "Aircraft"
+        ]
+      },
+      {
+        "clip": "bell_kazansky.mp4",
+        "truth": "unseen_ambient",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "bell_pribyslav.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Bell"
+        ]
+      },
+      {
+        "clip": "fireworks_springville.webm",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Cat"
+        ]
+      },
+      {
+        "clip": "waterfall_kawaida_01.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Water"
+        ]
+      },
+      {
+        "clip": "movie_dunkirk_90.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "movie_madmax_57.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Whoosh, swoosh, swish"
+        ]
+      },
+      {
+        "clip": "ambient_citywalk_cairo_834.mp4",
+        "truth": "unseen_ambient",
+        "pred": "no_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "ambient_citywalk_mumbai_2737.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "ambient_citywalk_nyc_1689.mp4",
+        "truth": "unseen_ambient",
+        "pred": "no_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "ambient_citywalk_tokyo_5420.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Rain"
+        ]
+      },
+      {
+        "clip": "ambient_desert_wind_74.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Thunder",
+          "Rain"
+        ]
+      },
+      {
+        "clip": "ambient_harbour_boats_1449.mp4",
+        "truth": "mixed",
+        "pred": "no_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "ambient_harbour_boats_724.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "ambient_market_bangkok_1237.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "ambient_market_bangkok_4332.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "ambient_market_marrakech_3102.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "ambient_nature_rainforest_2179.mp4",
+        "truth": "mixed",
+        "pred": "no_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "ambient_snow_walk_930.mp4",
+        "truth": "mixed",
+        "pred": "no_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "ambient_weather_storm_16200.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "b3_aquarium_walk.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Whale vocalization"
+        ]
+      },
+      {
+        "clip": "b3_aviary_birds.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "b3_bat_cave.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Sonar"
+        ]
+      },
+      {
+        "clip": "b3_chinese_newyear.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Fireworks",
+          "Tap"
+        ]
+      },
+      {
+        "clip": "b3_christmas_market.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Whale vocalization"
+        ]
+      },
+      {
+        "clip": "b3_construction_site.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Rain",
+          "Thunder"
+        ]
+      },
+      {
+        "clip": "b3_creek_bridge.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Tools",
+          "Dental drill, dentist's drill",
+          "Power tool",
+          "Drill"
+        ]
+      },
+      {
+        "clip": "b3_crossing_bells.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Cat",
+          "Steam"
+        ]
+      },
+      {
+        "clip": "b3_favela_rio.mp4",
+        "truth": "unseen_ambient",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "b3_ia_81974_9th_infantry_vietnam_v_0.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Aircraft"
+        ]
+      },
+      {
+        "clip": "b3_ia_81974_9th_infantry_vietnam_v_1.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Train",
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_farm_tractor.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_flea_market.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_garbage_truck.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Train"
+        ]
+      },
+      {
+        "clip": "b3_glacier_hike.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Horse",
+          "Bird"
+        ]
+      },
+      {
+        "clip": "b3_hail_roof.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Sewing machine"
+        ]
+      },
+      {
+        "clip": "b3_ia_62934flighttothesuncountryvw_0.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Television"
+        ]
+      },
+      {
+        "clip": "b3_ia_87954yourchancetolivenuclear_1.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Bird",
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Water"
+        ]
+      },
+      {
+        "clip": "b3_kitchen_restaurant.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Dishes",
+          "Vehicle",
+          "Train"
+        ]
+      },
+      {
+        "clip": "b3_laundromat.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Train"
+        ]
+      },
+      {
+        "clip": "b3_petting_zoo.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Turkey",
+          "Gobble",
+          "Laughter",
+          "Snicker"
+        ]
+      },
+      {
+        "clip": "b3_quarry_blast.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Footsteps"
+        ]
+      },
+      {
+        "clip": "b3_pet_shop.mp4",
+        "truth": "unseen_ambient",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "b3_wm_waterfall_vid_venezuela_ogv.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Water"
+        ]
+      },
+      {
+        "clip": "b3_ia_destinationamerica5cityofthe_0.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Clicking"
+        ]
+      },
+      {
+        "clip": "b3_ia_somewherebetweenhereandnow_0.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Bird"
+        ]
+      },
+      {
+        "clip": "b3_ia_theshockofthenewcultureasnat_1.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Sheep"
+        ]
+      },
+      {
+        "clip": "b3_ice_rink.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_library_hall.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Rain",
+          "Biting",
+          "Chewing, mastication"
+        ]
+      },
+      {
+        "clip": "b3_logging_forest.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Chainsaw",
+          "Wood",
+          "Sawing",
+          "Tools",
+          "Power tool"
+        ]
+      },
+      {
+        "clip": "ev_fire_alarm_office.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Glass",
+          "Thump, thud"
+        ]
+      },
+      {
+        "clip": "ev_kitchen_pan_drop.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Glass",
+          "Chink, clink"
+        ]
+      },
+      {
+        "clip": "b3_night_market_food.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Rowboat, canoe, kayak"
+        ]
+      },
+      {
+        "clip": "b3_walk_hanoi.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "b3_wind_coast.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Thunder"
+        ]
+      },
+      {
+        "clip": "as_breaking_3wstXl8v.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Dishes"
+        ]
+      },
+      {
+        "clip": "as_car_alarm_0Hz4R_m0.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Keys jangling"
+        ]
+      },
+      {
+        "clip": "as_church_bell_PVGChCsr.mp4",
+        "truth": "unseen_ambient",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "as_church_bell_otz4AffL.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Bell"
+        ]
+      },
+      {
+        "clip": "as_church_bell_pJRAWkLM.mp4",
+        "truth": "unseen_ambient",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "as_explosion_p6lhCxNw.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Explosion",
+          "Burst, pop"
+        ]
+      },
+      {
+        "clip": "as_fire_engine_fire_truck_4arad6my.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "as_glass_GAGt_UEF.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Dishes",
+          "Water",
+          "Clicking"
+        ]
+      },
+      {
+        "clip": "as_glass_oHil9Ip_.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Dishes"
+        ]
+      },
+      {
+        "clip": "as_glass_t6e0Rjul.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Dishes"
+        ]
+      },
+      {
+        "clip": "mv_arrest_street_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Glass",
+          "Snicker",
+          "Chuckle, chortle"
+        ]
+      },
+      {
+        "clip": "mv_market_chase_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren",
+          "Cat"
+        ]
+      },
+      {
+        "clip": "mv_shipwreck_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "tv_war_series_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Train",
+          "Burst, pop"
+        ]
+      },
+      {
+        "clip": "as_helicopter_mVjQigOw.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Door"
+        ]
+      },
+      {
+        "clip": "mv_bank_robbery_alarm.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "mv_helicopter_arrival.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Explosion",
+          "Roar"
+        ]
+      },
+      {
+        "clip": "mv_phone_ringing_tense.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren"
+        ]
+      },
+      {
+        "clip": "mv_war_bombardment.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Burst, pop"
+        ]
+      },
+      {
+        "clip": "gn_western_town_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Bird",
+          "Honk",
+          "Goose"
+        ]
+      },
+      {
+        "clip": "mc_earthquake_disaster.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Explosion",
+          "Gunshot"
+        ]
+      },
+      {
+        "clip": "mc_fight_bar_scene.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "mc_fire_rescue.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Thunder",
+          "Sheep"
+        ]
+      },
+      {
+        "clip": "mc_riot_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Thunder"
+        ]
+      },
+      {
+        "clip": "mc_ship_deck_storm.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Gunshot"
+        ]
+      },
+      {
+        "clip": "mc_snow_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Explosion",
+          "Water",
+          "Burst, pop"
+        ]
+      },
+      {
+        "clip": "mc_subway_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Glass",
+          "Cat"
+        ]
+      },
+      {
+        "clip": "rx_radio_broadcast_scene.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Cat"
+        ]
+      },
+      {
+        "clip": "wc_brazilian_film.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Glass"
+        ]
+      },
+      {
+        "clip": "wc_korean_thriller.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "un_airplane_flyby_-Jcl3FrH.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_airplane_flyby_5_aRF2s3.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_dog_barking_Glz9M145.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Laughter",
+          "Baby laughter",
+          "Belly laugh",
+          "Chuckle, chortle"
+        ]
+      },
+      {
+        "clip": "un_dog_howling_0bvgm0bO.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Baby cry, infant cry",
+          "Crying, sobbing",
+          "Bird"
+        ]
+      },
+      {
+        "clip": "un_driving_buses_3iVMMcgK.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_helicopter_1PCkIkol.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Aircraft"
+        ]
+      },
+      {
+        "clip": "un_helicopter_T2F6euNV.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Explosion"
+        ]
+      },
+      {
+        "clip": "un_machine_gun_shooti_7RFRiTA8.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Fireworks"
+        ]
+      },
+      {
+        "clip": "un_people_crowd_W1e3xWnc.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_raining_71I9l62a.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Basketball bounce"
+        ]
+      },
+      {
+        "clip": "un_thunder_1gDcPnV9.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Dog"
+        ]
+      },
+      {
+        "clip": "lx_chainsaw_and_power_tool_W1VYWwY.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Chainsaw",
+          "Tools"
+        ]
+      },
+      {
+        "clip": "ly_alarm_qCVdVav.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Snake",
+          "Cat"
+        ]
+      },
+      {
+        "clip": "un_airplane_flyby_1FOKvagR.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_ambulance_siren_-diPczRE.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Train"
+        ]
+      },
+      {
+        "clip": "un_dog_barking_5yMvxKLD.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren"
+        ]
+      },
+      {
+        "clip": "un_dog_howling_UUjSLYdR.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Baby cry, infant cry",
+          "Crying, sobbing",
+          "Laughter",
+          "Baby laughter",
+          "Belly laugh"
+        ]
+      },
+      {
+        "clip": "un_car_passing_by_0IStDugr.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Chainsaw",
+          "Wood",
+          "Sawing",
+          "Tools",
+          "Power tool"
+        ]
+      },
+      {
+        "clip": "un_fire_truck_siren_5dbDin4u.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren",
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_hair_dryer_drying_WWu24rJs.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Typing",
+          "Computer keyboard"
+        ]
+      },
+      {
+        "clip": "un_people_shouting__jB-IM_7.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Cat",
+          "Sheep",
+          "Caterwaul",
+          "Cattle"
+        ]
+      },
+      {
+        "clip": "un_thunder_08A9CKS5.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "un_thunder_T3f3Y-eO.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Water"
+        ]
+      },
+      {
+        "clip": "oc_distant_train_valley.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Train",
+          "Vehicle",
+          "Bird"
+        ]
+      },
+      {
+        "clip": "oc_ice_cracking_lake.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Footsteps"
+        ]
+      },
+      {
+        "clip": "oc_pov_snow_walk.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Footsteps"
+        ]
+      },
+      {
+        "clip": "oc_pov_night_forest.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Footsteps"
+        ]
+      },
+      {
+        "clip": "oc_pov_dry_leaves.mp4",
+        "truth": "no_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Footsteps"
+        ]
+      },
+      {
+        "clip": "un_driving_motorcycle_29leW_wE.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "un_police_car_siren_HWAeBWk6.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren"
+        ]
+      },
+      {
+        "clip": "un_police_car_siren_WEROVWDp.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren"
+        ]
+      },
+      {
+        "clip": "un_thunder_0kuIP7fL.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "mv_prison_alarm_scene.mp4",
+        "truth": "seen_ambient",
+        "pred": "unseen_ambient",
+        "kind": "false augment",
+        "offscreen": [
+          "Siren",
+          "Vehicle"
+        ]
+      },
+      {
+        "clip": "rx_aftermath_quiet.mp4",
+        "truth": "seen_ambient",
+        "pred": "mixed",
+        "kind": "false augment",
+        "offscreen": [
+          "Vehicle",
+          "Aircraft"
+        ]
+      },
+      {
+        "clip": "lx_rain_and_thunder_-3-4qmW.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      },
+      {
+        "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+        "truth": "mixed",
+        "pred": "seen_ambient",
+        "kind": "missed augment"
+      }
+    ]
+  },
+  "sweep": [
+    {
+      "display_threshold": 0.08,
+      "augment_threshold": 0.12,
+      "accuracy": 0.49609375,
+      "precision": 0.31901840490797545,
+      "recall": 0.7428571428571429,
+      "f1": 0.44635193133047213
+    },
+    {
+      "display_threshold": 0.08,
+      "augment_threshold": 0.15,
+      "accuracy": 0.4921875,
+      "precision": 0.3,
+      "recall": 0.6428571428571429,
+      "f1": 0.4090909090909091
+    },
+    {
+      "display_threshold": 0.08,
+      "augment_threshold": 0.2,
+      "accuracy": 0.4921875,
+      "precision": 0.2887323943661972,
+      "recall": 0.5857142857142857,
+      "f1": 0.3867924528301887
+    },
+    {
+      "display_threshold": 0.08,
+      "augment_threshold": 0.25,
+      "accuracy": 0.515625,
+      "precision": 0.2890625,
+      "recall": 0.5285714285714286,
+      "f1": 0.3737373737373737
+    },
+    {
+      "display_threshold": 0.08,
+      "augment_threshold": 0.3,
+      "accuracy": 0.56640625,
+      "precision": 0.3153153153153153,
+      "recall": 0.5,
+      "f1": 0.3867403314917127
+    },
+    {
+      "display_threshold": 0.1,
+      "augment_threshold": 0.12,
+      "accuracy": 0.49609375,
+      "precision": 0.31901840490797545,
+      "recall": 0.7428571428571429,
+      "f1": 0.44635193133047213
+    },
+    {
+      "display_threshold": 0.1,
+      "augment_threshold": 0.15,
+      "accuracy": 0.4921875,
+      "precision": 0.3,
+      "recall": 0.6428571428571429,
+      "f1": 0.4090909090909091
+    },
+    {
+      "display_threshold": 0.1,
+      "augment_threshold": 0.2,
+      "accuracy": 0.4921875,
+      "precision": 0.2887323943661972,
+      "recall": 0.5857142857142857,
+      "f1": 0.3867924528301887
+    },
+    {
+      "display_threshold": 0.1,
+      "augment_threshold": 0.25,
+      "accuracy": 0.515625,
+      "precision": 0.2890625,
+      "recall": 0.5285714285714286,
+      "f1": 0.3737373737373737
+    },
+    {
+      "display_threshold": 0.1,
+      "augment_threshold": 0.3,
+      "accuracy": 0.56640625,
+      "precision": 0.3153153153153153,
+      "recall": 0.5,
+      "f1": 0.3867403314917127
+    },
+    {
+      "display_threshold": 0.12,
+      "augment_threshold": 0.12,
+      "accuracy": 0.49609375,
+      "precision": 0.31901840490797545,
+      "recall": 0.7428571428571429,
+      "f1": 0.44635193133047213
+    },
+    {
+      "display_threshold": 0.12,
+      "augment_threshold": 0.15,
+      "accuracy": 0.4921875,
+      "precision": 0.3,
+      "recall": 0.6428571428571429,
+      "f1": 0.4090909090909091
+    },
+    {
+      "display_threshold": 0.12,
+      "augment_threshold": 0.2,
+      "accuracy": 0.4921875,
+      "precision": 0.2887323943661972,
+      "recall": 0.5857142857142857,
+      "f1": 0.3867924528301887
+    },
+    {
+      "display_threshold": 0.12,
+      "augment_threshold": 0.25,
+      "accuracy": 0.515625,
+      "precision": 0.2890625,
+      "recall": 0.5285714285714286,
+      "f1": 0.3737373737373737
+    },
+    {
+      "display_threshold": 0.12,
+      "augment_threshold": 0.3,
+      "accuracy": 0.56640625,
+      "precision": 0.3153153153153153,
+      "recall": 0.5,
+      "f1": 0.3867403314917127
+    },
+    {
+      "display_threshold": 0.15,
+      "augment_threshold": 0.15,
+      "accuracy": 0.4921875,
+      "precision": 0.3,
+      "recall": 0.6428571428571429,
+      "f1": 0.4090909090909091
+    },
+    {
+      "display_threshold": 0.15,
+      "augment_threshold": 0.2,
+      "accuracy": 0.4921875,
+      "precision": 0.2887323943661972,
+      "recall": 0.5857142857142857,
+      "f1": 0.3867924528301887
+    },
+    {
+      "display_threshold": 0.15,
+      "augment_threshold": 0.25,
+      "accuracy": 0.515625,
+      "precision": 0.2890625,
+      "recall": 0.5285714285714286,
+      "f1": 0.3737373737373737
+    },
+    {
+      "display_threshold": 0.15,
+      "augment_threshold": 0.3,
+      "accuracy": 0.56640625,
+      "precision": 0.3153153153153153,
+      "recall": 0.5,
+      "f1": 0.3867403314917127
+    }
+  ]
+}

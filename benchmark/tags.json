@@ -622,5 +622,787 @@
   "_dropped/b3_olive_press.mp4": {
     "tag": "drop",
     "reason": "converted from 'I don't know'"
+  },
+  "_dropped/ev_bodycam_dog_bark.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ev_crash_offscreen.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ev_thunder_startle.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_walk_addis.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/b3_walk_hanoi.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/b3_walk_ny_chinatown.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_walk_saopaulo.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/b3_wind_coast.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/b3_windfarm_turbines.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_wm_2012_07_18_market_street_san_fra.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_wm_coyote_creek_during_a_heavy_rain.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_wm_jubilee_line_canary_wharf_01_ogv.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_wm_rain_in_rome_webm.mp4": {
+    "tag": "drop"
+  },
+  "mixed/b3_wm_road_traffic_cobblestone_road_we.mp4": {
+    "tag": "mixed"
+  },
+  "_dropped/b3_wm_road_traffic_on_stritarjeva_stre.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/movie_dune_40.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/movie_topgun_95.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/movie_twisters_33.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/moviescene_castaway_324.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/mx_train_crossing_wait.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/nature_frozenplanet_32.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/newsfield_tornado_4128.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/newsfield_tornado_8532.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/online_thunderstorm_13391.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/online_thunderstorm_6479.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ev_avalanche_distant.mp4": {
+    "tag": "drop"
+  },
+  "_bad/b3_orchard_picking.mp4": {
+    "tag": "bad",
+    "reason": "still"
+  },
+  "_dropped/b3_paintball_field.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_port_cranes.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_pottery_wheel.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_pressure_washer.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_printing_press.mp4": {
+    "tag": "drop"
+  },
+  "_bad/b3_rooftop_city.mp4": {
+    "tag": "bad",
+    "reason": "still"
+  },
+  "_dropped/b3_sawmill_wood.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_smithy_horseshoe.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_street_food_wok.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_swimming_pool.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_tent_rain.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_tram_lisbon.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_university_campus.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/b3_venice_gondola.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_alarm_5tP7Xrrx.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/as_alarm_71Xl_uAS.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_dropped/as_alarm_Ih0QuB3t.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_alarm_wicNPOr_.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_alarm_xnMerCib.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_ambulance_siren_1uMkgVRU.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_ambulance_siren_De4XiKi3.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_ambulance_siren_YNIr0HEI.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_ambulance_siren_qmESqQW5.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/as_breaking_3wstXl8v.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/as_car_alarm_0Hz4R_m0.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/as_car_alarm_6CcQg_Ji.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_car_alarm_6w5BNOcB.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/as_car_alarm_VC9nqtFU.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_dropped/as_car_alarm_zuA6PvZo.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_church_bell_DbL6PFuq.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/as_church_bell_PVGChCsr.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/as_church_bell_otz4AffL.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/as_church_bell_pJRAWkLM.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_bad/as_civil_defense_siren_ZduE8Mt5.mp4": {
+    "tag": "bad",
+    "reason": "images"
+  },
+  "_bad/as_civil_defense_siren_mHUc3agm.mp4": {
+    "tag": "bad",
+    "reason": "images"
+  },
+  "_dropped/as_explosion_Oqhfyddk.mp4": {
+    "tag": "drop"
+  },
+  "mixed/as_explosion_XJ8lc3I6.mp4": {
+    "tag": "mixed"
+  },
+  "_bad/as_explosion_Zr0TnoiH.mp4": {
+    "tag": "bad",
+    "reason": "combo of images"
+  },
+  "_bad/as_explosion_aUEhd0op.mp4": {
+    "tag": "bad",
+    "reason": "combo of images"
+  },
+  "unseen_ambient/as_explosion_eEdaLHC0.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/as_explosion_p6lhCxNw.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/as_explosion_uXvHaJcI.mp4": {
+    "tag": "bad",
+    "reason": "combo of images"
+  },
+  "unseen_ambient/as_fire_alarm_kGKZ0YK4.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/as_fire_engine_fire_truck_4arad6my.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/as_fire_engine_fire_truck_HcLqWMIW.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/as_fire_engine_fire_truck_THm-c9XQ.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/as_fire_engine_fire_truck_ZANp2W2q.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/as_firecracker_MZObvb2m.mp4": {
+    "tag": "drop"
+  },
+  "_bad/as_firecracker_VTgN794a.mp4": {
+    "tag": "bad",
+    "reason": "bad quality"
+  },
+  "_bad/as_fireworks_bbFxpiDU.mp4": {
+    "tag": "bad",
+    "reason": "mostly speech"
+  },
+  "unseen_ambient/as_fireworks_jZ9mYtCA.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_dropped/as_fireworks_rskUahE5.mp4": {
+    "tag": "drop"
+  },
+  "no_ambient/as_glass_EiqYND8G.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/as_glass_GAGt_UEF.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/as_glass_oHil9Ip_.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/as_glass_t6e0Rjul.mp4": {
+    "tag": "no_ambient"
+  },
+  "_dropped/as_gunshot_gunfire_cscMXSv9.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mv_arrest_street_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/mv_market_chase_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/mv_plane_emergency.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/mv_police_raid_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/mv_protest_scene_movie.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/mv_shipwreck_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/mv_storm_scene_house.mp4": {
+    "tag": "mixed"
+  },
+  "seen_ambient/tv_war_series_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/as_helicopter_4-x8CPm2.mp4": {
+    "tag": "bad",
+    "reason": "bad wuality"
+  },
+  "_dropped/as_helicopter_bW3_XVcK.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/as_helicopter_mVjQigOw.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/as_machine_gun_AiAwMWUy.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/mv_air_raid_scene.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/mv_bank_robbery_alarm.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/mv_basement_scene_noise.mp4": {
+    "tag": "mixed"
+  },
+  "unseen_ambient/mv_detective_crime_scene.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unsorted/mv_earthquake_scene.mp4": {
+    "tag": "unknown"
+  },
+  "_dropped/mv_glass_break_intruder.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mv_helicopter_arrival.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/mv_horror_scream_offscreen.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mv_phone_ringing_tense.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/mv_war_bombardment.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unsorted/gn_docudrama_reenactment.mp4": {
+    "tag": "unknown"
+  },
+  "seen_ambient/gn_western_town_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/mc_apartment_argument.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mc_break_in_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unsorted/mc_car_chase_scene.mp4": {
+    "tag": "unknown"
+  },
+  "unsorted/mc_courtroom_verdict.mp4": {
+    "tag": "unknown"
+  },
+  "_bad/mc_desert_scene.mp4": {
+    "tag": "bad",
+    "reason": "mostly music"
+  },
+  "seen_ambient/mc_earthquake_disaster.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/mc_fight_bar_scene.mp4": {
+    "tag": "mixed"
+  },
+  "seen_ambient/mc_fire_rescue.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/mc_flood_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/mc_hospital_scene.mp4": {
+    "tag": "drop"
+  },
+  "_bad/mc_hotel_corridor.mp4": {
+    "tag": "bad",
+    "reason": "mostlymusic"
+  },
+  "_dropped/mv_evacuation_scene.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mv_funeral_rain_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unsorted/mc_jungle_scene.mp4": {
+    "tag": "unknown"
+  },
+  "_dropped/mc_monster_offscreen.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mc_riot_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/mc_ship_deck_storm.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/mc_shootout_scene.mp4": {
+    "tag": "drop"
+  },
+  "unsorted/mc_siren_arrival.mp4": {
+    "tag": "unknown"
+  },
+  "seen_ambient/mc_snow_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/mc_spaceship_alarm.mp4": {
+    "tag": "bad",
+    "reason": "mostly quiet"
+  },
+  "_dropped/mc_storm_scene.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mc_subway_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/mc_thriller_basement.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/mc_train_station_scene.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/mc_western_standoff.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/mc_zombie_horde.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/rx_bunker_bombing.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/rx_indoors_storm_outside.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/rx_phone_call_bad_news.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "no_ambient/rx_radio_broadcast_scene.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/wc_brazilian_film.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/wc_korean_thriller.mp4": {
+    "tag": "mixed"
+  },
+  "_dropped/wc_nordic_thriller.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_airplane_flyby_-Jcl3FrH.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_airplane_flyby_5_aRF2s3.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/un_airplane_flyby_8F00hSy8.mp4": {
+    "tag": "drop"
+  },
+  "unsorted/un_car_passing_by_01v-xdP2.mp4": {
+    "tag": "unknown"
+  },
+  "_dropped/un_car_passing_by_CyP_qZV9.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/un_church_bell_ringin_-_-SejUs.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "seen_ambient/un_dog_barking_Glz9M145.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_dog_howling_0bvgm0bO.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_driving_buses_3iVMMcgK.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/un_driving_buses_Wu--g0m8.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/un_driving_motorcycle_4O3bZRYO.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unseen_ambient/un_driving_motorcycle_DgdHSmwA.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "unsorted/un_fireworks_banging_J-QMhDo_.mp4": {
+    "tag": "unknown"
+  },
+  "_dropped/un_helicopter_-wv-pMA5.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_helicopter_1PCkIkol.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_bad/un_helicopter_1eHHBEe6.mp4": {
+    "tag": "bad",
+    "reason": "only wind sound"
+  },
+  "seen_ambient/un_helicopter_T2F6euNV.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_machine_gun_shooti_7RFRiTA8.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/un_people_clapping_00ay4DMx.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_people_crowd_W1e3xWnc.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/un_police_car_siren_-Pg4vVPs.mp4": {
+    "tag": "mixed"
+  },
+  "mixed/un_police_car_siren_-lyPnABQ.mp4": {
+    "tag": "mixed"
+  },
+  "_dropped/un_police_car_siren_W2aR6tTq.mp4": {
+    "tag": "drop"
+  },
+  "no_ambient/un_raining_71I9l62a.mp4": {
+    "tag": "no_ambient"
+  },
+  "_dropped/un_raining_R40DkjVS.mp4": {
+    "tag": "drop"
+  },
+  "_bad/un_sheep_bleating_F3-_b8Wf.mp4": {
+    "tag": "bad",
+    "reason": "stil image"
+  },
+  "_dropped/un_skidding_3l5G7_j5.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/un_skidding_asKuYgAc.mp4": {
+    "tag": "drop"
+  },
+  "no_ambient/un_thunder_1gDcPnV9.mp4": {
+    "tag": "no_ambient"
+  },
+  "mixed/un_train_horning_KKFdi5WQ.mp4": {
+    "tag": "mixed"
+  },
+  "_dropped/un_vehicle_honking_MxNcMyAz.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_sheep_bleating_-78SgLvt.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_sea_waves_39lhrblv.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_sea_waves_Bvgbafvm.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/wc_german_film_scene.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/lx_chainsaw_and_power_tool_W1VYWwY.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/lx_crowd_and_screaming_7pUd5gV.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ly_alarm_R-CLGsw.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/ly_alarm_qCVdVav.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/ly_applause_62ZYD0u.mp4": {
+    "tag": "mixed"
+  },
+  "unsorted/ly_applause_L9UMvfK.mp4": {
+    "tag": "unknown"
+  },
+  "_dropped/ly_applause_uJ1tFbr.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ly_bus_kRbHSGt.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_airplane_flyby_1FOKvagR.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_ambulance_siren_-diPczRE.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_ambulance_siren_3qIzU14N.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/un_ambulance_siren_9NjKwk4P.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/un_car_passing_by_-uD_w-t4.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/un_church_bell_ringin_BVciNXg8.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/un_dog_barking_4V8ndetG.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_dog_barking_5yMvxKLD.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_dog_howling_UUjSLYdR.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_car_passing_by_0IStDugr.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/un_driving_motorcycle_1GI75yXl.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_engine_knocking_3UPXKVOz.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_fire_truck_siren_5dbDin4u.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/un_hair_dryer_drying_WWu24rJs.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/un_hair_dryer_drying_jmlpavrE.mp4": {
+    "tag": "no_ambient"
+  },
+  "_dropped/un_machine_gun_shooti_5t4vQjw3.mp4": {
+    "tag": "drop"
+  },
+  "no_ambient/un_people_clapping_OVhPqvG0.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/un_people_clapping__bAVmK7n.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/un_people_crowd_1YGJDa3a.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/un_people_shouting__jB-IM_7.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_raining_afvKRNCf.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/un_thunder_08A9CKS5.mp4": {
+    "tag": "mixed"
+  },
+  "seen_ambient/un_thunder_T3f3Y-eO.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/mc_plane_crash_scene.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ly_explosion_AFVzauL.mp4": {
+    "tag": "drop"
+  },
+  "unseen_ambient/ly_helicopter_-v62cK1.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_dropped/ly_motorcycle_3eARk5K.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ly_rain_CnQiEtc.mp4": {
+    "tag": "drop"
+  },
+  "no_ambient/oc_distant_train_valley.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/oc_ice_cracking_lake.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/oc_pov_snow_walk.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/oc_stream_behind_trees.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/oc_waterfall_approach.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/oc_wind_before_storm.mp4": {
+    "tag": "drop"
+  },
+  "no_ambient/oc_pov_night_forest.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/oc_pov_dry_leaves.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/un_wind_noise_-k199QGb.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_wind_noise_ck13el7V.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/un_wind_noise_-z9Iv2Qj.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/un_wind_noise_1OctTl0h.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/oc_distant_traffic_hill.mp4": {
+    "tag": "no_ambient"
+  },
+  "no_ambient/oc_pov_beach_walk.mp4": {
+    "tag": "no_ambient"
+  },
+  "seen_ambient/un_driving_motorcycle_29leW_wE.mp4": {
+    "tag": "seen_ambient"
+  },
+  "no_ambient/un_driving_motorcycle_5lERP3rc.mp4": {
+    "tag": "no_ambient"
+  },
+  "_dropped/un_engine_knocking_3DK7ovnD.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/un_police_car_siren_HWAeBWk6.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_police_car_siren_WEROVWDp.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/un_thunder_0kuIP7fL.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/un_thunder_3X6ETq3F.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/un_vehicle_honking_nGqzNDdh.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/mv_getaway_chase_sirens.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/mv_prison_alarm_scene.mp4": {
+    "tag": "seen_ambient"
+  },
+  "mixed/mv_tornado_scene.mp4": {
+    "tag": "mixed"
+  },
+  "seen_ambient/tv_police_procedural.mp4": {
+    "tag": "seen_ambient"
+  },
+  "unseen_ambient/mc_bridge_scene.mp4": {
+    "tag": "unseen_ambient"
+  },
+  "_dropped/mc_construction_scene.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/mc_forest_chase.mp4": {
+    "tag": "drop"
+  },
+  "seen_ambient/rx_aftermath_quiet.mp4": {
+    "tag": "seen_ambient"
+  },
+  "seen_ambient/wc_japanese_drama.mp4": {
+    "tag": "seen_ambient"
+  },
+  "_dropped/fx_people_clapping_0AqTVtGc.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/fx_people_clapping_12x4YUqj.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/fx_people_clapping_2y2Pi0A-.mp4": {
+    "tag": "drop"
+  },
+  "mixed/lx_rain_and_thunder_-3-4qmW.mp4": {
+    "tag": "mixed"
+  },
+  "mixed/ly_ambulance_(siren)_-yPSgCn.mp4": {
+    "tag": "mixed"
+  },
+  "_dropped/ly_fire_engine_fire_truck_(si_H7ZugYM.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ly_rain_aTzCrxi.mp4": {
+    "tag": "drop"
+  },
+  "_dropped/ly_thunder_cM93xfz.mp4": {
+    "tag": "drop"
+  },
+  "mixed/ly_traffic_noise_roadway_nois_G5bAKWq.mp4": {
+    "tag": "mixed"
+  },
+  "_bad/oc_distant_sirens_city.mp4": {
+    "tag": "bad",
+    "reason": "still"
+  },
+  "_bad/oc_tunnel_sounds_ahead.mp4": {
+    "tag": "bad",
+    "reason": "still"
   }
 }

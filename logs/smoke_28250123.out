@@ -1,0 +1,39 @@
+== node/GPU ==
+origin01
+name, memory.total [MiB]
+NVIDIA L4, 23034 MiB
+== torch ==
+torch 2.5.1+cu121 cuda True NVIDIA L4
+== ffmpeg ==
+ffmpeg version 9.0.1 Copyright (c) 2000-2026 the FFmpeg developers
+== benchmark data ==
+  unseen_ambient   45
+  seen_ambient     128
+  mixed            25
+  no_ambient       58
+  unsorted         27
+  TOTAL            283
+== pipeline end-to-end on one clip (GPU) ==
+[1/7] extracting audio (ffmpeg)...
+       16.0s @ 16000 Hz
+[2/7] video understanding (siglip)...
+       [stage2/siglip] 6 frames, visible: ['Crowd', 'Fire', 'Glass', 'Rain', 'Saxophone', 'Vehicle']
+[3/7] speech recognition (whisper)...
+       1 speech segment(s)
+[4/7] audio event detection...
+Checkpoint path: /home/dsi/adamg/panns_data/Cnn14_DecisionLevelMax.pth
+GPU number: 1
+       [stage4] PANNs SED: 15 event span(s) over 7 class(es) (threshold=0.05).
+       [stage4] timeline plot -> /home/dsi/adamg/MscProj/data/work/ambient_citywalk_cairo_834/events_plot.png
+       15 event span(s)
+[5/7] cross-modal gating...
+       [stage5] rule-based gate (TODO: localization + grounded LLM).
+       0/1 sound(s) selected to visualize
+[6/7] visual augmentation (retrieve)...
+       [stage6] retrieve: produced 0 augmentation image(s); 0 retrieved (rest placeholder).
+[7/7] compositing alongside the video (mode=full)...
+
+Done -> /home/dsi/adamg/MscProj/data/output/ambient_citywalk_cairo_834_augmented.mp4
+       artifacts in /home/dsi/adamg/MscProj/data/work/ambient_citywalk_cairo_834
+OK -> /home/dsi/adamg/MscProj/data/output/ambient_citywalk_cairo_834_augmented.mp4
+SMOKE TEST PASSED

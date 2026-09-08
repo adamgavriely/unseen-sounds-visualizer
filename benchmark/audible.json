@@ -1,0 +1,318 @@
+{
+ "gn_docudrama_reenactment.mp4": {
+  "verdict": "drowned by speech/music",
+  "target": "Shatter",
+  "conf": 0.282,
+  "loud": 0.662
+ },
+ "lx_crowd_and_applause_5weOv7g.mp4": {
+  "verdict": "inaudible",
+  "target": "Crowd",
+  "conf": 0.166,
+  "loud": 0.666
+ },
+ "lx_police_car_(siren)_and_cro_7J7_OGw.mp4": {
+  "verdict": "inaudible",
+  "target": "Police car (siren)",
+  "conf": 0.0,
+  "loud": 0.207
+ },
+ "lx_rain_and_thunder_-3-4qmW.mp4": {
+  "verdict": "KEEP",
+  "target": "Rain",
+  "conf": 0.941,
+  "loud": 0.395
+ },
+ "ly_ambulance_(siren)_-yPSgCn.mp4": {
+  "verdict": "KEEP",
+  "target": "Ambulance (siren)",
+  "conf": 0.463,
+  "loud": 0.559
+ },
+ "ly_applause_L9UMvfK.mp4": {
+  "verdict": "KEEP",
+  "target": "Applause",
+  "conf": 0.536,
+  "loud": 0.873
+ },
+ "ly_chainsaw_SSR__W5.mp4": {
+  "verdict": "inaudible",
+  "target": "Chainsaw",
+  "conf": 0.112,
+  "loud": 0.724
+ },
+ "ly_civil_defense_siren_3U2JPY2.mp4": {
+  "verdict": "inaudible",
+  "target": "Civil defense siren",
+  "conf": 0.123,
+  "loud": 0.776
+ },
+ "ly_crowd_2KE3miF.mp4": {
+  "verdict": "inaudible",
+  "target": "Crowd",
+  "conf": 0.209,
+  "loud": 0.743
+ },
+ "ly_crowd_7moNk3m.mp4": {
+  "verdict": "inaudible",
+  "target": "Crowd",
+  "conf": 0.067,
+  "loud": 0.822
+ },
+ "ly_crowd_Q_FvbcP.mp4": {
+  "verdict": "inaudible",
+  "target": "Crowd",
+  "conf": 0.0,
+  "loud": 0.806
+ },
+ "ly_fire_engine_fire_truck_(si_H7ZugYM.mp4": {
+  "verdict": "KEEP",
+  "target": "Fire engine, fire truck (siren)",
+  "conf": 0.575,
+  "loud": 0.539
+ },
+ "ly_police_car_(siren)_Y33Fr72.mp4": {
+  "verdict": "drowned by speech/music",
+  "target": "Police car (siren)",
+  "conf": 0.297,
+  "loud": 0.702
+ },
+ "ly_rain_aTzCrxi.mp4": {
+  "verdict": "KEEP",
+  "target": "Rain",
+  "conf": 0.495,
+  "loud": 0.646
+ },
+ "ly_rain_rzLIwsg.mp4": {
+  "verdict": "inaudible",
+  "target": "Rain",
+  "conf": 0.058,
+  "loud": 0.513
+ },
+ "ly_thunder_cM93xfz.mp4": {
+  "verdict": "KEEP",
+  "target": "Thunder",
+  "conf": 0.883,
+  "loud": 0.542
+ },
+ "ly_traffic_noise_roadway_nois_G5bAKWq.mp4": {
+  "verdict": "KEEP",
+  "target": "Traffic noise, roadway noise",
+  "conf": 0.601,
+  "loud": 0.774
+ },
+ "mc_airport_scene.mp4": {
+  "verdict": "drowned by speech/music",
+  "target": "Cheering",
+  "conf": 0.381,
+  "loud": 0.764
+ },
+ "mc_bridge_scene.mp4": {
+  "verdict": "KEEP",
+  "target": "Helicopter",
+  "conf": 0.784,
+  "loud": 0.763
+ },
+ "mc_construction_scene.mp4": {
+  "verdict": "KEEP",
+  "target": "Shatter",
+  "conf": 0.48,
+  "loud": 0.657
+ },
+ "mc_courtroom_verdict.mp4": {
+  "verdict": "KEEP",
+  "target": "Shatter",
+  "conf": 0.726,
+  "loud": 0.427
+ },
+ "mc_forest_chase.mp4": {
+  "verdict": "KEEP",
+  "target": "Rain",
+  "conf": 0.32,
+  "loud": 0.52
+ },
+ "mc_siren_arrival.mp4": {
+  "verdict": "KEEP",
+  "target": "Dog",
+  "conf": 0.491,
+  "loud": 0.774
+ },
+ "mv_earthquake_scene.mp4": {
+  "verdict": "KEEP",
+  "target": "Boom",
+  "conf": 0.442,
+  "loud": 0.439
+ },
+ "mv_getaway_chase_sirens.mp4": {
+  "verdict": "KEEP",
+  "target": "Emergency vehicle",
+  "conf": 0.5,
+  "loud": 0.623
+ },
+ "mv_prison_alarm_scene.mp4": {
+  "verdict": "KEEP",
+  "target": "Emergency vehicle",
+  "conf": 0.525,
+  "loud": 0.713
+ },
+ "mv_tornado_scene.mp4": {
+  "verdict": "KEEP",
+  "target": "Civil defense siren",
+  "conf": 0.424,
+  "loud": 0.691
+ },
+ "oc_creaking_floorboards.mp4": {
+  "verdict": "drowned by speech/music",
+  "target": "Jet engine",
+  "conf": 0.291,
+  "loud": 0.748
+ },
+ "oc_distant_airplane_field.mp4": {
+  "verdict": "no target",
+  "conf": 0.0
+ },
+ "oc_distant_sirens_city.mp4": {
+  "verdict": "KEEP",
+  "target": "Emergency vehicle",
+  "conf": 0.512,
+  "loud": 0.0
+ },
+ "oc_pov_hunting_stalk.mp4": {
+  "verdict": "drowned by speech/music",
+  "target": "Dog",
+  "conf": 0.341,
+  "loud": 0.605
+ },
+ "oc_tunnel_sounds_ahead.mp4": {
+  "verdict": "KEEP",
+  "target": "Rain",
+  "conf": 0.268,
+  "loud": 0.126
+ },
+ "rx_aftermath_quiet.mp4": {
+  "verdict": "KEEP",
+  "target": "Helicopter",
+  "conf": 0.738,
+  "loud": 0.645
+ },
+ "tv_police_procedural.mp4": {
+  "verdict": "KEEP",
+  "target": "Emergency vehicle",
+  "conf": 0.557,
+  "loud": 0.745
+ },
+ "un_car_passing_by_01v-xdP2.mp4": {
+  "verdict": "inaudible",
+  "target": "car passing by",
+  "conf": 0.106,
+  "loud": 0.0
+ },
+ "un_engine_knocking_3DK7ovnD.mp4": {
+  "verdict": "KEEP",
+  "target": "engine knocking",
+  "conf": 0.4,
+  "loud": 0.0
+ },
+ "un_people_shouting_0SL91QFy.mp4": {
+  "verdict": "inaudible",
+  "target": "people shouting",
+  "conf": 0.0,
+  "loud": 0.647
+ },
+ "un_police_car_siren_ANWU9Hiy.mp4": {
+  "verdict": "inaudible",
+  "target": "police car siren",
+  "conf": 0.0,
+  "loud": 0.8
+ },
+ "un_police_car_siren_HWAeBWk6.mp4": {
+  "verdict": "KEEP",
+  "target": "police car siren",
+  "conf": 0.608,
+  "loud": 0.367
+ },
+ "un_police_car_siren_WEROVWDp.mp4": {
+  "verdict": "KEEP",
+  "target": "police car siren",
+  "conf": 0.538,
+  "loud": 0.595
+ },
+ "un_raining_4iWXpUNp.mp4": {
+  "verdict": "inaudible",
+  "target": "raining",
+  "conf": 0.0,
+  "loud": 0.258
+ },
+ "un_sea_waves_19Jb7pa3.mp4": {
+  "verdict": "drowned by speech/music",
+  "target": "sea waves",
+  "conf": 0.329,
+  "loud": 0.692
+ },
+ "un_sea_waves_SQ71Y_g1.mp4": {
+  "verdict": "inaudible",
+  "target": "sea waves",
+  "conf": 0.0,
+  "loud": 0.79
+ },
+ "un_thunder_0kuIP7fL.mp4": {
+  "verdict": "KEEP",
+  "target": "thunder",
+  "conf": 0.68,
+  "loud": 0.0
+ },
+ "un_thunder_3X6ETq3F.mp4": {
+  "verdict": "KEEP",
+  "target": "thunder",
+  "conf": 0.798,
+  "loud": 0.0
+ },
+ "un_thunder_G8NuOLfZ.mp4": {
+  "verdict": "inaudible",
+  "target": "thunder",
+  "conf": 0.0,
+  "loud": 0.694
+ },
+ "un_train_horning__bkX5VkZ.mp4": {
+  "verdict": "inaudible",
+  "target": "train horning",
+  "conf": 0.0,
+  "loud": 0.502
+ },
+ "un_vacuum_cleaner_cle_7bHrke6z.mp4": {
+  "verdict": "inaudible",
+  "target": "vacuum cleaner cleaning floors",
+  "conf": 0.0,
+  "loud": 0.061
+ },
+ "un_vehicle_honking_nGqzNDdh.mp4": {
+  "verdict": "KEEP",
+  "target": "vehicle honking",
+  "conf": 0.367,
+  "loud": 0.133
+ },
+ "un_vehicle_honking_O_SKumO3.mp4": {
+  "verdict": "inaudible",
+  "target": "vehicle honking",
+  "conf": 0.0,
+  "loud": 0.617
+ },
+ "un_wind_noise_BcynOvIy.mp4": {
+  "verdict": "inaudible",
+  "target": "wind noise",
+  "conf": 0.0,
+  "loud": 0.752
+ },
+ "un_wind_noise_CiSmL4nm.mp4": {
+  "verdict": "inaudible",
+  "target": "wind noise",
+  "conf": 0.0,
+  "loud": 0.543
+ },
+ "wc_japanese_drama.mp4": {
+  "verdict": "KEEP",
+  "target": "Rain",
+  "conf": 0.646,
+  "loud": 0.487
+ }
+}

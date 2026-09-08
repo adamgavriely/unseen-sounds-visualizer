@@ -70,5 +70,8 @@ RESOLUTION = (1024, 1024)    # augmentation image size
 PANEL_SIZE = 720             # side-by-side augmentation panel size (px)
 FPS = 25
 
-# Stage 7 — evaluation  [stub in skeleton]
-JUDGE_MODEL = "hosted-or-local-LLM"
+# Stage 7 — automatic evaluation protocol (proposal sec 6.1)
+# The judge MUST be a different model from the describing VLM: a model scoring its
+# own descriptions measures self-consistency, not quality. Mistral-7B-Instruct is a
+# different family from Qwen2.5-VL, text-only, and fits alongside it on one GPU.
+JUDGE_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"

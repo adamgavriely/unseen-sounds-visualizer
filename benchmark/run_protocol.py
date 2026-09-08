@@ -97,7 +97,9 @@ def main():
     clips = clips_to_run(args.limit)
     print(f"[protocol] {len(clips)} labelled clips x {len(args.systems)} systems",
           flush=True)
-    backends = Backends(config.VLM_MODEL, config.DEVICE)
+    backends = Backends(config.VLM_MODEL, config.JUDGE_MODEL, config.DEVICE)
+    print(f"[protocol] describer={config.VLM_MODEL}
+           judge     ={config.JUDGE_MODEL}", flush=True)
     results = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else []
     done = {(r["clip"], r["system"]) for r in results}
 

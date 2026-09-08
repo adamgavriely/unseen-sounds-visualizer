@@ -21,11 +21,15 @@ The five steps of proposal sec 6.1, implemented:
   5. JUDGE -- a separate LLM call scores how much of the reference the description
      conveys, on a 0-4 scale with a written justification.
 
-Two properties make the protocol defensible rather than self-confirming:
+Three properties make the protocol defensible rather than self-confirming:
 
   * the describer sees the image only, so it cannot copy the reference wording;
   * the judge sees description and reference but not which system produced them,
-    so the same judge scores the proposed method and the baselines identically.
+    so the same judge scores the proposed method and the baselines identically;
+  * the JUDGE IS A DIFFERENT MODEL from the describer. A model scoring its own
+    descriptions is a self-evaluation bias an examiner would rightly challenge, so
+    the describing VLM and the judging LLM are separate weights (config.VLM_MODEL
+    and config.JUDGE_MODEL) and the protocol refuses to run if they are the same.
 
 BASELINES (proposal sec 7) share every step except how the image is produced:
   proposed        -- gate first, depict only sounds whose source is not visible
@@ -97,17 +101,29 @@ class ClipEvaluation:
 # model backends
 # ----------------------------------------------------------------------
 class Backends:
-    """Lazily-loaded VLM (describe) and LLM (reference + judge).
+    """The VLM that DESCRIBES and the separate LLM that JUDGES.
 
-    Both default to Qwen2.5-VL, which can do vision and text, so one weight load
-    serves all three calls on the cluster. A hosted API can be dropped in by
-    replacing describe_image/complete without touching the protocol.
+    Deliberately two different models. Letting one model describe an image and then
+    score its own description measures self-consistency, not quality, and inflates
+    the result: the judge recognises its own phrasing. Keeping them separate costs a
+    second weight load and removes the objection entirely.
+
+    describe_image() uses the VLM (vision). complete() takes a `judging` flag: the
+    reference sentence is built by the VLM's text side (it is derived from pipeline
+    metadata, not from any image, so no bias is possible), while the scoring call is
+    routed to the independent judge model.
     """
 
-    def __init__(self, vlm_model: str, device: str = "cuda"):
+    def __init__(self, vlm_model: str, judge_model: str, device: str = "cuda"):
+        if judge_model == vlm_model:
+            raise ValueError(
+                f"judge and describer must differ (both are {vlm_model}); "
+                "set config.JUDGE_MODEL to a different model")
         self.vlm_model = vlm_model
+        self.judge_model = judge_model
         self.device = device
         self._vlm = None
+        self._judge = None
 
     def _load(self):
         if self._vlm is None:
@@ -120,6 +136,19 @@ class Backends:
                 device_map="auto" if self.device == "cuda" else None).eval()
             self._vlm = (mdl, proc)
         return self._vlm
+
+    def _load_judge(self):
+        """The independent judge: a text-only LLM from a different family."""
+        if self._judge is None:
+            import torch
+            from transformers import AutoModelForCausalLM, AutoTokenizer
+            tok = AutoTokenizer.from_pretrained(self.judge_model)
+            mdl = AutoModelForCausalLM.from_pretrained(
+                self.judge_model,
+                torch_dtype=torch.bfloat16 if self.device == "cuda" else torch.float32,
+                device_map="auto" if self.device == "cuda" else None).eval()
+            self._judge = (mdl, tok)
+        return self._judge
 
     def describe_image(self, image_path: Path, prompt: str = DESCRIBE_PROMPT) -> str:
         import torch
@@ -135,9 +164,21 @@ class Backends:
         return proc.batch_decode(out[:, inputs["input_ids"].shape[1]:],
                                  skip_special_tokens=True)[0].strip()
 
-    def complete(self, prompt: str, max_new_tokens: int = 120) -> str:
-        """Text-only completion, used for the reference and the judge."""
+    def complete(self, prompt: str, max_new_tokens: int = 120,
+                 judging: bool = False) -> str:
+        """Text completion. ``judging`` routes to the independent judge model."""
         import torch
+        if judging:
+            mdl, tok = self._load_judge()
+            msgs = [{"role": "user", "content": prompt}]
+            text = tok.apply_chat_template(msgs, tokenize=False,
+                                           add_generation_prompt=True)
+            inputs = tok(text, return_tensors="pt").to(mdl.device)
+            with torch.no_grad():
+                out = mdl.generate(**inputs, max_new_tokens=max_new_tokens,
+                                   do_sample=False)
+            return tok.decode(out[0, inputs["input_ids"].shape[1]:],
+                              skip_special_tokens=True).strip()
         mdl, proc = self._load()
         msgs = [{"role": "user", "content": [{"type": "text", "text": prompt}]}]
         text = proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
@@ -175,7 +216,7 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
     """Step 5: independent scoring of semantic consistency."""
     raw = backends.complete(JUDGE_PROMPT.format(reference=reference,
                                                 candidate=candidate),
-                            max_new_tokens=100)
+                            max_new_tokens=100, judging=True)
     m = re.search(r'\{.*\}', raw, re.S)
     if m:
         try:
