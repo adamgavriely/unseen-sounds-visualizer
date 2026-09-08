@@ -10,6 +10,12 @@ REMOTE=MscProj          # relative to the remote $HOME: a literal "~"
                         # is expanded by Git Bash into a Windows path
 LOCAL_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
+# Git Bash ships no rsync, so the data path falls back to tarring every clip on each
+# run (~1-2 GB). The clips change rarely; the code changes constantly. --code-only
+# skips the data transfer entirely and takes seconds.
+CODE_ONLY=0
+[ "${1:-}" = "--code-only" ] && CODE_ONLY=1
+
 echo "creating remote dirs..."
 ssh "$USER_AT" "mkdir -p $REMOTE/data/input/benchmark $REMOTE/logs"
 
@@ -24,7 +30,9 @@ else
     tar -C "$LOCAL_ROOT" --exclude=.git --exclude=data --exclude=__pycache__         -czf - src benchmark scripts slurm config.py main.py requirements.txt         | ssh "$USER_AT" "tar -C $REMOTE -xzf -"
 fi
 
-if command -v rsync >/dev/null 2>&1; then
+if [ "$CODE_ONLY" = "1" ]; then
+    echo "--code-only: skipping the clip upload"
+elif command -v rsync >/dev/null 2>&1; then
     echo "rsync benchmark clips (resumable, skips unchanged)..."
     rsync -avz --partial --progress \
         "$LOCAL_ROOT/data/input/benchmark/" "$USER_AT:$REMOTE/data/input/benchmark/"
