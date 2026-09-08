@@ -189,7 +189,7 @@ def phase_judge(backends, tag: str = "", rescore: bool = False,
         cache = DESCRIPTIONS
     if not cache.exists():
         sys.exit("no descriptions cached -- run --phase describe first")
-    recs = json.loads(DESCRIPTIONS.read_text(encoding="utf-8"))
+    recs = json.loads(cache.read_text(encoding="utf-8"))
     out_file = OUT if not tag else OUT.with_name(f"protocol_results_{tag}.json")
     # --rescore discards previous scores and judges the cached pairs again. Needed
     # whenever the scoring RULE changes (as when empty augmentations stopped getting
