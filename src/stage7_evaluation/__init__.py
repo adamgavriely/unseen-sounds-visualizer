@@ -3,12 +3,15 @@
 Measure whether generated augmentations communicate the intended audio semantics.
 Runs over the benchmark rather than as a per-clip pipeline step.
 
-Automatic protocol (TODO): generate augmentation -> VLM describes the augmented
-scene -> compare vs a semantic reference derived from the original multimodal
-input (LLM) -> independent LLM judge scores semantic consistency. Complement with
-CLIP/CLAP relevance and a gating-accuracy metric (correctly silent when the sound
-is visible, correctly augmenting when not). Baselines: direct audio->image
-(Sound2Scene); audio captioning only; proposed method.
+The automatic protocol of proposal sec 6.1 lives in stage7_evaluation.protocol and
+is driven by benchmark/run_protocol.py: generate augmentation -> a VLM describes the
+augmented output -> an LLM builds a semantic reference from the original audio+video
+-> an independent LLM judge scores how much of the reference the augmentation
+conveys. The same judge scores all three systems of proposal sec 7 (proposed gate,
+blind audio-to-image, audio captioning).
+
+gating_accuracy() below measures Stage 5 alone -- a component diagnostic, not the
+project's headline metric.
 """
 from __future__ import annotations
 
@@ -40,8 +43,7 @@ def gating_accuracy(specs: List[AugmentationSpec],
             "tp": tp, "fp": fp, "tn": tn, "fn": fn}
 
 
-def evaluate(*args, **kwargs):  # noqa: D401
-    # TODO(stage7): implement VLM-describe -> LLM-judge + CLIP/CLAP relevance.
-    raise NotImplementedError(
-        "Stage 7 automatic evaluation is a TODO (VLM-describe + LLM-judge). "
-        "gating_accuracy() is available now for the core gate metric.")
+def evaluate(clip_name, system, work_dir, backends):
+    """Run the sec-6.1 protocol on one clip. See stage7_evaluation.protocol."""
+    from src.stage7_evaluation.protocol import evaluate_clip
+    return evaluate_clip(clip_name, system, work_dir, backends)
