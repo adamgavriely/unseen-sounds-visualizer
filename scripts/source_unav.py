@@ -58,15 +58,35 @@ AMBIENT = {
 }
 MIN_LEN, MAX_LEN = 16, 20          # proposal sec 5: 10-20 s clips
 
-# Sounds whose source is typically OUT of frame and that carry real meaning for a
-# DHH viewer (a captioner brackets these). Sampled first.
+# Measured on Adam's tags (2026-08-23): SPECTACLE sounds fail as off-screen
+# candidates because the video exists to film them -- helicopter 0/4 useful,
+# airplane flyby 0/3, sea waves 0/2, sheep 0/2, all tagged seen_ambient. INCIDENTAL
+# urban infrastructure succeeds -- nobody points a camera at the motorbike that
+# happens to pass (2/2), the siren down the street (2/3), the church bell (1/1),
+# the train horn (1/1). Sample only the incidental ones.
 HIGH_VALUE = {
-    "ambulance siren", "police car siren", "fire truck siren", "helicopter",
-    "airplane flyby", "thunder", "train horning", "train wheels squealing",
-    "fireworks banging", "machine gun shooting", "church bell ringing",
-    "vehicle honking", "car passing by", "raining", "skidding", "dog barking",
-    "dog howling", "chainsawing trees", "lions roaring", "telephone bell ringing",
-    "driving motorcycle", "driving buses", "lawn mowing", "sea waves", "wind noise",
+    "ambulance siren", "police car siren", "fire truck siren",
+    "train horning", "train wheels squealing", "church bell ringing",
+    "vehicle honking", "car passing by", "driving motorcycle", "driving buses",
+    "skidding", "dog barking", "dog howling", "thunder", "raining",
+    "lawn mowing", "chainsawing trees", "telephone bell ringing", "engine knocking",
+    "hammering nails", "vacuum cleaner cleaning floors", "hair dryer drying",
+}
+# Filmed on purpose -> the source is almost always the subject in frame. Excluded.
+SPECTACLE = {
+    "helicopter", "airplane flyby", "sea waves", "sheep bleating", "fireworks banging",
+    "lions roaring", "bull bellowing", "machine gun shooting", "auto racing",
+    "sailing", "skateboarding", "frog croaking", "cat meowing", "bird chirping",
+    "horse clip-clop", "water burbling",
+}
+# The camera follows a PERSON in these, so a co-occurring street sound is off-frame.
+SUBJECT_CLASSES = {
+    "man speaking", "woman speaking", "kid speaking", "people laughing",
+    "male singing", "female singing", "child singing", "people eating",
+    "playing acoustic guitar", "playing piano", "playing violin", "playing drum kit",
+    "people whispering", "typing on computer keyboard", "people coughing",
+    "playing tennis", "playing badminton", "playing table tennis", "rope skipping",
+    "basketball bounce", "tap dancing", "people slapping", "baby babbling",
 }
 # Crowd reactions are usually in the same shot as the thing being reacted to,
 # so they rarely give a clean off-screen case. Capped, not excluded.
@@ -98,16 +118,16 @@ def pick_overlap(v):
     best = None
     for a in anns:
         lb = a["label"]
-        if lb == primary or lb not in AMBIENT:
+        if lb == primary or lb not in AMBIENT or lb in SPECTACLE:
             continue
         s, e = a["segment"]
         for ps, pe in prim_spans:
             lo, hi = max(s, ps), min(e, pe)
             if hi - lo >= 0.5:                     # genuinely concurrent
                 mid = (lo + hi) / 2
-                # prefer the secondary that is briefest relative to the primary:
-                # the more incidental it is, the likelier it is off-camera
-                score = (e - s)
+                # brief secondaries are the most incidental, hence likeliest off-camera;
+                # a person-centred primary is a further bonus (the camera is on them)
+                score = (e - s) - (4.0 if primary in SUBJECT_CLASSES else 0.0)
                 if best is None or score < best[0]:
                     best = (score, lb, primary, mid)
     return best[1:] if best else None
