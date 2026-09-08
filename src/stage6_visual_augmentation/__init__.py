@@ -31,6 +31,39 @@ _HEADERS = {"User-Agent": "MscFinalProject/0.1 (academic research)"}
 # ----------------------------------------------------------------------
 # image helpers
 # ----------------------------------------------------------------------
+_FONT_CACHE = {}
+# PIL's built-in bitmap font is ~11 px and unreadable on a 720 px panel, and the two
+# platforms have different fonts: Windows ships Arial, while the cluster gets DejaVu
+# from the conda-forge fontconfig packages. Try both, then fall back.
+_FONT_PATHS = [
+    "C:/Windows/Fonts/segoeui.ttf", "C:/Windows/Fonts/arial.ttf",
+    "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+    "/usr/share/fonts/dejavu/DejaVuSans.ttf",
+]
+
+
+def _font(size: int):
+    """A scalable font at `size`, or PIL's default if no TrueType file is found."""
+    if size in _FONT_CACHE:
+        return _FONT_CACHE[size]
+    from PIL import ImageFont
+    import glob
+    candidates = list(_FONT_PATHS)
+    # conda envs install fonts under <prefix>/fonts or <prefix>/share/fonts
+    import sys
+    candidates += glob.glob(f"{sys.prefix}/fonts/**/*.ttf", recursive=True)
+    candidates += glob.glob(f"{sys.prefix}/share/fonts/**/*.ttf", recursive=True)
+    for path in candidates:
+        try:
+            f = ImageFont.truetype(path, size)
+            _FONT_CACHE[size] = f
+            return f
+        except Exception:
+            continue
+    _FONT_CACHE[size] = ImageFont.load_default()
+    return _FONT_CACHE[size]
+
+
 def _cover_crop(img: Image.Image, size: Tuple[int, int]) -> Image.Image:
     tw, th = size
     w, h = img.size
@@ -46,8 +79,8 @@ def _caption(img: Image.Image, text: str) -> Image.Image:
         return img
     d = ImageDraw.Draw(img, "RGBA")
     w, h = img.size
-    d.rectangle([0, h - 52, w, h], fill=(0, 0, 0, 170))
-    d.text((16, h - 38), text, fill=(240, 240, 245))
+    d.rectangle([0, h - 58, w, h], fill=(0, 0, 0, 175))
+    d.text((16, h - 44), text, font=_font(max(18, h // 26)), fill=(240, 240, 245))
     return img
 
 
@@ -269,16 +302,19 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
             img.putalpha(48)               # ~19%: present but clearly not active
             base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
             canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
-            d.text((x0 + 14, y1 - 24), label, fill=(120, 128, 145))
+            d.text((x0 + 14, y1 - 34), label, font=_font(max(15, h // 14)),
+                   fill=(140, 148, 165))
         else:
             d.rectangle(box, fill=(16, 18, 24))
-            d.text((x0 + 14, (y0 + y1) // 2 - 6), label, fill=(70, 76, 90))
+            d.text((x0 + 14, (y0 + y1) // 2 - 10), label, font=_font(max(15, h // 14)),
+                   fill=(96, 103, 118))
     elif mode == "minimal":                # active chip: color band + label, no imagery
         d.rectangle(box, fill=(24, 26, 34))
         r, g, b = _chip_color(label)
         a = int(255 * _opacity(spec.confidence))
         d.rectangle([x0, y0, x0 + 10, y1], fill=(r, g, b, a))
-        d.text((x0 + 24, (y0 + y1) // 2 - 6), label, fill=(230, 232, 240, a))
+        d.text((x0 + 24, (y0 + y1) // 2 - 10), label, font=_font(max(16, h // 12)),
+               fill=(230, 232, 240, a))
     else:                                  # active image, opacity = confidence weight
         img = _caption(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
                        label).convert("RGBA")
@@ -320,13 +356,15 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
         p = work / f"p{i:04d}.png"
         canvas = Image.new("RGB", (panel, panel), (16, 18, 24))
         if not slots:
-            # No augmentation at all is a DECISION, not a failure: say so, or the
-            # blank panel looks like the renderer broke.
+            # No augmentation at all is a DECISION, not a failure: say so at a size
+            # that is actually readable, or the blank panel looks like a broken player.
             d = ImageDraw.Draw(canvas)
-            d.text((28, panel // 2 - 20), "no off-screen sound detected",
-                   fill=(150, 158, 175))
-            d.text((28, panel // 2 + 4), "nothing to add for this scene",
-                   fill=(95, 101, 116))
+            big, small = _font(max(22, panel // 22)), _font(max(16, panel // 32))
+            l1, l2 = "no off-screen sound detected", "nothing to add for this scene"
+            for text, fnt, dy, col in ((l1, big, -26, (185, 192, 208)),
+                                       (l2, small, 18, (120, 127, 143))):
+                w = d.textlength(text, font=fnt)
+                d.text(((panel - w) / 2, panel / 2 + dy), text, font=fnt, fill=col)
         else:
             sh = panel // len(slots)
             for k, label in enumerate(slots):
