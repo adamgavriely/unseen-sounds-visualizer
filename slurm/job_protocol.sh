@@ -51,6 +51,7 @@ PHASE="${PHASE:-all}"
 JUDGE="${JUDGE:-}"
 DESC_TAG="${DESC_TAG:-}"
 RESCORE="${RESCORE:-}"
+GROUNDED="${GROUNDED:-}"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
 
 # The judge pass is text-only and fits on a small card; the describe pass is not.
@@ -84,6 +85,7 @@ if "${TAG}":      argv += ["--tag", "${TAG}"]
 if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
 if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]
 if "${RESCORE}" and phase == "judge": argv += ["--rescore"]
+if "${GROUNDED}" and phase == "judge": argv += ["--grounded"]
 sys.argv = argv
 print("[argv]", " ".join(argv), flush=True)
 from benchmark.run_protocol import main

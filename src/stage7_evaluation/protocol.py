@@ -230,7 +230,23 @@ class Backends:
 # ----------------------------------------------------------------------
 def build_reference(events: List[str], visible: List[str], transcript: str,
                     backends: Backends) -> str:
-    """Step 4: what does a hearing viewer get that a deaf viewer misses?"""
+    """Step 4: what does a hearing viewer get that a deaf viewer misses?
+
+    If Stage 4 detected NO salient non-speech sound, the answer is fixed and the LLM is
+    not asked. It was asked, in the pilot, and it invented one every time: on a clip
+    with no non-speech audio it wrote "a hearing viewer would notice the crowd's
+    movement and potential excitement" -- in the same sentence as "there are no
+    non-speech sounds present". The sentinel the prompt asks for was produced 0 times
+    in 36 records.
+
+    That is not a cosmetic failure. The sentinel is the only route by which staying
+    silent can score above zero, so while it is unreachable, a system that correctly
+    shows nothing is punished exactly as hard as one that missed a siren -- and the
+    gated system abstains far more than the baselines by construction. Deciding this
+    case from the detector's own output removes the LLM's compliance from the loop.
+    """
+    if not events:
+        return NOTHING_MISSING
     speech = (f"Someone is speaking; the dialogue is already captioned, so ignore it."
               if transcript.strip() else "There is no speech.")
     prompt = REFERENCE_PROMPT.format(
@@ -294,6 +310,34 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
     return (int(m.group(1)) if m else 0), raw[:200]
 
 
+# Human tags under which the annotator judged that the soundtrack adds nothing a
+# viewer cannot already see: there is no ambient sound at all, or its source is on
+# screen. Both are cases where showing nothing is the correct output.
+NOTHING_MISSING_TAGS = ("no_ambient", "seen_ambient")
+
+
+def grounded_reference(llm_reference: str, human_tag: Optional[str]) -> str:
+    """The reference, corrected by the annotator's label where that label settles it.
+
+    The model-derived reference names whatever Stage 4 heard, so on a clip whose sound
+    source is plainly on screen it still reports the sound as "missing". A system that
+    correctly stays silent is then scored 0 -- and `seen_ambient` is 128 of the 274
+    labelled clips, so this is not an edge case: it would systematically punish the
+    behaviour the thesis is about and hand the win to the blind baseline for the wrong
+    reason.
+
+    Deriving that correction from Stage 2's visibility output instead would be
+    circular: the gate would be graded against its own decision and would agree with
+    the reference by construction. The human tag is independent of every model in the
+    pipeline, so it is the one non-circular source available.
+
+    Both references are stored, and the judge can be pointed at either, so the
+    proposal-faithful number and the human-grounded number are both reportable from a
+    single (expensive) describe pass.
+    """
+    return NOTHING_MISSING if human_tag in NOTHING_MISSING_TAGS else llm_reference
+
+
 def describe_clip(clip_name: str, system: str, work_dir: Path,
                   backends: Backends) -> Optional[dict]:
     """Pass 1: build the reference and the description. No judging, no judge model.
@@ -327,8 +371,9 @@ def describe_clip(clip_name: str, system: str, work_dir: Path,
                   if s.get("augment") and s.get("image_path")
                   and Path(s["image_path"]).exists()]
 
+        reference = build_reference(salient, visible, transcript, backends)
         return {"clip": clip_name, "system": system,
-                "reference": build_reference(salient, visible, transcript, backends),
+                "reference": reference,
                 "description": describe_augmentation(images, backends),
                 "n_augmentations": len(images),
                 "sounds": salient, "visible": visible}
@@ -337,11 +382,19 @@ def describe_clip(clip_name: str, system: str, work_dir: Path,
         return None
 
 
-def judge_record(rec: dict, backends: Backends) -> ClipEvaluation:
-    """Pass 2: score one cached (reference, description) pair."""
-    score, why = judge(rec["reference"], rec["description"], backends)
+def judge_record(rec: dict, backends: Backends, grounded: bool = False
+                 ) -> ClipEvaluation:
+    """Pass 2: score one cached (reference, description) pair.
+
+    ``grounded`` scores against the human-corrected reference instead of the purely
+    model-derived one; see grounded_reference(). The choice is made here, at judging
+    time, so both numbers come out of one describe pass.
+    """
+    reference = (grounded_reference(rec["reference"], rec.get("human_tag"))
+                 if grounded else rec["reference"])
+    score, why = judge(reference, rec["description"], backends)
     return ClipEvaluation(clip=rec["clip"], system=rec["system"],
-                          reference=rec["reference"], description=rec["description"],
+                          reference=reference, description=rec["description"],
                           score=score, why=why,
                           n_augmentations=rec.get("n_augmentations", 0))
 

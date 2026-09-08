@@ -63,5 +63,14 @@ fi
 echo "=== T3: main run, $LIMIT clips x 3 systems (SDXL) ==="
 GEN=diffusion LIMIT="$LIMIT" PHASE=describe bash slurm/job_protocol.sh
 GEN=diffusion LIMIT="$LIMIT" PHASE=judge   bash slurm/job_protocol.sh
+
+# A second scoring of the SAME descriptions against the human-corrected reference. The
+# model-derived reference reports a sound as missing even when the annotator recorded
+# its source as plainly on screen, which scores correct silence at 0 -- on 128 of the
+# 274 labelled clips. Judging is cheap and needs no vision, so both numbers come out of
+# the one expensive describe pass and the report can state each with its assumption.
+echo "=== T3b: re-score against the human-grounded reference ==="
+GEN=diffusion LIMIT="$LIMIT" PHASE=judge GROUNDED=1 TAG=grounded DESC_TAG=""     bash slurm/job_protocol.sh
+
 touch "$STAMP/main_done"
-echo "DONE -> benchmark/protocol_results.json"
+echo "DONE -> benchmark/protocol_results.json (+ _grounded.json)"

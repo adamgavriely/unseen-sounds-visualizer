@@ -181,7 +181,7 @@ def phase_describe(args, backends):
 # pass 2 -- judge the cached pairs. Only the judge is loaded.
 # ----------------------------------------------------------------------
 def phase_judge(backends, tag: str = "", rescore: bool = False,
-                desc_tag=None):
+                desc_tag=None, grounded: bool = False):
     # A judge-agreement run re-scores the MAIN descriptions but writes its results
     # under a new tag, so cache and results file are tagged independently.
     cache = desc_file(desc_tag if desc_tag is not None else tag)
@@ -202,7 +202,7 @@ def phase_judge(backends, tag: str = "", rescore: bool = False,
     for i, rec in enumerate(recs, 1):
         if (rec["clip"], rec["system"]) in done:
             continue
-        ev = judge_record(rec, backends)
+        ev = judge_record(rec, backends, grounded=grounded)
         row = ev.to_dict()
         row["human_tag"] = rec.get("human_tag")
         row["scenario"] = rec.get("scenario")
@@ -265,6 +265,10 @@ def main():
     ap.add_argument("--desc-tag", default=None,
                     help="read descriptions from this run's cache; use with --tag "
                          "to score the main descriptions under a second judge")
+    ap.add_argument("--grounded", action="store_true",
+                    help="score against the human-corrected reference: on clips the "
+                         "annotator marked seen_ambient or no_ambient, nothing is "
+                         "missing, so staying silent is the correct output")
     ap.add_argument("--rescore", action="store_true",
                     help="discard existing scores and re-judge the cached descriptions")
     ap.add_argument("--skip-render", action="store_true",
@@ -281,7 +285,7 @@ def main():
         backends.unload_vlm()        # free ~16 GB before the judge is loaded
         print("[protocol] describer unloaded", flush=True)
     if args.phase in ("all", "judge"):
-        phase_judge(backends, args.tag, args.rescore, args.desc_tag)
+        phase_judge(backends, args.tag, args.rescore, args.desc_tag, args.grounded)
 
 
 if __name__ == "__main__":
