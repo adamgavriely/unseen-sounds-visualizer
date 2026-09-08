@@ -19,6 +19,8 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
     source "$HOME/anaconda3/etc/profile.d/conda.sh"
 conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
+# reduce fragmentation when two large models share one GPU
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 
@@ -28,7 +30,10 @@ N_PER_CAT="${N_PER_CAT:-4}"
 python - <<PY
 import config
 config.DEVICE = "cuda"
-config.VIDEO_BACKEND = "vlm"        # best gate
+# SigLIP, not the VLM: Qwen2.5-VL (~16 GB) plus SDXL (~7 GB) exceeds a 23 GB L4 and
+# every clip died with CUDA OOM at stage 2. The demo's job is the visible artefact,
+# and the gate quality is measured separately by job_eval_vlm.sh.
+config.VIDEO_BACKEND = "siglip"
 config.GEN_BACKEND = "diffusion"    # SDXL instead of Openverse retrieval
 config.GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"
 config.RENDER_MODE = "full"
