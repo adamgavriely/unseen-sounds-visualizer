@@ -145,3 +145,71 @@ Full pass over `docs/project_notes.tex`, in this order of importance:
 ## Explicitly out of scope
 More sourcing, more tagging, tagger features, DHH user study, TempoTokens /
 audio-to-video, icon-based rendering, stereo direction cues.
+
+
+---
+
+# If there are 8 days, not 5
+
+The extra three days should NOT go on more clips. Yield is 15-20% and the benchmark
+is not the weak part -- the *methodology* is. Three known holes can each be closed
+with GPU time and no additional annotation, and each removes an objection an examiner
+would otherwise raise.
+
+## Day 6 -- make the evaluation itself defensible
+
+**a) Judge reliability.** One 7B model deciding every score is the protocol's softest
+point. Re-run the judging step only (descriptions and references are already cached)
+with a second judge from a different family, and report agreement:
+
+```bash
+sbatch --export=JUDGE2=Qwen/Qwen3-8B slurm/job_judge_agreement.sh
+```
+
+Report Spearman correlation and exact-match rate between the two judges. High
+agreement means the scores are a property of the augmentations, not of one model's
+quirks. Low agreement is equally worth reporting -- it bounds how much any
+LLM-judged number in this area should be trusted, which is a contribution to
+proposal RQ4 ("how should such systems be evaluated?").
+
+**b) Fix tuning on the test set.** Every threshold reported so far was chosen by
+sweeping on the same 256 clips it is evaluated on. Split the benchmark 50/50, tune on
+the first half, report on the second, and state both numbers. Cheap, and it removes a
+guaranteed question.
+
+## Day 7 -- ablations that answer "was it the components?"
+
+All GPU-only, no human time. Each isolates one stage so the report can say which
+choices mattered:
+
+| ablation | question it settles | cost |
+|---|---|---|
+| SDXL vs Openverse retrieval | does *generating* the image beat *retrieving* one? | ~2 h |
+| BEATs vs PANNs (Stage 4) | is the detector the bottleneck? (measured: no -- an oracle detector moved accuracy 49.3% -> 49.1%) | ~2 h |
+| gate on vs off, same generator | isolates the gate's contribution to the OUTPUT score | free, already in the protocol |
+
+The SDXL-vs-retrieval one is the most interesting: the proposal names diffusion as the
+generation method, and nobody has checked whether it actually helps a DHH viewer more
+than a stock photograph does.
+
+## Day 8 -- qualitative analysis, then buffer
+
+1. **Worked examples for the report.** Three clips where the system clearly helps,
+   three where it clearly fails, each with the frame, the augmentation, the reference
+   and the judge's reasoning. Examiners remember these far longer than tables.
+2. **Failure taxonomy** from the protocol's low-scoring cases -- group them (wrong
+   source depicted, right source but uninformative image, augmented something already
+   visible, missed the salient sound) and count each.
+3. Buffer. Something will have slipped.
+
+## Optional, if a labmate can spare two hours
+
+**Inter-annotator agreement.** A second person labels 30 clips; report Cohen's kappa
+against Adam's labels. This is annotation reliability, not a user study -- no ethics
+process, no DHH participants. It is the single highest-value number still missing,
+because it separates "the model is bad" from "the task is not yet well-defined", and
+it strengthens contribution (a). Either outcome helps: high kappa validates the task,
+low kappa explains the 50% gate and makes the task-definition finding rigorous.
+
+## Still out of scope, even with 8 days
+More sourcing, more tagging by Adam, DHH user study, audio-to-video generation.
