@@ -96,6 +96,46 @@ bash slurm/fetch_results.sh      # run this on your PC
 All six run from `~/MscProj` on the cluster. T1–T3 are the thesis result; T4–T6 are
 what makes it defensible. Every one writes incrementally, so a requeued job resumes.
 
+### Unattended: run the whole thing with one command
+
+T1--T5 are about fourteen GPU-hours across four jobs, which is longer than anyone will
+sit and watch. To run the lot and walk away:
+
+```bash
+cd ~/MscProj && LIMIT=100 bash slurm/submit_chain.sh
+```
+
+That submits four jobs wired by dependency:
+
+| | job | does | starts when |
+|---|---|---|---|
+| A | `job_main.sh` | pilot (12 clips, retrieval) then the gate then the 100-clip SDXL run | now |
+| A2 | `job_main.sh` again | continues A if it hit the 12 h wall; exits in seconds if A finished | A ends |
+| B | `job_judge2.sh` | a second, unrelated judge re-scores A's descriptions | A2 **succeeds** |
+| C | `job_ablation_gen.sh` | the same clips with retrieval instead of SDXL | A2 **succeeds** |
+
+Two properties make this safe to leave alone.
+
+**It gates itself.** After the pilot, `scripts/check_pilot.py` makes the checks you would
+otherwise make by eye, and stops the chain on the two defects that would make the run
+meaningless: an empty augmentation scored outside {0,4} (the abstention rule is not
+firing) or every record scoring the same (the signature of scores failing to parse and
+defaulting). B and C are submitted with `--kill-on-invalid-dep=yes`, so a failed gate
+**cancels** them instead of leaving them pending for days. Everything else it only warns
+about --- at n=12 a tie between systems could easily be chance, and is not worth
+forfeiting an unattended window over.
+
+**It resumes.** Every stage is stamped in `benchmark/.chain/` and every cache is written
+per clip, so a job killed at the time limit restarts where it stopped. This is not
+theoretical: the first run of this chain died in the judge pass after the describe pass
+had already completed all 36 pilot records, and the rerun skipped straight to judging.
+
+The pilot writes to its own tagged caches (`protocol_*_pilot.json`). It uses retrieval
+and the main run uses SDXL; sharing a cache would silently mix two image sources in the
+headline table.
+
+---
+
 ### A scoring rule you should know about before reading any number
 
 The pilot exposed a flaw that would have invalidated the comparison: when a system
