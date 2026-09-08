@@ -96,6 +96,12 @@ def main():
                     continue
                 (pos_s if tag == "seen_ambient" else neg_s).append(s)
         a, np_, nn = auroc(pos_s, neg_s)
+        if np_ == 0 or nn == 0:
+            print(f"{backend.upper():8} visibility AUROC = n/a -- {no_scores} cached "
+                  f"clips carry no per-concept scores. Re-run "
+                  f"'python -m benchmark.evaluate' for this backend after deleting "
+                  f"benchmark/eval_cache{'' if backend == 'clip' else '_' + backend}.json")
+            continue
         print(f"{backend.upper():8} visibility AUROC = {a:.3f}   "
               f"({np_} visible events vs {nn} off-screen events)"
               + (f"   [{no_scores} clips cached without scores]" if no_scores else ""))
