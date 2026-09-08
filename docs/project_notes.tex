@@ -965,6 +965,53 @@ the system shows nothing at all while the blind baseline shows the siren and sco
 \emph{object presence mistaken for event visibility} (Section~\ref{sec:findings}), now measured on the
 system's output rather than on an intermediate label --- which is what the proposal asked for.
 
+\subsection{Judge reliability: which conclusions survive a change of judge}\label{sec:judgerel}
+A single 7B model deciding every score is the protocol's softest point, so the 300 cached
+descriptions were re-scored by a second, unrelated judge (Qwen3-8B against Mistral-7B). Because the
+run is split into two passes this cost no vision work at all: nine minutes against the ten hours the
+descriptions took.
+
+Agreement is substantial: quadratic-weighted $\kappa = 0.753$, 97\% of records within one point,
+58\% exact. But the aggregate hides the useful part.
+
+\begin{center}\begin{tabular}{lccc}
+\toprule
+system & Mistral-7B & Qwen3-8B & rank \\
+\midrule
+blind audio-to-image & 2.94 & 2.87 & $1 \rightarrow 2$ \\
+audio captioning     & 2.68 & \textbf{3.29} & $2 \rightarrow \mathbf{1}$ \\
+proposed (gated)     & 2.41 & 2.34 & $3 \rightarrow 3$ \\
+\bottomrule
+\end{tabular}\end{center}
+
+The two \emph{image} systems move by $-0.07$ each, and the gap between them is $+0.53$ under both
+judges to two decimal places. The \emph{text} baseline moves by $+0.61$ and changes rank.
+
+This licenses a sharper statement than the headline alone. \textbf{The comparison this thesis turns
+on --- gated against blind audio-to-image --- is judge-independent, and the finding that the gate
+loses it is not an artefact of one model's taste.} The standing of the captioning baseline, by
+contrast, is judge-dependent and should not be ranked confidently: asking a language model how much
+of a prose reference is conveyed by the string ``The soundtrack contains: Vehicle'' is a different
+judgement from asking how much is conveyed by a description of an image, and the two models disagree
+about how much credit that deserves. Any future work comparing text and visual augmentation under an
+LLM judge should report at least two judges, or the ranking is a property of the judge.
+
+\subsection{An evaluation failure worth recording}\label{sec:judgeartefact}
+The first attempt at this measurement returned $\kappa = 0.164$ with 20\% exact agreement --- a clean
+and publishable-looking claim that two independent judges disagree almost entirely about augmentation
+quality. It was false. Qwen3-8B is a reasoning model: every reply opened with a \texttt{<think>}
+block, none finished inside the 100-token budget, no JSON was ever emitted, and the parser's fallback
+rule --- take the first digit appearing in the text --- converted each non-answer into a confident 0.
+263 of 300 records scored 0.
+
+The lesson generalises past this project, and is the reason it is recorded here rather than quietly
+fixed. Every defect found while running this evaluation produced a \emph{plausible number} rather
+than an error: a charitable 2/4 for an empty augmentation, a 0\% correct-silence rate, a job
+reporting \texttt{COMPLETED} after rendering 2 clips of 300, and this. None of them looked like
+faults; each looked like a result. The protocol now refuses to average a reply it could not parse,
+marks such replies in the results file, and aborts any phase in which more than a quarter of items
+fail --- because in an automatic pipeline the dangerous failure is not the one that crashes.
+
 \subsection{What this licenses the thesis to claim}
 Three claims survive this experiment, and one does not.
 
