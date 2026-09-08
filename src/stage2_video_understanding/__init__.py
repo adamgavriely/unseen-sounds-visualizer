@@ -174,6 +174,14 @@ def analyze(video_path, backend: str = "clip", **kw) -> SceneContext:
             device=kw.get("device", "cpu"),
             threshold=kw.get("siglip_threshold", 0.30),
             candidates=kw.get("candidates"))
+    if backend == "owlv2":
+        from src.stage2_video_understanding.owl import analyze_video_owl
+        return analyze_video_owl(
+            video_path, num_frames=kw.get("num_frames", 4),
+            model=kw.get("owl_model", "google/owlv2-base-patch16-ensemble"),
+            device=kw.get("device", "cpu"),
+            threshold=kw.get("owl_threshold", 0.20),
+            candidates=kw.get("candidates"))
     if backend == "vlm":
         from src.stage2_video_understanding.vlm import analyze_video_vlm  # lazy: GPU deps
         return analyze_video_vlm(

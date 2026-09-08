@@ -61,7 +61,8 @@ def _analyze(path: Path) -> dict:
         cands = sorted({canonical(e.label) for e in events}) \
             if config.VIDEO_BACKEND == "vlm" else None
         scene = analyze(path, backend=config.VIDEO_BACKEND, num_frames=config.NUM_FRAMES,
-                        model=config.VIDEO_MODEL, vlm_model=config.VLM_MODEL, siglip_model=config.SIGLIP_MODEL,
+                        model=config.VIDEO_MODEL, vlm_model=config.VLM_MODEL, siglip_model=config.SIGLIP_MODEL, owl_model=config.OWL_MODEL,
+                        owl_threshold=config.OWL_THRESHOLD,
                         siglip_threshold=config.SIGLIP_THRESHOLD,
                         device=config.DEVICE, threshold=config.VISIBILITY_THRESHOLD,
                         candidates=cands)

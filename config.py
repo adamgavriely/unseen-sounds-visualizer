@@ -21,10 +21,16 @@ SAMPLE_RATE = 16000
 # "siglip" (default) | "clip" (baseline) | "vlm" (Qwen2.5-VL, university GPU)
 # SigLIP scores each concept with an independent sigmoid, so visibility is a real
 # per-source yes/no; CLIP's softmax made concepts compete (see stage2/siglip.py).
+# "owlv2" is the strongest but needs a GPU (~12 s/frame on CPU); "siglip" is the
+# CPU default. Measured on 209 tagged clips: CLIP 49.3% acc, SigLIP 50.2% -- the
+# embedding models both miss on-screen sources (67 of 103 seen_ambient clips were
+# predicted unseen), which is what detection is meant to fix.
 VIDEO_BACKEND = "siglip"
 VIDEO_MODEL = "openai/clip-vit-base-patch32"          # used when backend == "clip"
 SIGLIP_MODEL = "google/siglip-base-patch16-224"
 SIGLIP_THRESHOLD = -7.5   # raw logit, not a probability (see stage2/siglip.py)
+OWL_MODEL = "google/owlv2-base-patch16-ensemble"
+OWL_THRESHOLD = 0.20
 VLM_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"      # used when VIDEO_BACKEND == "vlm"
 NUM_FRAMES = 6              # frames sampled from the clip for scene analysis
 VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on screen"

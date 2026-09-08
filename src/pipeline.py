@@ -58,7 +58,8 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     print(f"[2/7] video understanding ({config.VIDEO_BACKEND})...")
     scene = analyze(video_path, backend=config.VIDEO_BACKEND,
                     num_frames=config.NUM_FRAMES, model=config.VIDEO_MODEL,
-                    vlm_model=config.VLM_MODEL, siglip_model=config.SIGLIP_MODEL,
+                    vlm_model=config.VLM_MODEL, siglip_model=config.SIGLIP_MODEL, owl_model=config.OWL_MODEL,
+                        owl_threshold=config.OWL_THRESHOLD,
                         siglip_threshold=config.SIGLIP_THRESHOLD, device=config.DEVICE,
                     threshold=config.VISIBILITY_THRESHOLD)
     _dump(work / "scene.json", scene.to_dict())
