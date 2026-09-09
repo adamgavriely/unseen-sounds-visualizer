@@ -135,12 +135,18 @@ def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
 _PIPE = None
 
 
-ICON_STYLE = ("simple flat vector icon of {subject}, minimal bold line art, few clean "
-              "shapes, solid plain white background, centered, large, high contrast, "
-              "instantly recognisable pictogram, no text")
+# "line art" is taken literally: the first attempt produced a clean bird silhouette on a
+# background of black stripes, and a good fire engine boxed in by spurious bars. The
+# words that actually work are the stock-photo ones -- isolated, white background,
+# sticker -- which name the RESULT rather than the drawing technique.
+ICON_STYLE = ("a single {subject}, simple flat vector illustration, bold solid shapes, "
+              "isolated on a plain empty white background, centered with wide empty "
+              "margins around it, sticker style, high contrast, instantly recognisable, "
+              "no text")
 ICON_NEGATIVE = ("photograph, photorealistic, realistic, 3d render, text, letters, words, "
-                 "watermark, logo, caption, busy background, scenery, clutter, multiple "
-                 "objects, small details, blurry")
+                 "watermark, logo, caption, stripes, lines, bars, grid, frame, border, "
+                 "pattern, background decoration, scenery, clutter, multiple objects, "
+                 "small details, blurry")
 
 
 def icon_prompt(subject: str) -> str:
@@ -168,17 +174,21 @@ def _subject_bbox(img: Image.Image, tol: int = 28):
     photograph fills the frame), and the caller falls back to a fixed corner.
     """
     try:
-        from PIL import ImageChops
         rgb = img.convert("RGB")
-        bg = Image.new("RGB", rgb.size, rgb.getpixel((2, 2)))
-        mask = ImageChops.difference(rgb, bg).convert("L").point(
-            lambda v: 255 if v > tol else 0)
+        w, h = rgb.size
+        # The prompt asks for a white ground, so "not near-white" is the subject. This
+        # survives the faint gradients diffusion leaves behind, which a corner-colour
+        # comparison does not -- that version rejected 7 of 8 real generations.
+        mask = rgb.convert("L").point(lambda v: 255 if v < 238 else 0)
         box = mask.getbbox()
         if not box:
             return None
-        w, h = rgb.size
-        if (box[2] - box[0]) > 0.97 * w and (box[3] - box[1]) > 0.97 * h:
-            return None                   # subject fills the frame: not an icon
+        cover = ((box[2] - box[0]) * (box[3] - box[1])) / float(w * h)
+        ink = mask.histogram()[255] / float(w * h)
+        # A photograph covers the frame; so does a generation that filled the background
+        # with decoration. Either way there is no clean edge to put the mark against.
+        if cover > 0.92 or ink > 0.62:
+            return None
         return box
     except Exception:
         return None
