@@ -1,19 +1,19 @@
-"""Try several generators and several prompts side by side, with the prompt printed
-under every image.
+"""Try prompt variants side by side, with the model and full prompt printed under every
+image, and a contact sheet per sound.
 
-Four prompt rewrites were spent one at a time, each needing a human to open the PNG to
-find out what went wrong -- stripes, then a badge on grey, then papercut folk art. That
-is the wrong loop. This runs the whole cross-product in one job and labels every result
-with the model and the exact prompt that produced it, so the choice is made by looking
-at a contact sheet instead of by guessing the next adjective.
-
-Simpler models are included deliberately: SDXL is the strongest photographic generator
-here and that is precisely its problem -- asked for a pictogram it produces an ornate
-illustration. A smaller, older model may be worse at photographs and better at flat
-shapes, which is what the panel needs.
+Rounds so far, each settled only by opening the PNGs:
+  1  "minimal line art" -> literal black stripes behind the subject
+  2  four styles: the 3d-icon look was the only one that stayed on a plain white ground
+     for both an animal and a vehicle; the realistic ones put birds on leafy branches
+  3  realistic + "no branches, no leaves" -> still branches (SDXL-Turbo runs at guidance
+     0 and therefore ignores the negative prompt AND handles negation poorly), and a
+     generic "with sound waves" cue produced a fire engine engulfed in FLAMES
+  4  this one: the 3d-icon base with muted colour, and a cue written SEPARATELY FOR EACH
+     SOUND -- lines from a dog's mouth, notes at a bird's beak, a siren on a truck roof.
+     A generic cue asks the model to invent an idiom; a specific one names the picture.
 
 Usage (on the cluster):
-    python scripts/icon_grid.py --subjects Bird "Fire engine" Dog
+    python scripts/icon_grid.py
 """
 from __future__ import annotations
 
@@ -35,39 +35,38 @@ MODELS = {
     "sdxlturbo": "stabilityai/sdxl-turbo",
 }
 
-# Round 2. Round 1 chased minimalism -- silhouettes, line art, two-colour icons -- and
-# Adam's reaction was that he wants a simple PICTURE, clipart or realistic clipart, not
-# a drawing to colour in. So every candidate here is in full colour and depicts the
-# thing recognisably; they differ in how stylised that colour is.
-# Round 3. Adam's read of round 2, which matches mine: B (realistic clipart) gave the
-# best single image but put the bird on a leafy branch -- background the viewer has to
-# look past -- while C was clean but toy-like and candy-bright. The target is between
-# them: B's realism, C's isolation on white, calmer colour, plus the sound cue.
-#
-# Turbo runs at guidance 0 and therefore IGNORES the negative prompt, so every
-# constraint has to be stated positively: 'isolated', 'no scenery', 'no branches'.
-BASE = ("{style} of {s}, natural muted colours, clean and uncluttered, isolated on a "
-        "plain white background, no scenery, no branches, no leaves, centered, CUE, "
-        "no text")
+# (subject, cue) -- the cue names the picture wanted rather than asking for "sound"
+SUBJECTS = [
+    ("a dog barking",
+     "with small curved sound lines coming out of its open mouth"),
+    ("a bird chirping",
+     "with a few small music notes next to its open beak"),
+    ("a fire engine with its siren on",
+     "with a siren light on the roof and small curved sound lines around the siren"),
+    ("rain falling",
+     "with falling raindrops and small splash marks below"),
+]
 
-REAL = "a realistic clipart illustration"
-SEMI = "a simple semi-realistic illustration"
+# Muted, not candy-bright: Adam's note on round 2 was that the colours were too loud.
+BASE3D = ("cute simple 3d icon of {s} {cue}, soft rounded shapes, soft muted natural "
+          "colours, plain white background, centered, friendly and clear, no text")
 
-PROMPTS = {
-    "S1_real_waves": BASE.replace("{style}", REAL).replace(
-        "CUE", "with small sound waves near the source of the sound"),
-    "S2_real_notes": BASE.replace("{style}", REAL).replace(
-        "CUE", "with a few small music notes floating beside it"),
-    "S3_semi_waves": BASE.replace("{style}", SEMI).replace(
-        "CUE", "with small sound waves near the source of the sound"),
-    "S4_real_nocue": BASE.replace("{style}", REAL).replace("CUE", "clearly visible"),
+VARIANTS = {
+    "V1_3d_cue": BASE3D,
+    "V2_3d_cue_strong": ("cute simple 3d icon of {s}, {cue}, the sound lines clearly "
+                         "visible, soft rounded shapes, soft muted natural colours, "
+                         "plain white background, centered, no text"),
+    "V3_semi_cue": ("a simple semi-realistic illustration of {s} {cue}, soft muted "
+                    "natural colours, plain white background, centered, clean and "
+                    "uncluttered, no text"),
+    "V4_3d_nocue": ("cute simple 3d icon of {s}, soft rounded shapes, soft muted natural "
+                    "colours, plain white background, centered, friendly and clear, "
+                    "no text"),
 }
 
-NEGATIVE = ("photograph, photorealistic, 3d render, text, letters, words, watermark, "
-            "logo, caption, stripes, lines, bars, grid, frame, border, pattern, "
-            "scenery, clutter, multiple objects, blurry, badge, sticker outline, "
-            "coloured background, grey background, gradient, shadow, vignette, ornate, "
-            "decorative, folk art, papercut, floral, intricate, engraving, mandala")
+NEGATIVE = ("photograph, photorealistic, text, letters, words, watermark, logo, stripes, "
+            "grid, frame, border, pattern, scenery, background objects, branches, leaves, "
+            "grass, smoke, fire, clutter, multiple objects, blurry")
 
 
 def _font(size):
@@ -81,9 +80,8 @@ def _font(size):
 
 
 def label_below(img: Image.Image, title: str, prompt: str, width: int = 512):
-    """The image with its model and full prompt printed underneath."""
     img = img.resize((width, width), Image.LANCZOS)
-    lines = textwrap.wrap(prompt, width=62)[:5]
+    lines = textwrap.wrap(prompt, width=62)[:6]
     strip = 26 + 15 * (len(lines) + 1)
     out = Image.new("RGB", (width, width + strip), (255, 255, 255))
     out.paste(img, (0, 0))
@@ -97,9 +95,6 @@ def label_below(img: Image.Image, title: str, prompt: str, width: int = 512):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--subjects", nargs="*",
-                    default=["a bird chirping", "a fire engine with siren",
-                             "a dog barking", "rain falling"])
     ap.add_argument("--models", nargs="*", default=["sdxlturbo"])
     ap.add_argument("--out", default="data/output/icon_grid")
     args = ap.parse_args()
@@ -108,7 +103,7 @@ def main():
     from diffusers import AutoPipelineForText2Image
     out = _ROOT / args.out
     out.mkdir(parents=True, exist_ok=True)
-    cells = {s: [] for s in args.subjects}
+    cells = {name: [] for name, _ in SUBJECTS}
 
     for mkey in args.models:
         repo = MODELS[mkey]
@@ -121,40 +116,40 @@ def main():
             print(f"  ! {mkey} failed to load: {type(e).__name__}: {e}", flush=True)
             continue
         turbo = "turbo" in mkey
-        for pkey, tmpl in PROMPTS.items():
-            for subj in args.subjects:
-                prompt = tmpl.format(s=subj)
+        for vkey, tmpl in VARIANTS.items():
+            for subj, cue in SUBJECTS:
+                prompt = tmpl.format(s=subj, cue=cue)
                 try:
                     kw = dict(prompt=prompt, width=512, height=512)
-                    if turbo:      # turbo is distilled: no CFG, very few steps
+                    if turbo:
                         kw.update(num_inference_steps=4, guidance_scale=0.0)
                     else:
                         kw.update(num_inference_steps=28, guidance_scale=7.5,
                                   negative_prompt=NEGATIVE)
                     img = pipe(**kw).images[0]
                 except Exception as e:
-                    print(f"  ! {mkey}/{pkey}/{subj}: {type(e).__name__}: {e}", flush=True)
+                    print(f"  ! {mkey}/{vkey}/{subj}: {type(e).__name__}: {e}", flush=True)
                     continue
-                cell = label_below(img, f"{mkey} | {pkey} | {subj}", prompt)
-                cell.save(out / f"{mkey}_{pkey}_{subj.replace(' ', '_')}.png")
+                cell = label_below(img, f"{mkey} | {vkey} | {subj}", prompt)
+                cell.save(out / f"{mkey}_{vkey}_{subj.replace(' ', '_')[:28]}.png")
                 cells[subj].append(cell)
-                print(f"  {mkey:10} {pkey:13} {subj}", flush=True)
+                print(f"  {mkey:10} {vkey:18} {subj}", flush=True)
         del pipe
         gc.collect()
         torch.cuda.empty_cache()
 
-    # one contact sheet per subject: every model x prompt for that sound, side by side
     for subj, imgs in cells.items():
         if not imgs:
             continue
-        cols = len(PROMPTS)
+        cols = len(VARIANTS)
         rows = (len(imgs) + cols - 1) // cols
         cw, ch = imgs[0].size
         sheet = Image.new("RGB", (cols * cw, rows * ch), (255, 255, 255))
         for i, im in enumerate(imgs):
             sheet.paste(im, ((i % cols) * cw, (i // cols) * ch))
-        sheet.save(out / f"SHEET_{subj.replace(' ', '_')}.png")
-        print(f"sheet -> SHEET_{subj.replace(' ', '_')}.png  ({len(imgs)} cells)", flush=True)
+        name = f"SHEET_{subj.replace(' ', '_')[:28]}.png"
+        sheet.save(out / name)
+        print(f"sheet -> {name} ({len(imgs)} cells)", flush=True)
 
 
 if __name__ == "__main__":
