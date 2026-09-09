@@ -891,6 +891,39 @@ not event visibility, and the cross-modal gating task requires the latter.}
     completed from material already collected.
 \end{itemize}
 
+\subsection{Tuning on the test set: checked, and it changes nothing}\label{sec:spliteval}
+Every threshold in this project was chosen by sweeping it over the same clips the result was then
+quoted on. With five display values, five augment values and a few hundred clips there is real room
+to fit noise, and it is the first objection an examiner raises. It is now measured rather than
+conceded: the labelled clips are split 50/50, stratified by the annotator's tag so neither half is
+scenario-skewed, the sweep runs on the training half alone, and the winning thresholds are frozen and
+applied to the held-out half (\texttt{benchmark/split\_eval.py}).
+
+\begin{center}\begin{tabular}{lccccc}
+\toprule
+seed & chosen thresholds & train F1 & test F1 & optimism \\
+\midrule
+7   & 0.08 / 0.12 & 42.7\% & 46.6\% & $-3.9$ \\
+11  & 0.08 / 0.12 & 42.1\% & 47.1\% & $-5.0$ \\
+23  & 0.08 / 0.12 & 45.2\% & 44.0\% & $+1.2$ \\
+42  & 0.08 / 0.12 & 40.4\% & 48.7\% & $-8.3$ \\
+101 & 0.08 / 0.12 & 43.1\% & 46.2\% & $-3.1$ \\
+\bottomrule
+\end{tabular}\end{center}
+
+There is \textbf{no optimism to remove}. In four of five splits the held-out half scores
+\emph{higher} than the half the sweep was allowed to look at, and the sweep selects the same corner
+of the grid every time. Scoring the held-out half at the thresholds already in \texttt{config.py}
+gives results identical to the frozen ones to one decimal place.
+
+The reason is not that the split is generous but that \textbf{the thresholds are not doing any work}.
+The sweep's apparent gains were always within noise, which is consistent with everything else
+measured about this component: four Stage-2 architectures within two points of each other, an oracle
+detector moving accuracy by $-0.2$, and event-level AUROC of 0.647. A component whose output barely
+depends on its own decision threshold is not a component held back by tuning, and no amount of
+threshold search will rescue it. That is worth stating explicitly, because ``we would have done
+better with more tuning'' is otherwise an easy and untestable excuse for the gate's performance.
+
 \subsection{Sourcing yield, and why the benchmark is frozen}
 Yield of usable positives did not plateau, it declined as filtering grew more
 elaborate: 22.2\% (naive keyword scraping) $\rightarrow$ 19.7\% $\rightarrow$ 15.4\%,
