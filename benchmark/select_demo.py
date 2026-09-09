@@ -82,6 +82,49 @@ def dynamics(entry):
     return covered / dur, transitions, len({e.label for e in offs})
 
 
+WORK = _ROOT / "data" / "work"
+
+
+def load_protocol(system: str = "proposed"):
+    """Dynamics taken from a real protocol run rather than the Stage-2 eval cache.
+
+    The eval cache holds what the OLD SigLIP gate would have decided. The protocol run
+    holds what the evaluated system ACTUALLY rendered -- the same augmentations.json the
+    compositor consumed, with each sound's span and the gate's augment/suppress decision
+    already applied. A demo should show the system that produced the reported numbers,
+    so this is the better source whenever a protocol run exists.
+    """
+    root = WORK / f"protocol_{system}"
+    out = {}
+    for d in sorted(root.glob("*/")):
+        augs, media = d / "augmentations.json", d / "media.json"
+        if not (augs.exists() and media.exists()):
+            continue
+        specs = json.loads(augs.read_text(encoding="utf-8"))
+        dur = float(json.loads(media.read_text(encoding="utf-8")).get("duration") or 0)
+        on = [(float(x["start"]), float(x["end"]), x["event_label"])
+              for x in specs if x.get("augment")]
+        out[d.name] = {"spans": on, "duration": dur or 1.0}
+    return out
+
+
+def dynamics_from_spans(entry):
+    """(coverage, transitions, n_sources) from already-decided augmentation spans."""
+    dur = entry["duration"]
+    spans = sorted((max(0.0, s), min(dur, e)) for s, e, _ in entry["spans"] if e > s)
+    if not spans:
+        return 0.0, 0, 0
+    merged = []
+    for s, t in spans:
+        if merged and s <= merged[-1][1]:
+            merged[-1] = (merged[-1][0], max(merged[-1][1], t))
+        else:
+            merged.append((s, t))
+    covered = sum(t - s for s, t in merged)
+    transitions = sum((s > 0.3) + (t < dur - 0.3) for s, t in merged)
+    return covered / dur, transitions, len({lbl for _, _, lbl in entry["spans"]})
+
+
 def score(cov, trans, nsrc):
     """Prefer mid-range coverage, then visible change, then a couple of sources."""
     if cov <= 0 or cov > 0.95:
@@ -97,23 +140,37 @@ def main():
         i = sys.argv.index("--write")
         write_n = int(sys.argv[i + 1]) if i + 1 < len(sys.argv) else 12
 
-    cache = load_cache()
-    if not cache:
-        sys.exit("no eval cache found -- run benchmark.evaluate first")
+    from_protocol = "--from-protocol" in sys.argv
+    if from_protocol:
+        cache = load_protocol()
+        if not cache:
+            sys.exit("no protocol work dirs -- run the protocol first")
+    else:
+        cache = load_cache()
+        if not cache:
+            sys.exit("no eval cache found -- run benchmark.evaluate first")
     tags = json.loads(TAGS.read_text(encoding="utf-8")) if TAGS.exists() else {}
-    tag_of = {k.split("/", 1)[1]: v["tag"] for k, v in tags.items()}
-    folder_of = {k.split("/", 1)[1]: k.split("/", 1)[0] for k in tags}
+    # tags.json keys are "<folder>/<name>.mp4"; the eval cache is keyed by file name and
+    # the protocol work dirs by stem, so index both spellings or every lookup misses.
+    tag_of, folder_of = {}, {}
+    for k, v in tags.items():
+        folder, _, name = k.partition("/")
+        for key in (name, Path(name).stem):
+            tag_of[key] = v["tag"]
+            folder_of[key] = folder
 
     rows = []
     for base, entry in cache.items():
         tag = tag_of.get(base)
         if tag not in ("unseen_ambient", "mixed"):
             continue                     # the demo should show it augmenting something
-        cov, trans, nsrc = dynamics(entry)
+        cov, trans, nsrc = (dynamics_from_spans(entry) if from_protocol
+                            else dynamics(entry))
         s = score(cov, trans, nsrc)
         if s > 0:
+            name = base if base.endswith(".mp4") else base + ".mp4"
             rows.append((s, base, tag, cov, trans, nsrc,
-                         f"{folder_of.get(base, 'unsorted')}/{base}"))
+                         f"{folder_of.get(base, 'unsorted')}/{name}"))
     rows.sort(reverse=True)
 
     print(f"{'clip':38}{'tag':16}{'cover':>7}{'trans':>7}{'srcs':>6}{'score':>7}")
