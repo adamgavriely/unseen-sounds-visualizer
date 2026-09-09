@@ -160,14 +160,16 @@ _PIPE = None
 # "sticker style" produced a genuinely good flat drawing -- sitting on a coloured badge
 # disc on a grey ground, which leaves no white margin for the sound mark and no clean
 # edge to find. The style words are worth keeping; the badge is not.
-ICON_STYLE = ("a single {subject}, simple flat vector illustration, bold solid shapes, "
-              "cut out on a pure white background, centered with wide empty white "
-              "margins around it, high contrast, instantly recognisable, no text")
+ICON_STYLE = ("minimalist pictogram of one {subject}, single simple silhouette, two "
+              "colours only, thick clean outline, plain empty white background, app icon, "
+              "instantly recognisable, no text")
 ICON_NEGATIVE = ("photograph, photorealistic, realistic, 3d render, text, letters, words, "
                  "watermark, logo, caption, stripes, lines, bars, grid, frame, border, "
                  "pattern, background decoration, scenery, clutter, multiple objects, "
                  "small details, blurry, circle background, badge, sticker outline, "
-                 "coloured background, grey background, gradient, shadow, vignette")
+                 "coloured background, grey background, gradient, shadow, vignette, "
+                 "ornate, decorative, folk art, papercut, floral, leaves, intricate, "
+                 "symmetrical pattern, engraving, woodcut, tattoo, mandala")
 
 
 def icon_prompt(subject: str) -> str:
