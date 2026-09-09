@@ -1034,10 +1034,65 @@ deployed rather than demonstrated is arguably worth more than the 0.17 points.
 The plausible reason is that a retrieved photograph of a siren is an unambiguous photograph of a
 siren, whereas SDXL renders a plausible-looking scene whose subject the describing VLM must infer.
 The protocol scores what a viewer would \emph{learn} from the image, and a stock photograph is easier
-to learn from than a synthesised one. Attribution for retrieved images is already handled
-(\texttt{credits.json}, \texttt{benchmark/ATTRIBUTIONS.md}); a deployed system would need to respect
-those licences, which a generated image sidesteps. That is the one real argument left for diffusion,
-and it is a legal argument, not a quality one.
+to learn from than a synthesised one.
+
+\textbf{The licence profile is the one real cost.} Every image the system used is now listed with
+its creator and licence (\texttt{scripts/build\_attributions.py} to
+\texttt{benchmark/IMAGE\_ATTRIBUTIONS.md}): 60 distinct images across 595 uses, of which
+\textbf{33 (55\%) carry a NonCommercial or NoDerivatives term} --- and because the restricted ones are
+used more often, they account for 66\% of uses. That is unproblematic for an academic prototype and
+for the evaluation reported here, but it constrains deployment: a released accessibility tool could
+not ship these images, and compositing one beside a video is plausibly a derivative work. A deployed
+system would restrict retrieval to the permissive licences, license a stock library, or fall back to
+generation. That is the one real argument left for diffusion, and it is a legal argument rather than
+a quality one.
+
+A second limit surfaced in the same audit: 595 uses drew on only \textbf{60 distinct images}. Many
+different sounds resolve to the same handful of stock photographs, because the retrieval query was
+built from the bare AudioSet label and that vocabulary is coarse. That is a ceiling retrieval has and
+generation does not, and it is what Section~\ref{sec:specificity} addresses.
+
+\subsection{Depicting the specific sound, and showing that it is a sound}\label{sec:specificity}
+Two weaknesses in what the panel actually shows were identified from the attribution audit and from
+Adam's observation that a siren ought to be depicted as the vehicle that made it.
+
+	extbf{The specificity was being detected and then discarded.} Stage 4 emits AudioSet labels and
+	exttt{consolidate\_families} collapses sub-types into a family, so that the gate reasons about one
+entry per source and the panel does not fill with near-duplicates. The drawn image then used that
+family label. An audit of the 100 evaluated clips found 	extbf{85 whose raw detections contained a
+more specific label than the one being drawn}: 	exttt{Truck} and 	exttt{Car} both rendered as a
+generic \emph{Vehicle}, 	exttt{Waves, surf} as \emph{Water}, and --- the case that prompted this ---
+	exttt{Fire engine, fire truck (siren)} collapsed to 	exttt{Siren}, whose query hint is
+\emph{ambulance}. Every fire truck in the benchmark was therefore shown as an ambulance.
+
+The fix separates the two jobs the label was doing: 	extbf{gate on the family, depict the specific
+sound}. The most confident specific child is carried in 	exttt{AudioEvent.detail} and used for the
+image only, so gating behaviour is untouched --- this changes what is drawn, never whether it is
+drawn. 	exttt{depiction\_query} additionally strips the synonym lists and disambiguating
+parentheticals AudioSet names carry, which are written for annotators and ruin an image search:
+	exttt{Fire engine, fire truck (siren)} becomes \emph{Fire engine}, 	exttt{Police car (siren)}
+becomes \emph{Police car}.
+
+Not every specific label depicts better than its family, because an AudioSet name names a
+\emph{sound} and only some sounds are named after their source: searching \emph{Chirp} returns
+waveforms and logos where \emph{Bird} returns a bird. Those fall back to the family through a short
+explicit list. No rule separates the two cases reliably, and pretending otherwise would be worse than
+a curated list that can be read and argued with.
+
+	extbf{A photograph does not say that you are hearing something.} A picture of a fire engine
+communicates that a fire engine exists, not that one is audible; the viewer must infer that the panel
+concerns sound at all. That inference is exactly the decoding step the panel should remove, and the
+DHH visualization work reviewed in Section~
+ef{sec:litreview} is consistent that the cue wants to be
+immediate rather than interpreted. The panel therefore combines three things in one simple image: the
+photograph of the specific source, the conventional radiating-arc sound indicator, and the source
+named in words. A louder sound draws a third arc, so intensity is visible without a number.
+
+The indicator is drawn in code rather than generated. It must be identical on every panel, legible
+over an arbitrary photograph, and free; a diffusion model offers none of the three, and the ablation
+in Section~
+ef{sec:genablation} had already shown generation losing to retrieval on quality as well
+as cost.
 
 \subsection{Judge reliability: which conclusions survive a change of judge}\label{sec:judgerel}
 A single 7B model deciding every score is the protocol's softest point, so the 300 cached
