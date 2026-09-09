@@ -27,7 +27,7 @@ from pathlib import Path
 import config
 config.DEVICE = "cuda"
 from src.stage6_visual_augmentation import (icon_prompt, _diffusion_image, _sound_glyph,
-                                            _caption, _cover_crop, _subject_bbox)
+                                            _caption, _fit_on_white, _subject_bbox)
 from PIL import Image
 
 out = Path("data/output/icon_samples"); out.mkdir(parents=True, exist_ok=True)
@@ -38,7 +38,7 @@ for s in subjects:
                           model="stabilityai/stable-diffusion-xl-base-1.0", device="cuda")
     if not ok:
         print(f"  ! {s}: generation failed", flush=True); continue
-    img = _cover_crop(Image.open(raw).convert("RGB"), (720, 405))
+    img = _fit_on_white(Image.open(raw).convert("RGB"), (720, 405))
     box = _subject_bbox(img)
     panel = _caption(_sound_glyph(img, 0.7), s)
     panel.save(out / f"{s.replace(' ', '_')}_panel.png")

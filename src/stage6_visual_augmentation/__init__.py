@@ -84,6 +84,24 @@ def _caption(img: Image.Image, text: str) -> Image.Image:
     return img
 
 
+def _fit_on_white(img: Image.Image, size: Tuple[int, int]) -> Image.Image:
+    """Letterbox onto white instead of cropping to fill.
+
+    _cover_crop turns a 768x768 generation into a 16:9 panel by cropping top and bottom
+    -- which removes exactly the empty margins the pictogram prompt asked for, leaving
+    the subject spanning the full height with no edge to put the sound mark against.
+    Fitting keeps the whole drawing and pads with white, which is also the ground the
+    prompt asks for, so the padding is invisible.
+    """
+    out = Image.new("RGB", size, (255, 255, 255))
+    w, h = img.size
+    scale = min(size[0] / w, size[1] / h)
+    resized = img.resize((max(1, int(w * scale)), max(1, int(h * scale))), Image.LANCZOS)
+    out.paste(resized, ((size[0] - resized.size[0]) // 2,
+                        (size[1] - resized.size[1]) // 2))
+    return out
+
+
 def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
     """Stamp a sound indicator onto the image, so the panel reads without decoding.
 
@@ -139,14 +157,17 @@ _PIPE = None
 # background of black stripes, and a good fire engine boxed in by spurious bars. The
 # words that actually work are the stock-photo ones -- isolated, white background,
 # sticker -- which name the RESULT rather than the drawing technique.
+# "sticker style" produced a genuinely good flat drawing -- sitting on a coloured badge
+# disc on a grey ground, which leaves no white margin for the sound mark and no clean
+# edge to find. The style words are worth keeping; the badge is not.
 ICON_STYLE = ("a single {subject}, simple flat vector illustration, bold solid shapes, "
-              "isolated on a plain empty white background, centered with wide empty "
-              "margins around it, sticker style, high contrast, instantly recognisable, "
-              "no text")
+              "cut out on a pure white background, centered with wide empty white "
+              "margins around it, high contrast, instantly recognisable, no text")
 ICON_NEGATIVE = ("photograph, photorealistic, realistic, 3d render, text, letters, words, "
                  "watermark, logo, caption, stripes, lines, bars, grid, frame, border, "
                  "pattern, background decoration, scenery, clutter, multiple objects, "
-                 "small details, blurry")
+                 "small details, blurry, circle background, badge, sticker outline, "
+                 "coloured background, grey background, gradient, shadow, vignette")
 
 
 def icon_prompt(subject: str) -> str:
@@ -427,9 +448,10 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
         # Glyph BEFORE caption: the caption bar spans the full width, and drawing it
         # first makes the subject's bounding box the whole frame, which parks the sound
         # mark in the corner instead of against the thing making the sound.
-        img = _caption(
-            _sound_glyph(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
-                         spec.confidence), label).convert("RGBA")
+        raw = Image.open(spec.image_path).convert("RGB")
+        fitted = (_fit_on_white(raw, (w, h)) if spec.backend == "diffusion"
+                  else _cover_crop(raw, (w, h)))
+        img = _caption(_sound_glyph(fitted, spec.confidence), label).convert("RGBA")
         img.putalpha(int(255 * _opacity(spec.confidence)))
         base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
         canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
