@@ -24,19 +24,37 @@ if str(_ROOT) not in sys.path:
 
 from PIL import Image, ImageDraw
 
-BASE = ("cute simple 3d icon of {s}, soft rounded shapes, soft muted natural colours, "
-        "plain white background, centered, friendly and clear, no text")
+# Adam's correction, and it is the right one: these generations were optimising how the
+# picture LOOKS rather than how fast it is UNDERSTOOD. "cute 3d icon" buys rendering
+# quality that nobody needs and costs clarity. What matters is choosing the depiction
+# that most directly encodes the sound event, then drawing it plainly.
+#
+# So each frame is now specified by its MEANING, in his terms: a beak that closes and
+# opens with a note when open; a dog's mouth closed then open with lines coming out; a
+# whole glass then a broken one -- it does not have to be a cup; footprints alternating.
+# The style prefix is deliberately plain and is the only thing varied across columns.
 
-# (name, frame A = at rest, frame B = making the sound, seed)
+STYLES = {
+    "P1_flat": ("simple flat illustration of {s}, clear simple shapes, few flat colours, "
+                "plain white background, easy to understand at a glance, no text"),
+    "P2_icon": ("simple clear picture of {s}, bold simple shapes, plain white "
+                "background, instantly understandable, no text"),
+}
+
+# (name, frame A = at rest, frame B = the sound happening, seed)
 PAIRS = [
-    ("dog_barking", "a dog with its mouth closed sitting",
-     "the same dog barking with its mouth wide open and a few small music notes beside it", 11),
-    ("bird_chirping", "a small bird with its beak closed",
-     "the same small bird chirping with its beak open and a few small music notes beside it", 23),
-    ("glass_shatter", "a drinking glass standing whole",
-     "the same drinking glass shattering into sharp flying pieces", 7),
-    ("footsteps", "a pair of shoes standing still",
-     "the same pair of shoes walking with small motion marks under them", 31),
+    ("bird_chirping",
+     "a small bird seen from the side with its beak closed",
+     "the same small bird with its beak open and one music note next to its beak", 23),
+    ("dog_barking",
+     "a dog seen from the side with its mouth closed",
+     "the same dog with its mouth open and three short curved lines coming out of it", 11),
+    ("glass_shatter",
+     "a whole unbroken glass object",
+     "the same glass object broken into several large sharp pieces", 7),
+    ("footsteps",
+     "a single footprint on the ground",
+     "two footprints on the ground, one in front of the other", 31),
 ]
 
 
@@ -50,13 +68,13 @@ def _font(size):
     return ImageFont.load_default()
 
 
-def label(img, text, width=420):
+def label(img, text, width=380):
     img = img.resize((width, width), Image.LANCZOS)
-    out = Image.new("RGB", (width, width + 30), (255, 255, 255))
+    out = Image.new("RGB", (width, width + 34), (255, 255, 255))
     out.paste(img, (0, 0))
     d = ImageDraw.Draw(out)
-    d.rectangle([0, width, width, width + 30], fill=(28, 30, 38))
-    d.text((8, width + 8), text[:70], font=_font(13), fill=(226, 228, 235))
+    d.rectangle([0, width, width, width + 34], fill=(28, 30, 38))
+    d.text((8, width + 9), text[:64], font=_font(13), fill=(226, 228, 235))
     return out
 
 
@@ -71,21 +89,25 @@ def main():
     pipe.set_progress_bar_config(disable=True)
 
     for name, rest, sound, seed in PAIRS:
-        frames = []
-        for tag, subj in (("A_rest", rest), ("B_sound", sound)):
-            g = torch.Generator("cuda").manual_seed(seed)   # same seed = same subject
-            img = pipe(prompt=BASE.format(s=subj), width=512, height=512,
-                       num_inference_steps=4, guidance_scale=0.0, generator=g).images[0]
-            img.save(out / f"{name}_{tag}.png")
-            frames.append(img)
-            print(f"  {name} {tag}", flush=True)
-        # the cycle itself, at roughly the rate a mouth opens
-        frames[0].save(out / f"{name}_cycle.gif", save_all=True,
-                       append_images=[frames[1]], duration=380, loop=0)
-        sheet = Image.new("RGB", (420 * 2, 450), (255, 255, 255))
-        sheet.paste(label(frames[0], "A - at rest"), (0, 0))
-        sheet.paste(label(frames[1], "B - making the sound"), (420, 0))
-        sheet.save(out / f"{name}_frames.png")
+        rows = []
+        for skey, style in STYLES.items():
+            frames = []
+            for tag, subj in (("A", rest), ("B", sound)):
+                g = torch.Generator("cuda").manual_seed(seed)   # same seed = same subject
+                img = pipe(prompt=style.format(s=subj), width=512, height=512,
+                           num_inference_steps=4, guidance_scale=0.0,
+                           generator=g).images[0]
+                img.save(out / f"{name}_{skey}_{tag}.png")
+                frames.append(img)
+                print(f"  {name} {skey} {tag}", flush=True)
+            frames[0].save(out / f"{name}_{skey}_cycle.gif", save_all=True,
+                           append_images=[frames[1]], duration=380, loop=0)
+            rows.append((skey, frames))
+        sheet = Image.new("RGB", (380 * 2, 414 * len(rows)), (255, 255, 255))
+        for i, (skey, fr) in enumerate(rows):
+            sheet.paste(label(fr[0], f"{skey} | A rest"), (0, i * 414))
+            sheet.paste(label(fr[1], f"{skey} | B sound"), (380, i * 414))
+        sheet.save(out / f"SHEET_{name}.png")
     print("done", flush=True)
 
 
