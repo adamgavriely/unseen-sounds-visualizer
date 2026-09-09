@@ -40,8 +40,10 @@ MODEL = os.environ.get("GEN_TEST_MODEL", "black-forest-labs/FLUX.1-schnell")
 SUBJECTS = ["a dog barking", "a bird chirping", "a fire engine with its siren on",
             "a glass shattering", "rain falling", "footsteps on a wooden floor"]
 
+# "isolated" won the plain-prompt test on SDXL-Turbo: it also removed the dangerous
+# case, where the bare fire-engine prompt put FLAMES in the background and would have
+# told a deaf viewer "fire" when the sound is a siren. Only that form is carried forward.
 VARIANTS = {
-    "bare": "{s}",
     "isolated": "{s}, plain white background, single subject, clearly visible",
 }
 
