@@ -84,6 +84,37 @@ def _caption(img: Image.Image, text: str) -> Image.Image:
     return img
 
 
+def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
+    """Stamp a sound indicator onto the image, so the panel reads without decoding.
+
+    A photograph of a fire engine says "there is a fire engine"; it does not say "you
+    are HEARING one". The viewer has to infer that the panel is about sound at all,
+    which is exactly the decoding step Adam asked to remove -- and the DHH
+    visualization literature is consistent that the cue should be immediate rather than
+    interpreted (sec:litreview). So the source and the fact-of-sound are combined in one
+    simple picture: the retrieved photograph of the source, plus the standard radiating
+    arcs, plus the source named in words.
+
+    Deliberately drawn rather than generated. It has to be identical every time, legible
+    over an arbitrary photograph, and cheap; a diffusion model gives none of those.
+    """
+    d = ImageDraw.Draw(img, "RGBA")
+    w, h = img.size
+    r = max(7, int(min(w, h) * 0.038))
+    cx, cy = w - int(r * 4.6), int(r * 4.2)
+    # a dark disc behind it, or white arcs vanish over a bright sky
+    pad = int(r * 3.5)
+    d.ellipse([cx - pad, cy - pad, cx + pad, cy + pad], fill=(0, 0, 0, 120))
+    # louder sounds get one more arc: the panel shows intensity without a number
+    for i in range(3 if strength >= 0.45 else 2):
+        rr = r * (1.35 + 0.8 * i)
+        d.arc([cx - rr, cy - rr, cx + rr, cy + rr], start=125, end=235,
+              fill=(255, 255, 255, 235), width=max(2, r // 3))
+    d.ellipse([cx - r * 0.4, cy - r * 0.4, cx + r * 0.4, cy + r * 0.4],
+              fill=(255, 255, 255, 245))
+    return img
+
+
 _PIPE = None
 
 
@@ -316,8 +347,10 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
         d.text((x0 + 24, (y0 + y1) // 2 - 10), label, font=_font(max(16, h // 12)),
                fill=(230, 232, 240, a))
     else:                                  # active image, opacity = confidence weight
-        img = _caption(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
-                       label).convert("RGBA")
+        # source photograph + sound indicator + the source named, in one simple panel
+        img = _sound_glyph(
+            _caption(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
+                     label), spec.confidence).convert("RGBA")
         img.putalpha(int(255 * _opacity(spec.confidence)))
         base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
         canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))

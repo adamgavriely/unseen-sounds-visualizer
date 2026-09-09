@@ -46,14 +46,35 @@ python main.py --input data/input/clip.mp4          # augment one video
 Judge scores 0-4, 100 clips per system, 300 records. `silent` is how often a system showed nothing;
 `right to be` is how often that was correct.
 
+Two references are reported, because the choice of reference changes the numbers and neither
+choice is obviously right.
+
+**(a) Model-derived reference** -- as the proposal specifies: an LLM states what a hearing viewer
+gets that a deaf viewer misses, from the detected audio and the visible scene.
+
 | system | mean | >=3 | silent | right to be |
 |---|---|---|---|---|
 | blind audio-to-image | **2.94** | 84% | 12% | 100% |
 | audio captioning | 2.68 | 57% | 12% | 100% |
 | proposed (gated) | 2.41 | 70% | 31% | 39% |
 
-**The gate does not beat direct audio-to-image generation overall.** Under a reference grounded in
-the annotator's labels it closes most of the gap (2.94 vs 3.09) but does not overtake. The useful
+**(b) Human-grounded reference** -- on clips the annotator marked `seen_ambient` or `no_ambient`,
+nothing is missing, so showing nothing is the correct output.
+
+| system | mean | >=3 | silent | right to be |
+|---|---|---|---|---|
+| blind audio-to-image | **3.09** | 91% | 12% | 100% |
+| proposed (gated) | 2.94 | 85% | 31% | 71% |
+| audio captioning | 2.79 | 67% | 12% | 100% |
+
+Under (a) the model-derived reference reports a sound as missing even when its source is plainly on
+screen, so a system that correctly stays silent scores 0. (b) fixes that using the annotator's own
+labels -- the only non-circular source, since grounding it in the system's own visibility output
+would grade the gate against its own decision. The correction is worth +0.53 to the gated system and
++0.11 / +0.15 to the baselines; that asymmetry is the arithmetic consequence of the gated system
+abstaining on 31% of clips against the baselines' 12%, and is stated wherever the number appears.
+
+**The gate does not beat direct audio-to-image generation under either reference.** The useful
 result is the per-category split:
 
 | where the correct output is... | proposed | blind | |
