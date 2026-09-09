@@ -59,7 +59,10 @@ def main():
         pipe.scheduler.config, beta_schedule="linear", clip_sample=False,
         timestep_spacing="linspace", steps_offset=1)
     pipe = pipe.to("cuda")
-    pipe.enable_vae_slicing()
+    try:                    # moved onto the vae in diffusers 0.40; harmless if absent
+        pipe.vae.enable_slicing()
+    except Exception:
+        pass
     pipe.set_progress_bar_config(disable=True)
 
     for name, prompt in CLIPS:
