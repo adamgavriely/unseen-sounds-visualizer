@@ -15,8 +15,7 @@
 # looks like an image was appended to the video, not like a system deciding moment by
 # moment. Clips are picked for mid-range coverage and several transitions.
 #
-# Rendered as the PROPOSED system with retrieval, because that is the configuration the
-# ablation showed to be best (Section "Ablation" in the notes) -- and because the
+# Rendered as the PROPOSED system with the shipping pictogram generator -- and because the
 # protocol runs overwrote data/output with whichever system rendered last, which was
 # the caption baseline in minimal mode.
 
@@ -37,7 +36,7 @@ from pathlib import Path
 import config
 config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"
-config.GEN_BACKEND = "retrieve"     # beats SDXL, and needs no GPU (see the ablation)
+config.GEN_BACKEND = "diffusion"    # the shipping generator: SDXL-Turbo pictograms
 config.GATE_ENABLED = True          # the proposed system
 config.RENDER_MODE = "full"
 from src import pipeline
