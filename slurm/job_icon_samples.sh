@@ -31,11 +31,11 @@ from src.stage6_visual_augmentation import (icon_prompt, _diffusion_image, _soun
 from PIL import Image
 
 out = Path("data/output/icon_samples"); out.mkdir(parents=True, exist_ok=True)
-subjects = ["Bird", "Fire engine", "Rain", "Dog", "Train", "Glass", "Thunder", "Footsteps"]
+subjects = ["Bird", "Fire engine", "Rain", "Dog", "Train", "Glass", "Thunder", "Siren"]
 for s in subjects:
     raw = out / f"{s.replace(' ', '_')}_raw.png"
     ok = _diffusion_image(raw, icon_prompt(s), (768, 768),
-                          model="stabilityai/stable-diffusion-xl-base-1.0", device="cuda")
+                          model=config.GEN_MODEL, device="cuda")
     if not ok:
         print(f"  ! {s}: generation failed", flush=True); continue
     img = _fit_on_white(Image.open(raw).convert("RGB"), (720, 405))
