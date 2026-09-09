@@ -95,10 +95,14 @@ def main():
         for subj in SUBJECTS:
             prompt = tmpl.format(s=subj)
             try:
+                distilled = is_flux or "turbo" in MODEL.lower()
                 kw = dict(prompt=prompt, width=512, height=512,
-                          num_inference_steps=4,       # both schnell and turbo want 4
-                          guidance_scale=0.0,
                           generator=torch.Generator("cpu").manual_seed(7))
+                if distilled:
+                    # schnell and turbo are distilled: 4 steps, and guidance is ignored
+                    kw.update(num_inference_steps=4, guidance_scale=0.0)
+                else:
+                    kw.update(num_inference_steps=25, guidance_scale=4.5)
                 if is_flux:
                     kw["max_sequence_length"] = 256
                 img = pipe(**kw).images[0]
