@@ -70,7 +70,12 @@ GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
 #   minimal = same slots, compact label chips instead of imagery (icon set is a TODO)
 #   off     = no augmentation panel (control condition; output = original video)
 RENDER_MODE = "full"
-GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"   # for the v2 diffusion backend
+# Chosen from a 3-model x 4-prompt grid (scripts/icon_grid.py; sheets in
+# data/output/icon_grid). SDXL base was the WORST of the three for this job: asked
+# for a pictogram of a dog it returned paw-print wallpaper and a 12-panel contact
+# sheet; for a fire engine, a garage door. Turbo returned a clean readable subject
+# on white for every subject tried, and is ~7x cheaper per image.
+GEN_MODEL = "stabilityai/sdxl-turbo"   # for the v2 diffusion backend
 RESOLUTION = (1024, 1024)    # augmentation image size
 PANEL_SIZE = 720             # side-by-side augmentation panel size (px)
 FPS = 25

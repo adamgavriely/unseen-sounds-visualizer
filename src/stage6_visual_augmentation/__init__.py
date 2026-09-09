@@ -225,16 +225,23 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
     global _PIPE
     try:
         import torch
-        from diffusers import StableDiffusionXLPipeline
+        from diffusers import AutoPipelineForText2Image
         if _PIPE is None:
-            _PIPE = StableDiffusionXLPipeline.from_pretrained(
-                model, torch_dtype=torch.float16 if device == "cuda" else torch.float32,
-                variant="fp16" if device == "cuda" else None, use_safetensors=True)
+            _PIPE = AutoPipelineForText2Image.from_pretrained(
+                model, torch_dtype=torch.float16 if device == 'cuda' else torch.float32,
+                use_safetensors=True)
             _PIPE = _PIPE.to(device)
             _PIPE.set_progress_bar_config(disable=True)
-        img = _PIPE(prompt=prompt, negative_prompt=ICON_NEGATIVE,
-                    width=size[0], height=size[1],
-                    num_inference_steps=28, guidance_scale=8.0).images[0]
+        kw = dict(prompt=prompt, width=size[0], height=size[1])
+        if 'turbo' in model:
+            # Distilled: trained for very few steps and ignores classifier-free
+            # guidance, so a negative prompt does nothing here and a high guidance
+            # scale degrades it. Also ~7x cheaper per image, which matters at 300.
+            kw.update(num_inference_steps=4, guidance_scale=0.0)
+        else:
+            kw.update(num_inference_steps=28, guidance_scale=8.0,
+                      negative_prompt=ICON_NEGATIVE)
+        img = _PIPE(**kw).images[0]
         img.save(path)
         return True
     except Exception as e:
