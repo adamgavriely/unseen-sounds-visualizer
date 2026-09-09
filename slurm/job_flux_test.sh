@@ -15,5 +15,6 @@ conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export PYTHONUNBUFFERED=1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
+export GEN_TEST_MODEL="${GEN_TEST_MODEL:-black-forest-labs/FLUX.1-schnell}"
 python scripts/flux_test.py
 ls -la data/output/flux_test/

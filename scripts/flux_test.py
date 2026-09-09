@@ -30,7 +30,12 @@ if str(_ROOT) not in sys.path:
 
 from PIL import Image, ImageDraw
 
-MODEL = "black-forest-labs/FLUX.1-schnell"
+# FLUX.1-schnell is Apache-2.0 but its HF repo is GATED: the licence must be accepted
+# and a token set, or the download returns 401. Overridable so the same plain-prompt test
+# can run on an ungated model in the meantime -- which is the more important half of the
+# experiment anyway, since it isolates the PROMPT change from the MODEL change.
+import os
+MODEL = os.environ.get("GEN_TEST_MODEL", "black-forest-labs/FLUX.1-schnell")
 
 SUBJECTS = ["a dog barking", "a bird chirping", "a fire engine with its siren on",
             "a glass shattering", "rain falling", "footsteps on a wooden floor"]
@@ -67,14 +72,20 @@ def label_below(img, title, prompt, width=380):
 
 def main():
     import torch
-    from diffusers import FluxPipeline
+    from diffusers import AutoPipelineForText2Image
 
     out = _ROOT / "data" / "output" / "flux_test"
     out.mkdir(parents=True, exist_ok=True)
-    pipe = FluxPipeline.from_pretrained(MODEL, torch_dtype=torch.bfloat16)
-    # FLUX bf16 is ~24 GB and the L4 has 23; offloading keeps it resident on CPU and
-    # moves modules to the GPU as needed. Slower per image, but it fits.
-    pipe.enable_model_cpu_offload()
+    is_flux = "FLUX" in MODEL.upper()
+    print(f"[model] {MODEL}", flush=True)
+    pipe = AutoPipelineForText2Image.from_pretrained(
+        MODEL, torch_dtype=torch.bfloat16 if is_flux else torch.float16)
+    if is_flux:
+        # FLUX bf16 is ~24 GB and the L4 has 23; offloading keeps it on CPU and moves
+        # modules to the GPU as needed. Slower per image, but it fits.
+        pipe.enable_model_cpu_offload()
+    else:
+        pipe = pipe.to("cuda")
     pipe.set_progress_bar_config(disable=True)
 
     cells = {s: [] for s in SUBJECTS}
@@ -82,17 +93,19 @@ def main():
         for subj in SUBJECTS:
             prompt = tmpl.format(s=subj)
             try:
-                img = pipe(prompt=prompt, width=512, height=512,
-                           num_inference_steps=4,      # schnell is distilled for 4
-                           guidance_scale=0.0,
-                           max_sequence_length=256,
-                           generator=torch.Generator("cpu").manual_seed(7)).images[0]
+                kw = dict(prompt=prompt, width=512, height=512,
+                          num_inference_steps=4,       # both schnell and turbo want 4
+                          guidance_scale=0.0,
+                          generator=torch.Generator("cpu").manual_seed(7))
+                if is_flux:
+                    kw["max_sequence_length"] = 256
+                img = pipe(**kw).images[0]
             except Exception as e:
                 print(f"  ! {vkey}/{subj}: {type(e).__name__}: {e}", flush=True)
                 continue
             stem = f"{vkey}_{subj.replace(' ', '_')[:26]}"
             img.save(out / f"{stem}.png")
-            cells[subj].append(label_below(img, f"flux-schnell | {vkey}", prompt))
+            cells[subj].append(label_below(img, f"{MODEL.split(chr(47))[-1]} | {vkey}", prompt))
             print(f"  {vkey:9} {subj}", flush=True)
 
     rows = [c for s in SUBJECTS for c in cells[s]]
