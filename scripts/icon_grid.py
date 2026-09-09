@@ -49,14 +49,21 @@ MODELS = {
 BASE = ("cute simple 3d icon of {s}{cue}, soft rounded shapes, bright colours, plain "
         "white background, centered, friendly and clear, no text")
 
+# Round 3. Style settled on the 3d-icon look from round 2: the only candidate that
+# stayed on a plain white ground for an animal AND a vehicle -- the others put birds on
+# leafy branches, which is background the viewer must look past.
+#
+# The open question is the sound cue. Code-drawn arcs are identical every time and
+# free; asking the generator for the cue puts it at the mouth and looks like part of
+# the picture, but only if the model complies. N4 is the control, no cue requested.
+BASE = ("cute simple 3d icon of {s}CUE, soft rounded shapes, bright colours, plain "
+        "white background, centered, friendly and clear, no text")
+
 PROMPTS = {
-    "N1_notes": BASE.replace("{cue}", " with small music notes nearby"),
-    "N2_waves": BASE.replace("{cue}", " with sound waves coming from its mouth"),
-    "N3_singing": BASE.replace("{cue}", ", mouth open, with musical notes floating beside it"),
-    "N4_nocue": BASE.replace("{cue}", ""),
-}, clear bright "
-                    "colours, plain white background, no scenery, easy to understand, "
-                    "no text"),
+    "N1_notes":   BASE.replace("CUE", " with small music notes nearby"),
+    "N2_waves":   BASE.replace("CUE", " with sound waves coming from its mouth"),
+    "N3_singing": BASE.replace("CUE", ", mouth open, with musical notes floating beside it"),
+    "N4_nocue":   BASE.replace("CUE", ""),
 }
 
 NEGATIVE = ("photograph, photorealistic, 3d render, text, letters, words, watermark, "
