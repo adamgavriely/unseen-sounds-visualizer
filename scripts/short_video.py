@@ -23,8 +23,8 @@ _ROOT = Path(__file__).resolve().parent.parent
 if str(_ROOT) not in sys.path:
     sys.path.insert(0, str(_ROOT))
 
-STYLE = ("simple flat illustration, clear simple shapes, few flat colours, plain white "
-         "background, easy to understand at a glance, no text")
+STYLE = ("simple cartoon drawing, clean bold outlines, flat colours, solid white "
+         "background, single subject, centered, easy to understand, no text")
 
 CLIPS = [
     ("bird_chirping",
@@ -38,7 +38,9 @@ CLIPS = [
 ]
 
 NEGATIVE = ("photograph, photorealistic, text, letters, watermark, logo, scenery, "
-            "background objects, clutter, blurry, distorted, extra limbs")
+            "background objects, clutter, blurry, distorted, extra limbs, duplicate, "
+            "multiple subjects, texture, noise, grain, purple, dark background, "
+            "painting, sketchy, messy")
 
 
 def main():
@@ -51,9 +53,24 @@ def main():
 
     adapter = MotionAdapter.from_pretrained(
         "guoyww/animatediff-motion-adapter-v1-5-2", torch_dtype=torch.float16)
-    pipe = AnimateDiffPipeline.from_pretrained(
-        "stable-diffusion-v1-5/stable-diffusion-v1-5",
-        motion_adapter=adapter, torch_dtype=torch.float16)
+    # AnimateDiff is a motion module bolted onto an SD1.5 checkpoint, and the checkpoint
+    # decides the picture. The first attempt used BASE SD1.5, which is old and weak, and
+    # produced exactly its known artefacts: muddy purple textures, duplicated subjects,
+    # and the plain-white-background instruction ignored. Nobody pairs AnimateDiff with
+    # the base model; a fine-tuned checkpoint is the norm. Tried in order of preference.
+    BASES = ["Lykon/dreamshaper-8", "SG161222/Realistic_Vision_V5.1_noVAE",
+             "stable-diffusion-v1-5/stable-diffusion-v1-5"]
+    pipe = None
+    for repo in BASES:
+        try:
+            pipe = AnimateDiffPipeline.from_pretrained(
+                repo, motion_adapter=adapter, torch_dtype=torch.float16)
+            print(f"  base checkpoint: {repo}", flush=True)
+            break
+        except Exception as e:
+            print(f"  ! {repo} unavailable: {type(e).__name__}", flush=True)
+    if pipe is None:
+        raise SystemExit("no usable SD1.5 checkpoint")
     # the scheduler settings AnimateDiff expects; the defaults produce mush
     pipe.scheduler = DDIMScheduler.from_config(
         pipe.scheduler.config, beta_schedule="linear", clip_sample=False,
