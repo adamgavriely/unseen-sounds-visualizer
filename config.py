@@ -59,7 +59,12 @@ DISPLAY_THRESHOLD = 0.12
 AUGMENT_THRESHOLD = 0.12
 
 # Stage 6 — visual augmentation generation
-GEN_BACKEND = "retrieve"     # v1: retrieve (Openverse, free) | placeholder | diffusion (v2 TODO)
+GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
+# Generation, not retrieval, despite retrieval scoring better in the ablation: a
+# retrieved image only exists if somebody photographed that sound source and licensed
+# it, which is a hard ceiling for arbitrary future sounds. Generation trades score for
+# coverage, and the pictogram prompt (stage 6, icon_prompt) is the attempt to win the
+# score back by asking for something unambiguous rather than something photographic.
 # Presentation preset (DHH evidence: users want choices; see notes "Rendering improvements"):
 #   full    = stable per-sound slots with imagery, opacity weighted by confidence
 #   minimal = same slots, compact label chips instead of imagery (icon set is a TODO)

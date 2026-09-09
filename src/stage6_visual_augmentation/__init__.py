@@ -101,21 +101,87 @@ def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
     d = ImageDraw.Draw(img, "RGBA")
     w, h = img.size
     r = max(7, int(min(w, h) * 0.038))
-    cx, cy = w - int(r * 4.6), int(r * 4.2)
-    # a dark disc behind it, or white arcs vanish over a bright sky
-    pad = int(r * 3.5)
-    d.ellipse([cx - pad, cy - pad, cx + pad, cy + pad], fill=(0, 0, 0, 120))
+    # Put the mark against the thing that is making the sound -- beside the bird, not
+    # parked in the corner of the frame. Adam's example was sound drawn at the bird's
+    # mouth; the subject's silhouette is findable on a plain ground, so the arcs go just
+    # outside its upper edge. Photographs fill the frame and fall back to the corner.
+    box = _subject_bbox(img)
+    if box:
+        # emitter just past the subject's edge, arcs opening AWAY from it: sound comes
+        # out of the bird, so the rings must expand outward, not wrap back around it
+        cx = min(w - int(r * 4.6), box[2] + int(r * 1.1))
+        cy = max(int(r * 2.2), box[1] + (box[3] - box[1]) // 4)
+    else:
+        cx, cy = w - int(r * 5.2), int(r * 4.2)
+
+    # On a pictogram the ground is plain and light, so dark arcs read best and a disc
+    # behind them would be visual noise. Over a photograph nothing can be assumed, so
+    # white arcs on a dark disc are the only reliable option.
+    r_, g_, b_ = img.convert("RGB").getpixel((min(cx, w - 1), min(cy, h - 1)))
+    on_light = (r_ + g_ + b_) / 3 > 140 and box is not None
+    ink = (28, 32, 44, 255) if on_light else (255, 255, 255, 235)
+    if not on_light:
+        pad = int(r * 3.6)
+        d.ellipse([cx - pad, cy - pad, cx + pad, cy + pad], fill=(0, 0, 0, 120))
     # louder sounds get one more arc: the panel shows intensity without a number
     for i in range(3 if strength >= 0.45 else 2):
-        rr = r * (1.35 + 0.8 * i)
-        d.arc([cx - rr, cy - rr, cx + rr, cy + rr], start=125, end=235,
-              fill=(255, 255, 255, 235), width=max(2, r // 3))
-    d.ellipse([cx - r * 0.4, cy - r * 0.4, cx + r * 0.4, cy + r * 0.4],
-              fill=(255, 255, 255, 245))
+        rr = r * (1.3 + 0.78 * i)
+        d.arc([cx - rr, cy - rr, cx + rr, cy + rr], start=-52, end=52,
+              fill=ink, width=max(2, r // 3))
+    d.ellipse([cx - r * 0.38, cy - r * 0.38, cx + r * 0.38, cy + r * 0.38], fill=ink)
     return img
 
 
 _PIPE = None
+
+
+ICON_STYLE = ("simple flat vector icon of {subject}, minimal bold line art, few clean "
+              "shapes, solid plain white background, centered, large, high contrast, "
+              "instantly recognisable pictogram, no text")
+ICON_NEGATIVE = ("photograph, photorealistic, realistic, 3d render, text, letters, words, "
+                 "watermark, logo, caption, busy background, scenery, clutter, multiple "
+                 "objects, small details, blurry")
+
+
+def icon_prompt(subject: str) -> str:
+    """Ask for a pictogram rather than a picture.
+
+    The generator ablation had SDXL rendering "a clear, simple illustration of: Siren"
+    and losing to a stock photograph, because it produced a plausible SCENE whose
+    subject the viewer -- and the describing VLM -- had to work out. A panel beside a
+    video gets a glance, not a study; what it needs is the least ambiguous possible
+    depiction of one thing.
+
+    So the prompt asks for the thing diffusion is reliably good at and photographs are
+    not: one large object, flat, few shapes, plain background, nothing else in frame.
+    That also makes the subject's silhouette findable in code, which is what lets the
+    sound indicator be placed against the object instead of parked in a corner.
+    """
+    return ICON_STYLE.format(subject=subject)
+
+
+def _subject_bbox(img: Image.Image, tol: int = 28):
+    """Where the drawn thing is, assuming a plain background.
+
+    Icon-style output sits on a near-uniform ground, so anything differing from the
+    corner colour is the subject. Returns None when that assumption does not hold (a
+    photograph fills the frame), and the caller falls back to a fixed corner.
+    """
+    try:
+        from PIL import ImageChops
+        rgb = img.convert("RGB")
+        bg = Image.new("RGB", rgb.size, rgb.getpixel((2, 2)))
+        mask = ImageChops.difference(rgb, bg).convert("L").point(
+            lambda v: 255 if v > tol else 0)
+        box = mask.getbbox()
+        if not box:
+            return None
+        w, h = rgb.size
+        if (box[2] - box[0]) > 0.97 * w and (box[3] - box[1]) > 0.97 * h:
+            return None                   # subject fills the frame: not an icon
+        return box
+    except Exception:
+        return None
 
 
 def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
@@ -133,10 +199,9 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
                 variant="fp16" if device == "cuda" else None, use_safetensors=True)
             _PIPE = _PIPE.to(device)
             _PIPE.set_progress_bar_config(disable=True)
-        img = _PIPE(prompt=prompt,
-                    negative_prompt="text, watermark, logo, caption, blurry, distorted",
+        img = _PIPE(prompt=prompt, negative_prompt=ICON_NEGATIVE,
                     width=size[0], height=size[1],
-                    num_inference_steps=28, guidance_scale=6.0).images[0]
+                    num_inference_steps=28, guidance_scale=8.0).images[0]
         img.save(path)
         return True
     except Exception as e:
@@ -196,7 +261,7 @@ def _retrieve(query: str, out_path: Path, size: Tuple[int, int]) -> Optional[dic
                 continue
             try:
                 img = Image.open(io.BytesIO(_http_get(url))).convert("RGB")
-                _caption(_cover_crop(img, size), query).save(out_path)
+                _caption(_sound_glyph(_cover_crop(img, size)), query).save(out_path)
                 return {"requested": query, "matched_query": q, "title": r.get("title"),
                         "creator": r.get("creator"), "license": r.get("license"),
                         "license_url": r.get("license_url"),
@@ -234,7 +299,9 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
                 spec.image_path = str(path)
                 spec.backend = "placeholder"
         elif backend == "diffusion":                # v2-b, university GPU
-            prompt = spec.image_prompt or f"A clear, simple photograph of {query}"
+            # Always the pictogram prompt: what Stage 5 stored is the subject, and the
+            # style is this backend's business, not the gate's.
+            prompt = icon_prompt(spec.subject or query)
             if _diffusion_image(path, prompt, size, model=model, device=device):
                 spec.image_path = str(path)
                 spec.backend = "diffusion"
@@ -347,10 +414,12 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
         d.text((x0 + 24, (y0 + y1) // 2 - 10), label, font=_font(max(16, h // 12)),
                fill=(230, 232, 240, a))
     else:                                  # active image, opacity = confidence weight
-        # source photograph + sound indicator + the source named, in one simple panel
-        img = _sound_glyph(
-            _caption(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
-                     label), spec.confidence).convert("RGBA")
+        # Glyph BEFORE caption: the caption bar spans the full width, and drawing it
+        # first makes the subject's bounding box the whole frame, which parks the sound
+        # mark in the corner instead of against the thing making the sound.
+        img = _caption(
+            _sound_glyph(_cover_crop(Image.open(spec.image_path).convert("RGB"), (w, h)),
+                         spec.confidence), label).convert("RGBA")
         img.putalpha(int(255 * _opacity(spec.confidence)))
         base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
         canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
