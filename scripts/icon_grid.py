@@ -39,31 +39,28 @@ MODELS = {
 # Adam's reaction was that he wants a simple PICTURE, clipart or realistic clipart, not
 # a drawing to colour in. So every candidate here is in full colour and depicts the
 # thing recognisably; they differ in how stylised that colour is.
-# Round 3. Style settled on the 3d-icon look (round 2): it was the only candidate that
-# stayed on a plain white ground for an animal AND a vehicle -- the others put birds on
-# leafy branches, which is background the viewer has to look past.
+# Round 3. Adam's read of round 2, which matches mine: B (realistic clipart) gave the
+# best single image but put the bird on a leafy branch -- background the viewer has to
+# look past -- while C was clean but toy-like and candy-bright. The target is between
+# them: B's realism, C's isolation on white, calmer colour, plus the sound cue.
 #
-# The open question is the sound cue. A code-drawn arc symbol is identical every time
-# and free; asking the generator for the cue puts it AT the mouth and looks like part of
-# the picture, but only if the model complies. N4 is the control with no cue asked for.
-BASE = ("cute simple 3d icon of {s}{cue}, soft rounded shapes, bright colours, plain "
-        "white background, centered, friendly and clear, no text")
+# Turbo runs at guidance 0 and therefore IGNORES the negative prompt, so every
+# constraint has to be stated positively: 'isolated', 'no scenery', 'no branches'.
+BASE = ("{style} of {s}, natural muted colours, clean and uncluttered, isolated on a "
+        "plain white background, no scenery, no branches, no leaves, centered, CUE, "
+        "no text")
 
-# Round 3. Style settled on the 3d-icon look from round 2: the only candidate that
-# stayed on a plain white ground for an animal AND a vehicle -- the others put birds on
-# leafy branches, which is background the viewer must look past.
-#
-# The open question is the sound cue. Code-drawn arcs are identical every time and
-# free; asking the generator for the cue puts it at the mouth and looks like part of
-# the picture, but only if the model complies. N4 is the control, no cue requested.
-BASE = ("cute simple 3d icon of {s}CUE, soft rounded shapes, bright colours, plain "
-        "white background, centered, friendly and clear, no text")
+REAL = "a realistic clipart illustration"
+SEMI = "a simple semi-realistic illustration"
 
 PROMPTS = {
-    "N1_notes":   BASE.replace("CUE", " with small music notes nearby"),
-    "N2_waves":   BASE.replace("CUE", " with sound waves coming from its mouth"),
-    "N3_singing": BASE.replace("CUE", ", mouth open, with musical notes floating beside it"),
-    "N4_nocue":   BASE.replace("CUE", ""),
+    "S1_real_waves": BASE.replace("{style}", REAL).replace(
+        "CUE", "with small sound waves near the source of the sound"),
+    "S2_real_notes": BASE.replace("{style}", REAL).replace(
+        "CUE", "with a few small music notes floating beside it"),
+    "S3_semi_waves": BASE.replace("{style}", SEMI).replace(
+        "CUE", "with small sound waves near the source of the sound"),
+    "S4_real_nocue": BASE.replace("{style}", REAL).replace("CUE", "clearly visible"),
 }
 
 NEGATIVE = ("photograph, photorealistic, 3d render, text, letters, words, watermark, "
