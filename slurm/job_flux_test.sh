@@ -14,6 +14,8 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
 conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export PYTHONUNBUFFERED=1
+# reduces fragmentation, which is what turned "90 MiB short" into a hard failure
+export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 # A batch job gets a non-interactive shell, so HF_TOKEN set in .bashrc is not visible
 # and gated repos 401. Sourcing .bashrc is not an option either: it pulls in /etc/bashrc,

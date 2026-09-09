@@ -83,9 +83,12 @@ def main():
     pipe = AutoPipelineForText2Image.from_pretrained(
         MODEL, torch_dtype=torch.bfloat16 if is_flux else torch.float16)
     if is_flux:
-        # FLUX bf16 is ~24 GB and the L4 has 23; offloading keeps it on CPU and moves
-        # modules to the GPU as needed. Slower per image, but it fits.
-        pipe.enable_model_cpu_offload()
+        # FLUX is ~24 GB in bf16 and the L4 exposes 22. enable_model_cpu_offload moves
+        # whole components and still OOM'd -- and worse, left the pipeline half on the
+        # GPU, so every subsequent prompt failed with a device mismatch rather than a
+        # clear error. Sequential offload moves one module at a time: far slower per
+        # image, but it actually fits.
+        pipe.enable_sequential_cpu_offload()
     else:
         pipe = pipe.to("cuda")
     pipe.set_progress_bar_config(disable=True)
