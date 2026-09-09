@@ -35,16 +35,21 @@ MODELS = {
     "sdxlturbo": "stabilityai/sdxl-turbo",
 }
 
+# Round 2. Round 1 chased minimalism -- silhouettes, line art, two-colour icons -- and
+# Adam's reaction was that he wants a simple PICTURE, clipart or realistic clipart, not
+# a drawing to colour in. So every candidate here is in full colour and depicts the
+# thing recognisably; they differ in how stylised that colour is.
 PROMPTS = {
-    "A_pictogram": ("minimalist pictogram of one {s}, single simple silhouette, two "
-                    "colours only, thick clean outline, plain empty white background, "
-                    "app icon, no text"),
-    "B_flatvector": ("flat vector illustration of a {s}, simple bold shapes, solid "
-                     "colours, isolated on a white background, centered, no text"),
-    "C_bwicon": ("simple black and white icon of a {s}, one object, thick uniform "
-                 "strokes, plain white background, no shading, no text"),
-    "D_childlike": ("a very simple children's drawing of a {s}, a few thick lines, "
-                    "plain white background, easy to recognise, no text"),
+    "A_clipart": ("simple colourful clipart of {s}, clean cartoon illustration, bright "
+                  "solid colours, plain white background, centered, easy to recognise, "
+                  "no text"),
+    "B_realclip": ("simple realistic clipart of {s}, full colour, clean and uncluttered, "
+                   "isolated on a plain white background, centered, no text"),
+    "C_3dicon": ("cute simple 3d icon of {s}, soft rounded shapes, bright colours, plain "
+                 "white background, centered, friendly and clear, no text"),
+    "D_storybook": ("simple colourful children's book illustration of {s}, clear bright "
+                    "colours, plain white background, no scenery, easy to understand, "
+                    "no text"),
 }
 
 NEGATIVE = ("photograph, photorealistic, 3d render, text, letters, words, watermark, "
@@ -81,8 +86,10 @@ def label_below(img: Image.Image, title: str, prompt: str, width: int = 512):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--subjects", nargs="*", default=["Bird", "Fire engine", "Dog"])
-    ap.add_argument("--models", nargs="*", default=list(MODELS))
+    ap.add_argument("--subjects", nargs="*",
+                    default=["a bird chirping", "a fire engine with siren",
+                             "a dog barking", "rain falling"])
+    ap.add_argument("--models", nargs="*", default=["sdxlturbo"])
     ap.add_argument("--out", default="data/output/icon_grid")
     args = ap.parse_args()
 

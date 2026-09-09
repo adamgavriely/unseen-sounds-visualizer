@@ -20,5 +20,5 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
 conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export PYTHONUNBUFFERED=1
-python scripts/icon_grid.py --subjects Bird "Fire engine" Dog
+python scripts/icon_grid.py
 ls -la data/output/icon_grid/SHEET_*.png 2>/dev/null
