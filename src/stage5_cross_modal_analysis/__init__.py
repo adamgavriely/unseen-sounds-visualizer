@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import List
 
 from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
-from src.labels import is_salient_nonspeech, consolidate_families, min_confidence
+from src.labels import is_salient_nonspeech, consolidate_families, min_confidence, depiction_query
 
 
 def plan_augmentations(scene: SceneContext,
@@ -57,10 +57,16 @@ def plan_augmentations(scene: SceneContext,
                 reason = "source already visible on screen (stay silent)"
             else:
                 reason = "salient non-speech sound, source not visible -> augment"
+        # Gate on the FAMILY, depict the SPECIFIC sound. The family is what visibility
+        # concepts are keyed on, but drawing it loses everything the detector knew: a
+        # fire engine became a generic "Siren", whose query hint is "ambulance", so the
+        # system showed an ambulance for a fire truck. 85 of 100 clips had a more
+        # specific label available than the one being drawn. See labels.depiction_query.
+        subject = depiction_query(ev.label, ev.detail) if augment else ""
         specs.append(AugmentationSpec(
             index=i, event_label=ev.label, start=ev.start, end=ev.end,
             augment=augment, confidence=ev.confidence, reason=reason,
-            subject=ev.label if augment else "",
-            image_prompt=(f"A clear, simple illustration of: {ev.label}" if augment else ""),
+            subject=subject,
+            image_prompt=(f"A clear, simple photograph of: {subject}" if augment else ""),
         ))
     return specs

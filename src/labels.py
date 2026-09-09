@@ -222,6 +222,63 @@ def merge_by_label(events: List[AudioEvent]) -> List[AudioEvent]:
 
 
 def consolidate_families(events: List[AudioEvent]) -> List[AudioEvent]:
-    """Relabel sub-types to their canonical parent, then merge. One entry/source."""
+    """Relabel sub-types to their canonical parent, then merge. One entry/source.
+
+    The family is what the GATE reasons about -- visibility concepts are keyed on it,
+    and one entry per source is what keeps the panel from filling with near-duplicates.
+    But the family is far too coarse to DEPICT: an audit of 100 clips found 85 whose raw
+    detections contained a more specific label than the one being drawn. "Fire engine,
+    fire truck (siren)" collapsed to "Siren", whose query hint is "ambulance", so every
+    fire truck in the benchmark was rendered as an ambulance; "Truck" and "Car" both
+    became a generic "Vehicle"; "Waves, surf" became "Water".
+
+    So the most confident specific child is preserved in ``detail`` and used for the
+    image only. Gating behaviour is unchanged -- this affects what is drawn, never
+    whether it is drawn.
+    """
     relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence) for e in events]
-    return merge_by_label(relabelled)
+    merged = merge_by_label(relabelled)
+    best = {}
+    for e in events:
+        fam = canonical(e.label)
+        if e.label == fam:
+            continue                      # not more specific than its own family
+        if fam not in best or e.confidence > best[fam].confidence:
+            best[fam] = e
+    for m in merged:
+        child = best.get(m.label)
+        if child is not None:
+            m.detail = child.label
+    return merged
+
+
+# Specific labels that name the SOUND rather than its source, and so make a worse
+# image than the family does: searching "Chirp" returns waveforms and logos, while
+# "Bird" returns a bird. Kept as a short explicit list because no rule distinguishes
+# these reliably -- an AudioSet name is a sound name, and only some happen to be objects.
+DEPICTION_SKIP = {
+    "Chirp", "Tweet", "Squawk", "Coo", "Caw", "Bird vocalization",
+    "Rain on surface", "Vocalization", "Rustling", "Rumble", "Hum", "Hiss",
+    "Whoosh", "Clatter", "Roar", "Buzz",
+}
+
+
+def depiction_query(label: str, detail: str = "") -> str:
+    """What to search for or draw: the specific sound if one was detected, else the family.
+
+    AudioSet names are written for annotators, not image search: they carry synonym
+    lists ("Boat, Water vehicle") and disambiguating parentheticals ("Police car
+    (siren)"). Both wreck a search query, so keep the leading name and drop the rest --
+    which turns "Fire engine, fire truck (siren)" into "Fire engine" and "Ambulance
+    (siren)" into "Ambulance", the two things a viewer would actually recognise.
+    """
+    chosen = detail or label
+    if chosen in QUERY_HINTS:
+        return QUERY_HINTS[chosen]
+    name = chosen.split(",")[0]
+    if "(" in name:
+        name = name.split("(")[0]
+    name = name.strip(" -")
+    if not name or name in DEPICTION_SKIP:
+        return QUERY_HINTS.get(label, label)      # the family depicts better
+    return name

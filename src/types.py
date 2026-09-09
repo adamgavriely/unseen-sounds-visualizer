@@ -65,6 +65,7 @@ class AudioEvent:
     confidence: float = 0.0
     source_on_screen: Optional[bool] = None
     on_screen_prob: Optional[float] = None
+    detail: str = ""         # most specific detected sub-label, for depiction only
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
