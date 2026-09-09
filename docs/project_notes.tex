@@ -1282,6 +1282,64 @@ overhead, treat this as optional and keep the automatic protocol as the primary 
 ethics/IRB requirements and lead time early --- recruitment/ethics can be the schedule bottleneck.}
 
 % ======================================================================
+\section{Limitations}\label{sec:limitations}
+Stated here rather than left for an examiner to find. Each one is a limit on what the numbers in
+Section~
+ef{sec:mainresult} support, not a list of things that went wrong.
+
+	extbf{One annotator.} Every label is Adam's. Blind re-adjudication of a sample gave
+$\kappa = 0.60$ against his own earlier decisions (Section~
+ef{sec:readjudication}), with the
+instability concentrated in the positive class --- exactly the class the gate is judged on. A second
+annotator would bound this properly; nothing here does.
+
+	extbf{274 clips, not the 300 the proposal named.} Usable yield was 15--20\% across four
+independent sourcing strategies and fell as filtering was added. The shortfall is reported as a
+dataset finding rather than hidden, but it does mean per-category cells are small: the main run uses
+100 clips, 25 per category, so a per-category mean carries roughly $\pm 0.2$.
+
+	extbf{Part of the queue was model-enriched.} The first 209 tags predate any model-based filtering
+and are the unbiased sample; later candidates were pre-screened, which can only have made the
+benchmark easier in ways that flatter every system equally but are not measured.
+
+	extbf{One judge decides the headline.} A second, unrelated judge agrees substantially
+($\kappa = 0.753$, 97\% within one point) and reproduces the gated-vs-blind gap to two decimals, so
+the central comparison is judge-independent. The captioning baseline is not: it moves $+0.61$ and
+changes rank. Any ranking involving the text baseline should be read as a property of the judge.
+
+	extbf{The human-grounded reference is not neutral.} It is computable only on labelled clips, so it
+is an evaluation-time correction and not something a deployed system could use, and it raises the
+gated system by $+0.53$ against $+0.11$ and $+0.15$ for the baselines. That asymmetry follows
+arithmetically from the gated system abstaining three times as often, but it means the grounded
+number must never be quoted without its assumption.
+
+	extbf{The evaluated configuration is not the current default.} All reported numbers were produced
+with Openverse retrieval and family-level labels. The system now defaults to generated pictograms
+with specific labels, changed after the evaluation on the grounds that retrieval cannot cover
+arbitrary future sounds. That configuration has not been evaluated at scale, and the report must not
+imply the measured numbers describe it.
+
+	extbf{No human study.} The whole evaluation is automatic. An LLM judge scoring a VLM's description
+of an image is a proxy for a deaf viewer's comprehension, and its correlation with actual
+comprehension is unmeasured here. The accessibility claim rests on that proxy.
+
+	extbf{Stage 2 is the binding constraint, and it is not a tuning problem.} Four architectures sit
+within two points, an oracle detector moves accuracy by $-0.2$, event-level AUROC is 0.647, and
+thresholds swept on a held-out half show no optimism (Section~
+ef{sec:spliteval}). The gate is
+limited by what off-the-shelf vision--language models can answer, not by its configuration.
+
+	extbf{The evaluation software produced plausible wrong numbers five times.} An empty augmentation
+scored a charitable 2/4; a reference generator that could never say ``nothing is missing'' made
+correct silence unscorable; a job reported 	exttt{COMPLETED} after rendering 2 clips of 300; a
+reasoning judge's unparsed replies became confident zeros and a publishable-looking
+$\kappa = 0.164$; and a regex carried a literal backspace byte. Each was caught, each is now guarded
+against, and each looked like a result rather than an error. The honest inference is that a single
+number from an automatic pipeline of this kind deserves less trust than its precision suggests, and
+the guards (a pilot gate, a quarter-failure abort, a refusal to average unparsed replies) are part of
+the contribution rather than housekeeping.
+
+% ======================================================================
 \section{Project Plan (approx.\ 8 weeks)}\label{sec:plan}
 % ======================================================================
 Assumes $\sim$2 months, local GTX~1060 for development, university GPU requested in Week~1. Weeks are
