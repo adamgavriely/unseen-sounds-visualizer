@@ -15,6 +15,9 @@ conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export PYTHONUNBUFFERED=1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
+# HF_TOKEN lives in the user's .bashrc; a batch job gets a non-interactive shell, which
+# does not source it, so gated repos would 401 exactly as they did the first time.
+[ -f "$HOME/.bashrc" ] && source "$HOME/.bashrc" >/dev/null 2>&1 || true
 export GEN_TEST_MODEL="${GEN_TEST_MODEL:-black-forest-labs/FLUX.1-schnell}"
 python scripts/flux_test.py
 ls -la data/output/flux_test/
