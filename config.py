@@ -100,12 +100,15 @@ VLM_VISIBILITY = True
 # ("an audience clapping" / "people applauding loudly") score 0.78-0.91 and different
 # sounds in the same scene ("rain falling on a window" / "thunder over a dark sky")
 # score 0.58-0.81, so the ranges overlap and the middle has to be decided by meaning.
+# Confirmed on real pipeline output (job 28778638): duplicates scored 0.64-0.87
+# (Chuckle/Laughter 0.87, Owl/Hoot 0.82) and distinct sounds 0.46-0.63, so the overlap
+# is real but narrow, and DEDUP_SIM sits just under the clearest duplicates.
 # DEDUP_ASK is set BELOW that overlap on purpose: a clip has a handful of sounds, so
 # asking is cheap, and the filter only needs to skip pairs that are obviously unrelated
 # ("a group of people laughing in a courtroom" / "a police car siren outside the
 # courthouse", 0.39). Setting it inside the overlap missed real duplicates whose
 # wording happened to differ (the same two laughter depictions score 0.51).
-DEDUP_SIM = 0.88
+DEDUP_SIM = 0.85
 DEDUP_ASK = 0.45
 # A picture appears when its sound is heard and leaves when it stops, but a detected
 # span can be 0.2 s (AED_MIN_DUR) and a picture flashed for 0.2 s costs more attention

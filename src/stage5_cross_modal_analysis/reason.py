@@ -44,9 +44,8 @@ SCENE_PROMPT = (
 # evidence -- a name can be checked against the sound, a "yes" cannot.
 VISIBLE_PROMPT = (
     "These frames are from the moment a sound of {label} was heard.\n"
-    "Name the thing you can SEE making that sound, and only if you can see it actually "
-    "making it. Merely being present is not enough. Answer with a short noun phrase of "
-    "at most 5 words, or exactly: nothing."
+    "Is the thing making that sound visible in these frames? If it is, name it in at "
+    "most 5 words. If it is not visible, answer exactly: nothing."
 )
 
 DEPICT_PROMPT = (
@@ -302,13 +301,25 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     return reply.startswith("y"), named
 
 
+# A forced choice, for the same reason the depiction check is one. Asked as "would these
+# two pictures look the same and tell the viewer the same thing?", the model answered no
+# to every pair it was given -- including "Woman on talk show bursts into hearty
+# laughter" against "Woman on talk show chuckles softly" at 0.87 similarity, and an owl
+# perched on a branch against the hoot of an owl at 0.82. It was answering the literal
+# question, and literally those are two different pictures. Two balanced options with no
+# yes/no makes it a comparison instead of an assent.
 SAME_PICTURE_PROMPT = (
-    "A deaf viewer is watching a video. They will be shown one picture per sound.\n"
-    "Picture A, for the sound {label_a}: {a}\n"
-    "Picture B, for the sound {label_b}: {b}\n"
-    "Would these two pictures look the same and tell the viewer the same thing? "
-    "Answer yes or no."
+    "A deaf viewer will be shown one picture for each sound they cannot hear."
+    + chr(10) +
+    "Picture for {label_a}: {a}"
+    + chr(10) +
+    "Picture for {label_b}: {b}"
+    + chr(10) +
+    "Do these two pictures show (a) {opt_a}, or (b) {opt_b}? Answer with the letter only."
 )
+
+SAME_OPTION = "the same thing happening"
+DIFF_OPTION = "two different things happening"
 
 
 def _dedup(active, mdl, proc, device: str = "cpu") -> None:
@@ -366,13 +377,20 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
                 dup, score = j, sim
                 break
             if sim >= ask:
+                # Which letter means "same" alternates with the pair, so a model that
+                # favours the first option cannot decide every merge on its own.
+                flip = (i + j) % 2 == 1
+                same = "b" if flip else "a"
+                opt_a, opt_b = ((DIFF_OPTION, SAME_OPTION) if flip
+                                else (SAME_OPTION, DIFF_OPTION))
                 reply = _ask(mdl, proc, SAME_PICTURE_PROMPT.format(
                     label_a=order[j].event_label, a=subs[j],
-                    label_b=spec.event_label, b=subs[i]), max_new=6).strip().lower()
+                    label_b=spec.event_label, b=subs[i],
+                    opt_a=opt_a, opt_b=opt_b), max_new=6).strip().lower().lstrip("(")
                 print("       [stage5] same picture? " + spec.event_label + " / "
                       + order[j].event_label + " sim=" + format(sim, ".2f")
-                      + " -> " + reply, flush=True)
-                if reply.startswith("y"):
+                      + " -> " + reply.strip() + " (same=" + same + ")", flush=True)
+                if reply[:1] == same:
                     dup, score = j, sim
                     break
         if dup is None:

@@ -1,0 +1,88 @@
+"""End-to-end stubbed test of reason.decide_subjects: no GPU, no real models."""
+import sys
+sys.path.insert(0, r"P:\MscProj")
+from src.stage5_cross_modal_analysis import reason as R
+from src.types import AugmentationSpec
+
+SCENE = "A courtroom with a judge and lawyers"
+
+
+class M:
+    device = "cpu"
+
+
+def fake_load(model, device):
+    return M(), None
+
+
+def fake_frames(path, n):
+    return ["frame"] * n
+
+
+def fake_frames_at(path, times):
+    return ["frame"] * len(times)
+
+
+ANSWERS = {
+    # visibility: gavel is on screen, the laughter is not, the siren is not
+    ("visible", "Gavel"): "a wooden gavel",
+    ("visible", "Laughter"): "nothing",
+    ("visible", "Giggle"): "nothing",
+    ("visible", "Siren"): "nothing",
+    ("visible", "Speech"): "a lawyer speaking",
+}
+
+
+def fake_ask(mdl, proc, prompt, images=None, max_new=48):
+    if prompt.startswith("Describe this scene"):
+        return SCENE
+    if prompt.startswith("These frames are from the moment"):
+        label = prompt.split("a sound of ")[1].split(" was heard")[0]
+        return ANSWERS.get(("visible", label), "nothing")
+    if prompt.startswith("Does a"):
+        named = prompt.split("Does a ")[1].split(" make a ")[0]
+        label = prompt.split(" make a ")[1].split(" sound")[0]
+        return "yes" if (named, label) in {("wooden gavel", "Gavel"),
+                                           ("lawyer speaking", "Speech")} else "no"
+    if prompt.startswith("A deaf viewer is watching a video and cannot hear it."):
+        label = prompt.split("A sound detector heard: ")[1].split(".")[0]
+        return {"Laughter": "a group of people laughing in a courtroom",
+                "Giggle": "a woman giggling in the gallery",
+                "Siren": "a police car siren outside the courthouse"}[label]
+    if prompt.startswith("A deaf viewer will be shown one picture"):
+        last = prompt.splitlines()[-1]
+        same = "a" if last.index("the same thing") < last.index("two different") else "b"
+        diff = "b" if same == "a" else "a"
+        return same if ("laughing" in prompt and "giggling" in prompt) else diff
+    raise AssertionError("unexpected prompt: " + prompt[:70])
+
+
+R._load = fake_load
+R._ask = fake_ask
+import src.stage2_video_understanding as S2
+S2._sample_frames = fake_frames
+S2._sample_frames_at = fake_frames_at
+
+
+def spec(label, a, b, conf):
+    return AugmentationSpec(index=0, event_label=label, start=a, end=b, augment=True,
+                            confidence=conf, reason="planned", subject=label)
+
+
+specs = [spec("Gavel", 1.0, 1.5, 0.7),      # visible -> silent
+         spec("Laughter", 3.0, 5.0, 0.6),   # shown
+         spec("Giggle", 3.2, 4.0, 0.4),     # merged into Laughter
+         spec("Siren", 8.0, 10.0, 0.5)]     # shown
+
+R.decide_subjects("fake.mp4", specs, transcript="your honour, objection",
+                  device="cpu")
+
+print()
+print("RESULT")
+for s in specs:
+    print(("  SHOW   " if s.augment else "  silent ") + s.event_label.ljust(10)
+          + "| " + (s.subject or s.reason))
+shown = [s.event_label for s in specs if s.augment]
+assert shown == ["Laughter", "Siren"], shown
+assert all("objection" not in (s.subject or "") for s in specs)
+print("\nOK: visible source gated, synonym merged, no dialogue in any depiction")
