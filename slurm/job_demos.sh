@@ -2,7 +2,12 @@
 #SBATCH --job-name=demos
 #SBATCH --output=logs/demos_%j.out
 #SBATCH --error=logs/demos_%j.err
-#SBATCH --partition=L4-4h
+# Queue on every partition whose GPUs this torch build actually supports, so the job
+# lands wherever frees first. On a busy day most GPU partitions show "mixed-" -- the
+# trailing dash means DRAINING, and a job queued there pends indefinitely. B200 is
+# excluded on purpose: it is sm_100 and this torch supports up to sm_90, so a job there
+# starts, fails on the first kernel, and wastes the slot.
+#SBATCH --partition=L4-4h,L4-12h,L40s-4h,A100-4h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
