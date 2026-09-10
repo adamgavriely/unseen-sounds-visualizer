@@ -76,7 +76,9 @@ def main():
     import torch
     from diffusers import AutoPipelineForText2Image
 
-    out = _ROOT / "data" / "output" / "flux_test"
+    # Per-model directory: a shared one meant each run clobbered the last, and the
+    # PixArt images were gone by the time they were wanted for a comparison.
+    out = _ROOT / "data" / "output" / "gen_compare" / MODEL.split("/")[-1]
     out.mkdir(parents=True, exist_ok=True)
     is_flux = "FLUX" in MODEL.upper()
     print(f"[model] {MODEL}", flush=True)
