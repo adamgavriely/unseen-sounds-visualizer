@@ -60,11 +60,12 @@ sound that was actually detected, so an unfamiliar sound is handled like a famil
    show? A forced choice is a discrimination task, unlike the yes/no that once approved "Man on
    motorcycle drives past silver van" as a picture of laughter. A rejected depiction gets one retry
    with the scene withheld before falling back to the plain label.
-4. **Is it a picture we are already showing?** Depictions are compared with SigLIP text embeddings
-   and merged above a bar set from measured runs (duplicates 0.57-0.87, distinct sounds 0.46-0.63;
-   the bar sits at 0.70, which merges most duplicates with no false merges). A model was meant to
-   decide the overlapping band and could not -- it called an owl on a branch and the hoot of an owl
-   two different things, correctly and unhelpfully.
+4. **Is it one source or two?** The AudioSet ontology -- the taxonomy PANNs' own labels come from,
+   vendored as `src/audioset_parents.json` -- says so directly: if one detected label is a more
+   specific kind of another (*Giggle* under *Laughter*, *Hoot* under *Owl*), they are one source.
+   Ancestor, not shared parent, or *Animal* would swallow a dog and a sheep together. No threshold,
+   and it generalises as far as the detector does. Depiction similarity remains as a secondary
+   signal for paraphrases the taxonomy cannot see.
 
 ## Status: complete and evaluated
 

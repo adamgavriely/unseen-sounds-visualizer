@@ -1242,67 +1242,75 @@ The follow-up question had its own lesson. Built as one sentence, it produced \e
 in white make a Laughter sound?''}, and the model answered the grammar rather than the question. It is
 now two labelled fields, which cannot be mangled by whatever the naming step returns.
 
-\subsection{One picture per picture, and a model that would not say ``same''}\label{sec:dedup}
+\subsection{One picture per source: three wrong answers and the taxonomy}\label{sec:dedup}
 PANNs emits label families --- \emph{Laughter, Snicker, Chuckle}; \emph{Laughter, Belly laugh,
 Giggle} --- and \texttt{consolidate\_families} does not catch them all, so a single clip produced
 three slots holding three near-identical pictures of people laughing. The previous deduplication
 compared depiction strings for equality and never fired, because the strings differ.
 
-The fix had to generalise. Adam's requirement was explicit: \emph{``i want my architecture to work in
-general, not to fix for specific cases that i saw now.''} A synonym table would repair the clips on
-the desk and nothing else. So similarity is measured with SigLIP's text tower --- already a
-dependency, and trained on exactly this kind of string.
+Adam's requirement ruled out the obvious repair: \emph{``i want my architecture to work in general,
+not to fix for specific cases that i saw now.''} A synonym table fixes the clips on the desk and
+nothing else. Three general mechanisms were tried before one worked, and the failures are more
+instructive than the fix.
 
-\textbf{It is measured between depictions, never between labels.} The label-level version does not
-work, and the numbers say why: on this project's own vocabulary \emph{Dog}/\emph{Cat} scores 0.903
-while \emph{Laughter}/\emph{Snicker} scores 0.803, so any label-level threshold merges the wrong
-pairs before the right ones. Single words embed too tightly to separate. Depictions are descriptive
-phrases, and they separate.
+\textbf{First: embeddings between labels.} Immediately wrong, and the numbers say why.
+\emph{Dog}/\emph{Cat} scores 0.903 while \emph{Laughter}/\emph{Snicker} scores 0.803, so any
+label-level threshold merges the wrong pairs before the right ones. Single words embed too tightly to
+separate.
 
-The design was for the embedding to filter cheaply and a model to decide the overlapping band, on the
-principle that has held everywhere else in this stage: a fixed number cannot know that laughing and
-giggling are one thing, and a model asked at run time can. \textbf{That principle failed here, and it
-is worth recording why.} Across three demo runs the model was asked roughly forty times, in two
-different framings --- first whether the two \emph{pictures} showed the same thing, then whether the
-two \emph{sounds} were one source --- with the option letters rotated so that neither position nor
-assent could carry it. It answered ``different'' to about 90\% of pairs, including an owl perched on
-a branch against the hoot of an owl (0.82) and a woman laughing against a woman snickering (0.76).
+\textbf{Second: embeddings between depictions, with a model deciding the overlapping band.} This is
+the principle that has held everywhere else in this stage --- a fixed number cannot know that
+laughing and giggling are one thing, and a model asked at run time can. It failed. Across three demo
+runs the model was asked roughly forty times, in two framings (whether the two \emph{pictures} showed
+the same thing; whether the two \emph{sounds} were one source) with the option letters rotated so
+that neither position nor assent could carry it. It answered ``different'' to about 90\% of pairs,
+including an owl perched on a branch against the hoot of an owl (0.82).
 
-The interesting part is that it was not malfunctioning. Two differently worded pictures genuinely are
-two different pictures, and \emph{Owl} and \emph{Hoot} are not two names for one sound if the words
-are read strictly; the model was answering the question it was asked, correctly, and the question was
-not the one that mattered. Its few ``same'' answers were arbitrary enough to merge ``Baby laughing in
-a silver van's shadow'' into ``Dog barking near a silver van'', because both mention a van. This is
-the mirror image of the depiction check, where the forced choice worked: there, the alternatives were
-concrete and mutually exclusive, and the model had something to discriminate between. Here it was
-being asked for a judgement of degree, and a degree is what an embedding measures.
+It was not malfunctioning, which is the interesting part. Two differently worded pictures genuinely
+are two different pictures, and \emph{Owl} and \emph{Hoot} are not two names for one sound if the
+words are read strictly. It answered the question it was asked, correctly, and the question was not
+the one that mattered. Its few ``same'' answers were arbitrary enough to merge ``Baby laughing in a
+silver van's shadow'' into ``Dog barking near a silver van'', because both mention a van. Compare the
+depiction check (Section~\ref{sec:contribute}), where a forced choice works: there the alternatives
+are concrete and mutually exclusive and the model has something to discriminate between. Here it was
+asked for a judgement of degree, and degree is what an embedding measures.
 
-So the number decides, with the bar set from what three runs of real pipeline output produced:
+\textbf{Third: the threshold alone.} Set at 0.70 from measured duplicates (0.57--0.87) against
+measured non-duplicates (0.46--0.63), it merged \emph{Owl} into \emph{Hoot} at 0.85 --- the case the
+model had refused twice --- and looked like the answer. It was not. The depiction prompt then changed
+(Section~\ref{sec:place}), the new depictions were shorter and shared a trailing place phrase, and
+``Dog barking on roadside'' against ``Air horn blaring on roadside'' scored 0.72 and merged. That was
+the third recalibration of this number, and each had been invalidated by a change to a prompt
+elsewhere. A quantity that must be retuned whenever an unrelated component moves is not measuring
+what it is supposed to measure.
 
-\begin{center}
-\begin{tabular}{lcl}
-\toprule
- & range & extremes \\
-\midrule
-true duplicates & 0.57--0.87 & \emph{Chuckle}/\emph{Laughter} 0.87, \emph{Owl}/\emph{Hoot} 0.82 \\
-true non-duplicates & 0.46--0.63 & \emph{Siren}/\emph{Hoot} 0.63, \emph{Dog}/\emph{Laughter} 0.59 \\
-\bottomrule
-\end{tabular}
-\end{center}
+\textbf{What works: the detector's own taxonomy.} \texttt{FAMILY} in \texttt{labels.py} is 134
+hand-written entries, and it covers none of the pairs that caused trouble --- Laughter and all five
+of its children absent, Owl and Hoot absent. Extending it by hand is the preset trap again: the
+missing entries are the ones nobody thought of, and there are 527 classes. So the parent edges now
+come from the ontology published with AudioSet itself (\texttt{github.com/audioset/ontology}, CC BY
+4.0), reduced to child~$\rightarrow$~parent and vendored as \texttt{src/audioset\_parents.json} at
+20\,KB. This is not a category list chosen for this project. It is the label space PANNs was trained
+on, read correctly, so it generalises exactly as far as the detector itself does.
 
-At \texttt{DEDUP\_SIM}~$=0.70$ that is three of five duplicates merged and \textbf{no false merges}.
-The two misses both sit at 0.57, inside the non-duplicate range, so no threshold can reach them --- and
-neither could the model, which called them different as well. Pairs above \texttt{DEDUP\_REPORT} are
-logged rather than merged, so every subsequent run adds evidence and the bar can be moved on data
-instead of taste.
+The rule is that one detected label must be an \textbf{ancestor} of the other. A shared parent is not
+enough, and that restriction is load-bearing: \emph{Animal} carries no abstract marking in the
+ontology and would cheerfully swallow \emph{Dog} together with \emph{Sheep}. Requiring one label to
+\emph{be} the other's ancestor keeps exactly the cases where the detector reported a family and one of
+its members --- \emph{Giggle} under \emph{Laughter}, \emph{Hoot} under \emph{Owl} --- and it is
+14/14 on every pair these demos produced, including the six that must not merge, with no threshold
+anywhere.
 
-Two footnotes. First, the duplicate-laughter case that motivated all of this is now handled a level
-earlier: in run 28778884 the talk-show clip suppressed \emph{Laughter}, \emph{Snicker} and
-\emph{Chuckle} outright, because the VLM could see the women doing the laughing
-(Section~\ref{sec:vlmvisibility}). Deduplication is the second line of defence, not the first.
-Second, the depictions being compared are only as good as the depiction step: the two 0.57 misses come
-from a clip where the depictions were poor to begin with (``Giggle heard from man on motorcycle''),
-which is an argument for improving that step rather than for lowering the bar.
+Depiction similarity survives as a secondary signal, for paraphrases the ontology cannot see, at a
+bar of 0.80 --- above everything a wrong pair has scored across four runs. Pairs above
+\texttt{DEDUP\_REPORT} are logged rather than merged, so evidence for moving it keeps arriving.
+
+Two footnotes. The duplicate-laughter case that motivated all of this is now handled a level earlier
+anyway: the talk-show clip suppresses \emph{Laughter}, \emph{Snicker} and \emph{Chuckle} outright,
+because the VLM can see the women doing the laughing (Section~\ref{sec:vlmvisibility}). And the
+general lesson is worth stating plainly, because it cost four runs to learn: \emph{when a component
+already carries a structured answer, prefer reading it to inferring it}. The ontology was shipped with
+the detector the whole time.
 
 \textbf{A failure worth recording.} The first cluster run of this code produced eight finished videos
 and exited zero, with every similarity in the log reading exactly 0.000.
@@ -1310,11 +1318,32 @@ and exited zero, with every similarity in the log reading exactly 0.000.
 \texttt{BaseModelOutputWithPooling} on 5.x; the cluster runs 5.16 and the development machine runs
 4.56. Every call raised, the helper caught the exception and returned 0.0, and 0.0 against 0.0 is a
 perfectly well-formed comparison. Deduplication silently fell back to exact string matching --- three
-laughter slots again --- and validation rejected four good depictions, sending bare AudioSet labels
-to the image generator: \emph{Run} for footsteps, \emph{Reversing beeps} for a vehicle, \emph{Shatter}
+laughter slots again --- and validation rejected four good depictions, sending bare AudioSet labels to
+the image generator: \emph{Run} for footsteps, \emph{Reversing beeps} for a vehicle, \emph{Shatter}
 for glass. The repair is not the version check but the return value: the helper now returns
 \texttt{None} when it cannot answer, so a missing encoder is an unknown each caller must handle rather
 than a confident wrong number that flows downstream.
+
+\subsection{A place, not a scene sentence}\label{sec:place}
+The depiction step was given the one-sentence scene description, and it glued that sentence's objects
+onto every sound in the clip. From ``A man on a motorcycle drives past a silver van'', \emph{Air horn}
+became ``Air horn blaring from silver van'' and rendered as a picture of a van --- which tells a deaf
+viewer nothing whatever about a horn. A scene sentence names incidental objects, and a model told to
+be specific will reach for them.
+
+So the depiction step now receives a \textbf{place}, asked for separately and capped at four words:
+``road side'', ``bedroom'', ``palace'', ``talk show studio'', ``airplane cockpit''. A place cannot be
+glued onto a sound the way an object can. It can only say what kind of sound this is and where it
+would be, which is precisely the contribution the video is supposed to make --- a stream in a forest,
+a tap in a kitchen. The scene sentence is still computed and logged; it simply no longer reaches the
+illustrator.
+
+That change had a second-order effect worth recording, because it is the reason the deduplication
+threshold had to be abandoned. Place-based depictions are shorter and end in the same few words, so
+every pair in a clip shares a block of tokens and their similarity rises together --- inflating the
+scores of pairs that have nothing to do with each other. The prompt also had to be told to use the
+place \emph{only where it changes what the thing looks like}, because ``Roadside laughter echoes
+merrily'' and ``Hoot in a grand palace'' are worse pictures than plain laughter and a plain owl.
 
 \subsection{Validating a depiction: a test that looked right and was not}\label{sec:contribute}
 The guard that enforces \emph{the video contributes to the audio, it does not replace it} was a
