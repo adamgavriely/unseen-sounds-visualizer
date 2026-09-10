@@ -154,6 +154,30 @@ def _sound_glyph(img: Image.Image, strength: float = 1.0) -> Image.Image:
 _PIPE = None
 
 
+def unload_generator():
+    """Free the image generator.
+
+    Stage 5's reasoner and Stage 6's generator each want most of a 24 GB card. The
+    generator is cached across clips on purpose -- reloading it per clip dominates the
+    cost -- but that cache is exactly what makes the second clip fail: the VLM loads
+    on top of a generator that is still resident. Whoever needs the GPU next asks for
+    it, rather than hoping the allocator sorts it out.
+    """
+    global _PIPE
+    if _PIPE is None:
+        return
+    del _PIPE
+    _PIPE = None
+    import gc
+    gc.collect()
+    try:
+        import torch
+        if torch.cuda.is_available():
+            torch.cuda.empty_cache()
+    except Exception:
+        pass
+
+
 # "line art" is taken literally: the first attempt produced a clean bird silhouette on a
 # background of black stripes, and a good fire engine boxed in by spurious bars. The
 # words that actually work are the stock-photo ones -- isolated, white background,

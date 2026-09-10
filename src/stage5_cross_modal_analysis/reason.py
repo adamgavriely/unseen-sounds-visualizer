@@ -45,6 +45,14 @@ _VLM = None
 def _load(model: str, device: str):
     global _VLM
     if _VLM is None:
+        # The generator is cached across clips, so from the second clip onwards it is
+        # still on the card when the reasoner wants it. That cascade failed 7 of 8
+        # demos with "CUDA out of memory" after the first one succeeded.
+        try:
+            from src.stage6_visual_augmentation import unload_generator
+            unload_generator()
+        except Exception:
+            pass
         import torch
         from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
         proc = AutoProcessor.from_pretrained(model)
@@ -115,24 +123,59 @@ def decide_subjects(video_path, specs, transcript: str = "",
             print(f"       [stage5] {spec.event_label} -> {phrase}", flush=True)
     # Two sounds the model described the same way are one thing to a viewer; this
     # replaces the hand-written synonym table with the model's own judgement.
-    # Near-duplicates, not just identical strings: Owl and Hoot both came back as an
-    # owl hooting in a dark room, differing only in trailing words, and exact matching
-    # kept both. Compare the two most informative words instead.
-    def _key(text):
-        stop = {"a", "an", "the", "in", "on", "at", "with", "of", "and", "while", "near",
-                "from", "background", "distance", "room", "outside", "someone", "people",
-                "dark", "another", "past", "into", "over"}
-        words = [w for w in "".join(c if c.isalnum() else " "
-                                    for c in text.lower()).split() if w not in stop]
-        return " ".join(sorted(words[:2]))
+    _drop_duplicates(active, mdl, proc)
 
-    seen = set()
-    for spec in sorted(active, key=lambda s: -s.confidence):
-        key = _key(spec.subject or "")
-        if key and key in seen:
-            spec.augment = False
-            spec.subject = ""
-            spec.image_prompt = ""
-            spec.reason = "same depiction as a louder sound already shown"
-        elif key:
-            seen.add(key)
+
+DEDUP_PROMPT = (
+    "A deaf viewer will see these pictures beside a video, one per sound:
+{items}
+
+"
+    "Some may tell the viewer the same thing. List the numbers of the ones to REMOVE, "
+    "keeping the single most informative of each duplicated group. Two entries are "
+    "duplicates when a viewer would learn nothing new from the second.
+"
+    "Answer with numbers separated by commas, or the word none."
+)
+
+
+def _drop_duplicates(active, mdl, proc) -> None:
+    """Ask the model which depictions say the same thing, and drop those.
+
+    String matching cannot do this. The motorcycle clip produced "people laughing in a
+    car", "people laughing and clapping" and "children laughing and playing on
+    sidewalk": three slots spent telling a viewer that people are laughing, sharing too
+    few words for any similarity threshold to catch without also merging things that
+    differ. Whether two pictures say the same thing is a judgement about meaning, which
+    is what the model is for -- and it is the reason the synonym table was removed.
+    """
+    if len(active) < 2:
+        return
+    import torch
+    items = "
+".join(f"{i + 1}. {s.subject}" for i, s in enumerate(active))
+    msgs = [{"role": "user",
+             "content": [{"type": "text", "text": DEDUP_PROMPT.format(items=items)}]}]
+    text = proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+    inputs = proc(text=[text], return_tensors="pt").to(mdl.device)
+    with torch.no_grad():
+        out = mdl.generate(**inputs, max_new_tokens=24, do_sample=False)
+    reply = proc.batch_decode(out[:, inputs["input_ids"].shape[1]:],
+                              skip_special_tokens=True)[0].strip().lower()
+    if "none" in reply:
+        return
+    drop = set()
+    for tok in reply.replace(".", ",").split(","):
+        tok = tok.strip()
+        if tok.isdigit() and 1 <= int(tok) <= len(active):
+            drop.add(int(tok) - 1)
+    # never empty the panel over a parsing surprise
+    if not drop or len(drop) >= len(active):
+        return
+    for i in sorted(drop):
+        spec = active[i]
+        spec.augment = False
+        spec.subject = ""
+        spec.image_prompt = ""
+        spec.reason = "same thing shown by another sound already"
+        print(f"       [stage5] merged: {spec.event_label}", flush=True)
