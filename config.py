@@ -92,23 +92,24 @@ SHOW_SOUND_GLYPH = False
 # beside a video that was already showing the source. Off-screen is the whole premise
 # of the system, so this check is what makes the output honest.
 VLM_VISIBILITY = True
-# Two sounds get one picture when they would be drawn the same way. Similarity is
-# measured between the DEPICTIONS with SigLIP's text tower, never between the labels:
-# single words embed too tightly to separate (Dog/Cat 0.90 against Laughter/Snicker
-# 0.80), while descriptive phrases separate usefully.
+# Two sounds get one picture when they are one source. That is decided in two steps.
 #
-# The bar comes from three demo runs, not from taste. Measured on real pipeline output:
-#   true duplicates      0.57 - 0.87   (Chuckle/Laughter 0.87, Owl/Hoot 0.82)
-#   true non-duplicates  0.46 - 0.63   (Siren/Hoot 0.63, Dog/Laughter 0.59)
-# 0.70 merges three of five duplicates with no false merges. The two misses sit at 0.57,
-# inside the non-duplicate range, so no threshold reaches them.
+# First the AudioSet ontology -- the taxonomy PANNs' own label space comes from, vendored
+# as src/audioset_parents.json. If one detected label is a more specific kind of another
+# detected label (Giggle under Laughter, Hoot under Owl), they are the same source and no
+# threshold is involved. It gets 14/14 on every pair these demos produced, including the
+# ones that must NOT merge: Air horn against Siren, Dog against Sheep.
 #
-# There was meant to be a model deciding the overlapping band. There is not, because it
-# did not work: asked ~40 times across two framings it answered "different" to about 90%
-# of pairs, including Owl against Hoot, and its few "same" answers were arbitrary enough
-# to merge a barking dog into a laughing baby. Pairs above DEDUP_REPORT are logged but
-# not merged, so evidence for moving the bar keeps arriving.
-DEDUP_SIM = 0.70
+# Only then does depiction similarity apply, for paraphrases the ontology cannot see
+# (two unrelated labels that happened to be drawn the same way). The bar is high because
+# this is now the secondary signal, not the primary one, and because it is fragile in a
+# way the ontology is not: it has to be recalibrated whenever the depiction prompt
+# changes. At 0.70, tuned on scene-based depictions, the shorter place-based depictions
+# that replaced them shared so much wording that "Dog barking on roadside" and "Air horn
+# blaring on roadside" scored 0.72 and merged. 0.80 is above everything a wrong pair has
+# scored across four runs. Pairs above DEDUP_REPORT are logged but not merged, so the
+# evidence keeps arriving.
+DEDUP_SIM = 0.80
 DEDUP_REPORT = 0.45
 # A picture appears when its sound is heard and leaves when it stops, but a detected
 # span can be 0.2 s (AED_MIN_DUR) and a picture flashed for 0.2 s costs more attention

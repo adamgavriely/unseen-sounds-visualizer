@@ -73,10 +73,11 @@ DEPICT_PROMPT = (
     "A deaf viewer is watching a video and cannot hear it.\n"
     "A sound detector heard: {label}.\n"
     "The video is set in: {scene}.\n\n"
-    "Describe ONE picture showing {label} in that kind of place. The picture must be of "
-    "{label} itself. The place only tells you what kind of {label} it is and where it "
-    "would be. Do not describe the place instead.\n"
+    "Describe ONE picture showing {label}. The picture must be of {label} itself.\n"
+    "Use the place ONLY if it changes what {label} would look like. If it does not, "
+    "ignore the place and describe {label} plainly. Never describe the place instead.\n"
     "Example: sound Water, place a forest, gives: a stream running through a forest.\n"
+    "Example: sound Laughter, place a roadside, gives: a person laughing.\n"
     "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
 )
 
@@ -373,6 +374,7 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
     and the bar can be moved on evidence instead of taste.
     """
     from src import text_similarity
+    from src.labels import same_source
     order = sorted(active, key=lambda x: -x.confidence)
     subs = [" ".join((s.subject or "").lower().split()) for s in order]
     sure = float(getattr(config, "DEDUP_SIM", 0.70))
@@ -390,16 +392,21 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
     for i, spec in enumerate(order):
         if not subs[i]:
             continue
-        dup, score = None, 1.0
+        dup, score, why = None, 1.0, "identical"
         for j in kept:
+            # The detector's own taxonomy first: if one label is a more specific kind of
+            # the other, they are one source and no threshold has to be chosen.
+            if same_source(spec.event_label, order[j].event_label):
+                dup, score, why = j, 1.0, "same source in the AudioSet ontology"
+                break
             if subs[i] == subs[j]:
-                dup, score = j, 1.0
+                dup, score, why = j, 1.0, "identical depiction"
                 break
             if mat is None:
                 continue
             sim = mat[i][j]
             if sim >= sure:
-                dup, score = j, sim
+                dup, score, why = j, sim, "similarity " + format(sim, ".2f")
                 break
             if sim >= report:
                 print("       [stage5] near-duplicate? " + spec.event_label + " / "
@@ -411,10 +418,9 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
         spec.augment = False
         spec.subject = ""
         spec.image_prompt = ""
-        spec.reason = ("same picture as " + order[dup].event_label
-                       + " (similarity " + format(score, ".2f") + ")")
+        spec.reason = ("same picture as " + order[dup].event_label + " (" + why + ")")
         print("       [stage5] merged " + spec.event_label + " into "
-              + order[dup].event_label + " (" + format(score, ".2f") + ")", flush=True)
+              + order[dup].event_label + " (" + why + ")", flush=True)
 
 
 def decide_subjects(video_path, specs, transcript: str = "",

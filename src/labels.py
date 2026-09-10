@@ -190,6 +190,69 @@ def canonical(label: str) -> str:
     return FAMILY.get(label, label)
 
 
+# ----------------------------------------------------------------------
+# AudioSet ontology: the detector's own taxonomy, used to recognise when two detected
+# labels are one source.
+#
+# FAMILY above is 134 hand-written entries, and it covered none of the pairs that
+# actually caused trouble: Laughter/Giggle/Belly laugh/Snicker/Chuckle/Baby laughter all
+# absent, Owl/Hoot absent. Extending it by hand is the preset trap again -- the entries
+# that are missing are the ones nobody thought of, and there are 527 classes.
+#
+# So the parent edges come from the ontology published with AudioSet itself
+# (github.com/audioset/ontology, CC BY 4.0), reduced here to child -> parent and
+# vendored as audioset_parents.json. It is not a list of categories chosen for this
+# project; it is the label space PANNs was trained on, read correctly. Every sound the
+# detector can emit is in it, so it generalises exactly as far as the detector does.
+# ----------------------------------------------------------------------
+_PARENTS = None
+
+
+def _parents() -> dict:
+    global _PARENTS
+    if _PARENTS is None:
+        import json
+        from pathlib import Path
+        try:
+            _PARENTS = json.loads(
+                (Path(__file__).with_name("audioset_parents.json")).read_text("utf-8"))
+        except Exception:
+            _PARENTS = {}
+    return _PARENTS
+
+
+def ancestors(label: str) -> list:
+    """Every ancestor of `label`, nearest first. Empty if the label is unknown."""
+    out, seen, cur = [], {label}, label
+    par = _parents()
+    while cur in par:
+        cur = par[cur]
+        if cur in seen:                     # the ontology is a DAG; do not loop
+            break
+        seen.add(cur)
+        out.append(cur)
+    return out
+
+
+def is_descendant(child: str, ancestor: str) -> bool:
+    """Is `child` a more specific kind of `ancestor` in the AudioSet ontology?"""
+    return bool(child != ancestor and ancestor in ancestors(child))
+
+
+def same_source(a: str, b: str) -> bool:
+    """Do these two DETECTED labels describe one source?
+
+    Only an ancestor/descendant relation counts, and that restriction is doing real
+    work. Merging on a shared parent instead would put Air horn together with Siren
+    (both are children of Alarm... in fact of different branches, but the shared-parent
+    rule fails on plenty of other pairs) and Dog together with Sheep, since Animal is
+    not marked abstract in the ontology and would happily swallow both. Requiring one
+    label to BE the other's ancestor keeps exactly the cases where the detector reported
+    a family and one of its members: Giggle under Laughter, Hoot under Owl.
+    """
+    return is_descendant(a, b) or is_descendant(b, a)
+
+
 # Better image-search phrases than the bare AudioSet label (e.g. "Vehicle" alone
 # returns toy photos). Used by Stage 6 retrieval. v2 (diffusion) won't need these.
 QUERY_HINTS = {
