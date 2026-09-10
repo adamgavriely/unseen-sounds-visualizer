@@ -1228,7 +1228,21 @@ The frames are sampled across the sound's own span, not across the clip. A door 
 three is not visible in a frame from second twelve, and whole-clip sampling made that mistake
 systematically.
 
-\subsection{One picture per picture: similarity instead of synonym tables}\label{sec:dedup}
+\textbf{The wording of the naming question turned out to be load-bearing}, which is worth a line
+because it is the kind of thing that looks like a detail and is not. Tightened to \emph{name the thing
+you can SEE making that sound, and only if you can see it actually making it}, the model answered
+``nothing'' for every sound in all eight demo clips --- no suppression at all, which is precisely the
+complaint the check exists to answer. Leading with the question rather than the instruction did the
+same. Asking plainly for a name, and letting the follow-up question reject the loose ones, is what
+produces evidence to work with. In run 28778884 that version suppressed \emph{Laughter},
+\emph{Snicker} and \emph{Chuckle} on a talk-show clip --- the women are on screen doing the laughing
+--- and \emph{Glass} and \emph{Siren} on two others.
+
+The follow-up question had its own lesson. Built as one sentence, it produced \emph{``Does a The woman
+in white make a Laughter sound?''}, and the model answered the grammar rather than the question. It is
+now two labelled fields, which cannot be mangled by whatever the naming step returns.
+
+\subsection{One picture per picture, and a model that would not say ``same''}\label{sec:dedup}
 PANNs emits label families --- \emph{Laughter, Snicker, Chuckle}; \emph{Laughter, Belly laugh,
 Giggle} --- and \texttt{consolidate\_families} does not catch them all, so a single clip produced
 three slots holding three near-identical pictures of people laughing. The previous deduplication
@@ -1237,49 +1251,58 @@ compared depiction strings for equality and never fired, because the strings dif
 The fix had to generalise. Adam's requirement was explicit: \emph{``i want my architecture to work in
 general, not to fix for specific cases that i saw now.''} A synonym table would repair the clips on
 the desk and nothing else. So similarity is measured with SigLIP's text tower --- already a
-dependency, and trained on exactly this kind of string: a short phrase describing what is in a
-picture.
+dependency, and trained on exactly this kind of string.
 
-\textbf{It is measured between depictions, never between labels.} That is not a stylistic choice; the
-label-level version does not work, and the numbers say why. On this project's own vocabulary,
-\emph{Dog}/\emph{Cat} scores 0.903 while \emph{Laughter}/\emph{Snicker} scores 0.803, so any
-label-level threshold merges the wrong pairs before the right ones --- single words embed too tightly
-to separate. Depictions are descriptive phrases, and they do separate:
+\textbf{It is measured between depictions, never between labels.} The label-level version does not
+work, and the numbers say why: on this project's own vocabulary \emph{Dog}/\emph{Cat} scores 0.903
+while \emph{Laughter}/\emph{Snicker} scores 0.803, so any label-level threshold merges the wrong
+pairs before the right ones. Single words embed too tightly to separate. Depictions are descriptive
+phrases, and they separate.
+
+The design was for the embedding to filter cheaply and a model to decide the overlapping band, on the
+principle that has held everywhere else in this stage: a fixed number cannot know that laughing and
+giggling are one thing, and a model asked at run time can. \textbf{That principle failed here, and it
+is worth recording why.} Across three demo runs the model was asked roughly forty times, in two
+different framings --- first whether the two \emph{pictures} showed the same thing, then whether the
+two \emph{sounds} were one source --- with the option letters rotated so that neither position nor
+assent could carry it. It answered ``different'' to about 90\% of pairs, including an owl perched on
+a branch against the hoot of an owl (0.82) and a woman laughing against a woman snickering (0.76).
+
+The interesting part is that it was not malfunctioning. Two differently worded pictures genuinely are
+two different pictures, and \emph{Owl} and \emph{Hoot} are not two names for one sound if the words
+are read strictly; the model was answering the question it was asked, correctly, and the question was
+not the one that mattered. Its few ``same'' answers were arbitrary enough to merge ``Baby laughing in
+a silver van's shadow'' into ``Dog barking near a silver van'', because both mention a van. This is
+the mirror image of the depiction check, where the forced choice worked: there, the alternatives were
+concrete and mutually exclusive, and the model had something to discriminate between. Here it was
+being asked for a judgement of degree, and a degree is what an embedding measures.
+
+So the number decides, with the bar set from what three runs of real pipeline output produced:
 
 \begin{center}
-\begin{tabular}{lr}
+\begin{tabular}{lcl}
 \toprule
-depiction pair & cosine \\
+ & range & extremes \\
 \midrule
-\multicolumn{2}{l}{\emph{same source --- should merge}} \\
-``a baby crying'' / ``an infant wailing'' & 0.913 \\
-``an audience clapping'' / ``people applauding loudly'' & 0.893 \\
-``a car engine running'' / ``an engine idling on the street'' & 0.848 \\
-``a group of people laughing'' / ``a woman giggling'' & 0.787 \\
-``a group of people laughing'' / ``a man snickering'' & 0.629 \\
-\midrule
-\multicolumn{2}{l}{\emph{different sources in one scene --- should not merge}} \\
-``rain falling on a window'' / ``thunder over a dark sky'' & 0.806 \\
-``a police siren on a city street'' / ``a car engine on a city street'' & 0.690 \\
-``footsteps on a wooden floor'' / ``a door closing in a hallway'' & 0.662 \\
-``a dog barking in a park'' / ``a cat sleeping on a sofa'' & 0.587 \\
+true duplicates & 0.57--0.87 & \emph{Chuckle}/\emph{Laughter} 0.87, \emph{Owl}/\emph{Hoot} 0.82 \\
+true non-duplicates & 0.46--0.63 & \emph{Siren}/\emph{Hoot} 0.63, \emph{Dog}/\emph{Laughter} 0.59 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-The two ranges overlap (0.63--0.91 against 0.59--0.81), so no threshold separates them and the
-embedding is used as a filter rather than as the verdict. Above \texttt{DEDUP\_SIM} (0.88) the pair
-is merged outright; between \texttt{DEDUP\_ASK} and 0.88 the model is asked, in words, whether
-the two pictures would tell the viewer the same thing; below \texttt{DEDUP\_ASK} nothing is asked.
-\texttt{DEDUP\_ASK} sits at 0.45, deliberately \emph{below} the overlap rather than inside it: a clip
-has a handful of sounds, so asking is cheap, and the filter only has to skip pairs that are obviously
-unrelated (``a group of people laughing in a courtroom'' against ``a police car siren outside the
-courthouse'' scores 0.39). Set inside the overlap it missed real duplicates whose wording happened to
-differ --- two laughter depictions phrased ``a group of people laughing in a courtroom'' and ``a
-woman giggling in the gallery'' score only 0.51. The ambiguous
-band is therefore decided at run time by a model that knows what laughing and giggling are, rather
-than by a list of the families we happened to encounter, and the filter keeps that question down to a
-couple of calls per clip instead of one per pair.
+At \texttt{DEDUP\_SIM}~$=0.70$ that is three of five duplicates merged and \textbf{no false merges}.
+The two misses both sit at 0.57, inside the non-duplicate range, so no threshold can reach them --- and
+neither could the model, which called them different as well. Pairs above \texttt{DEDUP\_REPORT} are
+logged rather than merged, so every subsequent run adds evidence and the bar can be moved on data
+instead of taste.
+
+Two footnotes. First, the duplicate-laughter case that motivated all of this is now handled a level
+earlier: in run 28778884 the talk-show clip suppressed \emph{Laughter}, \emph{Snicker} and
+\emph{Chuckle} outright, because the VLM could see the women doing the laughing
+(Section~\ref{sec:vlmvisibility}). Deduplication is the second line of defence, not the first.
+Second, the depictions being compared are only as good as the depiction step: the two 0.57 misses come
+from a clip where the depictions were poor to begin with (``Giggle heard from man on motorcycle''),
+which is an argument for improving that step rather than for lowering the bar.
 
 \textbf{A failure worth recording.} The first cluster run of this code produced eight finished videos
 and exited zero, with every similarity in the log reading exactly 0.000.
@@ -1290,8 +1313,8 @@ perfectly well-formed comparison. Deduplication silently fell back to exact stri
 laughter slots again --- and validation rejected four good depictions, sending bare AudioSet labels
 to the image generator: \emph{Run} for footsteps, \emph{Reversing beeps} for a vehicle, \emph{Shatter}
 for glass. The repair is not the version check but the return value: the helper now returns
-\texttt{None} when it cannot answer, so a missing encoder is an unknown that each caller has to
-handle rather than a confident wrong number that flows downstream.
+\texttt{None} when it cannot answer, so a missing encoder is an unknown each caller must handle rather
+than a confident wrong number that flows downstream.
 
 \subsection{Validating a depiction: a test that looked right and was not}\label{sec:contribute}
 The guard that enforces \emph{the video contributes to the audio, it does not replace it} was a

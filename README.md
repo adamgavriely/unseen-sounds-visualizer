@@ -60,9 +60,11 @@ sound that was actually detected, so an unfamiliar sound is handled like a famil
    show? A forced choice is a discrimination task, unlike the yes/no that once approved "Man on
    motorcycle drives past silver van" as a picture of laughter. A rejected depiction gets one retry
    with the scene withheld before falling back to the plain label.
-4. **Is it a picture we are already showing?** Depictions are compared with SigLIP text embeddings;
-   near-identical ones merge, and pairs in the ambiguous band are settled by asking the model whether
-   the two pictures would tell the viewer the same thing.
+4. **Is it a picture we are already showing?** Depictions are compared with SigLIP text embeddings
+   and merged above a bar set from measured runs (duplicates 0.57-0.87, distinct sounds 0.46-0.63;
+   the bar sits at 0.70, which merges most duplicates with no false merges). A model was meant to
+   decide the overlapping band and could not -- it called an owl on a branch and the hoot of an owl
+   two different things, correctly and unhelpfully.
 
 ## Status: complete and evaluated
 
