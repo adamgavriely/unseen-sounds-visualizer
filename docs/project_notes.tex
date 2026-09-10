@@ -1281,21 +1281,52 @@ band is therefore decided at run time by a model that knows what laughing and gi
 than by a list of the families we happened to encounter, and the filter keeps that question down to a
 couple of calls per clip instead of one per pair.
 
-\subsection{Validating a depiction without choosing a threshold}\label{sec:contribute}
+\textbf{A failure worth recording.} The first cluster run of this code produced eight finished videos
+and exited zero, with every similarity in the log reading exactly 0.000.
+\texttt{get\_text\_features} returns a bare tensor on transformers 4.x and a
+\texttt{BaseModelOutputWithPooling} on 5.x; the cluster runs 5.16 and the development machine runs
+4.56. Every call raised, the helper caught the exception and returned 0.0, and 0.0 against 0.0 is a
+perfectly well-formed comparison. Deduplication silently fell back to exact string matching --- three
+laughter slots again --- and validation rejected four good depictions, sending bare AudioSet labels
+to the image generator: \emph{Run} for footsteps, \emph{Reversing beeps} for a vehicle, \emph{Shatter}
+for glass. The repair is not the version check but the return value: the helper now returns
+\texttt{None} when it cannot answer, so a missing encoder is an unknown that each caller has to
+handle rather than a confident wrong number that flows downstream.
+
+\subsection{Validating a depiction: a test that looked right and was not}\label{sec:contribute}
 The guard that enforces \emph{the video contributes to the audio, it does not replace it} was a
 yes/no question to the VLM, and it approved ``Man on motorcycle drives past silver van'' as a picture
 of \emph{Laughter} --- because as a sentence about the scene, it is a good one.
 
-The replacement is comparative, and the comparison is what removes the threshold. A depiction is kept
-only if it is closer to the sound than the bare scene description already was: it has to say
-something about the sound that the scene did not. If it does not, it has not contributed to the
-audio, it has replaced it.
+The first replacement was comparative, and its appeal was that it needed no threshold: keep a
+depiction only if it is closer to the sound than the bare scene description already was, so it has to
+say something about the sound that the scene did not. It got all eight cases I had in front of me
+right, including both of the ones that motivated it, and it is wrong.
 
-An absolute bar on depiction-to-sound similarity cannot do this. ``A stream running through a
-forest'' scores 0.760 against \emph{Water} while ``a cowboy hat'' scores 0.653 against
-\emph{Vehicle}, so no single cut separates a good depiction from a bad one. Against their own scenes
-they separate cleanly: the stream adds water to a forest path ($0.760 > 0.686$), and the motorcycle
-sentence adds nothing at all to \emph{Laughter} ($0.201 < 0.444$).
+Widening the test set to seventeen cases dropped it to 11/17, and the misses were almost all
+depictions that should have been \emph{rejected}. The reason is that the test was not measuring
+aboutness at all. It compares a short phrase against a one-word label with a long sentence against
+that same label, and a short specific phrase scores higher on that comparison whatever either one
+means --- so the quantity being thresholded was largely phrase length. ``Penguin in cockpit'' beat
+its own scene as a picture of \emph{Glass} (0.586 against 0.496), and ``a group of people laughing in
+a courtroom'' lost as a picture of \emph{Laughter} (0.428 against 0.459). The eight original cases
+had passed for the same spurious reason.
+
+This is the fifth time in this project that a broken evaluation produced a plausible number instead
+of an error (Section~\ref{sec:judgeartefact}), and the first where the broken thing was mine and the
+plausible number was an accuracy I had reported. The lesson generalises past this instance: a
+similarity comparison is only meaningful when both sides are the same kind of object. Depictions
+against depictions is a fair comparison and is what the deduplication uses; a depiction against a
+one-word label, benchmarked against a sentence against a one-word label, is not.
+
+The working replacement asks the model to \textbf{choose}. Given the depiction, and given the other
+sounds detected in the same clip plus ``none of them'', which sound does this picture show? A yes/no
+question is an agreement task, which is what the original adjudicator failed at; a multiple choice is
+a discrimination task, and it makes the wrong answer available to be picked. The alternatives are not
+listed anywhere in advance --- they are whatever the detector heard in this video --- and they are
+adversarial in the right way, because a depiction that has drifted into the scene tends to be equally
+true of every sound in it. The correct option's position is rotated by a hash of the sound's own
+name, so that (a) is not always the answer and the choice cannot be passed by agreeing.
 
 \subsection{The transcript is evidence, not material}\label{sec:notranscript}
 The depiction prompt used to include the Whisper transcript, on the reasoning that speech is context.

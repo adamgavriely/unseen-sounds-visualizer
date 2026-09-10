@@ -55,9 +55,11 @@ sound that was actually detected, so an unfamiliar sound is handled like a famil
 2. **What should the picture be?** The scene is described once, as text; the depiction step is then
    text-only, with the sound as the subject and the scene as a modifier. The audio says *what* it is;
    the video only says *which kind* and *where*.
-3. **Is it still about the sound?** A depiction is kept only if it is closer to the sound than the
-   bare scene description already was -- otherwise the video has replaced the audio rather than
-   contributed to it, and the plain label is drawn instead.
+3. **Is it still about the sound?** The model is made to *choose*: given the depiction, and given
+   the other sounds detected in this same clip plus "none of them", which sound does this picture
+   show? A forced choice is a discrimination task, unlike the yes/no that once approved "Man on
+   motorcycle drives past silver van" as a picture of laughter. A rejected depiction gets one retry
+   with the scene withheld before falling back to the plain label.
 4. **Is it a picture we are already showing?** Depictions are compared with SigLIP text embeddings;
    near-identical ones merge, and pairs in the ambiguous band are settled by asking the model whether
    the two pictures would tell the viewer the same thing.
