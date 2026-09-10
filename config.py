@@ -92,24 +92,24 @@ SHOW_SOUND_GLYPH = False
 # beside a video that was already showing the source. Off-screen is the whole premise
 # of the system, so this check is what makes the output honest.
 VLM_VISIBILITY = True
-# Two sounds get one picture when they would be drawn the same way. The similarity is
-# between the DEPICTIONS, measured with SigLIP's text tower; above DEDUP_SIM they are
-# merged outright, between DEDUP_ASK and DEDUP_SIM the VLM is asked in words whether the
-# two pictures would say the same thing, below DEDUP_ASK nothing is asked. The band
-# comes from measurement, not taste: on this project's own phrases, near-synonyms
-# ("an audience clapping" / "people applauding loudly") score 0.78-0.91 and different
-# sounds in the same scene ("rain falling on a window" / "thunder over a dark sky")
-# score 0.58-0.81, so the ranges overlap and the middle has to be decided by meaning.
-# Confirmed on real pipeline output (job 28778638): duplicates scored 0.64-0.87
-# (Chuckle/Laughter 0.87, Owl/Hoot 0.82) and distinct sounds 0.46-0.63, so the overlap
-# is real but narrow, and DEDUP_SIM sits just under the clearest duplicates.
-# DEDUP_ASK is set BELOW that overlap on purpose: a clip has a handful of sounds, so
-# asking is cheap, and the filter only needs to skip pairs that are obviously unrelated
-# ("a group of people laughing in a courtroom" / "a police car siren outside the
-# courthouse", 0.39). Setting it inside the overlap missed real duplicates whose
-# wording happened to differ (the same two laughter depictions score 0.51).
-DEDUP_SIM = 0.85
-DEDUP_ASK = 0.45
+# Two sounds get one picture when they would be drawn the same way. Similarity is
+# measured between the DEPICTIONS with SigLIP's text tower, never between the labels:
+# single words embed too tightly to separate (Dog/Cat 0.90 against Laughter/Snicker
+# 0.80), while descriptive phrases separate usefully.
+#
+# The bar comes from three demo runs, not from taste. Measured on real pipeline output:
+#   true duplicates      0.57 - 0.87   (Chuckle/Laughter 0.87, Owl/Hoot 0.82)
+#   true non-duplicates  0.46 - 0.63   (Siren/Hoot 0.63, Dog/Laughter 0.59)
+# 0.70 merges three of five duplicates with no false merges. The two misses sit at 0.57,
+# inside the non-duplicate range, so no threshold reaches them.
+#
+# There was meant to be a model deciding the overlapping band. There is not, because it
+# did not work: asked ~40 times across two framings it answered "different" to about 90%
+# of pairs, including Owl against Hoot, and its few "same" answers were arbitrary enough
+# to merge a barking dog into a laughing baby. Pairs above DEDUP_REPORT are logged but
+# not merged, so evidence for moving the bar keeps arriving.
+DEDUP_SIM = 0.70
+DEDUP_REPORT = 0.45
 # A picture appears when its sound is heard and leaves when it stops, but a detected
 # span can be 0.2 s (AED_MIN_DUR) and a picture flashed for 0.2 s costs more attention
 # than it returns. MIN_DWELL is the floor on how long a picture stays; MERGE_GAP joins

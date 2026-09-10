@@ -239,8 +239,13 @@ def _still_the_sound(phrase, label, others, mdl, proc) -> bool:
     scene IS the depiction, the video has replaced the audio instead of contributing to
     it.
 
-    Two cheap-to-expensive steps. If the phrase names the sound outright, keep it. If it
-    does not, the model is made to CHOOSE which of this clip's sounds the picture shows.
+    The model is made to CHOOSE which of this clip's sounds the picture shows, and word
+    overlap is only the fallback for when no model is available. It used to be the fast
+    path in front of the choice, on the reasoning that a phrase naming its own sound is
+    obviously about it. It is not: the depiction step tends to write the sound's own word
+    into a sentence about the scene, and "Man on motorcycle drives past LAUGHING silver
+    van" skipped validation entirely as a picture of Laughter. A spelling test must not
+    be allowed to overrule a meaning test -- the same lesson as everywhere else here.
 
     A third formulation was tried and discarded, and it is worth recording because it
     looked right: score the depiction against the sound with SigLIP, and keep it only if
@@ -255,8 +260,8 @@ def _still_the_sound(phrase, label, others, mdl, proc) -> bool:
     deduplication, where both sides of every comparison are the same kind of string and
     the measurement is sound.
     """
-    if _about_the_sound(phrase, label):
-        return True
+    if mdl is None:
+        return _about_the_sound(phrase, label)
     return _reads_as(phrase, label, others or [], mdl, proc)
 
 
@@ -309,61 +314,49 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     return reply.startswith("y"), named
 
 
-# Ask about the SOUNDS, not the pictures. Two attempts asked whether the two pictures
-# were the same, and both failed the same way: the model said "different" to 18 of 19
-# pairs, including an owl on a branch against the hoot of an owl (0.82) and a woman
-# laughing against a woman snickering (0.76). It was not being agreeable or biased
-# towards a letter -- it was answering correctly. Two differently worded pictures ARE
-# two different pictures. The question that decides whether a viewer needs both is not
-# about the wording, it is whether the detector heard one source or two, and that is
-# world knowledge the model has: Owl and Hoot are one thing, Dog and Baby laughter are
-# not. Asking it directly also fixed a bad merge in the other direction, where "Baby
-# laughing in a silver van's shadow" and "Dog barking near a silver van" were called the
-# same picture because they share a van.
-SAME_SOUND_PROMPT = (
-    "A sound detector labelled two sounds in one video."
-    + chr(10) +
-    "A: {label_a}"
-    + chr(10) +
-    "B: {label_b}"
-    + chr(10) +
-    "Are these (a) {opt_a}, or (b) {opt_b}? Answer with the letter only."
-)
-
-SAME_OPTION = "two names for the same sound, from the same source"
-DIFF_OPTION = "two different sounds, from different sources"
-
-
 def _dedup(active, mdl, proc, device: str = "cpu") -> None:
     """Merge sounds that would be drawn as the same picture.
 
     PANNs emits label families -- Laughter, Snicker, Chuckle; Laughter, Belly laugh,
-    Giggle -- and each one used to take a slot, so the viewer got three near-identical
-    pictures of people laughing beside one clip. Comparing depiction strings for
-    equality never caught it, because the strings differ.
+    Giggle -- and consolidate_families does not catch them all, so a single clip produced
+    three slots holding three near-identical pictures of people laughing. The previous
+    deduplication compared depiction strings for equality and never fired, because the
+    strings differ.
 
-    The comparison is between the DEPICTIONS, never the labels. Labels are single words,
-    and SigLIP embeds single words too tightly to separate: measured on this project's
-    own vocabulary, *Dog* and *Cat* score 0.90 while *Laughter* and *Snicker* score
-    0.80, so a label-level threshold would merge the wrong pairs in the wrong order.
-    Depictions are short descriptive phrases -- exactly what the encoder was trained on
-    -- and they separate: near-synonyms land at 0.78-0.91 and genuinely different
-    sounds in the SAME scene at 0.58-0.81.
+    Similarity is measured between DEPICTIONS, never labels. Labels are single words and
+    SigLIP embeds them too tightly to separate: measured on this project's own
+    vocabulary, Dog/Cat scores 0.90 while Laughter/Snicker scores 0.80, so a label-level
+    threshold merges the wrong pairs first. Depictions are descriptive phrases, which is
+    what the encoder was trained on.
 
-    Those two ranges overlap, so the embedding is used as a cheap filter and not as the
-    verdict. Above DEDUP_SIM the pair is merged outright; between DEDUP_ASK and
-    DEDUP_SIM the model is asked, in words, whether the two pictures would say the same
-    thing; below DEDUP_ASK nothing is asked at all. So the decision in the ambiguous
-    band is made at run time by a model that knows what laughing and giggling are,
-    rather than by a synonym table that would only ever list the families we happened to
-    see. What the filter buys is that the question is asked a couple of times per clip
-    instead of for every pair.
+    THE THRESHOLD DOES THIS ALONE, and that conclusion was expensive. The design was for
+    the embedding to filter and a model to decide the ambiguous band, because the ranges
+    overlap. Over three demo runs the model was asked 40-odd times, in two different
+    framings, and it answered "different" to roughly 90% of pairs -- including an owl on
+    a branch against the hoot of an owl (0.82) and a woman laughing against a woman
+    snickering (0.76). It was not being agreeable and it was not favouring a letter: two
+    differently worded pictures ARE two different pictures, and Owl and Hoot are not two
+    names for one sound if you read the words strictly. Its handful of "same" answers
+    were arbitrary, and one of them merged "Baby laughing in a silver van's shadow" into
+    "Dog barking near a silver van" because they share a van.
+
+    So the band is decided by the number, with the bar set from what three runs actually
+    produced:
+
+        true duplicates      0.57 - 0.87   (Chuckle/Laughter 0.87, Owl/Hoot 0.82)
+        true non-duplicates  0.46 - 0.63   (Siren/Hoot 0.63, Dog/Laughter 0.59)
+
+    At 0.70 that is three of five duplicates merged and NO false merges. The two misses
+    both sit at 0.57, inside the non-duplicate range, so no threshold can reach them and
+    the model could not either -- it called both of them different too. Pairs above
+    DEDUP_REPORT are logged rather than merged, so the next run's numbers keep arriving
+    and the bar can be moved on evidence instead of taste.
     """
     from src import text_similarity
     order = sorted(active, key=lambda x: -x.confidence)
     subs = [" ".join((s.subject or "").lower().split()) for s in order]
-    sure = float(getattr(config, "DEDUP_SIM", 0.88))
-    ask = float(getattr(config, "DEDUP_ASK", 0.60))
+    sure = float(getattr(config, "DEDUP_SIM", 0.70))
+    report = float(getattr(config, "DEDUP_REPORT", 0.45))
     mat = None
     try:
         mat = text_similarity.similarity(subs, subs,
@@ -388,22 +381,10 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
             if sim >= sure:
                 dup, score = j, sim
                 break
-            if sim >= ask:
-                # Which letter means "same" alternates with the pair, so a model that
-                # favours the first option cannot decide every merge on its own.
-                flip = (i + j) % 2 == 1
-                same = "b" if flip else "a"
-                opt_a, opt_b = ((DIFF_OPTION, SAME_OPTION) if flip
-                                else (SAME_OPTION, DIFF_OPTION))
-                reply = _ask(mdl, proc, SAME_SOUND_PROMPT.format(
-                    label_a=order[j].event_label, label_b=spec.event_label,
-                    opt_a=opt_a, opt_b=opt_b), max_new=6).strip().lower().lstrip("(")
-                print("       [stage5] same sound? " + spec.event_label + " / "
+            if sim >= report:
+                print("       [stage5] near-duplicate? " + spec.event_label + " / "
                       + order[j].event_label + " sim=" + format(sim, ".2f")
-                      + " -> " + reply.strip() + " (same=" + same + ")", flush=True)
-                if reply[:1] == same:
-                    dup, score = j, sim
-                    break
+                      + " (bar " + format(sure, ".2f") + ")", flush=True)
         if dup is None:
             kept.append(i)
             continue

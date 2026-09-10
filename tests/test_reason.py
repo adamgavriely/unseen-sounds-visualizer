@@ -56,8 +56,18 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
     if prompt.startswith("A deaf viewer is watching a video and cannot hear it."):
         label = prompt.split("A sound detector heard: ")[1].split(".")[0]
         return {"Laughter": "a group of people laughing in a courtroom",
-                "Giggle": "a woman giggling in the gallery",
+                "Giggle": "a woman giggling in the courtroom gallery",
                 "Siren": "a police car siren outside the courthouse"}[label]
+    if prompt.startswith("A deaf viewer is shown this picture:"):
+        # forced choice: pick the option whose label the depiction actually names
+        picture = prompt.splitlines()[0].split(": ", 1)[1].lower()
+        for line in prompt.splitlines():
+            if line.startswith("(") and ") " in line:
+                letter, option = line[1], line.split(") ", 1)[1]
+                stem = option.lower().split(",")[0][:4]
+                if stem and stem in picture:
+                    return letter
+        return "z"   # none of them
     if prompt.startswith("A sound detector labelled two sounds"):
         last = prompt.splitlines()[-1]
         same = "a" if last.index("the same sound") < last.index("different sounds") else "b"
@@ -92,6 +102,6 @@ for s in specs:
     print(("  SHOW   " if s.augment else "  silent ") + s.event_label.ljust(10)
           + "| " + (s.subject or s.reason))
 shown = [s.event_label for s in specs if s.augment]
-assert shown == ["Laughter", "Siren"], shown
+assert shown == ["Laughter", "Siren"], shown   # Giggle merges at 0.76
 assert all("objection" not in (s.subject or "") for s in specs)
 print("\nOK: visible source gated, synonym merged, no dialogue in any depiction")
