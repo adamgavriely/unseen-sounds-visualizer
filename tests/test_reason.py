@@ -14,6 +14,7 @@ from src.stage5_cross_modal_analysis import reason as R
 from src.types import AugmentationSpec
 
 SCENE = "A courtroom with a judge and lawyers"
+PLACE = "a courtroom"
 
 
 class M:
@@ -45,6 +46,8 @@ ANSWERS = {
 def fake_ask(mdl, proc, prompt, images=None, max_new=48):
     if prompt.startswith("Describe this scene"):
         return SCENE
+    if prompt.startswith("What kind of place"):
+        return PLACE
     if prompt.startswith("These frames are from the moment"):
         label = prompt.split("a sound of ")[1].split(" was heard")[0]
         return ANSWERS.get(("visible", label), "nothing")

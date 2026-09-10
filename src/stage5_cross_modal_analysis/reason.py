@@ -38,6 +38,19 @@ SCENE_PROMPT = (
     "No more than 15 words."
 )
 
+# The depiction step gets the PLACE, not the scene sentence, and the difference is the
+# whole reason this prompt exists. Handed "A man on a motorcycle drives past a silver
+# van", the model glued that van onto every sound in the clip: Air horn became "Air horn
+# blaring from silver van" and rendered as a picture of a van, which tells a deaf viewer
+# nothing about a horn. The scene sentence names incidental objects, and a model asked to
+# be specific will reach for them. A place cannot be glued on the same way -- it can only
+# say what KIND of sound this is and where it would be, which is exactly the contribution
+# the video is supposed to make: a stream in a forest, a tap in a kitchen.
+PLACE_PROMPT = (
+    "What kind of place is this? Answer with at most four words, naming the place only. "
+    "Do not name any people or objects in it."
+)
+
 # Asked over the frames spanning ONE sound, not the whole clip: a door slamming at
 # second 3 is not visible in a frame from second 12. Phrased as "name it" rather than
 # "is it visible?" because a yes/no question to a VLM collects agreement rather than
@@ -59,12 +72,11 @@ VISIBLE_PROMPT = (
 DEPICT_PROMPT = (
     "A deaf viewer is watching a video and cannot hear it.\n"
     "A sound detector heard: {label}.\n"
-    "The video scene is: {scene}.\n\n"
-    "Describe ONE picture showing {label}, made specific to that scene. The picture "
-    "must be of {label} itself. The scene only tells you what kind of {label} it is and "
-    "where it would be. Do not describe the scene instead.\n"
-    "Example: sound Water, scene a forest path, gives: a stream running through a "
-    "forest.\n"
+    "The video is set in: {scene}.\n\n"
+    "Describe ONE picture showing {label} in that kind of place. The picture must be of "
+    "{label} itself. The place only tells you what kind of {label} it is and where it "
+    "would be. Do not describe the place instead.\n"
+    "Example: sound Water, place a forest, gives: a stream running through a forest.\n"
     "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
 )
 
@@ -239,13 +251,19 @@ def _still_the_sound(phrase, label, others, mdl, proc) -> bool:
     scene IS the depiction, the video has replaced the audio instead of contributing to
     it.
 
-    The model is made to CHOOSE which of this clip's sounds the picture shows, and word
-    overlap is only the fallback for when no model is available. It used to be the fast
-    path in front of the choice, on the reasoning that a phrase naming its own sound is
-    obviously about it. It is not: the depiction step tends to write the sound's own word
-    into a sentence about the scene, and "Man on motorcycle drives past LAUGHING silver
-    van" skipped validation entirely as a picture of Laughter. A spelling test must not
-    be allowed to overrule a meaning test -- the same lesson as everywhere else here.
+    Two steps. If the phrase names the sound outright, keep it; otherwise the model is
+    made to CHOOSE which of this clip's sounds the picture shows.
+
+    The overlap step was removed once, on the reasoning that a spelling test should not
+    overrule a meaning test -- the depiction step does sometimes write the sound's own
+    word into a sentence about the scene, and "Man on motorcycle drives past LAUGHING
+    silver van" was skipping validation as a picture of Laughter. Measured, that change
+    was a clear loss and it was put back. It cost two good depictions in eight clips --
+    "A corded telephone on a bedside table" rejected as a picture of Telephone, "Owl
+    perched on a tree branch outside" rejected as a picture of Owl, both falling back to
+    bare labels -- and it bought nothing, because the forced choice endorsed the laughing
+    van anyway. A phrase that names its own sound is about that sound often enough to be
+    worth trusting, and asking a 7B model a question it can get wrong is not free.
 
     A third formulation was tried and discarded, and it is worth recording because it
     looked right: score the depiction against the sound with SigLIP, and keep it only if
@@ -260,8 +278,10 @@ def _still_the_sound(phrase, label, others, mdl, proc) -> bool:
     deduplication, where both sides of every comparison are the same kind of string and
     the measurement is sound.
     """
+    if _about_the_sound(phrase, label):
+        return True
     if mdl is None:
-        return _about_the_sound(phrase, label)
+        return False
     return _reads_as(phrase, label, others or [], mdl, proc)
 
 
@@ -418,6 +438,10 @@ def decide_subjects(video_path, specs, transcript: str = "",
     scene = _ask(mdl, proc, SCENE_PROMPT, images=frames, max_new=40) if frames else ""
     scene = " ".join(scene.split())[:160] or "an unknown place"
     print("       [stage5] scene: " + scene, flush=True)
+    place = _clean_phrase(_ask(mdl, proc, PLACE_PROMPT, images=frames, max_new=16),
+                          max_words=4) if frames else ""
+    place = place or scene
+    print("       [stage5] place: " + place, flush=True)
 
     # 1. visibility, per sound, on the frames spanning that sound
     if getattr(config, "VLM_VISIBILITY", True):
@@ -445,7 +469,7 @@ def decide_subjects(video_path, specs, transcript: str = "",
     # the model choose between, so they are collected once here.
     labels = [s.event_label for s in active]
     for spec in active:
-        prompt = DEPICT_PROMPT.format(label=spec.event_label, scene=scene)
+        prompt = DEPICT_PROMPT.format(label=spec.event_label, scene=place)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
             # The scene swamped the sound. Ask again with the scene withheld: a plainer
