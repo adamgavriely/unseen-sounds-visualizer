@@ -22,6 +22,7 @@ from typing import List, Optional, Tuple
 from PIL import Image, ImageDraw
 
 from src.types import AugmentationSpec
+import config
 from src.labels import search_query
 
 _OPENVERSE = "https://api.openverse.org/v1/images/"
@@ -474,10 +475,16 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
         # Glyph BEFORE caption: the caption bar spans the full width, and drawing it
         # first makes the subject's bounding box the whole frame, which parks the sound
         # mark in the corner instead of against the thing making the sound.
+        # Fill the cell. Letterboxing was for pictograms, whose empty margins were the
+        # ground the sound symbol sat in; a photographic depiction just loses half the
+        # cell to grey. Label and symbol are now opt-in (config), and off by default.
         raw = Image.open(spec.image_path).convert("RGB")
-        fitted = (_fit_on_white(raw, (w, h)) if spec.backend == "diffusion"
-                  else _cover_crop(raw, (w, h)))
-        img = _caption(_sound_glyph(fitted, spec.confidence), label).convert("RGBA")
+        img = _cover_crop(raw, (w, h))
+        if getattr(config, "SHOW_SOUND_GLYPH", False):
+            img = _sound_glyph(img, spec.confidence)
+        if getattr(config, "SHOW_LABELS", False):
+            img = _caption(img, label)
+        img = img.convert("RGBA")
         img.putalpha(int(255 * _opacity(spec.confidence)))
         base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
         canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))

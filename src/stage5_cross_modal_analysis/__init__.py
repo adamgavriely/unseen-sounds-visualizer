@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import List
 
 from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
-from src.labels import is_salient_nonspeech, consolidate_families, min_confidence, depiction_query, disambiguate, contextual_subject
+from src.labels import is_salient_nonspeech, consolidate_families, min_confidence, depiction_query, disambiguate, contextual_subject, dedupe_by_meaning
 
 
 def plan_augmentations(scene: SceneContext,
@@ -83,4 +83,16 @@ def plan_augmentations(scene: SceneContext,
             subject=subject,
             image_prompt=(f"A clear, simple photograph of: {subject}" if augment else ""),
         ))
+    # Two sounds that would produce the same picture are one sound as far as the panel
+    # is concerned. Without this an applause clip spent all three slots on Laughter,
+    # Snicker and Crowd -- three photographs of laughing people -- while whatever the
+    # viewer actually could not hear went unshown.
+    keep = set(id(x) for x in dedupe_by_meaning(
+        [(sp.event_label, sp.confidence, sp) for sp in specs if sp.augment]))
+    for sp in specs:
+        if sp.augment and id(sp) not in keep:
+            sp.augment = False
+            sp.subject = ""
+            sp.image_prompt = ""
+            sp.reason = "same meaning as a louder sound already shown"
     return specs

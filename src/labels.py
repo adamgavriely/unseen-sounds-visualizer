@@ -404,6 +404,60 @@ SETTING_PHRASE = {
 }
 
 
+# ----------------------------------------------------------------------
+# What the VIEWER needs to know, which is not the same as the audio taxonomy
+# ----------------------------------------------------------------------
+# AudioSet separates Laughter, Snicker, Chuckle, Giggle and Belly laugh. A deaf viewer
+# needs one fact -- people are laughing -- and a panel that spends three of its three
+# slots on three photographs of laughing people has told them nothing extra while
+# crowding out the siren they could not hear. The families are correct and the panel
+# was still wrong, because the taxonomy is not the goal.
+#
+# So families are collapsed a second time, by what a viewer would take away. Anything
+# absent from this table keeps its own meaning and its own slot.
+MEANING_OF = {
+    "Laughter": "people laughing", "Snicker": "people laughing",
+    "Chuckle, chortle": "people laughing", "Belly laugh": "people laughing",
+    "Giggle": "people laughing", "Baby laughter": "a baby laughing",
+    "Crowd": "a crowd of people", "Applause": "an audience clapping",
+    "Cheering": "an audience cheering",
+    "Water": "water", "Stream": "water", "Waves, surf": "water", "Ocean": "water",
+    "Rain": "rain", "Raindrop": "rain", "Thunderstorm": "thunder and lightning",
+    "Thunder": "thunder and lightning",
+    "Vehicle": "a vehicle", "Traffic noise, roadway nois": "traffic",
+    "Siren": "an emergency vehicle siren",
+    "Footsteps": "someone walking", "Walk, footsteps": "someone walking",
+    "Typing": "someone typing", "Computer keyboard": "someone typing",
+    "Sawing": "a power tool", "Power tool": "a power tool", "Tools": "a power tool",
+    "Chainsaw": "a chainsaw",
+    "Hum": "a machine humming", "Mains hum": "a machine humming",
+    "Burst, pop": "a sudden bang", "Explosion": "an explosion", "Gunshot": "a gunshot",
+    "Bird": "a bird", "Dog": "a dog", "Cat": "a cat",
+}
+
+
+def viewer_meaning(label: str) -> str:
+    """The one thing a deaf viewer should take from this sound."""
+    return MEANING_OF.get(label, "")
+
+
+def dedupe_by_meaning(items):
+    """Keep one entry per distinct meaning, highest confidence first.
+
+    ``items`` is a list of (label, confidence, payload); returns the surviving payloads
+    in the original confidence order. Two sounds that would produce the same picture
+    are the same sound as far as the panel is concerned.
+    """
+    seen, out = set(), []
+    for label, _conf, payload in sorted(items, key=lambda t: -t[1]):
+        key = viewer_meaning(label) or label.lower()
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(payload)
+    return out
+
+
 def disambiguate(label: str, setting: str) -> str:
     """Correct an acoustically ambiguous label using the setting, or leave it alone.
 
@@ -420,7 +474,7 @@ def disambiguate(label: str, setting: str) -> str:
 def contextual_subject(label: str, detail: str = "", setting: str = "",
                        setting_group: str = "") -> str:
     """What to draw, given both the sound and the scene it happens in."""
-    base = depiction_query(label, detail)
+    base = viewer_meaning(label) or depiction_query(label, detail)
     if not setting_group:
         return base
     phrase = IN_SETTING.get((label, setting_group))

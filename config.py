@@ -70,6 +70,13 @@ GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
 #   minimal = same slots, compact label chips instead of imagery (icon set is a TODO)
 #   off     = no augmentation panel (control condition; output = original video)
 RENDER_MODE = "full"
+# The panel is read at a glance beside a video the viewer is already watching, so every
+# element has to earn its place against the divided-attention cost (see the literature
+# review). The word under each picture restates what the picture shows, and the drawn
+# sound symbol was a workaround from when the images were unreadable pictograms; with a
+# generator that depicts the action, neither pays for itself.
+SHOW_LABELS = False
+SHOW_SOUND_GLYPH = False
 # Chosen from a 3-model x 4-prompt grid (scripts/icon_grid.py; sheets in
 # data/output/icon_grid). SDXL base was the WORST of the three for this job: asked
 # for a pictogram of a dog it returned paw-print wallpaper and a 12-panel contact
