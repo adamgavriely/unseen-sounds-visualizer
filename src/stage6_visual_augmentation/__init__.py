@@ -458,9 +458,13 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
             img.putalpha(48)               # ~19%: present but clearly not active
             base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
             canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
-            d.text((x0 + 14, y1 - 34), label, font=_font(max(15, h // 14)),
-                   fill=(140, 148, 165))
+            if getattr(config, "SHOW_LABELS", False):
+                d.text((x0 + 14, y1 - 34), label, font=_font(max(15, h // 14)),
+                       fill=(140, 148, 165))
         else:
+            # No picture yet for this slot. A word is the only thing that can be shown,
+            # so it is drawn regardless of SHOW_LABELS -- an unexplained empty rectangle
+            # reads as a broken player, which is worse than a word.
             d.rectangle(box, fill=(16, 18, 24))
             d.text((x0 + 14, (y0 + y1) // 2 - 10), label, font=_font(max(15, h // 14)),
                    fill=(96, 103, 118))
