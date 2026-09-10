@@ -1,6 +1,15 @@
-"""End-to-end stubbed test of reason.decide_subjects: no GPU, no real models."""
+"""End-to-end stubbed test of reason.decide_subjects: no GPU, no real models.
+
+Every model call is answered by a table, so this checks the CONTROL FLOW -- a visible
+source is gated, a synonym is merged, no dialogue reaches a depiction -- on a machine
+with no GPU and in under a second. It is not a test of the models; the demo job on the
+cluster is what checks those.
+
+    python tests/test_reason.py
+""" 
 import sys
-sys.path.insert(0, r"P:\MscProj")
+from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from src.stage5_cross_modal_analysis import reason as R
 from src.types import AugmentationSpec
 
