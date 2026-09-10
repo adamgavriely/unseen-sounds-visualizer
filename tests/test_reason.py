@@ -58,11 +58,11 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
         return {"Laughter": "a group of people laughing in a courtroom",
                 "Giggle": "a woman giggling in the gallery",
                 "Siren": "a police car siren outside the courthouse"}[label]
-    if prompt.startswith("A deaf viewer will be shown one picture"):
+    if prompt.startswith("A sound detector labelled two sounds"):
         last = prompt.splitlines()[-1]
-        same = "a" if last.index("the same thing") < last.index("two different") else "b"
+        same = "a" if last.index("the same sound") < last.index("different sounds") else "b"
         diff = "b" if same == "a" else "a"
-        return same if ("laughing" in prompt and "giggling" in prompt) else diff
+        return same if ("Laughter" in prompt and "Giggle" in prompt) else diff
     raise AssertionError("unexpected prompt: " + prompt[:70])
 
 

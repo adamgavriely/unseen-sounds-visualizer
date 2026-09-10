@@ -42,10 +42,18 @@ SCENE_PROMPT = (
 # second 3 is not visible in a frame from second 12. Phrased as "name it" rather than
 # "is it visible?" because a yes/no question to a VLM collects agreement rather than
 # evidence -- a name can be checked against the sound, a "yes" cannot.
+#
+# The wording is load-bearing and was arrived at the hard way. Tightened to "name the
+# thing you can SEE making that sound, and only if you can see it actually making it",
+# the model answered "nothing" for every sound in all eight demo clips -- no suppression
+# at all, which is the complaint this check exists to answer. Leading with the question
+# instead of the instruction did the same. Asking plainly for a name, and letting the
+# follow-up question reject the loose ones, is what produces evidence to work with.
 VISIBLE_PROMPT = (
     "These frames are from the moment a sound of {label} was heard.\n"
-    "Is the thing making that sound visible in these frames? If it is, name it in at "
-    "most 5 words. If it is not visible, answer exactly: nothing."
+    "Name the thing in these frames that is making that sound. Answer with a short "
+    "noun phrase of at most 5 words. If nothing that could make that sound is visible "
+    "in these frames, answer exactly: nothing."
 )
 
 DEPICT_PROMPT = (
@@ -301,25 +309,29 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     return reply.startswith("y"), named
 
 
-# A forced choice, for the same reason the depiction check is one. Asked as "would these
-# two pictures look the same and tell the viewer the same thing?", the model answered no
-# to every pair it was given -- including "Woman on talk show bursts into hearty
-# laughter" against "Woman on talk show chuckles softly" at 0.87 similarity, and an owl
-# perched on a branch against the hoot of an owl at 0.82. It was answering the literal
-# question, and literally those are two different pictures. Two balanced options with no
-# yes/no makes it a comparison instead of an assent.
-SAME_PICTURE_PROMPT = (
-    "A deaf viewer will be shown one picture for each sound they cannot hear."
+# Ask about the SOUNDS, not the pictures. Two attempts asked whether the two pictures
+# were the same, and both failed the same way: the model said "different" to 18 of 19
+# pairs, including an owl on a branch against the hoot of an owl (0.82) and a woman
+# laughing against a woman snickering (0.76). It was not being agreeable or biased
+# towards a letter -- it was answering correctly. Two differently worded pictures ARE
+# two different pictures. The question that decides whether a viewer needs both is not
+# about the wording, it is whether the detector heard one source or two, and that is
+# world knowledge the model has: Owl and Hoot are one thing, Dog and Baby laughter are
+# not. Asking it directly also fixed a bad merge in the other direction, where "Baby
+# laughing in a silver van's shadow" and "Dog barking near a silver van" were called the
+# same picture because they share a van.
+SAME_SOUND_PROMPT = (
+    "A sound detector labelled two sounds in one video."
     + chr(10) +
-    "Picture for {label_a}: {a}"
+    "A: {label_a}"
     + chr(10) +
-    "Picture for {label_b}: {b}"
+    "B: {label_b}"
     + chr(10) +
-    "Do these two pictures show (a) {opt_a}, or (b) {opt_b}? Answer with the letter only."
+    "Are these (a) {opt_a}, or (b) {opt_b}? Answer with the letter only."
 )
 
-SAME_OPTION = "the same thing happening"
-DIFF_OPTION = "two different things happening"
+SAME_OPTION = "two names for the same sound, from the same source"
+DIFF_OPTION = "two different sounds, from different sources"
 
 
 def _dedup(active, mdl, proc, device: str = "cpu") -> None:
@@ -383,11 +395,10 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
                 same = "b" if flip else "a"
                 opt_a, opt_b = ((DIFF_OPTION, SAME_OPTION) if flip
                                 else (SAME_OPTION, DIFF_OPTION))
-                reply = _ask(mdl, proc, SAME_PICTURE_PROMPT.format(
-                    label_a=order[j].event_label, a=subs[j],
-                    label_b=spec.event_label, b=subs[i],
+                reply = _ask(mdl, proc, SAME_SOUND_PROMPT.format(
+                    label_a=order[j].event_label, label_b=spec.event_label,
                     opt_a=opt_a, opt_b=opt_b), max_new=6).strip().lower().lstrip("(")
-                print("       [stage5] same picture? " + spec.event_label + " / "
+                print("       [stage5] same sound? " + spec.event_label + " / "
                       + order[j].event_label + " sim=" + format(sim, ".2f")
                       + " -> " + reply.strip() + " (same=" + same + ")", flush=True)
                 if reply[:1] == same:
