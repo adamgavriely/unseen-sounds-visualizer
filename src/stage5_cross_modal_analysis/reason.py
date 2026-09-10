@@ -25,8 +25,7 @@ from typing import List, Optional
 PROMPT = (
     "These frames are consecutive moments from one video, spanning a few seconds "
     "around a sound.\n"
-    "A sound detector heard: {label}.\n"
-    "Other sounds present: {others}.\n"
+    "Describe ONLY this sound, ignoring any others in the clip: {label}.\n"
     "{speech}\n"
     "The thing making this sound is NOT visible in these frames -- that is why it "
     "needs illustrating for a deaf viewer.\n\n"
@@ -99,14 +98,13 @@ def decide_subjects(video_path, specs, transcript: str = "",
     if not active:
         return
     mdl, proc = _load(model, device)
-    others = ", ".join(dict.fromkeys(s.event_label for s in active)) or "none"
     speech = (f'Someone says: "{transcript.strip()[:200]}"' if transcript.strip()
               else "Nobody is speaking.")
     for spec in active:
         frames = _window(Path(video_path), spec.start, spec.end, frames_per_sound)
         if not frames:
             continue
-        prompt = PROMPT.format(label=spec.event_label, others=others, speech=speech)
+        prompt = PROMPT.format(label=spec.event_label, speech=speech)
         content = [{"type": "image"} for _ in frames] + [{"type": "text", "text": prompt}]
         text = proc.apply_chat_template([{"role": "user", "content": content}],
                                         tokenize=False, add_generation_prompt=True)
@@ -147,6 +145,25 @@ def _drop_duplicates(active, mdl, proc) -> None:
     """
     if len(active) < 2:
         return
+    # Identical text first, deterministically. Three sounds came back as the very same
+    # sentence -- "Woman laughing with hands on face" -- and all three were rendered,
+    # because the only dedup was a model call that answered "none". No judgement is
+    # needed to see that the same sentence twice is the same picture twice.
+    seen, survivors = set(), []
+    for spec in sorted(active, key=lambda x: -x.confidence):
+        key = " ".join((spec.subject or "").lower().split())
+        if key and key in seen:
+            spec.augment = False
+            spec.subject = ""
+            spec.image_prompt = ""
+            spec.reason = "identical depiction to a louder sound"
+            print(f"       [stage5] merged (identical): {spec.event_label}", flush=True)
+        else:
+            seen.add(key)
+            survivors.append(spec)
+    active = survivors
+    if len(active) < 2:
+        return
     import torch
     items = "\n".join(f"{i + 1}. {s.subject}" for i, s in enumerate(active))
     msgs = [{"role": "user",
@@ -157,6 +174,7 @@ def _drop_duplicates(active, mdl, proc) -> None:
         out = mdl.generate(**inputs, max_new_tokens=24, do_sample=False)
     reply = proc.batch_decode(out[:, inputs["input_ids"].shape[1]:],
                               skip_special_tokens=True)[0].strip().lower()
+    print(f"       [stage5] dedup judge said: {reply[:60]!r}", flush=True)
     if "none" in reply:
         return
     drop = set()
