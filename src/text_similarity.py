@@ -53,6 +53,28 @@ def unload() -> None:
         pass
 
 
+def _as_tensor(out):
+    """The embedding tensor, whichever shape of return value the library used.
+
+    ``get_text_features`` returns a bare tensor on transformers 4.x and a
+    ``BaseModelOutputWithPooling`` on 5.x. The cluster runs 5.16 and this machine runs
+    4.56, and the 5.x path failed with ``'BaseModelOutputWithPooling' object has no
+    attribute 'norm'`` -- caught only because every similarity came back as exactly
+    0.000 in a job log. Both are supported rather than pinning a version, because the
+    difference is a return type and not a behaviour.
+    """
+    import torch
+    if isinstance(out, torch.Tensor):
+        return out
+    for attr in ("pooler_output", "text_embeds", "last_hidden_state"):
+        val = getattr(out, attr, None)
+        if isinstance(val, torch.Tensor):
+            return val if val.dim() == 2 else val[:, 0]
+    if isinstance(out, (tuple, list)) and isinstance(out[0], torch.Tensor):
+        return out[0]
+    raise TypeError("no embedding tensor in " + type(out).__name__)
+
+
 def embed(texts: Sequence[str], model: str = "", device: str = "cpu"):
     """L2-normalised text embeddings, one row per input. Returns a torch tensor."""
     import torch
@@ -60,7 +82,7 @@ def embed(texts: Sequence[str], model: str = "", device: str = "cpu"):
     batch = tok([t or " " for t in texts], padding="max_length", truncation=True,
                 max_length=64, return_tensors="pt").to(dev)
     with torch.no_grad():
-        feats = mdl.get_text_features(**batch)
+        feats = _as_tensor(mdl.get_text_features(**batch)).float()
     return feats / feats.norm(dim=-1, keepdim=True).clamp(min=1e-6)
 
 

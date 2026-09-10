@@ -19,8 +19,8 @@ So audio and video are handled separately and only then combined:
      sound?" -- which is the only question whose answer genuinely lives in the image
   4. a TEXT-ONLY step combines sound and scene, with the sound as subject and the scene
      as modifier, so a sentence about the scene cannot swamp a sentence about the sound
-  5. the result is kept only if it is still closer to the sound than to the scene,
-     falling back to the plain label -- which is what enforces "contribute, not replace"
+  5. the result is kept only if the model, made to CHOOSE between this clip's sounds,
+     reads the picture as this one -- which is what enforces "contribute, not replace"
 
 Nothing here consults a list of known sounds. Every judgement is a question asked at run
 time about the sound that was actually detected, so an unseen sound is handled the same
@@ -44,9 +44,9 @@ SCENE_PROMPT = (
 # evidence -- a name can be checked against the sound, a "yes" cannot.
 VISIBLE_PROMPT = (
     "These frames are from the moment a sound of {label} was heard.\n"
-    "Name the thing in these frames that is making that sound. Answer with a short "
-    "noun phrase of at most 5 words. If nothing that could make that sound is visible "
-    "in these frames, answer exactly: nothing."
+    "Name the thing you can SEE making that sound, and only if you can see it actually "
+    "making it. Merely being present is not enough. Answer with a short noun phrase of "
+    "at most 5 words, or exactly: nothing."
 )
 
 DEPICT_PROMPT = (
@@ -59,6 +59,15 @@ DEPICT_PROMPT = (
     "Example: sound Water, scene a forest path, gives: a stream running through a "
     "forest.\n"
     "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
+)
+
+RETRY_PROMPT = (
+    "A deaf viewer is watching a video and cannot hear it. A sound detector heard: "
+    "{label}."
+    + chr(10) +
+    "Describe ONE picture of {label} itself that would tell the viewer what they are "
+    "hearing. Answer with a short phrase of at most 8 words. No punctuation, no "
+    "explanation."
 )
 
 MAX_WORDS = 8
@@ -143,20 +152,19 @@ def _clean_phrase(text: str, max_words: int = MAX_WORDS) -> str:
     text = text.strip(" .\"" + chr(39))
     words = text.split()
     if len(words) > max_words:
-        text = " ".join(words[:max_words])
-    return text.strip(" ,.;:-")
+        words = words[:max_words]
+    # A word cap can land on a word that cannot end a phrase, and the result is a prompt
+    # that trails off: "Owl perched on a tree branch outside the", "A large group of
+    # people gathered outside a". Whatever followed is gone either way, so the dangling
+    # connective goes too -- it adds nothing to the picture and reads as a bug.
+    while words and words[-1].lower().strip(",.;:") in _DANGLING:
+        words.pop()
+    return " ".join(words).strip(" ,.;:-")
 
 
-def _sim(a: str, b: str, device: str = "cpu") -> float:
-    """Cosine similarity of two phrases, 0.0 if the encoder is unavailable."""
-    from src import text_similarity
-    try:
-        return float(text_similarity.similarity(
-            [a], [b], model=getattr(config, "SIGLIP_MODEL", ""), device=device)[0][0])
-    except Exception as e:                       # encoder missing -> fall back to text
-        print("       [stage5] text encoder unavailable ("
-              + type(e).__name__ + "): " + str(e), flush=True)
-        return 0.0
+_DANGLING = {"a", "an", "the", "of", "in", "on", "at", "to", "with", "and", "or",
+             "for", "from", "by", "near", "over", "under", "into", "onto", "as",
+             "that", "this", "its", "their", "his", "her", "while", "during"}
 
 
 def _about_the_sound(phrase: str, label: str) -> bool:
@@ -175,37 +183,88 @@ def _about_the_sound(phrase: str, label: str) -> bool:
     return any(any(g.startswith(w[:4]) for g in got) for w in want)
 
 
-def _still_the_sound(phrase: str, label: str, scene: str, device: str = "cpu") -> bool:
+CHOOSE_PROMPT = (
+    "A deaf viewer is shown this picture: {phrase}"
+    + chr(10) +
+    "Which sound does the picture tell them is happening?"
+    + chr(10) + "{options}" + chr(10) +
+    "Answer with the letter only."
+)
+
+
+def _reads_as(phrase: str, label: str, others, mdl, proc) -> bool:
+    """Would a viewer seeing this picture know which sound it is?
+
+    A FORCED CHOICE, not a yes/no. Asking a model "would this picture tell a deaf viewer
+    they are hearing Laughter?" is an agreement task, and it approved "Man on motorcycle
+    drives past silver van". Asking which of several sounds the picture shows is a
+    discrimination task, and the wrong answer is available to be chosen -- including
+    "none of them", so the model is not forced to pick something.
+
+    The options are the other sounds detected in this same clip, which is what makes the
+    question hard in the right way: a depiction that has drifted into the scene tends to
+    be equally true of every sound in it, and one that names the wrong source loses to
+    the sound it actually depicts. Nothing is listed in advance; the alternatives come
+    from what the detector heard in this video.
+    """
+    options = [label] + [o for o in others if o != label][:4]
+    # The right answer must not always be (a), or the question stops being a choice and
+    # becomes the agreement task it was meant to replace. Its position is rotated by a
+    # hash of the sound's own name: spread across sounds, stable for one sound, and
+    # reproducible from run to run without a random seed.
+    slot = sum(ord(c) for c in label) % len(options)
+    options[0], options[slot] = options[slot], options[0]
+    letters = "abcdef"
+    body = chr(10).join("(" + letters[i] + ") " + o for i, o in enumerate(options))
+    body += chr(10) + "(" + letters[len(options)] + ") none of them"
+    reply = _ask(mdl, proc, CHOOSE_PROMPT.format(phrase=phrase, options=body),
+                 max_new=6).strip().lower().lstrip("(")
+    want = letters[slot]
+    print("       [stage5] reads as? '" + phrase + "' -> " + reply.strip()
+          + " (want " + want + " = " + label + ")", flush=True)
+    return reply[:1] == want
+
+
+def _still_the_sound(phrase, label, others, mdl, proc) -> bool:
     """Is this still a picture of the sound, or has it become a picture of the scene?
 
-    The test is COMPARATIVE, which is what makes it general and what removes the need to
-    pick a threshold: a depiction is kept only if it is closer to the sound than the
-    bare scene description already was. In other words the depiction has to say
-    something about the sound that the scene did not -- if it does not, it has not
-    contributed to the audio, it has replaced it.
+    Adam's rule made mechanical: the scene may shape the depiction, but the moment the
+    scene IS the depiction, the video has replaced the audio instead of contributing to
+    it.
 
-    That is Adam's rule made mechanical, and it is the only formulation tested here that
-    gets every measured case right. An absolute bar on depiction-to-sound similarity
-    does not: "a stream running through a forest" scores 0.76 against *Water* while "a
-    cowboy hat" scores 0.65 against *Vehicle*, so no single cut separates them. Against
-    their own scenes they separate cleanly, because the stream adds water to a forest
-    path (0.76 > 0.69) and "Man on motorcycle drives past silver van" adds nothing at
-    all to *Laughter* (0.20 < 0.44) -- which is exactly the depiction the previous
-    yes/no adjudicator waved through, because as a sentence about the scene it was
-    perfectly good.
+    Two cheap-to-expensive steps. If the phrase names the sound outright, keep it. If it
+    does not, the model is made to CHOOSE which of this clip's sounds the picture shows.
+
+    A third formulation was tried and discarded, and it is worth recording because it
+    looked right: score the depiction against the sound with SigLIP, and keep it only if
+    it beat the bare scene description's own score against that sound. It gets the first
+    eight cases right and then falls apart -- 11 of 17 on a harder set, missing almost
+    every depiction that should have been rejected. The reason is that it was not
+    measuring aboutness at all. A short, specific phrase scores higher against a
+    one-word label than a long scene sentence does, whatever either one means, so the
+    test was mostly reading phrase length. "Penguin in cockpit" beat its own scene as a
+    picture of Glass (0.586 against 0.496); "a group of people laughing in a courtroom"
+    lost as a picture of Laughter (0.428 against 0.459). Embeddings still do the
+    deduplication, where both sides of every comparison are the same kind of string and
+    the measurement is sound.
     """
     if _about_the_sound(phrase, label):
         return True
-    to_sound = _sim(phrase, label, device)
-    scene_to_sound = _sim(scene, label, device) if scene else 0.0
-    print("       [stage5] check '" + phrase + "': depiction=" + format(to_sound, ".3f")
-          + " vs scene=" + format(scene_to_sound, ".3f") + " against " + label,
-          flush=True)
-    return to_sound > scene_to_sound
+    return _reads_as(phrase, label, others or [], mdl, proc)
 
 
+# Written as two labelled lines rather than as one sentence. Interpolating a noun phrase
+# into "does a {named} make a {label} sound?" produced "Does a The woman in white make a
+# Laughter sound?", and the model answered "no" to the grammar rather than to the
+# question -- so a talk-show clip kept three pictures of laughter beside a video of the
+# people doing the laughing. Labelled fields cannot be mangled by whatever the naming
+# step happens to return.
 MAKES_SOUND_PROMPT = (
-    "Does a {named} make a {label} sound? Answer yes or no."
+    "Sound heard: {label}"
+    + chr(10) +
+    "Thing visible in the video: {named}"
+    + chr(10) +
+    "Could that thing be what is making that sound? Answer yes or no."
 )
 
 
@@ -371,18 +430,31 @@ def decide_subjects(video_path, specs, transcript: str = "",
                   flush=True)
             return
 
-    # 2. depiction: text-only, sound as subject, scene as modifier
+    # 2. depiction: text-only, sound as subject, scene as modifier.
+    # The other sounds heard in this clip are the alternatives the validation step makes
+    # the model choose between, so they are collected once here.
+    labels = [s.event_label for s in active]
     for spec in active:
         prompt = DEPICT_PROMPT.format(label=spec.event_label, scene=scene)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
-        if phrase and _still_the_sound(phrase, spec.event_label, scene, sim_device):
+        if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
+            # The scene swamped the sound. Ask again with the scene withheld: a plainer
+            # picture of the right thing beats a specific picture of the wrong thing.
+            # The old fallback was whatever label Stage 4 happened to supply, and those
+            # are not always drawable -- "Run" for Footsteps, "Reversing beeps" for
+            # Vehicle, "Shatter" for Glass all reached the image generator that way.
+            print("       [stage5] rejected (not about " + spec.event_label + "): "
+                  + phrase, flush=True)
+            phrase = _clean_phrase(_ask(mdl, proc, RETRY_PROMPT.format(
+                label=spec.event_label), max_new=48))
+            if phrase and not _still_the_sound(phrase, spec.event_label, labels,
+                                               mdl, proc):
+                phrase = ""
+        if phrase:
             spec.subject = phrase
             spec.reason += " | depiction: " + phrase
         else:
-            if phrase:
-                print("       [stage5] rejected (not about " + spec.event_label + "): "
-                      + phrase, flush=True)
-            spec.subject = spec.subject or spec.event_label
+            spec.subject = spec.event_label
         spec.image_prompt = spec.subject
         print("       [stage5] " + spec.event_label + " -> " + spec.subject, flush=True)
 
