@@ -89,6 +89,16 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     print(f"       {n_aug}/{len(specs)} sound(s) selected to visualize")
 
     print(f"[6/7] visual augmentation ({config.GEN_BACKEND})...")
+    # Decide WHAT to draw by looking at the video around each sound, before the
+    # generator is loaded -- the reasoner and the image model do not co-fit.
+    if getattr(config, 'DEPICTION_REASONING', True) and any(sp.augment for sp in specs):
+        from src.stage5_cross_modal_analysis import reason
+        try:
+            reason.decide_subjects(video_path, specs,
+                                   transcript=' '.join(sg.text for sg in segments),
+                                   model=config.VLM_MODEL, device=config.DEVICE)
+        finally:
+            reason.unload()
     specs = generate_augmentations(specs, work, backend=config.GEN_BACKEND,
                                    size=config.RESOLUTION, model=config.GEN_MODEL,
                                    device=config.DEVICE)

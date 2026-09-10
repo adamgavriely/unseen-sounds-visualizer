@@ -75,6 +75,12 @@ RENDER_MODE = "full"
 # review). The word under each picture restates what the picture shows, and the drawn
 # sound symbol was a workaround from when the images were unreadable pictograms; with a
 # generator that depicts the action, neither pays for itself.
+# Stage 5 asks a VLM what to depict, from frames spanning each sound plus the
+# transcript, instead of consulting hand-written setting/phrasing tables. The tables
+# broke where presets always break: a motorcycle POV shot scored "vehicle interior" at
+# 0.98 -- true of the camera, false of the scene -- and every depiction came out
+# "indoors" over an outdoor street.
+DEPICTION_REASONING = True
 SHOW_LABELS = False
 SHOW_SOUND_GLYPH = False
 # Chosen from a 3-model x 4-prompt grid (scripts/icon_grid.py; sheets in

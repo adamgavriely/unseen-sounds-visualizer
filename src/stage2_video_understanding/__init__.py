@@ -101,6 +101,30 @@ def _sample_frames(video_path: Path, num_frames: int) -> List[Image.Image]:
     return imgs
 
 
+def _sample_frames_at(video_path: Path, times) -> List[Image.Image]:
+    """Frames at specific timestamps, clamped to the clip.
+
+    Stage 5 needs the moments AROUND a sound -- just before it starts, while it sounds,
+    just after it ends -- because a sound is an event in time and its cause is often
+    only legible from what changed. Even sampling across the whole clip cannot answer
+    that; a door slam at second 3 is invisible in a frame from second 12.
+    """
+    dur = media_duration(video_path) or 0.0
+    imgs = []
+    with tempfile.TemporaryDirectory() as td:
+        for i, t in enumerate(times):
+            t = max(0.0, min(float(t), max(0.0, dur - 0.05)))
+            fp = Path(td) / f"w{i}.jpg"
+            try:
+                subprocess.run(["ffmpeg", "-y", "-ss", f"{t:.2f}", "-i", str(video_path),
+                                "-frames:v", "1", "-q:v", "3", str(fp)],
+                               check=True, capture_output=True)
+                imgs.append(Image.open(fp).convert("RGB").copy())
+            except Exception:
+                continue
+    return imgs
+
+
 def analyze_video(video_path: Path, num_frames: int = 6,
                   model: str = "openai/clip-vit-base-patch32", device: str = "cpu",
                   threshold: float = 0.30) -> SceneContext:
