@@ -127,14 +127,10 @@ def decide_subjects(video_path, specs, transcript: str = "",
 
 
 DEDUP_PROMPT = (
-    "A deaf viewer will see these pictures beside a video, one per sound:
-{items}
-
-"
+    "A deaf viewer will see these pictures beside a video, one per sound:\n{items}\n\n"
     "Some may tell the viewer the same thing. List the numbers of the ones to REMOVE, "
     "keeping the single most informative of each duplicated group. Two entries are "
-    "duplicates when a viewer would learn nothing new from the second.
-"
+    "duplicates when a viewer would learn nothing new from the second.\n"
     "Answer with numbers separated by commas, or the word none."
 )
 
@@ -152,8 +148,7 @@ def _drop_duplicates(active, mdl, proc) -> None:
     if len(active) < 2:
         return
     import torch
-    items = "
-".join(f"{i + 1}. {s.subject}" for i, s in enumerate(active))
+    items = "\n".join(f"{i + 1}. {s.subject}" for i, s in enumerate(active))
     msgs = [{"role": "user",
              "content": [{"type": "text", "text": DEDUP_PROMPT.format(items=items)}]}]
     text = proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
