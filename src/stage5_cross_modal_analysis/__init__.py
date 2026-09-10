@@ -18,7 +18,7 @@ from __future__ import annotations
 from typing import List
 
 from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
-from src.labels import is_salient_nonspeech, consolidate_families, min_confidence, depiction_query, disambiguate, contextual_subject, dedupe_by_meaning
+from src.labels import is_salient_nonspeech, consolidate_families, min_confidence, depiction_query
 
 
 def plan_augmentations(scene: SceneContext,
@@ -68,31 +68,17 @@ def plan_augmentations(scene: SceneContext,
         # sound most likely is and HOW to draw it. Disambiguation fires only for the
         # handful of genuinely confusable pairs; phrasing applies whenever the setting
         # is known, so "Water" becomes a stream in a forest or a tap in a kitchen.
-        if augment:
-            label_for_image = disambiguate(ev.label, setting)
-            detail_for_image = ev.detail if label_for_image == ev.label else ""
-            subject = contextual_subject(label_for_image, detail_for_image,
-                                         setting, setting_group)
-            if label_for_image != ev.label:
-                reason += f" (scene says {label_for_image.lower()}, not {ev.label.lower()})"
-        else:
-            subject = ""
+        # Placeholder only. What is actually drawn is decided by the VLM in reason.py,
+        # which sees frames spanning the sound; the hand-written setting and phrasing
+        # tables that used to fill this in are gone, because a fixed category list
+        # cannot describe an arbitrary scene and mislabelled the ones it could not fit.
+        subject = depiction_query(ev.label, ev.detail) if augment else ""
         specs.append(AugmentationSpec(
             index=i, event_label=ev.label, start=ev.start, end=ev.end,
             augment=augment, confidence=ev.confidence, reason=reason,
             subject=subject,
             image_prompt=(f"A clear, simple photograph of: {subject}" if augment else ""),
         ))
-    # Two sounds that would produce the same picture are one sound as far as the panel
-    # is concerned. Without this an applause clip spent all three slots on Laughter,
-    # Snicker and Crowd -- three photographs of laughing people -- while whatever the
-    # viewer actually could not hear went unshown.
-    keep = set(id(x) for x in dedupe_by_meaning(
-        [(sp.event_label, sp.confidence, sp) for sp in specs if sp.augment]))
-    for sp in specs:
-        if sp.augment and id(sp) not in keep:
-            sp.augment = False
-            sp.subject = ""
-            sp.image_prompt = ""
-            sp.reason = "same meaning as a louder sound already shown"
+    # Deduplication now happens in reason.py, on the depictions the VLM chose,
+    # rather than on a hand-written synonym table.
     return specs
