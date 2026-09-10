@@ -263,6 +263,173 @@ DEPICTION_SKIP = {
 }
 
 
+# ----------------------------------------------------------------------
+# Cross-modal depiction: what the SETTING says an unseen sound is
+# ----------------------------------------------------------------------
+# The gate asks whether a sound's source is on screen. For the sounds this system
+# exists to depict the answer is always no -- and the video still constrains what the
+# sound plausibly IS. A crackle in a living room is a fire; the same crackle beside a
+# forest stream is water, and PANNs confuses the two routinely because they are
+# spectrally similar. Depicting from the audio label alone throws that away.
+
+# Audio labels that are acoustically ambiguous, and which label each setting group
+# favours. Deliberately short: every entry is a confusion that actually occurs and that
+# the setting genuinely resolves, not a guess about what might.
+# Keyed on the SPECIFIC setting, not the coarse group. Grouping was wrong and
+# dangerously so: "home" covers kitchens and bathrooms, where running water is far more
+# likely than a hearth, and the group-level rule would have turned every indoor tap into
+# a fireplace. A confusion is only resolvable where the scene genuinely resolves it.
+AMBIGUOUS = {
+    ("Water", "living room"): "Fire",     # a crackle in a lounge is a hearth, not a tap
+    ("Fire", "river"): "Water",           # a rush beside a stream is water, not flames
+    ("Fire", "forest"): "Water",
+    ("Fire", "sea"): "Water",
+    ("Rain", "kitchen"): "Frying",        # a patter on a stove is a frying pan
+    ("Applause", "forest"): "Rain",       # a patter among trees is rain on leaves
+    ("Applause", "field"): "Rain",
+}
+
+
+def min_confidence(label: str, default: float) -> float:
+    return max(default, NOISE_LIKE_MIN_CONF.get(label, 0.0))
+
+
+def canonical(label: str) -> str:
+    return FAMILY.get(label, label)
+
+
+# Better image-search phrases than the bare AudioSet label (e.g. "Vehicle" alone
+# returns toy photos). Used by Stage 6 retrieval. v2 (diffusion) won't need these.
+QUERY_HINTS = {
+    "Vehicle": "traffic cars street", "Dog": "dog", "Cat": "cat", "Water": "waterfall",
+    "Thunder": "lightning", "Rain": "rain", "Bird": "bird", "Crowd": "crowd",
+    "Siren": "ambulance", "Wind": "storm wind", "Fire": "fire flames",
+    "Explosion": "explosion", "Aircraft": "airplane", "Helicopter": "helicopter",
+    "Train": "train railway", "Bell": "church bell", "Gunshot, gunfire": "gun",
+    "Applause": "applause audience", "Insect": "insect", "Horse": "horse",
+}
+
+
+def search_query(label: str) -> str:
+    return QUERY_HINTS.get(label, label)
+
+
+def merge_by_label(events: List[AudioEvent]) -> List[AudioEvent]:
+    """Collapse repeated firings of the same label into one span (min start,
+    max end, max confidence). Sorted by confidence descending."""
+    by_label = {}
+    for e in events:
+        if e.label in by_label:
+            m = by_label[e.label]
+            m.start = min(m.start, e.start)
+            m.end = max(m.end, e.end)
+            m.confidence = max(m.confidence, e.confidence)
+        else:
+            by_label[e.label] = AudioEvent(e.label, e.start, e.end, e.confidence)
+    return sorted(by_label.values(), key=lambda e: -e.confidence)
+
+
+def consolidate_families(events: List[AudioEvent]) -> List[AudioEvent]:
+    """Relabel sub-types to their canonical parent, then merge. One entry/source.
+
+    The family is what the GATE reasons about -- visibility concepts are keyed on it,
+    and one entry per source is what keeps the panel from filling with near-duplicates.
+    But the family is far too coarse to DEPICT: an audit of 100 clips found 85 whose raw
+    detections contained a more specific label than the one being drawn. "Fire engine,
+    fire truck (siren)" collapsed to "Siren", whose query hint is "ambulance", so every
+    fire truck in the benchmark was rendered as an ambulance; "Truck" and "Car" both
+    became a generic "Vehicle"; "Waves, surf" became "Water".
+
+    So the most confident specific child is preserved in ``detail`` and used for the
+    image only. Gating behaviour is unchanged -- this affects what is drawn, never
+    whether it is drawn.
+    """
+    relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence) for e in events]
+    merged = merge_by_label(relabelled)
+    best = {}
+    for e in events:
+        fam = canonical(e.label)
+        if e.label == fam:
+            continue                      # not more specific than its own family
+        if fam not in best or e.confidence > best[fam].confidence:
+            best[fam] = e
+    for m in merged:
+        child = best.get(m.label)
+        if child is not None:
+            m.detail = child.label
+    return merged
+
+
+# Specific labels that name the SOUND rather than its source, and so make a worse
+# image than the family does: searching "Chirp" returns waveforms and logos, while
+# "Bird" returns a bird. Kept as a short explicit list because no rule distinguishes
+# these reliably -- an AudioSet name is a sound name, and only some happen to be objects.
+DEPICTION_SKIP = {
+    "Chirp", "Tweet", "Squawk", "Coo", "Caw", "Bird vocalization",
+    "Rain on surface", "Vocalization", "Rustling", "Rumble", "Hum", "Hiss",
+    "Whoosh", "Clatter", "Roar", "Buzz",
+}
+
+# How to SAY a sound once the setting is known. Keys are (family, setting group).
+# The value replaces the bare label in the generation prompt, which is the whole point:
+# "a stream flowing through a forest" is depictable, "Water" is not.
+IN_SETTING = {
+    ("Water", "home"): "water running from a kitchen tap",
+    ("Water", "nature"): "a stream flowing through a forest",
+    ("Water", "urban"): "water running in a gutter on a street",
+    ("Fire", "home"): "a fire crackling in a fireplace",
+    ("Fire", "nature"): "a campfire burning outdoors",
+    ("Bird", "nature"): "a bird singing in a tree",
+    ("Bird", "urban"): "a pigeon on a city street",
+    ("Vehicle", "urban"): "a car driving along a city street",
+    ("Vehicle", "nature"): "a car on a country road",
+    ("Siren", "urban"): "an emergency vehicle with its siren on in a street",
+    ("Rain", "urban"): "rain falling on a city street",
+    ("Rain", "nature"): "rain falling in a forest",
+    ("Wind", "nature"): "wind blowing through trees",
+    ("Footsteps", "home"): "footsteps on a wooden floor indoors",
+    ("Footsteps", "urban"): "footsteps on a pavement",
+    ("Footsteps", "nature"): "footsteps on a forest path",
+    ("Crowd", "urban"): "a crowd of people in a busy street",
+    ("Crowd", "indoor"): "a crowd of people inside a hall",
+    ("Dishes", "home"): "dishes being washed in a kitchen sink",
+    ("Door", "home"): "a door closing inside a house",
+    ("Frying", "home"): "food frying in a pan on a stove",
+}
+
+# Fallback phrasing when the pair is not in the table: place the subject in the scene.
+SETTING_PHRASE = {
+    "home": "inside a home", "indoor": "indoors", "urban": "on a city street",
+    "nature": "outdoors in nature", "work": "at a work site",
+}
+
+
+def disambiguate(label: str, setting: str) -> str:
+    """Correct an acoustically ambiguous label using the setting, or leave it alone.
+
+    Conservative by construction: only the seven (label, setting) pairs above can change
+    anything, and every other detection passes through untouched. A confident audio
+    detection is never overridden by a guess about the scene -- the rule fires only
+    where the two sounds are genuinely hard to tell apart AND the setting decides it.
+    """
+    if not setting:
+        return label
+    return AMBIGUOUS.get((label, setting), label)
+
+
+def contextual_subject(label: str, detail: str = "", setting: str = "",
+                       setting_group: str = "") -> str:
+    """What to draw, given both the sound and the scene it happens in."""
+    base = depiction_query(label, detail)
+    if not setting_group:
+        return base
+    phrase = IN_SETTING.get((label, setting_group))
+    if phrase:
+        return phrase
+    where = SETTING_PHRASE.get(setting_group)
+    return f"{base} {where}" if where else base
+
+
 def depiction_query(label: str, detail: str = "") -> str:
     """What to search for or draw: the specific sound if one was detected, else the family.
 

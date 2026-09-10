@@ -75,7 +75,11 @@ RENDER_MODE = "full"
 # for a pictogram of a dog it returned paw-print wallpaper and a 12-panel contact
 # sheet; for a fire engine, a garage door. Turbo returned a clean readable subject
 # on white for every subject tried, and is ~7x cheaper per image.
-GEN_MODEL = "stabilityai/sdxl-turbo"   # for the v2 diffusion backend
+# PixArt-Sigma beat SDXL-Turbo and FLUX.1-schnell head to head on the six benchmark
+# sounds (6/6 vs 6/6-with-3-losses vs 3/6): it was the only one that showed the ACTION
+# -- an open beak for chirping -- and FLUX returned a blank white image for "rain
+# falling". Ungated, and ~10x faster than FLUX, which needs CPU offload on a 23 GB card.
+GEN_MODEL = "PixArt-alpha/PixArt-Sigma-XL-2-1024-MS"   # for the v2 diffusion backend
 RESOLUTION = (1024, 1024)    # augmentation image size
 PANEL_SIZE = 720             # side-by-side augmentation panel size (px)
 FPS = 25

@@ -160,7 +160,7 @@ def analyze_video(video_path: Path, num_frames: int = 6,
                             raw={"error": str(e)})
 
 
-def analyze(video_path, backend: str = "clip", **kw) -> SceneContext:
+def _analyze_visibility(video_path, backend: str = "clip", **kw) -> SceneContext:
     """Backend dispatcher: 'siglip' (default), 'clip' (baseline) or 'vlm' (GPU).
 
     Keeps callers (pipeline, benchmark/evaluate) agnostic of which gate is in use
@@ -192,3 +192,38 @@ def analyze(video_path, backend: str = "clip", **kw) -> SceneContext:
                          model=kw.get("model", "openai/clip-vit-base-patch32"),
                          device=kw.get("device", "cpu"),
                          threshold=kw.get("threshold", 0.30))
+
+
+def analyze(video_path, backend: str = "clip", **kw) -> SceneContext:
+    """Scene context: what is visible, AND what kind of place this is.
+
+    The proposal asks Stage 2 for "high-level scene context ... contextual cues that
+    help interpret the semantic meaning of the accompanying audio". Only the first half
+    was implemented -- a detector answering "is this object on screen", which the gate
+    consumes. For an OFF-SCREEN sound, the only kind this system depicts, that answer is
+    always no, so the video contributed nothing to what actually got drawn.
+
+    The setting is the missing half. The fireplace is not in frame, but the living room
+    is, and that is what separates a crackle that is a fire from one that is a stream.
+    Classifying it costs one extra pass and is what makes Stage 5 cross-modal for the
+    sounds that matter, rather than only for the ones already visible.
+    """
+    scene = _analyze_visibility(video_path, backend=backend, **kw)
+    if not kw.get("with_setting", True):
+        return scene
+    try:
+        from src.stage2_video_understanding.scene import classify_setting, GROUP
+        frames = _sample_frames(Path(video_path), kw.get("num_frames", 6))
+        setting, conf, top = classify_setting(
+            frames, device=kw.get("device", "cpu"),
+            backend=kw.get("setting_backend", "siglip"))
+        scene.setting = setting
+        scene.raw = dict(scene.raw or {})
+        scene.raw["setting_conf"] = round(float(conf), 3)
+        scene.raw["setting_scores"] = top
+        scene.raw["setting_group"] = GROUP.get(setting, "")
+        if setting:
+            print(f"       [stage2] setting: {setting} ({conf:.2f})")
+    except Exception as e:
+        print(f"       [stage2] setting unavailable ({type(e).__name__}: {e})")
+    return scene

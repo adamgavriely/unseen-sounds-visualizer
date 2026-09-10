@@ -172,6 +172,24 @@ ICON_NEGATIVE = ("photograph, photorealistic, realistic, 3d render, text, letter
                  "symmetrical pattern, engraving, woodcut, tattoo, mandala")
 
 
+PLAIN_TAIL = ", plain white background, single subject, clearly visible"
+
+
+def plain_prompt(subject: str) -> str:
+    """State the thing, and nothing about how to draw it.
+
+    Six rounds were spent art-directing this ("minimal line art", "3d icon", "sticker",
+    "flat cartoon") and every directive made the output worse: literal black stripes, a
+    badge on grey, papercut folk art. The proposal asks for "static storyboard-style
+    images", which is a plain depiction of the event, and a model with real prompt
+    adherence produces exactly that when simply asked. The only additions earn their
+    place: an isolated subject on white keeps the panel readable at a glance AND stops
+    the background inventing things -- a bare "fire engine with its siren on" put the
+    engine in FLAMES, which would tell a deaf viewer "fire" when the sound is a siren.
+    """
+    return f"{subject}{PLAIN_TAIL}"
+
+
 def icon_prompt(subject: str) -> str:
     """Ask for a pictogram rather than a picture.
 
@@ -239,8 +257,7 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
             # scale degrades it. Also ~7x cheaper per image, which matters at 300.
             kw.update(num_inference_steps=4, guidance_scale=0.0)
         else:
-            kw.update(num_inference_steps=28, guidance_scale=8.0,
-                      negative_prompt=ICON_NEGATIVE)
+            kw.update(num_inference_steps=25, guidance_scale=4.5)
         img = _PIPE(**kw).images[0]
         img.save(path)
         return True
@@ -341,7 +358,7 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
         elif backend == "diffusion":                # v2-b, university GPU
             # Always the pictogram prompt: what Stage 5 stored is the subject, and the
             # style is this backend's business, not the gate's.
-            prompt = icon_prompt(spec.subject or query)
+            prompt = plain_prompt(spec.subject or query)
             if _diffusion_image(path, prompt, size, model=model, device=device):
                 spec.image_path = str(path)
                 spec.backend = "diffusion"
