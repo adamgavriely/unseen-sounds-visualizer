@@ -28,12 +28,14 @@ PROMPT = (
     "A sound detector heard: {label}.\n"
     "Other sounds present: {others}.\n"
     "{speech}\n"
-    "The thing making this sound is NOT visible in these frames -- that is why it needs "
-    "illustrating for a deaf viewer.\n\n"
-    "Using what the video shows about where this is happening, describe the ONE picture "
-    "we should display beside the video so a deaf viewer understands what they are "
-    "hearing. Be concrete and specific to this scene. If the detector's label looks "
-    "wrong given what you can see, describe what the sound most likely actually is.\n"
+    "The thing making this sound is NOT visible in these frames -- that is why it "
+    "needs illustrating for a deaf viewer.\n\n"
+    "Describe the ONE picture to display beside the video so a deaf viewer understands "
+    "THE SOUND. The picture must show the thing MAKING the sound, or the action that "
+    "produces it -- NOT the scene the viewer can already see. Use the video only to "
+    "make that thing specific to this place. If the label looks wrong given what you "
+    "can see, describe what the sound most likely actually is.\n"
+    "Good: laughing people at a bus stop. Bad: a man walking near cars.\n"
     "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
 )
 
@@ -113,9 +115,20 @@ def decide_subjects(video_path, specs, transcript: str = "",
             print(f"       [stage5] {spec.event_label} -> {phrase}", flush=True)
     # Two sounds the model described the same way are one thing to a viewer; this
     # replaces the hand-written synonym table with the model's own judgement.
+    # Near-duplicates, not just identical strings: Owl and Hoot both came back as an
+    # owl hooting in a dark room, differing only in trailing words, and exact matching
+    # kept both. Compare the two most informative words instead.
+    def _key(text):
+        stop = {"a", "an", "the", "in", "on", "at", "with", "of", "and", "while", "near",
+                "from", "background", "distance", "room", "outside", "someone", "people",
+                "dark", "another", "past", "into", "over"}
+        words = [w for w in "".join(c if c.isalnum() else " "
+                                    for c in text.lower()).split() if w not in stop]
+        return " ".join(sorted(words[:2]))
+
     seen = set()
     for spec in sorted(active, key=lambda s: -s.confidence):
-        key = (spec.subject or "").lower()
+        key = _key(spec.subject or "")
         if key and key in seen:
             spec.augment = False
             spec.subject = ""
