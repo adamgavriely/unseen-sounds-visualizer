@@ -24,6 +24,16 @@ from src.stage1_audio_extraction import media_duration
 
 # Candidate visible sources, keyed by the (consolidated) sound label so the gate's
 # `ev.label.lower() in visible_entities` check matches directly.
+#
+# DEMOTED 2026-09-10 to a cheap first pass. This table can only ever mark a sound
+# visible if somebody wrote that sound into it, so laughter, footsteps, a telephone and
+# an owl were structurally incapable of being gated and got a picture beside a video
+# that was already showing the source -- which is the system's central claim failing,
+# not a gap in coverage. The real check is now stage5/reason.py, which asks the VLM to
+# NAME the thing making each sound in the frames spanning that sound, with no list of
+# sounds anywhere. What survives here is a fast, model-free suppression that runs before
+# the VLM is loaded, and is still what the benchmark's seen/not-seen numbers are
+# computed from. See notes sec:vlmvisibility.
 VISIBLE_CONCEPTS = {
     "Dog": "a photo of a dog", "Cat": "a photo of a cat",
     # machinery is acoustically indistinguishable from traffic at this model scale, so

@@ -75,14 +75,48 @@ RENDER_MODE = "full"
 # review). The word under each picture restates what the picture shows, and the drawn
 # sound symbol was a workaround from when the images were unreadable pictograms; with a
 # generator that depicts the action, neither pays for itself.
-# Stage 5 asks a VLM what to depict, from frames spanning each sound plus the
-# transcript, instead of consulting hand-written setting/phrasing tables. The tables
+# Stage 5 asks a VLM what to depict, from a text description of the scene, instead of
+# consulting hand-written setting/phrasing tables. The transcript is deliberately NOT
+# part of that prompt: it was, and dialogue leaked into the pictures -- a Hiccup became
+# "Hiccup on the phone, slow down, how many". The tables
 # broke where presets always break: a motorcycle POV shot scored "vehicle interior" at
 # 0.98 -- true of the camera, false of the scene -- and every depiction came out
 # "indoors" over an outdoor street.
 DEPICTION_REASONING = True
 SHOW_LABELS = False
 SHOW_SOUND_GLYPH = False
+# Stage 5 asks the VLM, on the frames spanning EACH sound, to name the thing making it,
+# and stays silent when it can. This replaces the ~30-concept visibility table in
+# Stage 2, which could only ever mark a sound visible if somebody had written that
+# sound into it -- so laughter, footsteps, a telephone and an owl all got a picture
+# beside a video that was already showing the source. Off-screen is the whole premise
+# of the system, so this check is what makes the output honest.
+VLM_VISIBILITY = True
+# Two sounds get one picture when they would be drawn the same way. The similarity is
+# between the DEPICTIONS, measured with SigLIP's text tower; above DEDUP_SIM they are
+# merged outright, between DEDUP_ASK and DEDUP_SIM the VLM is asked in words whether the
+# two pictures would say the same thing, below DEDUP_ASK nothing is asked. The band
+# comes from measurement, not taste: on this project's own phrases, near-synonyms
+# ("an audience clapping" / "people applauding loudly") score 0.78-0.91 and different
+# sounds in the same scene ("rain falling on a window" / "thunder over a dark sky")
+# score 0.58-0.81, so the ranges overlap and the middle has to be decided by meaning.
+# DEDUP_ASK is set BELOW that overlap on purpose: a clip has a handful of sounds, so
+# asking is cheap, and the filter only needs to skip pairs that are obviously unrelated
+# ("a group of people laughing in a courtroom" / "a police car siren outside the
+# courthouse", 0.39). Setting it inside the overlap missed real duplicates whose
+# wording happened to differ (the same two laughter depictions score 0.51).
+DEDUP_SIM = 0.88
+DEDUP_ASK = 0.45
+# A picture appears when its sound is heard and leaves when it stops, but a detected
+# span can be 0.2 s (AED_MIN_DUR) and a picture flashed for 0.2 s costs more attention
+# than it returns. MIN_DWELL is the floor on how long a picture stays; MERGE_GAP joins
+# two bursts of the same sound into one appearance instead of a flicker.
+MIN_DWELL = 1.5
+MERGE_GAP = 0.8
+# Rows in the panel = the most sounds heard AT ONCE, capped here. Three sounds that
+# never overlap share one full-size cell in turn rather than splitting the panel into
+# thin strips that are empty most of the time.
+MAX_SLOTS = 3
 # Chosen from a 3-model x 4-prompt grid (scripts/icon_grid.py; sheets in
 # data/output/icon_grid). SDXL base was the WORST of the three for this job: asked
 # for a pictogram of a dog it returned paw-print wallpaper and a 12-panel contact

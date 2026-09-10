@@ -407,49 +407,126 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
 # ----------------------------------------------------------------------
 # alongside-video compositor
 #
-# Panel layout follows the DHH-visualization evidence (notes, "Rendering
-# improvements"): each augmented sound gets a FIXED slot for the whole clip
-# (moving/popping visuals distract DHH viewers), and an active slot's opacity
-# scales with detector confidence (loudness -> visual weight). TODO: temporal
-# fade at slot activation (needs per-frame rendering, not a concat slideshow).
+# A picture appears when its sound is heard and goes away when the sound stops.
+# That sounds obvious, and the first version did not do it: every augmented sound
+# held a slot for the whole clip, dimmed when idle, so a viewer saw three pictures
+# permanently parked beside the video and the panel read as a collage rather than as
+# a system reacting to anything. It also broke the claim the panel is supposed to
+# make -- a picture that is on screen when the sound is not is telling the viewer
+# something false.
+#
+# What the DHH-visualization evidence actually asks for (notes, "Rendering
+# improvements") is that visuals not MOVE, because moving and popping targets cost a
+# viewer who is already splitting attention between the video and the panel. Position
+# stability and permanent presence are different things. So a sound keeps a fixed
+# position for as long as it is on screen, and when it is not heard, its cell is
+# empty. Nothing jumps; nothing lingers.
+#
+# The number of rows is the maximum number of sounds heard AT ONCE, not the number of
+# distinct sounds in the clip, so three sounds that never overlap share one full-size
+# cell in turn instead of splitting the panel into three thin strips that are empty
+# most of the time.
 # ----------------------------------------------------------------------
 MAX_SLOTS = 3   # granularity requirement (notes sec:granularity): >=3 simultaneous
                 # sources never observed on the benchmark; more would split attention
 
+# A detected span can be a fifth of a second (AED_MIN_DUR), and a picture flashed for
+# 200 ms is a distraction rather than information -- the viewer is watching the video,
+# and has to look across, recognise a picture, and look back. So a picture stays up for
+# at least MIN_DWELL, and two bursts of the same sound closer than MERGE_GAP are one
+# appearance rather than a flicker. Both are display decisions: they change how long a
+# picture is shown, never whether the sound was detected or gated.
+MIN_DWELL = 1.5
+MERGE_GAP = 0.8
 
-def _slot_order(specs: List[AugmentationSpec]) -> List[str]:
-    """One slot per sound label, ordered by first appearance; stable all clip.
-    Capped at MAX_SLOTS keeping the highest-confidence sources."""
-    aug = [s for s in specs if s.augment and s.image_path]
-    order = []
-    for s in sorted(aug, key=lambda s: s.start):
-        if s.event_label not in order:
-            order.append(s.event_label)
-    if len(order) > MAX_SLOTS:
-        best = {}
-        for s in aug:
-            best[s.event_label] = max(best.get(s.event_label, 0.0), s.confidence)
-        keep = sorted(order, key=lambda lb: -best[lb])[:MAX_SLOTS]
-        order = [lb for lb in order if lb in keep]
-    return order
+
+def _display_spans(specs: List[AugmentationSpec], duration: float):
+    """(label, start, end, spec) intervals to actually put on screen.
+
+    Merges repeats of the same sound that are closer together than MERGE_GAP, and gives
+    every appearance at least MIN_DWELL on screen.
+    """
+    dwell = float(getattr(config, "MIN_DWELL", MIN_DWELL))
+    gap = float(getattr(config, "MERGE_GAP", MERGE_GAP))
+    by_label = {}
+    for s in sorted((s for s in specs if s.augment and s.image_path),
+                    key=lambda s: s.start):
+        by_label.setdefault(s.event_label, []).append(s)
+    spans = []
+    for label, group in by_label.items():
+        cur = None
+        for s in group:
+            a, b = max(0.0, s.start), min(float(duration), max(s.end, s.start + dwell))
+            if cur and a - cur[2] <= gap:
+                # same sound again, right away: extend rather than blink
+                cur[2] = max(cur[2], b)
+                if s.confidence > cur[3].confidence:
+                    cur[3] = s
+            else:
+                cur = [label, a, b, s]
+                spans.append(cur)
+    for sp in spans:
+        sp[2] = min(float(duration), max(sp[2], sp[1] + dwell))
+    return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
+
+
+def _assign_rows(spans):
+    """Give each appearance a row, so overlapping sounds never share one.
+
+    Standard interval colouring: reuse the first row whose previous occupant has
+    finished. The number of rows that come out is the maximum number of sounds heard at
+    the same time, which is what the panel should be divided into -- a clip with three
+    sounds that never overlap gets one full-size cell, not three thin ones.
+    """
+    rows, placed = [], []
+    for label, a, b, spec in spans:
+        for r, free_at in enumerate(rows):
+            if a >= free_at - 1e-6:
+                rows[r] = b
+                placed.append((r, label, a, b, spec))
+                break
+        else:
+            rows.append(b)
+            placed.append((len(rows) - 1, label, a, b, spec))
+    limit = int(getattr(config, "MAX_SLOTS", MAX_SLOTS))
+    if len(rows) > limit:
+        # More simultaneous sounds than the panel can carry: keep the loudest, and drop
+        # the rest rather than shrinking every cell past legibility.
+        keep = sorted(placed, key=lambda p: -p[4].confidence)
+        chosen, rows = [], []
+        for r, label, a, b, spec in sorted(keep, key=lambda p: -p[4].confidence):
+            for rr, free_at in enumerate(rows):
+                if a >= free_at - 1e-6:
+                    rows[rr] = b
+                    chosen.append((rr, label, a, b, spec))
+                    break
+            else:
+                if len(rows) >= limit:
+                    continue
+                rows.append(b)
+                chosen.append((len(rows) - 1, label, a, b, spec))
+        placed = sorted(chosen, key=lambda p: p[2])
+    return placed, max(1, len(rows))
 
 
 def _timeline(specs: List[AugmentationSpec], duration: float):
-    """Contiguous segments over [0,duration]; each carries {label: active spec}."""
-    ev = [s for s in specs if s.augment and s.image_path]
-    bounds = sorted({0.0, duration} | {s.start for s in ev}
-                    | {min(s.end, duration) for s in ev})
+    """Contiguous segments over [0,duration]; each carries {row: (label, spec)}."""
+    placed, n_rows = _assign_rows(_display_spans(specs, duration))
+    if not placed:
+        return [({}, duration)], 0
+    bounds = sorted({0.0, float(duration)} | {p[2] for p in placed}
+                    | {min(p[3], duration) for p in placed})
     segs = []
     for a, b in zip(bounds, bounds[1:]):
         if b - a < 0.05:
             continue
         mid = (a + b) / 2
         active = {}
-        for s in ev:
-            if s.start <= mid < s.end:
-                active[s.event_label] = s
+        for r, label, s0, s1, spec in placed:
+            if s0 <= mid < s1:
+                active[r] = (label, spec)
         segs.append((active, b - a))
-    return segs or [({}, duration)]
+    return segs or [({}, duration)], n_rows
 
 
 def _opacity(confidence: float) -> float:
@@ -465,57 +542,47 @@ def _chip_color(label: str) -> tuple:
 
 
 def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpec],
-                 label: str, mode: str, idle_image: Optional[str] = None) -> None:
-    """Draw one fixed slot: image/chip when its sound is active, dimmed when not.
+                 label: str, mode: str) -> None:
+    """Draw one cell: the picture while its sound is heard, empty ground when it is not.
 
-    An inactive slot used to be a black rectangle, which a viewer reads as a broken
-    player rather than as "this sound is not currently present". Keeping the image
-    visible but heavily dimmed conveys "heard a moment ago" and keeps the panel
-    legible, while still making the active moment obvious.
+    An idle cell used to keep the picture at 19% opacity, on the reasoning that a
+    ghosted image reads as "heard a moment ago" and a black rectangle reads as a broken
+    player. It does not survive contact with a viewer: what it actually produced was
+    several pictures permanently on screen, which is what a panel showing nothing should
+    never look like. The panel says "this sound is happening now", so when no sound is
+    happening it has to say nothing, and the empty cell is drawn in the same ground as
+    the rest of the panel so that it reads as part of the panel rather than as a hole
+    in it.
     """
     x0, y0, x1, y1 = box
     w, h = x1 - x0, y1 - y0
     d = ImageDraw.Draw(canvas, "RGBA")
-    if spec is None:                       # inactive
-        if idle_image and mode != "minimal":
-            img = _cover_crop(Image.open(idle_image).convert("RGB"), (w, h)).convert("RGBA")
-            img.putalpha(48)               # ~19%: present but clearly not active
-            base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
-            canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
-            if getattr(config, "SHOW_LABELS", False):
-                d.text((x0 + 14, y1 - 34), label, font=_font(max(15, h // 14)),
-                       fill=(140, 148, 165))
-        else:
-            # No picture yet for this slot. A word is the only thing that can be shown,
-            # so it is drawn regardless of SHOW_LABELS -- an unexplained empty rectangle
-            # reads as a broken player, which is worse than a word.
-            d.rectangle(box, fill=(16, 18, 24))
-            d.text((x0 + 14, (y0 + y1) // 2 - 10), label, font=_font(max(15, h // 14)),
-                   fill=(96, 103, 118))
-    elif mode == "minimal":                # active chip: color band + label, no imagery
+    if spec is None or not spec.image_path:      # nothing sounding in this cell
+        d.rectangle(box, fill=(16, 18, 24))
+        return
+    if mode == "minimal":                        # label chip, no imagery
         d.rectangle(box, fill=(24, 26, 34))
         r, g, b = _chip_color(label)
         a = int(255 * _opacity(spec.confidence))
         d.rectangle([x0, y0, x0 + 10, y1], fill=(r, g, b, a))
         d.text((x0 + 24, (y0 + y1) // 2 - 10), label, font=_font(max(16, h // 12)),
                fill=(230, 232, 240, a))
-    else:                                  # active image, opacity = confidence weight
-        # Glyph BEFORE caption: the caption bar spans the full width, and drawing it
-        # first makes the subject's bounding box the whole frame, which parks the sound
-        # mark in the corner instead of against the thing making the sound.
-        # Fill the cell. Letterboxing was for pictograms, whose empty margins were the
-        # ground the sound symbol sat in; a photographic depiction just loses half the
-        # cell to grey. Label and symbol are now opt-in (config), and off by default.
-        raw = Image.open(spec.image_path).convert("RGB")
-        img = _cover_crop(raw, (w, h))
-        if getattr(config, "SHOW_SOUND_GLYPH", False):
-            img = _sound_glyph(img, spec.confidence)
-        if getattr(config, "SHOW_LABELS", False):
-            img = _caption(img, label)
-        img = img.convert("RGBA")
-        img.putalpha(int(255 * _opacity(spec.confidence)))
-        base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
-        canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
+        return
+    # Glyph BEFORE caption: the caption bar spans the full width, and drawing it first
+    # makes the subject's bounding box the whole frame, which parks the sound mark in
+    # the corner instead of against the thing making the sound. Both are opt-in
+    # (config) and off by default. Fill the cell: letterboxing was for pictograms,
+    # whose empty margins were the ground the sound symbol sat in.
+    raw = Image.open(spec.image_path).convert("RGB")
+    img = _cover_crop(raw, (w, h))
+    if getattr(config, "SHOW_SOUND_GLYPH", False):
+        img = _sound_glyph(img, spec.confidence)
+    if getattr(config, "SHOW_LABELS", False):
+        img = _caption(img, label)
+    img = img.convert("RGBA")
+    img.putalpha(int(255 * _opacity(spec.confidence)))
+    base = Image.new("RGBA", (w, h), (16, 18, 24, 255))
+    canvas.paste(Image.alpha_composite(base, img).convert("RGB"), (x0, y0))
     d.line([x0, y1 - 1, x1, y1 - 1], fill=(40, 44, 56))
 
 
@@ -538,21 +605,19 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
     for old in work.glob("*.png"):
         old.unlink()
 
-    # build the panel slideshow inputs: fixed slot per sound, stacked vertically
-    slots = _slot_order(specs)
-    # one image per slot, so an inactive slot can still show its (dimmed) picture
-    slot_image = {}
-    for sp in specs:
-        if sp.augment and sp.image_path and sp.event_label not in slot_image:
-            slot_image[sp.event_label] = sp.image_path
-    segs = _timeline(specs, duration)
+    # One frame of panel per segment of the timeline. A segment boundary is a sound
+    # starting or stopping, so the panel only changes when something is actually heard.
+    segs, n_rows = _timeline(specs, duration)
     lines = []
     for i, (active, dur) in enumerate(segs):
         p = work / f"p{i:04d}.png"
         canvas = Image.new("RGB", (panel, panel), (16, 18, 24))
-        if not slots:
-            # No augmentation at all is a DECISION, not a failure: say so at a size
-            # that is actually readable, or the blank panel looks like a broken player.
+        if n_rows == 0:
+            # No augmentation anywhere in this clip is a DECISION, not a failure: say
+            # so at a readable size, or a blank panel looks like a broken player. Only
+            # for clips with nothing at all -- a clip that has pictures elsewhere shows
+            # an empty panel in its quiet moments, because a message appearing and
+            # disappearing between sounds is the flicker this layout exists to avoid.
             d = ImageDraw.Draw(canvas)
             big, small = _font(max(22, panel // 22)), _font(max(16, panel // 32))
             l1, l2 = "no off-screen sound detected", "nothing to add for this scene"
@@ -561,11 +626,11 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
                 w = d.textlength(text, font=fnt)
                 d.text(((panel - w) / 2, panel / 2 + dy), text, font=fnt, fill=col)
         else:
-            sh = panel // len(slots)
-            for k, label in enumerate(slots):
-                y1 = panel if k == len(slots) - 1 else (k + 1) * sh
-                _render_slot(canvas, (0, k * sh, panel, y1), active.get(label),
-                             label, mode, slot_image.get(label))
+            sh = panel // n_rows
+            for r in range(n_rows):
+                y1 = panel if r == n_rows - 1 else (r + 1) * sh
+                label, spec = active.get(r, ("", None))
+                _render_slot(canvas, (0, r * sh, panel, y1), spec, label, mode)
         canvas.save(p)
         # concat resolves 'file' paths relative to concat.txt's own dir -> use basenames
         lines += [f"file '{p.name}'", f"duration {dur:.3f}"]

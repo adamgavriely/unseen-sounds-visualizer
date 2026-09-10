@@ -1056,21 +1056,21 @@ generation does not, and it is what Section~\ref{sec:specificity} addresses.
 Two weaknesses in what the panel actually shows were identified from the attribution audit and from
 Adam's observation that a siren ought to be depicted as the vehicle that made it.
 
-	extbf{The specificity was being detected and then discarded.} Stage 4 emits AudioSet labels and
-	exttt{consolidate\_families} collapses sub-types into a family, so that the gate reasons about one
+\textbf{The specificity was being detected and then discarded.} Stage 4 emits AudioSet labels and
+\texttt{consolidate\_families} collapses sub-types into a family, so that the gate reasons about one
 entry per source and the panel does not fill with near-duplicates. The drawn image then used that
-family label. An audit of the 100 evaluated clips found 	extbf{85 whose raw detections contained a
-more specific label than the one being drawn}: 	exttt{Truck} and 	exttt{Car} both rendered as a
-generic \emph{Vehicle}, 	exttt{Waves, surf} as \emph{Water}, and --- the case that prompted this ---
-	exttt{Fire engine, fire truck (siren)} collapsed to 	exttt{Siren}, whose query hint is
+family label. An audit of the 100 evaluated clips found \textbf{85 whose raw detections contained a
+more specific label than the one being drawn}: \texttt{Truck} and \texttt{Car} both rendered as a
+generic \emph{Vehicle}, \texttt{Waves, surf} as \emph{Water}, and --- the case that prompted this ---
+\texttt{Fire engine, fire truck (siren)} collapsed to \texttt{Siren}, whose query hint is
 \emph{ambulance}. Every fire truck in the benchmark was therefore shown as an ambulance.
 
-The fix separates the two jobs the label was doing: 	extbf{gate on the family, depict the specific
-sound}. The most confident specific child is carried in 	exttt{AudioEvent.detail} and used for the
+The fix separates the two jobs the label was doing: \textbf{gate on the family, depict the specific
+sound}. The most confident specific child is carried in \texttt{AudioEvent.detail} and used for the
 image only, so gating behaviour is untouched --- this changes what is drawn, never whether it is
-drawn. 	exttt{depiction\_query} additionally strips the synonym lists and disambiguating
+drawn. \texttt{depiction\_query} additionally strips the synonym lists and disambiguating
 parentheticals AudioSet names carry, which are written for annotators and ruin an image search:
-	exttt{Fire engine, fire truck (siren)} becomes \emph{Fire engine}, 	exttt{Police car (siren)}
+\texttt{Fire engine, fire truck (siren)} becomes \emph{Fire engine}, \texttt{Police car (siren)}
 becomes \emph{Police car}.
 
 Not every specific label depicts better than its family, because an AudioSet name names a
@@ -1079,7 +1079,7 @@ waveforms and logos where \emph{Bird} returns a bird. Those fall back to the fam
 explicit list. No rule separates the two cases reliably, and pretending otherwise would be worse than
 a curated list that can be read and argued with.
 
-	extbf{A photograph does not say that you are hearing something.} A picture of a fire engine
+\textbf{A photograph does not say that you are hearing something.} A picture of a fire engine
 communicates that a fire engine exists, not that one is audible; the viewer must infer that the panel
 concerns sound at all. That inference is exactly the decoding step the panel should remove, and the
 DHH visualization work reviewed in Section~
@@ -1158,6 +1158,159 @@ Three claims survive this experiment, and one does not.
 \end{itemize}
 
 % ======================================================================
+\subsection{The panel was a collage, not a signal (2026-09-10)}\label{sec:transient}
+Adam, watching a demo: \emph{``why on the right side there are several images? images should come
+and go on ambient sounds, and not stay there when there is no ambient sound.''}
+
+He is describing a design decision that was defensible on paper and wrong in practice. Every
+augmented sound held a slot for the entire clip, dimmed to about 19\% opacity when its sound was not
+present. The reasoning came from the DHH-visualization literature (Section~\ref{sec:litreview}):
+visuals that move and pop cost a viewer who is already dividing attention between the video and the
+panel, so the slots were made stable. The ghosted image was meant to read as ``heard a moment ago''
+rather than as a broken player.
+
+What it produced was three pictures permanently parked beside the video. Two things go wrong with
+that. The first is perceptual: a panel that always looks the same carries no information, and the
+viewer has no reason to look at it at any particular moment --- which is the entire job of the panel.
+The second is that it makes a false claim. The panel's proposition is \emph{this sound is happening
+now}; an image on screen while its sound is absent asserts that proposition when it is not true, and
+a viewer who cannot hear has no way to discover the error.
+
+The confusion was between \textbf{position stability} and \textbf{permanent presence}. The evidence
+asks for the first. So a sound now keeps a fixed position for as long as it is on screen, and its
+cell is empty when the sound is not present: nothing jumps, and nothing lingers. Two consequences
+follow, both of which had to be designed rather than assumed:
+
+\begin{itemize}
+  \item \textbf{The panel is divided by simultaneity, not by inventory.} The number of rows is the
+    largest number of sounds heard \emph{at once}, computed by interval colouring over the display
+    spans, not the number of distinct sounds in the clip. Three sounds that never overlap share one
+    full-size cell in turn, instead of splitting the panel into three thin strips that are empty most
+    of the time.
+  \item \textbf{A detected span is not a display span.} \texttt{AED\_MIN\_DUR} is 0.2\,s, and a
+    picture flashed for 0.2\,s costs more attention than it returns --- the viewer has to look
+    across, recognise it, and look back. Every appearance is therefore held for at least
+    \texttt{MIN\_DWELL} (1.5\,s), and two bursts of the same sound closer together than
+    \texttt{MERGE\_GAP} (0.8\,s) become one appearance rather than a flicker. Both change how long a
+    picture is shown and never whether the sound was detected or gated, so the evaluation numbers are
+    untouched.
+\end{itemize}
+
+\subsection{Visibility was a list of thirty things (2026-09-10)}\label{sec:vlmvisibility}
+Adam, in the same message: \emph{``it should only show sounds that do not appear. some sounds it
+shows appear in screen.''} That is the system's central claim failing, not a cosmetic complaint: the
+proposal's premise is that the augmentation is for sounds whose source is \emph{not} visible.
+
+The cause was structural. Whether a sound's source was on screen was decided in Stage 2 by
+\texttt{VISIBLE\_CONCEPTS}, a hand-written dictionary of about thirty labels, each mapped to a CLIP
+or SigLIP prompt. A sound outside that dictionary could never be marked visible --- there was no
+prompt to score it against --- so laughter, footsteps, a telephone and an owl were structurally
+incapable of being gated, and each got a picture beside a video that was already showing its source.
+This is the same failure as the retired setting and phrasing tables (Section~\ref{sec:specificity}),
+and it fails the same way: a fixed vocabulary cannot describe an arbitrary scene, and the entries it
+omits are exactly the ones nobody thought to enumerate.
+
+The replacement asks, at run time, about the sound that was actually detected. For each sound, frames
+spanning that sound are put to the VLM with: \emph{name the thing in these frames that is making that
+sound; if nothing that could make it is visible, answer ``nothing''}. Two details matter.
+
+\textbf{Name it, do not confirm it.} A yes/no question to a VLM collects agreement rather than
+evidence, which is how an earlier adjudicator approved ``Man on motorcycle drives past silver van''
+as a picture of \emph{Laughter}. A name can be checked; a ``yes'' cannot.
+
+\textbf{Two questions, because they are two kinds of question.} What is in the frame is perceptual
+and is asked of the pixels. Whether that thing makes this sound is world knowledge and is asked as
+plain text (\emph{does a cowboy hat make a Vehicle sound?}). Splitting them is what stops a
+loosely-related object from counting as the source, and it needs no table of which objects make which
+sounds.
+
+The frames are sampled across the sound's own span, not across the clip. A door slamming at second
+three is not visible in a frame from second twelve, and whole-clip sampling made that mistake
+systematically.
+
+\subsection{One picture per picture: similarity instead of synonym tables}\label{sec:dedup}
+PANNs emits label families --- \emph{Laughter, Snicker, Chuckle}; \emph{Laughter, Belly laugh,
+Giggle} --- and \texttt{consolidate\_families} does not catch them all, so a single clip produced
+three slots holding three near-identical pictures of people laughing. The previous deduplication
+compared depiction strings for equality and never fired, because the strings differ.
+
+The fix had to generalise. Adam's requirement was explicit: \emph{``i want my architecture to work in
+general, not to fix for specific cases that i saw now.''} A synonym table would repair the clips on
+the desk and nothing else. So similarity is measured with SigLIP's text tower --- already a
+dependency, and trained on exactly this kind of string: a short phrase describing what is in a
+picture.
+
+\textbf{It is measured between depictions, never between labels.} That is not a stylistic choice; the
+label-level version does not work, and the numbers say why. On this project's own vocabulary,
+\emph{Dog}/\emph{Cat} scores 0.903 while \emph{Laughter}/\emph{Snicker} scores 0.803, so any
+label-level threshold merges the wrong pairs before the right ones --- single words embed too tightly
+to separate. Depictions are descriptive phrases, and they do separate:
+
+\begin{center}
+\begin{tabular}{lr}
+\toprule
+depiction pair & cosine \\
+\midrule
+\multicolumn{2}{l}{\emph{same source --- should merge}} \\
+``a baby crying'' / ``an infant wailing'' & 0.913 \\
+``an audience clapping'' / ``people applauding loudly'' & 0.893 \\
+``a car engine running'' / ``an engine idling on the street'' & 0.848 \\
+``a group of people laughing'' / ``a woman giggling'' & 0.787 \\
+``a group of people laughing'' / ``a man snickering'' & 0.629 \\
+\midrule
+\multicolumn{2}{l}{\emph{different sources in one scene --- should not merge}} \\
+``rain falling on a window'' / ``thunder over a dark sky'' & 0.806 \\
+``a police siren on a city street'' / ``a car engine on a city street'' & 0.690 \\
+``footsteps on a wooden floor'' / ``a door closing in a hallway'' & 0.662 \\
+``a dog barking in a park'' / ``a cat sleeping on a sofa'' & 0.587 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The two ranges overlap (0.63--0.91 against 0.59--0.81), so no threshold separates them and the
+embedding is used as a filter rather than as the verdict. Above \texttt{DEDUP\_SIM} (0.88) the pair
+is merged outright; between \texttt{DEDUP\_ASK} and 0.88 the model is asked, in words, whether
+the two pictures would tell the viewer the same thing; below \texttt{DEDUP\_ASK} nothing is asked.
+\texttt{DEDUP\_ASK} sits at 0.45, deliberately \emph{below} the overlap rather than inside it: a clip
+has a handful of sounds, so asking is cheap, and the filter only has to skip pairs that are obviously
+unrelated (``a group of people laughing in a courtroom'' against ``a police car siren outside the
+courthouse'' scores 0.39). Set inside the overlap it missed real duplicates whose wording happened to
+differ --- two laughter depictions phrased ``a group of people laughing in a courtroom'' and ``a
+woman giggling in the gallery'' score only 0.51. The ambiguous
+band is therefore decided at run time by a model that knows what laughing and giggling are, rather
+than by a list of the families we happened to encounter, and the filter keeps that question down to a
+couple of calls per clip instead of one per pair.
+
+\subsection{Validating a depiction without choosing a threshold}\label{sec:contribute}
+The guard that enforces \emph{the video contributes to the audio, it does not replace it} was a
+yes/no question to the VLM, and it approved ``Man on motorcycle drives past silver van'' as a picture
+of \emph{Laughter} --- because as a sentence about the scene, it is a good one.
+
+The replacement is comparative, and the comparison is what removes the threshold. A depiction is kept
+only if it is closer to the sound than the bare scene description already was: it has to say
+something about the sound that the scene did not. If it does not, it has not contributed to the
+audio, it has replaced it.
+
+An absolute bar on depiction-to-sound similarity cannot do this. ``A stream running through a
+forest'' scores 0.760 against \emph{Water} while ``a cowboy hat'' scores 0.653 against
+\emph{Vehicle}, so no single cut separates a good depiction from a bad one. Against their own scenes
+they separate cleanly: the stream adds water to a forest path ($0.760 > 0.686$), and the motorcycle
+sentence adds nothing at all to \emph{Laughter} ($0.201 < 0.444$).
+
+\subsection{The transcript is evidence, not material}\label{sec:notranscript}
+The depiction prompt used to include the Whisper transcript, on the reasoning that speech is context.
+Dialogue leaked straight into the pictures: a \emph{Hiccup} became ``Hiccup on the phone, slow down,
+how many''. Any talky clip reproduces it, so the failure is general rather than particular. The
+transcript is input to the gate --- it is how the system knows speech is present --- but it is not
+material for the illustrator, so it was removed from that one prompt and kept everywhere else.
+
+A second, unrelated truncation bug was fixed alongside it. A generation that uses its whole token
+budget was \emph{cut}, not finished, and the cut lands mid-word: ``Air horn: loud, sharp, metallic
+tone; tr'' and ``a stream running through a for'' both reached the image generator. Neither string
+looks wrong, and the model cannot report that it was interrupted, so the only reliable signal is the
+token count. A generation that hits its cap now drops its final fragment, and every depiction is cut
+to its first clause and a fixed word count at a word boundary.
+
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
 \subsection{Automatic protocol (primary)}
@@ -1287,51 +1440,51 @@ Stated here rather than left for an examiner to find. Each one is a limit on wha
 Section~
 ef{sec:mainresult} support, not a list of things that went wrong.
 
-	extbf{One annotator.} Every label is Adam's. Blind re-adjudication of a sample gave
+\textbf{One annotator.} Every label is Adam's. Blind re-adjudication of a sample gave
 $\kappa = 0.60$ against his own earlier decisions (Section~
 ef{sec:readjudication}), with the
 instability concentrated in the positive class --- exactly the class the gate is judged on. A second
 annotator would bound this properly; nothing here does.
 
-	extbf{274 clips, not the 300 the proposal named.} Usable yield was 15--20\% across four
+\textbf{274 clips, not the 300 the proposal named.} Usable yield was 15--20\% across four
 independent sourcing strategies and fell as filtering was added. The shortfall is reported as a
 dataset finding rather than hidden, but it does mean per-category cells are small: the main run uses
 100 clips, 25 per category, so a per-category mean carries roughly $\pm 0.2$.
 
-	extbf{Part of the queue was model-enriched.} The first 209 tags predate any model-based filtering
+\textbf{Part of the queue was model-enriched.} The first 209 tags predate any model-based filtering
 and are the unbiased sample; later candidates were pre-screened, which can only have made the
 benchmark easier in ways that flatter every system equally but are not measured.
 
-	extbf{One judge decides the headline.} A second, unrelated judge agrees substantially
+\textbf{One judge decides the headline.} A second, unrelated judge agrees substantially
 ($\kappa = 0.753$, 97\% within one point) and reproduces the gated-vs-blind gap to two decimals, so
 the central comparison is judge-independent. The captioning baseline is not: it moves $+0.61$ and
 changes rank. Any ranking involving the text baseline should be read as a property of the judge.
 
-	extbf{The human-grounded reference is not neutral.} It is computable only on labelled clips, so it
+\textbf{The human-grounded reference is not neutral.} It is computable only on labelled clips, so it
 is an evaluation-time correction and not something a deployed system could use, and it raises the
 gated system by $+0.53$ against $+0.11$ and $+0.15$ for the baselines. That asymmetry follows
 arithmetically from the gated system abstaining three times as often, but it means the grounded
 number must never be quoted without its assumption.
 
-	extbf{The evaluated configuration is not the current default.} All reported numbers were produced
+\textbf{The evaluated configuration is not the current default.} All reported numbers were produced
 with Openverse retrieval and family-level labels. The system now defaults to generated pictograms
 with specific labels, changed after the evaluation on the grounds that retrieval cannot cover
 arbitrary future sounds. That configuration has not been evaluated at scale, and the report must not
 imply the measured numbers describe it.
 
-	extbf{No human study.} The whole evaluation is automatic. An LLM judge scoring a VLM's description
+\textbf{No human study.} The whole evaluation is automatic. An LLM judge scoring a VLM's description
 of an image is a proxy for a deaf viewer's comprehension, and its correlation with actual
 comprehension is unmeasured here. The accessibility claim rests on that proxy.
 
-	extbf{Stage 2 is the binding constraint, and it is not a tuning problem.} Four architectures sit
+\textbf{Stage 2 is the binding constraint, and it is not a tuning problem.} Four architectures sit
 within two points, an oracle detector moves accuracy by $-0.2$, event-level AUROC is 0.647, and
 thresholds swept on a held-out half show no optimism (Section~
 ef{sec:spliteval}). The gate is
 limited by what off-the-shelf vision--language models can answer, not by its configuration.
 
-	extbf{The evaluation software produced plausible wrong numbers five times.} An empty augmentation
+\textbf{The evaluation software produced plausible wrong numbers five times.} An empty augmentation
 scored a charitable 2/4; a reference generator that could never say ``nothing is missing'' made
-correct silence unscorable; a job reported 	exttt{COMPLETED} after rendering 2 clips of 300; a
+correct silence unscorable; a job reported \texttt{COMPLETED} after rendering 2 clips of 300; a
 reasoning judge's unparsed replies became confident zeros and a publishable-looking
 $\kappa = 0.164$; and a regex carried a literal backspace byte. Each was caught, each is now guarded
 against, and each looked like a result rather than an error. The honest inference is that a single

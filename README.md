@@ -25,11 +25,42 @@ protocol.
 | 2 | [Video understanding](src/stage2_video_understanding) | what's already visible | **OWLv2** (also CLIP / SigLIP / Qwen2.5-VL) |
 | 3 | [Speech recognition](src/stage3_speech_recognition) | transcribe speech (secondary) | **Whisper** |
 | 4 | [Audio event detection](src/stage4_audio_event_detection) | non-speech sounds | **PANNs CNN14** |
-| 5 | [Cross-modal analysis](src/stage5_cross_modal_analysis) | **what to augment (gap-aware)** | rule-based gate over stages 2 and 4 |
+| 5 | [Cross-modal analysis](src/stage5_cross_modal_analysis) | **what to augment, and what to draw** | gate over stages 2 and 4 + **Qwen2.5-VL** reasoning |
 | 6 | [Visual augmentation](src/stage6_visual_augmentation) | produce the visuals | **Openverse retrieval** (beat SDXL) |
 | 7 | [Evaluation](src/stage7_evaluation) | VLM-describe -> LLM-reference -> independent LLM judge | **Qwen2.5-VL + Mistral-7B** |
 
 Each stage is a self-contained module with its own README (purpose, I/O, models, status).
+
+### What the panel shows, and when
+
+A picture appears when its sound is heard and leaves when it stops. Its position is fixed for as
+long as it is on screen -- moving targets cost a viewer who is already splitting attention between
+the video and the panel -- but a cell with no sound in it is empty, not a dimmed leftover. The panel
+is divided by how many sounds are heard *at once*, so three sounds that never overlap share one
+full-size cell in turn.
+
+Two rules keep it readable rather than twitchy: a picture stays up for at least 1.5 s even if the
+detected span was shorter, and two bursts of the same sound less than 0.8 s apart are one appearance.
+
+### How a sound gets a picture (or does not)
+
+No stage consults a list of known sounds. Every judgement is a question asked at run time about the
+sound that was actually detected, so an unfamiliar sound is handled like a familiar one.
+
+1. **Is it already on screen?** The VLM is shown the frames spanning *that sound* and asked to name
+   the thing making it, answering `nothing` if it cannot see one. A named object is then checked in
+   words -- *does a cowboy hat make a Vehicle sound?* -- because what is in the frame is a question
+   about pixels and what makes a sound is world knowledge. If the source is visible, the system stays
+   silent.
+2. **What should the picture be?** The scene is described once, as text; the depiction step is then
+   text-only, with the sound as the subject and the scene as a modifier. The audio says *what* it is;
+   the video only says *which kind* and *where*.
+3. **Is it still about the sound?** A depiction is kept only if it is closer to the sound than the
+   bare scene description already was -- otherwise the video has replaced the audio rather than
+   contributed to it, and the plain label is drawn instead.
+4. **Is it a picture we are already showing?** Depictions are compared with SigLIP text embeddings;
+   near-identical ones merge, and pairs in the ambiguous band are settled by asking the model whether
+   the two pictures would tell the viewer the same thing.
 
 ## Status: complete and evaluated
 
