@@ -664,6 +664,22 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 spec.reason = "source visible on screen (" + named + ") - stay silent"
                 print("       [stage5] silent: " + spec.event_label + " is visible ("
                       + named + ")", flush=True)
+        # A kind of a visible source is the same source. Laughter was silenced because
+        # the woman laughing is on screen, and Giggle -- her giggle -- was then shown,
+        # because dedup only compares sounds that are still live.
+        from src.labels import same_source
+        gone = [s for s in specs if not s.augment and "visible" in s.reason]
+        for spec in [s for s in specs if s.augment]:
+            for g in gone:
+                if same_source(spec.event_label, g.event_label):
+                    spec.augment = False
+                    spec.subject = ""
+                    spec.image_prompt = ""
+                    spec.reason = ("a kind of " + g.event_label
+                                   + ", whose source is visible - stay silent")
+                    print("       [stage5] silent: " + spec.event_label + " is a kind of "
+                          + g.event_label + ", which is visible", flush=True)
+                    break
         active = [s for s in specs if s.augment]
         if not active:
             print("       [stage5] every sound was already visible; nothing to add",

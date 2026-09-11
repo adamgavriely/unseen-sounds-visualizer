@@ -76,13 +76,16 @@ LLM_MODEL = "meta-llama/Llama-3.1-8B-Instruct"   # or Qwen3; or a hosted API
 USE_LOCALIZATION = False     # feed an on/off-screen localization signal into the gate
 GATE_ENABLED = True          # v2-(a): gate on the CLIP seen/not-seen check (Stage 2)
 
-# Stage 5 display threshold — min confidence for a sound to get an image.
-# 0.12 chosen from the benchmark sweep (best F1/precision balance; see eval_results.json)
-DISPLAY_THRESHOLD = 0.12
-# Asymmetric bar for the OFF-screen (augment) claim. Benchmark sweep verdict:
-# raising it above DISPLAY_THRESHOLD *hurts* — faint off-screen sounds are the
-# true positives (distant == unseen). Kept as a knob, set equal (F1 55.2%).
-AUGMENT_THRESHOLD = 0.12
+# 0.12 was the PANNs sweep optimum. BEATs is calibrated differently: over the eight demo
+# clips every real sound scored 0.30 or above (Glass 0.94, Fire alarm 0.70, Telephone
+# 0.58, Crowd 0.45) and every phantom 0.28 or below (Basketball bounce 0.28, Roaring
+# cats 0.19, Keys jangling 0.17). 0.30 is that gap; the full sweep over the 274 tagged
+# clips (benchmark/evaluate.py) should confirm or move it.
+DISPLAY_THRESHOLD = 0.30
+# Asymmetric bar for the OFF-screen (augment) claim. The PANNs sweep said raising it
+# above DISPLAY_THRESHOLD hurts -- faint off-screen sounds are the true positives
+# (distant == unseen). Kept as a knob, set equal.
+AUGMENT_THRESHOLD = 0.30
 
 # Stage 6 — visual augmentation generation
 GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
