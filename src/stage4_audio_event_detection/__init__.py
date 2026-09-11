@@ -103,16 +103,23 @@ def plot_timeline(framewise, times, labels, out_png: Path,
 def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                   min_dur: float = 0.2, device: str = "cpu", model: str = "",
                   plot_path: Path = None, plot_top_k: int = 15) -> List[AudioEvent]:
+    # "beats" (default, see config.AED_MODEL) or anything else for PANNs. Same 527
+    # labels either way, so nothing downstream cares which one ran.
+    backend = "BEATs" if "beats" in (model or "").lower() else "PANNs"
     try:
-        framewise, times, labels = _infer(Path(wav_path), device)
+        if backend == "BEATs":
+            from src.stage4_audio_event_detection.beats_infer import infer_beats
+            framewise, times, labels = infer_beats(Path(wav_path), device)
+        else:
+            framewise, times, labels = _infer(Path(wav_path), device)
     except Exception as e:  # missing package/checkpoint -> keep the pipeline runnable
-        print(f"       [stage4] PANNs unavailable ({type(e).__name__}: {e}); "
+        print(f"       [stage4] {backend} unavailable ({type(e).__name__}: {e}); "
               f"returning no events.")
         return []
 
     events = _extract_events(framewise, times, labels, threshold, top_k, min_dur)
     n_classes = len({e.label for e in events})
-    print(f"       [stage4] PANNs SED: {len(events)} event span(s) over "
+    print(f"       [stage4] {backend} SED: {len(events)} event span(s) over "
           f"{n_classes} class(es) (threshold={threshold}).")
     if plot_path is not None:
         plot_timeline(framewise, times, labels, Path(plot_path),

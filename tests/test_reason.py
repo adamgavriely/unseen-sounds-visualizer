@@ -41,6 +41,8 @@ ANSWERS = {
     ("visible", "Siren"): "nothing",
     ("visible", "Speech"): "a lawyer speaking",
     ("visible", "Door"): "nothing",
+    ("visible", "Sheep"): "nothing",
+    ("visible", "Baby cry, infant cry"): "nothing",
 }
 
 
@@ -57,6 +59,10 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
         label = prompt.split(" make a ")[1].split(" sound")[0]
         return "yes" if (named, label) in {("wooden gavel", "Gavel"),
                                            ("lawyer speaking", "Speech")} else "no"
+    if prompt.startswith("A sound detector heard ONE sound"):
+        # the frames show a baby: pick whichever letter is Baby cry
+        line = [l for l in prompt.splitlines() if l.startswith("Which is it?")][0]
+        return "a" if "(a) Baby cry" in line else "b"
     if prompt.startswith("A sound of ") and "someone said" in prompt:
         # speech context: "order, order" is about the gavel AND the door; nothing else
         last = prompt.splitlines()[-1]
@@ -69,7 +75,8 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
         return {"Laughter": "a group of people laughing in a courtroom",
                 "Giggle": "a woman giggling in the courtroom gallery",
                 "Siren": "a police car siren outside the courthouse",
-                "Door": "a heavy courtroom door slamming shut"}[label]
+                "Door": "a heavy courtroom door slamming shut",
+                "Baby cry, infant cry": "a baby crying"}[label]
     if prompt.startswith("A deaf viewer is shown this picture:"):
         # forced choice: pick the option whose label the depiction actually names
         picture = prompt.splitlines()[0].split(": ", 1)[1].lower()
@@ -105,6 +112,7 @@ specs = [spec("Gavel", 1.0, 1.5, 0.7),      # visible -> silent, even though tal
          spec("Giggle", 3.2, 4.0, 0.4),     # merged into Laughter
          spec("Siren", 8.0, 10.0, 0.5)]     # shown
 # a faint sound the gate declined; speech about it should rescue it
+specs += [spec("Sheep", 12.0, 13.5, 0.30), spec("Baby cry, infant cry", 12.1, 13.6, 0.28)]
 faint = spec("Door", 0.8, 1.2, 0.08)
 faint.augment = False
 faint.reason = "below display threshold (0.08 < 0.12)"
@@ -121,7 +129,9 @@ for s in specs:
     print(("  SHOW   " if s.augment else "  silent ") + s.event_label.ljust(10)
           + "| " + (s.subject or s.reason))
 shown = [s.event_label for s in specs if s.augment]
-assert shown == ["Laughter", "Siren", "Door"], shown
+assert shown == ["Laughter", "Siren", "Baby cry, infant cry", "Door"], shown
+sheep = next(s for s in specs if s.event_label == "Sheep")
+assert not sheep.augment and "frames say" in sheep.reason, "frames should pick the baby over the sheep"
 assert faint.talked_about and faint.augment, "speech should rescue the faint door"
 gavel = next(s for s in specs if s.event_label == "Gavel")
 assert gavel.talked_about and not gavel.augment, "visibility must beat speech"

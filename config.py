@@ -51,11 +51,24 @@ TRANSCRIBE = True
 # that it matters. The transcript never reaches a picture, and this never overrides
 # visibility: a siren that is on screen is not shown however much people talk about it.
 SPEECH_CONTEXT = True
+# When the detector gives two labels to one acoustic event (same start and end, neither
+# a kind of the other -- Sheep and Baby cry, Fire and Water), the frames from that
+# moment choose between them. The video may pick among what the audio proposed; it may
+# never add a label the audio did not hear, and if it cannot tell, both stay.
+DISAMBIGUATE = True
+# One BEATs window is 2 s scored every 0.5 s, so a single-window blip is a 0.5 s span.
+# Requiring two consecutive windows drops those without touching anything sustained.
+AED_MIN_DUR = 1.0
 
 # Stage 4 — audio event detection (PANNs CNN14 SED)
-AED_MODEL = "PANNs/Cnn14_DecisionLevelMax"    # -> BEATs for quality later
+# "beats" = BEATs iter3+ fine-tuned on AudioSet-2M (Microsoft, 2022; 0.486 mAP), scored
+# over a 2 s sliding window. Anything else = PANNs CNN14 (2019; 0.431 mAP), framewise.
+# Same 527 labels either way. Switched 2026-09-12 after a demo review found eleven of
+# fourteen visible errors were PANNs mislabelling the sound (siren -> "truck horn",
+# engine rotor -> "printer", crying baby -> "sheep") and Stage 5 drawing it faithfully.
+AED_MODEL = "beats"
 AED_THRESHOLD = 0.05         # LOW on purpose: detect-everything-first (incl. faint background)
-AED_MIN_DUR = 0.2            # min span length (s) to count as an event
+# AED_MIN_DUR is set further down, next to the detector choice.
 AED_PLOT_TOP_K = 15          # classes shown in the timeline plot
 
 # Stage 5 — cross-modal semantic analysis (the gate)  [stub in skeleton]

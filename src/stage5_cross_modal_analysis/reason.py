@@ -88,15 +88,16 @@ DEPICT_PROMPT = (
     "at the moment it makes it. Not the thing at rest -- glass breaking, not a glass; a "
     "dog barking, not a dog; rain falling, not clouds."
     + chr(10) +
-    "Use the place only if it changes what the action looks like. Never describe the "
-    "place instead of the action."
+    "Use the place only if it changes what the thing looks like; otherwise ignore it. "
+    "Never describe the place instead of the action."
     + chr(10) +
-    "Example: sound Glass, place a kitchen, gives: a drinking glass shattering on a tiled "
-    "floor."
+    "Answer with 2 to 5 plain words naming the action. No adjectives, no adverbs, no "
+    "scenery, no poetry, no punctuation."
     + chr(10) +
-    "Example: sound Crowd, place a talk show studio, gives: a studio audience applauding."
+    "Examples: a person laughing. an audience clapping. a glass shattering. a dog "
+    "barking. a stream in a forest. a car horn honking."
     + chr(10) +
-    "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
+    "Not: roadside laughter echoes through trees."
 )
 
 # Asked when the first answer drifted into the scene. Same event framing, place kept --
@@ -112,7 +113,8 @@ RETRY_PROMPT = (
     "Describe ONE picture of {label} HAPPENING -- the action that makes that sound, at "
     "the moment it makes it. The picture must be of the sound being made, nothing else."
     + chr(10) +
-    "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
+    "Answer with 2 to 5 plain words naming the action. No adjectives, no scenery, no "
+    "punctuation. Example: a person laughing."
 )
 
 # Speech as gate context, done the way the proposal meant and not the way it was first
@@ -143,7 +145,7 @@ SPEECH_WINDOW = 3.0   # seconds of speech before and after the sound that count 
 # is reacting to anything; a sentence might be.
 SPEECH_MIN_WORDS = 4
 
-MAX_WORDS = 8
+MAX_WORDS = 6
 
 _VLM = None
 
@@ -480,6 +482,77 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
               + order[dup].event_label + " (" + why + ")", flush=True)
 
 
+# Cross-modal disambiguation among the DETECTOR'S OWN candidates -- Adam's original
+# example, "fire crackling can sound like water if you don't consider the video", in
+# the one form that keeps the rule that the video contributes and never replaces.
+#
+# When the detector gives two different labels to what is plainly one acoustic event --
+# same start, same end, neither a kind of the other -- it is hedging between things it
+# cannot tell apart by ear: bleating and a baby crying, crackling and running water.
+# The audio has proposed the candidates; the video may pick between them. It may NOT
+# add a candidate the detector did not hear, and if the frames do not settle it, both
+# stay. So the label is never changed by the pixels, only chosen from what the audio
+# already said.
+#
+# "Same event" is decided by timing, not by meaning: two spans whose starts and ends
+# both fall within SAME_EVENT_TOL of each other. Genuinely simultaneous sounds -- a
+# siren over a crowd -- rarely share both boundaries; one sound with two names always
+# does, because both names came from the same windows.
+DISAMBIG_PROMPT = (
+    "A sound detector heard ONE sound at this moment and could not decide between two "
+    "labels. Look at the frames from that moment."
+    + chr(10) +
+    "Which is it? (a) {a}  (b) {b}  (c) cannot tell from the frames"
+    + chr(10) +
+    "Answer with the letter only."
+)
+SAME_EVENT_TOL = 0.6
+
+
+def _disambiguate(specs, video_path, mdl, proc, frames_per_sound: int = 4) -> None:
+    from src.labels import same_source
+    from src.stage2_video_understanding import _sample_frames_at
+    live = [s for s in specs if s.augment]
+    done = set()
+    for i, a in enumerate(live):
+        for b in live[i + 1:]:
+            if id(a) in done or id(b) in done:
+                continue
+            if not a.augment or not b.augment:
+                continue
+            if same_source(a.event_label, b.event_label):
+                continue                       # one source, handled by dedup
+            if (abs(a.start - b.start) > SAME_EVENT_TOL
+                    or abs(a.end - b.end) > SAME_EVENT_TOL):
+                continue                       # two events, not one with two names
+            span = max(0.4, a.end - a.start)
+            times = [a.start - 0.4 + span * k / max(1, frames_per_sound - 1)
+                     for k in range(frames_per_sound)]
+            win = _sample_frames_at(Path(video_path), times)
+            if not win:
+                continue
+            # both orderings, agreement required -- the 7B model has a letter bias
+            picks = []
+            for first, second in ((a, b), (b, a)):
+                reply = _ask(mdl, proc, DISAMBIG_PROMPT.format(
+                    a=first.event_label, b=second.event_label), images=win,
+                    max_new=6).strip().lower().lstrip("(")[:1]
+                picks.append({"a": first, "b": second}.get(reply))
+            winner = picks[0] if picks[0] is not None and picks[0] is picks[1] else None
+            print("       [stage5] one sound, two names? " + a.event_label + " / "
+                  + b.event_label + " -> "
+                  + (winner.event_label if winner else "kept both"), flush=True)
+            if winner is None:
+                continue
+            loser = b if winner is a else a
+            loser.augment = False
+            loser.subject = ""
+            loser.image_prompt = ""
+            loser.reason = ("same sound as " + winner.event_label
+                            + "; the frames say it is that one")
+            done.add(id(loser))
+
+
 def _speech_near(segments, start: float, end: float) -> str:
     """Whatever was said within SPEECH_WINDOW seconds of the sound, in order."""
     lo, hi = start - SPEECH_WINDOW, end + SPEECH_WINDOW
@@ -595,6 +668,13 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         if not active:
             print("       [stage5] every sound was already visible; nothing to add",
                   flush=True)
+            return
+
+    # 1b. one acoustic event with two names: let the frames choose between them
+    if getattr(config, "DISAMBIGUATE", True):
+        _disambiguate(specs, video_path, mdl, proc, frames_per_sound)
+        active = [s for s in specs if s.augment]
+        if not active:
             return
 
     # 2. depiction: the sound as an EVENT, the place as a modifier.
