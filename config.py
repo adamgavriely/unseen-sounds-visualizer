@@ -97,6 +97,9 @@ RENDER_MODE = "full"
 # "indoors" over an outdoor street.
 DEPICTION_REASONING = True
 SHOW_LABELS = False
+# Print the generator's prompt under each picture. Debugging only -- it is how a bad
+# picture gets traced to the words that produced it. Off for anything a viewer sees.
+SHOW_PROMPT = False
 SHOW_SOUND_GLYPH = False
 # Stage 5 asks the VLM, on the frames spanning EACH sound, to name the thing making it,
 # and stays silent when it can. This replaces the ~30-concept visibility table in

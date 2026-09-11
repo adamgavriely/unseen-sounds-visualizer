@@ -37,7 +37,8 @@ def plan_augmentations(scene: SceneContext,
     setting_group = (scene.raw or {}).get("setting_group", "") if scene.raw else ""
 
     # Keep only discrete non-speech sounds, collapse label families to one/source.
-    candidates = consolidate_families([e for e in events if is_salient_nonspeech(e.label)])
+    candidates = consolidate_families([e for e in events if is_salient_nonspeech(e.label)],
+                                      threshold=min_confidence("", display_threshold))
 
     specs: List[AugmentationSpec] = []
     for i, ev in enumerate(candidates):
@@ -80,7 +81,7 @@ def plan_augmentations(scene: SceneContext,
         specs.append(AugmentationSpec(
             index=i, event_label=ev.label, start=ev.start, end=ev.end,
             augment=augment, confidence=ev.confidence, reason=reason,
-            subject=subject, detail=ev.detail or "",
+            subject=subject, detail=ev.detail or "", spans=list(ev.spans),
             image_prompt=(f"A clear, simple photograph of: {subject}" if augment else ""),
         ))
     # Deduplication now happens in reason.py, on the depictions the VLM chose,

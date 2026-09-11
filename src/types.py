@@ -7,7 +7,7 @@ decoupled and independently testable/swappable. All are JSON-serialisable via
 from __future__ import annotations
 
 from dataclasses import dataclass, field, asdict
-from typing import List, Optional, Dict, Any
+from typing import Tuple, List, Optional, Dict, Any
 
 
 @dataclass
@@ -66,6 +66,9 @@ class AudioEvent:
     source_on_screen: Optional[bool] = None
     on_screen_prob: Optional[float] = None
     detail: str = ""         # most specific detected sub-label, for depiction only
+    # Every separate burst of this sound, as (start, end). ``start``/``end`` above are
+    # the strongest burst only; a picture is shown during each burst, not across them.
+    spans: List[Tuple[float, float]] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -93,6 +96,7 @@ class AugmentationSpec:
     image_path: Optional[str] = None  # filled in by the generator (Stage 6)
     detail: str = ""                 # most specific sub-label PANNs heard (e.g. Shatter under Glass)
     talked_about: bool = False       # people on the soundtrack are reacting to this sound
+    spans: List[Tuple[float, float]] = field(default_factory=list)  # every burst; see AudioEvent
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

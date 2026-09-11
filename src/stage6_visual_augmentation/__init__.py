@@ -85,6 +85,34 @@ def _caption(img: Image.Image, text: str) -> Image.Image:
     return img
 
 
+def _prompt_caption(img: Image.Image, label: str, prompt: str) -> Image.Image:
+    """The generator's prompt, printed under the picture. A debugging aid, not a
+    viewer feature: it is how Adam sees WHY a picture looks the way it does."""
+    if not prompt:
+        return img
+    d = ImageDraw.Draw(img, "RGBA")
+    w, h = img.size
+    fnt = _font(max(14, h // 34))
+    # wrap to the cell width
+    words, lines, cur = prompt.split(), [], ""
+    for wd in words:
+        trial = (cur + " " + wd).strip()
+        if d.textlength(trial, font=fnt) > w - 24 and cur:
+            lines.append(cur); cur = wd
+        else:
+            cur = trial
+    if cur:
+        lines.append(cur)
+    lines = [label.upper()] + lines[:3]
+    lh = int(fnt.size * 1.35)
+    top = h - (lh * len(lines) + 14)
+    d.rectangle([0, top, w, h], fill=(0, 0, 0, 190))
+    for i, line in enumerate(lines):
+        col = (255, 220, 120) if i == 0 else (240, 240, 245)
+        d.text((12, top + 7 + i * lh), line, font=fnt, fill=col)
+    return img
+
+
 def _fit_on_white(img: Image.Image, size: Tuple[int, int]) -> Image.Image:
     """Letterbox onto white instead of cropping to fill.
 
@@ -387,6 +415,7 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
             # Always the pictogram prompt: what Stage 5 stored is the subject, and the
             # style is this backend's business, not the gate's.
             prompt = plain_prompt(spec.subject or query)
+            spec.image_prompt = prompt          # the exact string the generator saw
             if _diffusion_image(path, prompt, size, model=model, device=device):
                 spec.image_path = str(path)
                 spec.backend = "diffusion"
@@ -458,8 +487,12 @@ def _display_spans(specs: List[AugmentationSpec], duration: float):
     spans = []
     for label, group in by_label.items():
         cur = None
-        for s in group:
-            a, b = max(0.0, s.start), min(float(duration), max(s.end, s.start + dwell))
+        # every burst of the sound gets the picture; a spec with no burst list is an
+        # older artefact and falls back to its single start/end
+        bursts = [(s, a, b) for s in group
+                  for a, b in (getattr(s, "spans", None) or [(s.start, s.end)])]
+        for s, a0, b0 in sorted(bursts, key=lambda t: t[1]):
+            a, b = max(0.0, a0), min(float(duration), max(b0, a0 + dwell))
             if cur and a - cur[2] <= gap:
                 # same sound again, right away: extend rather than blink
                 cur[2] = max(cur[2], b)
@@ -585,6 +618,8 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
         img = _sound_glyph(img, spec.confidence)
     if getattr(config, "SHOW_LABELS", False):
         img = _caption(img, label)
+    if getattr(config, "SHOW_PROMPT", False):
+        img = _prompt_caption(img, label, spec.image_prompt or spec.subject)
     img = img.convert("RGBA")
     img.putalpha(int(255 * _opacity(spec.confidence)))
     base = Image.new("RGBA", (w, h), (16, 18, 24, 255))

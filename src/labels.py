@@ -269,22 +269,40 @@ def search_query(label: str) -> str:
     return QUERY_HINTS.get(label, label)
 
 
-def merge_by_label(events: List[AudioEvent]) -> List[AudioEvent]:
-    """Collapse repeated firings of the same label into one span (min start,
-    max end, max confidence). Sorted by confidence descending."""
+def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEvent]:
+    """One event per label, carrying every separate BURST of that sound.
+
+    This used to take min-start and max-end over every firing of a label, which made
+    the display span a function of the weakest detection in the clip. In the rodeo demo
+    a 0.23 Vehicle at 1.6-4.2 s was stretched to 1.6-17.3 s by three later firings at
+    0.08, 0.09 and 0.12 -- noise -- and the viewer got a tractor beside the video for
+    sixteen seconds while the one real sound in the clip, a siren, was correctly silent.
+
+    Firings closer together than `gap` are one burst; anything further apart is a
+    separate burst. ``start``/``end`` are the strongest burst, which is where the
+    visibility check samples its frames; ``spans`` lists them all, which is what the
+    panel shows. Sorted by confidence descending.
+    """
     by_label = {}
-    for e in events:
-        if e.label in by_label:
-            m = by_label[e.label]
-            m.start = min(m.start, e.start)
-            m.end = max(m.end, e.end)
-            m.confidence = max(m.confidence, e.confidence)
-        else:
-            by_label[e.label] = AudioEvent(e.label, e.start, e.end, e.confidence)
-    return sorted(by_label.values(), key=lambda e: -e.confidence)
+    for e in sorted(events, key=lambda e: e.start):
+        by_label.setdefault(e.label, []).append(e)
+    out = []
+    for label, firings in by_label.items():
+        bursts = []                      # [start, end, conf]
+        for e in firings:
+            if bursts and e.start - bursts[-1][1] <= gap:
+                bursts[-1][1] = max(bursts[-1][1], e.end)
+                bursts[-1][2] = max(bursts[-1][2], e.confidence)
+            else:
+                bursts.append([e.start, e.end, e.confidence])
+        best = max(bursts, key=lambda b: b[2])
+        out.append(AudioEvent(label, best[0], best[1], best[2],
+                              spans=[(b[0], b[1]) for b in bursts]))
+    return sorted(out, key=lambda e: -e.confidence)
 
 
-def consolidate_families(events: List[AudioEvent]) -> List[AudioEvent]:
+def consolidate_families(events: List[AudioEvent],
+                         threshold: float = 0.0) -> List[AudioEvent]:
     """Relabel sub-types to their canonical parent, then merge. One entry/source.
 
     The family is what the GATE reasons about -- visibility concepts are keyed on it,
@@ -299,6 +317,11 @@ def consolidate_families(events: List[AudioEvent]) -> List[AudioEvent]:
     image only. Gating behaviour is unchanged -- this affects what is drawn, never
     whether it is drawn.
     """
+    # A firing below the display threshold can neither extend a span nor supply the
+    # detail. It was never going to be shown on its own, so it must not be able to
+    # change what IS shown -- "Reversing beeps" at 0.05 turned a rodeo Vehicle into a
+    # reversing tractor.
+    events = [e for e in events if e.confidence >= threshold]
     relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence) for e in events]
     merged = merge_by_label(relabelled)
     best = {}
