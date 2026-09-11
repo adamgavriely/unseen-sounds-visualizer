@@ -197,7 +197,10 @@ ICON_NEGATIVE = ("photograph, photorealistic, realistic, 3d render, text, letter
                  "symmetrical pattern, engraving, woodcut, tattoo, mandala")
 
 
-PLAIN_TAIL = ", plain white background, single subject, clearly visible"
+# "single subject" used to be here and is gone: the depiction is now an EVENT
+# ("a crowd applauding", "rain falling on a street"), and an event is not always
+# one thing. The plain background still does the job the constraint was for.
+PLAIN_TAIL = ", plain white background, clearly visible"
 
 
 def plain_prompt(subject: str) -> str:
@@ -492,9 +495,12 @@ def _assign_rows(spans):
     if len(rows) > limit:
         # More simultaneous sounds than the panel can carry: keep the loudest, and drop
         # the rest rather than shrinking every cell past legibility.
-        keep = sorted(placed, key=lambda p: -p[4].confidence)
+        # Priority: a sound people are reacting to on the soundtrack first, then the
+        # loudest. Confidence measures loudness; "did you hear that?" about a quiet
+        # sound is better evidence that it matters than the decibel level is.
+        rank = lambda p: (not getattr(p[4], "talked_about", False), -p[4].confidence)
         chosen, rows = [], []
-        for r, label, a, b, spec in sorted(keep, key=lambda p: -p[4].confidence):
+        for r, label, a, b, spec in sorted(placed, key=rank):
             for rr, free_at in enumerate(rows):
                 if a >= free_at - 1e-6:
                     rows[rr] = b

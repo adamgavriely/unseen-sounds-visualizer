@@ -100,9 +100,9 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     if getattr(config, 'DEPICTION_REASONING', True) and any(sp.augment for sp in specs):
         from src.stage5_cross_modal_analysis import reason
         try:
-            reason.decide_subjects(video_path, specs,
-                                   transcript=' '.join(sg.text for sg in segments),
-                                   model=config.VLM_MODEL, device=config.DEVICE)
+            reason.decide_subjects(video_path, specs, segments=segments,
+                                   model=config.VLM_MODEL, device=config.DEVICE,
+                                   display_threshold=config.DISPLAY_THRESHOLD)
         finally:
             reason.unload()
     specs = generate_augmentations(specs, work, backend=config.GEN_BACKEND,

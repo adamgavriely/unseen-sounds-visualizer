@@ -38,16 +38,19 @@ VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on sc
 # Stage 3 — speech recognition (Whisper)
 WHISPER_MODEL = "base"       # tiny | base | small | medium | large-v3
 WHISPER_COMPUTE = "int8"     # "int8" on cpu, "float16" on cuda
-# Whether to run Whisper at all. At inference the transcript is currently consumed by
-# NOTHING: the gate accepts it and never reads it, and the depiction step ignores it on
-# purpose, because feeding it in leaked dialogue into the pictures ("Hiccup on the
-# phone, slow down, how many"). PANNs already emits a Speech label, so the pipeline knows
-# THAT someone is talking without Whisper. The proposal's intended use -- speech as
-# context for the gate, e.g. "is that a siren?" implying an off-screen source -- was
-# tried in its naive form, hurt, and is parked. The one real consumer is the Stage 7
-# evaluator, whose reference has to know what was said so the judge neither credits nor
-# penalises speech, which captions already cover. So: off for demos, on for the protocol.
+# Whether to run Whisper. The transcript feeds two things and only two: the Stage 7
+# reference (so the judge neither credits nor penalises speech, which captions already
+# cover) and SPEECH_CONTEXT below. It is deliberately kept OUT of the depiction prompt,
+# where it leaked dialogue into pictures ("Hiccup on the phone, slow down, how many").
 TRANSCRIBE = True
+# Speech as gate context. For each sound with speech within a few seconds of it, the VLM
+# is asked one text-only forced choice: are the people on the soundtrack reacting to
+# this sound? A yes makes the sound (a) first in line when more sounds overlap than the
+# panel can carry and (b) shown even if its confidence was marginal -- confidence
+# measures loudness, and "did you hear that?" about a quiet sound is better evidence
+# that it matters. The transcript never reaches a picture, and this never overrides
+# visibility: a siren that is on screen is not shown however much people talk about it.
+SPEECH_CONTEXT = True
 
 # Stage 4 — audio event detection (PANNs CNN14 SED)
 AED_MODEL = "PANNs/Cnn14_DecisionLevelMax"    # -> BEATs for quality later

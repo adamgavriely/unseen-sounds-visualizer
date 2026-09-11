@@ -40,6 +40,7 @@ ANSWERS = {
     ("visible", "Giggle"): "nothing",
     ("visible", "Siren"): "nothing",
     ("visible", "Speech"): "a lawyer speaking",
+    ("visible", "Door"): "nothing",
 }
 
 
@@ -56,11 +57,19 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
         label = prompt.split(" make a ")[1].split(" sound")[0]
         return "yes" if (named, label) in {("wooden gavel", "Gavel"),
                                            ("lawyer speaking", "Speech")} else "no"
+    if prompt.startswith("A sound of ") and "someone said" in prompt:
+        # speech context: "order, order" is about the gavel AND the door; nothing else
+        last = prompt.splitlines()[-1]
+        yes = "a" if last.index("reacting") < last.index("not referring") else "b"
+        no = "b" if yes == "a" else "a"
+        about = ("Gavel" in prompt or "Door" in prompt) and "order" in prompt
+        return yes if about else no
     if prompt.startswith("A deaf viewer is watching a video and cannot hear it."):
-        label = prompt.split("A sound detector heard: ")[1].split(".")[0]
+        label = prompt.split("A sound detector heard: ")[1].split(".")[0].split(" (")[0]
         return {"Laughter": "a group of people laughing in a courtroom",
                 "Giggle": "a woman giggling in the courtroom gallery",
-                "Siren": "a police car siren outside the courthouse"}[label]
+                "Siren": "a police car siren outside the courthouse",
+                "Door": "a heavy courtroom door slamming shut"}[label]
     if prompt.startswith("A deaf viewer is shown this picture:"):
         # forced choice: pick the option whose label the depiction actually names
         picture = prompt.splitlines()[0].split(": ", 1)[1].lower()
@@ -91,13 +100,20 @@ def spec(label, a, b, conf):
                             confidence=conf, reason="planned", subject=label)
 
 
-specs = [spec("Gavel", 1.0, 1.5, 0.7),      # visible -> silent
+specs = [spec("Gavel", 1.0, 1.5, 0.7),      # visible -> silent, even though talked about
          spec("Laughter", 3.0, 5.0, 0.6),   # shown
          spec("Giggle", 3.2, 4.0, 0.4),     # merged into Laughter
          spec("Siren", 8.0, 10.0, 0.5)]     # shown
+# a faint sound the gate declined; speech about it should rescue it
+faint = spec("Door", 0.8, 1.2, 0.08)
+faint.augment = False
+faint.reason = "below display threshold (0.08 < 0.12)"
+specs.append(faint)
 
-R.decide_subjects("fake.mp4", specs, transcript="your honour, objection",
-                  device="cpu")
+from src.types import SpeechSegment
+segs = [SpeechSegment(0, 0.5, 1.8, "order, order in the court"),
+        SpeechSegment(1, 6.0, 7.0, "your honour, objection")]
+R.decide_subjects("fake.mp4", specs, segments=segs, device="cpu")
 
 print()
 print("RESULT")
@@ -105,6 +121,9 @@ for s in specs:
     print(("  SHOW   " if s.augment else "  silent ") + s.event_label.ljust(10)
           + "| " + (s.subject or s.reason))
 shown = [s.event_label for s in specs if s.augment]
-assert shown == ["Laughter", "Siren"], shown   # Giggle merges at 0.76
+assert shown == ["Laughter", "Siren", "Door"], shown
+assert faint.talked_about and faint.augment, "speech should rescue the faint door"
+gavel = next(s for s in specs if s.event_label == "Gavel")
+assert gavel.talked_about and not gavel.augment, "visibility must beat speech"
 assert all("objection" not in (s.subject or "") for s in specs)
-print("\nOK: visible source gated, synonym merged, no dialogue in any depiction")
+print("\nOK: visible gated (even when talked about), synonym merged, faint sound rescued by speech, no dialogue in any depiction")

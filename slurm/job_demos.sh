@@ -43,7 +43,7 @@ config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"
 config.GEN_BACKEND = "diffusion"    # the shipping generator: SDXL-Turbo pictograms
 config.GATE_ENABLED = True          # the proposed system
-config.TRANSCRIBE = False           # nothing at inference reads it; the evaluator does
+config.TRANSCRIBE = True            # the gate asks whether people react to each sound
 config.RENDER_MODE = "full"
 from src import pipeline
 

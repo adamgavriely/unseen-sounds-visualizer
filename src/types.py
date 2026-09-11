@@ -91,6 +91,8 @@ class AugmentationSpec:
     placement: str = "peripheral"    # "peripheral" | "anchored" (see sec:placement)
     backend: str = "generate"        # "generate" | "retrieve"
     image_path: Optional[str] = None  # filled in by the generator (Stage 6)
+    detail: str = ""                 # most specific sub-label PANNs heard (e.g. Shatter under Glass)
+    talked_about: bool = False       # people on the soundtrack are reacting to this sound
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

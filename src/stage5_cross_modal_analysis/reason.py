@@ -69,26 +69,73 @@ VISIBLE_PROMPT = (
     "in these frames, answer exactly: nothing."
 )
 
+# The label is a SOURCE noun and the sound is an EVENT, and the prompt has to ask for
+# the event. AudioSet names things -- Glass, Crowd, Dog, Vehicle -- but what a deaf viewer
+# needs to see is glass BREAKING, a crowd APPLAUDING, a dog BARKING. Asked for "a picture
+# showing Glass", the model described a window pane, the generator drew a window pane,
+# and Adam, correctly: "pictures of glass alone, which means nothing if it should be glass
+# breaking". So the question is now what is HAPPENING to make the sound, at the moment it
+# happens. The detector's most specific sub-label goes in too when there is one, because
+# it often IS the event: Shatter under Glass, Applause under Crowd, Bark under Dog.
 DEPICT_PROMPT = (
-    "A deaf viewer is watching a video and cannot hear it.\n"
-    "A sound detector heard: {label}.\n"
-    "The video is set in: {scene}.\n\n"
-    "Describe ONE picture showing {label}. The picture must be of {label} itself.\n"
-    "Use the place ONLY if it changes what {label} would look like. If it does not, "
-    "ignore the place and describe {label} plainly. Never describe the place instead.\n"
-    "Example: sound Water, place a forest, gives: a stream running through a forest.\n"
-    "Example: sound Laughter, place a roadside, gives: a person laughing.\n"
+    "A deaf viewer is watching a video and cannot hear it."
+    + chr(10) +
+    "A sound detector heard: {label}{detail}."
+    + chr(10) +
+    "The video is set in: {scene}."
+    + chr(10) + chr(10) +
+    "Describe ONE picture of that sound HAPPENING: show the action that makes the sound, "
+    "at the moment it makes it. Not the thing at rest -- glass breaking, not a glass; a "
+    "dog barking, not a dog; rain falling, not clouds."
+    + chr(10) +
+    "Use the place only if it changes what the action looks like. Never describe the "
+    "place instead of the action."
+    + chr(10) +
+    "Example: sound Glass, place a kitchen, gives: a drinking glass shattering on a tiled "
+    "floor."
+    + chr(10) +
+    "Example: sound Crowd, place a talk show studio, gives: a studio audience applauding."
+    + chr(10) +
     "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
 )
 
+# Asked when the first answer drifted into the scene. Same event framing, place kept --
+# a retry that dropped the place produced "People gathered together moving around" for a
+# crowd in a talk-show studio, which is worse than the place-specific answer it replaced.
+# Its result is accepted as it stands: this prompt cannot produce a scene sentence, and
+# the old path of re-checking it and falling back to a bare label is exactly how "Glass"
+# on its own reached the generator.
 RETRY_PROMPT = (
     "A deaf viewer is watching a video and cannot hear it. A sound detector heard: "
-    "{label}."
+    "{label}{detail}. The video is set in: {scene}."
     + chr(10) +
-    "Describe ONE picture of {label} itself that would tell the viewer what they are "
-    "hearing. Answer with a short phrase of at most 8 words. No punctuation, no "
-    "explanation."
+    "Describe ONE picture of {label} HAPPENING -- the action that makes that sound, at "
+    "the moment it makes it. The picture must be of the sound being made, nothing else."
+    + chr(10) +
+    "Answer with a short phrase of at most 8 words. No punctuation, no explanation."
 )
+
+# Speech as gate context, done the way the proposal meant and not the way it was first
+# tried. The transcript never reaches a picture. It answers one question per sound that
+# has speech near it: are the people on the soundtrack reacting to this sound? A "yes"
+# means the sound matters to what is happening -- "did you hear that?", "turn that alarm
+# off", "is that a siren?" -- and a sound that matters is (a) never the one dropped when
+# more sounds overlap than the panel can carry, and (b) shown even if the detector's
+# confidence was marginal, because confidence measures loudness and people reacting to a
+# quiet sound is better evidence that it matters than the decibel level is.
+#
+# It does NOT override visibility. Adam's rule: if the siren is on screen, the viewer can
+# see it, and it does not matter that they are also talking about it.
+SPEECH_PROMPT = (
+    "A sound of {label} was heard in a video. Around that moment, someone said:"
+    + chr(10) +
+    "\"{speech}\""
+    + chr(10) +
+    "Are they (a) {opt_a}, or (b) {opt_b}? Answer with the letter only."
+)
+SPEECH_YES = "reacting to that sound or talking about it"
+SPEECH_NO = "not referring to that sound"
+SPEECH_WINDOW = 3.0   # seconds of speech before and after the sound that count as "around"
 
 MAX_WORDS = 8
 
@@ -423,22 +470,72 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
               + order[dup].event_label + " (" + why + ")", flush=True)
 
 
-def decide_subjects(video_path, specs, transcript: str = "",
+def _speech_near(segments, start: float, end: float) -> str:
+    """Whatever was said within SPEECH_WINDOW seconds of the sound, in order."""
+    lo, hi = start - SPEECH_WINDOW, end + SPEECH_WINDOW
+    texts = [seg.text.strip() for seg in (segments or [])
+             if seg.end >= lo and seg.start <= hi and seg.text.strip()]
+    return " ".join(" ".join(texts).split())[:240]
+
+
+def _talked_about(label: str, speech: str, mdl, proc, flip: bool) -> bool:
+    """Forced choice, letters alternating between calls so a preferred letter cannot
+    decide every sound the same way."""
+    opt_a, opt_b = (SPEECH_NO, SPEECH_YES) if flip else (SPEECH_YES, SPEECH_NO)
+    want = "b" if flip else "a"
+    reply = _ask(mdl, proc, SPEECH_PROMPT.format(label=label, speech=speech,
+                                                 opt_a=opt_a, opt_b=opt_b),
+                 max_new=6).strip().lower().lstrip("(")
+    print("       [stage5] talked about? " + label + " <- \"" + speech[:60]
+          + ("..." if len(speech) > 60 else "") + "\" -> " + reply.strip()
+          + " (yes=" + want + ")", flush=True)
+    return reply[:1] == want
+
+
+def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                     model: str = "Qwen/Qwen2.5-VL-7B-Instruct",
-                    device: str = "cuda", frames_per_sound: int = 4) -> None:
+                    device: str = "cuda", frames_per_sound: int = 4,
+                    display_threshold: float = 0.12) -> None:
     """Fill in spec.subject for every augmented sound, and drop the visible ones.
 
-    ``transcript`` is accepted for interface stability but deliberately NOT fed to the
-    depiction step. It was, and dialogue leaked straight into the pictures: a Hiccup
-    became "Hiccup on the phone, slow down, how many". The transcript is evidence for
-    the gate, not material for the illustrator, and any talky clip reproduces the bug.
+    ``segments`` (timestamped Whisper output) feeds ONE question -- are people reacting
+    to this sound? -- and nothing else. ``transcript`` is accepted for interface
+    stability and ignored: fed to the depiction step, dialogue leaked straight into the
+    pictures ("Hiccup on the phone, slow down, how many"). Speech is evidence for the
+    gate, never material for the illustrator.
     """
     from src.stage2_video_understanding import _sample_frames, _sample_frames_at
     active = [s for s in specs if s.augment]
-    if not active:
+    # Marginal sounds the gate declined on confidence alone. Speech can rescue one of
+    # these, but only from the upper half of the band below the threshold: a sound at a
+    # tenth of the bar is noise whatever anyone says about it.
+    marginal = [s for s in specs if not s.augment
+                and s.reason.startswith("below display threshold")
+                and s.confidence >= 0.5 * display_threshold]
+    if not active and not (marginal and segments):
         return
     mdl, proc = _load(model, device)
     sim_device = device if device == "cuda" else "cpu"
+
+    # 0. speech: is anyone reacting to this sound? (never touches the picture)
+    if segments and getattr(config, "SPEECH_CONTEXT", True):
+        for k, spec in enumerate(active + marginal):
+            said = _speech_near(segments, spec.start, spec.end)
+            if not said:
+                continue
+            if _talked_about(spec.event_label, said, mdl, proc, flip=(k % 2 == 1)):
+                spec.talked_about = True
+                if not spec.augment:
+                    spec.augment = True
+                    spec.reason = ("marginal (" + format(spec.confidence, ".2f")
+                                   + ") but people are reacting to it -> augment")
+                    print("       [stage5] rescued by speech: " + spec.event_label,
+                          flush=True)
+                else:
+                    spec.reason += " | people are reacting to it"
+        active = [s for s in specs if s.augment]
+        if not active:
+            return
 
     frames = _sample_frames(Path(video_path), 4)
     scene = _ask(mdl, proc, SCENE_PROMPT, images=frames, max_new=40) if frames else ""
@@ -449,7 +546,8 @@ def decide_subjects(video_path, specs, transcript: str = "",
     place = place or scene
     print("       [stage5] place: " + place, flush=True)
 
-    # 1. visibility, per sound, on the frames spanning that sound
+    # 1. visibility, per sound, on the frames spanning that sound. Authoritative: a
+    # sound people are talking about is still not shown if its source is on screen.
     if getattr(config, "VLM_VISIBILITY", True):
         for spec in active:
             span = max(0.4, spec.end - spec.start)
@@ -470,33 +568,26 @@ def decide_subjects(video_path, specs, transcript: str = "",
                   flush=True)
             return
 
-    # 2. depiction: text-only, sound as subject, scene as modifier.
-    # The other sounds heard in this clip are the alternatives the validation step makes
-    # the model choose between, so they are collected once here.
+    # 2. depiction: the sound as an EVENT, the place as a modifier.
     labels = [s.event_label for s in active]
     for spec in active:
-        prompt = DEPICT_PROMPT.format(label=spec.event_label, scene=place)
+        detail = ""
+        if spec.detail and spec.detail != spec.event_label:
+            detail = " (specifically: " + spec.detail.split(",")[0].split("(")[0].strip() + ")"
+        prompt = DEPICT_PROMPT.format(label=spec.event_label, detail=detail, scene=place)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
-            # The scene swamped the sound. Ask again with the scene withheld: a plainer
-            # picture of the right thing beats a specific picture of the wrong thing.
-            # The old fallback was whatever label Stage 4 happened to supply, and those
-            # are not always drawable -- "Run" for Footsteps, "Reversing beeps" for
-            # Vehicle, "Shatter" for Glass all reached the image generator that way.
             print("       [stage5] rejected (not about " + spec.event_label + "): "
                   + phrase, flush=True)
             phrase = _clean_phrase(_ask(mdl, proc, RETRY_PROMPT.format(
-                label=spec.event_label), max_new=48))
-            if phrase and not _still_the_sound(phrase, spec.event_label, labels,
-                                               mdl, proc):
-                phrase = ""
-        if phrase:
-            spec.subject = phrase
-            spec.reason += " | depiction: " + phrase
-        else:
-            spec.subject = spec.event_label
+                label=spec.event_label, detail=detail, scene=place), max_new=48))
+        if not phrase:
+            # Only if the model returned nothing at all. Still an event, never a noun.
+            phrase = (spec.detail.split(",")[0] if spec.detail else spec.event_label) + " happening"
+        spec.subject = phrase
+        spec.reason += " | depiction: " + phrase
         spec.image_prompt = spec.subject
         print("       [stage5] " + spec.event_label + " -> " + spec.subject, flush=True)
 
-    # 3. one picture per picture, not one per label family
+    # 3. one picture per source
     _dedup(active, mdl, proc, sim_device)
