@@ -115,15 +115,31 @@ def clips_to_run(limit):
 
 
 def configure(system: str):
-    """Each system differs only in how Stage 5/6 decide what to show."""
+    """Each system differs only in how Stage 5/6 decide what to show.
+
+    The video-reading parts of Stage 5 -- the per-sound visibility question, the place
+    that makes a depiction specific, the speech question -- are switched off for both
+    baselines and not just the gate flag. They run inside the reasoner regardless of
+    GATE_ENABLED, so leaving them on would have made the "blind" baseline look at the
+    video, and the comparison would have measured nothing.
+    """
     if system == "proposed":
         config.GATE_ENABLED = True          # depict only non-visible sources
+        config.DEPICTION_REASONING = True   # place-specific event depictions
+        config.VLM_VISIBILITY = True        # per-sound visibility from the frames
+        config.SPEECH_CONTEXT = True        # people reacting to a sound raises it
         config.RENDER_MODE = "full"
     elif system == "blind_a2i":
         config.GATE_ENABLED = False         # depict everything heard, ignore the video
+        config.DEPICTION_REASONING = False  # the bare label is the depiction
+        config.VLM_VISIBILITY = False
+        config.SPEECH_CONTEXT = False
         config.RENDER_MODE = "full"
     elif system == "audio_caption":
         config.GATE_ENABLED = False         # no imagery: a caption stands in
+        config.DEPICTION_REASONING = False
+        config.VLM_VISIBILITY = False
+        config.SPEECH_CONTEXT = False
         config.RENDER_MODE = "minimal"
 
 
