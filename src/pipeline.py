@@ -114,6 +114,6 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     out_mp4 = config.OUTPUT_DIR / f"{video_path.stem}_augmented.mp4"
     composite_alongside(video_path, specs, out_mp4, duration=media.duration,
                         panel=config.PANEL_SIZE, fps=config.FPS,
-                        mode=config.RENDER_MODE)
+                        mode=config.RENDER_MODE, events=events)
     print(f"\nDone -> {out_mp4}\n       artifacts in {work}")
     return PipelineResult(media, scene, segments, events, specs, work, out_mp4)

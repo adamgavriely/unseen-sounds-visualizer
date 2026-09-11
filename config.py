@@ -100,6 +100,10 @@ SHOW_LABELS = False
 # Print the generator's prompt under each picture. Debugging only -- it is how a bad
 # picture gets traced to the words that produced it. Off for anything a viewer sees.
 SHOW_PROMPT = False
+# Under the panel, every raw detection active at that moment with its confidence and
+# the gate's verdict. Debugging only: it separates "the detector heard the wrong thing"
+# from "the gate did the wrong thing with the right one", which are different repairs.
+SHOW_DEBUG_SOUNDS = False
 SHOW_SOUND_GLYPH = False
 # Stage 5 asks the VLM, on the frames spanning EACH sound, to name the thing making it,
 # and stays silent when it can. This replaces the ~30-concept visibility table in

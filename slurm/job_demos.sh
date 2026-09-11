@@ -45,7 +45,8 @@ config.GEN_BACKEND = "diffusion"    # the shipping generator: SDXL-Turbo pictogr
 config.GATE_ENABLED = True          # the proposed system
 config.TRANSCRIBE = True            # the gate asks whether people react to each sound
 config.RENDER_MODE = "full"
-config.SHOW_PROMPT = True           # demos are for diagnosis: show the prompt under each picture
+config.SHOW_PROMPT = True
+config.SHOW_DEBUG_SOUNDS = True     # and every raw detection with the gate's verdict           # demos are for diagnosis: show the prompt under each picture
 from src import pipeline
 
 root = Path(".").resolve()

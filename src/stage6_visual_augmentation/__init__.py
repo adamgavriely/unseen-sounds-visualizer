@@ -548,13 +548,20 @@ def _assign_rows(spans):
     return placed, max(1, len(rows))
 
 
-def _timeline(specs: List[AugmentationSpec], duration: float):
-    """Contiguous segments over [0,duration]; each carries {row: (label, spec)}."""
+def _timeline(specs: List[AugmentationSpec], duration: float, extra_bounds=()):
+    """Contiguous segments over [0,duration]; each carries {row: (label, spec)}.
+
+    ``extra_bounds`` adds cut points that do not come from the augmentations -- the
+    debug strip uses them so the list of raw detections can change while no picture
+    does."""
     placed, n_rows = _assign_rows(_display_spans(specs, duration))
+    extra = {min(max(0.0, float(t)), float(duration)) for t in extra_bounds}
     if not placed:
-        return [({}, duration)], 0
+        bounds = sorted({0.0, float(duration)} | extra)
+        return [({}, b - a) for a, b in zip(bounds, bounds[1:]) if b - a >= 0.05] \
+            or [({}, duration)], 0
     bounds = sorted({0.0, float(duration)} | {p[2] for p in placed}
-                    | {min(p[3], duration) for p in placed})
+                    | {min(p[3], duration) for p in placed} | extra)
     segs = []
     for a, b in zip(bounds, bounds[1:]):
         if b - a < 0.05:
@@ -627,10 +634,67 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
     d.line([x0, y1 - 1, x1, y1 - 1], fill=(40, 44, 56))
 
 
+DEBUG_STRIP = 150   # px reserved under the panel for the detection list
+
+
+def _decision_for(label: str, specs: List[AugmentationSpec]) -> str:
+    """What the gate did with a raw detection, in one word, for the debug strip."""
+    from src.labels import canonical, is_salient_nonspeech
+    if not is_salient_nonspeech(label):
+        return "speech/music"
+    fam = canonical(label)
+    for sp in specs:
+        if sp.event_label == fam or sp.event_label == label:
+            r = sp.reason.lower()
+            if sp.augment:
+                return "SHOWN"
+            if "visible" in r:
+                return "visible"
+            if "same source" in r or "same picture" in r:
+                return "merged"
+            if "below" in r:
+                return "faint"
+            return sp.reason[:18]
+    return "dropped"
+
+
+def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
+                 specs: List[AugmentationSpec], top: int = 6) -> None:
+    """Every raw detection active at time t, loudest first, with the gate's verdict.
+
+    Diagnosis, not presentation. Adam: "every sound recognized should be written, so I
+    can see in the video what is heard and what it decided." When a picture is wrong
+    this strip says whether the detector heard the wrong thing or the gate did the
+    wrong thing with the right one -- which are different repairs."""
+    x0, y0, x1, y1 = box
+    d = ImageDraw.Draw(canvas, "RGBA")
+    d.rectangle(box, fill=(10, 11, 15))
+    d.line([x0, y0, x1, y0], fill=(60, 64, 80))
+    active = sorted((e for e in events if e.start <= t < e.end),
+                    key=lambda e: -e.confidence)[:top]
+    fnt = _font(max(13, (y1 - y0) // 9))
+    lh = int(fnt.size * 1.3)
+    d.text((x0 + 10, y0 + 5), f"heard at {t:4.1f}s", font=fnt, fill=(120, 127, 143))
+    if not active:
+        d.text((x0 + 10, y0 + 5 + lh), "(nothing above threshold)", font=fnt,
+               fill=(96, 103, 118))
+        return
+    colours = {"SHOWN": (120, 220, 140), "visible": (240, 200, 90),
+               "merged": (150, 170, 240), "faint": (130, 130, 140),
+               "speech/music": (110, 110, 120), "dropped": (200, 110, 110)}
+    for i, e in enumerate(active):
+        verdict = _decision_for(e.label, specs)
+        col = colours.get(verdict, (200, 200, 210))
+        line = f"{e.confidence:.2f}  {e.label[:34]}"
+        d.text((x0 + 10, y0 + 5 + (i + 1) * lh), line, font=fnt, fill=(225, 228, 235))
+        d.text((x1 - 10 - d.textlength(verdict, font=fnt), y0 + 5 + (i + 1) * lh),
+               verdict, font=fnt, fill=col)
+
+
 def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
                         out_path: Path, duration: float,
                         panel: int = 720, fps: int = 25,
-                        mode: str = "full") -> Path:
+                        mode: str = "full", events=None) -> Path:
     """Side-by-side: original video (left) + time-aligned augmentation panel (right).
 
     mode: "full" (imagery in stable slots) | "minimal" (label chips) |
@@ -648,11 +712,21 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
 
     # One frame of panel per segment of the timeline. A segment boundary is a sound
     # starting or stopping, so the panel only changes when something is actually heard.
-    segs, n_rows = _timeline(specs, duration)
+    debug = bool(getattr(config, "SHOW_DEBUG_SOUNDS", False) and events)
+    cuts = []
+    if debug:
+        cuts = [e.start for e in events] + [e.end for e in events]
+    segs, n_rows = _timeline(specs, duration, extra_bounds=cuts)
+    slot_h = panel - (DEBUG_STRIP if debug else 0)
     lines = []
+    t_cursor = 0.0
     for i, (active, dur) in enumerate(segs):
         p = work / f"p{i:04d}.png"
         canvas = Image.new("RGB", (panel, panel), (16, 18, 24))
+        if debug:
+            _debug_strip(canvas, (0, slot_h, panel, panel), t_cursor + dur / 2,
+                         events, specs)
+        t_cursor += dur
         if n_rows == 0:
             # No augmentation anywhere in this clip is a DECISION, not a failure: say
             # so at a readable size, or a blank panel looks like a broken player. Only
@@ -665,11 +739,11 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
             for text, fnt, dy, col in ((l1, big, -26, (185, 192, 208)),
                                        (l2, small, 18, (120, 127, 143))):
                 w = d.textlength(text, font=fnt)
-                d.text(((panel - w) / 2, panel / 2 + dy), text, font=fnt, fill=col)
+                d.text(((panel - w) / 2, slot_h / 2 + dy), text, font=fnt, fill=col)
         else:
-            sh = panel // n_rows
+            sh = slot_h // n_rows
             for r in range(n_rows):
-                y1 = panel if r == n_rows - 1 else (r + 1) * sh
+                y1 = slot_h if r == n_rows - 1 else (r + 1) * sh
                 label, spec = active.get(r, ("", None))
                 _render_slot(canvas, (0, r * sh, panel, y1), spec, label, mode)
         canvas.save(p)
