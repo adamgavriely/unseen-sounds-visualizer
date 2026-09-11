@@ -212,7 +212,11 @@ def _clean_phrase(text: str, max_words: int = MAX_WORDS) -> str:
     runs past the first clause, so only the first clause is kept -- a picture is one
     thing, and everything after the first comma or colon is a second thing.
     """
-    text = " ".join((text or "").split())
+    # A multilingual model occasionally finishes a phrase in another script -- "Hoot owl
+    # perched branch宫殿" reached the generator once. The image model reads English, so
+    # anything outside the Latin range is dropped rather than passed through.
+    text = "".join(c if ord(c) < 0x250 else " " for c in (text or ""))
+    text = " ".join(text.split())
     for cut in (". ", "; ", ": ", ", ", " - ", " -- "):
         if cut in text:
             text = text.split(cut)[0]
@@ -478,18 +482,31 @@ def _speech_near(segments, start: float, end: float) -> str:
     return " ".join(" ".join(texts).split())[:240]
 
 
-def _talked_about(label: str, speech: str, mdl, proc, flip: bool) -> bool:
-    """Forced choice, letters alternating between calls so a preferred letter cannot
-    decide every sound the same way."""
-    opt_a, opt_b = (SPEECH_NO, SPEECH_YES) if flip else (SPEECH_YES, SPEECH_NO)
-    want = "b" if flip else "a"
-    reply = _ask(mdl, proc, SPEECH_PROMPT.format(label=label, speech=speech,
-                                                 opt_a=opt_a, opt_b=opt_b),
-                 max_new=6).strip().lower().lstrip("(")
+def _talked_about(label: str, speech: str, mdl, proc, flip: bool = False) -> bool:
+    """Asked in BOTH orderings; yes only if both say yes.
+
+    Alternating the letter between calls is not enough. In the first run the model
+    answered "b" to 22 of 23 questions whichever option (b) was, so the alternation
+    turned a position bias into a coin flip, and the coin rescued an Alarm on the
+    strength of "Ugh." and a Crowd on "Hm, hm, hm." Asking both orderings and requiring
+    agreement is the standard repair: a bias towards one letter produces yes in one
+    ordering and no in the other, and only an answer driven by the content survives. It
+    costs one extra short call per sound that has speech near it.
+    """
+    votes = []
+    for fl in (False, True):
+        opt_a, opt_b = (SPEECH_NO, SPEECH_YES) if fl else (SPEECH_YES, SPEECH_NO)
+        want = "b" if fl else "a"
+        reply = _ask(mdl, proc, SPEECH_PROMPT.format(label=label, speech=speech,
+                                                     opt_a=opt_a, opt_b=opt_b),
+                     max_new=6).strip().lower().lstrip("(")
+        votes.append(reply[:1] == want)
+    verdict = all(votes)
     print("       [stage5] talked about? " + label + " <- \"" + speech[:60]
-          + ("..." if len(speech) > 60 else "") + "\" -> " + reply.strip()
-          + " (yes=" + want + ")", flush=True)
-    return reply[:1] == want
+          + ("..." if len(speech) > 60 else "") + "\" -> "
+          + ("yes" if verdict else "no") + " (votes "
+          + "/".join("y" if v else "n" for v in votes) + ")", flush=True)
+    return verdict
 
 
 def decide_subjects(video_path, specs, transcript: str = "", segments=None,
@@ -523,7 +540,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             said = _speech_near(segments, spec.start, spec.end)
             if not said:
                 continue
-            if _talked_about(spec.event_label, said, mdl, proc, flip=(k % 2 == 1)):
+            if _talked_about(spec.event_label, said, mdl, proc):
                 spec.talked_about = True
                 if not spec.augment:
                     spec.augment = True
