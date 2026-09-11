@@ -55,6 +55,10 @@ def plan_augmentations(scene: SceneContext,
                        and ev.confidence >= min_confidence(ev.label, augment_threshold))
             if not salient:
                 reason = f"below display threshold ({ev.confidence:.2f} < {display_threshold})"
+                if redundant:
+                    # recorded so a later rescue-by-speech cannot revive a sound whose
+                    # source is on screen; the visibility rule beats every other signal
+                    reason += "; source visible on screen anyway"
             elif redundant:
                 reason = "source already visible on screen (stay silent)"
             else:

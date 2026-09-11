@@ -136,6 +136,12 @@ SPEECH_PROMPT = (
 SPEECH_YES = "reacting to that sound or talking about it"
 SPEECH_NO = "not referring to that sound"
 SPEECH_WINDOW = 3.0   # seconds of speech before and after the sound that count as "around"
+# Fewer words than this and the question is not asked. Whisper transcribes non-speech
+# as syllables -- "Lachon. La." for laughter, "oh" for an owl -- and the model then
+# matched them lexically, calling "La." a reaction to Laughter and "oh" a reaction to a
+# Hoot, twice each through the double-ask. An interjection is not evidence that anyone
+# is reacting to anything; a sentence might be.
+SPEECH_MIN_WORDS = 4
 
 MAX_WORDS = 8
 
@@ -538,7 +544,13 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     if segments and getattr(config, "SPEECH_CONTEXT", True):
         for k, spec in enumerate(active + marginal):
             said = _speech_near(segments, spec.start, spec.end)
-            if not said:
+            if len(said.split()) < SPEECH_MIN_WORDS:
+                continue
+            # Never rescue what the whole-clip pass already saw on screen. The rescue
+            # once let a Crowd through on "oh" in a clip whose scene sentence began "A
+            # crowd of people with torches"; Stage 2 had marked it visible and the gate
+            # had recorded only the confidence reason.
+            if not spec.augment and "visible" in spec.reason:
                 continue
             if _talked_about(spec.event_label, said, mdl, proc):
                 spec.talked_about = True
