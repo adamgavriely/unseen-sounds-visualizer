@@ -38,6 +38,16 @@ VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on sc
 # Stage 3 — speech recognition (Whisper)
 WHISPER_MODEL = "base"       # tiny | base | small | medium | large-v3
 WHISPER_COMPUTE = "int8"     # "int8" on cpu, "float16" on cuda
+# Whether to run Whisper at all. At inference the transcript is currently consumed by
+# NOTHING: the gate accepts it and never reads it, and the depiction step ignores it on
+# purpose, because feeding it in leaked dialogue into the pictures ("Hiccup on the
+# phone, slow down, how many"). PANNs already emits a Speech label, so the pipeline knows
+# THAT someone is talking without Whisper. The proposal's intended use -- speech as
+# context for the gate, e.g. "is that a siren?" implying an off-screen source -- was
+# tried in its naive form, hurt, and is parked. The one real consumer is the Stage 7
+# evaluator, whose reference has to know what was said so the judge neither credits nor
+# penalises speech, which captions already cover. So: off for demos, on for the protocol.
+TRANSCRIBE = True
 
 # Stage 4 — audio event detection (PANNs CNN14 SED)
 AED_MODEL = "PANNs/Cnn14_DecisionLevelMax"    # -> BEATs for quality later

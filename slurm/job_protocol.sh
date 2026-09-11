@@ -79,7 +79,10 @@ import config
 config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"     # strongest visibility backend (see sec:findings)
 config.GEN_BACKEND = "${GEN}"
-config.GEN_MODEL = "stabilityai/stable-diffusion-xl-base-1.0"
+# GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which
+# would have evaluated a generator the pipeline no longer ships. config.py holds the
+# shipping one (PixArt-Sigma), and the point of the run is to score what ships.
+config.TRANSCRIBE = True           # the reference-builder needs the transcript
 argv = ["run_protocol", "--phase", phase]
 if "${LIMIT}":    argv += ["--limit", "${LIMIT}"]
 if "${TAG}":      argv += ["--tag", "${TAG}"]

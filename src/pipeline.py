@@ -64,11 +64,17 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                     threshold=config.VISIBILITY_THRESHOLD)
     _dump(work / "scene.json", scene.to_dict())
 
-    print("[3/7] speech recognition (whisper)...")
-    segments = transcribe(Path(media.wav_path), model_size=config.WHISPER_MODEL,
-                          device=config.DEVICE, compute_type=config.WHISPER_COMPUTE)
+    if getattr(config, "TRANSCRIBE", True):
+        print("[3/7] speech recognition (whisper)...")
+        segments = transcribe(Path(media.wav_path), model_size=config.WHISPER_MODEL,
+                              device=config.DEVICE, compute_type=config.WHISPER_COMPUTE)
+        print(f"       {len(segments)} speech segment(s)")
+    else:
+        # Nothing on the inference path reads the transcript (see config.TRANSCRIBE);
+        # only the evaluator does, and the protocol job turns this back on.
+        print("[3/7] speech recognition: skipped (config.TRANSCRIBE = False)")
+        segments = []
     _dump(work / "segments.json", [s.to_dict() for s in segments])
-    print(f"       {len(segments)} speech segment(s)")
 
     print("[4/7] audio event detection...")
     events = detect_events(Path(media.wav_path), threshold=config.AED_THRESHOLD,
