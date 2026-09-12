@@ -751,18 +751,23 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
             print("       [stage5] rejected (not about " + spec.event_label + "): "
                   + phrase, flush=True)
+            first = phrase
             phrase = _clean_phrase(_ask(mdl, proc, RETRY_PROMPT.format(
                 label=spec.event_label, detail=detail, scene=place), max_new=48))
-            if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl,
-                                               proc):
-                # Twice asked for a picture of this sound, twice given a picture of
-                # something else. A phantom "Sigh" at a shooting range came back "gun
-                # recoil" both times, and accepting the retry put a gun beside the video
-                # for a sound that was never there. If the model cannot draw the sound
-                # as itself, it is not a sound worth a picture -- the validator is the
-                # last phantom filter, and it is allowed to say no.
+            same_again = phrase.lower().split() == first.lower().split()
+            if same_again and not _still_the_sound(phrase, spec.event_label, labels,
+                                                   mdl, proc):
+                # Rejected twice AND the model had nothing else to say. A phantom "Sigh"
+                # at a shooting range came back "gun recoil" both times; accepting the
+                # retry put a gun beside the video for a sound that was never there.
+                # The condition is deliberately narrow. Dropping on two rejections
+                # alone also removed "people clapping hands" for Crowd and "gun fire"
+                # for Explosion, both real -- the forced choice, asked twice, rejects
+                # too many good depictions to be a filter on its own. An identical
+                # retry is the signal that the model is describing the scene because
+                # there is no sound to describe.
                 print("       [stage5] dropped " + spec.event_label
-                      + ": no depiction reads as it (" + phrase + ")", flush=True)
+                      + ": no depiction reads as it (" + phrase + ", twice)", flush=True)
                 spec.augment = False
                 spec.subject = ""
                 spec.image_prompt = ""
