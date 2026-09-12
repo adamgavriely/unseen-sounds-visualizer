@@ -69,6 +69,43 @@ VISIBLE_PROMPT = (
     "in these frames, answer exactly: nothing."
 )
 
+# The one thing the frames ARE asked about the sound itself, and the bounds on it. The
+# detector said Crowd; the picture was "people cheering" because the model guessed,
+# while the frames plainly showed a crowd chanting with torches. Adam: "why not try to
+# understand from the video?" So the frames are asked what KIND of the detected sound
+# this is -- and only that. The label is fixed in the question, the answer is a
+# qualifier that goes into the depiction prompt as the specific kind, and "unknown" is
+# an explicit option. The frames can turn a Crowd into a chanting crowd; they cannot turn
+# a Glass into a penguin, which is the failure this whole file exists to prevent.
+KIND_PROMPT = (
+    "A sound detector heard: {label}. These frames are from that moment."
+    + chr(10) +
+    "If the frames show what KIND of {label} this is, or who or what is making it, say "
+    "so in at most 4 words -- for example, for Crowd: 'a crowd chanting'. Name the kind "
+    "of {label} only; do not describe anything else in the frames."
+    + chr(10) +
+    "If the frames do not show it, answer exactly: unknown."
+)
+
+
+def _kind_from_frames(label: str, frames, mdl, proc) -> str:
+    if not frames or not getattr(config, "KIND_FROM_FRAMES", True):
+        return ""
+    ans = _clean_phrase(_ask(mdl, proc, KIND_PROMPT.format(label=label), images=frames,
+                             max_new=16), max_words=4)
+    low = ans.lower()
+    if not ans or low.startswith(("unknown", "none", "not ", "no ")):
+        return ""
+    # it must still be a kind of THIS sound, by name; otherwise the frames are
+    # describing the scene and the answer is discarded
+    if not _about_the_sound(ans, label):
+        print("       [stage5] kind from frames for " + label + " discarded: " + ans,
+              flush=True)
+        return ""
+    print("       [stage5] kind from frames: " + label + " -> " + ans, flush=True)
+    return ans
+
+
 # The label is a SOURCE noun and the sound is an EVENT, and the prompt has to ask for
 # the event. AudioSet names things -- Glass, Crowd, Dog, Vehicle -- but what a deaf viewer
 # needs to see is glass BREAKING, a crowd APPLAUDING, a dog BARKING. Asked for "a picture
@@ -94,14 +131,15 @@ DEPICT_PROMPT = (
     "Answer with 2 to 5 plain words naming the action. No adjectives, no adverbs, no "
     "scenery, no poetry, no punctuation."
     + chr(10) +
-    "Name the SOURCE doing it, so the viewer sees where the sound comes from: a car "
-    "honking, not a horn; a telephone ringing, not a receiver; a police car with its "
-    "siren on, not a siren."
+    "Name the SOURCE doing it, so the viewer sees where the sound comes from. If a "
+    "specific kind is given in brackets, draw that kind and not a guess at another."
+    + chr(10) +
+    "Do not name the place in your answer unless the sound cannot be drawn without it."
     + chr(10) +
     "Examples: a person laughing. an audience clapping. a glass shattering. a dog "
-    "barking. a stream in a forest. a car honking its horn. a telephone ringing."
+    "barking. a stream in a forest. a telephone ringing."
     + chr(10) +
-    "Not: roadside laughter echoes through trees."
+    "Not: roadside laughter echoes through trees. Not: a palace window breaks."
 )
 
 # Asked when the first answer drifted into the scene. Same event framing, place kept --
@@ -438,7 +476,10 @@ def _event_visible(label: str, named: str, frames, mdl, proc) -> bool:
             label=label, named=named, opt_a=opt_a, opt_b=opt_b),
             images=frames, max_new=6).strip().lower().lstrip("(")
         votes.append(reply[:1] == want)
-    seen = all(votes)
+    # The naming step already found the source on screen; this question can only
+    # RESCUE a sound, and only when it is sure. A split vote used to count as "not
+    # visible" and put a galloping horse beside a video of a galloping horse.
+    seen = any(votes)
     print("       [stage5] action visible? " + label + " (" + named + ") -> "
           + ("yes" if seen else "no, only the object") + " (votes "
           + "/".join("y" if v else "n" for v in votes) + ")", flush=True)
@@ -699,6 +740,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     place = place or scene
     print("       [stage5] place: " + place, flush=True)
 
+    spec_frames = {}
     # 1. visibility, per sound, on the frames spanning that sound. Authoritative: a
     # sound people are talking about is still not shown if its source is on screen.
     if getattr(config, "VLM_VISIBILITY", True):
@@ -707,6 +749,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             times = [spec.start - 0.4 + span * k / max(1, frames_per_sound - 1)
                      for k in range(frames_per_sound)]
             win = _sample_frames_at(Path(video_path), times)
+            spec_frames[id(spec)] = win
             seen, named = _sound_is_visible(spec.event_label, win, mdl, proc, sim_device)
             if seen:
                 spec.augment = False
@@ -750,6 +793,11 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         detail = ""
         if spec.detail and spec.detail != spec.event_label:
             detail = " (specifically: " + spec.detail.split(",")[0].split("(")[0].strip() + ")"
+        else:
+            # no sub-label from the detector: let the frames say what kind, if they can
+            kind = _kind_from_frames(spec.event_label, spec_frames.get(id(spec)), mdl, proc)
+            if kind:
+                detail = " (specifically: " + kind + ")"
         prompt = DEPICT_PROMPT.format(label=spec.event_label, detail=detail, scene=place)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):

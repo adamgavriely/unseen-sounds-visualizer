@@ -49,9 +49,9 @@ config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"
 config.GEN_BACKEND = "diffusion"
 import os
-if os.environ.get("GEN", "") == "flux":
-    config.GEN_MODEL = config.GEN_MODEL_FLUX
-    config.RESOLUTION = (768, 768)     # sequential offload: 1024 would be ~100 s/image
+if os.environ.get("GEN", "") == "pixart":      # the ablation generator
+    config.GEN_MODEL = config.GEN_MODEL_PIXART
+    config.RESOLUTION = (1024, 1024)
 config.GATE_ENABLED = True          # the proposed system
 config.TRANSCRIBE = True            # the gate asks whether people react to each sound
 config.RENDER_MODE = "full"
@@ -61,7 +61,7 @@ from src import pipeline
 
 root = Path(".").resolve()
 chosen = json.loads((root / "benchmark" / "demo_set.json").read_text(encoding="utf-8"))
-out = root / "data" / "output" / ("demos_flux" if os.environ.get("GEN", "") == "flux" else "demos")
+out = root / "data" / "output" / ("demos_pixart" if os.environ.get("GEN", "") == "pixart" else "demos")
 out.mkdir(parents=True, exist_ok=True)
 config.OUTPUT_DIR = out            # a Path: pipeline does OUTPUT_DIR / "<name>.mp4"
 ok = 0
