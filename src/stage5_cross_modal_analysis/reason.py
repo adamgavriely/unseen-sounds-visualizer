@@ -753,6 +753,21 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                   + phrase, flush=True)
             phrase = _clean_phrase(_ask(mdl, proc, RETRY_PROMPT.format(
                 label=spec.event_label, detail=detail, scene=place), max_new=48))
+            if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl,
+                                               proc):
+                # Twice asked for a picture of this sound, twice given a picture of
+                # something else. A phantom "Sigh" at a shooting range came back "gun
+                # recoil" both times, and accepting the retry put a gun beside the video
+                # for a sound that was never there. If the model cannot draw the sound
+                # as itself, it is not a sound worth a picture -- the validator is the
+                # last phantom filter, and it is allowed to say no.
+                print("       [stage5] dropped " + spec.event_label
+                      + ": no depiction reads as it (" + phrase + ")", flush=True)
+                spec.augment = False
+                spec.subject = ""
+                spec.image_prompt = ""
+                spec.reason = "no depiction reads as this sound - dropped"
+                continue
         if not phrase:
             # Only if the model returned nothing at all. Still an event, never a noun.
             phrase = (spec.detail.split(",")[0] if spec.detail else spec.event_label) + " happening"
@@ -762,4 +777,6 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         print("       [stage5] " + spec.event_label + " -> " + spec.subject, flush=True)
 
     # 3. one picture per source
-    _dedup(active, mdl, proc, sim_device)
+    active = [s for s in specs if s.augment]
+    if active:
+        _dedup(active, mdl, proc, sim_device)
