@@ -30,7 +30,7 @@ REPO = "WeiChihChen/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2"
 FILE = "BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt"
 SR = 16000
 WINDOW = 2.0    # seconds scored as one clip
-HOP = 0.5       # seconds between windows; the time resolution of the spans
+HOP = 0.25      # seconds between windows; the time resolution of the spans
 
 _MODEL = None   # (model, names, device)
 
@@ -81,7 +81,13 @@ def infer_beats(wav_path: Path, device: str = "cpu",
             p, _ = model.extract_features(x, padding_mask=mask)
             probs.append(p.float().cpu().numpy())
     framewise = np.concatenate(probs, axis=0)           # (windows, 527)
-    times = np.array([s / SR + window / 2 for s in starts])   # window centres
+    # Stamped at the window END, not its centre. A score for [s, s+2] says the sound
+    # is somewhere in those two seconds; stamping it at s+1 put a sound from the last
+    # half of the window on screen up to a second before it happened, and Adam saw the
+    # glass shatter before he heard it in three of five clips. Stamped at s+2 the onset
+    # is never early -- at worst it is late by one hop -- and the tail lingers by up to
+    # a window, which the display's minimum dwell was going to do anyway.
+    times = np.array([(s + n_win) / SR for s in starts])
     return framewise, times, list(names)
 
 

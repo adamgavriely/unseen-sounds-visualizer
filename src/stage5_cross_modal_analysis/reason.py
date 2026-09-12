@@ -386,12 +386,53 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     if not named or low.startswith(("nothing", "none", "no ", "not ")):
         return False, named
     if _about_the_sound(named, label):
-        return True, named
+        return _event_visible(label, named, frames, mdl, proc), named
     reply = _ask(mdl, proc, MAKES_SOUND_PROMPT.format(named=named, label=label),
                  max_new=6).strip().lower()
     print("       [stage5] visible? " + label + " <- '" + named + "' -> " + reply,
           flush=True)
-    return reply.startswith("y"), named
+    if not reply.startswith("y"):
+        return False, named
+    return _event_visible(label, named, frames, mdl, proc), named
+
+
+# The thing being on screen is not the same as the viewer seeing it make the sound. A
+# baby in its mother's arms is "the thing making the crying", and a fire-alarm pull
+# station is "the thing making the alarm", but a deaf viewer looking at either learns
+# nothing about the sound -- whereas a woman with her head back and mouth open plainly
+# IS laughing. Adam's rule is that a visible source needs no picture; the honest
+# reading of "visible" is that the ACTION is visible, not just the object. Asked in both
+# orderings with agreement required, like every other two-way question here.
+EVENT_VISIBLE_PROMPT = (
+    "These frames are from the moment a sound of {label} was heard, and {named} is in "
+    "them. Judge from the frames alone."
+    + chr(10) +
+    "(a) {opt_a}"
+    + chr(10) +
+    "(b) {opt_b}"
+    + chr(10) +
+    "Answer with the letter only."
+)
+EVENT_YES = "you can SEE it making that sound right now -- the action itself is visible"
+EVENT_NO = "it is in the frame, but you cannot see it making the sound"
+
+
+def _event_visible(label: str, named: str, frames, mdl, proc) -> bool:
+    if not getattr(config, "EVENT_VISIBLE", True):
+        return True
+    votes = []
+    for flip in (False, True):
+        opt_a, opt_b = (EVENT_NO, EVENT_YES) if flip else (EVENT_YES, EVENT_NO)
+        want = "b" if flip else "a"
+        reply = _ask(mdl, proc, EVENT_VISIBLE_PROMPT.format(
+            label=label, named=named, opt_a=opt_a, opt_b=opt_b),
+            images=frames, max_new=6).strip().lower().lstrip("(")
+        votes.append(reply[:1] == want)
+    seen = all(votes)
+    print("       [stage5] action visible? " + label + " (" + named + ") -> "
+          + ("yes" if seen else "no, only the object") + " (votes "
+          + "/".join("y" if v else "n" for v in votes) + ")", flush=True)
+    return seen
 
 
 def _dedup(active, mdl, proc, device: str = "cpu") -> None:

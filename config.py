@@ -56,9 +56,10 @@ SPEECH_CONTEXT = True
 # moment choose between them. The video may pick among what the audio proposed; it may
 # never add a label the audio did not hear, and if it cannot tell, both stay.
 DISAMBIGUATE = True
-# One BEATs window is 2 s scored every 0.5 s, so a single-window blip is a 0.5 s span.
-# Requiring two consecutive windows drops those without touching anything sustained.
-AED_MIN_DUR = 1.0
+# BEATs scores a 2 s window every 0.25 s, so a single-window blip is a 0.25 s span.
+# Two consecutive windows drops those. Not more: a phone ring clears the display bar
+# for only 0.75 s, and at 1.0 s it vanished.
+AED_MIN_DUR = 0.5
 
 # Stage 4 — audio event detection (PANNs CNN14 SED)
 # "beats" = BEATs iter3+ fine-tuned on AudioSet-2M (Microsoft, 2022; 0.486 mAP), scored
@@ -128,6 +129,12 @@ SHOW_SOUND_GLYPH = False
 # beside a video that was already showing the source. Off-screen is the whole premise
 # of the system, so this check is what makes the output honest.
 VLM_VISIBILITY = True
+# "Visible" means the ACTION is visible, not just the object. A baby in its mother's
+# arms and a fire-alarm pull station are both "the thing making the sound" and tell a
+# deaf viewer nothing about it; a woman laughing with her mouth open does. Second
+# frames question after the naming step; both orderings must agree before a sound is
+# silenced on visibility.
+EVENT_VISIBLE = True
 # Two sounds get one picture when they are one source. That is decided in two steps.
 #
 # First the AudioSet ontology -- the taxonomy PANNs' own label space comes from, vendored

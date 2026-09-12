@@ -51,6 +51,10 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
         return SCENE
     if prompt.startswith("What kind of place"):
         return PLACE
+    if "Judge from the frames alone" in prompt:
+        # the gavel is seen striking; answer whichever letter means "action visible"
+        lines = prompt.splitlines()
+        return "a" if "SEE it making" in [l for l in lines if l.startswith("(a)")][0] else "b"
     if prompt.startswith("These frames are from the moment"):
         label = prompt.split("a sound of ")[1].split(" was heard")[0]
         return ANSWERS.get(("visible", label), "nothing")
