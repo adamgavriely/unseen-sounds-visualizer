@@ -96,12 +96,10 @@ def _kind_from_frames(label: str, frames, mdl, proc) -> str:
     low = ans.lower()
     if not ans or low.startswith(("unknown", "none", "not ", "no ")):
         return ""
-    # it must still be a kind of THIS sound, by name; otherwise the frames are
-    # describing the scene and the answer is discarded
-    if not _about_the_sound(ans, label):
-        print("       [stage5] kind from frames for " + label + " discarded: " + ans,
-              flush=True)
-        return ""
+    # No name check here: it discarded "airplane" as a kind of Vehicle because the word
+    # "vehicle" is not in it. The answer is only a hint in brackets; the depiction that
+    # comes out of it still has to pass the forced choice against the clip's other
+    # sounds, and that is where drift into the scene is caught.
     print("       [stage5] kind from frames: " + label + " -> " + ans, flush=True)
     return ans
 
@@ -645,6 +643,24 @@ def _disambiguate(specs, video_path, mdl, proc, frames_per_sound: int = 4) -> No
             done.add(id(loser))
 
 
+def _without_place(phrase: str, place: str) -> str:
+    """Drop the place's own words from a depiction, if something is left.
+
+    The prompt says not to name the place unless the sound cannot be drawn without it,
+    and the model names it anyway: "Palace window cracks", "a palace window breaks".
+    Adam: the palace is an assumption. A deterministic strip is the only thing a 7B
+    model reliably obeys. Kept whole if stripping would leave fewer than two words --
+    "a stream in a forest" for Water in a forest is a place the sound needs.
+    """
+    stop = {"a", "an", "the", "of", "in", "on", "at"}
+    bad = {w for w in place.lower().replace(",", " ").split() if w not in stop and len(w) > 2}
+    if not bad:
+        return phrase
+    kept = [w for w in phrase.split() if w.lower().strip(",.") not in bad
+            and w.lower().strip(",.").rstrip("s") not in bad]
+    return " ".join(kept).strip() if len(kept) >= 2 else phrase
+
+
 def _speech_near(segments, start: float, end: float) -> str:
     """Whatever was said within SPEECH_WINDOW seconds of the sound, in order."""
     lo, hi = start - SPEECH_WINDOW, end + SPEECH_WINDOW
@@ -800,12 +816,13 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 detail = " (specifically: " + kind + ")"
         prompt = DEPICT_PROMPT.format(label=spec.event_label, detail=detail, scene=place)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
+        phrase = _without_place(phrase, place)
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
             print("       [stage5] rejected (not about " + spec.event_label + "): "
                   + phrase, flush=True)
             first = phrase
-            phrase = _clean_phrase(_ask(mdl, proc, RETRY_PROMPT.format(
-                label=spec.event_label, detail=detail, scene=place), max_new=48))
+            phrase = _without_place(_clean_phrase(_ask(mdl, proc, RETRY_PROMPT.format(
+                label=spec.event_label, detail=detail, scene=place), max_new=48)), place)
             same_again = phrase.lower().split() == first.lower().split()
             if same_again and not _still_the_sound(phrase, spec.event_label, labels,
                                                    mdl, proc):
