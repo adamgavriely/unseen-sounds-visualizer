@@ -1643,6 +1643,23 @@ ethics/IRB requirements and lead time early --- recruitment/ethics can be the sc
 
 % ======================================================================
 \section{Limitations}\label{sec:limitations}
+
+\paragraph{The detector's vocabulary and its ear (2026-09-13).} In the rodeo clip the
+crowd looks at their phones as an emergency-alert tone sounds. BEATs hears nothing of it:
+in the first eight seconds its top classes are \emph{Speech} 0.79, \emph{Music} 0.69,
+\emph{Animal} 0.52, and the nearest thing to an alert --- \emph{Alarm}, \emph{Beep},
+\emph{Buzzer} --- sits at zero, while \emph{Glockenspiel} and \emph{Marimba} appear at 0.17.
+Two limits stack here. AudioSet's 527 classes have no ``phone alert'' at all, so no model
+trained on it can say the words; and a tonal sound under a film score is mis-heard as a
+tuned instrument. The same masking hides the civil-defence siren everywhere except its
+close-up, where it reaches 0.65 and is (correctly) silenced as visible. Nothing downstream
+can extend a detection the detector does not make. Two general remedies are future work:
+a source-separation front end (split effects from music before detecting) and an
+open-vocabulary audio model --- CLAP zero-shot, or an audio LLM --- as a second opinion
+where BEATs is uncertain, which can name a sound it was never given a class for at the
+cost of weaker per-class precision. A confident false positive is the other face of the
+same limit: a \emph{Dog} at 0.60 in the fire-alarm clip that no listener hears, which no
+threshold reaches and no plausibility prior is allowed to veto.
 Stated here rather than left for an examiner to find. Each one is a limit on what the numbers in
 Section~
 ef{sec:mainresult} support, not a list of things that went wrong.
