@@ -81,8 +81,8 @@ KIND_PROMPT = (
     "A sound detector heard: {label}. These frames are from that moment."
     + chr(10) +
     "If the frames show what KIND of {label} this is, or who or what is making it, say "
-    "so in at most 4 words -- for example, for Crowd: 'a crowd chanting'. Name the kind "
-    "of {label} only; do not describe anything else in the frames."
+    "so in at most 4 words. Name the kind of {label} only; do not describe anything "
+    "else in the frames."
     + chr(10) +
     "If the frames do not show it, answer exactly: unknown."
 )
@@ -135,12 +135,12 @@ DEPICT_PROMPT = (
     "specific kind is given in brackets, draw that kind and not a guess at another."
     + chr(10) +
     "Do not name the place in your answer unless the sound cannot be drawn without it."
-    + chr(10) +
-    "Examples: a person laughing. an audience clapping. a glass shattering. a dog "
-    "barking. a stream in a forest. a telephone ringing."
-    + chr(10) +
-    "Not: roadside laughter echoes through trees. Not: a palace window breaks."
 )
+# No example sentences, on purpose. They were there to teach a 7B model the format, but
+# an example carries content as well as format and the content leaks: "a police car
+# with its siren on" was copied over the detector's own "Civil defense siren". Adam's
+# rule: the prompt is built from the detector, the audio and the video, not from
+# anything written here in advance.
 
 # Asked when the first answer drifted into the scene. Same event framing, place kept --
 # a retry that dropped the place produced "People gathered together moving around" for a
@@ -156,7 +156,7 @@ RETRY_PROMPT = (
     "the moment it makes it. The picture must be of the sound being made, nothing else."
     + chr(10) +
     "Answer with 2 to 5 plain words naming the action. No adjectives, no scenery, no "
-    "punctuation. Example: a person laughing."
+    "punctuation."
 )
 
 # Speech as gate context, done the way the proposal meant and not the way it was first
