@@ -53,6 +53,19 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
         return PLACE
     if "what KIND of" in prompt:
         return "unknown"
+    if prompt.startswith("Describe what is happening in these frames"):
+        return "a judge strikes a wooden gavel in a courtroom"
+    if "Judge from the frames alone." in prompt and "happening on screen" in prompt:
+        # a/b visibility: only the gavel is seen happening; answer the letter that says so
+        yes_is_a = "(a) you can SEE" in prompt
+        seen = "Gavel" in prompt
+        return ("a" if yes_is_a else "b") if seen else ("b" if yes_is_a else "a")
+    if "A sound detector heard" in prompt and "Judge from the frames and the kind of place" in prompt:
+        # plausibility: everything here fits a courtroom except the siren-in-court? keep all plausible
+        yes_is_a = "(a) a sound of" in prompt and "is plausible" in prompt.split("(a)")[1].split("(b)")[0]
+        return "a" if yes_is_a else "b"
+    if "List up to eight sounds" in prompt:
+        return "gavel, laughter, speech, footsteps, doors, sirens, phones, coughing"
     if "Judge from the frames alone" in prompt:
         # the gavel is seen striking; answer whichever letter means "action visible"
         lines = prompt.splitlines()

@@ -143,6 +143,12 @@ EVENT_VISIBLE = True
 # label fixed in the question and "unknown" as an answer. The answer must still name the
 # sound or it is discarded, so the frames can qualify a label but never replace it.
 KIND_FROM_FRAMES = True
+# The place may veto a sound that plainly does not belong in it (a horse at a quarry
+# blast, an ice-cream truck on a train platform), never a sound people are reacting to
+# and never one the detector is more than 90% sure of. An assumption made at run time
+# from the frames, not from a list; bounded because a surprising confident sound is
+# exactly what a hearing viewer reacts to.
+PLAUSIBILITY_CHECK = True
 # Two sounds get one picture when they are one source. That is decided in two steps.
 #
 # First the AudioSet ontology -- the taxonomy PANNs' own label space comes from, vendored
