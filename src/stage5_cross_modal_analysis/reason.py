@@ -286,22 +286,28 @@ def _reads_as(phrase: str, label: str, others, mdl, proc) -> bool:
     the sound it actually depicts. Nothing is listed in advance; the alternatives come
     from what the detector heard in this video.
     """
-    options = [label] + [o for o in others if o != label][:4]
-    # The right answer must not always be (a), or the question stops being a choice and
-    # becomes the agreement task it was meant to replace. Its position is rotated by a
-    # hash of the sound's own name: spread across sounds, stable for one sound, and
-    # reproducible from run to run without a random seed.
-    slot = sum(ord(c) for c in label) % len(options)
-    options[0], options[slot] = options[slot], options[0]
+    base = [label] + [o for o in others if o != label][:4]
     letters = "abcdef"
-    body = chr(10).join("(" + letters[i] + ") " + o for i, o in enumerate(options))
-    body += chr(10) + "(" + letters[len(options)] + ") none of them"
-    reply = _ask(mdl, proc, CHOOSE_PROMPT.format(phrase=phrase, options=body),
-                 max_new=6).strip().lower().lstrip("(")
-    want = letters[slot]
-    print("       [stage5] reads as? '" + phrase + "' -> " + reply.strip()
-          + " (want " + want + " = " + label + ")", flush=True)
-    return reply[:1] == want
+    # Asked twice with the correct option in two different positions, and both must
+    # pick it. One rotated ask let "gun recoil" through as a picture of Sigh, and the
+    # real Explosion in that clip was then merged into the phantom. Every other
+    # two-way question here already requires agreement across orderings; this one
+    # has more options but the same 7B model and the same letter habits.
+    picks = []
+    for k in (0, 1):
+        options = list(base)
+        slot = (sum(ord(c) for c in label) + k) % len(options)
+        options[0], options[slot] = options[slot], options[0]
+        body = chr(10).join("(" + letters[i] + ") " + o for i, o in enumerate(options))
+        body += chr(10) + "(" + letters[len(options)] + ") none of them"
+        reply = _ask(mdl, proc, CHOOSE_PROMPT.format(phrase=phrase, options=body),
+                     max_new=6).strip().lower().lstrip("(")
+        picks.append(reply[:1] == letters[slot])
+    ok = all(picks)
+    print("       [stage5] reads as " + label + "? '" + phrase + "' -> "
+          + ("yes" if ok else "no") + " (votes "
+          + "/".join("y" if v else "n" for v in picks) + ")", flush=True)
+    return ok
 
 
 def _still_the_sound(phrase, label, others, mdl, proc) -> bool:

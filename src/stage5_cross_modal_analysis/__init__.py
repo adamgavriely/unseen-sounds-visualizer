@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from typing import List
 
+import config
 from src.types import SceneContext, SpeechSegment, AudioEvent, AugmentationSpec
 from src.labels import is_salient_nonspeech, consolidate_families, min_confidence, depiction_query
 
@@ -52,7 +53,14 @@ def plan_augmentations(scene: SceneContext,
         else:
             salient = ev.confidence >= min_confidence(ev.label, display_threshold)
             redundant = (ev.source_on_screen is True) or (ev.label.lower() in visible)
-            augment = (salient and not redundant
+            # Stage 2's concept list is a whole-clip, object-level pass: it can say a
+            # thing is somewhere in the video, not that the viewer sees it making this
+            # sound now. When the per-sound VLM check is available it gets the final
+            # word -- it silenced a fire alarm because the pull station was on screen,
+            # and the VLM question that would have caught that never ran. Without the
+            # VLM (the baselines, or no GPU) Stage 2's verdict stands as before.
+            defer = redundant and getattr(config, "VLM_VISIBILITY", False)                 and getattr(config, "DEPICTION_REASONING", False)
+            augment = (salient and (not redundant or defer)
                        and ev.confidence >= min_confidence(ev.label, augment_threshold))
             if not salient:
                 reason = f"below display threshold ({ev.confidence:.2f} < {display_threshold})"
@@ -60,6 +68,8 @@ def plan_augmentations(scene: SceneContext,
                     # recorded so a later rescue-by-speech cannot revive a sound whose
                     # source is on screen; the visibility rule beats every other signal
                     reason += "; source visible on screen anyway"
+            elif redundant and defer:
+                reason = "stage 2 saw the source somewhere in the clip; VLM to confirm"
             elif redundant:
                 reason = "source already visible on screen (stay silent)"
             else:
