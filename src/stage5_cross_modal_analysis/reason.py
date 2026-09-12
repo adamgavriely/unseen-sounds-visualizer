@@ -658,7 +658,13 @@ def _without_place(phrase: str, place: str) -> str:
         return phrase
     kept = [w for w in phrase.split() if w.lower().strip(",.") not in bad
             and w.lower().strip(",.").rstrip("s") not in bad]
-    return " ".join(kept).strip() if len(kept) >= 2 else phrase
+    if len(kept) < 2 or kept == phrase.split():
+        return phrase
+    # "a stream in a forest" minus "forest" is "a stream in a": the place was the object
+    # of a preposition, i.e. the sound needed it. A dangling connective means keep whole.
+    if kept[-1].lower().strip(",.") in _DANGLING:
+        return phrase
+    return " ".join(kept).strip()
 
 
 def _speech_near(segments, start: float, end: float) -> str:
