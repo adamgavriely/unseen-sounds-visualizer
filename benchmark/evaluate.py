@@ -61,6 +61,7 @@ def _analyze(path: Path) -> dict:
     with tempfile.TemporaryDirectory() as td:
         media = extract_audio(path, Path(td) / "a.wav", config.SAMPLE_RATE)
         events = detect_events(Path(media.wav_path), threshold=config.AED_THRESHOLD,
+                               model=config.AED_MODEL,
                                min_dur=config.AED_MIN_DUR)
         # VLM: ask only about sounds actually heard (faster, less hallucination)
         cands = sorted({canonical(e.label) for e in events}) \
