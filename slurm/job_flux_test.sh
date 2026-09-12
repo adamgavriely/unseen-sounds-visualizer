@@ -2,7 +2,7 @@
 #SBATCH --job-name=fluxtest
 #SBATCH --output=logs/fluxtest_%j.out
 #SBATCH --error=logs/fluxtest_%j.err
-#SBATCH --partition=L4-4h
+#SBATCH --partition=L4-4h,L40s-4h,A100-4h,L4-12h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=96G
@@ -27,6 +27,10 @@ if [ -z "${HF_TOKEN:-}" ] && [ -f "$HOME/.bashrc" ]; then
 fi
 if [ -n "${HF_TOKEN:-}" ]; then echo "[auth] HF_TOKEN present (${#HF_TOKEN} chars)"; else echo "[auth] no HF_TOKEN - gated repos will fail"; fi
 
-export GEN_TEST_MODEL="${GEN_TEST_MODEL:-black-forest-labs/FLUX.1-schnell}"
-python scripts/flux_test.py
-ls -la data/output/flux_test/
+# Both generators, same twelve prompts, one job: the shipping PixArt-Sigma first, then
+# FLUX.1-schnell (the proposal's named model). Sheets land in data/output/gen_compare/.
+for M in "PixArt-alpha/PixArt-Sigma-XL-2-1024-MS" "black-forest-labs/FLUX.1-schnell"; do
+    echo "=== $M ==="
+    GEN_TEST_MODEL="$M" python scripts/flux_test.py || echo "  ! $M failed"
+done
+ls -la data/output/gen_compare/*/SHEET*.png

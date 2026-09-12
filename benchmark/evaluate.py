@@ -31,6 +31,11 @@ BENCH = _ROOT / "data" / "input" / "benchmark"
 TAGS = _ROOT / "benchmark" / "tags.json"
 # per-backend files so the CLIP-gate and VLM-gate runs can be compared, not overwritten
 _SFX = "" if config.VIDEO_BACKEND == "clip" else f"_{config.VIDEO_BACKEND}"
+# and per detector: BEATs and PANNs are calibrated differently, so their caches and
+# their sweeps must not be mixed
+_BEATS = "beats" in str(getattr(config, "AED_MODEL", "")).lower()
+if _BEATS:
+    _SFX += "_beats"
 CACHE = _ROOT / "benchmark" / f"eval_cache{_SFX}.json"
 RESULTS = _ROOT / "benchmark" / f"eval_results{_SFX}.json"
 EXT = {".webm", ".ogv", ".mp4"}
@@ -176,9 +181,11 @@ def main():
 
     # score at the configured thresholds + 2D sweep (display x augment)
     result = _score(usable, cache, config.DISPLAY_THRESHOLD, config.AUGMENT_THRESHOLD)
-    sweep = [_score(usable, cache, d, a)
-             for d in (0.08, 0.10, 0.12, 0.15)
-             for a in (0.12, 0.15, 0.20, 0.25, 0.30) if a >= d]
+    # PANNs lives at 0.08-0.30; BEATs' real sounds sat at 0.30+ on the demos and its
+    # phantoms at 0.28-, so its grid is shifted up.
+    grid_d = (0.15, 0.20, 0.25, 0.30, 0.35, 0.40) if _BEATS else (0.08, 0.10, 0.12, 0.15)
+    grid_a = (0.20, 0.25, 0.30, 0.35, 0.40, 0.50) if _BEATS else (0.12, 0.15, 0.20, 0.25, 0.30)
+    sweep = [_score(usable, cache, d, a) for d in grid_d for a in grid_a if a >= d]
     RESULTS.write_text(json.dumps({"main": result, "sweep": [
         {k: s[k] for k in ("display_threshold", "augment_threshold",
                            "accuracy", "precision", "recall", "f1")}

@@ -37,14 +37,21 @@ from PIL import Image, ImageDraw
 import os
 MODEL = os.environ.get("GEN_TEST_MODEL", "black-forest-labs/FLUX.1-schnell")
 
-SUBJECTS = ["a dog barking", "a bird chirping", "a fire engine with its siren on",
-            "a glass shattering", "rain falling", "footsteps on a wooden floor"]
+# The prompts the pipeline actually produced on the demo set (2026-09-12), so the
+# comparison is on real depictions rather than on hand-picked ones. Adam's verdicts on
+# the PixArt renders: horn "weird", clapping "super weird", phone "weird".
+SUBJECTS = ["a vehicle horn blaring", "people clapping hands", "hand lifting receiver",
+            "a glass cracks", "siren wailing", "baby crying", "gun fire",
+            "clock ticking", "dog barks loudly", "a person laughing",
+            "Glass breaks", "train wheels rolling"]
+import json as _json
+if os.environ.get("GEN_TEST_PROMPTS"):
+    SUBJECTS = _json.loads(Path(os.environ["GEN_TEST_PROMPTS"]).read_text("utf-8"))
 
-# "isolated" won the plain-prompt test on SDXL-Turbo: it also removed the dangerous
-# case, where the bare fire-engine prompt put FLAMES in the background and would have
-# told a deaf viewer "fire" when the sound is a siren. Only that form is carried forward.
+# Exactly the tail Stage 6 appends in the pipeline (PLAIN_TAIL), so what is compared is
+# what ships. "single subject" left it when depictions became events.
 VARIANTS = {
-    "isolated": "{s}, plain white background, single subject, clearly visible",
+    "isolated": "{s}, plain white background, clearly visible",
 }
 
 
