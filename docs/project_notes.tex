@@ -1394,6 +1394,130 @@ looks wrong, and the model cannot report that it was interrupted, so the only re
 token count. A generation that hits its cap now drops its final fragment, and every depiction is cut
 to its first clause and a fixed word count at a word boundary.
 
+\subsection{The detector was the bottleneck (2026-09-12)}\label{sec:beats}
+Adam reviewed eight demo clips with the generator's prompt printed under every picture,
+and eleven of his fourteen complaints traced to one place: PANNs had labelled the sound
+wrong, and everything downstream had drawn the wrong label faithfully. A siren was
+``truck horn'', a car squeak ``dog'', a stutter ``hiccup'', an engine rotor ``printer'', a
+fire alarm ``whistle'', a crying baby ``sheep'', and a glass shatter was missed outright.
+Two of the remaining three were prompt wording; one was a rule question.
+
+PANNs CNN14 (2019) scores 0.431 mAP on AudioSet. BEATs iter3+ fine-tuned on AudioSet-2M
+(Chen et al., Microsoft, 2022) scores 0.486 on the same 527 labels, which is the property
+that made the swap cheap: the ontology deduplication, the families and the gate are all
+keyed on the label set and carry over untouched. \texttt{config.py} had said
+``$\rightarrow$ BEATs for quality later'' since the first commit. BEATs is a clip-level
+tagger, so time spans come from a 2\,s window scored every 0.25\,s, shaped like PANNs'
+frame-wise output so nothing else changes. The vendored code is MIT; the checkpoint comes
+from an ungated Hugging Face mirror because the official SharePoint link is unreachable
+from the cluster.
+
+On the same six clips, every complaint resolved:
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+clip & PANNs & BEATs \\
+\midrule
+plane cockpit & printer 0.12 & \textbf{Shatter 0.94} \\
+fire alarm & whistle 0.15 & \textbf{Fire alarm 0.70}, 8.5--19.5\,s \\
+protest & sheep 0.21, owl; glass missed & \textbf{Shatter 0.85}, \textbf{Baby cry 0.38}, no owl \\
+bedroom & hiccup & \textbf{Telephone bell 0.58} \\
+motorcycle & dog & \textbf{Vehicle horn 0.65} \\
+rodeo & truck horn, footsteps & \textbf{Siren 0.65}, horse; neither phantom \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{Calibration moved with the model.} The display bar of 0.12 was PANNs' sweep
+optimum. On the eight BEATs demos every real sound scored 0.30 or above and every phantom
+0.28 or below (Basketball bounce 0.28, Roaring cats 0.19, Keys jangling 0.17), so the bar
+is 0.30 pending the full sweep over the 274 tagged clips (Section~\ref{sec:beatssweep}).
+
+\textbf{Two timing bugs, found by watching rather than reading.} Adam saw the glass
+shatter on screen \emph{before} he heard it in three of five clips. A score for the window
+$[s, s{+}2]$ had been stamped at its centre, so a sound in the second half of the window
+appeared up to a second early. Stamped at the window's end, the onset is never early and at
+worst one hop late. Separately, \texttt{merge\_by\_label} had been taking min-start and
+max-end over every firing of a label, so the display span was a function of the weakest
+detection in the clip: a 0.23 Vehicle at 1.6--4.2\,s was stretched to 1.6--17.3\,s by three
+later firings at 0.08--0.12, and the viewer got a tractor beside the video for sixteen
+seconds. Firings closer than a second are now one burst, anything further apart is a
+separate burst, and a picture is shown during each burst only; firings below the display
+bar can neither extend a burst nor supply the specific sub-label.
+
+\textbf{What a better detector did not fix.} BEATs hears the rodeo siren only at
+10.5--13.5\,s, rising 0.35$\rightarrow$0.65 and then dropping to 0.01, while Adam hears it
+through most of the clip; the rest of the time it is under the announcer, whom BEATs
+scores at 0.6--0.86 \emph{Speech}. Nothing downstream can extend a detection the detector
+does not make. Likewise a \emph{Tick} at 0.48 in the cockpit that Adam does not hear.
+These are the detector's limits and are reported as such.
+
+\subsection{Visible means the action, not the object}\label{sec:actionvisible}
+The visibility question (Section~\ref{sec:vlmvisibility}) asks the VLM to name the thing
+making the sound. Two demos showed that the \emph{thing} being on screen is not the same as
+the viewer \emph{seeing it make the sound}: a baby in its mother's arms was named as the
+source of the crying and silenced, and a fire-alarm pull station on a wall was named as
+the source of an eleven-second alarm and silenced. A deaf viewer looking at either learns
+nothing about the sound. A woman with her head back and her mouth open, by contrast,
+plainly \emph{is} laughing.
+
+So a second frames question follows the naming step: judging from the frames alone, can
+you see it making that sound right now? Asked in both orderings, agreement required, like
+every other two-way question in this stage. On the demos it kept the laughing woman silent
+(\texttt{y/y}) and brought back the baby (\texttt{n/n}). It also required a change of
+structure: Stage 2's concept list had been silencing sounds \emph{before} the VLM ever
+looked, so the alarm never reached the question. When the per-sound VLM check is on, a
+Stage 2 hit now only defers the decision to it; without the VLM --- the baselines, or no
+GPU --- Stage 2's verdict stands as before. Stage 2 is a whole-clip, object-level pass and
+can say a thing is in the video, not that the viewer sees it making this sound now.
+
+\subsection{The frames may choose between two names for one sound}\label{sec:disamb}
+Adam's original example was fire crackling that sounds like water. The rule that the
+video contributes and never replaces seemed to forbid using the frames for it --- until
+the sheep. PANNs had labelled a crying baby ``Sheep'' at 0.21, and had a ``Baby cry'' with
+the same span a little below it. The detector was hedging between two things it cannot
+tell apart by ear, and the mother holding the baby was on screen.
+
+Choosing among the detector's own candidates is contribution, not replacement: the audio
+proposes, the video picks, and nothing is ever added that the audio did not hear. ``Same
+event'' is decided by timing, not meaning --- two spans whose starts and ends both fall
+within 0.6\,s of each other, and which are not ancestor and descendant in the ontology.
+Genuinely simultaneous sounds rarely share both boundaries; one sound with two names
+always does, because both names came from the same windows. The VLM is shown the frames
+from that moment and asked which it is, in both orderings, with ``cannot tell'' as a third
+option that keeps both. With BEATs the sheep is already a baby, so on the demos the
+question has so far only fired on \emph{Tick}/\emph{Tick-tock} and answered ``cannot
+tell'' --- correctly, since those are one sound anyway and the ontology merges them.
+
+\subsection{Speech as gate context, and what it is worth}\label{sec:speechgate}
+Whisper's transcript had been consumed by nothing at inference; the proposal's intended
+use --- speech as context for the gate --- had been tried by feeding the transcript into
+the depiction prompt, where it leaked dialogue into pictures, and removed. It is now used
+the way the proposal meant. For each sound with speech within three seconds of it, one
+text-only forced choice: are the people on the soundtrack reacting to this sound? A yes
+puts the sound first in line when more overlap than the panel can carry, and rescues a
+marginal one the gate declined on confidence alone, from the upper half of the band under
+the threshold. It never reaches a picture and never overrides visibility.
+
+The 7B model answered ``(b)'' in 22 of 23 calls whichever option (b) was, so alternating
+the letters turned a position bias into a coin flip that rescued an \emph{Alarm} on
+``Ugh.'' Asked in both orderings with agreement required, the bias yields yes in one and
+no in the other and only content survives. It then said yes to phonetic junk ---
+``Lachon. La.'' for laughter, ``oh'' for an owl --- which is Whisper transcribing
+non-speech, so the question is not asked for fewer than four words. On the 100-clip run it
+was asked 77 times and answered yes twice (``Whoa guys look at that'' beside a boat and a
+siren), which is the right order of magnitude for a benchmark of ambient clips.
+
+\subsection{Debugging aids that changed the conversation}\label{sec:debugstrip}
+Two overlays, both off for viewers. The generator's exact prompt is printed under each
+picture, which is how a bad picture gets traced to the words that made it; and under the
+panel, every raw detection active at that moment with its confidence and the gate's
+verdict (\texttt{SHOWN}, \texttt{visible}, \texttt{merged}, \texttt{faint},
+\texttt{speech/music}, \texttt{dropped}). The second is what let Adam's fourteen complaints
+be sorted into detector, gate, prompt and generator within one review, which no amount of
+log-reading had managed.
+
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
 \subsection{Automatic protocol (primary)}

@@ -24,7 +24,7 @@ protocol.
 | 1 | [Audio extraction](src/stage1_audio_extraction) | standardize audio | FFmpeg |
 | 2 | [Video understanding](src/stage2_video_understanding) | what's already visible | **OWLv2** (also CLIP / SigLIP / Qwen2.5-VL) |
 | 3 | [Speech recognition](src/stage3_speech_recognition) | transcribe speech (secondary) | **Whisper** |
-| 4 | [Audio event detection](src/stage4_audio_event_detection) | non-speech sounds | **PANNs CNN14** |
+| 4 | [Audio event detection](src/stage4_audio_event_detection) | non-speech sounds | **BEATs iter3+** (PANNs CNN14 as fallback) |
 | 5 | [Cross-modal analysis](src/stage5_cross_modal_analysis) | **what to augment, and what to draw** | gate over stages 2 and 4 + **Qwen2.5-VL** reasoning |
 | 6 | [Visual augmentation](src/stage6_visual_augmentation) | produce the visuals | **Openverse retrieval** (beat SDXL) |
 | 7 | [Evaluation](src/stage7_evaluation) | VLM-describe -> LLM-reference -> independent LLM judge | **Qwen2.5-VL + Mistral-7B** |
