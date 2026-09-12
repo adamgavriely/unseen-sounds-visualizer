@@ -174,6 +174,14 @@ MAX_SLOTS = 3
 # -- an open beak for chirping -- and FLUX returned a blank white image for "rain
 # falling". Ungated, and ~10x faster than FLUX, which needs CPU offload on a 23 GB card.
 GEN_MODEL = "PixArt-alpha/PixArt-Sigma-XL-2-1024-MS"   # for the v2 diffusion backend
+# Side by side on the pipeline's own twelve prompts (2026-09-12, data/output/gen_compare):
+# FLUX.1-schnell is cleaner and more literal -- a real gun with a muzzle flash, a legible
+# clock face, an actual train wheel, clearer clapping hands -- while PixArt is more
+# dramatic on impacts (both glass images, the crying baby) and garbles detail (clock
+# numerals, wheels). FLUX needs sequential CPU offload on a 23 GB card, ~25 s per image
+# against ~2 s. Selectable here; the demo job renders with FLUX for Adam to judge on
+# video, the protocol ships whichever he picks.
+GEN_MODEL_FLUX = "black-forest-labs/FLUX.1-schnell"
 RESOLUTION = (1024, 1024)    # augmentation image size
 PANEL_SIZE = 720             # side-by-side augmentation panel size (px)
 FPS = 25

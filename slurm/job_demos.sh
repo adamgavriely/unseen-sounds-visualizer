@@ -31,6 +31,12 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
 conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export PYTHONUNBUFFERED=1
+# FLUX is gated: the token lives in ~/.bashrc, which cannot be sourced under
+# set -euo pipefail (it killed a job in 3 s with an empty stderr once), so it is read out.
+if [ -z "${HF_TOKEN:-}" ] && [ -f "$HOME/.bashrc" ]; then
+    HF_TOKEN=$(sed -n 's/^[[:space:]]*export[[:space:]]*HF_TOKEN=//p' "$HOME/.bashrc" | tail -1 | tr -d "\"'" ) || true
+    export HF_TOKEN
+fi
 
 N="${N:-8}"
 python -m benchmark.select_demo --from-protocol --write "$N"
@@ -41,7 +47,11 @@ from pathlib import Path
 import config
 config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"
-config.GEN_BACKEND = "diffusion"    # the shipping generator: SDXL-Turbo pictograms
+config.GEN_BACKEND = "diffusion"
+import os
+if os.environ.get("GEN", "") == "flux":
+    config.GEN_MODEL = config.GEN_MODEL_FLUX
+    config.RESOLUTION = (768, 768)     # sequential offload: 1024 would be ~100 s/image
 config.GATE_ENABLED = True          # the proposed system
 config.TRANSCRIBE = True            # the gate asks whether people react to each sound
 config.RENDER_MODE = "full"
@@ -51,7 +61,7 @@ from src import pipeline
 
 root = Path(".").resolve()
 chosen = json.loads((root / "benchmark" / "demo_set.json").read_text(encoding="utf-8"))
-out = root / "data" / "output" / "demos"
+out = root / "data" / "output" / ("demos_flux" if os.environ.get("GEN", "") == "flux" else "demos")
 out.mkdir(parents=True, exist_ok=True)
 config.OUTPUT_DIR = out            # a Path: pipeline does OUTPUT_DIR / "<name>.mp4"
 ok = 0
@@ -61,7 +71,7 @@ for i, rel in enumerate(chosen, 1):
         print(f"  ! missing {rel}", flush=True); continue
     print(f"[{i}/{len(chosen)}] {clip.name}", flush=True)
     try:
-        pipeline.run(clip, work_root=root / "data" / "work" / "demos")
+        pipeline.run(clip, work_root=root / "data" / "work" / out.name)
         ok += 1
     except Exception as e:
         print(f"  ! {clip.name}: {type(e).__name__}: {e}", flush=True)
@@ -70,5 +80,5 @@ if ok == 0:
     sys.exit("no demos rendered")
 PY
 
-ls -la data/output/demos/*.mp4 2>/dev/null | tail -12
-echo "DONE -> data/output/demos/"
+ls -la data/output/demos*/*.mp4 2>/dev/null | tail -16
+echo "DONE"

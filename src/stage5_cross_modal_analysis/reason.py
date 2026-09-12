@@ -94,8 +94,12 @@ DEPICT_PROMPT = (
     "Answer with 2 to 5 plain words naming the action. No adjectives, no adverbs, no "
     "scenery, no poetry, no punctuation."
     + chr(10) +
+    "Name the SOURCE doing it, so the viewer sees where the sound comes from: a car "
+    "honking, not a horn; a telephone ringing, not a receiver; a police car with its "
+    "siren on, not a siren."
+    + chr(10) +
     "Examples: a person laughing. an audience clapping. a glass shattering. a dog "
-    "barking. a stream in a forest. a car horn honking."
+    "barking. a stream in a forest. a car honking its horn. a telephone ringing."
     + chr(10) +
     "Not: roadside laughter echoes through trees."
 )

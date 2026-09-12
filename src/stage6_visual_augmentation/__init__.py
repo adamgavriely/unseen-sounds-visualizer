@@ -300,20 +300,30 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
     try:
         import torch
         from diffusers import AutoPipelineForText2Image
+        is_flux = "flux" in model.lower()
         if _PIPE is None:
             _PIPE = AutoPipelineForText2Image.from_pretrained(
-                model, torch_dtype=torch.float16 if device == 'cuda' else torch.float32,
+                model, torch_dtype=(torch.bfloat16 if is_flux else torch.float16)
+                if device == 'cuda' else torch.float32,
                 use_safetensors=True)
-            _PIPE = _PIPE.to(device)
+            if is_flux and device == "cuda":
+                # FLUX is ~24 GB in bf16 and the L4 exposes 22. Whole-component
+                # offload still OOMs; sequential offload moves one module at a time,
+                # ~25 s per 512 px image instead of ~2 s, and it fits.
+                _PIPE.enable_sequential_cpu_offload()
+            else:
+                _PIPE = _PIPE.to(device)
             _PIPE.set_progress_bar_config(disable=True)
         kw = dict(prompt=prompt, width=size[0], height=size[1])
-        if 'turbo' in model:
+        if 'turbo' in model or (is_flux and "schnell" in model.lower()):
             # Distilled: trained for very few steps and ignores classifier-free
             # guidance, so a negative prompt does nothing here and a high guidance
             # scale degrades it. Also ~7x cheaper per image, which matters at 300.
             kw.update(num_inference_steps=4, guidance_scale=0.0)
         else:
             kw.update(num_inference_steps=25, guidance_scale=4.5)
+        if is_flux:
+            kw["max_sequence_length"] = 256
         img = _PIPE(**kw).images[0]
         img.save(path)
         return True
