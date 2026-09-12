@@ -39,7 +39,14 @@ if [ -z "${HF_TOKEN:-}" ] && [ -f "$HOME/.bashrc" ]; then
 fi
 
 N="${N:-8}"
-python -m benchmark.select_demo --from-protocol --write "$N"
+# DEMO_SET=benchmark/demo_set_random.json renders a fixed list instead of the "most
+# visibly selective" eight; those eight had been reviewed so many times that the demos
+# stopped being a sample of anything. The random set is drawn across the four tag classes.
+if [ -n "${DEMO_SET:-}" ]; then
+    cp "$DEMO_SET" benchmark/demo_set.json
+else
+    python -m benchmark.select_demo --from-protocol --write "$N"
+fi
 
 python - <<'PY'
 import json, sys
