@@ -35,10 +35,15 @@ if ! conda env list | grep -q '^psed '; then
     pip install -q -r /tmp/psed_req.txt
     conda deactivate
 fi
-conda activate psed
+conda activate msproj                    # ffmpeg lives here
 for c in $CLIPS; do
     stem=$(basename "$c" .mp4)
     ffmpeg -y -i "$c" -ac 1 -ar 16000 "data/output/timing/psed/$stem.wav" -loglevel error
+done
+conda deactivate
+conda activate psed
+for c in $CLIPS; do
+    stem=$(basename "$c" .mp4)
     python scripts/psed_dump.py "data/output/timing/psed/$stem.wav" "data/output/timing/psed/$stem.npz"
 done
 conda deactivate
