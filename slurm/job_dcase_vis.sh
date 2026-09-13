@@ -17,10 +17,11 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || \
 conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export PYTHONUNBUFFERED=1
-python - <<'PY'
+N="${N:-300}"
+python - "$N" <<'PY'
 import config, sys
 config.DEVICE = "cuda"
-sys.argv = ["eval_dcase_visibility", "--n", "${N:-300}"]
+sys.argv = ["eval_dcase_visibility", "--n", sys.argv[1]]
 from benchmark import eval_dcase_visibility as E
 E.main()
 PY
