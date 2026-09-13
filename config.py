@@ -80,16 +80,19 @@ GATE_ENABLED = True          # v2-(a): gate on the CLIP seen/not-seen check (Sta
 # 0.12 was the PANNs sweep optimum. BEATs is calibrated differently: over the eight demo
 # clips every real sound scored 0.30 or above (Glass 0.94, Fire alarm 0.70, Telephone
 # 0.58, Crowd 0.45) and every phantom 0.28 or below (Basketball bounce 0.28, Roaring
-# cats 0.19, Keys jangling 0.17). 0.30 was that gap; the hard demo set moved it to 0.40. The sweep over the 256 tagged clips
+# cats 0.19, Keys jangling 0.17). Then 0.40 lost a real crow at 0.37 and a real insect at
+# 0.39 on the hard set: real sounds and phantoms overlap in 0.30-0.42 and no bar is clean.
+# 0.35, erring towards showing, since a missed real sound is the worse error for a deaf
+# viewer. Sound-level gold labels are what would settle this properly. The sweep over the 256 tagged clips
 # (job 28902699, benchmark/eval_results_owlv2_beats.json) puts the rule-only gate's F1 on
 # a plateau from 0.30 to 0.35 (44.3-45.8%); recall falls off above 0.35 (77% -> 64% at
 # 0.40). Note the sweep scores Stage 2's concept list, not the per-sound VLM check, so
 # its precision (31%) is the concept list's blindness, which the VLM step exists to fix.
-DISPLAY_THRESHOLD = 0.40
+DISPLAY_THRESHOLD = 0.35
 # Asymmetric bar for the OFF-screen (augment) claim. The PANNs sweep said raising it
 # above DISPLAY_THRESHOLD hurts -- faint off-screen sounds are the true positives
 # (distant == unseen). Kept as a knob, set equal.
-AUGMENT_THRESHOLD = 0.40
+AUGMENT_THRESHOLD = 0.35
 
 # Stage 6 — visual augmentation generation
 GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder

@@ -541,6 +541,13 @@ def _event_visible(label: str, named: str, frames, mdl, proc) -> bool:
     return seen
 
 
+def _overlap(a, b, slack: float = 1.0) -> bool:
+    """Do any bursts of these two sounds coincide (within `slack` seconds)?"""
+    sa = list(getattr(a, "spans", None) or [(a.start, a.end)])
+    sb = list(getattr(b, "spans", None) or [(b.start, b.end)])
+    return any(x0 - slack <= y1 and y0 - slack <= x1 for x0, x1 in sa for y0, y1 in sb)
+
+
 def _dedup(active, mdl, proc, device: str = "cpu") -> None:
     """Merge sounds that would be drawn as the same picture.
 
@@ -601,8 +608,10 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
         dup, score, why = None, 1.0, "identical"
         for j in kept:
             # The detector's own taxonomy first: if one label is a more specific kind of
-            # the other, they are one source and no threshold has to be chosen.
-            if same_source(spec.event_label, order[j].event_label):
+            # the other AND they overlap in time, they are one source. Time matters: an
+            # Owl at 2 s and a Bird at 19-27 s are two events, and merging them by name
+            # alone swallowed seven seconds of birdsong into a picture shown at second 2.
+            if same_source(spec.event_label, order[j].event_label) and _overlap(spec, order[j]):
                 dup, score, why = j, 1.0, "same source in the AudioSet ontology"
                 break
             if subs[i] == subs[j]:
@@ -621,6 +630,11 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
         if dup is None:
             kept.append(i)
             continue
+        # the survivor shows during BOTH sounds' bursts, not just its own
+        keep_spec = order[dup]
+        mine = list(getattr(spec, "spans", None) or [(spec.start, spec.end)])
+        theirs = list(getattr(keep_spec, "spans", None) or [(keep_spec.start, keep_spec.end)])
+        keep_spec.spans = sorted(set(theirs + mine))
         spec.augment = False
         spec.subject = ""
         spec.image_prompt = ""
