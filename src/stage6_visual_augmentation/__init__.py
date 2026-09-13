@@ -569,7 +569,7 @@ def _timeline(specs: List[AugmentationSpec], duration: float, extra_bounds=()):
     if not placed:
         bounds = sorted({0.0, float(duration)} | extra)
         return [({}, b - a) for a, b in zip(bounds, bounds[1:]) if b - a >= 0.05] \
-            or [({}, duration)], 0
+            or [({}, duration)], 0, []
     bounds = sorted({0.0, float(duration)} | {p[2] for p in placed}
                     | {min(p[3], duration) for p in placed} | extra)
     segs = []
@@ -582,7 +582,7 @@ def _timeline(specs: List[AugmentationSpec], duration: float, extra_bounds=()):
             if s0 <= mid < s1:
                 active[r] = (label, spec)
         segs.append((active, b - a))
-    return segs or [({}, duration)], n_rows
+    return segs or [({}, duration)], n_rows, placed
 
 
 def _opacity(confidence: float) -> float:
@@ -650,7 +650,8 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
 DEBUG_STRIP = 150   # px reserved under the panel for the detection list
 
 
-def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None) -> str:
+def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None,
+                  placed=None) -> str:
     """What the gate did with a raw detection AT THIS MOMENT, for the debug strip.
 
     "SHOWN" used to mean the sound had a picture somewhere in the clip, so a siren
@@ -665,10 +666,16 @@ def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None) ->
         if sp.event_label == fam or sp.event_label == label:
             r = sp.reason.lower()
             if sp.augment:
-                spans = getattr(sp, "spans", None) or [(sp.start, sp.end)]
-                if t is None or any(a <= t < b + 1.5 for a, b in spans):
-                    return "SHOWN"
-                return "not now"
+                # SHOWN means a picture for it is on the panel at this instant -- read
+                # from what the compositor actually placed, not from the sound's spans:
+                # with three rows and four overlapping sounds the quietest is not drawn,
+                # and the strip used to say SHOWN over an empty cell.
+                if placed is not None:
+                    if any(lab == sp.event_label and a <= t < b for _, lab, a, b, _ in placed):
+                        return "SHOWN"
+                    ever = any(lab == sp.event_label for _, lab, _, _, _ in placed)
+                    return "not now" if ever else "no room (3 rows)"
+                return "SHOWN"
             if "visible" in r:
                 return "visible"
             if "same source" in r or "same picture" in r or "same sound" in r:
@@ -684,7 +691,7 @@ def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None) ->
 
 
 def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
-                 specs: List[AugmentationSpec], top: int = 8) -> None:
+                 specs: List[AugmentationSpec], top: int = 8, placed=None) -> None:
     """Every raw detection active at time t, loudest first, with the gate's verdict.
 
     Diagnosis, not presentation. Adam: "every sound recognized should be written, so I
@@ -712,7 +719,7 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
                "merged": (150, 170, 240), "faint": (130, 130, 140),
                "speech/music": (110, 110, 120), "dropped": (200, 110, 110)}
     for i, e in enumerate(active):
-        verdict = _decision_for(e.label, specs, t)
+        verdict = _decision_for(e.label, specs, t, placed)
         col = colours.get(verdict, (200, 200, 210))
         line = f"{e.confidence:.2f}  {e.label[:34]}"
         d.text((x0 + 10, y0 + 5 + (i + 1) * lh), line, font=fnt, fill=(225, 228, 235))
@@ -748,7 +755,7 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
         # the video; it used to carry a segment's midpoint for the segment's whole length
         cuts = [k * 0.5 for k in range(int(duration * 2) + 1)]
         cuts += [e.start for e in events] + [e.end for e in events]
-    segs, n_rows = _timeline(specs, duration, extra_bounds=cuts)
+    segs, n_rows, placed = _timeline(specs, duration, extra_bounds=cuts)
     slot_h = panel - (DEBUG_STRIP if debug else 0)
     lines = []
     t_cursor = 0.0
@@ -757,7 +764,7 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
         canvas = Image.new("RGB", (panel, panel), (16, 18, 24))
         if debug:
             _debug_strip(canvas, (0, slot_h, panel, panel), t_cursor + dur / 2,
-                         events, specs)
+                         events, specs, placed=placed)
         t_cursor += dur
         if n_rows == 0:
             # No augmentation anywhere in this clip is a DECISION, not a failure: say
