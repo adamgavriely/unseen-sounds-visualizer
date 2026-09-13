@@ -156,7 +156,12 @@ KIND_FROM_FRAMES = True
 # and never one the detector is more than 90% sure of. An assumption made at run time
 # from the frames, not from a list; bounded because a surprising confident sound is
 # exactly what a hearing viewer reacts to.
-PLAUSIBILITY_CHECK = True
+# OFF (2026-09-13). Measured on the demo sets it fired four times: horse at a quarry and
+# ice-cream truck at a station (right), a dog in a parking lot and an aircraft over a
+# railway (wrong) -- a rule that deletes a real sound half the time it fires is worse
+# than the phantoms it catches. Adam's original "no assumptions" stands; the code stays
+# for the ablation.
+PLAUSIBILITY_CHECK = False
 # A corroboration band (0.35-0.45, shown only with a second signal) was tried and cut
 # the wrong way: the one real sound in the train clip, the horn at 0.42, had nothing
 # behind it and was dropped, while the phantom Bird at 0.38 was "corroborated" by its own

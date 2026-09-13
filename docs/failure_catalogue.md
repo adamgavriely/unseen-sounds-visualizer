@@ -21,3 +21,4 @@ on the dev split. Entries marked FIXED were general bugs, not tuning.
 | 13 | 09-13 | mc_bridge_scene, un_police_car | gunshot / police siren silenced in one run, shown in the next after a 0.5 s shift in frame sampling | visibility | 0.50 / - | verdict unstable to frame choice | open (1 of 3) |
 | 14 | 09-13 | b3_jungle_hike | insect buzzing merged into bird chirping on depiction similarity 0.82 | dedup (similarity) | - | SigLIP text similarity coarse between short phrases | open (1 of 3) |
 | 15 | 09-13 | un_police_car, mc_bridge | description named the source ("police car with its lights", "gun on the back seat") but not the sound word; vote counted as no | visibility | - | string match where world knowledge was needed | FIXED |
+| 16 | 09-13 | mc_bridge_scene | dog vetoed again with the two-signal rule; aircraft over a railway also vetoed | place veto | 0.44 / 0.39 | veto 2 right / 2 wrong on 4 uses | DECIDED: veto off by default |
