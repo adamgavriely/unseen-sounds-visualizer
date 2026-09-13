@@ -80,16 +80,16 @@ GATE_ENABLED = True          # v2-(a): gate on the CLIP seen/not-seen check (Sta
 # 0.12 was the PANNs sweep optimum. BEATs is calibrated differently: over the eight demo
 # clips every real sound scored 0.30 or above (Glass 0.94, Fire alarm 0.70, Telephone
 # 0.58, Crowd 0.45) and every phantom 0.28 or below (Basketball bounce 0.28, Roaring
-# cats 0.19, Keys jangling 0.17). 0.30 is that gap. The sweep over the 256 tagged clips
+# cats 0.19, Keys jangling 0.17). 0.30 was that gap; the hard demo set moved it to 0.40. The sweep over the 256 tagged clips
 # (job 28902699, benchmark/eval_results_owlv2_beats.json) puts the rule-only gate's F1 on
 # a plateau from 0.30 to 0.35 (44.3-45.8%); recall falls off above 0.35 (77% -> 64% at
 # 0.40). Note the sweep scores Stage 2's concept list, not the per-sound VLM check, so
 # its precision (31%) is the concept list's blindness, which the VLM step exists to fix.
-DISPLAY_THRESHOLD = 0.35
+DISPLAY_THRESHOLD = 0.40
 # Asymmetric bar for the OFF-screen (augment) claim. The PANNs sweep said raising it
 # above DISPLAY_THRESHOLD hurts -- faint off-screen sounds are the true positives
 # (distant == unseen). Kept as a knob, set equal.
-AUGMENT_THRESHOLD = 0.35
+AUGMENT_THRESHOLD = 0.40
 
 # Stage 6 — visual augmentation generation
 GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
@@ -149,13 +149,14 @@ KIND_FROM_FRAMES = True
 # from the frames, not from a list; bounded because a surprising confident sound is
 # exactly what a hearing viewer reacts to.
 PLAUSIBILITY_CHECK = True
-# Corroboration band. On the hard demo set every phantom sat at 0.30-0.38 (Footsteps
-# 0.31, Gush 0.30, Bird 0.38, Crow 0.37, Owl 0.32) and every real sound at 0.42+, while
-# the tag sweep says recall falls off above 0.35. So the bar is 0.35, and a sound between
-# it and CORROBORATE_BELOW is shown only if something else backs it: people reacting to
-# it, a sub-label from the detector, or the frames naming what kind of sound it is.
-# Alone at that confidence, it is dropped.
-CORROBORATE_BELOW = 0.45
+# A corroboration band (0.35-0.45, shown only with a second signal) was tried and cut
+# the wrong way: the one real sound in the train clip, the horn at 0.42, had nothing
+# behind it and was dropped, while the phantom Bird at 0.38 was "corroborated" by its own
+# sub-label Crow -- from the same detector, and just as wrong. Phantoms come in families.
+# A flat bar at 0.40 keeps the horn and clears every phantom seen on the demo sets
+# (Footsteps 0.31, Gush 0.30, Bird 0.38, Crow 0.37, Owl 0.32); the one it does not
+# clear is a Sheep at 0.41 in a jungle. Set to 0 to disable.
+CORROBORATE_BELOW = 0.0
 # Two sounds get one picture when they are one source. That is decided in two steps.
 #
 # First the AudioSet ontology -- the taxonomy PANNs' own label space comes from, vendored
