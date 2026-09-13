@@ -85,11 +85,11 @@ GATE_ENABLED = True          # v2-(a): gate on the CLIP seen/not-seen check (Sta
 # a plateau from 0.30 to 0.35 (44.3-45.8%); recall falls off above 0.35 (77% -> 64% at
 # 0.40). Note the sweep scores Stage 2's concept list, not the per-sound VLM check, so
 # its precision (31%) is the concept list's blindness, which the VLM step exists to fix.
-DISPLAY_THRESHOLD = 0.30
+DISPLAY_THRESHOLD = 0.35
 # Asymmetric bar for the OFF-screen (augment) claim. The PANNs sweep said raising it
 # above DISPLAY_THRESHOLD hurts -- faint off-screen sounds are the true positives
 # (distant == unseen). Kept as a knob, set equal.
-AUGMENT_THRESHOLD = 0.30
+AUGMENT_THRESHOLD = 0.35
 
 # Stage 6 — visual augmentation generation
 GEN_BACKEND = "diffusion"    # diffusion | retrieve (Openverse) | placeholder
@@ -149,6 +149,13 @@ KIND_FROM_FRAMES = True
 # from the frames, not from a list; bounded because a surprising confident sound is
 # exactly what a hearing viewer reacts to.
 PLAUSIBILITY_CHECK = True
+# Corroboration band. On the hard demo set every phantom sat at 0.30-0.38 (Footsteps
+# 0.31, Gush 0.30, Bird 0.38, Crow 0.37, Owl 0.32) and every real sound at 0.42+, while
+# the tag sweep says recall falls off above 0.35. So the bar is 0.35, and a sound between
+# it and CORROBORATE_BELOW is shown only if something else backs it: people reacting to
+# it, a sub-label from the detector, or the frames naming what kind of sound it is.
+# Alone at that confidence, it is dropped.
+CORROBORATE_BELOW = 0.45
 # Two sounds get one picture when they are one source. That is decided in two steps.
 #
 # First the AudioSet ontology -- the taxonomy PANNs' own label space comes from, vendored

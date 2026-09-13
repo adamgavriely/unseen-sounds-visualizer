@@ -52,7 +52,8 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
     if prompt.startswith("What kind of place"):
         return PLACE
     if "what KIND of" in prompt:
-        return "unknown"
+        # the frames corroborate the faint baby (a baby is in shot); nothing else
+        return "a baby in arms" if "Baby cry" in prompt else "unknown"
     if prompt.startswith("Describe what is happening in these frames"):
         return "a judge strikes a wooden gavel in a courtroom"
     if "Judge from the frames alone." in prompt and "happening on screen" in prompt:
@@ -150,7 +151,7 @@ for s in specs:
 shown = [s.event_label for s in specs if s.augment]
 assert shown == ["Laughter", "Siren", "Baby cry, infant cry", "Door"], shown
 sheep = next(s for s in specs if s.event_label == "Sheep")
-assert not sheep.augment and "frames say" in sheep.reason, "frames should pick the baby over the sheep"
+assert not sheep.augment and ("frames say" in sheep.reason or "nothing backs" in sheep.reason),     "the sheep must lose: to the frames, or to having nothing behind it"
 assert faint.talked_about and faint.augment, "speech should rescue the faint door"
 gavel = next(s for s in specs if s.event_label == "Gavel")
 assert gavel.talked_about and not gavel.augment, "visibility must beat speech"

@@ -896,6 +896,32 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                   flush=True)
             return
 
+    # 1a'. corroboration: a sound in the band just above the bar needs a second signal
+    band = float(getattr(config, "CORROBORATE_BELOW", 0.0))
+    if band > display_threshold:
+        for spec in [s for s in specs if s.augment]:
+            if spec.confidence >= band or spec.talked_about:
+                continue
+            backed = bool(spec.detail and spec.detail != spec.event_label)
+            if not backed:
+                kind = _kind_from_frames(spec.event_label, spec_frames.get(id(spec)),
+                                         mdl, proc)
+                if kind:
+                    spec.detail = kind
+                    backed = True
+            if not backed:
+                spec.augment = False
+                spec.subject = ""
+                spec.image_prompt = ""
+                spec.reason = ("faint (" + format(spec.confidence, ".2f")
+                               + ") and nothing backs it - dropped")
+                print("       [stage5] dropped " + spec.event_label + " ("
+                      + format(spec.confidence, ".2f") + "): nothing corroborates it",
+                      flush=True)
+        active = [s for s in specs if s.augment]
+        if not active:
+            return
+
     # 1a. does the sound fit the place? (bounded; see _fits_the_place)
     if getattr(config, "PLAUSIBILITY_CHECK", True):
         for spec in [s for s in specs if s.augment]:
