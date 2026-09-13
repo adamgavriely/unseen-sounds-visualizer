@@ -647,7 +647,9 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
             if mat is None:
                 continue
             sim = mat[i][j]
-            if sim >= sure:
+            # Two depictions that read alike are one picture only if they are heard at
+            # the same time. An owl at 1 s absorbed a crow at 8 s on wording alone.
+            if sim >= sure and _overlap(spec, order[j]):
                 dup, score, why = j, sim, "similarity " + format(sim, ".2f")
                 break
             if sim >= report:
