@@ -28,7 +28,11 @@ if ! conda env list | grep -q '^psed '; then
     conda create -y -q -n psed python=3.10 >/dev/null
     conda activate psed
     pip install -q torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
-    pip install -q -r "$HOME/PretrainedSED/requirements.txt"
+    pip install -q "numpy<2"
+    # sed_scores_eval is evaluation-only and its installer needs numpy at build time;
+    # inference does not import it, so it is left out
+    grep -v sed_scores_eval "$HOME/PretrainedSED/requirements.txt" > /tmp/psed_req.txt
+    pip install -q -r /tmp/psed_req.txt
     conda deactivate
 fi
 conda activate psed
