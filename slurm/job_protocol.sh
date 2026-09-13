@@ -43,6 +43,11 @@ export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 # Unbuffered, or a crash mid-model-load loses every print and leaves an empty log --
 # which is exactly how the 11 GB GTX 1080 Ti failure on 'generic' presented itself.
 export PYTHONUNBUFFERED=1
+# FLUX is gated: read the token out of ~/.bashrc (sourcing it under set -e killed a job).
+if [ -z "${HF_TOKEN:-}" ] && [ -f "$HOME/.bashrc" ]; then
+    HF_TOKEN=$(sed -n 's/^[[:space:]]*export[[:space:]]*HF_TOKEN=//p' "$HOME/.bashrc" | tail -1 | tr -d "\"'" ) || true
+    export HF_TOKEN
+fi
 
 GEN="${GEN:-diffusion}"
 LIMIT="${LIMIT:-}"
