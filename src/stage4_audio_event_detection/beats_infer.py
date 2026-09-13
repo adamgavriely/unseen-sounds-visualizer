@@ -78,7 +78,10 @@ def infer_beats(wav_path: Path, device: str = "cpu",
     # seconds of any clip could ever be detected -- barks and birdsong at the start of
     # two demo clips simply did not exist to the pipeline.
     lead = n_win - n_hop
-    audio = np.pad(audio, (lead, 0))
+    # Mirrored, not zeros: a window of silence with an abrupt onset reads to BEATs as a
+    # transient -- the first half-second of a jungle clip scored "Vehicle 0.41" and drew
+    # a truck horn. A reflection of the clip's own opening is plausible audio.
+    audio = np.pad(audio, (lead, 0), mode="reflect" if len(audio) > lead else "constant")
     if len(audio) < n_win:
         audio = np.pad(audio, (0, n_win - len(audio)))
     starts = list(range(0, len(audio) - n_win + 1, n_hop))

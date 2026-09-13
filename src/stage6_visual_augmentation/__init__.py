@@ -647,7 +647,7 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
     d.line([x0, y1 - 1, x1, y1 - 1], fill=(40, 44, 56))
 
 
-DEBUG_STRIP = 150   # px reserved under the panel for the detection list
+DEBUG_STRIP = 260   # px under the panel for the detection list (debug only)
 
 
 def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None,
@@ -704,24 +704,35 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
     d.line([x0, y0, x1, y0], fill=(60, 64, 80))
     # Speech and music are never candidates, and on a talky clip they took two of the six
     # rows while a half-second bark went unlisted. Adam: leave them out.
-    from src.labels import is_salient_nonspeech
-    active = sorted((e for e in events if e.start <= t < e.end
-                     and is_salient_nonspeech(e.label)),
-                    key=lambda e: -e.confidence)[:top]
-    fnt = _font(max(12, (y1 - y0) // 11))
+    from src.labels import is_salient_nonspeech, canonical
+    gate = float(getattr(config, "DISPLAY_THRESHOLD", 0.0))
+    # One row per FAMILY, like the panel: four siren sub-labels (police, fire engine,
+    # ambulance, civil defence) are one Siren picture, so they are one row here, with
+    # the loudest sub-label in brackets. Nothing below the gate is listed.
+    fam = {}
+    for e in events:
+        if not (e.start <= t < e.end and is_salient_nonspeech(e.label)
+                and e.confidence >= gate):
+            continue
+        f = canonical(e.label)
+        if f not in fam or e.confidence > fam[f][0]:
+            fam[f] = (e.confidence, e.label)
+    active = sorted(fam.items(), key=lambda kv: -kv[1][0])[:top]
+    fnt = _font(max(12, (y1 - y0) // 12))
     lh = int(fnt.size * 1.3)
-    d.text((x0 + 10, y0 + 5), f"t = {t:4.1f}s", font=fnt, fill=(120, 127, 143))
+    d.text((x0 + 10, y0 + 5), f"t = {t:4.1f}s   heard, above {gate:.2f}", font=fnt,
+           fill=(120, 127, 143))
     if not active:
-        d.text((x0 + 10, y0 + 5 + lh), "(nothing above threshold)", font=fnt,
+        d.text((x0 + 10, y0 + 5 + lh), "(nothing above the gate)", font=fnt,
                fill=(96, 103, 118))
         return
     colours = {"SHOWN": (120, 220, 140), "visible": (240, 200, 90),
                "merged": (150, 170, 240), "faint": (130, 130, 140),
                "speech/music": (110, 110, 120), "dropped": (200, 110, 110)}
-    for i, e in enumerate(active):
-        verdict = _decision_for(e.label, specs, t, placed)
+    for i, (f, (conf, sub)) in enumerate(active):
+        verdict = _decision_for(sub, specs, t, placed)
         col = colours.get(verdict, (200, 200, 210))
-        line = f"{e.confidence:.2f}  {e.label[:34]}"
+        line = f"{conf:.2f}  {f[:20]}" + (f"  ({sub[:22]})" if sub != f else "")
         d.text((x0 + 10, y0 + 5 + (i + 1) * lh), line, font=fnt, fill=(225, 228, 235))
         d.text((x1 - 10 - d.textlength(verdict, font=fnt), y0 + 5 + (i + 1) * lh),
                verdict, font=fnt, fill=col)
