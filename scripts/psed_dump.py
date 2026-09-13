@@ -21,6 +21,8 @@ ap.add_argument("out")
 ap.add_argument("--model", default="BEATs")
 ap.add_argument("--psed", default=str(Path.home() / "PretrainedSED"))
 args = ap.parse_args()
+args.wav = str(Path(args.wav).resolve())   # before the chdir below
+args.out = str(Path(args.out).resolve())
 sys.path.insert(0, args.psed)
 import os
 os.chdir(args.psed)                       # checkpoints resolve relative to the repo
