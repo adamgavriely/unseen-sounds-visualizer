@@ -93,7 +93,7 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
     if prompt.startswith("A deaf viewer is watching a video and cannot hear it."):
         label = prompt.split("A sound detector heard: ")[1].split(".")[0].split(" (")[0]
         return {"Laughter": "a group of people laughing in a courtroom",
-                "Giggle": "a woman giggling in the courtroom gallery",
+                "Giggle": "a group of people giggling",
                 "Siren": "a police car siren outside the courthouse",
                 "Door": "a heavy courtroom door slamming shut",
                 "Baby cry, infant cry": "a baby crying"}[label]

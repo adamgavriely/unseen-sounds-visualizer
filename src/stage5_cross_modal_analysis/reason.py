@@ -480,18 +480,20 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
                 label + " is not visibly happening in these frames",
                 frames=frames)
 
-    if by_name is True and by_ab is True:
-        verdict, how = True, "named " + named + ", a/b agrees"
-    elif by_name is False and by_ab is False:
-        verdict, how = False, "nothing named, a/b agrees"
-    else:
-        # disagreement or a split a/b: an open description decides
-        desc = _clean_phrase(_ask(mdl, proc, DESCRIBE_PROMPT, images=frames, max_new=48),
-                             max_words=25)
-        verdict = _about_the_sound(desc, label) or (
-            named != "nothing" and by_name is True and _about_the_sound(desc, named))
-        how = ("split (named " + named + ", a/b " + str(by_ab) + "), description: '"
-               + desc + "' -> " + ("mentions it" if verdict else "does not"))
+    # Three independent readings of the same frames, majority wins. A cascade (decide
+    # on two, consult the third only on a split) flipped between runs on a half-second
+    # change in frame timing; three votes every time is steadier, and costs one call.
+    desc = _clean_phrase(_ask(mdl, proc, DESCRIBE_PROMPT, images=frames, max_new=48),
+                         max_words=25)
+    by_desc = _about_the_sound(desc, label) or (
+        named != "nothing" and by_name is True and _about_the_sound(desc, named))
+    votes = [by_name, by_ab, by_desc]
+    yes = sum(1 for v in votes if v is True)
+    no = sum(1 for v in votes if v is False)
+    verdict = yes > no
+    how = ("name=" + ("yes:" + named if by_name else "no") + " a/b="
+           + {True: "yes", False: "no", None: "split"}[by_ab] + " desc="
+           + ("yes" if by_desc else "no") + " ['" + desc[:60] + "']")
     print("       [stage5] visible? " + label + " -> " + ("yes" if verdict else "no")
           + " (" + how + ")", flush=True)
     return verdict, named
@@ -541,12 +543,27 @@ def _event_visible(label: str, named: str, frames, mdl, proc) -> bool:
     return seen
 
 
-def _uncovered(fam, mem, slack: float = 1.0):
-    """The family's bursts that no burst of the member overlaps (within `slack`)."""
-    sf = list(getattr(fam, "spans", None) or [(fam.start, fam.end)])
-    sm = list(getattr(mem, "spans", None) or [(mem.start, mem.end)])
-    return [(a0, a1) for a0, a1 in sf
-            if not any(a0 - slack <= b1 and b0 - slack <= a1 for b0, b1 in sm)]
+def _subtract(fam, mem, min_len: float = 1.0):
+    """The family's bursts with the member's bursts cut out of them.
+
+    Overlap was the wrong test: birdsong ran 0.5-26 s as one burst, an owl hooted at
+    4-5 s inside it, and one second of overlap "explained" twenty-five seconds of bird.
+    Interval subtraction keeps 0.5-4 and 5-26 as Bird. Pieces shorter than `min_len`
+    are dropped as edge slivers.
+    """
+    pieces = list(getattr(fam, "spans", None) or [(fam.start, fam.end)])
+    for b0, b1 in list(getattr(mem, "spans", None) or [(mem.start, mem.end)]):
+        nxt = []
+        for a0, a1 in pieces:
+            if b1 <= a0 or b0 >= a1:
+                nxt.append((a0, a1))
+            else:
+                if b0 - a0 >= min_len:
+                    nxt.append((a0, b0))
+                if a1 - b1 >= min_len:
+                    nxt.append((b1, a1))
+        pieces = nxt
+    return pieces
 
 
 def _overlap(a, b, slack: float = 1.0) -> bool:
@@ -619,27 +636,31 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
             # the other AND they overlap in time, they are one source. Time matters: an
             # Owl at 2 s and a Bird at 19-27 s are two events, and merging them by name
             # alone swallowed seven seconds of birdsong into a picture shown at second 2.
-            if same_source(spec.event_label, order[j].event_label) and _overlap(spec, order[j]):
-                # A family and one of its members overlapping in time are one source
-                # ONLY where the member explains the family. Where the family label has
-                # bursts the member does not cover, those bursts are a different sound
-                # of the same family: an owl hooting at 2 s does not explain birdsong at
-                # 19-27 s, and "bird is bird and owl is owl". The member keeps its
-                # bursts; the family keeps the rest and stays shown if any remain.
+            if same_source(spec.event_label, order[j].event_label):
+                # A family and one of its members. Two cases the ontology cannot tell
+                # apart, and the depictions can:
+                #   Owl / Hoot  -- one sound under two names ("Owl hoots", "Owl hooting
+                #                  in tree"): one picture, shown at BOTH sounds' times
+                #   Bird / Owl  -- two sounds in one family ("Bird chirping", "Owl
+                #                  hoots"): the member keeps its bursts, the family keeps
+                #                  whatever is left after subtracting them
+                # Adam: "bird is bird and owl is owl; one is hooting and one is chirping."
                 from src.labels import is_descendant
                 fam, mem = ((spec, order[j]) if is_descendant(order[j].event_label, spec.event_label)
-                            else (order[j], spec) if is_descendant(spec.event_label, order[j].event_label)
-                            else (None, None))
-                if fam is not None:
-                    left = _uncovered(fam, mem)
-                    if left:
-                        fam.spans = left
-                        fam.start, fam.end = left[0]
-                        print("       [stage5] " + fam.event_label + " keeps "
-                              + str(len(left)) + " burst(s) not explained by "
-                              + mem.event_label, flush=True)
-                        continue          # both stay; nothing merged
-                dup, score, why = j, 1.0, "same source in the AudioSet ontology"
+                            else (order[j], spec))
+                alike = mat is not None and mat[i][j] >= sure
+                if alike:
+                    dup, score, why = j, mat[i][j], "same sound under two names"
+                    break
+                left = _subtract(fam, mem)
+                if left:
+                    fam.spans = left
+                    fam.start, fam.end = left[0]
+                    print("       [stage5] " + fam.event_label + " keeps "
+                          + str(len(left)) + " burst(s) outside " + mem.event_label,
+                          flush=True)
+                    continue              # both stay; nothing merged
+                dup, score, why = j, 1.0, "fully explained by " + mem.event_label
                 break
             if subs[i] == subs[j]:
                 dup, score, why = j, 1.0, "identical depiction"
@@ -896,27 +917,51 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     print("       [stage5] place: " + place, flush=True)
 
     spec_frames = {}
-    # 1. visibility, per sound, on the frames spanning that sound. Authoritative: a
-    # sound people are talking about is still not shown if its source is on screen.
+    # 1. visibility, per sound and per STRETCH of it. A siren that runs the whole clip
+    # is off screen while the police car approaches and on screen once it arrives; one
+    # verdict over frames spread across nineteen seconds was a coin toss between runs.
+    # Each burst longer than STRETCH is cut into stretches, each stretch is judged on
+    # its own frames, and only the stretches where the source is not visible keep the
+    # picture. Authoritative: a sound people are talking about is still not shown
+    # where its source is on screen.
     if getattr(config, "VLM_VISIBILITY", True):
+        STRETCH = float(getattr(config, "VISIBILITY_STRETCH", 5.0))
         for spec in active:
-            # Frames from a second before the sound to a second after it, not just its
-            # span: a 0.5 s sound is one frame otherwise, and the cause of a sound is
-            # often legible only from what changed. Adam: "make sure he sees enough
-            # frames or long enough video for the sound."
-            n = max(frames_per_sound, 6)
-            lo, hi = spec.start - 1.0, spec.end + 1.0
-            times = [lo + (hi - lo) * k / (n - 1) for k in range(n)]
-            win = _sample_frames_at(Path(video_path), times)
-            spec_frames[id(spec)] = win
-            seen, named = _sound_is_visible(spec.event_label, win, mdl, proc, sim_device)
-            if seen:
+            bursts = list(getattr(spec, "spans", None) or [(spec.start, spec.end)])
+            pieces = []
+            for a, b in bursts:
+                k = max(1, int(round((b - a) / STRETCH)))
+                edges = [a + (b - a) * i / k for i in range(k + 1)]
+                pieces += list(zip(edges, edges[1:]))
+            kept, named_any = [], ""
+            for a, b in pieces:
+                # a second before to a second after each stretch, six frames: a short
+                # sound is not one frame, and the cause is often legible from what
+                # changed. Adam: "make sure he sees enough frames."
+                n = max(frames_per_sound, 6)
+                lo, hi = a - 1.0, b + 1.0
+                times = [lo + (hi - lo) * t / (n - 1) for t in range(n)]
+                win = _sample_frames_at(Path(video_path), times)
+                if id(spec) not in spec_frames:
+                    spec_frames[id(spec)] = win
+                seen, named = _sound_is_visible(spec.event_label, win, mdl, proc, sim_device)
+                if seen:
+                    named_any = named
+                else:
+                    kept.append((a, b))
+            if not kept:
                 spec.augment = False
                 spec.subject = ""
                 spec.image_prompt = ""
-                spec.reason = "source visible on screen (" + named + ") - stay silent"
+                spec.reason = "source visible on screen (" + named_any + ") - stay silent"
                 print("       [stage5] silent: " + spec.event_label + " is visible ("
-                      + named + ")", flush=True)
+                      + named_any + ")", flush=True)
+            elif len(kept) < len(pieces):
+                spec.spans = kept
+                spec.start, spec.end = kept[0]
+                print("       [stage5] " + spec.event_label + ": visible for "
+                      + str(len(pieces) - len(kept)) + " of " + str(len(pieces))
+                      + " stretch(es); shown for the rest", flush=True)
         # A kind of a visible source is the same source. Laughter was silenced because
         # the woman laughing is on screen, and Giggle -- her giggle -- was then shown,
         # because dedup only compares sounds that are still live.

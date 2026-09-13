@@ -141,6 +141,11 @@ VLM_VISIBILITY = True
 # frames question after the naming step; both orderings must agree before a sound is
 # silenced on visibility.
 EVENT_VISIBLE = True
+# A sound longer than this is judged for visibility in stretches of this length, each
+# on its own frames; the picture is shown only for the stretches where the source is
+# off screen. A siren over a whole clip is off screen while the car approaches and on
+# screen once it arrives.
+VISIBILITY_STRETCH = 5.0
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
 # what KIND of that sound it is -- a crowd chanting, not a crowd cheering -- with the
 # label fixed in the question and "unknown" as an answer. The answer must still name the
