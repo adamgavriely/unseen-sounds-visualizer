@@ -660,16 +660,20 @@ def _decision_for(label: str, specs: List[AugmentationSpec]) -> str:
                 return "SHOWN"
             if "visible" in r:
                 return "visible"
-            if "same source" in r or "same picture" in r:
+            if "same source" in r or "same picture" in r or "same sound" in r:
                 return "merged"
-            if "below" in r:
+            if "below" in r or "nothing backs" in r:
                 return "faint"
+            if "out of place" in r:
+                return "vetoed: place"
+            if "no depiction" in r:
+                return "undrawable"
             return sp.reason[:18]
     return "dropped"
 
 
 def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
-                 specs: List[AugmentationSpec], top: int = 6) -> None:
+                 specs: List[AugmentationSpec], top: int = 8) -> None:
     """Every raw detection active at time t, loudest first, with the gate's verdict.
 
     Diagnosis, not presentation. Adam: "every sound recognized should be written, so I
@@ -680,9 +684,13 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
     d = ImageDraw.Draw(canvas, "RGBA")
     d.rectangle(box, fill=(10, 11, 15))
     d.line([x0, y0, x1, y0], fill=(60, 64, 80))
-    active = sorted((e for e in events if e.start <= t < e.end),
+    # Speech and music are never candidates, and on a talky clip they took two of the six
+    # rows while a half-second bark went unlisted. Adam: leave them out.
+    from src.labels import is_salient_nonspeech
+    active = sorted((e for e in events if e.start <= t < e.end
+                     and is_salient_nonspeech(e.label)),
                     key=lambda e: -e.confidence)[:top]
-    fnt = _font(max(13, (y1 - y0) // 9))
+    fnt = _font(max(12, (y1 - y0) // 11))
     lh = int(fnt.size * 1.3)
     d.text((x0 + 10, y0 + 5), f"heard at {t:4.1f}s", font=fnt, fill=(120, 127, 143))
     if not active:
