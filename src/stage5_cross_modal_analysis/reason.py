@@ -485,8 +485,16 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     # change in frame timing; three votes every time is steadier, and costs one call.
     desc = _clean_phrase(_ask(mdl, proc, DESCRIBE_PROMPT, images=frames, max_new=48),
                          max_words=25)
+    # The description names things, not sounds: "a police car with its lights" is the
+    # siren's source and "a gun on the back seat" is the gunshot's, and neither contains
+    # the sound's word. So a description that does not name the sound outright is put to
+    # the world-knowledge question -- could what it describes be making this sound?
     by_desc = _about_the_sound(desc, label) or (
         named != "nothing" and by_name is True and _about_the_sound(desc, named))
+    if not by_desc and desc:
+        reply = _ask(mdl, proc, MAKES_SOUND_PROMPT.format(named=desc, label=label),
+                     max_new=6).strip().lower()
+        by_desc = reply.startswith("y")
     votes = [by_name, by_ab, by_desc]
     yes = sum(1 for v in votes if v is True)
     no = sum(1 for v in votes if v is False)

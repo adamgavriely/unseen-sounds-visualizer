@@ -74,6 +74,11 @@ def fake_ask(mdl, proc, prompt, images=None, max_new=48):
     if prompt.startswith("These frames are from the moment"):
         label = prompt.split("a sound of ")[1].split(" was heard")[0]
         return ANSWERS.get(("visible", label), "nothing")
+    if prompt.startswith("Sound heard:"):
+        named = prompt.split("Thing visible in the video: ")[1].split(chr(10))[0].lower()
+        label = prompt.split("Sound heard: ")[1].split(chr(10))[0]
+        return "yes" if (("gavel" in named and label == "Gavel")
+                         or ("lawyer" in named and label == "Speech")) else "no"
     if prompt.startswith("Does a"):
         named = prompt.split("Does a ")[1].split(" make a ")[0]
         label = prompt.split(" make a ")[1].split(" sound")[0]

@@ -19,3 +19,5 @@ on the dev split. Entries marked FIXED were general bugs, not tuning.
 | 11 | 09-13 | several | square images cropped in 2-row cells | panel | - | layout | FIXED (fit on white) |
 | 12 | 09-13 | un_train_horning | crow at 8 s merged into owl at 1 s on depiction similarity | dedup | - | merge without time | FIXED (similarity merge needs overlap) |
 | 13 | 09-13 | mc_bridge_scene, un_police_car | gunshot / police siren silenced in one run, shown in the next after a 0.5 s shift in frame sampling | visibility | 0.50 / - | verdict unstable to frame choice | open (1 of 3) |
+| 14 | 09-13 | b3_jungle_hike | insect buzzing merged into bird chirping on depiction similarity 0.82 | dedup (similarity) | - | SigLIP text similarity coarse between short phrases | open (1 of 3) |
+| 15 | 09-13 | un_police_car, mc_bridge | description named the source ("police car with its lights", "gun on the back seat") but not the sound word; vote counted as no | visibility | - | string match where world knowledge was needed | FIXED |
