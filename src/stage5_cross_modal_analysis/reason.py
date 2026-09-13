@@ -820,12 +820,16 @@ def _fits_the_place(label: str, place: str, frames, mdl, proc):
                   "a sound of " + label + " is out of place here and the detector is "
                   "probably wrong",
                   frames=frames)
-    if verdict is not None:
-        return verdict
+    if verdict is not False:
+        return True if verdict is None else verdict
+    # One a/b "out of place" is not enough to drop a real sound: it called a dog out of
+    # place in a parking lot. A veto needs a second, independent signal -- the open
+    # list of sounds expected here must ALSO leave it out. The horse at the quarry and
+    # the ice-cream truck at the station fail both; a dog in a city passes the second.
     expect = _clean_phrase(_ask(mdl, proc,
-                                "This place is " + place + ". List up to eight sounds "
-                                "you would expect to hear here, comma separated.",
-                                images=frames, max_new=48), max_words=40)
+                                "This place is " + place + ". List up to twelve sounds "
+                                "you might hear here, comma separated.",
+                                images=frames, max_new=64), max_words=60)
     return _about_the_sound(expect, label)
 
 

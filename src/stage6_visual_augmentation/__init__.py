@@ -650,8 +650,13 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
 DEBUG_STRIP = 150   # px reserved under the panel for the detection list
 
 
-def _decision_for(label: str, specs: List[AugmentationSpec]) -> str:
-    """What the gate did with a raw detection, in one word, for the debug strip."""
+def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None) -> str:
+    """What the gate did with a raw detection AT THIS MOMENT, for the debug strip.
+
+    "SHOWN" used to mean the sound had a picture somewhere in the clip, so a siren
+    hidden for its last stretch (car on screen) still read SHOWN while nothing was on
+    the panel. Now it means a picture is on the panel right now; a sound that has one
+    elsewhere reads "not now"."""
     from src.labels import canonical, is_salient_nonspeech
     if not is_salient_nonspeech(label):
         return "speech/music"
@@ -660,7 +665,10 @@ def _decision_for(label: str, specs: List[AugmentationSpec]) -> str:
         if sp.event_label == fam or sp.event_label == label:
             r = sp.reason.lower()
             if sp.augment:
-                return "SHOWN"
+                spans = getattr(sp, "spans", None) or [(sp.start, sp.end)]
+                if t is None or any(a <= t < b + 1.5 for a, b in spans):
+                    return "SHOWN"
+                return "not now (visible)" if "stretch" in r or "visible" in r else "not now"
             if "visible" in r:
                 return "visible"
             if "same source" in r or "same picture" in r or "same sound" in r:
@@ -695,7 +703,7 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
                     key=lambda e: -e.confidence)[:top]
     fnt = _font(max(12, (y1 - y0) // 11))
     lh = int(fnt.size * 1.3)
-    d.text((x0 + 10, y0 + 5), f"heard at {t:4.1f}s", font=fnt, fill=(120, 127, 143))
+    d.text((x0 + 10, y0 + 5), f"t = {t:4.1f}s", font=fnt, fill=(120, 127, 143))
     if not active:
         d.text((x0 + 10, y0 + 5 + lh), "(nothing above threshold)", font=fnt,
                fill=(96, 103, 118))
@@ -704,7 +712,7 @@ def _debug_strip(canvas: Image.Image, box: tuple, t: float, events,
                "merged": (150, 170, 240), "faint": (130, 130, 140),
                "speech/music": (110, 110, 120), "dropped": (200, 110, 110)}
     for i, e in enumerate(active):
-        verdict = _decision_for(e.label, specs)
+        verdict = _decision_for(e.label, specs, t)
         col = colours.get(verdict, (200, 200, 210))
         line = f"{e.confidence:.2f}  {e.label[:34]}"
         d.text((x0 + 10, y0 + 5 + (i + 1) * lh), line, font=fnt, fill=(225, 228, 235))
@@ -736,7 +744,10 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
     debug = bool(getattr(config, "SHOW_DEBUG_SOUNDS", False) and events)
     cuts = []
     if debug:
-        cuts = [e.start for e in events] + [e.end for e in events]
+        # every half second, so the strip's time label is never more than 0.25 s off
+        # the video; it used to carry a segment's midpoint for the segment's whole length
+        cuts = [k * 0.5 for k in range(int(duration * 2) + 1)]
+        cuts += [e.start for e in events] + [e.end for e in events]
     segs, n_rows = _timeline(specs, duration, extra_bounds=cuts)
     slot_h = panel - (DEBUG_STRIP if debug else 0)
     lines = []
