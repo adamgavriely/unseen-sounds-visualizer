@@ -31,6 +31,12 @@ FILE = "BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2.pt"
 SR = 16000
 WINDOW = 2.0    # seconds scored as one clip
 HOP = 0.25      # seconds between windows; the time resolution of the spans
+# Where in the window a detection is stamped. Stamped at the centre (offset 1.0) the
+# picture came up to a second BEFORE the sound; stamped at the end (offset 0) it came a
+# second or two AFTER, because a sound has to fill enough of the window to score. Half a
+# second from the end is the compromise measured on the demo sets; it is a number, not a
+# principle, and a shorter window would shrink both errors at a cost in accuracy.
+STAMP_OFFSET = 0.5
 
 _MODEL = None   # (model, names, device)
 
@@ -67,6 +73,12 @@ def infer_beats(wav_path: Path, device: str = "cpu",
     audio, _ = librosa.load(str(wav_path), sr=SR, mono=True)
     n_win = int(round(window * SR))
     n_hop = int(round(hop * SR))
+    # Lead-in padding, so the first windows end inside the first two seconds. Without it
+    # the earliest possible stamp is the window length, and nothing in the first two
+    # seconds of any clip could ever be detected -- barks and birdsong at the start of
+    # two demo clips simply did not exist to the pipeline.
+    lead = n_win - n_hop
+    audio = np.pad(audio, (lead, 0))
     if len(audio) < n_win:
         audio = np.pad(audio, (0, n_win - len(audio)))
     starts = list(range(0, len(audio) - n_win + 1, n_hop))
@@ -87,8 +99,9 @@ def infer_beats(wav_path: Path, device: str = "cpu",
     # glass shatter before he heard it in three of five clips. Stamped at s+2 the onset
     # is never early -- at worst it is late by one hop -- and the tail lingers by up to
     # a window, which the display's minimum dwell was going to do anyway.
-    times = np.array([(s + n_win) / SR for s in starts])
-    return framewise, times, list(names)
+    times = np.array([(s + n_win - lead) / SR - STAMP_OFFSET for s in starts])
+    keep = times >= 0.0
+    return framewise[keep], times[keep], list(names)
 
 
 def unload() -> None:

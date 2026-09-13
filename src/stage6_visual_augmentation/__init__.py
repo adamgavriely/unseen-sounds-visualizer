@@ -630,7 +630,10 @@ def _render_slot(canvas: Image.Image, box: tuple, spec: Optional[AugmentationSpe
     # (config) and off by default. Fill the cell: letterboxing was for pictograms,
     # whose empty margins were the ground the sound symbol sat in.
     raw = Image.open(spec.image_path).convert("RGB")
-    img = _cover_crop(raw, (w, h))
+    # Fit, do not crop. A square FLUX image in a 720x285 cell lost its top and bottom
+    # -- the subject with them. The generator puts everything on plain white, so the
+    # letterbox padding is invisible.
+    img = _fit_on_white(raw, (w, h))
     if getattr(config, "SHOW_SOUND_GLYPH", False):
         img = _sound_glyph(img, spec.confidence)
     if getattr(config, "SHOW_LABELS", False):

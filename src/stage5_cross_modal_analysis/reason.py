@@ -541,6 +541,14 @@ def _event_visible(label: str, named: str, frames, mdl, proc) -> bool:
     return seen
 
 
+def _uncovered(fam, mem, slack: float = 1.0):
+    """The family's bursts that no burst of the member overlaps (within `slack`)."""
+    sf = list(getattr(fam, "spans", None) or [(fam.start, fam.end)])
+    sm = list(getattr(mem, "spans", None) or [(mem.start, mem.end)])
+    return [(a0, a1) for a0, a1 in sf
+            if not any(a0 - slack <= b1 and b0 - slack <= a1 for b0, b1 in sm)]
+
+
 def _overlap(a, b, slack: float = 1.0) -> bool:
     """Do any bursts of these two sounds coincide (within `slack` seconds)?"""
     sa = list(getattr(a, "spans", None) or [(a.start, a.end)])
@@ -612,6 +620,25 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
             # Owl at 2 s and a Bird at 19-27 s are two events, and merging them by name
             # alone swallowed seven seconds of birdsong into a picture shown at second 2.
             if same_source(spec.event_label, order[j].event_label) and _overlap(spec, order[j]):
+                # A family and one of its members overlapping in time are one source
+                # ONLY where the member explains the family. Where the family label has
+                # bursts the member does not cover, those bursts are a different sound
+                # of the same family: an owl hooting at 2 s does not explain birdsong at
+                # 19-27 s, and "bird is bird and owl is owl". The member keeps its
+                # bursts; the family keeps the rest and stays shown if any remain.
+                from src.labels import is_descendant
+                fam, mem = ((spec, order[j]) if is_descendant(order[j].event_label, spec.event_label)
+                            else (order[j], spec) if is_descendant(spec.event_label, order[j].event_label)
+                            else (None, None))
+                if fam is not None:
+                    left = _uncovered(fam, mem)
+                    if left:
+                        fam.spans = left
+                        fam.start, fam.end = left[0]
+                        print("       [stage5] " + fam.event_label + " keeps "
+                              + str(len(left)) + " burst(s) not explained by "
+                              + mem.event_label, flush=True)
+                        continue          # both stay; nothing merged
                 dup, score, why = j, 1.0, "same source in the AudioSet ontology"
                 break
             if subs[i] == subs[j]:
