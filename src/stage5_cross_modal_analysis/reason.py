@@ -969,11 +969,16 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 print("       [stage5] silent: " + spec.event_label + " is visible ("
                       + named_any + ")", flush=True)
             elif len(kept) < len(pieces):
-                spec.spans = kept
-                spec.start, spec.end = kept[0]
-                print("       [stage5] " + spec.event_label + ": visible for "
+                # Adam: one continuous sound, one continuous picture. Cutting the
+                # picture for the stretches where the source is in frame produced a
+                # siren that appeared, vanished and reappeared for a sound that never
+                # stopped -- the flicker the panel exists to avoid, and a false claim
+                # that the sound had stopped. The stretch verdicts decide only whether
+                # the source was visible THROUGHOUT; if not, the picture stays for the
+                # whole burst.
+                print("       [stage5] " + spec.event_label + ": source visible for "
                       + str(len(pieces) - len(kept)) + " of " + str(len(pieces))
-                      + " stretch(es); shown for the rest", flush=True)
+                      + " stretch(es); shown throughout", flush=True)
         # A kind of a visible source is the same source. Laughter was silenced because
         # the woman laughing is on screen, and Giggle -- her giggle -- was then shown,
         # because dedup only compares sounds that are still live.

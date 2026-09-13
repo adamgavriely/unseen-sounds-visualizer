@@ -668,7 +668,7 @@ def _decision_for(label: str, specs: List[AugmentationSpec], t: float = None) ->
                 spans = getattr(sp, "spans", None) or [(sp.start, sp.end)]
                 if t is None or any(a <= t < b + 1.5 for a, b in spans):
                     return "SHOWN"
-                return "not now (visible)" if "stretch" in r or "visible" in r else "not now"
+                return "not now"
             if "visible" in r:
                 return "visible"
             if "same source" in r or "same picture" in r or "same sound" in r:
