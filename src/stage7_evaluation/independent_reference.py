@@ -158,6 +158,7 @@ def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
                     line = line.strip(" -*•").strip()
                     if line and line.lower().rstrip(".") != "none" and line not in items:
                         items.append(line)
+            items = _split_items(items)
             out[name] = items
             print(f"       [ref] listen {name}: {items}", flush=True)
             if len(out) == 1 and not items:
@@ -311,7 +312,9 @@ def build_all(clips: Dict[str, Path], videos: Dict[str, Path], transcripts: Dict
     """All clips through the four steps, each model resident once. Resumable per step."""
     state = json.loads(cache.read_text("utf-8")) if cache.exists() else {}
     def save():
-        cache.write_text(json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
+        tmp = cache.with_suffix(".tmp")   # atomic: a kill mid-write leaves the old cache
+        tmp.write_text(json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
+        tmp.replace(cache)
     if "heard" not in state:
         state["heard"] = listen_all(clips, device); save()
     if "verified" not in state:
