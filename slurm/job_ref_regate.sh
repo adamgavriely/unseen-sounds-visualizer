@@ -1,3 +1,4 @@
+#!/bin/bash
 #SBATCH --job-name=ref_regate
 #SBATCH --output=logs/ref_regate_%j.out
 #SBATCH --error=logs/ref_regate_%j.err
