@@ -79,9 +79,9 @@ re-renders them; an OOM retry is in the code for the next submission). Expected 
 ## TLDR
 
 Under every reference, including the new independent one, the blind baseline beats the gated
-system on v2 (−0.24 to −0.70); a perfect gate would gain at most +0.05. The independent
-reference's silence decision is at chance, so only the human-grounded reference can score
-the gate. Hysteresis fixed onset timing (MAE 0.43→0.31 s on 255 DCASE onsets); occlusion
+system on v2 (−0.24 to −0.70; independent −0.55, whose silence decision agrees with your
+tags on only 55/100 under both visibility variants); a perfect gate would gain at most +0.05.
+Only the human-grounded reference can score the gate. Hysteresis fixed onset timing (MAE 0.43→0.31 s on 255 DCASE onsets); occlusion
 adds nothing. Report skeleton + four drafted sections, LIMITATIONS.md, all committed.
 
 ## Actions (yours)
