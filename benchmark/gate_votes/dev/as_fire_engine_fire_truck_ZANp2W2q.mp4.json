@@ -483,7 +483,8 @@
     "Siren",
     "Theremin",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -533,7 +534,8 @@
     "Theremin",
     "Siren",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

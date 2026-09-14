@@ -844,7 +844,8 @@
     "Printer",
     "Cash register",
     "Buzzer"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Baby cry, infant cry",
@@ -867,7 +868,8 @@
     "Shout",
     "Crying, sobbing",
     "Cat"
-   ]
+   ],
+   "panns_rank": 10
   },
   {
    "label": "Siren",
@@ -890,7 +892,8 @@
     "Motor vehicle (road)",
     "Middle Eastern music",
     "Scary music"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Crowd",

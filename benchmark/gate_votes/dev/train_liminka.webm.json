@@ -524,7 +524,8 @@
     "Vibration",
     "Heavy engine (low frequency)",
     "Hair dryer"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -574,7 +575,8 @@
     "Insect",
     "Bagpipes",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

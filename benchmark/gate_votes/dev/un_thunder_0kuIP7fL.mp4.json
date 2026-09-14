@@ -675,7 +675,8 @@
     "Wind noise (microphone)",
     "Thunderstorm",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Rain",
@@ -725,7 +726,8 @@
     "Wind noise (microphone)",
     "Vibration",
     "Gears"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Scissors",

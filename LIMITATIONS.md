@@ -76,6 +76,12 @@ report's Limitations section mirrors this file.
 - **A CLAP second opinion does not work.** Calibrated on 255 DCASE gold events (family rank
   over 328 ontology families, declared bar: 95% recall at k ≤ 30): recall@30 = 50%, footsteps
   median rank 261. Same model verified claims at chance in the evaluation reference. Not shipped.
+- **Two-tagger agreement does not work either.** Keeping a BEATs detection only if PANNs
+  (a second AudioSet tagger, different architecture) ranks the same family in its top 10
+  for the same audio removes 24 of 77 dev phantoms (declared bar: 40) while losing 1 of 20
+  unseen-clip pictures and 2 of 66 DCASE gold events. The phantoms are shared AudioSet
+  confusions ("roaring cats" on a glacier hike heard by both), not one model's quirk.
+  Not shipped (`benchmark/panns_agree.json`).
 - **Source separation was assessed, not run.** Demucs removes speech only (4 of the 7 masked
   misses are under music) and keeping the higher of mix/residual scores can only add
   phantoms. First future-work item, with declared bars (report §Conclusion).

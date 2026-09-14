@@ -1034,7 +1034,8 @@
     "Insect",
     "Light engine (high frequency)",
     "Vibration"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",

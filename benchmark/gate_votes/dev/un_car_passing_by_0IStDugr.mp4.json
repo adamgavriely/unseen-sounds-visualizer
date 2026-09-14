@@ -334,7 +334,8 @@
     "Power tool",
     "Light engine (high frequency)",
     "Blender"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Wood",
@@ -384,7 +385,8 @@
     "Light engine (high frequency)",
     "Blender",
     "Hair dryer"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Sawing",
@@ -407,7 +409,8 @@
     "Light engine (high frequency)",
     "Blender",
     "Hair dryer"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Tools",
@@ -457,7 +460,8 @@
     "Light engine (high frequency)",
     "Blender",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Power tool",
@@ -507,7 +511,8 @@
     "Light engine (high frequency)",
     "Blender",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Rub",

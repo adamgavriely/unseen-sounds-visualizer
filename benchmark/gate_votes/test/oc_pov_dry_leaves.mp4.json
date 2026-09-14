@@ -304,7 +304,8 @@
     "Bagpipes",
     "Rustling leaves",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Chewing, mastication",
@@ -327,7 +328,8 @@
     "Chewing, mastication",
     "Wind noise (microphone)",
     "Goat"
-   ]
+   ],
+   "panns_rank": 10
   },
   {
    "label": "Crunch",

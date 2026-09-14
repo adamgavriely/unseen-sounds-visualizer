@@ -414,7 +414,8 @@
     "Vibration",
     "Rail transport",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

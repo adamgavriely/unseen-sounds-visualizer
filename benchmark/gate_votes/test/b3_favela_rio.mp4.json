@@ -1396,7 +1396,8 @@
     "Whale vocalization",
     "Printer",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 9
   },
   {
    "label": "Train",
@@ -1428,7 +1429,8 @@
     "Printer",
     "Rail transport",
     "Vibration"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -1469,7 +1471,8 @@
     "Sound equipment",
     "Pump (liquid)",
     "Mechanisms"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Horse",

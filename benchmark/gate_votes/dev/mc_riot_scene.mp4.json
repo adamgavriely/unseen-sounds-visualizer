@@ -465,7 +465,8 @@
     "Pump (liquid)",
     "Sound equipment",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 14
   },
   {
    "label": "Vehicle",

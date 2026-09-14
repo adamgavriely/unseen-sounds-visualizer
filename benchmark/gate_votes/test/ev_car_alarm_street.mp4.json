@@ -644,7 +644,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Cat",
@@ -667,7 +668,8 @@
     "Hip hop music",
     "Shout",
     "Soul music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bird",
@@ -690,7 +692,8 @@
     "Motor vehicle (road)",
     "Siren",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

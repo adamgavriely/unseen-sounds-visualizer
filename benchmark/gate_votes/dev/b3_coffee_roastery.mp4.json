@@ -1096,7 +1096,8 @@
     "Sound equipment",
     "Insect",
     "Background noise"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Microwave oven",
@@ -1119,7 +1120,8 @@
     "Sound equipment",
     "Background noise",
     "Microwave oven"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Train",
@@ -1151,7 +1153,8 @@
     "Sound equipment",
     "Microwave oven",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Air conditioning",
@@ -1183,7 +1186,8 @@
     "Sound equipment",
     "Background noise",
     "Microwave oven"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Vehicle",
@@ -1224,7 +1228,8 @@
     "Sound equipment",
     "Mechanisms",
     "Gears"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bird",

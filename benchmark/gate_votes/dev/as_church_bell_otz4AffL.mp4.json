@@ -594,7 +594,8 @@
     "Buzzer",
     "Bell",
     "Boing"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Tick-tock",

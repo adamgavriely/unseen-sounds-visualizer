@@ -306,7 +306,8 @@
     "Typing",
     "Printer",
     "Clicking"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Computer keyboard",
@@ -329,7 +330,8 @@
     "Typing",
     "Printer",
     "Clicking"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

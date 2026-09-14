@@ -855,7 +855,8 @@
     "Hubbub, speech noise, speech babble",
     "Speech",
     "Light engine (high frequency)"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Squeal",
@@ -887,7 +888,8 @@
     "Light engine (high frequency)",
     "Speech",
     "Insect"
-   ]
+   ],
+   "panns_rank": 27
   },
   {
    "label": "Ratchet, pawl",
@@ -910,7 +912,8 @@
     "Light engine (high frequency)",
     "Speech",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 95
   },
   {
    "label": "Sliding door",
@@ -933,7 +936,8 @@
     "Sound equipment",
     "Motor vehicle (road)",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Sewing machine",
@@ -956,7 +960,8 @@
     "Printer",
     "Motor vehicle (road)",
     "Cash register"
-   ]
+   ],
+   "panns_rank": 9
   },
   {
    "label": "Pump (liquid)",
@@ -979,7 +984,8 @@
     "Light engine (high frequency)",
     "Speech",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 41
   },
   {
    "label": "Door",
@@ -1002,7 +1008,8 @@
     "Motor vehicle (road)",
     "Printer",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Boiling",

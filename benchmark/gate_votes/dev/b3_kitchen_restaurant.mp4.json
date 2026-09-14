@@ -752,7 +752,8 @@
     "Printer",
     "Heavy engine (low frequency)",
     "Gears"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",

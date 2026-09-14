@@ -604,7 +604,8 @@
     "Buzzer",
     "Telephone",
     "Brief tone"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

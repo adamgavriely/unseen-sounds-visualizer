@@ -134,7 +134,8 @@
     "Thunderstorm",
     "Wind noise (microphone)",
     "Thunder"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Thunder",
@@ -175,7 +176,8 @@
     "Thunderstorm",
     "Wind noise (microphone)",
     "Thunder"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

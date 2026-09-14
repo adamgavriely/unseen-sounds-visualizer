@@ -486,7 +486,8 @@
     "Eruption",
     "Scary music",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Explosion",
@@ -509,7 +510,8 @@
     "Sound equipment",
     "Shout",
     "Mechanisms"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Vehicle",

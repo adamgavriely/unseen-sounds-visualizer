@@ -395,7 +395,8 @@
     "Fire",
     "Fireworks",
     "Boing"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Gunshot",
@@ -418,7 +419,8 @@
     "Clicking",
     "Horse",
     "Heavy engine (low frequency)"
-   ]
+   ],
+   "panns_rank": 8
   },
   {
    "label": "Vehicle",

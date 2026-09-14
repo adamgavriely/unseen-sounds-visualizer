@@ -1254,7 +1254,8 @@
     "Bird",
     "Whale vocalization",
     "Frog"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bird",
@@ -1313,7 +1314,8 @@
     "Bird",
     "Frog",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Buzz",
@@ -1345,7 +1347,8 @@
     "Bird",
     "Buzzer",
     "Didgeridoo"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Sheep",
@@ -1368,7 +1371,8 @@
     "Bird",
     "Rodents, rats, mice",
     "Canidae, dogs, wolves"
-   ]
+   ],
+   "panns_rank": 60
   },
   {
    "label": "Hoot",
@@ -1391,7 +1395,8 @@
     "Bird",
     "Whale vocalization",
     "Frog"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Insect",
@@ -1441,7 +1446,8 @@
     "Bird",
     "Frog",
     "Didgeridoo"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Cricket",

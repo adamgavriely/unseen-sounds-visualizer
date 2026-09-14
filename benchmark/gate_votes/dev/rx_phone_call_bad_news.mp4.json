@@ -735,7 +735,8 @@
     "Telephone",
     "Music of Asia",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Gasp",
@@ -785,7 +786,8 @@
     "Mechanisms",
     "Typing",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Sigh",
@@ -826,7 +828,8 @@
     "Mechanisms",
     "Bell",
     "Scary music"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Thunk",
@@ -858,7 +861,8 @@
     "Grunt",
     "Shout",
     "Fowl"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Writing",

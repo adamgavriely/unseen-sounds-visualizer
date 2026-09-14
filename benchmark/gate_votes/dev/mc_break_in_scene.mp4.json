@@ -665,7 +665,8 @@
     "Motor vehicle (road)",
     "Fill (with liquid)",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Crack",
@@ -706,7 +707,8 @@
     "Rock music",
     "Vocal music",
     "Singing"
-   ]
+   ],
+   "panns_rank": 9
   },
   {
    "label": "Tambourine",
@@ -729,7 +731,8 @@
     "Rock music",
     "Hubbub, speech noise, speech babble",
     "Insect"
-   ]
+   ],
+   "panns_rank": 125
   },
   {
    "label": "Chink, clink",

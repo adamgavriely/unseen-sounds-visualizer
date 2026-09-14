@@ -204,7 +204,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -245,7 +246,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

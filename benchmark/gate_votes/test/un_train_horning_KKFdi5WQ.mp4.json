@@ -925,7 +925,8 @@
     "Theremin",
     "Shout",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -975,7 +976,8 @@
     "Theremin",
     "Boat, Water vehicle",
     "Shout"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -998,7 +1000,8 @@
     "Light engine (high frequency)",
     "Engine",
     "Vacuum cleaner"
-   ]
+   ],
+   "panns_rank": 8
   },
   {
    "label": "Bird",
@@ -1030,7 +1033,8 @@
     "Light engine (high frequency)",
     "Insect",
     "Aircraft"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Crow",
@@ -1053,7 +1057,8 @@
     "Light engine (high frequency)",
     "Aircraft",
     "Engine"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

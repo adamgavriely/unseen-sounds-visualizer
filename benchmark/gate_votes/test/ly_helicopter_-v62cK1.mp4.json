@@ -393,7 +393,8 @@
     "Sound equipment",
     "Radio",
     "Aircraft"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Helicopter",
@@ -425,7 +426,8 @@
     "Aircraft",
     "Fill (with liquid)",
     "Radio"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Aircraft",
@@ -466,7 +468,8 @@
     "Aircraft",
     "Radio",
     "Fill (with liquid)"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

@@ -565,7 +565,8 @@
     "Wind noise (microphone)",
     "Explosion",
     "Sonar"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Water",
@@ -606,7 +607,8 @@
     "Wind noise (microphone)",
     "Explosion",
     "Wind"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",

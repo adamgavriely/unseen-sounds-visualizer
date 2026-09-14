@@ -584,7 +584,8 @@
     "Gurgling",
     "Sound equipment",
     "Splash, splatter"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Fireworks",
@@ -607,7 +608,8 @@
     "Wind noise (microphone)",
     "Whale vocalization",
     "Arrow"
-   ]
+   ],
+   "panns_rank": 14
   },
   {
    "label": "Vehicle",

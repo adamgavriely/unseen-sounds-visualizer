@@ -124,7 +124,8 @@
     "Thunderstorm",
     "Wind noise (microphone)",
     "Thunder"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Rain",
@@ -165,7 +166,8 @@
     "Thunderstorm",
     "Wind noise (microphone)",
     "Thunder"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

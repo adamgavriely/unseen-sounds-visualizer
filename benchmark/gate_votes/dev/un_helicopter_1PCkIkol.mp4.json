@@ -433,7 +433,8 @@
     "Wind noise (microphone)",
     "Radio",
     "Vibration"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -483,7 +484,8 @@
     "Wind noise (microphone)",
     "Vibration",
     "Radio"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Helicopter",
@@ -524,7 +526,8 @@
     "Wind noise (microphone)",
     "Vibration",
     "Radio"
-   ]
+   ],
+   "panns_rank": 3
   }
  ]
 }

@@ -955,7 +955,8 @@
     "Wind noise (microphone)",
     "Theremin",
     "Eruption"
-   ]
+   ],
+   "panns_rank": 7
   },
   {
    "label": "Aircraft",
@@ -996,7 +997,8 @@
     "Wind noise (microphone)",
     "Theremin",
     "Bagpipes"
-   ]
+   ],
+   "panns_rank": 8
   },
   {
    "label": "Boat",
@@ -1028,7 +1030,8 @@
     "Theremin",
     "Radio",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Vehicle",
@@ -1078,7 +1081,8 @@
     "Wind noise (microphone)",
     "Theremin",
     "Eruption"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Cat",

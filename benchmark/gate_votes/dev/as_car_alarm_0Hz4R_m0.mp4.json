@@ -633,7 +633,8 @@
     "Domestic animals, pets",
     "Crack",
     "Crushing"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Alarm",
@@ -665,7 +666,8 @@
     "Motor vehicle (road)",
     "Bell",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Keys jangling",
@@ -697,7 +699,8 @@
     "Motor vehicle (road)",
     "Printer",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Power windows, electric windows",
@@ -738,7 +741,8 @@
     "Bell",
     "Motor vehicle (road)",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

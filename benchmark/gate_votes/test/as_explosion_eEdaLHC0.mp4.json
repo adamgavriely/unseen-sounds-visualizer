@@ -486,7 +486,8 @@
     "Eruption",
     "Explosion",
     "Gunshot, gunfire"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Explosion",
@@ -536,7 +537,8 @@
     "Eruption",
     "Explosion",
     "Gunshot, gunfire"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Vehicle",
@@ -559,7 +561,8 @@
     "Heavy engine (low frequency)",
     "Flap",
     "Rodents, rats, mice"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Aircraft",
@@ -582,7 +585,8 @@
     "Wind noise (microphone)",
     "Bagpipes",
     "Fire"
-   ]
+   ],
+   "panns_rank": 10
   },
   {
    "label": "Burst, pop",
@@ -605,7 +609,8 @@
     "Eruption",
     "Explosion",
     "Gunshot, gunfire"
-   ]
+   ],
+   "panns_rank": 3
   }
  ]
 }

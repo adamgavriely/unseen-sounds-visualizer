@@ -615,7 +615,8 @@
     "Rodents, rats, mice",
     "Bathtub (filling or washing)",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Steam",
@@ -647,7 +648,8 @@
     "Rodents, rats, mice",
     "Bathtub (filling or washing)",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Train",
@@ -688,7 +690,8 @@
     "Bathtub (filling or washing)",
     "Sink (filling or washing)",
     "Rodents, rats, mice"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Vehicle",
@@ -729,7 +732,8 @@
     "Bathtub (filling or washing)",
     "Sink (filling or washing)",
     "Rodents, rats, mice"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Spray",
@@ -752,7 +756,8 @@
     "Bathtub (filling or washing)",
     "Sink (filling or washing)",
     "Rodents, rats, mice"
-   ]
+   ],
+   "panns_rank": 9
   }
  ]
 }

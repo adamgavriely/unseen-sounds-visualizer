@@ -426,7 +426,8 @@
     "Hubbub, speech noise, speech babble",
     "Speech",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Roar",
@@ -449,7 +450,8 @@
     "Rock music",
     "Hubbub, speech noise, speech babble",
     "Speech"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Bird",
@@ -472,7 +474,8 @@
     "Rock music",
     "Music of Asia",
     "Music of Latin America"
-   ]
+   ],
+   "panns_rank": 30
   },
   {
    "label": "Honk",
@@ -495,7 +498,8 @@
     "Rock music",
     "Music of Asia",
     "Music of Latin America"
-   ]
+   ],
+   "panns_rank": 30
   }
  ]
 }

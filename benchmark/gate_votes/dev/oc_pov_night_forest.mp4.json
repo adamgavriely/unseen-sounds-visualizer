@@ -323,7 +323,8 @@
     "Splash, splatter",
     "Theremin",
     "Goat"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Chewing, mastication",
@@ -346,7 +347,8 @@
     "Splash, splatter",
     "Theremin",
     "Goat"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Biting",

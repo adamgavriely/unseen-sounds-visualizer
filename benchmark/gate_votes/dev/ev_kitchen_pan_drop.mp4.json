@@ -553,7 +553,8 @@
     "Percussion",
     "Mechanisms",
     "Pulleys"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Glass",
@@ -585,7 +586,8 @@
     "Percussion",
     "Cutlery, silverware",
     "Shatter"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Crack",
@@ -608,7 +610,8 @@
     "Pulleys",
     "Bell",
     "Percussion"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Jingle bell",
@@ -631,7 +634,8 @@
     "Sound equipment",
     "Rail transport",
     "Bird"
-   ]
+   ],
+   "panns_rank": 10
   },
   {
    "label": "Coin (dropping)",
@@ -654,7 +658,8 @@
     "Pulleys",
     "Percussion",
     "Mechanisms"
-   ]
+   ],
+   "panns_rank": 9
   }
  ]
 }

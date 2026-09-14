@@ -456,7 +456,8 @@
     "Background noise",
     "Vibration",
     "Insect"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",

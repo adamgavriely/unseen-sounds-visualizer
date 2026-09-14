@@ -784,7 +784,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Boat, Water vehicle"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -834,7 +835,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Boat, Water vehicle"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Fly, housefly",
@@ -857,7 +859,8 @@
     "Music of Africa",
     "Vocal music",
     "Middle Eastern music"
-   ]
+   ],
+   "panns_rank": 33
   },
   {
    "label": "Insect",
@@ -880,7 +883,8 @@
     "Music of Africa",
     "Vocal music",
     "Middle Eastern music"
-   ]
+   ],
+   "panns_rank": 33
   },
   {
    "label": "Bee, wasp, etc.",
@@ -903,7 +907,8 @@
     "Music of Africa",
     "Vocal music",
     "Middle Eastern music"
-   ]
+   ],
+   "panns_rank": 33
   },
   {
    "label": "Air brake",

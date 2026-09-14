@@ -465,7 +465,8 @@
     "Sad music",
     "Bowed string instrument",
     "Scary music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Cricket",
@@ -497,7 +498,8 @@
     "Sad music",
     "Bowed string instrument",
     "Scary music"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Insect",

@@ -583,7 +583,8 @@
     "Insect",
     "Speech",
     "Hubbub, speech noise, speech babble"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

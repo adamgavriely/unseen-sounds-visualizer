@@ -794,7 +794,8 @@
     "Roaring cats (lions, tigers)",
     "Whale vocalization",
     "Dog"
-   ]
+   ],
+   "panns_rank": 54
   },
   {
    "label": "Roaring cats (lions, tigers)",
@@ -817,7 +818,8 @@
     "Roaring cats (lions, tigers)",
     "Whale vocalization",
     "Dog"
-   ]
+   ],
+   "panns_rank": 52
   },
   {
    "label": "Gunshot",
@@ -849,7 +851,8 @@
     "Roaring cats (lions, tigers)",
     "Dog",
     "Mechanisms"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Explosion",
@@ -872,7 +875,8 @@
     "Roaring cats (lions, tigers)",
     "Flap",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Glass",

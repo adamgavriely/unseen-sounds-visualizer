@@ -573,7 +573,8 @@
     "Dog",
     "Wail, moan",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Siren",
@@ -596,7 +597,8 @@
     "Whale vocalization",
     "Dog",
     "Domestic animals, pets"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

@@ -183,7 +183,8 @@
     "Power tool",
     "Light engine (high frequency)",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Wood",
@@ -233,7 +234,8 @@
     "Power tool",
     "Light engine (high frequency)",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Power tool",
@@ -283,7 +285,8 @@
     "Power tool",
     "Light engine (high frequency)",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Rub",
@@ -315,7 +318,8 @@
     "Light engine (high frequency)",
     "Power tool",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Tools",
@@ -365,7 +369,8 @@
     "Power tool",
     "Light engine (high frequency)",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Sawing",
@@ -406,7 +411,8 @@
     "Accelerating, revving, vroom",
     "Light engine (high frequency)",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 4
   }
  ]
 }

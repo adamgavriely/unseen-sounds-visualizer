@@ -805,7 +805,8 @@
     "Whale vocalization",
     "Cat",
     "Cupboard open or close"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Mosquito",
@@ -828,7 +829,8 @@
     "Rock music",
     "Roaring cats (lions, tigers)",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 29
   },
   {
    "label": "Insect",
@@ -851,7 +853,8 @@
     "Rock music",
     "Roaring cats (lions, tigers)",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 29
   },
   {
    "label": "Fly, housefly",
@@ -874,7 +877,8 @@
     "Rock music",
     "Roaring cats (lions, tigers)",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 29
   }
  ]
 }

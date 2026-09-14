@@ -645,7 +645,8 @@
     "Shout",
     "Theremin",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Crying, sobbing",
@@ -686,7 +687,8 @@
     "Crying, sobbing",
     "Siren",
     "Shout"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Babbling",
@@ -709,7 +711,8 @@
     "Light engine (high frequency)",
     "Power tool",
     "Crying, sobbing"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Baby cry, infant cry",
@@ -750,7 +753,8 @@
     "Crying, sobbing",
     "Light engine (high frequency)",
     "Siren"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Wail, moan",
@@ -782,7 +786,8 @@
     "Crying, sobbing",
     "Siren",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 6
   }
  ]
 }

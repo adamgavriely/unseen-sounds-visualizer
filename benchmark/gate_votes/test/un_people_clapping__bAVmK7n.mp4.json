@@ -716,7 +716,8 @@
     "Speech",
     "Hubbub, speech noise, speech babble",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Shuffling cards",
@@ -739,7 +740,8 @@
     "Speech",
     "Keyboard (musical)",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 48
   },
   {
    "label": "Insect",

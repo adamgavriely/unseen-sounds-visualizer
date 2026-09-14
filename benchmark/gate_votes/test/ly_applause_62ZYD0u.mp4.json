@@ -466,7 +466,8 @@
     "Laughter",
     "Fowl",
     "Hubbub, speech noise, speech babble"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Crowd",
@@ -498,7 +499,8 @@
     "Splinter",
     "Laughter",
     "Fowl"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Chuckle, chortle",

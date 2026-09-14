@@ -673,7 +673,8 @@
     "Background noise",
     "Sound equipment",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -705,7 +706,8 @@
     "Wind noise (microphone)",
     "Fill (with liquid)",
     "Ocean"
-   ]
+   ],
+   "panns_rank": 17
   },
   {
    "label": "Vehicle",
@@ -737,7 +739,8 @@
     "Motor vehicle (road)",
     "Bagpipes",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

@@ -501,7 +501,8 @@
     "Electric shaver, electric razor",
     "Power tool",
     "Toothbrush"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Electric shaver, electric razor",
@@ -569,7 +570,8 @@
     "Electric shaver, electric razor",
     "Power tool",
     "Toothbrush"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Hum",
@@ -637,7 +639,8 @@
     "Electric shaver, electric razor",
     "Power tool",
     "Toothbrush"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Buzz",
@@ -678,7 +681,8 @@
     "Electric shaver, electric razor",
     "Power tool",
     "Toothbrush"
-   ]
+   ],
+   "panns_rank": 5
   }
  ]
 }

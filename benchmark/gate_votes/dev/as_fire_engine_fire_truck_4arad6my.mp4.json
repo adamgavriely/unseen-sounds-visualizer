@@ -444,7 +444,8 @@
     "Theremin",
     "Motor vehicle (road)",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -485,7 +486,8 @@
     "Motor vehicle (road)",
     "Theremin",
     "Fire alarm"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

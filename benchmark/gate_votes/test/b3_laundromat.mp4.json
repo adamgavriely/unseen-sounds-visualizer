@@ -961,7 +961,8 @@
     "Background noise",
     "Vibration",
     "Heavy engine (low frequency)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",
@@ -1011,7 +1012,8 @@
     "Vibration",
     "Heavy engine (low frequency)",
     "Background noise"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

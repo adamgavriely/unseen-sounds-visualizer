@@ -1081,7 +1081,8 @@
     "Accelerating, revving, vroom",
     "Motor vehicle (road)",
     "Boat, Water vehicle"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",
@@ -1104,7 +1105,8 @@
     "Vibration",
     "Accelerating, revving, vroom",
     "Light engine (high frequency)"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Buzz",
@@ -1127,7 +1129,8 @@
     "Accelerating, revving, vroom",
     "Boat, Water vehicle",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 22
   },
   {
    "label": "Boat",
@@ -1159,7 +1162,8 @@
     "Vibration",
     "Cacophony",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 3
   }
  ]
 }

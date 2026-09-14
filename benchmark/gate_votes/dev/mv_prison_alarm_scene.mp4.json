@@ -553,7 +553,8 @@
     "Motor vehicle (road)",
     "Theremin",
     "Siren"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Alarm",
@@ -594,7 +595,8 @@
     "Music of Asia",
     "Middle Eastern music",
     "Singing"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

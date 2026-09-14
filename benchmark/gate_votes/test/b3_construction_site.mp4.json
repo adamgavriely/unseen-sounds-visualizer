@@ -1211,7 +1211,8 @@
     "Buzzer",
     "Vibration",
     "Background noise"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",
@@ -1243,7 +1244,8 @@
     "Rock music",
     "Vibration",
     "Gears"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Air brake",
@@ -1302,7 +1304,8 @@
     "Background noise",
     "Printer",
     "Boiling"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Aircraft",
@@ -1334,7 +1337,8 @@
     "Vibration",
     "Background noise",
     "Buzzer"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Helicopter",
@@ -1357,7 +1361,8 @@
     "Heavy engine (low frequency)",
     "Jackhammer",
     "Light engine (high frequency)"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Fire",

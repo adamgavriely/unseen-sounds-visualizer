@@ -876,7 +876,8 @@
     "Bagpipes",
     "Sawing",
     "Shout"
-   ]
+   ],
+   "panns_rank": 48
   },
   {
    "label": "Crushing",
@@ -899,7 +900,8 @@
     "Domestic animals, pets",
     "Music of Asia",
     "Plucked string instrument"
-   ]
+   ],
+   "panns_rank": 113
   },
   {
    "label": "Dishes",
@@ -922,7 +924,8 @@
     "Pig",
     "Cattle, bovinae",
     "Music of Latin America"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Wood",
@@ -945,7 +948,8 @@
     "Pig",
     "Cattle, bovinae",
     "Didgeridoo"
-   ]
+   ],
+   "panns_rank": 16
   },
   {
    "label": "Patter",

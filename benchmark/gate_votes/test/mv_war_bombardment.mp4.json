@@ -414,7 +414,8 @@
     "Explosion",
     "Eruption",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Explosion",
@@ -446,7 +447,8 @@
     "Electronic music",
     "Music of Asia",
     "Percussion"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",

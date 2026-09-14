@@ -904,7 +904,8 @@
     "Rock music",
     "Music of Latin America",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 29
   },
   {
    "label": "Vehicle",
@@ -945,7 +946,8 @@
     "Music of Latin America",
     "Rock music",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Whale vocalization",
@@ -968,7 +970,8 @@
     "Accelerating, revving, vroom",
     "Shout",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 72
   },
   {
    "label": "Roaring cats (lions, tigers)",

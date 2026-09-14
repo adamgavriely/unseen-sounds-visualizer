@@ -706,7 +706,8 @@
     "Cat",
     "Bird",
     "Goat"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bird",
@@ -729,7 +730,8 @@
     "Cat",
     "Bird",
     "Goat"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Siren",
@@ -779,7 +781,8 @@
     "Sound equipment",
     "Theremin",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Shofar",
@@ -811,7 +814,8 @@
     "Sound equipment",
     "Theremin",
     "Printer"
-   ]
+   ],
+   "panns_rank": 8
   },
   {
    "label": "Vehicle",
@@ -834,7 +838,8 @@
     "Shout",
     "Motor vehicle (road)",
     "Pump (liquid)"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Door",
@@ -857,7 +862,8 @@
     "Whale vocalization",
     "Theremin",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 33
   },
   {
    "label": "Roaring cats (lions, tigers)",

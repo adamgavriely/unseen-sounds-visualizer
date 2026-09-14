@@ -694,7 +694,8 @@
     "Music of Africa",
     "Sound equipment",
     "Middle Eastern music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Cooking",
@@ -726,7 +727,8 @@
     "Hubbub, speech noise, speech babble",
     "Speech",
     "Frying (food)"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Gush",

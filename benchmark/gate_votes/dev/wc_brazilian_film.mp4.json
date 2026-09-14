@@ -814,7 +814,8 @@
     "Sound equipment",
     "Mechanisms",
     "Bird"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Whoosh, swoosh, swish",
@@ -837,7 +838,8 @@
     "Rock music",
     "Gears",
     "Mechanisms"
-   ]
+   ],
+   "panns_rank": 7
   },
   {
    "label": "Gunshot",

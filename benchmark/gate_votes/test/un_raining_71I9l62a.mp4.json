@@ -685,7 +685,8 @@
     "Motor vehicle (road)",
     "Accelerating, revving, vroom",
     "Radio"
-   ]
+   ],
+   "panns_rank": 13
   },
   {
    "label": "Vehicle",
@@ -726,7 +727,8 @@
     "Bird",
     "Whale vocalization",
     "Fowl"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -749,7 +751,8 @@
     "Hubbub, speech noise, speech babble",
     "Didgeridoo",
     "Hip hop music"
-   ]
+   ],
+   "panns_rank": 7
   }
  ]
 }

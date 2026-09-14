@@ -1131,7 +1131,8 @@
     "Heavy engine (low frequency)",
     "Vibration",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Air brake",
@@ -1172,7 +1173,8 @@
     "Printer",
     "Motor vehicle (road)",
     "Mechanisms"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Squeal",

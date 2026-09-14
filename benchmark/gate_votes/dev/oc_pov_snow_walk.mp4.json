@@ -254,7 +254,8 @@
     "Wind noise (microphone)",
     "Zipper (clothing)",
     "Bagpipes"
-   ]
+   ],
+   "panns_rank": 7
   },
   {
    "label": "Footsteps",
@@ -304,7 +305,8 @@
     "Wind noise (microphone)",
     "Bagpipes",
     "Zipper (clothing)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Stomach rumble",

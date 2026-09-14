@@ -576,7 +576,8 @@
     "Aircraft",
     "Heavy engine (low frequency)",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Gunshot",
@@ -599,7 +600,8 @@
     "Insect",
     "Electronic music",
     "Speech"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",

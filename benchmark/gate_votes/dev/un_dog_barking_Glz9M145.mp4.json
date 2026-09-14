@@ -814,7 +814,8 @@
     "Bird",
     "Laughter",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Baby laughter",
@@ -855,7 +856,8 @@
     "Bathtub (filling or washing)",
     "Sink (filling or washing)",
     "Bird"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Babbling",
@@ -878,7 +880,8 @@
     "Crying, sobbing",
     "Whale vocalization",
     "Laughter"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Belly laugh",

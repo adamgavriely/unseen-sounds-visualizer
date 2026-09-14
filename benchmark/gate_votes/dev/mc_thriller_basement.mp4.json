@@ -483,7 +483,8 @@
     "Whale vocalization",
     "Vibration",
     "Aircraft"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Rain",
@@ -533,7 +534,8 @@
     "Whale vocalization",
     "Idling",
     "Fill (with liquid)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -556,7 +558,8 @@
     "Fill (with liquid)",
     "Scary music",
     "Idling"
-   ]
+   ],
+   "panns_rank": 4
   }
  ]
 }

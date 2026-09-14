@@ -636,7 +636,8 @@
     "Singing",
     "Shout",
     "Roaring cats (lions, tigers)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Siren",
@@ -659,7 +660,8 @@
     "Shout",
     "Theremin",
     "Rail transport"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -682,7 +684,8 @@
     "Rock music",
     "Music of Latin America",
     "Funk"
-   ]
+   ],
+   "panns_rank": 3
   }
  ]
 }

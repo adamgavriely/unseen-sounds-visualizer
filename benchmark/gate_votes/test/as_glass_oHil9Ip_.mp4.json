@@ -405,7 +405,8 @@
     "Bell",
     "Chink, clink",
     "Cutlery, silverware"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Glass",
@@ -428,7 +429,8 @@
     "Bell",
     "Chink, clink",
     "Cutlery, silverware"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Coin (dropping)",

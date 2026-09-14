@@ -883,7 +883,8 @@
     "Percussion",
     "Bell",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bell",
@@ -915,7 +916,8 @@
     "Keyboard (musical)",
     "Music of Asia",
     "Music of Africa"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Vehicle",
@@ -965,7 +967,8 @@
     "Percussion",
     "Music of Asia",
     "Bell"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

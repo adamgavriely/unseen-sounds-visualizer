@@ -846,7 +846,8 @@
     "Fill (with liquid)",
     "Rock music",
     "Flap"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Snicker",
@@ -869,7 +870,8 @@
     "Ska",
     "Percussion",
     "Singing"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Footsteps",

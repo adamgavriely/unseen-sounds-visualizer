@@ -546,7 +546,8 @@
     "Eruption",
     "Explosion",
     "Gunshot, gunfire"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",

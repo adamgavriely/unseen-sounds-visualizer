@@ -593,7 +593,8 @@
     "Background noise",
     "Theremin",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",
@@ -616,7 +617,8 @@
     "Gears",
     "Mechanisms",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Boat",
@@ -657,7 +659,8 @@
     "Background noise",
     "Theremin",
     "Vibration"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Aircraft",
@@ -689,7 +692,8 @@
     "Gears",
     "Sound equipment",
     "Wind noise (microphone)"
-   ]
+   ],
+   "panns_rank": 4
   }
  ]
 }

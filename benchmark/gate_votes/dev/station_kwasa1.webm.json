@@ -645,7 +645,8 @@
     "Vibration",
     "Rail transport",
     "Background noise"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -695,7 +696,8 @@
     "Vibration",
     "Background noise",
     "Rail transport"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -718,7 +720,8 @@
     "Microwave oven",
     "Sound equipment",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Sliding door",

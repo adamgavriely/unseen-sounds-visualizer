@@ -825,7 +825,8 @@
     "Shout",
     "Theremin",
     "Percussion"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Vehicle",
@@ -857,7 +858,8 @@
     "Shout",
     "Percussion",
     "Singing"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Explosion",

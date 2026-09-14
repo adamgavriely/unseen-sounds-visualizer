@@ -423,7 +423,8 @@
     "Rock music",
     "Electronic music",
     "Roaring cats (lions, tigers)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Sigh",
@@ -446,7 +447,8 @@
     "Bird",
     "Hubbub, speech noise, speech babble",
     "Bell"
-   ]
+   ],
+   "panns_rank": 14
   },
   {
    "label": "Explosion",
@@ -469,7 +471,8 @@
     "Keyboard (musical)",
     "Typing",
     "Splinter"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Gasp",
@@ -492,7 +495,8 @@
     "Shout",
     "Roaring cats (lions, tigers)",
     "Zipper (clothing)"
-   ]
+   ],
+   "panns_rank": 22
   }
  ]
 }

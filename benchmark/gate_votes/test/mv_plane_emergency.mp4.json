@@ -806,7 +806,8 @@
     "Shout",
     "Rock music",
     "Music of Latin America"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Tick",
@@ -829,7 +830,8 @@
     "Speech",
     "Shout",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 57
   },
   {
    "label": "Tick-tock",
@@ -852,7 +854,8 @@
     "Speech",
     "Shout",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 57
   },
   {
    "label": "Train",
@@ -875,7 +878,8 @@
     "Hubbub, speech noise, speech babble",
     "Speech",
     "Rail transport"
-   ]
+   ],
+   "panns_rank": 37
   },
   {
    "label": "Vehicle",

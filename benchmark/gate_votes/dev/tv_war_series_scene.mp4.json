@@ -705,7 +705,8 @@
     "Eruption",
     "Explosion",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Glass",
@@ -728,7 +729,8 @@
     "Scary music",
     "Orchestra",
     "Angry music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",

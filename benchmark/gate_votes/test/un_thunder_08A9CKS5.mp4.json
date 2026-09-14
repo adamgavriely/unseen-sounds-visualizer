@@ -234,7 +234,8 @@
     "Thunderstorm",
     "Pour",
     "Eruption"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Thunder",
@@ -275,7 +276,8 @@
     "Thunderstorm",
     "Pour",
     "Burst, pop"
-   ]
+   ],
+   "panns_rank": 2
   }
  ]
 }

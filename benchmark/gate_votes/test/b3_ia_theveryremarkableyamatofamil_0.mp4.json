@@ -726,7 +726,8 @@
     "Speech",
     "Hubbub, speech noise, speech babble",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 18
   },
   {
    "label": "Snicker",
@@ -749,7 +750,8 @@
     "Speech",
     "Insect",
     "Hubbub, speech noise, speech babble"
-   ]
+   ],
+   "panns_rank": 18
   },
   {
    "label": "Chuckle, chortle",

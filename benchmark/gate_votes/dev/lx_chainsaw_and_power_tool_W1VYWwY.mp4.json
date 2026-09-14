@@ -303,7 +303,8 @@
     "Light engine (high frequency)",
     "Accelerating, revving, vroom",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Tools",
@@ -353,7 +354,8 @@
     "Light engine (high frequency)",
     "Accelerating, revving, vroom",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Power tool",
@@ -403,7 +405,8 @@
     "Light engine (high frequency)",
     "Accelerating, revving, vroom",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Wood",

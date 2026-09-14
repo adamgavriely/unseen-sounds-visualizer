@@ -445,7 +445,8 @@
     "Buzzer",
     "Sound equipment",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Dog",
@@ -468,7 +469,8 @@
     "Pour",
     "Sink (filling or washing)",
     "Cat"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Gears",
@@ -491,7 +493,8 @@
     "Pig",
     "Sink (filling or washing)",
     "Drip"
-   ]
+   ],
+   "panns_rank": 16
   }
  ]
 }

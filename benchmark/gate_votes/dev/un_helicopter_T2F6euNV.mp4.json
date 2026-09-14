@@ -695,7 +695,8 @@
     "Music of Africa",
     "Music of Asia",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Cooking",
@@ -718,7 +719,8 @@
     "Shout",
     "Reggae",
     "Hubbub, speech noise, speech babble"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Glass",
@@ -741,7 +743,8 @@
     "Rail transport",
     "Motor vehicle (road)",
     "Fill (with liquid)"
-   ]
+   ],
+   "panns_rank": 17
   },
   {
    "label": "Maraca",

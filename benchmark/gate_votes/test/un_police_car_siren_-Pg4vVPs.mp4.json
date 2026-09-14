@@ -1273,7 +1273,8 @@
     "Accelerating, revving, vroom",
     "Light engine (high frequency)",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -1305,7 +1306,8 @@
     "Accelerating, revving, vroom",
     "Motor vehicle (road)",
     "Light engine (high frequency)"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Siren",
@@ -1337,7 +1339,8 @@
     "Motor vehicle (road)",
     "Accelerating, revving, vroom",
     "Plucked string instrument"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Chainsaw",

@@ -565,7 +565,8 @@
     "Siren",
     "Theremin",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -597,7 +598,8 @@
     "Theremin",
     "Siren",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

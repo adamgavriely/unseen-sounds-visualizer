@@ -686,7 +686,8 @@
     "Hammer",
     "Chop",
     "Pulleys"
-   ]
+   ],
+   "panns_rank": 49
   },
   {
    "label": "Cooking",
@@ -709,7 +710,8 @@
     "Music of Latin America",
     "Music of Africa",
     "Singing"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Chink, clink",
@@ -741,7 +743,8 @@
     "Mechanisms",
     "Splinter",
     "Flap"
-   ]
+   ],
+   "panns_rank": 5
   },
   {
    "label": "Glass",

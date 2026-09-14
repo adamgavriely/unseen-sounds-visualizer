@@ -633,7 +633,8 @@
     "Rock music",
     "Funk",
     "Reggae"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Cat",
@@ -656,7 +657,8 @@
     "Music of Asia",
     "Motor vehicle (road)",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 35
   },
   {
    "label": "Thump, thud",
@@ -688,7 +690,8 @@
     "Chop",
     "Singing",
     "Shout"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Horse",
@@ -711,7 +714,8 @@
     "Rock music",
     "Music of Asia",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 14
   },
   {
    "label": "Caterwaul",
@@ -734,7 +738,8 @@
     "Music of Asia",
     "Rock music",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 35
   }
  ]
 }

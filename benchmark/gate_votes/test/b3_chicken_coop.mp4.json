@@ -1392,7 +1392,8 @@
     "Pig",
     "Frog",
     "Fowl"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -1424,7 +1425,8 @@
     "Aircraft",
     "Sink (filling or washing)",
     "Fill (with liquid)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Sheep",

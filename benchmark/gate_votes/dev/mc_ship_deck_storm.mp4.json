@@ -833,7 +833,8 @@
     "Rail transport",
     "Bird",
     "Flap"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Gunshot",
@@ -874,7 +875,8 @@
     "Rock music",
     "Music of Asia",
     "Singing"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Explosion",
@@ -924,7 +926,8 @@
     "Rock music",
     "Music of Asia",
     "Singing"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Whoosh, swoosh, swish",

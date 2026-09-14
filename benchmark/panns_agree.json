@@ -1,43 +1,23 @@
 {
  "top_k": 10,
  "phantoms_removed": [
-  32,
+  24,
   77
  ],
  "real_removed": [
-  3,
+  2,
   23
  ],
  "unseen_lost": [
-  3,
+  1,
   20
  ],
  "passed": false,
  "test_flips": [
   {
-   "clip": "as_explosion_eEdaLHC0.mp4",
-   "tag": "unseen_ambient",
-   "removed": [
-    [
-     "Gunshot",
-     204
-    ]
-   ],
-   "remaining": [
-    "Explosion",
-    "Vehicle",
-    "Aircraft",
-    "Burst, pop"
-   ]
-  },
-  {
    "clip": "as_explosion_XJ8lc3I6.mp4",
    "tag": "mixed",
    "removed": [
-    [
-     "Gunshot",
-     204
-    ],
     [
      "Sigh",
      14
@@ -48,6 +28,7 @@
     ]
    ],
    "remaining": [
+    "Gunshot",
     "Explosion"
    ]
   },
@@ -71,7 +52,7 @@
    "removed": [
     [
      "Cooking",
-     204
+     11
     ]
    ],
    "remaining": [
@@ -85,7 +66,7 @@
    "removed": [
     [
      "Cooking",
-     204
+     19
     ]
    ],
    "remaining": []
@@ -99,16 +80,8 @@
      94
     ],
     [
-     "Boat",
-     204
-    ],
-    [
      "Scrape",
      11
-    ],
-    [
-     "Sheep",
-     16
     ],
     [
      "Roaring cats (lions, tigers)",
@@ -118,11 +91,13 @@
    "remaining": [
     "Horse",
     "Arrow",
+    "Boat",
     "Chop",
     "Rowboat, canoe, kayak",
     "Skateboard",
     "Bird",
-    "Vehicle"
+    "Vehicle",
+    "Sheep"
    ]
   },
   {
@@ -197,26 +172,11 @@
     ],
     [
      "Bird",
-     39
+     23
     ],
     [
      "Honk",
      23
-    ]
-   ],
-   "remaining": []
-  },
-  {
-   "clip": "mv_basement_scene_noise.mp4",
-   "tag": "mixed",
-   "removed": [
-    [
-     "Cattle",
-     204
-    ],
-    [
-     "Siren",
-     51
     ]
    ],
    "remaining": []
@@ -240,56 +200,6 @@
    ],
    "remaining": [
     "Glass"
-   ]
-  },
-  {
-   "clip": "mv_war_bombardment.mp4",
-   "tag": "seen_ambient",
-   "removed": [
-    [
-     "Gunshot",
-     204
-    ]
-   ],
-   "remaining": []
-  },
-  {
-   "clip": "oc_ice_cracking_lake.mp4",
-   "tag": "no_ambient",
-   "removed": [
-    [
-     "Footsteps",
-     204
-    ]
-   ],
-   "remaining": []
-  },
-  {
-   "clip": "oc_pov_dry_leaves.mp4",
-   "tag": "no_ambient",
-   "removed": [
-    [
-     "Footsteps",
-     204
-    ]
-   ],
-   "remaining": [
-    "Chewing, mastication"
-   ]
-  },
-  {
-   "clip": "un_airplane_flyby_1FOKvagR.mp4",
-   "tag": "seen_ambient",
-   "removed": [
-    [
-     "Boat",
-     204
-    ]
-   ],
-   "remaining": [
-    "Helicopter",
-    "Aircraft",
-    "Vehicle"
    ]
   },
   {
@@ -319,7 +229,7 @@
     ],
     [
      "Gunshot",
-     204
+     50
     ],
     [
      "Thump, thud",
@@ -355,7 +265,7 @@
     ],
     [
      "Bird",
-     68
+     36
     ]
    ],
    "remaining": [

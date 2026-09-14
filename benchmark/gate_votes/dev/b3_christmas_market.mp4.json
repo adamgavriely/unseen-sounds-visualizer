@@ -876,7 +876,8 @@
     "Whale vocalization",
     "Foghorn",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Whale vocalization",
@@ -899,7 +900,8 @@
     "Keyboard (musical)",
     "Whale vocalization",
     "Background noise"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

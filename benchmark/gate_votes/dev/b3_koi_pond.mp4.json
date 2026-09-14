@@ -774,7 +774,8 @@
     "Sink (filling or washing)",
     "Boiling",
     "Frying (food)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Rain",
@@ -815,7 +816,8 @@
     "Frying (food)",
     "Rodents, rats, mice",
     "Boiling"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Typing",

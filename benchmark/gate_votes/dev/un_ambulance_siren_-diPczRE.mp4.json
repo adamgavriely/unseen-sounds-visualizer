@@ -585,7 +585,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Train",
@@ -608,7 +609,8 @@
     "Gears",
     "Blender",
     "Buzzer"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Vehicle",
@@ -649,7 +651,8 @@
     "Siren",
     "Motor vehicle (road)",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Aircraft",
@@ -672,7 +675,8 @@
     "Gears",
     "Vibration",
     "Rail transport"
-   ]
+   ],
+   "panns_rank": 5
   }
  ]
 }

@@ -752,7 +752,8 @@
     "Whale vocalization",
     "Bagpipes",
     "Boat, Water vehicle"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Goose",
@@ -775,7 +776,8 @@
     "Whale vocalization",
     "Shout",
     "Gurgling"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Boat",
@@ -834,7 +836,8 @@
     "Whale vocalization",
     "Bagpipes",
     "Boat, Water vehicle"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Honk",
@@ -857,7 +860,8 @@
     "Whale vocalization",
     "Shout",
     "Gurgling"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Frog",
@@ -925,7 +929,8 @@
     "Classical music",
     "Pour",
     "Didgeridoo"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Bird",
@@ -948,7 +953,8 @@
     "Whale vocalization",
     "Shout",
     "Gurgling"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -1007,7 +1013,8 @@
     "Gurgling",
     "Pump (liquid)",
     "Gargling"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

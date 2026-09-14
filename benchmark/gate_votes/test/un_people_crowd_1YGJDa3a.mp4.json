@@ -1003,7 +1003,8 @@
     "Sound equipment",
     "Blender",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Fireworks",
@@ -1026,7 +1027,8 @@
     "Rail transport",
     "Sound equipment",
     "Whistle"
-   ]
+   ],
+   "panns_rank": 62
   },
   {
    "label": "Alarm",
@@ -1049,7 +1051,8 @@
     "Sound equipment",
     "Blender",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Vehicle",
@@ -1099,7 +1102,8 @@
     "Sound equipment",
     "Blender",
     "Sink (filling or washing)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Explosion",
@@ -1122,7 +1126,8 @@
     "Sound equipment",
     "Whale vocalization",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 50
   },
   {
    "label": "Gunshot",
@@ -1145,7 +1150,8 @@
     "Sound equipment",
     "Whale vocalization",
     "Whistle"
-   ]
+   ],
+   "panns_rank": 50
   },
   {
    "label": "Thump, thud",
@@ -1168,7 +1174,8 @@
     "Sound equipment",
     "Printer",
     "Microwave oven"
-   ]
+   ],
+   "panns_rank": 26
   }
  ]
 }

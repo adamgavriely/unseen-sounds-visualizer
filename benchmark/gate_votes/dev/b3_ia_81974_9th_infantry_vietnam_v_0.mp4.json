@@ -914,7 +914,8 @@
     "Rail transport",
     "Hubbub, speech noise, speech babble",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Vehicle",
@@ -973,7 +974,8 @@
     "Rail transport",
     "Hubbub, speech noise, speech babble",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Gunshot",
@@ -1005,7 +1007,8 @@
     "Rock music",
     "Aircraft",
     "Electronic music"
-   ]
+   ],
+   "panns_rank": 11
   },
   {
    "label": "Train",

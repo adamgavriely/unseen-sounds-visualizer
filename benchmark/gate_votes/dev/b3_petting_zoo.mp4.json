@@ -834,7 +834,8 @@
     "Frog",
     "Shout",
     "Domestic animals, pets"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bird",
@@ -893,7 +894,8 @@
     "Domestic animals, pets",
     "Pig",
     "Shout"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Gobble",
@@ -934,7 +936,8 @@
     "Domestic animals, pets",
     "Bird",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Owl",
@@ -957,7 +960,8 @@
     "Shout",
     "Boing",
     "Bagpipes"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Goose",
@@ -989,7 +993,8 @@
     "Bird",
     "Domestic animals, pets",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Honk",
@@ -1021,7 +1026,8 @@
     "Bagpipes",
     "Shout",
     "Laughter"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Snicker",

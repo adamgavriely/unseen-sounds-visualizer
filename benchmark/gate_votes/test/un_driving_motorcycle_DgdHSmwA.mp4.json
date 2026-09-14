@@ -605,7 +605,8 @@
     "Accelerating, revving, vroom",
     "Light engine (high frequency)",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Vehicle",
@@ -646,7 +647,8 @@
     "Accelerating, revving, vroom",
     "Motor vehicle (road)",
     "Vibration"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Fireworks",
@@ -669,7 +671,8 @@
     "Music of Asia",
     "Music of Latin America",
     "Angry music"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

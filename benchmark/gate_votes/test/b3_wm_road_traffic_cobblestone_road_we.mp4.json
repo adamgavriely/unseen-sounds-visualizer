@@ -845,7 +845,8 @@
     "Vibration",
     "Clock",
     "Heart sounds, heartbeat"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Vehicle",
@@ -913,7 +914,8 @@
     "Heavy engine (low frequency)",
     "Aircraft",
     "Idling"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

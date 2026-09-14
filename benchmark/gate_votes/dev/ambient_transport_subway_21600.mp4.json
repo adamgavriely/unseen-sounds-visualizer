@@ -404,7 +404,8 @@
     "Rail transport",
     "Heavy engine (low frequency)",
     "Sewing machine"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -445,7 +446,8 @@
     "Heavy engine (low frequency)",
     "Rail transport",
     "Gears"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Sliding door",
@@ -468,7 +470,8 @@
     "Rail transport",
     "Gears",
     "Steam"
-   ]
+   ],
+   "panns_rank": 23
   },
   {
    "label": "Heart sounds, heartbeat",
@@ -491,7 +494,8 @@
     "Rail transport",
     "Vibration",
     "Pulse"
-   ]
+   ],
+   "panns_rank": 67
   },
   {
    "label": "Heart murmur",

@@ -812,7 +812,8 @@
     "Heavy engine (low frequency)",
     "Light engine (high frequency)",
     "Engine"
-   ]
+   ],
+   "panns_rank": 9
   },
   {
    "label": "Vehicle",
@@ -880,7 +881,8 @@
     "Heavy engine (low frequency)",
     "Light engine (high frequency)",
     "Engine"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Jackhammer",

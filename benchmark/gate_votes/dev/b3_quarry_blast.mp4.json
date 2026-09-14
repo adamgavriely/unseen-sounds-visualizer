@@ -992,7 +992,8 @@
     "Flap",
     "Rail transport",
     "Heavy engine (low frequency)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Footsteps",
@@ -1033,7 +1034,8 @@
     "Heavy engine (low frequency)",
     "Flap",
     "Rail transport"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Train",
@@ -1065,7 +1067,8 @@
     "Flap",
     "Rail transport",
     "Aircraft"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Vehicle",

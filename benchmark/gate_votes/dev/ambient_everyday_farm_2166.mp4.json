@@ -474,7 +474,8 @@
     "Bird",
     "Livestock, farm animals, working animals",
     "Pig"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Sheep",
@@ -497,7 +498,8 @@
     "Bird",
     "Livestock, farm animals, working animals",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Footsteps",

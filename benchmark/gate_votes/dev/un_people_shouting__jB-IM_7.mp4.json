@@ -796,7 +796,8 @@
     "Cat",
     "Whale vocalization",
     "Domestic animals, pets"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Sheep",
@@ -819,7 +820,8 @@
     "Shout",
     "Boing",
     "Basketball bounce"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Basketball bounce",
@@ -842,7 +844,8 @@
     "Shout",
     "Domestic animals, pets",
     "Livestock, farm animals, working animals"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Cattle",
@@ -865,7 +868,8 @@
     "Shout",
     "Singing",
     "Vocal music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Caterwaul",

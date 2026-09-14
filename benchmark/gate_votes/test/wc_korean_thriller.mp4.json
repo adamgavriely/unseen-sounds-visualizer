@@ -736,7 +736,8 @@
     "Motor vehicle (road)",
     "Non-motorized land vehicle",
     "Zipper (clothing)"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Vehicle",
@@ -759,7 +760,8 @@
     "Motor vehicle (road)",
     "Rail transport",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Horse",
@@ -782,7 +784,8 @@
     "Fill (with liquid)",
     "Rock music",
     "Pour"
-   ]
+   ],
+   "panns_rank": 21
   },
   {
    "label": "Glass",
@@ -805,7 +808,8 @@
     "Rock music",
     "Splinter",
     "Pour"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Bird",
@@ -828,7 +832,8 @@
     "Rock music",
     "Gears",
     "Fill (with liquid)"
-   ]
+   ],
+   "panns_rank": 36
   },
   {
    "label": "Air brake",

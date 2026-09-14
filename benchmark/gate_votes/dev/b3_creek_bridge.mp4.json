@@ -554,7 +554,8 @@
     "Sound equipment",
     "Bagpipes",
     "Power tool"
-   ]
+   ],
+   "panns_rank": 9
   },
   {
    "label": "Aircraft",
@@ -586,7 +587,8 @@
     "Sound equipment",
     "Power tool",
     "Hip hop music"
-   ]
+   ],
+   "panns_rank": 6
   },
   {
    "label": "Tools",
@@ -627,7 +629,8 @@
     "Sound equipment",
     "Hip hop music",
     "Rock music"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Drill",
@@ -659,7 +662,8 @@
     "Speech",
     "Vocal music",
     "Light engine (high frequency)"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Sawing",

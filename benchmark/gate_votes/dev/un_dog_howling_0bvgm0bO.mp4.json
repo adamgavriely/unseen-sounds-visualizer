@@ -926,7 +926,8 @@
     "Domestic animals, pets",
     "Crying, sobbing",
     "Dog"
-   ]
+   ],
+   "panns_rank": 4
   },
   {
    "label": "Baby cry, infant cry",
@@ -967,7 +968,8 @@
     "Shout",
     "Music of Latin America",
     "Domestic animals, pets"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Babbling",
@@ -1008,7 +1010,8 @@
     "Domestic animals, pets",
     "Dog",
     "Whale vocalization"
-   ]
+   ],
+   "panns_rank": 2
   },
   {
    "label": "Laughter",
@@ -1040,7 +1043,8 @@
     "Crying, sobbing",
     "Cat",
     "Theremin"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Crying, sobbing",
@@ -1081,7 +1085,8 @@
     "Shout",
     "Music of Latin America",
     "Domestic animals, pets"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Sniff",

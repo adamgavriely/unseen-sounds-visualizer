@@ -496,7 +496,8 @@
     "Accelerating, revving, vroom",
     "Music of Asia",
     "Vocal music"
-   ]
+   ],
+   "panns_rank": 24
   },
   {
    "label": "Duck",
@@ -519,7 +520,8 @@
     "Classical music",
     "Whale vocalization",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 24
   },
   {
    "label": "Door",
@@ -542,7 +544,8 @@
     "Rock music",
     "Music of Asia",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 39
   },
   {
    "label": "Bird",
@@ -565,7 +568,8 @@
     "Vocal music",
     "Classical music",
     "Music of Asia"
-   ]
+   ],
+   "panns_rank": 23
   },
   {
    "label": "Honk",
@@ -588,7 +592,8 @@
     "Rock music",
     "Music of Asia",
     "Accelerating, revving, vroom"
-   ]
+   ],
+   "panns_rank": 23
   },
   {
    "label": "Goose",

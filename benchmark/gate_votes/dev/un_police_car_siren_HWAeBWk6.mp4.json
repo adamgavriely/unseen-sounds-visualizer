@@ -725,7 +725,8 @@
     "Siren",
     "Theremin",
     "Motor vehicle (road)"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Vehicle",
@@ -766,7 +767,8 @@
     "Domestic animals, pets",
     "Boing",
     "Shout"
-   ]
+   ],
+   "panns_rank": 1
   }
  ]
 }

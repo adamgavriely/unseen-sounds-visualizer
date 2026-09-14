@@ -503,7 +503,8 @@
     "Sine wave",
     "Buzzer",
     "Background noise"
-   ]
+   ],
+   "panns_rank": 1
   },
   {
    "label": "Pulse",
@@ -535,7 +536,8 @@
     "Buzzer",
     "Bell",
     "Telephone"
-   ]
+   ],
+   "panns_rank": 15
   }
  ]
 }

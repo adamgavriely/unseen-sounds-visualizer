@@ -916,7 +916,8 @@
     "Rock music",
     "Keyboard (musical)",
     "Sound equipment"
-   ]
+   ],
+   "panns_rank": 14
   },
   {
    "label": "Gunshot",
@@ -948,7 +949,8 @@
     "Rock music",
     "Music of Asia",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 3
   },
   {
    "label": "Single-lens reflex camera",
@@ -971,7 +973,8 @@
     "Background noise",
     "Sound equipment",
     "Bagpipes"
-   ]
+   ],
+   "panns_rank": 33
   },
   {
    "label": "Glass",
@@ -994,7 +997,8 @@
     "Rock music",
     "Music of Asia",
     "Keyboard (musical)"
-   ]
+   ],
+   "panns_rank": 9
   },
   {
    "label": "Whoosh, swoosh, swish",
