@@ -33,3 +33,7 @@ data/input/*
 benchmark/tags.json.bak
 benchmark/suggestions.json
 data/work/audioset/*.tsv
+docs/report/*.aux
+docs/report/*.log
+docs/report/*.out
+docs/report/*.toc
