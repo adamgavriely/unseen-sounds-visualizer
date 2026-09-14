@@ -40,6 +40,7 @@ from typing import Dict, List, Optional
 import numpy as np
 
 import config
+from src.text_similarity import _as_tensor
 
 LISTEN_MODEL = "Qwen/Qwen2-Audio-7B-Instruct"
 CLAP_MODEL = "laion/clap-htsat-fused"     # the unfused checkpoint is .bin-only; transformers 5 refuses it on torch 2.5
@@ -233,12 +234,12 @@ def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
         audio, _ = librosa.load(str(wav), sr=48000, mono=True)
         with torch.no_grad():
             a = _with_audio(proc, [audio], 48000).to(device)
-            ea = mdl.get_audio_features(**a)
+            ea = _as_tensor(mdl.get_audio_features(**a))   # ModelOutput on transformers 5
             ea = ea / ea.norm(dim=-1, keepdim=True)
             texts = [f"the sound of {it}" for it in items]
             dec = [f"the sound of {pool[i].lower()}" for i in rng.choice(len(pool), decoys, replace=False)]
             t = proc(text=texts + dec, return_tensors="pt", padding=True).to(device)
-            et = mdl.get_text_features(**t)
+            et = _as_tensor(mdl.get_text_features(**t))
             et = et / et.norm(dim=-1, keepdim=True)
             sims = (ea @ et.T)[0].cpu().numpy()
         s_items, s_dec = sims[:len(items)], sims[len(items):]
