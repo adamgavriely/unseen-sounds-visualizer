@@ -2,49 +2,49 @@
  "top_k": null,
  "recall_target": 0.95,
  "recall_at_k": {
-  "1": 0.050980392156862744,
-  "2": 0.12549019607843137,
-  "3": 0.16862745098039217,
-  "4": 0.1843137254901961,
-  "5": 0.19607843137254902,
-  "6": 0.2,
-  "7": 0.20784313725490197,
-  "8": 0.23529411764705882,
-  "9": 0.24313725490196078,
-  "10": 0.24705882352941178,
-  "11": 0.25882352941176473,
-  "12": 0.2627450980392157,
-  "13": 0.26666666666666666,
-  "14": 0.27058823529411763,
-  "15": 0.27450980392156865,
-  "16": 0.28627450980392155,
-  "17": 0.2980392156862745,
-  "18": 0.3058823529411765,
-  "19": 0.30980392156862746,
-  "20": 0.3176470588235294,
-  "21": 0.3176470588235294,
-  "22": 0.3215686274509804,
-  "23": 0.3333333333333333,
-  "24": 0.33725490196078434,
-  "25": 0.3411764705882353,
-  "26": 0.3411764705882353,
-  "27": 0.3411764705882353,
-  "28": 0.34509803921568627,
-  "29": 0.34509803921568627,
-  "30": 0.3686274509803922
+  "1": 0.09803921568627451,
+  "2": 0.17647058823529413,
+  "3": 0.2,
+  "4": 0.22745098039215686,
+  "5": 0.23137254901960785,
+  "6": 0.23921568627450981,
+  "7": 0.2784313725490196,
+  "8": 0.2980392156862745,
+  "9": 0.3058823529411765,
+  "10": 0.3176470588235294,
+  "11": 0.3215686274509804,
+  "12": 0.3254901960784314,
+  "13": 0.3333333333333333,
+  "14": 0.33725490196078434,
+  "15": 0.3411764705882353,
+  "16": 0.36470588235294116,
+  "17": 0.396078431372549,
+  "18": 0.40784313725490196,
+  "19": 0.40784313725490196,
+  "20": 0.4235294117647059,
+  "21": 0.4235294117647059,
+  "22": 0.43137254901960786,
+  "23": 0.44313725490196076,
+  "24": 0.4470588235294118,
+  "25": 0.4549019607843137,
+  "26": 0.4549019607843137,
+  "27": 0.4588235294117647,
+  "28": 0.47058823529411764,
+  "29": 0.4745098039215686,
+  "30": 0.4980392156862745
  },
  "n_events": 255,
  "per_class_median_rank": {
-  "Telephone": 30.0,
-  "Walk, footsteps": 266.0,
-  "Domestic sounds": 276.0,
+  "Telephone": 29.0,
+  "Walk, footsteps": 261.0,
+  "Domestic sounds": 16.0,
   "Laughter": 70.0,
   "Knock": 57.0,
   "Clapping": 35.0,
-  "Door, open or close": 61.0,
+  "Door, open or close": 53.0,
   "Water tap, faucet": 3.0
  },
- "frozen_at": "2026-09-14T16:47:03",
+ "frozen_at": "2026-09-14T16:52:03",
  "events": [
   {
    "stem": "fold4_room2_mix001_deg297_start0463",
@@ -56,19 +56,19 @@
    "stem": "fold4_room15_mix005_deg326_start1073",
    "class": "Walk, footsteps",
    "start": 1.3,
-   "rank": 271
+   "rank": 264
   },
   {
    "stem": "fold4_room10_mix005_deg274_start0057",
    "class": "Telephone",
    "start": 2.8,
-   "rank": 11
+   "rank": 7
   },
   {
    "stem": "fold4_room16_mix010_deg168_start0024",
    "class": "Domestic sounds",
    "start": 1.5,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room2_mix003_deg239_start2350",
@@ -80,19 +80,19 @@
    "stem": "fold4_room15_mix006_deg263_start1711",
    "class": "Laughter",
    "start": 2.0,
-   "rank": 65
+   "rank": 75
   },
   {
    "stem": "fold4_room16_mix014_deg137_start0692",
    "class": "Walk, footsteps",
    "start": 1.8,
-   "rank": 272
+   "rank": 269
   },
   {
    "stem": "fold4_room16_mix009_deg145_start0693",
    "class": "Laughter",
    "start": 2.6,
-   "rank": 9
+   "rank": 10
   },
   {
    "stem": "fold4_room8_mix009_deg281_start1678",
@@ -104,13 +104,13 @@
    "stem": "fold4_room16_mix004_deg138_start1123",
    "class": "Domestic sounds",
    "start": 0.8,
-   "rank": 276
+   "rank": 16
   },
   {
    "stem": "fold4_room16_mix012_deg286_start1165",
    "class": "Laughter",
    "start": 0.7,
-   "rank": 157
+   "rank": 178
   },
   {
    "stem": "fold4_room15_mix009_deg257_start0532",
@@ -128,7 +128,7 @@
    "stem": "fold4_room10_mix008_deg285_start1329",
    "class": "Door, open or close",
    "start": 1.6,
-   "rank": 61
+   "rank": 41
   },
   {
    "stem": "fold4_room8_mix001_deg253_start0985",
@@ -164,7 +164,7 @@
    "stem": "fold4_room16_mix010_deg091_start0096",
    "class": "Domestic sounds",
    "start": 1.6,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix012_deg286_start1165",
@@ -176,13 +176,13 @@
    "stem": "fold4_room16_mix012_deg189_start1194",
    "class": "Laughter",
    "start": 0.7,
-   "rank": 87
+   "rank": 97
   },
   {
    "stem": "fold4_room8_mix008_deg328_start1588",
    "class": "Clapping",
    "start": 1.7,
-   "rank": 8
+   "rank": 7
   },
   {
    "stem": "fold4_room2_mix003_deg048_start1325",
@@ -194,7 +194,7 @@
    "stem": "fold4_room16_mix010_deg332_start0093",
    "class": "Domestic sounds",
    "start": 1.9,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix013_deg075_start0898",
@@ -206,7 +206,7 @@
    "stem": "fold4_room16_mix014_deg349_start0693",
    "class": "Walk, footsteps",
    "start": 1.7,
-   "rank": 272
+   "rank": 269
   },
   {
    "stem": "fold4_room8_mix001_deg050_start1007",
@@ -218,7 +218,7 @@
    "stem": "fold4_room15_mix008_deg001_start0718",
    "class": "Door, open or close",
    "start": 1.0,
-   "rank": 24
+   "rank": 8
   },
   {
    "stem": "fold4_room16_mix013_deg067_start1047",
@@ -236,7 +236,7 @@
    "stem": "fold4_room16_mix001_deg312_start0159",
    "class": "Water tap, faucet",
    "start": 1.3,
-   "rank": 3
+   "rank": 7
   },
   {
    "stem": "fold4_room16_mix010_deg335_start0346",
@@ -284,7 +284,7 @@
    "stem": "fold4_room2_mix004_deg277_start0863",
    "class": "Telephone",
    "start": 1.2,
-   "rank": 101
+   "rank": 29
   },
   {
    "stem": "fold4_room8_mix007_deg010_start1271",
@@ -302,7 +302,7 @@
    "stem": "fold4_room16_mix003_deg165_start0950",
    "class": "Domestic sounds",
    "start": 1.2,
-   "rank": 276
+   "rank": 35
   },
   {
    "stem": "fold4_room16_mix001_deg330_start0530",
@@ -314,7 +314,7 @@
    "stem": "fold4_room10_mix004_deg105_start1301",
    "class": "Door, open or close",
    "start": 0.9,
-   "rank": 74
+   "rank": 97
   },
   {
    "stem": "fold4_room16_mix012_deg333_start1205",
@@ -326,7 +326,7 @@
    "stem": "fold4_room8_mix008_deg263_start1576",
    "class": "Clapping",
    "start": 2.9,
-   "rank": 8
+   "rank": 10
   },
   {
    "stem": "fold4_room15_mix007_deg089_start0363",
@@ -338,7 +338,7 @@
    "stem": "fold4_room8_mix003_deg039_start2017",
    "class": "Clapping",
    "start": 1.8,
-   "rank": 2
+   "rank": 4
   },
   {
    "stem": "fold4_room10_mix008_deg252_start0315",
@@ -356,25 +356,25 @@
    "stem": "fold4_room16_mix010_deg277_start0025",
    "class": "Domestic sounds",
    "start": 1.4,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room8_mix003_deg039_start2017",
    "class": "Clapping",
    "start": 0.8,
-   "rank": 2
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix004_deg099_start0053",
    "class": "Domestic sounds",
    "start": 3.3,
-   "rank": 276
+   "rank": 27
   },
   {
    "stem": "fold4_room16_mix004_deg064_start0060",
    "class": "Domestic sounds",
    "start": 2.6,
-   "rank": 276
+   "rank": 24
   },
   {
    "stem": "fold4_room15_mix009_deg147_start0544",
@@ -416,25 +416,25 @@
    "stem": "fold4_room8_mix008_deg180_start1590",
    "class": "Clapping",
    "start": 1.5,
-   "rank": 8
+   "rank": 7
   },
   {
    "stem": "fold4_room2_mix001_deg075_start0471",
    "class": "Telephone",
    "start": 2.6,
-   "rank": 4
+   "rank": 18
   },
   {
    "stem": "fold4_room16_mix003_deg012_start0927",
    "class": "Domestic sounds",
    "start": 3.5,
-   "rank": 276
+   "rank": 20
   },
   {
    "stem": "fold4_room16_mix001_deg287_start0152",
    "class": "Water tap, faucet",
    "start": 2.0,
-   "rank": 3
+   "rank": 4
   },
   {
    "stem": "fold4_room15_mix010_deg340_start4005",
@@ -452,7 +452,7 @@
    "stem": "fold4_room16_mix010_deg280_start0503",
    "class": "Laughter",
    "start": 1.6,
-   "rank": 17
+   "rank": 6
   },
   {
    "stem": "fold4_room16_mix013_deg105_start0990",
@@ -464,7 +464,7 @@
    "stem": "fold4_room16_mix010_deg035_start0024",
    "class": "Domestic sounds",
    "start": 1.5,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room8_mix001_deg050_start1007",
@@ -488,7 +488,7 @@
    "stem": "fold4_room2_mix001_deg227_start0469",
    "class": "Telephone",
    "start": 2.8,
-   "rank": 4
+   "rank": 10
   },
   {
    "stem": "fold4_room15_mix003_deg282_start1578",
@@ -530,7 +530,7 @@
    "stem": "fold4_room16_mix010_deg183_start0081",
    "class": "Domestic sounds",
    "start": 3.1,
-   "rank": 276
+   "rank": 4
   },
   {
    "stem": "fold4_room16_mix012_deg286_start1165",
@@ -542,7 +542,7 @@
    "stem": "fold4_room16_mix013_deg163_start0153",
    "class": "Walk, footsteps",
    "start": 0.9,
-   "rank": 247
+   "rank": 256
   },
   {
    "stem": "fold4_room8_mix005_deg304_start1459",
@@ -554,7 +554,7 @@
    "stem": "fold4_room15_mix005_deg221_start1075",
    "class": "Walk, footsteps",
    "start": 1.1,
-   "rank": 271
+   "rank": 266
   },
   {
    "stem": "fold4_room16_mix013_deg061_start0600",
@@ -566,7 +566,7 @@
    "stem": "fold4_room16_mix010_deg335_start0346",
    "class": "Domestic sounds",
    "start": 0.4,
-   "rank": 276
+   "rank": 2
   },
   {
    "stem": "fold4_room16_mix013_deg332_start0352",
@@ -578,7 +578,7 @@
    "stem": "fold4_room16_mix004_deg124_start1125",
    "class": "Domestic sounds",
    "start": 0.6,
-   "rank": 276
+   "rank": 16
   },
   {
    "stem": "fold4_room16_mix013_deg234_start0929",
@@ -626,7 +626,7 @@
    "stem": "fold4_room16_mix008_deg234_start0024",
    "class": "Walk, footsteps",
    "start": 0.4,
-   "rank": 266
+   "rank": 261
   },
   {
    "stem": "fold4_room15_mix009_deg225_start0642",
@@ -650,31 +650,31 @@
    "stem": "fold4_room16_mix003_deg202_start0955",
    "class": "Domestic sounds",
    "start": 0.7,
-   "rank": 276
+   "rank": 51
   },
   {
    "stem": "fold4_room15_mix005_deg143_start1202",
    "class": "Door, open or close",
    "start": 1.4,
-   "rank": 23
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix003_deg311_start0223",
    "class": "Domestic sounds",
    "start": 1.5,
-   "rank": 276
+   "rank": 17
   },
   {
    "stem": "fold4_room16_mix012_deg188_start1254",
    "class": "Laughter",
    "start": 2.9,
-   "rank": 31
+   "rank": 17
   },
   {
    "stem": "fold4_room10_mix004_deg155_start1303",
    "class": "Door, open or close",
    "start": 0.7,
-   "rank": 74
+   "rank": 78
   },
   {
    "stem": "fold4_room16_mix001_deg300_start0100",
@@ -698,31 +698,31 @@
    "stem": "fold4_room16_mix008_deg133_start0171",
    "class": "Water tap, faucet",
    "start": 1.1,
-   "rank": 3
+   "rank": 2
   },
   {
    "stem": "fold4_room16_mix008_deg355_start0200",
    "class": "Walk, footsteps",
    "start": 2.9,
-   "rank": 189
+   "rank": 136
   },
   {
    "stem": "fold4_room16_mix001_deg113_start0154",
    "class": "Water tap, faucet",
    "start": 1.8,
-   "rank": 3
+   "rank": 4
   },
   {
    "stem": "fold4_room16_mix010_deg006_start0323",
    "class": "Domestic sounds",
    "start": 2.7,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix009_deg031_start0121",
    "class": "Water tap, faucet",
    "start": 1.3,
-   "rank": 5
+   "rank": 8
   },
   {
    "stem": "fold4_room15_mix010_deg025_start4080",
@@ -734,19 +734,19 @@
    "stem": "fold4_room16_mix004_deg357_start0066",
    "class": "Domestic sounds",
    "start": 2.0,
-   "rank": 276
+   "rank": 28
   },
   {
    "stem": "fold4_room16_mix003_deg296_start0230",
    "class": "Domestic sounds",
    "start": 0.8,
-   "rank": 276
+   "rank": 17
   },
   {
    "stem": "fold4_room10_mix005_deg229_start0572",
    "class": "Walk, footsteps",
    "start": 2.3,
-   "rank": 4
+   "rank": 2
   },
   {
    "stem": "fold4_room15_mix009_deg019_start0527",
@@ -770,7 +770,7 @@
    "stem": "fold4_room16_mix003_deg326_start0231",
    "class": "Domestic sounds",
    "start": 0.7,
-   "rank": 276
+   "rank": 17
   },
   {
    "stem": "fold4_room15_mix006_deg260_start2332",
@@ -782,13 +782,13 @@
    "stem": "fold4_room15_mix008_deg001_start0718",
    "class": "Water tap, faucet",
    "start": 1.9,
-   "rank": 10
+   "rank": 4
   },
   {
    "stem": "fold4_room10_mix005_deg116_start0077",
    "class": "Telephone",
    "start": 0.8,
-   "rank": 11
+   "rank": 1
   },
   {
    "stem": "fold4_room15_mix010_deg185_start4057",
@@ -806,7 +806,7 @@
    "stem": "fold4_room16_mix010_deg197_start0021",
    "class": "Domestic sounds",
    "start": 1.8,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room8_mix001_deg195_start1002",
@@ -830,19 +830,19 @@
    "stem": "fold4_room10_mix003_deg068_start1233",
    "class": "Walk, footsteps",
    "start": 1.2,
-   "rank": 22
+   "rank": 7
   },
   {
    "stem": "fold4_room16_mix010_deg162_start0333",
    "class": "Domestic sounds",
    "start": 1.7,
-   "rank": 276
+   "rank": 3
   },
   {
    "stem": "fold4_room16_mix013_deg332_start0352",
    "class": "Walk, footsteps",
    "start": 2.7,
-   "rank": 129
+   "rank": 102
   },
   {
    "stem": "fold4_room16_mix010_deg168_start0024",
@@ -854,7 +854,7 @@
    "stem": "fold4_room16_mix003_deg131_start0208",
    "class": "Domestic sounds",
    "start": 3.0,
-   "rank": 276
+   "rank": 17
   },
   {
    "stem": "fold4_room16_mix012_deg356_start1174",
@@ -866,7 +866,7 @@
    "stem": "fold4_room10_mix009_deg198_start0228",
    "class": "Door, open or close",
    "start": 1.2,
-   "rank": 96
+   "rank": 35
   },
   {
    "stem": "fold4_room16_mix010_deg122_start0247",
@@ -902,7 +902,7 @@
    "stem": "fold4_room2_mix004_deg356_start0862",
    "class": "Telephone",
    "start": 1.3,
-   "rank": 101
+   "rank": 43
   },
   {
    "stem": "fold4_room16_mix013_deg078_start0621",
@@ -926,13 +926,13 @@
    "stem": "fold4_room8_mix008_deg067_start1590",
    "class": "Clapping",
    "start": 1.5,
-   "rank": 8
+   "rank": 7
   },
   {
    "stem": "fold4_room16_mix001_deg315_start0506",
    "class": "Walk, footsteps",
    "start": 0.4,
-   "rank": 266
+   "rank": 267
   },
   {
    "stem": "fold4_room2_mix001_deg105_start0462",
@@ -956,7 +956,7 @@
    "stem": "fold4_room8_mix008_deg213_start1596",
    "class": "Clapping",
    "start": 0.9,
-   "rank": 8
+   "rank": 7
   },
   {
    "stem": "fold4_room10_mix009_deg270_start0205",
@@ -986,13 +986,13 @@
    "stem": "fold4_room16_mix003_deg275_start0131",
    "class": "Water tap, faucet",
    "start": 0.6,
-   "rank": 5
+   "rank": 8
   },
   {
    "stem": "fold4_room16_mix013_deg163_start0153",
    "class": "Walk, footsteps",
    "start": 0.8,
-   "rank": 266
+   "rank": 252
   },
   {
    "stem": "fold4_room16_mix004_deg231_start1364",
@@ -1022,7 +1022,7 @@
    "stem": "fold4_room16_mix010_deg311_start0326",
    "class": "Domestic sounds",
    "start": 2.4,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix011_deg180_start1498",
@@ -1070,7 +1070,7 @@
    "stem": "fold4_room8_mix003_deg051_start2030",
    "class": "Clapping",
    "start": 0.5,
-   "rank": 2
+   "rank": 4
   },
   {
    "stem": "fold4_room2_mix004_deg225_start0843",
@@ -1088,7 +1088,7 @@
    "stem": "fold4_room16_mix004_deg225_start0023",
    "class": "Domestic sounds",
    "start": 2.8,
-   "rank": 276
+   "rank": 23
   },
   {
    "stem": "fold4_room15_mix009_deg112_start0644",
@@ -1106,7 +1106,7 @@
    "stem": "fold4_room10_mix003_deg270_start1271",
    "class": "Door, open or close",
    "start": 1.9,
-   "rank": 45
+   "rank": 62
   },
   {
    "stem": "fold4_room16_mix013_deg141_start0352",
@@ -1154,7 +1154,7 @@
    "stem": "fold4_room2_mix001_deg287_start0477",
    "class": "Telephone",
    "start": 2.0,
-   "rank": 4
+   "rank": 9
   },
   {
    "stem": "fold4_room16_mix004_deg095_start1248",
@@ -1178,7 +1178,7 @@
    "stem": "fold4_room16_mix001_deg107_start0084",
    "class": "Walk, footsteps",
    "start": 0.5,
-   "rank": 273
+   "rank": 269
   },
   {
    "stem": "fold4_room16_mix013_deg341_start0554",
@@ -1226,7 +1226,7 @@
    "stem": "fold4_room16_mix014_deg035_start0436",
    "class": "Domestic sounds",
    "start": 1.8,
-   "rank": 276
+   "rank": 22
   },
   {
    "stem": "fold4_room16_mix013_deg071_start0550",
@@ -1238,13 +1238,13 @@
    "stem": "fold4_room10_mix004_deg043_start1257",
    "class": "Walk, footsteps",
    "start": 1.8,
-   "rank": 104
+   "rank": 22
   },
   {
    "stem": "fold4_room10_mix004_deg098_start1246",
    "class": "Walk, footsteps",
    "start": 2.9,
-   "rank": 104
+   "rank": 120
   },
   {
    "stem": "fold4_room10_mix007_deg002_start0979",
@@ -1262,13 +1262,13 @@
    "stem": "fold4_room16_mix004_deg323_start0025",
    "class": "Domestic sounds",
    "start": 2.6,
-   "rank": 276
+   "rank": 25
   },
   {
    "stem": "fold4_room10_mix008_deg217_start1321",
    "class": "Door, open or close",
    "start": 2.4,
-   "rank": 61
+   "rank": 44
   },
   {
    "stem": "fold4_room15_mix003_deg280_start1572",
@@ -1280,7 +1280,7 @@
    "stem": "fold4_room16_mix010_deg018_start0108",
    "class": "Domestic sounds",
    "start": 0.4,
-   "rank": 276
+   "rank": 1
   },
   {
    "stem": "fold4_room16_mix013_deg051_start0617",
@@ -1316,7 +1316,7 @@
    "stem": "fold4_room16_mix004_deg196_start1128",
    "class": "Domestic sounds",
    "start": 0.3,
-   "rank": 276
+   "rank": 16
   },
   {
    "stem": "fold4_room16_mix005_deg237_start0119",
@@ -1340,19 +1340,19 @@
    "stem": "fold4_room15_mix010_deg153_start4025",
    "class": "Water tap, faucet",
    "start": 1.4,
-   "rank": 19
+   "rank": 20
   },
   {
    "stem": "fold4_room16_mix004_deg095_start1248",
    "class": "Walk, footsteps",
    "start": 1.0,
-   "rank": 273
+   "rank": 272
   },
   {
    "stem": "fold4_room16_mix004_deg281_start0052",
    "class": "Domestic sounds",
    "start": 3.4,
-   "rank": 276
+   "rank": 28
   },
   {
    "stem": "fold4_room8_mix006_deg311_start1184",
@@ -1364,7 +1364,7 @@
    "stem": "fold4_room10_mix004_deg080_start1301",
    "class": "Door, open or close",
    "start": 0.9,
-   "rank": 74
+   "rank": 97
   },
   {
    "stem": "fold4_room15_mix009_deg283_start0516",
@@ -1400,7 +1400,7 @@
    "stem": "fold4_room16_mix014_deg283_start0441",
    "class": "Domestic sounds",
    "start": 1.3,
-   "rank": 276
+   "rank": 17
   },
   {
    "stem": "fold4_room16_mix005_deg097_start0099",
@@ -1412,7 +1412,7 @@
    "stem": "fold4_room16_mix008_deg092_start0177",
    "class": "Water tap, faucet",
    "start": 0.5,
-   "rank": 3
+   "rank": 2
   },
   {
    "stem": "fold4_room16_mix005_deg207_start0206",
@@ -1448,7 +1448,7 @@
    "stem": "fold4_room16_mix009_deg168_start0109",
    "class": "Water tap, faucet",
    "start": 2.5,
-   "rank": 5
+   "rank": 7
   },
   {
    "stem": "fold4_room8_mix002_deg094_start1802",
@@ -1472,13 +1472,13 @@
    "stem": "fold4_room15_mix009_deg260_start1136",
    "class": "Walk, footsteps",
    "start": 0.6,
-   "rank": 271
+   "rank": 243
   },
   {
    "stem": "fold4_room16_mix010_deg201_start0325",
    "class": "Domestic sounds",
    "start": 2.5,
-   "rank": 276
+   "rank": 4
   },
   {
    "stem": "fold4_room16_mix010_deg201_start0325",
@@ -1496,7 +1496,7 @@
    "stem": "fold4_room16_mix004_deg186_start1095",
    "class": "Domestic sounds",
    "start": 3.6,
-   "rank": 276
+   "rank": 35
   },
   {
    "stem": "fold4_room8_mix001_deg277_start1082",
@@ -1526,25 +1526,25 @@
    "stem": "fold4_room16_mix003_deg311_start0938",
    "class": "Domestic sounds",
    "start": 2.4,
-   "rank": 276
+   "rank": 13
   },
   {
    "stem": "fold4_room15_mix009_deg241_start0792",
    "class": "Walk, footsteps",
    "start": 0.5,
-   "rank": 273
+   "rank": 267
   },
   {
    "stem": "fold4_room10_mix009_deg024_start0235",
    "class": "Door, open or close",
    "start": 0.5,
-   "rank": 96
+   "rank": 55
   },
   {
    "stem": "fold4_room16_mix001_deg323_start0143",
    "class": "Water tap, faucet",
    "start": 2.9,
-   "rank": 3
+   "rank": 5
   },
   {
    "stem": "fold4_room16_mix010_deg096_start0258",
@@ -1556,7 +1556,7 @@
    "stem": "fold4_room16_mix010_deg239_start0155",
    "class": "Walk, footsteps",
    "start": 0.3,
-   "rank": 217
+   "rank": 258
   },
   {
    "stem": "fold4_room8_mix005_deg337_start1432",
