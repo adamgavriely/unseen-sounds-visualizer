@@ -324,11 +324,37 @@ Oracle gate + best output: 3.19. \todo{Add the same line for \tagref{v2\_indep} 
 \todo{Per human tag table from \texttt{paired\_stats.py} output, per reference.}
 
 \subsection{Onset timing}
-% scripts/timing_compare.py; 7 hand-labelled onsets on 3 clips (sizzling 0, alarm ~9, siren ~9,
-% horse 17.5, dog 0.5, helicopter ~8.5, door ~1.5). n = 7: indicative only.
-Mean onset error against seven hand-labelled onsets on three clips: sliding-window stamp $+0.9$ s,
-hysteresis + occlusion $+0.3$ s ($n = 7$; a DCASE-scale onset evaluation is listed as future work,
-plan item C).
+% benchmark/eval_dcase_onset.json (job 28942869, 2026-09-14): 255 DCASE gold events with an onset
+% 0.3-4.0 s into the 5 s clip, 9 classes mapped to AudioSet families; one BEATs pass, three
+% stampings. Hand-labelled check: scripts/timing_compare.py, 7 onsets on 3 clips.
+Against seven hand-labelled onsets on three clips the plain stamp was late by $+0.9$\,s on average
+and the shipping method by $+0.3$\,s; that is an anecdote, so the same question was put to DCASE
+2025 Task 3, whose events carry a start frame at 100\,ms. From 255 gold events (nine non-speech
+classes, onset inside the clip) one BEATs pass was stamped three ways; an event counts as matched
+when a detection in the same AudioSet family starts within 1.5\,s of it.
+
+\begin{center}\begin{tabular}{lccccc}
+\toprule
+stamping & matched & mean signed & MAE & $\leq 0.25$\,s & $\leq 0.5$\,s \\
+\midrule
+sliding-window stamp (before 09-14) & 50 & $+0.29$ & 0.43 & 44\% & 68\% \\
++ hysteresis                         & 66 & $+0.22$ & 0.35 & 58\% & 74\% \\
++ hysteresis + occlusion (shipping)  & 66 & $+0.16$ & 0.35 & 45\% & 80\% \\
+\bottomrule
+\end{tabular}\end{center}
+
+Hysteresis is the gain: on the 50 events both methods match, MAE falls from 0.43 to 0.31\,s, and it
+matches sixteen more events, because a sound that reaches the bar late is now traced back to where
+it began. Occlusion adds nothing on average: on the 65 events both match it is better on 25 and
+worse on 39 with an identical MAE of 0.34\,s (paired bootstrap difference $0.00$, 95\% CI
+$[-0.11, +0.10]$). It trades a smaller late bias and more onsets within half a second for fewer
+within a quarter-second; on knocks, where hysteresis alone is within 0.08\,s, it moves the onset
+$+0.26$\,s late. The seven-clip number therefore overstated the method, and the honest statement is
+that the shipping onset is within half a second for four events in five. Detector recall on these
+five-second clips is the larger limit: 66 of 255 gold events are matched at the display bar, since
+laughter, footsteps and domestic sounds rarely reach 0.35 on BEATs. Whether to keep occlusion is a
+development-split decision left open (\S\ref{sec:process}); it does not alter detection or gating,
+only where a picture is stamped.
 
 \subsection{Ablations recorded during development}
 % From the notes: retrieval vs SDXL (+0.17/+0.18, earlier configuration); judge reliability

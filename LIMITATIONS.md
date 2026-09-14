@@ -23,8 +23,11 @@ report's Limitations section mirrors this file.
   bootstrap CIs (`scripts/paired_stats.py`) are the numbers to read, not the means.
 - **No human study.** An LLM scoring a VLM's description of a picture is a proxy for a deaf
   viewer's comprehension; the correlation is unmeasured.
-- **Onset timing evaluated on 7 hand-labelled onsets** (3 clips): +0.9 s → +0.3 s mean error is
-  indicative only. A DCASE-scale onset evaluation is future work.
+- **Onset timing.** On 255 DCASE gold onsets (`benchmark/eval_dcase_onset.json`) hysteresis cuts
+  MAE from 0.43 s to 0.31 s and matches 16 more events; the occlusion refinement adds nothing on
+  average (MAE 0.34 s both ways, better on 25 / worse on 39, CI includes 0). The 7-onset
+  hand-labelled number (+0.9 → +0.3 s) overstated it. Only 66 of 255 gold events are matched at
+  the display bar: detector recall on 5 s clips of laughter, footsteps and domestic sounds is low.
 
 ## Detector (stage 4)
 
