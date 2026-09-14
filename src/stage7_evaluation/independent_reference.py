@@ -41,7 +41,7 @@ import numpy as np
 import config
 
 LISTEN_MODEL = "Qwen/Qwen2-Audio-7B-Instruct"
-CLAP_MODEL = "laion/clap-htsat-unfused"
+CLAP_MODEL = "laion/clap-htsat-fused"     # the unfused checkpoint is .bin-only; transformers 5 refuses it on torch 2.5
 LOOK_MODEL = "HuggingFaceM4/Idefics3-8B-Llama3"
 WRITE_MODELS = ["meta-llama/Llama-3.1-8B-Instruct", "microsoft/Phi-3.5-mini-instruct"]
 EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
