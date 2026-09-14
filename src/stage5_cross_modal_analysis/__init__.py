@@ -4,10 +4,10 @@ Decide, per detected sound event: (1) is it salient? (2) is its source/meaning
 already visible in the scene -> if so, STAY SILENT (the gate); (3) if augmenting,
 what to depict. See docs/project_notes.tex sec:stage5 for the full design.
 
-STUB: a transparent rule-based gate so the pipeline runs and its decisions are
-inspectable. TODO: combine an on/off-screen sound-source-localization signal with
-a GROUNDED LLM decision (structured JSON over the Stage-2 entity list, Stage-3
-transcript, Stage-4 events) - never over raw media - to curb MLLM hallucination.
+The rule-based gate here is the cheap first pass (salience, Stage-2 concept list);
+the per-sound decisions -- visibility from the frames, what kind of sound, what to
+draw, speech context -- are made in reason.py by the VLM. Stage 2's verdict is
+deferred to it when it is available (see `defer` below).
 
 Even in PASS-THROUGH (gate disabled, v1 prototype) we still drop speech, ambience
 and music, and merge PANNs' label families to one entry per real source, so we
@@ -32,7 +32,7 @@ def plan_augmentations(scene: SceneContext,
     if augment_threshold is None:
         augment_threshold = display_threshold
     mode = "rule-based gate" if gate_enabled else "PASS-THROUGH (detect-all)"
-    print(f"       [stage5] {mode} (TODO: localization + grounded LLM).")
+    print(f"       [stage5] {mode}.")
     visible = {e.lower() for e in scene.visible_entities}
     setting = getattr(scene, "setting", "") or ""
     setting_group = (scene.raw or {}).get("setting_group", "") if scene.raw else ""

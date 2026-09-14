@@ -300,7 +300,11 @@ def _about_the_sound(phrase: str, label: str) -> bool:
     got = "".join(c if c.isalnum() else " " for c in phrase.lower()).split()
     if not want:
         return True
-    return any(any(g.startswith(w[:4]) for g in got) for w in want)
+    # Whole-word match with plain inflections, not a 4-letter stem: the stem let Rain
+    # pass on "raincoat", Wind on "window", Bird on "birthday", skipping validation.
+    def same(g, w):
+        return g == w or g == w + "s" or g == w + "es" or g == w + "ing" or g == w + "ed"             or (w.endswith("e") and g == w[:-1] + "ing") or (len(w) > 4 and g == w[:-1] + "ies")
+    return any(any(same(g, w) for g in got) for w in want)
 
 
 CHOOSE_PROMPT = (
@@ -505,50 +509,6 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     print("       [stage5] visible? " + label + " -> " + ("yes" if verdict else "no")
           + " (" + how + ")", flush=True)
     return verdict, named
-
-
-# The thing being on screen is not the same as the viewer seeing it make the sound. A
-# baby in its mother's arms is "the thing making the crying", and a fire-alarm pull
-# station is "the thing making the alarm", but a deaf viewer looking at either learns
-# nothing about the sound -- whereas a woman with her head back and mouth open plainly
-# IS laughing. Adam's rule is that a visible source needs no picture; the honest
-# reading of "visible" is that the ACTION is visible, not just the object. Asked in both
-# orderings with agreement required, like every other two-way question here.
-EVENT_VISIBLE_PROMPT = (
-    "These frames are from the moment a sound of {label} was heard, and {named} is in "
-    "them. Judge from the frames alone."
-    + chr(10) +
-    "(a) {opt_a}"
-    + chr(10) +
-    "(b) {opt_b}"
-    + chr(10) +
-    "Answer with the letter only."
-)
-EVENT_YES = "you can SEE it making that sound right now -- the action itself is visible"
-EVENT_NO = "it is in the frame, but you cannot see it making the sound"
-
-
-def _event_visible(label: str, named: str, frames, mdl, proc) -> bool:
-    """Superseded by the combined check in _sound_is_visible; kept for callers."""
-    return True
-    if not getattr(config, "EVENT_VISIBLE", True):
-        return True
-    votes = []
-    for flip in (False, True):
-        opt_a, opt_b = (EVENT_NO, EVENT_YES) if flip else (EVENT_YES, EVENT_NO)
-        want = "b" if flip else "a"
-        reply = _ask(mdl, proc, EVENT_VISIBLE_PROMPT.format(
-            label=label, named=named, opt_a=opt_a, opt_b=opt_b),
-            images=frames, max_new=6).strip().lower().lstrip("(")
-        votes.append(reply[:1] == want)
-    # The naming step already found the source on screen; this question can only
-    # RESCUE a sound, and only when it is sure. A split vote used to count as "not
-    # visible" and put a galloping horse beside a video of a galloping horse.
-    seen = any(votes)
-    print("       [stage5] action visible? " + label + " (" + named + ") -> "
-          + ("yes" if seen else "no, only the object") + " (votes "
-          + "/".join("y" if v else "n" for v in votes) + ")", flush=True)
-    return seen
 
 
 def _subtract(fam, mem, min_len: float = 1.0):

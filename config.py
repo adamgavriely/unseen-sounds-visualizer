@@ -1,7 +1,6 @@
 """Central defaults for the pipeline. Override per-run via main.py CLI flags.
 
-Model names below are the *intended* backends; in the current skeleton most
-stages run as stubs (see each stage module) and do not load these models yet.
+Every stage is real; the rationale for each choice is in the comment beside it.
 """
 from pathlib import Path
 
@@ -146,12 +145,6 @@ SHOW_SOUND_GLYPH = False
 # beside a video that was already showing the source. Off-screen is the whole premise
 # of the system, so this check is what makes the output honest.
 VLM_VISIBILITY = True
-# "Visible" means the ACTION is visible, not just the object. A baby in its mother's
-# arms and a fire-alarm pull station are both "the thing making the sound" and tell a
-# deaf viewer nothing about it; a woman laughing with her mouth open does. Second
-# frames question after the naming step; both orderings must agree before a sound is
-# silenced on visibility.
-EVENT_VISIBLE = True
 # A sound longer than this is judged for visibility in stretches of this length, each
 # on its own frames; the picture is shown only for the stretches where the source is
 # off screen. A siren over a whole clip is off screen while the car approaches and on

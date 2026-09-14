@@ -263,6 +263,14 @@ def phase_describe(args, backends):
 # writer, each loaded in turn; none of them sees the system's output. Reads the same
 # description cache to know which clips are in the run.
 # ----------------------------------------------------------------------
+def _find_clip(stem: str):
+    """The benchmark clip with this stem, whichever tag folder and extension."""
+    for p in BENCH.rglob(stem + ".*"):
+        if p.suffix.lower() in (".mp4", ".webm", ".ogv", ".mkv"):
+            return p
+    return None
+
+
 def ref_file(tag: str) -> Path:
     return DESCRIPTIONS.with_name(f"protocol_reference_indep{('_' + tag) if tag else ''}.json")
 
