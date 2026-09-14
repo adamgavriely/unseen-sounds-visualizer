@@ -567,9 +567,24 @@ and confident false positives -- more than the visibility judgment. A second opi
 independent audio model is the model-based answer to the phantoms: CLAP scores the same two
 seconds against all 527 AudioSet names collapsed to ontology families, and a detection
 survives only if its family is among CLAP's top $k$, with $k$ set once on DCASE gold as the
-smallest value retaining 95\% of gold recall. \todo{CLAP row: DCASE recall@k curve and the
-frozen $k$; the development cost-table row ``current + CLAP''; the number of test clips whose
-shown set changes; \tagref{v4} pooled and by group next to \tagref{v3}, if applied.}
+smallest value retaining 95\% of gold recall. The check was calibrated
+on the 255 DCASE gold events by ranking each event's family among the 328 ontology families
+for the event's own burst; the smallest $k$ reaching 95\% recall had to be at most 30 for the
+check to reject anything, both declared before the run. Recall was 10\% at $k=1$, 32\% at
+$k=10$ and 50\% at $k=30$, with per-class median ranks from 3 (water tap) and 16 (domestic
+sounds) to 53 (door), 70 (laughter) and 261 (footsteps): no usable $k$ exists. Together with
+the same model verifying claims at chance as an evaluation reference (\S\ref{sec:eval}), this
+is reported as a measured limitation of zero-shot audio--text matching on short ambient events
+in polyphonic audio, not as a tuning failure; the shipped system uses BEATs alone.
+
+The remaining candidate, source separation in front of the detector (Demucs; re-detect on the
+residual, keep the higher score), was assessed and not run: the residual removes speech only,
+so four of the seven masked misses, which sit under music, are untouched, and taking the
+higher of two scores can only add detections, so it raises the phantom rate by construction.
+It is the first future-work item, with its acceptance bars stated in \S\ref{sec:discussion}.
+The finding that stands is that in polyphonic video a clip-level tagger's confidence is not
+evidence that a sound is in the scene; the detector, not the visibility judgment, bounds the
+headline result, and no threshold inside either recovers it.
 
 % ======================================================================
 \section{Discussion}\label{sec:discussion}
@@ -639,10 +654,13 @@ text baseline; it wins where nothing is missing and loses where something is, be
 rubric prices a withheld picture at four times a redundant one and the visibility question is
 the hardest a vision--language model is asked here.
 
-Next: set the silence rule with the rubric's costs on the development split (\S\ref{sec:v4});
-an open-vocabulary audio model as a second opinion where the detector's 527 classes have no
-word; source separation in front of the detector; a second annotator; and a study with deaf
-viewers, without which the accessibility claim rests on a proxy.
+Next, in order: a detector-only benchmark on the labelled clips (recall of off-screen events
+against the phantom rate, independent of gate and judge), and against it a speech-aware
+detector -- BEATs on a Demucs residual with the higher of the two scores, accepted only if
+DCASE recall on speech-overlapped events rises by ten points with phantoms per class up by no
+more than two and no threshold re-tuned -- or a polyphonic detector trained on mixtures; an
+open-vocabulary audio model where the 527 classes have no word; a second annotator; and a
+study with deaf viewers, without which the accessibility claim rests on a proxy.
 
 \begin{thebibliography}{99}
 

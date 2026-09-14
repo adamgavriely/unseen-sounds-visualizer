@@ -65,6 +65,20 @@ report's Limitations section mirrors this file.
 
 ## Detector (stage 4)
 
+- **The detector bounds the headline result.** Reading the cached gate decisions
+  (2026-09-14): of 11 test clips where a picture was due and none was shown, 7 never reached
+  the display bar (ambient sound under Speech 0.84 / Music 0.81; textures at 0.22–0.31) and
+  4 are label ambiguity (visible cars vs off-screen traffic); on the dev split ~80 of 100
+  redundant pictures are confident phantoms (whale at a Christmas market, roaring cats at a
+  helicopter arrival, electric toothbrush in an alarm clip) with no source anywhere. A
+  clip-level tagger's confidence is not evidence that a sound is in the scene.
+- **A CLAP second opinion does not work.** Calibrated on 255 DCASE gold events (family rank
+  over 328 ontology families, declared bar: 95% recall at k ≤ 30): recall@30 = 50%, footsteps
+  median rank 261. Same model verified claims at chance in the evaluation reference. Not shipped.
+- **Source separation was assessed, not run.** Demucs removes speech only (4 of the 7 masked
+  misses are under music) and keeping the higher of mix/residual scores can only add
+  phantoms. First future-work item, with declared bars (report §Conclusion).
+
 - **Vocabulary.** AudioSet has no "phone alert"; no model trained on it can name one
   (catalogue #3).
 - **Masking by music and speech.** A siren under a film score is heard only at its close-up
