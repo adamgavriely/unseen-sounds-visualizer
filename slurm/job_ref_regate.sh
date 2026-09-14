@@ -20,9 +20,9 @@ mkdir -p logs
 TAG="${TAG:-v2}"
 REF="benchmark/protocol_reference_indep_${TAG}.json"
 RES="benchmark/protocol_results_${TAG}_indep.json"
-if [ -f "$RES" ] && [ ! -f "benchmark/protocol_results_${TAG}_indep_strict.json" ]; then
+if [ ! -f "benchmark/protocol_reference_indep_${TAG}_strict.json" ] && grep -q '"references"' "$REF"; then
     cp "$REF" "benchmark/protocol_reference_indep_${TAG}_strict.json"
-    mv "$RES" "benchmark/protocol_results_${TAG}_indep_strict.json"
+    [ -f "$RES" ] && mv "$RES" "benchmark/protocol_results_${TAG}_indep_strict.json"
     echo "kept the strict-gate pass as *_strict"
 fi
 python - "$REF" <<'PY'
