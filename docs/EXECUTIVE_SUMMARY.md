@@ -320,8 +320,8 @@ placeholders), LIMITATIONS.md, this summary. All on `main`, pushed, including th
 gate votes and description caches the diagnosis depends on.
 
 Open decisions for Adam:
-- **`ONSET_CAM`** (the occlusion onset refinement): keep for its class-conditional rationale
-  or drop for simplicity — measured to make no timing difference either way.
+- ~~**`ONSET_CAM`**~~ — decided 2026-09-15: kept on (no measurable timing difference; v3 was
+  evaluated with it on; it leaves slightly fewer onsets more than half a second off).
 - **Independent reference for v3**: run it for table completeness (~1.5 GPU-hours) or skip,
   given it cannot score the gate.
 - **Report**: read-through and submission; the independent reference's Llama writer could be
