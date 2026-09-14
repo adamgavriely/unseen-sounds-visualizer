@@ -1,0 +1,602 @@
+[
+ {
+  "clip": "ambient_nightlife_neon_97.mp4",
+  "label": "Typing",
+  "confidence": 0.61,
+  "phantom": true
+ },
+ {
+  "clip": "ambient_nightlife_neon_97.mp4",
+  "label": "Computer keyboard",
+  "confidence": 0.58,
+  "phantom": true
+ },
+ {
+  "clip": "ambient_temple_india_1438.mp4",
+  "label": "Horse",
+  "confidence": 0.43,
+  "phantom": true
+ },
+ {
+  "clip": "ambient_transport_subway_21600.mp4",
+  "label": "Vehicle",
+  "confidence": 0.41,
+  "phantom": false
+ },
+ {
+  "clip": "ambient_transport_subway_21600.mp4",
+  "label": "Sliding door",
+  "confidence": 0.37,
+  "phantom": false
+ },
+ {
+  "clip": "ambient_transport_subway_21600.mp4",
+  "label": "Heart sounds, heartbeat",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "ambient_weather_storm_25200.mp4",
+  "label": "Thunder",
+  "confidence": 0.57,
+  "phantom": false
+ },
+ {
+  "clip": "as_breaking_3wstXl8v.mp4",
+  "label": "Tambourine",
+  "confidence": 0.51,
+  "phantom": true
+ },
+ {
+  "clip": "as_breaking_3wstXl8v.mp4",
+  "label": "Cooking",
+  "confidence": 0.51,
+  "phantom": true
+ },
+ {
+  "clip": "as_car_alarm_0Hz4R_m0.mp4",
+  "label": "Alarm",
+  "confidence": 0.64,
+  "phantom": false
+ },
+ {
+  "clip": "as_car_alarm_0Hz4R_m0.mp4",
+  "label": "Power windows, electric windows",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "as_glass_t6e0Rjul.mp4",
+  "label": "Bouncing",
+  "confidence": 0.54,
+  "phantom": true
+ },
+ {
+  "clip": "as_glass_t6e0Rjul.mp4",
+  "label": "Dishes",
+  "confidence": 0.39,
+  "phantom": true
+ },
+ {
+  "clip": "as_glass_t6e0Rjul.mp4",
+  "label": "Wood",
+  "confidence": 0.37,
+  "phantom": true
+ },
+ {
+  "clip": "as_helicopter_mVjQigOw.mp4",
+  "label": "Jackhammer",
+  "confidence": 0.61,
+  "phantom": true
+ },
+ {
+  "clip": "as_helicopter_mVjQigOw.mp4",
+  "label": "Gunshot",
+  "confidence": 0.58,
+  "phantom": true
+ },
+ {
+  "clip": "b3_aquarium_walk.mp4",
+  "label": "Whale vocalization",
+  "confidence": 0.68,
+  "phantom": true
+ },
+ {
+  "clip": "b3_chinese_newyear.mp4",
+  "label": "Tap",
+  "confidence": 0.43,
+  "phantom": true
+ },
+ {
+  "clip": "b3_christmas_market.mp4",
+  "label": "A capella",
+  "confidence": 0.4,
+  "phantom": true
+ },
+ {
+  "clip": "b3_christmas_market.mp4",
+  "label": "Whale vocalization",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "b3_coffee_roastery.mp4",
+  "label": "Vacuum cleaner",
+  "confidence": 0.82,
+  "phantom": true
+ },
+ {
+  "clip": "b3_coffee_roastery.mp4",
+  "label": "Microwave oven",
+  "confidence": 0.43,
+  "phantom": true
+ },
+ {
+  "clip": "b3_coffee_roastery.mp4",
+  "label": "Train",
+  "confidence": 0.4,
+  "phantom": true
+ },
+ {
+  "clip": "b3_creek_bridge.mp4",
+  "label": "Helicopter",
+  "confidence": 0.58,
+  "phantom": false
+ },
+ {
+  "clip": "b3_creek_bridge.mp4",
+  "label": "Aircraft",
+  "confidence": 0.46,
+  "phantom": false
+ },
+ {
+  "clip": "b3_gokart_track.mp4",
+  "label": "Train",
+  "confidence": 0.74,
+  "phantom": true
+ },
+ {
+  "clip": "b3_gokart_track.mp4",
+  "label": "Buzz",
+  "confidence": 0.6,
+  "phantom": true
+ },
+ {
+  "clip": "b3_gokart_track.mp4",
+  "label": "Boat",
+  "confidence": 0.49,
+  "phantom": true
+ },
+ {
+  "clip": "b3_ia_81974_9th_infantry_vietnam_v_0.mp4",
+  "label": "Gunshot",
+  "confidence": 0.44,
+  "phantom": false
+ },
+ {
+  "clip": "b3_ia_theshockofthenewcultureasnat_1.mp4",
+  "label": "Vehicle",
+  "confidence": 0.41,
+  "phantom": false
+ },
+ {
+  "clip": "b3_library_hall.mp4",
+  "label": "Scissors",
+  "confidence": 0.45,
+  "phantom": true
+ },
+ {
+  "clip": "b3_night_market_food.mp4",
+  "label": "Rain",
+  "confidence": 0.43,
+  "phantom": true
+ },
+ {
+  "clip": "b3_night_market_food.mp4",
+  "label": "Water",
+  "confidence": 0.42,
+  "phantom": false
+ },
+ {
+  "clip": "b3_petting_zoo.mp4",
+  "label": "Owl",
+  "confidence": 0.74,
+  "phantom": true
+ },
+ {
+  "clip": "b3_petting_zoo.mp4",
+  "label": "Goose",
+  "confidence": 0.48,
+  "phantom": false
+ },
+ {
+  "clip": "b3_petting_zoo.mp4",
+  "label": "Honk",
+  "confidence": 0.41,
+  "phantom": false
+ },
+ {
+  "clip": "b3_quarry_blast.mp4",
+  "label": "Horse",
+  "confidence": 0.84,
+  "phantom": true
+ },
+ {
+  "clip": "b3_quarry_blast.mp4",
+  "label": "Train",
+  "confidence": 0.45,
+  "phantom": true
+ },
+ {
+  "clip": "ev_fire_alarm_office.mp4",
+  "label": "Glass",
+  "confidence": 0.74,
+  "phantom": true
+ },
+ {
+  "clip": "ev_kitchen_pan_drop.mp4",
+  "label": "Crack",
+  "confidence": 0.51,
+  "phantom": false
+ },
+ {
+  "clip": "ev_kitchen_pan_drop.mp4",
+  "label": "Jingle bell",
+  "confidence": 0.39,
+  "phantom": true
+ },
+ {
+  "clip": "fireworks_springville.webm",
+  "label": "Gunshot",
+  "confidence": 0.44,
+  "phantom": true
+ },
+ {
+  "clip": "gn_western_town_scene.mp4",
+  "label": "Horse",
+  "confidence": 0.72,
+  "phantom": false
+ },
+ {
+  "clip": "gn_western_town_scene.mp4",
+  "label": "Gunshot",
+  "confidence": 0.59,
+  "phantom": false
+ },
+ {
+  "clip": "gn_western_town_scene.mp4",
+  "label": "Glass",
+  "confidence": 0.39,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Electric toothbrush",
+  "confidence": 0.73,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Squeal",
+  "confidence": 0.53,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Ratchet, pawl",
+  "confidence": 0.47,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Sliding door",
+  "confidence": 0.45,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Sewing machine",
+  "confidence": 0.45,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Pump (liquid)",
+  "confidence": 0.4,
+  "phantom": true
+ },
+ {
+  "clip": "ly_alarm_qCVdVav.mp4",
+  "label": "Door",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "mc_break_in_scene.mp4",
+  "label": "Tambourine",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "mc_ship_deck_storm.mp4",
+  "label": "Glass",
+  "confidence": 0.77,
+  "phantom": true
+ },
+ {
+  "clip": "mc_subway_scene.mp4",
+  "label": "Glass",
+  "confidence": 0.73,
+  "phantom": true
+ },
+ {
+  "clip": "mc_subway_scene.mp4",
+  "label": "Insect",
+  "confidence": 0.49,
+  "phantom": true
+ },
+ {
+  "clip": "mc_subway_scene.mp4",
+  "label": "Fly, housefly",
+  "confidence": 0.43,
+  "phantom": true
+ },
+ {
+  "clip": "mc_thriller_basement.mp4",
+  "label": "Water",
+  "confidence": 0.57,
+  "phantom": false
+ },
+ {
+  "clip": "mc_thriller_basement.mp4",
+  "label": "Rain",
+  "confidence": 0.51,
+  "phantom": false
+ },
+ {
+  "clip": "mc_thriller_basement.mp4",
+  "label": "Vehicle",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "movie_junglebook_95.mp4",
+  "label": "Roaring cats (lions, tigers)",
+  "confidence": 0.67,
+  "phantom": true
+ },
+ {
+  "clip": "movie_junglebook_95.mp4",
+  "label": "Roar",
+  "confidence": 0.65,
+  "phantom": true
+ },
+ {
+  "clip": "movie_junglebook_95.mp4",
+  "label": "Bird",
+  "confidence": 0.52,
+  "phantom": true
+ },
+ {
+  "clip": "movie_junglebook_95.mp4",
+  "label": "Honk",
+  "confidence": 0.4,
+  "phantom": true
+ },
+ {
+  "clip": "movie_madmax_106.mp4",
+  "label": "Single-lens reflex camera",
+  "confidence": 0.41,
+  "phantom": true
+ },
+ {
+  "clip": "movie_madmax_106.mp4",
+  "label": "Glass",
+  "confidence": 0.39,
+  "phantom": true
+ },
+ {
+  "clip": "mv_helicopter_arrival.mp4",
+  "label": "Roaring cats (lions, tigers)",
+  "confidence": 0.51,
+  "phantom": true
+ },
+ {
+  "clip": "mv_helicopter_arrival.mp4",
+  "label": "Explosion",
+  "confidence": 0.4,
+  "phantom": false
+ },
+ {
+  "clip": "mv_phone_ringing_tense.mp4",
+  "label": "Siren",
+  "confidence": 0.86,
+  "phantom": true
+ },
+ {
+  "clip": "mv_prison_alarm_scene.mp4",
+  "label": "Alarm",
+  "confidence": 0.47,
+  "phantom": false
+ },
+ {
+  "clip": "oc_pov_night_forest.mp4",
+  "label": "Chewing, mastication",
+  "confidence": 0.47,
+  "phantom": true
+ },
+ {
+  "clip": "oc_pov_snow_walk.mp4",
+  "label": "Zipper (clothing)",
+  "confidence": 0.59,
+  "phantom": false
+ },
+ {
+  "clip": "pdfilm_duckcover_90.mp4",
+  "label": "Grunt",
+  "confidence": 0.52,
+  "phantom": true
+ },
+ {
+  "clip": "rx_bunker_bombing.mp4",
+  "label": "Glass",
+  "confidence": 0.87,
+  "phantom": true
+ },
+ {
+  "clip": "rx_bunker_bombing.mp4",
+  "label": "Explosion",
+  "confidence": 0.44,
+  "phantom": false
+ },
+ {
+  "clip": "rx_radio_broadcast_scene.mp4",
+  "label": "Dog",
+  "confidence": 0.47,
+  "phantom": true
+ },
+ {
+  "clip": "rx_radio_broadcast_scene.mp4",
+  "label": "Wail, moan",
+  "confidence": 0.46,
+  "phantom": true
+ },
+ {
+  "clip": "station_kwasa1.webm",
+  "label": "Aircraft",
+  "confidence": 0.56,
+  "phantom": false
+ },
+ {
+  "clip": "station_warszawa.mp4",
+  "label": "Boat",
+  "confidence": 0.54,
+  "phantom": true
+ },
+ {
+  "clip": "station_warszawa.mp4",
+  "label": "Aircraft",
+  "confidence": 0.44,
+  "phantom": true
+ },
+ {
+  "clip": "tv_police_procedural.mp4",
+  "label": "Fly, housefly",
+  "confidence": 0.44,
+  "phantom": true
+ },
+ {
+  "clip": "tv_police_procedural.mp4",
+  "label": "Insect",
+  "confidence": 0.39,
+  "phantom": true
+ },
+ {
+  "clip": "tv_police_procedural.mp4",
+  "label": "Bee, wasp, etc.",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "tv_war_series_scene.mp4",
+  "label": "Glass",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "un_airplane_flyby_-Jcl3FrH.mp4",
+  "label": "Vehicle",
+  "confidence": 0.63,
+  "phantom": false
+ },
+ {
+  "clip": "un_dog_barking_5yMvxKLD.mp4",
+  "label": "Siren",
+  "confidence": 0.66,
+  "phantom": true
+ },
+ {
+  "clip": "un_dog_howling_UUjSLYdR.mp4",
+  "label": "Babbling",
+  "confidence": 0.67,
+  "phantom": true
+ },
+ {
+  "clip": "un_driving_motorcycle_5lERP3rc.mp4",
+  "label": "Water",
+  "confidence": 0.41,
+  "phantom": true
+ },
+ {
+  "clip": "un_helicopter_T2F6euNV.mp4",
+  "label": "Cooking",
+  "confidence": 0.51,
+  "phantom": true
+ },
+ {
+  "clip": "un_helicopter_T2F6euNV.mp4",
+  "label": "Glass",
+  "confidence": 0.43,
+  "phantom": true
+ },
+ {
+  "clip": "un_people_crowd_W1e3xWnc.mp4",
+  "label": "Vehicle",
+  "confidence": 0.41,
+  "phantom": true
+ },
+ {
+  "clip": "un_people_crowd_W1e3xWnc.mp4",
+  "label": "Whale vocalization",
+  "confidence": 0.39,
+  "phantom": true
+ },
+ {
+  "clip": "un_people_shouting__jB-IM_7.mp4",
+  "label": "Cat",
+  "confidence": 0.75,
+  "phantom": true
+ },
+ {
+  "clip": "un_people_shouting__jB-IM_7.mp4",
+  "label": "Sheep",
+  "confidence": 0.65,
+  "phantom": true
+ },
+ {
+  "clip": "un_people_shouting__jB-IM_7.mp4",
+  "label": "Basketball bounce",
+  "confidence": 0.55,
+  "phantom": true
+ },
+ {
+  "clip": "un_people_shouting__jB-IM_7.mp4",
+  "label": "Cattle",
+  "confidence": 0.36,
+  "phantom": true
+ },
+ {
+  "clip": "un_sea_waves_39lhrblv.mp4",
+  "label": "Aircraft",
+  "confidence": 0.6,
+  "phantom": true
+ },
+ {
+  "clip": "un_sea_waves_39lhrblv.mp4",
+  "label": "Vehicle",
+  "confidence": 0.52,
+  "phantom": true
+ },
+ {
+  "clip": "un_thunder_0kuIP7fL.mp4",
+  "label": "Rain",
+  "confidence": 0.69,
+  "phantom": false
+ },
+ {
+  "clip": "un_wind_noise_-k199QGb.mp4",
+  "label": "Fireworks",
+  "confidence": 0.43,
+  "phantom": true
+ }
+]
