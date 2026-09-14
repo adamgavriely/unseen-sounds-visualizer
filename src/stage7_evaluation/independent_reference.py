@@ -60,7 +60,14 @@ WRITE_PROMPT = ("A video's soundtrack, with the dialogue removed, contains these
                 "specific sound sources.")
 NOTHING_MISSING = "nothing beyond the picture"
 CHUNK = 10.0
-CLAP_MARGIN = 2.0        # keep an item if cos(audio, item) > mean + MARGIN*std over decoys
+CLAP_MARGIN = 2.0        # text-decoy bar, logged as a diagnostic only (see verify_all)
+AUDIO_RANK_TOP = 20      # keep an item if this clip's audio is among its top-20 matches of all
+                         # clips AND the cosine is positive. Top-5 (p<0.05) was the first form;
+                         # the benchmark's clips are correlated (some twenty carry wind), so a
+                         # top-5 rank among 100 is a test against siblings, not decoys, and it
+                         # left 53 of 100 clips with an empty reference against 25 tagged
+                         # no_ambient. Set once, on that comparison (31 vs 25 at top-20);
+                         # sensitivity table in LIMITATIONS.md.
 MATCH_TAU = 0.50         # visible-match cosine; calibrated on DCASE gold (see notes)
 
 
@@ -212,8 +219,20 @@ def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
 
 
 def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
-               decoys: int = 64) -> Dict[str, List[str]]:
-    """Keep the items the audio actually resembles (CLAP), per clip."""
+               decoys: int = 64, top: int = AUDIO_RANK_TOP) -> Dict[str, List[str]]:
+    """Keep the items this clip's audio actually resembles (CLAP), per clip.
+
+    The gate is a rank over AUDIO decoys: an item survives on clip c if, among all the
+    benchmark clips' audio embeddings, c's is in the top ``top`` matches for the item's
+    text and the cosine is positive (see AUDIO_RANK_TOP for why 20, not 5). This asks
+    whether the label fits THIS audio better than random audio, which is invariant to
+    CLAP's small absolute cosines on ambient sound. The first form of this gate, a
+    mean + 2 sigma bar over 64 random AudioSet text decoys, kept 98 of 678 items and left
+    34 of 83 clips empty (job 28943024) against 25 % of clips tagged no_ambient by the
+    annotator: a reference biased toward silence, the mirror image of the circular bias
+    this reference exists to remove. The text-decoy verdict is still computed and logged
+    as a diagnostic (a '+' after the score), never as a gate. (Review, 2026-09-14.)
+    """
     import librosa
     import torch
     from transformers import ClapModel, ClapProcessor
@@ -223,30 +242,43 @@ def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
                        .read_text("utf-8"))
     pool = sorted(set(names.values()))
     rng = np.random.default_rng(0)
+
+    # every clip's audio embedding once; they are the decoys for one another
+    order = list(clips)
+    embs = []
+    with torch.no_grad():
+        for name in order:
+            audio, _ = librosa.load(str(clips[name]), sr=48000, mono=True)
+            a = _with_audio(proc, [audio], 48000).to(device)
+            ea = _as_tensor(mdl.get_audio_features(**a))   # ModelOutput on transformers 5
+            embs.append(ea / ea.norm(dim=-1, keepdim=True))
+    E = torch.cat(embs, 0)                                  # (clips, d)
+    top = min(top, max(1, len(order)))
+
     out = {}
-    for name, wav in clips.items():
+    for ci, name in enumerate(order):
         # speech tags leak through the stem pass too (Demucs leaves residue); the
         # reference is about the non-speech soundtrack by definition of the task
         items = [it for it in _split_items(heard.get(name, [])) if not _is_speech_tag(it)]
         if not items:
             out[name] = []
             continue
-        audio, _ = librosa.load(str(wav), sr=48000, mono=True)
         with torch.no_grad():
-            a = _with_audio(proc, [audio], 48000).to(device)
-            ea = _as_tensor(mdl.get_audio_features(**a))   # ModelOutput on transformers 5
-            ea = ea / ea.norm(dim=-1, keepdim=True)
             texts = [f"the sound of {it}" for it in items]
             dec = [f"the sound of {pool[i].lower()}" for i in rng.choice(len(pool), decoys, replace=False)]
             t = proc(text=texts + dec, return_tensors="pt", padding=True).to(device)
             et = _as_tensor(mdl.get_text_features(**t))
             et = et / et.norm(dim=-1, keepdim=True)
-            sims = (ea @ et.T)[0].cpu().numpy()
-        s_items, s_dec = sims[:len(items)], sims[len(items):]
-        bar = float(s_dec.mean() + CLAP_MARGIN * s_dec.std())
-        kept = [it for it, sc in zip(items, s_items) if sc > bar]
-        print(f"       [ref] verify {name}: bar={bar:.3f} " +
-              " ".join(f"{it[:24]}={sc:.3f}{'*' if sc > bar else ''}" for it, sc in zip(items, s_items)),
+            sims_all = (E @ et.T).cpu().numpy()             # (clips, items + decoys)
+        s_items = sims_all[ci, :len(items)]
+        s_dec = sims_all[ci, len(items):]
+        bar = float(s_dec.mean() + CLAP_MARGIN * s_dec.std())   # diagnostic only
+        # rank of this clip's audio among all clips, for each item's text (1 = best)
+        ranks = [int((sims_all[:, j] > sims_all[ci, j]).sum()) + 1 for j in range(len(items))]
+        kept = [it for it, r, sc in zip(items, ranks, s_items) if r <= top and sc > 0]
+        print(f"       [ref] verify {name}: text-bar={bar:.3f} " +
+              " ".join(f"{it[:24]}={sc:.3f}/r{r}{'*' if r <= top and sc > 0 else ''}{'+' if sc > bar else ''}"
+                       for it, sc, r in zip(items, s_items, ranks)),
               flush=True)
         out[name] = kept
     del mdl, proc
