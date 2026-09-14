@@ -514,12 +514,62 @@ lot'') was right twice and wrong twice in four uses and is off; a comparative de
 that scored 8/8 on the cases it was built on scored 11/17 on the next nine, because it measured
 phrase length.
 
-\subsection{Setting the silence rule with the rubric's costs}\label{sec:v4}
-% benchmark/gate_dev_sweep.py; benchmark/gate_setting.json; tag v4. Filled when the dev sweep
-% (jobs 29027863/29027864) and the test flips land.
-\todo{Dev-split grid (silence rule $\times$ display bar $\times$ kinds rule), the frozen cell,
-the number of test clips whose decision changes, and \tagref{v4} pooled and by group next to
-\tagref{v3}.}
+\subsection{Where the gate's errors come from}\label{sec:v4}
+% benchmark/gate_dev_sweep.py, benchmark/gate_setting.json (2026-09-14): the three
+% visibility votes per sound cached for 156 dev and 100 test clips; grid on dev only.
+The loss on ``picture needed'' clips licenses one change under the process rules: set the
+gate's silence rule once on the development split, scoring each setting with the rubric's own
+costs (a withheld picture scores 0 where one would score up to 4, a redundant one about 3 where
+silence scores 4: $-4$ and $-1$ per clip). The three visibility votes of every sound at or above
+0.25 were cached for the 156 development clips with a video file, and sixteen settings were
+scored from the cache: silence by majority or by unanimous vote, display bar 0.25--0.40, the
+kinds-of-a-visible-source rule on or off.
+
+\begin{center}\begin{tabular}{lcccrr}
+\toprule
+rule & bar & kinds & accuracy & cost/clip & missed / redundant \\
+\midrule
+majority & 0.25 & on & 32.1\% & $-0.679$ & 0 / 106 \\
+majority & 0.30 & on & 38.5\% & $-0.615$ & 0 / 96 \\
+\textbf{majority} & \textbf{0.35} & \textbf{on} & 44.9\% & $\mathbf{-0.571}$ & 1 / 85 \\
+majority & 0.40 & on & \textbf{48.1\%} & $-0.577$ & 3 / 78 \\
+unanimous & 0.35 & on & 39.1\% & $-0.609$ & 0 / 95 \\
+majority & 0.35 & off & 43.6\% & $-0.583$ & 1 / 87 \\
+\bottomrule
+\end{tabular}\end{center}
+
+The shipping setting is the optimum on cost, and every setting that reduces redundancy adds
+misses. Two things follow. First, on the development split the gate is not timid: it misses
+one of 23 unseen clips and shows a redundant picture on 85 of 133 seen or no-ambient clips.
+Second, the sweep could not observe the failure it was launched to fix -- all 25 mixed clips
+are in the test set, none in development -- so no tuned variant was run; the shipping numbers
+stand.
+
+\textbf{Reading the errors instead.} The cached votes explain both directions without a GPU.
+Of the eleven test clips where the gated system showed nothing and a picture was due, seven
+are the detector: nothing reached the bar, because the ambient sound sat under speech or
+music (crowd hubbub 0.22 under \emph{Speech} 0.84; rain 0.23 under \emph{Music} 0.81; drums
+0.29 under \emph{Music} 0.65) or was a texture at 0.24--0.31. The other four are \emph{Vehicle}
+in street scenes, where cars are in frame and every stretch was unanimously judged visible
+with a stable name (``white car'', ``taxi on road''): under the annotation's own redundancy
+rule the gate's silence is defensible and the tag is the debatable one. None is a timing
+mismatch. On the development side, of the hundred redundant pictures the VLM could not
+silence because it saw no source, about eighty are confident detector phantoms with no source
+anywhere -- a whale at a Christmas market (0.36), roaring cats at a helicopter arrival (0.51),
+an electric toothbrush in an alarm clip (0.73), glass at 0.87 in a bombardment -- and the VLM
+is right that nothing visible makes them. Only about twenty are real sources the VLM said were
+absent (thunder in a storm, an alarm in a car-alarm clip), and those expose a definitional gap
+between the annotation's redundancy test (``does the picture already tell the viewer this is
+happening?'') and the question the VLM is asked (``name the thing making the sound'').
+
+The bottleneck is therefore the detector on both sides -- recall masked by speech and music,
+and confident false positives -- more than the visibility judgment. A second opinion from an
+independent audio model is the model-based answer to the phantoms: CLAP scores the same two
+seconds against all 527 AudioSet names collapsed to ontology families, and a detection
+survives only if its family is among CLAP's top $k$, with $k$ set once on DCASE gold as the
+smallest value retaining 95\% of gold recall. \todo{CLAP row: DCASE recall@k curve and the
+frozen $k$; the development cost-table row ``current + CLAP''; the number of test clips whose
+shown set changes; \tagref{v4} pooled and by group next to \tagref{v3}, if applied.}
 
 % ======================================================================
 \section{Discussion}\label{sec:discussion}
