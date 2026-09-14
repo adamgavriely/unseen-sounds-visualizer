@@ -189,6 +189,19 @@ def phase_render(args):
                 pipeline.run(clip, work_root=work_root)
                 ok += 1
             except Exception as e:
+                # a CUDA OOM on a 22 GB card is fragmentation between the resident
+                # models, not the clip (v3 job 28942456 lost london_protest_01 that way);
+                # clear the allocator and try once more before counting a failure
+                if "out of memory" in str(e).lower():
+                    try:
+                        import torch
+                        torch.cuda.empty_cache()
+                        pipeline.run(clip, work_root=work_root)
+                        ok += 1
+                        print(f"  ~ render {clip.name}: recovered after OOM", flush=True)
+                        continue
+                    except Exception as e2:
+                        e = e2
                 fail += 1
                 print(f"  ! render {clip.name}: {type(e).__name__}: {e}", flush=True)
             if i % 10 == 0:
