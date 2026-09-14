@@ -312,7 +312,7 @@ run & reference & proposed & blind a2i & audio caption \\
 \midrule
 \tagref{v2} & model-derived   & 2.27 & \textbf{2.97} & 2.68 \\
 \tagref{v2\_grounded} & human-grounded & 2.90 & \textbf{3.14} & 2.79 \\
-\tagref{v2\_indep} & independent & \todo{pending job 28942612} & & \\
+\tagref{v2\_indep\_list} & independent (list-and-match visibility) & 2.41 & \textbf{2.96} & 2.61 \\
 \midrule
 \tagref{v3} & model-derived   & \todo{pending job 28942456} & & \\
 \tagref{v3\_grounded} & human-grounded & \todo{pending} & & \\
@@ -320,10 +320,39 @@ run & reference & proposed & blind a2i & audio caption \\
 \bottomrule
 \end{tabular}\end{center}
 
-\subsection{Paired statistics (\tagref{v2\_grounded})}
-% scripts/paired_stats.py v2_grounded, 2026-09-14.
-proposed vs.\ blind: win 22 / tie 54 / loss 24, mean difference $-0.24$, 95\% CI $[-0.47, -0.02]$.
-Oracle gate + best output: 3.19. \todo{Add the same line for \tagref{v2\_indep} and \tagref{v3\_indep}.}
+\subsection{Paired statistics}
+% scripts/paired_stats.py v2 v2_grounded v2_indep_list, 2026-09-14; benchmark/paired_stats.json.
+\begin{center}\begin{tabular}{llccc}
+\toprule
+run & proposed vs.\ blind: win / tie / loss & mean diff & 95\% CI & oracle gate \\
+\midrule
+\tagref{v2} & 11 / 52 / 37 & $-0.70$ & $[-0.98, -0.43]$ & 2.89 \\
+\tagref{v2\_grounded} & 22 / 54 / 24 & $-0.24$ & $[-0.47, -0.02]$ & 3.19 \\
+\tagref{v2\_indep\_list} & 12 / 59 / 29 & $-0.55$ & $[-0.82, -0.30]$ & 2.88 \\
+\tagref{v3\_*} & \todo{pending} & & & \\
+\bottomrule
+\end{tabular}\end{center}
+Under every reference the blind baseline scores at least as high as the gated system on
+\tagref{v2}; the interval excludes zero each time. The circular reference was not what held the
+gate back. The oracle row is the ceiling any gate could reach on this benchmark with the best
+system's output where a picture is due: 2.88--3.19, i.e.\ a perfect gate would beat the blind
+baseline by at most $+0.05$ under the human-grounded reference and not at all under the others.
+
+\textbf{The independent reference is not neutral either.} Its silence decision (``nothing beyond
+the picture'') agrees with the human tag on 55 of 100 clips -- chance. The list-and-match
+visibility step (Idefics3 asked for a list of sound-capable things, one word back per clip;
+MiniLM cosine to each verified sound) calls almost every sound unseen, so on seen-ambient clips
+the reference says the viewer would miss the sound and the blind baseline is rewarded for
+showing it (seen\_ambient: blind 3.08, proposed 2.48). A per-sound question to the same VLM
+(``is the thing producing \emph{X} visible? answer \texttt{visible: <name>} or \texttt{not
+visible}'') was tried next and scored the same 55\%, because the rule ``silent only if every
+verified claim is visible'' fails whenever one of five to eight audio-LM claims (\emph{video
+game sound}, \emph{wind noise (microphone)}, \emph{clock ticking}) is not; that variant was
+not judged (a 70\% agreement bar gates the judge pass). The reference's remaining weakness is
+therefore the same question the system itself finds hardest -- whether a sound's source is on
+screen -- and the honest reading is that no automatic reference built here can score the gate
+decision; the human-grounded reference remains the only one that can, with the asymmetry
+already stated.
 
 \subsection{Per-category}
 \todo{Per human tag table from \texttt{paired\_stats.py} output, per reference.}

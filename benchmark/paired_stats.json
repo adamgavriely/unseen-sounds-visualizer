@@ -18,5 +18,15 @@
    "audio_caption": 2.79
   },
   "oracle": 3.19
+ },
+ {
+  "tag": "v2_indep_list",
+  "n": 100,
+  "means": {
+   "proposed": 2.41,
+   "blind_a2i": 2.96,
+   "audio_caption": 2.61
+  },
+  "oracle": 2.88
  }
 ]
