@@ -26,12 +26,24 @@
 \maketitle
 
 \begin{abstract}
-\todo{Write last. One paragraph: the task (show a deaf viewer the sounds whose source is not on
-screen), the pipeline (seven stages of off-the-shelf models, no training), the benchmark (274
-clips, four categories), the evaluation (VLM--LLM protocol with an independent reference), the
-headline (\tagref{v3\_indep} table), and the two findings that survive every reference: the gate is
-bounded by what a VLM can answer about visibility, and the automatic reference must be built by
-models that never saw the system's output.}
+Subtitles carry speech; the ambient sound of a video -- a siren behind the camera, a dog
+barking in the next room, glass breaking off screen -- reaches a deaf viewer only if a captioner
+chose to write it down. This project asks whether that channel can be automated: given a video,
+detect its ambient sounds, decide for each whether its source is already visible on screen, and
+show a picture of the event beside the video only while a sound whose source is not visible is
+heard. The system is an inference pipeline over open-source foundation models with no training:
+BEATs for detection, a vision--language model for the visibility decision and the depiction, and
+a text-to-image model for the picture. It is evaluated on a benchmark of 274 hand-labelled clips
+in four scenarios against a blind audio-to-image baseline and an audio-captioning baseline, with
+an automatic protocol in which a vision--language model describes the augmented video and a
+judge scores it against a reference. Under the human-grounded reference the gated system ties
+the blind baseline overall (3.17 vs 3.16 on a 0--4 scale, 100 clips), beats it where no picture
+is due ($+0.26$, CI excluding zero) and loses where one is ($-0.24$); a perfect gate would score
+3.25. Three findings about the evaluation itself are reported alongside: the reference specified
+in the proposal is written by the system's own models and biases the comparison by half a point;
+a reference built by independent models cannot decide whether a source is on screen better than
+chance; and the rubric's asymmetry -- a withheld picture scores 0, a redundant one about 3 --
+structurally penalises abstention, which is the behaviour the gate exists to provide.
 \end{abstract}
 
 % ======================================================================
@@ -39,7 +51,24 @@ models that never saw the system's output.}
 % Motivation, problem statement, the accessibility gap (subtitles/SDH and sign language
 % carry speech; ambient sound is described inconsistently or not at all).
 % Source: project_notes.tex sec:gap.
-\todo{From notes \S{}The Accessibility Gap.}
+Deaf and hard-of-hearing viewers receive speech through subtitles and, where available, sign
+language. Neither channel is built for the rest of the soundtrack. Subtitles for the deaf and
+hard-of-hearing (SDH) may name a sound effect in brackets, but style guides such as the DCMP
+Captioning Key~\cite{dcmp} instruct captioners to omit any sound that can be inferred from the
+picture, and studies of caption use find non-speech information inconsistently rendered and
+often absent~\cite{captionlimits}. Sign-language interpretation is expressive but scarce and not
+automatable. Field studies of sound-awareness systems~\cite{homesound,soundwatch} show that
+deaf users want to know about exactly the sounds that carry information -- knocks, alarms,
+sirens, a baby crying, a dog barking -- and that they read icons and pictures faster than text.
+
+The information a hearing viewer gets from ambient sound is therefore lost in proportion to how
+far the sound's source is from the frame. A siren over a visible ambulance is redundant; a
+siren over a crowd looking up is the scene. This project targets that second case. It differs
+from audio-to-image generation~\cite{sound2scene,sonicdiffusion}, which turns sound into a
+picture regardless of the video, and from sound-source localisation~\cite{ssloc,offscreensep},
+which finds where in the frame a sound comes from without saying what should be done about it.
+The contribution is the combination: detect the ambient sound, decide from the video whether
+its source is already visible, and show a picture of the event only when it is not.
 
 \subsection{Problem statement}
 Given a video, produce the same video with a side panel that shows, for the duration of each
@@ -75,8 +104,48 @@ labels used for evaluation.
 % Condense literature_review.tex: AED/tagging (PANNs, BEATs), audio captioning, audio LLMs
 % (Qwen2-Audio), VLMs (Qwen2.5-VL, Idefics3), audio-to-image (Sound2Scene etc.) as the
 % baseline family, SDH/sign-language handling of non-speech sound, DHH visualisation studies.
-\todo{Condense \texttt{docs/literature\_review.tex}; one paragraph per area, positioned against
-this project.}
+\textbf{Audio event detection.} Nearly all modern taggers are trained on AudioSet, a two-million
+clip ontology of 527 classes~\cite{audioset}. PANNs~\cite{panns} established strong CNN
+features (0.431 mAP); transformer taggers -- AST~\cite{ast} and BEATs~\cite{beats}, the latter
+pre-trained with acoustic tokenizers -- lead the DCASE challenges (BEATs 0.486 mAP on the same
+labels). BEATs is a clip-level tagger; frame-level detectors give sharper onsets at the cost of
+recall, which \S\ref{sec:results} measures.
+
+\textbf{Audio captioning and audio language models.} Captioning systems trained on
+AudioCaps~\cite{audiocaps} and Clotho~\cite{clotho} describe a soundscape in a sentence, and
+audio-language models such as Qwen2-Audio~\cite{qwenaudio} and SALMONN~\cite{salmonn} answer
+questions about it. Text is the natural competitor to a picture and is the second baseline here;
+an audio LM is used only inside the evaluation, to write a reference that never saw the system.
+CLAP~\cite{clap} embeds audio and text in one space and is used to verify the audio LM's claims.
+
+\textbf{Vision--language models.} Qwen2.5-VL~\cite{qwenvl}, LLaVA~\cite{llava} and
+Idefics3 answer open questions about frames. They are the only component that can decide whether
+a sound's source is visible without a fixed vocabulary of objects, and \S\ref{sec:method} shows
+that how the question is asked -- a name rather than a yes, two orderings rather than one --
+decides whether the answer is evidence or agreement.
+
+\textbf{Sound-source localisation.} Cross-modal alignment methods~\cite{ssloc,objaware} point to
+where in an image a sound originates, and off-screen sound separation~\cite{offscreensep}
+estimates whether a source is in frame at all. They answer the gate's question with a number
+rather than a judgement; they were not used here because they are trained on data where the
+source usually is in frame, and the benchmark's positive class is exactly the case where it is
+not. The DCASE 2025 Task 3 dataset, which labels every event on- or off-screen, is used to check
+the VLM gate instead (\S\ref{sec:benchmark}).
+
+\textbf{Audio-to-image and audio-to-video.} Sound2Scene~\cite{sound2scene} maps audio into a
+pretrained image generator's latent space; SonicDiffusion~\cite{sonicdiffusion} conditions a
+diffusion model on audio; TempoTokens~\cite{tempotokens} adapts a text-to-video model to audio.
+All are blind to the existing video and are the family this work is measured against. The
+picture itself is drawn by a text-conditioned model (FLUX.1~\cite{flux}; SDXL~\cite{sdxl} in
+earlier runs), with the prompt chosen by the reasoning stage rather than from the audio alone.
+
+\textbf{Accessibility studies.} Non-text sound visualisations -- icons, directional indicators,
+animated effects -- are learnable and preferred by deaf viewers in games and AR~\cite{protosound},
+and author-selected sound visuals are welcomed in media; caption research~\cite{captionvstranscript,
+livecaptions,lightsub} documents the cost of divided attention, which is why the panel here
+keeps a fixed position and shows nothing when nothing is heard. What none of this work does is
+generate imagery for ambient sound in recorded media, selected automatically and gated by what
+is already visible.
 
 % ======================================================================
 \section{Method}\label{sec:method}
@@ -261,8 +330,9 @@ on-screen recall (visible source correctly silenced) & 35\% \\
 \bottomrule
 \end{tabular}\end{center}
 The check is timid in one direction: it almost never silences a sound whose source is off screen,
-and silences only a third of those whose source is on screen. \todo{DCASE geometric caveat:
-360-degree capture; on-screen is defined by the field of view of the equirectangular frame.}
+and silences only a third of those whose source is on screen. Their label is geometric -- the source's direction of arrival falls inside a 100-degree field
+of view cut from a 360-degree capture -- not ``the viewer can see it making the sound'', so
+part of the on-screen shortfall is the check answering a stricter question than the label.
 
 % ======================================================================
 \section{Evaluation protocol}\label{sec:eval}
@@ -314,9 +384,9 @@ run & reference & proposed & blind a2i & audio caption \\
 \tagref{v2\_grounded} & human-grounded & 2.90 & \textbf{3.14} & 2.79 \\
 \tagref{v2\_indep\_list} & independent (list-and-match visibility) & 2.41 & \textbf{2.96} & 2.61 \\
 \midrule
-\tagref{v3} & model-derived   & \todo{pending job 28942456} & & \\
-\tagref{v3\_grounded} & human-grounded & \todo{pending} & & \\
-\tagref{v3\_indep} & independent & \todo{after v3 describe: reference phase, then judge} & & \\
+\tagref{v3} & model-derived   & 2.64 & \textbf{3.04} & 2.79 \\
+\tagref{v3\_grounded} & human-grounded & \textbf{3.17} & 3.16 & 2.89 \\
+\tagref{v3\_indep} & independent & \multicolumn{3}{l}{not run: the reference cannot score the gate (below)} \\
 \bottomrule
 \end{tabular}\end{center}
 
@@ -329,14 +399,18 @@ run & proposed vs.\ blind: win / tie / loss & mean diff & 95\% CI & oracle gate 
 \tagref{v2} & 11 / 52 / 37 & $-0.70$ & $[-0.98, -0.43]$ & 2.89 \\
 \tagref{v2\_grounded} & 22 / 54 / 24 & $-0.24$ & $[-0.47, -0.02]$ & 3.19 \\
 \tagref{v2\_indep\_list} & 12 / 59 / 29 & $-0.55$ & $[-0.82, -0.30]$ & 2.88 \\
-\tagref{v3\_*} & \todo{pending} & & & \\
+\tagref{v3} & 12 / 61 / 27 & $-0.40$ & $[-0.66, -0.16]$ & 3.01 \\
+\tagref{v3\_grounded} & 21 / 64 / 15 & $+0.01$ & $[-0.15, +0.18]$ & 3.25 \\
 \bottomrule
 \end{tabular}\end{center}
-Under every reference the blind baseline scores at least as high as the gated system on
-\tagref{v2}; the interval excludes zero each time. The circular reference was not what held the
-gate back. The oracle row is the ceiling any gate could reach on this benchmark with the best
-system's output where a picture is due: 2.88--3.19, i.e.\ a perfect gate would beat the blind
-baseline by at most $+0.05$ under the human-grounded reference and not at all under the others.
+On \tagref{v2} the blind baseline scores higher than the gated system under every reference,
+with the interval excluding zero each time; the circular reference was not what held the gate
+back. On \tagref{v3} -- the shipping configuration: BEATs, per-sound visibility, event
+depictions, ontology deduplication -- the gap closes to a tie under the human-grounded reference
+($+0.01$, 21 wins to 15 losses) while remaining $-0.40$ under the model-derived one. The oracle
+row is the ceiling any gate could reach on this benchmark with the best system's output where a
+picture is due: \tagref{v3} sits 0.08 below it. The gated system also beats the captioning
+baseline on \tagref{v3\_grounded} ($+0.28$, $[+0.10, +0.46]$).
 
 \textbf{The independent reference is not neutral either.} Its silence decision (``nothing beyond
 the picture'') agrees with the human tag on 55 of 100 clips -- chance. The list-and-match
@@ -354,8 +428,32 @@ screen -- and the honest reading is that no automatic reference built here can s
 decision; the human-grounded reference remains the only one that can, with the asymmetry
 already stated.
 
-\subsection{Per-category}
-\todo{Per human tag table from \texttt{paired\_stats.py} output, per reference.}
+\subsection{By scenario group}
+% paired_stats.py: the proposal's four scenarios, grouped by whether a picture is due. Same
+% judge score in both groups; a per-group metric would be a rubric chosen after the result.
+The four scenarios were defined in the proposal before any system was run; the pooled score is
+reported first and then split by whether a picture is due (unseen and mixed clips) or not (seen
+and no-ambient clips), with the same judge score in both groups.
+
+\begin{center}\begin{tabular}{llcccc}
+\toprule
+run & group ($n=50$) & proposed & blind & caption & proposed $-$ blind \\
+\midrule
+\tagref{v2\_grounded} & picture needed & 2.26 & \textbf{2.92} & 2.66 & $-0.66$ $[-1.06, -0.28]$ \\
+                      & no picture needed & \textbf{3.54} & 3.36 & 2.92 & $+0.18$ $[+0.00, +0.34]$ \\
+\tagref{v3\_grounded} & picture needed & 2.78 & \textbf{3.02} & 2.76 & $-0.24$ $[-0.54, +0.04]$ \\
+                      & no picture needed & \textbf{3.56} & 3.30 & 3.02 & $+0.26$ $[+0.12, +0.40]$ \\
+\bottomrule
+\end{tabular}\end{center}
+
+The split makes the finding precise: the gate does the right thing when nothing is missing and
+still fails when something is. Of the 15 clips where the blind baseline beats \tagref{v3}, most
+are a picture withheld -- the visibility check named a source that was on screen but not
+visibly making the sound, or the sound did not reach the display bar -- and a withheld picture
+scores 0 where a redundant one scores about 3. Under that rubric the gate must be right about
+four times in five when it stays silent merely to break even, which is why a perfect gate only
+narrowly beats the blind baseline (3.25 vs 3.16). \S\ref{sec:v4} reports the one change this
+licenses: setting the silence rule on the development split with the rubric's own costs.
 
 \subsection{Onset timing}
 % benchmark/eval_dcase_onset.json (job 28942869, 2026-09-14): 255 DCASE gold events with an onset
@@ -396,23 +494,151 @@ only where a picture is stamped.
 % From the notes: retrieval vs SDXL (+0.17/+0.18, earlier configuration); judge reliability
 % (kappa 0.753 second judge); PANNs -> BEATs (11/14 complaints resolved); CAM negative result;
 % place veto 2 right / 2 wrong on 4 uses -> off.
-\todo{One short paragraph each, all numbers from the notes.}
+\textbf{Retrieval against generation (earlier configuration).} On the same 100 clips with the
+first pipeline, retrieving a stock photograph for the label beat SDXL by $+0.17$ (gated) and
+$+0.18$ (blind), with the captioning control unchanged to two decimals; 55\% of the retrieved
+images carried a non-commercial or no-derivatives licence and 595 uses drew on 60 distinct
+images, which is why generation was kept.
+
+\textbf{Judge reliability.} A second, unrelated judge agrees with the primary one at
+$\kappa = 0.753$ (97\% within one point) and reproduces the gated-versus-blind gap; the
+captioning baseline moves by $+0.61$ under it, so any ranking involving the text baseline is a
+property of the judge.
+
+\textbf{Detector.} Eleven of fourteen complaints from a review of eight demo clips traced to
+PANNs' labels; BEATs resolved every one on the same clips, and the display bar moved with it.
+
+\textbf{Negative results kept.} A class-activation map over BEATs' tokens moves every onset by
+exactly $0$ or $-1.5$\,s and cannot work; a plausibility veto on the place (``a dog in a parking
+lot'') was right twice and wrong twice in four uses and is off; a comparative depiction check
+that scored 8/8 on the cases it was built on scored 11/17 on the next nine, because it measured
+phrase length.
+
+\subsection{Setting the silence rule with the rubric's costs}\label{sec:v4}
+% benchmark/gate_dev_sweep.py; benchmark/gate_setting.json; tag v4. Filled when the dev sweep
+% (jobs 29027863/29027864) and the test flips land.
+\todo{Dev-split grid (silence rule $\times$ display bar $\times$ kinds rule), the frozen cell,
+the number of test clips whose decision changes, and \tagref{v4} pooled and by group next to
+\tagref{v3}.}
 
 % ======================================================================
 \section{Discussion}\label{sec:discussion}
 % Answer the five research questions with the numbers above. Be plain where the gate does not win.
-\todo{RQ1--RQ5.}
+\textbf{Which audio information contributes most when shown visually?} Discrete, sourced
+events -- sirens, alarms, bells, a baby crying, glass breaking -- are what the judge rewards
+and what a picture can carry; continuous textures (wind, traffic, rain) are where the detector,
+the visibility check and the reference all disagree most, and where the blind baseline's
+redundant picture costs it least. The benchmark's yield says the same thing from the other side:
+only 15--20\% of candidate clips contain an ambient sound whose source is off screen, but a
+third of clips with any ambient sound do.
+
+\textbf{What granularity?} The detector's own taxonomy. Gating on the AudioSet family and
+depicting the specific member -- a fire-engine siren, not a siren -- was the one deduplication
+rule that generalised (14/14 with no threshold), after label embeddings, a VLM judgement and a
+similarity threshold each failed for a stated reason.
+
+\textbf{Can generated augmentations improve accessibility beyond subtitles?} Not shown here;
+the evaluation is a proxy. What is shown is that under a rubric that scores what a viewer would
+learn, the gated system ties a baseline that draws everything and beats the text baseline,
+that it wins where nothing is missing and loses where something is, and that the loss is
+concentrated in the visibility decision.
+
+\textbf{How should such systems be evaluated?} With a reference the system cannot have written.
+The proposal's reference is built from the detector's events by the system's own VLM and
+favours the system that repeats the detector by half a point. A reference built by independent
+models removes that bias but introduces its own: its on-screen decision is at chance, so it
+rewards showing. The only reference that scores the gate is the one corrected by the human
+label, and it is not available to a deployed system. The rubric's asymmetry must be stated
+whenever a gated system is compared with a blind one.
+
+\textbf{How does the pipeline compare with audio-to-visual generation?} It ties it on the
+pooled score and beats it by $+0.26$ where no picture is due, at the cost of $-0.24$ where one
+is. A perfect gate would gain 0.09 over the blind baseline on this benchmark. The gate's value
+is therefore real but small under this rubric, and it lies entirely in what it does not show.
 
 % ======================================================================
 \section{Limitations}
 % Mirror LIMITATIONS.md (repository root); keep the two in step.
-\todo{From \texttt{LIMITATIONS.md}.}
+Stated here rather than left for a reader to find; \texttt{LIMITATIONS.md} in the repository
+keeps the full list in step with the code.
+
+\textbf{One annotator} ($\kappa = 0.60$ against their own earlier labels, unstable on the
+positive class). \textbf{One judge decides the headline}; a second reproduces the gated-versus-blind
+gap but not the text baseline's rank. \textbf{100 test clips, 25 per scenario}: read the
+paired intervals, not the means. \textbf{No human study}: a judge scoring a description of a
+picture is a proxy for comprehension. \textbf{The references are not neutral}: the
+model-derived one is circular, the independent one decides visibility at chance, the grounded
+one is computable only with labels. \textbf{The detector's vocabulary and recall}: AudioSet has
+no ``phone alert''; a siren under a film score is heard only at its close-up; on five-second
+DCASE clips only 26\% of gold events reach the display bar. \textbf{The visibility check is
+timid toward on-screen sources} (35\% on DCASE gold) and unstable to a half-second shift in
+frame sampling. \textbf{The onset method was over-claimed} on seven hand-labelled onsets and is
+reported on 255. \textbf{The evaluation software produced plausible wrong numbers} repeatedly
+-- a charitable score for an empty augmentation, a similarity that returned 0.0 for everything,
+an audio model that never received its audio -- each caught by reading logs, each now guarded.
 
 % ======================================================================
 \section{Conclusion and future work}
-\todo{Open-vocabulary audio (CLAP zero-shot / audio LLM) as a second opinion; source-separation front
-end; human study; second annotator; $\tau$ calibration of the sentinel on DCASE gold.}
+A deaf viewer of a video misses the sounds whose sources are not on screen, and no existing
+channel supplies them automatically. This project built the pipeline that does -- detection,
+a visibility decision from the frames, an event depiction, a picture beside the video -- from
+off-the-shelf models with no training, a benchmark of 274 labelled clips in the proposal's four
+scenarios, and an evaluation protocol whose reference had to be rebuilt twice before it could
+be trusted. The shipping system ties a baseline that draws every sound it hears and beats the
+text baseline; it wins where nothing is missing and loses where something is, because the
+rubric prices a withheld picture at four times a redundant one and the visibility question is
+the hardest a vision--language model is asked here.
 
-\bibliographystyle{plain}
-\bibliography{../project_notes}
+Next: set the silence rule with the rubric's costs on the development split (\S\ref{sec:v4});
+an open-vocabulary audio model as a second opinion where the detector's 527 classes have no
+word; source separation in front of the detector; a second annotator; and a study with deaf
+viewers, without which the accessibility claim rests on a proxy.
+
+\begin{thebibliography}{99}
+
+\bibitem{audioset} J.\ F.\ Gemmeke et al., ``AudioSet: An ontology and human-labeled dataset for audio events,'' \emph{ICASSP}, 2017.
+\bibitem{panns} Q.\ Kong et al., ``PANNs: Large-Scale Pretrained Audio Neural Networks for Audio Pattern Recognition,'' \emph{IEEE/ACM TASLP}, 2020. arXiv:1912.10211.
+\bibitem{ast} Y.\ Gong, Y.-A.\ Chung, J.\ Glass, ``AST: Audio Spectrogram Transformer,'' \emph{Interspeech}, 2021. arXiv:2104.01778.
+\bibitem{beats} S.\ Chen et al., ``BEATs: Audio Pre-Training with Acoustic Tokenizers,'' \emph{ICML}, 2023. arXiv:2212.09058.
+\bibitem{audiocaps} C.\ D.\ Kim et al., ``AudioCaps: Generating Captions for Audios in The Wild,'' \emph{NAACL}, 2019.
+\bibitem{clotho} K.\ Drossos et al., ``Clotho: An Audio Captioning Dataset,'' \emph{ICASSP}, 2020.
+\bibitem{clap} B.\ Elizalde et al., ``CLAP: Learning Audio Concepts from Natural Language Supervision,'' \emph{ICASSP}, 2023.
+\bibitem{enclap} J.\ Kim et al., ``EnCLAP: Combining Neural Audio Codec and Audio-Text Joint Embedding for Automated Audio Captioning,'' \emph{ICASSP}, 2024. [verify authors]
+\bibitem{slamaac} W.\ Chen et al., ``SLAM-AAC: Enhancing Audio Captioning with Paraphrasing Augmentation and CLAP-Refine through LLMs,'' 2024. arXiv:2410.09503.
+\bibitem{qwenaudio} Y.\ Chu et al., ``Qwen-Audio / Qwen2-Audio: Advancing Universal Audio Understanding,'' 2023--2024. arXiv:2311.07919.
+\bibitem{salmonn} C.\ Tang et al., ``SALMONN: Towards Generic Hearing Abilities for Large Language Models,'' \emph{ICLR}, 2024.
+\bibitem{audioflamingo3} ``Audio Flamingo 3: Advancing Audio Intelligence,'' 2025. arXiv:2507.08128. [verify authors]
+\bibitem{mmau} S.\ Sakshi et al., ``MMAU: A Massive Multi-Task Audio Understanding and Reasoning Benchmark,'' 2024. arXiv:2410.19168.
+\bibitem{qwenvl} Qwen Team, ``Qwen2.5-VL Technical Report,'' 2025. arXiv:2502.13923.
+\bibitem{internvl} ``InternVL3: Native Multimodal Pretraining,'' 2025. [verify authors/venue]
+\bibitem{llava} H.\ Liu et al., ``Visual Instruction Tuning (LLaVA),'' \emph{NeurIPS}, 2023.
+\bibitem{sound2scene} K.\ Sung-Bin et al., ``Sound to Visual Scene Generation by Audio-to-Visual Latent Alignment (Sound2Scene),'' \emph{CVPR}, 2023. arXiv:2306.11504.
+\bibitem{tempotokens} G.\ Yariv, I.\ Gat, S.\ Benaim, L.\ Wolf, I.\ Schwartz, Y.\ Adi, ``Diverse and Aligned Audio-to-Video Generation via Text-to-Video Model Adaptation (TempoTokens),'' \emph{AAAI}, 2024. arXiv:2309.16429. \url{https://arxiv.org/abs/2309.16429}, code: \url{https://pages.cs.huji.ac.il/adiyoss-lab/TempoTokens}
+\bibitem{sonicdiffusion} ``SonicDiffusion: Audio-Driven Image Generation and Editing with Pretrained Diffusion Models,'' 2024. [verify authors]
+\bibitem{sdxl} D.\ Podell et al., ``SDXL: Improving Latent Diffusion Models for High-Resolution Image Synthesis,'' 2023. arXiv:2307.01952.
+\bibitem{flux} Black Forest Labs, ``FLUX.1,'' 2024. \url{https://blackforestlabs.ai/}.
+\bibitem{captionlimits} ``Limitations of Standard Accessible Captioning of Sounds and Music for DHH People: An EEG Study,'' \emph{Frontiers in Integrative Neuroscience}, 2020. [verify authors]
+\bibitem{prosodycaptions} ``Visualization of Speech Prosody and Emotion in Captions: Accessibility for Deaf and Hard-of-Hearing Users,'' \emph{CHI}, 2023.
+\bibitem{soundwatch} D.\ Jain et al., ``SoundWatch: Smartwatch-based Deep Learning Approaches to Support Sound Awareness for DHH Users,'' \emph{ASSETS}, 2020.
+\bibitem{homesound} D.\ Jain et al., ``HomeSound: An Iterative Field Deployment of an In-Home Sound Awareness System for DHH Users,'' \emph{CHI}, 2020.
+\bibitem{protosound} D.\ Jain et al., ``ProtoSound: A Personalized and Scalable Sound Recognition System for DHH Users,'' \emph{CHI}, 2022. arXiv:2202.11134. \url{https://arxiv.org/abs/2202.11134}
+\bibitem{dcmp} Described and Captioned Media Program (DCMP), ``Captioning Key --- Guidelines and Preferred Techniques'' (Sound Effects, Music, Non-Speech Information sections). \url{https://dcmp.org/learn/captioningkey}
+\bibitem{sheffield} University of Sheffield / SubTxt Creative, study on captions and suspense in film and TV, 2024. \emph{[verify: locate the primary publication; currently via project coverage]} \url{https://liamodell.com/2024/05/09/captions-cinema-suspense-university-of-sheffield-paper-research-project-survey-subtxt-creative/}
+\bibitem{livecaptions} ``How Users Experience Closed Captions on Live Television: Quality Metrics Remain a Challenge,'' 2024. arXiv:2404.10153. \url{https://arxiv.org/abs/2404.10153} [verify authors]
+\bibitem{captune} ``CapTune: Adapting Non-Speech Captions With Anchored Generative Models,'' 2025. arXiv:2508.19971. \url{https://arxiv.org/abs/2508.19971} [verify authors]
+\bibitem{speechstyles} ``Visualizing Speech Styles in Captions for Deaf and Hard-of-Hearing Viewers,'' \emph{Int.\ J.\ Human-Computer Studies}, 2024. \url{https://www.sciencedirect.com/science/article/abs/pii/S1071581924001691} [verify authors]
+\bibitem{captionvstranscript} R.\ Kushalnagar et al., ``Captions versus Transcripts for Online Video Content,'' \emph{W4A}, 2013. \url{https://www.cs.cmu.edu/~jbigham/pubs/pdfs/2013/captionvstranscripts.pdf} [verify authors]
+\bibitem{lightsub} ``LightSub: Unobtrusive Subtitles with Reduced Information and Decreased Eye Movement,'' \emph{Multimodal Technologies and Interaction}, 2024. \url{https://doi.org/10.3390/mti8060051} [verify authors]
+\bibitem{captionsigncoexist} ``On the Coexistence of Captions and Sign Language as Accessibility Solutions in Educational Settings,'' \emph{MDPI}, 2024. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC12922059/} [verify authors]
+\bibitem{ssloc} A.\ Senocak et al., ``Sound Source Localization is All about Cross-Modal Alignment,'' \emph{ICCV}, 2023. arXiv:2309.10724. \url{https://arxiv.org/abs/2309.10724}
+\bibitem{objaware} ``Object-aware Sound Source Localization via Audio-Visual Scene Understanding,'' 2025. arXiv:2506.18557. \url{https://arxiv.org/abs/2506.18557} [verify authors]
+\bibitem{offscreensep} ``Off-Screen Sound Separation Based on Audio-visual Pre-training Using Binaural Audio,'' 2023. \url{https://pmc.ncbi.nlm.nih.gov/articles/PMC10181533/} [verify authors]
+\bibitem{forkmerge} ``Fork-Merge Decoding: Enhancing Multimodal Understanding in Audio-Visual Large Language Models,'' 2025. arXiv:2505.20873. \url{https://arxiv.org/abs/2505.20873} [verify authors]
+\bibitem{avattn} ``Pay More Attention To Audio: Mitigating Imbalance of Cross-Modal Attention in Large Audio Language Models,'' 2025. arXiv:2509.18816. \url{https://arxiv.org/abs/2509.18816} [verify authors]
+\bibitem{vggsound} H.\ Chen et al., ``VGGSound: A Large-scale Audio-Visual Dataset,'' \emph{ICASSP}, 2020. arXiv:2004.14368.
+\bibitem{unav100} T.\ Geng et al., ``Dense-Localizing Audio-Visual Events in Untrimmed Videos (UnAV-100),'' \emph{CVPR}, 2023. arXiv:2303.12930.
+\bibitem{movienet} Q.\ Huang et al., ``MovieNet: A Holistic Dataset for Movie Understanding,'' \emph{ECCV}, 2020. arXiv:2007.10937.
+\bibitem{clip} A.\ Radford et al., ``Learning Transferable Visual Models From Natural Language Supervision (CLIP),'' \emph{ICML}, 2021.
+\bibitem{whisper} A.\ Radford et al., ``Robust Speech Recognition via Large-Scale Weak Supervision (Whisper),'' 2022. arXiv:2212.04356.
+\end{thebibliography}
 \end{document}
