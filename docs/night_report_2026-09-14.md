@@ -40,8 +40,10 @@ anecdote (+0.9 → +0.3) overstated it and is retired. Only 66/255 gold events a
 
 **v3** (job 28942456): proposed renders 80/100 after 3.2 h, 3 OOM failures (the describe phase
 re-renders them; an OOM retry is in the code for the next submission). Expected to finish
-~12:00. Nothing in v3's config or prompts was touched. Do not restart it; resubmit
-`job_v3.sh` if it hits the 12 h wall (it resumes).
+~14:00–16:00 (the caption baseline renders at 2 min/clip). Nothing in v3's config or
+prompts was touched. A resume (`job_v3.sh`, from stamps) is pre-queued as 28983633 with
+`--dependency=afternotok`, so a wall-time kill continues by itself; if 28942456 completes,
+28983633 is never released (cancel it: `scancel 28983633`).
 
 ## What was built
 
