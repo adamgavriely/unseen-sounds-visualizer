@@ -101,7 +101,7 @@ labels used for evaluation.
 \end{itemize}
 
 % ======================================================================
-\section{Related work}
+\section{Related work}\label{sec:related}
 % Condense literature_review.tex: AED/tagging (PANNs, BEATs), audio captioning, audio LLMs
 % (Qwen2-Audio), VLMs (Qwen2.5-VL, Idefics3), audio-to-image (Sound2Scene etc.) as the
 % baseline family, SDH/sign-language handling of non-speech sound, DHH visualisation studies.
@@ -456,6 +456,55 @@ scores 0 where a redundant one scores about 3. Under that rubric the gate must b
 four times in five when it stays silent merely to break even, which is why a perfect gate only
 narrowly beats the blind baseline (3.25 vs 3.16). \S\ref{sec:v4} reports the one change this
 licenses: setting the silence rule on the development split with the rubric's own costs.
+
+\subsection{Cost sensitivity of the gate decision (secondary, post-hoc)}\label{sec:cost}
+% scripts/cost_sensitivity.py v3_grounded -> benchmark/cost_sensitivity_v3_grounded.json;
+% added after unblinding, at Adam's question "showing what you can see is bad, but how bad?"
+% Three-reviewer panel, 2026-09-15: secondary, ratio swept not chosen, headline unchanged.
+The pre-registered protocol prices the two errors asymmetrically: a withheld picture scores 0
+where one would have scored up to 4, a redundant picture about 3 where silence scores 4 -- a
+redundant picture costs roughly a quarter of a withheld one. That ratio is a property of the
+rubric, not of deaf viewers; captioning practice omits sounds whose source is visible because
+redundancy has a real cost (\S\ref{sec:related}). We therefore add, as a secondary analysis
+declared after the main result, a judge-free score of the clip-level decision with the ratio
+as an explicit parameter. Per clip and system, \emph{showed} means the system produced at least
+one augmentation and \emph{due} means the human tag is unseen or mixed;
+\[
+S(r) = 1 - \frac{\text{missed} + r\cdot\text{redundant}}{N},
+\]
+with $r$ the cost of a redundant picture relative to a withheld one, swept from 0.1 to 1.
+
+\begin{center}\begin{tabular}{lcccccccc}
+\toprule
+system & showed & hit & missed & redundant & precision & recall & $S(0.25)$ & $S(1)$ \\
+\midrule
+gated (ours) & 67 & 39 & 11 & 28 & 0.58 & 0.78 & 0.820 & \textbf{0.610} \\
+blind audio-to-image & 82 & 43 & 7 & 39 & 0.52 & 0.86 & \textbf{0.833} & 0.540 \\
+audio caption & 82 & 43 & 7 & 39 & 0.52 & 0.86 & 0.833 & 0.540 \\
+\bottomrule
+\end{tabular}\end{center}
+
+\begin{center}
+\includegraphics[width=0.72\linewidth]{fig_cost_sensitivity_v3_grounded.pdf}
+\end{center}
+
+At the judge's implied ratio ($r \approx 0.25$) the two systems tie ($-0.012$, 95\% CI
+$[-0.057, +0.025]$); the gated system is preferred from $r = 0.40$ upward and leads by $+0.070$
+at $r = 1$ (CI $[0.000, +0.150]$). The claim this licenses is conditional: \emph{the gate is
+preferred whenever a redundant picture costs more than about forty percent of a withheld one};
+whether real viewers' costs exceed that is an empirical question this thesis does not answer.
+The panel's accessibility reading -- redundancy erodes trust in the channel and compounds over a
+session, so its cost is likely above the rubric's quarter but below parity, and higher for
+alarm-like sounds than for ambience -- is an argument, not a measurement.
+
+This metric scores a clip as correct if the system showed at least one picture when the clip
+contains an off-screen sound, or none when it does not. It does not assess whether the picture
+was shown at the right moment, for the right sound, or with the right content; the
+pre-registered judge score covers those. It also exposes a blind spot of the judge: on the seven
+clips where the detector heard nothing on a clip tagged unseen or mixed, the grounded reference
+itself reads ``nothing beyond the picture'' and every system scores 4, so a detector miss is
+invisible to the judge; here it counts as a miss for all three systems alike. The caption
+baseline coincides with the blind one at the decision level (same detector, no gate).
 
 \subsection{Onset timing}
 % benchmark/eval_dcase_onset.json (job 28942869, 2026-09-14): 255 DCASE gold events with an onset

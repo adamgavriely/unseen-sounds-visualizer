@@ -46,6 +46,14 @@ report's Limitations section mirrors this file.
   Future work, a taxonomy decision rather than a tuned constant: claims that name a recording
   artefact (microphone wind noise, video-game sound, sound effect) should not count as
   missable, and near-duplicate claims of one source should be one claim.
+- **The judge cannot see a detector miss.** On the 7 test clips tagged unseen/mixed where the
+  detector heard nothing, the grounded reference reads "nothing beyond the picture" and every
+  system scores 4. The clip-level cost-sensitivity analysis (report §Cost sensitivity) counts
+  them as misses for all systems; the judge score does not.
+- **The cost-sensitivity analysis is secondary and coarse.** Added after unblinding; the
+  redundant:withheld cost ratio is swept, not chosen; crossover at r = 0.40. It scores only
+  whether the gate opened at least once when it should have, not when, for which sound, or
+  with what picture.
 - **The independent reference's sentinel is uncalibrated.** The MiniLM cosine threshold that
   rejects unsupported sentences is fixed at τ = 0.50; calibration on DCASE gold is planned but
   not done.
