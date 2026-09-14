@@ -356,8 +356,9 @@ part of the on-screen shortfall is the check answering a stricter question than 
         left 58 of 100 references empty against 25 clips tagged \emph{no\_ambient}; both are
         reported); Idefics3-8B looks at the frames for what is on screen; Phi-3.5-mini writes the
         reference (Llama-3.1-8B is gated and was not accessible to the account); a MiniLM sentinel
-        ($\tau = 0.50$, uncalibrated) rejects sentences unsupported by the verified list. This is
-        the corrected primary.
+        ($\tau = 0.50$, uncalibrated) rejects sentences unsupported by the verified list. It was
+        built to be the corrected primary; \S\ref{sec:results} shows it cannot score the gate
+        decision, so the human-grounded reference remains the one that does.
 \end{description}
 
 \subsection{Baselines}
