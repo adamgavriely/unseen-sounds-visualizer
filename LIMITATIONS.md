@@ -66,7 +66,9 @@ report's Limitations section mirrors this file.
 
 - **The evaluation software produced plausible wrong numbers** several times (charitable score
   for an empty augmentation; a reference that could not say "nothing is missing"; a similarity
-  that returned 0.0 for everything on a library upgrade). Each is guarded now; a single
+  that returned 0.0 for everything on a library upgrade; a renamed processor keyword
+  silently ignored by transformers 5, so the audio LM answered "none" for 100 clips it never
+  heard -- the code now asserts on the processor's output). Each is guarded now; a single
   automatic number deserves less trust than its precision suggests.
 - **Knobs were set once on the dev split** after 2026-09-13 (`docs/plan_robustness.md`); the
   demos in the notes illustrate and do not tune.

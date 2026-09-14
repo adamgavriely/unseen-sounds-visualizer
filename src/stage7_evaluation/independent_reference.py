@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import gc
 import json
+import sys
 import subprocess
 import tempfile
 from pathlib import Path
@@ -89,6 +90,21 @@ def _remove_vocals(wav: Path, out_dir: Path) -> Path:
         return wav
 
 
+def _with_audio(proc, audio_list, sr, **kw):
+    """Call a processor with audio under whichever keyword this transformers accepts.
+
+    transformers 5 renamed ``audios`` to ``audio`` and IGNORES the old name with a one-line
+    warning; the first reference run (job 28942612) then asked Qwen2-Audio about a prompt
+    with no sound attached and got "none." for all 100 clips. Fail loudly instead.
+    """
+    import inspect
+    key = "audio" if "audio" in inspect.signature(proc.__call__).parameters else "audios"
+    out = proc(**{key: audio_list}, sampling_rate=sr, return_tensors="pt", **kw)
+    if "input_features" not in out:
+        raise RuntimeError(f"{type(proc).__name__} produced no audio features (keyword {key!r})")
+    return out
+
+
 def _chunks(audio: np.ndarray, sr: int, sec: float = CHUNK):
     n = int(sec * sr)
     for i in range(0, max(1, len(audio)), n):
@@ -116,18 +132,24 @@ def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
                 conv = [{"role": "user", "content": [{"type": "audio", "audio_url": ""},
                                                      {"type": "text", "text": LISTEN_PROMPT}]}]
                 text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
-                inputs = proc(text=text, audios=[seg], return_tensors="pt",
-                              sampling_rate=proc.feature_extractor.sampling_rate).to(mdl.device)
+                inputs = _with_audio(proc, [seg], proc.feature_extractor.sampling_rate,
+                                     text=text).to(mdl.device)
                 with torch.no_grad():
                     gen = mdl.generate(**inputs, max_new_tokens=96, do_sample=False)
                 reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
                                           skip_special_tokens=True)[0].strip()
                 for line in reply.splitlines():
                     line = line.strip(" -*•").strip()
-                    if line and line.lower() != "none" and line not in items:
+                    if line and line.lower().rstrip(".") != "none" and line not in items:
                         items.append(line)
             out[name] = items
             print(f"       [ref] listen {name}: {items}", flush=True)
+            if len(out) == 1 and not items:
+                # sanity gate (review, 2026-09-14): a blind audio LM fails in two minutes,
+                # not two hours. The first clip is a random benchmark clip; an empty list
+                # there is far likelier to be a broken input than a genuinely silent clip.
+                sys.exit(f"[ref] listen returned nothing for the first clip {name}; "
+                         f"last reply was {reply!r} -- input or model misconfigured")
     del mdl, proc
     _free()
     return out
@@ -153,7 +175,7 @@ def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
             continue
         audio, _ = librosa.load(str(wav), sr=48000, mono=True)
         with torch.no_grad():
-            a = proc(audios=[audio], sampling_rate=48000, return_tensors="pt").to(device)
+            a = _with_audio(proc, [audio], 48000).to(device)
             ea = mdl.get_audio_features(**a)
             ea = ea / ea.norm(dim=-1, keepdim=True)
             texts = [f"the sound of {it}" for it in items]
