@@ -278,11 +278,16 @@ and silences only a third of those whose source is on screen. \todo{DCASE geomet
         by the annotator's label; only computable on labelled clips; raises the abstaining system
         more than the baselines by arithmetic (notes \S{}Main Result).
   \item[independent (\tagref{v2\_indep}, \tagref{v3\_indep})] built by models that never see the
-        system's output: Qwen2-Audio listens to the Demucs no-vocals stem in 10 s chunks; each claim
-        is verified by CLAP against 64 decoys (mean $+2\sigma$); Idefics3-8B looks at the frames for
-        what is on screen; Llama-3.1-8B writes the reference; a MiniLM sentinel ($\tau = 0.50$,
-        uncalibrated) rejects sentences unsupported by the verified list. This is the corrected
-        primary.
+        system's output: Qwen2-Audio listens to the Demucs no-vocals stem and to the raw mix in
+        10 s chunks (the union, speech tags dropped; the stem alone was empty on a third of the
+        clips because Demucs pulls tonal sounds into the vocals stem); each claim is verified by
+        CLAP, kept if this clip's audio ranks in the top 20 of the 100 benchmark clips for the
+        claim's text with positive cosine (a mean $+2\sigma$ bar over text decoys, the first form,
+        left 58 of 100 references empty against 25 clips tagged \emph{no\_ambient}; both are
+        reported); Idefics3-8B looks at the frames for what is on screen; Phi-3.5-mini writes the
+        reference (Llama-3.1-8B is gated and was not accessible to the account); a MiniLM sentinel
+        ($\tau = 0.50$, uncalibrated) rejects sentences unsupported by the verified list. This is
+        the corrected primary.
 \end{description}
 
 \subsection{Baselines}
