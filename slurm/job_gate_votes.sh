@@ -2,7 +2,7 @@
 #SBATCH --job-name=gate_votes
 #SBATCH --output=logs/gate_votes_%j.out
 #SBATCH --error=logs/gate_votes_%j.err
-#SBATCH --partition=L4-12h,L40s-12h,A100-12h,H200-12h
+#SBATCH --partition=L4-12h,H200-12h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=64G
