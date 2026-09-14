@@ -331,7 +331,9 @@ Against seven hand-labelled onsets on three clips the plain stamp was late by $+
 and the shipping method by $+0.3$\,s; that is an anecdote, so the same question was put to DCASE
 2025 Task 3, whose events carry a start frame at 100\,ms. From 255 gold events (nine non-speech
 classes, onset inside the clip) one BEATs pass was stamped three ways; an event counts as matched
-when a detection in the same AudioSet family starts within 1.5\,s of it.
+when a detection in the same AudioSet family starts within 1.5\,s of it. Every error below is
+measured on the matched events only -- 66 of 255 (26\%) at the display bar -- so the table
+describes where a picture is stamped when a sound is detected, not how often it is.
 
 \begin{center}\begin{tabular}{lccccc}
 \toprule
@@ -350,9 +352,9 @@ worse on 39 with an identical MAE of 0.34\,s (paired bootstrap difference $0.00$
 $[-0.11, +0.10]$). It trades a smaller late bias and more onsets within half a second for fewer
 within a quarter-second; on knocks, where hysteresis alone is within 0.08\,s, it moves the onset
 $+0.26$\,s late. The seven-clip number therefore overstated the method, and the honest statement is
-that the shipping onset is within half a second for four events in five. Detector recall on these
-five-second clips is the larger limit: 66 of 255 gold events are matched at the display bar, since
-laughter, footsteps and domestic sounds rarely reach 0.35 on BEATs. Whether to keep occlusion is a
+that the shipping onset is within half a second for four detected events in five. Detector
+recall on these five-second clips is the larger limit: laughter, footsteps and domestic sounds
+rarely reach 0.35 on BEATs. Whether to keep occlusion is a
 development-split decision left open (\S\ref{sec:process}); it does not alter detection or gating,
 only where a picture is stamped.
 
