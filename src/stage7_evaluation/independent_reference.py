@@ -144,9 +144,13 @@ SPEECH_TAGS = {"speech", "male speech", "female speech", "male speech, man speak
                "human voice", "speech synthesizer", "child speech, kid speaking", "talking"}
 
 
+SPEECH_WORDS = ("speech", "speaking", "dialogue", "conversation", "narration", "talking",
+                "monologue", "narrator", "speaker")
+
+
 def _is_speech_tag(item: str) -> bool:
     low = item.lower().strip()
-    return low in SPEECH_TAGS or low.startswith("speech") or low.endswith("speech")
+    return low in SPEECH_TAGS or any(w in low for w in SPEECH_WORDS)
 
 
 def _listen_once(proc, mdl, audio: np.ndarray, sr: int) -> List[str]:
