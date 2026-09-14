@@ -34,6 +34,17 @@ report's Limitations section mirrors this file.
 
   Top-10 to top-30 all beat the 2σ bar on empties; the result is not knife-edge. Add the 19
   clips where the audio LM heard nothing to every row for the clip-level total.
+- **The independent reference cannot score the gate decision.** Its "nothing beyond the
+  picture" verdict agrees with the human tag on 55/100 clips (chance) under both visibility
+  variants tried: list-and-match (Idefics3 list, one word per clip; MiniLM cosine) and a
+  per-sound forced question to the same VLM. The cause is the rule "silent only if every
+  verified claim is visible" meeting five to eight audio-LM claims per clip, several of which
+  ("video game sound", "wind noise (microphone)", "clock ticking") are never visible. So it is
+  biased toward "something is missing" and rewards the blind baseline on seen-ambient clips.
+  Reported as such; the human-grounded reference remains the only one that scores the gate.
+  Future work, a taxonomy decision rather than a tuned constant: claims that name a recording
+  artefact (microphone wind noise, video-game sound, sound effect) should not count as
+  missable, and near-duplicate claims of one source should be one claim.
 - **The independent reference's sentinel is uncalibrated.** The MiniLM cosine threshold that
   rejects unsupported sentences is fixed at τ = 0.50; calibration on DCASE gold is planned but
   not done.
