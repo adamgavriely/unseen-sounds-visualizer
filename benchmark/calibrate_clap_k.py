@@ -36,6 +36,7 @@ from src.stage4_audio_event_detection import clap_check as C
 
 SETTING = _ROOT / "benchmark" / "clap_setting.json"
 RECALL_TARGET = 0.95
+MAX_K = 30           # of 328 families: above this the check no longer filters anything
 KS = list(range(1, 31))
 
 
@@ -66,7 +67,7 @@ def dcase():
             if stem not in cache:
                 cache[stem] = _load_audio(_wav_from(src, Path(td)))
             audio, sr = cache[stem]
-            scores = C.family_scores(audio, sr, s, config.DEVICE)
+            scores = C.family_scores(audio, sr, s, config.DEVICE, window=min(C.MAX_WINDOW, max(2.0, e - s)))
             # the gold class maps to one or more AudioSet labels; the best-ranked family counts
             r = min((C.family_rank(lab, scores) or 999) for lab in FAMILY[c])
             ranks.append({"stem": stem, "class": CLASSES[c], "start": s, "rank": r})
@@ -77,7 +78,9 @@ def dcase():
     print("[clap-k] recall@k on DCASE gold (%d events):" % len(rk))
     print("   " + "  ".join(f"k{k}={recall[k]:.2f}" for k in KS if k <= 15 or k % 5 == 0))
     k = next((k for k in KS if recall[k] >= RECALL_TARGET), None)
-    print(f"[clap-k] smallest k with recall >= {RECALL_TARGET:.0%}: {k}")
+    print(f"[clap-k] smallest k with recall >= {RECALL_TARGET:.0%}: {k}  (must be <= {MAX_K}, declared before the run)")
+    if k is not None and k > MAX_K:
+        k = None
     per = {}
     for r in ranks:
         per.setdefault(r["class"], []).append(r["rank"])
@@ -101,7 +104,7 @@ def ranks(split: str):
     with tempfile.TemporaryDirectory() as td:
         for i, f in enumerate(files, 1):
             rec = json.loads(f.read_text(encoding="utf-8"))
-            todo = [s for s in rec["sounds"] if s["confidence"] >= bar and "clap_rank" not in s]
+            todo = [s for s in rec["sounds"] if s["confidence"] >= bar]   # recomputed: subtree + burst window
             if not todo:
                 continue
             video = _find_clip(rec["clip"])
@@ -109,7 +112,8 @@ def ranks(split: str):
                 continue
             audio, sr = _load_audio(_wav_from(video, Path(td)))
             for s in todo:
-                scores = C.family_scores(audio, sr, s["start"], config.DEVICE)
+                scores = C.family_scores(audio, sr, s["start"], config.DEVICE,
+                                         window=min(C.MAX_WINDOW, max(2.0, s["end"] - s["start"])))
                 s["clap_rank"] = C.family_rank(s["label"], scores)
                 top = sorted(scores.items(), key=lambda kv: -kv[1])[:3]
                 s["clap_top3"] = [t[0] for t in top]
@@ -129,7 +133,7 @@ def evaluate():
     def filtered(rec):
         r = dict(rec)
         r["sounds"] = [s for s in rec["sounds"]
-                       if s.get("clap_rank") is None or s["clap_rank"] <= k]
+                       if s.get("clap_rank") is None or k is None or s["clap_rank"] <= k]
         return r
 
     dev = load("dev")

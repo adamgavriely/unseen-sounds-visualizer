@@ -12,9 +12,10 @@ same two seconds BEATs heard.
 How. CLAP scores the detection's 2 s window against all 527 AudioSet names ("the sound
 of <name>"), the names are collapsed to FAMILIES through the ontology (max score per
 family: 'Vehicle', 'Car' and 'Motor vehicle (road)' are one competitor, not three), and
-the detection survives only if its own family is among CLAP's top-k families for that
-window. k is set once on DCASE 2025 gold events as the smallest value that keeps 95 % of
-gold recall (benchmark/calibrate_clap_k.py) -- the constant comes from gold, never from
+the detection survives only if its own family (or one in its ontology subtree) is among CLAP's top-k
+families for that window. k is set once on DCASE 2025 gold events as the smallest value
+that keeps 95 % of gold recall, and must be at most 30 of the 328 families or the check
+is declared useless (benchmark/calibrate_clap_k.py) -- the constant comes from gold, never from
 the phantoms -- and then frozen (config.CLAP_TOP_K). A dropped detection does not exist
 downstream: it is neither shown nor gated. (Design reviewed by Fable, 2026-09-14.)
 """
@@ -83,9 +84,14 @@ def unload():
     _STATE.clear()
 
 
+MAX_WINDOW = 10.0   # CLAP-fused takes up to 10 s; a detection is scored on its own burst
+
+
 def family_scores(audio: np.ndarray, sr: int, start: float, device: str = "cpu",
-                  window: float = 2.0) -> Dict[str, float]:
-    """CLAP score per family for the window [start, start + window] of ``audio``."""
+                  window: float = MAX_WINDOW) -> Dict[str, float]:
+    """CLAP score per family for [start, start + window] of ``audio`` -- the detection's
+    own span, capped at 10 s, rather than its first two seconds: CLAP was built for
+    clips, and a sustained sound is what it recognises."""
     import librosa
     import torch
     st = _load(device)
@@ -107,18 +113,44 @@ def family_scores(audio: np.ndarray, sr: int, start: float, device: str = "cpu",
     return out
 
 
+def _subtree_families(label: str) -> List[str]:
+    """The label's own family plus the family of every ontology descendant: a parent
+    label such as 'Vehicle' is heard by CLAP as one of its children ('Motor vehicle
+    (road)', 'Rail transport'), and 'same family' means the subtree. Cached."""
+    if label in _SUBTREE:
+        return _SUBTREE[label]
+    from src.labels import is_descendant
+    st = _load_names_only()
+    fams = {family(label)}
+    for n in st:
+        if is_descendant(n, label):
+            fams.add(family(n))
+    _SUBTREE[label] = sorted(fams)
+    return _SUBTREE[label]
+
+
+_SUBTREE: Dict[str, List[str]] = {}
+
+
+def _load_names_only() -> List[str]:
+    if "names" in _STATE:
+        return _STATE["names"]
+    return _audioset_names()
+
+
 def family_rank(label: str, scores: Dict[str, float]) -> Optional[int]:
-    """1 = CLAP's best family for the window; None when the window was too short."""
+    """1 = CLAP's best family for the window; None when the window was too short.
+    A label's rank is the best rank over the families of its ontology subtree."""
     if not scores:
         return None
-    f = family(label)
-    mine = scores.get(f)
+    mine = max((scores[f] for f in _subtree_families(label) if f in scores), default=None)
     if mine is None:
         return len(scores) + 1
     return 1 + sum(1 for v in scores.values() if v > mine)
 
 
-def agrees(label: str, audio: np.ndarray, sr: int, start: float, top_k: int,
+def agrees(label: str, audio: np.ndarray, sr: int, start: float, end: float, top_k: int,
            device: str = "cpu") -> Tuple[bool, Optional[int]]:
-    r = family_rank(label, family_scores(audio, sr, start, device))
+    r = family_rank(label, family_scores(audio, sr, start, device,
+                                         window=min(MAX_WINDOW, max(2.0, end - start))))
     return (r is None or r <= top_k), r
