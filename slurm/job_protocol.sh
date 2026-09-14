@@ -56,6 +56,7 @@ PHASE="${PHASE:-all}"
 JUDGE="${JUDGE:-}"
 DESC_TAG="${DESC_TAG:-}"
 RESCORE="${RESCORE:-}"
+INDEP="${INDEP:-}"
 GROUNDED="${GROUNDED:-}"
 SKIP_RENDER="${SKIP_RENDER:-}"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
@@ -95,6 +96,7 @@ if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
 if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]
 if "${RESCORE}" and phase == "judge": argv += ["--rescore"]
 if "${GROUNDED}" and phase == "judge": argv += ["--grounded"]
+if "${INDEP}" and phase == "judge":    argv += ["--independent"]
 if "${SKIP_RENDER}" and phase == "describe": argv += ["--skip-render"]
 sys.argv = argv
 print("[argv]", " ".join(argv), flush=True)
@@ -111,6 +113,7 @@ case "$PHASE" in
   render)   run_phase render ;;
   describe) run_phase describe ;;
   judge)    run_phase judge ;;
+  reference) run_phase reference ;;
   all)      run_phase describe; run_phase judge ;;
 esac
 

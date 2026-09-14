@@ -258,8 +258,48 @@ def phase_describe(args, backends):
 # ----------------------------------------------------------------------
 # pass 2 -- judge the cached pairs. Only the judge is loaded.
 # ----------------------------------------------------------------------
+# ----------------------------------------------------------------------
+# pass 1b -- an independent reference. Audio LM, CLAP, a non-Qwen VLM and a third-party
+# writer, each loaded in turn; none of them sees the system's output. Reads the same
+# description cache to know which clips are in the run.
+# ----------------------------------------------------------------------
+def ref_file(tag: str) -> Path:
+    return DESCRIPTIONS.with_name(f"protocol_reference_indep{('_' + tag) if tag else ''}.json")
+
+
+def phase_reference(tag: str = "", desc_tag=None, device: str = "cuda"):
+    from src.stage7_evaluation import independent_reference as IR
+    cache = desc_file(desc_tag if desc_tag is not None else tag)
+    if not cache.exists():
+        sys.exit("no descriptions cached -- run --phase describe first")
+    recs = json.loads(cache.read_text(encoding="utf-8"))
+    clips = sorted({r["clip"] for r in recs})
+    wavs, videos, transcripts = {}, {}, {}
+    for c in clips:
+        # any system's work dir has the same audio, video reference and transcript
+        for system in SYSTEMS:
+            wd = work_root_for(system, desc_tag if desc_tag is not None else tag) / c
+            if (wd / "audio.wav").exists():
+                wavs[c] = wd / "audio.wav"
+                seg = wd / "segments.json"
+                transcripts[c] = " ".join(x.get("text", "") for x in
+                                          json.loads(seg.read_text("utf-8"))) if seg.exists() else ""
+                break
+        vid = _find_clip(c)
+        if vid is not None:
+            videos[c] = vid
+    missing = [c for c in clips if c not in wavs or c not in videos]
+    if missing:
+        print(f"[reference] {len(missing)} clips without audio/video; skipped: {missing[:5]}")
+    keep = [c for c in clips if c in wavs and c in videos]
+    print(f"[reference] building an independent reference for {len(keep)} clips", flush=True)
+    IR.build_all({c: wavs[c] for c in keep}, {c: videos[c] for c in keep},
+                 transcripts, ref_file(tag), device=device)
+    print("[reference] ->", ref_file(tag), flush=True)
+
+
 def phase_judge(backends, tag: str = "", rescore: bool = False,
-                desc_tag=None, grounded: bool = False):
+                desc_tag=None, grounded: bool = False, independent: bool = False):
     # A judge-agreement run re-scores the MAIN descriptions but writes its results
     # under a new tag, so cache and results file are tagged independently.
     cache = desc_file(desc_tag if desc_tag is not None else tag)
@@ -276,11 +316,21 @@ def phase_judge(backends, tag: str = "", rescore: bool = False,
                                   if out_file.exists() else [])
     done = {(r["clip"], r["system"]) for r in results}
     print(f"[judge] {len(recs)} cached pairs, {len(done)} already scored", flush=True)
+    refs = {}
+    if independent:
+        rf = ref_file(desc_tag if desc_tag is not None else tag)
+        if not rf.exists():
+            sys.exit(f"no independent reference cached at {rf} -- run --phase reference first")
+        refs = json.loads(rf.read_text(encoding="utf-8")).get("references", {})
+        print(f"[judge] independent references for {len(refs)} clips", flush=True)
 
     for i, rec in enumerate(recs, 1):
         if (rec["clip"], rec["system"]) in done:
             continue
-        ev = judge_record(rec, backends, grounded=grounded)
+        if independent and rec["clip"] not in refs:
+            continue
+        ev = judge_record(rec, backends, grounded=grounded,
+                          reference_override=refs[rec["clip"]]["reference"] if independent else None)
         row = ev.to_dict()
         row["human_tag"] = rec.get("human_tag")
         row["scenario"] = rec.get("scenario")
@@ -342,7 +392,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--systems", nargs="*", default=list(SYSTEMS))
     ap.add_argument("--limit", type=int, default=None)
-    ap.add_argument("--phase", choices=("all", "render", "describe", "judge"),
+    ap.add_argument("--phase", choices=("all", "render", "describe", "judge", "reference"),
                     default="all")
     ap.add_argument("--judge", default=None,
                     help="override config.JUDGE_MODEL (for judge-agreement runs)")
@@ -351,6 +401,8 @@ def main():
     ap.add_argument("--desc-tag", default=None,
                     help="read descriptions from this run's cache; use with --tag "
                          "to score the main descriptions under a second judge")
+    ap.add_argument("--independent", action="store_true",
+                    help="judge against the independent reference (--phase reference first)")
     ap.add_argument("--grounded", action="store_true",
                     help="score against the human-corrected reference: on clips the "
                          "annotator marked seen_ambient or no_ambient, nothing is "
@@ -373,8 +425,12 @@ def main():
         phase_describe(args, backends)
         backends.unload_vlm()        # free ~16 GB before the judge is loaded
         print("[protocol] describer unloaded", flush=True)
+    if args.phase == "reference":
+        phase_reference(args.tag, args.desc_tag, device=config.DEVICE)
+        return
     if args.phase in ("all", "judge"):
-        phase_judge(backends, args.tag, args.rescore, args.desc_tag, args.grounded)
+        phase_judge(backends, args.tag, args.rescore, args.desc_tag, args.grounded,
+                    independent=args.independent)
 
 
 if __name__ == "__main__":

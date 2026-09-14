@@ -429,16 +429,23 @@ def describe_clip(clip_name: str, system: str, work_dir: Path,
         return None
 
 
-def judge_record(rec: dict, backends: Backends, grounded: bool = False
-                 ) -> ClipEvaluation:
+def judge_record(rec: dict, backends: Backends, grounded: bool = False,
+                 reference_override: Optional[str] = None) -> ClipEvaluation:
     """Pass 2: score one cached (reference, description) pair.
 
     ``grounded`` scores against the human-corrected reference instead of the purely
-    model-derived one; see grounded_reference(). The choice is made here, at judging
-    time, so both numbers come out of one describe pass.
+    model-derived one; see grounded_reference(). ``reference_override`` scores against a
+    reference built by models that never saw the system's output (see
+    independent_reference.py) -- the corrected primary since 2026-09-14, after a
+    review found the default reference was written from the detector's own events by
+    the proposed system's own VLM. The choice is made here, at judging time, so every
+    number comes out of one describe pass.
     """
-    reference = (grounded_reference(rec["reference"], rec.get("human_tag"))
-                 if grounded else rec["reference"])
+    if reference_override is not None:
+        reference = reference_override
+    else:
+        reference = (grounded_reference(rec["reference"], rec.get("human_tag"))
+                     if grounded else rec["reference"])
     score, why = judge(reference, rec["description"], backends)
     return ClipEvaluation(clip=rec["clip"], system=rec["system"],
                           reference=reference, description=rec["description"],
