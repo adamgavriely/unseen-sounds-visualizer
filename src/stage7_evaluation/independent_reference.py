@@ -31,6 +31,7 @@ from __future__ import annotations
 
 import gc
 import json
+import sys
 import subprocess
 import tempfile
 from pathlib import Path
@@ -39,9 +40,10 @@ from typing import Dict, List, Optional
 import numpy as np
 
 import config
+from src.text_similarity import _as_tensor
 
 LISTEN_MODEL = "Qwen/Qwen2-Audio-7B-Instruct"
-CLAP_MODEL = "laion/clap-htsat-unfused"
+CLAP_MODEL = "laion/clap-htsat-fused"     # the unfused checkpoint is .bin-only; transformers 5 refuses it on torch 2.5
 LOOK_MODEL = "HuggingFaceM4/Idefics3-8B-Llama3"
 WRITE_MODELS = ["meta-llama/Llama-3.1-8B-Instruct", "microsoft/Phi-3.5-mini-instruct"]
 EMBED_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
@@ -56,9 +58,19 @@ WRITE_PROMPT = ("A video's soundtrack, with the dialogue removed, contains these
                 "In ONE sentence, state the information a hearing viewer gets from the "
                 "sounds that a deaf viewer would miss from the picture alone. Name the "
                 "specific sound sources.")
+SEEN_PROMPT = ("These are six frames from one video. Its soundtrack contains: {sound}. "
+               "Is the thing producing that sound visible in these frames? Answer exactly "
+               "`visible: <name of the thing>` or `not visible`.")
 NOTHING_MISSING = "nothing beyond the picture"
 CHUNK = 10.0
-CLAP_MARGIN = 2.0        # keep an item if cos(audio, item) > mean + MARGIN*std over decoys
+CLAP_MARGIN = 2.0        # text-decoy bar, logged as a diagnostic only (see verify_all)
+AUDIO_RANK_TOP = 20      # keep an item if this clip's audio is among its top-20 matches of all
+                         # clips AND the cosine is positive. Top-5 (p<0.05) was the first form;
+                         # the benchmark's clips are correlated (some twenty carry wind), so a
+                         # top-5 rank among 100 is a test against siblings, not decoys, and it
+                         # left 53 of 100 clips with an empty reference against 25 tagged
+                         # no_ambient. Set once, on that comparison (31 vs 25 at top-20);
+                         # sensitivity table in LIMITATIONS.md.
 MATCH_TAU = 0.50         # visible-match cosine; calibrated on DCASE gold (see notes)
 
 
@@ -89,6 +101,37 @@ def _remove_vocals(wav: Path, out_dir: Path) -> Path:
         return wav
 
 
+def _with_audio(proc, audio_list, sr, **kw):
+    """Call a processor with audio under whichever keyword this transformers accepts.
+
+    transformers 5 renamed ``audios`` to ``audio`` and IGNORES the old name with a one-line
+    warning; the first reference run (job 28942612) then asked Qwen2-Audio about a prompt
+    with no sound attached and got "none." for all 100 clips. Fail loudly instead.
+    """
+    import inspect
+    key = "audio" if "audio" in inspect.signature(proc.__call__).parameters else "audios"
+    out = proc(**{key: audio_list}, sampling_rate=sr, return_tensors="pt", **kw)
+    if "input_features" not in out:
+        raise RuntimeError(f"{type(proc).__name__} produced no audio features (keyword {key!r})")
+    return out
+
+
+def _split_items(lines: List[str]) -> List[str]:
+    """Qwen2-Audio answers in its own tag style -- one line such as
+    'source: wind, source: bird vocalization; source: clock ticking.' -- rather than one
+    sound per line. Split on the 'source:' markers and semicolons, keep the commas inside
+    a tag ('clock, clicking, tick' is one AudioSet name), drop empties and 'none'.
+    """
+    import re
+    out: List[str] = []
+    for line in lines:
+        for part in re.split(r"(?:^|[;,]?\s*)source\s*:\s*|;", line, flags=re.I):
+            part = part.strip(" -*•.	").strip()
+            if part and part.lower() != "none" and part not in out:
+                out.append(part)
+    return out
+
+
 def _chunks(audio: np.ndarray, sr: int, sec: float = CHUNK):
     n = int(sec * sr)
     for i in range(0, max(1, len(audio)), n):
@@ -97,45 +140,106 @@ def _chunks(audio: np.ndarray, sr: int, sec: float = CHUNK):
             yield seg
 
 
-def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
-    """clip -> list of 'source: sound' lines from the audio LM (vocals removed)."""
-    import librosa
+# Tags the audio LM uses for speech; dropped from the MIX pass only, since the whole point
+# of listening to the no-vocals stem first is to keep the dialogue out of the reference.
+SPEECH_TAGS = {"speech", "male speech", "female speech", "male speech, man speaking",
+               "female speech, woman speaking", "conversation", "narration", "narration, monologue",
+               "human voice", "speech synthesizer", "child speech, kid speaking", "talking"}
+
+
+SPEECH_WORDS = ("speech", "speaking", "dialogue", "conversation", "narration", "talking",
+                "monologue", "narrator", "speaker")
+
+
+def _is_speech_tag(item: str) -> bool:
+    low = item.lower().strip()
+    return low in SPEECH_TAGS or any(w in low for w in SPEECH_WORDS)
+
+
+def _listen_once(proc, mdl, audio: np.ndarray, sr: int) -> List[str]:
     import torch
+    items: List[str] = []
+    reply = ""
+    for seg in _chunks(audio, sr):
+        conv = [{"role": "user", "content": [{"type": "audio", "audio_url": ""},
+                                             {"type": "text", "text": LISTEN_PROMPT}]}]
+        text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
+        inputs = _with_audio(proc, [seg], sr, text=text).to(mdl.device)
+        with torch.no_grad():
+            gen = mdl.generate(**inputs, max_new_tokens=96, do_sample=False)
+        reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
+                                  skip_special_tokens=True)[0].strip()
+        for line in reply.splitlines():
+            line = line.strip(" -*•").strip()
+            if line and line.lower().rstrip(".") != "none" and line not in items:
+                items.append(line)
+    return _split_items(items)
+
+
+def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
+    """clip -> sounds named by the audio LM: the union of a pass over the no-vocals stem
+    and a pass over the raw mix (speech tags dropped from the latter).
+
+    The stem pass alone came back empty on 12 of the first 37 clips of job 28942680,
+    among them an aviary, crossing bells and two storms: Demucs pulls tonal sounds into
+    the vocals stem, and a 7B audio LM takes the "none" exit on quiet audio. The mix pass
+    restores recall; CLAP verification against decoys (verify_all) remains the only
+    filter. Where each item was heard (stem / mix / both) is logged so the report can say
+    how often the stem was hollow -- a limitation of the system's own separation front
+    end as much as of this reference. (Review, 2026-09-14.)
+    """
+    import librosa
     from transformers import AutoProcessor, Qwen2AudioForConditionalGeneration
+    import torch
     proc = AutoProcessor.from_pretrained(LISTEN_MODEL)
     mdl = Qwen2AudioForConditionalGeneration.from_pretrained(
         LISTEN_MODEL, torch_dtype=torch.bfloat16 if device == "cuda" else torch.float32,
         device_map="auto" if device == "cuda" else None).eval()
+    sr = proc.feature_extractor.sampling_rate
     out = {}
     with tempfile.TemporaryDirectory() as td:
         for name, wav in clips.items():
             nov = _remove_vocals(Path(wav), Path(td))
-            audio, _ = librosa.load(str(nov), sr=proc.feature_extractor.sampling_rate, mono=True)
-            items: List[str] = []
-            for seg in _chunks(audio, proc.feature_extractor.sampling_rate):
-                conv = [{"role": "user", "content": [{"type": "audio", "audio_url": ""},
-                                                     {"type": "text", "text": LISTEN_PROMPT}]}]
-                text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
-                inputs = proc(text=text, audios=[seg], return_tensors="pt",
-                              sampling_rate=proc.feature_extractor.sampling_rate).to(mdl.device)
-                with torch.no_grad():
-                    gen = mdl.generate(**inputs, max_new_tokens=96, do_sample=False)
-                reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
-                                          skip_special_tokens=True)[0].strip()
-                for line in reply.splitlines():
-                    line = line.strip(" -*•").strip()
-                    if line and line.lower() != "none" and line not in items:
-                        items.append(line)
+            stem_audio, _ = librosa.load(str(nov), sr=sr, mono=True)
+            mix_audio, _ = librosa.load(str(wav), sr=sr, mono=True)
+            stem_items = _listen_once(proc, mdl, stem_audio, sr)
+            mix_items = [it for it in _listen_once(proc, mdl, mix_audio, sr) if not _is_speech_tag(it)]
+            items = list(stem_items)
+            for it in mix_items:
+                if it not in items:
+                    items.append(it)
+            where = {it: ("both" if it in stem_items and it in mix_items else
+                          "stem" if it in stem_items else "mix") for it in items}
             out[name] = items
-            print(f"       [ref] listen {name}: {items}", flush=True)
+            reply = f"stem={stem_items} mix={mix_items}"
+            print(f"       [ref] listen {name}: " +
+                  " | ".join(f"{it} [{where[it]}]" for it in items), flush=True)
+            if len(out) == 1 and not items:
+                # sanity gate (review, 2026-09-14): a blind audio LM fails in two minutes,
+                # not two hours. The first clip is a random benchmark clip; an empty list
+                # there is far likelier to be a broken input than a genuinely silent clip.
+                sys.exit(f"[ref] listen returned nothing for the first clip {name}; "
+                         f"last reply was {reply!r} -- input or model misconfigured")
     del mdl, proc
     _free()
     return out
 
 
 def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
-               decoys: int = 64) -> Dict[str, List[str]]:
-    """Keep the items the audio actually resembles (CLAP), per clip."""
+               decoys: int = 64, top: int = AUDIO_RANK_TOP) -> Dict[str, List[str]]:
+    """Keep the items this clip's audio actually resembles (CLAP), per clip.
+
+    The gate is a rank over AUDIO decoys: an item survives on clip c if, among all the
+    benchmark clips' audio embeddings, c's is in the top ``top`` matches for the item's
+    text and the cosine is positive (see AUDIO_RANK_TOP for why 20, not 5). This asks
+    whether the label fits THIS audio better than random audio, which is invariant to
+    CLAP's small absolute cosines on ambient sound. The first form of this gate, a
+    mean + 2 sigma bar over 64 random AudioSet text decoys, kept 98 of 678 items and left
+    34 of 83 clips empty (job 28943024) against 25 % of clips tagged no_ambient by the
+    annotator: a reference biased toward silence, the mirror image of the circular bias
+    this reference exists to remove. The text-decoy verdict is still computed and logged
+    as a diagnostic (a '+' after the score), never as a gate. (Review, 2026-09-14.)
+    """
     import librosa
     import torch
     from transformers import ClapModel, ClapProcessor
@@ -145,28 +249,43 @@ def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
                        .read_text("utf-8"))
     pool = sorted(set(names.values()))
     rng = np.random.default_rng(0)
+
+    # every clip's audio embedding once; they are the decoys for one another
+    order = list(clips)
+    embs = []
+    with torch.no_grad():
+        for name in order:
+            audio, _ = librosa.load(str(clips[name]), sr=48000, mono=True)
+            a = _with_audio(proc, [audio], 48000).to(device)
+            ea = _as_tensor(mdl.get_audio_features(**a))   # ModelOutput on transformers 5
+            embs.append(ea / ea.norm(dim=-1, keepdim=True))
+    E = torch.cat(embs, 0)                                  # (clips, d)
+    top = min(top, max(1, len(order)))
+
     out = {}
-    for name, wav in clips.items():
-        items = heard.get(name, [])
+    for ci, name in enumerate(order):
+        # speech tags leak through the stem pass too (Demucs leaves residue); the
+        # reference is about the non-speech soundtrack by definition of the task
+        items = [it for it in _split_items(heard.get(name, [])) if not _is_speech_tag(it)]
         if not items:
             out[name] = []
             continue
-        audio, _ = librosa.load(str(wav), sr=48000, mono=True)
         with torch.no_grad():
-            a = proc(audios=[audio], sampling_rate=48000, return_tensors="pt").to(device)
-            ea = mdl.get_audio_features(**a)
-            ea = ea / ea.norm(dim=-1, keepdim=True)
             texts = [f"the sound of {it}" for it in items]
             dec = [f"the sound of {pool[i].lower()}" for i in rng.choice(len(pool), decoys, replace=False)]
             t = proc(text=texts + dec, return_tensors="pt", padding=True).to(device)
-            et = mdl.get_text_features(**t)
+            et = _as_tensor(mdl.get_text_features(**t))
             et = et / et.norm(dim=-1, keepdim=True)
-            sims = (ea @ et.T)[0].cpu().numpy()
-        s_items, s_dec = sims[:len(items)], sims[len(items):]
-        bar = float(s_dec.mean() + CLAP_MARGIN * s_dec.std())
-        kept = [it for it, sc in zip(items, s_items) if sc > bar]
-        print(f"       [ref] verify {name}: bar={bar:.3f} " +
-              " ".join(f"{it[:24]}={sc:.3f}{'*' if sc > bar else ''}" for it, sc in zip(items, s_items)),
+            sims_all = (E @ et.T).cpu().numpy()             # (clips, items + decoys)
+        s_items = sims_all[ci, :len(items)]
+        s_dec = sims_all[ci, len(items):]
+        bar = float(s_dec.mean() + CLAP_MARGIN * s_dec.std())   # diagnostic only
+        # rank of this clip's audio among all clips, for each item's text (1 = best)
+        ranks = [int((sims_all[:, j] > sims_all[ci, j]).sum()) + 1 for j in range(len(items))]
+        kept = [it for it, r, sc in zip(items, ranks, s_items) if r <= top and sc > 0]
+        print(f"       [ref] verify {name}: text-bar={bar:.3f} " +
+              " ".join(f"{it[:24]}={sc:.3f}/r{r}{'*' if r <= top and sc > 0 else ''}{'+' if sc > bar else ''}"
+                       for it, sc, r in zip(items, s_items, ranks)),
               flush=True)
         out[name] = kept
     del mdl, proc
@@ -208,6 +327,57 @@ def look_all(videos: Dict[str, Path], device: str, n_frames: int = 6) -> Dict[st
     return out
 
 
+def look_per_sound(videos: Dict[str, Path], verified: Dict[str, List[str]], device: str,
+                   n_frames: int = 6) -> Dict[str, Dict[str, Optional[str]]]:
+    """clip -> {sound: name of the visible thing making it, or None}.
+
+    Replaces list-and-match: the list step answered with one word per clip ('Car',
+    'Pole', 'kiss') and the MiniLM match then called almost every sound unseen, so the
+    reference said "the viewer would miss X" on 15 of 25 seen_ambient clips and agreed
+    with the human silence decision on 55 % of clips -- chance. One symmetric question
+    per verified sound, with a forced name, answered by a VLM that is not the system's.
+    Every answer is logged verbatim. (Review, 2026-09-14.)
+    """
+    import torch
+    from transformers import AutoProcessor, Idefics3ForConditionalGeneration
+    from src.stage2_video_understanding import _sample_frames
+    proc = AutoProcessor.from_pretrained(LOOK_MODEL)
+    mdl = Idefics3ForConditionalGeneration.from_pretrained(
+        LOOK_MODEL, torch_dtype=torch.bfloat16 if device == "cuda" else torch.float32,
+        device_map="auto" if device == "cuda" else None).eval()
+    out: Dict[str, Dict[str, Optional[str]]] = {}
+    for name, video in videos.items():
+        sounds = verified.get(name, [])
+        out[name] = {}
+        if not sounds:
+            continue
+        frames = _sample_frames(Path(video), n_frames)
+        if not frames:
+            out[name] = {snd: None for snd in sounds}
+            continue
+        for snd in sounds:
+            content = [{"type": "image"} for _ in frames] + [
+                {"type": "text", "text": SEEN_PROMPT.format(sound=snd)}]
+            text = proc.apply_chat_template([{"role": "user", "content": content}],
+                                            add_generation_prompt=True)
+            inputs = proc(text=text, images=frames, return_tensors="pt").to(mdl.device)
+            with torch.no_grad():
+                gen = mdl.generate(**inputs, max_new_tokens=24, do_sample=False)
+            reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
+                                      skip_special_tokens=True)[0]
+            reply = reply.split("Assistant:")[-1].strip().strip("`").strip()
+            low = reply.lower()
+            seen: Optional[str] = None
+            if low.startswith("visible") and "not visible" not in low[:12]:
+                seen = reply.split(":", 1)[1].strip(" `.") if ":" in reply else reply
+                seen = seen or "unnamed"
+            out[name][snd] = seen
+            print(f"       [ref] seen? {name} | {snd[:40]} -> {reply!r}", flush=True)
+    del mdl, proc
+    _free()
+    return out
+
+
 # ----------------------------------------------------------------------------- write
 def _matches(sounds: List[str], visible: List[str], device: str):
     """For each sound, the best cosine against the visible list (sentence embeddings)."""
@@ -223,7 +393,10 @@ def _matches(sounds: List[str], visible: List[str], device: str):
 
 
 def write_all(sounds: Dict[str, List[str]], visible: Dict[str, List[str]],
-              transcripts: Dict[str, str], device: str) -> Dict[str, dict]:
+              transcripts: Dict[str, str], device: str,
+              seen: Optional[Dict[str, Dict[str, Optional[str]]]] = None) -> Dict[str, dict]:
+    """``seen`` (look_per_sound) decides per sound; without it the older list-and-match
+    on ``visible`` is used, kept so the first pass can be re-run for comparison."""
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     mdl = tok = used = None
@@ -242,9 +415,16 @@ def write_all(sounds: Dict[str, List[str]], visible: Dict[str, List[str]],
     print(f"       [ref] writer: {used}", flush=True)
     out = {}
     for name in sounds:
-        snd, vis = sounds[name], visible.get(name, [])
-        sims = _matches(snd, vis, device)
-        unmatched = [s for s, c in zip(snd, sims) if c < MATCH_TAU]
+        snd = sounds[name]
+        if seen is not None:
+            per = seen.get(name, {})
+            vis = sorted({v for v in per.values() if v})
+            sims = [1.0 if per.get(s_) else 0.0 for s_ in snd]
+            unmatched = [s_ for s_ in snd if not per.get(s_)]
+        else:
+            vis = visible.get(name, [])
+            sims = _matches(snd, vis, device)
+            unmatched = [s_ for s_, c in zip(snd, sims) if c < MATCH_TAU]
         if not snd or not unmatched:
             out[name] = {"reference": NOTHING_MISSING, "sounds": snd, "visible": vis,
                          "matches": sims, "writer": used, "rule": "all sounds visible" if snd else "no sounds"}
@@ -273,13 +453,16 @@ def build_all(clips: Dict[str, Path], videos: Dict[str, Path], transcripts: Dict
     """All clips through the four steps, each model resident once. Resumable per step."""
     state = json.loads(cache.read_text("utf-8")) if cache.exists() else {}
     def save():
-        cache.write_text(json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
+        tmp = cache.with_suffix(".tmp")   # atomic: a kill mid-write leaves the old cache
+        tmp.write_text(json.dumps(state, indent=1, ensure_ascii=False), encoding="utf-8")
+        tmp.replace(cache)
     if "heard" not in state:
         state["heard"] = listen_all(clips, device); save()
     if "verified" not in state:
         state["verified"] = verify_all(clips, state["heard"], device); save()
-    if "visible" not in state:
-        state["visible"] = look_all(videos, device); save()
+    if "seen" not in state:
+        state["seen"] = look_per_sound(videos, state["verified"], device); save()
     if "references" not in state:
-        state["references"] = write_all(state["verified"], state["visible"], transcripts, device); save()
+        state["references"] = write_all(state["verified"], state.get("visible", {}), transcripts,
+                                        device, seen=state["seen"]); save()
     return state["references"]

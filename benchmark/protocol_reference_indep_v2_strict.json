@@ -1,0 +1,2864 @@
+{
+ "heard": {
+  "ambient_citywalk_cairo_834.mp4": [
+   "crowd",
+   "noise",
+   "hubbub",
+   "speech",
+   "male singing",
+   "clock ticking",
+   "bell ringing",
+   "surface contact",
+   "scrape",
+   "human voice",
+   "noise, background noise",
+   "clock, clicking, tick",
+   "car horn honking",
+   "crowd noise",
+   "vehicle horn honking",
+   "generic impact sounds",
+   "laughter"
+  ],
+  "ambient_citywalk_nyc_1689.mp4": [
+   "mechanisms",
+   "animal sounds",
+   "clock ticking",
+   "surface contact",
+   "generic impact sounds",
+   "clock clicking",
+   "ambiguous sounds, generic impact sounds",
+   "surface contact, scrape",
+   "human voice, sigh",
+   "arrow hitting with a thump or thud"
+  ],
+  "ambient_citywalk_nyc_2627.mp4": [
+   "traffic noise",
+   "door tap",
+   "mechanisms",
+   "motor vehicle (road), bus",
+   "traffic noise - roadway noise",
+   "door impact",
+   "engine, accelerating - revving - vroom",
+   "clock, clicking, tick"
+  ],
+  "ambient_desert_wind_74.mp4": [],
+  "ambient_harbour_boats_1449.mp4": [
+   "laughter",
+   "mechanical fan",
+   "generic impact sounds",
+   "surface contact"
+  ],
+  "ambient_harbour_boats_724.mp4": [
+   "wind",
+   "generic impact sounds",
+   "surface contact",
+   "bird vocalization",
+   "clock ticking"
+  ],
+  "ambient_market_marrakech_3102.mp4": [
+   "animal",
+   "bird vocalization",
+   "background noise",
+   "generic impact sounds",
+   "surface contact",
+   "motor vehicle (road), bus",
+   "engine accelerating - revving - vroom",
+   "clock ticking",
+   "crowd",
+   "noise",
+   "horse and clicking",
+   "horse's hooves on ground"
+  ],
+  "ambient_nature_rainforest_2179.mp4": [
+   "music",
+   "water stream",
+   "bird vocalization",
+   "water, stream",
+   "wild animals, insect",
+   "clock, clicking, tick"
+  ],
+  "ambient_nature_rainforest_7629.mp4": [],
+  "ambient_snow_walk_930.mp4": [
+   "rail transport, subway - metro - underground",
+   "engine accelerating - revving - vroom",
+   "clock ticking",
+   "motor vehicle (road), bus",
+   "rail transport, train",
+   "human voice, laughter",
+   "clock, clicking, tick"
+  ],
+  "ambient_temple_india_2877.mp4": [],
+  "ambient_transport_subway_10800.mp4": [
+   "rail transport",
+   "train",
+   "clicking, clickety-clack",
+   "source-ambiguous sounds",
+   "generic impact sounds",
+   "wind, microphone, wind noise (microphone)",
+   "rail transport, train",
+   "train wheels squealing"
+  ],
+  "ambient_weather_storm_16200.mp4": [],
+  "ambient_weather_storm_7200.mp4": [],
+  "as_car_alarm_VC9nqtFU.mp4": [
+   "car horn",
+   "distant murmuring",
+   "car horn honking",
+   "clock ticking",
+   "motor vehicle (road), bus",
+   "car horn - honking, alarm, vehicle horn - car horn",
+   "clock, clicking, tick",
+   "car alarm",
+   "vehicle喇叭 - car horn - honking",
+   "background noise",
+   "generic impact sounds",
+   "surface contact"
+  ],
+  "as_church_bell_pJRAWkLM.mp4": [
+   "clock clicking",
+   "bell ringing",
+   "background noise",
+   "bell",
+   "surface contact",
+   "crowd murmuring",
+   "noise, background noise",
+   "clock, clicking, tick",
+   "human voice, shout"
+  ],
+  "as_explosion_XJ8lc3I6.mp4": [
+   "explosion, gunshot - gunfire, artillery fire",
+   "video game sound",
+   "door, generic impact sounds, tap",
+   "human locomotion, walk - footsteps",
+   "gunshot - gunfire, artillery fire",
+   "source-ambiguous sounds, generic impact sounds",
+   "clock, clicking, tick",
+   "other sourceless, sound effect",
+   "explosion",
+   "gunfire",
+   "gunshot - gunfire, machine gun"
+  ],
+  "as_explosion_eEdaLHC0.mp4": [
+   "explosion, thunderstorm, video game sound",
+   "human voice, sigh"
+  ],
+  "as_fire_alarm_kGKZ0YK4.mp4": [
+   "mechanisms",
+   "surface contact",
+   "generic impact sounds",
+   "clock ticking",
+   "alarm",
+   "noise, background noise",
+   "fire"
+  ],
+  "as_glass_EiqYND8G.mp4": [
+   "human voice",
+   "crowd noise",
+   "breathing",
+   "surface contact"
+  ],
+  "as_glass_oHil9Ip_.mp4": [
+   "music",
+   "glass chinking or clinking",
+   "mechanisms",
+   "clock ticking",
+   "generic impact sounds",
+   "surface contact",
+   "glass",
+   "tap",
+   "bell"
+  ],
+  "b3_airport_terminal.mp4": [
+   "music",
+   "generic impact sounds, tap",
+   "video game sound, gunshot - gunfire, artillery fire",
+   "vehicle, motor vehicle (road), car",
+   "human voice, singing",
+   "wind, microphone, wind noise (microphone)",
+   "car",
+   "tire squeal"
+  ],
+  "b3_aviary_birds.mp4": [],
+  "b3_bakery_morning.mp4": [],
+  "b3_barbershop.mp4": [],
+  "b3_bat_cave.mp4": [
+   "water",
+   "liquid",
+   "dripping",
+   "clock",
+   "clicking",
+   "tick"
+  ],
+  "b3_botanic_garden.mp4": [],
+  "b3_butcher_market.mp4": [
+   "mechanisms",
+   "generic impact sounds",
+   "surface contact",
+   "clock ticking",
+   "bird vocalization",
+   "background noise",
+   "door",
+   "arrow with generic impact sounds"
+  ],
+  "b3_carnival_parade.mp4": [
+   "music",
+   "human voice",
+   "whistling",
+   "explosion, fireworks",
+   "background noise, distortion",
+   "whistle",
+   "noise, background noise"
+  ],
+  "b3_chicken_coop.mp4": [
+   "wind",
+   "generic impact sounds",
+   "surface contact",
+   "mechanisms",
+   "clock ticking"
+  ],
+  "b3_construction_site.mp4": [
+   "traffic noise, car",
+   "brief tone, beep - bleep",
+   "wind noise, microphone",
+   "truck reversing beeps",
+   "heavy engine (low frequency)",
+   "generic impact sounds",
+   "surface contact scraping",
+   "mechanisms",
+   "ambiguous sounds, generic impact sounds",
+   "surface contact, scrape",
+   "motor vehicle (road), bus",
+   "clock, clicking, tick",
+   "wind, microphone, wind noise (microphone)"
+  ],
+  "b3_cow_farm.mp4": [
+   "human group actions, noise",
+   "mechanisms, printer",
+   "noise background",
+   "surface contact",
+   "channel - environment and background",
+   "generic impact sounds",
+   "human group actions, noise, hubbub - speech noise"
+  ],
+  "b3_crossing_bells.mp4": [
+   "wind",
+   "rail transport, train",
+   "clicking, clickety-clack",
+   "train wheels squealing"
+  ],
+  "b3_favela_rio.mp4": [
+   "horse and clicking",
+   "horse's hooves",
+   "wind",
+   "rail transport, train",
+   "clicking, clickety-clack",
+   "train wheels squealing",
+   "crowd",
+   "noise",
+   "bird vocalization",
+   "generic impact sounds",
+   "wind noise (microphone)",
+   "human voice, laughter",
+   "mechanisms, ratchet - pawl",
+   "wind, microphone, wind noise (microphone)"
+  ],
+  "b3_flea_market.mp4": [
+   "wind",
+   "microphone wind",
+   "surface contact",
+   "generic impact sounds",
+   "laughter",
+   "vehicle",
+   "animal",
+   "bird vocalization",
+   "wind noise (microphone)"
+  ],
+  "b3_glacier_hike.mp4": [
+   "wind, microphone, wind noise (microphone), horse and clicking, clip-clop, natural sounds, fire crackling",
+   "wind",
+   "microphone wind noise",
+   "generic impact sounds",
+   "surface contact",
+   "clock ticking",
+   "horse and clicking",
+   "wind noise (microphone)",
+   "bird vocalization"
+  ],
+  "b3_golf_course.mp4": [
+   "bird vocalization",
+   "background noise",
+   "generic impact sounds",
+   "respiratory sounds, breathing",
+   "human voice",
+   "mechanisms",
+   "ambiguous contact",
+   "surface contact",
+   "clock ticking"
+  ],
+  "b3_ia_0001_let_us_break_bread_toge_1.mp4": [
+   "music",
+   "clock ticking",
+   "mechanisms",
+   "door",
+   "generic impact sounds",
+   "surface contact"
+  ],
+  "b3_ia_destinationamerica5cityofthe_0.mp4": [
+   "music",
+   "clock ticking",
+   "mechanisms",
+   "surface contact noise",
+   "bell ringing",
+   "piano playing",
+   "clock clicking tick",
+   "surface contact scrape"
+  ],
+  "b3_ia_theveryremarkableyamatofamil_0.mp4": [],
+  "b3_ia_youtube_skxtz9foauw_0.mp4": [
+   "mechanisms",
+   "camera",
+   "noise, background noise",
+   "breathing, gasp",
+   "surface contact, scrape",
+   "surface contact",
+   "generic impact sounds",
+   "clock ticking",
+   "mechanisms, clock",
+   "sounds of things, liquid",
+   "sounds of things, mechanisms",
+   "source-ambiguous sounds, generic impact sounds",
+   "human sounds, laughter",
+   "human sounds, sigh"
+  ],
+  "b3_jungle_hike.mp4": [],
+  "b3_kayak_river.mp4": [
+   "water",
+   "bird vocalization",
+   "background noise",
+   "stream",
+   "wild animals",
+   "insect",
+   "frog",
+   "generic impact sounds",
+   "surface contact"
+  ],
+  "b3_laundromat.mp4": [
+   "motor vehicle (road), bus",
+   "music",
+   "clock, clicking, tick",
+   "train",
+   "rail transport",
+   "clicking, clickety-clack",
+   "engine, accelerating - revving - vroom",
+   "sounds of things, mechanisms",
+   "human sounds, laughter",
+   "human voice, singing"
+  ],
+  "b3_logging_forest.mp4": [
+   "light engine (high frequency), chainsaw",
+   "mechanisms"
+  ],
+  "b3_mountain_stream.mp4": [
+   "water",
+   "stream",
+   "liquid",
+   "gurgling",
+   "pump",
+   "splash",
+   "water, stream",
+   "noise, background noise"
+  ],
+  "b3_pet_shop.mp4": [],
+  "b3_wm_road_traffic_cobblestone_road_we.mp4": [
+   "bird vocalization",
+   "motor vehicle (road)",
+   "generic impact sounds",
+   "engine accelerating - revving - vroom",
+   "traffic noise",
+   "clock ticking",
+   "traffic noise, car",
+   "generic impact sounds, tap",
+   "bird vocalization, bird call - bird song",
+   "wind noise, microphone",
+   "animal, bird vocalization",
+   "clock, clicking, tick"
+  ],
+  "bell_miami.webm": [
+   "bell",
+   "wind",
+   "vehicle, motor vehicle (road)",
+   "clock, clicking, tick"
+  ],
+  "birds_forest.mp4": [
+   "bird vocalization, bird call - bird song",
+   "alarm, foghorn",
+   "natural sounds, wind",
+   "clock, clicking, tick"
+  ],
+  "ev_car_alarm_street.mp4": [
+   "car alarm",
+   "bird vocalization",
+   "generic impact sounds",
+   "surface contact",
+   "vehicle sounds",
+   "background noise",
+   "clock ticking",
+   "music",
+   "alarm",
+   "bird vocalization (bird call - bird song)"
+  ],
+  "helicopter_ossetia.mp4": [
+   "music",
+   "video game sound",
+   "other sourceless, sound effect",
+   "music: 8.67-10.00, video game sound: 8.67-10.00, explosion: 8.92-10.00, other sourceless, sound effect: 8.95-9.43"
+  ],
+  "kit_piano.mp4": [],
+  "london_protest_01.mp4": [
+   "crowd chattering",
+   "distant murmuring",
+   "horn honking at intervals (0.38-2.75, 4.96-6.37, 7.79-9.39)",
+   "clock ticking at various times (2.13-2.22, 3.06-3.12, 3.89-3.97, 4.1",
+   "horn honking loudly"
+  ],
+  "lx_rain_and_thunder_-3-4qmW.mp4": [
+   "water, rain",
+   "thunderstorm, thunder",
+   "wind, microphone, wind noise (microphone)"
+  ],
+  "ly_ambulance_(siren)_-yPSgCn.mp4": [
+   "fire engine siren",
+   "motor vehicle (road)",
+   "truck",
+   "clock ticking",
+   "door tap",
+   "vehicle, motor vehicle (road), bus",
+   "wind, microphone, wind noise (microphone)",
+   "clock, clicking, tick",
+   "emergency vehicle siren, fire engine - fire truck (siren)",
+   "motor vehicle (road), car, alarm, vehicle horn - car horn - honking",
+   "motor vehicle (road), bus",
+   "alarm, siren",
+   "door, generic impact sounds, tap",
+   "music"
+  ],
+  "ly_applause_62ZYD0u.mp4": [
+   "human group actions, noise, laughter",
+   "clock, clicking, tick"
+  ],
+  "ly_helicopter_-v62cK1.mp4": [
+   "helicopter",
+   "wind",
+   "aircraft engine, propeller - airscrew",
+   "brief tone, beep - bleep",
+   "generic impact sounds, tap"
+  ],
+  "ly_traffic_noise_roadway_nois_G5bAKWq.mp4": [
+   "truck horn",
+   "alarm",
+   "air horn - truck horn",
+   "motor vehicle (road)",
+   "car",
+   "engine accelerating - revving - vroom",
+   "vehicle喇叭 - car horn - honking",
+   "background noise",
+   "generic impact sounds",
+   "surface contact",
+   "beeping",
+   "traffic noise, car horn honking, background noise, source-ambiguous sounds, generic impact sounds, clock ticking"
+  ],
+  "mc_earthquake_disaster.mp4": [
+   "music",
+   "video game sound",
+   "explosion",
+   "fire",
+   "other sourceless, sound effect",
+   "gunshot - gunfire, artillery fire",
+   "sigh"
+  ],
+  "mc_fight_bar_scene.mp4": [
+   "video game sound",
+   "music",
+   "glass shatter",
+   "punch",
+   "thump - thud",
+   "glass shattering",
+   "other sourceless, sound effect",
+   "horse neighing",
+   "dog barking",
+   "laughter",
+   "noise, background noise",
+   "whip",
+   "sigh",
+   "screaming",
+   "fighting"
+  ],
+  "mc_snow_scene.mp4": [
+   "water",
+   "wind noise (microphone)",
+   "explosion",
+   "eruption",
+   "human voice",
+   "sigh",
+   "animal",
+   "bird vocalization",
+   "background noise",
+   "generic impact sounds",
+   "surface contact",
+   "wind",
+   "wild animals, insect",
+   "clock ticking",
+   "mechanisms",
+   "surface contact, scrape",
+   "human voice, sigh",
+   "horse and clicking, clickety-clack",
+   "dog, bark"
+  ],
+  "movie_blueplanet_115.mp4": [
+   "music",
+   "video game sound",
+   "explosion",
+   "laughter"
+  ],
+  "mv_arrest_street_scene.mp4": [
+   "wind",
+   "microphone wind",
+   "generic impact sounds",
+   "surface contact",
+   "footsteps",
+   "horse and clicking sounds",
+   "human voice",
+   "whistling",
+   "mechanisms",
+   "animal vocalization"
+  ],
+  "mv_basement_scene_noise.mp4": [
+   "animal",
+   "insect",
+   "bird vocalization",
+   "background noise",
+   "generic impact sounds",
+   "wind",
+   "alarm",
+   "noise, background noise",
+   "clock, clicking, tick",
+   "mechanisms",
+   "clock clicking",
+   "surface contact",
+   "music",
+   "sound effect"
+  ],
+  "mv_detective_crime_scene.mp4": [
+   "telephone",
+   "alarm",
+   "mechanisms",
+   "surface contact",
+   "sound effect",
+   "video game sound",
+   "other sourceless, sound effect",
+   "door, generic impact sounds",
+   "arrow, thump - thud",
+   "television sound reproduction",
+   "clock clicking (tick)",
+   "surface contact, scrape"
+  ],
+  "mv_funeral_rain_scene.mp4": [
+   "music: 0.00-10.00, rain: 0.00-10.00, video game sound: 0.00-10.00, onomatopoeia clicking: 5.46-5.53"
+  ],
+  "mv_plane_emergency.mp4": [
+   "music",
+   "noise",
+   "background noise",
+   "generic impact sounds",
+   "arrow hitting with a thump sound",
+   "clock ticking",
+   "surface contact noises",
+   "mechanisms",
+   "clock clicking",
+   "surface contact",
+   "video game sound",
+   "other sourceless, sound effect",
+   "mechanisms, cash register",
+   "generic impact sounds, tap",
+   "human voice, sigh"
+  ],
+  "mv_police_raid_scene.mp4": [
+   "sound effect",
+   "music",
+   "noise, background noise",
+   "generic impact sounds",
+   "surface contact",
+   "video game sound",
+   "other sourceless, sound effect",
+   "glass shattering",
+   "footsteps"
+  ],
+  "mv_protest_scene_movie.mp4": [
+   "mechanisms",
+   "ambiguous sounds, generic impact sounds",
+   "surface contact, scrape",
+   "human voice, sigh",
+   "baby cry",
+   "glass shatter",
+   "crowd cheer"
+  ],
+  "mv_storm_scene_house.mp4": [
+   "door",
+   "generic impact sounds",
+   "background noise",
+   "arrow with generic impact sounds",
+   "wind",
+   "human voice, laughter",
+   "music",
+   "motor vehicle (road), car",
+   "engine accelerating - revving - vroom",
+   "wind, microphone, wind noise (microphone)",
+   "alarm, siren",
+   "natural sounds, fire",
+   "mechanisms, camera, clock ticking",
+   "video game sound",
+   "explosion",
+   "other sourceless, sound effect",
+   "sigh"
+  ],
+  "mv_tornado_scene.mp4": [
+   "wind",
+   "microphone wind",
+   "generic impact sounds",
+   "clock ticking",
+   "animal sounds (unknown)",
+   "music"
+  ],
+  "mv_war_bombardment.mp4": [
+   "video game sound",
+   "gunshot - gunfire, artillery fire",
+   "explosion",
+   "gunshot - gunfire, machine gun",
+   "human voice, sigh"
+  ],
+  "oc_distant_train_valley.mp4": [
+   "whistle",
+   "wind noise (microphone)"
+  ],
+  "oc_ice_cracking_lake.mp4": [
+   "wind",
+   "microphone",
+   "generic impact sounds",
+   "surface contact",
+   "human locomotion, walk - footsteps",
+   "wind noise (microphone)",
+   "onomatopoeia clicking",
+   "surface contact scraping",
+   "wind noise ( microphone)",
+   "microphone wind noise",
+   "footsteps on surface",
+   "bird vocalization",
+   "tree leaves rustle"
+  ],
+  "oc_pov_dry_leaves.mp4": [
+   "natural sounds",
+   "wind",
+   "microphone",
+   "onomatopoeia: rustle",
+   "human voice, footsteps on gravel, bird vocalization, generic impact sounds, surface contact with scraping",
+   "microphone, wind noise (microphone)"
+  ],
+  "rain_road.webm": [
+   "water",
+   "rain",
+   "thunderstorm",
+   "wind",
+   "water, stream",
+   "natural sounds, wind",
+   "clock, clicking, tick"
+  ],
+  "station_kwasa2.mp4": [
+   "mechanisms",
+   "generic impact sounds",
+   "surface contact",
+   "bell",
+   "wind noise (microphone)",
+   "animal sounds (domesticated) - dog barking"
+  ],
+  "un_airplane_flyby_1FOKvagR.mp4": [
+   "wind",
+   "generic impact sounds",
+   "microphone wind noise",
+   "aircraft engine",
+   "clock ticking",
+   "aircraft",
+   "wind noise (microphone)"
+  ],
+  "un_airplane_flyby_5_aRF2s3.mp4": [],
+  "un_ambulance_siren_3qIzU14N.mp4": [
+   "wind, microphone, wind noise (microphone), motor vehicle (road), emergency vehicle, engine accelerating - revving - vroom, clock ticking",
+   "fire engine - fire truck (siren), wind, microphone, wind noise (microphone)",
+   "emergency vehicle siren, wind noise (microphone), natural wind sounds, generic impact sounds"
+  ],
+  "un_driving_motorcycle_4O3bZRYO.mp4": [
+   "truck horn",
+   "alarm",
+   "background noise",
+   "animal",
+   "motor vehicle (road)",
+   "motorcycle",
+   "human voice",
+   "laughter",
+   "distant murmuring",
+   "motor vehicle (road), motorcycle",
+   "engine accelerating - revving - vroom"
+  ],
+  "un_driving_motorcycle_DgdHSmwA.mp4": [
+   "wind",
+   "microphone wind",
+   "generic impact sounds",
+   "aircraft engine",
+   "propeller - airscrew",
+   "crowd",
+   "noise",
+   "laughter",
+   "respiratory sounds, breathing",
+   "generic impact sounds, tap",
+   "arrow hitting with a thump sound",
+   "onomatopoeia, rustle"
+  ],
+  "un_engine_knocking_3UPXKVOz.mp4": [
+   "motor vehicle (road), car",
+   "engine, accelerating - revving - vroom",
+   "engine, medium engine (mid frequency)",
+   "engine, medium engine (mid frequency), source-ambiguous sounds, generic impact sounds, clock ticking"
+  ],
+  "un_hair_dryer_drying_WWu24rJs.mp4": [
+   "mechanisms",
+   "camera",
+   "noise, background noise",
+   "clock, clicking, tick",
+   "clock clicking",
+   "surface contact",
+   "respiratory sounds, breathing",
+   "surface contact, scrape",
+   "domestic sounds - home sounds, hair dryer",
+   "clock clicking tick",
+   "surface contact scrape"
+  ],
+  "un_people_clapping__bAVmK7n.mp4": [
+   "male singing",
+   "music",
+   "laughter",
+   "respiratory sounds, breathing",
+   "muffled sound, generic impact sounds",
+   "screaming, angry shouting",
+   "human voice, singing"
+  ],
+  "un_people_crowd_1YGJDa3a.mp4": [
+   "alarm",
+   "mechanisms",
+   "clock clicking tick",
+   "generic impact sounds",
+   "explosion fireworks",
+   "alarm clock",
+   "surface contact",
+   "noise, background noise",
+   "clock, clicking, tick",
+   "horse, clicking, clip-clop"
+  ],
+  "un_police_car_siren_-Pg4vVPs.mp4": [
+   "motor vehicle (road), motorcycle",
+   "natural sounds, wind",
+   "human voice, shout",
+   "aircraft engine, propeller - airscrew",
+   "bird, bird vocalization - bird call - bird song",
+   "wind, microphone, wind noise (microphone)",
+   "motor vehicle (road), bus",
+   "brief tone, beep - bleep"
+  ],
+  "un_police_car_siren_-lyPnABQ.mp4": [
+   "fire engine siren",
+   "truck horn",
+   "emergency vehicle siren",
+   "natural wind",
+   "video game sound",
+   "motor vehicle (road), bus",
+   "clock, clicking, tick",
+   "fire engine siren, fire truck siren",
+   "natural sounds, wind",
+   "video game sound, gunshot - gunfire, artillery fire",
+   "other sourceless, sound effect",
+   "fire engine - fire truck (siren), engine accelerating - revving - vroom, clock ticking"
+  ],
+  "un_police_car_siren_WEROVWDp.mp4": [
+   "motor vehicle (road), car",
+   "video game sound",
+   "other sourceless, sound effect",
+   "emergency vehicle, siren, police car siren",
+   "music",
+   "race car - auto racing",
+   "engine accelerating - revving - vroom",
+   "clock, clicking, tick"
+  ],
+  "un_raining_71I9l62a.mp4": [
+   "motor vehicle (road), bus",
+   "engine, accelerating - revving - vroom",
+   "wind, microphone, wind noise (microphone)",
+   "engine accelerating - revving - vroom",
+   "clock ticking"
+  ],
+  "un_thunder_08A9CKS5.mp4": [],
+  "un_thunder_1gDcPnV9.mp4": [
+   "wind",
+   "water",
+   "wild animals (insect)",
+   "natural sounds (wind)",
+   "liquid splashing - splattering",
+   "mechanisms",
+   "clock ticking",
+   "water, rain",
+   "mechanisms, clock, clicking, tick",
+   "natural sounds, wind"
+  ],
+  "un_train_horning_KKFdi5WQ.mp4": [
+   "bird vocalization",
+   "insect sounds",
+   "wind noise (microphone)",
+   "natural wind sounds",
+   "vehicle, motor vehicle (road)",
+   "insect noise",
+   "motor vehicle (road)",
+   "traffic noise - roadway noise",
+   "clock ticking",
+   "rail transport, train",
+   "clicking, clickety-clack"
+  ],
+  "un_wind_noise_-z9Iv2Qj.mp4": [
+   "boat - water vehicle, motorboat - speedboat, natural sounds, wind, generic impact sounds, tap, wind noise (microphone)",
+   "motor vehicle (road), bus",
+   "clock, clicking, tick",
+   "engine, accelerating - revving - vroom",
+   "mechanisms",
+   "generic impact sounds",
+   "surface contact"
+  ],
+  "voa_worldseries.mp4": [
+   "wind",
+   "microphone wind noise",
+   "natural sounds, wind",
+   "generic impact sounds, tap",
+   "human group actions, noise, crowd",
+   "clock, clicking, tick",
+   "crowd cheering",
+   "human voice, sigh",
+   "mechanisms, camera"
+  ],
+  "waterfall_kawaida_01.mp4": [],
+  "waves_herzliya.webm": [],
+  "wc_japanese_drama.mp4": [
+   "music, video game sound, other sourceless, sound effect, water, rain"
+  ],
+  "wc_korean_thriller.mp4": [
+   "car horn honking\\n",
+   "motor vehicle going by\\n",
+   "car tire squealing",
+   "video game sound",
+   "explosion",
+   "other sourceless, sound effect",
+   "wind noise (microphone)",
+   "fire",
+   "vehicle, motor vehicle (road)",
+   "tire squeal",
+   "gunshot - gunfire, artillery fire",
+   "other sourceless",
+   "sound effect"
+  ]
+ },
+ "verified": {
+  "ambient_citywalk_cairo_834.mp4": [],
+  "ambient_citywalk_nyc_1689.mp4": [
+   "mechanisms"
+  ],
+  "ambient_citywalk_nyc_2627.mp4": [
+   "engine, accelerating - revving - vroom"
+  ],
+  "ambient_desert_wind_74.mp4": [],
+  "ambient_harbour_boats_1449.mp4": [],
+  "ambient_harbour_boats_724.mp4": [],
+  "ambient_market_marrakech_3102.mp4": [
+   "engine accelerating - revving - vroom"
+  ],
+  "ambient_nature_rainforest_2179.mp4": [],
+  "ambient_nature_rainforest_7629.mp4": [],
+  "ambient_snow_walk_930.mp4": [
+   "engine accelerating - revving - vroom"
+  ],
+  "ambient_temple_india_2877.mp4": [],
+  "ambient_transport_subway_10800.mp4": [
+   "rail transport",
+   "train",
+   "wind, microphone, wind noise (microphone)",
+   "rail transport, train",
+   "train wheels squealing"
+  ],
+  "ambient_weather_storm_16200.mp4": [],
+  "ambient_weather_storm_7200.mp4": [],
+  "as_car_alarm_VC9nqtFU.mp4": [],
+  "as_church_bell_pJRAWkLM.mp4": [],
+  "as_explosion_XJ8lc3I6.mp4": [
+   "explosion, gunshot - gunfire, artillery fire",
+   "gunshot - gunfire, artillery fire",
+   "explosion",
+   "gunshot - gunfire, machine gun"
+  ],
+  "as_explosion_eEdaLHC0.mp4": [
+   "explosion, thunderstorm, video game sound"
+  ],
+  "as_fire_alarm_kGKZ0YK4.mp4": [
+   "mechanisms",
+   "alarm"
+  ],
+  "as_glass_EiqYND8G.mp4": [],
+  "as_glass_oHil9Ip_.mp4": [],
+  "b3_airport_terminal.mp4": [],
+  "b3_aviary_birds.mp4": [],
+  "b3_bakery_morning.mp4": [],
+  "b3_barbershop.mp4": [],
+  "b3_bat_cave.mp4": [
+   "liquid",
+   "dripping"
+  ],
+  "b3_botanic_garden.mp4": [],
+  "b3_butcher_market.mp4": [],
+  "b3_carnival_parade.mp4": [],
+  "b3_chicken_coop.mp4": [],
+  "b3_construction_site.mp4": [
+   "heavy engine (low frequency)"
+  ],
+  "b3_cow_farm.mp4": [
+   "channel - environment and background",
+   "human group actions, noise, hubbub - speech noise"
+  ],
+  "b3_crossing_bells.mp4": [
+   "rail transport, train",
+   "train wheels squealing"
+  ],
+  "b3_favela_rio.mp4": [
+   "horse and clicking",
+   "rail transport, train",
+   "clicking, clickety-clack",
+   "train wheels squealing"
+  ],
+  "b3_flea_market.mp4": [],
+  "b3_glacier_hike.mp4": [
+   "wind, microphone, wind noise (microphone), horse and clicking, clip-clop, natural sounds, fire crackling"
+  ],
+  "b3_golf_course.mp4": [],
+  "b3_ia_0001_let_us_break_bread_toge_1.mp4": [],
+  "b3_ia_destinationamerica5cityofthe_0.mp4": [],
+  "b3_ia_theveryremarkableyamatofamil_0.mp4": [],
+  "b3_ia_youtube_skxtz9foauw_0.mp4": [],
+  "b3_jungle_hike.mp4": [],
+  "b3_kayak_river.mp4": [
+   "water",
+   "wild animals",
+   "insect",
+   "frog"
+  ],
+  "b3_laundromat.mp4": [
+   "train",
+   "rail transport",
+   "engine, accelerating - revving - vroom"
+  ],
+  "b3_logging_forest.mp4": [
+   "light engine (high frequency), chainsaw"
+  ],
+  "b3_mountain_stream.mp4": [
+   "water",
+   "stream",
+   "liquid",
+   "water, stream"
+  ],
+  "b3_pet_shop.mp4": [],
+  "b3_wm_road_traffic_cobblestone_road_we.mp4": [
+   "motor vehicle (road)",
+   "engine accelerating - revving - vroom",
+   "bird vocalization, bird call - bird song"
+  ],
+  "bell_miami.webm": [
+   "bell"
+  ],
+  "birds_forest.mp4": [
+   "bird vocalization, bird call - bird song"
+  ],
+  "ev_car_alarm_street.mp4": [
+   "car alarm"
+  ],
+  "helicopter_ossetia.mp4": [
+   "music: 8.67-10.00, video game sound: 8.67-10.00, explosion: 8.92-10.00, other sourceless, sound effect: 8.95-9.43"
+  ],
+  "kit_piano.mp4": [],
+  "london_protest_01.mp4": [
+   "horn honking at intervals (0.38-2.75, 4.96-6.37, 7.79-9.39)"
+  ],
+  "lx_rain_and_thunder_-3-4qmW.mp4": [
+   "thunderstorm, thunder",
+   "wind, microphone, wind noise (microphone)"
+  ],
+  "ly_ambulance_(siren)_-yPSgCn.mp4": [],
+  "ly_applause_62ZYD0u.mp4": [
+   "human group actions, noise, laughter"
+  ],
+  "ly_helicopter_-v62cK1.mp4": [
+   "generic impact sounds, tap"
+  ],
+  "ly_traffic_noise_roadway_nois_G5bAKWq.mp4": [
+   "truck horn",
+   "air horn - truck horn",
+   "motor vehicle (road)",
+   "vehicle喇叭 - car horn - honking",
+   "traffic noise, car horn honking, background noise, source-ambiguous sounds, generic impact sounds, clock ticking"
+  ],
+  "mc_earthquake_disaster.mp4": [
+   "fire"
+  ],
+  "mc_fight_bar_scene.mp4": [],
+  "mc_snow_scene.mp4": [
+   "wind noise (microphone)",
+   "explosion",
+   "eruption"
+  ],
+  "movie_blueplanet_115.mp4": [],
+  "mv_arrest_street_scene.mp4": [],
+  "mv_basement_scene_noise.mp4": [],
+  "mv_detective_crime_scene.mp4": [],
+  "mv_funeral_rain_scene.mp4": [
+   "music: 0.00-10.00, rain: 0.00-10.00, video game sound: 0.00-10.00, onomatopoeia clicking: 5.46-5.53"
+  ],
+  "mv_plane_emergency.mp4": [
+   "mechanisms, cash register"
+  ],
+  "mv_police_raid_scene.mp4": [],
+  "mv_protest_scene_movie.mp4": [
+   "glass shatter"
+  ],
+  "mv_storm_scene_house.mp4": [
+   "engine accelerating - revving - vroom"
+  ],
+  "mv_tornado_scene.mp4": [],
+  "mv_war_bombardment.mp4": [
+   "gunshot - gunfire, artillery fire",
+   "explosion"
+  ],
+  "oc_distant_train_valley.mp4": [
+   "wind noise (microphone)"
+  ],
+  "oc_ice_cracking_lake.mp4": [
+   "wind noise (microphone)",
+   "wind noise ( microphone)",
+   "microphone wind noise",
+   "footsteps on surface"
+  ],
+  "oc_pov_dry_leaves.mp4": [
+   "onomatopoeia: rustle",
+   "human voice, footsteps on gravel, bird vocalization, generic impact sounds, surface contact with scraping",
+   "microphone, wind noise (microphone)"
+  ],
+  "rain_road.webm": [],
+  "station_kwasa2.mp4": [],
+  "un_airplane_flyby_1FOKvagR.mp4": [
+   "wind noise (microphone)"
+  ],
+  "un_airplane_flyby_5_aRF2s3.mp4": [],
+  "un_ambulance_siren_3qIzU14N.mp4": [
+   "wind, microphone, wind noise (microphone), motor vehicle (road), emergency vehicle, engine accelerating - revving - vroom, clock ticking",
+   "fire engine - fire truck (siren), wind, microphone, wind noise (microphone)",
+   "emergency vehicle siren, wind noise (microphone), natural wind sounds, generic impact sounds"
+  ],
+  "un_driving_motorcycle_4O3bZRYO.mp4": [],
+  "un_driving_motorcycle_DgdHSmwA.mp4": [],
+  "un_engine_knocking_3UPXKVOz.mp4": [
+   "engine, accelerating - revving - vroom",
+   "engine, medium engine (mid frequency), source-ambiguous sounds, generic impact sounds, clock ticking"
+  ],
+  "un_hair_dryer_drying_WWu24rJs.mp4": [],
+  "un_people_clapping__bAVmK7n.mp4": [],
+  "un_people_crowd_1YGJDa3a.mp4": [],
+  "un_police_car_siren_-Pg4vVPs.mp4": [
+   "motor vehicle (road), motorcycle",
+   "motor vehicle (road), bus"
+  ],
+  "un_police_car_siren_-lyPnABQ.mp4": [
+   "fire engine siren"
+  ],
+  "un_police_car_siren_WEROVWDp.mp4": [
+   "motor vehicle (road), car",
+   "race car - auto racing",
+   "engine accelerating - revving - vroom"
+  ],
+  "un_raining_71I9l62a.mp4": [
+   "motor vehicle (road), bus",
+   "engine accelerating - revving - vroom"
+  ],
+  "un_thunder_08A9CKS5.mp4": [],
+  "un_thunder_1gDcPnV9.mp4": [
+   "wild animals (insect)"
+  ],
+  "un_train_horning_KKFdi5WQ.mp4": [
+   "rail transport, train"
+  ],
+  "un_wind_noise_-z9Iv2Qj.mp4": [
+   "boat - water vehicle, motorboat - speedboat, natural sounds, wind, generic impact sounds, tap, wind noise (microphone)"
+  ],
+  "voa_worldseries.mp4": [],
+  "waterfall_kawaida_01.mp4": [],
+  "waves_herzliya.webm": [],
+  "wc_japanese_drama.mp4": [],
+  "wc_korean_thriller.mp4": [
+   "car tire squealing",
+   "explosion",
+   "wind noise (microphone)",
+   "fire",
+   "tire squeal",
+   "gunshot - gunfire, artillery fire"
+  ]
+ },
+ "visible": {
+  "ambient_citywalk_cairo_834.mp4": [
+   "Car"
+  ],
+  "ambient_citywalk_nyc_1689.mp4": [
+   "Cars"
+  ],
+  "ambient_citywalk_nyc_2627.mp4": [
+   "Car"
+  ],
+  "ambient_desert_wind_74.mp4": [
+   "Rock"
+  ],
+  "ambient_harbour_boats_1449.mp4": [
+   "Car"
+  ],
+  "ambient_harbour_boats_724.mp4": [
+   "Boat"
+  ],
+  "ambient_market_marrakech_3102.mp4": [
+   "People"
+  ],
+  "ambient_nature_rainforest_2179.mp4": [
+   "water"
+  ],
+  "ambient_nature_rainforest_7629.mp4": [
+   "0"
+  ],
+  "ambient_snow_walk_930.mp4": [
+   "Car"
+  ],
+  "ambient_temple_india_2877.mp4": [
+   "0"
+  ],
+  "ambient_transport_subway_10800.mp4": [
+   "Pole"
+  ],
+  "ambient_weather_storm_16200.mp4": [
+   "Rain"
+  ],
+  "ambient_weather_storm_7200.mp4": [
+   "Rain"
+  ],
+  "as_car_alarm_VC9nqtFU.mp4": [
+   "People. 2. Motorcycle. 3. Car. 4. Truck"
+  ],
+  "as_church_bell_pJRAWkLM.mp4": [
+   "Clock"
+  ],
+  "as_explosion_XJ8lc3I6.mp4": [
+   "Gun"
+  ],
+  "as_explosion_eEdaLHC0.mp4": [
+   "Fire"
+  ],
+  "as_fire_alarm_kGKZ0YK4.mp4": [
+   "Fire alarm"
+  ],
+  "as_glass_EiqYND8G.mp4": [
+   "Speaker"
+  ],
+  "as_glass_oHil9Ip_.mp4": [
+   "Ice"
+  ],
+  "b3_airport_terminal.mp4": [
+   "People"
+  ],
+  "b3_aviary_birds.mp4": [
+   "Fan"
+  ],
+  "b3_bakery_morning.mp4": [
+   "Knife"
+  ],
+  "b3_barbershop.mp4": [],
+  "b3_bat_cave.mp4": [
+   "Water"
+  ],
+  "b3_botanic_garden.mp4": [
+   "0"
+  ],
+  "b3_butcher_market.mp4": [
+   "Knife"
+  ],
+  "b3_carnival_parade.mp4": [
+   "Drums"
+  ],
+  "b3_chicken_coop.mp4": [
+   "Solar panel"
+  ],
+  "b3_construction_site.mp4": [],
+  "b3_cow_farm.mp4": [
+   "Refrigerator"
+  ],
+  "b3_crossing_bells.mp4": [
+   "Cars"
+  ],
+  "b3_favela_rio.mp4": [
+   "person"
+  ],
+  "b3_flea_market.mp4": [
+   "People"
+  ],
+  "b3_glacier_hike.mp4": [
+   "Pickaxe"
+  ],
+  "b3_golf_course.mp4": [
+   "Golf ball"
+  ],
+  "b3_ia_0001_let_us_break_bread_toge_1.mp4": [
+   "Flute"
+  ],
+  "b3_ia_destinationamerica5cityofthe_0.mp4": [
+   "Coffee cup"
+  ],
+  "b3_ia_theveryremarkableyamatofamil_0.mp4": [
+   "Woman"
+  ],
+  "b3_ia_youtube_skxtz9foauw_0.mp4": [
+   "Wine glass"
+  ],
+  "b3_jungle_hike.mp4": [
+   "Sun"
+  ],
+  "b3_kayak_river.mp4": [
+   "Bird"
+  ],
+  "b3_laundromat.mp4": [
+   "People"
+  ],
+  "b3_logging_forest.mp4": [
+   "Chainsaw"
+  ],
+  "b3_mountain_stream.mp4": [
+   "Water"
+  ],
+  "b3_pet_shop.mp4": [
+   "0"
+  ],
+  "b3_wm_road_traffic_cobblestone_road_we.mp4": [
+   "Cars"
+  ],
+  "bell_miami.webm": [
+   "Car"
+  ],
+  "birds_forest.mp4": [
+   "Bird"
+  ],
+  "ev_car_alarm_street.mp4": [
+   "Car"
+  ],
+  "helicopter_ossetia.mp4": [
+   "Car"
+  ],
+  "kit_piano.mp4": [
+   "Grand piano"
+  ],
+  "london_protest_01.mp4": [
+   "Bike"
+  ],
+  "lx_rain_and_thunder_-3-4qmW.mp4": [
+   "Car"
+  ],
+  "ly_ambulance_(siren)_-yPSgCn.mp4": [
+   "Car"
+  ],
+  "ly_applause_62ZYD0u.mp4": [
+   "Woman"
+  ],
+  "ly_helicopter_-v62cK1.mp4": [
+   "0"
+  ],
+  "ly_traffic_noise_roadway_nois_G5bAKWq.mp4": [
+   "Truck"
+  ],
+  "mc_earthquake_disaster.mp4": [
+   "None"
+  ],
+  "mc_fight_bar_scene.mp4": [
+   "Fandango Movielinks"
+  ],
+  "mc_snow_scene.mp4": [
+   "Movieclips"
+  ],
+  "movie_blueplanet_115.mp4": [
+   "Whale"
+  ],
+  "mv_arrest_street_scene.mp4": [
+   "Car"
+  ],
+  "mv_basement_scene_noise.mp4": [
+   "Bird"
+  ],
+  "mv_detective_crime_scene.mp4": [
+   "Phone"
+  ],
+  "mv_funeral_rain_scene.mp4": [
+   "kiss"
+  ],
+  "mv_plane_emergency.mp4": [
+   "Penguin"
+  ],
+  "mv_police_raid_scene.mp4": [
+   "Building"
+  ],
+  "mv_protest_scene_movie.mp4": [
+   "Fire"
+  ],
+  "mv_storm_scene_house.mp4": [
+   "Tree"
+  ],
+  "mv_tornado_scene.mp4": [
+   "Microphone"
+  ],
+  "mv_war_bombardment.mp4": [
+   "Fire"
+  ],
+  "oc_distant_train_valley.mp4": [
+   "None"
+  ],
+  "oc_ice_cracking_lake.mp4": [
+   "person"
+  ],
+  "oc_pov_dry_leaves.mp4": [
+   "0"
+  ],
+  "rain_road.webm": [
+   "Rain"
+  ],
+  "station_kwasa2.mp4": [
+   "People"
+  ],
+  "un_airplane_flyby_1FOKvagR.mp4": [
+   "Bird"
+  ],
+  "un_airplane_flyby_5_aRF2s3.mp4": [
+   "airplane"
+  ],
+  "un_ambulance_siren_3qIzU14N.mp4": [
+   "Car"
+  ],
+  "un_driving_motorcycle_4O3bZRYO.mp4": [
+   "Car"
+  ],
+  "un_driving_motorcycle_DgdHSmwA.mp4": [
+   "People"
+  ],
+  "un_engine_knocking_3UPXKVOz.mp4": [
+   "Car"
+  ],
+  "un_hair_dryer_drying_WWu24rJs.mp4": [
+   "0"
+  ],
+  "un_people_clapping__bAVmK7n.mp4": [
+   "Chair"
+  ],
+  "un_people_crowd_1YGJDa3a.mp4": [],
+  "un_police_car_siren_-Pg4vVPs.mp4": [
+   "Car"
+  ],
+  "un_police_car_siren_-lyPnABQ.mp4": [
+   "Siren"
+  ],
+  "un_police_car_siren_WEROVWDp.mp4": [
+   "Siren"
+  ],
+  "un_raining_71I9l62a.mp4": [
+   "Car"
+  ],
+  "un_thunder_08A9CKS5.mp4": [
+   "0"
+  ],
+  "un_thunder_1gDcPnV9.mp4": [
+   "Lightning"
+  ],
+  "un_train_horning_KKFdi5WQ.mp4": [
+   "Train"
+  ],
+  "un_wind_noise_-z9Iv2Qj.mp4": [
+   "Microphone"
+  ],
+  "voa_worldseries.mp4": [
+   "Cart"
+  ],
+  "waterfall_kawaida_01.mp4": [],
+  "waves_herzliya.webm": [
+   "Waves"
+  ],
+  "wc_japanese_drama.mp4": [
+   "Rain"
+  ],
+  "wc_korean_thriller.mp4": [
+   "Woman"
+  ]
+ },
+ "references": {
+  "ambient_citywalk_cairo_834.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Car"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_citywalk_nyc_1689.mp4": {
+   "reference": "A deaf viewer would miss the sound of car mechanisms operating, which is indicated by the soundtrack in the video.",
+   "sounds": [
+    "mechanisms"
+   ],
+   "visible": [
+    "Cars"
+   ],
+   "matches": [
+    0.2490207850933075
+   ],
+   "unmatched": [
+    "mechanisms"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ambient_citywalk_nyc_2627.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of an engine revving and the associated vroom sound, which indicate the car's acceleration.",
+   "sounds": [
+    "engine, accelerating - revving - vroom"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.27142009139060974
+   ],
+   "unmatched": [
+    "engine, accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ambient_desert_wind_74.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Rock"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_harbour_boats_1449.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Car"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_harbour_boats_724.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Boat"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_market_marrakech_3102.mp4": {
+   "reference": "A deaf viewer would miss the sound sources of an engine accelerating, revving, and the associated \"vroom\" sound, which indicate the presence and action of vehicles, as inferred from the captioned dialogue.",
+   "sounds": [
+    "engine accelerating - revving - vroom"
+   ],
+   "visible": [
+    "People"
+   ],
+   "matches": [
+    0.058479417115449905
+   ],
+   "unmatched": [
+    "engine accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ambient_nature_rainforest_2179.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "water"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_nature_rainforest_7629.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "0"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_snow_walk_930.mp4": {
+   "reference": "A deaf viewer would miss the sound source of a car engine accelerating, revving, and the associated \"vroom\" sound, which indicates the car's movement and action.",
+   "sounds": [
+    "engine accelerating - revving - vroom"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.20432035624980927
+   ],
+   "unmatched": [
+    "engine accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ambient_temple_india_2877.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "0"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_transport_subway_10800.mp4": {
+   "reference": "A deaf viewer would miss the sounds of rail transport, train, wind, microphone, wind noise, and train wheels squealing, which are specific sound sources indicating the presence and movement of a train on tracks.",
+   "sounds": [
+    "rail transport",
+    "train",
+    "wind, microphone, wind noise (microphone)",
+    "rail transport, train",
+    "train wheels squealing"
+   ],
+   "visible": [
+    "Pole"
+   ],
+   "matches": [
+    0.13352036476135254,
+    0.2440698742866516,
+    0.14375877380371094,
+    0.1488945484161377,
+    -0.0211027879267931
+   ],
+   "unmatched": [
+    "rail transport",
+    "train",
+    "wind, microphone, wind noise (microphone)",
+    "rail transport, train",
+    "train wheels squealing"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ambient_weather_storm_16200.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Rain"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ambient_weather_storm_7200.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Rain"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "as_car_alarm_VC9nqtFU.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "People. 2. Motorcycle. 3. Car. 4. Truck"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "as_church_bell_pJRAWkLM.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Clock"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "as_explosion_XJ8lc3I6.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of gunfire and artillery fire, as indicated by the sounds of gunshots and explosions in the video's soundtrack.",
+   "sounds": [
+    "explosion, gunshot - gunfire, artillery fire",
+    "gunshot - gunfire, artillery fire",
+    "explosion",
+    "gunshot - gunfire, machine gun"
+   ],
+   "visible": [
+    "Gun"
+   ],
+   "matches": [
+    0.4825441837310791,
+    0.5619188547134399,
+    0.44096916913986206,
+    0.6460304260253906
+   ],
+   "unmatched": [
+    "explosion, gunshot - gunfire, artillery fire",
+    "explosion"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "as_explosion_eEdaLHC0.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of an explosion, thunderstorm, and video game sound, which provide auditory context and enhance the understanding of the scene involving fire.",
+   "sounds": [
+    "explosion, thunderstorm, video game sound"
+   ],
+   "visible": [
+    "Fire"
+   ],
+   "matches": [
+    0.35237830877304077
+   ],
+   "unmatched": [
+    "explosion, thunderstorm, video game sound"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "as_fire_alarm_kGKZ0YK4.mp4": {
+   "reference": "A deaf viewer would miss the sound of mechanisms and the fire alarm, which are specific sound sources indicating mechanical activity and an emergency alert, respectively.",
+   "sounds": [
+    "mechanisms",
+    "alarm"
+   ],
+   "visible": [
+    "Fire alarm"
+   ],
+   "matches": [
+    0.12098197638988495,
+    0.805176854133606
+   ],
+   "unmatched": [
+    "mechanisms"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "as_glass_EiqYND8G.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Speaker"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "as_glass_oHil9Ip_.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Ice"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_airport_terminal.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "People"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_aviary_birds.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Fan"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_bakery_morning.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Knife"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_barbershop.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_bat_cave.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "liquid",
+    "dripping"
+   ],
+   "visible": [
+    "Water"
+   ],
+   "matches": [
+    0.6917394399642944,
+    0.5755825042724609
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "b3_botanic_garden.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "0"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_butcher_market.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Knife"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_carnival_parade.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Drums"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_chicken_coop.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Solar panel"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_construction_site.mp4": {
+   "reference": "A deaf viewer would miss the specific sound source of heavy engine noise at low frequency, which a hearing viewer perceives through the audio track.",
+   "sounds": [
+    "heavy engine (low frequency)"
+   ],
+   "visible": [],
+   "matches": [
+    0.0
+   ],
+   "unmatched": [
+    "heavy engine (low frequency)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_cow_farm.mp4": {
+   "reference": "A deaf viewer would miss the specific sounds of human speech and the refrigerator's operational noises, which are the primary sound sources indicating dialogue and environmental context in the video.",
+   "sounds": [
+    "channel - environment and background",
+    "human group actions, noise, hubbub - speech noise"
+   ],
+   "visible": [
+    "Refrigerator"
+   ],
+   "matches": [
+    0.012822559103369713,
+    0.0022851787507534027
+   ],
+   "unmatched": [
+    "channel - environment and background",
+    "human group actions, noise, hubbub - speech noise"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_crossing_bells.mp4": {
+   "reference": "A deaf viewer would miss the sounds of rail transport and train wheels squealing, which are specific sound sources indicating the presence of trains and possibly a railway scene.",
+   "sounds": [
+    "rail transport, train",
+    "train wheels squealing"
+   ],
+   "visible": [
+    "Cars"
+   ],
+   "matches": [
+    0.3033168911933899,
+    0.167214497923851
+   ],
+   "unmatched": [
+    "rail transport, train",
+    "train wheels squealing"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_favela_rio.mp4": {
+   "reference": "A deaf viewer would miss the sounds of a horse, clicking noises, rail transport, train wheels squealing, and the clickety-clack associated with the train, which are specific sound sources indicating the presence of a person, a horse, and a train on the video.",
+   "sounds": [
+    "horse and clicking",
+    "rail transport, train",
+    "clicking, clickety-clack",
+    "train wheels squealing"
+   ],
+   "visible": [
+    "person"
+   ],
+   "matches": [
+    0.15082019567489624,
+    0.12272001802921295,
+    0.09958305209875107,
+    0.012197848409414291
+   ],
+   "unmatched": [
+    "horse and clicking",
+    "rail transport, train",
+    "clicking, clickety-clack",
+    "train wheels squealing"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_flea_market.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "People"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_glacier_hike.mp4": {
+   "reference": "A deaf viewer would miss the sound of the pickaxe being used, as indicated by the sound source \"clip-clop,\" which suggests the sound of metal striking against a hard surface.",
+   "sounds": [
+    "wind, microphone, wind noise (microphone), horse and clicking, clip-clop, natural sounds, fire crackling"
+   ],
+   "visible": [
+    "Pickaxe"
+   ],
+   "matches": [
+    0.10700291395187378
+   ],
+   "unmatched": [
+    "wind, microphone, wind noise (microphone), horse and clicking, clip-clop, natural sounds, fire crackling"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_golf_course.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Golf ball"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_ia_0001_let_us_break_bread_toge_1.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Flute"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_ia_destinationamerica5cityofthe_0.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Coffee cup"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_ia_theveryremarkableyamatofamil_0.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Woman"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_ia_youtube_skxtz9foauw_0.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Wine glass"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_jungle_hike.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Sun"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_kayak_river.mp4": {
+   "reference": "A deaf viewer would miss the auditory information about the presence of water and wild animals, specifically the sounds of flowing water and various wild animal noises, which are not conveyed through the visual cue of a bird alone.",
+   "sounds": [
+    "water",
+    "wild animals",
+    "insect",
+    "frog"
+   ],
+   "visible": [
+    "Bird"
+   ],
+   "matches": [
+    0.401477187871933,
+    0.4107050597667694,
+    0.504204511642456,
+    0.5400130152702332
+   ],
+   "unmatched": [
+    "water",
+    "wild animals"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_laundromat.mp4": {
+   "reference": "A deaf viewer would miss the sounds of a train, rail transport, and an engine accelerating, revving, and vrooming, which are specific sound sources indicating the presence and movement of a train.",
+   "sounds": [
+    "train",
+    "rail transport",
+    "engine, accelerating - revving - vroom"
+   ],
+   "visible": [
+    "People"
+   ],
+   "matches": [
+    0.3117067217826843,
+    0.18625062704086304,
+    0.07133284211158752
+   ],
+   "unmatched": [
+    "train",
+    "rail transport",
+    "engine, accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_logging_forest.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "light engine (high frequency), chainsaw"
+   ],
+   "visible": [
+    "Chainsaw"
+   ],
+   "matches": [
+    0.6614302396774292
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "b3_mountain_stream.mp4": {
+   "reference": "A deaf viewer would miss the auditory information about the presence and movement of water, as indicated by the sound source \"stream.\"",
+   "sounds": [
+    "water",
+    "stream",
+    "liquid",
+    "water, stream"
+   ],
+   "visible": [
+    "Water"
+   ],
+   "matches": [
+    1.0,
+    0.39119476079940796,
+    0.691739559173584,
+    0.7667057514190674
+   ],
+   "unmatched": [
+    "stream"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "b3_pet_shop.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "0"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "b3_wm_road_traffic_cobblestone_road_we.mp4": {
+   "reference": "A deaf viewer would miss the sounds of accelerating engines and bird vocalizations, specifically the revving, vroom, and bird song.",
+   "sounds": [
+    "motor vehicle (road)",
+    "engine accelerating - revving - vroom",
+    "bird vocalization, bird call - bird song"
+   ],
+   "visible": [
+    "Cars"
+   ],
+   "matches": [
+    0.5799152255058289,
+    0.18760165572166443,
+    0.17849233746528625
+   ],
+   "unmatched": [
+    "engine accelerating - revving - vroom",
+    "bird vocalization, bird call - bird song"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "bell_miami.webm": {
+   "reference": "A deaf viewer would miss the sound of a bell and the auditory cues associated with a car, as these specific sound sources are present in the video's soundtrack but not visually represented in the picture alone.",
+   "sounds": [
+    "bell"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.24645684659481049
+   ],
+   "unmatched": [
+    "bell"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "birds_forest.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "bird vocalization, bird call - bird song"
+   ],
+   "visible": [
+    "Bird"
+   ],
+   "matches": [
+    0.6405564546585083
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "ev_car_alarm_street.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "car alarm"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.5183442831039429
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "helicopter_ossetia.mp4": {
+   "reference": "A deaf viewer would miss the specific sounds of music, video game sounds, explosions, and other sound effects between 8.67-10.00, which are not visible on screen despite the presence of a car.",
+   "sounds": [
+    "music: 8.67-10.00, video game sound: 8.67-10.00, explosion: 8.92-10.00, other sourceless, sound effect: 8.95-9.43"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.16724860668182373
+   ],
+   "unmatched": [
+    "music: 8.67-10.00, video game sound: 8.67-10.00, explosion: 8.92-10.00, other sourceless, sound effect: 8.95-9.43"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "kit_piano.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Grand piano"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "london_protest_01.mp4": {
+   "reference": "A deaf viewer would miss the information about the horn honking sounds from a bike occurring at intervals between 0.38-2.75, 4.96-6.37, and 7.79-9.39, as this specific sound source is not discernible from the picture alone.",
+   "sounds": [
+    "horn honking at intervals (0.38-2.75, 4.96-6.37, 7.79-9.39)"
+   ],
+   "visible": [
+    "Bike"
+   ],
+   "matches": [
+    0.09401809424161911
+   ],
+   "unmatched": [
+    "horn honking at intervals (0.38-2.75, 4.96-6.37, 7.79-9.39)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "lx_rain_and_thunder_-3-4qmW.mp4": {
+   "reference": "A deaf viewer would miss the sounds of a thunderstorm, thunder, wind, and microphone/wind noise, which are specific sound sources indicating an outdoor scene with a car and potentially a stormy weather condition.",
+   "sounds": [
+    "thunderstorm, thunder",
+    "wind, microphone, wind noise (microphone)"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.32408851385116577,
+    0.17089006304740906
+   ],
+   "unmatched": [
+    "thunderstorm, thunder",
+    "wind, microphone, wind noise (microphone)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ly_ambulance_(siren)_-yPSgCn.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Car"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "ly_applause_62ZYD0u.mp4": {
+   "reference": "A deaf viewer would miss the specific sounds of human group actions, noise, and laughter, which are the sound sources indicating the presence and interactions of a woman and possibly others in the video.",
+   "sounds": [
+    "human group actions, noise, laughter"
+   ],
+   "visible": [
+    "Woman"
+   ],
+   "matches": [
+    0.16250532865524292
+   ],
+   "unmatched": [
+    "human group actions, noise, laughter"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ly_helicopter_-v62cK1.mp4": {
+   "reference": "A deaf viewer would miss the specific sounds of generic impacts and tapping, which are the sound sources present in the video's soundtrack.",
+   "sounds": [
+    "generic impact sounds, tap"
+   ],
+   "visible": [
+    "0"
+   ],
+   "matches": [
+    0.03374950587749481
+   ],
+   "unmatched": [
+    "generic impact sounds, tap"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "ly_traffic_noise_roadway_nois_G5bAKWq.mp4": {
+   "reference": "A deaf viewer would miss the specific sound source of a truck horn and car horn honking, as these are indicated by the air horn and vehicle honking sounds in the video's soundtrack.",
+   "sounds": [
+    "truck horn",
+    "air horn - truck horn",
+    "motor vehicle (road)",
+    "vehicle喇叭 - car horn - honking",
+    "traffic noise, car horn honking, background noise, source-ambiguous sounds, generic impact sounds, clock ticking"
+   ],
+   "visible": [
+    "Truck"
+   ],
+   "matches": [
+    0.5930309891700745,
+    0.4343831539154053,
+    0.5506570339202881,
+    0.3041456341743469,
+    0.26459380984306335
+   ],
+   "unmatched": [
+    "air horn - truck horn",
+    "vehicle喇叭 - car horn - honking",
+    "traffic noise, car horn honking, background noise, source-ambiguous sounds, generic impact sounds, clock ticking"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "mc_earthquake_disaster.mp4": {
+   "reference": "A deaf viewer would miss the sound of fire, which is the specific sound source present in the video's soundtrack.",
+   "sounds": [
+    "fire"
+   ],
+   "visible": [
+    "None"
+   ],
+   "matches": [
+    0.2998035252094269
+   ],
+   "unmatched": [
+    "fire"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "mc_fight_bar_scene.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Fandango Movielinks"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mc_snow_scene.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of wind noise, explosion, and eruption, which provide auditory context and enhance the understanding of the scene's atmosphere and action.",
+   "sounds": [
+    "wind noise (microphone)",
+    "explosion",
+    "eruption"
+   ],
+   "visible": [
+    "Movieclips"
+   ],
+   "matches": [
+    -0.01744486205279827,
+    0.16912972927093506,
+    0.18164445459842682
+   ],
+   "unmatched": [
+    "wind noise (microphone)",
+    "explosion",
+    "eruption"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "movie_blueplanet_115.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Whale"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mv_arrest_street_scene.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Car"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mv_basement_scene_noise.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Bird"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mv_detective_crime_scene.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Phone"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mv_funeral_rain_scene.mp4": {
+   "reference": "A deaf viewer would miss the sounds of music, rain, video game sounds, and the onomatopoeia clicking between 5.46-5.53 seconds, which are not visible on screen but contribute to the overall context and atmosphere of the video.",
+   "sounds": [
+    "music: 0.00-10.00, rain: 0.00-10.00, video game sound: 0.00-10.00, onomatopoeia clicking: 5.46-5.53"
+   ],
+   "visible": [
+    "kiss"
+   ],
+   "matches": [
+    0.14517998695373535
+   ],
+   "unmatched": [
+    "music: 0.00-10.00, rain: 0.00-10.00, video game sound: 0.00-10.00, onomatopoeia clicking: 5.46-5.53"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "mv_plane_emergency.mp4": {
+   "reference": "A deaf viewer would miss the sounds of mechanisms and a cash register, which are specific sound sources indicating activity within a store or setting involving machinery and financial transactions.",
+   "sounds": [
+    "mechanisms, cash register"
+   ],
+   "visible": [
+    "Penguin"
+   ],
+   "matches": [
+    0.09040464460849762
+   ],
+   "unmatched": [
+    "mechanisms, cash register"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "mv_police_raid_scene.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Building"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mv_protest_scene_movie.mp4": {
+   "reference": "A deaf viewer would miss the sound of glass shattering and the auditory cues associated with a fire, which are specific sound sources in the video.",
+   "sounds": [
+    "glass shatter"
+   ],
+   "visible": [
+    "Fire"
+   ],
+   "matches": [
+    0.21051111817359924
+   ],
+   "unmatched": [
+    "glass shatter"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "mv_storm_scene_house.mp4": {
+   "reference": "A deaf viewer would miss the sound source of the engine accelerating, revving, and the vroom sound, which indicates movement or action related to a vehicle, likely near or involving the tree visible on screen.",
+   "sounds": [
+    "engine accelerating - revving - vroom"
+   ],
+   "visible": [
+    "Tree"
+   ],
+   "matches": [
+    0.047222524881362915
+   ],
+   "unmatched": [
+    "engine accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "mv_tornado_scene.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Microphone"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "mv_war_bombardment.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of gunshots and artillery fire, which indicate active combat or conflict in the video.",
+   "sounds": [
+    "gunshot - gunfire, artillery fire",
+    "explosion"
+   ],
+   "visible": [
+    "Fire"
+   ],
+   "matches": [
+    0.4406994581222534,
+    0.5596715211868286
+   ],
+   "unmatched": [
+    "gunshot - gunfire, artillery fire"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "oc_distant_train_valley.mp4": {
+   "reference": "A deaf viewer would miss the wind noise captured by the microphone, which provides contextual audio cues about the environment or potential actions occurring off-screen.",
+   "sounds": [
+    "wind noise (microphone)"
+   ],
+   "visible": [
+    "None"
+   ],
+   "matches": [
+    0.002857483923435211
+   ],
+   "unmatched": [
+    "wind noise (microphone)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "oc_ice_cracking_lake.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of wind noise from the microphone and footsteps on a surface, which indicate the presence and actions of a person in the video.",
+   "sounds": [
+    "wind noise (microphone)",
+    "wind noise ( microphone)",
+    "microphone wind noise",
+    "footsteps on surface"
+   ],
+   "visible": [
+    "person"
+   ],
+   "matches": [
+    0.10873419046401978,
+    0.10873419046401978,
+    0.0688915103673935,
+    0.22290033102035522
+   ],
+   "unmatched": [
+    "wind noise (microphone)",
+    "wind noise ( microphone)",
+    "microphone wind noise",
+    "footsteps on surface"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "oc_pov_dry_leaves.mp4": {
+   "reference": "A deaf viewer would miss the rustle of leaves, bird vocalizations, footsteps on gravel, generic impact sounds, surface contact with scraping, and wind noise, as these are conveyed through onomatopoeia, human voice, and environmental sounds in the video's soundtrack.",
+   "sounds": [
+    "onomatopoeia: rustle",
+    "human voice, footsteps on gravel, bird vocalization, generic impact sounds, surface contact with scraping",
+    "microphone, wind noise (microphone)"
+   ],
+   "visible": [
+    "0"
+   ],
+   "matches": [
+    0.052853405475616455,
+    0.06045958027243614,
+    0.028282547369599342
+   ],
+   "unmatched": [
+    "onomatopoeia: rustle",
+    "human voice, footsteps on gravel, bird vocalization, generic impact sounds, surface contact with scraping",
+    "microphone, wind noise (microphone)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "rain_road.webm": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Rain"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "station_kwasa2.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "People"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_airplane_flyby_1FOKvagR.mp4": {
+   "reference": "A deaf viewer would miss the auditory information about the presence of wind noise and a bird, as these specific sound sources are absent in the visual content alone.",
+   "sounds": [
+    "wind noise (microphone)"
+   ],
+   "visible": [
+    "Bird"
+   ],
+   "matches": [
+    0.18136432766914368
+   ],
+   "unmatched": [
+    "wind noise (microphone)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "un_airplane_flyby_5_aRF2s3.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "airplane"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_ambulance_siren_3qIzU14N.mp4": {
+   "reference": "A deaf viewer would miss the dialogue from the captioned speech, the specific sounds of a car, emergency vehicle sirens, fire truck sirens, engine revving, and various environmental noises like wind, microphone, wind noise, and clock ticking.",
+   "sounds": [
+    "wind, microphone, wind noise (microphone), motor vehicle (road), emergency vehicle, engine accelerating - revving - vroom, clock ticking",
+    "fire engine - fire truck (siren), wind, microphone, wind noise (microphone)",
+    "emergency vehicle siren, wind noise (microphone), natural wind sounds, generic impact sounds"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.3362598419189453,
+    0.32701802253723145,
+    0.23293058574199677
+   ],
+   "unmatched": [
+    "wind, microphone, wind noise (microphone), motor vehicle (road), emergency vehicle, engine accelerating - revving - vroom, clock ticking",
+    "fire engine - fire truck (siren), wind, microphone, wind noise (microphone)",
+    "emergency vehicle siren, wind noise (microphone), natural wind sounds, generic impact sounds"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "un_driving_motorcycle_4O3bZRYO.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Car"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_driving_motorcycle_DgdHSmwA.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "People"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_engine_knocking_3UPXKVOz.mp4": {
+   "reference": "A deaf viewer would miss the engine sounds, including the revving and vroom, as well as the medium engine (mid frequency) sounds and generic impact sounds, which are specific sound sources indicating the presence and movement of a car.",
+   "sounds": [
+    "engine, accelerating - revving - vroom",
+    "engine, medium engine (mid frequency), source-ambiguous sounds, generic impact sounds, clock ticking"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.2714202105998993,
+    0.21136300265789032
+   ],
+   "unmatched": [
+    "engine, accelerating - revving - vroom",
+    "engine, medium engine (mid frequency), source-ambiguous sounds, generic impact sounds, clock ticking"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "un_hair_dryer_drying_WWu24rJs.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "0"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_people_clapping__bAVmK7n.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Chair"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_people_crowd_1YGJDa3a.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_police_car_siren_-Pg4vVPs.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "motor vehicle (road), motorcycle",
+    "motor vehicle (road), bus"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.5459650754928589,
+    0.5158442258834839
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "un_police_car_siren_-lyPnABQ.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "fire engine siren"
+   ],
+   "visible": [
+    "Siren"
+   ],
+   "matches": [
+    0.7536466121673584
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "un_police_car_siren_WEROVWDp.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of a motor vehicle on the road, a race car, auto racing, and the engine revving, as well as the distinct sound of a siren.",
+   "sounds": [
+    "motor vehicle (road), car",
+    "race car - auto racing",
+    "engine accelerating - revving - vroom"
+   ],
+   "visible": [
+    "Siren"
+   ],
+   "matches": [
+    0.16915634274482727,
+    0.20975570380687714,
+    0.03795592486858368
+   ],
+   "unmatched": [
+    "motor vehicle (road), car",
+    "race car - auto racing",
+    "engine accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "un_raining_71I9l62a.mp4": {
+   "reference": "A deaf viewer would miss the sound source of a car engine accelerating, revving, and the associated \"vroom\" sound, which indicates the car's movement and action.",
+   "sounds": [
+    "motor vehicle (road), bus",
+    "engine accelerating - revving - vroom"
+   ],
+   "visible": [
+    "Car"
+   ],
+   "matches": [
+    0.5158442258834839,
+    0.20432043075561523
+   ],
+   "unmatched": [
+    "engine accelerating - revving - vroom"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "un_thunder_08A9CKS5.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "0"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "un_thunder_1gDcPnV9.mp4": {
+   "reference": "A deaf viewer would miss the sounds of wild insects and lightning, which are specific sound sources in the video's soundtrack.",
+   "sounds": [
+    "wild animals (insect)"
+   ],
+   "visible": [
+    "Lightning"
+   ],
+   "matches": [
+    0.06372839212417603
+   ],
+   "unmatched": [
+    "wild animals (insect)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "un_train_horning_KKFdi5WQ.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [
+    "rail transport, train"
+   ],
+   "visible": [
+    "Train"
+   ],
+   "matches": [
+    0.7152223587036133
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "all sounds visible"
+  },
+  "un_wind_noise_-z9Iv2Qj.mp4": {
+   "reference": "A deaf viewer would miss the dialogue, which is indicated by the presence of a microphone in the video, along with the specific sound sources of boat and motorboat sounds, natural sounds, wind, and generic impact sounds.",
+   "sounds": [
+    "boat - water vehicle, motorboat - speedboat, natural sounds, wind, generic impact sounds, tap, wind noise (microphone)"
+   ],
+   "visible": [
+    "Microphone"
+   ],
+   "matches": [
+    0.41070306301116943
+   ],
+   "unmatched": [
+    "boat - water vehicle, motorboat - speedboat, natural sounds, wind, generic impact sounds, tap, wind noise (microphone)"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  },
+  "voa_worldseries.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Cart"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "waterfall_kawaida_01.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "waves_herzliya.webm": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Waves"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "wc_japanese_drama.mp4": {
+   "reference": "nothing beyond the picture",
+   "sounds": [],
+   "visible": [
+    "Rain"
+   ],
+   "matches": [],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "no sounds"
+  },
+  "wc_korean_thriller.mp4": {
+   "reference": "A deaf viewer would miss the specific sound sources of a woman speaking, car tire squealing, explosion, wind noise, fire, and gunfire (gunshot), which are crucial for understanding the context and actions occurring in the video.",
+   "sounds": [
+    "car tire squealing",
+    "explosion",
+    "wind noise (microphone)",
+    "fire",
+    "tire squeal",
+    "gunshot - gunfire, artillery fire"
+   ],
+   "visible": [
+    "Woman"
+   ],
+   "matches": [
+    0.050952911376953125,
+    0.27241843938827515,
+    0.08786867558956146,
+    0.3115123212337494,
+    0.17223724722862244,
+    0.15801545977592468
+   ],
+   "unmatched": [
+    "car tire squealing",
+    "explosion",
+    "wind noise (microphone)",
+    "fire",
+    "tire squeal",
+    "gunshot - gunfire, artillery fire"
+   ],
+   "writer": "microsoft/Phi-3.5-mini-instruct",
+   "rule": "written"
+  }
+ }
+}

@@ -27,7 +27,10 @@ echo "uploading code..."
 if command -v rsync >/dev/null 2>&1; then
     rsync -az --delete         --include="*/"         --include="*.py" --include="*.sh" --include="*.json" --include="*.md"         --include="*.txt" --include="*.bat"         --exclude="*"         --exclude=".git/" --exclude="data/" --exclude="__pycache__/"         "$LOCAL_ROOT/" "$USER_AT:$REMOTE/"
 else
-    tar -C "$LOCAL_ROOT" --exclude=.git --exclude=data --exclude=__pycache__         -czf - src benchmark scripts slurm config.py main.py requirements.txt         | ssh "$USER_AT" "tar -C $REMOTE -xzf -"
+    tar -C "$LOCAL_ROOT" --exclude=.git --exclude=data --exclude=__pycache__         -czf - src benchmark scripts slurm config.py main.py requirements.txt         | ssh "$USER_AT" "tar -C $REMOTE -xzf - && sed -i 's/\r$//' $REMOTE/slurm/*.sh"
+    # the working tree is CRLF on Windows and Slurm reads the scripts with bash: strip
+    # the CR on the remote side every time, or a job's next step dies with "$\'\r\':
+    # command not found" (the ref_v2 judge step, 2026-09-14, after a mid-run sync)
 fi
 
 if [ "$CODE_ONLY" = "1" ]; then

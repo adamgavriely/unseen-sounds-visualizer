@@ -1,0 +1,3861 @@
+{
+ "records": [
+  {
+   "key": [
+    "fold4_room2_mix001_deg297_start0463",
+    3,
+    3.4
+   ],
+   "class": "Telephone",
+   "gold_start": 3.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.15,
+    "hyst": -0.15,
+    "occl": 0.07
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix005_deg326_start1073",
+    6,
+    1.3
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg274_start0057",
+    3,
+    2.8
+   ],
+   "class": "Telephone",
+   "gold_start": 2.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.3,
+    "hyst": -0.3,
+    "occl": -0.08
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg168_start0024",
+    5,
+    1.5
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.5,
+   "gold_end": 2.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg239_start2350",
+    4,
+    2.3
+   ],
+   "class": "Laughter",
+   "gold_start": 2.3,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": 1.2,
+    "occl": 1.1
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix006_deg263_start1711",
+    4,
+    2.0
+   ],
+   "class": "Laughter",
+   "gold_start": 2.0,
+   "gold_end": 4.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg137_start0692",
+    6,
+    1.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg145_start0693",
+    4,
+    2.6
+   ],
+   "class": "Laughter",
+   "gold_start": 2.6,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg281_start1678",
+    3,
+    2.7
+   ],
+   "class": "Telephone",
+   "gold_start": 2.7,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": 0.3,
+    "hyst": 0.3,
+    "occl": -0.04
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg138_start1123",
+    5,
+    0.8
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.8,
+   "gold_end": 2.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    0.7
+   ],
+   "class": "Laughter",
+   "gold_start": 0.7,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg257_start0532",
+    12,
+    2.4
+   ],
+   "class": "Knock",
+   "gold_start": 2.4,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg119_start1259",
+    2,
+    2.6
+   ],
+   "class": "Clapping",
+   "gold_start": 2.6,
+   "gold_end": 4.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg285_start1329",
+    7,
+    1.6
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg253_start0985",
+    3,
+    3.0
+   ],
+   "class": "Telephone",
+   "gold_start": 3.0,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": 1.25,
+    "occl": 0.19
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg233_start0249",
+    12,
+    3.0
+   ],
+   "class": "Knock",
+   "gold_start": 3.0,
+   "gold_end": 3.7,
+   "err": {
+    "stamp": null,
+    "hyst": 0.0,
+    "occl": 0.14
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg143_start1192",
+    6,
+    1.1
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.1,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg294_start0695",
+    7,
+    3.3
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg232_start0142",
+    10,
+    3.0
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.0,
+    "hyst": 0.0,
+    "occl": -0.18
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg091_start0096",
+    5,
+    1.6
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.6,
+   "gold_end": 3.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    3.3
+   ],
+   "class": "Laughter",
+   "gold_start": 3.3,
+   "gold_end": 4.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg189_start1194",
+    4,
+    0.7
+   ],
+   "class": "Laughter",
+   "gold_start": 0.7,
+   "gold_end": 3.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg328_start1588",
+    2,
+    1.7
+   ],
+   "class": "Clapping",
+   "gold_start": 1.7,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg048_start1325",
+    2,
+    1.3
+   ],
+   "class": "Clapping",
+   "gold_start": 1.3,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": 0.45,
+    "hyst": 0.2,
+    "occl": 0.26
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg332_start0093",
+    5,
+    1.9
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.9,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg075_start0898",
+    10,
+    0.3
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 0.3,
+   "gold_end": 1.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": 0.72
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg349_start0693",
+    6,
+    1.7
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg050_start1007",
+    3,
+    0.8
+   ],
+   "class": "Telephone",
+   "gold_start": 0.8,
+   "gold_end": 1.3,
+   "err": {
+    "stamp": 1.2,
+    "hyst": 1.2,
+    "occl": 0.06
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg001_start0718",
+    7,
+    1.0
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg067_start1047",
+    7,
+    2.3
+   ],
+   "class": "Door, open or close",
+   "gold_start": 2.3,
+   "gold_end": 3.1,
+   "err": {
+    "stamp": 0.95,
+    "hyst": -0.05,
+    "occl": 0.09
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg116_start0848",
+    4,
+    3.4
+   ],
+   "class": "Laughter",
+   "gold_start": 3.4,
+   "gold_end": 3.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg312_start0159",
+    10,
+    1.3
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.05,
+    "hyst": -0.05,
+    "occl": -0.39
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg335_start0346",
+    7,
+    1.2
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.2,
+   "gold_end": 2.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg263_start1263",
+    2,
+    2.2
+   ],
+   "class": "Clapping",
+   "gold_start": 2.2,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg271_start0364",
+    6,
+    3.0
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg138_start0529",
+    12,
+    2.7
+   ],
+   "class": "Knock",
+   "gold_start": 2.7,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix004_deg254_start0046",
+    7,
+    1.4
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.4,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": 0.85,
+    "occl": 1.07
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg344_start0598",
+    4,
+    2.4
+   ],
+   "class": "Laughter",
+   "gold_start": 2.4,
+   "gold_end": 4.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg280_start1084",
+    3,
+    3.1
+   ],
+   "class": "Telephone",
+   "gold_start": 3.1,
+   "gold_end": 3.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg277_start0863",
+    3,
+    1.2
+   ],
+   "class": "Telephone",
+   "gold_start": 1.2,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.05,
+    "hyst": 0.05,
+    "occl": 0.35
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg010_start1271",
+    2,
+    1.4
+   ],
+   "class": "Clapping",
+   "gold_start": 1.4,
+   "gold_end": 3.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg180_start0864",
+    10,
+    3.7
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.7,
+   "gold_end": 4.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg165_start0950",
+    5,
+    1.2
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.2,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg330_start0530",
+    6,
+    3.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.8,
+   "gold_end": 4.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg105_start1301",
+    7,
+    0.9
+   ],
+   "class": "Door, open or close",
+   "gold_start": 0.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg333_start1205",
+    4,
+    1.3
+   ],
+   "class": "Laughter",
+   "gold_start": 1.3,
+   "gold_end": 2.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg263_start1576",
+    2,
+    2.9
+   ],
+   "class": "Clapping",
+   "gold_start": 2.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg089_start0363",
+    4,
+    3.9
+   ],
+   "class": "Laughter",
+   "gold_start": 3.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg039_start2017",
+    2,
+    1.8
+   ],
+   "class": "Clapping",
+   "gold_start": 1.8,
+   "gold_end": 4.8,
+   "err": {
+    "stamp": 0.7,
+    "hyst": 0.7,
+    "occl": 1.0
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg252_start0315",
+    4,
+    4.0
+   ],
+   "class": "Laughter",
+   "gold_start": 4.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg162_start0333",
+    7,
+    2.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 2.5,
+   "gold_end": 4.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg277_start0025",
+    5,
+    1.4
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.4,
+   "gold_end": 2.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg039_start2017",
+    2,
+    0.8
+   ],
+   "class": "Clapping",
+   "gold_start": 0.8,
+   "gold_end": 4.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg099_start0053",
+    5,
+    3.3
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg064_start0060",
+    5,
+    2.6
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg147_start0544",
+    12,
+    1.2
+   ],
+   "class": "Knock",
+   "gold_start": 1.2,
+   "gold_end": 1.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    3.6
+   ],
+   "class": "Laughter",
+   "gold_start": 3.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg086_start1024",
+    3,
+    0.6
+   ],
+   "class": "Telephone",
+   "gold_start": 0.6,
+   "gold_end": 1.1,
+   "err": {
+    "stamp": null,
+    "hyst": -0.1,
+    "occl": 0.04
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg279_start0259",
+    10,
+    0.7
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 0.7,
+   "gold_end": 2.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix003_deg190_start1578",
+    10,
+    2.7
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 2.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.8,
+    "hyst": 0.55,
+    "occl": 0.13
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg189_start1194",
+    6,
+    0.9
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg180_start1590",
+    2,
+    1.5
+   ],
+   "class": "Clapping",
+   "gold_start": 1.5,
+   "gold_end": 4.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg075_start0471",
+    3,
+    2.6
+   ],
+   "class": "Telephone",
+   "gold_start": 2.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.1,
+    "hyst": -0.1,
+    "occl": 0.2
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg012_start0927",
+    5,
+    3.5
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg287_start0152",
+    10,
+    2.0
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 2.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.0,
+    "hyst": 0.0,
+    "occl": -0.18
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg340_start4005",
+    10,
+    3.4
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg351_start0097",
+    12,
+    2.6
+   ],
+   "class": "Knock",
+   "gold_start": 2.6,
+   "gold_end": 3.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg280_start0503",
+    4,
+    1.6
+   ],
+   "class": "Laughter",
+   "gold_start": 1.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg105_start0990",
+    7,
+    3.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg035_start0024",
+    5,
+    1.5
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.5,
+   "gold_end": 2.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg050_start1007",
+    3,
+    2.3
+   ],
+   "class": "Telephone",
+   "gold_start": 2.3,
+   "gold_end": 2.8,
+   "err": {
+    "stamp": -0.3,
+    "hyst": -0.3,
+    "occl": -1.44
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg311_start1184",
+    4,
+    2.1
+   ],
+   "class": "Laughter",
+   "gold_start": 2.1,
+   "gold_end": 3.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg359_start0528",
+    2,
+    4.0
+   ],
+   "class": "Clapping",
+   "gold_start": 4.0,
+   "gold_end": 4.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg227_start0469",
+    3,
+    2.8
+   ],
+   "class": "Telephone",
+   "gold_start": 2.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.05,
+    "hyst": -0.05,
+    "occl": 0.25
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix003_deg282_start1578",
+    10,
+    2.7
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 2.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.8,
+    "hyst": 0.55,
+    "occl": 0.13
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix004_deg290_start1318",
+    6,
+    3.7
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg175_start0095",
+    12,
+    2.8
+   ],
+   "class": "Knock",
+   "gold_start": 2.8,
+   "gold_end": 3.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix004_deg197_start0977",
+    2,
+    2.8
+   ],
+   "class": "Clapping",
+   "gold_start": 2.8,
+   "gold_end": 4.8,
+   "err": {
+    "stamp": 0.2,
+    "hyst": 0.2,
+    "occl": 0.5
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg299_start0877",
+    10,
+    2.4
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 2.4,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg204_start0941",
+    4,
+    0.9
+   ],
+   "class": "Laughter",
+   "gold_start": 0.9,
+   "gold_end": 1.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg183_start0081",
+    5,
+    3.1
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 3.1,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    3.6
+   ],
+   "class": "Laughter",
+   "gold_start": 3.6,
+   "gold_end": 4.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg163_start0153",
+    6,
+    0.9
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.9,
+   "gold_end": 4.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix005_deg304_start1459",
+    3,
+    1.1
+   ],
+   "class": "Telephone",
+   "gold_start": 1.1,
+   "gold_end": 2.1,
+   "err": {
+    "stamp": 1.15,
+    "hyst": 0.15,
+    "occl": -0.75
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix005_deg221_start1075",
+    6,
+    1.1
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.1,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg061_start0600",
+    2,
+    2.8
+   ],
+   "class": "Clapping",
+   "gold_start": 2.8,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": 0.45,
+    "hyst": 0.2,
+    "occl": 0.5
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg335_start0346",
+    5,
+    0.4
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg332_start0352",
+    2,
+    3.7
+   ],
+   "class": "Clapping",
+   "gold_start": 3.7,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg124_start1125",
+    5,
+    0.6
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.6,
+   "gold_end": 2.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg234_start0929",
+    10,
+    3.7
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.7,
+   "gold_end": 4.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg188_start1254",
+    4,
+    3.4
+   ],
+   "class": "Laughter",
+   "gold_start": 3.4,
+   "gold_end": 4.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg280_start0503",
+    4,
+    2.5
+   ],
+   "class": "Laughter",
+   "gold_start": 2.5,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    0.9
+   ],
+   "class": "Laughter",
+   "gold_start": 0.9,
+   "gold_end": 1.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg339_start0726",
+    2,
+    0.6
+   ],
+   "class": "Clapping",
+   "gold_start": 0.6,
+   "gold_end": 1.7,
+   "err": {
+    "stamp": 0.9,
+    "hyst": 0.65,
+    "occl": 0.71
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg065_start0082",
+    6,
+    0.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.8,
+   "gold_end": 2.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg206_start0985",
+    3,
+    3.0
+   ],
+   "class": "Telephone",
+   "gold_start": 3.0,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": 1.25,
+    "occl": 0.19
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg234_start0024",
+    6,
+    0.4
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg225_start0642",
+    7,
+    1.3
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.3,
+   "gold_end": 2.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix004_deg139_start0563",
+    4,
+    3.2
+   ],
+   "class": "Laughter",
+   "gold_start": 3.2,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix005_deg110_start1442",
+    3,
+    2.8
+   ],
+   "class": "Telephone",
+   "gold_start": 2.8,
+   "gold_end": 3.8,
+   "err": {
+    "stamp": 0.95,
+    "hyst": -0.05,
+    "occl": 0.09
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg202_start0955",
+    5,
+    0.7
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix005_deg143_start1202",
+    7,
+    1.4
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.4,
+   "gold_end": 4.9,
+   "err": {
+    "stamp": 0.6,
+    "hyst": 0.35,
+    "occl": 0.57
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg311_start0223",
+    5,
+    1.5
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.5,
+   "gold_end": 2.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg188_start1254",
+    4,
+    2.9
+   ],
+   "class": "Laughter",
+   "gold_start": 2.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg155_start1303",
+    7,
+    0.7
+   ],
+   "class": "Door, open or close",
+   "gold_start": 0.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg300_start0100",
+    6,
+    3.5
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.5,
+   "gold_end": 4.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix005_deg197_start1151",
+    7,
+    2.1
+   ],
+   "class": "Door, open or close",
+   "gold_start": 2.1,
+   "gold_end": 3.6,
+   "err": {
+    "stamp": null,
+    "hyst": 0.65,
+    "occl": 0.31
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg255_start0113",
+    12,
+    1.0
+   ],
+   "class": "Knock",
+   "gold_start": 1.0,
+   "gold_end": 1.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg133_start0171",
+    10,
+    1.1
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.1,
+   "gold_end": 3.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg355_start0200",
+    6,
+    2.9
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 2.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg113_start0154",
+    10,
+    1.8
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.05,
+    "hyst": -0.05,
+    "occl": -0.31
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg006_start0323",
+    5,
+    2.7
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg031_start0121",
+    10,
+    1.3
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.3,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg025_start4080",
+    10,
+    3.5
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg357_start0066",
+    5,
+    2.0
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg296_start0230",
+    5,
+    0.8
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.8,
+   "gold_end": 1.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg229_start0572",
+    6,
+    2.3
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 2.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg019_start0527",
+    12,
+    2.9
+   ],
+   "class": "Knock",
+   "gold_start": 2.9,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg218_start0288",
+    4,
+    4.0
+   ],
+   "class": "Laughter",
+   "gold_start": 4.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg003_start1302",
+    7,
+    3.3
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg326_start0231",
+    5,
+    0.7
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.7,
+   "gold_end": 1.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix006_deg260_start2332",
+    4,
+    3.4
+   ],
+   "class": "Laughter",
+   "gold_start": 3.4,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg001_start0718",
+    10,
+    1.9
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg116_start0077",
+    3,
+    0.8
+   ],
+   "class": "Telephone",
+   "gold_start": 0.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.8,
+    "hyst": -0.8,
+    "occl": -0.8
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg185_start4057",
+    10,
+    3.9
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg112_start0205",
+    7,
+    3.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg197_start0021",
+    5,
+    1.8
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.8,
+   "gold_end": 2.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg195_start1002",
+    3,
+    1.3
+   ],
+   "class": "Telephone",
+   "gold_start": 1.3,
+   "gold_end": 1.8,
+   "err": {
+    "stamp": 1.2,
+    "hyst": 1.2,
+    "occl": 0.06
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg259_start1256",
+    7,
+    2.7
+   ],
+   "class": "Door, open or close",
+   "gold_start": 2.7,
+   "gold_end": 4.3,
+   "err": {
+    "stamp": null,
+    "hyst": 0.3,
+    "occl": 0.6
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg267_start0539",
+    12,
+    1.7
+   ],
+   "class": "Knock",
+   "gold_start": 1.7,
+   "gold_end": 2.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix003_deg068_start1233",
+    6,
+    1.2
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.2,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg162_start0333",
+    5,
+    1.7
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg332_start0352",
+    6,
+    2.7
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 2.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg168_start0024",
+    10,
+    3.5
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg131_start0208",
+    5,
+    3.0
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 3.0,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg356_start1174",
+    6,
+    2.9
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 2.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg198_start0228",
+    7,
+    1.2
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.2,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg122_start0247",
+    12,
+    3.2
+   ],
+   "class": "Knock",
+   "gold_start": 3.2,
+   "gold_end": 3.9,
+   "err": {
+    "stamp": null,
+    "hyst": 0.05,
+    "occl": 0.35
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg008_start0836",
+    3,
+    3.9
+   ],
+   "class": "Telephone",
+   "gold_start": 3.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.1,
+    "hyst": 0.1,
+    "occl": 0.4
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg189_start1194",
+    4,
+    2.4
+   ],
+   "class": "Laughter",
+   "gold_start": 2.4,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg035_start0024",
+    10,
+    3.5
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg007_start1011",
+    7,
+    1.4
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.4,
+   "gold_end": 3.4,
+   "err": {
+    "stamp": 1.35,
+    "hyst": 0.85,
+    "occl": 0.51
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg356_start0862",
+    3,
+    1.3
+   ],
+   "class": "Telephone",
+   "gold_start": 1.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.05,
+    "hyst": -0.05,
+    "occl": 0.09
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg078_start0621",
+    2,
+    0.7
+   ],
+   "class": "Clapping",
+   "gold_start": 0.7,
+   "gold_end": 1.4,
+   "err": {
+    "stamp": 0.3,
+    "hyst": 0.05,
+    "occl": 0.27
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg225_start0535",
+    12,
+    2.1
+   ],
+   "class": "Knock",
+   "gold_start": 2.1,
+   "gold_end": 2.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg202_start0596",
+    12,
+    3.4
+   ],
+   "class": "Knock",
+   "gold_start": 3.4,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": null,
+    "hyst": 0.1,
+    "occl": 0.32
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg067_start1590",
+    2,
+    1.5
+   ],
+   "class": "Clapping",
+   "gold_start": 1.5,
+   "gold_end": 4.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg315_start0506",
+    6,
+    0.4
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.4,
+   "gold_end": 2.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg105_start0462",
+    3,
+    3.5
+   ],
+   "class": "Telephone",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.0,
+    "hyst": 0.0,
+    "occl": 0.3
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg078_start0070",
+    10,
+    4.0
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 4.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg122_start0006",
+    2,
+    3.7
+   ],
+   "class": "Clapping",
+   "gold_start": 3.7,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg213_start1596",
+    2,
+    0.9
+   ],
+   "class": "Clapping",
+   "gold_start": 0.9,
+   "gold_end": 3.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg270_start0205",
+    7,
+    3.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg189_start1194",
+    4,
+    0.7
+   ],
+   "class": "Laughter",
+   "gold_start": 0.7,
+   "gold_end": 1.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg251_start0611",
+    12,
+    1.9
+   ],
+   "class": "Knock",
+   "gold_start": 1.9,
+   "gold_end": 2.7,
+   "err": {
+    "stamp": null,
+    "hyst": 0.1,
+    "occl": 0.32
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg352_start1055",
+    3,
+    0.5
+   ],
+   "class": "Telephone",
+   "gold_start": 0.5,
+   "gold_end": 1.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg275_start0131",
+    10,
+    0.6
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 0.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg163_start0153",
+    6,
+    0.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.8,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg231_start1364",
+    7,
+    0.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 0.5,
+   "gold_end": 1.0,
+   "err": {
+    "stamp": null,
+    "hyst": 0.5,
+    "occl": 0.48
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg025_start4080",
+    10,
+    1.6
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.6,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg341_start0554",
+    6,
+    3.3
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg305_start0045",
+    3,
+    4.0
+   ],
+   "class": "Telephone",
+   "gold_start": 4.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.25,
+    "hyst": -0.25,
+    "occl": 0.05
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg311_start0326",
+    5,
+    2.4
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix011_deg180_start1498",
+    4,
+    2.0
+   ],
+   "class": "Laughter",
+   "gold_start": 2.0,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg197_start0021",
+    10,
+    3.8
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix003_deg319_start1692",
+    6,
+    3.3
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg021_start0955",
+    10,
+    1.1
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.1,
+   "gold_end": 1.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg066_start1014",
+    7,
+    1.1
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.1,
+   "gold_end": 3.1,
+   "err": {
+    "stamp": 1.15,
+    "hyst": 1.15,
+    "occl": 0.57
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    6,
+    3.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg162_start0519",
+    12,
+    3.7
+   ],
+   "class": "Knock",
+   "gold_start": 3.7,
+   "gold_end": 4.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg051_start2030",
+    2,
+    0.5
+   ],
+   "class": "Clapping",
+   "gold_start": 0.5,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": -0.5,
+    "hyst": -0.5,
+    "occl": -0.2
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg225_start0843",
+    3,
+    3.2
+   ],
+   "class": "Telephone",
+   "gold_start": 3.2,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.05,
+    "hyst": 0.05,
+    "occl": 0.27
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg292_start0100",
+    10,
+    1.0
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.0,
+   "gold_end": 4.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg225_start0023",
+    5,
+    2.8
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.8,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg112_start0644",
+    7,
+    1.1
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.1,
+   "gold_end": 2.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix005_deg338_start1460",
+    3,
+    1.0
+   ],
+   "class": "Telephone",
+   "gold_start": 1.0,
+   "gold_end": 2.0,
+   "err": {
+    "stamp": 1.0,
+    "hyst": 0.25,
+    "occl": 0.31
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix003_deg270_start1271",
+    7,
+    1.9
+   ],
+   "class": "Door, open or close",
+   "gold_start": 1.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg141_start0352",
+    2,
+    3.7
+   ],
+   "class": "Clapping",
+   "gold_start": 3.7,
+   "gold_end": 4.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg063_start1126",
+    3,
+    0.4
+   ],
+   "class": "Telephone",
+   "gold_start": 0.4,
+   "gold_end": 0.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg189_start1194",
+    4,
+    0.4
+   ],
+   "class": "Laughter",
+   "gold_start": 0.4,
+   "gold_end": 1.2,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg105_start0536",
+    2,
+    3.2
+   ],
+   "class": "Clapping",
+   "gold_start": 3.2,
+   "gold_end": 4.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg184_start0086",
+    2,
+    2.3
+   ],
+   "class": "Clapping",
+   "gold_start": 2.3,
+   "gold_end": 3.1,
+   "err": {
+    "stamp": -0.05,
+    "hyst": -0.05,
+    "occl": 0.25
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg103_start0247",
+    10,
+    1.9
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.9,
+   "gold_end": 3.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg276_start1362",
+    7,
+    0.7
+   ],
+   "class": "Door, open or close",
+   "gold_start": 0.7,
+   "gold_end": 1.2,
+   "err": {
+    "stamp": null,
+    "hyst": 0.05,
+    "occl": 0.03
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg287_start0477",
+    3,
+    2.0
+   ],
+   "class": "Telephone",
+   "gold_start": 2.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.0,
+    "hyst": 0.0,
+    "occl": 0.3
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg095_start1248",
+    7,
+    3.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg311_start0326",
+    7,
+    3.2
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.2,
+   "gold_end": 4.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg078_start1243",
+    7,
+    4.0
+   ],
+   "class": "Door, open or close",
+   "gold_start": 4.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg107_start0084",
+    6,
+    0.5
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.5,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg341_start0554",
+    2,
+    1.4
+   ],
+   "class": "Clapping",
+   "gold_start": 1.4,
+   "gold_end": 2.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg176_start0240",
+    12,
+    3.9
+   ],
+   "class": "Knock",
+   "gold_start": 3.9,
+   "gold_end": 4.6,
+   "err": {
+    "stamp": 0.1,
+    "hyst": 0.1,
+    "occl": 0.32
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg071_start0550",
+    4,
+    2.8
+   ],
+   "class": "Laughter",
+   "gold_start": 2.8,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix007_deg189_start0982",
+    2,
+    0.8
+   ],
+   "class": "Clapping",
+   "gold_start": 0.8,
+   "gold_end": 1.8,
+   "err": {
+    "stamp": null,
+    "hyst": 0.2,
+    "occl": 0.5
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg101_start0022",
+    2,
+    2.1
+   ],
+   "class": "Clapping",
+   "gold_start": 2.1,
+   "gold_end": 2.6,
+   "err": {
+    "stamp": 1.15,
+    "hyst": 1.15,
+    "occl": 0.33
+   }
+  },
+  {
+   "key": [
+    "fold4_room2_mix006_deg123_start1240",
+    4,
+    2.8
+   ],
+   "class": "Laughter",
+   "gold_start": 2.8,
+   "gold_end": 3.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg019_start0194",
+    2,
+    2.0
+   ],
+   "class": "Clapping",
+   "gold_start": 2.0,
+   "gold_end": 2.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg035_start0436",
+    5,
+    1.8
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.3,
+    "hyst": -0.55,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg071_start0550",
+    6,
+    3.7
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg043_start1257",
+    6,
+    1.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg098_start1246",
+    6,
+    2.9
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 2.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix007_deg002_start0979",
+    2,
+    1.1
+   ],
+   "class": "Clapping",
+   "gold_start": 1.1,
+   "gold_end": 2.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg006_start0323",
+    7,
+    3.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg323_start0025",
+    5,
+    2.6
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.6,
+   "gold_end": 3.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg217_start1321",
+    7,
+    2.4
+   ],
+   "class": "Door, open or close",
+   "gold_start": 2.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix003_deg280_start1572",
+    10,
+    3.3
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.7,
+    "hyst": 0.45,
+    "occl": 0.35
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg018_start0108",
+    5,
+    0.4
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.4,
+   "gold_end": 2.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg051_start0617",
+    2,
+    1.1
+   ],
+   "class": "Clapping",
+   "gold_start": 1.1,
+   "gold_end": 1.8,
+   "err": {
+    "stamp": 0.15,
+    "hyst": -0.1,
+    "occl": 0.04
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg005_start0517",
+    12,
+    3.9
+   ],
+   "class": "Knock",
+   "gold_start": 3.9,
+   "gold_end": 4.5,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix001_deg328_start0388",
+    2,
+    3.7
+   ],
+   "class": "Clapping",
+   "gold_start": 3.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg352_start0598",
+    12,
+    3.2
+   ],
+   "class": "Knock",
+   "gold_start": 3.2,
+   "gold_end": 4.0,
+   "err": {
+    "stamp": null,
+    "hyst": 0.05,
+    "occl": 0.19
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg256_start0272",
+    6,
+    3.7
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 3.7,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg196_start1128",
+    5,
+    0.3
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 0.3,
+   "gold_end": 2.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg237_start0119",
+    12,
+    0.4
+   ],
+   "class": "Knock",
+   "gold_start": 0.4,
+   "gold_end": 1.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg015_start0101",
+    10,
+    3.3
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg071_start0550",
+    2,
+    1.8
+   ],
+   "class": "Clapping",
+   "gold_start": 1.8,
+   "gold_end": 2.7,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg153_start4025",
+    10,
+    1.4
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 1.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg095_start1248",
+    6,
+    1.0
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 1.0,
+   "gold_end": 3.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg281_start0052",
+    5,
+    3.4
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 3.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg311_start1184",
+    4,
+    2.6
+   ],
+   "class": "Laughter",
+   "gold_start": 2.6,
+   "gold_end": 3.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg080_start1301",
+    7,
+    0.9
+   ],
+   "class": "Door, open or close",
+   "gold_start": 0.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg283_start0516",
+    12,
+    4.0
+   ],
+   "class": "Knock",
+   "gold_start": 4.0,
+   "gold_end": 4.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg244_start1577",
+    2,
+    2.8
+   ],
+   "class": "Clapping",
+   "gold_start": 2.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg150_start1683",
+    3,
+    2.2
+   ],
+   "class": "Telephone",
+   "gold_start": 2.2,
+   "gold_end": 3.7,
+   "err": {
+    "stamp": 0.3,
+    "hyst": 0.3,
+    "occl": -0.04
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix006_deg083_start1535",
+    4,
+    2.2
+   ],
+   "class": "Laughter",
+   "gold_start": 2.2,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg188_start1254",
+    4,
+    3.4
+   ],
+   "class": "Laughter",
+   "gold_start": 3.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg283_start0441",
+    5,
+    1.3
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 1.3,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": -0.3,
+    "hyst": -0.3,
+    "occl": -0.08
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg097_start0099",
+    12,
+    2.4
+   ],
+   "class": "Knock",
+   "gold_start": 2.4,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg092_start0177",
+    10,
+    0.5
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 0.5,
+   "gold_end": 3.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg207_start0206",
+    6,
+    2.8
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 2.8,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg195_start1002",
+    3,
+    2.8
+   ],
+   "class": "Telephone",
+   "gold_start": 2.8,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": -0.3,
+    "hyst": -0.3,
+    "occl": -1.44
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix005_deg312_start1132",
+    7,
+    4.0
+   ],
+   "class": "Door, open or close",
+   "gold_start": 4.0,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg268_start1744",
+    3,
+    1.1
+   ],
+   "class": "Telephone",
+   "gold_start": 1.1,
+   "gold_end": 2.6,
+   "err": {
+    "stamp": 0.15,
+    "hyst": 0.15,
+    "occl": -0.03
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg021_start0955",
+    2,
+    2.4
+   ],
+   "class": "Clapping",
+   "gold_start": 2.4,
+   "gold_end": 2.9,
+   "err": {
+    "stamp": null,
+    "hyst": 0.85,
+    "occl": 0.35
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg168_start0109",
+    10,
+    2.5
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 2.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix002_deg094_start1802",
+    4,
+    1.3
+   ],
+   "class": "Laughter",
+   "gold_start": 1.3,
+   "gold_end": 1.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg159_start0319",
+    10,
+    3.6
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 3.6,
+   "gold_end": 4.6,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg147_start1087",
+    3,
+    2.8
+   ],
+   "class": "Telephone",
+   "gold_start": 2.8,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg260_start1136",
+    6,
+    0.6
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.6,
+   "gold_end": 4.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg201_start0325",
+    5,
+    2.5
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg201_start0325",
+    7,
+    3.3
+   ],
+   "class": "Door, open or close",
+   "gold_start": 3.3,
+   "gold_end": 4.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg294_start0096",
+    12,
+    2.7
+   ],
+   "class": "Knock",
+   "gold_start": 2.7,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg186_start1095",
+    5,
+    3.6
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 3.6,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg277_start1082",
+    3,
+    3.3
+   ],
+   "class": "Telephone",
+   "gold_start": 3.3,
+   "gold_end": 3.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg193_start1006",
+    3,
+    2.4
+   ],
+   "class": "Telephone",
+   "gold_start": 2.4,
+   "gold_end": 2.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg327_start0253",
+    12,
+    2.6
+   ],
+   "class": "Knock",
+   "gold_start": 2.6,
+   "gold_end": 3.3,
+   "err": {
+    "stamp": 0.15,
+    "hyst": -0.1,
+    "occl": 0.2
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg042_start1251",
+    2,
+    3.4
+   ],
+   "class": "Clapping",
+   "gold_start": 3.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg311_start0938",
+    5,
+    2.4
+   ],
+   "class": "Domestic sounds",
+   "gold_start": 2.4,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg241_start0792",
+    6,
+    0.5
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.5,
+   "gold_end": 3.9,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg024_start0235",
+    7,
+    0.5
+   ],
+   "class": "Door, open or close",
+   "gold_start": 0.5,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg323_start0143",
+    10,
+    2.9
+   ],
+   "class": "Water tap, faucet",
+   "gold_start": 2.9,
+   "gold_end": 5.0,
+   "err": {
+    "stamp": 0.35,
+    "hyst": 0.1,
+    "occl": -0.17
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg096_start0258",
+    12,
+    2.1
+   ],
+   "class": "Knock",
+   "gold_start": 2.1,
+   "gold_end": 2.8,
+   "err": {
+    "stamp": 0.15,
+    "hyst": -0.1,
+    "occl": 0.2
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg239_start0155",
+    6,
+    0.3
+   ],
+   "class": "Walk, footsteps",
+   "gold_start": 0.3,
+   "gold_end": 4.1,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix005_deg337_start1432",
+    3,
+    3.8
+   ],
+   "class": "Telephone",
+   "gold_start": 3.8,
+   "gold_end": 4.8,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg289_start0115",
+    12,
+    0.8
+   ],
+   "class": "Knock",
+   "gold_start": 0.8,
+   "gold_end": 1.4,
+   "err": {
+    "stamp": null,
+    "hyst": null,
+    "occl": null
+   }
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg028_start1677",
+    3,
+    2.8
+   ],
+   "class": "Telephone",
+   "gold_start": 2.8,
+   "gold_end": 4.3,
+   "err": {
+    "stamp": 0.2,
+    "hyst": 0.2,
+    "occl": 0.34
+   }
+  }
+ ],
+ "summary": {
+  "stamp": {
+   "n": 50,
+   "mean": 0.29,
+   "median": 0.15,
+   "mae": 0.43199999999999994,
+   "within_0.25": 0.44,
+   "within_0.5": 0.68
+  },
+  "hyst": {
+   "n": 66,
+   "mean": 0.21666666666666665,
+   "median": 0.1,
+   "mae": 0.34696969696969693,
+   "within_0.25": 0.5757575757575758,
+   "within_0.5": 0.7424242424242424
+  },
+  "occl": {
+   "n": 66,
+   "mean": 0.16424242424242425,
+   "median": 0.2,
+   "mae": 0.35,
+   "within_0.25": 0.45454545454545453,
+   "within_0.5": 0.803030303030303
+  }
+ },
+ "settings": {
+  "threshold": 0.35,
+  "min_dur": 0.5,
+  "match_sec": 1.5,
+  "split": "dev-test-tau"
+ }
+}

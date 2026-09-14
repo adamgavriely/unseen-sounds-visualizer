@@ -189,6 +189,19 @@ def phase_render(args):
                 pipeline.run(clip, work_root=work_root)
                 ok += 1
             except Exception as e:
+                # a CUDA OOM on a 22 GB card is fragmentation between the resident
+                # models, not the clip (v3 job 28942456 lost london_protest_01 that way);
+                # clear the allocator and try once more before counting a failure
+                if "out of memory" in str(e).lower():
+                    try:
+                        import torch
+                        torch.cuda.empty_cache()
+                        pipeline.run(clip, work_root=work_root)
+                        ok += 1
+                        print(f"  ~ render {clip.name}: recovered after OOM", flush=True)
+                        continue
+                    except Exception as e2:
+                        e = e2
                 fail += 1
                 print(f"  ! render {clip.name}: {type(e).__name__}: {e}", flush=True)
             if i % 10 == 0:
@@ -284,16 +297,17 @@ def phase_reference(tag: str = "", desc_tag=None, device: str = "cuda"):
     clips = sorted({r["clip"] for r in recs})
     wavs, videos, transcripts = {}, {}, {}
     for c in clips:
+        stem = Path(c).stem                     # cache names carry the extension
         # any system's work dir has the same audio, video reference and transcript
         for system in SYSTEMS:
-            wd = work_root_for(system, desc_tag if desc_tag is not None else tag) / c
+            wd = work_root_for(system, desc_tag if desc_tag is not None else tag) / stem
             if (wd / "audio.wav").exists():
                 wavs[c] = wd / "audio.wav"
                 seg = wd / "segments.json"
                 transcripts[c] = " ".join(x.get("text", "") for x in
                                           json.loads(seg.read_text("utf-8"))) if seg.exists() else ""
                 break
-        vid = _find_clip(c)
+        vid = _find_clip(stem)
         if vid is not None:
             videos[c] = vid
     missing = [c for c in clips if c not in wavs or c not in videos]
