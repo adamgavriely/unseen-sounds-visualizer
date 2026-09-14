@@ -114,7 +114,7 @@ def _split_items(lines: List[str]) -> List[str]:
     import re
     out: List[str] = []
     for line in lines:
-        for part in re.split(r"(?:^|[;,]\s*)source\s*:\s*|;", line, flags=re.I):
+        for part in re.split(r"(?:^|[;,]?\s*)source\s*:\s*|;", line, flags=re.I):
             part = part.strip(" -*•.	").strip()
             if part and part.lower() != "none" and part not in out:
                 out.append(part)
@@ -129,38 +129,76 @@ def _chunks(audio: np.ndarray, sr: int, sec: float = CHUNK):
             yield seg
 
 
-def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
-    """clip -> list of 'source: sound' lines from the audio LM (vocals removed)."""
-    import librosa
+# Tags the audio LM uses for speech; dropped from the MIX pass only, since the whole point
+# of listening to the no-vocals stem first is to keep the dialogue out of the reference.
+SPEECH_TAGS = {"speech", "male speech", "female speech", "male speech, man speaking",
+               "female speech, woman speaking", "conversation", "narration", "narration, monologue",
+               "human voice", "speech synthesizer", "child speech, kid speaking", "talking"}
+
+
+def _is_speech_tag(item: str) -> bool:
+    low = item.lower().strip()
+    return low in SPEECH_TAGS or low.startswith("speech") or low.endswith("speech")
+
+
+def _listen_once(proc, mdl, audio: np.ndarray, sr: int) -> List[str]:
     import torch
+    items: List[str] = []
+    reply = ""
+    for seg in _chunks(audio, sr):
+        conv = [{"role": "user", "content": [{"type": "audio", "audio_url": ""},
+                                             {"type": "text", "text": LISTEN_PROMPT}]}]
+        text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
+        inputs = _with_audio(proc, [seg], sr, text=text).to(mdl.device)
+        with torch.no_grad():
+            gen = mdl.generate(**inputs, max_new_tokens=96, do_sample=False)
+        reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
+                                  skip_special_tokens=True)[0].strip()
+        for line in reply.splitlines():
+            line = line.strip(" -*•").strip()
+            if line and line.lower().rstrip(".") != "none" and line not in items:
+                items.append(line)
+    return _split_items(items)
+
+
+def listen_all(clips: Dict[str, Path], device: str) -> Dict[str, List[str]]:
+    """clip -> sounds named by the audio LM: the union of a pass over the no-vocals stem
+    and a pass over the raw mix (speech tags dropped from the latter).
+
+    The stem pass alone came back empty on 12 of the first 37 clips of job 28942680,
+    among them an aviary, crossing bells and two storms: Demucs pulls tonal sounds into
+    the vocals stem, and a 7B audio LM takes the "none" exit on quiet audio. The mix pass
+    restores recall; CLAP verification against decoys (verify_all) remains the only
+    filter. Where each item was heard (stem / mix / both) is logged so the report can say
+    how often the stem was hollow -- a limitation of the system's own separation front
+    end as much as of this reference. (Review, 2026-09-14.)
+    """
+    import librosa
     from transformers import AutoProcessor, Qwen2AudioForConditionalGeneration
+    import torch
     proc = AutoProcessor.from_pretrained(LISTEN_MODEL)
     mdl = Qwen2AudioForConditionalGeneration.from_pretrained(
         LISTEN_MODEL, torch_dtype=torch.bfloat16 if device == "cuda" else torch.float32,
         device_map="auto" if device == "cuda" else None).eval()
+    sr = proc.feature_extractor.sampling_rate
     out = {}
     with tempfile.TemporaryDirectory() as td:
         for name, wav in clips.items():
             nov = _remove_vocals(Path(wav), Path(td))
-            audio, _ = librosa.load(str(nov), sr=proc.feature_extractor.sampling_rate, mono=True)
-            items: List[str] = []
-            for seg in _chunks(audio, proc.feature_extractor.sampling_rate):
-                conv = [{"role": "user", "content": [{"type": "audio", "audio_url": ""},
-                                                     {"type": "text", "text": LISTEN_PROMPT}]}]
-                text = proc.apply_chat_template(conv, add_generation_prompt=True, tokenize=False)
-                inputs = _with_audio(proc, [seg], proc.feature_extractor.sampling_rate,
-                                     text=text).to(mdl.device)
-                with torch.no_grad():
-                    gen = mdl.generate(**inputs, max_new_tokens=96, do_sample=False)
-                reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
-                                          skip_special_tokens=True)[0].strip()
-                for line in reply.splitlines():
-                    line = line.strip(" -*•").strip()
-                    if line and line.lower().rstrip(".") != "none" and line not in items:
-                        items.append(line)
-            items = _split_items(items)
+            stem_audio, _ = librosa.load(str(nov), sr=sr, mono=True)
+            mix_audio, _ = librosa.load(str(wav), sr=sr, mono=True)
+            stem_items = _listen_once(proc, mdl, stem_audio, sr)
+            mix_items = [it for it in _listen_once(proc, mdl, mix_audio, sr) if not _is_speech_tag(it)]
+            items = list(stem_items)
+            for it in mix_items:
+                if it not in items:
+                    items.append(it)
+            where = {it: ("both" if it in stem_items and it in mix_items else
+                          "stem" if it in stem_items else "mix") for it in items}
             out[name] = items
-            print(f"       [ref] listen {name}: {items}", flush=True)
+            reply = f"stem={stem_items} mix={mix_items}"
+            print(f"       [ref] listen {name}: " +
+                  " | ".join(f"{it} [{where[it]}]" for it in items), flush=True)
             if len(out) == 1 and not items:
                 # sanity gate (review, 2026-09-14): a blind audio LM fails in two minutes,
                 # not two hours. The first clip is a random benchmark clip; an empty list
