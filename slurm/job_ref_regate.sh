@@ -34,6 +34,7 @@ for k in ("verified", "references"):
 json.dump(d, open(p, "w", encoding="utf-8"), indent=1, ensure_ascii=False)
 print("cache keys now:", list(d))
 PY
-GEN=diffusion TAG="$TAG" PHASE=reference bash slurm/job_protocol.sh
-GEN=diffusion TAG="${TAG}_indep" DESC_TAG="$TAG" PHASE=judge INDEP=1 bash slurm/job_protocol.sh
+RUN="$TAG"     # a prefix assignment sees the ones before it: TAG=.. DESC_TAG="$TAG" reads the NEW TAG
+GEN=diffusion TAG="$RUN" PHASE=reference bash slurm/job_protocol.sh
+GEN=diffusion TAG="${RUN}_indep" DESC_TAG="$RUN" PHASE=judge INDEP=1 bash slurm/job_protocol.sh
 echo "DONE -> $RES"
