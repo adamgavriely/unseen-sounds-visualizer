@@ -1,0 +1,695 @@
+{
+ "clip": "ambient_harbour_boats_724.mp4",
+ "tag": "no_ambient",
+ "duration": 16.016,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.9049509167671204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.4716973900794983,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 0.21999999999999997,
+   "end": 10.0,
+   "confidence": 0.32183021306991577,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 0.21999999999999997,
+   "end": 8.75,
+   "confidence": 0.30408570170402527,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.14267902076244354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.0768539309501648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.07590940594673157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.056232716888189316,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 0.07000000000000006,
+   "end": 1.25,
+   "confidence": 0.14630743861198425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart murmur",
+   "start": 0.40000000000000013,
+   "end": 1.0,
+   "confidence": 0.13572171330451965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.0988527312874794,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.020000000000000018,
+   "end": 2.75,
+   "confidence": 0.08655045181512833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 0.5800000000000001,
+   "end": 2.25,
+   "confidence": 0.0742964893579483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 1.55,
+   "end": 3.0,
+   "confidence": 0.09483396261930466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.0,
+   "end": 4.5,
+   "confidence": 0.1027345061302185,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 2.25,
+   "end": 8.5,
+   "confidence": 0.15085726976394653,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 2.25,
+   "end": 9.75,
+   "confidence": 0.05194198340177536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 2.56,
+   "end": 3.25,
+   "confidence": 0.05176697298884392,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 2.75,
+   "end": 6.75,
+   "confidence": 0.11448463797569275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 2.75,
+   "end": 5.75,
+   "confidence": 0.06121261417865753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 3.3,
+   "end": 6.75,
+   "confidence": 0.11515941470861435,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 1.75,
+   "end": 5.75,
+   "confidence": 0.08951008319854736,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 4.25,
+   "end": 6.5,
+   "confidence": 0.1044330820441246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 3.35,
+   "end": 5.75,
+   "confidence": 0.055392052978277206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 3.0,
+   "end": 7.0,
+   "confidence": 0.1290464699268341,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 4.2,
+   "end": 8.0,
+   "confidence": 0.13068686425685883,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 5.16,
+   "end": 6.75,
+   "confidence": 0.06508118659257889,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 5.41,
+   "end": 7.25,
+   "confidence": 0.08010699599981308,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 4.25,
+   "end": 7.0,
+   "confidence": 0.06536144763231277,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 5.02,
+   "end": 8.5,
+   "confidence": 0.07842543721199036,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 4.5,
+   "end": 7.0,
+   "confidence": 0.05950115993618965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 6.0,
+   "end": 6.75,
+   "confidence": 0.053855158388614655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 6.09,
+   "end": 8.5,
+   "confidence": 0.09042096138000488,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 6.42,
+   "end": 9.75,
+   "confidence": 0.07689423114061356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 7.0,
+   "end": 8.75,
+   "confidence": 0.07555049657821655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.09433257579803467,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.0655389204621315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 5.75,
+   "end": 8.5,
+   "confidence": 0.05451617017388344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.75,
+   "end": 11.25,
+   "confidence": 0.07193314284086227,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 7.61,
+   "end": 11.5,
+   "confidence": 0.06283366680145264,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 9.0,
+   "end": 12.0,
+   "confidence": 0.08073659986257553,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.05731586739420891,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 8.28,
+   "end": 11.5,
+   "confidence": 0.06397854536771774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 10.0,
+   "end": 13.25,
+   "confidence": 0.06443361937999725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 9.45,
+   "end": 11.5,
+   "confidence": 0.07512039691209793,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 11.25,
+   "end": 15.75,
+   "confidence": 0.13418878614902496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 11.25,
+   "end": 13.25,
+   "confidence": 0.09838894009590149,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 10.75,
+   "end": 13.25,
+   "confidence": 0.06867504864931107,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 11.5,
+   "end": 15.75,
+   "confidence": 0.1857161968946457,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 11.0,
+   "end": 15.5,
+   "confidence": 0.14062504470348358,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 11.5,
+   "end": 15.75,
+   "confidence": 0.05667512118816376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 11.25,
+   "end": 13.25,
+   "confidence": 0.06233840435743332,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 11.83,
+   "end": 13.5,
+   "confidence": 0.1258036494255066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 11.77,
+   "end": 13.5,
+   "confidence": 0.10375674068927765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 12.75,
+   "end": 14.5,
+   "confidence": 0.07055988162755966,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 12.75,
+   "end": 15.75,
+   "confidence": 0.06827578693628311,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 12.75,
+   "end": 15.75,
+   "confidence": 0.057240910828113556,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 12.75,
+   "end": 15.75,
+   "confidence": 0.10045435279607773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 13.25,
+   "end": 13.75,
+   "confidence": 0.06841825693845749,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 12.11,
+   "end": 14.5,
+   "confidence": 0.06606822460889816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 13.25,
+   "end": 13.75,
+   "confidence": 0.05215815082192421,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 12.25,
+   "end": 15.75,
+   "confidence": 0.12324458360671997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 13.09,
+   "end": 14.75,
+   "confidence": 0.07281018048524857,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 13.01,
+   "end": 14.75,
+   "confidence": 0.05804216116666794,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 12.25,
+   "end": 15.75,
+   "confidence": 0.05563897266983986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 15.25,
+   "end": 15.75,
+   "confidence": 0.17834778130054474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Horse",
+   "confidence": 0.32183021306991577,
+   "start": 0.21999999999999997,
+   "end": 10.0,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 5.109999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.109999999999999,
+     "end": 10.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,149 @@
+{
+ "clip": "fireworks_london_nye.webm",
+ "tag": "seen_ambient",
+ "duration": 20.194,
+ "events": [
+  {
+   "label": "Fireworks",
+   "start": 0.21999999999999997,
+   "end": 19.9313125,
+   "confidence": 0.9355586171150208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Firecracker",
+   "start": 0.30000000000000004,
+   "end": 19.9313125,
+   "confidence": 0.6855804324150085,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.9313125,
+   "confidence": 0.4074617028236389,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 19.9313125,
+   "confidence": 0.1868922859430313,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.10598868876695633,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 0.30000000000000004,
+   "end": 3.25,
+   "confidence": 0.07982718199491501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 8.0,
+   "end": 14.75,
+   "confidence": 0.09381970763206482,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 15.0,
+   "end": 18.75,
+   "confidence": 0.07913841307163239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 19.0,
+   "end": 19.9313125,
+   "confidence": 0.052476800978183746,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Fireworks",
+   "confidence": 0.9355586171150208,
+   "start": 0.21999999999999997,
+   "end": 19.9313125,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 5.147828125,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Fireworks"
+    },
+    {
+     "start": 5.147828125,
+     "end": 10.075656250000002,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Fireworks"
+    },
+    {
+     "start": 10.075656250000002,
+     "end": 15.003484375000001,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Fireworks"
+    },
+    {
+     "start": 15.003484375000001,
+     "end": 19.9313125,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Fireworks"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Fireworks",
+    "Eruption",
+    "Gunshot, gunfire"
+   ]
+  }
+ ]
+}

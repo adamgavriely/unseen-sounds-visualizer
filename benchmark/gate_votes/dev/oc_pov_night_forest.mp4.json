@@ -1,0 +1,369 @@
+{
+ "clip": "oc_pov_night_forest.mp4",
+ "tag": "no_ambient",
+ "duration": 20.02002,
+ "events": [
+  {
+   "label": "Walk, footsteps",
+   "start": 0.21999999999999997,
+   "end": 2.5,
+   "confidence": 0.5364307761192322,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "confidence": 0.47375616431236267,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.28786909580230713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "confidence": 0.26934027671813965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.20746906101703644,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 9.25,
+   "confidence": 0.13107654452323914,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.18000000000000005,
+   "end": 19.75,
+   "confidence": 0.17934828996658325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.0,
+   "end": 11.75,
+   "confidence": 0.11350775510072708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 0.12,
+   "end": 2.0,
+   "confidence": 0.06118988245725632,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 0.36,
+   "end": 2.0,
+   "confidence": 0.050074443221092224,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.0,
+   "end": 3.75,
+   "confidence": 0.05427535995841026,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 1.6800000000000002,
+   "end": 3.5,
+   "confidence": 0.06504283845424652,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 1.9300000000000002,
+   "end": 3.25,
+   "confidence": 0.06017753481864929,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 2.01,
+   "end": 3.25,
+   "confidence": 0.050678446888923645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 2.27,
+   "end": 6.5,
+   "confidence": 0.36985084414482117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 2.75,
+   "end": 5.75,
+   "confidence": 0.10720134526491165,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 5.0,
+   "end": 9.75,
+   "confidence": 0.09449584037065506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 5.69,
+   "end": 19.75,
+   "confidence": 0.8964743614196777,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 6.77,
+   "end": 8.75,
+   "confidence": 0.05529964342713356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 7.5,
+   "end": 9.75,
+   "confidence": 0.10349820554256439,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 11.14,
+   "end": 13.5,
+   "confidence": 0.07992267608642578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 11.5,
+   "end": 13.0,
+   "confidence": 0.0904354527592659,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 12.32,
+   "end": 15.0,
+   "confidence": 0.09574109315872192,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 15.25,
+   "end": 16.75,
+   "confidence": 0.05729178339242935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 15.48,
+   "end": 18.0,
+   "confidence": 0.08436764776706696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 17.57,
+   "end": 19.75,
+   "confidence": 0.06422407925128937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 18.57,
+   "end": 19.75,
+   "confidence": 0.06289677321910858,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Footsteps",
+   "confidence": 0.8964743614196777,
+   "start": 0.21999999999999997,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 5.1025,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 5.1025,
+     "end": 9.985000000000001,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.985000000000001,
+     "end": 14.867500000000001,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.867500000000001,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Splash, splatter",
+    "Theremin",
+    "Goat"
+   ]
+  },
+  {
+   "label": "Chewing, mastication",
+   "confidence": 0.47375616431236267,
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 1.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 37,
+   "clap_top3": [
+    "Splash, splatter",
+    "Theremin",
+    "Goat"
+   ]
+  },
+  {
+   "label": "Biting",
+   "confidence": 0.26934027671813965,
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 1.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

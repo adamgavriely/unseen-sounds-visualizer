@@ -8,9 +8,10 @@ report's Limitations section mirrors this file.
 
 - **The proposal's reference was circular.** The model-derived reference (tags `v2`, `v3`) is
   written by the system's own VLM from the detector's own events, so it rewards whichever
-  system repeats the detector. Found in review on 2026-09-14. The corrected primary is the
-  independent reference (`*_indep`): Qwen2-Audio + CLAP verification + Idefics3 + Llama-3.1
-  writer, none of which sees any system's output. Both are reported.
+  system repeats the detector. Found in review on 2026-09-14. An independent reference
+  (`*_indep`: Qwen2-Audio + CLAP verification + Idefics3 + Phi-3.5 writer, none of which sees
+  any system's output) was built to replace it but cannot score the gate decision (below);
+  the human-grounded reference is the one that scores the gate, and all three are reported.
 - **The independent reference's verification gate was set once, on one comparison.** CLAP
   decides which of the audio LM's claims survive. The first gate (cosine above the mean + 2σ
   of 64 random AudioSet text decoys) left 45% of clips with an empty reference against 25%

@@ -1,0 +1,378 @@
+{
+ "clip": "b3_ia_87954yourchancetolivenuclear_1.mp4",
+ "tag": "no_ambient",
+ "duration": 28.023353,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.21999999999999997,
+   "end": 27.75,
+   "confidence": 0.7978225350379944,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mantra",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.26586082577705383,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.24604403972625732,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chant",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.1824844479560852,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.11251410841941833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 0.21999999999999997,
+   "end": 0.5,
+   "confidence": 0.0878940001130104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.059072282165288925,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male singing",
+   "start": 0.48,
+   "end": 1.25,
+   "confidence": 0.0679449662566185,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.11486213654279709,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.08968070894479752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.0,
+   "end": 11.0,
+   "confidence": 0.08781952410936356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.25,
+   "end": 4.5,
+   "confidence": 0.05969620496034622,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 3.5,
+   "end": 8.75,
+   "confidence": 0.05162768438458443,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 4.0600000000000005,
+   "end": 6.0,
+   "confidence": 0.09904110431671143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 4.48,
+   "end": 5.5,
+   "confidence": 0.060381267219781876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 4.75,
+   "end": 8.75,
+   "confidence": 0.07793409377336502,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 3.7800000000000002,
+   "end": 7.0,
+   "confidence": 0.23821376264095306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pigeon, dove",
+   "start": 3.94,
+   "end": 7.0,
+   "confidence": 0.21924398839473724,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 5.57,
+   "end": 7.0,
+   "confidence": 0.1073654294013977,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coo",
+   "start": 5.73,
+   "end": 6.5,
+   "confidence": 0.06962234526872635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.25,
+   "end": 14.25,
+   "confidence": 0.08639373630285263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 9.77,
+   "end": 11.5,
+   "confidence": 0.05469926819205284,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 11.25,
+   "end": 15.0,
+   "confidence": 0.0626414343714714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.06023867055773735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 15.5,
+   "end": 16.0,
+   "confidence": 0.05353177338838577,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 16.25,
+   "end": 17.75,
+   "confidence": 0.05988973006606102,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 16.25,
+   "end": 17.25,
+   "confidence": 0.05381319299340248,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 18.25,
+   "end": 19.5,
+   "confidence": 0.05867602303624153,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 18.8,
+   "end": 19.75,
+   "confidence": 0.05225849524140358,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 19.75,
+   "end": 21.75,
+   "confidence": 0.05679663270711899,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 21.72,
+   "end": 23.5,
+   "confidence": 0.12381144613027573,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 20.0,
+   "end": 22.25,
+   "confidence": 0.05557461082935333,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 23.0,
+   "end": 26.25,
+   "confidence": 0.07735148817300797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 23.25,
+   "end": 23.75,
+   "confidence": 0.060216378420591354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 24.0,
+   "end": 26.5,
+   "confidence": 0.10275977104902267,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 26.5,
+   "end": 27.75,
+   "confidence": 0.05238928273320198,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.05803953483700752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

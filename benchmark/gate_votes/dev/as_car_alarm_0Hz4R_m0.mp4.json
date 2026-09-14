@@ -1,0 +1,744 @@
+{
+ "clip": "as_car_alarm_0Hz4R_m0.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.04,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.9121426343917847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 6.75,
+   "confidence": 0.21028144657611847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 0.06000000000000005,
+   "end": 1.25,
+   "confidence": 0.10450398176908493,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.054794423282146454,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.05219084024429321,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 0.49,
+   "end": 2.75,
+   "confidence": 0.34213247895240784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.0,
+   "end": 19.75,
+   "confidence": 0.9192988872528076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.25,
+   "end": 19.75,
+   "confidence": 0.8559133410453796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 0.43000000000000005,
+   "end": 2.25,
+   "confidence": 0.08324320614337921,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 1.25,
+   "end": 5.5,
+   "confidence": 0.06752922385931015,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.5,
+   "end": 3.25,
+   "confidence": 0.07417653501033783,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keys jangling",
+   "start": 2.3,
+   "end": 7.0,
+   "confidence": 0.4808143377304077,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 1.25,
+   "end": 3.75,
+   "confidence": 0.1267339438199997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 2.25,
+   "end": 4.25,
+   "confidence": 0.0534336231648922,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 3.98,
+   "end": 4.75,
+   "confidence": 0.06363803893327713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 4.0,
+   "end": 5.0,
+   "confidence": 0.05205605924129486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 4.73,
+   "end": 13.0,
+   "confidence": 0.6417677402496338,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 5.5,
+   "end": 9.0,
+   "confidence": 0.05940563604235649,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 5.75,
+   "end": 19.75,
+   "confidence": 0.3158057928085327,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 5.25,
+   "end": 6.25,
+   "confidence": 0.089057557284832,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine starting",
+   "start": 5.82,
+   "end": 12.5,
+   "confidence": 0.6458567976951599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 5.74,
+   "end": 12.5,
+   "confidence": 0.42696040868759155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 6.23,
+   "end": 12.5,
+   "confidence": 0.1362484246492386,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Beep, bleep",
+   "start": 4.75,
+   "end": 7.5,
+   "confidence": 0.060904424637556076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 6.640000000000001,
+   "end": 9.0,
+   "confidence": 0.10759840160608292,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 5.7,
+   "end": 7.5,
+   "confidence": 0.09789960831403732,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keys jangling",
+   "start": 6.11,
+   "end": 10.25,
+   "confidence": 0.42092835903167725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 7.25,
+   "end": 8.0,
+   "confidence": 0.06102461740374565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 6.25,
+   "end": 9.75,
+   "confidence": 0.31957823038101196,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 9.25,
+   "end": 19.75,
+   "confidence": 0.18647608160972595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 9.23,
+   "end": 12.5,
+   "confidence": 0.08007035404443741,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 9.64,
+   "end": 11.75,
+   "confidence": 0.07928965240716934,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Beep, bleep",
+   "start": 9.0,
+   "end": 12.75,
+   "confidence": 0.07034094631671906,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 10.55,
+   "end": 12.0,
+   "confidence": 0.05292871221899986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keys jangling",
+   "start": 10.03,
+   "end": 15.75,
+   "confidence": 0.24809153378009796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 10.52,
+   "end": 15.75,
+   "confidence": 0.36447399854660034,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 11.19,
+   "end": 12.75,
+   "confidence": 0.07603035867214203,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 12.5,
+   "end": 19.75,
+   "confidence": 0.7021387219429016,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 12.57,
+   "end": 13.75,
+   "confidence": 0.161113440990448,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 11.45,
+   "end": 15.75,
+   "confidence": 0.1459609717130661,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 11.45,
+   "end": 15.75,
+   "confidence": 0.12215795367956161,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine starting",
+   "start": 13.39,
+   "end": 15.5,
+   "confidence": 0.08377396315336227,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 13.82,
+   "end": 15.75,
+   "confidence": 0.11523035913705826,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 14.0,
+   "end": 15.75,
+   "confidence": 0.06859937310218811,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.052812445908784866,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 13.68,
+   "end": 15.5,
+   "confidence": 0.05439839884638786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 13.44,
+   "end": 15.75,
+   "confidence": 0.05085699260234833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 16.05,
+   "end": 18.25,
+   "confidence": 0.6447296142578125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 15.49,
+   "end": 18.25,
+   "confidence": 0.43596145510673523,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 15.81,
+   "end": 18.25,
+   "confidence": 0.06962302327156067,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 18.0,
+   "end": 19.75,
+   "confidence": 0.07175000011920929,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 17.91,
+   "end": 19.75,
+   "confidence": 0.21858420968055725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.17444685101509094,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keys jangling",
+   "start": 17.11,
+   "end": 19.75,
+   "confidence": 0.10348742455244064,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 17.91,
+   "end": 19.75,
+   "confidence": 0.0763411819934845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 18.25,
+   "end": 19.75,
+   "confidence": 0.058212924748659134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 17.59,
+   "end": 19.75,
+   "confidence": 0.05786550045013428,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 17.27,
+   "end": 19.75,
+   "confidence": 0.05591955408453941,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.9192988872528076,
+   "start": 1.0,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 1.0,
+     "end": 5.6875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.6875,
+     "end": 10.375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 10.375,
+     "end": 15.0625,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 15.0625,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 112,
+   "clap_top3": [
+    "Domestic animals, pets",
+    "Crack",
+    "Crushing"
+   ]
+  },
+  {
+   "label": "Alarm",
+   "confidence": 0.6417677402496338,
+   "start": 4.73,
+   "end": 13.0,
+   "stretches": [
+    {
+     "start": 4.73,
+     "end": 8.865,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.865,
+     "end": 13.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 47,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Bell",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Keys jangling",
+   "confidence": 0.4808143377304077,
+   "start": 2.3,
+   "end": 10.25,
+   "stretches": [
+    {
+     "start": 2.3,
+     "end": 6.275,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 6.275,
+     "end": 10.25,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Keys"
+    }
+   ],
+   "clap_rank": 88,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Printer",
+    "Sound equipment"
+   ]
+  },
+  {
+   "label": "Power windows, electric windows",
+   "confidence": 0.36447399854660034,
+   "start": 6.25,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.49,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 6.25,
+     "end": 11.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.0,
+     "end": 15.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Bell",
+    "Motor vehicle (road)",
+    "Sink (filling or washing)"
+   ]
+  }
+ ]
+}

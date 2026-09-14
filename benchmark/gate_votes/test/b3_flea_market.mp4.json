@@ -1,0 +1,468 @@
+{
+ "clip": "b3_flea_market.mp4",
+ "tag": "no_ambient",
+ "duration": 28.028,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.8872238993644714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.08110641688108444,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.054094232618808746,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 0.25,
+   "end": 0.75,
+   "confidence": 0.06603684276342392,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.72,
+   "end": 1.0,
+   "confidence": 0.05849962681531906,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 0.4099999999999999,
+   "end": 2.5,
+   "confidence": 0.16093359887599945,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.12707147002220154,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.0,
+   "end": 8.25,
+   "confidence": 0.13423390686511993,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 1.0,
+   "end": 3.75,
+   "confidence": 0.12182944267988205,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.0,
+   "end": 2.25,
+   "confidence": 0.08423037081956863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.06895152479410172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scrape",
+   "start": 0.8200000000000001,
+   "end": 1.75,
+   "confidence": 0.055677976459264755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.25,
+   "end": 27.75,
+   "confidence": 0.28874436020851135,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.25,
+   "end": 4.0,
+   "confidence": 0.08518955856561661,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 2.5,
+   "end": 6.0,
+   "confidence": 0.06757226586341858,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 2.5,
+   "end": 7.75,
+   "confidence": 0.058247413486242294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 3.75,
+   "end": 5.75,
+   "confidence": 0.0707709863781929,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 5.23,
+   "end": 5.75,
+   "confidence": 0.0648258775472641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 5.5,
+   "end": 6.25,
+   "confidence": 0.056784145534038544,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 6.23,
+   "end": 7.25,
+   "confidence": 0.05307961627840996,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 6.5,
+   "end": 9.75,
+   "confidence": 0.08406820148229599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 6.5,
+   "end": 7.0,
+   "confidence": 0.06819624453783035,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 7.25,
+   "end": 18.5,
+   "confidence": 0.054606858640909195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 8.14,
+   "end": 9.5,
+   "confidence": 0.07160083204507828,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 9.0,
+   "end": 27.75,
+   "confidence": 0.22192639112472534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 9.5,
+   "end": 27.75,
+   "confidence": 0.19131365418434143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 9.5,
+   "end": 27.75,
+   "confidence": 0.07918563485145569,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 9.5,
+   "end": 16.25,
+   "confidence": 0.06412253528833389,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 10.25,
+   "end": 13.5,
+   "confidence": 0.07277002185583115,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 10.5,
+   "end": 12.75,
+   "confidence": 0.058215826749801636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 14.5,
+   "end": 17.5,
+   "confidence": 0.07111438363790512,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 14.5,
+   "end": 20.5,
+   "confidence": 0.06689344346523285,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 16.5,
+   "end": 21.25,
+   "confidence": 0.14742107689380646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 17.27,
+   "end": 18.75,
+   "confidence": 0.06988392025232315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 19.08,
+   "end": 20.0,
+   "confidence": 0.0662996843457222,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 18.75,
+   "end": 23.5,
+   "confidence": 0.06323334574699402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 20.48,
+   "end": 22.25,
+   "confidence": 0.10174724459648132,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 19.0,
+   "end": 22.25,
+   "confidence": 0.09901811927556992,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 21.5,
+   "end": 23.5,
+   "confidence": 0.10751207172870636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 22.75,
+   "end": 27.75,
+   "confidence": 0.052949223667383194,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 21.86,
+   "end": 23.5,
+   "confidence": 0.05098814517259598,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 24.75,
+   "end": 26.0,
+   "confidence": 0.06221288442611694,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.20307251811027527,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 26.66,
+   "end": 27.75,
+   "confidence": 0.14628435671329498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 26.66,
+   "end": 27.75,
+   "confidence": 0.12312273681163788,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roar",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.06799063831567764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

@@ -1,0 +1,775 @@
+{
+ "clip": "b3_kitchen_restaurant.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.6798003911972046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.4307056665420532,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 10.75,
+   "confidence": 0.15801621973514557,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.1039915382862091,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.08896344900131226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.30000000000000004,
+   "end": 3.25,
+   "confidence": 0.05849263072013855,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.057309117168188095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Writing",
+   "start": 0.25,
+   "end": 0.75,
+   "confidence": 0.056090399622917175,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.75,
+   "end": 2.75,
+   "confidence": 0.3169940412044525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.75,
+   "end": 2.75,
+   "confidence": 0.30109551548957825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.75,
+   "end": 2.75,
+   "confidence": 0.28562724590301514,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.09936518967151642,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.06622914224863052,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 1.22,
+   "end": 2.5,
+   "confidence": 0.11831162124872208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.84,
+   "end": 3.25,
+   "confidence": 0.09198330342769623,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.055139895528554916,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.25,
+   "end": 2.5,
+   "confidence": 0.062258005142211914,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.25,
+   "end": 27.75,
+   "confidence": 0.20519094169139862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 1.85,
+   "end": 3.25,
+   "confidence": 0.12624400854110718,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 1.9300000000000002,
+   "end": 3.25,
+   "confidence": 0.052058715373277664,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 3.25,
+   "end": 7.5,
+   "confidence": 0.07733932137489319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 3.25,
+   "end": 5.25,
+   "confidence": 0.07706578820943832,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 5.5,
+   "end": 10.5,
+   "confidence": 0.1976015865802765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 5.75,
+   "end": 7.5,
+   "confidence": 0.07195933163166046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 7.0,
+   "end": 9.25,
+   "confidence": 0.187943696975708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 5.75,
+   "end": 9.25,
+   "confidence": 0.22588402032852173,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 7.25,
+   "end": 9.25,
+   "confidence": 0.1772933304309845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skateboard",
+   "start": 6.75,
+   "end": 7.75,
+   "confidence": 0.1373540163040161,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 6.0,
+   "end": 8.75,
+   "confidence": 0.13274545967578888,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 7.75,
+   "end": 9.75,
+   "confidence": 0.06632545590400696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skateboard",
+   "start": 7.66,
+   "end": 9.5,
+   "confidence": 0.12309931963682175,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bicycle",
+   "start": 8.4,
+   "end": 9.5,
+   "confidence": 0.06138337031006813,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 8.33,
+   "end": 9.75,
+   "confidence": 0.12283836305141449,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 8.75,
+   "end": 9.75,
+   "confidence": 0.10139299184083939,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 8.25,
+   "end": 9.75,
+   "confidence": 0.07346737384796143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 8.75,
+   "end": 9.75,
+   "confidence": 0.06605404615402222,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.0832027867436409,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.0780813917517662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.07078897207975388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.059665076434612274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 7.5,
+   "end": 9.75,
+   "confidence": 0.051940131932497025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 9.75,
+   "end": 11.0,
+   "confidence": 0.07415572553873062,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 8.25,
+   "end": 16.5,
+   "confidence": 0.05714082717895508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 10.12,
+   "end": 13.75,
+   "confidence": 0.09232798963785172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 10.12,
+   "end": 13.0,
+   "confidence": 0.08883640915155411,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 10.0,
+   "end": 13.0,
+   "confidence": 0.06613326817750931,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 11.45,
+   "end": 14.25,
+   "confidence": 0.08304908126592636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hammer",
+   "start": 15.18,
+   "end": 16.75,
+   "confidence": 0.05532802268862724,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 16.5,
+   "end": 23.5,
+   "confidence": 0.08340103179216385,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 16.5,
+   "end": 18.25,
+   "confidence": 0.06670313328504562,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 16.5,
+   "end": 18.25,
+   "confidence": 0.05289709195494652,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 16.8,
+   "end": 18.25,
+   "confidence": 0.05275263264775276,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 16.5,
+   "end": 23.5,
+   "confidence": 0.05233016237616539,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 16.75,
+   "end": 27.75,
+   "confidence": 0.06384431570768356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 18.25,
+   "end": 22.25,
+   "confidence": 0.07072202116250992,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 18.5,
+   "end": 19.25,
+   "confidence": 0.07198648154735565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 18.5,
+   "end": 21.25,
+   "confidence": 0.050563521683216095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 18.75,
+   "end": 19.25,
+   "confidence": 0.06302342563867569,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 18.75,
+   "end": 19.25,
+   "confidence": 0.055277276784181595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 20.25,
+   "end": 23.5,
+   "confidence": 0.13551437854766846,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 20.25,
+   "end": 23.5,
+   "confidence": 0.1126665249466896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 20.25,
+   "end": 23.5,
+   "confidence": 0.11067364364862442,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 20.25,
+   "end": 23.5,
+   "confidence": 0.058950334787368774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 19.0,
+   "end": 21.5,
+   "confidence": 0.0683520957827568,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 22.09,
+   "end": 24.75,
+   "confidence": 0.055753741413354874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cupboard open or close",
+   "start": 21.5,
+   "end": 24.5,
+   "confidence": 0.08298347890377045,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 23.07,
+   "end": 24.75,
+   "confidence": 0.055670544505119324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drawer open or close",
+   "start": 22.0,
+   "end": 24.5,
+   "confidence": 0.057171862572431564,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 22.0,
+   "end": 27.5,
+   "confidence": 0.05554448440670967,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.4307056665420532,
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.79,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "bus"
+    },
+    {
+     "start": 5.79,
+     "end": 11.280000000000001,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.280000000000001,
+     "end": 16.77,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 16.77,
+     "end": 22.26,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 22.26,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 110,
+   "clap_top3": [
+    "Printer",
+    "Heavy engine (low frequency)",
+    "Gears"
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.3169940412044525,
+   "start": 0.75,
+   "end": 2.75,
+   "stretches": [
+    {
+     "start": 0.75,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,348 @@
+{
+ "clip": "kit_piano.mp4",
+ "tag": "no_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.30000000000000004,
+   "end": 17.7501875,
+   "confidence": 0.7834438681602478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.7501875,
+   "confidence": 0.6537180542945862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Piano",
+   "start": 0.30000000000000004,
+   "end": 8.25,
+   "confidence": 0.5639743804931641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.30000000000000004,
+   "end": 17.7501875,
+   "confidence": 0.4773016571998596,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keyboard (musical)",
+   "start": 0.30000000000000004,
+   "end": 7.75,
+   "confidence": 0.4553271234035492,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric piano",
+   "start": 0.30000000000000004,
+   "end": 1.0,
+   "confidence": 0.1824778914451599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibraphone",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.08586457371711731,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Effects unit",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.0726652517914772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic tuner",
+   "start": 0.30000000000000004,
+   "end": 0.5,
+   "confidence": 0.05097372829914093,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Classical music",
+   "start": 0.15000000000000013,
+   "end": 8.25,
+   "confidence": 0.28530046343803406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 0.0,
+   "end": 8.25,
+   "confidence": 0.18648909032344818,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 0.0,
+   "end": 6.5,
+   "confidence": 0.0847257450222969,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 0.0,
+   "end": 8.25,
+   "confidence": 0.18655741214752197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Marimba, xylophone",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.06507135927677155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 1.37,
+   "end": 8.0,
+   "confidence": 0.4465804398059845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cello",
+   "start": 1.37,
+   "end": 8.25,
+   "confidence": 0.16495715081691742,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "French horn",
+   "start": 3.25,
+   "end": 8.25,
+   "confidence": 0.2134806513786316,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Brass instrument",
+   "start": 3.25,
+   "end": 8.25,
+   "confidence": 0.17106550931930542,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 4.57,
+   "end": 8.0,
+   "confidence": 0.15787789225578308,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clarinet",
+   "start": 3.25,
+   "end": 8.0,
+   "confidence": 0.07321705669164658,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Trumpet",
+   "start": 3.25,
+   "end": 6.25,
+   "confidence": 0.05619734898209572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Marimba, xylophone",
+   "start": 5.24,
+   "end": 7.75,
+   "confidence": 0.19838261604309082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glockenspiel",
+   "start": 6.390000000000001,
+   "end": 7.75,
+   "confidence": 0.10425908118486404,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Harp",
+   "start": 5.43,
+   "end": 7.0,
+   "confidence": 0.05571604520082474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 6.23,
+   "end": 7.75,
+   "confidence": 0.05433734506368637,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mallet percussion",
+   "start": 5.0,
+   "end": 7.75,
+   "confidence": 0.08811656385660172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibraphone",
+   "start": 5.0,
+   "end": 7.75,
+   "confidence": 0.08186932653188705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind instrument, woodwind instrument",
+   "start": 6.25,
+   "end": 8.25,
+   "confidence": 0.05119205638766289,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 8.3,
+   "end": 17.7501875,
+   "confidence": 0.0585358589887619,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 8.39,
+   "end": 14.0,
+   "confidence": 0.09492119401693344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 8.39,
+   "end": 8.75,
+   "confidence": 0.08277811110019684,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 8.39,
+   "end": 10.25,
+   "confidence": 0.0777396634221077,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.25,
+   "end": 11.25,
+   "confidence": 0.06539812684059143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.5,
+   "end": 17.7501875,
+   "confidence": 0.10900670289993286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

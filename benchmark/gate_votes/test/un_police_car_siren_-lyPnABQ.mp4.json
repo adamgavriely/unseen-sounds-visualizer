@@ -1,0 +1,460 @@
+{
+ "clip": "un_police_car_siren_-lyPnABQ.mp4",
+ "tag": "mixed",
+ "duration": 19.0,
+ "events": [
+  {
+   "label": "Police car (siren)",
+   "start": 0.30000000000000004,
+   "end": 18.75,
+   "confidence": 0.8543213605880737,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 0.30000000000000004,
+   "end": 18.75,
+   "confidence": 0.8269777894020081,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 0.30000000000000004,
+   "end": 18.75,
+   "confidence": 0.8155049085617065,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 0.30000000000000004,
+   "end": 18.75,
+   "confidence": 0.7221105694770813,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 0.30000000000000004,
+   "end": 18.75,
+   "confidence": 0.3413389027118683,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.3209463357925415,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 6.0,
+   "confidence": 0.14661549031734467,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 0.14000000000000012,
+   "end": 1.5,
+   "confidence": 0.12030094861984253,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.0766170471906662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 0.21999999999999997,
+   "end": 0.75,
+   "confidence": 0.06783832609653473,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.75,
+   "end": 1.5,
+   "confidence": 0.07252106070518494,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.25,
+   "end": 3.75,
+   "confidence": 0.12921962141990662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.5,
+   "end": 18.75,
+   "confidence": 0.10574294626712799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.75,
+   "end": 5.75,
+   "confidence": 0.23252363502979279,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 4.47,
+   "end": 7.5,
+   "confidence": 0.09438693523406982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 6.4,
+   "end": 8.0,
+   "confidence": 0.13829024136066437,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 7.25,
+   "end": 18.75,
+   "confidence": 0.22577030956745148,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.08943378925323486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.07698328047990799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 7.8100000000000005,
+   "end": 12.25,
+   "confidence": 0.08173017203807831,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 6.25,
+   "end": 8.25,
+   "confidence": 0.058086808770895004,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 8.25,
+   "end": 11.5,
+   "confidence": 0.15609215199947357,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.25,
+   "end": 10.0,
+   "confidence": 0.1369880735874176,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 7.27,
+   "end": 9.0,
+   "confidence": 0.05185887590050697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 8.5,
+   "end": 15.5,
+   "confidence": 0.07826391607522964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.75,
+   "end": 11.5,
+   "confidence": 0.15380196273326874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 11.72,
+   "end": 12.75,
+   "confidence": 0.10960645228624344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.75,
+   "end": 14.25,
+   "confidence": 0.11729349941015244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 12.75,
+   "end": 13.75,
+   "confidence": 0.05822432041168213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 13.91,
+   "end": 15.5,
+   "confidence": 0.13655132055282593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 15.5,
+   "end": 17.5,
+   "confidence": 0.17124943435192108,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 15.5,
+   "end": 17.5,
+   "confidence": 0.10855889320373535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 17.64,
+   "end": 18.75,
+   "confidence": 0.30663421750068665,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 16.0,
+   "end": 18.75,
+   "confidence": 0.0733719989657402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Siren",
+   "confidence": 0.8543213605880737,
+   "start": 0.30000000000000004,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 4.9125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.9125,
+     "end": 9.525,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.525,
+     "end": 14.1375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.1375,
+     "end": 18.75,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Ambulance siren"
+    }
+   ],
+   "clap_rank": 7,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Roaring cats (lions, tigers)",
+    "Shout"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.3209463357925415,
+   "start": 0.0,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.6875,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 4.6875,
+     "end": 9.375,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "black car on road"
+    },
+    {
+     "start": 9.375,
+     "end": 14.0625,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "black car"
+    },
+    {
+     "start": 14.0625,
+     "end": 18.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "police car"
+    }
+   ]
+  },
+  {
+   "label": "Alarm",
+   "confidence": 0.30663421750068665,
+   "start": 17.64,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 17.64,
+     "end": 18.75,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "police car alarm"
+    }
+   ]
+  }
+ ]
+}

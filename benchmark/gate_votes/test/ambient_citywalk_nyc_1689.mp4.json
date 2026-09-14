@@ -1,0 +1,421 @@
+{
+ "clip": "ambient_citywalk_nyc_1689.mp4",
+ "tag": "unseen_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.7088038325309753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.4116545021533966,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.14000000000000012,
+   "end": 9.75,
+   "confidence": 0.2764531672000885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 0.06000000000000005,
+   "end": 1.5,
+   "confidence": 0.06314270943403244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.053251001983881,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 0.06000000000000005,
+   "end": 1.75,
+   "confidence": 0.05219103768467903,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.0,
+   "end": 3.0,
+   "confidence": 0.05213462933897972,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.05047569423913956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 1.83,
+   "end": 4.25,
+   "confidence": 0.07824383676052094,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 1.91,
+   "end": 4.5,
+   "confidence": 0.07067155092954636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 2.36,
+   "end": 6.25,
+   "confidence": 0.35931459069252014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 3.5,
+   "end": 7.5,
+   "confidence": 0.11851198226213455,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 3.8,
+   "end": 5.75,
+   "confidence": 0.115918830037117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 3.5,
+   "end": 6.0,
+   "confidence": 0.09194181859493256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 3.37,
+   "end": 7.0,
+   "confidence": 0.07803849130868912,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 3.25,
+   "end": 7.25,
+   "confidence": 0.05216575413942337,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 5.0,
+   "end": 9.0,
+   "confidence": 0.0664723664522171,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 6.5,
+   "end": 8.0,
+   "confidence": 0.06436847895383835,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breathing",
+   "start": 8.5,
+   "end": 10.5,
+   "confidence": 0.1267395317554474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gasp",
+   "start": 9.0,
+   "end": 11.0,
+   "confidence": 0.15765029191970825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snort",
+   "start": 8.84,
+   "end": 11.0,
+   "confidence": 0.1121903732419014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 8.25,
+   "end": 11.0,
+   "confidence": 0.08979534357786179,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 8.75,
+   "end": 12.25,
+   "confidence": 0.13104009628295898,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 10.5,
+   "end": 12.0,
+   "confidence": 0.14524933695793152,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 11.75,
+   "end": 14.5,
+   "confidence": 0.0884687528014183,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 12.0,
+   "end": 13.75,
+   "confidence": 0.07853274792432785,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 10.5,
+   "end": 13.5,
+   "confidence": 0.057829637080430984,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 12.0,
+   "end": 14.25,
+   "confidence": 0.11608175188302994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.07171766459941864,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 13.98,
+   "end": 15.0,
+   "confidence": 0.07419861108064651,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.3383697271347046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wood block",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.1694711297750473,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.1598680168390274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.1527787446975708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Timpani",
+   "start": 13.0,
+   "end": 15.5,
+   "confidence": 0.07739736139774323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum",
+   "start": 13.0,
+   "end": 15.5,
+   "confidence": 0.07638052850961685,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tambourine",
+   "start": 15.14,
+   "end": 15.75,
+   "confidence": 0.14035028219223022,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 14.99,
+   "end": 15.75,
+   "confidence": 0.10139038413763046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.35931459069252014,
+   "start": 0.14000000000000012,
+   "end": 9.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.945,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 4.945,
+     "end": 9.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "blue car"
+    }
+   ],
+   "clap_rank": 95,
+   "clap_top3": [
+    "Rock music",
+    "Gears",
+    "Rumble"
+   ]
+  }
+ ]
+}

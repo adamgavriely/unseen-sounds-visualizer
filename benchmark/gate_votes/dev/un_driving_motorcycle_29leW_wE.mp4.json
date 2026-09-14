@@ -1,0 +1,251 @@
+{
+ "clip": "un_driving_motorcycle_29leW_wE.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Siren",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.8084098696708679,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.7971844673156738,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.753030002117157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.39040300250053406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.17442861199378967,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 0.3800000000000001,
+   "end": 15.75,
+   "confidence": 0.12379530817270279,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.25,
+   "end": 15.75,
+   "confidence": 0.12833379209041595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.75,
+   "end": 15.75,
+   "confidence": 0.09293589740991592,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 1.8399999999999999,
+   "end": 15.5,
+   "confidence": 0.17419016361236572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 3.25,
+   "end": 7.0,
+   "confidence": 0.17329569160938263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.75,
+   "end": 4.75,
+   "confidence": 0.09521406143903732,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.25,
+   "end": 4.75,
+   "confidence": 0.09022238105535507,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 5.86,
+   "end": 7.75,
+   "confidence": 0.05750281363725662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 7.25,
+   "end": 10.5,
+   "confidence": 0.1021043136715889,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 5.75,
+   "end": 12.75,
+   "confidence": 0.07992880046367645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 12.75,
+   "end": 15.0,
+   "confidence": 0.09533728659152985,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Siren",
+   "confidence": 0.8084098696708679,
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.449999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.449999999999999,
+     "end": 10.6,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Ambulance on road"
+    },
+    {
+     "start": 10.6,
+     "end": 15.749999999999998,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Ambulance on road"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Siren",
+    "Motor vehicle (road)",
+    "Fire alarm"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.39040300250053406,
+   "start": 0.0,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.25,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "motorcycle"
+    },
+    {
+     "start": 5.25,
+     "end": 10.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Ambulance"
+    },
+    {
+     "start": 10.5,
+     "end": 15.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Ambulance"
+    }
+   ],
+   "clap_rank": 105,
+   "clap_top3": [
+    "Siren",
+    "Motor vehicle (road)",
+    "Fire alarm"
+   ]
+  }
+ ]
+}

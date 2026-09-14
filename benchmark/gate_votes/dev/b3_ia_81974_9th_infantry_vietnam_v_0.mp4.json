@@ -1,0 +1,1028 @@
+{
+ "clip": "b3_ia_81974_9th_infantry_vietnam_v_0.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.023353,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.06000000000000005,
+   "end": 27.75,
+   "confidence": 0.7603646516799927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.7036386132240295,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 0.14000000000000012,
+   "end": 7.0,
+   "confidence": 0.4603061378002167,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 23.5,
+   "confidence": 0.4506789445877075,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.21226218342781067,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.1802583932876587,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.06000000000000005,
+   "end": 3.0,
+   "confidence": 0.12507958710193634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.0,
+   "end": 7.0,
+   "confidence": 0.09673208743333817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 0.3900000000000001,
+   "end": 1.0,
+   "confidence": 0.0583229586482048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 1.0,
+   "end": 4.75,
+   "confidence": 0.3063669800758362,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 1.0,
+   "end": 4.75,
+   "confidence": 0.2804393172264099,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chopping (food)",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.05694417655467987,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 1.25,
+   "end": 4.75,
+   "confidence": 0.2562204599380493,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.2,
+   "end": 2.0,
+   "confidence": 0.11566305160522461,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 2.5,
+   "end": 4.25,
+   "confidence": 0.14000362157821655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 1.0,
+   "end": 4.0,
+   "confidence": 0.127894327044487,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 1.0,
+   "end": 4.25,
+   "confidence": 0.12786373496055603,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 3.5,
+   "end": 7.0,
+   "confidence": 0.08494368940591812,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.75,
+   "end": 7.5,
+   "confidence": 0.10585006326436996,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 7.390000000000001,
+   "end": 11.75,
+   "confidence": 0.29571646451950073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 7.25,
+   "end": 7.75,
+   "confidence": 0.06624257564544678,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 7.25,
+   "end": 7.75,
+   "confidence": 0.06099922955036163,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 7.5,
+   "end": 8.0,
+   "confidence": 0.0504109226167202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 7.75,
+   "end": 12.0,
+   "confidence": 0.16424670815467834,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 7.0,
+   "end": 16.25,
+   "confidence": 0.4381328821182251,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 8.5,
+   "end": 12.75,
+   "confidence": 0.1389603167772293,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 8.5,
+   "end": 11.25,
+   "confidence": 0.09193005412817001,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 8.5,
+   "end": 15.0,
+   "confidence": 0.08805166184902191,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 8.75,
+   "end": 10.25,
+   "confidence": 0.08337543159723282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 9.28,
+   "end": 12.75,
+   "confidence": 0.08150918781757355,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 9.0,
+   "end": 11.0,
+   "confidence": 0.05568539723753929,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 9.84,
+   "end": 11.25,
+   "confidence": 0.05103930085897446,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.25,
+   "end": 13.75,
+   "confidence": 0.12074663490056992,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 12.0,
+   "end": 13.5,
+   "confidence": 0.06051390618085861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 12.25,
+   "end": 15.25,
+   "confidence": 0.10229643434286118,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 13.0,
+   "end": 18.0,
+   "confidence": 0.26148223876953125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 12.82,
+   "end": 14.5,
+   "confidence": 0.06823643296957016,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 12.0,
+   "end": 14.75,
+   "confidence": 0.08716592937707901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 12.0,
+   "end": 14.75,
+   "confidence": 0.07323194295167923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 13.5,
+   "end": 14.5,
+   "confidence": 0.06696388125419617,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 14.5,
+   "end": 20.0,
+   "confidence": 0.08724899590015411,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.5,
+   "end": 15.5,
+   "confidence": 0.05354014411568642,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Timpani",
+   "start": 14.0,
+   "end": 18.0,
+   "confidence": 0.35249924659729004,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 16.25,
+   "end": 17.25,
+   "confidence": 0.05434142425656319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 15.0,
+   "end": 18.0,
+   "confidence": 0.05719320476055145,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 17.0,
+   "end": 21.5,
+   "confidence": 0.11468023806810379,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 16.7,
+   "end": 19.25,
+   "confidence": 0.0670270249247551,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 16.87,
+   "end": 19.25,
+   "confidence": 0.07612208276987076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 18.25,
+   "end": 19.5,
+   "confidence": 0.05266900360584259,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Timpani",
+   "start": 18.59,
+   "end": 21.5,
+   "confidence": 0.3238767385482788,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 20.0,
+   "end": 21.0,
+   "confidence": 0.05731804668903351,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 19.0,
+   "end": 21.75,
+   "confidence": 0.12097267061471939,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 20.75,
+   "end": 22.75,
+   "confidence": 0.08735498785972595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 20.74,
+   "end": 22.5,
+   "confidence": 0.12197518348693848,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 20.82,
+   "end": 22.5,
+   "confidence": 0.09531035274267197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 20.66,
+   "end": 22.5,
+   "confidence": 0.0798170194029808,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum",
+   "start": 19.5,
+   "end": 21.75,
+   "confidence": 0.07456855475902557,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 19.5,
+   "end": 21.75,
+   "confidence": 0.06657227128744125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 22.05,
+   "end": 23.25,
+   "confidence": 0.3945521414279938,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 22.0,
+   "end": 22.75,
+   "confidence": 0.0706605389714241,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 20.5,
+   "end": 22.5,
+   "confidence": 0.05223318189382553,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 22.25,
+   "end": 22.75,
+   "confidence": 0.059761423617601395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 21.25,
+   "end": 27.75,
+   "confidence": 0.17558646202087402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 22.75,
+   "end": 23.5,
+   "confidence": 0.07717853784561157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum",
+   "start": 21.25,
+   "end": 24.75,
+   "confidence": 0.07445233315229416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 21.93,
+   "end": 23.5,
+   "confidence": 0.0710296556353569,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 21.25,
+   "end": 23.25,
+   "confidence": 0.06387131661176682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 21.25,
+   "end": 23.25,
+   "confidence": 0.05822771415114403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Timpani",
+   "start": 21.75,
+   "end": 26.25,
+   "confidence": 0.7504690289497375,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Brass instrument",
+   "start": 23.55,
+   "end": 25.5,
+   "confidence": 0.1790173351764679,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 21.75,
+   "end": 24.75,
+   "confidence": 0.11914875358343124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Trombone",
+   "start": 23.55,
+   "end": 24.25,
+   "confidence": 0.11052645742893219,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 23.8,
+   "end": 26.25,
+   "confidence": 0.13183064758777618,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 23.5,
+   "end": 25.25,
+   "confidence": 0.09769803285598755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Foghorn",
+   "start": 23.64,
+   "end": 24.25,
+   "confidence": 0.06348142772912979,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Classical music",
+   "start": 22.5,
+   "end": 24.75,
+   "confidence": 0.07703914493322372,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 23.5,
+   "end": 26.25,
+   "confidence": 0.07753854244947433,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Television",
+   "start": 23.86,
+   "end": 27.5,
+   "confidence": 0.07272929698228836,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Classical music",
+   "start": 23.75,
+   "end": 26.25,
+   "confidence": 0.07632460445165634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 24.37,
+   "end": 26.25,
+   "confidence": 0.06774411350488663,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 26.0,
+   "end": 27.75,
+   "confidence": 0.10093750059604645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 24.5,
+   "end": 26.75,
+   "confidence": 0.0764036625623703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 26.25,
+   "end": 27.5,
+   "confidence": 0.05647096410393715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Timpani",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.4480220079421997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 25.75,
+   "end": 27.75,
+   "confidence": 0.0866013914346695,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Classical music",
+   "start": 25.75,
+   "end": 27.75,
+   "confidence": 0.05646079033613205,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Brass instrument",
+   "start": 25.75,
+   "end": 27.75,
+   "confidence": 0.056080278009176254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "confidence": 0.4603061378002167,
+   "start": 0.14000000000000012,
+   "end": 11.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 5.945,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Helicopter"
+    },
+    {
+     "start": 5.945,
+     "end": 11.75,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Helicopter"
+    },
+    {
+     "start": 22.05,
+     "end": 23.25,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Helicopter"
+    }
+   ],
+   "clap_rank": 8,
+   "clap_top3": [
+    "Rail transport",
+    "Hubbub, speech noise, speech babble",
+    "Rock music"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.4506789445877075,
+   "start": 0.0,
+   "end": 23.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.7,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "helicopter on ground"
+    },
+    {
+     "start": 4.7,
+     "end": 9.4,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "tank"
+    },
+    {
+     "start": 9.4,
+     "end": 14.1,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "armored vehicle"
+    },
+    {
+     "start": 14.1,
+     "end": 18.8,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "armored vehicle"
+    },
+    {
+     "start": 18.8,
+     "end": 23.5,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "tank"
+    }
+   ],
+   "clap_rank": 243,
+   "clap_top3": [
+    "Rail transport",
+    "Hubbub, speech noise, speech babble",
+    "Rock music"
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.4381328821182251,
+   "start": 7.0,
+   "end": 18.0,
+   "stretches": [
+    {
+     "start": 7.0,
+     "end": 12.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 12.5,
+     "end": 18.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Rock music",
+    "Aircraft",
+    "Electronic music"
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.3063669800758362,
+   "start": 1.0,
+   "end": 4.75,
+   "stretches": [
+    {
+     "start": 1.0,
+     "end": 4.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

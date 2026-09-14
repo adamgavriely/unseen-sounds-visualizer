@@ -1,0 +1,762 @@
+{
+ "clip": "un_police_car_siren_WEROVWDp.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.053367,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.7624882459640503,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 3.0,
+   "confidence": 0.6499934792518616,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.5537348389625549,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.3852002024650574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.32556360960006714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.23676380515098572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.16919441521167755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.10786384344100952,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.06224578246474266,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.053336359560489655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 0.07000000000000006,
+   "end": 2.75,
+   "confidence": 0.26430824398994446,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 2.08,
+   "end": 4.5,
+   "confidence": 0.1766076534986496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.5,
+   "end": 4.5,
+   "confidence": 0.12244707345962524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 3.5,
+   "end": 4.5,
+   "confidence": 0.0813622698187828,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 3.64,
+   "end": 4.5,
+   "confidence": 0.06811778992414474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 3.33,
+   "end": 4.5,
+   "confidence": 0.072763592004776,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 3.75,
+   "end": 4.25,
+   "confidence": 0.06600819528102875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 3.89,
+   "end": 4.25,
+   "confidence": 0.06389044225215912,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.0,
+   "end": 8.5,
+   "confidence": 0.6520941257476807,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 4.25,
+   "end": 8.25,
+   "confidence": 0.6085039377212524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 3.52,
+   "end": 8.25,
+   "confidence": 0.4300079047679901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 4.0,
+   "end": 8.25,
+   "confidence": 0.3700866401195526,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 3.52,
+   "end": 8.25,
+   "confidence": 0.20814476907253265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 3.6,
+   "end": 8.25,
+   "confidence": 0.20591416954994202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 3.36,
+   "end": 8.25,
+   "confidence": 0.16388709843158722,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 3.52,
+   "end": 8.25,
+   "confidence": 0.07349888980388641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 5.0,
+   "end": 6.25,
+   "confidence": 0.08424807339906693,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 8.47,
+   "end": 10.0,
+   "confidence": 0.23244889080524445,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.25,
+   "end": 10.75,
+   "confidence": 0.17872703075408936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Video game music",
+   "start": 8.8,
+   "end": 9.75,
+   "confidence": 0.07080846279859543,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 8.16,
+   "end": 10.0,
+   "confidence": 0.06703492999076843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 7.0,
+   "end": 10.0,
+   "confidence": 0.06532571464776993,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Exciting music",
+   "start": 7.0,
+   "end": 10.0,
+   "confidence": 0.06073829531669617,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 9.75,
+   "end": 19.75,
+   "confidence": 0.491907000541687,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 9.75,
+   "end": 19.75,
+   "confidence": 0.4665696620941162,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 9.5,
+   "end": 12.75,
+   "confidence": 0.37430453300476074,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 9.74,
+   "end": 13.0,
+   "confidence": 0.3107358515262604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 10.22,
+   "end": 16.5,
+   "confidence": 0.19318322837352753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 9.58,
+   "end": 13.0,
+   "confidence": 0.16344448924064636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 10.3,
+   "end": 13.0,
+   "confidence": 0.1184702217578888,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 10.3,
+   "end": 12.25,
+   "confidence": 0.07804404944181442,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 9.0,
+   "end": 12.0,
+   "confidence": 0.05839655548334122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 11.02,
+   "end": 18.25,
+   "confidence": 0.7992559671401978,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 11.02,
+   "end": 18.0,
+   "confidence": 0.39259129762649536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 10.94,
+   "end": 18.0,
+   "confidence": 0.3906190097332001,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 11.11,
+   "end": 17.5,
+   "confidence": 0.24543991684913635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.5,
+   "end": 13.0,
+   "confidence": 0.05042397975921631,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 12.75,
+   "end": 13.25,
+   "confidence": 0.05160936713218689,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 13.3,
+   "end": 18.0,
+   "confidence": 0.08642251044511795,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.75,
+   "end": 14.0,
+   "confidence": 0.10496239364147186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 13.55,
+   "end": 17.0,
+   "confidence": 0.09269680082798004,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 13.64,
+   "end": 16.5,
+   "confidence": 0.10573426634073257,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 13.97,
+   "end": 16.25,
+   "confidence": 0.09034265577793121,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.25,
+   "end": 14.75,
+   "confidence": 0.05112070217728615,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 14.28,
+   "end": 16.5,
+   "confidence": 0.07195203751325607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 14.0,
+   "end": 16.25,
+   "confidence": 0.054383471608161926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.2107212245464325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 16.16,
+   "end": 17.25,
+   "confidence": 0.0790959969162941,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 17.25,
+   "end": 18.0,
+   "confidence": 0.05019083991646767,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 16.44,
+   "end": 19.75,
+   "confidence": 0.10445894300937653,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 16.2,
+   "end": 19.75,
+   "confidence": 0.08953892439603806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 16.2,
+   "end": 19.75,
+   "confidence": 0.08272860199213028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.0641065314412117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 18.47,
+   "end": 19.75,
+   "confidence": 0.0536661259829998,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 18.48,
+   "end": 19.75,
+   "confidence": 0.16970764100551605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 18.64,
+   "end": 19.75,
+   "confidence": 0.09495939314365387,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 18.56,
+   "end": 19.75,
+   "confidence": 0.08663419634103775,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 18.64,
+   "end": 19.75,
+   "confidence": 0.08089462667703629,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Siren",
+   "confidence": 0.7992559671401978,
+   "start": 10.94,
+   "end": 18.25,
+   "stretches": [
+    {
+     "start": 10.94,
+     "end": 18.25,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "police car"
+    }
+   ],
+   "clap_rank": 10,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Theremin",
+    "Fill (with liquid)"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.6520941257476807,
+   "start": 0.07000000000000006,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 0.07000000000000006,
+     "end": 4.99,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle"
+    },
+    {
+     "start": 4.99,
+     "end": 9.91,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "the car"
+    },
+    {
+     "start": 9.91,
+     "end": 14.83,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "police car"
+    },
+    {
+     "start": 14.83,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 210,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Roaring cats (lions, tigers)",
+    "Rock music"
+   ]
+  }
+ ]
+}

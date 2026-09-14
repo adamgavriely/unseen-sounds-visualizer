@@ -1,0 +1,371 @@
+{
+ "clip": "puddles_rain.webm",
+ "tag": "seen_ambient",
+ "duration": 12.565,
+ "events": [
+  {
+   "label": "Raindrop",
+   "start": 0.14000000000000012,
+   "end": 6.0,
+   "confidence": 0.6678619980812073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 0.14000000000000012,
+   "end": 6.0,
+   "confidence": 0.5903592109680176,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.5295279026031494,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 12.31925,
+   "confidence": 0.3056846261024475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 12.31925,
+   "confidence": 0.11656732112169266,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.09683893620967865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.5,
+   "end": 3.0,
+   "confidence": 0.07829627394676208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.75,
+   "end": 12.31925,
+   "confidence": 0.13963578641414642,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 0.61,
+   "end": 3.0,
+   "confidence": 0.0747498869895935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 1.66,
+   "end": 5.0,
+   "confidence": 0.17810523509979248,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.25,
+   "end": 7.5,
+   "confidence": 0.09213696420192719,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 1.75,
+   "end": 7.5,
+   "confidence": 0.08976159244775772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 2.52,
+   "end": 4.5,
+   "confidence": 0.07123920321464539,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 2.6,
+   "end": 4.5,
+   "confidence": 0.06876768171787262,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 3.5,
+   "end": 7.5,
+   "confidence": 0.11883682757616043,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 3.5,
+   "end": 6.0,
+   "confidence": 0.06911299377679825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 4.0,
+   "end": 6.75,
+   "confidence": 0.07078436762094498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mouse",
+   "start": 4.0,
+   "end": 7.0,
+   "confidence": 0.05788968503475189,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 4.75,
+   "end": 7.0,
+   "confidence": 0.14031991362571716,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 6.57,
+   "end": 12.31925,
+   "confidence": 0.51731276512146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 6.57,
+   "end": 12.31925,
+   "confidence": 0.42006489634513855,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 6.57,
+   "end": 11.0,
+   "confidence": 0.3647964298725128,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 7.140000000000001,
+   "end": 7.5,
+   "confidence": 0.05597146973013878,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.75,
+   "end": 12.31925,
+   "confidence": 0.1583227962255478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 6.25,
+   "end": 8.5,
+   "confidence": 0.0695863887667656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 6.37,
+   "end": 8.5,
+   "confidence": 0.05289377272129059,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 7.0,
+   "end": 10.25,
+   "confidence": 0.06944224238395691,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 7.0,
+   "end": 10.25,
+   "confidence": 0.06887802481651306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 7.25,
+   "end": 12.0,
+   "confidence": 0.07263058423995972,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 10.41,
+   "end": 12.0,
+   "confidence": 0.07209815084934235,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 10.41,
+   "end": 11.25,
+   "confidence": 0.05983521416783333,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 10.0,
+   "end": 12.0,
+   "confidence": 0.05127863213419914,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 11.25,
+   "end": 12.31925,
+   "confidence": 0.09965091198682785,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Rain",
+   "confidence": 0.6678619980812073,
+   "start": 0.14000000000000012,
+   "end": 12.31925,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 6.229625,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 6.229625,
+     "end": 12.31925,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 14,
+   "clap_top3": [
+    "Drip",
+    "Sink (filling or washing)",
+    "Frying (food)"
+   ]
+  }
+ ]
+}

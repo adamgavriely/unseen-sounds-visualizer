@@ -1,0 +1,574 @@
+{
+ "clip": "b3_wind_coast.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.028028,
+ "events": [
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.21999999999999997,
+   "end": 27.75,
+   "confidence": 0.44176173210144043,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.21999999999999997,
+   "end": 27.75,
+   "confidence": 0.38568565249443054,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 0.21999999999999997,
+   "end": 6.75,
+   "confidence": 0.29861485958099365,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 0.21999999999999997,
+   "end": 6.75,
+   "confidence": 0.29519134759902954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.2764577269554138,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.26507604122161865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.30000000000000004,
+   "end": 8.5,
+   "confidence": 0.13282562792301178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 0.0,
+   "end": 6.5,
+   "confidence": 0.11460269242525101,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "confidence": 0.0984303280711174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.06793449819087982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.06507699191570282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.75,
+   "end": 27.75,
+   "confidence": 0.17303068935871124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 2.0,
+   "end": 5.5,
+   "confidence": 0.20931364595890045,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 2.0,
+   "end": 5.5,
+   "confidence": 0.16903601586818695,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 4.5,
+   "end": 8.25,
+   "confidence": 0.13185913860797882,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 5.0,
+   "end": 7.0,
+   "confidence": 0.11421816796064377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 5.25,
+   "end": 9.5,
+   "confidence": 0.07172756642103195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 4.95,
+   "end": 8.5,
+   "confidence": 0.05613192915916443,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 7.5,
+   "end": 21.0,
+   "confidence": 0.0777277871966362,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 7.97,
+   "end": 27.75,
+   "confidence": 0.2925693690776825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 7.890000000000001,
+   "end": 21.0,
+   "confidence": 0.23786389827728271,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 8.25,
+   "end": 9.25,
+   "confidence": 0.10463809221982956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 8.25,
+   "end": 9.25,
+   "confidence": 0.09247740358114243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 8.25,
+   "end": 9.25,
+   "confidence": 0.05082735791802406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 8.07,
+   "end": 9.25,
+   "confidence": 0.05029715225100517,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 9.05,
+   "end": 12.0,
+   "confidence": 0.10348246991634369,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.08873893320560455,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.07487692683935165,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 9.25,
+   "end": 10.75,
+   "confidence": 0.07022164016962051,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 9.75,
+   "end": 10.5,
+   "confidence": 0.06331872940063477,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 10.3,
+   "end": 11.0,
+   "confidence": 0.08178886026144028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 10.3,
+   "end": 11.0,
+   "confidence": 0.06794369220733643,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.0,
+   "end": 15.25,
+   "confidence": 0.05739812180399895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 12.75,
+   "end": 16.25,
+   "confidence": 0.09116122871637344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 13.3,
+   "end": 16.25,
+   "confidence": 0.10229573398828506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustling leaves",
+   "start": 13.68,
+   "end": 15.0,
+   "confidence": 0.058367591351270676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 16.5,
+   "end": 19.0,
+   "confidence": 0.10910052061080933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 18.05,
+   "end": 24.0,
+   "confidence": 0.12947532534599304,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 20.0,
+   "end": 23.75,
+   "confidence": 0.17742237448692322,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 20.0,
+   "end": 23.25,
+   "confidence": 0.13667123019695282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 20.25,
+   "end": 23.75,
+   "confidence": 0.13615167140960693,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 19.0,
+   "end": 21.75,
+   "confidence": 0.050561439245939255,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 19.75,
+   "end": 27.75,
+   "confidence": 0.179422989487648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 22.25,
+   "end": 23.25,
+   "confidence": 0.06150343641638756,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 23.25,
+   "end": 27.75,
+   "confidence": 0.05424514412879944,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Water",
+   "confidence": 0.29861485958099365,
+   "start": 0.21999999999999997,
+   "end": 6.75,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 6.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "waves crashing on rocks"
+    },
+    {
+     "start": 7.97,
+     "end": 12.915,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "waves crashing on rocks"
+    },
+    {
+     "start": 12.915,
+     "end": 17.86,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "waves crashing on rocks"
+    },
+    {
+     "start": 17.86,
+     "end": 22.805,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "waves crashing on rocks"
+    },
+    {
+     "start": 22.805,
+     "end": 27.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "waves crashing on rocks"
+    }
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.26507604122161865,
+   "start": 0.0,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.625,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.625,
+     "end": 9.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.25,
+     "end": 13.875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.875,
+     "end": 18.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.5,
+     "end": 23.125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.125,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

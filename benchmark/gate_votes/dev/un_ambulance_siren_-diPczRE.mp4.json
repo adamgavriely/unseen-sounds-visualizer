@@ -1,0 +1,678 @@
+{
+ "clip": "un_ambulance_siren_-diPczRE.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.016,
+ "events": [
+  {
+   "label": "Ambulance (siren)",
+   "start": 0.30000000000000004,
+   "end": 11.0,
+   "confidence": 0.8162091374397278,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 0.30000000000000004,
+   "end": 11.0,
+   "confidence": 0.738470196723938,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.7219462990760803,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 0.30000000000000004,
+   "end": 11.0,
+   "confidence": 0.6749167442321777,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 0.30000000000000004,
+   "end": 10.5,
+   "confidence": 0.6119040250778198,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 3.5,
+   "confidence": 0.2777641713619232,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.19672447443008423,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 7.5,
+   "confidence": 0.10230900347232819,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 1.25,
+   "end": 4.25,
+   "confidence": 0.061664219945669174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 1.55,
+   "end": 4.25,
+   "confidence": 0.061322327703237534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.25,
+   "end": 3.5,
+   "confidence": 0.0950859934091568,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 4.05,
+   "end": 6.75,
+   "confidence": 0.1106235533952713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 6.25,
+   "end": 15.75,
+   "confidence": 0.22120888531208038,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 6.25,
+   "end": 7.5,
+   "confidence": 0.21323458850383759,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 6.17,
+   "end": 7.5,
+   "confidence": 0.20238114893436432,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 6.75,
+   "end": 7.25,
+   "confidence": 0.10285566002130508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 6.75,
+   "end": 7.25,
+   "confidence": 0.09006786346435547,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.25,
+   "end": 7.75,
+   "confidence": 0.06250675767660141,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 7.5,
+   "end": 9.25,
+   "confidence": 0.09089872986078262,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 7.75,
+   "end": 8.75,
+   "confidence": 0.09885439276695251,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 7.75,
+   "end": 9.25,
+   "confidence": 0.07967105507850647,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 7.75,
+   "end": 10.0,
+   "confidence": 0.05723852291703224,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 6.5,
+   "end": 8.75,
+   "confidence": 0.08550163358449936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 8.0,
+   "end": 8.5,
+   "confidence": 0.050217363983392715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 8.49,
+   "end": 9.5,
+   "confidence": 0.08012987673282623,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.5,
+   "end": 10.25,
+   "confidence": 0.05949534848332405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 9.0,
+   "end": 15.75,
+   "confidence": 0.7399174571037292,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 9.0,
+   "end": 15.75,
+   "confidence": 0.678649365901947,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 9.0,
+   "end": 15.75,
+   "confidence": 0.6703300476074219,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 10.32,
+   "end": 12.0,
+   "confidence": 0.2759860157966614,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 10.32,
+   "end": 12.0,
+   "confidence": 0.22488418221473694,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.5,
+   "end": 15.75,
+   "confidence": 0.16642533242702484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 9.5,
+   "end": 15.75,
+   "confidence": 0.22144000232219696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 9.5,
+   "end": 12.0,
+   "confidence": 0.07468754798173904,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 11.0,
+   "end": 13.25,
+   "confidence": 0.06652890145778656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 11.07,
+   "end": 12.75,
+   "confidence": 0.07391533255577087,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 11.08,
+   "end": 12.75,
+   "confidence": 0.09419306367635727,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 11.0,
+   "end": 12.75,
+   "confidence": 0.05909457430243492,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.5,
+   "end": 13.0,
+   "confidence": 0.05150725319981575,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.4242574870586395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 11.11,
+   "end": 12.75,
+   "confidence": 0.058049943298101425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 12.25,
+   "end": 12.75,
+   "confidence": 0.057017240673303604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 12.5,
+   "end": 14.0,
+   "confidence": 0.414117693901062,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 12.4,
+   "end": 13.25,
+   "confidence": 0.3361053168773651,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 11.75,
+   "end": 15.75,
+   "confidence": 0.3246023654937744,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 11.75,
+   "end": 15.75,
+   "confidence": 0.16544173657894135,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.25,
+   "end": 15.75,
+   "confidence": 0.11124516278505325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 12.43,
+   "end": 14.0,
+   "confidence": 0.10378002375364304,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 12.27,
+   "end": 14.0,
+   "confidence": 0.07050073146820068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 13.25,
+   "end": 14.0,
+   "confidence": 0.06498632580041885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 11.75,
+   "end": 15.0,
+   "confidence": 0.06121601536870003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 12.03,
+   "end": 15.0,
+   "confidence": 0.056912269443273544,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 12.43,
+   "end": 14.0,
+   "confidence": 0.050687648355960846,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 13.25,
+   "end": 14.0,
+   "confidence": 0.05018790066242218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 13.84,
+   "end": 15.75,
+   "confidence": 0.09629154950380325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Siren",
+   "confidence": 0.8162091374397278,
+   "start": 0.30000000000000004,
+   "end": 11.0,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.6499999999999995,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Ambulance on road"
+    },
+    {
+     "start": 5.6499999999999995,
+     "end": 11.0,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Ambulance on road"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Siren",
+    "Motor vehicle (road)",
+    "Theremin"
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.7399174571037292,
+   "start": 9.0,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 9.0,
+     "end": 15.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 26,
+   "clap_top3": [
+    "Gears",
+    "Blender",
+    "Buzzer"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.7219462990760803,
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 5.343333333333334,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Ambulance"
+    },
+    {
+     "start": 5.343333333333334,
+     "end": 10.546666666666667,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "car"
+    },
+    {
+     "start": 10.546666666666667,
+     "end": 15.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "a car"
+    }
+   ],
+   "clap_rank": 81,
+   "clap_top3": [
+    "Siren",
+    "Motor vehicle (road)",
+    "Theremin"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.4242574870586395,
+   "start": 10.32,
+   "end": 14.25,
+   "stretches": [
+    {
+     "start": 10.32,
+     "end": 14.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 17,
+   "clap_top3": [
+    "Gears",
+    "Vibration",
+    "Rail transport"
+   ]
+  }
+ ]
+}

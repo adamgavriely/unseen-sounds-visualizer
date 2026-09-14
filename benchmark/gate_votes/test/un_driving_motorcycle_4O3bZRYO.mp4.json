@@ -1,0 +1,859 @@
+{
+ "clip": "un_driving_motorcycle_4O3bZRYO.mp4",
+ "tag": "unseen_ambient",
+ "duration": 20.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.8300021290779114,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.06000000000000005,
+   "end": 4.25,
+   "confidence": 0.339896023273468,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 12.5,
+   "confidence": 0.18087010085582733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.0994529202580452,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 4.75,
+   "confidence": 0.0819961354136467,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.050395283848047256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snoring",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.10855336487293243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snort",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.09677635878324509,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.0,
+   "end": 2.25,
+   "confidence": 0.17814673483371735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sewing machine",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.07501838356256485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.25,
+   "end": 2.25,
+   "confidence": 0.0749008059501648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 0.27,
+   "end": 2.25,
+   "confidence": 0.06361790746450424,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.5,
+   "end": 12.75,
+   "confidence": 0.30909210443496704,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 1.49,
+   "end": 6.75,
+   "confidence": 0.2992488443851471,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Children playing",
+   "start": 1.33,
+   "end": 4.5,
+   "confidence": 0.17117509245872498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 1.73,
+   "end": 2.25,
+   "confidence": 0.06017442047595978,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.82,
+   "end": 5.0,
+   "confidence": 0.15603739023208618,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 1.0,
+   "end": 3.5,
+   "confidence": 0.05828191339969635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 3.0,
+   "end": 8.5,
+   "confidence": 0.07169784605503082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 1.5,
+   "end": 5.0,
+   "confidence": 0.05225113406777382,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 4.0,
+   "end": 8.75,
+   "confidence": 0.09576962143182755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 4.17,
+   "end": 11.75,
+   "confidence": 0.6809178590774536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.75,
+   "end": 13.25,
+   "confidence": 0.520542323589325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 5.38,
+   "end": 8.0,
+   "confidence": 0.129900723695755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 5.0,
+   "end": 13.0,
+   "confidence": 0.11676384508609772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 4.98,
+   "end": 6.0,
+   "confidence": 0.09699822217226028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 5.0,
+   "end": 6.0,
+   "confidence": 0.051379453390836716,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 5.75,
+   "end": 10.75,
+   "confidence": 0.22308304905891418,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 5.43,
+   "end": 7.25,
+   "confidence": 0.06198302283883095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 7.5,
+   "end": 9.25,
+   "confidence": 0.06895183026790619,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 8.0,
+   "end": 8.5,
+   "confidence": 0.05241638422012329,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 7.0,
+   "end": 10.75,
+   "confidence": 0.1549830585718155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 7.0,
+   "end": 9.0,
+   "confidence": 0.10918667912483215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 7.0,
+   "end": 9.5,
+   "confidence": 0.1089315339922905,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "start": 7.0,
+   "end": 9.0,
+   "confidence": 0.09864336997270584,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 7.0,
+   "end": 9.75,
+   "confidence": 0.09755972027778625,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 7.0,
+   "end": 9.75,
+   "confidence": 0.08696972578763962,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 7.0,
+   "end": 9.75,
+   "confidence": 0.05007245019078255,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.0,
+   "end": 9.75,
+   "confidence": 0.07815724611282349,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 9.25,
+   "end": 11.75,
+   "confidence": 0.23969613015651703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 9.8,
+   "end": 11.75,
+   "confidence": 0.07552769780158997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 9.75,
+   "end": 12.75,
+   "confidence": 0.13819795846939087,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 9.75,
+   "end": 12.0,
+   "confidence": 0.05926055833697319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 8.5,
+   "end": 10.75,
+   "confidence": 0.05357826128602028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 11.0,
+   "end": 15.5,
+   "confidence": 0.06354591995477676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 11.5,
+   "end": 19.75,
+   "confidence": 0.2356046438217163,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 11.97,
+   "end": 15.25,
+   "confidence": 0.20489266514778137,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 10.25,
+   "end": 12.5,
+   "confidence": 0.14891712367534637,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 10.7,
+   "end": 14.0,
+   "confidence": 0.08332378417253494,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 12.3,
+   "end": 12.75,
+   "confidence": 0.051792483776807785,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeak",
+   "start": 12.55,
+   "end": 13.5,
+   "confidence": 0.12382388859987259,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 12.31,
+   "end": 12.75,
+   "confidence": 0.05846300721168518,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 12.73,
+   "end": 16.25,
+   "confidence": 0.07258555293083191,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 12.5,
+   "end": 17.75,
+   "confidence": 0.2774368226528168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Children playing",
+   "start": 12.34,
+   "end": 14.0,
+   "confidence": 0.07098916918039322,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby laughter",
+   "start": 11.75,
+   "end": 16.25,
+   "confidence": 0.10683726519346237,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 12.83,
+   "end": 14.5,
+   "confidence": 0.05145259574055672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 12.0,
+   "end": 17.5,
+   "confidence": 0.11103130877017975,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 13.75,
+   "end": 18.0,
+   "confidence": 0.1105906069278717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 12.25,
+   "end": 16.25,
+   "confidence": 0.0899553894996643,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 12.5,
+   "end": 16.25,
+   "confidence": 0.0887051671743393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 15.75,
+   "end": 19.75,
+   "confidence": 0.27270033955574036,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 15.75,
+   "end": 19.75,
+   "confidence": 0.05909157544374466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "start": 15.42,
+   "end": 17.25,
+   "confidence": 0.05288565158843994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 15.75,
+   "end": 17.5,
+   "confidence": 0.07573802769184113,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 15.67,
+   "end": 17.25,
+   "confidence": 0.059654608368873596,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 17.05,
+   "end": 19.25,
+   "confidence": 0.11006636917591095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 17.05,
+   "end": 19.0,
+   "confidence": 0.08243219554424286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "start": 15.5,
+   "end": 18.0,
+   "confidence": 0.05243157967925072,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 15.5,
+   "end": 18.0,
+   "confidence": 0.05181628838181496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 17.25,
+   "end": 18.0,
+   "confidence": 0.0588882640004158,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 17.5,
+   "end": 19.75,
+   "confidence": 0.6042777895927429,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 18.05,
+   "end": 19.75,
+   "confidence": 0.23491452634334564,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.10117150098085403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.07217715680599213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Children playing",
+   "start": 17.82,
+   "end": 19.5,
+   "confidence": 0.1083848625421524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.07787216454744339,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 17.02,
+   "end": 19.0,
+   "confidence": 0.07515903562307358,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 16.5,
+   "end": 18.75,
+   "confidence": 0.07108061015605927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 18.18,
+   "end": 19.75,
+   "confidence": 0.08380094170570374,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.6809178590774536,
+   "start": 0.06000000000000005,
+   "end": 13.25,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 4.456666666666667,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "white car"
+    },
+    {
+     "start": 4.456666666666667,
+     "end": 8.853333333333333,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 8.853333333333333,
+     "end": 13.25,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Vehicle"
+    },
+    {
+     "start": 17.5,
+     "end": 19.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle"
+    }
+   ],
+   "clap_rank": 216,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Sound equipment",
+    "Rock music"
+   ]
+  }
+ ]
+}

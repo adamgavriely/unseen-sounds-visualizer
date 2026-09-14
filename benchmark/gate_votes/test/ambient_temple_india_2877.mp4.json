@@ -1,0 +1,482 @@
+{
+ "clip": "ambient_temple_india_2877.mp4",
+ "tag": "no_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.9074894189834595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 8.0,
+   "confidence": 0.4781692326068878,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.1321670413017273,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "confidence": 0.08132830262184143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.0,
+   "end": 15.75,
+   "confidence": 0.14290809631347656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 1.23,
+   "end": 15.75,
+   "confidence": 0.4026166796684265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.25,
+   "end": 15.0,
+   "confidence": 0.37873220443725586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 1.25,
+   "end": 15.0,
+   "confidence": 0.14097562432289124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 1.56,
+   "end": 5.75,
+   "confidence": 0.34664392471313477,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 1.72,
+   "end": 5.25,
+   "confidence": 0.07675448060035706,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.06769699603319168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 2.27,
+   "end": 7.25,
+   "confidence": 0.17675207555294037,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Writing",
+   "start": 2.6,
+   "end": 4.25,
+   "confidence": 0.06126854568719864,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 3.24,
+   "end": 4.75,
+   "confidence": 0.055122990161180496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 3.52,
+   "end": 7.25,
+   "confidence": 0.08483848720788956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 6.05,
+   "end": 9.0,
+   "confidence": 0.08829750120639801,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 6.0,
+   "end": 8.0,
+   "confidence": 0.07357333600521088,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 4.5,
+   "end": 7.75,
+   "confidence": 0.06901442259550095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 5.0,
+   "end": 9.0,
+   "confidence": 0.07173868268728256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 5.7,
+   "end": 8.25,
+   "confidence": 0.08423502743244171,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 7.47,
+   "end": 8.5,
+   "confidence": 0.06789326667785645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 7.47,
+   "end": 8.25,
+   "confidence": 0.06352566927671432,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 6.0,
+   "end": 9.0,
+   "confidence": 0.27045443654060364,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 6.0,
+   "end": 8.75,
+   "confidence": 0.09448904544115067,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 6.0,
+   "end": 9.5,
+   "confidence": 0.09354720264673233,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.0776161178946495,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.06817249208688736,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 8.06,
+   "end": 8.5,
+   "confidence": 0.14857657253742218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 7.34,
+   "end": 9.25,
+   "confidence": 0.13400444388389587,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Meow",
+   "start": 8.14,
+   "end": 8.5,
+   "confidence": 0.0897994115948677,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 8.25,
+   "end": 15.75,
+   "confidence": 0.16378243267536163,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.25,
+   "end": 9.25,
+   "confidence": 0.05446278303861618,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Children playing",
+   "start": 8.65,
+   "end": 11.5,
+   "confidence": 0.6021727323532104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 8.57,
+   "end": 11.5,
+   "confidence": 0.22118785977363586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goat",
+   "start": 7.61,
+   "end": 10.5,
+   "confidence": 0.14805573225021362,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 7.45,
+   "end": 11.5,
+   "confidence": 0.11167418956756592,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 8.69,
+   "end": 15.75,
+   "confidence": 0.32271918654441833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 8.25,
+   "end": 10.25,
+   "confidence": 0.1146547794342041,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snake",
+   "start": 10.15,
+   "end": 12.5,
+   "confidence": 0.06594821810722351,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 10.52,
+   "end": 15.75,
+   "confidence": 0.07383038103580475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 10.12,
+   "end": 15.75,
+   "confidence": 0.0633540078997612,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 12.0,
+   "end": 15.75,
+   "confidence": 0.07870447635650635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 11.18,
+   "end": 13.75,
+   "confidence": 0.06266256421804428,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 11.26,
+   "end": 13.5,
+   "confidence": 0.05139433965086937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Conversation",
+   "start": 13.82,
+   "end": 15.0,
+   "confidence": 0.05159049481153488,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Children playing",
+   "confidence": 0.6021727323532104,
+   "start": 8.65,
+   "end": 11.5,
+   "stretches": [
+    {
+     "start": 8.65,
+     "end": 11.5,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Children playing"
+    }
+   ],
+   "clap_rank": 8,
+   "clap_top3": [
+    "Rock music",
+    "Boing",
+    "Funk"
+   ]
+  }
+ ]
+}

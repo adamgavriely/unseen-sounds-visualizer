@@ -1,0 +1,541 @@
+{
+ "clip": "as_alarm_71Xl_uAS.mp4",
+ "tag": "unseen_ambient",
+ "duration": 20.053367,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.14000000000000012,
+   "end": 19.75,
+   "confidence": 0.7043728828430176,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "start": 0.0,
+   "end": 5.0,
+   "confidence": 0.439132422208786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 0.0,
+   "end": 5.0,
+   "confidence": 0.2815399169921875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm clock",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.2545374929904938,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.14000000000000012,
+   "end": 19.75,
+   "confidence": 0.18293729424476624,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.1722201108932495,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Beep, bleep",
+   "start": 0.0,
+   "end": 5.0,
+   "confidence": 0.10142046958208084,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05949147418141365,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulse",
+   "start": 0.25,
+   "end": 0.75,
+   "confidence": 0.26730096340179443,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone bell ringing",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.05060910806059837,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 0.18000000000000005,
+   "end": 2.5,
+   "confidence": 0.09383335709571838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.05076099559664726,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulse",
+   "start": 1.16,
+   "end": 2.75,
+   "confidence": 0.11257519572973251,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clock",
+   "start": 1.0899999999999999,
+   "end": 2.5,
+   "confidence": 0.054462794214487076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 1.0,
+   "end": 5.0,
+   "confidence": 0.18451246619224548,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 5.47,
+   "end": 19.75,
+   "confidence": 0.4574516713619232,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm clock",
+   "start": 5.47,
+   "end": 7.25,
+   "confidence": 0.3227826952934265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "start": 3.95,
+   "end": 19.75,
+   "confidence": 0.31765446066856384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Beep, bleep",
+   "start": 5.55,
+   "end": 19.75,
+   "confidence": 0.14908167719841003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clock",
+   "start": 5.640000000000001,
+   "end": 7.25,
+   "confidence": 0.10360921919345856,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 4.0,
+   "end": 6.0,
+   "confidence": 0.07012345641851425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulse",
+   "start": 5.73,
+   "end": 7.5,
+   "confidence": 0.1305936723947525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 4.37,
+   "end": 8.0,
+   "confidence": 0.13023756444454193,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 5.5,
+   "end": 8.0,
+   "confidence": 0.06496694684028625,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm clock",
+   "start": 7.48,
+   "end": 19.75,
+   "confidence": 0.6426178216934204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 6.44,
+   "end": 8.75,
+   "confidence": 0.10134913772344589,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clock",
+   "start": 7.5600000000000005,
+   "end": 8.0,
+   "confidence": 0.056567877531051636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulse",
+   "start": 8.05,
+   "end": 12.75,
+   "confidence": 0.41325652599334717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clock",
+   "start": 7.91,
+   "end": 11.0,
+   "confidence": 0.175748810172081,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 7.25,
+   "end": 9.5,
+   "confidence": 0.09399044513702393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 8.75,
+   "end": 11.0,
+   "confidence": 0.07468237727880478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 10.26,
+   "end": 11.5,
+   "confidence": 0.08443070203065872,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 10.34,
+   "end": 11.75,
+   "confidence": 0.05175521597266197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 10.0,
+   "end": 12.25,
+   "confidence": 0.08819317817687988,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clock",
+   "start": 12.01,
+   "end": 15.0,
+   "confidence": 0.21229685842990875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulse",
+   "start": 13.22,
+   "end": 14.25,
+   "confidence": 0.07856199890375137,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.5,
+   "end": 17.0,
+   "confidence": 0.06030948832631111,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 14.23,
+   "end": 18.0,
+   "confidence": 0.13167552649974823,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone bell ringing",
+   "start": 14.18,
+   "end": 18.0,
+   "confidence": 0.07285168766975403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 15.42,
+   "end": 19.25,
+   "confidence": 0.06923114508390427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clicking",
+   "start": 16.12,
+   "end": 18.5,
+   "confidence": 0.07219022512435913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 18.0,
+   "end": 18.5,
+   "confidence": 0.0931268036365509,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.06540883332490921,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 18.16,
+   "end": 19.75,
+   "confidence": 0.08902613818645477,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 18.5,
+   "end": 19.25,
+   "confidence": 0.05453460291028023,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Alarm",
+   "confidence": 0.6426178216934204,
+   "start": 0.0,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.9375,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Sony alarm clock"
+    },
+    {
+     "start": 4.9375,
+     "end": 9.875,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Sony clock radio"
+    },
+    {
+     "start": 9.875,
+     "end": 14.8125,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Sony alarm clock"
+    },
+    {
+     "start": 14.8125,
+     "end": 19.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Sony alarm clock"
+    }
+   ],
+   "clap_rank": 12,
+   "clap_top3": [
+    "Sine wave",
+    "Buzzer",
+    "Background noise"
+   ]
+  },
+  {
+   "label": "Pulse",
+   "confidence": 0.41325652599334717,
+   "start": 8.05,
+   "end": 12.75,
+   "stretches": [
+    {
+     "start": 0.25,
+     "end": 0.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 8.05,
+     "end": 12.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 10,
+   "clap_top3": [
+    "Buzzer",
+    "Bell",
+    "Telephone"
+   ]
+  }
+ ]
+}

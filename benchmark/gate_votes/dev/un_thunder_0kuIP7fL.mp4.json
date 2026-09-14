@@ -1,0 +1,748 @@
+{
+ "clip": "un_thunder_0kuIP7fL.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.018,
+ "events": [
+  {
+   "label": "Rain",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.3540492653846741,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.31929510831832886,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.3031020164489746,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.20953154563903809,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.19375194609165192,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.14743173122406006,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.08307772129774094,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05948410928249359,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.15375369787216187,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.09575661271810532,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.08160855621099472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.06613345444202423,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick-tock",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.06389900296926498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 0.73,
+   "end": 1.25,
+   "confidence": 0.05508587136864662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 4.25,
+   "confidence": 0.08973378688097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 0.75,
+   "end": 2.5,
+   "confidence": 0.24756990373134613,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.75,
+   "end": 2.5,
+   "confidence": 0.2361365407705307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.75,
+   "end": 2.25,
+   "confidence": 0.144539013504982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.25,
+   "end": 4.25,
+   "confidence": 0.09500230848789215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.75,
+   "end": 10.75,
+   "confidence": 0.1303124874830246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.75,
+   "end": 4.25,
+   "confidence": 0.055429890751838684,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 1.75,
+   "end": 4.25,
+   "confidence": 0.05506758391857147,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 1.85,
+   "end": 3.5,
+   "confidence": 0.12673470377922058,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 1.85,
+   "end": 3.25,
+   "confidence": 0.07911814004182816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 1.85,
+   "end": 3.5,
+   "confidence": 0.07494184374809265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 1.85,
+   "end": 3.25,
+   "confidence": 0.07464110106229782,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 2.75,
+   "end": 4.25,
+   "confidence": 0.050747208297252655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 3.74,
+   "end": 4.75,
+   "confidence": 0.4593108594417572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 3.58,
+   "end": 4.5,
+   "confidence": 0.2612544894218445,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 3.0,
+   "end": 6.75,
+   "confidence": 0.2893099784851074,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.5,
+   "end": 10.0,
+   "confidence": 0.20747852325439453,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 4.5,
+   "end": 9.0,
+   "confidence": 0.14656496047973633,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.5,
+   "end": 9.0,
+   "confidence": 0.12765821814537048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 3.0,
+   "end": 6.75,
+   "confidence": 0.08993707597255707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 5.75,
+   "end": 6.25,
+   "confidence": 0.06103326380252838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 6.0,
+   "end": 11.25,
+   "confidence": 0.06439806520938873,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 6.25,
+   "end": 11.25,
+   "confidence": 0.12254850566387177,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.13480454683303833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.13103361427783966,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.1152012050151825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 6.5,
+   "end": 10.75,
+   "confidence": 0.10886633396148682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 8.75,
+   "end": 17.75,
+   "confidence": 0.7793706655502319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 8.75,
+   "end": 17.75,
+   "confidence": 0.7286468148231506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 7.62,
+   "end": 17.75,
+   "confidence": 0.6907147765159607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 8.18,
+   "end": 10.0,
+   "confidence": 0.10018385946750641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 8.18,
+   "end": 9.75,
+   "confidence": 0.09496161341667175,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 9.0,
+   "end": 10.25,
+   "confidence": 0.08702030777931213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.25,
+   "end": 10.5,
+   "confidence": 0.1039053350687027,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 9.73,
+   "end": 15.25,
+   "confidence": 0.2996806204319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 9.25,
+   "end": 15.25,
+   "confidence": 0.22031189501285553,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 10.5,
+   "end": 11.0,
+   "confidence": 0.05291508510708809,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 12.25,
+   "end": 13.0,
+   "confidence": 0.0608561746776104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.5,
+   "end": 13.0,
+   "confidence": 0.05255072936415672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 13.25,
+   "end": 17.75,
+   "confidence": 0.16270555555820465,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 14.25,
+   "end": 17.75,
+   "confidence": 0.11938677728176117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.25,
+   "end": 17.75,
+   "confidence": 0.09824465960264206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 14.75,
+   "end": 16.75,
+   "confidence": 0.08189944177865982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 14.75,
+   "end": 16.75,
+   "confidence": 0.08127091825008392,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 14.75,
+   "end": 17.25,
+   "confidence": 0.054435987025499344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 15.75,
+   "end": 17.5,
+   "confidence": 0.07248581945896149,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 15.75,
+   "end": 16.5,
+   "confidence": 0.06987981498241425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 15.75,
+   "end": 17.5,
+   "confidence": 0.06604349613189697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 16.0,
+   "end": 17.5,
+   "confidence": 0.05935312435030937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick",
+   "start": 16.59,
+   "end": 17.75,
+   "confidence": 0.051310863345861435,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Thunder",
+   "confidence": 0.7793706655502319,
+   "start": 8.75,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 8.75,
+     "end": 13.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.25,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Thunderstorm",
+    "Whale vocalization"
+   ]
+  },
+  {
+   "label": "Rain",
+   "confidence": 0.6907147765159607,
+   "start": 7.62,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 2.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 3.58,
+     "end": 4.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 7.62,
+     "end": 12.684999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 12.684999999999999,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 16,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Vibration",
+    "Gears"
+   ]
+  },
+  {
+   "label": "Scissors",
+   "confidence": 0.2893099784851074,
+   "start": 3.0,
+   "end": 6.75,
+   "stretches": [
+    {
+     "start": 3.0,
+     "end": 6.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

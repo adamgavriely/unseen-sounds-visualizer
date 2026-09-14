@@ -1,0 +1,108 @@
+{
+ "clip": "b3_wm_waterfall_vid_venezuela_ogv.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.5314728021621704,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waterfall",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.19137632846832275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.19124379754066467,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 0.06000000000000005,
+   "end": 27.75,
+   "confidence": 0.1709272861480713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.16809873282909393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.0970422700047493,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.0793255865573883,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 12.0,
+   "end": 14.25,
+   "confidence": 0.05359945073723793,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 17.0,
+   "end": 20.5,
+   "confidence": 0.0662987232208252,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 17.0,
+   "end": 20.25,
+   "confidence": 0.05818921700119972,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

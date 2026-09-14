@@ -1,0 +1,349 @@
+{
+ "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+ "tag": "mixed",
+ "duration": 18.04,
+ "events": [
+  {
+   "label": "Ambulance (siren)",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.8428406119346619,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.7963225245475769,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.7667189836502075,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.7403379678726196,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.6106487512588501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.3293147385120392,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.3093494772911072,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.2446100413799286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.22578902542591095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.1415887027978897,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 1.5,
+   "end": 6.75,
+   "confidence": 0.09627140313386917,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.25,
+   "end": 6.5,
+   "confidence": 0.08724543452262878,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 4.5,
+   "end": 5.25,
+   "confidence": 0.06243939697742462,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 4.43,
+   "end": 6.25,
+   "confidence": 0.06859239935874939,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 4.0,
+   "end": 8.75,
+   "confidence": 0.08574384450912476,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 4.12,
+   "end": 6.0,
+   "confidence": 0.05178831145167351,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 6.0,
+   "end": 9.0,
+   "confidence": 0.09342220425605774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 6.75,
+   "end": 11.0,
+   "confidence": 0.4865843951702118,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 5.87,
+   "end": 12.75,
+   "confidence": 0.17162252962589264,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 7.25,
+   "end": 8.25,
+   "confidence": 0.07207813858985901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 7.2,
+   "end": 9.25,
+   "confidence": 0.054189905524253845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 9.64,
+   "end": 11.75,
+   "confidence": 0.06120104715228081,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.75,
+   "end": 17.75,
+   "confidence": 0.49830085039138794,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 16.25,
+   "end": 16.75,
+   "confidence": 0.050578292459249496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Siren",
+   "confidence": 0.8428406119346619,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Siren",
+    "Motor vehicle (road)",
+    "Theremin"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.6106487512588501,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "car on road"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 131,
+   "clap_top3": [
+    "Siren",
+    "Motor vehicle (road)",
+    "Theremin"
+   ]
+  }
+ ]
+}

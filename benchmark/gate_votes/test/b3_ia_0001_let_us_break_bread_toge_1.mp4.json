@@ -1,0 +1,178 @@
+{
+ "clip": "b3_ia_0001_let_us_break_bread_toge_1.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.028028,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.6052483320236206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.567969024181366,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.28633302450180054,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.2518397867679596,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Piano",
+   "start": 0.30000000000000004,
+   "end": 20.5,
+   "confidence": 0.19747114181518555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keyboard (musical)",
+   "start": 0.30000000000000004,
+   "end": 20.5,
+   "confidence": 0.1279078871011734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Classical music",
+   "start": 0.97,
+   "end": 20.75,
+   "confidence": 0.13026562333106995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 7.6,
+   "end": 11.0,
+   "confidence": 0.06568450480699539,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 12.23,
+   "end": 18.0,
+   "confidence": 0.10484032332897186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 13.33,
+   "end": 15.75,
+   "confidence": 0.08755678683519363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 13.89,
+   "end": 15.75,
+   "confidence": 0.06777646392583847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cello",
+   "start": 12.5,
+   "end": 15.75,
+   "confidence": 0.05702468752861023,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Harpsichord",
+   "start": 14.82,
+   "end": 17.25,
+   "confidence": 0.05559583380818367,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 19.18,
+   "end": 20.75,
+   "confidence": 0.05891648307442665,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 21.23,
+   "end": 27.75,
+   "confidence": 0.4337739944458008,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 21.23,
+   "end": 23.5,
+   "confidence": 0.30564314126968384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 21.25,
+   "end": 27.75,
+   "confidence": 0.052371684461832047,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

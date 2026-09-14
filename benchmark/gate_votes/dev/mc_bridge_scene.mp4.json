@@ -1,0 +1,788 @@
+{
+ "clip": "mc_bridge_scene.mp4",
+ "tag": "unseen_ambient",
+ "duration": 20.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.8099874258041382,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bow-wow",
+   "start": 0.14000000000000012,
+   "end": 2.0,
+   "confidence": 0.4414193630218506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.14000000000000012,
+   "end": 2.0,
+   "confidence": 0.38410401344299316,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.14000000000000012,
+   "end": 6.0,
+   "confidence": 0.38334450125694275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 0.14000000000000012,
+   "end": 2.0,
+   "confidence": 0.31224799156188965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Yip",
+   "start": 0.14000000000000012,
+   "end": 2.0,
+   "confidence": 0.17872045934200287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.15594083070755005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.13330723345279694,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.09902917593717575,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.08235710114240646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05529238283634186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.0535552091896534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 10.75,
+   "confidence": 0.7157775163650513,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.05036159232258797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper (dog)",
+   "start": 0.24,
+   "end": 1.75,
+   "confidence": 0.09369046986103058,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Canidae, dogs, wolves",
+   "start": 0.24,
+   "end": 1.75,
+   "confidence": 0.07806944102048874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bark",
+   "start": 0.24,
+   "end": 1.75,
+   "confidence": 0.05871429294347763,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.0,
+   "end": 4.25,
+   "confidence": 0.49505162239074707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 3.5,
+   "confidence": 0.4509161710739136,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 1.48,
+   "end": 2.75,
+   "confidence": 0.08155405521392822,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 0.37,
+   "end": 2.75,
+   "confidence": 0.12806940078735352,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 0.45,
+   "end": 3.75,
+   "confidence": 0.07711335271596909,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 2.0,
+   "end": 2.5,
+   "confidence": 0.05092433840036392,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 2.25,
+   "end": 3.75,
+   "confidence": 0.2216133028268814,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 2.1500000000000004,
+   "end": 2.75,
+   "confidence": 0.05138774961233139,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 1.28,
+   "end": 3.75,
+   "confidence": 0.20947426557540894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 1.28,
+   "end": 3.75,
+   "confidence": 0.19082114100456238,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 1.8599999999999999,
+   "end": 3.75,
+   "confidence": 0.05632698908448219,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 3.25,
+   "end": 4.75,
+   "confidence": 0.06626112759113312,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 4.140000000000001,
+   "end": 5.75,
+   "confidence": 0.22174711525440216,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 4.140000000000001,
+   "end": 5.75,
+   "confidence": 0.16989357769489288,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 3.99,
+   "end": 6.25,
+   "confidence": 0.14937669038772583,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 2.75,
+   "end": 5.75,
+   "confidence": 0.11321783065795898,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 4.890000000000001,
+   "end": 5.5,
+   "confidence": 0.06237928196787834,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 5.16,
+   "end": 8.5,
+   "confidence": 0.13815204799175262,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 6.390000000000001,
+   "end": 6.75,
+   "confidence": 0.07126089930534363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 5.2,
+   "end": 7.25,
+   "confidence": 0.06995278596878052,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 6.82,
+   "end": 8.0,
+   "confidence": 0.052452202886343,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 7.75,
+   "end": 10.5,
+   "confidence": 0.13380685448646545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 7.43,
+   "end": 9.0,
+   "confidence": 0.06072785705327988,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 8.56,
+   "end": 9.75,
+   "confidence": 0.06736969202756882,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 7.12,
+   "end": 9.0,
+   "confidence": 0.060420531779527664,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 8.56,
+   "end": 9.75,
+   "confidence": 0.05491555854678154,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 9.22,
+   "end": 16.25,
+   "confidence": 0.957444429397583,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 9.0,
+   "end": 16.25,
+   "confidence": 0.8342147469520569,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 9.25,
+   "end": 16.0,
+   "confidence": 0.32426905632019043,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 14.5,
+   "end": 19.75,
+   "confidence": 0.5653571486473083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 13.75,
+   "end": 19.75,
+   "confidence": 0.5766966342926025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 14.43,
+   "end": 16.0,
+   "confidence": 0.09690313786268234,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 14.59,
+   "end": 17.0,
+   "confidence": 0.09052833169698715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 15.25,
+   "end": 17.75,
+   "confidence": 0.06674275547266006,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 15.25,
+   "end": 17.25,
+   "confidence": 0.0663640946149826,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 16.05,
+   "end": 19.75,
+   "confidence": 0.4770638048648834,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 15.75,
+   "end": 19.75,
+   "confidence": 0.38426584005355835,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 16.05,
+   "end": 19.75,
+   "confidence": 0.37674933671951294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 15.0,
+   "end": 19.75,
+   "confidence": 0.31067129969596863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wood",
+   "start": 15.68,
+   "end": 17.0,
+   "confidence": 0.07368724793195724,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 16.75,
+   "end": 19.75,
+   "confidence": 0.09649409353733063,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 15.5,
+   "end": 18.0,
+   "confidence": 0.1003870740532875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 18.25,
+   "end": 19.75,
+   "confidence": 0.12007402628660202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 18.5,
+   "end": 19.75,
+   "confidence": 0.05475262179970741,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wood",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.126791313290596,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Splinter",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.06847015768289566,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "confidence": 0.957444429397583,
+   "start": 9.22,
+   "end": 16.25,
+   "stretches": [
+    {
+     "start": 9.22,
+     "end": 16.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Aircraft",
+    "Pulse",
+    "Whip"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.8342147469520569,
+   "start": 9.0,
+   "end": 16.25,
+   "stretches": [
+    {
+     "start": 9.0,
+     "end": 16.25,
+     "verdict": false,
+     "name": false,
+     "ab": true,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 229,
+   "clap_top3": [
+    "Aircraft",
+    "Whip",
+    "Pulse"
+   ]
+  },
+  {
+   "label": "Horse",
+   "confidence": 0.5766966342926025,
+   "start": 13.75,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 13.75,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 36,
+   "clap_top3": [
+    "Aircraft",
+    "Flap",
+    "Bird"
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.49505162239074707,
+   "start": 0.0,
+   "end": 4.25,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.25,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "gun"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Music of Asia",
+    "Bagpipes",
+    "Shout"
+   ]
+  },
+  {
+   "label": "Dog",
+   "confidence": 0.4414193630218506,
+   "start": 0.14000000000000012,
+   "end": 2.0,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 2.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 10,
+   "clap_top3": [
+    "Bagpipes",
+    "Shout",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.32426905632019043,
+   "start": 9.25,
+   "end": 16.0,
+   "stretches": [
+    {
+     "start": 9.25,
+     "end": 16.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Footsteps",
+   "confidence": 0.31067129969596863,
+   "start": 15.0,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 15.0,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,169 @@
+{
+ "clip": "as_church_bell_PVGChCsr.mp4",
+ "tag": "unseen_ambient",
+ "duration": 20.04,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.40372803807258606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Church bell",
+   "start": 0.06000000000000005,
+   "end": 19.75,
+   "confidence": 0.366994172334671,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bell",
+   "start": 0.06000000000000005,
+   "end": 19.75,
+   "confidence": 0.28604644536972046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Change ringing (campanology)",
+   "start": 0.14000000000000012,
+   "end": 19.75,
+   "confidence": 0.28217414021492004,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.27469223737716675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 15.5,
+   "confidence": 0.18849001824855804,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.5,
+   "end": 2.25,
+   "confidence": 0.053659431636333466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 3.5,
+   "end": 4.5,
+   "confidence": 0.050781987607479095,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 6.25,
+   "end": 8.25,
+   "confidence": 0.05556289851665497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.75,
+   "end": 13.0,
+   "confidence": 0.07190114259719849,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.16828244924545288,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bell",
+   "confidence": 0.366994172334671,
+   "start": 0.06000000000000005,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 4.9825,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.9825,
+     "end": 9.905000000000001,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Bell in building"
+    },
+    {
+     "start": 9.905000000000001,
+     "end": 14.827500000000002,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.827500000000002,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Bell",
+    "Percussion",
+    "Christmas music"
+   ]
+  }
+ ]
+}

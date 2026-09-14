@@ -1,0 +1,666 @@
+{
+ "clip": "b3_balloon_burner.mp4",
+ "tag": "no_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.30000000000000004,
+   "end": 17.75,
+   "confidence": 0.8278160691261292,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 12.0,
+   "confidence": 0.3212365210056305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "confidence": 0.19864393770694733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronica",
+   "start": 0.06000000000000005,
+   "end": 1.0,
+   "confidence": 0.13527168333530426,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.10706979781389236,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Trance music",
+   "start": 0.06000000000000005,
+   "end": 1.0,
+   "confidence": 0.09874338656663895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 0.06000000000000005,
+   "end": 3.25,
+   "confidence": 0.08370261639356613,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Techno",
+   "start": 0.06000000000000005,
+   "end": 1.0,
+   "confidence": 0.07300679385662079,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.072271928191185,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.2319871187210083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 0.0,
+   "end": 3.5,
+   "confidence": 0.14831799268722534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.25,
+   "end": 2.25,
+   "confidence": 0.10049868375062943,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.10413442552089691,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 0.25,
+   "end": 3.25,
+   "confidence": 0.06598594784736633,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam",
+   "start": 0.5,
+   "end": 3.5,
+   "confidence": 0.09906551986932755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Spray",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.05065998062491417,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christmas music",
+   "start": 1.8599999999999999,
+   "end": 4.25,
+   "confidence": 0.22543112933635712,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jingle, tinkle",
+   "start": 1.8599999999999999,
+   "end": 3.75,
+   "confidence": 0.14763785898685455,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jingle bell",
+   "start": 1.8599999999999999,
+   "end": 3.75,
+   "confidence": 0.10358154028654099,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christian music",
+   "start": 1.7,
+   "end": 3.75,
+   "confidence": 0.10180553048849106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 2.2800000000000002,
+   "end": 4.0,
+   "confidence": 0.0839226171374321,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 3.64,
+   "end": 4.0,
+   "confidence": 0.07163351774215698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tender music",
+   "start": 3.56,
+   "end": 4.0,
+   "confidence": 0.05360977351665497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christmas music",
+   "start": 3.36,
+   "end": 6.75,
+   "confidence": 0.2374938577413559,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 4.75,
+   "end": 5.25,
+   "confidence": 0.05651888623833656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 4.02,
+   "end": 6.25,
+   "confidence": 0.10374955832958221,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 5.3,
+   "end": 10.0,
+   "confidence": 0.08143579959869385,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tender music",
+   "start": 4.34,
+   "end": 9.75,
+   "confidence": 0.051230087876319885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zing",
+   "start": 5.55,
+   "end": 7.25,
+   "confidence": 0.08166318386793137,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 4.99,
+   "end": 6.5,
+   "confidence": 0.052628614008426666,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 4.76,
+   "end": 10.0,
+   "confidence": 0.16344787180423737,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 5.84,
+   "end": 7.0,
+   "confidence": 0.053318750113248825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.75,
+   "end": 8.5,
+   "confidence": 0.09376715123653412,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 6.75,
+   "end": 8.5,
+   "confidence": 0.05266743153333664,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 7.0,
+   "end": 7.75,
+   "confidence": 0.0528094545006752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christmas music",
+   "start": 8.05,
+   "end": 9.25,
+   "confidence": 0.14914576709270477,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christian music",
+   "start": 8.05,
+   "end": 8.75,
+   "confidence": 0.09458214789628983,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 8.55,
+   "end": 10.25,
+   "confidence": 0.11270095407962799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 7.51,
+   "end": 10.0,
+   "confidence": 0.08499429374933243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.5,
+   "end": 11.0,
+   "confidence": 0.13862457871437073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zing",
+   "start": 9.72,
+   "end": 10.0,
+   "confidence": 0.08348605781793594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 10.8,
+   "end": 11.25,
+   "confidence": 0.06606493145227432,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christmas music",
+   "start": 9.93,
+   "end": 13.75,
+   "confidence": 0.20022103190422058,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jingle, tinkle",
+   "start": 9.93,
+   "end": 12.5,
+   "confidence": 0.18665269017219543,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jingle bell",
+   "start": 9.77,
+   "end": 12.5,
+   "confidence": 0.1856425702571869,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christian music",
+   "start": 10.65,
+   "end": 13.75,
+   "confidence": 0.1463841199874878,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 10.89,
+   "end": 11.25,
+   "confidence": 0.056974709033966064,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 10.34,
+   "end": 12.5,
+   "confidence": 0.09043500572443008,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 10.5,
+   "end": 17.75,
+   "confidence": 0.09593595564365387,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 12.25,
+   "end": 17.75,
+   "confidence": 0.09627263247966766,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gospel music",
+   "start": 12.55,
+   "end": 13.25,
+   "confidence": 0.06473482400178909,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tender music",
+   "start": 11.0,
+   "end": 14.5,
+   "confidence": 0.06819133460521698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.5,
+   "end": 14.25,
+   "confidence": 0.06813391298055649,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 11.93,
+   "end": 15.25,
+   "confidence": 0.05215166136622429,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 14.3,
+   "end": 15.25,
+   "confidence": 0.07625367492437363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 12.95,
+   "end": 15.25,
+   "confidence": 0.07991939038038254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christmas music",
+   "start": 13.25,
+   "end": 15.25,
+   "confidence": 0.1105407103896141,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Christian music",
+   "start": 13.25,
+   "end": 15.25,
+   "confidence": 0.09866321831941605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jingle bell",
+   "start": 13.25,
+   "end": 15.25,
+   "confidence": 0.0914597138762474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jingle, tinkle",
+   "start": 13.37,
+   "end": 15.25,
+   "confidence": 0.06589178740978241,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Harpsichord",
+   "start": 15.07,
+   "end": 16.75,
+   "confidence": 0.3134617805480957,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 17.25,
+   "end": 17.75,
+   "confidence": 0.09013160318136215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 17.25,
+   "end": 17.75,
+   "confidence": 0.07329487800598145,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 16.27,
+   "end": 17.75,
+   "confidence": 0.05342020466923714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Harpsichord",
+   "confidence": 0.3134617805480957,
+   "start": 15.07,
+   "end": 16.75,
+   "stretches": [
+    {
+     "start": 15.07,
+     "end": 16.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

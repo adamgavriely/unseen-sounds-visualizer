@@ -1,0 +1,516 @@
+{
+ "clip": "rain_road.webm",
+ "tag": "seen_ambient",
+ "duration": 15.523,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.2655,
+   "confidence": 0.43566077947616577,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 0.06000000000000005,
+   "end": 15.2655,
+   "confidence": 0.36692407727241516,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.06000000000000005,
+   "end": 4.25,
+   "confidence": 0.22431069612503052,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.14000000000000012,
+   "end": 15.2655,
+   "confidence": 0.19736048579216003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 3.75,
+   "confidence": 0.16053491830825806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sizzle",
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "confidence": 0.0911395400762558,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.07000000000000006,
+   "end": 3.75,
+   "confidence": 0.14165769517421722,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.72,
+   "end": 1.5,
+   "confidence": 0.075489342212677,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.05052441731095314,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 2.25,
+   "end": 15.2655,
+   "confidence": 0.10248300433158875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 1.37,
+   "end": 8.0,
+   "confidence": 0.2603006660938263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 1.9300000000000002,
+   "end": 5.75,
+   "confidence": 0.18957659602165222,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustling leaves",
+   "start": 1.77,
+   "end": 6.0,
+   "confidence": 0.08341998606920242,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waterfall",
+   "start": 3.23,
+   "end": 6.5,
+   "confidence": 0.08803979307413101,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 2.0,
+   "end": 4.25,
+   "confidence": 0.06592722237110138,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 2.25,
+   "end": 6.0,
+   "confidence": 0.06901390105485916,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 2.5300000000000002,
+   "end": 4.75,
+   "confidence": 0.05207509547472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 3.12,
+   "end": 12.25,
+   "confidence": 0.1977321356534958,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 3.0,
+   "end": 12.25,
+   "confidence": 0.1667051762342453,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.5,
+   "end": 11.0,
+   "confidence": 0.10810156911611557,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.5,
+   "end": 14.75,
+   "confidence": 0.06994336098432541,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 4.02,
+   "end": 5.75,
+   "confidence": 0.07489925622940063,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 4.86,
+   "end": 8.0,
+   "confidence": 0.2911272346973419,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 6.75,
+   "end": 8.5,
+   "confidence": 0.06831952184438705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 6.95,
+   "end": 8.75,
+   "confidence": 0.08063041418790817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 6.75,
+   "end": 8.75,
+   "confidence": 0.0756721943616867,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 8.5,
+   "end": 9.75,
+   "confidence": 0.06402388960123062,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 8.58,
+   "end": 10.0,
+   "confidence": 0.06605274975299835,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 8.75,
+   "end": 14.0,
+   "confidence": 0.30316174030303955,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 10.25,
+   "end": 13.5,
+   "confidence": 0.06542663276195526,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 10.49,
+   "end": 11.25,
+   "confidence": 0.08756071329116821,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "start": 9.25,
+   "end": 11.25,
+   "confidence": 0.06635566800832748,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fly, housefly",
+   "start": 9.25,
+   "end": 11.25,
+   "confidence": 0.05778317525982857,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.25,
+   "end": 15.2655,
+   "confidence": 0.13848550617694855,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 10.62,
+   "end": 12.75,
+   "confidence": 0.12117445468902588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 10.5,
+   "end": 12.75,
+   "confidence": 0.09155184030532837,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "start": 10.5,
+   "end": 12.5,
+   "confidence": 0.06550756096839905,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 11.2,
+   "end": 15.2655,
+   "confidence": 0.23998166620731354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 11.0,
+   "end": 15.2655,
+   "confidence": 0.21169722080230713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 12.58,
+   "end": 13.5,
+   "confidence": 0.05832238122820854,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.09221679717302322,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick-tock",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.07572143524885178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 12.75,
+   "end": 15.2655,
+   "confidence": 0.06970442831516266,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 12.75,
+   "end": 15.2655,
+   "confidence": 0.05232679843902588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Rain",
+   "confidence": 0.36692407727241516,
+   "start": 0.06000000000000005,
+   "end": 15.2655,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 5.128499999999999,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 5.128499999999999,
+     "end": 10.197,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 10.197,
+     "end": 15.2655,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 10,
+   "clap_top3": [
+    "Sink (filling or washing)",
+    "Bathtub (filling or washing)",
+    "Fill (with liquid)"
+   ]
+  },
+  {
+   "label": "Insect",
+   "confidence": 0.30316174030303955,
+   "start": 4.86,
+   "end": 14.0,
+   "stretches": [
+    {
+     "start": 4.86,
+     "end": 9.43,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.43,
+     "end": 14.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,847 @@
+{
+ "clip": "b3_walk_hanoi.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.7680636048316956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.5460593700408936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 0.06000000000000005,
+   "end": 27.75,
+   "confidence": 0.5383853316307068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 0.06000000000000005,
+   "end": 4.5,
+   "confidence": 0.4376969039440155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.22688119113445282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.21950018405914307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.2192394733428955,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.19372308254241943,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Flap",
+   "start": 0.21999999999999997,
+   "end": 2.5,
+   "confidence": 0.1278713494539261,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 0.0,
+   "end": 3.5,
+   "confidence": 0.12019429355859756,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.30000000000000004,
+   "end": 0.5,
+   "confidence": 0.10561894625425339,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.0,
+   "end": 13.0,
+   "confidence": 0.43738725781440735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.050560470670461655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 0.33999999999999997,
+   "end": 3.0,
+   "confidence": 0.06621162593364716,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 0.98,
+   "end": 3.0,
+   "confidence": 0.06110464408993721,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 1.0,
+   "end": 2.75,
+   "confidence": 0.056312788277864456,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.056765079498291016,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 2.0,
+   "end": 3.25,
+   "confidence": 0.08429014682769775,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 2.75,
+   "end": 8.25,
+   "confidence": 0.11073416471481323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 3.3,
+   "end": 6.5,
+   "confidence": 0.1636800915002823,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 3.0,
+   "end": 6.5,
+   "confidence": 0.1466313749551773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 2.91,
+   "end": 4.5,
+   "confidence": 0.08030906319618225,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 3.25,
+   "end": 4.5,
+   "confidence": 0.07017682492733002,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 3.6500000000000004,
+   "end": 12.0,
+   "confidence": 0.5244752764701843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 3.75,
+   "end": 5.0,
+   "confidence": 0.0585099495947361,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Flap",
+   "start": 3.91,
+   "end": 7.5,
+   "confidence": 0.1160554438829422,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 3.25,
+   "end": 7.5,
+   "confidence": 0.09460952132940292,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 3.7,
+   "end": 5.5,
+   "confidence": 0.05278254300355911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Lawn mower",
+   "start": 5.67,
+   "end": 7.25,
+   "confidence": 0.06236673891544342,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 6.84,
+   "end": 13.75,
+   "confidence": 0.13009491562843323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 6.36,
+   "end": 10.25,
+   "confidence": 0.0756068006157875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 8.5,
+   "end": 11.25,
+   "confidence": 0.09139883518218994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 8.0,
+   "end": 10.75,
+   "confidence": 0.05439191311597824,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 9.25,
+   "end": 11.75,
+   "confidence": 0.06710617989301682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 10.2,
+   "end": 26.75,
+   "confidence": 0.3581152856349945,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 10.84,
+   "end": 14.75,
+   "confidence": 0.063146211206913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 11.32,
+   "end": 12.25,
+   "confidence": 0.05245453864336014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.75,
+   "end": 16.0,
+   "confidence": 0.11086498200893402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 12.47,
+   "end": 14.75,
+   "confidence": 0.08099664002656937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.25,
+   "end": 13.25,
+   "confidence": 0.06274658441543579,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 12.48,
+   "end": 13.5,
+   "confidence": 0.08041734248399734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 11.76,
+   "end": 13.25,
+   "confidence": 0.07513218373060226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.0,
+   "end": 15.75,
+   "confidence": 0.2196727991104126,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 14.75,
+   "end": 15.5,
+   "confidence": 0.052217792719602585,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 13.94,
+   "end": 27.75,
+   "confidence": 0.6422335505485535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 15.25,
+   "end": 24.25,
+   "confidence": 0.12681205570697784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 13.95,
+   "end": 20.5,
+   "confidence": 0.09051723033189774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 15.8,
+   "end": 18.75,
+   "confidence": 0.09194746613502502,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 14.12,
+   "end": 16.0,
+   "confidence": 0.05558668449521065,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 16.0,
+   "end": 18.0,
+   "confidence": 0.06786496937274933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 15.1,
+   "end": 17.0,
+   "confidence": 0.06491456925868988,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 18.0,
+   "end": 27.75,
+   "confidence": 0.10319934040307999,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 18.25,
+   "end": 23.0,
+   "confidence": 0.20752564072608948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 18.47,
+   "end": 19.25,
+   "confidence": 0.090693399310112,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 18.25,
+   "end": 19.25,
+   "confidence": 0.07294582575559616,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 18.25,
+   "end": 19.25,
+   "confidence": 0.06440103054046631,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 18.25,
+   "end": 19.25,
+   "confidence": 0.0563722588121891,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 17.0,
+   "end": 24.5,
+   "confidence": 0.23527395725250244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 18.8,
+   "end": 20.75,
+   "confidence": 0.16915571689605713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 18.5,
+   "end": 20.75,
+   "confidence": 0.11495156586170197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 17.5,
+   "end": 20.0,
+   "confidence": 0.05903393030166626,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 20.25,
+   "end": 21.5,
+   "confidence": 0.07265201210975647,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 19.25,
+   "end": 27.75,
+   "confidence": 0.08596427738666534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Flap",
+   "start": 20.59,
+   "end": 22.25,
+   "confidence": 0.06341042369604111,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 21.75,
+   "end": 23.0,
+   "confidence": 0.06777787953615189,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 22.43,
+   "end": 27.75,
+   "confidence": 0.17958927154541016,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 22.43,
+   "end": 24.75,
+   "confidence": 0.09426677972078323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 22.83,
+   "end": 24.0,
+   "confidence": 0.060556892305612564,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 23.0,
+   "end": 26.25,
+   "confidence": 0.07703234255313873,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 24.0,
+   "end": 25.25,
+   "confidence": 0.07379691302776337,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 24.09,
+   "end": 27.75,
+   "confidence": 0.2578059732913971,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Flap",
+   "start": 24.41,
+   "end": 27.75,
+   "confidence": 0.05819690600037575,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 24.34,
+   "end": 26.25,
+   "confidence": 0.10395591706037521,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 23.5,
+   "end": 27.0,
+   "confidence": 0.053379591554403305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 24.75,
+   "end": 27.75,
+   "confidence": 0.07848485559225082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 26.25,
+   "end": 27.75,
+   "confidence": 0.05941939726471901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 26.75,
+   "end": 27.75,
+   "confidence": 0.05290274694561958,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.7680636048316956,
+   "start": 0.0,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.625,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "motorcycle on road"
+    },
+    {
+     "start": 4.625,
+     "end": 9.25,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "a truck"
+    },
+    {
+     "start": 9.25,
+     "end": 13.875,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "a truck"
+    },
+    {
+     "start": 13.875,
+     "end": 18.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "a car"
+    },
+    {
+     "start": 18.5,
+     "end": 23.125,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "a car"
+    },
+    {
+     "start": 23.125,
+     "end": 27.75,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "car"
+    }
+   ],
+   "clap_rank": 16,
+   "clap_top3": [
+    "Vibration",
+    "Rail transport",
+    "Gears"
+   ]
+  }
+ ]
+}

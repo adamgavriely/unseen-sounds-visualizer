@@ -1,0 +1,463 @@
+{
+ "clip": "b3_campfire_night.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.028,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.36792266368865967,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 15.25,
+   "confidence": 0.13903886079788208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.07296781241893768,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.05096433311700821,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.8900000000000001,
+   "end": 1.5,
+   "confidence": 0.05567010119557381,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.0,
+   "end": 7.75,
+   "confidence": 0.2551160752773285,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.25,
+   "end": 27.75,
+   "confidence": 0.1442030519247055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 1.25,
+   "end": 4.0,
+   "confidence": 0.10103420913219452,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 2.4699999999999998,
+   "end": 3.5,
+   "confidence": 0.0862119197845459,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 2.31,
+   "end": 4.75,
+   "confidence": 0.06348175555467606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 1.25,
+   "end": 3.25,
+   "confidence": 0.050752539187669754,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 2.0,
+   "end": 6.0,
+   "confidence": 0.052839409559965134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 4.63,
+   "end": 7.5,
+   "confidence": 0.10856817662715912,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 3.0,
+   "end": 5.75,
+   "confidence": 0.05463375896215439,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 5.72,
+   "end": 7.5,
+   "confidence": 0.09856394678354263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 4.75,
+   "end": 22.25,
+   "confidence": 0.14045582711696625,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 7.640000000000001,
+   "end": 9.5,
+   "confidence": 0.2213239073753357,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crumpling, crinkling",
+   "start": 7.640000000000001,
+   "end": 9.5,
+   "confidence": 0.057966411113739014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.75,
+   "end": 25.75,
+   "confidence": 0.10825423896312714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 7.78,
+   "end": 9.5,
+   "confidence": 0.06874691694974899,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 9.0,
+   "end": 11.5,
+   "confidence": 0.06784667819738388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 9.08,
+   "end": 11.0,
+   "confidence": 0.07730851322412491,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.0645659938454628,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 13.73,
+   "end": 16.25,
+   "confidence": 0.18235352635383606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 13.9,
+   "end": 16.25,
+   "confidence": 0.07503145933151245,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.0500146821141243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whispering",
+   "start": 13.78,
+   "end": 15.5,
+   "confidence": 0.09273643046617508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 13.75,
+   "end": 17.75,
+   "confidence": 0.06348150968551636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 15.5,
+   "end": 27.75,
+   "confidence": 0.11870498955249786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 15.75,
+   "end": 25.5,
+   "confidence": 0.09867409616708755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 18.25,
+   "end": 22.25,
+   "confidence": 0.056146495044231415,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 18.55,
+   "end": 20.25,
+   "confidence": 0.05054960772395134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 20.05,
+   "end": 21.5,
+   "confidence": 0.0889701321721077,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 19.98,
+   "end": 21.0,
+   "confidence": 0.0707365944981575,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 21.05,
+   "end": 25.0,
+   "confidence": 0.08083713054656982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 21.47,
+   "end": 24.5,
+   "confidence": 0.06492330133914948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 20.25,
+   "end": 22.75,
+   "confidence": 0.05241220444440842,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 23.0,
+   "end": 27.75,
+   "confidence": 0.07740166783332825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 24.74,
+   "end": 27.75,
+   "confidence": 0.2513255178928375,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 24.82,
+   "end": 27.5,
+   "confidence": 0.11492010951042175,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 23.75,
+   "end": 27.75,
+   "confidence": 0.06729304790496826,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 25.75,
+   "end": 27.75,
+   "confidence": 0.05313578248023987,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Explosion",
+   "confidence": 0.2551160752773285,
+   "start": 1.0,
+   "end": 7.75,
+   "stretches": [
+    {
+     "start": 1.0,
+     "end": 7.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Chewing, mastication",
+   "confidence": 0.2513255178928375,
+   "start": 24.74,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 24.74,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,428 @@
+{
+ "clip": "row_boat.webm",
+ "tag": "seen_ambient",
+ "duration": 21.043,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.547960102558136,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.4221400320529938,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.40328848361968994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.2658967077732086,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.2468525916337967,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.24140073359012604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heavy engine (low frequency)",
+   "start": 0.0,
+   "end": 20.791625,
+   "confidence": 0.20152997970581055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 0.0,
+   "end": 6.75,
+   "confidence": 0.08463405817747116,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 0.75,
+   "end": 16.5,
+   "confidence": 0.3172892928123474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 0.75,
+   "end": 2.0,
+   "confidence": 0.062303684651851654,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine starting",
+   "start": 0.59,
+   "end": 2.25,
+   "confidence": 0.06650503724813461,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.05382199212908745,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.0,
+   "end": 2.5,
+   "confidence": 0.06442318111658096,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 0.75,
+   "end": 17.0,
+   "confidence": 0.29149314761161804,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibration",
+   "start": 3.52,
+   "end": 14.0,
+   "confidence": 0.08398714661598206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 5.5,
+   "end": 6.25,
+   "confidence": 0.0517272911965847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.5,
+   "end": 7.25,
+   "confidence": 0.05610545724630356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clatter",
+   "start": 6.84,
+   "end": 12.25,
+   "confidence": 0.06968091428279877,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 10.5,
+   "end": 19.75,
+   "confidence": 0.17582783102989197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mains hum",
+   "start": 9.68,
+   "end": 11.5,
+   "confidence": 0.05400780588388443,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 12.51,
+   "end": 15.25,
+   "confidence": 0.05875019729137421,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clatter",
+   "start": 13.18,
+   "end": 18.75,
+   "confidence": 0.06314340978860855,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibration",
+   "start": 14.86,
+   "end": 20.791625,
+   "confidence": 0.0914362445473671,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 15.94,
+   "end": 18.75,
+   "confidence": 0.08236923813819885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 17.25,
+   "end": 19.25,
+   "confidence": 0.3389733135700226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 17.25,
+   "end": 19.25,
+   "confidence": 0.30222612619400024,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 17.25,
+   "end": 20.25,
+   "confidence": 0.1394367218017578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 18.75,
+   "end": 20.791625,
+   "confidence": 0.052510738372802734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 18.5,
+   "end": 20.791625,
+   "confidence": 0.061460621654987335,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 18.5,
+   "end": 20.5,
+   "confidence": 0.05875537171959877,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.547960102558136,
+   "start": 0.0,
+   "end": 20.791625,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.19790625,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.19790625,
+     "end": 10.3958125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.3958125,
+     "end": 15.59371875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 15.59371875,
+     "end": 20.791625,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 96,
+   "clap_top3": [
+    "Vibration",
+    "Heavy engine (low frequency)",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Cricket",
+   "confidence": 0.3389733135700226,
+   "start": 17.25,
+   "end": 19.25,
+   "stretches": [
+    {
+     "start": 17.25,
+     "end": 19.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Boat",
+   "confidence": 0.3172892928123474,
+   "start": 0.75,
+   "end": 17.0,
+   "stretches": [
+    {
+     "start": 0.75,
+     "end": 6.166666666666667,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The boat man"
+    },
+    {
+     "start": 6.166666666666667,
+     "end": 11.583333333333334,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Boat in water"
+    },
+    {
+     "start": 11.583333333333334,
+     "end": 17.0,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Boat in water"
+    }
+   ]
+  },
+  {
+   "label": "Insect",
+   "confidence": 0.30222612619400024,
+   "start": 17.25,
+   "end": 19.25,
+   "stretches": [
+    {
+     "start": 17.25,
+     "end": 19.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

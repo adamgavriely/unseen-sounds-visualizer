@@ -1,0 +1,338 @@
+{
+ "clip": "movie_blueplanet_62.mp4",
+ "tag": "no_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.7814201712608337,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.3009238839149475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.10396570712327957,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 0.21999999999999997,
+   "end": 2.0,
+   "confidence": 0.09932371973991394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.06000000000000005,
+   "end": 1.25,
+   "confidence": 0.09180473536252975,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 0.30000000000000004,
+   "end": 1.5,
+   "confidence": 0.07682426273822784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.05323842912912369,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.15999999999999992,
+   "end": 1.25,
+   "confidence": 0.05454185605049133,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 0.6599999999999999,
+   "end": 4.5,
+   "confidence": 0.18654432892799377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.75,
+   "end": 2.25,
+   "confidence": 0.08771079778671265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.09155895560979843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 2.8,
+   "end": 10.75,
+   "confidence": 0.17996026575565338,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 3.0,
+   "end": 4.5,
+   "confidence": 0.06295353919267654,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.75,
+   "end": 9.75,
+   "confidence": 0.0672467052936554,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 6.05,
+   "end": 8.25,
+   "confidence": 0.053134020417928696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 6.05,
+   "end": 8.25,
+   "confidence": 0.05128118395805359,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 7.05,
+   "end": 8.25,
+   "confidence": 0.05162685364484787,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 8.8,
+   "end": 9.5,
+   "confidence": 0.06295132637023926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 9.5,
+   "end": 11.0,
+   "confidence": 0.12379174679517746,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 9.5,
+   "end": 10.5,
+   "confidence": 0.05023978278040886,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 9.41,
+   "end": 11.0,
+   "confidence": 0.08602581918239594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 9.73,
+   "end": 11.0,
+   "confidence": 0.07328792661428452,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 9.34,
+   "end": 11.0,
+   "confidence": 0.08775245398283005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 8.78,
+   "end": 11.25,
+   "confidence": 0.06181805953383446,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 10.6,
+   "end": 14.5,
+   "confidence": 0.28771451115608215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 11.8,
+   "end": 15.75,
+   "confidence": 0.27762702107429504,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 11.8,
+   "end": 14.5,
+   "confidence": 0.2100462168455124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 11.48,
+   "end": 13.0,
+   "confidence": 0.11723930388689041,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tender music",
+   "start": 10.52,
+   "end": 13.5,
+   "confidence": 0.06466701626777649,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 11.48,
+   "end": 13.5,
+   "confidence": 0.051070865243673325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.0,
+   "end": 14.5,
+   "confidence": 0.07852520793676376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 14.57,
+   "end": 15.75,
+   "confidence": 0.0949455052614212,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 15.05,
+   "end": 15.75,
+   "confidence": 0.05512833595275879,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

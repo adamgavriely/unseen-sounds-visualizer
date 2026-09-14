@@ -1,0 +1,768 @@
+{
+ "clip": "tv_war_series_scene.mp4",
+ "tag": "seen_ambient",
+ "duration": 21.021,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.14000000000000012,
+   "end": 20.75,
+   "confidence": 0.8030188083648682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 20.75,
+   "confidence": 0.2943916916847229,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.13795940577983856,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.12053894251585007,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.07783058285713196,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.06765212118625641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.06421215832233429,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.06072710454463959,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 0.07000000000000006,
+   "end": 1.75,
+   "confidence": 0.23537537455558777,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 0.55,
+   "end": 0.75,
+   "confidence": 0.08055458217859268,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.5,
+   "end": 5.25,
+   "confidence": 0.17236000299453735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.5,
+   "end": 1.25,
+   "confidence": 0.050786565989255905,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 5.25,
+   "confidence": 0.2057279795408249,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 0.020000000000000018,
+   "end": 2.0,
+   "confidence": 0.10178305953741074,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.5,
+   "end": 3.0,
+   "confidence": 0.07969367504119873,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smash, crash",
+   "start": 1.0899999999999999,
+   "end": 3.5,
+   "confidence": 0.13610021770000458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whack, thwack",
+   "start": 1.1800000000000002,
+   "end": 2.75,
+   "confidence": 0.07428142428398132,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 2.25,
+   "end": 5.0,
+   "confidence": 0.1840766817331314,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 2.25,
+   "end": 5.0,
+   "confidence": 0.1488400250673294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 0.75,
+   "end": 7.25,
+   "confidence": 0.08188703656196594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 2.09,
+   "end": 3.75,
+   "confidence": 0.058623846620321274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 3.55,
+   "end": 6.0,
+   "confidence": 0.06895653903484344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.5,
+   "end": 4.5,
+   "confidence": 0.09814151376485825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.5,
+   "end": 5.25,
+   "confidence": 0.06680648028850555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 4.57,
+   "end": 5.5,
+   "confidence": 0.11466807126998901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 5.25,
+   "end": 7.75,
+   "confidence": 0.10941153019666672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 4.95,
+   "end": 9.5,
+   "confidence": 0.5348861217498779,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Creak",
+   "start": 5.61,
+   "end": 8.25,
+   "confidence": 0.10236281156539917,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 6.34,
+   "end": 11.5,
+   "confidence": 0.0899546891450882,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 7.25,
+   "end": 11.5,
+   "confidence": 0.33044812083244324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 5.75,
+   "end": 8.75,
+   "confidence": 0.23701581358909607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 6.27,
+   "end": 9.0,
+   "confidence": 0.17404286563396454,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 5.75,
+   "end": 8.75,
+   "confidence": 0.08913476765155792,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 5.75,
+   "end": 8.75,
+   "confidence": 0.0875806212425232,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.05935909226536751,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 5.75,
+   "end": 8.5,
+   "confidence": 0.05893688276410103,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 7.25,
+   "end": 9.5,
+   "confidence": 0.05723898857831955,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 6.28,
+   "end": 9.25,
+   "confidence": 0.1250580996274948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 6.45,
+   "end": 8.5,
+   "confidence": 0.05616775155067444,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 6.75,
+   "end": 8.75,
+   "confidence": 0.05383049324154854,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 8.5,
+   "end": 17.0,
+   "confidence": 0.44622373580932617,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 8.5,
+   "end": 17.0,
+   "confidence": 0.20345425605773926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 7.7,
+   "end": 10.75,
+   "confidence": 0.13382193446159363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 7.95,
+   "end": 10.75,
+   "confidence": 0.11921536177396774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.0,
+   "end": 11.25,
+   "confidence": 0.123521588742733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 8.5,
+   "end": 13.0,
+   "confidence": 0.07236750423908234,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 10.9,
+   "end": 16.5,
+   "confidence": 0.48846369981765747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 10.5,
+   "end": 14.25,
+   "confidence": 0.2267865091562271,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.5,
+   "end": 15.5,
+   "confidence": 0.20968236029148102,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 14.64,
+   "end": 17.25,
+   "confidence": 0.366223007440567,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 15.09,
+   "end": 17.0,
+   "confidence": 0.17427897453308105,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 15.57,
+   "end": 17.0,
+   "confidence": 0.05751665309071541,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smash, crash",
+   "start": 15.44,
+   "end": 17.25,
+   "confidence": 0.3644973933696747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whack, thwack",
+   "start": 15.0,
+   "end": 17.0,
+   "confidence": 0.05422958731651306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 17.3,
+   "end": 19.5,
+   "confidence": 0.10153257846832275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 15.7,
+   "end": 18.0,
+   "confidence": 0.053480274975299835,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 15.95,
+   "end": 18.0,
+   "confidence": 0.17351962625980377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 15.75,
+   "end": 18.0,
+   "confidence": 0.05016011744737625,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 17.5,
+   "end": 18.0,
+   "confidence": 0.07149937748908997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 17.57,
+   "end": 20.75,
+   "confidence": 0.05643840879201889,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 16.5,
+   "end": 18.5,
+   "confidence": 0.05605226010084152,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Television",
+   "start": 18.07,
+   "end": 19.0,
+   "confidence": 0.07557899504899979,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cacophony",
+   "start": 19.14,
+   "end": 19.5,
+   "confidence": 0.06130385026335716,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 19.33,
+   "end": 20.75,
+   "confidence": 0.28629401326179504,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 19.17,
+   "end": 20.75,
+   "confidence": 0.24569885432720184,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 19.75,
+   "end": 20.75,
+   "confidence": 0.15200479328632355,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 19.25,
+   "end": 20.75,
+   "confidence": 0.12438284605741501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Explosion",
+   "confidence": 0.48846369981765747,
+   "start": 8.5,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 8.5,
+     "end": 12.875,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "ship explodes"
+    },
+    {
+     "start": 12.875,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Eruption",
+    "Explosion",
+    "Rock music"
+   ]
+  },
+  {
+   "label": "Glass",
+   "confidence": 0.3644973933696747,
+   "start": 15.44,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 15.44,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 138,
+   "clap_top3": [
+    "Scary music",
+    "Orchestra",
+    "Angry music"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.33044812083244324,
+   "start": 7.25,
+   "end": 11.5,
+   "stretches": [
+    {
+     "start": 7.25,
+     "end": 11.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "The vehicle"
+    }
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.28629401326179504,
+   "start": 19.33,
+   "end": 20.75,
+   "stretches": [
+    {
+     "start": 19.33,
+     "end": 20.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

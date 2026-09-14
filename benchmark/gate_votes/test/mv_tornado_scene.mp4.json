@@ -1,0 +1,688 @@
+{
+ "clip": "mv_tornado_scene.mp4",
+ "tag": "mixed",
+ "duration": 20.02,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.8948334455490112,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.6892117261886597,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.06000000000000005,
+   "end": 3.5,
+   "confidence": 0.519524872303009,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gasp",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.17081011831760406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.11255455017089844,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 0.22999999999999998,
+   "end": 1.25,
+   "confidence": 0.13036185503005981,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 0.22999999999999998,
+   "end": 0.75,
+   "confidence": 0.12365604192018509,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roar",
+   "start": 0.22999999999999998,
+   "end": 1.0,
+   "confidence": 0.08635447174310684,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 0.8900000000000001,
+   "end": 2.75,
+   "confidence": 0.10130957514047623,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 0.73,
+   "end": 1.25,
+   "confidence": 0.06017676368355751,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.27431491017341614,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 0.12,
+   "end": 2.0,
+   "confidence": 0.0859571024775505,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.75,
+   "end": 4.5,
+   "confidence": 0.14321868121623993,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 1.25,
+   "end": 3.25,
+   "confidence": 0.11600030958652496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glockenspiel",
+   "start": 2.0,
+   "end": 5.0,
+   "confidence": 0.0991828441619873,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Marimba, xylophone",
+   "start": 2.0,
+   "end": 5.0,
+   "confidence": 0.09733528643846512,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mallet percussion",
+   "start": 2.0,
+   "end": 4.25,
+   "confidence": 0.0746847465634346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 4.25,
+   "end": 8.5,
+   "confidence": 0.12887606024742126,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 3.12,
+   "end": 7.75,
+   "confidence": 0.1204177662730217,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 3.84,
+   "end": 7.75,
+   "confidence": 0.0864168256521225,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 5.5,
+   "end": 11.75,
+   "confidence": 0.4161449372768402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 5.48,
+   "end": 8.0,
+   "confidence": 0.2202189415693283,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 5.16,
+   "end": 7.75,
+   "confidence": 0.08103816211223602,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 5.75,
+   "end": 8.5,
+   "confidence": 0.13680367171764374,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 4.5,
+   "end": 7.25,
+   "confidence": 0.09712990373373032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 4.5,
+   "end": 7.25,
+   "confidence": 0.08347416669130325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 5.0,
+   "end": 7.25,
+   "confidence": 0.06441125273704529,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 7.25,
+   "end": 11.0,
+   "confidence": 0.31373539566993713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 6.52,
+   "end": 9.25,
+   "confidence": 0.13630637526512146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 7.8,
+   "end": 9.25,
+   "confidence": 0.11098013073205948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 7.5,
+   "end": 9.25,
+   "confidence": 0.0755399614572525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 7.75,
+   "end": 13.0,
+   "confidence": 0.6540865302085876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 6.61,
+   "end": 8.75,
+   "confidence": 0.09080667793750763,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 6.45,
+   "end": 8.25,
+   "confidence": 0.08521327376365662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 6.45,
+   "end": 9.25,
+   "confidence": 0.06626588851213455,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 8.55,
+   "end": 10.25,
+   "confidence": 0.10031519830226898,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 7.36,
+   "end": 9.0,
+   "confidence": 0.06045442819595337,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 8.66,
+   "end": 13.0,
+   "confidence": 0.5993884801864624,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 7.75,
+   "end": 10.0,
+   "confidence": 0.06627582013607025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 9.25,
+   "end": 10.5,
+   "confidence": 0.06289267539978027,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 9.25,
+   "end": 10.0,
+   "confidence": 0.05174984037876129,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 12.14,
+   "end": 13.75,
+   "confidence": 0.05044850334525108,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 12.5,
+   "end": 16.5,
+   "confidence": 0.07873807102441788,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 11.5,
+   "end": 14.75,
+   "confidence": 0.12035279721021652,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 11.78,
+   "end": 13.5,
+   "confidence": 0.06135394796729088,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 13.0,
+   "end": 13.5,
+   "confidence": 0.05691232904791832,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind instrument, woodwind instrument",
+   "start": 11.5,
+   "end": 13.75,
+   "confidence": 0.05024386942386627,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tuning fork",
+   "start": 12.53,
+   "end": 14.75,
+   "confidence": 0.13489891588687897,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Singing bowl",
+   "start": 12.61,
+   "end": 14.5,
+   "confidence": 0.06408367305994034,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Marimba, xylophone",
+   "start": 12.25,
+   "end": 14.75,
+   "confidence": 0.05953291058540344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 13.11,
+   "end": 16.5,
+   "confidence": 0.0653533935546875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.75,
+   "end": 17.75,
+   "confidence": 0.06816747784614563,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 15.0,
+   "end": 16.5,
+   "confidence": 0.051535457372665405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 15.25,
+   "end": 15.75,
+   "confidence": 0.05028283968567848,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 15.5,
+   "end": 16.5,
+   "confidence": 0.06102987378835678,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 15.52,
+   "end": 17.25,
+   "confidence": 0.07842033356428146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 16.5,
+   "end": 17.25,
+   "confidence": 0.06287261098623276,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 17.55,
+   "end": 19.75,
+   "confidence": 0.8506177067756653,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 17.55,
+   "end": 19.75,
+   "confidence": 0.7852422595024109,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 17.55,
+   "end": 19.75,
+   "confidence": 0.7312940359115601,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 17.08,
+   "end": 19.75,
+   "confidence": 0.630501925945282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Horse",
+   "confidence": 0.8506177067756653,
+   "start": 17.08,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 17.08,
+     "end": 19.75,
+     "verdict": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 84,
+   "clap_top3": [
+    "Singing",
+    "Shout",
+    "Roaring cats (lions, tigers)"
+   ]
+  },
+  {
+   "label": "Siren",
+   "confidence": 0.6540865302085876,
+   "start": 7.75,
+   "end": 13.0,
+   "stretches": [
+    {
+     "start": 7.75,
+     "end": 13.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 13,
+   "clap_top3": [
+    "Shout",
+    "Theremin",
+    "Rail transport"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.4161449372768402,
+   "start": 5.5,
+   "end": 11.75,
+   "stretches": [
+    {
+     "start": 5.5,
+     "end": 11.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 232,
+   "clap_top3": [
+    "Rock music",
+    "Music of Latin America",
+    "Funk"
+   ]
+  }
+ ]
+}

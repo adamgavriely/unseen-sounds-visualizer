@@ -1,0 +1,530 @@
+{
+ "clip": "un_helicopter_1PCkIkol.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.018,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.6893787980079651,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.14000000000000012,
+   "end": 17.75,
+   "confidence": 0.6634895205497742,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 0.14000000000000012,
+   "end": 17.75,
+   "confidence": 0.5698340535163879,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 0.14000000000000012,
+   "end": 14.75,
+   "confidence": 0.5044428706169128,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.14000000000000012,
+   "end": 17.75,
+   "confidence": 0.4789247214794159,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 0.06000000000000005,
+   "end": 17.75,
+   "confidence": 0.4001210331916809,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.14000000000000012,
+   "end": 11.75,
+   "confidence": 0.31177932024002075,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.13299696147441864,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.08738958090543747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.08631324023008347,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.08231192082166672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Flap",
+   "start": 0.15000000000000013,
+   "end": 1.0,
+   "confidence": 0.060181405395269394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.8,
+   "end": 1.0,
+   "confidence": 0.07712338119745255,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.05853943154215813,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.05465421453118324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.052344657480716705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.14853374660015106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jet engine",
+   "start": 0.18000000000000005,
+   "end": 2.5,
+   "confidence": 0.0817517340183258,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 1.5,
+   "end": 6.5,
+   "confidence": 0.17459356784820557,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jet engine",
+   "start": 1.25,
+   "end": 6.75,
+   "confidence": 0.09494214504957199,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 1.5,
+   "end": 5.25,
+   "confidence": 0.12169778347015381,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 3.0,
+   "end": 5.0,
+   "confidence": 0.05769520625472069,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 3.18,
+   "end": 8.0,
+   "confidence": 0.0751912072300911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.05786764621734619,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jet engine",
+   "start": 5.5,
+   "end": 9.0,
+   "confidence": 0.05738579109311104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 7.25,
+   "end": 10.5,
+   "confidence": 0.07946813851594925,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jet engine",
+   "start": 9.97,
+   "end": 12.75,
+   "confidence": 0.1387881487607956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 9.75,
+   "end": 14.25,
+   "confidence": 0.08236252516508102,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 12.25,
+   "end": 17.75,
+   "confidence": 0.23694992065429688,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 11.27,
+   "end": 14.75,
+   "confidence": 0.13930238783359528,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jet engine",
+   "start": 13.52,
+   "end": 15.25,
+   "confidence": 0.08177655935287476,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 13.7,
+   "end": 17.75,
+   "confidence": 0.13757829368114471,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 13.5,
+   "end": 17.0,
+   "confidence": 0.10183803737163544,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 15.5,
+   "end": 17.75,
+   "confidence": 0.18054865300655365,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 14.75,
+   "end": 17.75,
+   "confidence": 0.11284046620130539,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 14.75,
+   "end": 17.75,
+   "confidence": 0.078835628926754,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 14.75,
+   "end": 17.75,
+   "confidence": 0.06418158113956451,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 15.25,
+   "end": 17.75,
+   "confidence": 0.07541993260383606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.6893787980079651,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 49,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Radio",
+    "Vibration"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.6634895205497742,
+   "start": 0.06000000000000005,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 4.4825,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Aircraft on road"
+    },
+    {
+     "start": 4.4825,
+     "end": 8.905000000000001,
+     "verdict": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Aircraft on road"
+    },
+    {
+     "start": 8.905000000000001,
+     "end": 13.327500000000002,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Aircraft"
+    },
+    {
+     "start": 13.327500000000002,
+     "end": 17.75,
+     "verdict": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Aircraft"
+    }
+   ],
+   "clap_rank": 10,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Vibration",
+    "Radio"
+   ]
+  },
+  {
+   "label": "Helicopter",
+   "confidence": 0.5044428706169128,
+   "start": 0.14000000000000012,
+   "end": 14.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 5.01,
+     "verdict": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Helicopter"
+    },
+    {
+     "start": 5.01,
+     "end": 9.88,
+     "verdict": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Helicopter"
+    },
+    {
+     "start": 9.88,
+     "end": 14.75,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Helicopter"
+    }
+   ],
+   "clap_rank": 7,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Vibration",
+    "Radio"
+   ]
+  }
+ ]
+}

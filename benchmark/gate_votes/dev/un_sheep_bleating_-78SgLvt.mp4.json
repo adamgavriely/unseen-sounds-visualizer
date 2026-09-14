@@ -1,0 +1,501 @@
+{
+ "clip": "un_sheep_bleating_-78SgLvt.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.9,
+ "events": [
+  {
+   "label": "Rustling leaves",
+   "start": 0.30000000000000004,
+   "end": 4.75,
+   "confidence": 0.5263950824737549,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.30000000000000004,
+   "end": 4.0,
+   "confidence": 0.3120819628238678,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 16.65,
+   "confidence": 0.29419127106666565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 16.65,
+   "confidence": 0.29412031173706055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.30000000000000004,
+   "end": 4.0,
+   "confidence": 0.24718157947063446,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.21999999999999997,
+   "end": 4.0,
+   "confidence": 0.16018596291542053,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 4.0,
+   "confidence": 0.111224465072155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.07271045446395874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 0.98,
+   "end": 3.75,
+   "confidence": 0.08561010658740997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.0787719264626503,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 1.48,
+   "end": 4.0,
+   "confidence": 0.054022517055273056,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waterfall",
+   "start": 1.56,
+   "end": 4.0,
+   "confidence": 0.053561966866254807,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 1.98,
+   "end": 4.0,
+   "confidence": 0.10605940967798233,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gurgling",
+   "start": 2.8,
+   "end": 4.0,
+   "confidence": 0.05390335991978645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 2.0,
+   "end": 4.0,
+   "confidence": 0.115522101521492,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 2.12,
+   "end": 4.0,
+   "confidence": 0.10741554945707321,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 4.22,
+   "end": 11.5,
+   "confidence": 0.9424800872802734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 4.3,
+   "end": 9.25,
+   "confidence": 0.8427584767341614,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 3.5,
+   "end": 9.25,
+   "confidence": 0.2253003567457199,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goat",
+   "start": 4.3,
+   "end": 9.25,
+   "confidence": 0.09490571171045303,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustling leaves",
+   "start": 9.22,
+   "end": 12.25,
+   "confidence": 0.41462597250938416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 7.5,
+   "end": 11.75,
+   "confidence": 0.12284748256206512,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 9.0,
+   "end": 10.25,
+   "confidence": 0.10900100320577621,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 8.1,
+   "end": 11.75,
+   "confidence": 0.09488315880298615,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 8.1,
+   "end": 11.75,
+   "confidence": 0.08468138426542282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 8.82,
+   "end": 11.75,
+   "confidence": 0.07744846493005753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 7.5,
+   "end": 9.5,
+   "confidence": 0.07220325618982315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 9.07,
+   "end": 11.75,
+   "confidence": 0.1408727467060089,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 9.25,
+   "end": 11.0,
+   "confidence": 0.05074427276849747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 9.32,
+   "end": 11.75,
+   "confidence": 0.1179601401090622,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 8.0,
+   "end": 11.75,
+   "confidence": 0.05629793927073479,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 11.89,
+   "end": 14.0,
+   "confidence": 0.9044877886772156,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 11.97,
+   "end": 14.0,
+   "confidence": 0.7391493916511536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 10.37,
+   "end": 14.0,
+   "confidence": 0.19609853625297546,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goat",
+   "start": 11.25,
+   "end": 14.0,
+   "confidence": 0.07787618786096573,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustling leaves",
+   "start": 11.86,
+   "end": 16.65,
+   "confidence": 0.4705476760864258,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 14.3,
+   "end": 16.65,
+   "confidence": 0.14304068684577942,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 13.98,
+   "end": 16.65,
+   "confidence": 0.12825259566307068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 13.5,
+   "end": 16.65,
+   "confidence": 0.12694725394248962,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 14.0,
+   "end": 16.65,
+   "confidence": 0.12689918279647827,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 14.3,
+   "end": 16.65,
+   "confidence": 0.11352963000535965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 14.0,
+   "end": 14.5,
+   "confidence": 0.060582347214221954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 13.98,
+   "end": 16.65,
+   "confidence": 0.05702461302280426,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 14.31,
+   "end": 16.65,
+   "confidence": 0.06496383249759674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 13.51,
+   "end": 15.25,
+   "confidence": 0.0602852925658226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 12.75,
+   "end": 16.65,
+   "confidence": 0.05904563143849373,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Sheep",
+   "confidence": 0.9424800872802734,
+   "start": 4.22,
+   "end": 14.0,
+   "stretches": [
+    {
+     "start": 4.22,
+     "end": 9.11,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "sheep in front of fence"
+    },
+    {
+     "start": 9.11,
+     "end": 14.0,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "sheep on right side"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Sheep",
+    "Goat",
+    "Cattle, bovinae"
+   ]
+  }
+ ]
+}

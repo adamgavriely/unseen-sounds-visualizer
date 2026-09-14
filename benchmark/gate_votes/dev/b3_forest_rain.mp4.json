@@ -1,0 +1,428 @@
+{
+ "clip": "b3_forest_rain.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.028028,
+ "events": [
+  {
+   "label": "Rain",
+   "start": 0.06000000000000005,
+   "end": 27.0,
+   "confidence": 0.5462812781333923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.06000000000000005,
+   "end": 27.0,
+   "confidence": 0.4858364164829254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.428056538105011,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.0,
+   "end": 18.25,
+   "confidence": 0.23481662571430206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 0.0,
+   "end": 6.25,
+   "confidence": 0.18304529786109924,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.16471174359321594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.1580333411693573,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.07928960770368576,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 5.5,
+   "confidence": 0.05966419354081154,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waterfall",
+   "start": 0.72,
+   "end": 4.0,
+   "confidence": 0.10488122701644897,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.06085352599620819,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 0.25,
+   "end": 6.5,
+   "confidence": 0.05068253353238106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 0.86,
+   "end": 4.0,
+   "confidence": 0.1510498821735382,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.5,
+   "end": 16.25,
+   "confidence": 0.09899578243494034,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 3.5,
+   "end": 7.75,
+   "confidence": 0.08133576810359955,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 3.5,
+   "end": 5.75,
+   "confidence": 0.06395195424556732,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 6.82,
+   "end": 9.0,
+   "confidence": 0.10207642614841461,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 8.23,
+   "end": 9.0,
+   "confidence": 0.058653902262449265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 8.75,
+   "end": 14.5,
+   "confidence": 0.06240455433726311,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 9.0,
+   "end": 11.0,
+   "confidence": 0.06141228601336479,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 9.75,
+   "end": 12.5,
+   "confidence": 0.0721440538764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 11.45,
+   "end": 27.75,
+   "confidence": 0.2147168517112732,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waterfall",
+   "start": 13.8,
+   "end": 27.75,
+   "confidence": 0.20482107996940613,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 13.5,
+   "end": 22.25,
+   "confidence": 0.08754504472017288,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 12.5,
+   "end": 22.25,
+   "confidence": 0.060342937707901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 14.47,
+   "end": 16.75,
+   "confidence": 0.08848350495100021,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stream",
+   "start": 17.8,
+   "end": 27.75,
+   "confidence": 0.18919438123703003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 17.5,
+   "end": 20.75,
+   "confidence": 0.11663390696048737,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 19.45,
+   "end": 23.75,
+   "confidence": 0.1743057519197464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 21.25,
+   "end": 27.75,
+   "confidence": 0.13327927887439728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 22.5,
+   "end": 27.75,
+   "confidence": 0.08534220606088638,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 25.32,
+   "end": 27.0,
+   "confidence": 0.07719845324754715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.10842712968587875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 25.5,
+   "end": 27.5,
+   "confidence": 0.09770644456148148,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 26.11,
+   "end": 27.75,
+   "confidence": 0.13370294868946075,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 27.55,
+   "end": 27.75,
+   "confidence": 0.0742286816239357,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Rain",
+   "confidence": 0.5462812781333923,
+   "start": 0.06000000000000005,
+   "end": 27.0,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 5.448,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 5.448,
+     "end": 10.836,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 10.836,
+     "end": 16.224,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 16.224,
+     "end": 21.612,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 21.612,
+     "end": 27.000000000000004,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Pour",
+    "Bathtub (filling or washing)",
+    "Frying (food)"
+   ]
+  }
+ ]
+}

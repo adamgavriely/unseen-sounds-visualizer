@@ -1,0 +1,971 @@
+{
+ "clip": "un_church_bell_ringin_-_-SejUs.mp4",
+ "tag": "unseen_ambient",
+ "duration": 19.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.6848239898681641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.5240868926048279,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.14556315541267395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.08794072270393372,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ice cream truck, ice cream van",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.1519797295331955,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Doorbell",
+   "start": 0.6400000000000001,
+   "end": 1.5,
+   "confidence": 0.07631449401378632,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ringtone",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.07457632571458817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.75,
+   "end": 18.75,
+   "confidence": 0.39416998624801636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.75,
+   "end": 2.0,
+   "confidence": 0.08471207320690155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.0,
+   "end": 5.75,
+   "confidence": 0.11398486793041229,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bell",
+   "start": 0.18000000000000005,
+   "end": 2.5,
+   "confidence": 0.08153211325407028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.10999999999999999,
+   "end": 6.5,
+   "confidence": 0.5601630210876465,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.10999999999999999,
+   "end": 6.5,
+   "confidence": 0.5298563838005066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.10999999999999999,
+   "end": 6.5,
+   "confidence": 0.4532019793987274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind chime",
+   "start": 1.98,
+   "end": 2.75,
+   "confidence": 0.307654470205307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chime",
+   "start": 1.98,
+   "end": 2.75,
+   "confidence": 0.2571365535259247,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tubular bells",
+   "start": 0.86,
+   "end": 2.5,
+   "confidence": 0.05654856562614441,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 1.91,
+   "end": 5.75,
+   "confidence": 0.37967291474342346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 1.91,
+   "end": 5.5,
+   "confidence": 0.31559133529663086,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 2.23,
+   "end": 5.25,
+   "confidence": 0.0699852928519249,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 2.25,
+   "end": 5.5,
+   "confidence": 0.061054252088069916,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam whistle",
+   "start": 1.76,
+   "end": 4.5,
+   "confidence": 0.11881566047668457,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam whistle",
+   "start": 3.45,
+   "end": 5.25,
+   "confidence": 0.0688985213637352,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bell",
+   "start": 4.26,
+   "end": 5.5,
+   "confidence": 0.055255431681871414,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Church bell",
+   "start": 4.34,
+   "end": 5.5,
+   "confidence": 0.053496524691581726,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 4.62,
+   "end": 6.75,
+   "confidence": 0.18257321417331696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 4.5,
+   "end": 6.75,
+   "confidence": 0.15260976552963257,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 6.0,
+   "end": 6.5,
+   "confidence": 0.14941132068634033,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 6.0,
+   "end": 18.75,
+   "confidence": 0.12913061678409576,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 4.94,
+   "end": 8.25,
+   "confidence": 0.1159069612622261,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 6.0,
+   "end": 7.0,
+   "confidence": 0.11258870363235474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 5.93,
+   "end": 8.25,
+   "confidence": 0.5343540906906128,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 5.93,
+   "end": 8.25,
+   "confidence": 0.5342308878898621,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 5.93,
+   "end": 8.25,
+   "confidence": 0.4956803023815155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 5.61,
+   "end": 8.25,
+   "confidence": 0.36287757754325867,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 5.61,
+   "end": 7.5,
+   "confidence": 0.23640622198581696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 5.93,
+   "end": 7.25,
+   "confidence": 0.09016523510217667,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chime",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.21463730931282043,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind chime",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.21455666422843933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 6.19,
+   "end": 7.75,
+   "confidence": 0.06654869765043259,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 8.0,
+   "end": 11.25,
+   "confidence": 0.3369087278842926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bell",
+   "start": 7.98,
+   "end": 9.25,
+   "confidence": 0.126004159450531,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind chime",
+   "start": 6.75,
+   "end": 9.5,
+   "confidence": 0.17011022567749023,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chime",
+   "start": 6.75,
+   "end": 9.5,
+   "confidence": 0.14422163367271423,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tubular bells",
+   "start": 7.59,
+   "end": 9.25,
+   "confidence": 0.07885999977588654,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glockenspiel",
+   "start": 7.75,
+   "end": 9.0,
+   "confidence": 0.07063624262809753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mallet percussion",
+   "start": 7.75,
+   "end": 9.0,
+   "confidence": 0.06463216990232468,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Marimba, xylophone",
+   "start": 7.75,
+   "end": 9.0,
+   "confidence": 0.06119304522871971,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 8.75,
+   "end": 9.75,
+   "confidence": 0.580873966217041,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 8.75,
+   "end": 10.25,
+   "confidence": 0.08901886641979218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 7.5,
+   "end": 9.75,
+   "confidence": 0.5115354657173157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 7.5,
+   "end": 9.75,
+   "confidence": 0.49815717339515686,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 7.5,
+   "end": 9.75,
+   "confidence": 0.30183136463165283,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 7.5,
+   "end": 9.75,
+   "confidence": 0.09448008984327316,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 7.75,
+   "end": 9.75,
+   "confidence": 0.06936443597078323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 7.75,
+   "end": 9.75,
+   "confidence": 0.05326590687036514,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bell",
+   "start": 8.12,
+   "end": 10.0,
+   "confidence": 0.06937165558338165,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 8.52,
+   "end": 10.0,
+   "confidence": 0.05787445604801178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 8.86,
+   "end": 18.25,
+   "confidence": 0.6719279289245605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 8.86,
+   "end": 10.75,
+   "confidence": 0.11608342081308365,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 8.86,
+   "end": 10.75,
+   "confidence": 0.11348534375429153,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 8.86,
+   "end": 10.5,
+   "confidence": 0.08271097391843796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind chime",
+   "start": 9.67,
+   "end": 11.0,
+   "confidence": 0.09881827235221863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chime",
+   "start": 10.07,
+   "end": 11.0,
+   "confidence": 0.09357473999261856,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 10.5,
+   "end": 11.25,
+   "confidence": 0.05228262394666672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 11.0,
+   "end": 18.0,
+   "confidence": 0.6463804841041565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 9.5,
+   "end": 18.25,
+   "confidence": 0.6262429356575012,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 9.5,
+   "end": 18.25,
+   "confidence": 0.6105716824531555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 9.75,
+   "end": 18.0,
+   "confidence": 0.3007327616214752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 9.75,
+   "end": 17.25,
+   "confidence": 0.10539606958627701,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 10.5,
+   "end": 13.5,
+   "confidence": 0.09651955217123032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 13.5,
+   "end": 14.25,
+   "confidence": 0.07373470813035965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 12.84,
+   "end": 14.25,
+   "confidence": 0.07017295062541962,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 14.0,
+   "end": 15.0,
+   "confidence": 0.05850375443696976,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam whistle",
+   "start": 13.25,
+   "end": 15.75,
+   "confidence": 0.07107812911272049,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 15.25,
+   "end": 16.0,
+   "confidence": 0.08819273114204407,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bell",
+   "start": 15.16,
+   "end": 18.75,
+   "confidence": 0.20861351490020752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Church bell",
+   "start": 15.16,
+   "end": 16.75,
+   "confidence": 0.0979098454117775,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 16.25,
+   "end": 18.0,
+   "confidence": 0.07210515439510345,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Church bell",
+   "start": 15.62,
+   "end": 18.75,
+   "confidence": 0.12814173102378845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 16.0,
+   "end": 18.0,
+   "confidence": 0.08235878497362137,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam whistle",
+   "start": 16.0,
+   "end": 18.0,
+   "confidence": 0.05810387432575226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Change ringing (campanology)",
+   "start": 17.66,
+   "end": 18.75,
+   "confidence": 0.4004157483577728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Train",
+   "confidence": 0.6719279289245605,
+   "start": 0.10999999999999999,
+   "end": 18.25,
+   "stretches": [
+    {
+     "start": 0.10999999999999999,
+     "end": 4.6450000000000005,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.6450000000000005,
+     "end": 9.18,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.18,
+     "end": 13.715,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.715,
+     "end": 18.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Percussion",
+    "Bell",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Bell",
+   "confidence": 0.4004157483577728,
+   "start": 17.66,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 1.98,
+     "end": 2.75,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "church bell"
+    },
+    {
+     "start": 17.66,
+     "end": 18.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "church bell"
+    }
+   ],
+   "clap_rank": 23,
+   "clap_top3": [
+    "Keyboard (musical)",
+    "Music of Asia",
+    "Music of Africa"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.39416998624801636,
+   "start": 0.75,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 0.75,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.25,
+     "end": 9.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.75,
+     "end": 14.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.25,
+     "end": 18.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 221,
+   "clap_top3": [
+    "Percussion",
+    "Music of Asia",
+    "Bell"
+   ]
+  }
+ ]
+}

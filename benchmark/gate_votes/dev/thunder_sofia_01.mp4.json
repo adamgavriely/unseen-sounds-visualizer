@@ -1,0 +1,420 @@
+{
+ "clip": "thunder_sofia_01.mp4",
+ "tag": "seen_ambient",
+ "duration": 15.015,
+ "events": [
+  {
+   "label": "Thunder",
+   "start": 0.30000000000000004,
+   "end": 7.5,
+   "confidence": 0.39371827244758606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 14.7496875,
+   "confidence": 0.2583758234977722,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.23748694360256195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.14000000000000012,
+   "end": 3.5,
+   "confidence": 0.15463264286518097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.14678643643856049,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 0.3800000000000001,
+   "end": 1.0,
+   "confidence": 0.13474291563034058,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 0.0,
+   "end": 3.75,
+   "confidence": 0.11385118216276169,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.05411432683467865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.48,
+   "end": 6.25,
+   "confidence": 0.0832022875547409,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 0.0,
+   "end": 7.5,
+   "confidence": 0.2966749370098114,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.0,
+   "end": 7.0,
+   "confidence": 0.14344626665115356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.25,
+   "end": 14.7496875,
+   "confidence": 0.18693308532238007,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.25,
+   "end": 9.25,
+   "confidence": 0.06692475825548172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 2.25,
+   "end": 5.5,
+   "confidence": 0.0654262900352478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 2.5,
+   "end": 3.25,
+   "confidence": 0.11942705512046814,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 2.5,
+   "end": 3.25,
+   "confidence": 0.11794883757829666,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 2.75,
+   "end": 5.5,
+   "confidence": 0.20044304430484772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 2.75,
+   "end": 5.5,
+   "confidence": 0.05313132330775261,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 2.1,
+   "end": 5.5,
+   "confidence": 0.19521889090538025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.25,
+   "end": 4.0,
+   "confidence": 0.07043098658323288,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 4.0,
+   "end": 4.75,
+   "confidence": 0.07624057680368423,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 4.0,
+   "end": 4.75,
+   "confidence": 0.07029549777507782,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 3.66,
+   "end": 4.75,
+   "confidence": 0.06474899500608444,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.5,
+   "end": 14.7496875,
+   "confidence": 0.19796796143054962,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 4.5,
+   "end": 7.0,
+   "confidence": 0.10995185375213623,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "start": 4.5,
+   "end": 6.75,
+   "confidence": 0.08036347478628159,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.0,
+   "end": 13.0,
+   "confidence": 0.061893563717603683,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 8.5,
+   "end": 11.25,
+   "confidence": 0.05750853940844536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 9.5,
+   "end": 12.5,
+   "confidence": 0.05781532824039459,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 11.47,
+   "end": 13.75,
+   "confidence": 0.28798753023147583,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 11.39,
+   "end": 13.75,
+   "confidence": 0.16846269369125366,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 11.55,
+   "end": 13.75,
+   "confidence": 0.08780903369188309,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 9.75,
+   "end": 13.5,
+   "confidence": 0.0670962706208229,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 10.67,
+   "end": 12.25,
+   "confidence": 0.05205080658197403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 12.75,
+   "end": 14.7496875,
+   "confidence": 0.10479294508695602,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 12.09,
+   "end": 13.75,
+   "confidence": 0.055314801633358,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.25,
+   "end": 14.7496875,
+   "confidence": 0.07349445670843124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Thunder",
+   "confidence": 0.39371827244758606,
+   "start": 0.0,
+   "end": 7.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 3.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 3.75,
+     "end": 7.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.47,
+     "end": 13.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 11,
+   "clap_top3": [
+    "Vibration",
+    "Rail transport",
+    "Wind noise (microphone)"
+   ]
+  }
+ ]
+}

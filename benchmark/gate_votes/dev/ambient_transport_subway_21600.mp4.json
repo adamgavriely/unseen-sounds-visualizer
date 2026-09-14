@@ -1,0 +1,514 @@
+{
+ "clip": "ambient_transport_subway_21600.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Train",
+   "start": 0.06000000000000005,
+   "end": 15.75,
+   "confidence": 0.9015637636184692,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 0.06000000000000005,
+   "end": 15.75,
+   "confidence": 0.791711688041687,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.06000000000000005,
+   "end": 15.75,
+   "confidence": 0.7616205215454102,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.06000000000000005,
+   "end": 15.75,
+   "confidence": 0.7293424010276794,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 0.06000000000000005,
+   "end": 11.75,
+   "confidence": 0.6268010139465332,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.4123304784297943,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.24741804599761963,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "confidence": 0.08049837499856949,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05431770905852318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.25,
+   "end": 1.25,
+   "confidence": 0.0569348968565464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 0.32000000000000006,
+   "end": 1.0,
+   "confidence": 0.053001370280981064,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 1.1400000000000001,
+   "end": 7.25,
+   "confidence": 0.1266242414712906,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.05449703335762024,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 2.59,
+   "end": 5.0,
+   "confidence": 0.3669494390487671,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 2.51,
+   "end": 5.0,
+   "confidence": 0.15279583632946014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 7.0,
+   "end": 9.5,
+   "confidence": 0.16064852476119995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 7.0,
+   "end": 9.5,
+   "confidence": 0.1520843356847763,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 6.34,
+   "end": 9.0,
+   "confidence": 0.10715140402317047,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 5.87,
+   "end": 8.0,
+   "confidence": 0.07251866161823273,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 7.25,
+   "end": 8.0,
+   "confidence": 0.05407712981104851,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 7.5,
+   "end": 10.25,
+   "confidence": 0.062249548733234406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 6.5,
+   "end": 11.5,
+   "confidence": 0.1566229611635208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 11.5,
+   "end": 13.0,
+   "confidence": 0.06197497993707657,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 11.81,
+   "end": 12.5,
+   "confidence": 0.05174421891570091,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 10.5,
+   "end": 13.0,
+   "confidence": 0.06620024889707565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 10.75,
+   "end": 13.0,
+   "confidence": 0.055303726345300674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 12.25,
+   "end": 13.75,
+   "confidence": 0.05030076205730438,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.1145964190363884,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 12.5,
+   "end": 13.75,
+   "confidence": 0.09906212985515594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 13.33,
+   "end": 15.0,
+   "confidence": 0.11680877208709717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cupboard open or close",
+   "start": 13.27,
+   "end": 15.0,
+   "confidence": 0.12127837538719177,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 12.95,
+   "end": 15.0,
+   "confidence": 0.10502863675355911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "start": 13.68,
+   "end": 15.0,
+   "confidence": 0.35854876041412354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart murmur",
+   "start": 13.68,
+   "end": 15.0,
+   "confidence": 0.2794193625450134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 14.09,
+   "end": 15.75,
+   "confidence": 0.1785164177417755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 14.98,
+   "end": 15.75,
+   "confidence": 0.05687055364251137,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Train",
+   "confidence": 0.9015637636184692,
+   "start": 0.06000000000000005,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 5.289999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 5.289999999999999,
+     "end": 10.52,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 10.52,
+     "end": 15.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Rail transport",
+    "Heavy engine (low frequency)",
+    "Sewing machine"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.4123304784297943,
+   "start": 0.0,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.25,
+     "end": 10.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.5,
+     "end": 15.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 125,
+   "clap_top3": [
+    "Heavy engine (low frequency)",
+    "Rail transport",
+    "Gears"
+   ]
+  },
+  {
+   "label": "Sliding door",
+   "confidence": 0.3669494390487671,
+   "start": 2.59,
+   "end": 5.0,
+   "stretches": [
+    {
+     "start": 2.59,
+     "end": 5.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 49,
+   "clap_top3": [
+    "Rail transport",
+    "Gears",
+    "Steam"
+   ]
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "confidence": 0.35854876041412354,
+   "start": 13.68,
+   "end": 15.0,
+   "stretches": [
+    {
+     "start": 13.68,
+     "end": 15.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 14,
+   "clap_top3": [
+    "Rail transport",
+    "Vibration",
+    "Pulse"
+   ]
+  },
+  {
+   "label": "Heart murmur",
+   "confidence": 0.2794193625450134,
+   "start": 13.68,
+   "end": 15.0,
+   "stretches": [
+    {
+     "start": 13.68,
+     "end": 15.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

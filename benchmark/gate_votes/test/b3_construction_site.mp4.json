@@ -1,0 +1,1380 @@
+{
+ "clip": "b3_construction_site.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.8874363899230957,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.21999999999999997,
+   "end": 1.75,
+   "confidence": 0.483524352312088,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.4057922065258026,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.38652533292770386,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 0.0,
+   "end": 6.25,
+   "confidence": 0.2582705616950989,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.14000000000000012,
+   "end": 1.5,
+   "confidence": 0.25467991828918457,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 20.25,
+   "confidence": 0.2054598033428192,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.06000000000000005,
+   "end": 20.5,
+   "confidence": 0.1730477660894394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.09193681925535202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 0.30000000000000004,
+   "end": 1.75,
+   "confidence": 0.08880248665809631,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.25,
+   "end": 1.25,
+   "confidence": 0.0769563615322113,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 0.72,
+   "end": 2.5,
+   "confidence": 0.13306917250156403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 0.15999999999999992,
+   "end": 2.5,
+   "confidence": 0.10771244019269943,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 1.1400000000000001,
+   "end": 4.75,
+   "confidence": 0.4084050953388214,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 1.22,
+   "end": 5.0,
+   "confidence": 0.3819844722747803,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 1.22,
+   "end": 4.25,
+   "confidence": 0.22533269226551056,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.0721825584769249,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.0,
+   "end": 2.5,
+   "confidence": 0.06528092175722122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 2.0,
+   "end": 8.0,
+   "confidence": 0.3776555061340332,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 2.0,
+   "end": 7.0,
+   "confidence": 0.25605762004852295,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.5,
+   "end": 5.0,
+   "confidence": 0.09554371982812881,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 2.25,
+   "end": 6.25,
+   "confidence": 0.15455912053585052,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 2.0700000000000003,
+   "end": 5.0,
+   "confidence": 0.1410408914089203,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.11078513413667679,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.0998273491859436,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.08579417318105698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 2.5,
+   "end": 6.0,
+   "confidence": 0.15782073140144348,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 2.5,
+   "end": 6.25,
+   "confidence": 0.14844541251659393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 1.6800000000000002,
+   "end": 3.25,
+   "confidence": 0.06957574933767319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 1.0,
+   "end": 3.25,
+   "confidence": 0.06704705208539963,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 3.25,
+   "end": 6.0,
+   "confidence": 0.41606244444847107,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 3.25,
+   "end": 6.0,
+   "confidence": 0.4086172580718994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 3.25,
+   "end": 6.0,
+   "confidence": 0.3844279944896698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 2.25,
+   "end": 4.5,
+   "confidence": 0.05479481443762779,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 4.5,
+   "end": 19.75,
+   "confidence": 0.16804170608520508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 4.75,
+   "end": 6.0,
+   "confidence": 0.22727830708026886,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.75,
+   "end": 5.75,
+   "confidence": 0.13360659778118134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 4.75,
+   "end": 6.5,
+   "confidence": 0.06402160227298737,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 5.72,
+   "end": 19.75,
+   "confidence": 0.6273863315582275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 5.98,
+   "end": 17.25,
+   "confidence": 0.6882687211036682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 5.98,
+   "end": 6.5,
+   "confidence": 0.15918399393558502,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 5.5,
+   "end": 6.75,
+   "confidence": 0.07888326048851013,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 6.07,
+   "end": 9.75,
+   "confidence": 0.1146445944905281,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.5,
+   "end": 7.75,
+   "confidence": 0.054019562900066376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 7.25,
+   "end": 8.0,
+   "confidence": 0.052431173622608185,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 7.5,
+   "end": 10.25,
+   "confidence": 0.06798426061868668,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 6.45,
+   "end": 9.0,
+   "confidence": 0.12186992168426514,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 9.0,
+   "end": 10.75,
+   "confidence": 0.13100837171077728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 9.06,
+   "end": 11.0,
+   "confidence": 0.12065492570400238,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 9.25,
+   "end": 11.5,
+   "confidence": 0.10969945043325424,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 7.75,
+   "end": 11.5,
+   "confidence": 0.08978049457073212,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 8.25,
+   "end": 11.0,
+   "confidence": 0.0671682059764862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 10.0,
+   "end": 11.75,
+   "confidence": 0.10702130198478699,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 11.3,
+   "end": 17.25,
+   "confidence": 0.21799121797084808,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 9.5,
+   "end": 11.5,
+   "confidence": 0.07393579930067062,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 9.62,
+   "end": 11.5,
+   "confidence": 0.05048051476478577,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 11.25,
+   "end": 19.0,
+   "confidence": 0.13530930876731873,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.12948237359523773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.12225505709648132,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 10.75,
+   "end": 14.75,
+   "confidence": 0.09494747966527939,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 13.41,
+   "end": 14.25,
+   "confidence": 0.06401492655277252,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 13.25,
+   "end": 17.0,
+   "confidence": 0.21918007731437683,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 13.85,
+   "end": 17.75,
+   "confidence": 0.11810727417469025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 13.25,
+   "end": 16.5,
+   "confidence": 0.09620387107133865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 13.25,
+   "end": 15.5,
+   "confidence": 0.08790076524019241,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 13.25,
+   "end": 15.25,
+   "confidence": 0.053310226649045944,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 15.8,
+   "end": 17.25,
+   "confidence": 0.420228511095047,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 14.25,
+   "end": 17.0,
+   "confidence": 0.1671009361743927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 15.75,
+   "end": 17.0,
+   "confidence": 0.15847444534301758,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 14.25,
+   "end": 17.0,
+   "confidence": 0.15463808178901672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 15.17,
+   "end": 16.5,
+   "confidence": 0.079648457467556,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 16.5,
+   "end": 17.5,
+   "confidence": 0.06821167469024658,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 16.97,
+   "end": 17.75,
+   "confidence": 0.0668163076043129,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 17.25,
+   "end": 18.0,
+   "confidence": 0.22100478410720825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 15.75,
+   "end": 17.75,
+   "confidence": 0.1671237051486969,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 17.32,
+   "end": 19.75,
+   "confidence": 0.2838387191295624,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 16.36,
+   "end": 19.25,
+   "confidence": 0.137213796377182,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 18.41,
+   "end": 22.5,
+   "confidence": 0.2635049819946289,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 17.5,
+   "end": 21.25,
+   "confidence": 0.11022421717643738,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 19.0,
+   "end": 20.0,
+   "confidence": 0.05267637223005295,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 19.25,
+   "end": 22.75,
+   "confidence": 0.2037695348262787,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 19.97,
+   "end": 22.5,
+   "confidence": 0.1608259230852127,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fireworks",
+   "start": 18.25,
+   "end": 20.25,
+   "confidence": 0.11173386126756668,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 19.75,
+   "end": 22.0,
+   "confidence": 0.10340280830860138,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 19.75,
+   "end": 20.25,
+   "confidence": 0.05695662274956703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bicycle",
+   "start": 19.5,
+   "end": 21.75,
+   "confidence": 0.10680446028709412,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 20.5,
+   "end": 22.75,
+   "confidence": 0.13379508256912231,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 19.0,
+   "end": 22.0,
+   "confidence": 0.11921152472496033,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 19.0,
+   "end": 21.75,
+   "confidence": 0.10127071291208267,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 19.0,
+   "end": 22.0,
+   "confidence": 0.09024395793676376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 19.0,
+   "end": 22.0,
+   "confidence": 0.08779232949018478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 20.5,
+   "end": 21.5,
+   "confidence": 0.07758280634880066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 20.5,
+   "end": 23.75,
+   "confidence": 0.06195005401968956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 21.5,
+   "end": 25.0,
+   "confidence": 0.0950915515422821,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 21.5,
+   "end": 24.0,
+   "confidence": 0.0765320286154747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 20.0,
+   "end": 22.5,
+   "confidence": 0.0686521902680397,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 21.75,
+   "end": 27.75,
+   "confidence": 0.320326566696167,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 21.01,
+   "end": 22.5,
+   "confidence": 0.06006059795618057,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 20.5,
+   "end": 24.0,
+   "confidence": 0.3755742907524109,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 21.86,
+   "end": 25.75,
+   "confidence": 0.10535339266061783,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 24.0,
+   "end": 24.75,
+   "confidence": 0.05860169231891632,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 24.25,
+   "end": 27.75,
+   "confidence": 0.09247298538684845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 24.73,
+   "end": 27.75,
+   "confidence": 0.4141535758972168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 23.77,
+   "end": 25.25,
+   "confidence": 0.09985887259244919,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 24.73,
+   "end": 25.25,
+   "confidence": 0.08748409897089005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 23.25,
+   "end": 25.25,
+   "confidence": 0.07911935448646545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 24.98,
+   "end": 27.75,
+   "confidence": 0.2257234901189804,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 24.27,
+   "end": 26.0,
+   "confidence": 0.09476025402545929,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.6939699649810791,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 24.93,
+   "end": 27.75,
+   "confidence": 0.627776026725769,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 25.75,
+   "end": 27.75,
+   "confidence": 0.6030910015106201,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 24.75,
+   "end": 26.75,
+   "confidence": 0.1949363648891449,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 26.5,
+   "end": 27.75,
+   "confidence": 0.05959713086485863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 26.75,
+   "end": 27.75,
+   "confidence": 0.07263114303350449,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.8874363899230957,
+   "start": 0.0,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.625,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 4.625,
+     "end": 9.25,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 9.25,
+     "end": 13.875,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 13.875,
+     "end": 18.5,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 18.5,
+     "end": 23.125,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 23.125,
+     "end": 27.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "excavator"
+    }
+   ],
+   "clap_rank": 48,
+   "clap_top3": [
+    "Buzzer",
+    "Vibration",
+    "Background noise"
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.6939699649810791,
+   "start": 24.93,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 3.25,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 24.93,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 23,
+   "clap_top3": [
+    "Rock music",
+    "Vibration",
+    "Gears"
+   ]
+  },
+  {
+   "label": "Air brake",
+   "confidence": 0.6882687211036682,
+   "start": 5.98,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 1.1400000000000001,
+     "end": 4.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 5.98,
+     "end": 11.4225,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The truck"
+    },
+    {
+     "start": 11.4225,
+     "end": 16.865000000000002,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "excavator"
+    },
+    {
+     "start": 16.865000000000002,
+     "end": 22.3075,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 22.3075,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 4,
+   "clap_top3": [
+    "Background noise",
+    "Printer",
+    "Boiling"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.483524352312088,
+   "start": 0.14000000000000012,
+   "end": 8.0,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.07,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.07,
+     "end": 8.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 18,
+   "clap_top3": [
+    "Vibration",
+    "Background noise",
+    "Buzzer"
+   ]
+  },
+  {
+   "label": "Helicopter",
+   "confidence": 0.420228511095047,
+   "start": 15.8,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 15.8,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 13,
+   "clap_top3": [
+    "Heavy engine (low frequency)",
+    "Jackhammer",
+    "Light engine (high frequency)"
+   ]
+  },
+  {
+   "label": "Fire",
+   "confidence": 0.2635049819946289,
+   "start": 18.41,
+   "end": 22.5,
+   "stretches": [
+    {
+     "start": 18.41,
+     "end": 22.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

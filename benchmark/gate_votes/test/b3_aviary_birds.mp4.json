@@ -1,0 +1,552 @@
+{
+ "clip": "b3_aviary_birds.mp4",
+ "tag": "mixed",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Bird",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.8457488417625427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.8328427672386169,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.76438307762146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.35410892963409424,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 0.30000000000000004,
+   "end": 13.0,
+   "confidence": 0.31551095843315125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.2812405228614807,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.15007458627223969,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 0.30000000000000004,
+   "end": 1.5,
+   "confidence": 0.11284486949443817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 0.07000000000000006,
+   "end": 2.75,
+   "confidence": 0.26924756169319153,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.25810471177101135,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 2.55,
+   "end": 4.25,
+   "confidence": 0.18058136105537415,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 2.23,
+   "end": 3.25,
+   "confidence": 0.05085117369890213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 1.0,
+   "end": 3.0,
+   "confidence": 0.08647523075342178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 1.0,
+   "end": 3.0,
+   "confidence": 0.06678690761327744,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 3.14,
+   "end": 6.75,
+   "confidence": 0.2448408007621765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fly, housefly",
+   "start": 3.06,
+   "end": 5.5,
+   "confidence": 0.09225612133741379,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 1.5,
+   "end": 4.75,
+   "confidence": 0.07257518917322159,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.5,
+   "end": 5.25,
+   "confidence": 0.07309409976005554,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 3.25,
+   "end": 5.5,
+   "confidence": 0.14204911887645721,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mosquito",
+   "start": 3.01,
+   "end": 4.75,
+   "confidence": 0.09866851568222046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coo",
+   "start": 4.48,
+   "end": 10.0,
+   "confidence": 0.22026200592517853,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pigeon, dove",
+   "start": 4.890000000000001,
+   "end": 10.0,
+   "confidence": 0.1920033097267151,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.05123608186841011,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 4.5,
+   "end": 8.0,
+   "confidence": 0.0636737197637558,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 11.55,
+   "end": 15.0,
+   "confidence": 0.18177826702594757,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 10.5,
+   "end": 13.5,
+   "confidence": 0.07732745260000229,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 13.3,
+   "end": 15.0,
+   "confidence": 0.11980250477790833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mouse",
+   "start": 13.23,
+   "end": 14.5,
+   "confidence": 0.05944874510169029,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird flight, flapping wings",
+   "start": 13.34,
+   "end": 15.25,
+   "confidence": 0.06035532429814339,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 14.89,
+   "end": 27.75,
+   "confidence": 0.37616103887557983,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 16.17,
+   "end": 17.5,
+   "confidence": 0.06775695085525513,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 17.5,
+   "end": 23.75,
+   "confidence": 0.09187940508127213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 20.0,
+   "end": 20.75,
+   "confidence": 0.06639071553945541,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 18.75,
+   "end": 20.75,
+   "confidence": 0.054089684039354324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 19.5,
+   "end": 23.5,
+   "confidence": 0.08231282234191895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 19.5,
+   "end": 23.5,
+   "confidence": 0.0576234869658947,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 21.64,
+   "end": 23.75,
+   "confidence": 0.09614617377519608,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 21.5,
+   "end": 23.5,
+   "confidence": 0.06342240422964096,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 22.5,
+   "end": 26.5,
+   "confidence": 0.08362957835197449,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 24.0,
+   "end": 27.0,
+   "confidence": 0.05199461802840233,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 24.75,
+   "end": 26.75,
+   "confidence": 0.22105902433395386,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Writing",
+   "start": 24.87,
+   "end": 27.75,
+   "confidence": 0.14509932696819305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Filing (rasp)",
+   "start": 24.75,
+   "end": 26.75,
+   "confidence": 0.054168205708265305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 25.69,
+   "end": 27.25,
+   "confidence": 0.051137275993824005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 25.5,
+   "end": 27.5,
+   "confidence": 0.057599205523729324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bird",
+   "confidence": 0.8457488417625427,
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.79,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on branch"
+    },
+    {
+     "start": 5.79,
+     "end": 11.280000000000001,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Bird on branch"
+    },
+    {
+     "start": 11.280000000000001,
+     "end": 16.77,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 16.77,
+     "end": 22.26,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on branch"
+    },
+    {
+     "start": 22.26,
+     "end": 27.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Bird on branch"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Bird",
+    "Country",
+    "Insect"
+   ]
+  },
+  {
+   "label": "Insect",
+   "confidence": 0.26924756169319153,
+   "start": 0.07000000000000006,
+   "end": 2.75,
+   "stretches": [
+    {
+     "start": 0.07000000000000006,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Cricket",
+   "confidence": 0.25810471177101135,
+   "start": 0.0,
+   "end": 1.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 1.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

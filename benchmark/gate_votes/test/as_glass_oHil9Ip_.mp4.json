@@ -1,0 +1,451 @@
+{
+ "clip": "as_glass_oHil9Ip_.mp4",
+ "tag": "no_ambient",
+ "duration": 20.02,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.21999999999999997,
+   "end": 19.75,
+   "confidence": 0.7921336889266968,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.21999999999999997,
+   "end": 19.75,
+   "confidence": 0.7859087586402893,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 0.06000000000000005,
+   "end": 1.5,
+   "confidence": 0.19969995319843292,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.14000000000000012,
+   "end": 1.0,
+   "confidence": 0.16400137543678284,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hip hop music",
+   "start": 0.14000000000000012,
+   "end": 1.25,
+   "confidence": 0.14784349501132965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum machine",
+   "start": 0.06000000000000005,
+   "end": 1.25,
+   "confidence": 0.06349284946918488,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dubstep",
+   "start": 0.06000000000000005,
+   "end": 1.0,
+   "confidence": 0.051321983337402344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.10398229956626892,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.06850986927747726,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 1.6099999999999999,
+   "end": 16.75,
+   "confidence": 0.08532935380935669,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 4.5,
+   "end": 8.25,
+   "confidence": 0.19162575900554657,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 4.43,
+   "end": 5.75,
+   "confidence": 0.07803367078304291,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 4.0,
+   "end": 7.75,
+   "confidence": 0.12242288142442703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 4.0,
+   "end": 7.0,
+   "confidence": 0.08708008378744125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Effects unit",
+   "start": 4.5,
+   "end": 6.5,
+   "confidence": 0.05215652659535408,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 8.14,
+   "end": 11.0,
+   "confidence": 0.3498004078865051,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chime",
+   "start": 7.25,
+   "end": 9.5,
+   "confidence": 0.09461607038974762,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 8.25,
+   "end": 9.75,
+   "confidence": 0.0859825611114502,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glass",
+   "start": 8.73,
+   "end": 10.0,
+   "confidence": 0.07788695394992828,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coin (dropping)",
+   "start": 8.66,
+   "end": 11.0,
+   "confidence": 0.275202214717865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ding",
+   "start": 9.25,
+   "end": 10.5,
+   "confidence": 0.1545237898826599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 9.34,
+   "end": 11.0,
+   "confidence": 0.13737709820270538,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 10.06,
+   "end": 11.0,
+   "confidence": 0.05641520395874977,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cutlery, silverware",
+   "start": 9.27,
+   "end": 10.75,
+   "confidence": 0.12194641679525375,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glass",
+   "start": 9.27,
+   "end": 11.0,
+   "confidence": 0.07457556575536728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 13.15,
+   "end": 14.0,
+   "confidence": 0.15487220883369446,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coin (dropping)",
+   "start": 13.39,
+   "end": 13.75,
+   "confidence": 0.0618232786655426,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.08129089325666428,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 16.2,
+   "end": 18.25,
+   "confidence": 0.05505800619721413,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 18.55,
+   "end": 19.75,
+   "confidence": 0.6217249631881714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glass",
+   "start": 18.55,
+   "end": 19.75,
+   "confidence": 0.4273265302181244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Marimba, xylophone",
+   "start": 18.39,
+   "end": 18.75,
+   "confidence": 0.10450343042612076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glockenspiel",
+   "start": 16.87,
+   "end": 18.75,
+   "confidence": 0.07256783545017242,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mallet percussion",
+   "start": 18.39,
+   "end": 18.75,
+   "confidence": 0.06210748106241226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 17.84,
+   "end": 19.75,
+   "confidence": 0.1414133608341217,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cutlery, silverware",
+   "start": 17.68,
+   "end": 19.25,
+   "confidence": 0.09271398931741714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tubular bells",
+   "start": 17.0,
+   "end": 19.0,
+   "confidence": 0.057620398700237274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Chink, clink",
+   "confidence": 0.6217249631881714,
+   "start": 18.55,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 8.14,
+     "end": 11.0,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "the glass"
+    },
+    {
+     "start": 18.55,
+     "end": 19.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "the glass"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Bell",
+    "Chink, clink",
+    "Cutlery, silverware"
+   ]
+  },
+  {
+   "label": "Glass",
+   "confidence": 0.4273265302181244,
+   "start": 18.55,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 18.55,
+     "end": 19.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Man's hand"
+    }
+   ],
+   "clap_rank": 93,
+   "clap_top3": [
+    "Bell",
+    "Chink, clink",
+    "Cutlery, silverware"
+   ]
+  },
+  {
+   "label": "Coin (dropping)",
+   "confidence": 0.275202214717865,
+   "start": 8.66,
+   "end": 11.0,
+   "stretches": [
+    {
+     "start": 8.66,
+     "end": 11.0,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Coin (dropping)"
+    }
+   ]
+  }
+ ]
+}

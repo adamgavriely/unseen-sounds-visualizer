@@ -1,0 +1,246 @@
+{
+ "clip": "ambient_desert_wind_74.mp4",
+ "tag": "no_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Silence",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.2535146474838257,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.2399376481771469,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.20484983921051025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.06024479120969772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.052914462983608246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 0.75,
+   "end": 4.75,
+   "confidence": 0.07467051595449448,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 1.72,
+   "end": 2.25,
+   "confidence": 0.07761352509260178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.7,
+   "end": 4.75,
+   "confidence": 0.17939959466457367,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 0.7,
+   "end": 4.0,
+   "confidence": 0.13648702204227448,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 2.0,
+   "end": 4.5,
+   "confidence": 0.12385309487581253,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 2.3200000000000003,
+   "end": 3.25,
+   "confidence": 0.07889846712350845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 2.3200000000000003,
+   "end": 3.25,
+   "confidence": 0.062279630452394485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 6.0,
+   "end": 7.25,
+   "confidence": 0.06633450835943222,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 5.42,
+   "end": 8.0,
+   "confidence": 0.056771256029605865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "start": 11.07,
+   "end": 12.75,
+   "confidence": 0.2512776851654053,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 11.07,
+   "end": 12.75,
+   "confidence": 0.19233186542987823,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fly, housefly",
+   "start": 11.15,
+   "end": 12.75,
+   "confidence": 0.19186316430568695,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 12.25,
+   "end": 15.75,
+   "confidence": 0.08161650598049164,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "start": 13.41,
+   "end": 14.5,
+   "confidence": 0.0922195091843605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fly, housefly",
+   "start": 12.25,
+   "end": 14.5,
+   "confidence": 0.08524885773658752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 12.25,
+   "end": 14.5,
+   "confidence": 0.07167541980743408,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "start": 14.09,
+   "end": 15.75,
+   "confidence": 0.07811819761991501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bee, wasp, etc.",
+   "confidence": 0.2512776851654053,
+   "start": 11.07,
+   "end": 12.75,
+   "stretches": [
+    {
+     "start": 11.07,
+     "end": 12.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

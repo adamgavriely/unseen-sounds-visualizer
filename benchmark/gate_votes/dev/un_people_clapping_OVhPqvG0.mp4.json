@@ -1,0 +1,208 @@
+{
+ "clip": "un_people_clapping_OVhPqvG0.mp4",
+ "tag": "no_ambient",
+ "duration": 20.02,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.6419287323951721,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.27280205488204956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 6.5,
+   "confidence": 0.19095002114772797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 6.25,
+   "confidence": 0.09880036115646362,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Microwave oven",
+   "start": 6.3,
+   "end": 6.5,
+   "confidence": 0.06128402426838875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 6.390000000000001,
+   "end": 7.75,
+   "confidence": 0.1941346526145935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mains hum",
+   "start": 6.390000000000001,
+   "end": 7.0,
+   "confidence": 0.15292096138000488,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 6.390000000000001,
+   "end": 7.0,
+   "confidence": 0.07745514065027237,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 6.3100000000000005,
+   "end": 7.0,
+   "confidence": 0.0524277500808239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 7.640000000000001,
+   "end": 10.25,
+   "confidence": 0.14442075788974762,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.5,
+   "end": 13.5,
+   "confidence": 0.07144098728895187,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 6.25,
+   "end": 19.75,
+   "confidence": 0.07838667184114456,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 8.0,
+   "end": 9.25,
+   "confidence": 0.05063267797231674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 8.47,
+   "end": 10.25,
+   "confidence": 0.09770572930574417,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.75,
+   "end": 13.5,
+   "confidence": 0.06589296460151672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 10.64,
+   "end": 12.5,
+   "confidence": 0.05615026131272316,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sidetone",
+   "start": 11.39,
+   "end": 12.0,
+   "confidence": 0.05712001398205757,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 13.3,
+   "end": 18.5,
+   "confidence": 0.07071442157030106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 13.75,
+   "end": 18.25,
+   "confidence": 0.05410875380039215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.25,
+   "end": 19.75,
+   "confidence": 0.10762791335582733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

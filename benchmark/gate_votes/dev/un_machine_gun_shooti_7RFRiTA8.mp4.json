@@ -1,0 +1,698 @@
+{
+ "clip": "un_machine_gun_shooti_7RFRiTA8.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.8,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 16.55,
+   "confidence": 0.6056693196296692,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.17082108557224274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 7.0,
+   "confidence": 0.15453468263149261,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.101234070956707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.09531635791063309,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.07428886741399765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.06637436896562576,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "confidence": 0.05116208270192146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.55,
+   "end": 1.25,
+   "confidence": 0.06100408360362053,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.1016443744301796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.0947728306055069,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.09893827885389328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.09652230143547058,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.09583178162574768,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 2.0,
+   "end": 3.5,
+   "confidence": 0.06650486588478088,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 2.0,
+   "end": 3.5,
+   "confidence": 0.05599956214427948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 0.87,
+   "end": 3.25,
+   "confidence": 0.05501094087958336,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.5,
+   "end": 5.5,
+   "confidence": 0.16102488338947296,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breaking",
+   "start": 2.8200000000000003,
+   "end": 4.0,
+   "confidence": 0.057467058300971985,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hammer",
+   "start": 3.55,
+   "end": 3.75,
+   "confidence": 0.08185622841119766,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 3.75,
+   "end": 5.5,
+   "confidence": 0.11195888370275497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 3.75,
+   "end": 4.5,
+   "confidence": 0.05081627145409584,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 3.75,
+   "end": 4.5,
+   "confidence": 0.05013713985681534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 3.0,
+   "end": 5.0,
+   "confidence": 0.06441748887300491,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.75,
+   "end": 8.5,
+   "confidence": 0.13932283222675323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cap gun",
+   "start": 3.5300000000000002,
+   "end": 5.25,
+   "confidence": 0.06241178885102272,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.75,
+   "end": 5.5,
+   "confidence": 0.06132600083947182,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 3.86,
+   "end": 8.5,
+   "confidence": 0.2389383167028427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 3.75,
+   "end": 6.75,
+   "confidence": 0.1491624116897583,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 3.75,
+   "end": 6.75,
+   "confidence": 0.12066150456666946,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 4.0,
+   "end": 6.25,
+   "confidence": 0.0839078277349472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 4.0,
+   "end": 6.0,
+   "confidence": 0.0725381001830101,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goat",
+   "start": 5.09,
+   "end": 6.75,
+   "confidence": 0.060013867914676666,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whip",
+   "start": 4.45,
+   "end": 6.25,
+   "confidence": 0.05713450163602829,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 4.25,
+   "end": 6.75,
+   "confidence": 0.053110167384147644,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 4.5,
+   "end": 6.75,
+   "confidence": 0.12485422939062119,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.0,
+   "end": 6.75,
+   "confidence": 0.055126022547483444,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 6.18,
+   "end": 7.5,
+   "confidence": 0.13488546013832092,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 7.25,
+   "end": 16.55,
+   "confidence": 0.17048847675323486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.25,
+   "end": 12.25,
+   "confidence": 0.1253191977739334,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 7.5,
+   "end": 13.25,
+   "confidence": 0.23374170064926147,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.08101560920476913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.0744900330901146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 6.93,
+   "end": 8.5,
+   "confidence": 0.05213203653693199,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 6.5,
+   "end": 10.5,
+   "confidence": 0.13131634891033173,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ding",
+   "start": 6.75,
+   "end": 10.25,
+   "confidence": 0.06850261241197586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 8.5,
+   "end": 13.25,
+   "confidence": 0.051463134586811066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 8.36,
+   "end": 12.5,
+   "confidence": 0.15719331800937653,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 9.5,
+   "end": 12.5,
+   "confidence": 0.08485807478427887,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.055500321090221405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fireworks",
+   "start": 10.56,
+   "end": 12.0,
+   "confidence": 0.19072821736335754,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Firecracker",
+   "start": 10.56,
+   "end": 12.0,
+   "confidence": 0.1304895430803299,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 10.5,
+   "end": 13.25,
+   "confidence": 0.10648725926876068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 10.5,
+   "end": 12.75,
+   "confidence": 0.09017875045537949,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 12.25,
+   "end": 16.55,
+   "confidence": 0.1384527087211609,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 10.75,
+   "end": 13.25,
+   "confidence": 0.07810111343860626,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 12.25,
+   "end": 13.5,
+   "confidence": 0.05379539728164673,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 12.5,
+   "end": 13.0,
+   "confidence": 0.05401389300823212,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 12.27,
+   "end": 14.5,
+   "confidence": 0.20715680718421936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 13.25,
+   "end": 15.0,
+   "confidence": 0.20352056622505188,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 12.27,
+   "end": 15.0,
+   "confidence": 0.20110121369361877,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 12.68,
+   "end": 14.5,
+   "confidence": 0.1578439325094223,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 13.32,
+   "end": 14.5,
+   "confidence": 0.09787289053201675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.09844394773244858,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 14.25,
+   "end": 16.55,
+   "confidence": 0.05078842490911484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 14.5,
+   "end": 16.55,
+   "confidence": 0.11966762691736221,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.5,
+   "end": 16.55,
+   "confidence": 0.08792518824338913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 14.24,
+   "end": 15.0,
+   "confidence": 0.05046413093805313,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 14.53,
+   "end": 16.55,
+   "confidence": 0.05221681669354439,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

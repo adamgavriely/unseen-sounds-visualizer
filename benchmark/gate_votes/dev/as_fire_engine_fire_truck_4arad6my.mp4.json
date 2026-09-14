@@ -1,0 +1,491 @@
+{
+ "clip": "as_fire_engine_fire_truck_4arad6my.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 17.75,
+   "confidence": 0.649716317653656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.30000000000000004,
+   "end": 17.75,
+   "confidence": 0.3709079325199127,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.2633400857448578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.23196418583393097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.13408172130584717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibration",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.12773117423057556,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.12700031697750092,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heavy engine (low frequency)",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.08596890419721603,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 0.30000000000000004,
+   "end": 1.75,
+   "confidence": 0.08502592891454697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.07599067687988281,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine knocking",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.06279569119215012,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 1.0,
+   "end": 1.75,
+   "confidence": 0.061371900141239166,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.25,
+   "end": 17.75,
+   "confidence": 0.1681153029203415,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 2.05,
+   "end": 17.75,
+   "confidence": 0.8288180232048035,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 2.05,
+   "end": 17.75,
+   "confidence": 0.7356548309326172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 2.05,
+   "end": 17.75,
+   "confidence": 0.6739051342010498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 1.57,
+   "end": 17.75,
+   "confidence": 0.6132517457008362,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 0.37,
+   "end": 17.75,
+   "confidence": 0.4096231162548065,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 0.25,
+   "end": 2.25,
+   "confidence": 0.11753881722688675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 2.25,
+   "end": 17.5,
+   "confidence": 0.21407894790172577,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 2.9699999999999998,
+   "end": 14.25,
+   "confidence": 0.20586609840393066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 2.75,
+   "end": 4.0,
+   "confidence": 0.05600661411881447,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 2.0,
+   "end": 10.0,
+   "confidence": 0.11060436815023422,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 2.0,
+   "end": 5.0,
+   "confidence": 0.08448928594589233,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 2.25,
+   "end": 5.0,
+   "confidence": 0.0659828931093216,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 5.25,
+   "end": 17.75,
+   "confidence": 0.6863769888877869,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 5.5,
+   "end": 7.75,
+   "confidence": 0.10912427306175232,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 6.82,
+   "end": 7.75,
+   "confidence": 0.09080731123685837,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 5.5,
+   "end": 7.75,
+   "confidence": 0.0625733956694603,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.053771842271089554,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 7.0,
+   "end": 10.5,
+   "confidence": 0.2587840259075165,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 8.11,
+   "end": 10.5,
+   "confidence": 0.10791023820638657,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.0,
+   "end": 12.25,
+   "confidence": 0.05308782681822777,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 9.25,
+   "end": 12.0,
+   "confidence": 0.12086907774209976,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire",
+   "start": 9.45,
+   "end": 12.25,
+   "confidence": 0.08092694729566574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 10.0,
+   "end": 12.0,
+   "confidence": 0.06283699721097946,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 11.75,
+   "end": 17.0,
+   "confidence": 0.09690699726343155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 12.6,
+   "end": 15.0,
+   "confidence": 0.054252851754426956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 16.48,
+   "end": 17.75,
+   "confidence": 0.061295248568058014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 16.5,
+   "end": 17.5,
+   "confidence": 0.0547637902200222,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Siren",
+   "confidence": 0.8288180232048035,
+   "start": 0.37,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.37,
+     "end": 6.163333333333333,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Fire truck siren"
+    },
+    {
+     "start": 6.163333333333333,
+     "end": 11.956666666666665,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Fire truck"
+    },
+    {
+     "start": 11.956666666666665,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Fire truck"
+    }
+   ],
+   "clap_rank": 4,
+   "clap_top3": [
+    "Theremin",
+    "Motor vehicle (road)",
+    "Fire alarm"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.649716317653656,
+   "start": 0.30000000000000004,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 6.116666666666666,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Fire engine"
+    },
+    {
+     "start": 6.116666666666666,
+     "end": 11.933333333333334,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Fire truck"
+    },
+    {
+     "start": 11.933333333333334,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Fire truck"
+    }
+   ],
+   "clap_rank": 43,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Theremin",
+    "Fire alarm"
+   ]
+  }
+ ]
+}

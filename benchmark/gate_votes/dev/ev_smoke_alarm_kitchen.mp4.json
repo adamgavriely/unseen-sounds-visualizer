@@ -1,0 +1,749 @@
+{
+ "clip": "ev_smoke_alarm_kitchen.mp4",
+ "tag": "unseen_ambient",
+ "duration": 25.025,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.30000000000000004,
+   "end": 24.75,
+   "confidence": 0.8793098330497742,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sizzle",
+   "start": 0.06000000000000005,
+   "end": 10.75,
+   "confidence": 0.579014241695404,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.1516466587781906,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Frying (food)",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.08142677694559097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "confidence": 0.08124635368585587,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05958317965269089,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 0.55,
+   "end": 3.5,
+   "confidence": 0.2929442822933197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Frying (food)",
+   "start": 0.8900000000000001,
+   "end": 10.75,
+   "confidence": 0.4460867643356323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric toothbrush",
+   "start": 0.49,
+   "end": 1.5,
+   "confidence": 0.10825872421264648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.75,
+   "end": 9.0,
+   "confidence": 0.1052468940615654,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 0.08999999999999997,
+   "end": 1.5,
+   "confidence": 0.07168354839086533,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stir",
+   "start": 0.27,
+   "end": 2.0,
+   "confidence": 0.062782883644104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.25,
+   "end": 2.5,
+   "confidence": 0.07146327942609787,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 1.75,
+   "end": 2.5,
+   "confidence": 0.06898438930511475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 0.5,
+   "end": 2.5,
+   "confidence": 0.07984931766986847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stir",
+   "start": 2.31,
+   "end": 4.5,
+   "confidence": 0.2036447525024414,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gush",
+   "start": 3.49,
+   "end": 8.0,
+   "confidence": 0.30093494057655334,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 3.25,
+   "end": 5.75,
+   "confidence": 0.2873342037200928,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 3.33,
+   "end": 5.75,
+   "confidence": 0.22074750065803528,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 3.25,
+   "end": 5.5,
+   "confidence": 0.1678202748298645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 3.6500000000000004,
+   "end": 5.75,
+   "confidence": 0.11626038700342178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water tap, faucet",
+   "start": 4.4,
+   "end": 7.75,
+   "confidence": 0.14948154985904694,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sink (filling or washing)",
+   "start": 4.4,
+   "end": 7.75,
+   "confidence": 0.14268846809864044,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water",
+   "start": 3.52,
+   "end": 5.75,
+   "confidence": 0.0711732804775238,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stir",
+   "start": 4.43,
+   "end": 6.25,
+   "confidence": 0.0826016515493393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam",
+   "start": 5.48,
+   "end": 6.75,
+   "confidence": 0.08286441117525101,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 5.5600000000000005,
+   "end": 6.75,
+   "confidence": 0.06489904224872589,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water",
+   "start": 4.5,
+   "end": 7.0,
+   "confidence": 0.1175977885723114,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stir",
+   "start": 5.5,
+   "end": 7.75,
+   "confidence": 0.05056047812104225,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 5.75,
+   "end": 9.0,
+   "confidence": 0.21913568675518036,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.09514223784208298,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 6.0,
+   "end": 8.0,
+   "confidence": 0.0674574002623558,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stir",
+   "start": 8.14,
+   "end": 9.25,
+   "confidence": 0.10969311743974686,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "start": 9.55,
+   "end": 24.75,
+   "confidence": 0.8013225793838501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Beep, bleep",
+   "start": 9.55,
+   "end": 24.75,
+   "confidence": 0.2751706540584564,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 9.25,
+   "end": 24.75,
+   "confidence": 0.1808784157037735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stir",
+   "start": 9.16,
+   "end": 10.5,
+   "confidence": 0.05581294000148773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 10.05,
+   "end": 12.75,
+   "confidence": 0.19198821485042572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 10.05,
+   "end": 12.75,
+   "confidence": 0.09735599160194397,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 10.06,
+   "end": 12.0,
+   "confidence": 0.07496634125709534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.0,
+   "end": 14.5,
+   "confidence": 0.08463414758443832,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sine wave",
+   "start": 10.5,
+   "end": 13.0,
+   "confidence": 0.09891710430383682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tuning fork",
+   "start": 10.5,
+   "end": 13.0,
+   "confidence": 0.09585819393396378,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp tone",
+   "start": 10.5,
+   "end": 13.0,
+   "confidence": 0.05891045928001404,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 11.75,
+   "end": 24.75,
+   "confidence": 0.20376917719841003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 12.33,
+   "end": 13.5,
+   "confidence": 0.05860482156276703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.09505137801170349,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.06660089641809464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sine wave",
+   "start": 11.75,
+   "end": 14.0,
+   "confidence": 0.0999985784292221,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp tone",
+   "start": 11.75,
+   "end": 13.75,
+   "confidence": 0.055755674839019775,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.5,
+   "end": 14.5,
+   "confidence": 0.06447040289640427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 13.75,
+   "end": 15.0,
+   "confidence": 0.08491041511297226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 13.75,
+   "end": 15.75,
+   "confidence": 0.058246366679668427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 14.07,
+   "end": 24.75,
+   "confidence": 0.22289185225963593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 12.75,
+   "end": 17.5,
+   "confidence": 0.08956318348646164,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 14.75,
+   "end": 15.25,
+   "confidence": 0.0634547546505928,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 16.92,
+   "end": 18.75,
+   "confidence": 0.09747184813022614,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 17.5,
+   "end": 18.25,
+   "confidence": 0.05497557669878006,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 16.5,
+   "end": 19.0,
+   "confidence": 0.07907309383153915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 17.0,
+   "end": 22.0,
+   "confidence": 0.09362249821424484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 18.75,
+   "end": 21.0,
+   "confidence": 0.05991600453853607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 21.41,
+   "end": 22.5,
+   "confidence": 0.051013268530368805,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 21.02,
+   "end": 23.0,
+   "confidence": 0.10209758579730988,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 20.75,
+   "end": 23.75,
+   "confidence": 0.058633897453546524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 23.0,
+   "end": 23.75,
+   "confidence": 0.07847119122743607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Alarm",
+   "confidence": 0.8013225793838501,
+   "start": 9.55,
+   "end": 24.75,
+   "stretches": [
+    {
+     "start": 9.55,
+     "end": 14.616666666666667,
+     "verdict": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Alarm clock on microwave"
+    },
+    {
+     "start": 14.616666666666667,
+     "end": 19.683333333333334,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Alarm clock on stove"
+    },
+    {
+     "start": 19.683333333333334,
+     "end": 24.75,
+     "verdict": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Alarm clock"
+    }
+   ],
+   "clap_rank": 112,
+   "clap_top3": [
+    "Music of Africa",
+    "Sound equipment",
+    "Middle Eastern music"
+   ]
+  },
+  {
+   "label": "Cooking",
+   "confidence": 0.579014241695404,
+   "start": 0.06000000000000005,
+   "end": 10.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 5.404999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.404999999999999,
+     "end": 10.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Hubbub, speech noise, speech babble",
+    "Speech",
+    "Frying (food)"
+   ]
+  },
+  {
+   "label": "Gush",
+   "confidence": 0.30093494057655334,
+   "start": 3.49,
+   "end": 8.0,
+   "stretches": [
+    {
+     "start": 3.49,
+     "end": 8.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

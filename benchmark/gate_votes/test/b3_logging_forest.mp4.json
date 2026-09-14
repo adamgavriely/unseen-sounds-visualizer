@@ -1,0 +1,412 @@
+{
+ "clip": "b3_logging_forest.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Chainsaw",
+   "start": 0.21999999999999997,
+   "end": 17.75,
+   "confidence": 0.9013386368751526,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wood",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.6533064842224121,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power tool",
+   "start": 0.14000000000000012,
+   "end": 17.75,
+   "confidence": 0.5184243321418762,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tools",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.43574070930480957,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 9.75,
+   "confidence": 0.2033853530883789,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.18883614242076874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sawing",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.1022864282131195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sawing",
+   "start": 0.6500000000000001,
+   "end": 4.25,
+   "confidence": 0.2994009852409363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sawing",
+   "start": 5.5,
+   "end": 12.25,
+   "confidence": 0.3922772705554962,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 6.5,
+   "end": 12.25,
+   "confidence": 0.2547897398471832,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drill",
+   "start": 10.78,
+   "end": 12.5,
+   "confidence": 0.05263034254312515,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 11.0,
+   "end": 17.75,
+   "confidence": 0.4714506268501282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sawing",
+   "start": 11.0,
+   "end": 17.75,
+   "confidence": 0.38233524560928345,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Chainsaw",
+   "confidence": 0.9013386368751526,
+   "start": 0.21999999999999997,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 4.6025,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The man"
+    },
+    {
+     "start": 4.6025,
+     "end": 8.985000000000001,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The chainsaw"
+    },
+    {
+     "start": 8.985000000000001,
+     "end": 13.367500000000001,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The chainsaw"
+    },
+    {
+     "start": 13.367500000000001,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The chainsaw"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Power tool",
+    "Light engine (high frequency)",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Wood",
+   "confidence": 0.6533064842224121,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The log"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The log"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The log"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The log"
+    }
+   ],
+   "clap_rank": 151,
+   "clap_top3": [
+    "Power tool",
+    "Light engine (high frequency)",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Power tool",
+   "confidence": 0.5184243321418762,
+   "start": 0.14000000000000012,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.5425,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 4.5425,
+     "end": 8.945,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 8.945,
+     "end": 13.3475,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 13.3475,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Power tool",
+    "Light engine (high frequency)",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Rub",
+   "confidence": 0.4714506268501282,
+   "start": 6.5,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 6.5,
+     "end": 12.125,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 12.125,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    }
+   ],
+   "clap_rank": 242,
+   "clap_top3": [
+    "Light engine (high frequency)",
+    "Power tool",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Tools",
+   "confidence": 0.43574070930480957,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    }
+   ],
+   "clap_rank": 8,
+   "clap_top3": [
+    "Power tool",
+    "Light engine (high frequency)",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Sawing",
+   "confidence": 0.3922772705554962,
+   "start": 5.5,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.6500000000000001,
+     "end": 4.25,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The man"
+    },
+    {
+     "start": 5.5,
+     "end": 11.625,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The chainsaw"
+    },
+    {
+     "start": 11.625,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The chainsaw"
+    }
+   ],
+   "clap_rank": 57,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Light engine (high frequency)",
+    "Power tool"
+   ]
+  }
+ ]
+}

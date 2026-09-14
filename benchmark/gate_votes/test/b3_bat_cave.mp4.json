@@ -1,0 +1,372 @@
+{
+ "clip": "b3_bat_cave.mp4",
+ "tag": "seen_ambient",
+ "duration": 25.0,
+ "events": [
+  {
+   "label": "Drip",
+   "start": 0.06000000000000005,
+   "end": 24.75,
+   "confidence": 0.7829551696777344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 24.75,
+   "confidence": 0.6844766736030579,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.0,
+   "end": 6.5,
+   "confidence": 0.2727668583393097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.10015055537223816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water",
+   "start": 0.15000000000000013,
+   "end": 10.5,
+   "confidence": 0.074269600212574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 0.26,
+   "end": 5.0,
+   "confidence": 0.19200949370861053,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 4.25,
+   "end": 6.5,
+   "confidence": 0.06704943627119064,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 5.37,
+   "end": 11.0,
+   "confidence": 0.14181752502918243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 6.52,
+   "end": 8.5,
+   "confidence": 0.054511792957782745,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gurgling",
+   "start": 6.92,
+   "end": 11.0,
+   "confidence": 0.052206430584192276,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 8.05,
+   "end": 12.25,
+   "confidence": 0.06228208914399147,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 8.3,
+   "end": 9.5,
+   "confidence": 0.0704062357544899,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 8.75,
+   "end": 11.5,
+   "confidence": 0.08140894770622253,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 9.75,
+   "end": 16.75,
+   "confidence": 0.17573828995227814,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water",
+   "start": 11.39,
+   "end": 24.75,
+   "confidence": 0.09672124683856964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 10.5,
+   "end": 13.25,
+   "confidence": 0.12929688394069672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gurgling",
+   "start": 12.0,
+   "end": 18.0,
+   "confidence": 0.06343958526849747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 13.24,
+   "end": 15.0,
+   "confidence": 0.09653899818658829,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 15.39,
+   "end": 17.75,
+   "confidence": 0.0713120698928833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 16.57,
+   "end": 21.25,
+   "confidence": 0.2224007546901703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 17.75,
+   "end": 18.25,
+   "confidence": 0.07840489596128464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 16.5,
+   "end": 19.0,
+   "confidence": 0.0657428503036499,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 18.89,
+   "end": 22.25,
+   "confidence": 0.08691833913326263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gurgling",
+   "start": 18.49,
+   "end": 20.25,
+   "confidence": 0.0595715269446373,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 17.75,
+   "end": 22.5,
+   "confidence": 0.27456751465797424,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 22.06,
+   "end": 24.25,
+   "confidence": 0.07739972323179245,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 21.25,
+   "end": 24.75,
+   "confidence": 0.10732563585042953,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Water",
+   "confidence": 0.7829551696777344,
+   "start": 0.06000000000000005,
+   "end": 24.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 4.998000000000001,
+     "verdict": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.998000000000001,
+     "end": 9.936000000000002,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 9.936000000000002,
+     "end": 14.874000000000002,
+     "verdict": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 14.874000000000002,
+     "end": 19.812,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 19.812,
+     "end": 24.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 16,
+   "clap_top3": [
+    "Drip",
+    "Pour",
+    "Water tap, faucet"
+   ]
+  },
+  {
+   "label": "Whale vocalization",
+   "confidence": 0.27456751465797424,
+   "start": 17.75,
+   "end": 22.5,
+   "stretches": [
+    {
+     "start": 17.75,
+     "end": 22.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Sonar",
+   "confidence": 0.2727668583393097,
+   "start": 0.0,
+   "end": 6.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 6.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,401 @@
+{
+ "clip": "b3_library_hall.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.5240684747695923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.254951149225235,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 0.14000000000000012,
+   "end": 2.5,
+   "confidence": 0.2173164039850235,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.14000000000000012,
+   "end": 17.75,
+   "confidence": 0.11013498157262802,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 13.0,
+   "confidence": 0.10360877215862274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clicking",
+   "start": 0.07000000000000006,
+   "end": 3.75,
+   "confidence": 0.09536534547805786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 0.15999999999999992,
+   "end": 1.25,
+   "confidence": 0.06392109394073486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.75,
+   "end": 4.25,
+   "confidence": 0.08621509373188019,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 0.52,
+   "end": 2.75,
+   "confidence": 0.10344810038805008,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 1.25,
+   "end": 6.0,
+   "confidence": 0.4516434073448181,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 2.0,
+   "end": 4.0,
+   "confidence": 0.05388106778264046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 3.45,
+   "end": 5.5,
+   "confidence": 0.05342165380716324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 5.34,
+   "end": 7.0,
+   "confidence": 0.05785265937447548,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 5.0,
+   "end": 12.25,
+   "confidence": 0.09070342779159546,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 5.25,
+   "end": 8.75,
+   "confidence": 0.05617367848753929,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 6.75,
+   "end": 8.0,
+   "confidence": 0.07869012653827667,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 8.17,
+   "end": 9.5,
+   "confidence": 0.0731765553355217,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 9.25,
+   "end": 10.75,
+   "confidence": 0.056759413331747055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 9.5,
+   "end": 10.5,
+   "confidence": 0.0514693409204483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 8.25,
+   "end": 13.5,
+   "confidence": 0.3588644862174988,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 12.31,
+   "end": 13.5,
+   "confidence": 0.23898865282535553,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 10.87,
+   "end": 13.5,
+   "confidence": 0.1564459651708603,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 12.41,
+   "end": 13.5,
+   "confidence": 0.0760004073381424,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.25,
+   "end": 17.75,
+   "confidence": 0.10673215985298157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keys jangling",
+   "start": 12.36,
+   "end": 14.25,
+   "confidence": 0.1574706882238388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coin (dropping)",
+   "start": 12.36,
+   "end": 14.0,
+   "confidence": 0.08566620945930481,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.5,
+   "end": 17.75,
+   "confidence": 0.06716912984848022,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 12.44,
+   "end": 14.0,
+   "confidence": 0.05730883777141571,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 14.0,
+   "end": 15.5,
+   "confidence": 0.06453243643045425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 13.0,
+   "end": 15.25,
+   "confidence": 0.11280723661184311,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pigeon, dove",
+   "start": 13.0,
+   "end": 15.25,
+   "confidence": 0.08118456602096558,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 14.66,
+   "end": 16.0,
+   "confidence": 0.06272993236780167,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 14.0,
+   "end": 16.25,
+   "confidence": 0.07220574468374252,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 15.75,
+   "end": 17.75,
+   "confidence": 0.06052696332335472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 15.5,
+   "end": 17.75,
+   "confidence": 0.11838281154632568,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 15.5,
+   "end": 17.75,
+   "confidence": 0.05247582495212555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Scissors",
+   "confidence": 0.4516434073448181,
+   "start": 1.25,
+   "end": 6.0,
+   "stretches": [
+    {
+     "start": 1.25,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.25,
+     "end": 13.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 23,
+   "clap_top3": [
+    "Fire",
+    "Shout",
+    "Rhythm and blues"
+   ]
+  }
+ ]
+}

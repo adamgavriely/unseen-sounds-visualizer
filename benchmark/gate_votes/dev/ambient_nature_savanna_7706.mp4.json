@@ -1,0 +1,268 @@
+{
+ "clip": "ambient_nature_savanna_7706.mp4",
+ "tag": "no_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.7348579168319702,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.2685515284538269,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Organ",
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "confidence": 0.1884101778268814,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.30000000000000004,
+   "end": 6.25,
+   "confidence": 0.12371267378330231,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hammond organ",
+   "start": 0.30000000000000004,
+   "end": 1.0,
+   "confidence": 0.10943268239498138,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 14.5,
+   "confidence": 0.08278853446245193,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.07020184397697449,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.050527092069387436,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic organ",
+   "start": 0.32000000000000006,
+   "end": 1.0,
+   "confidence": 0.05428832024335861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.08295062929391861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 0.25,
+   "end": 2.75,
+   "confidence": 0.06465288251638412,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Effects unit",
+   "start": 0.45,
+   "end": 2.75,
+   "confidence": 0.05255711451172829,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 4.140000000000001,
+   "end": 6.25,
+   "confidence": 0.0531473346054554,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 5.05,
+   "end": 6.25,
+   "confidence": 0.06760066002607346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 5.3,
+   "end": 6.25,
+   "confidence": 0.054785650223493576,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 7.05,
+   "end": 10.5,
+   "confidence": 0.30097824335098267,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 6.65,
+   "end": 10.0,
+   "confidence": 0.09775086492300034,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 7.55,
+   "end": 15.75,
+   "confidence": 0.11732485890388489,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 7.25,
+   "end": 10.5,
+   "confidence": 0.1058637797832489,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 7.75,
+   "end": 12.25,
+   "confidence": 0.09151288121938705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 10.75,
+   "end": 15.75,
+   "confidence": 0.055474646389484406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 13.05,
+   "end": 15.75,
+   "confidence": 0.05690764635801315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 13.55,
+   "end": 15.75,
+   "confidence": 0.21576067805290222,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 13.08,
+   "end": 15.75,
+   "confidence": 0.12842591106891632,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tender music",
+   "start": 13.8,
+   "end": 15.75,
+   "confidence": 0.06752260774374008,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 13.91,
+   "end": 15.75,
+   "confidence": 0.06530804187059402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

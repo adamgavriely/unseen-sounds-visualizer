@@ -1,0 +1,596 @@
+{
+ "clip": "b3_ia_somewherebetweenhereandnow_0.mp4",
+ "tag": "no_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.731848418712616,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.22747419774532318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.2258702963590622,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.25,
+   "end": 2.25,
+   "confidence": 0.11300859600305557,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.25,
+   "end": 1.25,
+   "confidence": 0.05119195580482483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.08190424740314484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.07929355651140213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breaking",
+   "start": 1.22,
+   "end": 1.75,
+   "confidence": 0.05975750833749771,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 5.25,
+   "confidence": 0.06122490391135216,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "confidence": 0.05827804654836655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 2.31,
+   "end": 4.5,
+   "confidence": 0.05440255254507065,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wood",
+   "start": 1.0,
+   "end": 4.25,
+   "confidence": 0.05951885133981705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 4.25,
+   "end": 6.75,
+   "confidence": 0.09358695149421692,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 6.25,
+   "end": 7.25,
+   "confidence": 0.08822094649076462,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 6.8,
+   "end": 17.5,
+   "confidence": 0.08833155781030655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 7.24,
+   "end": 9.0,
+   "confidence": 0.07314611226320267,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 8.5,
+   "end": 12.0,
+   "confidence": 0.07090798765420914,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 10.89,
+   "end": 13.5,
+   "confidence": 0.12114078551530838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 10.76,
+   "end": 12.25,
+   "confidence": 0.05752146244049072,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 12.39,
+   "end": 14.25,
+   "confidence": 0.05819569528102875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.5,
+   "end": 15.25,
+   "confidence": 0.05237846449017525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 12.5,
+   "end": 16.25,
+   "confidence": 0.05443796515464783,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 14.43,
+   "end": 17.5,
+   "confidence": 0.09939634799957275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 15.5,
+   "end": 17.0,
+   "confidence": 0.05866427719593048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gasp",
+   "start": 15.93,
+   "end": 17.5,
+   "confidence": 0.059983547776937485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 16.84,
+   "end": 18.5,
+   "confidence": 0.07577215880155563,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 17.34,
+   "end": 18.75,
+   "confidence": 0.07663152366876602,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 18.25,
+   "end": 19.75,
+   "confidence": 0.07137413322925568,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 18.23,
+   "end": 19.75,
+   "confidence": 0.05931819975376129,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 18.16,
+   "end": 19.5,
+   "confidence": 0.07236367464065552,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 17.45,
+   "end": 21.0,
+   "confidence": 0.06162204593420029,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 17.75,
+   "end": 27.75,
+   "confidence": 0.18931184709072113,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 20.25,
+   "end": 21.0,
+   "confidence": 0.06361743807792664,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zipper (clothing)",
+   "start": 19.36,
+   "end": 21.25,
+   "confidence": 0.3101685643196106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 19.0,
+   "end": 21.25,
+   "confidence": 0.09069430828094482,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 19.61,
+   "end": 21.25,
+   "confidence": 0.050850845873355865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 21.25,
+   "end": 21.75,
+   "confidence": 0.06479806452989578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 19.75,
+   "end": 22.5,
+   "confidence": 0.058040980249643326,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 21.25,
+   "end": 23.0,
+   "confidence": 0.055814098566770554,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 21.64,
+   "end": 22.5,
+   "confidence": 0.11357677727937698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cupboard open or close",
+   "start": 20.0,
+   "end": 22.75,
+   "confidence": 0.07697441428899765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 21.64,
+   "end": 22.75,
+   "confidence": 0.07321778684854507,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drawer open or close",
+   "start": 20.0,
+   "end": 22.75,
+   "confidence": 0.06787723302841187,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toilet flush",
+   "start": 20.25,
+   "end": 22.25,
+   "confidence": 0.11190597712993622,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 21.93,
+   "end": 23.5,
+   "confidence": 0.08264321088790894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 22.75,
+   "end": 24.75,
+   "confidence": 0.050883885473012924,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 23.25,
+   "end": 24.75,
+   "confidence": 0.0532512441277504,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 23.16,
+   "end": 24.0,
+   "confidence": 0.059141408652067184,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 25.07,
+   "end": 27.75,
+   "confidence": 0.09643737971782684,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 25.25,
+   "end": 26.25,
+   "confidence": 0.11851011961698532,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crumpling, crinkling",
+   "start": 24.25,
+   "end": 27.75,
+   "confidence": 0.08311349898576736,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 25.0,
+   "end": 27.0,
+   "confidence": 0.10070810467004776,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 25.36,
+   "end": 27.0,
+   "confidence": 0.09992393851280212,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crackle",
+   "start": 26.16,
+   "end": 27.5,
+   "confidence": 0.06425362080335617,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 25.0,
+   "end": 27.25,
+   "confidence": 0.05090375989675522,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 26.75,
+   "end": 27.75,
+   "confidence": 0.06798553466796875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tearing",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.060215841978788376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Zipper (clothing)",
+   "confidence": 0.3101685643196106,
+   "start": 19.36,
+   "end": 21.25,
+   "stretches": [
+    {
+     "start": 19.36,
+     "end": 21.25,
+     "verdict": false,
+     "name": false,
+     "ab": true,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

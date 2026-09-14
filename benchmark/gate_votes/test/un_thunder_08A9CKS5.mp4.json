@@ -1,0 +1,281 @@
+{
+ "clip": "un_thunder_08A9CKS5.mp4",
+ "tag": "mixed",
+ "duration": 17.017,
+ "events": [
+  {
+   "label": "Rain",
+   "start": 0.14000000000000012,
+   "end": 16.75,
+   "confidence": 0.5616355538368225,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.14000000000000012,
+   "end": 16.75,
+   "confidence": 0.5137853026390076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 0.0,
+   "end": 16.75,
+   "confidence": 0.4106810986995697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.14000000000000012,
+   "end": 16.75,
+   "confidence": 0.3165225684642792,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.14000000000000012,
+   "end": 16.75,
+   "confidence": 0.21808494627475739,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 16.75,
+   "confidence": 0.19914467632770538,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 16.75,
+   "confidence": 0.19837424159049988,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.1355273574590683,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.09887013584375381,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.07000000000000006,
+   "end": 1.25,
+   "confidence": 0.10094615817070007,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.07000000000000006,
+   "end": 1.25,
+   "confidence": 0.06053650751709938,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.15999999999999992,
+   "end": 1.25,
+   "confidence": 0.0685095489025116,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 0.15999999999999992,
+   "end": 1.25,
+   "confidence": 0.06795316189527512,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.73,
+   "end": 9.25,
+   "confidence": 0.21037650108337402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 7.25,
+   "end": 10.25,
+   "confidence": 0.06332891434431076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 8.22,
+   "end": 9.0,
+   "confidence": 0.06045969948172569,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.25,
+   "end": 10.25,
+   "confidence": 0.05125942826271057,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 9.08,
+   "end": 14.75,
+   "confidence": 0.13613693416118622,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 15.4,
+   "end": 16.75,
+   "confidence": 0.08382371813058853,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Rain",
+   "confidence": 0.5616355538368225,
+   "start": 0.14000000000000012,
+   "end": 16.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 5.676666666666666,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.676666666666666,
+     "end": 11.213333333333333,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.213333333333333,
+     "end": 16.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 13,
+   "clap_top3": [
+    "Thunderstorm",
+    "Pour",
+    "Eruption"
+   ]
+  },
+  {
+   "label": "Thunder",
+   "confidence": 0.5137853026390076,
+   "start": 0.0,
+   "end": 16.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.583333333333333,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.583333333333333,
+     "end": 11.166666666666666,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.166666666666666,
+     "end": 16.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 9,
+   "clap_top3": [
+    "Thunderstorm",
+    "Pour",
+    "Burst, pop"
+   ]
+  }
+ ]
+}

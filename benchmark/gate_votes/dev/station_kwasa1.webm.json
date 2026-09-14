@@ -1,0 +1,741 @@
+{
+ "clip": "station_kwasa1.webm",
+ "tag": "seen_ambient",
+ "duration": 21.647,
+ "events": [
+  {
+   "label": "Subway, metro, underground",
+   "start": 0.14000000000000012,
+   "end": 4.0,
+   "confidence": 0.5926493406295776,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 21.3895625,
+   "confidence": 0.5720932483673096,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.06000000000000005,
+   "end": 4.25,
+   "confidence": 0.5119912028312683,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.14000000000000012,
+   "end": 10.25,
+   "confidence": 0.5057164430618286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 21.3895625,
+   "confidence": 0.48609063029289246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.06000000000000005,
+   "end": 4.25,
+   "confidence": 0.39244332909584045,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.06000000000000005,
+   "end": 4.25,
+   "confidence": 0.3033828139305115,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.13901938498020172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 0.14000000000000012,
+   "end": 1.75,
+   "confidence": 0.07910921424627304,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.14000000000000012,
+   "end": 1.25,
+   "confidence": 0.05837598815560341,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 0.15000000000000013,
+   "end": 1.25,
+   "confidence": 0.1093229278922081,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 0.52,
+   "end": 3.0,
+   "confidence": 0.09662333130836487,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 2.75,
+   "end": 6.5,
+   "confidence": 0.5552248358726501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 3.0,
+   "end": 6.0,
+   "confidence": 0.33925220370292664,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 1.5,
+   "end": 4.0,
+   "confidence": 0.06563285738229752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Jet engine",
+   "start": 3.7199999999999998,
+   "end": 6.0,
+   "confidence": 0.22089505195617676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 2.5,
+   "end": 6.0,
+   "confidence": 0.09986419975757599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heavy engine (low frequency)",
+   "start": 4.140000000000001,
+   "end": 5.25,
+   "confidence": 0.054958537220954895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 4.390000000000001,
+   "end": 5.25,
+   "confidence": 0.058674246072769165,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 3.75,
+   "end": 6.5,
+   "confidence": 0.098259836435318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 5.5,
+   "end": 6.75,
+   "confidence": 0.06501185894012451,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 5.5,
+   "end": 6.5,
+   "confidence": 0.05198211595416069,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 4.0,
+   "end": 6.5,
+   "confidence": 0.05081171542406082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.0,
+   "end": 9.5,
+   "confidence": 0.11552249640226364,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 6.0,
+   "end": 7.25,
+   "confidence": 0.06270790100097656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 5.75,
+   "end": 8.25,
+   "confidence": 0.11231726408004761,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 8.41,
+   "end": 12.5,
+   "confidence": 0.3126899302005768,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 8.33,
+   "end": 11.0,
+   "confidence": 0.16827921569347382,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 9.0,
+   "end": 13.0,
+   "confidence": 0.38996005058288574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 9.55,
+   "end": 13.0,
+   "confidence": 0.1580078899860382,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 8.84,
+   "end": 10.75,
+   "confidence": 0.06710249185562134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 10.05,
+   "end": 13.0,
+   "confidence": 0.3331615626811981,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 10.05,
+   "end": 13.0,
+   "confidence": 0.3279014229774475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 10.55,
+   "end": 13.0,
+   "confidence": 0.19084087014198303,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 9.93,
+   "end": 11.75,
+   "confidence": 0.11947740614414215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 10.75,
+   "end": 11.25,
+   "confidence": 0.058146536350250244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 10.09,
+   "end": 11.5,
+   "confidence": 0.0527939535677433,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.25,
+   "end": 21.3895625,
+   "confidence": 0.15360453724861145,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 10.43,
+   "end": 12.75,
+   "confidence": 0.05792069435119629,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.75,
+   "end": 21.3895625,
+   "confidence": 0.2279835194349289,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 13.0,
+   "end": 15.25,
+   "confidence": 0.07234977185726166,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 14.05,
+   "end": 14.5,
+   "confidence": 0.18745647370815277,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.75,
+   "end": 15.75,
+   "confidence": 0.057685043662786484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 14.0,
+   "end": 14.5,
+   "confidence": 0.08103423565626144,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 14.88,
+   "end": 15.25,
+   "confidence": 0.06655603647232056,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 14.88,
+   "end": 15.25,
+   "confidence": 0.05217881128191948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 14.88,
+   "end": 15.25,
+   "confidence": 0.051787786185741425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 15.5,
+   "end": 16.0,
+   "confidence": 0.054005831480026245,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 16.41,
+   "end": 17.5,
+   "confidence": 0.05566190928220749,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 17.0,
+   "end": 18.5,
+   "confidence": 0.1217367947101593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 18.0,
+   "end": 18.5,
+   "confidence": 0.09910722821950912,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 18.0,
+   "end": 18.5,
+   "confidence": 0.08434577286243439,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 19.05,
+   "end": 20.0,
+   "confidence": 0.09424232691526413,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 19.0,
+   "end": 19.75,
+   "confidence": 0.06041538715362549,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 17.75,
+   "end": 20.5,
+   "confidence": 0.10254880785942078,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 19.25,
+   "end": 19.75,
+   "confidence": 0.05959194153547287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 19.5,
+   "end": 21.3895625,
+   "confidence": 0.07433326542377472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 19.5,
+   "end": 21.3895625,
+   "confidence": 0.06384090334177017,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 19.5,
+   "end": 21.3895625,
+   "confidence": 0.06210014596581459,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 20.47,
+   "end": 21.3895625,
+   "confidence": 0.1569042056798935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 20.25,
+   "end": 21.0,
+   "confidence": 0.05194057524204254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Train",
+   "confidence": 0.5926493406295776,
+   "start": 0.06000000000000005,
+   "end": 4.25,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 4.25,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Train"
+    },
+    {
+     "start": 9.0,
+     "end": 13.0,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Train"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Vibration",
+    "Rail transport",
+    "Background noise"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.5720932483673096,
+   "start": 0.0,
+   "end": 21.3895625,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.347390625,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "Train leaving station"
+    },
+    {
+     "start": 5.347390625,
+     "end": 10.69478125,
+     "verdict": false,
+     "name": false,
+     "ab": true,
+     "desc": false,
+     "named": "Train doors open"
+    },
+    {
+     "start": 10.69478125,
+     "end": 16.042171875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Train leaving station"
+    },
+    {
+     "start": 16.042171875,
+     "end": 21.3895625,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Train leaving station"
+    }
+   ],
+   "clap_rank": 141,
+   "clap_top3": [
+    "Vibration",
+    "Background noise",
+    "Rail transport"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.5552248358726501,
+   "start": 2.75,
+   "end": 6.5,
+   "stretches": [
+    {
+     "start": 2.75,
+     "end": 6.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 5,
+   "clap_top3": [
+    "Microwave oven",
+    "Sound equipment",
+    "Motor vehicle (road)"
+   ]
+  },
+  {
+   "label": "Sliding door",
+   "confidence": 0.3126899302005768,
+   "start": 8.41,
+   "end": 12.5,
+   "stretches": [
+    {
+     "start": 8.41,
+     "end": 12.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Train doors sliding"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,645 @@
+{
+ "clip": "movie_blueplanet_115.mp4",
+ "tag": "no_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.21999999999999997,
+   "end": 15.75,
+   "confidence": 0.80788654088974,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Quack",
+   "start": 0.21999999999999997,
+   "end": 1.5,
+   "confidence": 0.6124928593635559,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Duck",
+   "start": 0.14000000000000012,
+   "end": 1.5,
+   "confidence": 0.5380030274391174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.3598977327346802,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.15352697670459747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.30000000000000004,
+   "end": 0.5,
+   "confidence": 0.11612281203269958,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.09615200012922287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squawk",
+   "start": 0.08000000000000007,
+   "end": 2.25,
+   "confidence": 0.32804834842681885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 0.32000000000000006,
+   "end": 1.0,
+   "confidence": 0.09282708168029785,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 0.81,
+   "end": 3.0,
+   "confidence": 0.35443228483200073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.75,
+   "end": 15.75,
+   "confidence": 0.3218335211277008,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 0.6500000000000001,
+   "end": 1.75,
+   "confidence": 0.1405549943447113,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.75,
+   "end": 1.5,
+   "confidence": 0.06671824306249619,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shofar",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.30310916900634766,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeak",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.16016706824302673,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gobble",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.0801796168088913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeak",
+   "start": 0.78,
+   "end": 2.75,
+   "confidence": 0.40648671984672546,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 1.1,
+   "end": 3.0,
+   "confidence": 0.335505872964859,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 2.25,
+   "end": 4.25,
+   "confidence": 0.05617029219865799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 2.5,
+   "end": 4.0,
+   "confidence": 0.10189183801412582,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.0,
+   "end": 4.75,
+   "confidence": 0.1202549859881401,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 2.5,
+   "end": 4.0,
+   "confidence": 0.07088924199342728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 2.42,
+   "end": 3.5,
+   "confidence": 0.05574106052517891,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 2.11,
+   "end": 3.75,
+   "confidence": 0.0711267814040184,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 2.0,
+   "end": 4.0,
+   "confidence": 0.06008107587695122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.5,
+   "end": 6.0,
+   "confidence": 0.11097465455532074,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.75,
+   "end": 13.0,
+   "confidence": 0.18602223694324493,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 4.75,
+   "end": 7.25,
+   "confidence": 0.07570429891347885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.87,
+   "end": 7.5,
+   "confidence": 0.09398944675922394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 6.5,
+   "end": 9.25,
+   "confidence": 0.11212833970785141,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 6.75,
+   "end": 11.75,
+   "confidence": 0.0993526354432106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 6.75,
+   "end": 8.75,
+   "confidence": 0.07455544173717499,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 6.890000000000001,
+   "end": 7.75,
+   "confidence": 0.05082439258694649,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.75,
+   "end": 15.75,
+   "confidence": 0.27232834696769714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 7.99,
+   "end": 9.25,
+   "confidence": 0.05587208643555641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 8.75,
+   "end": 9.5,
+   "confidence": 0.05346611142158508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 9.49,
+   "end": 10.75,
+   "confidence": 0.14080660045146942,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 9.75,
+   "end": 10.25,
+   "confidence": 0.07408609241247177,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 9.66,
+   "end": 10.75,
+   "confidence": 0.05125345662236214,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 11.55,
+   "end": 14.5,
+   "confidence": 0.18962644040584564,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 11.65,
+   "end": 13.25,
+   "confidence": 0.05110412463545799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zing",
+   "start": 12.48,
+   "end": 14.25,
+   "confidence": 0.13853688538074493,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 12.75,
+   "end": 13.25,
+   "confidence": 0.06009909138083458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 11.87,
+   "end": 14.75,
+   "confidence": 0.08522959053516388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 13.25,
+   "end": 14.75,
+   "confidence": 0.06435173004865646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 12.68,
+   "end": 14.0,
+   "confidence": 0.05323902890086174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 14.5,
+   "end": 15.5,
+   "confidence": 0.10386843234300613,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Quack",
+   "confidence": 0.6124928593635559,
+   "start": 0.21999999999999997,
+   "end": 1.5,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 1.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 27,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Music of Asia",
+    "Vocal music"
+   ]
+  },
+  {
+   "label": "Duck",
+   "confidence": 0.5380030274391174,
+   "start": 0.14000000000000012,
+   "end": 1.5,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 1.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 33,
+   "clap_top3": [
+    "Classical music",
+    "Whale vocalization",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Door",
+   "confidence": 0.40648671984672546,
+   "start": 0.78,
+   "end": 2.75,
+   "stretches": [
+    {
+     "start": 0.78,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 102,
+   "clap_top3": [
+    "Rock music",
+    "Music of Asia",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Bird",
+   "confidence": 0.3598977327346802,
+   "start": 0.0,
+   "end": 3.0,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 3.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 36,
+   "clap_top3": [
+    "Vocal music",
+    "Classical music",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Honk",
+   "confidence": 0.35443228483200073,
+   "start": 0.81,
+   "end": 3.0,
+   "stretches": [
+    {
+     "start": 0.81,
+     "end": 3.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 48,
+   "clap_top3": [
+    "Rock music",
+    "Music of Asia",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Goose",
+   "confidence": 0.335505872964859,
+   "start": 1.1,
+   "end": 3.0,
+   "stretches": [
+    {
+     "start": 1.1,
+     "end": 3.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Squawk",
+   "confidence": 0.32804834842681885,
+   "start": 0.08000000000000007,
+   "end": 2.25,
+   "stretches": [
+    {
+     "start": 0.08000000000000007,
+     "end": 2.25,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The bird"
+    }
+   ]
+  },
+  {
+   "label": "Shofar",
+   "confidence": 0.30310916900634766,
+   "start": 0.0,
+   "end": 1.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 1.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

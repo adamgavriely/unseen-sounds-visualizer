@@ -1,0 +1,396 @@
+{
+ "clip": "movie_interstellar_98.mp4",
+ "tag": "no_ambient",
+ "duration": 16.016,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.8632796406745911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.7921858429908752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.29804620146751404,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 0.30000000000000004,
+   "end": 4.5,
+   "confidence": 0.23800894618034363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 0.06000000000000005,
+   "end": 3.5,
+   "confidence": 0.18421468138694763,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.11492215842008591,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.1485034078359604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.14663398265838623,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.0,
+   "end": 2.25,
+   "confidence": 0.10435175150632858,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 0.2,
+   "end": 2.25,
+   "confidence": 0.058729883283376694,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 2.55,
+   "end": 2.75,
+   "confidence": 0.050153546035289764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 2.89,
+   "end": 8.25,
+   "confidence": 0.08903013169765472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Television",
+   "start": 3.06,
+   "end": 4.25,
+   "confidence": 0.11848662048578262,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 3.3,
+   "end": 5.75,
+   "confidence": 0.06275545805692673,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 3.9699999999999998,
+   "end": 15.75,
+   "confidence": 0.4934118390083313,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 3.81,
+   "end": 5.75,
+   "confidence": 0.056710872799158096,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 4.3,
+   "end": 10.5,
+   "confidence": 0.09680147469043732,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 4.32,
+   "end": 5.25,
+   "confidence": 0.051849476993083954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 3.5,
+   "end": 5.5,
+   "confidence": 0.05216296762228012,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 4.25,
+   "end": 8.0,
+   "confidence": 0.05944538861513138,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 4.61,
+   "end": 6.25,
+   "confidence": 0.05585658922791481,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 4.62,
+   "end": 8.75,
+   "confidence": 0.17399238049983978,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 5.02,
+   "end": 7.0,
+   "confidence": 0.06515868008136749,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 5.11,
+   "end": 7.5,
+   "confidence": 0.09959550201892853,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 7.76,
+   "end": 9.0,
+   "confidence": 0.05918864533305168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 9.05,
+   "end": 11.25,
+   "confidence": 0.05813537538051605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.5,
+   "end": 11.0,
+   "confidence": 0.09395719319581985,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 8.25,
+   "end": 10.5,
+   "confidence": 0.058599431067705154,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 11.22,
+   "end": 14.0,
+   "confidence": 0.09113232791423798,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 11.64,
+   "end": 13.75,
+   "confidence": 0.06250862777233124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 11.57,
+   "end": 13.75,
+   "confidence": 0.06040561571717262,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 11.66,
+   "end": 15.25,
+   "confidence": 0.19913440942764282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 11.66,
+   "end": 14.25,
+   "confidence": 0.11460986733436584,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sad music",
+   "start": 11.43,
+   "end": 14.0,
+   "confidence": 0.08690109103918076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 11.93,
+   "end": 14.0,
+   "confidence": 0.082396499812603,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Television",
+   "start": 14.48,
+   "end": 15.25,
+   "confidence": 0.05950883403420448,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 15.25,
+   "end": 15.75,
+   "confidence": 0.11300720274448395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.29804620146751404,
+   "start": 0.0,
+   "end": 1.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 1.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

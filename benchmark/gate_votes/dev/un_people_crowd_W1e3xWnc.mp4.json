@@ -1,0 +1,1008 @@
+{
+ "clip": "un_people_crowd_W1e3xWnc.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.9052773118019104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 5.5,
+   "confidence": 0.6492680311203003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.41208529472351074,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.2180308699607849,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.140346497297287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.09524023532867432,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.06569328904151917,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 1.05,
+   "end": 4.0,
+   "confidence": 0.28825995326042175,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 1.05,
+   "end": 3.0,
+   "confidence": 0.24937736988067627,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.0,
+   "end": 9.5,
+   "confidence": 0.23693200945854187,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.0,
+   "end": 5.5,
+   "confidence": 0.1662617027759552,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 1.1400000000000001,
+   "end": 5.5,
+   "confidence": 0.08211516588926315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 1.0,
+   "end": 2.0,
+   "confidence": 0.0676221176981926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 0.27,
+   "end": 3.5,
+   "confidence": 0.5730757117271423,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 0.27,
+   "end": 3.5,
+   "confidence": 0.5339180827140808,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 0.27,
+   "end": 3.5,
+   "confidence": 0.484931617975235,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 0.43000000000000005,
+   "end": 2.0,
+   "confidence": 0.21139857172966003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 0.43000000000000005,
+   "end": 2.0,
+   "confidence": 0.1331859976053238,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 0.43000000000000005,
+   "end": 2.0,
+   "confidence": 0.08639947324991226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 0.43000000000000005,
+   "end": 1.75,
+   "confidence": 0.0758385956287384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 0.5,
+   "end": 4.25,
+   "confidence": 0.06810968369245529,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 1.77,
+   "end": 5.25,
+   "confidence": 0.3874557316303253,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 3.0700000000000003,
+   "end": 9.25,
+   "confidence": 0.2165527194738388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 3.25,
+   "end": 4.0,
+   "confidence": 0.05521724745631218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.25,
+   "end": 8.5,
+   "confidence": 0.2933751940727234,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Howl",
+   "start": 2.87,
+   "end": 5.0,
+   "confidence": 0.23539891839027405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Canidae, dogs, wolves",
+   "start": 2.75,
+   "end": 4.75,
+   "confidence": 0.09305627644062042,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 2.75,
+   "end": 4.75,
+   "confidence": 0.07000231742858887,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 4.72,
+   "end": 7.5,
+   "confidence": 0.7495402693748474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 4.72,
+   "end": 7.5,
+   "confidence": 0.7373178601264954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 4.72,
+   "end": 7.5,
+   "confidence": 0.6459975838661194,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roar",
+   "start": 3.0,
+   "end": 5.0,
+   "confidence": 0.08333034813404083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 5.75,
+   "end": 9.25,
+   "confidence": 0.2204311490058899,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 4.85,
+   "end": 9.25,
+   "confidence": 0.15437886118888855,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 4.25,
+   "end": 7.75,
+   "confidence": 0.13247953355312347,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 4.45,
+   "end": 9.25,
+   "confidence": 0.09375878423452377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 5.33,
+   "end": 6.75,
+   "confidence": 0.08177697658538818,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 5.75,
+   "end": 7.0,
+   "confidence": 0.05837615579366684,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 5.11,
+   "end": 9.25,
+   "confidence": 0.41315650939941406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 6.5,
+   "end": 7.25,
+   "confidence": 0.11798081547021866,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 6.9,
+   "end": 9.25,
+   "confidence": 0.12338379770517349,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 6.5,
+   "end": 9.5,
+   "confidence": 0.1226530373096466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 8.15,
+   "end": 11.0,
+   "confidence": 0.9552099704742432,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 8.15,
+   "end": 11.0,
+   "confidence": 0.9406793713569641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 6.75,
+   "end": 9.25,
+   "confidence": 0.09391450136899948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 6.75,
+   "end": 9.25,
+   "confidence": 0.08739865571260452,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 7.0,
+   "end": 11.0,
+   "confidence": 0.9268993735313416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 8.25,
+   "end": 13.25,
+   "confidence": 0.14214302599430084,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 10.25,
+   "end": 13.5,
+   "confidence": 0.5422625541687012,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 10.25,
+   "end": 13.75,
+   "confidence": 0.3171079754829407,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.25,
+   "end": 13.5,
+   "confidence": 0.11124023050069809,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 11.05,
+   "end": 13.5,
+   "confidence": 0.1402437686920166,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 11.22,
+   "end": 13.5,
+   "confidence": 0.31050777435302734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 11.0,
+   "end": 12.0,
+   "confidence": 0.13645298779010773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 10.98,
+   "end": 13.5,
+   "confidence": 0.09375657886266708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 10.02,
+   "end": 11.75,
+   "confidence": 0.09319164603948593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 10.19,
+   "end": 13.5,
+   "confidence": 0.17093895375728607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 10.11,
+   "end": 11.75,
+   "confidence": 0.05735689774155617,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.15066275000572205,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 11.5,
+   "end": 13.5,
+   "confidence": 0.11970985680818558,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 13.0,
+   "end": 13.5,
+   "confidence": 0.11226978898048401,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 13.64,
+   "end": 14.0,
+   "confidence": 0.6546552181243896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 13.64,
+   "end": 14.0,
+   "confidence": 0.6128045320510864,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 12.52,
+   "end": 14.0,
+   "confidence": 0.601963222026825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.5,
+   "end": 17.75,
+   "confidence": 0.29638761281967163,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 12.61,
+   "end": 17.75,
+   "confidence": 0.6527849435806274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 13.75,
+   "end": 17.75,
+   "confidence": 0.5167515277862549,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 12.25,
+   "end": 15.25,
+   "confidence": 0.08012077212333679,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 12.25,
+   "end": 15.25,
+   "confidence": 0.06821289658546448,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 13.75,
+   "end": 14.75,
+   "confidence": 0.06633108109235764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 12.25,
+   "end": 14.75,
+   "confidence": 0.05656828731298447,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 13.67,
+   "end": 17.25,
+   "confidence": 0.3052572011947632,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roar",
+   "start": 13.99,
+   "end": 17.25,
+   "confidence": 0.28052979707717896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 13.91,
+   "end": 16.5,
+   "confidence": 0.2450181245803833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 14.09,
+   "end": 15.5,
+   "confidence": 0.23059670627117157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 13.93,
+   "end": 15.5,
+   "confidence": 0.1762695610523224,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 13.25,
+   "end": 15.5,
+   "confidence": 0.11579076200723648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 15.0,
+   "end": 17.75,
+   "confidence": 0.31478598713874817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 14.52,
+   "end": 17.75,
+   "confidence": 0.4651223421096802,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 15.48,
+   "end": 17.75,
+   "confidence": 0.19915913045406342,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Grunt",
+   "start": 14.84,
+   "end": 16.0,
+   "confidence": 0.11627751588821411,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 14.12,
+   "end": 17.5,
+   "confidence": 0.08517573773860931,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 15.9,
+   "end": 17.75,
+   "confidence": 0.08552466332912445,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 16.0,
+   "end": 17.75,
+   "confidence": 0.06084977462887764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 16.25,
+   "end": 17.75,
+   "confidence": 0.1558612734079361,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 15.0,
+   "end": 17.75,
+   "confidence": 0.06857135146856308,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Cattle",
+   "confidence": 0.9552099704742432,
+   "start": 4.72,
+   "end": 11.0,
+   "stretches": [
+    {
+     "start": 0.27,
+     "end": 3.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Cattle in the field"
+    },
+    {
+     "start": 4.72,
+     "end": 11.0,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "Cattle in the pen"
+    },
+    {
+     "start": 12.52,
+     "end": 14.0,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Cattle in the pen"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Rock music",
+    "Music of Latin America",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.41208529472351074,
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.25,
+     "end": 8.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.25,
+     "end": 13.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 235,
+   "clap_top3": [
+    "Music of Latin America",
+    "Rock music",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Whale vocalization",
+   "confidence": 0.3874557316303253,
+   "start": 1.77,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 1.77,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 43,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Shout",
+    "Keyboard (musical)"
+   ]
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "confidence": 0.3052572011947632,
+   "start": 13.67,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 13.67,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Roar",
+   "confidence": 0.28052979707717896,
+   "start": 13.99,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 13.99,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

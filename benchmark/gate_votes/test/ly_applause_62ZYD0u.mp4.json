@@ -1,0 +1,538 @@
+{
+ "clip": "ly_applause_62ZYD0u.mp4",
+ "tag": "mixed",
+ "duration": 18.04,
+ "events": [
+  {
+   "label": "Snicker",
+   "start": 0.30000000000000004,
+   "end": 5.5,
+   "confidence": 0.7535519003868103,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 0.30000000000000004,
+   "end": 5.0,
+   "confidence": 0.34009209275245667,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 0.30000000000000004,
+   "end": 5.5,
+   "confidence": 0.3219095766544342,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.0,
+   "end": 17.75,
+   "confidence": 0.2970077097415924,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.22098810970783234,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 1.5,
+   "end": 17.75,
+   "confidence": 0.8686584830284119,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.0,
+   "end": 3.25,
+   "confidence": 0.0530821830034256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Applause",
+   "start": 1.95,
+   "end": 10.0,
+   "confidence": 0.4526437819004059,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.75,
+   "end": 6.5,
+   "confidence": 0.1949610561132431,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 6.66,
+   "end": 10.0,
+   "confidence": 0.28946977853775024,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 7.140000000000001,
+   "end": 11.25,
+   "confidence": 0.1863001585006714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 7.25,
+   "end": 8.5,
+   "confidence": 0.12322305887937546,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 6.43,
+   "end": 7.75,
+   "confidence": 0.08003263920545578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snicker",
+   "start": 6.51,
+   "end": 7.75,
+   "confidence": 0.0653047189116478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, large room or hall",
+   "start": 6.84,
+   "end": 11.75,
+   "confidence": 0.06988348811864853,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.25,
+   "end": 8.25,
+   "confidence": 0.09484698623418808,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 7.65,
+   "end": 8.5,
+   "confidence": 0.05037486553192139,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snicker",
+   "start": 8.22,
+   "end": 14.75,
+   "confidence": 0.2346905767917633,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 8.22,
+   "end": 14.75,
+   "confidence": 0.23407971858978271,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 8.22,
+   "end": 12.0,
+   "confidence": 0.1785292774438858,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clapping",
+   "start": 7.5,
+   "end": 9.0,
+   "confidence": 0.071504607796669,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cheering",
+   "start": 8.73,
+   "end": 10.0,
+   "confidence": 0.09954972565174103,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.5,
+   "end": 10.75,
+   "confidence": 0.2381308227777481,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 9.19,
+   "end": 11.75,
+   "confidence": 0.3869244456291199,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cheering",
+   "start": 9.59,
+   "end": 11.25,
+   "confidence": 0.12929899990558624,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Children shouting",
+   "start": 9.67,
+   "end": 11.25,
+   "confidence": 0.09294620901346207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoop",
+   "start": 9.59,
+   "end": 11.25,
+   "confidence": 0.057757049798965454,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.5,
+   "end": 12.5,
+   "confidence": 0.08735456317663193,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 9.12,
+   "end": 11.75,
+   "confidence": 0.05737319216132164,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.0,
+   "end": 11.75,
+   "confidence": 0.09802551567554474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 11.25,
+   "end": 17.75,
+   "confidence": 0.13755279779434204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 11.16,
+   "end": 13.0,
+   "confidence": 0.10903766006231308,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Screaming",
+   "start": 11.64,
+   "end": 12.75,
+   "confidence": 0.052899863570928574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 11.09,
+   "end": 14.5,
+   "confidence": 0.23436516523361206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 11.97,
+   "end": 12.75,
+   "confidence": 0.08556795865297318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "start": 11.65,
+   "end": 12.75,
+   "confidence": 0.05585469305515289,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 10.5,
+   "end": 12.5,
+   "confidence": 0.1564083844423294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 10.86,
+   "end": 12.5,
+   "confidence": 0.052863240242004395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 11.99,
+   "end": 14.5,
+   "confidence": 0.19131742417812347,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 12.15,
+   "end": 13.75,
+   "confidence": 0.07020164281129837,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crying, sobbing",
+   "start": 12.15,
+   "end": 12.75,
+   "confidence": 0.05489495024085045,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 12.26,
+   "end": 17.75,
+   "confidence": 0.11762538552284241,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 11.86,
+   "end": 13.5,
+   "confidence": 0.05371222645044327,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chopping (food)",
+   "start": 16.22,
+   "end": 17.75,
+   "confidence": 0.08127481490373611,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Snicker",
+   "confidence": 0.7535519003868103,
+   "start": 0.30000000000000004,
+   "end": 5.5,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.5,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The woman"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Laughter",
+    "Fowl",
+    "Hubbub, speech noise, speech babble"
+   ]
+  },
+  {
+   "label": "Crowd",
+   "confidence": 0.4526437819004059,
+   "start": 1.95,
+   "end": 10.0,
+   "stretches": [
+    {
+     "start": 1.95,
+     "end": 5.9750000000000005,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.9750000000000005,
+     "end": 10.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 148,
+   "clap_top3": [
+    "Splinter",
+    "Laughter",
+    "Fowl"
+   ]
+  },
+  {
+   "label": "Chuckle, chortle",
+   "confidence": 0.34009209275245667,
+   "start": 0.30000000000000004,
+   "end": 5.0,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.0,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The woman"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "confidence": 0.3219095766544342,
+   "start": 0.30000000000000004,
+   "end": 5.5,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The woman"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,248 @@
+{
+ "clip": "ambient_nature_ocean2_6588.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.3076201379299164,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 0.30000000000000004,
+   "end": 4.5,
+   "confidence": 0.10601135343313217,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 0.30000000000000004,
+   "end": 4.5,
+   "confidence": 0.10304678976535797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 5.0,
+   "confidence": 0.07948725670576096,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.0669492557644844,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.05861544981598854,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.054761458188295364,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.25,
+   "end": 2.0,
+   "confidence": 0.05084984749555588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.0,
+   "end": 15.75,
+   "confidence": 0.13448753952980042,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.52,
+   "end": 4.25,
+   "confidence": 0.09623827040195465,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 2.25,
+   "end": 3.25,
+   "confidence": 0.06660006195306778,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 2.25,
+   "end": 4.25,
+   "confidence": 0.05201846733689308,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.0,
+   "end": 12.25,
+   "confidence": 0.05318988859653473,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.25,
+   "end": 10.5,
+   "confidence": 0.05039181560277939,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 3.0,
+   "end": 5.25,
+   "confidence": 0.06623772531747818,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 3.0,
+   "end": 5.25,
+   "confidence": 0.062354233115911484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 8.01,
+   "end": 9.25,
+   "confidence": 0.051688794046640396,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 10.25,
+   "end": 15.75,
+   "confidence": 0.0564715601503849,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 10.72,
+   "end": 15.75,
+   "confidence": 0.08392271399497986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 11.25,
+   "end": 15.75,
+   "confidence": 0.08023282885551453,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 12.25,
+   "end": 13.25,
+   "confidence": 0.05101946368813515,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.0,
+   "end": 15.5,
+   "confidence": 0.06811435520648956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.0631568431854248,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 14.0,
+   "end": 15.75,
+   "confidence": 0.06109686940908432,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

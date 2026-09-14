@@ -1,0 +1,1078 @@
+{
+ "clip": "b3_petting_zoo.mp4",
+ "tag": "seen_ambient",
+ "duration": 24.024,
+ "events": [
+  {
+   "label": "Fowl",
+   "start": 0.0,
+   "end": 23.75,
+   "confidence": 0.9894933700561523,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 0.0,
+   "end": 10.75,
+   "confidence": 0.9400644898414612,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 0.0,
+   "end": 10.75,
+   "confidence": 0.8408096432685852,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.4388658404350281,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.0,
+   "end": 10.5,
+   "confidence": 0.3161776065826416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 4.0,
+   "confidence": 0.29288047552108765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 0.06000000000000005,
+   "end": 0.75,
+   "confidence": 0.17644338309764862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Duck",
+   "start": 0.06000000000000005,
+   "end": 1.0,
+   "confidence": 0.16030533611774445,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Quack",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.15039795637130737,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 0.06000000000000005,
+   "end": 0.75,
+   "confidence": 0.13420194387435913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.08214098960161209,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "start": 0.3900000000000001,
+   "end": 10.5,
+   "confidence": 0.6279948353767395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 0.3900000000000001,
+   "end": 10.0,
+   "confidence": 0.24876457452774048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.05400021746754646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 0.08000000000000007,
+   "end": 1.0,
+   "confidence": 0.05477307736873627,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.05560104548931122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.25,
+   "end": 2.0,
+   "confidence": 0.0952516570687294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.5,
+   "end": 4.0,
+   "confidence": 0.13938970863819122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.75,
+   "end": 7.25,
+   "confidence": 0.27939704060554504,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.25,
+   "end": 6.75,
+   "confidence": 0.23099178075790405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.25,
+   "end": 10.5,
+   "confidence": 0.0850476324558258,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 7.5,
+   "end": 10.75,
+   "confidence": 0.32972824573516846,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.0,
+   "end": 8.5,
+   "confidence": 0.11860329657793045,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 8.97,
+   "end": 10.5,
+   "confidence": 0.06524545699357986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snicker",
+   "start": 8.75,
+   "end": 10.5,
+   "confidence": 0.29632312059402466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 8.75,
+   "end": 10.5,
+   "confidence": 0.2719234526157379,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 9.25,
+   "end": 10.75,
+   "confidence": 0.20313461124897003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 8.75,
+   "end": 10.5,
+   "confidence": 0.12083521485328674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 8.75,
+   "end": 10.25,
+   "confidence": 0.10546393692493439,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 8.75,
+   "end": 10.5,
+   "confidence": 0.09188160300254822,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Turkey",
+   "start": 9.64,
+   "end": 17.5,
+   "confidence": 0.9951863884925842,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gobble",
+   "start": 8.0,
+   "end": 17.5,
+   "confidence": 0.9889258742332458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 8.12,
+   "end": 10.75,
+   "confidence": 0.48159274458885193,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 8.0,
+   "end": 10.75,
+   "confidence": 0.2990407943725586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Quack",
+   "start": 10.22,
+   "end": 10.5,
+   "confidence": 0.26202529668807983,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 11.05,
+   "end": 18.25,
+   "confidence": 0.2738032341003418,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 11.05,
+   "end": 17.75,
+   "confidence": 0.22931714355945587,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 10.42,
+   "end": 13.25,
+   "confidence": 0.11297398805618286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 9.75,
+   "end": 11.75,
+   "confidence": 0.07679298520088196,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 14.25,
+   "end": 15.0,
+   "confidence": 0.06938912719488144,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 15.73,
+   "end": 17.75,
+   "confidence": 0.06676193326711655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 16.75,
+   "end": 19.75,
+   "confidence": 0.7949097156524658,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 16.02,
+   "end": 17.75,
+   "confidence": 0.12956614792346954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 16.19,
+   "end": 17.75,
+   "confidence": 0.7414003014564514,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 17.25,
+   "end": 18.75,
+   "confidence": 0.3115466833114624,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 15.75,
+   "end": 17.75,
+   "confidence": 0.07609237730503082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 17.64,
+   "end": 19.25,
+   "confidence": 0.2470094859600067,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 17.16,
+   "end": 19.75,
+   "confidence": 0.17998898029327393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 16.2,
+   "end": 18.0,
+   "confidence": 0.05426463112235069,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 16.77,
+   "end": 18.5,
+   "confidence": 0.1697567105293274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 16.25,
+   "end": 18.75,
+   "confidence": 0.11062455922365189,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.08192477375268936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 16.25,
+   "end": 18.75,
+   "confidence": 0.06809314340353012,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Oink",
+   "start": 16.25,
+   "end": 18.75,
+   "confidence": 0.0530887246131897,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 17.75,
+   "end": 19.5,
+   "confidence": 0.052683502435684204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 16.7,
+   "end": 18.5,
+   "confidence": 0.23040132224559784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 16.5,
+   "end": 18.5,
+   "confidence": 0.06853730976581573,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 18.25,
+   "end": 19.5,
+   "confidence": 0.07634846121072769,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 17.0,
+   "end": 19.75,
+   "confidence": 0.40664127469062805,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 17.0,
+   "end": 19.75,
+   "confidence": 0.3855542838573456,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 18.56,
+   "end": 19.75,
+   "confidence": 0.21149897575378418,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 18.64,
+   "end": 23.75,
+   "confidence": 0.2028808295726776,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Turkey",
+   "start": 19.05,
+   "end": 23.75,
+   "confidence": 0.9908838868141174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gobble",
+   "start": 19.05,
+   "end": 23.75,
+   "confidence": 0.9792966246604919,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "start": 18.57,
+   "end": 19.75,
+   "confidence": 0.2897336184978485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 18.73,
+   "end": 19.75,
+   "confidence": 0.13322579860687256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 17.77,
+   "end": 19.5,
+   "confidence": 0.1005302146077156,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 18.27,
+   "end": 22.25,
+   "confidence": 0.09041032195091248,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 20.36,
+   "end": 23.75,
+   "confidence": 0.5344511866569519,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 20.28,
+   "end": 23.25,
+   "confidence": 0.339883029460907,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 20.28,
+   "end": 23.25,
+   "confidence": 0.1659732460975647,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 22.0,
+   "end": 23.75,
+   "confidence": 0.25926876068115234,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 22.0,
+   "end": 23.25,
+   "confidence": 0.1926429122686386,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "start": 22.14,
+   "end": 23.25,
+   "confidence": 0.1687469184398651,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 21.34,
+   "end": 23.25,
+   "confidence": 0.10577467828989029,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 21.74,
+   "end": 22.5,
+   "confidence": 0.0743943452835083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 22.25,
+   "end": 22.75,
+   "confidence": 0.051147423684597015,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 21.37,
+   "end": 23.25,
+   "confidence": 0.09277910739183426,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 23.25,
+   "end": 23.75,
+   "confidence": 0.07827712595462799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Turkey",
+   "confidence": 0.9951863884925842,
+   "start": 9.64,
+   "end": 17.5,
+   "stretches": [
+    {
+     "start": 9.64,
+     "end": 13.57,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The turkey on the right"
+    },
+    {
+     "start": 13.57,
+     "end": 17.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "The turkey"
+    },
+    {
+     "start": 19.05,
+     "end": 23.75,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The turkey on the ground"
+    }
+   ],
+   "clap_rank": 4,
+   "clap_top3": [
+    "Frog",
+    "Shout",
+    "Domestic animals, pets"
+   ]
+  },
+  {
+   "label": "Bird",
+   "confidence": 0.9894933700561523,
+   "start": 0.0,
+   "end": 23.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The white chicken"
+    },
+    {
+     "start": 4.75,
+     "end": 9.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Turkey"
+    },
+    {
+     "start": 9.5,
+     "end": 14.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Turkey on the ground"
+    },
+    {
+     "start": 14.25,
+     "end": 19.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "The turkey"
+    },
+    {
+     "start": 19.0,
+     "end": 23.75,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "The bird on the ground"
+    }
+   ],
+   "clap_rank": 8,
+   "clap_top3": [
+    "Domestic animals, pets",
+    "Pig",
+    "Shout"
+   ]
+  },
+  {
+   "label": "Gobble",
+   "confidence": 0.9889258742332458,
+   "start": 8.0,
+   "end": 17.5,
+   "stretches": [
+    {
+     "start": 8.0,
+     "end": 12.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The turkey on the right"
+    },
+    {
+     "start": 12.75,
+     "end": 17.5,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The turkey"
+    },
+    {
+     "start": 19.05,
+     "end": 23.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "turkey on the ground"
+    }
+   ],
+   "clap_rank": 4,
+   "clap_top3": [
+    "Domestic animals, pets",
+    "Bird",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Owl",
+   "confidence": 0.7414003014564514,
+   "start": 16.19,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 16.19,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 29,
+   "clap_top3": [
+    "Shout",
+    "Boing",
+    "Bagpipes"
+   ]
+  },
+  {
+   "label": "Goose",
+   "confidence": 0.48159274458885193,
+   "start": 8.12,
+   "end": 10.75,
+   "stretches": [
+    {
+     "start": 8.12,
+     "end": 10.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 17.0,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 7,
+   "clap_top3": [
+    "Bird",
+    "Domestic animals, pets",
+    "Music of Asia"
+   ]
+  },
+  {
+   "label": "Honk",
+   "confidence": 0.40664127469062805,
+   "start": 17.0,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 8.0,
+     "end": 10.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Turkey in front"
+    },
+    {
+     "start": 17.0,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "turkey on right"
+    }
+   ],
+   "clap_rank": 21,
+   "clap_top3": [
+    "Bagpipes",
+    "Shout",
+    "Laughter"
+   ]
+  },
+  {
+   "label": "Snicker",
+   "confidence": 0.29632312059402466,
+   "start": 8.75,
+   "end": 10.5,
+   "stretches": [
+    {
+     "start": 8.75,
+     "end": 10.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "confidence": 0.2719234526157379,
+   "start": 8.75,
+   "end": 10.5,
+   "stretches": [
+    {
+     "start": 8.75,
+     "end": 10.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Quack",
+   "confidence": 0.26202529668807983,
+   "start": 10.22,
+   "end": 10.5,
+   "stretches": [
+    {
+     "start": 10.22,
+     "end": 10.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

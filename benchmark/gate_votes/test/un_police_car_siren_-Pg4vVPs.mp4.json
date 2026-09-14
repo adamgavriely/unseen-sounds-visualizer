@@ -1,0 +1,1377 @@
+{
+ "clip": "un_police_car_siren_-Pg4vVPs.mp4",
+ "tag": "mixed",
+ "duration": 20.050548,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 19.75,
+   "confidence": 0.8045728206634521,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 0.30000000000000004,
+   "end": 4.75,
+   "confidence": 0.5512004494667053,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.14000000000000012,
+   "end": 19.75,
+   "confidence": 0.3862196207046509,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power tool",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.2624244689941406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Lawn mower",
+   "start": 0.30000000000000004,
+   "end": 3.0,
+   "confidence": 0.24239236116409302,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.1594795137643814,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Light engine (high frequency)",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.13053163886070251,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.11049101501703262,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 0.30000000000000004,
+   "end": 1.5,
+   "confidence": 0.1094108521938324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 0.14000000000000012,
+   "end": 1.25,
+   "confidence": 0.08492075651884079,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibration",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.06540048867464066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tools",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.06093142554163933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05748201534152031,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 0.32000000000000006,
+   "end": 2.0,
+   "confidence": 0.07456505298614502,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Idling",
+   "start": 0.6400000000000001,
+   "end": 1.0,
+   "confidence": 0.05110606178641319,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chainsaw",
+   "start": 0.0,
+   "end": 3.5,
+   "confidence": 0.30239468812942505,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.75,
+   "end": 3.75,
+   "confidence": 0.1260562390089035,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.0,
+   "end": 3.75,
+   "confidence": 0.07681649178266525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tools",
+   "start": 0.62,
+   "end": 3.25,
+   "confidence": 0.16992276906967163,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 2.25,
+   "end": 8.25,
+   "confidence": 0.41605567932128906,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 1.91,
+   "end": 4.0,
+   "confidence": 0.0961112305521965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 1.9300000000000002,
+   "end": 6.75,
+   "confidence": 0.11549700051546097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 1.25,
+   "end": 4.25,
+   "confidence": 0.07835527509450912,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.9300000000000002,
+   "end": 4.0,
+   "confidence": 0.06904243677854538,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.5,
+   "end": 5.75,
+   "confidence": 0.2531682252883911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 2.84,
+   "end": 6.0,
+   "confidence": 0.13458071649074554,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 3.5,
+   "end": 4.25,
+   "confidence": 0.0718989297747612,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 2.36,
+   "end": 4.5,
+   "confidence": 0.06970260292291641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 2.68,
+   "end": 4.25,
+   "confidence": 0.06225326657295227,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 2.61,
+   "end": 5.75,
+   "confidence": 0.08085863292217255,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 2.25,
+   "end": 4.5,
+   "confidence": 0.05592856928706169,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 3.75,
+   "end": 4.25,
+   "confidence": 0.05262245237827301,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 3.42,
+   "end": 6.5,
+   "confidence": 0.08610289543867111,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 2.75,
+   "end": 7.5,
+   "confidence": 0.12584422528743744,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 4.390000000000001,
+   "end": 6.5,
+   "confidence": 0.06529174000024796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 4.16,
+   "end": 5.5,
+   "confidence": 0.09580186754465103,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 4.5,
+   "end": 5.0,
+   "confidence": 0.06836264580488205,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 3.12,
+   "end": 5.0,
+   "confidence": 0.06677988171577454,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 4.5,
+   "end": 5.0,
+   "confidence": 0.05393269658088684,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 5.3,
+   "end": 7.75,
+   "confidence": 0.4428805708885193,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 5.0,
+   "end": 7.75,
+   "confidence": 0.42638981342315674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 5.0,
+   "end": 7.75,
+   "confidence": 0.3694212734699249,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 3.94,
+   "end": 7.0,
+   "confidence": 0.10144726932048798,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 3.75,
+   "end": 7.75,
+   "confidence": 0.08351271599531174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 4.0,
+   "end": 7.75,
+   "confidence": 0.1824796050786972,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 4.0,
+   "end": 7.25,
+   "confidence": 0.08433850854635239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 5.4,
+   "end": 7.5,
+   "confidence": 0.060043539851903915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 4.25,
+   "end": 6.5,
+   "confidence": 0.08519277721643448,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 5.75,
+   "end": 11.5,
+   "confidence": 0.08458561450242996,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 6.0,
+   "end": 8.25,
+   "confidence": 0.11423003673553467,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 7.05,
+   "end": 11.25,
+   "confidence": 0.6700597405433655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 7.05,
+   "end": 11.0,
+   "confidence": 0.571449875831604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 6.75,
+   "end": 10.75,
+   "confidence": 0.34077391028404236,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 6.75,
+   "end": 11.25,
+   "confidence": 0.16446587443351746,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 5.77,
+   "end": 7.5,
+   "confidence": 0.0750361755490303,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 5.77,
+   "end": 7.5,
+   "confidence": 0.06520774960517883,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 6.75,
+   "end": 7.5,
+   "confidence": 0.054952479898929596,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 5.77,
+   "end": 7.5,
+   "confidence": 0.05306936800479889,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 6.75,
+   "end": 7.5,
+   "confidence": 0.05297335609793663,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 6.36,
+   "end": 9.75,
+   "confidence": 0.10275141149759293,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Lawn mower",
+   "start": 8.05,
+   "end": 8.75,
+   "confidence": 0.11844576895236969,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 7.75,
+   "end": 9.0,
+   "confidence": 0.09746270626783371,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 7.75,
+   "end": 8.75,
+   "confidence": 0.08282508701086044,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 7.75,
+   "end": 8.5,
+   "confidence": 0.0746045634150505,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 9.14,
+   "end": 11.0,
+   "confidence": 0.29695838689804077,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 9.06,
+   "end": 11.0,
+   "confidence": 0.2328799068927765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 9.06,
+   "end": 11.0,
+   "confidence": 0.19655746221542358,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 9.06,
+   "end": 11.0,
+   "confidence": 0.12283289432525635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 9.25,
+   "end": 16.25,
+   "confidence": 0.4318704307079315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 7.87,
+   "end": 11.75,
+   "confidence": 0.18642818927764893,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 9.75,
+   "end": 16.25,
+   "confidence": 0.18381544947624207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 9.73,
+   "end": 12.0,
+   "confidence": 0.13714204728603363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 9.73,
+   "end": 12.75,
+   "confidence": 0.136195108294487,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 10.3,
+   "end": 13.25,
+   "confidence": 0.20568041503429413,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Medium engine (mid frequency)",
+   "start": 10.3,
+   "end": 13.25,
+   "confidence": 0.14946293830871582,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 10.3,
+   "end": 13.25,
+   "confidence": 0.10996757447719574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 8.62,
+   "end": 10.75,
+   "confidence": 0.06166045367717743,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 10.47,
+   "end": 13.0,
+   "confidence": 0.18126139044761658,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 9.0,
+   "end": 11.5,
+   "confidence": 0.05220247060060501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Emergency vehicle",
+   "start": 9.75,
+   "end": 14.0,
+   "confidence": 0.47489070892333984,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 9.75,
+   "end": 14.0,
+   "confidence": 0.40355148911476135,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 9.75,
+   "end": 14.0,
+   "confidence": 0.3557700216770172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire engine, fire truck (siren)",
+   "start": 9.75,
+   "end": 14.0,
+   "confidence": 0.3070800304412842,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.25,
+   "end": 11.75,
+   "confidence": 0.0733591616153717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 11.11,
+   "end": 15.75,
+   "confidence": 0.0939723551273346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 12.75,
+   "end": 14.75,
+   "confidence": 0.0931522473692894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 13.0,
+   "end": 19.75,
+   "confidence": 0.1441100388765335,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 13.0,
+   "end": 14.75,
+   "confidence": 0.08473608642816544,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 12.26,
+   "end": 15.75,
+   "confidence": 0.08006691187620163,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambulance (siren)",
+   "start": 11.75,
+   "end": 14.0,
+   "confidence": 0.16679175198078156,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 13.39,
+   "end": 15.25,
+   "confidence": 0.06865426152944565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 12.0,
+   "end": 15.5,
+   "confidence": 0.24656538665294647,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 13.8,
+   "end": 15.25,
+   "confidence": 0.23289376497268677,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 12.0,
+   "end": 15.5,
+   "confidence": 0.19067293405532837,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 12.0,
+   "end": 15.25,
+   "confidence": 0.17919443547725677,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.10562309622764587,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 13.32,
+   "end": 15.0,
+   "confidence": 0.09072358161211014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 13.75,
+   "end": 19.75,
+   "confidence": 0.5759502053260803,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 13.75,
+   "end": 19.75,
+   "confidence": 0.11262660473585129,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 12.94,
+   "end": 15.25,
+   "confidence": 0.14915280044078827,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 13.0,
+   "end": 15.25,
+   "confidence": 0.06025969237089157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 14.99,
+   "end": 19.75,
+   "confidence": 0.6225448846817017,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 14.99,
+   "end": 18.25,
+   "confidence": 0.284382700920105,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 13.95,
+   "end": 15.75,
+   "confidence": 0.05947692319750786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 14.25,
+   "end": 18.75,
+   "confidence": 0.22768139839172363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 16.0,
+   "end": 16.5,
+   "confidence": 0.07679040729999542,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.2542552649974823,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 16.5,
+   "end": 19.75,
+   "confidence": 0.22293345630168915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 17.0,
+   "end": 19.75,
+   "confidence": 0.22683046758174896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whir",
+   "start": 16.5,
+   "end": 17.5,
+   "confidence": 0.060671206563711166,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 16.1,
+   "end": 17.5,
+   "confidence": 0.055419690907001495,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 17.25,
+   "end": 18.25,
+   "confidence": 0.056093644350767136,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 15.75,
+   "end": 18.25,
+   "confidence": 0.05383151397109032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 18.3,
+   "end": 19.75,
+   "confidence": 0.12618489563465118,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Lawn mower",
+   "start": 17.27,
+   "end": 18.75,
+   "confidence": 0.06585250049829483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorcycle",
+   "start": 16.75,
+   "end": 18.75,
+   "confidence": 0.05204104632139206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 17.0,
+   "end": 19.75,
+   "confidence": 0.19283270835876465,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 19.0,
+   "end": 19.75,
+   "confidence": 0.06411977112293243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 19.0,
+   "end": 19.75,
+   "confidence": 0.0579720214009285,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 19.0,
+   "end": 19.75,
+   "confidence": 0.05721467733383179,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 19.25,
+   "end": 19.75,
+   "confidence": 0.05756159499287605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 19.25,
+   "end": 19.75,
+   "confidence": 0.050579871982336044,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.8045728206634521,
+   "start": 0.30000000000000004,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.1625,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 5.1625,
+     "end": 10.025,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "motorcycle"
+    },
+    {
+     "start": 10.025,
+     "end": 14.8875,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 14.8875,
+     "end": 19.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "car"
+    }
+   ],
+   "clap_rank": 76,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Light engine (high frequency)",
+    "Motor vehicle (road)"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.6700597405433655,
+   "start": 6.75,
+   "end": 11.25,
+   "stretches": [
+    {
+     "start": 6.75,
+     "end": 11.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.75,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 19,
+   "clap_top3": [
+    "Accelerating, revving, vroom",
+    "Motor vehicle (road)",
+    "Light engine (high frequency)"
+   ]
+  },
+  {
+   "label": "Siren",
+   "confidence": 0.47489070892333984,
+   "start": 9.14,
+   "end": 14.0,
+   "stretches": [
+    {
+     "start": 5.0,
+     "end": 7.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 9.14,
+     "end": 14.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 35,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Accelerating, revving, vroom",
+    "Plucked string instrument"
+   ]
+  },
+  {
+   "label": "Chainsaw",
+   "confidence": 0.30239468812942505,
+   "start": 0.0,
+   "end": 3.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 3.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Power tool",
+   "confidence": 0.2624244689941406,
+   "start": 0.0,
+   "end": 3.25,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 3.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

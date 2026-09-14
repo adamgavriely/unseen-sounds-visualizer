@@ -1,0 +1,779 @@
+{
+ "clip": "un_people_clapping__bAVmK7n.mp4",
+ "tag": "no_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.30000000000000004,
+   "end": 17.75,
+   "confidence": 0.8996554613113403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.2801574468612671,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fly, housefly",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.25600045919418335,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "confidence": 0.16169273853302002,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.5,
+   "end": 17.75,
+   "confidence": 0.9209166765213013,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cash register",
+   "start": 0.81,
+   "end": 6.25,
+   "confidence": 0.537824273109436,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 1.05,
+   "end": 9.75,
+   "confidence": 0.09660645574331284,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Radio",
+   "start": 0.0,
+   "end": 3.0,
+   "confidence": 0.07053402066230774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.18000000000000005,
+   "end": 7.25,
+   "confidence": 0.1262800246477127,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "start": 0.0,
+   "end": 5.0,
+   "confidence": 0.08579342812299728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.05455721169710159,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.051157351583242416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shuffling cards",
+   "start": 2.14,
+   "end": 4.25,
+   "confidence": 0.5076696276664734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Filing (rasp)",
+   "start": 1.02,
+   "end": 2.5,
+   "confidence": 0.07385607808828354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 2.25,
+   "end": 3.5,
+   "confidence": 0.07881302386522293,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 3.8,
+   "end": 5.0,
+   "confidence": 0.05028606951236725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 2.5,
+   "end": 5.0,
+   "confidence": 0.0995878204703331,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 2.5,
+   "end": 5.0,
+   "confidence": 0.08280344307422638,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 4.55,
+   "end": 7.0,
+   "confidence": 0.109219029545784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 3.27,
+   "end": 7.0,
+   "confidence": 0.07664331048727036,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 4.8,
+   "end": 6.5,
+   "confidence": 0.2834441065788269,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 3.87,
+   "end": 7.25,
+   "confidence": 0.0554046668112278,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 6.22,
+   "end": 8.25,
+   "confidence": 0.15170463919639587,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "start": 4.5,
+   "end": 8.25,
+   "confidence": 0.08258716017007828,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cash register",
+   "start": 6.640000000000001,
+   "end": 8.0,
+   "confidence": 0.1646142452955246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Radio",
+   "start": 5.76,
+   "end": 8.0,
+   "confidence": 0.13907647132873535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone dialing, DTMF",
+   "start": 5.86,
+   "end": 7.5,
+   "confidence": 0.0779900848865509,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 7.55,
+   "end": 8.0,
+   "confidence": 0.08371639996767044,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.0,
+   "end": 9.25,
+   "confidence": 0.050820618867874146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heavy metal",
+   "start": 8.55,
+   "end": 14.75,
+   "confidence": 0.25160130858421326,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rock music",
+   "start": 8.55,
+   "end": 15.0,
+   "confidence": 0.1293584704399109,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 8.39,
+   "end": 10.0,
+   "confidence": 0.12782135605812073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 6.75,
+   "end": 10.5,
+   "confidence": 0.10352359712123871,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 6.75,
+   "end": 9.75,
+   "confidence": 0.09567737579345703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Groan",
+   "start": 8.23,
+   "end": 9.0,
+   "confidence": 0.08113531023263931,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 8.55,
+   "end": 10.0,
+   "confidence": 0.05900687351822853,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bass guitar",
+   "start": 8.39,
+   "end": 9.75,
+   "confidence": 0.05715404450893402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Angry music",
+   "start": 9.05,
+   "end": 14.25,
+   "confidence": 0.2789171040058136,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Punk rock",
+   "start": 9.05,
+   "end": 14.25,
+   "confidence": 0.18816858530044556,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Yell",
+   "start": 8.57,
+   "end": 10.25,
+   "confidence": 0.10122722387313843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cacophony",
+   "start": 8.89,
+   "end": 9.75,
+   "confidence": 0.05732867494225502,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Singing",
+   "start": 9.72,
+   "end": 13.5,
+   "confidence": 0.06727225333452225,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Progressive rock",
+   "start": 10.05,
+   "end": 13.25,
+   "confidence": 0.07977502048015594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Yell",
+   "start": 10.0,
+   "end": 13.5,
+   "confidence": 0.12255466729402542,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cacophony",
+   "start": 10.32,
+   "end": 11.0,
+   "confidence": 0.05245340242981911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.75,
+   "end": 13.0,
+   "confidence": 0.30124157667160034,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 10.75,
+   "end": 14.0,
+   "confidence": 0.05292973667383194,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 12.0,
+   "end": 15.0,
+   "confidence": 0.5617905855178833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gasp",
+   "start": 12.6,
+   "end": 14.0,
+   "confidence": 0.12187548726797104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 13.5,
+   "end": 17.75,
+   "confidence": 0.11457996070384979,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Progressive rock",
+   "start": 12.0,
+   "end": 14.75,
+   "confidence": 0.05649622157216072,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 13.18,
+   "end": 15.0,
+   "confidence": 0.5468595027923584,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 12.75,
+   "end": 15.0,
+   "confidence": 0.5289701223373413,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric guitar",
+   "start": 12.75,
+   "end": 14.75,
+   "confidence": 0.21834611892700195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bass guitar",
+   "start": 12.75,
+   "end": 14.75,
+   "confidence": 0.1579962819814682,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Strum",
+   "start": 12.87,
+   "end": 14.75,
+   "confidence": 0.13355940580368042,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tapping (guitar technique)",
+   "start": 12.75,
+   "end": 14.75,
+   "confidence": 0.08343039453029633,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Effects unit",
+   "start": 12.75,
+   "end": 14.75,
+   "confidence": 0.0653478130698204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Acoustic guitar",
+   "start": 12.87,
+   "end": 14.75,
+   "confidence": 0.055251285433769226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum",
+   "start": 13.2,
+   "end": 15.0,
+   "confidence": 0.08222787082195282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum kit",
+   "start": 13.2,
+   "end": 15.0,
+   "confidence": 0.07727884501218796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Telephone",
+   "start": 15.14,
+   "end": 17.75,
+   "confidence": 0.1348469853401184,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cash register",
+   "start": 14.98,
+   "end": 16.75,
+   "confidence": 0.09485465288162231,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "start": 14.82,
+   "end": 16.0,
+   "confidence": 0.0715705156326294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm clock",
+   "start": 14.18,
+   "end": 16.0,
+   "confidence": 0.05051713064312935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 15.25,
+   "end": 16.0,
+   "confidence": 0.05055425316095352,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coin (dropping)",
+   "start": 14.94,
+   "end": 16.75,
+   "confidence": 0.06955647468566895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 16.47,
+   "end": 17.75,
+   "confidence": 0.11150895059108734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 16.47,
+   "end": 17.75,
+   "confidence": 0.08519919216632843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Cash register",
+   "confidence": 0.537824273109436,
+   "start": 0.81,
+   "end": 6.25,
+   "stretches": [
+    {
+     "start": 0.81,
+     "end": 6.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 127,
+   "clap_top3": [
+    "Speech",
+    "Hubbub, speech noise, speech babble",
+    "Keyboard (musical)"
+   ]
+  },
+  {
+   "label": "Shuffling cards",
+   "confidence": 0.5076696276664734,
+   "start": 2.14,
+   "end": 4.25,
+   "stretches": [
+    {
+     "start": 2.14,
+     "end": 4.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 178,
+   "clap_top3": [
+    "Speech",
+    "Keyboard (musical)",
+    "Theremin"
+   ]
+  },
+  {
+   "label": "Insect",
+   "confidence": 0.2801574468612671,
+   "start": 0.06000000000000005,
+   "end": 0.5,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 0.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Fly, housefly",
+   "confidence": 0.25600045919418335,
+   "start": 0.0,
+   "end": 0.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 0.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

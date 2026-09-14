@@ -1,0 +1,327 @@
+{
+ "clip": "wc_japanese_drama.mp4",
+ "tag": "seen_ambient",
+ "duration": 17.017,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.30000000000000004,
+   "end": 16.75,
+   "confidence": 0.5570467114448547,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.06000000000000005,
+   "end": 2.25,
+   "confidence": 0.4980509281158447,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.06000000000000005,
+   "end": 2.25,
+   "confidence": 0.4722813367843628,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 0.06000000000000005,
+   "end": 2.25,
+   "confidence": 0.44974085688591003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 10.0,
+   "confidence": 0.4484042227268219,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.12178045511245728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.10225911438465118,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.75,
+   "end": 4.75,
+   "confidence": 0.11169179528951645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cash register",
+   "start": 1.75,
+   "end": 3.5,
+   "confidence": 0.0900716781616211,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whip",
+   "start": 2.84,
+   "end": 4.5,
+   "confidence": 0.25782495737075806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 3.24,
+   "end": 4.5,
+   "confidence": 0.17861931025981903,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 3.61,
+   "end": 6.75,
+   "confidence": 0.07498229295015335,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 3.45,
+   "end": 5.75,
+   "confidence": 0.05798359960317612,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 4.75,
+   "end": 5.25,
+   "confidence": 0.05212370306253433,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 3.37,
+   "end": 5.25,
+   "confidence": 0.05158251151442528,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 5.0,
+   "end": 5.75,
+   "confidence": 0.06548246741294861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 5.73,
+   "end": 6.75,
+   "confidence": 0.11455126106739044,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 4.77,
+   "end": 6.25,
+   "confidence": 0.05094773322343826,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 4.94,
+   "end": 6.75,
+   "confidence": 0.05368616804480553,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 6.25,
+   "end": 8.5,
+   "confidence": 0.16055767238140106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 8.3,
+   "end": 16.75,
+   "confidence": 0.8018167614936829,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 8.3,
+   "end": 16.75,
+   "confidence": 0.7904984951019287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 8.3,
+   "end": 16.75,
+   "confidence": 0.7677976489067078,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 6.5,
+   "end": 16.75,
+   "confidence": 0.2043970674276352,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 6.5,
+   "end": 16.75,
+   "confidence": 0.18899470567703247,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 10.25,
+   "end": 16.75,
+   "confidence": 0.16055084764957428,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Rain",
+   "confidence": 0.8018167614936829,
+   "start": 8.3,
+   "end": 16.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 2.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.3,
+     "end": 12.525,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 12.525,
+     "end": 16.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 62,
+   "clap_top3": [
+    "Keyboard (musical)",
+    "Scary music",
+    "Insect"
+   ]
+  },
+  {
+   "label": "Whip",
+   "confidence": 0.25782495737075806,
+   "start": 2.84,
+   "end": 4.5,
+   "stretches": [
+    {
+     "start": 2.84,
+     "end": 4.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

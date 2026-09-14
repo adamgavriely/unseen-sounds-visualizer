@@ -1,0 +1,1043 @@
+{
+ "clip": "movie_madmax_106.mp4",
+ "tag": "no_ambient",
+ "duration": 16.016,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.7886930108070374,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.3833257853984833,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.2056484967470169,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.07130841910839081,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.30000000000000004,
+   "end": 0.5,
+   "confidence": 0.05551100894808769,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.07809776067733765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Printer",
+   "start": 0.15999999999999992,
+   "end": 1.0,
+   "confidence": 0.08659332245588303,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 0.75,
+   "end": 3.0,
+   "confidence": 0.08326128870248795,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 1.1400000000000001,
+   "end": 6.75,
+   "confidence": 0.3469597399234772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 0.33999999999999997,
+   "end": 2.0,
+   "confidence": 0.08313028514385223,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 0.5800000000000001,
+   "end": 1.75,
+   "confidence": 0.07646910101175308,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ding",
+   "start": 1.31,
+   "end": 1.75,
+   "confidence": 0.05971436947584152,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 1.31,
+   "end": 1.75,
+   "confidence": 0.05967428535223007,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 1.8,
+   "end": 9.25,
+   "confidence": 0.0736992359161377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.5,
+   "end": 3.25,
+   "confidence": 0.05527649074792862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 0.12,
+   "end": 2.75,
+   "confidence": 0.05367213115096092,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 0.25,
+   "end": 2.75,
+   "confidence": 0.058042071759700775,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Throbbing",
+   "start": 2.8,
+   "end": 4.0,
+   "confidence": 0.1570589244365692,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 2.89,
+   "end": 4.0,
+   "confidence": 0.08462371677160263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 2.36,
+   "end": 6.0,
+   "confidence": 0.10315894335508347,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 2.25,
+   "end": 6.75,
+   "confidence": 0.05896826088428497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 4.0,
+   "end": 6.5,
+   "confidence": 0.26841220259666443,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 4.0,
+   "end": 5.75,
+   "confidence": 0.25407710671424866,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 2.62,
+   "end": 5.5,
+   "confidence": 0.10289255529642105,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 4.0,
+   "end": 6.75,
+   "confidence": 0.07180137187242508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 4.41,
+   "end": 5.75,
+   "confidence": 0.09669075906276703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 4.75,
+   "end": 6.75,
+   "confidence": 0.0941329374909401,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 3.25,
+   "end": 5.25,
+   "confidence": 0.08609028905630112,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 3.25,
+   "end": 5.25,
+   "confidence": 0.06036611646413803,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Echo",
+   "start": 3.25,
+   "end": 6.0,
+   "confidence": 0.05108361691236496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 5.4,
+   "end": 6.75,
+   "confidence": 0.09616503119468689,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 5.75,
+   "end": 6.25,
+   "confidence": 0.07298125326633453,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 5.02,
+   "end": 6.75,
+   "confidence": 0.0504375621676445,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 6.07,
+   "end": 6.75,
+   "confidence": 0.05213572829961777,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Throbbing",
+   "start": 6.890000000000001,
+   "end": 8.75,
+   "confidence": 0.29743677377700806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "start": 6.97,
+   "end": 7.5,
+   "confidence": 0.2087099850177765,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 6.890000000000001,
+   "end": 7.5,
+   "confidence": 0.10524392873048782,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 6.5,
+   "end": 8.75,
+   "confidence": 0.07702532410621643,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 5.86,
+   "end": 8.0,
+   "confidence": 0.05949641391634941,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 5.75,
+   "end": 10.25,
+   "confidence": 0.3875291645526886,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 6.36,
+   "end": 8.0,
+   "confidence": 0.0582440160214901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 7.73,
+   "end": 8.75,
+   "confidence": 0.11411725729703903,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "start": 8.22,
+   "end": 8.5,
+   "confidence": 0.08885279297828674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 6.75,
+   "end": 9.75,
+   "confidence": 0.07141640037298203,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 8.09,
+   "end": 10.75,
+   "confidence": 0.5828211903572083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 7.25,
+   "end": 10.75,
+   "confidence": 0.5312748551368713,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tire squeal",
+   "start": 8.09,
+   "end": 10.75,
+   "confidence": 0.4113394320011139,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Race car, auto racing",
+   "start": 7.93,
+   "end": 10.75,
+   "confidence": 0.2876586318016052,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 7.77,
+   "end": 10.75,
+   "confidence": 0.20299583673477173,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skidding",
+   "start": 7.93,
+   "end": 10.75,
+   "confidence": 0.14526748657226562,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 7.45,
+   "end": 10.75,
+   "confidence": 0.10613148659467697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Accelerating, revving, vroom",
+   "start": 8.17,
+   "end": 10.75,
+   "confidence": 0.07854320853948593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smash, crash",
+   "start": 7.75,
+   "end": 9.75,
+   "confidence": 0.07328309118747711,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart sounds, heartbeat",
+   "start": 8.68,
+   "end": 10.25,
+   "confidence": 0.10207850486040115,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Heart murmur",
+   "start": 8.68,
+   "end": 10.25,
+   "confidence": 0.056504443287849426,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 9.82,
+   "end": 13.75,
+   "confidence": 0.2712481617927551,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 10.0,
+   "end": 13.25,
+   "confidence": 0.11348634958267212,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 10.63,
+   "end": 13.25,
+   "confidence": 0.0910937711596489,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 9.52,
+   "end": 11.25,
+   "confidence": 0.055528588593006134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 10.57,
+   "end": 13.25,
+   "confidence": 0.4351997673511505,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 9.93,
+   "end": 13.25,
+   "confidence": 0.23287390172481537,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 10.75,
+   "end": 13.25,
+   "confidence": 0.21130096912384033,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 10.49,
+   "end": 13.25,
+   "confidence": 0.18168707191944122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 10.89,
+   "end": 15.75,
+   "confidence": 0.11148693412542343,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 10.25,
+   "end": 11.75,
+   "confidence": 0.057639338076114655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 10.18,
+   "end": 11.75,
+   "confidence": 0.06713180989027023,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 9.5,
+   "end": 11.75,
+   "confidence": 0.06711702048778534,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Smash, crash",
+   "start": 11.0,
+   "end": 12.75,
+   "confidence": 0.06284884363412857,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 11.09,
+   "end": 12.5,
+   "confidence": 0.05632839724421501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 11.91,
+   "end": 13.75,
+   "confidence": 0.15779462456703186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Single-lens reflex camera",
+   "start": 12.11,
+   "end": 14.0,
+   "confidence": 0.4064651429653168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 14.3,
+   "end": 14.75,
+   "confidence": 0.08769716322422028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bang",
+   "start": 14.3,
+   "end": 15.5,
+   "confidence": 0.08132574707269669,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 12.7,
+   "end": 14.75,
+   "confidence": 0.08030258119106293,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cacophony",
+   "start": 12.86,
+   "end": 14.75,
+   "confidence": 0.06948216259479523,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.054593462496995926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ding",
+   "start": 12.75,
+   "end": 15.25,
+   "confidence": 0.21202418208122253,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 12.75,
+   "end": 14.75,
+   "confidence": 0.12895573675632477,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Single-lens reflex camera",
+   "start": 13.25,
+   "end": 15.25,
+   "confidence": 0.2183888703584671,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 13.25,
+   "end": 15.5,
+   "confidence": 0.11664128303527832,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 13.86,
+   "end": 15.5,
+   "confidence": 0.1032961755990982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 14.9,
+   "end": 15.75,
+   "confidence": 0.09166715294122696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 15.0,
+   "end": 15.75,
+   "confidence": 0.052019644528627396,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 13.86,
+   "end": 15.75,
+   "confidence": 0.05151727423071861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 14.03,
+   "end": 15.75,
+   "confidence": 0.14479045569896698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 15.25,
+   "end": 15.75,
+   "confidence": 0.0687350481748581,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 14.75,
+   "end": 15.75,
+   "confidence": 0.06782912462949753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Echo",
+   "start": 13.87,
+   "end": 15.75,
+   "confidence": 0.05431647226214409,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 13.87,
+   "end": 15.75,
+   "confidence": 0.05137565732002258,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.5828211903572083,
+   "start": 7.25,
+   "end": 10.75,
+   "stretches": [
+    {
+     "start": 7.25,
+     "end": 10.75,
+     "verdict": false,
+     "name": false,
+     "ab": true,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 228,
+   "clap_top3": [
+    "Rock music",
+    "Keyboard (musical)",
+    "Sound equipment"
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.4351997673511505,
+   "start": 10.57,
+   "end": 13.25,
+   "stretches": [
+    {
+     "start": 4.0,
+     "end": 6.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.57,
+     "end": 13.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Rock music",
+    "Music of Asia",
+    "Keyboard (musical)"
+   ]
+  },
+  {
+   "label": "Single-lens reflex camera",
+   "confidence": 0.4064651429653168,
+   "start": 12.11,
+   "end": 14.0,
+   "stretches": [
+    {
+     "start": 12.11,
+     "end": 14.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 122,
+   "clap_top3": [
+    "Background noise",
+    "Sound equipment",
+    "Bagpipes"
+   ]
+  },
+  {
+   "label": "Glass",
+   "confidence": 0.3875291645526886,
+   "start": 5.75,
+   "end": 10.25,
+   "stretches": [
+    {
+     "start": 5.75,
+     "end": 10.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 77,
+   "clap_top3": [
+    "Rock music",
+    "Music of Asia",
+    "Keyboard (musical)"
+   ]
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "confidence": 0.3469597399234772,
+   "start": 1.1400000000000001,
+   "end": 6.75,
+   "stretches": [
+    {
+     "start": 1.1400000000000001,
+     "end": 6.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.82,
+     "end": 13.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Throbbing",
+   "confidence": 0.29743677377700806,
+   "start": 6.890000000000001,
+   "end": 8.75,
+   "stretches": [
+    {
+     "start": 6.890000000000001,
+     "end": 8.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

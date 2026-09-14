@@ -1,0 +1,888 @@
+{
+ "clip": "un_people_shouting__jB-IM_7.mp4",
+ "tag": "seen_ambient",
+ "duration": 17.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 16.75,
+   "confidence": 0.8230894804000854,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.19945505261421204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 0.14000000000000012,
+   "end": 0.75,
+   "confidence": 0.07757806777954102,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05808078497648239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05528863146901131,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.054168011993169785,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 0.22999999999999998,
+   "end": 2.0,
+   "confidence": 0.4141838550567627,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 0.22999999999999998,
+   "end": 2.0,
+   "confidence": 0.36371639370918274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 0.22999999999999998,
+   "end": 2.0,
+   "confidence": 0.3131963014602661,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Single-lens reflex camera",
+   "start": 0.25,
+   "end": 0.75,
+   "confidence": 0.08433542400598526,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.75,
+   "end": 3.75,
+   "confidence": 0.1562575101852417,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.75,
+   "end": 2.25,
+   "confidence": 0.06010529026389122,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 0.6599999999999999,
+   "end": 2.0,
+   "confidence": 0.10367366671562195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 0.33999999999999997,
+   "end": 2.0,
+   "confidence": 0.09657019376754761,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 0.5,
+   "end": 2.0,
+   "confidence": 0.09255316853523254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.061501141637563705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 1.25,
+   "end": 3.5,
+   "confidence": 0.05563374236226082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 1.25,
+   "end": 3.5,
+   "confidence": 0.053126703947782516,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 1.5,
+   "end": 4.75,
+   "confidence": 0.3090722858905792,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 1.5,
+   "end": 4.75,
+   "confidence": 0.2907242774963379,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 1.5,
+   "end": 4.75,
+   "confidence": 0.24470549821853638,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chopping (food)",
+   "start": 1.75,
+   "end": 4.0,
+   "confidence": 0.05538510903716087,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 3.5,
+   "end": 4.25,
+   "confidence": 0.059407562017440796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.0,
+   "end": 8.75,
+   "confidence": 0.2632640302181244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Basketball bounce",
+   "start": 3.27,
+   "end": 5.5,
+   "confidence": 0.11352844536304474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 3.11,
+   "end": 4.75,
+   "confidence": 0.0698099434375763,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 4.25,
+   "end": 5.0,
+   "confidence": 0.06412618607282639,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 3.11,
+   "end": 4.75,
+   "confidence": 0.06024462357163429,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 4.27,
+   "end": 6.25,
+   "confidence": 0.06290458142757416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wail, moan",
+   "start": 4.2,
+   "end": 6.0,
+   "confidence": 0.10902173817157745,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 4.75,
+   "end": 8.0,
+   "confidence": 0.1698261797428131,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 5.0,
+   "end": 7.0,
+   "confidence": 0.06082453951239586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bleat",
+   "start": 6.98,
+   "end": 8.75,
+   "confidence": 0.6462247967720032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sheep",
+   "start": 6.98,
+   "end": 8.75,
+   "confidence": 0.5286662578582764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goat",
+   "start": 7.22,
+   "end": 8.0,
+   "confidence": 0.2988455891609192,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 7.3,
+   "end": 7.5,
+   "confidence": 0.06705279648303986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 7.390000000000001,
+   "end": 9.75,
+   "confidence": 0.10620717704296112,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 7.25,
+   "end": 8.25,
+   "confidence": 0.06685158610343933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 6.36,
+   "end": 9.75,
+   "confidence": 0.1480714976787567,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 6.0,
+   "end": 8.75,
+   "confidence": 0.08737509697675705,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breaking",
+   "start": 7.0,
+   "end": 8.0,
+   "confidence": 0.06200321018695831,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 7.5,
+   "end": 8.25,
+   "confidence": 0.053692758083343506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shuffle",
+   "start": 7.98,
+   "end": 10.0,
+   "confidence": 0.071689173579216,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Basketball bounce",
+   "start": 7.59,
+   "end": 12.25,
+   "confidence": 0.5529059767723083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 8.5,
+   "end": 11.75,
+   "confidence": 0.23723196983337402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bouncing",
+   "start": 8.4,
+   "end": 9.25,
+   "confidence": 0.06423306465148926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Trickle, dribble",
+   "start": 8.68,
+   "end": 10.0,
+   "confidence": 0.05602123588323593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scissors",
+   "start": 8.25,
+   "end": 10.75,
+   "confidence": 0.13609658181667328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bouncing",
+   "start": 8.95,
+   "end": 10.75,
+   "confidence": 0.05524105578660965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.12797121703624725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bouncing",
+   "start": 10.66,
+   "end": 11.75,
+   "confidence": 0.056121282279491425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 10.27,
+   "end": 12.25,
+   "confidence": 0.0681045800447464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 9.75,
+   "end": 12.0,
+   "confidence": 0.06396106630563736,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 11.5,
+   "end": 14.75,
+   "confidence": 0.7143500447273254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 10.25,
+   "end": 14.5,
+   "confidence": 0.7101685404777527,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeak",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.0792713463306427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 12.22,
+   "end": 14.5,
+   "confidence": 0.7505499720573425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chewing, mastication",
+   "start": 10.5,
+   "end": 13.0,
+   "confidence": 0.14341232180595398,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 10.7,
+   "end": 12.75,
+   "confidence": 0.0512295663356781,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 11.43,
+   "end": 13.0,
+   "confidence": 0.059234969317913055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Meow",
+   "start": 12.24,
+   "end": 14.0,
+   "confidence": 0.4836882948875427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caterwaul",
+   "start": 12.16,
+   "end": 14.0,
+   "confidence": 0.27708593010902405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 11.28,
+   "end": 13.0,
+   "confidence": 0.10366450250148773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 11.36,
+   "end": 13.0,
+   "confidence": 0.09184034913778305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 13.64,
+   "end": 14.25,
+   "confidence": 0.12981151044368744,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 13.5,
+   "end": 16.75,
+   "confidence": 0.0909372940659523,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 12.0,
+   "end": 14.0,
+   "confidence": 0.058330778032541275,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 12.93,
+   "end": 14.5,
+   "confidence": 0.17923374474048615,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Arrow",
+   "start": 13.73,
+   "end": 16.25,
+   "confidence": 0.16256529092788696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 13.91,
+   "end": 15.5,
+   "confidence": 0.062314216047525406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 13.36,
+   "end": 16.5,
+   "confidence": 0.1138140857219696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Basketball bounce",
+   "start": 13.93,
+   "end": 15.75,
+   "confidence": 0.11418955773115158,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breaking",
+   "start": 13.78,
+   "end": 15.75,
+   "confidence": 0.10039736330509186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slap, smack",
+   "start": 13.7,
+   "end": 16.5,
+   "confidence": 0.07485582679510117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 14.44,
+   "end": 16.75,
+   "confidence": 0.11447403579950333,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 14.68,
+   "end": 16.75,
+   "confidence": 0.0894961729645729,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 15.51,
+   "end": 16.75,
+   "confidence": 0.061923447996377945,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Cat",
+   "confidence": 0.7505499720573425,
+   "start": 12.22,
+   "end": 14.5,
+   "stretches": [
+    {
+     "start": 12.22,
+     "end": 14.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Cat",
+    "Whale vocalization",
+    "Domestic animals, pets"
+   ]
+  },
+  {
+   "label": "Sheep",
+   "confidence": 0.6462247967720032,
+   "start": 6.98,
+   "end": 8.75,
+   "stretches": [
+    {
+     "start": 6.98,
+     "end": 8.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 177,
+   "clap_top3": [
+    "Shout",
+    "Boing",
+    "Basketball bounce"
+   ]
+  },
+  {
+   "label": "Basketball bounce",
+   "confidence": 0.5529059767723083,
+   "start": 7.59,
+   "end": 12.25,
+   "stretches": [
+    {
+     "start": 7.59,
+     "end": 12.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 8,
+   "clap_top3": [
+    "Shout",
+    "Domestic animals, pets",
+    "Livestock, farm animals, working animals"
+   ]
+  },
+  {
+   "label": "Cattle",
+   "confidence": 0.36371639370918274,
+   "start": 0.22999999999999998,
+   "end": 4.75,
+   "stretches": [
+    {
+     "start": 0.22999999999999998,
+     "end": 4.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Shout",
+    "Singing",
+    "Vocal music"
+   ]
+  },
+  {
+   "label": "Caterwaul",
+   "confidence": 0.27708593010902405,
+   "start": 12.16,
+   "end": 14.0,
+   "stretches": [
+    {
+     "start": 12.16,
+     "end": 14.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

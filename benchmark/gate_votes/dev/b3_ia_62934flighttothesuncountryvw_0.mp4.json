@@ -1,0 +1,378 @@
+{
+ "clip": "b3_ia_62934flighttothesuncountryvw_0.mp4",
+ "tag": "no_ambient",
+ "duration": 28.023353,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.895941972732544,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.8132074475288391,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 0.06000000000000005,
+   "end": 2.75,
+   "confidence": 0.41796860098838806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Orchestra",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.3910770118236542,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 0.21999999999999997,
+   "end": 3.0,
+   "confidence": 0.3114367723464966,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 0.06000000000000005,
+   "end": 2.75,
+   "confidence": 0.26561152935028076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Classical music",
+   "start": 0.21999999999999997,
+   "end": 27.75,
+   "confidence": 0.22179654240608215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 0.22999999999999998,
+   "end": 1.5,
+   "confidence": 0.10270174592733383,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Violin, fiddle",
+   "start": 0.8,
+   "end": 27.75,
+   "confidence": 0.29696524143218994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mantra",
+   "start": 0.5,
+   "end": 1.0,
+   "confidence": 0.07926780730485916,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 1.0,
+   "end": 27.75,
+   "confidence": 0.360380619764328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.25,
+   "end": 3.5,
+   "confidence": 0.12126366794109344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.5,
+   "end": 27.75,
+   "confidence": 0.21467448770999908,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 3.05,
+   "end": 15.0,
+   "confidence": 0.12232103198766708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cello",
+   "start": 2.86,
+   "end": 10.5,
+   "confidence": 0.07666826993227005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 4.55,
+   "end": 5.75,
+   "confidence": 0.057230520993471146,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 8.39,
+   "end": 12.25,
+   "confidence": 0.11942385882139206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Brass instrument",
+   "start": 9.47,
+   "end": 10.75,
+   "confidence": 0.08505725115537643,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Singing",
+   "start": 10.34,
+   "end": 11.5,
+   "confidence": 0.06020860746502876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cello",
+   "start": 10.0,
+   "end": 14.25,
+   "confidence": 0.08328744769096375,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 13.75,
+   "end": 16.75,
+   "confidence": 0.05381631851196289,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Brass instrument",
+   "start": 15.55,
+   "end": 17.5,
+   "confidence": 0.050096556544303894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 15.34,
+   "end": 17.5,
+   "confidence": 0.07125061005353928,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 15.75,
+   "end": 20.5,
+   "confidence": 0.06208030879497528,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Flute",
+   "start": 17.27,
+   "end": 19.0,
+   "confidence": 0.08739304542541504,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 19.05,
+   "end": 19.5,
+   "confidence": 0.06199372559785843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 18.78,
+   "end": 22.25,
+   "confidence": 0.06557143479585648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Brass instrument",
+   "start": 19.0,
+   "end": 23.0,
+   "confidence": 0.07852357625961304,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 19.25,
+   "end": 26.0,
+   "confidence": 0.08140493929386139,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cello",
+   "start": 22.0,
+   "end": 25.5,
+   "confidence": 0.05707983672618866,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 24.25,
+   "end": 26.5,
+   "confidence": 0.0550532191991806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 23.36,
+   "end": 26.0,
+   "confidence": 0.06416946649551392,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stomach rumble",
+   "start": 24.65,
+   "end": 26.5,
+   "confidence": 0.1682383120059967,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 24.73,
+   "end": 25.75,
+   "confidence": 0.08298361301422119,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 24.65,
+   "end": 25.75,
+   "confidence": 0.05679607763886452,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Opera",
+   "start": 25.76,
+   "end": 27.75,
+   "confidence": 0.09298800677061081,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bowed string instrument",
+   "start": 25.0,
+   "end": 27.75,
+   "confidence": 0.07028105109930038,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

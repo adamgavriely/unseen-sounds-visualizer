@@ -1,0 +1,572 @@
+{
+ "clip": "ambient_snow_walk_930.mp4",
+ "tag": "mixed",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.9379568696022034,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 9.5,
+   "confidence": 0.31431156396865845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.14000000000000012,
+   "end": 3.5,
+   "confidence": 0.2959440350532532,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.06000000000000005,
+   "end": 3.5,
+   "confidence": 0.2622055411338806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.14000000000000012,
+   "end": 3.5,
+   "confidence": 0.2505480647087097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 4.75,
+   "confidence": 0.10536348074674606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.0814419835805893,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.06955981999635696,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.05964643508195877,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.75,
+   "end": 15.75,
+   "confidence": 0.16729100048542023,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.0,
+   "end": 4.25,
+   "confidence": 0.06412332504987717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 1.3,
+   "end": 3.25,
+   "confidence": 0.05267823114991188,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 0.37,
+   "end": 2.75,
+   "confidence": 0.05267081782221794,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.0,
+   "end": 5.25,
+   "confidence": 0.09835536777973175,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 2.75,
+   "end": 8.5,
+   "confidence": 0.191371351480484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 4.25,
+   "end": 5.75,
+   "confidence": 0.30647486448287964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 4.25,
+   "end": 5.5,
+   "confidence": 0.2758282721042633,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 4.25,
+   "end": 5.5,
+   "confidence": 0.23936325311660767,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snoring",
+   "start": 4.07,
+   "end": 5.25,
+   "confidence": 0.12524035573005676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 3.5,
+   "end": 5.5,
+   "confidence": 0.17152325809001923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snake",
+   "start": 4.26,
+   "end": 6.25,
+   "confidence": 0.0686943531036377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 5.5,
+   "end": 15.75,
+   "confidence": 0.22244253754615784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 4.92,
+   "end": 8.0,
+   "confidence": 0.16056980192661285,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 5.25,
+   "end": 7.0,
+   "confidence": 0.09436582773923874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 5.75,
+   "end": 6.75,
+   "confidence": 0.08044026046991348,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 5.75,
+   "end": 8.5,
+   "confidence": 0.05684995278716087,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 6.0,
+   "end": 8.25,
+   "confidence": 0.10817809402942657,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 4.5,
+   "end": 8.25,
+   "confidence": 0.07115024328231812,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 6.25,
+   "end": 8.25,
+   "confidence": 0.10819971561431885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 4.75,
+   "end": 8.25,
+   "confidence": 0.06660107523202896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 5.75,
+   "end": 8.25,
+   "confidence": 0.06358889490365982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 6.0,
+   "end": 7.75,
+   "confidence": 0.06564436852931976,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snake",
+   "start": 6.0,
+   "end": 7.25,
+   "confidence": 0.05445615202188492,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snicker",
+   "start": 8.14,
+   "end": 8.5,
+   "confidence": 0.20794032514095306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 8.14,
+   "end": 8.5,
+   "confidence": 0.10455519706010818,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 8.14,
+   "end": 8.5,
+   "confidence": 0.07126962393522263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hubbub, speech noise, speech babble",
+   "start": 8.48,
+   "end": 15.75,
+   "confidence": 0.340481162071228,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 8.75,
+   "end": 12.5,
+   "confidence": 0.13502338528633118,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snake",
+   "start": 7.25,
+   "end": 11.0,
+   "confidence": 0.0797722116112709,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 7.25,
+   "end": 10.75,
+   "confidence": 0.07870568335056305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 8.25,
+   "end": 10.0,
+   "confidence": 0.07032975554466248,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snicker",
+   "start": 8.25,
+   "end": 10.0,
+   "confidence": 0.06569866091012955,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chatter",
+   "start": 9.32,
+   "end": 15.75,
+   "confidence": 0.5507046580314636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 9.8,
+   "end": 15.75,
+   "confidence": 0.26489171385765076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Children playing",
+   "start": 9.56,
+   "end": 11.0,
+   "confidence": 0.17962542176246643,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 9.75,
+   "end": 10.75,
+   "confidence": 0.06315407902002335,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 8.37,
+   "end": 10.75,
+   "confidence": 0.05638235807418823,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, large room or hall",
+   "start": 10.14,
+   "end": 15.75,
+   "confidence": 0.0936337411403656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crowd",
+   "start": 11.05,
+   "end": 14.75,
+   "confidence": 0.2185972034931183,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 12.16,
+   "end": 13.25,
+   "confidence": 0.06318323314189911,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.25,
+   "end": 15.75,
+   "confidence": 0.10342709720134735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 14.75,
+   "end": 15.75,
+   "confidence": 0.08627944439649582,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.31431156396865845,
+   "start": 0.0,
+   "end": 9.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Tram on road"
+    },
+    {
+     "start": 4.75,
+     "end": 9.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "car on road"
+    }
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.30647486448287964,
+   "start": 0.06000000000000005,
+   "end": 5.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 5.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Train on the road"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,755 @@
+{
+ "clip": "un_raining_71I9l62a.mp4",
+ "tag": "no_ambient",
+ "duration": 16.04,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.8946948647499084,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.4864738881587982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 6.25,
+   "confidence": 0.21689534187316895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.13551919162273407,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.2109125554561615,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 1.0,
+   "end": 9.25,
+   "confidence": 0.10486028343439102,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 1.06,
+   "end": 3.0,
+   "confidence": 0.07862265408039093,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 1.22,
+   "end": 1.5,
+   "confidence": 0.07303670793771744,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.0,
+   "end": 3.0,
+   "confidence": 0.06508769094944,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.25,
+   "end": 3.5,
+   "confidence": 0.14140048623085022,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 1.07,
+   "end": 1.75,
+   "confidence": 0.06048767641186714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 1.5,
+   "end": 2.75,
+   "confidence": 0.057616718113422394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustling leaves",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.0658561959862709,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 2.25,
+   "end": 3.5,
+   "confidence": 0.1166137084364891,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.75,
+   "end": 4.0,
+   "confidence": 0.23256847262382507,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 1.5,
+   "end": 3.5,
+   "confidence": 0.1023087427020073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 1.5,
+   "end": 3.5,
+   "confidence": 0.07272335141897202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 1.5,
+   "end": 3.75,
+   "confidence": 0.05849762260913849,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.25,
+   "end": 5.5,
+   "confidence": 0.19888433814048767,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.25,
+   "end": 4.75,
+   "confidence": 0.11530750244855881,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bicycle",
+   "start": 3.45,
+   "end": 5.25,
+   "confidence": 0.050621770322322845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 4.35,
+   "end": 11.5,
+   "confidence": 0.2324693500995636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 4.93,
+   "end": 11.25,
+   "confidence": 0.5527336597442627,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 4.93,
+   "end": 11.25,
+   "confidence": 0.4550085663795471,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 4.93,
+   "end": 11.25,
+   "confidence": 0.41564854979515076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 5.75,
+   "end": 8.75,
+   "confidence": 0.14017751812934875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 5.66,
+   "end": 7.75,
+   "confidence": 0.06509686261415482,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 6.25,
+   "end": 7.0,
+   "confidence": 0.06397200375795364,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 6.25,
+   "end": 7.0,
+   "confidence": 0.05460358411073685,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 6.5,
+   "end": 8.25,
+   "confidence": 0.05198080465197563,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 7.0,
+   "end": 8.0,
+   "confidence": 0.0676218718290329,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 5.5,
+   "end": 8.0,
+   "confidence": 0.06612899154424667,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 7.5,
+   "end": 11.5,
+   "confidence": 0.17948757112026215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 8.3,
+   "end": 13.0,
+   "confidence": 0.16548429429531097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 7.0,
+   "end": 11.5,
+   "confidence": 0.107810378074646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 9.0,
+   "end": 10.25,
+   "confidence": 0.05688914656639099,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 8.11,
+   "end": 11.5,
+   "confidence": 0.06103210523724556,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 9.75,
+   "end": 15.75,
+   "confidence": 0.09550648927688599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 9.58,
+   "end": 11.25,
+   "confidence": 0.07395530492067337,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustling leaves",
+   "start": 8.95,
+   "end": 12.5,
+   "confidence": 0.06537936627864838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 10.25,
+   "end": 11.5,
+   "confidence": 0.05740682780742645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 10.72,
+   "end": 11.0,
+   "confidence": 0.05564288794994354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 11.5,
+   "end": 15.25,
+   "confidence": 0.3225742280483246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 11.5,
+   "end": 13.75,
+   "confidence": 0.23163019120693207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 10.25,
+   "end": 12.25,
+   "confidence": 0.07660306245088577,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 12.25,
+   "end": 15.75,
+   "confidence": 0.24287597835063934,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 12.32,
+   "end": 13.75,
+   "confidence": 0.16387252509593964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 13.0,
+   "end": 14.75,
+   "confidence": 0.5873411893844604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 13.0,
+   "end": 14.75,
+   "confidence": 0.5752375721931458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 13.0,
+   "end": 14.75,
+   "confidence": 0.5159055590629578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.10146696120500565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.0710785761475563,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 12.0,
+   "end": 14.5,
+   "confidence": 0.2021007537841797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam",
+   "start": 12.0,
+   "end": 14.5,
+   "confidence": 0.11267296969890594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 12.12,
+   "end": 14.75,
+   "confidence": 0.07621505111455917,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 12.77,
+   "end": 14.5,
+   "confidence": 0.1132216602563858,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 12.77,
+   "end": 14.5,
+   "confidence": 0.0598190538585186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 14.14,
+   "end": 15.25,
+   "confidence": 0.39425820112228394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.08195380866527557,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam whistle",
+   "start": 12.86,
+   "end": 14.5,
+   "confidence": 0.06475546956062317,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft engine",
+   "start": 13.12,
+   "end": 15.25,
+   "confidence": 0.1913595199584961,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 14.5,
+   "end": 15.75,
+   "confidence": 0.11490533500909805,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car passing by",
+   "start": 14.8,
+   "end": 15.75,
+   "confidence": 0.07918062806129456,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.75,
+   "end": 15.75,
+   "confidence": 0.06761699169874191,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 14.91,
+   "end": 15.75,
+   "confidence": 0.086337611079216,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Train",
+   "confidence": 0.5873411893844604,
+   "start": 13.0,
+   "end": 14.75,
+   "stretches": [
+    {
+     "start": 4.93,
+     "end": 11.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.0,
+     "end": 14.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 27,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Accelerating, revving, vroom",
+    "Radio"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.4864738881587982,
+   "start": 0.0,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.25,
+     "end": 10.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.5,
+     "end": 15.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 161,
+   "clap_top3": [
+    "Bird",
+    "Whale vocalization",
+    "Fowl"
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "confidence": 0.39425820112228394,
+   "start": 11.5,
+   "end": 15.25,
+   "stretches": [
+    {
+     "start": 11.5,
+     "end": 15.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 18,
+   "clap_top3": [
+    "Hubbub, speech noise, speech babble",
+    "Didgeridoo",
+    "Hip hop music"
+   ]
+  }
+ ]
+}

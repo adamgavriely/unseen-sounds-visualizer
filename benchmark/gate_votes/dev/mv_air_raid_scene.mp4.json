@@ -1,0 +1,880 @@
+{
+ "clip": "mv_air_raid_scene.mp4",
+ "tag": "unseen_ambient",
+ "duration": 21.0,
+ "events": [
+  {
+   "label": "Crow",
+   "start": 0.0,
+   "end": 5.25,
+   "confidence": 0.8314428329467773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 0.0,
+   "end": 5.5,
+   "confidence": 0.8269440531730652,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 20.75,
+   "confidence": 0.8258180618286133,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 16.25,
+   "confidence": 0.5559582710266113,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 6.0,
+   "confidence": 0.39148831367492676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.06000000000000005,
+   "end": 4.75,
+   "confidence": 0.23013928532600403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.0,
+   "end": 4.75,
+   "confidence": 0.17961028218269348,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 2.14,
+   "end": 4.5,
+   "confidence": 0.0729353278875351,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 2.55,
+   "end": 4.5,
+   "confidence": 0.09315786510705948,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 2.48,
+   "end": 5.25,
+   "confidence": 0.5489093661308289,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 1.0,
+   "end": 4.5,
+   "confidence": 0.0826980322599411,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Honk",
+   "start": 1.0,
+   "end": 4.5,
+   "confidence": 0.06398530304431915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 1.45,
+   "end": 4.5,
+   "confidence": 0.15567439794540405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 1.9300000000000002,
+   "end": 3.5,
+   "confidence": 0.12111459672451019,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 1.45,
+   "end": 3.5,
+   "confidence": 0.09064113348722458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 1.9300000000000002,
+   "end": 3.5,
+   "confidence": 0.06940647959709167,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 1.85,
+   "end": 3.5,
+   "confidence": 0.06387419253587723,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 1.45,
+   "end": 3.5,
+   "confidence": 0.06369056552648544,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 1.85,
+   "end": 3.5,
+   "confidence": 0.06109046936035156,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 1.78,
+   "end": 3.5,
+   "confidence": 0.09883292019367218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 1.94,
+   "end": 3.5,
+   "confidence": 0.09061163663864136,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 1.8599999999999999,
+   "end": 3.5,
+   "confidence": 0.05469822511076927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 2.84,
+   "end": 5.25,
+   "confidence": 0.25480759143829346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 2.25,
+   "end": 4.5,
+   "confidence": 0.10181000083684921,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 2.25,
+   "end": 4.5,
+   "confidence": 0.09113617241382599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cattle, bovinae",
+   "start": 2.25,
+   "end": 5.0,
+   "confidence": 0.07677190005779266,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Moo",
+   "start": 2.25,
+   "end": 4.5,
+   "confidence": 0.05143556371331215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 2.25,
+   "end": 4.25,
+   "confidence": 0.05031701922416687,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Creak",
+   "start": 4.5600000000000005,
+   "end": 5.25,
+   "confidence": 0.4167134761810303,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 3.2,
+   "end": 5.25,
+   "confidence": 0.3464256227016449,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 3.0,
+   "end": 5.0,
+   "confidence": 0.05374830588698387,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 5.0,
+   "end": 6.0,
+   "confidence": 0.06802694499492645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 5.47,
+   "end": 8.0,
+   "confidence": 0.8114415407180786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 5.25,
+   "end": 8.25,
+   "confidence": 0.7120829820632935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 4.36,
+   "end": 6.0,
+   "confidence": 0.08201905339956284,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 6.0,
+   "end": 8.5,
+   "confidence": 0.08932700008153915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shofar",
+   "start": 6.18,
+   "end": 9.75,
+   "confidence": 0.794497013092041,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind instrument, woodwind instrument",
+   "start": 5.62,
+   "end": 10.0,
+   "confidence": 0.6190317273139954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theremin",
+   "start": 5.62,
+   "end": 9.5,
+   "confidence": 0.1252468228340149,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 7.25,
+   "end": 8.5,
+   "confidence": 0.0836610421538353,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 8.11,
+   "end": 13.75,
+   "confidence": 0.8099199533462524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 8.03,
+   "end": 13.75,
+   "confidence": 0.7931830286979675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 12.75,
+   "end": 13.5,
+   "confidence": 0.09612823277711868,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 13.3,
+   "end": 15.5,
+   "confidence": 0.45720410346984863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 12.36,
+   "end": 14.5,
+   "confidence": 0.12204116582870483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 13.64,
+   "end": 15.5,
+   "confidence": 0.07627803087234497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Creak",
+   "start": 12.44,
+   "end": 14.0,
+   "confidence": 0.06203857436776161,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 14.75,
+   "end": 18.25,
+   "confidence": 0.7761368155479431,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 13.25,
+   "end": 18.25,
+   "confidence": 0.7674322128295898,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shofar",
+   "start": 14.26,
+   "end": 15.75,
+   "confidence": 0.09553271532058716,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind instrument, woodwind instrument",
+   "start": 13.75,
+   "end": 15.75,
+   "confidence": 0.054609134793281555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind instrument, woodwind instrument",
+   "start": 14.5,
+   "end": 17.5,
+   "confidence": 0.44869500398635864,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shofar",
+   "start": 16.8,
+   "end": 18.5,
+   "confidence": 0.6134389042854309,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 16.75,
+   "end": 20.75,
+   "confidence": 0.8493027091026306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 16.73,
+   "end": 18.25,
+   "confidence": 0.48282599449157715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 16.75,
+   "end": 18.25,
+   "confidence": 0.22059884667396545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air horn, truck horn",
+   "start": 16.41,
+   "end": 18.25,
+   "confidence": 0.218011274933815,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 16.75,
+   "end": 19.0,
+   "confidence": 0.0629621297121048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 16.5,
+   "end": 18.25,
+   "confidence": 0.14049319922924042,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 17.0,
+   "end": 17.75,
+   "confidence": 0.07055018842220306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 16.0,
+   "end": 20.25,
+   "confidence": 0.5498771667480469,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, large room or hall",
+   "start": 16.87,
+   "end": 19.75,
+   "confidence": 0.08545083552598953,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Screaming",
+   "start": 17.44,
+   "end": 19.0,
+   "confidence": 0.06647597998380661,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Groan",
+   "start": 18.72,
+   "end": 20.75,
+   "confidence": 0.05946546792984009,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 18.1,
+   "end": 19.5,
+   "confidence": 0.05459199100732803,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Civil defense siren",
+   "start": 19.8,
+   "end": 20.75,
+   "confidence": 0.51826012134552,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Siren",
+   "start": 19.5,
+   "end": 20.75,
+   "confidence": 0.48799678683280945,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 19.72,
+   "end": 20.25,
+   "confidence": 0.06960838288068771,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Crow",
+   "confidence": 0.8314428329467773,
+   "start": 0.0,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.25,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Crow flying in air"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Cat",
+    "Bird",
+    "Goat"
+   ]
+  },
+  {
+   "label": "Bird",
+   "confidence": 0.8269440531730652,
+   "start": 0.0,
+   "end": 5.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Cat",
+    "Bird",
+    "Goat"
+   ]
+  },
+  {
+   "label": "Siren",
+   "confidence": 0.8114415407180786,
+   "start": 5.25,
+   "end": 18.25,
+   "stretches": [
+    {
+     "start": 5.25,
+     "end": 9.583333333333332,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.583333333333332,
+     "end": 13.916666666666666,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.916666666666666,
+     "end": 18.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 19.5,
+     "end": 20.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 41,
+   "clap_top3": [
+    "Sound equipment",
+    "Theremin",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Shofar",
+   "confidence": 0.794497013092041,
+   "start": 6.18,
+   "end": 9.75,
+   "stretches": [
+    {
+     "start": 6.18,
+     "end": 9.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 16.8,
+     "end": 18.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 109,
+   "clap_top3": [
+    "Sound equipment",
+    "Theremin",
+    "Printer"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.48282599449157715,
+   "start": 16.73,
+   "end": 18.25,
+   "stretches": [
+    {
+     "start": 16.73,
+     "end": 18.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 222,
+   "clap_top3": [
+    "Shout",
+    "Motor vehicle (road)",
+    "Pump (liquid)"
+   ]
+  },
+  {
+   "label": "Door",
+   "confidence": 0.4167134761810303,
+   "start": 4.5600000000000005,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 4.5600000000000005,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 115,
+   "clap_top3": [
+    "Whale vocalization",
+    "Theremin",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "confidence": 0.25480759143829346,
+   "start": 2.84,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 2.84,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

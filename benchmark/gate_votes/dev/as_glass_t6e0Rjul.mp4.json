@@ -1,0 +1,985 @@
+{
+ "clip": "as_glass_t6e0Rjul.mp4",
+ "tag": "no_ambient",
+ "duration": 20.053367,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.917972981929779,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.05677791312336922,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slap, smack",
+   "start": 0.07000000000000006,
+   "end": 0.75,
+   "confidence": 0.11353543400764465,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Busy signal",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.11052984744310379,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dial tone",
+   "start": 0.25,
+   "end": 0.75,
+   "confidence": 0.08528437465429306,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.06095202639698982,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.5,
+   "end": 1.25,
+   "confidence": 0.06298231333494186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 1.25,
+   "end": 2.5,
+   "confidence": 0.15290643274784088,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.5,
+   "end": 5.25,
+   "confidence": 0.2733939290046692,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.5,
+   "end": 2.5,
+   "confidence": 0.07957148551940918,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.5,
+   "end": 4.5,
+   "confidence": 0.0786253809928894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 2.7199999999999998,
+   "end": 11.75,
+   "confidence": 0.12687848508358002,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chant",
+   "start": 2.64,
+   "end": 3.0,
+   "confidence": 0.11664152145385742,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 2.7199999999999998,
+   "end": 5.25,
+   "confidence": 0.09071379899978638,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 2.7199999999999998,
+   "end": 5.0,
+   "confidence": 0.08007309585809708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 2.64,
+   "end": 5.0,
+   "confidence": 0.07011683285236359,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 2.64,
+   "end": 3.75,
+   "confidence": 0.05129130184650421,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tuning fork",
+   "start": 4.3,
+   "end": 4.75,
+   "confidence": 0.08032984286546707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 2.75,
+   "end": 4.75,
+   "confidence": 0.05775165557861328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 4.25,
+   "end": 5.25,
+   "confidence": 0.052456509321928024,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drawer open or close",
+   "start": 4.890000000000001,
+   "end": 6.5,
+   "confidence": 0.10293245315551758,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 5.140000000000001,
+   "end": 6.75,
+   "confidence": 0.16374407708644867,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 5.73,
+   "end": 8.5,
+   "confidence": 0.31832772493362427,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Liquid",
+   "start": 5.09,
+   "end": 6.75,
+   "confidence": 0.0713740810751915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 6.0,
+   "end": 12.5,
+   "confidence": 0.19967414438724518,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 6.47,
+   "end": 12.5,
+   "confidence": 0.1863822489976883,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boiling",
+   "start": 4.95,
+   "end": 6.75,
+   "confidence": 0.060427747666835785,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rodents, rats, mice",
+   "start": 5.61,
+   "end": 7.75,
+   "confidence": 0.08422818779945374,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 5.75,
+   "end": 9.0,
+   "confidence": 0.22996139526367188,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crackle",
+   "start": 5.75,
+   "end": 8.0,
+   "confidence": 0.07439281791448593,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Biting",
+   "start": 6.43,
+   "end": 8.0,
+   "confidence": 0.0700707659125328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shuffling cards",
+   "start": 6.62,
+   "end": 8.5,
+   "confidence": 0.13070859014987946,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drawer open or close",
+   "start": 7.02,
+   "end": 8.5,
+   "confidence": 0.07228023558855057,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 8.3,
+   "end": 8.5,
+   "confidence": 0.0588797889649868,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bouncing",
+   "start": 8.16,
+   "end": 10.0,
+   "confidence": 0.5435704588890076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 8.25,
+   "end": 9.25,
+   "confidence": 0.20148737728595734,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 7.61,
+   "end": 9.25,
+   "confidence": 0.15388962626457214,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick-tock",
+   "start": 7.45,
+   "end": 9.25,
+   "confidence": 0.10057273507118225,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 7.69,
+   "end": 9.25,
+   "confidence": 0.08882836252450943,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crushing",
+   "start": 9.23,
+   "end": 10.5,
+   "confidence": 0.4040350615978241,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hammer",
+   "start": 8.27,
+   "end": 10.0,
+   "confidence": 0.07874574512243271,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sniff",
+   "start": 8.61,
+   "end": 10.25,
+   "confidence": 0.09568331390619278,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 9.98,
+   "end": 11.0,
+   "confidence": 0.37034690380096436,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 9.82,
+   "end": 11.0,
+   "confidence": 0.28045371174812317,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 9.02,
+   "end": 11.0,
+   "confidence": 0.19354766607284546,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulleys",
+   "start": 8.75,
+   "end": 10.75,
+   "confidence": 0.09046279639005661,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wheeze",
+   "start": 10.31,
+   "end": 11.25,
+   "confidence": 0.07752978056669235,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 10.31,
+   "end": 11.75,
+   "confidence": 0.059337567538022995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 11.05,
+   "end": 11.25,
+   "confidence": 0.1542494297027588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 9.93,
+   "end": 11.75,
+   "confidence": 0.09039235860109329,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glass",
+   "start": 10.97,
+   "end": 11.75,
+   "confidence": 0.08377307653427124,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 10.91,
+   "end": 12.25,
+   "confidence": 0.6651516556739807,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Creak",
+   "start": 11.23,
+   "end": 12.0,
+   "confidence": 0.09193791449069977,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 11.66,
+   "end": 13.75,
+   "confidence": 0.3881777226924896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cutlery, silverware",
+   "start": 11.66,
+   "end": 13.5,
+   "confidence": 0.17643320560455322,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Glass",
+   "start": 11.66,
+   "end": 13.5,
+   "confidence": 0.16799569129943848,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chink, clink",
+   "start": 10.94,
+   "end": 12.75,
+   "confidence": 0.050242844969034195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drawer open or close",
+   "start": 12.72,
+   "end": 14.5,
+   "confidence": 0.13378316164016724,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 12.8,
+   "end": 19.75,
+   "confidence": 0.10949044674634933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 12.75,
+   "end": 13.5,
+   "confidence": 0.0681331530213356,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wood",
+   "start": 11.5,
+   "end": 15.0,
+   "confidence": 0.3704603910446167,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rub",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.08110568672418594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cupboard open or close",
+   "start": 12.66,
+   "end": 14.25,
+   "confidence": 0.056558575481176376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.25,
+   "end": 17.25,
+   "confidence": 0.2854710519313812,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 14.0,
+   "end": 17.25,
+   "confidence": 0.26434481143951416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 14.48,
+   "end": 17.0,
+   "confidence": 0.19069643318653107,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 15.08,
+   "end": 17.0,
+   "confidence": 0.1635037511587143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sniff",
+   "start": 14.0,
+   "end": 16.25,
+   "confidence": 0.10331093519926071,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Patter",
+   "start": 14.68,
+   "end": 16.5,
+   "confidence": 0.07350470125675201,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caterwaul",
+   "start": 15.08,
+   "end": 16.25,
+   "confidence": 0.06522178649902344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shuffling cards",
+   "start": 15.19,
+   "end": 17.0,
+   "confidence": 0.06627459824085236,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dishes, pots, and pans",
+   "start": 16.34,
+   "end": 18.25,
+   "confidence": 0.1038258746266365,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 17.64,
+   "end": 19.75,
+   "confidence": 0.06721602380275726,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 17.5,
+   "end": 19.5,
+   "confidence": 0.07265564054250717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 17.75,
+   "end": 18.75,
+   "confidence": 0.10064758360385895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 17.75,
+   "end": 18.75,
+   "confidence": 0.05991267040371895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 17.59,
+   "end": 18.75,
+   "confidence": 0.05511656031012535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 18.23,
+   "end": 18.75,
+   "confidence": 0.05481436476111412,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gargling",
+   "start": 17.28,
+   "end": 19.0,
+   "confidence": 0.06221775710582733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 18.75,
+   "end": 19.75,
+   "confidence": 0.08228664845228195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 17.5,
+   "end": 19.75,
+   "confidence": 0.12680597603321075,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 17.5,
+   "end": 19.75,
+   "confidence": 0.09102501720190048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 17.5,
+   "end": 19.75,
+   "confidence": 0.08405180275440216,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 17.5,
+   "end": 19.75,
+   "confidence": 0.0838170126080513,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slap, smack",
+   "start": 18.82,
+   "end": 19.75,
+   "confidence": 0.05111052840948105,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bouncing",
+   "confidence": 0.5435704588890076,
+   "start": 8.16,
+   "end": 10.0,
+   "stretches": [
+    {
+     "start": 8.16,
+     "end": 10.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 144,
+   "clap_top3": [
+    "Bagpipes",
+    "Sawing",
+    "Shout"
+   ]
+  },
+  {
+   "label": "Crushing",
+   "confidence": 0.4040350615978241,
+   "start": 9.23,
+   "end": 10.5,
+   "stretches": [
+    {
+     "start": 9.23,
+     "end": 10.5,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "man"
+    }
+   ],
+   "clap_rank": 134,
+   "clap_top3": [
+    "Domestic animals, pets",
+    "Music of Asia",
+    "Plucked string instrument"
+   ]
+  },
+  {
+   "label": "Dishes",
+   "confidence": 0.3881777226924896,
+   "start": 11.66,
+   "end": 13.75,
+   "stretches": [
+    {
+     "start": 11.66,
+     "end": 13.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Pig",
+    "Cattle, bovinae",
+    "Music of Latin America"
+   ]
+  },
+  {
+   "label": "Wood",
+   "confidence": 0.3704603910446167,
+   "start": 11.5,
+   "end": 15.0,
+   "stretches": [
+    {
+     "start": 11.5,
+     "end": 15.0,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "man"
+    }
+   ],
+   "clap_rank": 67,
+   "clap_top3": [
+    "Pig",
+    "Cattle, bovinae",
+    "Didgeridoo"
+   ]
+  },
+  {
+   "label": "Patter",
+   "confidence": 0.31832772493362427,
+   "start": 5.73,
+   "end": 8.5,
+   "stretches": [
+    {
+     "start": 5.73,
+     "end": 8.5,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "plastic bag"
+    }
+   ]
+  },
+  {
+   "label": "Gears",
+   "confidence": 0.28045371174812317,
+   "start": 9.82,
+   "end": 11.0,
+   "stretches": [
+    {
+     "start": 9.82,
+     "end": 11.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "mixer"
+    }
+   ]
+  }
+ ]
+}

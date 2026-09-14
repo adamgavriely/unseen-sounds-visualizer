@@ -1,0 +1,564 @@
+{
+ "clip": "as_explosion_p6lhCxNw.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.8370380401611328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 19.75,
+   "confidence": 0.6867615580558777,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.06000000000000005,
+   "end": 2.75,
+   "confidence": 0.2967514395713806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.2177986055612564,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.14000000000000012,
+   "end": 2.75,
+   "confidence": 0.2039162516593933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 0.06000000000000005,
+   "end": 2.75,
+   "confidence": 0.15792886912822723,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 0.06000000000000005,
+   "end": 1.0,
+   "confidence": 0.08547736704349518,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 1.05,
+   "end": 2.0,
+   "confidence": 0.12398263812065125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.05399738997220993,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 3.0,
+   "end": 4.75,
+   "confidence": 0.07853592187166214,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Radio",
+   "start": 3.3,
+   "end": 3.5,
+   "confidence": 0.0650802031159401,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 3.39,
+   "end": 9.5,
+   "confidence": 0.557037353515625,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 3.39,
+   "end": 8.5,
+   "confidence": 0.47325390577316284,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech synthesizer",
+   "start": 3.39,
+   "end": 8.5,
+   "confidence": 0.379886656999588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mantra",
+   "start": 3.8,
+   "end": 4.25,
+   "confidence": 0.07860714197158813,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Echo",
+   "start": 4.32,
+   "end": 8.25,
+   "confidence": 0.21621131896972656,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 3.36,
+   "end": 5.0,
+   "confidence": 0.0514315590262413,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mantra",
+   "start": 3.45,
+   "end": 6.5,
+   "confidence": 0.15046633780002594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chant",
+   "start": 3.62,
+   "end": 6.5,
+   "confidence": 0.07503446936607361,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 4.5,
+   "end": 7.5,
+   "confidence": 0.10081274807453156,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 5.0,
+   "end": 7.5,
+   "confidence": 0.06672179698944092,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sidetone",
+   "start": 6.01,
+   "end": 7.75,
+   "confidence": 0.08873672038316727,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 6.61,
+   "end": 9.0,
+   "confidence": 0.13403689861297607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sonar",
+   "start": 6.25,
+   "end": 9.0,
+   "confidence": 0.06757578253746033,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 7.11,
+   "end": 14.75,
+   "confidence": 0.36019837856292725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.25,
+   "end": 19.25,
+   "confidence": 0.21041229367256165,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 6.95,
+   "end": 14.5,
+   "confidence": 0.19957761466503143,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 7.59,
+   "end": 14.0,
+   "confidence": 0.1578511893749237,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 7.91,
+   "end": 8.75,
+   "confidence": 0.06336899846792221,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 9.14,
+   "end": 14.0,
+   "confidence": 0.16867363452911377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 9.5,
+   "end": 19.75,
+   "confidence": 0.3344603180885315,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 12.5,
+   "end": 15.0,
+   "confidence": 0.10034528374671936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 11.0,
+   "end": 15.0,
+   "confidence": 0.09080270677804947,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 14.75,
+   "end": 18.25,
+   "confidence": 0.19167882204055786,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 14.75,
+   "end": 16.0,
+   "confidence": 0.1071518138051033,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 14.0,
+   "end": 16.25,
+   "confidence": 0.10159651190042496,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 14.0,
+   "end": 16.25,
+   "confidence": 0.09026312083005905,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 15.5,
+   "end": 16.25,
+   "confidence": 0.0564078725874424,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 15.75,
+   "end": 17.5,
+   "confidence": 0.070366770029068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 16.25,
+   "end": 18.25,
+   "confidence": 0.1504976898431778,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 16.25,
+   "end": 17.5,
+   "confidence": 0.06531379371881485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 17.25,
+   "end": 18.25,
+   "confidence": 0.19837640225887299,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 17.57,
+   "end": 19.0,
+   "confidence": 0.059294164180755615,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 18.0,
+   "end": 19.75,
+   "confidence": 0.20934101939201355,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 18.15,
+   "end": 19.75,
+   "confidence": 0.11966223269701004,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 18.25,
+   "end": 19.75,
+   "confidence": 0.09310410171747208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 18.25,
+   "end": 19.25,
+   "confidence": 0.07118792831897736,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 19.0,
+   "end": 19.75,
+   "confidence": 0.07228497415781021,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Explosion",
+   "confidence": 0.36019837856292725,
+   "start": 7.11,
+   "end": 14.75,
+   "stretches": [
+    {
+     "start": 7.11,
+     "end": 10.93,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 10.93,
+     "end": 14.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 21,
+   "clap_top3": [
+    "Rail transport",
+    "Rock music",
+    "Eruption"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.3344603180885315,
+   "start": 9.5,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 9.5,
+     "end": 14.625,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.625,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "The Beagle 2 Mars Rover"
+    }
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.2967514395713806,
+   "start": 0.06000000000000005,
+   "end": 2.75,
+   "stretches": [
+    {
+     "start": 0.06000000000000005,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

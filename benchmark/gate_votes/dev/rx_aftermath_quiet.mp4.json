@@ -1,0 +1,620 @@
+{
+ "clip": "rx_aftermath_quiet.mp4",
+ "tag": "seen_ambient",
+ "duration": 22.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 21.75,
+   "confidence": 0.8088566064834595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.21999999999999997,
+   "end": 21.75,
+   "confidence": 0.7798153758049011,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 17.5,
+   "confidence": 0.6866173148155212,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.40072742104530334,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.0,
+   "end": 4.25,
+   "confidence": 0.1602611094713211,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.0649285838007927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.1081603616476059,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.32000000000000006,
+   "end": 1.0,
+   "confidence": 0.05179749056696892,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 9.0,
+   "confidence": 0.27406010031700134,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 0.9099999999999999,
+   "end": 7.5,
+   "confidence": 0.11952698230743408,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.25,
+   "end": 2.5,
+   "confidence": 0.07764770090579987,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.12,
+   "end": 4.75,
+   "confidence": 0.07908458262681961,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 1.75,
+   "end": 5.75,
+   "confidence": 0.15633045136928558,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.75,
+   "end": 5.75,
+   "confidence": 0.056493934243917465,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 2.0,
+   "end": 4.0,
+   "confidence": 0.10049745440483093,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 1.1099999999999999,
+   "end": 4.0,
+   "confidence": 0.07009749114513397,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 2.01,
+   "end": 4.25,
+   "confidence": 0.09334111213684082,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 2.59,
+   "end": 4.0,
+   "confidence": 0.05856558308005333,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 4.15,
+   "end": 5.5,
+   "confidence": 0.0711987167596817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 4.5,
+   "end": 9.25,
+   "confidence": 0.15068890154361725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 4.5,
+   "end": 5.75,
+   "confidence": 0.09227553755044937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 3.75,
+   "end": 5.75,
+   "confidence": 0.05848364159464836,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 6.05,
+   "end": 7.5,
+   "confidence": 0.0879291370511055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 5.0,
+   "end": 7.25,
+   "confidence": 0.051243800669908524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 5.25,
+   "end": 8.75,
+   "confidence": 0.1417122781276703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 6.57,
+   "end": 8.75,
+   "confidence": 0.11821989715099335,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 6.75,
+   "end": 8.5,
+   "confidence": 0.10656915605068207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 6.18,
+   "end": 9.25,
+   "confidence": 0.1442687064409256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 7.5,
+   "end": 17.25,
+   "confidence": 0.9351158142089844,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 7.5,
+   "end": 17.25,
+   "confidence": 0.215154230594635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 7.5,
+   "end": 9.5,
+   "confidence": 0.07227032631635666,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 6.45,
+   "end": 9.25,
+   "confidence": 0.06993161141872406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 7.75,
+   "end": 9.5,
+   "confidence": 0.06425239145755768,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 7.75,
+   "end": 9.25,
+   "confidence": 0.0613531768321991,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 6.25,
+   "end": 8.5,
+   "confidence": 0.05260518938302994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 7.75,
+   "end": 8.25,
+   "confidence": 0.05149291455745697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 8.75,
+   "end": 12.5,
+   "confidence": 0.07067395001649857,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 16.5,
+   "end": 17.5,
+   "confidence": 0.20842085778713226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 16.75,
+   "end": 17.25,
+   "confidence": 0.25288596749305725,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 15.7,
+   "end": 17.5,
+   "confidence": 0.1180899441242218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 17.23,
+   "end": 21.75,
+   "confidence": 0.29057472944259644,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 17.55,
+   "end": 21.25,
+   "confidence": 0.13047248125076294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 16.0,
+   "end": 21.25,
+   "confidence": 0.06254874169826508,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 16.0,
+   "end": 21.25,
+   "confidence": 0.0547085776925087,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 20.5,
+   "end": 21.75,
+   "confidence": 0.3621726334095001,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 21.0,
+   "end": 21.75,
+   "confidence": 0.1284855306148529,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 21.0,
+   "end": 21.5,
+   "confidence": 0.08165282756090164,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "confidence": 0.9351158142089844,
+   "start": 0.0,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.75,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Helicopter"
+    },
+    {
+     "start": 5.75,
+     "end": 11.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Helicopter"
+    },
+    {
+     "start": 11.5,
+     "end": 17.25,
+     "verdict": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Helicopter"
+    }
+   ],
+   "clap_rank": 25,
+   "clap_top3": [
+    "Rock music",
+    "Music of Asia",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.6866173148155212,
+   "start": 0.0,
+   "end": 17.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.375,
+     "end": 8.75,
+     "verdict": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "helicopter"
+    },
+    {
+     "start": 8.75,
+     "end": 13.125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "helicopter"
+    },
+    {
+     "start": 13.125,
+     "end": 17.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 217,
+   "clap_top3": [
+    "Rock music",
+    "Music of Asia",
+    "Accelerating, revving, vroom"
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.3621726334095001,
+   "start": 20.5,
+   "end": 21.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.5,
+     "end": 9.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 16.75,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 20.5,
+     "end": 21.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Fill (with liquid)",
+    "Rock music",
+    "Electronic music"
+   ]
+  }
+ ]
+}

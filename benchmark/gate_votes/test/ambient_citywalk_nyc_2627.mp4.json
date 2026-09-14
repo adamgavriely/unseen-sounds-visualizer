@@ -1,0 +1,310 @@
+{
+ "clip": "ambient_citywalk_nyc_2627.mp4",
+ "tag": "mixed",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.39000940322875977,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.3604448437690735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.2233683168888092,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.14000000000000012,
+   "end": 1.5,
+   "confidence": 0.14322824776172638,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 4.25,
+   "confidence": 0.12175995111465454,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 0.0,
+   "end": 3.75,
+   "confidence": 0.08797955513000488,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.06000000000000005,
+   "end": 1.5,
+   "confidence": 0.06736187636852264,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.30000000000000004,
+   "end": 3.75,
+   "confidence": 0.06034198775887489,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.21999999999999997,
+   "end": 1.0,
+   "confidence": 0.05690157040953636,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.07000000000000006,
+   "end": 1.0,
+   "confidence": 0.08366961777210236,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.052340369671583176,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 1.75,
+   "end": 3.5,
+   "confidence": 0.053997501730918884,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 2.3,
+   "end": 3.5,
+   "confidence": 0.15490029752254486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 2.0,
+   "end": 3.5,
+   "confidence": 0.11056902259588242,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 2.0,
+   "end": 2.5,
+   "confidence": 0.0509212501347065,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 2.0,
+   "end": 6.5,
+   "confidence": 0.07772018015384674,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 2.0,
+   "end": 7.75,
+   "confidence": 0.053753070533275604,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 3.75,
+   "end": 5.75,
+   "confidence": 0.06007795408368111,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 6.0,
+   "end": 15.75,
+   "confidence": 0.11673285812139511,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 6.0,
+   "end": 15.75,
+   "confidence": 0.07446987926959991,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 7.25,
+   "end": 15.75,
+   "confidence": 0.07862937450408936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 7.8,
+   "end": 8.5,
+   "confidence": 0.05229727178812027,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 10.57,
+   "end": 12.5,
+   "confidence": 0.19435220956802368,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 11.25,
+   "end": 12.0,
+   "confidence": 0.06148671731352806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 11.25,
+   "end": 12.0,
+   "confidence": 0.05581853166222572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 13.93,
+   "end": 15.75,
+   "confidence": 0.0689724013209343,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.3604448437690735,
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.449999999999999,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "Taxi on road"
+    },
+    {
+     "start": 5.449999999999999,
+     "end": 10.6,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "white van on road"
+    },
+    {
+     "start": 10.6,
+     "end": 15.749999999999998,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "car on road"
+    }
+   ],
+   "clap_rank": 57,
+   "clap_top3": [
+    "Vibration",
+    "Background noise",
+    "Engine"
+   ]
+  }
+ ]
+}

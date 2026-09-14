@@ -1,0 +1,429 @@
+{
+ "clip": "b3_pet_shop.mp4",
+ "tag": "unseen_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 0.21999999999999997,
+   "end": 27.75,
+   "confidence": 0.8557406067848206,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.7916778922080994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.783022940158844,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.5342368483543396,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 0.14000000000000012,
+   "end": 2.5,
+   "confidence": 0.14958712458610535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.30000000000000004,
+   "end": 27.75,
+   "confidence": 0.14843083918094635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cricket",
+   "start": 0.21999999999999997,
+   "end": 1.25,
+   "confidence": 0.09641579538583755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 1.22,
+   "end": 8.25,
+   "confidence": 0.16326381266117096,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 1.0,
+   "end": 12.75,
+   "confidence": 0.1112210676074028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 1.0,
+   "end": 13.25,
+   "confidence": 0.06003148853778839,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 1.0,
+   "end": 6.5,
+   "confidence": 0.05181248486042023,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 2.5,
+   "end": 3.0,
+   "confidence": 0.05063557252287865,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 3.25,
+   "end": 6.5,
+   "confidence": 0.06153753772377968,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 8.25,
+   "end": 8.75,
+   "confidence": 0.05116279050707817,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 8.2,
+   "end": 17.25,
+   "confidence": 0.35200583934783936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Insect",
+   "start": 9.8,
+   "end": 13.75,
+   "confidence": 0.1077440083026886,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 9.5,
+   "end": 11.5,
+   "confidence": 0.09822113811969757,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 8.25,
+   "end": 11.5,
+   "confidence": 0.10891443490982056,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hoot",
+   "start": 9.84,
+   "end": 13.25,
+   "confidence": 0.0626099705696106,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 13.0,
+   "end": 27.75,
+   "confidence": 0.15041187405586243,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.5,
+   "end": 27.75,
+   "confidence": 0.07185622304677963,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 13.5,
+   "end": 15.5,
+   "confidence": 0.06092197448015213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 13.75,
+   "end": 16.25,
+   "confidence": 0.06009109318256378,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hoot",
+   "start": 14.25,
+   "end": 16.25,
+   "confidence": 0.13127119839191437,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 17.0,
+   "end": 18.75,
+   "confidence": 0.07769741863012314,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 20.55,
+   "end": 23.0,
+   "confidence": 0.13203135132789612,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 22.5,
+   "end": 23.75,
+   "confidence": 0.076687753200531,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 22.5,
+   "end": 23.75,
+   "confidence": 0.05279204621911049,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 24.89,
+   "end": 27.75,
+   "confidence": 0.0993502140045166,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 24.75,
+   "end": 27.75,
+   "confidence": 0.13464243710041046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Turkey",
+   "start": 24.75,
+   "end": 27.75,
+   "confidence": 0.07998834550380707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 26.25,
+   "end": 27.75,
+   "confidence": 0.053049713373184204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bird",
+   "confidence": 0.8557406067848206,
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.741666666666667,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on tree stump"
+    },
+    {
+     "start": 4.741666666666667,
+     "end": 9.343333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 9.343333333333334,
+     "end": 13.945,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on tree stump"
+    },
+    {
+     "start": 13.945,
+     "end": 18.546666666666667,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on tree stump"
+    },
+    {
+     "start": 18.546666666666667,
+     "end": 23.148333333333337,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on tree stump"
+    },
+    {
+     "start": 23.148333333333337,
+     "end": 27.75,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on tree stump"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Bird",
+    "Country",
+    "Outside, rural or natural"
+   ]
+  },
+  {
+   "label": "Owl",
+   "confidence": 0.35200583934783936,
+   "start": 8.2,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 8.2,
+     "end": 12.725,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 12.725,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Bird",
+    "Country",
+    "Outside, rural or natural"
+   ]
+  }
+ ]
+}

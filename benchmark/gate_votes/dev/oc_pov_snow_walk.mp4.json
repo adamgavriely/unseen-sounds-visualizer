@@ -1,0 +1,327 @@
+{
+ "clip": "oc_pov_snow_walk.mp4",
+ "tag": "seen_ambient",
+ "duration": 19.019,
+ "events": [
+  {
+   "label": "Walk, footsteps",
+   "start": 0.14000000000000012,
+   "end": 2.5,
+   "confidence": 0.5846483707427979,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.3431754410266876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.19714151322841644,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.10924350470304489,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.08259996771812439,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 0.14000000000000012,
+   "end": 2.5,
+   "confidence": 0.08040647953748703,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zipper (clothing)",
+   "start": 1.4000000000000001,
+   "end": 5.5,
+   "confidence": 0.5855185985565186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stomach rumble",
+   "start": 1.98,
+   "end": 5.25,
+   "confidence": 0.2718885838985443,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 3.05,
+   "end": 16.75,
+   "confidence": 0.17729410529136658,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 2.59,
+   "end": 18.75,
+   "confidence": 0.5736940503120422,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 2.95,
+   "end": 7.25,
+   "confidence": 0.10177959501743317,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zipper (clothing)",
+   "start": 4.25,
+   "end": 9.0,
+   "confidence": 0.2534146308898926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stomach rumble",
+   "start": 6.98,
+   "end": 8.75,
+   "confidence": 0.15784499049186707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 8.75,
+   "end": 13.75,
+   "confidence": 0.10183041542768478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 8.75,
+   "end": 9.5,
+   "confidence": 0.058337483555078506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Stomach rumble",
+   "start": 7.75,
+   "end": 10.5,
+   "confidence": 0.14608190953731537,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zipper (clothing)",
+   "start": 8.36,
+   "end": 12.25,
+   "confidence": 0.21471554040908813,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 10.25,
+   "end": 13.25,
+   "confidence": 0.05648861452937126,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zipper (clothing)",
+   "start": 12.81,
+   "end": 17.25,
+   "confidence": 0.3687288463115692,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 16.5,
+   "end": 18.75,
+   "confidence": 0.05399636924266815,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crunch",
+   "start": 17.14,
+   "end": 18.75,
+   "confidence": 0.06747548282146454,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Zipper (clothing)",
+   "confidence": 0.5855185985565186,
+   "start": 1.4000000000000001,
+   "end": 9.0,
+   "stretches": [
+    {
+     "start": 1.4000000000000001,
+     "end": 5.2,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.2,
+     "end": 9.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 12.81,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 2,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Zipper (clothing)",
+    "Bagpipes"
+   ]
+  },
+  {
+   "label": "Footsteps",
+   "confidence": 0.5846483707427979,
+   "start": 0.14000000000000012,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.7925,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.7925,
+     "end": 9.445,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.445,
+     "end": 14.0975,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 14.0975,
+     "end": 18.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Wind noise (microphone)",
+    "Bagpipes",
+    "Zipper (clothing)"
+   ]
+  },
+  {
+   "label": "Stomach rumble",
+   "confidence": 0.2718885838985443,
+   "start": 1.98,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 1.98,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

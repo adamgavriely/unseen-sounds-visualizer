@@ -1,0 +1,1174 @@
+{
+ "clip": "un_people_crowd_1YGJDa3a.mp4",
+ "tag": "no_ambient",
+ "duration": 18.051367,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.7970726490020752,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.14000000000000012,
+   "end": 5.5,
+   "confidence": 0.7100546360015869,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 0.0,
+   "end": 5.25,
+   "confidence": 0.675872802734375,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 5.5,
+   "confidence": 0.44211187958717346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.3324960172176361,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.25460386276245117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.17502085864543915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 0.14000000000000012,
+   "end": 0.5,
+   "confidence": 0.15339356660842896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.1340894252061844,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 0.14000000000000012,
+   "end": 5.25,
+   "confidence": 0.10440070182085037,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.09282634407281876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Alarm",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.055948562920093536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.0,
+   "end": 5.5,
+   "confidence": 0.5670537948608398,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.75,
+   "end": 5.5,
+   "confidence": 0.4461806118488312,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 0.0,
+   "end": 5.5,
+   "confidence": 0.3762209117412567,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 0.75,
+   "end": 3.25,
+   "confidence": 0.23913998901844025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.0,
+   "end": 4.25,
+   "confidence": 0.10846652835607529,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.1293477565050125,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 0.5,
+   "end": 3.25,
+   "confidence": 0.06874588131904602,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 2.0,
+   "end": 5.25,
+   "confidence": 0.069369375705719,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 2.2800000000000002,
+   "end": 5.25,
+   "confidence": 0.06896845251321793,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 2.37,
+   "end": 5.0,
+   "confidence": 0.05624760687351227,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 4.5,
+   "end": 9.75,
+   "confidence": 0.10106191039085388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fireworks",
+   "start": 4.58,
+   "end": 7.25,
+   "confidence": 0.69795823097229,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 4.42,
+   "end": 7.25,
+   "confidence": 0.4404818117618561,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 5.0,
+   "end": 7.25,
+   "confidence": 0.4385119080543518,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 5.0,
+   "end": 7.25,
+   "confidence": 0.23789025843143463,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 4.34,
+   "end": 7.25,
+   "confidence": 0.21136263012886047,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 4.98,
+   "end": 6.25,
+   "confidence": 0.20856210589408875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Firecracker",
+   "start": 4.34,
+   "end": 7.25,
+   "confidence": 0.20236927270889282,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 4.42,
+   "end": 7.25,
+   "confidence": 0.09954682737588882,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 3.75,
+   "end": 5.75,
+   "confidence": 0.09454423934221268,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 5.09,
+   "end": 7.0,
+   "confidence": 0.06834878772497177,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 5.17,
+   "end": 7.0,
+   "confidence": 0.0509009063243866,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 6.25,
+   "end": 7.0,
+   "confidence": 0.05529864504933357,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 6.5,
+   "end": 14.0,
+   "confidence": 0.4932134449481964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 6.5,
+   "end": 8.75,
+   "confidence": 0.3194761276245117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 7.0,
+   "end": 8.75,
+   "confidence": 0.2370702028274536,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 7.63,
+   "end": 8.75,
+   "confidence": 0.19040995836257935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 7.55,
+   "end": 8.5,
+   "confidence": 0.12628160417079926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 6.52,
+   "end": 8.25,
+   "confidence": 0.05187709629535675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 6.0,
+   "end": 8.25,
+   "confidence": 0.0507066510617733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 6.45,
+   "end": 9.25,
+   "confidence": 0.09980146586894989,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 6.95,
+   "end": 8.75,
+   "confidence": 0.05063105374574661,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 7.77,
+   "end": 9.75,
+   "confidence": 0.07121051847934723,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 9.8,
+   "end": 17.75,
+   "confidence": 0.7034721970558167,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 9.8,
+   "end": 10.5,
+   "confidence": 0.2933077812194824,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 8.52,
+   "end": 15.0,
+   "confidence": 0.24029839038848877,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 8.0,
+   "end": 10.5,
+   "confidence": 0.20100605487823486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 9.8,
+   "end": 10.5,
+   "confidence": 0.16075989603996277,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 9.0,
+   "end": 14.0,
+   "confidence": 0.12576216459274292,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.0,
+   "end": 14.0,
+   "confidence": 0.1570265144109726,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 10.0,
+   "end": 10.75,
+   "confidence": 0.12097156792879105,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crackle",
+   "start": 8.87,
+   "end": 10.75,
+   "confidence": 0.05241044983267784,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 9.92,
+   "end": 11.25,
+   "confidence": 0.05619707703590393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 9.84,
+   "end": 11.25,
+   "confidence": 0.05014772713184357,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 9.25,
+   "end": 17.75,
+   "confidence": 0.6397771835327148,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 9.25,
+   "end": 17.75,
+   "confidence": 0.5380076169967651,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 9.77,
+   "end": 14.0,
+   "confidence": 0.21784424781799316,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 9.25,
+   "end": 13.5,
+   "confidence": 0.19258131086826324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 9.77,
+   "end": 11.25,
+   "confidence": 0.0633411779999733,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Toot",
+   "start": 10.84,
+   "end": 13.5,
+   "confidence": 0.09803623706102371,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick-tock",
+   "start": 10.77,
+   "end": 12.25,
+   "confidence": 0.05519427731633186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 11.82,
+   "end": 12.5,
+   "confidence": 0.07340935617685318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 11.84,
+   "end": 13.0,
+   "confidence": 0.06317073106765747,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 12.73,
+   "end": 14.75,
+   "confidence": 0.21188537776470184,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Skateboard",
+   "start": 11.53,
+   "end": 13.5,
+   "confidence": 0.14378869533538818,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 12.57,
+   "end": 13.75,
+   "confidence": 0.10166501998901367,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 12.98,
+   "end": 14.75,
+   "confidence": 0.14530454576015472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 11.75,
+   "end": 14.0,
+   "confidence": 0.05258853733539581,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 12.0,
+   "end": 17.25,
+   "confidence": 0.4230388402938843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 13.4,
+   "end": 14.25,
+   "confidence": 0.09128275513648987,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 12.0,
+   "end": 14.75,
+   "confidence": 0.06916535645723343,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, large room or hall",
+   "start": 12.77,
+   "end": 17.25,
+   "confidence": 0.0674150288105011,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 12.5,
+   "end": 14.5,
+   "confidence": 0.05286548659205437,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 14.25,
+   "end": 17.75,
+   "confidence": 0.36030831933021545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 13.27,
+   "end": 17.75,
+   "confidence": 0.16483649611473083,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 13.27,
+   "end": 17.25,
+   "confidence": 0.12352754175662994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 14.55,
+   "end": 15.25,
+   "confidence": 0.08179331570863724,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train whistle",
+   "start": 13.0,
+   "end": 15.0,
+   "confidence": 0.056572359055280685,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 13.76,
+   "end": 15.0,
+   "confidence": 0.05095342919230461,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Slam",
+   "start": 14.5,
+   "end": 17.5,
+   "confidence": 0.19264578819274902,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Walk, footsteps",
+   "start": 14.5,
+   "end": 17.75,
+   "confidence": 0.16991116106510162,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ping",
+   "start": 14.1,
+   "end": 16.75,
+   "confidence": 0.13854487240314484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Horse",
+   "start": 13.86,
+   "end": 15.75,
+   "confidence": 0.10691207647323608,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 13.7,
+   "end": 15.75,
+   "confidence": 0.09668217599391937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 14.43,
+   "end": 16.25,
+   "confidence": 0.13450263440608978,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tap",
+   "start": 13.75,
+   "end": 16.75,
+   "confidence": 0.06229154393076897,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, public space",
+   "start": 15.02,
+   "end": 17.75,
+   "confidence": 0.10942481458187103,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 16.0,
+   "end": 17.75,
+   "confidence": 0.08960533887147903,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 14.5,
+   "end": 16.75,
+   "confidence": 0.0680772215127945,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 16.98,
+   "end": 17.75,
+   "confidence": 0.19477465748786926,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 16.5,
+   "end": 17.75,
+   "confidence": 0.1490863710641861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 17.0,
+   "end": 17.75,
+   "confidence": 0.05813365802168846,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Run",
+   "start": 16.91,
+   "end": 17.75,
+   "confidence": 0.0620446540415287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Train",
+   "confidence": 0.7100546360015869,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 44,
+   "clap_top3": [
+    "Sound equipment",
+    "Blender",
+    "Sink (filling or washing)"
+   ]
+  },
+  {
+   "label": "Fireworks",
+   "confidence": 0.69795823097229,
+   "start": 4.58,
+   "end": 7.25,
+   "stretches": [
+    {
+     "start": 4.58,
+     "end": 7.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 47,
+   "clap_top3": [
+    "Rail transport",
+    "Sound equipment",
+    "Whistle"
+   ]
+  },
+  {
+   "label": "Alarm",
+   "confidence": 0.675872802734375,
+   "start": 0.0,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.25,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "fire alarm"
+    }
+   ],
+   "clap_rank": 56,
+   "clap_top3": [
+    "Sound equipment",
+    "Blender",
+    "Sink (filling or washing)"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.4932134449481964,
+   "start": 0.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.4375,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Fire truck"
+    },
+    {
+     "start": 4.4375,
+     "end": 8.875,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "A car on the road"
+    },
+    {
+     "start": 8.875,
+     "end": 13.3125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 13.3125,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 266,
+   "clap_top3": [
+    "Sound equipment",
+    "Blender",
+    "Sink (filling or washing)"
+   ]
+  },
+  {
+   "label": "Explosion",
+   "confidence": 0.4404818117618561,
+   "start": 4.42,
+   "end": 7.25,
+   "stretches": [
+    {
+     "start": 4.42,
+     "end": 7.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 172,
+   "clap_top3": [
+    "Sound equipment",
+    "Whale vocalization",
+    "Motor vehicle (road)"
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.4385119080543518,
+   "start": 5.0,
+   "end": 7.25,
+   "stretches": [
+    {
+     "start": 5.0,
+     "end": 7.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Sound equipment",
+    "Whale vocalization",
+    "Whistle"
+   ]
+  },
+  {
+   "label": "Thump, thud",
+   "confidence": 0.4230388402938843,
+   "start": 12.0,
+   "end": 17.25,
+   "stretches": [
+    {
+     "start": 12.0,
+     "end": 17.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 217,
+   "clap_top3": [
+    "Sound equipment",
+    "Printer",
+    "Microwave oven"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,358 @@
+{
+ "clip": "movie_bladerunner_49.mp4",
+ "tag": "no_ambient",
+ "duration": 16.016,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.8682052493095398,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.21999999999999997,
+   "end": 15.75,
+   "confidence": 0.6850022077560425,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.18881544470787048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 7.75,
+   "confidence": 0.08834093064069748,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.0,
+   "end": 4.0,
+   "confidence": 0.07059178501367569,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 0.98,
+   "end": 1.75,
+   "confidence": 0.05002425238490105,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Female speech, woman speaking",
+   "start": 3.3,
+   "end": 5.0,
+   "confidence": 0.15020671486854553,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 3.6500000000000004,
+   "end": 5.0,
+   "confidence": 0.07932063937187195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 5.48,
+   "end": 6.5,
+   "confidence": 0.07913170009851456,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 5.4,
+   "end": 6.5,
+   "confidence": 0.05961524322628975,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 7.05,
+   "end": 12.75,
+   "confidence": 0.47135597467422485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Scary music",
+   "start": 6.75,
+   "end": 14.25,
+   "confidence": 0.23266462981700897,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Video game music",
+   "start": 7.97,
+   "end": 10.0,
+   "confidence": 0.16516821086406708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 6.25,
+   "end": 13.25,
+   "confidence": 0.08042275160551071,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Background music",
+   "start": 8.05,
+   "end": 12.75,
+   "confidence": 0.07237408310174942,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zing",
+   "start": 7.01,
+   "end": 9.0,
+   "confidence": 0.0579315684735775,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 7.8100000000000005,
+   "end": 8.75,
+   "confidence": 0.056065578013658524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 7.34,
+   "end": 9.5,
+   "confidence": 0.06749192625284195,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Angry music",
+   "start": 7.43,
+   "end": 9.75,
+   "confidence": 0.06366702169179916,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 8.68,
+   "end": 15.75,
+   "confidence": 0.05407247319817543,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 9.75,
+   "end": 11.25,
+   "confidence": 0.052511151880025864,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Video game music",
+   "start": 10.64,
+   "end": 12.75,
+   "confidence": 0.05359949171543121,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 9.5,
+   "end": 14.25,
+   "confidence": 0.3131193220615387,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dubstep",
+   "start": 10.75,
+   "end": 14.0,
+   "confidence": 0.07775978744029999,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cacophony",
+   "start": 12.39,
+   "end": 13.0,
+   "confidence": 0.05650022253394127,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum and bass",
+   "start": 11.2,
+   "end": 14.0,
+   "confidence": 0.09025467932224274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Techno",
+   "start": 12.16,
+   "end": 13.75,
+   "confidence": 0.06340853869915009,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sampler",
+   "start": 12.16,
+   "end": 13.5,
+   "confidence": 0.06132699176669121,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 13.47,
+   "end": 14.75,
+   "confidence": 0.059973668307065964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Theme music",
+   "start": 13.32,
+   "end": 14.75,
+   "confidence": 0.07627402991056442,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 14.0,
+   "end": 15.75,
+   "confidence": 0.08227609097957611,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.0950869619846344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clang",
+   "start": 13.68,
+   "end": 15.25,
+   "confidence": 0.07358051836490631,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 13.0,
+   "end": 15.75,
+   "confidence": 0.051524434238672256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 13.12,
+   "end": 15.75,
+   "confidence": 0.05009932070970535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

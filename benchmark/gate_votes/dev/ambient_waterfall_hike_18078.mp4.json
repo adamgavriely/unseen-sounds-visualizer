@@ -1,0 +1,160 @@
+{
+ "clip": "ambient_waterfall_hike_18078.mp4",
+ "tag": "unseen_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Bird",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.8819546103477478,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.8619946837425232,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "confidence": 0.7865752577781677,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.16751527786254883,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.11690457165241241,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.55,
+   "end": 15.75,
+   "confidence": 0.2031000703573227,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp tone",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.13845287263393402,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.0,
+   "end": 6.5,
+   "confidence": 0.09852049499750137,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 8.05,
+   "end": 8.75,
+   "confidence": 0.11399835348129272,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 8.55,
+   "end": 9.75,
+   "confidence": 0.06413169950246811,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 13.5,
+   "end": 15.75,
+   "confidence": 0.05126487836241722,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bird",
+   "confidence": 0.8819546103477478,
+   "start": 0.14000000000000012,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 5.343333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.343333333333334,
+     "end": 10.546666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.546666666666667,
+     "end": 15.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Bird",
+    "Sine wave",
+    "Shout"
+   ]
+  }
+ ]
+}

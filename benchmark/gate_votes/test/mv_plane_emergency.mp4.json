@@ -1,0 +1,941 @@
+{
+ "clip": "mv_plane_emergency.mp4",
+ "tag": "unseen_ambient",
+ "duration": 24.024,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.14000000000000012,
+   "end": 23.75,
+   "confidence": 0.8695499897003174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 23.75,
+   "confidence": 0.7927804589271545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 0.0,
+   "end": 3.75,
+   "confidence": 0.2504119873046875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 0.14000000000000012,
+   "end": 2.5,
+   "confidence": 0.1971568763256073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 0.14000000000000012,
+   "end": 2.25,
+   "confidence": 0.1446959525346756,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.11237850040197372,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.10422352701425552,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 0.14000000000000012,
+   "end": 2.75,
+   "confidence": 0.07050962746143341,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 0.14000000000000012,
+   "end": 0.75,
+   "confidence": 0.0683024451136589,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.25,
+   "end": 3.75,
+   "confidence": 0.09447360783815384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clip-clop",
+   "start": 0.08000000000000007,
+   "end": 1.5,
+   "confidence": 0.09438565373420715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.15903973579406738,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.75,
+   "end": 2.25,
+   "confidence": 0.08327918499708176,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 1.02,
+   "end": 3.0,
+   "confidence": 0.05324826017022133,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 1.9300000000000002,
+   "end": 4.5,
+   "confidence": 0.3396894037723541,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 1.9300000000000002,
+   "end": 4.25,
+   "confidence": 0.19467537105083466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 1.9300000000000002,
+   "end": 4.25,
+   "confidence": 0.17902933061122894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick",
+   "start": 2.27,
+   "end": 5.25,
+   "confidence": 0.47820577025413513,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick-tock",
+   "start": 2.27,
+   "end": 5.25,
+   "confidence": 0.44689494371414185,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pulleys",
+   "start": 3.0,
+   "end": 4.0,
+   "confidence": 0.14875318109989166,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clock",
+   "start": 2.25,
+   "end": 5.0,
+   "confidence": 0.2803206145763397,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 4.0,
+   "end": 4.5,
+   "confidence": 0.07150891423225403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 3.77,
+   "end": 5.25,
+   "confidence": 0.06314275413751602,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 4.18,
+   "end": 6.0,
+   "confidence": 0.1282130777835846,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 5.0,
+   "end": 6.0,
+   "confidence": 0.10161242634057999,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 3.5,
+   "end": 5.5,
+   "confidence": 0.0678711086511612,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 5.0,
+   "end": 5.75,
+   "confidence": 0.058927468955516815,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 5.75,
+   "end": 8.5,
+   "confidence": 0.07673278450965881,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 4.5,
+   "end": 6.5,
+   "confidence": 0.056682467460632324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 6.25,
+   "end": 7.75,
+   "confidence": 0.10785241425037384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 6.5,
+   "end": 7.25,
+   "confidence": 0.051407601684331894,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 6.890000000000001,
+   "end": 7.75,
+   "confidence": 0.10133473575115204,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tick",
+   "start": 6.45,
+   "end": 9.0,
+   "confidence": 0.15256774425506592,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 8.5,
+   "end": 9.75,
+   "confidence": 0.06292372196912766,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 8.27,
+   "end": 13.75,
+   "confidence": 0.9365467429161072,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 7.75,
+   "end": 9.75,
+   "confidence": 0.0587615966796875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 8.5,
+   "end": 11.0,
+   "confidence": 0.16165082156658173,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thump, thud",
+   "start": 10.16,
+   "end": 11.25,
+   "confidence": 0.055507536977529526,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breaking",
+   "start": 10.73,
+   "end": 13.25,
+   "confidence": 0.1100492998957634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, large room or hall",
+   "start": 10.01,
+   "end": 11.5,
+   "confidence": 0.08011938631534576,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.11557694524526596,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 11.5,
+   "end": 14.0,
+   "confidence": 0.05144253745675087,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chopping (food)",
+   "start": 12.0,
+   "end": 14.25,
+   "confidence": 0.06898743659257889,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 12.2,
+   "end": 14.0,
+   "confidence": 0.055028464645147324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 13.87,
+   "end": 16.5,
+   "confidence": 0.05694805085659027,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 15.5,
+   "end": 18.25,
+   "confidence": 0.15942078828811646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 16.0,
+   "end": 18.25,
+   "confidence": 0.12307452410459518,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 15.98,
+   "end": 16.5,
+   "confidence": 0.061681028455495834,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 14.95,
+   "end": 18.25,
+   "confidence": 0.26057249307632446,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 16.25,
+   "end": 17.75,
+   "confidence": 0.07359922677278519,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 15.25,
+   "end": 17.5,
+   "confidence": 0.070915587246418,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 17.5,
+   "end": 18.0,
+   "confidence": 0.06305739283561707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 17.75,
+   "end": 19.75,
+   "confidence": 0.3486047685146332,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 18.25,
+   "end": 19.0,
+   "confidence": 0.37413808703422546,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 18.07,
+   "end": 19.0,
+   "confidence": 0.35272809863090515,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 18.25,
+   "end": 19.0,
+   "confidence": 0.310546875,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 16.95,
+   "end": 20.0,
+   "confidence": 0.14803548157215118,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 18.25,
+   "end": 18.75,
+   "confidence": 0.05703185871243477,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 18.25,
+   "end": 19.0,
+   "confidence": 0.05105021595954895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 17.5,
+   "end": 21.5,
+   "confidence": 0.2793007493019104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 18.27,
+   "end": 21.5,
+   "confidence": 0.18479323387145996,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 17.75,
+   "end": 20.0,
+   "confidence": 0.17999525368213654,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pigeon, dove",
+   "start": 18.25,
+   "end": 20.25,
+   "confidence": 0.11423031240701675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 18.25,
+   "end": 20.25,
+   "confidence": 0.0961126759648323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeak",
+   "start": 18.75,
+   "end": 20.75,
+   "confidence": 0.14251302182674408,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 18.75,
+   "end": 21.25,
+   "confidence": 0.1415179967880249,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Police car (siren)",
+   "start": 18.75,
+   "end": 20.75,
+   "confidence": 0.07812080532312393,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 21.0,
+   "end": 23.0,
+   "confidence": 0.13068810105323792,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 21.25,
+   "end": 22.75,
+   "confidence": 0.24594789743423462,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 21.08,
+   "end": 22.5,
+   "confidence": 0.11211440712213516,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Goose",
+   "start": 20.0,
+   "end": 22.25,
+   "confidence": 0.10673844814300537,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bow-wow",
+   "start": 20.68,
+   "end": 22.25,
+   "confidence": 0.06176735833287239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 20.76,
+   "end": 22.25,
+   "confidence": 0.061594158411026,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 20.68,
+   "end": 22.25,
+   "confidence": 0.051049891859292984,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Neigh, whinny",
+   "start": 20.25,
+   "end": 22.5,
+   "confidence": 0.10912253707647324,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 21.26,
+   "end": 23.5,
+   "confidence": 0.1761097013950348,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 22.16,
+   "end": 23.5,
+   "confidence": 0.14346814155578613,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 22.5,
+   "end": 23.75,
+   "confidence": 0.07683420926332474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Glass",
+   "confidence": 0.9365467429161072,
+   "start": 8.27,
+   "end": 13.75,
+   "stretches": [
+    {
+     "start": 8.27,
+     "end": 13.75,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 202,
+   "clap_top3": [
+    "Shout",
+    "Rock music",
+    "Music of Latin America"
+   ]
+  },
+  {
+   "label": "Tick",
+   "confidence": 0.47820577025413513,
+   "start": 2.27,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 2.27,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 67,
+   "clap_top3": [
+    "Speech",
+    "Shout",
+    "Rock music"
+   ]
+  },
+  {
+   "label": "Tick-tock",
+   "confidence": 0.44689494371414185,
+   "start": 2.27,
+   "end": 5.25,
+   "stretches": [
+    {
+     "start": 2.27,
+     "end": 5.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 67,
+   "clap_top3": [
+    "Speech",
+    "Shout",
+    "Rock music"
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.37413808703422546,
+   "start": 18.07,
+   "end": 19.0,
+   "stretches": [
+    {
+     "start": 18.07,
+     "end": 19.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 3,
+   "clap_top3": [
+    "Hubbub, speech noise, speech babble",
+    "Speech",
+    "Rail transport"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.3486047685146332,
+   "start": 17.75,
+   "end": 19.75,
+   "stretches": [
+    {
+     "start": 17.75,
+     "end": 19.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Clock",
+   "confidence": 0.2803206145763397,
+   "start": 2.25,
+   "end": 5.0,
+   "stretches": [
+    {
+     "start": 2.25,
+     "end": 5.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Gunshot",
+   "confidence": 0.2793007493019104,
+   "start": 14.95,
+   "end": 21.5,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 3.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.95,
+     "end": 21.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

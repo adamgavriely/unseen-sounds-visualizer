@@ -1,0 +1,640 @@
+{
+ "clip": "un_sea_waves_Bvgbafvm.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 8.5,
+   "confidence": 0.2870156466960907,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.2498328685760498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.1801954060792923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.17987753450870514,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.09248317033052444,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 0.30000000000000004,
+   "end": 1.5,
+   "confidence": 0.08282192796468735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rustle",
+   "start": 0.14000000000000012,
+   "end": 3.0,
+   "confidence": 0.06951967626810074,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 1.0,
+   "end": 6.25,
+   "confidence": 0.13559181988239288,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 1.0,
+   "end": 11.75,
+   "confidence": 0.06875944882631302,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 0.27,
+   "end": 2.75,
+   "confidence": 0.2506019175052643,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 0.27,
+   "end": 2.75,
+   "confidence": 0.23630565404891968,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.17464062571525574,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.14454194903373718,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.12204258888959885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.9099999999999999,
+   "end": 2.75,
+   "confidence": 0.10009633749723434,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 0.0,
+   "end": 2.75,
+   "confidence": 0.056490324437618256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.25,
+   "end": 7.75,
+   "confidence": 0.1698087900876999,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 2.25,
+   "end": 6.25,
+   "confidence": 0.10529904812574387,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 1.8399999999999999,
+   "end": 4.5,
+   "confidence": 0.05927342176437378,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 1.45,
+   "end": 3.25,
+   "confidence": 0.0567670576274395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 1.45,
+   "end": 3.25,
+   "confidence": 0.05291754752397537,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 3.0,
+   "end": 17.75,
+   "confidence": 0.4802987575531006,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 2.69,
+   "end": 17.75,
+   "confidence": 0.4855135381221771,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 3.9699999999999998,
+   "end": 17.75,
+   "confidence": 0.4681242108345032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 4.07,
+   "end": 5.0,
+   "confidence": 0.06901906430721283,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 4.390000000000001,
+   "end": 5.0,
+   "confidence": 0.06847669929265976,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 4.25,
+   "end": 5.0,
+   "confidence": 0.05850007385015488,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 4.390000000000001,
+   "end": 5.0,
+   "confidence": 0.05253123492002487,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 3.25,
+   "end": 6.75,
+   "confidence": 0.06769701093435287,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 4.43,
+   "end": 11.75,
+   "confidence": 0.5994362831115723,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 4.43,
+   "end": 11.75,
+   "confidence": 0.5673866868019104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 4.51,
+   "end": 11.0,
+   "confidence": 0.3397279381752014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 5.4,
+   "end": 11.0,
+   "confidence": 0.17352598905563354,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 6.75,
+   "end": 8.75,
+   "confidence": 0.0846325159072876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pink noise",
+   "start": 6.25,
+   "end": 9.25,
+   "confidence": 0.1075112596154213,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 7.75,
+   "end": 9.25,
+   "confidence": 0.10610824823379517,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.0,
+   "end": 17.75,
+   "confidence": 0.2619251310825348,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 6.5,
+   "end": 8.5,
+   "confidence": 0.10747717320919037,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 6.5,
+   "end": 9.25,
+   "confidence": 0.09368958324193954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 8.5,
+   "end": 17.75,
+   "confidence": 0.17596104741096497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 8.75,
+   "end": 17.75,
+   "confidence": 0.13116970658302307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 9.0,
+   "end": 11.0,
+   "confidence": 0.09297738969326019,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 11.25,
+   "end": 11.75,
+   "confidence": 0.05534012243151665,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 12.06,
+   "end": 17.75,
+   "confidence": 0.38050365447998047,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ocean",
+   "start": 12.14,
+   "end": 17.75,
+   "confidence": 0.3222622573375702,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 12.06,
+   "end": 17.75,
+   "confidence": 0.1514875590801239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 12.22,
+   "end": 12.5,
+   "confidence": 0.07221999019384384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 12.72,
+   "end": 14.75,
+   "confidence": 0.11941258609294891,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 12.5,
+   "end": 17.75,
+   "confidence": 0.05216039717197418,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 12.89,
+   "end": 14.5,
+   "confidence": 0.11000924557447433,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 15.0,
+   "end": 17.75,
+   "confidence": 0.22616277635097504,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sailboat, sailing ship",
+   "start": 14.34,
+   "end": 17.75,
+   "confidence": 0.16464154422283173,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 17.0,
+   "end": 17.75,
+   "confidence": 0.0807555690407753,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 17.55,
+   "end": 17.75,
+   "confidence": 0.1421450674533844,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Water",
+   "confidence": 0.5994362831115723,
+   "start": 4.43,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 0.27,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.43,
+     "end": 8.870000000000001,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.870000000000001,
+     "end": 13.31,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.31,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 30,
+   "clap_top3": [
+    "Rhythm and blues",
+    "Boat, Water vehicle",
+    "Funk"
+   ]
+  },
+  {
+   "label": "Boat",
+   "confidence": 0.4802987575531006,
+   "start": 3.0,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 3.0,
+     "end": 7.916666666666667,
+     "verdict": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 7.916666666666667,
+     "end": 12.833333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 12.833333333333334,
+     "end": 17.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "boat engine"
+    }
+   ],
+   "clap_rank": 276,
+   "clap_top3": [
+    "Pour",
+    "Bathtub (filling or washing)",
+    "Sink (filling or washing)"
+   ]
+  }
+ ]
+}

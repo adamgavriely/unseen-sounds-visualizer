@@ -1,0 +1,919 @@
+{
+ "clip": "b3_wm_road_traffic_cobblestone_road_we.mp4",
+ "tag": "mixed",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.5860162377357483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.4177565276622772,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.30000000000000004,
+   "end": 3.5,
+   "confidence": 0.20918333530426025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.14000000000000012,
+   "end": 6.0,
+   "confidence": 0.11764529347419739,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.14000000000000012,
+   "end": 3.5,
+   "confidence": 0.11155232042074203,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.11137203872203827,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.05895714834332466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 0.47,
+   "end": 3.5,
+   "confidence": 0.2142370194196701,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 0.47,
+   "end": 3.5,
+   "confidence": 0.16727033257484436,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 0.47,
+   "end": 3.25,
+   "confidence": 0.1431920975446701,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 0.49,
+   "end": 8.0,
+   "confidence": 0.23585110902786255,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 0.75,
+   "end": 1.75,
+   "confidence": 0.1273525506258011,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 1.0,
+   "end": 8.25,
+   "confidence": 0.14276887476444244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.10910052061080933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.0,
+   "end": 8.0,
+   "confidence": 0.1013147234916687,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 1.0,
+   "end": 10.5,
+   "confidence": 0.07530167698860168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 0.0,
+   "end": 3.25,
+   "confidence": 0.06495045870542526,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 1.82,
+   "end": 7.75,
+   "confidence": 0.22128641605377197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 1.1800000000000002,
+   "end": 4.25,
+   "confidence": 0.06991591304540634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.25,
+   "end": 13.0,
+   "confidence": 0.2030387967824936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 2.25,
+   "end": 13.5,
+   "confidence": 0.1282455325126648,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 2.91,
+   "end": 8.0,
+   "confidence": 0.10227366536855698,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 5.0,
+   "end": 5.5,
+   "confidence": 0.07126045972108841,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 5.0,
+   "end": 5.5,
+   "confidence": 0.06519750505685806,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 6.75,
+   "end": 10.75,
+   "confidence": 0.0866895541548729,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 5.86,
+   "end": 7.75,
+   "confidence": 0.05645004287362099,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 7.25,
+   "end": 10.0,
+   "confidence": 0.060017261654138565,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 6.0,
+   "end": 10.25,
+   "confidence": 0.13831265270709991,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 6.25,
+   "end": 9.75,
+   "confidence": 0.07495322823524475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 8.3,
+   "end": 9.75,
+   "confidence": 0.06714697182178497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 9.8,
+   "end": 11.25,
+   "confidence": 0.4605325758457184,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 9.48,
+   "end": 11.25,
+   "confidence": 0.4495473802089691,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 9.8,
+   "end": 11.25,
+   "confidence": 0.43285179138183594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 9.32,
+   "end": 10.5,
+   "confidence": 0.23378124833106995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 9.75,
+   "end": 19.0,
+   "confidence": 0.11341170221567154,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 9.37,
+   "end": 15.25,
+   "confidence": 0.1690753549337387,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 10.25,
+   "end": 22.75,
+   "confidence": 0.07484013587236404,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Traffic noise, roadway noise",
+   "start": 10.49,
+   "end": 11.25,
+   "confidence": 0.0571114644408226,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 11.0,
+   "end": 15.25,
+   "confidence": 0.13342218101024628,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 11.0,
+   "end": 27.75,
+   "confidence": 0.0814216211438179,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 11.55,
+   "end": 14.25,
+   "confidence": 0.08176802098751068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 11.55,
+   "end": 14.25,
+   "confidence": 0.07521194964647293,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Truck",
+   "start": 12.75,
+   "end": 17.25,
+   "confidence": 0.1755468100309372,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 12.75,
+   "end": 17.25,
+   "confidence": 0.08101396262645721,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bus",
+   "start": 12.98,
+   "end": 16.75,
+   "confidence": 0.14214403927326202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air brake",
+   "start": 13.08,
+   "end": 16.75,
+   "confidence": 0.1045573428273201,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 14.25,
+   "end": 18.75,
+   "confidence": 0.11417771875858307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.25,
+   "end": 16.0,
+   "confidence": 0.06436528265476227,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 15.75,
+   "end": 22.5,
+   "confidence": 0.6457231640815735,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 15.89,
+   "end": 22.5,
+   "confidence": 0.5589815974235535,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 15.89,
+   "end": 22.5,
+   "confidence": 0.5323862433433533,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 16.75,
+   "end": 19.25,
+   "confidence": 0.06607069820165634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 17.47,
+   "end": 19.25,
+   "confidence": 0.07950958609580994,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 18.0,
+   "end": 20.25,
+   "confidence": 0.07593043148517609,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 17.43,
+   "end": 20.0,
+   "confidence": 0.1147213876247406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 17.43,
+   "end": 20.0,
+   "confidence": 0.09551623463630676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train horn",
+   "start": 18.5,
+   "end": 21.25,
+   "confidence": 0.13863803446292877,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Clickety-clack",
+   "start": 17.25,
+   "end": 21.25,
+   "confidence": 0.17139066755771637,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 18.09,
+   "end": 19.5,
+   "confidence": 0.09335768222808838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Waves, surf",
+   "start": 17.45,
+   "end": 19.25,
+   "confidence": 0.05783359706401825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 19.5,
+   "end": 22.25,
+   "confidence": 0.10915222764015198,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 19.5,
+   "end": 25.75,
+   "confidence": 0.1009964570403099,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 18.0,
+   "end": 20.75,
+   "confidence": 0.06170349568128586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 21.0,
+   "end": 21.5,
+   "confidence": 0.054969076067209244,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Artillery fire",
+   "start": 19.5,
+   "end": 21.5,
+   "confidence": 0.052800580859184265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 21.25,
+   "end": 27.75,
+   "confidence": 0.11751475930213928,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 21.24,
+   "end": 27.75,
+   "confidence": 0.24143385887145996,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 21.5,
+   "end": 27.75,
+   "confidence": 0.08893197029829025,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 20.5,
+   "end": 27.25,
+   "confidence": 0.18743351101875305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 20.5,
+   "end": 27.25,
+   "confidence": 0.1685781329870224,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Caw",
+   "start": 22.0,
+   "end": 26.5,
+   "confidence": 0.11833394318819046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 20.5,
+   "end": 24.0,
+   "confidence": 0.1077658012509346,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 21.5,
+   "end": 27.25,
+   "confidence": 0.10629014670848846,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crow",
+   "start": 23.75,
+   "end": 26.5,
+   "confidence": 0.05392368137836456,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 25.0,
+   "end": 27.75,
+   "confidence": 0.19565299153327942,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 25.5,
+   "end": 27.75,
+   "confidence": 0.16795849800109863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 26.0,
+   "end": 27.75,
+   "confidence": 0.16652359068393707,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 25.9,
+   "end": 26.5,
+   "confidence": 0.052388645708560944,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 26.5,
+   "end": 27.75,
+   "confidence": 0.11563768237829208,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 26.73,
+   "end": 27.75,
+   "confidence": 0.06607858836650848,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 26.73,
+   "end": 27.75,
+   "confidence": 0.06290464848279953,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Train",
+   "confidence": 0.6457231640815735,
+   "start": 15.75,
+   "end": 22.5,
+   "stretches": [
+    {
+     "start": 9.48,
+     "end": 11.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 15.75,
+     "end": 22.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 4,
+   "clap_top3": [
+    "Vibration",
+    "Clock",
+    "Heart sounds, heartbeat"
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.5860162377357483,
+   "start": 0.0,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.625,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Truck"
+    },
+    {
+     "start": 4.625,
+     "end": 9.25,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "white car"
+    },
+    {
+     "start": 9.25,
+     "end": 13.875,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "white car"
+    },
+    {
+     "start": 13.875,
+     "end": 18.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle leaving gate"
+    },
+    {
+     "start": 18.5,
+     "end": 23.125,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Vehicle on road"
+    },
+    {
+     "start": 23.125,
+     "end": 27.75,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "Vehicle on road"
+    }
+   ],
+   "clap_rank": 63,
+   "clap_top3": [
+    "Heavy engine (low frequency)",
+    "Aircraft",
+    "Idling"
+   ]
+  }
+ ]
+}

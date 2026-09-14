@@ -1,0 +1,299 @@
+{
+ "clip": "b3_leafblower_fall.mp4",
+ "tag": "unseen_ambient",
+ "duration": 21.0,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.30000000000000004,
+   "end": 20.75,
+   "confidence": 0.4424040913581848,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 20.75,
+   "confidence": 0.3015015125274658,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.30000000000000004,
+   "end": 13.5,
+   "confidence": 0.26468712091445923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 20.75,
+   "confidence": 0.1787278801202774,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Microwave oven",
+   "start": 0.14000000000000012,
+   "end": 9.25,
+   "confidence": 0.10837159305810928,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.24,
+   "end": 2.5,
+   "confidence": 0.05524667724967003,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 0.5,
+   "end": 4.0,
+   "confidence": 0.08108289539813995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mains hum",
+   "start": 0.5,
+   "end": 3.75,
+   "confidence": 0.073265440762043,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 5.25,
+   "end": 7.5,
+   "confidence": 0.05536499246954918,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Microwave oven",
+   "start": 8.6,
+   "end": 17.25,
+   "confidence": 0.08847158402204514,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 10.0,
+   "end": 15.5,
+   "confidence": 0.21268944442272186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 10.0,
+   "end": 16.25,
+   "confidence": 0.21060322225093842,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 10.5,
+   "end": 15.5,
+   "confidence": 0.23122647404670715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Propeller, airscrew",
+   "start": 11.4,
+   "end": 15.25,
+   "confidence": 0.16664600372314453,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 12.18,
+   "end": 14.0,
+   "confidence": 0.056987863034009933,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Lawn mower",
+   "start": 12.75,
+   "end": 14.0,
+   "confidence": 0.0698673352599144,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Helicopter",
+   "start": 12.44,
+   "end": 14.0,
+   "confidence": 0.1144832894206047,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 12.5,
+   "end": 20.75,
+   "confidence": 0.30981045961380005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 16.5,
+   "end": 17.75,
+   "confidence": 0.05520911514759064,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 18.25,
+   "end": 19.75,
+   "confidence": 0.05541954189538956,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 19.89,
+   "end": 20.75,
+   "confidence": 0.07075348496437073,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Microwave oven",
+   "start": 19.01,
+   "end": 20.75,
+   "confidence": 0.06803916394710541,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 20.0,
+   "end": 20.75,
+   "confidence": 0.0578780472278595,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 18.75,
+   "end": 20.75,
+   "confidence": 0.06173458322882652,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.4424040913581848,
+   "start": 0.30000000000000004,
+   "end": 20.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.4125,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.4125,
+     "end": 10.525,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.525,
+     "end": 15.6375,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 15.6375,
+     "end": 20.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 154,
+   "clap_top3": [
+    "Keyboard (musical)",
+    "Background noise",
+    "Fill (with liquid)"
+   ]
+  }
+ ]
+}

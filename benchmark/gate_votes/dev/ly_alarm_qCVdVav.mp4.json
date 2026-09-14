@@ -1,0 +1,1059 @@
+{
+ "clip": "ly_alarm_qCVdVav.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.018,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.21999999999999997,
+   "end": 17.75,
+   "confidence": 0.9076821804046631,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 4.0,
+   "confidence": 0.18035931885242462,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 4.0,
+   "confidence": 0.1262124478816986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.11680728942155838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.1114770844578743,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 3.75,
+   "confidence": 0.07010259479284286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.054103102535009384,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 0.25,
+   "end": 1.25,
+   "confidence": 0.05637018010020256,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanical fan",
+   "start": 0.27,
+   "end": 3.25,
+   "confidence": 0.1903766244649887,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 1.25,
+   "end": 8.0,
+   "confidence": 0.15259350836277008,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air conditioning",
+   "start": 0.2,
+   "end": 4.25,
+   "confidence": 0.1331743448972702,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 0.37,
+   "end": 4.0,
+   "confidence": 0.07398451119661331,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 0.37,
+   "end": 4.0,
+   "confidence": 0.051912736147642136,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drawer open or close",
+   "start": 2.0,
+   "end": 5.0,
+   "confidence": 0.14641906321048737,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cupboard open or close",
+   "start": 2.0,
+   "end": 4.0,
+   "confidence": 0.08552497625350952,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sewing machine",
+   "start": 2.5,
+   "end": 4.5,
+   "confidence": 0.45100829005241394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Printer",
+   "start": 3.34,
+   "end": 4.5,
+   "confidence": 0.09289757907390594,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 4.23,
+   "end": 6.0,
+   "confidence": 0.4529818594455719,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cupboard open or close",
+   "start": 3.83,
+   "end": 5.25,
+   "confidence": 0.3607269823551178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 4.23,
+   "end": 6.0,
+   "confidence": 0.2618407607078552,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.25,
+   "end": 6.0,
+   "confidence": 0.1856849044561386,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power windows, electric windows",
+   "start": 3.12,
+   "end": 6.0,
+   "confidence": 0.32894769310951233,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric shaver, electric razor",
+   "start": 3.5,
+   "end": 5.75,
+   "confidence": 0.06858901679515839,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Printer",
+   "start": 4.2,
+   "end": 6.0,
+   "confidence": 0.07583384960889816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air conditioning",
+   "start": 4.0,
+   "end": 6.0,
+   "confidence": 0.051298078149557114,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pump (liquid)",
+   "start": 4.95,
+   "end": 8.25,
+   "confidence": 0.1684395968914032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water",
+   "start": 4.95,
+   "end": 7.75,
+   "confidence": 0.12584757804870605,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tools",
+   "start": 6.23,
+   "end": 8.25,
+   "confidence": 0.11113496869802475,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 5.11,
+   "end": 6.75,
+   "confidence": 0.07227117568254471,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fill (with liquid)",
+   "start": 4.95,
+   "end": 6.75,
+   "confidence": 0.05922149494290352,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 5.11,
+   "end": 6.75,
+   "confidence": 0.05400887876749039,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam",
+   "start": 5.11,
+   "end": 6.75,
+   "confidence": 0.05176009610295296,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Power tool",
+   "start": 5.0,
+   "end": 8.25,
+   "confidence": 0.06891778856515884,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 5.25,
+   "end": 9.25,
+   "confidence": 0.4787029027938843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 5.25,
+   "end": 9.0,
+   "confidence": 0.46710917353630066,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 5.25,
+   "end": 8.0,
+   "confidence": 0.3146143853664398,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric toothbrush",
+   "start": 5.25,
+   "end": 7.25,
+   "confidence": 0.11009928584098816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 6.75,
+   "end": 9.5,
+   "confidence": 0.08218205720186234,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric toothbrush",
+   "start": 6.36,
+   "end": 8.75,
+   "confidence": 0.407718688249588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, large room or hall",
+   "start": 6.2,
+   "end": 8.5,
+   "confidence": 0.07941018044948578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air conditioning",
+   "start": 6.36,
+   "end": 8.25,
+   "confidence": 0.07166417688131332,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 6.94,
+   "end": 13.25,
+   "confidence": 0.5263211131095886,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.0,
+   "end": 11.75,
+   "confidence": 0.1800229847431183,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 6.5,
+   "end": 8.75,
+   "confidence": 0.07375845313072205,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 8.0,
+   "end": 10.25,
+   "confidence": 0.06550207734107971,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 8.0,
+   "end": 8.75,
+   "confidence": 0.0544283352792263,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 8.25,
+   "end": 11.25,
+   "confidence": 0.23099368810653687,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snake",
+   "start": 8.07,
+   "end": 10.0,
+   "confidence": 0.12683837115764618,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 7.0,
+   "end": 9.0,
+   "confidence": 0.21944063901901245,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 8.5,
+   "end": 9.5,
+   "confidence": 0.07662557810544968,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rattle",
+   "start": 7.77,
+   "end": 9.5,
+   "confidence": 0.07980792224407196,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric toothbrush",
+   "start": 7.5,
+   "end": 11.5,
+   "confidence": 0.387694776058197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 10.06,
+   "end": 13.5,
+   "confidence": 0.10576441138982773,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric shaver, electric razor",
+   "start": 9.82,
+   "end": 11.25,
+   "confidence": 0.09946145862340927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pump (liquid)",
+   "start": 9.11,
+   "end": 12.75,
+   "confidence": 0.3980885148048401,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 10.25,
+   "end": 12.75,
+   "confidence": 0.11429274082183838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 10.5,
+   "end": 11.75,
+   "confidence": 0.08772774040699005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boiling",
+   "start": 9.95,
+   "end": 12.25,
+   "confidence": 0.3292425870895386,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dental drill, dentist's drill",
+   "start": 9.75,
+   "end": 12.0,
+   "confidence": 0.12298741936683655,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Steam",
+   "start": 10.0,
+   "end": 12.25,
+   "confidence": 0.1066536009311676,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Water",
+   "start": 11.08,
+   "end": 12.25,
+   "confidence": 0.10348496586084366,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 11.8,
+   "end": 12.25,
+   "confidence": 0.08237580209970474,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Liquid",
+   "start": 10.2,
+   "end": 12.25,
+   "confidence": 0.062080152332782745,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric toothbrush",
+   "start": 11.42,
+   "end": 17.75,
+   "confidence": 0.7339392900466919,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Noise",
+   "start": 12.07,
+   "end": 16.25,
+   "confidence": 0.6413992643356323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 13.73,
+   "end": 16.0,
+   "confidence": 0.15732713043689728,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 12.25,
+   "end": 17.75,
+   "confidence": 0.13105669617652893,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 13.75,
+   "end": 14.5,
+   "confidence": 0.06068599596619606,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vibration",
+   "start": 13.25,
+   "end": 15.25,
+   "confidence": 0.05304143950343132,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "White noise",
+   "start": 13.73,
+   "end": 15.25,
+   "confidence": 0.05205930396914482,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Air conditioning",
+   "start": 13.5,
+   "end": 15.75,
+   "confidence": 0.05775107070803642,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boiling",
+   "start": 13.27,
+   "end": 15.75,
+   "confidence": 0.06441895663738251,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 14.23,
+   "end": 15.0,
+   "confidence": 0.06370364874601364,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Pump (liquid)",
+   "start": 14.41,
+   "end": 15.75,
+   "confidence": 0.07823968678712845,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squeal",
+   "start": 13.75,
+   "end": 16.25,
+   "confidence": 0.26137852668762207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 15.5,
+   "end": 16.0,
+   "confidence": 0.050187524408102036,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dental drill, dentist's drill",
+   "start": 14.25,
+   "end": 17.75,
+   "confidence": 0.23172952234745026,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Camera",
+   "start": 15.98,
+   "end": 17.75,
+   "confidence": 0.16072072088718414,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Single-lens reflex camera",
+   "start": 15.35,
+   "end": 17.0,
+   "confidence": 0.06846479326486588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Engine",
+   "start": 15.51,
+   "end": 17.25,
+   "confidence": 0.06282898038625717,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 15.0,
+   "end": 17.25,
+   "confidence": 0.08236943930387497,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 16.75,
+   "end": 17.25,
+   "confidence": 0.062497302889823914,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Electric toothbrush",
+   "confidence": 0.7339392900466919,
+   "start": 6.36,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 6.36,
+     "end": 12.055,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 12.055,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 53,
+   "clap_top3": [
+    "Hubbub, speech noise, speech babble",
+    "Speech",
+    "Light engine (high frequency)"
+   ]
+  },
+  {
+   "label": "Squeal",
+   "confidence": 0.5263211131095886,
+   "start": 6.94,
+   "end": 16.25,
+   "stretches": [
+    {
+     "start": 6.94,
+     "end": 11.594999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.594999999999999,
+     "end": 16.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 102,
+   "clap_top3": [
+    "Light engine (high frequency)",
+    "Speech",
+    "Insect"
+   ]
+  },
+  {
+   "label": "Ratchet, pawl",
+   "confidence": 0.46710917353630066,
+   "start": 5.25,
+   "end": 9.0,
+   "stretches": [
+    {
+     "start": 5.25,
+     "end": 9.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 89,
+   "clap_top3": [
+    "Light engine (high frequency)",
+    "Speech",
+    "Motor vehicle (road)"
+   ]
+  },
+  {
+   "label": "Sliding door",
+   "confidence": 0.4529818594455719,
+   "start": 4.23,
+   "end": 6.0,
+   "stretches": [
+    {
+     "start": 4.23,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 106,
+   "clap_top3": [
+    "Sound equipment",
+    "Motor vehicle (road)",
+    "Rock music"
+   ]
+  },
+  {
+   "label": "Sewing machine",
+   "confidence": 0.45100829005241394,
+   "start": 2.5,
+   "end": 4.5,
+   "stretches": [
+    {
+     "start": 2.5,
+     "end": 4.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Printer",
+    "Motor vehicle (road)",
+    "Cash register"
+   ]
+  },
+  {
+   "label": "Pump (liquid)",
+   "confidence": 0.3980885148048401,
+   "start": 9.11,
+   "end": 12.75,
+   "stretches": [
+    {
+     "start": 9.11,
+     "end": 12.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 79,
+   "clap_top3": [
+    "Light engine (high frequency)",
+    "Speech",
+    "Motor vehicle (road)"
+   ]
+  },
+  {
+   "label": "Door",
+   "confidence": 0.3607269823551178,
+   "start": 3.83,
+   "end": 6.0,
+   "stretches": [
+    {
+     "start": 3.83,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "C man"
+    }
+   ],
+   "clap_rank": 68,
+   "clap_top3": [
+    "Motor vehicle (road)",
+    "Printer",
+    "Sound equipment"
+   ]
+  },
+  {
+   "label": "Boiling",
+   "confidence": 0.3292425870895386,
+   "start": 9.95,
+   "end": 12.25,
+   "stretches": [
+    {
+     "start": 9.95,
+     "end": 12.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Power windows, electric windows",
+   "confidence": 0.32894769310951233,
+   "start": 3.12,
+   "end": 6.0,
+   "stretches": [
+    {
+     "start": 3.12,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Gears",
+   "confidence": 0.3146143853664398,
+   "start": 5.25,
+   "end": 8.0,
+   "stretches": [
+    {
+     "start": 5.25,
+     "end": 8.0,
+     "verdict": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

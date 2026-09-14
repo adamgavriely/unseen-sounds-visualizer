@@ -1,0 +1,200 @@
+{
+ "clip": "ambient_waterfall_hike_9039.mp4",
+ "tag": "unseen_ambient",
+ "duration": 16.0,
+ "events": [
+  {
+   "label": "Bird",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.8618242740631104,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.822049617767334,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "confidence": 0.8025331497192383,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.0,
+   "end": 4.75,
+   "confidence": 0.057990361005067825,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.5,
+   "end": 15.75,
+   "confidence": 0.11588982492685318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 0.0,
+   "end": 15.75,
+   "confidence": 0.3115391731262207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 0.73,
+   "end": 3.75,
+   "confidence": 0.10071884095668793,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 0.27,
+   "end": 3.0,
+   "confidence": 0.20563362538814545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 1.25,
+   "end": 2.75,
+   "confidence": 0.13606703281402588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cluck",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.07581029087305069,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 11.5,
+   "end": 15.75,
+   "confidence": 0.06799529492855072,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Coo",
+   "start": 11.65,
+   "end": 14.75,
+   "confidence": 0.07216699421405792,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 12.75,
+   "end": 15.75,
+   "confidence": 0.061742015182971954,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 11.86,
+   "end": 15.75,
+   "confidence": 0.17667870223522186,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 14.27,
+   "end": 15.75,
+   "confidence": 0.053322311490774155,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Bird",
+   "confidence": 0.8618242740631104,
+   "start": 0.30000000000000004,
+   "end": 15.75,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 5.449999999999999,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.449999999999999,
+     "end": 10.6,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.6,
+     "end": 15.749999999999998,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Bird",
+    "Sine wave",
+    "Theremin"
+   ]
+  }
+ ]
+}

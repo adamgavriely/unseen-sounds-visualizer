@@ -1,0 +1,288 @@
+{
+ "clip": "oc_distant_traffic_hill.mp4",
+ "tag": "no_ambient",
+ "duration": 19.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.6947007179260254,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.30000000000000004,
+   "end": 1.0,
+   "confidence": 0.11097290366888046,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 2.25,
+   "confidence": 0.10564764589071274,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.1045340895652771,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Keyboard (musical)",
+   "start": 0.0,
+   "end": 0.75,
+   "confidence": 0.07991708815097809,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Piano",
+   "start": 0.32000000000000006,
+   "end": 1.0,
+   "confidence": 0.0687226802110672,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ding",
+   "start": 0.25,
+   "end": 2.0,
+   "confidence": 0.1328122317790985,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.2382226288318634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.22745034098625183,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.22283563017845154,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 2.5,
+   "end": 18.75,
+   "confidence": 0.20224863290786743,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.5,
+   "end": 8.0,
+   "confidence": 0.10537134855985641,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 1.0,
+   "end": 4.25,
+   "confidence": 0.0757189691066742,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 5.25,
+   "end": 8.75,
+   "confidence": 0.05479850620031357,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 6.4,
+   "end": 13.0,
+   "confidence": 0.10249712318181992,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 6.4,
+   "end": 9.0,
+   "confidence": 0.08098152279853821,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Singing bowl",
+   "start": 7.72,
+   "end": 8.5,
+   "confidence": 0.14340722560882568,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.25,
+   "end": 18.75,
+   "confidence": 0.17302697896957397,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 9.57,
+   "end": 11.0,
+   "confidence": 0.06215694546699524,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Singing bowl",
+   "start": 11.05,
+   "end": 12.5,
+   "confidence": 0.08675199002027512,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 11.05,
+   "end": 12.5,
+   "confidence": 0.054949745535850525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 10.68,
+   "end": 12.25,
+   "confidence": 0.05346484109759331,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 10.0,
+   "end": 12.25,
+   "confidence": 0.051842886954545975,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 11.75,
+   "end": 16.25,
+   "confidence": 0.06732719391584396,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 12.16,
+   "end": 13.25,
+   "confidence": 0.05314682424068451,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 14.8,
+   "end": 16.5,
+   "confidence": 0.10619309544563293,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 15.05,
+   "end": 16.5,
+   "confidence": 0.06590930372476578,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electronic music",
+   "start": 14.68,
+   "end": 17.25,
+   "confidence": 0.0556548610329628,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

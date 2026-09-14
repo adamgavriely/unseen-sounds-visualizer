@@ -1,0 +1,148 @@
+{
+ "clip": "interview_mickharvey.mp4",
+ "tag": "no_ambient",
+ "duration": 18.019002,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.30000000000000004,
+   "end": 17.77,
+   "confidence": 0.6420185565948486,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 17.77,
+   "confidence": 0.3075636029243469,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 0.06000000000000005,
+   "end": 17.77,
+   "confidence": 0.18755896389484406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.21999999999999997,
+   "end": 17.77,
+   "confidence": 0.07773486524820328,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 0.30000000000000004,
+   "end": 0.75,
+   "confidence": 0.06496674567461014,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 0.0,
+   "end": 10.5,
+   "confidence": 0.1154794991016388,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 0.0,
+   "end": 10.25,
+   "confidence": 0.11283943057060242,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum",
+   "start": 0.0,
+   "end": 6.75,
+   "confidence": 0.05120700225234032,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 2.5,
+   "end": 9.75,
+   "confidence": 0.07689182460308075,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 10.25,
+   "end": 17.77,
+   "confidence": 0.07074929028749466,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 9.25,
+   "end": 17.77,
+   "confidence": 0.0662187710404396,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 11.75,
+   "end": 17.77,
+   "confidence": 0.05849971994757652,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Male speech, man speaking",
+   "start": 15.55,
+   "end": 17.5,
+   "confidence": 0.06068527325987816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Narration, monologue",
+   "start": 15.55,
+   "end": 16.25,
+   "confidence": 0.05524358153343201,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": []
+}

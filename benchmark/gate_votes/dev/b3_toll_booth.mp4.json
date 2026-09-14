@@ -1,0 +1,243 @@
+{
+ "clip": "b3_toll_booth.mp4",
+ "tag": "seen_ambient",
+ "duration": 19.019019,
+ "events": [
+  {
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.31719326972961426,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.25581610202789307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.21999999999999997,
+   "end": 18.75,
+   "confidence": 0.24765117466449738,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.22806105017662048,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 18.75,
+   "confidence": 0.20626725256443024,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.14000000000000012,
+   "end": 2.0,
+   "confidence": 0.19759953022003174,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.1191844791173935,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.06272918730974197,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.75,
+   "end": 7.75,
+   "confidence": 0.054214827716350555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 1.0,
+   "end": 7.75,
+   "confidence": 0.05577898770570755,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 6.98,
+   "end": 9.5,
+   "confidence": 0.15449662506580353,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 7.75,
+   "end": 8.75,
+   "confidence": 0.06267493218183517,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 7.42,
+   "end": 9.0,
+   "confidence": 0.058036647737026215,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 9.55,
+   "end": 10.0,
+   "confidence": 0.05888327956199646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 12.05,
+   "end": 14.5,
+   "confidence": 0.06273733079433441,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Aircraft",
+   "start": 13.5,
+   "end": 15.25,
+   "confidence": 0.09417109191417694,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fixed-wing aircraft, airplane",
+   "start": 13.41,
+   "end": 15.25,
+   "confidence": 0.06381876021623611,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 13.59,
+   "end": 15.25,
+   "confidence": 0.06141597032546997,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motor vehicle (road)",
+   "start": 14.25,
+   "end": 18.75,
+   "confidence": 0.05342336744070053,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.31719326972961426,
+   "start": 0.0,
+   "end": 18.75,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.6875,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.6875,
+     "end": 9.375,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "a truck"
+    },
+    {
+     "start": 9.375,
+     "end": 14.0625,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The truck"
+    },
+    {
+     "start": 14.0625,
+     "end": 18.75,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The truck"
+    }
+   ]
+  }
+ ]
+}

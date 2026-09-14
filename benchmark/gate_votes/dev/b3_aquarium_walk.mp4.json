@@ -1,0 +1,317 @@
+{
+ "clip": "b3_aquarium_walk.mp4",
+ "tag": "no_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Music",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.8600428104400635,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whale vocalization",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.6828576326370239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 27.75,
+   "confidence": 0.19731777906417847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 0.30000000000000004,
+   "end": 10.0,
+   "confidence": 0.1878298670053482,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 0.14000000000000012,
+   "end": 2.25,
+   "confidence": 0.10342787206172943,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 1.05,
+   "end": 4.25,
+   "confidence": 0.16133303940296173,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 2.3,
+   "end": 9.75,
+   "confidence": 0.07490679621696472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 2.25,
+   "end": 2.75,
+   "confidence": 0.06619162857532501,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 0.87,
+   "end": 3.25,
+   "confidence": 0.06462058424949646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 2.0,
+   "end": 8.5,
+   "confidence": 0.16463889181613922,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 4.25,
+   "end": 6.0,
+   "confidence": 0.09856650978326797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 4.8,
+   "end": 5.25,
+   "confidence": 0.06913046538829803,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 6.0,
+   "end": 9.5,
+   "confidence": 0.05907038599252701,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 9.39,
+   "end": 10.5,
+   "confidence": 0.06758558005094528,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 10.55,
+   "end": 16.25,
+   "confidence": 0.21847058832645416,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 10.36,
+   "end": 13.75,
+   "confidence": 0.07978130877017975,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Soundtrack music",
+   "start": 11.82,
+   "end": 14.5,
+   "confidence": 0.06662479788064957,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 12.8,
+   "end": 15.75,
+   "confidence": 0.07105188816785812,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rumble",
+   "start": 13.5,
+   "end": 19.0,
+   "confidence": 0.08510798960924149,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 16.48,
+   "end": 20.25,
+   "confidence": 0.0715232640504837,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ambient music",
+   "start": 19.05,
+   "end": 27.5,
+   "confidence": 0.18277934193611145,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "New-age music",
+   "start": 20.8,
+   "end": 27.25,
+   "confidence": 0.20233546197414398,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Squish",
+   "start": 21.83,
+   "end": 27.75,
+   "confidence": 0.12273877114057541,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drip",
+   "start": 25.98,
+   "end": 27.0,
+   "confidence": 0.052999552339315414,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Whale vocalization",
+   "confidence": 0.6828576326370239,
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.741666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.741666666666667,
+     "end": 9.343333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.343333333333334,
+     "end": 13.945,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.945,
+     "end": 18.546666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.546666666666667,
+     "end": 23.148333333333337,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.148333333333337,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 94,
+   "clap_top3": [
+    "Sad music",
+    "Fill (with liquid)",
+    "Scary music"
+   ]
+  }
+ ]
+}

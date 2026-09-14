@@ -1,0 +1,849 @@
+{
+ "clip": "mc_fire_rescue.mp4",
+ "tag": "seen_ambient",
+ "duration": 22.022,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.21999999999999997,
+   "end": 21.75,
+   "confidence": 0.8161755800247192,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 5.75,
+   "confidence": 0.2827935814857483,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 0.30000000000000004,
+   "end": 3.0,
+   "confidence": 0.22802402079105377,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.11646419018507004,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.08250913769006729,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Groan",
+   "start": 0.30000000000000004,
+   "end": 0.5,
+   "confidence": 0.0661969780921936,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoop",
+   "start": 0.55,
+   "end": 1.0,
+   "confidence": 0.07657542824745178,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 0.19,
+   "end": 2.75,
+   "confidence": 0.3093017637729645,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 1.1500000000000001,
+   "end": 3.0,
+   "confidence": 0.15448960661888123,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 1.6300000000000001,
+   "end": 2.75,
+   "confidence": 0.07415483146905899,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 1.17,
+   "end": 2.5,
+   "confidence": 0.06599006056785583,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 0.53,
+   "end": 2.75,
+   "confidence": 0.0611199326813221,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 1.0899999999999999,
+   "end": 2.75,
+   "confidence": 0.06071225926280022,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 2.75,
+   "end": 8.0,
+   "confidence": 0.27780699729919434,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 2.41,
+   "end": 4.5,
+   "confidence": 0.18516968190670013,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 2.75,
+   "end": 5.0,
+   "confidence": 0.11793466657400131,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.0,
+   "end": 7.5,
+   "confidence": 0.3000783622264862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 3.27,
+   "end": 5.75,
+   "confidence": 0.05343623831868172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 3.27,
+   "end": 5.0,
+   "confidence": 0.05101654306054115,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 4.5,
+   "end": 5.5,
+   "confidence": 0.05391492694616318,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 3.25,
+   "end": 6.0,
+   "confidence": 0.07791093736886978,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 4.75,
+   "end": 6.75,
+   "confidence": 0.05622720718383789,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 3.25,
+   "end": 5.5,
+   "confidence": 0.05442112311720848,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 3.25,
+   "end": 5.75,
+   "confidence": 0.05376490578055382,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 5.25,
+   "end": 6.0,
+   "confidence": 0.05170711874961853,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 5.5,
+   "end": 7.0,
+   "confidence": 0.0996752381324768,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 6.0,
+   "end": 21.75,
+   "confidence": 0.8371155858039856,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 6.25,
+   "end": 6.75,
+   "confidence": 0.055225007236003876,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Motorboat, speedboat",
+   "start": 6.25,
+   "end": 6.75,
+   "confidence": 0.05455457419157028,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 6.25,
+   "end": 6.75,
+   "confidence": 0.052660539746284485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 6.76,
+   "end": 8.5,
+   "confidence": 0.15952573716640472,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bellow",
+   "start": 7.24,
+   "end": 8.25,
+   "confidence": 0.11268999427556992,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Yell",
+   "start": 7.73,
+   "end": 8.25,
+   "confidence": 0.05678321048617363,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.25,
+   "end": 12.75,
+   "confidence": 0.1961193084716797,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 8.25,
+   "end": 9.25,
+   "confidence": 0.10404780507087708,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 8.5,
+   "end": 10.0,
+   "confidence": 0.05464906617999077,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 7.25,
+   "end": 9.25,
+   "confidence": 0.11041484773159027,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sigh",
+   "start": 7.75,
+   "end": 10.25,
+   "confidence": 0.057541873306035995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 10.0,
+   "end": 11.25,
+   "confidence": 0.05697666108608246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain",
+   "start": 9.25,
+   "end": 13.75,
+   "confidence": 0.15179763734340668,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rain on surface",
+   "start": 10.59,
+   "end": 13.75,
+   "confidence": 0.163826584815979,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Raindrop",
+   "start": 9.95,
+   "end": 13.75,
+   "confidence": 0.14580796658992767,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 9.75,
+   "end": 12.5,
+   "confidence": 0.05809522792696953,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunderstorm",
+   "start": 9.75,
+   "end": 12.5,
+   "confidence": 0.052600909024477005,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 11.5,
+   "end": 12.75,
+   "confidence": 0.05936087295413017,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 12.0,
+   "end": 13.0,
+   "confidence": 0.06079476699233055,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 12.97,
+   "end": 13.25,
+   "confidence": 0.06934294104576111,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fusillade",
+   "start": 12.0,
+   "end": 14.5,
+   "confidence": 0.08114386349916458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Machine gun",
+   "start": 13.5,
+   "end": 14.25,
+   "confidence": 0.07120026648044586,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "start": 13.5,
+   "end": 14.25,
+   "confidence": 0.05053053796291351,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 13.75,
+   "end": 17.5,
+   "confidence": 0.39697152376174927,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Percussion",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.06878314912319183,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Drum",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.06395642459392548,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Timpani",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.0586082823574543,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 12.25,
+   "end": 15.25,
+   "confidence": 0.05438883230090141,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 13.34,
+   "end": 17.75,
+   "confidence": 0.33556315302848816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 14.0,
+   "end": 17.0,
+   "confidence": 0.26590773463249207,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 14.15,
+   "end": 18.5,
+   "confidence": 0.17391538619995117,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 14.25,
+   "end": 15.0,
+   "confidence": 0.0921185240149498,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 15.05,
+   "end": 16.75,
+   "confidence": 0.14661848545074463,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 14.18,
+   "end": 17.75,
+   "confidence": 0.23191319406032562,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Thunder",
+   "start": 15.06,
+   "end": 17.0,
+   "confidence": 0.11567492038011551,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 16.3,
+   "end": 17.25,
+   "confidence": 0.05711490660905838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Zipper (clothing)",
+   "start": 17.16,
+   "end": 19.25,
+   "confidence": 0.12912240624427795,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 17.75,
+   "end": 19.25,
+   "confidence": 0.1124381572008133,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 17.02,
+   "end": 18.5,
+   "confidence": 0.1404830813407898,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whoosh, swoosh, swish",
+   "start": 18.57,
+   "end": 20.5,
+   "confidence": 0.12371069192886353,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boom",
+   "start": 19.14,
+   "end": 21.75,
+   "confidence": 0.45880088210105896,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Shatter",
+   "start": 18.26,
+   "end": 21.5,
+   "confidence": 0.22968487441539764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Explosion",
+   "start": 19.0,
+   "end": 21.75,
+   "confidence": 0.17070165276527405,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burst, pop",
+   "start": 19.0,
+   "end": 21.0,
+   "confidence": 0.08324922621250153,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sound effect",
+   "start": 19.72,
+   "end": 21.75,
+   "confidence": 0.07746076583862305,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Eruption",
+   "start": 19.18,
+   "end": 21.75,
+   "confidence": 0.0789044126868248,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crack",
+   "start": 19.9,
+   "end": 21.75,
+   "confidence": 0.05770200863480568,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Explosion",
+   "confidence": 0.45880088210105896,
+   "start": 19.14,
+   "end": 21.75,
+   "stretches": [
+    {
+     "start": 13.75,
+     "end": 17.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 19.14,
+     "end": 21.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 85,
+   "clap_top3": [
+    "Fill (with liquid)",
+    "Rock music",
+    "Fire"
+   ]
+  },
+  {
+   "label": "Glass",
+   "confidence": 0.33556315302848816,
+   "start": 13.34,
+   "end": 17.75,
+   "stretches": [
+    {
+     "start": 13.34,
+     "end": 17.75,
+     "verdict": false,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Crack",
+   "confidence": 0.3093017637729645,
+   "start": 0.19,
+   "end": 2.75,
+   "stretches": [
+    {
+     "start": 0.19,
+     "end": 2.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Vehicle",
+   "confidence": 0.27780699729919434,
+   "start": 2.75,
+   "end": 8.0,
+   "stretches": [
+    {
+     "start": 2.75,
+     "end": 8.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Burst, pop",
+   "confidence": 0.26590773463249207,
+   "start": 14.0,
+   "end": 17.0,
+   "stretches": [
+    {
+     "start": 14.0,
+     "end": 17.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

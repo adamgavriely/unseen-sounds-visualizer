@@ -1,0 +1,684 @@
+{
+ "clip": "b3_barbershop.mp4",
+ "tag": "unseen_ambient",
+ "duration": 28.0,
+ "events": [
+  {
+   "label": "Mains hum",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.9137853384017944,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Electric shaver, electric razor",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.8701095581054688,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hum",
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "confidence": 0.8443263173103333,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 0.14000000000000012,
+   "end": 12.5,
+   "confidence": 0.38426682353019714,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 8.25,
+   "confidence": 0.19673846662044525,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 8.75,
+   "confidence": 0.1701425313949585,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.14000000000000012,
+   "end": 8.25,
+   "confidence": 0.1683446317911148,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.25,
+   "end": 1.0,
+   "confidence": 0.0648680105805397,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 3.25,
+   "end": 5.5,
+   "confidence": 0.06920847296714783,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 2.7800000000000002,
+   "end": 7.0,
+   "confidence": 0.1212741807103157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 3.86,
+   "end": 5.75,
+   "confidence": 0.06239539012312889,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 6.0,
+   "end": 8.25,
+   "confidence": 0.1096406877040863,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 4.75,
+   "end": 7.0,
+   "confidence": 0.07515740394592285,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Static",
+   "start": 7.72,
+   "end": 10.25,
+   "confidence": 0.09077576547861099,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 8.5,
+   "end": 13.5,
+   "confidence": 0.11506957560777664,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 8.75,
+   "end": 10.0,
+   "confidence": 0.05409509688615799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 9.0,
+   "end": 11.0,
+   "confidence": 0.1608198583126068,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 10.25,
+   "end": 15.0,
+   "confidence": 0.11106068640947342,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Tools",
+   "start": 8.75,
+   "end": 11.25,
+   "confidence": 0.05370311439037323,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 11.25,
+   "end": 14.75,
+   "confidence": 0.24926450848579407,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 11.25,
+   "end": 20.75,
+   "confidence": 0.2156812846660614,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.13154736161231995,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 12.25,
+   "end": 27.25,
+   "confidence": 0.08461019396781921,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Guitar",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.07104656100273132,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Plucked string instrument",
+   "start": 12.25,
+   "end": 14.25,
+   "confidence": 0.06392396241426468,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 14.59,
+   "end": 16.5,
+   "confidence": 0.28988856077194214,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 15.25,
+   "end": 22.0,
+   "confidence": 0.178496316075325,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 15.25,
+   "end": 20.5,
+   "confidence": 0.14239013195037842,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 16.22,
+   "end": 17.5,
+   "confidence": 0.12704694271087646,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 20.22,
+   "end": 23.0,
+   "confidence": 0.267269104719162,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 19.18,
+   "end": 20.75,
+   "confidence": 0.08165953308343887,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 19.18,
+   "end": 20.5,
+   "confidence": 0.07409994304180145,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 20.75,
+   "end": 23.5,
+   "confidence": 0.06372318416833878,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 20.75,
+   "end": 22.75,
+   "confidence": 0.053547296673059464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 22.07,
+   "end": 24.75,
+   "confidence": 0.31166237592697144,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ratchet, pawl",
+   "start": 22.07,
+   "end": 24.5,
+   "confidence": 0.09340173751115799,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Gears",
+   "start": 22.34,
+   "end": 24.5,
+   "confidence": 0.05088026821613312,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 23.25,
+   "end": 27.75,
+   "confidence": 0.2663680911064148,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzz",
+   "start": 22.37,
+   "end": 26.0,
+   "confidence": 0.0688881054520607,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Speech",
+   "start": 24.25,
+   "end": 26.25,
+   "confidence": 0.1404121220111847,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 24.5,
+   "end": 27.0,
+   "confidence": 0.1332818567752838,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 24.75,
+   "end": 25.5,
+   "confidence": 0.05411480739712715,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Mechanisms",
+   "start": 25.61,
+   "end": 27.75,
+   "confidence": 0.09144052118062973,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Mains hum",
+   "confidence": 0.9137853384017944,
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.741666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.741666666666667,
+     "end": 9.343333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.343333333333334,
+     "end": 13.945,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.945,
+     "end": 18.546666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.546666666666667,
+     "end": 23.148333333333337,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.148333333333337,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Electric shaver, electric razor",
+    "Power tool",
+    "Toothbrush"
+   ]
+  },
+  {
+   "label": "Electric shaver, electric razor",
+   "confidence": 0.8701095581054688,
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.741666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.741666666666667,
+     "end": 9.343333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.343333333333334,
+     "end": 13.945,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.945,
+     "end": 18.546666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.546666666666667,
+     "end": 23.148333333333337,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.148333333333337,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 1,
+   "clap_top3": [
+    "Electric shaver, electric razor",
+    "Power tool",
+    "Toothbrush"
+   ]
+  },
+  {
+   "label": "Hum",
+   "confidence": 0.8443263173103333,
+   "start": 0.14000000000000012,
+   "end": 27.75,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.741666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.741666666666667,
+     "end": 9.343333333333334,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.343333333333334,
+     "end": 13.945,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.945,
+     "end": 18.546666666666667,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.546666666666667,
+     "end": 23.148333333333337,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.148333333333337,
+     "end": 27.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 64,
+   "clap_top3": [
+    "Electric shaver, electric razor",
+    "Power tool",
+    "Toothbrush"
+   ]
+  },
+  {
+   "label": "Buzz",
+   "confidence": 0.38426682353019714,
+   "start": 0.14000000000000012,
+   "end": 12.5,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 6.32,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 6.32,
+     "end": 12.5,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 20.22,
+     "end": 23.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 5,
+   "clap_top3": [
+    "Electric shaver, electric razor",
+    "Power tool",
+    "Toothbrush"
+   ]
+  }
+ ]
+}

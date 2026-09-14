@@ -1,0 +1,557 @@
+{
+ "clip": "station_kwasa2.mp4",
+ "tag": "unseen_ambient",
+ "duration": 18.0,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.6352541446685791,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 17.75,
+   "confidence": 0.32650309801101685,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 0.21999999999999997,
+   "end": 13.0,
+   "confidence": 0.3085371255874634,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 0.14000000000000012,
+   "end": 9.5,
+   "confidence": 0.2714952826499939,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ship",
+   "start": 0.30000000000000004,
+   "end": 2.0,
+   "confidence": 0.15006597340106964,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 0.14000000000000012,
+   "end": 4.0,
+   "confidence": 0.12463266402482986,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 0.14000000000000012,
+   "end": 4.0,
+   "confidence": 0.10052551329135895,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Boat, Water vehicle",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.08899366110563278,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.08568743616342545,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.30000000000000004,
+   "end": 0.75,
+   "confidence": 0.07975785434246063,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wind",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.07482034713029861,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 0.0,
+   "end": 2.5,
+   "confidence": 0.06987257301807404,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, urban or manmade",
+   "start": 0.0,
+   "end": 7.25,
+   "confidence": 0.06935475766658783,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.05632287263870239,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.05254673585295677,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 2.0,
+   "confidence": 0.05182420834898949,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Field recording",
+   "start": 0.74,
+   "end": 1.75,
+   "confidence": 0.06666593253612518,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 1.5,
+   "end": 2.25,
+   "confidence": 0.05882065370678902,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Door",
+   "start": 2.08,
+   "end": 3.75,
+   "confidence": 0.0658748596906662,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 2.66,
+   "end": 3.75,
+   "confidence": 0.05219756066799164,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fire alarm",
+   "start": 1.5,
+   "end": 4.5,
+   "confidence": 0.050496749579906464,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car alarm",
+   "start": 2.91,
+   "end": 5.75,
+   "confidence": 0.1489792913198471,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 3.5,
+   "end": 6.75,
+   "confidence": 0.06633800268173218,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Buzzer",
+   "start": 3.73,
+   "end": 5.25,
+   "confidence": 0.0642353892326355,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 3.9000000000000004,
+   "end": 5.75,
+   "confidence": 0.09048949927091599,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Reversing beeps",
+   "start": 2.7,
+   "end": 5.0,
+   "confidence": 0.0652623251080513,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 4.55,
+   "end": 7.25,
+   "confidence": 0.24483028054237366,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 4.63,
+   "end": 7.25,
+   "confidence": 0.22391319274902344,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Subway, metro, underground",
+   "start": 4.55,
+   "end": 6.25,
+   "confidence": 0.06811510771512985,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train wheels squealing",
+   "start": 4.72,
+   "end": 6.25,
+   "confidence": 0.0702725350856781,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 5.25,
+   "end": 8.5,
+   "confidence": 0.05061335861682892,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Rail transport",
+   "start": 7.8,
+   "end": 9.5,
+   "confidence": 0.06128157302737236,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Railroad car, train wagon",
+   "start": 7.8,
+   "end": 9.5,
+   "confidence": 0.06077791750431061,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sliding door",
+   "start": 8.15,
+   "end": 9.5,
+   "confidence": 0.05496992915868759,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 8.5,
+   "end": 11.0,
+   "confidence": 0.06631217151880264,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 9.5,
+   "end": 17.75,
+   "confidence": 0.11729457974433899,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Doorbell",
+   "start": 9.57,
+   "end": 10.25,
+   "confidence": 0.0613405816257,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Ice cream truck, ice cream van",
+   "start": 9.98,
+   "end": 11.75,
+   "confidence": 0.25766974687576294,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Car",
+   "start": 10.0,
+   "end": 11.5,
+   "confidence": 0.0759643018245697,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "start": 11.25,
+   "end": 13.0,
+   "confidence": 0.06117177754640579,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Musical instrument",
+   "start": 10.0,
+   "end": 12.25,
+   "confidence": 0.06505479663610458,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 11.75,
+   "end": 17.75,
+   "confidence": 0.09715265780687332,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 12.0,
+   "end": 17.75,
+   "confidence": 0.052718404680490494,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Silence",
+   "start": 13.5,
+   "end": 17.75,
+   "confidence": 0.07184385508298874,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Printer",
+   "start": 14.74,
+   "end": 16.5,
+   "confidence": 0.06547359377145767,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Vehicle",
+   "start": 15.25,
+   "end": 17.75,
+   "confidence": 0.10399781167507172,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Train",
+   "start": 16.25,
+   "end": 16.75,
+   "confidence": 0.053765732795000076,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "confidence": 0.3085371255874634,
+   "start": 0.21999999999999997,
+   "end": 13.0,
+   "stretches": [
+    {
+     "start": 0.21999999999999997,
+     "end": 4.4799999999999995,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Train leaving station"
+    },
+    {
+     "start": 4.4799999999999995,
+     "end": 8.74,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Train on the platform"
+    },
+    {
+     "start": 8.74,
+     "end": 13.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "Train on the platform"
+    }
+   ]
+  },
+  {
+   "label": "Train",
+   "confidence": 0.2714952826499939,
+   "start": 0.14000000000000012,
+   "end": 9.5,
+   "stretches": [
+    {
+     "start": 0.14000000000000012,
+     "end": 4.82,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Train on the track"
+    },
+    {
+     "start": 4.82,
+     "end": 9.5,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Train on the track"
+    }
+   ]
+  },
+  {
+   "label": "Ice cream truck, ice cream van",
+   "confidence": 0.25766974687576294,
+   "start": 9.98,
+   "end": 11.75,
+   "stretches": [
+    {
+     "start": 9.98,
+     "end": 11.75,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

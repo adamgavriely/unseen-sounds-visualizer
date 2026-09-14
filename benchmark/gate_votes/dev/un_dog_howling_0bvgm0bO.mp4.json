@@ -1,0 +1,1172 @@
+{
+ "clip": "un_dog_howling_0bvgm0bO.mp4",
+ "tag": "seen_ambient",
+ "duration": 19.652967,
+ "events": [
+  {
+   "label": "Speech",
+   "start": 0.0,
+   "end": 19.35,
+   "confidence": 0.7106552720069885,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wild animals",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.4762134850025177,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 0.30000000000000004,
+   "end": 6.0,
+   "confidence": 0.33722808957099915,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "start": 0.30000000000000004,
+   "end": 3.0,
+   "confidence": 0.27913984656333923,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Snake",
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "confidence": 0.2671886682510376,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chirp, tweet",
+   "start": 0.30000000000000004,
+   "end": 2.75,
+   "confidence": 0.23865452408790588,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bird",
+   "start": 0.30000000000000004,
+   "end": 3.0,
+   "confidence": 0.23604370653629303,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Owl",
+   "start": 0.30000000000000004,
+   "end": 0.75,
+   "confidence": 0.18259790539741516,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "start": 0.0,
+   "end": 1.0,
+   "confidence": 0.16206391155719757,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.0979059711098671,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Outside, rural or natural",
+   "start": 0.0,
+   "end": 1.5,
+   "confidence": 0.09556616097688675,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 0.0,
+   "end": 0.5,
+   "confidence": 0.08084586262702942,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiss",
+   "start": 0.30000000000000004,
+   "end": 1.0,
+   "confidence": 0.05011725053191185,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 0.6400000000000001,
+   "end": 1.25,
+   "confidence": 0.1098279058933258,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Radio",
+   "start": 0.0,
+   "end": 1.25,
+   "confidence": 0.08984149247407913,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 1.55,
+   "end": 6.0,
+   "confidence": 0.3019365072250366,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Inside, small room",
+   "start": 0.0,
+   "end": 19.35,
+   "confidence": 0.1926397830247879,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 1.55,
+   "end": 3.25,
+   "confidence": 0.125053271651268,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 0.99,
+   "end": 5.0,
+   "confidence": 0.11054422706365585,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 0.0,
+   "end": 1.75,
+   "confidence": 0.11038116365671158,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cough",
+   "start": 0.59,
+   "end": 2.25,
+   "confidence": 0.050004951655864716,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Environmental noise",
+   "start": 0.25,
+   "end": 2.5,
+   "confidence": 0.1289694607257843,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 1.97,
+   "end": 5.75,
+   "confidence": 0.12392883747816086,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breathing",
+   "start": 0.25,
+   "end": 4.5,
+   "confidence": 0.1219903826713562,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chicken, rooster",
+   "start": 1.49,
+   "end": 2.75,
+   "confidence": 0.08867376297712326,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Fowl",
+   "start": 1.49,
+   "end": 2.75,
+   "confidence": 0.054231107234954834,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Livestock, farm animals, working animals",
+   "start": 1.49,
+   "end": 2.75,
+   "confidence": 0.05307117849588394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 2.7199999999999998,
+   "end": 5.0,
+   "confidence": 0.3041563332080841,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cough",
+   "start": 2.64,
+   "end": 5.0,
+   "confidence": 0.11006177216768265,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burping, eructation",
+   "start": 2.73,
+   "end": 6.25,
+   "confidence": 0.08057332038879395,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Wheeze",
+   "start": 2.42,
+   "end": 6.0,
+   "confidence": 0.27161625027656555,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 3.23,
+   "end": 3.75,
+   "confidence": 0.05018669366836548,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 3.16,
+   "end": 4.5,
+   "confidence": 0.05184945836663246,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sniff",
+   "start": 2.7,
+   "end": 6.0,
+   "confidence": 0.3356000483036041,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Music",
+   "start": 4.0,
+   "end": 6.0,
+   "confidence": 0.05014153942465782,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Throat clearing",
+   "start": 3.19,
+   "end": 4.75,
+   "confidence": 0.053312696516513824,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Sneeze",
+   "start": 4.640000000000001,
+   "end": 6.5,
+   "confidence": 0.09615201503038406,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 3.84,
+   "end": 6.0,
+   "confidence": 0.057964835315942764,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 4.35,
+   "end": 6.0,
+   "confidence": 0.22030393779277802,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Babbling",
+   "start": 5.73,
+   "end": 8.5,
+   "confidence": 0.3731600344181061,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 5.73,
+   "end": 8.25,
+   "confidence": 0.3182668387889862,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 5.73,
+   "end": 7.0,
+   "confidence": 0.13864021003246307,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 5.73,
+   "end": 7.0,
+   "confidence": 0.09716996550559998,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crying, sobbing",
+   "start": 6.3,
+   "end": 10.5,
+   "confidence": 0.43017151951789856,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "start": 6.3,
+   "end": 9.5,
+   "confidence": 0.39965033531188965,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 6.140000000000001,
+   "end": 8.25,
+   "confidence": 0.14787061512470245,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby laughter",
+   "start": 5.82,
+   "end": 7.0,
+   "confidence": 0.0665854886174202,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 5.26,
+   "end": 6.75,
+   "confidence": 0.06495041400194168,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Breathing",
+   "start": 4.7,
+   "end": 6.5,
+   "confidence": 0.060956478118896484,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 6.55,
+   "end": 10.75,
+   "confidence": 0.20042279362678528,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 4.87,
+   "end": 8.5,
+   "confidence": 0.08409016579389572,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 5.53,
+   "end": 11.5,
+   "confidence": 0.9058201909065247,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 5.53,
+   "end": 11.5,
+   "confidence": 0.8695322275161743,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Domestic animals, pets",
+   "start": 5.53,
+   "end": 11.5,
+   "confidence": 0.8677489161491394,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Howl",
+   "start": 5.53,
+   "end": 7.75,
+   "confidence": 0.12415207177400589,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper (dog)",
+   "start": 7.05,
+   "end": 7.25,
+   "confidence": 0.10579684376716614,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Yip",
+   "start": 5.53,
+   "end": 7.25,
+   "confidence": 0.06823119521141052,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 6.11,
+   "end": 8.0,
+   "confidence": 0.055003970861434937,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Howl",
+   "start": 7.26,
+   "end": 11.25,
+   "confidence": 0.6475223302841187,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Yip",
+   "start": 7.42,
+   "end": 11.25,
+   "confidence": 0.42314624786376953,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bow-wow",
+   "start": 7.34,
+   "end": 11.25,
+   "confidence": 0.3807704448699951,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper (dog)",
+   "start": 7.98,
+   "end": 11.25,
+   "confidence": 0.3512725532054901,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Canidae, dogs, wolves",
+   "start": 7.34,
+   "end": 11.25,
+   "confidence": 0.23182427883148193,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Bark",
+   "start": 7.27,
+   "end": 11.25,
+   "confidence": 0.2633903920650482,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Babbling",
+   "start": 7.7,
+   "end": 9.5,
+   "confidence": 0.09544826298952103,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 9.22,
+   "end": 10.5,
+   "confidence": 0.05190747603774071,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 9.06,
+   "end": 9.5,
+   "confidence": 0.051350127905607224,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Growling",
+   "start": 9.32,
+   "end": 11.25,
+   "confidence": 0.2652600407600403,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "start": 8.45,
+   "end": 10.5,
+   "confidence": 0.05338675156235695,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 9.25,
+   "end": 12.0,
+   "confidence": 0.11915890872478485,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Cat",
+   "start": 9.53,
+   "end": 11.25,
+   "confidence": 0.0688503235578537,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Burping, eructation",
+   "start": 9.37,
+   "end": 11.5,
+   "confidence": 0.06852400302886963,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "start": 9.5,
+   "end": 19.35,
+   "confidence": 0.6930983662605286,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Babbling",
+   "start": 9.5,
+   "end": 19.35,
+   "confidence": 0.6703449487686157,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Crying, sobbing",
+   "start": 9.5,
+   "end": 19.35,
+   "confidence": 0.45763030648231506,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 9.5,
+   "end": 11.5,
+   "confidence": 0.06081540882587433,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 9.5,
+   "end": 11.5,
+   "confidence": 0.057548392564058304,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 11.8,
+   "end": 14.75,
+   "confidence": 0.18825797736644745,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 11.09,
+   "end": 14.0,
+   "confidence": 0.06257212162017822,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 13.64,
+   "end": 16.0,
+   "confidence": 0.48402923345565796,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Chuckle, chortle",
+   "start": 13.9,
+   "end": 15.75,
+   "confidence": 0.05622943863272667,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Belly laugh",
+   "start": 14.07,
+   "end": 15.75,
+   "confidence": 0.10264279693365097,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Baby laughter",
+   "start": 14.47,
+   "end": 15.75,
+   "confidence": 0.08151011914014816,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Giggle",
+   "start": 12.95,
+   "end": 15.75,
+   "confidence": 0.06238989531993866,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Hiccup",
+   "start": 13.84,
+   "end": 15.5,
+   "confidence": 0.17422078549861908,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Whimper",
+   "start": 14.44,
+   "end": 19.35,
+   "confidence": 0.17315985262393951,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Child speech, kid speaking",
+   "start": 15.2,
+   "end": 18.75,
+   "confidence": 0.09620111435651779,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Dog",
+   "start": 15.75,
+   "end": 18.0,
+   "confidence": 0.1548328548669815,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Animal",
+   "start": 15.75,
+   "end": 18.0,
+   "confidence": 0.1427246779203415,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  },
+  {
+   "label": "Laughter",
+   "start": 18.8,
+   "end": 19.35,
+   "confidence": 0.08804938942193985,
+   "source_on_screen": null,
+   "on_screen_prob": null,
+   "detail": "",
+   "spans": []
+  }
+ ],
+ "sounds": [
+  {
+   "label": "Dog",
+   "confidence": 0.8695322275161743,
+   "start": 5.53,
+   "end": 11.5,
+   "stretches": [
+    {
+     "start": 5.53,
+     "end": 11.5,
+     "verdict": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Dog"
+    }
+   ],
+   "clap_rank": 3,
+   "clap_top3": [
+    "Domestic animals, pets",
+    "Crying, sobbing",
+    "Dog"
+   ]
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "confidence": 0.6930983662605286,
+   "start": 6.3,
+   "end": 19.35,
+   "stretches": [
+    {
+     "start": 6.3,
+     "end": 10.65,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Baby"
+    },
+    {
+     "start": 10.65,
+     "end": 15.0,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Baby"
+    },
+    {
+     "start": 15.0,
+     "end": 19.35,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Baby"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Shout",
+    "Music of Latin America",
+    "Domestic animals, pets"
+   ]
+  },
+  {
+   "label": "Babbling",
+   "confidence": 0.6703449487686157,
+   "start": 5.73,
+   "end": 19.35,
+   "stretches": [
+    {
+     "start": 5.73,
+     "end": 10.27,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The baby"
+    },
+    {
+     "start": 10.27,
+     "end": 14.81,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The baby"
+    },
+    {
+     "start": 14.81,
+     "end": 19.35,
+     "verdict": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "The baby"
+    }
+   ],
+   "clap_rank": 69,
+   "clap_top3": [
+    "Domestic animals, pets",
+    "Dog",
+    "Whale vocalization"
+   ]
+  },
+  {
+   "label": "Laughter",
+   "confidence": 0.48402923345565796,
+   "start": 13.64,
+   "end": 16.0,
+   "stretches": [
+    {
+     "start": 5.73,
+     "end": 8.25,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Baby"
+    },
+    {
+     "start": 13.64,
+     "end": 16.0,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The baby"
+    }
+   ],
+   "clap_rank": 8,
+   "clap_top3": [
+    "Crying, sobbing",
+    "Cat",
+    "Theremin"
+   ]
+  },
+  {
+   "label": "Crying, sobbing",
+   "confidence": 0.45763030648231506,
+   "start": 6.3,
+   "end": 19.35,
+   "stretches": [
+    {
+     "start": 6.3,
+     "end": 10.65,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.65,
+     "end": 15.0,
+     "verdict": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "The baby"
+    },
+    {
+     "start": 15.0,
+     "end": 19.35,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ],
+   "clap_rank": 6,
+   "clap_top3": [
+    "Shout",
+    "Music of Latin America",
+    "Domestic animals, pets"
+   ]
+  },
+  {
+   "label": "Sniff",
+   "confidence": 0.3356000483036041,
+   "start": 2.7,
+   "end": 6.0,
+   "stretches": [
+    {
+     "start": 2.7,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Hiccup",
+   "confidence": 0.3041563332080841,
+   "start": 2.7199999999999998,
+   "end": 5.0,
+   "stretches": [
+    {
+     "start": 2.7199999999999998,
+     "end": 5.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Bird",
+   "confidence": 0.27913984656333923,
+   "start": 0.30000000000000004,
+   "end": 3.0,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 3.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Wheeze",
+   "confidence": 0.27161625027656555,
+   "start": 2.42,
+   "end": 6.0,
+   "stretches": [
+    {
+     "start": 2.42,
+     "end": 6.0,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Snake",
+   "confidence": 0.2671886682510376,
+   "start": 0.30000000000000004,
+   "end": 1.25,
+   "stretches": [
+    {
+     "start": 0.30000000000000004,
+     "end": 1.25,
+     "verdict": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}
