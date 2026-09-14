@@ -84,30 +84,39 @@ Almost every early fix was wrong on the next clip. The reusable lessons:
 
 ## 5. The benchmark (`benchmark/tags.json`, clips in `data/input/benchmark/`)
 
-274 clips hand-labelled by Adam into four scenarios: **unseen** (off-screen ambient sound —
-picture due), **mixed**, **seen** (source on screen — no picture due), **no ambient** (speech/
-music only). The 100-clip **test set** has 25 of each; the other 174 labelled clips are the
-**dev split** (note: all 25 mixed clips are in test, none in dev). The proposal asked for 300;
-usable clips were 15–20% of candidates from four sourcing strategies (reported as a finding).
-Label stability κ = 0.60 (Adam's agreement with his own earlier labels on blind
-re-labelling — "moderate"; the instability sits in the positive class the gate is judged on).
-The first 209 tags are the unbiased sample; later candidates were model-pre-screened
-(`benchmark/screen.py`). External check on **DCASE 2025 Task 3** (30k clips with on/off-screen
-labels; 222 audio files fetched to `data/dcase2025_task3/`): on 258 gold events the
-visibility question agrees 66.7% — keeps 97% of off-screen sounds, silences only 35% of
-on-screen ones. Caveat: DCASE frames are cut from 360° captures, so "on screen" there is
-defined by a chosen field of view.
+- **274 clips**, hand-labelled by Adam into four scenarios: **unseen** (off-screen ambient
+  sound — picture due), **mixed**, **seen** (source on screen — no picture due), **no ambient**
+  (speech/music only).
+- **Test set**: 100 clips, 25 of each scenario. **Dev split**: the other 174 labelled clips
+  (note: all 25 mixed clips are in test, none in dev).
+- **Yield**: the proposal asked for 300; usable clips were 15–20% of candidates from four
+  sourcing strategies — reported as a finding.
+- **Label stability** κ = 0.60 (Adam's agreement with his own earlier labels on blind
+  re-labelling — "moderate"; the instability sits in the positive class the gate is judged on).
+  The first 209 tags are the unbiased sample; later candidates were model-pre-screened
+  (`benchmark/screen.py`).
+- **External check on DCASE 2025 Task 3** (30k clips with on/off-screen labels; 222 audio
+  files fetched to `data/dcase2025_task3/`): on 258 gold events the visibility question agrees
+  66.7% — it keeps 97% of off-screen sounds but silences only 35% of on-screen ones. Caveat:
+  DCASE frames are cut from 360° captures, so "on screen" there is defined by a chosen field
+  of view.
 
 ## 6. How it is evaluated (this decides what the numbers mean)
 
-Per clip and system: a VLM describes the augmented video ("a viewer would learn that…"); a
-**reference** sentence says what a hearing viewer gets that a deaf viewer misses; Mistral-7B
-scores the match 0–4. Showing nothing when something was missing = 0; nothing when nothing
-was missing = 4. A second judge reproduces the gated-vs-blind gap (κ = 0.753) but moves the
-caption baseline by +0.61 — so read gated-vs-blind as robust and gated-vs-caption as a
-property of the judge. Baselines: **blind** (draw every sound) and **caption** (text instead).
-`python scripts/paired_stats.py v3 v3_grounded` prints everything, paired with bootstrap CIs,
-pooled and split by "picture needed" (unseen+mixed) vs "not needed" (seen+no-ambient).
+Per clip and system:
+1. A VLM describes the augmented video ("a viewer would learn that…").
+2. A **reference** sentence says what a hearing viewer gets that a deaf viewer misses.
+3. A judge (Mistral-7B) scores the match 0–4. Showing nothing when something was missing = 0;
+   nothing when nothing was missing = 4.
+
+- **Baselines**: **blind** (draw every sound, never look) and **caption** (text instead of a
+  picture).
+- **Judge dependence**: a second judge reproduces the gated-vs-blind gap (κ = 0.753) but
+  moves the caption baseline by +0.61 — read gated-vs-blind as robust, gated-vs-caption as a
+  property of the judge.
+- **Stats**: `python scripts/paired_stats.py v3 v3_grounded` prints everything, paired with
+  bootstrap CIs, pooled and split by "picture needed" (unseen+mixed) vs "not needed"
+  (seen+no-ambient).
 
 Three references exist; none is neutral, and this is itself a result:
 - **model-derived** (the proposal's): written by the system's own models from its own
@@ -129,13 +138,16 @@ a gate must be right ~80% of the time when silent just to break even.
 | model-derived | 2.64 | **3.04** | 2.79 | −0.40 [−0.66, −0.16] |
 | **human-grounded** | **3.17** | 3.16 | 2.89 | **+0.01 [−0.15, +0.18]** — tie (21 wins / 64 ties / 15 losses) |
 
-By scenario (grounded): **no picture due**: gated 3.56 vs blind 3.30, +0.26 [+0.12, +0.40];
-**picture due**: 2.78 vs 3.02, −0.24 [−0.54, +0.04]. Gated beats caption +0.28. A perfect gate
-would score 3.25. In words: *the system does the right thing when nothing is missing, and
-still sometimes stays silent when it should not.* The earlier configuration (v2) lost clearly
-under every reference (−0.24 to −0.70), and on v2 even a perfect gate would have beaten
-blind by at most +0.05 — which is why the week's work went into the detector and visibility
-stages (BEATs, per-sound visibility, event depictions, ontology dedup), and that closed the gap.
+By scenario (grounded reference):
+- **no picture due**: gated 3.56 vs blind 3.30 → +0.26 [+0.12, +0.40] — the gate wins.
+- **picture due**: gated 2.78 vs blind 3.02 → −0.24 [−0.54, +0.04] — the gate loses.
+- Gated beats caption by +0.28. A perfect gate would score 3.25.
+
+In words: *the system does the right thing when nothing is missing, and still sometimes stays
+silent when it should not.* The earlier configuration (v2) lost clearly under every reference
+(−0.24 to −0.70), and on v2 even a perfect gate would have beaten blind by at most +0.05 —
+which is why the week's work went into the detector and visibility stages (BEATs, per-sound
+visibility, event depictions, ontology dedup), and that closed the gap.
 
 **Where the remaining errors come from** (read from cached decisions, no GPU): of 11
 wrongly-silenced test clips, 7 are the **detector** (ambient sound under speech/music never
