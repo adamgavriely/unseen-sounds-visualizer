@@ -224,7 +224,9 @@ def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
     rng = np.random.default_rng(0)
     out = {}
     for name, wav in clips.items():
-        items = _split_items(heard.get(name, []))
+        # speech tags leak through the stem pass too (Demucs leaves residue); the
+        # reference is about the non-speech soundtrack by definition of the task
+        items = [it for it in _split_items(heard.get(name, [])) if not _is_speech_tag(it)]
         if not items:
             out[name] = []
             continue
