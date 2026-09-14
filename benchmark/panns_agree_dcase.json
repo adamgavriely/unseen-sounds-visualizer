@@ -1,0 +1,332 @@
+[
+ {
+  "stem": "fold4_room2_mix001_deg297_start0463",
+  "class": "Telephone",
+  "rank": 8
+ },
+ {
+  "stem": "fold4_room10_mix005_deg274_start0057",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix003_deg239_start2350",
+  "class": "Laughter",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room8_mix009_deg281_start1678",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix001_deg253_start0985",
+  "class": "Telephone",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room16_mix010_deg233_start0249",
+  "class": "Knock",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix001_deg232_start0142",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix003_deg048_start1325",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix001_deg050_start1007",
+  "class": "Telephone",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room16_mix013_deg067_start1047",
+  "class": "Door, open or close",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room16_mix001_deg312_start0159",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room15_mix004_deg254_start0046",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix004_deg277_start0863",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix003_deg039_start2017",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix001_deg086_start1024",
+  "class": "Telephone",
+  "rank": 12
+ },
+ {
+  "stem": "fold4_room15_mix003_deg190_start1578",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix001_deg075_start0471",
+  "class": "Telephone",
+  "rank": 9
+ },
+ {
+  "stem": "fold4_room16_mix001_deg287_start0152",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix001_deg050_start1007",
+  "class": "Telephone",
+  "rank": 9
+ },
+ {
+  "stem": "fold4_room2_mix001_deg227_start0469",
+  "class": "Telephone",
+  "rank": 5
+ },
+ {
+  "stem": "fold4_room15_mix003_deg282_start1578",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix004_deg197_start0977",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix005_deg304_start1459",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg061_start0600",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg339_start0726",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix001_deg206_start0985",
+  "class": "Telephone",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room8_mix005_deg110_start1442",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room15_mix005_deg143_start1202",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room15_mix005_deg197_start1151",
+  "class": "Door, open or close",
+  "rank": 3
+ },
+ {
+  "stem": "fold4_room16_mix001_deg113_start0154",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room10_mix005_deg116_start0077",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix001_deg195_start1002",
+  "class": "Telephone",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room16_mix004_deg259_start1256",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix010_deg122_start0247",
+  "class": "Knock",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix004_deg008_start0836",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg007_start1011",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix004_deg356_start0862",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg078_start0621",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room15_mix009_deg202_start0596",
+  "class": "Knock",
+  "rank": 3
+ },
+ {
+  "stem": "fold4_room2_mix001_deg105_start0462",
+  "class": "Telephone",
+  "rank": 7
+ },
+ {
+  "stem": "fold4_room15_mix009_deg251_start0611",
+  "class": "Knock",
+  "rank": 3
+ },
+ {
+  "stem": "fold4_room16_mix004_deg231_start1364",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room10_mix005_deg305_start0045",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg066_start1014",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix003_deg051_start2030",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix004_deg225_start0843",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix005_deg338_start1460",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg184_start0086",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix004_deg276_start1362",
+  "class": "Door, open or close",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room2_mix001_deg287_start0477",
+  "class": "Telephone",
+  "rank": 6
+ },
+ {
+  "stem": "fold4_room16_mix010_deg176_start0240",
+  "class": "Knock",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room10_mix007_deg189_start0982",
+  "class": "Clapping",
+  "rank": 3
+ },
+ {
+  "stem": "fold4_room16_mix013_deg101_start0022",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix014_deg035_start0436",
+  "class": "Domestic sounds",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room15_mix003_deg280_start1572",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg051_start0617",
+  "class": "Clapping",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room15_mix009_deg352_start0598",
+  "class": "Knock",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room8_mix009_deg150_start1683",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix014_deg283_start0441",
+  "class": "Domestic sounds",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room8_mix001_deg195_start1002",
+  "class": "Telephone",
+  "rank": 11
+ },
+ {
+  "stem": "fold4_room8_mix009_deg268_start1744",
+  "class": "Telephone",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix013_deg021_start0955",
+  "class": "Clapping",
+  "rank": 2
+ },
+ {
+  "stem": "fold4_room16_mix010_deg327_start0253",
+  "class": "Knock",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix001_deg323_start0143",
+  "class": "Water tap, faucet",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room16_mix010_deg096_start0258",
+  "class": "Knock",
+  "rank": 1
+ },
+ {
+  "stem": "fold4_room8_mix009_deg028_start1677",
+  "class": "Telephone",
+  "rank": 1
+ }
+]

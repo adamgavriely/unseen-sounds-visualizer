@@ -62,6 +62,19 @@ def _panns(wav: Path):
     return fw, times, labels, fams, compete
 
 
+def _families_of(label: str):
+    """Ontology families for a cached label. The gate cache stores CONSOLIDATED names from
+    labels.FAMILY ('Gunshot' for 'Gunshot, gunfire', 'Footsteps' for 'Walk, footsteps'), which
+    are not ontology nodes; the first run removed every such label with rank 204 because
+    no family matched. Map back to every ontology label that consolidates to the name."""
+    from src.labels import FAMILY
+    members = [k for k, v in FAMILY.items() if v == label] or []
+    out = set(CC._subtree_families(label))
+    for m in members:
+        out.update(CC._subtree_families(m))
+    return sorted(out)
+
+
 def family_rank(fw, times, labels, fams, compete, label: str, start: float, end: float):
     sel = (times >= start) & (times <= max(end, start + 0.5))
     if not sel.any():
@@ -73,7 +86,7 @@ def family_rank(fw, times, labels, fams, compete, label: str, start: float, end:
             continue
         if p > scores.get(f, -1.0):
             scores[f] = float(p)
-    mine = max((scores[f] for f in CC._subtree_families(label) if f in scores), default=None)
+    mine = max((scores[f] for f in _families_of(label) if f in scores), default=None)
     if mine is None:
         return len(scores) + 1
     return 1 + sum(1 for v in scores.values() if v > mine)

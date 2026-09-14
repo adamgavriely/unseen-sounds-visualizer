@@ -1,0 +1,367 @@
+{
+ "top_k": 10,
+ "phantoms_removed": [
+  32,
+  77
+ ],
+ "real_removed": [
+  3,
+  23
+ ],
+ "unseen_lost": [
+  3,
+  20
+ ],
+ "passed": false,
+ "test_flips": [
+  {
+   "clip": "as_explosion_eEdaLHC0.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    [
+     "Gunshot",
+     204
+    ]
+   ],
+   "remaining": [
+    "Explosion",
+    "Vehicle",
+    "Aircraft",
+    "Burst, pop"
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6.mp4",
+   "tag": "mixed",
+   "removed": [
+    [
+     "Gunshot",
+     204
+    ],
+    [
+     "Sigh",
+     14
+    ],
+    [
+     "Gasp",
+     22
+    ]
+   ],
+   "remaining": [
+    "Explosion"
+   ]
+  },
+  {
+   "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    [
+     "Gears",
+     16
+    ]
+   ],
+   "remaining": [
+    "Alarm",
+    "Dog"
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    [
+     "Cooking",
+     204
+    ]
+   ],
+   "remaining": [
+    "Tearing",
+    "Door"
+   ]
+  },
+  {
+   "clip": "b3_cow_farm.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Cooking",
+     204
+    ]
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "b3_glacier_hike.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Scissors",
+     94
+    ],
+    [
+     "Boat",
+     204
+    ],
+    [
+     "Scrape",
+     11
+    ],
+    [
+     "Sheep",
+     16
+    ],
+    [
+     "Roaring cats (lions, tigers)",
+     11
+    ]
+   ],
+   "remaining": [
+    "Horse",
+    "Arrow",
+    "Chop",
+    "Rowboat, canoe, kayak",
+    "Skateboard",
+    "Bird",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Dog",
+     18
+    ],
+    [
+     "Snicker",
+     18
+    ]
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "b3_jungle_hike.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    [
+     "Sheep",
+     60
+    ]
+   ],
+   "remaining": [
+    "Owl",
+    "Bird",
+    "Buzz",
+    "Hoot",
+    "Insect"
+   ]
+  },
+  {
+   "clip": "mc_fight_bar_scene.mp4",
+   "tag": "mixed",
+   "removed": [
+    [
+     "Cat",
+     35
+    ],
+    [
+     "Horse",
+     14
+    ],
+    [
+     "Caterwaul",
+     35
+    ]
+   ],
+   "remaining": [
+    "Glass",
+    "Thump, thud"
+   ]
+  },
+  {
+   "clip": "movie_blueplanet_115.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Quack",
+     24
+    ],
+    [
+     "Duck",
+     24
+    ],
+    [
+     "Door",
+     39
+    ],
+    [
+     "Bird",
+     39
+    ],
+    [
+     "Honk",
+     23
+    ]
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "mv_basement_scene_noise.mp4",
+   "tag": "mixed",
+   "removed": [
+    [
+     "Cattle",
+     204
+    ],
+    [
+     "Siren",
+     51
+    ]
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "mv_plane_emergency.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    [
+     "Tick",
+     57
+    ],
+    [
+     "Tick-tock",
+     57
+    ],
+    [
+     "Train",
+     37
+    ]
+   ],
+   "remaining": [
+    "Glass"
+   ]
+  },
+  {
+   "clip": "mv_war_bombardment.mp4",
+   "tag": "seen_ambient",
+   "removed": [
+    [
+     "Gunshot",
+     204
+    ]
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "oc_ice_cracking_lake.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Footsteps",
+     204
+    ]
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "oc_pov_dry_leaves.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Footsteps",
+     204
+    ]
+   ],
+   "remaining": [
+    "Chewing, mastication"
+   ]
+  },
+  {
+   "clip": "un_airplane_flyby_1FOKvagR.mp4",
+   "tag": "seen_ambient",
+   "removed": [
+    [
+     "Boat",
+     204
+    ]
+   ],
+   "remaining": [
+    "Helicopter",
+    "Aircraft",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "un_people_clapping__bAVmK7n.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Shuffling cards",
+     48
+    ]
+   ],
+   "remaining": [
+    "Cash register"
+   ]
+  },
+  {
+   "clip": "un_people_crowd_1YGJDa3a.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Fireworks",
+     62
+    ],
+    [
+     "Explosion",
+     50
+    ],
+    [
+     "Gunshot",
+     204
+    ],
+    [
+     "Thump, thud",
+     26
+    ]
+   ],
+   "remaining": [
+    "Train",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "un_raining_71I9l62a.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    [
+     "Train",
+     13
+    ]
+   ],
+   "remaining": [
+    "Vehicle",
+    "Aircraft"
+   ]
+  },
+  {
+   "clip": "wc_korean_thriller.mp4",
+   "tag": "mixed",
+   "removed": [
+    [
+     "Horse",
+     21
+    ],
+    [
+     "Bird",
+     68
+    ]
+   ],
+   "remaining": [
+    "Vehicle",
+    "Glass"
+   ]
+  }
+ ]
+}
