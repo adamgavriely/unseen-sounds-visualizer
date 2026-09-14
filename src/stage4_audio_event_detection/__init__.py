@@ -19,6 +19,7 @@ from typing import List, Tuple
 
 import numpy as np
 
+import config
 from src.types import AudioEvent
 
 _SED = None          # lazy-loaded model singleton (avoid reloading per call)
@@ -44,16 +45,25 @@ def _infer(wav_path: Path, device: str = "cpu") -> Tuple[np.ndarray, np.ndarray,
     return framewise, times, list(labels)
 
 
-def _extract_events(framewise, times, labels, threshold, top_k, min_dur) -> List[AudioEvent]:
-    """Turn framewise probabilities into contiguous (label, start, end) spans."""
+def _extract_events(framewise, times, labels, threshold, top_k, min_dur,
+                    low: float = None) -> List[AudioEvent]:
+    """Turn framewise probabilities into contiguous (label, start, end) spans.
+
+    Double threshold (hysteresis), the standard SED post-processing: a span counts only
+    if it reaches `threshold` somewhere, but it extends through any contiguous stretch
+    above `low`. A helicopter approaching scored 0.15-0.42 for 1.5 s before crossing
+    0.35, and without this the picture came 1.5 s after the ear heard it.
+    """
     peaks = framewise.max(axis=0)
     classes = np.where(peaks >= threshold)[0]
     if top_k:
         classes = classes[np.argsort(peaks[classes])[::-1][:top_k]]
     dt = (times[1] - times[0]) if len(times) > 1 else 1.0 / _PANNS_FPS
+    low = threshold if low is None else min(low, threshold)
     events: List[AudioEvent] = []
     for c in classes:
-        active = framewise[:, c] >= threshold
+        active = framewise[:, c] >= low
+        strong = framewise[:, c] >= threshold
         i, n = 0, len(active)
         while i < n:
             if not active[i]:
@@ -62,6 +72,9 @@ def _extract_events(framewise, times, labels, threshold, top_k, min_dur) -> List
             j = i
             while j < n and active[j]:
                 j += 1
+            if not strong[i:j].any():
+                i = j
+                continue
             start, end = float(times[i]), float(times[j - 1] + dt)
             if end - start >= min_dur:
                 events.append(AudioEvent(label=labels[c], start=start, end=end,
@@ -100,6 +113,36 @@ def plot_timeline(framewise, times, labels, out_png: Path,
     plt.close(fig)
 
 
+def _refine_onsets_cam(wav_path: Path, events, labels, device: str):
+    """Move each BEATs event's start to where silencing the window's opening starts to
+    cost the class its evidence (beats_infer.occlusion_onset). The sliding-window stamp
+    is within about a second; this is within a cut (80 ms) for abrupt sounds and marks
+    the 10%-of-evidence point for sounds that fade in. The end is left alone: a picture
+    lingering a little is cheap, a picture arriving late or early is what the viewer
+    notices.
+    """
+    import librosa
+    from src.stage4_audio_event_detection import beats_infer as B
+    audio, _ = librosa.load(str(wav_path), sr=B.SR, mono=True)
+    idx = {l: i for i, l in enumerate(labels)}
+    out = []
+    for e in events:
+        c = idx.get(e.label)
+        if c is None:
+            out.append(e); continue
+        # the first window that fired ends STAMP_OFFSET after the stamp
+        w0 = e.start + B.STAMP_OFFSET - B.WINDOW
+        try:
+            t, ramp = B.occlusion_onset(audio, B.SR, w0, c, device)
+        except Exception as ex:
+            print(f"       [stage4] onset refinement failed for {e.label}: {ex}")
+            t = None
+        if t is not None and t < e.end:
+            e = AudioEvent(e.label, max(0.0, float(t)), e.end, e.confidence)
+        out.append(e)
+    return out
+
+
 def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                   min_dur: float = 0.2, device: str = "cpu", model: str = "",
                   plot_path: Path = None, plot_top_k: int = 15) -> List[AudioEvent]:
@@ -117,7 +160,10 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
               f"returning no events.")
         return []
 
-    events = _extract_events(framewise, times, labels, threshold, top_k, min_dur)
+    low = threshold * float(getattr(config, "AED_HYSTERESIS", 1.0))
+    events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low)
+    if backend == "BEATs" and getattr(config, "ONSET_CAM", True):
+        events = _refine_onsets_cam(Path(wav_path), events, labels, device)
     n_classes = len({e.label for e in events})
     print(f"       [stage4] {backend} SED: {len(events)} event span(s) over "
           f"{n_classes} class(es) (threshold={threshold}).")

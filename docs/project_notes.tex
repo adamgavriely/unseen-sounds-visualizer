@@ -1518,6 +1518,41 @@ verdict (\texttt{SHOWN}, \texttt{visible}, \texttt{merged}, \texttt{faint},
 be sorted into detector, gate, prompt and generator within one review, which no amount of
 log-reading had managed.
 
+\subsection{When does a sound start? (2026-09-14)}\label{sec:onset}
+BEATs is a clip-level tagger; we score a 2\,s window every 0.25\,s, and a window cannot say
+where inside it a sound begins. Adam saw pictures arrive late (sizzling, a helicopter) and
+early (an alarm); against his ear on three clips, every onset under the sliding-window
+stamp was in fact \emph{late}, by $+0.25$ to $+2.0$\,s.
+
+Four alternatives were measured on those clips. A 0.5\,s BEATs window, PANNs' 10\,ms frames
+and BEATs fine-tuned on AudioSet Strong (40\,ms; Schmid et al.\ 2024) are more precise where
+they fire, but each misses roughly half the sounds --- the siren, the sizzling, the dog ---
+and one placed the alarm nine seconds late; only the 2\,s BEATs hears everything. A class
+activation map on BEATs' own 160\,ms tokens (head applied per time step, since the head is
+linear over the token mean) moved every onset by exactly 0 or exactly $-1.5$\,s: the
+fingerprint of a flat curve. It cannot work, and the reason is instructive --- BEATs was
+fine-tuned only through the token mean, so nothing ever asked a token to be local, and after
+twelve full-attention layers every token carries roughly the clip logit. Spectral-flux onset
+detection was ruled out on reasoning: class-agnostic, it locks onto whatever is loudest
+under polyphony.
+
+What ships is two standard pieces on the same model. \textbf{Hysteresis}: a sound must reach
+the 0.35 bar, and then extends back through any contiguous stretch above half of it ---
+the approaching helicopter scores 0.15--0.42 for 1.5\,s before crossing 0.35.
+\textbf{Prefix-silencing occlusion} inside the first window that fired: silence its opening
+$t$ seconds for 26 values of $t$, score them in one batched forward, and read the onset as
+the first cut that removes a tenth of the class's evidence (in logit space, where mean
+pooling makes the fall roughly linear). Class-conditional, so a voice in the same window
+does not pull it; a 10\,ms fade at the cut, so the cut itself is not a transient.
+
+Against Adam's ear on seven onsets, mean signed error fell from $+0.9$\,s to $+0.3$\,s; four
+of six real sounds are within a quarter-second. What remains is the definition of ``start''
+for sounds that fade in (sizzling $+0.75$, helicopter $+0.7$): the ear commits before the
+detector has evidence, and lowering the hysteresis floor further brings phantoms back. The
+second opinion that shaped this --- CAM first, then its diagnosis and the occlusion design
+--- came from a consultation with a larger model, recorded here because the CAM failure
+would otherwise look like a bug rather than a property.
+
 \section{Evaluation Methodology}\label{sec:eval}
 % ======================================================================
 \subsection{Automatic protocol (primary)}

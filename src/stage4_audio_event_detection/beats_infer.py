@@ -107,6 +107,81 @@ def infer_beats(wav_path: Path, device: str = "cpu",
     return framewise[keep], times[keep], list(names)
 
 
+# ---------------------------------------------------------------------------
+# WHEN, from the model that decided WHAT: prefix-silencing occlusion.
+#
+# The first idea was a class activation map on BEATs' 160 ms tokens. It cannot work, and
+# the reason is worth keeping: BEATs was fine-tuned only through the MEAN of its tokens,
+# so nothing ever asked a token to be local, and after 12 full-attention layers every
+# token carries roughly the clip logit. On three clips the CAM moved every onset by
+# exactly 0 or exactly -1.5 s -- the fingerprint of a flat curve. (Fable, second opinion,
+# 2026-09-14, on reading the code.)
+#
+# Occlusion is model-agnostic and immune to that. Take the first 2 s window that fired
+# the class. Make 26 copies, silencing the first t seconds for t = 0, 0.08, ..., 2.0,
+# and score them in one batched forward. Silencing audio BEFORE the onset changes
+# nothing, so the class logit stays flat; once the cut passes the onset, evidence is
+# removed and the logit falls. The onset is the first cut that removes a tenth of the
+# evidence (measured in logit space, where mean pooling makes the fall roughly linear).
+# Class-conditional, so a voice or a bark in the same window does not pull it.
+CUT = 0.08           # seconds per occlusion step; 26 steps span the 2 s window
+EVIDENCE_MIN = 1.0   # logit drop from full window to fully silenced, below which the
+                     # window carries no evidence for the class and nothing is decided
+ONSET_FRAC = 0.10    # onset = first cut removing this fraction of the evidence
+RAMP_FRAC = 0.50     # a sound whose 50% point trails its 10% point by > RAMP_SEC is a ramp
+RAMP_SEC = 0.5
+
+
+def occlusion_onset(audio, sr, window_start: float, class_idx: int, device: str = "cpu",
+                    window: float = WINDOW, debug: bool = False):
+    """Where inside [window_start, window_start+window] does class `class_idx` begin?
+
+    Returns (onset_time, ramp) or (None, False) when the window carries no evidence.
+    The end is never touched: a picture lingering a little is cheap.
+    """
+    import numpy as np
+    import torch
+    model, _, dev = _load(device)
+    a, b = int(round(window_start * sr)), int(round((window_start + window) * sr))
+    seg = audio[max(0, a):b]
+    if a < 0:
+        seg = np.pad(seg, (-a, 0), mode="reflect" if len(seg) > -a else "constant")
+    if len(seg) < b - a:
+        seg = np.pad(seg, (0, b - a - len(seg)))
+    n = len(seg)
+    steps = int(round(window / CUT)) + 1
+    fade = int(0.010 * sr)
+    batch = np.zeros((steps, n), dtype=np.float32)
+    for i in range(steps):
+        cut = min(n, int(round(i * CUT * sr)))
+        x = seg.copy()
+        x[:cut] = 0.0
+        if 0 < cut < n - fade:                      # 10 ms ramp at the cut, no click
+            x[cut:cut + fade] *= np.linspace(0.0, 1.0, fade, dtype=np.float32)
+        batch[i] = x
+    xb = torch.from_numpy(batch).to(dev)
+    with torch.no_grad():
+        mask = torch.zeros(xb.shape, dtype=torch.bool, device=dev)
+        p, _ = model.extract_features(xb, padding_mask=mask)
+    p = p[:, class_idx].float().clamp(1e-6, 1 - 1e-6).cpu().numpy()
+    L = np.log(p / (1 - p))
+    L0, Ls = L[0], L[-1]
+    if L0 - Ls < EVIDENCE_MIN:
+        return None, False
+    Lm = np.array([np.median(L[max(0, i - 1):i + 2]) for i in range(len(L))])
+    span = L0 - Ls
+    below = Lm < L0 - ONSET_FRAC * span
+    if not below.any():
+        return None, False
+    i = int(np.argmax(below))
+    i50 = int(np.argmax(Lm < L0 - RAMP_FRAC * span)) if (Lm < L0 - RAMP_FRAC * span).any() else i
+    ramp = (i50 - i) * CUT > RAMP_SEC
+    onset = window_start if i <= 1 else window_start + (i - 0.5) * CUT
+    if debug:
+        return onset, ramp, L
+    return onset, ramp
+
+
 def unload() -> None:
     global _MODEL
     _MODEL = None

@@ -22,3 +22,5 @@ on the dev split. Entries marked FIXED were general bugs, not tuning.
 | 14 | 09-13 | b3_jungle_hike | insect buzzing merged into bird chirping on depiction similarity 0.82 | dedup (similarity) | - | SigLIP text similarity coarse between short phrases | open (1 of 3) |
 | 15 | 09-13 | un_police_car, mc_bridge | description named the source ("police car with its lights", "gun on the back seat") but not the sound word; vote counted as no | visibility | - | string match where world knowledge was needed | FIXED |
 | 16 | 09-13 | mc_bridge_scene | dog vetoed again with the two-signal rule; aircraft over a railway also vetoed | place veto | 0.44 / 0.39 | veto 2 right / 2 wrong on 4 uses | DECIDED: veto off by default |
+| 17 | 09-14 | mc_bridge_scene | "Gunshot" 0.50 at 1.65 s is a door opening; timing right, label wrong | detector | 0.50 | confident mislabel | open (1 of 3) |
+| 18 | 09-14 | three clips | every onset stamped late (+0.25 to +2.0 s) under the sliding-window stamp | timing | - | window stamp bias | FIXED (hysteresis + occlusion; mean +0.9 -> +0.3 s) |

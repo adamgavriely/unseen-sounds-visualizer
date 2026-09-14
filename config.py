@@ -68,6 +68,17 @@ AED_MIN_DUR = 0.5
 # fourteen visible errors were PANNs mislabelling the sound (siren -> "truck horn",
 # engine rotor -> "printer", crying baby -> "sheep") and Stage 5 drawing it faithfully.
 AED_MODEL = "beats"
+# Onset by prefix-silencing occlusion on BEATs (beats_infer.occlusion_onset), inside the
+# first window that fired: silence the opening t seconds for 26 values of t, and the
+# onset is where the class starts losing evidence. The sliding-window stamp is within
+# ~1 s and its sign depends on how the sound starts; this is class-conditional and within
+# 80 ms for abrupt sounds. (A CAM on BEATs' tokens was tried first and cannot work: the
+# model was trained only through the token mean, so its tokens are not local.)
+ONSET_CAM = True
+# Hysteresis: a sound must reach DISPLAY_THRESHOLD to count, and then extends through any
+# contiguous stretch above this fraction of it. Standard SED post-processing; it is what
+# lets an approaching helicopter start when the ear hears it, not when it gets loud.
+AED_HYSTERESIS = 0.5
 AED_THRESHOLD = 0.05         # LOW on purpose: detect-everything-first (incl. faint background)
 # AED_MIN_DUR is set further down, next to the detector choice.
 AED_PLOT_TOP_K = 15          # classes shown in the timeline plot
