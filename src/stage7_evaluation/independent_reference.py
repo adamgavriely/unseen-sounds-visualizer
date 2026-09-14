@@ -58,6 +58,9 @@ WRITE_PROMPT = ("A video's soundtrack, with the dialogue removed, contains these
                 "In ONE sentence, state the information a hearing viewer gets from the "
                 "sounds that a deaf viewer would miss from the picture alone. Name the "
                 "specific sound sources.")
+SEEN_PROMPT = ("These are six frames from one video. Its soundtrack contains: {sound}. "
+               "Is the thing producing that sound visible in these frames? Answer exactly "
+               "`visible: <name of the thing>` or `not visible`.")
 NOTHING_MISSING = "nothing beyond the picture"
 CHUNK = 10.0
 CLAP_MARGIN = 2.0        # text-decoy bar, logged as a diagnostic only (see verify_all)
@@ -324,6 +327,57 @@ def look_all(videos: Dict[str, Path], device: str, n_frames: int = 6) -> Dict[st
     return out
 
 
+def look_per_sound(videos: Dict[str, Path], verified: Dict[str, List[str]], device: str,
+                   n_frames: int = 6) -> Dict[str, Dict[str, Optional[str]]]:
+    """clip -> {sound: name of the visible thing making it, or None}.
+
+    Replaces list-and-match: the list step answered with one word per clip ('Car',
+    'Pole', 'kiss') and the MiniLM match then called almost every sound unseen, so the
+    reference said "the viewer would miss X" on 15 of 25 seen_ambient clips and agreed
+    with the human silence decision on 55 % of clips -- chance. One symmetric question
+    per verified sound, with a forced name, answered by a VLM that is not the system's.
+    Every answer is logged verbatim. (Review, 2026-09-14.)
+    """
+    import torch
+    from transformers import AutoProcessor, Idefics3ForConditionalGeneration
+    from src.stage2_video_understanding import _sample_frames
+    proc = AutoProcessor.from_pretrained(LOOK_MODEL)
+    mdl = Idefics3ForConditionalGeneration.from_pretrained(
+        LOOK_MODEL, torch_dtype=torch.bfloat16 if device == "cuda" else torch.float32,
+        device_map="auto" if device == "cuda" else None).eval()
+    out: Dict[str, Dict[str, Optional[str]]] = {}
+    for name, video in videos.items():
+        sounds = verified.get(name, [])
+        out[name] = {}
+        if not sounds:
+            continue
+        frames = _sample_frames(Path(video), n_frames)
+        if not frames:
+            out[name] = {snd: None for snd in sounds}
+            continue
+        for snd in sounds:
+            content = [{"type": "image"} for _ in frames] + [
+                {"type": "text", "text": SEEN_PROMPT.format(sound=snd)}]
+            text = proc.apply_chat_template([{"role": "user", "content": content}],
+                                            add_generation_prompt=True)
+            inputs = proc(text=text, images=frames, return_tensors="pt").to(mdl.device)
+            with torch.no_grad():
+                gen = mdl.generate(**inputs, max_new_tokens=24, do_sample=False)
+            reply = proc.batch_decode(gen[:, inputs["input_ids"].shape[1]:],
+                                      skip_special_tokens=True)[0]
+            reply = reply.split("Assistant:")[-1].strip().strip("`").strip()
+            low = reply.lower()
+            seen: Optional[str] = None
+            if low.startswith("visible") and "not visible" not in low[:12]:
+                seen = reply.split(":", 1)[1].strip(" `.") if ":" in reply else reply
+                seen = seen or "unnamed"
+            out[name][snd] = seen
+            print(f"       [ref] seen? {name} | {snd[:40]} -> {reply!r}", flush=True)
+    del mdl, proc
+    _free()
+    return out
+
+
 # ----------------------------------------------------------------------------- write
 def _matches(sounds: List[str], visible: List[str], device: str):
     """For each sound, the best cosine against the visible list (sentence embeddings)."""
@@ -339,7 +393,10 @@ def _matches(sounds: List[str], visible: List[str], device: str):
 
 
 def write_all(sounds: Dict[str, List[str]], visible: Dict[str, List[str]],
-              transcripts: Dict[str, str], device: str) -> Dict[str, dict]:
+              transcripts: Dict[str, str], device: str,
+              seen: Optional[Dict[str, Dict[str, Optional[str]]]] = None) -> Dict[str, dict]:
+    """``seen`` (look_per_sound) decides per sound; without it the older list-and-match
+    on ``visible`` is used, kept so the first pass can be re-run for comparison."""
     import torch
     from transformers import AutoModelForCausalLM, AutoTokenizer
     mdl = tok = used = None
@@ -358,9 +415,16 @@ def write_all(sounds: Dict[str, List[str]], visible: Dict[str, List[str]],
     print(f"       [ref] writer: {used}", flush=True)
     out = {}
     for name in sounds:
-        snd, vis = sounds[name], visible.get(name, [])
-        sims = _matches(snd, vis, device)
-        unmatched = [s for s, c in zip(snd, sims) if c < MATCH_TAU]
+        snd = sounds[name]
+        if seen is not None:
+            per = seen.get(name, {})
+            vis = sorted({v for v in per.values() if v})
+            sims = [1.0 if per.get(s_) else 0.0 for s_ in snd]
+            unmatched = [s_ for s_ in snd if not per.get(s_)]
+        else:
+            vis = visible.get(name, [])
+            sims = _matches(snd, vis, device)
+            unmatched = [s_ for s_, c in zip(snd, sims) if c < MATCH_TAU]
         if not snd or not unmatched:
             out[name] = {"reference": NOTHING_MISSING, "sounds": snd, "visible": vis,
                          "matches": sims, "writer": used, "rule": "all sounds visible" if snd else "no sounds"}
@@ -396,8 +460,9 @@ def build_all(clips: Dict[str, Path], videos: Dict[str, Path], transcripts: Dict
         state["heard"] = listen_all(clips, device); save()
     if "verified" not in state:
         state["verified"] = verify_all(clips, state["heard"], device); save()
-    if "visible" not in state:
-        state["visible"] = look_all(videos, device); save()
+    if "seen" not in state:
+        state["seen"] = look_per_sound(videos, state["verified"], device); save()
     if "references" not in state:
-        state["references"] = write_all(state["verified"], state["visible"], transcripts, device); save()
+        state["references"] = write_all(state["verified"], state.get("visible", {}), transcripts,
+                                        device, seen=state["seen"]); save()
     return state["references"]
