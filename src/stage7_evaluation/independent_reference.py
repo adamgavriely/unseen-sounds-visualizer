@@ -105,6 +105,22 @@ def _with_audio(proc, audio_list, sr, **kw):
     return out
 
 
+def _split_items(lines: List[str]) -> List[str]:
+    """Qwen2-Audio answers in its own tag style -- one line such as
+    'source: wind, source: bird vocalization; source: clock ticking.' -- rather than one
+    sound per line. Split on the 'source:' markers and semicolons, keep the commas inside
+    a tag ('clock, clicking, tick' is one AudioSet name), drop empties and 'none'.
+    """
+    import re
+    out: List[str] = []
+    for line in lines:
+        for part in re.split(r"(?:^|[;,]\s*)source\s*:\s*|;", line, flags=re.I):
+            part = part.strip(" -*•.	").strip()
+            if part and part.lower() != "none" and part not in out:
+                out.append(part)
+    return out
+
+
 def _chunks(audio: np.ndarray, sr: int, sec: float = CHUNK):
     n = int(sec * sr)
     for i in range(0, max(1, len(audio)), n):
@@ -169,7 +185,7 @@ def verify_all(clips: Dict[str, Path], heard: Dict[str, List[str]], device: str,
     rng = np.random.default_rng(0)
     out = {}
     for name, wav in clips.items():
-        items = heard.get(name, [])
+        items = _split_items(heard.get(name, []))
         if not items:
             out[name] = []
             continue
