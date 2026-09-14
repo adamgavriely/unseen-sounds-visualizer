@@ -441,6 +441,9 @@ DESCRIBE_PROMPT = (
 )
 
 
+LAST_VOTES: dict = {}
+
+
 def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     """Can the viewer SEE this sound happening? Three questions, combined.
 
@@ -500,6 +503,10 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
                      max_new=6).strip().lower()
         by_desc = reply.startswith("y")
     votes = [by_name, by_ab, by_desc]
+    # exposed for benchmark/gate_dev_sweep.py, which re-decides from the raw votes;
+    # nothing on the inference path reads it
+    global LAST_VOTES
+    LAST_VOTES = {"name": by_name, "ab": by_ab, "desc": by_desc, "named": named}
     yes = sum(1 for v in votes if v is True)
     no = sum(1 for v in votes if v is False)
     verdict = yes > no
