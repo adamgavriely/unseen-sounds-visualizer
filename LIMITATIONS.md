@@ -11,6 +11,29 @@ report's Limitations section mirrors this file.
   system repeats the detector. Found in review on 2026-09-14. The corrected primary is the
   independent reference (`*_indep`): Qwen2-Audio + CLAP verification + Idefics3 + Llama-3.1
   writer, none of which sees any system's output. Both are reported.
+- **The independent reference's verification gate was set once, on one comparison.** CLAP
+  decides which of the audio LM's claims survive. The first gate (cosine above the mean + 2σ
+  of 64 random AudioSet text decoys) left 45% of clips with an empty reference against 25%
+  tagged `no_ambient`: a reference biased toward silence, which rewards the gated system's
+  abstention — the mirror image of the circular bias the reference exists to remove. The
+  shipping gate keeps a claim if this clip's audio ranks in the top 20 of the 100 benchmark
+  clips for that claim's text and the cosine is positive. Top-5 (p < 0.05) was tried first
+  and fails for a reason worth stating: the benchmark's clips are correlated (some twenty
+  carry wind), so a top-5 rank among them is a test against siblings, not decoys. The cut was
+  chosen on the empties-vs-`no_ambient` comparison and nothing else; sensitivity on the same
+  log (667 claims, 81 clips with claims; "clock" = the audio LM's habitual hallucination):
+
+  | gate | claims kept | clips left empty (of 81) | clock claims kept (of 59) |
+  |---|---|---|---|
+  | audio rank top-5 | 109 | 34 | 1 |
+  | audio rank top-10 | 171 | 24 | 4 |
+  | audio rank top-20 (shipping, with cos > 0) | 254 | 12 | 8 |
+  | audio rank top-30 | 320 | 7 | 15 |
+  | text mean + 2σ (first form) | 99 | 32 | 0 |
+  | cos > 0.05 | 194 | 17 | 1 |
+
+  Top-10 to top-30 all beat the 2σ bar on empties; the result is not knife-edge. Add the 19
+  clips where the audio LM heard nothing to every row for the clip-level total.
 - **The independent reference's sentinel is uncalibrated.** The MiniLM cosine threshold that
   rejects unsupported sentences is fixed at τ = 0.50; calibration on DCASE gold is planned but
   not done.
