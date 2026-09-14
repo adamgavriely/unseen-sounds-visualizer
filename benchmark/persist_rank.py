@@ -159,7 +159,7 @@ def dcase_score(rule):
         if not p.exists():
             continue
         fw, times, labels = _load(p)
-        spans = rule(fw, times, labels)
+        spans = [x for x in rule(fw, times, labels) if is_salient_nonspeech(x[0]) and not is_music(x[0])]
         minutes += (times[-1] + HOP) / 60.0 if len(times) else 0
         for c, s, e in events:
             total += 1
