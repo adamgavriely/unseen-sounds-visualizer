@@ -66,6 +66,17 @@ def report(tag: str):
         cs = [c for c in data if (data[c]["proposed"].get("human_tag") or "?") == t]
         line = "  ".join(f"{s.split('_')[0]:9s}{np.mean([data[c][s]['score'] for c in cs]):.2f}" for s in systems)
         print(f"    {t:15s} ({len(cs):3d})  {line}")
+    # by scenario group -- the proposal's own split, defined before any system ran:
+    # a picture is due on unseen/mixed clips and not due on seen/no_ambient clips.
+    # Same judge score in both strata (a per-stratum metric would be post-hoc).
+    for label, group in (("picture needed", SHOULD_SHOW), ("no picture needed", SILENT_RIGHT)):
+        cs = [c for c in data if (data[c]["proposed"].get("human_tag") or "?") in group]
+        if not cs:
+            continue
+        means = "  ".join(f"{s.split('_')[0]:9s}{np.mean([data[c][s]['score'] for c in cs]):.2f}" for s in systems)
+        d = [data[c]["proposed"]["score"] - data[c]["blind_a2i"]["score"] for c in cs]
+        lo, hi = boot_ci(d)
+        print(f"  {label:18s} (n={len(cs):3d})  {means}   proposed-blind {np.mean(d):+.2f} [{lo:+.2f}, {hi:+.2f}]")
     # oracle gate: perfect show/silent decision from the human tag; the best system's
     # output where a picture is due, the abstention score where silence is right
     oracle = []
