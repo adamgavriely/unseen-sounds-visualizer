@@ -24,6 +24,13 @@ itself is not the question here (their classes and ours differ), only where a ma
 event is stamped -- so the "n matched" column is the same population for hyst and occl
 (occlusion only moves onsets) and may differ for stamp (hysteresis can merge two spans).
 
+Audio. The DCASE video files carry no audio track; the stereo audio ships separately as
+stereo_dev.zip (10 GB, Zenodo record 15559774). Only the ~150 clips holding the sampled
+events are needed, so they are fetched by HTTP range request from inside the zip
+(remotezip) into data/dcase2025_task3/stereo_dev/<split>/ -- about 0.5 MB and half a
+second each. Run the fetch on a node with internet before the GPU job:
+
+    python -m benchmark.eval_dcase_onset --n 300 --fetch-only      # login node
     python -m benchmark.eval_dcase_onset --n 300 --split dev-test-tau
 """
 from __future__ import annotations
@@ -70,9 +77,48 @@ def _in_family(label: str, c: int) -> bool:
     return any(label == f or is_descendant(label, f) for f in FAMILY[c])
 
 
-def _wav(video: Path, out_dir: Path) -> Path:
-    wav = out_dir / (video.stem + ".wav")
-    subprocess.run(["ffmpeg", "-y", "-i", str(video), "-vn", "-ac", "1", "-ar", "16000",
+ZENODO_ZIP = "https://zenodo.org/records/15559774/files/stereo_dev.zip?download=1"
+
+
+def select_events(root: Path, split: str, n: int, seed: int):
+    """(class, (stem, start, end)) gold events with an onset inside the clip, balanced
+    across classes; deterministic in the seed so --fetch-only and the run agree."""
+    metas = sorted((root / "metadata_dev" / split).glob("*.csv"))
+    random.seed(seed)
+    random.shuffle(metas)
+    pool = defaultdict(list)
+    for m in metas:
+        for c, s, e, _frac in events_from_csv(m):
+            if c in FAMILY and MIN_ONSET <= s <= MAX_ONSET:
+                pool[c].append((m.stem, s, e))
+    per_class = max(5, n // len(FAMILY))
+    chosen = [(c, x) for c, items in pool.items() for x in items[:per_class]]
+    random.shuffle(chosen)
+    return chosen[:n], pool, len(metas)
+
+
+def fetch_audio(root: Path, split: str, stems, url: str = ZENODO_ZIP) -> int:
+    """Pull just these clips' wavs out of the remote zip; returns how many were fetched."""
+    from remotezip import RemoteZip
+    dest = root / "stereo_dev" / split
+    dest.mkdir(parents=True, exist_ok=True)
+    todo = [s for s in stems if not (dest / f"{s}.wav").exists()]
+    if not todo:
+        return 0
+    with RemoteZip(url) as z:
+        for i, s in enumerate(todo, 1):
+            z.extract(f"stereo_dev/{split}/{s}.wav", root)   # lands under root/stereo_dev/split/
+            if i % 25 == 0 or i == len(todo):
+                print(f"[dcase-onset] fetched {i}/{len(todo)} wavs", flush=True)
+    return len(todo)
+
+
+def _wav(root: Path, split: str, stem: str, out_dir: Path) -> Path:
+    src = root / "stereo_dev" / split / f"{stem}.wav"
+    if not src.exists():
+        raise FileNotFoundError(f"{src} -- run with --fetch-only on a node with internet first")
+    wav = out_dir / f"{stem}.wav"
+    subprocess.run(["ffmpeg", "-y", "-i", str(src), "-ac", "1", "-ar", "16000",
                     str(wav), "-loglevel", "error"], check=True)
     return wav
 
@@ -116,24 +162,18 @@ def main():
     ap.add_argument("--n", type=int, default=300, help="gold events to score")
     ap.add_argument("--seed", type=int, default=7)
     ap.add_argument("--out", default=str(_ROOT / "benchmark" / "eval_dcase_onset.json"))
+    ap.add_argument("--fetch-only", action="store_true",
+                    help="download the sampled clips' audio from Zenodo and exit")
     a = ap.parse_args()
     root = Path(a.root)
-    metas = sorted((root / "metadata_dev" / a.split).glob("*.csv"))
-    random.seed(a.seed)
-    random.shuffle(metas)
-
-    # gold events with an onset inside the clip, balanced across classes
-    pool = defaultdict(list)
-    for m in metas:
-        for c, s, e, _frac in events_from_csv(m):
-            if c in FAMILY and MIN_ONSET <= s <= MAX_ONSET:
-                pool[c].append((m.stem, s, e))
-    per_class = max(5, a.n // len(FAMILY))
-    chosen = [(c, x) for c, items in pool.items() for x in items[:per_class]]
-    random.shuffle(chosen)
-    chosen = chosen[:a.n]
-    print(f"[dcase-onset] {len(chosen)} gold events from {len(metas)} clips; per class:",
+    chosen, pool, n_metas = select_events(root, a.split, a.n, a.seed)
+    print(f"[dcase-onset] {len(chosen)} gold events from {n_metas} clips; per class:",
           {CLASSES[c][:12]: len(v) for c, v in sorted(pool.items())}, flush=True)
+    stems = sorted({stem for _c, (stem, _s, _e) in chosen})
+    if a.fetch_only:
+        got = fetch_audio(root, a.split, stems)
+        print(f"[dcase-onset] {len(stems)} clips, {got} fetched now -> {root / 'stereo_dev' / a.split}")
+        return
 
     out = Path(a.out)
     done = {}
@@ -147,10 +187,7 @@ def main():
             if key in done:
                 continue
             if stem not in cache:
-                video = root / "video_dev" / a.split / f"{stem}.mp4"
-                if not video.exists():
-                    print(f"[dcase-onset] no video for {stem}; skipped"); continue
-                cache[stem] = stamp_three_ways(_wav(video, Path(td)), config.DEVICE)
+                cache[stem] = stamp_three_ways(_wav(root, a.split, stem, Path(td)), config.DEVICE)
             evs = cache[stem]
             err = {m: (None if (o := nearest_onset(evs[m], c, s)) is None else round(o - s, 3))
                    for m in evs}
