@@ -284,16 +284,17 @@ def phase_reference(tag: str = "", desc_tag=None, device: str = "cuda"):
     clips = sorted({r["clip"] for r in recs})
     wavs, videos, transcripts = {}, {}, {}
     for c in clips:
+        stem = Path(c).stem                     # cache names carry the extension
         # any system's work dir has the same audio, video reference and transcript
         for system in SYSTEMS:
-            wd = work_root_for(system, desc_tag if desc_tag is not None else tag) / c
+            wd = work_root_for(system, desc_tag if desc_tag is not None else tag) / stem
             if (wd / "audio.wav").exists():
                 wavs[c] = wd / "audio.wav"
                 seg = wd / "segments.json"
                 transcripts[c] = " ".join(x.get("text", "") for x in
                                           json.loads(seg.read_text("utf-8"))) if seg.exists() else ""
                 break
-        vid = _find_clip(c)
+        vid = _find_clip(stem)
         if vid is not None:
             videos[c] = vid
     missing = [c for c in clips if c not in wavs or c not in videos]
