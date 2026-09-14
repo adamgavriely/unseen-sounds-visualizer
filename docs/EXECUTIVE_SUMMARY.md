@@ -3,7 +3,7 @@
 *For someone taking over this project today (updated 2026-09-14, 19:00). Plain language,
 every claim backed by a file you can open. The detailed record is `docs/project_notes.tex`
 (the dated lab notebook), `docs/literature_review.tex` (background), `docs/report/report.pdf`
-(the thesis draft, 14 pages, complete), `LIMITATIONS.md` (what the numbers do not support) and
+(the thesis draft, 14 pages; bibliography entries marked [verify] still need checking), `LIMITATIONS.md` (what the numbers do not support) and
 `docs/failure_catalogue.md` (every failure seen, with its status).*
 
 ---
@@ -32,8 +32,8 @@ the thing the evaluation tests.
   "is the thing making this sound visible?" without a fixed list of objects.
 - **Audio-to-image generation** (Sound2Scene etc.) turns sound into a picture without looking
   at the video. Those systems are our **blind baseline**: "draw everything you hear".
-- Nobody had combined detect → reason about heard-but-not-seen → show a picture. That
-  combination, its benchmark and its evaluation are the contribution.
+- We found no prior system that combines detect → reason about heard-but-not-seen → show a
+  picture. That combination, its benchmark and its evaluation are the contribution.
 
 Constraints from the supervisor: **no training** (glue existing open models), **minimum human
 involvement** (decisions by models, not hand-written rules), finish this week.
@@ -254,8 +254,6 @@ what the numbers mean. Three versions exist; none is neutral, and that is itself
   with the human tag on only 55/100 clips — chance — under two variants tried, so it rewards
   showing. Reported (`v2_indep_list`); not used for v3.
 
-The rubric is asymmetric: a wrongly withheld picture costs ~4 points, a redundant one ~1, so
-a gate must be right ~80% of the time when silent just to break even.
 
 ## 7. Results (v3 = the shipped system; 100 test clips; 0–4)
 

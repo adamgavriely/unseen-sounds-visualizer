@@ -93,8 +93,9 @@ labels used for evaluation.
         definition of when a picture is due (sound heard, source not visible, not speech or music).
   \item A seven-stage inference pipeline of off-the-shelf models (\S\ref{sec:method}).
   \item A benchmark of 274 human-labelled clips in four scenarios (\S\ref{sec:benchmark}).
-  \item An automatic evaluation protocol, and the finding that its reference must be independent
-        of the system under test (\S\ref{sec:eval}).
+  \item An automatic evaluation protocol, and the finding that its reference must be grounded
+        in labels: one written by the system's own models is circular, and one written by
+        independent models cannot decide what is on screen (\S\ref{sec:eval}).
   \item An experimental comparison with two baselines, with paired statistics and an oracle bound
         (\S\ref{sec:results}).
 \end{itemize}
@@ -607,7 +608,8 @@ similarity threshold each failed for a stated reason.
 the evaluation is a proxy. What is shown is that under a rubric that scores what a viewer would
 learn, the gated system ties a baseline that draws everything and beats the text baseline,
 that it wins where nothing is missing and loses where something is, and that the loss is
-concentrated in the visibility decision.
+mostly the detector's -- sounds masked by speech or music that never reach the bar -- with the
+visibility judgment second (\S\ref{sec:v4}).
 
 \textbf{How should such systems be evaluated?} With a reference the system cannot have written.
 The proposal's reference is built from the detector's events by the system's own VLM and
