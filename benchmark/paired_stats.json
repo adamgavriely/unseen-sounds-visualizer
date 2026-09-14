@@ -1,0 +1,22 @@
+[
+ {
+  "tag": "v2",
+  "n": 100,
+  "means": {
+   "proposed": 2.27,
+   "blind_a2i": 2.97,
+   "audio_caption": 2.68
+  },
+  "oracle": 2.89
+ },
+ {
+  "tag": "v2_grounded",
+  "n": 100,
+  "means": {
+   "proposed": 2.9,
+   "blind_a2i": 3.14,
+   "audio_caption": 2.79
+  },
+  "oracle": 3.19
+ }
+]
