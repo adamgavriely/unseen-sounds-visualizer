@@ -115,6 +115,12 @@ report's Limitations section mirrors this file.
 - **Timid toward on-screen sources.** On DCASE 2025 gold (258 events): 97% of off-screen
   sounds are correctly kept, only 35% of on-screen sources are silenced (66.7% agreement).
   DCASE frames are 360° captures, so "on screen" there is defined by a field of view.
+- **A larger VLM makes the visibility check worse under the rubric.** Qwen2.5-VL-32B on the
+  same 258 DCASE gold events (same three-vote question): on-screen recall 67% (7B: 35%) but
+  off-screen sounds wrongly silenced 25% (7B: 3%); agreement 70.9% vs 66.7%. Declared bar
+  (≥50% on-screen AND ≤+2 pts off-screen) failed on the second condition; at the rubric's
+  4:1 costs the 32B check roughly doubles the loss. Not swapped
+  (`benchmark/eval_dcase_visibility_32b.json`).
 - **Unstable to frame choice.** A 0.5 s shift in frame sampling flipped a gunshot and a police
   siren between silenced and shown (#13).
 - **The 7B model has a position bias**; every two-way question is asked in both orderings and
