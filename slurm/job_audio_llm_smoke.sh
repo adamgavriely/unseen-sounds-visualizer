@@ -20,7 +20,7 @@ export PYTHONUNBUFFERED=1
 python - <<'PY'
 import sys, config
 config.DEVICE = "cuda"
-sys.argv = ["audio_llm_smoke"]
+sys.argv = ["audio_llm_smoke", "--full", "dev", "test"]
 from benchmark import audio_llm_smoke as K
 K.main()
 PY
