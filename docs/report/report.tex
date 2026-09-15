@@ -27,21 +27,16 @@
 Subtitles carry speech; the ambient sound of a video -- a siren behind the camera, a dog
 barking in the next room, glass breaking off screen -- reaches a deaf viewer only if a captioner
 chose to write it down. This project asks whether that channel can be automated: given a video,
-detect its ambient sounds, decide for each whether its source is already visible on screen, and
-show a picture of the event beside the video only while a sound whose source is not visible is
+detect its ambient sounds, decide for each whether its source is already visible on screen (this decision is the \emph{gate}), and show a picture of the event beside the video only while a sound whose source is not visible is
 heard. The system is an inference pipeline over open-source foundation models with no training:
-BEATs for detection, a vision--language model for the visibility decision and the depiction, and
+BEATs, an audio tagging model, for detection, a vision--language model for the visibility decision and the depiction, and
 a text-to-image model for the picture. It is evaluated on a benchmark of 274 hand-labelled clips
 in four scenarios against a blind audio-to-image baseline and an audio-captioning baseline, with
 an automatic protocol in which a vision--language model describes the augmented video and a
 judge scores it against a reference. Under the human-grounded reference the gated system ties
 the blind baseline overall (3.17 vs 3.16 on a 0--4 scale, 100 clips), beats it where no picture
-is due ($+0.26$, CI excluding zero) and loses where one is ($-0.24$); a perfect gate would score
-3.25. Three findings about the evaluation itself are reported alongside: the reference specified
-in the proposal is written by the system's own models and biases the comparison by half a point;
-a reference built by independent models cannot decide whether a source is on screen better than
-chance; and the rubric's asymmetry -- a withheld picture scores 0, a redundant one about 3 --
-structurally penalises abstention, which is the behaviour the gate exists to provide.
+is due ($+0.26$; the 95\% confidence interval excludes zero) and loses where one is ($-0.24$); a perfect gate would score
+3.25. Three findings about the evaluation itself are reported alongside. First, the reference specified in the proposal is written by the system's own models and biases the comparison by half a point. Second, a reference built by independent models cannot decide whether a source is on screen better than chance. Third, the rubric is asymmetric -- a withheld picture scores 0, a redundant one about 3 -- so it penalises staying silent, which is the behaviour the gate exists to provide.
 \end{abstract}
 
 % ======================================================================
@@ -103,12 +98,8 @@ labels used for evaluation.
 % Condense literature_review.tex: AED/tagging (PANNs, BEATs), audio captioning, audio LLMs
 % (Qwen2-Audio), VLMs (Qwen2.5-VL, Idefics3), audio-to-image (Sound2Scene etc.) as the
 % baseline family, SDH/sign-language handling of non-speech sound, DHH visualisation studies.
-\textbf{Audio event detection.} Nearly all modern taggers are trained on AudioSet, a two-million
-clip ontology of 527 classes~\cite{audioset}. PANNs~\cite{panns} established strong CNN
-features (0.431 mAP); transformer taggers -- AST~\cite{ast} and BEATs~\cite{beats}, the latter
-pre-trained with acoustic tokenizers -- lead the DCASE challenges (BEATs 0.486 mAP on the same
-labels). BEATs is a clip-level tagger; frame-level detectors give sharper onsets at the cost of
-recall, which \S\ref{sec:results} measures.
+\textbf{Audio event detection.} Nearly all modern taggers are trained on AudioSet, a dataset of two million clips labelled with a hierarchy (ontology) of 527 sound classes~\cite{audioset}. PANNs~\cite{panns} established strong CNN features (0.431 mean average precision, mAP); transformer taggers -- AST~\cite{ast} and BEATs~\cite{beats}, the latter
+pre-trained with acoustic tokenizers -- lead the DCASE (Detection and Classification of Acoustic Scenes and Events) challenges (BEATs 0.486 mAP on the same labels). BEATs scores a whole clip at once (clip-level); detectors that score every frame locate a sound's start (its \emph{onset}) more sharply but miss more sounds, which \S\ref{sec:results} measures.
 
 \textbf{Audio captioning and audio language models.} Captioning systems trained on
 AudioCaps~\cite{audiocaps} and Clotho~\cite{clotho} describe a soundscape in a sentence, and
@@ -119,16 +110,13 @@ CLAP~\cite{clap} embeds audio and text in one space and is used to verify the au
 
 \textbf{Vision--language models.} Qwen2.5-VL~\cite{qwenvl}, LLaVA~\cite{llava} and
 Idefics3 answer open questions about frames. They are the only component that can decide whether
-a sound's source is visible without a fixed vocabulary of objects, and \S\ref{sec:method} shows
-that how the question is asked -- a name rather than a yes, two orderings rather than one --
-decides whether the answer is evidence or agreement.
+a sound's source is visible without a fixed vocabulary of objects, and \S\ref{sec:method} shows that asking the model to \emph{name} the source, and asking each two-way question in both orders, is what makes its answer evidence rather than mere agreement.
 
 \textbf{Sound-source localisation.} Cross-modal alignment methods~\cite{ssloc,objaware} point to
 where in an image a sound originates, and off-screen sound separation~\cite{offscreensep}
 estimates whether a source is in frame at all. They answer the gate's question with a number
 rather than a judgement; they were not used here because they are trained on data where the
-source usually is in frame, and the benchmark's positive class is exactly the case where it is
-not. The DCASE 2025 Task 3 dataset, which labels every event on- or off-screen, is used to check
+source usually is in frame, and the clips this benchmark cares about are exactly those where it is not. The DCASE 2025 Task 3 dataset, which labels every event on- or off-screen, is used to check
 the VLM gate instead (\S\ref{sec:benchmark}).
 
 \textbf{Audio-to-image and audio-to-video.} Sound2Scene~\cite{sound2scene} maps audio into a
@@ -164,10 +152,10 @@ visibility decision; stage 7 is the evaluation of \S\ref{sec:eval}.}
 stage & model & role \\
 \midrule
 1 audio extraction & FFmpeg & 16 kHz mono wav \\
-2 video understanding & OWLv2 (cheap pass) & candidate visible sources, deferred to stage 5 \\
+2 video understanding & OWLv2 (fast object detector) & candidate visible objects, used in stage 5 \\
 3 speech recognition & Whisper (configurable) & transcript, used only as gate context \\
 4 audio event detection & BEATs iter3+ AS2M (527 AudioSet classes) & events with onsets \\
-5 cross-modal reasoning & Qwen2.5-VL-7B & place, visibility, kind, depiction, dedup \\
+5 cross-modal reasoning & Qwen2.5-VL-7B & place, visibility, kind, depiction, duplicate removal \\
 6 visual augmentation & FLUX.1-schnell, 768 px & one picture per sound, side panel \\
 7 evaluation & Qwen2.5-VL / Mistral-7B judge + independent reference & \S\ref{sec:eval} \\
 \bottomrule
@@ -179,25 +167,16 @@ stage & model & role \\
 % Onset: hysteresis (0.5 of threshold) + prefix-silencing occlusion (notes sec:onset).
 % CAM on BEATs tokens does not work (deltas exactly 0 / -1.5): recorded as a negative result.
 \textbf{Detector.} Stage 4 tags audio with BEATs (iter3+, fine-tuned on AudioSet-2M; 0.486 mAP
-against PANNs CNN14's 0.431 on the same 527 labels). BEATs is a clip-level tagger, so a 2\,s window
-is scored every 0.25\,s and shaped like frame-wise output; a reflected lead-in pad lets a sound in
-the first two seconds be heard, and a window's score is stamped 0.5\,s before its end so that an
-onset is never early. The swap from PANNs was made after a review of eight demo clips traced eleven
+against PANNs CNN14's 0.431 on the same 527 labels). BEATs scores a whole clip at once, so the pipeline scores a 2-second window every 0.25\,s, giving one score per time step. The start of the audio is padded by mirroring its first two seconds, so a sound at the very beginning can still be detected. Each window's score is assigned to the time 0.5\,s before the window ends, so a detected start is never earlier than the true one. The swap from PANNs was made after a review of eight demo clips traced eleven
 of fourteen complaints to the detector's labels (a siren as ``truck horn'', a crying baby as
-``sheep''); on the same clips every one resolved. Speech and music classes are never shown. The
-display bar is 0.35, set once on the development split and not moved since (\S\ref{sec:process}).
+``sheep''); on the same clips every one resolved. Speech and music classes are never shown. The display threshold (the \emph{bar}: the score a sound must reach to be shown) is 0.35, set once on the development split and not moved since (\S\ref{sec:process}).
 
-\textbf{Onset.} A window cannot say where inside it a sound begins, and under the plain stamp every
-onset on three hand-checked clips was late by $+0.25$ to $+2.0$\,s. Two standard pieces on the same
-model fix most of it. \emph{Hysteresis}: a sound must reach the bar, then extends back through any
-contiguous stretch above half of it (an approaching helicopter scores 0.15--0.42 for 1.5\,s before
-crossing 0.35). \emph{Prefix-silencing occlusion} inside the first window that fired: silence its
-opening $t$ seconds for 26 values of $t$, score them in one batched forward pass, and read the onset
-as the first cut that removes a tenth of the class's evidence in logit space. It is class-conditional,
-so a voice in the same window does not pull it. Three alternatives were measured and rejected: finer
+\textbf{Onset.} A window cannot say where inside it a sound begins, and with the simple time-stamping just described, every onset on three hand-checked clips was late by $+0.25$ to $+2.0$\,s. Two standard pieces on the same
+model fix most of it. \emph{Hysteresis}: once a sound reaches the bar, its start is moved back to the beginning of the unbroken stretch in which its score stayed above half the bar (an approaching helicopter scores 0.15--0.42 for 1.5\,s before
+crossing 0.35). \emph{Prefix-silencing occlusion} inside the first window that fired: mute the first $t$ seconds of that window for 26 values of $t$, score all 26 versions in one model call, and take as onset the smallest $t$ at which muting removes a tenth of the model's evidence (in logits) for that class. The measure is specific to the class, so speech in the same window does not shift it. Three alternatives were measured and rejected: finer
 windows and frame-level detectors (PANNs 10\,ms, BEATs-strong 40\,ms) miss about half the sounds; a
 class-activation map over BEATs' 160\,ms tokens moves every onset by exactly $0$ or $-1.5$\,s,
-because the model was fine-tuned only through the token mean and no token was ever asked to be local.
+because the model was fine-tuned only on the average over tokens, so no single token was ever trained to say where in time a sound is.
 Results in \S\ref{sec:results}.
 
 \subsection{Stage 5: is the source on screen?}
@@ -208,7 +187,7 @@ Results in \S\ref{sec:results}.
 The proposal's premise is that a picture is due only when the source of a sound is \emph{not} on
 screen, so this question carries the system. It was first answered by a hand-written dictionary of
 about thirty labels mapped to CLIP prompts; a sound outside the dictionary could never be marked
-visible, so laughter, footsteps and a telephone were structurally ungated. It is now asked at run
+visible, so a laugh, footsteps or a telephone could never be silenced, whatever the frames showed. It is now asked at run
 time about the sound that was actually detected, from frames sampled across that sound's own span.
 
 \textbf{Name it, do not confirm it.} The VLM (Qwen2.5-VL-7B) is asked to name the thing in the
@@ -219,23 +198,17 @@ related object cannot count as the source without a table of which objects make 
 
 \textbf{The action, not the object.} A baby in its mother's arms was named as the source of the
 crying and silenced; a deaf viewer looking at it learns nothing about the sound. A second question
-therefore asks whether the thing can be seen \emph{making the sound now}. Three signals vote
-(open naming, the world-knowledge check, an open description of the frames); every two-way question
-is asked in both option orderings with agreement required, because the 7B model prefers a position
-(it answered ``(b)'' in 22 of 23 calls whichever option (b) was). Visibility is judged per 5\,s
+therefore asks whether the thing can be seen \emph{making the sound now}. Three signals vote: open naming, the world-knowledge check, and an open description of the frames. Every two-way question is asked twice with the options swapped, and both answers must agree. This is needed because the 7-billion-parameter model favours a position: it answered ``(b)'' in 22 of 23 calls, whatever option (b) was. Visibility is judged per 5\,s
 stretch, but one continuous sound gets one continuous picture even if its source enters the frame
 midway.
 
 \textbf{Speech as gate context.} For each sound with speech within three seconds, one text-only
-forced choice asks whether the people on the soundtrack are reacting to it. A yes puts the sound
-first in line when the panel is full and can rescue a sound just under the bar; it never reaches a
-picture and never overrides visibility. It is not asked for fewer than four transcribed words, since
+forced choice asks whether the people on the soundtrack are reacting to it. A ``yes'' gives that sound priority when the panel is full and can admit a sound just below the bar. The transcript never enters a picture and never overrides the visibility decision. It is not asked for fewer than four transcribed words, since
 Whisper transcribes non-speech as phonetic junk. On the 100-clip run it was asked 77 times and
 answered yes twice.
 
 \textbf{The frames may choose between the detector's own candidates.} When two labels share both
-boundaries within 0.6\,s and are not ancestor and descendant (one sound with two names, from the same
-windows), the VLM is shown the frames and asked which it is, with ``cannot tell'' keeping both. The
+boundaries within 0.6\,s and are not parent and child in the AudioSet label hierarchy (next subsection) -- one sound with two names, from the same windows --, the VLM is shown the frames and asked which it is, with ``cannot tell'' keeping both. The
 audio proposes, the video picks, and nothing is added that the audio did not hear.
 
 \subsection{Stage 5: one picture per source}
@@ -243,16 +216,13 @@ audio proposes, the video picks, and nothing is added that the audio did not hea
 % merges need time overlap) -- three attempts recorded (notes sec:dedup). Disambiguation among the
 % detector's own candidates from frames (sec:disamb).
 The detector emits label families (\emph{Laughter, Snicker, Chuckle}) and a clip once produced
-three near-identical pictures of people laughing. Three general mechanisms were tried. Label
-embeddings fail because single words embed too tightly (\emph{Dog}/\emph{Cat} 0.90 above
-\emph{Laughter}/\emph{Snicker} 0.80). Asking the VLM whether two depictions show one thing fails
+three near-identical pictures of people laughing. Three general mechanisms were tried. Label embeddings fail because single words are too similar to each other (cosine similarity 0.90 for \emph{Dog}/\emph{Cat}, higher than 0.80 for \emph{Laughter}/\emph{Snicker}, so similarity does not track sameness). Asking the VLM whether two depictions show one thing fails
 because it answers the question literally: ``different'' for 90\% of pairs, including an owl on a
 branch against an owl's hoot. A similarity threshold fails because it must be re-tuned whenever a
 prompt elsewhere changes, which happened three times. What works is the detector's own taxonomy: the
-AudioSet ontology (CC BY 4.0), vendored as child$\rightarrow$parent edges, and the rule that one
+AudioSet ontology (CC BY 4.0), stored in the repository as child-to-parent links, and the rule that one
 label must be an \emph{ancestor} of the other -- a shared parent is not enough, since \emph{Animal}
-would swallow \emph{Dog} with \emph{Sheep}. The rule is 14/14 on every pair the demos produced,
-with no threshold. A family label explains a member only where they overlap in time (interval
+would swallow \emph{Dog} with \emph{Sheep}. The rule was correct on all 14 pairs the demos produced, with no threshold. A family label explains a member only where they overlap in time (interval
 subtraction), so an all-clip \emph{Bird} does not swallow a five-second \emph{Owl}. Depiction
 similarity survives as a secondary signal at 0.80, and only for pairs that overlap in time.
 
@@ -270,13 +240,11 @@ the video only.
 
 \textbf{Validation by choice.} A yes/no check approved ``man on motorcycle drives past silver van''
 as a picture of \emph{Laughter}. A comparative check (is the phrase closer to the label than the
-scene sentence was?) was right on eight cases and 11/17 on seventeen, because it measured phrase
-length. The working check asks the VLM to \emph{choose}: given the phrase and the other sounds
+scene sentence was?) was right on all eight cases it was built on but only 11 of the next 17, because it was really rewarding shorter phrases. The working check asks the VLM to \emph{choose}: given the phrase and the other sounds
 detected in the same clip plus ``none of them'', which sound does it show, asked in both orderings.
 
 \textbf{Rendering and panel.} FLUX.1-schnell renders the phrase at 768\,px on a plain white
-background (chosen over PixArt-$\Sigma$ on twelve real prompts). The panel is divided by
-simultaneity, not inventory: rows are the largest number of sounds heard at once (at most three),
+background (chosen over PixArt-$\Sigma$ on twelve real prompts). The panel's rows depend on how many sounds are heard at the same time, not on how many the clip contains: rows are the largest number of sounds heard at once (at most three),
 a picture is held at least 1.5\,s, bursts closer than 0.8\,s are one appearance, and a cell is empty
 when its sound is absent. The first design parked every sound's picture beside the video for the
 whole clip, dimmed when silent; a panel that always looks the same carries no information, and a
@@ -285,13 +253,12 @@ picture on screen while its sound is absent makes a claim a deaf viewer cannot c
 \subsection{Design process}\label{sec:process}
 % Knobs set once on the dev split; failure catalogue (18 entries) with the >=3-cases rule;
 % demos illustrate only. docs/plan_robustness.md.
-Every earlier fix had been made on the clip in front of us, and each knob had been recalibrated
-by the next clip. Since 2026-09-13 the rules are: thresholds are set once on the development split;
+Before 2026-09-13, fixes were made on whichever clip was being inspected, and thresholds were re-tuned clip by clip. Since 2026-09-13 the rules are: thresholds are set once on the development split;
 every failure seen in a demo is logged in a failure catalogue with clip, stage and confidence; a
 design change needs three entries of one pattern or a metric move on the development split; demos
 illustrate and never tune; and every change is general and re-measured. The catalogue holds 18
 entries, seven fixed as general bugs, one decided (the place veto, off after two right and two wrong
-in four uses), the rest open at one of three.
+in four uses), the remaining ten are open, each seen once; three sightings are needed before a change.
 
 % ======================================================================
 \section{Benchmark}\label{sec:benchmark}
@@ -315,12 +282,10 @@ fell as filtering grew. Yet 36\% of clips that contain ambient sound at all are 
 the phenomenon is not rare, the acquisition funnel discards it. The first 209 tags predate any
 model-based filtering and are the unbiased sample.
 
-\textbf{Label stability.} Sixty tagged clips were replayed shuffled with the label hidden: self-agreement
-78\%, Cohen's $\kappa = 0.60$. The instability is in the positive class (\emph{unseen\_ambient}
+\textbf{Label stability.} The annotator re-labelled sixty clips in shuffled order without seeing the earlier label. The two labels agreed on 78\% (Cohen's $\kappa = 0.60$; 1 is perfect agreement, 0 is chance). The instability is in the positive class (\emph{unseen\_ambient}
 reproduced 12/20 against \emph{seen\_ambient} 19/20), which is the class the gate is judged on.
 
-\textbf{Tuning on the test set, checked.} The labelled clips were split 50/50 stratified by tag,
-every threshold swept on one half and frozen on the other, for five seeds: the held-out half scored
+\textbf{Check for over-tuning on the test set.} We split the labelled clips in half (equal scenario mix), tuned every threshold on one half, tested the frozen values on the other, and repeated with five random splits: the held-out half scored
 higher than the sweep half in four of five, and the sweep chose the same corner of the grid each
 time. There is no optimism to remove, because the thresholds are not doing the work; the gate is
 limited by what a vision--language model can answer, not by its configuration.
@@ -337,7 +302,7 @@ on-screen recall (visible source correctly silenced) & 35\% \\
 \bottomrule
 \end{tabular}\end{center}
 The check is timid in one direction: it almost never silences a sound whose source is off screen,
-and silences only a third of those whose source is on screen. Their label is geometric -- the source's direction of arrival falls inside a 100-degree field
+and silences only a third of those whose source is on screen. The DCASE on/off-screen label is geometric -- the source's direction of arrival falls inside a 100-degree field
 of view cut from a 360-degree capture -- not ``the viewer can see it making the sound'', so
 part of the on-screen shortfall is the check answering a stricter question than the label.
 
@@ -352,30 +317,17 @@ part of the on-screen shortfall is the check answering a stricter question than 
         system's own VLM from the detector's own events. Found circular on 2026-09-14 (review): it
         rewards whichever system repeats the detector.
   \item[human-grounded (\tagref{v2\_grounded}, \tagref{v3\_grounded})] the same reference corrected
-        by the annotator's label; only computable on labelled clips; raises the abstaining system
-        more than the baselines by arithmetic (notes \S{}Main Result).
-  \item[independent (\tagref{v2\_indep}, \tagref{v3\_indep})] built by models that never see the
-        system's output: Qwen2-Audio listens to the Demucs no-vocals stem and to the raw mix in
-        10 s chunks (the union, speech tags dropped; the stem alone was empty on a third of the
-        clips because Demucs pulls tonal sounds into the vocals stem); each claim is verified by
-        CLAP, kept if this clip's audio ranks in the top 20 of the 100 benchmark clips for the
-        claim's text with positive cosine (a mean $+2\sigma$ bar over text decoys, the first form,
-        left 58 of 100 references empty against 25 clips tagged \emph{no\_ambient}; both are
-        reported); Idefics3-8B looks at the frames for what is on screen; Phi-3.5-mini writes the
-        reference (Llama-3.1-8B is gated and was not accessible to the account); a MiniLM sentinel
-        ($\tau = 0.50$, uncalibrated) rejects sentences unsupported by the verified list. It was
+        by the annotator's label; only computable on labelled clips; by construction it raises a system that stays silent more than the baselines (see the rubric asymmetry, \S\ref{sec:cost}).
+  \item[independent (\tagref{v2\_indep}, \tagref{v3\_indep})] built by models that never see the system's output. (1) Qwen2-Audio, an audio language model, lists what it hears, on the raw audio and on a version with vocals removed by Demucs (a source-separation model), in 10-second chunks; the two lists are merged and speech items dropped. (2) CLAP, an audio--text matching model, keeps a claim only if this clip's audio ranks in the top 20 of the 100 benchmark clips for that claim's text, with positive similarity. (3) Idefics3-8B lists what is visible in the frames. (4) Phi-3.5-mini writes the reference from these lists (Llama-3.1-8B is licence-gated and was not accessible to the account). (5) A sentence-similarity check (MiniLM, threshold 0.50, uncalibrated) removes any sentence not supported by the verified list. Two details: the vocals-removed audio alone was empty on a third of the clips because Demucs pulls tonal sounds into the vocals stem, hence the merge; and the first form of step (2), a mean $+2\sigma$ bar over random text decoys, left 58 of 100 references empty against 25 clips tagged \emph{no\_ambient}, so both forms are reported. It was
         built to be the corrected primary; \S\ref{sec:results} shows it cannot score the gate
         decision, so the human-grounded reference remains the one that does.
 \end{description}
 
 \subsection{Baselines}
-Blind audio-to-image (depict everything heard, no gate) and audio captioning (text instead of a
-picture); video reasoning off for both.
+Two baselines are used. \emph{Blind audio-to-image} draws a picture for every sound heard, with no gate. \emph{Audio captioning} writes a text description instead of a picture. Neither looks at the video.
 
 \subsection{Statistics}
-Per-clip paired win/tie/loss, bootstrap 95\% CI on the mean difference (5000 resamples), and an
-oracle-gate bound: the human tag as the gate, the best system's output where a picture is due
-(\texttt{scripts/paired\_stats.py}).
+For each comparison we report per-clip wins, ties and losses; a bootstrap 95\% confidence interval (CI) on the mean difference (5000 resamples); and an \emph{oracle-gate} bound: the score if the human label were used as the gate and the best system's picture shown whenever one is due (\texttt{scripts/paired\_stats.py}).
 
 % ======================================================================
 \section{Results}\label{sec:results}
@@ -390,7 +342,7 @@ run & reference & proposed & blind a2i & audio caption \\
 \midrule
 \tagref{v2} & model-derived   & 2.27 & \textbf{2.97} & 2.68 \\
 \tagref{v2\_grounded} & human-grounded & 2.90 & \textbf{3.14} & 2.79 \\
-\tagref{v2\_indep\_list} & independent (list-and-match visibility) & 2.41 & \textbf{2.96} & 2.61 \\
+\tagref{v2\_indep\_list} & independent (list-and-match visibility; variant explained below) & 2.41 & \textbf{2.96} & 2.61 \\
 \midrule
 \tagref{v3} & model-derived   & 2.64 & \textbf{3.04} & 2.79 \\
 \tagref{v3\_grounded} & human-grounded & \textbf{3.17} & 3.16 & 2.89 \\
@@ -430,7 +382,7 @@ showing it (seen\_ambient: blind 3.08, proposed 2.48). A per-sound question to t
 visible}'') was tried next and scored the same 55\%, because the rule ``silent only if every
 verified claim is visible'' fails whenever one of five to eight audio-LM claims (\emph{video
 game sound}, \emph{wind noise (microphone)}, \emph{clock ticking}) is not; that variant was
-not judged (a 70\% agreement bar gates the judge pass). The reference's remaining weakness is
+not judged (the judge is run only on a reference whose silence decisions agree with the human label on at least 70\% of clips). The reference's remaining weakness is
 therefore the same question the system itself finds hardest -- whether a sound's source is on
 screen -- and the honest reading is that no automatic reference built here can score the gate
 decision; the human-grounded reference remains the only one that can, with the asymmetry
@@ -513,7 +465,7 @@ $[-0.057, +0.025]$); the gated system is preferred from $r = 0.40$ upward and le
 at $r = 1$ (CI $[0.000, +0.150]$). The claim this licenses is conditional: \emph{the gate is
 preferred whenever a redundant picture costs more than about forty percent of a withheld one};
 whether real viewers' costs exceed that is an empirical question this thesis does not answer.
-The panel's accessibility reading -- redundancy erodes trust in the channel and compounds over a
+The reviewers' accessibility reading -- redundancy erodes trust in the channel and compounds over a
 session, so its cost is likely above the rubric's quarter but below parity, and higher for
 alarm-like sounds than for ambience -- is an argument, not a measurement.
 
@@ -533,7 +485,7 @@ baseline coincides with the blind one at the decision level (same detector, no g
 Against seven hand-labelled onsets on three clips the plain stamp was late by $+0.9$\,s on average
 and the shipping method by $+0.3$\,s; that is an anecdote, so the same question was put to DCASE
 2025 Task 3, whose events carry a start frame at 100\,ms. From 255 gold events (nine non-speech
-classes, onset inside the clip) one BEATs pass was stamped three ways; an event counts as matched
+classes, onset inside the clip) the same BEATs scores were converted to onset times by three methods; an event counts as matched
 when a detection in the same AudioSet family starts within 1.5\,s of it. Every error below is
 measured on the matched events only -- 66 of 255 (26\%) at the display bar -- so the table
 describes where a picture is stamped when a sound is detected, not how often it is.
@@ -548,7 +500,7 @@ sliding-window stamp (before 09-14) & 50 & $+0.29$ & 0.43 & 44\% & 68\% \\
 \bottomrule
 \end{tabular}\end{center}
 
-Hysteresis is the gain: on the 50 events both methods match, MAE falls from 0.43 to 0.31\,s, and it
+Hysteresis is the gain: on the 50 events both methods match, the mean absolute error (MAE) falls from 0.43 to 0.31\,s, and it
 matches sixteen more events, because a sound that reaches the bar late is now traced back to where
 it began. Occlusion adds nothing on average: on the 65 events both match it is better on 25 and
 worse on 39 with an identical MAE of 0.34\,s (paired bootstrap difference $0.00$, 95\% CI
@@ -567,11 +519,11 @@ only where a picture is stamped.
 % place veto 2 right / 2 wrong on 4 uses -> off.
 \textbf{Retrieval against generation (earlier configuration).} On the same 100 clips with the
 first pipeline, retrieving a stock photograph for the label beat SDXL by $+0.17$ (gated) and
-$+0.18$ (blind), with the captioning control unchanged to two decimals; 55\% of the retrieved
+$+0.18$ (blind), while the captioning baseline, which uses no images, was unchanged to two decimal places, as expected; 55\% of the retrieved
 images carried a non-commercial or no-derivatives licence and 595 uses drew on 60 distinct
 images, which is why generation was kept.
 
-\textbf{Judge reliability.} A second, unrelated judge agrees with the primary one at
+\textbf{Judge reliability.} A second judge model from a different family agrees with the primary one at
 $\kappa = 0.753$ (97\% within one point) and reproduces the gated-versus-blind gap; the
 captioning baseline moves by $+0.61$ under it, so any ranking involving the text baseline is a
 property of the judge.
@@ -593,8 +545,7 @@ gate's silence rule once on the development split, scoring each setting with the
 costs (a withheld picture scores 0 where one would score up to 4, a redundant one about 3 where
 silence scores 4: $-4$ and $-1$ per clip). The three visibility votes of every sound at or above
 0.25 were cached for the 156 development clips with a video file, and sixteen settings were
-scored from the cache: silence by majority or by unanimous vote, display bar 0.25--0.40, the
-kinds-of-a-visible-source rule on or off.
+scored from the cache: silence by majority or by unanimous vote, display bar 0.25--0.40, the kinds-of-a-visible-source rule (a sound is also silenced when a visible object is a kind of thing that makes it) on or off.
 
 \begin{center}\begin{tabular}{lcccrr}
 \toprule
@@ -625,8 +576,7 @@ in street scenes, where cars are in frame and every stretch was unanimously judg
 with a stable name (``white car'', ``taxi on road''): under the annotation's own redundancy
 rule the gate's silence is defensible and the tag is the debatable one. None is a timing
 mismatch. On the development side, of the hundred redundant pictures the VLM could not
-silence because it saw no source, about eighty are confident detector phantoms with no source
-anywhere -- a whale at a Christmas market (0.36), roaring cats at a helicopter arrival (0.51),
+silence because it saw no source, about eighty are confident detector \emph{phantoms} (sounds reported with a high score that are not in the audio at all) with no source anywhere -- a whale at a Christmas market (0.36), roaring cats at a helicopter arrival (0.51),
 an electric toothbrush in an alarm clip (0.73), glass at 0.87 in a bombardment -- and the VLM
 is right that nothing visible makes them. Only about twenty are real sources the VLM said were
 absent (thunder in a storm, an alarm in a car-alarm clip), and those expose a definitional gap
@@ -726,13 +676,14 @@ text baseline; it wins where nothing is missing and loses where something is, be
 rubric prices a withheld picture at four times a redundant one and the visibility question is
 the hardest a vision--language model is asked here.
 
-Next, in order: a detector-only benchmark on the labelled clips (recall of off-screen events
-against the phantom rate, independent of gate and judge), and against it a speech-aware
-detector -- BEATs on a Demucs residual with the higher of the two scores, accepted only if
-DCASE recall on speech-overlapped events rises by ten points with phantoms per class up by no
-more than two and no threshold re-tuned -- or a polyphonic detector trained on mixtures; an
-open-vocabulary audio model where the 527 classes have no word; a second annotator; and a
-study with deaf viewers, without which the accessibility claim rests on a proxy.
+Next, in order:
+\begin{enumerate}
+  \item a detector-only benchmark on the labelled clips: recall of off-screen events against the phantom rate, independent of gate and judge;
+  \item against it, a speech-aware detector -- BEATs on a Demucs residual with the higher of the two scores -- accepted only if DCASE recall on speech-overlapped events rises by ten points, phantoms per class rise by no more than two, and no threshold is re-tuned; or a polyphonic detector trained on mixtures;
+  \item an open-vocabulary audio model for the sounds the 527 classes have no word for;
+  \item a second annotator;
+  \item a study with deaf viewers, without which the accessibility claim rests on a proxy.
+\end{enumerate}
 
 \begin{thebibliography}{99}
 

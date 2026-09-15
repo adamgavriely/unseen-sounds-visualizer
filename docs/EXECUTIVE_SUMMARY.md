@@ -33,8 +33,8 @@ simplest alternative — "draw a picture for every sound you hear, never look at
 (the **blind** baseline) — scores **3.16**: a tie. We win on the 50 clips where no picture was
 needed (we stay quiet, blind draws something redundant) and lose on the 50 where one was
 needed (we sometimes stay quiet when we should not). The reason we lose is mostly not the
-gate but the **sound detector** underneath it, and six attempts to improve that detector,
-each with a pass/fail rule written down beforehand, all failed — which is itself the
+gate but the **sound detector** underneath it. Six attempts to improve that detector all
+failed; each had its pass/fail rule written down before it ran. That they all failed is the
 thesis's second finding.
 
 ## 3. The story of the project (what happened, in order)
@@ -46,22 +46,24 @@ thesis's second finding.
   274-clip benchmark. Many hand fixes made on one clip broke on the next (lessons in §7).
 - **8–9 Sept.** Better object finder (OWLv2); evaluation split into "describe" and "judge"
   passes; FLUX replaces SDXL for pictures; an experiment showed a *stock photo* beats a
-  generated picture by +0.17, but 55% of the photos had restrictive licences, so generation
+  generated picture by +0.17 points on the 0–4 score, but 55% of the photos had restrictive licences, so generation
   stayed.
 - **12 Sept.** BEATs replaces PANNs as the detector (fixed 11 of 14 logged complaints).
 - **13 Sept.** Process rules adopted: clips split into a development set (for choosing
   settings) and a test set (for the final score); every failure logged; a pass bar declared
   before every experiment. First outside check on the DCASE dataset (visibility decision
-  66.7% right). Version **v3** of the system submitted to the cluster (10 h).
+  66.7% right). Version **v3** of the system sent to run on the university's GPU computers (the
+  "cluster"); the run took 10 hours.
 - **14 Sept.** The previous version (**v2**) loses to blind under every way of scoring
   (−0.70 at worst). Found that the proposal's reference sentences were written by the
-  system's own models — circular. Built a fully independent reference; found it is at
-  chance (55%) on the one question that matters, so it cannot score the gate. **v3 lands:
+  system's own models — circular. Built a fully independent reference; found that on the key question — is the source
+  visible? — it agrees with Adam's labels only 55% of the time, a coin flip, so it cannot
+  score the gate. **v3 lands:
   a tie (+0.01).** A sweep of 16 gate settings on the development clips shows the current
   one is already best. Thesis draft written.
 - **15 Sept.** Six detector improvements tried, all failed their declared bars (§10). A
-  second, judge-free way of scoring (cost-sensitivity, §9) shows the gate is preferred once
-  a redundant picture is counted as ≥40% as bad as a missing one. Two things the judge
+  second, judge-free way of scoring (cost-sensitivity, §9) shows the gate comes out ahead if one unneeded picture counts as at least 40% as bad as
+  one missing picture. Two things the judge
   cannot see were found (§8). Figures, bibliography, and this summary finished.
 
 ## 4. Background: what already exists
@@ -101,8 +103,9 @@ quarter of a second per step, and gives each of the 527 sound kinds a confidence
 and 1. A sound counts if its confidence reaches **0.35** (the "bar"). Two timing refinements:
 the start is stamped where the confidence *begins to rise*, not where it crosses the bar
 ("hysteresis"), so the picture is not late — this cut timing error from 0.43 s to 0.31 s on
-an outside dataset; and a further "occlusion" step that made no measurable difference was
-kept because v3 was scored with it on. Speech and music are never shown.
+an outside dataset; and a second timing step ("occlusion", which handles a
+sound briefly hidden by a louder one) was also kept: it made no measurable difference, but
+v3 was scored with it on. Speech and music are never shown.
 
 **The visibility decision (stage 5, the gate).** For each detected sound:
 1. Its duration is cut into pieces of at most 5 seconds (a "stretch"). For each stretch, 6
@@ -113,7 +116,8 @@ kept because v3 was scored with it on. Speech and music are never shown.
      cowboy hat cannot be the source of a vehicle sound.
    - *Is it happening*: "Can you SEE X happening — the source in frame and visibly making that
      sound?" Two options, asked twice with the options swapped; counted only if both answers
-     agree (the model otherwise tends to pick the second option whatever it says).
+     agree (otherwise the model tends to pick whichever option is listed second, regardless of the
+     frames).
    - *Describe*: "Describe what is in these frames." If the description names the source, or
      common sense says what it describes makes that sound, that counts as a vote.
 3. Majority of the three votes = "visible" for that stretch. The sound is silenced only if it
@@ -133,7 +137,8 @@ on a white background; the panel holds at most three pictures at once, each for 
 
 **One picture per sound source ("dedup").** The detector often gives one sound several
 names (Laughter, Giggle, Snicker). AudioSet's own family tree (Giggle is a kind of Laughter)
-merges them; a text-similarity check catches paraphrases the tree cannot; and when two
+merges them; a check on word meaning catches names for the same sound that the family tree does not
+list; and when two
 names have exactly the same start and end (a crying baby heard as "Sheep" and "Baby cry"),
 the VLM looks at the frames and picks one.
 
@@ -150,7 +155,7 @@ report's Figure 2.
 2. **Objects seen** (OWLv2): road, van, cars, train — a list for later.
 3. **Speech** (Whisper): none.
 4. **Detect** (BEATs): "Siren" confidence rises above 0.35 almost at once and stays there —
-   peak 0.84, span 0.0–17.8 s. "Vehicle" is also heard (peak 0.61).
+   highest confidence 0.84, heard from 0.0 to 17.8 s. "Vehicle" is also heard (peak 0.61).
 5. **Reason** (Qwen2.5-VL, for "Siren"): the 18 s become four stretches. In every one,
    *Name it* answers "nothing", *Is it happening* answers "no", and only *Describe* counts
    as a yes (the description mentions vehicles that could carry a siren). One vote of three
@@ -177,7 +182,7 @@ came out of that:
    tree after three cleverer ideas failed.
 4. **Set thresholds once, on separate clips.** Since 2026-09-13: settings are chosen on a
    *development split* (clips not used for the final score), every failure is logged
-   (`docs/failure_catalogue.md`), and a change needs three cases of one pattern.
+   (`docs/failure_catalogue.md`), and a setting is changed only after the same kind of failure appears on three clips.
 5. **Evaluation code produces plausible wrong numbers.** An empty result scored 2/4; a
    similarity returned 0.0 for everything after a library update; an audio model was never
    given its audio and answered "none" 100 times. Each was found by reading logs.
@@ -208,8 +213,8 @@ never look at the video; **caption** — write the sound's name as text instead 
   the cars and stayed silent → **0**. Blind drew traffic → **3**. Being wrong here costs us
   **3–4 points**.
 
-So a wrong silence costs about four times what a redundant picture costs. The gate must be
-right about 80% of the time when it stays silent just to break even. This shapes every
+So a wrong silence costs about four times what a redundant picture costs. To come out even, the gate has to
+be right in about 4 of every 5 cases where it stays silent. This shapes every
 result below. Whether deaf viewers feel the same 4-to-1 is unknown (§9 looks at other rates).
 
 **Who writes the reference sentence matters.** Three versions:
@@ -229,8 +234,8 @@ clip where a picture was due, the reference itself says nothing is missing and *
 system gets 4 — so a detector miss is invisible to the score. And the score cannot say
 whether a picture was shown at the right moment; only that it was shown.
 
-**How reliable is the judge?** A second, different judge model agreed with Mistral on 97% of
-clips to within one point and reproduced the gated-vs-blind gap — but it moved the caption
+**How reliable is the judge?** A second, different judge model gave a score within one
+point of Mistral's on 97% of clips and reproduced the gated-vs-blind gap — but it moved the caption
 baseline by +0.61, so any ranking involving the text baseline depends on which judge you ask.
 
 ## 9. Results (v3 = the current system; 100 test clips; score 0–4)
@@ -240,8 +245,9 @@ baseline by +0.61, so any ranking involving the text baseline depends on which j
 | model-derived | 2.64 | **3.04** | 2.79 | −0.40 (clearly behind) |
 | **human-grounded** | **3.17** | 3.16 | 2.89 | **+0.01 — a tie** (21 clips won, 64 tied, 15 lost) |
 
-The tie's 95% range is −0.15 to +0.18: the data cannot tell the two apart. Any mean over
-25 clips carries roughly ±0.2, so small differences below are indications, not proof.
+Statistically, the true difference could be anywhere between −0.15 and +0.18 points (a 95%
+confidence interval): the data cannot tell the two apart. An average over 25 clips is
+uncertain by about ±0.2 points, so small differences below are indications, not proof.
 
 Split by whether a picture was due (human-grounded):
 - **no picture due** (50 clips): ours 3.56 vs blind 3.30 → **+0.26, we win** — we correctly
@@ -259,12 +265,12 @@ tie.
 comes from the scoring rubric and not from deaf viewers, we also computed a simpler,
 judge-free score: per clip, did the gate open when a picture was due and stay shut when
 not? Ours: 39 hits, 11 misses, 28 redundant. Blind: 43 hits, 7 misses, 39 redundant. If a
-redundant picture is treated as costing a quarter of a miss (the judge's implicit rate), the
+redundant picture is treated as costing a quarter of a miss ((the rate built into the judge's scoring, §8)), the
 two tie; if it costs 40% or more, ours is ahead. So: *the gate is preferred as soon as a
 redundant picture is counted as more than about 40% as bad as a missing one.* Whether real
 viewers feel it that way is an open question — no user study.
 
-**Where the remaining errors come from** (read from saved decisions, no new runs):
+**Where the remaining errors come from** ((found by reading the decisions saved during the test run; nothing was re-run)):
 - Of the 11 test clips where we stayed silent and should not have: **7 are the detector** —
   the ambient sound was under loud speech or music and never reached the 0.35 bar (a "masked
   miss"); 4 are debatable labels (cars visible on screen, traffic noise labelled off-screen,
@@ -279,8 +285,8 @@ So the **detector** is the bottleneck on both sides, more than the visibility de
 **Outside check — DCASE 2025.** A public research dataset of 30,000 five-second indoor clips
 in which humans marked, for every sound, when it starts and whether its source is inside the
 camera's view. We use it as ground truth we did not make ourselves: on 258 of its sounds our
-visibility decision agrees 66.7% — it keeps 97% of off-screen sounds but silences only 35% of
-on-screen ones (it errs on the safe side: better a redundant picture than a missing one).
+visibility decision matches the human mark 66.7% of the time: it correctly shows a picture
+for 97% of off-screen sounds, but correctly stays silent for only 35% of on-screen ones (it errs on the safe side: better a redundant picture than a missing one).
 
 ## 10. What was tried against the detector, and why it stopped
 
@@ -303,8 +309,9 @@ of people, an aquarium walk), so the detector seems to hear crowd murmur as whal
 second detector (PANNs) makes the same confusion, so asking it to agree does not help; and a
 confidence bar high enough to remove the whale also removes real quiet sounds elsewhere.
 
-Conclusion for the thesis: with today's off-the-shelf sound detectors, invented sounds and
-missed quiet sounds are two ends of one dial; no filter on top fixes both.
+Conclusion for the thesis: with today's off-the-shelf sound detectors, one setting controls both
+problems — raising the bar removes invented sounds but also loses real quiet ones — and no
+filter on top fixes both.
 
 ## 11. The benchmark (`benchmark/tags.json`)
 
@@ -318,8 +325,8 @@ the picture already tell the viewer this sound is happening?"
 split**: the other 174 clips, used only for choosing settings. (All 25 mixed clips ended up in
 the test set; this mattered once, §10.)
 
-**Label reliability**: Adam re-labelled 60 clips blind and agreed with himself on 78% of
-them (by the usual scale, "moderate" agreement); the disagreement is mostly on the "unseen"
+**Label reliability**: Adam re-labelled 60 clips without seeing his first labels and agreed
+with himself on 78% of them (on the standard agreement scale this counts as "moderate"); the disagreement is mostly on the "unseen"
 clips, which are exactly the ones the gate is judged on. One annotator; a second would make
 this firmer.
 
@@ -360,8 +367,8 @@ Run one video locally: `python main.py <video>`; settings in `config.py`.
 - Experiment records: `benchmark/gate_setting.json`, `clap_setting.json`,
   `panns_agree.json`, `persist_rank_setting.json`, `eval_dcase_visibility_32b.json`,
   `audio_llm_eval.json`.
-- Cluster (BIU Slurm, VPN via F5 at access.biu.ac.il): jobs are `slurm/*.sh`. A Hugging
-  Face token in `~/.bashrc` on the cluster is needed for the gated models.
+- Cluster (BIU Slurm, VPN via F5 at access.biu.ac.il): jobs are `slurm/*.sh`. Some models require accepting a licence on Hugging Face (unrelated to our gate); the
+  access token for them lives in `~/.bashrc` on the cluster.
 - Documents: `docs/report/` (thesis), `docs/project_notes.tex` (lab notebook),
   `docs/failure_catalogue.md`, `docs/plan_robustness.md` (process rules), `LIMITATIONS.md`.
 
