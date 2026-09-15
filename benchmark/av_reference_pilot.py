@@ -55,12 +55,12 @@ SPEECH_MUSIC = re.compile(r"\b(speech|speak|speaking|talk|talking|voice|voices|c
 
 
 # ----------------------------------------------------------------------------- media
-def frames_and_audio(video: Path, td: Path, n: int = N_FRAMES):
+def frames_and_audio(video: Path, td: Path, n: int = N_FRAMES, phase: float = 0.5):
     from PIL import Image
     import soundfile as sf
     dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of",
                                 "default=nw=1:nk=1", str(video)], capture_output=True, text=True).stdout.strip() or 0)
-    times = [dur * (i + 0.5) / n for i in range(n)]
+    times = [dur * (i + phase) / n for i in range(n)]    # phase: where inside each slot the frame is taken
     frames = []
     for i, t in enumerate(times):
         fp = td / f"f{i}.jpg"
@@ -86,8 +86,8 @@ class MiniCPM:
                                                init_tts=False).eval().to(device)
         self.tok = AutoTokenizer.from_pretrained(MODELS["minicpm"], trust_remote_code=True)
 
-    def ask(self, frames, audio, sr) -> str:
-        content = list(frames) + ([audio] if audio is not None else []) + [PROMPT]
+    def ask(self, frames, audio, sr, prompt: str = PROMPT) -> str:
+        content = list(frames) + ([audio] if audio is not None else []) + [prompt]
         return self.model.chat(msgs=[{"role": "user", "content": content}], tokenizer=self.tok, sampling=False,
                                max_new_tokens=400, omni_input=True, use_tts_template=False, generate_audio=False,
                                max_slice_nums=1, use_image_id=False)
@@ -104,9 +104,9 @@ class Omni:
         self.proc = Qwen2_5OmniProcessor.from_pretrained(MODELS["omni"])
         self.device = device
 
-    def ask(self, frames, audio, sr) -> str:
+    def ask(self, frames, audio, sr, prompt: str = PROMPT) -> str:
         import inspect
-        content = [{"type": "video"}] + ([{"type": "audio"}] if audio is not None else []) + [{"type": "text", "text": PROMPT}]
+        content = [{"type": "video"}] + ([{"type": "audio"}] if audio is not None else []) + [{"type": "text", "text": prompt}]
         msgs = [{"role": "user", "content": content}]
         text = self.proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
         video = np.stack([np.asarray(f) for f in frames])
