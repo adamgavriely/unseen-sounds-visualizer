@@ -1,0 +1,45 @@
+{
+ "clip": "un_raining_afvKRNCf.mp4",
+ "tag": "seen_ambient",
+ "duration": 19.019,
+ "with_sound": [
+  {
+   "what": "dark clouds moving",
+   "evidence": "seen"
+  },
+  {
+   "what": "rain falling",
+   "evidence": "both"
+  },
+  {
+   "what": "thunder rumbling",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "dark clouds move",
+   "evidence": "seen"
+  },
+  {
+   "what": "camera pans right",
+   "evidence": "seen"
+  },
+  {
+   "what": "camera zooms in",
+   "evidence": "seen"
+  },
+  {
+   "what": "camera zooms out",
+   "evidence": "seen"
+  },
+  {
+   "what": "camera pans left",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"dark clouds moving\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rain falling\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"thunder rumbling\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n# 1\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"dark clouds move\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"camera pans right\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"camera zooms in\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"camera zooms out\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"camera pans left\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:"
+ }
+}

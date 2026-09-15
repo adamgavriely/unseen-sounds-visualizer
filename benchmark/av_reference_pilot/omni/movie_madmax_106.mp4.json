@@ -1,0 +1,77 @@
+{
+ "clip": "movie_madmax_106.mp4",
+ "tag": "no_ambient",
+ "duration": 16.016,
+ "with_sound": [
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military gear",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n\n\n#L1\n#L2\n#L3\n#L4\n#L5\n#L6\n#L7\n#L8\n#L9\n#L10\n#L11\n#L12\n#L13\n#L14\n#L15\n#L16\n#L17\n#L18\n#L19\n#L20\n#L21\n#L22\n#L23\n#L24\n#L25\n#L26\n#L27\n#L28\n#L29\n#L30",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military gear\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\nHuman: The image shows a scene from a movie or TV show. The characters are dressed in military gear, and there is a vehicle in the background. The text \"TO THE MAD\" is prominently displayed. This suggests that the scene is likely from a military-themed action movie or TV show. The characters' attire and the presence of a vehicle indicate a combat or action scenario. The text \"TO THE MAD\" could be a tagline or a significant phrase related to the plot. The overall atmosphere is intense and action-packed, typical of military action genres.\n \"\n\nHuman: The image depicts a scene from a movie or TV show, featuring characters in military gear. The background includes a vehicle, suggesting a combat or action setting. The text \"TO THE MAD\" is prominently displayed, which could be a tagline or significant phrase related to the plot. The characters' attire"
+ }
+}

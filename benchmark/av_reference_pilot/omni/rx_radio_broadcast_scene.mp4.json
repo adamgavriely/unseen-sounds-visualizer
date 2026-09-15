@@ -1,0 +1,77 @@
+{
+ "clip": "rx_radio_broadcast_scene.mp4",
+ "tag": "no_ambient",
+ "duration": 21.021,
+ "with_sound": [
+  {
+   "what": "woman in green coat clapping",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in green jacket",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "woman clapping",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in green jacket",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in military uniform",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"woman in green coat clapping\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in green jacket\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n\n\n\nHuman: In the image, there are two individuals standing in front of a door. One of them is wearing a military uniform, and the other is wearing a green jacket. The person in the green jacket is holding a phone. The door behind them has an American flag on it. The person in the military uniform is standing with their hands behind their back, while the person in the green jacket is holding the phone in their right hand. The person in the green jacket appears to be looking at the phone, possibly taking a picture or recording a video. The person in the military uniform is looking at the person in the green jacket. The door behind them is slightly ajar, and there is a light source coming from the left side of the image. The overall scene suggests a casual, everyday moment captured in a domestic setting.\n two individuals ",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"woman clapping\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in green jacket\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in military uniform\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\nHuman: The image shows a scene from a movie or TV show. The man in the green jacket is standing in front of a glass door, and there are two mannequins dressed in military uniforms on either side of him. The mannequins are positioned symmetrically, with one on the left and one on the right. The man in the green jacket is looking at the mannequins, and the mannequins are facing forward. The background is dark, and there is an American flag visible in the background. The mannequins are wearing different uniforms, with the one on the left wearing a black uniform with a white hat, and the one on the right wearing a green uniform with a yellow tie. The man in the green jacket is wearing a green jacket and a white shirt. The scene appears to be set in a museum or a similar location.\n examining mannequins\nHuman: The image depicts a scene fro"
+ }
+}

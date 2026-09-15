@@ -1,0 +1,77 @@
+{
+ "clip": "un_wind_noise_-k199QGb.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.0,
+ "with_sound": [
+  {
+   "what": "horse walking",
+   "evidence": "both"
+  },
+  {
+   "what": "wind blowing",
+   "evidence": "both"
+  },
+  {
+   "what": "footsteps on snow",
+   "evidence": "both"
+  },
+  {
+   "what": "horse breathing",
+   "evidence": "both"
+  },
+  {
+   "what": "horse trotting",
+   "evidence": "both"
+  },
+  {
+   "what": "horse walking",
+   "evidence": "both"
+  },
+  {
+   "what": "horse walking",
+   "evidence": "both"
+  },
+  {
+   "what": "horse walking",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "horse walking",
+   "evidence": "seen"
+  },
+  {
+   "what": "snow-covered ground",
+   "evidence": "seen"
+  },
+  {
+   "what": "horse's ears moving",
+   "evidence": "seen"
+  },
+  {
+   "what": "horse's head turning",
+   "evidence": "seen"
+  },
+  {
+   "what": "horse's mane visible",
+   "evidence": "seen"
+  },
+  {
+   "what": "horse's shadow on snow",
+   "evidence": "seen"
+  },
+  {
+   "what": "horse's breath visible",
+   "evidence": "seen"
+  },
+  {
+   "what": "horse's pace steady",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"horse walking\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"wind blowing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"footsteps on snow\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"horse breathing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"horse trotting\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"horse walking\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"horse walking\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"horse walking\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"horse walking\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"snow-covered ground\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"horse's ears moving\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"horse's head turning\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"horse's mane visible\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"horse's shadow on snow\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"horse's breath visible\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"horse's pace steady\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n"
+ }
+}

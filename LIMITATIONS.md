@@ -53,6 +53,15 @@ detail behind those sentences.
   Future work, a taxonomy decision rather than a tuned constant: claims that name a recording
   artefact (microphone wind noise, video-game sound, sound effect) should not count as
   missable, and near-duplicate claims of one source should be one claim.
+- **A "with sound / without sound" reference was piloted and failed.** Pre-registered
+  (`docs/prereg_av_reference.md`, before any code): an audio-visual model lists events with the
+  soundtrack and again muted, on the same frames; heard items the muted run already saw are
+  removed. Dev split, 156 clips, Qwen2.5-Omni-7B (MiniCPM-o 2.6 could not load): balanced
+  accuracy of the "anything missing?" decision 49.5% (bar 67.7%), κ = 0.00, placebo rate 37%
+  (bar < 20%). Two readings are reported because the code counted "heard or both" while the
+  pre-registration text said "heard": heard-only gives 59.5%, still below the bar and equal to
+  the model-derived reference. The model marks off-screen sources as "both" and often ignores
+  the audio on picture-due clips. Not adopted (`benchmark/av_reference_pilot.json`).
 - **The judge cannot see a detector miss.** On the 7 test clips tagged unseen/mixed where the
   detector heard nothing, the grounded reference reads "nothing beyond the picture" and every
   system scores 4. The clip-level cost-sensitivity analysis (report §Cost sensitivity) counts

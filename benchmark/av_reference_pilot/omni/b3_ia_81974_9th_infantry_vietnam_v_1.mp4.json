@@ -1,0 +1,77 @@
+{
+ "clip": "b3_ia_81974_9th_infantry_vietnam_v_1.mp4",
+ "tag": "seen_ambient",
+ "duration": 22.018349,
+ "with_sound": [
+  {
+   "what": "people board a helicopter",
+   "evidence": "seen"
+  },
+  {
+   "what": "helicopter takes off",
+   "evidence": "seen"
+  },
+  {
+   "what": "people board a ship",
+   "evidence": "seen"
+  },
+  {
+   "what": "ship moves",
+   "evidence": "seen"
+  },
+  {
+   "what": "music plays",
+   "evidence": "both"
+  },
+  {
+   "what": "aircraft engine sound",
+   "evidence": "both"
+  },
+  {
+   "what": "aircraft flies overhead",
+   "evidence": "both"
+  },
+  {
+   "what": "aircraft lands",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "people board helicopter",
+   "evidence": "seen"
+  },
+  {
+   "what": "helicopter takes off",
+   "evidence": "seen"
+  },
+  {
+   "what": "helicopter hovers",
+   "evidence": "seen"
+  },
+  {
+   "what": "people board helicopter",
+   "evidence": "seen"
+  },
+  {
+   "what": "helicopter takes off",
+   "evidence": "seen"
+  },
+  {
+   "what": "people board helicopter",
+   "evidence": "seen"
+  },
+  {
+   "what": "helicopter takes off",
+   "evidence": "seen"
+  },
+  {
+   "what": "people board helicopter",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"people board a helicopter\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"helicopter takes off\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"people board a ship\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ship moves\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"music plays\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"aircraft engine sound\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"aircraft flies overhead\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"aircraft lands\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"people board helicopter\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"helicopter takes off\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"helicopter hovers\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"people board helicopter\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"helicopter takes off\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"people board helicopter\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"helicopter takes off\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"people board helicopter\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n\n: \n\n\n\n: \n"
+ }
+}

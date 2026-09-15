@@ -1,0 +1,65 @@
+{
+ "clip": "as_glass_t6e0Rjul.mp4",
+ "tag": "no_ambient",
+ "duration": 20.053367,
+ "with_sound": [
+  {
+   "what": "person pours liquid",
+   "evidence": "seen"
+  },
+  {
+   "what": "person stirs mixture",
+   "evidence": "seen"
+  },
+  {
+   "what": "person taps spoon on bowl",
+   "evidence": "seen"
+  },
+  {
+   "what": "person speaks",
+   "evidence": "both"
+  },
+  {
+   "what": "person laughs",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "person pours liquid",
+   "evidence": "seen"
+  },
+  {
+   "what": "person stirs mixture",
+   "evidence": "seen"
+  },
+  {
+   "what": "person adds ingredient",
+   "evidence": "seen"
+  },
+  {
+   "what": "person uses spoon",
+   "evidence": "seen"
+  },
+  {
+   "what": "person taps spoon",
+   "evidence": "seen"
+  },
+  {
+   "what": "person taps bowl",
+   "evidence": "seen"
+  },
+  {
+   "what": "person taps microwave",
+   "evidence": "seen"
+  },
+  {
+   "what": "person taps spoon",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"person pours liquid\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person stirs mixture\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person taps spoon on bowl\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person speaks\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"person laughs\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"person pours liquid\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person stirs mixture\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person adds ingredient\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person uses spoon\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person taps spoon\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person taps bowl\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person taps microwave\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person taps spoon\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n"
+ }
+}

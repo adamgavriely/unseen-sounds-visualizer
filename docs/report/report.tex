@@ -323,6 +323,24 @@ part of the on-screen shortfall is the check answering a stricter question than 
         decision, so the human-grounded reference remains the one that does.
 \end{description}
 
+\textbf{A fourth reference, piloted.} A reference written from the \emph{difference} between what an
+audio--visual model reports with the soundtrack and what the same model reports on the same frames
+muted was pre-registered (\texttt{docs/prereg\_av\_reference.md}, before any code) and piloted on the
+156 development clips with a video file. The model fills a fixed list of events, each marked
+\emph{seen}, \emph{heard} or \emph{both}; heard items already listed by the muted run are removed;
+an empty list is ``nothing beyond the picture''. MiniCPM-o~2.6, chosen because it does not share the
+system's vision encoder, does not load under the installed transformers; the pre-registered fallback
+Qwen2.5-Omni-7B ran. Against the annotator's labels the ``anything missing?'' decision reached a
+balanced accuracy of 49.5\% (bar: 67.7\%, ten points above the model-derived reference's 57.7\%),
+$\kappa = 0.00$, and the muted run still claimed to hear something on 37\% of clips (bar: under
+20\%). Reading only \emph{heard} items, the pre-registration's stricter wording, gives 59.5\% -- no
+better than the model-derived reference. The model marks off-screen sources as \emph{both} (a
+helicopter overhead, a church bell behind a pointing hand) and on picture-due clips often lists only
+what it sees (men in vests at a fireworks display). The failure is the same one as the independent
+reference's: today's open audio--visual models do not decide \emph{whether the source is in view}
+better than chance, so no reference they write can score the gate. Reported as a negative pilot
+(\texttt{benchmark/av\_reference\_pilot.json}); the headline is unchanged.
+
 \subsection{Baselines}
 Two baselines are used. \emph{Blind audio-to-image} draws a picture for every sound heard, with no gate. \emph{Audio captioning} writes a text description instead of a picture. Neither looks at the video.
 

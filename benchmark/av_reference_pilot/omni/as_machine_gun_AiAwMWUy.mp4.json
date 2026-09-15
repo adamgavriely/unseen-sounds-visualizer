@@ -1,0 +1,77 @@
+{
+ "clip": "as_machine_gun_AiAwMWUy.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.04,
+ "with_sound": [
+  {
+   "what": "man firing machine gun",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots echo",
+   "evidence": "both"
+  },
+  {
+   "what": "gun is loaded",
+   "evidence": "both"
+  },
+  {
+   "what": "gun is cocked",
+   "evidence": "both"
+  },
+  {
+   "what": "gun is fired",
+   "evidence": "both"
+  },
+  {
+   "what": "gun is reloaded",
+   "evidence": "both"
+  },
+  {
+   "what": "gun is fired again",
+   "evidence": "both"
+  },
+  {
+   "what": "gun is fired again",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "man wearing camouflage",
+   "evidence": "seen"
+  },
+  {
+   "what": "man firing machine gun",
+   "evidence": "seen"
+  },
+  {
+   "what": "gun firing",
+   "evidence": "both"
+  },
+  {
+   "what": "gun recoiling",
+   "evidence": "both"
+  },
+  {
+   "what": "gun firing again",
+   "evidence": "both"
+  },
+  {
+   "what": "gun recoiling again",
+   "evidence": "both"
+  },
+  {
+   "what": "gun firing again",
+   "evidence": "both"
+  },
+  {
+   "what": "gun recoiling again",
+   "evidence": "both"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man firing machine gun\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots echo\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun is loaded\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun is cocked\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun is fired\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun is reloaded\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun is fired again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun is fired again\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n#\n: \n:\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man wearing camouflage\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man firing machine gun\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"gun firing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun recoiling\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun firing again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun recoiling again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun firing again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun recoiling again\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n"
+ }
+}

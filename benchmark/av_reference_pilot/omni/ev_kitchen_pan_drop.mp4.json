@@ -1,0 +1,77 @@
+{
+ "clip": "ev_kitchen_pan_drop.mp4",
+ "tag": "seen_ambient",
+ "duration": 22.022,
+ "with_sound": [
+  {
+   "what": "logo with rainbow and letters",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on tray",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on fork",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on wine opener",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on wine glass",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on wine glass",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on wine glass",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot stepping on wine glass",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "foot steps",
+   "evidence": "seen"
+  },
+  {
+   "what": "tray on floor",
+   "evidence": "seen"
+  },
+  {
+   "what": "forks on floor",
+   "evidence": "seen"
+  },
+  {
+   "what": "corkscrew on floor",
+   "evidence": "seen"
+  },
+  {
+   "what": "glass on floor",
+   "evidence": "seen"
+  },
+  {
+   "what": "metal bowl on floor",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot steps",
+   "evidence": "seen"
+  },
+  {
+   "what": "foot steps",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"logo with rainbow and letters\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on tray\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on fork\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on wine opener\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on wine glass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on wine glass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on wine glass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot stepping on wine glass\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:\n:\n:\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"foot steps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"tray on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"forks on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"corkscrew on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"glass on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"metal bowl on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot steps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot steps\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"foot steps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"tray on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"forks on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"corkscrew on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"glass on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"metal bowl on floor\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot steps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"foot steps\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"foot steps"
+ }
+}

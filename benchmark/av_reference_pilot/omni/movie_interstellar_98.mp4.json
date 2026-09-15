@@ -1,0 +1,77 @@
+{
+ "clip": "movie_interstellar_98.mp4",
+ "tag": "no_ambient",
+ "duration": 16.016,
+ "with_sound": [
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  },
+  {
+   "what": "person in futuristic suit",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n\n# P1\n\n# P2\n# P3\n# P4\n# P5\n# P6\n# P7\n# P8\n# P9\n# P10\n# P11\n# P12\n# P13\n# P14\n# P15\n# P16\n# P17\n# P18\n# P19\n# P20\n# P21\n# P22\n# P23\n# P24\n# P25\n# P26\n# P27\n# P28\n# P29\n# P",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person in futuristic suit\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n\n"
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "clip": "ship_ccgs.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.018,
+ "with_sound": [
+  {
+   "what": "boat moving on water",
+   "evidence": "both"
+  },
+  {
+   "what": "water splashing",
+   "evidence": "both"
+  },
+  {
+   "what": "wind blowing",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean waves",
+   "evidence": "both"
+  },
+  {
+   "what": "boat engine running",
+   "evidence": "both"
+  },
+  {
+   "what": "water splashing",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean waves",
+   "evidence": "both"
+  },
+  {
+   "what": "boat engine running",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "ship moves forward",
+   "evidence": "seen"
+  },
+  {
+   "what": "water splashes",
+   "evidence": "seen"
+  },
+  {
+   "what": "ship makes a turn",
+   "evidence": "seen"
+  },
+  {
+   "what": "water splashes",
+   "evidence": "seen"
+  },
+  {
+   "what": "ship continues forward",
+   "evidence": "seen"
+  },
+  {
+   "what": "water splashes",
+   "evidence": "seen"
+  },
+  {
+   "what": "ship makes a turn",
+   "evidence": "seen"
+  },
+  {
+   "what": "water splashes",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"boat moving on water\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"water splashing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"wind blowing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean waves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"boat engine running\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"water splashing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean waves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"boat engine running\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"ship moves forward\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"water splashes\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ship makes a turn\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"water splashes\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ship continues forward\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"water splashes\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ship makes a turn\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"water splashes\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:"
+ }
+}

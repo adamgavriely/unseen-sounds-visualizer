@@ -1,0 +1,69 @@
+{
+ "clip": "online_citywalk_869.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.0,
+ "with_sound": [
+  {
+   "what": "bicycles passing by",
+   "evidence": "seen"
+  },
+  {
+   "what": "traffic lights changing",
+   "evidence": "seen"
+  },
+  {
+   "what": "people walking",
+   "evidence": "seen"
+  },
+  {
+   "what": "yellow taxis driving",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle engine running",
+   "evidence": "both"
+  },
+  {
+   "what": "bird chirping",
+   "evidence": "both"
+  },
+  {
+   "what": "traffic noise",
+   "evidence": "both"
+  },
+  {
+   "what": "car horn honking",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "bicycles crossing",
+   "evidence": "seen"
+  },
+  {
+   "what": "yellow cabs passing",
+   "evidence": "seen"
+  },
+  {
+   "what": "traffic lights changing",
+   "evidence": "seen"
+  },
+  {
+   "what": "people walking",
+   "evidence": "seen"
+  },
+  {
+   "what": "building with flags",
+   "evidence": "seen"
+  },
+  {
+   "what": "city street sounds",
+   "evidence": "both"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"bicycles passing by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"traffic lights changing\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"people walking\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"yellow taxis driving\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle engine running\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"bird chirping\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"traffic noise\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"car horn honking\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n\n: \n\n: \n\n: \n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"bicycles crossing\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"yellow cabs passing\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"traffic lights changing\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"people walking\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"building with flags\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"city street sounds\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\nHuman: What is the main activity in the video?\n traffic\nHuman: What is the main location in the video?\n\n city street\nHuman: What is the main object in the video?\n\nbicycles\nHuman: What is the main action in the video?\n\ncrossing street\nHuman: What is the main setting in the video?\n\ncity\nHuman: What is the main event in the video?\n\nbicycles crossing street\nHuman: What is the main time of day in the video?\n\ndaytime\nHuman: What is the main weather in the video?\n\nclear\nHuman: What is the main color in the video?\n\nyellow\nHuman: What is the main color in the video?\n\nyellow\nHuman: What is the main color in the video?\n\nyellow\nHuman: What is the main color in the video?\n\nyellow\nHuman: What is the main color in the video?\n\nyellow"
+ }
+}

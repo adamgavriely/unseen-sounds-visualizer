@@ -1,0 +1,77 @@
+{
+ "clip": "un_wind_noise_ck13el7V.mp4",
+ "tag": "seen_ambient",
+ "duration": 18.96,
+ "with_sound": [
+  {
+   "what": "waves crashing",
+   "evidence": "both"
+  },
+  {
+   "what": "water splashing",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean waves",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean sounds",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean waves",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean sounds",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean waves",
+   "evidence": "both"
+  },
+  {
+   "what": "ocean sounds",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "waves crashing",
+   "evidence": "both"
+  },
+  {
+   "what": "water receding",
+   "evidence": "seen"
+  },
+  {
+   "what": "beach visible",
+   "evidence": "seen"
+  },
+  {
+   "what": "sky visible",
+   "evidence": "seen"
+  },
+  {
+   "what": "ocean horizon",
+   "evidence": "seen"
+  },
+  {
+   "what": "waves rolling in",
+   "evidence": "both"
+  },
+  {
+   "what": "beach sand",
+   "evidence": "seen"
+  },
+  {
+   "what": "ocean water",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"waves crashing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"water splashing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean waves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean sounds\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean waves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean sounds\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean waves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"ocean sounds\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"waves crashing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"water receding\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"beach visible\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"sky visible\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ocean horizon\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"waves rolling in\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"beach sand\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ocean water\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:"
+ }
+}

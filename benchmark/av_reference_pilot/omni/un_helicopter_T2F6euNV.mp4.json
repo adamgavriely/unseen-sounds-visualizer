@@ -1,0 +1,77 @@
+{
+ "clip": "un_helicopter_T2F6euNV.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.04,
+ "with_sound": [
+  {
+   "what": "man in black coat",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in white shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gun firing",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gun firing",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gun firing",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "man in black coat",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat runs",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat jumps",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat falls",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat gets up",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat runs",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat jumps",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black coat falls",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in black coat\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in white shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun firing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun firing\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gun firing\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n\n: \n:\n\n: \n:\n\n: \n:\n\n\n\n\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in black coat\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat runs\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat jumps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat falls\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat gets up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat runs\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat jumps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat falls\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in black coat\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat runs\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat jumps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat falls\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat gets up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat runs\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat jumps\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black coat falls\",\n      \"evidence\": \"seen\"\n    }\n "
+ }
+}

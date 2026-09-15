@@ -1,0 +1,77 @@
+{
+ "clip": "as_explosion_p6lhCxNw.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.0,
+ "with_sound": [
+  {
+   "what": "rocket launch",
+   "evidence": "both"
+  },
+  {
+   "what": "rocket ascends",
+   "evidence": "both"
+  },
+  {
+   "what": "explosion",
+   "evidence": "both"
+  },
+  {
+   "what": "explosion sound",
+   "evidence": "both"
+  },
+  {
+   "what": "explosion aftermath",
+   "evidence": "both"
+  },
+  {
+   "what": "explosion aftermath sound",
+   "evidence": "both"
+  },
+  {
+   "what": "explosion aftermath sound",
+   "evidence": "both"
+  },
+  {
+   "what": "explosion aftermath sound",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "rocket launch",
+   "evidence": "seen"
+  },
+  {
+   "what": "rocket ascends",
+   "evidence": "seen"
+  },
+  {
+   "what": "rocket leaves Earth",
+   "evidence": "seen"
+  },
+  {
+   "what": "text appears",
+   "evidence": "seen"
+  },
+  {
+   "what": "rocket reaches space",
+   "evidence": "seen"
+  },
+  {
+   "what": "text appears",
+   "evidence": "seen"
+  },
+  {
+   "what": "rocket approaches Mars",
+   "evidence": "seen"
+  },
+  {
+   "what": "text appears",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"rocket launch\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"rocket ascends\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"explosion\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"explosion sound\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"explosion aftermath\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"explosion aftermath sound\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"explosion aftermath sound\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"explosion aftermath sound\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n# 1\n\n: \n:\n: \n:\n# 1\n: \n:\n# 1\n# 1\n# 1\n# 1\n# 1\n# 1\n# 1\n# 1\n\n# 1\n:\n# 1\n:\n\n# 1\n:\n\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"rocket launch\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket ascends\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket leaves Earth\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"text appears\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket reaches space\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"text appears\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket approaches Mars\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"text appears\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"rocket launch\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket ascends\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket leaves Earth\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"text appears\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket reaches space\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"text appears\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"rocket approaches Mars\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"text appears\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"rocket launch\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \""
+ }
+}

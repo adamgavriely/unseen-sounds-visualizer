@@ -1,0 +1,77 @@
+{
+ "clip": "as_helicopter_mVjQigOw.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.053367,
+ "with_sound": [
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man firing machine gun",
+   "evidence": "both"
+  },
+  {
+   "what": "helicopter flying",
+   "evidence": "both"
+  },
+  {
+   "what": "woman in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman firing machine gun",
+   "evidence": "both"
+  },
+  {
+   "what": "woman in helicopter",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman looking out window",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman speaking",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in uniform",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man firing machine gun\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"helicopter flying\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"woman in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman firing machine gun\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"woman in helicopter\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman looking out window\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman speaking\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\n\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\nHuman\n\nHuman\n\nHuman\n\nHuman\n\n\nHuman\n\n\n\n\n\n\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in uniform\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\nHuman: The image shows a man in a military uniform standing in front of a helicopter. He is holding a rifle and appears to be looking at something in the distance. The helicopter is parked on a rocky terrain, and there are mountains in the background. The man is wearing a helmet and has a backpack on. The sky is clear and blue, suggesting it is a sunny day. The man seems to be in a combat or training situation, given his attire and the presence of the helicopter.\n\n\nHuman: The image depicts a man in a military uniform standing in front of a helicopter. He is holding a rifle and appears to be looking at something in the distance. The helicopter is parked on a rocky terrain, and there are mountains in the background. The man is wearing a helmet and has a backpack on. The sky is clear and blue, suggesting it is a sunny day. The man seems to be in a combat or training situation, given his attire "
+ }
+}

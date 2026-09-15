@@ -64,7 +64,9 @@ thesis's second finding.
 - **15 Sept.** Seven detector improvements tried, all failed their declared bars (§10). A
   second, judge-free way of scoring (cost-sensitivity, §9) shows the gate comes out ahead if one unneeded picture counts as at least 40% as bad as
   one missing picture. Two things the judge
-  cannot see were found (§8). Figures, bibliography, and this summary finished.
+  cannot see were found (§8). Figures, bibliography, and this summary finished. Evening:
+  separation-before-detection measured and failed; a with-sound / without-sound
+  reference (Adam's idea) pre-registered, piloted on dev, and failed (§8).
 
 ## 4. Background: what already exists
 
@@ -228,6 +230,15 @@ result below. Whether deaf viewers feel the same 4-to-1 is unknown (§9 looks at
 - *independent*: written by a different set of models that never saw our system. It fixes
   the circularity, but its own guess at "is the source visible?" is no better than a coin
   flip (55% agreement with the labels), so it cannot score the gate. Reported, not used.
+- *with sound / without sound* (Adam's idea, 15 Sept evening): one audio-visual model
+  describes the clip with the soundtrack and again muted, on the same frames; what it
+  "hears" and did not already see is the reference. Rules and pass bar written down and
+  committed before any code (`docs/prereg_av_reference.md`); tried on the 156 dev clips
+  with Qwen2.5-Omni. Its "is anything missing?" decision scored **49.5%** (chance is 50%;
+  bar was 67.7%), and with the sound off it still claimed to hear something on 37% of
+  clips. The model calls off-screen sources "seen and heard" (a helicopter overhead, a
+  church bell behind a pointing hand). Same lesson as the independent reference: today's
+  open models cannot tell whether a sound's source is in view. Reported as a failed pilot.
 
 **Two things the judge cannot see** (found 2026-09-15): if the detector hears *nothing* on a
 clip where a picture was due, the reference itself says nothing is missing and *every*

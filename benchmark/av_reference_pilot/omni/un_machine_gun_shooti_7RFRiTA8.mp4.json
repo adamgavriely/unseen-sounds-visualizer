@@ -1,0 +1,77 @@
+{
+ "clip": "un_machine_gun_shooti_7RFRiTA8.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.8,
+ "with_sound": [
+  {
+   "what": "man aiming rifle",
+   "evidence": "seen"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "wind noise",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  },
+  {
+   "what": "gunshots",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "man aims rifle",
+   "evidence": "seen"
+  },
+  {
+   "what": "man fires rifle",
+   "evidence": "seen"
+  },
+  {
+   "what": "shotgun fires",
+   "evidence": "both"
+  },
+  {
+   "what": "shotgun fires again",
+   "evidence": "both"
+  },
+  {
+   "what": "shotgun fires again",
+   "evidence": "both"
+  },
+  {
+   "what": "shotgun fires again",
+   "evidence": "both"
+  },
+  {
+   "what": "shotgun fires again",
+   "evidence": "both"
+  },
+  {
+   "what": "shotgun fires again",
+   "evidence": "both"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man aiming rifle\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"wind noise\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"gunshots\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man aims rifle\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man fires rifle\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"shotgun fires\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"shotgun fires again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"shotgun fires again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"shotgun fires again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"shotgun fires again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"shotgun fires again\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:"
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "clip": "b3_ia_62934flighttothesuncountryvw_0.mp4",
+ "tag": "no_ambient",
+ "duration": 28.023353,
+ "with_sound": [
+  {
+   "what": "golfers on the course",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in white shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in blue shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in white shirt putting",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in blue shirt putting",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in black shirt putting",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "golfers on the course",
+   "evidence": "seen"
+  },
+  {
+   "what": "man swings club",
+   "evidence": "seen"
+  },
+  {
+   "what": "ball rolls on grass",
+   "evidence": "seen"
+  },
+  {
+   "what": "ball near hole",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in white shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in white shirt swings club",
+   "evidence": "seen"
+  },
+  {
+   "what": "ball rolls on grass",
+   "evidence": "seen"
+  },
+  {
+   "what": "ball near hole",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"golfers on the course\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in white shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in blue shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in white shirt putting\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in blue shirt putting\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in black shirt putting\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"golfers on the course\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man swings club\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ball rolls on grass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ball near hole\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in white shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in white shirt swings club\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ball rolls on grass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"ball near hole\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n"
+ }
+}

@@ -1,0 +1,77 @@
+{
+ "clip": "un_dog_barking_Glz9M145.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.0,
+ "with_sound": [
+  {
+   "what": "baby laughs",
+   "evidence": "both"
+  },
+  {
+   "what": "dog barks",
+   "evidence": "both"
+  },
+  {
+   "what": "dog moves",
+   "evidence": "both"
+  },
+  {
+   "what": "woman laughs",
+   "evidence": "both"
+  },
+  {
+   "what": "baby laughs",
+   "evidence": "both"
+  },
+  {
+   "what": "baby laughs",
+   "evidence": "both"
+  },
+  {
+   "what": "baby laughs",
+   "evidence": "both"
+  },
+  {
+   "what": "baby laughs",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "baby laughs",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog barks",
+   "evidence": "both"
+  },
+  {
+   "what": "dog moves",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog looks around",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog barks again",
+   "evidence": "both"
+  },
+  {
+   "what": "dog moves again",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog looks around again",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog barks again",
+   "evidence": "both"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"baby laughs\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"dog barks\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"dog moves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"woman laughs\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"baby laughs\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"baby laughs\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"baby laughs\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"baby laughs\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n\n: \n\n: \n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n: \n\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"baby laughs\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog barks\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"dog moves\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog looks around\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog barks again\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"dog moves again\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog looks around again\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog barks again\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:"
+ }
+}

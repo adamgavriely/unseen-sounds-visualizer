@@ -68,3 +68,20 @@ indication, not proof, and is stated as such.
 
 No prompt or threshold change after seeing the dev numbers; no second run on test; no
 change to the headline; no tuning against the human-grounded scores.
+
+## 5. Outcome (added 2026-09-15 night, after the run)
+
+MiniCPM-o 2.6 could not load under transformers 5.16 (`WHISPER_ATTENTION_CLASSES` import);
+the fallback Qwen2.5-Omni-7B ran on all 156 clips (`benchmark/av_reference_pilot.json`).
+
+| measure | result | bar |
+|---|---|---|
+| balanced accuracy, "anything missing?" vs labels | **49.5%** (due 12/20, not-due 53/136) | ≥ 67.7% |
+| κ | 0.00 | reported |
+| placebo rate (muted run claims to hear) | **37%** (57/156) | < 20% |
+
+**FAILED.** Deviation to disclose: the code counted items marked *heard or both* as
+"missing"; §1 says *heard*. Re-reading the same outputs with heard-only gives 59.5%
+(due 6/20, not-due 121/136) — below the bar and level with the model-derived reference.
+No prompt or threshold was changed; no test-set run. Reported in the report, LIMITATIONS
+and the executive summary as a negative pilot.

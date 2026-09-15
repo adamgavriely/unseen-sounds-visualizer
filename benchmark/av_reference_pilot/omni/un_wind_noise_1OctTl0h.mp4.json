@@ -1,0 +1,77 @@
+{
+ "clip": "un_wind_noise_1OctTl0h.mp4",
+ "tag": "no_ambient",
+ "duration": 17.017,
+ "with_sound": [
+  {
+   "what": "woman playing harp",
+   "evidence": "both"
+  },
+  {
+   "what": "woman has long hair",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman wears black outfit",
+   "evidence": "seen"
+  },
+  {
+   "what": "trees in background",
+   "evidence": "seen"
+  },
+  {
+   "what": "wind rustling leaves",
+   "evidence": "both"
+  },
+  {
+   "what": "people talking in distance",
+   "evidence": "both"
+  },
+  {
+   "what": "bird chirping",
+   "evidence": "both"
+  },
+  {
+   "what": "wind blowing",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "woman playing harp",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman has long hair",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman wears black outfit",
+   "evidence": "seen"
+  },
+  {
+   "what": "woman sits on grass",
+   "evidence": "seen"
+  },
+  {
+   "what": "trees in background",
+   "evidence": "seen"
+  },
+  {
+   "what": "bird chirping",
+   "evidence": "heard"
+  },
+  {
+   "what": "wind rustling leaves",
+   "evidence": "both"
+  },
+  {
+   "what": "woman playing harp",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"woman playing harp\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"woman has long hair\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman wears black outfit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"trees in background\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"wind rustling leaves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"people talking in distance\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"bird chirping\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"wind blowing\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"woman playing harp\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman has long hair\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman wears black outfit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman sits on grass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"trees in background\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"bird chirping\",\n      \"evidence\": \"heard\"\n    },\n    {\n      \"what\": \"wind rustling leaves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"woman's fingers pluck strings\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"woman playing harp\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman has long hair\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman wears black outfit\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"woman sits on grass\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"trees in background\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"bird chirping\",\n      \"evidence\": \"heard\"\n    },\n    {\n      \"what\": \"wind rustling leaves\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"woman's fingers pluck strings\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n\n```json\n{\n  \"events\": [\n    {\n"
+ }
+}

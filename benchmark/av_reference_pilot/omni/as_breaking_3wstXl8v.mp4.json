@@ -1,0 +1,77 @@
+{
+ "clip": "as_breaking_3wstXl8v.mp4",
+ "tag": "seen_ambient",
+ "duration": 20.053367,
+ "with_sound": [
+  {
+   "what": "man holding a hammer",
+   "evidence": "seen"
+  },
+  {
+   "what": "man hitting a glass",
+   "evidence": "both"
+  },
+  {
+   "what": "glass shattering",
+   "evidence": "both"
+  },
+  {
+   "what": "man speaking",
+   "evidence": "heard"
+  },
+  {
+   "what": "man moving around",
+   "evidence": "seen"
+  },
+  {
+   "what": "man holding a hammer",
+   "evidence": "seen"
+  },
+  {
+   "what": "man hitting a glass",
+   "evidence": "both"
+  },
+  {
+   "what": "glass shattering",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "person holds a tool",
+   "evidence": "seen"
+  },
+  {
+   "what": "person uses tool on wires",
+   "evidence": "seen"
+  },
+  {
+   "what": "person adjusts wires",
+   "evidence": "seen"
+  },
+  {
+   "what": "person moves around",
+   "evidence": "seen"
+  },
+  {
+   "what": "person holds a tool",
+   "evidence": "seen"
+  },
+  {
+   "what": "person uses tool on wires",
+   "evidence": "seen"
+  },
+  {
+   "what": "person adjusts wires",
+   "evidence": "seen"
+  },
+  {
+   "what": "person moves around",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man holding a hammer\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man hitting a glass\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"glass shattering\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"man speaking\",\n      \"evidence\": \"heard\"\n    },\n    {\n      \"what\": \"man moving around\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man holding a hammer\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man hitting a glass\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"glass shattering\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"person holds a tool\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person uses tool on wires\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person adjusts wires\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person moves around\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person holds a tool\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person uses tool on wires\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person adjusts wires\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"person moves around\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n"
+ }
+}

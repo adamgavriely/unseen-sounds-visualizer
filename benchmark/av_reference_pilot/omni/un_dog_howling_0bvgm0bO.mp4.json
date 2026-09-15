@@ -1,0 +1,77 @@
+{
+ "clip": "un_dog_howling_0bvgm0bO.mp4",
+ "tag": "seen_ambient",
+ "duration": 19.652967,
+ "with_sound": [
+  {
+   "what": "baby reaches out",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog looks up",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks up",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby moves hand",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks down",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks up",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks down",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks up",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "baby reaches out",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog looks up",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby pulls hand back",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog looks down",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks up",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks down",
+   "evidence": "seen"
+  },
+  {
+   "what": "dog looks up",
+   "evidence": "seen"
+  },
+  {
+   "what": "baby looks up",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"baby reaches out\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog looks up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby moves hand\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks down\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks down\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks up\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"baby reaches out\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog looks up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby pulls hand back\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog looks down\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks down\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"dog looks up\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"baby looks up\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n\nHuman: What is the main action in the video?\n\n a\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHuman: What is the main action in the video?\n\n\n\n\n\n\n\n\nHuman: What is the main action in the video?\n\n\n\n\n\n\n\nHuman: What is the main action in the video?\n\n\n\n\nHuman: What is the main action in the video?\n\n\n\nHuman: What is the main action in the video?\n\n\n\nHuman: What is the main action in the video?\n\n\nHuman: What is the main action in the video?\n\n\nHuman:"
+ }
+}

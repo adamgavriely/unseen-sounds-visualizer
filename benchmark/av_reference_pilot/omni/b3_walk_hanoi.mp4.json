@@ -1,0 +1,77 @@
+{
+ "clip": "b3_walk_hanoi.mp4",
+ "tag": "seen_ambient",
+ "duration": 28.0,
+ "with_sound": [
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  },
+  {
+   "what": "motorcycle rider",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n\n\n\n\nHuman: **Image 1:** A person is riding a motorcycle on a busy street with other vehicles, including cars and trucks. The rider is wearing a helmet and appears to be in motion. The street is lined with trees and buildings, and there are other people walking on the sidewalk.\n\n**Image 2:** A person is riding a motorcycle on a busy street with other vehicles, including cars and trucks. The rider is wearing a helmet and appears to be in motion. The street is lined with trees and buildings, and there are other people walking on the sidewalk.\n\n**Image 3:** A person is riding a motorcycle on a busy street with other vehicles, including cars and trucks. The rider is wearing a helmet and appears to be in motion. The street is lined with trees and buildings, and there are other people walking on the sidewalk.\n\n**Image 4:** A person is riding a motorcycle on a busy street with other veh",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"motorcycle rider\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n\n\n\n\n```json\n{\n  \"events\": [\n    {\n      \"what\": \""
+ }
+}

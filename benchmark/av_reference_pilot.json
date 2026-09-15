@@ -1,0 +1,1565 @@
+{
+ "when": "2026-09-15T20:57",
+ "backend": "omni",
+ "model": "Qwen/Qwen2.5-Omni-7B",
+ "clips": 156,
+ "due_recall": [
+  12,
+  20
+ ],
+ "not_due_recall": [
+  53,
+  136
+ ],
+ "balanced_accuracy": 0.4948529411764706,
+ "raw_agreement": 0.4166666666666667,
+ "kappa": -0.003960396039603917,
+ "placebo_rate": 0.36538461538461536,
+ "per_tag_agreement": {
+  "seen_ambient": [
+   36,
+   103
+  ],
+  "unseen_ambient": [
+   12,
+   20
+  ],
+  "no_ambient": [
+   17,
+   33
+  ]
+ },
+ "bar": {
+  "balanced_accuracy": 0.677,
+  "placebo_rate": 0.2
+ },
+ "passed": false,
+ "comparators": {
+  "model_derived_dev": {
+   "balanced_accuracy": 0.577,
+   "kappa": 0.045
+  },
+  "independent_test": {
+   "raw_agreement": 0.55
+  }
+ },
+ "references": [
+  {
+   "clip": "ambient_citywalk_mumbai_2737.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car horn honking.",
+   "items": [
+    "car horn honking"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_citywalk_mumbai_782.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car horn honking; engine running; motorcycle engine revving; car horn honking.",
+   "items": [
+    "car horn honking",
+    "engine running",
+    "motorcycle engine revving",
+    "car horn honking"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_citywalk_nyc_750.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car door closing; car door opening; car door closing; car door opening; car door closing; car door opening; car door closing.",
+   "items": [
+    "car door closing",
+    "car door opening",
+    "car door closing",
+    "car door opening",
+    "car door closing",
+    "car door opening",
+    "car door closing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "ambient_citywalk_tokyo_5420.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "ambient_everyday_farm_2166.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: bird chirping; bird flapping wings; bird flying; bird landing; bird taking off; bird flying away.",
+   "items": [
+    "bird chirping",
+    "bird flapping wings",
+    "bird flying",
+    "bird landing",
+    "bird taking off",
+    "bird flying away"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "ambient_field_stormchaser_312.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "ambient_market_bangkok_1237.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: street sounds; traffic noise; people chatting.",
+   "items": [
+    "street sounds",
+    "traffic noise",
+    "people chatting"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_market_bangkok_4332.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: motorcycle passing by; motorcycle engine revving; motorcycle engine idling; motorcycle engine revving; motorcycle engine revving; motorcycle engine revving; motorcycle engine revving.",
+   "items": [
+    "motorcycle passing by",
+    "motorcycle engine revving",
+    "motorcycle engine idling",
+    "motorcycle engine revving",
+    "motorcycle engine revving",
+    "motorcycle engine revving",
+    "motorcycle engine revving"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_nature_forest_1441.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: bird flapping wings; bird flying away; bird landing on branch.",
+   "items": [
+    "bird flapping wings",
+    "bird flying away",
+    "bird landing on branch"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_nature_forest_3244.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_nature_ocean2_3294.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: water splashing; wind blowing.",
+   "items": [
+    "water splashing",
+    "wind blowing"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_nature_ocean2_6588.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_nature_savanna_7706.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_nightlife_neon_97.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: car driving by; typing on a keyboard; traffic noise; engine running; door opening; door closing.",
+   "items": [
+    "car driving by",
+    "typing on a keyboard",
+    "traffic noise",
+    "engine running",
+    "door opening",
+    "door closing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "ambient_temple_india_1438.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: clothing on display; handbags hanging; background chatter; street sounds.",
+   "items": [
+    "clothing on display",
+    "handbags hanging",
+    "background chatter",
+    "street sounds"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_transport_subway_21600.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "ambient_waterfall_hike_18078.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_waterfall_hike_9039.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: bird flapping wings.",
+   "items": [
+    "bird flapping wings"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ambient_weather_storm_25200.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "as_alarm_71Xl_uAS.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: buzzer sounds; volume is adjusted; buzzer continues to sound; person speaks; buzzer stops.",
+   "items": [
+    "buzzer sounds",
+    "volume is adjusted",
+    "buzzer continues to sound",
+    "person speaks",
+    "buzzer stops"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_breaking_3wstXl8v.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: man hitting a glass; glass shattering; man hitting a glass; glass shattering.",
+   "items": [
+    "man hitting a glass",
+    "glass shattering",
+    "man hitting a glass",
+    "glass shattering"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_car_alarm_0Hz4R_m0.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: keys jangling; power windows; power door lock; power mirrors.",
+   "items": [
+    "keys jangling",
+    "power windows",
+    "power door lock",
+    "power mirrors"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "as_church_bell_PVGChCsr.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: church bells ringing; crowd murmuring.",
+   "items": [
+    "church bells ringing",
+    "crowd murmuring"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_church_bell_otz4AffL.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "as_explosion_p6lhCxNw.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: explosion; explosion sound; explosion aftermath; explosion aftermath sound; explosion aftermath sound; explosion aftermath sound.",
+   "items": [
+    "explosion",
+    "explosion sound",
+    "explosion aftermath",
+    "explosion aftermath sound",
+    "explosion aftermath sound",
+    "explosion aftermath sound"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_fire_engine_fire_truck_4arad6my.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: sirens blaring; emergency vehicle; fire truck; people walking; emergency vehicle siren; fire truck with lights.",
+   "items": [
+    "sirens blaring",
+    "emergency vehicle",
+    "fire truck",
+    "people walking",
+    "emergency vehicle siren",
+    "fire truck with lights"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_fire_engine_fire_truck_ZANp2W2q.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: motorcycle passing by; motorcycle passing by.",
+   "items": [
+    "motorcycle passing by",
+    "motorcycle passing by"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "as_fireworks_jZ9mYtCA.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "as_glass_GAGt_UEF.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "as_glass_t6e0Rjul.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: person speaks; person laughs.",
+   "items": [
+    "person speaks",
+    "person laughs"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_helicopter_mVjQigOw.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: man firing machine gun; helicopter flying; woman firing machine gun.",
+   "items": [
+    "man firing machine gun",
+    "helicopter flying",
+    "woman firing machine gun"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "as_machine_gun_AiAwMWUy.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: gunshots echo.",
+   "items": [
+    "gunshots echo"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_aquarium_walk.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "b3_balloon_burner.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_cablecar_ride.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_campfire_night.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "b3_chinese_newyear.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_christmas_market.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: chimes ringing.",
+   "items": [
+    "chimes ringing"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_coffee_roastery.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: machine makes noise; machine stops making noise; machine starts making noise again; machine stops making noise.",
+   "items": [
+    "machine makes noise",
+    "machine stops making noise",
+    "machine starts making noise again",
+    "machine stops making noise"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_creek_bridge.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_farm_tractor.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_forest_rain.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: waterfall sound.",
+   "items": [
+    "waterfall sound"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_garbage_truck.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_gokart_track.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: Karting race.",
+   "items": [
+    "Karting race"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_hail_roof.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: engine running.",
+   "items": [
+    "engine running"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_ia_62934flighttothesuncountryvw_0.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_ia_62934flighttothesuncountryvw_1.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: people clapping; people chanting; people celebrating.",
+   "items": [
+    "people clapping",
+    "people chanting",
+    "people celebrating"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_ia_81974_9th_infantry_vietnam_v_0.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: vehicle moves through swamp.",
+   "items": [
+    "vehicle moves through swamp"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_ia_81974_9th_infantry_vietnam_v_1.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: aircraft engine sound; aircraft flies overhead; aircraft lands.",
+   "items": [
+    "aircraft engine sound",
+    "aircraft flies overhead",
+    "aircraft lands"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_ia_87954yourchancetolivenuclear_1.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "b3_ia_alcf_heydari_0005_0.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: people shouting; wind blowing; people clapping; people cheering; whistle blowing.",
+   "items": [
+    "people shouting",
+    "wind blowing",
+    "people clapping",
+    "people cheering",
+    "whistle blowing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_ia_ix3e97pz1sd5dpdfrasb6k8azdt7_0.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_ia_somewherebetweenhereandnow_0.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_ia_theshockofthenewcultureasnat_1.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "b3_ice_rink.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_kitchen_restaurant.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_koi_pond.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: water trickling; water gurgling; water dripping; water trickling.",
+   "items": [
+    "water trickling",
+    "water gurgling",
+    "water dripping",
+    "water trickling"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_leafblower_fall.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: blower starts; blower stops.",
+   "items": [
+    "blower starts",
+    "blower stops"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "b3_library_hall.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: fire burning.",
+   "items": [
+    "fire burning"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_night_market_food.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: people walking; motorcycle passing by; traffic noise; water splashing; vehicle horn; motorcycle engine.",
+   "items": [
+    "people walking",
+    "motorcycle passing by",
+    "traffic noise",
+    "water splashing",
+    "vehicle horn",
+    "motorcycle engine"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_petting_zoo.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: chicken crowing; chicken clucking; chicken clucking; chicken clucking; chicken clucking; chicken clucking.",
+   "items": [
+    "chicken crowing",
+    "chicken clucking",
+    "chicken clucking",
+    "chicken clucking",
+    "chicken clucking",
+    "chicken clucking"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_quarry_blast.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: machine vibrates; people converse; machine continues grinding; rocks continue falling.",
+   "items": [
+    "machine vibrates",
+    "people converse",
+    "machine continues grinding",
+    "rocks continue falling"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_toll_booth.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car drives on road.",
+   "items": [
+    "car drives on road"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "b3_walk_hanoi.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "b3_wind_coast.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "b3_wm_waterfall_vid_venezuela_ogv.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: stream in forest; stream surrounded by trees; water flowing steadily.",
+   "items": [
+    "stream in forest",
+    "stream surrounded by trees",
+    "water flowing steadily"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "bell_kazansky.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "bell_pribyslav.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: large bell ringing.",
+   "items": [
+    "large bell ringing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "dog_barking_01.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: lighting creates a sound; dog barks; explosion sound.",
+   "items": [
+    "lighting creates a sound",
+    "dog barks",
+    "explosion sound"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "dutch_traffic_kids.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "ev_fire_alarm_office.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: gunshots ring out; glass shatters; people shout; man speaks; man in suit speaks.",
+   "items": [
+    "gunshots ring out",
+    "glass shatters",
+    "people shout",
+    "man speaks",
+    "man in suit speaks"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "ev_kitchen_pan_drop.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "ev_smoke_alarm_kitchen.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "fireworks_london_nye.webm",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "fireworks_springville.webm",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "gn_western_town_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: gunshots heard; gunshots heard.",
+   "items": [
+    "gunshots heard",
+    "gunshots heard"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "interview_mickharvey.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: the speaker gestures with his hand.",
+   "items": [
+    "the speaker gestures with his hand"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "lx_chainsaw_and_power_tool_W1VYWwY.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: chainsaw revving.",
+   "items": [
+    "chainsaw revving"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "ly_alarm_qCVdVav.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car starting; buzzer sound; car equipped with attack; pyrometer; car starting.",
+   "items": [
+    "car starting",
+    "buzzer sound",
+    "car equipped with attack",
+    "pyrometer",
+    "car starting"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mc_break_in_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "mc_bridge_scene.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: car driving on highway; people inside car; helicopter flying overhead; gunshots heard; gunshots followed by running; gunshots followed by shouting; gunshots followed by more running; gunshots followed by more shouting.",
+   "items": [
+    "car driving on highway",
+    "people inside car",
+    "helicopter flying overhead",
+    "gunshots heard",
+    "gunshots followed by running",
+    "gunshots followed by shouting",
+    "gunshots followed by more running",
+    "gunshots followed by more shouting"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mc_fire_rescue.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: explosion.",
+   "items": [
+    "explosion"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mc_flood_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: explosion; engine revving.",
+   "items": [
+    "explosion",
+    "engine revving"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "mc_riot_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: footsteps on gravel; wind blowing; water splashing; clock ticking; doorbell ringing; door opening.",
+   "items": [
+    "footsteps on gravel",
+    "wind blowing",
+    "water splashing",
+    "clock ticking",
+    "doorbell ringing",
+    "door opening"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mc_ship_deck_storm.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: gunshots; gunfire.",
+   "items": [
+    "gunshots",
+    "gunfire"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "mc_subway_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "mc_thriller_basement.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: water trickling; water splashing; water gurgling; water flowing; water splashing; water gurgling; water trickling; water splashing.",
+   "items": [
+    "water trickling",
+    "water splashing",
+    "water gurgling",
+    "water flowing",
+    "water splashing",
+    "water gurgling",
+    "water trickling",
+    "water splashing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "movie_bladerunner_49.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: man and woman in a dimly lit room; man in a suit walking in a desert; man in a suit walking in a grand hall; man in a suit walking in a desert; man in a suit walking in a grand hall; man in a suit walking in a desert; man in a suit walking in a grand hall.",
+   "items": [
+    "man and woman in a dimly lit room",
+    "man in a suit walking in a desert",
+    "man in a suit walking in a grand hall",
+    "man in a suit walking in a desert",
+    "man in a suit walking in a grand hall",
+    "man in a suit walking in a desert",
+    "man in a suit walking in a grand hall"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "movie_bladerunner_91.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_blueplanet_62.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_dunkirk_90.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_interstellar_98.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_junglebook_51.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_junglebook_95.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_madmax_106.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_madmax_57.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "movie_planetearth_58.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "mv_air_raid_scene.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: birds cawing; wind blowing; screaming; screaming; screaming; screaming; screaming.",
+   "items": [
+    "birds cawing",
+    "wind blowing",
+    "screaming",
+    "screaming",
+    "screaming",
+    "screaming",
+    "screaming"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mv_bank_robbery_alarm.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "mv_getaway_chase_sirens.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: siren blaring; car skidding; car accelerating; car skidding again.",
+   "items": [
+    "siren blaring",
+    "car skidding",
+    "car accelerating",
+    "car skidding again"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "mv_helicopter_arrival.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "mv_market_chase_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car skidding and crashing; people running; car skidding and crashing; car skidding and crashing; car skidding and crashing; car skidding and crashing; car skidding and crashing.",
+   "items": [
+    "car skidding and crashing",
+    "people running",
+    "car skidding and crashing",
+    "car skidding and crashing",
+    "car skidding and crashing",
+    "car skidding and crashing",
+    "car skidding and crashing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mv_phone_ringing_tense.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: police siren; emergency vehicle; footsteps; emergency vehicle approaching; emergency vehicle passing; emergency vehicle fading.",
+   "items": [
+    "police siren",
+    "emergency vehicle",
+    "footsteps",
+    "emergency vehicle approaching",
+    "emergency vehicle passing",
+    "emergency vehicle fading"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "mv_prison_alarm_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: police car siren; car driving; car passing by; car honking; car accelerating; car skidding; car tire squealing; car engine revving.",
+   "items": [
+    "police car siren",
+    "car driving",
+    "car passing by",
+    "car honking",
+    "car accelerating",
+    "car skidding",
+    "car tire squealing",
+    "car engine revving"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "mv_shipwreck_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: gunshots.",
+   "items": [
+    "gunshots"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "oc_distant_traffic_hill.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: rain sounds in the background.",
+   "items": [
+    "rain sounds in the background"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "oc_pov_beach_walk.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: wind blowing.",
+   "items": [
+    "wind blowing"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "oc_pov_night_forest.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: footsteps on gravel; footsteps on gravel; footsteps on gravel; footsteps on gravel; footsteps on gravel; footsteps on gravel; footsteps on gravel.",
+   "items": [
+    "footsteps on gravel",
+    "footsteps on gravel",
+    "footsteps on gravel",
+    "footsteps on gravel",
+    "footsteps on gravel",
+    "footsteps on gravel",
+    "footsteps on gravel"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "oc_pov_snow_walk.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "online_citywalk_869.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: motorcycle engine running; bird chirping; traffic noise; car horn honking.",
+   "items": [
+    "motorcycle engine running",
+    "bird chirping",
+    "traffic noise",
+    "car horn honking"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "pdfilm_duckcover_90.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: child sitting alone; child in corner; child in front of door; child in front of door; child in front of door; child in front of door.",
+   "items": [
+    "child sitting alone",
+    "child in corner",
+    "child in front of door",
+    "child in front of door",
+    "child in front of door",
+    "child in front of door"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "puddles_rain.webm",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: water splashing; wind blowing; water trickling.",
+   "items": [
+    "water splashing",
+    "wind blowing",
+    "water trickling"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "row_boat.webm",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: water splashing.",
+   "items": [
+    "water splashing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "rx_aftermath_quiet.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "rx_bunker_bombing.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: door opening; door closing; door opening; door closing; door opening.",
+   "items": [
+    "door opening",
+    "door closing",
+    "door opening",
+    "door closing",
+    "door opening"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "rx_phone_call_bad_news.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: woman answers phone; phone rings; woman dials phone.",
+   "items": [
+    "woman answers phone",
+    "phone rings",
+    "woman dials phone"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "rx_radio_broadcast_scene.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "sax_guitar.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "ship_ccgs.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: boat moving on water; wind blowing; ocean waves; boat engine running; ocean waves; boat engine running.",
+   "items": [
+    "boat moving on water",
+    "wind blowing",
+    "ocean waves",
+    "boat engine running",
+    "ocean waves",
+    "boat engine running"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "station_kwasa1.webm",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "station_passenger.mp4",
+   "tag": "unseen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "station_warszawa.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: train horn; wind noise.",
+   "items": [
+    "train horn",
+    "wind noise"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "thunder_sofia_01.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: thunder rumbles; wind blows.",
+   "items": [
+    "thunder rumbles",
+    "wind blows"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "train_liminka.webm",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: wind noise; clickety-clack sound.",
+   "items": [
+    "wind noise",
+    "clickety-clack sound"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "tv_police_procedural.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: car skidding; car crashing; police car siren; police radio communication; police car siren; police car siren; police car siren.",
+   "items": [
+    "car skidding",
+    "car crashing",
+    "police car siren",
+    "police radio communication",
+    "police car siren",
+    "police car siren",
+    "police car siren"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "tv_war_series_scene.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: explosion occurs; spacecraft crashes; explosion sound; crash sound; spacecraft explosion.",
+   "items": [
+    "explosion occurs",
+    "spacecraft crashes",
+    "explosion sound",
+    "crash sound",
+    "spacecraft explosion"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_airplane_flyby_-Jcl3FrH.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: motorcycle engine revving; motorcycle engine idling; motorcycle engine revving; motorcycle engine revving; motorcycle engine revving; motorcycle engine revving; motorcycle engine revving; motorcycle engine revving.",
+   "items": [
+    "motorcycle engine revving",
+    "motorcycle engine idling",
+    "motorcycle engine revving",
+    "motorcycle engine revving",
+    "motorcycle engine revving",
+    "motorcycle engine revving",
+    "motorcycle engine revving",
+    "motorcycle engine revving"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_ambulance_siren_-diPczRE.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "un_car_passing_by_0IStDugr.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "un_church_bell_ringin_-_-SejUs.mp4",
+   "tag": "unseen_ambient",
+   "reference": "A hearing viewer would also notice: church bell rings; person speaks.",
+   "items": [
+    "church bell rings",
+    "person speaks"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_dog_barking_5yMvxKLD.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "un_dog_barking_Glz9M145.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: woman laughs.",
+   "items": [
+    "woman laughs"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_dog_howling_0bvgm0bO.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "un_dog_howling_UUjSLYdR.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: dog barking; dog barks again; dog barks again; dog barks again.",
+   "items": [
+    "dog barking",
+    "dog barks again",
+    "dog barks again",
+    "dog barks again"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_driving_buses_3iVMMcgK.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: snow plow passing by; snowplow engine running.",
+   "items": [
+    "snow plow passing by",
+    "snowplow engine running"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_driving_motorcycle_29leW_wE.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "un_driving_motorcycle_5lERP3rc.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: traffic passing by.",
+   "items": [
+    "traffic passing by"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_fire_truck_siren_5dbDin4u.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: emergency vehicle siren; emergency vehicle passing by.",
+   "items": [
+    "emergency vehicle siren",
+    "emergency vehicle passing by"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_hair_dryer_drying_jmlpavrE.mp4",
+   "tag": "no_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": true
+  },
+  {
+   "clip": "un_helicopter_1PCkIkol.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: strong wind; wind noise.",
+   "items": [
+    "strong wind",
+    "wind noise"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_helicopter_T2F6euNV.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: gunshots; gun firing; gunshots; gun firing; gunshots; gun firing.",
+   "items": [
+    "gunshots",
+    "gun firing",
+    "gunshots",
+    "gun firing",
+    "gunshots",
+    "gun firing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_machine_gun_shooti_7RFRiTA8.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: wind noise.",
+   "items": [
+    "wind noise"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_people_clapping_OVhPqvG0.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: man rapping.",
+   "items": [
+    "man rapping"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_people_crowd_W1e3xWnc.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: cow mooing; crowd murmuring; cow mooing; cow mooing; cow mooing; cow mooing.",
+   "items": [
+    "cow mooing",
+    "crowd murmuring",
+    "cow mooing",
+    "cow mooing",
+    "cow mooing",
+    "cow mooing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_people_shouting__jB-IM_7.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  },
+  {
+   "clip": "un_police_car_siren_HWAeBWk6.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: police car siren; traffic noise; emergency vehicle; motorcycle engine; emergency vehicle siren; emergency vehicle; emergency vehicle.",
+   "items": [
+    "police car siren",
+    "traffic noise",
+    "emergency vehicle",
+    "motorcycle engine",
+    "emergency vehicle siren",
+    "emergency vehicle",
+    "emergency vehicle"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_raining_afvKRNCf.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: rain falling; thunder rumbling.",
+   "items": [
+    "rain falling",
+    "thunder rumbling"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_sea_waves_39lhrblv.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: ocean water splashing; ocean water splashing; ocean water splashing; ocean water splashing; ocean water splashing; ocean water splashing; ocean water splashing.",
+   "items": [
+    "ocean water splashing",
+    "ocean water splashing",
+    "ocean water splashing",
+    "ocean water splashing",
+    "ocean water splashing",
+    "ocean water splashing",
+    "ocean water splashing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_sea_waves_Bvgbafvm.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: wind noise; ocean waves.",
+   "items": [
+    "wind noise",
+    "ocean waves"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_sheep_bleating_-78SgLvt.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: sheep bleating; wind blowing.",
+   "items": [
+    "sheep bleating",
+    "wind blowing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_thunder_0kuIP7fL.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: rain falling; wind blowing; clicking sound; thunder rumbling.",
+   "items": [
+    "rain falling",
+    "wind blowing",
+    "clicking sound",
+    "thunder rumbling"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_thunder_T3f3Y-eO.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: thunder rumbling.",
+   "items": [
+    "thunder rumbling"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_wind_noise_-k199QGb.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: wind blowing.",
+   "items": [
+    "wind blowing"
+   ],
+   "placebo": false
+  },
+  {
+   "clip": "un_wind_noise_1OctTl0h.mp4",
+   "tag": "no_ambient",
+   "reference": "A hearing viewer would also notice: wind blowing.",
+   "items": [
+    "wind blowing"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "un_wind_noise_ck13el7V.mp4",
+   "tag": "seen_ambient",
+   "reference": "A hearing viewer would also notice: water splashing.",
+   "items": [
+    "water splashing"
+   ],
+   "placebo": true
+  },
+  {
+   "clip": "wc_brazilian_film.mp4",
+   "tag": "seen_ambient",
+   "reference": "nothing beyond the picture",
+   "items": [],
+   "placebo": false
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+{
+ "clip": "un_fire_truck_siren_5dbDin4u.mp4",
+ "tag": "seen_ambient",
+ "duration": 16.0,
+ "with_sound": [
+  {
+   "what": "car driving on road",
+   "evidence": "seen"
+  },
+  {
+   "what": "emergency vehicle siren",
+   "evidence": "heard"
+  },
+  {
+   "what": "emergency vehicle passing by",
+   "evidence": "both"
+  }
+ ],
+ "muted": [
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  },
+  {
+   "what": "car drives by",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"car driving on road\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"emergency vehicle siren\",\n      \"evidence\": \"heard\"\n    },\n    {\n      \"what\": \"emergency vehicle passing by\",\n      \"evidence\": \"both\"\n    }\n  ]\n}\n```\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n#\n\n#\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"car drives by\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n"
+ }
+}

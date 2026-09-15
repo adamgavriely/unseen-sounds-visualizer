@@ -1,0 +1,77 @@
+{
+ "clip": "b3_balloon_burner.mp4",
+ "tag": "no_ambient",
+ "duration": 18.0,
+ "with_sound": [
+  {
+   "what": "man in red shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt walking",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt holding a stick",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt hitting a stick",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt hitting a stick",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt hitting a stick",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt hitting a stick",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt hitting a stick",
+   "evidence": "seen"
+  }
+ ],
+ "muted": [
+  {
+   "what": "people setting up camp",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt walking",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt holding pole",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt placing pole",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt adjusting pole",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt walking away",
+   "evidence": "seen"
+  },
+  {
+   "what": "man in red shirt holding pole",
+   "evidence": "seen"
+  }
+ ],
+ "raw": {
+  "with_sound": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"man in red shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt walking\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt holding a stick\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt hitting a stick\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt hitting a stick\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt hitting a stick\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt hitting a stick\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt hitting a stick\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:\n:",
+  "muted": "```json\n{\n  \"events\": [\n    {\n      \"what\": \"people setting up camp\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt walking\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt holding pole\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt placing pole\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt adjusting pole\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt walking away\",\n      \"evidence\": \"seen\"\n    },\n    {\n      \"what\": \"man in red shirt holding pole\",\n      \"evidence\": \"seen\"\n    }\n  ]\n}\n```\n\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:\n: \n:"
+ }
+}
