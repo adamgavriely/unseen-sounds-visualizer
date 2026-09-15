@@ -1,8 +1,6 @@
-% Technical report -- skeleton (2026-09-14, night build; Fable plan item D).
-% Every number here is copied from a result file or from docs/project_notes.tex and is
-% keyed to its tag. Cells marked pending are filled from benchmark/paired_stats.json and
-% benchmark/protocol_results_<tag>.json once those jobs land. Nothing here is invented;
-% where a number does not exist yet the cell says so.
+% Technical report. Every number here is copied from a result file under benchmark/ or from
+% docs/project_notes.tex and is keyed to its result tag. Figures: scripts/make_figures.py,
+% scripts/cost_sensitivity.py.
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -153,6 +151,14 @@ is already visible.
 
 \subsection{Pipeline}
 % Table: stage, model, role. Source: README pipeline table; config.py.
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig_pipeline.pdf}
+\caption{The seven stages and what flows between them. Stages 2 and 3 only feed the
+visibility decision; stage 7 is the evaluation of \S\ref{sec:eval}.}
+\label{fig:pipeline}
+\end{figure}
+
 \begin{center}\begin{tabular}{lll}
 \toprule
 stage & model & role \\
@@ -429,6 +435,19 @@ therefore the same question the system itself finds hardest -- whether a sound's
 screen -- and the honest reading is that no automatic reference built here can score the gate
 decision; the human-grounded reference remains the only one that can, with the asymmetry
 already stated.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{fig_examples.pdf}
+\caption{Three test clips end to end: four frames across the sound, BEATs' confidence for the
+sound over time (shaded: the detected span; dotted: the 0.35 bar), the three visibility votes
+per stretch, and the panel. (a) The police car is on screen: the siren is silenced and the
+gated system scores 4 where the blind baseline's redundant picture scores 3. (b) Cars are
+visible while the annotated sound is off-screen traffic: the gate silences \emph{Vehicle} and
+scores 0 -- a wrong silence costs four points. (c) No ambulance in frame: every vote says
+``nothing'', the picture ``ambulance siren blaring'' is shown for the whole sound.}
+\label{fig:examples}
+\end{figure}
 
 \subsection{By scenario group}
 % paired_stats.py: the proposal's four scenarios, grouped by whether a picture is due. Same
