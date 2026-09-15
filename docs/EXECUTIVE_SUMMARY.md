@@ -327,10 +327,15 @@ this firmer.
 
 **Decided:** keep the occlusion timing refinement (measured to make no difference; v3 was
 evaluated with it on). Skip the independent reference for v3 (it cannot score the gate).
-Stop detector experiments (§10). Bibliography verified and two figures added (done 15 Sept).
+Stop detector experiments (§10). Bibliography verified, two figures added, demos re-rendered (15 Sept).
 
-**Open for Adam:** read the report; re-render the three demo videos with v3 (the existing
-demos predate BEATs; ~1 GPU-hour); final proofread.
+**Demo videos** (re-rendered with v3 on 15 Sept, Fable's choice): the three Figure 2
+clips, in `data/output/demos_v3/` (clean) and `data/output/demos_v3_debug/` (the phrase and
+every raw detection with the gate's verdict printed under the panel, so an empty panel reads
+as "sound heard, source judged visible" rather than "nothing ran"). Not in git (videos);
+`sbatch slurm/job_demos_v3.sh` re-creates them in ~12 minutes.
+
+**Open for Adam:** read the report; final proofread.
 
 **Future work** (in the report): a detector-only benchmark on the labelled clips; a
 speech-aware detector measured against it; an audio model with an open vocabulary for sounds
