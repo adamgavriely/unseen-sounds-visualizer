@@ -7,7 +7,7 @@ What the numbers in the report do and do not support. Seeded 2026-09-14 from
 **In short.** The headline score is an automatic proxy, not a study with deaf viewers; it
 was produced by one judge on 100 clips labelled by one person, and it cannot see when the
 sound detector misses a sound. The detector, not the visibility decision, is what limits the
-result, and six ways of improving it were measured and did not help. Everything below is the
+result, and seven ways of improving it were measured and did not help. Everything below is the
 detail behind those sentences.
 
 ## Evaluation
@@ -111,9 +111,14 @@ detail behind those sentences.
   20-sound smoke test drawn beforehand it vetoed 6/10 phantoms and kept 9/10 real sounds
   (pass); on the full dev split it removed 25/77 phantoms (declared bar 40) and would also
   have removed real sounds on test (a baby crying, a basketball bounce). Often it simply repeats the candidate list instead of judging it. Not adopted (`benchmark/audio_llm_eval.json`).
-- **Source separation was assessed, not run.** Demucs removes speech only (4 of the 7 masked
-  misses are under music) and taking the higher confidence from the original and the speech-removed audio can only add
-  false detections. First future-work item, with declared bars (report §Conclusion).
+- **Separating the audio before detection does not work either.** Demucs splits the audio into
+  voices, drums, bass and "other"; BEATs was run on "other" alone, same 0.35 bar, no tuning
+  (`benchmark/separate_detect.py`, bars declared first). DCASE: recall on the 126 gold events
+  that overlap speech or music went DOWN from 9.5% to 4.8% (bar +10 points), and on the 129
+  clear events from 32.6% to 10.9%. Dev: 17 of 23 labelled real detections lost (bar ≤ 2),
+  62 of 77 phantoms gone, 48 new sound families that the original audio never produced. BEATs
+  was trained on mixed audio; separated audio is foreign to it, so every score shifts. Not
+  adopted (`benchmark/separate_detect.json`).
 
 - **Vocabulary.** AudioSet has no "phone alert"; no model trained on it can name one
   (catalogue #3).

@@ -598,11 +598,7 @@ the same model verifying claims at chance as an evaluation reference (\S\ref{sec
 is reported as a measured limitation of zero-shot audio--text matching on short ambient events
 in polyphonic audio, not as a tuning failure; the shipped system uses BEATs alone.
 
-The remaining candidate, source separation in front of the detector (Demucs; re-detect on the
-residual, keep the higher score), was assessed and not run: the residual removes speech only,
-so four of the seven masked misses, which sit under music, are untouched, and taking the
-higher of two scores can only add detections, so it raises the phantom rate by construction.
-It is the first future-work item, with its acceptance bars stated in \S\ref{sec:discussion}.
+The last candidate, source separation in front of the detector, was run as a small assessment (\texttt{benchmark/separate\_detect.py}, bars declared first): Demucs (htdemucs) splits the audio into vocals, drums, bass and \emph{other}, and BEATs scores the \emph{other} stem alone under the unchanged rule -- residual only, since taking the higher of two scores can only add detections. On the 255 DCASE gold events, recall on the 126 events that overlap a speech or music event \emph{fell} from 9.5\% to 4.8\% (bar: $+10$ points) and on the other 129 from 32.6\% to 10.9\%; on the development split 17 of the 23 labelled real detections were lost (bar: at most 2) while 62 of 77 phantoms disappeared and 48 families appeared that the mix never produced. BEATs was trained on mixtures: separated audio is out of its distribution, every score moves, and the 0.35 bar no longer means what it did. The masked sounds are not recovered because separation does not put them back; it only removes what was on top of them, together with much of what the detector relied on. A detector trained on separated or polyphonic audio remains future work (\S\ref{sec:discussion}).
 The finding that stands is that in polyphonic video a clip-level tagger's confidence is not
 evidence that a sound is in the scene; the detector, not the visibility judgment, bounds the
 headline result, and no threshold inside either recovers it.
@@ -679,7 +675,7 @@ the hardest a vision--language model is asked here.
 Next, in order:
 \begin{enumerate}
   \item a detector-only benchmark on the labelled clips: recall of off-screen events against the phantom rate, independent of gate and judge;
-  \item against it, a speech-aware detector -- BEATs on a Demucs residual with the higher of the two scores -- accepted only if DCASE recall on speech-overlapped events rises by ten points, phantoms per class rise by no more than two, and no threshold is re-tuned; or a polyphonic detector trained on mixtures;
+  \item against it, a detector that works under speech and music: BEATs on separated audio was measured and fails (\S\ref{sec:v4}), so the candidate is a polyphonic detector trained on mixtures, or a tagger fine-tuned on separated stems -- accepted only if DCASE recall on speech- and music-overlapped events rises by ten points, phantoms per class rise by no more than two, and no threshold is re-tuned;
   \item an open-vocabulary audio model for the sounds the 527 classes have no word for;
   \item a second annotator;
   \item a study with deaf viewers, without which the accessibility claim rests on a proxy.

@@ -33,7 +33,7 @@ simplest alternative — "draw a picture for every sound you hear, never look at
 (the **blind** baseline) — scores **3.16**: a tie. We win on the 50 clips where no picture was
 needed (we stay quiet, blind draws something redundant) and lose on the 50 where one was
 needed (we sometimes stay quiet when we should not). The reason we lose is mostly not the
-gate but the **sound detector** underneath it. Six attempts to improve that detector all
+gate but the **sound detector** underneath it. Seven attempts to improve that detector all
 failed; each had its pass/fail rule written down before it ran. That they all failed is the
 thesis's second finding.
 
@@ -61,7 +61,7 @@ thesis's second finding.
   score the gate. **v3 lands:
   a tie (+0.01).** A sweep of 16 gate settings on the development clips shows the current
   one is already best. Thesis draft written.
-- **15 Sept.** Six detector improvements tried, all failed their declared bars (§10). A
+- **15 Sept.** Seven detector improvements tried, all failed their declared bars (§10). A
   second, judge-free way of scoring (cost-sensitivity, §9) shows the gate comes out ahead if one unneeded picture counts as at least 40% as bad as
   one missing picture. Two things the judge
   cannot see were found (§8). Figures, bibliography, and this summary finished.
@@ -301,7 +301,7 @@ independent AI reviewer ("Fable"). None passed; all are reported honestly.
 | persistence + rank rule | count a sound only if it stays among the top-3 for ≥1 s, instead of one peak | same trade-off curve as the current rule, just shifted |
 | bigger VLM (32B) for the gate | four times larger vision model | recognises visible sources better (67% vs 35%) but wrongly silences 25% of off-screen sounds (was 3%) — worse under the score |
 | audio language model | ask Qwen2-Audio "which of these sounds do you hear?" | small test passed (6/10 phantoms vetoed, 9/10 real kept); full run removed only 25 of 77 |
-| source separation (Demucs) | remove speech before detecting | assessed, not run: removes speech only, and 4 of the 7 masked misses are under music |
+| source separation (Demucs) | remove voices, drums and bass before detecting; detect on what is left | ran 15 Sept evening: the detector got *worse* — found fewer of the buried sounds (9.5% → 4.8%), lost two thirds of the clear ones, and lost 17 of 23 real dev detections; it was trained on mixed audio and does not understand separated audio |
 
 Example of a phantom the second opinions could not remove: "whale vocalization" at a
 Christmas market (confidence 0.36). The same phantom appears on other crowd clips (a crowd

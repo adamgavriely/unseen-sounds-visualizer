@@ -1,0 +1,91 @@
+{
+ "when": "2026-09-15T19:07",
+ "rule": "BEATs on htdemucs 'other' stem, shipping rule, residual only",
+ "bar": {
+  "masked_recall_gain": 0.1,
+  "fp_per_family_rise": 2,
+  "real_lost": 2
+ },
+ "dcase": {
+  "mix": {
+   "clips": 222,
+   "masked_recall": 0.09523809523809523,
+   "masked_n": 126,
+   "clear_recall": 0.32558139534883723,
+   "clear_n": 129,
+   "fp_by_family": {
+    "Clicking": 2,
+    "Chuckle, chortle": 1,
+    "Thunk": 15,
+    "Harpsichord": 15,
+    "Telephone": 4,
+    "Water": 12,
+    "Chink, clink": 2,
+    "Clapping": 9,
+    "Tap": 3,
+    "Chant": 3,
+    "Cooking": 4,
+    "Tambourine": 5,
+    "Writing": 2,
+    "Sigh": 3,
+    "Gasp": 2,
+    "Door": 2,
+    "Gunshot": 1,
+    "Pizzicato": 3,
+    "Knock": 1,
+    "Scissors": 1,
+    "Coin (dropping)": 1
+   },
+   "fp_total": 91
+  },
+  "stem": {
+   "clips": 222,
+   "masked_recall": 0.047619047619047616,
+   "masked_n": 126,
+   "clear_recall": 0.10852713178294573,
+   "clear_n": 129,
+   "fp_by_family": {
+    "Harpsichord": 12,
+    "Gasp": 2,
+    "Glass": 2,
+    "Water": 2,
+    "Telephone": 2,
+    "Insect": 4,
+    "Fly, housefly": 3,
+    "Doorbell": 1,
+    "Scissors": 3,
+    "Plop": 2,
+    "Pizzicato": 1,
+    "Sneeze": 1,
+    "Sonar": 1
+   },
+   "fp_total": 36
+  },
+  "fp_rise_max": 4,
+  "fp_rise_by_family": {
+   "Fly, housefly": 3,
+   "Sneeze": 1,
+   "Doorbell": 1,
+   "Insect": 4,
+   "Sonar": 1,
+   "Glass": 2,
+   "Plop": 2,
+   "Scissors": 2
+  },
+  "masked_gain": -0.047619047619047616
+ },
+ "dev": {
+  "clips": 53,
+  "real_kept": [
+   6,
+   23
+  ],
+  "phantoms_removed": [
+   62,
+   77
+  ],
+  "new_families_on_stem": 48,
+  "real_lost": 17
+ },
+ "passed": false
+}
