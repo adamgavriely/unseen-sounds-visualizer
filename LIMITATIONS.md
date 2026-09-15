@@ -90,6 +90,12 @@ report's Limitations section mirrors this file.
   unseen-clip pictures and 2 of 66 DCASE gold events. The phantoms are shared AudioSet
   confusions ("roaring cats" on a glacier hike heard by both), not one model's quirk.
   Not shipped (`benchmark/panns_agree.json`).
+- **A persistence-plus-rank decision rule does not beat max-over-windows.** Replacing "max
+  window score ≥ 0.35" by "top-3 non-speech class in every window of a ≥1 s run, score ≥
+  0.15" (27-cell grid on DCASE gold) traces the same recall/false-positive curve as the
+  shipping rule (21.6% recall at 4.6 FP/min vs 21.2% at 5.2); the declared +10-point recall
+  bar failed. On dev it removes 40/77 phantoms and loses 1/19 unseen pictures — a trade
+  along the same curve, not a better detector. Not shipped (`benchmark/persist_rank_setting.json`).
 - **Source separation was assessed, not run.** Demucs removes speech only (4 of the 7 masked
   misses are under music) and keeping the higher of mix/residual scores can only add
   phantoms. First future-work item, with declared bars (report §Conclusion).
