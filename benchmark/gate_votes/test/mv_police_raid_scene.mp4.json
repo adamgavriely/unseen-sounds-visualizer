@@ -797,7 +797,10 @@
     "Bird",
     "Domestic animals, pets"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard gunshots, glass breaking, and a muffled voice saying 'very poor choice of words.' Other: None."
   }
- ]
+ ],
+ "allm_other": "None."
 }

@@ -895,7 +895,9 @@
     "Pig",
     "Shout"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) bird, B) goose, C) honk, and D) owl. Other: none."
   },
   {
    "label": "Gobble",
@@ -961,7 +963,9 @@
     "Boing",
     "Bagpipes"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) bird, B) goose, C) honk, and D) owl. Other: none."
   },
   {
    "label": "Goose",
@@ -994,7 +998,9 @@
     "Domestic animals, pets",
     "Music of Asia"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) bird, B) goose, C) honk, and D) owl. Other: none."
   },
   {
    "label": "Honk",
@@ -1027,7 +1033,9 @@
     "Shout",
     "Laughter"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) bird, B) goose, C) honk, and D) owl. Other: none."
   },
   {
    "label": "Snicker",
@@ -1080,5 +1088,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

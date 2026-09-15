@@ -1523,7 +1523,9 @@
     "Domestic animals, pets",
     "Livestock, farm animals, working animals"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Arrow",
@@ -1547,7 +1549,9 @@
     "Motor vehicle (road)",
     "Arrow"
    ],
-   "panns_rank": 8
+   "panns_rank": 8,
+   "allm_heard": false,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Scissors",
@@ -1571,7 +1575,9 @@
     "Pump (liquid)",
     "Rodents, rats, mice"
    ],
-   "panns_rank": 94
+   "panns_rank": 94,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Boat",
@@ -1595,7 +1601,9 @@
     "Fire",
     "Chopping (food)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": false,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Chop",
@@ -1619,7 +1627,9 @@
     "Chopping (food)",
     "Chop"
    ],
-   "panns_rank": 7
+   "panns_rank": 7,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Rowboat, canoe, kayak",
@@ -1643,7 +1653,9 @@
     "Flap",
     "Chopping (food)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Skateboard",
@@ -1667,7 +1679,9 @@
     "Pig",
     "Livestock, farm animals, working animals"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Bird",
@@ -1709,7 +1723,9 @@
     "Rock music",
     "Hubbub, speech noise, speech babble"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": false,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Scrape",
@@ -1733,7 +1749,9 @@
     "Domestic animals, pets",
     "Livestock, farm animals, working animals"
    ],
-   "panns_rank": 11
+   "panns_rank": 11,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Vehicle",
@@ -1757,7 +1775,9 @@
     "Fire",
     "Clicking"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Sheep",
@@ -1781,7 +1801,9 @@
     "Shout",
     "Goat"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": false,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Roaring cats (lions, tigers)",
@@ -1805,7 +1827,9 @@
     "Hubbub, speech noise, speech babble",
     "Shout"
    ],
-   "panns_rank": 11
+   "panns_rank": 11,
+   "allm_heard": false,
+   "allm_reply": "D, E, G, H, I, K, L, none."
   },
   {
    "label": "Keys jangling",
@@ -1858,5 +1882,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

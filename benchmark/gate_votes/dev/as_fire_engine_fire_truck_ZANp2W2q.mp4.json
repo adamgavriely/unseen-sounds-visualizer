@@ -484,7 +484,9 @@
     "Theremin",
     "Fire alarm"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, traffic noise."
   },
   {
    "label": "Vehicle",
@@ -537,5 +539,6 @@
    ],
    "panns_rank": 2
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -366,7 +366,10 @@
     "Sink (filling or washing)",
     "Frying (food)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder, light rain on surface, water dropping, wind, microphone noise from wind, clock ticking."
   }
- ]
+ ],
+ "allm_other": ""
 }

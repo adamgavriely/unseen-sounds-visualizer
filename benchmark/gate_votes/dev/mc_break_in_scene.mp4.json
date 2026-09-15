@@ -666,7 +666,9 @@
     "Fill (with liquid)",
     "Sound equipment"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "I heard A) crack and C) tambourine. Other: none."
   },
   {
    "label": "Crack",
@@ -708,7 +710,9 @@
     "Vocal music",
     "Singing"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": true,
+   "allm_reply": "I heard A) crack and C) tambourine. Other: none."
   },
   {
    "label": "Tambourine",
@@ -732,7 +736,9 @@
     "Hubbub, speech noise, speech babble",
     "Insect"
    ],
-   "panns_rank": 125
+   "panns_rank": 125,
+   "allm_heard": true,
+   "allm_reply": "I heard A) crack and C) tambourine. Other: none."
   },
   {
    "label": "Chink, clink",
@@ -802,5 +808,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

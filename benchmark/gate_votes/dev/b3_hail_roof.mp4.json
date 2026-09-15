@@ -205,7 +205,10 @@
     "Flap",
     "Heavy engine (low frequency)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder, lightning"
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -555,7 +555,9 @@
     "Bagpipes",
     "Power tool"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": true,
+   "allm_reply": "Aircraft, helicopter, music, sound reproduction from television, clock ticking, breathing."
   },
   {
    "label": "Aircraft",
@@ -588,7 +590,9 @@
     "Power tool",
     "Hip hop music"
    ],
-   "panns_rank": 6
+   "panns_rank": 6,
+   "allm_heard": true,
+   "allm_reply": "Aircraft, helicopter, music, sound reproduction from television, clock ticking, breathing."
   },
   {
    "label": "Tools",
@@ -742,5 +746,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

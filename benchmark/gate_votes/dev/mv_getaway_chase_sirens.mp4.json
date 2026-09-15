@@ -566,7 +566,9 @@
     "Theremin",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear a siren and a vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -599,7 +601,10 @@
     "Siren",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear a siren and a vehicle. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

@@ -435,7 +435,9 @@
     "Sink (filling or washing)",
     "Frying (food)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder"
   },
   {
    "label": "Rain",
@@ -486,7 +488,10 @@
     "Bathtub (filling or washing)",
     "Fill (with liquid)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder"
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -957,7 +957,9 @@
     "Music of Latin America",
     "Vocal music"
    ],
-   "panns_rank": 17
+   "panns_rank": 17,
+   "allm_heard": false,
+   "allm_reply": "B, Wail, moan"
   },
   {
    "label": "Wail, moan",
@@ -981,7 +983,9 @@
     "Livestock, farm animals, working animals",
     "Canidae, dogs, wolves"
    ],
-   "panns_rank": 7
+   "panns_rank": 7,
+   "allm_heard": true,
+   "allm_reply": "B, Wail, moan"
   },
   {
    "label": "Roll",
@@ -1017,5 +1021,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

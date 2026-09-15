@@ -657,7 +657,9 @@
     "Pulse",
     "Whip"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "D, helicopter, vehicle, footsteps, human voice, breathing. Other: none."
   },
   {
    "label": "Vehicle",
@@ -681,7 +683,9 @@
     "Whip",
     "Pulse"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "D, helicopter, vehicle, footsteps, human voice, breathing. Other: none."
   },
   {
    "label": "Horse",
@@ -705,7 +709,9 @@
     "Flap",
     "Bird"
    ],
-   "panns_rank": 8
+   "panns_rank": 8,
+   "allm_heard": false,
+   "allm_reply": "D, helicopter, vehicle, footsteps, human voice, breathing. Other: none."
   },
   {
    "label": "Gunshot",
@@ -753,7 +759,9 @@
     "Shout",
     "Music of Asia"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "D, helicopter, vehicle, footsteps, human voice, breathing. Other: none."
   },
   {
    "label": "Aircraft",
@@ -789,5 +797,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

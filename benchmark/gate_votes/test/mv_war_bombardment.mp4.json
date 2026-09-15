@@ -415,7 +415,9 @@
     "Eruption",
     "Rock music"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Gunshot, explosion, and shouting. Other: none."
   },
   {
    "label": "Explosion",
@@ -467,5 +469,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

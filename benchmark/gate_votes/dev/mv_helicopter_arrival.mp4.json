@@ -795,7 +795,9 @@
     "Whale vocalization",
     "Dog"
    ],
-   "panns_rank": 54
+   "panns_rank": 54,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, roar, roaring cats (lions, tigers). Other: none."
   },
   {
    "label": "Roaring cats (lions, tigers)",
@@ -819,7 +821,9 @@
     "Whale vocalization",
     "Dog"
    ],
-   "panns_rank": 52
+   "panns_rank": 52,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, roar, roaring cats (lions, tigers). Other: none."
   },
   {
    "label": "Gunshot",
@@ -852,7 +856,9 @@
     "Dog",
     "Mechanisms"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, roar, roaring cats (lions, tigers). Other: none."
   },
   {
    "label": "Explosion",
@@ -876,7 +882,9 @@
     "Flap",
     "Whale vocalization"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, roar, roaring cats (lions, tigers). Other: none."
   },
   {
    "label": "Glass",
@@ -895,5 +903,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

@@ -537,7 +537,10 @@
     "Bell",
     "Telephone"
    ],
-   "panns_rank": 15
+   "panns_rank": 15,
+   "allm_heard": false,
+   "allm_reply": "Beep, buzzer, clock ticking. Other: None."
   }
- ]
+ ],
+ "allm_other": "None."
 }

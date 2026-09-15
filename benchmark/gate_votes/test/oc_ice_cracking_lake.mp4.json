@@ -214,7 +214,10 @@
     "Wind noise (microphone)",
     "Shout"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Footsteps, wind, none"
   }
- ]
+ ],
+ "allm_other": ""
 }

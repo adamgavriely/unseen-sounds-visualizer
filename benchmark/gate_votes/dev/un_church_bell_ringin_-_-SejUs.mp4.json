@@ -884,7 +884,9 @@
     "Bell",
     "Music of Asia"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bells, train, vehicle, wind, generic impact sounds, clock ticking."
   },
   {
    "label": "Bell",
@@ -917,7 +919,9 @@
     "Music of Asia",
     "Music of Africa"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "Bells, train, vehicle, wind, generic impact sounds, clock ticking."
   },
   {
    "label": "Vehicle",
@@ -968,7 +972,10 @@
     "Music of Asia",
     "Bell"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bells, train, vehicle, wind, generic impact sounds, clock ticking."
   }
- ]
+ ],
+ "allm_other": ""
 }

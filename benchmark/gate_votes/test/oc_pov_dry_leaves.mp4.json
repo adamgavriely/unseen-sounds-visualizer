@@ -305,7 +305,9 @@
     "Rustling leaves",
     "Wind noise (microphone)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, footsteps, none"
   },
   {
    "label": "Chewing, mastication",
@@ -329,7 +331,9 @@
     "Wind noise (microphone)",
     "Goat"
    ],
-   "panns_rank": 10
+   "panns_rank": 10,
+   "allm_heard": false,
+   "allm_reply": "B, footsteps, none"
   },
   {
    "label": "Crunch",
@@ -374,5 +378,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

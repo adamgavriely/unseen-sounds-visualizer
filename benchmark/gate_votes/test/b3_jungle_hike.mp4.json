@@ -1255,7 +1255,9 @@
     "Whale vocalization",
     "Frog"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Bird, buzz, hoot, insect, owl, sheep. Other: none."
   },
   {
    "label": "Bird",
@@ -1315,7 +1317,9 @@
     "Frog",
     "Whale vocalization"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bird, buzz, hoot, insect, owl, sheep. Other: none."
   },
   {
    "label": "Buzz",
@@ -1348,7 +1352,9 @@
     "Buzzer",
     "Didgeridoo"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Bird, buzz, hoot, insect, owl, sheep. Other: none."
   },
   {
    "label": "Sheep",
@@ -1372,7 +1378,9 @@
     "Rodents, rats, mice",
     "Canidae, dogs, wolves"
    ],
-   "panns_rank": 60
+   "panns_rank": 60,
+   "allm_heard": true,
+   "allm_reply": "Bird, buzz, hoot, insect, owl, sheep. Other: none."
   },
   {
    "label": "Hoot",
@@ -1396,7 +1404,9 @@
     "Whale vocalization",
     "Frog"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bird, buzz, hoot, insect, owl, sheep. Other: none."
   },
   {
    "label": "Insect",
@@ -1447,7 +1457,9 @@
     "Frog",
     "Didgeridoo"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Bird, buzz, hoot, insect, owl, sheep. Other: none."
   },
   {
    "label": "Cricket",
@@ -1484,5 +1496,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

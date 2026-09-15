@@ -96,6 +96,12 @@ report's Limitations section mirrors this file.
   shipping rule (21.6% recall at 4.6 FP/min vs 21.2% at 5.2); the declared +10-point recall
   bar failed. On dev it removes 40/77 phantoms and loses 1/19 unseen pictures — a trade
   along the same curve, not a better detector. Not shipped (`benchmark/persist_rank_setting.json`).
+- **An audio language model as second opinion does not work either.** Qwen2-Audio-7B,
+  given the clip's audio and BEATs' own candidates ("which of these do you hear?"): on a
+  20-sound smoke test drawn beforehand it vetoed 6/10 phantoms and kept 9/10 real sounds
+  (pass); on the full dev split it removed 25/77 phantoms (declared bar 40) and would also
+  have removed real sounds on test (a baby crying, a basketball bounce). It echoes the
+  candidate list as often as it judges it. Not shipped (`benchmark/audio_llm_eval.json`).
 - **Source separation was assessed, not run.** Demucs removes speech only (4 of the 7 masked
   misses are under music) and keeping the higher of mix/residual scores can only add
   phantoms. First future-work item, with declared bars (report §Conclusion).

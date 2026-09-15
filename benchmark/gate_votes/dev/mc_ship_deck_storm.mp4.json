@@ -834,7 +834,9 @@
     "Bird",
     "Flap"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, glass shattering, music. Other: none."
   },
   {
    "label": "Gunshot",
@@ -876,7 +878,9 @@
     "Music of Asia",
     "Singing"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, glass shattering, music. Other: none."
   },
   {
    "label": "Explosion",
@@ -927,7 +931,9 @@
     "Music of Asia",
     "Singing"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gunshot, glass shattering, music. Other: none."
   },
   {
    "label": "Whoosh, swoosh, swish",
@@ -946,5 +952,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

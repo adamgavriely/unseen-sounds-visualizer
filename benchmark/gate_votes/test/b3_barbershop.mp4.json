@@ -502,7 +502,9 @@
     "Power tool",
     "Toothbrush"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Buzz, electric shaver, electric razor, hum, mains hum."
   },
   {
    "label": "Electric shaver, electric razor",
@@ -571,7 +573,9 @@
     "Power tool",
     "Toothbrush"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Buzz, electric shaver, electric razor, hum, mains hum."
   },
   {
    "label": "Hum",
@@ -640,7 +644,9 @@
     "Power tool",
     "Toothbrush"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": false,
+   "allm_reply": "Buzz, electric shaver, electric razor, hum, mains hum."
   },
   {
    "label": "Buzz",
@@ -682,7 +688,10 @@
     "Power tool",
     "Toothbrush"
    ],
-   "panns_rank": 5
+   "panns_rank": 5,
+   "allm_heard": true,
+   "allm_reply": "Buzz, electric shaver, electric razor, hum, mains hum."
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -296,7 +296,10 @@
     "Canidae, dogs, wolves",
     "Light engine (high frequency)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Tambourine, none."
   }
- ]
+ ],
+ "allm_other": ""
 }

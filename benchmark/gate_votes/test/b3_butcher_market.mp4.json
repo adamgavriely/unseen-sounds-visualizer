@@ -507,7 +507,9 @@
     "Mechanisms",
     "Vibration"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Door, water tap - faucet, background noise, source-ambiguous sounds, generic impact sounds, clock ticking."
   },
   {
    "label": "Bird",
@@ -526,5 +528,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

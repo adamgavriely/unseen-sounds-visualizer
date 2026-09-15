@@ -660,7 +660,9 @@
     "Theremin",
     "Vibration"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Boat, none"
   },
   {
    "label": "Aircraft",
@@ -693,7 +695,10 @@
     "Sound equipment",
     "Wind noise (microphone)"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "Boat, none"
   }
- ]
+ ],
+ "allm_other": ""
 }

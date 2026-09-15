@@ -285,7 +285,9 @@
     "Siren",
     "Theremin"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, clock ticking, some clicking sounds"
   },
   {
    "label": "Vehicle",
@@ -329,5 +331,6 @@
    ],
    "panns_rank": 1
   }
- ]
+ ],
+ "allm_other": ""
 }

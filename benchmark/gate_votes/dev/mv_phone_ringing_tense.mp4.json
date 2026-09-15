@@ -425,7 +425,9 @@
     "Sound equipment",
     "Printer"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, police car siren"
   },
   {
    "label": "Gasp",
@@ -444,5 +446,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

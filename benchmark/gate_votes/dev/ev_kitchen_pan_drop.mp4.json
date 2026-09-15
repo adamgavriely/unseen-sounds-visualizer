@@ -554,7 +554,9 @@
     "Mechanisms",
     "Pulleys"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "A, C, D, Jingle bell, None, Other: some undefined, sourceless sound effects"
   },
   {
    "label": "Glass",
@@ -587,7 +589,9 @@
     "Cutlery, silverware",
     "Shatter"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, C, D, Jingle bell, None, Other: some undefined, sourceless sound effects"
   },
   {
    "label": "Crack",
@@ -611,7 +615,9 @@
     "Bell",
     "Percussion"
    ],
-   "panns_rank": 6
+   "panns_rank": 6,
+   "allm_heard": false,
+   "allm_reply": "A, C, D, Jingle bell, None, Other: some undefined, sourceless sound effects"
   },
   {
    "label": "Jingle bell",
@@ -635,7 +641,9 @@
     "Rail transport",
     "Bird"
    ],
-   "panns_rank": 10
+   "panns_rank": 10,
+   "allm_heard": true,
+   "allm_reply": "A, C, D, Jingle bell, None, Other: some undefined, sourceless sound effects"
   },
   {
    "label": "Coin (dropping)",
@@ -661,5 +669,6 @@
    ],
    "panns_rank": 9
   }
- ]
+ ],
+ "allm_other": "some undefined, sourceless sound effects"
 }

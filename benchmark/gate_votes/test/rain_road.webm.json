@@ -485,7 +485,9 @@
     "Bathtub (filling or washing)",
     "Fill (with liquid)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder, and light rain on surface."
   },
   {
    "label": "Insect",
@@ -513,5 +515,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

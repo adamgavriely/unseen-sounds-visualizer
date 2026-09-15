@@ -712,7 +712,9 @@
     "Power tool",
     "Crying, sobbing"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Babbling, dog howling, distant murmuring."
   },
   {
    "label": "Baby cry, infant cry",
@@ -789,5 +791,6 @@
    ],
    "panns_rank": 6
   }
- ]
+ ],
+ "allm_other": ""
 }

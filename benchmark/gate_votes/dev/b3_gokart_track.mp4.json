@@ -1082,7 +1082,9 @@
     "Motor vehicle (road)",
     "Boat, Water vehicle"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear A) boat and C) train. Other: wind noise."
   },
   {
    "label": "Train",
@@ -1106,7 +1108,9 @@
     "Accelerating, revving, vroom",
     "Light engine (high frequency)"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) boat and C) train. Other: wind noise."
   },
   {
    "label": "Buzz",
@@ -1130,7 +1134,9 @@
     "Boat, Water vehicle",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 22
+   "panns_rank": 22,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear A) boat and C) train. Other: wind noise."
   },
   {
    "label": "Boat",
@@ -1163,7 +1169,10 @@
     "Cacophony",
     "Sound equipment"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) boat and C) train. Other: wind noise."
   }
- ]
+ ],
+ "allm_other": "wind noise."
 }

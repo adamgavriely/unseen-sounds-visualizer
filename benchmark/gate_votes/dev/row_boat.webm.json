@@ -354,7 +354,9 @@
     "Heavy engine (low frequency)",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, engine, medium engine (mid frequency), clock ticking, none."
   },
   {
    "label": "Cricket",
@@ -425,5 +427,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

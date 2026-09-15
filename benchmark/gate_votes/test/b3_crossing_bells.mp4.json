@@ -616,7 +616,9 @@
     "Bathtub (filling or washing)",
     "Sink (filling or washing)"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear C) train and D) vehicle. Other: none."
   },
   {
    "label": "Steam",
@@ -691,7 +693,9 @@
     "Sink (filling or washing)",
     "Rodents, rats, mice"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear C) train and D) vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -733,7 +737,9 @@
     "Sink (filling or washing)",
     "Rodents, rats, mice"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear C) train and D) vehicle. Other: none."
   },
   {
    "label": "Spray",
@@ -757,7 +763,10 @@
     "Sink (filling or washing)",
     "Rodents, rats, mice"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear C) train and D) vehicle. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

@@ -967,7 +967,9 @@
     "Chopping (food)",
     "Buzzer"
    ],
-   "panns_rank": 11
+   "panns_rank": 11,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) cooking, B) door, C) tearing and D) mechanisms. Other: none."
   },
   {
    "label": "Tearing",
@@ -991,7 +993,9 @@
     "Bagpipes",
     "Shout"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) cooking, B) door, C) tearing and D) mechanisms. Other: none."
   },
   {
    "label": "Chink, clink",
@@ -1048,7 +1052,9 @@
     "Shout",
     "Boing"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) cooking, B) door, C) tearing and D) mechanisms. Other: none."
   },
   {
    "label": "Crumpling, crinkling",
@@ -1118,5 +1124,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

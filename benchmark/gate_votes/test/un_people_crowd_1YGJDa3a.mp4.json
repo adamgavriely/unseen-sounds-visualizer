@@ -1004,7 +1004,9 @@
     "Blender",
     "Sink (filling or washing)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "D, T, none"
   },
   {
    "label": "Fireworks",
@@ -1028,7 +1030,9 @@
     "Sound equipment",
     "Whistle"
    ],
-   "panns_rank": 62
+   "panns_rank": 62,
+   "allm_heard": false,
+   "allm_reply": "D, T, none"
   },
   {
    "label": "Alarm",
@@ -1103,7 +1107,9 @@
     "Blender",
     "Sink (filling or washing)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "D, T, none"
   },
   {
    "label": "Explosion",
@@ -1127,7 +1133,9 @@
     "Whale vocalization",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 50
+   "panns_rank": 50,
+   "allm_heard": false,
+   "allm_reply": "D, T, none"
   },
   {
    "label": "Gunshot",
@@ -1151,7 +1159,9 @@
     "Whale vocalization",
     "Whistle"
    ],
-   "panns_rank": 50
+   "panns_rank": 50,
+   "allm_heard": false,
+   "allm_reply": "D, T, none"
   },
   {
    "label": "Thump, thud",
@@ -1175,7 +1185,10 @@
     "Printer",
     "Microwave oven"
    ],
-   "panns_rank": 26
+   "panns_rank": 26,
+   "allm_heard": true,
+   "allm_reply": "D, T, none"
   }
- ]
+ ],
+ "allm_other": ""
 }

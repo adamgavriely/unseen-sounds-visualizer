@@ -845,7 +845,9 @@
     "Cash register",
     "Buzzer"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B,C none"
   },
   {
    "label": "Baby cry, infant cry",
@@ -869,7 +871,9 @@
     "Crying, sobbing",
     "Cat"
    ],
-   "panns_rank": 10
+   "panns_rank": 10,
+   "allm_heard": false,
+   "allm_reply": "B,C none"
   },
   {
    "label": "Siren",
@@ -893,7 +897,9 @@
     "Middle Eastern music",
     "Scary music"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "B,C none"
   },
   {
    "label": "Crowd",
@@ -963,5 +969,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

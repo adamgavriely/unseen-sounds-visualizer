@@ -605,7 +605,10 @@
     "Telephone",
     "Brief tone"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Sounds: telephone, breathing, mechanisms; Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

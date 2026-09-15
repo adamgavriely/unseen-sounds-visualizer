@@ -706,7 +706,9 @@
     "Light engine (high frequency)",
     "Printer"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, alarm, vehicle, noise, honking"
   },
   {
    "label": "Vehicle",
@@ -757,7 +759,10 @@
     "Motor vehicle (road)",
     "Music of Africa"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, alarm, vehicle, noise, honking"
   }
- ]
+ ],
+ "allm_other": ""
 }

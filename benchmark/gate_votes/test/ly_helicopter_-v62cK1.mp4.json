@@ -394,7 +394,9 @@
     "Radio",
     "Aircraft"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Aircraft, helicopter, vehicle, wind noise (microphone)."
   },
   {
    "label": "Helicopter",
@@ -427,7 +429,9 @@
     "Fill (with liquid)",
     "Radio"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Aircraft, helicopter, vehicle, wind noise (microphone)."
   },
   {
    "label": "Aircraft",
@@ -469,7 +473,10 @@
     "Radio",
     "Fill (with liquid)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Aircraft, helicopter, vehicle, wind noise (microphone)."
   }
- ]
+ ],
+ "allm_other": ""
 }

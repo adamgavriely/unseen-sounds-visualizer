@@ -727,7 +727,9 @@
     "Hubbub, speech noise, speech babble",
     "Theremin"
    ],
-   "panns_rank": 18
+   "panns_rank": 18,
+   "allm_heard": true,
+   "allm_reply": "I heard A) dog and B) snicker. Other: none."
   },
   {
    "label": "Snicker",
@@ -751,7 +753,9 @@
     "Insect",
     "Hubbub, speech noise, speech babble"
    ],
-   "panns_rank": 18
+   "panns_rank": 18,
+   "allm_heard": true,
+   "allm_reply": "I heard A) dog and B) snicker. Other: none."
   },
   {
    "label": "Chuckle, chortle",
@@ -787,5 +791,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

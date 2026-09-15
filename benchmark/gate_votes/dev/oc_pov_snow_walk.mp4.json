@@ -255,7 +255,9 @@
     "Zipper (clothing)",
     "Bagpipes"
    ],
-   "panns_rank": 7
+   "panns_rank": 7,
+   "allm_heard": false,
+   "allm_reply": "Footsteps, none."
   },
   {
    "label": "Footsteps",
@@ -306,7 +308,9 @@
     "Bagpipes",
     "Zipper (clothing)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Footsteps, none."
   },
   {
    "label": "Stomach rumble",
@@ -325,5 +329,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -574,7 +574,9 @@
     "Cacophony",
     "Reverberation"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear vehicle and water. Other: none."
   },
   {
    "label": "Water",
@@ -598,7 +600,10 @@
     "Cacophony",
     "Water"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear vehicle and water. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

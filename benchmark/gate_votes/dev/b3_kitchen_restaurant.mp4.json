@@ -753,7 +753,9 @@
     "Heavy engine (low frequency)",
     "Gears"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Vehicle, ball bouncing, mechanisms, source-ambiguous sounds, generic impact sounds, human voice, laughter."
   },
   {
    "label": "Train",
@@ -772,5 +774,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

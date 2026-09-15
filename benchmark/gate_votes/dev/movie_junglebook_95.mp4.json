@@ -427,7 +427,9 @@
     "Speech",
     "Rock music"
    ],
-   "panns_rank": 6
+   "panns_rank": 6,
+   "allm_heard": false,
+   "allm_reply": "Roar, none."
   },
   {
    "label": "Roar",
@@ -451,7 +453,9 @@
     "Hubbub, speech noise, speech babble",
     "Speech"
    ],
-   "panns_rank": 6
+   "panns_rank": 6,
+   "allm_heard": true,
+   "allm_reply": "Roar, none."
   },
   {
    "label": "Bird",
@@ -475,7 +479,9 @@
     "Music of Asia",
     "Music of Latin America"
    ],
-   "panns_rank": 30
+   "panns_rank": 30,
+   "allm_heard": false,
+   "allm_reply": "Roar, none."
   },
   {
    "label": "Honk",
@@ -499,7 +505,10 @@
     "Music of Asia",
     "Music of Latin America"
    ],
-   "panns_rank": 30
+   "panns_rank": 30,
+   "allm_heard": false,
+   "allm_reply": "Roar, none."
   }
- ]
+ ],
+ "allm_other": ""
 }

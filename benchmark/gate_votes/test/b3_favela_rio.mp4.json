@@ -1397,7 +1397,9 @@
     "Printer",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) bird chirping and C) vehicle moving. Other: none."
   },
   {
    "label": "Train",
@@ -1430,7 +1432,9 @@
     "Rail transport",
     "Vibration"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear A) bird chirping and C) vehicle moving. Other: none."
   },
   {
    "label": "Vehicle",
@@ -1472,7 +1476,9 @@
     "Pump (liquid)",
     "Mechanisms"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) bird chirping and C) vehicle moving. Other: none."
   },
   {
    "label": "Horse",
@@ -1491,5 +1497,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

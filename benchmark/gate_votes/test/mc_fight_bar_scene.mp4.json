@@ -634,7 +634,9 @@
     "Funk",
     "Reggae"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "e, thump, thud, none"
   },
   {
    "label": "Cat",
@@ -658,7 +660,9 @@
     "Motor vehicle (road)",
     "Rock music"
    ],
-   "panns_rank": 35
+   "panns_rank": 35,
+   "allm_heard": false,
+   "allm_reply": "e, thump, thud, none"
   },
   {
    "label": "Thump, thud",
@@ -691,7 +695,9 @@
     "Singing",
     "Shout"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "e, thump, thud, none"
   },
   {
    "label": "Horse",
@@ -715,7 +721,9 @@
     "Music of Asia",
     "Keyboard (musical)"
    ],
-   "panns_rank": 14
+   "panns_rank": 14,
+   "allm_heard": false,
+   "allm_reply": "e, thump, thud, none"
   },
   {
    "label": "Caterwaul",
@@ -739,7 +747,10 @@
     "Rock music",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 35
+   "panns_rank": 35,
+   "allm_heard": false,
+   "allm_reply": "e, thump, thud, none"
   }
- ]
+ ],
+ "allm_other": ""
 }

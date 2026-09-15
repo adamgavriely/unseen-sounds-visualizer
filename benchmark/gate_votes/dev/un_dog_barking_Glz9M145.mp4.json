@@ -881,7 +881,9 @@
     "Whale vocalization",
     "Laughter"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Babbling, laughter, background noise, respiratory sounds (breathing)."
   },
   {
    "label": "Belly laugh",
@@ -935,5 +937,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

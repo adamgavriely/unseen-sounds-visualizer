@@ -324,7 +324,9 @@
     "Theremin",
     "Goat"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, footsteps, none"
   },
   {
    "label": "Chewing, mastication",
@@ -348,7 +350,9 @@
     "Theremin",
     "Goat"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "B, footsteps, none"
   },
   {
    "label": "Biting",
@@ -367,5 +371,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

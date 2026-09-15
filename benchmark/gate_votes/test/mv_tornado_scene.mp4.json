@@ -661,7 +661,9 @@
     "Theremin",
     "Rail transport"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, vehicle, people talking"
   },
   {
    "label": "Vehicle",
@@ -685,7 +687,10 @@
     "Music of Latin America",
     "Funk"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Siren, vehicle, people talking"
   }
- ]
+ ],
+ "allm_other": ""
 }

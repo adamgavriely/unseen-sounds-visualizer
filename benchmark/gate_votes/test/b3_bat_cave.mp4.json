@@ -333,7 +333,9 @@
     "Pour",
     "Water tap, faucet"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Water, dripping, and background noise."
   },
   {
    "label": "Whale vocalization",
@@ -369,5 +371,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

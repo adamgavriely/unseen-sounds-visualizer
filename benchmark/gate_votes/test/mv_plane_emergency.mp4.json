@@ -807,7 +807,9 @@
     "Rock music",
     "Music of Latin America"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A) glass, B) clock ticking (tick-tock), and D) train. Other: none."
   },
   {
    "label": "Tick",
@@ -831,7 +833,9 @@
     "Shout",
     "Rock music"
    ],
-   "panns_rank": 57
+   "panns_rank": 57,
+   "allm_heard": true,
+   "allm_reply": "I heard A) glass, B) clock ticking (tick-tock), and D) train. Other: none."
   },
   {
    "label": "Tick-tock",
@@ -855,7 +859,9 @@
     "Shout",
     "Rock music"
    ],
-   "panns_rank": 57
+   "panns_rank": 57,
+   "allm_heard": true,
+   "allm_reply": "I heard A) glass, B) clock ticking (tick-tock), and D) train. Other: none."
   },
   {
    "label": "Train",
@@ -879,7 +885,9 @@
     "Speech",
     "Rail transport"
    ],
-   "panns_rank": 37
+   "panns_rank": 37,
+   "allm_heard": true,
+   "allm_reply": "I heard A) glass, B) clock ticking (tick-tock), and D) train. Other: none."
   },
   {
    "label": "Vehicle",
@@ -941,5 +949,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

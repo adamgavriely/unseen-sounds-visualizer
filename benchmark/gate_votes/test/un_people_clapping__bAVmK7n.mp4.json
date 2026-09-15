@@ -717,7 +717,9 @@
     "Hubbub, speech noise, speech babble",
     "Keyboard (musical)"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Shuffling cards, cash register, clock ticking"
   },
   {
    "label": "Shuffling cards",
@@ -741,7 +743,9 @@
     "Keyboard (musical)",
     "Theremin"
    ],
-   "panns_rank": 48
+   "panns_rank": 48,
+   "allm_heard": true,
+   "allm_reply": "Shuffling cards, cash register, clock ticking"
   },
   {
    "label": "Insect",
@@ -777,5 +781,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

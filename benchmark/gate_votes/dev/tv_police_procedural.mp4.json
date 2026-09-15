@@ -860,7 +860,9 @@
     "Vocal music",
     "Middle Eastern music"
    ],
-   "panns_rank": 33
+   "panns_rank": 33,
+   "allm_heard": false,
+   "allm_reply": "Insect, none Other: police car siren, emergency vehicle siren"
   },
   {
    "label": "Insect",
@@ -884,7 +886,9 @@
     "Vocal music",
     "Middle Eastern music"
    ],
-   "panns_rank": 33
+   "panns_rank": 33,
+   "allm_heard": true,
+   "allm_reply": "Insect, none Other: police car siren, emergency vehicle siren"
   },
   {
    "label": "Bee, wasp, etc.",
@@ -908,7 +912,9 @@
     "Vocal music",
     "Middle Eastern music"
    ],
-   "panns_rank": 33
+   "panns_rank": 33,
+   "allm_heard": false,
+   "allm_reply": "Insect, none Other: police car siren, emergency vehicle siren"
   },
   {
    "label": "Air brake",
@@ -927,5 +933,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "police car siren, emergency vehicle siren"
 }

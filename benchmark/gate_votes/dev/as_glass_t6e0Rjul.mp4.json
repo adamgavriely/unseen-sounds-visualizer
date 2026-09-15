@@ -877,7 +877,9 @@
     "Sawing",
     "Shout"
    ],
-   "panns_rank": 48
+   "panns_rank": 48,
+   "allm_heard": true,
+   "allm_reply": "Bouncing, dishes, wood. Other: clock ticking."
   },
   {
    "label": "Crushing",
@@ -925,7 +927,9 @@
     "Cattle, bovinae",
     "Music of Latin America"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Bouncing, dishes, wood. Other: clock ticking."
   },
   {
    "label": "Wood",
@@ -949,7 +953,9 @@
     "Cattle, bovinae",
     "Didgeridoo"
    ],
-   "panns_rank": 16
+   "panns_rank": 16,
+   "allm_heard": true,
+   "allm_reply": "Bouncing, dishes, wood. Other: clock ticking."
   },
   {
    "label": "Patter",
@@ -985,5 +991,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "clock ticking."
 }

@@ -1340,7 +1340,9 @@
     "Accelerating, revving, vroom",
     "Plucked string instrument"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Siren, motor vehicle (road), car, alarm, and noise, background noise."
   },
   {
    "label": "Chainsaw",
@@ -1376,5 +1378,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

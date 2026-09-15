@@ -577,7 +577,9 @@
     "Heavy engine (low frequency)",
     "Sound equipment"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Gunshot, Jackhammer, none."
   },
   {
    "label": "Gunshot",
@@ -601,7 +603,9 @@
     "Electronic music",
     "Speech"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Gunshot, Jackhammer, none."
   },
   {
    "label": "Aircraft",
@@ -671,5 +675,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

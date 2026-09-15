@@ -487,7 +487,9 @@
     "Scary music",
     "Sound equipment"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, glass, none."
   },
   {
    "label": "Explosion",
@@ -511,7 +513,9 @@
     "Shout",
     "Mechanisms"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Explosion, glass, none."
   },
   {
    "label": "Vehicle",
@@ -530,5 +534,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -645,7 +645,9 @@
     "Motor vehicle (road)",
     "Fire alarm"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard alarm, bird, and cat sounds. Other: none."
   },
   {
    "label": "Cat",
@@ -669,7 +671,9 @@
     "Shout",
     "Soul music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "I heard alarm, bird, and cat sounds. Other: none."
   },
   {
    "label": "Bird",
@@ -693,7 +697,10 @@
     "Siren",
     "Fire alarm"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "I heard alarm, bird, and cat sounds. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

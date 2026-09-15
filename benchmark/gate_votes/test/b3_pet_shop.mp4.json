@@ -392,7 +392,9 @@
     "Country",
     "Outside, rural or natural"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Birds chirping, owl hooting, none."
   },
   {
    "label": "Owl",
@@ -425,7 +427,10 @@
     "Country",
     "Outside, rural or natural"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Birds chirping, owl hooting, none."
   }
- ]
+ ],
+ "allm_other": ""
 }

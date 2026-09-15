@@ -915,7 +915,9 @@
     "Hubbub, speech noise, speech babble",
     "Rock music"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) gunshot, B) helicopter, C) vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -975,7 +977,9 @@
     "Hubbub, speech noise, speech babble",
     "Rock music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) gunshot, B) helicopter, C) vehicle. Other: none."
   },
   {
    "label": "Gunshot",
@@ -1008,7 +1012,9 @@
     "Aircraft",
     "Electronic music"
    ],
-   "panns_rank": 11
+   "panns_rank": 11,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) gunshot, B) helicopter, C) vehicle. Other: none."
   },
   {
    "label": "Train",
@@ -1027,5 +1033,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

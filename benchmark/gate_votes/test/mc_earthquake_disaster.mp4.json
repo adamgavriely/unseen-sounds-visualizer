@@ -547,7 +547,9 @@
     "Explosion",
     "Gunshot, gunfire"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, none"
   },
   {
    "label": "Vehicle",
@@ -566,5 +568,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

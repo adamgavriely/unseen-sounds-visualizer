@@ -766,7 +766,9 @@
     "Bird",
     "Ska"
    ],
-   "panns_rank": 10
+   "panns_rank": 10,
+   "allm_heard": true,
+   "allm_reply": "Gunshot, horse, grunts, footsteps, and distant murmuring."
   },
   {
    "label": "Gunshot",
@@ -799,7 +801,9 @@
     "Shout",
     "Chop"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Gunshot, horse, grunts, footsteps, and distant murmuring."
   },
   {
    "label": "Glass",
@@ -823,7 +827,10 @@
     "Bird",
     "Flap"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": false,
+   "allm_reply": "Gunshot, horse, grunts, footsteps, and distant murmuring."
   }
- ]
+ ],
+ "allm_other": ""
 }

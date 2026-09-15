@@ -606,7 +606,9 @@
     "Light engine (high frequency)",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "I heard A) fireworks and C) vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -648,7 +650,9 @@
     "Motor vehicle (road)",
     "Vibration"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "I heard A) fireworks and C) vehicle. Other: none."
   },
   {
    "label": "Fireworks",
@@ -672,7 +676,10 @@
     "Music of Latin America",
     "Angry music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A) fireworks and C) vehicle. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

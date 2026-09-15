@@ -598,7 +598,10 @@
     "Dog",
     "Domestic animals, pets"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Siren, dog barking, howling. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

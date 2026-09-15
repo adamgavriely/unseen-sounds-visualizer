@@ -758,7 +758,10 @@
     "Roaring cats (lions, tigers)",
     "Rock music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Vehicle, police car siren"
   }
- ]
+ ],
+ "allm_other": ""
 }

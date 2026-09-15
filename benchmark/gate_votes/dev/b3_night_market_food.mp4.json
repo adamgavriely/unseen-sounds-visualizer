@@ -1217,7 +1217,9 @@
     "Splinter",
     "Hubbub, speech noise, speech babble"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "Rain, water, motor vehicle (road), bus, brief tone, squeal"
   },
   {
    "label": "Water",
@@ -1259,7 +1261,9 @@
     "Frying (food)",
     "Splinter"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Rain, water, motor vehicle (road), bus, brief tone, squeal"
   },
   {
    "label": "Alarm",
@@ -1295,5 +1299,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -777,7 +777,9 @@
     "Fill (with liquid)",
     "Fire"
    ],
-   "panns_rank": 10
+   "panns_rank": 10,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder, wind, water dropping"
   },
   {
    "label": "Aircraft",
@@ -803,5 +805,6 @@
    ],
    "panns_rank": 9
   }
- ]
+ ],
+ "allm_other": ""
 }

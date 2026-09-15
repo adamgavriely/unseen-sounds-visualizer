@@ -446,7 +446,9 @@
     "Sound equipment",
     "Theremin"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard an alarm and some generic impact sounds resembling a door or tap. Other than that, I don't hear anything distinct."
   },
   {
    "label": "Dog",
@@ -470,7 +472,9 @@
     "Sink (filling or washing)",
     "Cat"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "I heard an alarm and some generic impact sounds resembling a door or tap. Other than that, I don't hear anything distinct."
   },
   {
    "label": "Gears",
@@ -494,7 +498,10 @@
     "Sink (filling or washing)",
     "Drip"
    ],
-   "panns_rank": 16
+   "panns_rank": 16,
+   "allm_heard": false,
+   "allm_reply": "I heard an alarm and some generic impact sounds resembling a door or tap. Other than that, I don't hear anything distinct."
   }
- ]
+ ],
+ "allm_other": ""
 }

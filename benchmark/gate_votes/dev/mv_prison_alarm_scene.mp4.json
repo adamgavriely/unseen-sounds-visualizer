@@ -554,7 +554,9 @@
     "Theremin",
     "Siren"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, Siren, none"
   },
   {
    "label": "Alarm",
@@ -596,7 +598,10 @@
     "Middle Eastern music",
     "Singing"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "B, Siren, none"
   }
- ]
+ ],
+ "allm_other": ""
 }

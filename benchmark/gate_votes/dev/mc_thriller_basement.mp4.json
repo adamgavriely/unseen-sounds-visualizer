@@ -484,7 +484,9 @@
     "Vibration",
     "Aircraft"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, water"
   },
   {
    "label": "Rain",
@@ -535,7 +537,9 @@
     "Idling",
     "Fill (with liquid)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, water"
   },
   {
    "label": "Vehicle",
@@ -559,7 +563,10 @@
     "Scary music",
     "Idling"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "Rain, water"
   }
- ]
+ ],
+ "allm_other": ""
 }

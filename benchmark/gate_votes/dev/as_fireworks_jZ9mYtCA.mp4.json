@@ -847,7 +847,9 @@
     "Rock music",
     "Flap"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Fireworks, snicker"
   },
   {
    "label": "Snicker",
@@ -871,7 +873,9 @@
     "Percussion",
     "Singing"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Fireworks, snicker"
   },
   {
    "label": "Footsteps",
@@ -907,5 +911,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

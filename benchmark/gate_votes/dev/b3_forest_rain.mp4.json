@@ -423,7 +423,10 @@
     "Bathtub (filling or washing)",
     "Frying (food)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder, and light rain on surface."
   }
- ]
+ ],
+ "allm_other": ""
 }

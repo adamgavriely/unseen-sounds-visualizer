@@ -384,7 +384,10 @@
     "Light engine (high frequency)",
     "Medium engine (mid frequency)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "engine, accelerating - revving - vroom, motorcycle, engine idling, wind noise (microphone), speech, male speech - man speaking"
   }
- ]
+ ],
+ "allm_other": ""
 }

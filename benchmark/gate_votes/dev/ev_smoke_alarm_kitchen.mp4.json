@@ -695,7 +695,9 @@
     "Sound equipment",
     "Middle Eastern music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Alarms, cooking, mechanisms, respiratory sounds, breathing; Other: clock ticking."
   },
   {
    "label": "Cooking",
@@ -728,7 +730,9 @@
     "Speech",
     "Frying (food)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Alarms, cooking, mechanisms, respiratory sounds, breathing; Other: clock ticking."
   },
   {
    "label": "Gush",
@@ -747,5 +751,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "clock ticking."
 }

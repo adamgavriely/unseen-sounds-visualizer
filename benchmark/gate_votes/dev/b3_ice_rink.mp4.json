@@ -1035,7 +1035,9 @@
     "Light engine (high frequency)",
     "Vibration"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Bike, people talking, footsteps"
   },
   {
    "label": "Train",
@@ -1090,5 +1092,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -676,7 +676,9 @@
     "Thunderstorm",
     "Whale vocalization"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder"
   },
   {
    "label": "Rain",
@@ -727,7 +729,9 @@
     "Vibration",
     "Gears"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder"
   },
   {
    "label": "Scissors",
@@ -746,5 +750,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

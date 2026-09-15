@@ -761,7 +761,9 @@
     "Rail transport",
     "Whale vocalization"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Horse, vehicle, none."
   },
   {
    "label": "Horse",
@@ -785,7 +787,9 @@
     "Rock music",
     "Pour"
    ],
-   "panns_rank": 21
+   "panns_rank": 21,
+   "allm_heard": true,
+   "allm_reply": "Horse, vehicle, none."
   },
   {
    "label": "Glass",
@@ -809,7 +813,9 @@
     "Splinter",
     "Pour"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Horse, vehicle, none."
   },
   {
    "label": "Bird",
@@ -833,7 +839,9 @@
     "Gears",
     "Fill (with liquid)"
    ],
-   "panns_rank": 36
+   "panns_rank": 36,
+   "allm_heard": false,
+   "allm_reply": "Horse, vehicle, none."
   },
   {
    "label": "Air brake",
@@ -869,5 +877,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

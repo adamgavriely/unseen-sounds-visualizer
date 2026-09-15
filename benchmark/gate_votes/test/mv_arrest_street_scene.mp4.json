@@ -367,7 +367,10 @@
     "Motor vehicle (road)",
     "Bird"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bells, glass chinking and clinking, some generic impacts, a clock ticking. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

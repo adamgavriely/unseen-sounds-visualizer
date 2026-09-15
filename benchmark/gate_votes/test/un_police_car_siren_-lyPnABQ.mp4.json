@@ -394,7 +394,9 @@
     "Roaring cats (lions, tigers)",
     "Shout"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, fire engine - fire truck (siren), clock ticking, background noise, some generic impact sounds."
   },
   {
    "label": "Vehicle",
@@ -457,5 +459,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

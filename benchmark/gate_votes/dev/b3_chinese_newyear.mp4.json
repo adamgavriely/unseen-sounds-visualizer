@@ -877,7 +877,9 @@
     "Music of Latin America",
     "Bagpipes"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, A, none, some crowd noise"
   },
   {
    "label": "Tap",
@@ -901,7 +903,9 @@
     "Music of Africa",
     "Typing"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "B, A, none, some crowd noise"
   },
   {
    "label": "Gunshot",
@@ -937,5 +941,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

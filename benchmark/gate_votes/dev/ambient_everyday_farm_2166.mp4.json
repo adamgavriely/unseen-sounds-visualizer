@@ -475,7 +475,9 @@
     "Livestock, farm animals, working animals",
     "Pig"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Birds chirping, goat bleating, footsteps, wind blowing, insects buzzing"
   },
   {
    "label": "Sheep",
@@ -535,5 +537,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

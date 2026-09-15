@@ -813,7 +813,9 @@
     "Light engine (high frequency)",
     "Engine"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": true,
+   "allm_reply": "I heard A) lawn mower and B) vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -882,7 +884,9 @@
     "Light engine (high frequency)",
     "Engine"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A) lawn mower and B) vehicle. Other: none."
   },
   {
    "label": "Jackhammer",
@@ -919,5 +923,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

@@ -806,7 +806,9 @@
     "Cat",
     "Cupboard open or close"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Insect, fly, housefly; none."
   },
   {
    "label": "Mosquito",
@@ -830,7 +832,9 @@
     "Roaring cats (lions, tigers)",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 29
+   "panns_rank": 29,
+   "allm_heard": false,
+   "allm_reply": "Insect, fly, housefly; none."
   },
   {
    "label": "Insect",
@@ -854,7 +858,9 @@
     "Roaring cats (lions, tigers)",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 29
+   "panns_rank": 29,
+   "allm_heard": true,
+   "allm_reply": "Insect, fly, housefly; none."
   },
   {
    "label": "Fly, housefly",
@@ -878,7 +884,10 @@
     "Roaring cats (lions, tigers)",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 29
+   "panns_rank": 29,
+   "allm_heard": true,
+   "allm_reply": "Insect, fly, housefly; none."
   }
- ]
+ ],
+ "allm_other": ""
 }

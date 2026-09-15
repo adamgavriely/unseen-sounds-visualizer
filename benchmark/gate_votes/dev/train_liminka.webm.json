@@ -525,7 +525,9 @@
     "Heavy engine (low frequency)",
     "Hair dryer"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) train and B) vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -576,7 +578,10 @@
     "Bagpipes",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) train and B) vehicle. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

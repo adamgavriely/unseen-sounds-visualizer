@@ -776,7 +776,9 @@
     "Rock music",
     "Fire"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "Explosion, music, sound effects"
   },
   {
    "label": "Glass",
@@ -846,5 +848,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

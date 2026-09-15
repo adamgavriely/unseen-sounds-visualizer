@@ -782,7 +782,9 @@
     "Theremin",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "C, D, C, D, A, B, C, D"
   },
   {
    "label": "Shofar",
@@ -815,7 +817,9 @@
     "Theremin",
     "Printer"
    ],
-   "panns_rank": 8
+   "panns_rank": 8,
+   "allm_heard": true,
+   "allm_reply": "C, D, C, D, A, B, C, D"
   },
   {
    "label": "Vehicle",
@@ -839,7 +843,9 @@
     "Motor vehicle (road)",
     "Pump (liquid)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "C, D, C, D, A, B, C, D"
   },
   {
    "label": "Door",
@@ -863,7 +869,9 @@
     "Theremin",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 33
+   "panns_rank": 33,
+   "allm_heard": true,
+   "allm_reply": "C, D, C, D, A, B, C, D"
   },
   {
    "label": "Roaring cats (lions, tigers)",
@@ -882,5 +890,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

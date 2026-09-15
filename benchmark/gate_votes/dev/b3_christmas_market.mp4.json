@@ -877,7 +877,9 @@
     "Foghorn",
     "Keyboard (musical)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Music, None"
   },
   {
    "label": "Whale vocalization",
@@ -901,7 +903,10 @@
     "Whale vocalization",
     "Background noise"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z, Music, None"
   }
- ]
+ ],
+ "allm_other": ""
 }

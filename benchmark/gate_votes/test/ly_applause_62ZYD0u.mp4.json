@@ -500,7 +500,9 @@
     "Laughter",
     "Fowl"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Crowd, laughter, music. Other: None."
   },
   {
    "label": "Chuckle, chortle",
@@ -536,5 +538,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "None."
 }

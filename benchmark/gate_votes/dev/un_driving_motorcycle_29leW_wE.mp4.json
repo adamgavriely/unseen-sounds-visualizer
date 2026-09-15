@@ -205,7 +205,9 @@
     "Motor vehicle (road)",
     "Fire alarm"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, clock ticking, vehicle sounds"
   },
   {
    "label": "Vehicle",
@@ -249,5 +251,6 @@
    ],
    "panns_rank": 1
   }
- ]
+ ],
+ "allm_other": ""
 }

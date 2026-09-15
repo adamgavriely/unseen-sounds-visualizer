@@ -892,7 +892,9 @@
     "Aircraft",
     "Background noise"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "I heard engine, medium engine (mid frequency), and clock, clicking, tick. Other: none."
   },
   {
    "label": "Gunshot",
@@ -920,5 +922,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

@@ -694,7 +694,9 @@
     "Splinter",
     "Rock music"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Explosion, none."
   },
   {
    "label": "Burst, pop",
@@ -774,5 +776,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

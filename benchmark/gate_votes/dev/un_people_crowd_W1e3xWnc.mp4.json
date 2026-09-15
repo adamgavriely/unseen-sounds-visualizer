@@ -947,7 +947,9 @@
     "Rock music",
     "Music of Asia"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A) vehicle and B) whale vocalization. Other: none."
   },
   {
    "label": "Whale vocalization",
@@ -971,7 +973,9 @@
     "Shout",
     "Keyboard (musical)"
    ],
-   "panns_rank": 72
+   "panns_rank": 72,
+   "allm_heard": true,
+   "allm_reply": "I heard A) vehicle and B) whale vocalization. Other: none."
   },
   {
    "label": "Roaring cats (lions, tigers)",
@@ -1007,5 +1011,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

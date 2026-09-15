@@ -566,7 +566,9 @@
     "Explosion",
     "Sonar"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Boat, wind, water."
   },
   {
    "label": "Water",
@@ -654,5 +656,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

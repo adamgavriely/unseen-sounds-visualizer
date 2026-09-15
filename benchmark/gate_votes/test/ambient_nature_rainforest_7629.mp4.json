@@ -466,7 +466,9 @@
     "Bowed string instrument",
     "Scary music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bird, cricket. Other: none."
   },
   {
    "label": "Cricket",
@@ -499,7 +501,9 @@
     "Bowed string instrument",
     "Scary music"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "Bird, cricket. Other: none."
   },
   {
    "label": "Insect",
@@ -518,5 +522,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

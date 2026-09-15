@@ -466,7 +466,9 @@
     "Sound equipment",
     "Sink (filling or washing)"
    ],
-   "panns_rank": 14
+   "panns_rank": 14,
+   "allm_heard": false,
+   "allm_reply": "None, Other: wind, microphone wind noise"
   },
   {
    "label": "Vehicle",
@@ -503,5 +505,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "wind, microphone wind noise"
 }

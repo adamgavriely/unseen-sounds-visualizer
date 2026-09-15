@@ -1,0 +1,274 @@
+{
+ "phantoms_removed": [
+  25,
+  77
+ ],
+ "unseen_lost": [
+  2,
+  19
+ ],
+ "passed": false,
+ "test_flips": [
+  {
+   "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Dog",
+    "Gears"
+   ],
+   "remaining": [
+    "Alarm"
+   ]
+  },
+  {
+   "clip": "b3_barbershop.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Hum"
+   ],
+   "remaining": [
+    "Mains hum",
+    "Electric shaver, electric razor",
+    "Buzz"
+   ]
+  },
+  {
+   "clip": "b3_cow_farm.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Cooking"
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "b3_crossing_bells.mp4",
+   "tag": "seen_ambient",
+   "removed": [
+    "Cat",
+    "Spray"
+   ],
+   "remaining": [
+    "Train",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "b3_favela_rio.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Train"
+   ],
+   "remaining": [
+    "Bird",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "b3_glacier_hike.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Arrow",
+    "Boat",
+    "Bird",
+    "Sheep",
+    "Roaring cats (lions, tigers)"
+   ],
+   "remaining": [
+    "Horse",
+    "Scissors",
+    "Chop",
+    "Rowboat, canoe, kayak",
+    "Skateboard",
+    "Scrape",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "b3_jungle_hike.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Owl"
+   ],
+   "remaining": [
+    "Bird",
+    "Buzz",
+    "Sheep",
+    "Hoot",
+    "Insect"
+   ]
+  },
+  {
+   "clip": "b3_pet_shop.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Owl"
+   ],
+   "remaining": [
+    "Bird"
+   ]
+  },
+  {
+   "clip": "ev_car_alarm_street.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Cat"
+   ],
+   "remaining": [
+    "Alarm",
+    "Bird"
+   ]
+  },
+  {
+   "clip": "london_protest_01.mp4",
+   "tag": "seen_ambient",
+   "removed": [
+    "Vehicle"
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+   "tag": "mixed",
+   "removed": [
+    "Vehicle"
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "mc_fight_bar_scene.mp4",
+   "tag": "mixed",
+   "removed": [
+    "Glass",
+    "Cat",
+    "Horse",
+    "Caterwaul"
+   ],
+   "remaining": [
+    "Thump, thud"
+   ]
+  },
+  {
+   "clip": "movie_blueplanet_115.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Door"
+   ],
+   "remaining": [
+    "Quack",
+    "Duck",
+    "Bird",
+    "Honk"
+   ]
+  },
+  {
+   "clip": "mv_protest_scene_movie.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Baby cry, infant cry"
+   ],
+   "remaining": [
+    "Glass",
+    "Siren"
+   ]
+  },
+  {
+   "clip": "oc_pov_dry_leaves.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Chewing, mastication"
+   ],
+   "remaining": [
+    "Footsteps"
+   ]
+  },
+  {
+   "clip": "un_airplane_flyby_1FOKvagR.mp4",
+   "tag": "seen_ambient",
+   "removed": [
+    "Boat"
+   ],
+   "remaining": [
+    "Helicopter",
+    "Aircraft",
+    "Vehicle"
+   ]
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Horse"
+   ],
+   "remaining": [
+    "Vehicle",
+    "Fireworks"
+   ]
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Computer keyboard"
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "un_people_crowd_1YGJDa3a.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Train",
+    "Fireworks",
+    "Vehicle",
+    "Explosion",
+    "Gunshot"
+   ],
+   "remaining": [
+    "Thump, thud"
+   ]
+  },
+  {
+   "clip": "un_raining_71I9l62a.mp4",
+   "tag": "no_ambient",
+   "removed": [
+    "Train"
+   ],
+   "remaining": [
+    "Vehicle",
+    "Aircraft"
+   ]
+  },
+  {
+   "clip": "un_train_horning_KKFdi5WQ.mp4",
+   "tag": "mixed",
+   "removed": [
+    "Owl",
+    "Aircraft"
+   ],
+   "remaining": [
+    "Vehicle",
+    "Bird",
+    "Crow"
+   ]
+  },
+  {
+   "clip": "voa_worldseries.mp4",
+   "tag": "unseen_ambient",
+   "removed": [
+    "Basketball bounce"
+   ],
+   "remaining": []
+  },
+  {
+   "clip": "wc_korean_thriller.mp4",
+   "tag": "mixed",
+   "removed": [
+    "Glass",
+    "Bird"
+   ],
+   "remaining": [
+    "Vehicle",
+    "Horse"
+   ]
+  }
+ ]
+}

@@ -956,7 +956,9 @@
     "Theremin",
     "Eruption"
    ],
-   "panns_rank": 7
+   "panns_rank": 7,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear: A) aircraft, C) helicopter, D) vehicle. Other: none."
   },
   {
    "label": "Aircraft",
@@ -998,7 +1000,9 @@
     "Theremin",
     "Bagpipes"
    ],
-   "panns_rank": 8
+   "panns_rank": 8,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear: A) aircraft, C) helicopter, D) vehicle. Other: none."
   },
   {
    "label": "Boat",
@@ -1031,7 +1035,9 @@
     "Radio",
     "Wind noise (microphone)"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear: A) aircraft, C) helicopter, D) vehicle. Other: none."
   },
   {
    "label": "Vehicle",
@@ -1082,7 +1088,9 @@
     "Theremin",
     "Eruption"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear: A) aircraft, C) helicopter, D) vehicle. Other: none."
   },
   {
    "label": "Cat",
@@ -1135,5 +1143,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

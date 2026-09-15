@@ -515,7 +515,9 @@
     "Music of Asia",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B,C"
   },
   {
    "label": "Vehicle",
@@ -566,7 +568,9 @@
     "Music of Asia",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B,C"
   },
   {
    "label": "Gunshot",
@@ -617,7 +621,10 @@
     "Rock music",
     "Electronic music"
    ],
-   "panns_rank": 12
+   "panns_rank": 12,
+   "allm_heard": false,
+   "allm_reply": "B,C"
   }
- ]
+ ],
+ "allm_other": ""
 }

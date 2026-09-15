@@ -125,7 +125,10 @@
     "Door",
     "Plucked string instrument"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bells, clock ticking"
   }
- ]
+ ],
+ "allm_other": ""
 }

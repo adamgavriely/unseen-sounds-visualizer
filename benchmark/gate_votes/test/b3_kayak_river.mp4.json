@@ -753,7 +753,9 @@
     "Bagpipes",
     "Boat, Water vehicle"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "I heard A, B, C, D, E, and F. Other: none."
   },
   {
    "label": "Goose",
@@ -777,7 +779,9 @@
     "Shout",
     "Gurgling"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A, B, C, D, E, and F. Other: none."
   },
   {
    "label": "Boat",
@@ -861,7 +865,9 @@
     "Shout",
     "Gurgling"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A, B, C, D, E, and F. Other: none."
   },
   {
    "label": "Frog",
@@ -930,7 +936,9 @@
     "Pour",
     "Didgeridoo"
    ],
-   "panns_rank": 6
+   "panns_rank": 6,
+   "allm_heard": true,
+   "allm_reply": "I heard A, B, C, D, E, and F. Other: none."
   },
   {
    "label": "Bird",
@@ -954,7 +962,9 @@
     "Shout",
     "Gurgling"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A, B, C, D, E, and F. Other: none."
   },
   {
    "label": "Vehicle",
@@ -1014,7 +1024,10 @@
     "Pump (liquid)",
     "Gargling"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "I heard A, B, C, D, E, and F. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

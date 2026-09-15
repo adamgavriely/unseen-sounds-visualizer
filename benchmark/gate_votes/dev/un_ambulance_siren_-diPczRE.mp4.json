@@ -586,7 +586,9 @@
     "Motor vehicle (road)",
     "Theremin"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, cars passing by, people talking, footsteps, some generic impacts, and a bus braking."
   },
   {
    "label": "Train",
@@ -678,5 +680,6 @@
    ],
    "panns_rank": 5
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -385,7 +385,10 @@
     "Speech",
     "Hubbub, speech noise, speech babble"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "None, Other: crowd cheering"
   }
- ]
+ ],
+ "allm_other": "crowd cheering"
 }

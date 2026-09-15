@@ -825,7 +825,9 @@
     "Heart murmur",
     "Throbbing"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "Bird none"
   },
   {
    "label": "Crow",
@@ -895,5 +897,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

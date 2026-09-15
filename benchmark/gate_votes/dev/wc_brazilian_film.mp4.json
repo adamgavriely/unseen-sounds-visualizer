@@ -815,7 +815,9 @@
     "Mechanisms",
     "Bird"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Bells, glass, music, roaring, sound effects"
   },
   {
    "label": "Whoosh, swoosh, swish",
@@ -892,5 +894,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -424,7 +424,9 @@
     "Electronic music",
     "Roaring cats (lions, tigers)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gasp, gunshot, sigh; none."
   },
   {
    "label": "Sigh",
@@ -448,7 +450,9 @@
     "Hubbub, speech noise, speech babble",
     "Bell"
    ],
-   "panns_rank": 14
+   "panns_rank": 14,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gasp, gunshot, sigh; none."
   },
   {
    "label": "Explosion",
@@ -472,7 +476,9 @@
     "Typing",
     "Splinter"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gasp, gunshot, sigh; none."
   },
   {
    "label": "Gasp",
@@ -496,7 +502,10 @@
     "Roaring cats (lions, tigers)",
     "Zipper (clothing)"
    ],
-   "panns_rank": 22
+   "panns_rank": 22,
+   "allm_heard": true,
+   "allm_reply": "Explosion, gasp, gunshot, sigh; none."
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -417,7 +417,9 @@
     "Singing",
     "Percussion"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Bike, horn, people talking, footsteps, surface contact."
   },
   {
    "label": "Door",
@@ -436,5 +438,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

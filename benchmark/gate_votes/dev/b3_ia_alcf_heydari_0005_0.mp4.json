@@ -595,7 +595,9 @@
     "Boat, Water vehicle",
     "Singing"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Footsteps, people talking, a dog barking."
   },
   {
    "label": "Basketball bounce",
@@ -614,5 +616,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

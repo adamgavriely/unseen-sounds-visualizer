@@ -696,7 +696,9 @@
     "Music of Asia",
     "Rock music"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "C, gunshot, none."
   },
   {
    "label": "Cooking",
@@ -720,7 +722,9 @@
     "Reggae",
     "Hubbub, speech noise, speech babble"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "C, gunshot, none."
   },
   {
    "label": "Glass",
@@ -744,7 +748,9 @@
     "Motor vehicle (road)",
     "Fill (with liquid)"
    ],
-   "panns_rank": 17
+   "panns_rank": 17,
+   "allm_heard": false,
+   "allm_reply": "C, gunshot, none."
   },
   {
    "label": "Maraca",
@@ -780,5 +786,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

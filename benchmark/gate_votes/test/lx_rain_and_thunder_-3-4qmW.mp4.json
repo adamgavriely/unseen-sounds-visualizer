@@ -466,7 +466,9 @@
     "Sink (filling or washing)",
     "Background noise"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder"
   },
   {
    "label": "Thunder",
@@ -499,7 +501,9 @@
     "Thunder",
     "Eruption"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder"
   },
   {
    "label": "Vehicle",
@@ -518,5 +522,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

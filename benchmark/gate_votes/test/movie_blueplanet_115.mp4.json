@@ -497,7 +497,9 @@
     "Music of Asia",
     "Vocal music"
    ],
-   "panns_rank": 24
+   "panns_rank": 24,
+   "allm_heard": true,
+   "allm_reply": "I heard A, C, D, and E: bird, duck, honk, quack. Other: none."
   },
   {
    "label": "Duck",
@@ -521,7 +523,9 @@
     "Whale vocalization",
     "Music of Asia"
    ],
-   "panns_rank": 24
+   "panns_rank": 24,
+   "allm_heard": true,
+   "allm_reply": "I heard A, C, D, and E: bird, duck, honk, quack. Other: none."
   },
   {
    "label": "Door",
@@ -545,7 +549,9 @@
     "Music of Asia",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 39
+   "panns_rank": 39,
+   "allm_heard": false,
+   "allm_reply": "I heard A, C, D, and E: bird, duck, honk, quack. Other: none."
   },
   {
    "label": "Bird",
@@ -569,7 +575,9 @@
     "Classical music",
     "Music of Asia"
    ],
-   "panns_rank": 23
+   "panns_rank": 23,
+   "allm_heard": true,
+   "allm_reply": "I heard A, C, D, and E: bird, duck, honk, quack. Other: none."
   },
   {
    "label": "Honk",
@@ -593,7 +601,9 @@
     "Music of Asia",
     "Accelerating, revving, vroom"
    ],
-   "panns_rank": 23
+   "panns_rank": 23,
+   "allm_heard": true,
+   "allm_reply": "I heard A, C, D, and E: bird, duck, honk, quack. Other: none."
   },
   {
    "label": "Goose",
@@ -646,5 +656,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

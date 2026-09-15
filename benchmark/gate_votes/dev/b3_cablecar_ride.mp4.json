@@ -457,7 +457,9 @@
     "Vibration",
     "Insect"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Distant traffic, animal noises, creaky door, some footsteps."
   },
   {
    "label": "Vehicle",
@@ -521,5 +523,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

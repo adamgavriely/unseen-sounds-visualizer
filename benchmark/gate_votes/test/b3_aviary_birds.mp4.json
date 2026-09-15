@@ -513,7 +513,9 @@
     "Country",
     "Insect"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Birds chirping, some loud and some soft, also an owl hooting in the distance."
   },
   {
    "label": "Insect",
@@ -549,5 +551,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

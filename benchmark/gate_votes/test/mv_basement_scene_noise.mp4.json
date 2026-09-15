@@ -1077,7 +1077,9 @@
     "Speech",
     "Insect"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Cattle, siren, clock ticking, breathing, surface contact."
   },
   {
    "label": "Siren",
@@ -1110,7 +1112,9 @@
     "Hubbub, speech noise, speech babble",
     "Theremin"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Cattle, siren, clock ticking, breathing, surface contact."
   },
   {
    "label": "Mosquito",
@@ -1155,5 +1159,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

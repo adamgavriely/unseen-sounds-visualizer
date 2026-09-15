@@ -447,7 +447,10 @@
     "Hubbub, speech noise, speech babble",
     "Livestock, farm animals, working animals"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Horse, door, generic impact sounds, tap, clock ticking, background noise, surface contact, scrape."
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -1393,7 +1393,9 @@
     "Frog",
     "Fowl"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"
   },
   {
    "label": "Vehicle",
@@ -1426,7 +1428,9 @@
     "Sink (filling or washing)",
     "Fill (with liquid)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, Y, Z"
   },
   {
    "label": "Sheep",
@@ -1445,5 +1449,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

@@ -420,7 +420,9 @@
     "Horse",
     "Heavy engine (low frequency)"
    ],
-   "panns_rank": 8
+   "panns_rank": 8,
+   "allm_heard": true,
+   "allm_reply": "Gunshot, fireworks, firecracker, some ringing, and wind noise."
   },
   {
    "label": "Vehicle",
@@ -439,5 +441,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

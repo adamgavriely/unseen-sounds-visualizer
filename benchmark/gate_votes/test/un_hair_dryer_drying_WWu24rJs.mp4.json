@@ -567,7 +567,9 @@
     "Speech",
     "Music of Latin America"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "Typing, clock ticking, breathing; Other: none."
   },
   {
    "label": "Typing",
@@ -603,5 +605,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

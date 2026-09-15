@@ -687,7 +687,9 @@
     "Chop",
     "Pulleys"
    ],
-   "panns_rank": 49
+   "panns_rank": 49,
+   "allm_heard": true,
+   "allm_reply": "B, tambourine, glass shattering, mechanisms."
   },
   {
    "label": "Cooking",
@@ -711,7 +713,9 @@
     "Music of Africa",
     "Singing"
    ],
-   "panns_rank": 5
+   "panns_rank": 5,
+   "allm_heard": false,
+   "allm_reply": "B, tambourine, glass shattering, mechanisms."
   },
   {
    "label": "Chink, clink",
@@ -789,5 +793,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

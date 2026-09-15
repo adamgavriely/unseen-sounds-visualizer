@@ -626,7 +626,9 @@
     "Rock music",
     "Gears"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, none, Other: explosion sound effect"
   },
   {
    "label": "Crack",
@@ -650,7 +652,9 @@
     "Singing",
     "Music of Latin America"
    ],
-   "panns_rank": 7
+   "panns_rank": 7,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, none, Other: explosion sound effect"
   },
   {
    "label": "Thunder",
@@ -674,7 +678,9 @@
     "Eruption",
     "Flap"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "A, B, C, none, Other: explosion sound effect"
   },
   {
    "label": "Glass",
@@ -744,5 +750,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "explosion sound effect"
 }

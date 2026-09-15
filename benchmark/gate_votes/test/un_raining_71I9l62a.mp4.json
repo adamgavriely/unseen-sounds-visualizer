@@ -686,7 +686,9 @@
     "Accelerating, revving, vroom",
     "Radio"
    ],
-   "panns_rank": 13
+   "panns_rank": 13,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear aircraft and vehicle sounds. Other: none."
   },
   {
    "label": "Vehicle",
@@ -728,7 +730,9 @@
     "Whale vocalization",
     "Fowl"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear aircraft and vehicle sounds. Other: none."
   },
   {
    "label": "Aircraft",
@@ -752,7 +756,10 @@
     "Didgeridoo",
     "Hip hop music"
    ],
-   "panns_rank": 7
+   "panns_rank": 7,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear aircraft and vehicle sounds. Other: none."
   }
- ]
+ ],
+ "allm_other": "none."
 }

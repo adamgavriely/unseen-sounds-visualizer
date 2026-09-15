@@ -826,7 +826,9 @@
     "Theremin",
     "Percussion"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Siren, vehicle, explosion, and people shouting."
   },
   {
    "label": "Vehicle",
@@ -859,7 +861,9 @@
     "Percussion",
     "Singing"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Siren, vehicle, explosion, and people shouting."
   },
   {
    "label": "Explosion",
@@ -878,5 +882,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

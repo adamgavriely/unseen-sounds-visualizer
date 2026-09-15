@@ -474,7 +474,10 @@
     "Shout",
     "Whale vocalization"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Birds chirping, bird cooing, rooster crowing, background noise."
   }
- ]
+ ],
+ "allm_other": ""
 }

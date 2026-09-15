@@ -415,7 +415,10 @@
     "Rail transport",
     "Wind noise (microphone)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear A) thunder and B) heavy rainfall."
   }
- ]
+ ],
+ "allm_other": ""
 }

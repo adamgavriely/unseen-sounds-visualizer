@@ -1097,7 +1097,9 @@
     "Insect",
     "Background noise"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "I heard A) air conditioning, B) microwave oven, and D) vacuum cleaner. Other: none."
   },
   {
    "label": "Microwave oven",
@@ -1121,7 +1123,9 @@
     "Background noise",
     "Microwave oven"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "I heard A) air conditioning, B) microwave oven, and D) vacuum cleaner. Other: none."
   },
   {
    "label": "Train",
@@ -1154,7 +1158,9 @@
     "Microwave oven",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "I heard A) air conditioning, B) microwave oven, and D) vacuum cleaner. Other: none."
   },
   {
    "label": "Air conditioning",
@@ -1187,7 +1193,9 @@
     "Background noise",
     "Microwave oven"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": true,
+   "allm_reply": "I heard A) air conditioning, B) microwave oven, and D) vacuum cleaner. Other: none."
   },
   {
    "label": "Vehicle",
@@ -1229,7 +1237,9 @@
     "Mechanisms",
     "Gears"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "I heard A) air conditioning, B) microwave oven, and D) vacuum cleaner. Other: none."
   },
   {
    "label": "Bird",
@@ -1248,5 +1258,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "none."
 }

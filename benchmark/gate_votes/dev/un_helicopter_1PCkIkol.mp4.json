@@ -434,7 +434,9 @@
     "Radio",
     "Vibration"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear sounds resembling those of an aircraft and a helicopter. Other than that, there are some generic impact sounds around 9.50 to 9.65 seconds."
   },
   {
    "label": "Aircraft",
@@ -485,7 +487,9 @@
     "Vibration",
     "Radio"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear sounds resembling those of an aircraft and a helicopter. Other than that, there are some generic impact sounds around 9.50 to 9.65 seconds."
   },
   {
    "label": "Helicopter",
@@ -527,7 +531,10 @@
     "Vibration",
     "Radio"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear sounds resembling those of an aircraft and a helicopter. Other than that, there are some generic impact sounds around 9.50 to 9.65 seconds."
   }
- ]
+ ],
+ "allm_other": ""
 }

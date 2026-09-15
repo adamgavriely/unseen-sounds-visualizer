@@ -856,7 +856,9 @@
     "Speech",
     "Light engine (high frequency)"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": false,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Squeal",
@@ -889,7 +891,9 @@
     "Speech",
     "Insect"
    ],
-   "panns_rank": 27
+   "panns_rank": 27,
+   "allm_heard": true,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Ratchet, pawl",
@@ -913,7 +917,9 @@
     "Speech",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 95
+   "panns_rank": 95,
+   "allm_heard": true,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Sliding door",
@@ -937,7 +943,9 @@
     "Motor vehicle (road)",
     "Rock music"
    ],
-   "panns_rank": 5
+   "panns_rank": 5,
+   "allm_heard": false,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Sewing machine",
@@ -961,7 +969,9 @@
     "Motor vehicle (road)",
     "Cash register"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": false,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Pump (liquid)",
@@ -985,7 +995,9 @@
     "Speech",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 41
+   "panns_rank": 41,
+   "allm_heard": true,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Door",
@@ -1009,7 +1021,9 @@
     "Printer",
     "Sound equipment"
    ],
-   "panns_rank": 4
+   "panns_rank": 4,
+   "allm_heard": false,
+   "allm_reply": "I heard C, D, G, and none. Other: I heard a clock ticking at intervals throughout the clip."
   },
   {
    "label": "Boiling",
@@ -1062,5 +1076,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "I heard a clock ticking at intervals throughout the clip."
 }

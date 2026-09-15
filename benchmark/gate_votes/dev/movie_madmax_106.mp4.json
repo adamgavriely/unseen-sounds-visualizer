@@ -917,7 +917,9 @@
     "Keyboard (musical)",
     "Sound equipment"
    ],
-   "panns_rank": 14
+   "panns_rank": 14,
+   "allm_heard": true,
+   "allm_reply": "B, D, vehicle, some other不清来源的冲击声"
   },
   {
    "label": "Gunshot",
@@ -950,7 +952,9 @@
     "Music of Asia",
     "Keyboard (musical)"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "B, D, vehicle, some other不清来源的冲击声"
   },
   {
    "label": "Single-lens reflex camera",
@@ -974,7 +978,9 @@
     "Sound equipment",
     "Bagpipes"
    ],
-   "panns_rank": 33
+   "panns_rank": 33,
+   "allm_heard": false,
+   "allm_reply": "B, D, vehicle, some other不清来源的冲击声"
   },
   {
    "label": "Glass",
@@ -998,7 +1004,9 @@
     "Music of Asia",
     "Keyboard (musical)"
    ],
-   "panns_rank": 9
+   "panns_rank": 9,
+   "allm_heard": false,
+   "allm_reply": "B, D, vehicle, some other不清来源的冲击声"
   },
   {
    "label": "Whoosh, swoosh, swish",
@@ -1043,5 +1051,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

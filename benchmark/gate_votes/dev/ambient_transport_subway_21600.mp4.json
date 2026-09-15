@@ -405,7 +405,9 @@
     "Heavy engine (low frequency)",
     "Sewing machine"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear C: Train and D: Vehicle. Other: Sliding door."
   },
   {
    "label": "Vehicle",
@@ -447,7 +449,9 @@
     "Rail transport",
     "Gears"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "In the audio, I can hear C: Train and D: Vehicle. Other: Sliding door."
   },
   {
    "label": "Sliding door",
@@ -471,7 +475,9 @@
     "Gears",
     "Steam"
    ],
-   "panns_rank": 23
+   "panns_rank": 23,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear C: Train and D: Vehicle. Other: Sliding door."
   },
   {
    "label": "Heart sounds, heartbeat",
@@ -495,7 +501,9 @@
     "Vibration",
     "Pulse"
    ],
-   "panns_rank": 67
+   "panns_rank": 67,
+   "allm_heard": false,
+   "allm_reply": "In the audio, I can hear C: Train and D: Vehicle. Other: Sliding door."
   },
   {
    "label": "Heart murmur",
@@ -514,5 +522,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": "Sliding door."
 }

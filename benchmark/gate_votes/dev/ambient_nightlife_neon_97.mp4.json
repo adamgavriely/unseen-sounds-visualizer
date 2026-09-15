@@ -307,7 +307,9 @@
     "Printer",
     "Clicking"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Typing, computer keyboard, clock ticking, breathing, footsteps, surface contact noises, generic impact sounds, and a door tap."
   },
   {
    "label": "Computer keyboard",
@@ -331,7 +333,10 @@
     "Printer",
     "Clicking"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "Typing, computer keyboard, clock ticking, breathing, footsteps, surface contact noises, generic impact sounds, and a door tap."
   }
- ]
+ ],
+ "allm_other": ""
 }

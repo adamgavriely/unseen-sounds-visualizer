@@ -721,7 +721,9 @@
     "Sound equipment",
     "Motor vehicle (road)"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": true,
+   "allm_reply": "Aircraft, none."
   },
   {
    "label": "Sliding door",
@@ -740,5 +742,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

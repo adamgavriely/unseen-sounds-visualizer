@@ -993,7 +993,9 @@
     "Rail transport",
     "Heavy engine (low frequency)"
    ],
-   "panns_rank": 1
+   "panns_rank": 1,
+   "allm_heard": true,
+   "allm_reply": "B, C, Train, none."
   },
   {
    "label": "Footsteps",
@@ -1035,7 +1037,9 @@
     "Flap",
     "Rail transport"
    ],
-   "panns_rank": 3
+   "panns_rank": 3,
+   "allm_heard": false,
+   "allm_reply": "B, C, Train, none."
   },
   {
    "label": "Train",
@@ -1068,7 +1072,9 @@
     "Rail transport",
     "Aircraft"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "B, C, Train, none."
   },
   {
    "label": "Vehicle",
@@ -1105,5 +1111,6 @@
     }
    ]
   }
- ]
+ ],
+ "allm_other": ""
 }

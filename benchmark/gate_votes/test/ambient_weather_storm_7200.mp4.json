@@ -125,7 +125,9 @@
     "Wind noise (microphone)",
     "Thunder"
    ],
-   "panns_rank": 2
+   "panns_rank": 2,
+   "allm_heard": true,
+   "allm_reply": "Rain, thunder, wind, and possibly some ambiguous impact sounds."
   },
   {
    "label": "Rain",
@@ -169,5 +171,6 @@
    ],
    "panns_rank": 1
   }
- ]
+ ],
+ "allm_other": ""
 }
