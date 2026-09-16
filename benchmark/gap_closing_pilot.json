@@ -1,0 +1,1284 @@
+{
+ "when": "2026-09-15T23:20",
+ "model": "Qwen/Qwen2.5-Omni-7B",
+ "clips": 60,
+ "n_ambient": 40,
+ "n_none": 20,
+ "auroc_ambient_vs_none": 0.52875,
+ "median_gap_ambient": 0.1922115907073021,
+ "median_gap_none": 0.20475709438323975,
+ "noise_p90": 0.39537711404263975,
+ "median_noise": 0.1469140723347664,
+ "auroc_unseen_vs_rest_(info_only)": 0.475,
+ "per_question": {
+  "what_happening": {
+   "gap_ambient_median": 0.13362568616867065,
+   "gap_none_median": 0.18886107206344604,
+   "noise_median": 0.2169266939163208
+  },
+  "danger": {
+   "gap_ambient_median": 8.940696716308594e-08,
+   "gap_none_median": -1.1920928955078125e-07,
+   "noise_median": -1.1920928955078125e-07
+  },
+  "mood": {
+   "gap_ambient_median": 0.11181622743606567,
+   "gap_none_median": 0.14016297459602356,
+   "noise_median": 0.08997416496276855
+  },
+  "out_of_view": {
+   "gap_ambient_median": 0.39749467372894287,
+   "gap_none_median": 0.38323545455932617,
+   "noise_median": 0.34153062105178833
+  }
+ },
+ "siren_alarm_clips": [
+  {
+   "clip": "as_alarm_71Xl_uAS.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.33984053134918213,
+   "noise": 0.07368683815002441,
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_car_alarm_0Hz4R_m0.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.32392431795597076,
+   "noise": 0.119379922747612,
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_fire_engine_fire_truck_4arad6my.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.3129131719470024,
+   "noise": 0.2617787718772888,
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "Yes, a fire truck is responding to an emergency, which suggests there is a fire or other dangerous situation."
+  },
+  {
+   "clip": "as_fire_engine_fire_truck_ZANp2W2q.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.3194168210029602,
+   "noise": 0.3511613607406616,
+   "danger_sound": "Yes, there is an emergency situation. The police car is likely responding to an incident.",
+   "danger_mute": "Yes, there is an emergency situation involving the fire truck with flashing lights."
+  },
+  {
+   "clip": "ev_smoke_alarm_kitchen.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.42077791690826416,
+   "noise": 0.0599750280380249,
+   "danger_sound": "Yes, there is a smoke detector going off, indicating a potential fire.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  }
+ ],
+ "bar": {
+  "auroc_ambient_vs_none": 0.75,
+  "noise_percentile": 90
+ },
+ "passed": false,
+ "rows": [
+  {
+   "clip": "ambient_citywalk_mumbai_2737.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.18322598934173584,
+   "noise": 0.009066671133041382,
+   "gap_q": {
+    "what_happening": -1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": -1.1920928955078125e-07,
+    "out_of_view": 0.732904314994812
+   },
+   "noise_q": {
+    "what_happening": 0.03626716136932373,
+    "danger": -1.1920928955078125e-07,
+    "mood": -1.1920928955078125e-07,
+    "out_of_view": -2.384185791015625e-07
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_citywalk_mumbai_782.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.10002125799655914,
+   "noise": 0.021424338221549988,
+   "gap_q": {
+    "what_happening": 0.08173787593841553,
+    "danger": 0.05009186267852783,
+    "mood": 0.04625815153121948,
+    "out_of_view": 0.22199714183807373
+   },
+   "noise_q": {
+    "what_happening": 0.03008437156677246,
+    "danger": 5.960464477539063e-08,
+    "mood": 0.055613040924072266,
+    "out_of_view": -1.1920928955078125e-07
+   },
+   "danger_sound": "No, there is no indication of danger or urgency in the scene.",
+   "danger_mute": "No, there is no apparent danger or urgency in the scene."
+  },
+  {
+   "clip": "ambient_citywalk_nyc_750.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.18962348997592926,
+   "noise": 0.12836258113384247,
+   "gap_q": {
+    "what_happening": 0.49012577533721924,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.11320436000823975,
+    "out_of_view": 0.1551639437675476
+   },
+   "noise_q": {
+    "what_happening": 0.2799922823905945,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.08314979076385498,
+    "out_of_view": 0.15030837059020996
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_citywalk_tokyo_5420.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.16089659929275513,
+   "noise": 0.11556051671504974,
+   "gap_q": {
+    "what_happening": 0.3208577632904053,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.19774973392486572,
+    "out_of_view": 0.12497901916503906
+   },
+   "noise_q": {
+    "what_happening": 0.21034228801727295,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.09883993864059448,
+    "out_of_view": 0.1530599594116211
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_everyday_farm_2166.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.17007513344287872,
+   "noise": -1.043081283569336e-07,
+   "gap_q": {
+    "what_happening": 0.27364492416381836,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.06085848808288574,
+    "out_of_view": 0.34579724073410034
+   },
+   "noise_q": {
+    "what_happening": -1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 5.960464477539063e-08,
+    "out_of_view": -2.384185791015625e-07
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_field_stormchaser_312.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.14488355815410614,
+   "noise": 0.3402964770793915,
+   "gap_q": {
+    "what_happening": 0.004378676414489746,
+    "danger": 0.0018755793571472168,
+    "mood": 0.10174167156219482,
+    "out_of_view": 0.4715383052825928
+   },
+   "noise_q": {
+    "what_happening": 0.40541452169418335,
+    "danger": 0.22139263153076172,
+    "mood": 0.22360730171203613,
+    "out_of_view": 0.5107714533805847
+   },
+   "danger_sound": "Yes, a tornado is moving across a green field, which is dangerous",
+   "danger_mute": "Yes, a tornado is moving across a green field, which is dangerous."
+  },
+  {
+   "clip": "ambient_market_bangkok_1237.mp4",
+   "tag": "no_ambient",
+   "gap": 0.20324604213237762,
+   "noise": 0.18689659237861633,
+   "gap_q": {
+    "what_happening": 0.1635744571685791,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.17785489559173584,
+    "out_of_view": 0.4715549349784851
+   },
+   "noise_q": {
+    "what_happening": 0.1635744571685791,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.17785489559173584,
+    "out_of_view": 0.40615713596343994
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_market_bangkok_4332.mp4",
+   "tag": "no_ambient",
+   "gap": 0.20626814663410187,
+   "noise": -2.9802322387695312e-08,
+   "gap_q": {
+    "what_happening": 0.13814496994018555,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.08581715822219849,
+    "out_of_view": 0.601110577583313
+   },
+   "noise_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.0
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_nature_forest_1441.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.20692463219165802,
+   "noise": 0.036509111523628235,
+   "gap_q": {
+    "what_happening": 0.0995287299156189,
+    "danger": 0.23565328121185303,
+    "mood": 0.10814523696899414,
+    "out_of_view": 0.384371280670166
+   },
+   "noise_q": {
+    "what_happening": 5.960464477539063e-08,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.14603650569915771
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening. The scene is calm and undisturbed."
+  },
+  {
+   "clip": "ambient_nature_forest_3244.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.2623734399676323,
+   "noise": 0.11612145602703094,
+   "gap_q": {
+    "what_happening": 0.0995287299156189,
+    "danger": 0.23565328121185303,
+    "mood": 0.10814523696899414,
+    "out_of_view": 0.6061665117740631
+   },
+   "noise_q": {
+    "what_happening": 5.960464477539063e-08,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.46448588371276855
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening. The scene is calm and undisturbed."
+  },
+  {
+   "clip": "ambient_nature_ocean2_3294.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.13122238218784332,
+   "noise": 0.06855064630508423,
+   "gap_q": {
+    "what_happening": 0.1220318078994751,
+    "danger": 1.7881393432617188e-07,
+    "mood": 0.0,
+    "out_of_view": 0.40285754203796387
+   },
+   "noise_q": {
+    "what_happening": 0.04625058174133301,
+    "danger": 0.06738686561584473,
+    "mood": 0.1182137131690979,
+    "out_of_view": 0.04235142469406128
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening. The scene is peaceful and tranquil.",
+   "danger_mute": "No, nothing dangerous or urgent is happening. The scene is peaceful and tranquil."
+  },
+  {
+   "clip": "ambient_nature_ocean2_6588.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.18811289966106415,
+   "noise": 0.1046338826417923,
+   "gap_q": {
+    "what_happening": 0.12757933139801025,
+    "danger": 0.06738686561584473,
+    "mood": 0.1182137131690979,
+    "out_of_view": 0.4392716884613037
+   },
+   "noise_q": {
+    "what_happening": 0.09926760196685791,
+    "danger": 0.06738686561584473,
+    "mood": 0.1182137131690979,
+    "out_of_view": 0.13366734981536865
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening. The scene is peaceful and tranquil.",
+   "danger_mute": "No, nothing dangerous or urgent is happening. The scene is peaceful and idyllic."
+  },
+  {
+   "clip": "ambient_nature_savanna_7706.mp4",
+   "tag": "no_ambient",
+   "gap": 0.09666009247303009,
+   "noise": 0.19422505795955658,
+   "gap_q": {
+    "what_happening": 0.214147686958313,
+    "danger": 0.0,
+    "mood": 5.960464477539063e-08,
+    "out_of_view": 0.1724926233291626
+   },
+   "noise_q": {
+    "what_happening": 0.24855953454971313,
+    "danger": 0.3345491886138916,
+    "mood": 5.960464477539063e-08,
+    "out_of_view": 0.1937914490699768
+   },
+   "danger_sound": "No, there is no danger or urgency in the scene.",
+   "danger_mute": "No, there is no danger or urgency in the scene."
+  },
+  {
+   "clip": "ambient_nightlife_neon_97.mp4",
+   "tag": "no_ambient",
+   "gap": -8.940696716308594e-08,
+   "noise": -8.940696716308594e-08,
+   "gap_q": {
+    "what_happening": -2.384185791015625e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.0
+   },
+   "noise_q": {
+    "what_happening": -2.384185791015625e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.0
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_temple_india_1438.mp4",
+   "tag": "no_ambient",
+   "gap": 0.1019500344991684,
+   "noise": -1.1920928955078125e-07,
+   "gap_q": {
+    "what_happening": -1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.4078003764152527
+   },
+   "noise_q": {
+    "what_happening": -1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": -2.384185791015625e-07
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_transport_subway_21600.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.42925769090652466,
+   "noise": 0.09036850929260254,
+   "gap_q": {
+    "what_happening": 0.6282866299152374,
+    "danger": 0.22343552112579346,
+    "mood": 0.5013282001018524,
+    "out_of_view": 0.36398041248321533
+   },
+   "noise_q": {
+    "what_happening": 0.013594865798950195,
+    "danger": 0.22343552112579346,
+    "mood": 0.0809856653213501,
+    "out_of_view": 0.043457984924316406
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening. The scene is calm and quiet."
+  },
+  {
+   "clip": "ambient_waterfall_hike_18078.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.21930137276649475,
+   "noise": 0.1589573174715042,
+   "gap_q": {
+    "what_happening": 0.008248865604400635,
+    "danger": 0.24199646711349487,
+    "mood": 0.1381206512451172,
+    "out_of_view": 0.4888395071029663
+   },
+   "noise_q": {
+    "what_happening": 5.960464477539063e-08,
+    "danger": 0.24199646711349487,
+    "mood": 0.00783008337020874,
+    "out_of_view": 0.38600265979766846
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening. The scene is calm and peaceful."
+  },
+  {
+   "clip": "ambient_waterfall_hike_9039.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.21972186863422394,
+   "noise": 0.09109361469745636,
+   "gap_q": {
+    "what_happening": 0.13967204093933105,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.7392155528068542
+   },
+   "noise_q": {
+    "what_happening": 0.022936582565307617,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.06085848808288574,
+    "out_of_view": 0.28057950735092163
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ambient_weather_storm_25200.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.30333155393600464,
+   "noise": 0.2135644257068634,
+   "gap_q": {
+    "what_happening": 0.12092399597167969,
+    "danger": 0.23200130462646484,
+    "mood": 0.11181622743606567,
+    "out_of_view": 0.7485846877098083
+   },
+   "noise_q": {
+    "what_happening": 0.20910435914993286,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.11181622743606567,
+    "out_of_view": 0.5333372354507446
+   },
+   "danger_sound": "No, there is no danger or urgency.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_alarm_71Xl_uAS.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.33984053134918213,
+   "noise": 0.07368683815002441,
+   "gap_q": {
+    "what_happening": 0.36182916164398193,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.2723466157913208,
+    "out_of_view": 0.7251864671707153
+   },
+   "noise_q": {
+    "what_happening": 0.2947474718093872,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.0
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_breaking_3wstXl8v.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.6885165385901928,
+   "noise": 0.2596217542886734,
+   "gap_q": {
+    "what_happening": 0.6199113130569458,
+    "danger": 0.7393535673618317,
+    "mood": 0.7627420574426651,
+    "out_of_view": 0.6320592164993286
+   },
+   "noise_q": {
+    "what_happening": 0.46686065196990967,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.32803696393966675,
+    "out_of_view": 0.24358952045440674
+   },
+   "danger_sound": "Yes, there is a risk of injury from broken glass.",
+   "danger_mute": "No, there is no indication of danger or urgency in the scene."
+  },
+  {
+   "clip": "as_car_alarm_0Hz4R_m0.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.32392431795597076,
+   "noise": 0.119379922747612,
+   "gap_q": {
+    "what_happening": 0.34002816677093506,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.1602523922920227,
+    "out_of_view": 0.7954168319702148
+   },
+   "noise_q": {
+    "what_happening": 0.31726741790771484,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.1602523922920227,
+    "out_of_view": 0.0
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_church_bell_PVGChCsr.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.2929270267486572,
+   "noise": 0.30611491203308105,
+   "gap_q": {
+    "what_happening": 0.23179376125335693,
+    "danger": 0.13849902153015137,
+    "mood": 0.3464866876602173,
+    "out_of_view": 0.4549286365509033
+   },
+   "noise_q": {
+    "what_happening": 0.32851147651672363,
+    "danger": 0.13849902153015137,
+    "mood": 0.3464866876602173,
+    "out_of_view": 0.41096246242523193
+   },
+   "danger_sound": "No, there is no immediate danger or urgency depicted in the video.",
+   "danger_mute": "No, there is no immediate danger or urgency."
+  },
+  {
+   "clip": "as_church_bell_otz4AffL.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.22635392099618912,
+   "noise": 0.10480521619319916,
+   "gap_q": {
+    "what_happening": 0.19484472274780273,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0701223611831665,
+    "out_of_view": 0.6404487192630768
+   },
+   "noise_q": {
+    "what_happening": 0.060617923736572266,
+    "danger": -1.1920928955078125e-07,
+    "mood": -1.1920928955078125e-07,
+    "out_of_view": 0.35860317945480347
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_explosion_p6lhCxNw.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.1779579222202301,
+   "noise": 0.3203398585319519,
+   "gap_q": {
+    "what_happening": 0.011113286018371582,
+    "danger": 0.3345491886138916,
+    "mood": -2.384185791015625e-07,
+    "out_of_view": 0.36616945266723633
+   },
+   "noise_q": {
+    "what_happening": 0.5579575300216675,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.14612311124801636,
+    "out_of_view": 0.5772789120674133
+   },
+   "danger_sound": "No, there is no danger or urgency in the scene.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_fire_engine_fire_truck_4arad6my.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.3129131719470024,
+   "noise": 0.2617787718772888,
+   "gap_q": {
+    "what_happening": 0.2230623960494995,
+    "danger": 0.5693755447864532,
+    "mood": 0.26009708642959595,
+    "out_of_view": 0.19911766052246094
+   },
+   "noise_q": {
+    "what_happening": 0.23623931407928467,
+    "danger": 0.2608131766319275,
+    "mood": 0.11933034658432007,
+    "out_of_view": 0.43073225021362305
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "Yes, a fire truck is responding to an emergency, which suggests there is a fire or other dangerous situation."
+  },
+  {
+   "clip": "as_fire_engine_fire_truck_ZANp2W2q.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.3194168210029602,
+   "noise": 0.3511613607406616,
+   "gap_q": {
+    "what_happening": 0.21520066261291504,
+    "danger": 0.334796667098999,
+    "mood": 0.21931326389312744,
+    "out_of_view": 0.5083566904067993
+   },
+   "noise_q": {
+    "what_happening": 0.33633846044540405,
+    "danger": 0.3089902400970459,
+    "mood": 0.4119494557380676,
+    "out_of_view": 0.3473672866821289
+   },
+   "danger_sound": "Yes, there is an emergency situation. The police car is likely responding to an incident.",
+   "danger_mute": "Yes, there is an emergency situation involving the fire truck with flashing lights."
+  },
+  {
+   "clip": "as_fireworks_jZ9mYtCA.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.09110504388809204,
+   "noise": 0.2616700679063797,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.10664474964141846,
+    "out_of_view": 0.25777554512023926
+   },
+   "noise_q": {
+    "what_happening": 0.716484785079956,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.22601079940795898,
+    "out_of_view": 0.10418480634689331
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_glass_GAGt_UEF.mp4",
+   "tag": "no_ambient",
+   "gap": 0.14692682027816772,
+   "noise": 0.10279609262943268,
+   "gap_q": {
+    "what_happening": 0.2897852063179016,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.2847158908843994,
+    "out_of_view": 0.013206303119659424
+   },
+   "noise_q": {
+    "what_happening": 0.03205525875091553,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.09679853916168213,
+    "out_of_view": 0.2823306918144226
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_glass_t6e0Rjul.mp4",
+   "tag": "no_ambient",
+   "gap": 0.1325138956308365,
+   "noise": 0.03591695427894592,
+   "gap_q": {
+    "what_happening": 0.11020493507385254,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.13803213834762573,
+    "out_of_view": 0.2818186283111572
+   },
+   "noise_q": {
+    "what_happening": -1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.14007723331451416,
+    "out_of_view": 0.003590822219848633
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "as_helicopter_mVjQigOw.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.3985384926199913,
+   "noise": 0.41654133796691895,
+   "gap_q": {
+    "what_happening": 0.45408523082733154,
+    "danger": 0.3079896569252014,
+    "mood": 0.5004887878894806,
+    "out_of_view": 0.33159029483795166
+   },
+   "noise_q": {
+    "what_happening": 0.3976999521255493,
+    "danger": 0.4146752953529358,
+    "mood": 0.4447646141052246,
+    "out_of_view": 0.40902549028396606
+   },
+   "danger_sound": "Yes, there is danger as the woman is handling a machine gun and preparing to fly with weapons.",
+   "danger_mute": "Yes, the soldier is in a dangerous situation as they are firing a machine gun from a helicopter."
+  },
+  {
+   "clip": "as_machine_gun_AiAwMWUy.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.25799771398305893,
+   "noise": 0.31597983837127686,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": 0.5293546617031097,
+    "mood": 0.2039557695388794,
+    "out_of_view": 0.2986804246902466
+   },
+   "noise_q": {
+    "what_happening": 0.08675312995910645,
+    "danger": 0.37923574447631836,
+    "mood": 0.40892136096954346,
+    "out_of_view": 0.38900911808013916
+   },
+   "danger_sound": "Yes, the person is firing a machine gun, which is dangerous and potentially harmful.",
+   "danger_mute": "No, there is no immediate danger or urgency in the scene."
+  },
+  {
+   "clip": "b3_aquarium_walk.mp4",
+   "tag": "no_ambient",
+   "gap": 0.09877027571201324,
+   "noise": 0.19719014689326286,
+   "gap_q": {
+    "what_happening": 0.044989585876464844,
+    "danger": -1.1920928955078125e-07,
+    "mood": 5.960464477539063e-08,
+    "out_of_view": 0.3500915765762329
+   },
+   "noise_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 5.960464477539063e-08,
+    "out_of_view": 0.7887606471776962
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_balloon_burner.mp4",
+   "tag": "no_ambient",
+   "gap": 0.14890031516551971,
+   "noise": 0.2150789052248001,
+   "gap_q": {
+    "what_happening": 0.14417457580566406,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0626104474067688,
+    "out_of_view": 0.38881635665893555
+   },
+   "noise_q": {
+    "what_happening": 0.500016987323761,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.08314979076385498,
+    "out_of_view": 0.277148962020874
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_cablecar_ride.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.06340372562408447,
+   "noise": 0.00830775499343872,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.20492398738861084,
+    "out_of_view": 0.0486910343170166
+   },
+   "noise_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": -1.1920928955078125e-07,
+    "out_of_view": 0.033231258392333984
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_campfire_night.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.17508883774280548,
+   "noise": 0.13455146551132202,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": 0.3345491886138916,
+    "mood": 0.17408180236816406,
+    "out_of_view": 0.19172435998916626
+   },
+   "noise_q": {
+    "what_happening": 0.0,
+    "danger": 0.0,
+    "mood": 0.0382765531539917,
+    "out_of_view": 0.4999293088912964
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, there is no danger or urgency in the scene."
+  },
+  {
+   "clip": "b3_chinese_newyear.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.1416700780391693,
+   "noise": 0.2968994230031967,
+   "gap_q": {
+    "what_happening": 0.08063971996307373,
+    "danger": 0.0,
+    "mood": -1.1920928955078125e-07,
+    "out_of_view": 0.48604071140289307
+   },
+   "noise_q": {
+    "what_happening": 0.3165878653526306,
+    "danger": 0.3345491886138916,
+    "mood": 0.0968436598777771,
+    "out_of_view": 0.43961697816848755
+   },
+   "danger_sound": "No, there is no danger or urgency in the scene.",
+   "danger_mute": "No, there is no danger or urgency in the scene."
+  },
+  {
+   "clip": "b3_christmas_market.mp4",
+   "tag": "no_ambient",
+   "gap": 0.35016629099845886,
+   "noise": 0.3122545927762985,
+   "gap_q": {
+    "what_happening": 0.3116340637207031,
+    "danger": 0.35861968994140625,
+    "mood": 0.29963743686676025,
+    "out_of_view": 0.4307739734649658
+   },
+   "noise_q": {
+    "what_happening": 0.2812485098838806,
+    "danger": 0.28593575954437256,
+    "mood": 0.14626264572143555,
+    "out_of_view": 0.5355714559555054
+   },
+   "danger_sound": "No, there is no danger or urgency in the scene. The atmosphere is calm and joyful.",
+   "danger_mute": "No, there is no indication of anything dangerous or urgent happening in the video."
+  },
+  {
+   "clip": "b3_coffee_roastery.mp4",
+   "tag": "seen_ambient",
+   "gap": 0.061287447810173035,
+   "noise": 0.012004107236862183,
+   "gap_q": {
+    "what_happening": 0.0088462233543396,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.2363036870956421
+   },
+   "noise_q": {
+    "what_happening": 0.04801654815673828,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.0
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_ia_62934flighttothesuncountryvw_0.mp4",
+   "tag": "no_ambient",
+   "gap": 0.2111809253692627,
+   "noise": 0.08518092334270477,
+   "gap_q": {
+    "what_happening": 0.09957695007324219,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.2633984684944153,
+    "out_of_view": 0.48174840211868286
+   },
+   "noise_q": {
+    "what_happening": 0.09957695007324219,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.011957049369812012,
+    "out_of_view": 0.22918981313705444
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_ia_62934flighttothesuncountryvw_1.mp4",
+   "tag": "no_ambient",
+   "gap": 0.04624113440513611,
+   "noise": 0.2186513990163803,
+   "gap_q": {
+    "what_happening": 0.09379303455352783,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.09117186069488525,
+    "out_of_view": -2.384185791015625e-07
+   },
+   "noise_q": {
+    "what_happening": 0.339172899723053,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0968436598777771,
+    "out_of_view": 0.4385891556739807
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_ia_87954yourchancetolivenuclear_1.mp4",
+   "tag": "no_ambient",
+   "gap": 0.31703102588653564,
+   "noise": 0.241458922624588,
+   "gap_q": {
+    "what_happening": 0.4872536063194275,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.34457844495773315,
+    "out_of_view": 0.4362921714782715
+   },
+   "noise_q": {
+    "what_happening": 0.4425085186958313,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.11868762969970703,
+    "out_of_view": 0.40463966131210327
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_ia_alcf_heydari_0005_0.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.14837144315242767,
+   "noise": 0.10535472631454468,
+   "gap_q": {
+    "what_happening": 0.07109779119491577,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.09972858428955078,
+    "out_of_view": 0.4226595163345337
+   },
+   "noise_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": -2.384185791015625e-07,
+    "out_of_view": 0.42141926288604736
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "b3_ia_somewherebetweenhereandnow_0.mp4",
+   "tag": "no_ambient",
+   "gap": 0.3679914325475693,
+   "noise": 0.6124616377055645,
+   "gap_q": {
+    "what_happening": 0.6632171869277954,
+    "danger": 0.4131603240966797,
+    "mood": 0.13052982091903687,
+    "out_of_view": 0.26505839824676514
+   },
+   "noise_q": {
+    "what_happening": 0.8270360976457596,
+    "danger": 0.6111189723014832,
+    "mood": 0.23309987783432007,
+    "out_of_view": 0.7785916030406952
+   },
+   "danger_sound": "Yes, the man is in danger of being hit by a car.",
+   "danger_mute": "Yes, the man is being attacked by a green monster, which is dangerous."
+  },
+  {
+   "clip": "b3_leafblower_fall.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.1188947856426239,
+   "noise": 0.33536655455827713,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.47557926177978516
+   },
+   "noise_q": {
+    "what_happening": 0.5226704180240631,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.11299759149551392,
+    "out_of_view": 0.705798327922821
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "bell_kazansky.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.12923207879066467,
+   "noise": 0.20956747233867645,
+   "gap_q": {
+    "what_happening": 0.1610965132713318,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.11181622743606567,
+    "out_of_view": 0.24401569366455078
+   },
+   "noise_q": {
+    "what_happening": 0.4314637780189514,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.07111227512359619,
+    "out_of_view": 0.33569395542144775
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "dog_barking_01.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.1504034325480461,
+   "noise": 0.35518384724855423,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.601613849401474
+   },
+   "noise_q": {
+    "what_happening": 0.44230568408966064,
+    "danger": 0.3345491886138916,
+    "mood": 0.07077962160110474,
+    "out_of_view": 0.5731008946895599
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "dutch_traffic_kids.mp4",
+   "tag": "no_ambient",
+   "gap": 0.21349096298217773,
+   "noise": 0.049147143959999084,
+   "gap_q": {
+    "what_happening": 0.3659381866455078,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.2528901696205139,
+    "out_of_view": 0.23513561487197876
+   },
+   "noise_q": {
+    "what_happening": 0.0719645619392395,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.07057034969329834,
+    "out_of_view": 0.05405378341674805
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "ev_smoke_alarm_kitchen.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.42077791690826416,
+   "noise": 0.0599750280380249,
+   "gap_q": {
+    "what_happening": 0.43014347553253174,
+    "danger": 0.6235621571540833,
+    "mood": 0.5587339997291565,
+    "out_of_view": 0.07067203521728516
+   },
+   "noise_q": {
+    "what_happening": 0.12929129600524902,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.017971158027648926,
+    "out_of_view": 0.09263777732849121
+   },
+   "danger_sound": "Yes, there is a smoke detector going off, indicating a potential fire.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "interview_mickharvey.mp4",
+   "tag": "no_ambient",
+   "gap": 0.12998706102371216,
+   "noise": 0.13487082719802856,
+   "gap_q": {
+    "what_happening": 0.0,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.1422938108444214,
+    "out_of_view": 0.3776545524597168
+   },
+   "noise_q": {
+    "what_happening": 0.22351109981536865,
+    "danger": -1.1920928955078125e-07,
+    "mood": -2.384185791015625e-07,
+    "out_of_view": 0.31597256660461426
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "mc_bridge_scene.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.47236891835927963,
+   "noise": 0.4747573286294937,
+   "gap_q": {
+    "what_happening": 0.4190737009048462,
+    "danger": 0.5913117825984955,
+    "mood": 0.3297468423843384,
+    "out_of_view": 0.5493433475494385
+   },
+   "noise_q": {
+    "what_happening": 0.7699786424636841,
+    "danger": 0.5726059675216675,
+    "mood": 0.1945333480834961,
+    "out_of_view": 0.3619113564491272
+   },
+   "danger_sound": "Yes, a helicopter is flying over a busy highway, which could pose a risk to the people on the ground.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "movie_bladerunner_49.mp4",
+   "tag": "no_ambient",
+   "gap": 0.3085199221968651,
+   "noise": 0.39404548332095146,
+   "gap_q": {
+    "what_happening": 0.5624389946460724,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.3193369507789612,
+    "out_of_view": 0.3523038625717163
+   },
+   "noise_q": {
+    "what_happening": 0.842603012919426,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.2624485492706299,
+    "out_of_view": 0.47113049030303955
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "movie_bladerunner_91.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.10609680414199829,
+   "noise": 0.5738909170031548,
+   "gap_q": {
+    "what_happening": 0.059392333030700684,
+    "danger": -1.1920928955078125e-07,
+    "mood": -1.1920928955078125e-07,
+    "out_of_view": 0.3649951219558716
+   },
+   "noise_q": {
+    "what_happening": 0.521136462688446,
+    "danger": 0.6686301827430725,
+    "mood": 0.6391600668430328,
+    "out_of_view": 0.4666369557380676
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "movie_blueplanet_62.mp4",
+   "tag": "no_ambient",
+   "gap": 0.4024847075343132,
+   "noise": 0.13124629855155945,
+   "gap_q": {
+    "what_happening": 0.27050769329071045,
+    "danger": 0.5194952487945557,
+    "mood": 0.3197096586227417,
+    "out_of_view": 0.500226229429245
+   },
+   "noise_q": {
+    "what_happening": 0.34718382358551025,
+    "danger": -1.1920928955078125e-07,
+    "mood": 5.960464477539063e-08,
+    "out_of_view": 0.17780143022537231
+   },
+   "danger_sound": "Yes, the large wave crashing down is dangerous.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "movie_interstellar_98.mp4",
+   "tag": "no_ambient",
+   "gap": 0.5287250801920891,
+   "noise": 0.40736179053783417,
+   "gap_q": {
+    "what_happening": 0.6034029126167297,
+    "danger": 0.5313431620597839,
+    "mood": 0.36157166957855225,
+    "out_of_view": 0.6185825765132904
+   },
+   "noise_q": {
+    "what_happening": 0.45603013038635254,
+    "danger": 0.4138385057449341,
+    "mood": 0.36189812421798706,
+    "out_of_view": 0.397680401802063
+   },
+   "danger_sound": "Yes, there is a sense of danger and urgency. The text on the screen suggests a dire situation for humanity.",
+   "danger_mute": "Yes, a large explosion is happening in the distance, which could be dangerous."
+  },
+  {
+   "clip": "movie_junglebook_51.mp4",
+   "tag": "no_ambient",
+   "gap": 0.36196544766426086,
+   "noise": 0.5691706985235214,
+   "gap_q": {
+    "what_happening": 0.42411601543426514,
+    "danger": 0.3835024833679199,
+    "mood": 0.0,
+    "out_of_view": 0.6402432918548584
+   },
+   "noise_q": {
+    "what_happening": 0.7122693657875061,
+    "danger": 0.64792400598526,
+    "mood": 0.3348766565322876,
+    "out_of_view": 0.581612765789032
+   },
+   "danger_sound": "Yes, there is a sense of danger. The woman is warning the man about something.",
+   "danger_mute": "Yes, the woman is in danger as she is hanging from a tree branch over a cliff."
+  },
+  {
+   "clip": "mv_air_raid_scene.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.21028244495391846,
+   "noise": 0.2799907326698303,
+   "gap_q": {
+    "what_happening": 0.1964646577835083,
+    "danger": 0.1856110692024231,
+    "mood": 0.14656686782836914,
+    "out_of_view": 0.3124871850013733
+   },
+   "noise_q": {
+    "what_happening": 0.3360559940338135,
+    "danger": 0.0,
+    "mood": 0.3211134672164917,
+    "out_of_view": 0.4627934694290161
+   },
+   "danger_sound": "Yes, the woman appears to be in a state of distress or fear, possibly being chased or pursued by something.",
+   "danger_mute": "Yes, the woman appears to be in a hurry or fleeing from something."
+  },
+  {
+   "clip": "rx_phone_call_bad_news.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.19479969143867493,
+   "noise": 0.1035897433757782,
+   "gap_q": {
+    "what_happening": 0.3139706254005432,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.08662885427474976,
+    "out_of_view": 0.3785994052886963
+   },
+   "noise_q": {
+    "what_happening": -1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.4143592119216919
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "station_passenger.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.13651013374328613,
+   "noise": 0.0,
+   "gap_q": {
+    "what_happening": 0.1539088487625122,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.3921318054199219
+   },
+   "noise_q": {
+    "what_happening": 1.1920928955078125e-07,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.0,
+    "out_of_view": 0.0
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  },
+  {
+   "clip": "un_church_bell_ringin_-_-SejUs.mp4",
+   "tag": "unseen_ambient",
+   "gap": 0.31754589825868607,
+   "noise": 0.33441030979156494,
+   "gap_q": {
+    "what_happening": 0.31607478857040405,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.4064125418663025,
+    "out_of_view": 0.5476963818073273
+   },
+   "noise_q": {
+    "what_happening": 0.5130406618118286,
+    "danger": -1.1920928955078125e-07,
+    "mood": 0.31393879652023315,
+    "out_of_view": 0.5106619000434875
+   },
+   "danger_sound": "No, nothing dangerous or urgent is happening.",
+   "danger_mute": "No, nothing dangerous or urgent is happening."
+  }
+ ]
+}

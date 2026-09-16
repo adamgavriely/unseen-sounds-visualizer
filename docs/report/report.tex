@@ -339,7 +339,14 @@ helicopter overhead, a church bell behind a pointing hand) and on picture-due cl
 what it sees (men in vests at a fireworks display). The failure is the same one as the independent
 reference's: today's open audio--visual models do not decide \emph{whether the source is in view}
 better than chance, so no reference they write can score the gate. Reported as a negative pilot
-(\texttt{benchmark/av\_reference\_pilot.json}); the headline is unchanged.
+(\texttt{benchmark/av\_reference\_pilot.json}); the headline is unchanged. A follow-up that asks
+no visibility question at all -- the same model answers four fixed questions with the soundtrack,
+muted, and muted on frames shifted a quarter-slot, so that a system's panel could be scored by how
+much closer it brings the muted answers to the hearing ones -- was pre-registered with a sanity
+check (\texttt{docs/prereg\_gap\_closing.md}) and failed it on 60 development clips: the answers
+change as much from shifting the frames as from adding the sound (median 0.147 vs 0.192), and no
+more on clips with an ambient sound than on clips without (AUROC 0.529, bar 0.75). With this model
+the score is not interpretable and was not run on the test set.
 
 \subsection{Baselines}
 Two baselines are used. \emph{Blind audio-to-image} draws a picture for every sound heard, with no gate. \emph{Audio captioning} writes a text description instead of a picture. Neither looks at the video.

@@ -78,3 +78,29 @@ the two axes, the kill criterion, and the evidence from tonight's two pilots.
 
 No prompt, question or threshold change after seeing the dev numbers; no tuning against
 the human-grounded scores; the headline is unchanged.
+
+## 5. Outcome (added 2026-09-16, 00:30, after the run)
+
+Qwen2.5-Omni-7B, 60 dev clips, three runs each (`benchmark/gap_closing_pilot.json`).
+
+| measure | result | bar |
+|---|---|---|
+| AUROC of gap, 40 ambient vs 20 no-ambient clips | **0.529** | ≥ 0.75 |
+| median gap on ambient clips | 0.192 (no-ambient: 0.205) | > 90th pct of noise = 0.395 |
+| median frame-timing noise | 0.147 | — |
+| AUROC unseen vs rest (information only) | 0.475 | — |
+| "danger" answer changed with sound | 6 of 60 clips | — |
+
+**FAILED.** The change in the answers caused by the soundtrack is about the same size
+as the change caused by shifting the frames a quarter-slot, and no larger on clips with an
+ambient sound than on clips without one. Per clip there is real signal on some (kitchen
+smoke alarm: gap 0.42 vs noise 0.06, the with-sound answer says "a smoke detector is going
+off"), but it does not separate the groups.
+
+Two things to disclose. (1) A flaw in the criterion as written: the no-ambient clips contain
+speech or music, which legitimately changes the answers ("what is happening" becomes what
+is being said), so "ambient vs no-ambient" is not a clean test of *hearing ambient sound*;
+the noise-floor test (b) does not have this flaw and also failed. (2) The "danger" question
+is almost always answered "No" in every condition, so its gap is zero by construction on
+most clips. No prompt, model or criterion was changed after seeing the numbers; the quiz
+version (§1) is not built. Reported as a negative pilot.

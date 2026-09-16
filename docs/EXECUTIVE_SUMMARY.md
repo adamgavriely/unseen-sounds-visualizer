@@ -66,7 +66,8 @@ thesis's second finding.
   one missing picture. Two things the judge
   cannot see were found (§8). Figures, bibliography, and this summary finished. Evening:
   separation-before-detection measured and failed; a with-sound / without-sound
-  reference (Adam's idea) pre-registered, piloted on dev, and failed (§8).
+  reference (Adam's idea) pre-registered, piloted on dev, and failed (§8); a "gap-closing"
+  score that asks no visibility question pre-registered and failed its sanity check (§8).
 
 ## 4. Background: what already exists
 
@@ -239,6 +240,15 @@ result below. Whether deaf viewers feel the same 4-to-1 is unknown (§9 looks at
   clips. The model calls off-screen sources "seen and heard" (a helicopter overhead, a
   church bell behind a pointing hand). Same lesson as the independent reference: today's
   open models cannot tell whether a sound's source is in view. Reported as a failed pilot.
+- *gap closing* (Adam's second idea, same night): no visibility question at all — the model
+  answers four fixed questions (what is happening / anything dangerous / mood / anything
+  out of view) with sound, muted, and muted on slightly shifted frames; a system would be
+  scored by how much its panel moves the muted answers toward the hearing ones. Pre-registered
+  with a sanity check on 60 dev clips (`docs/prereg_gap_closing.md`): the answers change as
+  much from shifting the frames as from adding the sound, and no more on clips with an
+  ambient sound than without (AUROC 0.53, bar 0.75). **Failed**; not run on test. Same
+  lesson: with today's open audio-visual models, no automatic "hearing viewer" is reliable
+  enough to score against.
 
 **Two things the judge cannot see** (found 2026-09-15): if the detector hears *nothing* on a
 clip where a picture was due, the reference itself says nothing is missing and *every*

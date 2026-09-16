@@ -62,6 +62,13 @@ detail behind those sentences.
   pre-registration text said "heard": heard-only gives 59.5%, still below the bar and equal to
   the model-derived reference. The model marks off-screen sources as "both" and often ignores
   the audio on picture-due clips. Not adopted (`benchmark/av_reference_pilot.json`).
+- **A "gap-closing" score was pre-registered and its sanity check failed.** The same
+  audio-visual model answers four fixed questions with sound, muted, and muted with shifted
+  frames (`docs/prereg_gap_closing.md`, 60 dev clips). The answers change as much from
+  shifting the frames as from adding the soundtrack (median 0.147 vs 0.192), and no more on
+  clips with an ambient sound than without (AUROC 0.529, bar 0.75). The score cannot be
+  interpreted with this model; the quiz version was not built. One flaw in the criterion is
+  disclosed there (no-ambient clips carry speech, which also changes answers).
 - **The judge cannot see a detector miss.** On the 7 test clips tagged unseen/mixed where the
   detector heard nothing, the grounded reference reads "nothing beyond the picture" and every
   system scores 4. The clip-level cost-sensitivity analysis (report §Cost sensitivity) counts
