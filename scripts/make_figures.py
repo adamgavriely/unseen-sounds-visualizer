@@ -149,6 +149,46 @@ def examples():
     print("->", OUT / "fig_examples.pdf")
 
 
+# ----------------------------------------------------------------------------- detector trade-off
+def detector_tradeoff():
+    """Raising the display bar trades phantoms for real detections (curve, from the 100 labelled
+    dev detections' confidences); the filters tried sit on or below that curve (points)."""
+    import json
+    lab = json.loads((_ROOT / "benchmark" / "dev_phantoms.json").read_text(encoding="utf-8"))
+    ph = sorted(x["confidence"] for x in lab if x["phantom"]); re_ = sorted(x["confidence"] for x in lab if not x["phantom"])
+    bars = np.arange(0.35, 0.80, 0.005)
+    xs = [sum(c < b for c in ph) / len(ph) * 100 for b in bars]
+    ys = [sum(c >= b for c in re_) / len(re_) * 100 for b in bars]
+    fig, ax = plt.subplots(figsize=(4.6, 3.3))
+    ax.plot(xs, ys, color="#555", lw=1.2, label="raise the display bar (0.35 → 0.80)")
+    for b in (0.40, 0.50, 0.60):
+        i = int(round((b - 0.35) / 0.005)); ax.annotate(f"{b:.2f}", (xs[i], ys[i]), fontsize=6, xytext=(3, -8), textcoords="offset points", color="#555")
+    pts = [  # (phantoms removed %, real kept %, label, filled)
+        (24 / 77 * 100, 21 / 23 * 100, "PANNs agreement", True),
+        (62 / 77 * 100, 6 / 23 * 100, "Demucs separation", True),
+        (40 / 77 * 100, 18 / 19 * 100, "persistence + rank*", False),
+        (25 / 77 * 100, 17 / 19 * 100, "audio LLM veto*", False),
+    ]
+    offs = {"PANNs agreement": (5, 5), "audio LLM veto*": (5, -10), "persistence + rank*": (5, 3), "Demucs separation": (5, 3)}
+    for x, y, t, filled in pts:
+        ax.scatter([x], [y], s=28, color="#b03a2e" if filled else "white", edgecolor="#b03a2e", zorder=3)
+        ax.annotate(t, (x, y), fontsize=6.5, xytext=offs[t], textcoords="offset points")
+    ax.scatter([0], [100], s=34, marker="s", color="#2c6fbb", zorder=3); ax.annotate("shipping (bar 0.35)", (0, 100), fontsize=6.5, xytext=(7, -2), textcoords="offset points", color="#2c6fbb")
+    ax.axhline(100 - 2 / 23 * 100, ls=":", c="#888", lw=0.8); ax.text(60, 100 - 2 / 23 * 100 - 4, "declared bar: lose ≤ 2 of 23 real", fontsize=6, color="#666")
+    ax.axvline(40 / 77 * 100, ls=":", c="#888", lw=0.8); ax.text(40 / 77 * 100 + 1, 30, "declared bar:" + chr(10) + "remove ≥ 40 of 77 phantoms", fontsize=6, color="#666")
+    ax.set_xlabel("phantom detections removed (% of 77, dev split)", fontsize=8)
+    ax.set_ylabel("real detections kept (% of 23)", fontsize=8)
+    ax.set_xlim(-3, 100); ax.set_ylim(0, 105); ax.tick_params(labelsize=7)
+    ax.legend(fontsize=6.5, loc="lower left", frameon=False)
+    ax.text(0.99, 0.02, "* measured as unseen dev clips keeping a picture (of 19)", transform=ax.transAxes, fontsize=5.5, ha="right", color="#666")
+    fig.tight_layout(pad=0.3)
+    fig.savefig(OUT / "fig_detector_tradeoff.pdf")
+    print("->", OUT / "fig_detector_tradeoff.pdf")
+
+
 if __name__ == "__main__":
-    pipeline()
-    examples()
+    import sys as _s
+    if "--tradeoff" in _s.argv:
+        detector_tradeoff()
+    else:
+        pipeline(); examples(); detector_tradeoff()

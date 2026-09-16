@@ -84,8 +84,21 @@ def main(tag: str):
                          [2.5, 97.5]).tolist() for r in RS]
     cross = next((float(r) for r, d in zip(RS, diff) if d >= 0), None)
     sig = next((float(r) for r, c in zip(RS, dci) if c[0] > 0), None)
-    out["gated_minus_blind"] = {"diff": diff, "ci": dci, "crossover_r": cross, "ci_excludes_zero_from_r": sig}
-    print(f"  gated - blind: crossover at r = {cross}; CI excludes zero from r = {sig}")
+    # bootstrap the crossover itself: the r at which gated first matches blind, per resample
+    def crossover(d_, s_):
+        miss_g = (d_ & ~s_["proposed"]).sum(); red_g = (~d_ & s_["proposed"]).sum()
+        miss_b = (d_ & ~s_["blind_a2i"]).sum(); red_b = (~d_ & s_["blind_a2i"]).sum()
+        # gated >= blind  <=>  miss_g + r*red_g <= miss_b + r*red_b  <=>  r*(red_b - red_g) >= miss_g - miss_b
+        return (miss_g - miss_b) / (red_b - red_g) if red_b > red_g else (0.0 if miss_g <= miss_b else float("inf"))
+    xs = [crossover(due[b], {k: v[b] for k, v in show.items()}) for b in boots]
+    xs_f = [x for x in xs if np.isfinite(x)]
+    cross_ci = np.percentile(xs_f, [2.5, 97.5]).tolist() if xs_f else None
+    out["gated_minus_blind"] = {"diff": diff, "ci": dci, "crossover_r": cross, "ci_excludes_zero_from_r": sig,
+                                "crossover_exact": crossover(due, show), "crossover_ci": cross_ci,
+                                "crossover_never_frac": float(np.mean([not np.isfinite(x) for x in xs]))}
+    print(f"  gated - blind: crossover at r = {cross} (exact {crossover(due, show):.3f}, bootstrap 95% CI "
+          f"[{cross_ci[0]:.2f}, {cross_ci[1]:.2f}], never crosses in {np.mean([not np.isfinite(x) for x in xs]):.1%} of resamples); "
+          f"CI excludes zero from r = {sig}")
     for r, d, c in zip(RS, diff, dci):
         if float(r) in (0.1, 0.25, 0.5, 0.75, 1.0):
             print(f"    r={r:.2f}  diff {d:+.3f}  [{c[0]:+.3f}, {c[1]:+.3f}]")

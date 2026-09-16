@@ -450,6 +450,12 @@
    ]
   ],
   "crossover_r": 0.4,
-  "ci_excludes_zero_from_r": null
+  "ci_excludes_zero_from_r": null,
+  "crossover_exact": 0.36363636363636365,
+  "crossover_ci": [
+   0.0767857142857143,
+   1.0
+  ],
+  "crossover_never_frac": 0.0
  }
 }

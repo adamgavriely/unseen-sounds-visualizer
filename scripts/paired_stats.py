@@ -83,14 +83,13 @@ def report(tag: str):
     for c in data:
         t = data[c]["proposed"].get("human_tag")
         if t in SILENT_RIGHT:
-            # correct silence: whichever system abstained scores what the judge gave it;
-            # take the max over systems of records with no augmentation, else the best
-            silent = [data[c][s]["score"] for s in systems if data[c][s].get("n_augmentations", 1) == 0]
-            oracle.append(max(silent) if silent else max(data[c][s]["score"] for s in systems))
+            # correct silence scores 4 by the rubric's own rule (nothing shown, nothing missing).
+            # (Until 2026-09-16 this took the best score among systems with no images, which
+            # let the captioning baseline's text score stand in for silence and put the oracle
+            # below a system that showed a redundant picture the judge liked, on 12 clips.)
+            oracle.append(4.0)
         else:
-            oracle.append(max(data[c][s]["score"] for s in systems if data[c][s].get("n_augmentations", 1) > 0)
-                          if any(data[c][s].get("n_augmentations", 1) > 0 for s in systems)
-                          else max(data[c][s]["score"] for s in systems))
+            oracle.append(max(data[c][s]["score"] for s in systems))
     lo, hi = boot_ci(oracle)
     print(f"  ORACLE gate + best output: mean {np.mean(oracle):.2f}  95% CI [{lo:.2f}, {hi:.2f}]  "
           f"(ceiling for any gating on this benchmark)")

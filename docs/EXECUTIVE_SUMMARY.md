@@ -4,7 +4,7 @@
 language; every technical word is explained the first time it appears, and the recurring ones
 are collected in the glossary at the end (§13). Every number here comes from a file in the
 repository. The full record is in `docs/project_notes.tex` (the dated lab notebook),
-`docs/report/report.pdf` (the thesis draft, 16 pages) and `LIMITATIONS.md` (what the numbers
+`docs/report/report.pdf` (the thesis draft, 19 pages) and `LIMITATIONS.md` (what the numbers
 do not support).*
 
 ---
@@ -270,28 +270,35 @@ Statistically, the true difference could be anywhere between −0.15 and +0.18 p
 confidence interval): the data cannot tell the two apart. An average over 25 clips is
 uncertain by about ±0.2 points, so small differences below are indications, not proof.
 
-Split by whether a picture was due (human-grounded):
+Split by whether a picture was due (human-grounded; a description of the same result, not a
+second test — the two halves must roughly cancel because the total is a tie, and each half
+of 50 clips is uncertain by about ±0.2):
 - **no picture due** (50 clips): ours 3.56 vs blind 3.30 → **+0.26, we win** — we correctly
   stay quiet, blind draws a redundant picture.
 - **picture due** (50 clips): ours 2.78 vs blind 3.02 → **−0.24, we lose** — sometimes we
   stay quiet when we should not.
 
 In words: *the system does the right thing when nothing is missing, and still sometimes stays
-silent when something is.* A perfect gate (using Adam's labels as the gate) would score
-3.25 — the "oracle" ceiling. We beat the caption baseline (+0.28). The earlier version (v2,
+silent when something is.* A perfect gate (using Adam's labels as the gate; a correct
+silence counts 4, and the best output counts where a picture is due) would score **3.62** —
+the "oracle" ceiling. Both systems are the same distance below it (ours −0.45, blind −0.46)
+and lose it in opposite places: ours where a picture is due, blind where none is due. (An
+earlier draft said 3.25; that number let the caption baseline's text stand in for silence and
+was wrong.) We beat the caption baseline (+0.28). The earlier version (v2,
 one week older) lost clearly under every reference; the week's changes closed the gap to a
 tie.
 
 **A second view of the same result (cost-sensitivity).** Because the 4-to-1 lopsidedness
 comes from the scoring rubric and not from deaf viewers, we also computed a simpler,
 judge-free score: per clip, did the gate open when a picture was due and stay shut when
-not? Ours: 39 hits, 11 misses, 28 redundant. Blind: 43 hits, 7 misses, 39 redundant. If a
-redundant picture is treated as costing a quarter of a miss ((the rate built into the judge's scoring, §8)), the
-two tie; if it costs 40% or more, ours is ahead. So: *the gate is preferred as soon as a
+not? Ours: 39 hits, 11 misses, 28 redundant. Blind: 43 hits, 7 misses, 39 redundant. If a redundant picture is treated as costing a quarter of a miss (the rate built into the
+judge's scoring, §8), the two tie; if it costs 40% or more, ours is ahead — though where
+exactly the crossover lies is uncertain (anywhere from 0.08 to 1.0 on resampling). This
+analysis was added after the results were seen, so it is exploratory. So: *the gate is preferred as soon as a
 redundant picture is counted as more than about 40% as bad as a missing one.* Whether real
 viewers feel it that way is an open question — no user study.
 
-**Where the remaining errors come from** ((found by reading the decisions saved during the test run; nothing was re-run)):
+**Where the remaining errors come from** (found by reading the decisions saved during the test run; nothing was re-run):
 - Of the 11 test clips where we stayed silent and should not have: **7 are the detector** —
   the ambient sound was under loud speech or music and never reached the 0.35 bar (a "masked
   miss"); 4 are debatable labels (cars visible on screen, traffic noise labelled off-screen,
@@ -301,12 +308,19 @@ viewers feel it that way is an open question — no user study.
   roaring lions at a helicopter landing). The gate is right that nothing visible makes them;
   the picture is a detector mistake.
 
-So the **detector** is the bottleneck on both sides, more than the visibility decision.
+So the **detector** is the bottleneck on both sides, more than the visibility decision (in
+our reading of the saved decisions; nobody else classified them).
+
+**Cost to the viewer (new, 16 Sept).** The score above measures benefit; the panel's cost is
+the attention it takes. From the saved test decisions: the panel is on for 47% of a clip
+with our gate and 60% with blind. On the 50 clips where nothing was due, ours wastes 357
+seconds of panel time, blind 506 — the gate removes 30% of the waste, at the price of the
+11 withheld pictures. Benefit and cost are now reported side by side in the report.
 
 **Outside check — DCASE 2025.** A public research dataset of 30,000 five-second indoor clips
 in which humans marked, for every sound, when it starts and whether its source is inside the
 camera's view. We use it as ground truth we did not make ourselves: on 258 of its sounds our
-visibility decision matches the human mark 66.7% of the time: it correctly shows a picture
+visibility decision matches the human mark 66.7% of the time (±6 points): it correctly shows a picture
 for 97% of off-screen sounds, but correctly stays silent for only 35% of on-screen ones (it errs on the safe side: better a redundant picture than a missing one).
 
 ## 10. What was tried against the detector, and why it stopped
@@ -346,8 +360,9 @@ the picture already tell the viewer this sound is happening?"
 split**: the other 174 clips, used only for choosing settings. (All 25 mixed clips ended up in
 the test set; this mattered once, §10.)
 
-**Label reliability**: Adam re-labelled 60 clips without seeing his first labels and agreed
-with himself on 78% of them (on the standard agreement scale this counts as "moderate"); the disagreement is mostly on the "unseen"
+**Label reliability (one person, twice)**: Adam re-labelled 60 clips without seeing his first
+labels and agreed with himself on 78% of them (on the standard agreement scale this counts
+as "moderate"); nobody else has labelled the clips, so agreement *between* people is unknown; the disagreement is mostly on the "unseen"
 clips, which are exactly the ones the gate is judged on. One annotator; a second would make
 this firmer.
 
@@ -415,7 +430,7 @@ Run one video locally: `python main.py <video>`; settings in `config.py`.
   thing the judge compares against. Three versions: model-derived, human-grounded,
   independent.
 - **judge** — the text model that scores a system's output against the reference, 0–4.
-- **oracle** — the score if the gate used Adam's labels directly (3.25); the ceiling.
+- **oracle** — the score if the gate used Adam's labels directly (3.62); the ceiling.
 - **cost-sensitivity / r** — the judge-free view: how bad a redundant picture is, as a
   fraction of a missing one. The gate wins from r = 0.40.
 - **DCASE 2025** — a public dataset with human marks for when each sound starts and whether

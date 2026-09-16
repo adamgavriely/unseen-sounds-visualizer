@@ -1,45 +1,5 @@
 [
  {
-  "tag": "v2",
-  "n": 100,
-  "means": {
-   "proposed": 2.27,
-   "blind_a2i": 2.97,
-   "audio_caption": 2.68
-  },
-  "oracle": 2.89
- },
- {
-  "tag": "v2_grounded",
-  "n": 100,
-  "means": {
-   "proposed": 2.9,
-   "blind_a2i": 3.14,
-   "audio_caption": 2.79
-  },
-  "oracle": 3.19
- },
- {
-  "tag": "v2_indep_list",
-  "n": 100,
-  "means": {
-   "proposed": 2.41,
-   "blind_a2i": 2.96,
-   "audio_caption": 2.61
-  },
-  "oracle": 2.88
- },
- {
-  "tag": "v3",
-  "n": 100,
-  "means": {
-   "proposed": 2.64,
-   "blind_a2i": 3.04,
-   "audio_caption": 2.79
-  },
-  "oracle": 3.01
- },
- {
   "tag": "v3_grounded",
   "n": 100,
   "means": {
@@ -47,6 +7,6 @@
    "blind_a2i": 3.16,
    "audio_caption": 2.89
   },
-  "oracle": 3.25
+  "oracle": 3.62
  }
 ]

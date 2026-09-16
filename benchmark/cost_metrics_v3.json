@@ -1,0 +1,2079 @@
+{
+ "dwell_s": 1.5,
+ "n": 100,
+ "groups": {
+  "picture due": {
+   "n": 50,
+   "gated": {
+    "panel_on_frac_mean": 0.5842332240341017,
+    "ci": [
+     0.4696378783766681,
+     0.6919996661340283
+    ],
+    "panel_on_s_mean": 12.467005000000002,
+    "clips_with_panel": 39
+   },
+   "blind": {
+    "panel_on_frac_mean": 0.673683807426212,
+    "ci": [
+     0.5668681457212811,
+     0.768064290327572
+    ],
+    "panel_on_s_mean": 14.271405000000001,
+    "clips_with_panel": 43
+   }
+  },
+  "no picture due": {
+   "n": 50,
+   "gated": {
+    "panel_on_frac_mean": 0.3640895372428175,
+    "ci": [
+     0.25129649253029906,
+     0.48272891370336535
+    ],
+    "panel_on_s_mean": 7.13811,
+    "clips_with_panel": 31
+   },
+   "blind": {
+    "panel_on_frac_mean": 0.5202448572146956,
+    "ci": [
+     0.4020222935573948,
+     0.6371784672448445
+    ],
+    "panel_on_s_mean": 10.111227499999998,
+    "clips_with_panel": 39
+   }
+  },
+  "all": {
+   "n": 100,
+   "gated": {
+    "panel_on_frac_mean": 0.47416138063845964,
+    "ci": [
+     0.39083162976622193,
+     0.5549642849596783
+    ],
+    "panel_on_s_mean": 9.8025575,
+    "clips_with_panel": 70
+   },
+   "blind": {
+    "panel_on_frac_mean": 0.5969643323204538,
+    "ci": [
+     0.5157871417715563,
+     0.6766784689474395
+    ],
+    "panel_on_s_mean": 12.191316250000002,
+    "clips_with_panel": 82
+   }
+  }
+ },
+ "wasted_seconds_total": {
+  "gated": 356.90549999999996,
+  "blind": 505.56137499999994
+ },
+ "wasted_seconds_per_clip": {
+  "gated": 7.138109999999999,
+  "blind": 10.111227499999998
+ },
+ "rows": [
+  {
+   "clip": "ambient_citywalk_cairo_834.mp4",
+   "tag": "unseen_ambient",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689.mp4",
+   "tag": "unseen_ambient",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 9.61,
+    "caption": 9.61
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.600625,
+    "caption": 0.600625
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "ambient_citywalk_nyc_2627.mp4",
+   "tag": "mixed",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 15.45,
+    "caption": 15.45
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.965625,
+    "caption": 0.965625
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "ambient_desert_wind_74.mp4",
+   "tag": "no_ambient",
+   "duration": 16.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_harbour_boats_1449.mp4",
+   "tag": "mixed",
+   "duration": 16.016,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_harbour_boats_724.mp4",
+   "tag": "no_ambient",
+   "duration": 16.016,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_market_marrakech_3102.mp4",
+   "tag": "seen_ambient",
+   "duration": 16.016016,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_nature_rainforest_2179.mp4",
+   "tag": "mixed",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629.mp4",
+   "tag": "mixed",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 10.11,
+    "blind": 10.11,
+    "caption": 10.11
+   },
+   "panel_on_frac": {
+    "gated": 0.631875,
+    "blind": 0.631875,
+    "caption": 0.631875
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "ambient_snow_walk_930.mp4",
+   "tag": "mixed",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "ambient_temple_india_2877.mp4",
+   "tag": "no_ambient",
+   "duration": 16.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 2.8499999999999996,
+    "blind": 2.8499999999999996,
+    "caption": 2.8499999999999996
+   },
+   "panel_on_frac": {
+    "gated": 0.17812499999999998,
+    "blind": 0.17812499999999998,
+    "caption": 0.17812499999999998
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "ambient_transport_subway_10800.mp4",
+   "tag": "seen_ambient",
+   "duration": 16.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 15.75,
+    "blind": 15.75,
+    "caption": 15.75
+   },
+   "panel_on_frac": {
+    "gated": 0.984375,
+    "blind": 0.984375,
+    "caption": 0.984375
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "ambient_weather_storm_16200.mp4",
+   "tag": "mixed",
+   "duration": 16.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 15.69,
+    "blind": 15.69,
+    "caption": 15.69
+   },
+   "panel_on_frac": {
+    "gated": 0.980625,
+    "blind": 0.980625,
+    "caption": 0.980625
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "ambient_weather_storm_7200.mp4",
+   "tag": "seen_ambient",
+   "duration": 16.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 15.69,
+    "blind": 15.69,
+    "caption": 15.69
+   },
+   "panel_on_frac": {
+    "gated": 0.980625,
+    "blind": 0.980625,
+    "caption": 0.980625
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "as_car_alarm_VC9nqtFU.mp4",
+   "tag": "unseen_ambient",
+   "duration": 20.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 19.34,
+    "blind": 19.34,
+    "caption": 19.34
+   },
+   "panel_on_frac": {
+    "gated": 0.967,
+    "blind": 0.967,
+    "caption": 0.967
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "as_church_bell_pJRAWkLM.mp4",
+   "tag": "unseen_ambient",
+   "duration": 20.02,
+   "due": true,
+   "panel_on_s": {
+    "gated": 14.45,
+    "blind": 14.45,
+    "caption": 14.45
+   },
+   "panel_on_frac": {
+    "gated": 0.7217782217782217,
+    "blind": 0.7217782217782217,
+    "caption": 0.7217782217782217
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "as_explosion_eEdaLHC0.mp4",
+   "tag": "unseen_ambient",
+   "duration": 20.053367,
+   "due": true,
+   "panel_on_s": {
+    "gated": 19.61,
+    "blind": 19.61,
+    "caption": 19.61
+   },
+   "panel_on_frac": {
+    "gated": 0.9778906454960904,
+    "blind": 0.9778906454960904,
+    "caption": 0.9778906454960904
+   },
+   "n_shown": {
+    "gated": 5,
+    "blind": 5
+   }
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6.mp4",
+   "tag": "mixed",
+   "duration": 20.02,
+   "due": true,
+   "panel_on_s": {
+    "gated": 19.5,
+    "blind": 19.5,
+    "caption": 19.5
+   },
+   "panel_on_frac": {
+    "gated": 0.974025974025974,
+    "blind": 0.974025974025974,
+    "caption": 0.974025974025974
+   },
+   "n_shown": {
+    "gated": 4,
+    "blind": 4
+   }
+  },
+  {
+   "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+   "tag": "unseen_ambient",
+   "duration": 20.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 16.61,
+    "blind": 16.61,
+    "caption": 16.61
+   },
+   "panel_on_frac": {
+    "gated": 0.8305,
+    "blind": 0.8305,
+    "caption": 0.8305
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "as_glass_EiqYND8G.mp4",
+   "tag": "no_ambient",
+   "duration": 20.04,
+   "due": false,
+   "panel_on_s": {
+    "gated": 9.69,
+    "blind": 9.69,
+    "caption": 9.69
+   },
+   "panel_on_frac": {
+    "gated": 0.48353293413173654,
+    "blind": 0.48353293413173654,
+    "caption": 0.48353293413173654
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "as_glass_oHil9Ip_.mp4",
+   "tag": "no_ambient",
+   "duration": 20.02,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 1.4699999999999989,
+    "caption": 1.4699999999999989
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.07342657342657337,
+    "caption": 0.07342657342657337
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "b3_airport_terminal.mp4",
+   "tag": "no_ambient",
+   "duration": 28.028028,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "b3_aviary_birds.mp4",
+   "tag": "mixed",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 27.45,
+    "blind": 27.45,
+    "caption": 27.45
+   },
+   "panel_on_frac": {
+    "gated": 0.9803571428571428,
+    "blind": 0.9803571428571428,
+    "caption": 0.9803571428571428
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_bakery_morning.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 18.23,
+    "blind": 19.29,
+    "caption": 19.29
+   },
+   "panel_on_frac": {
+    "gated": 0.6510714285714286,
+    "blind": 0.6889285714285714,
+    "caption": 0.6889285714285714
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 4
+   }
+  },
+  {
+   "clip": "b3_barbershop.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 27.61,
+    "blind": 27.61,
+    "caption": 27.61
+   },
+   "panel_on_frac": {
+    "gated": 0.9860714285714286,
+    "blind": 0.9860714285714286,
+    "caption": 0.9860714285714286
+   },
+   "n_shown": {
+    "gated": 4,
+    "blind": 4
+   }
+  },
+  {
+   "clip": "b3_bat_cave.mp4",
+   "tag": "seen_ambient",
+   "duration": 25.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 24.69,
+    "blind": 24.69,
+    "caption": 24.69
+   },
+   "panel_on_frac": {
+    "gated": 0.9876,
+    "blind": 0.9876,
+    "caption": 0.9876
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_botanic_garden.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.028,
+   "due": true,
+   "panel_on_s": {
+    "gated": 22.45,
+    "blind": 22.45,
+    "caption": 22.45
+   },
+   "panel_on_frac": {
+    "gated": 0.8009847295561582,
+    "blind": 0.8009847295561582,
+    "caption": 0.8009847295561582
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_butcher_market.mp4",
+   "tag": "mixed",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 3.34,
+    "blind": 3.34,
+    "caption": 3.34
+   },
+   "panel_on_frac": {
+    "gated": 0.11928571428571429,
+    "blind": 0.11928571428571429,
+    "caption": 0.11928571428571429
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_carnival_parade.mp4",
+   "tag": "mixed",
+   "duration": 24.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "b3_chicken_coop.mp4",
+   "tag": "mixed",
+   "duration": 28.015226,
+   "due": true,
+   "panel_on_s": {
+    "gated": 26.7,
+    "blind": 26.7,
+    "caption": 26.7
+   },
+   "panel_on_frac": {
+    "gated": 0.9530531718716101,
+    "blind": 0.9530531718716101,
+    "caption": 0.9530531718716101
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "b3_construction_site.mp4",
+   "tag": "seen_ambient",
+   "duration": 28.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 27.75,
+    "caption": 27.75
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9910714285714286,
+    "caption": 0.9910714285714286
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 5
+   }
+  },
+  {
+   "clip": "b3_cow_farm.mp4",
+   "tag": "no_ambient",
+   "duration": 28.028,
+   "due": false,
+   "panel_on_s": {
+    "gated": 1.5,
+    "blind": 1.5,
+    "caption": 1.5
+   },
+   "panel_on_frac": {
+    "gated": 0.0535179106607678,
+    "blind": 0.0535179106607678,
+    "caption": 0.0535179106607678
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_crossing_bells.mp4",
+   "tag": "seen_ambient",
+   "duration": 17.017,
+   "due": false,
+   "panel_on_s": {
+    "gated": 16.75,
+    "blind": 16.75,
+    "caption": 16.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9843098078392196,
+    "blind": 0.9843098078392196,
+    "caption": 0.9843098078392196
+   },
+   "n_shown": {
+    "gated": 4,
+    "blind": 5
+   }
+  },
+  {
+   "clip": "b3_favela_rio.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.028,
+   "due": true,
+   "panel_on_s": {
+    "gated": 16.82,
+    "blind": 16.82,
+    "caption": 16.82
+   },
+   "panel_on_frac": {
+    "gated": 0.600114171542743,
+    "blind": 0.600114171542743,
+    "caption": 0.600114171542743
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "b3_flea_market.mp4",
+   "tag": "no_ambient",
+   "duration": 28.028,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "b3_glacier_hike.mp4",
+   "tag": "no_ambient",
+   "duration": 28.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 19.84,
+    "blind": 19.84,
+    "caption": 19.84
+   },
+   "panel_on_frac": {
+    "gated": 0.7085714285714285,
+    "blind": 0.7085714285714285,
+    "caption": 0.7085714285714285
+   },
+   "n_shown": {
+    "gated": 12,
+    "blind": 12
+   }
+  },
+  {
+   "clip": "b3_golf_course.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.028,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "b3_ia_0001_let_us_break_bread_toge_1.mp4",
+   "tag": "seen_ambient",
+   "duration": 28.028028,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "b3_ia_destinationamerica5cityofthe_0.mp4",
+   "tag": "no_ambient",
+   "duration": 28.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+   "tag": "no_ambient",
+   "duration": 28.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 1.84,
+    "blind": 1.84,
+    "caption": 1.84
+   },
+   "panel_on_frac": {
+    "gated": 0.06571428571428571,
+    "blind": 0.06571428571428571,
+    "caption": 0.06571428571428571
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+   "tag": "no_ambient",
+   "duration": 28.023353,
+   "due": false,
+   "panel_on_s": {
+    "gated": 3.1099999999999994,
+    "blind": 3.1099999999999994,
+    "caption": 3.1099999999999994
+   },
+   "panel_on_frac": {
+    "gated": 0.11097886823179223,
+    "blind": 0.11097886823179223,
+    "caption": 0.11097886823179223
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_jungle_hike.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 27.25,
+    "blind": 27.25,
+    "caption": 27.25
+   },
+   "panel_on_frac": {
+    "gated": 0.9732142857142857,
+    "blind": 0.9732142857142857,
+    "caption": 0.9732142857142857
+   },
+   "n_shown": {
+    "gated": 6,
+    "blind": 6
+   }
+  },
+  {
+   "clip": "b3_kayak_river.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.028,
+   "due": true,
+   "panel_on_s": {
+    "gated": 27.75,
+    "blind": 27.75,
+    "caption": 27.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9900813472242044,
+    "blind": 0.9900813472242044,
+    "caption": 0.9900813472242044
+   },
+   "n_shown": {
+    "gated": 6,
+    "blind": 7
+   }
+  },
+  {
+   "clip": "b3_laundromat.mp4",
+   "tag": "no_ambient",
+   "duration": 28.028028,
+   "due": false,
+   "panel_on_s": {
+    "gated": 27.53,
+    "blind": 27.53,
+    "caption": 27.53
+   },
+   "panel_on_frac": {
+    "gated": 0.9822310724108025,
+    "blind": 0.9822310724108025,
+    "caption": 0.9822310724108025
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "b3_logging_forest.mp4",
+   "tag": "seen_ambient",
+   "duration": 18.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 17.75,
+    "caption": 17.75
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9861111111111112,
+    "caption": 0.9861111111111112
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 6
+   }
+  },
+  {
+   "clip": "b3_mountain_stream.mp4",
+   "tag": "seen_ambient",
+   "duration": 28.028,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 27.61,
+    "caption": 27.61
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9850863422291994,
+    "caption": 0.9850863422291994
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "b3_pet_shop.mp4",
+   "tag": "unseen_ambient",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 27.61,
+    "blind": 27.61,
+    "caption": 27.61
+   },
+   "panel_on_frac": {
+    "gated": 0.9860714285714286,
+    "blind": 0.9860714285714286,
+    "caption": 0.9860714285714286
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "b3_wm_road_traffic_cobblestone_road_we.mp4",
+   "tag": "mixed",
+   "duration": 28.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 27.75,
+    "caption": 27.75
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9910714285714286,
+    "caption": 0.9910714285714286
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "bell_miami.webm",
+   "tag": "unseen_ambient",
+   "duration": 15.583,
+   "due": true,
+   "panel_on_s": {
+    "gated": 14.28,
+    "blind": 14.28,
+    "caption": 14.28
+   },
+   "panel_on_frac": {
+    "gated": 0.9163832381441314,
+    "blind": 0.9163832381441314,
+    "caption": 0.9163832381441314
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "birds_forest.mp4",
+   "tag": "unseen_ambient",
+   "duration": 18.001732,
+   "due": true,
+   "panel_on_s": {
+    "gated": 17.61025,
+    "blind": 17.61025,
+    "caption": 17.61025
+   },
+   "panel_on_frac": {
+    "gated": 0.9782530925357626,
+    "blind": 0.9782530925357626,
+    "caption": 0.9782530925357626
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "ev_car_alarm_street.mp4",
+   "tag": "unseen_ambient",
+   "duration": 18.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 14.51,
+    "blind": 14.51,
+    "caption": 14.51
+   },
+   "panel_on_frac": {
+    "gated": 0.8061111111111111,
+    "blind": 0.8061111111111111,
+    "caption": 0.8061111111111111
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "helicopter_ossetia.mp4",
+   "tag": "no_ambient",
+   "duration": 18.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "kit_piano.mp4",
+   "tag": "no_ambient",
+   "duration": 18.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "london_protest_01.mp4",
+   "tag": "seen_ambient",
+   "duration": 11.132993,
+   "due": false,
+   "panel_on_s": {
+    "gated": 2.0,
+    "blind": 2.0,
+    "caption": 2.0
+   },
+   "panel_on_frac": {
+    "gated": 0.1796462101431304,
+    "blind": 0.1796462101431304,
+    "caption": 0.1796462101431304
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "lx_rain_and_thunder_-3-4qmW.mp4",
+   "tag": "mixed",
+   "duration": 18.051367,
+   "due": true,
+   "panel_on_s": {
+    "gated": 12.18,
+    "blind": 12.18,
+    "caption": 12.18
+   },
+   "panel_on_frac": {
+    "gated": 0.6747411428730024,
+    "blind": 0.6747411428730024,
+    "caption": 0.6747411428730024
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+   "tag": "mixed",
+   "duration": 18.04,
+   "due": true,
+   "panel_on_s": {
+    "gated": 17.75,
+    "blind": 17.75,
+    "caption": 17.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9839246119733925,
+    "blind": 0.9839246119733925,
+    "caption": 0.9839246119733925
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "ly_applause_62ZYD0u.mp4",
+   "tag": "mixed",
+   "duration": 18.04,
+   "due": true,
+   "panel_on_s": {
+    "gated": 8.05,
+    "blind": 9.7,
+    "caption": 9.7
+   },
+   "panel_on_frac": {
+    "gated": 0.4462305986696231,
+    "blind": 0.5376940133037694,
+    "caption": 0.5376940133037694
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "ly_helicopter_-v62cK1.mp4",
+   "tag": "unseen_ambient",
+   "duration": 18.051367,
+   "due": true,
+   "panel_on_s": {
+    "gated": 17.69,
+    "blind": 17.69,
+    "caption": 17.69
+   },
+   "panel_on_frac": {
+    "gated": 0.9799811836965036,
+    "blind": 0.9799811836965036,
+    "caption": 0.9799811836965036
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+   "tag": "mixed",
+   "duration": 18.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 17.69,
+    "blind": 17.69,
+    "caption": 17.69
+   },
+   "panel_on_frac": {
+    "gated": 0.9827777777777779,
+    "blind": 0.9827777777777779,
+    "caption": 0.9827777777777779
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "mc_earthquake_disaster.mp4",
+   "tag": "seen_ambient",
+   "duration": 25.025,
+   "due": false,
+   "panel_on_s": {
+    "gated": 2.5,
+    "blind": 2.5,
+    "caption": 2.5
+   },
+   "panel_on_frac": {
+    "gated": 0.0999000999000999,
+    "blind": 0.0999000999000999,
+    "caption": 0.0999000999000999
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "mc_fight_bar_scene.mp4",
+   "tag": "mixed",
+   "duration": 19.019,
+   "due": true,
+   "panel_on_s": {
+    "gated": 18.6,
+    "blind": 18.6,
+    "caption": 18.6
+   },
+   "panel_on_frac": {
+    "gated": 0.9779693990220307,
+    "blind": 0.9779693990220307,
+    "caption": 0.9779693990220307
+   },
+   "n_shown": {
+    "gated": 5,
+    "blind": 5
+   }
+  },
+  {
+   "clip": "mc_snow_scene.mp4",
+   "tag": "seen_ambient",
+   "duration": 23.023,
+   "due": false,
+   "panel_on_s": {
+    "gated": 13.0,
+    "blind": 13.0,
+    "caption": 13.0
+   },
+   "panel_on_frac": {
+    "gated": 0.564652738565782,
+    "blind": 0.564652738565782,
+    "caption": 0.564652738565782
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "movie_blueplanet_115.mp4",
+   "tag": "no_ambient",
+   "duration": 16.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 3.0,
+    "blind": 3.0,
+    "caption": 3.0
+   },
+   "panel_on_frac": {
+    "gated": 0.1875,
+    "blind": 0.1875,
+    "caption": 0.1875
+   },
+   "n_shown": {
+    "gated": 5,
+    "blind": 5
+   }
+  },
+  {
+   "clip": "mv_arrest_street_scene.mp4",
+   "tag": "seen_ambient",
+   "duration": 24.024,
+   "due": false,
+   "panel_on_s": {
+    "gated": 3.4499999999999993,
+    "blind": 3.4499999999999993,
+    "caption": 3.4499999999999993
+   },
+   "panel_on_frac": {
+    "gated": 0.14360639360639357,
+    "blind": 0.14360639360639357,
+    "caption": 0.14360639360639357
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "mv_basement_scene_noise.mp4",
+   "tag": "mixed",
+   "duration": 21.021,
+   "due": true,
+   "panel_on_s": {
+    "gated": 2.5500000000000007,
+    "blind": 2.5500000000000007,
+    "caption": 2.5500000000000007
+   },
+   "panel_on_frac": {
+    "gated": 0.12130726416440706,
+    "blind": 0.12130726416440706,
+    "caption": 0.12130726416440706
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "mv_detective_crime_scene.mp4",
+   "tag": "unseen_ambient",
+   "duration": 19.019,
+   "due": true,
+   "panel_on_s": {
+    "gated": 2.09,
+    "blind": 2.09,
+    "caption": 2.09
+   },
+   "panel_on_frac": {
+    "gated": 0.10989010989010989,
+    "blind": 0.10989010989010989,
+    "caption": 0.10989010989010989
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "mv_funeral_rain_scene.mp4",
+   "tag": "seen_ambient",
+   "duration": 22.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 20.75,
+    "blind": 20.75,
+    "caption": 20.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9431818181818182,
+    "blind": 0.9431818181818182,
+    "caption": 0.9431818181818182
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "mv_plane_emergency.mp4",
+   "tag": "unseen_ambient",
+   "duration": 24.024,
+   "due": true,
+   "panel_on_s": {
+    "gated": 9.96,
+    "blind": 9.96,
+    "caption": 9.96
+   },
+   "panel_on_frac": {
+    "gated": 0.4145854145854146,
+    "blind": 0.4145854145854146,
+    "caption": 0.4145854145854146
+   },
+   "n_shown": {
+    "gated": 4,
+    "blind": 4
+   }
+  },
+  {
+   "clip": "mv_police_raid_scene.mp4",
+   "tag": "seen_ambient",
+   "duration": 24.024,
+   "due": false,
+   "panel_on_s": {
+    "gated": 6.76,
+    "blind": 6.76,
+    "caption": 6.76
+   },
+   "panel_on_frac": {
+    "gated": 0.28138528138528135,
+    "blind": 0.28138528138528135,
+    "caption": 0.28138528138528135
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "mv_protest_scene_movie.mp4",
+   "tag": "unseen_ambient",
+   "duration": 24.024,
+   "due": true,
+   "panel_on_s": {
+    "gated": 13.72,
+    "blind": 13.72,
+    "caption": 13.72
+   },
+   "panel_on_frac": {
+    "gated": 0.5710955710955711,
+    "blind": 0.5710955710955711,
+    "caption": 0.5710955710955711
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "mv_storm_scene_house.mp4",
+   "tag": "mixed",
+   "duration": 24.024,
+   "due": true,
+   "panel_on_s": {
+    "gated": 18.5,
+    "blind": 18.5,
+    "caption": 18.5
+   },
+   "panel_on_frac": {
+    "gated": 0.77006327006327,
+    "blind": 0.77006327006327,
+    "caption": 0.77006327006327
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "mv_tornado_scene.mp4",
+   "tag": "mixed",
+   "duration": 20.02,
+   "due": true,
+   "panel_on_s": {
+    "gated": 7.5,
+    "blind": 10.170000000000002,
+    "caption": 10.170000000000002
+   },
+   "panel_on_frac": {
+    "gated": 0.37462537462537465,
+    "blind": 0.507992007992008,
+    "caption": 0.507992007992008
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "mv_war_bombardment.mp4",
+   "tag": "seen_ambient",
+   "duration": 17.017,
+   "due": false,
+   "panel_on_s": {
+    "gated": 16.75,
+    "blind": 16.75,
+    "caption": 16.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9843098078392196,
+    "blind": 0.9843098078392196,
+    "caption": 0.9843098078392196
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "oc_distant_train_valley.mp4",
+   "tag": "no_ambient",
+   "duration": 19.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 8.0,
+    "blind": 8.0,
+    "caption": 8.0
+   },
+   "panel_on_frac": {
+    "gated": 0.42105263157894735,
+    "blind": 0.42105263157894735,
+    "caption": 0.42105263157894735
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "oc_ice_cracking_lake.mp4",
+   "tag": "no_ambient",
+   "duration": 20.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 19.61,
+    "blind": 19.61,
+    "caption": 19.61
+   },
+   "panel_on_frac": {
+    "gated": 0.9804999999999999,
+    "blind": 0.9804999999999999,
+    "caption": 0.9804999999999999
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "oc_pov_dry_leaves.mp4",
+   "tag": "no_ambient",
+   "duration": 16.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 15.69,
+    "blind": 15.69,
+    "caption": 15.69
+   },
+   "panel_on_frac": {
+    "gated": 0.980625,
+    "blind": 0.980625,
+    "caption": 0.980625
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "rain_road.webm",
+   "tag": "seen_ambient",
+   "duration": 15.523,
+   "due": false,
+   "panel_on_s": {
+    "gated": 15.205499999999999,
+    "blind": 15.205499999999999,
+    "caption": 15.205499999999999
+   },
+   "panel_on_frac": {
+    "gated": 0.9795464794176383,
+    "blind": 0.9795464794176383,
+    "caption": 0.9795464794176383
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "station_kwasa2.mp4",
+   "tag": "unseen_ambient",
+   "duration": 18.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "un_airplane_flyby_1FOKvagR.mp4",
+   "tag": "seen_ambient",
+   "duration": 20.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 19.61,
+    "blind": 19.61,
+    "caption": 19.61
+   },
+   "panel_on_frac": {
+    "gated": 0.9804999999999999,
+    "blind": 0.9804999999999999,
+    "caption": 0.9804999999999999
+   },
+   "n_shown": {
+    "gated": 4,
+    "blind": 4
+   }
+  },
+  {
+   "clip": "un_airplane_flyby_5_aRF2s3.mp4",
+   "tag": "seen_ambient",
+   "duration": 20.02,
+   "due": false,
+   "panel_on_s": {
+    "gated": 2.0,
+    "blind": 19.75,
+    "caption": 19.75
+   },
+   "panel_on_frac": {
+    "gated": 0.0999000999000999,
+    "blind": 0.9865134865134866,
+    "caption": 0.9865134865134866
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "un_ambulance_siren_3qIzU14N.mp4",
+   "tag": "seen_ambient",
+   "duration": 16.016,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 15.69,
+    "caption": 15.69
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9796453546453547,
+    "caption": 0.9796453546453547
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "un_driving_motorcycle_4O3bZRYO.mp4",
+   "tag": "unseen_ambient",
+   "duration": 20.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 13.19,
+    "caption": 13.19
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.6595,
+    "caption": 0.6595
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA.mp4",
+   "tag": "unseen_ambient",
+   "duration": 17.04,
+   "due": true,
+   "panel_on_s": {
+    "gated": 14.75,
+    "blind": 14.75,
+    "caption": 14.75
+   },
+   "panel_on_frac": {
+    "gated": 0.8656103286384977,
+    "blind": 0.8656103286384977,
+    "caption": 0.8656103286384977
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "un_engine_knocking_3UPXKVOz.mp4",
+   "tag": "seen_ambient",
+   "duration": 18.051367,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 17.75,
+    "caption": 17.75
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9833050316909517,
+    "caption": 0.9833050316909517
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs.mp4",
+   "tag": "no_ambient",
+   "duration": 20.053367,
+   "due": false,
+   "panel_on_s": {
+    "gated": 2.2699999999999996,
+    "blind": 2.2699999999999996,
+    "caption": 2.2699999999999996
+   },
+   "panel_on_frac": {
+    "gated": 0.11319794825477435,
+    "blind": 0.11319794825477435,
+    "caption": 0.11319794825477435
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "un_people_clapping__bAVmK7n.mp4",
+   "tag": "no_ambient",
+   "duration": 18.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 5.4399999999999995,
+    "blind": 5.4399999999999995,
+    "caption": 5.4399999999999995
+   },
+   "panel_on_frac": {
+    "gated": 0.30222222222222217,
+    "blind": 0.30222222222222217,
+    "caption": 0.30222222222222217
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "un_people_crowd_1YGJDa3a.mp4",
+   "tag": "no_ambient",
+   "duration": 18.051367,
+   "due": false,
+   "panel_on_s": {
+    "gated": 17.75,
+    "blind": 17.75,
+    "caption": 17.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9833050316909517,
+    "blind": 0.9833050316909517,
+    "caption": 0.9833050316909517
+   },
+   "n_shown": {
+    "gated": 6,
+    "blind": 7
+   }
+  },
+  {
+   "clip": "un_police_car_siren_-lyPnABQ.mp4",
+   "tag": "mixed",
+   "duration": 19.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 18.45,
+    "blind": 18.45,
+    "caption": 18.45
+   },
+   "panel_on_frac": {
+    "gated": 0.9710526315789473,
+    "blind": 0.9710526315789473,
+    "caption": 0.9710526315789473
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "un_police_car_siren_-Pg4vVPs.mp4",
+   "tag": "mixed",
+   "duration": 20.050548,
+   "due": true,
+   "panel_on_s": {
+    "gated": 4.859999999999999,
+    "blind": 19.45,
+    "caption": 19.45
+   },
+   "panel_on_frac": {
+    "gated": 0.24238739011023538,
+    "blind": 0.9700482999267651,
+    "caption": 0.9700482999267651
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "un_police_car_siren_WEROVWDp.mp4",
+   "tag": "seen_ambient",
+   "duration": 20.053367,
+   "due": false,
+   "panel_on_s": {
+    "gated": 19.68,
+    "blind": 19.68,
+    "caption": 19.68
+   },
+   "panel_on_frac": {
+    "gated": 0.9813813311250923,
+    "blind": 0.9813813311250923,
+    "caption": 0.9813813311250923
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "un_raining_71I9l62a.mp4",
+   "tag": "no_ambient",
+   "duration": 16.04,
+   "due": false,
+   "panel_on_s": {
+    "gated": 15.75,
+    "blind": 15.75,
+    "caption": 15.75
+   },
+   "panel_on_frac": {
+    "gated": 0.981920199501247,
+    "blind": 0.981920199501247,
+    "caption": 0.981920199501247
+   },
+   "n_shown": {
+    "gated": 3,
+    "blind": 3
+   }
+  },
+  {
+   "clip": "un_thunder_08A9CKS5.mp4",
+   "tag": "mixed",
+   "duration": 17.017,
+   "due": true,
+   "panel_on_s": {
+    "gated": 16.75,
+    "blind": 16.75,
+    "caption": 16.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9843098078392196,
+    "blind": 0.9843098078392196,
+    "caption": 0.9843098078392196
+   },
+   "n_shown": {
+    "gated": 2,
+    "blind": 2
+   }
+  },
+  {
+   "clip": "un_thunder_1gDcPnV9.mp4",
+   "tag": "no_ambient",
+   "duration": 20.0,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "un_train_horning_KKFdi5WQ.mp4",
+   "tag": "mixed",
+   "duration": 20.053367,
+   "due": true,
+   "panel_on_s": {
+    "gated": 19.75,
+    "blind": 19.75,
+    "caption": 19.75
+   },
+   "panel_on_frac": {
+    "gated": 0.9848720167540942,
+    "blind": 0.9848720167540942,
+    "caption": 0.9848720167540942
+   },
+   "n_shown": {
+    "gated": 5,
+    "blind": 5
+   }
+  },
+  {
+   "clip": "un_wind_noise_-z9Iv2Qj.mp4",
+   "tag": "no_ambient",
+   "duration": 20.053367,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.0,
+    "caption": 0.0
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 0
+   }
+  },
+  {
+   "clip": "voa_worldseries.mp4",
+   "tag": "unseen_ambient",
+   "duration": 18.0,
+   "due": true,
+   "panel_on_s": {
+    "gated": 6.09,
+    "blind": 6.09,
+    "caption": 6.09
+   },
+   "panel_on_frac": {
+    "gated": 0.3383333333333333,
+    "blind": 0.3383333333333333,
+    "caption": 0.3383333333333333
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "waterfall_kawaida_01.mp4",
+   "tag": "seen_ambient",
+   "duration": 11.246,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 10.8154375,
+    "caption": 10.8154375
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9617141650364573,
+    "caption": 0.9617141650364573
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "waves_herzliya.webm",
+   "tag": "seen_ambient",
+   "duration": 12.563,
+   "due": false,
+   "panel_on_s": {
+    "gated": 0.0,
+    "blind": 12.070437499999999,
+    "caption": 12.070437499999999
+   },
+   "panel_on_frac": {
+    "gated": 0.0,
+    "blind": 0.9607926052694419,
+    "caption": 0.9607926052694419
+   },
+   "n_shown": {
+    "gated": 0,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "wc_japanese_drama.mp4",
+   "tag": "seen_ambient",
+   "duration": 17.017,
+   "due": false,
+   "panel_on_s": {
+    "gated": 8.45,
+    "blind": 8.45,
+    "caption": 8.45
+   },
+   "panel_on_frac": {
+    "gated": 0.49656226126814357,
+    "blind": 0.49656226126814357,
+    "caption": 0.49656226126814357
+   },
+   "n_shown": {
+    "gated": 1,
+    "blind": 1
+   }
+  },
+  {
+   "clip": "wc_korean_thriller.mp4",
+   "tag": "mixed",
+   "duration": 16.016,
+   "due": true,
+   "panel_on_s": {
+    "gated": 9.5,
+    "blind": 13.75,
+    "caption": 13.75
+   },
+   "panel_on_frac": {
+    "gated": 0.5931568431568432,
+    "blind": 0.8585164835164836,
+    "caption": 0.8585164835164836
+   },
+   "n_shown": {
+    "gated": 4,
+    "blind": 5
+   }
+  }
+ ]
+}

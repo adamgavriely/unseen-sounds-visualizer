@@ -35,8 +35,7 @@ in four scenarios against a blind audio-to-image baseline and an audio-captionin
 an automatic protocol in which a vision--language model describes the augmented video and a
 judge scores it against a reference. Under the human-grounded reference the gated system ties
 the blind baseline overall (3.17 vs 3.16 on a 0--4 scale, 100 clips), beats it where no picture
-is due ($+0.26$; the 95\% confidence interval excludes zero) and loses where one is ($-0.24$); a perfect gate would score
-3.25. Three findings about the evaluation itself are reported alongside. First, the reference specified in the proposal is written by the system's own models and biases the comparison by half a point. Second, a reference built by independent models cannot decide whether a source is on screen better than chance. Third, the rubric is asymmetric -- a withheld picture scores 0, a redundant one about 3 -- so it penalises staying silent, which is the behaviour the gate exists to provide.
+is due ($+0.26$; the 95\% confidence interval excludes zero) and loses where one is ($-0.24$). A perfect gate would score 3.62: each system loses about 0.45 to it, the gated one where a picture is due, the blind one where it is not. Three findings about the evaluation itself are reported alongside. First, the reference specified in the proposal is written by the system's own models and biases the comparison by half a point. Second, a reference built by independent models cannot decide whether a source is on screen better than chance. Third, the rubric is asymmetric -- a withheld picture scores 0, a redundant one about 3 -- so it penalises staying silent, which is the behaviour the gate exists to provide.
 \end{abstract}
 
 % ======================================================================
@@ -282,7 +281,7 @@ fell as filtering grew. Yet 36\% of clips that contain ambient sound at all are 
 the phenomenon is not rare, the acquisition funnel discards it. The first 209 tags predate any
 model-based filtering and are the unbiased sample.
 
-\textbf{Label stability.} The annotator re-labelled sixty clips in shuffled order without seeing the earlier label. The two labels agreed on 78\% (Cohen's $\kappa = 0.60$; 1 is perfect agreement, 0 is chance). The instability is in the positive class (\emph{unseen\_ambient}
+\textbf{Label stability (intra-rater).} The annotator re-labelled sixty clips in shuffled order without seeing the earlier label. The two labels agreed on 78\% (Cohen's $\kappa = 0.60$; 1 is perfect agreement, 0 is chance). This is one person's agreement with themself; no second annotator was available, so inter-rater agreement is unknown and the oracle above is a ceiling relative to labels that disagree with themselves on about a fifth of clips. The instability is in the positive class (\emph{unseen\_ambient}
 reproduced 12/20 against \emph{seen\_ambient} 19/20), which is the class the gate is judged on.
 
 \textbf{Check for over-tuning on the test set.} We split the labelled clips in half (equal scenario mix), tuned every threshold on one half, tested the frozen values on the other, and repeated with five random splits: the held-out half scored
@@ -296,13 +295,12 @@ limited by what a vision--language model can answer, not by its configuration.
 \toprule
 visibility check vs.\ DCASE 2025 gold (258 events) & \\
 \midrule
-agreement & 66.7\% \\
+agreement & 66.7\% ($\pm 5.8$; balanced accuracy 66\%) \\
 off-screen recall (sound correctly not silenced) & 97\% \\
 on-screen recall (visible source correctly silenced) & 35\% \\
 \bottomrule
 \end{tabular}\end{center}
-The check is timid in one direction: it almost never silences a sound whose source is off screen,
-and silences only a third of those whose source is on screen. The DCASE on/off-screen label is geometric -- the source's direction of arrival falls inside a 100-degree field
+The check is timid in one direction: it almost never silences a sound whose source is off screen, and silences only a third of those whose source is on screen; a rule that never silences anything would score 97\% and 0\% on the same two lines. The DCASE on/off-screen label is geometric -- the source's direction of arrival falls inside a 100-degree field
 of view cut from a 360-degree capture -- not ``the viewer can see it making the sound'', so
 part of the on-screen shortfall is the check answering a stricter question than the label.
 
@@ -381,20 +379,18 @@ run & reference & proposed & blind a2i & audio caption \\
 \toprule
 run & proposed vs.\ blind: win / tie / loss & mean diff & 95\% CI & oracle gate \\
 \midrule
-\tagref{v2} & 11 / 52 / 37 & $-0.70$ & $[-0.98, -0.43]$ & 2.89 \\
-\tagref{v2\_grounded} & 22 / 54 / 24 & $-0.24$ & $[-0.47, -0.02]$ & 3.19 \\
-\tagref{v2\_indep\_list} & 12 / 59 / 29 & $-0.55$ & $[-0.82, -0.30]$ & 2.88 \\
-\tagref{v3} & 12 / 61 / 27 & $-0.40$ & $[-0.66, -0.16]$ & 3.01 \\
-\tagref{v3\_grounded} & 21 / 64 / 15 & $+0.01$ & $[-0.15, +0.18]$ & 3.25 \\
+\tagref{v2} & 11 / 52 / 37 & $-0.70$ & $[-0.98, -0.43]$ & -- \\
+\tagref{v2\_grounded} & 22 / 54 / 24 & $-0.24$ & $[-0.47, -0.02]$ & 3.56 \\
+\tagref{v2\_indep\_list} & 12 / 59 / 29 & $-0.55$ & $[-0.82, -0.30]$ & -- \\
+\tagref{v3} & 12 / 61 / 27 & $-0.40$ & $[-0.66, -0.16]$ & -- \\
+\tagref{v3\_grounded} & 21 / 64 / 15 & $+0.01$ & $[-0.15, +0.18]$ & 3.62 \\
 \bottomrule
 \end{tabular}\end{center}
 On \tagref{v2} the blind baseline scores higher than the gated system under every reference,
 with the interval excluding zero each time; the circular reference was not what held the gate
 back. On \tagref{v3} -- the shipping configuration: BEATs, per-sound visibility, event
 depictions, ontology deduplication -- the gap closes to a tie under the human-grounded reference
-($+0.01$, 21 wins to 15 losses) while remaining $-0.40$ under the model-derived one. The oracle
-row is the ceiling any gate could reach on this benchmark with the best system's output where a
-picture is due: \tagref{v3} sits 0.08 below it. The gated system also beats the captioning
+($+0.01$, 21 wins to 15 losses) while remaining $-0.40$ under the model-derived one. The oracle column is the ceiling any gate could reach on this benchmark: a correct silence scores 4 by the rubric's own rule where no picture is due, and the best system's output counts where one is due. It is defined only under the human-grounded references, where silence on a seen or no-ambient clip is scored 4. (An earlier draft reported 3.25, computed by letting the captioning baseline's text score stand in for silence; that put the oracle below a system that showed a redundant picture the judge liked, on 12 clips.) The gated system sits 0.45 below the oracle and the blind baseline 0.46 -- the same distance, lost in opposite places (\S\ref{sec:oracle}). The gated system also beats the captioning
 baseline on \tagref{v3\_grounded} ($+0.28$, $[+0.10, +0.46]$).
 
 \textbf{The independent reference is not neutral either.} Its silence decision (``nothing beyond
@@ -431,8 +427,7 @@ siren blaring'' is shown for the whole sound.}
 % paired_stats.py: the proposal's four scenarios, grouped by whether a picture is due. Same
 % judge score in both groups; a per-group metric would be a rubric chosen after the result.
 The four scenarios were defined in the proposal before any system was run; the pooled score is
-reported first and then split by whether a picture is due (unseen and mixed clips) or not (seen
-and no-ambient clips), with the same judge score in both groups.
+reported first and then split by whether a picture is due (unseen and mixed clips) or not (seen and no-ambient clips), with the same judge score in both groups. The split is a description of the pooled result, not a second test: the two halves must roughly cancel because the total is a tie, and each half of 50 clips carries about $\pm 0.2$.
 
 \begin{center}\begin{tabular}{llcccc}
 \toprule
@@ -445,13 +440,53 @@ run & group ($n=50$) & proposed & blind & caption & proposed $-$ blind \\
 \bottomrule
 \end{tabular}\end{center}
 
+\subsubsection*{Distance to a perfect gate}\label{sec:oracle}
+% scripts/oracle_gap.py v3_grounded -> benchmark/oracle_gap_v3_grounded.json (2026-09-16)
+The same scores, read against the oracle (perfect gate from the human label; correct silence
+= 4, best output where a picture is due), paired per clip with a bootstrap 95\% CI on the gap:
+
+\begin{center}\begin{tabular}{lcccc}
+\toprule
+\tagref{v3\_grounded} & oracle & gated & blind & caption \\
+\midrule
+picture due ($n=50$) & 3.24 & 2.78 ($-0.46$ $[0.24, 0.72]$) & 3.02 ($-0.22$ $[0.08, 0.40]$) & 2.76 ($-0.48$) \\
+no picture due ($n=50$) & 4.00 & 3.56 ($-0.44$ $[0.30, 0.58]$) & 3.30 ($-0.70$ $[0.56, 0.84]$) & 3.02 ($-0.98$) \\
+all ($n=100$) & 3.62 & 3.17 ($-0.45$ $[0.32, 0.60]$) & 3.16 ($-0.46$ $[0.35, 0.58]$) & 2.89 ($-0.73$) \\
+\bottomrule
+\end{tabular}\end{center}
+The two systems are the same distance from the ceiling and lose it in opposite places: the
+gated system where a picture is due (withheld pictures, mostly detector misses, \S\ref{sec:v4}),
+the blind baseline where none is due (redundant pictures). Neither is near the ceiling.
+
+\subsubsection*{Cost to the viewer}\label{sec:viewer-cost}
+% scripts/cost_metrics.py -> benchmark/cost_metrics_v3.json (2026-09-16); from the cached
+% gate decisions (agree with the protocol run on 97/100 clips on whether anything was shown).
+The judge score is a benefit measure; the attention a panel takes is its cost, and the gate
+exists to reduce that cost. From the cached test decisions, the panel is on for the union of
+the shown sounds' spans (each held at least the 1.5\,s minimum dwell):
+
+\begin{center}\begin{tabular}{lcccc}
+\toprule
+ & \multicolumn{2}{c}{panel on, \% of clip [95\% CI]} & \multicolumn{2}{c}{seconds where nothing was due} \\
+ & gated & blind / caption & gated & blind / caption \\
+\midrule
+picture due ($n=50$) & 58\% [47, 69] & 67\% [57, 77] & -- & -- \\
+no picture due ($n=50$) & 36\% [25, 48] & 52\% [40, 64] & 357\,s (7.1 / clip) & 506\,s (10.1 / clip) \\
+all ($n=100$) & 47\% [39, 56] & 60\% [52, 68] & & \\
+\bottomrule
+\end{tabular}\end{center}
+The gate removes 30\% of the panel time spent where nothing was due (357 against 506 seconds
+over the 50 clips) at the price of the 11 withheld pictures above; the captioning baseline has
+the blind baseline's timeline with a text line in place of a picture. These are descriptive
+numbers from the same run, reported so that benefit and cost stand side by side; they are not
+a user measure of distraction.
+
 The split makes the finding precise: the gate does the right thing when nothing is missing and
 still fails when something is. Of the 15 clips where the blind baseline beats \tagref{v3}, most
 are a picture withheld -- the visibility check named a source that was on screen but not
 visibly making the sound, or the sound did not reach the display bar -- and a withheld picture
 scores 0 where a redundant one scores about 3. Under that rubric the gate must be right about
-four times in five when it stays silent merely to break even, which is why a perfect gate only
-narrowly beats the blind baseline (3.25 vs 3.16). \S\ref{sec:v4} reports the one change this
+four times in five when it stays silent merely to break even, which is why the blind baseline, at 3.16, sits only 0.46 below a perfect gate's 3.62: its 39 redundant pictures cost about one point each, where the gated system's 11 withheld pictures cost four. \S\ref{sec:v4} reports the one change this
 licenses: setting the silence rule on the development split with the rubric's own costs.
 
 \subsection{Cost sensitivity of the gate decision (secondary, post-hoc)}\label{sec:cost}
@@ -486,8 +521,7 @@ audio caption & 82 & 43 & 7 & 39 & 0.52 & 0.86 & 0.833 & 0.540 \\
 \end{center}
 
 At the judge's implied ratio ($r \approx 0.25$) the two systems tie ($-0.012$, 95\% CI
-$[-0.057, +0.025]$); the gated system is preferred from $r = 0.40$ upward and leads by $+0.070$
-at $r = 1$ (CI $[0.000, +0.150]$). The claim this licenses is conditional: \emph{the gate is
+$[-0.057, +0.025]$); the gated system is preferred from $r = 0.40$ upward (the crossover itself is uncertain: bootstrap 95\% CI $[0.08, 1.00]$; the gated system never fails to cross in any resample) and leads by $+0.070$ at $r = 1$ (CI $[0.000, +0.150]$). The analysis was added after the test results were seen and is exploratory. The claim this licenses is conditional: \emph{the gate is
 preferred whenever a redundant picture costs more than about forty percent of a withheld one};
 whether real viewers' costs exceed that is an empirical question this thesis does not answer.
 The reviewers' accessibility reading -- redundancy erodes trust in the channel and compounds over a
@@ -592,9 +626,15 @@ Second, the sweep could not observe the failure it was launched to fix -- all 25
 are in the test set, none in development -- so no tuned variant was run; the shipping numbers
 stand.
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.78\linewidth]{fig_detector_tradeoff.pdf}
+\caption{The detector's trade-off on the 100 labelled development detections (77 phantoms, 23 real): raising the display bar from 0.35 removes phantoms and loses real sounds along the curve; the filters tried (points; \S\ref{sec:v4}) sit on or below it. Dotted lines are the declared bars. Points marked * were measured as unseen clips keeping a picture rather than real detections kept.}
+\label{fig:tradeoff}
+\end{figure}
+
 \textbf{Reading the errors instead.} The cached votes explain both directions without a GPU.
-Of the eleven test clips where the gated system showed nothing and a picture was due, seven
-are the detector: nothing reached the bar, because the ambient sound sat under speech or
+Of the eleven test clips where the gated system showed nothing and a picture was due, seven -- in our reading of the cached votes, not an independent classification -- are the detector: nothing reached the bar, because the ambient sound sat under speech or
 music (crowd hubbub 0.22 under \emph{Speech} 0.84; rain 0.23 under \emph{Music} 0.81; drums
 0.29 under \emph{Music} 0.65) or was a texture at 0.24--0.31. The other four are \emph{Vehicle}
 in street scenes, where cars are in frame and every stretch was unanimously judged visible
@@ -667,8 +707,28 @@ is therefore real but small under this rubric, and it lies entirely in what it d
 % ======================================================================
 \section{Limitations}
 % Mirror LIMITATIONS.md (repository root); keep the two in step.
-Stated here rather than left for a reader to find; \texttt{LIMITATIONS.md} in the repository
-keeps the full list in step with the code.
+Stated here rather than left for a reader to find; \texttt{LIMITATIONS.md} in the repository keeps the full list in step with the code.
+
+\textbf{Which numbers were fixed in advance.} The headline was run once with the protocol,
+baselines and scenarios of the proposal; everything else in the results section is either a
+pre-declared experiment with a written pass bar, or a reading of the same scores made after
+they were seen:
+
+\begin{center}\begin{tabular}{p{0.46\linewidth}p{0.48\linewidth}}
+\toprule
+pre-registered (bar written before the run) & exploratory (after the results were seen) \\
+\midrule
+the pooled comparison and its CI (\S\ref{sec:results}); the scenario groups as a split;
+the gate sweep on the development split; the seven detector attempts; the two evaluation
+pilots of 15--16 September; the DCASE onset and visibility checks &
+the cost-sensitivity crossover (\S\ref{sec:cost}); the distance-to-oracle and cost-to-viewer
+tables (\S\ref{sec:oracle}); the reading of the eleven withheld pictures and the phantom share
+(\S\ref{sec:v4}); the second-judge comparison; the reference switch from model-derived to
+human-grounded (the labels predate v3; the switch followed the review of 14 September) \\
+\bottomrule
+\end{tabular}\end{center}
+Exploratory numbers describe the run; they do not test a hypothesis, and no correction for
+multiple comparisons is applied because none is treated as a test.
 
 \textbf{One annotator} ($\kappa = 0.60$ against their own earlier labels, unstable on the
 positive class). \textbf{One judge decides the headline}; a second reproduces the gated-versus-blind

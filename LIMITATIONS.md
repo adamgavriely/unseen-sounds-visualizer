@@ -73,15 +73,25 @@ detail behind those sentences.
   detector heard nothing, the grounded reference reads "nothing beyond the picture" and every
   system scores 4. The clip-level cost-sensitivity analysis (report §Cost sensitivity) counts
   them as misses for all systems; the judge score does not.
+- **The oracle bound was mis-computed until 2026-09-16.** The "perfect gate" score let the
+  captioning baseline's text score stand in for silence, which put the oracle below a system
+  that showed a redundant picture the judge liked on 12 clips (3.25). Corrected: a correct
+  silence scores 4 by the rubric's rule, the best output counts where a picture is due; the
+  oracle is 3.62 (v3, human-grounded) and 3.56 (v2), defined only under the grounded
+  references. Both systems sit ~0.45 below it (`scripts/oracle_gap.py`).
 - **The cost-sensitivity analysis is secondary and coarse.** Added after the test results were seen. The cost of a redundant picture relative to a
   missed one (r) is not fixed; results are shown for a range, and the gate is ahead once r
-  exceeds 0.40. It scores only
+  exceeds 0.40 — but the crossover itself has a bootstrap 95% CI of [0.08, 1.00]. It scores only
   whether the gate opened at least once when it should have, not when, for which sound, or
   with what picture.
 - **The independent reference's "does this sentence match the audio?" check is uncalibrated.**
   It uses a fixed similarity cut-off (MiniLM cosine 0.50) never tuned against ground truth; calibration on DCASE gold is planned but
   not done.
-- **One annotator.** Re-labelling 60 clips without seeing the first labels agreed at κ = 0.60 (Cohen's kappa,
+- **Cost to the viewer is a descriptive number, not a user measure.** Panel-on time and
+  wasted seconds (`scripts/cost_metrics.py`) come from the cached gate decisions, which agree
+  with the protocol run on 97 of 100 clips on whether anything was shown; they say how long
+  the panel was on, not how distracting it was.
+- **One annotator (intra-rater agreement only).** Re-labelling 60 clips without seeing the first labels agreed at κ = 0.60 (Cohen's kappa,
   "moderate"); most disagreement is on the "picture due" clips, the ones the gate is judged
   on.
 - **One judge decides the headline.** A second judge reproduces the gated-vs-blind gap
