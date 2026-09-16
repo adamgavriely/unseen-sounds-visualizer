@@ -1,6 +1,7 @@
 """Render a Markdown document to a readable A4 PDF (large type) with PyMuPDF.
 
-    python scripts/md_to_pdf.py docs/EXECUTIVE_SUMMARY.md docs/EXECUTIVE_SUMMARY.pdf
+    python scripts/md_to_pdf.py docs/EXECUTIVE_SUMMARY.md docs/EXECUTIVE_SUMMARY.pdf        # large type
+    python scripts/md_to_pdf.py docs/SUPERVISOR_UPDATE.md docs/SUPERVISOR_UPDATE.pdf 0.8    # normal size
 """
 from __future__ import annotations
 
@@ -27,7 +28,7 @@ hr { border: 0; border-top: 1px solid #999; margin: 10pt 0; }
 """
 
 
-def main(src: str, dst: str):
+def main(src: str, dst: str, scale: float = 1.0):
     text = Path(src).read_text(encoding="utf-8")
     # Python-Markdown needs a blank line before a list; the summary often starts a list
     # right after a paragraph, which otherwise renders as one run-on paragraph
@@ -40,7 +41,8 @@ def main(src: str, dst: str):
         out.append(ln)
     text = "\n".join(out)
     html = markdown.markdown(text, extensions=["tables", "fenced_code", "sane_lists"])
-    story = pymupdf.Story(html=html, user_css=CSS)
+    css = CSS if scale == 1.0 else re.sub(r"(\d+(?:\.\d+)?)pt", lambda m: f"{float(m.group(1)) * scale:.1f}pt", CSS)
+    story = pymupdf.Story(html=html, user_css=css)
     writer = pymupdf.DocumentWriter(dst)
     page = pymupdf.paper_rect("a4")
     where = page + (48, 48, -48, -54)
@@ -57,4 +59,5 @@ def main(src: str, dst: str):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    # optional third argument: type scale (1.0 = large reading type; 0.8 = normal document size)
+    main(sys.argv[1], sys.argv[2], float(sys.argv[3]) if len(sys.argv) > 3 else 1.0)
