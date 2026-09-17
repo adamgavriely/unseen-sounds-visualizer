@@ -42,3 +42,34 @@ On fail, FLAM joins the attempts table with its numbers.
 
 No prompt engineering of the queries after seeing the numbers; no per-class bars; no
 re-tuning of the gate. The reason for a fail is diagnosed and written up like the others.
+
+## Outcome (added 2026-09-17 night, after the run)
+
+`benchmark/flam_setting.json`. (A bookkeeping error is disclosed first: the cache applied a
+sigmoid on top of FLAM's "unbiased" similarity, which is already a probability; the cached
+scores were converted back with the logit before evaluation — an exact inverse up to
+float16 rounding. The code no longer applies the sigmoid.)
+
+| bar | masked-event recall | clear-event recall | false positives / min |
+|---|---|---|---|
+| BEATs 0.35 (current) | 9.5% | 32.6% | 5.2 |
+| FLAM 0.35 | 80.2% | 91.5% | 1957 |
+| FLAM 0.75 | 73.0% | 90.7% | 1287 |
+| FLAM 0.95 | 69.8% | 88.4% | 693 |
+
+**FAILED as pre-registered:** no bar brings the false-positive rate within reach of BEATs'
+5.2 spans per minute, so the pass bars cannot even be applied at a matched rate (dev
+numbers at the fallback bar 0.95 are not meaningful and are not reported as results).
+
+**What the numbers say anyway.** Recall is the striking part: FLAM finds **7 to 8 of every 10
+sounds buried under speech or music** where BEATs finds 1 — the masked-miss problem is
+solvable by a frame-level language-audio model. The failure is precision with *this query
+set*: with the 527 bare AudioSet names as prompts, FLAM fires 60+ labels per 5-second clip
+even at 0.95 ("Hands", "Hammer", "Owl", "Lullaby" in ordinary indoor scenes). FLAM was
+trained on descriptive captions; single-word class names are poor prompts, and 527 of them
+overlap heavily, so every real sound also lights up dozens of neighbours.
+
+**Not done here** (per §Not done): no query rewriting after seeing the numbers. A follow-up
+is a *separate* pre-registration: a small descriptive query vocabulary (the pipeline's ~28
+families phrased as "the sound of …"), per-query calibration on held-out audio, and the same
+five bars. Recorded as attempt eight in the attempts table, with the recall finding.
