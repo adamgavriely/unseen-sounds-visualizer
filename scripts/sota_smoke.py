@@ -86,13 +86,14 @@ def part_vlm(video: Path, td: Path):
     name = "Qwen/Qwen3.8-27B"
     t0 = time.time()
     proc = AutoProcessor.from_pretrained(name)
-    model = AutoModelForImageTextToText.from_pretrained(name, torch_dtype=torch.bfloat16, device_map="cuda").eval()
+    model = AutoModelForImageTextToText.from_pretrained(name, dtype=torch.bfloat16, device_map="cuda").eval()
     print(f"[vlm] {name} loaded in {time.time() - t0:.0f}s, {vram()}", flush=True)
     frames = frames_of(video, td)
     q = ("These frames span a few seconds of a video in which the sound of a SIREN is heard. "
          "What in these frames, if anything, is visibly making that sound right now? Answer with the name of the thing, or 'nothing'.")
     msgs = [{"role": "user", "content": [{"type": "image"} for _ in frames] + [{"type": "text", "text": q}]}]
-    text = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
+    # Qwen3.x thinks by default; the pipeline wants the answer, not the reasoning
+    text = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False, enable_thinking=False)
     inputs = proc(text=[text], images=frames, return_tensors="pt").to("cuda")
     t0 = time.time()
     with torch.no_grad():
