@@ -60,6 +60,8 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                     num_frames=config.NUM_FRAMES, model=config.VIDEO_MODEL,
                     vlm_model=config.VLM_MODEL, siglip_model=config.SIGLIP_MODEL, owl_model=config.OWL_MODEL,
                         owl_threshold=config.OWL_THRESHOLD,
+                        sam3_model=getattr(config, "SAM3_MODEL", "facebook/sam3"),
+                        sam3_threshold=getattr(config, "SAM3_THRESHOLD", 0.5),
                         siglip_threshold=config.SIGLIP_THRESHOLD, device=config.DEVICE,
                     threshold=config.VISIBILITY_THRESHOLD)
     _dump(work / "scene.json", scene.to_dict())

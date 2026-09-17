@@ -231,3 +231,30 @@ FPS = 25
 # own descriptions measures self-consistency, not quality. Mistral-7B-Instruct is a
 # different family from Qwen2.5-VL, text-only, and fits alongside it on one GPU.
 JUDGE_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
+
+# ---------------------------------------------------------------------------------------
+# v4 (docs/prereg_v4.md): the SOTA configuration, applied one stage at a time so that each
+# swap is attributable. Nothing above changes -- v3 stays reproducible from the defaults;
+# a job calls config.use_v4("4"), ("45"), ("456") or ("23456") before running.
+SAM3_MODEL = "facebook/sam3"
+SAM3_THRESHOLD = 0.5          # SAM 3's own default presence bar; not tuned on our clips
+V4 = {
+    "2": {"VIDEO_BACKEND": "sam3"},
+    "3": {"WHISPER_MODEL": "ibm-granite/granite-speech-4.1-2b"},
+    "4": {"AED_MODEL": "flam", "ONSET_CAM": False},          # FLAM is frame-level already
+    "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": True},
+    "6": {"GEN_MODEL": "Qwen/Qwen-Image-2512", "RESOLUTION": (1024, 1024)},
+    "7": {"JUDGE_MODEL": "google/gemma-4-31B-it"},
+}
+
+
+def use_v4(stages: str = "23456") -> dict:
+    """Apply the v4 settings for these stages (a string of digits); returns what changed."""
+    import sys
+    me = sys.modules[__name__]
+    changed = {}
+    for s in stages:
+        for k, v in V4[s].items():
+            changed[k] = (getattr(me, k, None), v)
+            setattr(me, k, v)
+    return changed

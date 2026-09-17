@@ -19,6 +19,10 @@ from src.types import SpeechSegment
 def transcribe(wav_path: Path, model_size: str = "base",
                device: str = "cpu", compute_type: str = "int8",
                language: str = "en") -> List[SpeechSegment]:
+    # v4: Granite Speech 4.1-2B (see granite.py) when config names it; Whisper otherwise
+    if "granite" in str(model_size).lower():
+        from src.stage3_speech_recognition.granite import transcribe_granite
+        return transcribe_granite(Path(wav_path), device=device)
     try:
         from faster_whisper import WhisperModel
     except ImportError:

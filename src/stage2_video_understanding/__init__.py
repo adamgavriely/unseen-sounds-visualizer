@@ -216,6 +216,14 @@ def _analyze_visibility(video_path, backend: str = "clip", **kw) -> SceneContext
             device=kw.get("device", "cpu"),
             threshold=kw.get("owl_threshold", 0.20),
             candidates=kw.get("candidates"))
+    if backend == "sam3":
+        from src.stage2_video_understanding.sam3 import analyze_video_sam3
+        return analyze_video_sam3(
+            video_path, num_frames=kw.get("num_frames", 4),
+            model=kw.get("sam3_model", "facebook/sam3"),
+            device=kw.get("device", "cuda"),
+            threshold=kw.get("sam3_threshold", 0.5),
+            candidates=kw.get("candidates"))
     if backend == "vlm":
         from src.stage2_video_understanding.vlm import analyze_video_vlm  # lazy: GPU deps
         return analyze_video_vlm(

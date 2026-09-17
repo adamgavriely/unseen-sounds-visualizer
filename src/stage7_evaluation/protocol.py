@@ -140,12 +140,19 @@ class Backends:
     def _load(self):
         if self._vlm is None:
             import torch
-            from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+            from transformers import AutoProcessor
+            dtype = torch.bfloat16 if self.device == "cuda" else torch.float32
+            dev = "auto" if self.device == "cuda" else None
             proc = AutoProcessor.from_pretrained(self.vlm_model)
-            mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-                self.vlm_model,
-                torch_dtype=torch.bfloat16 if self.device == "cuda" else torch.float32,
-                device_map="auto" if self.device == "cuda" else None).eval()
+            if "Qwen2.5-VL" in self.vlm_model:
+                from transformers import Qwen2_5_VLForConditionalGeneration
+                mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained(
+                    self.vlm_model, torch_dtype=dtype, device_map=dev).eval()
+            else:
+                # v4: Qwen3.8-27B and any other native VL model (transformers >= 5.8)
+                from transformers import AutoModelForImageTextToText
+                mdl = AutoModelForImageTextToText.from_pretrained(
+                    self.vlm_model, dtype=dtype, device_map=dev).eval()
             self._vlm = (mdl, proc)
         return self._vlm
 
@@ -155,10 +162,14 @@ class Backends:
             import torch
             from transformers import AutoModelForCausalLM, AutoTokenizer
             tok = AutoTokenizer.from_pretrained(self.judge_model)
-            mdl = AutoModelForCausalLM.from_pretrained(
-                self.judge_model,
-                torch_dtype=torch.bfloat16 if self.device == "cuda" else torch.float32,
-                device_map="auto" if self.device == "cuda" else None).eval()
+            dtype = torch.bfloat16 if self.device == "cuda" else torch.float32
+            dev = "auto" if self.device == "cuda" else None
+            try:
+                mdl = AutoModelForCausalLM.from_pretrained(self.judge_model, dtype=dtype, device_map=dev).eval()
+            except (ValueError, KeyError):
+                # v4 judge Gemma-4-31B-it is a multimodal checkpoint used in text mode
+                from transformers import AutoModelForImageTextToText
+                mdl = AutoModelForImageTextToText.from_pretrained(self.judge_model, dtype=dtype, device_map=dev).eval()
             self._judge = (mdl, tok)
         return self._judge
 
@@ -186,6 +197,16 @@ class Backends:
         except Exception:
             pass
 
+    @staticmethod
+    def _template(proc, msgs) -> str:
+        """Chat template with the reasoning preamble off where the model has one (Qwen3.x):
+        the describer and the reference-builder are asked for one sentence."""
+        try:
+            return proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True,
+                                            enable_thinking=False)
+        except TypeError:
+            return proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+
     def describe_image(self, image_path: Path, prompt: str = DESCRIBE_PROMPT) -> str:
         import torch
         from PIL import Image
@@ -193,7 +214,7 @@ class Backends:
         img = Image.open(image_path).convert("RGB")
         msgs = [{"role": "user", "content": [{"type": "image"},
                                              {"type": "text", "text": prompt}]}]
-        text = proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+        text = self._template(proc, msgs)
         inputs = proc(text=[text], images=[img], return_tensors="pt").to(mdl.device)
         with torch.no_grad():
             out = mdl.generate(**inputs, max_new_tokens=80, do_sample=False)
@@ -224,7 +245,7 @@ class Backends:
                               skip_special_tokens=True).strip()
         mdl, proc = self._load()
         msgs = [{"role": "user", "content": [{"type": "text", "text": prompt}]}]
-        text = proc.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
+        text = self._template(proc, msgs)
         inputs = proc(text=[text], return_tensors="pt").to(mdl.device)
         with torch.no_grad():
             out = mdl.generate(**inputs, max_new_tokens=max_new_tokens, do_sample=False)

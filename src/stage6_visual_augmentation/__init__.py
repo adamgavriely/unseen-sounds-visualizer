@@ -301,12 +301,18 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
         import torch
         from diffusers import AutoPipelineForText2Image
         is_flux = "flux" in model.lower()
+        # Qwen-Image-2512 (v4, docs/prereg_v4.md): 20B MMDiT + a Qwen2.5-VL text encoder,
+        # ~57 GB in bf16 -- an A100-80 / RTX Pro 6000 job, no offload. Its guidance is
+        # "true" classifier-free guidance (true_cfg_scale), the card's recommended 50/4.0.
+        is_qwen = "qwen-image" in model.lower()
         if _PIPE is None:
-            _PIPE = AutoPipelineForText2Image.from_pretrained(
-                model, torch_dtype=(torch.bfloat16 if is_flux else torch.float16)
+            from diffusers import DiffusionPipeline
+            loader = DiffusionPipeline if is_qwen else AutoPipelineForText2Image
+            _PIPE = loader.from_pretrained(
+                model, torch_dtype=(torch.bfloat16 if (is_flux or is_qwen) else torch.float16)
                 if device == 'cuda' else torch.float32,
                 use_safetensors=True)
-            if is_flux and device == "cuda":
+            if is_flux and device == "cuda" and torch.cuda.get_device_properties(0).total_memory < 40e9:
                 # FLUX is ~24 GB in bf16 and the L4 exposes 22. Whole-component
                 # offload still OOMs; sequential offload moves one module at a time,
                 # ~25 s per 512 px image instead of ~2 s, and it fits.
@@ -315,7 +321,9 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
                 _PIPE = _PIPE.to(device)
             _PIPE.set_progress_bar_config(disable=True)
         kw = dict(prompt=prompt, width=size[0], height=size[1])
-        if 'turbo' in model or (is_flux and "schnell" in model.lower()):
+        if is_qwen:
+            kw.update(num_inference_steps=50, true_cfg_scale=4.0, negative_prompt=" ")
+        elif 'turbo' in model or (is_flux and "schnell" in model.lower()):
             # Distilled: trained for very few steps and ignores classifier-free
             # guidance, so a negative prompt does nothing here and a high guidance
             # scale degrades it. Also ~7x cheaper per image, which matters at 300.

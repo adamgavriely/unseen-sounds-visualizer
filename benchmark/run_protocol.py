@@ -238,7 +238,9 @@ def phase_describe(args, backends):
 
     for system in args.systems:
         configure(system)
-        work_root = work_root_for(system, args.tag)
+        # --work-tag: describe another run's rendered panels under this tag (v4 re-describes
+        # v3's panels with the v4 evaluation pair so the rows are comparable)
+        work_root = work_root_for(system, getattr(args, "work_tag", None) or args.tag)
         for i, (clip, tag) in enumerate(clips, 1):
             if (clip.name, system) in done:
                 continue
@@ -431,6 +433,8 @@ def main():
                          "missing, so staying silent is the correct output")
     ap.add_argument("--rescore", action="store_true",
                     help="discard existing scores and re-judge the cached descriptions")
+    ap.add_argument("--work-tag", default=None,
+                    help="describe the rendered artifacts of this other tag (with --skip-render)")
     ap.add_argument("--skip-render", action="store_true",
                     help="reuse existing pipeline artifacts instead of re-rendering")
     args = ap.parse_args()

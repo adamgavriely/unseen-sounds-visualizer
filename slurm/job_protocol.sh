@@ -59,6 +59,8 @@ RESCORE="${RESCORE:-}"
 INDEP="${INDEP:-}"
 GROUNDED="${GROUNDED:-}"
 SKIP_RENDER="${SKIP_RENDER:-}"
+WORK_TAG="${WORK_TAG:-}"
+V4="${V4:-}"          # v4 stages to apply (docs/prereg_v4.md), e.g. "4", "45", "23456"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
 
 # The judge pass is text-only and fits on a small card; the describe pass is not.
@@ -85,6 +87,8 @@ import config
 config.DEVICE = "cuda"
 config.VIDEO_BACKEND = "owlv2"     # strongest visibility backend (see sec:findings)
 config.GEN_BACKEND = "${GEN}"
+if "${V4}":
+    print("[v4]", config.use_v4("${V4}"), flush=True)
 # GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which
 # would have evaluated a generator the pipeline no longer ships. config.py holds the
 # shipping one (PixArt-Sigma), and the point of the run is to score what ships.
@@ -98,6 +102,7 @@ if "${RESCORE}" and phase == "judge": argv += ["--rescore"]
 if "${GROUNDED}" and phase == "judge": argv += ["--grounded"]
 if "${INDEP}" and phase == "judge":    argv += ["--independent"]
 if "${SKIP_RENDER}" and phase == "describe": argv += ["--skip-render"]
+if "${WORK_TAG}" and phase == "describe":    argv += ["--work-tag", "${WORK_TAG}"]
 sys.argv = argv
 print("[argv]", " ".join(argv), flush=True)
 from benchmark.run_protocol import main

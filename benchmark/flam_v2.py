@@ -79,6 +79,15 @@ def cache():
         print(f"[cache] {name}: {len(items)} clips, {n} scored now", flush=True)
 
 
+def cache_benchmark():
+    """The pipeline's pre-pass: raw scores for every benchmark clip into the work cache
+    that stage 4 reads (flam_infer.CACHE_DIR), keyed by clip stem."""
+    from src.stage4_audio_event_detection.flam_infer import cache_clips, CACHE_DIR
+    clips = sorted(p for p in (_ROOT / "data" / "input" / "benchmark").rglob("*") if p.suffix.lower() in (".mp4", ".mkv", ".webm", ".mov"))
+    n = cache_clips(clips, out_dir=CACHE_DIR)
+    print(f"[cache] benchmark: {len(clips)} clips, {n} scored now -> {CACHE_DIR}", flush=True)
+
+
 # ----------------------------------------------------------------------------- rule
 def col_spans(s, times, bar):
     """the shipping rule on one column: max >= bar, extended through >= bar/2, >= MIN_DUR."""
@@ -227,11 +236,13 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--fetch", action="store_true")
     ap.add_argument("--cache", action="store_true")
+    ap.add_argument("--cache-benchmark", action="store_true")
     ap.add_argument("--calibrate", action="store_true")
     ap.add_argument("--eval", action="store_true")
     a = ap.parse_args()
     if a.fetch: fetch()
     if a.cache: cache()
+    if a.cache_benchmark: cache_benchmark()
     if a.calibrate: calibrate()
     if a.eval: evaluate()
 
