@@ -11,10 +11,10 @@ models) will be scored against.
 1. Open `benchmark/gold/index.html` in a browser (double-click; it plays the clips from
    `data/input/benchmark/`, so it must be run from a checkout that has the clips).
 2. Type your initials at the top. Read the ten-line guideline on the right.
-3. Per clip: listen once; add every noticeable non-speech, non-music sound; tick "source
-   visible" and "covered by speech/music" as they apply; stamp start/end with `[` and `]`;
-   only then, if you want, open "what the detector heard". Write the sentence, or press
-   "nothing beyond the picture". Save and next (`N`).
+3. Per clip: the detector's guesses are pre-filled (label + rough time). Listen once; delete
+   what you do not hear (×), add what it missed (`A`); tick "source visible" and "covered by
+   speech/music" as they apply. Write the sentence, or press "nothing beyond the picture".
+   Save and next (`N`). The pre-fill is disclosed in the thesis as a possible anchoring bias.
 4. Stop any time; press **Export JSON** and put the file in `benchmark/gold/annotations/`.
    Progress is also kept in the browser under your initials.
 

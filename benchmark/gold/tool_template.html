@@ -18,6 +18,8 @@ video{width:100%;max-width:100%;background:#000;border-radius:8px}
 .card{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;margin-bottom:10px}
 .sound{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:start;border-top:1px solid var(--line);padding:8px 0}
 .sound:first-child{border-top:0}
+.sound.suggested input[type=text]{background:#f4f7fa}
+.sound.suggested::before{content:"detector";font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);grid-column:1 / -1}
 .sound label{font-size:13px;color:var(--muted);margin-right:10px;white-space:nowrap}
 .sound input[type=text]{width:100%;font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;box-sizing:border-box}
 .sound .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
@@ -61,12 +63,13 @@ select{font:inherit;font-size:14px;padding:4px}
   <p class="hint"><kbd>Space</kbd> play/pause · <kbd>[</kbd> mark start of the selected sound at the current time · <kbd>]</kbd> mark its end · <kbd>A</kbd> add a sound · <kbd>N</kbd> next clip · <kbd>P</kbd> previous</p>
 
   <div class="card">
-    <h2>1 · Sounds you hear (listen first, without the list)</h2>
-    <p class="hint">Add every non-speech, non-music sound a hearing viewer would notice. Then, for each: is its <b>source visible while it sounds</b>? Is it <b>covered by speech or music</b> (hard to hear)? Mark its rough start and end.</p>
+    <h2>1 · Sounds — suggested by the detector; delete the wrong ones, add the missing ones</h2>
+    <p class="hint">Each row is a sound the detector thinks it heard (with its time). Listen once: press <b>×</b> on anything you do not hear; press <b>+ add</b> for anything it missed. Then for each remaining sound tick <b>source visible while it sounds</b> and <b>covered by speech/music</b> if they apply. Times are rough; fix them with <kbd>[</kbd> <kbd>]</kbd> only if clearly wrong.</p>
     <div id="sounds"></div>
     <div class="nav"><button id="addSound">+ add a sound (A)</button>
-      <button id="showCands" class="small">show what the detector heard (only after your own pass)</button></div>
+      <button id="showCands" class="small">show the detector's full list again</button></div>
     <div class="cands" id="cands"></div>
+    <datalist id="labels"><option value="siren"><option value="vehicle / traffic"><option value="engine"><option value="car horn"><option value="train"><option value="aircraft / helicopter"><option value="dog barking"><option value="bird"><option value="animal"><option value="crowd / people talking (ambient)"><option value="footsteps"><option value="door"><option value="knock"><option value="glass breaking"><option value="explosion / gunshot"><option value="alarm / bell"><option value="phone ringing"><option value="applause"><option value="laughter"><option value="rain"><option value="thunder"><option value="wind"><option value="water / waves"><option value="fire / crackling"><option value="machine / tool"><option value="kitchen sounds"><option value="baby crying"></datalist>
   </div>
 
   <div class="card">
@@ -95,7 +98,7 @@ select{font:inherit;font-size:14px;padding:4px}
       <li>If the source is visible for part of the sound only, tick "visible" only if it is visible for most of the sound; add a note.</li>
       <li>"Covered by speech/music": you can hear the sound only with effort because talking or a soundtrack sits on top of it.</li>
       <li>Start/end: rough is fine (half a second). Use the video's time; <kbd>[</kbd> and <kbd>]</kbd> stamp the current time.</li>
-      <li>Do your own pass <b>before</b> opening "what the detector heard". The list may be wrong; do not copy it.</li>
+      <li>The rows are the detector's guesses, there to save typing. It invents sounds and misses quiet ones: delete what you do not hear, add what it missed. Your ear decides.</li>
       <li>The sentence: write what the sound adds for a hearing viewer, in plain words. If nothing is missing, use the "nothing" button.</li>
     </ol>
     <p class="hint">Time: about 2–3 minutes per clip. Export your JSON when you stop (the page also keeps a copy in this browser).</p>
@@ -113,7 +116,7 @@ const CLIPS = /*__CLIPS__*/[];
   function load(){ try{ data = JSON.parse(localStorage.getItem(key()) || "{}"); }catch(e){ data = {}; } }
   function save(){ try{ localStorage.setItem(key(), JSON.stringify(data)); $("saved").textContent = "saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); }catch(e){ $("saved").textContent = "could not save in this browser — export often"; } renderProgress(); }
   function blank(c){ return {clip:c.id, sounds:[], sentence:"", picture_due:false, unsure:false, note:"", done:false, opened_candidates:false, updated:null}; }
-  function current(){ const c = CLIPS[idx]; if(!data[c.id]) data[c.id] = blank(c); return data[c.id]; }
+  function current(){ const c = CLIPS[idx]; if(!data[c.id]){ data[c.id] = blank(c); data[c.id].sounds = c.candidates.map(k => ({label:k.label, visible:false, masked:false, start:k.start, end:k.end, from_detector:true, suggested:true})); data[c.id].opened_candidates = true; } return data[c.id]; }
 
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; CLIPS.forEach((c,i)=>{ const o = document.createElement("option"); o.value = i; o.textContent = (i+1) + " · " + c.id + (data[c.id] && data[c.id].done ? " ✓" : ""); s.appendChild(o); }); s.value = idx; }
   function renderProgress(){ const n = CLIPS.filter(c => data[c.id] && data[c.id].done).length; $("progress").textContent = n + " / " + CLIPS.length + " done"; $("progressList").textContent = CLIPS.map((c,i)=> (data[c.id]&&data[c.id].done) ? "✓" : "·").join(" "); renderSel(); }
@@ -121,8 +124,8 @@ const CLIPS = /*__CLIPS__*/[];
     const a = current(); const box = $("sounds"); box.innerHTML = "";
     if(!a.sounds.length){ box.innerHTML = '<p class="hint">no sounds yet — add one, or tick "nothing beyond the picture" below if there is no ambient sound worth noting</p>'; }
     a.sounds.forEach((s,i)=>{
-      const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "");
-      d.innerHTML = '<div><input type="text" placeholder="what is the sound? (e.g. siren, dog barking, glass breaking)"><div class="row">'
+      const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "") + (s.suggested ? " suggested" : "");
+      d.innerHTML = '<div><input type="text" list="labels" placeholder="what is the sound? (e.g. siren, dog barking, glass breaking)"><div class="row">'
         + '<label><input type="checkbox" class="vis"> source visible while it sounds</label>'
         + '<label><input type="checkbox" class="masked"> covered by speech/music</label>'
         + '<span class="t">start <span class="st">–</span> · end <span class="en">–</span></span>'
