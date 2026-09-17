@@ -214,8 +214,31 @@ textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink
   <textarea class="private" id="note-2" placeholder="his reactions to the clips"></textarea>
 </section>
 
-<!-- 3 tried and failed -->
-<section class="step" data-step="3" data-min="2">
+<!-- 3 working / not working -->
+<section class="step" data-step="3" data-min="1">
+  <div class="eyebrow"><span>What works, what does not</span><span class="budget">1 min</span></div>
+  <h2>Real test clips, scored by the judge (ours / blind)</h2>
+  <div class="say"><b>Say:</b> "It works when the sound is clear and the source is genuinely out of view; it fails in three ways — the detector never hears a buried sound, the label is debatable, or the picture drawn is the wrong thing."</div>
+  <div class="two">
+    <div class="col"><h3>Works</h3><ul>
+      <li><b>Correct picture, source out of view.</b> Ambulance behind the camera → "ambulance siren blaring" (<span class="num">4 / 3</span>). Basement scene: cattle and a siren both off screen → two pictures (<span class="num">4 / 3</span>).</li>
+      <li><b>Correct silence, source on screen.</b> Police car with its siren; a London protest; a mountain stream; rain on a road; logging in a forest — panel empty, <span class="num">4 / 3</span> on nine such clips: blind draws a redundant picture each time.</li>
+      <li><b>Less clutter.</b> Panel on 47% of a clip vs 60%; 30% less panel time where nothing was due.</li>
+      <li><b>Timing.</b> Pictures start where the sound begins (mean error 0.31 s on DCASE's human onsets).</li>
+    </ul></div>
+    <div class="col"><h3>Does not work</h3><ul>
+      <li><b>Buried sound never detected</b> (7 of 11 misses). Cobblestone road: a train and traffic under speech — nothing reached the 0.35 bar, panel empty (<span class="num">0 / 2</span>).</li>
+      <li><b>Debatable label</b> (4 of 11). New York street (<span class="num">0 / 3</span>); a motorcycle ride where the rider is seen but the label says the engine is "unseen" (<span class="num">0 / 1</span>).</li>
+      <li><b>Wrong picture drawn.</b> Helicopter clip: the Vehicle sound depicted as a <i>megaphone</i> — judge gives 0 although a helicopter picture was also shown (<span class="num">0 / 3</span>). Storm: Thunder drawn as a bird (<span class="num">1 / 3</span>). Pet shop: an owl at 0.35 drawn as a generic songbird (<span class="num">1 / 3</span>).</li>
+      <li><b>Phantoms drawn.</b> Sheep in a jungle (0.41), a dog nobody hears (0.60), a whale at a Christmas market (0.36): the gate is right that nothing visible makes them, so the picture appears — about 80% of unnecessary pictures.</li>
+    </ul></div>
+  </div>
+  <p class="park"><b>If he asks "how often does each happen?":</b> on the 100 test clips — 39 correct pictures, 22 correct silences, 11 wrong silences (7 detector, 4 label), 28 unnecessary pictures (mostly phantoms). Blind: 43 / 11 / 7 / 39.</p>
+  <textarea class="private" id="note-wk" placeholder="private notes"></textarea>
+</section>
+
+<!-- 4 tried and failed -->
+<section class="step" data-step="4" data-min="2">
   <div class="eyebrow"><span>What was tried, and what it showed</span><span class="budget">2 min</span></div>
   <h2>Not ten failures — one finding</h2>
   <div class="say"><b>Say:</b> "Each of these ran against a bar declared beforehand; none crossed it, and together they locate the failure in one place: the detector under loud speech and music. Every fix sits on this one curve — fewer false sounds costs real sounds — and 7 of the 11 missed pictures are sounds no threshold reaches."</div>
@@ -260,7 +283,7 @@ textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink
 </section>
 
 <!-- 4 data -->
-<section class="step" data-step="4" data-min="2">
+<section class="step" data-step="5" data-min="2">
   <div class="eyebrow"><span>Where the data came from, and why</span><span class="budget">2 min</span></div>
   <h2>274 clips, four scenarios, five sources</h2>
   <div class="say"><b>Say:</b> "Off-screen ambient sound is rare in available video — every source yielded only 15–20% usable clips — which is exactly why no benchmark for it existed. One rule labels everything, borrowed from professional captioners: does the picture already tell the viewer this sound is happening?"</div>
@@ -288,7 +311,7 @@ textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink
 </section>
 
 <!-- 5 DHH -->
-<section class="step" data-step="5" data-min="2">
+<section class="step" data-step="6" data-min="2">
   <div class="eyebrow"><span>Deaf and hard-of-hearing viewers: what is known, what is not</span><span class="budget">2 min</span></div>
   <h2>The literature justifies the design; nothing yet justifies "helps DHH viewers"</h2>
   <div class="two">
@@ -314,8 +337,8 @@ textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink
 </section>
 
 <!-- 6 decisions -->
-<section class="step" data-step="6" data-min="6">
-  <div class="eyebrow"><span>Decisions</span><span class="budget">6 min</span></div>
+<section class="step" data-step="7" data-min="5">
+  <div class="eyebrow"><span>Decisions</span><span class="budget">5 min</span></div>
   <h2>Six decisions — four today, two by email if time is short</h2>
   <div class="say"><b>Say:</b> "Decisions 1 to 4 change what I write this week; 5 and 6 are administrative. I have written my default for each; if you say nothing, that is what I do."</div>
   <div class="tablewrap"><table id="qtable"><tr><th>#</th><th>question</th><th>my default</th><th>his answer</th><th>status</th></tr></table></div>
@@ -366,15 +389,15 @@ textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink
 <script>
 (function(){
   const STEPS = [
-    {label:"Opening", min:1}, {label:"Workflow", min:3}, {label:"Clips", min:4}, {label:"Tried", min:2},
-    {label:"Data", min:2}, {label:"DHH", min:2}, {label:"Decisions", min:6}];
+    {label:"Opening", min:1}, {label:"Workflow", min:3}, {label:"Clips", min:4}, {label:"Works / fails", min:1}, {label:"Tried", min:2},
+    {label:"Data", min:2}, {label:"DHH", min:2}, {label:"Decisions", min:5}];
   const QUESTIONS = [
-    {id:"q1", step:6, title:"1 · Contribution framing", text:"Working pipeline + benchmark and protocol + the measured limits. Acceptable? (I can rewrite the introduction and conclusion in a day; the numbers would not change.)", def:"findings framing"},
+    {id:"q1", step:7, title:"1 · Contribution framing", text:"Working pipeline + benchmark and protocol + the measured limits. Acceptable? (I can rewrite the introduction and conclusion in a day; the numbers would not change.)", def:"findings framing"},
     {id:"q2", step:1, title:"2 · Departures from the proposal", text:"PANNs → BEATs; SDXL → FLUX.1; 274 clips not 300; a development/test split; the circular reference replaced by one corrected by my labels. Any objection?", def:"accept"},
-    {id:"q3", step:4, title:"3 · Second annotator", text:"2–3 lab members, one hour each, 60 test clips, a web page I prepare. Ethics needed? Names? It moves submission to 19 Sept.", def:"no, if it risks the date"},
-    {id:"q4", step:5, title:"4 · State it plainly", text:"\"Helpfulness to deaf viewers is untested; the judge is a proxy\" — say it in the abstract and Limitations, user study as future work?", def:"yes, state plainly"},
-    {id:"q5", step:6, title:"5 · Report format", text:"Required structure, length, Hebrew abstract, submission channel?", def:"article style, 19 pages"},
-    {id:"q6", step:6, title:"6 · AI-assistance disclosure", text:"I used an AI coding assistant for code and drafting; every design choice and label is mine, logged in git. What wording does the department want?", def:"one acknowledgement paragraph"}
+    {id:"q3", step:5, title:"3 · Second annotator", text:"2–3 lab members, one hour each, 60 test clips, a web page I prepare. Ethics needed? Names? It moves submission to 19 Sept.", def:"no, if it risks the date"},
+    {id:"q4", step:6, title:"4 · State it plainly", text:"\"Helpfulness to deaf viewers is untested; the judge is a proxy\" — say it in the abstract and Limitations, user study as future work?", def:"yes, state plainly"},
+    {id:"q5", step:7, title:"5 · Report format", text:"Required structure, length, Hebrew abstract, submission channel?", def:"article style, 19 pages"},
+    {id:"q6", step:7, title:"6 · AI-assistance disclosure", text:"I used an AI coding assistant for code and drafting; every design choice and label is mine, logged in git. What wording does the department want?", def:"one acknowledgement paragraph"}
   ];
   const CLIPS = {
     a:{title:"A · Police car on screen — correct silence", score:"ours 4 · blind 3 · caption 3",
@@ -390,7 +413,7 @@ textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink
        during:"Point at ~7 s: traffic loud, panel empty. Debug view shows \"0.36 Vehicle — visible\": the detector fired, the gate declined.",
        after:"After: \"The label says off-screen traffic; cars are visible. Ours 0, blind 3 — blind's picture is what saved its 3. Arguably the label is wrong — hold that thought.\""}
   };
-  const NOTE_IDS = ["note-0","note-1","note-2","note-3","note-4","note-5","note-6","note-general"];
+  const NOTE_IDS = ["note-0","note-1","note-2","note-wk","note-3","note-4","note-5","note-6","note-general"];
   const $ = id => document.getElementById(id);
 
   // ---------- state

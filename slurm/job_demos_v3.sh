@@ -24,6 +24,7 @@
 # context on, full render). Nothing here is tuned; the clips were fixed by the figure.
 #
 #   usage:  sbatch slurm/job_demos_v3.sh
+#           DEMO_SET=benchmark/demo_set_v3_more.json OUT_NAME=demos_v3_more sbatch slurm/job_demos_v3.sh
 
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
@@ -38,6 +39,8 @@ if [ -z "${HF_TOKEN:-}" ] && [ -f "$HOME/.bashrc" ]; then
     export HF_TOKEN
 fi
 
+export DEMO_SET="${DEMO_SET:-benchmark/demo_set_v3.json}"
+export OUT_NAME="${OUT_NAME:-demos_v3}"
 for MODE in clean debug; do
 DEMO_MODE="$MODE" python - <<'PY'
 import json, os, sys
@@ -59,8 +62,8 @@ from src import pipeline
 from benchmark.gate_dev_sweep import _find_clip   # clips sit in per-scenario folders
 
 root = Path(".").resolve()
-chosen = json.loads((root / "benchmark" / "demo_set_v3.json").read_text(encoding="utf-8"))
-out = root / "data" / "output" / ("demos_v3_debug" if debug else "demos_v3")
+chosen = json.loads((root / os.environ["DEMO_SET"]).read_text(encoding="utf-8"))
+out = root / "data" / "output" / (os.environ["OUT_NAME"] + ("_debug" if debug else ""))
 out.mkdir(parents=True, exist_ok=True)
 config.OUTPUT_DIR = out
 ok = 0
@@ -80,5 +83,5 @@ if ok == 0:
 PY
 done
 
-ls -la data/output/demos_v3*/*.mp4 2>/dev/null
+ls -la data/output/${OUT_NAME}*/*.mp4 2>/dev/null
 echo "DONE"
