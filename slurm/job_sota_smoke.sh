@@ -15,10 +15,11 @@ set -uo pipefail
 cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs
 source "$HOME/miniconda3/etc/profile.d/conda.sh" 2>/dev/null || source "$HOME/anaconda3/etc/profile.d/conda.sh"
-conda activate sota
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}"
 export HF_HUB_OFFLINE=1
 export PYTHONUNBUFFERED=1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
-python scripts/sota_smoke.py --parts ${PARTS:-detector vlm images}
+# FLAM pins torch 2.7 and an older transformers -> its own env; Qwen3.8 runs in msproj (transformers 5.16)
+conda activate sota  && python scripts/sota_smoke.py --parts detector; conda deactivate
+conda activate msproj && python scripts/sota_smoke.py --parts vlm
 echo DONE
