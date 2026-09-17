@@ -24,3 +24,7 @@
 1. The result is a **tie**, and the thesis says why (the sound detector). Say it first; do not let him discover it.
 2. Everything tried is written down with a pass bar declared *before* it ran. "Failed" means the bar was not reached, not that it was sloppy.
 3. You need **four decisions** (questions 1, 2, 3, 4 in the form); the other two can wait.
+
+## Online meeting page
+
+https://claude.ai/artifact/Mdg3z3cbib7YUTAjVbxeSW — the run sheet, demos, figures, decisions and notes in one page; notes save online as you type (private to you; use **Presenter** before screen-sharing). Source copy: `09_meeting_page.html` (videos and figures are served with the online page).

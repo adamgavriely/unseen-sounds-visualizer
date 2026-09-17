@@ -1,0 +1,379 @@
+<title>Supervisor Meeting Deck</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#F6F7F5; --surface:#FFFFFF; --ink:#1B1F24; --muted:#5B6470; --line:#D6DBE0;
+  --accent:#3E5C76; --accent-ink:#FFFFFF; --soft:#E8EEF3; --amber:#9A6B00; --amber-soft:#F6EBD0;
+  --ok:#2F6B4F; --ok-soft:#DDEDE4; --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14171B; --surface:#1C2026; --ink:#E7EAED; --muted:#9AA5B1; --line:#2F363E;
+  --accent:#8FB1D0; --accent-ink:#0F1418; --soft:#232B33; --amber:#E0B25A; --amber-soft:#3A2F14;
+  --ok:#7FC2A0; --ok-soft:#1B3328;}}
+:root[data-theme="dark"]{
+  --bg:#14171B; --surface:#1C2026; --ink:#E7EAED; --muted:#9AA5B1; --line:#2F363E;
+  --accent:#8FB1D0; --accent-ink:#0F1418; --soft:#232B33; --amber:#E0B25A; --amber-soft:#3A2F14;
+  --ok:#7FC2A0; --ok-soft:#1B3328;}
+html,body{background:var(--bg);color:var(--ink)}
+body{font-family:"IBM Plex Sans",system-ui,Segoe UI,Roboto,sans-serif;font-size:18px;line-height:1.5;padding-inline:16px;padding-block:0}
+h1,h2,h3{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;text-wrap:balance;margin:0}
+h1{font-size:32px;font-weight:600}
+h2{font-size:26px;font-weight:600;margin-block:0 10px}
+h3{font-size:20px;font-weight:600}
+p{margin:0 0 12px}
+a{color:var(--accent)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line);margin-inline:-16px;padding:8px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar nav{display:flex;gap:6px;flex-wrap:wrap}
+.pill{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:15px;color:var(--ink);background:var(--surface);text-decoration:none;cursor:pointer}
+.pill:hover{background:var(--soft)}
+.bar .right{margin-left:auto;display:flex;gap:10px;align-items:center;font-size:14px;color:var(--muted)}
+.clock{font-family:var(--mono);font-size:15px;color:var(--ink)}
+button{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{background:var(--soft)}
+button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+button:focus-visible,textarea:focus-visible,input:focus-visible,.pill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{display:grid;grid-template-columns:minmax(0,900px) 0px;gap:24px;justify-content:center;transition:grid-template-columns .2s}
+.wrap.notes-open{grid-template-columns:minmax(0,900px) 320px}
+main{min-width:0}
+section{padding-block:28px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
+.minutes{font-family:var(--mono);font-size:13px;color:var(--muted);margin-left:8px}
+.say{border-left:3px solid var(--accent);padding:6px 14px;margin:10px 0 14px;background:var(--soft);border-radius:0 8px 8px 0}
+.say b{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:16px}
+th,td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
+th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;border-top:0}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.tablewrap{overflow-x:auto}
+.demo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 6px}
+.demo video{width:100%;max-width:100%;background:#000;border-radius:8px;aspect-ratio:16/9}
+.demo figcaption{font-size:14px;color:var(--muted);margin-top:4px}
+.notice{font-weight:600;margin:6px 0}
+.demo-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:18px}
+.demo-head .score{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.fig{margin:10px 0 18px}
+.fig img{width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
+.fig figcaption{font-size:15px;color:var(--muted);margin-top:6px}
+textarea,input[type=text]{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;resize:vertical;box-sizing:border-box}
+textarea{min-height:52px}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:13px;cursor:pointer;white-space:nowrap;user-select:none}
+.chip[data-s="open"]{color:var(--muted)}
+.chip[data-s="decided"]{color:var(--ok);background:var(--ok-soft);border-color:transparent}
+.chip[data-s="deferred"]{color:var(--amber);background:var(--amber-soft);border-color:transparent}
+.q-default{font-size:14px;color:var(--muted)}
+aside{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;border-left:1px solid var(--line);padding-left:18px;font-size:15px}
+aside h3{font-size:16px;margin-bottom:8px}
+aside label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px;letter-spacing:.04em;text-transform:uppercase}
+.wrap:not(.notes-open) aside{display:none}
+.presenter .private{display:none!important}
+.status{font-size:13px;color:var(--muted)}
+.status.saving{color:var(--amber)}
+.status.err{color:var(--amber)}
+.list{list-style:none;padding:0;margin:8px 0}
+.list li{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:start;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
+.list li .who{color:var(--muted);font-size:13px}
+.addrow{display:grid;grid-template-columns:1fr 140px auto;gap:8px;margin-top:6px}
+details{margin:8px 0}
+summary{cursor:pointer;font-weight:600}
+.hint{font-size:14px;color:var(--muted)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 5px;background:var(--surface)}
+@media (max-width:760px){.wrap.notes-open{grid-template-columns:1fr}aside{position:static;max-height:none;border-left:0;padding-left:0}.demo{grid-template-columns:1fr}.addrow{grid-template-columns:1fr}body{font-size:16px}}
+@media print{.bar,aside,video,button{display:none!important}.wrap{display:block}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="bar">
+  <nav aria-label="sections">
+    <a class="pill" href="#open">Opening</a><a class="pill" href="#demos">Demos</a><a class="pill" href="#findings">Findings</a><a class="pill" href="#decisions">Decisions</a><a class="pill" href="#numbers">Numbers</a><a class="pill" href="#parking">Parking lot</a>
+  </nav>
+  <div class="right">
+    <span class="clock" id="clock">--:--</span>
+    <span class="status" id="status">notes: local</span>
+    <button id="toggleNotes" title="show or hide the notes drawer (N)">Notes</button>
+    <button id="togglePresenter" title="hide everything private while screen-sharing (P)">Presenter</button>
+    <button id="copyAll" title="copy every note and decision as plain text">Copy all</button>
+  </div>
+</div>
+
+<div class="wrap" id="wrap">
+<main>
+
+<section id="open">
+  <div class="eyebrow">0–2 min · Opening</div>
+  <h1>Visual Augmentation of Audio Semantics for Accessibility</h1>
+  <p class="hint">Adam Gavriely · supervisor meeting · first update. Say the tie first; do not let him discover it.</p>
+  <div class="say"><b>Say:</b> "This is my first update and it is late — sorry. The system from the proposal is built and evaluated on a benchmark I made. It <b>ties</b> the simplest baseline — 3.17 vs 3.16 out of 4 — and the thesis explains why: the sound detector, not the visibility decision. I plan to submit on the 18th unless you object, and I need four decisions."</div>
+  <p><b>One-sentence claim.</b> A training-free chain of existing models can decide "heard but not seen" well enough to remove 30% of unnecessary pictures, but with today's sound detectors it does not beat "draw everything", and the reason is measured.</p>
+  <div class="eyebrow" style="margin-top:14px">2–5 min · What it does</div>
+  <figure class="fig"><img src="figures/fig_pipeline.png" alt="The seven stages of the pipeline"><figcaption>Seven existing models, none retrained. One decision matters: is the thing making this sound visible? If not, a picture beside the video.</figcaption></figure>
+  <textarea class="private" id="note-open" placeholder="notes on this section (private)"></textarea>
+</section>
+
+<section id="demos">
+  <div class="eyebrow">5–11 min · Three test clips (Figure 2 of the thesis)</div>
+  <h2>Demos</h2>
+  <p class="hint">Play the <b>clean</b> version; open the debug one only if he asks "why". <kbd>Space</kbd> plays/pauses the last clicked player. Scores are the judge's 0–4 under the human-corrected reference.</p>
+
+  <div class="demo-head"><h3>A · Police car on screen — correct silence</h3><span class="score">ours 4 · blind 3 · caption 3</span></div>
+  <p class="notice">Notice: the siren is loud, the car is on screen, and the panel stays <em>empty</em>. The absence is the feature; the blind baseline loses a point here.</p>
+  <div class="demo">
+    <figure><video controls preload="metadata" src="demos/a_clean.mp4" data-demo="a"></video><figcaption>clean — what a viewer sees</figcaption></figure>
+    <figure><video controls preload="metadata" src="demos/a_debug.mp4" data-demo="a"></video><figcaption>debug — detections and gate verdicts under the panel</figcaption></figure>
+  </div>
+  <p class="hint">Trap worth saying: under the proposal's original reference this correct silence scored <b>0</b> — the reference was written by the detector, which heard the siren. That is why the reference was replaced.</p>
+
+  <div class="demo-head"><h3>B · New York street — wrong silence</h3><span class="score">ours 0 · blind 3 · caption 2</span></div>
+  <p class="notice">Notice: cars are visible, the label says off-screen traffic is what matters. The gate saw cars and stayed silent → 0. Honest failure; also a debatable label. Debug view shows <span class="num">0.36 Vehicle — visible</span>: the detector fired, the gate declined.</p>
+  <div class="demo">
+    <figure><video controls preload="metadata" src="demos/b_clean.mp4" data-demo="b"></video><figcaption>clean</figcaption></figure>
+    <figure><video controls preload="metadata" src="demos/b_debug.mp4" data-demo="b"></video><figcaption>debug</figcaption></figure>
+  </div>
+
+  <div class="demo-head"><h3>C · Ambulance behind the camera — correct picture</h3><span class="score">ours 4 · blind 3 · caption 2</span></div>
+  <p class="notice">Notice: no ambulance in frame; the siren gets a picture from the first second, for the whole sound. The second picture (a horn) is the Vehicle sound — the road was out of view in one stretch, so the rule keeps it. That is a redundant picture; the cost table counts it.</p>
+  <div class="demo">
+    <figure><video controls preload="metadata" src="demos/c_clean.mp4" data-demo="c"></video><figcaption>clean</figcaption></figure>
+    <figure><video controls preload="metadata" src="demos/c_debug.mp4" data-demo="c"></video><figcaption>debug</figcaption></figure>
+  </div>
+
+  <details><summary>Likely questions at the demos (honest one-liners)</summary>
+    <ul>
+      <li><b>Why is the picture a cartoon?</b> FLUX draws a 2–5-word phrase on white; a generic picture avoids inventing details the sound cannot support. Stock photos scored +0.17 higher but 55% had restrictive licences.</li>
+      <li><b>Why the horn on the ambulance clip?</b> The Vehicle detection was out of view in one of four stretches; "silence only if visible everywhere" keeps it. Counted as cost.</li>
+      <li><b>Why silent on the New York clip?</b> The gate saw cars; the label says off-screen traffic. Four such clips on test.</li>
+      <li><b>What does the detector miss?</b> Sounds under loud speech or music: crowd at 0.22 under Speech 0.84, rain at 0.23 under Music 0.81; the bar is 0.35. Seven of the 11 withheld pictures.</li>
+      <li><b>Why not lower the bar?</b> Lowering it adds phantoms (a whale at a Christmas market at 0.36); the sweep on the development split found 0.35 already best.</li>
+      <li><b>Why not a bigger vision model?</b> Tried (32B): silences more visible sources (67% vs 35%) but wrongly silences 25% of off-screen sounds (was 3%).</li>
+      <li><b>Why no user study?</b> The proposal specified automatic evaluation; I state that helpfulness to deaf viewers is untested (decision 4).</li>
+    </ul>
+  </details>
+  <textarea class="private" id="note-demos" placeholder="his reactions to the demos (private)"></textarea>
+</section>
+
+<section id="findings">
+  <div class="eyebrow">11–15 min · Findings 1 and 2</div>
+  <h2>Where each side loses, and why</h2>
+  <div class="say"><b>Say:</b> "Both systems are 0.45 below a perfect gate, in opposite places. Mine loses where a picture is due — 7 of the 11 withheld pictures are sounds buried under speech or music. Seven fixes, bars declared first, none passed: every setting moves along this curve."</div>
+  <div class="tablewrap"><table>
+    <tr><th></th><th>oracle</th><th>gated (ours)</th><th>blind</th><th>caption</th></tr>
+    <tr><td>picture due (50)</td><td class="num">3.24</td><td class="num">2.78 (−0.46)</td><td class="num">3.02 (−0.22)</td><td class="num">2.76 (−0.48)</td></tr>
+    <tr><td>no picture due (50)</td><td class="num">4.00</td><td class="num">3.56 (−0.44)</td><td class="num">3.30 (−0.70)</td><td class="num">3.02 (−0.98)</td></tr>
+    <tr><td>all (100)</td><td class="num">3.62</td><td class="num"><b>3.17</b> (−0.45)</td><td class="num"><b>3.16</b> (−0.46)</td><td class="num">2.89 (−0.73)</td></tr>
+  </table></div>
+  <figure class="fig"><img src="figures/fig_detector_tradeoff.png" alt="Detector trade-off: raising the bar removes phantoms and loses real sounds; the filters tried sit on or below the curve"><figcaption>Raising the detector's bar trades false sounds for real ones along this curve; the filters tried (points) sit on or below it. PANNs agreement lands exactly on the curve — it is equivalent to raising the bar.</figcaption></figure>
+  <details><summary>Also available: the three clips frozen with votes and scores; cost-sensitivity (skip unless asked)</summary>
+    <figure class="fig"><img src="figures/fig_examples.png" alt="Three end-to-end examples"><figcaption>The same three clips as the demos: frames, detector confidence, the three votes per stretch, the panel, the scores.</figcaption></figure>
+    <figure class="fig"><img src="figures/fig_cost_sensitivity_v3_grounded.png" alt="Cost sensitivity"><figcaption>Judge-free view: the gate is preferred once an unnecessary picture costs ≥ 40% of a missing one — but the crossover is poorly determined (CI 0.08–1.00). Exploratory.</figcaption></figure>
+  </details>
+  <textarea class="private" id="note-findings" placeholder="notes (private)"></textarea>
+</section>
+
+<section id="decisions">
+  <div class="eyebrow">15–25 min · Decisions (1–4 first)</div>
+  <h2>What I need from you</h2>
+  <p class="hint">Click a chip to cycle open → decided → deferred. Answers save online as you type.</p>
+  <div class="tablewrap"><table id="qtable">
+    <tr><th>#</th><th>Question</th><th>His answer</th><th>Status</th></tr>
+  </table></div>
+  <h3 style="margin-top:18px">Departures from the proposal (one glance)</h3>
+  <ul>
+    <li>Sound detector PANNs → BEATs; image generator SDXL → FLUX.1 (both measured improvements).</li>
+    <li>274 clips, not 300; a development/test split added so settings are chosen on clips the score never sees.</li>
+    <li>The proposal's evaluation reference was written by the system's own models — circular — and was replaced by one corrected by my labels; both scores are reported.</li>
+    <li>Everything else as proposed: no training, minimum hand-written rules, automatic scoring.</li>
+  </ul>
+</section>
+
+<section id="numbers">
+  <div class="eyebrow">Cheat-sheet</div>
+  <h2>Numbers</h2>
+  <div class="tablewrap"><table>
+    <tr><th>what</th><th>value</th></tr>
+    <tr><td>headline (100 test clips)</td><td class="num">gated 3.17 · blind 3.16 · caption 2.89 · CI on the difference −0.15..+0.18</td></tr>
+    <tr><td>perfect gate (oracle)</td><td class="num">3.62 · both systems ≈ −0.45 below it</td></tr>
+    <tr><td>picture due / not due</td><td class="num">2.78 vs 3.02 (−0.24 [−0.54,+0.04]) · 3.56 vs 3.30 (+0.26 [+0.12,+0.40])</td></tr>
+    <tr><td>cost to the viewer</td><td class="num">panel on 47% vs 60% of a clip · wasted 357 s vs 506 s on the 50 no-picture clips (−30%)</td></tr>
+    <tr><td>DCASE 2025 outside check</td><td class="num">66.7% ± 6 · off-screen kept 97% · on-screen silenced 35%</td></tr>
+    <tr><td>benchmark</td><td class="num">274 clips · 100 test (25 per scenario) · 174 dev · self-agreement 78%, κ 0.60 (intra-rater)</td></tr>
+    <tr><td>withheld pictures on test</td><td class="num">11 · 7 detector (under speech/music) · 4 label ambiguity · 0 timing</td></tr>
+    <tr><td>attempts</td><td class="num">6 detector + 1 visibility fix, all failed declared bars · 3 automatic references failed at the visibility question</td></tr>
+    <tr><td>documents</td><td class="num">thesis 19 pp · executive summary 14 pp · LIMITATIONS.md · update 2 pp</td></tr>
+  </table></div>
+</section>
+
+<section id="parking">
+  <div class="eyebrow">25–30 min · Wrap-up</div>
+  <h2>Parking lot and actions</h2>
+  <p class="say"><b>Say:</b> "Numbers freeze today at 18:00; submit the 18th. Anything I could not answer goes here."</p>
+  <h3>Parking lot</h3>
+  <ul class="list" id="parkList"></ul>
+  <div class="addrow"><input type="text" id="parkText" placeholder="question I could not answer"><input type="text" id="parkWho" placeholder="who answers"><button id="parkAdd">Add</button></div>
+  <h3 style="margin-top:16px">Action items</h3>
+  <ul class="list" id="actList"></ul>
+  <div class="addrow"><input type="text" id="actText" placeholder="action"><input type="text" id="actWho" placeholder="owner · due"><button id="actAdd">Add</button></div>
+</section>
+
+</main>
+
+<aside class="private" id="drawer">
+  <h3>Notes drawer</h3>
+  <p class="hint">Saved online as you type. <kbd>N</kbd> hides this; <kbd>P</kbd> hides everything private before screen-sharing.</p>
+  <label for="note-general">General notes</label>
+  <textarea id="note-general" rows="8" placeholder="anything, in any order"></textarea>
+  <label>Checklist</label>
+  <div id="checks"></div>
+  <label for="note-email">Draft of the follow-up email</label>
+  <textarea id="note-email" rows="6" placeholder="three lines: what was decided, what I will do, by when"></textarea>
+</aside>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+  const QUESTIONS = [
+    {id:"q1", text:"Contribution framing: working pipeline + benchmark and protocol + measured limits. Acceptable? (I can rewrite intro/conclusion in a day; numbers unchanged.)", def:"findings framing"},
+    {id:"q2", text:"Departures from the proposal — any objection?", def:"accept"},
+    {id:"q3", text:"Second annotator: 2–3 lab members, one hour each, 60 test clips, web page. Ethics? Names? Moves submission to 19 Sept.", def:"no, if it risks the date"},
+    {id:"q4", text:"\"Helpfulness to deaf viewers is untested\" — state plainly, user study as future work?", def:"state plainly"},
+    {id:"q5", text:"Report format: structure, length, Hebrew abstract, submission channel?", def:"article style, 19 pp"},
+    {id:"q6", text:"AI-assistance disclosure: what wording?", def:"one acknowledgement paragraph"}
+  ];
+  const CHECKS = ["framing accepted","departures accepted","deadline confirmed (18 / 19 Sept)","Hebrew abstract needed","disclosure wording given","annotator names received"];
+  const STATUSES = ["open","decided","deferred"];
+  const NOTE_IDS = ["note-open","note-demos","note-findings","note-general","note-email"];
+
+  // ---- state: one document, mirrored to localStorage; db when available
+  let state = {notes:{}, decisions:{}, checks:{}, parking:[], actions:[]};
+  let db = null, docRef = null, saveTimer = null, saving = false, dirty = false, lastRemote = null;
+  const $ = id => document.getElementById(id);
+  const status = $("status"), toast = $("toast");
+  function say(msg){ toast.textContent = msg; toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"), 1600); }
+  function setStatus(t, cls){ status.textContent = t; status.className = "status" + (cls ? " " + cls : ""); }
+  function localLoad(){ try{ const s = localStorage.getItem("meeting-state"); if(s) state = Object.assign(state, JSON.parse(s)); }catch(e){} }
+  function localSave(){ try{ localStorage.setItem("meeting-state", JSON.stringify(state)); }catch(e){} }
+
+  // ---- render
+  function renderQuestions(){
+    const t = $("qtable");
+    QUESTIONS.forEach(q=>{
+      const d = state.decisions[q.id] || {};
+      let tr = document.getElementById("row-"+q.id);
+      if(!tr){
+        tr = document.createElement("tr"); tr.id = "row-"+q.id;
+        tr.innerHTML = '<td class="num">'+q.id.slice(1)+'</td><td>'+q.text+'<div class="q-default">default: '+q.def+'</div></td>'+
+          '<td><textarea id="ans-'+q.id+'" placeholder="his answer / conditions"></textarea></td>'+
+          '<td><span class="chip" data-s="open" id="chip-'+q.id+'" tabindex="0" role="button">open</span></td>';
+        t.appendChild(tr);
+        const ta = $("ans-"+q.id); ta.addEventListener("input", ()=>{ setDecision(q.id, {answer: ta.value}); });
+        const chip = $("chip-"+q.id);
+        const cycle = ()=>{ const cur = (state.decisions[q.id]||{}).status || "open"; const nxt = STATUSES[(STATUSES.indexOf(cur)+1)%STATUSES.length]; setDecision(q.id, {status: nxt}); };
+        chip.addEventListener("click", cycle); chip.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); cycle(); }});
+      }
+      const ta = $("ans-"+q.id); if(document.activeElement !== ta && ta.value !== (d.answer||"")) ta.value = d.answer || "";
+      const chip = $("chip-"+q.id); chip.dataset.s = d.status || "open"; chip.textContent = d.status || "open";
+    });
+  }
+  function renderNotes(){
+    NOTE_IDS.forEach(id=>{ const el = $(id); if(el && document.activeElement !== el && el.value !== (state.notes[id]||"")) el.value = state.notes[id] || ""; });
+  }
+  function renderChecks(){
+    const box = $("checks");
+    if(!box.children.length){
+      CHECKS.forEach((c,i)=>{ const l = document.createElement("label"); l.style.textTransform="none"; l.style.letterSpacing="0"; l.style.fontSize="15px"; l.style.color="var(--ink)";
+        l.innerHTML = '<input type="checkbox" id="chk-'+i+'"> '+c; box.appendChild(l);
+        l.querySelector("input").addEventListener("change", e=>{ state.checks[i] = e.target.checked; scheduleSave(); }); });
+    }
+    CHECKS.forEach((c,i)=>{ $("chk-"+i).checked = !!state.checks[i]; });
+  }
+  function renderList(ulId, items, key){
+    const ul = $(ulId); ul.innerHTML = "";
+    items.forEach((it, i)=>{
+      const li = document.createElement("li");
+      li.innerHTML = '<span></span><span class="who"></span><button title="remove">×</button>';
+      li.children[0].textContent = it.text; li.children[1].textContent = it.who || "";
+      li.children[2].addEventListener("click", ()=>{ state[key].splice(i,1); scheduleSave(); renderAll(); });
+      ul.appendChild(li);
+    });
+    if(!items.length){ const li = document.createElement("li"); li.className="hint"; li.style.display="block"; li.textContent = "nothing yet"; ul.appendChild(li); }
+  }
+  function renderAll(){ renderQuestions(); renderNotes(); renderChecks(); renderList("parkList", state.parking, "parking"); renderList("actList", state.actions, "actions"); }
+
+  // ---- mutations
+  function setDecision(id, patch){ state.decisions[id] = Object.assign({}, state.decisions[id]||{}, patch); scheduleSave(); renderQuestions(); }
+  NOTE_IDS.forEach(id=>{ const el = $(id); if(el) el.addEventListener("input", ()=>{ state.notes[id] = el.value; scheduleSave(); }); });
+  function addItem(key, textId, whoId){ const t = $(textId).value.trim(); if(!t) return; state[key].push({text:t, who: $(whoId).value.trim(), at: new Date().toISOString()}); $(textId).value=""; $(whoId).value=""; scheduleSave(); renderAll(); }
+  $("parkAdd").addEventListener("click", ()=>addItem("parking","parkText","parkWho"));
+  $("actAdd").addEventListener("click", ()=>addItem("actions","actText","actWho"));
+  $("parkText").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem("parking","parkText","parkWho"); });
+  $("actText").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem("actions","actText","actWho"); });
+
+  // ---- saving: debounce 1 s, one write in flight, coalesce
+  function scheduleSave(){ dirty = true; localSave(); setStatus("saving…", "saving"); clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1000); }
+  async function flush(){
+    if(!dirty) return;
+    if(!docRef){ dirty = false; setStatus("notes: saved locally only"); return; }
+    if(saving){ saveTimer = setTimeout(flush, 500); return; }
+    saving = true; dirty = false;
+    try{ await docRef.set(Object.assign({}, state, {updatedAt: new Date().toISOString()})); setStatus("saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"})); }
+    catch(e){ dirty = true; setStatus("offline — kept locally", "err"); }
+    saving = false;
+    if(dirty) saveTimer = setTimeout(flush, 1500);
+  }
+  window.addEventListener("beforeunload", e=>{ if(dirty){ localSave(); e.preventDefault(); e.returnValue = ""; } });
+
+  // ---- boot
+  localLoad(); renderAll();
+  (async ()=>{
+    try{
+      db = window.claude && window.claude.use ? await window.claude.use("db") : null;
+    }catch(e){ db = null; }
+    if(!db){ setStatus("notes: saved locally only (no shared storage)"); return; }
+    docRef = db.doc("meeting/notes");
+    docRef.onSnapshot(snap=>{
+      if(!snap.exists){ if(Object.keys(state.decisions).length || Object.keys(state.notes).length) { dirty = true; flush(); } setStatus("notes: online"); return; }
+      const remote = snap.data();
+      if(dirty || saving){ return; }                       // local edits win until flushed
+      if(lastRemote && remote.updatedAt === lastRemote) return;
+      lastRemote = remote.updatedAt;
+      state = Object.assign(state, {notes: remote.notes||{}, decisions: remote.decisions||{}, checks: remote.checks||{}, parking: remote.parking||[], actions: remote.actions||[]});
+      localSave(); renderAll(); setStatus("notes: online (" + (remote.updatedAt ? new Date(remote.updatedAt).toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}) : "") + ")");
+    }, err=>{ setStatus("offline — kept locally", "err"); docRef = null; });
+  })();
+
+  // ---- presenter / notes toggles, keyboard, clock
+  const wrap = $("wrap");
+  function toggleNotes(){ wrap.classList.toggle("notes-open"); try{ localStorage.setItem("notes-open", wrap.classList.contains("notes-open") ? "1" : "0"); }catch(e){} }
+  function togglePresenter(){ document.body.classList.toggle("presenter"); const on = document.body.classList.contains("presenter"); $("togglePresenter").textContent = on ? "Presenter ● (private hidden)" : "Presenter"; if(on) wrap.classList.remove("notes-open"); }
+  $("toggleNotes").addEventListener("click", toggleNotes);
+  $("togglePresenter").addEventListener("click", togglePresenter);
+  try{ if(localStorage.getItem("notes-open") === "1") wrap.classList.add("notes-open"); }catch(e){}
+  let lastVideo = null;
+  document.querySelectorAll("video").forEach(v=>{ v.addEventListener("click", ()=>{ lastVideo = v; }); v.addEventListener("play", ()=>{ lastVideo = v; document.querySelectorAll("video").forEach(o=>{ if(o!==v && !o.paused && o.dataset.demo !== v.dataset.demo) o.pause(); }); });
+    v.addEventListener("error", ()=>{ const f = v.parentElement; const p = document.createElement("p"); p.className="hint"; p.textContent = "This video did not load — use the frames in the folder (examples/)."; f.appendChild(p); }); });
+  document.addEventListener("keydown", e=>{
+    const tag = (e.target.tagName||"").toLowerCase(); if(tag==="textarea"||tag==="input") return;
+    if(e.key===" " && lastVideo){ e.preventDefault(); lastVideo.paused ? lastVideo.play() : lastVideo.pause(); }
+    if(e.key==="n"||e.key==="N") toggleNotes();
+    if(e.key==="p"||e.key==="P") togglePresenter();
+    if(e.key==="1"||e.key==="2"||e.key==="3"){ const v = document.querySelector('video[data-demo="'+["a","b","c"][+e.key-1]+'"]'); if(v){ v.scrollIntoView({block:"center"}); lastVideo = v; } }
+  });
+  function tick(){ $("clock").textContent = new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); } tick(); setInterval(tick, 15000);
+
+  // ---- copy all
+  $("copyAll").addEventListener("click", async ()=>{
+    const lines = ["Supervisor meeting — " + new Date().toLocaleString(), ""];
+    lines.push("DECISIONS");
+    QUESTIONS.forEach(q=>{ const d = state.decisions[q.id]||{}; lines.push((q.id.slice(1))+". ["+(d.status||"open")+"] "+q.text); if(d.answer) lines.push("   answer: "+d.answer); });
+    lines.push("", "CHECKLIST"); CHECKS.forEach((c,i)=>lines.push((state.checks[i]?"[x] ":"[ ] ")+c));
+    lines.push("", "PARKING LOT"); state.parking.forEach(p=>lines.push("- "+p.text+(p.who?" ("+p.who+")":"")));
+    lines.push("", "ACTIONS"); state.actions.forEach(p=>lines.push("- "+p.text+(p.who?" ("+p.who+")":"")));
+    lines.push("", "NOTES"); NOTE_IDS.forEach(id=>{ if(state.notes[id]) lines.push("["+id.replace("note-","")+"] "+state.notes[id]); });
+    const text = lines.join("\n");
+    try{ await navigator.clipboard.writeText(text); say("Copied"); }
+    catch(e){ const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); say("Copied"); }catch(_){ say("Copy failed — select the text manually"); } ta.remove(); }
+  });
+})();
+</script>
