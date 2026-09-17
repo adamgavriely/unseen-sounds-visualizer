@@ -55,22 +55,29 @@ def frames_of(video: Path, td: Path, n: int = 6):
 
 
 def part_detector(video: Path, td: Path):
+    """FLAM: 10-second windows at 48 kHz; local similarity per frame for each text query."""
     import torch, numpy as np, librosa
     import openflam
     t0 = time.time()
     model = openflam.OpenFLAM(model_name="v1-base", default_ckpt_path=str(Path.home() / ".cache" / "openflam")).to("cuda").eval()
     print(f"[detector] FLAM loaded in {time.time() - t0:.0f}s, {vram()}", flush=True)
-    audio, sr = librosa.load(str(wav_of(video, td)), sr=None, mono=True)
-    with torch.no_grad():
-        # the API exposes local (frame-wise) similarity between audio and text queries; the
-        # exact call is the one in openflam's local_example.py -- adapt if the name differs
-        res = model.local_similarity(audio, sr, QUERIES) if hasattr(model, "local_similarity") else None
-    if res is None:
-        print("[detector] openflam has no local_similarity(); available:", [m for m in dir(model) if not m.startswith("_")][:30]); return
-    sims = np.asarray(res)                          # (queries, frames) expected
-    hop = len(audio) / sr / sims.shape[-1]
-    for q, row in zip(QUERIES, sims):
-        i = int(row.argmax()); print(f"[detector]   {q:18s} max {row.max():.2f} at {i * hop:5.1f}s  mean {row.mean():.2f}")
+    audio, sr = librosa.load(str(wav_of(video, td)), sr=48000, mono=True)
+    win = 480000
+    chunks = [audio[i:i + win] for i in range(0, max(1, len(audio)), win)]
+    chunks = [np.pad(c, (0, win - len(c))) for c in chunks if len(c) > sr]
+    rows = {q: [] for q in QUERIES}
+    t0 = time.time()
+    with torch.inference_mode():
+        for c in chunks:
+            x = torch.from_numpy(c).float().unsqueeze(0).to("cuda")
+            sim = model.get_local_similarity(x.repeat(len(QUERIES), 1), QUERIES, method="unbiased")   # [queries, frames]
+            sim = torch.sigmoid(sim) if sim.min() < 0 or sim.max() > 1 else sim
+            for q, r in zip(QUERIES, sim.float().cpu().numpy()):
+                rows[q].append(r)
+    print(f"[detector] {len(chunks)} x 10 s windows scored in {time.time() - t0:.1f}s, {vram()}")
+    for q in QUERIES:
+        r = np.concatenate(rows[q]); hop = 10.0 * len(chunks) / len(r)
+        i = int(r.argmax()); print(f"[detector]   {q:18s} max {r.max():.2f} at {i * hop:5.1f}s  mean {r.mean():.2f}")
 
 
 def part_vlm(video: Path, td: Path):
