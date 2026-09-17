@@ -14,366 +14,507 @@
   --bg:#14171B; --surface:#1C2026; --ink:#E7EAED; --muted:#9AA5B1; --line:#2F363E;
   --accent:#8FB1D0; --accent-ink:#0F1418; --soft:#232B33; --amber:#E0B25A; --amber-soft:#3A2F14;
   --ok:#7FC2A0; --ok-soft:#1B3328;}
-html,body{background:var(--bg);color:var(--ink)}
+html,body{background:var(--bg);color:var(--ink);height:100%}
 body{font-family:"IBM Plex Sans",system-ui,Segoe UI,Roboto,sans-serif;font-size:18px;line-height:1.5;padding-inline:16px;padding-block:0}
 h1,h2,h3{font-family:"Source Serif 4",Georgia,"Times New Roman",serif;text-wrap:balance;margin:0}
-h1{font-size:32px;font-weight:600}
-h2{font-size:26px;font-weight:600;margin-block:0 10px}
-h3{font-size:20px;font-weight:600}
-p{margin:0 0 12px}
+h1{font-size:30px;font-weight:600}
+h2{font-size:26px;font-weight:600}
+h3{font-size:19px;font-weight:600}
+p{margin:0 0 10px}
 a{color:var(--accent)}
-.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line);margin-inline:-16px;padding:8px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.bar nav{display:flex;gap:6px;flex-wrap:wrap}
-.pill{border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-size:15px;color:var(--ink);background:var(--surface);text-decoration:none;cursor:pointer}
-.pill:hover{background:var(--soft)}
-.bar .right{margin-left:auto;display:flex;gap:10px;align-items:center;font-size:14px;color:var(--muted)}
-.clock{font-family:var(--mono);font-size:15px;color:var(--ink)}
 button{font:inherit;font-size:15px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
 button:hover{background:var(--soft)}
 button.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-button:focus-visible,textarea:focus-visible,input:focus-visible,.pill:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
-.wrap{display:grid;grid-template-columns:minmax(0,900px) 0px;gap:24px;justify-content:center;transition:grid-template-columns .2s}
-.wrap.notes-open{grid-template-columns:minmax(0,900px) 320px}
+button.small{font-size:13px;padding:3px 9px}
+button:focus-visible,textarea:focus-visible,input:focus-visible,.thumb:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 5px;background:var(--surface)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+/* top bar */
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--surface);border-bottom:1px solid var(--line);margin-inline:-16px;padding:8px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.bar .title{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:17px}
+.bar .right{margin-left:auto;display:flex;gap:8px;align-items:center;font-size:14px;color:var(--muted);flex-wrap:wrap}
+.clock{font-family:var(--mono);font-size:15px;color:var(--ink)}
+.status{font-size:13px;color:var(--muted)}
+.status.warn{color:var(--amber)}
+/* progress strip */
+.strip{display:grid;gap:4px;margin:12px 0 4px}
+.strip .slots{display:flex;gap:4px;height:22px}
+.slot{position:relative;border:1px solid var(--line);border-radius:4px;overflow:hidden;font-size:11px;color:var(--muted);background:var(--surface);cursor:pointer;min-width:0}
+.slot span{position:absolute;inset:0;padding:2px 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot i{position:absolute;left:0;top:0;bottom:0;background:var(--soft);width:0}
+.slot.cur{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.slot.over{background:repeating-linear-gradient(45deg,var(--amber-soft) 0 4px,var(--surface) 4px 8px)}
+.strip .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--muted)}
+/* layout */
+.wrap{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:24px;align-items:start;max-width:1280px;margin:0 auto}
 main{min-width:0}
-section{padding-block:28px;border-bottom:1px solid var(--line)}
-section:last-of-type{border-bottom:0}
-.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px}
-.minutes{font-family:var(--mono);font-size:13px;color:var(--muted);margin-left:8px}
+.step{display:none;padding-block:12px 24px}
+.step.on{display:block}
+.eyebrow{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:6px;display:flex;gap:10px;align-items:baseline}
+.eyebrow .budget{font-family:var(--mono);letter-spacing:0;text-transform:none}
 .say{border-left:3px solid var(--accent);padding:6px 14px;margin:10px 0 14px;background:var(--soft);border-radius:0 8px 8px 0}
 .say b{color:var(--accent)}
-table{border-collapse:collapse;width:100%;font-size:16px}
-th,td{border-top:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top}
-th{font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;border-top:0}
-.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.park{font-size:14px;color:var(--muted);border-top:1px dashed var(--line);margin-top:14px;padding-top:8px}
+.park b{color:var(--ink)}
+table{border-collapse:collapse;width:100%;font-size:15px}
+th,td{border-top:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top}
+th{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600;border-top:0}
 .tablewrap{overflow-x:auto}
-.demo{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 6px}
-.demo video{width:100%;max-width:100%;background:#000;border-radius:8px;aspect-ratio:16/9}
-.demo figcaption{font-size:14px;color:var(--muted);margin-top:4px}
-.notice{font-weight:600;margin:6px 0}
-.demo-head{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:18px}
-.demo-head .score{font-family:var(--mono);font-size:14px;color:var(--muted)}
-.fig{margin:10px 0 18px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.col{border:1px solid var(--line);border-radius:10px;padding:10px 14px;background:var(--surface)}
+.col h3{margin-bottom:6px}
+.col ul{margin:0;padding-left:18px;font-size:15px}
+.col li{margin:4px 0}
+.fig{margin:8px 0 12px}
 .fig img{width:100%;max-width:100%;border:1px solid var(--line);border-radius:8px;background:#fff}
-.fig figcaption{font-size:15px;color:var(--muted);margin-top:6px}
-textarea,input[type=text]{width:100%;font:inherit;font-size:15px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;resize:vertical;box-sizing:border-box}
-textarea{min-height:52px}
-.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:13px;cursor:pointer;white-space:nowrap;user-select:none}
+.fig figcaption{font-size:14px;color:var(--muted);margin-top:6px}
+details{margin:8px 0}
+summary{cursor:pointer;font-weight:600;font-size:15px}
+.hint{font-size:14px;color:var(--muted)}
+.nav{display:flex;gap:8px;justify-content:space-between;margin-top:10px}
+/* clips */
+.player{display:grid;grid-template-columns:minmax(0,1fr) 190px;gap:12px}
+.player video{width:100%;max-width:100%;background:#000;border-radius:8px;aspect-ratio:16/9}
+.thumbs{display:grid;gap:8px;align-content:start}
+.thumb{border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--surface);cursor:pointer;text-align:left;font-size:14px;line-height:1.3}
+.thumb.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.thumb .sc{font-family:var(--mono);font-size:12px;color:var(--muted);display:block;margin-top:2px}
+.clipline{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin:6px 0}
+.clipline .sc{font-family:var(--mono);font-size:14px;color:var(--muted)}
+.notice{font-weight:600;margin:6px 0 2px}
+/* right panel */
+aside{position:sticky;top:64px;max-height:calc(100vh - 80px);overflow:auto;border-left:1px solid var(--line);padding-left:18px;font-size:15px}
+aside h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:10px 0 6px}
+.qcard{border:1px solid var(--line);border-radius:10px;padding:10px 12px;background:var(--surface);margin-bottom:10px}
+.qcard.active{border-color:var(--accent)}
+.qcard .qt{font-weight:600;margin-bottom:4px}
+.qcard .qd{font-size:13px;color:var(--muted);margin-bottom:6px}
+.qcard textarea{min-height:56px}
+.qbtns{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 10px;font-size:12px;cursor:pointer;white-space:nowrap;user-select:none;background:var(--surface)}
 .chip[data-s="open"]{color:var(--muted)}
 .chip[data-s="decided"]{color:var(--ok);background:var(--ok-soft);border-color:transparent}
 .chip[data-s="deferred"]{color:var(--amber);background:var(--amber-soft);border-color:transparent}
-.q-default{font-size:14px;color:var(--muted)}
-aside{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;border-left:1px solid var(--line);padding-left:18px;font-size:15px}
-aside h3{font-size:16px;margin-bottom:8px}
-aside label{display:block;font-size:13px;color:var(--muted);margin:10px 0 4px;letter-spacing:.04em;text-transform:uppercase}
-.wrap:not(.notes-open) aside{display:none}
+textarea,input[type=text]{width:100%;font:inherit;font-size:14px;color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:7px 9px;resize:vertical;box-sizing:border-box}
+.list{list-style:none;padding:0;margin:4px 0}
+.list li{display:grid;grid-template-columns:1fr auto;gap:6px;align-items:start;padding:4px 0;border-top:1px solid var(--line);font-size:14px}
+.addrow{display:grid;grid-template-columns:1fr auto;gap:6px;margin-top:4px}
 .presenter .private{display:none!important}
-.status{font-size:13px;color:var(--muted)}
-.status.saving{color:var(--amber)}
-.status.err{color:var(--amber)}
-.list{list-style:none;padding:0;margin:8px 0}
-.list li{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:start;padding:6px 0;border-top:1px solid var(--line);font-size:15px}
-.list li .who{color:var(--muted);font-size:13px}
-.addrow{display:grid;grid-template-columns:1fr 140px auto;gap:8px;margin-top:6px}
-details{margin:8px 0}
-summary{cursor:pointer;font-weight:600}
-.hint{font-size:14px;color:var(--muted)}
-.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none}
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.35);display:none;z-index:9;align-items:center;justify-content:center;padding:20px}
+.overlay.on{display:flex}
+.sheet{background:var(--surface);color:var(--ink);border-radius:12px;max-width:820px;width:100%;max-height:90vh;overflow:auto;padding:18px 20px;border:1px solid var(--line)}
+.toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-size:14px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:10}
 .toast.show{opacity:1}
-kbd{font-family:var(--mono);font-size:12px;border:1px solid var(--line);border-radius:4px;padding:0 5px;background:var(--surface)}
-@media (max-width:760px){.wrap.notes-open{grid-template-columns:1fr}aside{position:static;max-height:none;border-left:0;padding-left:0}.demo{grid-template-columns:1fr}.addrow{grid-template-columns:1fr}body{font-size:16px}}
-@media print{.bar,aside,video,button{display:none!important}.wrap{display:block}}
+@media (max-width:900px){.wrap{grid-template-columns:1fr}aside{position:static;max-height:none;border-left:0;padding-left:0;border-top:1px solid var(--line);padding-top:12px}.player{grid-template-columns:1fr}.thumbs{grid-template-columns:repeat(3,1fr)}.two{grid-template-columns:1fr}body{font-size:16px}}
+@media print{.bar,aside,video,button,.strip{display:none!important}.step{display:block!important}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
 <div class="bar">
-  <nav aria-label="sections">
-    <a class="pill" href="#open">Opening</a><a class="pill" href="#demos">Demos</a><a class="pill" href="#findings">Findings</a><a class="pill" href="#decisions">Decisions</a><a class="pill" href="#numbers">Numbers</a><a class="pill" href="#parking">Parking lot</a>
-  </nav>
+  <span class="title">Supervisor meeting · 20 minutes</span>
   <div class="right">
-    <span class="clock" id="clock">--:--</span>
+    <span class="clock" id="elapsed" title="elapsed since Start">00:00</span>
+    <button id="startBtn" class="primary">Start</button>
     <span class="status" id="status">notes: local</span>
-    <button id="toggleNotes" title="show or hide the notes drawer (N)">Notes</button>
-    <button id="togglePresenter" title="hide everything private while screen-sharing (P)">Presenter</button>
-    <button id="copyAll" title="copy every note and decision as plain text">Copy all</button>
+    <button id="numbersBtn" title="numbers cheat-sheet (M)">Numbers</button>
+    <button id="presenterBtn" title="hide private notes while screen-sharing (P)">Presenter</button>
+    <button id="copyBtn" title="copy every decision and note as plain text">Copy all</button>
   </div>
+</div>
+
+<div class="strip">
+  <div class="slots" id="slots"></div>
+  <div class="meta"><span id="stepLabel">Step 1 of 7</span><span><kbd>←</kbd> <kbd>→</kbd> steps · <kbd>Space</kbd> video · <kbd>S</kbd> submit · <kbd>P</kbd> presenter · <kbd>M</kbd> numbers</span></div>
 </div>
 
 <div class="wrap" id="wrap">
-<main>
+<main id="main">
 
-<section id="open">
-  <div class="eyebrow">0–2 min · Opening</div>
+<!-- 0 opening -->
+<section class="step on" data-step="0" data-min="1">
+  <div class="eyebrow"><span>Opening</span><span class="budget">1 min</span></div>
   <h1>Visual Augmentation of Audio Semantics for Accessibility</h1>
-  <p class="hint">Adam Gavriely · supervisor meeting · first update. Say the tie first; do not let him discover it.</p>
-  <div class="say"><b>Say:</b> "This is my first update and it is late — sorry. The system from the proposal is built and evaluated on a benchmark I made. It <b>ties</b> the simplest baseline — 3.17 vs 3.16 out of 4 — and the thesis explains why: the sound detector, not the visibility decision. I plan to submit on the 18th unless you object, and I need four decisions."</div>
-  <p><b>One-sentence claim.</b> A training-free chain of existing models can decide "heard but not seen" well enough to remove 30% of unnecessary pictures, but with today's sound detectors it does not beat "draw everything", and the reason is measured.</p>
-  <div class="eyebrow" style="margin-top:14px">2–5 min · What it does</div>
-  <figure class="fig"><img src="figures/fig_pipeline.png" alt="The seven stages of the pipeline"><figcaption>Seven existing models, none retrained. One decision matters: is the thing making this sound visible? If not, a picture beside the video.</figcaption></figure>
-  <textarea class="private" id="note-open" placeholder="notes on this section (private)"></textarea>
+  <div class="say"><b>Say:</b> "This is my first update and it is late — sorry. The system from the proposal is built and evaluated on a benchmark I made. It <b>ties</b> the simplest baseline — 3.17 vs 3.16 out of 4 — while showing 30% fewer unneeded pictures, and the thesis explains exactly where each side loses. I plan to submit on the 18th unless you object, and I need four decisions from you today."</div>
+  <p><b>The three sentences this meeting must land:</b></p>
+  <ol>
+    <li>The pipeline runs end to end on 100 test clips and matches the blind baseline while showing 30% fewer unneeded pictures.</li>
+    <li>The single failure is the sound detector missing sounds under loud speech and music; one dial trades false sounds against real ones.</li>
+    <li>Nothing was tested with deaf viewers; I plan to say so in the report.</li>
+  </ol>
+  <p class="park"><b>If he interrupts with "so it doesn't work?":</b> "It works as well as the blind system at a third less panel time; the interesting part is <i>where</i> each fails — that is decision 1, at the end."</p>
+  <textarea class="private" id="note-0" placeholder="private notes for this step"></textarea>
 </section>
 
-<section id="demos">
-  <div class="eyebrow">5–11 min · Three test clips (Figure 2 of the thesis)</div>
-  <h2>Demos</h2>
-  <p class="hint">Play the <b>clean</b> version; open the debug one only if he asks "why". <kbd>Space</kbd> plays/pauses the last clicked player. Scores are the judge's 0–4 under the human-corrected reference.</p>
-
-  <div class="demo-head"><h3>A · Police car on screen — correct silence</h3><span class="score">ours 4 · blind 3 · caption 3</span></div>
-  <p class="notice">Notice: the siren is loud, the car is on screen, and the panel stays <em>empty</em>. The absence is the feature; the blind baseline loses a point here.</p>
-  <div class="demo">
-    <figure><video controls preload="metadata" src="demos/a_clean.mp4" data-demo="a"></video><figcaption>clean — what a viewer sees</figcaption></figure>
-    <figure><video controls preload="metadata" src="demos/a_debug.mp4" data-demo="a"></video><figcaption>debug — detections and gate verdicts under the panel</figcaption></figure>
-  </div>
-  <p class="hint">Trap worth saying: under the proposal's original reference this correct silence scored <b>0</b> — the reference was written by the detector, which heard the siren. That is why the reference was replaced.</p>
-
-  <div class="demo-head"><h3>B · New York street — wrong silence</h3><span class="score">ours 0 · blind 3 · caption 2</span></div>
-  <p class="notice">Notice: cars are visible, the label says off-screen traffic is what matters. The gate saw cars and stayed silent → 0. Honest failure; also a debatable label. Debug view shows <span class="num">0.36 Vehicle — visible</span>: the detector fired, the gate declined.</p>
-  <div class="demo">
-    <figure><video controls preload="metadata" src="demos/b_clean.mp4" data-demo="b"></video><figcaption>clean</figcaption></figure>
-    <figure><video controls preload="metadata" src="demos/b_debug.mp4" data-demo="b"></video><figcaption>debug</figcaption></figure>
-  </div>
-
-  <div class="demo-head"><h3>C · Ambulance behind the camera — correct picture</h3><span class="score">ours 4 · blind 3 · caption 2</span></div>
-  <p class="notice">Notice: no ambulance in frame; the siren gets a picture from the first second, for the whole sound. The second picture (a horn) is the Vehicle sound — the road was out of view in one stretch, so the rule keeps it. That is a redundant picture; the cost table counts it.</p>
-  <div class="demo">
-    <figure><video controls preload="metadata" src="demos/c_clean.mp4" data-demo="c"></video><figcaption>clean</figcaption></figure>
-    <figure><video controls preload="metadata" src="demos/c_debug.mp4" data-demo="c"></video><figcaption>debug</figcaption></figure>
-  </div>
-
-  <details><summary>Likely questions at the demos (honest one-liners)</summary>
-    <ul>
-      <li><b>Why is the picture a cartoon?</b> FLUX draws a 2–5-word phrase on white; a generic picture avoids inventing details the sound cannot support. Stock photos scored +0.17 higher but 55% had restrictive licences.</li>
-      <li><b>Why the horn on the ambulance clip?</b> The Vehicle detection was out of view in one of four stretches; "silence only if visible everywhere" keeps it. Counted as cost.</li>
-      <li><b>Why silent on the New York clip?</b> The gate saw cars; the label says off-screen traffic. Four such clips on test.</li>
-      <li><b>What does the detector miss?</b> Sounds under loud speech or music: crowd at 0.22 under Speech 0.84, rain at 0.23 under Music 0.81; the bar is 0.35. Seven of the 11 withheld pictures.</li>
-      <li><b>Why not lower the bar?</b> Lowering it adds phantoms (a whale at a Christmas market at 0.36); the sweep on the development split found 0.35 already best.</li>
-      <li><b>Why not a bigger vision model?</b> Tried (32B): silences more visible sources (67% vs 35%) but wrongly silences 25% of off-screen sounds (was 3%).</li>
-      <li><b>Why no user study?</b> The proposal specified automatic evaluation; I state that helpfulness to deaf viewers is untested (decision 4).</li>
-    </ul>
-  </details>
-  <textarea class="private" id="note-demos" placeholder="his reactions to the demos (private)"></textarea>
-</section>
-
-<section id="findings">
-  <div class="eyebrow">11–15 min · Findings 1 and 2</div>
-  <h2>Where each side loses, and why</h2>
-  <div class="say"><b>Say:</b> "Both systems are 0.45 below a perfect gate, in opposite places. Mine loses where a picture is due — 7 of the 11 withheld pictures are sounds buried under speech or music. Seven fixes, bars declared first, none passed: every setting moves along this curve."</div>
+<!-- 1 workflow -->
+<section class="step" data-step="1" data-min="3">
+  <div class="eyebrow"><span>Workflow and models</span><span class="budget">3 min</span></div>
+  <h2>Seven existing models, none retrained, one decision that matters</h2>
+  <div class="say"><b>Say:</b> "Hear the sound, ask a vision model whether its source is already in view, draw a picture only when it isn't."</div>
+  <figure class="fig"><img src="figures/fig_pipeline.png" alt="The seven stages"></figure>
   <div class="tablewrap"><table>
-    <tr><th></th><th>oracle</th><th>gated (ours)</th><th>blind</th><th>caption</th></tr>
-    <tr><td>picture due (50)</td><td class="num">3.24</td><td class="num">2.78 (−0.46)</td><td class="num">3.02 (−0.22)</td><td class="num">2.76 (−0.48)</td></tr>
-    <tr><td>no picture due (50)</td><td class="num">4.00</td><td class="num">3.56 (−0.44)</td><td class="num">3.30 (−0.70)</td><td class="num">3.02 (−0.98)</td></tr>
-    <tr><td>all (100)</td><td class="num">3.62</td><td class="num"><b>3.17</b> (−0.45)</td><td class="num"><b>3.16</b> (−0.46)</td><td class="num">2.89 (−0.73)</td></tr>
+    <tr><th>stage</th><th>what it does</th><th>model</th><th>why this model</th></tr>
+    <tr><td>1 extract</td><td>pull the audio track</td><td>FFmpeg</td><td>standard tool</td></tr>
+    <tr><td>2 find objects</td><td>candidate objects in the frames</td><td>OWLv2</td><td>open-vocabulary: finds "ambulance" without a fixed class list</td></tr>
+    <tr><td>3 transcribe</td><td>speech to text — context only, never drawn</td><td>Whisper</td><td>robust open ASR; speech is what captions already give</td></tr>
+    <tr><td>4 detect sounds</td><td>tag ambient sounds, 2-s windows, 527 classes, bar 0.35</td><td>BEATs</td><td>best open AudioSet tagger (0.486 mAP); replaced PANNs</td></tr>
+    <tr><td>5 reason</td><td>is the source visible? what to draw? one picture per source</td><td>Qwen2.5-VL-7B</td><td>strongest open 7B vision-language model on one GPU</td></tr>
+    <tr><td>6 draw</td><td>2–5-word phrase → picture on white; panel ≤ 3 slots, 1.5-s dwell</td><td>FLUX.1-schnell</td><td>fast, open, clean iconic output; replaced SDXL</td></tr>
+    <tr><td>7 evaluate</td><td>a VLM describes the panel; a judge scores 0–4 against a reference</td><td>Mistral-7B judge</td><td>a different model family, so no self-grading</td></tr>
   </table></div>
-  <figure class="fig"><img src="figures/fig_detector_tradeoff.png" alt="Detector trade-off: raising the bar removes phantoms and loses real sounds; the filters tried sit on or below the curve"><figcaption>Raising the detector's bar trades false sounds for real ones along this curve; the filters tried (points) sit on or below it. PANNs agreement lands exactly on the curve — it is equivalent to raising the bar.</figcaption></figure>
-  <details><summary>Also available: the three clips frozen with votes and scores; cost-sensitivity (skip unless asked)</summary>
-    <figure class="fig"><img src="figures/fig_examples.png" alt="Three end-to-end examples"><figcaption>The same three clips as the demos: frames, detector confidence, the three votes per stretch, the panel, the scores.</figcaption></figure>
-    <figure class="fig"><img src="figures/fig_cost_sensitivity_v3_grounded.png" alt="Cost sensitivity"><figcaption>Judge-free view: the gate is preferred once an unnecessary picture costs ≥ 40% of a missing one — but the crossover is poorly determined (CI 0.08–1.00). Exploratory.</figcaption></figure>
+  <p style="margin-top:10px"><b>The one design decision worth 30 seconds — stage 5.</b> The vision model is <i>told</i> which sound was heard and asked <i>what in the frames is making it</i> — "name it, don't confirm it" — because a model asked "do you see it?" agrees. Three differently worded votes per 5-second stretch; a picture is withheld only if the source is visible in <i>every</i> stretch, so errors lean toward showing: for a deaf viewer a redundant picture costs less than a missed siren.</p>
+  <p class="hint">Baselines: <b>blind</b> — a picture for every sound, never looks at the video; <b>caption</b> — the sound's name as text.</p>
+  <p class="park"><b>"Why no training?"</b> No labelled data of "sound source off-screen in video" exists at scale; 274 clips are a benchmark, not a training set. <b>"Why not GPT-4o / Gemini?"</b> Closed models change under you and cannot be re-run by an examiner; every stage here is open-weight and reproducible with one command. <b>"Why FLUX and BEATs, not what you proposed?"</b> Measured improvements — decision 2, on the right.</p>
+  <textarea class="private" id="note-1" placeholder="private notes for this step"></textarea>
+</section>
+
+<!-- 2 clips -->
+<section class="step" data-step="2" data-min="4">
+  <div class="eyebrow"><span>Three test clips</span><span class="budget">4 min</span></div>
+  <h2>One right silence, one right picture with an extra, one wrong silence</h2>
+  <div class="player">
+    <div>
+      <div class="clipline"><h3 id="clipTitle">A · Police car on screen — correct silence</h3><span class="sc" id="clipScore">ours 4 · blind 3 · caption 3</span><label class="hint" style="margin-left:auto"><input type="checkbox" id="debugToggle"> debug view</label></div>
+      <video id="mainVideo" controls preload="metadata" src="demos/a_clean.mp4" poster=""></video>
+      <p class="notice" id="clipBefore">Before play: "Siren, and the police car is right there. Watch the panel."</p>
+      <p class="hint" id="clipDuring">Point at ~6 s: the siren peaks and the panel stays empty.</p>
+      <p class="hint" id="clipAfter">After: "The empty panel is the correct answer — blind would have put a police-car picture here and scores 3; we score 4."</p>
+    </div>
+    <div class="thumbs">
+      <button class="thumb on" data-clip="a">A · Police car on screen<span class="sc">correct silence · ours 4 / blind 3</span></button>
+      <button class="thumb" data-clip="c">C · Ambulance behind the camera<span class="sc">correct picture · ours 4 / blind 3</span></button>
+      <button class="thumb" data-clip="b">B · New York street<span class="sc">wrong silence · ours 0 / blind 3</span></button>
+      <p class="hint" style="margin:4px 0 0">Order A → C → B. Debug view only for B, if he asks "why".</p>
+    </div>
+  </div>
+  <p class="park"><b>Bridge to the next step:</b> "Whether clip B is a miss or a bad label is exactly the question of where the data came from and who labelled it." <b>If he says "the label is wrong, not the system":</b> "Agreed it's debatable — that is exactly why I need decision 3, the second annotator."</p>
+  <textarea class="private" id="note-2" placeholder="his reactions to the clips"></textarea>
+</section>
+
+<!-- 3 tried and failed -->
+<section class="step" data-step="3" data-min="2">
+  <div class="eyebrow"><span>What was tried, and what it showed</span><span class="budget">2 min</span></div>
+  <h2>Not ten failures — one finding</h2>
+  <div class="say"><b>Say:</b> "Each of these ran against a bar declared beforehand; none crossed it, and together they locate the failure in one place: the detector under loud speech and music. Every fix sits on this one curve — fewer false sounds costs real sounds — and 7 of the 11 missed pictures are sounds no threshold reaches."</div>
+  <figure class="fig"><img src="figures/fig_detector_tradeoff.png" alt="Detector trade-off curve with the attempts as points"><figcaption>Raising the detector's bar trades false sounds for real ones along this curve; the filters tried (points) sit on or below it.</figcaption></figure>
+  <details><summary>The table, if he wants it (bars declared before each run)</summary>
+    <div class="tablewrap"><table>
+      <tr><th>attempt</th><th>idea</th><th>bar</th><th>result</th><th>lesson</th></tr>
+      <tr><td colspan="5"><b>detector</b></td></tr>
+      <tr><td>threshold sweep</td><td>move the one dial</td><td>beat 0.35 on dev</td><td>0.35 already best</td><td>the dial is a curve, not a setting</td></tr>
+      <tr><td>CLAP second opinion</td><td>a second listener confirms</td><td>keep 95% recall</td><td>recall 50%</td><td>confirmation halves detection</td></tr>
+      <tr><td>PANNs agreement</td><td>two detectors must agree</td><td>remove 40 of 77 phantoms</td><td>24 removed</td><td>they share the same confusions</td></tr>
+      <tr><td>persistence + rank</td><td>keep only persistent sounds</td><td>+10 pts recall</td><td>same curve</td><td>a rule restated, not a gain</td></tr>
+      <tr><td>audio-LLM veto</td><td>ask an audio model to veto</td><td>remove 40 of 77</td><td>25 removed</td><td>it hears phantoms too</td></tr>
+      <tr><td>Demucs separation</td><td>strip voices, expose ambience</td><td>recover masked sounds</td><td>17 of 23 real lost</td><td>separated audio is foreign to the detector</td></tr>
+      <tr><td colspan="5"><b>visibility</b></td></tr>
+      <tr><td>32B vision model</td><td>bigger model judges visibility</td><td>keep off-screen sounds</td><td>67% vs 35% silenced, but 25% off-screen wrongly silenced</td><td>size trades the wrong way</td></tr>
+      <tr><td colspan="5"><b>evaluation references</b></td></tr>
+      <tr><td>four-model reference</td><td>reference without my labels</td><td>above chance</td><td>55%</td><td rowspan="3">today's open models cannot answer "is the source in view?"</td></tr>
+      <tr><td>with-sound vs muted</td><td>describe with and without sound</td><td>above chance</td><td>49.5%</td></tr>
+      <tr><td>gap-closing score</td><td>how much the panel restores</td><td>AUROC ≥ 0.75</td><td>0.53</td></tr>
+    </table></div>
   </details>
-  <textarea class="private" id="note-findings" placeholder="notes (private)"></textarea>
+  <p class="park"><b>"Why not train the detector?"</b> No in-domain labelled audio; the 174 dev clips set settings, not weights; that is the first item of future work. <b>"Doesn't a tie mean it doesn't work?"</b> Both systems are 0.45 below the perfect gate in opposite places; ours wins where silence is due, loses where masking hides the sound.</p>
+  <textarea class="private" id="note-3" placeholder="private notes"></textarea>
 </section>
 
-<section id="decisions">
-  <div class="eyebrow">15–25 min · Decisions (1–4 first)</div>
-  <h2>What I need from you</h2>
-  <p class="hint">Click a chip to cycle open → decided → deferred. Answers save online as you type.</p>
-  <div class="tablewrap"><table id="qtable">
-    <tr><th>#</th><th>Question</th><th>His answer</th><th>Status</th></tr>
+<!-- 4 data -->
+<section class="step" data-step="4" data-min="2">
+  <div class="eyebrow"><span>Where the data came from, and why</span><span class="budget">2 min</span></div>
+  <h2>274 clips, four scenarios, five sources</h2>
+  <div class="say"><b>Say:</b> "Off-screen ambient sound is rare in available video — every source yielded only 15–20% usable clips — which is exactly why no benchmark for it existed. One rule labels everything, borrowed from professional captioners: does the picture already tell the viewer this sound is happening?"</div>
+  <div class="tablewrap"><table>
+    <tr><th>source</th><th>what it gave</th><th>why needed</th><th>licence</th></tr>
+    <tr><td>keyword-scraped ambient walks (YouTube)</td><td>street, market, city-walk clips with off-screen sound</td><td>the core "unseen source" scenario</td><td>research use; not redistributable</td></tr>
+    <tr><td>AudioSet strongly-labelled segments</td><td>clips with timed sound labels</td><td>detector sanity, mixed scenes</td><td>labels CC-BY; video stays on YouTube</td></tr>
+    <tr><td>UnAV-100 multi-event clips</td><td>several sounds at once</td><td>one-picture-per-source, dedup</td><td>CC-BY — releasable</td></tr>
+    <tr><td>curated film / TV scenes</td><td>deliberate off-screen sound design</td><td>hard cases: sirens, knocks behind the camera</td><td>copyrighted; research use</td></tr>
+    <tr><td>Wikimedia Commons / Internet Archive</td><td>public-domain and CC footage</td><td>a clean, fully releasable subset</td><td>CC / PD</td></tr>
+    <tr><td>DCASE 2025 Task 3</td><td>human on/off-screen labels, 30 000 clips</td><td>outside gold, never used for tuning</td><td>academic; results reported, clips not redistributed</td></tr>
   </table></div>
-  <h3 style="margin-top:18px">Departures from the proposal (one glance)</h3>
-  <ul>
-    <li>Sound detector PANNs → BEATs; image generator SDXL → FLUX.1 (both measured improvements).</li>
-    <li>274 clips, not 300; a development/test split added so settings are chosen on clips the score never sees.</li>
-    <li>The proposal's evaluation reference was written by the system's own models — circular — and was replaced by one corrected by my labels; both scores are reported.</li>
-    <li>Everything else as proposed: no training, minimum hand-written rules, automatic scoring.</li>
-  </ul>
+  <p style="margin-top:10px"><b>Labelling rule (DCMP):</b> wind roaring over a rider filmed on a moving motorcycle is <i>seen</i> — the rider already says it. <b>Split:</b> 100 test clips (25 per scenario) scored once; 174 development clips for settings. <b>Outside check:</b> on DCASE's human labels our visibility decision agrees 66.7% ± 6 — it keeps 97% of off-screen sounds and silences 35% of on-screen ones, so it errs toward showing.</p>
+  <p><b>One annotator.</b> I labelled alone; re-labelling 60 clips blind a week later I agreed with myself 78% of the time. Nobody else has labelled — that is decision 3.</p>
+  <p class="park"><b>"Can this be released / is it legal?"</b> Labels and clip IDs yes; the Wikimedia / Internet Archive / UnAV subset yes with attribution; YouTube and film clips no — the same practice as AudioSet.</p>
+  <textarea class="private" id="note-4" placeholder="private notes"></textarea>
 </section>
 
-<section id="numbers">
-  <div class="eyebrow">Cheat-sheet</div>
-  <h2>Numbers</h2>
+<!-- 5 DHH -->
+<section class="step" data-step="5" data-min="2">
+  <div class="eyebrow"><span>Deaf and hard-of-hearing viewers: what is known, what is not</span><span class="budget">2 min</span></div>
+  <h2>The literature justifies the design; nothing yet justifies "helps DHH viewers"</h2>
+  <div class="two">
+    <div class="col"><h3>What the literature says</h3><ul>
+      <li>DHH users most want alarms, sirens, knocks, a baby crying, a dog barking surfaced — HomeSound (Jain et al., CHI 2020), SoundWatch (ASSETS 2020)</li>
+      <li>Users prefer icons and pictures to text labels — SoundWatch</li>
+      <li>Trust collapses after false alarms; users switch the system off — HomeSound</li>
+      <li>Captioners omit a non-speech sound when the picture already shows it — DCMP guidelines</li>
+      <li>Non-speech sounds are inconsistently captioned or dropped — Kushalnagar et al.; Revuelta et al. 2020</li>
+    </ul></div>
+    <div class="col"><h3>What this project did not test</h3><ul>
+      <li>No DHH participants at any stage — the proposal specified automatic evaluation</li>
+      <li>The judge (a text model scoring 0–4) is a proxy for a viewer, not a viewer</li>
+      <li>No timing, trust or attention-load measures; the 1.5-s dwell and 3-slot panel are unvalidated choices</li>
+      <li>A muted-clip check with 2–3 hearing people was designed, not run</li>
+      <li>Whether home/wearable findings transfer to watching video is assumed, not shown</li>
+    </ul></div>
+  </div>
+  <p style="margin-top:12px"><b>Design choices that follow from the literature:</b> pictures rather than text (SoundWatch users chose icons); alarms and sirens matter most (HomeSound users asked for them first); the visibility gate itself (DCMP: omit what the picture already shows) — with the trade-off that false alarms kill trust, which is why the gate exists at all.</p>
+  <p><b>Can say:</b> "on 100 clips the pictures are judged correct against a captioner-rule reference, at 30% less wasted panel time than showing everything." <b>Cannot say:</b> "this helps DHH viewers" — no DHH viewer has seen the output.</p>
+  <p class="park"><b>"Then who is this for?"</b> "Literature only, so far; whether to say so plainly is decision 4, on the right." <b>Future work, two lines:</b> a within-subject study, 20–30 DHH participants, muted test clips, three conditions (gated / blind / caption): sound-event recall, intrusiveness, trust after a seeded false alarm — preceded by the 3-person hearing pilot to validate the protocol.</p>
+  <textarea class="private" id="note-5" placeholder="private notes"></textarea>
+</section>
+
+<!-- 6 decisions -->
+<section class="step" data-step="6" data-min="6">
+  <div class="eyebrow"><span>Decisions</span><span class="budget">6 min</span></div>
+  <h2>Six decisions — four today, two by email if time is short</h2>
+  <div class="say"><b>Say:</b> "Decisions 1 to 4 change what I write this week; 5 and 6 are administrative. I have written my default for each; if you say nothing, that is what I do."</div>
+  <div class="tablewrap"><table id="qtable"><tr><th>#</th><th>question</th><th>my default</th><th>his answer</th><th>status</th></tr></table></div>
+  <p class="hint" style="margin-top:8px">Numbers freeze today 18:00; submit the 18th (19th if decision 3 is yes).</p>
+  <p class="park"><b>If only 10 minutes remain at any point:</b> skip "tried and failed" and "data", cut workflow to one minute, show clips A and C only, keep DHH (one minute) and decisions 1–4.</p>
+  <textarea class="private" id="note-6" placeholder="private notes"></textarea>
+</section>
+
+<div class="nav"><button id="prevBtn">← Back</button><button id="nextBtn" class="primary">Next →</button></div>
+</main>
+
+<aside id="panel">
+  <h3>Decisions so far</h3>
+  <div class="chips" id="chips"></div>
+  <h3 id="cardsHead">Ask now</h3>
+  <div id="cards"></div>
+  <h3>Parking lot</h3>
+  <ul class="list" id="parkList"></ul>
+  <div class="addrow"><input type="text" id="parkText" placeholder="question to answer later"><button id="parkAdd" class="small">Add</button></div>
+  <h3>Action items</h3>
+  <ul class="list" id="actList"></ul>
+  <div class="addrow"><input type="text" id="actText" placeholder="action · owner · due"><button id="actAdd" class="small">Add</button></div>
+  <div class="private">
+    <h3>Private notes</h3>
+    <textarea id="note-general" rows="5" placeholder="anything; hidden in Presenter mode"></textarea>
+  </div>
+</aside>
+</div>
+
+<div class="overlay" id="numbers"><div class="sheet">
+  <div style="display:flex;justify-content:space-between;align-items:center"><h2>Numbers</h2><button id="numbersClose">Close</button></div>
   <div class="tablewrap"><table>
     <tr><th>what</th><th>value</th></tr>
     <tr><td>headline (100 test clips)</td><td class="num">gated 3.17 · blind 3.16 · caption 2.89 · CI on the difference −0.15..+0.18</td></tr>
-    <tr><td>perfect gate (oracle)</td><td class="num">3.62 · both systems ≈ −0.45 below it</td></tr>
+    <tr><td>perfect gate (oracle)</td><td class="num">3.62 · ours −0.45 · blind −0.46, in opposite places</td></tr>
     <tr><td>picture due / not due</td><td class="num">2.78 vs 3.02 (−0.24 [−0.54,+0.04]) · 3.56 vs 3.30 (+0.26 [+0.12,+0.40])</td></tr>
-    <tr><td>cost to the viewer</td><td class="num">panel on 47% vs 60% of a clip · wasted 357 s vs 506 s on the 50 no-picture clips (−30%)</td></tr>
+    <tr><td>cost to the viewer</td><td class="num">panel on 47% vs 60% · wasted 357 s vs 506 s where nothing was due (−30%)</td></tr>
     <tr><td>DCASE 2025 outside check</td><td class="num">66.7% ± 6 · off-screen kept 97% · on-screen silenced 35%</td></tr>
-    <tr><td>benchmark</td><td class="num">274 clips · 100 test (25 per scenario) · 174 dev · self-agreement 78%, κ 0.60 (intra-rater)</td></tr>
+    <tr><td>benchmark</td><td class="num">274 clips · 100 test (25 per scenario) · 174 dev · self-agreement 78%, κ 0.60</td></tr>
     <tr><td>withheld pictures on test</td><td class="num">11 · 7 detector (under speech/music) · 4 label ambiguity · 0 timing</td></tr>
-    <tr><td>attempts</td><td class="num">6 detector + 1 visibility fix, all failed declared bars · 3 automatic references failed at the visibility question</td></tr>
+    <tr><td>attempts</td><td class="num">6 detector + 1 visibility, all failed declared bars · 3 automatic references failed at visibility</td></tr>
+    <tr><td>demo scores (ours / blind / caption)</td><td class="num">A 4/3/3 · B 0/3/2 · C 4/3/2</td></tr>
     <tr><td>documents</td><td class="num">thesis 19 pp · executive summary 14 pp · LIMITATIONS.md · update 2 pp</td></tr>
   </table></div>
-</section>
-
-<section id="parking">
-  <div class="eyebrow">25–30 min · Wrap-up</div>
-  <h2>Parking lot and actions</h2>
-  <p class="say"><b>Say:</b> "Numbers freeze today at 18:00; submit the 18th. Anything I could not answer goes here."</p>
-  <h3>Parking lot</h3>
-  <ul class="list" id="parkList"></ul>
-  <div class="addrow"><input type="text" id="parkText" placeholder="question I could not answer"><input type="text" id="parkWho" placeholder="who answers"><button id="parkAdd">Add</button></div>
-  <h3 style="margin-top:16px">Action items</h3>
-  <ul class="list" id="actList"></ul>
-  <div class="addrow"><input type="text" id="actText" placeholder="action"><input type="text" id="actWho" placeholder="owner · due"><button id="actAdd">Add</button></div>
-</section>
-
-</main>
-
-<aside class="private" id="drawer">
-  <h3>Notes drawer</h3>
-  <p class="hint">Saved online as you type. <kbd>N</kbd> hides this; <kbd>P</kbd> hides everything private before screen-sharing.</p>
-  <label for="note-general">General notes</label>
-  <textarea id="note-general" rows="8" placeholder="anything, in any order"></textarea>
-  <label>Checklist</label>
-  <div id="checks"></div>
-  <label for="note-email">Draft of the follow-up email</label>
-  <textarea id="note-email" rows="6" placeholder="three lines: what was decided, what I will do, by when"></textarea>
-</aside>
-</div>
+</div></div>
 <div class="toast" id="toast"></div>
 
 <script>
 (function(){
+  const STEPS = [
+    {label:"Opening", min:1}, {label:"Workflow", min:3}, {label:"Clips", min:4}, {label:"Tried", min:2},
+    {label:"Data", min:2}, {label:"DHH", min:2}, {label:"Decisions", min:6}];
   const QUESTIONS = [
-    {id:"q1", text:"Contribution framing: working pipeline + benchmark and protocol + measured limits. Acceptable? (I can rewrite intro/conclusion in a day; numbers unchanged.)", def:"findings framing"},
-    {id:"q2", text:"Departures from the proposal — any objection?", def:"accept"},
-    {id:"q3", text:"Second annotator: 2–3 lab members, one hour each, 60 test clips, web page. Ethics? Names? Moves submission to 19 Sept.", def:"no, if it risks the date"},
-    {id:"q4", text:"\"Helpfulness to deaf viewers is untested\" — state plainly, user study as future work?", def:"state plainly"},
-    {id:"q5", text:"Report format: structure, length, Hebrew abstract, submission channel?", def:"article style, 19 pp"},
-    {id:"q6", text:"AI-assistance disclosure: what wording?", def:"one acknowledgement paragraph"}
+    {id:"q1", step:6, title:"1 · Contribution framing", text:"Working pipeline + benchmark and protocol + the measured limits. Acceptable? (I can rewrite the introduction and conclusion in a day; the numbers would not change.)", def:"findings framing"},
+    {id:"q2", step:1, title:"2 · Departures from the proposal", text:"PANNs → BEATs; SDXL → FLUX.1; 274 clips not 300; a development/test split; the circular reference replaced by one corrected by my labels. Any objection?", def:"accept"},
+    {id:"q3", step:4, title:"3 · Second annotator", text:"2–3 lab members, one hour each, 60 test clips, a web page I prepare. Ethics needed? Names? It moves submission to 19 Sept.", def:"no, if it risks the date"},
+    {id:"q4", step:5, title:"4 · State it plainly", text:"\"Helpfulness to deaf viewers is untested; the judge is a proxy\" — say it in the abstract and Limitations, user study as future work?", def:"yes, state plainly"},
+    {id:"q5", step:6, title:"5 · Report format", text:"Required structure, length, Hebrew abstract, submission channel?", def:"article style, 19 pages"},
+    {id:"q6", step:6, title:"6 · AI-assistance disclosure", text:"I used an AI coding assistant for code and drafting; every design choice and label is mine, logged in git. What wording does the department want?", def:"one acknowledgement paragraph"}
   ];
-  const CHECKS = ["framing accepted","departures accepted","deadline confirmed (18 / 19 Sept)","Hebrew abstract needed","disclosure wording given","annotator names received"];
-  const STATUSES = ["open","decided","deferred"];
-  const NOTE_IDS = ["note-open","note-demos","note-findings","note-general","note-email"];
-
-  // ---- state: one document, mirrored to localStorage; db when available
-  let state = {notes:{}, decisions:{}, checks:{}, parking:[], actions:[]};
-  let db = null, docRef = null, saveTimer = null, saving = false, dirty = false, lastRemote = null;
+  const CLIPS = {
+    a:{title:"A · Police car on screen — correct silence", score:"ours 4 · blind 3 · caption 3",
+       before:"Before play: \"Siren, and the police car is right there. Watch the panel.\"",
+       during:"Point at ~6 s: the siren peaks and the panel stays empty.",
+       after:"After: \"The empty panel is the correct answer — blind would have put a police-car picture here and scores 3; we score 4.\" (Under the proposal's original reference this correct silence scored 0 — that is why the reference was replaced.)"},
+    c:{title:"C · Ambulance behind the camera — correct picture", score:"ours 4 · blind 3 · caption 2",
+       before:"Before play: \"Same siren, but the ambulance is behind the camera.\"",
+       during:"Point at ~5 s: the ambulance picture appears; ~12 s: a second horn picture (the Vehicle sound — the road left the frame for one stretch).",
+       after:"After: \"That second picture is the gate being honest to a fault — the cost table counts it.\""},
+    b:{title:"B · New York street — wrong silence", score:"ours 0 · blind 3 · caption 2",
+       before:"Before play: \"Now a miss.\"",
+       during:"Point at ~7 s: traffic loud, panel empty. Debug view shows \"0.36 Vehicle — visible\": the detector fired, the gate declined.",
+       after:"After: \"The label says off-screen traffic; cars are visible. Ours 0, blind 3 — blind's picture is what saved its 3. Arguably the label is wrong — hold that thought.\""}
+  };
+  const NOTE_IDS = ["note-0","note-1","note-2","note-3","note-4","note-5","note-6","note-general"];
   const $ = id => document.getElementById(id);
+
+  // ---------- state
+  let state = {decisions:{}, notes:{}, parking:[], actions:[], startedAt:null, step:0};
+  let db = null, docRef = null, saveTimer = null, saving = false, dirty = false, lastRemote = null;
   const status = $("status"), toast = $("toast");
-  function say(msg){ toast.textContent = msg; toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"), 1600); }
-  function setStatus(t, cls){ status.textContent = t; status.className = "status" + (cls ? " " + cls : ""); }
-  function localLoad(){ try{ const s = localStorage.getItem("meeting-state"); if(s) state = Object.assign(state, JSON.parse(s)); }catch(e){} }
-  function localSave(){ try{ localStorage.setItem("meeting-state", JSON.stringify(state)); }catch(e){} }
-
-  // ---- render
-  function renderQuestions(){
-    const t = $("qtable");
-    QUESTIONS.forEach(q=>{
-      const d = state.decisions[q.id] || {};
-      let tr = document.getElementById("row-"+q.id);
-      if(!tr){
-        tr = document.createElement("tr"); tr.id = "row-"+q.id;
-        tr.innerHTML = '<td class="num">'+q.id.slice(1)+'</td><td>'+q.text+'<div class="q-default">default: '+q.def+'</div></td>'+
-          '<td><textarea id="ans-'+q.id+'" placeholder="his answer / conditions"></textarea></td>'+
-          '<td><span class="chip" data-s="open" id="chip-'+q.id+'" tabindex="0" role="button">open</span></td>';
-        t.appendChild(tr);
-        const ta = $("ans-"+q.id); ta.addEventListener("input", ()=>{ setDecision(q.id, {answer: ta.value}); });
-        const chip = $("chip-"+q.id);
-        const cycle = ()=>{ const cur = (state.decisions[q.id]||{}).status || "open"; const nxt = STATUSES[(STATUSES.indexOf(cur)+1)%STATUSES.length]; setDecision(q.id, {status: nxt}); };
-        chip.addEventListener("click", cycle); chip.addEventListener("keydown", e=>{ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); cycle(); }});
-      }
-      const ta = $("ans-"+q.id); if(document.activeElement !== ta && ta.value !== (d.answer||"")) ta.value = d.answer || "";
-      const chip = $("chip-"+q.id); chip.dataset.s = d.status || "open"; chip.textContent = d.status || "open";
-    });
-  }
-  function renderNotes(){
-    NOTE_IDS.forEach(id=>{ const el = $(id); if(el && document.activeElement !== el && el.value !== (state.notes[id]||"")) el.value = state.notes[id] || ""; });
-  }
-  function renderChecks(){
-    const box = $("checks");
-    if(!box.children.length){
-      CHECKS.forEach((c,i)=>{ const l = document.createElement("label"); l.style.textTransform="none"; l.style.letterSpacing="0"; l.style.fontSize="15px"; l.style.color="var(--ink)";
-        l.innerHTML = '<input type="checkbox" id="chk-'+i+'"> '+c; box.appendChild(l);
-        l.querySelector("input").addEventListener("change", e=>{ state.checks[i] = e.target.checked; scheduleSave(); }); });
-    }
-    CHECKS.forEach((c,i)=>{ $("chk-"+i).checked = !!state.checks[i]; });
-  }
-  function renderList(ulId, items, key){
-    const ul = $(ulId); ul.innerHTML = "";
-    items.forEach((it, i)=>{
-      const li = document.createElement("li");
-      li.innerHTML = '<span></span><span class="who"></span><button title="remove">×</button>';
-      li.children[0].textContent = it.text; li.children[1].textContent = it.who || "";
-      li.children[2].addEventListener("click", ()=>{ state[key].splice(i,1); scheduleSave(); renderAll(); });
-      ul.appendChild(li);
-    });
-    if(!items.length){ const li = document.createElement("li"); li.className="hint"; li.style.display="block"; li.textContent = "nothing yet"; ul.appendChild(li); }
-  }
-  function renderAll(){ renderQuestions(); renderNotes(); renderChecks(); renderList("parkList", state.parking, "parking"); renderList("actList", state.actions, "actions"); }
-
-  // ---- mutations
-  function setDecision(id, patch){ state.decisions[id] = Object.assign({}, state.decisions[id]||{}, patch); scheduleSave(); renderQuestions(); }
-  NOTE_IDS.forEach(id=>{ const el = $(id); if(el) el.addEventListener("input", ()=>{ state.notes[id] = el.value; scheduleSave(); }); });
-  function addItem(key, textId, whoId){ const t = $(textId).value.trim(); if(!t) return; state[key].push({text:t, who: $(whoId).value.trim(), at: new Date().toISOString()}); $(textId).value=""; $(whoId).value=""; scheduleSave(); renderAll(); }
-  $("parkAdd").addEventListener("click", ()=>addItem("parking","parkText","parkWho"));
-  $("actAdd").addEventListener("click", ()=>addItem("actions","actText","actWho"));
-  $("parkText").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem("parking","parkText","parkWho"); });
-  $("actText").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem("actions","actText","actWho"); });
-
-  // ---- saving: debounce 1 s, one write in flight, coalesce
-  function scheduleSave(){ dirty = true; localSave(); setStatus("saving…", "saving"); clearTimeout(saveTimer); saveTimer = setTimeout(flush, 1000); }
+  function say(m){ toast.textContent = m; toast.classList.add("show"); setTimeout(()=>toast.classList.remove("show"), 1500); }
+  function setStatus(t, warn){ status.textContent = t; status.className = "status" + (warn ? " warn" : ""); }
+  function localLoad(){ try{ const s = localStorage.getItem("meeting-v2"); if(s) Object.assign(state, JSON.parse(s)); }catch(e){} }
+  function localSave(){ try{ localStorage.setItem("meeting-v2", JSON.stringify(state)); }catch(e){} }
+  function scheduleSave(){ dirty = true; localSave(); setStatus("saving…"); clearTimeout(saveTimer); saveTimer = setTimeout(flush, 900); }
   async function flush(){
     if(!dirty) return;
     if(!docRef){ dirty = false; setStatus("notes: saved locally only"); return; }
     if(saving){ saveTimer = setTimeout(flush, 500); return; }
     saving = true; dirty = false;
-    try{ await docRef.set(Object.assign({}, state, {updatedAt: new Date().toISOString()})); setStatus("saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"})); }
-    catch(e){ dirty = true; setStatus("offline — kept locally", "err"); }
-    saving = false;
-    if(dirty) saveTimer = setTimeout(flush, 1500);
+    try{ await docRef.set(Object.assign({}, state, {updatedAt: new Date().toISOString()})); setStatus("saved " + hhmm(new Date())); }
+    catch(e){ dirty = true; setStatus("offline — kept locally", true); }
+    saving = false; if(dirty) saveTimer = setTimeout(flush, 1500);
   }
-  window.addEventListener("beforeunload", e=>{ if(dirty){ localSave(); e.preventDefault(); e.returnValue = ""; } });
+  function hhmm(d){ return d.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); }
+  window.addEventListener("beforeunload", e=>{ if(dirty){ localSave(); e.preventDefault(); e.returnValue=""; } });
 
-  // ---- boot
-  localLoad(); renderAll();
+  // ---------- steps
+  let cur = 0;
+  function showStep(i){
+    cur = Math.max(0, Math.min(STEPS.length-1, i)); state.step = cur;
+    document.querySelectorAll(".step").forEach(s=>s.classList.toggle("on", +s.dataset.step === cur));
+    $("stepLabel").textContent = "Step " + (cur+1) + " of " + STEPS.length + " · " + STEPS[cur].label + " · " + STEPS[cur].min + " min";
+    $("prevBtn").disabled = cur === 0; $("nextBtn").textContent = cur === STEPS.length-1 ? "End" : "Next →";
+    window.scrollTo({top:0});
+    renderStrip(); renderCards(); try{ localStorage.setItem("meeting-v2", JSON.stringify(state)); }catch(e){}
+  }
+  $("prevBtn").addEventListener("click", ()=>showStep(cur-1));
+  $("nextBtn").addEventListener("click", ()=>showStep(cur+1));
+
+  // ---------- progress strip + clock
+  const slots = $("slots");
+  STEPS.forEach((s,i)=>{ const d = document.createElement("div"); d.className="slot"; d.style.flex = String(s.min); d.innerHTML = "<i></i><span>"+s.label+" · "+s.min+"</span>"; d.addEventListener("click", ()=>showStep(i)); slots.appendChild(d); });
+  const startOf = {}; let acc = 0; STEPS.forEach((s,i)=>{ startOf[i] = acc; acc += s.min; });
+  function renderStrip(){
+    const el = Math.max(0, state.startedAt ? (Date.now() - state.startedAt) / 60000 : 0);
+    slots.querySelectorAll(".slot").forEach((d,i)=>{
+      d.classList.toggle("cur", i === cur);
+      const a = startOf[i], b = a + STEPS[i].min;
+      const f = el <= a ? 0 : el >= b ? 1 : (el - a) / STEPS[i].min;
+      d.querySelector("i").style.width = (f*100) + "%";
+      d.classList.toggle("over", i === cur && el > b);
+    });
+    const m = Math.floor(el), s = Math.floor((el - m) * 60);
+    let t = String(m).padStart(2,"0") + ":" + String(s).padStart(2,"0");
+    if(state.startedAt && el > startOf[cur] + STEPS[cur].min) t += "  +" + Math.floor(el - startOf[cur] - STEPS[cur].min) + " min over";
+    $("elapsed").textContent = t;
+  }
+  $("startBtn").addEventListener("click", ()=>{ if(state.startedAt && !confirm("Restart the 20-minute clock?")) return; state.startedAt = Date.now(); scheduleSave(); renderStrip(); $("startBtn").textContent = "Restart"; });
+  setInterval(renderStrip, 1000);
+
+  // ---------- decisions: chips, cards, table
+  function dec(id){ return state.decisions[id] || {}; }
+  function setDec(id, patch){ state.decisions[id] = Object.assign({}, dec(id), patch, {ts:new Date().toISOString()}); scheduleSave(); renderCards(); renderTable(); }
+  function chipFor(q){ const d = dec(q.id); const c = document.createElement("span"); c.className="chip"; c.dataset.s = d.status || "open"; c.textContent = q.title.split(" · ")[0] + " " + (d.status||"open") + (d.answer ? ": " + d.answer.slice(0,28) : ""); c.title = q.title; c.addEventListener("click", ()=>{ activeCard = q.id; renderCards(); }); return c; }
+  let activeCard = null;
+  function renderCards(){
+    const chips = $("chips"); chips.innerHTML = ""; QUESTIONS.forEach(q=>chips.appendChild(chipFor(q)));
+    const box = $("cards"); box.innerHTML = "";
+    let list = QUESTIONS.filter(q=>q.step === cur);
+    if(cur === STEPS.length-1) list = QUESTIONS.filter(q=>q.step === cur || (dec(q.id).status||"open") !== "decided");
+    if(activeCard && !list.some(q=>q.id===activeCard)) list = [QUESTIONS.find(q=>q.id===activeCard)].concat(list);
+    $("cardsHead").textContent = list.length ? "Ask now" : "Ask now — nothing at this step";
+    if(!list.length){ const p = document.createElement("p"); p.className="hint"; p.textContent = cur===2 ? "No decision here; watch the clock." : "Nothing to decide at this step."; box.appendChild(p); }
+    list.forEach(q=>{
+      const d = dec(q.id); const card = document.createElement("div"); card.className = "qcard" + (q.id === (activeCard || list[0].id) ? " active" : ""); card.id = "card-"+q.id;
+      card.innerHTML = '<div class="qt">'+q.title+'</div><div class="qd">'+q.text+'</div><div class="qd">my default: <b>'+q.def+'</b></div>'+
+        '<textarea id="ans-'+q.id+'" placeholder="his answer / conditions"></textarea>'+
+        '<div class="qbtns"><button class="small" data-act="default">Accept default</button><button class="small" data-act="answer">Answer…</button><button class="small" data-act="defer">Defer</button><button class="small primary" data-act="submit">Submit (S)</button></div>';
+      const ta = card.querySelector("textarea"); ta.value = d.answer || "";
+      ta.addEventListener("input", ()=>{ state.decisions[q.id] = Object.assign({}, dec(q.id), {answer: ta.value}); scheduleSave(); });
+      ta.addEventListener("focus", ()=>{ activeCard = q.id; document.querySelectorAll(".qcard").forEach(c=>c.classList.toggle("active", c===card)); });
+      card.querySelectorAll("button").forEach(b=>b.addEventListener("click", ()=>{
+        const act = b.dataset.act;
+        if(act==="default"){ ta.value = q.def; setDec(q.id, {answer:q.def, status:"decided"}); say("Decided: default"); }
+        else if(act==="answer"){ activeCard = q.id; ta.focus(); }
+        else if(act==="defer"){ setDec(q.id, {answer: ta.value, status:"deferred"}); say("Deferred"); }
+        else { setDec(q.id, {answer: ta.value || q.def, status:"decided"}); say("Submitted"); }
+      }));
+      box.appendChild(card);
+    });
+  }
+  function renderTable(){
+    const t = $("qtable");
+    QUESTIONS.forEach(q=>{
+      let tr = document.getElementById("row-"+q.id);
+      if(!tr){ tr = document.createElement("tr"); tr.id="row-"+q.id; tr.innerHTML = '<td class="num">'+q.id.slice(1)+'</td><td>'+q.title.split(" · ")[1]+'<div class="hint">'+q.text+'</div></td><td>'+q.def+'</td><td id="tans-'+q.id+'"></td><td id="tst-'+q.id+'"></td>'; t.appendChild(tr); }
+      const d = dec(q.id); $("tans-"+q.id).textContent = d.answer || "—"; const st = $("tst-"+q.id); st.innerHTML = '<span class="chip" data-s="'+(d.status||"open")+'">'+(d.status||"open")+'</span>';
+      st.firstChild.addEventListener("click", ()=>{ activeCard = q.id; renderCards(); document.getElementById("card-"+q.id)?.scrollIntoView({block:"center"}); });
+    });
+  }
+  function submitActive(){ const id = activeCard || (QUESTIONS.find(q=>q.step===cur)||{}).id; if(!id) return; const ta = $("ans-"+id); if(!ta) return; const q = QUESTIONS.find(x=>x.id===id); setDec(id, {answer: ta.value || q.def, status:"decided"}); say("Submitted " + q.title.split(" · ")[0]); }
+
+  // ---------- notes, parking, actions
+  NOTE_IDS.forEach(id=>{ const el = $(id); if(el) el.addEventListener("input", ()=>{ state.notes[id] = el.value; scheduleSave(); }); });
+  function renderNotes(){ NOTE_IDS.forEach(id=>{ const el = $(id); if(el && document.activeElement !== el) el.value = state.notes[id] || ""; }); }
+  function renderList(ulId, items, key){
+    const ul = $(ulId); ul.innerHTML = "";
+    items.forEach((it,i)=>{ const li = document.createElement("li"); li.innerHTML = '<span></span><button class="small" title="remove">×</button>'; li.children[0].textContent = it.text + (it.at ? "  · " + hhmm(new Date(it.at)) : ""); li.children[1].addEventListener("click", ()=>{ state[key].splice(i,1); scheduleSave(); renderLists(); }); ul.appendChild(li); });
+    if(!items.length){ const li = document.createElement("li"); li.className="hint"; li.style.display="block"; li.textContent="nothing yet"; ul.appendChild(li); }
+  }
+  function renderLists(){ renderList("parkList", state.parking, "parking"); renderList("actList", state.actions, "actions"); }
+  function addItem(key, inputId){ const el = $(inputId); const t = el.value.trim(); if(!t) return; state[key].push({text:t, at:new Date().toISOString(), step:cur}); el.value=""; scheduleSave(); renderLists(); }
+  $("parkAdd").addEventListener("click", ()=>addItem("parking","parkText")); $("parkText").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem("parking","parkText"); });
+  $("actAdd").addEventListener("click", ()=>addItem("actions","actText")); $("actText").addEventListener("keydown", e=>{ if(e.key==="Enter") addItem("actions","actText"); });
+
+  // ---------- clips
+  const video = $("mainVideo"); let clip = "a";
+  function loadClip(k){
+    clip = k; const c = CLIPS[k]; const dbg = $("debugToggle").checked;
+    const t = video.currentTime; video.src = "demos/" + k + (dbg ? "_debug" : "_clean") + ".mp4"; video.load();
+    $("clipTitle").textContent = c.title; $("clipScore").textContent = c.score; $("clipBefore").textContent = c.before; $("clipDuring").textContent = c.during; $("clipAfter").textContent = c.after;
+    document.querySelectorAll(".thumb").forEach(b=>b.classList.toggle("on", b.dataset.clip===k));
+    if(dbg && !isNaN(t)) video.currentTime = 0;
+  }
+  document.querySelectorAll(".thumb").forEach(b=>b.addEventListener("click", ()=>loadClip(b.dataset.clip)));
+  $("debugToggle").addEventListener("change", ()=>loadClip(clip));
+  video.addEventListener("error", ()=>{ $("clipDuring").textContent = "This video did not load — use the frames in examples/ or figure 2 (fig_examples.png)."; });
+
+  // ---------- presenter, numbers, keys
+  function togglePresenter(){ document.body.classList.toggle("presenter"); const on = document.body.classList.contains("presenter"); $("presenterBtn").textContent = on ? "Presenter ● (notes hidden)" : "Presenter"; try{ localStorage.setItem("presenter", on?"1":"0"); }catch(e){} }
+  $("presenterBtn").addEventListener("click", togglePresenter);
+  try{ if(localStorage.getItem("presenter")==="1") togglePresenter(); }catch(e){}
+  const numbers = $("numbers"); $("numbersBtn").addEventListener("click", ()=>numbers.classList.toggle("on")); $("numbersClose").addEventListener("click", ()=>numbers.classList.remove("on")); numbers.addEventListener("click", e=>{ if(e.target===numbers) numbers.classList.remove("on"); });
+  document.addEventListener("keydown", e=>{
+    const tag = (e.target.tagName||"").toLowerCase(); const typing = tag==="textarea" || tag==="input";
+    if(e.key==="Escape"){ if(typing) e.target.blur(); numbers.classList.remove("on"); return; }
+    if(typing) return;
+    if(e.key==="ArrowRight") showStep(cur+1);
+    else if(e.key==="ArrowLeft") showStep(cur-1);
+    else if(e.key===" " && cur===2){ e.preventDefault(); video.paused ? video.play() : video.pause(); }
+    else if(e.key==="s"||e.key==="S") submitActive();
+    else if(e.key==="p"||e.key==="P") togglePresenter();
+    else if(e.key==="m"||e.key==="M") numbers.classList.toggle("on");
+    else if(cur===2 && (e.key==="1"||e.key==="2"||e.key==="3")) loadClip(["a","c","b"][+e.key-1]);
+  });
+
+  // ---------- copy all
+  $("copyBtn").addEventListener("click", async ()=>{
+    const el = state.startedAt ? Math.round((Date.now()-state.startedAt)/60000) : null;
+    const L = ["Supervisor meeting — " + new Date().toLocaleString() + (el!==null ? " — elapsed " + el + " min" : ""), "", "DECISIONS"];
+    QUESTIONS.forEach(q=>{ const d = dec(q.id); L.push(q.title + " — default: " + q.def); L.push("   status: " + (d.status||"open") + (d.answer ? " · answer: " + d.answer : "") + (d.ts ? " · " + hhmm(new Date(d.ts)) : "")); });
+    L.push("", "DEFERRED: " + (QUESTIONS.filter(q=>dec(q.id).status==="deferred").map(q=>q.title.split(" · ")[0]).join(", ") || "none"));
+    L.push("", "PARKING LOT"); state.parking.forEach(p=>L.push("- " + p.text)); if(!state.parking.length) L.push("- none");
+    L.push("", "ACTION ITEMS"); state.actions.forEach(p=>L.push("- " + p.text)); if(!state.actions.length) L.push("- none");
+    L.push("", "DEMO SCORES (ours / blind / caption): A 4/3/3 · C 4/3/2 · B 0/3/2");
+    L.push("", "NOTES"); NOTE_IDS.forEach(id=>{ if(state.notes[id]) L.push("[" + id.replace("note-","step ") + "] " + state.notes[id]); });
+    L.push("", "Submission date agreed: " + ((dec("q3").status==="decided" && /yes/i.test(dec("q3").answer||"")) ? "19 Sept (second annotator)" : "18 Sept (default)"));
+    const text = L.join("\n");
+    try{ await navigator.clipboard.writeText(text); say("Copied"); }
+    catch(e){ const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); say("Copied"); }catch(_){ say("Copy failed"); } ta.remove(); }
+  });
+
+  // ---------- boot
+  localLoad(); if(state.startedAt) $("startBtn").textContent = "Restart";
+  renderTable(); renderNotes(); renderLists(); showStep(state.step || 0); loadClip("a");
   (async ()=>{
-    try{
-      db = window.claude && window.claude.use ? await window.claude.use("db") : null;
-    }catch(e){ db = null; }
+    try{ db = window.claude && window.claude.use ? await window.claude.use("db") : null; }catch(e){ db = null; }
     if(!db){ setStatus("notes: saved locally only (no shared storage)"); return; }
     docRef = db.doc("meeting/notes");
     docRef.onSnapshot(snap=>{
-      if(!snap.exists){ if(Object.keys(state.decisions).length || Object.keys(state.notes).length) { dirty = true; flush(); } setStatus("notes: online"); return; }
-      const remote = snap.data();
-      if(dirty || saving){ return; }                       // local edits win until flushed
-      if(lastRemote && remote.updatedAt === lastRemote) return;
-      lastRemote = remote.updatedAt;
-      state = Object.assign(state, {notes: remote.notes||{}, decisions: remote.decisions||{}, checks: remote.checks||{}, parking: remote.parking||[], actions: remote.actions||[]});
-      localSave(); renderAll(); setStatus("notes: online (" + (remote.updatedAt ? new Date(remote.updatedAt).toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}) : "") + ")");
-    }, err=>{ setStatus("offline — kept locally", "err"); docRef = null; });
+      if(!snap.exists){ if(Object.keys(state.decisions).length || Object.keys(state.notes).length || state.startedAt){ dirty = true; flush(); } setStatus("notes: online"); return; }
+      const r = snap.data(); if(dirty || saving) return; if(lastRemote && r.updatedAt === lastRemote) return; lastRemote = r.updatedAt;
+      Object.assign(state, {decisions: r.decisions||{}, notes: r.notes||{}, parking: r.parking||[], actions: r.actions||[], startedAt: r.startedAt||state.startedAt});
+      localSave(); renderTable(); renderCards(); renderNotes(); renderLists(); renderStrip(); setStatus("notes: online" + (r.updatedAt ? " (" + hhmm(new Date(r.updatedAt)) + ")" : ""));
+    }, err=>{ setStatus("offline — kept locally", true); docRef = null; });
   })();
-
-  // ---- presenter / notes toggles, keyboard, clock
-  const wrap = $("wrap");
-  function toggleNotes(){ wrap.classList.toggle("notes-open"); try{ localStorage.setItem("notes-open", wrap.classList.contains("notes-open") ? "1" : "0"); }catch(e){} }
-  function togglePresenter(){ document.body.classList.toggle("presenter"); const on = document.body.classList.contains("presenter"); $("togglePresenter").textContent = on ? "Presenter ● (private hidden)" : "Presenter"; if(on) wrap.classList.remove("notes-open"); }
-  $("toggleNotes").addEventListener("click", toggleNotes);
-  $("togglePresenter").addEventListener("click", togglePresenter);
-  try{ if(localStorage.getItem("notes-open") === "1") wrap.classList.add("notes-open"); }catch(e){}
-  let lastVideo = null;
-  document.querySelectorAll("video").forEach(v=>{ v.addEventListener("click", ()=>{ lastVideo = v; }); v.addEventListener("play", ()=>{ lastVideo = v; document.querySelectorAll("video").forEach(o=>{ if(o!==v && !o.paused && o.dataset.demo !== v.dataset.demo) o.pause(); }); });
-    v.addEventListener("error", ()=>{ const f = v.parentElement; const p = document.createElement("p"); p.className="hint"; p.textContent = "This video did not load — use the frames in the folder (examples/)."; f.appendChild(p); }); });
-  document.addEventListener("keydown", e=>{
-    const tag = (e.target.tagName||"").toLowerCase(); if(tag==="textarea"||tag==="input") return;
-    if(e.key===" " && lastVideo){ e.preventDefault(); lastVideo.paused ? lastVideo.play() : lastVideo.pause(); }
-    if(e.key==="n"||e.key==="N") toggleNotes();
-    if(e.key==="p"||e.key==="P") togglePresenter();
-    if(e.key==="1"||e.key==="2"||e.key==="3"){ const v = document.querySelector('video[data-demo="'+["a","b","c"][+e.key-1]+'"]'); if(v){ v.scrollIntoView({block:"center"}); lastVideo = v; } }
-  });
-  function tick(){ $("clock").textContent = new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); } tick(); setInterval(tick, 15000);
-
-  // ---- copy all
-  $("copyAll").addEventListener("click", async ()=>{
-    const lines = ["Supervisor meeting — " + new Date().toLocaleString(), ""];
-    lines.push("DECISIONS");
-    QUESTIONS.forEach(q=>{ const d = state.decisions[q.id]||{}; lines.push((q.id.slice(1))+". ["+(d.status||"open")+"] "+q.text); if(d.answer) lines.push("   answer: "+d.answer); });
-    lines.push("", "CHECKLIST"); CHECKS.forEach((c,i)=>lines.push((state.checks[i]?"[x] ":"[ ] ")+c));
-    lines.push("", "PARKING LOT"); state.parking.forEach(p=>lines.push("- "+p.text+(p.who?" ("+p.who+")":"")));
-    lines.push("", "ACTIONS"); state.actions.forEach(p=>lines.push("- "+p.text+(p.who?" ("+p.who+")":"")));
-    lines.push("", "NOTES"); NOTE_IDS.forEach(id=>{ if(state.notes[id]) lines.push("["+id.replace("note-","")+"] "+state.notes[id]); });
-    const text = lines.join("\n");
-    try{ await navigator.clipboard.writeText(text); say("Copied"); }
-    catch(e){ const ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try{ document.execCommand("copy"); say("Copied"); }catch(_){ say("Copy failed — select the text manually"); } ta.remove(); }
-  });
 })();
 </script>

@@ -1,4 +1,4 @@
-# Run sheet — 30 minutes
+# Run sheet — 20 minutes (the online page drives this; keep this as backup)
 
 Decisions must be reached by minute 20. Play the **clean** demos; open a **debug** one only
 if he asks "why".
