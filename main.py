@@ -27,12 +27,20 @@ def main() -> None:
     ap.add_argument("--generator", default=config.GEN_BACKEND,
                     choices=["retrieve", "placeholder", "diffusion"],
                     help="how Stage 6 produces images (v1=retrieve)")
+    ap.add_argument("--video-backend", default=config.VIDEO_BACKEND, choices=["siglip", "owlv2", "vlm"],
+                    help="Stage 2 object finder; the evaluated configuration (v3) used owlv2")
+    ap.add_argument("--debug-panel", action="store_true",
+                    help="print the phrase and every raw detection with the gate's verdict under the panel")
     args = ap.parse_args()
 
     # allow CLI overrides of the shared config
     config.WHISPER_MODEL = args.whisper_model
     config.DEVICE = args.device
     config.GEN_BACKEND = args.generator
+    config.VIDEO_BACKEND = args.video_backend
+    if args.debug_panel:
+        config.SHOW_PROMPT = True
+        config.SHOW_DEBUG_SOUNDS = True
 
     try:
         from dotenv import load_dotenv
