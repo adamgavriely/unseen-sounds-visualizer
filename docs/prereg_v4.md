@@ -60,8 +60,8 @@ Declared here, before the run:
   pipeline's own families; five labels were added so that every *real* labelled detection
   on the dev split has a query (dev is the tuning split; disclosed). The list is
   `src/stage4_audio_event_detection/flam_queries.py` and does not change after the run.
-- **Calibration (per query):** on DCASE 2025 task 3 **dev-train-tau** audio (up to 300
-  five-second clips, one per mix, never used for evaluation), the bar for query *q* is the
+- **Calibration (per query):** on DCASE 2025 task 3 **dev-train-tau** audio (600 five-second
+  clips, one per mix and start time, never used for evaluation), the bar for query *q* is the
   lowest bar in {0.05, 0.10, …, 0.95} whose spans not overlapping a gold event of a matching
   class number ≤ 5.2 / |Q| per minute — the BEATs false-positive rate shared equally. A
   query that meets it at no bar gets 0.95. Scores are then rescaled piecewise-linearly so

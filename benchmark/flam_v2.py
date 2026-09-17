@@ -31,7 +31,7 @@ CALIB = _ROOT / "benchmark" / "flam_calibration.json"
 OUT = _ROOT / "benchmark" / "flam_v2_setting.json"
 DCASE = _ROOT / "data" / "dcase2025_task3"
 CAL_SPLIT, EVAL_SPLIT = "dev-train-tau", "dev-test-tau"
-N_CAL = 300
+N_CAL = 600
 GRID = [round(b, 2) for b in np.arange(0.05, 0.96, 0.05)]
 FP_BUDGET = BAR["fp_per_min"]            # 5.2, BEATs' rate, shared equally by the queries
 SHIP_BAR = 0.35                          # config.DISPLAY_THRESHOLD
@@ -39,10 +39,12 @@ SHIP_BAR = 0.35                          # config.DISPLAY_THRESHOLD
 
 # ----------------------------------------------------------------------------- sets
 def cal_stems():
-    """One clip per mix from dev-train-tau, sorted, capped -- never the evaluation split."""
+    """dev-train-tau clips, one per (mix, start) -- the rotations of one moment are the
+    same audio -- sorted and capped; never the evaluation split."""
+    import re
     seen, out = set(), []
     for m in sorted((DCASE / "metadata_dev" / CAL_SPLIT).glob("*.csv")):
-        key = m.stem.split("_deg")[0]
+        key = re.sub(r"_deg\d+", "", m.stem)
         if key in seen:
             continue
         seen.add(key); out.append(m.stem)
