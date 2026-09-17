@@ -223,7 +223,7 @@ def evaluate():
            "queries": len(LABELS), "calibration": str(CALIB.name), "dcase_test": d,
            "dev": {"real_kept": [real_kept, real_n], "phantoms_gone": [ph_gone, ph_n],
                    "phantom_labels_without_query": sorted(set(no_query))},
-           "bars": BAR, "passed": passed}
+           "bars": BAR, "passed": bool(passed)}
     OUT.write_text(json.dumps(out, indent=1), encoding="utf-8")
     print(f"[dcase] masked {d['masked_recall']:.1%} (>= 24.5%) clear {d['clear_recall']:.1%} (>= 32.6%) "
           f"FP/min {d['fp_per_min']:.2f} (<= 5.2) over {d['minutes']:.1f} min")
