@@ -20,6 +20,7 @@ export HF_HUB_OFFLINE=1
 export PYTHONUNBUFFERED=1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 # FLAM pins torch 2.7 and an older transformers -> its own env; Qwen3.8 runs in msproj (transformers 5.16)
-conda activate sota  && python scripts/sota_smoke.py --parts detector; conda deactivate
-conda activate msproj && python scripts/sota_smoke.py --parts vlm
+PARTS="${PARTS:-detector vlm}"
+case " $PARTS " in *" detector "*) conda activate sota  && python scripts/sota_smoke.py --parts detector; conda deactivate;; esac
+case " $PARTS " in *" vlm "*)      conda activate msproj && python scripts/sota_smoke.py --parts vlm;; esac
 echo DONE
