@@ -18,10 +18,37 @@ from pathlib import Path
 
 _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
-from benchmark.gate_dev_sweep import load, _find_clip, min_confidence
+from benchmark.gate_dev_sweep import load, _find_clip, min_confidence, decide
 
 HERE = Path(__file__).resolve().parent
 gate = json.loads((_ROOT / "benchmark" / "gate_setting.json").read_text(encoding="utf-8"))["chosen"]
+
+results = {}
+for rec in json.loads((_ROOT / "benchmark" / "protocol_results_v3_grounded.json").read_text(encoding="utf-8")):
+    if rec["system"] == "proposed":
+        results[rec["clip"]] = rec
+DUE = {"unseen_ambient", "mixed"}
+
+
+def _detail(rec, label):
+    """the most specific raw detection under this family, for a friendlier default name"""
+    best = None
+    for e in rec.get("events", []):
+        from src.labels import canonical
+        if canonical(e["label"]) == label and (best is None or e["confidence"] > best["confidence"]):
+            best = e
+    return best["label"] if best else label
+
+
+def _masked(rec, start, end, conf):
+    """the sound is quiet (below 0.5) while speech or music above 0.5 covers most of its span"""
+    if conf >= 0.5:
+        return False
+    for e in rec.get("events", []):
+        if e["label"] in ("Speech", "Music") and e["confidence"] >= 0.5 and min(e["end"], end) - max(e["start"], start) >= 0.5 * (end - start):
+            return True
+    return False
+
 
 clips = []
 for rec in load("test"):
@@ -29,10 +56,22 @@ for rec in load("test"):
     if video is None:
         continue
     rel = Path(video).resolve().relative_to(_ROOT).as_posix()
-    cands = [{"label": s["label"], "conf": round(s["confidence"], 2), "start": round(s["start"], 1), "end": round(s["end"], 1)}
-             for s in rec["sounds"] if s["confidence"] >= min_confidence(s["label"], gate["bar"])]
+    d = decide(rec, gate["bar"], gate["rule"], gate["kinds"])
+    cands = []
+    for s in rec["sounds"]:
+        if s["confidence"] < min_confidence(s["label"], gate["bar"]):
+            continue
+        visible_all = bool(s["stretches"]) and all(st.get("verdict") for st in s["stretches"])
+        cands.append({"label": _detail(rec, s["label"]).replace(" (siren)", " siren").lower(), "family": s["label"],
+                      "conf": round(s["confidence"], 2), "start": round(s["start"], 1), "end": round(s["end"], 1),
+                      "visible": visible_all, "masked": _masked(rec, s["start"], s["end"], s["confidence"]),
+                      "gate": "silenced" if s["label"] in d["silenced"] else ("shown" if s["label"] in d["shown"] else "dropped")})
     cands.sort(key=lambda c: -c["conf"])
-    clips.append({"id": rec["clip"], "src": "../../" + rel, "duration": round(rec["duration"], 1), "candidates": cands[:8]})
+    pr = results.get(rec["clip"], {})
+    ref = pr.get("reference", "")
+    clips.append({"id": rec["clip"], "src": "../../" + rel, "duration": round(rec["duration"], 1), "candidates": cands[:8],
+                  "tag": rec["tag"], "picture_due": rec["tag"] in DUE,
+                  "sentence": ref if ref and ref != "nothing beyond the picture" else "nothing beyond the picture"})
 clips.sort(key=lambda c: c["id"])
 
 html = (HERE / "tool_template.html").read_text(encoding="utf-8")

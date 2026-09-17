@@ -63,10 +63,11 @@ select{font:inherit;font-size:14px;padding:4px}
   <p class="hint"><kbd>Space</kbd> play/pause · <kbd>[</kbd> mark start of the selected sound at the current time · <kbd>]</kbd> mark its end · <kbd>A</kbd> add a sound · <kbd>N</kbd> next clip · <kbd>P</kbd> previous</p>
 
   <div class="card">
-    <h2>1 · Sounds — suggested by the detector; delete the wrong ones, add the missing ones</h2>
-    <p class="hint">Each row is a sound the detector thinks it heard (with its time). Listen once: press <b>×</b> on anything you do not hear; press <b>+ add</b> for anything it missed. Then for each remaining sound tick <b>source visible while it sounds</b> and <b>covered by speech/music</b> if they apply. Times are rough; fix them with <kbd>[</kbd> <kbd>]</kbd> only if clearly wrong.</p>
+    <h2>1 · Sounds — everything is pre-filled by the system; correct what is wrong</h2>
+    <p class="hint">Each row is a sound the detector heard, with its time, whether the system judged the source <b>visible</b>, and whether <b>speech/music covers it</b>. Listen once, then: <b>×</b> anything you do not hear, <b>+ add</b> anything missed, and flip any tick that is wrong. Times: fix with <kbd>[</kbd> <kbd>]</kbd> only if clearly off.</p>
     <div id="sounds"></div>
     <div class="nav"><button id="addSound">+ add a sound (A)</button>
+      <button id="resetClip" class="small" title="discard my edits on this clip and reload the system's pre-fill">reset this clip to the pre-fill</button>
       <button id="showCands" class="small">show the detector's full list again</button></div>
     <div class="cands" id="cands"></div>
     <datalist id="labels"><option value="siren"><option value="vehicle / traffic"><option value="engine"><option value="car horn"><option value="train"><option value="aircraft / helicopter"><option value="dog barking"><option value="bird"><option value="animal"><option value="crowd / people talking (ambient)"><option value="footsteps"><option value="door"><option value="knock"><option value="glass breaking"><option value="explosion / gunshot"><option value="alarm / bell"><option value="phone ringing"><option value="applause"><option value="laughter"><option value="rain"><option value="thunder"><option value="wind"><option value="water / waves"><option value="fire / crackling"><option value="machine / tool"><option value="kitchen sounds"><option value="baby crying"></datalist>
@@ -74,7 +75,7 @@ select{font:inherit;font-size:14px;padding:4px}
 
   <div class="card">
     <h2>2 · What a hearing viewer gets that a deaf viewer misses</h2>
-    <p class="hint">One or two sentences, or exactly <b>nothing beyond the picture</b> if every noticeable sound's source is already on screen (or there is no ambient sound).</p>
+    <p class="hint">Pre-filled with the sentence the system's own models wrote (corrected by your earlier clip label). Rewrite it in your own words where it is wrong or vague; keep exactly <b>nothing beyond the picture</b> if every noticeable sound's source is on screen.</p>
     <textarea id="sentence" placeholder="e.g. A siren is approaching from somewhere behind the camera; the ambulance is never in view."></textarea>
     <div class="nav">
       <button id="nothingBtn" class="small">nothing beyond the picture</button>
@@ -98,7 +99,7 @@ select{font:inherit;font-size:14px;padding:4px}
       <li>If the source is visible for part of the sound only, tick "visible" only if it is visible for most of the sound; add a note.</li>
       <li>"Covered by speech/music": you can hear the sound only with effort because talking or a soundtrack sits on top of it.</li>
       <li>Start/end: rough is fine (half a second). Use the video's time; <kbd>[</kbd> and <kbd>]</kbd> stamp the current time.</li>
-      <li>The rows are the detector's guesses, there to save typing. It invents sounds and misses quiet ones: delete what you do not hear, add what it missed. Your ear decides.</li>
+      <li>Everything is pre-filled from the system under test — sounds, times, visibility, the sentence, the picture-due box. That saves typing but can anchor you: delete what you do not hear, add what it missed, flip what is wrong. Your ear and eye decide; the thesis discloses the pre-fill.</li>
       <li>The sentence: write what the sound adds for a hearing viewer, in plain words. If nothing is missing, use the "nothing" button.</li>
     </ol>
     <p class="hint">Time: about 2–3 minutes per clip. Export your JSON when you stop (the page also keeps a copy in this browser).</p>
@@ -116,7 +117,9 @@ const CLIPS = /*__CLIPS__*/[];
   function load(){ try{ data = JSON.parse(localStorage.getItem(key()) || "{}"); }catch(e){ data = {}; } }
   function save(){ try{ localStorage.setItem(key(), JSON.stringify(data)); $("saved").textContent = "saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); }catch(e){ $("saved").textContent = "could not save in this browser — export often"; } renderProgress(); }
   function blank(c){ return {clip:c.id, sounds:[], sentence:"", picture_due:false, unsure:false, note:"", done:false, opened_candidates:false, updated:null}; }
-  function current(){ const c = CLIPS[idx]; if(!data[c.id]){ data[c.id] = blank(c); data[c.id].sounds = c.candidates.map(k => ({label:k.label, visible:false, masked:false, start:k.start, end:k.end, from_detector:true, suggested:true})); data[c.id].opened_candidates = true; } return data[c.id]; }
+  function current(){ const c = CLIPS[idx]; if(!data[c.id]){ data[c.id] = blank(c);
+      data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, masked:!!k.masked, start:k.start, end:k.end, from_detector:true, suggested:true, gate:k.gate}));
+      data[c.id].sentence = c.sentence || ""; data[c.id].picture_due = !!c.picture_due; data[c.id].prefilled = true; data[c.id].opened_candidates = true; } return data[c.id]; }
 
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; CLIPS.forEach((c,i)=>{ const o = document.createElement("option"); o.value = i; o.textContent = (i+1) + " · " + c.id + (data[c.id] && data[c.id].done ? " ✓" : ""); s.appendChild(o); }); s.value = idx; }
   function renderProgress(){ const n = CLIPS.filter(c => data[c.id] && data[c.id].done).length; $("progress").textContent = n + " / " + CLIPS.length + " done"; $("progressList").textContent = CLIPS.map((c,i)=> (data[c.id]&&data[c.id].done) ? "✓" : "·").join(" "); renderSel(); }
@@ -134,6 +137,7 @@ const CLIPS = /*__CLIPS__*/[];
       const inp = d.querySelector("input[type=text]"); inp.value = s.label || ""; inp.addEventListener("input", ()=>{ s.label = inp.value; touch(); }); inp.addEventListener("focus", ()=>{ selSound = i; });
       const vis = d.querySelector(".vis"); vis.checked = !!s.visible; vis.addEventListener("change", ()=>{ s.visible = vis.checked; touch(); derive(); });
       const mk = d.querySelector(".masked"); mk.checked = !!s.masked; mk.addEventListener("change", ()=>{ s.masked = mk.checked; touch(); });
+      if(s.gate){ const g = document.createElement("span"); g.className = "t"; g.style.color = "var(--muted)"; g.textContent = "system: " + s.gate; d.querySelector(".row").appendChild(g); }
       d.querySelector(".st").textContent = s.start == null ? "–" : s.start.toFixed(1) + " s"; d.querySelector(".en").textContent = s.end == null ? "–" : s.end.toFixed(1) + " s";
       d.querySelector(".mark-s").addEventListener("click", ()=>{ selSound = i; s.start = +$("video").currentTime.toFixed(1); touch(); renderSounds(); });
       d.querySelector(".mark-e").addEventListener("click", ()=>{ selSound = i; s.end = +$("video").currentTime.toFixed(1); touch(); renderSounds(); });
@@ -157,6 +161,7 @@ const CLIPS = /*__CLIPS__*/[];
     c.candidates.forEach(k=>{ const d = document.createElement("div"); d.className = "cand"; d.innerHTML = '<span class="c">'+k.conf.toFixed(2)+'</span><span>'+k.label+' · '+k.start+'–'+k.end+' s</span><button class="small">add</button>';
       d.querySelector("button").addEventListener("click", ()=>{ current().sounds.push({label:k.label, visible:false, masked:false, start:k.start, end:k.end, from_detector:true}); touch(); derive(); renderSounds(); }); box.appendChild(d); }); }
 
+  $("resetClip").addEventListener("click", ()=>{ if(!confirm("Discard your edits on this clip and reload the pre-fill?")) return; delete data[CLIPS[idx].id]; save(); renderClip(); });
   $("showCands").addEventListener("click", ()=>{ current().opened_candidates = true; touch(); $("cands").classList.add("on"); });
   $("addSound").addEventListener("click", ()=>{ current().sounds.push({label:"", visible:false, masked:false, start:null, end:null}); touch(); renderSounds(); const inputs = document.querySelectorAll("#sounds input[type=text]"); inputs[inputs.length-1].focus(); });
   $("sentence").addEventListener("input", ()=>{ current().sentence = $("sentence").value; touch(); });
