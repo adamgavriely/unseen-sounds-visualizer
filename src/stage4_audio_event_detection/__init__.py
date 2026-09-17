@@ -148,9 +148,15 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                   plot_path: Path = None, plot_top_k: int = 15) -> List[AudioEvent]:
     # "beats" (default, see config.AED_MODEL) or anything else for PANNs. Same 527
     # labels either way, so nothing downstream cares which one ran.
-    backend = "BEATs" if "beats" in (model or "").lower() else "PANNs"
+    # "flam" (v4, docs/prereg_v4.md): frame-level language-audio model over a fixed
+    # descriptive vocabulary, one query per AudioSet label, per-query calibration.
+    m = (model or "").lower()
+    backend = "FLAM" if "flam" in m else "BEATs" if "beats" in m else "PANNs"
     try:
-        if backend == "BEATs":
+        if backend == "FLAM":
+            from src.stage4_audio_event_detection.flam_infer import infer_flam
+            framewise, times, labels = infer_flam(Path(wav_path), device)
+        elif backend == "BEATs":
             from src.stage4_audio_event_detection.beats_infer import infer_beats
             framewise, times, labels = infer_beats(Path(wav_path), device)
         else:
