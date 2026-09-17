@@ -4,7 +4,8 @@
 Queries = the 527 AudioSet label names BEATs uses (taken from a cached BEATs window file), so
 the output has the same shape as benchmark/beats_windows: framewise[frames, 527], times,
 labels. Windows of 10 s at 48 kHz (FLAM's input); padding masked; score = sigmoid of the
-local similarity. Spans use the shipping rule with a bar chosen on DCASE gold at BEATs'
+local similarity (the "unbiased" method already returns probabilities in [0, 1]; the first
+cache applied a sigmoid on top by mistake and was converted back with the logit). Spans use the shipping rule with a bar chosen on DCASE gold at BEATs'
 false-positive rate.
 
     python -m benchmark.flam_detector --cache dcase --cache dev      # GPU, env 'sota'
@@ -65,7 +66,7 @@ def score_file(model, names, wav: Path, batch: int = 64):
             for i in range(0, len(names), batch):
                 q = names[i:i + batch]
                 sim = model.get_local_similarity(x.repeat(len(q), 1), q, method="unbiased")   # [q, frames]
-                cols.append(torch.sigmoid(sim).float().cpu().numpy().T)                        # [frames, q]
+                cols.append(sim.float().clamp(0, 1).cpu().numpy().T)                              # [frames, q]; "unbiased" is already a probability
             fw = np.concatenate(cols, axis=1)                                                  # [frames, 527]
             T = fw.shape[0]; hop = 10.0 / T
             keep = int(np.ceil(valid / hop))
