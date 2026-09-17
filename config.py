@@ -31,6 +31,8 @@ SIGLIP_THRESHOLD = -7.5   # raw logit, not a probability (see stage2/siglip.py)
 OWL_MODEL = "google/owlv2-base-patch16-ensemble"
 OWL_THRESHOLD = 0.20
 VLM_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"      # used when VIDEO_BACKEND == "vlm"
+VLM_THINKING = False          # Qwen3.x: reason before answering (docs/prereg_qwen38_visibility.md); slower
+VLM_THINKING_TOKENS = 1024    # generation budget when thinking is on
 NUM_FRAMES = 6              # frames sampled from the clip for scene analysis
 VISIBILITY_THRESHOLD = 0.30  # CLIP prob for a source to count as "visible on screen"
 

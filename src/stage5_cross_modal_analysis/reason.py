@@ -203,11 +203,17 @@ def _load(model: str, device: str):
         except Exception:
             pass
         import torch
-        from transformers import AutoProcessor, Qwen2_5_VLForConditionalGeneration
+        from transformers import AutoProcessor
         proc = AutoProcessor.from_pretrained(model)
-        mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained(
-            model, torch_dtype=torch.bfloat16 if device == "cuda" else torch.float32,
-            device_map="auto" if device == "cuda" else None).eval()
+        dtype = torch.bfloat16 if device == "cuda" else torch.float32
+        dmap = "auto" if device == "cuda" else None
+        if "Qwen2.5-VL" in model:
+            from transformers import Qwen2_5_VLForConditionalGeneration
+            mdl = Qwen2_5_VLForConditionalGeneration.from_pretrained(model, torch_dtype=dtype, device_map=dmap).eval()
+        else:
+            # Qwen3.x and other native vision-language models (transformers >= 5.8)
+            from transformers import AutoModelForImageTextToText
+            mdl = AutoModelForImageTextToText.from_pretrained(model, dtype=dtype, device_map=dmap).eval()
         _VLM = (mdl, proc)
     return _VLM
 
@@ -231,18 +237,37 @@ def unload():
 
 def _ask(mdl, proc, prompt, images=None, max_new: int = 48) -> str:
     import torch
+    # Thinking (Qwen3.x): the model reasons first, then answers; the pipeline reads only the
+    # answer. Off by default; config.VLM_THINKING = True turns it on (several times slower).
+    thinking = bool(getattr(config, "VLM_THINKING", False))
+    if thinking:
+        prompt = prompt + " Think it through, then end with only the final answer on the last line."
     content = [{"type": "image"} for _ in (images or [])]
     content.append({"type": "text", "text": prompt})
-    text = proc.apply_chat_template([{"role": "user", "content": content}],
-                                    tokenize=False, add_generation_prompt=True)
+    try:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
+                                        add_generation_prompt=True, enable_thinking=thinking)
+    except TypeError:                                   # templates without the switch (Qwen2.5)
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True)
     kw = {"text": [text], "return_tensors": "pt"}
     if images:
         kw["images"] = images
     inputs = proc(**kw).to(mdl.device)
+    budget = max(max_new, int(getattr(config, "VLM_THINKING_TOKENS", 1024))) if thinking else max_new
     with torch.no_grad():
-        out = mdl.generate(**inputs, max_new_tokens=max_new, do_sample=False)
+        out = mdl.generate(**inputs, max_new_tokens=budget, do_sample=False)
     new = out[:, inputs["input_ids"].shape[1]:]
     text = proc.batch_decode(new, skip_special_tokens=True)[0].strip()
+    if thinking:
+        if "</think>" in text:
+            text = text.split("</think>")[-1].strip()
+        # the answer is the last non-empty line; "Final answer:" prefixes are dropped
+        lines = [l.strip() for l in text.splitlines() if l.strip()]
+        text = lines[-1] if lines else text
+        for pre in ("final answer:", "answer:"):
+            if text.lower().startswith(pre):
+                text = text[len(pre):].strip()
+        max_new = budget
     # A generation that used its whole budget was CUT, not finished, and the cut lands
     # mid-word: "a stream running through a for" reached the image generator once. The
     # model cannot tell us this and the string does not look wrong, so the only reliable
