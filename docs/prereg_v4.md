@@ -93,3 +93,27 @@ or vote rule is changed for it. The gold set's per-sound labels are the arbiter.
 
 No tuning on the test clips; no prompt changes after seeing numbers; the gate bar stays;
 v3 stays in every table.
+
+## §4 outcome (added 2026-09-18 evening, after the run) — FAILED as pre-registered
+
+`benchmark/flam_v2_setting.json`, `benchmark/flam_calibration.json` (600 clips, 50 min;
+median bar 0.53; 24 queries met the budget at no bar and were left at 0.95 as declared).
+
+| measure | bar | FLAM-v2 |
+|---|---|---|
+| masked-event recall | ≥ 24.5% | **69.8%** ✔ |
+| clear-event recall | ≥ 32.6% | **88.4%** ✔ |
+| false positives / min | ≤ 5.2 | **61.6** ✘ |
+| dev real detections kept | ≥ 21/23 | **15/23** ✘ |
+| dev phantoms gone | ≥ 40/77 | **59/77** ✔ |
+
+Diagnosis (exploratory, after the result): the false positives are impact and human
+generics — Knock 5.9/min, Footsteps 4.6, Clapping 4.0, Doorbell 3.4, Cough 3.1, Bicycle
+bell 3.1, Door 3.0, Bell 2.8, Rain 2.5 — and the calibration did not transfer from
+dev-train to the busier, event-selected dev-test clips (with the 24 ceiling queries off the
+rate would still be 34/min). Of the 8 lost dev reals, 4 had FLAM score ≈ 0 in the span
+(Aircraft, Gunshot, Explosion, Zipper: FLAM has blind spots of its own), 3 sat under a
+ceiling bar, 1 was marginal. BEATs' 5.2/min was never measured at matched recall, so the
+bar is asymmetric; disclosed. Recorded as attempt nine. Two attempts say the same thing:
+FLAM hears under masking what BEATs misses, with an unusable false-positive rate on
+generic impacts — complementary, not a substitute.
