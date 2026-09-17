@@ -15,6 +15,7 @@
 | `06_questions_form.md` | The six questions with space to write his answers. Print or keep open. |
 | `07_examples.md` | The worked examples with real numbers: what to say for each demo, and expected questions. |
 | `08_how_to_run.md` | How to run the system on one video (if he asks "can I try it?"). |
+| `meeting_page/` | **The guided meeting page.** Open `meeting_page/index.html` locally, or use the online link below. |
 | `demos/` | Three test clips, `clean_*` (what a viewer sees) and `debug_*` (detections and gate verdicts printed under the panel). |
 | `figures/` | The four report figures as PNG for quick showing. |
 | `examples/` | Mid-clip frames of the three demos (if the videos will not play). |
@@ -27,4 +28,4 @@
 
 ## Online meeting page
 
-https://claude.ai/artifact/Mdg3z3cbib7YUTAjVbxeSW — the run sheet, demos, figures, decisions and notes in one page; notes save online as you type (private to you; use **Presenter** before screen-sharing). Source copy: `09_meeting_page.html` (videos and figures are served with the online page).
+https://claude.ai/artifact/Mdg3z3cbib7YUTAjVbxeSW — the run sheet, demos, figures, decisions and notes in one page; notes save online as you type (private to you; use **Presenter** before screen-sharing). Local copy: `meeting_page/index.html` (works offline, notes saved in the browser only).
