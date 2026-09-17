@@ -204,7 +204,7 @@ def evaluate():
     sounds = {r["clip"]: r["sounds"] for r in load("dev")}
     real_kept = real_n = ph_gone = ph_n = 0; no_query = []
     for it in lab:
-        p = WIN_DIR / "dev" / f"{it['clip']}.npz"
+        p = WIN_DIR / "dev" / f"{Path(it['clip']).stem}.npz"     # labels name the file, the cache its stem
         snd = next((s for s in sounds.get(it["clip"], []) if s["label"] == it["label"]), None)
         if not p.exists() or snd is None:
             continue
@@ -217,6 +217,23 @@ def evaluate():
             ph_n += 1; ph_gone += (not fires)
         else:
             real_n += 1; real_kept += fires
+    # exploratory (after the declared result): test false positives by query, and the same
+    # measures with every query that met the budget at no bar switched off (bar 1.0)
+    per_q = {}
+    for stem, events in by_clip.items():
+        p = WIN_DIR / "dcase_test" / f"{stem}.npz"
+        if not p.exists():
+            continue
+        fw, times, labels = _load(p)
+        all_gold = _gold(EVAL_SPLIT, stem)
+        for l, a, b, _ in spans_of(fw, times, labels):
+            if not any(_in_family(l, c) and min(b, e) - max(a, s) > 0 for c, s, e in all_gold):
+                per_q[l] = per_q.get(l, 0) + 1
+    per_q = {k: round(v / max(1e-6, minutes), 2) for k, v in sorted(per_q.items(), key=lambda kv: -kv[1])}
+    ceiling = sorted(l for l, b in calib.items() if b >= 0.95)
+    d["fp_per_min_by_query"] = per_q
+    d["exploratory_ceiling_off"] = {"queries_off": ceiling,
+                                    "fp_per_min": round(sum(v for k, v in per_q.items() if k not in ceiling), 2)}
     passed = (d["masked_recall"] >= BAR["masked_recall"] and d["clear_recall"] >= BAR["clear_recall"]
               and d["fp_per_min"] <= BAR["fp_per_min"] and real_kept >= BAR["real_kept"] and ph_gone >= BAR["phantoms_gone"])
     out = {"when": datetime.now().isoformat(timespec="minutes"), "model": "openflam v1-base, descriptive vocabulary, per-query bars",
