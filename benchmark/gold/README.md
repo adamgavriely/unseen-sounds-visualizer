@@ -28,6 +28,21 @@ guideline once, then continue to all 100.
 prints Cohen's κ on "picture due" between annotators and against Adam's original labels,
 and writes `benchmark/gold/gold_set.json` (majority verdicts; disputed clips flagged).
 
+## Slice B: AudioSet-Strong clips
+
+A second page whose pre-fill comes from human labels (AudioSet-Strong event spans), not the
+detector. `benchmark/gold/audioset_slice.py` writes `benchmark/gold/audioset_slice.json`
+and the clips to `data/input/audioset_strong/<segment_id>.mp4`; then
+
+    python benchmark/gold/build_tool.py --slice audioset
+
+writes `benchmark/gold/index_audioset.html` (clips without an mp4 on disk are skipped).
+Open it as above. Labels and times are already human; only **source visible**, **covered by
+speech/music** (pre-ticked from the Speech/Music spans), the **picture-due** box and the
+**sentence** need annotating. Nothing is pre-ticked as due and the sentence starts empty.
+Exports carry `"tag": "audioset_strong"`; `merge.py` keeps these clips in `gold_set.json`
+with `"slice": "audioset_strong"` and leaves them out of the κ against Adam's labels.
+
 ## Rebuild the tool (after changing the template or the clip list)
 
     python benchmark/gold/build_tool.py

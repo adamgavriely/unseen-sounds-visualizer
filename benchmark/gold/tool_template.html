@@ -20,6 +20,7 @@ video{width:100%;max-width:100%;background:#000;border-radius:8px}
 .sound:first-child{border-top:0}
 .sound.suggested input[type=text]{background:#f4f7fa}
 .sound.suggested::before{content:"detector";font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);grid-column:1 / -1}
+.sound.suggested.human::before{content:"human label (AudioSet-Strong)"}
 .sound label{font-size:13px;color:var(--muted);margin-right:10px;white-space:nowrap}
 .sound input[type=text]{width:100%;font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;box-sizing:border-box}
 .sound .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
@@ -116,9 +117,10 @@ const CLIPS = /*__CLIPS__*/[];
   const key = () => "gold-" + ($("who").value.trim() || "anon");
   function load(){ try{ data = JSON.parse(localStorage.getItem(key()) || "{}"); }catch(e){ data = {}; } }
   function save(){ try{ localStorage.setItem(key(), JSON.stringify(data)); $("saved").textContent = "saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); }catch(e){ $("saved").textContent = "could not save in this browser — export often"; } renderProgress(); }
-  function blank(c){ return {clip:c.id, sounds:[], sentence:"", picture_due:false, unsure:false, note:"", done:false, opened_candidates:false, updated:null}; }
+  function human(c){ return c.tag === "audioset_strong" || !!(c.candidates[0] && c.candidates[0].gate === "human"); }
+  function blank(c){ return {clip:c.id, tag:c.tag || null, sounds:[], sentence:"", picture_due:false, unsure:false, note:"", done:false, opened_candidates:false, updated:null}; }
   function current(){ const c = CLIPS[idx]; if(!data[c.id]){ data[c.id] = blank(c);
-      data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, masked:!!k.masked, start:k.start, end:k.end, from_detector:true, suggested:true, gate:k.gate}));
+      data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, masked:!!k.masked, start:k.start, end:k.end, from_detector:!human(c), from_human_label:human(c), suggested:true, gate:k.gate}));
       data[c.id].sentence = c.sentence || ""; data[c.id].picture_due = !!c.picture_due; data[c.id].prefilled = true; data[c.id].opened_candidates = true; } return data[c.id]; }
 
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; CLIPS.forEach((c,i)=>{ const o = document.createElement("option"); o.value = i; o.textContent = (i+1) + " · " + c.id + (data[c.id] && data[c.id].done ? " ✓" : ""); s.appendChild(o); }); s.value = idx; }
@@ -127,7 +129,7 @@ const CLIPS = /*__CLIPS__*/[];
     const a = current(); const box = $("sounds"); box.innerHTML = "";
     if(!a.sounds.length){ box.innerHTML = '<p class="hint">no sounds yet — add one, or tick "nothing beyond the picture" below if there is no ambient sound worth noting</p>'; }
     a.sounds.forEach((s,i)=>{
-      const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "") + (s.suggested ? " suggested" : "");
+      const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "") + (s.suggested ? " suggested" : "") + (s.gate === "human" ? " human" : "");
       d.innerHTML = '<div><input type="text" list="labels" placeholder="what is the sound? (e.g. siren, dog barking, glass breaking)"><div class="row">'
         + '<label><input type="checkbox" class="vis"> source visible while it sounds</label>'
         + '<label><input type="checkbox" class="masked"> covered by speech/music</label>'
@@ -137,7 +139,7 @@ const CLIPS = /*__CLIPS__*/[];
       const inp = d.querySelector("input[type=text]"); inp.value = s.label || ""; inp.addEventListener("input", ()=>{ s.label = inp.value; touch(); }); inp.addEventListener("focus", ()=>{ selSound = i; });
       const vis = d.querySelector(".vis"); vis.checked = !!s.visible; vis.addEventListener("change", ()=>{ s.visible = vis.checked; touch(); derive(); });
       const mk = d.querySelector(".masked"); mk.checked = !!s.masked; mk.addEventListener("change", ()=>{ s.masked = mk.checked; touch(); });
-      if(s.gate){ const g = document.createElement("span"); g.className = "t"; g.style.color = "var(--muted)"; g.textContent = "system: " + s.gate; d.querySelector(".row").appendChild(g); }
+      if(s.gate){ const g = document.createElement("span"); g.className = "t"; g.style.color = "var(--muted)"; g.textContent = s.gate === "human" ? "times: human label" : "system: " + s.gate; d.querySelector(".row").appendChild(g); }
       d.querySelector(".st").textContent = s.start == null ? "–" : s.start.toFixed(1) + " s"; d.querySelector(".en").textContent = s.end == null ? "–" : s.end.toFixed(1) + " s";
       d.querySelector(".mark-s").addEventListener("click", ()=>{ selSound = i; s.start = +$("video").currentTime.toFixed(1); touch(); renderSounds(); });
       d.querySelector(".mark-e").addEventListener("click", ()=>{ selSound = i; s.end = +$("video").currentTime.toFixed(1); touch(); renderSounds(); });
@@ -150,16 +152,18 @@ const CLIPS = /*__CLIPS__*/[];
   function renderClip(){
     const c = CLIPS[idx]; const a = current(); selSound = 0;
     $("clipName").textContent = (idx+1) + " / " + CLIPS.length + " · " + c.id;
-    $("clipMeta").textContent = c.duration + " s";
+    $("clipMeta").textContent = c.duration + " s" + (human(c) ? " · AudioSet-Strong: labels and times are human; you decide visible / covered and write the sentence" : "");
     $("video").src = c.src; $("video").load();
     $("sentence").value = a.sentence || ""; $("picDue").checked = !!a.picture_due; $("unsure").checked = !!a.unsure; $("note").value = a.note || "";
+    $("showCands").textContent = human(c) ? "show the full human-label list again" : "show the detector's full list again";
     $("cands").classList.toggle("on", !!a.opened_candidates); renderCands();
     renderSounds(); renderSel(); $("saved").textContent = a.done ? "✓ marked done" : "";
     window.scrollTo({top:0});
   }
-  function renderCands(){ const c = CLIPS[idx]; const box = $("cands"); box.innerHTML = '<p class="hint">The detector heard (confidence 0–1; may be wrong or incomplete):</p>';
-    c.candidates.forEach(k=>{ const d = document.createElement("div"); d.className = "cand"; d.innerHTML = '<span class="c">'+k.conf.toFixed(2)+'</span><span>'+k.label+' · '+k.start+'–'+k.end+' s</span><button class="small">add</button>';
-      d.querySelector("button").addEventListener("click", ()=>{ current().sounds.push({label:k.label, visible:false, masked:false, start:k.start, end:k.end, from_detector:true}); touch(); derive(); renderSounds(); }); box.appendChild(d); }); }
+  function renderCands(){ const c = CLIPS[idx]; const box = $("cands"); const h = human(c);
+    box.innerHTML = '<p class="hint">' + (h ? 'Human-timed labels (AudioSet-Strong); tick visible / fix times:' : 'The detector heard (confidence 0–1; may be wrong or incomplete):') + '</p>';
+    c.candidates.forEach(k=>{ const d = document.createElement("div"); d.className = "cand"; d.innerHTML = (h ? '' : '<span class="c">'+k.conf.toFixed(2)+'</span>')+'<span>'+k.label+' · '+k.start+'–'+k.end+' s</span><button class="small">add</button>';
+      d.querySelector("button").addEventListener("click", ()=>{ current().sounds.push(h ? {label:k.label, visible:false, masked:!!k.masked, start:k.start, end:k.end, from_detector:false, from_human_label:true, gate:"human"} : {label:k.label, visible:false, masked:false, start:k.start, end:k.end, from_detector:true}); touch(); derive(); renderSounds(); }); box.appendChild(d); }); }
 
   $("resetClip").addEventListener("click", ()=>{ if(!confirm("Discard your edits on this clip and reload the pre-fill?")) return; delete data[CLIPS[idx].id]; save(); renderClip(); });
   $("showCands").addEventListener("click", ()=>{ current().opened_candidates = true; touch(); $("cands").classList.add("on"); });
