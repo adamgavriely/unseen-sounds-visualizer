@@ -19,6 +19,8 @@ if [ ! -x $W/miniconda3/bin/conda ]; then
 fi
 source $W/miniconda3/etc/profile.d/conda.sh
 conda config --set auto_activate_base false >/dev/null 2>&1
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main >/dev/null 2>&1
+conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r >/dev/null 2>&1
 grep -q "miniconda3/etc/profile.d/conda.sh" ~/.bashrc || cat >> ~/.bashrc <<'EOF'
 source /workspace/miniconda3/etc/profile.d/conda.sh
 export HF_HOME=/workspace/hf
@@ -80,6 +82,6 @@ while true; do
 done
 EOF
 chmod +x $W/idle_stop.sh
-pgrep -f idle_stop.sh >/dev/null || nohup $W/idle_stop.sh >/dev/null 2>&1 &
-echo "idle watcher running (pid $(pgrep -f idle_stop.sh | head -1))"
+pgrep -f "idle_stop.sh" >/dev/null || setsid nohup bash $W/idle_stop.sh >/dev/null 2>&1 < /dev/null &
+sleep 1; echo "idle watcher running (pid $(pgrep -f "bash /workspace/idle_stop.sh" | head -1))"
 echo "=== done"
