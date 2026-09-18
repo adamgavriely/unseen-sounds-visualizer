@@ -1013,6 +1013,778 @@
      "consequential": false
     }
    ]
+  },
+  {
+   "id": "rDju9bBFvA4_80000",
+   "family": "Alarm",
+   "src": "../../data/input/audioset_strong/rDju9bBFvA4_80000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 3.24,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Keys jangling",
+     "start": 1.3,
+     "end": 1.79,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Keys jangling",
+     "start": 2.91,
+     "end": 3.58,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 3.47,
+     "end": 3.73,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.78,
+     "end": 5.17,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Alarm",
+     "start": 5.06,
+     "end": 6.17,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.66,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Keys jangling",
+     "start": 5.66,
+     "end": 5.78,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "O5v1-O5A-f0_410000",
+   "family": "Baby cry, infant cry",
+   "src": "../../data/input/audioset_strong/O5v1-O5A-f0_410000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.0,
+     "end": 2.42,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 2.45,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Babbling",
+     "start": 0.98,
+     "end": 2.59,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 2.16,
+     "end": 3.69,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 2.18,
+     "end": 3.67,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.29,
+     "end": 4.41,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 3.3,
+     "end": 4.41,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Babbling",
+     "start": 3.63,
+     "end": 6.53,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 5.68,
+     "end": 6.39,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 5.7,
+     "end": 6.38,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 6.69,
+     "end": 7.35,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 6.72,
+     "end": 7.18,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 7.42,
+     "end": 8.31,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 7.44,
+     "end": 8.76,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 9.22,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 9.23,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "MfavlJej70A_30000",
+   "family": "Bicycle bell",
+   "src": "../../data/input/audioset_strong/MfavlJej70A_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Bicycle bell",
+     "start": 0.0,
+     "end": 0.53,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.0,
+     "end": 2.73,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 0.0,
+     "end": 2.76,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 2.76,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Inside, small room",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 3.54,
+     "end": 6.06,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 3.54,
+     "end": 6.06,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.55,
+     "end": 6.11,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 7.2,
+     "end": 7.76,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 7.21,
+     "end": 7.76,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 7.23,
+     "end": 7.79,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 7.98,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 8.02,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 8.04,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "GxeBrxy8U0k_30000",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/GxeBrxy8U0k_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.81,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 0.87,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 0.88,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.93,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 5.32,
+     "end": 7.57,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "tFUIVRLXD68_30000",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/tFUIVRLXD68_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.74,
+     "end": 2.12,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Purr",
+     "start": 0.94,
+     "end": 2.14,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 2.23,
+     "end": 4.46,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Purr",
+     "start": 4.04,
+     "end": 4.9,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.85,
+     "end": 6.01,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.19,
+     "end": 7.05,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Purr",
+     "start": 6.97,
+     "end": 8.06,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.34,
+     "end": 8.53,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Purr",
+     "start": 9.82,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "46t-4NFQ9_w_2000",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/46t-4NFQ9_w_2000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 9.23,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Meow",
+     "start": 0.56,
+     "end": 1.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Caterwaul",
+     "start": 1.36,
+     "end": 1.86,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 1.99,
+     "end": 2.12,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 2.31,
+     "end": 2.42,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Meow",
+     "start": 2.77,
+     "end": 3.22,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 2.78,
+     "end": 2.87,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 3.6,
+     "end": 3.7,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Meow",
+     "start": 4.0,
+     "end": 4.61,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 4.01,
+     "end": 4.11,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 4.87,
+     "end": 5.38,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 5.8,
+     "end": 6.05,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 6.17,
+     "end": 6.92,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Meow",
+     "start": 6.61,
+     "end": 7.21,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 6.84,
+     "end": 6.92,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 7.28,
+     "end": 7.39,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Meow",
+     "start": 7.81,
+     "end": 8.6,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Laughter",
+     "start": 8.65,
+     "end": 9.23,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "XSxXGCUqra4_30000",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/XSxXGCUqra4_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Purr",
+     "start": 0.0,
+     "end": 0.95,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Purr",
+     "start": 2.39,
+     "end": 3.56,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.61,
+     "end": 5.21,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Purr",
+     "start": 3.92,
+     "end": 4.72,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Purr",
+     "start": 5.06,
+     "end": 5.49,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.41,
+     "end": 9.19,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Purr",
+     "start": 5.8,
+     "end": 6.99,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Purr",
+     "start": 7.21,
+     "end": 7.65,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Purr",
+     "start": 8.06,
+     "end": 9.26,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Purr",
+     "start": 9.48,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.69,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "nGa3FSohSug_420000",
+   "family": "Telephone",
+   "src": "../../data/input/audioset_strong/nGa3FSohSug_420000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Ringtone",
+     "start": 0.0,
+     "end": 1.72,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fixed-wing aircraft, airplane",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Wind noise (microphone)",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.01,
+     "end": 1.72,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Aircraft engine",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Clicking",
+     "start": 0.64,
+     "end": 0.74,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Camera",
+     "start": 1.39,
+     "end": 1.66,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "fZhywChBkq0_30000",
+   "family": "Fireworks",
+   "src": "../../data/input/audioset_strong/fZhywChBkq0_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 1.08,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 1.11,
+     "end": 1.6,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.58,
+     "end": 3.75,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Cheering",
+     "start": 2.48,
+     "end": 7.9,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 3.58,
+     "end": 5.18,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Fireworks",
+     "start": 5.47,
+     "end": 6.95,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Laughter",
+     "start": 6.87,
+     "end": 7.63,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Human voice",
+     "start": 7.68,
+     "end": 8.15,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Human voice",
+     "start": 8.55,
+     "end": 9.13,
+     "masked": true,
+     "consequential": false
+    }
+   ]
   }
  ],
  "missing": [
@@ -1022,7 +1794,8 @@
   "-Cdx8zogHI0_260000",
   "Rn8Te4D0EuU_100000",
   "z2EHq_0aV3Q_5000",
-  "UJ9lfgjMOaM_260000"
+  "UJ9lfgjMOaM_260000",
+  "SxI3Lnzzmkw_110000"
  ],
  "selection": {
   "seed": 7,
