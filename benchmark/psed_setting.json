@@ -1,0 +1,194 @@
+{
+ "when": "2026-09-18T04:42",
+ "model": "PretrainedSED BEATs_strong_1, frame-level",
+ "bar_chosen_on_dcase": 0.2,
+ "beats": {
+  "bar": 0.35,
+  "masked_recall": 0.09523809523809523,
+  "masked_n": 126,
+  "clear_recall": 0.32558139534883723,
+  "clear_n": 129,
+  "fp_per_min": 5.177809388335686
+ },
+ "psed": {
+  "bar": 0.2,
+  "masked_recall": 0.3412698412698413,
+  "masked_n": 126,
+  "clear_recall": 0.4418604651162791,
+  "clear_n": 129,
+  "fp_per_min": 3.891891862895038
+ },
+ "timing": {
+  "n": 107,
+  "mean": -0.0024299052831168438,
+  "mae": 0.19457942787731916,
+  "within_0.5": 0.9065420560747663
+ },
+ "grid": {
+  "0.1": {
+   "bar": 0.1,
+   "masked_recall": 0.48412698412698413,
+   "masked_n": 126,
+   "clear_recall": 0.6744186046511628,
+   "clear_n": 129,
+   "fp_per_min": 9.891891818191555
+  },
+  "0.15": {
+   "bar": 0.15,
+   "masked_recall": 0.3492063492063492,
+   "masked_n": 126,
+   "clear_recall": 0.5426356589147286,
+   "clear_n": 129,
+   "fp_per_min": 5.729729687039917
+  },
+  "0.2": {
+   "bar": 0.2,
+   "masked_recall": 0.3412698412698413,
+   "masked_n": 126,
+   "clear_recall": 0.4418604651162791,
+   "clear_n": 129,
+   "fp_per_min": 3.891891862895038
+  },
+  "0.25": {
+   "bar": 0.25,
+   "masked_recall": 0.29365079365079366,
+   "masked_n": 126,
+   "clear_recall": 0.4263565891472868,
+   "clear_n": 129,
+   "fp_per_min": 2.5945945752633586
+  },
+  "0.3": {
+   "bar": 0.3,
+   "masked_recall": 0.24603174603174602,
+   "masked_n": 126,
+   "clear_recall": 0.40310077519379844,
+   "clear_n": 129,
+   "fp_per_min": 1.675675663190919
+  },
+  "0.35": {
+   "bar": 0.35,
+   "masked_recall": 0.2222222222222222,
+   "masked_n": 126,
+   "clear_recall": 0.3798449612403101,
+   "clear_n": 129,
+   "fp_per_min": 0.7567567511184796
+  },
+  "0.4": {
+   "bar": 0.4,
+   "masked_recall": 0.19047619047619047,
+   "masked_n": 126,
+   "clear_recall": 0.2713178294573643,
+   "clear_n": 129,
+   "fp_per_min": 0.5405405365131997
+  },
+  "0.45": {
+   "bar": 0.45,
+   "masked_recall": 0.14285714285714285,
+   "masked_n": 126,
+   "clear_recall": 0.18604651162790697,
+   "clear_n": 129,
+   "fp_per_min": 0.21621621460527987
+  },
+  "0.5": {
+   "bar": 0.5,
+   "masked_recall": 0.07142857142857142,
+   "masked_n": 126,
+   "clear_recall": 0.15503875968992248,
+   "clear_n": 129,
+   "fp_per_min": 0.1621621609539599
+  },
+  "0.55": {
+   "bar": 0.55,
+   "masked_recall": 0.05555555555555555,
+   "masked_n": 126,
+   "clear_recall": 0.11627906976744186,
+   "clear_n": 129,
+   "fp_per_min": 0.05405405365131997
+  },
+  "0.6": {
+   "bar": 0.6,
+   "masked_recall": 0.05555555555555555,
+   "masked_n": 126,
+   "clear_recall": 0.11627906976744186,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.65": {
+   "bar": 0.65,
+   "masked_recall": 0.03968253968253968,
+   "masked_n": 126,
+   "clear_recall": 0.06976744186046512,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.7": {
+   "bar": 0.7,
+   "masked_recall": 0.03968253968253968,
+   "masked_n": 126,
+   "clear_recall": 0.046511627906976744,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.75": {
+   "bar": 0.75,
+   "masked_recall": 0.015873015873015872,
+   "masked_n": 126,
+   "clear_recall": 0.023255813953488372,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.8": {
+   "bar": 0.8,
+   "masked_recall": 0.007936507936507936,
+   "masked_n": 126,
+   "clear_recall": 0.0,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.85": {
+   "bar": 0.85,
+   "masked_recall": 0.0,
+   "masked_n": 126,
+   "clear_recall": 0.0,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.9": {
+   "bar": 0.9,
+   "masked_recall": 0.0,
+   "masked_n": 126,
+   "clear_recall": 0.0,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  },
+  "0.95": {
+   "bar": 0.95,
+   "masked_recall": 0.0,
+   "masked_n": 126,
+   "clear_recall": 0.0,
+   "clear_n": 129,
+   "fp_per_min": 0.0
+  }
+ },
+ "dev": {
+  "real_kept": [
+   7,
+   23
+  ],
+  "phantoms_gone": [
+   70,
+   77
+  ]
+ },
+ "bars": {
+  "masked_recall": 0.095,
+  "clear_recall": 0.326,
+  "fp_per_min": 5.2,
+  "real_kept": 21,
+  "phantoms_gone": 40,
+  "onset_mae": 0.35,
+  "onset_within_0.5": 0.8,
+  "onset_matched": 66
+ },
+ "passed": false
+}

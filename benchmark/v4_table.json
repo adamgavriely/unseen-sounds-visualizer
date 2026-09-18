@@ -15,5 +15,22 @@
   ],
   "oracle": 3.62,
   "cost": {}
+ },
+ {
+  "tag": "v3_q38_grounded",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3",
+  "means": {
+   "proposed": 3.28,
+   "blind_a2i": 3.35,
+   "audio_caption": 2.95
+  },
+  "gated_minus_blind": -0.07,
+  "ci": [
+   -0.29,
+   0.14
+  ],
+  "oracle": 3.75,
+  "cost": null
  }
 ]

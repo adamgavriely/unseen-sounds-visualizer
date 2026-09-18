@@ -46,7 +46,10 @@ SAM 3 (12 GB, 91 s per clip for 27 concepts) and Granite Speech 4.1 (7 GB) both 
 
 ### Evaluation
 - v3's panels re-described by Qwen3.8-27B and re-judged (interim judge Mistral; Gemma needs
-  disk) → the comparable v3 row. Running.
+  disk) → the comparable v3 row, `benchmark/protocol_results_v3_q38_grounded.json`:
+  gated **3.28** vs blind **3.35** (−0.07, CI [−0.29, +0.14]: a tie, as before), caption 2.95,
+  oracle 3.75. The describer swap lifts every absolute score by ~0.1–0.2 and changes no
+  conclusion. (Ungrounded reference: gated 2.91 vs blind 3.24, same pattern as v3.)
 - v4b (BEATs + Qwen3.8 gate) 20-clip check running on an A100.
 
 ### Disk (still the blocker for Qwen-Image and the Gemma judge)
