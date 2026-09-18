@@ -5410,6 +5410,3785 @@
      "consequential": true
     }
    ]
+  },
+  {
+   "id": "EFSxZd_eGjM_17000",
+   "family": "Dog",
+   "src": "../../data/input/audioset_strong/EFSxZd_eGjM_17000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Whimper (dog)",
+     "start": 0.0,
+     "end": 9.03,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Television",
+     "start": 0.0,
+     "end": 9.03,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 2.35,
+     "end": 4.36,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 4.51,
+     "end": 9.03,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "pq7iVIuoHTs_50000",
+   "family": "Explosion",
+   "src": "../../data/input/audioset_strong/pq7iVIuoHTs_50000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 2.09,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 5.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 0.0,
+     "end": 9.03,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Squish",
+     "start": 2.32,
+     "end": 2.58,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.3,
+     "end": 5.17,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bang",
+     "start": 4.91,
+     "end": 5.5,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Sound effect",
+     "start": 5.68,
+     "end": 6.08,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 6.32,
+     "end": 6.7,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Glass shatter",
+     "start": 6.78,
+     "end": 7.52,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.69,
+     "end": 9.13,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 9.76,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "XGvz5tidPAY_70000",
+   "family": "Telephone",
+   "src": "../../data/input/audioset_strong/XGvz5tidPAY_70000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.34,
+     "end": 3.18,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.42,
+     "end": 4.09,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 4.37,
+     "end": 5.26,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 5.23,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Telephone bell ringing",
+     "start": 6.73,
+     "end": 7.88,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Telephone",
+     "start": 6.73,
+     "end": 7.91,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Telephone bell ringing",
+     "start": 8.84,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Telephone",
+     "start": 8.87,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "6sRQnpEEQ0E_390000",
+   "family": "Fireworks",
+   "src": "../../data/input/audioset_strong/6sRQnpEEQ0E_390000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Child speech, kid speaking",
+     "start": 0.0,
+     "end": 0.63,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.6,
+     "end": 2.24,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Firecracker",
+     "start": 2.28,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Conversation",
+     "start": 2.46,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 2.47,
+     "end": 2.89,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.74,
+     "end": 4.33,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 4.58,
+     "end": 5.7,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.25,
+     "end": 5.48,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.87,
+     "end": 8.14,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.87,
+     "end": 9.87,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "snR9TvRupjU_0",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/snR9TvRupjU_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Mechanisms",
+     "start": 0.15,
+     "end": 4.83,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.95,
+     "end": 2.31,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 2.29,
+     "end": 2.59,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 2.68,
+     "end": 3.29,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 3.23,
+     "end": 3.76,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.53,
+     "end": 3.94,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 3.97,
+     "end": 4.25,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Caterwaul",
+     "start": 4.14,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 9.2,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "uEMO94rLBAI_0",
+   "family": "Air horn, truck horn",
+   "src": "../../data/input/audioset_strong/uEMO94rLBAI_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 2.14,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 2.72,
+     "end": 4.21,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 5.4,
+     "end": 5.82,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 5.92,
+     "end": 6.83,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 8.22,
+     "end": 9.54,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "zbiJEml563w_30000",
+   "family": "Siren",
+   "src": "../../data/input/audioset_strong/zbiJEml563w_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 3.13,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Engine",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Siren",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.53,
+     "end": 6.64,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 6.92,
+     "end": 7.16,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.65,
+     "end": 8.49,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 8.46,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "n615BjoN7fI_50000",
+   "family": "Siren",
+   "src": "../../data/input/audioset_strong/n615BjoN7fI_50000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Siren",
+     "start": 0.2,
+     "end": 4.76,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female singing",
+     "start": 0.56,
+     "end": 2.49,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 2.71,
+     "end": 3.67,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 3.71,
+     "end": 3.84,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 3.88,
+     "end": 6.73,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Siren",
+     "start": 5.1,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Breathing",
+     "start": 6.79,
+     "end": 6.93,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 6.93,
+     "end": 7.91,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 8.08,
+     "end": 9.81,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 9.85,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "C7v-N6WYvA4_140000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/C7v-N6WYvA4_140000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rumble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "Of8y_rXXeSw_30000",
+   "family": "Crying, sobbing",
+   "src": "../../data/input/audioset_strong/Of8y_rXXeSw_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 1.32,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 0.01,
+     "end": 1.3,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.01,
+     "end": 1.3,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rowboat, canoe, kayak",
+     "start": 0.67,
+     "end": 1.31,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Boat, Water vehicle",
+     "start": 0.73,
+     "end": 1.3,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Silence",
+     "start": 1.31,
+     "end": 1.43,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Boat, Water vehicle",
+     "start": 1.42,
+     "end": 1.92,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 1.43,
+     "end": 1.69,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rowboat, canoe, kayak",
+     "start": 1.43,
+     "end": 1.96,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.44,
+     "end": 1.69,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 1.44,
+     "end": 1.72,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 2.34,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 2.39,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 3.5,
+     "end": 3.71,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 3.52,
+     "end": 3.73,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 4.78,
+     "end": 4.93,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 4.78,
+     "end": 4.95,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 5.49,
+     "end": 5.98,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 5.54,
+     "end": 6.05,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Boat, Water vehicle",
+     "start": 5.88,
+     "end": 6.38,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Rowboat, canoe, kayak",
+     "start": 5.91,
+     "end": 6.41,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 6.43,
+     "end": 7.71,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 6.5,
+     "end": 7.85,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Laughter",
+     "start": 6.98,
+     "end": 7.59,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 8.18,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 8.21,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Boat, Water vehicle",
+     "start": 9.69,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Rowboat, canoe, kayak",
+     "start": 9.69,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "5Eu8C0010X0_21000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/5Eu8C0010X0_21000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 1.03,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 0.56,
+     "end": 0.9,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 1.42,
+     "end": 1.6,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 2.1,
+     "end": 9.53,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 2.31,
+     "end": 4.35,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.81,
+     "end": 4.81,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rumble",
+     "start": 4.29,
+     "end": 9.53,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.28,
+     "end": 7.3,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "Hyq_Kc64Fgw_10000",
+   "family": "Knock",
+   "src": "../../data/input/audioset_strong/Hyq_Kc64Fgw_10000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.01,
+     "end": 1.34,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Knock",
+     "start": 1.66,
+     "end": 2.94,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 1.94,
+     "end": 3.09,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 4.02,
+     "end": 5.58,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Water tap, faucet",
+     "start": 5.82,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Water",
+     "start": 5.82,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Sink (filling or washing)",
+     "start": 5.83,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male singing",
+     "start": 7.44,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 7.46,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "JwAhcHHF2qg_30000",
+   "family": "Crying, sobbing",
+   "src": "../../data/input/audioset_strong/JwAhcHHF2qg_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 0.7,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bus",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Traffic noise, roadway noise",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Motor vehicle (road)",
+     "start": 0.02,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 1.68,
+     "end": 3.28,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 5.79,
+     "end": 9.05,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 5.83,
+     "end": 9.07,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Speech",
+     "start": 6.83,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 8.53,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "PB3VhxPnYIQ_30000",
+   "family": "Doorbell",
+   "src": "../../data/input/audioset_strong/PB3VhxPnYIQ_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 0.34,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.0,
+     "end": 0.37,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Inside, small room",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.67,
+     "end": 1.7,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.67,
+     "end": 1.71,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 2.61,
+     "end": 3.92,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Ding-dong",
+     "start": 2.61,
+     "end": 3.86,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.42,
+     "end": 4.88,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hands",
+     "start": 4.16,
+     "end": 4.89,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 4.17,
+     "end": 4.88,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.19,
+     "end": 4.87,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 4.2,
+     "end": 4.86,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "ZHksjiNWM-0_30000",
+   "family": "Fireworks",
+   "src": "../../data/input/audioset_strong/ZHksjiNWM-0_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Firecracker",
+     "start": 0.62,
+     "end": 0.91,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 1.52,
+     "end": 1.79,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 2.0,
+     "end": 2.37,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 2.55,
+     "end": 3.75,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 3.88,
+     "end": 4.52,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 4.28,
+     "end": 5.56,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Firecracker",
+     "start": 5.15,
+     "end": 5.59,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 5.75,
+     "end": 6.29,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Firecracker",
+     "start": 6.88,
+     "end": 7.14,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 7.75,
+     "end": 8.12,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 8.44,
+     "end": 8.5,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Firecracker",
+     "start": 9.24,
+     "end": 9.72,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "yY_glRB9OkY_30000",
+   "family": "Baby cry, infant cry",
+   "src": "../../data/input/audioset_strong/yY_glRB9OkY_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.01,
+     "end": 4.51,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.18,
+     "end": 1.52,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 1.49,
+     "end": 2.2,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 2.06,
+     "end": 2.6,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 2.53,
+     "end": 4.46,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 4.15,
+     "end": 5.18,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 5.07,
+     "end": 8.97,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.27,
+     "end": 7.67,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crowd",
+     "start": 9.09,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Cheering",
+     "start": 9.09,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 9.11,
+     "end": 9.3,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "Jvj2WqgVy78_30000",
+   "family": "Doorbell",
+   "src": "../../data/input/audioset_strong/Jvj2WqgVy78_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Ding-dong",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "hSAVR0LcQp8_280000",
+   "family": "Siren",
+   "src": "../../data/input/audioset_strong/hSAVR0LcQp8_280000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Siren",
+     "start": 0.0,
+     "end": 4.75,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.01,
+     "end": 9.04,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Siren",
+     "start": 5.42,
+     "end": 9.04,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Helicopter",
+     "start": 9.04,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "wHISHmuP58s_80000",
+   "family": "Air horn, truck horn",
+   "src": "../../data/input/audioset_strong/wHISHmuP58s_80000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Air horn, truck horn",
+     "start": 0.0,
+     "end": 3.7,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Air horn, truck horn",
+     "start": 5.42,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "nFa1PNr2dLA_30000",
+   "family": "Helicopter",
+   "src": "../../data/input/audioset_strong/nFa1PNr2dLA_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Helicopter",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.2,
+     "end": 0.89,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.03,
+     "end": 1.42,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.72,
+     "end": 1.83,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.96,
+     "end": 3.32,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.57,
+     "end": 4.72,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.83,
+     "end": 4.99,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.21,
+     "end": 6.64,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.91,
+     "end": 7.96,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.36,
+     "end": 8.76,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.96,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "PPZD73-Op-Y_30000",
+   "family": "Telephone",
+   "src": "../../data/input/audioset_strong/PPZD73-Op-Y_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Ringtone",
+     "start": 0.0,
+     "end": 4.98,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.01,
+     "end": 4.97,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Inside, small room",
+     "start": 0.01,
+     "end": 4.98,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Silence",
+     "start": 4.98,
+     "end": 5.25,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Inside, small room",
+     "start": 5.28,
+     "end": 5.52,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 5.28,
+     "end": 5.49,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Silence",
+     "start": 5.65,
+     "end": 7.56,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Inside, small room",
+     "start": 7.6,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 7.62,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "4A5RpztQf-A_30000",
+   "family": "Dog",
+   "src": "../../data/input/audioset_strong/4A5RpztQf-A_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Mechanisms",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 0.32,
+     "end": 2.94,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 3.44,
+     "end": 7.91,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 6.61,
+     "end": 7.31,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Tap",
+     "start": 7.32,
+     "end": 7.46,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Tap",
+     "start": 7.59,
+     "end": 7.78,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 8.5,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "czqGshw43ro_30000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/czqGshw43ro_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 0.86,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rumble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.16,
+     "end": 2.88,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 3.62,
+     "end": 3.96,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.48,
+     "end": 7.41,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.14,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "EbI0_rtgvXw_80000",
+   "family": "Doorbell",
+   "src": "../../data/input/audioset_strong/EbI0_rtgvXw_80000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.69,
+     "end": 1.98,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.69,
+     "end": 1.99,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 0.73,
+     "end": 2.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 5.14,
+     "end": 5.92,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.15,
+     "end": 5.92,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 5.16,
+     "end": 5.95,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.33,
+     "end": 8.09,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 6.35,
+     "end": 8.05,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 8.41,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 8.43,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "UCsiHG_4wkk_0",
+   "family": "Doorbell",
+   "src": "../../data/input/audioset_strong/UCsiHG_4wkk_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Speech",
+     "start": 0.03,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.25,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Ding-dong",
+     "start": 2.12,
+     "end": 5.12,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Bell",
+     "start": 2.12,
+     "end": 5.13,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 2.17,
+     "end": 5.13,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Bell",
+     "start": 5.76,
+     "end": 9.25,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 5.77,
+     "end": 9.23,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Ding-dong",
+     "start": 5.79,
+     "end": 9.22,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "1QtsF8qkX1Y_70000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/1QtsF8qkX1Y_70000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Thunderstorm",
+     "start": 0.0,
+     "end": 6.53,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Wind",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rain on surface",
+     "start": 0.01,
+     "end": 6.72,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Rain on surface",
+     "start": 8.46,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clip-clop",
+     "start": 8.51,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "VSkdiYt87rg_30000",
+   "family": "Baby cry, infant cry",
+   "src": "../../data/input/audioset_strong/VSkdiYt87rg_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Baby cry, infant cry",
+     "start": 0.0,
+     "end": 2.07,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Inside, small room",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 2.15,
+     "end": 3.26,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 5.65,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 6.72,
+     "end": 7.87,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 8.26,
+     "end": 9.56,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "1ghXWnSJibU_0",
+   "family": "Bicycle bell",
+   "src": "../../data/input/audioset_strong/1ghXWnSJibU_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Tick",
+     "start": 0.09,
+     "end": 0.13,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.12,
+     "end": 5.01,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Mechanisms",
+     "start": 0.15,
+     "end": 5.02,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Bicycle bell",
+     "start": 1.67,
+     "end": 5.02,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "hVG4p9QJHk0_30000",
+   "family": "Alarm",
+   "src": "../../data/input/audioset_strong/hVG4p9QJHk0_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Unmodified field recording",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Mechanisms",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Beep, bleep",
+     "start": 0.35,
+     "end": 0.86,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Door",
+     "start": 0.62,
+     "end": 0.77,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.31,
+     "end": 3.52,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Beep, bleep",
+     "start": 1.33,
+     "end": 1.71,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Beep, bleep",
+     "start": 2.38,
+     "end": 2.88,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.11,
+     "end": 6.5,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sliding door",
+     "start": 6.82,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.23,
+     "end": 9.23,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "ZcTI8fQgEZE_240000",
+   "family": "Train",
+   "src": "../../data/input/audioset_strong/ZcTI8fQgEZE_240000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male singing",
+     "start": 0.0,
+     "end": 7.34,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rail transport",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Train horn",
+     "start": 2.93,
+     "end": 4.23,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "P9fh7rOIKcM_270000",
+   "family": "Glass",
+   "src": "../../data/input/audioset_strong/P9fh7rOIKcM_270000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 3.31,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 3.34,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 0.6,
+     "end": 3.24,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Whoosh, swoosh, swish",
+     "start": 3.31,
+     "end": 4.25,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Glass",
+     "start": 4.05,
+     "end": 5.15,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Breaking",
+     "start": 4.06,
+     "end": 5.18,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Smash, crash",
+     "start": 4.06,
+     "end": 5.21,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Glass shatter",
+     "start": 4.09,
+     "end": 5.21,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.52,
+     "end": 4.94,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 4.72,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.02,
+     "end": 6.05,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 5.5,
+     "end": 6.4,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.35,
+     "end": 7.99,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 7.39,
+     "end": 8.34,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.16,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "2uagA3ujRtM_0",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/2uagA3ujRtM_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Purr",
+     "start": 5.36,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 5.45,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "ToMEtOPwwMQ_40000",
+   "family": "Telephone",
+   "src": "../../data/input/audioset_strong/ToMEtOPwwMQ_40000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Ringtone",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 0.06,
+     "end": 0.47,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 0.69,
+     "end": 1.03,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 1.32,
+     "end": 2.61,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 5.31,
+     "end": 7.57,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female singing",
+     "start": 8.0,
+     "end": 8.8,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "JpOT3z8wZlc_30000",
+   "family": "Dog",
+   "src": "../../data/input/audioset_strong/JpOT3z8wZlc_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Motor vehicle (road)",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Unmodified field recording",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Traffic noise, roadway noise",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Outside, urban or manmade",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Bow-wow",
+     "start": 2.0,
+     "end": 2.15,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 2.0,
+     "end": 2.17,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 2.01,
+     "end": 2.14,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 2.27,
+     "end": 3.51,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bow-wow",
+     "start": 2.28,
+     "end": 2.44,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 2.28,
+     "end": 2.45,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 2.3,
+     "end": 2.46,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 2.31,
+     "end": 3.51,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 3.62,
+     "end": 3.91,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 3.63,
+     "end": 3.89,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 3.63,
+     "end": 3.9,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 4.12,
+     "end": 6.1,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 4.13,
+     "end": 6.41,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 5.64,
+     "end": 6.6,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Dog",
+     "start": 5.64,
+     "end": 6.63,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Bow-wow",
+     "start": 5.65,
+     "end": 6.63,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Bow-wow",
+     "start": 7.95,
+     "end": 8.09,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 7.95,
+     "end": 8.1,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Dog",
+     "start": 7.98,
+     "end": 8.13,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 8.31,
+     "end": 8.49,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bow-wow",
+     "start": 8.31,
+     "end": 8.46,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 8.35,
+     "end": 8.5,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Bark",
+     "start": 9.81,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Domestic animals, pets",
+     "start": 9.81,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Dog",
+     "start": 9.82,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "GopccU3Am1w_20000",
+   "family": "Glass",
+   "src": "../../data/input/audioset_strong/GopccU3Am1w_20000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Glass",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Unmodified field recording",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 1.54,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "qCMCR45l55c_30000",
+   "family": "Doorbell",
+   "src": "../../data/input/audioset_strong/qCMCR45l55c_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 0.01,
+     "end": 0.92,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Doorbell",
+     "start": 2.22,
+     "end": 3.48,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Doorbell",
+     "start": 4.82,
+     "end": 6.33,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Doorbell",
+     "start": 7.45,
+     "end": 8.88,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Doorbell",
+     "start": 9.76,
+     "end": 9.9,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "1J_j6c2uQaM_30000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/1J_j6c2uQaM_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Rain",
+     "start": 0.0,
+     "end": 1.98,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.23,
+     "end": 1.4,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Thunderstorm",
+     "start": 1.55,
+     "end": 2.02,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Rain",
+     "start": 2.06,
+     "end": 5.98,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Thunderstorm",
+     "start": 3.72,
+     "end": 5.87,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Laughter",
+     "start": 4.87,
+     "end": 5.97,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rain",
+     "start": 6.05,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.74,
+     "end": 8.37,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Thunderstorm",
+     "start": 8.04,
+     "end": 8.59,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.13,
+     "end": 9.61,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Thunderstorm",
+     "start": 9.63,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "f8fUFmjqXZo_30000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/f8fUFmjqXZo_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Sound effect",
+     "start": 0.0,
+     "end": 3.31,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Rumble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "r_uTNtsdayE_30000",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/r_uTNtsdayE_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Hiss",
+     "start": 0.0,
+     "end": 2.25,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Television",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Snake",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 0.39,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 3.24,
+     "end": 3.68,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.75,
+     "end": 4.66,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Hiss",
+     "start": 4.66,
+     "end": 4.81,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.7,
+     "end": 6.6,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Tap",
+     "start": 6.64,
+     "end": 6.83,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.06,
+     "end": 8.58,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.69,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "z32IXFJ4sKk_80000",
+   "family": "Crying, sobbing",
+   "src": "../../data/input/audioset_strong/z32IXFJ4sKk_80000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Conversation",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Background noise",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.47,
+     "end": 2.24,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 1.87,
+     "end": 6.29,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 2.22,
+     "end": 6.25,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.16,
+     "end": 3.84,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 6.19,
+     "end": 7.8,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 8.27,
+     "end": 8.75,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 8.79,
+     "end": 9.21,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.42,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "0YsC6M4GFoc_4000",
+   "family": "Alarm",
+   "src": "../../data/input/audioset_strong/0YsC6M4GFoc_4000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.0,
+     "end": 0.15,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 0.22,
+     "end": 0.52,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.62,
+     "end": 2.94,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 1.49,
+     "end": 1.65,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 2.0,
+     "end": 3.18,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Explosion",
+     "start": 3.17,
+     "end": 3.78,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Crowd",
+     "start": 3.73,
+     "end": 9.79,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Car alarm",
+     "start": 3.91,
+     "end": 4.5,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.17,
+     "end": 4.63,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Car alarm",
+     "start": 4.83,
+     "end": 5.46,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.92,
+     "end": 5.42,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 5.19,
+     "end": 6.77,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.66,
+     "end": 6.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Car alarm",
+     "start": 5.92,
+     "end": 6.49,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Car alarm",
+     "start": 6.86,
+     "end": 7.65,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 7.29,
+     "end": 9.79,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 7.31,
+     "end": 7.9,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Car alarm",
+     "start": 7.84,
+     "end": 9.53,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Cough",
+     "start": 8.19,
+     "end": 8.49,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 8.61,
+     "end": 9.79,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "QVprWKMTOz8_30000",
+   "family": "Crying, sobbing",
+   "src": "../../data/input/audioset_strong/QVprWKMTOz8_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 0.57,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.0,
+     "end": 0.59,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 0.0,
+     "end": 1.79,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 0.0,
+     "end": 1.81,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Conversation",
+     "start": 0.01,
+     "end": 0.54,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.72,
+     "end": 1.65,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.72,
+     "end": 1.66,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 0.75,
+     "end": 1.67,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 1.98,
+     "end": 3.5,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 1.98,
+     "end": 3.51,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Speech",
+     "start": 2.09,
+     "end": 6.47,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 2.09,
+     "end": 6.5,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 2.12,
+     "end": 6.43,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 3.63,
+     "end": 5.02,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 3.66,
+     "end": 5.05,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Laughter",
+     "start": 3.96,
+     "end": 4.98,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Snicker",
+     "start": 3.97,
+     "end": 5.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 5.06,
+     "end": 7.44,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Snicker",
+     "start": 5.13,
+     "end": 7.46,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 7.44,
+     "end": 8.39,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 7.46,
+     "end": 8.35,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Conversation",
+     "start": 8.78,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 8.83,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 8.84,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "K49OWIVNULE_220000",
+   "family": "Fireworks",
+   "src": "../../data/input/audioset_strong/K49OWIVNULE_220000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Cheering",
+     "start": 0.0,
+     "end": 9.27,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 0.0,
+     "end": 9.27,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 9.27,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 9.27,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fireworks",
+     "start": 0.0,
+     "end": 9.27,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Outside, urban or manmade",
+     "start": 0.0,
+     "end": 9.28,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 0.24,
+     "end": 0.32,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Whoop",
+     "start": 0.32,
+     "end": 0.7,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 0.43,
+     "end": 0.64,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 0.87,
+     "end": 0.97,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 1.19,
+     "end": 1.26,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Whoop",
+     "start": 1.76,
+     "end": 2.44,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 1.81,
+     "end": 1.93,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 2.74,
+     "end": 2.79,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Whoop",
+     "start": 3.01,
+     "end": 3.84,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 3.29,
+     "end": 3.37,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 3.6,
+     "end": 3.67,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 3.88,
+     "end": 3.94,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 4.45,
+     "end": 4.55,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Whoop",
+     "start": 4.63,
+     "end": 4.85,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 4.78,
+     "end": 4.85,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 5.08,
+     "end": 5.15,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Whoop",
+     "start": 5.17,
+     "end": 5.63,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 5.6,
+     "end": 5.7,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 6.01,
+     "end": 6.06,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 6.29,
+     "end": 6.36,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 7.55,
+     "end": 7.61,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 7.84,
+     "end": 7.92,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 8.13,
+     "end": 8.22,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 8.46,
+     "end": 8.6,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Clapping",
+     "start": 9.07,
+     "end": 9.17,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.5,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 9.51,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "DReJ17RbBBE_30000",
+   "family": "Telephone",
+   "src": "../../data/input/audioset_strong/DReJ17RbBBE_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Inside, small room",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.01,
+     "end": 2.01,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Ringtone",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Telephone",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Vibration",
+     "start": 0.95,
+     "end": 2.01,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 2.31,
+     "end": 3.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Vibration",
+     "start": 2.98,
+     "end": 4.01,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 3.31,
+     "end": 4.9,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Vibration",
+     "start": 4.98,
+     "end": 6.02,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 5.33,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Vibration",
+     "start": 6.97,
+     "end": 8.02,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Vibration",
+     "start": 8.97,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "oN2wkhNIYUM_0",
+   "family": "Train",
+   "src": "../../data/input/audioset_strong/oN2wkhNIYUM_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Railroad car, train wagon",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Sound effect",
+     "start": 0.04,
+     "end": 1.88,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.04,
+     "end": 1.89,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Train wheels squealing",
+     "start": 0.09,
+     "end": 1.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Train whistle",
+     "start": 1.94,
+     "end": 2.31,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Shout",
+     "start": 1.94,
+     "end": 2.8,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.07,
+     "end": 3.36,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.48,
+     "end": 4.32,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Clickety-clack",
+     "start": 3.83,
+     "end": 6.64,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 4.26,
+     "end": 8.88,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.55,
+     "end": 6.51,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Shout",
+     "start": 7.17,
+     "end": 8.86,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Clickety-clack",
+     "start": 8.66,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.29,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "58JwiVM8bYM_30000",
+   "family": "Gunshot",
+   "src": "../../data/input/audioset_strong/58JwiVM8bYM_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Quack",
+     "start": 3.08,
+     "end": 3.52,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 3.53,
+     "end": 4.39,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "U-O1FcXeZCk_200000",
+   "family": "Glass",
+   "src": "../../data/input/audioset_strong/U-O1FcXeZCk_200000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Child speech, kid speaking",
+     "start": 0.0,
+     "end": 0.77,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 4.5,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 0.12,
+     "end": 0.39,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 2.24,
+     "end": 3.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Door",
+     "start": 2.86,
+     "end": 3.37,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 2.87,
+     "end": 4.28,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Glass chink, clink",
+     "start": 3.77,
+     "end": 4.54,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Glass",
+     "start": 3.77,
+     "end": 5.74,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 4.26,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 5.68,
+     "end": 7.11,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.72,
+     "end": 6.98,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 8.29,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 9.54,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "UdUzFHJxSCw_30000",
+   "family": "Alarm",
+   "src": "../../data/input/audioset_strong/UdUzFHJxSCw_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Narration, monologue",
+     "start": 0.0,
+     "end": 0.79,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.01,
+     "end": 0.79,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.95,
+     "end": 2.65,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 0.97,
+     "end": 2.64,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 2.99,
+     "end": 4.3,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.02,
+     "end": 4.29,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Computer keyboard",
+     "start": 3.47,
+     "end": 4.02,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Beep, bleep",
+     "start": 3.54,
+     "end": 4.13,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.55,
+     "end": 6.5,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 4.62,
+     "end": 6.55,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.93,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Narration, monologue",
+     "start": 6.96,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
   }
  ],
  "missing": [
@@ -5429,7 +9208,29 @@
   "J2nDnAerah0_30000",
   "TYXKNCbI_gs_30000",
   "CMiEpeKMNQI_0",
-  "QC8sz1StEtk_0"
+  "QC8sz1StEtk_0",
+  "EDSb0tPKU4o_10000",
+  "mW3S0u8bj58_570000",
+  "G3GR-m8Q3Zk_70000",
+  "sxMYFYDNF_g_140000",
+  "lrk00BNiuD4_30000",
+  "6wlvYh0h63k_350000",
+  "mtmKNWUNK2c_180000",
+  "f0pWzOSt5tg_30000",
+  "bYnO0qJZ_XA_240000",
+  "bl36ZJVAP9Y_30000",
+  "JEHjqLEJj_I_30000",
+  "Ap_IlJVRHtw_230000",
+  "tHn6hIcRqcY_550000",
+  "8_KoNRnCEPE_0",
+  "La56WBAJ2xk_30000",
+  "aP7UEZ4k-m0_400000",
+  "cY27F0cqnSU_230000",
+  "qrfHAtm0j4I_300000",
+  "Jboz8dp-8nM_0",
+  "DDZlMjb-0i4_150000",
+  "CXRemJ1ZLC8_250000",
+  "JXmpEFLhr9E_30000"
  ],
  "selection": {
   "seed": 7,

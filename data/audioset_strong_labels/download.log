@@ -7,3 +7,7 @@
 [slice] 60/150: 49 fetched, 11 gone
 [slice] 70/150: 56 fetched, 14 gone
 [slice] 80/150: 63 fetched, 17 gone
+[slice] 90/150: 70 fetched, 20 gone
+[slice] 120/150: 86 fetched, 34 gone
+[slice] 130/150: 96 fetched, 34 gone
+[slice] done: 111 clips, 39 no longer available -> P:\MscProj\benchmark\gold\audioset_slice.json
