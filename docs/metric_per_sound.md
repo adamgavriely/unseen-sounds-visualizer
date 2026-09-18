@@ -19,8 +19,10 @@ per clip = panel events (start, end, depicted label).
    is the aim, 1 s is forgivable, more is not good enough. Overlap with a long sound does not
    count. The picture's end is ignored. Sounds that start before the clip use the clip start
    as onset. Sensitivity rows: +0.5 s, +2 s, +5 s (the last shows what the gate's design
-   costs). Consequence, stated: the current pipeline (visibility decided per 5-s stretch)
-   will register many late pictures as misses; that is a finding about the pipeline.
+   costs). Where lateness comes from in our pipeline: the detector's onset (BEATs 0.35 s mean
+   error on DCASE, PretrainedSED 0.19 s) and, for a sound that spans two 5-s stretches, a
+   first stretch judged "visible" delays the picture to the second — such cases count as
+   misses under this rule, which is the right pressure on the design.
 2. **Label.** Same AudioSet family (parent or child within two hops) = match. Labels at
    ontology depth < 2 (root-level words such as "sound", "vehicle") **never** match — so
    "vehicle" shown for a car horn is a cross-trigger. Exact-class numbers in a second column.
@@ -30,8 +32,7 @@ per clip = panel events (start, end, depicted label).
    credited, not false alarms, counted in the clutter rate.
 4. **"Dog at 45 s" rule.** A picture is never judged by itself: first look for a dog-family
    sound in the gold around 44–50 s. If one exists and is needed → hit (with its lateness
-   recorded). If it exists but is obvious → a visible-picture (see the split). If none exists →
-   phantom (Set 1) or "unverified" (Set 2, see step 3).
+   recorded). If it exists but is obvious → a visible-picture. If none exists → phantom.
 
 ## Step 2 — classes
 Per needed gold sound: **hit** / **miss**. Per picture: **hit** / **visible-picture** (a real
