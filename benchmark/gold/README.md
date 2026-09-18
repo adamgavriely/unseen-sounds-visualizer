@@ -10,7 +10,7 @@ models) will be scored against.
 
 1. Open `benchmark/gold/index.html` in a browser (double-click; it plays the clips from
    `data/input/benchmark/`, so it must be run from a checkout that has the clips).
-2. Type your initials at the top. Read the ten-line guideline on the right.
+2. Type your initials at the top. Read the twelve-line guideline on the right.
 3. Per clip: the detector's guesses are pre-filled (label + rough time). Listen once; delete
    what you do not hear (×), add what it missed (`A`); tick "source visible" and "covered by
    speech/music" as they apply. Write the sentence, or press "nothing beyond the picture".
@@ -20,6 +20,15 @@ models) will be scored against.
 
 About 2–3 minutes per clip. Start with 10–20 clips, compare between annotators, adjust the
 guideline once, then continue to all 100.
+
+Two more fields per sound, both pre-filled: **obvious from picture** (does the frame alone
+already make it clear the sound is happening now? default = the system's "visible" verdict
+on the benchmark page, unticked on the AudioSet-Strong page) and **importance** 1/2/3
+(1 = background texture such as traffic hum or rain; 2 = context such as dishes, footsteps,
+birds; 3 = safety or plot such as siren, alarm, glass breaking, baby crying, doorbell, phone).
+The default importance comes from keywords in the label (`importance_of` in `build_tool.py`);
+a sound added by hand starts as not obvious, importance 2. `merge.py` writes per clip a
+`sounds` list with the majority `obvious` and the median `importance` per label.
 
 ## Merge and agreement
 

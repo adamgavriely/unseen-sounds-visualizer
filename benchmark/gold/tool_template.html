@@ -25,6 +25,9 @@ video{width:100%;max-width:100%;background:#000;border-radius:8px}
 .sound input[type=text]{width:100%;font:inherit;font-size:14px;padding:4px 6px;border:1px solid var(--line);border-radius:6px;box-sizing:border-box}
 .sound .row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:4px}
 .sound .t{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px}
+.sound .imp{display:inline-flex;align-items:center;gap:0;font-size:13px;color:var(--muted);margin-right:10px;white-space:nowrap}
+.sound .imp span{margin-right:4px}.sound .imp button{border-radius:0;padding:1px 7px;margin-left:-1px}.sound .imp button:first-of-type{border-radius:6px 0 0 6px}.sound .imp button:last-of-type{border-radius:0 6px 6px 0}
+.sound .imp button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
 textarea{width:100%;font:inherit;font-size:14px;border:1px solid var(--line);border-radius:8px;padding:6px 8px;box-sizing:border-box;min-height:64px}
 .hint{font-size:13px;color:var(--muted)}
 .guide{font-size:14px}.guide li{margin:3px 0}
@@ -65,7 +68,7 @@ select{font:inherit;font-size:14px;padding:4px}
 
   <div class="card">
     <h2>1 · Sounds — everything is pre-filled by the system; correct what is wrong</h2>
-    <p class="hint">Each row is a sound the detector heard, with its time, whether the system judged the source <b>visible</b>, and whether <b>speech/music covers it</b>. Listen once, then: <b>×</b> anything you do not hear, <b>+ add</b> anything missed, and flip any tick that is wrong. Times: fix with <kbd>[</kbd> <kbd>]</kbd> only if clearly off.</p>
+    <p class="hint">Each row is a sound the detector heard, with its time, whether the system judged the source <b>visible</b>, whether the picture alone makes it <b>obvious</b>, its <b>importance</b> (1 background · 2 context · 3 safety/plot), and whether <b>speech/music covers it</b>. Listen once, then: <b>×</b> anything you do not hear, <b>+ add</b> anything missed, and flip any tick that is wrong. Times: fix with <kbd>[</kbd> <kbd>]</kbd> only if clearly off.</p>
     <div id="sounds"></div>
     <div class="nav"><button id="addSound">+ add a sound (A)</button>
       <button id="resetClip" class="small" title="discard my edits on this clip and reload the system's pre-fill">reset this clip to the pre-fill</button>
@@ -90,7 +93,7 @@ select{font:inherit;font-size:14px;padding:4px}
 
 <aside>
   <div class="card guide">
-    <h2>Guideline (ten lines)</h2>
+    <h2>Guideline (twelve lines)</h2>
     <ol>
       <li>Watch with sound once. Write down every sound a hearing viewer would <i>notice</i>. Speech and music never count as sounds here.</li>
       <li>The rule is the professional captioners' rule: a sound needs a picture only if the video does <b>not already show</b> that it is happening.</li>
@@ -98,6 +101,8 @@ select{font:inherit;font-size:14px;padding:4px}
       <li>Wind roaring over a rider filmed on a moving motorcycle is visible (the rider says it). Waves when the sea fills the frame are visible.</li>
       <li>A siren from behind the camera, a dog in the next room, glass breaking off screen: not visible → a picture is due.</li>
       <li>If the source is visible for part of the sound only, tick "visible" only if it is visible for most of the sound; add a note.</li>
+      <li>"Obvious from picture": with the sound off, would a viewer still know this sound is happening <b>now</b>? A dog on screen with its mouth open barking: obvious. A phone ringing in a pocket, a siren behind the camera, a kettle you cannot see: not obvious.</li>
+      <li>"Importance": how much a deaf viewer loses without it. <b>1</b> = background texture (traffic hum, rain, wind). <b>2</b> = context (dishes, footsteps, birds, a door). <b>3</b> = safety or plot (siren, alarm, glass breaking, gunshot, baby crying, doorbell, phone, horn, a dog barking at someone).</li>
       <li>"Covered by speech/music": you can hear the sound only with effort because talking or a soundtrack sits on top of it.</li>
       <li>Start/end: rough is fine (half a second). Use the video's time; <kbd>[</kbd> and <kbd>]</kbd> stamp the current time.</li>
       <li>Everything is pre-filled from the system under test — sounds, times, visibility, the sentence, the picture-due box. That saves typing but can anchor you: delete what you do not hear, add what it missed, flip what is wrong. Your ear and eye decide; the thesis discloses the pre-fill.</li>
@@ -120,8 +125,11 @@ const CLIPS = /*__CLIPS__*/[];
   function human(c){ return c.tag === "audioset_strong" || !!(c.candidates[0] && c.candidates[0].gate === "human"); }
   function blank(c){ return {clip:c.id, tag:c.tag || null, sounds:[], sentence:"", picture_due:false, unsure:false, note:"", done:false, opened_candidates:false, updated:null}; }
   function current(){ const c = CLIPS[idx]; if(!data[c.id]){ data[c.id] = blank(c);
-      data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, masked:!!k.masked, start:k.start, end:k.end, from_detector:!human(c), from_human_label:human(c), suggested:true, gate:k.gate}));
-      data[c.id].sentence = c.sentence || ""; data[c.id].picture_due = !!c.picture_due; data[c.id].prefilled = true; data[c.id].opened_candidates = true; } return data[c.id]; }
+      data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, obvious:!!k.obvious, importance:imp(k.importance), masked:!!k.masked, start:k.start, end:k.end, from_detector:!human(c), from_human_label:human(c), suggested:true, gate:k.gate}));
+      data[c.id].sentence = c.sentence || ""; data[c.id].picture_due = !!c.picture_due; data[c.id].prefilled = true; data[c.id].opened_candidates = true; }
+    (data[c.id].sounds || []).forEach(s => { if(s.obvious == null) s.obvious = false; if(s.importance == null) s.importance = 2; });  // records saved before these fields existed
+    return data[c.id]; }
+  function imp(v){ v = +v; return (v === 1 || v === 2 || v === 3) ? v : 2; }
 
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; CLIPS.forEach((c,i)=>{ const o = document.createElement("option"); o.value = i; o.textContent = (i+1) + " · " + c.id + (data[c.id] && data[c.id].done ? " ✓" : ""); s.appendChild(o); }); s.value = idx; }
   function renderProgress(){ const n = CLIPS.filter(c => data[c.id] && data[c.id].done).length; $("progress").textContent = n + " / " + CLIPS.length + " done"; $("progressList").textContent = CLIPS.map((c,i)=> (data[c.id]&&data[c.id].done) ? "✓" : "·").join(" "); renderSel(); }
@@ -132,12 +140,16 @@ const CLIPS = /*__CLIPS__*/[];
       const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "") + (s.suggested ? " suggested" : "") + (s.gate === "human" ? " human" : "");
       d.innerHTML = '<div><input type="text" list="labels" placeholder="what is the sound? (e.g. siren, dog barking, glass breaking)"><div class="row">'
         + '<label><input type="checkbox" class="vis"> source visible while it sounds</label>'
+        + '<label><input type="checkbox" class="obv"> obvious from picture</label>'
+        + '<span class="imp" title="1 = background texture · 2 = context · 3 = safety or plot"><span>importance</span><button class="small" data-v="1">1</button><button class="small" data-v="2">2</button><button class="small" data-v="3">3</button></span>'
         + '<label><input type="checkbox" class="masked"> covered by speech/music</label>'
         + '<span class="t">start <span class="st">–</span> · end <span class="en">–</span></span>'
         + '<button class="small mark-s">[ start</button><button class="small mark-e">] end</button></div></div>'
         + '<button class="small del" title="remove">×</button>';
       const inp = d.querySelector("input[type=text]"); inp.value = s.label || ""; inp.addEventListener("input", ()=>{ s.label = inp.value; touch(); }); inp.addEventListener("focus", ()=>{ selSound = i; });
       const vis = d.querySelector(".vis"); vis.checked = !!s.visible; vis.addEventListener("change", ()=>{ s.visible = vis.checked; touch(); derive(); });
+      const ob = d.querySelector(".obv"); ob.checked = !!s.obvious; ob.addEventListener("change", ()=>{ s.obvious = ob.checked; touch(); });
+      d.querySelectorAll(".imp button").forEach(b => { b.classList.toggle("on", +b.dataset.v === imp(s.importance)); b.addEventListener("click", ()=>{ selSound = i; s.importance = +b.dataset.v; touch(); d.querySelectorAll(".imp button").forEach(x => x.classList.toggle("on", x === b)); }); });
       const mk = d.querySelector(".masked"); mk.checked = !!s.masked; mk.addEventListener("change", ()=>{ s.masked = mk.checked; touch(); });
       if(s.gate){ const g = document.createElement("span"); g.className = "t"; g.style.color = "var(--muted)"; g.textContent = s.gate === "human" ? "times: human label" : "system: " + s.gate; d.querySelector(".row").appendChild(g); }
       d.querySelector(".st").textContent = s.start == null ? "–" : s.start.toFixed(1) + " s"; d.querySelector(".en").textContent = s.end == null ? "–" : s.end.toFixed(1) + " s";
@@ -163,11 +175,11 @@ const CLIPS = /*__CLIPS__*/[];
   function renderCands(){ const c = CLIPS[idx]; const box = $("cands"); const h = human(c);
     box.innerHTML = '<p class="hint">' + (h ? 'Human-timed labels (AudioSet-Strong); tick visible / fix times:' : 'The detector heard (confidence 0–1; may be wrong or incomplete):') + '</p>';
     c.candidates.forEach(k=>{ const d = document.createElement("div"); d.className = "cand"; d.innerHTML = (h ? '' : '<span class="c">'+k.conf.toFixed(2)+'</span>')+'<span>'+k.label+' · '+k.start+'–'+k.end+' s</span><button class="small">add</button>';
-      d.querySelector("button").addEventListener("click", ()=>{ current().sounds.push(h ? {label:k.label, visible:false, masked:!!k.masked, start:k.start, end:k.end, from_detector:false, from_human_label:true, gate:"human"} : {label:k.label, visible:false, masked:false, start:k.start, end:k.end, from_detector:true}); touch(); derive(); renderSounds(); }); box.appendChild(d); }); }
+      d.querySelector("button").addEventListener("click", ()=>{ current().sounds.push(h ? {label:k.label, visible:false, obvious:false, importance:imp(k.importance), masked:!!k.masked, start:k.start, end:k.end, from_detector:false, from_human_label:true, gate:"human"} : {label:k.label, visible:false, obvious:false, importance:imp(k.importance), masked:false, start:k.start, end:k.end, from_detector:true}); touch(); derive(); renderSounds(); }); box.appendChild(d); }); }
 
   $("resetClip").addEventListener("click", ()=>{ if(!confirm("Discard your edits on this clip and reload the pre-fill?")) return; delete data[CLIPS[idx].id]; save(); renderClip(); });
   $("showCands").addEventListener("click", ()=>{ current().opened_candidates = true; touch(); $("cands").classList.add("on"); });
-  $("addSound").addEventListener("click", ()=>{ current().sounds.push({label:"", visible:false, masked:false, start:null, end:null}); touch(); renderSounds(); const inputs = document.querySelectorAll("#sounds input[type=text]"); inputs[inputs.length-1].focus(); });
+  $("addSound").addEventListener("click", ()=>{ current().sounds.push({label:"", visible:false, obvious:false, importance:2, masked:false, start:null, end:null}); touch(); renderSounds(); const inputs = document.querySelectorAll("#sounds input[type=text]"); inputs[inputs.length-1].focus(); });
   $("sentence").addEventListener("input", ()=>{ current().sentence = $("sentence").value; touch(); });
   $("note").addEventListener("input", ()=>{ current().note = $("note").value; touch(); });
   $("picDue").addEventListener("change", ()=>{ current().picture_due = $("picDue").checked; touch(); });
@@ -186,7 +198,7 @@ const CLIPS = /*__CLIPS__*/[];
     else if(e.key==="n"||e.key==="N") $("markDone").click();
     else if(e.key==="p"||e.key==="P") go(idx-1); });
 
-  $("exportBtn").addEventListener("click", ()=>{ const who = $("who").value.trim() || "anon"; const out = {annotator: who, exported: new Date().toISOString(), tool_version: 1, clips: Object.values(data)};
+  $("exportBtn").addEventListener("click", ()=>{ const who = $("who").value.trim() || "anon"; const out = {annotator: who, exported: new Date().toISOString(), tool_version: 2, clips: Object.values(data)};
     const blob = new Blob([JSON.stringify(out, null, 1)], {type:"application/json"}); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "gold_" + who + ".json"; document.body.appendChild(a); a.click(); a.remove(); $("status").textContent = "exported gold_" + who + ".json — put it in benchmark/gold/annotations/"; });
   $("importBtn").addEventListener("click", ()=>$("importFile").click());
   $("importFile").addEventListener("change", e=>{ const f = e.target.files[0]; if(!f) return; const r = new FileReader(); r.onload = ()=>{ try{ const j = JSON.parse(r.result); (j.clips||[]).forEach(c=>{ data[c.clip] = c; }); if(j.annotator) $("who").value = j.annotator; save(); renderClip(); $("status").textContent = "imported " + (j.clips||[]).length + " clips"; }catch(err){ $("status").textContent = "could not read that file"; } }; r.readAsText(f); });

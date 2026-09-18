@@ -2,10 +2,12 @@
 
     python benchmark/gold/merge.py            -> benchmark/gold/gold_set.json + a printed report
 
-Per clip the gold set carries: every annotator's sounds (label, visible, masked, start, end),
-their sentence, their picture-due verdict; the MAJORITY picture-due verdict where two or more
-annotators agree, else "disputed"; Cohen's kappa on picture-due between each pair of
-annotators, and agreement with Adam's original clip label (unseen/mixed = due).
+Per clip the gold set carries: every annotator's sounds (label, visible, obvious, importance,
+masked, start, end), their sentence, their picture-due verdict; the MAJORITY picture-due
+verdict where two or more annotators agree, else "disputed"; Cohen's kappa on picture-due
+between each pair of annotators, and agreement with Adam's original clip label (unseen/mixed
+= due). Per sound label (lowercased, one vote per annotator) it also carries "sounds":
+the majority "obvious" verdict (None when tied) and the median "importance" (1-3).
 
 Slice B (AudioSet-Strong clips, tag "audioset_strong" in the export) has no original label:
 those clips are kept in the gold set with "slice": "audioset_strong" and left out of the
@@ -18,6 +20,7 @@ import sys
 from collections import defaultdict
 from itertools import combinations
 from pathlib import Path
+from statistics import median
 
 HERE = Path(__file__).resolve().parent
 _ROOT = HERE.parent.parent
@@ -37,6 +40,25 @@ audioset = {c for d in ann.values() for c, v in d.items() if v.get("tag") == "au
 
 def slice_of(c):
     return "audioset_strong" if c in audioset else "benchmark"
+
+
+def sound_consensus(per):
+    """per sound label: majority 'obvious' (None when tied) and median 'importance', one vote per annotator"""
+    votes = defaultdict(dict)
+    for n, v in per.items():
+        for s in v["sounds"]:
+            label = (s.get("label") or "").strip().lower()
+            if label and n not in votes[label]:
+                votes[label][n] = s
+    out = []
+    for label, by in sorted(votes.items()):
+        ob = [bool(s.get("obvious")) for s in by.values()]
+        im = [int(s["importance"]) for s in by.values() if s.get("importance") in (1, 2, 3, "1", "2", "3")]
+        yes = sum(ob)
+        out.append({"label": label, "n_annotators": len(by),
+                    "obvious": True if yes > len(ob) / 2 else False if yes < len(ob) / 2 else None,
+                    "importance": median(im) if im else None})
+    return out
 
 
 def kappa(a, b):
@@ -72,7 +94,7 @@ for c, per in sorted(clips.items()):
         maj = True if yes > len(votes) / 2 else False if yes < len(votes) / 2 else None
     elif len(votes) == 1:
         maj = votes[0]
-    gold.append({"clip": c, "slice": slice_of(c), "annotators": per, "picture_due_majority": maj, "disputed": maj is None,
+    gold.append({"clip": c, "slice": slice_of(c), "annotators": per, "picture_due_majority": maj, "disputed": maj is None, "sounds": sound_consensus(per),
                  "original_label_due": orig.get(c) if c not in audioset else None, "n_annotators": len(per)})
 (HERE / "gold_set.json").write_text(json.dumps(gold, indent=1, ensure_ascii=False), encoding="utf-8")
 n2 = sum(g["n_annotators"] >= 2 for g in gold); disputed = sum(g["disputed"] for g in gold)
