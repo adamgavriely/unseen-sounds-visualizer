@@ -151,9 +151,13 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
     # "flam" (v4, docs/prereg_v4.md): frame-level language-audio model over a fixed
     # descriptive vocabulary, one query per AudioSet label, per-query calibration.
     m = (model or "").lower()
-    backend = "FLAM" if "flam" in m else "BEATs" if "beats" in m else "PANNs"
+    backend = "PSED" if "psed" in m else "FLAM" if "flam" in m else "BEATs" if "beats" in m else "PANNs"
     try:
-        if backend == "FLAM":
+        if backend == "PSED":
+            # v4: PretrainedSED BEATs-strong, frame-level (docs/prereg_psed.md)
+            from src.stage4_audio_event_detection.psed_infer import infer_psed
+            framewise, times, labels = infer_psed(Path(wav_path), device)
+        elif backend == "FLAM":
             from src.stage4_audio_event_detection.flam_infer import infer_flam
             framewise, times, labels = infer_flam(Path(wav_path), device)
         elif backend == "BEATs":
