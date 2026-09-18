@@ -12,10 +12,10 @@
 #
 # THE MAIN EXPERIMENT UNDER THE v4 CONFIGURATION (docs/prereg_v4.md), one swap at a time.
 #
-#   STAGES=4      sbatch slurm/job_v4.sh      -> v4a  (FLAM)                        TAG=v4a
-#   STAGES=45     sbatch slurm/job_v4.sh      -> v4b  (+ Qwen3.8-27B)               TAG=v4b
-#   STAGES=456    sbatch slurm/job_v4.sh      -> v4c  (+ Qwen-Image-2512)           TAG=v4c
-#   STAGES=23456  sbatch slurm/job_v4.sh      -> v4   (+ Granite, SAM 3)            TAG=v4
+#   STAGES=5      sbatch slurm/job_v4.sh      -> v4b  (Qwen3.8-27B gate; BEATs stays)   TAG=v4b
+#   STAGES=56     sbatch slurm/job_v4.sh      -> v4c  (+ Qwen-Image-2512)               TAG=v4c
+#   STAGES=2356   sbatch slurm/job_v4.sh      -> v4   (+ Granite, SAM 3)                TAG=v4
+#   STAGES=4 / 45 -> v4a / v4ab, only once a stage-4 swap passes its pre-registered bars
 #   LIMIT=20 ...                              -> the 20-clip check first
 #
 # The evaluation pair is the same for every v4 row: describer Qwen3.8-27B (stage 5 applied
@@ -27,8 +27,10 @@ mkdir -p logs benchmark/.chain
 STAGES="${STAGES:-4}"
 LIMIT="${LIMIT:-100}"
 JUDGE="${JUDGE:-google/gemma-4-31B-it}"
+# stage 4 has no passing swap yet (FLAM x2 and PretrainedSED failed their bars, docs/prereg_*.md),
+# so the cumulative rows are 5 -> 56 -> 2356 with BEATs; "4" rows exist for a future pass
 case "$STAGES" in
-  4) TAG=v4a ;; 45) TAG=v4b ;; 456) TAG=v4c ;; 23456) TAG=v4 ;; *) TAG="v4_s$STAGES" ;;
+  4) TAG=v4a ;; 45) TAG=v4ab ;; 5) TAG=v4b ;; 56) TAG=v4c ;; 2356) TAG=v4 ;; 23456) TAG=v4_all ;; *) TAG="v4_s$STAGES" ;;
 esac
 [ "$LIMIT" != "100" ] && TAG="${TAG}_n$LIMIT"
 STAMP=benchmark/.chain/$TAG

@@ -39,3 +39,31 @@ then 100). On fail, attempt ten in the table with the numbers, BEATs stays.
 ## Not done
 
 No per-class bars, no mapping changes after the numbers, no prompt or gate changes.
+
+## Outcome (added 2026-09-18 night, after the run) — FAILED as pre-registered, on one bar
+
+`benchmark/psed_setting.json`; bar chosen on DCASE at BEATs' false-positive rate: **0.20**.
+
+| measure | bar | BEATs | PSED |
+|---|---|---|---|
+| masked-event recall | ≥ 9.5% | 9.5% | **34.1%** ✔ |
+| clear-event recall | ≥ 32.6% | 32.6% | **44.2%** ✔ |
+| false positives / min | ≤ 5.2 | 5.2 | **3.9** ✔ |
+| onset: matched events | ≥ 66 | 66 | **107** ✔ |
+| onset: mean abs. error | ≤ 0.35 s | 0.35 | **0.19 s** ✔ |
+| onset: within 0.5 s | ≥ 80% | 80% | **91%** ✔ |
+| dev phantoms gone | ≥ 40/77 | 0 | **70/77** ✔ |
+| dev real detections kept | ≥ 21/23 | 23 | **7/23** ✘ |
+
+Seven of eight bars cleared, by wide margins; the one it fails is the one that matters most
+for a deaf viewer: 16 of the 23 labelled real sounds on the dev clips are not detected.
+Diagnosis (scripts/psed_lost_reals.py): most are genuine misses, not a naming issue — the
+model scores the labelled sound near zero where BEATs scored 0.4–0.7 (helicopter 0.16 under
+music, rain 0.02 under music, zipper 0.00, horse 0.01, crack 0.00, explosion 0.02, aircraft
+0.00/0.01); five sit between 0.10 and 0.20 (a looser bar would keep them but breaks the
+false-positive bar on DCASE). Two "reals" it arguably re-labels correctly (BEATs' Goose/Honk
+where PSED hears Gobble/Turkey). Reading: frame-level fine-tuning on AudioSet-Strong made the
+model precise and well-timed but conservative on long ambient sounds under music and speech
+in YouTube video — the opposite failure to FLAM's. Recorded as attempt ten; BEATs stays. The
+held-out real-world table on gold slice B (benchmark/audioset_detector_eval.py, declared in
+docs/prereg_v4.md) is run for all three detectors regardless.

@@ -241,7 +241,9 @@ SAM3_THRESHOLD = 0.5          # SAM 3's own default presence bar; not tuned on o
 V4 = {
     "2": {"VIDEO_BACKEND": "sam3"},
     "3": {"WHISPER_MODEL": "ibm-granite/granite-speech-4.1-2b"},
-    "4": {"AED_MODEL": "flam", "ONSET_CAM": False},          # FLAM is frame-level already
+    # no stage-4 swap has passed its bars (FLAM x2: docs/prereg_v4.md; PretrainedSED:
+    # docs/prereg_psed.md), so "4" is not part of the cumulative rows; kept for a future pass
+    "4": {"AED_MODEL": "psed", "ONSET_CAM": False},          # frame-level already
     # thinking off: the DCASE check (docs/prereg_qwen38_visibility.md) shows the thinking arm
     # no better on visibility and ~3x slower; the pre-registered rule keeps the faster arm
     "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": False},
