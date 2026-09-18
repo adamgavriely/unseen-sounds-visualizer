@@ -102,6 +102,41 @@ The 100-clip v4b and v4ab runs decide; both are queued/running.
 34 GB free; the deletions need your yes; `/home/fast` and `/home/lab` exist but are
 admin-assigned; `/private/keren-lab` needs the `ug_keren` group.
 
+### The 100-clip rows (morning; `python scripts/v4_table.py`)
+
+| row (100 clips, describer Qwen3.8-27B, judge Mistral + rubric cap) | gated | blind | caption | gated − blind [95% CI] | oracle |
+|---|---|---|---|---|---|
+| v3 panels (BEATs + Qwen2.5-VL-7B) | 2.88 | 2.80 | 2.67 | +0.08 [−0.15, +0.31] | 3.74 |
+| v4b: BEATs + Qwen3.8-27B gate | 2.85 | 2.75 | 2.66 | +0.10 [−0.13, +0.33] | 3.70 |
+| **v4ab: PSED + Qwen3.8-27B gate** | **2.88** | **2.67** | 2.71 | **+0.21 [−0.04, +0.44]** | 3.61 |
+
+Permissive judge, same rows: −0.07, −0.10, −0.15 (blind ahead, as in v3). The headline bar
+(CI excluding 0 and ≥ +0.25) is not met by any row; v4ab is the closest anything has come.
+Where it comes from: PSED + Qwen3.8 draws on **19 of the 50 no-due clips** (BEATs + Qwen3.8:
+28; blind: 36–39) and scores 3.24 there vs blind 2.56; on the 50 due clips it loses (2.52 vs
+2.78) because PSED misses some real sounds. The gate itself: Qwen3.8 dev-sweep accuracy
+52.7% (7B: 44.9%); the sweep's best cell is bar 0.40 / majority (cost −0.932 vs −0.946 at
+0.35: two clips' worth — a plateau, not a finding).
+
+**Pre-registered detector rule:** gated(v4ab) − gated(v4b) = **+0.03**, CI [−0.26, +0.31] —
+met by the letter (mean > 0, CI not below 0) and by a hair; the rule should have asked for a
+margin. Stated as such.
+
+**Qwen3.8 thinking arm, final:** on-screen 51.2%, off-screen 78.0% — worse than direct
+(56.3 / 82.6) and 3× slower; thinking stays off (docs/prereg_qwen38_visibility.md).
+
 ## Decisions for the morning
 
-(filled in at the end)
+1. **Detector:** adopt PSED for v4 (rule met, marginally; slice B ahead on every measure;
+   best gap so far) — or keep BEATs by the spirit of the margin. My recommendation: adopt,
+   with the marginal rule disclosed.
+2. **Judge:** confirm the rubric-enforced judge as the primary v4 score (both columns stay).
+3. **Disk:** approve deleting the `psed` conda env is now NOT possible (PSED needs it);
+   approve deleting pip/conda caches (10 GB) and Mistral-7B (19 GB) **after** the Gemma
+   judge lands, or get `ug_keren` / a quota raise. Without ~120 GB: no Qwen-Image (v4c), no
+   Gemma judge.
+4. **Gate bar:** keep 0.35 (plateau) or take the sweep's 0.40 (re-render gated only, ~2 h).
+5. **FLAM rescue:** Fable says no (two failures, blind spots); your call now that PSED is known.
+6. **Gold set:** annotate `benchmark/gold/index.html` (main, 10–20 clips) and
+   `benchmark/gold/index_audioset.html` (slice B, visibility/draw only).
+7. H3 video arm: still "later".
