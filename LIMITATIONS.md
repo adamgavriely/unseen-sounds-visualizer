@@ -107,6 +107,18 @@ detail behind those sentences.
   hand-labelled number (+0.9 → +0.3 s) overstated it. Only 66 of 255 gold events are matched at
   the display bar: detector recall on 5 s clips of laughter, footsteps and domestic sounds is low.
 
+- **The LLM judge does not apply the rubric's asymmetry, so the gate's benefit was invisible
+  to the score (found 2026-09-19 on per-clip records).** On clips whose grounded reference
+  is "nothing beyond the picture", the judge scored the blind baseline's *redundant* picture
+  4 on 6 of 10 clips — the same as correct silence — while the declared rubric (2026-09-14)
+  costs a redundant picture ~1 and a wrong silence 4; the protocol coded the silence side
+  (empty panel on a no-due clip = 4) but not the other. **Judge v4 (rubric-enforced)**
+  completes the coded rule (docs/prereg_v4.md, "Judge v4"): a non-empty panel on a no-due
+  clip, or a caption naming a sound there, is capped at 2. Under it v3 reads gated 2.83 vs
+  blind 2.73 (+0.10, CI [−0.09, +0.30]) instead of 3.17 vs 3.16; the permissive judge stays
+  on every row as a second column. Stated risk: the change is declared after numbers that
+  favoured blind; the judge-free check is the gold set's per-sound "draw?" accuracy.
+
 ## Detector (stage 4)
 
 - **The detector bounds the headline result.** Reading the cached gate decisions
