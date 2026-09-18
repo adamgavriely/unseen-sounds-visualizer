@@ -210,3 +210,23 @@ Adam's visibility annotations replace it. The PSED row (v4ab) is re-run at the n
 DCASE-chosen 0.20 row is kept as a record. The five-model average is judged by the same rule
 and the same slice-B pass rule (docs/prereg_psed_ensemble.md), with its bar from the
 calibration set.
+
+### Calibration result (2026-09-19, `benchmark/detector_calib.json`)
+
+280 calibration clips (47 min). BEATs at 0.35 makes **6.39** false spans/min there (DCASE: 5.2),
+so the matched bars are **PSED 0.15** (was 0.20 on DCASE) and **five-model average 0.10**.
+Slice B, untouched, at those bars:
+
+| detector | bar | masked-consequential recall | all events | false spans/min | onset MAE |
+|---|---|---|---|---|---|
+| BEATs | 0.35 | 50.0% | 37.9% | 6.76 | 1.48 s |
+| PSED | 0.15 | 64.8% | 57.0% | 4.05 | 1.31 s |
+| five-model average | 0.10 | 68.2% | 62.4% | 5.78 | 1.57 s |
+
+Reading: at BEATs' own false-alarm rate the average finds 3.4 points more hidden sounds than
+PSED, at 1.7 more false spans per minute — a trade along the curve, not a better detector
+(slice B cannot resolve a 3-point difference). By its declared rule (≥ 65.7% AND ≤ 2.59/min)
+the average **fails** on the false-alarm side; the ensemble attempt is closed. PSED at the
+DCASE bar (0.20) stays the running v4ab row; the protocol is not re-run at 0.15 now — one
+final detector configuration (docs/prereg_detector_v5.md) will be run once through the
+protocol when the last detector attempt closes.
