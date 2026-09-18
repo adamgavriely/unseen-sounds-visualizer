@@ -1,0 +1,1033 @@
+{
+ "clips": [
+  {
+   "id": "FwlNz4gc9s0_30000",
+   "family": "Doorbell",
+   "src": "../../data/input/audioset_strong/FwlNz4gc9s0_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Doorbell",
+     "start": 0.28,
+     "end": 1.51,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Ding-dong",
+     "start": 0.31,
+     "end": 1.51,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.62,
+     "end": 1.64,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 0.67,
+     "end": 1.67,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 2.2,
+     "end": 4.23,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 2.21,
+     "end": 4.22,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 4.92,
+     "end": 5.68,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 4.93,
+     "end": 5.63,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 6.69,
+     "end": 7.82,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 6.74,
+     "end": 7.88,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Doorbell",
+     "start": 7.41,
+     "end": 8.87,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Ding-dong",
+     "start": 7.43,
+     "end": 8.93,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 9.19,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "Br1s0Ye8kKs_30000",
+   "family": "Door",
+   "src": "../../data/input/audioset_strong/Br1s0Ye8kKs_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Door",
+     "start": 0.0,
+     "end": 0.75,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Slam",
+     "start": 0.0,
+     "end": 0.76,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Speech",
+     "start": 0.0,
+     "end": 1.06,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 0.01,
+     "end": 1.15,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.03,
+     "end": 1.11,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 1.39,
+     "end": 2.96,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 1.41,
+     "end": 2.96,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 1.45,
+     "end": 2.98,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 3.17,
+     "end": 5.43,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 3.18,
+     "end": 5.44,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 3.21,
+     "end": 5.47,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 5.61,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.61,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 5.61,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "1J4FXUMOw8k_70000",
+   "family": "Explosion",
+   "src": "../../data/input/audioset_strong/1J4FXUMOw8k_70000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male singing",
+     "start": 1.13,
+     "end": 3.81,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Boom",
+     "start": 1.36,
+     "end": 2.18,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Boom",
+     "start": 2.97,
+     "end": 3.88,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male singing",
+     "start": 3.95,
+     "end": 4.72,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Beep, bleep",
+     "start": 4.07,
+     "end": 4.33,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male singing",
+     "start": 4.95,
+     "end": 7.71,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 7.84,
+     "end": 8.59,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male singing",
+     "start": 8.74,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 9.7,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "HrvdzCGjbzw_30000",
+   "family": "Cat",
+   "src": "../../data/input/audioset_strong/HrvdzCGjbzw_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Meow",
+     "start": 0.39,
+     "end": 5.38,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 0.42,
+     "end": 5.39,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Cat",
+     "start": 0.43,
+     "end": 5.34,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Speech",
+     "start": 0.94,
+     "end": 1.31,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.99,
+     "end": 1.28,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 1.42,
+     "end": 2.47,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 1.43,
+     "end": 2.46,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Meow",
+     "start": 6.62,
+     "end": 8.99,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 6.73,
+     "end": 9.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Cat",
+     "start": 6.75,
+     "end": 9.02,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "FvIKye4-iGc_230000",
+   "family": "Explosion",
+   "src": "../../data/input/audioset_strong/FvIKye4-iGc_230000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Sound effect",
+     "start": 0.0,
+     "end": 0.41,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 1.87,
+     "end": 2.62,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Boom",
+     "start": 1.88,
+     "end": 2.61,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Sound effect",
+     "start": 2.88,
+     "end": 3.78,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 4.02,
+     "end": 5.11,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 5.46,
+     "end": 6.87,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Boom",
+     "start": 5.47,
+     "end": 6.15,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Sound effect",
+     "start": 7.2,
+     "end": 8.82,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Boom",
+     "start": 9.06,
+     "end": 9.72,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Sound effect",
+     "start": 9.07,
+     "end": 9.7,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "QdoTdG_VNV4_90000",
+   "family": "Glass",
+   "src": "../../data/input/audioset_strong/QdoTdG_VNV4_90000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Glass",
+     "start": 0.0,
+     "end": 1.41,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 1.41,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Glass",
+     "start": 1.9,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 1.9,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "je96vkMY60c_10000",
+   "family": "Crying, sobbing",
+   "src": "../../data/input/audioset_strong/je96vkMY60c_10000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Pant",
+     "start": 0.92,
+     "end": 2.54,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 3.28,
+     "end": 5.34,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Pant",
+     "start": 3.31,
+     "end": 5.37,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Pant",
+     "start": 5.94,
+     "end": 6.84,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 5.95,
+     "end": 6.9,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 7.01,
+     "end": 7.44,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 7.05,
+     "end": 7.46,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Clicking",
+     "start": 8.1,
+     "end": 8.29,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 8.58,
+     "end": 8.92,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 9.38,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "k7oGk-ozhKI_30000",
+   "family": "Bicycle bell",
+   "src": "../../data/input/audioset_strong/k7oGk-ozhKI_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Human sounds",
+     "start": 1.83,
+     "end": 1.95,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Environmental noise",
+     "start": 2.35,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Bicycle bell",
+     "start": 2.37,
+     "end": 3.8,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Human sounds",
+     "start": 4.12,
+     "end": 4.54,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Bicycle bell",
+     "start": 6.28,
+     "end": 7.76,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "V7edkwJsgN0_30000",
+   "family": "Train",
+   "src": "../../data/input/audioset_strong/V7edkwJsgN0_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Subway, metro, underground",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "_4rolMIFkgQ_30000",
+   "family": "Dog",
+   "src": "../../data/input/audioset_strong/_4rolMIFkgQ_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Chirp, tweet",
+     "start": 0.78,
+     "end": 2.24,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 0.83,
+     "end": 2.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 2.31,
+     "end": 5.15,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Growling",
+     "start": 3.1,
+     "end": 3.81,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 3.75,
+     "end": 5.79,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Growling",
+     "start": 5.08,
+     "end": 5.88,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Bark",
+     "start": 5.82,
+     "end": 6.88,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Mechanisms",
+     "start": 7.5,
+     "end": 8.79,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 8.81,
+     "end": 9.5,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Music",
+     "start": 9.81,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "FEbU1XnqgLU_550000",
+   "family": "Explosion",
+   "src": "../../data/input/audioset_strong/FEbU1XnqgLU_550000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Gunshot, gunfire",
+     "start": 0.0,
+     "end": 0.7,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Explosion",
+     "start": 0.01,
+     "end": 0.66,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Sound effect",
+     "start": 0.01,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 0.41,
+     "end": 2.21,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 1.69,
+     "end": 2.64,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Fusillade",
+     "start": 1.71,
+     "end": 5.47,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Explosion",
+     "start": 2.6,
+     "end": 3.49,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Speech",
+     "start": 2.68,
+     "end": 4.18,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 4.08,
+     "end": 5.42,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Explosion",
+     "start": 4.18,
+     "end": 5.42,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Screaming",
+     "start": 5.55,
+     "end": 7.2,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fusillade",
+     "start": 7.14,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Boom",
+     "start": 7.17,
+     "end": 9.41,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 7.17,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Explosion",
+     "start": 7.2,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "_U8kAFAm8tQ_30000",
+   "family": "Fireworks",
+   "src": "../../data/input/audioset_strong/_U8kAFAm8tQ_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Firecracker",
+     "start": 0.0,
+     "end": 5.87,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Shout",
+     "start": 0.01,
+     "end": 0.86,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 0.01,
+     "end": 1.65,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 3.21,
+     "end": 4.53,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 4.44,
+     "end": 5.61,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 5.65,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Firecracker",
+     "start": 6.02,
+     "end": 6.58,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male singing",
+     "start": 6.19,
+     "end": 7.09,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 6.22,
+     "end": 7.05,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 7.08,
+     "end": 8.6,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 8.58,
+     "end": 9.02,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 9.21,
+     "end": 9.43,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Child speech, kid speaking",
+     "start": 9.37,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 9.67,
+     "end": 9.84,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 9.7,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "tyrj_wZor4U_0",
+   "family": "Bicycle bell",
+   "src": "../../data/input/audioset_strong/tyrj_wZor4U_0.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Bell",
+     "start": 1.03,
+     "end": 2.29,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 2.54,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bicycle bell",
+     "start": 3.37,
+     "end": 3.79,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Bicycle bell",
+     "start": 3.91,
+     "end": 4.45,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.71,
+     "end": 5.36,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 4.76,
+     "end": 6.51,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.87,
+     "end": 6.51,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 7.37,
+     "end": 8.99,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  }
+ ],
+ "missing": [
+  "hzOn7H9uhxc_110000",
+  "NLF7fxBO2_g_30000",
+  "Q-607RipeNE_410000",
+  "-Cdx8zogHI0_260000",
+  "Rn8Te4D0EuU_100000",
+  "z2EHq_0aV3Q_5000",
+  "UJ9lfgjMOaM_260000"
+ ],
+ "selection": {
+  "seed": 7,
+  "per_family": 12,
+  "min_dur": 0.5,
+  "mask_frac": 0.5
+ }
+}

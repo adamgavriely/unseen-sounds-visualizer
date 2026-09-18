@@ -58,6 +58,9 @@ def load_model(device: str = "cuda"):
         import torch
         sys.path.insert(0, str(PSED_ROOT))
         cwd = os.getcwd(); os.chdir(PSED_ROOT)          # checkpoints resolve relative to the repo
+        # PretrainedSED has its own top-level `config` module (RESOURCES_FOLDER ...), which
+        # clashes with ours: swap ours out of sys.modules while its code imports
+        ours = {k: sys.modules.pop(k) for k in list(sys.modules) if k == "config"}
         try:
             from models.prediction_wrapper import PredictionsWrapper
             from models.beats.BEATs_wrapper import BEATsWrapper
@@ -65,6 +68,8 @@ def load_model(device: str = "cuda"):
             model = PredictionsWrapper(BEATsWrapper(), checkpoint=CHECKPOINT).eval().to(torch.device(device))
         finally:
             os.chdir(cwd)
+            sys.modules.pop("config", None)
+            sys.modules.update(ours)
         names = [STRONG_TO_ONTOLOGY.get(n, n) for n in audioset_classes.as_strong_train_classes]
         _MODEL = (model, names, device)
     return _MODEL
