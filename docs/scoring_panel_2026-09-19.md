@@ -57,3 +57,43 @@ cost separately, so a reader sees what drives a difference.
 - Statistician's power note: only clips with a needed sound inform the benefit term
   (~50 of 100); with n = 50 the smallest detectable difference is ≈ 0.12, with 100 ≈ 0.085.
   Aim for 100 *informative* clips (slice B helps).
+
+## Second round (three reviewers): "per minute?" and how exactly to compute P / R / F1
+
+**Per minute.** A rate divides by clip length. It is only needed when clips differ in length
+(our benchmark: 20–60 s) or when two sets are compared (10-s YouTube vs 20–60 s benchmark);
+when all clips are the same length it is just a count scaled by a constant. All three:
+report the two clip sets separately. Reviewer A: for a thesis reader, "unneeded pictures
+per clip" (plain count, averaged within a set) is clearer; keep per-minute in a footnote
+for readers from sound-event detection. Reviewer C: per minute is the field's convention
+(distraction grows with time watched). Decision: per clip within each set; per minute in a
+footnote.
+
+**Precision / recall / F1 — the rule (all three agree):**
+- a shown picture **matches** a needed sound if the labels are the same family (ontology)
+  and the picture starts within [onset − 0.5 s, onset + 2 s] (or overlaps the sound);
+  the picture's end is ignored (set by the display's dwell, not by the sound);
+- one-to-one: each needed sound matches at most one picture; a second picture for the same
+  sound is a false positive;
+- unmatched picture = **false positive** (this includes a picture of a real but *visible*
+  sound); unmatched needed sound = **false negative**; a picture of the wrong sound at the
+  time of a needed one = one FP **and** one FN (cross-trigger; count them separately too);
+- pool TP/FP/FN over all clips of a set (**micro**), because half the clips have no needed
+  sound and clips have 0–6 of them; macro in the appendix;
+- confidence interval by **clip-level bootstrap** (2000 draws; sounds in one clip are not
+  independent); with ~50 informative clips the interval on F1 is about ±0.08, so a
+  difference under ~0.10 is not reliably detectable;
+- **importance** enters once, as weighted recall (a missed importance-3 sound counts three
+  times a missed importance-1 sound), reported beside plain recall; precision unweighted;
+- F1 assumes a miss and a false alarm cost the same — show **F0.5 and F2** beside it;
+- a clip with nothing needed and nothing shown adds nothing to P/R/F1; report
+  **clean-clip accuracy** (share of such clips left blank) so silence is visible;
+- the caption baseline is scored by the same rule, each caption tag = one "picture";
+- sensitivity: T = 1 s and 3 s beside 2 s.
+
+**The thesis table (per clip set):** System | P | R | F1 (T = 2 s) | F0.5 | F2 | weighted R |
+unneeded pictures per clip | cross-triggers | clean-clip accuracy | 95% CI on F1.
+
+Worked example (reviewer C): gold needs HORN at 12.0 s and DOG at 30.0 s; the system shows
+HORN at 13.1 (match), CAT at 30.2 (FP, and DOG at 30 is an FN), DOG at 45 (FP: 15 s late).
+P = 1/3, R = 1/2, F1 = 0.40.
