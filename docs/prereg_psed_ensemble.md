@@ -28,3 +28,13 @@ PASS iff all three. On pass, the average becomes the v4 detector (`AED_MODEL = "
 disclosed as attempt eleven; the v4ab row is re-run with it. On fail, the single model stays
 and the numbers go in the table. No further detector attempt after this one; slice B has
 now been looked at three times and is retired as a selection set.
+
+## Outcome at the DCASE-chosen bar (added 2026-09-19, after the run) — FAILED
+
+Bar 0.15 (matched-false-alarm rule on DCASE). Slice B: masked-consequential recall **62.7%**
+(single model 62.7%; rule ≥ 65.7% ✘), all events 54.8% (53.0%), false spans **3.24/min**
+(2.59; rule ≤ 2.59 ✘), onset MAE 1.22 s (1.14). Dev reals kept 10/23 (rule ≥ 6 ✔), phantoms
+gone 68/77. Averaging five backbones did not raise the recall of hidden sounds; it added a
+few more events and more false alarms. Per docs/prereg_v4.md "Calibration on AudioSet-Strong"
+the same comparison is repeated once with both bars chosen on the AudioSet-Strong
+calibration set; that is the final verdict for this attempt.
