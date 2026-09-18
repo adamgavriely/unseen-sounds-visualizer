@@ -13,18 +13,21 @@ importance); Set 2 = the 100 benchmark clips (Adam's per-sound annotation). A sy
 per clip = panel events (start, end, depicted label).
 
 ## Step 1 — match each picture to the gold (time first, label second)
-1. **Time.** A picture can match a gold sound if the picture starts within
-   **[sound onset − 1 s, sound onset + 5 s]** *or* the picture overlaps the sound's interval by
-   ≥ 0.5 s. The +5 s is our gate's 5-second stride (disclosed, cited from the design); the
-   picture's end is ignored (set by the 1.5-s dwell). Sounds that start before the clip use
-   the clip start as onset. Sensitivity row: +3 s and +7 s.
+1. **Time (Adam's rule, 19 Sept).** A picture matches a gold sound only if it starts within
+   **[sound onset − 0.5 s, sound onset + 1.0 s]**. The panel argued for the gate's 5-s stride;
+   Adam overruled: a glass shatter or an explosion shown 3 s late has lost its effect — 0.5 s
+   is the aim, 1 s is forgivable, more is not good enough. Overlap with a long sound does not
+   count. The picture's end is ignored. Sounds that start before the clip use the clip start
+   as onset. Sensitivity rows: +0.5 s, +2 s, +5 s (the last shows what the gate's design
+   costs). Consequence, stated: the current pipeline (visibility decided per 5-s stretch)
+   will register many late pictures as misses; that is a finding about the pipeline.
 2. **Label.** Same AudioSet family (parent or child within two hops) = match. Labels at
    ontology depth < 2 (root-level words such as "sound", "vehicle") **never** match — so
    "vehicle" shown for a car horn is a cross-trigger. Exact-class numbers in a second column.
-3. **One-to-one.** Each gold sound takes at most one picture (greedy by earliest picture
-   start); one picture may cover several overlapping sounds of the same family (rain,
-   traffic). Extra pictures on a sound already matched are **duplicates**: not credited, not
-   false alarms, counted in the clutter rate.
+3. **One-to-one.** Each gold sound takes at most one picture (the nearest in time); one
+   picture may cover several overlapping sounds of the **same** family only (two barks, not
+   rain and traffic). Extra pictures on a sound already matched are **duplicates**: not
+   credited, not false alarms, counted in the clutter rate.
 4. **"Dog at 45 s" rule.** A picture is never judged by itself: first look for a dog-family
    sound in the gold around 44–50 s. If one exists and is needed → hit (with its lateness
    recorded). If it exists but is obvious → a visible-picture (see the split). If none exists →
@@ -37,28 +40,24 @@ that sound stays a miss) / **phantom** (no gold sound of any family in the windo
 **duplicate**. Lateness (picture start − onset) is an attribute of a hit, reported as a
 median; no decaying credit (unanimous in round 2).
 
-## Step 3 — missing gold labels (Set 2 only)
-Adam's annotation starts from detector suggestions, so a quiet real sound may be unlabelled.
-A picture with no gold match is **unverified**. Two bounds are reported: **strict** (unverified
-= phantom; the headline) and **lenient** (unverified excluded from precision), plus the count.
-No detector-score rule: the detector under test may not excuse its own pictures (R7, R8, R10).
-If time allows, one logged blind re-listen pass by the annotator turns unverified into gold
-or phantom.
+## Step 3 — missing gold labels
+Adam's decision: verified results only. The annotation must therefore be exhaustive (every
+sound the annotator hears is added, including quiet ones); a picture with no gold match is
+a **phantom**, full stop. No lenient bound, no detector-score rule (the detector under test
+may not excuse its own pictures).
 
 ## Step 4 — numbers per set
 - Pool hits / misses / false alarms over all sounds of a set (**micro**); clips with no needed
   sound contribute false alarms only — they are the test of restraint.
 - **Precision** = hits / (hits + false alarms). **Recall** = hits / needed sounds. **F1**.
-- **The one split (5 vs 5):** does a visible-picture count as a false alarm in precision?
-  Yes: DHH, decision-analysis, adversarial, annotation, examiner ("the task is to show what
-  the video does not show; if this is free, the blind system is never charged for its
-  defining fault"). No: DCASE, statistics, captioning, CV, IR ("it is a real sound, not a wrong
-  picture; report it as its own clutter rate"). **Adopted: report both** —
-  `F1-strict` (visible-pictures and duplicates excluded, phantoms + cross + visible-pictures
-  as false alarms) and `F1-phantom` (phantoms + cross only) — and a **visible-picture rate**
-  column. Which is the headline is Adam's decision (see the note in the thesis).
-- **Importance** (1–3) enters once, as a sample weight on every sound and on the picture it
-  matches (phantoms weight 1) → weighted P / R / F1 beside the unweighted ones (7 of 10).
+- **The one split (5 vs 5), decided by Adam:** a picture of a visible sound **is a false
+  alarm**. Headline = `F1-strict` (false alarms = phantoms + cross-triggers + visible-pictures).
+  `F1-phantom` (phantoms + cross only) is reported beside it for comparison, with the
+  visible-picture rate. The panel's split is recorded in the thesis.
+- **Importance** (1–3) enters once, as a weight: a needed sound of importance 3 counts as
+  three sounds, importance 1 as one (its picture carries the same weight; phantoms weigh 1)
+  → weighted P / R / F1 beside the unweighted ones. Plainly: missing a siren costs three
+  times missing background traffic.
 - **F0.5 and F2** beside F1: if the ranking of gated / blind / caption holds across β = 0.5,
   1, 2, the equal-cost assumption of F1 does not drive the conclusion.
 - **Confidence intervals** by clip-level bootstrap (2000 draws; sounds inside a clip are not
@@ -68,8 +67,8 @@ or phantom.
   per event.
 
 ## The thesis table (per set)
-System | P | R | F1-strict | F1-phantom | weighted F1 | F0.5 | F2 | visible-picture rate |
-phantoms per clip | cross-triggers | median lateness | clean-clip accuracy | unverified (Set 2)
+System | P | R | F1-strict (with CI) | F1-phantom | weighted F1 | F0.5 | F2 | visible pictures |
+cross-triggers | phantoms | duplicates | median lateness | clean-clip accuracy
 
 ## Anti-gaming (why each rule exists)
 Show everything → phantoms and visible-pictures sink precision. Show nothing → recall 0,
@@ -79,5 +78,5 @@ duplicates are not credited. Two labels per event → one label per event.
 ## Worked example
 Gold: siren 12–18 s (needed, importance 3); dog 30–32 s (obvious, importance 1). System:
 SIREN 13–16, DOG 30–32, HORN 40–42. → SIREN = hit (1 s late); DOG = visible-picture;
-HORN = phantom (Set 1) / unverified (Set 2). Recall 1/1. Precision-strict 1/3, F1-strict 0.50.
+HORN = phantom. Recall 1/1. Precision-strict 1/3, F1-strict 0.50.
 Precision-phantom 1/2, F1-phantom 0.67. Weighted (siren 3): P-strict 3/5 = 0.60, F1 = 0.75.

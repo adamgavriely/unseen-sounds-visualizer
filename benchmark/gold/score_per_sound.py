@@ -1,0 +1,206 @@
+"""Per-sound scoring against the human gold set (docs/metric_per_sound.md, Adam's rules of
+19 Sept 2026): every picture a system shows is matched to the gold sound it depicts, then
+counted as hit / visible-picture / cross-trigger / phantom / duplicate; every needed sound
+as hit / miss. Precision, recall, F1 (strict: visible pictures are false alarms), the
+phantom-only F1 for comparison, importance-weighted versions, F0.5 / F2, clip bootstrap CI,
+median lateness, clean-clip accuracy. One rule for every system.
+
+    python benchmark/gold/score_per_sound.py --annotations benchmark/gold/annotations/adam.json \
+        --tag v4ab --systems proposed blind_a2i audio_caption
+    python benchmark/gold/score_per_sound.py --annotations ... --tag v4ab --late 0.5 2 5   # sensitivity
+
+Gold per sound (annotation export): label, family, start, end, obvious, importance.
+"needed" = not obvious. System output per clip: data/work/protocol_<system>_<tag>/<clip>/
+augmentations.json, turned into on-screen spans by the same rule the compositor uses.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+import numpy as np
+
+_ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(_ROOT))
+import config
+from src.labels import canonical, is_descendant, ancestors, is_salient_nonspeech, is_music
+
+EARLY, LATE = 0.5, 1.0          # a picture may start 0.5 s before and at most 1.0 s after the sound (Adam)
+MIN_DEPTH = 2                   # labels this shallow in the ontology never match ("vehicle", "sound")
+
+
+# ----------------------------------------------------------------------------- gold
+def load_gold(paths):
+    """{clip stem: [sound dicts]} from one or more annotation exports (later files win)."""
+    gold = {}
+    for p in paths:
+        d = json.loads(Path(p).read_text(encoding="utf-8"))
+        for c in d.get("clips", []):
+            if not c.get("done"):
+                continue
+            stem = Path(c["clip"]).stem
+            snds = []
+            for s in c.get("sounds", []):
+                lab = s.get("family") or s.get("label")
+                if not lab or s.get("start") is None or s.get("end") is None:
+                    continue
+                if lab in ("Speech", "Music") or not is_salient_nonspeech(lab) or is_music(lab):
+                    continue
+                snds.append({"label": lab, "start": float(s["start"]), "end": float(s["end"]),
+                             "needed": not bool(s.get("obvious", False)), "importance": int(s.get("importance") or 2)})
+            gold[stem] = snds
+    return gold
+
+
+# ----------------------------------------------------------------------------- system output
+def load_pictures(work_root: Path, stem: str, system: str):
+    """on-screen (label, start, end) spans of one system on one clip, as the compositor shows them"""
+    f = work_root / stem / "augmentations.json"
+    if not f.exists():
+        return None
+    specs = json.loads(f.read_text(encoding="utf-8"))
+    dur = None
+    m = work_root / stem / "media.json"
+    if m.exists():
+        dur = float(json.loads(m.read_text(encoding="utf-8")).get("duration") or 0) or None
+    if system == "audio_caption":
+        # the caption names every gated-through sound as text; each tag = one "picture"
+        return [(s["event_label"], float(s["start"]), float(s["end"])) for s in specs if s.get("augment")]
+    try:
+        from src.types import AugmentationSpec
+        from src.stage6_visual_augmentation import _display_spans
+        objs = []
+        for s in specs:
+            o = AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
+                                 augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
+                                 spans=[tuple(x) for x in s.get("spans", [])])
+            objs.append(o)
+        d = dur or max((o.end for o in objs), default=0.0) + 5.0
+        return [(lab, float(a), float(b)) for lab, a, b, _ in _display_spans(objs, d)]
+    except Exception:
+        return [(s["event_label"], float(s["start"]), float(s["end"])) for s in specs if s.get("augment") and s.get("image_path")]
+
+
+# ----------------------------------------------------------------------------- matching
+def depth(label: str) -> int:
+    return len(ancestors(label))
+
+
+def same_family(a: str, b: str) -> bool:
+    if depth(a) < MIN_DEPTH or depth(b) < MIN_DEPTH:
+        return a == b and depth(a) >= MIN_DEPTH
+    return a == b or canonical(a) == canonical(b) or is_descendant(a, b) or is_descendant(b, a)
+
+
+def in_window(pic_start: float, onset: float, early: float, late: float) -> bool:
+    return onset - early <= pic_start <= onset + late
+
+
+def score_clip(gold, pics, early=EARLY, late=LATE):
+    """classes for one clip: returns dict of counts and per-hit lateness"""
+    gold = sorted(gold, key=lambda g: g["start"]); pics = sorted(pics, key=lambda p: p[1])
+    taken = [False] * len(gold)
+    out = {"hit": 0, "miss": 0, "visible": 0, "cross": 0, "phantom": 0, "dup": 0,
+           "w_hit": 0, "w_miss": 0, "w_fa": 0, "late": []}
+    matched_needed = set()
+    for lab, a, b in pics:
+        # candidates: gold sounds of the same family whose onset window contains the picture start
+        cands = [i for i, g in enumerate(gold) if same_family(lab, g["label"]) and in_window(a, g["start"], early, late)]
+        if cands:
+            free = [i for i in cands if not taken[i]]
+            if not free:
+                out["dup"] += 1; continue               # the sound already has its picture
+            i = min(free, key=lambda i: abs(a - gold[i]["start"]))
+            taken[i] = True
+            # one picture may cover several overlapping sounds of the SAME family
+            for j in cands:
+                if not taken[j] and same_family(gold[j]["label"], gold[i]["label"]) and gold[j]["start"] <= b:
+                    taken[j] = True
+            g = gold[i]
+            if g["needed"]:
+                out["hit"] += 1; out["w_hit"] += g["importance"]; out["late"].append(a - g["start"]); matched_needed.add(i)
+            else:
+                out["visible"] += 1; out["w_fa"] += g["importance"]
+        else:
+            # a real sound of another family at that moment -> cross-trigger; nothing -> phantom
+            any_sound = any(in_window(a, g["start"], early, late) or (g["start"] <= a <= g["end"]) for g in gold)
+            out["cross" if any_sound else "phantom"] += 1; out["w_fa"] += 1
+    for i, g in enumerate(gold):
+        if g["needed"] and i not in matched_needed:
+            out["miss"] += 1; out["w_miss"] += g["importance"]
+    out["needed"] = sum(1 for g in gold if g["needed"])
+    out["clean_ok"] = (out["needed"] == 0 and not pics)
+    out["clean_n"] = int(out["needed"] == 0)
+    return out
+
+
+def prf(tp, fp, fn, beta=1.0):
+    p = tp / (tp + fp) if tp + fp else 0.0
+    r = tp / (tp + fn) if tp + fn else 0.0
+    f = (1 + beta ** 2) * p * r / (beta ** 2 * p + r) if p + r else 0.0
+    return p, r, f
+
+
+def aggregate(rows):
+    H = sum(r["hit"] for r in rows); M = sum(r["miss"] for r in rows)
+    V = sum(r["visible"] for r in rows); C = sum(r["cross"] for r in rows); PH = sum(r["phantom"] for r in rows); D = sum(r["dup"] for r in rows)
+    fa_strict = V + C + PH; fa_ph = C + PH
+    p, r, f1 = prf(H, fa_strict, M)
+    _, _, f05 = prf(H, fa_strict, M, 0.5); _, _, f2 = prf(H, fa_strict, M, 2.0)
+    pp, rp, fp_ = prf(H, fa_ph, M)
+    WH = sum(r["w_hit"] for r in rows); WM = sum(r["w_miss"] for r in rows); WF = sum(r["w_fa"] for r in rows)
+    wp, wr, wf = prf(WH, WF, WM)
+    late = [x for r in rows for x in r["late"]]
+    clean_n = sum(r["clean_n"] for r in rows); clean_ok = sum(r["clean_ok"] for r in rows)
+    return {"hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M,
+            "P": p, "R": r, "F1": f1, "F0.5": f05, "F2": f2, "P_phantom": pp, "F1_phantom": fp_,
+            "wP": wp, "wR": wr, "wF1": wf, "median_late": float(np.median(late)) if late else None,
+            "clean_acc": clean_ok / clean_n if clean_n else None, "clips": len(rows)}
+
+
+def boot_ci(rows, key="F1", n=2000, seed=0):
+    rng = np.random.default_rng(seed)
+    vals = [aggregate([rows[i] for i in rng.integers(0, len(rows), len(rows))])[key] for _ in range(n)]
+    return float(np.percentile(vals, 2.5)), float(np.percentile(vals, 97.5))
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--annotations", nargs="+", required=True)
+    ap.add_argument("--tag", required=True)
+    ap.add_argument("--systems", nargs="+", default=["proposed", "blind_a2i", "audio_caption"])
+    ap.add_argument("--late", nargs="+", type=float, default=[LATE])
+    ap.add_argument("--early", type=float, default=EARLY)
+    ap.add_argument("--out", default=None)
+    a = ap.parse_args()
+    gold = load_gold(a.annotations)
+    print(f"[gold] {len(gold)} annotated clips, {sum(len(v) for v in gold.values())} sounds, "
+          f"{sum(1 for v in gold.values() for s in v if s['needed'])} needed")
+    results = {}
+    for late in a.late:
+        for system in a.systems:
+            root = _ROOT / "data" / "work" / f"protocol_{system}_{a.tag}"
+            rows = []
+            for stem, snds in gold.items():
+                pics = load_pictures(root, stem, system)
+                if pics is None:
+                    continue
+                rows.append(score_clip(snds, pics, a.early, late))
+            if not rows:
+                print(f"[{system}] no rendered clips under {root}"); continue
+            agg = aggregate(rows); lo, hi = boot_ci(rows)
+            agg["F1_ci"] = [lo, hi]
+            results[f"{system}@late{late}"] = agg
+            print(f"[{system:13s} late<={late:.1f}s] clips {agg['clips']:3d} needed {agg['needed']:3d} | "
+                  f"P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
+                  f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
+                  f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean-acc {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
+    out = Path(a.out) if a.out else _ROOT / "benchmark" / "gold" / f"per_sound_{a.tag}.json"
+    out.write_text(json.dumps(results, indent=1), encoding="utf-8")
+    print("->", out)
+
+
+if __name__ == "__main__":
+    main()
