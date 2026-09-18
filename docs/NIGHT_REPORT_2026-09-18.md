@@ -50,7 +50,38 @@ SAM 3 (12 GB, 91 s per clip for 27 concepts) and Granite Speech 4.1 (7 GB) both 
   gated **3.28** vs blind **3.35** (−0.07, CI [−0.29, +0.14]: a tie, as before), caption 2.95,
   oracle 3.75. The describer swap lifts every absolute score by ~0.1–0.2 and changes no
   conclusion. (Ungrounded reference: gated 2.91 vs blind 3.24, same pattern as v3.)
-- v4b (BEATs + Qwen3.8 gate) 20-clip check running on an A100.
+- **v4b (BEATs + Qwen3.8 gate), 20-clip check** (`protocol_results_v4b_n20_grounded.json`):
+  gated 3.15 vs blind 3.20 — identical to v3 on the same 20 clips (3.15 vs 3.30). The bigger
+  VLM changed nothing on 20 clips; both gates still draw a picture on **8 of the 10 clips
+  where none was due**.
+
+### The measurement problem, found tonight, and what I did about it (mine, per Fable)
+
+Per-clip records show *why* the gate cannot win under the current judge: on the 10 no-due
+clips the judge gave the blind baseline's **redundant** pictures a 4 on 6 clips — the same
+as correct silence — so not-showing-what-the-video-shows is worth nothing to the score. The
+declared rubric (14 Sept) says a redundant picture costs ~1 and a wrong silence 4, and the
+protocol codes the silence side (empty panel on a no-due clip = 4) but not the other side.
+Fable's verdict: complete the coded rubric, in code not in the prompt, declared now, applied
+to every system and every row, keep the old judge as a second column, and put the real
+effort into making the gate silence more. Done:
+
+- **Judge v4 (rubric-enforced)**, declared in docs/prereg_v4.md: on no-due clips a
+  non-empty panel (or a caption naming a sound) is capped at 2. `scripts/rubric_enforce.py`.
+- Under it: v3 gated **2.83 vs blind 2.73** (+0.10, CI [−0.09, +0.30]); v3 under the v4 pair
+  2.88 vs 2.80; v4b 20-clip 2.65 vs 2.40 (+0.25, n = 20). The gate is finally *visible*,
+  but the gain is small because it silences so little. Both judges are in the table.
+- Risk stated in the pre-registration: the cap is post hoc in timing; the defence is the
+  written 09-14 asymmetry, the pre-existing one-sided code rule, both columns, and the
+  judge-free gold "draw?" accuracy, which must agree.
+
+### Making the gate silence more (the lever)
+- Qwen3.8 votes on the dev split (156 clips) → the silence rule (bar / majority-vs-
+  unanimous / kinds) is re-chosen on dev with the rubric asymmetry (miss −4, redundant −2),
+  as it was for v3. `config.VISIBILITY_RULE` now exists so a chosen "unanimous" rule ships.
+  Votes job ~2 h from done; sweep is a 1-minute CPU job after it.
+- Full 100-clip v4b run queued (current rule); the sweep's rule, if different, is a
+  further declared row.
 
 ### Disk (still the blocker for Qwen-Image and the Gemma judge)
 34 GB free; the deletions need your yes; `/home/fast` and `/home/lab` exist but are
