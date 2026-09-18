@@ -35,6 +35,21 @@ sys.path.insert(0, str(_ROOT))
 SLICE = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
 VIDEOS = _ROOT / "data" / "input" / "audioset_strong"
 WIN = _ROOT / "benchmark" / "audioset_windows"
+
+
+def use_set(name: str):
+    """switch the module to another AudioSet-Strong set: 'sliceB' (default) or 'calib'"""
+    global SLICE, VIDEOS, WIN, OUT
+    if name == "calib":
+        SLICE = _ROOT / "benchmark" / "gold" / "audioset_calib.json"
+        VIDEOS = _ROOT / "data" / "input" / "audioset_calib"
+        WIN = _ROOT / "benchmark" / "audioset_calib_windows"
+        OUT = _ROOT / "benchmark" / "audioset_calib_eval.json"
+    else:
+        SLICE = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
+        VIDEOS = _ROOT / "data" / "input" / "audioset_strong"
+        WIN = _ROOT / "benchmark" / "audioset_windows"
+        OUT = _ROOT / "benchmark" / "audioset_detector_eval.json"
 OUT = _ROOT / "benchmark" / "audioset_detector_eval.json"
 BAR = 0.35            # config.DISPLAY_THRESHOLD; FLAM-v2 is rescaled to it, PSED's bar is its DCASE-chosen one
 MIN_DUR = 0.5
@@ -149,7 +164,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cache", choices=("beats", "psed", "flam"))
     ap.add_argument("--eval", action="store_true")
+    ap.add_argument("--set", choices=("sliceB", "calib"), default="sliceB")
     a = ap.parse_args()
+    use_set(a.set)
     if a.cache: cache(a.cache)
     if a.eval: evaluate()
 

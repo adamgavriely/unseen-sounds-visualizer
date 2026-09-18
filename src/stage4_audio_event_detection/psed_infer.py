@@ -143,6 +143,9 @@ def chosen_bar() -> float:
     the test clips were scored. (The first protocol run used the pipeline default 0.35 by
     mistake and was discarded.)"""
     import json
+    calib = config.ROOT / "benchmark" / "detector_calib.json"          # AudioSet-Strong calibration (preferred)
+    if calib.exists():
+        return float(json.loads(calib.read_text(encoding="utf-8"))["bars"]["psed"])
     if SETTING.exists():
         return float(json.loads(SETTING.read_text(encoding="utf-8"))["bar_chosen_on_dcase"])
     return 0.20

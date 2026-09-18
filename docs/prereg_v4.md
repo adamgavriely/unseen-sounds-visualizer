@@ -196,3 +196,17 @@ bias; reported CIs cover it. Disclosure for the thesis: "Inference ran on mixed 
 hardware (A100-80 / 3× L4 sharded); bf16 numerics differ slightly across GPU types, so
 outputs are reproducible in distribution, not bit-for-bit." Each row's log records
 torch/CUDA/GPU. The PSED row (v4ab) runs on 3× L4.
+
+## Calibration on AudioSet-Strong (declared 2026-09-19 before any number on the calibration set)
+
+Adam: "why DCASE and not AudioSet-Strong?" DCASE is synthetic indoor audio; it was kept only
+because the threshold rule was written before slice B existed. From now on every detector's
+bar is chosen on a **calibration set** = a random sample of ~320 AudioSet-Strong *eval* clips
+(seed 11), disjoint from slice B's 150 ids, not filtered (ordinary YouTube audio), by the same
+rule: the loosest bar in {0.05 ... 0.95} whose false spans per minute on the calibration clips
+do not exceed BEATs' at its shipping bar 0.35 on the same clips. Slice B (111 clips, Adam's
+annotations) stays the untouched check. DCASE remains only for the visibility check until
+Adam's visibility annotations replace it. The PSED row (v4ab) is re-run at the new bar; the
+DCASE-chosen 0.20 row is kept as a record. The five-model average is judged by the same rule
+and the same slice-B pass rule (docs/prereg_psed_ensemble.md), with its bar from the
+calibration set.
