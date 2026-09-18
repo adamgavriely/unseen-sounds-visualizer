@@ -73,3 +73,15 @@ AND held-half recall gain ≥ 2 points at equal false alarms. Sanity checks: res
 lag = 0; PSED spans on speech-only stretches of the residual (hallucination); energy lost in
 the span of buried sounds (removed targets, expected for human-vocal classes; they keep
 p_orig so cost nothing). V4 joins V1–V3 in the same selection; the variant count is now four.
+
+## Correction (2026-09-19, after the first calibration pass, before slice B): the gate must be a rescue
+
+The first implementation of V1/V2 *replaced* PSED's decision on long boxes by the long-window
+model's; at 2.6 FP/min it raised masked-consequential recall on the calibration set (31
+events, 48% → 68%) but lowered recall on all events (45% → 38%): it traded hundreds of
+ordinary detections for a few buried ones. That is not the rule Adam described ("low-
+confidence PSED verified by the checker") nor V4's. Corrected rule, **rescue**: PSED's own
+detections at its calibrated bar are never removed; a *long* loose box that PSED alone would
+not pass is added iff the long-window model's score ≥ θ. The winner must also keep
+all-events recall within 1 point of PSED alone. The replace-rule numbers are kept in
+`fusion_v5_setting.json` as a diagnostic.

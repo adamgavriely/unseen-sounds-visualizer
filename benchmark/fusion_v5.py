@@ -142,6 +142,16 @@ def run_variant(data, variant, long_model, theta, L, short_bar):
                 conf = box[3] if L_ < L else long_score(*d[long_model], box[0], box[1], box[2], WINDOW[long_model])
                 bar = short_bar if L_ < L else theta
                 if conf >= bar: dets.append(box)
+        elif variant == "rescue":             # V1/V2 as intended: PSED's own detections at its bar are never lost;
+            base = boxes(fw, t, lab, short_bar)                    # a long loose box is ADDED iff the long-window model confirms it
+            dets = list(base)
+            for box in boxes(fw, t, lab, LOOSE):
+                if box[2] - box[1] < L or box[3] >= short_bar:
+                    continue
+                if any(b[0] == box[0] and min(b[2], box[2]) - max(b[1], box[1]) > 0 for b in base):
+                    continue
+                if long_score(*d[long_model], box[0], box[1], box[2], WINDOW[long_model]) >= theta:
+                    dets.append(box)
         elif variant == "psed":               # control: PSED alone at `theta`
             dets = boxes(fw, t, lab, theta)
         for g in gold:
@@ -174,7 +184,7 @@ def select():
     rng = np.random.default_rng(0); idx = rng.permutation(len(data)); half = len(data) // 2
     A = [data[i] for i in idx[:half]]; B = [data[i] for i in idx[half:]]
     sb = psed_bar()
-    variants = [("psed", None, 0.0)] + [(v, m, L) for v in ("gate", "route") for m in longs for L in L_GRID]
+    variants = [("psed", None, 0.0)] + [(v, m, L) for v in ("rescue", "gate", "route") for m in longs for L in L_GRID]
     rows = []
     for v, m, L in variants:
         th, rm, ra, fpr = best_at_rate(data, v, m or "beats", L, sb)
@@ -186,9 +196,10 @@ def select():
     control = rows[0]
     # a variant competes only if it reaches the false-alarm target on the full set AND on the
     # held-out half; it must beat the control on both; ties under 2 points go to the simpler rule
-    order = {"psed": 0, "gate": 1, "route": 2}
+    order = {"psed": 0, "rescue": 1, "gate": 2, "route": 3}
     cands = [r for r in rows[1:] if r["fp"] <= FP_TARGET and r["half"]["fp_B_at_A"] <= FP_TARGET
-             and r["half"]["masked_B_at_A"] > control["half"]["masked_B_at_A"] and r["masked"] > control["masked"]]
+             and r["half"]["masked_B_at_A"] > control["half"]["masked_B_at_A"] and r["masked"] > control["masked"]
+             and r["all"] >= control["all"] - 0.01]          # must not lose recall on the hundreds of other events
     win = None
     if cands:
         top = max(cands, key=lambda r: r["masked"])
