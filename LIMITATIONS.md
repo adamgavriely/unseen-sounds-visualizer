@@ -146,6 +146,32 @@ detail behind those sentences.
   was trained on mixed audio; separated audio is foreign to it, so every score shifts. Not
   adopted (`benchmark/separate_detect.json`).
 
+- **A frame-level open-vocabulary model (FLAM) hears the buried sounds but cannot replace
+  the detector.** Two pre-registered attempts (`docs/prereg_flam.md`, `docs/prereg_v4.md`
+  §4). With the 527 class names as queries: recall on the 126 DCASE events under speech or
+  music 70–85% (BEATs 9.5%) but 700–2700 false spans per minute (BEATs 5.2). With 84
+  descriptive phrases and a per-phrase bar calibrated on 600 DCASE training clips: masked
+  recall 69.8%, clear 88.4%, still 62 false spans per minute — generic impacts and human
+  noises (knock, footsteps, clapping, cough, door, bell) on ordinary indoor audio — and 8 of
+  23 labelled real dev sounds lost, 4 of them at a score of ~0 (FLAM has blind spots of its
+  own: aircraft, gunshot, explosion, zipper). Not adopted. The finding stands: the masked
+  misses are a detector problem that a language-audio model can solve for recall; precision
+  needs training or a vocabulary that excludes generic impacts.
+- **The frame-level fine-tune of the same backbone (PretrainedSED BEATs-strong, ICASSP 2025)
+  cleared seven of eight pre-registered bars and failed one** (`docs/prereg_psed.md`): DCASE
+  masked recall 34.1% (9.5%), clear 44.2% (32.6%), false spans 3.9/min (5.2), onset error
+  0.19 s (0.35), 91% within 0.5 s (80%), 70 of 77 dev phantoms gone — but only 7 of 23
+  labelled real dev sounds kept (bar ≥ 21). Per the pre-registration BEATs stays. Noted
+  post hoc: that bar's population is BEATs' own detections, i.e. agreement with BEATs, not
+  recall of ground truth. On the held-out gold slice B (111 AudioSet-Strong eval clips with
+  every sound human-timed, selected for a consequential sound under speech/music; declared
+  before any number, no pass bar; `benchmark/audioset_detector_eval.json`) PretrainedSED is
+  ahead of BEATs on every measure: masked-consequential recall 62.7% vs 50.0%, all events
+  53.0% vs 37.9%, false spans 2.6 vs 6.8 per minute, onset error 1.14 vs 1.48 s (FLAM-v2:
+  54.2%, 46.2%, 37.3/min). Because this was seen after the result, it did not change the v4
+  detector; a second comparison was pre-registered with its rule fixed before any protocol
+  score (docs/prereg_v4.md, "the detector arm"), and the dev-real bar is retired for future
+  attempts in favour of slice B's exhaustive labels.
 - **Vocabulary.** AudioSet has no "phone alert"; no model trained on it can name one
   (catalogue #3).
 - **Masking by music and speech.** A siren under a film score is heard only at its close-up
