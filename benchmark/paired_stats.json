@@ -1,11 +1,11 @@
 [
  {
-  "tag": "v4b_n20_grounded_rubric",
+  "tag": "v4a_n20_grounded_rubric",
   "n": 20,
   "means": {
-   "proposed": 2.65,
-   "blind_a2i": 2.4,
-   "audio_caption": 2.5
+   "proposed": 2.95,
+   "blind_a2i": 3.1,
+   "audio_caption": 2.9
   },
   "oracle": 3.75
  }
