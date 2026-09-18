@@ -83,6 +83,21 @@ effort into making the gate silence more. Done:
 - Full 100-clip v4b run queued (current rule); the sweep's rule, if different, is a
   further declared row.
 
+### The four 20-clip rows (same 20 clips, same describer + judge)
+
+| row | permissive judge: gated / blind / caption | gated − blind | rubric-enforced: gated / blind / caption | gated − blind |
+|---|---|---|---|---|
+| BEATs + Qwen2.5-VL-7B (v3 panels) | 3.15 / 3.30 / 2.80 | −0.15 | 2.85 / 2.65 / 2.50 | +0.20 |
+| PSED + 7B (v4a) | 3.15 / 3.55 / 3.15 | −0.40 | 2.95 / 3.10 / 2.90 | −0.15 |
+| BEATs + Qwen3.8-27B (v4b) | 3.15 / 3.20 / 2.80 | −0.05 | 2.65 / 2.40 / 2.50 | +0.25 |
+| PSED + Qwen3.8-27B (v4ab) | 3.35 / 3.55 / 3.15 | −0.20 | 3.10 / 3.05 / 2.90 | +0.05 |
+
+Reading (n = 20, every CI includes 0): PSED raises the *absolute* gated score (3.10 vs
+2.65 under the rubric judge — the pre-registered adoption rule compares exactly these) and
+silences on 6 of 10 no-due clips where BEATs silences on 2, but it also lifts the blind
+baseline (fewer wrong pictures to draw) and misses on two unseen clips (bakery, barbershop).
+The 100-clip v4b and v4ab runs decide; both are queued/running.
+
 ### Disk (still the blocker for Qwen-Image and the Gemma judge)
 34 GB free; the deletions need your yes; `/home/fast` and `/home/lab` exist but are
 admin-assigned; `/private/keren-lab` needs the `ug_keren` group.
