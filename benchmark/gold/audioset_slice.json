@@ -4605,6 +4605,811 @@
      "consequential": false
     }
    ]
+  },
+  {
+   "id": "b0KSxH37gVE_100000",
+   "family": "Dog",
+   "src": "../../data/input/audioset_strong/b0KSxH37gVE_100000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 0.14,
+     "end": 0.69,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 0.71,
+     "end": 2.57,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 1.32,
+     "end": 1.73,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Laughter",
+     "start": 2.2,
+     "end": 2.52,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 2.6,
+     "end": 3.46,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 2.61,
+     "end": 3.5,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 2.62,
+     "end": 3.48,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Dog",
+     "start": 2.64,
+     "end": 3.5,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 3.64,
+     "end": 4.55,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 3.68,
+     "end": 4.55,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.7,
+     "end": 4.54,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 3.7,
+     "end": 4.55,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 4.61,
+     "end": 5.71,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 5.8,
+     "end": 6.27,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 5.82,
+     "end": 6.25,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 5.83,
+     "end": 6.27,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 6.79,
+     "end": 7.25,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Bark",
+     "start": 6.81,
+     "end": 7.25,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Dog",
+     "start": 6.82,
+     "end": 7.27,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Bark",
+     "start": 7.45,
+     "end": 7.93,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 7.46,
+     "end": 7.9,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Dog",
+     "start": 7.46,
+     "end": 7.97,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Generic impact sounds",
+     "start": 8.3,
+     "end": 9.23,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Dog",
+     "start": 9.27,
+     "end": 9.84,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Bark",
+     "start": 9.29,
+     "end": 9.85,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Animal",
+     "start": 9.3,
+     "end": 9.8,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "geFD3u6Cwis_230000",
+   "family": "Alarm",
+   "src": "../../data/input/audioset_strong/geFD3u6Cwis_230000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fire alarm",
+     "start": 0.42,
+     "end": 0.75,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.59,
+     "end": 1.18,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fire alarm",
+     "start": 1.41,
+     "end": 2.27,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 1.78,
+     "end": 2.31,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fire alarm",
+     "start": 3.31,
+     "end": 4.13,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Police car (siren)",
+     "start": 3.38,
+     "end": 8.48,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.11,
+     "end": 5.07,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fire alarm",
+     "start": 4.29,
+     "end": 5.07,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Fire alarm",
+     "start": 5.31,
+     "end": 6.0,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.4,
+     "end": 6.66,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Mechanisms",
+     "start": 6.95,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fire alarm",
+     "start": 7.3,
+     "end": 7.89,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Fire alarm",
+     "start": 8.32,
+     "end": 8.64,
+     "masked": false,
+     "consequential": true
+    },
+    {
+     "label": "Fire alarm",
+     "start": 9.49,
+     "end": 10.0,
+     "masked": false,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "CQlh4k5pXKA_10000",
+   "family": "Crying, sobbing",
+   "src": "../../data/input/audioset_strong/CQlh4k5pXKA_10000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Breathing",
+     "start": 0.56,
+     "end": 1.04,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 2.2,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male singing",
+     "start": 3.27,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 4.0,
+     "end": 4.58,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 4.07,
+     "end": 5.54,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Screaming",
+     "start": 4.61,
+     "end": 5.1,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 7.21,
+     "end": 8.6,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Breathing",
+     "start": 7.23,
+     "end": 7.63,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Screaming",
+     "start": 7.23,
+     "end": 8.56,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Breathing",
+     "start": 9.78,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Crying, sobbing",
+     "start": 9.79,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "dQbrfZDBq_8_30000",
+   "family": "Baby cry, infant cry",
+   "src": "../../data/input/audioset_strong/dQbrfZDBq_8_30000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Laughter",
+     "start": 0.0,
+     "end": 1.15,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 0.0,
+     "end": 1.16,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Fire",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Hubbub, speech noise, speech babble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 1.48,
+     "end": 2.2,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 2.52,
+     "end": 2.66,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 3.05,
+     "end": 3.42,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Baby cry, infant cry",
+     "start": 3.54,
+     "end": 4.25,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 4.06,
+     "end": 4.49,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 4.29,
+     "end": 4.49,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Conversation",
+     "start": 4.29,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 4.66,
+     "end": 4.85,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 5.08,
+     "end": 5.46,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 5.26,
+     "end": 5.47,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.65,
+     "end": 6.12,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 6.04,
+     "end": 6.3,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 6.48,
+     "end": 6.68,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 6.85,
+     "end": 7.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 7.68,
+     "end": 7.9,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 7.68,
+     "end": 8.04,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 8.6,
+     "end": 8.79,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 8.89,
+     "end": 9.05,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 9.29,
+     "end": 9.65,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 9.29,
+     "end": 9.61,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Female speech, woman speaking",
+     "start": 9.8,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Walk, footsteps",
+     "start": 9.81,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "OK2wE2xkGTM_90000",
+   "family": "Gunshot",
+   "src": "../../data/input/audioset_strong/OK2wE2xkGTM_90000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Fusillade",
+     "start": 0.0,
+     "end": 0.89,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 0.0,
+     "end": 0.94,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Machine gun",
+     "start": 0.0,
+     "end": 0.99,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Fusillade",
+     "start": 1.43,
+     "end": 2.31,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 1.44,
+     "end": 2.31,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Machine gun",
+     "start": 1.45,
+     "end": 2.37,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Fusillade",
+     "start": 2.72,
+     "end": 2.92,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 2.73,
+     "end": 2.92,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Machine gun",
+     "start": 2.73,
+     "end": 2.93,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 3.02,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Fusillade",
+     "start": 3.02,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Machine gun",
+     "start": 3.02,
+     "end": 10.0,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Shout",
+     "start": 5.61,
+     "end": 6.19,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 5.61,
+     "end": 6.15,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Aircraft",
+     "start": 7.3,
+     "end": 7.68,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Vehicle",
+     "start": 7.31,
+     "end": 7.7,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Helicopter",
+     "start": 7.32,
+     "end": 7.7,
+     "masked": true,
+     "consequential": true
+    }
+   ]
+  },
+  {
+   "id": "Dn8xAMHistk_100000",
+   "family": "Thunder",
+   "src": "../../data/input/audioset_strong/Dn8xAMHistk_100000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Rumble",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    },
+    {
+     "label": "Speech",
+     "start": 0.02,
+     "end": 1.87,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 0.02,
+     "end": 1.78,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 3.69,
+     "end": 5.73,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 3.76,
+     "end": 7.28,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 6.27,
+     "end": 7.42,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Speech",
+     "start": 8.88,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Male speech, man speaking",
+     "start": 9.05,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    }
+   ]
+  },
+  {
+   "id": "fTcSVQJ2h8g_50000",
+   "family": "Siren",
+   "src": "../../data/input/audioset_strong/fTcSVQJ2h8g_50000.mp4",
+   "duration": 10.0,
+   "events": [
+    {
+     "label": "Music",
+     "start": 0.0,
+     "end": 10.0,
+     "masked": false,
+     "consequential": false
+    },
+    {
+     "label": "Sound effect",
+     "start": 3.21,
+     "end": 3.82,
+     "masked": true,
+     "consequential": false
+    },
+    {
+     "label": "Police car (siren)",
+     "start": 9.05,
+     "end": 10.0,
+     "masked": true,
+     "consequential": true
+    }
+   ]
   }
  ],
  "missing": [
@@ -4621,7 +5426,10 @@
   "ksYM8YzzWXo_90000",
   "j6mYzEsAFVo_90000",
   "-c7hCWwTlrY_30000",
-  "J2nDnAerah0_30000"
+  "J2nDnAerah0_30000",
+  "TYXKNCbI_gs_30000",
+  "CMiEpeKMNQI_0",
+  "QC8sz1StEtk_0"
  ],
  "selection": {
   "seed": 7,

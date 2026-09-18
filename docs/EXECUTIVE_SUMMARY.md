@@ -33,7 +33,7 @@ simplest alternative — "draw a picture for every sound you hear, never look at
 (the **blind** baseline) — scores **3.16**: a tie. We win on the 50 clips where no picture was
 needed (we stay quiet, blind draws something redundant) and lose on the 50 where one was
 needed (we sometimes stay quiet when we should not). The reason we lose is mostly not the
-gate but the **sound detector** underneath it. Seven attempts to improve that detector all
+gate but the **sound detector** underneath it. Nine attempts to improve that detector all
 failed; each had its pass/fail rule written down before it ran. That they all failed is the
 thesis's second finding.
 
@@ -337,6 +337,8 @@ independent AI reviewer ("Fable"). None passed; all are reported honestly.
 | bigger VLM (32B) for the gate | four times larger vision model | recognises visible sources better (67% vs 35%) but wrongly silences 25% of off-screen sounds (was 3%) — worse under the score |
 | audio language model | ask Qwen2-Audio "which of these sounds do you hear?" | small test passed (6/10 phantoms vetoed, 9/10 real kept); full run removed only 25 of 77 |
 | source separation (Demucs) | remove voices, drums and bass before detecting; detect on what is left | ran 15 Sept evening: the detector got *worse* — found fewer of the buried sounds (9.5% → 4.8%), lost two thirds of the clear ones, and lost 17 of 23 real dev detections; it was trained on mixed audio and does not understand separated audio |
+| FLAM, 527 class names as queries (17 Sept) | a 2025 frame-level model that scores any text against the audio, asked the detector's own 527 class names | hears **7–8 of every 10 buried sounds** (BEATs: 1) but fires 700–2700 wrong sounds a minute (BEATs: 5); single words are poor prompts for it |
+| FLAM, 84 descriptive phrases with per-phrase calibration (18 Sept) | phrases ("a dog barking"), one per sound, each with its own bar set on DCASE training audio | buried-sound recall 70%, clear 88% — but still 62 wrong sounds a minute, mostly generic impacts (knock, footsteps, clapping, cough), and it lost 8 of 23 real dev sounds (4 it simply did not hear). Verdict: FLAM and BEATs are complementary, not substitutes |
 
 Example of a phantom the second opinions could not remove: "whale vocalization" at a
 Christmas market (confidence 0.36). The same phantom appears on other crowd clips (a crowd
