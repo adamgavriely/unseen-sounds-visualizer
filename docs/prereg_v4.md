@@ -131,3 +131,23 @@ masked consequential events, of all consequential events, of all events; false s
 minute (every sound in these clips is labelled, so this is a real false-alarm rate); onset
 error. No pass bar: it is the held-out check that the DCASE-chosen detector setting
 transfers to real-world video. The PretrainedSED decision stays with docs/prereg_psed.md.
+
+## Added 2026-09-19 00:40, after the PretrainedSED result and before any protocol score: the detector arm
+
+PretrainedSED failed its eighth bar (docs/prereg_psed.md) and per that pre-registration
+**BEATs stays the v4 detector**. Observed after the fact: that bar's population is BEATs'
+own detections judged real by a human (23 items), so it measures agreement with BEATs
+rather than recall of ground truth; on gold slice B (declared above, no pass bar, 111
+held-out real-world clips, 236 masked consequential events) PSED was ahead of BEATs on
+every measure (masked-consequential recall 62.7% vs 50.0%, all events 53.0% vs 37.9%, false
+spans 2.6 vs 6.8 per minute, onset MAE 1.14 vs 1.48 s). Because this was seen after the
+result it does not alter the v4 decision. Instead a second comparison is declared here,
+with its rule fixed before any protocol score exists:
+
+- rows **v4a** = PSED + Qwen2.5-VL-7B and **v4ab** = PSED + Qwen3.8-27B are run through the
+  protocol next to v3_q38 (BEATs + 7B) and v4b (BEATs + Qwen3.8), same describer and judge;
+- **PSED is adopted for v4 iff** the gated score of v4ab exceeds that of v4b (mean paired
+  difference > 0) **and** the 95% paired bootstrap CI of that difference does not lie
+  entirely below 0; an exact tie or a negative mean keeps BEATs;
+- the dev-real bar is retired for future detector attempts in favour of slice B's
+  exhaustive labels (a design correction, not a retroactive waiver).

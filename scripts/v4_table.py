@@ -19,7 +19,9 @@ from scripts.paired_stats import load, boot_ci, SILENT_RIGHT
 
 ROWS = [("v3_grounded", "v3 (Mistral judge, Qwen2.5-VL-7B describer) — the thesis row"),
         ("v3_q38_grounded", "v3 panels, v4 evaluation pair"),
+        ("v4a_grounded", "detector arm: PSED + Qwen2.5-VL-7B"),
         ("v4b_grounded", "+ Qwen3.8-27B gate (stage 5); BEATs stays"),
+        ("v4ab_grounded", "detector arm: PSED + Qwen3.8-27B"),
         ("v4c_grounded", "+ Qwen-Image-2512 (stage 6)"),
         ("v4_grounded", "+ Granite, SAM 3 (stages 3, 2)")]
 
