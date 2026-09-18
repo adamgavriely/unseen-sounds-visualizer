@@ -74,8 +74,9 @@ def load_model(device: str = "cuda", backbone: str = "BEATs"):
             from models.prediction_wrapper import PredictionsWrapper
             from data_util import audioset_classes
             mod, cls, ckpt = BACKBONES[backbone]
-            wrapper = getattr(importlib.import_module(mod), cls)
-            model = PredictionsWrapper(wrapper(), checkpoint=ckpt).eval().to(torch.device(device))
+            wrapper = getattr(importlib.import_module(mod), cls)()
+            extra = {"embed_dim": wrapper.m2d.cfg.feature_d} if backbone == "M2D" else {}   # as in the paper's inference.py
+            model = PredictionsWrapper(wrapper, checkpoint=ckpt, **extra).eval().to(torch.device(device))
         finally:
             os.chdir(cwd)
             sys.modules.pop("config", None)
