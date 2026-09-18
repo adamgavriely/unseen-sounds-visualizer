@@ -123,12 +123,39 @@ def cache_clips(sources, device: str = "cuda", out_dir: Path = None) -> int:
     return done
 
 
+SETTING = config.ROOT / "benchmark" / "psed_setting.json"
+
+
+def chosen_bar() -> float:
+    """PSED's own bar: the loosest bar whose false-span rate on DCASE 2025 gold does not
+    exceed the shipping BEATs rate (docs/prereg_psed.md); 0.20. Fixed before slice B or
+    the test clips were scored. (The first protocol run used the pipeline default 0.35 by
+    mistake and was discarded.)"""
+    import json
+    if SETTING.exists():
+        return float(json.loads(SETTING.read_text(encoding="utf-8"))["bar_chosen_on_dcase"])
+    return 0.20
+
+
+def rescale(fw: np.ndarray, bar: float = None, ship: float = None) -> np.ndarray:
+    """Map PSED's bar onto config.DISPLAY_THRESHOLD, piecewise-linearly (bar -> ship, 1 -> 1,
+    0 -> 0), so the hysteresis rule, the gate and every downstream bar stay as they are."""
+    bar = chosen_bar() if bar is None else bar
+    ship = float(config.DISPLAY_THRESHOLD if ship is None else ship)
+    s = fw.astype(np.float32)
+    lo = ship * s / bar
+    hi = ship + (1 - ship) * (s - bar) / (1 - bar)
+    return np.clip(np.where(s < bar, lo, hi), 0, 1)
+
+
 def infer_psed(wav_path: Path, device: str = "cuda") -> Tuple[np.ndarray, np.ndarray, list]:
     stem = Path(wav_path).parent.name
     p = cache_path(stem)
     if p.exists():
         z = np.load(p, allow_pickle=False)
-        return z["fw"].astype(np.float32), z["times"].astype(np.float64), [str(x) for x in z["labels"]]
-    model, names, _ = load_model(device)
-    fw, times = score_file(model, Path(wav_path), device)
-    return fw, times, list(names)
+        fw, times, labels = z["fw"].astype(np.float32), z["times"].astype(np.float64), [str(x) for x in z["labels"]]
+    else:
+        model, labels, _ = load_model(device)
+        fw, times = score_file(model, Path(wav_path), device)
+        labels = list(labels)
+    return rescale(fw), times, labels

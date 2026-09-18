@@ -174,3 +174,14 @@ Risk, stated: the cap is exactly the lever that separates gated from blind and i
 declared after numbers that favoured blind. Defence: the 09-14 written asymmetry, the
 pre-existing one-sided code rule, both judges on every row, and the judge-free check —
 the gold set's per-sound "draw?" accuracy — which must agree.
+
+## Correction, 2026-09-19 morning: the PSED rows ran at the wrong bar
+
+The v4a/v4ab rows of the night used PSED's scores against the pipeline default bar 0.35,
+not PSED's own bar 0.20 (chosen on DCASE by the matched-false-alarm rule before slice B or
+the test clips were scored). On slice B PSED at 0.35 recalls 44% of masked consequential
+sounds (BEATs 50%) — the misses on "picture needed" clips came from this. The rows are kept
+under the tag `v4ab_bar035` as a record and **discarded**; PSED's scores are now rescaled so
+that 0.20 lands on 0.35 (`psed_infer.rescale`), and v4ab is re-run. Fable's review: keep
+the DCASE-chosen 0.20 (rule declared first); the slice-B sweep (0.05–0.50) is reported as a
+held-out check, not used for selection.
