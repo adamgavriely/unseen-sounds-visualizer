@@ -151,3 +151,26 @@ with its rule fixed before any protocol score exists:
   entirely below 0; an exact tie or a negative mean keeps BEATs;
 - the dev-real bar is retired for future detector attempts in favour of slice B's
   exhaustive labels (a design correction, not a retroactive waiver).
+
+## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
+
+Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient
+(grounded reference "nothing beyond the picture") the LLM judge gives a *redundant* picture
+4 on most clips (blind 3.80 mean on the 10 no-due clips of the check), the same as correct
+silence. The protocol already codes one side of the declared rubric (docs/plan_robustness.md,
+2026-09-14: wrong silence costs 4, redundant picture ~1) — an empty panel on a no-due clip
+is 4 in code — but not the other. This completes it, in code, not in the prompt:
+
+> For clips whose grounded reference is "nothing beyond the picture": empty panel = 4
+> (unchanged); non-empty panel = min(LLM score, 2), applied in code after the LLM call.
+> Caption row: empty caption = 4; a caption naming any sound = min(score, 2). All other
+> clips: unchanged. Applied identically to gated, blind, caption and the oracle, and
+> retroactively to v3 (100 clips) and v4b (20 clips); the uncapped judge is reported as
+> "permissive judge" beside it on every row. Primary score for v4 = rubric-enforced judge.
+> The gate's dev sweep uses the same asymmetry (redundant picture −2, missed picture −4).
+> No further metric change after this declaration.
+
+Risk, stated: the cap is exactly the lever that separates gated from blind and it is
+declared after numbers that favoured blind. Defence: the 09-14 written asymmetry, the
+pre-existing one-sided code rule, both judges on every row, and the judge-free check —
+the gold set's per-sound "draw?" accuracy — which must agree.

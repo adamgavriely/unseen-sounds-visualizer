@@ -1,0 +1,989 @@
+[
+ {
+  "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+  "system": "proposed",
+  "reference": "The siren and vehicle sounds indicate the presence of an emergency vehicle or traffic noise that is not visually depicted on screen.",
+  "description": "Based on the image of the ambulance, a viewer would learn that the sound is a loud, high-pitched, and rhythmic siren, which is the standard auditory signal used by emergency vehicles to alert traffic. The sound source is the siren on the ambulance.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_EiqYND8G.mp4",
+  "system": "proposed",
+  "reference": "A hearing viewer would hear the sound of a tambourine, which is not visible on screen.",
+  "description": "The sound source is a tambourine, and the image shows that the sound is produced by the metallic jingles (zils) embedded in the frame clattering against each other as the instrument is shaken or struck.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Tambourine"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_mountain_stream.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_jungle_hike.mp4",
+  "system": "proposed",
+  "reference": "The sounds reveal the presence of an owl, bird, sheep, and insects, which are not visible on the screen.",
+  "description": "The image shows two owls, indicating that the sound source is the hoot or call of owls. The image shows a European Robin (*Erithacus rubecula*) with its beak open, indicating that the sound is the bird's characteristic song or call. The image shows a honeybee hovering just above a flower, indicating that the sound is the high-pitched, continuous buzzing created by the rapid vibration of the bee's wings.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Owl",
+   "Bird",
+   "Buzz",
+   "Sheep",
+   "Hoot",
+   "Insect"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+  "system": "proposed",
+  "reference": "The audible vehicle sounds confirm the presence and activity of the vehicles already visible on screen, adding no new information beyond the picture.",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_airport_terminal.mp4",
+  "system": "proposed",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_police_car_siren_WEROVWDp.mp4",
+  "system": "proposed",
+  "reference": "The siren sound indicates the presence of an emergency vehicle, which is not explicitly visible on screen.",
+  "description": "Based on the visual evidence, the sound source is the **engine** of a car (specifically, a high-performance or sports car, indicated by the detailed engine bay components like the air intake and valve cover).\n\nA viewer would learn that the sound is a **mechanical, low-frequency rumble or roar** produced by the internal combustion engine.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ly_helicopter_-v62cK1.mp4",
+  "system": "proposed",
+  "reference": "The sounds of a vehicle and a helicopter indicate the presence of these additional off-screen or background sources, which are not visible in the picture.",
+  "description": "Based on the visual cues, a viewer would learn that the sound is a loud, aggressive, and high-pitched **engine rev or roar** from a sports car. The sound source is the **car engine**.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle",
+   "Helicopter",
+   "Aircraft"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-lyPnABQ.mp4",
+  "system": "proposed",
+  "reference": "The audible siren confirms the active presence of the emergency vehicle visible on screen.",
+  "description": "Based on the image, a viewer would learn that the sound is the loud, rhythmic, and alternating high-pitched wail or yelp of a police vehicle's emergency siren, accompanied by the visual flashing of the red and blue lights on the roof bar. The sound source is a police car siren.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Siren"
+  ],
+  "visible": [
+   "Crowd",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_pov_dry_leaves.mp4",
+  "system": "proposed",
+  "reference": "The sounds of footsteps, chewing, and mastication indicate that a person is walking and eating, information not visible in the empty scene.",
+  "description": "Based on the visual of a person walking, the image indicates that the accompanying sound is the rhythmic noise of footsteps. The sound source is a person walking. The image shows a person's mouth wide open with the tongue visible, indicating that the sound is a loud, open-vocalized exclamation or shout, such as a yawn or a \"wow\" sound.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Footsteps",
+   "Chewing, mastication"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_1FOKvagR.mp4",
+  "system": "proposed",
+  "reference": "The sounds of a boat and a vehicle indicate the presence of these specific sources, which are not currently visible on screen.",
+  "description": "Based on the image, a viewer would learn that the sound is the loud, powerful roar of a high-performance boat's outboard motor as it propels the vessel at speed through the water. The sound source is the black outboard motor, which appears to be a Yamaha model (indicated by the \"Moto\" text, likely part of \"Motors\" or a specific series name,",
+  "n_augmentations": 1,
+  "sounds": [
+   "Helicopter",
+   "Aircraft",
+   "Boat",
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Helicopter"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bakery_morning.mp4",
+  "system": "proposed",
+  "reference": "The sounds of cooking, tearing, a chink or clink, and a door indicate specific actions and object interactions occurring off-screen or obscured from view.",
+  "description": "Based on the image of fresh vegetables (tomatoes, carrots, onions, herbs) and a knife, a viewer would learn that the sound is the sharp, rhythmic *chopping* or *dicing* of these ingredients. The sound source is a knife cutting through vegetables on a cutting board. The image shows a pair of hands tearing a sheet of paper, indicating that the sound is the sharp, crisp ripping noise produced by paper being torn apart. Based on the image, a viewer would learn that the sound is likely the sharp, dry, and hollow clatter of several white paper cups being dropped or stacked together. The sound source is a group of paper cups.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Cooking",
+   "Tearing",
+   "Chink, clink",
+   "Door"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "as_explosion_XJ8lc3I6.mp4",
+  "system": "proposed",
+  "reference": "The sounds of a gunshot, explosion, and gasp confirm the violent events and the character's reaction, while the sigh adds a layer of emotional distress not visible in the footage.",
+  "description": "The image shows a handgun firing, with a large burst of flame and a projectile exiting the barrel, indicating the sound would be a loud, sharp gunshot. Based on the image provided, here is the description for a deaf viewer:\n\nThe image indicates that a loud, sharp, and sudden noise is being made, likely a shout or a bang. The sound source is a person shouting the Chinese phrase \"Bǎng gēn shàng!\" (which translates to \"Get on the board!\" or \"Jump on!\"). The image indicates that the sound is a loud, sudden explosion, likely from a cannon or large firearm firing, characterized by a sharp blast and the scattering of debris.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Gunshot",
+   "Sigh",
+   "Explosion",
+   "Gasp"
+  ],
+  "visible": [
+   "Fire",
+   "Gunshot",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+  "system": "proposed",
+  "reference": "The sound of water indicates the presence of a water source, such as a stream, tap, or rain, which is not visible on the screen.",
+  "description": "The image shows a stream of water flowing from a pipe, indicating that the sound is the rushing or gurgling noise of water moving through a pipe or faucet.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_funeral_rain_scene.mp4",
+  "system": "proposed",
+  "reference": "The sound of rain indicates that it is raining outside, a detail not visible in the current shot.",
+  "description": "The image shows water droplets resting on fresh green leaves, which helps the viewer understand that the accompanying sound is the gentle, soft patterling of rain or a light drizzle falling on foliage.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_barbershop.mp4",
+  "system": "proposed",
+  "reference": "The sounds indicate the presence of an electric shaver or razor in use, accompanied by a background mains hum and buzz, which are not visible on the screen.",
+  "description": "Based on the visual evidence, here is a description of the sound:\n\nThe image shows a string of illuminated vintage-style light bulbs, which would produce a soft, warm, and gentle humming or crackling sound, characteristic of incandescent or Edison-style bulbs. Based on the visual evidence, the image suggests a sound related to a dry, flaky, or peeling texture.\n\nThe viewer would learn that the sound is likely a dry, raspy, or crackling noise, similar to the sound of dry skin or flakes being disturbed. The sound source is likely dry, flaking skin on the man's face. The image depicts a person with a long ponytail whipping through the air, indicating the sound source is the whooshing or swishing noise created by the rapid movement of hair.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Mains hum",
+   "Electric shaver, electric razor",
+   "Hum",
+   "Buzz"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "wc_korean_thriller.mp4",
+  "system": "proposed",
+  "reference": "The sounds of footsteps, a horse, glass, and birds provide auditory context for the environment and actions that are not visible on screen, where only a vehicle and a gunshot are depicted.",
+  "description": "Based on the image, a viewer would learn that the sound is a loud, sharp, and sudden noise, likely a bray or a loud snort, caused by the horse's mouth being wide open. The sound source is a horse. Based on the visual representation of a shattering surface, a viewer would learn that the sound is a sharp, sudden, and brittle **crash** or **shatter**.\n\nThe sound source is **breaking glass** (or a similar brittle material like ice). The image shows a bird in flight, which would help a deaf viewer understand that the accompanying sound is the flapping of wings or the call of a bird in the air.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Footsteps",
+   "Vehicle",
+   "Horse",
+   "Glass",
+   "Bird"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+  "system": "proposed",
+  "reference": "The sounds reveal the presence of a dog and a person snickering, which are not visible on screen.",
+  "description": "The image shows a dog with its mouth wide open, indicating that the sound source is a dog barking or howling. The image shows two men laughing heartily, indicating that the sound is the loud, joyful laughter of people.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Dog",
+   "Snicker"
+  ],
+  "visible": [
+   "Crowd",
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "london_protest_01.mp4",
+  "system": "proposed",
+  "reference": "The viewer hears the sound of a vehicle, which is not currently visible on screen.",
+  "description": "Based on the image of the train, a viewer would learn that the sound is the loud, rumbling, and screeching noise made by a **train** moving along the tracks.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Saxophone",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_church_bell_pJRAWkLM.mp4",
+  "system": "proposed",
+  "reference": "The audible ringing of the bell confirms that the visible bell is actively sounding, providing auditory confirmation of the event that the static visual of the object alone does not convey.",
+  "description": "The image shows a brass handbell suspended from a wooden frame, indicating that the sound is the clear, resonant, and metallic ringing tone produced when the bell's internal clapper strikes its body.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bell"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+  "system": "blind_a2i",
+  "reference": "The siren and vehicle sounds indicate the presence of an emergency vehicle or traffic noise that is not visually depicted on screen.",
+  "description": "Based on the image of the emergency vehicle, a viewer would learn that the sound is a loud, high-pitched, and urgent siren. The sound source is an ambulance. Based on the visual evidence of the highway scene, the viewer would learn that the sound is the loud, continuous roar and rumble of heavy traffic, primarily from the engines and tires of the many cars shown in congestion. The sound source is the traffic on the highway.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_EiqYND8G.mp4",
+  "system": "blind_a2i",
+  "reference": "A hearing viewer would hear the sound of a tambourine, which is not visible on screen.",
+  "description": "Based on the image, a viewer would learn that the sound is a rhythmic, metallic jingling or shaking noise produced by small metal discs striking each other. The sound source is a tambourine.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Tambourine"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_mountain_stream.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "Based on the visual evidence, here is the description:\n\nThe image displays a spectrogram where the sound is a single, continuous frequency that rises steadily over time, indicating a rising tone or \"sweep.\" The sound source is likely a **siren** (such as an ambulance or police siren) or a **synthesized electronic sweep**.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_jungle_hike.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds reveal the presence of an owl, bird, sheep, and insects, which are not visible on the screen.",
+  "description": "The image shows an owl, indicating that the sound is an owl's call, such as a hoot or screech. Based on the image, a viewer would learn that the sound is a bird call, likely a short, sharp chirp or trill produced by a small songbird. The sound source is a bird, which appears to be a species of shrike (such as a Loggerhead Shrike or similar). The image shows a honeybee, indicating that the accompanying video features the high-pitched, continuous buzzing sound produced by the rapid vibration of its wings.",
+  "n_augmentations": 6,
+  "sounds": [
+   "Owl",
+   "Bird",
+   "Buzz",
+   "Sheep",
+   "Hoot",
+   "Insect"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+  "system": "blind_a2i",
+  "reference": "The audible vehicle sounds confirm the presence and activity of the vehicles already visible on screen, adding no new information beyond the picture.",
+  "description": "The image shows multiple cars driving on a multi-lane highway, indicating that the accompanying sound is the ambient noise of traffic, specifically the collective sound of engines, tires on pavement, and potential wind noise from the moving vehicles.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_airport_terminal.mp4",
+  "system": "blind_a2i",
+  "reference": "nothing beyond the picture",
+  "description": "no augmentation was shown",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_police_car_siren_WEROVWDp.mp4",
+  "system": "blind_a2i",
+  "reference": "The siren sound indicates the presence of an emergency vehicle, which is not explicitly visible on screen.",
+  "description": "Based on the image of the police car, a viewer would learn that the sound is a **police siren**. Based on the image of the red Suzuki Swift convertible, a viewer would learn that the sound is likely the engine revving or the car driving by. The sound source is a car engine.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ly_helicopter_-v62cK1.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds of a vehicle and a helicopter indicate the presence of these additional off-screen or background sources, which are not visible in the picture.",
+  "description": "Based on the image of a long line of stationary cars, a viewer would learn that the sound is the low, continuous rumble of many car engines idling in traffic. The sound source is the collective engines of the vehicles in the traffic jam. Based on the image, a viewer would learn that the sound is the loud, rhythmic, and continuous \"whup-whup-whup\" noise created by the spinning main rotor blades of a helicopter. The sound source is a Robinson R44 helicopter. Based on the image of the solar-powered aircraft, a viewer would learn that the sound is the quiet, low-frequency hum of its electric motors and propellers. The sound source is the Solar Impulse aircraft.",
+  "n_augmentations": 3,
+  "sounds": [
+   "Vehicle",
+   "Helicopter",
+   "Aircraft"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-lyPnABQ.mp4",
+  "system": "blind_a2i",
+  "reference": "The audible siren confirms the active presence of the emergency vehicle visible on screen.",
+  "description": "Based on the image of the police car, a viewer would learn that the sound is a **police siren**.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Siren"
+  ],
+  "visible": [
+   "Crowd",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_pov_dry_leaves.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds of footsteps, chewing, and mastication indicate that a person is walking and eating, information not visible in the empty scene.",
+  "description": "Based on the visual evidence, here is a description of the sound:\n\nThe image shows a man walking, which indicates that the accompanying sound is the rhythmic tapping of his shoes against a hard surface. The sound source is the man's footsteps. Based on the visual evidence, the image depicts a piece of a firm, dense food (like a fruit cake or dense pastry) being pierced by a wooden skewer.\n\nThe viewer would learn that the sound is a short, sharp, dry *crunch* or *snap* caused by the skewer breaking through the hard, brittle surface of the food. The sound source is a wooden skew",
+  "n_augmentations": 2,
+  "sounds": [
+   "Footsteps",
+   "Chewing, mastication"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_1FOKvagR.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds of a boat and a vehicle indicate the presence of these specific sources, which are not currently visible on screen.",
+  "description": "Based on the image, a viewer would learn that the sound is the loud, rhythmic chopping or whirring noise created by the spinning main and tail rotors of a helicopter. The sound source is an A73W helicopter. Based on the image of the aircraft, a viewer would learn that the sound is the loud, high-pitched roar of a jet engine. The sound source is a Fairchild Republic A-10 Thunderbolt II (commonly known as the \"Warthog\"). Based on the image of the red speedboat, a viewer would learn that the sound is likely the loud, high-pitched roar of a powerful outboard or inboard engine, characteristic of a motorboat moving through the water. The sound source is the boat's engine.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Helicopter",
+   "Aircraft",
+   "Boat",
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Helicopter"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bakery_morning.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds of cooking, tearing, a chink or clink, and a door indicate specific actions and object interactions occurring off-screen or obscured from view.",
+  "description": "Based on the image, a viewer would learn that the sound is the sharp, rhythmic *chopping* or *mincing* of a knife against a hard wooden surface. The sound source is a chef's knife cutting vegetables (like onions, peppers, and herbs) on a wooden cutting board. Based on the visual evidence, here is the description for the deaf viewer:\n\nThe image shows a dried, wrinkled fruit, likely a date, which suggests the sound is a dry, brittle **crunch** or **snap** as the hard exterior breaks. The image shows a smiling young child, indicating that the sound is likely a happy, high-pitched giggle or laugh from a child.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Cooking",
+   "Tearing",
+   "Chink, clink",
+   "Door"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "as_explosion_XJ8lc3I6.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds of a gunshot, explosion, and gasp confirm the violent events and the character's reaction, while the sigh adds a layer of emotional distress not visible in the footage.",
+  "description": "Based on the image of the firearm, a viewer would learn that the sound is a loud, sharp, and percussive **gunshot** (or the sound of a rifle being fired). The specific sound source is a **rifle** (which appears to be a custom or modified AR-15 style rifle). The image depicts a man with a furrowed brow and a tense, scrunched facial expression, indicating that the accompanying sound is likely a sharp, unpleasant, or startling noise, such as a loud bang, a screech, or a sudden, jarring impact. Based on the image provided, here is the description for a deaf viewer:\n\nThe image indicates a sudden, loud, and explosive sound, likely caused by a firecracker or small bomb.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Gunshot",
+   "Sigh",
+   "Explosion",
+   "Gasp"
+  ],
+  "visible": [
+   "Fire",
+   "Gunshot",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+  "system": "blind_a2i",
+  "reference": "The sound of water indicates the presence of a water source, such as a stream, tap, or rain, which is not visible on the screen.",
+  "description": "Based on the visual of a thin, splashing liquid, a viewer would learn that the sound is a sharp, wet, and brief \"splash\" or \"splosh.\" The sound source is a liquid, such as water or a thin sauce, hitting a surface or being poured.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_funeral_rain_scene.mp4",
+  "system": "blind_a2i",
+  "reference": "The sound of rain indicates that it is raining outside, a detail not visible in the current shot.",
+  "description": "The image shows water droplets on a surface, which indicates the sound source is **rain**. A viewer would learn that the accompanying sound is the pattering or dripping of rain.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_barbershop.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds indicate the presence of an electric shaver or razor in use, accompanied by a background mains hum and buzz, which are not visible on the screen.",
+  "description": "This image displays a spectrogram, which is a visual representation of the spectrum of frequencies of a signal as it varies with time. The sound source is likely a human voice or a musical instrument, as indicated by the distinct horizontal bands (formants or harmonics) and their changes over time, which are characteristic of voiced speech or pitched musical notes. Based on the image of the electric shaver, a viewer would learn that the sound is the high-pitched, continuous whirring or buzzing noise produced by the motor and oscillating blades of an electric shaver in operation. The image depicts a hyena, indicating that the sound is its characteristic vocalization, often described as a cackling or laughing bark.",
+  "n_augmentations": 4,
+  "sounds": [
+   "Mains hum",
+   "Electric shaver, electric razor",
+   "Hum",
+   "Buzz"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "wc_korean_thriller.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds of footsteps, a horse, glass, and birds provide auditory context for the environment and actions that are not visible on screen, where only a vehicle and a gunshot are depicted.",
+  "description": "This image is a blank, light gray square that contains no visual information, so it provides no clues about the sound source or its characteristics. This image displays a spectrogram, which is a visual representation of the spectrum of frequencies of a signal as it varies with time. The sound source is likely a human voice or a musical instrument, as indicated by the distinct horizontal bands (formants or harmonics) and their changes over time, which are characteristic of voiced speech or pitched musical notes. Based on the image of a horse's head, a viewer would learn that the sound is a **neigh** (or whinny) produced by a **horse**.",
+  "n_augmentations": 5,
+  "sounds": [
+   "Footsteps",
+   "Vehicle",
+   "Horse",
+   "Glass",
+   "Bird"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+  "system": "blind_a2i",
+  "reference": "The sounds reveal the presence of a dog and a person snickering, which are not visible on screen.",
+  "description": "The image indicates that the sound is a dog barking, as it features a Shiba Inu dog looking directly at the viewer. The image shows a dog with its head resting on the ground, which suggests the sound source is a dog, likely making a low, rumbling growl or a deep, resonant bark.",
+  "n_augmentations": 2,
+  "sounds": [
+   "Dog",
+   "Snicker"
+  ],
+  "visible": [
+   "Crowd",
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "london_protest_01.mp4",
+  "system": "blind_a2i",
+  "reference": "The viewer hears the sound of a vehicle, which is not currently visible on screen.",
+  "description": "The image shows a line of cars with their red brake lights illuminated, indicating that the sound source is the screech of tires or the honking of car horns from traffic congestion.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Saxophone",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_church_bell_pJRAWkLM.mp4",
+  "system": "blind_a2i",
+  "reference": "The audible ringing of the bell confirms that the visible bell is actively sounding, providing auditory confirmation of the event that the static visual of the object alone does not convey.",
+  "description": "Based on the image, a viewer would learn that the sound is the resonant, metallic ringing of a **bell**.",
+  "n_augmentations": 1,
+  "sounds": [
+   "Bell"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_ambulance_(siren)_-yPSgCn.mp4",
+  "system": "audio_caption",
+  "reference": "The siren and vehicle sounds indicate the presence of an emergency vehicle or traffic noise that is not visually depicted on screen.",
+  "description": "The soundtrack contains: Siren, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Train",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "as_glass_EiqYND8G.mp4",
+  "system": "audio_caption",
+  "reference": "A hearing viewer would hear the sound of a tambourine, which is not visible on screen.",
+  "description": "The soundtrack contains: Tambourine",
+  "n_augmentations": 0,
+  "sounds": [
+   "Tambourine"
+  ],
+  "visible": [
+   "Vehicle"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_mountain_stream.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "The soundtrack contains: Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [
+   "Water"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_jungle_hike.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds reveal the presence of an owl, bird, sheep, and insects, which are not visible on the screen.",
+  "description": "The soundtrack contains: Owl, Bird, Buzz, Sheep, Hoot, Insect",
+  "n_augmentations": 0,
+  "sounds": [
+   "Owl",
+   "Bird",
+   "Buzz",
+   "Sheep",
+   "Hoot",
+   "Insect"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "ly_traffic_noise_roadway_nois_G5bAKWq.mp4",
+  "system": "audio_caption",
+  "reference": "The audible vehicle sounds confirm the presence and activity of the vehicles already visible on screen, adding no new information beyond the picture.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Gunshot",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_airport_terminal.mp4",
+  "system": "audio_caption",
+  "reference": "nothing beyond the picture",
+  "description": "no notable non-speech sound",
+  "n_augmentations": 0,
+  "sounds": [],
+  "visible": [
+   "Crowd"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_police_car_siren_WEROVWDp.mp4",
+  "system": "audio_caption",
+  "reference": "The siren sound indicates the presence of an emergency vehicle, which is not explicitly visible on screen.",
+  "description": "The soundtrack contains: Siren, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren",
+   "Vehicle"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "ly_helicopter_-v62cK1.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds of a vehicle and a helicopter indicate the presence of these additional off-screen or background sources, which are not visible in the picture.",
+  "description": "The soundtrack contains: Vehicle, Helicopter, Aircraft",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle",
+   "Helicopter",
+   "Aircraft"
+  ],
+  "visible": [
+   "Aircraft"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "un_police_car_siren_-lyPnABQ.mp4",
+  "system": "audio_caption",
+  "reference": "The audible siren confirms the active presence of the emergency vehicle visible on screen.",
+  "description": "The soundtrack contains: Siren",
+  "n_augmentations": 0,
+  "sounds": [
+   "Siren"
+  ],
+  "visible": [
+   "Crowd",
+   "Siren",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "oc_pov_dry_leaves.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds of footsteps, chewing, and mastication indicate that a person is walking and eating, information not visible in the empty scene.",
+  "description": "The soundtrack contains: Footsteps, Chewing, mastication",
+  "n_augmentations": 0,
+  "sounds": [
+   "Footsteps",
+   "Chewing, mastication"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "un_airplane_flyby_1FOKvagR.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds of a boat and a vehicle indicate the presence of these specific sources, which are not currently visible on screen.",
+  "description": "The soundtrack contains: Helicopter, Aircraft, Boat, Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Helicopter",
+   "Aircraft",
+   "Boat",
+   "Vehicle"
+  ],
+  "visible": [
+   "Aircraft",
+   "Bird",
+   "Helicopter"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_bakery_morning.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds of cooking, tearing, a chink or clink, and a door indicate specific actions and object interactions occurring off-screen or obscured from view.",
+  "description": "The soundtrack contains: Cooking, Tearing, Chink, clink, Door",
+  "n_augmentations": 0,
+  "sounds": [
+   "Cooking",
+   "Tearing",
+   "Chink, clink",
+   "Door"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "as_explosion_XJ8lc3I6.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds of a gunshot, explosion, and gasp confirm the violent events and the character's reaction, while the sigh adds a layer of emotional distress not visible in the footage.",
+  "description": "The soundtrack contains: Gunshot, Sigh, Explosion, Gasp",
+  "n_augmentations": 0,
+  "sounds": [
+   "Gunshot",
+   "Sigh",
+   "Explosion",
+   "Gasp"
+  ],
+  "visible": [
+   "Fire",
+   "Gunshot",
+   "Train"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_youtube_skxtz9foauw_0.mp4",
+  "system": "audio_caption",
+  "reference": "The sound of water indicates the presence of a water source, such as a stream, tap, or rain, which is not visible on the screen.",
+  "description": "The soundtrack contains: Water",
+  "n_augmentations": 0,
+  "sounds": [
+   "Water"
+  ],
+  "visible": [],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "mv_funeral_rain_scene.mp4",
+  "system": "audio_caption",
+  "reference": "The sound of rain indicates that it is raining outside, a detail not visible in the current shot.",
+  "description": "The soundtrack contains: Rain",
+  "n_augmentations": 0,
+  "sounds": [
+   "Rain"
+  ],
+  "visible": [],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "b3_barbershop.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds indicate the presence of an electric shaver or razor in use, accompanied by a background mains hum and buzz, which are not visible on the screen.",
+  "description": "The soundtrack contains: Mains hum, Electric shaver, electric razor, Hum, Buzz",
+  "n_augmentations": 0,
+  "sounds": [
+   "Mains hum",
+   "Electric shaver, electric razor",
+   "Hum",
+   "Buzz"
+  ],
+  "visible": [],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ },
+ {
+  "clip": "wc_korean_thriller.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds of footsteps, a horse, glass, and birds provide auditory context for the environment and actions that are not visible on screen, where only a vehicle and a gunshot are depicted.",
+  "description": "The soundtrack contains: Footsteps, Vehicle, Horse, Glass, Bird",
+  "n_augmentations": 0,
+  "sounds": [
+   "Footsteps",
+   "Vehicle",
+   "Horse",
+   "Glass",
+   "Bird"
+  ],
+  "visible": [
+   "Gunshot",
+   "Vehicle"
+  ],
+  "human_tag": "mixed",
+  "scenario": "mixed_audio"
+ },
+ {
+  "clip": "b3_ia_theveryremarkableyamatofamil_0.mp4",
+  "system": "audio_caption",
+  "reference": "The sounds reveal the presence of a dog and a person snickering, which are not visible on screen.",
+  "description": "The soundtrack contains: Dog, Snicker",
+  "n_augmentations": 0,
+  "sounds": [
+   "Dog",
+   "Snicker"
+  ],
+  "visible": [
+   "Crowd",
+   "Glass"
+  ],
+  "human_tag": "no_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "london_protest_01.mp4",
+  "system": "audio_caption",
+  "reference": "The viewer hears the sound of a vehicle, which is not currently visible on screen.",
+  "description": "The soundtrack contains: Vehicle",
+  "n_augmentations": 0,
+  "sounds": [
+   "Vehicle"
+  ],
+  "visible": [
+   "Crowd",
+   "Saxophone",
+   "Siren"
+  ],
+  "human_tag": "seen_ambient",
+  "scenario": "ambient_environmental"
+ },
+ {
+  "clip": "as_church_bell_pJRAWkLM.mp4",
+  "system": "audio_caption",
+  "reference": "The audible ringing of the bell confirms that the visible bell is actively sounding, providing auditory confirmation of the event that the static visual of the object alone does not convey.",
+  "description": "The soundtrack contains: Bell",
+  "n_augmentations": 0,
+  "sounds": [
+   "Bell"
+  ],
+  "visible": [
+   "Bell",
+   "Crowd"
+  ],
+  "human_tag": "unseen_ambient",
+  "scenario": "acoustic_event_or_ambient"
+ }
+]

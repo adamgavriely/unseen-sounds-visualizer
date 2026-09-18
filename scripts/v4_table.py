@@ -18,6 +18,9 @@ sys.path.insert(0, str(_ROOT))
 from scripts.paired_stats import load, boot_ci, SILENT_RIGHT
 
 ROWS = [("v3_grounded", "v3 (Mistral judge, Qwen2.5-VL-7B describer) — the thesis row"),
+        ("v3_grounded_rubric", "v3, rubric-enforced judge"),
+        ("v3_q38_grounded_rubric", "v3 panels, v4 pair, rubric-enforced"),
+        ("v4b_grounded_rubric", "v4b, rubric-enforced"),
         ("v3_q38_grounded", "v3 panels, v4 evaluation pair"),
         ("v4a_grounded", "detector arm: PSED + Qwen2.5-VL-7B"),
         ("v4b_grounded", "+ Qwen3.8-27B gate (stage 5); BEATs stays"),

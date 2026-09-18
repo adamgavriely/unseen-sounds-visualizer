@@ -17,6 +17,40 @@
   "cost": {}
  },
  {
+  "tag": "v3_grounded_rubric",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3 + rubric cap",
+  "means": {
+   "proposed": 2.83,
+   "blind_a2i": 2.73,
+   "audio_caption": 2.6
+  },
+  "gated_minus_blind": 0.1,
+  "ci": [
+   -0.09,
+   0.3
+  ],
+  "oracle": 3.62,
+  "cost": null
+ },
+ {
+  "tag": "v3_q38_grounded_rubric",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3 + rubric cap",
+  "means": {
+   "proposed": 2.88,
+   "blind_a2i": 2.8,
+   "audio_caption": 2.67
+  },
+  "gated_minus_blind": 0.08,
+  "ci": [
+   -0.15,
+   0.31
+  ],
+  "oracle": 3.74,
+  "cost": null
+ },
+ {
   "tag": "v3_q38_grounded",
   "n": 100,
   "judge": "mistralai/Mistral-7B-Instruct-v0.3",

@@ -152,6 +152,9 @@ VLM_VISIBILITY = True
 # off screen. A siren over a whole clip is off screen while the car approaches and on
 # screen once it arrives.
 VISIBILITY_STRETCH = 5.0
+# How the three visibility votes per stretch combine: "majority" (v3) or "unanimous".
+# Set once on the dev split by benchmark/gate_dev_sweep.py, never on test.
+VISIBILITY_RULE = "majority"
 # When the detector gives no sub-label, the frames from the sound's own moment are asked
 # what KIND of that sound it is -- a crowd chanting, not a crowd cheering -- with the
 # label fixed in the question and "unknown" as an answer. The answer must still name the

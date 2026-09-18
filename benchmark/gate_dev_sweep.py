@@ -57,6 +57,8 @@ SHOULD_SHOW = {"unseen_ambient", "mixed"}
 SILENT_RIGHT = {"seen_ambient", "no_ambient"}
 COST_MISS = 4.0                  # rubric: withheld picture scores 0 where one would score up to 4
 COST_REDUNDANT = 1.0             # rubric: a redundant picture scores ~3 ("minor omission") where silence scores 4
+# v4 (docs/prereg_v4.md, "Judge v4"): the rubric-enforced judge caps a redundant picture at 2,
+# so the sweep for the v4 gate uses COST_REDUNDANT = 2 (set by the job via the module attribute)
 
 
 def _find_clip(basename: str):
