@@ -51,6 +51,40 @@
   "cost": null
  },
  {
+  "tag": "v4b_grounded_rubric",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3 + rubric cap",
+  "means": {
+   "proposed": 2.85,
+   "blind_a2i": 2.75,
+   "audio_caption": 2.66
+  },
+  "gated_minus_blind": 0.1,
+  "ci": [
+   -0.13,
+   0.33
+  ],
+  "oracle": 3.7,
+  "cost": null
+ },
+ {
+  "tag": "v4ab_grounded_rubric",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3 + rubric cap",
+  "means": {
+   "proposed": 2.88,
+   "blind_a2i": 2.67,
+   "audio_caption": 2.71
+  },
+  "gated_minus_blind": 0.21,
+  "ci": [
+   -0.04,
+   0.44
+  ],
+  "oracle": 3.61,
+  "cost": null
+ },
+ {
   "tag": "v3_q38_grounded",
   "n": 100,
   "judge": "mistralai/Mistral-7B-Instruct-v0.3",
@@ -65,6 +99,40 @@
    0.14
   ],
   "oracle": 3.75,
+  "cost": null
+ },
+ {
+  "tag": "v4b_grounded",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3",
+  "means": {
+   "proposed": 3.28,
+   "blind_a2i": 3.38,
+   "audio_caption": 2.94
+  },
+  "gated_minus_blind": -0.1,
+  "ci": [
+   -0.31,
+   0.11
+  ],
+  "oracle": 3.7,
+  "cost": null
+ },
+ {
+  "tag": "v4ab_grounded",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3",
+  "means": {
+   "proposed": 3.12,
+   "blind_a2i": 3.27,
+   "audio_caption": 3.0
+  },
+  "gated_minus_blind": -0.15,
+  "ci": [
+   -0.36,
+   0.040249999999996365
+  ],
+  "oracle": 3.67,
   "cost": null
  }
 ]

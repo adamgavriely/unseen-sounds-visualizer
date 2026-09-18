@@ -1,0 +1,3842 @@
+{
+ "summary": {
+  "n": 252,
+  "agreement": 0.6468253968253969,
+  "tp": 64,
+  "fn": 61,
+  "fp": 28,
+  "tn": 99,
+  "per_class": {
+   "Musical instrument": [
+    11,
+    17
+   ],
+   "Music": [
+    11,
+    22
+   ],
+   "Male speech, man speaking": [
+    14,
+    22
+   ],
+   "Domestic sounds": [
+    11,
+    22
+   ],
+   "Knock": [
+    11,
+    18
+   ],
+   "Water tap, faucet": [
+    14,
+    22
+   ],
+   "Walk, footsteps": [
+    15,
+    21
+   ],
+   "Clapping": [
+    17,
+    22
+   ],
+   "Telephone": [
+    17,
+    21
+   ],
+   "Female speech, woman speaking": [
+    10,
+    22
+   ],
+   "Laughter": [
+    13,
+    21
+   ],
+   "Door, open or close": [
+    19,
+    22
+   ]
+  }
+ },
+ "records": [
+  {
+   "key": [
+    "fold4_room8_mix007_deg046_start0176",
+    9,
+    3.9
+   ],
+   "clip": "fold4_room8_mix007_deg046_start0176",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 3.9,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "I'll go with \"wooden instrument\""
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg122_start0801",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room2_mix005_deg122_start0801",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "But"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg161_start0816",
+    1,
+    3.9
+   ],
+   "clip": "fold4_room10_mix009_deg161_start0816",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 3.9,
+   "end": 4.4,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "But wait"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg025_start0593",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg025_start0593",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "The white appliance with black"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg138_start0529",
+    12,
+    2.7
+   ],
+   "clip": "fold4_room15_mix009_deg138_start0529",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 2.7,
+   "end": 3.3,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the blue door"
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg129_start0905",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix007_deg129_start0905",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg355_start0200",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix008_deg355_start0200",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 0.7,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me consider the typical"
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg148_start1377",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room8_mix003_deg148_start1377",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "drum"
+  },
+  {
+   "key": [
+    "fold4_room8_mix004_deg139_start0563",
+    1,
+    0.2
+   ],
+   "clip": "fold4_room8_mix004_deg139_start0563",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.2,
+   "end": 1.2,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg278_start1309",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix004_deg278_start1309",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg176_start0240",
+    12,
+    3.9
+   ],
+   "clip": "fold4_room16_mix010_deg176_start0240",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 3.9,
+   "end": 4.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg239_start0155",
+    6,
+    0.3
+   ],
+   "clip": "fold4_room16_mix010_deg239_start0155",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.3,
+   "end": 4.1,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room8_mix002_deg246_start1540",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room8_mix002_deg246_start1540",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "keyboard"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg295_start0731",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room2_mix005_deg295_start0731",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 0.9,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "The lavalier mic is"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg237_start0119",
+    12,
+    0.4
+   ],
+   "clip": "fold4_room16_mix005_deg237_start0119",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 0.4,
+   "end": 1.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg078_start0621",
+    2,
+    0.7
+   ],
+   "clip": "fold4_room16_mix013_deg078_start0621",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.7,
+   "end": 1.4,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "But wait"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg271_start2026",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room15_mix009_deg271_start2026",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room15_mix004_deg018_start1748",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix004_deg018_start1748",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "guitar"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg092_start0987",
+    3,
+    2.8
+   ],
+   "clip": "fold4_room8_mix001_deg092_start0987",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 2.8,
+   "end": 3.3,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg010_start1271",
+    2,
+    1.4
+   ],
+   "clip": "fold4_room8_mix007_deg010_start1271",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 1.4,
+   "end": 3.4,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person's hands"
+  },
+  {
+   "key": [
+    "fold4_room10_mix001_deg048_start0433",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room10_mix001_deg048_start0433",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 0.7,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The person's hands"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg015_start1195",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room16_mix001_deg015_start1195",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "Given the person"
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg079_start0230",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room10_mix005_deg079_start0230",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 4.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the phone on the couch"
+  },
+  {
+   "key": [
+    "fold4_room15_mix006_deg015_start1950",
+    0,
+    2.9
+   ],
+   "clip": "fold4_room15_mix006_deg015_start1950",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 2.9,
+   "end": 4.5,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg357_start0574",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix004_deg357_start0574",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let's think about"
+  },
+  {
+   "key": [
+    "fold4_room8_mix002_deg355_start1201",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room8_mix002_deg355_start1201",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg027_start0739",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg027_start0739",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the water tap"
+  },
+  {
+   "key": [
+    "fold4_room8_mix004_deg139_start0563",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room8_mix004_deg139_start0563",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    3.6
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 3.6,
+   "end": 4.5,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg025_start4080",
+    10,
+    1.6
+   ],
+   "clip": "fold4_room15_mix010_deg025_start4080",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 1.6,
+   "end": 3.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "the faucet"
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg098_start1246",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix004_deg098_start1246",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg351_start0097",
+    12,
+    2.6
+   ],
+   "clip": "fold4_room16_mix005_deg351_start0097",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 2.6,
+   "end": 3.2,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg317_start1699",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room2_mix005_deg317_start1699",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Given the scene is"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg323_start0738",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg323_start0738",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 3.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg034_start0120",
+    6,
+    4.1
+   ],
+   "clip": "fold4_room16_mix013_deg034_start0120",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 4.1,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the woman"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg179_start0875",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg179_start0875",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let's think about the dataset"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg023_start0277",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg023_start0277",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg074_start0112",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room8_mix008_deg074_start0112",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me think about"
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg137_start0692",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix014_deg137_start0692",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg253_start1022",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg253_start1022",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "clock"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg145_start0693",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room16_mix009_deg145_start0693",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 2.6,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg089_start1059",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room8_mix007_deg089_start1059",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "But maybe they expect"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg232_start0142",
+    10,
+    3.0
+   ],
+   "clip": "fold4_room16_mix001_deg232_start0142",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 3.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg071_start0550",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg071_start0550",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 2.1,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the woman in black"
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg089_start0363",
+    4,
+    3.9
+   ],
+   "clip": "fold4_room15_mix007_deg089_start0363",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 3.9,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg141_start0352",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg141_start0352",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 0.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Wait"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg120_start1470",
+    0,
+    3.0
+   ],
+   "clip": "fold4_room8_mix006_deg120_start1470",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 3.0,
+   "end": 4.5,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "I think \"the man"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg145_start0110",
+    5,
+    0.2
+   ],
+   "clip": "fold4_room16_mix010_deg145_start0110",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.2,
+   "end": 1.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg082_start0750",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg082_start0750",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 2.7,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "the blue door"
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg342_start1067",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix003_deg342_start1067",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg338_start0759",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg338_start0759",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg039_start2017",
+    2,
+    0.8
+   ],
+   "clip": "fold4_room8_mix003_deg039_start2017",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.8,
+   "end": 4.8,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person's hands"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg190_start0588",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg190_start0588",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg050_start1007",
+    3,
+    0.8
+   ],
+   "clip": "fold4_room8_mix001_deg050_start1007",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.8,
+   "end": 1.3,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "the mobile phone"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg229_start2571",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix010_deg229_start2571",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 1.5,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "electric guitar"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg120_start0299",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix004_deg120_start0299",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg312_start0159",
+    10,
+    1.3
+   ],
+   "clip": "fold4_room16_mix001_deg312_start0159",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 1.3,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "the faucet"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg025_start4080",
+    10,
+    3.5
+   ],
+   "clip": "fold4_room15_mix010_deg025_start4080",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 3.5,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "water tap"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg120_start1470",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room8_mix006_deg120_start1470",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me double check there's"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg023_start0277",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg023_start0277",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 3.3,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the door"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg345_start0106",
+    6,
+    2.9
+   ],
+   "clip": "fold4_room16_mix001_deg345_start0106",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 2.9,
+   "end": 3.9,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg242_start1098",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room2_mix005_deg242_start1098",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg259_start5585",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room15_mix010_deg259_start5585",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 4.1,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the woman"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg146_start0154",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix009_deg146_start0154",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 1.4,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg356_start0862",
+    3,
+    1.3
+   ],
+   "clip": "fold4_room2_mix004_deg356_start0862",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 1.3,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the smartphone on the table"
+  },
+  {
+   "key": [
+    "fold4_room2_mix002_deg196_start1063",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room2_mix002_deg196_start1063",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me consider the dataset's"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg122_start0006",
+    2,
+    3.7
+   ],
+   "clip": "fold4_room16_mix013_deg122_start0006",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 3.7,
+   "end": 4.2,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "So I need to determine"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg101_start0022",
+    2,
+    2.1
+   ],
+   "clip": "fold4_room16_mix013_deg101_start0022",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 2.1,
+   "end": 2.6,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person's hands"
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg091_start1345",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix008_deg091_start1345",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the yellow door"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg239_start2350",
+    4,
+    2.3
+   ],
+   "clip": "fold4_room2_mix003_deg239_start2350",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 2.3,
+   "end": 3.5,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg019_start0527",
+    12,
+    2.9
+   ],
+   "clip": "fold4_room15_mix009_deg019_start0527",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 2.9,
+   "end": 3.5,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Wait"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg282_start0384",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room2_mix005_deg282_start0384",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 2.6,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "In a typical interview/podcast"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg259_start1256",
+    7,
+    2.7
+   ],
+   "clip": "fold4_room16_mix004_deg259_start1256",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 2.7,
+   "end": 4.3,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the green door"
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg144_start1620",
+    0,
+    1.7
+   ],
+   "clip": "fold4_room2_mix004_deg144_start1620",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 1.7,
+   "end": 4.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "The purple"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg056_start0588",
+    12,
+    4.2
+   ],
+   "clip": "fold4_room15_mix009_deg056_start0588",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 4.2,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg247_start1016",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg247_start1016",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 2.7,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person in red hoodie"
+  },
+  {
+   "key": [
+    "fold4_room15_mix001_deg297_start0950",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix001_deg297_start0950",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg323_start0025",
+    5,
+    2.6
+   ],
+   "clip": "fold4_room16_mix004_deg323_start0025",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 2.6,
+   "end": 3.1,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg092_start0987",
+    3,
+    4.3
+   ],
+   "clip": "fold4_room8_mix001_deg092_start0987",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 4.3,
+   "end": 4.8,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg147_start0544",
+    12,
+    1.2
+   ],
+   "clip": "fold4_room15_mix009_deg147_start0544",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 1.2,
+   "end": 1.8,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "What could that be?"
+  },
+  {
+   "key": [
+    "fold4_room10_mix007_deg207_start0172",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix007_deg207_start0172",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    0.9
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 0.9,
+   "end": 1.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg161_start0816",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg161_start0816",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    3.3
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 3.3,
+   "end": 4.1,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg315_start0227",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix001_deg315_start0227",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 2.6,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "water tap"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg289_start0115",
+    12,
+    0.8
+   ],
+   "clip": "fold4_room16_mix005_deg289_start0115",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 0.8,
+   "end": 1.4,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "So the woman is entering"
+  },
+  {
+   "key": [
+    "fold4_room8_mix002_deg057_start0407",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room8_mix002_deg057_start0407",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room8_mix007_deg119_start1259",
+    2,
+    2.6
+   ],
+   "clip": "fold4_room8_mix007_deg119_start1259",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 2.6,
+   "end": 4.6,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man in black"
+  },
+  {
+   "key": [
+    "fold4_room2_mix002_deg144_start2103",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room2_mix002_deg144_start2103",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg090_start1732",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room2_mix003_deg090_start1732",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "the person on the right"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg054_start1115",
+    3,
+    1.5
+   ],
+   "clip": "fold4_room8_mix001_deg054_start1115",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 1.5,
+   "end": 2.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg016_start2318",
+    0,
+    1.7
+   ],
+   "clip": "fold4_room8_mix009_deg016_start2318",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 1.7,
+   "end": 2.7,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "This is tough"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg029_start0285",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg029_start0285",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 2.5,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the door"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg105_start0536",
+    2,
+    3.2
+   ],
+   "clip": "fold4_room16_mix013_deg105_start0536",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 3.2,
+   "end": 4.1,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "I recall similar tasks where"
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg075_start0471",
+    3,
+    2.6
+   ],
+   "clip": "fold4_room2_mix001_deg075_start0471",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 2.6,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg114_start2039",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room8_mix003_deg114_start2039",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 2.6,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person on the left"
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg344_start0598",
+    9,
+    0.1
+   ],
+   "clip": "fold4_room15_mix007_deg344_start0598",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.1,
+   "end": 1.5,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg338_start0759",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg338_start0759",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 1.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg103_start0247",
+    1,
+    0.9
+   ],
+   "clip": "fold4_room16_mix009_deg103_start0247",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.9,
+   "end": 4.2,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person in red"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg120_start1470",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room8_mix006_deg120_start1470",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "But hold"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg111_start0435",
+    1,
+    3.0
+   ],
+   "clip": "fold4_room8_mix006_deg111_start0435",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 3.0,
+   "end": 4.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Wait"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg239_start2350",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room2_mix003_deg239_start2350",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 2.3,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg186_start0859",
+    10,
+    4.2
+   ],
+   "clip": "fold4_room16_mix013_deg186_start0859",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 4.2,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix002_deg127_start0501",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix002_deg127_start0501",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "I'll write reasoning then final"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg335_start1025",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room2_mix003_deg335_start1025",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the woman in white"
+  },
+  {
+   "key": [
+    "fold4_room10_mix003_deg206_start0361",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix003_deg206_start0361",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "speaker"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg208_start0050",
+    6,
+    0.7
+   ],
+   "clip": "fold4_room15_mix010_deg208_start0050",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.7,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg054_start1115",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room8_mix001_deg054_start1115",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 0.5,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the smartphone on the table"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg025_start0593",
+    4,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg025_start0593",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 0.0,
+   "end": 0.7,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The right person in frame"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg311_start1184",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room8_mix006_deg311_start1184",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg114_start2039",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room8_mix003_deg114_start2039",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 2.6,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person on the left"
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg331_start1399",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix008_deg331_start1399",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 2.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix007_deg127_start0905",
+    4,
+    2.0
+   ],
+   "clip": "fold4_room10_mix007_deg127_start0905",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 2.0,
+   "end": 3.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Wait"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg295_start0731",
+    0,
+    1.4
+   ],
+   "clip": "fold4_room2_mix005_deg295_start0731",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 1.4,
+   "end": 4.4,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "Let me consider the head"
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg153_start0564",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room2_mix001_deg153_start0564",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 0.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg256_start0187",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix008_deg256_start0187",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 2.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg103_start0767",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg103_start0767",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 1.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "the blue door"
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg098_start1246",
+    6,
+    2.9
+   ],
+   "clip": "fold4_room10_mix004_deg098_start1246",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 2.9,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg089_start0363",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room15_mix007_deg089_start0363",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 3.9,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg267_start0539",
+    12,
+    1.7
+   ],
+   "clip": "fold4_room15_mix009_deg267_start0539",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 1.7,
+   "end": 2.3,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg071_start0550",
+    2,
+    1.8
+   ],
+   "clip": "fold4_room16_mix013_deg071_start0550",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 1.8,
+   "end": 2.7,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg307_start0399",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room16_mix005_deg307_start0399",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 3.4,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "So the sequence might be"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    4,
+    0.7
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 0.7,
+   "end": 3.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix007_deg189_start0982",
+    2,
+    0.8
+   ],
+   "clip": "fold4_room10_mix007_deg189_start0982",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.8,
+   "end": 1.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg222_start0979",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg222_start0979",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 0.5,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg289_start0980",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg289_start0980",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Which one? The sound"
+  },
+  {
+   "key": [
+    "fold4_room15_mix005_deg342_start1214",
+    7,
+    0.2
+   ],
+   "clip": "fold4_room15_mix005_deg342_start1214",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.2,
+   "end": 3.7,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg229_start2571",
+    9,
+    2.5
+   ],
+   "clip": "fold4_room15_mix010_deg229_start2571",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 2.5,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "Guitar"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg103_start0247",
+    0,
+    3.7
+   ],
+   "clip": "fold4_room16_mix009_deg103_start0247",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 3.7,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person in red shirt"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg225_start0023",
+    5,
+    2.8
+   ],
+   "clip": "fold4_room16_mix004_deg225_start0023",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 2.8,
+   "end": 3.3,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "the clock"
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg281_start0216",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room10_mix005_deg281_start0216",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let's think about what's plausible"
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg303_start0299",
+    4,
+    1.1
+   ],
+   "clip": "fold4_room8_mix008_deg303_start0299",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 1.1,
+   "end": 2.1,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg282_start0384",
+    0,
+    3.3
+   ],
+   "clip": "fold4_room2_mix005_deg282_start0384",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 3.3,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "The person on the left"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg332_start0352",
+    2,
+    3.7
+   ],
+   "clip": "fold4_room16_mix013_deg332_start0352",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 3.7,
+   "end": 4.2,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg161_start0816",
+    0,
+    1.4
+   ],
+   "clip": "fold4_room10_mix009_deg161_start0816",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 1.4,
+   "end": 1.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Given the ambiguity"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg218_start0288",
+    4,
+    4.0
+   ],
+   "clip": "fold4_room16_mix013_deg218_start0288",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 4.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg082_start0750",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg082_start0750",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the faucet"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    1,
+    0.9
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.9,
+   "end": 2.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg233_start0249",
+    12,
+    3.0
+   ],
+   "clip": "fold4_room16_mix010_deg233_start0249",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 3.0,
+   "end": 3.7,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg105_start1301",
+    7,
+    0.9
+   ],
+   "clip": "fold4_room10_mix004_deg105_start1301",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.9,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the door"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg086_start1024",
+    3,
+    0.6
+   ],
+   "clip": "fold4_room8_mix001_deg086_start1024",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.6,
+   "end": 1.1,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg335_start0105",
+    1,
+    1.3
+   ],
+   "clip": "fold4_room2_mix003_deg335_start0105",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 1.3,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "I think"
+  },
+  {
+   "key": [
+    "fold4_room15_mix002_deg149_start1323",
+    9,
+    2.5
+   ],
+   "clip": "fold4_room15_mix002_deg149_start1323",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 2.5,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg038_start0654",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix014_deg038_start0654",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "coffee machine"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg080_start0237",
+    12,
+    4.2
+   ],
+   "clip": "fold4_room16_mix010_deg080_start0237",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 4.2,
+   "end": 4.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg173_start0223",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix001_deg173_start0223",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 3.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg218_start0288",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg218_start0288",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 2.4,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg162_start0519",
+    12,
+    3.7
+   ],
+   "clip": "fold4_room15_mix009_deg162_start0519",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 3.7,
+   "end": 4.3,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg297_start0890",
+    9,
+    1.1
+   ],
+   "clip": "fold4_room15_mix007_deg297_start0890",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 1.1,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "I'll zoom into the description"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg034_start0120",
+    0,
+    2.4
+   ],
+   "clip": "fold4_room16_mix013_deg034_start0120",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 2.4,
+   "end": 2.9,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the woman"
+  },
+  {
+   "key": [
+    "fold4_room15_mix007_deg089_start0363",
+    0,
+    2.7
+   ],
+   "clip": "fold4_room15_mix007_deg089_start0363",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 2.7,
+   "end": 3.5,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg063_start1126",
+    3,
+    0.4
+   ],
+   "clip": "fold4_room8_mix001_deg063_start1126",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.4,
+   "end": 0.9,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg103_start0247",
+    4,
+    0.0
+   ],
+   "clip": "fold4_room16_mix009_deg103_start0247",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 0.0,
+   "end": 1.8,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person in red"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg113_start0154",
+    10,
+    1.8
+   ],
+   "clip": "fold4_room16_mix001_deg113_start0154",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 1.8,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg323_start0181",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix004_deg323_start0181",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg230_start0188",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room10_mix005_deg230_start0188",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg231_start1354",
+    1,
+    0.1
+   ],
+   "clip": "fold4_room8_mix009_deg231_start1354",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.1,
+   "end": 4.1,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room8_mix008_deg226_start1604",
+    2,
+    0.1
+   ],
+   "clip": "fold4_room8_mix008_deg226_start1604",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.1,
+   "end": 2.6,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person's hands"
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg084_start0183",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room10_mix005_deg084_start0183",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "cell phone"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg039_start1058",
+    1,
+    0.7
+   ],
+   "clip": "fold4_room8_mix006_deg039_start1058",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.7,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg089_start1354",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix004_deg089_start1354",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 1.6,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "the door"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg230_start4794",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix010_deg230_start4794",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 3.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    1,
+    4.1
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 4.1,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me think about"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg300_start0100",
+    6,
+    3.5
+   ],
+   "clip": "fold4_room16_mix001_deg300_start0100",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 3.5,
+   "end": 4.5,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me think about which"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg287_start0152",
+    10,
+    2.0
+   ],
+   "clip": "fold4_room16_mix001_deg287_start0152",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 2.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "water tap"
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg252_start0315",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix008_deg252_start0315",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the phone"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    6,
+    3.8
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 3.8,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg161_start0816",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg161_start0816",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 0.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me think about"
+  },
+  {
+   "key": [
+    "fold4_room15_mix004_deg149_start2192",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room15_mix004_deg149_start2192",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg201_start0325",
+    7,
+    3.3
+   ],
+   "clip": "fold4_room16_mix010_deg201_start0325",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 3.3,
+   "end": 4.8,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the green door"
+  },
+  {
+   "key": [
+    "fold4_room10_mix001_deg348_start1145",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix001_deg348_start1145",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the laptop"
+  },
+  {
+   "key": [
+    "fold4_room8_mix009_deg016_start2318",
+    1,
+    3.2
+   ],
+   "clip": "fold4_room8_mix009_deg016_start2318",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 3.2,
+   "end": 4.2,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me consider the possibility"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg015_start0981",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg015_start0981",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg019_start1402",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix008_deg019_start1402",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 2.3,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "the door"
+  },
+  {
+   "key": [
+    "fold4_room8_mix002_deg094_start1802",
+    4,
+    1.3
+   ],
+   "clip": "fold4_room8_mix002_deg094_start1802",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 1.3,
+   "end": 1.8,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "But the instruction says \"short"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg280_start0503",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg280_start0503",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "microwave"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg343_start0046",
+    6,
+    4.4
+   ],
+   "clip": "fold4_room16_mix009_deg343_start0046",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 4.4,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man in yellow cap"
+  },
+  {
+   "key": [
+    "fold4_room10_mix005_deg349_start0214",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room10_mix005_deg349_start0214",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg025_start0593",
+    0,
+    1.0
+   ],
+   "clip": "fold4_room16_mix010_deg025_start0593",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 1.0,
+   "end": 3.3,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me think"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg300_start0378",
+    6,
+    4.2
+   ],
+   "clip": "fold4_room16_mix001_deg300_start0378",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 4.2,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person in blue scrubs"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg335_start0105",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room2_mix003_deg335_start0105",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 0.5,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me think about"
+  },
+  {
+   "key": [
+    "fold4_room15_mix003_deg280_start1572",
+    10,
+    3.3
+   ],
+   "clip": "fold4_room15_mix003_deg280_start1572",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 3.3,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg306_start0468",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix004_deg306_start0468",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Wait"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    9,
+    0.3
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.3,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Let me think if there's"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg283_start0516",
+    12,
+    4.0
+   ],
+   "clip": "fold4_room15_mix009_deg283_start0516",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 4.0,
+   "end": 4.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Frame 3"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg332_start0352",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg332_start0352",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 0.9,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The person's hands"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg359_start0136",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix009_deg359_start0136",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 3.2,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "The water tap"
+  },
+  {
+   "key": [
+    "fold4_room10_mix003_deg102_start1303",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix003_deg102_start1303",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 4.2,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The door"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg195_start1002",
+    3,
+    1.3
+   ],
+   "clip": "fold4_room8_mix001_deg195_start1002",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 1.3,
+   "end": 1.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room2_mix005_deg295_start0731",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room2_mix005_deg295_start0731",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg192_start0191",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix003_deg192_start0191",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 1.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg180_start0050",
+    6,
+    0.7
+   ],
+   "clip": "fold4_room15_mix010_deg180_start0050",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.7,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room10_mix004_deg278_start1309",
+    7,
+    0.1
+   ],
+   "clip": "fold4_room10_mix004_deg278_start1309",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.1,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg335_start0105",
+    0,
+    3.4
+   ],
+   "clip": "fold4_room2_mix003_deg335_start0105",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 3.4,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "But wait"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg340_start4005",
+    10,
+    3.4
+   ],
+   "clip": "fold4_room15_mix010_deg340_start4005",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 3.4,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg356_start0242",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room10_mix009_deg356_start0242",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "The left side"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg001_start0433",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg001_start0433",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "I recall a dataset called"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg204_start0941",
+    4,
+    0.9
+   ],
+   "clip": "fold4_room8_mix006_deg204_start0941",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 0.9,
+   "end": 1.9,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man on the right"
+  },
+  {
+   "key": [
+    "fold4_room10_mix001_deg357_start0185",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room10_mix001_deg357_start0185",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the laptop"
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg144_start1620",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room2_mix004_deg144_start1620",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 2.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room8_mix006_deg039_start1058",
+    8,
+    0.0
+   ],
+   "clip": "fold4_room8_mix006_deg039_start1058",
+   "class": "Music",
+   "ask": "Music",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "So the middle stand has"
+  },
+  {
+   "key": [
+    "fold4_room16_mix014_deg281_start0732",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix014_deg281_start0732",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 1.9,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room2_mix001_deg124_start0531",
+    3,
+    0.0
+   ],
+   "clip": "fold4_room2_mix001_deg124_start0531",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 0.0,
+   "end": 3.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "I recall some of these"
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg252_start0315",
+    4,
+    4.0
+   ],
+   "clip": "fold4_room10_mix008_deg252_start0315",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 4.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "I'll answer \"the person"
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg292_start0100",
+    10,
+    1.0
+   ],
+   "clip": "fold4_room16_mix008_deg292_start0100",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 1.0,
+   "end": 4.6,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let"
+  },
+  {
+   "key": [
+    "fold4_room15_mix004_deg149_start2192",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix004_deg149_start2192",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg356_start1174",
+    4,
+    0.0
+   ],
+   "clip": "fold4_room16_mix012_deg356_start1174",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 0.0,
+   "end": 0.9,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man in yellow cap"
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg039_start2017",
+    2,
+    1.8
+   ],
+   "clip": "fold4_room8_mix003_deg039_start2017",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 1.8,
+   "end": 4.8,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person's hands"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg034_start0120",
+    0,
+    4.1
+   ],
+   "clip": "fold4_room16_mix013_deg034_start0120",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 4.1,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the woman"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg202_start0596",
+    12,
+    3.4
+   ],
+   "clip": "fold4_room15_mix009_deg202_start0596",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 3.4,
+   "end": 4.2,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "But wait"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg025_start0593",
+    0,
+    3.9
+   ],
+   "clip": "fold4_room16_mix010_deg025_start0593",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 3.9,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me zoom"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg097_start0099",
+    12,
+    2.4
+   ],
+   "clip": "fold4_room16_mix005_deg097_start0099",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 2.4,
+   "end": 3.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Looking carefully at all"
+  },
+  {
+   "key": [
+    "fold4_room2_mix004_deg144_start1620",
+    1,
+    4.0
+   ],
+   "clip": "fold4_room2_mix004_deg144_start1620",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 4.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg107_start1133",
+    4,
+    3.9
+   ],
+   "clip": "fold4_room16_mix012_deg107_start1133",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 3.9,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "But which person?"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg255_start0113",
+    12,
+    1.0
+   ],
+   "clip": "fold4_room16_mix005_deg255_start0113",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 1.0,
+   "end": 1.6,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg359_start0528",
+    2,
+    4.0
+   ],
+   "clip": "fold4_room16_mix013_deg359_start0528",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 4.0,
+   "end": 4.9,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Actually"
+  },
+  {
+   "key": [
+    "fold4_room16_mix001_deg107_start0084",
+    6,
+    0.5
+   ],
+   "clip": "fold4_room16_mix001_deg107_start0084",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.5,
+   "end": 3.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg103_start0247",
+    10,
+    1.9
+   ],
+   "clip": "fold4_room16_mix009_deg103_start0247",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 1.9,
+   "end": 3.4,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg218_start0288",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg218_start0288",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 3.9,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room2_mix003_deg090_start1732",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room2_mix003_deg090_start1732",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 0.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "a person"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg027_start0739",
+    7,
+    0.0
+   ],
+   "clip": "fold4_room15_mix008_deg027_start0739",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 0.0,
+   "end": 3.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Looking across the six frames"
+  },
+  {
+   "key": [
+    "fold4_room8_mix005_deg337_start1432",
+    3,
+    3.8
+   ],
+   "clip": "fold4_room8_mix005_deg337_start1432",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 3.8,
+   "end": 4.8,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix005_deg202_start0078",
+    12,
+    4.5
+   ],
+   "clip": "fold4_room16_mix005_deg202_start0078",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 4.5,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "I"
+  },
+  {
+   "key": [
+    "fold4_room15_mix008_deg150_start0312",
+    0,
+    4.3
+   ],
+   "clip": "fold4_room15_mix008_deg150_start0312",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 4.3,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg050_start1007",
+    3,
+    2.3
+   ],
+   "clip": "fold4_room8_mix001_deg050_start1007",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 2.3,
+   "end": 2.8,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg162_start0333",
+    7,
+    2.5
+   ],
+   "clip": "fold4_room16_mix010_deg162_start0333",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 2.5,
+   "end": 4.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "In the back"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg095_start1248",
+    7,
+    3.5
+   ],
+   "clip": "fold4_room16_mix004_deg095_start1248",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 3.5,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room8_mix003_deg039_start2017",
+    4,
+    3.8
+   ],
+   "clip": "fold4_room8_mix003_deg039_start2017",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 3.8,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg093_start1046",
+    3,
+    1.4
+   ],
+   "clip": "fold4_room8_mix001_deg093_start1046",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 1.4,
+   "end": 1.9,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the phone on the table"
+  },
+  {
+   "key": [
+    "fold4_room15_mix002_deg149_start1323",
+    9,
+    0.0
+   ],
+   "clip": "fold4_room15_mix002_deg149_start1323",
+   "class": "Musical instrument",
+   "ask": "Musical instrument",
+   "start": 0.0,
+   "end": 1.7,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg145_start0693",
+    1,
+    1.0
+   ],
+   "clip": "fold4_room16_mix009_deg145_start0693",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 1.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg162_start0333",
+    5,
+    1.7
+   ],
+   "clip": "fold4_room16_mix010_deg162_start0333",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 1.7,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "laptop"
+  },
+  {
+   "key": [
+    "fold4_room10_mix009_deg112_start0205",
+    7,
+    3.5
+   ],
+   "clip": "fold4_room10_mix009_deg112_start0205",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 3.5,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the door"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg051_start0617",
+    2,
+    1.1
+   ],
+   "clip": "fold4_room16_mix013_deg051_start0617",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 1.1,
+   "end": 1.8,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The person in gray's hands"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg301_start0606",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix004_deg301_start0606",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me think about"
+  },
+  {
+   "key": [
+    "fold4_room16_mix009_deg145_start0693",
+    4,
+    2.6
+   ],
+   "clip": "fold4_room16_mix009_deg145_start0693",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 2.6,
+   "end": 4.7,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the man at the desk"
+  },
+  {
+   "key": [
+    "fold4_room10_mix008_deg217_start1321",
+    7,
+    2.4
+   ],
+   "clip": "fold4_room10_mix008_deg217_start1321",
+   "class": "Door, open or close",
+   "ask": "Door",
+   "start": 2.4,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room8_mix004_deg139_start0563",
+    4,
+    3.2
+   ],
+   "clip": "fold4_room8_mix004_deg139_start0563",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 3.2,
+   "end": 4.7,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "Looking at the frames"
+  },
+  {
+   "key": [
+    "fold4_room16_mix004_deg259_start1256",
+    6,
+    4.4
+   ],
+   "clip": "fold4_room16_mix004_deg259_start1256",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 4.4,
+   "end": 5.0,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg286_start1165",
+    1,
+    0.0
+   ],
+   "clip": "fold4_room16_mix012_deg286_start1165",
+   "class": "Male speech, man speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 0.7,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "nothing"
+  },
+  {
+   "key": [
+    "fold4_room16_mix012_deg356_start1174",
+    4,
+    2.7
+   ],
+   "clip": "fold4_room16_mix012_deg356_start1174",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 2.7,
+   "end": 3.6,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man in yellow cap"
+  },
+  {
+   "key": [
+    "fold4_room16_mix008_deg298_start0194",
+    10,
+    0.0
+   ],
+   "clip": "fold4_room16_mix008_deg298_start0194",
+   "class": "Water tap, faucet",
+   "ask": "Water tap",
+   "start": 0.0,
+   "end": 1.3,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Let me look"
+  },
+  {
+   "key": [
+    "fold4_room16_mix010_deg125_start0746",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix010_deg125_start0746",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "But wait"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg099_start0629",
+    2,
+    0.0
+   ],
+   "clip": "fold4_room16_mix013_deg099_start0629",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 0.0,
+   "end": 0.6,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "I'll commit to \"the"
+  },
+  {
+   "key": [
+    "fold4_room15_mix009_deg246_start0585",
+    12,
+    4.5
+   ],
+   "clip": "fold4_room15_mix009_deg246_start0585",
+   "class": "Knock",
+   "ask": "Knock",
+   "start": 4.5,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Looking carefully at all"
+  },
+  {
+   "key": [
+    "fold4_room16_mix003_deg073_start1046",
+    5,
+    0.0
+   ],
+   "clip": "fold4_room16_mix003_deg073_start1046",
+   "class": "Domestic sounds",
+   "ask": "Domestic sounds",
+   "start": 0.0,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Looking at the room"
+  },
+  {
+   "key": [
+    "fold4_room15_mix010_deg260_start5615",
+    6,
+    0.0
+   ],
+   "clip": "fold4_room15_mix010_deg260_start5615",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 0.0,
+   "end": 1.1,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "the man"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg341_start0554",
+    2,
+    1.4
+   ],
+   "clip": "fold4_room16_mix013_deg341_start0554",
+   "class": "Clapping",
+   "ask": "Clapping",
+   "start": 1.4,
+   "end": 2.3,
+   "gold_onscreen": 1,
+   "pred_visible": 1,
+   "named": "The clapping motion"
+  },
+  {
+   "key": [
+    "fold4_room15_mix006_deg015_start1950",
+    0,
+    0.0
+   ],
+   "clip": "fold4_room15_mix006_deg015_start1950",
+   "class": "Female speech, woman speaking",
+   "ask": "Speech",
+   "start": 0.0,
+   "end": 2.4,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "But wait"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg341_start0554",
+    4,
+    2.4
+   ],
+   "clip": "fold4_room16_mix013_deg341_start0554",
+   "class": "Laughter",
+   "ask": "Laughter",
+   "start": 2.4,
+   "end": 2.9,
+   "gold_onscreen": 1,
+   "pred_visible": 0,
+   "named": "Hmm"
+  },
+  {
+   "key": [
+    "fold4_room16_mix013_deg034_start0120",
+    6,
+    4.2
+   ],
+   "clip": "fold4_room16_mix013_deg034_start0120",
+   "class": "Walk, footsteps",
+   "ask": "Footsteps",
+   "start": 4.2,
+   "end": 5.0,
+   "gold_onscreen": 0,
+   "pred_visible": 1,
+   "named": "the person"
+  },
+  {
+   "key": [
+    "fold4_room8_mix001_deg195_start1002",
+    3,
+    2.8
+   ],
+   "clip": "fold4_room8_mix001_deg195_start1002",
+   "class": "Telephone",
+   "ask": "Telephone",
+   "start": 2.8,
+   "end": 3.3,
+   "gold_onscreen": 0,
+   "pred_visible": 0,
+   "named": "Looking carefully at all"
+  }
+ ]
+}

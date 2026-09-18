@@ -37,3 +37,21 @@ other passing swap). On fail: attempt nine in the table, with the numbers.
 ## Not done
 
 No prompt tuning on DCASE; no change of the vote rule; the gate's bar stays.
+
+## Outcome (added 2026-09-19 morning, after both arms ran)
+
+`benchmark/eval_dcase_visibility_q38_direct.json`, `_think.json` (258 events each).
+
+| arm | on-screen recall (bar ≥ 50%) | off-screen recall (bar ≥ 95%) |
+|---|---|---|
+| Qwen2.5-VL-7B (v3) | 35% | 97% |
+| Qwen3.8-27B, thinking off | **56.3%** ✔ | 82.6% ✘ |
+| Qwen3.8-27B, thinking on | 51.2% ✔ | 78.0% ✘ |
+
+**FAILED as pre-registered in both arms** (off-screen recall falls 14–19 points; the same
+trade the 32B made). Thinking is not better on either measure and ~3× slower, so by the
+declared rule the direct arm is the one used. The swap went ahead by decision (best models)
+with these numbers disclosed; on the 100-clip protocol the Qwen3.8 gate changed nothing
+(v4b: gated 2.85 vs blind 2.75 under the rubric judge, v3 2.83 vs 2.73), and it still
+draws a picture on 28 of the 50 clips where none is due (dev-sweep accuracy 52.7% vs the
+7B's 44.9%).
