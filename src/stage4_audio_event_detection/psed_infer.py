@@ -34,6 +34,14 @@ SEG = 10 * SR                     # the model takes 10-s inputs
 PSED_ROOT = Path(os.environ.get("PSED_ROOT", Path.home() / "PretrainedSED"))
 CHECKPOINT = "BEATs_strong_1"
 CACHE_DIR = config.WORK_DIR / "psed_cache"
+# the five backbones of the paper, all fine-tuned the same way on AudioSet-Strong; the
+# paper's best number is their average (docs/prereg_psed_ensemble.md)
+BACKBONES = {"BEATs": ("models.beats.BEATs_wrapper", "BEATsWrapper", "BEATs_strong_1"),
+             "ATST-F": ("models.atstframe.ATSTF_wrapper", "ATSTWrapper", "ATST-F_strong_1"),
+             "fpasst": ("models.frame_passt.fpasst_wrapper", "FPaSSTWrapper", "fpasst_strong_1"),
+             "M2D": ("models.m2d.M2D_wrapper", "M2DWrapper", "M2D_strong_1"),
+             "ASIT": ("models.asit.ASIT_wrapper", "ASiTWrapper", "ASIT_strong_1")}
+ENSEMBLE_CACHE = config.WORK_DIR / "psed_ens_cache"
 
 STRONG_TO_ONTOLOGY = {
     "Alert": "Alarm", "Bathroom sounds": "Domestic sounds, home sounds", "Bicycle, tricycle": "Bicycle",
@@ -49,13 +57,14 @@ STRONG_TO_ONTOLOGY = {
     "White noise, pink noise": "White noise",
 }
 
-_MODEL = None
+_MODELS = {}
 
 
-def load_model(device: str = "cuda"):
-    global _MODEL
-    if _MODEL is None:
-        import torch
+def load_model(device: str = "cuda", backbone: str = "BEATs"):
+    """(model, names, device) for one of BACKBONES; loaded once per process."""
+    key = (backbone, device)
+    if key not in _MODELS:
+        import torch, importlib
         sys.path.insert(0, str(PSED_ROOT))
         cwd = os.getcwd(); os.chdir(PSED_ROOT)          # checkpoints resolve relative to the repo
         # PretrainedSED has its own top-level `config` module (RESOURCES_FOLDER ...), which
@@ -63,16 +72,17 @@ def load_model(device: str = "cuda"):
         ours = {k: sys.modules.pop(k) for k in list(sys.modules) if k == "config"}
         try:
             from models.prediction_wrapper import PredictionsWrapper
-            from models.beats.BEATs_wrapper import BEATsWrapper
             from data_util import audioset_classes
-            model = PredictionsWrapper(BEATsWrapper(), checkpoint=CHECKPOINT).eval().to(torch.device(device))
+            mod, cls, ckpt = BACKBONES[backbone]
+            wrapper = getattr(importlib.import_module(mod), cls)
+            model = PredictionsWrapper(wrapper(), checkpoint=ckpt).eval().to(torch.device(device))
         finally:
             os.chdir(cwd)
             sys.modules.pop("config", None)
             sys.modules.update(ours)
         names = [STRONG_TO_ONTOLOGY.get(n, n) for n in audioset_classes.as_strong_train_classes]
-        _MODEL = (model, names, device)
-    return _MODEL
+        _MODELS[key] = (model, names, device)
+    return _MODELS[key]
 
 
 def wav16(src: Path, dst: Path) -> Path:
@@ -105,12 +115,12 @@ def cache_path(stem: str) -> Path:
     return CACHE_DIR / f"{stem}.npz"
 
 
-def cache_clips(sources, device: str = "cuda", out_dir: Path = None) -> int:
+def cache_clips(sources, device: str = "cuda", out_dir: Path = None, backbone: str = "BEATs") -> int:
     """Pre-pass (env `psed`): raw probabilities per source video/audio, keyed by stem."""
     import tempfile
     out_dir = out_dir or CACHE_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
-    model, names, _ = load_model(device)
+    model, names, _ = load_model(device, backbone)
     done = 0
     with tempfile.TemporaryDirectory() as td:
         for src in sources:
@@ -146,6 +156,29 @@ def rescale(fw: np.ndarray, bar: float = None, ship: float = None) -> np.ndarray
     lo = ship * s / bar
     hi = ship + (1 - ship) * (s - bar) / (1 - bar)
     return np.clip(np.where(s < bar, lo, hi), 0, 1)
+
+
+ENS_SETTING = config.ROOT / "benchmark" / "psed_ensemble_setting.json"
+
+
+def ensemble_of(stem: str, root: Path):
+    """Mean of the five backbones' cached probabilities for one clip (root/<backbone>/<stem>.npz);
+    None if any backbone is missing. Frame rates differ slightly between backbones, so
+    each is put on the first one's time grid by nearest frame."""
+    parts = []
+    for b in BACKBONES:
+        p = root / b / f"{stem}.npz"
+        if not p.exists():
+            return None
+        z = np.load(p, allow_pickle=False)
+        parts.append((z["fw"].astype(np.float32), z["times"].astype(np.float64), [str(x) for x in z["labels"]]))
+    fw0, t0, labels = parts[0]
+    acc = np.zeros_like(fw0)
+    for fw, t, lab in parts:
+        assert lab == labels
+        idx = np.clip(np.searchsorted(t, t0), 0, len(t) - 1)
+        acc += fw[idx]
+    return acc / len(parts), t0, labels
 
 
 def infer_psed(wav_path: Path, device: str = "cuda") -> Tuple[np.ndarray, np.ndarray, list]:
