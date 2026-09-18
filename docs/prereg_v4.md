@@ -185,3 +185,14 @@ under the tag `v4ab_bar035` as a record and **discarded**; PSED's scores are now
 that 0.20 lands on 0.35 (`psed_infer.rescale`), and v4ab is re-run. Fable's review: keep
 the DCASE-chosen 0.20 (rule declared first); the slice-B sweep (0.05–0.50) is reported as a
 held-out check, not used for selection.
+
+## Hardware note (2026-09-19)
+
+Runs are placed on whatever GPUs are free (Adam's rule): a 27B model may be sharded across
+3× L4 (24 GB) with `device_map="auto"` instead of one A100-80. Fable's review: same
+experiment in design (same weights, bf16, code, prompts, greedy decoding); not bit-identical
+across GPU types (different bf16 kernels → rare token flips on near-ties), no systematic
+bias; reported CIs cover it. Disclosure for the thesis: "Inference ran on mixed NVIDIA
+hardware (A100-80 / 3× L4 sharded); bf16 numerics differ slightly across GPU types, so
+outputs are reproducible in distribution, not bit-for-bit." Each row's log records
+torch/CUDA/GPU. The PSED row (v4ab) runs on 3× L4.
