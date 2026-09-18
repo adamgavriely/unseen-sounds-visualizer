@@ -117,3 +117,17 @@ ceiling bar, 1 was marginal. BEATs' 5.2/min was never measured at matched recall
 bar is asymmetric; disclosed. Recorded as attempt nine. Two attempts say the same thing:
 FLAM hears under masking what BEATs misses, with an unusable false-positive rate on
 generic impacts — complementary, not a substitute.
+
+## Added 2026-09-18 night (before any number): gold slice B and the detector table on it
+
+Slice B = AudioSet-Strong *eval* clips with a consequential sound at least half covered by
+speech or music (`benchmark/gold/audioset_slice.py`: fixed vocabulary of consequential
+families, ≤ 12 clips per family, seed 7; clips gone from YouTube are listed). Human-timed
+labels are the pre-fill; annotators add only visibility / "draw?" and the sentence. It is
+reported separately from the 100-clip slice, never pooled, and is used for **detector**
+measures only. `benchmark/audioset_detector_eval.py` gives one table for BEATs (v3),
+PretrainedSED (v4 candidate) and FLAM-v2 (the failed attempt) on the same clips: recall of
+masked consequential events, of all consequential events, of all events; false spans per
+minute (every sound in these clips is labelled, so this is a real false-alarm rate); onset
+error. No pass bar: it is the held-out check that the DCASE-chosen detector setting
+transfers to real-world video. The PretrainedSED decision stays with docs/prereg_psed.md.

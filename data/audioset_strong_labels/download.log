@@ -2,3 +2,7 @@
 [slice] chosen 150
 [slice] 20/150: 13 fetched, 7 gone
 [slice] 30/150: 22 fetched, 8 gone
+[slice] 40/150: 30 fetched, 10 gone
+[slice] 50/150: 40 fetched, 10 gone
+[slice] 60/150: 49 fetched, 11 gone
+[slice] 70/150: 56 fetched, 14 gone

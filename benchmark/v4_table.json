@@ -1,0 +1,19 @@
+[
+ {
+  "tag": "v3_grounded",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3",
+  "means": {
+   "proposed": 3.17,
+   "blind_a2i": 3.16,
+   "audio_caption": 2.89
+  },
+  "gated_minus_blind": 0.01,
+  "ci": [
+   -0.1502499999999999,
+   0.18
+  ],
+  "oracle": 3.62,
+  "cost": {}
+ }
+]
