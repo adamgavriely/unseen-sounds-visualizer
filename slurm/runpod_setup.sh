@@ -49,6 +49,11 @@ ln -sfn $W/PretrainedSED ~/PretrainedSED
 
 echo "=== [5] weights -> $HF_HOME (ungated first)"
 conda activate msproj
+# ~/.bashrc returns early for non-interactive shells, so read the token line directly (as on BIU)
+if [ -z "${HF_TOKEN:-}" ] && [ -f ~/.bashrc ]; then
+    HF_TOKEN=$(sed -n 's/^[[:space:]]*export[[:space:]]*HF_TOKEN=//p' ~/.bashrc | tail -1 | tr -d "\"'") || true
+    export HF_TOKEN
+fi
 for m in Qwen/Qwen-Image-2512 Qwen/Qwen3.8-27B ibm-granite/granite-speech-4.1-2b WeiChihChen/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2 black-forest-labs/FLUX.1-schnell mistralai/Mistral-7B-Instruct-v0.3 google/owlv2-base-patch16-ensemble google/siglip-base-patch16-224 Systran/faster-whisper-base sentence-transformers/all-MiniLM-L6-v2; do
     echo "--- $m"; hf download "$m" >/dev/null 2>&1 && echo "   ok" || echo "   FAILED (gated or network)"
 done
