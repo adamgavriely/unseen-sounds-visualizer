@@ -49,7 +49,7 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh"
 # PretrainedSED pre-pass (env psed): raw scores for every benchmark clip, read by stage 4
 # (benchmark/psed_eval.py --cache already fills data/work/psed_cache; this is idempotent)
 if [[ "$STAGES" == *4* ]]; then
-    step psed_cache bash -c 'export PATH="$HOME/miniconda3/envs/msproj/bin:$PATH"; conda activate psed && HF_HUB_OFFLINE=1 python -m benchmark.psed_eval --cache'
+    step psed_cache bash -c 'source "$HOME/miniconda3/etc/profile.d/conda.sh"; export PATH="$HOME/miniconda3/envs/msproj/bin:$PATH"; conda activate psed && HF_HUB_OFFLINE=1 python -m benchmark.psed_eval --cache'
 fi
 DESC_STAGES="${STAGES}"; [[ "$DESC_STAGES" == *5* ]] || DESC_STAGES="${DESC_STAGES}5"
 step render   env V4="$STAGES" GEN=diffusion LIMIT="$LIMIT" TAG="$TAG" PHASE=render bash slurm/job_protocol.sh
