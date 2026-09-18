@@ -1,0 +1,3 @@
+[slice] 16996 eval clips; masked consequential per family: {'Alarm': 75, 'Glass': 51, 'Cat': 29, 'Explosion': 61, 'Air horn, truck horn': 21, 'Telephone': 41, 'Gunshot': 32, 'Bicycle bell': 11, 'Doorbell': 19, 'Dog': 64, 'Crying, sobbing': 45, 'Thunder': 37, 'Fireworks': 23, 'Knock': 7, 'Siren': 25, 'Baby cry, infant cry': 23, 'Train': 31, 'Helicopter': 7, 'Door': 3}
+[slice] chosen 150
+[slice] 20/150: 13 fetched, 7 gone

@@ -242,7 +242,9 @@ V4 = {
     "2": {"VIDEO_BACKEND": "sam3"},
     "3": {"WHISPER_MODEL": "ibm-granite/granite-speech-4.1-2b"},
     "4": {"AED_MODEL": "flam", "ONSET_CAM": False},          # FLAM is frame-level already
-    "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": True},
+    # thinking off: the DCASE check (docs/prereg_qwen38_visibility.md) shows the thinking arm
+    # no better on visibility and ~3x slower; the pre-registered rule keeps the faster arm
+    "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": False},
     "6": {"GEN_MODEL": "Qwen/Qwen-Image-2512", "RESOLUTION": (1024, 1024)},
     "7": {"JUDGE_MODEL": "google/gemma-4-31B-it"},
 }
