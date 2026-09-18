@@ -184,15 +184,15 @@ def select():
     rng = np.random.default_rng(0); idx = rng.permutation(len(data)); half = len(data) // 2
     A = [data[i] for i in idx[:half]]; B = [data[i] for i in idx[half:]]
     sb = psed_bar()
-    variants = [("psed", None, 0.0)] + [(v, m, L) for v in ("rescue", "gate", "route") for m in longs for L in L_GRID]
+    variants = [("psed", None, 0.0, sb)] + [(v, m, L, sb) for v in ("gate", "route") for m in longs for L in L_GRID]         + [("rescue", m, L, bb) for m in longs for L in L_GRID for bb in (0.20, 0.25, 0.30, 0.35)]
     rows = []
-    for v, m, L in variants:
-        th, rm, ra, fpr = best_at_rate(data, v, m or "beats", L, sb)
-        thA, rmA, _, fA = best_at_rate(A, v, m or "beats", L, sb)
-        rB = run_variant(B, v, m or "beats", thA, L, sb)          # A's setting read on B
-        rows.append({"variant": v, "long": m, "L": L, "theta": th, "masked": rm, "all": ra, "fp": fpr,
-                     "half": {"theta_A": thA, "masked_A": rmA, "masked_B_at_A": rB[0], "fp_B_at_A": rB[2]}})
-        print(f"[select] {v:5s} {str(m):6s} L={L:.0f} theta={th:.2f}: masked {rm:.1%} all {ra:.1%} FP {fpr:.2f} | split A->B masked {rB[0]:.1%} FP {rB[2]:.2f}")
+    for v, m, L, bb in variants:
+        th, rm, ra, fpr = best_at_rate(data, v, m or "beats", L, bb)
+        thA, rmA, _, fA = best_at_rate(A, v, m or "beats", L, bb)
+        rB = run_variant(B, v, m or "beats", thA, L, bb)          # A's setting read on B
+        rows.append({"variant": v, "long": m, "L": L, "base_bar": bb, "theta": th, "masked": rm, "all": ra, "fp": fpr,
+                     "half": {"theta_A": thA, "masked_A": rmA, "masked_B_at_A": rB[0], "all_B_at_A": rB[1], "fp_B_at_A": rB[2]}})
+        print(f"[select] {v:6s} {str(m):6s} L={L:.0f} base={bb:.2f} theta={th:.2f}: masked {rm:.1%} all {ra:.1%} FP {fpr:.2f} | split A->B masked {rB[0]:.1%} all {rB[1]:.1%} FP {rB[2]:.2f}")
     control = rows[0]
     # a variant competes only if it reaches the false-alarm target on the full set AND on the
     # held-out half; it must beat the control on both; ties under 2 points go to the simpler rule
@@ -205,7 +205,7 @@ def select():
         top = max(cands, key=lambda r: r["masked"])
         near = [r for r in cands if top["masked"] - r["masked"] < 0.02]
         win = min(near, key=lambda r: (order[r["variant"]], r["L"]))
-    unreachable = [f"{r['variant']}/{r['long']}/L{r['L']:.0f}" for r in rows[1:] if r["fp"] > FP_TARGET or r["half"]["fp_B_at_A"] > FP_TARGET]
+    unreachable = [f"{r['variant']}/{r['long']}/L{r['L']:.0f}/b{r['base_bar']:.2f}" for r in rows[1:] if r["fp"] > FP_TARGET or r["half"]["fp_B_at_A"] > FP_TARGET]
     if unreachable:
         print(f"[select] cannot reach {FP_TARGET}/min: {', '.join(unreachable)}")
     out = {"when": datetime.now().isoformat(timespec="minutes"), "fp_target": FP_TARGET, "loose": LOOSE, "short_bar": sb,
@@ -228,7 +228,7 @@ def sliceb():
     print(f"[sliceB] PSED control @{s['control']['theta']:.2f}: masked {ctrl[0]:.1%} all {ctrl[1]:.1%} FP {ctrl[2]:.2f}")
     res = {"control": ctrl}
     if win:
-        r = run_variant(data, win["variant"], win["long"] or "beats", win["theta"], win["L"], s["short_bar"])
+        r = run_variant(data, win["variant"], win["long"] or "beats", win["theta"], win["L"], win.get("base_bar", s["short_bar"]))
         print(f"[sliceB] winner {win['variant']}/{win['long']} L={win['L']} theta={win['theta']:.2f}: masked {r[0]:.1%} all {r[1]:.1%} FP {r[2]:.2f}")
         res["winner"] = r; res["passed"] = bool(r[0] >= 0.70 and r[2] <= 2.6)
         print(f"[sliceB] pass rule (>= 70% at <= 2.6/min): {'PASSED' if res['passed'] else 'FAILED'}")

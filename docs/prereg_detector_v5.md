@@ -85,3 +85,16 @@ detections at its calibrated bar are never removed; a *long* loose box that PSED
 not pass is added iff the long-window model's score ≥ θ. The winner must also keep
 all-events recall within 1 point of PSED alone. The replace-rule numbers are kept in
 `fusion_v5_setting.json` as a diagnostic.
+
+## Result of V1–V3 on the calibration set (2026-09-19 evening) — no winner
+
+Step 0 passed for both long-window models (AUROC on boxes ≥ 2 s: BEATs 0.78, SSLAM 0.80;
+74% of the buried consequential sounds reachable by a loose box). But at 2.6 false spans per
+minute no variant beats PSED alone on both the full set and the held-out half
+(`benchmark/fusion_v5_setting.json`): the best rescue (BEATs, L = 1 s, base 0.20) reaches
+48.1% all-events recall against PSED's 45.1% and the same 48.4% masked recall, and exceeds
+the false-alarm target on the held-out half (3.2/min). The replace-style gate that looked
+good in the first pass (masked 48% → 68% on 31 events) did so by giving up 7 points of
+recall on the hundreds of other events — an artefact of the tiny masked count, caught by
+the all-events guard. Per the pre-registration V1–V3 are not run on slice B. V4 (speech
+removal as a witness) is still pending its environment.
