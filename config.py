@@ -246,7 +246,7 @@ V4 = {
     "3": {"WHISPER_MODEL": "ibm-granite/granite-speech-4.1-2b"},
     # no stage-4 swap has passed its bars (FLAM x2: docs/prereg_v4.md; PretrainedSED:
     # docs/prereg_psed.md), so "4" is not part of the cumulative rows; kept for a future pass
-    "4": {"AED_MODEL": "psed", "ONSET_CAM": False},          # frame-level already
+    "4": {"AED_MODEL": "psed", "ONSET_CAM": False, "PSED_BAR": 0.15},   # frame-level already; bar from the AudioSet-Strong calibration
     # thinking off: the DCASE check (docs/prereg_qwen38_visibility.md) shows the thinking arm
     # no better on visibility and ~3x slower; the pre-registered rule keeps the faster arm
     "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": False},

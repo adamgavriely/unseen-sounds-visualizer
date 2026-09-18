@@ -137,18 +137,29 @@ def cache_clips(sources, device: str = "cuda", out_dir: Path = None, backbone: s
 SETTING = config.ROOT / "benchmark" / "psed_setting.json"
 
 
+_BAR = None
+
+
 def chosen_bar() -> float:
-    """PSED's own bar: the loosest bar whose false-span rate on DCASE 2025 gold does not
-    exceed the shipping BEATs rate (docs/prereg_psed.md); 0.20. Fixed before slice B or
-    the test clips were scored. (The first protocol run used the pipeline default 0.35 by
-    mistake and was discarded.)"""
-    import json
-    calib = config.ROOT / "benchmark" / "detector_calib.json"          # AudioSet-Strong calibration (preferred)
-    if calib.exists():
-        return float(json.loads(calib.read_text(encoding="utf-8"))["bars"]["psed"])
-    if SETTING.exists():
-        return float(json.loads(SETTING.read_text(encoding="utf-8"))["bar_chosen_on_dcase"])
-    return 0.20
+    """PSED's own bar, read ONCE per process and then frozen (a run must not change bar
+    mid-way because a calibration file appeared): the AudioSet-Strong calibration
+    (benchmark/detector_calib.json, 0.15) if present, else the DCASE choice (0.20).
+    config.PSED_BAR, if set, overrides both (used to pin a run's bar explicitly)."""
+    global _BAR
+    if _BAR is None:
+        import json
+        forced = getattr(config, "PSED_BAR", None)
+        calib = config.ROOT / "benchmark" / "detector_calib.json"
+        if forced:
+            _BAR = float(forced)
+        elif calib.exists():
+            _BAR = float(json.loads(calib.read_text(encoding="utf-8"))["bars"]["psed"])
+        elif SETTING.exists():
+            _BAR = float(json.loads(SETTING.read_text(encoding="utf-8"))["bar_chosen_on_dcase"])
+        else:
+            _BAR = 0.20
+        print(f"       [stage4] PSED bar frozen for this run: {_BAR:.2f}", flush=True)
+    return _BAR
 
 
 def rescale(fw: np.ndarray, bar: float = None, ship: float = None) -> np.ndarray:
