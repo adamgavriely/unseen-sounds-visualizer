@@ -58,3 +58,18 @@ benchmark (slice B + calibration set) and the negative result reported in full.
 ## Budget
 ~15 engineering hours, ~1 GPU hour (SSLAM caching); everything after caching is CPU on
 cached scores. SSLAM checkpoint fetched and hashed first (Google-Drive link-rot risk).
+
+## Amendment (2026-09-19, before selection ran): variant V4 — speech removal as a second witness
+
+Adam asked for a small test of "remove speech, then detect". Design (Fable): SAM-Audio
+(Meta, Dec 2025; access granted) with the prompt "speech", `predict_spans=False`, no
+reranking; view B = 0.9 × residual + 0.1 × original (the blend that Focus-Then-Listen 2026
+found necessary for frozen models; our own Demucs attempt fed pure stems and got worse);
+a 1.0 view is a diagnostic only; music is NOT removed (sirens, alarms, whistles are tonal).
+Rule (generic): a PSED candidate at the loose bar on the original is kept if
+p_orig ≥ τ OR p_viewB ≥ τ for the same family in the same span; τ chosen at 2.6 FP/min on
+the calibration set, split-half. Go/no-go before slice B: AUROC(max(p, p_B)) ≥ AUROC(p) + 0.02
+AND held-half recall gain ≥ 2 points at equal false alarms. Sanity checks: residual/original
+lag = 0; PSED spans on speech-only stretches of the residual (hallucination); energy lost in
+the span of buried sounds (removed targets, expected for human-vocal classes; they keep
+p_orig so cost nothing). V4 joins V1–V3 in the same selection; the variant count is now four.
