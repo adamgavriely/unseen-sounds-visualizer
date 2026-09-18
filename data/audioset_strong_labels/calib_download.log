@@ -1,2 +1,17 @@
 [calib] 16846 candidate clips, 320 chosen (seed 11), disjoint from slice B
 [calib] 20/320: 17 fetched, 3 gone
+[calib] 40/320: 35 fetched, 5 gone
+[calib] 80/320: 68 fetched, 12 gone
+[calib] 100/320: 84 fetched, 16 gone
+[calib] 120/320: 101 fetched, 19 gone
+[calib] 140/320: 117 fetched, 23 gone
+[calib] 160/320: 135 fetched, 25 gone
+[calib] 180/320: 150 fetched, 30 gone
+[calib] 200/320: 169 fetched, 31 gone
+[calib] 220/320: 186 fetched, 34 gone
+[calib] 240/320: 204 fetched, 36 gone
+[calib] 260/320: 223 fetched, 37 gone
+[calib] 280/320: 242 fetched, 38 gone
+[calib] 300/320: 261 fetched, 39 gone
+[calib] 320/320: 280 fetched, 40 gone
+[calib] done: 280 clips, 40 gone -> P:\MscProj\benchmark\gold\audioset_calib.json
