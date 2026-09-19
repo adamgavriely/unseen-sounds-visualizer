@@ -49,7 +49,31 @@ result files; nothing is estimated.
 |---|---|---|---|---|
 | v3 (BEATs, Qwen2.5-VL, FLUX) | 2.88 | 2.80 | 2.67 | +0.08 [−0.15, +0.31] |
 | v4b (+ Qwen3.8-27B gate) | 2.85 | 2.75 | 2.66 | +0.10 [−0.13, +0.33] |
-| v4ab (+ PSED 0.15) | running on the A100 (job 30723676) | | | |
+| **v4ab (+ PSED 0.15)** | **2.60** | 2.46 | 2.46 | +0.14 [−0.13, +0.40] |
+
+## 6. v4ab landed — and PSED is NOT adopted (pre-registered rule)
+
+Gated v4ab 2.60 vs v4b 2.85; paired difference −0.25, 95 % CI [−0.53, −0.01] → by the
+detector-arm rule BEATs stays. All three systems fell (blind 2.75 → 2.46, caption 2.66 → 2.46),
+so the loss enters through the detector output, not the gate; the gate's own margin held
+(+0.14 vs +0.10). The judge ran with Mistral (same as every row) because Gemma-4 is only
+partly downloaded and filled the disk twice when the job tried to fetch it.
+
+Why (read on the outputs afterwards — disclosed as post hoc): not "PSED fires more" (it fires
+*fewer* spans than BEATs on the calibration set: 12.3 vs 15.0/min). Two integration defects:
+(1) the "salient non-speech" label filter was written for BEATs' label names, so PSED's
+AudioSet-Strong names leak through — "Breathing" ×17, "Video game sound" ×15, "Human voice"
+×8, "Laughter" ×6 pictures in the blind system that should never exist; (2) pictures stay
+up much longer (median span 10.0 s vs 4–5.7 s) because the hysteresis low bar (bar/2) and
+no onset refinement let PSED spans run through the clip. A draft row **v4ab2** with two
+detector-agnostic fixes (filter by ontology *branch*; span ends after 1 s below the bar +
+a cap from the calibration set), applied to both detectors, is written in
+`docs/prereg_v4.md` — **not run**: it waits for your approval (one product question: keep
+baby cry / footsteps?) and for the per-sound F1 gate (run v4ab2 only if PSED's F1-strict on
+your annotations ≥ BEATs' on the filtered classes).
+
+Also queued: the adopted v4b configuration rendered on slice B (job 30724805, after the
+v4ab one) so both rows get per-sound scores on both gold sets.
 
 ## Decisions taken tonight (mine, with Fable)
 - Resume v4ab on the A100 instead of waiting for a pod (same experiment, same code, resume from stamps).
@@ -64,8 +88,11 @@ result files; nothing is estimated.
 3. Gemma-4 second judge: needs an 80-GB card (A100/H200 queue) or the pod.
 4. Decide v4c (Qwen-Image) — needs the pod or the 200 GB disk expansion.
 
-**TLDR:** V4 fails its own go/no-go on calibration (cleaning does not help a frozen detector at
-matched false alarms) → detector work closed at PSED 0.15. SAM 3 does not beat OWLv2 → stage-2
-swap dropped. v4ab is being re-run on an A100 after the L4/disk failure. No pod used.
+**TLDR:** v4ab (PSED 0.15) scores 2.60 vs v4b 2.85 → PSED not adopted by the rule; cause is two
+integration bugs (label filter, span rule), fix drafted as v4ab2 and gated on your F1. V4 cleaning
+fails its go/no-go → detector attempts closed. SAM 3 does not beat OWLv2 → stage-2 swap dropped.
+No pod used.
 
-**Actions to decide (morning):** (1) export the annotations; (2) pod for Gemma judge + v4c, or wait for the BIU disk expansion.
+**Actions to decide (morning):** (1) export the annotations → per-sound scores (both rows, both gold sets);
+(2) v4ab2: approve the draft and choose Option A/B for human sounds (recommended B: keep baby cry, footsteps);
+(3) Gemma judge + v4c: pod or wait for the BIU disk expansion.
