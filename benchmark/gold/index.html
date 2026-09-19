@@ -185,7 +185,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
     $("progressList").textContent = view().map(i => bad(CLIPS[i]) ? "✗" : (done(CLIPS[i]) ? "✓" : "·")).join(" "); renderSel(); }
   let _spanStop = null;
   function playSpan(start, end){ const v = $("video"); if(_spanStop){ v.removeEventListener("timeupdate", _spanStop); _spanStop = null; }
-    const a0 = Math.max(0, +start - 0.3), b0 = Math.max(a0 + 0.5, +end + 0.3);          // a little margin on both sides
+    const a0 = Math.max(0, +start), b0 = Math.max(a0 + 0.2, +end);                       // exactly the marked span
     v.currentTime = a0; v.play();
     _spanStop = () => { if(v.currentTime >= b0){ v.pause(); v.removeEventListener("timeupdate", _spanStop); _spanStop = null; } };
     v.addEventListener("timeupdate", _spanStop); }
