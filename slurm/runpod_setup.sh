@@ -6,6 +6,13 @@
 # script skips them when it is absent and says so.
 set -uo pipefail
 export DEBIAN_FRONTEND=noninteractive
+# RunPod injects the pod's env vars (HF_TOKEN, RUNPOD_API_KEY, RUNPOD_POD_ID) into PID 1 only;
+# an ssh session does not inherit them, so import the ones we need (values are never printed)
+if [ -r /proc/1/environ ]; then
+    while IFS= read -r -d "" kv; do
+        case "$kv" in HF_TOKEN=*|RUNPOD_API_KEY=*|RUNPOD_POD_ID=*) export "$kv";; esac
+    done < /proc/1/environ
+fi
 W=/workspace
 export HF_HOME=$W/hf
 mkdir -p $HF_HOME $W/MscProj
@@ -78,6 +85,7 @@ echo "=== [6] idle watcher: stop the pod after 20 min without GPU work"
 cat > $W/idle_stop.sh <<'EOF'
 #!/bin/bash
 # stops this pod when GPU utilisation stays under 5% for 20 minutes (checked every minute)
+while IFS= read -r -d "" kv; do case "$kv" in RUNPOD_API_KEY=*|RUNPOD_POD_ID=*) export "$kv";; esac; done < /proc/1/environ
 idle=0
 while true; do
     u=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | head -1)
