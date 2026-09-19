@@ -225,10 +225,12 @@ false-alarm rate, SAM 3 at its default bar with OWLv2's phrases) and small n, no
 **Two fixes, both detector-neutral, both applied to both detectors; nothing tuned on the
 benchmark:**
 1. Label filter = speech, music, and the AudioSet branch "Channel, environment and
-   background" (+ "Silence") only (`config.LABEL_FILTER = "branch"`, V4 stage "8"). Adam's
+   background" (+ "Silence", + "Sound effect" — Adam, 20 Sept 13:00, an edited-in sound with
+   no source; neither detector ever emitted it on the benchmark) only
+   (`config.LABEL_FILTER = "branch"`, V4 stage "8"). Adam's
    rule (20 Sept): "only speech and music we don't draw"; the branch was added after checking
    that no important gold sound in slice B or the calibration set falls inside it. Note:
-   "Wind" and "Sound effect" become drawable under this rule.
+   "Wind" becomes drawable under this rule (Adam: leave it, decide later).
 2. PSED's bar = the argmax of span-level F1 on the AudioSet-Strong calibration set
    (`scripts/psed_f1_bar.py` → `benchmark/psed_f1_bar.json`): **0.22** (P 0.78, R 0.62,
    F1 0.694; BEATs' best on the same set is 0.580 at 0.24). BEATs keeps its shipped 0.35.

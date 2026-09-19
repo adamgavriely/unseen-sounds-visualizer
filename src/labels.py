@@ -100,7 +100,7 @@ def is_salient_nonspeech(label: str) -> bool:
     """
     import config
     if getattr(config, "LABEL_FILTER", "lists") == "branch":
-        return not (label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence")
+        return not (label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect")
                     or is_descendant(label, ENV_BRANCH))
     return not (label in SPEECH_LABELS or label in SCENE_LABELS
                 or label in GENERIC_LABELS or is_music(label))
