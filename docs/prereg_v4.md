@@ -152,6 +152,22 @@ with its rule fixed before any protocol score exists:
 - the dev-real bar is retired for future detector attempts in favour of slice B's
   exhaustive labels (a design correction, not a retroactive waiver).
 
+**Outcome (2026-09-20 09:00, job 30723676 render/describe on A100 + 30724662 judge on L4; PSED at
+the calibrated bar 0.15, `benchmark/protocol_results_v4ab_grounded_rubric.json`):** gated
+v4ab **2.60** vs v4b **2.85**; paired mean difference **−0.25**, 95 % bootstrap CI
+[−0.53, −0.01] — negative mean, CI entirely below 0 → **by the rule PSED is NOT adopted;
+BEATs stays the v4 detector.** All three systems drop under PSED-0.15 (blind 2.46 vs 2.75,
+caption 2.46 vs 2.66): at 0.15 PSED fires far more often (5.4 false spans/min on the
+calibration set against BEATs' target rate), so every system shows more pictures and
+captions the judge counts as redundant or wrong; gated − blind is +0.14 [−0.13, +0.40],
+the widest positive gap of any row, but the pre-registered test is the absolute gated score.
+Per scenario (proposed): acoustic-event 2.44 vs 2.96, ambient 2.72 vs 2.88, mixed 2.52 vs
+2.68. The discarded wrong-bar run (PSED at 0.35, 2.88) is kept in the table only as a
+labelled sensitivity row: a stricter bar recovers the score, which says the detector's
+*operating point* for the pipeline is not the one that maximises recall on slice B. The
+per-sound metric (F1-strict on Adam's annotations, both gold sets) is the second, pre-declared
+view of the same question and is still to come.
+
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient
