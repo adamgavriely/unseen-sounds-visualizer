@@ -68,6 +68,10 @@ def _masked(rec, start, end, conf):
     return False
 
 
+_DC = HERE / "detector_candidates.json"
+DET_CANDS = json.loads(_DC.read_text(encoding="utf-8")) if _DC.exists() else {}
+
+
 def build_default():
     """the 100 benchmark test clips, pre-filled from the detector, the gate and the proposed system's sentence"""
     gate = json.loads((_ROOT / "benchmark" / "gate_setting.json").read_text(encoding="utf-8"))["chosen"]
@@ -94,10 +98,19 @@ def build_default():
                           "visible": visible_all, "obvious": visible_all, "importance": importance_of(label, s["label"]),
                           "masked": _masked(rec, s["start"], s["end"], s["confidence"]),
                           "gate": "silenced" if s["label"] in d["silenced"] else ("shown" if s["label"] in d["shown"] else "dropped")})
+        # add what the two detectors of the v4 rows heard (BEATs from v4b, PSED from v4ab; all detections
+        # above their bars, whether the gate showed them or not), so no detector's candidates are missing
+        for k in DET_CANDS.get(Path(rec["clip"]).stem, []):
+            if any(c["family"] == k["label"] and min(c["end"], k["end"]) - max(c["start"], k["start"]) > 0 for c in cands):
+                continue
+            cands.append({"label": k["detail"].replace(" (siren)", " siren").lower(), "family": k["label"], "conf": k["conf"],
+                          "start": k["start"], "end": k["end"], "visible": False, "obvious": False,
+                          "importance": importance_of(k["detail"].lower(), k["label"]), "masked": False,
+                          "gate": ("psed" if k["det"] == "psed" else "beats") + " " + k["gate"]})
         cands.sort(key=lambda c: -c["conf"])
         pr = results.get(rec["clip"], {})
         ref = pr.get("reference", "")
-        clips.append({"id": rec["clip"], "src": "../../" + rel, "duration": round(rec["duration"], 1), "candidates": cands[:8],
+        clips.append({"id": rec["clip"], "src": "../../" + rel, "duration": round(rec["duration"], 1), "candidates": cands[:12],
                       "tag": rec["tag"], "split": split, "picture_due": rec["tag"] in DUE,
                       "sentence": ref if ref and ref != "nothing beyond the picture" else "nothing beyond the picture"})
     return clips
