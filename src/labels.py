@@ -99,7 +99,22 @@ def is_salient_nonspeech(label: str) -> bool:
               be drawn, whatever the detector calls it. Detector-neutral by construction.
     """
     import config
-    if getattr(config, "LABEL_FILTER", "lists") == "branch":
+    mode = getattr(config, "LABEL_FILTER", "lists")
+    if mode == "depictable":
+        # v4ab3 / v4b3 (docs/prereg_v4.md): "branch" plus the ontology branches that name no
+        # drawable source -- Wind (texture), Respiratory sounds, Human voice except the
+        # Crying subtree (baby cry stays), the whole Source-ambiguous branch (Generic impact
+        # sounds, Onomatopoeia, Bang...), the category names of GENERIC_LABELS, Video game
+        # sound. Same rule for every detector.
+        if label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect", "Video game sound")                 or is_descendant(label, ENV_BRANCH) or label in GENERIC_LABELS:
+            return False
+        for branch in ("Wind", "Respiratory sounds", "Source-ambiguous sounds"):
+            if label == branch or is_descendant(label, branch):
+                return False
+        if (label == "Human voice" or is_descendant(label, "Human voice")) and not (label == "Crying, sobbing" or is_descendant(label, "Crying, sobbing")):
+            return False
+        return True
+    if mode == "branch":
         return not (label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect")
                     or is_descendant(label, ENV_BRANCH))
     return not (label in SPEECH_LABELS or label in SCENE_LABELS

@@ -279,6 +279,34 @@ row's grounded references (`slurm/job_xref_judge.sh`, `--ref-tag`), reported bes
 which is the decisive test of the detector question. The independent reference of v2
 (`protocol_reference_indep_v2*.json`) is not used because it was found at chance on silence.
 
+### v4ab3 / v4b3 — DECLARED 2026-09-21 00:30 (Adam approved; before any run): the ten-Fable panel's decisive test
+
+Ten independent Fables (domain shift, filter mismatch, span length, judge reference,
+statistics, plumbing audit, gate/painter, practitioner, per-sound expectation, devil's
+advocate for PSED) converged: the detector-only evals scored PSED *after* the old hand list
+removed its texture classes, while the pipeline rows drew them; on the benchmark 40–48 % of
+PSED's events are Wind / Generic impact sounds / Mechanisms / Wind noise / Breathing / Video
+game sound, 56 % of its events span the whole 20–28-s clip (BEATs 24 %; on 10-s clips this
+could not show). No plumbing bug (rescale and hysteresis identical in both evals).
+Principle to state: a picture channel wants a conservative, object-level nominator; recall
+of ambient texture is a liability.
+
+**Rows** (same describer, Mistral judge, rubric-enforced; STAGES 459 / 59):
+- **v4ab3** = PSED@0.22 + Qwen3.8 + depictable filter + 8-s cap;
+- **v4b3** = BEATs@0.35 + Qwen3.8 + depictable filter + 8-s cap (fair control).
+
+**Depictable filter** (`config.LABEL_FILTER = "depictable"`, applied to both): the "branch"
+rule plus, by ontology branch and category name only (no single-class picks): the Wind
+subtree (texture), Respiratory sounds, the whole Source-ambiguous branch (Generic impact
+sounds, Onomatopoeia, Bang …), Human voice except the Crying subtree (baby cry stays — Adam's
+option B), the category names of GENERIC_LABELS (Animal, Mechanisms, Sounds of things,
+Domestic sounds, Human sounds …), "Video game sound". **Span cap** (`config.MAX_SPAN = 8.0`):
+an event never runs longer than 8 s from its onset, both detectors. Bars unchanged (0.22 /
+0.35). Adoption rule unchanged: PSED is adopted iff gated v4ab3 > gated v4b3 with the paired
+CI not entirely below 0. v4ab, v4ab2 stay in the table. Same-answer-sheet re-judge and the
+per-sound F1 on Adam's annotations are reported beside; the per-sound F1 remains the
+detector-independent verdict.
+
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient

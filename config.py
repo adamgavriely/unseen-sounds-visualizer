@@ -256,7 +256,11 @@ V4 = {
     # (span-level F1 on the AudioSet-Strong calibration set, benchmark/psed_f1_bar.json), for
     # the fair re-test v4ab2 / v4b2 (docs/prereg_v4.md)
     "8": {"LABEL_FILTER": "branch"},
+    # "9": the depictable allow-list by ontology branch + an 8-s picture cap (v4ab3 / v4b3, the
+    # ten-Fable panel's decisive test, docs/prereg_v4.md)
+    "9": {"LABEL_FILTER": "depictable", "MAX_SPAN": 8.0},
 }
+MAX_SPAN = None               # seconds; None = no cap (v4ab3/v4b3 use 8.0)
 LABEL_FILTER = "lists"        # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 
 

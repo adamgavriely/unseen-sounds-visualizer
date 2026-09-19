@@ -174,6 +174,10 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
     events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low)
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):
         events = _refine_onsets_cam(Path(wav_path), events, labels, device)
+    cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/prereg_v4.md)
+    if cap:
+        for e in events:
+            e.end = min(e.end, e.start + float(cap))
     n_classes = len({e.label for e in events})
     print(f"       [stage4] {backend} SED: {len(events)} event span(s) over "
           f"{n_classes} class(es) (threshold={threshold}).")
