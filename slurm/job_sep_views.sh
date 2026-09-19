@@ -28,6 +28,7 @@ if [ "$MODE" != "psed" ]; then
     conda deactivate
 fi
 conda activate psed
+export PATH=$PATH:$HOME/miniconda3/envs/msproj/bin   # ffmpeg for psed_infer.wav16
 python -m benchmark.sep_views --psed --set calib
 [ "$MODE" = "smoke" ] || python -m benchmark.sep_views --psed --set sliceB
 echo "[job] done"

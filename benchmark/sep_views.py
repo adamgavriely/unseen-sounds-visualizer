@@ -44,6 +44,9 @@ FP_TARGET = 2.6
 GRID = [round(x, 2) for x in np.arange(0.05, 0.96, 0.01)]
 MIN_DUR = 0.5
 OUT = _ROOT / "benchmark" / "sep_v4_setting.json"
+BASE_GRID = [0.15, 0.20, 0.25, 0.30, 0.35]     # PSED's own bar inside the rule (correction, amendment 3): at 0.15 alone PSED
+                                                # already exceeds the 2.6/min target on the calibration set (5.4/min), so an
+                                                # additive rule can only meet the target if the base bar rises, as in fusion_v5
 
 
 # ----------------------------------------------------------------------------- separation (env msproj, GPU)
@@ -279,6 +282,7 @@ def select():
     ctrl_tau, ctrl_at = loosest_tau(sc_orig, 9.9, "A")
     res["control"] = {"at_psed_bar": ctrl, "loosest_A": {"tau": ctrl_tau, **ctrl_at}}
     print(f"[select] control PSED@{bb:.2f}: masked {ctrl['masked']:.1%} conseq {ctrl['conseq']:.1%} all {ctrl['all']:.1%} FP {ctrl['fp']:.2f}")
+    print(f"[select] control PSED at the loosest bar under {FP_TARGET}/min: bar {ctrl_tau:.2f} masked {ctrl_at['masked']:.1%} conseq {ctrl_at['conseq']:.1%} all {ctrl_at['all']:.1%} FP {ctrl_at['fp']:.2f}")
     # AUROC on candidate boxes (orig source): A alone vs max over views
     y, sA, sM = [], [], []
     for c, rows in sc_orig:
@@ -290,29 +294,37 @@ def select():
         res["auroc"][v] = roc_auc_score(y, [r[3][v] for c, rows in sc_orig for r in rows])
     print(f"[select] AUROC on {len(y)} candidate boxes: A {res['auroc']['A']:.3f}  max-views {res['auroc']['max_views']:.3f}  "
           + "  ".join(f"{v} {res['auroc'][v]:.3f}" for v in VIEWS))
-    # the two declared variants + single-view diagnostics
+    # the two declared variants + single-view diagnostics; base bar x tau grid, loosest pair under the target
     rows = []
     for source in ("orig", "union"):
         sc = sc_orig if source == "orig" else scored(data, "union")
         sc_h = [[x for x in sc if x[0]["id"] in {c["id"] for c, _ in h}] for h in halves]
+        sc_h_ctrl = [[x for x in sc_orig if x[0]["id"] in {c["id"] for c, _ in h}] for h in halves]   # control = PSED on A, same for both sources
         for name, sv in [("max", None)] + [(v, v) for v in VIEWS]:
-            tau, full = loosest_tau(sc, bb, sv)
+            def best_pair(scx):
+                best = None
+                for bb_ in BASE_GRID:
+                    tau, r = loosest_tau(scx, bb_, sv)
+                    if r["fp"] <= FP_TARGET and (best is None or r["conseq"] > best[2]["conseq"]):
+                        best = (bb_, tau, r)
+                return best or (BASE_GRID[-1], GRID[-1], summarise(run_rule(scx, GRID[-1], BASE_GRID[-1], sv)))
+            b_full, tau, full = best_pair(sc)
             hh = []
             for k in (0, 1):
-                tA, _ = loosest_tau(sc_h[k], bb, sv)
-                rB = summarise(run_rule(sc_h[1 - k], tA, bb, sv))
-                cB = summarise(run_rule(sc_h[1 - k], 9.9, bb))
-                hh.append({"tau_chosen": tA, "held": rB, "control_held": cB})
-            row = {"source": source, "score": name, "tau": tau, **full, "halves": hh}
+                bA, tA, _ = best_pair(sc_h[k])
+                rB = summarise(run_rule(sc_h[1 - k], tA, bA, sv))
+                cB = summarise(run_rule(sc_h_ctrl[1 - k], ctrl_tau, 9.9, "A"))
+                hh.append({"base_chosen": bA, "tau_chosen": tA, "held": rB, "control_held": cB})
+            row = {"source": source, "score": name, "base_bar": b_full, "tau": tau, **full, "halves": hh}
             rows.append(row)
-            print(f"[select] {source:5s} {name:3s} tau={tau:.2f}: masked {full['masked']:.1%} conseq {full['conseq']:.1%} all {full['all']:.1%} FP {full['fp']:.2f}"
+            print(f"[select] {source:5s} {name:3s} base={b_full:.2f} tau={tau:.2f}: masked {full['masked']:.1%} conseq {full['conseq']:.1%} all {full['all']:.1%} FP {full['fp']:.2f}"
                   + " | held: " + " / ".join(f"conseq {h['held']['conseq']:.1%} (ctrl {h['control_held']['conseq']:.1%}) FP {h['held']['fp']:.2f}" for h in hh))
     res["rows"] = rows
     # go/no-go and winner between the two declared variants (score = max over views)
     def ok(r):
         gain = [h["held"]["conseq"] - h["control_held"]["conseq"] for h in r["halves"]]
         return (r["fp"] <= FP_TARGET and all(h["held"]["fp"] <= FP_TARGET for h in r["halves"])
-                and min(gain) >= 0.02 and r["all"] >= ctrl["all"] - 0.01)
+                and min(gain) >= 0.02 and r["all"] >= ctrl_at["all"] - 0.01)
     auroc_ok = res["auroc"]["max_views"] >= res["auroc"]["A"] + 0.02
     cands = [r for r in rows if r["score"] == "max" and ok(r)]
     win = None
@@ -335,9 +347,10 @@ def sliceb():
     data = load("sliceB"); bb = s["psed_bar"]
     print(f"[sliceB] {len(data)} clips with A+B+C+D")
     sc = scored(data, win["source"])
-    ctrl_pc = run_rule(sc, 9.9, bb); v4_pc = run_rule(sc, win["tau"], bb)
+    cb = s["control"]["loosest_A"]["tau"]
+    ctrl_pc = run_rule(sc, cb, 9.9, "A"); v4_pc = run_rule(sc, win["tau"], win["base_bar"])
     ctrl, v4 = summarise(ctrl_pc), summarise(v4_pc)
-    print(f"[sliceB] PSED@{bb:.2f}: masked {ctrl['masked']:.1%} all {ctrl['all']:.1%} FP {ctrl['fp']:.2f}")
+    print(f"[sliceB] PSED@{cb:.2f} (loosest bar under the target on calibration): masked {ctrl['masked']:.1%} all {ctrl['all']:.1%} FP {ctrl['fp']:.2f}")
     print(f"[sliceB] V4 {win['source']} tau {win['tau']:.2f}: masked {v4['masked']:.1%} all {v4['all']:.1%} FP {v4['fp']:.2f}")
     # paired clip bootstrap of the masked-recall difference
     rng = np.random.default_rng(0); n = len(ctrl_pc); diffs = []
@@ -363,7 +376,7 @@ def sliceb():
     attrib = {v: 0 for v in VERSIONS}
     for x in v4_pc:
         for lab, a, b, sc_ in x["dets"]:
-            if sc_["A"] < bb:
+            if sc_["A"] < win["base_bar"]:
                 attrib[max(sc_, key=sc_.get)] += 1
     curve = {name: [] for name in ["A"] + ["max"] + VIEWS}
     for tau in GRID[::5]:

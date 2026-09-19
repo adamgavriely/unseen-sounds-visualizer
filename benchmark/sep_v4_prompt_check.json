@@ -1,0 +1,13 @@
+{
+ "clips": 20,
+ "consequential_events": 17,
+ "lost_gt_0.3": {
+  "B": 0,
+  "C": 0
+ },
+ "share": {
+  "B": 0.0,
+  "C": 0.0
+ },
+ "over_removal": false
+}

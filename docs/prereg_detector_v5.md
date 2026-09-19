@@ -181,3 +181,32 @@ check (share of consequential gold sounds losing > 0.3 of family score in B or C
 20 calibration clips), reported; no alternative separator is tried if it fires. Known cost:
 "vocals" also removes singing and may remove cries/screams — the max-over-views rule keeps A,
 so nothing PSED already hears is lost.
+
+## Result of V4 (HTDemucs views) on the calibration set (2026-09-20 ~07:30) — no winner, not run on slice B
+
+*Correction before selection (same kind as the "gate must be a rescue" correction above):
+PSED alone at its shipped bar 0.15 already makes 5.4 false spans/min on the calibration set,
+so an add-only rule cannot meet the 2.6/min target; as in fusion_v5, the base bar inside the
+rule is on a grid {0.15 … 0.35} and the control is PSED at its loosest bar under the target
+(0.28: consequential recall 64.3 %, masked 54.8 %, 2.51/min). Everything else as declared.*
+
+Separation QC (391 clips): lag 0 samples, lengths exact, deterministic (max diff 0.0), no
+NaN, stems sum to the original within 8 % (median); over-removal check 0/17 gold sounds lost
+> 0.3 in B or C (`benchmark/sep_v4_prompt_check.json`).
+
+Go/no-go 1 — AUROC on the 1 301 candidate boxes: original 0.762, max over views 0.765
+(+0.003; needed +0.02), single views B 0.768, C 0.769, D 0.776. **Failed.**
+Go/no-go 2 — held-half recall at ≤ 2.6/min: V4-orig 54.5 % vs 46.4 % on one half (+8.1),
+82.1 % vs 82.1 % on the other (0; needed ≥ +2 on both). **Failed.** Full set at matched false
+alarms: V4-orig (base 0.30, τ 0.30) consequential 68.3 % vs 64.3 %, masked 64.5 % vs 54.8 %
+(31 events), all-events 48.5 % vs 46.9 %; single views B/C/D 69–70 %; V4-union the same
+within a point (`benchmark/sep_v4_setting.json`).
+
+Reading: cleaning the audio moves a few buried sounds over the bar (+4 points on all
+important sounds at equal false alarms) but does not change how well PSED separates true
+from false candidates, and the gain is not stable across halves. Per the pre-registration V4
+is **not run on slice B**; attempt thirteen closes the detector work. The thesis sentence:
+"Removing speech and music with a frozen stem separator before detection does not give a
+detectable gain at matched false alarms (AUROC +0.003; held-half gain +8 / 0); 48 of the 83
+missed sounds on slice B score below 0.05 on the original and are out of reach of any
+re-scoring rule."
