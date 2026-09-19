@@ -52,7 +52,8 @@ fi
 GEN="${GEN:-diffusion}"
 LIMIT="${LIMIT:-}"
 CLIP_DIR="${CLIP_DIR:-}"
-PSED_BAR="${PSED_BAR:-}"       # v4ab2: override the PSED bar (benchmark/psed_f1_bar.json)
+PSED_BAR="${PSED_BAR:-}"
+REF_TAG="${REF_TAG:-}"       # v4ab2: override the PSED bar (benchmark/psed_f1_bar.json)
 TAG="${TAG:-}"
 PHASE="${PHASE:-all}"
 JUDGE="${JUDGE:-}"
@@ -105,6 +106,7 @@ if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
 if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]
 if "${RESCORE}" and phase == "judge": argv += ["--rescore"]
 if "${GROUNDED}" and phase == "judge": argv += ["--grounded"]
+if "${REF_TAG}" and phase == "judge":  argv += ["--ref-tag", "${REF_TAG}"]
 if "${INDEP}" and phase == "judge":    argv += ["--independent"]
 if "${SKIP_RENDER}" and phase == "describe": argv += ["--skip-render"]
 if "${WORK_TAG}" and phase == "describe":    argv += ["--work-tag", "${WORK_TAG}"]

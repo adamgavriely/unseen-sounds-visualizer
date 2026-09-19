@@ -247,6 +247,38 @@ Stage-2 addendum: at a bar chosen on the DCASE dev set SAM 3 reaches 72.4 % agre
 favoured OWLv2 through the bar, not the model. The swap stays dropped for lack of a gain,
 not because SAM 3 loses.
 
+**Outcome of v4ab2 / v4b2 (2026-09-20 22:10; jobs 30726600/30726776 and 30726601/30726777; Mistral judge, rubric-enforced):**
+
+| row | gated | blind | caption | gated − blind |
+|---|---|---|---|---|
+| v4b2 (BEATs 0.35 + branch filter) | 2.80 | 2.60 | 2.65 | +0.20 [−0.03, +0.41] |
+| v4ab2 (PSED 0.22 + branch filter) | 2.35 | 2.24 | 2.50 | +0.11 [−0.14, +0.33] |
+
+Detector-arm test: gated v4ab2 − v4b2 = **−0.45 [−0.69, −0.22]** → **PSED is not adopted;
+BEATs stays** (second time, now under detector-neutral rules). Every system drops (blind
+−0.36, caption −0.15); per scenario the gated system loses most on the acoustic-event clips
+(2.04 vs 2.88), the very clips where a picture is due.
+
+What the outputs show (`benchmark/aug_summary_v4b2_v4ab2.json`): under the loose filter
+PSED's most frequent pictures are "Generic impact sounds" (29), "Mechanisms" (29), "Wind"
+(27), "Wind noise (microphone)" (12), "Video game sound" (11), "Breathing", "Laughter" —
+meta, noise and vocal classes the old hand lists used to block — at a median span of 16 s
+(BEATs 5.2 s), 2.16 pictures per clip against 1.25. PSED's AudioSet-Strong head fires these
+coarse classes on ambient audio where BEATs' clip-level tagger stays quiet.
+
+A confound found while reading the judgements, disclosed here: the judge's *reference*
+("what a hearing viewer gets that a deaf viewer misses") is model-derived — it names what
+the row's own stage-4 heard, corrected only by the human clip tag (see
+`grounded_reference`). A noisier detector therefore writes a noisier answer sheet for its
+own row (e.g. the v4ab2 reference for the golf course asks for "generic impacts and
+breathing"). The two rows were judged against different references, so the −0.45 is not a
+clean measure of the detector. Two remedies, both pre-declared here before running:
+(1) a same-answer-sheet check — each row's cached descriptions judged against the OTHER
+row's grounded references (`slurm/job_xref_judge.sh`, `--ref-tag`), reported beside;
+(2) the per-sound F1-strict against Adam's annotations (independent of every detector),
+which is the decisive test of the detector question. The independent reference of v2
+(`protocol_reference_indep_v2*.json`) is not used because it was found at chance on silence.
+
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient

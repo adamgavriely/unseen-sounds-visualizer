@@ -329,7 +329,7 @@ def phase_reference(tag: str = "", desc_tag=None, device: str = "cuda"):
 
 
 def phase_judge(backends, tag: str = "", rescore: bool = False,
-                desc_tag=None, grounded: bool = False, independent: bool = False):
+                desc_tag=None, grounded: bool = False, independent: bool = False, ref_tag=None):
     # A judge-agreement run re-scores the MAIN descriptions but writes its results
     # under a new tag, so cache and results file are tagged independently.
     cache = desc_file(desc_tag if desc_tag is not None else tag)
@@ -441,6 +441,8 @@ def main():
                     help="discard existing scores and re-judge the cached descriptions")
     ap.add_argument("--work-tag", default=None,
                     help="describe the rendered artifacts of this other tag (with --skip-render)")
+    ap.add_argument("--ref-tag", default=None,
+                    help="judge against another row's references (same answer sheet for two detectors)")
     ap.add_argument("--clip-dir", default=None,
                     help="run on every video in this folder instead of the tagged benchmark (slice B)")
     ap.add_argument("--skip-render", action="store_true",
@@ -466,7 +468,7 @@ def main():
         return
     if args.phase in ("all", "judge"):
         phase_judge(backends, args.tag, args.rescore, args.desc_tag, args.grounded,
-                    independent=args.independent)
+                    independent=args.independent, ref_tag=args.ref_tag)
 
 
 if __name__ == "__main__":
