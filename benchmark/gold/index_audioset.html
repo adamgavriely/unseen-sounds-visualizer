@@ -186,6 +186,10 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
     $("progressList").textContent = view().map(i => bad(CLIPS[i]) ? "✗" : (done(CLIPS[i]) ? "✓" : "·")).join(" "); renderSel(); }
   function renderSounds(){
     const a = current(); const box = $("sounds"); box.innerHTML = "";
+    // in time order, so the list reads like the clip; the selected sound stays selected
+    const selObj = a.sounds[selSound];
+    a.sounds.sort((p, q) => ((p.start ?? 0) - (q.start ?? 0)) || ((p.end ?? 0) - (q.end ?? 0)));
+    if(selObj){ const k = a.sounds.indexOf(selObj); if(k >= 0) selSound = k; }
     if(!a.sounds.length){ box.innerHTML = '<p class="hint">no sounds yet — add one, or tick "nothing beyond the picture" below if there is no ambient sound worth noting</p>'; }
     a.sounds.forEach((s,i)=>{
       const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "") + (s.suggested ? " suggested" : "") + (s.gate === "human" ? " human" : "");
@@ -246,9 +250,13 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
       return true; }); }
   function go(i){ const v = view(); if(!v.length){ $("fCount").textContent = " (nothing matches the filter)"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
-    idx = i; renderClip(); }
-  function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); }
-  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone").forEach(el => el.addEventListener("change", ()=>{ renderSel(); renderProgress(); go(idx); }));
+    idx = i; renderClip(); saveFilters(); }
+  function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); saveFilters(); }
+  const FILTER_KEY = "gold-filters-" + (document.title || "page");
+  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), testOnly:$("fTestOnly").checked, hideDone:$("fHideDone").checked, idx})); }catch(e){} }
+  function loadFilters(){ try{ const f = JSON.parse(localStorage.getItem(FILTER_KEY) || "null"); if(!f) return; (f.tags||[]).forEach(([v,c]) => { const el = document.querySelector('.ftag[value="'+v+'"]'); if(el) el.checked = c; });
+      $("fTestOnly").checked = !!f.testOnly; $("fHideDone").checked = !!f.hideDone; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
+  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone").forEach(el => el.addEventListener("change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
   $("prevBtn").addEventListener("click", ()=>goStep(-1)); $("nextBtn").addEventListener("click", ()=>goStep(1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
   $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); goStep(1); });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
@@ -266,7 +274,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
   $("importBtn").addEventListener("click", ()=>$("importFile").click());
   $("importFile").addEventListener("change", e=>{ const f = e.target.files[0]; if(!f) return; const r = new FileReader(); r.onload = ()=>{ try{ const j = JSON.parse(r.result); (j.clips||[]).forEach(c=>{ data[c.clip] = c; }); if(j.annotator) $("who").value = j.annotator; save(); renderClip(); $("status").textContent = "imported " + (j.clips||[]).length + " clips"; }catch(err){ $("status").textContent = "could not read that file"; } }; r.readAsText(f); });
 
-  load(); renderClip(); renderProgress();
+  load(); loadFilters(); renderClip(); renderProgress(); go(idx);
 })();
 </script>
 </body>
