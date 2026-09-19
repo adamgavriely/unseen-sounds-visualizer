@@ -165,3 +165,19 @@ false alarms (CI …); 48 sounds remain inaudible to the detector even after cle
 *No gain:* "Cleaning the audio does not help a frozen detector at matched false alarms (CI
 includes 0); the buried sounds it misses score below 0.05 on every view — attempt thirteen
 closes the detector work; the contribution is the benchmark and the negative result."
+
+## Amendment 3 (2026-09-20, before any separation run): HTDemucs instead of SAM-Audio
+
+SAM-Audio could not be run on the cluster (torchcodec/FFmpeg/NPP library chain, a 2023
+ImageBind reranker needing `pkg_resources`, and an undeclared 15-GB "judge" download that
+filled the home disk and killed the running v4ab row). A three-reviewer panel judged it the
+wrong tool for two fixed classes anyway. Views are now made with **HTDemucs** (`htdemucs_ft`,
+Meta, stems vocals / drums / bass / other; already installed): B = original − vocals;
+C = original − drums − bass ("other" is kept because it carries ambient sounds as well as
+melodic instruments, so C is a partial music removal); D = original − vocals − drums − bass.
+Blend, rule, candidate sources, τ selection, guards, go/no-go, pass rule and reporting are
+unchanged from amendment 2. The prompt-fallback clause is replaced by the same over-removal
+check (share of consequential gold sounds losing > 0.3 of family score in B or C on the first
+20 calibration clips), reported; no alternative separator is tried if it fires. Known cost:
+"vocals" also removes singing and may remove cries/screams — the max-over-views rule keeps A,
+so nothing PSED already hears is lost.
