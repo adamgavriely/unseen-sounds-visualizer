@@ -230,3 +230,17 @@ the average **fails** on the false-alarm side; the ensemble attempt is closed. P
 DCASE bar (0.20) stays the running v4ab row; the protocol is not re-run at 0.15 now — one
 final detector configuration (docs/prereg_detector_v5.md) will be run once through the
 protocol when the last detector attempt closes.
+
+## Stage-2 swap check (declared 2026-09-20, before running): SAM 3 vs OWLv2 on the DCASE visibility set
+
+SAM 3 was chosen as the stage-2 detector (v4 "2") but never measured. Dev-only check, same
+258 DCASE 2025 Task 3 events, frames and seed as the VLM visibility runs
+(`benchmark/eval_dcase_visibility.py`, seed 7); one concept phrase per DCASE class
+(`benchmark/eval_dcase_visibility_det.py`, PHRASE), the same wording style as OWLv2's
+DETECT_QUERY; best presence score over six frames; bars = each model's pipeline default
+(SAM 3 0.5, OWLv2 0.20), nothing tuned. Reported: agreement, on-screen recall, off-screen
+recall (the one that costs the viewer wrong pictures), AUROC of the raw score, per class.
+Decision rule: SAM 3 replaces OWLv2 in stage 2 iff its agreement is higher AND its
+off-screen recall is not lower by more than 2 points; otherwise OWLv2 stays and the "2"
+swap is dropped. The DCASE label is geometric (in field of view), so both models are judged
+against the same imperfect gold; only the comparison is read, not the absolute numbers.
