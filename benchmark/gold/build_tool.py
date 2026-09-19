@@ -113,6 +113,12 @@ def build_default():
         clips.append({"id": rec["clip"], "src": "../../" + rel, "duration": round(rec["duration"], 1), "candidates": cands[:12],
                       "tag": rec["tag"], "split": split, "picture_due": rec["tag"] in DUE,
                       "sentence": ref if ref and ref != "nothing beyond the picture" else "nothing beyond the picture"})
+    # variety: the 111 slice-B clips (10-s YouTube: babies, dogs, doorbells, gunshots, alarms, movies...)
+    # are in the same page, tag "audioset_strong"; both detectors' rows were rendered on them, so
+    # they score exactly like the protocol clips
+    for c in build_audioset():
+        c["split"] = "test"
+        clips.append(c)
     return clips
 
 
