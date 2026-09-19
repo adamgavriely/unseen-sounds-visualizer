@@ -84,8 +84,24 @@ def is_music(label: str) -> bool:
     return bool(_MUSIC_RE.search(label))
 
 
+ENV_BRANCH = "Channel, environment and background"   # AudioSet ontology branch: room tone, noise, radio/TV, hum
+
+
 def is_salient_nonspeech(label: str) -> bool:
-    """True for a discrete non-speech sound worth (potentially) visualizing."""
+    """True for a sound worth (potentially) visualizing.
+
+    Two rules, chosen by config.LABEL_FILTER:
+      "lists" (v1-v4ab): hand lists SPEECH / SCENE / GENERIC written around BEATs' 527 names
+              -- a detector with other names (PSED's AudioSet-Strong set) slips past them
+              (docs/prereg_v4.md, v4ab diagnosis);
+      "branch" (v4ab2 on): only speech, music and the ontology branch "Channel, environment
+              and background" are kept off screen (Adam, 20 Sept 2026); everything else may
+              be drawn, whatever the detector calls it. Detector-neutral by construction.
+    """
+    import config
+    if getattr(config, "LABEL_FILTER", "lists") == "branch":
+        return not (label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence")
+                    or is_descendant(label, ENV_BRANCH))
     return not (label in SPEECH_LABELS or label in SCENE_LABELS
                 or label in GENERIC_LABELS or is_music(label))
 

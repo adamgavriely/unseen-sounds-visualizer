@@ -252,7 +252,12 @@ V4 = {
     "5": {"VLM_MODEL": "Qwen/Qwen3.8-27B", "VLM_THINKING": False},
     "6": {"GEN_MODEL": "Qwen/Qwen-Image-2512", "RESOLUTION": (1024, 1024)},
     "7": {"JUDGE_MODEL": "google/gemma-4-31B-it"},
+    # "8": the detector-neutral label filter (src/labels.py) and PSED's own operating point
+    # (span-level F1 on the AudioSet-Strong calibration set, benchmark/psed_f1_bar.json), for
+    # the fair re-test v4ab2 / v4b2 (docs/prereg_v4.md)
+    "8": {"LABEL_FILTER": "branch"},
 }
+LABEL_FILTER = "lists"        # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 
 
 def use_v4(stages: str = "23456") -> dict:

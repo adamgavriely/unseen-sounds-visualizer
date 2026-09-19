@@ -51,7 +51,8 @@ fi
 
 GEN="${GEN:-diffusion}"
 LIMIT="${LIMIT:-}"
-CLIP_DIR="${CLIP_DIR:-}"       # run on a folder of videos instead of the tagged benchmark (slice B)
+CLIP_DIR="${CLIP_DIR:-}"
+PSED_BAR="${PSED_BAR:-}"       # v4ab2: override the PSED bar (benchmark/psed_f1_bar.json)
 TAG="${TAG:-}"
 PHASE="${PHASE:-all}"
 JUDGE="${JUDGE:-}"
@@ -90,6 +91,8 @@ config.VIDEO_BACKEND = "owlv2"     # strongest visibility backend (see sec:findi
 config.GEN_BACKEND = "${GEN}"
 if "${V4}":
     print("[v4]", config.use_v4("${V4}"), flush=True)
+if "${PSED_BAR}":                      # v4ab2: PSED's own operating point (benchmark/psed_f1_bar.json)
+    config.PSED_BAR = float("${PSED_BAR}"); print("[v4] PSED_BAR", config.PSED_BAR, flush=True)
 # GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which
 # would have evaluated a generator the pipeline no longer ships. config.py holds the
 # shipping one (PixArt-Sigma), and the point of the run is to score what ships.

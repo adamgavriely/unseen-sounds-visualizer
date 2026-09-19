@@ -208,6 +208,43 @@ failed row):**
   detector-agnostic rules, fixed on the calibration set, and the swap re-tested as v4ab2
   under the original adoption rule." v4ab and v4ab2 reported side by side.
 
+### v4ab2 / v4b2 — DECLARED 2026-09-20 12:30 (Adam approved; before any run)
+
+Per-clip attribution of the v4ab drop (`benchmark/aug_summary_v4b_v4ab.json`): clips with a
+leaked-label picture fell by −0.44 on average against −0.15 for the others (proposed system;
+34 vs 66 clips), so the vocabulary leak carries most of the loss; picture length does NOT
+show an effect (median span ≥ 8 s: −0.23; < 8 s: −0.27), so the span-rule fix from the draft
+is dropped — the hysteresis rule (low bar = bar/2) is already the same for both detectors.
+A third pattern, PSED drawing "Vehicle" on city-walk clips the human tagged as needing
+nothing, is an operating-point question and is what the per-sound metric will measure.
+
+Three-Fable panel verdict on "does the evaluation favour the old models?": partly — through
+integration glue shaped around BEATs (hand label lists, the bar inherited from BEATs'
+false-alarm rate, SAM 3 at its default bar with OWLv2's phrases) and small n, not by design.
+
+**Two fixes, both detector-neutral, both applied to both detectors; nothing tuned on the
+benchmark:**
+1. Label filter = speech, music, and the AudioSet branch "Channel, environment and
+   background" (+ "Silence") only (`config.LABEL_FILTER = "branch"`, V4 stage "8"). Adam's
+   rule (20 Sept): "only speech and music we don't draw"; the branch was added after checking
+   that no important gold sound in slice B or the calibration set falls inside it. Note:
+   "Wind" and "Sound effect" become drawable under this rule.
+2. PSED's bar = the argmax of span-level F1 on the AudioSet-Strong calibration set
+   (`scripts/psed_f1_bar.py` → `benchmark/psed_f1_bar.json`): **0.22** (P 0.78, R 0.62,
+   F1 0.694; BEATs' best on the same set is 0.580 at 0.24). BEATs keeps its shipped 0.35.
+
+Rows: **v4ab2** = PSED@0.22 + Qwen3.8 + filter (STAGES=458), **v4b2** = BEATs@0.35 + Qwen3.8
++ filter (STAGES=58) — the fair control, re-rendered under the same filter. Same describer,
+same Mistral judge, rubric-enforced. Adoption rule unchanged: PSED is adopted iff gated
+v4ab2 > gated v4b2 with the paired CI not entirely below 0. v4ab stays in the table as the
+failed first row. The per-sound F1-strict on Adam's annotations is the second view.
+
+Stage-2 addendum: at a bar chosen on the DCASE dev set SAM 3 reaches 72.4 % agreement
+(bar 0.16) and OWLv2 74.0 % (bar 0.15); at equal on-screen recall to OWLv2@0.20, SAM 3
+(bar 0.16) 72.4 % vs 68.8 %. Read: a tie within noise; the default-bar comparison above
+favoured OWLv2 through the bar, not the model. The swap stays dropped for lack of a gain,
+not because SAM 3 loses.
+
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient

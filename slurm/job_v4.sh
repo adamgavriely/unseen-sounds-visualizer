@@ -30,7 +30,8 @@ JUDGE="${JUDGE:-google/gemma-4-31B-it}"
 # stage 4 has no passing swap yet (FLAM x2 and PretrainedSED failed their bars, docs/prereg_*.md),
 # so the cumulative rows are 5 -> 56 -> 2356 with BEATs; "4" rows exist for a future pass
 case "$STAGES" in
-  4) TAG=v4a ;; 45) TAG=v4ab ;; 5) TAG=v4b ;; 56) TAG=v4c ;; 2356) TAG=v4 ;; 23456) TAG=v4_all ;; *) TAG="v4_s$STAGES" ;;
+  4) TAG=v4a ;; 45) TAG=v4ab ;; 5) TAG=v4b ;; 56) TAG=v4c ;; 2356) TAG=v4 ;; 23456) TAG=v4_all ;;
+  458) TAG=v4ab2 ;; 58) TAG=v4b2 ;; *) TAG="v4_s$STAGES" ;;
 esac
 [ "$LIMIT" != "100" ] && TAG="${TAG}_n$LIMIT"
 STAMP=benchmark/.chain/$TAG
