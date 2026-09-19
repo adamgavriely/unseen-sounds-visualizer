@@ -55,6 +55,7 @@ select{font:inherit;font-size:14px;padding:4px}
 
 <div class="wrap">
 <main>
+  <div id="goals" class="card" style="padding:8px 12px;margin-bottom:8px;font-size:14px"></div>
   <div class="nav">
     <button id="prevBtn">← previous</button>
     <select id="clipSel"></select>
@@ -161,7 +162,17 @@ const CLIPS = /*__CLIPS__*/[];
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; const v = view(); v.forEach(i => { const c = CLIPS[i], a = data[c.id]; const o = document.createElement("option"); o.value = i;
       o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", extra" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
     s.value = idx; $("fCount").textContent = " " + v.length + " clips shown"; }
-  function renderProgress(){ const done = c => data[c.id] && data[c.id].done && !data[c.id].bad; const bad = c => data[c.id] && data[c.id].bad;
+  // tagging goals per clip type (docs/metric_per_sound.md): enough needed sounds for recall, enough
+  // empty clips for precision, enough covered sounds for the hard case
+  const GOALS = {unseen_ambient:[25,"unseen"], mixed:[25,"mixed"], seen_ambient:[25,"seen"], no_ambient:[25,"no-ambient"], audioset_strong:[30,"slice B"]};
+  function renderGoals(){ const done = c => data[c.id] && data[c.id].done && !data[c.id].bad;
+    const per = {}; let needed = 0, covered = 0, empty = 0;
+    CLIPS.forEach(c => { if(!done(c)) return; per[c.tag] = (per[c.tag]||0) + 1; const a = data[c.id];
+      const need = (a.sounds||[]).filter(s => !s.obvious && !s.visible); needed += need.length; covered += need.filter(s => s.masked).length; if(!need.length) empty++; });
+    const cells = Object.entries(GOALS).map(([tag,[goal,name]]) => { const n = per[tag]||0; const ok = n >= goal;
+      return `<span style="display:inline-block;margin-right:14px;padding:2px 8px;border-radius:6px;background:${ok?"#dfe":"#fee"};color:${ok?"#063":"#900"}"><b>${name}</b> ${n} / ${goal}</span>`; }).join("");
+    $("goals").innerHTML = `<b>Goals</b> — clips done per type: ${cells}<br><span class="hint">needed sounds (heard, not visible): <b>${needed}</b> / 120 &nbsp; covered by speech or music: <b>${covered}</b> / 40 &nbsp; clips where nothing is needed: <b>${empty}</b> / 30</span>`; }
+  function renderProgress(){ renderGoals(); const done = c => data[c.id] && data[c.id].done && !data[c.id].bad; const bad = c => data[c.id] && data[c.id].bad;
     const n = CLIPS.filter(done).length, nb = CLIPS.filter(bad).length;
     const per = {}; CLIPS.forEach(c => { const k = SHORT[c.tag] || c.tag || "?"; per[k] = per[k] || [0,0]; per[k][1]++; if(done(c)) per[k][0]++; });
     $("progress").textContent = n + " done" + (nb ? ", " + nb + " bad" : "") + " of " + CLIPS.length + "  —  " + Object.entries(per).map(([k,v]) => k + " " + v[0] + "/" + v[1]).join(", ");
