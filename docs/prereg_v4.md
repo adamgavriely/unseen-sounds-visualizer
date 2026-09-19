@@ -279,6 +279,14 @@ row's grounded references (`slurm/job_xref_judge.sh`, `--ref-tag`), reported bes
 which is the decisive test of the detector question. The independent reference of v2
 (`protocol_reference_indep_v2*.json`) is not used because it was found at chance on silence.
 
+**Same-answer-sheet re-judge outcome (2026-09-21 00:40, job 30785966):** swapping the
+references changes nothing — v4ab2 judged against BEATs' references: gated 2.33 (own: 2.35);
+v4b2 judged against PSED's references: 2.82 (own: 2.80). Gated PSED − BEATs on BEATs'
+sheet −0.47 [−0.72, −0.23], on PSED's sheet −0.47 [−0.70, −0.26]. So the model-derived
+reference is **not** what separates the rows; the judge is reacting to the pictures and
+descriptions themselves (undrawable texture labels, whole-clip spans). The confound is
+disclosed but does not rescue PSED.
+
 ### v4ab3 / v4b3 — DECLARED 2026-09-21 00:30 (Adam approved; before any run): the ten-Fable panel's decisive test
 
 Ten independent Fables (domain shift, filter mismatch, span length, judge reference,
