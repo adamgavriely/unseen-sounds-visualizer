@@ -244,3 +244,16 @@ Decision rule: SAM 3 replaces OWLv2 in stage 2 iff its agreement is higher AND i
 off-screen recall is not lower by more than 2 points; otherwise OWLv2 stays and the "2"
 swap is dropped. The DCASE label is geometric (in field of view), so both models are judged
 against the same imperfect gold; only the comparison is read, not the absolute numbers.
+
+**Outcome (2026-09-20 06:30, jobs 30723804/30723805, L40S / RTX 6000 Ada):** on the DCASE
+visibility set (256 / 253 of the 258 events scored; a few clips yielded no frames)
+SAM 3 (bar 0.5): agreement **66.8 %**, on-screen recall 42.1 %, off-screen recall 90.8 %,
+AUROC 0.767. OWLv2 (bar 0.20): agreement **69.2 %**, on-screen recall 62.7 %, off-screen
+recall 75.6 %, AUROC 0.798. SAM 3's agreement is lower and its raw score separates on/off
+worse (AUROC), so by the declared rule **OWLv2 stays in stage 2 and the "2" swap is dropped**.
+Noted for the discussion: SAM 3 is the more conservative detector (fewer "visible" calls →
+90.8 % off-screen recall), which is the direction that avoids wrong suppressions, but it
+misses 58 % of the sources DCASE marks on screen; on the same 258 events the Qwen3.8
+reasoning check reached 69.8 % agreement (`eval_dcase_visibility_q38_direct.json`), so
+the VLM stays the stronger visibility witness and the stage-2 detector remains a supporting
+vote under `VISIBILITY_RULE`.

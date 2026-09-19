@@ -33,18 +33,15 @@ def score_sam3(frames, phrase, device):
     import torch
     from src.stage2_video_understanding.sam3 import _load
     mdl, proc = _load(config.SAM3_MODEL, device)
-    best = 0.0
-    for img in frames:
-        inputs = proc(images=[img], text=[phrase], return_tensors="pt").to(device)
-        if "pixel_values" in inputs:
-            inputs["pixel_values"] = inputs["pixel_values"].to(mdl.dtype)
-        with torch.no_grad():
-            out = mdl(**inputs)
-        res = proc.post_process_instance_segmentation(out, threshold=0.05, mask_threshold=0.5,
-                                                      target_sizes=inputs.get("original_sizes").tolist())[0]
-        if len(res["scores"]):
-            best = max(best, float(res["scores"].max()))
-    return best
+    # all frames in one forward (the frame list with the phrase repeated), as sam3.py does per concept
+    inputs = proc(images=list(frames), text=[phrase] * len(frames), return_tensors="pt").to(device)
+    if "pixel_values" in inputs:
+        inputs["pixel_values"] = inputs["pixel_values"].to(mdl.dtype)
+    with torch.no_grad():
+        out = mdl(**inputs)
+    res = proc.post_process_instance_segmentation(out, threshold=0.05, mask_threshold=0.5,
+                                                  target_sizes=inputs.get("original_sizes").tolist())
+    return max((float(r["scores"].max()) for r in res if len(r["scores"])), default=0.0)
 
 
 def score_owl(frames, phrase, device):
@@ -70,7 +67,14 @@ def main():
     ap.add_argument("--split", default="dev-test-tau")
     ap.add_argument("--n", type=int, default=300)
     ap.add_argument("--seed", type=int, default=7)
+    ap.add_argument("--device", default=None)
     a = ap.parse_args()
+    if a.device:
+        config.DEVICE = a.device
+    elif config.DEVICE == "cpu":
+        import torch
+        config.DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+    print(f"[dcase-det] device {config.DEVICE}")
     out = _ROOT / "benchmark" / f"eval_dcase_visibility_{a.backend}.json"
     bar = config.SAM3_THRESHOLD if a.backend == "sam3" else config.OWL_THRESHOLD
     scorer = score_sam3 if a.backend == "sam3" else score_owl
