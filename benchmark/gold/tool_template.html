@@ -81,7 +81,7 @@ select{font:inherit;font-size:14px;padding:4px}
     <h2>1 · Sounds — everything is pre-filled by the system; correct what is wrong</h2>
     <p class="hint">Each row is a sound the detector heard, with its time, whether the system judged the source <b>visible</b>, whether the picture alone makes it <b>obvious</b>, its <b>importance</b> (1 background · 2 context · 3 safety/plot), and whether <b>speech/music covers it</b>. Listen once, then: <b>×</b> anything you do not hear, <b>+ add</b> anything missed, and flip any tick that is wrong. Times: fix with <kbd>[</kbd> <kbd>]</kbd> only if clearly off.</p>
     <div id="sounds"></div>
-    <div class="nav"><button id="addSound">+ add a sound (A)</button>
+    <div class="nav"><button id="addSound">+ add a sound (A)</button> <button id="orderBtn" class="small" title="sort the sounds by start time">order by time</button>
       <button id="resetClip" class="small" title="discard my edits on this clip and reload the system's pre-fill">reset this clip to the pre-fill</button>
       <button id="showCands" class="small">show the detector's full list again</button></div>
     <div class="cands" id="cands"></div>
@@ -94,7 +94,6 @@ select{font:inherit;font-size:14px;padding:4px}
     <textarea id="sentence" placeholder="e.g. A siren is approaching from somewhere behind the camera; the ambulance is never in view."></textarea>
     <div class="nav">
       <button id="nothingBtn" class="small">nothing beyond the picture</button>
-      <button id="orderBtn" class="small" title="sort the sounds by start time">order by time</button>
       <button id="mergeBtn" class="small" title="add the detectors' suggestions that are not in the list yet (also for clips already marked done)">add detector suggestions</button>
       <label class="hint"><input type="checkbox" id="picDue"> a picture is due for this clip (at least one sound heard but not seen)</label>
       <label class="hint"><input type="checkbox" id="unsure"> unsure / discuss</label>
