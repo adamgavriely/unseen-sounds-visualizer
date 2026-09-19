@@ -91,3 +91,10 @@ changes; `slurm/job_sliceb_render.sh`, `--clip-dir data/input/audioset_strong`, 
 `v4ab_sliceB`) is run once on all 111 slice-B clips. Per-sound results on slice B are
 reported separately from the 100-clip benchmark, noting that slice B was earlier used to
 *evaluate* the detector (never to select its bar).
+
+**Addendum (2026-09-20 09:10):** the detector-arm rule (docs/prereg_v4.md) kept BEATs (v4ab
+gated 2.60 < v4b 2.85, CI below 0), so the adopted v4 configuration is v4b. The v4b pipeline
+(BEATs + Qwen3.8-27B; FLUX; same three systems; render only) is therefore rendered once on
+slice B as well (`slurm/job_sliceb_render_v4b.sh`, tag `v4b_sliceB`), queued before any
+slice-B annotation is received. Both rows are scored per sound on both gold sets; the
+v4ab-vs-v4b per-sound comparison is the second, pre-declared view of the detector question.
