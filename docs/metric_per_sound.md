@@ -81,3 +81,13 @@ Gold: siren 12–18 s (needed, importance 3); dog 30–32 s (obvious, importance
 SIREN 13–16, DOG 30–32, HORN 40–42. → SIREN = hit (1 s late); DOG = visible-picture;
 HORN = phantom. Recall 1/1. Precision-strict 1/3, F1-strict 0.50.
 Precision-phantom 1/2, F1-phantom 0.67. Weighted (siren 3): P-strict 3/5 = 0.60, F1 = 0.75.
+
+## Gold set 2 run declared (2026-09-20 08:00, before any slice-B annotation is received)
+
+Before receiving any slice-B annotations (obvious / importance), the frozen v4ab pipeline
+(commit of this note; PSED at 0.15 chosen on the calibration set, not on slice B; Qwen3.8-27B
+gate; FLUX; systems proposed / blind / audio-caption; render only, no judge, no parameter
+changes; `slurm/job_sliceb_render.sh`, `--clip-dir data/input/audioset_strong`, tag
+`v4ab_sliceB`) is run once on all 111 slice-B clips. Per-sound results on slice B are
+reported separately from the 100-clip benchmark, noting that slice B was earlier used to
+*evaluate* the detector (never to select its bar).

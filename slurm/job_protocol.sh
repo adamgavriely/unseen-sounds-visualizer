@@ -51,6 +51,7 @@ fi
 
 GEN="${GEN:-diffusion}"
 LIMIT="${LIMIT:-}"
+CLIP_DIR="${CLIP_DIR:-}"       # run on a folder of videos instead of the tagged benchmark (slice B)
 TAG="${TAG:-}"
 PHASE="${PHASE:-all}"
 JUDGE="${JUDGE:-}"
@@ -95,6 +96,7 @@ if "${V4}":
 config.TRANSCRIBE = True           # the reference-builder needs the transcript
 argv = ["run_protocol", "--phase", phase]
 if "${LIMIT}":    argv += ["--limit", "${LIMIT}"]
+if "${CLIP_DIR}": argv += ["--clip-dir", "${CLIP_DIR}"]
 if "${TAG}":      argv += ["--tag", "${TAG}"]
 if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
 if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]

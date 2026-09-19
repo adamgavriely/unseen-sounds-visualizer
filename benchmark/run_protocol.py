@@ -79,6 +79,9 @@ def desc_file(tag: str) -> Path:
         f"protocol_descriptions_{tag}.json")
 
 
+CLIP_DIR = None      # set from --clip-dir: run on every video of a folder instead (slice B, gold set 2)
+
+
 def clips_to_run(limit):
     """Benchmark clips that carry a human label, sampled EVENLY across the tags.
 
@@ -88,6 +91,9 @@ def clips_to_run(limit):
     the blind baseline is flattered. Sample round-robin across the four tags instead,
     with a fixed seed so runs are reproducible and resumable.
     """
+    if CLIP_DIR:
+        vids = sorted(p for p in Path(CLIP_DIR).iterdir() if p.suffix.lower() in (".mp4", ".webm", ".mkv", ".mov"))
+        return [(p, "unseen_ambient") for p in vids][: limit or None]
     tags = json.loads(TAGS.read_text(encoding="utf-8")) if TAGS.exists() else {}
     by_tag = {}
     for key, val in tags.items():
@@ -435,9 +441,13 @@ def main():
                     help="discard existing scores and re-judge the cached descriptions")
     ap.add_argument("--work-tag", default=None,
                     help="describe the rendered artifacts of this other tag (with --skip-render)")
+    ap.add_argument("--clip-dir", default=None,
+                    help="run on every video in this folder instead of the tagged benchmark (slice B)")
     ap.add_argument("--skip-render", action="store_true",
                     help="reuse existing pipeline artifacts instead of re-rendering")
     args = ap.parse_args()
+    global CLIP_DIR
+    CLIP_DIR = args.clip_dir
 
     judge_model = args.judge or config.JUDGE_MODEL
     backends = Backends(config.VLM_MODEL, judge_model, config.DEVICE)
