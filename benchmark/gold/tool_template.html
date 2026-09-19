@@ -58,6 +58,16 @@ select{font:inherit;font-size:14px;padding:4px}
   <div class="nav">
     <button id="prevBtn">← previous</button>
     <select id="clipSel"></select>
+    <div id="filters" class="hint" style="margin-top:6px">
+      show: <label><input type="checkbox" class="ftag" value="unseen_ambient" checked> unseen</label>
+      <label><input type="checkbox" class="ftag" value="mixed" checked> mixed</label>
+      <label><input type="checkbox" class="ftag" value="seen_ambient" checked> seen</label>
+      <label><input type="checkbox" class="ftag" value="no_ambient" checked> no-ambient</label>
+      <label><input type="checkbox" class="ftag" value="audioset_strong" checked> slice B</label>
+      &nbsp;|&nbsp; <label><input type="checkbox" id="fTestOnly" checked> the 100 protocol clips only</label>
+      <label><input type="checkbox" id="fHideDone"> hide done / bad</label>
+      <span id="fCount"></span>
+    </div>
     <button id="nextBtn">next →</button>
     <span class="hint" id="progress"></span>
   </div>
@@ -139,8 +149,15 @@ const CLIPS = /*__CLIPS__*/[];
     return data[c.id]; }
   function imp(v){ v = +v; return (v === 1 || v === 2 || v === 3) ? v : 2; }
 
-  function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; CLIPS.forEach((c,i)=>{ const o = document.createElement("option"); o.value = i; o.textContent = (i+1) + " · " + c.id + (data[c.id] && data[c.id].done ? " ✓" : ""); s.appendChild(o); }); s.value = idx; }
-  function renderProgress(){ const n = CLIPS.filter(c => data[c.id] && data[c.id].done).length; $("progress").textContent = n + " / " + CLIPS.length + " done"; $("progressList").textContent = CLIPS.map((c,i)=> (data[c.id]&&data[c.id].done) ? "✓" : "·").join(" "); renderSel(); }
+  const SHORT = {unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-amb", audioset_strong:"sliceB"};
+  function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; const v = view(); v.forEach(i => { const c = CLIPS[i], a = data[c.id]; const o = document.createElement("option"); o.value = i;
+      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", extra" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
+    s.value = idx; $("fCount").textContent = " " + v.length + " clips shown"; }
+  function renderProgress(){ const done = c => data[c.id] && data[c.id].done && !data[c.id].bad; const bad = c => data[c.id] && data[c.id].bad;
+    const n = CLIPS.filter(done).length, nb = CLIPS.filter(bad).length;
+    const per = {}; CLIPS.forEach(c => { const k = SHORT[c.tag] || c.tag || "?"; per[k] = per[k] || [0,0]; per[k][1]++; if(done(c)) per[k][0]++; });
+    $("progress").textContent = n + " done" + (nb ? ", " + nb + " bad" : "") + " of " + CLIPS.length + "  —  " + Object.entries(per).map(([k,v]) => k + " " + v[0] + "/" + v[1]).join(", ");
+    $("progressList").textContent = view().map(i => bad(CLIPS[i]) ? "✗" : (done(CLIPS[i]) ? "✓" : "·")).join(" "); renderSel(); }
   function renderSounds(){
     const a = current(); const box = $("sounds"); box.innerHTML = "";
     if(!a.sounds.length){ box.innerHTML = '<p class="hint">no sounds yet — add one, or tick "nothing beyond the picture" below if there is no ambient sound worth noting</p>'; }
@@ -194,9 +211,19 @@ const CLIPS = /*__CLIPS__*/[];
   $("unsure").addEventListener("change", ()=>{ current().unsure = $("unsure").checked; touch(); });
   $("bad").addEventListener("change", ()=>{ current().bad = $("bad").checked; touch(); });
   $("nothingBtn").addEventListener("click", ()=>{ $("sentence").value = "nothing beyond the picture"; current().sentence = $("sentence").value; $("picDue").checked = false; current().picture_due = false; touch(); });
-  function go(i){ idx = (i + CLIPS.length) % CLIPS.length; renderClip(); }
-  $("prevBtn").addEventListener("click", ()=>go(idx-1)); $("nextBtn").addEventListener("click", ()=>go(idx+1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
-  $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim(); touch(); renderProgress(); go(idx+1); });
+  function view(){ const tags = new Set([...document.querySelectorAll(".ftag:checked")].map(x=>x.value));
+    return CLIPS.map((c,i)=>i).filter(i => { const c = CLIPS[i], a = data[c.id];
+      if(c.tag && !tags.has(c.tag)) return false;
+      if($("fTestOnly").checked && c.split && c.split !== "test") return false;
+      if($("fHideDone").checked && a && (a.done || a.bad)) return false;
+      return true; }); }
+  function go(i){ const v = view(); if(!v.length){ $("fCount").textContent = " (nothing matches the filter)"; return; }
+    if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
+    idx = i; renderClip(); }
+  function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); }
+  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone").forEach(el => el.addEventListener("change", ()=>{ renderSel(); renderProgress(); go(idx); }));
+  $("prevBtn").addEventListener("click", ()=>goStep(-1)); $("nextBtn").addEventListener("click", ()=>goStep(1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
+  $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); goStep(1); });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
   document.addEventListener("keydown", e=>{ const tag = (e.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea"||tag==="select") return;
     const v = $("video"); const a = current();

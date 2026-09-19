@@ -76,7 +76,8 @@ def build_default():
         if rec["system"] == "proposed":
             results[rec["clip"]] = rec
     clips = []
-    for rec in load("test"):
+    pool = [(r, "test") for r in load("test")] + [(r, "dev") for r in load("dev")]   # test = the 100 protocol clips; dev = the rest, to browse
+    for rec, split in pool:
         video = _find_clip(rec["clip"])
         if video is None:
             continue
@@ -97,7 +98,7 @@ def build_default():
         pr = results.get(rec["clip"], {})
         ref = pr.get("reference", "")
         clips.append({"id": rec["clip"], "src": "../../" + rel, "duration": round(rec["duration"], 1), "candidates": cands[:8],
-                      "tag": rec["tag"], "picture_due": rec["tag"] in DUE,
+                      "tag": rec["tag"], "split": split, "picture_due": rec["tag"] in DUE,
                       "sentence": ref if ref and ref != "nothing beyond the picture" else "nothing beyond the picture"})
     return clips
 
