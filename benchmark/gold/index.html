@@ -85,6 +85,7 @@ select{font:inherit;font-size:14px;padding:4px}
       <button id="nothingBtn" class="small">nothing beyond the picture</button>
       <label class="hint"><input type="checkbox" id="picDue"> a picture is due for this clip (at least one sound heard but not seen)</label>
       <label class="hint"><input type="checkbox" id="unsure"> unsure / discuss</label>
+      <label class="hint" style="color:#b33"><input type="checkbox" id="bad"> this is a bad video — drop it from the benchmark</label>
     </div>
     <textarea id="note" placeholder="optional note (why it was hard, what was ambiguous)" style="min-height:40px;margin-top:6px"></textarea>
   </div>
@@ -123,7 +124,7 @@ const CLIPS = [{"id": "ambient_citywalk_cairo_834.mp4", "src": "../../data/input
   function load(){ try{ data = JSON.parse(localStorage.getItem(key()) || "{}"); }catch(e){ data = {}; } }
   function save(){ try{ localStorage.setItem(key(), JSON.stringify(data)); $("saved").textContent = "saved " + new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"}); }catch(e){ $("saved").textContent = "could not save in this browser — export often"; } renderProgress(); }
   function human(c){ return c.tag === "audioset_strong" || !!(c.candidates[0] && c.candidates[0].gate === "human"); }
-  function blank(c){ return {clip:c.id, tag:c.tag || null, sounds:[], sentence:"", picture_due:false, unsure:false, note:"", done:false, opened_candidates:false, updated:null}; }
+  function blank(c){ return {clip:c.id, tag:c.tag || null, sounds:[], sentence:"", picture_due:false, unsure:false, bad:false, note:"", done:false, opened_candidates:false, updated:null}; }
   function current(){ const c = CLIPS[idx]; if(!data[c.id]){ data[c.id] = blank(c);
       data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, obvious:!!k.obvious, importance:imp(k.importance), masked:!!k.masked, start:k.start, end:k.end, from_detector:!human(c), from_human_label:human(c), suggested:true, gate:k.gate}));
       data[c.id].sentence = c.sentence || ""; data[c.id].picture_due = !!c.picture_due; data[c.id].prefilled = true; data[c.id].opened_candidates = true; }
@@ -166,7 +167,7 @@ const CLIPS = [{"id": "ambient_citywalk_cairo_834.mp4", "src": "../../data/input
     $("clipName").textContent = (idx+1) + " / " + CLIPS.length + " · " + c.id;
     $("clipMeta").textContent = c.duration + " s" + (human(c) ? " · AudioSet-Strong: labels and times are human; you decide visible / covered and write the sentence" : "");
     $("video").src = c.src; $("video").load();
-    $("sentence").value = a.sentence || ""; $("picDue").checked = !!a.picture_due; $("unsure").checked = !!a.unsure; $("note").value = a.note || "";
+    $("sentence").value = a.sentence || ""; $("picDue").checked = !!a.picture_due; $("unsure").checked = !!a.unsure; $("bad").checked = !!a.bad; $("note").value = a.note || "";
     $("showCands").textContent = human(c) ? "show the full human-label list again" : "show the detector's full list again";
     $("cands").classList.toggle("on", !!a.opened_candidates); renderCands();
     renderSounds(); renderSel(); $("saved").textContent = a.done ? "✓ marked done" : "";
@@ -184,6 +185,7 @@ const CLIPS = [{"id": "ambient_citywalk_cairo_834.mp4", "src": "../../data/input
   $("note").addEventListener("input", ()=>{ current().note = $("note").value; touch(); });
   $("picDue").addEventListener("change", ()=>{ current().picture_due = $("picDue").checked; touch(); });
   $("unsure").addEventListener("change", ()=>{ current().unsure = $("unsure").checked; touch(); });
+  $("bad").addEventListener("change", ()=>{ current().bad = $("bad").checked; touch(); });
   $("nothingBtn").addEventListener("click", ()=>{ $("sentence").value = "nothing beyond the picture"; current().sentence = $("sentence").value; $("picDue").checked = false; current().picture_due = false; touch(); });
   function go(i){ idx = (i + CLIPS.length) % CLIPS.length; renderClip(); }
   $("prevBtn").addEventListener("click", ()=>go(idx-1)); $("nextBtn").addEventListener("click", ()=>go(idx+1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));

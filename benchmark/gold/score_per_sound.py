@@ -38,6 +38,8 @@ def load_gold(paths):
     for p in paths:
         d = json.loads(Path(p).read_text(encoding="utf-8"))
         for c in d.get("clips", []):
+            if c.get("bad"):            # annotator marked the video as unusable: out of the benchmark
+                continue
             if not c.get("done"):
                 continue
             stem = Path(c["clip"]).stem
