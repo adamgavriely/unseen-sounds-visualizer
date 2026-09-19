@@ -128,6 +128,9 @@ def write(clips, name):
     clips.sort(key=lambda c: c["id"])
     html = (HERE / "tool_template.html").read_text(encoding="utf-8")
     html = html.replace("/*__CLIPS__*/[]", json.dumps(clips, ensure_ascii=False))
+    # distinct title per page: the browser store key is derived from it
+    html = html.replace("<title>Gold set annotation</title>",
+                        "<title>Gold set annotation" + (" (slice B)" if "audioset" in name else " (benchmark)") + "</title>")
     (HERE / name).write_text(html, encoding="utf-8")
     print(f"-> {HERE / name}: {len(clips)} clips")
 
