@@ -168,6 +168,46 @@ labelled sensitivity row: a stricter bar recovers the score, which says the dete
 per-sound metric (F1-strict on Adam's annotations, both gold sets) is the second, pre-declared
 view of the same question and is still to come.
 
+### Post-hoc diagnosis of the v4ab drop (2026-09-20 09:30, read on the benchmark outputs — disclosed) and DRAFT row v4ab2 (not run; awaits Adam's approval and the per-sound F1 gate)
+
+The first explanation ("PSED fires more") is false: on the calibration set BEATs@0.35 fires
+15.0 spans/min, PSED@0.15 12.3/min (`benchmark/psed_span_match.json`). The outputs show two
+*integration* defects instead, both BEATs-specific assumptions the pipeline made:
+1. **Vocabulary leak.** The "salient non-speech" filter (`src/labels.py`) lists BEATs' 527
+   label names; PSED's AudioSet-Strong names slip through it. Blind-system label counts,
+   v4ab vs v4b: "Breathing" 17 vs 0, "Video game sound" 15 vs 0, "Human voice" 8 vs 0,
+   "Laughter" 6, "Footsteps" 12 — human/vocal and meta classes the pipeline should never
+   depict. 2.33 events per clip vs 2.01.
+2. **Span rule.** Median picture span 10.0 s under PSED vs 4.0–5.7 s under BEATs (spans like
+   [0, 16 s]): onset refinement is off for PSED and the hysteresis low bar (bar/2 = 0.075)
+   lets a span run through the clip, so pictures stay up far longer — the rubric judge counts
+   that as redundant.
+
+**Draft v4ab2 (Fable-reviewed; to be fixed on the calibration set only, applied to BOTH
+detectors, and re-tested under the unchanged adoption rule; v4ab stays in the table as the
+failed row):**
+- Filter by ontology *branch*, not by class name: exclude the AudioSet branches
+  "Human voice" (speech, shouting, laughter, singing …), "Respiratory sounds" (breathing,
+  cough, sneeze), "Channel, environment and background" and the meta-class branch that
+  holds "Video game sound" / "Sound effect". **Open question for Adam:** "Crying, sobbing"
+  and "Baby cry" sit under Human voice; footsteps under Human locomotion. Option A excludes
+  the whole Human voice branch (loses baby cry); Option B keeps the Crying subtree and
+  Human locomotion (declared exceptions). Recommended: B.
+- Span rule, detector-agnostic: hysteresis low bar = bar (no extension below the bar); a
+  span ends after 1.0 s continuously below the bar; hard cap = the 90th percentile of BEATs'
+  span length on the calibration set (value to be computed and written here before the run).
+  ONSET_CAM stays off for PSED; bar 0.15 unchanged; nothing else.
+- If the filter changes BEATs' output, v4b is re-rendered under the same filter as the
+  control (same clips, same judge), otherwise the comparison is confounded.
+- Gate before running: the per-sound F1-strict on Adam's annotations. v4ab2 is run only if
+  PSED's F1-strict ≥ BEATs' on the filtered class set on the 100-clip benchmark; if PSED is
+  weaker on the sounds that matter, integration fixes cannot rescue it and the row is closed.
+- Thesis wording: "The pre-registered detector swap failed (v4ab). Inspection of outputs,
+  disclosed as post hoc, revealed vocabulary coupling: the salient-sound filter and the span
+  rule assumed the BEATs label set and clip-level scores. Both were generalised to
+  detector-agnostic rules, fixed on the calibration set, and the swap re-tested as v4ab2
+  under the original adoption rule." v4ab and v4ab2 reported side by side.
+
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient
