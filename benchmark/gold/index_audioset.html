@@ -94,6 +94,7 @@ select{font:inherit;font-size:14px;padding:4px}
     <textarea id="sentence" placeholder="e.g. A siren is approaching from somewhere behind the camera; the ambulance is never in view."></textarea>
     <div class="nav">
       <button id="nothingBtn" class="small">nothing beyond the picture</button>
+      <button id="orderBtn" class="small" title="sort the sounds by start time">order by time</button>
       <button id="mergeBtn" class="small" title="add the detectors' suggestions that are not in the list yet (also for clips already marked done)">add detector suggestions</button>
       <label class="hint"><input type="checkbox" id="picDue"> a picture is due for this clip (at least one sound heard but not seen)</label>
       <label class="hint"><input type="checkbox" id="unsure"> unsure / discuss</label>
@@ -183,12 +184,13 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
     const per = {}; CLIPS.forEach(c => { const k = SHORT[c.tag] || c.tag || "?"; per[k] = per[k] || [0,0]; per[k][1]++; if(done(c)) per[k][0]++; });
     $("progress").textContent = n + " done" + (nb ? ", " + nb + " bad" : "") + " of " + CLIPS.length + "  —  " + Object.entries(per).map(([k,v]) => k + " " + v[0] + "/" + v[1]).join(", ");
     $("progressList").textContent = view().map(i => bad(CLIPS[i]) ? "✗" : (done(CLIPS[i]) ? "✓" : "·")).join(" "); renderSel(); }
+  function sortSounds(a){ const selObj = a.sounds[selSound];
+    a.sounds.sort((p, q) => ((p.start ?? 0) - (q.start ?? 0)) || ((p.end ?? 0) - (q.end ?? 0)));
+    if(selObj){ const k = a.sounds.indexOf(selObj); if(k >= 0) selSound = k; } }
   function renderSounds(){
     const a = current(); const box = $("sounds"); box.innerHTML = "";
-    // in time order, so the list reads like the clip; the selected sound stays selected
-    const selObj = a.sounds[selSound];
-    a.sounds.sort((p, q) => ((p.start ?? 0) - (q.start ?? 0)) || ((p.end ?? 0) - (q.end ?? 0)));
-    if(selObj){ const k = a.sounds.indexOf(selObj); if(k >= 0) selSound = k; }
+    // time order once when the clip opens (and on the "order by time" button), not on every edit
+    if(!a._ordered){ sortSounds(a); a._ordered = true; }
     if(!a.sounds.length){ box.innerHTML = '<p class="hint">no sounds yet — add one, or tick "nothing beyond the picture" below if there is no ambient sound worth noting</p>'; }
     a.sounds.forEach((s,i)=>{
       const d = document.createElement("div"); d.className = "sound" + (i===selSound ? " sel" : "") + (s.suggested ? " suggested" : "") + (s.gate === "human" ? " human" : "");
@@ -239,6 +241,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
   $("picDue").addEventListener("change", ()=>{ current().picture_due = $("picDue").checked; touch(); });
   $("unsure").addEventListener("change", ()=>{ current().unsure = $("unsure").checked; touch(); });
   $("bad").addEventListener("change", ()=>{ current().bad = $("bad").checked; touch(); });
+  $("orderBtn").addEventListener("click", ()=>{ sortSounds(current()); touch(); renderSounds(); });
   $("mergeBtn").addEventListener("click", ()=>{ const n = mergeSuggestions(CLIPS[idx], current()); touch(); renderClip(); $("status").textContent = n ? ("added " + n + " suggestion(s) — untick or delete the wrong ones") : "no new suggestions for this clip"; });
   $("nothingBtn").addEventListener("click", ()=>{ $("sentence").value = "nothing beyond the picture"; current().sentence = $("sentence").value; $("picDue").checked = false; current().picture_due = false; touch(); });
   function view(){ const tags = new Set([...document.querySelectorAll(".ftag:checked")].map(x=>x.value));
@@ -247,7 +250,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
       if($("fTestOnly").checked && c.split && c.split !== "test") return false;
       if($("fHideDone").checked && a && (a.done || a.bad)) return false;
       return true; }); }
-  function go(i){ const v = view(); if(!v.length){ $("fCount").textContent = " (nothing matches the filter)"; return; }
+  function go(i){ if(data[CLIPS[idx]?.id]) delete data[CLIPS[idx].id]._ordered; const v = view(); if(!v.length){ $("fCount").textContent = " (nothing matches the filter)"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
     idx = i; renderClip(); saveFilters(); }
   function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); saveFilters(); }
