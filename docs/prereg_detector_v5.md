@@ -98,3 +98,70 @@ good in the first pass (masked 48% → 68% on 31 events) did so by giving up 7 p
 recall on the hundreds of other events — an artefact of the tiny masked count, caught by
 the all-events guard. Per the pre-registration V1–V3 are not run on slice B. V4 (speech
 removal as a witness) is still pending its environment.
+
+## Amendment 2 (2026-09-20, before any separation run): V4 becomes "cleaned-audio views", three views, one threshold
+
+*Declared after a five-reviewer pre-mortem (separation, statistics, engineering, examiner,
+systems) and two CPU pre-checks on cached scores. Adam approved the three design choices.*
+
+**Motive and its provenance.** Profiling PSED's 83 misses on slice B (`scripts/psed_miss_profile.py`)
+showed that recall depends on what covers the sound, not on its length: speech-covered 59 %
+(90 sounds), music-covered 63 % (87), other sounds only 85 % (26); by length 60–78 % with no
+trend. This profile was read on the *test* slice, so the motive is post hoc; on the
+calibration set the speech-covered group replicates (52 %, 13/25) and the music group is too
+small to say (6/6). V4 is therefore confirmatory only through the pass rule below; its motive
+is disclosed as test-set inspection.
+
+**Ceiling (pre-check).** 48 of the 83 misses have a PSED family score < 0.05 inside the gold span
+on the original audio; a rule that only reconsiders PSED's own loose candidates cannot reach
+them: best possible masked recall 80 % (188/236). Reaching the 70 % bar needs 13 of the 35
+reachable misses rescued at no extra false alarms.
+
+**Views.** SAM-Audio (`facebook/sam-audio-base`, prompts `"speech"` and `"music"`,
+`predict_spans=False`, `reranking_candidates=1`, fixed seed per clip). A = original; B = speech
+removed; C = music removed; D = both removed (original minus both stems). Each view = 0.9 ×
+residual + 0.1 × original, trimmed to the original length, resampled to 16 kHz. PSED scores all
+four. Prompt fallback: if on the first 20 calibration clips more than 25 % of gold
+consequential sounds lose > 0.3 of their family score in B or C, the prompts switch to
+`"a person talking"` / `"background music"` — decided before the full run, recorded here.
+
+**Rule (single threshold).** Candidate spans come from PSED's loose boxes (bar 0.05, as in
+step 0). Score of a candidate = max over {A, B, C, D} of the PSED family score inside its span.
+Kept iff score ≥ τ. One τ for all views. PSED's own detections at its calibrated bar (0.15 on
+A) are never removed. Two candidate sources, both declared, nothing else:
+- **V4-orig**: candidates = loose boxes on A only (ceiling 80 %).
+- **V4-union**: candidates = loose boxes on any of A–D (merged per family across views before
+  anything else; higher ceiling, more exposure to separation artefacts).
+
+**Selection (calibration set only).** τ on a 0.01 grid = the loosest value with ≤ 2.6 false spans
+per minute (same false-alarm definition as before: a span is false if it overlaps no
+same-family gold event by ≥ 0.5 s or half its length); split-half both directions (seed 0).
+Selection metric = recall over *all* consequential events (the calibration set has only 31
+masked ones); masked recall reported beside. Guards as before: FP target met on the full set
+and the held-out half; all-events recall ≥ PSED − 1 point. Go/no-go before slice B:
+AUROC(max-over-views) ≥ AUROC(A) + 0.02 on the candidate boxes AND held-half consequential
+recall ≥ PSED + 2 points at equal false alarms. Between V4-orig and V4-union: the higher
+held-half recall; ties under 2 points → V4-orig.
+
+**Slice B (one run).** Pass iff masked-consequential recall ≥ 70 % at ≤ 2.6 false spans/min AND
+the paired clip-level bootstrap (1000 resamples, seed 0) 95 % interval of (V4 − PSED) masked
+recall lies above 0. 66–69 % or an interval touching 0 = "no detectable gain", reported as such.
+Report: false-alarm rate reached on both sets; τ; ceiling counts; recall with the clip holding
+the most misses removed; 2×2 event agreement PSED vs V4 (McNemar counts, descriptive only —
+events cluster in clips); per-view attribution of every rescued detection; recall-vs-false-alarm
+curves for PSED, V4 and each single view; onset error of rescued spans (onset = first frame
+≥ τ in the winning view); QC per clip (residual lag, length, RMS ratio, NaN, clipping);
+artefact families (families that rise > 0.2 on clips where A has no speech); GPU hours and
+cost; checkpoints, prompts, seeds.
+
+**Downstream, if it passes.** Score passed to stage 5 = rescaled max-over-views with
+`source_view` recorded; duplicates merged per family across views before the gate; applied to
+every clip (no "only if speech present" switch); new row name, nothing else changed; the
+100-clip benchmark judged on F1-strict with its CI, since a recall gain can still lower F1.
+
+**Both result paragraphs, written now.** *Pass:* "Removing speech/music with a frozen separator
+and re-scoring with the same detector recovers N of the 35 reachable buried sounds at equal
+false alarms (CI …); 48 sounds remain inaudible to the detector even after cleaning."
+*No gain:* "Cleaning the audio does not help a frozen detector at matched false alarms (CI
+includes 0); the buried sounds it misses score below 0.05 on every view — attempt thirteen
+closes the detector work; the contribution is the benchmark and the negative result."
