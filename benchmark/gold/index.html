@@ -148,8 +148,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
       data[c.id].sounds = c.candidates.map(k => ({label:k.label, family:k.family, visible:!!k.visible, obvious:!!k.obvious, importance:imp(k.importance), masked:!!k.masked, start:k.start, end:k.end, from_detector:!human(c), from_human_label:human(c), suggested:true, gate:k.gate}));
       data[c.id].sentence = c.sentence || ""; data[c.id].picture_due = !!c.picture_due; data[c.id].prefilled = true; data[c.id].opened_candidates = true; }
     (data[c.id].sounds || []).forEach(s => { if(s.obvious == null) s.obvious = false; if(s.importance == null) s.importance = 2; });  // records saved before these fields existed
-    if(!data[c.id].done && !data[c.id].bad) mergeSuggestions(c, data[c.id]);   // new detector suggestions reach clips tagged before they existed
-    return data[c.id]; }
+    return data[c.id]; }   // detector suggestions are added only by the "add detector suggestions" button (never re-inserted)
   function mergeSuggestions(c, a){ let added = 0; (c.candidates || []).forEach(k => {
       const dup = (a.sounds || []).some(s => (s.family === k.family || (s.label||"").toLowerCase() === (k.label||"").toLowerCase()) && Math.min(s.end ?? 1e9, k.end) - Math.max(s.start ?? 0, k.start) > -0.5);
       const dropped = (a.rejected || []).some(r => r.family === k.family && r.start === k.start);
