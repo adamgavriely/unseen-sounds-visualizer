@@ -315,6 +315,31 @@ CI not entirely below 0. v4ab, v4ab2 stay in the table. Same-answer-sheet re-jud
 per-sound F1 on Adam's annotations are reported beside; the per-sound F1 remains the
 detector-independent verdict.
 
+**Outcome v4ab3 / v4b3 (first run, filter as declared above; 100 clips, Mistral judge, rubric-enforced):**
+v4b3 gated 2.96 / blind 2.82 / caption 2.67 (gated − blind +0.14 [−0.07, +0.34]); v4ab3 gated
+2.65 / blind 2.71 / caption 2.71 (−0.06 [−0.32, +0.19]). Paired gated PSED − BEATs = **−0.31
+[−0.61, +0.01]** (v4ab2: −0.45): the filter + cap helped both detectors, BEATs more. Per scenario
+gated PSED vs BEATs: acoustic 2.28 vs 3.04, ambient 3.16 vs 2.88, mixed 2.00 vs 3.04. By the
+rule PSED is **not adopted**; v4b3 is the best row so far. The per-sound F1 on Adam's
+annotations stays the detector-independent verdict.
+
+**Amendment 2026-09-21 (Adam, after seeing the filter drop laughter): "human sounds are
+drawn; only speaking is not."** The depictable filter is changed *before* the per-sound
+scoring and the rows are re-rendered on the affected clips only (stamps of the other clips
+stay; same seeds, same judge). New rule (`src/labels.py`, mode "depictable"): the Human voice
+and Respiratory subtrees are drawable (laughter, cough, sneeze, gasp, sigh, snoring, whoop
+…); still blocked: the speech labels (incl. Shout / Screaming / Yell, in `SPEECH_LABELS` since
+v1 — open question for Adam), music (singing, humming, whistling count as music), the bare
+category names "Human voice" / "Respiratory sounds", and **"Breathing"** (texture; PSED fired
+it 17× on wind-like audio in v4ab; Adam: "Breathing out"). What the first-run filter had
+removed from the two rows' detections: PSED — Breathing 17, "Human voice" 8, Laughter 8,
+Sneeze 1, Whoop 1; BEATs — Snicker 2, Sigh 1, Gasp 1. So the re-render touches ≈10 PSED clips
+and ≈4 BEATs clips. Both scores (first run above; re-run below) are kept in the record; the
+re-run is the row in the table. Adam's clip-level tags and the judge set (the same 100 clips)
+are unchanged.
+
+**Re-run outcome:** _pending_.
+
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
 Observed on v3 (100 clips) and the v4b 20-clip check: on clips tagged seen / no-ambient

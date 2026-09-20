@@ -68,7 +68,7 @@
   "cost": null
  },
  {
-  "tag": "v4ab_grounded_rubric",
+  "tag": "v4ab_bar035_grounded_rubric",
   "n": 100,
   "judge": "mistralai/Mistral-7B-Instruct-v0.3 + rubric cap",
   "means": {
@@ -82,6 +82,23 @@
    0.44
   ],
   "oracle": 3.61,
+  "cost": null
+ },
+ {
+  "tag": "v4ab_grounded_rubric",
+  "n": 100,
+  "judge": "mistralai/Mistral-7B-Instruct-v0.3 + rubric cap",
+  "means": {
+   "proposed": 2.6,
+   "blind_a2i": 2.46,
+   "audio_caption": 2.46
+  },
+  "gated_minus_blind": 0.14,
+  "ci": [
+   -0.13,
+   0.4
+  ],
+  "oracle": 3.64,
   "cost": null
  },
  {
@@ -123,16 +140,16 @@
   "n": 100,
   "judge": "mistralai/Mistral-7B-Instruct-v0.3",
   "means": {
-   "proposed": 3.12,
-   "blind_a2i": 3.27,
-   "audio_caption": 3.0
+   "proposed": 2.97,
+   "blind_a2i": 3.1,
+   "audio_caption": 2.83
   },
-  "gated_minus_blind": -0.15,
+  "gated_minus_blind": -0.13,
   "ci": [
-   -0.36,
-   0.040249999999996365
+   -0.37,
+   0.1
   ],
-  "oracle": 3.67,
+  "oracle": 3.64,
   "cost": null
  }
 ]

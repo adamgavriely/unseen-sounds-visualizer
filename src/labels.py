@@ -106,13 +106,17 @@ def is_salient_nonspeech(label: str) -> bool:
         # Crying subtree (baby cry stays), the whole Source-ambiguous branch (Generic impact
         # sounds, Onomatopoeia, Bang...), the category names of GENERIC_LABELS, Video game
         # sound. Same rule for every detector.
-        if label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect", "Video game sound")                 or is_descendant(label, ENV_BRANCH) or label in GENERIC_LABELS:
+        # Amendment 2026-09-21 (Adam: "human sounds are drawn; only speaking is not"): the Human
+        # voice and Respiratory subtrees are drawable again (laughter, cough, sneeze, gasp, sigh,
+        # snoring ...). Still blocked: the speech labels, music (singing/humming count as music),
+        # the bare category names "Human voice" / "Respiratory sounds" (a name, not a sound), and
+        # "Breathing" (texture; PSED fired it 17x on wind-like audio in v4ab -- Adam: "Breathing out").
+        if label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect", "Video game sound",
+                                                                  "Human voice", "Respiratory sounds", "Breathing")                 or is_descendant(label, ENV_BRANCH) or label in GENERIC_LABELS:
             return False
-        for branch in ("Wind", "Respiratory sounds", "Source-ambiguous sounds"):
+        for branch in ("Wind", "Source-ambiguous sounds"):
             if label == branch or is_descendant(label, branch):
                 return False
-        if (label == "Human voice" or is_descendant(label, "Human voice")) and not (label == "Crying, sobbing" or is_descendant(label, "Crying, sobbing")):
-            return False
         return True
     if mode == "branch":
         return not (label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect")
