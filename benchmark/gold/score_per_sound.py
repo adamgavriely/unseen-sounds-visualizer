@@ -105,7 +105,7 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
     gold = sorted(gold, key=lambda g: g["start"]); pics = sorted(pics, key=lambda p: p[1])
     taken = [False] * len(gold)
     out = {"hit": 0, "miss": 0, "visible": 0, "cross": 0, "phantom": 0, "dup": 0,
-           "w_hit": 0, "w_miss": 0, "w_fa": 0, "late": []}
+           "w_hit": 0, "w_miss": 0, "w_fa": 0, "late": [], "cov": []}
     matched_needed = set()
     for lab, a, b in pics:
         # candidates: gold sounds of the same family whose onset window contains the picture start
@@ -132,6 +132,21 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
     for i, g in enumerate(gold):
         if g["needed"] and i not in matched_needed:
             out["miss"] += 1; out["w_miss"] += g["importance"]
+    # coverage (secondary, no new annotation): share of each needed sound's seconds that had a
+    # same-family picture up; misses count 0. Onset stays the hit criterion (docs/metric_per_sound.md).
+    for g in gold:
+        if not g["needed"] or g["end"] <= g["start"]:
+            continue
+        ivs = sorted((max(a, g["start"]), min(b, g["end"])) for lab, a, b in pics if same_family(lab, g["label"]) and b > g["start"] and a < g["end"])
+        cov = 0.0; cur = None
+        for a, b in ivs:
+            if cur is None or a > cur[1]:
+                if cur: cov += cur[1] - cur[0]
+                cur = [a, b]
+            else:
+                cur[1] = max(cur[1], b)
+        if cur: cov += cur[1] - cur[0]
+        out["cov"].append(cov / (g["end"] - g["start"]))
     out["needed"] = sum(1 for g in gold if g["needed"])
     out["clean_ok"] = (out["needed"] == 0 and not pics)
     out["clean_n"] = int(out["needed"] == 0)
@@ -155,10 +170,12 @@ def aggregate(rows):
     WH = sum(r["w_hit"] for r in rows); WM = sum(r["w_miss"] for r in rows); WF = sum(r["w_fa"] for r in rows)
     wp, wr, wf = prf(WH, WF, WM)
     late = [x for r in rows for x in r["late"]]
+    cov = [x for r in rows for x in r["cov"]]
     clean_n = sum(r["clean_n"] for r in rows); clean_ok = sum(r["clean_ok"] for r in rows)
     return {"hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M,
             "P": p, "R": r, "F1": f1, "F0.5": f05, "F2": f2, "P_phantom": pp, "F1_phantom": fp_,
             "wP": wp, "wR": wr, "wF1": wf, "median_late": float(np.median(late)) if late else None,
+            "coverage": float(np.mean(cov)) if cov else None, "coverage_hits": float(np.mean([c for c in cov if c > 0])) if any(c > 0 for c in cov) else None,
             "clean_acc": clean_ok / clean_n if clean_n else None, "clips": len(rows)}
 
 
@@ -197,7 +214,7 @@ def main():
             results[f"{system}@late{late}"] = agg
             print(f"[{system:13s} late<={late:.1f}s] clips {agg['clips']:3d} needed {agg['needed']:3d} | "
                   f"P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
-                  f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
+                  f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
                   f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean-acc {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
     out = Path(a.out) if a.out else _ROOT / "benchmark" / "gold" / f"per_sound_{a.tag}.json"
     out.write_text(json.dumps(results, indent=1), encoding="utf-8")

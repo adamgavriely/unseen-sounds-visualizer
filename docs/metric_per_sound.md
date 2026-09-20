@@ -64,6 +64,13 @@ may not excuse its own pictures).
 - **Confidence intervals** by clip-level bootstrap (2000 draws; sounds inside a clip are not
   independent). With ~50 informative clips, differences under ~0.10 in F1 are not reliable.
 - **Clean-clip accuracy**: share of clips with no needed sound on which nothing was shown.
+- **Coverage** (secondary, added 2026-09-20 with Adam's OK, before any scoring): for each
+  needed sound, the share of its seconds during which a same-family picture was up (union of
+  overlapping pictures; a missed sound counts 0). Reported as the mean over needed sounds and
+  the mean over hits only. The hit itself stays onset-based: a picture that appears at the
+  right moment and leaves early did the main job (tell the viewer the sound is there);
+  coverage shows whether it also stayed for the long sounds (a siren under speech for 11 s).
+  Uses the spans already annotated; no new annotation.
 - The caption baseline is scored by the same rule; each caption tag = one picture, one label
   per event.
 
