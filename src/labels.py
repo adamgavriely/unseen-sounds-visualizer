@@ -15,8 +15,15 @@ SPEECH_LABELS = {
     "Speech", "Male speech, man speaking", "Female speech, woman speaking",
     "Narration, monologue", "Conversation", "Speech synthesizer",
     "Child speech, kid speaking", "Hubbub, speech noise, speech babble", "Chatter",
-    "Whispering", "Shout", "Yell", "Children shouting", "Screaming",
+    "Whispering",
 }
+# Non-word vocal events: no words for a caption to carry, real scene events (a scream off
+# screen). Drawn like Laughter. Moved out of SPEECH_LABELS on 2026-09-21 (Adam + Fable panel:
+# SDH always tags [screaming], [shouting]).
+VOCAL_EVENTS = {"Shout", "Yell", "Children shouting", "Screaming"}
+# Steady textures with no event and no drawable source: never drawn, whatever family they map
+# to (Rumble -> Thunder is kept for merging real thunder, not for drawing a bare rumble).
+TEXTURE_LABELS = {"Breathing", "Rumble", "Hum", "Whir", "Rustle", "Rustling"}
 # Musical instruments / score elements — treat as music (non-salient for now, A6),
 # so film/trailer soundtracks aren't mistaken for real ambient sound.
 INSTRUMENTS = {
@@ -101,22 +108,28 @@ def is_salient_nonspeech(label: str) -> bool:
     import config
     mode = getattr(config, "LABEL_FILTER", "lists")
     if mode == "depictable":
-        # v4ab3 / v4b3 (docs/prereg_v4.md): "branch" plus the ontology branches that name no
-        # drawable source -- Wind (texture), Respiratory sounds, Human voice except the
-        # Crying subtree (baby cry stays), the whole Source-ambiguous branch (Generic impact
-        # sounds, Onomatopoeia, Bang...), the category names of GENERIC_LABELS, Video game
-        # sound. Same rule for every detector.
-        # Amendment 2026-09-21 (Adam: "human sounds are drawn; only speaking is not"): the Human
-        # voice and Respiratory subtrees are drawable again (laughter, cough, sneeze, gasp, sigh,
-        # snoring ...). Still blocked: the speech labels, music (singing/humming count as music),
-        # the bare category names "Human voice" / "Respiratory sounds" (a name, not a sound), and
-        # "Breathing" (texture; PSED fired it 17x on wind-like audio in v4ab -- Adam: "Breathing out").
-        if label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect", "Video game sound",
-                                                                  "Human voice", "Respiratory sounds", "Breathing")                 or is_descendant(label, ENV_BRANCH) or label in GENERIC_LABELS:
+        # v4ab3 / v4b3 (docs/prereg_v4.md) with amendment 2 (2026-09-21, Adam + Fable panel,
+        # declared before the re-run): draw a label only if a captioner would write it as a
+        # bracket tag AND it names a source one can picture. Order: (1) steady textures are out
+        # on the raw name (Wind subtree, Breathing, Rumble, Hum ...); (2) the label is mapped to
+        # its family first (Bang -> Explosion, Beep -> Alarm, Smash -> Glass, Ding -> Bell), so
+        # a gunshot the detector calls "Bang" is drawn as an explosion; (3) on the mapped name:
+        # speech with words and music are never drawn, nor the recording/environment branch,
+        # bare category names, "no source" names (Generic impact sounds, Onomatopoeia, Sound
+        # effect, Video game sound, Silence) and any Source-ambiguous label left unmapped.
+        # Non-word vocal events (Shout, Scream, Laughter, Cough, Snoring ...) are drawn.
+        # Same rule for every detector.
+        if label in TEXTURE_LABELS or label == "Wind" or is_descendant(label, "Wind"):
             return False
-        for branch in ("Wind", "Source-ambiguous sounds"):
-            if label == branch or is_descendant(label, branch):
-                return False
+        lab = canonical(label)
+        if lab in SPEECH_LABELS or any(is_descendant(lab, sp) for sp in SPEECH_LABELS):
+            return False
+        if is_music(lab) or is_descendant(lab, "Singing"):
+            return False
+        if lab in (ENV_BRANCH, "Silence", "Sound effect", "Video game sound", "Human voice", "Respiratory sounds")                 or is_descendant(lab, ENV_BRANCH) or lab in GENERIC_LABELS or lab in TEXTURE_LABELS:
+            return False
+        if lab == "Source-ambiguous sounds" or is_descendant(lab, "Source-ambiguous sounds"):
+            return False          # unmapped ambiguous label: nothing to picture
         return True
     if mode == "branch":
         return not (label in SPEECH_LABELS or is_music(label) or label in (ENV_BRANCH, "Silence", "Sound effect")
@@ -191,6 +204,8 @@ FAMILY = {
     # alarms
     "Car alarm": "Alarm", "Fire alarm": "Alarm", "Alarm clock": "Alarm",
     "Smoke detector, smoke alarm": "Alarm", "Buzzer": "Alarm", "Beep, bleep": "Alarm",
+    # resonator sounds a captioner writes as [bell] / [ding] (amendment 2026-09-21)
+    "Ding": "Bell", "Ringing (of resonator)": "Bell",
     # telephone
     "Telephone bell ringing": "Telephone", "Ringtone": "Telephone",
     "Telephone dialing, DTMF": "Telephone",

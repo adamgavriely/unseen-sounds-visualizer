@@ -28,10 +28,57 @@ import config
 from src.labels import canonical, is_descendant, ancestors, is_salient_nonspeech, is_music
 
 EARLY, LATE = 0.5, 1.0          # a picture may start 0.5 s before and at most 1.0 s after the sound (Adam)
-MIN_DEPTH = 2                   # labels this shallow in the ontology never match ("vehicle", "sound")
+MIN_DEPTH = 1                   # top-level categories ("Sounds of things", "Animal") never match; "Vehicle",
+                                # "Water", "Alarm", "Explosion" (depth 1) are real families and do (fix 2026-09-21:
+                                # MIN_DEPTH=2 silently turned every Vehicle/Water/Alarm/Glass gold sound into a miss)
 
 
 # ----------------------------------------------------------------------------- gold
+def resolve_label(text: str) -> str:
+    """Map an annotator's free-text family/label to an ontology name: exact, then case-insensitive,
+    then the longest ontology name contained in the text ("distant explosion / boom" -> Explosion).
+    Unresolved names are returned unchanged (they can never match a picture) and counted."""
+    names = _ontology_names()
+    if text in names:
+        return text
+    low = text.strip().lower()
+    for n in names:
+        if n.lower() == low:
+            return n
+    # a part of an ontology name ("Gunshot" in "Gunshot, gunfire"; "Footsteps" in "Walk, footsteps")
+    for n in names:
+        if low in [part.strip().lower() for part in n.split(",")]:
+            return n
+    best = ""
+    for n in names:
+        nl = n.lower()
+        if len(nl) >= 4 and nl in low and len(nl) > len(best):
+            best = n
+    if best:
+        return best
+    # singular / plural ("washing machines" -> "Washing machine")
+    if low.endswith("s"):
+        r = resolve_label(low[:-1])
+        if r in names:
+            return r
+    return text
+
+
+_NAMES = None
+
+
+def _ontology_names():
+    global _NAMES
+    if _NAMES is None:
+        from src.labels import _parents
+        par = _parents()
+        _NAMES = sorted(set(par) | {p for ps in par.values() for p in (ps if isinstance(ps, (list, tuple, set)) else [ps])})
+    return _NAMES
+
+
+UNRESOLVED = []
+
+
 def load_gold(paths):
     """{clip stem: [sound dicts]} from one or more annotation exports (later files win)."""
     gold = {}
@@ -48,6 +95,9 @@ def load_gold(paths):
                 lab = s.get("family") or s.get("label")
                 if not lab or s.get("start") is None or s.get("end") is None:
                     continue
+                raw = lab; lab = resolve_label(lab)
+                if lab not in _ontology_names():
+                    UNRESOLVED.append((stem, raw))
                 if lab in ("Speech", "Music") or not is_salient_nonspeech(lab) or is_music(lab):
                     continue
                 snds.append({"label": lab, "start": float(s["start"]), "end": float(s["end"]),
@@ -199,6 +249,8 @@ def main():
     gold = load_gold(a.annotations)
     print(f"[gold] {len(gold)} annotated clips, {sum(len(v) for v in gold.values())} sounds, "
           f"{sum(1 for v in gold.values() for s in v if s['needed'])} needed")
+    if UNRESOLVED:
+        print(f"[gold] {len(UNRESOLVED)} sound names not in the ontology (can never match): " + "; ".join(f"{c}: {r}" for c, r in UNRESOLVED))
     results = {}
     for late in a.late:
         for system in a.systems:
