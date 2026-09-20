@@ -68,6 +68,54 @@ def _masked(rec, start, end, conf):
     return False
 
 
+# 2026-09-20, Adam: "take the mixed I did not tag and move them; I want 30 more mixed candidates".
+# The pre-tagged mixed clips he had not finished (per his last export) are parked (hidden unless
+# done, or "show parked" is ticked); these 32 clips, model-suggested "mixed" at sorting time and
+# never tagged, come in as split "extra" with tag "mixed" (a candidate tag; his ticks decide).
+EXTRA_MIXED = ["mc_courtroom_verdict", "mc_airport_scene", "mc_beach_scene", "mc_car_chase_scene", "mc_siren_arrival",
+               "mc_parade_scene", "mv_earthquake_scene", "gn_docudrama_reenactment", "oc_creaking_floorboards",
+               "oc_pov_hunting_stalk", "mx_harbor_boat_engine", "mx_air_show_crowd", "mx_level_crossing_town",
+               "mx_market_stall_frying", "mx_swan_river_boats", "mx_duck_pond_feeding", "mx_pedestrian_crossing_beep",
+               "as_jackhammer_Gm7nLucM", "as_thunder_4gKvZMFU", "as_helicopter_i57RXxfJ", "as_siren_i4JvkuR0",
+               "lx_chainsaw_and_power_tool_BBukw6J", "lx_crowd_and_applause_6ihRuUM", "ly_dog_4nNLrN8", "ly_dog_RUISGGA",
+               "ly_truck_X-t-4sb", "ly_civil_defense_siren_3U2JPY2", "un_dog_barking_3doKyrCe", "un_dog_howling_8VZs-wTE",
+               "un_skidding_LX5Y1jco", "un_wind_noise_CiSmL4nm", "un_vacuum_cleaner_cle_7bHrke6z", "un_people_shouting_0SL91QFy",
+               "un_thunder_QISybl0-"]
+_LAST_EXPORT = HERE / "annotations" / "gold_AG.json"
+
+
+def _done_ids():
+    """clip ids finished or marked bad in the annotator's last export (parked clips stay visible if done)"""
+    if not _LAST_EXPORT.exists():
+        return set()
+    return {c["clip"] for c in json.loads(_LAST_EXPORT.read_text(encoding="utf-8")).get("clips", []) if c.get("done") or c.get("bad")}
+
+
+def _duration(path):
+    import subprocess
+    out = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                         capture_output=True, text=True).stdout.strip()
+    return round(float(out), 1) if out else 0.0
+
+
+def build_extra():
+    """the extra mixed candidates: no detector run on them yet (candidates come later via detector_candidates.json)"""
+    clips = []
+    for stem in EXTRA_MIXED:
+        video = next((p for d in ("_dropped", "unsorted") for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
+        if video is None:
+            print(f"extra clip missing: {stem}"); continue
+        rel = video.resolve().relative_to(_ROOT).as_posix()
+        cands = [{"label": k["detail"].replace(" (siren)", " siren").lower(), "family": k["label"], "conf": k["conf"],
+                  "start": k["start"], "end": k["end"], "visible": False, "obvious": False,
+                  "importance": importance_of(k["detail"].lower(), k["label"]), "masked": False,
+                  "gate": ("psed" if k["det"] == "psed" else "beats") + " " + k["gate"]} for k in DET_CANDS.get(stem, [])]
+        cands.sort(key=lambda c: -c["conf"])
+        clips.append({"id": f"{stem}.mp4", "src": "../../" + rel, "duration": _duration(video), "candidates": cands[:12],
+                      "tag": "mixed", "split": "extra", "picture_due": True, "sentence": "nothing beyond the picture"})
+    return clips
+
+
 _DC = HERE / "detector_candidates.json"
 DET_CANDS = json.loads(_DC.read_text(encoding="utf-8")) if _DC.exists() else {}
 
@@ -119,6 +167,11 @@ def build_default():
     for c in build_audioset():
         c["split"] = "test"
         clips.append(c)
+    done = _done_ids()
+    for c in clips:
+        if c["tag"] == "mixed" and c["id"] not in done:
+            c["parked"] = True
+    clips += build_extra()
     return clips
 
 

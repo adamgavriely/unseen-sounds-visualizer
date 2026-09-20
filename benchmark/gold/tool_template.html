@@ -65,8 +65,9 @@ select{font:inherit;font-size:14px;padding:4px}
       <label><input type="checkbox" class="ftag" value="seen_ambient" checked> seen</label>
       <label><input type="checkbox" class="ftag" value="no_ambient" checked> no-ambient</label>
       <label><input type="checkbox" class="ftag" value="audioset_strong" checked> slice B</label>
-      &nbsp;|&nbsp; <label><input type="checkbox" id="fTestOnly" checked> the 100 protocol clips only</label>
+      &nbsp;|&nbsp; <label><input type="checkbox" id="fTestOnly" checked> the 100 protocol clips + new mixed only</label>
       <label><input type="checkbox" id="fHideDone"> hide done / bad</label>
+      <label><input type="checkbox" id="fParked"> show parked (old mixed you skipped)</label>
       <span id="fCount"></span>
     </div>
     <button id="nextBtn">next →</button>
@@ -159,7 +160,7 @@ const CLIPS = /*__CLIPS__*/[];
 
   const SHORT = {unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-amb", audioset_strong:"sliceB"};
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; const v = view(); v.forEach(i => { const c = CLIPS[i], a = data[c.id]; const o = document.createElement("option"); o.value = i;
-      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", extra" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
+      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", extra" : (c.split === "extra" ? ", new" : "")) + (c.parked ? ", parked" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
     s.value = idx; $("fCount").textContent = " " + v.length + " clips shown"; }
   // tagging goals per clip type (docs/metric_per_sound.md): enough needed sounds for recall, enough
   // empty clips for precision, enough covered sounds for the hard case
@@ -253,18 +254,19 @@ const CLIPS = /*__CLIPS__*/[];
   function view(){ const tags = new Set([...document.querySelectorAll(".ftag:checked")].map(x=>x.value));
     return CLIPS.map((c,i)=>i).filter(i => { const c = CLIPS[i], a = data[c.id];
       if(c.tag && !tags.has(c.tag)) return false;
-      if($("fTestOnly").checked && c.split && c.split !== "test") return false;
+      if($("fTestOnly").checked && c.split && c.split !== "test" && c.split !== "extra") return false;
       if($("fHideDone").checked && a && (a.done || a.bad)) return false;
+      if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       return true; }); }
   function go(i){ if(data[CLIPS[idx]?.id]) delete data[CLIPS[idx].id]._ordered; const v = view(); if(!v.length){ $("fCount").textContent = " (nothing matches the filter)"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
     idx = i; renderClip(); saveFilters(); }
   function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); saveFilters(); }
   const FILTER_KEY = "gold-filters-" + (document.title || "page");
-  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), testOnly:$("fTestOnly").checked, hideDone:$("fHideDone").checked, idx})); }catch(e){} }
+  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), testOnly:$("fTestOnly").checked, hideDone:$("fHideDone").checked, parked:$("fParked").checked, idx})); }catch(e){} }
   function loadFilters(){ try{ const f = JSON.parse(localStorage.getItem(FILTER_KEY) || "null"); if(!f) return; (f.tags||[]).forEach(([v,c]) => { const el = document.querySelector('.ftag[value="'+v+'"]'); if(el) el.checked = c; });
-      $("fTestOnly").checked = !!f.testOnly; $("fHideDone").checked = !!f.hideDone; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
-  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone").forEach(el => el.addEventListener("change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
+      $("fTestOnly").checked = !!f.testOnly; $("fHideDone").checked = !!f.hideDone; $("fParked").checked = !!f.parked; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
+  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone, #fParked").forEach(el => el.addEventListener("change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
   $("prevBtn").addEventListener("click", ()=>goStep(-1)); $("nextBtn").addEventListener("click", ()=>goStep(1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
   $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); goStep(1); });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
