@@ -165,20 +165,21 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
   // tagging goals per clip type (docs/metric_per_sound.md): enough needed sounds for recall, enough
   // empty clips for precision, enough covered sounds for the hard case
   const GOALS = {unseen_ambient:[25,"unseen"], mixed:[25,"mixed"], seen_ambient:[25,"seen"], no_ambient:[25,"no-ambient"], audioset_strong:[30,"slice B"]};
-  // the category comes from YOUR tags, not from the old clip-level tag: no sounds -> no-ambient;
-  // needed sounds (not visible, not obvious) with speech/music on top -> mixed; needed sounds -> unseen;
-  // sounds that are all visible/obvious -> seen
+  // the category comes from YOUR tags, not from the old clip-level tag (benchmark/README.md):
+  // no sounds -> no-ambient; needed sounds only (not visible, not obvious) -> unseen; needed sounds
+  // next to seen/obvious ones -> mixed (some sources visible, some not); all seen/obvious -> seen.
+  // Slice B clips are their own category and never count toward the four.
   function category(a){ const snds = a.sounds || []; if(!snds.length) return "no_ambient";
     const need = snds.filter(s => !s.obvious && !s.visible); if(!need.length) return "seen_ambient";
-    return need.some(s => s.masked) ? "mixed" : "unseen_ambient"; }
+    return need.length < snds.length ? "mixed" : "unseen_ambient"; }
   function renderGoals(){ const done = c => data[c.id] && data[c.id].done && !data[c.id].bad;
     const per = {}; let needed = 0, covered = 0, empty = 0, sliceB = 0;
-    CLIPS.forEach(c => { if(!done(c)) return; const a = data[c.id]; const k = category(a); per[k] = (per[k]||0) + 1; if(c.tag === "audioset_strong") sliceB++;
+    CLIPS.forEach(c => { if(!done(c)) return; const a = data[c.id]; if(c.tag === "audioset_strong") sliceB++; else { const k = category(a); per[k] = (per[k]||0) + 1; }
       const need = (a.sounds||[]).filter(s => !s.obvious && !s.visible); needed += need.length; covered += need.filter(s => s.masked).length; if(!need.length) empty++; });
     per.audioset_strong = sliceB;
     const cells = Object.entries(GOALS).map(([tag,[goal,name]]) => { const n = per[tag]||0; const ok = n >= goal;
       return `<span style="display:inline-block;margin-right:14px;padding:2px 8px;border-radius:6px;background:${ok?"#dfe":"#fee"};color:${ok?"#063":"#900"}"><b>${name}</b> ${n} / ${goal}</span>`; }).join("");
-    $("goals").innerHTML = `<b>Goals</b> — clips done, counted by what YOU tagged: ${cells}<br><span class="hint">needed sounds (heard, not visible, not obvious): <b>${needed}</b> / 120 &nbsp; of them covered by speech or music: <b>${covered}</b> / 40 &nbsp; clips where nothing is needed: <b>${empty}</b> / 30 &nbsp; (this clip would count as: <b>${CLIPS[idx] ? ({unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-ambient"})[category(current())] : ""}</b>)</span>`; }
+    $("goals").innerHTML = `<b>Goals</b> — clips done, counted by what YOU tagged: ${cells}<br><span class="hint">needed sounds (heard, not visible, not obvious): <b>${needed}</b> / 120 &nbsp; of them covered by speech or music: <b>${covered}</b> / 40 &nbsp; clips where nothing is needed: <b>${empty}</b> / 30 &nbsp; (this clip would count as: <b>${CLIPS[idx] ? (CLIPS[idx].tag === "audioset_strong" ? "slice B" : ({unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-ambient"})[category(current())]) : ""}</b>)</span>`; }
   function renderProgress(){ renderGoals(); const done = c => data[c.id] && data[c.id].done && !data[c.id].bad; const bad = c => data[c.id] && data[c.id].bad;
     const n = CLIPS.filter(done).length, nb = CLIPS.filter(bad).length;
     const per = {}; CLIPS.forEach(c => { const k = SHORT[c.tag] || c.tag || "?"; per[k] = per[k] || [0,0]; per[k][1]++; if(done(c)) per[k][0]++; });
