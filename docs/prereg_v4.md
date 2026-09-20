@@ -338,7 +338,27 @@ and ≈4 BEATs clips. Both scores (first run above; re-run below) are kept in th
 re-run is the row in the table. Adam's clip-level tags and the judge set (the same 100 clips)
 are unchanged.
 
-**Re-run outcome:** _pending_.
+**Amendment 2 — 2026-09-21 12:00 (Adam + three Fable panels; declared before the re-run, which
+waits for the full per-sound annotation).** The examiner Fables (10-panel) ruled that the first-run
+v4ab3 / v4b3 scores above stay the **confirmatory** rows and adoption verdict; the re-render under
+the amended filter is reported as a **labelled sensitivity row**, not as a replacement (the judge
+scores each clip on its own, so the untouched clips are unchanged by construction). Filter rule
+(`src/labels.py`, mode "depictable"), the same for every detector: *draw a label only if a
+captioner would write it as a bracket tag and it names a source one can picture.* In order:
+(1) steady textures are out on the raw name — Wind subtree, Breathing, Rumble, Hum, Whir, Rustle;
+(2) the label is mapped to its family first (Bang → Explosion, Beep → Alarm, Smash/Breaking →
+Glass, Clickety-clack → Train, Ding/Ringing → Bell, Sizzle → Cooking, Creak → Door) — the first
+run applied the filter *before* the map, so those mappings were dead code and a gunshot heard as
+"Bang" was silently dropped (bug, found by the ML-engineer Fable); (3) on the mapped name: speech
+with words (Speech, Whispering, Chatter, Hubbub and subtrees) and music (incl. singing, humming,
+whistling) are never drawn, nor the "Channel, environment and background" branch, Silence, Sound
+effect, Video game sound, the bare category names, and any Source-ambiguous label left unmapped
+(Clatter, Scrape, Screech, Twang …). Non-word vocal events — Shout, Yell, Screaming, Children
+shouting (moved out of `SPEECH_LABELS`), Laughter, Cough, Sneeze, Snoring, Gasp, Crying — are
+drawn (Adam: "useful to DHH when not heard, just like laugh"; SDH tags [screaming]). Blocked
+labels: 239 of 625 (first run: 281). Not changed: bars, cap, gate, judge, clip set, clip tags.
+
+**Re-run outcome (sensitivity row, amended filter):** _pending — after the annotation export._
 
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 
