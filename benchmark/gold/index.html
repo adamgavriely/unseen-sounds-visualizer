@@ -169,9 +169,15 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
   // no sounds -> no-ambient; needed sounds only (not visible, not obvious) -> unseen; needed sounds
   // next to seen/obvious ones -> mixed (some sources visible, some not); all seen/obvious -> seen.
   // Slice B clips are their own category and never count toward the four.
+  // Importance-aware (Fable, 21 Sept 2026): visible importance-1 sounds (a door you watch closing)
+  // never change the category; mixed needs a needed sound of importance >= 2 AND a visible/obvious
+  // sound of importance >= 2 (a source the system must hold back on while drawing the other).
   function category(a){ const snds = a.sounds || []; if(!snds.length) return "no_ambient";
     const need = snds.filter(s => !s.obvious && !s.visible); if(!need.length) return "seen_ambient";
-    return need.length < snds.length ? "mixed" : "unseen_ambient"; }
+    const needBig = need.some(s => imp(s.importance) >= 2), seenBig = snds.some(s => (s.obvious || s.visible) && imp(s.importance) >= 2);
+    if(needBig && seenBig) return "mixed";
+    if(seenBig) return "seen_ambient";
+    return "unseen_ambient"; }
   function renderGoals(){ const done = c => data[c.id] && data[c.id].done && !data[c.id].bad;
     const per = {}; let needed = 0, covered = 0, empty = 0, sliceB = 0;
     CLIPS.forEach(c => { if(!done(c)) return; const a = data[c.id]; if(c.tag === "audioset_strong") sliceB++; else { const k = category(a); per[k] = (per[k]||0) + 1; }

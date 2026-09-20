@@ -11,6 +11,10 @@ sound whose source is *off-screen* — that is what the system should visualize.
 - **`negative_control`** — salient non-speech sound(s) present but **all** sources visible → system
   should show nothing. *A minority, to test that the system correctly stays silent.*
 - **`mixed`** — several events, some visible some not → tests selective augmentation.
+  Per-sound gold (21 Sept 2026): unseen = every sound of importance ≥ 2 is needed (not visible,
+  not obvious); mixed = at least one needed sound of importance ≥ 2 and at least one
+  visible/obvious sound of importance ≥ 2; visible importance-1 sounds never change the
+  category but still count as false alarms if drawn.
 - *(Speech-only / silence clips are excluded — nothing for the system to add.)*
 
 ## Ground truth
