@@ -134,9 +134,11 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
             out["miss"] += 1; out["w_miss"] += g["importance"]
     # coverage (secondary, no new annotation): share of each needed sound's seconds that had a
     # same-family picture up; misses count 0. Onset stays the hit criterion (docs/metric_per_sound.md).
-    for g in gold:
+    for i, g in enumerate(gold):
         if not g["needed"] or g["end"] <= g["start"]:
             continue
+        if i not in matched_needed:
+            out["cov"].append(0.0); continue           # a missed sound counts 0 (declared rule)
         ivs = sorted((max(a, g["start"]), min(b, g["end"])) for lab, a, b in pics if same_family(lab, g["label"]) and b > g["start"] and a < g["end"])
         cov = 0.0; cur = None
         for a, b in ivs:
@@ -175,7 +177,7 @@ def aggregate(rows):
     return {"hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M,
             "P": p, "R": r, "F1": f1, "F0.5": f05, "F2": f2, "P_phantom": pp, "F1_phantom": fp_,
             "wP": wp, "wR": wr, "wF1": wf, "median_late": float(np.median(late)) if late else None,
-            "coverage": float(np.mean(cov)) if cov else None, "coverage_hits": float(np.mean([c for c in cov if c > 0])) if any(c > 0 for c in cov) else None,
+            "coverage": float(np.mean(cov)) if cov else None, "coverage_hits": float(np.mean([c for c in cov if c > 0])) if any(c > 0 for c in cov) else None,  # cov>0 only for hits
             "clean_acc": clean_ok / clean_n if clean_n else None, "clips": len(rows)}
 
 
