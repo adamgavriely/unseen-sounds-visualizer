@@ -1,0 +1,1306 @@
+{
+ "m2_table_tennis_crowd": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Basketball bounce",
+    "detail": "Basketball bounce",
+    "conf": 0.69,
+    "start": 11.4,
+    "end": 13.8
+   },
+   {
+    "family": "Door",
+    "detail": "Slam",
+    "conf": 0.47,
+    "start": 10.4,
+    "end": 12.5
+   },
+   {
+    "family": "Horse",
+    "detail": "Clip-clop",
+    "conf": 0.35,
+    "start": 1.8,
+    "end": 4.2
+   }
+  ]
+ },
+ "m2_chainsaw_lawnmower": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Chainsaw",
+    "detail": "Chainsaw",
+    "conf": 0.88,
+    "start": 4.5,
+    "end": 16.8
+   },
+   {
+    "family": "Power tool",
+    "detail": "Power tool",
+    "conf": 0.49,
+    "start": 5.9,
+    "end": 16.8
+   },
+   {
+    "family": "Tools",
+    "detail": "Tools",
+    "conf": 0.45,
+    "start": 5.7,
+    "end": 16.8
+   }
+  ]
+ },
+ "m2_playground_airplane": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Aircraft",
+    "detail": "Aircraft",
+    "conf": 0.81,
+    "start": 2.5,
+    "end": 12.0
+   }
+  ]
+ },
+ "m2_leaf_blower_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Dog",
+    "detail": "Dog",
+    "conf": 0.78,
+    "start": 18.7,
+    "end": 19.8
+   },
+   {
+    "family": "Chainsaw",
+    "detail": "Chainsaw",
+    "conf": 0.76,
+    "start": 6.6,
+    "end": 19.2
+   },
+   {
+    "family": "Tools",
+    "detail": "Tools",
+    "conf": 0.39,
+    "start": 8.4,
+    "end": 10.0
+   },
+   {
+    "family": "Lawn mower",
+    "detail": "Lawn mower",
+    "conf": 0.35,
+    "start": 8.0,
+    "end": 10.8
+   }
+  ]
+ },
+ "m2_ambulance_hospital": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Siren",
+    "detail": "Ambulance (siren)",
+    "conf": 0.69,
+    "start": 0.1,
+    "end": 5.2
+   }
+  ]
+ },
+ "m2_glass_blowing_workshop": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Tick",
+    "detail": "Tick",
+    "conf": 0.57,
+    "start": 4.4,
+    "end": 6.8
+   },
+   {
+    "family": "Tick-tock",
+    "detail": "Tick-tock",
+    "conf": 0.56,
+    "start": 16.3,
+    "end": 18.0
+   }
+  ]
+ },
+ "m2_tram_bell_pedestrians": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Train",
+    "detail": "Train",
+    "conf": 0.76,
+    "start": 5.0,
+    "end": 8.8
+   }
+  ]
+ },
+ "m2_busker_guitar_siren": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Country",
+    "detail": "Country",
+    "conf": 0.58,
+    "start": 8.3,
+    "end": 12.2
+   }
+  ]
+ },
+ "m2_toddler_toys_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Dog",
+    "detail": "Bow-wow",
+    "conf": 0.78,
+    "start": 0.0,
+    "end": 3.2
+   },
+   {
+    "family": "Roar",
+    "detail": "Roar",
+    "conf": 0.52,
+    "start": 16.8,
+    "end": 18.2
+   },
+   {
+    "family": "Groan",
+    "detail": "Groan",
+    "conf": 0.4,
+    "start": 0.2,
+    "end": 0.8
+   }
+  ]
+ },
+ "m2_fishing_reel_boat_horn": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Rowboat, canoe, kayak",
+    "detail": "Rowboat, canoe, kayak",
+    "conf": 0.54,
+    "start": 1.6,
+    "end": 4.0
+   }
+  ]
+ },
+ "m2_skateboard_traffic": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Cooking",
+    "detail": "Chopping (food)",
+    "conf": 0.28,
+    "start": 1.9,
+    "end": 3.8
+   }
+  ]
+ },
+ "m2_steel_drum_busker_siren": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Bass drum",
+    "detail": "Bass drum",
+    "conf": 0.33,
+    "start": 9.7,
+    "end": 11.5
+   }
+  ]
+ },
+ "m2_mower_ride_helicopter": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Boat",
+    "detail": "Motorboat, speedboat",
+    "conf": 0.26,
+    "start": 4.5,
+    "end": 6.2
+   }
+  ]
+ },
+ "m2_hammer_roof_siren": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Cough",
+    "detail": "Cough",
+    "conf": 0.52,
+    "start": 11.2,
+    "end": 13.0
+   },
+   {
+    "family": "Throat clearing",
+    "detail": "Throat clearing",
+    "conf": 0.42,
+    "start": 3.5,
+    "end": 5.0
+   }
+  ]
+ },
+ "m2_street_market_scooter_horn": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Air horn, truck horn",
+    "detail": "Air horn, truck horn",
+    "conf": 0.5,
+    "start": 0.8,
+    "end": 2.8
+   },
+   {
+    "family": "Keys jangling",
+    "detail": "Keys jangling",
+    "conf": 0.32,
+    "start": 4.8,
+    "end": 6.5
+   }
+  ]
+ },
+ "m2_ice_rink_horn": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Basketball bounce",
+    "detail": "Basketball bounce",
+    "conf": 0.79,
+    "start": 3.3,
+    "end": 7.8
+   },
+   {
+    "family": "Alarm",
+    "detail": "Buzzer",
+    "conf": 0.64,
+    "start": 14.2,
+    "end": 17.5
+   },
+   {
+    "family": "Door",
+    "detail": "Slam",
+    "conf": 0.3,
+    "start": 9.2,
+    "end": 11.0
+   }
+  ]
+ },
+ "m2_street_drummer_horns": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Hi-hat",
+    "detail": "Hi-hat",
+    "conf": 0.38,
+    "start": 7.4,
+    "end": 10.0
+   },
+   {
+    "family": "Bass drum",
+    "detail": "Bass drum",
+    "conf": 0.35,
+    "start": 3.0,
+    "end": 4.0
+   }
+  ]
+ },
+ "m2_goat_kids_birds": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Sheep",
+    "detail": "Bleat",
+    "conf": 0.75,
+    "start": 0.2,
+    "end": 14.8
+   }
+  ]
+ },
+ "m2_cat_meow_kitchen": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Cat",
+    "detail": "Cat",
+    "conf": 0.91,
+    "start": 6.4,
+    "end": 18.8
+   },
+   {
+    "family": "Caterwaul",
+    "detail": "Caterwaul",
+    "conf": 0.74,
+    "start": 6.4,
+    "end": 14.0
+   }
+  ]
+ },
+ "m2_chickens_tractor": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Chicken, rooster",
+    "conf": 0.63,
+    "start": 13.3,
+    "end": 17.8
+   },
+   {
+    "family": "Turkey",
+    "detail": "Turkey",
+    "conf": 0.51,
+    "start": 3.8,
+    "end": 5.5
+   },
+   {
+    "family": "Gobble",
+    "detail": "Gobble",
+    "conf": 0.41,
+    "start": 3.8,
+    "end": 5.2
+   }
+  ]
+ },
+ "m2_cobbler_hammer_street": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Sanding",
+    "detail": "Sanding",
+    "conf": 0.8,
+    "start": 6.0,
+    "end": 10.8
+   },
+   {
+    "family": "Wood",
+    "detail": "Wood",
+    "conf": 0.6,
+    "start": 1.8,
+    "end": 4.2
+   },
+   {
+    "family": "Shuffling cards",
+    "detail": "Shuffling cards",
+    "conf": 0.58,
+    "start": 1.1,
+    "end": 2.2
+   }
+  ]
+ },
+ "m2_basketball_court_siren": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Basketball bounce",
+    "detail": "Basketball bounce",
+    "conf": 0.69,
+    "start": 10.7,
+    "end": 13.0
+   },
+   {
+    "family": "Footsteps",
+    "detail": "Run",
+    "conf": 0.32,
+    "start": 8.3,
+    "end": 10.0
+   }
+  ]
+ },
+ "m2_fire_truck_hose": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Steam",
+    "detail": "Steam",
+    "conf": 0.36,
+    "start": 2.0,
+    "end": 2.5
+   },
+   {
+    "family": "Spray",
+    "detail": "Spray",
+    "conf": 0.35,
+    "start": 11.1,
+    "end": 11.5
+   },
+   {
+    "family": "Cat",
+    "detail": "Hiss",
+    "conf": 0.3,
+    "start": 2.3,
+    "end": 2.5
+   }
+  ]
+ },
+ "m2_bonfire_crowd_siren": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Cluck",
+    "conf": 0.29,
+    "start": 0.4,
+    "end": 1.0
+   }
+  ]
+ },
+ "m2_playground_ice_cream": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Rhythm and blues",
+    "detail": "Rhythm and blues",
+    "conf": 0.27,
+    "start": 3.3,
+    "end": 4.5
+   }
+  ]
+ },
+ "m2_parrot_talking_phone": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Dishes",
+    "detail": "Dishes, pots, and pans",
+    "conf": 0.4,
+    "start": 5.9,
+    "end": 7.5
+   },
+   {
+    "family": "Bird",
+    "detail": "Bird",
+    "conf": 0.33,
+    "start": 8.4,
+    "end": 10.0
+   }
+  ]
+ },
+ "m2_sax_busker_subway": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Didgeridoo",
+    "detail": "Didgeridoo",
+    "conf": 0.44,
+    "start": 10.5,
+    "end": 12.8
+   },
+   {
+    "family": "Bass drum",
+    "detail": "Bass drum",
+    "conf": 0.41,
+    "start": 7.4,
+    "end": 10.8
+   }
+  ]
+ },
+ "m2_frogs_pond_dogs": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Cricket",
+    "detail": "Cricket",
+    "conf": 0.66,
+    "start": 14.1,
+    "end": 16.8
+   },
+   {
+    "family": "Insect",
+    "detail": "Insect",
+    "conf": 0.63,
+    "start": 3.4,
+    "end": 18.8
+   }
+  ]
+ },
+ "m2_restaurant_kitchen_phone": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Chink, clink",
+    "detail": "Chink, clink",
+    "conf": 0.32,
+    "start": 18.1,
+    "end": 18.8
+   }
+  ]
+ },
+ "m2_barber_clippers_traffic": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Electric shaver, electric razor",
+    "detail": "Electric shaver, electric razor",
+    "conf": 0.5,
+    "start": 11.0,
+    "end": 14.5
+   }
+  ]
+ },
+ "m2_bowling_strike_crowd": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Horse",
+    "detail": "Neigh, whinny",
+    "conf": 0.79,
+    "start": 0.2,
+    "end": 1.2
+   }
+  ]
+ },
+ "m2_hammer_nails_thunder": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Sigh",
+    "detail": "Sigh",
+    "conf": 0.45,
+    "start": 0.3,
+    "end": 1.0
+   }
+  ]
+ },
+ "m2_aviary_parrots_kids": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Bird vocalization, bird call, bird song",
+    "conf": 0.54,
+    "start": 2.3,
+    "end": 5.0
+   }
+  ]
+ },
+ "m2_fireworks_kids_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Jackhammer",
+    "detail": "Jackhammer",
+    "conf": 0.59,
+    "start": 15.5,
+    "end": 16.5
+   },
+   {
+    "family": "Children playing",
+    "detail": "Children playing",
+    "conf": 0.41,
+    "start": 0.8,
+    "end": 2.5
+   },
+   {
+    "family": "Boat",
+    "detail": "Motorboat, speedboat",
+    "conf": 0.34,
+    "start": 12.4,
+    "end": 14.0
+   }
+  ]
+ },
+ "m2_piano_home_thunder": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Thunder",
+    "detail": "Thunder",
+    "conf": 0.55,
+    "start": 0.4,
+    "end": 4.0
+   }
+  ]
+ },
+ "m2_church_organ_bells": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Bell",
+    "detail": "Wind chime",
+    "conf": 0.61,
+    "start": 15.1,
+    "end": 16.5
+   },
+   {
+    "family": "Mallet percussion",
+    "detail": "Mallet percussion",
+    "conf": 0.27,
+    "start": 3.2,
+    "end": 5.2
+   }
+  ]
+ },
+ "m2_baby_laugh_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Dog",
+    "detail": "Dog",
+    "conf": 0.88,
+    "start": 7.0,
+    "end": 17.2
+   },
+   {
+    "family": "Roar",
+    "detail": "Roar",
+    "conf": 0.46,
+    "start": 0.0,
+    "end": 1.0
+   },
+   {
+    "family": "Baby laughter",
+    "detail": "Baby laughter",
+    "conf": 0.39,
+    "start": 4.5,
+    "end": 7.0
+   },
+   {
+    "family": "Laughter",
+    "detail": "Laughter",
+    "conf": 0.29,
+    "start": 5.4,
+    "end": 6.8
+   }
+  ]
+ },
+ "m2_kitchen_doorbell": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Groan",
+    "detail": "Groan",
+    "conf": 0.27,
+    "start": 7.0,
+    "end": 9.0
+   },
+   {
+    "family": "Bird",
+    "detail": "Fowl",
+    "conf": 0.26,
+    "start": 14.4,
+    "end": 16.0
+   }
+  ]
+ },
+ "m2_dishwashing_tv": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Chicken, rooster",
+    "conf": 0.43,
+    "start": 11.5,
+    "end": 13.0
+   }
+  ]
+ },
+ "m2_horse_riding_helicopter": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Bass drum",
+    "detail": "Bass drum",
+    "conf": 0.38,
+    "start": 0.7,
+    "end": 2.2
+   }
+  ]
+ },
+ "m2_dog_barks_thunder": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Thunder",
+    "detail": "Thunder",
+    "conf": 0.76,
+    "start": 5.5,
+    "end": 8.2
+   },
+   {
+    "family": "Dog",
+    "detail": "Dog",
+    "conf": 0.33,
+    "start": 8.1,
+    "end": 8.8
+   }
+  ]
+ },
+ "m2_drum_circle_siren": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Mosquito",
+    "detail": "Mosquito",
+    "conf": 0.6,
+    "start": 8.9,
+    "end": 11.0
+   },
+   {
+    "family": "Fly, housefly",
+    "detail": "Fly, housefly",
+    "conf": 0.49,
+    "start": 9.0,
+    "end": 10.8
+   },
+   {
+    "family": "Insect",
+    "detail": "Insect",
+    "conf": 0.33,
+    "start": 9.0,
+    "end": 10.8
+   }
+  ]
+ },
+ "m2_vacuum_doorbell": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Knock",
+    "detail": "Knock",
+    "conf": 0.89,
+    "start": 1.8,
+    "end": 4.5
+   },
+   {
+    "family": "Doorbell",
+    "detail": "Doorbell",
+    "conf": 0.82,
+    "start": 3.3,
+    "end": 11.0
+   },
+   {
+    "family": "Telephone",
+    "detail": "Ringtone",
+    "conf": 0.76,
+    "start": 10.7,
+    "end": 15.8
+   },
+   {
+    "family": "Ding-dong",
+    "detail": "Ding-dong",
+    "conf": 0.69,
+    "start": 5.5,
+    "end": 11.2
+   }
+  ]
+ },
+ "m2_cooking_phone_rings": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Boiling",
+    "detail": "Boiling",
+    "conf": 0.29,
+    "start": 9.9,
+    "end": 11.8
+   }
+  ]
+ },
+ "m2_street_food_wok_horns": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Bird",
+    "conf": 0.51,
+    "start": 4.5,
+    "end": 6.8
+   },
+   {
+    "family": "Printer",
+    "detail": "Printer",
+    "conf": 0.44,
+    "start": 0.2,
+    "end": 1.0
+   },
+   {
+    "family": "Sewing machine",
+    "detail": "Sewing machine",
+    "conf": 0.4,
+    "start": 0.0,
+    "end": 1.5
+   },
+   {
+    "family": "Stir",
+    "detail": "Stir",
+    "conf": 0.31,
+    "start": 13.2,
+    "end": 15.0
+   }
+  ]
+ },
+ "m2_horse_jumping_crowd": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Printer",
+    "detail": "Printer",
+    "conf": 0.78,
+    "start": 0.1,
+    "end": 0.8
+   },
+   {
+    "family": "Footsteps",
+    "detail": "Run",
+    "conf": 0.54,
+    "start": 10.3,
+    "end": 12.0
+   },
+   {
+    "family": "Horse",
+    "detail": "Horse",
+    "conf": 0.27,
+    "start": 7.7,
+    "end": 9.0
+   }
+  ]
+ },
+ "m2_pressure_washer_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Aircraft",
+    "detail": "Aircraft",
+    "conf": 0.78,
+    "start": 0.1,
+    "end": 7.2
+   },
+   {
+    "family": "Helicopter",
+    "detail": "Helicopter",
+    "conf": 0.6,
+    "start": 13.2,
+    "end": 15.5
+   }
+  ]
+ },
+ "m2_zoo_lion_roar_kids": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Roar",
+    "detail": "Roar",
+    "conf": 0.73,
+    "start": 0.1,
+    "end": 18.8
+   },
+   {
+    "family": "Roaring cats (lions, tigers)",
+    "detail": "Roaring cats (lions, tigers)",
+    "conf": 0.66,
+    "start": 0.1,
+    "end": 10.2
+   }
+  ]
+ },
+ "m2_kids_bath_doorbell": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Dog",
+    "detail": "Dog",
+    "conf": 0.5,
+    "start": 6.6,
+    "end": 8.5
+   }
+  ]
+ },
+ "m2_rake_leaves_helicopter": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Stomach rumble",
+    "detail": "Stomach rumble",
+    "conf": 0.46,
+    "start": 13.2,
+    "end": 14.2
+   }
+  ]
+ },
+ "m2_kettle_whistle_phone": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Dishes",
+    "detail": "Cutlery, silverware",
+    "conf": 0.44,
+    "start": 4.1,
+    "end": 6.0
+   }
+  ]
+ },
+ "m2_hedge_trimmer_church": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Chainsaw",
+    "detail": "Chainsaw",
+    "conf": 0.93,
+    "start": 8.3,
+    "end": 19.8
+   },
+   {
+    "family": "Tools",
+    "detail": "Tools",
+    "conf": 0.65,
+    "start": 9.7,
+    "end": 18.5
+   },
+   {
+    "family": "Power tool",
+    "detail": "Power tool",
+    "conf": 0.45,
+    "start": 9.7,
+    "end": 14.2
+   }
+  ]
+ },
+ "m2_woodturning_lathe_birds": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Tools",
+    "detail": "Tools",
+    "conf": 0.86,
+    "start": 0.3,
+    "end": 16.8
+   },
+   {
+    "family": "Power tool",
+    "detail": "Power tool",
+    "conf": 0.64,
+    "start": 0.3,
+    "end": 9.8
+   },
+   {
+    "family": "Wood",
+    "detail": "Wood",
+    "conf": 0.51,
+    "start": 13.2,
+    "end": 16.8
+   },
+   {
+    "family": "Drill",
+    "detail": "Drill",
+    "conf": 0.41,
+    "start": 12.3,
+    "end": 15.0
+   }
+  ]
+ },
+ "m2_lawnmower_siren": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Lawn mower",
+    "detail": "Lawn mower",
+    "conf": 0.51,
+    "start": 6.2,
+    "end": 9.5
+   }
+  ]
+ },
+ "m2_beekeeper_tractor": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Pizzicato",
+    "detail": "Pizzicato",
+    "conf": 0.37,
+    "start": 6.1,
+    "end": 7.8
+   }
+  ]
+ },
+ "m2_pottery_wheel_birds": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Tap",
+    "detail": "Tap",
+    "conf": 0.33,
+    "start": 16.4,
+    "end": 17.8
+   }
+  ]
+ },
+ "m2_axe_chopping_dog": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Bird",
+    "conf": 0.78,
+    "start": 5.3,
+    "end": 15.0
+   }
+  ]
+ },
+ "m2_rowing_oars_horn": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Stomach rumble",
+    "detail": "Stomach rumble",
+    "conf": 0.76,
+    "start": 1.4,
+    "end": 7.8
+   },
+   {
+    "family": "Rowboat, canoe, kayak",
+    "detail": "Rowboat, canoe, kayak",
+    "conf": 0.64,
+    "start": 8.7,
+    "end": 10.2
+   },
+   {
+    "family": "Bicycle",
+    "detail": "Bicycle",
+    "conf": 0.32,
+    "start": 16.8,
+    "end": 18.2
+   },
+   {
+    "family": "Pig",
+    "detail": "Pig",
+    "conf": 0.26,
+    "start": 10.2,
+    "end": 11.8
+   }
+  ]
+ },
+ "m2_cow_bell_tractor": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Tubular bells",
+    "detail": "Tubular bells",
+    "conf": 0.42,
+    "start": 13.3,
+    "end": 15.8
+   }
+  ]
+ },
+ "m2_bike_bell_tram": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Bell",
+    "detail": "Bell",
+    "conf": 0.8,
+    "start": 1.0,
+    "end": 15.8
+   },
+   {
+    "family": "Train",
+    "detail": "Train",
+    "conf": 0.8,
+    "start": 10.8,
+    "end": 15.8
+   },
+   {
+    "family": "Footsteps",
+    "detail": "Run",
+    "conf": 0.52,
+    "start": 0.1,
+    "end": 2.8
+   }
+  ]
+ },
+ "m2_donkey_bray_church": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Bird",
+    "detail": "Bird",
+    "conf": 0.32,
+    "start": 8.5,
+    "end": 10.2
+   },
+   {
+    "family": "Keys jangling",
+    "detail": "Keys jangling",
+    "conf": 0.3,
+    "start": 5.5,
+    "end": 5.8
+   },
+   {
+    "family": "Insect",
+    "detail": "Insect",
+    "conf": 0.27,
+    "start": 6.9,
+    "end": 8.8
+   },
+   {
+    "family": "Chink, clink",
+    "detail": "Chink, clink",
+    "conf": 0.26,
+    "start": 5.2,
+    "end": 6.8
+   }
+  ]
+ },
+ "m2_crossing_bells_horn": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Train",
+    "detail": "Train",
+    "conf": 0.93,
+    "start": 6.9,
+    "end": 18.8
+   },
+   {
+    "family": "Boat",
+    "detail": "Ship",
+    "conf": 0.59,
+    "start": 6.0,
+    "end": 9.0
+   },
+   {
+    "family": "Vehicle",
+    "detail": "Vehicle horn, car horn, honking",
+    "conf": 0.28,
+    "start": 3.4,
+    "end": 4.8
+   }
+  ]
+ },
+ "m2_train_doors_whistle": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Cat",
+    "detail": "Hiss",
+    "conf": 0.63,
+    "start": 10.2,
+    "end": 11.5
+   },
+   {
+    "family": "Sliding door",
+    "detail": "Sliding door",
+    "conf": 0.52,
+    "start": 2.7,
+    "end": 4.2
+   },
+   {
+    "family": "Steam",
+    "detail": "Steam",
+    "conf": 0.36,
+    "start": 10.2,
+    "end": 11.2
+   },
+   {
+    "family": "Door",
+    "detail": "Door",
+    "conf": 0.33,
+    "start": 2.5,
+    "end": 4.2
+   },
+   {
+    "family": "Hammer",
+    "detail": "Hammer",
+    "conf": 0.26,
+    "start": 11.0,
+    "end": 12.5
+   }
+  ]
+ },
+ "m2_fireworks_crowd_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Fireworks",
+    "detail": "Fireworks",
+    "conf": 0.91,
+    "start": 6.4,
+    "end": 12.8
+   },
+   {
+    "family": "Gunshot",
+    "detail": "Machine gun",
+    "conf": 0.87,
+    "start": 11.8,
+    "end": 14.8
+   }
+  ]
+ },
+ "m2_kayak_paddle_helicopter": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Helicopter",
+    "detail": "Helicopter",
+    "conf": 0.75,
+    "start": 0.0,
+    "end": 2.0
+   }
+  ]
+ },
+ "m2_car_wash_siren": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Cooking",
+    "detail": "Chopping (food)",
+    "conf": 0.45,
+    "start": 7.1,
+    "end": 9.0
+   }
+  ]
+ },
+ "m2_violin_practice_dog": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Thunk",
+    "detail": "Thunk",
+    "conf": 0.64,
+    "start": 3.2,
+    "end": 4.2
+   },
+   {
+    "family": "Sigh",
+    "detail": "Sigh",
+    "conf": 0.46,
+    "start": 1.5,
+    "end": 4.2
+   }
+  ]
+ },
+ "m2_fire_engine_kids": {
+  "tier": 1,
+  "families": [
+   {
+    "family": "Siren",
+    "detail": "Emergency vehicle",
+    "conf": 0.91,
+    "start": 0.1,
+    "end": 19.8
+   },
+   {
+    "family": "Alarm",
+    "detail": "Car alarm",
+    "conf": 0.43,
+    "start": 0.4,
+    "end": 2.0
+   }
+  ]
+ },
+ "m2_shoe_shine_street": {
+  "tier": 2,
+  "families": [
+   {
+    "family": "Printer",
+    "detail": "Printer",
+    "conf": 0.69,
+    "start": 0.1,
+    "end": 1.2
+   }
+  ]
+ }
+}

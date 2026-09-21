@@ -31,7 +31,8 @@ if str(ROOT) not in sys.path:
 
 import config
 from benchmark.gold.build_tool import importance_of
-from src.labels import canonical, is_music, SPEECH_LABELS
+from src.labels import canonical, is_music, SPEECH_LABELS, is_salient_nonspeech
+config.LABEL_FILTER = "depictable"     # the label list only (music, speech, silence, environment out); not the gate
 from src.stage1_audio_extraction import extract_audio
 from src.stage2_video_understanding import _sample_frames
 from src.stage4_audio_event_detection import detect_events
@@ -51,7 +52,7 @@ def heard(video: Path) -> list[dict]:
                                model="beats", device="cuda")
     best: dict[str, dict] = {}
     for e in events:
-        if e.confidence < AUDIO_BAR or e.label in SPEECH_LABELS or is_music(e.label) or e.label in ("Speech", "Music"):
+        if e.confidence < AUDIO_BAR or e.label in SPEECH_LABELS or is_music(e.label) or e.label in ("Speech", "Music")                 or not is_salient_nonspeech(e.label):
             continue
         fam = canonical(e.label)
         imp = importance_of(e.label.lower(), fam)
