@@ -118,7 +118,11 @@ def build_extra(done=frozenset()):
     m2 = sorted(MIXED2, key=lambda s: (_rank.get(VLM2.get(s, {}).get("verdict"), 1), MIXED2[s]["tier"], s))
     # wave 3 (scripts/source_mixed3.py): chosen by genre only, no screening at all -> shown as they are
     m3 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m3_*.mp4"))
-    for stem in EXTRA_MIXED + m2 + m3:
+    # wave 4 (scripts/source_mixed4.py): by structure (kennels, barns, colonies, ranges; dog + fireworks,
+    # helmet cams, milsim; named film scenes), no screening. Waves 2 and 3 were dropped (Adam, 2026-09-22:
+    # none mixed) -> their files sit in _dropped and are not listed.
+    m4 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m4_*.mp4"))
+    for stem in EXTRA_MIXED + m2 + m3 + m4:
         video = next((p for d in ("_dropped", "unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient")
                       for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
         if video is None:
@@ -131,7 +135,7 @@ def build_extra(done=frozenset()):
                       "importance": importance_of(f["label"].lower(), f["family"]), "masked": False,
                       "gate": "vlm " + ("seen" if seen else "unseen")}
                      for seen, rows in ((False, v["unseen"]), (True, v["seen"]), (False, v.get("unsure", []))) for f in rows]
-        elif stem.startswith("m3_"):
+        elif stem.startswith(("m3_", "m4_")):
             cands = []
         elif stem in MIXED2:
             cands = [{"label": f["detail"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
@@ -145,7 +149,7 @@ def build_extra(done=frozenset()):
                       "gate": ("psed" if k["det"] == "psed" else "beats") + " " + k["gate"]} for k in DET_CANDS.get(stem, [])]
         cands.sort(key=lambda c: -c["conf"])
         clip = {"id": f"{stem}.mp4", "src": "../../" + rel, "duration": _duration(video), "candidates": cands[:12],
-                "tag": "mixed", "split": "extra", "wave": 3 if stem.startswith("m3_") else 2 if stem in MIXED2 else 1,
+                "tag": "mixed", "split": "extra", "wave": 4 if stem.startswith("m4_") else 3 if stem.startswith("m3_") else 2 if stem in MIXED2 else 1,
                 "picture_due": True, "sentence": "nothing beyond the picture"}
         # 2026-09-21 night, Adam: wave 1 parked ("park") -- hidden unless done, or "also the parked ones"
         if clip["wave"] == 1 and stem + ".mp4" not in done:
