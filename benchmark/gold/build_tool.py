@@ -91,7 +91,7 @@ MIXED2 = json.loads(_MIXED2.read_text(encoding="utf-8")) if _MIXED2.exists() els
 # VLM screen of the same clips (scripts/screen_mixed2.py, the v4b3 gate without pictures): per clip
 # a verdict mixed / unseen / seen / empty. Adam (2026-09-21 night): "use the VLM to check which
 # ones actually are candidates for mixed" -> only verdict "mixed" clips are shown; the rest are
-# parked (visible with "also the parked ones"). Ranking only; disclosed as model-suggested.
+# parked (visible with "also the parked ones"). Selection aid only: every tag is Adam's; disclosed as gate-assisted selection (separate stratum).
 _VLM2 = HERE / "mixed2_vlm.json"
 VLM2 = json.loads(_VLM2.read_text(encoding="utf-8")) if _VLM2.exists() else {}
 
