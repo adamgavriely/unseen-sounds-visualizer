@@ -73,7 +73,7 @@ select{font:inherit;font-size:14px;padding:4px}
     <summary><b>Filter</b> <span id="fCount"></span> <button id="fReset" class="small" type="button">reset</button></summary>
     <div class="fgrid">
       <span class="fl">which clips</span>
-      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">mixed wave 2 only (m2_ clips)</option></select>
+      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m2_ / m3_ clips)</option></select>
         <label><input type="checkbox" id="fParked"> also the parked ones (old mixed you skipped + wave-1 mixed candidates)</label></span>
       <span class="fl">original tag</span>
       <span><label><input type="checkbox" class="ftag" value="unseen_ambient" checked> unseen</label>
@@ -175,7 +175,7 @@ const CLIPS = /*__CLIPS__*/[];
 
   const SHORT = {unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-amb", audioset_strong:"sliceB"};
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; const v = view(); v.forEach(i => { const c = CLIPS[i], a = data[c.id]; const o = document.createElement("option"); o.value = i;
-      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", dev" : (c.split === "extra" ? (c.wave === 2 ? ", mixed wave 2" + (c.vlm ? " · VLM: " + c.vlm : "") : ", new mixed") : "")) + (c.parked ? ", parked" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
+      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", dev" : (c.split === "extra" ? (c.wave === 3 ? ", mixed wave 3 (genre)" : c.wave === 2 ? ", mixed wave 2" + (c.vlm ? " · VLM: " + c.vlm : "") : ", new mixed") : "")) + (c.parked ? ", parked" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
     s.value = idx; $("fCount").textContent = v.length + " of " + CLIPS.length + " clips"; }
   // tagging goals per clip type (docs/metric_per_sound.md): enough needed sounds for recall, enough
   // empty clips for precision, enough covered sounds for the hard case
@@ -277,7 +277,7 @@ const CLIPS = /*__CLIPS__*/[];
     return CLIPS.map((c,i)=>i).filter(i => { const c = CLIPS[i], a = data[c.id];
       if(c.tag && !tags.has(c.tag)) return false;
       if($("fSet").value === "test" && c.split && c.split !== "test" && c.split !== "extra") return false;
-      if($("fSet").value === "wave2" && c.wave !== 2) return false;
+      if($("fSet").value === "wave2" && !(c.wave >= 2)) return false;
       const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
