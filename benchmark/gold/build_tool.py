@@ -88,7 +88,8 @@ _LAST_EXPORT = HERE / "annotations" / "gold_AG.json"
 # Tier 1 = two drawable families of importance >= 2 heard, tier 2 = one. Same split "extra".
 _MIXED2 = HERE / "mixed2_audio.json"
 MIXED2 = json.loads(_MIXED2.read_text(encoding="utf-8")) if _MIXED2.exists() else {}
-# VLM screen of the same clips (scripts/screen_mixed2.py, the v4b3 gate without pictures): per clip
+# VLM-only pre-screen of the same clips (scripts/screen_mixed2.py: frames + the list of sounds heard,
+# one question, no pipeline gate): per clip
 # a verdict mixed / unseen / seen / empty. Adam (2026-09-21 night): "use the VLM to check which
 # ones actually are candidates for mixed" -> only verdict "mixed" clips are shown; the rest are
 # parked (visible with "also the parked ones"). A pre-screen: which videos might contain two or more sounds, some seen and some unseen. Every tag is Adam's.
@@ -127,7 +128,7 @@ def build_extra(done=frozenset()):
                       "start": f["start"], "end": f["end"], "visible": seen, "obvious": seen,
                       "importance": importance_of(f["label"].lower(), f["family"]), "masked": False,
                       "gate": "vlm " + ("seen" if seen else "unseen")}
-                     for seen, rows in ((False, v["unseen"]), (True, v["seen"])) for f in rows]
+                     for seen, rows in ((False, v["unseen"]), (True, v["seen"]), (False, v.get("unsure", []))) for f in rows]
         elif stem in MIXED2:
             cands = [{"label": f["detail"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
                       "start": f["start"], "end": f["end"], "visible": False, "obvious": False,

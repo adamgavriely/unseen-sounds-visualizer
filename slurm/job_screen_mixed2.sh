@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=64G
 #SBATCH --time=02:00:00
-# VLM screen of the wave-2 mixed candidates (scripts/screen_mixed2.py): the v4b3 gate without pictures.
+# VLM-only pre-screen of the wave-2 mixed candidates (scripts/screen_mixed2.py): frames + sounds heard, no gate.
 set -uo pipefail
 cd "$SLURM_SUBMIT_DIR"; mkdir -p logs
 source "$HOME/miniconda3/etc/profile.d/conda.sh"; conda activate msproj
