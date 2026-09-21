@@ -74,7 +74,7 @@ select{font:inherit;font-size:14px;padding:4px}
     <summary><b>Filter</b> <span id="fCount"></span> <button id="fReset" class="small" type="button">reset</button></summary>
     <div class="fgrid">
       <span class="fl">which clips</span>
-      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m4_ clips)</option><option value="seen1">re-rate: clips with a seen/obvious sound rated 1</option></select>
+      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m4_ clips)</option></select>
         <label><input type="checkbox" id="fParked"> also the parked ones (old mixed you skipped + wave-1 mixed candidates)</label></span>
       <span class="fl">original tag</span>
       <span><label><input type="checkbox" class="ftag" value="unseen_ambient" checked> unseen</label>
@@ -132,7 +132,7 @@ select{font:inherit;font-size:14px;padding:4px}
       <li>A siren from behind the camera, a dog in the next room, glass breaking off screen: not visible → a picture is due.</li>
       <li>If the source is visible for part of the sound only, tick "visible" only if it is visible for most of the sound; add a note.</li>
       <li>"Obvious from picture": with the sound off, would a viewer still know this sound is happening <b>now</b>? A dog on screen with its mouth open barking: obvious. A phone ringing in a pocket, a siren behind the camera, a kettle you cannot see: not obvious.</li>
-      <li>"Importance" = how much you would lose if you did not know this sound happened, rated as if the screen were black (visible/obvious are separate ticks). <b>1</b> = I would not care that I missed it (traffic hum, rain, wind, background birds, a distant dog bark that adds nothing). <b>2</b> = it helps me understand the scene; I would want a caption for it (a door, dishes, footsteps that tell me someone is coming, a dog barking near the action, a tool). <b>3</b> = I must know it (siren, alarm, explosion, gunshot, glass breaking, baby crying, doorbell, phone, horn, scream, a dog barking at someone). When unsure between two tiers, pick the lower.</li>
+      <li>"Importance" = how much you would lose if you did not know this sound happened, rated as if the screen were black. Visible and obvious are separate ticks and do not change it. <b>1</b> = I would not care (traffic hum, rain, wind, background birds, a distant dog that adds nothing). <b>2</b> = helps me understand the scene; I would want a caption (footsteps approaching, a door closing off screen). <b>3</b> = I must know it (siren, alarm, gunshot, phone, doorbell, baby, the helicopter behind an aerial shot). When unsure, choose the lower. Importance on visible/obvious sounds does not affect scoring — do not agonise; the clip counts as "mixed" when an off-screen sound rated 2–3 and a visible real event (not a texture label) are both there.</li>
       <li>"Covered by speech/music": you can hear the sound only with effort because talking or a soundtrack sits on top of it.</li>
       <li>Start/end: rough is fine (half a second). Use the video's time; <kbd>[</kbd> and <kbd>]</kbd> stamp the current time.</li>
       <li>Everything is pre-filled from the system under test — sounds, times, visibility, the sentence, the picture-due box. That saves typing but can anchor you: delete what you do not hear, add what it missed, flip what is wrong. Your ear and eye decide; the thesis discloses the pre-fill.</li>
@@ -185,12 +185,17 @@ const CLIPS = /*__CLIPS__*/[];
   // no sounds -> no-ambient; needed sounds only (not visible, not obvious) -> unseen; needed sounds
   // next to seen/obvious ones -> mixed (some sources visible, some not); all seen/obvious -> seen.
   // Slice B clips are their own category and never count toward the four.
-  // Importance-aware (Fable, 21 Sept 2026): visible importance-1 sounds (a door you watch closing)
-  // never change the category; mixed needs a needed sound of importance >= 2 AND a visible/obvious
-  // sound of importance >= 2 (a source the system must hold back on while drawing the other).
+  // Importance-aware (Fable, 21 Sept 2026; reframed 22 Sept with Fable, option B): the needed side
+  // needs a sound of importance >= 2 (what the viewer would lose); the seen side needs a visible/
+  // obvious sound that is a real EVENT a naive system would want to draw -- i.e. not a texture
+  // label (traffic, hum, wind, rain, crowd, water...) -- whatever importance it was given. Seen
+  // importance is never load-bearing, so nothing tagged under the old "seen -> 1" rule is lost.
+  const TEXTURE = /\b(traffic|idling|rain|wind|stream|waves|sea|crowd|hubbub|noise|hum|air conditioning|ambience|room tone|static|rumble)(s|es|ing|ed)?\b/i;
+  function isTexture(s){ return TEXTURE.test((s.label || "") + " " + (s.family || "")); }
+  function seenEvent(s){ return (s.obvious || s.visible) && (imp(s.importance) >= 3 || !isTexture(s)); }
   function category(a){ const snds = a.sounds || []; if(!snds.length) return "no_ambient";
     const need = snds.filter(s => !s.obvious && !s.visible); if(!need.length) return "seen_ambient";
-    const needBig = need.some(s => imp(s.importance) >= 2), seenBig = snds.some(s => (s.obvious || s.visible) && imp(s.importance) >= 2);
+    const needBig = need.some(s => imp(s.importance) >= 2), seenBig = snds.some(seenEvent);
     if(needBig && seenBig) return "mixed";
     if(seenBig) return "seen_ambient";
     return "unseen_ambient"; }
@@ -289,7 +294,6 @@ const CLIPS = /*__CLIPS__*/[];
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
       const q = $("fSound").value.trim().toLowerCase(); if(q && !((a && a.sounds) || []).some(s => ((s.label||"") + " " + (s.family||"")).toLowerCase().includes(q))) return false;
       if($("fImp1").checked){ const need = ((a && a.sounds) || []).filter(s => !s.obvious && !s.visible); if(!need.length || need.some(s => imp(s.importance) >= 2)) return false; }
-      if($("fSet").value === "seen1" && !((a && a.sounds) || []).some(s => (s.obvious || s.visible) && imp(s.importance) === 1)) return false;
       return true; }); }
   function go(i){ if(data[CLIPS[idx]?.id]) delete data[CLIPS[idx].id]._ordered; const v = view(); if(!v.length){ $("fCount").textContent = "0 of " + CLIPS.length + " clips — nothing matches"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
