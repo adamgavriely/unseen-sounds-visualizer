@@ -68,6 +68,8 @@ select{font:inherit;font-size:14px;padding:4px}
       &nbsp;|&nbsp; <label><input type="checkbox" id="fTestOnly" checked> the 100 protocol clips + new mixed only</label>
       <label><input type="checkbox" id="fHideDone"> hide done / bad</label>
       <label><input type="checkbox" id="fParked"> show parked (old mixed you skipped)</label>
+      <br>my tagging: <select id="fMine"><option value="">any</option><option value="unseen_ambient">unseen</option><option value="mixed">mixed</option><option value="seen_ambient">seen</option><option value="no_ambient">no-ambient</option></select>
+      <label><input type="checkbox" id="fImp1"> only clips whose needed sounds are all importance 1</label>
       <span id="fCount"></span>
     </div>
     <button id="nextBtn">next →</button>
@@ -264,16 +266,18 @@ const CLIPS = /*__CLIPS__*/[];
       if($("fTestOnly").checked && c.split && c.split !== "test" && c.split !== "extra") return false;
       if($("fHideDone").checked && a && (a.done || a.bad)) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
+      const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
+      if($("fImp1").checked){ const need = ((a && a.sounds) || []).filter(s => !s.obvious && !s.visible); if(!need.length || need.some(s => imp(s.importance) >= 2)) return false; }
       return true; }); }
   function go(i){ if(data[CLIPS[idx]?.id]) delete data[CLIPS[idx].id]._ordered; const v = view(); if(!v.length){ $("fCount").textContent = " (nothing matches the filter)"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
     idx = i; renderClip(); saveFilters(); }
   function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); saveFilters(); }
   const FILTER_KEY = "gold-filters-" + (document.title || "page");
-  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), testOnly:$("fTestOnly").checked, hideDone:$("fHideDone").checked, parked:$("fParked").checked, idx})); }catch(e){} }
+  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), testOnly:$("fTestOnly").checked, hideDone:$("fHideDone").checked, parked:$("fParked").checked, mine:$("fMine").value, imp1:$("fImp1").checked, idx})); }catch(e){} }
   function loadFilters(){ try{ const f = JSON.parse(localStorage.getItem(FILTER_KEY) || "null"); if(!f) return; (f.tags||[]).forEach(([v,c]) => { const el = document.querySelector('.ftag[value="'+v+'"]'); if(el) el.checked = c; });
-      $("fTestOnly").checked = !!f.testOnly; $("fHideDone").checked = !!f.hideDone; $("fParked").checked = !!f.parked; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
-  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone, #fParked").forEach(el => el.addEventListener("change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
+      $("fTestOnly").checked = !!f.testOnly; $("fHideDone").checked = !!f.hideDone; $("fParked").checked = !!f.parked; $("fMine").value = f.mine || ""; $("fImp1").checked = !!f.imp1; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
+  document.querySelectorAll(".ftag, #fTestOnly, #fHideDone, #fParked, #fMine, #fImp1").forEach(el => el.addEventListener("change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
   $("prevBtn").addEventListener("click", ()=>goStep(-1)); $("nextBtn").addEventListener("click", ()=>goStep(1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
   $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); goStep(1); });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
