@@ -82,6 +82,12 @@ EXTRA_MIXED = ["mc_courtroom_verdict", "mc_airport_scene", "mc_beach_scene", "mc
                "un_skidding_LX5Y1jco", "un_wind_noise_CiSmL4nm", "un_vacuum_cleaner_cle_7bHrke6z", "un_people_shouting_0SL91QFy",
                "un_thunder_QISybl0-"]
 _LAST_EXPORT = HERE / "annotations" / "gold_AG.json"
+# 2026-09-21 night, Adam: "I need at least 30 more candidates to mixed ... clearer mixed style".
+# Second wave (scripts/source_mixed2.py, m2_): each query = a visible actor doing something
+# audible + a named off-screen event; kept by an audio-only rule (BEATs, no visibility model).
+# Tier 1 = two drawable families of importance >= 2 heard, tier 2 = one. Same split "extra".
+_MIXED2 = HERE / "mixed2_audio.json"
+MIXED2 = json.loads(_MIXED2.read_text(encoding="utf-8")) if _MIXED2.exists() else {}
 
 
 def _done_ids():
@@ -98,21 +104,34 @@ def _duration(path):
     return round(float(out), 1) if out else 0.0
 
 
-def build_extra():
-    """the extra mixed candidates: no detector run on them yet (candidates come later via detector_candidates.json)"""
+def build_extra(done=frozenset()):
+    """the extra mixed candidates: wave 1 (EXTRA_MIXED, parked unless done) and wave 2 (m2_, from mixed2_audio.json)"""
     clips = []
-    for stem in EXTRA_MIXED:
-        video = next((p for d in ("_dropped", "unsorted") for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
+    m2 = sorted(MIXED2, key=lambda s: (MIXED2[s]["tier"], s))
+    for stem in EXTRA_MIXED + m2:
+        video = next((p for d in ("_dropped", "unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient")
+                      for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
         if video is None:
             print(f"extra clip missing: {stem}"); continue
         rel = video.resolve().relative_to(_ROOT).as_posix()
-        cands = [{"label": k["detail"].replace(" (siren)", " siren").lower(), "family": k["label"], "conf": k["conf"],
-                  "start": k["start"], "end": k["end"], "visible": False, "obvious": False,
-                  "importance": importance_of(k["detail"].lower(), k["label"]), "masked": False,
-                  "gate": ("psed" if k["det"] == "psed" else "beats") + " " + k["gate"]} for k in DET_CANDS.get(stem, [])]
+        if stem in MIXED2:
+            cands = [{"label": f["detail"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
+                      "start": f["start"], "end": f["end"], "visible": False, "obvious": False,
+                      "importance": importance_of(f["detail"].lower(), f["family"]), "masked": False, "gate": "beats audio-only"}
+                     for f in MIXED2[stem]["families"]]
+        else:
+            cands = [{"label": k["detail"].replace(" (siren)", " siren").lower(), "family": k["label"], "conf": k["conf"],
+                      "start": k["start"], "end": k["end"], "visible": False, "obvious": False,
+                      "importance": importance_of(k["detail"].lower(), k["label"]), "masked": False,
+                      "gate": ("psed" if k["det"] == "psed" else "beats") + " " + k["gate"]} for k in DET_CANDS.get(stem, [])]
         cands.sort(key=lambda c: -c["conf"])
-        clips.append({"id": f"{stem}.mp4", "src": "../../" + rel, "duration": _duration(video), "candidates": cands[:12],
-                      "tag": "mixed", "split": "extra", "picture_due": True, "sentence": "nothing beyond the picture"})
+        clip = {"id": f"{stem}.mp4", "src": "../../" + rel, "duration": _duration(video), "candidates": cands[:12],
+                "tag": "mixed", "split": "extra", "wave": 2 if stem in MIXED2 else 1,
+                "picture_due": True, "sentence": "nothing beyond the picture"}
+        # 2026-09-21 night, Adam: wave 1 parked ("park") -- hidden unless done, or "also the parked ones"
+        if clip["wave"] == 1 and stem + ".mp4" not in done:
+            clip["parked"] = True
+        clips.append(clip)
     return clips
 
 
@@ -171,7 +190,7 @@ def build_default():
     for c in clips:
         if c["tag"] == "mixed" and c["id"] not in done:
             c["parked"] = True
-    clips += build_extra()
+    clips += build_extra(done)
     return clips
 
 
