@@ -287,7 +287,11 @@ const CLIPS = /*__CLIPS__*/[];
   function go(i){ if(data[CLIPS[idx]?.id]) delete data[CLIPS[idx].id]._ordered; const v = view(); if(!v.length){ $("fCount").textContent = "0 of " + CLIPS.length + " clips — nothing matches"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
     idx = i; renderClip(); saveFilters(); }
-  function goStep(step){ const v = view(); if(!v.length) return; let k = v.indexOf(idx); if(k < 0){ k = v.findIndex(x => x > idx); if(k < 0) k = 0; } else { k = (k + step + v.length) % v.length; } idx = v[k]; renderClip(); saveFilters(); }
+  function goStep(step){ const v = view(); if(!v.length){ $("status").textContent = "no clip matches the filter — change the Filter panel"; return; }
+    let k = v.indexOf(idx); let msg = "";
+    if(k < 0){ k = step < 0 ? v.findLastIndex(x => x < idx) : v.findIndex(x => x > idx); if(k < 0) k = step < 0 ? v.length - 1 : 0; }   // current clip left the list (e.g. just marked done under "only not done")
+    else { k = k + step; if(k >= v.length){ k = 0; msg = "end of the filtered list — back to its first clip"; } if(k < 0){ k = v.length - 1; msg = "start of the filtered list — jumped to its last clip"; } }
+    idx = v[k]; renderClip(); saveFilters(); $("status").textContent = msg; }
   const FILTER_KEY = "gold-filters-" + (document.title || "page");
   function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), set:$("fSet").value, done:$("fDone").value, sound:$("fSound").value, parked:$("fParked").checked, mine:$("fMine").value, imp1:$("fImp1").checked, idx})); }catch(e){} }
   function loadFilters(){ try{ const f = JSON.parse(localStorage.getItem(FILTER_KEY) || "null"); if(!f) return; (f.tags||[]).forEach(([v,c]) => { const el = document.querySelector('.ftag[value="'+v+'"]'); if(el) el.checked = c; });
@@ -299,7 +303,7 @@ const CLIPS = /*__CLIPS__*/[];
     $("fSet").value = "all"; $("fParked").checked = true; $("fDone").value = "done"; $("fMine").value = tag === "audioset_strong" ? "" : tag; $("fSound").value = ""; $("fImp1").checked = false;
     $("filters").open = true; saveFilters(); renderSel(); renderProgress(); go(idx); });
   $("fReset").addEventListener("click", e => { e.preventDefault(); document.querySelectorAll(".ftag").forEach(x => x.checked = true); $("fSet").value = "test"; $("fParked").checked = false; $("fDone").value = ""; $("fMine").value = ""; $("fSound").value = ""; $("fImp1").checked = false; saveFilters(); renderSel(); renderProgress(); go(idx); });
-  $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); goStep(1); });
+  $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); const left = !view().includes(idx); goStep(1); if(left) $("status").textContent = "marked done — it left the list because the filter is \"only not done\""; });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
   document.addEventListener("keydown", e=>{ const tag = (e.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea"||tag==="select") return;
     const v = $("video"); const a = current();
@@ -308,7 +312,7 @@ const CLIPS = /*__CLIPS__*/[];
     else if(e.key==="]"){ if(a.sounds[selSound]){ a.sounds[selSound].end = +v.currentTime.toFixed(1); touch(); renderSounds(); } }
     else if(e.key==="a"||e.key==="A") $("addSound").click();
     else if(e.key==="n"||e.key==="N") $("markDone").click();
-    else if(e.key==="p"||e.key==="P") go(idx-1); });
+    else if(e.key==="p"||e.key==="P") goStep(-1); });
 
   $("exportBtn").addEventListener("click", ()=>{ const who = $("who").value.trim() || "AG"; for(const id in data){ if(!data[id].annotator || data[id].annotator==="anon") data[id].annotator = who; } const out = {annotator: who, exported: new Date().toISOString(), tool_version: 2, clips: Object.values(data)};
     const blob = new Blob([JSON.stringify(out, null, 1)], {type:"application/json"}); const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = "gold_" + who + ".json"; document.body.appendChild(a); a.click(); a.remove(); $("status").textContent = "exported gold_" + who + ".json — put it in benchmark/gold/annotations/"; });
