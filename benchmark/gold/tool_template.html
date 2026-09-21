@@ -86,7 +86,8 @@ select{font:inherit;font-size:14px;padding:4px}
       <span><select id="fDone"><option value="">done or not</option><option value="done">only done</option><option value="todo">only not done</option><option value="bad">only marked bad</option><option value="untouched">done but looks untouched (no sentence, pre-fill unchanged)</option></select>
         <select id="fMine"><option value="">any category</option><option value="unseen_ambient">I tagged: unseen</option><option value="mixed">I tagged: mixed</option><option value="seen_ambient">I tagged: seen</option><option value="no_ambient">I tagged: no-ambient</option></select>
         <input type="text" id="fSound" size="16" placeholder="sound label, e.g. dog">
-        <label><input type="checkbox" id="fImp1"> needed sounds are all importance 1</label></span>
+        <label><input type="checkbox" id="fImp1"> needed sounds are all importance 1</label>
+        <label title="re-rate under the new rule: importance is a property of the sound, not of the screen"><input type="checkbox" id="fSeen1"> has a seen/obvious sound rated 1 (re-rate)</label></span>
     </div>
   </details>
   <h2 id="clipName"></h2>
@@ -132,7 +133,7 @@ select{font:inherit;font-size:14px;padding:4px}
       <li>A siren from behind the camera, a dog in the next room, glass breaking off screen: not visible → a picture is due.</li>
       <li>If the source is visible for part of the sound only, tick "visible" only if it is visible for most of the sound; add a note.</li>
       <li>"Obvious from picture": with the sound off, would a viewer still know this sound is happening <b>now</b>? A dog on screen with its mouth open barking: obvious. A phone ringing in a pocket, a siren behind the camera, a kettle you cannot see: not obvious.</li>
-      <li>"Importance": how much a deaf viewer loses without it. <b>1</b> = background texture (traffic hum, rain, wind). <b>2</b> = context (dishes, footsteps, birds, a door). <b>3</b> = safety or plot (siren, alarm, glass breaking, gunshot, baby crying, doorbell, phone, horn, a dog barking at someone).</li>
+      <li>"Importance": a property of the sound, not of the screen — rate it as if you could not see the picture; visible/obvious are separate ticks. <b>1</b> = background texture (traffic hum, rain, wind). <b>2</b> = context (dishes, footsteps, birds, a door). <b>3</b> = safety or plot (siren, alarm, glass breaking, gunshot, baby crying, doorbell, phone, horn, a dog barking at someone). When unsure between two tiers, pick the lower.</li>
       <li>"Covered by speech/music": you can hear the sound only with effort because talking or a soundtrack sits on top of it.</li>
       <li>Start/end: rough is fine (half a second). Use the video's time; <kbd>[</kbd> and <kbd>]</kbd> stamp the current time.</li>
       <li>Everything is pre-filled from the system under test — sounds, times, visibility, the sentence, the picture-due box. That saves typing but can anchor you: delete what you do not hear, add what it missed, flip what is wrong. Your ear and eye decide; the thesis discloses the pre-fill.</li>
@@ -289,6 +290,7 @@ const CLIPS = /*__CLIPS__*/[];
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
       const q = $("fSound").value.trim().toLowerCase(); if(q && !((a && a.sounds) || []).some(s => ((s.label||"") + " " + (s.family||"")).toLowerCase().includes(q))) return false;
       if($("fImp1").checked){ const need = ((a && a.sounds) || []).filter(s => !s.obvious && !s.visible); if(!need.length || need.some(s => imp(s.importance) >= 2)) return false; }
+      if($("fSeen1").checked && !((a && a.sounds) || []).some(s => (s.obvious || s.visible) && imp(s.importance) === 1)) return false;
       return true; }); }
   function go(i){ if(data[CLIPS[idx]?.id]) delete data[CLIPS[idx].id]._ordered; const v = view(); if(!v.length){ $("fCount").textContent = "0 of " + CLIPS.length + " clips — nothing matches"; return; }
     if(!v.includes(i)){ const after = v.find(k => k > i); i = (after === undefined) ? v[0] : after; }
@@ -299,16 +301,16 @@ const CLIPS = /*__CLIPS__*/[];
     else { k = k + step; if(k >= v.length){ k = 0; msg = "end of the filtered list — back to its first clip"; } if(k < 0){ k = v.length - 1; msg = "start of the filtered list — jumped to its last clip"; } }
     idx = v[k]; renderClip(); saveFilters(); $("status").textContent = msg; }
   const FILTER_KEY = "gold-filters-" + (document.title || "page");
-  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), set:$("fSet").value, done:$("fDone").value, sound:$("fSound").value, parked:$("fParked").checked, mine:$("fMine").value, imp1:$("fImp1").checked, idx})); }catch(e){} }
+  function saveFilters(){ try{ localStorage.setItem(FILTER_KEY, JSON.stringify({tags:[...document.querySelectorAll(".ftag")].map(x=>[x.value, x.checked]), set:$("fSet").value, done:$("fDone").value, sound:$("fSound").value, parked:$("fParked").checked, mine:$("fMine").value, imp1:$("fImp1").checked, seen1:$("fSeen1").checked, idx})); }catch(e){} }
   function loadFilters(){ try{ const f = JSON.parse(localStorage.getItem(FILTER_KEY) || "null"); if(!f) return; (f.tags||[]).forEach(([v,c]) => { const el = document.querySelector('.ftag[value="'+v+'"]'); if(el) el.checked = c; });
-      $("fSet").value = f.set || (f.testOnly === false ? "all" : "test"); $("fDone").value = f.done || (f.hideDone ? "todo" : ""); $("fSound").value = f.sound || ""; $("fParked").checked = !!f.parked; $("fMine").value = f.mine || ""; $("fImp1").checked = !!f.imp1; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
-  document.querySelectorAll(".ftag, #fSet, #fDone, #fParked, #fMine, #fImp1, #fSound").forEach(el => el.addEventListener(el.id === "fSound" ? "input" : "change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
+      $("fSet").value = f.set || (f.testOnly === false ? "all" : "test"); $("fDone").value = f.done || (f.hideDone ? "todo" : ""); $("fSound").value = f.sound || ""; $("fParked").checked = !!f.parked; $("fMine").value = f.mine || ""; $("fImp1").checked = !!f.imp1; $("fSeen1").checked = !!f.seen1; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
+  document.querySelectorAll(".ftag, #fSet, #fDone, #fParked, #fMine, #fImp1, #fSeen1, #fSound").forEach(el => el.addEventListener(el.id === "fSound" ? "input" : "change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
   $("prevBtn").addEventListener("click", ()=>goStep(-1)); $("nextBtn").addEventListener("click", ()=>goStep(1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
   $("goals").addEventListener("click", e => { const g = e.target.closest(".gcell"); if(!g) return; const tag = g.dataset.tag;
     document.querySelectorAll(".ftag").forEach(x => x.checked = tag === "audioset_strong" ? x.value === "audioset_strong" : x.value !== "audioset_strong");
     $("fSet").value = "all"; $("fParked").checked = true; $("fDone").value = "done"; $("fMine").value = tag === "audioset_strong" ? "" : tag; $("fSound").value = ""; $("fImp1").checked = false;
     $("filters").open = true; saveFilters(); renderSel(); renderProgress(); go(idx); });
-  $("fReset").addEventListener("click", e => { e.preventDefault(); document.querySelectorAll(".ftag").forEach(x => x.checked = true); $("fSet").value = "test"; $("fParked").checked = false; $("fDone").value = ""; $("fMine").value = ""; $("fSound").value = ""; $("fImp1").checked = false; saveFilters(); renderSel(); renderProgress(); go(idx); });
+  $("fReset").addEventListener("click", e => { e.preventDefault(); document.querySelectorAll(".ftag").forEach(x => x.checked = true); $("fSet").value = "test"; $("fParked").checked = false; $("fDone").value = ""; $("fMine").value = ""; $("fSound").value = ""; $("fImp1").checked = false; $("fSeen1").checked = false; saveFilters(); renderSel(); renderProgress(); go(idx); });
   $("undoRecent").addEventListener("click", ()=>{ const m = +prompt("Un-mark done on clips marked done in the last how many minutes? (sounds and sentences are kept)", "30"); if(!(m > 0)) return;
     const since = Date.now() - m * 60000; const hit = CLIPS.filter(c => { const a = data[c.id]; return a && a.done && a.updated && Date.parse(a.updated) >= since; });
     if(!hit.length){ $("status").textContent = "nothing was marked done in the last " + m + " minutes"; return; }
