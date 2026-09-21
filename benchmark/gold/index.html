@@ -74,7 +74,7 @@ select{font:inherit;font-size:14px;padding:4px}
     <summary><b>Filter</b> <span id="fCount"></span> <button id="fReset" class="small" type="button">reset</button></summary>
     <div class="fgrid">
       <span class="fl">which clips</span>
-      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m4_ clips)</option></select>
+      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m4_ clips)</option><option value="seen1">re-rate: clips with a seen/obvious sound rated 1</option></select>
         <label><input type="checkbox" id="fParked"> also the parked ones (old mixed you skipped + wave-1 mixed candidates)</label></span>
       <span class="fl">original tag</span>
       <span><label><input type="checkbox" class="ftag" value="unseen_ambient" checked> unseen</label>
@@ -286,6 +286,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
       if(c.tag && !tags.has(c.tag)) return false;
       if($("fSet").value === "test" && c.split && c.split !== "test" && c.split !== "extra") return false;
       if($("fSet").value === "wave2" && !(c.wave >= 2)) return false;
+      if($("fSet").value === "seen1" && !((a && a.sounds) || []).some(s => (s.obvious || s.visible) && imp(s.importance) === 1)) return false;
       const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false; if(dn === "untouched" && !(isDone && untouched(a))) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
