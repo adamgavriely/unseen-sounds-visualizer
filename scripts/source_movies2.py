@@ -34,10 +34,10 @@ FMT = "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720][ext=mp4]/b"
 # (genre, film, scene query) -- 2-3 scenes per film where a sound is heard before / without its source
 QUERIES = [
     # horror / thriller
-    ("horror", "quiet_place", "a quiet place basement flooding scene"),
+    ("horror", "quiet_place", None),   # basement flooding: already an m4 film cut
     ("horror", "quiet_place", "a quiet place nail scene stairs"),
     ("horror", "quiet_place", "a quiet place cornfield silo scene"),
-    ("horror", "conjuring", "the conjuring hide and clap scene"),
+    ("horror", "conjuring", None),     # hide and clap: already an m4 film cut
     ("horror", "conjuring", "the conjuring music box scene"),
     ("horror", "dont_breathe", "don't breathe basement scene lights out"),
     ("horror", "dont_breathe", "don't breathe dog chase scene"),
@@ -51,13 +51,13 @@ QUERIES = [
     ("horror", "it_follows", "it follows beach scene"),
     ("horror", "the_descent", "the descent cave crawl scene"),
     # war / action
-    ("war", "private_ryan", "saving private ryan omaha beach scene"),
+    ("war", "private_ryan", None),     # omaha beach: already an m4 film cut
     ("war", "private_ryan", "saving private ryan sniper scene bell tower"),
     ("war", "dunkirk", "dunkirk beach scene planes"),
     ("war", "dunkirk", "dunkirk mole scene stuka"),
-    ("war", "1917", "1917 trench run scene"),
+    ("war", "1917", None),             # trench run: already an m4 film cut
     ("war", "1917", "1917 farmhouse plane crash scene"),
-    ("war", "black_hawk_down", "black hawk down first crash scene"),
+    ("war", "black_hawk_down", None),  # first crash: already an m4 film cut
     ("war", "hurt_locker", "the hurt locker sniper scene desert"),
     ("war", "fury", "fury 2014 tiger tank battle scene"),
     ("war", "hacksaw_ridge", "hacksaw ridge night scene"),
@@ -96,7 +96,7 @@ QUERIES = [
     ("classic", "north_by_northwest", "north by northwest crop duster scene"),
     # comedy
     ("comedy", "home_alone", "home alone furnace scene"),
-    ("comedy", "home_alone", "home alone kevin cooking scene"),
+    ("comedy", "home_alone", None),    # kevin cooking: already an m4 film cut
     ("comedy", "ferris", "ferris bueller doorbell scene"),
     ("comedy", "mr_bean", "mr bean hotel scene"),
     ("comedy", "hot_fuzz", "hot fuzz swan scene"),
@@ -122,6 +122,33 @@ QUERIES = [
     ("family", "jurassic", "jurassic park t-rex scene glass of water"),
     ("family", "jurassic", "jurassic park raptors kitchen scene"),
     ("family", "paddington", "paddington bathroom flood scene"),
+    # second pass (2026-09-22): scenes different from the m4 film cuts, more films
+    ("horror", "quiet_place", "a quiet place bathtub scene"),
+    ("horror", "conjuring", "the conjuring basement match scene"),
+    ("war", "private_ryan", "saving private ryan ramelle bridge scene"),
+    ("war", "1917", "1917 river scene waterfall"),
+    ("war", "black_hawk_down", "black hawk down convoy lost scene"),
+    ("comedy", "home_alone", "home alone basement furnace scene"),
+    ("thriller", "zodiac", "zodiac basement scene"),
+    ("thriller", "prisoners", "prisoners 2013 rain scene"),
+    ("thriller", "get_out", "get out sunken place scene"),
+    ("thriller", "nope", "nope 2022 house scene"),
+    ("thriller", "midsommar", "midsommar cliff scene"),
+    ("thriller", "the_road", "the road 2009 house basement scene"),
+    ("drama", "whiplash", "whiplash car crash scene"),
+    ("drama", "revenant", "the revenant bear attack scene"),
+    ("war", "apocalypse_now", "apocalypse now helicopter attack scene"),
+    ("war", "platoon", "platoon night ambush scene"),
+    ("war", "jarhead", "jarhead oil fires scene"),
+    ("action", "baby_driver", "baby driver opening chase scene"),
+    ("action", "john_wick", "john wick house invasion scene"),
+    ("action", "the_raid", "the raid hallway scene"),
+    ("drama", "nomadland", "nomadland van scene"),
+    ("drama", "first_man", "first man launch scene"),
+    ("scifi", "annihilation", "annihilation bear scene"),
+    ("scifi", "prey", "prey 2022 forest scene"),
+    ("disaster", "greenland", "greenland 2020 highway scene"),
+    ("family", "goonies", "the goonies waterfall scene"),
 ]
 
 
@@ -156,6 +183,8 @@ def main(want_n: int) -> None:
     for i, (genre, film, query) in enumerate(QUERIES, 1):
         if got >= want_n:
             break
+        if query is None:
+            continue                       # scene already fetched as an m4 film cut
         name = f"m5_{genre}_{film}_{i}"
         if any((ROOT / "data" / "input" / "benchmark" / d / f"{name}.mp4").exists()
                for d in ("unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient", "_dropped", "_bad")):
