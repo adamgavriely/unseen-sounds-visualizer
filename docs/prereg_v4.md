@@ -399,6 +399,20 @@ after. Fixed, with the effect on the first-run rows:**
   streams lose their offset (≤ 0.13 s in this data), PSED frame cache is not invalidated on clip
   change, ~14 PSED names unmapped, slice-B clips carry a fixed "unseen" tag.
 
+**Amendment 4 — 2026-09-22 (importance rule; declared before the re-run and before the
+re-rate).** The tagging note "seen sounds: put importance 1" made the mixed class impossible
+(a dog on camera barking + a siren off screen came out "unseen"), because importance was a
+function of the screen while visible/obvious already record the screen. New rule (Adam + two
+Fables, two rounds): importance is a property of the sound (1 steady noise of the place, 2 an
+event you can say in one sentence, 3 danger or a key story moment; unsure → lower). Score:
+needed sounds rated 1 are don't-care (no onset → the onset rule cannot judge them; a matching
+picture is absorbed); headline F1-strict unweighted over needed sounds rated 2–3; any picture
+of a visible/obvious sound is a false alarm of weight 1; weighted F1 (2/3) a side column with
+n(level 3); the earlier rule reported as a sensitivity row (`--old-rule`). Adam re-rates the
+visible sounds he had set to 1 under the old note (tool filter "re-rate") and off-screen
+textures he had set to 2. The category split of the 100 clips may shift; the judge set stays
+frozen; per-sound rows are reported per category.
+
 **Re-run outcome (v4b4 / v4ab4):** _pending — after the annotation export._
 
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
