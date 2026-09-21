@@ -88,6 +88,12 @@ _LAST_EXPORT = HERE / "annotations" / "gold_AG.json"
 # Tier 1 = two drawable families of importance >= 2 heard, tier 2 = one. Same split "extra".
 _MIXED2 = HERE / "mixed2_audio.json"
 MIXED2 = json.loads(_MIXED2.read_text(encoding="utf-8")) if _MIXED2.exists() else {}
+# VLM screen of the same clips (scripts/screen_mixed2.py, the v4b3 gate without pictures): per clip
+# a verdict mixed / unseen / seen / empty. Adam (2026-09-21 night): "use the VLM to check which
+# ones actually are candidates for mixed" -> only verdict "mixed" clips are shown; the rest are
+# parked (visible with "also the parked ones"). Ranking only; disclosed as model-suggested.
+_VLM2 = HERE / "mixed2_vlm.json"
+VLM2 = json.loads(_VLM2.read_text(encoding="utf-8")) if _VLM2.exists() else {}
 
 
 def _done_ids():
@@ -107,14 +113,22 @@ def _duration(path):
 def build_extra(done=frozenset()):
     """the extra mixed candidates: wave 1 (EXTRA_MIXED, parked unless done) and wave 2 (m2_, from mixed2_audio.json)"""
     clips = []
-    m2 = sorted(MIXED2, key=lambda s: (MIXED2[s]["tier"], s))
+    _rank = {"mixed": 0, "unseen": 1, "seen": 2, "empty": 3}
+    m2 = sorted(MIXED2, key=lambda s: (_rank.get(VLM2.get(s, {}).get("verdict"), 1), MIXED2[s]["tier"], s))
     for stem in EXTRA_MIXED + m2:
         video = next((p for d in ("_dropped", "unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient")
                       for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
         if video is None:
             print(f"extra clip missing: {stem}"); continue
         rel = video.resolve().relative_to(_ROOT).as_posix()
-        if stem in MIXED2:
+        if stem in VLM2 and VLM2[stem].get("verdict") not in (None, "error"):
+            v = VLM2[stem]
+            cands = [{"label": f["label"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
+                      "start": f["start"], "end": f["end"], "visible": seen, "obvious": seen,
+                      "importance": importance_of(f["label"].lower(), f["family"]), "masked": False,
+                      "gate": "vlm " + ("seen" if seen else "unseen")}
+                     for seen, rows in ((False, v["unseen"]), (True, v["seen"])) for f in rows]
+        elif stem in MIXED2:
             cands = [{"label": f["detail"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
                       "start": f["start"], "end": f["end"], "visible": False, "obvious": False,
                       "importance": importance_of(f["detail"].lower(), f["family"]), "masked": False, "gate": "beats audio-only"}
@@ -131,6 +145,10 @@ def build_extra(done=frozenset()):
         # 2026-09-21 night, Adam: wave 1 parked ("park") -- hidden unless done, or "also the parked ones"
         if clip["wave"] == 1 and stem + ".mp4" not in done:
             clip["parked"] = True
+        if clip["wave"] == 2:
+            clip["vlm"] = VLM2.get(stem, {}).get("verdict", "")
+            if VLM2 and clip["vlm"] != "mixed" and stem + ".mp4" not in done:
+                clip["parked"] = True       # VLM says not mixed: parked, still reachable
         clips.append(clip)
     return clips
 

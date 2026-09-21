@@ -138,7 +138,101 @@ QUERIES = [
     ("m2_snow_shovel_plow", "shovelling snow driveway snow plow passing"),
     ("m2_rake_leaves_helicopter", "raking leaves yard helicopter overhead"),
     ("m2_fishing_reel_boat_horn", "fishing reel casting pier boat horn"),
+    # wave 2b (more of the same shape)
+    ("m2_busker_violin_traffic_horn", "violin busker street car horn honking"),
+    ("m2_steel_drum_busker_siren", "steel drum busker siren passing"),
+    ("m2_bagpipes_street_bells", "bagpipes street performer church bells"),
+    ("m2_dog_fence_barking_truck", "dog barking at fence garbage truck"),
+    ("m2_dog_window_siren", "dog howling at siren window"),
+    ("m2_cat_toy_doorbell", "cat playing toy doorbell rings reaction"),
+    ("m2_parrot_talking_phone", "parrot squawking phone ringing"),
+    ("m2_frying_bacon_dog", "frying bacon kitchen dog barking"),
+    ("m2_blender_kitchen_doorbell", "blender smoothie kitchen doorbell"),
+    ("m2_kettle_whistle_phone", "kettle whistling phone rings kitchen"),
+    ("m2_coffee_grinder_siren", "coffee grinder cafe siren outside"),
+    ("m2_woodturning_lathe_birds", "wood turning lathe workshop birds"),
+    ("m2_forge_hammer_dog", "forge hammering dog barking outside"),
+    ("m2_farrier_horseshoe_dog", "farrier shoeing horse dog barking"),
+    ("m2_shearing_sheep_dogs", "sheep shearing shed dogs barking"),
+    ("m2_horse_trot_church_bell", "horse trotting village church bell"),
+    ("m2_cow_bell_tractor", "cows with bells alpine tractor passing"),
+    ("m2_pig_feeding_rooster", "pigs feeding trough rooster crowing"),
+    ("m2_goose_honking_kids", "geese honking farm children shouting"),
+    ("m2_donkey_bray_church", "donkey braying village church bells"),
+    ("m2_kids_trampoline_dog", "kids jumping trampoline dog barking"),
+    ("m2_baby_rattle_doorbell", "baby playing rattle doorbell rings"),
+    ("m2_toddler_piano_phone", "toddler banging piano phone ringing"),
+    ("m2_kids_basketball_siren", "kids playing basketball driveway siren"),
+    ("m2_skipping_rope_ice_cream", "kids skipping rope street ice cream truck"),
+    ("m2_scooter_kids_helicopter", "kids scooter park helicopter"),
+    ("m2_typing_thunder", "typing laptop desk thunderstorm outside window"),
+    ("m2_sewing_dog_barking", "sewing machine dog barking"),
+    ("m2_knitting_needles_phone", "knitting needles clicking phone ringing"),
+    ("m2_dishes_kitchen_siren", "washing dishes kitchen window siren outside"),
+    ("m2_vacuum_doorbell", "vacuuming doorbell rings dog"),
+    ("m2_drill_diy_dog", "drilling wall diy dog barking"),
+    ("m2_hammer_nails_thunder", "hammering nails deck thunder"),
+    ("m2_sanding_workshop_siren", "sanding workshop siren outside"),
+    ("m2_mower_ride_helicopter", "riding lawn mower helicopter overhead"),
+    ("m2_hedge_trimmer_church", "hedge trimmer garden church bells"),
+    ("m2_pressure_washer_dog", "pressure washing patio dog barking"),
+    ("m2_car_horn_wedding_bells", "wedding car horns church bells"),
+    ("m2_motorbike_wheelie_siren", "motorcycle revving street police siren"),
+    ("m2_bus_doors_beep_siren", "bus door beeping stop ambulance siren"),
+    ("m2_train_doors_whistle", "train doors closing whistle platform"),
+    ("m2_tram_bell_church", "tram passing bell church bells square"),
+    ("m2_bike_bell_tram", "bicycle bell ringing tram passing"),
+    ("m2_ambulance_dog_bark", "ambulance siren dog barking street"),
+    ("m2_fire_engine_kids", "fire engine siren children waving"),
+    ("m2_street_market_scooter_horn", "street market vendor scooter horn"),
+    ("m2_fish_market_auction_gulls", "fish market auction shouting seagulls"),
+    ("m2_butcher_chopping_traffic", "butcher chopping cleaver street traffic"),
+    ("m2_cobbler_hammer_street", "cobbler hammering shoes street sounds"),
+    ("m2_tailor_scissors_radio", "tailor cutting fabric scissors radio"),
+    ("m2_barista_steam_dog", "barista steaming milk dog barking cafe"),
+    ("m2_bartender_ice_glass_break", "bartender ice bucket glass breaks bar"),
+    ("m2_restaurant_kitchen_phone", "restaurant kitchen pans phone ringing"),
+    ("m2_ping_pong_dog", "ping pong garage dog barking"),
+    ("m2_golf_swing_airplane", "golf swing driving range airplane"),
+    ("m2_archery_range_birds", "archery range arrows birds"),
+    ("m2_baseball_bat_crowd", "baseball batting cage crowd cheering"),
+    ("m2_hockey_stick_horn", "hockey practice puck horn"),
+    ("m2_gym_weights_phone", "gym weights dropping phone ringing"),
+    ("m2_horse_jumping_crowd", "show jumping horse crowd applause"),
+    ("m2_rowing_oars_horn", "rowing boat oars river boat horn"),
+    ("m2_kayak_paddle_helicopter", "kayak paddling river helicopter"),
+    ("m2_swimming_pool_whistle", "swimming lesson pool whistle lifeguard"),
+    ("m2_axe_throw_crowd", "axe throwing crowd cheering"),
+    ("m2_drum_circle_siren", "drum circle park siren passing"),
+    ("m2_church_organ_bells", "church organ practice bells tower"),
+    ("m2_school_recorder_bell", "school children recorder practice bell rings"),
+    ("m2_orchestra_rehearsal_phone", "orchestra rehearsal phone rings"),
+    ("m2_dj_street_party_horns", "dj street party car horns"),
+    ("m2_fireworks_kids_dog", "fireworks backyard kids screaming dog barking"),
+    ("m2_bonfire_crowd_siren", "bonfire night crowd siren"),
+    ("m2_snowball_fight_plow", "snowball fight kids snow plow"),
+    ("m2_sledding_kids_dog", "kids sledding hill dog barking"),
+    ("m2_rain_umbrella_thunder", "walking rain umbrella thunder city"),
+    ("m2_car_wash_tunnel_horn", "car wash tunnel inside horn"),
+    ("m2_gas_station_pump_siren", "gas station pumping fuel siren passing"),
+    ("m2_mechanic_impact_wrench_dog", "mechanic impact wrench garage dog"),
+    ("m2_tire_change_traffic_horn", "roadside tire change traffic horns"),
+    ("m2_drive_thru_speaker_siren", "drive thru speaker order siren"),
+    ("m2_atm_beeps_street", "atm beeping street traffic horns"),
+    ("m2_arcade_claw_crowd", "arcade claw machine crowd cheering"),
+    ("m2_bowling_kids_thunder", "bowling kids cheering thunder outside"),
+    ("m2_zoo_lion_roar_kids", "zoo lion roaring children screaming"),
+    ("m2_monkey_enclosure_phone", "zoo monkeys screeching phone ringing"),
+    ("m2_elephant_trumpet_crowd", "elephant trumpeting zoo crowd"),
+    ("m2_seal_show_clapping", "sea lion show barking applause"),
+    ("m2_aviary_parrots_kids", "aviary parrots squawking kids"),
+    ("m2_dog_show_applause", "dog agility show barking applause"),
+    ("m2_cat_cafe_door_chime", "cat cafe meowing door chime"),
 ]
+
+
+DEEP = "--deep" in sys.argv          # second pass: hits 7-12 of every query
+AUDIO_BAR = 0.25                      # keep bar for the audio rule (ranking only; the VLM screen and Adam decide)
 
 
 def _download(name: str, query: str) -> Path | None:
@@ -150,7 +244,8 @@ def _download(name: str, query: str) -> Path | None:
     # (ytsearchN + --playlist-items N kept returning hit 1 with this yt-dlp build)
     for _ in (1,):
         subprocess.run(
-            ["yt-dlp", f"ytsearch6:{query}", "--max-downloads", "1",
+            ["yt-dlp", f"ytsearch{12 if DEEP else 6}:{query}", "--max-downloads", "1"]
+            + (["--playlist-items", "7:12"] if DEEP else []) + [
              "--download-sections", f"*{start}-{start + sec}",
              "-f", "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720][ext=mp4]/b",
              "--merge-output-format", "mp4",
@@ -159,7 +254,7 @@ def _download(name: str, query: str) -> Path | None:
              "--download-archive", str(ARCHIVE),
              "--print-to-file", "%(webpage_url)s|%(title)s", str(STAGE / f"{name}.meta"),
              "--no-warnings", "-o", str(raw)],
-            capture_output=True, text=True, timeout=420)
+            capture_output=True, text=True, encoding="utf-8", errors="replace", timeout=420)
         if raw.exists():
             return raw
     return None
@@ -176,7 +271,7 @@ def audio_families(video: Path) -> list[dict]:
                                min_dur=config.AED_MIN_DUR, device="cuda", model="beats")
     fams: dict[str, dict] = {}
     for e in events:
-        if e.confidence < config.DISPLAY_THRESHOLD or not is_salient_nonspeech(e.label):
+        if e.confidence < AUDIO_BAR or not is_salient_nonspeech(e.label):
             continue
         fam = canonical(e.label)
         if importance_of(e.label.lower(), fam) < 2:
@@ -196,6 +291,8 @@ def main(want_n: int) -> None:
     for name, query in queries:
         if got >= want_n:
             break
+        if DEEP:
+            name = name + "_b"
         if any((ROOT / "data" / "input" / "benchmark" / d / f"{name}.mp4").exists()
                for d in ("unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient", "_dropped", "_bad")):
             continue
@@ -236,4 +333,4 @@ def main(want_n: int) -> None:
 
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]) if len(sys.argv) > 1 else 30)
+    main(int([a for a in sys.argv[1:] if not a.startswith("--")][0]) if len(sys.argv) > 1 and not sys.argv[1].startswith("--") else 30)
