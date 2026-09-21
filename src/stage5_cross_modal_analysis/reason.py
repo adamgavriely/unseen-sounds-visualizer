@@ -977,7 +977,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         # the woman laughing is on screen, and Giggle -- her giggle -- was then shown,
         # because dedup only compares sounds that are still live.
         from src.labels import same_source
-        gone = [s for s in specs if not s.augment and "visible" in s.reason]
+        gone = [s for s in specs if not s.augment and "visible" in s.reason
+                and not s.reason.startswith("below display threshold")]   # a marginal sound never silences others
         for spec in [s for s in specs if s.augment]:
             for g in gone:
                 # Amendment 3 (2026-09-21, bug fix): the kinship test alone was time-blind --

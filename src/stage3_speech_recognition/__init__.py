@@ -27,6 +27,8 @@ _NON_SPEECH = {"music", "applause", "laughter", "laughs", "noise", "silence", "y
 
 def _is_speech(text: str) -> bool:
     t = text.strip().lower()
+    if not re.search(r"[a-z]", t) or re.fullmatch(r"\s*(\[[^\]]*\]|\([^)]*\))\s*", t):
+        return False                                    # no letters, or one bracketed tag "[music playing]"
     t = re.sub(r"^[\[\(\s]+|[\]\)\.\!\s]+$", "", t)          # strip brackets, parentheses, end marks
     return bool(t) and t not in _NON_SPEECH
 

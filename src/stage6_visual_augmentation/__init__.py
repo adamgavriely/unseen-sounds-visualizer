@@ -497,7 +497,7 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     every appearance at least MIN_DWELL on screen.
     """
     dwell = float(getattr(config, "MIN_DWELL", MIN_DWELL))
-    gap = float(getattr(config, "MERGE_GAP", MERGE_GAP))
+    gap = max(float(getattr(config, "MERGE_GAP", MERGE_GAP)), dwell)   # gap < dwell would put one label in two rows at once
     cap = getattr(config, "MAX_SPAN", None)      # picture-level cap (amendment 3)
     by_label = {}
     for s in sorted((s for s in specs if s.augment and (s.image_path or not require_image)),

@@ -132,10 +132,12 @@ def load_pictures(work_root: Path, stem: str, system: str):
     for s in specs:
         o = AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
                              augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
-                             spans=[tuple(x) for x in s.get("spans", [])])
+                             talked_about=bool(s.get("talked_about")), spans=[tuple(x) for x in s.get("spans", [])])
         objs.append(o)
     d = dur or max((o.end for o in objs), default=0.0) + 5.0
     spans = _display_spans(objs, d, require_image=(system != "audio_caption"))
+    if system == "audio_caption":                      # text tags have no row limit
+        return [(lab, float(a), float(b)) for lab, a, b, _ in spans]
     placed, _ = _assign_rows(spans)
     return [(lab, float(a), float(b)) for _, lab, a, b, _ in placed]
 
