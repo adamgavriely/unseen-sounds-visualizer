@@ -8,9 +8,8 @@ importance >= 2 into
     seen    -- the gate held it back because the source is on screen.
 Verdict per clip: "mixed" (both lists non-empty), "unseen", "seen" or "empty".
 
-This is a RANKING for Adam's tagging time, not ground truth: the same gate is later scored on
-these clips, so they form a separate, disclosed stratum (selection assisted by the gate; all labels human) -- see
-docs/HANDOFF_2026-09-21.md decision 6.
+A pre-screen only: it finds videos that MIGHT contain two or more sounds, some seen and some
+unseen, so Adam looks at those first. Every tag is Adam's.
 
 Usage (BIU, GPU):  python scripts/screen_mixed2.py data/input/benchmark/unsorted 'm2_*.mp4'
 Output:            benchmark/gold/mixed2_vlm.json  {stem: {verdict, unseen: [...], seen: [...]}}
