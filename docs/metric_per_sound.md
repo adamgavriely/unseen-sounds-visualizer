@@ -70,6 +70,12 @@ may not excuse its own pictures).
   picture, not the sound behind it). Weighted F1 (2 → 2, 3 → 3, false alarms 1) is a side column
   with the number of level-3 needed sounds printed beside it (one siren clip can swing it).
   Sensitivity row: the earlier rule (`--old-rule`, level-1 needed sounds as hits/misses).
+  **Same-family collision** (a dog on screen and another dog off screen, one picture): the picture
+  is a hit, not also a false alarm — the gate genuinely cannot know there are two dogs, and the
+  viewer benefits; the count is printed and the flip (collision = false alarm) is a sensitivity
+  row. Three further reviewers (2026-09-22, two rounds) confirmed the scheme unanimously against a
+  binary "clear" tick for seen sounds, and rejected a false-alarm weight of 2 (it favours the
+  gated system, whose pictures are a subset of blind's; F0.5 already covers precision).
   *Earlier text (2026-09-19):* importance entered once as a weight: 3 counts as three sounds, 1
   as one; phantoms weigh 1. The tagging note "seen sounds: put 1" of the handoff made the mixed
   class impossible (a dog on camera barking + a siren off screen was "unseen") and is withdrawn.
