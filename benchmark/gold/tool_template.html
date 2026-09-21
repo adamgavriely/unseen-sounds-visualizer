@@ -74,7 +74,7 @@ select{font:inherit;font-size:14px;padding:4px}
     <summary><b>Filter</b> <span id="fCount"></span> <button id="fReset" class="small" type="button">reset</button></summary>
     <div class="fgrid">
       <span class="fl">which clips</span>
-      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m4_ clips)</option><option value="seen1">re-rate: clips with a seen/obvious sound rated 1</option></select>
+      <span><select id="fSet"><option value="test">the 100 protocol clips + new mixed</option><option value="all">all clips</option><option value="wave2">new mixed candidates only (m4_ clips)</option><option value="seen1">re-rate: clips with a seen/obvious sound rated 1</option><option value="any1">re-rate: DONE clips with any sound rated 1</option></select>
         <label><input type="checkbox" id="fParked"> also the parked ones (old mixed you skipped + wave-1 mixed candidates)</label></span>
       <span class="fl">original tag</span>
       <span><label><input type="checkbox" class="ftag" value="unseen_ambient" checked> unseen</label>
@@ -118,7 +118,7 @@ select{font:inherit;font-size:14px;padding:4px}
     </div>
     <textarea id="note" placeholder="optional note (why it was hard, what was ambiguous)" style="min-height:40px;margin-top:6px"></textarea>
   </div>
-  <div class="nav"><button id="markDone" class="primary">Mark done and next</button> <button id="undoDone" class="small">un-mark done</button><span class="status" id="saved"></span></div>
+  <div class="nav"><button id="markDone" class="primary">Mark done and next</button> <button id="undoDone" class="small" title="this clip goes back to 'not done'; your sounds and sentence are kept">undo done (this clip)</button><span class="status" id="saved"></span></div>
 </main>
 
 <aside>
@@ -287,6 +287,7 @@ const CLIPS = /*__CLIPS__*/[];
       if($("fSet").value === "test" && c.split && c.split !== "test" && c.split !== "extra") return false;
       if($("fSet").value === "wave2" && !(c.wave >= 2)) return false;
       if($("fSet").value === "seen1" && !((a && a.sounds) || []).some(s => (s.obvious || s.visible) && imp(s.importance) === 1)) return false;
+      if($("fSet").value === "any1" && !(a && a.done && !a.bad && (a.sounds || []).some(s => imp(s.importance) === 1))) return false;
       const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false; if(dn === "untouched" && !(isDone && untouched(a))) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
