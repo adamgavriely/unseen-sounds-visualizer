@@ -56,6 +56,7 @@ select{font:inherit;font-size:14px;padding:4px}
   <label class="hint">your name <input type="text" id="who" placeholder="initials" value="AG"></label>
   <span class="status" id="status"></span>
   <span style="margin-left:auto"></span>
+  <button id="undoRecent" title="un-mark done on every clip marked done in the last N minutes; sounds and sentences are kept">undo recent "done"</button>
   <button id="importBtn">Import JSON</button><input type="file" id="importFile" accept="application/json" hidden>
   <button id="exportBtn" class="primary">Export JSON</button>
 </div>
@@ -82,7 +83,7 @@ select{font:inherit;font-size:14px;padding:4px}
         <label><input type="checkbox" class="ftag" value="no_ambient" checked> no-ambient</label>
         <label><input type="checkbox" class="ftag" value="audioset_strong" checked> slice B</label></span>
       <span class="fl">my tags</span>
-      <span><select id="fDone"><option value="">done or not</option><option value="done">only done</option><option value="todo">only not done</option><option value="bad">only marked bad</option></select>
+      <span><select id="fDone"><option value="">done or not</option><option value="done">only done</option><option value="todo">only not done</option><option value="bad">only marked bad</option><option value="untouched">done but looks untouched (no sentence, pre-fill unchanged)</option></select>
         <select id="fMine"><option value="">any category</option><option value="unseen_ambient">I tagged: unseen</option><option value="mixed">I tagged: mixed</option><option value="seen_ambient">I tagged: seen</option><option value="no_ambient">I tagged: no-ambient</option></select>
         <input type="text" id="fSound" size="16" placeholder="sound label, e.g. dog">
         <label><input type="checkbox" id="fImp1"> needed sounds are all importance 1</label></span>
@@ -91,7 +92,7 @@ select{font:inherit;font-size:14px;padding:4px}
   <h2 id="clipName"></h2>
   <div class="meta" id="clipMeta"></div>
   <video id="video" controls preload="metadata"></video>
-  <p class="hint"><kbd>Space</kbd> play/pause · <kbd>[</kbd> mark start of the selected sound at the current time · <kbd>]</kbd> mark its end · <kbd>A</kbd> add a sound · <kbd>N</kbd> next clip · <kbd>P</kbd> previous</p>
+  <p class="hint"><kbd>Space</kbd> play/pause · <kbd>[</kbd> mark start of the selected sound at the current time · <kbd>]</kbd> mark its end · <kbd>A</kbd> add a sound · <kbd>N</kbd> next clip (does not mark it done) · <kbd>P</kbd> previous</p>
 
   <div class="card">
     <h2>1 · Sounds — everything is pre-filled by the system; correct what is wrong</h2>
@@ -117,7 +118,7 @@ select{font:inherit;font-size:14px;padding:4px}
     </div>
     <textarea id="note" placeholder="optional note (why it was hard, what was ambiguous)" style="min-height:40px;margin-top:6px"></textarea>
   </div>
-  <div class="nav"><button id="markDone" class="primary">Save and next (N)</button><span class="status" id="saved"></span></div>
+  <div class="nav"><button id="markDone" class="primary">Mark done and next</button> <button id="undoDone" class="small">un-mark done</button><span class="status" id="saved"></span></div>
 </main>
 
 <aside>
@@ -273,12 +274,17 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
   $("orderBtn").addEventListener("click", ()=>{ sortSounds(current()); touch(); renderSounds(); });
   $("mergeBtn").addEventListener("click", ()=>{ const n = mergeSuggestions(CLIPS[idx], current()); touch(); renderClip(); $("status").textContent = n ? ("added " + n + " suggestion(s) — untick or delete the wrong ones") : "no new suggestions for this clip"; });
   $("nothingBtn").addEventListener("click", ()=>{ $("sentence").value = "nothing beyond the picture"; current().sentence = $("sentence").value; $("picDue").checked = false; current().picture_due = false; touch(); });
+  // a clip that was marked done by the old N shortcut without any real work: no sentence, no note,
+  // every sound still the system pre-fill (label untouched, nothing added or removed)
+  function untouched(a){ if(!a) return false; if((a.sentence||"").trim() || (a.note||"").trim() || (a.rejected||[]).length) return false;
+    const c = CLIPS.find(x => x.id === a.clip); const pre = c ? c.candidates.length : 0;
+    return (a.sounds||[]).length === pre && (a.sounds||[]).every(s => s.suggested); }
   function view(){ const tags = new Set([...document.querySelectorAll(".ftag:checked")].map(x=>x.value));
     return CLIPS.map((c,i)=>i).filter(i => { const c = CLIPS[i], a = data[c.id];
       if(c.tag && !tags.has(c.tag)) return false;
       if($("fSet").value === "test" && c.split && c.split !== "test" && c.split !== "extra") return false;
       if($("fSet").value === "wave2" && !(c.wave >= 2)) return false;
-      const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false;
+      const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false; if(dn === "untouched" && !(isDone && untouched(a))) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
       const q = $("fSound").value.trim().toLowerCase(); if(q && !((a && a.sounds) || []).some(s => ((s.label||"") + " " + (s.family||"")).toLowerCase().includes(q))) return false;
@@ -303,6 +309,14 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
     $("fSet").value = "all"; $("fParked").checked = true; $("fDone").value = "done"; $("fMine").value = tag === "audioset_strong" ? "" : tag; $("fSound").value = ""; $("fImp1").checked = false;
     $("filters").open = true; saveFilters(); renderSel(); renderProgress(); go(idx); });
   $("fReset").addEventListener("click", e => { e.preventDefault(); document.querySelectorAll(".ftag").forEach(x => x.checked = true); $("fSet").value = "test"; $("fParked").checked = false; $("fDone").value = ""; $("fMine").value = ""; $("fSound").value = ""; $("fImp1").checked = false; saveFilters(); renderSel(); renderProgress(); go(idx); });
+  $("undoRecent").addEventListener("click", ()=>{ const m = +prompt("Un-mark done on clips marked done in the last how many minutes? (sounds and sentences are kept)", "30"); if(!(m > 0)) return;
+    const since = Date.now() - m * 60000; const hit = CLIPS.filter(c => { const a = data[c.id]; return a && a.done && a.updated && Date.parse(a.updated) >= since; });
+    if(!hit.length){ $("status").textContent = "nothing was marked done in the last " + m + " minutes"; return; }
+    if(!confirm("Un-mark done on " + hit.length + " clip(s)?
+" + hit.map(c => c.id).join("
+"))) return;
+    hit.forEach(c => { data[c.id].done = false; }); save(); renderProgress(); renderClip(); $("status").textContent = "un-marked " + hit.length + " clip(s): " + hit.map(c => c.id).join(", "); });
+  $("undoDone").addEventListener("click", ()=>{ const a = current(); a.done = false; touch(); renderProgress(); $("saved").textContent = "un-marked"; });
   $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); const left = !view().includes(idx); goStep(1); if(left) $("status").textContent = "marked done — it left the list because the filter is \"only not done\""; });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
   document.addEventListener("keydown", e=>{ const tag = (e.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea"||tag==="select") return;
@@ -311,7 +325,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
     else if(e.key==="["){ if(a.sounds[selSound]){ a.sounds[selSound].start = +v.currentTime.toFixed(1); touch(); renderSounds(); } }
     else if(e.key==="]"){ if(a.sounds[selSound]){ a.sounds[selSound].end = +v.currentTime.toFixed(1); touch(); renderSounds(); } }
     else if(e.key==="a"||e.key==="A") $("addSound").click();
-    else if(e.key==="n"||e.key==="N") $("markDone").click();
+    else if(e.key==="n"||e.key==="N") goStep(1);
     else if(e.key==="p"||e.key==="P") goStep(-1); });
 
   $("exportBtn").addEventListener("click", ()=>{ const who = $("who").value.trim() || "AG"; for(const id in data){ if(!data[id].annotator || data[id].annotator==="anon") data[id].annotator = who; } const out = {annotator: who, exported: new Date().toISOString(), tool_version: 2, clips: Object.values(data)};
