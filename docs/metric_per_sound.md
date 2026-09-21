@@ -55,10 +55,24 @@ may not excuse its own pictures).
   alarm**. Headline = `F1-strict` (false alarms = phantoms + cross-triggers + visible-pictures).
   `F1-phantom` (phantoms + cross only) is reported beside it for comparison, with the
   visible-picture rate. The panel's split is recorded in the thesis.
-- **Importance** (1–3) enters once, as a weight: a needed sound of importance 3 counts as
-  three sounds, importance 1 as one (its picture carries the same weight; phantoms weigh 1)
-  → weighted P / R / F1 beside the unweighted ones. Plainly: missing a siren costs three
-  times missing background traffic.
+- **Importance** (1–3) — rule fixed 2026-09-22 (Adam + two Fables, two rounds; declared before the
+  re-run; the earlier text is kept below). Importance is a property of the *sound*, not of the
+  screen: rate it as if the screen were black; visible / obvious are separate ticks. **1** = the
+  steady noise of the place, no start and no end (traffic far away, wind, rain, many people
+  talking at once, an engine running). **2** = something happens that you can say in one
+  sentence (a plate put down, footsteps, a door, one bird call, a hammer hit, a dog barking).
+  **3** = danger or a key moment of the story (siren, alarm, explosion, gunshot, glass, baby cry,
+  doorbell, phone, horn, scream, a dog barking *at* someone). When unsure, pick the lower.
+  In the score: a needed sound rated 1 has no onset, so the onset rule cannot judge it — it is
+  **don't care** (no hit, no miss; a same-family picture on it is absorbed, neither credit nor
+  cost). The headline F1-strict is **unweighted over needed sounds rated 2–3**. A picture of any
+  visible/obvious sound, level 1 included, is a false alarm of weight 1 (the cost is the useless
+  picture, not the sound behind it). Weighted F1 (2 → 2, 3 → 3, false alarms 1) is a side column
+  with the number of level-3 needed sounds printed beside it (one siren clip can swing it).
+  Sensitivity row: the earlier rule (`--old-rule`, level-1 needed sounds as hits/misses).
+  *Earlier text (2026-09-19):* importance entered once as a weight: 3 counts as three sounds, 1
+  as one; phantoms weigh 1. The tagging note "seen sounds: put 1" of the handoff made the mixed
+  class impossible (a dog on camera barking + a siren off screen was "unseen") and is withdrawn.
 - **F0.5 and F2** beside F1: if the ranking of gated / blind / caption holds across β = 0.5,
   1, 2, the equal-cost assumption of F1 does not drive the conclusion.
 - **Confidence intervals** by clip-level bootstrap (2000 draws; sounds inside a clip are not
