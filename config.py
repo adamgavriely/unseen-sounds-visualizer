@@ -79,8 +79,13 @@ ONSET_CAM = True
 # Hysteresis: a sound must reach DISPLAY_THRESHOLD to count, and then extends through any
 # contiguous stretch above this fraction of it. Standard SED post-processing; it is what
 # lets an approaching helicopter start when the ear hears it, not when it gets loud.
-AED_HYSTERESIS = 0.5
-AED_THRESHOLD = 0.05         # LOW on purpose: detect-everything-first (incl. faint background)
+# Amendment 3 (2026-09-21, bug fix, docs/prereg_v4.md): the code halved AED_THRESHOLD (0.05) instead
+# of DISPLAY_THRESHOLD, so spans grew from a 0.025 noise floor, started near 0 s and were then
+# cut by the 8-s cap before the loud part. Now one pass at DISPLAY_THRESHOLD/2: a span is every
+# stretch >= 0.175 (its confidence = its peak); peaks >= DISPLAY_THRESHOLD are shown, peaks in
+# [0.175, 0.35) are the speech-rescue band; nothing below 0.175 is kept (it was never shown).
+AED_HYSTERESIS = 1.0
+AED_THRESHOLD = 0.175        # = 0.5 * DISPLAY_THRESHOLD (keep in sync)
 # AED_MIN_DUR is set further down, next to the detector choice.
 AED_PLOT_TOP_K = 15          # classes shown in the timeline plot
 
@@ -203,7 +208,9 @@ DEDUP_REPORT = 0.45
 # than it returns. MIN_DWELL is the floor on how long a picture stays; MERGE_GAP joins
 # two bursts of the same sound into one appearance instead of a flicker.
 MIN_DWELL = 1.5
-MERGE_GAP = 0.8
+MERGE_GAP = 2.0   # amendment 3 (2026-09-21): measured from the sound's real end (was the stretched end,
+                  # so barks 2.2 s apart chained into one picture); 2 s = the annotation rule
+                  # "one row per continuous sound, split at pauses > 2 s" (docs/metric_per_sound.md)
 # Rows in the panel = the most sounds heard AT ONCE, capped here. Three sounds that
 # never overlap share one full-size cell in turn rather than splitting the panel into
 # thin strips that are empty most of the time.

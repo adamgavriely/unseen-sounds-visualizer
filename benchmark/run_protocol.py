@@ -353,6 +353,26 @@ def phase_judge(backends, tag: str = "", rescore: bool = False,
             sys.exit(f"no independent reference cached at {rf} -- run --phase reference first")
         refs = json.loads(rf.read_text(encoding="utf-8")).get("references", {})
         print(f"[judge] independent references for {len(refs)} clips", flush=True)
+    # --ref-tag: judge every system of THIS row against the grounded references of another
+    # row (same answer sheet). Amendment 3 (2026-09-21): the flag was accepted since 2026-09-20
+    # but never read here, so the two *_xref_* rows were judged against their own references
+    # and are void. Missing clips are refused, not skipped, so n cannot change silently.
+    if ref_tag:
+        if independent:
+            sys.exit("--ref-tag and --independent are exclusive")
+        from src.stage7_evaluation.protocol import grounded_reference
+        other = desc_file(ref_tag)
+        if not other.exists():
+            sys.exit(f"no descriptions cached for --ref-tag {ref_tag} at {other}")
+        by_clip = {}
+        for r in json.loads(other.read_text(encoding="utf-8")):
+            if r["system"] == "proposed":
+                by_clip[r["clip"]] = grounded_reference(r["reference"], r.get("human_tag"))
+        missing = sorted({r["clip"] for r in recs} - set(by_clip))
+        if missing:
+            sys.exit(f"--ref-tag {ref_tag}: {len(missing)} clips have no reference there: {missing[:5]}")
+        refs = {c: {"reference": v} for c, v in by_clip.items()}
+        print(f"[judge] references of row {ref_tag} for {len(refs)} clips", flush=True)
 
     for i, rec in enumerate(recs, 1):
         if (rec["clip"], rec["system"]) in done:
@@ -360,7 +380,7 @@ def phase_judge(backends, tag: str = "", rescore: bool = False,
         if independent and rec["clip"] not in refs:
             continue
         ev = judge_record(rec, backends, grounded=grounded,
-                          reference_override=refs[rec["clip"]]["reference"] if independent else None)
+                          reference_override=refs[rec["clip"]]["reference"] if (independent or ref_tag) else None)
         row = ev.to_dict()
         row["human_tag"] = rec.get("human_tag")
         row["scenario"] = rec.get("scenario")

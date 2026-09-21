@@ -490,7 +490,7 @@ MIN_DWELL = 1.5
 MERGE_GAP = 0.8
 
 
-def _display_spans(specs: List[AugmentationSpec], duration: float):
+def _display_spans(specs: List[AugmentationSpec], duration: float, require_image: bool = True):
     """(label, start, end, spec) intervals to actually put on screen.
 
     Merges repeats of the same sound that are closer together than MERGE_GAP, and gives
@@ -498,29 +498,37 @@ def _display_spans(specs: List[AugmentationSpec], duration: float):
     """
     dwell = float(getattr(config, "MIN_DWELL", MIN_DWELL))
     gap = float(getattr(config, "MERGE_GAP", MERGE_GAP))
+    cap = getattr(config, "MAX_SPAN", None)      # picture-level cap (amendment 3)
     by_label = {}
-    for s in sorted((s for s in specs if s.augment and s.image_path),
+    for s in sorted((s for s in specs if s.augment and (s.image_path or not require_image)),
                     key=lambda s: s.start):
         by_label.setdefault(s.event_label, []).append(s)
     spans = []
     for label, group in by_label.items():
-        cur = None
+        cur = None; raw_end = None
         # every burst of the sound gets the picture; a spec with no burst list is an
         # older artefact and falls back to its single start/end
         bursts = [(s, a, b) for s in group
                   for a, b in (getattr(s, "spans", None) or [(s.start, s.end)])]
         for s, a0, b0 in sorted(bursts, key=lambda t: t[1]):
             a, b = max(0.0, a0), min(float(duration), max(b0, a0 + dwell))
-            if cur and a - cur[2] <= gap:
+            # Amendment 3 (2026-09-21, bug fixes): the gap is measured from the sound's REAL
+            # end, not from the stretched end (raw end + dwell), which chained repeats up to
+            # gap + dwell apart into one picture and hid every later onset; and a chain never
+            # runs past its first start + MAX_SPAN -- the stage-4 cap was undone here.
+            if cur and a - raw_end <= gap and (not cap or a < cur[1] + cap):
                 # same sound again, right away: extend rather than blink
                 cur[2] = max(cur[2], b)
+                raw_end = max(raw_end, b0)
                 if s.confidence > cur[3].confidence:
                     cur[3] = s
             else:
-                cur = [label, a, b, s]
+                cur = [label, a, b, s]; raw_end = b0
                 spans.append(cur)
     for sp in spans:
         sp[2] = min(float(duration), max(sp[2], sp[1] + dwell))
+        if cap:
+            sp[2] = min(sp[2], sp[1] + float(cap))
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
 
 
@@ -550,19 +558,30 @@ def _assign_rows(spans):
         # loudest. Confidence measures loudness; "did you hear that?" about a quiet
         # sound is better evidence that it matters than the decibel level is.
         rank = lambda p: (not getattr(p[4], "talked_about", False), -p[4].confidence)
-        chosen, rows = [], []
-        for r, label, a, b, spec in sorted(placed, key=rank):
-            for rr, free_at in enumerate(rows):
+        # Amendment 3 (2026-09-21, bug fix): the old re-pack walked the sounds in rank order
+        # and compared a quiet sound's start with a LOUDER, LATER sound's end, so a quiet
+        # sound that overlapped nothing was dropped. Now a sound is kept, in rank order, iff
+        # adding it keeps the number of sounds on screen at any moment within the limit;
+        # rows are then assigned in time order as usual.
+        chosen = []
+        for cand in sorted(placed, key=rank):
+            trial = chosen + [cand]
+            edges = sorted([(p[2], 1) for p in trial] + [(p[3], -1) for p in trial], key=lambda e: (e[0], e[1]))
+            depth = peak = 0
+            for _, d in edges:
+                depth += d; peak = max(peak, depth)
+            if peak <= limit:
+                chosen.append(cand)
+        rows, placed = [], []
+        for _, label, a, b, spec in sorted(chosen, key=lambda p: p[2]):
+            for r, free_at in enumerate(rows):
                 if a >= free_at - 1e-6:
-                    rows[rr] = b
-                    chosen.append((rr, label, a, b, spec))
+                    rows[r] = b
+                    placed.append((r, label, a, b, spec))
                     break
             else:
-                if len(rows) >= limit:
-                    continue
                 rows.append(b)
-                chosen.append((len(rows) - 1, label, a, b, spec))
-        placed = sorted(chosen, key=lambda p: p[2])
+                placed.append((len(rows) - 1, label, a, b, spec))
     return placed, max(1, len(rows))
 
 

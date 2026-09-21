@@ -358,7 +358,48 @@ shouting (moved out of `SPEECH_LABELS`), Laughter, Cough, Sneeze, Snoring, Gasp,
 drawn (Adam: "useful to DHH when not heard, just like laugh"; SDH tags [screaming]). Blocked
 labels: 239 of 625 (first run: 281). Not changed: bars, cap, gate, judge, clip set, clip tags.
 
-**Re-run outcome (sensitivity row, amended filter):** _pending — after the annotation export._
+**Amendment 3 — 2026-09-21 evening (engineering corrections; Adam: "fix A–C now, rerun after I
+export"). Ten Fable bug-hunters (one per stage + three integration reviewers) found thirteen
+silent defects; a further Fable checked the fix plan before coding and one reviewed the code
+after. Fixed, with the effect on the first-run rows:**
+- *Judge.* (A1) The reference prompt received Stage 2's whole-clip visible list and offered the
+  sentinel "nothing beyond the picture" — the gate is graded by its own input. On 9 of the 50
+  unseen/mixed clips of v4b3 the gated system was silent and scored 4; re-scored, gated − blind
+  falls from +0.14 to +0.02. Now the prompt only names what the sounds tell; visibility is settled
+  by the human clip tag alone; on unseen/mixed clips where the detector heard nothing the
+  reference is a fixed sentence ("An off-screen sound matters here; its source is not known") so
+  silence scores 0. Disclosed: on mixed clips the reference now includes the visible sounds too.
+  (A2) `--ref-tag` was never read by the judge phase: the two `*_xref_*` "same-answer-sheet" rows
+  above are **void** (each row was judged against its own references). Implemented now. (A3)
+  ASR emitted "Music"/"You" as text on music-only clips, so the reference said "someone is
+  speaking"; a stoplist removes such tags. Sentinel test is now exact in the judge as in the cap.
+- *Spans.* (B1) Hysteresis halved `AED_THRESHOLD` (0.05 → 0.025) instead of the display bar, so a
+  span grew from the noise floor, began near 0 s and the 8-s cap then removed the loud part. Now
+  one pass at bar/2 = 0.175 (`config.AED_THRESHOLD`), as lines 182/217 declare. (B2) The cap was
+  applied per raw span and undone by the family merge and the display chain; it is now also
+  enforced on the displayed picture. (B3) The display chain measured the gap between repeats from
+  the stretched end (raw end + 1.5 s dwell), so barks 2.2 s apart became one picture and every
+  later onset was unmatched; the gap is now from the real end, and `MERGE_GAP` = 2.0 s = the
+  annotation split rule (0.8 s reported as sensitivity). (B4) The speech-rescue band was dead
+  since v3 (everything below the bar was dropped before the specs existed); marginal families
+  without a strong firing now reach the gate. (B5) The "kind of a visible source" rule ignored
+  time; it now requires overlap. (B6) The panel's overflow re-pack dropped quiet sounds that
+  overlapped nothing. Not changed (design): the VLM is asked about the family ("Vehicle"), not
+  the detail ("horn").
+- *Per-sound scorer.* Families at ontology depth 1 (Vehicle, Water, Alarm, Explosion, Glass)
+  and the six hand-written family names (Footsteps, Gunshot, Boat, Cattle, Dishes, Cooking)
+  never matched; free-text gold names are resolved to ontology names; a second same-family
+  sound covered by one picture counted as a miss; the caption baseline was scored on its
+  strongest burst only; pictures the panel never drew (row overflow) were counted; placeholder
+  panels are counted as shown and reported.
+- *Plan.* Both rows are re-run **from scratch** under new tags **v4b4 / v4ab4** (same bars,
+  filter of amendment 2, cap 8 s) after the annotation export; the first-run v4b3/v4ab3 rows
+  stay in the record as "pre-fix". The adoption rule and the per-sound F1 as the
+  detector-independent verdict are unchanged. Latent items left as limitations: late audio
+  streams lose their offset (≤ 0.13 s in this data), PSED frame cache is not invalidated on clip
+  change, ~14 PSED names unmapped, slice-B clips carry a fixed "unseen" tag.
+
+**Re-run outcome (v4b4 / v4ab4):** _pending — after the annotation export._
 
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 

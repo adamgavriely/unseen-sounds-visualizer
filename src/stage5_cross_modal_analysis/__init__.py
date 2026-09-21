@@ -38,8 +38,20 @@ def plan_augmentations(scene: SceneContext,
     setting_group = (scene.raw or {}).get("setting_group", "") if scene.raw else ""
 
     # Keep only discrete non-speech sounds, collapse label families to one/source.
-    candidates = consolidate_families([e for e in events if is_salient_nonspeech(e.label)],
-                                      threshold=min_confidence("", display_threshold))
+    # Amendment 3 (2026-09-21, bug fix): families are built from the firings at or above the
+    # display bar as before, and a family with NO firing at the bar is added from the band
+    # [bar/2, bar) so it reaches the specs with the reason "below display threshold" -- the
+    # speech-rescue band in reason.py had been unreachable since v3 because everything
+    # below the bar was dropped here. A marginal firing never extends or details a strong
+    # family (the "reversing tractor" case), because the two sets are consolidated apart.
+    drawable = [e for e in events if is_salient_nonspeech(e.label)]
+    strong_bar = min_confidence("", display_threshold)
+    candidates = consolidate_families(drawable, threshold=strong_bar)
+    strong_families = {c.label for c in candidates}
+    from src.labels import canonical as _canon
+    marginal = [e for e in drawable if 0.5 * strong_bar <= e.confidence < strong_bar
+                and _canon(e.label) not in strong_families]
+    candidates += consolidate_families(marginal, threshold=0.5 * strong_bar)
 
     specs: List[AugmentationSpec] = []
     for i, ev in enumerate(candidates):

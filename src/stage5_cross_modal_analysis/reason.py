@@ -980,7 +980,10 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         gone = [s for s in specs if not s.augment and "visible" in s.reason]
         for spec in [s for s in specs if s.augment]:
             for g in gone:
-                if same_source(spec.event_label, g.event_label):
+                # Amendment 3 (2026-09-21, bug fix): the kinship test alone was time-blind --
+                # a Vehicle seen at 0-4 s silenced a horn at 20 s whose own check said "not
+                # visible". Same source means same family AND the same moment (_dedup's test).
+                if same_source(spec.event_label, g.event_label) and _overlap(spec, g):
                     spec.augment = False
                     spec.subject = ""
                     spec.image_prompt = ""

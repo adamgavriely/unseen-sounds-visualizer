@@ -25,7 +25,7 @@ import numpy as np
 _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 import config
-from src.labels import canonical, is_descendant, ancestors, is_salient_nonspeech, is_music
+from src.labels import canonical, is_descendant, ancestors, is_salient_nonspeech, is_music, FAMILY
 
 EARLY, LATE = 0.5, 1.0          # a picture may start 0.5 s before and at most 1.0 s after the sound (Adam)
 MIN_DEPTH = 1                   # top-level categories ("Sounds of things", "Animal") never match; "Vehicle",
@@ -77,6 +77,7 @@ def _ontology_names():
 
 
 UNRESOLVED = []
+PLACEHOLDERS = 0
 
 
 def load_gold(paths):
@@ -117,22 +118,26 @@ def load_pictures(work_root: Path, stem: str, system: str):
     m = work_root / stem / "media.json"
     if m.exists():
         dur = float(json.loads(m.read_text(encoding="utf-8")).get("duration") or 0) or None
-    if system == "audio_caption":
-        # the caption names every gated-through sound as text; each tag = one "picture"
-        return [(s["event_label"], float(s["start"]), float(s["end"])) for s in specs if s.get("augment")]
-    try:
-        from src.types import AugmentationSpec
-        from src.stage6_visual_augmentation import _display_spans
-        objs = []
-        for s in specs:
-            o = AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
-                                 augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
-                                 spans=[tuple(x) for x in s.get("spans", [])])
-            objs.append(o)
-        d = dur or max((o.end for o in objs), default=0.0) + 5.0
-        return [(lab, float(a), float(b)) for lab, a, b, _ in _display_spans(objs, d)]
-    except Exception:
-        return [(s["event_label"], float(s["start"]), float(s["end"])) for s in specs if s.get("augment") and s.get("image_path")]
+    # Amendment 3 (2026-09-21, bug fixes): (a) the caption baseline was scored on each tag's
+    # strongest burst only while pictures got every burst -- both now go through the same
+    # display timeline (require_image=False for captions); (b) pictures the panel never drew
+    # (row overflow, _assign_rows) were counted -- only placed spans are scored now; (c) a
+    # failed generation (backend "placeholder", a dark panel) still counts as shown, as the
+    # judge saw it; its count is reported by main().
+    global PLACEHOLDERS
+    PLACEHOLDERS += sum(1 for s in specs if s.get("augment") and s.get("backend") == "placeholder")
+    from src.types import AugmentationSpec
+    from src.stage6_visual_augmentation import _display_spans, _assign_rows
+    objs = []
+    for s in specs:
+        o = AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
+                             augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
+                             spans=[tuple(x) for x in s.get("spans", [])])
+        objs.append(o)
+    d = dur or max((o.end for o in objs), default=0.0) + 5.0
+    spans = _display_spans(objs, d, require_image=(system != "audio_caption"))
+    placed, _ = _assign_rows(spans)
+    return [(lab, float(a), float(b)) for _, lab, a, b, _ in placed]
 
 
 # ----------------------------------------------------------------------------- matching
@@ -140,9 +145,19 @@ def depth(label: str) -> int:
     return len(ancestors(label))
 
 
+_FAMILY_NAMES = set(FAMILY.values())
+
+
+def _specific(x: str) -> bool:
+    """deep enough in the ontology to name one source -- or a hand-written family name
+    (amendment 3: six FAMILY targets such as "Footsteps", "Gunshot", "Boat" are not ontology
+    names, so they had depth 0 and never matched anything)"""
+    return depth(x) >= MIN_DEPTH or x in _FAMILY_NAMES
+
+
 def same_family(a: str, b: str) -> bool:
-    if depth(a) < MIN_DEPTH or depth(b) < MIN_DEPTH:
-        return a == b and depth(a) >= MIN_DEPTH
+    if not (_specific(a) and _specific(b)):
+        return False
     return a == b or canonical(a) == canonical(b) or is_descendant(a, b) or is_descendant(b, a)
 
 
@@ -166,15 +181,17 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
                 out["dup"] += 1; continue               # the sound already has its picture
             i = min(free, key=lambda i: abs(a - gold[i]["start"]))
             taken[i] = True
-            # one picture may cover several overlapping sounds of the SAME family
-            for j in cands:
-                if not taken[j] and same_family(gold[j]["label"], gold[i]["label"]) and gold[j]["start"] <= b:
-                    taken[j] = True
-            g = gold[i]
-            if g["needed"]:
-                out["hit"] += 1; out["w_hit"] += g["importance"]; out["late"].append(a - g["start"]); matched_needed.add(i)
-            else:
-                out["visible"] += 1; out["w_fa"] += g["importance"]
+            # one picture may cover several overlapping sounds of the SAME family (their onsets
+            # all sit in the picture's window): every covered needed sound is a hit
+            # (amendment 3: they were marked taken but counted as misses)
+            covered = [i] + [j for j in cands if not taken[j] and same_family(gold[j]["label"], gold[i]["label"])]
+            for j in covered:
+                taken[j] = True
+                g = gold[j]
+                if g["needed"]:
+                    out["hit"] += 1; out["w_hit"] += g["importance"]; out["late"].append(a - g["start"]); matched_needed.add(j)
+                elif j == i:
+                    out["visible"] += 1; out["w_fa"] += g["importance"]
         else:
             # a real sound of another family at that moment -> cross-trigger; nothing -> phantom
             any_sound = any(in_window(a, g["start"], early, late) or (g["start"] <= a <= g["end"]) for g in gold)
@@ -270,6 +287,8 @@ def main():
                   f"P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
                   f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
                   f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean-acc {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
+    if PLACEHOLDERS:
+        print(f"[pictures] {PLACEHOLDERS} augmentation(s) were placeholder panels (failed generation); counted as shown")
     out = Path(a.out) if a.out else _ROOT / "benchmark" / "gold" / f"per_sound_{a.tag}.json"
     out.write_text(json.dumps(results, indent=1), encoding="utf-8")
     print("->", out)

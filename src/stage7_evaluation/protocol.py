@@ -71,14 +71,17 @@ DESCRIBE_PROMPT = (
     "Do not describe artistic style."
 )
 
+# Amendment 3 (2026-09-21, bug fix, docs/prereg_v4.md): the prompt used to receive Stage 2's
+# whole-clip list of visible things and to offer the sentinel "nothing beyond the picture"
+# when the sounds added nothing to it. The gate uses that same Stage-2 list, so the gate was
+# graded against its own input: on 9 of the 50 clips the annotator tagged as needing a
+# picture, the gated system stayed silent and scored 4. Visibility is now settled only by
+# the human clip tag (grounded_reference); the prompt just names what the sounds tell.
 REFERENCE_PROMPT = (
     "A video contains these non-speech sounds: {sounds}.\n"
-    "The following things are already visible on screen: {visible}.\n"
     "{speech}\n"
-    "In ONE sentence, state the information a hearing viewer gets from the sounds "
-    "that a deaf viewer would miss from the picture alone. Name the specific sound "
-    "sources. If the sounds add nothing beyond what is visible, say exactly: "
-    "'nothing beyond the picture'."
+    "In ONE sentence, state the information a hearing viewer gets from these sounds. "
+    "Name the specific sound sources. Do not mention the picture."
 )
 
 JUDGE_PROMPT = (
@@ -279,7 +282,6 @@ def build_reference(events: List[str], visible: List[str], transcript: str,
               if transcript.strip() else "There is no speech.")
     prompt = REFERENCE_PROMPT.format(
         sounds=", ".join(events) if events else "no clear non-speech sound",
-        visible=", ".join(visible) if visible else "nothing relevant",
         speech=speech)
     return backends.complete(prompt, max_new_tokens=80)
 
@@ -363,7 +365,9 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
     the source is already visible) is actually measured rather than blurred.
     """
     if is_empty_candidate(candidate):
-        if NOTHING_MISSING in reference.lower():
+        # exact match, as scripts/rubric_enforce.py tests it (amendment 3: a substring test
+        # let a longer sentence containing the words score silence 4 but escape the cap)
+        if reference.strip().lower().rstrip(".") == NOTHING_MISSING:
             return 4, "nothing was missing and the system correctly showed nothing"
         return 0, "information was missing but no augmentation was shown"
     raw = backends.complete(JUDGE_PROMPT.format(reference=reference,
@@ -382,6 +386,13 @@ def judge(reference: str, candidate: str, backends: Backends) -> tuple[int, str]
 # viewer cannot already see: there is no ambient sound at all, or its source is on
 # screen. Both are cases where showing nothing is the correct output.
 NOTHING_MISSING_TAGS = ("no_ambient", "seen_ambient")
+# Human tags under which a picture is needed. If the detector heard nothing there, the
+# model-derived reference collapses to the sentinel and silence would score 4; the
+# annotator says otherwise, so the reference becomes this fixed sentence instead
+# (amendment 3): an empty panel then scores 0 by the coded rule, a shown picture is judged
+# against it by the LLM.
+NEEDED_TAGS = ("unseen_ambient", "mixed_ambient")
+NEEDED_UNKNOWN = "An off-screen sound matters here; its source is not known."
 
 
 def grounded_reference(llm_reference: str, human_tag: Optional[str]) -> str:
@@ -403,7 +414,12 @@ def grounded_reference(llm_reference: str, human_tag: Optional[str]) -> str:
     proposal-faithful number and the human-grounded number are both reportable from a
     single (expensive) describe pass.
     """
-    return NOTHING_MISSING if human_tag in NOTHING_MISSING_TAGS else llm_reference
+    if human_tag in NOTHING_MISSING_TAGS:
+        return NOTHING_MISSING
+    if human_tag in NEEDED_TAGS and (not llm_reference.strip()
+                                     or llm_reference.strip().lower().rstrip(".") == NOTHING_MISSING):
+        return NEEDED_UNKNOWN
+    return llm_reference
 
 
 def describe_clip(clip_name: str, system: str, work_dir: Path,
