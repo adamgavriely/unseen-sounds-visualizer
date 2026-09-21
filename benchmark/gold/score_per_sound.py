@@ -180,7 +180,7 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
     """classes for one clip: returns dict of counts and per-hit lateness"""
     gold = sorted(gold, key=lambda g: g["start"]); pics = sorted(pics, key=lambda p: p[1])
     taken = [False] * len(gold)
-    out = {"hit": 0, "miss": 0, "visible": 0, "cross": 0, "phantom": 0, "dup": 0, "dontcare": 0, "n3": 0,
+    out = {"hit": 0, "miss": 0, "visible": 0, "cross": 0, "phantom": 0, "dup": 0, "dontcare": 0, "n3": 0, "collision": 0,
            "w_hit": 0, "w_miss": 0, "w_fa": 0, "late": [], "cov": []}
     scored = lambda g: OLD_RULE or g["importance"] >= MIN_IMPORTANCE     # level-1 needed sounds: don't care
     matched_needed = set()
@@ -197,14 +197,20 @@ def score_clip(gold, pics, early=EARLY, late=LATE):
             # all sit in the picture's window): every covered needed sound is a hit
             # (amendment 3: they were marked taken but counted as misses)
             covered = [i] + [j for j in cands if not taken[j] and same_family(gold[j]["label"], gold[i]["label"])]
+            hit_here = False
             for j in covered:
                 taken[j] = True
                 g = gold[j]
                 if g["needed"] and scored(g):
-                    out["hit"] += 1; out["w_hit"] += g["importance"]; out["late"].append(a - g["start"]); matched_needed.add(j)
+                    out["hit"] += 1; out["w_hit"] += g["importance"]; out["late"].append(a - g["start"]); matched_needed.add(j); hit_here = True
                 elif g["needed"]:
                     out["dontcare"] += 1; matched_needed.add(j)      # absorbed: a true picture of a texture, neither credit nor cost
-                elif j == i:
+            # same-family collision (a dog on screen and another dog off screen): the picture is a hit, not
+            # also a false alarm (three reviewers, 2026-09-22); counted so the flip can be a sensitivity row
+            if any(not gold[j]["needed"] for j in covered):
+                if hit_here:
+                    out["collision"] += 1
+                else:
                     out["visible"] += 1; out["w_fa"] += 1             # a false alarm costs 1 whatever the sound
         else:
             # a real sound of another family at that moment -> cross-trigger; nothing -> phantom
@@ -248,7 +254,7 @@ def prf(tp, fp, fn, beta=1.0):
 def aggregate(rows):
     H = sum(r["hit"] for r in rows); M = sum(r["miss"] for r in rows)
     V = sum(r["visible"] for r in rows); C = sum(r["cross"] for r in rows); PH = sum(r["phantom"] for r in rows); D = sum(r["dup"] for r in rows)
-    DC = sum(r.get("dontcare", 0) for r in rows); N3 = sum(r.get("n3", 0) for r in rows)
+    DC = sum(r.get("dontcare", 0) for r in rows); N3 = sum(r.get("n3", 0) for r in rows); CO = sum(r.get("collision", 0) for r in rows)
     fa_strict = V + C + PH; fa_ph = C + PH
     p, r, f1 = prf(H, fa_strict, M)
     _, _, f05 = prf(H, fa_strict, M, 0.5); _, _, f2 = prf(H, fa_strict, M, 2.0)
@@ -258,7 +264,7 @@ def aggregate(rows):
     late = [x for r in rows for x in r["late"]]
     cov = [x for r in rows for x in r["cov"]]
     clean_n = sum(r["clean_n"] for r in rows); clean_ok = sum(r["clean_ok"] for r in rows)
-    return {"hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M, "dontcare": DC, "n_level3": N3,
+    return {"hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M, "dontcare": DC, "n_level3": N3, "collisions": CO,
             "P": p, "R": r, "F1": f1, "F0.5": f05, "F2": f2, "P_phantom": pp, "F1_phantom": fp_,
             "wP": wp, "wR": wr, "wF1": wf, "median_late": float(np.median(late)) if late else None,
             "coverage": float(np.mean(cov)) if cov else None, "coverage_hits": float(np.mean([c for c in cov if c > 0])) if any(c > 0 for c in cov) else None,  # cov>0 only for hits
@@ -305,7 +311,7 @@ def main():
             results[f"{system}@late{late}"] = agg
             print(f"[{system:13s} late<={late:.1f}s] clips {agg['clips']:3d} needed {agg['needed']:3d} | "
                   f"P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
-                  f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} (n3={agg['n_level3']}) dontcare {agg['dontcare']} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
+                  f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} (n3={agg['n_level3']}) dontcare {agg['dontcare']} collisions {agg['collisions']} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
                   f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean-acc {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
     if PLACEHOLDERS:
         print(f"[pictures] {PLACEHOLDERS} augmentation(s) were placeholder panels (failed generation); counted as shown")
