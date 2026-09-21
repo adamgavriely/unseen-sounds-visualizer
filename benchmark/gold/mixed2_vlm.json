@@ -83,24 +83,6 @@
     "vlm": "not visible"
    },
    {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.52,
-    "start": 15.0,
-    "end": 16.5,
-    "importance": 2,
-    "vlm": "not visible"
-   },
-   {
-    "label": "Environmental noise",
-    "family": "Environmental noise",
-    "conf": 0.4,
-    "start": 2.2,
-    "end": 3.8,
-    "importance": 1,
-    "vlm": "not visible"
-   },
-   {
     "label": "Bird",
     "family": "Bird",
     "conf": 0.34,
@@ -125,42 +107,15 @@
     "end": 1.0,
     "importance": 2,
     "vlm": "not visible"
-   },
-   {
-    "label": "Inside, small room",
-    "family": "Inside, small room",
-    "conf": 0.29,
-    "start": 4.7,
-    "end": 6.2,
-    "importance": 2,
-    "vlm": "not visible"
    }
   ],
   "seen": [
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.91,
-    "start": 5.1,
-    "end": 17.0,
-    "importance": 2,
-    "vlm": "visible"
-   },
    {
     "label": "Dog",
     "family": "Dog",
     "conf": 0.88,
     "start": 7.0,
     "end": 17.2,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Domestic animals, pets",
-    "family": "Domestic animals, pets",
-    "conf": 0.82,
-    "start": 7.0,
-    "end": 17.0,
     "importance": 2,
     "vlm": "visible"
    },
@@ -199,15 +154,6 @@
     "end": 7.0,
     "importance": 3,
     "vlm": "visible"
-   },
-   {
-    "label": "Babbling",
-    "family": "Babbling",
-    "conf": 0.38,
-    "start": 6.4,
-    "end": 7.2,
-    "importance": 2,
-    "vlm": "visible"
    }
   ],
   "unsure": [],
@@ -231,17 +177,8 @@
   "raw": "1: not visible"
  },
  "m2_basketball_court_siren": {
-  "verdict": "mixed",
+  "verdict": "seen",
   "unseen": [
-   {
-    "label": "Outside, urban or manmade",
-    "family": "Outside, urban or manmade",
-    "conf": 0.29,
-    "start": 8.3,
-    "end": 9.8,
-    "importance": 2,
-    "vlm": "not visible"
-   },
    {
     "label": "Cheering",
     "family": "Crowd",
@@ -278,15 +215,6 @@
  "m2_bonfire_crowd_siren": {
   "verdict": "unseen",
   "unseen": [
-   {
-    "label": "Silence",
-    "family": "Silence",
-    "conf": 0.44,
-    "start": 4.5,
-    "end": 13.0,
-    "importance": 2,
-    "vlm": "not visible"
-   },
    {
     "label": "Cluck",
     "family": "Bird",
@@ -330,15 +258,6 @@
     "end": 1.2,
     "importance": 2,
     "vlm": "not visible"
-   },
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.34,
-    "start": 0.5,
-    "end": 1.2,
-    "importance": 2,
-    "vlm": "not visible"
    }
   ],
   "seen": [],
@@ -376,38 +295,11 @@
     "vlm": "visible"
    },
    {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.89,
-    "start": 6.5,
-    "end": 14.0,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Domestic animals, pets",
-    "family": "Domestic animals, pets",
-    "conf": 0.86,
-    "start": 6.5,
-    "end": 14.0,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
     "label": "Meow",
     "family": "Cat",
     "conf": 0.86,
     "start": 13.4,
     "end": 18.8,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Babbling",
-    "family": "Babbling",
-    "conf": 0.76,
-    "start": 6.0,
-    "end": 7.2,
     "importance": 2,
     "vlm": "visible"
    },
@@ -618,15 +510,6 @@
   ],
   "seen": [
    {
-    "label": "Rub",
-    "family": "Rub",
-    "conf": 0.94,
-    "start": 6.1,
-    "end": 12.0,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
     "label": "Sanding",
     "family": "Sanding",
     "conf": 0.8,
@@ -714,33 +597,6 @@
     "vlm": "not visible"
    },
    {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.46,
-    "start": 7.8,
-    "end": 9.5,
-    "importance": 2,
-    "vlm": "not visible"
-   },
-   {
-    "label": "Domestic animals, pets",
-    "family": "Domestic animals, pets",
-    "conf": 0.41,
-    "start": 8.1,
-    "end": 9.5,
-    "importance": 2,
-    "vlm": "not visible"
-   },
-   {
-    "label": "Silence",
-    "family": "Silence",
-    "conf": 0.39,
-    "start": 2.0,
-    "end": 5.2,
-    "importance": 2,
-    "vlm": "not visible"
-   },
-   {
     "label": "Dog",
     "family": "Dog",
     "conf": 0.33,
@@ -765,18 +621,8 @@
   "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible\n8: visible"
  },
  "m2_fire_truck_hose": {
-  "verdict": "mixed",
-  "unseen": [
-   {
-    "label": "Silence",
-    "family": "Silence",
-    "conf": 0.4,
-    "start": 13.0,
-    "end": 17.2,
-    "importance": 2,
-    "vlm": "not visible"
-   }
-  ],
+  "verdict": "seen",
+  "unseen": [],
   "seen": [
    {
     "label": "Steam",
@@ -785,15 +631,6 @@
     "start": 2.0,
     "end": 2.5,
     "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "White noise",
-    "family": "White noise",
-    "conf": 0.35,
-    "start": 10.0,
-    "end": 13.8,
-    "importance": 1,
     "vlm": "visible"
    },
    {
@@ -819,7 +656,7 @@
   "raw": "1: not visible\n2: visible\n3: visible\n4: visible\n5: visible"
  },
  "m2_fireworks_kids_dog": {
-  "verdict": "mixed",
+  "verdict": "unseen",
   "unseen": [
    {
     "label": "Jackhammer",
@@ -867,17 +704,7 @@
     "vlm": "not visible"
    }
   ],
-  "seen": [
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.31,
-    "start": 9.0,
-    "end": 11.8,
-    "importance": 2,
-    "vlm": "visible"
-   }
-  ],
+  "seen": [],
   "unsure": [],
   "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: visible"
  },
@@ -926,15 +753,6 @@
     "start": 3.4,
     "end": 18.8,
     "importance": 2,
-    "vlm": "not visible"
-   },
-   {
-    "label": "Environmental noise",
-    "family": "Environmental noise",
-    "conf": 0.37,
-    "start": 13.2,
-    "end": 16.0,
-    "importance": 1,
     "vlm": "not visible"
    }
   ],
@@ -997,24 +815,6 @@
     "conf": 0.71,
     "start": 0.1,
     "end": 12.2,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.67,
-    "start": 0.2,
-    "end": 15.8,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Livestock, farm animals, working animals",
-    "family": "Livestock, farm animals, working animals",
-    "conf": 0.43,
-    "start": 3.4,
-    "end": 7.8,
     "importance": 2,
     "vlm": "visible"
    }
@@ -1111,15 +911,6 @@
     "end": 11.0,
     "importance": 2,
     "vlm": "not visible"
-   },
-   {
-    "label": "Mains hum",
-    "family": "Mains hum",
-    "conf": 0.26,
-    "start": 11.0,
-    "end": 13.2,
-    "importance": 1,
-    "vlm": "not visible"
    }
   ],
   "seen": [],
@@ -1190,24 +981,6 @@
     "family": "Dog",
     "conf": 0.78,
     "start": 18.7,
-    "end": 19.8,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.68,
-    "start": 18.2,
-    "end": 19.8,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Domestic animals, pets",
-    "family": "Domestic animals, pets",
-    "conf": 0.56,
-    "start": 18.8,
     "end": 19.8,
     "importance": 2,
     "vlm": "visible"
@@ -1302,17 +1075,7 @@
    }
   ],
   "seen": [],
-  "unsure": [
-   {
-    "label": "Silence",
-    "family": "Silence",
-    "conf": 0.26,
-    "start": 9.0,
-    "end": 11.5,
-    "importance": 2,
-    "vlm": "unsure"
-   }
-  ],
+  "unsure": [],
   "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: unsure"
  },
  "m2_parrot_talking_phone": {
@@ -1339,29 +1102,11 @@
   ],
   "seen": [
    {
-    "label": "Domestic animals, pets",
-    "family": "Domestic animals, pets",
-    "conf": 0.42,
-    "start": 0.7,
-    "end": 2.2,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
     "label": "Bird",
     "family": "Bird",
     "conf": 0.33,
     "start": 8.4,
     "end": 10.0,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.28,
-    "start": 0.0,
-    "end": 2.0,
     "importance": 2,
     "vlm": "visible"
    }
@@ -1586,15 +1331,6 @@
   "unseen": [],
   "seen": [
    {
-    "label": "Silence",
-    "family": "Silence",
-    "conf": 0.38,
-    "start": 5.2,
-    "end": 7.5,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
     "label": "Bass drum",
     "family": "Bass drum",
     "conf": 0.33,
@@ -1691,24 +1427,6 @@
     "vlm": "not visible"
    },
    {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.41,
-    "start": 1.8,
-    "end": 4.5,
-    "importance": 2,
-    "vlm": "not visible"
-   },
-   {
-    "label": "Ping",
-    "family": "Ping",
-    "conf": 0.37,
-    "start": 9.5,
-    "end": 10.0,
-    "importance": 2,
-    "vlm": "not visible"
-   },
-   {
     "label": "Clip-clop",
     "family": "Horse",
     "conf": 0.35,
@@ -1787,24 +1505,6 @@
     "conf": 0.7,
     "start": 1.1,
     "end": 3.2,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Domestic animals, pets",
-    "family": "Domestic animals, pets",
-    "conf": 0.61,
-    "start": 1.1,
-    "end": 3.2,
-    "importance": 2,
-    "vlm": "visible"
-   },
-   {
-    "label": "Animal",
-    "family": "Animal",
-    "conf": 0.61,
-    "start": 15.3,
-    "end": 17.8,
     "importance": 2,
     "vlm": "visible"
    },
