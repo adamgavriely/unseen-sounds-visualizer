@@ -312,9 +312,7 @@ const CLIPS = [{"id": "-8pCMgGKZY8_12000", "src": "../../data/input/audioset_str
   $("undoRecent").addEventListener("click", ()=>{ const m = +prompt("Un-mark done on clips marked done in the last how many minutes? (sounds and sentences are kept)", "30"); if(!(m > 0)) return;
     const since = Date.now() - m * 60000; const hit = CLIPS.filter(c => { const a = data[c.id]; return a && a.done && a.updated && Date.parse(a.updated) >= since; });
     if(!hit.length){ $("status").textContent = "nothing was marked done in the last " + m + " minutes"; return; }
-    if(!confirm("Un-mark done on " + hit.length + " clip(s)?
-" + hit.map(c => c.id).join("
-"))) return;
+    if(!confirm("Un-mark done on " + hit.length + " clip(s)? " + hit.map(c => c.id).join(", "))) return;
     hit.forEach(c => { data[c.id].done = false; }); save(); renderProgress(); renderClip(); $("status").textContent = "un-marked " + hit.length + " clip(s): " + hit.map(c => c.id).join(", "); });
   $("undoDone").addEventListener("click", ()=>{ const a = current(); a.done = false; touch(); renderProgress(); $("saved").textContent = "un-marked"; });
   $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); const left = !view().includes(idx); goStep(1); if(left) $("status").textContent = "marked done — it left the list because the filter is \"only not done\""; });
