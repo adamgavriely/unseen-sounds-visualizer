@@ -251,7 +251,8 @@ const CLIPS = /*__CLIPS__*/[];
   function touch(){ const a = current(); a.updated = new Date().toISOString(); a.annotator = ($("who").value.trim() || "AG"); save(); renderGoals(); }
   function renderClip(){
     const c = CLIPS[idx]; const a = current(); selSound = 0;
-    $("clipName").textContent = (idx+1) + " / " + CLIPS.length + " · " + c.id;
+    { const v = view(), k = v.indexOf(idx);   // position inside the current filter, then the overall number
+      $("clipName").textContent = (k >= 0 ? (k+1) + " / " + v.length + " in this filter" : "not in this filter") + " · " + c.id + " (" + (idx+1) + " of " + CLIPS.length + ")"; }
     $("clipMeta").textContent = c.duration + " s" + (human(c) ? " · AudioSet-Strong: labels and times are human; you decide visible / covered and write the sentence" : "");
     $("video").src = c.src; $("video").load();
     $("sentence").value = a.sentence || ""; $("picDue").checked = !!a.picture_due; $("unsure").checked = !!a.unsure; $("bad").checked = !!a.bad; $("note").value = a.note || "";
