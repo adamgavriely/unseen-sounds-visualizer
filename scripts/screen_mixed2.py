@@ -9,7 +9,7 @@ importance >= 2 into
 Verdict per clip: "mixed" (both lists non-empty), "unseen", "seen" or "empty".
 
 This is a RANKING for Adam's tagging time, not ground truth: the same gate is later scored on
-these clips, so they form a separate, disclosed stratum (model-suggested) -- see
+these clips, so they form a separate, disclosed stratum (selection assisted by the gate; all labels human) -- see
 docs/HANDOFF_2026-09-21.md decision 6.
 
 Usage (BIU, GPU):  python scripts/screen_mixed2.py data/input/benchmark/unsorted 'm2_*.mp4'
