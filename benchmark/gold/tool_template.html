@@ -82,7 +82,7 @@ select{font:inherit;font-size:14px;padding:4px}
         <label><input type="checkbox" class="ftag" value="no_ambient" checked> no-ambient</label>
         <label><input type="checkbox" class="ftag" value="audioset_strong" checked> slice B</label></span>
       <span class="fl">my tags</span>
-      <span><select id="fDone"><option value="">done or not</option><option value="done">only done</option><option value="todo">only not done</option></select>
+      <span><select id="fDone"><option value="">done or not</option><option value="done">only done</option><option value="todo">only not done</option><option value="bad">only marked bad</option></select>
         <select id="fMine"><option value="">any category</option><option value="unseen_ambient">I tagged: unseen</option><option value="mixed">I tagged: mixed</option><option value="seen_ambient">I tagged: seen</option><option value="no_ambient">I tagged: no-ambient</option></select>
         <input type="text" id="fSound" size="16" placeholder="sound label, e.g. dog">
         <label><input type="checkbox" id="fImp1"> needed sounds are all importance 1</label></span>
@@ -199,7 +199,7 @@ const CLIPS = /*__CLIPS__*/[];
       const need = (a.sounds||[]).filter(s => !s.obvious && !s.visible); needed += need.length; covered += need.filter(s => s.masked).length; if(!need.length) empty++; });
     per.audioset_strong = sliceB;
     const cells = Object.entries(GOALS).map(([tag,[goal,name]]) => { const n = per[tag]||0; const ok = n >= goal;
-      return `<span style="display:inline-block;margin-right:14px;padding:2px 8px;border-radius:6px;background:${ok?"#dfe":"#fee"};color:${ok?"#063":"#900"}"><b>${name}</b> ${n} / ${goal}</span>`; }).join("");
+      return `<span class="gcell" data-tag="${tag}" title="click: show exactly these ${n} clips" style="display:inline-block;margin-right:14px;padding:2px 8px;border-radius:6px;cursor:pointer;background:${ok?"#dfe":"#fee"};color:${ok?"#063":"#900"}"><b>${name}</b> ${n} / ${goal}</span>`; }).join("");
     $("goals").innerHTML = `<b>Goals</b> — clips done, counted by what YOU tagged: ${cells}<br><span class="hint">needed sounds (heard, not visible, not obvious): <b>${needed}</b> / 120 &nbsp; of them covered by speech or music: <b>${covered}</b> / 40 &nbsp; clips where nothing is needed: <b>${empty}</b> / 30 &nbsp; (this clip would count as: <b>${CLIPS[idx] ? (CLIPS[idx].tag === "audioset_strong" ? "slice B" : ({unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-ambient"})[category(current())]) : ""}</b>)</span>`; }
   function renderProgress(){ renderGoals(); const done = c => data[c.id] && data[c.id].done && !data[c.id].bad; const bad = c => data[c.id] && data[c.id].bad;
     const n = CLIPS.filter(done).length, nb = CLIPS.filter(bad).length;
@@ -277,7 +277,7 @@ const CLIPS = /*__CLIPS__*/[];
     return CLIPS.map((c,i)=>i).filter(i => { const c = CLIPS[i], a = data[c.id];
       if(c.tag && !tags.has(c.tag)) return false;
       if($("fSet").value === "test" && c.split && c.split !== "test" && c.split !== "extra") return false;
-      const dn = $("fDone").value; const isDone = !!(a && (a.done || a.bad)); if(dn === "done" && !isDone) return false; if(dn === "todo" && isDone) return false;
+      const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
       const q = $("fSound").value.trim().toLowerCase(); if(q && !((a && a.sounds) || []).some(s => ((s.label||"") + " " + (s.family||"")).toLowerCase().includes(q))) return false;
@@ -293,6 +293,10 @@ const CLIPS = /*__CLIPS__*/[];
       $("fSet").value = f.set || (f.testOnly === false ? "all" : "test"); $("fDone").value = f.done || (f.hideDone ? "todo" : ""); $("fSound").value = f.sound || ""; $("fParked").checked = !!f.parked; $("fMine").value = f.mine || ""; $("fImp1").checked = !!f.imp1; if(Number.isInteger(f.idx) && f.idx < CLIPS.length) idx = f.idx; }catch(e){} }
   document.querySelectorAll(".ftag, #fSet, #fDone, #fParked, #fMine, #fImp1, #fSound").forEach(el => el.addEventListener(el.id === "fSound" ? "input" : "change", ()=>{ saveFilters(); renderSel(); renderProgress(); go(idx); }));
   $("prevBtn").addEventListener("click", ()=>goStep(-1)); $("nextBtn").addEventListener("click", ()=>goStep(1)); $("clipSel").addEventListener("change", e=>go(+e.target.value));
+  $("goals").addEventListener("click", e => { const g = e.target.closest(".gcell"); if(!g) return; const tag = g.dataset.tag;
+    document.querySelectorAll(".ftag").forEach(x => x.checked = tag === "audioset_strong" ? x.value === "audioset_strong" : x.value !== "audioset_strong");
+    $("fSet").value = "all"; $("fParked").checked = true; $("fDone").value = "done"; $("fMine").value = tag === "audioset_strong" ? "" : tag; $("fSound").value = ""; $("fImp1").checked = false;
+    $("filters").open = true; saveFilters(); renderSel(); renderProgress(); go(idx); });
   $("fReset").addEventListener("click", e => { e.preventDefault(); document.querySelectorAll(".ftag").forEach(x => x.checked = true); $("fSet").value = "test"; $("fParked").checked = false; $("fDone").value = ""; $("fMine").value = ""; $("fSound").value = ""; $("fImp1").checked = false; saveFilters(); renderSel(); renderProgress(); go(idx); });
   $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); goStep(1); });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
