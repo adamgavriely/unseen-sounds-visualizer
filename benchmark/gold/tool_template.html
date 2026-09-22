@@ -176,7 +176,7 @@ const CLIPS = /*__CLIPS__*/[];
 
   const SHORT = {unseen_ambient:"unseen", mixed:"mixed", seen_ambient:"seen", no_ambient:"no-amb", audioset_strong:"sliceB"};
   function renderSel(){ const s = $("clipSel"); s.innerHTML = ""; const v = view(); v.forEach(i => { const c = CLIPS[i], a = data[c.id]; const o = document.createElement("option"); o.value = i;
-      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", dev" : (c.split === "extra" ? (c.wave === 5 ? ", movie scene (unseen candidate)" : c.wave === 4 ? ", mixed wave 4" : c.wave === 3 ? ", mixed wave 3 (genre)" : c.wave === 2 ? ", mixed wave 2" + (c.vlm ? " · VLM: " + c.vlm : "") : ", new mixed") : "")) + (c.parked ? ", parked" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
+      o.textContent = (i+1) + " · " + c.id + " [" + (SHORT[c.tag] || c.tag || "") + (c.split === "dev" ? ", dev" : (c.split === "extra" ? (c.wave === 5 ? ", movie scene" + (c.vlm ? " · VLM: " + c.vlm : "") : c.wave === 4 ? ", mixed wave 4" : c.wave === 3 ? ", mixed wave 3 (genre)" : c.wave === 2 ? ", mixed wave 2" + (c.vlm ? " · VLM: " + c.vlm : "") : ", new mixed") : "")) + (c.parked ? ", parked" : "") + "]" + (a && a.bad ? " ✗ bad" : (a && a.done ? " ✓" : "")); s.appendChild(o); });
     s.value = idx; $("fCount").textContent = v.length + " of " + CLIPS.length + " clips"; }
   // tagging goals per clip type (docs/metric_per_sound.md): enough needed sounds for recall, enough
   // empty clips for precision, enough covered sounds for the hard case

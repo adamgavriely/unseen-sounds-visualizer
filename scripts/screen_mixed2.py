@@ -12,7 +12,7 @@ Verdict: "mixed" = at least one sound visible and one not visible (both importan
 A pre-screen only: it finds videos that MIGHT contain two or more sounds, some seen and some
 unseen, so Adam looks at those first. Every tag is Adam's.
 
-Usage (BIU, GPU):  python scripts/screen_mixed2.py data/input/benchmark/unsorted 'm2_*.mp4'
+Usage (BIU, GPU):  python scripts/screen_mixed2.py data/input/benchmark/unsorted 'm2_*.mp4' [out.json]
 Output:            benchmark/gold/mixed2_vlm.json  {stem: {verdict, unseen: [...], seen: [...], unsure: [...]}}
 """
 from __future__ import annotations
@@ -127,5 +127,7 @@ def main(folder: str, pattern: str = "m2_*.mp4") -> None:
 
 
 if __name__ == "__main__":
+    if len(sys.argv) > 3:
+        OUT = Path(sys.argv[3])            # e.g. benchmark/gold/movies2_vlm.json for the m5_ cuts
     main(sys.argv[1] if len(sys.argv) > 1 else str(ROOT / "data" / "input" / "benchmark" / "unsorted"),
          sys.argv[2] if len(sys.argv) > 2 else "m2_*.mp4")

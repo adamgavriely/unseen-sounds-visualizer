@@ -12,5 +12,5 @@ set -uo pipefail
 cd "$SLURM_SUBMIT_DIR"; mkdir -p logs
 source "$HOME/miniconda3/etc/profile.d/conda.sh"; conda activate msproj
 export HF_HOME="${HF_HOME:-$HOME/.cache/huggingface}" HF_HUB_OFFLINE=1 PYTHONUNBUFFERED=1
-python scripts/screen_mixed2.py data/input/benchmark/unsorted 'm2_*.mp4'
+python scripts/screen_mixed2.py data/input/benchmark/unsorted "${PATTERN:-m5_*.mp4}" "${OUT:-benchmark/gold/movies2_vlm.json}"
 echo DONE

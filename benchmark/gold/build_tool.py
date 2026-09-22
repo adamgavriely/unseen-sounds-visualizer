@@ -95,6 +95,11 @@ MIXED2 = json.loads(_MIXED2.read_text(encoding="utf-8")) if _MIXED2.exists() els
 # parked (visible with "also the parked ones"). A pre-screen: which videos might contain two or more sounds, some seen and some unseen. Every tag is Adam's.
 _VLM2 = HERE / "mixed2_vlm.json"
 VLM2 = json.loads(_VLM2.read_text(encoding="utf-8")) if _VLM2.exists() else {}
+# same pre-screen on the wave-5 film cuts (unseen candidates): verdict unseen / mixed shown first, seen / empty parked
+_VLM5 = HERE / "movies2_vlm.json"
+VLM5 = json.loads(_VLM5.read_text(encoding="utf-8")) if _VLM5.exists() else {}
+_AUD5 = HERE / "movies2_audio.json"
+AUD5 = json.loads(_AUD5.read_text(encoding="utf-8")) if _AUD5.exists() else {}
 
 
 def _done_ids():
@@ -124,7 +129,9 @@ def build_extra(done=frozenset()):
     m4 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m4_*.mp4"))
     # wave 5 (scripts/source_movies2.py): film scenes chosen for off-screen sound -> UNSEEN candidates,
     # tag "unseen_ambient"; wave 4 parked (Adam, 2026-09-22: "all non-tagged m4 you can drop")
-    m5 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m5_*.mp4"))
+    _rank5 = {"unseen": 0, "mixed": 0, "seen": 2, "empty": 3}
+    m5 = sorted((q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m5_*.mp4")),
+                key=lambda s: (_rank5.get(VLM5.get(s, {}).get("verdict"), 1), s))
     for stem in EXTRA_MIXED + m2 + m3 + m4 + m5:
         video = next((p for d in ("_dropped", "unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient")
                       for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
@@ -138,6 +145,18 @@ def build_extra(done=frozenset()):
                       "importance": importance_of(f["label"].lower(), f["family"]), "masked": False,
                       "gate": "vlm " + ("seen" if seen else "unseen")}
                      for seen, rows in ((False, v["unseen"]), (True, v["seen"]), (False, v.get("unsure", []))) for f in rows]
+        elif stem in VLM5 and VLM5[stem].get("verdict") not in (None, "error"):
+            v = VLM5[stem]
+            cands = [{"label": f["label"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
+                      "start": f["start"], "end": f["end"], "visible": seen, "obvious": seen,
+                      "importance": importance_of(f["label"].lower(), f["family"]), "masked": False,
+                      "gate": "vlm " + ("seen" if seen else "unseen")}
+                     for seen, rows in ((False, v["unseen"]), (True, v["seen"]), (False, v.get("unsure", []))) for f in rows]
+        elif stem in AUD5:
+            cands = [{"label": f["detail"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
+                      "start": f["start"], "end": f["end"], "visible": False, "obvious": False,
+                      "importance": importance_of(f["detail"].lower(), f["family"]), "masked": False, "gate": "beats audio-only"}
+                     for f in AUD5[stem]]
         elif stem.startswith(("m3_", "m4_", "m5_")):
             cands = []
         elif stem in MIXED2:
@@ -158,6 +177,10 @@ def build_extra(done=frozenset()):
         # 2026-09-21 night, Adam: wave 1 parked ("park") -- hidden unless done, or "also the parked ones"
         if clip["wave"] in (1, 4) and stem + ".mp4" not in done:
             clip["parked"] = True          # the page still shows a parked clip you marked done
+        if clip["wave"] == 5:
+            clip["vlm"] = VLM5.get(stem, {}).get("verdict", "")
+            if VLM5 and clip["vlm"] in ("seen", "empty") and stem + ".mp4" not in done:
+                clip["parked"] = True      # VLM says nothing off screen: parked, still reachable
         if clip["wave"] == 2:
             clip["vlm"] = VLM2.get(stem, {}).get("verdict", "")
             if VLM2 and clip["vlm"] != "mixed" and stem + ".mp4" not in done:
