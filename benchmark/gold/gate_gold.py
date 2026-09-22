@@ -76,7 +76,17 @@ def run_vlm(model: str, device: str = "cuda"):
                 times = [lo + (hi - lo) * t / (n - 1) for t in range(n)]
                 win = _sample_frames_at(p, times)
                 seen, named = reason._sound_is_visible(s["label"], win, mdl, proc, device)
-                stretches.append({"start": a, "end": b, "seen_majority": bool(seen), **dict(reason.LAST_VOTES)})
+                # a fourth, separate reading (not on the inference path): "obvious" -- would a viewer
+                # with no sound already assume this sound? (the annotator's second tick; a walker's
+                # steps, steam from a visible kettle). Asked a/b in both orderings like the a/b vote.
+                obvious = reason._ab(mdl, proc,
+                                     "These frames are from the moment a sound of " + s["label"] + " was heard. "
+                                     "Judge from the frames alone, as a viewer who hears nothing.",
+                                     "a viewer with no sound would already assume that " + s["label"] + " is happening -- "
+                                     "the thing making it, or its action, is plainly shown",
+                                     "a viewer with no sound would not know that " + s["label"] + " is happening",
+                                     frames=win)
+                stretches.append({"start": a, "end": b, "seen_majority": bool(seen), "obvious": obvious, **dict(reason.LAST_VOTES)})
             rows.append({**s, "stretches": stretches})
         f.write_text(json.dumps({"clip": name, "sounds": rows}, indent=1), encoding="utf-8")
         print(stem, len(rows), "sounds", flush=True)
@@ -109,11 +119,20 @@ def run_owl(device: str = "cuda"):
 
 
 def decide(stretches, rule: str) -> bool:
-    """the pipeline's clip-level verdict: silent only if the source is visible in EVERY stretch"""
+    """the pipeline's clip-level verdict: silent only if the source is visible in EVERY stretch.
+    rules: majority (v3/v4), unanimous, majority+obvious (visible by majority OR obvious a/b true),
+    obvious (the obvious question alone)"""
     for st in stretches:
         votes = [st.get("name"), st.get("ab"), st.get("desc")]
         yes = sum(1 for v in votes if v is True); no = sum(1 for v in votes if v is False)
-        seen = (yes == 3) if rule == "unanimous" else yes > no
+        if rule == "unanimous":
+            seen = yes == 3
+        elif rule == "obvious":
+            seen = st.get("obvious") is True
+        elif rule == "majority+obvious":
+            seen = (yes > no) or (st.get("obvious") is True)
+        else:
+            seen = yes > no
         if not seen:
             return False
     return True
@@ -124,7 +143,7 @@ def score():
     table = {}
     for arm in sorted(d.name for d in OUT_DIR.iterdir() if d.is_dir()):
         files = list((OUT_DIR / arm).glob("*.json"))
-        rules = ["owl"] if arm == "owlv2" else ["majority", "unanimous"]
+        rules = ["owl"] if arm == "owlv2" else ["majority", "unanimous", "majority+obvious", "obvious"]
         for rule in rules:
             for sub in ("dev54", "test85", "all"):
                 sel = [f for f in files if sub == "all" or ((f.stem in judge) == (sub == "dev54"))]
@@ -146,7 +165,7 @@ def score():
                 t = {"clips": len(sel), "n": n, "seen": n_seen, "needed": n_needed, "seen_silenced": r_sil,
                      "needed_kept": r_kept, "balanced_acc": (r_sil + r_kept) / 2, "acc": acc}
                 table[f"{arm}|{rule}|{sub}"] = t
-                print(f"[{arm:14s} {rule:9s} {sub:6s}] clips {t['clips']:3d} sounds {n:3d} (seen {n_seen}, needed {n_needed}) | "
+                print(f"[{arm:14s} {rule:16s} {sub:6s}] clips {t['clips']:3d} sounds {n:3d} (seen {n_seen}, needed {n_needed}) | "
                       f"seen silenced {r_sil:.2f} | needed kept {r_kept:.2f} | balanced {t['balanced_acc']:.2f} | acc {acc:.2f}")
     (OUT_DIR / "summary.json").write_text(json.dumps(table, indent=1), encoding="utf-8")
 

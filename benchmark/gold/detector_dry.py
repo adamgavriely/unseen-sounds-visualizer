@@ -55,25 +55,47 @@ def wav_for(p: Path) -> Path:
     return w
 
 
-def infer_all(device="cuda"):
+def infer_all(device="cuda", det="beats"):
+    """frame-wise cache for BEATs (v3/v4 detector) or PANNs CNN14 (v1, the "other" detector)"""
     from src.stage4_audio_event_detection.beats_infer import infer_beats
-    FW.mkdir(parents=True, exist_ok=True)
+    from src.stage4_audio_event_detection import _infer as infer_panns
+    fw_dir = FW if det == "beats" else FW.with_name("panns_fw")
+    fw_dir.mkdir(parents=True, exist_ok=True)
     for name in gold_clips():
         p = clip_path(name)
         if p is None:
             print("missing", name); continue
-        out = FW / (p.stem + ".npz")
+        out = fw_dir / (p.stem + ".npz")
         if out.exists():
             continue
-        fw, times, labels = infer_beats(wav_for(p), device)
-        np.savez_compressed(out, fw=fw.astype(np.float32), times=np.asarray(times, dtype=np.float64), labels=np.array(labels))
-        print(name, fw.shape, flush=True)
+        fw, times, labels = (infer_beats if det == "beats" else infer_panns)(wav_for(p), device)
+        np.savez_compressed(out, fw=np.asarray(fw, dtype=np.float32), times=np.asarray(times, dtype=np.float64), labels=np.array(labels))
+        print(name, np.asarray(fw).shape, flush=True)
+
+
+_CAM = {}
+
+
+def _memo_cam():
+    """occlusion_onset is the slow part (BEATs re-run per event); the same event recurs at
+    every bar, so its refinement is computed once per (clip, window, class)"""
+    from src.stage4_audio_event_detection import beats_infer as B
+    if getattr(B, "_memo", False):
+        return
+    raw = B.occlusion_onset
+
+    def memo(audio, sr, window_start, class_idx, device="cpu", **kw):
+        key = (len(audio), round(float(window_start), 3), int(class_idx))
+        if key not in _CAM:
+            _CAM[key] = raw(audio, sr, window_start, class_idx, device, **kw)
+        return _CAM[key]
+    B.occlusion_onset = memo; B._memo = True
 
 
 def events_for(stem: str, det: str, bar: float, wav: Path):
     from src.stage4_audio_event_detection import _extract_events, _refine_onsets_cam
-    if det == "beats":
-        z = np.load(FW / f"{stem}.npz")
+    if det in ("beats", "panns"):
+        z = np.load((FW if det == "beats" else FW.with_name("panns_fw")) / f"{stem}.npz")
         fw, times, labels = z["fw"], z["times"], [str(x) for x in z["labels"]]
     else:
         from src.stage4_audio_event_detection.psed_infer import infer_psed
@@ -110,7 +132,11 @@ def main():
     ap.add_argument("--bars", nargs="+", type=float, default=list(BARS))
     a = ap.parse_args()
     if a.infer:
-        infer_all(); return
+        for det in a.detectors:
+            if det in ("beats", "panns"):
+                infer_all(det=det)
+        return
+    _memo_cam()
     config.use_v4("59")                             # depictable filter, 8-s cap (v4b4)
     gold = S.load_gold([GOLD])
     judge = set(JUDGE100.read_text().split()) if JUDGE100.exists() else set()
@@ -125,6 +151,8 @@ def main():
                 if p is None or p.stem not in gold:
                     continue
                 if det == "psed" and not (PSED / f"{p.stem}.npz").exists():
+                    continue
+                if det == "panns" and not (FW.with_name("panns_fw") / f"{p.stem}.npz").exists():
                     continue
                 wav = wav_for(p)
                 import soundfile as sf

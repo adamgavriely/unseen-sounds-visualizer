@@ -296,14 +296,56 @@ def boot_ci(rows, key="F1", n=2000, seed=0):
     return float(np.percentile(vals, 2.5)), float(np.percentile(vals, 97.5))
 
 
+def paired_ci(rows_a, rows_b, key="F1", n=2000, seed=0):
+    """clip bootstrap of the DIFFERENCE a - b: the same resampled clips for both systems
+    (amendment 5, docs/prereg_v4.md); rows_a and rows_b are aligned lists (same clips, same order)"""
+    rng = np.random.default_rng(seed)
+    m = len(rows_a)
+    diffs = []
+    for _ in range(n):
+        idx = rng.integers(0, m, m)
+        diffs.append(aggregate([rows_a[i] for i in idx])[key] - aggregate([rows_b[i] for i in idx])[key])
+    d = aggregate(rows_a)[key] - aggregate(rows_b)[key]
+    return d, float(np.percentile(diffs, 2.5)), float(np.percentile(diffs, 97.5)), float(np.mean(np.asarray(diffs) > 0))
+
+
+def category(sounds) -> str:
+    """the tool's clip category from the ticks (benchmark/gold/tool_template.html category())"""
+    if not sounds:
+        return "no_ambient"
+    needed = [s for s in sounds if s["needed"]]
+    seen = [s for s in sounds if not s["needed"]]
+    if not needed:
+        return "seen"
+    if any(s["importance"] >= 2 for s in needed) and any(s["importance"] >= 2 for s in seen):
+        return "mixed"
+    return "unseen"
+
+
+def subsets_of(gold):
+    """named clip subsets declared in amendment 5: population, dev/test, category, pre-screened"""
+    from benchmark.gold.detector_dry import clip_path, JUDGE100
+    judge = set(JUDGE100.read_text().split()) if JUDGE100.exists() else set()
+    sliceb = {st for st in gold if clip_path(st + ".mp4") is None and clip_path(st + ".webm") is None}
+    subs = {"all139": set(gold), "bench103": set(gold) - sliceb, "sliceB": sliceb,
+            "dev54": set(gold) & judge, "test85": set(gold) - judge,
+            "test_bench49": (set(gold) - judge) - sliceb,
+            "prescreened": {st for st in gold if st.startswith(("m5_", "t1_", "w8_"))}}
+    for cat in ("mixed", "unseen", "seen", "no_ambient"):
+        subs["cat_" + cat] = {st for st in gold if category(gold[st]) == cat}
+    return subs
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--annotations", nargs="+", required=True)
     ap.add_argument("--tag", required=True)
-    ap.add_argument("--systems", nargs="+", default=["proposed", "blind_a2i", "audio_caption"])
+    ap.add_argument("--systems", nargs="+", default=["proposed", "blind_a2i", "audio_caption", "silence"])
     ap.add_argument("--late", nargs="+", type=float, default=[LATE])
     ap.add_argument("--early", type=float, default=EARLY)
     ap.add_argument("--out", default=None)
+    ap.add_argument("--work", default=None, help="data/work root holding protocol_<system>_<tag> (default: the repo's)")
+    ap.add_argument("--subsets", nargs="+", default=["bench103", "all139", "sliceB", "dev54", "test85", "test_bench49", "prescreened", "cat_mixed", "cat_unseen", "cat_seen", "cat_no_ambient"])
     ap.add_argument("--old-rule", action="store_true", help="sensitivity row: level-1 needed sounds scored as before (hits/misses)")
     a = ap.parse_args()
     global OLD_RULE
@@ -313,25 +355,42 @@ def main():
           f"{sum(1 for v in gold.values() for s in v if s['needed'])} needed")
     if UNRESOLVED:
         print(f"[gold] {len(UNRESOLVED)} sound names not in the ontology (can never match): " + "; ".join(f"{c}: {r}" for c, r in UNRESOLVED))
+    work = Path(a.work) if a.work else _ROOT / "data" / "work"
+    subs = subsets_of(gold)
     results = {}
     for late in a.late:
+        # rows per system, keyed by clip stem (silence = no pictures, needs no render)
+        per = {}
         for system in a.systems:
-            root = _ROOT / "data" / "work" / f"protocol_{system}_{a.tag}"
-            rows = []
+            root = work / f"protocol_{system}_{a.tag}"
+            rows = {}
             for stem, snds in gold.items():
-                pics = load_pictures(root, stem, system)
+                pics = [] if system == "silence" else load_pictures(root, stem, system)
                 if pics is None:
                     continue
-                rows.append(score_clip(snds, pics, a.early, late))
+                rows[stem] = score_clip(snds, pics, a.early, late)
             if not rows:
                 print(f"[{system}] no rendered clips under {root}"); continue
-            agg = aggregate(rows); lo, hi = boot_ci(rows)
-            agg["F1_ci"] = [lo, hi]
-            results[f"{system}@late{late}"] = agg
-            print(f"[{system:13s} late<={late:.1f}s] clips {agg['clips']:3d} needed {agg['needed']:3d} | "
-                  f"P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
-                  f"F1-phantom {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} (n3={agg['n_level3']}) dontcare {agg['dontcare']} collisions {agg['collisions']} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | "
-                  f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean-acc {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
+            per[system] = rows
+        for sub in a.subsets:
+            stems = sorted(st for st in subs.get(sub, set()) if all(st in per[s] for s in per))
+            if not stems:
+                continue
+            print(f"--- subset {sub}: {len(stems)} clips (late <= {late:.1f} s)")
+            for system, rows in per.items():
+                rs = [rows[st] for st in stems]
+                agg = aggregate(rs); lo, hi = boot_ci(rs)
+                agg["F1_ci"] = [lo, hi]
+                results[f"{sub}|{system}@late{late}"] = agg
+                print(f"[{system:13s}] needed {agg['needed']:3d} | P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
+                      f"F1-ph {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} (n3={agg['n_level3']}) dc {agg['dontcare']} coll {agg['collisions']} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | "
+                      f"hit {agg['hits']} miss {agg['misses']} vis {agg['visible']} cross {agg['cross']} ph {agg['phantom']} dup {agg['dup']} | "
+                      f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
+            if "proposed" in per:
+                for other in [s for s in per if s != "proposed"]:
+                    d, lo, hi, pgt = paired_ci([per["proposed"][st] for st in stems], [per[other][st] for st in stems])
+                    results[f"{sub}|delta_proposed-{other}@late{late}"] = {"dF1": d, "ci": [lo, hi], "p_gt0": pgt, "clips": len(stems)}
+                    print(f"   dF1 proposed - {other:13s} = {d:+.3f} [{lo:+.3f}, {hi:+.3f}]  P(d>0)={pgt:.3f}")
     if PLACEHOLDERS:
         print(f"[pictures] {PLACEHOLDERS} augmentation(s) were placeholder panels (failed generation); counted as shown")
     out = Path(a.out) if a.out else _ROOT / "benchmark" / "gold" / f"per_sound_{a.tag}.json"
