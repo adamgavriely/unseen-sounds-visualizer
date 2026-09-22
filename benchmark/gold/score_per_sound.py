@@ -289,11 +289,28 @@ def aggregate(rows):
     cov = [x for r in rows for x in r["cov"]]
     clean_n = sum(r["clean_n"] for r in rows); clean_ok = sum(r["clean_ok"] for r in rows)
     fa_clip = float(np.mean([r["visible"] + r["cross"] + r["phantom"] for r in rows])) if rows else 0.0
-    return {"fa_per_clip": fa_clip, "hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M, "dontcare": DC, "n_level3": N3, "collisions": CO,
+    return {"fa_per_clip": fa_clip, "viewer_cost": viewer_cost(rows), "hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M, "dontcare": DC, "n_level3": N3, "collisions": CO,
             "P": p, "R": r, "F1": f1, "F0.5": f05, "F2": f2, "P_phantom": pp, "F1_phantom": fp_,
             "wP": wp, "wR": wr, "wF1": wf, "median_late": float(np.median(late)) if late else None,
             "coverage": float(np.mean(cov)) if cov else None, "coverage_hits": float(np.mean([c for c in cov if c > 0])) if any(c > 0 for c in cov) else None,  # cov>0 only for hits
             "clean_acc": clean_ok / clean_n if clean_n else None, "clips": len(rows)}
+
+
+# Viewer cost (Adam, 2026-09-22, approved after seeing that equal-weight F1 cannot separate the
+# systems). It is NOT a new weighting invented for this result: the two numbers are the ones this
+# project declared in September for the gate sweep (benchmark/gate_dev_sweep.py, COST_MISS = 4,
+# COST_REDUNDANT = 2), read off the judging rubric -- a needed picture withheld scores 0 where it
+# could have scored 4, and a picture shown where none is due is capped at 2 where silence scores 4.
+# cost = 4 x (needed sounds rated >= 2 with no picture) + 2 x (pictures that are false alarms);
+# lower is better. Reported per clip, with the break-even weight printed beside it so the reader can
+# see the whole trade-off instead of one chosen point.
+COST_MISS, COST_FA = 4.0, 2.0
+
+
+def viewer_cost(rows, w_fa=None):
+    w = COST_FA if w_fa is None else float(w_fa)
+    n = max(1, len(rows))
+    return sum(COST_MISS * r["miss"] + w * (r["visible"] + r["cross"] + r["phantom"]) for r in rows) / n
 
 
 def fa_per_clip(rows):
@@ -411,7 +428,7 @@ def main():
                     if not both:
                         continue
                     row = {"clips": len(both)}
-                    for key, fmt in (("F1", "dF1"), ("F0.5", "dF0.5"), ("wF1", "dwF1"), ("P", "dP"), ("R", "dR"), ("fa_per_clip", "dFA/clip"), ("clean_acc", "d clean-acc")):
+                    for key, fmt in (("F1", "dF1"), ("F0.5", "dF0.5"), ("wF1", "dwF1"), ("P", "dP"), ("R", "dR"), ("fa_per_clip", "dFA/clip"), ("viewer_cost", "d cost/clip"), ("clean_acc", "d clean-acc")):
                         try:
                             d, lo, hi, pgt = paired_ci([per["proposed"][st] for st in both], [per[other][st] for st in both], key=key)
                         except TypeError:

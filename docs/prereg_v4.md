@@ -679,3 +679,35 @@ reported as the single-detector alternative at a comparable false-label budget.
 
 (Complete 139-clip cache. Onset-recall on the two categories that carry needed sounds: mixed
 0.44 → 0.50, **unseen 0.45 → 0.64** with the adopted union and **0.73** with FlexSED 0.7.)
+
+
+## Amendment 9 — 2026-09-22 (viewer cost; Adam approved after seeing that equal-weight F1 cannot separate the systems — declared post hoc and labelled as such)
+
+**Why.** F1 prices a picture of a sound that is not there exactly like a sound left undrawn. For a
+deaf viewer those are not the same: a wrong picture misleads, a missing one leaves the viewer where
+subtitles already leave them. F1 also cannot see the 74 of 139 clips that contain no needed sound —
+more than half the set — where the only right answer is silence.
+
+**Definition.** cost per clip = `COST_MISS` × (needed sounds rated ≥ 2 with no picture) + β ×
+(pictures that are false alarms); lower is better. The weights are **not invented for this result**:
+`COST_MISS = 4` and β = 2 are the numbers this project declared in September for the gate sweep
+(`benchmark/gate_dev_sweep.py`), read off the judging rubric — a needed picture withheld scores 0
+where it could have scored 4, and a picture shown where none is due is capped at 2 where silence
+scores 4. The whole β curve is reported, not one chosen point.
+
+**Result (109 benchmark clips, paired clip bootstrap).** At the declared β = 2: gated **3.36** vs
+blind **4.24** per clip, **Δ −0.88 [−1.36, −0.46]**; on the untouched TEST-60, **−0.77 [−1.43,
+−0.10]**. For the union row v4b6 the gap is larger: −1.23 [−1.80, −0.75] and −1.20 [−1.97, −0.50].
+The gate is cheaper than blind for **any β > 0.40**, i.e. for any viewer who finds one wrong picture
+at least a tenth as costly as one missed sound.
+
+**And the finding that goes against the project, recorded here in full.** SILENCE costs **2.79** per
+clip, which is *less than either system* at β = 2. Showing nothing wins whenever a wrong picture
+costs more than about 1.4 (β), i.e. more than a third of a missed sound. Both systems beat silence
+only in the window **0.40 < β < 1.41**. With the misses weighted by the annotator's own importance
+(a level-3 danger sound counted 3, a level-2 event 2), the window moves to β < 1.0 and the gated
+system beats both baselines at β = 0.25 and 0.5. So the honest statement is: **at its current
+picture accuracy (23 % of the pictures it shows are right) this system is worth using only if a
+wrong picture is cheap relative to a missed sound, and the gate always makes it cheaper than drawing
+everything.** That is the number the thesis should argue about, and it is reported in both
+directions.
