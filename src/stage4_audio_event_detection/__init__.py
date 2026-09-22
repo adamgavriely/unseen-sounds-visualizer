@@ -251,10 +251,14 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                     for i, lab in enumerate(plabels):
                         k = canonical(lab)
                         ppeak[k] = max(ppeak.get(k, 0.0), float(pfw[:, i].max()))
-                    flex_only = {key(e) for e in fresh}          # raised by FlexSED, not merged into a BEATs span
+                    # by IDENTITY, not by family name: keying on the canonical family would also
+                    # drop BEATs' OWN span of that family whenever FlexSED raised the same family
+                    # elsewhere in the clip without merging, which is exactly the asymmetry the
+                    # guard exists to prevent.
+                    flex_only = {id(e) for e in fresh}          # raised by FlexSED, no BEATs twin
                     before2 = len(events)
                     events = [e for e in events
-                              if key(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2]
+                              if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2]
                     print(f"       [stage4] PANNs veto (tau2 {veto2}) on FlexSED-only spans: "
                           f"dropped {before2 - len(events)} span(s)", flush=True)
                 except Exception as e2:
