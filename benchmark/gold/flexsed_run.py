@@ -59,6 +59,7 @@ def wav_for(p: Path, work: Path) -> Path:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(_ROOT / "data" / "work" / "flexsed_cache"))
+    ap.add_argument("--prompts", action="store_true", help="ask each family three ways and keep the max")
     ap.add_argument("--shard", type=int, default=0, help="this worker's index; workers take every --of-th clip so parallel jobs do not repeat each other")
     ap.add_argument("--of", type=int, default=1)
     ap.add_argument("--batch", type=int, default=24, help="queries per forward pass")
@@ -67,6 +68,16 @@ def main():
     # package (ours, with __init__.py) always wins over the repo's namespace package whatever the
     # path order -- so the project root is taken off sys.path for the import
     vocab = json.loads(VOCAB.read_text(encoding="utf-8"))["families"]
+    # prompt ensemble (Fables, 2026-09-22): CLAP text embeddings are prompt-sensitive, so each family
+    # is asked in three ways and the frame score is the max. The three templates are applied to every
+    # family uniformly -- no per-family wording, so nothing is tuned on the gold set. api.run_inference
+    # wraps each string as "The sound of {x}".
+    TEMPLATES = ["{f}", "{l} heard nearby", "{l}, recorded in the real world"]
+    if a.prompts:
+        queries = [t.format(f=f, l=f.lower()) for f in vocab for t in TEMPLATES]
+        n_t = len(TEMPLATES)
+    else:
+        queries = list(vocab); n_t = 1
     names = clips()[a.shard::max(1, a.of)]
     paths = {n: clip_path(n) for n in names}
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
@@ -109,15 +120,17 @@ def main():
             print("missing", name, flush=True); continue
         parts = []
         import torch
-        for k in range(0, len(vocab), a.batch):
+        for k in range(0, len(queries), a.batch):
             # api.run_inference does not disable autograd, so the activations of a 215-query pass
             # fill an 11 GB card; inference_mode makes it fit and is the only change
             with torch.inference_mode():
-                preds = m.run_inference(str(wav), vocab[k:k + a.batch])     # [n_events, 1, T]
+                preds = m.run_inference(str(wav), queries[k:k + a.batch])     # [n_events, 1, T]
             parts.append(preds.detach().squeeze(1).numpy().astype(np.float16))
             del preds
             torch.cuda.empty_cache()
-        fw = np.concatenate(parts, axis=0)                              # [n_vocab, T]
+        fw = np.concatenate(parts, axis=0)                              # [n_queries, T]
+        if n_t > 1:                                                     # max over the templates
+            fw = fw.reshape(len(vocab), n_t, -1).max(axis=1)
         np.savez_compressed(f, fw=fw, labels=np.array(vocab), fps=FPS)
         print(f"[{i}] {stem} {fw.shape}", flush=True)
     print("done ->", out)

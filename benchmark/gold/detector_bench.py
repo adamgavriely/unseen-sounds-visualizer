@@ -44,6 +44,9 @@ SNAP = False
 MIN_DUR = 0.2
 
 
+HYST = None         # (rise, fall): onset = the first frame crossing `rise` after being below `fall`
+RANKTOP = None      # (low, high): a span peaking below `high` is admitted only if its label is the
+                    # strongest of all labels at its own peak frame
 LOW = None          # absolute hysteresis floor; None = bar/2 (the pipeline's rule)
 
 
@@ -61,6 +64,8 @@ def events(stem: str, det: str, bar: float):
         fw = fw.T                            # [T, n_labels]
         times = np.arange(fw.shape[0]) / float(z["fps"])
     low = float(LOW) if LOW is not None else 0.5 * bar
+    if HYST:
+        low = float(HYST[1])                 # the span starts where the score leaves the quiet band
     out = []
     for j, lab in enumerate(labels):
         v = fw[:, j]
@@ -76,10 +81,31 @@ def events(stem: str, det: str, bar: float):
             if peak < bar:
                 continue
             a, b = float(times[run[0]]), float(times[run[-1]])
+            if HYST:
+                # the onset is the first frame that rises through `rise`, not the first frame above
+                # the display bar: a sound that fades in was being stamped late (Fables, 2026-09-22)
+                up = run[np.flatnonzero(v[run] >= float(HYST[0]))]
+                if up.size:
+                    a = float(times[up[0]])
+                    back = run[(run <= up[0])]
+                    quiet = back[np.flatnonzero(v[back] < float(HYST[1]))]
+                    if quiet.size:
+                        a = float(times[min(quiet[-1] + 1, run[-1])])
             if b - a < MIN_DUR:
                 b = a + MIN_DUR
-            out.append((lab, a, b, peak))
-    return out
+            out.append((lab, a, b, peak, int(run[int(np.argmax(v[run]))])))
+    if RANKTOP:
+        # a weak detection is admitted only if its label is the strongest one at its own peak frame
+        # (Fables, 2026-09-22: a rank rule instead of a lower global bar)
+        keep = []
+        for lab, a, b, peak, f in out:
+            if peak >= float(RANKTOP[1]):
+                keep.append((lab, a, b, peak)); continue
+            j = labels.index(lab)
+            if fw[f, j] >= fw[f].max() - 1e-6:
+                keep.append((lab, a, b, peak))
+        return keep
+    return [(lab, a, b, peak) for lab, a, b, peak, _ in out]
 
 
 _AUDIO = {}
@@ -171,13 +197,17 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--configs", nargs="+", required=True)
     ap.add_argument("--halves", nargs="+", default=["dev"], help="dev (selection) / test (read once) / all")
+    ap.add_argument("--ranktop", nargs=2, type=float, default=None, metavar=("LOW", "HIGH"), help="spans peaking below HIGH must be the top label at their peak frame")
+    ap.add_argument("--hyst", nargs=2, type=float, default=None, metavar=("RISE", "FALL"), help="onset = first frame through RISE after being below FALL")
     ap.add_argument("--low", type=float, default=None, help="absolute hysteresis floor for the span (default bar/2): a lower floor starts the span earlier")
     ap.add_argument("--snap", action="store_true", help="re-anchor every detection's onset to the nearest novelty peak inside it")
     ap.add_argument("--out", default=str(_ROOT / "benchmark" / "gold" / "detector_bench.json"))
     a = ap.parse_args()
     config.use_v4("59")
-    global SNAP, LOW
-    SNAP = bool(a.snap); LOW = a.low
+    global SNAP, LOW, HYST
+    SNAP = bool(a.snap); LOW = a.low; HYST = tuple(a.hyst) if a.hyst else None
+    global RANKTOP
+    RANKTOP = tuple(a.ranktop) if a.ranktop else None
     gold = S.load_gold([GOLD])
     dev, test = load_split()
     halves = {"dev": dev, "test": test, "all": set(gold)}
