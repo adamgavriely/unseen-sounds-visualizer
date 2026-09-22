@@ -2458,5 +2458,865 @@
     "query": "tennis match thunder rain delay",
     "cut": "50%",
     "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_warzone_stream_dog_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=LHAQ_799DOk",
+    "title": "I WON A WARZONE GAME WITH A DOG!! (Call of Duty Modern Warfare Warzone)",
+    "targeted": "wave8 (M)",
+    "query": "Warzone stream dog barking background",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_warzone_stream_dog_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=LHAQ_799DOk",
+    "title": "I WON A WARZONE GAME WITH A DOG!! (Call of Duty Modern Warfare Warzone)",
+    "targeted": "wave8 (M)",
+    "query": "Warzone stream dog barking background",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_streamer_smoke_alarm_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=l6NLLOmKi4U",
+    "title": "Smoke Alarm Goes Off Mid-Stream!",
+    "targeted": "wave8 (U)",
+    "query": "streamer smoke alarm goes off mid stream",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_golf_plane_overhead_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=flAhY5k5M5w",
+    "title": "The Magic Move in Cam Smith's Putting Stoke | Film Study | Golf Digest",
+    "targeted": "wave8 (M)",
+    "query": "golf broadcast tee shot plane overhead",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_boxing_ringside_bell_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=V-dy2ZDuss0",
+    "title": "Josh Warrington v Louis Alberto Lopez | Final round and the result",
+    "targeted": "wave8 (M)",
+    "query": "boxing ringside camera round bell",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_boxing_ringside_bell_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=V-dy2ZDuss0",
+    "title": "Josh Warrington v Louis Alberto Lopez | Final round and the result",
+    "targeted": "wave8 (M)",
+    "query": "boxing ringside camera round bell",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_bodycam_house_alarm_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=y2ceUjH_e7A",
+    "title": "Police want doorbell camera video",
+    "targeted": "wave8 (U)",
+    "query": "police bodycam burglary alarm ringing inside house",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_bodycam_domestic_knock_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=uX3PA95SJw4",
+    "title": "Bullied Boy Knocks on Neighbor’s Door in Search for Friends",
+    "targeted": "wave8 (U)",
+    "query": "police bodycam knocking door nobody answers dog inside",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_hide_wolves_howl_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Vj06_i109Cg",
+    "title": "Wolf howling in Eastern Algonquin Park September 2014",
+    "targeted": "wave8 (U)",
+    "query": "wolves howling heard from camp night",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_hide_bear_camp_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=yCqwSYUvgnQ",
+    "title": "Maintaining Sanity with an Animal Outside the Tent",
+    "targeted": "wave8 (U)",
+    "query": "bear outside tent at night sounds",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_hide_bear_camp_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=yCqwSYUvgnQ",
+    "title": "Maintaining Sanity with an Animal Outside the Tent",
+    "targeted": "wave8 (U)",
+    "query": "bear outside tent at night sounds",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_stream_neighbor_drilling_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=1kwnsza9Pl0",
+    "title": "Upstairs Neighbor Impact Noise Examples",
+    "targeted": "wave8 (U)",
+    "query": "streamer neighbor drilling noise complaint live",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_stream_neighbor_drilling_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=1kwnsza9Pl0",
+    "title": "Upstairs Neighbor Impact Noise Examples",
+    "targeted": "wave8 (U)",
+    "query": "streamer neighbor drilling noise complaint live",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_stream_police_sirens_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=9WQ4SfYHPTY",
+    "title": "6 Alarm Fire San Francisco via NBC live streaming",
+    "targeted": "wave8 (U)",
+    "query": "streamer police sirens outside apartment live",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_film_das_boot_depth_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=vo--lC1QkzI",
+    "title": "Das Boot | Depth Charged, Panic Scene.",
+    "targeted": "wave8 (U)",
+    "query": "Das Boot depth charges scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_film_the_mist_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=1o9Z4pFDoqM",
+    "title": "The Mist: Anxiety builds. There is no light, phones do not work. Military in the city, firefighters",
+    "targeted": "wave8 (U)",
+    "query": "The Mist supermarket night scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_sports_f1_pit_crash_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=rLNquZDtwok",
+    "title": "F1 Biggest Onboard Crashes",
+    "targeted": "wave8 (M)",
+    "query": "F1 onboard crash behind car",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_upstairs_stomping_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=4IRB0sxw-YU",
+    "title": "Everyone's Upstairs Neighbors",
+    "targeted": "wave8 (U)",
+    "query": "upstairs neighbor stomping ceiling recording",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_upstairs_stomping_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=4IRB0sxw-YU",
+    "title": "Everyone's Upstairs Neighbors",
+    "targeted": "wave8 (U)",
+    "query": "upstairs neighbor stomping ceiling recording",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_das_boot_depth_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=yD3rKts9v7w",
+    "title": "Das boot. Depth charges.",
+    "targeted": "wave8 (U)",
+    "query": "Das Boot depth charge scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_das_boot_depth_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=vo--lC1QkzI",
+    "title": "Das Boot | Depth Charged, Panic Scene.",
+    "targeted": "wave8 (U)",
+    "query": "Das Boot depth charge scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_das_boot_depth_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=vo--lC1QkzI",
+    "title": "Das Boot | Depth Charged, Panic Scene.",
+    "targeted": "wave8 (U)",
+    "query": "Das Boot depth charge scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_zone_interest_pool_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=NwGuFD662sE",
+    "title": "The Zone Of Interest (2023) - Showing the Garden with the concentration camp in the background",
+    "targeted": "wave8 (U)",
+    "query": "Zone of Interest garden pool scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_zone_interest_pool_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=NwGuFD662sE",
+    "title": "The Zone Of Interest (2023) - Showing the Garden with the concentration camp in the background",
+    "targeted": "wave8 (U)",
+    "query": "Zone of Interest garden pool scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_zone_interest_pool_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=A86FcZD-Wtg",
+    "title": "The Zone of Interest Best Scene",
+    "targeted": "wave8 (U)",
+    "query": "Zone of Interest garden pool scene",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_downfall_bunker_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=xBWmkwaTQ0k",
+    "title": "Downfall (2004) - Clip 1: Steiner's Attack",
+    "targeted": "wave8 (U)",
+    "query": "Downfall bunker artillery scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_downfall_bunker_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=jjPexSrg9Y8",
+    "title": "Downfall: Famous Bunker Scene (Actual Translation, Remastered, 1080p)",
+    "targeted": "wave8 (U)",
+    "query": "Downfall bunker artillery scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_downfall_bunker_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=jjPexSrg9Y8",
+    "title": "Downfall: Famous Bunker Scene (Actual Translation, Remastered, 1080p)",
+    "targeted": "wave8 (U)",
+    "query": "Downfall bunker artillery scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_mamad_sirens_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=2lbCX4wpYtY",
+    "title": "MIDEAST-ISRAEL'S SHELTER KIDS",
+    "targeted": "wave8 (U)",
+    "query": "bomb shelter mamad sirens interceptions inside",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_mamad_sirens_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=2lbCX4wpYtY",
+    "title": "MIDEAST-ISRAEL'S SHELTER KIDS",
+    "targeted": "wave8 (U)",
+    "query": "bomb shelter mamad sirens interceptions inside",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_mamad_sirens_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=mFcXKCiS3xQ",
+    "title": "Israel VS Iran: Hundreds Attend “Bunker Parties” in Tel Aviv Amid Tensions | Firstpost America",
+    "targeted": "wave8 (U)",
+    "query": "bomb shelter mamad sirens interceptions inside",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_mamad_sirens_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=mFcXKCiS3xQ",
+    "title": "Israel VS Iran: Hundreds Attend “Bunker Parties” in Tel Aviv Amid Tensions | Firstpost America",
+    "targeted": "wave8 (U)",
+    "query": "bomb shelter mamad sirens interceptions inside",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_under_the_shadow_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=uUhS_H3q89U",
+    "title": "Maria Meets Shadow Scene | SONIC THE HEDGEHOG 3 (2024) Movie CLIP HD",
+    "targeted": "wave8 (U)",
+    "query": "Under the Shadow air raid scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_under_the_shadow_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=uUhS_H3q89U",
+    "title": "Maria Meets Shadow Scene | SONIC THE HEDGEHOG 3 (2024) Movie CLIP HD",
+    "targeted": "wave8 (U)",
+    "query": "Under the Shadow air raid scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_lebanon_tank_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=jKmHN1waJQc",
+    "title": "Israeli Tanks Battle Against Invading Syrian Tanks - Valley of Tears",
+    "targeted": "wave8 (U)",
+    "query": "Lebanon 2009 tank interior scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_lebanon_tank_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=jKmHN1waJQc",
+    "title": "Israeli Tanks Battle Against Invading Syrian Tanks - Valley of Tears",
+    "targeted": "wave8 (U)",
+    "query": "Lebanon 2009 tank interior scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_lebanon_tank_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=IMRD3z_mTqI",
+    "title": "Lebanon | Trailer US (2009)",
+    "targeted": "wave8 (U)",
+    "query": "Lebanon 2009 tank interior scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_lebanon_tank_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=IMRD3z_mTqI",
+    "title": "Lebanon | Trailer US (2009)",
+    "targeted": "wave8 (U)",
+    "query": "Lebanon 2009 tank interior scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_paranormal_thumps_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=IEx8DaLqSug",
+    "title": "William A Irvin Paranormal- Thumps in the Cargo Hold",
+    "targeted": "wave8 (U)",
+    "query": "Paranormal Activity bedroom thumps",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_paranormal_thumps_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Rg0bkJvofXM",
+    "title": "LOST RECORDING OF HAUNTED ROOM - BOYS DOCUMENT PARANORMAL ACTIVITY",
+    "targeted": "wave8 (U)",
+    "query": "Paranormal Activity bedroom thumps",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_paranormal_thumps_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Rg0bkJvofXM",
+    "title": "LOST RECORDING OF HAUNTED ROOM - BOYS DOCUMENT PARANORMAL ACTIVITY",
+    "targeted": "wave8 (U)",
+    "query": "Paranormal Activity bedroom thumps",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_open_water_storm_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=FM9kdJaGU4I",
+    "title": "Open Water (2004) - The moment you discover the dive boat has left without you!",
+    "targeted": "wave8 (U)",
+    "query": "Open Water night storm scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_open_water_storm_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=FM9kdJaGU4I",
+    "title": "Open Water (2004) - The moment you discover the dive boat has left without you!",
+    "targeted": "wave8 (U)",
+    "query": "Open Water night storm scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_open_water_storm_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=TYe2tkXgPqs",
+    "title": "WARSHIP Hit By Monster Wave Near Antarctica [4K]",
+    "targeted": "wave8 (U)",
+    "query": "Open Water night storm scene",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_the_grey_wolves_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=1dgYdD_08aQ",
+    "title": "The Grey - Wolves Howl",
+    "targeted": "wave8 (U)",
+    "query": "The Grey campfire wolves night",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_the_grey_wolves_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=1dgYdD_08aQ",
+    "title": "The Grey - Wolves Howl",
+    "targeted": "wave8 (U)",
+    "query": "The Grey campfire wolves night",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_the_grey_wolves_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=4FKGf4yGUpU",
+    "title": "The Grey - 'Wolf Stand-off'",
+    "targeted": "wave8 (U)",
+    "query": "The Grey campfire wolves night",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_pitch_black_clicks_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=5psrX5ezdc0",
+    "title": "Top 10 Terrifying Pitch Black Scenes in Horror Movies",
+    "targeted": "wave8 (U)",
+    "query": "Pitch Black dark clicking scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_pitch_black_clicks_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=5psrX5ezdc0",
+    "title": "Top 10 Terrifying Pitch Black Scenes in Horror Movies",
+    "targeted": "wave8 (U)",
+    "query": "Pitch Black dark clicking scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_pitch_black_clicks_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=XFsXs2Vd48E",
+    "title": "Escape from the Prison Moon | The Chronicles of Riddick | CLIP",
+    "targeted": "wave8 (U)",
+    "query": "Pitch Black dark clicking scene",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_pitch_black_clicks_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=XFsXs2Vd48E",
+    "title": "Escape from the Prison Moon | The Chronicles of Riddick | CLIP",
+    "targeted": "wave8 (U)",
+    "query": "Pitch Black dark clicking scene",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_frozen_chairlift_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=scQLYdQ34wE",
+    "title": "Frozen (2010) - Dan Jumps Off Ski Lift Scene - CinemaFilmClips",
+    "targeted": "wave8 (U)",
+    "query": "Frozen 2010 chairlift wolves night",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_frozen_chairlift_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=scQLYdQ34wE",
+    "title": "Frozen (2010) - Dan Jumps Off Ski Lift Scene - CinemaFilmClips",
+    "targeted": "wave8 (U)",
+    "query": "Frozen 2010 chairlift wolves night",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_frozen_chairlift_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=VwG7IMn5voM",
+    "title": "FROZEN | Attacked By Wolves (2010) Movie CLIP HD",
+    "targeted": "wave8 (U)",
+    "query": "Frozen 2010 chairlift wolves night",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_frozen_chairlift_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=VwG7IMn5voM",
+    "title": "FROZEN | Attacked By Wolves (2010) Movie CLIP HD",
+    "targeted": "wave8 (U)",
+    "query": "Frozen 2010 chairlift wolves night",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_it_comes_dog_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=1yhOSytDEf4",
+    "title": "If Your Dog Starts Barking at Night… LOCK The Door - Analog Horror",
+    "targeted": "wave8 (U)",
+    "query": "It Comes at Night dog barking woods",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_it_comes_dog_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=hnEwJKVWjFM",
+    "title": "Lamb | Official Trailer HD | A24",
+    "targeted": "wave8 (U)",
+    "query": "It Comes at Night dog barking woods",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_it_comes_dog_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=hnEwJKVWjFM",
+    "title": "Lamb | Official Trailer HD | A24",
+    "targeted": "wave8 (U)",
+    "query": "It Comes at Night dog barking woods",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_jane_doe_hallway_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=dx73tp7YLQ8",
+    "title": "Its Her/ Walking Corpse Scene | The Autopsy of Jane Doe",
+    "targeted": "wave8 (U)",
+    "query": "Autopsy of Jane Doe hallway footsteps",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_jane_doe_hallway_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=dx73tp7YLQ8",
+    "title": "Its Her/ Walking Corpse Scene | The Autopsy of Jane Doe",
+    "targeted": "wave8 (U)",
+    "query": "Autopsy of Jane Doe hallway footsteps",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_jane_doe_hallway_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=rZLg-nD8uKQ",
+    "title": "The Autopsy of Jane Doe / Jane Doe Walks / 2016",
+    "targeted": "wave8 (U)",
+    "query": "Autopsy of Jane Doe hallway footsteps",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_cave_lights_off_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=PjavagqvVwM",
+    "title": "The AMAZING Cave of Light, Ibiza (Ullal de na Coloms)",
+    "targeted": "wave8 (U)",
+    "query": "cave tour lights off",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_cave_lights_off_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=PjavagqvVwM",
+    "title": "The AMAZING Cave of Light, Ibiza (Ullal de na Coloms)",
+    "targeted": "wave8 (U)",
+    "query": "cave tour lights off",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_cabin_turbulence_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=kS4n1M2l1OM",
+    "title": "Severe Turbulence on a Ryanair flight",
+    "targeted": "wave8 (U)",
+    "query": "airplane cabin night turbulence",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_cabin_turbulence_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=ob6-vAE_c6s",
+    "title": "Boeing 737 Go Around In Extreme Weather Conditions Turbulence Crosswind Snow Storm | Cockpit View",
+    "targeted": "wave8 (U)",
+    "query": "airplane cabin night turbulence",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_call_smoke_alarm_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=LNspdr44k0w",
+    "title": "Sofie Dossi - FIRE ALARM (Official Video)",
+    "targeted": "wave8 (U)",
+    "query": "video call smoke alarm goes off",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_call_smoke_alarm_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=LNspdr44k0w",
+    "title": "Sofie Dossi - FIRE ALARM (Official Video)",
+    "targeted": "wave8 (U)",
+    "query": "video call smoke alarm goes off",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_podcast_siren_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=b_fUK90NMXI",
+    "title": "Scraps: This Is Not A Drill - A Fire Alarm Goes Off During A Taping Of CONAN | CONAN on TBS",
+    "targeted": "wave8 (U)",
+    "query": "podcast interrupted by siren",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_podcast_siren_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=b_fUK90NMXI",
+    "title": "Scraps: This Is Not A Drill - A Fire Alarm Goes Off During A Taping Of CONAN | CONAN on TBS",
+    "targeted": "wave8 (U)",
+    "query": "podcast interrupted by siren",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_wfh_drilling_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=7Sqtm0VPEZY",
+    "title": "Man’s Drilling Confuses Neighbors, Then They See The Final Product // success stories | true stories",
+    "targeted": "wave8 (U)",
+    "query": "work from home neighbor drilling",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_wfh_drilling_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=7Sqtm0VPEZY",
+    "title": "Man’s Drilling Confuses Neighbors, Then They See The Final Product // success stories | true stories",
+    "targeted": "wave8 (U)",
+    "query": "work from home neighbor drilling",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_wfh_drilling_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=P9k-6H4a8i4",
+    "title": "Footage Of My Neighbors Disturbing The Peace By Drilling The Wall",
+    "targeted": "wave8 (U)",
+    "query": "work from home neighbor drilling",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_baby_monitor_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Z4qODZ1At3Q",
+    "title": "iShowSpeed Makes Baby Cry On Accident & Gets Into Altercation With Parent..",
+    "targeted": "wave8 (U)",
+    "query": "baby monitor crying parent reaction",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_baby_monitor_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Z4qODZ1At3Q",
+    "title": "iShowSpeed Makes Baby Cry On Accident & Gets Into Altercation With Parent..",
+    "targeted": "wave8 (U)",
+    "query": "baby monitor crying parent reaction",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_blindfold_sounds_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=RTpfxaswff4",
+    "title": "Blind vs. Blindfolded - Name That Sound (Ft. Lolo Sitting Pretty)",
+    "targeted": "wave8 (U)",
+    "query": "blindfold sound guessing challenge",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_blindfold_sounds_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=RTpfxaswff4",
+    "title": "Blind vs. Blindfolded - Name That Sound (Ft. Lolo Sitting Pretty)",
+    "targeted": "wave8 (U)",
+    "query": "blindfold sound guessing challenge",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_blindfold_sounds_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=n1m4h79JZso",
+    "title": "Guess the Sound Game | 20 Sounds to Guess",
+    "targeted": "wave8 (U)",
+    "query": "blindfold sound guessing challenge",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_blindfold_sounds_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=n1m4h79JZso",
+    "title": "Guess the Sound Game | 20 Sounds to Guess",
+    "targeted": "wave8 (U)",
+    "query": "blindfold sound guessing challenge",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_camp_owl_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=mmBh9I9k4wc",
+    "title": "Owls Hooting and #hammockcamping",
+    "targeted": "wave8 (U)",
+    "query": "night camping owl hooting headlamp",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_camp_owl_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=mmBh9I9k4wc",
+    "title": "Owls Hooting and #hammockcamping",
+    "targeted": "wave8 (U)",
+    "query": "night camping owl hooting headlamp",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_camp_owl_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Gk8573-HYVk",
+    "title": "Philips SFL3153RH/56 10 Mode High Power LED Head Lamp || Best Head Lamp In India",
+    "targeted": "wave8 (U)",
+    "query": "night camping owl hooting headlamp",
+    "cut": "40%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_camp_owl_2b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=Gk8573-HYVk",
+    "title": "Philips SFL3153RH/56 10 Mode High Power LED Head Lamp || Best Head Lamp In India",
+    "targeted": "wave8 (U)",
+    "query": "night camping owl hooting headlamp",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_dog_under_bed_1a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=bz7rGSDwMFY",
+    "title": "Doggie Hides From Thunder and Lightning.",
+    "targeted": "wave8 (U)",
+    "query": "dog hiding under bed thunder",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_dog_under_bed_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=oSTW0CQuyaU",
+    "title": "Dog hates thunder",
+    "targeted": "wave8 (U)",
+    "query": "dog hiding under bed thunder",
+    "cut": "50%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_cat_doorbell_1b.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=CweUrqzitbg",
+    "title": "Missing cat returns home and rings her owner's doorbell",
+    "targeted": "wave8 (U)",
+    "query": "cat reacts to doorbell",
+    "cut": "60%",
+    "license": "research use; not redistributed"
+  },
+  {
+    "file": "w8_u_reporter_blast_2a.mp4",
+    "source": "youtube",
+    "url": "https://www.youtube.com/watch?v=LYs4QDN5b7I",
+    "title": "GAZA: POWERFUL EXPLOSIONS STARTLE CNN TEAM",
+    "targeted": "wave8 (U)",
+    "query": "reporter startled by explosion live",
+    "cut": "50%",
+    "license": "research use; not redistributed"
   }
 ]
