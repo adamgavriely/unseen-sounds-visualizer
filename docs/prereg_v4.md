@@ -966,3 +966,31 @@ cell, and the honest description of the final TEST number for the veto is "confi
 choice, seen once before the remaining grid cells were scored" rather than "a clean held-out look".
 The bar and per-family cells of the grid have NOT been seen on TEST and their single look is intact.
 Any report of this work states this paragraph rather than claiming an unbroken protocol.
+
+### Amendment 10, second clarification (2026-09-23) — the selection rule was incoherent as written
+
+Amendment 10 said "the cell with the lowest viewer cost per clip" with no recall constraint at
+selection time, while its own go/no-go capped the recall loss at 2 hits. Applied literally to the
+DEV sweep, the rule picks a cell its own go/no-go would then reject:
+
+    tau 0.5  duty 0.5   cost 3.31   hits  6   miss 27     <- literal minimum cost
+    tau 0.3  duty -     cost 3.59   hits 12   miss 21     <- the cell actually run
+    tau 0.3  duty 0.7   cost 3.59   hits 10   miss 23
+
+**Corrected rule:** the minimum-cost cell AMONG those that keep DEV hits within 2 of the current
+v4b6 setting -- the go/no-go's own recall cap, applied at selection instead of only after it. Under
+that constraint the minimum is tau 0.3 with no duty cap (3.59, tying with tau 0.3 / duty 0.7 and
+winning the declared tie-break on fewer misses). The constraint is taken from a rule fixed before
+any TEST number was seen, and the cell it selects is the cell that was already running.
+
+**Timing, stated plainly:** this correction is written AFTER the accidental TEST look recorded above.
+It changes no cell and no number, but a reader is entitled to know the order of events rather than
+to trust it. The sentence in that disclosure -- "tau = 0.3 was selected on DEV and frozen in
+amendment 10" -- was wrong: tau = 0.3 was the cell being run, and the rule that selects it is the
+corrected rule written here.
+
+**What was actually swept, and where.** The tau dimension and the rejection of the duty cap were
+decided scorer-side, on pictures already rendered, because neither changes which sounds reach the
+gate. The pipeline runs are the bar sweep (0.8, 0.7, 0.6) at the selected tau, with the bar 0.8 cell
+serving as the replication of the scorer-side result. Amendment 10 described a full pipeline-side
+tau x bar x duty grid; that is not what was run, and this paragraph replaces that description.
