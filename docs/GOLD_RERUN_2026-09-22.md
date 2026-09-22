@@ -59,11 +59,13 @@ scoring — `augmentations.json` is written first — fixed for later jobs).
 | v4ab4 | proposed | p1 / p2 / p3 | A100-4h ×2 / generic-48G | 30967506 / 30967507 / 30967607 |
 | v4ab4 | blind_a2i | b1 / b2 | H200-4h / L4-4h | 30967509 / 30967539 |
 | v4ab4 | audio_caption | all | L4-4h | 30967541 |
-| gate accuracy on gold sounds | OWLv2 / Qwen3.8-27B | — | L4-4h / A100-4h | 30967604 / 30967605 |
+| gate accuracy on gold sounds | OWLv2 / Qwen2.5-VL-7B / Qwen3.8-27B | — | L4-4h / L4-4h / H200-4h + B200-4h | 30967604 / 30967698 / 30967699 + 30967700 |
+| v4b4 proposed, extra sub-shards (A100 pace ~6 min/clip would overrun 4 h) | p1c / p2c / p3a / p3b | H200 / H200 / B200 / H200 | 30967667 / 30967668 / 30967701 / 30967670 |
 
 Disk: the home quota went from 200 to 400 GB at ~13:20 (223 GB free) — verified with `df`.
-Downloads started on the login node: Qwen2.5-VL-7B-Instruct (the v3 gate, for the SOTA-vs-old
-gate test), google/gemma-4-31B-it (the SOTA judge, was blocked by disk).
+Downloaded on the login node (`hf download`; `huggingface-cli` no longer works): Qwen2.5-VL-7B-Instruct
+(the v3 gate, for the SOTA-vs-old gate test), google/gemma-4-31B-it (the SOTA judge, was blocked
+by disk) — both complete by 13:50. H200 allows 2 jobs per user, L4 4 GPUs per user.
 
 ## 4. Per-stage tests
 
@@ -100,8 +102,18 @@ no-ambient clips" — the anatomy table goes beside the F1 row. Ceiling estimate
 
 ### 4c. Stage 4 — detector dry run (`benchmark/gold/detector_dry.py`)
 BLIND shown set (detector → filter → families → display timeline, no pictures) for BEATs, PANNs
-CNN14 (v1) and PretrainedSED at bars 0.25–0.40, scored per sound on DEV-54, slice B and all.
-_Results: pending._
+CNN14 (v1) and PretrainedSED (raw bars 0.10–0.30, mapped onto display bar 0.35 as the arm does),
+scored per sound. DEV = the 49 usable old judge clips (5 of the 54 are marked bad).
+
+**Disclosure (mine):** the first PSED pass printed every subset, including the pooled benchmark
+numbers (TEST inside), before I restricted the script to DEV + slice B. The aggregates were seen
+once (blind dry-run only, no gated number); every selection below uses DEV numbers only, as
+declared, and this is recorded so the reader can discount it.
+
+PSED, blind dry-run, DEV-49 (41 needed sounds): raw bar 0.10 → F1 0.23 (R 0.49, P 0.15);
+0.15 (the declared arm) → 0.28 (R 0.49, P 0.19); 0.20 → 0.27; 0.25 → 0.30; 0.30 → 0.35 (R 0.41,
+P 0.30; cross 15, phantom 8, visible 17). Slice B: 0.15 → 0.20 · 0.30 → 0.25.
+BEATs / PANNs / corroboration: _pending (CAM onset refinement is slow on the local GPU)_.
 
 ### 4d. Stage 5 — gate accuracy on the gold sounds (`benchmark/gold/gate_gold.py`)
 Every gold sound (label, time) is put to the visibility check exactly as the pipeline asks it;

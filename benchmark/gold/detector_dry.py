@@ -179,7 +179,7 @@ def main():
                        "sliceB": [s for s in rows if clip_path(s + ".mp4") is None and not (s.endswith(".webm"))],
                        "bench103": [s for s in rows if not (clip_path(s + ".mp4") is None and not s.endswith(".webm"))]}
             for sub, stems in subsets.items():
-                if not stems:
+                if not stems or sub not in a.subsets:
                     continue
                 agg = S.aggregate([rows[s] for s in stems])
                 results[f"{det}@{bar}@{sub}"] = agg
