@@ -931,3 +931,38 @@ TEST look; it is applied to both arms.
 visible source and said it was not there. That is not fixed by any rule change here, and the gate is
 already the best of the 15 decision rules swept. It is the residual error of the visibility model,
 and it is reported as such.
+
+### Amendment 13, outcome (2026-09-23): REJECTED by its own rule
+
+    DEV (49 clips)              F1     P      R      FA/clip  cost   hits  miss
+    v4b6 as it stands           0.231  0.169  0.364  1.20     4.12   12    21
+    + cross-detector veto       0.264  0.207  0.364  0.94     3.59   12    21
+    + veto + family-level gate  0.228  0.196  0.273  0.76     3.47    9    24
+    silence                                                   2.69
+
+The cost did fall, 3.59 -> 3.47, but THREE hits were lost where the rule allowed at most one. The
+risk written down before the test -- a visible car silencing Vehicle also suppresses an unseen train
+-- is what happened. The family-level gate is not adopted. The three sibling escapes are real and
+are reported as a known, unfixed error of the pipeline, because the only rule that removes them
+costs more recall than it is worth at beta = 2.
+
+### Disclosure: an unplanned look at TEST (2026-09-23)
+
+The script that produced the table above also printed the same three rows for the 60 TEST clips,
+because the loop was written over both halves. There is no way to un-see them, so they are recorded
+here in full rather than left implicit:
+
+    TEST (60 clips)             F1     P      R      FA/clip  cost   hits  miss
+    v4b6 as it stands           0.301  0.243  0.395  0.88     3.50   17    26
+    + cross-detector veto       0.316  0.288  0.349  0.62     3.10   15    28
+    + veto + family-level gate  0.279  0.279  0.279  0.52     3.10   12    31
+    silence                                                   2.87
+
+**What this costs and what it does not.** No decision was taken on these numbers: amendment 13 was
+already rejected on DEV before they were printed, and the veto's operating point tau = 0.3 was
+selected on DEV and frozen in amendment 10 hours earlier. But the TEST result for the veto is now
+known to the experimenter, so the single-look guarantee for amendment 10 is broken for that one
+cell, and the honest description of the final TEST number for the veto is "confirmatory of a DEV
+choice, seen once before the remaining grid cells were scored" rather than "a clean held-out look".
+The bar and per-family cells of the grid have NOT been seen on TEST and their single look is intact.
+Any report of this work states this paragraph rather than claiming an unbroken protocol.
