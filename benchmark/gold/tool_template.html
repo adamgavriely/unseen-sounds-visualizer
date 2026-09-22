@@ -95,7 +95,7 @@ select{font:inherit;font-size:14px;padding:4px}
   <p class="hint"><kbd>Space</kbd> play/pause · <kbd>[</kbd> mark start of the selected sound at the current time · <kbd>]</kbd> mark its end · <kbd>A</kbd> add a sound · <kbd>N</kbd> next clip (does not mark it done) · <kbd>P</kbd> previous</p>
 
   <div class="card">
-    <h2>1 · Sounds — everything is pre-filled by the system; correct what is wrong</h2>
+    <details open id="soundsPanel"><summary><b>1 · Sounds</b> — click to collapse / expand</summary>
     <p class="hint">Each row is a sound the detector heard, with its time, whether the system judged the source <b>visible</b>, whether the picture alone makes it <b>obvious</b>, its <b>importance</b> (1 background · 2 context · 3 safety/plot), and whether <b>speech/music covers it</b>. Listen once, then: <b>×</b> anything you do not hear, <b>+ add</b> anything missed, and flip any tick that is wrong. Times: fix with <kbd>[</kbd> <kbd>]</kbd> only if clearly off.</p>
     <div id="sounds"></div>
     <div class="nav"><button id="addSound">+ add a sound (A)</button> <button id="orderBtn" class="small" title="sort the sounds by start time">order by time</button>
@@ -103,6 +103,7 @@ select{font:inherit;font-size:14px;padding:4px}
       <button id="showCands" class="small">show the detector's full list again</button></div>
     <div class="cands" id="cands"></div>
     <datalist id="labels"><option value="siren"><option value="vehicle / traffic"><option value="engine"><option value="car horn"><option value="train"><option value="aircraft / helicopter"><option value="dog barking"><option value="bird"><option value="animal"><option value="crowd / people talking (ambient)"><option value="footsteps"><option value="door"><option value="knock"><option value="glass breaking"><option value="explosion / gunshot"><option value="alarm / bell"><option value="phone ringing"><option value="applause"><option value="laughter"><option value="rain"><option value="thunder"><option value="wind"><option value="water / waves"><option value="fire / crackling"><option value="machine / tool"><option value="kitchen sounds"><option value="baby crying"></datalist>
+    </details>
   </div>
 
   <div class="card">
