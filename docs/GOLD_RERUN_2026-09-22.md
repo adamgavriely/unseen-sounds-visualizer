@@ -198,10 +198,24 @@ pet-shop bird; a visible bell while the ringing one is off screen; a visible mac
 remaining false alarms (70 of 80) are detector label errors that both systems share and no gate can
 remove — the measured ceiling of a gate on this detector, and the bottleneck for future work.
 
+**Oracle-label diagnostic (post hoc, labelled; `benchmark/gold/oracle_label.py`).** Remove from
+*both* systems every picture whose label names no sound really present at that moment — i.e. give
+both a perfect detector vocabulary — and the gate's precision advantage triples (ΔP +0.134
+[+0.056, +0.211] on the 109 clips; +0.166 on TEST; +0.200 on mixed clips) while ΔF1 stays +0.029
+[−0.036, +0.091]. So the null F1 is **not** caused by the detector's label errors: it is the
+equal-weight F1 itself. Each picture the gate silences removes one false alarm, and the few it
+silences wrongly remove one hit; F1 treats those as the same size, so the two effects cancel by
+construction. A metric that prices a misleading picture above a missing one (F0.5, or the DHH cost
+model) is where the gate's benefit shows — stated here as a hypothesis for a future
+pre-registration, not as a change of the headline.
+
 **Disclosures.** 49 of the 109 clips (DEV) were used in earlier development; TEST-60 is the clean
 estimate and is reported beside the pooled row. Single annotator. 13 clips came from the VLM
 pre-screen (reported separately: ΔF1 −0.018 there). The caption row was rendered with placeholder
 images (`GEN=placeholder`) because its pictures are never scored or judged — 163 placeholder panels,
-counted and disclosed. 12 gold rows carry labels the depictable filter never draws.
+counted and disclosed. 12 gold rows carry labels the depictable filter never draws. Seven secondary
+rows were declared, so the one marginal secondary (F0.5, lower bound +0.006) would not survive a
+multiplicity correction. Power: 79 needed sounds, so a true ΔF1 of about +0.03 is not excluded —
+the CI is wide, not evidence of equality.
 
 ## 6. PSED arm (v4ab4) and the judge — _running_
