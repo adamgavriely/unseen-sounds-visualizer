@@ -267,8 +267,22 @@ On the 109 benchmark clips only (same population as the per-sound headline): 2.7
 (1.85 vs 2.39) — the price of its false silences; mixed −0.45 [−1.07, +0.16]; no-ambient identical
 (both stay silent). Net: null.
 
-**Gemma-4-31B (SOTA judge) on the same cached descriptions** — jobs 30968686/687, pending; new tags
-(`v4b4_gemma*`) so the Mistral results are untouched. This is the stage-7 "SOTA vs older" row.
+**Gemma-4-31B (SOTA judge) on the same cached descriptions — DONE.** The stage-7 "SOTA vs older"
+row: the same 417 (reference, description) pairs, scored by a 31B judge instead of the 7B one.
+
+| judge | proposed | blind | paired difference |
+|---|---|---|---|
+| Mistral-7B, grounded + rubric (declared) | 2.68 | 2.70 | −0.014 [−0.223, +0.194] |
+| **Gemma-4-31B, grounded + rubric** | 2.43 | 2.48 | **−0.050 [−0.309, +0.209]** |
+| Mistral-7B, grounded only | 3.04 | 3.24 | −0.201 [−0.396, −0.022] |
+| Gemma-4-31B, grounded only | 2.89 | 3.09 | −0.194 [−0.475, +0.094] |
+| Mistral-7B, permissive | 2.77 | 3.35 | −0.576 [−0.856, −0.331] |
+| Gemma-4-31B, permissive | 2.52 | 3.22 | −0.698 [−1.022, −0.381] |
+
+**The two judges agree on every variant, including the size of the permissive judge's bias.** The
+SOTA judge is stricter in absolute terms (2.43 vs 2.68) and gives the same verdict: null under the
+declared rubric-enforced judge, strongly negative under a permissive one that rewards any picture.
+That is a useful robustness result: the judge is not the reason the headline is null.
 
 The permissive column is the pre-existing judge bias, declared and measured on 2026-09-19: the
 judge rewards any picture, so a system that stays silent cannot win; that is why the rubric-enforced
