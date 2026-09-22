@@ -1017,3 +1017,37 @@ bar lands on the global one, clipped at 1.0. The clip matters -- the peak surviv
 confidence, which ranks sounds for the panel's limited rows, and an unclipped Whistle scaled by
 0.8/0.15 would reach 5.3 and outrank every unscaled sound for a slot. The rescaling also makes the
 veto scale with the bar at exactly the ratio frozen earlier, with no new parameter.
+
+## Amendment 14 — the gate's remaining leaks are opened and closed (2026-09-23)
+
+The 18 gate leaks that survive the cross-detector veto were split by their own logged votes
+(gate_votes.json), not by a bucket name. Three are sibling escapes (amendment 13, rejected). The
+other fifteen:
+
+  **11 of 15: the vision model saw nothing, in any stretch.** Thunder x4, Water x2, Bell, Alarm,
+  Vehicle, Fireworks, Shofar -- every stretch returned zero of three "is the source on screen" votes
+  while the annotator ticked the source both visible and obvious. Four of the eleven are Thunder in
+  storm clips and two are Water in an aquarium walk, where the "source" is the sky or a whole tank
+  rather than an object a detector can box; that is a real edge in the visible definition and is
+  reported as one rather than counted as a pure model failure.
+
+  **4 of 15: the every-stretch rule.** The pipeline silences a sound only when the majority sees its
+  source in EVERY stretch, so one dissenting stretch lets the picture through (Gunshot 2/1, Fire
+  2/3/1, Glass 1/2, Siren 1/0/3).
+
+**The looser rule was tested and is exactly cost-neutral.** Silencing when ANY stretch sees the
+source, on DEV:
+
+    silence only if EVERY stretch sees it (current)   hits 12  wrong 46  cost 3.59
+    silence if ANY stretch sees it                    hits 10  wrong 42  cost 3.59
+
+It removes four wrong pictures and loses two hits. At the declared beta = 2 a wrong picture costs 2
+and a lost sound costs 4, so a rule must remove more than two wrong pictures per sound lost; this
+one removes exactly two, and the cost is identical to the second decimal. It is therefore rejected
+on the cost function alone, with nothing fitted.
+
+**Candidate C is closed.** After the veto, what is left of the gate is eleven cases of a vision
+model failing to see a source that a person sees immediately, and one aggregation rule whose
+alternative is worth exactly nothing at the declared trade-off. This is a limitation of the
+visibility models (OWLv2 + the VLM) and of the visible/obvious definition at the edges, and is
+reported as such rather than presented as future work with a proposed fix.
