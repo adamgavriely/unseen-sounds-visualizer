@@ -69,7 +69,8 @@ echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=$
 
 # The judge pass is text-only and fits on a small card; the describe pass is not.
 # Refuse to start on a card too small rather than dying silently mid-load.
-if [ "$PHASE" != "judge" ]; then
+# SMALL_OK=1: a render with no VLM and no diffusion (audio_caption with GEN=placeholder) fits any card
+if [ "$PHASE" != "judge" ] && [ -z "${SMALL_OK:-}" ]; then
 python - <<'PY'
 import torch, sys
 if torch.cuda.is_available():
