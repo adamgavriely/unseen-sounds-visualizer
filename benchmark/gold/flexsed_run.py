@@ -59,13 +59,15 @@ def wav_for(p: Path, work: Path) -> Path:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(_ROOT / "data" / "work" / "flexsed_cache"))
+    ap.add_argument("--shard", type=int, default=0, help="this worker's index; workers take every --of-th clip so parallel jobs do not repeat each other")
+    ap.add_argument("--of", type=int, default=1)
     ap.add_argument("--batch", type=int, default=24, help="queries per forward pass")
     a = ap.parse_args()
     # the FlexSED repo has its own top-level `src` package; this project also has one, and a regular
     # package (ours, with __init__.py) always wins over the repo's namespace package whatever the
     # path order -- so the project root is taken off sys.path for the import
     vocab = json.loads(VOCAB.read_text(encoding="utf-8"))["families"]
-    names = clips()
+    names = clips()[a.shard::max(1, a.of)]
     paths = {n: clip_path(n) for n in names}
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     work = _ROOT / "data" / "work" / "gold_wav_flat"
