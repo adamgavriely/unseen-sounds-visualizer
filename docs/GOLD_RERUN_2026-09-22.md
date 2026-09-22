@@ -494,3 +494,27 @@ class the annotator ticks "obvious" and the reason that question helps.
 gate raises end-to-end F1 by about +0.08 (oracle +0.076 [+0.015, +0.144]), stable across fifteen
 aggregation rules (+0.056 to +0.090); with the current detector that gain is masked by detector
 misses, not by gate errors.*
+
+
+## 11. The union detector end to end (v4b6) — declared, rendering, with one caveat recorded first
+
+FlexSED passed all three rules declared before it ran (amendment 8): **7 of the 9 speech/music-masked
+sounds recovered** (0.006–0.049 → 0.49–0.85), **the same onset-recall as BEATs@0.15 at half the false
+labels**, and a no-ambient false-label rate 1.85× BEATs (limit 2×). Adopted as a union at
+`FLEXSED_BAR = 0.8`; row **v4b6** (STAGES 590) is rendering on all 139 clips for both arms.
+
+**Caveat recorded before the row finishes (dry, picture level, BLIND arm, DEV):**
+
+| detector | P | R | F1 | hits | visible FA | cross | phantom |
+|---|---|---|---|---|---|---|---|
+| BEATs 0.35 | 0.18 | 0.38 | 0.24 | 25 | 19 | 69 | 28 |
+| BEATs 0.35 ∪ FlexSED 0.8 | 0.14 | **0.48** | 0.22 | **31** | 27 | 110 | 49 |
+| BEATs 0.35 ∪ FlexSED 0.7 | 0.10 | 0.48 | 0.17 | 31 | 34 | 147 | 87 |
+
+The union buys six more hits on the DEV half and pays with more phantom pictures, so the **blind**
+arm's F1 falls slightly. Whether the system as a whole improves therefore depends on the gate, which
+is exactly what v4b6 measures: the gate removes visible-source pictures (19 → 27 available to remove)
+but cannot touch cross/phantom ones. The half-oracle result (§9a-bis) says extra phantoms do not
+destroy the gate's benefit while extra *hits* create it, so the prediction is that ΔF1 widens even
+though blind F1 dips — but that is a prediction, written down here before the row is scored.
+FlexSED 0.7 is already ruled out at picture level and is not rendered.
