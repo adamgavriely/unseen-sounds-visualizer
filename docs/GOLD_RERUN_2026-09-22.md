@@ -441,3 +441,42 @@ the "obvious" question (+0.014 ΔF1, +0.06 sensitivity for one extra lost pictur
 video side is near its ceiling: the reviewers' estimate of a no-training ceiling around balanced 0.75
 is consistent with the 0.65–0.70 measured here, and **the remaining headroom is in the detector, not
 in the gate.**
+
+
+### 10e. Video side: declared finished (2 Fables x 3 rounds, unanimous)
+
+Both reviewers say stop, for the same reason: fifteen decision rules span only 0.034 of end-to-end
+ΔF1 with overlapping CIs, and raising the gate's sensitivity from 0.45 to 0.72 makes the end-to-end
+result **worse** (+0.076 → +0.067). That is a property of the task — wrongly silencing a needed
+sound removes a whole picture, wrongly drawing a visible one costs only clutter — so the gate's
+conservative operating point is a finding, not a defect. The one experiment either would still fund
+(OWLv2 crops + Set-of-Mark instance questions) has a declared stop rule: adopt only if oracle ΔF1
+clears +0.12, i.e. outside the sweep's upper CI.
+
+**The free checks a reviewer would ask for, now made.**
+
+*Do the three votes do any work?* Of 240 per-stretch decisions on DEV, 156 are unanimous and **84
+split** (35 %), so the majority rule is not decoration. Pairwise agreement: name~ab 85 %,
+name~describe 84 %, ab~describe 78 %.
+
+*Why does the gate miss visible sources?* Of the 47 visible/obvious DEV sounds it fails to silence,
+**40 are seen by no stretch at all** and only 7 are blocked by the "every stretch must agree" rule.
+So the loss is perception, not aggregation — which is why changing the aggregation rule cannot fix
+it, and why a bigger VLM did not either.
+
+*Per category (shipped rule), the numbers Adam asked for:*
+
+| | DEV: visible silenced | DEV: needed kept | TEST: visible silenced | TEST: needed kept |
+|---|---|---|---|---|
+| mixed | 17/42 (0.40) | 30/34 (0.88) | 12/20 (0.60) | 14/17 (0.82) |
+| unseen | — | 34/39 (0.87) | 0/3 | 21/24 (0.88) |
+| seen-only | 22/44 (0.50) | — | 10/32 (0.31) | — |
+
+Most-missed visible families on DEV: Car alarm 5, Explosion 4, Doorbell 4, Fire 3 — sources that are
+*in* the scene but not visibly acting (an alarm box, a fire off to the side), which is exactly the
+class the annotator ticks "obvious" and the reason that question helps.
+
+**Video-side claim for the thesis:** *given a correct sound list, an open-vocabulary VLM visibility
+gate raises end-to-end F1 by about +0.08 (oracle +0.076 [+0.015, +0.144]), stable across fifteen
+aggregation rules (+0.056 to +0.090); with the current detector that gain is masked by detector
+misses, not by gate errors.*
