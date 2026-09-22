@@ -1,0 +1,20 @@
+{
+ "clip": "mc_flood_scene.mp4",
+ "sounds": [
+  {
+   "label": "Water",
+   "raw": "water",
+   "start": 0.0,
+   "end": 12.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Water",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "water"
+ ]
+}

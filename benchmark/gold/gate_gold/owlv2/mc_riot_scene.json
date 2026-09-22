@@ -1,0 +1,33 @@
+{
+ "clip": "mc_riot_scene.mp4",
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "raw": "Helicopter",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Helicopter",
+   "seen_owl": true
+  },
+  {
+   "label": "Car",
+   "raw": "cars",
+   "start": 11.4,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Vehicle",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "helicopter",
+  "vehicle"
+ ]
+}

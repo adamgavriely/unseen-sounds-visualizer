@@ -1,0 +1,25 @@
+{
+ "clip": "movie_junglebook_95.mp4",
+ "sounds": [
+  {
+   "label": "Roaring cats (lions, tigers)",
+   "raw": "Roaring cats (lions, tigers)",
+   "start": 7.4,
+   "end": 9.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "aircraft",
+  "cattle",
+  "dog",
+  "fire",
+  "helicopter",
+  "pig"
+ ]
+}

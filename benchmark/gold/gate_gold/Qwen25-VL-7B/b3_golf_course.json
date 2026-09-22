@@ -1,0 +1,187 @@
+{
+ "clip": "b3_golf_course.mp4",
+ "sounds": [
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.0,
+   "end": 28.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.666666666666667,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.666666666666667,
+     "end": 9.333333333333334,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.333333333333334,
+     "end": 14.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.0,
+     "end": 18.666666666666668,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.666666666666668,
+     "end": 23.333333333333332,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.333333333333332,
+     "end": 28.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Whack, thwack",
+   "raw": "golf swings / ball strikes",
+   "start": 6.5,
+   "end": 7.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.5,
+     "end": 7.1,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "golf club"
+    }
+   ]
+  },
+  {
+   "label": "Whip",
+   "raw": "Whip",
+   "start": 11.2,
+   "end": 12.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 11.2,
+     "end": 12.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Walk, footsteps",
+   "raw": "Footsteps",
+   "start": 17.1,
+   "end": 19.3,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 17.1,
+     "end": 19.3,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "man on right"
+    }
+   ]
+  },
+  {
+   "label": "Arrow",
+   "raw": "Arrow",
+   "start": 19.7,
+   "end": 20.2,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 19.7,
+     "end": 20.2,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Whack, thwack",
+   "raw": "golf swings / ball strikes",
+   "start": 24.4,
+   "end": 25.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 24.4,
+     "end": 25.1,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "golf club"
+    }
+   ]
+  }
+ ]
+}

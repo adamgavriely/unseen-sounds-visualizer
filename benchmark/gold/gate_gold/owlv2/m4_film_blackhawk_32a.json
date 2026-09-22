@@ -1,0 +1,32 @@
+{
+ "clip": "m4_film_blackhawk_32a.mp4",
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "raw": "helicopter",
+   "start": 0.0,
+   "end": 19.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Helicopter",
+   "seen_owl": true
+  },
+  {
+   "label": "Alarm",
+   "raw": "system alert / alarm",
+   "start": 7.8,
+   "end": 12.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Alarm",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "helicopter"
+ ]
+}

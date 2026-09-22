@@ -1,0 +1,77 @@
+{
+ "clip": "b3_pet_shop.mp4",
+ "sounds": [
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.1,
+   "end": 27.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.1,
+     "end": 4.716666666666666,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "a small bird"
+    },
+    {
+     "start": 4.716666666666666,
+     "end": 9.333333333333332,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "a small bird"
+    },
+    {
+     "start": 9.333333333333332,
+     "end": 13.95,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "a small bird"
+    },
+    {
+     "start": 13.95,
+     "end": 18.566666666666666,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "European robin"
+    },
+    {
+     "start": 18.566666666666666,
+     "end": 23.183333333333334,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "a bird"
+    },
+    {
+     "start": 23.183333333333334,
+     "end": 27.8,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "birds"
+    }
+   ]
+  }
+ ]
+}

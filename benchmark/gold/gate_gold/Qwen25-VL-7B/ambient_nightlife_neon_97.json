@@ -1,0 +1,49 @@
+{
+ "clip": "ambient_nightlife_neon_97.mp4",
+ "sounds": [
+  {
+   "label": "Typing",
+   "raw": "Typing",
+   "start": 0.1,
+   "end": 3.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.1,
+     "end": 3.2,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "man on phone"
+    }
+   ]
+  },
+  {
+   "label": "Computer keyboard",
+   "raw": "Computer keyboard",
+   "start": 0.1,
+   "end": 3.5,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.1,
+     "end": 3.5,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

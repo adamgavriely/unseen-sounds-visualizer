@@ -1,0 +1,56 @@
+{
+ "clip": "w8_kids_fire_alarm_school_1b.mp4",
+ "sounds": [
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 0.0,
+   "end": 15.7,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Alarm",
+   "seen_owl": true
+  },
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 17.6,
+   "end": 17.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Alarm",
+   "seen_owl": true
+  },
+  {
+   "label": "Keys jangling",
+   "raw": "keys jiggle",
+   "start": 5.4,
+   "end": 7.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Clang",
+   "raw": "clank (keychain hits the wall)",
+   "start": 7.7,
+   "end": 8.2,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "alarm"
+ ]
+}

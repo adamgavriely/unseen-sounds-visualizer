@@ -1,0 +1,71 @@
+{
+ "clip": "un_driving_motorcycle_4O3bZRYO.mp4",
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "raw": "Vehicle",
+   "start": 4.8,
+   "end": 10.2,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 4.8,
+     "end": 10.2,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "white car"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "raw": "Laughter",
+   "start": 12.7,
+   "end": 16.6,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 12.7,
+     "end": 16.6,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "boy"
+    }
+   ]
+  },
+  {
+   "label": "Motorcycle",
+   "raw": "motorcycle",
+   "start": 16.2,
+   "end": 20.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 16.2,
+     "end": 20.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "motorcycle"
+    }
+   ]
+  }
+ ]
+}

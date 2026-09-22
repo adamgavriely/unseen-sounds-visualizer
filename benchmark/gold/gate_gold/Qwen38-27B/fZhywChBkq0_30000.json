@@ -1,0 +1,159 @@
+{
+ "clip": "fZhywChBkq0_30000",
+ "sounds": [
+  {
+   "label": "Sound effect",
+   "raw": "Sound effect",
+   "start": 1.1,
+   "end": 1.6,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 1.1,
+     "end": 1.6,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Cheering",
+   "raw": "Cheering",
+   "start": 2.5,
+   "end": 7.9,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.5,
+     "end": 7.9,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "crowd"
+    }
+   ]
+  },
+  {
+   "label": "Sound effect",
+   "raw": "Sound effect",
+   "start": 3.6,
+   "end": 5.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.6,
+     "end": 5.2,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "curtain"
+    }
+   ]
+  },
+  {
+   "label": "Fireworks",
+   "raw": "Fireworks",
+   "start": 5.5,
+   "end": 7.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 5.5,
+     "end": 7.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "raw": "Laughter",
+   "start": 6.9,
+   "end": 7.6,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.9,
+     "end": 7.6,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "the girl with pigtails"
+    }
+   ]
+  },
+  {
+   "label": "Human voice",
+   "raw": "Human voice",
+   "start": 7.7,
+   "end": 8.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 7.7,
+     "end": 8.2,
+     "seen_majority": false,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "the boy in the black"
+    }
+   ]
+  },
+  {
+   "label": "Human voice",
+   "raw": "Human voice",
+   "start": 8.6,
+   "end": 9.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 8.6,
+     "end": 9.1,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "the boy"
+    }
+   ]
+  }
+ ]
+}

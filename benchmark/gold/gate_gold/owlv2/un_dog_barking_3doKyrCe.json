@@ -1,0 +1,44 @@
+{
+ "clip": "un_dog_barking_3doKyrCe.mp4",
+ "sounds": [
+  {
+   "label": "Siren",
+   "raw": "siren (probably fire truck)",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Siren",
+   "seen_owl": false
+  },
+  {
+   "label": "Howl",
+   "raw": "dog howl",
+   "start": 0.0,
+   "end": 12.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Dog",
+   "seen_owl": true
+  },
+  {
+   "label": "Bark",
+   "raw": "barks",
+   "start": 12.0,
+   "end": 13.3,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Dog",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "dog"
+ ]
+}

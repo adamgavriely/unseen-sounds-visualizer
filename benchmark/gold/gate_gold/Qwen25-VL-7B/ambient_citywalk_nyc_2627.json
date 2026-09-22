@@ -1,0 +1,69 @@
+{
+ "clip": "ambient_citywalk_nyc_2627.mp4",
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.3,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.3,
+     "end": 5.533333333333333,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "yellow car"
+    },
+    {
+     "start": 5.533333333333333,
+     "end": 10.766666666666667,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "yellow car on road"
+    },
+    {
+     "start": 10.766666666666667,
+     "end": 15.999999999999998,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Vehicle on road"
+    }
+   ]
+  },
+  {
+   "label": "Clang",
+   "raw": "clank",
+   "start": 3.8,
+   "end": 4.4,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.8,
+     "end": 4.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

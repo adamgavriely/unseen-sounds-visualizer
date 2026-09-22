@@ -1,0 +1,10 @@
+{
+ "clip": "helicopter_ossetia.mp4",
+ "sounds": [],
+ "visible_entities": [
+  "bird",
+  "dog",
+  "helicopter",
+  "vehicle"
+ ]
+}

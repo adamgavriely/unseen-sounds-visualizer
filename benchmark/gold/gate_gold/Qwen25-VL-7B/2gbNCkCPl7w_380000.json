@@ -1,0 +1,93 @@
+{
+ "clip": "2gbNCkCPl7w_380000",
+ "sounds": [
+  {
+   "label": "Rustle",
+   "raw": "Rustle",
+   "start": 1.1,
+   "end": 1.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 1.1,
+     "end": 1.6,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Whistle",
+   "raw": "Whistle",
+   "start": 2.0,
+   "end": 2.3,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.0,
+     "end": 2.5,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Slam",
+   "raw": "Slam",
+   "start": 2.6,
+   "end": 3.1,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.6,
+     "end": 3.1,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Creak",
+   "raw": "Creak",
+   "start": 3.4,
+   "end": 4.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.4,
+     "end": 4.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,77 @@
+{
+ "clip": "b3_aviary_birds.mp4",
+ "sounds": [
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.0,
+   "end": 27.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.633333333333334,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 4.633333333333334,
+     "end": 9.266666666666667,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on branch"
+    },
+    {
+     "start": 9.266666666666667,
+     "end": 13.9,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Bird on branch"
+    },
+    {
+     "start": 13.9,
+     "end": 18.533333333333335,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bird on branch"
+    },
+    {
+     "start": 18.533333333333335,
+     "end": 23.166666666666668,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 23.166666666666668,
+     "end": 27.8,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Bird on branch"
+    }
+   ]
+  }
+ ]
+}

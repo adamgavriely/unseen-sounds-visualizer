@@ -1,0 +1,9 @@
+[Qwen25-VL-7B   majority         dev54 ] clips  42 sounds  67 (seen 34, needed 33) | seen silenced 0.35 | needed kept 0.88 | balanced 0.62 | acc 0.61
+[Qwen25-VL-7B   unanimous        dev54 ] clips  42 sounds  67 (seen 34, needed 33) | seen silenced 0.09 | needed kept 1.00 | balanced 0.54 | acc 0.54
+[Qwen25-VL-7B   majority+obvious dev54 ] clips  42 sounds  67 (seen 34, needed 33) | seen silenced 0.35 | needed kept 0.88 | balanced 0.62 | acc 0.61
+[Qwen25-VL-7B   obvious          dev54 ] clips  42 sounds  67 (seen 34, needed 33) | seen silenced 0.06 | needed kept 1.00 | balanced 0.53 | acc 0.52
+[Qwen38-27B     majority         dev54 ] clips  49 sounds  79 (seen 43, needed 36) | seen silenced 0.37 | needed kept 0.86 | balanced 0.62 | acc 0.59
+[Qwen38-27B     unanimous        dev54 ] clips  49 sounds  79 (seen 43, needed 36) | seen silenced 0.19 | needed kept 0.97 | balanced 0.58 | acc 0.54
+[Qwen38-27B     majority+obvious dev54 ] clips  49 sounds  79 (seen 43, needed 36) | seen silenced 0.40 | needed kept 0.81 | balanced 0.60 | acc 0.58
+[Qwen38-27B     obvious          dev54 ] clips  49 sounds  79 (seen 43, needed 36) | seen silenced 0.33 | needed kept 0.86 | balanced 0.59 | acc 0.57
+[owlv2          owl              dev54 ] clips  49 sounds  79 (seen 43, needed 36) | seen silenced 0.28 | needed kept 0.72 | balanced 0.50 | acc 0.48

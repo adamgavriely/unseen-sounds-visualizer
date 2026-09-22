@@ -1,0 +1,68 @@
+{
+ "clip": "m4_film_1917_33a.mp4",
+ "sounds": [
+  {
+   "label": "Aircraft",
+   "raw": "aircraft",
+   "start": 3.9,
+   "end": 6.7,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Aircraft",
+   "seen_owl": false
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosion",
+   "start": 1.9,
+   "end": 2.4,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Explosion",
+   "seen_owl": true
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosions",
+   "start": 7.2,
+   "end": 9.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Explosion",
+   "seen_owl": true
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosion",
+   "start": 10.8,
+   "end": 11.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Explosion",
+   "seen_owl": true
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosion",
+   "start": 15.0,
+   "end": 15.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Explosion",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "explosion"
+ ]
+}

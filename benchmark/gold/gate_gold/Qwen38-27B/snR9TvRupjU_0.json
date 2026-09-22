@@ -1,0 +1,71 @@
+{
+ "clip": "snR9TvRupjU_0",
+ "sounds": [
+  {
+   "label": "Hiss",
+   "raw": "Hiss",
+   "start": 3.2,
+   "end": 4.3,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.2,
+     "end": 4.3,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "cat"
+    }
+   ]
+  },
+  {
+   "label": "Caterwaul",
+   "raw": "Caterwaul",
+   "start": 4.1,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 4.1,
+     "end": 10.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "orange cat"
+    }
+   ]
+  },
+  {
+   "label": "Hiss",
+   "raw": "Hiss",
+   "start": 9.2,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 9.2,
+     "end": 10.0,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": true,
+     "desc": false,
+     "named": "orange cat"
+    }
+   ]
+  }
+ ]
+}

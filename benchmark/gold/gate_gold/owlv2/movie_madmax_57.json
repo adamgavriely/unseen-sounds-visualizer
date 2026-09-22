@@ -1,0 +1,12 @@
+{
+ "clip": "movie_madmax_57.mp4",
+ "sounds": [],
+ "visible_entities": [
+  "boat",
+  "explosion",
+  "fire",
+  "gunshot",
+  "horse",
+  "saxophone"
+ ]
+}

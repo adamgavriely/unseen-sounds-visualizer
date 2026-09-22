@@ -1,0 +1,101 @@
+{
+ "clip": "un_dog_barking_3doKyrCe.mp4",
+ "sounds": [
+  {
+   "label": "Siren",
+   "raw": "siren (probably fire truck)",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.333333333333333,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.333333333333333,
+     "end": 10.666666666666666,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.666666666666666,
+     "end": 16.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Howl",
+   "raw": "dog howl",
+   "start": 0.0,
+   "end": 12.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 6.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "brown dog"
+    },
+    {
+     "start": 6.0,
+     "end": 12.0,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "brown dog"
+    }
+   ]
+  },
+  {
+   "label": "Bark",
+   "raw": "barks",
+   "start": 12.0,
+   "end": 13.3,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 12.0,
+     "end": 13.3,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "brown dog"
+    }
+   ]
+  }
+ ]
+}

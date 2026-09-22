@@ -1,0 +1,59 @@
+{
+ "clip": "as_fire_alarm_kGKZ0YK4.mp4",
+ "sounds": [
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 0.0,
+   "end": 4.7,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.7,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 9.0,
+   "end": 19.8,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 9.0,
+     "end": 14.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.4,
+     "end": 19.8,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "fire alarm"
+    }
+   ]
+  }
+ ]
+}

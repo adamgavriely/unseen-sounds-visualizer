@@ -288,11 +288,16 @@ def aggregate(rows):
     late = [x for r in rows for x in r["late"]]
     cov = [x for r in rows for x in r["cov"]]
     clean_n = sum(r["clean_n"] for r in rows); clean_ok = sum(r["clean_ok"] for r in rows)
-    return {"hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M, "dontcare": DC, "n_level3": N3, "collisions": CO,
+    fa_clip = float(np.mean([r["visible"] + r["cross"] + r["phantom"] for r in rows])) if rows else 0.0
+    return {"fa_per_clip": fa_clip, "hits": H, "misses": M, "visible": V, "cross": C, "phantom": PH, "dup": D, "needed": H + M, "dontcare": DC, "n_level3": N3, "collisions": CO,
             "P": p, "R": r, "F1": f1, "F0.5": f05, "F2": f2, "P_phantom": pp, "F1_phantom": fp_,
             "wP": wp, "wR": wr, "wF1": wf, "median_late": float(np.median(late)) if late else None,
             "coverage": float(np.mean(cov)) if cov else None, "coverage_hits": float(np.mean([c for c in cov if c > 0])) if any(c > 0 for c in cov) else None,  # cov>0 only for hits
             "clean_acc": clean_ok / clean_n if clean_n else None, "clips": len(rows)}
+
+
+def fa_per_clip(rows):
+    return float(np.mean([r["visible"] + r["cross"] + r["phantom"] for r in rows]))
 
 
 def boot_ci(rows, key="F1", n=2000, seed=0):
@@ -302,14 +307,19 @@ def boot_ci(rows, key="F1", n=2000, seed=0):
 
 
 def paired_ci(rows_a, rows_b, key="F1", n=2000, seed=0):
+    """(difference, lo, hi, P(d>0)) of any aggregate key; raises TypeError when the key is None
+    for these rows (clean_acc on a subset with no clean clip)"""
     """clip bootstrap of the DIFFERENCE a - b: the same resampled clips for both systems
     (amendment 5, docs/prereg_v4.md); rows_a and rows_b are aligned lists (same clips, same order)"""
     rng = np.random.default_rng(seed)
     m = len(rows_a)
+    if aggregate(rows_a)[key] is None or aggregate(rows_b)[key] is None:
+        raise TypeError(key + " is undefined for these clips")
     diffs = []
     for _ in range(n):
         idx = rng.integers(0, m, m)
-        diffs.append(aggregate([rows_a[i] for i in idx])[key] - aggregate([rows_b[i] for i in idx])[key])
+        a = aggregate([rows_a[i] for i in idx])[key]; b = aggregate([rows_b[i] for i in idx])[key]
+        diffs.append((a or 0.0) - (b or 0.0))
     d = aggregate(rows_a)[key] - aggregate(rows_b)[key]
     return d, float(np.percentile(diffs, 2.5)), float(np.percentile(diffs, 97.5)), float(np.mean(np.asarray(diffs) > 0))
 
@@ -400,9 +410,15 @@ def main():
                     both = sorted(st for st in subs[sub] if st in per["proposed"] and st in per[other])
                     if not both:
                         continue
-                    d, lo, hi, pgt = paired_ci([per["proposed"][st] for st in both], [per[other][st] for st in both])
-                    results[f"{sub}|delta_proposed-{other}@late{late}"] = {"dF1": d, "ci": [lo, hi], "p_gt0": pgt, "clips": len(both)}
-                    print(f"   dF1 proposed - {other:13s} = {d:+.3f} [{lo:+.3f}, {hi:+.3f}]  P(d>0)={pgt:.3f}  (paired on {len(both)} clips)")
+                    row = {"clips": len(both)}
+                    for key, fmt in (("F1", "dF1"), ("F0.5", "dF0.5"), ("wF1", "dwF1"), ("P", "dP"), ("R", "dR"), ("fa_per_clip", "dFA/clip"), ("clean_acc", "d clean-acc")):
+                        try:
+                            d, lo, hi, pgt = paired_ci([per["proposed"][st] for st in both], [per[other][st] for st in both], key=key)
+                        except TypeError:
+                            continue
+                        row[fmt] = {"d": d, "ci": [lo, hi], "p_gt0": pgt}
+                        print(f"   {fmt:11s} proposed - {other:13s} = {d:+.3f} [{lo:+.3f}, {hi:+.3f}]  P(d>0)={pgt:.3f}  (paired on {len(both)} clips)")
+                    results[f"{sub}|delta_proposed-{other}@late{late}"] = row
     if PLACEHOLDERS:
         print(f"[pictures] {PLACEHOLDERS} augmentation(s) were placeholder panels (failed generation); counted as shown")
     out = Path(a.out) if a.out else _ROOT / "benchmark" / "gold" / f"per_sound_{a.tag}.json"

@@ -1,0 +1,93 @@
+{
+ "clip": "m4_live_fire_26a.mp4",
+ "sounds": [
+  {
+   "label": "Fire",
+   "raw": "tank fire",
+   "start": 2.1,
+   "end": 3.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.1,
+     "end": 3.6,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Machine gun",
+   "raw": "machinegun",
+   "start": 7.1,
+   "end": 9.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 7.1,
+     "end": 9.3,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "Machine gun"
+    }
+   ]
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosion",
+   "start": 9.8,
+   "end": 10.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 9.8,
+     "end": 10.8,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Machine gun",
+   "raw": "machinegun",
+   "start": 11.4,
+   "end": 13.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 11.4,
+     "end": 13.3,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "machine gun"
+    }
+   ]
+  }
+ ]
+}

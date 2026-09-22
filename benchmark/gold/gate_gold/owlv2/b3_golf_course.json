@@ -1,0 +1,78 @@
+{
+ "clip": "b3_golf_course.mp4",
+ "sounds": [
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.0,
+   "end": 28.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "concept": "Bird",
+   "seen_owl": false
+  },
+  {
+   "label": "Whack, thwack",
+   "raw": "golf swings / ball strikes",
+   "start": 6.5,
+   "end": 7.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Whip",
+   "raw": "Whip",
+   "start": 11.2,
+   "end": 12.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Walk, footsteps",
+   "raw": "Footsteps",
+   "start": 17.1,
+   "end": 19.3,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Arrow",
+   "raw": "Arrow",
+   "start": 19.7,
+   "end": 20.2,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Whack, thwack",
+   "raw": "golf swings / ball strikes",
+   "start": 24.4,
+   "end": 25.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

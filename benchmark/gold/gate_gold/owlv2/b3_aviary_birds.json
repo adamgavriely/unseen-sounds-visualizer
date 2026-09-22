@@ -1,0 +1,20 @@
+{
+ "clip": "b3_aviary_birds.mp4",
+ "sounds": [
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.0,
+   "end": 27.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Bird",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "bird"
+ ]
+}

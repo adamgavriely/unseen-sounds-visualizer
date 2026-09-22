@@ -1,0 +1,69 @@
+{
+ "clip": "birds_forest.mp4",
+ "sounds": [
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "raw": "cock-a-doodle-doo",
+   "start": 10.4,
+   "end": 12.7,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 10.4,
+     "end": 12.7,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Bird",
+   "raw": "birds",
+   "start": 1.3,
+   "end": 18.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 1.3,
+     "end": 6.866666666666666,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 6.866666666666666,
+     "end": 12.433333333333334,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 12.433333333333334,
+     "end": 18.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

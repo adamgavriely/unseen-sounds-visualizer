@@ -1,0 +1,54 @@
+{
+ "clip": "rDju9bBFvA4_80000",
+ "sounds": [
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 1.3,
+   "end": 1.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 2.9,
+   "end": 3.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 5.1,
+   "end": 6.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Alarm",
+   "seen_owl": false
+  },
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 5.7,
+   "end": 5.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

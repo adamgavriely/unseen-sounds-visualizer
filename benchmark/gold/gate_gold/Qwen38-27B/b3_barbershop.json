@@ -1,0 +1,77 @@
+{
+ "clip": "b3_barbershop.mp4",
+ "sounds": [
+  {
+   "label": "Electric shaver, electric razor",
+   "raw": "Electric shaver, electric razor",
+   "start": 0.1,
+   "end": 27.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 0.1,
+     "end": 4.716666666666666,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.716666666666666,
+     "end": 9.333333333333332,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.333333333333332,
+     "end": 13.95,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.95,
+     "end": 18.566666666666666,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 18.566666666666666,
+     "end": 23.183333333333334,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 23.183333333333334,
+     "end": 27.8,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

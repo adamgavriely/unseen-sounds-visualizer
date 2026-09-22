@@ -138,14 +138,14 @@ def decide(stretches, rule: str) -> bool:
     return True
 
 
-def score():
+def score(subsets=("dev54", "test85", "all")):
     judge = set(JUDGE100.read_text().split())
     table = {}
     for arm in sorted(d.name for d in OUT_DIR.iterdir() if d.is_dir()):
         files = list((OUT_DIR / arm).glob("*.json"))
         rules = ["owl"] if arm == "owlv2" else ["majority", "unanimous", "majority+obvious", "obvious"]
         for rule in rules:
-            for sub in ("dev54", "test85", "all"):
+            for sub in subsets:
                 sel = [f for f in files if sub == "all" or ((f.stem in judge) == (sub == "dev54"))]
                 n_needed_kept = n_needed = n_seen_sil = n_seen = 0
                 for f in sel:
@@ -176,13 +176,14 @@ def main():
     ap.add_argument("--owl", action="store_true")
     ap.add_argument("--score", action="store_true")
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--subsets", nargs="+", default=["dev54"], help="rule selection on DEV only; add test85 / all after the freeze")
     a = ap.parse_args()
     if a.model:
         run_vlm(a.model, a.device)
     if a.owl:
         run_owl(a.device)
     if a.score:
-        score()
+        score(tuple(a.subsets))
 
 
 if __name__ == "__main__":

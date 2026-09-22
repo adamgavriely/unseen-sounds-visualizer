@@ -1,0 +1,115 @@
+{
+ "clip": "yszKc4m-W9U_30000",
+ "sounds": [
+  {
+   "label": "Firecracker",
+   "raw": "Firecracker",
+   "start": 1.9,
+   "end": 2.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 1.9,
+     "end": 2.7,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Animal",
+   "raw": "Animal",
+   "start": 0.7,
+   "end": 1.5,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.7,
+     "end": 1.5,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "crow"
+    }
+   ]
+  },
+  {
+   "label": "Aircraft",
+   "raw": "Aircraft",
+   "start": 6.4,
+   "end": 6.9,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.4,
+     "end": 6.9,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "airplane"
+    }
+   ]
+  },
+  {
+   "label": "Machine gun",
+   "raw": "Machine gun",
+   "start": 8.4,
+   "end": 9.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 8.4,
+     "end": 9.7,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "machine gun"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "raw": "Laughter",
+   "start": 9.7,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 9.7,
+     "end": 10.2,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "man"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,56 @@
+{
+ "clip": "8PsvY3TZkBQ_290000",
+ "sounds": [
+  {
+   "label": "Railroad car, train wagon",
+   "raw": "Railroad car, train wagon",
+   "start": 0.0,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": "Train",
+   "seen_owl": true
+  },
+  {
+   "label": "Clickety-clack",
+   "raw": "Clickety-clack",
+   "start": 0.2,
+   "end": 1.2,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": "Train",
+   "seen_owl": true
+  },
+  {
+   "label": "Clickety-clack",
+   "raw": "Clickety-clack",
+   "start": 2.3,
+   "end": 6.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": "Train",
+   "seen_owl": true
+  },
+  {
+   "label": "Steam whistle",
+   "raw": "Steam whistle",
+   "start": 8.3,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "train"
+ ]
+}

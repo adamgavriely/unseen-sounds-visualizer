@@ -1,0 +1,11 @@
+{
+ "clip": "m4_dog_doorbell_cam_30a.mp4",
+ "sounds": [],
+ "visible_entities": [
+  "cat",
+  "dog",
+  "glass",
+  "gunshot",
+  "vehicle"
+ ]
+}

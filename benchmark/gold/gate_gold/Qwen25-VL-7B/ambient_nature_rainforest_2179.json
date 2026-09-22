@@ -1,0 +1,69 @@
+{
+ "clip": "ambient_nature_rainforest_2179.mp4",
+ "sounds": [
+  {
+   "label": "Water",
+   "raw": "Water",
+   "start": 5.4,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 5.4,
+     "end": 10.7,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "water"
+    },
+    {
+     "start": 10.7,
+     "end": 16.0,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "water"
+    }
+   ]
+  },
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 6.5,
+   "end": 16.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.5,
+     "end": 11.25,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 11.25,
+     "end": 16.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

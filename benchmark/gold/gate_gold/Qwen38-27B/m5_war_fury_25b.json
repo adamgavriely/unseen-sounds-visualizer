@@ -1,0 +1,93 @@
+{
+ "clip": "m5_war_fury_25b.mp4",
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "raw": "Helicopter",
+   "start": 0.4,
+   "end": 4.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.4,
+     "end": 4.2,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Artillery fire",
+   "raw": "tank shot",
+   "start": 5.2,
+   "end": 5.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 5.2,
+     "end": 5.8,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "tank"
+    }
+   ]
+  },
+  {
+   "label": "Artillery fire",
+   "raw": "tank shot",
+   "start": 10.1,
+   "end": 10.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 10.1,
+     "end": 10.8,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "tank"
+    }
+   ]
+  },
+  {
+   "label": "Artillery fire",
+   "raw": "tank shot",
+   "start": 14.6,
+   "end": 15.1,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 14.6,
+     "end": 15.1,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "tank main gun"
+    }
+   ]
+  }
+ ]
+}

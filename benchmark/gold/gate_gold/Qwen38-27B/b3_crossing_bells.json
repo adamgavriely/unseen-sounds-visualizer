@@ -1,0 +1,47 @@
+{
+ "clip": "b3_crossing_bells.mp4",
+ "sounds": [
+  {
+   "label": "Train",
+   "raw": "Train",
+   "start": 0.0,
+   "end": 17.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.666666666666667,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "train"
+    },
+    {
+     "start": 5.666666666666667,
+     "end": 11.333333333333334,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "train"
+    },
+    {
+     "start": 11.333333333333334,
+     "end": 17.0,
+     "seen_majority": false,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "train"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,71 @@
+{
+ "clip": "m4_airsoft_24a.mp4",
+ "sounds": [
+  {
+   "label": "Machine gun",
+   "raw": "automatic machinegun",
+   "start": 0.1,
+   "end": 1.6,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.1,
+     "end": 1.6,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosion",
+   "start": 4.3,
+   "end": 4.6,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 4.3,
+     "end": 4.8,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Gunshot, gunfire",
+   "raw": "shots",
+   "start": 1.8,
+   "end": 2.5,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 1.8,
+     "end": 2.5,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "rifle"
+    }
+   ]
+  }
+ ]
+}

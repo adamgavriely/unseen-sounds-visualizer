@@ -1,0 +1,15 @@
+{
+ "clip": "b3_balloon_burner.mp4",
+ "sounds": [],
+ "visible_entities": [
+  "aircraft",
+  "boat",
+  "cattle",
+  "crowd",
+  "fire",
+  "gunshot",
+  "train",
+  "vehicle",
+  "water"
+ ]
+}

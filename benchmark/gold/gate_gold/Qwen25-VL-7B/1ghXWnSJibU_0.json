@@ -1,0 +1,27 @@
+{
+ "clip": "1ghXWnSJibU_0",
+ "sounds": [
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 1.7,
+   "end": 5.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 1.7,
+     "end": 5.0,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Bicycle bell"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,181 @@
+{
+ "clip": "1J_j6c2uQaM_30000",
+ "sounds": [
+  {
+   "label": "Rain",
+   "raw": "Rain",
+   "start": 0.0,
+   "end": 2.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 2.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Thunderstorm",
+   "raw": "Thunderstorm",
+   "start": 1.6,
+   "end": 2.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 1.6,
+     "end": 2.1,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Thunderstorm"
+    }
+   ]
+  },
+  {
+   "label": "Rain",
+   "raw": "Rain",
+   "start": 2.1,
+   "end": 6.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 2.1,
+     "end": 6.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Thunderstorm",
+   "raw": "Thunderstorm",
+   "start": 3.7,
+   "end": 5.9,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.7,
+     "end": 5.9,
+     "seen_majority": false,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Thunderstorm"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "raw": "Laughter",
+   "start": 4.9,
+   "end": 6.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 4.9,
+     "end": 6.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Rain",
+   "raw": "Rain",
+   "start": 6.0,
+   "end": 10.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 6.0,
+     "end": 10.0,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Thunderstorm",
+   "raw": "Thunderstorm",
+   "start": 8.0,
+   "end": 8.6,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 8.0,
+     "end": 8.6,
+     "seen_majority": false,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Thunderstorm"
+    }
+   ]
+  },
+  {
+   "label": "Thunderstorm",
+   "raw": "Thunderstorm",
+   "start": 9.6,
+   "end": 10.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 9.6,
+     "end": 10.1,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

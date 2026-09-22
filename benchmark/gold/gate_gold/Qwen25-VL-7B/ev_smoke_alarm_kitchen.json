@@ -1,0 +1,79 @@
+{
+ "clip": "ev_smoke_alarm_kitchen.mp4",
+ "sounds": [
+  {
+   "label": "Frying (food)",
+   "raw": "Cooking",
+   "start": 0.1,
+   "end": 10.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.1,
+     "end": 5.45,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 5.45,
+     "end": 10.8,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 9.4,
+   "end": 24.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 9.4,
+     "end": 14.533333333333335,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Alarm clock on microwave"
+    },
+    {
+     "start": 14.533333333333335,
+     "end": 19.666666666666668,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Alarm clock on stove"
+    },
+    {
+     "start": 19.666666666666668,
+     "end": 24.8,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Alarm clock"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,20 @@
+{
+ "clip": "b3_crossing_bells.mp4",
+ "sounds": [
+  {
+   "label": "Train",
+   "raw": "Train",
+   "start": 0.0,
+   "end": 17.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Train",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "train"
+ ]
+}

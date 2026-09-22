@@ -1,0 +1,71 @@
+{
+ "clip": "ambient_citywalk_nyc_1689.mp4",
+ "sounds": [
+  {
+   "label": "Vehicle",
+   "raw": "Vehicle",
+   "start": 3.8,
+   "end": 4.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.8,
+     "end": 4.3,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": true,
+     "desc": false,
+     "named": "Vehicle on road"
+    }
+   ]
+  },
+  {
+   "label": "Hammer",
+   "raw": "construction , hammering on metal",
+   "start": 13.7,
+   "end": 16.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 13.7,
+     "end": 16.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Hammer",
+   "raw": "construction , hammering on metal",
+   "start": 8.1,
+   "end": 10.7,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 8.1,
+     "end": 10.7,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

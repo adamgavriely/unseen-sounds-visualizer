@@ -1,0 +1,68 @@
+{
+ "clip": "9NYsJxa4wjA_40000",
+ "sounds": [
+  {
+   "label": "Crying, sobbing",
+   "raw": "Crying, sobbing",
+   "start": 0.0,
+   "end": 2.1,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Slap, smack",
+   "raw": "Slap, smack",
+   "start": 4.3,
+   "end": 4.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Crying, sobbing",
+   "raw": "Crying, sobbing",
+   "start": 4.8,
+   "end": 6.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Insect",
+   "raw": "Insect",
+   "start": 7.0,
+   "end": 8.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Insect",
+   "seen_owl": true
+  },
+  {
+   "label": "Croak",
+   "raw": "Croak",
+   "start": 8.8,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "insect"
+ ]
+}

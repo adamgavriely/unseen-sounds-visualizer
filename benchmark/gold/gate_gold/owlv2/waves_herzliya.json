@@ -1,0 +1,20 @@
+{
+ "clip": "waves_herzliya.webm",
+ "sounds": [
+  {
+   "label": "Water",
+   "raw": "Water",
+   "start": 0.0,
+   "end": 12.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Water",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "water"
+ ]
+}

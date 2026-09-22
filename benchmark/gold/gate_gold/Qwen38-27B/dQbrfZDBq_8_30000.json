@@ -1,0 +1,91 @@
+{
+ "clip": "dQbrfZDBq_8_30000",
+ "sounds": [
+  {
+   "label": "Laughter",
+   "raw": "Laughter",
+   "start": 0.0,
+   "end": 10.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.0,
+     "end": 10.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Fire",
+   "raw": "Fire",
+   "start": 0.0,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "fire"
+    },
+    {
+     "start": 5.0,
+     "end": 10.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "fire"
+    }
+   ]
+  },
+  {
+   "label": "Baby cry, infant cry",
+   "raw": "Baby cry, infant cry",
+   "start": 3.5,
+   "end": 4.5,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.5,
+     "end": 4.5,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

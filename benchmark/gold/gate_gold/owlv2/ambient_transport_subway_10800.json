@@ -1,0 +1,20 @@
+{
+ "clip": "ambient_transport_subway_10800.mp4",
+ "sounds": [
+  {
+   "label": "Train",
+   "raw": "Train",
+   "start": 0.1,
+   "end": 15.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": "Train",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "train"
+ ]
+}

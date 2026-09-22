@@ -1,0 +1,22 @@
+[unanimous] 139 clips, 31 silenced sounds re-shown
+--- bench        [proposed(majority)  ] clips 109 needed  76 | P 0.24 R 0.36 F1 0.29 | hit 27 miss 49 vis 11 cross 50 ph 24
+--- bench        [proposed(unanimous) ] clips 109 needed  76 | P 0.22 R 0.38 F1 0.28 | hit 29 miss 47 vis 20 cross 55 ph 26
+--- bench        [blind_a2i           ] clips 109 needed  76 | P 0.19 R 0.43 F1 0.26 | hit 33 miss 43 vis 31 cross 78 ph 36
+    dF1 unanimous - blind = +0.022 [-0.020, +0.059] P(d>0)=0.856
+--- dev          [proposed(majority)  ] clips  49 needed  33 | P 0.18 R 0.27 F1 0.21 | hit 9 miss 24 vis 8 cross 23 ph 11
+--- dev          [proposed(unanimous) ] clips  49 needed  33 | P 0.16 R 0.27 F1 0.20 | hit 9 miss 24 vis 13 cross 24 ph 11
+--- dev          [blind_a2i           ] clips  49 needed  33 | P 0.13 R 0.33 F1 0.19 | hit 11 miss 22 vis 20 cross 33 ph 18
+    dF1 unanimous - blind = +0.009 [-0.054, +0.060] P(d>0)=0.627
+--- test_bench   [proposed(majority)  ] clips  60 needed  43 | P 0.30 R 0.42 F1 0.35 | hit 18 miss 25 vis 3 cross 27 ph 13
+--- test_bench   [proposed(unanimous) ] clips  60 needed  43 | P 0.27 R 0.47 F1 0.34 | hit 20 miss 23 vis 7 cross 31 ph 15
+--- test_bench   [blind_a2i           ] clips  60 needed  43 | P 0.23 R 0.51 F1 0.32 | hit 22 miss 21 vis 11 cross 45 ph 18
+    dF1 unanimous - blind = +0.028 [-0.025, +0.084] P(d>0)=0.843
+--- all          [proposed(majority)  ] clips 139 needed 104 | P 0.21 R 0.29 F1 0.24 | hit 30 miss 74 vis 12 cross 66 ph 33
+--- all          [proposed(unanimous) ] clips 139 needed 104 | P 0.20 R 0.33 F1 0.25 | hit 34 miss 70 vis 23 cross 78 ph 37
+--- all          [blind_a2i           ] clips 139 needed 104 | P 0.17 R 0.37 F1 0.23 | hit 38 miss 66 vis 39 cross 106 ph 47
+    dF1 unanimous - blind = +0.019 [-0.012, +0.047] P(d>0)=0.891
+--- cat_mixed    [proposed(majority)  ] clips  31 needed  47 | P 0.26 R 0.28 F1 0.27 | hit 13 miss 34 vis 3 cross 25 ph 9
+--- cat_mixed    [proposed(unanimous) ] clips  31 needed  47 | P 0.22 R 0.30 F1 0.25 | hit 14 miss 33 vis 9 cross 31 ph 10
+--- cat_mixed    [blind_a2i           ] clips  31 needed  47 | P 0.20 R 0.34 F1 0.25 | hit 16 miss 31 vis 14 cross 39 ph 13
+    dF1 unanimous - blind = +0.004 [-0.047, +0.044] P(d>0)=0.596
+-> P:\MscProj\benchmark\gold\gate_redecide_v4b4_unanimous.json

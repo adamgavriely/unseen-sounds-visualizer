@@ -1,0 +1,69 @@
+{
+ "clip": "mc_riot_scene.mp4",
+ "sounds": [
+  {
+   "label": "Helicopter",
+   "raw": "Helicopter",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.333333333333333,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "helicopter"
+    },
+    {
+     "start": 5.333333333333333,
+     "end": 10.666666666666666,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.666666666666666,
+     "end": 16.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Car",
+   "raw": "cars",
+   "start": 11.4,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 11.4,
+     "end": 16.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "car"
+    }
+   ]
+  }
+ ]
+}

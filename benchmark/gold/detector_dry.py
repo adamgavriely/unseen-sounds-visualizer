@@ -150,7 +150,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--infer", action="store_true")
     ap.add_argument("--detectors", nargs="+", default=["beats", "psed"])
-    ap.add_argument("--bars", nargs="+", type=float, default=list(BARS))
+    ap.add_argument("--bars", nargs="+", type=float, default=list(BARS), help="display bars (BEATs/PANNs/corr) or PSED raw bars (psed)")
+    ap.add_argument("--subsets", nargs="+", default=["dev54", "sliceB"], help="selection is on DEV only (amendment 5); TEST subsets only after the freeze")
     a = ap.parse_args()
     if a.infer:
         for det in a.detectors:

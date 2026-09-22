@@ -1,0 +1,69 @@
+{
+ "clip": "mYI2QzLce_s_30000",
+ "sounds": [
+  {
+   "label": "Walk, footsteps",
+   "raw": "Walk, footsteps",
+   "start": 0.0,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 0.5,
+   "end": 1.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "raw": "Wind noise (microphone)",
+   "start": 3.1,
+   "end": 4.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 6.3,
+   "end": 7.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 9.0,
+   "end": 10.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "crowd",
+  "vehicle"
+ ]
+}

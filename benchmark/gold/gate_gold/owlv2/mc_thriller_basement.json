@@ -1,0 +1,30 @@
+{
+ "clip": "mc_thriller_basement.mp4",
+ "sounds": [
+  {
+   "label": "Water",
+   "raw": "water pouring",
+   "start": 0.0,
+   "end": 10.9,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Water",
+   "seen_owl": false
+  },
+  {
+   "label": "Water",
+   "raw": "water pouring",
+   "start": 10.9,
+   "end": 18.9,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Water",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

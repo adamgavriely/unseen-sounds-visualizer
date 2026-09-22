@@ -1,0 +1,57 @@
+{
+ "clip": "lx_chainsaw_and_power_tool_W1VYWwY.mp4",
+ "sounds": [
+  {
+   "label": "Chainsaw",
+   "raw": "Chainsaw",
+   "start": 0.0,
+   "end": 17.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.45,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 4.45,
+     "end": 8.9,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 8.9,
+     "end": 13.350000000000001,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "chainsaw"
+    },
+    {
+     "start": 13.350000000000001,
+     "end": 17.8,
+     "seen_majority": false,
+     "obvious": true,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "chainsaw"
+    }
+   ]
+  }
+ ]
+}

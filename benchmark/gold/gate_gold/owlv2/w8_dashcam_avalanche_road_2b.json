@@ -1,0 +1,18 @@
+{
+ "clip": "w8_dashcam_avalanche_road_2b.mp4",
+ "sounds": [
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 3.8,
+   "end": 18.0,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Alarm",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

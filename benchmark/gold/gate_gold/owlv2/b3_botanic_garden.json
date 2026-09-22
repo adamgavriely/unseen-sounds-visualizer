@@ -1,0 +1,54 @@
+{
+ "clip": "b3_botanic_garden.mp4",
+ "sounds": [
+  {
+   "label": "Walk, footsteps",
+   "raw": "Footsteps",
+   "start": 0.0,
+   "end": 13.3,
+   "seen": true,
+   "visible": false,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.3,
+   "end": 19.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "concept": "Bird",
+   "seen_owl": false
+  },
+  {
+   "label": "Squeal",
+   "raw": "Squeal",
+   "start": 23.2,
+   "end": 24.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Rustle",
+   "raw": "something moves on the earth making rattling sound",
+   "start": 24.8,
+   "end": 25.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

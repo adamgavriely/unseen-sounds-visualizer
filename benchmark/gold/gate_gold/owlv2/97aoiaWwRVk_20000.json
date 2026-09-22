@@ -1,0 +1,44 @@
+{
+ "clip": "97aoiaWwRVk_20000",
+ "sounds": [
+  {
+   "label": "Train wheels squealing",
+   "raw": "Train wheels squealing",
+   "start": 0.0,
+   "end": 1.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Train",
+   "seen_owl": true
+  },
+  {
+   "label": "Gasp",
+   "raw": "Gasp",
+   "start": 1.1,
+   "end": 1.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Vehicle horn, car horn, honking",
+   "raw": "Vehicle horn, car horn, honking, toot",
+   "start": 3.9,
+   "end": 4.9,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Vehicle",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "train"
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "clip": "movie_bladerunner_49.mp4",
+ "sounds": [],
+ "visible_entities": [
+  "boat",
+  "cattle",
+  "explosion",
+  "gunshot",
+  "vehicle"
+ ]
+}

@@ -1,0 +1,42 @@
+{
+ "clip": "mv_storm_scene_house.mp4",
+ "sounds": [
+  {
+   "label": "Siren",
+   "raw": "Siren",
+   "start": 2.6,
+   "end": 11.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Siren",
+   "seen_owl": false
+  },
+  {
+   "label": "Ding",
+   "raw": "tornado destruction (building collapsing, metal scraping)",
+   "start": 13.3,
+   "end": 24.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Bell",
+   "seen_owl": false
+  },
+  {
+   "label": "Civil defense siren",
+   "raw": "civil defense siren",
+   "start": 16.9,
+   "end": 20.4,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Siren",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

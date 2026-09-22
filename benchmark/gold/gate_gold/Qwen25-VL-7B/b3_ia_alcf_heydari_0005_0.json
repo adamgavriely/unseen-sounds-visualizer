@@ -1,0 +1,49 @@
+{
+ "clip": "b3_ia_alcf_heydari_0005_0.mp4",
+ "sounds": [
+  {
+   "label": "Whistle",
+   "raw": "whistle",
+   "start": 12.7,
+   "end": 13.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 12.7,
+     "end": 13.3,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Whistle",
+   "raw": "whistle",
+   "start": 26.6,
+   "end": 27.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 26.6,
+     "end": 27.1,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

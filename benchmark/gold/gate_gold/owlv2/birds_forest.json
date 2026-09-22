@@ -1,0 +1,30 @@
+{
+ "clip": "birds_forest.mp4",
+ "sounds": [
+  {
+   "label": "Crowing, cock-a-doodle-doo",
+   "raw": "cock-a-doodle-doo",
+   "start": 10.4,
+   "end": 12.7,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Bird",
+   "seen_owl": false
+  },
+  {
+   "label": "Bird",
+   "raw": "birds",
+   "start": 1.3,
+   "end": 18.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Bird",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

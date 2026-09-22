@@ -1,0 +1,179 @@
+{
+ "clip": "as_explosion_XJ8lc3I6.mp4",
+ "sounds": [
+  {
+   "label": "Gunshot, gunfire",
+   "raw": "Gunshot",
+   "start": 0.0,
+   "end": 2.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 2.2,
+     "seen_majority": false,
+     "obvious": true,
+     "name": false,
+     "ab": null,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Walk, footsteps",
+   "raw": "Footsteps",
+   "start": 2.1,
+   "end": 11.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.1,
+     "end": 6.700000000000001,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 6.700000000000001,
+     "end": 11.3,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Explosion",
+   "raw": "distant explosion / boom",
+   "start": 2.8,
+   "end": 4.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.8,
+     "end": 4.2,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Explosion",
+   "raw": "Explosion",
+   "start": 5.6,
+   "end": 6.7,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 5.6,
+     "end": 6.7,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Gasp",
+   "raw": "Gasp",
+   "start": 6.7,
+   "end": 7.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.7,
+     "end": 7.2,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Explosion",
+   "raw": "distant explosion / boom",
+   "start": 9.1,
+   "end": 10.9,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "stretches": [
+    {
+     "start": 9.1,
+     "end": 10.9,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Machine gun",
+   "raw": "machine gun ",
+   "start": 10.1,
+   "end": 17.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 10.1,
+     "end": 13.95,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "ak-47 rifle"
+    },
+    {
+     "start": 13.95,
+     "end": 17.8,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "AK-47 rifle"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,93 @@
+{
+ "clip": "rDju9bBFvA4_80000",
+ "sounds": [
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 1.3,
+   "end": 1.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 1.3,
+     "end": 1.8,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "brass keys"
+    }
+   ]
+  },
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 2.9,
+   "end": 3.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.9,
+     "end": 3.6,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "metal keys"
+    }
+   ]
+  },
+  {
+   "label": "Alarm",
+   "raw": "Alarm",
+   "start": 5.1,
+   "end": 6.2,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 5.1,
+     "end": 6.2,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Keys jangling",
+   "raw": "Keys jangling",
+   "start": 5.7,
+   "end": 5.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 5.7,
+     "end": 6.2,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "metal key"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,91 @@
+{
+ "clip": "ambient_weather_storm_16200.mp4",
+ "sounds": [
+  {
+   "label": "Rain",
+   "raw": "Rain",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.333333333333333,
+     "seen_majority": true,
+     "obvious": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 5.333333333333333,
+     "end": 10.666666666666666,
+     "seen_majority": true,
+     "obvious": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 10.666666666666666,
+     "end": 16.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": false,
+     "ab": true,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Thunder",
+   "raw": "thunders",
+   "start": 0.3,
+   "end": 7.5,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.3,
+     "end": 7.5,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Thunder",
+   "raw": "thunders",
+   "start": 10.4,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 10.4,
+     "end": 16.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

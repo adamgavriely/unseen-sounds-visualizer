@@ -1,0 +1,11 @@
+{
+ "clip": "dutch_traffic_kids.mp4",
+ "sounds": [],
+ "visible_entities": [
+  "alarm",
+  "gunshot",
+  "horse",
+  "saxophone",
+  "train"
+ ]
+}

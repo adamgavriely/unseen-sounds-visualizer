@@ -1,0 +1,69 @@
+{
+ "clip": "mc_thriller_basement.mp4",
+ "sounds": [
+  {
+   "label": "Water",
+   "raw": "water pouring",
+   "start": 0.0,
+   "end": 10.9,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.45,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 5.45,
+     "end": 10.9,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Water",
+   "raw": "water pouring",
+   "start": 10.9,
+   "end": 18.9,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 10.9,
+     "end": 14.899999999999999,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.899999999999999,
+     "end": 18.9,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

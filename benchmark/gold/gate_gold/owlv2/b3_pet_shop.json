@@ -1,0 +1,20 @@
+{
+ "clip": "b3_pet_shop.mp4",
+ "sounds": [
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.1,
+   "end": 27.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Bird",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "bird"
+ ]
+}

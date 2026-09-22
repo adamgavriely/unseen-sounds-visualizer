@@ -1,0 +1,125 @@
+{
+ "clip": "mYI2QzLce_s_30000",
+ "sounds": [
+  {
+   "label": "Walk, footsteps",
+   "raw": "Walk, footsteps",
+   "start": 0.0,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "crowd of people"
+    },
+    {
+     "start": 5.0,
+     "end": 10.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "people walking on the path"
+    }
+   ]
+  },
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 0.5,
+   "end": 1.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.5,
+     "end": 1.6,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "bicycle bell"
+    }
+   ]
+  },
+  {
+   "label": "Wind noise (microphone)",
+   "raw": "Wind noise (microphone)",
+   "start": 3.1,
+   "end": 4.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 3.1,
+     "end": 4.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 6.3,
+   "end": 7.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.3,
+     "end": 7.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "bicycle bell"
+    }
+   ]
+  },
+  {
+   "label": "Bicycle bell",
+   "raw": "Bicycle bell",
+   "start": 9.0,
+   "end": 10.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 9.0,
+     "end": 10.0,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "bicycle"
+    }
+   ]
+  }
+ ]
+}

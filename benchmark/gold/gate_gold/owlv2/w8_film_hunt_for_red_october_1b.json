@@ -1,0 +1,18 @@
+{
+ "clip": "w8_film_hunt_for_red_october_1b.mp4",
+ "sounds": [
+  {
+   "label": "Sonar",
+   "raw": "Sonar",
+   "start": 0.0,
+   "end": 16.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

@@ -1,0 +1,59 @@
+{
+ "clip": "6sRQnpEEQ0E_390000",
+ "sounds": [
+  {
+   "label": "Firecracker",
+   "raw": "Firecracker",
+   "start": 2.3,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 2.3,
+     "end": 6.15,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "fireworks"
+    },
+    {
+     "start": 6.15,
+     "end": 10.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "fireworks"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "raw": "Laughter",
+   "start": 4.6,
+   "end": 5.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 4.6,
+     "end": 5.7,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

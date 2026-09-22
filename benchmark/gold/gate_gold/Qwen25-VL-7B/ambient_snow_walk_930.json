@@ -1,0 +1,101 @@
+{
+ "clip": "ambient_snow_walk_930.mp4",
+ "sounds": [
+  {
+   "label": "Train",
+   "raw": "train railway",
+   "start": 0.0,
+   "end": 10.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.0,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "Train on the road"
+    },
+    {
+     "start": 5.0,
+     "end": 10.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "Train on the road"
+    }
+   ]
+  },
+  {
+   "label": "Water",
+   "raw": "Water",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 5.333333333333333,
+     "seen_majority": false,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": false,
+     "named": "water fountain"
+    },
+    {
+     "start": 5.333333333333333,
+     "end": 10.666666666666666,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": null,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 10.666666666666666,
+     "end": 16.0,
+     "seen_majority": false,
+     "obvious": null,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Laughter",
+   "raw": "laughter",
+   "start": 8.1,
+   "end": 9.4,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 8.1,
+     "end": 9.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "The woman in black"
+    }
+   ]
+  }
+ ]
+}

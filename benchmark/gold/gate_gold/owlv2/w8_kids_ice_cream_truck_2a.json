@@ -1,0 +1,32 @@
+{
+ "clip": "w8_kids_ice_cream_truck_2a.mp4",
+ "sounds": [
+  {
+   "label": "Ice cream truck, ice cream van",
+   "raw": "Ice cream truck, ice cream van",
+   "start": 0.0,
+   "end": 5.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Ice cream truck, ice cream van",
+   "raw": "ice cream truck, ice cream van",
+   "start": 10.3,
+   "end": 18.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": [
+  "alarm"
+ ]
+}

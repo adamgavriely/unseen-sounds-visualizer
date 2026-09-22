@@ -1,0 +1,42 @@
+{
+ "clip": "ambient_weather_storm_16200.mp4",
+ "sounds": [
+  {
+   "label": "Rain",
+   "raw": "Rain",
+   "start": 0.0,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": "Rain",
+   "seen_owl": false
+  },
+  {
+   "label": "Thunder",
+   "raw": "thunders",
+   "start": 0.3,
+   "end": 7.5,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Thunder",
+   "seen_owl": false
+  },
+  {
+   "label": "Thunder",
+   "raw": "thunders",
+   "start": 10.4,
+   "end": 16.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Thunder",
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

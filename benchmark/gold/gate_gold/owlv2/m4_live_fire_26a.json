@@ -1,0 +1,56 @@
+{
+ "clip": "m4_live_fire_26a.mp4",
+ "sounds": [
+  {
+   "label": "Fire",
+   "raw": "tank fire",
+   "start": 2.1,
+   "end": 3.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Fire",
+   "seen_owl": false
+  },
+  {
+   "label": "Machine gun",
+   "raw": "machinegun",
+   "start": 7.1,
+   "end": 9.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Gunshot",
+   "seen_owl": true
+  },
+  {
+   "label": "Explosion",
+   "raw": "explosion",
+   "start": 9.8,
+   "end": 10.8,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Explosion",
+   "seen_owl": false
+  },
+  {
+   "label": "Machine gun",
+   "raw": "machinegun",
+   "start": 11.4,
+   "end": 13.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Gunshot",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "gunshot"
+ ]
+}

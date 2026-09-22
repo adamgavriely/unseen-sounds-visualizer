@@ -1,0 +1,54 @@
+{
+ "clip": "mc_bridge_scene.mp4",
+ "sounds": [
+  {
+   "label": "Bow-wow",
+   "raw": "bow-wow",
+   "start": 0.1,
+   "end": 2.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Dog",
+   "seen_owl": false
+  },
+  {
+   "label": "Helicopter",
+   "raw": "Helicopter",
+   "start": 9.1,
+   "end": 20.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Helicopter",
+   "seen_owl": false
+  },
+  {
+   "label": "Door",
+   "raw": "car door opens",
+   "start": 2.1,
+   "end": 4.9,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  },
+  {
+   "label": "Door",
+   "raw": "car door closes",
+   "start": 6.0,
+   "end": 7.1,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

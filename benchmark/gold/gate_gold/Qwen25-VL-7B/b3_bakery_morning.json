@@ -1,0 +1,137 @@
+{
+ "clip": "b3_bakery_morning.mp4",
+ "sounds": [
+  {
+   "label": "Door",
+   "raw": "Door",
+   "start": 3.9,
+   "end": 9.3,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.9,
+     "end": 9.3,
+     "seen_majority": false,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "Door"
+    }
+   ]
+  },
+  {
+   "label": "Crumpling, crinkling",
+   "raw": "crumpling",
+   "start": 10.0,
+   "end": 12.1,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 10.0,
+     "end": 12.1,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "dough"
+    }
+   ]
+  },
+  {
+   "label": "Crumpling, crinkling",
+   "raw": "crumpling",
+   "start": 14.1,
+   "end": 15.6,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 14.1,
+     "end": 15.6,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "the dough"
+    }
+   ]
+  },
+  {
+   "label": "Frying (food)",
+   "raw": "Cooking",
+   "start": 17.6,
+   "end": 18.3,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 17.6,
+     "end": 18.3,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Chink, clink",
+   "raw": "Chink, clink",
+   "start": 20.3,
+   "end": 1.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 20.3,
+     "end": 20.8,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "knife cutting dough"
+    }
+   ]
+  },
+  {
+   "label": "Tap",
+   "raw": "placing the ruler (clack / tap)",
+   "start": 20.7,
+   "end": 21.9,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 20.7,
+     "end": 21.9,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "knife on table"
+    }
+   ]
+  }
+ ]
+}

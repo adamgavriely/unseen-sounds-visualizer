@@ -1,0 +1,425 @@
+{
+ "m6_ems_ride_5a2": [
+  {
+   "family": "Keys jangling",
+   "detail": "Keys jangling",
+   "conf": 0.58,
+   "start": 9.1,
+   "end": 11.5
+  },
+  {
+   "family": "Bird",
+   "detail": "Bird",
+   "conf": 0.48,
+   "start": 15.0,
+   "end": 17.8
+  },
+  {
+   "family": "Scissors",
+   "detail": "Scissors",
+   "conf": 0.47,
+   "start": 4.0,
+   "end": 5.8
+  },
+  {
+   "family": "Gunshot",
+   "detail": "Gunshot, gunfire",
+   "conf": 0.39,
+   "start": 2.9,
+   "end": 4.2
+  }
+ ],
+ "m6_earthquake_cam_29a1": [],
+ "m6_earthquake_cam_29a2": [],
+ "m6_school_hall_25a1": [],
+ "m6_school_hall_25a2": [],
+ "m6_school_hall_25b1": [],
+ "m6_school_hall_25b2": [],
+ "m6_night_market_11b1": [],
+ "m6_night_market_11b2": [],
+ "m6_stadium_tunnel_24a1": [],
+ "m6_village_walk_12b1": [
+  {
+   "family": "Cattle",
+   "detail": "Moo",
+   "conf": 0.67,
+   "start": 8.5,
+   "end": 13.5
+  },
+  {
+   "family": "Cat",
+   "detail": "Meow",
+   "conf": 0.49,
+   "start": 9.0,
+   "end": 11.0
+  }
+ ],
+ "m6_beach_walk_events_21b1": [
+  {
+   "family": "Rowboat, canoe, kayak",
+   "detail": "Rowboat, canoe, kayak",
+   "conf": 0.64,
+   "start": 0.0,
+   "end": 18.0
+  },
+  {
+   "family": "Boat",
+   "detail": "Sailboat, sailing ship",
+   "conf": 0.31,
+   "start": 6.0,
+   "end": 15.8
+  }
+ ],
+ "m6_air_show_raw_30a1": [
+  {
+   "family": "Train",
+   "detail": "Train",
+   "conf": 0.64,
+   "start": 12.8,
+   "end": 16.2
+  },
+  {
+   "family": "Crow",
+   "detail": "Crow",
+   "conf": 0.54,
+   "start": 16.2,
+   "end": 18.5
+  },
+  {
+   "family": "Duck",
+   "detail": "Duck",
+   "conf": 0.53,
+   "start": 15.5,
+   "end": 18.5
+  },
+  {
+   "family": "Bird",
+   "detail": "Caw",
+   "conf": 0.52,
+   "start": 16.4,
+   "end": 18.5
+  },
+  {
+   "family": "Aircraft",
+   "detail": "Aircraft",
+   "conf": 0.43,
+   "start": 3.8,
+   "end": 12.8
+  },
+  {
+   "family": "Quack",
+   "detail": "Quack",
+   "conf": 0.42,
+   "start": 15.5,
+   "end": 18.0
+  }
+ ],
+ "m6_air_show_raw_30a2": [
+  {
+   "family": "Aircraft",
+   "detail": "Aircraft",
+   "conf": 0.62,
+   "start": 6.3,
+   "end": 10.8
+  },
+  {
+   "family": "Explosion",
+   "detail": "Explosion",
+   "conf": 0.44,
+   "start": 6.7,
+   "end": 8.2
+  },
+  {
+   "family": "Gunshot",
+   "detail": "Artillery fire",
+   "conf": 0.27,
+   "start": 13.1,
+   "end": 15.0
+  }
+ ],
+ "m6_zoo_walk_13a2": [
+  {
+   "family": "Crow",
+   "detail": "Crow",
+   "conf": 0.84,
+   "start": 10.6,
+   "end": 11.8
+  },
+  {
+   "family": "Owl",
+   "detail": "Owl",
+   "conf": 0.8,
+   "start": 14.7,
+   "end": 18.8
+  },
+  {
+   "family": "Bird",
+   "detail": "Caw",
+   "conf": 0.75,
+   "start": 10.6,
+   "end": 11.8
+  },
+  {
+   "family": "Whale vocalization",
+   "detail": "Whale vocalization",
+   "conf": 0.66,
+   "start": 2.3,
+   "end": 4.0
+  },
+  {
+   "family": "Sonar",
+   "detail": "Sonar",
+   "conf": 0.57,
+   "start": 12.9,
+   "end": 16.8
+  },
+  {
+   "family": "Hoot",
+   "detail": "Hoot",
+   "conf": 0.41,
+   "start": 14.6,
+   "end": 17.8
+  }
+ ],
+ "m6_zoo_walk_13b2": [
+  {
+   "family": "Owl",
+   "detail": "Owl",
+   "conf": 0.64,
+   "start": 0.0,
+   "end": 0.5
+  },
+  {
+   "family": "Bird",
+   "detail": "Bird vocalization, bird call, bird song",
+   "conf": 0.37,
+   "start": 0.3,
+   "end": 15.8
+  }
+ ],
+ "m6_farm_ambience_11b1": [
+  {
+   "family": "Bird",
+   "detail": "Bird",
+   "conf": 0.34,
+   "start": 6.0,
+   "end": 19.8
+  },
+  {
+   "family": "Sheep",
+   "detail": "Sheep",
+   "conf": 0.31,
+   "start": 3.7,
+   "end": 5.2
+  }
+ ],
+ "m6_farm_ambience_11b2": [
+  {
+   "family": "Bird",
+   "detail": "Crowing, cock-a-doodle-doo",
+   "conf": 0.73,
+   "start": 16.4,
+   "end": 17.8
+  },
+  {
+   "family": "Cattle",
+   "detail": "Cattle, bovinae",
+   "conf": 0.27,
+   "start": 8.3,
+   "end": 9.5
+  }
+ ],
+ "m6_workshop_ambience_10b1": [
+  {
+   "family": "Filing (rasp)",
+   "detail": "Filing (rasp)",
+   "conf": 0.96,
+   "start": 8.4,
+   "end": 17.8
+  },
+  {
+   "family": "Wood",
+   "detail": "Wood",
+   "conf": 0.8,
+   "start": 10.3,
+   "end": 17.8
+  },
+  {
+   "family": "Writing",
+   "detail": "Writing",
+   "conf": 0.41,
+   "start": 3.9,
+   "end": 6.0
+  }
+ ],
+ "m6_workshop_ambience_10b2": [
+  {
+   "family": "Bird",
+   "detail": "Bird",
+   "conf": 0.69,
+   "start": 8.0,
+   "end": 11.8
+  },
+  {
+   "family": "Filing (rasp)",
+   "detail": "Filing (rasp)",
+   "conf": 0.31,
+   "start": 1.5,
+   "end": 3.2
+  }
+ ],
+ "m6_stable_ambience_15a1": [
+  {
+   "family": "Typing",
+   "detail": "Typing",
+   "conf": 0.82,
+   "start": 8.1,
+   "end": 13.5
+  },
+  {
+   "family": "Computer keyboard",
+   "detail": "Computer keyboard",
+   "conf": 0.82,
+   "start": 8.2,
+   "end": 13.5
+  },
+  {
+   "family": "Horse",
+   "detail": "Clip-clop",
+   "conf": 0.74,
+   "start": 11.3,
+   "end": 19.2
+  },
+  {
+   "family": "Gears",
+   "detail": "Gears",
+   "conf": 0.42,
+   "start": 0.5,
+   "end": 1.5
+  }
+ ],
+ "m6_stable_ambience_15a2": [
+  {
+   "family": "Horse",
+   "detail": "Clip-clop",
+   "conf": 0.83,
+   "start": 1.9,
+   "end": 18.8
+  },
+  {
+   "family": "Typing",
+   "detail": "Typing",
+   "conf": 0.78,
+   "start": 0.1,
+   "end": 3.5
+  },
+  {
+   "family": "Computer keyboard",
+   "detail": "Computer keyboard",
+   "conf": 0.77,
+   "start": 0.1,
+   "end": 3.5
+  }
+ ],
+ "m6_storm_footage_25a1": [
+  {
+   "family": "Thunder",
+   "detail": "Thunder",
+   "conf": 0.38,
+   "start": 5.2,
+   "end": 7.0
+  },
+  {
+   "family": "Patter",
+   "detail": "Patter",
+   "conf": 0.35,
+   "start": 3.2,
+   "end": 6.0
+  },
+  {
+   "family": "Horse",
+   "detail": "Clip-clop",
+   "conf": 0.3,
+   "start": 1.7,
+   "end": 3.5
+  }
+ ],
+ "m6_storm_footage_25a2": [
+  {
+   "family": "Bee, wasp, etc.",
+   "detail": "Bee, wasp, etc.",
+   "conf": 0.42,
+   "start": 16.0,
+   "end": 18.0
+  },
+  {
+   "family": "Insect",
+   "detail": "Insect",
+   "conf": 0.41,
+   "start": 17.2,
+   "end": 18.0
+  },
+  {
+   "family": "Fly, housefly",
+   "detail": "Fly, housefly",
+   "conf": 0.29,
+   "start": 13.0,
+   "end": 15.2
+  },
+  {
+   "family": "Bicycle",
+   "detail": "Bicycle",
+   "conf": 0.28,
+   "start": 11.5,
+   "end": 12.5
+  }
+ ],
+ "m6_logging_raw_33b2": [
+  {
+   "family": "Crow",
+   "detail": "Crow",
+   "conf": 0.6,
+   "start": 15.9,
+   "end": 16.8
+  },
+  {
+   "family": "Bird",
+   "detail": "Caw",
+   "conf": 0.48,
+   "start": 15.9,
+   "end": 16.8
+  }
+ ],
+ "m6_flood_footage_26b2": [
+  {
+   "family": "Train",
+   "detail": "Train",
+   "conf": 0.52,
+   "start": 4.5,
+   "end": 7.2
+  },
+  {
+   "family": "Mechanical fan",
+   "detail": "Mechanical fan",
+   "conf": 0.37,
+   "start": 10.5,
+   "end": 13.0
+  }
+ ],
+ "m6_demolition_raw_36b1": [
+  {
+   "family": "Sliding door",
+   "detail": "Sliding door",
+   "conf": 0.34,
+   "start": 6.2,
+   "end": 8.2
+  },
+  {
+   "family": "Aircraft",
+   "detail": "Aircraft",
+   "conf": 0.34,
+   "start": 11.1,
+   "end": 12.2
+  }
+ ]
+}

@@ -1,0 +1,143 @@
+{
+ "clip": "b3_botanic_garden.mp4",
+ "sounds": [
+  {
+   "label": "Walk, footsteps",
+   "raw": "Footsteps",
+   "start": 0.0,
+   "end": 13.3,
+   "seen": true,
+   "visible": false,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.433333333333334,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.433333333333334,
+     "end": 8.866666666666667,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 8.866666666666667,
+     "end": 13.300000000000002,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Bird",
+   "raw": "Bird",
+   "start": 0.3,
+   "end": 19.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 0.3,
+     "end": 4.975,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 4.975,
+     "end": 9.65,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.65,
+     "end": 14.325,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 14.325,
+     "end": 19.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Squeal",
+   "raw": "Squeal",
+   "start": 23.2,
+   "end": 24.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 1,
+   "stretches": [
+    {
+     "start": 23.2,
+     "end": 24.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Rustle",
+   "raw": "something moves on the earth making rattling sound",
+   "start": 24.8,
+   "end": 25.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 24.8,
+     "end": 25.7,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

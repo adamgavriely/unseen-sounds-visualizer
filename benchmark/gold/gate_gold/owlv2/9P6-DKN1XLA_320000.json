@@ -1,0 +1,30 @@
+{
+ "clip": "9P6-DKN1XLA_320000",
+ "sounds": [
+  {
+   "label": "Ambulance (siren)",
+   "raw": "Ambulance (siren)",
+   "start": 0.9,
+   "end": 10.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Siren",
+   "seen_owl": false
+  },
+  {
+   "label": "Snicker",
+   "raw": "Snicker",
+   "start": 5.0,
+   "end": 5.8,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": null,
+   "seen_owl": false
+  }
+ ],
+ "visible_entities": []
+}

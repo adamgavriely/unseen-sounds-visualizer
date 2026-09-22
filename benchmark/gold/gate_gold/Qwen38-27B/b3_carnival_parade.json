@@ -1,0 +1,89 @@
+{
+ "clip": "b3_carnival_parade.mp4",
+ "sounds": [
+  {
+   "label": "Whistle",
+   "raw": "Whistle",
+   "start": 6.1,
+   "end": 7.4,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 6.1,
+     "end": 7.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  },
+  {
+   "label": "Drum",
+   "raw": "people drumming",
+   "start": 0.0,
+   "end": 24.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.8,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "drum"
+    },
+    {
+     "start": 4.8,
+     "end": 9.6,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "drum"
+    },
+    {
+     "start": 9.6,
+     "end": 14.4,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "nothing"
+    },
+    {
+     "start": 14.4,
+     "end": 19.2,
+     "seen_majority": false,
+     "obvious": true,
+     "name": true,
+     "ab": false,
+     "desc": false,
+     "named": "drum"
+    },
+    {
+     "start": 19.2,
+     "end": 24.0,
+     "seen_majority": true,
+     "obvious": true,
+     "name": true,
+     "ab": true,
+     "desc": true,
+     "named": "drums"
+    }
+   ]
+  }
+ ]
+}

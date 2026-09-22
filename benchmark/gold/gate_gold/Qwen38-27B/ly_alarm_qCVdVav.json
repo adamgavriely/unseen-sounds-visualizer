@@ -1,0 +1,69 @@
+{
+ "clip": "ly_alarm_qCVdVav.mp4",
+ "sounds": [
+  {
+   "label": "Door",
+   "raw": "Door",
+   "start": 3.8,
+   "end": 4.7,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 3.8,
+     "end": 4.7,
+     "seen_majority": true,
+     "obvious": null,
+     "name": true,
+     "ab": null,
+     "desc": true,
+     "named": "car door"
+    }
+   ]
+  },
+  {
+   "label": "Electric toothbrush",
+   "raw": "Electric toothbrush",
+   "start": 5.2,
+   "end": 18.0,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 5.2,
+     "end": 9.466666666666667,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 9.466666666666667,
+     "end": 13.733333333333334,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    },
+    {
+     "start": 13.733333333333334,
+     "end": 18.000000000000004,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "nothing"
+    }
+   ]
+  }
+ ]
+}

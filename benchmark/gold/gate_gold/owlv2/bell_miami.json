@@ -1,0 +1,33 @@
+{
+ "clip": "bell_miami.webm",
+ "sounds": [
+  {
+   "label": "Bell",
+   "raw": "Bell",
+   "start": 0.2,
+   "end": 14.5,
+   "seen": false,
+   "visible": false,
+   "obvious": false,
+   "importance": 3,
+   "concept": "Bell",
+   "seen_owl": true
+  },
+  {
+   "label": "Vehicle",
+   "raw": "vehicle / traffic",
+   "start": 10.3,
+   "end": 15.4,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 1,
+   "concept": "Vehicle",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "bell",
+  "vehicle"
+ ]
+}

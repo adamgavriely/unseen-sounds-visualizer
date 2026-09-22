@@ -1,0 +1,32 @@
+{
+ "clip": "w8_duel_diner_horn_1a.mp4",
+ "sounds": [
+  {
+   "label": "Aircraft",
+   "raw": "Aircraft",
+   "start": 2.2,
+   "end": 7.9,
+   "seen": true,
+   "visible": true,
+   "obvious": false,
+   "importance": 2,
+   "concept": "Aircraft",
+   "seen_owl": false
+  },
+  {
+   "label": "Engine",
+   "raw": "truck engine",
+   "start": 0.0,
+   "end": 5.1,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "concept": "Vehicle",
+   "seen_owl": true
+  }
+ ],
+ "visible_entities": [
+  "vehicle"
+ ]
+}

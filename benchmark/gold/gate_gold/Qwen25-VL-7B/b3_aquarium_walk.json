@@ -1,0 +1,77 @@
+{
+ "clip": "b3_aquarium_walk.mp4",
+ "sounds": [
+  {
+   "label": "Water",
+   "raw": "water",
+   "start": 0.0,
+   "end": 28.0,
+   "seen": true,
+   "visible": true,
+   "obvious": true,
+   "importance": 2,
+   "stretches": [
+    {
+     "start": 0.0,
+     "end": 4.666666666666667,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "fish swimming"
+    },
+    {
+     "start": 4.666666666666667,
+     "end": 9.333333333333334,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "fish swimming"
+    },
+    {
+     "start": 9.333333333333334,
+     "end": 14.0,
+     "seen_majority": true,
+     "obvious": false,
+     "name": true,
+     "ab": false,
+     "desc": true,
+     "named": "fish swimming"
+    },
+    {
+     "start": 14.0,
+     "end": 18.666666666666668,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "shark"
+    },
+    {
+     "start": 18.666666666666668,
+     "end": 23.333333333333332,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": false,
+     "named": "shark"
+    },
+    {
+     "start": 23.333333333333332,
+     "end": 28.0,
+     "seen_majority": false,
+     "obvious": false,
+     "name": false,
+     "ab": false,
+     "desc": true,
+     "named": "shark"
+    }
+   ]
+  }
+ ]
+}
