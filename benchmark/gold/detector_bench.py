@@ -38,7 +38,8 @@ from benchmark.gold.split import load as load_split
 GOLD = _ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"
 CACHES = {"beats": _ROOT / "benchmark" / "gold" / "beats_fw",
           "panns": _ROOT / "benchmark" / "gold" / "panns_fw",
-          "flexsed": _ROOT / "data" / "work" / "flexsed_cache"}
+          "flexsed": _ROOT / "data" / "work" / "flexsed_cache",
+          "flexsedp": _ROOT / "data" / "work" / "flexsed_prompt_cache"}   # the 3-prompt ensemble
 EARLY, LATE = 0.5, 1.0
 SNAP = False
 MIN_DUR = 0.2

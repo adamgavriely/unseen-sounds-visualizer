@@ -556,3 +556,30 @@ and is reported beside it. Neither is selected after the fact: both were declare
 detector, 0.34 → 0.37 end to end) but the **label precision** of what the detector adds. The two
 verifier families tried earlier (CLAP top-k, Qwen2-Audio yes/no) both failed their declared bars, so
 the open question for future work is a better plausibility filter, not a better detector.
+
+
+## 13. Three more detector ideas, all tested, all rejected by their own declared rules
+
+After v4b6 the two reviewers (2 rounds each) ranked four remaining ideas. Three are now tested; each
+had its decider written down before it ran.
+
+| idea | decider declared first | result | verdict |
+|---|---|---|---|
+| **Hysteresis onset** — start the span where the score rises through 0.5 after being below 0.3, not where it passes the bar | ≥ 4 of the 8 "found but mistimed" sounds convert | onset-recall **0.57 → 0.57** (unchanged at three rise/fall settings) | rejected |
+| **Rank-in-window admission** — a weak detection is kept only if its label is the strongest at its own peak frame, so the bar can drop to 0.5 | onset ≥ 0.62 at ≤ 1.8 false labels/clip | **0.58 at 2.90** | rejected |
+| **Prompt ensemble** — every family asked three ways ("Hammer" / "hammer heard nearby" / "hammer, recorded in the real world"), max-pooled; templates uniform across all 215 families | hammer 0.194 → ≥ 0.5 with ≤ +0.2 false labels/clip | hammer **0.194 → 0.343**, crow 0.032 → 0.061, footsteps 0.695 → 0.711; union unchanged at **0.57**, false labels 1.61 → **1.78** | rejected |
+
+The hysteresis result is informative: the gap between found-recall (0.69) and onset-recall (0.57) is
+**not** late onsets — it is the family being detected in a *different burst* of the same clip. No
+onset rule can close it.
+
+**The remaining idea is speech/music removal**, which both reviewers ranked last and capped at about
++2 sounds. The v4b6 result now argues against spending on it at all: more recall at unchanged label
+precision did not improve the system end to end (§12). Recorded as the declared next step if the
+project revisits the detector, with its go/no-go already written: adopt only at onset-recall ≥ 0.62
+with ≤ 2.0 false labels per clip and no rise on the quiet clips.
+
+**Detector work is therefore closed with a measured conclusion**: recall was raised 0.45 → 0.57 at
+half the earlier false-label cost (FlexSED union, adopted), three further ideas were tested and
+failed their own bars, and the binding constraint is now label precision — for which the two
+verifier families available off the shelf (CLAP top-k, Qwen2-Audio yes/no) had already failed.
