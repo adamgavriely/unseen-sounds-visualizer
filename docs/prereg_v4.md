@@ -1237,3 +1237,21 @@ contains TEST clips: 0.20 was left out of the grid because that table showed it 
 pictures. The cell WITHIN the grid was then selected on DEV alone. The grid's endpoints are
 therefore mildly informed by TEST and the doc's earlier claim that those numbers were not used is
 too strong. Recorded rather than corrected silently.
+
+### A cell that had to be discarded, and the false result it nearly produced (2026-09-23)
+
+The bar 0.7 DEV cell scored 1 hit, zero false alarms and a cost of 2.61 -- BELOW silence at 2.69 --
+which would have been the first cell all day to beat silence on the whole benchmark. It was wrong.
+The job had run the FLUX generator instead of the placeholder (backend "generate" on 97 of its 98
+augmented specs), the generator failed on the card it landed on, and 97 pictures were written with
+no image file. The scorer counts only pictures the panel could actually show, so the cell scored as
+near-silence and "won" by not drawing anything.
+
+Checked across the grid before believing any of it: b8 45/45 placeholder with files, b6 88/88, the
+per-family cell 77/77, bar 0.7 **1/98**. Only bar 0.7 is affected; it is re-run, and its earlier
+numbers are void.
+
+Recorded because the failure mode is the dangerous kind: a broken cell does not look broken in a
+cost table, it looks like a win, and the metric rewards a system that shows nothing on a benchmark
+where most clips should show nothing. Any cell that appears to beat silence is checked for pictures
+that exist before it is believed.
