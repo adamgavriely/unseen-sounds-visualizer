@@ -43,6 +43,7 @@ CACHES = {"beats": _ROOT / "benchmark" / "gold" / "beats_fw",
           "beatsres": _ROOT / "benchmark" / "gold" / "beats_res_fw"}      # BEATs on the speech-removed residual (amendment 7 completeness test)
 EARLY, LATE = 0.5, 1.0
 SNAP = False
+REFINE = False
 MIN_DUR = 0.2
 
 
@@ -139,6 +140,44 @@ def snap_onsets(stem: str, ev, win: float = 2.0):
     return out
 
 
+_RES = {}
+
+
+def refine_onsets(stem: str, ev, win: float = 2.0):
+    """Amendment 12: re-read each detection's ONSET from the speech-removed residual, keeping its
+    label, its family and its existence exactly as the mix decided them. Removing the speech halves
+    the median onset error (0.35 s -> 0.15 s on DEV), and that is a property of the timing, not of
+    the label list -- so unlike the residual VIEW, which failed its rule by buying recall with noise
+    on the quiet clips, this cannot change the false-label count at all. The rule was fixed before
+    it ran: the earliest frame inside [t0 - win, t0 + win] at which the residual's score for that
+    same family crosses half its peak in the window."""
+    if stem not in _RES:
+        p = CACHES["beatsres"] / f"{stem}.npz"
+        if not p.exists():
+            _RES[stem] = None
+        else:
+            z = np.load(p, allow_pickle=False)
+            _RES[stem] = ({str(x): j for j, x in enumerate(z["labels"])},
+                          z["fw"].astype(np.float32), z["times"].astype(np.float64))
+    c = _RES[stem]
+    if c is None:
+        return ev
+    cols, fw, t = c
+    out = []
+    for l, a, b, cf in ev:
+        j = cols.get(l)
+        if j is None:
+            out.append((l, a, b, cf)); continue
+        m = (t >= a - win) & (t <= a + win)
+        if not m.any():
+            out.append((l, a, b, cf)); continue
+        w = fw[m, j]
+        pk = float(w.max())
+        idx = np.flatnonzero(w >= 0.5 * pk) if pk > 0 else np.array([], dtype=int)
+        out.append((l, float(t[m][idx[0]]) if idx.size else a, b, cf))
+    return out
+
+
 def parse(cfg: str):
     """'beats@0.15+flexsed@0.3' -> [('beats', 0.15), ('flexsed', 0.3)]"""
     return [(p.split("@")[0], float(p.split("@")[1])) for p in cfg.split("+")]
@@ -161,6 +200,8 @@ def score(gold, stems, cfg):
             e = [x for x in e if depictable(x[0])]
             if SNAP:
                 e = snap_onsets(stem, e)
+            if REFINE:
+                e = refine_onsets(stem, e)
             ev += e
         if ev is None:
             continue
@@ -202,12 +243,13 @@ def main():
     ap.add_argument("--ranktop", nargs=2, type=float, default=None, metavar=("LOW", "HIGH"), help="spans peaking below HIGH must be the top label at their peak frame")
     ap.add_argument("--hyst", nargs=2, type=float, default=None, metavar=("RISE", "FALL"), help="onset = first frame through RISE after being below FALL")
     ap.add_argument("--low", type=float, default=None, help="absolute hysteresis floor for the span (default bar/2): a lower floor starts the span earlier")
+    ap.add_argument("--refine", action="store_true", help="amendment 12: re-read every onset from the speech-removed residual (labels untouched)")
     ap.add_argument("--snap", action="store_true", help="re-anchor every detection's onset to the nearest novelty peak inside it")
     ap.add_argument("--out", default=str(_ROOT / "benchmark" / "gold" / "detector_bench.json"))
     a = ap.parse_args()
     config.use_v4("59")
-    global SNAP, LOW, HYST
-    SNAP = bool(a.snap); LOW = a.low; HYST = tuple(a.hyst) if a.hyst else None
+    global SNAP, LOW, HYST, REFINE
+    SNAP = bool(a.snap); REFINE = bool(a.refine); LOW = a.low; HYST = tuple(a.hyst) if a.hyst else None
     global RANKTOP
     RANKTOP = tuple(a.ranktop) if a.ranktop else None
     gold = S.load_gold([GOLD])

@@ -881,3 +881,20 @@ crosses half its local peak; if such a frame exists, move the onset there, other
 **Go/no-go, fixed now.** Adopt only if, on DEV, onset-recall rises by at least 0.05 with the false
 labels per clip unchanged (they cannot change) and the median onset error not worse. It then joins
 amendment 10's DEV grid as one cell and shares its single TEST look.
+
+### Amendment 12, outcome (2026-09-23): onset refinement is REJECTED by its own rule
+
+    beats@0.35+flexsed@0.8            onset 0.57  found 0.69  median err 0.18s  false 1.61
+    the same, onsets re-read from the residual   onset 0.54  found 0.71  median err 0.28s  false 1.61
+
+The rule required onset-recall to rise by at least 0.05 with the median error not worse. Onset-recall
+FELL by 0.03 and the median error nearly doubled. The false-label count is identical, 1.61 on both
+rows, which confirms the construction did what it claimed -- no label was added or removed -- and so
+the failure is a clean statement about the timing itself.
+
+Why, for the record: the residual's own detections have good onsets (0.15 s median), but that does
+not transfer to an event detected on the mix. The half-peak rule inside +/- 2 s pulls a start
+backwards into the residual's own noise floor, which is loud precisely where the speech used to be.
+Both speech-removal ideas -- as a view, and as a source of timing -- are therefore closed, on their
+declared rules, and the two reviewers' ranking of the idea as last is upheld even though their stated
+reason (a gain of about two sounds) understated the recall it can reach.
