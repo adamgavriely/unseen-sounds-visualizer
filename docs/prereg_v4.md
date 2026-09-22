@@ -467,7 +467,19 @@ the display bar cannot move PSED's operating point. (d) Scorer subsets are named
 (`bench`, `dev`, `test`, `test_bench`, `sliceB`); each system is scored on the clips it has
 rendered and the paired ΔF1 on the intersection, with the clip counts printed.
 
-**Re-run outcome (v4b4 / v4ab4):** _pending — renders submitted 2026-09-22 13:05 (jobs 30967487–92 and sub-shards)._
+**Re-run outcome (v4b4 / v4ab4), 2026-09-22 17:45 — full detail in `docs/GOLD_RERUN_2026-09-22.md`.**
+v4b4 on the 109 benchmark clips (79 needed sounds), gated vs blind, paired clip bootstrap:
+ΔF1 **+0.028 [−0.022, +0.074]** (primary, null) · ΔP +0.062 [+0.016, +0.109] · ΔR −0.076
+[−0.141, −0.026] · ΔFA/clip −0.55 [−0.78, −0.37] · Δ clean-clip accuracy +0.172 [+0.082, +0.273] ·
+ΔF0.5 +0.052 [+0.006, +0.098] (declared secondary, not promoted) · ΔwF1 +0.006 (null). Versus
+SILENCE ΔF1 +0.290 [+0.199, +0.377]; versus CAPTION +0.031 [−0.019, +0.078]. DEV (49) and TEST (60)
+agree; slice B shows the same false-alarm drop and no F1 gain. Judge (grounded + rubric-enforced):
+2.68 vs 2.70, paired −0.014 [−0.223, +0.194]; by category +0.68 on seen-only clips and −0.55 on
+unseen clips. **Detector arm: PSED not adopted** — gated PSED − gated BEATs ΔF1 −0.007
+[−0.115, +0.098] on the benchmark clips (TEST −0.063, slice B +0.043). **Gate rule unchanged**
+(majority of 3 best on DEV; Qwen3.8-27B ≥ Qwen2.5-VL-7B ≫ OWLv2 at chance). Conclusion as declared:
+the primary endpoint is null; the gate's effect is a significant precision / false-alarm / silence
+gain against a significant recall loss.
 
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 

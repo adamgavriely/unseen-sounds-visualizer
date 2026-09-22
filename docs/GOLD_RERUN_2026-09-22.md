@@ -242,4 +242,40 @@ recall (0.37 vs 0.34 gated) and pays it back in precision (0.23 vs 0.25) and in 
 (0.41 vs 0.55). Consistent with the stage-4 dry run, where PSED's DEV advantage did not survive
 the cross-fit.
 
-## 7. Judge (secondary metric) — _running_
+## 7. Judge (secondary metric, Mistral-7B) — DONE 17:45
+
+All 139 clips × 3 systems described by Qwen3.8-27B and scored 0–4 by Mistral-7B against the
+reference; the declared variant is the **grounded + rubric-enforced** judge (human tag from the
+gold ticks; a non-empty panel on a clip where nothing is missing is capped at 2).
+
+| judge variant | proposed | blind_a2i | audio_caption | paired proposed − blind |
+|---|---|---|---|---|
+| **grounded + rubric (declared)** | **2.68** | 2.70 | 2.51 | **−0.014 [−0.223, +0.194]** (null) |
+| grounded only | 3.04 | 3.24 | 2.75 | −0.201 [−0.396, −0.022] |
+| permissive | 2.77 | 3.35 | 2.96 | −0.576 [−0.856, −0.331] |
+
+By clip category (declared judge): **seen-only clips +0.68 [+0.41, +1.00]** for the gate (2.86 vs
+2.18) — the gate's purpose, confirmed by an independent LLM; **unseen clips −0.55 [−0.94, −0.18]**
+(1.85 vs 2.39) — the price of its false silences; mixed −0.45 [−1.07, +0.16]; no-ambient identical
+(both stay silent). Net: null.
+
+The permissive column is the pre-existing judge bias, declared and measured on 2026-09-19: the
+judge rewards any picture, so a system that stays silent cannot win; that is why the rubric-enforced
+variant is the declared one and the permissive one is reported beside it.
+
+## 8. What Adam gets (summary)
+
+1. **Versus showing nothing (SILENCE), the pipeline is a large, significant win**: per-sound
+   F1 +0.29 [+0.20, +0.38]; the judge agrees.
+2. **Versus the ungated baseline the gate is a precision instrument, not an F1 win**: significantly
+   fewer false alarms (−33 %/clip), 3× fewer pictures of an on-screen source, 1.5× more clips
+   correctly left silent, +0.06 precision — and a significant −0.08 recall. ΔF1 +0.028
+   [−0.022, +0.074] is null, and the oracle diagnostic shows the equal-weight F1 cannot show this
+   trade even with a perfect detector.
+3. **Every model choice was tested against an older/alternative one and every pre-registered rule
+   was applied**: detector BEATs vs PretrainedSED (SOTA) vs PANNs (v1) vs two-detector
+   corroboration → BEATs stays (cross-fit); gate Qwen3.8-27B vs Qwen2.5-VL-7B vs OWLv2 → 27B stays,
+   majority-of-3 stays; judge rubric-enforced vs permissive → both reported.
+4. **Open, honest limitations**: single annotator; 49 of 109 clips seen during development (TEST-60
+   reported separately and agrees); 79 needed sounds limits power; detector label errors dominate
+   the remaining false alarms and are the bottleneck to fix next.
