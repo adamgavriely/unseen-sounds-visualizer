@@ -63,6 +63,7 @@ def main():
     ap.add_argument("--shard", type=int, default=0, help="this worker's index; workers take every --of-th clip so parallel jobs do not repeat each other")
     ap.add_argument("--of", type=int, default=1)
     ap.add_argument("--batch", type=int, default=24, help="queries per forward pass")
+    ap.add_argument("--clip-dir", default=None, help="score this folder of clips instead of the gold set (amendment 11: the AudioSet calibration set)")
     a = ap.parse_args()
     # the FlexSED repo has its own top-level `src` package; this project also has one, and a regular
     # package (ours, with __init__.py) always wins over the repo's namespace package whatever the
@@ -78,8 +79,14 @@ def main():
         n_t = len(TEMPLATES)
     else:
         queries = list(vocab); n_t = 1
-    names = clips()[a.shard::max(1, a.of)]
-    paths = {n: clip_path(n) for n in names}
+    if a.clip_dir:
+        d = Path(a.clip_dir)
+        allp = sorted(p for p in d.iterdir() if p.suffix.lower() in (".mp4", ".wav", ".mkv", ".webm", ".m4a"))
+        names = [p.name for p in allp[a.shard::max(1, a.of)]]
+        paths = {p.name: p for p in allp if p.name in set(names)}
+    else:
+        names = clips()[a.shard::max(1, a.of)]
+        paths = {n: clip_path(n) for n in names}
     out = Path(a.out); out.mkdir(parents=True, exist_ok=True)
     work = _ROOT / "data" / "work" / "gold_wav_flat"
     wavs = {n: (wav_for(p, work) if p else None) for n, p in paths.items()}
