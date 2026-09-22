@@ -1,0 +1,4693 @@
+{
+ "w8_baby_thunder_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Thunder",
+    "family": "Thunder",
+    "conf": 0.82,
+    "start": 2.5,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunderstorm",
+    "family": "Thunder",
+    "conf": 0.79,
+    "start": 2.5,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.71,
+    "start": 2.9,
+    "end": 9.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cat",
+    "family": "Cat",
+    "conf": 0.36,
+    "start": 0.1,
+    "end": 0.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.32,
+    "start": 15.5,
+    "end": 17.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.29,
+    "start": 4.2,
+    "end": 6.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Raindrop",
+    "family": "Rain",
+    "conf": 0.26,
+    "start": 6.7,
+    "end": 8.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Baby cry, infant cry",
+    "family": "Baby cry, infant cry",
+    "conf": 0.27,
+    "start": 0.6,
+    "end": 0.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: visible\n8: not visible"
+ },
+ "w8_baby_thunder_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_baby_thunder_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Thunder",
+    "family": "Thunder",
+    "conf": 0.64,
+    "start": 10.2,
+    "end": 12.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunderstorm",
+    "family": "Thunder",
+    "conf": 0.6,
+    "start": 10.2,
+    "end": 12.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.54,
+    "start": 8.8,
+    "end": 11.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_bcs_bagman_ambush_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_bcs_bagman_ambush_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_bcs_bagman_ambush_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Horse",
+    "family": "Horse",
+    "conf": 0.33,
+    "start": 4.6,
+    "end": 5.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Skidding",
+    "family": "Vehicle",
+    "conf": 0.54,
+    "start": 11.1,
+    "end": 14.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.49,
+    "start": 10.2,
+    "end": 16.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.41,
+    "start": 10.2,
+    "end": 15.0,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Race car, auto racing",
+    "family": "Vehicle",
+    "conf": 0.33,
+    "start": 12.7,
+    "end": 13.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: not visible\n5: visible"
+ },
+ "w8_bcs_bagman_ambush_2b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Drill",
+    "family": "Drill",
+    "conf": 0.53,
+    "start": 12.4,
+    "end": 13.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Tools",
+    "family": "Tools",
+    "conf": 0.47,
+    "start": 11.7,
+    "end": 13.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Power tool",
+    "family": "Power tool",
+    "conf": 0.31,
+    "start": 12.3,
+    "end": 13.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible"
+ },
+ "w8_bodycam_breach_dog_2a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.73,
+    "start": 2.2,
+    "end": 4.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Purr",
+    "family": "Cat",
+    "conf": 0.65,
+    "start": 9.2,
+    "end": 13.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cat",
+    "family": "Cat",
+    "conf": 0.4,
+    "start": 8.2,
+    "end": 10.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.37,
+    "start": 15.8,
+    "end": 16.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Fixed-wing aircraft, airplane",
+    "family": "Aircraft",
+    "conf": 0.28,
+    "start": 15.8,
+    "end": 16.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: visible\n5: visible"
+ },
+ "w8_bodycam_domestic_knock_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Glass",
+    "family": "Glass",
+    "conf": 0.42,
+    "start": 4.3,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Breaking",
+    "family": "Glass",
+    "conf": 0.5,
+    "start": 5.6,
+    "end": 7.0,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Slam",
+    "family": "Door",
+    "conf": 0.27,
+    "start": 0.3,
+    "end": 1.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: visible"
+ },
+ "w8_bodycam_domestic_knock_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Slam",
+    "family": "Door",
+    "conf": 0.28,
+    "start": 7.0,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_bodycam_domestic_knock_2a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Fowl",
+    "family": "Bird",
+    "conf": 0.58,
+    "start": 9.0,
+    "end": 11.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gobble",
+    "family": "Gobble",
+    "conf": 0.52,
+    "start": 9.0,
+    "end": 11.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Maraca",
+    "family": "Maraca",
+    "conf": 0.5,
+    "start": 6.2,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Turkey",
+    "family": "Turkey",
+    "conf": 0.48,
+    "start": 9.0,
+    "end": 11.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Water",
+    "family": "Water",
+    "conf": 0.34,
+    "start": 14.3,
+    "end": 15.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fire",
+    "family": "Fire",
+    "conf": 0.32,
+    "start": 12.2,
+    "end": 13.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.65,
+    "start": 8.1,
+    "end": 10.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Bow-wow",
+    "family": "Dog",
+    "conf": 0.5,
+    "start": 8.1,
+    "end": 10.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible\n4: not visible\n5: visible\n6: not visible\n7: not visible\n8: not visible"
+ },
+ "w8_bodycam_foot_chase_dog_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.85,
+    "start": 7.0,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.66,
+    "start": 7.0,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.66,
+    "start": 7.0,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fly, housefly",
+    "family": "Fly, housefly",
+    "conf": 0.32,
+    "start": 4.3,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.31,
+    "start": 10.0,
+    "end": 12.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.27,
+    "start": 7.0,
+    "end": 7.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Mosquito",
+    "family": "Mosquito",
+    "conf": 0.26,
+    "start": 4.2,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible"
+ },
+ "w8_bodycam_foot_chase_dog_1b": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.71,
+    "start": 3.6,
+    "end": 5.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.49,
+    "start": 4.0,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.4,
+    "start": 3.6,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.32,
+    "start": 5.5,
+    "end": 7.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.27,
+    "start": 3.6,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Run",
+    "family": "Footsteps",
+    "conf": 0.67,
+    "start": 2.8,
+    "end": 4.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible"
+ },
+ "w8_bodycam_foot_chase_dog_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.7,
+    "start": 0.7,
+    "end": 3.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fixed-wing aircraft, airplane",
+    "family": "Aircraft",
+    "conf": 0.51,
+    "start": 0.0,
+    "end": 3.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft engine",
+    "family": "Aircraft",
+    "conf": 0.51,
+    "start": 0.8,
+    "end": 3.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.86,
+    "start": 0.8,
+    "end": 16.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "w8_bodycam_foot_chase_dog_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.45,
+    "start": 1.0,
+    "end": 16.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "w8_bodycam_house_alarm_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_bodycam_house_alarm_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_bodycam_house_alarm_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Chopping (food)",
+    "family": "Cooking",
+    "conf": 0.27,
+    "start": 6.6,
+    "end": 8.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_boxing_ringside_bell_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_boxing_ringside_bell_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_cat_knock_door_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.26,
+    "start": 0.1,
+    "end": 0.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Cat",
+    "family": "Cat",
+    "conf": 0.37,
+    "start": 3.8,
+    "end": 4.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_cat_knock_door_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Printer",
+    "family": "Printer",
+    "conf": 0.56,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_chaser_hail_siren_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Bicycle",
+    "family": "Bicycle",
+    "conf": 0.52,
+    "start": 3.9,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.38,
+    "start": 6.5,
+    "end": 7.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.36,
+    "start": 6.6,
+    "end": 7.0,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.33,
+    "start": 3.5,
+    "end": 5.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: visible"
+ },
+ "w8_chaser_hail_siren_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Frog",
+    "family": "Frog",
+    "conf": 0.87,
+    "start": 1.0,
+    "end": 19.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Croak",
+    "family": "Croak",
+    "conf": 0.54,
+    "start": 5.0,
+    "end": 11.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_dashcam_ambulance_behind_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Shofar",
+    "family": "Shofar",
+    "conf": 0.82,
+    "start": 2.0,
+    "end": 5.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Whale vocalization",
+    "family": "Whale vocalization",
+    "conf": 0.58,
+    "start": 10.6,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.34,
+    "start": 17.9,
+    "end": 19.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.87,
+    "start": 0.2,
+    "end": 10.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.86,
+    "start": 0.2,
+    "end": 10.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.85,
+    "start": 0.2,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.81,
+    "start": 1.9,
+    "end": 10.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.67,
+    "start": 12.5,
+    "end": 19.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.34,
+    "start": 17.9,
+    "end": 19.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Truck",
+    "family": "Vehicle",
+    "conf": 0.27,
+    "start": 13.1,
+    "end": 14.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: not visible\n5: visible\n6: visible\n7: not visible\n8: visible\n9: not visible\n10: visible"
+ },
+ "w8_dashcam_ambulance_behind_2a": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.34,
+    "start": 12.5,
+    "end": 15.0,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_dashcam_avalanche_road_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.52,
+    "start": 2.5,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Helicopter",
+    "family": "Helicopter",
+    "conf": 0.4,
+    "start": 8.0,
+    "end": 10.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.31,
+    "start": 2.5,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ice cream truck, ice cream van",
+    "family": "Ice cream truck, ice cream van",
+    "conf": 0.31,
+    "start": 7.0,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Horse",
+    "family": "Horse",
+    "conf": 0.27,
+    "start": 5.9,
+    "end": 7.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.26,
+    "start": 2.5,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible"
+ },
+ "w8_dashcam_avalanche_road_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Car alarm",
+    "family": "Alarm",
+    "conf": 0.95,
+    "start": 5.4,
+    "end": 16.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.77,
+    "start": 12.1,
+    "end": 16.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.68,
+    "start": 12.9,
+    "end": 16.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.63,
+    "start": 12.5,
+    "end": 16.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.5,
+    "start": 14.1,
+    "end": 15.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.4,
+    "start": 3.8,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Buzzer",
+    "family": "Alarm",
+    "conf": 0.33,
+    "start": 16.2,
+    "end": 17.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.32,
+    "start": 4.0,
+    "end": 5.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.29,
+    "start": 3.8,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.28,
+    "start": 3.8,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible\n8: not visible\n9: not visible\n10: not visible"
+ },
+ "w8_dashcam_crossing_horn_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Train horn",
+    "family": "Train",
+    "conf": 0.87,
+    "start": 0.1,
+    "end": 18.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train whistle",
+    "family": "Train",
+    "conf": 0.36,
+    "start": 18.0,
+    "end": 18.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.27,
+    "start": 14.1,
+    "end": 15.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.95,
+    "start": 0.1,
+    "end": 18.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.93,
+    "start": 1.3,
+    "end": 18.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.92,
+    "start": 1.3,
+    "end": 18.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Clickety-clack",
+    "family": "Train",
+    "conf": 0.59,
+    "start": 13.8,
+    "end": 18.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.57,
+    "start": 0.2,
+    "end": 17.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Train wheels squealing",
+    "family": "Train",
+    "conf": 0.46,
+    "start": 15.5,
+    "end": 17.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: not visible\n5: visible\n6: visible\n7: visible\n8: not visible\n9: not visible"
+ },
+ "w8_dashcam_crossing_horn_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle horn, car horn, honking",
+    "family": "Vehicle",
+    "conf": 0.67,
+    "start": 7.2,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Toot",
+    "family": "Vehicle",
+    "conf": 0.59,
+    "start": 6.7,
+    "end": 9.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train horn",
+    "family": "Train",
+    "conf": 0.27,
+    "start": 11.8,
+    "end": 14.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.27,
+    "start": 11.8,
+    "end": 14.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.74,
+    "start": 5.8,
+    "end": 15.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.42,
+    "start": 6.0,
+    "end": 8.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible\n4: visible\n5: not visible\n6: not visible"
+ },
+ "w8_dashcam_hail_thunder_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.74,
+    "start": 2.2,
+    "end": 5.0,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.67,
+    "start": 2.2,
+    "end": 5.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "w8_dashcam_hail_thunder_1b": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.42,
+    "start": 18.2,
+    "end": 18.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_dashcam_sonic_boom_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.76,
+    "start": 7.5,
+    "end": 10.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.53,
+    "start": 9.8,
+    "end": 14.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Stomach rumble",
+    "family": "Stomach rumble",
+    "conf": 0.51,
+    "start": 4.0,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Motorcycle",
+    "family": "Vehicle",
+    "conf": 0.4,
+    "start": 7.5,
+    "end": 9.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.39,
+    "start": 9.6,
+    "end": 11.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Burst, pop",
+    "family": "Burst, pop",
+    "conf": 0.36,
+    "start": 11.8,
+    "end": 14.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.27,
+    "start": 6.7,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.75,
+    "start": 0.3,
+    "end": 2.0,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible\n8: not visible"
+ },
+ "w8_dashcam_sonic_boom_1b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.59,
+    "start": 11.5,
+    "end": 13.2,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.52,
+    "start": 0.8,
+    "end": 1.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.34,
+    "start": 11.0,
+    "end": 13.2,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Burst, pop",
+    "family": "Burst, pop",
+    "conf": 0.29,
+    "start": 11.0,
+    "end": 12.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: visible"
+ },
+ "w8_dashcam_sonic_boom_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_dashcam_tornado_siren_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.6,
+    "start": 8.0,
+    "end": 14.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.32,
+    "start": 8.4,
+    "end": 10.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_dashcam_tornado_siren_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.56,
+    "start": 6.2,
+    "end": 13.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.37,
+    "start": 6.4,
+    "end": 8.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "w8_dashcam_tornado_siren_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whale vocalization",
+    "family": "Whale vocalization",
+    "conf": 0.82,
+    "start": 0.1,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.46,
+    "start": 6.1,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Civil defense siren",
+    "family": "Siren",
+    "conf": 0.43,
+    "start": 6.1,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.28,
+    "start": 16.0,
+    "end": 16.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "w8_dashcam_tornado_siren_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Civil defense siren",
+    "family": "Siren",
+    "conf": 0.9,
+    "start": 18.7,
+    "end": 19.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.85,
+    "start": 18.8,
+    "end": 19.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.71,
+    "start": 0.1,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.65,
+    "start": 0.0,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.62,
+    "start": 0.0,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.28,
+    "start": 0.0,
+    "end": 0.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible"
+ },
+ "w8_dashcam_train_horn_night_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.42,
+    "start": 0.8,
+    "end": 3.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.26,
+    "start": 4.4,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.25,
+    "start": 1.2,
+    "end": 3.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.64,
+    "start": 0.1,
+    "end": 18.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.27,
+    "start": 10.5,
+    "end": 11.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: visible\n4: not visible\n5: not visible"
+ },
+ "w8_dashcam_train_horn_night_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.28,
+    "start": 15.4,
+    "end": 17.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.59,
+    "start": 0.3,
+    "end": 10.0,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.46,
+    "start": 5.2,
+    "end": 9.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "w8_dashcam_train_horn_night_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.52,
+    "start": 5.0,
+    "end": 10.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.47,
+    "start": 6.6,
+    "end": 10.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Power windows, electric windows",
+    "family": "Power windows, electric windows",
+    "conf": 0.37,
+    "start": 9.8,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_dashcam_train_horn_night_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.44,
+    "start": 0.0,
+    "end": 1.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle horn, car horn, honking",
+    "family": "Vehicle",
+    "conf": 0.44,
+    "start": 15.4,
+    "end": 17.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train horn",
+    "family": "Train",
+    "conf": 0.29,
+    "start": 15.4,
+    "end": 17.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_deer_rut_hide_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Moo",
+    "family": "Cattle",
+    "conf": 0.6,
+    "start": 8.4,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cattle, bovinae",
+    "family": "Cattle",
+    "conf": 0.59,
+    "start": 8.2,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_deer_rut_hide_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Moo",
+    "family": "Cattle",
+    "conf": 0.85,
+    "start": 4.8,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cattle, bovinae",
+    "family": "Cattle",
+    "conf": 0.84,
+    "start": 4.8,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_deer_rut_hide_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Pour",
+    "family": "Water",
+    "conf": 0.68,
+    "start": 8.8,
+    "end": 15.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Boat, Water vehicle",
+    "family": "Boat",
+    "conf": 0.45,
+    "start": 0.8,
+    "end": 2.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rowboat, canoe, kayak",
+    "family": "Rowboat, canoe, kayak",
+    "conf": 0.32,
+    "start": 0.0,
+    "end": 2.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.31,
+    "start": 0.8,
+    "end": 2.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Stream",
+    "family": "Water",
+    "conf": 0.28,
+    "start": 2.6,
+    "end": 4.2,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible"
+ },
+ "w8_deer_rut_hide_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_dog_fireworks_window_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Jackhammer",
+    "family": "Jackhammer",
+    "conf": 0.83,
+    "start": 3.9,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Pulleys",
+    "family": "Pulleys",
+    "conf": 0.44,
+    "start": 4.5,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ratchet, pawl",
+    "family": "Ratchet, pawl",
+    "conf": 0.29,
+    "start": 4.5,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_dog_fireworks_window_2a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Firecracker",
+    "family": "Fireworks",
+    "conf": 0.49,
+    "start": 0.3,
+    "end": 7.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Fireworks",
+    "family": "Fireworks",
+    "conf": 0.95,
+    "start": 0.2,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_dog_howl_ambulance_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.86,
+    "start": 0.3,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.76,
+    "start": 0.3,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.75,
+    "start": 0.3,
+    "end": 6.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.69,
+    "start": 0.1,
+    "end": 2.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Wail, moan",
+    "family": "Wail, moan",
+    "conf": 0.42,
+    "start": 6.7,
+    "end": 8.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Howl",
+    "family": "Dog",
+    "conf": 0.72,
+    "start": 2.6,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.58,
+    "start": 2.6,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Canidae, dogs, wolves",
+    "family": "Dog",
+    "conf": 0.37,
+    "start": 2.5,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.36,
+    "start": 10.0,
+    "end": 14.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: visible\n5: not visible\n6: visible\n7: not visible\n8: visible\n9: visible"
+ },
+ "w8_dog_howl_ambulance_2a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Cat",
+    "family": "Cat",
+    "conf": 0.76,
+    "start": 15.8,
+    "end": 17.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Caterwaul",
+    "family": "Caterwaul",
+    "conf": 0.71,
+    "start": 15.8,
+    "end": 17.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.66,
+    "start": 0.3,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.59,
+    "start": 0.3,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Owl",
+    "family": "Owl",
+    "conf": 0.59,
+    "start": 2.2,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.51,
+    "start": 0.3,
+    "end": 12.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Howl",
+    "family": "Dog",
+    "conf": 0.7,
+    "start": 16.6,
+    "end": 19.0,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.63,
+    "start": 13.7,
+    "end": 16.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Canidae, dogs, wolves",
+    "family": "Dog",
+    "conf": 0.35,
+    "start": 16.9,
+    "end": 18.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: visible\n4: not visible\n5: visible\n6: not visible\n7: not visible\n8: not visible\n9: visible"
+ },
+ "w8_dog_vacuum_next_room_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_dog_vacuum_next_room_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_dog_vacuum_next_room_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Ringtone",
+    "family": "Telephone",
+    "conf": 0.35,
+    "start": 2.4,
+    "end": 3.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_dog_vacuum_next_room_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_duel_diner_horn_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.33,
+    "start": 3.8,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fixed-wing aircraft, airplane",
+    "family": "Aircraft",
+    "conf": 0.27,
+    "start": 3.7,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.44,
+    "start": 6.8,
+    "end": 15.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible"
+ },
+ "w8_duel_diner_horn_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Walk, footsteps",
+    "family": "Footsteps",
+    "conf": 0.57,
+    "start": 15.0,
+    "end": 17.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chopping (food)",
+    "family": "Cooking",
+    "conf": 0.43,
+    "start": 5.1,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunk",
+    "family": "Thunk",
+    "conf": 0.35,
+    "start": 13.9,
+    "end": 15.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Scissors",
+    "family": "Scissors",
+    "conf": 0.3,
+    "start": 4.0,
+    "end": 5.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Writing",
+    "family": "Writing",
+    "conf": 0.29,
+    "start": 3.6,
+    "end": 4.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible"
+ },
+ "w8_duel_diner_horn_2a": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.41,
+    "start": 7.2,
+    "end": 9.0,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.26,
+    "start": 5.4,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "w8_duel_diner_horn_2b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Children playing",
+    "family": "Children playing",
+    "conf": 0.69,
+    "start": 12.7,
+    "end": 14.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Run",
+    "family": "Footsteps",
+    "conf": 0.58,
+    "start": 7.1,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "w8_film_127_hours_1a": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Thunder",
+    "family": "Thunder",
+    "conf": 0.69,
+    "start": 5.2,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Thunderstorm",
+    "family": "Thunder",
+    "conf": 0.64,
+    "start": 5.2,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.6,
+    "start": 5.2,
+    "end": 8.0,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.44,
+    "start": 5.4,
+    "end": 8.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: visible"
+ },
+ "w8_film_127_hours_1b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Smash, crash",
+    "family": "Glass",
+    "conf": 0.32,
+    "start": 8.1,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "w8_film_127_hours_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.59,
+    "start": 14.9,
+    "end": 17.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.52,
+    "start": 14.8,
+    "end": 17.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Raindrop",
+    "family": "Rain",
+    "conf": 0.44,
+    "start": 15.8,
+    "end": 17.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Horse",
+    "family": "Horse",
+    "conf": 0.43,
+    "start": 7.6,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Clip-clop",
+    "family": "Horse",
+    "conf": 0.36,
+    "start": 7.6,
+    "end": 9.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.35,
+    "start": 0.0,
+    "end": 1.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Pour",
+    "family": "Water",
+    "conf": 0.35,
+    "start": 12.1,
+    "end": 13.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 0.1,
+    "end": 1.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible\n8: not visible"
+ },
+ "w8_film_127_hours_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Smash, crash",
+    "family": "Glass",
+    "conf": 0.51,
+    "start": 0.5,
+    "end": 2.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_film_all_is_lost_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_all_is_lost_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Cattle, bovinae",
+    "family": "Cattle",
+    "conf": 0.46,
+    "start": 2.8,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.42,
+    "start": 12.9,
+    "end": 15.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Moo",
+    "family": "Cattle",
+    "conf": 0.39,
+    "start": 3.5,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_film_cast_away_storm_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.59,
+    "start": 1.2,
+    "end": 1.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.45,
+    "start": 0.0,
+    "end": 1.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Waves, surf",
+    "family": "Water",
+    "conf": 0.37,
+    "start": 5.7,
+    "end": 6.5,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Ocean",
+    "family": "Water",
+    "conf": 0.36,
+    "start": 5.7,
+    "end": 6.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: visible\n4: visible"
+ },
+ "w8_film_cast_away_storm_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_cast_away_storm_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_cast_away_storm_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Church bell",
+    "family": "Bell",
+    "conf": 0.44,
+    "start": 7.0,
+    "end": 9.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 15.9,
+    "end": 16.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Bell",
+    "family": "Bell",
+    "conf": 0.27,
+    "start": 6.9,
+    "end": 8.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_film_come_and_see_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_come_and_see_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_come_and_see_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Biting",
+    "family": "Biting",
+    "conf": 0.47,
+    "start": 10.6,
+    "end": 12.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chewing, mastication",
+    "family": "Chewing, mastication",
+    "conf": 0.45,
+    "start": 10.5,
+    "end": 12.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cupboard open or close",
+    "family": "Door",
+    "conf": 0.37,
+    "start": 7.7,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Liquid",
+    "family": "Water",
+    "conf": 0.27,
+    "start": 8.0,
+    "end": 9.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "w8_film_come_and_see_2b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Throat clearing",
+    "family": "Throat clearing",
+    "conf": 0.43,
+    "start": 8.6,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Cough",
+    "family": "Cough",
+    "conf": 0.33,
+    "start": 8.7,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "w8_film_das_boot_depth_1b": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Printer",
+    "family": "Printer",
+    "conf": 0.26,
+    "start": 15.1,
+    "end": 15.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.29,
+    "start": 0.8,
+    "end": 1.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_film_das_boot_depth_2a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.91,
+    "start": 4.7,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.85,
+    "start": 4.7,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.83,
+    "start": 4.7,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.52,
+    "start": 6.0,
+    "end": 12.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Clickety-clack",
+    "family": "Train",
+    "conf": 0.48,
+    "start": 4.9,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.37,
+    "start": 15.6,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: visible"
+ },
+ "w8_film_das_boot_depth_2b": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.79,
+    "start": 12.2,
+    "end": 15.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fixed-wing aircraft, airplane",
+    "family": "Aircraft",
+    "conf": 0.77,
+    "start": 11.7,
+    "end": 13.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.69,
+    "start": 11.0,
+    "end": 13.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.66,
+    "start": 4.0,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.65,
+    "start": 10.4,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft engine",
+    "family": "Aircraft",
+    "conf": 0.51,
+    "start": 11.0,
+    "end": 13.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.5,
+    "start": 10.4,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.5,
+    "start": 10.4,
+    "end": 12.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train horn",
+    "family": "Train",
+    "conf": 0.47,
+    "start": 10.4,
+    "end": 12.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.65,
+    "start": 2.9,
+    "end": 5.2,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: visible\n7: not visible\n8: not visible\n9: not visible\n10: not visible"
+ },
+ "w8_film_hunt_for_red_october_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.34,
+    "start": 12.5,
+    "end": 13.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_film_hunt_for_red_october_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.81,
+    "start": 5.3,
+    "end": 16.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_film_hunt_for_red_october_2a": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.3,
+    "start": 8.2,
+    "end": 8.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_film_hunt_for_red_october_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_no_country_border_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Bird vocalization, bird call, bird song",
+    "family": "Bird",
+    "conf": 0.37,
+    "start": 4.0,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chirp, tweet",
+    "family": "Bird",
+    "conf": 0.33,
+    "start": 4.5,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Bird",
+    "family": "Bird",
+    "conf": 0.25,
+    "start": 4.5,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_film_no_country_border_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.52,
+    "start": 13.2,
+    "end": 15.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunder",
+    "family": "Thunder",
+    "conf": 0.42,
+    "start": 15.1,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunderstorm",
+    "family": "Thunder",
+    "conf": 0.38,
+    "start": 14.8,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.27,
+    "start": 14.7,
+    "end": 15.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "w8_film_no_country_border_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_no_country_border_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_the_mist_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.78,
+    "start": 2.1,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Civil defense siren",
+    "family": "Siren",
+    "conf": 0.7,
+    "start": 5.5,
+    "end": 10.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shofar",
+    "family": "Shofar",
+    "conf": 0.34,
+    "start": 16.3,
+    "end": 18.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Groan",
+    "family": "Groan",
+    "conf": 0.3,
+    "start": 12.0,
+    "end": 13.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Screaming",
+    "family": "Screaming",
+    "conf": 0.27,
+    "start": 9.4,
+    "end": 10.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible"
+ },
+ "w8_film_the_mist_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [
+   {
+    "label": "Cough",
+    "family": "Cough",
+    "conf": 0.41,
+    "start": 9.6,
+    "end": 11.5,
+    "importance": 2,
+    "vlm": "unsure"
+   }
+  ],
+  "raw": "1: unsure"
+ },
+ "w8_film_the_mist_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_the_thin_red_line_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.5,
+    "start": 16.8,
+    "end": 18.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Machine gun",
+    "family": "Gunshot",
+    "conf": 0.46,
+    "start": 10.5,
+    "end": 12.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_film_the_thin_red_line_1b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.25,
+    "start": 9.0,
+    "end": 11.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "w8_film_the_thin_red_line_2a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.36,
+    "start": 6.3,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.64,
+    "start": 10.8,
+    "end": 16.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_film_the_thin_red_line_2b": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.3,
+    "start": 8.3,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.28,
+    "start": 0.8,
+    "end": 2.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.45,
+    "start": 3.8,
+    "end": 5.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible"
+ },
+ "w8_film_tremors_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Bicycle",
+    "family": "Bicycle",
+    "conf": 0.6,
+    "start": 5.0,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shuffling cards",
+    "family": "Shuffling cards",
+    "conf": 0.33,
+    "start": 1.9,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Crack",
+    "family": "Crack",
+    "conf": 0.43,
+    "start": 3.4,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: not visible"
+ },
+ "w8_film_tremors_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_tremors_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_tremors_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.31,
+    "start": 15.0,
+    "end": 16.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.26,
+    "start": 15.4,
+    "end": 17.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_film_twister_barn_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_twister_barn_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Smash, crash",
+    "family": "Glass",
+    "conf": 0.78,
+    "start": 6.2,
+    "end": 9.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.75,
+    "start": 10.3,
+    "end": 12.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chink, clink",
+    "family": "Chink, clink",
+    "conf": 0.45,
+    "start": 12.7,
+    "end": 14.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_film_twister_barn_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_film_twister_barn_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.27,
+    "start": 3.5,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.49,
+    "start": 10.2,
+    "end": 12.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.4,
+    "start": 10.4,
+    "end": 12.2,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "w8_firetruck_cab_view_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.7,
+    "start": 6.4,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.67,
+    "start": 6.2,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.65,
+    "start": 6.4,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.58,
+    "start": 13.6,
+    "end": 16.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fixed-wing aircraft, airplane",
+    "family": "Aircraft",
+    "conf": 0.37,
+    "start": 4.5,
+    "end": 6.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft engine",
+    "family": "Aircraft",
+    "conf": 0.36,
+    "start": 4.5,
+    "end": 6.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Reversing beeps",
+    "family": "Vehicle",
+    "conf": 0.9,
+    "start": 0.0,
+    "end": 2.0,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.83,
+    "start": 0.0,
+    "end": 19.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Truck",
+    "family": "Vehicle",
+    "conf": 0.72,
+    "start": 0.0,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Air brake",
+    "family": "Air brake",
+    "conf": 0.64,
+    "start": 17.3,
+    "end": 19.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: not visible\n5: not visible\n6: not visible\n7: visible\n8: not visible\n9: not visible\n10: not visible"
+ },
+ "w8_firetruck_cab_view_1b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.73,
+    "start": 0.1,
+    "end": 19.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Truck",
+    "family": "Vehicle",
+    "conf": 0.42,
+    "start": 11.6,
+    "end": 14.5,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Air brake",
+    "family": "Air brake",
+    "conf": 0.26,
+    "start": 4.1,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible"
+ },
+ "w8_firetruck_cab_view_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.86,
+    "start": 0.1,
+    "end": 17.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.81,
+    "start": 0.2,
+    "end": 13.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.78,
+    "start": 2.0,
+    "end": 17.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.73,
+    "start": 0.3,
+    "end": 13.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fire engine, fire truck (siren)",
+    "family": "Siren",
+    "conf": 0.43,
+    "start": 3.6,
+    "end": 9.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.43,
+    "start": 0.0,
+    "end": 17.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: visible\n6: not visible"
+ },
+ "w8_firetruck_cab_view_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.78,
+    "start": 5.5,
+    "end": 17.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.69,
+    "start": 5.4,
+    "end": 10.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.67,
+    "start": 13.1,
+    "end": 17.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.6,
+    "start": 12.2,
+    "end": 17.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fire engine, fire truck (siren)",
+    "family": "Siren",
+    "conf": 0.54,
+    "start": 9.0,
+    "end": 10.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.44,
+    "start": 0.0,
+    "end": 5.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: visible"
+ },
+ "w8_forest_woodpecker_hidden_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_frog_night_flashlight_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Owl",
+    "family": "Owl",
+    "conf": 0.37,
+    "start": 3.2,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Frog",
+    "family": "Frog",
+    "conf": 0.57,
+    "start": 8.6,
+    "end": 10.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_generation_kill_mortars_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.75,
+    "start": 4.8,
+    "end": 9.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.55,
+    "start": 1.0,
+    "end": 3.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Basketball bounce",
+    "family": "Basketball bounce",
+    "conf": 0.45,
+    "start": 13.4,
+    "end": 14.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.37,
+    "start": 14.3,
+    "end": 16.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.31,
+    "start": 0.9,
+    "end": 2.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Machine gun",
+    "family": "Gunshot",
+    "conf": 0.29,
+    "start": 0.7,
+    "end": 3.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.26,
+    "start": 8.8,
+    "end": 9.2,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible"
+ },
+ "w8_generation_kill_mortars_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.3,
+    "start": 0.4,
+    "end": 2.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.29,
+    "start": 0.5,
+    "end": 2.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_generation_kill_mortars_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.46,
+    "start": 1.8,
+    "end": 5.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.44,
+    "start": 1.5,
+    "end": 4.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.27,
+    "start": 9.0,
+    "end": 10.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: visible"
+ },
+ "w8_glacier_calving_1a": {
+  "verdict": "seen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.36,
+    "start": 1.5,
+    "end": 3.2,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.39,
+    "start": 2.9,
+    "end": 5.2,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_glacier_calving_1b": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.32,
+    "start": 12.0,
+    "end": 12.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Crowd",
+    "family": "Crowd",
+    "conf": 0.29,
+    "start": 16.3,
+    "end": 17.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_glacier_calving_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.62,
+    "start": 9.3,
+    "end": 11.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.61,
+    "start": 9.1,
+    "end": 11.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Boat, Water vehicle",
+    "family": "Boat",
+    "conf": 0.53,
+    "start": 1.0,
+    "end": 3.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.47,
+    "start": 6.8,
+    "end": 7.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sailboat, sailing ship",
+    "family": "Boat",
+    "conf": 0.31,
+    "start": 0.5,
+    "end": 3.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.31,
+    "start": 6.6,
+    "end": 9.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 7.7,
+    "end": 8.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Raindrop",
+    "family": "Rain",
+    "conf": 0.29,
+    "start": 9.6,
+    "end": 11.0,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Waves, surf",
+    "family": "Water",
+    "conf": 0.32,
+    "start": 0.5,
+    "end": 3.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Ocean",
+    "family": "Water",
+    "conf": 0.29,
+    "start": 0.5,
+    "end": 3.2,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: visible\n6: not visible\n7: not visible\n8: visible\n9: not visible\n10: not visible"
+ },
+ "w8_glacier_calving_2b": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Fireworks",
+    "family": "Fireworks",
+    "conf": 0.47,
+    "start": 10.7,
+    "end": 12.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.41,
+    "start": 13.1,
+    "end": 15.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Waves, surf",
+    "family": "Water",
+    "conf": 0.4,
+    "start": 1.5,
+    "end": 2.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ocean",
+    "family": "Water",
+    "conf": 0.39,
+    "start": 1.4,
+    "end": 2.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.29,
+    "start": 0.0,
+    "end": 1.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.26,
+    "start": 13.0,
+    "end": 15.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.33,
+    "start": 2.2,
+    "end": 3.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.31,
+    "start": 0.3,
+    "end": 0.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: visible\n6: visible\n7: not visible\n8: not visible"
+ },
+ "w8_golf_plane_overhead_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_gopro_cave_bats_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_gopro_cave_bats_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_gopro_mtb_dog_chase_1a": {
+  "verdict": "seen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.35,
+    "start": 8.2,
+    "end": 11.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.59,
+    "start": 0.2,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Bow-wow",
+    "family": "Dog",
+    "conf": 0.51,
+    "start": 2.2,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Bark",
+    "family": "Dog",
+    "conf": 0.29,
+    "start": 2.7,
+    "end": 4.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible\n4: visible"
+ },
+ "w8_gopro_mtb_dog_chase_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Helicopter",
+    "family": "Helicopter",
+    "conf": 0.34,
+    "start": 11.3,
+    "end": 13.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.52,
+    "start": 14.2,
+    "end": 16.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_gopro_mtb_dog_chase_2b": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.29,
+    "start": 5.8,
+    "end": 6.2,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_gopro_rear_ended_1a": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Motorcycle",
+    "family": "Vehicle",
+    "conf": 0.34,
+    "start": 0.9,
+    "end": 3.0,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.43,
+    "start": 0.0,
+    "end": 4.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "w8_gopro_rear_ended_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.41,
+    "start": 0.1,
+    "end": 17.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "w8_gopro_ski_avalanche_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Groan",
+    "family": "Groan",
+    "conf": 0.69,
+    "start": 15.9,
+    "end": 17.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.41,
+    "start": 12.5,
+    "end": 15.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Snort",
+    "family": "Snort",
+    "conf": 0.37,
+    "start": 6.7,
+    "end": 8.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sneeze",
+    "family": "Sneeze",
+    "conf": 0.33,
+    "start": 5.2,
+    "end": 7.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "w8_gopro_ski_avalanche_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Wheeze",
+    "family": "Wheeze",
+    "conf": 0.86,
+    "start": 2.4,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cattle, bovinae",
+    "family": "Cattle",
+    "conf": 0.77,
+    "start": 8.7,
+    "end": 10.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Moo",
+    "family": "Cattle",
+    "conf": 0.48,
+    "start": 3.1,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_gopro_ski_avalanche_2a": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.36,
+    "start": 9.8,
+    "end": 12.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Waves, surf",
+    "family": "Water",
+    "conf": 0.27,
+    "start": 10.5,
+    "end": 12.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_gopro_ski_avalanche_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Cattle, bovinae",
+    "family": "Cattle",
+    "conf": 0.61,
+    "start": 14.0,
+    "end": 16.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Moo",
+    "family": "Cattle",
+    "conf": 0.6,
+    "start": 14.0,
+    "end": 16.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.33,
+    "start": 0.3,
+    "end": 2.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_helmetcam_chainsaw_roof_1a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Wood",
+    "family": "Wood",
+    "conf": 0.48,
+    "start": 6.4,
+    "end": 10.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Chainsaw",
+    "family": "Chainsaw",
+    "conf": 0.78,
+    "start": 0.0,
+    "end": 15.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Power tool",
+    "family": "Power tool",
+    "conf": 0.44,
+    "start": 0.3,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Sawing",
+    "family": "Sawing",
+    "conf": 0.39,
+    "start": 1.7,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Tools",
+    "family": "Tools",
+    "conf": 0.35,
+    "start": 5.7,
+    "end": 8.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: visible\n4: visible\n5: visible"
+ },
+ "w8_helmetcam_chainsaw_roof_1b": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Chainsaw",
+    "family": "Chainsaw",
+    "conf": 0.78,
+    "start": 0.1,
+    "end": 15.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Sawing",
+    "family": "Sawing",
+    "conf": 0.48,
+    "start": 10.7,
+    "end": 14.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Wood",
+    "family": "Wood",
+    "conf": 0.46,
+    "start": 10.7,
+    "end": 14.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Power tool",
+    "family": "Power tool",
+    "conf": 0.33,
+    "start": 0.0,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Tools",
+    "family": "Tools",
+    "conf": 0.29,
+    "start": 0.0,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: visible\n5: visible"
+ },
+ "w8_helmetcam_chainsaw_roof_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Chainsaw",
+    "family": "Chainsaw",
+    "conf": 0.86,
+    "start": 2.0,
+    "end": 4.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.5,
+    "start": 4.5,
+    "end": 8.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_helmetcam_chainsaw_roof_2b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Chainsaw",
+    "family": "Chainsaw",
+    "conf": 0.89,
+    "start": 10.3,
+    "end": 16.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Smoke detector, smoke alarm",
+    "family": "Alarm",
+    "conf": 0.53,
+    "start": 7.0,
+    "end": 8.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.42,
+    "start": 8.2,
+    "end": 10.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_helmetcam_ems_siren_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.64,
+    "start": 3.3,
+    "end": 5.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.6,
+    "start": 0.5,
+    "end": 5.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.41,
+    "start": 9.0,
+    "end": 19.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: visible"
+ },
+ "w8_helmetcam_ems_siren_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_helmetcam_interior_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.62,
+    "start": 0.8,
+    "end": 3.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.55,
+    "start": 14.6,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fire engine, fire truck (siren)",
+    "family": "Siren",
+    "conf": 0.53,
+    "start": 1.2,
+    "end": 2.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.51,
+    "start": 14.0,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.43,
+    "start": 14.6,
+    "end": 15.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chop",
+    "family": "Chop",
+    "conf": 0.4,
+    "start": 6.9,
+    "end": 8.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible"
+ },
+ "w8_helmetcam_interior_1b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.33,
+    "start": 9.8,
+    "end": 11.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sliding door",
+    "family": "Sliding door",
+    "conf": 0.27,
+    "start": 14.1,
+    "end": 15.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "w8_helmetcam_interior_2a": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.38,
+    "start": 1.2,
+    "end": 3.2,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "w8_hide_bear_camp_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Snoring",
+    "family": "Snoring",
+    "conf": 0.38,
+    "start": 1.4,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Groan",
+    "family": "Groan",
+    "conf": 0.36,
+    "start": 0.3,
+    "end": 1.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cattle, bovinae",
+    "family": "Cattle",
+    "conf": 0.3,
+    "start": 1.1,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "w8_hide_birdwatch_call_2a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_hide_birdwatch_call_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_hide_hyena_camp_1a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Hoot",
+    "family": "Hoot",
+    "conf": 0.82,
+    "start": 12.1,
+    "end": 14.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Howl",
+    "family": "Dog",
+    "conf": 0.76,
+    "start": 14.5,
+    "end": 17.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Owl",
+    "family": "Owl",
+    "conf": 0.68,
+    "start": 12.6,
+    "end": 15.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Insect",
+    "family": "Insect",
+    "conf": 0.56,
+    "start": 3.5,
+    "end": 5.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Canidae, dogs, wolves",
+    "family": "Dog",
+    "conf": 0.53,
+    "start": 6.3,
+    "end": 9.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.48,
+    "start": 6.3,
+    "end": 9.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Cricket",
+    "family": "Cricket",
+    "conf": 0.3,
+    "start": 8.9,
+    "end": 10.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible"
+ },
+ "w8_hide_owl_night_1a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "w8_hide_owl_night_1b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ }
+}
