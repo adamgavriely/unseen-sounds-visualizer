@@ -1160,3 +1160,39 @@ reproduced. Both arms. Shares the single TEST look.
 **Stated before the result:** the benchmark table above predicts a large win. The DEV-only numbers
 may be smaller, and if DEV disagrees with it the DEV number governs and the disagreement is
 reported.
+
+### Amendment 16, DEV outcome (2026-09-23): SELECTED, and it crosses silence on the target category
+
+    DEV (49 clips), selection only     F1     P      R      FA/clip  cost   hits  miss
+    v4b6 (no veto)                     0.231  0.169  0.364  1.20     4.12   12    21
+    + cross-detector veto (adopted)    0.264  0.207  0.364  0.94     3.59   12    21
+    + PANNs veto tau2 0.02             0.286  0.250  0.333  0.67     3.14   11    22
+    + PANNs veto tau2 0.05             0.297  0.268  0.333  0.61     3.02   11    22
+    + PANNs veto tau2 0.10             0.282  0.263  0.303  0.57     3.02   10    23
+    silence                                                          2.69
+
+By amendment 10's corrected rule -- minimum cost among cells keeping hits within 2 of v4b6 (>= 10) --
+tau2 = 0.05 and tau2 = 0.10 tie at 3.02 and the declared tie-break on fewer misses selects
+**tau2 = 0.05**. Cost falls 4.12 -> 3.02 (-27%) and precision rises 0.169 -> 0.268 (+59%) for one
+sound lost, where the rule allowed two.
+
+**The result that matters, on the category the project exists for.** Cost per clip at the declared
+operating point (a missed sound 4, a wrong picture 2), and the price of a wrong picture at which the
+pipeline stops being worth using:
+
+    unseen clips (14)        cost @ beta=2    silence    crossover
+      + cross-detector veto      5.14          4.86      beta = 1.71
+      + PANNs veto               4.00          4.86      beta = 5.00
+
+    all DEV clips (49)
+      + cross-detector veto      3.59          2.69      beta = 1.04
+      + PANNs veto               3.02          2.69      beta = 1.47
+
+On the unseen clips the gated pipeline is now CHEAPER TO A VIEWER THAN SHOWING NOTHING at the
+project's own declared weights, and stays cheaper until a wrong picture is priced at five times --
+that is, for any plausible viewer. On the benchmark as a whole silence still wins, for the reason
+already recorded: 27 of the 49 DEV clips contain no sound that should ever be drawn, and silence
+cannot be beaten there by construction.
+
+**This is a DEV result and TEST has not been read for it.** The go/no-go fixed in amendment 16
+governs. Both arms are re-rendered at tau2 = 0.05 before the single TEST look.
