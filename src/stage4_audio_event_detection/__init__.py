@@ -17,6 +17,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import List, Tuple
 
+import json
+
 import numpy as np
 
 import config
@@ -181,10 +183,28 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
         from src.stage4_audio_event_detection import flexsed_infer as FX
         try:
             ffw, ftimes, flabels = FX.infer_flexsed(Path(wav_path), device)
+            # Amendment 11: the score scale is family-dependent, so one bar cannot serve every
+            # family -- at the 78 needed gold sounds FlexSED knows, its score at the sound has
+            # median 0.75 and a bar of 0.8 refuses 59% of them. Each family's own bar was fitted on
+            # the 280-clip AudioSet-Strong calibration set (zero id overlap with the gold), and is
+            # applied here by rescaling that family's column so its own bar lands exactly on fbar.
+            # Everything downstream -- the hysteresis, the span extractor, the veto -- is unchanged,
+            # and the veto therefore scales with the bar at the ratio frozen in the prereg.
+            from src.labels import canonical
+            fambars = getattr(config, "FLEXSED_FAMILY_BARS", None)
+            if fambars:
+                bars = json.loads(Path(fambars).read_text(encoding="utf-8"))["bars"]
+                ffw = ffw.copy()
+                n = 0
+                for i, lab in enumerate(flabels):
+                    b = bars.get(canonical(lab))
+                    if b and b > 0 and abs(b - fbar) > 1e-9:
+                        ffw[:, i] = ffw[:, i] * (fbar / float(b))
+                        n += 1
+                print(f"       [stage4] per-family bars applied to {n} of {len(flabels)} queries", flush=True)
             fev = _extract_events(ffw, ftimes, flabels, fbar, None, min_dur,
                                   low=fbar * float(getattr(config, "AED_HYSTERESIS", 1.0)))
             # a family both detectors report at the same moment keeps the earlier onset
-            from src.labels import canonical
             def key(e):
                 return canonical(e.label)
             fresh = []
