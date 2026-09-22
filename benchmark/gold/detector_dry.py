@@ -1,0 +1,150 @@
+"""Stage-4 dry run on the per-sound gold (amendment 5, docs/prereg_v4.md): the BLIND system's
+shown set (detector -> label filter -> families -> display timeline, no gate, no pictures) for
+BEATs and PretrainedSED at display bars 0.25-0.40, scored with the per-sound rules of
+benchmark/gold/score_per_sound.py. A diagnostic of what each detector finds and fires, on
+DEV (the 54 old judge clips), slice B and everything; the row-level verdict stays the arm rule.
+
+    python benchmark/gold/detector_dry.py --infer            # BEATs frame-wise cache (GPU), once
+    python benchmark/gold/detector_dry.py                    # score (needs the PSED cache for the psed rows)
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import subprocess
+import sys
+from pathlib import Path
+
+import numpy as np
+
+_ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(_ROOT))
+import config
+from src.types import SceneContext, AugmentationSpec
+from benchmark.gold import score_per_sound as S
+
+GOLD = _ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"
+FW = _ROOT / "benchmark" / "gold" / "beats_fw"          # frame-wise BEATs cache, one npz per clip
+WAV = _ROOT / "data" / "work" / "gold_wav"
+PSED = _ROOT / "data" / "work" / "psed_cache"
+OUT = _ROOT / "benchmark" / "gold" / "detector_dry.json"
+BARS = (0.25, 0.30, 0.35, 0.40)
+JUDGE100 = _ROOT / "benchmark" / "gold" / "judge100.txt"  # the 100 frozen judge clips (stems)
+
+
+def clip_path(name: str):
+    for d in ("mixed", "seen_ambient", "unseen_ambient", "no_ambient", "unsorted", "_dropped"):
+        p = _ROOT / "data" / "input" / "benchmark" / d / name
+        if p.exists():
+            return p
+    for p in (_ROOT / "data" / "input" / "audioset_strong").glob(name + ".*"):
+        return p
+    return None
+
+
+def gold_clips():
+    d = json.loads(GOLD.read_text(encoding="utf-8"))
+    return [c["clip"] for c in d["clips"] if isinstance(c, dict) and c.get("done") and not c.get("bad")]
+
+
+def wav_for(p: Path) -> Path:
+    WAV.mkdir(parents=True, exist_ok=True)
+    w = WAV / (p.stem + ".wav")
+    if not w.exists():
+        subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(p), "-ac", "1", "-ar", str(config.SAMPLE_RATE), str(w)], check=True)
+    return w
+
+
+def infer_all(device="cuda"):
+    from src.stage4_audio_event_detection.beats_infer import infer_beats
+    FW.mkdir(parents=True, exist_ok=True)
+    for name in gold_clips():
+        p = clip_path(name)
+        if p is None:
+            print("missing", name); continue
+        out = FW / (p.stem + ".npz")
+        if out.exists():
+            continue
+        fw, times, labels = infer_beats(wav_for(p), device)
+        np.savez_compressed(out, fw=fw.astype(np.float32), times=np.asarray(times, dtype=np.float64), labels=np.array(labels))
+        print(name, fw.shape, flush=True)
+
+
+def events_for(stem: str, det: str, bar: float, wav: Path):
+    from src.stage4_audio_event_detection import _extract_events, _refine_onsets_cam
+    if det == "beats":
+        z = np.load(FW / f"{stem}.npz")
+        fw, times, labels = z["fw"], z["times"], [str(x) for x in z["labels"]]
+    else:
+        from src.stage4_audio_event_detection.psed_infer import infer_psed
+        config.PSED_BAR = bar                      # the arm pins PSED's bar to the display bar (V4["4"])
+        fw, times, labels = infer_psed(wav, "cpu")
+    thr = 0.5 * bar                                 # config.AED_THRESHOLD = 0.5 * DISPLAY_THRESHOLD
+    ev = _extract_events(fw, times, labels, thr, None, config.AED_MIN_DUR, low=thr * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+    if det == "beats" and getattr(config, "ONSET_CAM", True):
+        ev = _refine_onsets_cam(wav, ev, labels, "cuda")
+    cap = getattr(config, "MAX_SPAN", None)
+    if cap:
+        for e in ev:
+            e.end = min(e.end, e.start + float(cap))
+    return ev
+
+
+def blind_pictures(events, duration: float, bar: float):
+    """the blind system's on-screen spans, exactly as the scorer reads a render (no images needed)"""
+    from src.stage5_cross_modal_analysis import plan_augmentations
+    from src.stage6_visual_augmentation import _display_spans, _assign_rows
+    import io, contextlib
+    with contextlib.redirect_stdout(io.StringIO()):
+        specs = plan_augmentations(SceneContext(), [], events, threshold=0.5 * bar, gate_enabled=False,
+                                   display_threshold=bar, augment_threshold=bar)
+    spans = _display_spans(specs, duration, require_image=False)
+    placed, _ = _assign_rows(spans)
+    return [(lab, float(a), float(b)) for _, lab, a, b, _ in placed]
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--infer", action="store_true")
+    ap.add_argument("--detectors", nargs="+", default=["beats", "psed"])
+    ap.add_argument("--bars", nargs="+", type=float, default=list(BARS))
+    a = ap.parse_args()
+    if a.infer:
+        infer_all(); return
+    config.use_v4("59")                             # depictable filter, 8-s cap (v4b4)
+    gold = S.load_gold([GOLD])
+    judge = set(JUDGE100.read_text().split()) if JUDGE100.exists() else set()
+    results = {}
+    for det in a.detectors:
+        if det == "psed":
+            config.AED_MODEL = "psed"; config.ONSET_CAM = False
+        for bar in a.bars:
+            rows = {}
+            for name in gold_clips():
+                p = clip_path(name)
+                if p is None or p.stem not in gold:
+                    continue
+                if det == "psed" and not (PSED / f"{p.stem}.npz").exists():
+                    continue
+                wav = wav_for(p)
+                import soundfile as sf
+                dur = sf.info(str(wav)).duration
+                ev = events_for(p.stem, det, bar, wav)
+                pics = blind_pictures(ev, dur, bar)
+                rows[p.stem] = S.score_clip(gold[p.stem], pics)
+            subsets = {"all": list(rows), "dev54": [s for s in rows if s in judge],
+                       "sliceB": [s for s in rows if clip_path(s + ".mp4") is None and not (s.endswith(".webm"))],
+                       "bench103": [s for s in rows if not (clip_path(s + ".mp4") is None and not s.endswith(".webm"))]}
+            for sub, stems in subsets.items():
+                if not stems:
+                    continue
+                agg = S.aggregate([rows[s] for s in stems])
+                results[f"{det}@{bar}@{sub}"] = agg
+                print(f"[{det} bar {bar:.2f} {sub:8s}] clips {agg['clips']:3d} needed {agg['needed']:3d} | P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} "
+                      f"| hits {agg['hits']} miss {agg['misses']} visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | clean {agg['clean_acc']}")
+    OUT.write_text(json.dumps(results, indent=1), encoding="utf-8")
+    print("->", OUT)
+
+
+if __name__ == "__main__":
+    main()

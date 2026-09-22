@@ -186,6 +186,11 @@ def phase_render(args):
     for system in args.systems:
         configure(system)
         work_root = work_root_for(system, args.tag)
+        # the composite mp4 (and its panel scratch dir) is keyed by clip stem only; two rows
+        # rendering the same clip at once (v4b4 / v4ab4 shards, 2026-09-22) collided in
+        # data/output -> one folder per (system, tag); nothing downstream reads the mp4
+        config.OUTPUT_DIR = _ROOT / "data" / "output" / work_root.name
+        config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
         for i, (clip, _tag) in enumerate(clips, 1):
             work = work_root / clip.stem
             if (work / "augmentations.json").exists():
