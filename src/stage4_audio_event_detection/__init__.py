@@ -197,6 +197,20 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                     fresh.append(e)
             print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
             events = events + fresh
+            # Amendment 10 (2026-09-23): the second detector also carries the DISagreement. Where
+            # BEATs names a family FlexSED never hears anywhere in the clip, the taxonomy shows the
+            # sound is usually not there at all (Whale 0.13, Horse 0.13, Cat 0.00, Telephone 0.00).
+            # The veto is deliberately one-sided -- it is applied only to labels FlexSED did not
+            # itself raise (its own bar is higher than tau), so the sounds the union was adopted to
+            # recover can never be deleted by it.
+            veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
+            if veto > 0:
+                peak = {}
+                for i, lab in enumerate(flabels):
+                    peak[canonical(lab)] = max(peak.get(canonical(lab), 0.0), float(ffw[:, i].max()))
+                before = len(events)
+                events = [e for e in events if peak.get(key(e), 1.0) >= veto]
+                print(f"       [stage4] cross-detector veto (tau {veto}): dropped {before - len(events)} span(s)", flush=True)
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):

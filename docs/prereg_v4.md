@@ -743,3 +743,27 @@ If any of the three fails, the result is reported as a failure and v4b6 stands. 
 mistimed DEV misses are pictures that arrive 0.84-1.90 s EARLY, which the asymmetric window
 penalises; widening it after seeing that would be fitting the metric to the result. It is reported
 as a limitation instead, and any onset change must win inside the pre-registered window.
+
+### Amendment 10, clarification (2026-09-23, still before any TEST look)
+
+Condition (a) above conflated two different questions and would have made a real improvement
+unreportable. They are separated here, before TEST is read:
+
+  **Adoption of the stage-4 setting** (what amendment 10 decides). The chosen cell replaces v4b6
+  only if, on TEST: the viewer cost per clip is lower than v4b6's on the same clips, the recall loss
+  against v4b6 is at most 2 hits, and the sign of the DEV cost improvement is reproduced.
+
+  **Whether the system beats silence** (the headline). Reported separately and unconditionally,
+  whatever it shows. DEV currently stands at 3.59 against silence 2.69, and the bar sweep can
+  recover at most about three of the six deaf sounds, so the honest expectation written down now is
+  that the gated pipeline still costs a viewer more than showing nothing at beta = 2 on this gold
+  set. That is a result about the picture budget, not a reason to withhold the stage-4 finding.
+
+Tie-break confirmed as written: at equal cost, fewer misses wins. Breaking on fewest false alarms
+would contradict the beta = 2 declared in amendment 9, which already prices a miss at two wrong
+pictures.
+
+**Corrected attribution of the 21 DEV misses** (an earlier draft of this analysis said timing was
+48%; that was wrong and is recorded as such). Detection 11 (six where no detector hears the family
+anywhere in the clip, five where the family is heard only at another moment), timing 5 (three of
+them pictures that arrive 0.84-1.90 s EARLY), gate 3, label filter 2.

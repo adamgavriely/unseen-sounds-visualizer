@@ -63,6 +63,8 @@ INDEP="${INDEP:-}"
 GROUNDED="${GROUNDED:-}"
 SKIP_RENDER="${SKIP_RENDER:-}"
 WORK_TAG="${WORK_TAG:-}"
+FBAR="${FBAR:-}"         # FLEXSED_BAR override (amendment 10: the second detector's own firing bar)
+VETO="${VETO:-}"         # cross-detector veto tau (amendment 10)
 BAR="${BAR:-}"           # display bar override (amendment 6, v4b5: 0.15); AED bar follows at BAR/2
 SYSTEMS="${SYSTEMS:-}"   # e.g. "proposed" or "blind_a2i audio_caption": one system per job when sharding
 V4="${V4:-}"          # v4 stages to apply (docs/prereg_v4.md), e.g. "4", "45", "23456"
@@ -99,6 +101,10 @@ if "${BAR}":                           # amendment 6 (v4b5): the detector's admi
     config.DISPLAY_THRESHOLD = float("${BAR}"); config.AUGMENT_THRESHOLD = float("${BAR}")
     config.AED_THRESHOLD = 0.5 * float("${BAR}")
     print("[v4] display bar", config.DISPLAY_THRESHOLD, "aed", config.AED_THRESHOLD, flush=True)
+if "${FBAR}":                          # amendment 10: FlexSED's own firing bar
+    config.FLEXSED_BAR = float("${FBAR}"); print("[v4] FLEXSED_BAR", config.FLEXSED_BAR, flush=True)
+if "${VETO}":                          # amendment 10: drop a label the second detector never hears
+    config.FLEXSED_VETO = float("${VETO}"); print("[v4] FLEXSED_VETO", config.FLEXSED_VETO, flush=True)
 if "${PSED_BAR}":                      # v4ab2: PSED's own operating point (benchmark/psed_f1_bar.json)
     config.PSED_BAR = float("${PSED_BAR}"); print("[v4] PSED_BAR", config.PSED_BAR, flush=True)
 # GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which

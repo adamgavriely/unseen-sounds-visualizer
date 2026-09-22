@@ -273,6 +273,7 @@ V4 = {
 # the adopted union row v4b6 sets 0.8, chosen on Adam's DEV half (onset-recall 0.45 -> 0.59 at
 # 1.58 false labels per clip, where BEATs alone needs 3.05 to reach 0.57).
 FLEXSED_BAR = 0.0
+FLEXSED_VETO = 0.0            # amendment 10: drop a label the second detector never hears in the clip
 MAX_SPAN = None               # seconds; None = no cap (v4ab3/v4b3 use 8.0)
 LABEL_FILTER = "lists"        # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 

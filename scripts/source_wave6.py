@@ -28,55 +28,55 @@ if str(ROOT) not in sys.path:
 import config
 from scripts.source_batch3 import _accept, STAGE, _clip_len
 import scripts.source_batch3 as b3
-from scripts.source_mixed2 import audio_families
 
 ARCHIVE = STAGE / "yt_archive.txt"
 LOG = ROOT / "benchmark" / "sources_wave6.json"
 AUDIO = ROOT / "benchmark" / "gold" / "wave6_audio.json"
 BENCH = ROOT / "data" / "input" / "benchmark"
+FAST = "--fast" in sys.argv
 FMT = "bv*[height<=720][ext=mp4]+ba[ext=m4a]/b[height<=720][ext=mp4]/b"
 
 QUERIES = [
-    ("dashcam_city", "dashcam city driving raw no music horns sirens"),
-    ("dashcam_near_miss", "dashcam near miss compilation no music"),
-    ("bodycam_call", "police bodycam footage traffic stop raw"),
-    ("bodycam_fire", "firefighter bodycam raw audio no music"),
-    ("ems_ride", "ambulance ride along raw footage"),
-    ("er_corridor", "hospital emergency room walkthrough raw"),
-    ("airport_terminal", "airport terminal walk announcements no talking"),
-    ("train_platform", "train station platform ambience raw footage arrivals"),
-    ("subway_ride", "subway ride pov doors announcements no music"),
-    ("market_pov", "walking through busy market pov no talking"),
-    ("night_market", "night market walk pov raw audio"),
-    ("harbor_work", "fishing harbor unloading raw footage"),
-    ("shipyard", "shipyard work raw audio no music"),
-    ("construction_pov", "construction site pov walk no music"),
-    ("demolition", "building demolition raw footage crowd"),
-    ("farm_yard", "farm yard morning animals raw audio no music"),
-    ("zoo_walk", "zoo walk pov animals raw audio no commentary"),
-    ("wildlife_cam", "trail camera footage animals sounds"),
-    ("backyard_cam", "backyard night camera animals raw"),
-    ("home_kitchen_pov", "cooking pov kitchen raw audio no music family"),
-    ("workshop_pov", "workshop pov building no talking no music"),
-    ("garage_repair", "garage repair raw audio air tools"),
-    ("street_riot", "protest clashes raw footage no commentary"),
-    ("stadium_tunnel", "stadium tunnel players entrance raw audio"),
-    ("school_hall", "school hallway bell raw footage"),
-    ("hotel_lobby", "hotel lobby ambience elevator raw"),
-    ("storm_house", "storm hitting house raw footage no music"),
-    ("flood_street", "flash flood street raw footage"),
-    ("earthquake_cam", "earthquake caught on camera indoor raw"),
-    ("car_chase_news", "news helicopter police chase raw feed"),
-    ("crash_test", "crash test facility raw footage"),
-    ("rocket_launch_crowd", "rocket launch crowd reaction raw audio"),
-    ("air_show", "air show flyover crowd raw audio no music"),
-    ("motor_race_pit", "pit lane raw audio race no commentary"),
-    ("boxing_gym", "boxing gym raw audio training"),
-    ("kindergarten", "kindergarten playground raw audio"),
-    ("dog_shelter", "dog shelter walkthrough raw audio"),
-    ("cattle_auction", "cattle auction raw footage"),
-    ("carnival", "carnival rides raw footage screams"),
-    ("ferry_deck", "ferry deck departure horn gulls raw"),
+    ("street_walk_events", "city walk 4k no talking binaural sirens horns"),
+    ("night_walk", "night city walk no talking ambient sound"),
+    ("market_walk", "market walk no talking ambient sound vendors"),
+    ("harbor_walk", "harbor walk no talking boats gulls ambient"),
+    ("train_station_walk", "train station walk no talking announcements trains"),
+    ("subway_pov", "subway ride pov no talking doors announcements"),
+    ("bus_ride", "bus ride pov no talking city sounds"),
+    ("airport_walk", "airport walk no talking announcements"),
+    ("construction_ambience", "construction site ambience raw sound no talking"),
+    ("workshop_ambience", "workshop ambience no talking tools"),
+    ("farm_ambience", "farm ambience no talking animals morning"),
+    ("village_walk", "village walk no talking animals bells"),
+    ("zoo_walk", "zoo walk no talking animals sounds"),
+    ("kennel_ambience", "dog kennel ambience barking raw"),
+    ("stable_ambience", "horse stable ambience raw sound"),
+    ("kitchen_restaurant", "restaurant kitchen ambience raw no music"),
+    ("cafe_ambience", "cafe ambience raw sound no music dishes"),
+    ("school_ambience", "school corridor ambience bell raw"),
+    ("hospital_ambience", "hospital corridor ambience raw sound"),
+    ("carnival_walk", "carnival walk no talking rides screams"),
+    ("beach_walk_events", "beach walk no talking kids dogs gulls"),
+    ("park_walk_events", "park walk no talking playground dogs"),
+    ("forest_walk_events", "forest walk no talking birds woodpecker chainsaw"),
+    ("river_walk", "river walk no talking boats birds"),
+    ("storm_footage", "storm footage raw sound thunder wind no music"),
+    ("flood_footage", "flood footage raw sound no music"),
+    ("fireworks_street", "fireworks street raw sound crowd dogs"),
+    ("dashcam_raw", "dashcam raw audio city horns sirens no music"),
+    ("bodycam_fire", "firefighter helmet cam raw audio"),
+    ("air_show_raw", "air show raw sound crowd no music"),
+    ("race_track_raw", "race track raw sound pit lane no commentary"),
+    ("ship_deck_raw", "ship deck raw sound horn engine gulls"),
+    ("logging_raw", "logging chainsaw raw sound forest"),
+    ("blacksmith_raw", "blacksmith raw sound hammering no talking"),
+    ("garage_raw", "mechanic garage raw sound air tools"),
+    ("demolition_raw", "demolition raw sound crowd"),
+    ("protest_raw", "protest raw sound drums whistles sirens no commentary"),
+    ("playground_raw", "playground raw sound kids"),
+    ("cattle_raw", "cattle farm raw sound cows tractor"),
+    ("poultry_raw", "chicken farm raw sound rooster"),
 ]
 
 
@@ -103,14 +103,28 @@ def _grab(name: str, vid: str, start: float, sec: int) -> Path | None:
     return raw if raw.exists() else None
 
 
-def music_level(video: Path) -> float:
-    """max BEATs confidence for Music over the clip (audio only)"""
+def audio_check(video: Path):
+    """one BEATs pass: (music max, speech seconds, drawable families rated >= 2)"""
     from src.stage1_audio_extraction import extract_audio
     from src.stage4_audio_event_detection import detect_events
+    from benchmark.gold.build_tool import importance_of
+    from src.labels import is_salient_nonspeech, canonical
+    config.LABEL_FILTER = "depictable"
     with tempfile.TemporaryDirectory() as td:
         media = extract_audio(video, Path(td) / "a.wav", config.SAMPLE_RATE)
         events = detect_events(Path(media.wav_path), threshold=0.1, min_dur=config.AED_MIN_DUR, device="cuda", model="beats")
-    return max((float(e.confidence) for e in events if e.label == "Music"), default=0.0)
+    mus = max((float(e.confidence) for e in events if e.label == "Music"), default=0.0)
+    speech_s = sum(e.end - e.start for e in events if e.label == "Speech" and e.confidence >= 0.5)
+    fams = {}
+    for e in events:
+        if e.confidence < 0.25 or not is_salient_nonspeech(e.label):
+            continue
+        fam = canonical(e.label)
+        if importance_of(e.label.lower(), fam) < 2:
+            continue
+        if fam not in fams or e.confidence > fams[fam]["conf"]:
+            fams[fam] = {"family": fam, "detail": e.label, "conf": round(float(e.confidence), 2), "start": round(e.start, 1), "end": round(e.end, 1)}
+    return mus, speech_s, sorted(fams.values(), key=lambda f: -f["conf"])
 
 
 def _exists(name: str) -> bool:
@@ -147,13 +161,14 @@ def main(want_n: int) -> None:
                 raw = _grab(name, vid, start, sec)
                 if raw is None:
                     print(f"  {name}: skip (no download)", flush=True); continue
+                # one cheap audio pass (~5 s): interviews / news (speech most of the clip), music beds and
+                # clips with fewer than two drawable sound events are dropped (Adam: "interviews or news, no sounds")
                 try:
-                    mus = music_level(raw)
-                    fams = audio_families(raw) if mus < 0.5 else []
+                    mus, speech_s, fams = audio_check(raw)
                 except Exception as e:
                     print(f"  {name}: audio failed ({type(e).__name__})", flush=True); raw.unlink(missing_ok=True); continue
-                if mus >= 0.5 or len(fams) < 2:
-                    print(f"  {name}: drop (music {mus:.2f}, families {[f['family'] for f in fams]})", flush=True); raw.unlink(missing_ok=True); continue
+                if mus >= 0.5 or speech_s > 0.5 * sec or len(fams) < 2:
+                    print(f"  {name}: drop (music {mus:.2f}, speech {speech_s:.0f}s, families {[f['family'] for f in fams]})", flush=True); raw.unlink(missing_ok=True); continue
                 if _accept(raw, name, {"source": "youtube", "url": f"https://www.youtube.com/watch?v={vid}", "title": title,
                                        "targeted": "wave6 (unseen/mixed, real footage, audio check)", "kind": kind,
                                        "cut": f"{int(frac * 100)}%", "music": round(mus, 2), "license": "research use; not redistributed"}):
@@ -161,8 +176,11 @@ def main(want_n: int) -> None:
                     audio[name] = fams
                     AUDIO.write_text(json.dumps(audio, indent=1, ensure_ascii=False), encoding="utf-8")
                     print(f"  {name}: KEEP ({kept}) music {mus:.2f} {[f['family'] for f in fams]}", flush=True)
+                    if kept % 4 == 0:                          # the tool sees new clips every few keeps
+                        subprocess.run([sys.executable, str(ROOT / "benchmark" / "gold" / "build_tool.py")], capture_output=True)
     print(f"done: {kept} kept")
 
 
 if __name__ == "__main__":
-    main(int(sys.argv[1]) if len(sys.argv) > 1 else 40)
+    nums = [a for a in sys.argv[1:] if a.isdigit()]
+    main(int(nums[0]) if nums else 40)
