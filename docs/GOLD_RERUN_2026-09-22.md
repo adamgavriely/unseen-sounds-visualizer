@@ -518,3 +518,41 @@ but cannot touch cross/phantom ones. The half-oracle result (§9a-bis) says extr
 destroy the gate's benefit while extra *hits* create it, so the prediction is that ΔF1 widens even
 though blind F1 dips — but that is a prediction, written down here before the row is scored.
 FlexSED 0.7 is already ruled out at picture level and is not rendered.
+
+
+## 12. v4b6 — the union detector end to end: the prediction failed, and what that tells us
+
+All 139 clips rendered with BEATs 0.35 ∪ FlexSED 0.8, both arms. On the 109 benchmark clips:
+
+| | v4b4 (BEATs only) | **v4b6 (union)** |
+|---|---|---|
+| gated P / R / F1 | 0.25 / 0.34 / **0.287** | 0.21 / **0.37** / 0.27 |
+| blind P / R / F1 | 0.19 / 0.42 / 0.26 | 0.17 / **0.47** / 0.25 |
+| gated hits / blind hits | 27 / 33 | **29 / 37** |
+| ΔF1 gated − blind | +0.028 [−0.022, +0.074] | **+0.026 [−0.020, +0.069]** |
+| ΔP | +0.062 [+0.016, +0.109] | +0.049 [+0.009, +0.092] |
+| ΔR | −0.076 [−0.141, −0.026] | −0.101 [−0.174, −0.041] |
+| Δ false alarms per clip | −0.55 [−0.78, −0.37] | **−0.73 [−1.00, −0.51]** |
+| Δ clean-clip accuracy | +0.172 [+0.082, +0.273] | **+0.190 [+0.094, +0.293]** |
+| ΔF1 vs SILENCE | +0.290 | +0.271 |
+
+**The prediction written in §11 was wrong and is recorded as such:** ΔF1 did not widen (+0.026 vs
++0.028). What did happen is exactly the first half of the prediction — the union finds more sounds
+(blind recall 0.42 → 0.47, gated 0.34 → 0.37; +4 and +2 hits) — and the second half did not follow,
+because the extra detections bring extra *wrong* pictures at the same rate, so precision falls as
+much as recall rises.
+
+**What the row is good for.** The gate's *absolute* work grows with a more generous detector: it now
+removes **0.73** false alarms per clip instead of 0.55 and lifts correct silence by **+0.19** instead
+of +0.17, both significant, and both larger than in v4b4. That is the honest reading — *the more the
+detector hears, the more the gate is worth* — and it is the first direct evidence for it.
+
+**Standing of the two rows.** v4b4 remains the best row on the pre-registered F1 (gated 0.287) and
+stays the headline. v4b6 is the better row on recall (0.37 vs 0.34) and on the gate's measured value,
+and is reported beside it. Neither is selected after the fact: both were declared before running
+(amendments 6 and 8).
+
+**What this leaves.** The binding constraint is no longer detector *recall* (0.45 → 0.57 at the
+detector, 0.34 → 0.37 end to end) but the **label precision** of what the detector adds. The two
+verifier families tried earlier (CLAP top-k, Qwen2-Audio yes/no) both failed their declared bars, so
+the open question for future work is a better plausibility filter, not a better detector.
