@@ -1,0 +1,22 @@
+{
+ "proposed": {
+  "total": 113,
+  "right": 26,
+  "RIGHT": 26,
+  "late": 20,
+  "invented": 18,
+  "gate-leak": 19,
+  "wrong-family": 27,
+  "level-1": 3
+ },
+ "blind_a2i": {
+  "total": 186,
+  "right": 34,
+  "gate-leak": 58,
+  "RIGHT": 34,
+  "late": 26,
+  "invented": 24,
+  "wrong-family": 40,
+  "level-1": 4
+ }
+}
