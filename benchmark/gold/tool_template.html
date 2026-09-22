@@ -83,7 +83,7 @@ select{font:inherit;font-size:14px;padding:4px}
         <label><input type="checkbox" class="ftag" value="no_ambient" checked> no-ambient</label>
         <label><input type="checkbox" class="ftag" value="audioset_strong" checked> slice B</label></span>
       <span class="fl">my tags</span>
-      <span><select id="fDone"><option value="">done or not</option><option value="done">only done</option><option value="todo">only not done</option><option value="bad">only marked bad</option><option value="untouched">done but looks untouched (no sentence, pre-fill unchanged)</option></select>
+      <span><select id="fDone"><option value="">done or not</option><option value="skipped">only skipped (not useful)</option><option value="done">only done</option><option value="todo">only not done</option><option value="bad">only marked bad</option><option value="untouched">done but looks untouched (no sentence, pre-fill unchanged)</option></select>
         <select id="fMine"><option value="">any category</option><option value="unseen_ambient">I tagged: unseen</option><option value="mixed">I tagged: mixed</option><option value="seen_ambient">I tagged: seen</option><option value="no_ambient">I tagged: no-ambient</option></select>
         <input type="text" id="fSound" size="16" placeholder="sound label, e.g. dog">
         <label><input type="checkbox" id="fImp1"> needed sounds are all importance 1</label></span>
@@ -118,7 +118,7 @@ select{font:inherit;font-size:14px;padding:4px}
     </div>
     <textarea id="note" placeholder="optional note (why it was hard, what was ambiguous)" style="min-height:40px;margin-top:6px"></textarea>
   </div>
-  <div class="nav"><button id="markDone" class="primary">Mark done and next</button> <button id="undoDone" class="small" title="this clip goes back to 'not done'; your sounds and sentence are kept">undo done (this clip)</button><span class="status" id="saved"></span></div>
+  <div class="nav"><button id="markDone" class="primary">Mark done and next</button> <button id="skipClip" title="checked, not useful: hidden from the list (it stays in the export as skipped)">not useful — skip</button> <button id="undoDone" class="small" title="this clip goes back to 'not done'; your sounds and sentence are kept">undo done (this clip)</button><span class="status" id="saved"></span></div>
 </main>
 
 <aside>
@@ -289,7 +289,8 @@ const CLIPS = /*__CLIPS__*/[];
       if($("fSet").value === "wave2" && !(c.wave >= 5)) return false;
       if($("fSet").value === "seen1" && !((a && a.sounds) || []).some(s => (s.obvious || s.visible) && imp(s.importance) === 1)) return false;
       if($("fSet").value === "any1" && !(a && a.done && !a.bad && (a.sounds || []).some(s => imp(s.importance) === 1))) return false;
-      const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false; if(dn === "untouched" && !(isDone && untouched(a))) return false;
+      const dn = $("fDone").value; const isBad = !!(a && a.bad), isDone = !!(a && a.done) && !isBad; const isSkip = !!(a && a.skipped) && !isDone;
+      if(dn === "skipped") return isSkip; if(isSkip) return false; if(dn === "done" && !isDone) return false; if(dn === "todo" && (isDone || isBad)) return false; if(dn === "bad" && !isBad) return false; if(dn === "untouched" && !(isDone && untouched(a))) return false;
       if(c.parked && !$("fParked").checked && !(a && (a.done || a.bad))) return false;
       const mine = $("fMine").value; if(mine && !(a && category(a) === mine)) return false;
       const q = $("fSound").value.trim().toLowerCase(); if(q && !((a && a.sounds) || []).some(s => ((s.label||"") + " " + (s.family||"")).toLowerCase().includes(q))) return false;
@@ -320,7 +321,8 @@ const CLIPS = /*__CLIPS__*/[];
     if(!confirm("Un-mark done on " + hit.length + " clip(s)? " + hit.map(c => c.id).join(", "))) return;
     hit.forEach(c => { data[c.id].done = false; }); save(); renderProgress(); renderClip(); $("status").textContent = "un-marked " + hit.length + " clip(s): " + hit.map(c => c.id).join(", "); });
   $("undoDone").addEventListener("click", ()=>{ const a = current(); a.done = false; touch(); renderProgress(); $("saved").textContent = "un-marked"; });
-  $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); const left = !view().includes(idx); goStep(1); if(left) $("status").textContent = "marked done — it left the list because the filter is \"only not done\""; });
+  $("skipClip").addEventListener("click", ()=>{ const a = current(); a.skipped = true; a.done = false; touch(); renderProgress(); goStep(1); $("status").textContent = "skipped (not useful)"; });
+  $("markDone").addEventListener("click", ()=>{ const a = current(); a.done = true; a.skipped = false; a.annotator = $("who").value.trim() || "AG"; touch(); renderProgress(); const left = !view().includes(idx); goStep(1); if(left) $("status").textContent = "marked done — it left the list because the filter is \"only not done\""; });
   $("who").addEventListener("change", ()=>{ touch(); renderProgress(); });
   document.addEventListener("keydown", e=>{ const tag = (e.target.tagName||"").toLowerCase(); if(tag==="input"||tag==="textarea"||tag==="select") return;
     const v = $("video"); const a = current();
