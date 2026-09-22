@@ -767,3 +767,44 @@ pictures.
 48%; that was wrong and is recorded as such). Detection 11 (six where no detector hears the family
 anywhere in the clip, five where the family is heard only at another moment), timing 5 (three of
 them pictures that arrive 0.84-1.90 s EARLY), gate 3, label filter 2.
+
+## Amendment 11 — a per-family bar for the second detector (2026-09-23, before the calibration runs)
+
+**The problem, measured on presence only.** For the 78 needed sounds rated >= 2 whose family is in
+FlexSED's 215-family vocabulary, FlexSED's score AT the sound has median 0.75 and spans 0.01-0.98.
+The single global bar of 0.8 therefore refuses 46 of 78 real sounds (59%); 0.7 refuses 41%, 0.6
+refuses 33%. The score scale is family-dependent -- Chainsaw, Bell, Train and Siren reach 0.96-0.99
+while Dog never exceeds 0.56 and Owl never 0.34 anywhere in the 139 clips -- so one number cannot
+serve every family. (A further 24 needed sounds are outside the vocabulary altogether; that is a
+separate, reported limitation, not addressed here.)
+
+**Why this is not the family whitelist again.** The whitelist failed (DEV 61% -> TEST 30%) because
+it was a per-family binary fitted on DEV gold, about one sound per family. The bars here are fitted
+on the 280-clip AudioSet-Strong calibration set in data/input/audioset_calib, which the gold never
+touches: the overlap between those 280 ids and the 111 AudioSet ids in benchmark/gold/audioset_slice.json
+was checked before anything ran and is **zero**.
+
+**Criterion, fixed now -- the same one that set every other detector's bar** (benchmark/detector_calib.py,
+"the loosest grid bar whose false spans per minute do not exceed BEATs at 0.35 on the same clips"),
+applied per family instead of globally, on the grid 0.05..0.95 step 0.05.
+
+**Minimum support, fixed now.** A family gets its own bar only where the calibration set contains at
+least **K = 8** positive spans of that family. Otherwise the global bar stands. The number of
+families that actually receive a per-family bar will be reported, whatever it is.
+
+**The veto scales with the bar.** tau was frozen at 0.3 against a bar of 0.8. Where a family's bar
+moves, its veto moves with it at the same ratio, tau_family = 0.375 x bar_family. This adds no new
+free parameter.
+
+**Both arms.** Per-family bars and the veto are stage-4 changes; blind_a2i is re-rendered with the
+same detector, or the paired difference on TEST is not a comparison of gates.
+
+**One TEST look.** Amendment 11 is folded into amendment 10's single look: the per-family cell joins
+the DEV grid and is selected by the same minimum-cost rule. If it is not selected on DEV, it is
+reported as tested and not adopted, and TEST is never read for it.
+
+**Known threat, recorded before the result.** AudioSet-Strong labels are incomplete: a real but
+unlabelled sound counts as a false positive, which pushes a bar upward. This biases exactly against
+the quiet background families the amendment is meant to recover, so the procedure is conservative in
+the direction that matters, and any failure to recover them cannot be claimed as evidence that the
+sounds are absent.
