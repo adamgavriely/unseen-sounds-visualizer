@@ -199,7 +199,11 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                 for i, lab in enumerate(flabels):
                     b = bars.get(canonical(lab))
                     if b and b > 0 and abs(b - fbar) > 1e-9:
-                        ffw[:, i] = ffw[:, i] * (fbar / float(b))
+                        # clipped at 1.0: the rescaling exists to move the THRESHOLD, and the
+                        # peak value survives as spec.confidence, which ranks sounds for the panel's
+                        # limited rows. A family scaled by 0.8/0.15 would otherwise reach 5.3 and
+                        # outrank every unscaled sound for a slot.
+                        ffw[:, i] = np.minimum(ffw[:, i] * (fbar / float(b)), 1.0)
                         n += 1
                 print(f"       [stage4] per-family bars applied to {n} of {len(flabels)} queries", flush=True)
             fev = _extract_events(ffw, ftimes, flabels, fbar, None, min_dur,
