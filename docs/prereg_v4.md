@@ -711,3 +711,35 @@ picture accuracy (23 % of the pictures it shows are right) this system is worth 
 wrong picture is cheap relative to a missed sound, and the gate always makes it cheaper than drawing
 everything.** That is the number the thesis should argue about, and it is reported in both
 directions.
+
+## Amendment 10 — stage 4 as the joint bottleneck (2026-09-23, written BEFORE the sweep)
+
+The error taxonomy on the adopted detector (v4b6, 109 benchmark clips) attributes 70 of 114 wrong
+pictures (61%) to naming, and the corrected miss attribution on DEV attributes 11 of 21 misses to
+"no event of this family covering the onset". Stage 4 therefore owns both sides of the viewer cost,
+and the three knobs below are swept **jointly on DEV only**, with one TEST look afterwards.
+
+Knobs (all read from caches already on disk; nothing is refitted per family, per clip or per label):
+
+  tau   cross-detector veto. A picture is dropped when FlexSED's score for that family never
+        reaches tau anywhere in the clip. Because FlexSED's own firing bar is 0.8, this can only
+        touch labels FlexSED did not itself raise, so the seven sounds it was adopted to recover
+        cannot be deleted by it. Grid: 0.0, 0.1, 0.2, 0.3, 0.5.
+  bar   FLEXSED_BAR, the score at which FlexSED itself raises an event. Grid: 0.5, 0.6, 0.7, 0.8.
+  duty  a picture is dropped when its family sits above the bar for >= duty of the clip (the
+        "noise of the place"). Grid: none, 0.7, 0.5, 0.4.
+
+**Selection rule, fixed now.** One cell is chosen on DEV: the cell with the lowest viewer cost per
+clip (miss 4, wrong picture 2). Ties are broken by fewer misses, then by the smaller change from the
+current setting (tau 0.0, bar 0.8, duty none). No other statistic selects the cell.
+
+**Go/no-go for TEST, fixed now.** The chosen cell is adopted only if, on TEST:
+  (a) viewer cost per clip is below the silence baseline on the same clips, and
+  (b) recall loss against the current v4b6 setting is at most 2 hits, and
+  (c) the sign of the DEV cost improvement is reproduced.
+If any of the three fails, the result is reported as a failure and v4b6 stands. TEST is read once.
+
+**Recorded in advance:** the display window [-0.5, +1.0] s is NOT changed. Three of the five
+mistimed DEV misses are pictures that arrive 0.84-1.90 s EARLY, which the asymmetric window
+penalises; widening it after seeing that would be fitting the metric to the result. It is reported
+as a limitation instead, and any onset change must win inside the pre-registered window.

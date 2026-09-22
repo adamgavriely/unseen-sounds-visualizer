@@ -1,0 +1,820 @@
+{
+ "rows": [
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Train",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 14.16,
+   "fx_duty": 0.255,
+   "fx_peak": 0.900390625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "ambient_everyday_farm_2166",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 0.14000000000000012,
+   "fx_duty": 0.8,
+   "fx_peak": 0.9267578125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 10.58,
+   "fx_duty": 0.9425,
+   "fx_peak": 0.9287109375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "ambient_temple_india_1438",
+   "label": "Horse",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 14.48,
+   "fx_duty": 0.0,
+   "fx_peak": 0.1470947265625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "label": "Gears",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 0.8,
+   "fx_duty": 0.0,
+   "fx_peak": 0.1099853515625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "label": "Dog",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 3.48,
+   "fx_duty": 0.0,
+   "fx_peak": 0.1893310546875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "as_fireworks_jZ9mYtCA",
+   "label": "Snicker",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.14000000000000012,
+   "fx_duty": 0.0,
+   "fx_peak": 0.154296875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "as_fireworks_jZ9mYtCA",
+   "label": "Fireworks",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 9.45,
+   "fx_duty": 0.0,
+   "fx_peak": 0.264892578125,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "as_glass_oHil9Ip_",
+   "label": "Coin (dropping)",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 8.66,
+   "fx_duty": 0.028,
+   "fx_peak": 0.900390625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_aquarium_walk",
+   "label": "Whale vocalization",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 0.14000000000000012,
+   "fx_duty": 0.0,
+   "fx_peak": 0.1781005859375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_aquarium_walk",
+   "label": "Whale vocalization",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 5.0,
+   "fx_duty": 0.0,
+   "fx_peak": 0.1781005859375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_aquarium_walk",
+   "label": "Whale vocalization",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 22.9,
+   "fx_duty": 0.0,
+   "fx_peak": 0.1781005859375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Chink, clink",
+   "bucket": "invented",
+   "cat": "mixed",
+   "start": 0.14000000000000012,
+   "fx_duty": 0.0,
+   "fx_peak": 0.44287109375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_barbershop",
+   "label": "Buzz",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 0.07000000000000006,
+   "fx_duty": 0.0,
+   "fx_peak": 0.2060546875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_cow_farm",
+   "label": "Cooking",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.48,
+   "fx_duty": 0.0,
+   "fx_peak": 0.001117706298828125,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_cow_farm",
+   "label": "Cooking",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 20.82,
+   "fx_duty": 0.0,
+   "fx_peak": 0.001117706298828125,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_crossing_bells",
+   "label": "Cat",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 0.21999999999999997,
+   "fx_duty": 0.0,
+   "fx_peak": 0.0008339881896972656,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_crossing_bells",
+   "label": "Steam",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 0.21999999999999997,
+   "fx_duty": 0.5882352941176471,
+   "fx_peak": 0.884765625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_favela_rio",
+   "label": "Train",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 3.8,
+   "fx_duty": 0.5514285714285714,
+   "fx_peak": 0.90087890625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_favela_rio",
+   "label": "Bicycle",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 16.7,
+   "fx_duty": 0.11285714285714285,
+   "fx_peak": 0.8369140625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 9.1,
+   "fx_duty": 0.2785714285714286,
+   "fx_peak": 0.91943359375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_laundromat",
+   "label": "Vehicle",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.30000000000000004,
+   "fx_duty": 0.0,
+   "fx_peak": 0.328857421875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_laundromat",
+   "label": "Vehicle",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 14.25,
+   "fx_duty": 0.0,
+   "fx_peak": 0.328857421875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_laundromat",
+   "label": "Vehicle",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 23.25,
+   "fx_duty": 0.0,
+   "fx_peak": 0.328857421875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "b3_pet_shop",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 0.14000000000000012,
+   "fx_duty": 0.6614285714285715,
+   "fx_peak": 0.876953125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_pet_shop",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 7.02,
+   "fx_duty": 0.6614285714285715,
+   "fx_peak": 0.876953125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_pet_shop",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 15.379999999999999,
+   "fx_duty": 0.6614285714285715,
+   "fx_peak": 0.876953125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "b3_pet_shop",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 22.3,
+   "fx_duty": 0.6614285714285715,
+   "fx_peak": 0.876953125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "birds_forest",
+   "label": "Insect",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 15.34,
+   "fx_duty": 0.11555555555555555,
+   "fx_peak": 0.8740234375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "dutch_traffic_kids",
+   "label": "Telephone",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.0,
+   "fx_duty": 0.0,
+   "fx_peak": 0.0022983551025390625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "ly_alarm_qCVdVav",
+   "label": "Power tool",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 4.68,
+   "fx_duty": 0.6977777777777778,
+   "fx_peak": 0.88427734375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "ly_alarm_qCVdVav",
+   "label": "Electric shaver, electric razor",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 11.84,
+   "fx_duty": 0.37555555555555553,
+   "fx_peak": 0.87158203125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "m4_airsoft_24a",
+   "label": "Laughter",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 2.02,
+   "fx_duty": 0.072,
+   "fx_peak": 0.96044921875,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "m4_dog_doorbell_cam_30a",
+   "label": "Dog",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 2.9000000000000004,
+   "fx_duty": 0.0,
+   "fx_peak": 0.481201171875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "m4_film_1917_33a",
+   "label": "Gunshot",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 1.41,
+   "fx_duty": 0.0,
+   "fx_peak": 0.46240234375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "m4_film_1917_33a",
+   "label": "Gunshot",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 10.0,
+   "fx_duty": 0.0,
+   "fx_peak": 0.46240234375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "m4_fire_bodycam_23a",
+   "label": "Vehicle",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 1.75,
+   "fx_duty": 0.058,
+   "fx_peak": 0.8203125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "m4_fire_bodycam_23a",
+   "label": "Bicycle",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 3.24,
+   "fx_duty": 0.52,
+   "fx_peak": 0.86865234375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "m4_fire_bodycam_23a",
+   "label": "Fire",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 3.44,
+   "fx_duty": 0.652,
+   "fx_peak": 0.86767578125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "m4_fire_bodycam_23a",
+   "label": "Bicycle",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 7.76,
+   "fx_duty": 0.52,
+   "fx_peak": 0.86865234375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "m5_horror_conjuring_82",
+   "label": "Tick-tock",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 6.57,
+   "fx_duty": 0.0,
+   "fx_peak": 0.197509765625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "m5_war_fury_25b",
+   "label": "Shout",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 8.42,
+   "fx_duty": 0.034666666666666665,
+   "fx_peak": 0.87646484375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "mc_bridge_scene",
+   "label": "Horse",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 15.34,
+   "fx_duty": 0.0,
+   "fx_peak": 0.2236328125,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "mc_riot_scene",
+   "label": "Bicycle",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 0.0,
+   "fx_duty": 0.625,
+   "fx_peak": 0.87646484375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "movie_junglebook_95",
+   "label": "Bird",
+   "bucket": "invented",
+   "cat": "seen",
+   "start": 13.0,
+   "fx_duty": 0.0,
+   "fx_peak": 0.047698974609375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "movie_junglebook_95",
+   "label": "Honk",
+   "bucket": "invented",
+   "cat": "seen",
+   "start": 14.34,
+   "fx_duty": 0.0,
+   "fx_peak": 0.07745361328125,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "mv_bank_robbery_alarm",
+   "label": "Glass",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 10.65,
+   "fx_duty": 0.0,
+   "fx_peak": 0.06903076171875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "mv_detective_crime_scene",
+   "label": "Snoring",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 2.54,
+   "fx_duty": 0.02736842105263158,
+   "fx_peak": 0.83447265625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Train",
+   "bucket": "invented",
+   "cat": "mixed",
+   "start": 21.48,
+   "fx_duty": 0.06833333333333333,
+   "fx_peak": 0.865234375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Siren",
+   "bucket": "invented",
+   "cat": "mixed",
+   "start": 22.09,
+   "fx_duty": 0.0,
+   "fx_peak": 0.78369140625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "label": "Foghorn",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 4.4,
+   "fx_duty": 0.25166666666666665,
+   "fx_peak": 0.91357421875,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "mv_tornado_scene",
+   "label": "Vehicle",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 7.25,
+   "fx_duty": 0.0,
+   "fx_peak": 0.392822265625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "mv_tornado_scene",
+   "label": "Ice cream truck, ice cream van",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 12.0,
+   "fx_duty": 0.458,
+   "fx_peak": 0.91552734375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "oc_distant_traffic_hill",
+   "label": "Rain",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.84,
+   "fx_duty": 0.48210526315789476,
+   "fx_peak": 0.87353515625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "pdfilm_duckcover_90",
+   "label": "Grunt",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.14000000000000012,
+   "fx_duty": 0.0,
+   "fx_peak": 0.0048675537109375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "un_dog_barking_3doKyrCe",
+   "label": "Vehicle",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 5.5,
+   "fx_duty": 0.0,
+   "fx_peak": 0.53076171875,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "label": "Horse",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 1.7,
+   "fx_duty": 0.0,
+   "fx_peak": 0.025970458984375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "label": "Microwave oven",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 7.24,
+   "fx_duty": 0.094,
+   "fx_peak": 0.9658203125,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "label": "Power windows, electric windows",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 7.24,
+   "fx_duty": 0.094,
+   "fx_peak": 0.9404296875,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "label": "Computer keyboard",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 11.15,
+   "fx_duty": 0.0,
+   "fx_peak": 0.74609375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "un_people_clapping__bAVmK7n",
+   "label": "Shuffling cards",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 1.75,
+   "fx_duty": 0.0,
+   "fx_peak": 0.005710601806640625,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "un_people_clapping__bAVmK7n",
+   "label": "Cash register",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 2.84,
+   "fx_duty": 0.0,
+   "fx_peak": 0.004146575927734375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "un_wind_noise_1OctTl0h",
+   "label": "Ice cream truck, ice cream van",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 0.0,
+   "fx_duty": 0.4776470588235294,
+   "fx_peak": 0.91162109375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "un_wind_noise_1OctTl0h",
+   "label": "Water",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 7.4,
+   "fx_duty": 0.1976470588235294,
+   "fx_peak": 0.8369140625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "un_wind_noise_1OctTl0h",
+   "label": "Ice cream truck, ice cream van",
+   "bucket": "invented",
+   "cat": "no_ambient",
+   "start": 8.16,
+   "fx_duty": 0.4776470588235294,
+   "fx_peak": 0.91162109375,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "w8_dashcam_ambulance_behind_1a",
+   "label": "Whale vocalization",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 10.6,
+   "fx_duty": 0.0,
+   "fx_peak": 0.005062103271484375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "w8_dashcam_avalanche_road_2b",
+   "label": "Train",
+   "bucket": "wrong-family",
+   "cat": "seen",
+   "start": 3.7800000000000002,
+   "fx_duty": 0.0,
+   "fx_peak": 0.466552734375,
+   "detector": "beats-only"
+  },
+  {
+   "clip": "w8_film_hunt_for_red_october_1b",
+   "label": "Alarm",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 0.0,
+   "fx_duty": 0.9529411764705882,
+   "fx_peak": 0.9228515625,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "w8_film_hunt_for_red_october_1b",
+   "label": "Train",
+   "bucket": "wrong-family",
+   "cat": "unseen",
+   "start": 0.06000000000000005,
+   "fx_duty": 0.10588235294117647,
+   "fx_peak": 0.83544921875,
+   "detector": "flexsed+"
+  },
+  {
+   "clip": "w8_kids_fire_alarm_school_1b",
+   "label": "Laughter",
+   "bucket": "wrong-family",
+   "cat": "mixed",
+   "start": 14.06,
+   "fx_duty": 0.04666666666666667,
+   "fx_peak": 0.90283203125,
+   "detector": "flexsed+"
+  }
+ ],
+ "late": [
+  [
+   "ambient_nature_rainforest_7629",
+   "Insect",
+   3.58,
+   0.1
+  ],
+  [
+   "b3_barbershop",
+   "Electric shaver, electric razor",
+   15.24,
+   0.1
+  ],
+  [
+   "b3_pet_shop",
+   "Owl",
+   15.07,
+   0.1
+  ],
+  [
+   "birds_forest",
+   "Bird",
+   -1.29,
+   0.4
+  ],
+  [
+   "ly_alarm_qCVdVav",
+   "Electric toothbrush",
+   3.91,
+   0.2
+  ],
+  [
+   "ly_applause_62ZYD0u",
+   "Crowd",
+   -1.9,
+   1.9
+  ],
+  [
+   "ly_helicopter_-v62cK1",
+   "Vehicle",
+   10.64,
+   0.0
+  ],
+  [
+   "m4_live_fire_26a",
+   "Gunshot",
+   -6.1,
+   2.1
+  ],
+  [
+   "m4_live_fire_26a",
+   "Gunshot",
+   1.54,
+   2.1
+  ],
+  [
+   "mc_thriller_basement",
+   "Water",
+   2.84,
+   0.0
+  ],
+  [
+   "mv_detective_crime_scene",
+   "Alarm",
+   9.22,
+   0.0
+  ],
+  [
+   "mv_protest_scene_movie",
+   "Glass",
+   -6.27,
+   1.0
+  ],
+  [
+   "mv_protest_scene_movie",
+   "Crowd",
+   18.92,
+   0.0
+  ],
+  [
+   "mv_storm_scene_house",
+   "Siren",
+   -1.5,
+   2.6
+  ],
+  [
+   "un_driving_motorcycle_4O3bZRYO",
+   "Laughter",
+   -0.84,
+   2.7
+  ],
+  [
+   "w8_film_hunt_for_red_october_1b",
+   "Sonar",
+   5.26,
+   0.0
+  ],
+  [
+   "w8_hide_wolves_howl_1a",
+   "Baby cry, infant cry",
+   1.36,
+   1.9
+  ],
+  [
+   "w8_kids_fire_alarm_school_1b",
+   "Alarm",
+   13.14,
+   0.0
+  ],
+  [
+   "w8_pet_parrot_phone_ring_2b",
+   "Dog",
+   -0.72,
+   1.3
+  ]
+ ]
+}
