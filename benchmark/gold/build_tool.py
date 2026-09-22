@@ -139,7 +139,14 @@ def build_extra(done=frozenset()):
     m6 = sorted((q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m6_*.mp4")),
                 key=lambda s: (_rank5.get(VLM6.get(s, {}).get("verdict"), 1), s))
     t1 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("t1_*.mp4"))   # wave 7: trailer cuts
-    w8 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("w8_*.mp4"))   # wave 8: Fable's new targets
+    # VLM-only pre-screen results for the trailer cuts (t1_), the Fable scene cuts (m5_ >= 107) and wave 8 (w8_)
+    for _f in ("trailers_vlm.json", "movies3_vlm.json", "wave8_vlm.json"):
+        _q = HERE / _f
+        if _q.exists():
+            VLM5.update(json.loads(_q.read_text(encoding="utf-8")))
+    t1.sort(key=lambda s: (_rank5.get(VLM5.get(s, {}).get("verdict"), 1), s))
+    w8 = sorted((q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("w8_*.mp4")),
+                key=lambda s: (_rank5.get(VLM5.get(s, {}).get("verdict"), 1), s))   # wave 8: Fable's new targets, unseen/mixed first
     for stem in EXTRA_MIXED + m2 + m3 + m4 + m5 + m6 + t1 + w8:
         video = next((p for d in ("_dropped", "unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient")
                       for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
@@ -185,13 +192,13 @@ def build_extra(done=frozenset()):
         # 2026-09-21 night, Adam: wave 1 parked ("park") -- hidden unless done, or "also the parked ones"
         if clip["wave"] in (1, 4) and stem + ".mp4" not in done:
             clip["parked"] = True          # the page still shows a parked clip you marked done
-        if clip["wave"] in (5, 6):
-            clip["vlm"] = (VLM5 if clip["wave"] == 5 else VLM6).get(stem, {}).get("verdict", "")
+        if clip["wave"] in (5, 6, 7, 8):
+            clip["vlm"] = (VLM6 if clip["wave"] == 6 else VLM5).get(stem, {}).get("verdict", "")
             # Adam, 2026-09-22 night: "remove the 106 scenes in m5 and m6; only show the new candidates after
             # Fable's advice" -> m5 scenes 1-106 (and their cuts) and all m6 are parked (a parked clip you marked
             # done stays visible); only the Fable scenes (m5 index >= 107) are shown, seen/empty verdicts parked
             m = re.search(r"_(\d+)[a-d]?$", stem)
-            old_scene = clip["wave"] == 6 or (m is not None and int(m.group(1)) <= 106)
+            old_scene = clip["wave"] == 6 or (clip["wave"] == 5 and m is not None and int(m.group(1)) <= 106)
             if (old_scene or clip["vlm"] in ("seen", "empty")) and stem + ".mp4" not in done:
                 clip["parked"] = True
         if clip["wave"] == 2:

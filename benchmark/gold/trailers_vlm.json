@@ -1,0 +1,4657 @@
+{
+ "t1_10_cloverfield_lanea": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Jingle bell",
+    "family": "Jingle bell",
+    "conf": 0.62,
+    "start": 1.8,
+    "end": 5.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_10_cloverfield_lanec": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.71,
+    "start": 0.3,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.67,
+    "start": 3.8,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.52,
+    "start": 3.0,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_13_hoursa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.62,
+    "start": 2.4,
+    "end": 4.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.5,
+    "start": 2.3,
+    "end": 4.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.47,
+    "start": 2.3,
+    "end": 4.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_13_hoursb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_13_hoursc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.47,
+    "start": 0.0,
+    "end": 2.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_13_hoursd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.42,
+    "start": 4.5,
+    "end": 6.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.34,
+    "start": 6.1,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_65_2023a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_65_2023b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_65_2023c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Raindrop",
+    "family": "Rain",
+    "conf": 0.36,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.28,
+    "start": 0.2,
+    "end": 0.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "t1_65_2023d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_a_quiet_place_day_onea": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.58,
+    "start": 8.0,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.46,
+    "start": 7.6,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Emergency vehicle",
+    "family": "Siren",
+    "conf": 0.42,
+    "start": 4.5,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.42,
+    "start": 4.5,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.4,
+    "start": 3.7,
+    "end": 5.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ambulance (siren)",
+    "family": "Siren",
+    "conf": 0.29,
+    "start": 4.5,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.55,
+    "start": 3.0,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.28,
+    "start": 3.5,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible\n7: not visible\n8: visible"
+ },
+ "t1_a_quiet_place_day_oneb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Police car (siren)",
+    "family": "Siren",
+    "conf": 0.43,
+    "start": 0.5,
+    "end": 1.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.36,
+    "start": 3.3,
+    "end": 5.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_a_quiet_place_day_onec": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.52,
+    "start": 8.7,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.45,
+    "start": 2.8,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Cough",
+    "family": "Cough",
+    "conf": 0.34,
+    "start": 4.3,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Burst, pop",
+    "family": "Burst, pop",
+    "conf": 0.28,
+    "start": 8.7,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible\n4: visible"
+ },
+ "t1_a_quiet_place_day_oned": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.5,
+    "start": 2.2,
+    "end": 4.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.4,
+    "start": 9.3,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.27,
+    "start": 5.0,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_a_quiet_place_part_iia": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.59,
+    "start": 1.9,
+    "end": 4.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.42,
+    "start": 1.5,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.29,
+    "start": 4.1,
+    "end": 5.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.59,
+    "start": 1.5,
+    "end": 3.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "t1_a_quiet_place_part_iib": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_a_quiet_place_part_iic": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Neigh, whinny",
+    "family": "Horse",
+    "conf": 0.63,
+    "start": 7.8,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.88,
+    "start": 4.9,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.68,
+    "start": 6.1,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "t1_a_quiet_place_part_iid": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.46,
+    "start": 9.2,
+    "end": 9.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_all_quiet_on_the_western_froa": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_all_quiet_on_the_western_frob": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Tick",
+    "family": "Tick",
+    "conf": 0.68,
+    "start": 5.2,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Tick-tock",
+    "family": "Tick-tock",
+    "conf": 0.64,
+    "start": 5.2,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "t1_all_quiet_on_the_western_froc": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.41,
+    "start": 1.4,
+    "end": 2.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Bellow",
+    "family": "Bellow",
+    "conf": 0.59,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Yell",
+    "family": "Yell",
+    "conf": 0.46,
+    "start": 0.0,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "t1_all_quiet_on_the_western_frod": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.45,
+    "start": 0.6,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_ambulance_2022a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_ambulance_2022b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_ambulance_2022c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_ambulance_2022d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_american_snipera": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Telephone",
+    "family": "Telephone",
+    "conf": 0.39,
+    "start": 4.5,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_american_sniperc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.39,
+    "start": 0.1,
+    "end": 1.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.32,
+    "start": 2.0,
+    "end": 3.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_annihilationb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Heart murmur",
+    "family": "Heart murmur",
+    "conf": 0.57,
+    "start": 0.3,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_annihilationc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_annihilationd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_arrivalb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_arrivalc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_arrivald": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_band_of_brothersa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.45,
+    "start": 0.2,
+    "end": 3.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.39,
+    "start": 9.1,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_band_of_brothersb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.3,
+    "start": 7.4,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_band_of_brothersc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_band_of_brothersd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.3,
+    "start": 7.0,
+    "end": 9.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_barbariana": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_barbarianc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_barbariand": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_bird_boxa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.4,
+    "start": 0.2,
+    "end": 0.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_bird_boxb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.46,
+    "start": 6.8,
+    "end": 9.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Tick",
+    "family": "Tick",
+    "conf": 0.41,
+    "start": 0.9,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.39,
+    "start": 3.2,
+    "end": 5.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Tick-tock",
+    "family": "Tick-tock",
+    "conf": 0.37,
+    "start": 0.9,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "t1_bird_boxc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Scissors",
+    "family": "Scissors",
+    "conf": 0.45,
+    "start": 4.2,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.3,
+    "start": 5.6,
+    "end": 7.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_cast_awaya": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.34,
+    "start": 6.4,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 4.5,
+    "end": 6.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_cast_awayb": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.8,
+    "start": 0.2,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.72,
+    "start": 0.2,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.7,
+    "start": 0.2,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Train horn",
+    "family": "Train",
+    "conf": 0.63,
+    "start": 0.2,
+    "end": 2.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.46,
+    "start": 0.1,
+    "end": 5.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Yell",
+    "family": "Yell",
+    "conf": 0.41,
+    "start": 3.2,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Bellow",
+    "family": "Bellow",
+    "conf": 0.39,
+    "start": 3.2,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: visible\n7: visible"
+ },
+ "t1_cast_awayc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_cast_awayd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_chernobyl_hboa": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_chernobyl_hbob": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_chernobyl_hboc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_chernobyl_hbod": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_civil_war_2024a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_civil_war_2024b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_civil_war_2024c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_cloverfielda": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Snicker",
+    "family": "Snicker",
+    "conf": 0.4,
+    "start": 4.6,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Laughter",
+    "family": "Laughter",
+    "conf": 0.31,
+    "start": 4.6,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "t1_cloverfieldb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Run",
+    "family": "Footsteps",
+    "conf": 0.49,
+    "start": 1.2,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_cloverfieldd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_codaa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.43,
+    "start": 1.4,
+    "end": 3.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_codab": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_codac": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_codad": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_crawl_2019a": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.37,
+    "start": 8.8,
+    "end": 9.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_crawl_2019b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_crawl_2019c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_crawl_2019d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_deepwater_horizona": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_deepwater_horizonc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.39,
+    "start": 2.8,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_dune_part_twob": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.63,
+    "start": 0.3,
+    "end": 3.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.41,
+    "start": 0.1,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Snort",
+    "family": "Snort",
+    "conf": 0.34,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: visible"
+ },
+ "t1_dune_part_twoc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.41,
+    "start": 5.0,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "unsure"
+   }
+  ],
+  "raw": "1: unsure"
+ },
+ "t1_dune_part_twod": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_everest_2015a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Single-lens reflex camera",
+    "family": "Single-lens reflex camera",
+    "conf": 0.25,
+    "start": 6.8,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_everest_2015b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_everest_2015c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_evil_dead_risea": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.38,
+    "start": 1.4,
+    "end": 3.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_evil_dead_riseb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.4,
+    "start": 3.4,
+    "end": 4.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_evil_dead_risec": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.78,
+    "start": 0.1,
+    "end": 2.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_evil_dead_rised": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Chewing, mastication",
+    "family": "Chewing, mastication",
+    "conf": 0.62,
+    "start": 7.7,
+    "end": 9.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.32,
+    "start": 5.4,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible"
+ },
+ "t1_extraction_2020a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Breaking",
+    "family": "Glass",
+    "conf": 0.55,
+    "start": 1.0,
+    "end": 1.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.33,
+    "start": 0.6,
+    "end": 3.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.29,
+    "start": 0.6,
+    "end": 2.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.29,
+    "start": 3.2,
+    "end": 4.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "t1_extraction_2020c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_extraction_2020d": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.27,
+    "start": 5.1,
+    "end": 5.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Helicopter",
+    "family": "Helicopter",
+    "conf": 0.45,
+    "start": 7.6,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.38,
+    "start": 8.8,
+    "end": 9.8,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.25,
+    "start": 5.7,
+    "end": 7.2,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible\n4: visible"
+ },
+ "t1_godzilla_minus_onea": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.29,
+    "start": 5.2,
+    "end": 6.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_godzilla_minus_oneb": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.4,
+    "start": 8.1,
+    "end": 9.2,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_godzilla_minus_onec": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 4.0,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_godzilla_minus_oned": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_good_time_2017a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.6,
+    "start": 4.2,
+    "end": 6.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.85,
+    "start": 2.1,
+    "end": 4.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Smash, crash",
+    "family": "Glass",
+    "conf": 0.64,
+    "start": 0.8,
+    "end": 1.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "t1_good_time_2017b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Machine gun",
+    "family": "Gunshot",
+    "conf": 0.31,
+    "start": 5.8,
+    "end": 7.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_good_time_2017c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.64,
+    "start": 0.1,
+    "end": 1.5,
+    "importance": 2,
+    "vlm": "unsure"
+   }
+  ],
+  "raw": "1: unsure"
+ },
+ "t1_good_time_2017d": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.82,
+    "start": 0.1,
+    "end": 9.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Heart murmur",
+    "family": "Heart murmur",
+    "conf": 0.28,
+    "start": 3.8,
+    "end": 6.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_green_rooma": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.33,
+    "start": 3.5,
+    "end": 5.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 4.8,
+    "end": 6.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_green_roomb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.45,
+    "start": 3.3,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.26,
+    "start": 0.4,
+    "end": 1.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_green_roomc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_green_roomd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_greenlanda": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.4,
+    "start": 5.5,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.36,
+    "start": 8.6,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.45,
+    "start": 3.4,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible\n3: not visible"
+ },
+ "t1_greenlandc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_greenlandd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.5,
+    "start": 0.0,
+    "end": 3.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.39,
+    "start": 0.7,
+    "end": 3.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Skidding",
+    "family": "Vehicle",
+    "conf": 0.32,
+    "start": 1.1,
+    "end": 2.2,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible"
+ },
+ "t1_hell_or_high_watera": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_hell_or_high_waterb": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.31,
+    "start": 8.5,
+    "end": 9.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_hell_or_high_waterd": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 0.2,
+    "end": 2.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.5,
+    "start": 1.9,
+    "end": 3.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "t1_hereditarya": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_hereditaryb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_hereditaryc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whale vocalization",
+    "family": "Whale vocalization",
+    "conf": 0.31,
+    "start": 6.2,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.26,
+    "start": 5.8,
+    "end": 7.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_hereditaryd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_insidiousa": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.44,
+    "start": 2.7,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Snicker",
+    "family": "Snicker",
+    "conf": 0.33,
+    "start": 0.2,
+    "end": 1.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Baby laughter",
+    "family": "Baby laughter",
+    "conf": 0.3,
+    "start": 1.1,
+    "end": 2.2,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Laughter",
+    "family": "Laughter",
+    "conf": 0.27,
+    "start": 0.2,
+    "end": 2.2,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: visible\n4: visible"
+ },
+ "t1_insidiousb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Baby cry, infant cry",
+    "family": "Baby cry, infant cry",
+    "conf": 0.54,
+    "start": 8.8,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.32,
+    "start": 0.5,
+    "end": 1.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Crying, sobbing",
+    "family": "Crying, sobbing",
+    "conf": 0.3,
+    "start": 8.7,
+    "end": 9.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_insidiousc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_insidiousd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.6,
+    "start": 5.3,
+    "end": 7.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Tick-tock",
+    "family": "Tick-tock",
+    "conf": 0.53,
+    "start": 3.1,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Tick",
+    "family": "Tick",
+    "conf": 0.52,
+    "start": 3.2,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_it_2017a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Thunder",
+    "family": "Thunder",
+    "conf": 0.75,
+    "start": 4.8,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunderstorm",
+    "family": "Thunder",
+    "conf": 0.65,
+    "start": 4.5,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.64,
+    "start": 4.8,
+    "end": 6.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Whale vocalization",
+    "family": "Whale vocalization",
+    "conf": 0.29,
+    "start": 0.3,
+    "end": 0.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Raindrop",
+    "family": "Rain",
+    "conf": 0.29,
+    "start": 4.6,
+    "end": 5.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.27,
+    "start": 4.7,
+    "end": 5.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.27,
+    "start": 6.5,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.38,
+    "start": 1.2,
+    "end": 1.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: visible\n5: not visible\n6: not visible\n7: not visible\n8: not visible"
+ },
+ "t1_it_2017b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.53,
+    "start": 4.4,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_it_2017c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_it_2017d": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Cheering",
+    "family": "Crowd",
+    "conf": 0.41,
+    "start": 3.3,
+    "end": 4.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Children shouting",
+    "family": "Crowd",
+    "conf": 0.31,
+    "start": 3.8,
+    "end": 4.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Crowd",
+    "family": "Crowd",
+    "conf": 0.26,
+    "start": 4.0,
+    "end": 4.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_lone_survivora": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 5.2,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_lone_survivorb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_lone_survivorc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_lone_survivord": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.26,
+    "start": 2.5,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_masters_of_the_aira": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.3,
+    "start": 0.3,
+    "end": 1.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_masters_of_the_airb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.31,
+    "start": 7.8,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.42,
+    "start": 3.8,
+    "end": 5.2,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "t1_masters_of_the_airc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_masters_of_the_aird": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.39,
+    "start": 8.6,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_mission_impossible_fallouta": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.49,
+    "start": 4.4,
+    "end": 7.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.39,
+    "start": 3.7,
+    "end": 4.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_mission_impossible_falloutb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_mission_impossible_falloutc": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.29,
+    "start": 0.4,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.34,
+    "start": 7.2,
+    "end": 8.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "t1_nobody_2021a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.44,
+    "start": 7.1,
+    "end": 9.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.37,
+    "start": 4.1,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_nobody_2021b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_nobody_2021c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.31,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 1.0,
+    "end": 1.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_nobody_2021d": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.38,
+    "start": 5.0,
+    "end": 6.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.31,
+    "start": 4.1,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Machine gun",
+    "family": "Gunshot",
+    "conf": 0.27,
+    "start": 2.2,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Burst, pop",
+    "family": "Burst, pop",
+    "conf": 0.26,
+    "start": 4.7,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "t1_nopea": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_nopeb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.26,
+    "start": 4.2,
+    "end": 5.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_nopec": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_noped": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.28,
+    "start": 8.1,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_panic_rooma": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.52,
+    "start": 8.7,
+    "end": 9.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_panic_roomb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_panic_roomd": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.54,
+    "start": 4.5,
+    "end": 7.0,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_prey_2022a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.41,
+    "start": 7.3,
+    "end": 9.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.3,
+    "start": 4.0,
+    "end": 4.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_prey_2022b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_prey_2022c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_prey_2022d": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.29,
+    "start": 2.4,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_prisonersa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Thunder",
+    "family": "Thunder",
+    "conf": 0.66,
+    "start": 8.2,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain",
+    "family": "Rain",
+    "conf": 0.64,
+    "start": 8.2,
+    "end": 9.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Thunderstorm",
+    "family": "Thunder",
+    "conf": 0.55,
+    "start": 8.2,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Raindrop",
+    "family": "Rain",
+    "conf": 0.38,
+    "start": 8.3,
+    "end": 9.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rain on surface",
+    "family": "Rain",
+    "conf": 0.38,
+    "start": 8.3,
+    "end": 9.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible"
+ },
+ "t1_prisonersb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_prisonersc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_room_2015a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_room_2015b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.49,
+    "start": 4.8,
+    "end": 7.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_room_2015c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_room_2015d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_san_andreasa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Ocean",
+    "family": "Water",
+    "conf": 0.46,
+    "start": 0.9,
+    "end": 2.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.46,
+    "start": 8.9,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Waves, surf",
+    "family": "Water",
+    "conf": 0.4,
+    "start": 0.9,
+    "end": 2.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.28,
+    "start": 6.3,
+    "end": 8.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.31,
+    "start": 0.5,
+    "end": 1.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: visible\n5: not visible"
+ },
+ "t1_san_andreasb": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Train",
+    "family": "Train",
+    "conf": 0.54,
+    "start": 6.8,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Rail transport",
+    "family": "Train",
+    "conf": 0.47,
+    "start": 6.8,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Railroad car, train wagon",
+    "family": "Train",
+    "conf": 0.47,
+    "start": 6.8,
+    "end": 7.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.36,
+    "start": 8.5,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Helicopter",
+    "family": "Helicopter",
+    "conf": 0.4,
+    "start": 7.2,
+    "end": 9.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.31,
+    "start": 8.8,
+    "end": 9.5,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: visible\n5: not visible\n6: visible"
+ },
+ "t1_san_andreasc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_san_andreasd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_shogun_2024a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_shogun_2024b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_shogun_2024c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_shogun_2024d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_sinistera": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Jackhammer",
+    "family": "Jackhammer",
+    "conf": 0.39,
+    "start": 5.5,
+    "end": 8.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Ratchet, pawl",
+    "family": "Ratchet, pawl",
+    "conf": 0.91,
+    "start": 5.0,
+    "end": 6.5,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Gears",
+    "family": "Gears",
+    "conf": 0.86,
+    "start": 5.0,
+    "end": 6.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "t1_sinisterc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_smile_2022a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.28,
+    "start": 0.9,
+    "end": 2.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_smile_2022b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.73,
+    "start": 2.1,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_smile_2022c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_society_of_the_snowb": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.39,
+    "start": 0.1,
+    "end": 1.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_society_of_the_snowc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_society_of_the_snowd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.3,
+    "start": 1.9,
+    "end": 3.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_sound_of_metalb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_sound_of_metalc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Heart murmur",
+    "family": "Heart murmur",
+    "conf": 0.61,
+    "start": 0.3,
+    "end": 2.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.38,
+    "start": 0.9,
+    "end": 2.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_sound_of_metald": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Foghorn",
+    "family": "Foghorn",
+    "conf": 0.47,
+    "start": 5.1,
+    "end": 6.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Bass drum",
+    "family": "Bass drum",
+    "conf": 0.36,
+    "start": 4.2,
+    "end": 4.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible"
+ },
+ "t1_stranger_things_4a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Gunshot, gunfire",
+    "family": "Gunshot",
+    "conf": 0.25,
+    "start": 2.2,
+    "end": 4.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_stranger_things_4b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_stranger_things_4c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_stranger_things_4d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_take_sheltera": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Mallet percussion",
+    "family": "Mallet percussion",
+    "conf": 0.29,
+    "start": 1.5,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_take_shelterb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_take_shelterc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_take_shelterd": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.28,
+    "start": 0.0,
+    "end": 0.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_talk_to_me_2022a": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.47,
+    "start": 7.3,
+    "end": 9.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.36,
+    "start": 7.3,
+    "end": 9.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Dog",
+    "family": "Dog",
+    "conf": 0.42,
+    "start": 6.4,
+    "end": 7.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: not visible"
+ },
+ "t1_the_babadooka": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Tick",
+    "family": "Tick",
+    "conf": 0.54,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Tick-tock",
+    "family": "Tick-tock",
+    "conf": 0.51,
+    "start": 0.2,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Knock",
+    "family": "Knock",
+    "conf": 0.25,
+    "start": 0.9,
+    "end": 2.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_babadookb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_babadookc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.68,
+    "start": 0.3,
+    "end": 2.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_babadookd": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Whale vocalization",
+    "family": "Whale vocalization",
+    "conf": 0.38,
+    "start": 4.2,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Bellow",
+    "family": "Bellow",
+    "conf": 0.31,
+    "start": 7.5,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible"
+ },
+ "t1_the_batman_2022a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_batman_2022b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_batman_2022c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_batman_2022d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_bear_season_2a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Yell",
+    "family": "Yell",
+    "conf": 0.38,
+    "start": 2.2,
+    "end": 3.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Bellow",
+    "family": "Bellow",
+    "conf": 0.33,
+    "start": 2.9,
+    "end": 3.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_bear_season_2b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_bear_season_2c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.59,
+    "start": 5.3,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_bear_season_2d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_covenant_2023a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_covenant_2023b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.63,
+    "start": 0.7,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Mosquito",
+    "family": "Mosquito",
+    "conf": 0.56,
+    "start": 7.8,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Heart murmur",
+    "family": "Heart murmur",
+    "conf": 0.53,
+    "start": 0.2,
+    "end": 2.8,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_covenant_2023c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_covenant_2023d": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.6,
+    "start": 4.2,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.33,
+    "start": 4.2,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "t1_the_descenta": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whimper",
+    "family": "Whimper",
+    "conf": 0.4,
+    "start": 0.8,
+    "end": 2.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Baby cry, infant cry",
+    "family": "Baby cry, infant cry",
+    "conf": 0.34,
+    "start": 0.1,
+    "end": 1.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_descentb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_descentc": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.81,
+    "start": 4.6,
+    "end": 7.5,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Breaking",
+    "family": "Glass",
+    "conf": 0.45,
+    "start": 5.6,
+    "end": 7.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.41,
+    "start": 9.2,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible"
+ },
+ "t1_the_descentd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.37,
+    "start": 1.9,
+    "end": 3.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.27,
+    "start": 3.3,
+    "end": 5.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_impossiblea": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.38,
+    "start": 3.7,
+    "end": 4.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Bang",
+    "family": "Explosion",
+    "conf": 0.37,
+    "start": 4.8,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Burst, pop",
+    "family": "Burst, pop",
+    "conf": 0.26,
+    "start": 3.2,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible"
+ },
+ "t1_the_impossibleb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_impossiblec": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Lullaby",
+    "family": "Lullaby",
+    "conf": 0.28,
+    "start": 4.7,
+    "end": 6.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_impossibled": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_invisible_man_2020a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.84,
+    "start": 4.1,
+    "end": 6.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.49,
+    "start": 2.7,
+    "end": 4.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.48,
+    "start": 3.5,
+    "end": 4.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: visible"
+ },
+ "t1_the_invisible_man_2020b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_invisible_man_2020c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.62,
+    "start": 2.5,
+    "end": 4.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.49,
+    "start": 0.3,
+    "end": 1.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Breaking",
+    "family": "Glass",
+    "conf": 0.43,
+    "start": 2.8,
+    "end": 4.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_invisible_man_2020d": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.55,
+    "start": 0.1,
+    "end": 1.2,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.31,
+    "start": 0.1,
+    "end": 0.5,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_last_of_us_hboa": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Throat clearing",
+    "family": "Throat clearing",
+    "conf": 0.62,
+    "start": 7.2,
+    "end": 8.8,
+    "importance": 2,
+    "vlm": "visible"
+   },
+   {
+    "label": "Cough",
+    "family": "Cough",
+    "conf": 0.36,
+    "start": 7.2,
+    "end": 8.8,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible"
+ },
+ "t1_the_last_of_us_hbob": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_last_of_us_hboc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_othersa": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Gears",
+    "family": "Gears",
+    "conf": 0.35,
+    "start": 7.5,
+    "end": 9.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chink, clink",
+    "family": "Chink, clink",
+    "conf": 0.34,
+    "start": 4.1,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Ratchet, pawl",
+    "family": "Ratchet, pawl",
+    "conf": 0.31,
+    "start": 7.0,
+    "end": 9.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_othersb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_othersc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Roar",
+    "family": "Roar",
+    "conf": 0.59,
+    "start": 0.6,
+    "end": 3.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Roaring cats (lions, tigers)",
+    "family": "Roaring cats (lions, tigers)",
+    "conf": 0.46,
+    "start": 0.8,
+    "end": 3.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_outpost_2020a": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.34,
+    "start": 0.7,
+    "end": 2.0,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_the_outpost_2020b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.47,
+    "start": 4.1,
+    "end": 5.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fusillade",
+    "family": "Gunshot",
+    "conf": 0.33,
+    "start": 6.2,
+    "end": 8.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_outpost_2020c": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.27,
+    "start": 0.7,
+    "end": 2.0,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_the_pianista": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.5,
+    "start": 5.7,
+    "end": 7.0,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Boom",
+    "family": "Explosion",
+    "conf": 0.35,
+    "start": 5.4,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Burst, pop",
+    "family": "Burst, pop",
+    "conf": 0.31,
+    "start": 5.7,
+    "end": 7.0,
+    "importance": 2,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: visible"
+ },
+ "t1_the_pianistb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_pianistc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_pianistd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_revenanta": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_revenantd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.39,
+    "start": 0.8,
+    "end": 1.5,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 4.3,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.29,
+    "start": 5.2,
+    "end": 6.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_ring_2002a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Telephone bell ringing",
+    "family": "Telephone",
+    "conf": 0.72,
+    "start": 1.5,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Telephone",
+    "family": "Telephone",
+    "conf": 0.33,
+    "start": 1.6,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_the_ring_2002b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.36,
+    "start": 6.6,
+    "end": 8.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_ring_2002c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.69,
+    "start": 4.3,
+    "end": 6.5,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Fowl",
+    "family": "Bird",
+    "conf": 0.57,
+    "start": 0.5,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.29,
+    "start": 6.9,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_ring_2002d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_strangersb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.86,
+    "start": 0.0,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.31,
+    "start": 0.5,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.27,
+    "start": 0.7,
+    "end": 1.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_strangersc": {
+  "verdict": "mixed",
+  "unseen": [
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.27,
+    "start": 0.2,
+    "end": 0.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.61,
+    "start": 2.6,
+    "end": 5.8,
+    "importance": 3,
+    "vlm": "visible"
+   },
+   {
+    "label": "Screaming",
+    "family": "Screaming",
+    "conf": 0.35,
+    "start": 8.0,
+    "end": 8.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: visible\n3: not visible"
+ },
+ "t1_the_strangersd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Yell",
+    "family": "Yell",
+    "conf": 0.47,
+    "start": 0.4,
+    "end": 2.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_swarm_2020a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_swarm_2020b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Sigh",
+    "family": "Sigh",
+    "conf": 0.66,
+    "start": 3.6,
+    "end": 5.2,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.46,
+    "start": 1.4,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Gasp",
+    "family": "Gasp",
+    "conf": 0.3,
+    "start": 3.6,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_the_swarm_2020c": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_town_2010a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_town_2010b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Artillery fire",
+    "family": "Gunshot",
+    "conf": 0.46,
+    "start": 3.0,
+    "end": 5.0,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_town_2010c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.45,
+    "start": 1.7,
+    "end": 3.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_the_wave_2015a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_the_wave_2015b": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Siren",
+    "family": "Siren",
+    "conf": 0.79,
+    "start": 8.6,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Civil defense siren",
+    "family": "Siren",
+    "conf": 0.69,
+    "start": 8.6,
+    "end": 9.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.61,
+    "start": 1.4,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Eruption",
+    "family": "Explosion",
+    "conf": 0.45,
+    "start": 2.1,
+    "end": 3.2,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.3,
+    "start": 6.0,
+    "end": 7.0,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Aircraft",
+    "family": "Aircraft",
+    "conf": 0.27,
+    "start": 5.0,
+    "end": 7.0,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible\n5: not visible\n6: not visible"
+ },
+ "t1_the_wave_2015c": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Skidding",
+    "family": "Vehicle",
+    "conf": 0.49,
+    "start": 5.6,
+    "end": 6.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Race car, auto racing",
+    "family": "Vehicle",
+    "conf": 0.35,
+    "start": 5.6,
+    "end": 6.8,
+    "importance": 1,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Tire squeal",
+    "family": "Vehicle",
+    "conf": 0.27,
+    "start": 5.3,
+    "end": 6.8,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Car",
+    "family": "Vehicle",
+    "conf": 0.48,
+    "start": 5.6,
+    "end": 7.2,
+    "importance": 1,
+    "vlm": "visible"
+   },
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.45,
+    "start": 5.2,
+    "end": 7.2,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: not visible\n2: visible\n3: visible\n4: not visible\n5: not visible"
+ },
+ "t1_the_wave_2015d": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shofar",
+    "family": "Shofar",
+    "conf": 0.45,
+    "start": 0.0,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.36,
+    "start": 0.7,
+    "end": 1.5,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_titanica": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_titanicb": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.3,
+    "start": 6.5,
+    "end": 8.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_titanicc": {
+  "verdict": "empty",
+  "unseen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.38,
+    "start": 4.0,
+    "end": 7.2,
+    "importance": 1,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_titanicd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_top_gun_mavericka": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_top_gun_maverickb": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.4,
+    "start": 3.5,
+    "end": 8.0,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_top_gun_maverickc": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Fly, housefly",
+    "family": "Fly, housefly",
+    "conf": 0.41,
+    "start": 7.5,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Bee, wasp, etc.",
+    "family": "Bee, wasp, etc.",
+    "conf": 0.36,
+    "start": 7.5,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Insect",
+    "family": "Insect",
+    "conf": 0.34,
+    "start": 7.5,
+    "end": 9.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible"
+ },
+ "t1_twisters_2024a": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.3,
+    "start": 1.2,
+    "end": 1.8,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_twisters_2024b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_twisters_2024c": {
+  "verdict": "seen",
+  "unseen": [],
+  "seen": [
+   {
+    "label": "Explosion",
+    "family": "Explosion",
+    "conf": 0.58,
+    "start": 2.4,
+    "end": 4.5,
+    "importance": 3,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible"
+ },
+ "t1_uncut_gemsa": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_uncut_gemsb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Heart sounds, heartbeat",
+    "family": "Heart sounds, heartbeat",
+    "conf": 0.68,
+    "start": 1.9,
+    "end": 5.0,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Heart murmur",
+    "family": "Heart murmur",
+    "conf": 0.53,
+    "start": 2.5,
+    "end": 4.2,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_uncut_gemsc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_uncut_gemsd": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_us_2019a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Wind chime",
+    "family": "Bell",
+    "conf": 0.8,
+    "start": 3.2,
+    "end": 4.8,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Chime",
+    "family": "Bell",
+    "conf": 0.78,
+    "start": 1.5,
+    "end": 6.0,
+    "importance": 3,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Sonar",
+    "family": "Sonar",
+    "conf": 0.41,
+    "start": 0.3,
+    "end": 0.8,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Mallet percussion",
+    "family": "Mallet percussion",
+    "conf": 0.29,
+    "start": 6.8,
+    "end": 8.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible\n3: not visible\n4: not visible"
+ },
+ "t1_us_2019b": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_us_2019c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Bang",
+    "family": "Explosion",
+    "conf": 0.26,
+    "start": 7.6,
+    "end": 8.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_us_2019d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_war_of_the_worlds_2005a": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.35,
+    "start": 1.0,
+    "end": 1.5,
+    "importance": 2,
+    "vlm": "not visible"
+   },
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.26,
+    "start": 0.2,
+    "end": 1.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible\n2: not visible"
+ },
+ "t1_war_of_the_worlds_2005c": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.44,
+    "start": 7.4,
+    "end": 8.8,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ },
+ "t1_war_of_the_worlds_2005d": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_wind_rivera": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_wind_riverb": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Whoosh, swoosh, swish",
+    "family": "Whoosh, swoosh, swish",
+    "conf": 0.45,
+    "start": 1.2,
+    "end": 2.5,
+    "importance": 2,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [
+   {
+    "label": "Vehicle",
+    "family": "Vehicle",
+    "conf": 0.47,
+    "start": 4.8,
+    "end": 6.2,
+    "importance": 1,
+    "vlm": "visible"
+   }
+  ],
+  "unsure": [],
+  "raw": "1: visible\n2: not visible"
+ },
+ "t1_wind_riverc": {
+  "verdict": "empty",
+  "unseen": [],
+  "seen": [],
+  "unsure": [],
+  "raw": ""
+ },
+ "t1_wind_riverd": {
+  "verdict": "unseen",
+  "unseen": [
+   {
+    "label": "Shatter",
+    "family": "Glass",
+    "conf": 0.49,
+    "start": 3.6,
+    "end": 5.2,
+    "importance": 3,
+    "vlm": "not visible"
+   }
+  ],
+  "seen": [],
+  "unsure": [],
+  "raw": "1: not visible"
+ }
+}
