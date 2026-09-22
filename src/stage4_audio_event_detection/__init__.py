@@ -172,6 +172,33 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
 
     low = threshold * float(getattr(config, "AED_HYSTERESIS", 1.0))
     events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low)
+    # amendment 8 (2026-09-22): the open-vocabulary second detector, added as a UNION with its own
+    # bar -- BEATs is deaf to sounds that speech or music masks, FlexSED is asked one label at a
+    # time and hears them (docs/GOLD_RERUN_2026-09-22.md sec 10). Both bars are set on Adam's DEV
+    # half; a clip with no cache falls back to BEATs alone.
+    fbar = float(getattr(config, "FLEXSED_BAR", 0) or 0)
+    if fbar > 0:
+        from src.stage4_audio_event_detection import flexsed_infer as FX
+        try:
+            ffw, ftimes, flabels = FX.infer_flexsed(Path(wav_path), device)
+            fev = _extract_events(ffw, ftimes, flabels, fbar, None, min_dur,
+                                  low=fbar * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+            # a family both detectors report at the same moment keeps the earlier onset
+            from src.labels import canonical
+            def key(e):
+                return canonical(e.label)
+            fresh = []
+            for e in fev:
+                twin = [b for b in events if key(b) == key(e) and b.start - 1.0 <= e.end and e.start - 1.0 <= b.end]
+                if twin:
+                    for b in twin:
+                        b.start = min(b.start, e.start)
+                else:
+                    fresh.append(e)
+            print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
+            events = events + fresh
+        except FileNotFoundError as e:
+            print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):
         events = _refine_onsets_cam(Path(wav_path), events, labels, device)
     cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/prereg_v4.md)

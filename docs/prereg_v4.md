@@ -637,3 +637,42 @@ picture of the right family exists outside the ±1 s window), 15 sub-threshold (
   rule {majority of 3, obvious only, obvious OR majority, obvious AND majority, any of 4}. Selected
   by the oracle-gate ΔF1 on DEV (an end-to-end criterion, not a proxy), with the shipped rule kept
   as the headline.
+
+
+## Amendment 8 — 2026-09-22 23:30: the detector changes (declared before the end-to-end run, after the stage-4 numbers and before any v4b6 score)
+
+**Diagnosis.** At every onset where BEATs scored a needed sound below 0.05, BEATs' own top labels
+were Speech 0.58–0.81 or Music 0.48–0.58 — the sound is masked, not out of vocabulary. Compensating
+for that arithmetically (dividing by 1 − max(Speech, Music)) lifts those nine sounds only to
+0.018–0.100, so the fix has to be a detector that is asked about one label at a time.
+
+**FlexSED passed all three rules declared before it was run** (DEV half, 79 clips, 65 needed sounds
+rated ≥ 2; 215 depictable family names as queries, fixed in advance):
+1. *Recovers ≥ 4 of the 9 masked sounds:* **6 of 7 cached** — siren 0.042 → 0.853, footsteps 0.016 →
+   0.695, whistle 0.044 → 0.586 and 0.011 → 0.585, door 0.027 → 0.574, civil-defence siren 0.006 →
+   0.493; hammer 0.019 → 0.194 is the one miss.
+2. *Union adds ≥ 0.05 onset-recall at matched false labels:* BEATs 0.35 ∪ FlexSED 0.8 gives
+   **onset-recall 0.59 at 1.58 false labels per clip**, where BEATs alone needs bar 0.15 and
+   **3.05** false labels to reach 0.57. At the shipped false-label budget the union is +0.14.
+3. *No-ambient false-label rate ≤ 2× BEATs:* 1.33 vs 0.72 per clip = **1.85×**.
+
+**Adopted: `FLEXSED_BAR = 0.8`, union with BEATs at the unchanged bar 0.35** (`config.V4["0"]`,
+`src/stage4_audio_event_detection/flexsed_infer.py`). A family both detectors report at the same
+moment keeps the earlier onset; a clip without a FlexSED cache falls back to BEATs alone.
+
+**Declared row v4b6** = STAGES `590` (depictable filter + 8-s cap + Qwen3.8 gate + the union),
+rendered for real on all 139 clips for proposed and blind_a2i. The pre-registered v4b4 row remains
+the headline; v4b6 is the declared detector-improvement row, and v4b5 (bar 0.15, now superseded) is
+reported as the single-detector alternative at a comparable false-label budget.
+
+**Per-category stage-4 table (DEV), the comparison Adam asked for:**
+
+| config | onset-recall | found-recall | FA/clip | mixed | unseen | seen | no-amb |
+|---|---|---|---|---|---|---|---|
+| BEATs 0.35 (shipped) | 0.45 | 0.60 | 0.73 | 1.00 | 0.33 | 0.83 | 0.72 |
+| BEATs 0.15 | 0.57 | 0.71 | 3.05 | 4.58 | 1.72 | 2.71 | 3.22 |
+| **BEATs 0.35 ∪ FlexSED 0.8** | **0.59** | 0.72 | **1.58** | 2.28 | 1.47 | 1.33 | 1.33 |
+| BEATs 0.35 ∪ FlexSED 0.7 | 0.62 | 0.75 | 2.73 | 4.11 | 2.35 | 2.12 | 2.50 |
+| BEATs 0.15 ∪ FlexSED 0.7 | 0.70 | 0.84 | 4.83 | 7.22 | 3.71 | 3.88 | — |
+
+Onset-recall on the categories that carry needed sounds: mixed 0.44 → 0.52, unseen 0.45 → 0.67.

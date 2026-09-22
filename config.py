@@ -266,7 +266,13 @@ V4 = {
     # "9": the depictable allow-list by ontology branch + an 8-s picture cap (v4ab3 / v4b3, the
     # ten-Fable panel's decisive test, docs/prereg_v4.md)
     "9": {"LABEL_FILTER": "depictable", "MAX_SPAN": 8.0},
+    # "0": the BEATs union with FlexSED (amendment 8), the adopted detector of row v4b6
+    "0": {"FLEXSED_BAR": 0.8},
 }
+# Amendment 8 (2026-09-22): the second, open-vocabulary detector. 0 = off (every row up to v4b5);
+# the adopted union row v4b6 sets 0.8, chosen on Adam's DEV half (onset-recall 0.45 -> 0.59 at
+# 1.58 false labels per clip, where BEATs alone needs 3.05 to reach 0.57).
+FLEXSED_BAR = 0.0
 MAX_SPAN = None               # seconds; None = no cap (v4ab3/v4b3 use 8.0)
 LABEL_FILTER = "lists"        # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 
