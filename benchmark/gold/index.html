@@ -12,7 +12,10 @@ h1{font-size:22px;margin:14px 0 4px}h2{font-size:18px;margin:0}
 .bar input[type=text]{width:180px}
 button{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:5px 11px;cursor:pointer}
 button:hover{background:#eef1f4}button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}button.small{font-size:12px;padding:2px 8px}
-.wrap{display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:20px;max-width:1300px;margin:0 auto}
+.wrap{display:grid;grid-template-columns:300px minmax(0,1fr) 380px;gap:16px;max-width:1600px;margin:0 auto}
+#leftpanel{position:sticky;top:8px;align-self:start;max-height:calc(100vh - 16px);overflow:auto}
+#leftpanel .fgrid{grid-template-columns:1fr}
+#leftpanel .fl{font-weight:600;margin-top:6px}
 video{width:100%;max-width:100%;background:#000;border-radius:8px}
 .meta{font-size:13px;color:var(--muted);margin:4px 0 10px}
 .card{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;margin-bottom:10px}
@@ -47,7 +50,7 @@ select{font:inherit;font-size:14px;padding:4px}
 .fgrid label{margin-right:8px;white-space:nowrap}.fgrid select,.fgrid input[type=text]{font-size:13px;padding:3px 4px;margin-right:6px}
 @media (max-width:700px){.fgrid{grid-template-columns:1fr}}
 .warn{background:var(--amber-soft);color:var(--amber);border-radius:8px;padding:6px 10px;font-size:13px}
-@media (max-width:900px){.wrap{grid-template-columns:1fr}}
+@media (max-width:1100px){.wrap{grid-template-columns:1fr}#leftpanel{position:static;max-height:none}}
 </style>
 </head>
 <body>
@@ -62,14 +65,8 @@ select{font:inherit;font-size:14px;padding:4px}
 </div>
 
 <div class="wrap">
-<main>
+<aside id="leftpanel">
   <div id="goals" class="card" style="padding:8px 12px;margin-bottom:8px;font-size:14px"></div>
-  <div class="nav">
-    <button id="prevBtn">← previous</button>
-    <select id="clipSel"></select>
-    <button id="nextBtn">next →</button>
-    <span class="hint" id="progress"></span>
-  </div>
   <details id="filters" open>
     <summary><b>Filter</b> <span id="fCount"></span> <button id="fReset" class="small" type="button">reset</button></summary>
     <div class="fgrid">
@@ -89,6 +86,14 @@ select{font:inherit;font-size:14px;padding:4px}
         <label><input type="checkbox" id="fImp1"> needed sounds are all importance 1</label></span>
     </div>
   </details>
+</aside>
+<main>
+  <div class="nav">
+    <button id="prevBtn">← previous</button>
+    <select id="clipSel"></select>
+    <button id="nextBtn">next →</button>
+    <span class="hint" id="progress"></span>
+  </div>
   <h2 id="clipName"></h2>
   <div class="meta" id="clipMeta"></div>
   <video id="video" controls preload="metadata"></video>
