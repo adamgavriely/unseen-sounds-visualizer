@@ -235,6 +235,30 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                 before = len(events)
                 events = [e for e in events if peak.get(key(e), 1.0) >= veto]
                 print(f"       [stage4] cross-detector veto (tau {veto}): dropped {before - len(events)} span(s)", flush=True)
+            # Amendment 16 (2026-09-23): the veto above is one-sided -- it asks FlexSED about
+            # labels BEATs raised alone. Nothing asked about labels FLEXSED raised alone, and after
+            # the first veto those became the largest error class, dominated by sustained textures
+            # (Insect, Bicycle, Ice cream van, Power tool) that FlexSED holds above its bar for much
+            # of a clip. A THIRD model settles them: PANNs CNN14, a different architecture trained
+            # differently, scores median 0.424 where FlexSED is right and 0.026 where it is wrong.
+            # The guard is the same as before -- a span BOTH detectors raised is never touched -- so
+            # this can only remove spans that rest on one model's word alone.
+            veto2 = float(getattr(config, "PANNS_VETO", 0) or 0)
+            if veto2 > 0:
+                try:
+                    pfw, _pt, plabels = _infer(Path(wav_path), device)
+                    ppeak = {}
+                    for i, lab in enumerate(plabels):
+                        k = canonical(lab)
+                        ppeak[k] = max(ppeak.get(k, 0.0), float(pfw[:, i].max()))
+                    flex_only = {key(e) for e in fresh}          # raised by FlexSED, not merged into a BEATs span
+                    before2 = len(events)
+                    events = [e for e in events
+                              if key(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2]
+                    print(f"       [stage4] PANNs veto (tau2 {veto2}) on FlexSED-only spans: "
+                          f"dropped {before2 - len(events)} span(s)", flush=True)
+                except Exception as e2:
+                    print(f"       [stage4] PANNs veto unavailable ({type(e2).__name__}: {e2}); skipped", flush=True)
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):

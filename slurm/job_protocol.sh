@@ -65,6 +65,7 @@ SKIP_RENDER="${SKIP_RENDER:-}"
 WORK_TAG="${WORK_TAG:-}"
 FBAR="${FBAR:-}"         # FLEXSED_BAR override (amendment 10: the second detector's own firing bar)
 FAMBARS="${FAMBARS:-}"   # amendment 11: per-family FlexSED bars
+PVETO="${PVETO:-}"       # amendment 16: PANNs veto on FlexSED-only spans
 VETO="${VETO:-}"         # cross-detector veto tau (amendment 10)
 BAR="${BAR:-}"           # display bar override (amendment 6, v4b5: 0.15); AED bar follows at BAR/2
 SYSTEMS="${SYSTEMS:-}"   # e.g. "proposed" or "blind_a2i audio_caption": one system per job when sharding
@@ -106,6 +107,8 @@ if "${FBAR}":                          # amendment 10: FlexSED's own firing bar
     config.FLEXSED_BAR = float("${FBAR}"); print("[v4] FLEXSED_BAR", config.FLEXSED_BAR, flush=True)
 if "${FAMBARS}":
     config.FLEXSED_FAMILY_BARS = "${FAMBARS}"; print("[v4] FLEXSED_FAMILY_BARS", config.FLEXSED_FAMILY_BARS, flush=True)
+if "${PVETO}":
+    config.PANNS_VETO = float("${PVETO}"); print("[v4] PANNS_VETO", config.PANNS_VETO, flush=True)
 if "${VETO}":                          # amendment 10: drop a label the second detector never hears
     config.FLEXSED_VETO = float("${VETO}"); print("[v4] FLEXSED_VETO", config.FLEXSED_VETO, flush=True)
 if "${PSED_BAR}":                      # v4ab2: PSED's own operating point (benchmark/psed_f1_bar.json)
