@@ -1106,3 +1106,20 @@ a genuine oddity of the design and is reported as one.
 adopted 1 (the cross-detector veto), rejected 4 (speech-removal view, onset refinement from the
 residual, family-level gating, the object detector as a second silencing vote), closed on evidence 1
 (onset preference between detectors, only four comparable cases on DEV).
+
+### Amendment 10, replication check (2026-09-23) — PASSES
+
+Before reading any other grid cell, the bar 0.8 / tau 0.3 cell was scored as a replication: the
+scorer-side result was obtained by dropping PICTURES whose family the second detector never hears,
+while the pipeline drops the EVENTS themselves, which also changes what the gate is asked to vote on
+and how the panel assigns its rows. If the two disagreed, every other cell would have to be re-read.
+
+    DEV (49 clips)                 F1     P      R      FA/clip  cost   hits  miss
+    v4b6 (current, no veto)        0.231  0.169  0.364  1.20     4.12   12    21
+    bar 0.8 + veto (pipeline)      0.261  0.203  0.364  0.96     3.63   12    21
+    the same veto, scorer-side                                   3.59   12    21
+    silence                                                      2.69
+
+Difference 0.04 in cost, identical hits and misses. The veto is therefore confirmed end to end, not
+only as a scoring filter: it removes about a quarter of the wrong pictures (FA/clip 1.20 -> 0.96)
+and loses no sound at all on DEV. The remaining grid cells can be read as intended.
