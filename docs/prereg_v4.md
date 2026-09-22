@@ -845,3 +845,39 @@ rate against BEATs' on the same clips with the same incomplete labels -- so an u
 inflates both sides and only the difference in how the two models react to it survives. The
 direction of that residual bias is against the quiet families the amendment targets, so a failure to
 recover them is not evidence that they are absent.
+
+## Amendment 12 — the speech-removal result, and onset refinement as its only surviving use (2026-09-23)
+
+**The completeness test Adam approved, reported as it came out: the residual view FAILS its declared
+rule.** residual = mix - DeepFilterNet3(mix), tagged by BEATs and OR-ed into the union as an extra
+view. Go/no-go, written on 2026-09-22 before the audio was generated: onset-recall >= 0.62, at most
+2.0 false labels per clip, and no rise on the quiet clips. On DEV (79 clips, 65 needed sounds):
+
+    beats@0.35                                 onset 0.45  found 0.60  err 0.35s  false 0.73  (quiet 0.72)
+    beatsres@0.35                              onset 0.60  found 0.72  err 0.15s  false 1.99  (quiet 2.44)
+    beats+beatsres@0.35                        onset 0.63  found 0.75  err 0.15s  false 2.23  (quiet 2.89)
+    beats+flexsed@0.8  (adopted v4b6)          onset 0.57  found 0.69  err 0.18s  false 1.61  (quiet 1.33)
+    beats+flexsed+beatsres@0.35                onset 0.69  found 0.80  err 0.15s  false 3.03  (quiet 3.44)
+    beats+flexsed+beatsres@0.65                onset 0.62  found 0.75  err 0.18s  false 1.80  (quiet 1.61)
+
+Every configuration that reaches the onset bar either breaks the false-label budget or raises false
+labels on the quiet clips, which is the condition that exists precisely to stop a detector buying
+recall with noise. The residual view is **not adopted**. The two reviewers who ranked this idea last
+and capped its value at about two sounds were wrong about the size of the recall gain (0.45 -> 0.60
+alone) and right about the reason it cannot be used.
+
+**What survives, and its rule, fixed now.** Removing the speech halves the median onset error,
+0.35 s -> 0.15 s. That is a property of the residual's timing, not of its label list, so it can be
+used for onset alone: an event already detected on the mix keeps its label, its family and its
+existence, and only its ONSET is re-read from the residual's frame scores for that same family. No
+label is added, none is removed, so the false-label count cannot change -- it is held constant by
+construction, and this sidesteps exactly the condition the residual view failed.
+
+Refinement rule: for an event (label L, onset t0) detected on the mix, take the residual's frame
+scores for canonical(L); find the earliest frame within [t0 - 2.0, t0 + 2.0] s at which that score
+crosses half its local peak; if such a frame exists, move the onset there, otherwise keep t0. The
++/- 2.0 s search window and the half-peak rule are fixed now and are not swept.
+
+**Go/no-go, fixed now.** Adopt only if, on DEV, onset-recall rises by at least 0.05 with the false
+labels per clip unchanged (they cannot change) and the median onset error not worse. It then joins
+amendment 10's DEV grid as one cell and shares its single TEST look.
