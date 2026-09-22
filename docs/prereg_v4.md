@@ -1196,3 +1196,44 @@ cannot be beaten there by construction.
 
 **This is a DEV result and TEST has not been read for it.** The go/no-go fixed in amendment 16
 governs. Both arms are re-rendered at tau2 = 0.05 before the single TEST look.
+
+### Amendment 16, the crossover with a confidence interval (2026-09-23) — the win is NOT significant
+
+A paired clip bootstrap (2000 draws, seed 0) on the same DEV clips:
+
+    unseen (14 clips)   silence - ours at beta=2:  +0.86   95% CI [+0.00, +1.86]   NOT significant
+                        crossover beta 5.00        95% CI [ 2.00,   8.00]
+    all DEV (49 clips)  silence - ours at beta=2:  -0.33   95% CI [-0.86, +0.20]   not significant
+
+**Correction to the DEV outcome above, and to what was reported to Adam.** The point estimate on the
+unseen clips does cross silence (4.00 against 4.86) and the crossover does move from 1.71 to 5.00,
+but on fourteen clips the interval on that gap runs from exactly zero to +1.86. The honest statement
+is therefore: *the gated pipeline's cost on unseen clips is no longer distinguishable from silence,
+having previously been worse, and the point estimate now favours the pipeline* -- not "the pipeline
+beats silence". The crossover's own interval, [2.00, 8.00], has its lower bound at the declared
+operating point, which says the same thing from the other side.
+
+This is the clearest argument yet for more annotated clips, and it is an argument about power, not
+about the method: the effect is the right size and the sample cannot resolve it. Fourteen unseen
+clips in DEV is what the current gold set provides.
+
+### Amendment 16, the TEST threshold written down before the read
+
+From the accidental look recorded earlier, v4b6 on TEST has 17 hits. Go/no-go (b) is inherited from
+amendment 10 and is measured **against v4b6 for the cell as a whole**, so the cell passes only with
+**15 or more hits on TEST**. The veto alone already cost 2 hits there (17 -> 15), and the PANNs veto
+cost one more on DEV, so failing (b) is a live possibility and is written down now so the read is a
+check rather than an interpretation.
+
+**What happens if (b) fails while cost and the unseen category both improve:** that is not a "v4b6
+stands" outcome. It is reported as "the cross-detector veto adopted, the PANNs veto tested and not
+adopted on the declared recall rule, with its cost and category results reported in full". The
+decision rule is not renegotiated after the number is seen.
+
+### Amendment 16, a disclosure about the grid endpoints
+
+The tau2 grid {0.02, 0.05, 0.10} was chosen after reading the 109-clip diagnostic table, which
+contains TEST clips: 0.20 was left out of the grid because that table showed it losing 4 of 15 right
+pictures. The cell WITHIN the grid was then selected on DEV alone. The grid's endpoints are
+therefore mildly informed by TEST and the doc's earlier claim that those numbers were not used is
+too strong. Recorded rather than corrected silently.
