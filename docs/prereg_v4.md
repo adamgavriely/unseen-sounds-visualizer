@@ -808,3 +808,40 @@ unlabelled sound counts as a false positive, which pushes a bar upward. This bia
 the quiet background families the amendment is meant to recover, so the procedure is conservative in
 the direction that matters, and any failure to recover them cannot be claimed as evidence that the
 sounds are absent.
+
+### Amendment 11, clarification (2026-09-23, before any FlexSED calibration score is read)
+
+Three definitions were underspecified and are fixed here, while the calibration job is still running
+and no FlexSED score on the calibration set has been looked at.
+
+**The reference is pooled, the measurement is per family.** BEATs at 0.35 makes 6.39 false spans per
+minute on the calibration set *in total*. Split across 215 families that is 1-2 spans each, and for
+a family BEATs is deaf to it is exactly zero -- so "the loosest bar whose per-family FP/min does not
+exceed BEATs' per-family FP/min" would clamp FlexSED to silence on precisely the families it was
+adopted to recover. Instead: the budget for one family is BEATs' GLOBAL false-span rate divided by
+the number of eligible families, and a family's bar is the loosest grid bar whose own false-span
+rate stays inside that budget.
+
+**Eligibility, counted before the fit.** The calibration set has 46.7 minutes of audio and 235
+labelled families, of which 109 are depictable. At K = 8 positive spans, **27 depictable families
+are eligible**: Tap 113, Bird 102, Dog 99, Tick 69, Vehicle 61, Laughter 51, Alarm 35, Footsteps 33,
+Cricket 22, Insect 20, Shout 19, Door 19, Clapping 19, Water 17, Telephone 16, Bell 15, Crowd 14,
+Gunshot 14, Train 13, Whistle 12, Gobble 10, Snoring 9, Baby laughter 9, Thunder 9, Aircraft 8,
+Basketball bounce 8, Typewriter 8. Everything else keeps the global bar. Hammer and Gasp -- two of
+the six sounds no detector hears -- have no support and are therefore NOT helped by this amendment;
+that is stated now so it cannot be presented later as a success.
+
+**One fallback, not a grid.** Families without a per-family bar use 0.8 and nothing else. With 33
+needed sounds on DEV, a per-family x fallback product would be fitting.
+
+**The training-split question, answered.** The 280 calibration clips are from the AudioSet-Strong
+**eval** split, which benchmark/audioset_detector_eval.py states is held out from the training of
+every detector compared there. FlexSED is trained on AudioSet-Strong, so this matters: on the eval
+split its scores are not inflated by memorisation, and the bars are not anti-conservative. The same
+set set PSED's operating point, so the project's detector bars are all calibrated the same way.
+
+**Incompleteness, kept as a stated limitation.** The criterion is relative -- FlexSED's false-span
+rate against BEATs' on the same clips with the same incomplete labels -- so an unlabelled real sound
+inflates both sides and only the difference in how the two models react to it survives. The
+direction of that residual bias is against the quiet families the amendment targets, so a failure to
+recover them is not evidence that they are absent.
