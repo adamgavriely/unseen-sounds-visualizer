@@ -142,19 +142,21 @@ question implements the "obvious" tick. DEV only (49 clips, 79 sounds rated ≥ 
 
 | gate | rule | seen silenced | needed kept | balanced acc |
 |---|---|---|---|---|
-| **Qwen3.8-27B (v4, SOTA)** | **majority of 3** | **0.37** | 0.86 | **0.62** |
+| **Qwen3.8-27B (v4, SOTA)** | **majority of 3 (declared)** | **0.37** | 0.86 | **0.62** |
 | Qwen3.8-27B | unanimous | 0.19 | 0.97 | 0.58 |
 | Qwen3.8-27B | majority + obvious | 0.40 | 0.81 | 0.60 |
 | Qwen3.8-27B | obvious only | 0.33 | 0.86 | 0.59 |
-| Qwen2.5-VL-7B (v3) | majority | 0.35 | 0.88 | 0.62 | 
-| Qwen2.5-VL-7B | unanimous / obvious | 0.09 / 0.06 | 1.00 | 0.54 / 0.53 |
+| Qwen2.5-VL-7B (v3) | majority | 0.33 | 0.89 | 0.61 |
+| Qwen2.5-VL-7B | unanimous / obvious | 0.10 / 0.07 | 1.00 | 0.55 / 0.54 |
 | OWLv2 concept table (v2) | — | 0.28 | 0.72 | 0.50 (chance) |
 
-(Qwen arms partial while the jobs run — 49/42 clips of 139 at 16:30; the table is refreshed when
-they finish.) Reading: the declared majority-of-3 rule is the best of the four on DEV, so the gate
-rule does not change; the SOTA 27B model and the 7B are level on balanced accuracy but the 27B
-silences more seen sounds at the same recall; the object-detector gate of v2 is at chance and is
-reported as the "older model" baseline.
+Qwen3.8 arm complete (49/49 DEV clips, 79 sounds rated ≥ 2: 43 seen, 36 needed); Qwen2.5-VL 48/49.
+Reading: the declared **majority-of-3 stays** — no variant beats it by more than the DEV noise, and
+"unanimous" barely silences anything (0.19). SOTA vs older: the 27B silences more seen sounds than
+the 7B at a similar balanced accuracy (0.62 vs 0.61) and both are far above the v2 object-detector
+gate, which is at chance (0.50) — that is the stage-2 → stage-5 change this project made, measured.
+The gate's own ceiling is visible here: even the best arm silences only 37 % of the sounds whose
+source the annotator could see, so most visible-source pictures survive by construction.
 
 ### 4e. Stage 7 — judge (Mistral-7B rubric-enforced; Gemma-4-31B now downloaded) — jobs 30968116/117, pending.
 
