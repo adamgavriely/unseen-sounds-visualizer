@@ -70,7 +70,8 @@ scoring — `augmentations.json` is written first — fixed for later jobs).
 Disk: the home quota went from 200 to 400 GB at ~13:20 (223 GB free) — verified with `df`.
 Downloaded on the login node (`hf download`; `huggingface-cli` no longer works): Qwen2.5-VL-7B-Instruct
 (the v3 gate, for the SOTA-vs-old gate test), google/gemma-4-31B-it (the SOTA judge, was blocked
-by disk) — both complete by 13:50. H200 allows 2 jobs per user, L4 4 GPUs per user.
+by disk) — both complete by 13:50; Qwen-Image-2512 (~57 GB) was also pulled for a possible
+generator comparison and was **not** used. H200 allows 2 jobs per user, L4 4 GPUs per user.
 
 ## 4. Per-stage tests
 
@@ -176,12 +177,18 @@ clip-bootstrap (2000 draws, seed 0).
 | cross-trigger / phantom | 47 / 23 | 75 / 34 | 77 / 34 | 0 / 0 |
 | false alarms per clip | **1.65** | 2.20 | 2.23 | 0 |
 | clean-clip accuracy | **0.55** | 0.38 | 0.38 | 1.00 |
+| coverage (declared secondary) | 0.25 | 0.30 | 0.30 | 0 |
 
 Paired differences, gated − blind (109 clips): **ΔF1 +0.028 [−0.022, +0.074]** (P(Δ>0) = 0.86,
 not significant) · ΔP **+0.062 [+0.016, +0.109]** · ΔR **−0.076 [−0.141, −0.026]** · ΔFA/clip
 **−0.55 [−0.78, −0.37]** (a third fewer) · Δ clean-clip accuracy **+0.172 [+0.082, +0.273]** ·
 ΔF0.5 **+0.052 [+0.006, +0.098]** · ΔwF1 +0.006 (null). Against SILENCE: ΔF1 **+0.290
 [+0.199, +0.377]**. Against CAPTION: ΔF1 +0.031 [−0.019, +0.078].
+Other declared secondary rows: `--old-rule` (level-1 needed sounds scored as hits/misses) ΔF1
++0.025 [−0.024, +0.073]; the unanimous-silence re-decision from the logged votes (dry, approximate)
+F1 0.28 vs 0.29 for majority, ΔF1 vs blind +0.022 [−0.020, +0.059] — no better than the declared
+rule, so it stays a sensitivity row; coverage 0.25 vs 0.30 (the gate shows a picture for a smaller
+share of each needed sound's seconds, as expected from its 6 false silences).
 DEV (49) and TEST (60) agree in sign and size: ΔF1 +0.023 / +0.032, ΔFA/clip −0.59 / −0.52,
 Δclean +0.23 / +0.13. Slice B (30 external clips): same false-alarm drop (−0.70/clip) and clean
 gain (+0.25), no F1 gain (−0.020 [−0.100, +0.049]). +3-s late window moves nothing (ΔF1 +0.033).
@@ -254,10 +261,14 @@ gold ticks; a non-empty panel on a clip where nothing is missing is capped at 2)
 | grounded only | 3.04 | 3.24 | 2.75 | −0.201 [−0.396, −0.022] |
 | permissive | 2.77 | 3.35 | 2.96 | −0.576 [−0.856, −0.331] |
 
-By clip category (declared judge): **seen-only clips +0.68 [+0.41, +1.00]** for the gate (2.86 vs
+On the 109 benchmark clips only (same population as the per-sound headline): 2.79 vs 2.81, paired
+−0.018 [−0.229, +0.183]; TEST-60 −0.067 [−0.383, +0.233]. By clip category (declared judge, 139): **seen-only clips +0.68 [+0.41, +1.00]** for the gate (2.86 vs
 2.18) — the gate's purpose, confirmed by an independent LLM; **unseen clips −0.55 [−0.94, −0.18]**
 (1.85 vs 2.39) — the price of its false silences; mixed −0.45 [−1.07, +0.16]; no-ambient identical
 (both stay silent). Net: null.
+
+**Gemma-4-31B (SOTA judge) on the same cached descriptions** — jobs 30968686/687, pending; new tags
+(`v4b4_gemma*`) so the Mistral results are untouched. This is the stage-7 "SOTA vs older" row.
 
 The permissive column is the pre-existing judge bias, declared and measured on 2026-09-19: the
 judge rewards any picture, so a system that stays silent cannot win; that is why the rubric-enforced
