@@ -72,7 +72,7 @@ def main():
     ap.add_argument("--tag", required=True)
     ap.add_argument("--work", default=None)
     ap.add_argument("--rule", default="unanimous")
-    ap.add_argument("--subsets", nargs="+", default=["bench103", "dev54", "test_bench49", "all139", "cat_mixed"])
+    ap.add_argument("--subsets", nargs="+", default=["bench", "dev", "test_bench", "all", "cat_mixed"])
     a = ap.parse_args()
     config.use_v4("59")
     gold = S.load_gold([GOLD])

@@ -453,7 +453,21 @@ two Fables × two rounds, converged).**
 - *Selection hygiene.* No TEST clip is scored twice under different settings; the pre-registered
   row is the headline whatever the tuned row shows.
 
-**Re-run outcome (v4b4 / v4ab4):** _pending — renders submitted 2026-09-22 13:05 (jobs 30967487–92)._
+**Correction to amendment 5 — 2026-09-22 15:10 (before any TEST number was read; arithmetic and one
+scorer line, not the protocol).** (a) The population counts above were taken over done clips
+including the 20 marked bad. Correct: 139 usable = **109 benchmark clips** (49 DEV = usable old
+judge clips; 60 TEST) + **30 slice B** (the AudioSet-Strong ids of `audioset_slice.json`).
+(b) The scorer read only the *obvious* tick for "needed"; the declared rule (amendment 4, metric
+doc, the tool) is needed = not visible **and** not obvious. 22 rows were visible-only; fixed in
+`load_gold` before scoring. Corrected gold: **110 needed sounds rated 2–3 (28 rated 3) in 64
+clips; 139 visible/obvious rated 2–3**; by category 32 mixed / 33 unseen / 44 seen / 30
+no-ambient; DEV 36 needed, TEST-bench 43, slice B 31. (c) The PSED dry-run grid is PSED's raw bar
+{0.10, 0.15, 0.20, 0.25, 0.30} mapped onto display bar 0.35 (the arm's own mechanism), because
+the display bar cannot move PSED's operating point. (d) Scorer subsets are named without counts
+(`bench`, `dev`, `test`, `test_bench`, `sliceB`); each system is scored on the clips it has
+rendered and the paired ΔF1 on the intersection, with the clip counts printed.
+
+**Re-run outcome (v4b4 / v4ab4):** _pending — renders submitted 2026-09-22 13:05 (jobs 30967487–92 and sub-shards)._
 
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 

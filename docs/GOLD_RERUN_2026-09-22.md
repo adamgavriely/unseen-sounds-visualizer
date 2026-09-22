@@ -11,12 +11,17 @@ GPU used; no waiting for his replies. Every decision below was taken with Fable 
 
 | | clips | needed sounds ≥ 2 | visible/obvious ≥ 2 |
 |---|---|---|---|
-| all done, not bad | 139 | 132 (38 rated 3) in 73 clips | 117 |
-| benchmark clips (headline population) | 103 | | |
-| — of which old judge set (DEV-54) | 54 | 44 (49 clips have renders) | |
-| — tagged after the freeze (TEST, benchmark part) | 49 | | |
-| slice B (AudioSet-Strong, external check) | 36 | | |
-| categories by his ticks | 46 unseen · 35 mixed · 46 seen · 31 no-ambient | | |
+| all done, not bad | 139 | 110 (28 rated 3) in 64 clips | 139 |
+| benchmark clips (headline population) | 109 | 79 | 90 |
+| — of which old judge set (DEV) | 49 | 36 | 42 |
+| — tagged after the freeze (TEST, benchmark part) | 60 | 43 | 48 |
+| slice B (AudioSet-Strong, external check) | 30 | 31 | 49 |
+| categories by his ticks | 33 unseen · 32 mixed · 44 seen · 30 no-ambient | | |
+
+**Corrected 15:10** (advisor review): the first counts (103/54/49/36; 132 needed) were taken
+over done clips *including* the 20 bad ones, and the scorer read only the *obvious* tick for
+"needed" (22 visible-only rows were counted as needed — the direction that hides the gate's
+effect). Both fixed before any TEST number was read; recorded in `docs/prereg_v4.md`.
 
 - 25 free-text sound names had no ontology match → alias table `ALIASES` in
   `benchmark/gold/score_per_sound.py` (machinegun → Machine gun, tank shot → Artillery fire, keys
@@ -103,7 +108,7 @@ no-ambient clips" — the anatomy table goes beside the F1 row. Ceiling estimate
 ### 4c. Stage 4 — detector dry run (`benchmark/gold/detector_dry.py`)
 BLIND shown set (detector → filter → families → display timeline, no pictures) for BEATs, PANNs
 CNN14 (v1) and PretrainedSED (raw bars 0.10–0.30, mapped onto display bar 0.35 as the arm does),
-scored per sound. DEV = the 49 usable old judge clips (5 of the 54 are marked bad).
+scored per sound. DEV = the 49 usable old judge clips (5 of the 54 are marked bad). The PSED numbers below were computed with the pre-correction 'needed' definition and are re-run after the correction (section 4c, final).
 
 **Disclosure (mine):** the first PSED pass printed every subset, including the pooled benchmark
 numbers (TEST inside), before I restricted the script to DEV + slice B. The aggregates were seen

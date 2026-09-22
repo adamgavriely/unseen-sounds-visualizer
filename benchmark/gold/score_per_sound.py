@@ -130,7 +130,12 @@ def load_gold(paths):
                 if lab in ("Speech", "Music") or not is_salient_nonspeech(lab) or is_music(lab):
                     continue
                 snds.append({"label": lab, "start": float(s["start"]), "end": float(s["end"]),
-                             "needed": not bool(s.get("obvious", False)), "importance": int(s.get("importance") or 2)})
+                             # needed = the source is neither on screen (visible) nor assumed by a viewer with no
+                             # sound (obvious): amendment 4 / metric doc. Until 2026-09-22 15:00 only the obvious
+                             # tick was read (22 visible-only rows counted as needed) -- corrected before any
+                             # TEST number was read (docs/GOLD_RERUN_2026-09-22.md).
+                             "needed": not (bool(s.get("obvious", False)) or bool(s.get("visible", False))),
+                             "importance": int(s.get("importance") or 2)})
             gold[stem] = snds
     return gold
 
@@ -326,10 +331,12 @@ def subsets_of(gold):
     """named clip subsets declared in amendment 5: population, dev/test, category, pre-screened"""
     from benchmark.gold.detector_dry import clip_path, JUDGE100
     judge = set(JUDGE100.read_text().split()) if JUDGE100.exists() else set()
-    sliceb = {st for st in gold if clip_path(st + ".mp4") is None and clip_path(st + ".webm") is None}
-    subs = {"all139": set(gold), "bench103": set(gold) - sliceb, "sliceB": sliceb,
-            "dev54": set(gold) & judge, "test85": set(gold) - judge,
-            "test_bench49": (set(gold) - judge) - sliceb,
+    slice_file = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
+    ids = {c["id"] for c in json.loads(slice_file.read_text(encoding="utf-8"))["clips"]} if slice_file.exists() else set()
+    sliceb = {st for st in gold if st in ids}                       # slice B = the AudioSet-Strong gold clips
+    subs = {"all": set(gold), "bench": set(gold) - sliceb, "sliceB": sliceb,
+            "dev": set(gold) & judge, "test": set(gold) - judge,
+            "test_bench": (set(gold) - judge) - sliceb,
             "prescreened": {st for st in gold if st.startswith(("m5_", "t1_", "w8_"))}}
     for cat in ("mixed", "unseen", "seen", "no_ambient"):
         subs["cat_" + cat] = {st for st in gold if category(gold[st]) == cat}
@@ -345,7 +352,7 @@ def main():
     ap.add_argument("--early", type=float, default=EARLY)
     ap.add_argument("--out", default=None)
     ap.add_argument("--work", default=None, help="data/work root holding protocol_<system>_<tag> (default: the repo's)")
-    ap.add_argument("--subsets", nargs="+", default=["bench103", "all139", "sliceB", "dev54", "test85", "test_bench49", "prescreened", "cat_mixed", "cat_unseen", "cat_seen", "cat_no_ambient"])
+    ap.add_argument("--subsets", nargs="+", default=["bench", "all", "sliceB", "dev", "test", "test_bench", "prescreened", "cat_mixed", "cat_unseen", "cat_seen", "cat_no_ambient"])
     ap.add_argument("--old-rule", action="store_true", help="sensitivity row: level-1 needed sounds scored as before (hits/misses)")
     a = ap.parse_args()
     global OLD_RULE
@@ -373,24 +380,29 @@ def main():
                 print(f"[{system}] no rendered clips under {root}"); continue
             per[system] = rows
         for sub in a.subsets:
-            stems = sorted(st for st in subs.get(sub, set()) if all(st in per[s] for s in per))
-            if not stems:
+            if not any(st in subs.get(sub, set()) for rows in per.values() for st in rows):
                 continue
-            print(f"--- subset {sub}: {len(stems)} clips (late <= {late:.1f} s)")
+            print(f"--- subset {sub}: {len(subs[sub])} clips in the gold (late <= {late:.1f} s); each system on the clips it has rendered")
             for system, rows in per.items():
+                stems = sorted(st for st in subs[sub] if st in rows)
+                if not stems:
+                    continue
                 rs = [rows[st] for st in stems]
                 agg = aggregate(rs); lo, hi = boot_ci(rs)
                 agg["F1_ci"] = [lo, hi]
                 results[f"{sub}|{system}@late{late}"] = agg
-                print(f"[{system:13s}] needed {agg['needed']:3d} | P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
+                print(f"[{system:13s}] clips {len(stems):3d} needed {agg['needed']:3d} | P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} [{lo:.2f},{hi:.2f}] F0.5 {agg['F0.5']:.2f} F2 {agg['F2']:.2f} | "
                       f"F1-ph {agg['F1_phantom']:.2f} | wF1 {agg['wF1']:.2f} (n3={agg['n_level3']}) dc {agg['dontcare']} coll {agg['collisions']} | cov {agg['coverage'] if agg['coverage'] is None else round(agg['coverage'], 2)} | "
                       f"hit {agg['hits']} miss {agg['misses']} vis {agg['visible']} cross {agg['cross']} ph {agg['phantom']} dup {agg['dup']} | "
                       f"late-med {agg['median_late'] if agg['median_late'] is None else round(agg['median_late'], 2)} | clean {agg['clean_acc'] if agg['clean_acc'] is None else round(agg['clean_acc'], 2)}")
             if "proposed" in per:
                 for other in [s for s in per if s != "proposed"]:
-                    d, lo, hi, pgt = paired_ci([per["proposed"][st] for st in stems], [per[other][st] for st in stems])
-                    results[f"{sub}|delta_proposed-{other}@late{late}"] = {"dF1": d, "ci": [lo, hi], "p_gt0": pgt, "clips": len(stems)}
-                    print(f"   dF1 proposed - {other:13s} = {d:+.3f} [{lo:+.3f}, {hi:+.3f}]  P(d>0)={pgt:.3f}")
+                    both = sorted(st for st in subs[sub] if st in per["proposed"] and st in per[other])
+                    if not both:
+                        continue
+                    d, lo, hi, pgt = paired_ci([per["proposed"][st] for st in both], [per[other][st] for st in both])
+                    results[f"{sub}|delta_proposed-{other}@late{late}"] = {"dF1": d, "ci": [lo, hi], "p_gt0": pgt, "clips": len(both)}
+                    print(f"   dF1 proposed - {other:13s} = {d:+.3f} [{lo:+.3f}, {hi:+.3f}]  P(d>0)={pgt:.3f}  (paired on {len(both)} clips)")
     if PLACEHOLDERS:
         print(f"[pictures] {PLACEHOLDERS} augmentation(s) were placeholder panels (failed generation); counted as shown")
     out = Path(a.out) if a.out else _ROOT / "benchmark" / "gold" / f"per_sound_{a.tag}.json"
