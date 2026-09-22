@@ -93,7 +93,19 @@ def clips_to_run(limit):
     """
     if CLIP_DIR:
         vids = sorted(p for p in Path(CLIP_DIR).iterdir() if p.suffix.lower() in (".mp4", ".webm", ".mkv", ".mov"))
-        return [(p, "unseen_ambient") for p in vids][: limit or None]
+        # the human tag (read by the grounded judge: seen / no-ambient -> silence is right) comes
+        # from the per-sound gold when the clip is in it (category from the ticks, amendment 5);
+        # slice B and unlabelled folders keep the fixed "unseen" tag as before
+        gold_tags = {}
+        gold_file = _ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"
+        if gold_file.exists():
+            try:
+                from benchmark.gold.score_per_sound import load_gold, category
+                names = {"no_ambient": "no_ambient", "seen": "seen_ambient", "mixed": "mixed", "unseen": "unseen_ambient"}
+                gold_tags = {stem: names[category(snds)] for stem, snds in load_gold([gold_file]).items()}
+            except Exception as e:
+                print(f"[clips] gold tags unavailable ({type(e).__name__}: {e})", flush=True)
+        return [(p, gold_tags.get(p.stem, "unseen_ambient")) for p in vids][: limit or None]
     tags = json.loads(TAGS.read_text(encoding="utf-8")) if TAGS.exists() else {}
     by_tag = {}
     for key, val in tags.items():

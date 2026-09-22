@@ -48,8 +48,10 @@ def gold_clips():
 
 
 def wav_for(p: Path) -> Path:
-    WAV.mkdir(parents=True, exist_ok=True)
-    w = WAV / (p.stem + ".wav")
+    """data/work/gold_wav/<stem>/audio.wav -- the PSED cache is keyed by the wav's parent folder
+    name (psed_infer.infer_psed), as in a pipeline work dir"""
+    (WAV / p.stem).mkdir(parents=True, exist_ok=True)
+    w = WAV / p.stem / "audio.wav"
     if not w.exists():
         subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(p), "-ac", "1", "-ar", str(config.SAMPLE_RATE), str(w)], check=True)
     return w
@@ -98,9 +100,20 @@ def events_for(stem: str, det: str, bar: float, wav: Path):
         z = np.load((FW if det == "beats" else FW.with_name("panns_fw")) / f"{stem}.npz")
         fw, times, labels = z["fw"], z["times"], [str(x) for x in z["labels"]]
     else:
-        from src.stage4_audio_event_detection.psed_infer import infer_psed
-        config.PSED_BAR = bar                      # the arm pins PSED's bar to the display bar (V4["4"])
-        fw, times, labels = infer_psed(wav, "cpu")
+        # PSED: its own raw bar is the operating point (0.15 = the AudioSet-Strong calibration of the
+        # declared arm); rescale() maps that bar onto the display bar 0.35, so "bar" here is PSED's
+        # raw bar and the display side stays at 0.35 (the pipeline's V4["4"] behaviour)
+        from src.stage4_audio_event_detection import psed_infer as PI
+        PI._BAR = float(bar); config.PSED_BAR = float(bar); config.DISPLAY_THRESHOLD = 0.35
+        fw, times, labels = PI.infer_psed(wav, "cpu")
+        bar = 0.35
+    if det == "corr":
+        # two-detector corroboration (Fables C+D, 2026-09-22): a BEATs event is kept only if
+        # PretrainedSED fires the same family overlapping it; audio only, applied to both systems
+        be = events_for(stem, "beats", bar, wav)
+        ps = events_for(stem, "psed", 0.15, wav)     # PSED at its declared calibration
+        config.AED_MODEL = "beats"; config.ONSET_CAM = True
+        return [e for e in be if any(S.same_family(e.label, f.label) and f.start - 1.0 <= e.end and e.start - 1.0 <= f.end for f in ps)]
     thr = 0.5 * bar                                 # config.AED_THRESHOLD = 0.5 * DISPLAY_THRESHOLD
     ev = _extract_events(fw, times, labels, thr, None, config.AED_MIN_DUR, low=thr * float(getattr(config, "AED_HYSTERESIS", 1.0)))
     if det == "beats" and getattr(config, "ONSET_CAM", True):
@@ -144,13 +157,15 @@ def main():
     for det in a.detectors:
         if det == "psed":
             config.AED_MODEL = "psed"; config.ONSET_CAM = False
+        else:
+            config.AED_MODEL = "beats"; config.ONSET_CAM = True
         for bar in a.bars:
             rows = {}
             for name in gold_clips():
                 p = clip_path(name)
                 if p is None or p.stem not in gold:
                     continue
-                if det == "psed" and not (PSED / f"{p.stem}.npz").exists():
+                if det in ("psed", "corr") and not (PSED / f"{p.stem}.npz").exists():
                     continue
                 if det == "panns" and not (FW.with_name("panns_fw") / f"{p.stem}.npz").exists():
                     continue
@@ -158,7 +173,7 @@ def main():
                 import soundfile as sf
                 dur = sf.info(str(wav)).duration
                 ev = events_for(p.stem, det, bar, wav)
-                pics = blind_pictures(ev, dur, bar)
+                pics = blind_pictures(ev, dur, 0.35 if det == "psed" else bar)
                 rows[p.stem] = S.score_clip(gold[p.stem], pics)
             subsets = {"all": list(rows), "dev54": [s for s in rows if s in judge],
                        "sliceB": [s for s in rows if clip_path(s + ".mp4") is None and not (s.endswith(".webm"))],
