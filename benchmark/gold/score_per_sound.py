@@ -43,11 +43,28 @@ MIN_DEPTH = 1                   # top-level categories ("Sounds of things", "Ani
 
 
 # ----------------------------------------------------------------------------- gold
+# Annotator free text that no ontology name contains (export of 2026-09-22, 25 rows); each is
+# mapped to the AudioSet class a picture of that sound would carry. Declared before any score was
+# read; the raw text stays in the gold file.
+ALIASES = {
+    "machinegun": "Machine gun", "automatic machinegun": "Machine gun", "distant machinegun": "Machine gun",
+    "shots": "Gunshot, gunfire", "tank shot": "Artillery fire",
+    "phone alert": "Cellphone buzz, vibrating alert", "car turn signal": "Tick-tock",
+    "keys jiggle": "Keys jangling", "clank": "Clang", "clank (keychain hits the wall)": "Clang",
+    "steps": "Walk, footsteps", "golf swings / ball strikes": "Whack, thwack",
+    "cooking": "Frying (food)", "placing the ruler (clack / tap)": "Tap",
+    "something moves on the earth making rattling sound": "Rustle", "plastic bags": "Rustle",
+    "dollar couting": "Rustle", "vuvuzela": "Air horn, truck horn", "van driving": "Truck",
+}
+
+
 def resolve_label(text: str) -> str:
     """Map an annotator's free-text family/label to an ontology name: exact, then case-insensitive,
     then the longest ontology name contained in the text ("distant explosion / boom" -> Explosion).
     Unresolved names are returned unchanged (they can never match a picture) and counted."""
     names = _ontology_names()
+    if text.strip().lower() in ALIASES:
+        return ALIASES[text.strip().lower()]
     if text in names:
         return text
     low = text.strip().lower()
@@ -95,6 +112,8 @@ def load_gold(paths):
     for p in paths:
         d = json.loads(Path(p).read_text(encoding="utf-8"))
         for c in d.get("clips", []):
+            if not isinstance(c, dict):     # the tool's export also dumps its UI state (filter values) into the list
+                continue
             if c.get("bad"):            # annotator marked the video as unusable: out of the benchmark
                 continue
             if not c.get("done"):

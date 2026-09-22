@@ -63,6 +63,7 @@ INDEP="${INDEP:-}"
 GROUNDED="${GROUNDED:-}"
 SKIP_RENDER="${SKIP_RENDER:-}"
 WORK_TAG="${WORK_TAG:-}"
+SYSTEMS="${SYSTEMS:-}"   # e.g. "proposed" or "blind_a2i audio_caption": one system per job when sharding
 V4="${V4:-}"          # v4 stages to apply (docs/prereg_v4.md), e.g. "4", "45", "23456"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
 
@@ -101,6 +102,7 @@ config.TRANSCRIBE = True           # the reference-builder needs the transcript
 argv = ["run_protocol", "--phase", phase]
 if "${LIMIT}":    argv += ["--limit", "${LIMIT}"]
 if "${CLIP_DIR}": argv += ["--clip-dir", "${CLIP_DIR}"]
+if "${SYSTEMS}":  argv += ["--systems"] + "${SYSTEMS}".split()
 if "${TAG}":      argv += ["--tag", "${TAG}"]
 if "${JUDGE}":    argv += ["--judge", "${JUDGE}"]
 if "${DESC_TAG}": argv += ["--desc-tag", "${DESC_TAG}"]

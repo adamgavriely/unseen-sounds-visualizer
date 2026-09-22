@@ -29,8 +29,13 @@ BAR = {"masked_recall": 0.095, "clear_recall": 0.326, "fp_per_min": 5.2, "real_k
        "onset_mae": 0.35, "onset_within_0.5": 0.80, "onset_matched": 66}
 
 
-def cache():
+def cache(clip_dir=None):
     from src.stage4_audio_event_detection.psed_infer import cache_clips, CACHE_DIR
+    if clip_dir:                       # one folder only (the gold-set shards, slurm/job_gold.sh)
+        items = sorted(p for p in Path(clip_dir).iterdir() if p.suffix.lower() in (".mp4", ".mkv", ".webm", ".mov"))
+        n = cache_clips(items, out_dir=CACHE_DIR)
+        print(f"[cache] {clip_dir}: {len(items)} clips, {n} scored now -> {CACHE_DIR}", flush=True)
+        return
     from benchmark.flam_v2 import eval_stems, EVAL_SPLIT
     from benchmark.gate_dev_sweep import CACHE_DIR as VOTES, _find_clip
     sets = {
@@ -121,8 +126,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cache", action="store_true")
     ap.add_argument("--eval", action="store_true")
+    ap.add_argument("--clip-dir", default=None)
     a = ap.parse_args()
-    if a.cache: cache()
+    if a.cache: cache(a.clip_dir)
     if a.eval: evaluate()
 
 

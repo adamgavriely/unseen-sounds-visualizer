@@ -413,7 +413,47 @@ visible sounds he had set to 1 under the old note (tool filter "re-rate") and of
 textures he had set to 2. The category split of the 100 clips may shift; the judge set stays
 frozen; per-sound rows are reported per category.
 
-**Re-run outcome (v4b4 / v4ab4):** _pending — after the annotation export._
+**Amendment 5 — 2026-09-22 13:00 (the gold set and the selection protocol; declared after the
+annotation export was received and before any render finished or any per-sound score was read;
+two Fables × two rounds, converged).**
+- *Gold.* `benchmark/gold/annotations/gold_AG.json` (export 2026-09-22 09:23 UTC, one annotator):
+  139 usable clips (done, not marked bad) = **103 benchmark clips** (54 of the frozen judge set,
+  49 tagged afterwards — some found by the VLM-only pre-screen, disclosed) + **36 slice-B clips**
+  (AudioSet-Strong, human-timed labels). 283 sounds; 132 needed sounds rated 2–3 (38 rated 3) in
+  73 clips; 117 visible/obvious sounds rated 2–3; 44 sounds rated 1 (don't-care). Free-text names
+  that no ontology name contains (25 rows) are mapped by a fixed alias table in the scorer
+  (`ALIASES`), written before scoring. Gold rows whose label the depictable filter blocks
+  ("Sound effect", "Generic impact sounds", "Drum", "Wind", "Mechanisms") are neither hit nor miss
+  (12 rows, 4 of them needed ≥ 2); counted and disclosed.
+- *Rows.* v4b4 = the declared configuration (BEATs, display bar 0.35, Qwen3.8-27B gate, majority
+  of 3 votes, depictable filter of amendment 2, 8-s cap, FLUX) rendered **for real** on all 139
+  clips for proposed / blind_a2i / audio_caption (sharded over GPUs, `slurm/job_gold.sh`); SILENCE
+  = zero pictures, no render. v4ab4 = the PSED detector arm, same everything, rendered in parallel
+  (arm rule of 2026-09-19 unchanged: adopt iff gated ΔF1 > 0 with the clip-bootstrap CI not below
+  0). The gated system is not derived from the blind row by masking (stretch cuts, scene-shaped
+  prompts and panel packing differ); the render logs the raw gate votes per sound per stretch
+  (`gate_votes.json`) so the silence rule can be re-decided on CPU afterwards.
+- *Headline.* Unweighted F1-strict over needed sounds rated 2–3 on the **103 benchmark clips**,
+  proposed vs blind_a2i, with the **paired** clip-bootstrap CI of ΔF1 (same resampled clips for
+  both systems, 2000 draws, seed 0); SILENCE and audio_caption rows beside. Pre-declared
+  breakdowns: old-54 / new-49 / VLM-pre-screened subset; by category (mixed, unseen, seen,
+  no-ambient); slice B (36) as the external check; all 139 pooled as one supplementary line;
+  weighted F1, `--old-rule`, F1-phantom, late windows 1 s / 3 s, coverage, collisions, clean-clip
+  accuracy as sensitivity rows; the LLM judge (Mistral, rubric-enforced) as the secondary metric.
+- *Per-stage tests and knob selection (Adam: "choose the models that work best for our data").*
+  DEV = the 54 old judge clips (every earlier choice already touched them); TEST = the 85 new
+  clips, opened once. (4) Detector: BEATs vs PSED × display bar {0.25, 0.30, 0.35, 0.40} scored at
+  detector level (recall of needed gold sounds at the onset window, false alarms per clip) on DEV
+  + slice B as a diagnostic; the row-level verdict stays the arm rule. (5) Gate: per-sound
+  visibility accuracy of the logged votes against the annotator's visible/obvious ticks, rule
+  {majority, unanimous} × kinds {on, off}, dry-scored on DEV only. Filter and cap: not tuned. A
+  setting replaces the declared one **only if** its DEV gain in needed-sound F1 exceeds the DEV
+  bootstrap half-width and survives a 5-fold cross-fit over the 139; the frozen choice is committed
+  before TEST is scored; the tuned variant is reported as a secondary row, never as the headline.
+- *Selection hygiene.* No TEST clip is scored twice under different settings; the pre-registered
+  row is the headline whatever the tuned row shows.
+
+**Re-run outcome (v4b4 / v4ab4):** _pending — renders submitted 2026-09-22 13:05 (jobs 30967487–92)._
 
 ## Judge v4 (rubric-enforced) — declared 2026-09-19 01:50, before any 100-clip v4 score
 

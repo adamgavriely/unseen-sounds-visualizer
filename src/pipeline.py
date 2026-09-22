@@ -107,6 +107,7 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                                    display_threshold=config.DISPLAY_THRESHOLD)
         finally:
             reason.unload()
+        _dump(work / "gate_votes.json", list(reason.VOTE_LOG))
     specs = generate_augmentations(specs, work, backend=config.GEN_BACKEND,
                                    size=config.RESOLUTION, model=config.GEN_MODEL,
                                    device=config.DEVICE)

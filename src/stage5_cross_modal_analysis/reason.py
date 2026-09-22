@@ -467,6 +467,7 @@ DESCRIBE_PROMPT = (
 
 
 LAST_VOTES: dict = {}
+VOTE_LOG: list = []          # every (sound, stretch) verdict of the current clip, see decide_subjects
 
 
 def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
@@ -874,6 +875,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     pictures ("Hiccup on the phone, slow down, how many"). Speech is evidence for the
     gate, never material for the illustrator.
     """
+    VOTE_LOG.clear()
     from src.stage2_video_understanding import _sample_frames, _sample_frames_at
     active = [s for s in specs if s.augment]
     # Marginal sounds the gate declined on confidence alone. Speech can rescue one of
@@ -951,6 +953,11 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 if id(spec) not in spec_frames:
                     spec_frames[id(spec)] = win
                 seen, named = _sound_is_visible(spec.event_label, win, mdl, proc, sim_device)
+                # raw votes per sound per stretch, dumped by the pipeline to gate_votes.json so
+                # that the silence rule (majority / unanimous) can be re-decided on CPU later
+                VOTE_LOG.append({"label": spec.event_label, "start": spec.start, "end": spec.end,
+                                 "confidence": spec.confidence, "stretch": [a, b], "seen": bool(seen),
+                                 **{k: v for k, v in LAST_VOTES.items()}})
                 if seen:
                     named_any = named
                 else:
