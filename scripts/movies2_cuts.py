@@ -28,6 +28,8 @@ from scripts.source_batch3 import _accept, STAGE
 import scripts.source_batch3 as b3
 from scripts.source_movies2 import QUERIES, _pick, SEC, FMT, LOG
 from scripts.source_mixed2 import audio_families
+import os
+NOAUDIO = bool(os.environ.get("NOAUDIO"))
 
 AUDIO = ROOT / "benchmark" / "gold" / "movies2_audio.json"
 BENCH = ROOT / "data" / "input" / "benchmark"
@@ -98,8 +100,10 @@ def main() -> None:
             raw = _grab(name, vid, start)
             if raw is None:
                 print(f"  {name}: skip (no download)", flush=True); continue
+            if NOAUDIO:                      # Adam 2026-09-22: "don't even check audio, just give me scenes"
+                fams = [{"family": "?", "detail": "?", "conf": 0, "start": 0, "end": 0}]
             try:
-                fams = audio_families(raw)
+                fams = fams if NOAUDIO else audio_families(raw)
             except Exception as e:
                 print(f"  {name}: audio failed ({type(e).__name__})", flush=True); raw.unlink(missing_ok=True); continue
             if not fams:
@@ -108,7 +112,8 @@ def main() -> None:
                                    "targeted": "movies2 cuts (audio check only)", "genre": genre, "film": film, "cut": f"{int(frac * 100)}%",
                                    "license": "research use; not redistributed"}):
                 kept += 1
-                audio[name] = fams
+                if not NOAUDIO:
+                    audio[name] = fams
                 AUDIO.write_text(json.dumps(audio, indent=1, ensure_ascii=False), encoding="utf-8")
                 print(f"  {name}: KEEP ({kept}) {[f['family'] for f in fams]}", flush=True)
     print(f"done: {kept} kept")

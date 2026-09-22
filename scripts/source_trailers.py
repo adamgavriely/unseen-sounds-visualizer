@@ -25,6 +25,8 @@ if str(ROOT) not in sys.path:
 import scripts.source_batch3 as b3
 from scripts.source_batch3 import STAGE, _probe, _meanvol, _frame
 from scripts.source_mixed2 import audio_families
+import os
+NOAUDIO = bool(os.environ.get("NOAUDIO"))
 
 LOG = ROOT / "benchmark" / "sources_trailers.json"
 AUDIO = ROOT / "benchmark" / "gold" / "trailers_audio.json"
@@ -127,8 +129,10 @@ def main() -> None:
             raw = _grab(name, vid, start)
             if raw is None:
                 print(f"  {name}: skip (no download)", flush=True); continue
+            if NOAUDIO:                      # Adam 2026-09-22: "don't even check audio, just give me scenes"
+                fams = [{"family": "?", "detail": "?", "conf": 0, "start": 0, "end": 0}]
             try:
-                fams = audio_families(raw)
+                fams = fams if NOAUDIO else audio_families(raw)
             except Exception as e:
                 print(f"  {name}: audio failed ({type(e).__name__})", flush=True); raw.unlink(missing_ok=True); continue
             if not fams:
@@ -137,7 +141,8 @@ def main() -> None:
                                       "targeted": "trailers (10-s cuts, audio check only)", "film": film, "cut": f"{int(frac * 100)}%",
                                       "license": "research use; not redistributed"}):
                 kept += 1
-                audio[name] = fams
+                if not NOAUDIO:
+                    audio[name] = fams
                 AUDIO.write_text(json.dumps(audio, indent=1, ensure_ascii=False), encoding="utf-8")
                 print(f"  {name}: KEEP ({kept}) {[f['family'] for f in fams]}", flush=True)
     print(f"done: {kept} kept")
