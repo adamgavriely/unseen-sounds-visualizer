@@ -35,5 +35,5 @@ if [ "${PSED_PRE:-}" = "1" ]; then
     conda activate psed && HF_HUB_OFFLINE=1 python -m benchmark.psed_eval --cache --clip-dir "$SHARD"
     conda deactivate
 fi
-env V4="$V4" GEN="${GEN:-diffusion}" CLIP_DIR="$SHARD" TAG="$TAG" SYSTEMS="$SYSTEMS" PHASE=render bash slurm/job_protocol.sh
+env V4="$V4" BAR="${BAR:-}" GEN="${GEN:-diffusion}" CLIP_DIR="$SHARD" TAG="$TAG" SYSTEMS="$SYSTEMS" PHASE=render bash slurm/job_protocol.sh
 echo "DONE shard=$SHARD systems=$SYSTEMS tag=$TAG"

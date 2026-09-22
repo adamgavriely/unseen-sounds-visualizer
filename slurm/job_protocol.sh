@@ -63,6 +63,7 @@ INDEP="${INDEP:-}"
 GROUNDED="${GROUNDED:-}"
 SKIP_RENDER="${SKIP_RENDER:-}"
 WORK_TAG="${WORK_TAG:-}"
+BAR="${BAR:-}"           # display bar override (amendment 6, v4b5: 0.15); AED bar follows at BAR/2
 SYSTEMS="${SYSTEMS:-}"   # e.g. "proposed" or "blind_a2i audio_caption": one system per job when sharding
 V4="${V4:-}"          # v4 stages to apply (docs/prereg_v4.md), e.g. "4", "45", "23456"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
@@ -94,6 +95,10 @@ config.VIDEO_BACKEND = "owlv2"     # strongest visibility backend (see sec:findi
 config.GEN_BACKEND = "${GEN}"
 if "${V4}":
     print("[v4]", config.use_v4("${V4}"), flush=True)
+if "${BAR}":                           # amendment 6 (v4b5): the detector's admission bar
+    config.DISPLAY_THRESHOLD = float("${BAR}"); config.AUGMENT_THRESHOLD = float("${BAR}")
+    config.AED_THRESHOLD = 0.5 * float("${BAR}")
+    print("[v4] display bar", config.DISPLAY_THRESHOLD, "aed", config.AED_THRESHOLD, flush=True)
 if "${PSED_BAR}":                      # v4ab2: PSED's own operating point (benchmark/psed_f1_bar.json)
     config.PSED_BAR = float("${PSED_BAR}"); print("[v4] PSED_BAR", config.PSED_BAR, flush=True)
 # GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which
