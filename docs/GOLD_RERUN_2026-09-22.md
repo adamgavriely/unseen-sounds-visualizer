@@ -714,3 +714,32 @@ this project fixes that; it is the residual error of OWLv2 + the VLM and is repo
 The DEV bar sweep (0.8 / 0.7 / 0.6 at tau 0.3, both arms), and FlexSED over the 280-clip AudioSet
 calibration set for the per-family bar of amendment 11. Twenty-seven depictable families qualify at
 K = 8 and were named in the prereg before the fit.
+
+### 15b. Per category (Adam: "report also per category"), DEV, with and without the veto
+
+    category      clips   cell               P      R      FA/clip   cost     silence
+    unseen         14     v4b6            0.273  0.353     1.14     5.43       4.86
+    unseen         14     + veto          0.286  0.353     1.07     5.29
+    mixed           8     v4b6            0.273  0.375     2.00     9.00       8.00
+    mixed           8     + veto          0.286  0.375     1.88     8.75
+    seen           18     v4b6            0.000  0.000     0.94     1.89       0.00
+    seen           18     + veto          0.000  0.000     0.61     1.22
+    no_ambient      9     v4b6            0.000  0.000     1.11     2.22       0.00
+    no_ambient      9     + veto          0.000  0.000     0.67     1.33
+
+The veto helps most exactly where it should: on the clips that contain nothing to draw it cuts the
+wasted pictures by 35% (seen) and 40% (no_ambient), while leaving recall untouched on the clips that
+do contain needed sounds.
+
+**This is also the honest explanation of why silence still wins at beta = 2.** Twenty-seven of the
+forty-nine DEV clips -- the seen and no-ambient halves of the benchmark -- contain no sound that
+should ever be drawn, and against those clips silence is unbeatable by definition: its cost is
+exactly zero and ours is whatever we put on screen. On the clips the project is actually about, the
+unseen ones, the gap is 5.29 against 4.86.
+
+So the remaining headroom is a clip-level question, not a picture-level one: after the veto we still
+spend about 1.2 cost per clip on 27 clips where the right answer is to show nothing at all. A
+mechanism that recognised those clips would recover roughly 0.66 of cost overall and bring 3.63 down
+to about 2.97, within touching distance of silence at 2.69 -- and it would do it without giving up a
+single sound, because there are no sounds to give up there. That is the next thing worth building,
+and it is a different question from any of the five tested today.
