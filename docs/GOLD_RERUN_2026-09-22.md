@@ -105,20 +105,34 @@ significant pooled ΔF1, visible pictures halved, hits lost, precision gains on 
 no-ambient clips" — the anatomy table goes beside the F1 row. Ceiling estimate on DEV: ΔF1 ≈
 +0.04–0.06.
 
-### 4c. Stage 4 — detector dry run (`benchmark/gold/detector_dry.py`)
-BLIND shown set (detector → filter → families → display timeline, no pictures) for BEATs, PANNs
-CNN14 (v1) and PretrainedSED (raw bars 0.10–0.30, mapped onto display bar 0.35 as the arm does),
-scored per sound. DEV = the 49 usable old judge clips (5 of the 54 are marked bad). The PSED numbers below were computed with the pre-correction 'needed' definition and are re-run after the correction (section 4c, final).
+### 4c. Stage 4 — detector dry run (`benchmark/gold/detector_dry.py`) — DONE 16:10
+BLIND shown set (detector → depictable filter → families → display timeline, no pictures), the
+per-sound rules, corrected "needed". Verified exact: on 12 DEV clips the dry BEATs@0.35 set equals
+the real v4b4 blind render picture for picture. DEV = 49 clips, 33 scorable needed sounds;
+slice B = 32 clips / 29. (One PSED pass had printed pooled subsets before the DEV-only
+restriction — disclosed above.)
 
-**Disclosure (mine):** the first PSED pass printed every subset, including the pooled benchmark
-numbers (TEST inside), before I restricted the script to DEV + slice B. The aggregates were seen
-once (blind dry-run only, no gated number); every selection below uses DEV numbers only, as
-declared, and this is recorded so the reader can discount it.
+| detector (bar) | DEV P | DEV R | DEV F1 | vis / cross / phantom | slice B F1 |
+|---|---|---|---|---|---|
+| **BEATs 0.35 (declared)** | 0.13 | 0.33 | **0.19** | 20 / 33 / 18 | 0.14 |
+| BEATs 0.25 / 0.30 / 0.40 | | 0.42 / 0.36 / 0.33 | 0.18 / 0.19 / 0.21 | | 0.14 / 0.14 / 0.14 |
+| PSED raw 0.15 (declared arm) | 0.17 | 0.52 | 0.25 | 25 / 41 / 20 | 0.24 |
+| PSED raw 0.10 / 0.20 / 0.25 / 0.30 | | 0.52 / 0.42 / 0.42 / 0.42 | 0.21 / 0.24 / 0.26 / **0.31** | 0.30: 20 / 15 / 8 | 0.16 / 0.27 / 0.24 / 0.22 |
+| PANNs CNN14 (v1) 0.25 / 0.30 / 0.35 / 0.40 | | 0.30 / 0.30 / 0.27 / 0.24 | 0.20 / 0.22 / 0.24 / 0.23 | 0.35: 11 / 15 / 7 | 0.21 / 0.19 / 0.15 / 0.13 |
+| BEATs ∧ PSED corroboration 0.25–0.40 | | 0.27 / 0.27 / 0.24 / 0.24 | 0.17 / 0.19 / 0.18 / 0.19 | 0.35: 18 / 21 / 7 | 0.17 / 0.17 / 0.18 / 0.16 |
 
-PSED, blind dry-run, DEV-49 (41 needed sounds): raw bar 0.10 → F1 0.23 (R 0.49, P 0.15);
-0.15 (the declared arm) → 0.28 (R 0.49, P 0.19); 0.20 → 0.27; 0.25 → 0.30; 0.30 → 0.35 (R 0.41,
-P 0.30; cross 15, phantom 8, visible 17). Slice B: 0.15 → 0.20 · 0.30 → 0.25.
-BEATs / PANNs / corroboration: _pending (CAM onset refinement is slow on the local GPU)_.
+Reading: the SOTA frame-level detector (PSED) has the best recall of needed sounds (0.52 vs
+0.33) and, at raw bar 0.30, the best DEV F1 (+0.12 over the declared BEATs 0.35 — larger than the
+DEV bootstrap half-width ≈ 0.10). Corroboration by two detectors cuts phantoms (18 → 7) but costs
+recall and does not raise F1 — dropped. PANNs (v1) is between.
+
+**Cross-fit (`benchmark/gold/crossfit.py`, 5 folds stratified by category over all 139, config
+picked on 4 folds by blind F1, scored out-of-fold):** picks per fold = psed@0.20, corr@0.40,
+psed@0.30, psed@0.20, psed@0.20 — unstable; pooled out-of-fold F1 0.229 vs declared BEATs 0.228,
+ΔF1 +0.001 [−0.068, +0.071] (seed 1: +0.003 [−0.055, +0.062]). **The DEV gain does not survive the
+cross-fit → by the declared rule the detector stays BEATs 0.35 for the headline; PSED remains the
+pre-registered arm (v4ab4, raw bar 0.15) and this table is the stage-4 sensitivity report.**
+(Config chosen on all 139 would be psed@0.20, F1 0.256 — reported, not adopted.)
 
 ### 4d. Stage 5 — gate accuracy on the gold sounds (`benchmark/gold/gate_gold.py`)
 Every gold sound (label, time) is put to the visibility check exactly as the pipeline asks it;
