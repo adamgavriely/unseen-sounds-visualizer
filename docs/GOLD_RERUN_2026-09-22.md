@@ -366,3 +366,78 @@ annotator's own rubric in the prompt (the "obvious" vote, which already lifts ba
 0.65 → 0.68 and ΔF1 +0.067 → +0.097). Audio-visual segmentation models and the training-free MLLM
 sound-source-localization recipes assume the source is *on* screen, which is the case this system
 already handles.
+
+
+## 10. Improving the detector — measured on Adam's gold set only (2026-09-22 evening)
+
+**Split (declared first, `benchmark/gold/split.json`).** DEV 79 clips / TEST 60, stratified by the
+four categories, by population (his clips vs the AudioSet slice) and by sourcing wave:
+
+| | DEV | TEST |
+|---|---|---|
+| mixed | 19 clips · 32 needed | 13 · 17 |
+| unseen | 19 · 37 | 14 · 24 |
+| seen-only | 24 · 0 | 20 · 0 |
+| no-ambient | 17 · 0 | 13 · 0 |
+
+### 10a. Why BEATs misses what it misses — measured, not guessed
+
+At **all nine** onsets where BEATs scored the needed sound below 0.05, its own top labels are
+**Speech 0.58–0.81 or Music 0.48–0.58**, and the target is not in the top six: hammer 0.019 under
+Music 0.48 + Speech 0.40; civil-defence siren 0.006 under Speech 0.81; crow 0.049 under Speech 0.72;
+door 0.027 under Speech 0.80. The sounds are **masked by speech and music**, not missing from the
+vocabulary. A cheap fix suggested by the reviewers — re-score each frame by 1 − max(Speech, Music) —
+lifts those nine only from 0.006–0.049 to 0.018–0.100, far below any usable bar, so **compensation
+does not rescue them**; only a detector that is asked about one label at a time (FlexSED) or one
+that hears a separated signal can.
+
+### 10b. BEATs bar sweep on DEV, per category (the numbers Adam asked for)
+
+| bar | onset-recall | found-recall | false labels/clip | mixed FA | unseen FA | seen FA | no-amb FA |
+|---|---|---|---|---|---|---|---|
+| 0.35 (shipped) | 0.45 | 0.60 | 0.73 | 1.00 | 0.33 | 0.83 | 0.72 |
+| 0.25 | 0.49 | 0.68 | 1.46 | 1.89 | 0.67 | 1.62 | 1.56 |
+| **0.15** | **0.57** | 0.71 | 3.05 | 4.58 | 1.72 | 2.71 | 3.22 |
+| 0.10 | 0.58 | 0.71 | 5.48 | 7.89 | 3.61 | 4.79 | 5.72 |
+| 0.05 | 0.65 | 0.83 | 12.28 | 15.26 | 9.22 | 11.25 | 13.56 |
+
+Per category, onset-recall at 0.35 is 0.44 on mixed clips and 0.45 on unseen; at 0.15 it is 0.53 and
+0.61. The knee is at **0.15** (0.15 → 0.10 buys +0.01 recall for +2.4 false labels/clip). False
+labels are worst exactly on the mixed clips (4.6/clip at 0.15) — and they are a long tail, not a few
+bad labels: 241 false labels on DEV spread over **138 distinct names**, the most common being
+Vehicle 18, Horse 6, Car 6. So pruning the label map cannot fix them.
+
+**Onset is a separate, constant loss:** found-recall exceeds onset-recall by ~0.14 at every bar.
+Re-anchoring each detection to the nearest spectral-flux novelty peak inside it halves the median
+onset error (0.20 s → 0.10 s at bar 0.15) and moves recall by +0.03 at 0.15 and −0.03 at 0.35 —
+noise at 65 DEV sounds, so it is reported, not adopted, and the paired onset-error test is the
+honest one.
+
+### 10c. FlexSED (open-vocabulary, text-queried) — running
+
+`benchmark/gold/flexsed_run.py` queries FlexSED with the project's own 215 **depictable family
+names** (fixed in advance, never the gold labels) and caches frame probabilities for all 139 clips.
+Its per-label query cannot be out-voted by Speech/Music, which is exactly the failure in 10a.
+Declared accept/reject rules (before the result): adopt as a **union with per-model calibration**
+(each model keeps its own DEV bar, same-family detections overlapping in time merge, earliest onset
+wins) **iff** it recovers ≥ 4 of the 9 masked sounds **and** the union adds ≥ 0.05 onset-recall over
+BEATs alone at matched false labels **and** its false-label rate on the no-ambient clips is not more
+than twice BEATs'.
+
+### 10d. The gate's decision rule — swept for free on the cached votes
+
+15 rules (stretch {all, majority, any} × vote {majority of 3, obvious, obvious OR majority, obvious
+AND majority, any of 4}), each scored by the oracle-gate ΔF1 on DEV:
+
+| rule | ΔF1 (DEV) | sensitivity | specificity |
+|---|---|---|---|
+| all / obvious-OR-majority | **+0.090 [+0.023, +0.160]** | 0.51 | 0.86 |
+| any / obvious | +0.087 [+0.038, +0.145] | 0.38 | 0.92 |
+| **all / majority of 3 (shipped)** | +0.076 [+0.015, +0.144] | 0.45 | 0.88 |
+| all / obvious-AND-majority | +0.056 [+0.019, +0.097] | 0.24 | 0.95 |
+
+**The shipped rule is already within noise of the best of fifteen.** The only rule that beats it adds
+the "obvious" question (+0.014 ΔF1, +0.06 sensitivity for one extra lost picture on DEV). So the
+video side is near its ceiling: the reviewers' estimate of a no-training ceiling around balanced 0.75
+is consistent with the 0.65–0.70 measured here, and **the remaining headroom is in the detector, not
+in the gate.**

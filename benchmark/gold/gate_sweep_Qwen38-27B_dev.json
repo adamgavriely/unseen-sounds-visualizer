@@ -1,0 +1,152 @@
+[
+ {
+  "stretch": "any",
+  "vote": "any4",
+  "sens": 0.7209302325581395,
+  "spec": 0.6575342465753424,
+  "balanced": 0.689232239566741,
+  "seen": 86,
+  "needed": 73,
+  "lost": 25
+ },
+ {
+  "stretch": "majority",
+  "vote": "any4",
+  "sens": 0.6744186046511628,
+  "spec": 0.684931506849315,
+  "balanced": 0.6796750557502389,
+  "seen": 86,
+  "needed": 73,
+  "lost": 23
+ },
+ {
+  "stretch": "all",
+  "vote": "any4",
+  "sens": 0.6511627906976745,
+  "spec": 0.6986301369863014,
+  "balanced": 0.6748964638419879,
+  "seen": 86,
+  "needed": 73,
+  "lost": 22
+ },
+ {
+  "stretch": "any",
+  "vote": "obvious_or_maj3",
+  "sens": 0.5697674418604651,
+  "spec": 0.821917808219178,
+  "balanced": 0.6958426250398215,
+  "seen": 86,
+  "needed": 73,
+  "lost": 13
+ },
+ {
+  "stretch": "any",
+  "vote": "maj3",
+  "sens": 0.5348837209302325,
+  "spec": 0.8356164383561644,
+  "balanced": 0.6852500796431984,
+  "seen": 86,
+  "needed": 73,
+  "lost": 12
+ },
+ {
+  "stretch": "majority",
+  "vote": "obvious_or_maj3",
+  "sens": 0.5232558139534884,
+  "spec": 0.8493150684931506,
+  "balanced": 0.6862854412233195,
+  "seen": 86,
+  "needed": 73,
+  "lost": 11
+ },
+ {
+  "stretch": "all",
+  "vote": "obvious_or_maj3",
+  "sens": 0.5116279069767442,
+  "spec": 0.863013698630137,
+  "balanced": 0.6873208028034405,
+  "seen": 86,
+  "needed": 73,
+  "lost": 10
+ },
+ {
+  "stretch": "majority",
+  "vote": "maj3",
+  "sens": 0.47674418604651164,
+  "spec": 0.863013698630137,
+  "balanced": 0.6698789423383243,
+  "seen": 86,
+  "needed": 73,
+  "lost": 10
+ },
+ {
+  "stretch": "all",
+  "vote": "maj3",
+  "sens": 0.45348837209302323,
+  "spec": 0.8767123287671232,
+  "balanced": 0.6651003504300732,
+  "seen": 86,
+  "needed": 73,
+  "lost": 9
+ },
+ {
+  "stretch": "any",
+  "vote": "obvious",
+  "sens": 0.38372093023255816,
+  "spec": 0.9178082191780822,
+  "balanced": 0.6507645747053201,
+  "seen": 86,
+  "needed": 73,
+  "lost": 6
+ },
+ {
+  "stretch": "any",
+  "vote": "obvious_and_maj3",
+  "sens": 0.3372093023255814,
+  "spec": 0.9315068493150684,
+  "balanced": 0.6343580758203249,
+  "seen": 86,
+  "needed": 73,
+  "lost": 5
+ },
+ {
+  "stretch": "majority",
+  "vote": "obvious",
+  "sens": 0.32558139534883723,
+  "spec": 0.9178082191780822,
+  "balanced": 0.6216948072634597,
+  "seen": 86,
+  "needed": 73,
+  "lost": 6
+ },
+ {
+  "stretch": "all",
+  "vote": "obvious",
+  "sens": 0.29069767441860467,
+  "spec": 0.9315068493150684,
+  "balanced": 0.6111022618668366,
+  "seen": 86,
+  "needed": 73,
+  "lost": 5
+ },
+ {
+  "stretch": "majority",
+  "vote": "obvious_and_maj3",
+  "sens": 0.27906976744186046,
+  "spec": 0.9315068493150684,
+  "balanced": 0.6052883083784645,
+  "seen": 86,
+  "needed": 73,
+  "lost": 5
+ },
+ {
+  "stretch": "all",
+  "vote": "obvious_and_maj3",
+  "sens": 0.2441860465116279,
+  "spec": 0.9452054794520548,
+  "balanced": 0.5946957629818413,
+  "seen": 86,
+  "needed": 73,
+  "lost": 4
+ }
+]

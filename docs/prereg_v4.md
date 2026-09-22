@@ -617,3 +617,23 @@ picture of the right family exists outside the ±1 s window), 15 sub-threshold (
    verifier (failed its declared bar in September), PretrainedSED (rejected three times), bigger
    VLM for the gate (27B ≈ 7B on gate accuracy), CED-base (clip-level, cannot fix onsets),
    audio-visual segmentation / MLLM localisation (they assume the source is on screen).
+
+
+## Amendment 7 — 2026-09-22 21:00 (Adam: "we MUST improve the detection ... report per category ... only work with the gold set I annotated; you can split train/dev but only on what I did and keep variety")
+
+- **Split.** `benchmark/gold/split.py` writes `benchmark/gold/split.json` once: clips are grouped by
+  (category, population, sourcing wave) and dealt alternately into **DEV (79 clips, 69 needed sounds
+  rated ≥ 2)** and **TEST (60 clips, 41)** with seed 7, so both halves carry the four categories, his
+  benchmark clips and the AudioSet slice, and every wave. From here on every stage-level choice is
+  made on DEV and TEST is read once. No external tuning set is used.
+- **Stage-4 metric** (`benchmark/gold/detector_bench.py`, reported per category):
+  *onset-recall* (a same-family detection starting within [−0.5, +1.0] s of a needed sound's onset —
+  the picture metric's own window), *found-recall* (named anywhere while it sounds), *false labels
+  per clip* (a detected family no gold sound of that clip has), *median onset error*.
+- **Declared stage-4 grid:** BEATs bar {0.35, 0.25, 0.15, 0.10, 0.05} × {raw onsets, novelty-snapped
+  onsets, lower hysteresis floor} × {BEATs alone, BEATs ∪ FlexSED}. Selection on DEV by onset-recall
+  at the knee of the false-label curve; the pre-registered 0.35 row stays the headline.
+- **Declared stage-5 grid** (free, from the cached votes): stretch rule {all, majority, any} × vote
+  rule {majority of 3, obvious only, obvious OR majority, obvious AND majority, any of 4}. Selected
+  by the oracle-gate ΔF1 on DEV (an end-to-end criterion, not a proxy), with the shipped rule kept
+  as the headline.
