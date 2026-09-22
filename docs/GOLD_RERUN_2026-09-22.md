@@ -134,12 +134,74 @@ cross-fit → by the declared rule the detector stays BEATs 0.35 for the headlin
 pre-registered arm (v4ab4, raw bar 0.15) and this table is the stage-4 sensitivity report.**
 (Config chosen on all 139 would be psed@0.20, F1 0.256 — reported, not adopted.)
 
-### 4d. Stage 5 — gate accuracy on the gold sounds (`benchmark/gold/gate_gold.py`)
-Every gold sound (label, time) is put to the visibility check exactly as the pipeline asks it;
-verdict vs the annotator's visible/obvious tick. Arms: Qwen3.8-27B (SOTA, v4), Qwen2.5-VL-7B
-(v3), OWLv2 concept table (v2). Rules re-decided on CPU: majority, unanimous, majority+obvious,
-obvious. _Results: pending._
+### 4d. Stage 5 — gate accuracy on the gold sounds (`benchmark/gold/gate_gold.py`) — DEV, running
+Every gold sound (its family label and time) is put to the visibility check exactly as the pipeline
+asks it (six frames per 5-s stretch; three votes: open naming, a/b in both orderings, description),
+and the verdict is compared with the annotator's visible-or-obvious tick. A fourth, separate
+question implements the "obvious" tick. DEV only (49 clips, 79 sounds rated ≥ 2: 43 seen, 36 needed).
 
-### 4e. Stage 7 — judge (Mistral-7B rubric-enforced vs Gemma-4-31B) — after the renders, if time.
+| gate | rule | seen silenced | needed kept | balanced acc |
+|---|---|---|---|---|
+| **Qwen3.8-27B (v4, SOTA)** | **majority of 3** | **0.37** | 0.86 | **0.62** |
+| Qwen3.8-27B | unanimous | 0.19 | 0.97 | 0.58 |
+| Qwen3.8-27B | majority + obvious | 0.40 | 0.81 | 0.60 |
+| Qwen3.8-27B | obvious only | 0.33 | 0.86 | 0.59 |
+| Qwen2.5-VL-7B (v3) | majority | 0.35 | 0.88 | 0.62 | 
+| Qwen2.5-VL-7B | unanimous / obvious | 0.09 / 0.06 | 1.00 | 0.54 / 0.53 |
+| OWLv2 concept table (v2) | — | 0.28 | 0.72 | 0.50 (chance) |
 
-## 5. Full run — _pending_
+(Qwen arms partial while the jobs run — 49/42 clips of 139 at 16:30; the table is refreshed when
+they finish.) Reading: the declared majority-of-3 rule is the best of the four on DEV, so the gate
+rule does not change; the SOTA 27B model and the 7B are level on balanced accuracy but the 27B
+silences more seen sounds at the same recall; the object-detector gate of v2 is at chance and is
+reported as the "older model" baseline.
+
+### 4e. Stage 7 — judge (Mistral-7B rubric-enforced; Gemma-4-31B now downloaded) — jobs 30968116/117, pending.
+
+## 5. Headline run — v4b4 on the gold set (2026-09-22 16:20)
+
+Configuration exactly as declared: BEATs 0.35, Qwen3.8-27B gate (majority of 3), depictable filter,
+8-s picture cap, FLUX.1-schnell; all 139 clips rendered for real, three systems + SILENCE.
+Population = the 109 benchmark clips (79 needed sounds rated 2–3); slice B separate; paired
+clip-bootstrap (2000 draws, seed 0).
+
+| | proposed (gated) | blind_a2i | audio_caption | silence |
+|---|---|---|---|---|
+| P / R / **F1** | 0.25 / 0.34 / **0.29** | 0.19 / 0.42 / **0.26** | 0.19 / 0.42 / 0.26 | 0 / 0 / 0 |
+| F0.5 (declared secondary) | 0.27 | 0.21 | 0.21 | 0 |
+| hits / misses | 27 / 52 | 33 / 46 | 33 / 46 | 0 / 79 |
+| pictures of a visible source | **10** | 31 | 32 | 0 |
+| cross-trigger / phantom | 47 / 23 | 75 / 34 | 77 / 34 | 0 / 0 |
+| false alarms per clip | **1.65** | 2.20 | 2.23 | 0 |
+| clean-clip accuracy | **0.55** | 0.38 | 0.38 | 1.00 |
+
+Paired differences, gated − blind (109 clips): **ΔF1 +0.028 [−0.022, +0.074]** (P(Δ>0) = 0.86,
+not significant) · ΔP **+0.062 [+0.016, +0.109]** · ΔR **−0.076 [−0.141, −0.026]** · ΔFA/clip
+**−0.55 [−0.78, −0.37]** (a third fewer) · Δ clean-clip accuracy **+0.172 [+0.082, +0.273]** ·
+ΔF0.5 **+0.052 [+0.006, +0.098]** · ΔwF1 +0.006 (null). Against SILENCE: ΔF1 **+0.290
+[+0.199, +0.377]**. Against CAPTION: ΔF1 +0.031 [−0.019, +0.078].
+DEV (49) and TEST (60) agree in sign and size: ΔF1 +0.023 / +0.032, ΔFA/clip −0.59 / −0.52,
+Δclean +0.23 / +0.13. Slice B (30 external clips): same false-alarm drop (−0.70/clip) and clean
+gain (+0.25), no F1 gain (−0.020 [−0.100, +0.049]). +3-s late window moves nothing (ΔF1 +0.033).
+On the 44 seen-only clips the gate stays silent on 43 % of clips vs 11 % (Δ +0.318 [+0.182, +0.455]).
+
+**Honest headline (Fables E + F, and the advisor):** the gate did **not** significantly improve the
+pre-registered per-sound F1 over the ungated pipeline (+0.03 [−0.02, +0.07]); it **significantly**
+raised precision (+0.06), cut false alarms by a third and tripled clean-clip silence, at a
+**significant** recall cost (−0.08); both systems beat SILENCE by a wide margin (+0.29). F0.5 stays
+a labelled secondary row — it was declared before the run and is not promoted to the headline.
+
+**Anatomy.** The gate removes two thirds of the pictures whose source is on screen (31 → 10). It
+loses exactly 6 needed sounds, all listed: rainforest macaws visible while another bird calls; a
+pet-shop bird; a visible bell while the ringing one is off screen; a visible machine gun;
+"a tank is visible" → helicopter silenced; a helicopter silenced as "a kind of Vehicle". The
+remaining false alarms (70 of 80) are detector label errors that both systems share and no gate can
+remove — the measured ceiling of a gate on this detector, and the bottleneck for future work.
+
+**Disclosures.** 49 of the 109 clips (DEV) were used in earlier development; TEST-60 is the clean
+estimate and is reported beside the pooled row. Single annotator. 13 clips came from the VLM
+pre-screen (reported separately: ΔF1 −0.018 there). The caption row was rendered with placeholder
+images (`GEN=placeholder`) because its pictures are never scored or judged — 163 placeholder panels,
+counted and disclosed. 12 gold rows carry labels the depictable filter never draws.
+
+## 6. PSED arm (v4ab4) and the judge — _running_
