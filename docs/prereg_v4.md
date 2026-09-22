@@ -1123,3 +1123,40 @@ and how the panel assigns its rows. If the two disagreed, every other cell would
 Difference 0.04 in cost, identical hits and misses. The veto is therefore confirmed end to end, not
 only as a scoring filter: it removes about a quarter of the wrong pictures (FA/clip 1.20 -> 0.96)
 and loses no sound at all on DEV. The remaining grid cells can be read as intended.
+
+## Amendment 16 — the veto made symmetric with a third detector (2026-09-23, declared before the DEV test)
+
+The adopted veto is one-sided: it asks FlexSED about labels BEATs raised alone. Nothing asks about
+labels FLEXSED raised alone, and after the veto those are the largest remaining error class
+(wrong-family 33 + invented 14), dominated by sustained textures -- Insect, Bicycle, Ice cream van,
+Power tool, Steam -- each at peak 0.87-0.94.
+
+A third model answers them. PANNs CNN14 (the v1 detector, different architecture, different
+training, already cached at benchmark/gold/panns_fw for all 139 clips) separates FlexSED's own right
+and wrong pictures almost cleanly. Over the 69 benchmark pictures FlexSED itself raised (peak >= 0.8;
+15 right, 54 wrong), PANNs' peak for the same canonical family:
+
+    at FlexSED's RIGHT pictures   median 0.424   q25 0.256
+    at FlexSED's WRONG pictures   median 0.026   q75 0.199
+
+    tau2 0.02  drops 23 of 54 wrong, 2 of 15 right
+    tau2 0.05  drops 34 of 54 wrong, 2 of 15 right
+    tau2 0.10  drops 37 of 54 wrong, 3 of 15 right
+    tau2 0.20  drops 40 of 54 wrong, 4 of 15 right
+
+(BEATs as the second opinion is weaker -- 16 of 54 at the same tau2 -- because BEATs and FlexSED
+already agree by construction wherever the union merged them.)
+
+**The rule.** A span that FlexSED raised and BEATs did not is dropped when PANNs' peak for that
+canonical family stays below tau2 anywhere in the clip. A span BOTH detectors raised is never
+touched, exactly as in the adopted veto, so the construction stays asymmetric in the direction that
+protects recall. Grid: tau2 in {0.02, 0.05, 0.10}, selected on DEV by amendment 10's corrected rule
+(minimum cost among cells keeping hits within 2 of v4b6), never on the benchmark numbers above,
+which include TEST clips and are therefore diagnostic only and are NOT used to choose tau2.
+
+**Go/no-go for TEST.** As amendment 10: cost below v4b6 on TEST, recall loss at most 2 hits, DEV sign
+reproduced. Both arms. Shares the single TEST look.
+
+**Stated before the result:** the benchmark table above predicts a large win. The DEV-only numbers
+may be smaller, and if DEV disagrees with it the DEV number governs and the disagreement is
+reported.
