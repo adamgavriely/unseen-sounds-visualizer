@@ -994,3 +994,26 @@ decided scorer-side, on pictures already rendered, because neither changes which
 gate. The pipeline runs are the bar sweep (0.8, 0.7, 0.6) at the selected tau, with the bar 0.8 cell
 serving as the replication of the scorer-side result. Amendment 10 described a full pipeline-side
 tau x bar x duty grid; that is not what was run, and this paragraph replaces that description.
+
+### Amendment 11, fitted bars and their stability (2026-09-23, before the DEV cell was scored)
+
+All 27 eligible families receive a bar LOOSER than the global 0.8. Fitted values (support = positive
+spans in the calibration set): Tap 0.35/113, Bird 0.40/102, Dog 0.60/99, Tick 0.25/69, Vehicle
+0.70/61, Laughter 0.65/51, Alarm 0.75/35, Footsteps 0.45/33, Cricket 0.45/22, Insect 0.65/20, Shout
+0.70/19, Door 0.35/19, Clapping 0.40/19, Water 0.35/17, Telephone 0.25/16, Bell 0.70/15, Crowd
+0.70/14, Gunshot 0.40/14, Train 0.70/13, Whistle 0.15/12, Gobble 0.15/10, Snoring 0.25/9, Baby
+laughter 0.40/9, Thunder 0.20/9, Aircraft 0.15/8, Basketball bounce 0.25/8, Typewriter 0.50/8.
+
+**Stability, checked and reported before the result.** Re-fitting at half and at double the budget
+moves every one of the 27 bars. The exact value of a family's bar is therefore NOT a robust
+quantity, and no claim is made that these are optimal thresholds. What IS stable is the direction:
+at every budget tried, essentially every family's bar sits below the global 0.8 (only Vehicle,
+Alarm, Shout and Bell reach 0.80, and only at half budget). The per-family cell is consequently
+tested as ONE configuration derived by a declared procedure, not as a tuned optimum, and if it wins
+the DEV selection the honest claim is "a per-family bar helps", not "these are the right bars".
+
+Implementation note: a family's bar is applied by rescaling that family's score column so its own
+bar lands on the global one, clipped at 1.0. The clip matters -- the peak survives as the event's
+confidence, which ranks sounds for the panel's limited rows, and an unclipped Whistle scaled by
+0.8/0.15 would reach 5.3 and outrank every unscaled sound for a slot. The rescaling also makes the
+veto scale with the bar at exactly the ratio frozen earlier, with no new parameter.
