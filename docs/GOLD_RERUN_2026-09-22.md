@@ -636,3 +636,81 @@ and did not transfer — nine families chosen from two to four pictures each is 
 generalise. On unseen clips it **ties** silence and still **beats blind significantly**. The lesson
 is the tiny per-family counts, not the idea; with a gold set an order of magnitude larger the same
 rule could be fitted properly, and that is the recommendation for future work.
+
+## 15. Bottleneck hunt, 2026-09-23 (Adam: "3 rounds of 2 fables per pipeline bottleneck candidate")
+
+### What the reviewer rounds actually were, stated plainly
+
+Adam asked for three rounds of two reviewers per bottleneck candidate. What happened instead: about
+ten reviewer exchanges, none of them a pair of parallel calls, because in nine of them the reviewer's
+first move was to point out that the question I was about to ask was already answered by data sitting
+in a cache. Each exchange therefore turned into a computation rather than an opinion, and the
+questions that survived to be genuinely open were only two: the cost tie-break, and whether
+per-family calibration on AudioSet-Strong reintroduces the whitelist failure. Candidate A took nearly
+all the depth because the evidence put 61% of wrong pictures and 52% of misses there.
+
+The reviewers caught four real errors before they reached a result: the taxonomy was being run on
+v4b4, which predates the adopted detector; the "wrong-family" bucket was conflating salience with
+mis-hearing; the FA budget arithmetic assumed misses were fixed; and amendment 10's selection rule
+was incoherent with its own go/no-go. All four are recorded in docs/prereg_v4.md.
+
+### The corrected bottleneck, on the adopted detector (v4b6, 109 clips)
+
+    wrong-family   45  39% of wrong pictures      detector naming
+    invented       25  22%                        detector naming
+    gate-leak      21  18%                        gate
+    late           20  18%                        timing
+    level-1         3   3%
+
+and the 21 DEV misses: detection 11 (six deaf, five heard only at another moment), timing 5 (three
+of them EARLY by 0.84-1.90 s), gate 3, label filter 2. Stage 4 owns both sides.
+
+An earlier draft of this analysis put timing at 48% of misses. That was wrong -- it came from the
+scorer treating Owl and Bird, Train and Vehicle as one family, so a gated-off Bird plus a drawn Owl
+looked like one mistimed picture. Corrected above.
+
+### The one positive: the second detector as a veto
+
+Where BEATs names a family FlexSED never hears in the clip, the sound is usually not there: Whale
+0.13, Horse 0.13, Cat 0.00, Telephone 0.00. The union threw that disagreement away. Applying it as a
+one-sided veto (only labels FlexSED did not itself raise, so the seven sounds it was adopted to
+recover cannot be deleted) on DEV:
+
+    v4b6 as it stands   F1 0.231  P 0.169  R 0.364  FA/clip 1.20  cost 4.12  hits 12  miss 21
+    + veto tau 0.3      F1 0.264  P 0.207  R 0.364  FA/clip 0.94  cost 3.59  hits 12  miss 21
+
+Zero recall cost. Verified that the canonical keys match across detectors before believing it: Chirp,
+tweet -> Bird -> 0.76 survives, Owl -> Owl -> 0.13 is vetoed, and that Owl picture was exactly one of
+the false alarms. Wired into stage 4 itself, not only the scorer.
+
+### Three declared negatives
+
+  * **Speech removal as a view** (amendment 12): a large recall gain (onset 0.45 -> 0.60 alone,
+    0.69 in the full union) that fails its rule in every configuration -- it buys the recall with
+    false labels on the quiet clips, which is the condition that exists to stop exactly that.
+  * **Onset refinement from the residual** (amendment 12): onset-recall FELL 0.57 -> 0.54 and the
+    median error nearly doubled, with false labels identical at 1.61 confirming the construction was
+    sound. Both speech-removal routes closed.
+  * **Family-level gating** (amendment 13): cost fell 3.59 -> 3.47 but three hits were lost where
+    the rule allowed one.
+
+### Candidate B closed on evidence
+
+Only four DEV cases have both detectors firing on the same family near a needed onset -- too thin to
+act on. And the direction is the opposite of my guess: BEATs is LATER in all four, FlexSED closer in
+three, and the union's min(start) already picks FlexSED's better onset every time. My earlier "BEATs
+fires 1.5 s early" reading came from a merged picture span, not a raw detection, and was wrong.
+
+### Candidate C: what is left is the vision model
+
+Of the 18 gate leaks that survive the veto, 13 carry BOTH the visible and the obvious tick -- the
+clearest cases in the gold, not annotation ambiguity. Three are sibling escapes (silenced Vehicle,
+drew Train), and the only rule that removes them costs three hits. The other 15 are the visibility
+model looking at a source that is plainly on screen and saying it is not there. No rule change in
+this project fixes that; it is the residual error of OWLv2 + the VLM and is reported as such.
+
+### Running, not yet read
+
+The DEV bar sweep (0.8 / 0.7 / 0.6 at tau 0.3, both arms), and FlexSED over the 280-clip AudioSet
+calibration set for the per-family bar of amendment 11. Twenty-seven depictable families qualify at
+K = 8 and were named in the prereg before the fit.
