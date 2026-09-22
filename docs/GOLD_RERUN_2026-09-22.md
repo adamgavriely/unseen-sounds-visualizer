@@ -743,3 +743,32 @@ mechanism that recognised those clips would recover roughly 0.66 of cost overall
 to about 2.97, within touching distance of silence at 2.69 -- and it would do it without giving up a
 single sound, because there are no sounds to give up there. That is the next thing worth building,
 and it is a different question from any of the five tested today.
+
+### 15c. Two corrections and the honest headline about the picture budget
+
+**Correction to 15b.** I wrote there that recognising the clips with nothing to draw "is a different
+question from any of the five tested today". That is wrong. Opening the 17 wasted pictures on those
+27 DEV clips gives: gate-leak 9 (53%), invented 6 (35%), wrong-family 2 (12%) -- the same two buckets
+as everywhere else, and the nine gate-leaks are the vision-blind cases amendment 14 already closed.
+A clip-level abstain is therefore another precision filter, and four precision filters failed the
+recall cap today. The 3.63 -> 2.97 figure in 15b should be read as an ORACLE BOUND on precision for
+clips that contain no needed sound -- what would be recovered by a mechanism that already knew which
+clips those are -- and not as a build target. Recorded as an overclaim caught and withdrawn.
+
+**The honest headline about the picture budget.** On the unseen clips -- the category the project
+exists for -- the gated pipeline beats silence for every price of a wrong picture up to beta = 1.60:
+
+    unseen only, 14 DEV clips        ours    silence
+      beta 0.00                       3.14     4.86    ours wins
+      beta 1.00                       4.21     4.86    ours wins
+      beta 1.50                       4.75     4.86    ours wins
+      beta 2.00                       5.29     4.86    silence wins
+      crossover                       beta = 1.60
+
+A missed needed sound costs 4 throughout. So the result is: **on its target category the pipeline is
+worth using whenever a viewer judges a wrong picture to be less than about 40% as costly as a missed
+sound, and not worth using when they judge it to be 50% as costly, which is the figure this project
+declared for itself in September.** That is a statement about the price of a wrong picture, it is
+measured rather than argued, and it is a legitimate result to report rather than a failure to hide.
+On the benchmark as a whole the crossover is lower still, because 27 of 49 DEV clips contain nothing
+that should ever be drawn and silence is unbeatable on those by construction.
