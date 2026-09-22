@@ -583,3 +583,56 @@ with ≤ 2.0 false labels per clip and no rise on the quiet clips.
 half the earlier false-label cost (FlexSED union, adopted), three further ideas were tested and
 failed their own bars, and the binding constraint is now label precision — for which the two
 verifier families available off the shelf (CLAP top-k, Qwen2-Audio yes/no) had already failed.
+
+
+## 14. The break-even rule, the cost curve, and one honest failure (2026-09-23)
+
+### 14a. The rule four reviewers derived independently
+
+Under the declared weights (a missed needed sound costs 4, a wrong picture costs β), showing a
+picture changes the expected cost by **β − (4 + β)·p**, where *p* is the chance the picture is right.
+So a picture is worth showing only when
+
+> **p > β / (4 + β)** — at the declared β = 2 that is **p > 1/3**.
+
+The system's pictures are right **23 %** of the time (26 of 113 on the benchmark clips). That single
+inequality explains everything the earlier metrics could not: why SILENCE is cheapest, why more
+recall did not help (extra pictures are right at the same 23 %), and why the gate still wins against
+blind (it removes pictures, and every removed picture below break-even saves cost). It is also a
+design rule for any audio-to-visual accessibility system, which is a contribution in itself.
+
+### 14b. The cost curve (figure: `benchmark/gold/cost_curve_v4b4.png`, `_w.png`)
+
+Cost per clip for every system as β runs from 0 (a wrong picture is free) to 4 (a wrong picture is as
+bad as a missed danger sound). At the declared β = 2, on the 109 benchmark clips:
+
+| system | what it is | cost/clip |
+|---|---|---|
+| **Ours** (cross-modal gate) | draw a picture only when the source is off screen | **3.36** |
+| Blind | the same pipeline, gate off — every detected sound gets a picture | 4.24 |
+| Caption | the detected sound names as text instead of pictures | 4.29 |
+| Silence | show nothing — what a deaf viewer has today with subtitles | **2.79** |
+| Gate with a perfect sound list | the upper bound the gate could reach | **1.28** |
+
+The oracle line at 1.28 is the headroom: the architecture is worth less than half the cost of silence
+*if the detector were right*. Everything between 1.28 and 3.36 is detector error.
+
+### 14c. Selective showing — declared on DEV, read once on TEST, and it did not transfer
+
+All four reviewers ranked the same system lever first: show only the sound families whose pictures
+are right often enough to pay for themselves. Rule fixed on DEV before TEST was opened: keep a
+family with ≥ 2 pictures and DEV precision ≥ 1/3 → **9 families** (Bell, Chainsaw, Alarm, Siren, Dog,
+Explosion, Electric shaver, Sonar, Telephone).
+
+| | DEV (64 clips, where the rule was fitted) | **TEST (45 clips, read once)** |
+|---|---|---|
+| whitelisted pictures right | 14/23 = **61 %** | 3/10 = **30 %** |
+| cost: whitelist vs silence | **−0.59 [−1.16, −0.16]** (beats it) | **+0.04 [−0.27, +0.40]** (ties it) |
+| cost: whitelist vs our full system | −1.06 [−1.53, −0.56] | −0.67 [−1.42, +0.13] |
+| cost: whitelist vs blind | −1.78 [−2.50, −1.06] | **−1.78 [−3.02, −0.58]** |
+
+**Reported as it came out:** the whitelist looked like it beat silence on the half it was fitted on
+and did not transfer — nine families chosen from two to four pictures each is too little evidence to
+generalise. On unseen clips it **ties** silence and still **beats blind significantly**. The lesson
+is the tiny per-family counts, not the idea; with a gold set an order of magnitude larger the same
+rule could be fitted properly, and that is the recommendation for future work.
