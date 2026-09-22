@@ -28,6 +28,7 @@ FW = _ROOT / "benchmark" / "gold" / "beats_fw"          # frame-wise BEATs cache
 WAV = _ROOT / "data" / "work" / "gold_wav"
 PSED = _ROOT / "data" / "work" / "psed_cache"
 OUT = _ROOT / "benchmark" / "gold" / "detector_dry.json"
+ROWS = _ROOT / "benchmark" / "gold" / "detector_dry_rows.json"
 BARS = (0.25, 0.30, 0.35, 0.40)
 JUDGE100 = _ROOT / "benchmark" / "gold" / "judge100.txt"  # the 100 frozen judge clips (stems)
 
@@ -76,20 +77,27 @@ def infer_all(device="cuda", det="beats"):
 
 
 _CAM = {}
+CAM_MEMO = _ROOT / "benchmark" / "gold" / "beats_cam_memo.pkl"
 
 
 def _memo_cam():
     """occlusion_onset is the slow part (BEATs re-run per event); the same event recurs at
-    every bar, so its refinement is computed once per (clip, window, class)"""
+    every bar and every run, so its refinement is computed once per (clip, window, class) and
+    kept on disk"""
+    import pickle
     from src.stage4_audio_event_detection import beats_infer as B
     if getattr(B, "_memo", False):
         return
+    if CAM_MEMO.exists():
+        _CAM.update(pickle.loads(CAM_MEMO.read_bytes()))
     raw = B.occlusion_onset
 
     def memo(audio, sr, window_start, class_idx, device="cpu", **kw):
-        key = (len(audio), round(float(window_start), 3), int(class_idx))
+        key = (len(audio), round(float(audio[:sr].sum()), 3), round(float(window_start), 3), int(class_idx))
         if key not in _CAM:
             _CAM[key] = raw(audio, sr, window_start, class_idx, device, **kw)
+            if len(_CAM) % 50 == 0:
+                CAM_MEMO.write_bytes(pickle.dumps(_CAM))
         return _CAM[key]
     B.occlusion_onset = memo; B._memo = True
 
@@ -154,6 +162,7 @@ def main():
     gold = S.load_gold([GOLD])
     judge = set(JUDGE100.read_text().split()) if JUDGE100.exists() else set()
     results = {}
+    all_rows = json.loads(ROWS.read_text(encoding="utf-8")) if ROWS.exists() else {}
     for det in a.detectors:
         if det == "psed":
             config.AED_MODEL = "psed"; config.ONSET_CAM = False
@@ -175,6 +184,7 @@ def main():
                 ev = events_for(p.stem, det, bar, wav)
                 pics = blind_pictures(ev, dur, 0.35 if det == "psed" else bar)
                 rows[p.stem] = S.score_clip(gold[p.stem], pics)
+            all_rows[f"{det}@{bar}"] = rows
             subsets = {"all": list(rows), "dev54": [s for s in rows if s in judge],
                        "sliceB": [s for s in rows if clip_path(s + ".mp4") is None and not (s.endswith(".webm"))],
                        "bench103": [s for s in rows if not (clip_path(s + ".mp4") is None and not s.endswith(".webm"))]}
@@ -186,6 +196,10 @@ def main():
                 print(f"[{det} bar {bar:.2f} {sub:8s}] clips {agg['clips']:3d} needed {agg['needed']:3d} | P {agg['P']:.2f} R {agg['R']:.2f} F1 {agg['F1']:.2f} "
                       f"| hits {agg['hits']} miss {agg['misses']} visible {agg['visible']} cross {agg['cross']} phantom {agg['phantom']} dup {agg['dup']} | clean {agg['clean_acc']}")
     OUT.write_text(json.dumps(results, indent=1), encoding="utf-8")
+    ROWS.write_text(json.dumps(all_rows), encoding="utf-8")          # per-clip rows for the cross-fit
+    import pickle
+    if _CAM:
+        CAM_MEMO.write_bytes(pickle.dumps(_CAM))
     print("->", OUT)
 
 
