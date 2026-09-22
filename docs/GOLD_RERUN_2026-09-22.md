@@ -220,4 +220,26 @@ rows were declared, so the one marginal secondary (F0.5, lower bound +0.006) wou
 multiplicity correction. Power: 79 needed sounds, so a true ΔF1 of about +0.03 is not excluded —
 the CI is wide, not evidence of equality.
 
-## 6. PSED arm (v4ab4) and the judge — _running_
+## 6. PSED arm (v4ab4) — DONE 17:20: **not adopted**, as the arm rule requires
+
+Same configuration with PretrainedSED (raw bar 0.15) in place of BEATs, all 139 clips, three
+systems. On the 109 benchmark clips: gated P 0.23 R 0.37 F1 0.28 vs blind P 0.18 R 0.44 F1 0.26;
+ΔF1 gated − blind +0.023 [−0.020, +0.064], ΔP +0.046 [+0.008, +0.090], ΔFA/clip −0.53
+[−0.69, −0.39], Δ clean-acc +0.155 [+0.066, +0.250] — the same pattern as the BEATs row.
+
+**Pre-registered arm rule** (2026-09-19: adopt PSED iff the *gated* row beats the gated BEATs row
+with the CI not below 0), paired over the same clips:
+
+| set | ΔF1 gated PSED − gated BEATs |
+|---|---|
+| benchmark 109 | **−0.007 [−0.115, +0.098]** |
+| TEST 60 | −0.063 [−0.198, +0.069] |
+| slice B 30 | +0.043 [−0.075, +0.137] |
+
+→ **PSED is not adopted; BEATs stays** — the third independent test that has said so (span bars
+2026-09-19, judge rows 2026-09-20, per-sound F1 today), now on human per-sound gold. PSED buys
+recall (0.37 vs 0.34 gated) and pays it back in precision (0.23 vs 0.25) and in clean-clip silence
+(0.41 vs 0.55). Consistent with the stage-4 dry run, where PSED's DEV advantage did not survive
+the cross-fit.
+
+## 7. Judge (secondary metric) — _running_
