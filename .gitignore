@@ -37,3 +37,6 @@ docs/report/*.aux
 docs/report/*.log
 docs/report/*.out
 docs/report/*.toc
+benchmark/gold/gate_gold/
+benchmark/gold/beats_fw/
+benchmark/gold/beats_cam_memo.pkl
