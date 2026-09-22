@@ -290,3 +290,65 @@ variant is the declared one and the permissive one is reported beside it.
 4. **Open, honest limitations**: single annotator; 49 of 109 clips seen during development (TEST-60
    reported separately and agrees); 79 needed sounds limits power; detector label errors dominate
    the remaining false alarms and are the bottleneck to fix next.
+
+
+## 9. After the result: where the system actually loses (2026-09-22 evening, 3 Fables × 3 rounds)
+
+Three reviewers, two rounds each so far, were unanimous: **fix the detector, not the gate**, and run
+a **gold-input oracle test** first; keep the null primary; do not retune on the gold set.
+
+### 9a. Oracle-gate test (`benchmark/gold/oracle_gate.py`) — the decisive experiment
+
+The detector is replaced by the annotator's own sound list (true labels, true onsets); BLIND draws
+all of them, GATE draws what its cached visibility votes did not silence. Same per-sound rules,
+139 clips, no new GPU work.
+
+| gate rule | ΔF1 gate − blind (109 benchmark clips) | TEST-60 | mixed | slice B | visibility classifier |
+|---|---|---|---|---|---|
+| majority of 3 (shipped) | **+0.067 [+0.012, +0.117]** | +0.060 | +0.082 | +0.084 | sens 0.43 · spec 0.88 · bal **0.65** |
+| unanimous | +0.046 [+0.019, +0.074] | +0.044 | +0.063 | +0.031 | sens 0.20 · spec 0.97 · bal 0.58 |
+| **majority + "obvious" vote** | **+0.097 [+0.040, +0.152]** | **+0.111** | +0.096 | +0.099 | sens 0.50 · spec 0.87 · bal **0.68** |
+
+**With a perfect detector the gate is a significant win on every subset, including the external
+slice B and the untouched TEST-60.** Precision +0.113 (majority) to +0.161 (with the obvious vote);
+pictures of an on-screen source 93 → 52 → 42; clips correctly left silent 0.49 → 0.63 → 0.68.
+So the central claim of the project is true and measurable — the shipped system's null F1 is the
+**detector's** ceiling, not the gate's. (The "obvious" question is the fourth vote added today; it
+is a gate change, so it stays a declared secondary until it is pre-registered and run end to end.)
+
+### 9b. Miss autopsy — what the 43 missed needed sounds actually are (benchmark clips, BLIND row)
+
+| cause | n | fix |
+|---|---|---|
+| a picture of the right family exists but outside the ±1 s onset window (merge / 8-s cap / span start) | **16** | better onsets (frame-level SED), merge rule |
+| BEATs scored the family 0.175–0.35 (hysteresis band) | 9 | lower bar **+ a verifier** |
+| BEATs scored it 0.05–0.175 | 6 | lower bar + verifier |
+| BEATs effectively blind (< 0.05: Hammer 0.019, Door 0.027, Whistle 0.044, Civil-defence siren 0.006) | 9 | open-vocabulary detector (text-queried) |
+| dropped just below the display bar although the family fired ≥ 0.35 elsewhere | 2 | bar / span rule |
+| family never reached stage 5 (label filter) | 1 | filter |
+
+So ~37 % of the misses are a **timing** problem, ~35 % a **threshold** problem, ~21 % a real
+**vocabulary** problem. That ordering decides what to try next.
+
+### 9c. SOTA module survey (September 2026) and what is already ruled out here
+
+*Detector.* Tried and rejected on this data: PANNs CNN14 (v1), PretrainedSED (5 AudioSet-Strong
+backbones, rejected three times), FLAM (two attempts), BEATs∧PSED agreement (cuts phantoms, costs
+recall), a CLAP top-k family verifier (failed its DCASE calibration: 0.42 recall at k = 20, bar was
+0.95 → declared useless), a Qwen2-Audio-7B yes/no verifier (2026-09-15: removed 25/77 phantoms, bar
+was ≥ 40 → failed). Not yet tried and worth it: **FlexSED** (open-vocabulary SED, Dasheng SSL
+encoder + CLAP text encoder, trained on AudioSet-Strong, code and checkpoints released, PSDS1 0.448
+vs 0.399 for the frame-level baseline) — it is text-queried, so it can be asked for "a hammer
+hitting metal" or "a door closing", which is exactly the 9 sounds BEATs is blind to; and
+**boundary-aware SED** (PSDS1 49.6, new SOTA) for the 16 timing misses. CED-base (50.0 mAP) is
+clip-level, so it cannot fix onsets — skipped.
+
+*Vision / scene understanding.* Tried: CLIP, SigLIP, OWLv2 (the object pass), SAM 3 (lost to OWLv2),
+Qwen2.5-VL-7B and Qwen3.8-27B as the gate. Measured today: 27B ≈ 7B on gate balanced accuracy
+(0.62 vs 0.61), so **the gate is limited by its question, not by model size** — a bigger VLM
+(Qwen3-VL-235B) is not the fix. The fixes the reviewers rank first are all input-side: more frames
+spanning the sound, "list everything visible that could make this sound" instead of yes/no, and the
+annotator's own rubric in the prompt (the "obvious" vote, which already lifts balanced accuracy
+0.65 → 0.68 and ΔF1 +0.067 → +0.097). Audio-visual segmentation models and the training-free MLLM
+sound-source-localization recipes assume the source is *on* screen, which is the case this system
+already handles.
