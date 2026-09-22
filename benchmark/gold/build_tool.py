@@ -139,7 +139,8 @@ def build_extra(done=frozenset()):
     m6 = sorted((q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("m6_*.mp4")),
                 key=lambda s: (_rank5.get(VLM6.get(s, {}).get("verdict"), 1), s))
     t1 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("t1_*.mp4"))   # wave 7: trailer cuts
-    for stem in EXTRA_MIXED + m2 + m3 + m4 + m5 + m6 + t1:
+    w8 = sorted(q.stem for q in (_ROOT / "data" / "input" / "benchmark" / "unsorted").glob("w8_*.mp4"))   # wave 8: Fable's new targets
+    for stem in EXTRA_MIXED + m2 + m3 + m4 + m5 + m6 + t1 + w8:
         video = next((p for d in ("_dropped", "unsorted", "mixed", "seen_ambient", "unseen_ambient", "no_ambient")
                       for p in [_ROOT / "data" / "input" / "benchmark" / d / f"{stem}.mp4"] if p.exists()), None)
         if video is None:
@@ -164,7 +165,7 @@ def build_extra(done=frozenset()):
                       "start": f["start"], "end": f["end"], "visible": False, "obvious": False,
                       "importance": importance_of(f["detail"].lower(), f["family"]), "masked": False, "gate": "beats audio-only"}
                      for f in AUD5[stem]]
-        elif stem.startswith(("m3_", "m4_", "m5_", "m6_", "t1_")):
+        elif stem.startswith(("m3_", "m4_", "m5_", "m6_", "t1_", "w8_")):
             cands = []
         elif stem in MIXED2:
             cands = [{"label": f["detail"].replace(" (siren)", " siren").lower(), "family": f["family"], "conf": f["conf"],
@@ -177,7 +178,7 @@ def build_extra(done=frozenset()):
                       "importance": importance_of(k["detail"].lower(), k["label"]), "masked": False,
                       "gate": ("psed" if k["det"] == "psed" else "beats") + " " + k["gate"]} for k in DET_CANDS.get(stem, [])]
         cands.sort(key=lambda c: -c["conf"])
-        wave = 7 if stem.startswith("t1_") else 6 if stem.startswith("m6_") else 5 if stem.startswith("m5_") else 4 if stem.startswith("m4_") else 3 if stem.startswith("m3_") else 2 if stem in MIXED2 else 1
+        wave = 8 if stem.startswith("w8_") else 7 if stem.startswith("t1_") else 6 if stem.startswith("m6_") else 5 if stem.startswith("m5_") else 4 if stem.startswith("m4_") else 3 if stem.startswith("m3_") else 2 if stem in MIXED2 else 1
         clip = {"id": f"{stem}.mp4", "src": "../../" + rel, "duration": _duration(video), "candidates": cands[:12],
                 "tag": "unseen_ambient" if wave >= 5 else "mixed", "split": "extra", "wave": wave,
                 "picture_due": True, "sentence": "nothing beyond the picture"}
