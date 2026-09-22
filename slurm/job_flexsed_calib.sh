@@ -15,5 +15,5 @@ set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"; mkdir -p logs
 source "$HOME/miniconda3/etc/profile.d/conda.sh"; conda activate msproj
 export PYTHONUNBUFFERED=1
-python benchmark/gold/flexsed_run.py --clip-dir data/input/audioset_calib \
-    --out data/work/flexsed_calib --shard ${SHARD:-0} --of ${OF:-1} --batch ${BATCH:-24}
+python benchmark/gold/flexsed_run.py --clip-dir "$SLURM_SUBMIT_DIR/data/input/audioset_calib" \
+    --out "$SLURM_SUBMIT_DIR/data/work/flexsed_calib" --shard ${SHARD:-0} --of ${OF:-1} --batch ${BATCH:-24}

@@ -898,3 +898,36 @@ backwards into the residual's own noise floor, which is loud precisely where the
 Both speech-removal ideas -- as a view, and as a source of timing -- are therefore closed, on their
 declared rules, and the two reviewers' ranking of the idea as last is upheld even though their stated
 reason (a gain of about two sounds) understated the recall it can reach.
+
+## Amendment 13 — the gate decides per family, not per label (2026-09-23, declared before the test)
+
+After the cross-detector veto, 18 wrong pictures on the benchmark are gate leaks: the sound is real
+and sounding, and the annotator ticked its source visible or obvious. Split by the annotator's own
+ticks, 13 of the 18 carry BOTH ticks -- the source is on screen AND a viewer with no sound would
+assume it -- so these are the clearest cases in the gold, not annotation ambiguity.
+
+Split by mechanism, three of the eighteen are a different failure with a one-line cause: the gate
+looked at the video, decided that this family's source IS on screen, silenced that label, and the
+pipeline then drew a SIBLING label of the same family.
+
+    ambient_transport_subway_108   silenced Vehicle     -> drew Train
+    m4_film_1917_33a               silenced Burst, pop  -> drew Explosion
+    w8_dashcam_avalanche_road_2b   silenced Siren       -> drew Alarm
+
+**The change.** A silence verdict propagates to every label of the same canonical family in the same
+clip and overlapping moment. This is a coherence fix, not a fit to the result: the per-sound metric
+already treats Train and Vehicle as one family, so a gate that decides at label level is answering a
+different question from the one being scored. It adds no parameter.
+
+**The risk, stated first.** Family-level propagation is aggressive. If a visible car silences
+Vehicle while an unseen train is genuinely audible, the train is now suppressed and becomes a miss.
+That is exactly what the go/no-go must catch.
+
+**Go/no-go, fixed now.** Adopt only if, on DEV, the viewer cost per clip falls and at most ONE hit
+is lost. Otherwise report as tested and rejected. It joins amendment 10's grid and shares its single
+TEST look; it is applied to both arms.
+
+**Recorded honestly:** the remaining 15 leaks are plain gate errors -- the vision model looked at a
+visible source and said it was not there. That is not fixed by any rule change here, and the gate is
+already the best of the 15 decision rules swept. It is the residual error of the visibility model,
+and it is reported as such.
