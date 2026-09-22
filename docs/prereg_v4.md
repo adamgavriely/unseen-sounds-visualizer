@@ -1240,6 +1240,9 @@ too strong. Recorded rather than corrected silently.
 
 ### A cell that had to be discarded, and the false result it nearly produced (2026-09-23)
 
+**The diagnosis below was wrong and is corrected at the end of this section. The discard stands; the
+reason does not.**
+
 The bar 0.7 DEV cell scored 1 hit, zero false alarms and a cost of 2.61 -- BELOW silence at 2.69 --
 which would have been the first cell all day to beat silence on the whole benchmark. It was wrong.
 The job had run the FLUX generator instead of the placeholder (backend "generate" on 97 of its 98
@@ -1255,3 +1258,25 @@ Recorded because the failure mode is the dangerous kind: a broken cell does not 
 cost table, it looks like a win, and the metric rewards a system that shows nothing on a benchmark
 where most clips should show nothing. Any cell that appears to beat silence is checked for pictures
 that exist before it is believed.
+
+**Correction (same day, within the hour).** The bar 0.7 job was NOT misconfigured. Its own startup
+line reads `[cfg] phase=render ... gen=placeholder`, exactly like the cells that worked. The cell was
+simply **still rendering** when it was scored, and every check used to decide it was finished was
+unreliable:
+
+  * the work directory is created when a clip STARTS, so counting directories counts started clips;
+  * `augmentations.json` is written TWICE by src/pipeline.py -- once after gating (line 95) and again
+    after the pictures are made (line 114) -- so the file exists, with a full list of specs, before a
+    single image has been generated;
+  * `backend: "generate"` is the value a spec carries before stage 6 touches it, not a record that a
+    generator ran.
+
+So the cell scored as near-silence because its pictures did not exist YET. The only sound completion
+test is the one that was applied afterwards: every `augment: true` spec has an `image_path` and that
+file is on disk (b8 45/45, b6 88/88, per-family 77/77, bar 0.7 **1/98**).
+
+The conclusion that matters is unchanged and is worth more than the incident: **a cell that draws
+nothing scores below silence on this benchmark, so any cell that appears to beat silence must first
+be shown to have drawn pictures that exist.** That check is now enforced in
+benchmark/gold/grid_select.py rather than promised in prose, because the next cell to fail this way
+will look exactly like a win.

@@ -33,6 +33,31 @@ CELLS = [("v4b6 (current, no veto)", "protocol_proposed_v4b6", None),
 RECALL_SLACK = 2
 
 
+def complete(root: Path, stems) -> tuple:
+    """(clips with a finished render, augmented specs, those whose picture file exists).
+
+    A work directory is created when a clip STARTS, and augmentations.json is written once after
+    gating and again after the pictures are made, so neither proves a cell finished. The only sound
+    test is that every spec marked augment has an image_path pointing at a file that is there --
+    otherwise the cell scores as near-silence and, on a benchmark where most clips should show
+    nothing, that looks like a win rather than a bug.
+    """
+    n = shown = have = 0
+    for st in stems:
+        f = root / st / "augmentations.json"
+        if not f.exists():
+            continue
+        n += 1
+        for x in json.loads(f.read_text(encoding="utf-8")):
+            if not x.get("augment"):
+                continue
+            shown += 1
+            ip = x.get("image_path")
+            if ip and Path(ip).exists():
+                have += 1
+    return n, shown, have
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--subset", default="dev")
@@ -51,6 +76,10 @@ def main():
                 for p in [S.load_pictures(root, s, "proposed")] if p is not None]
         if len(rows) < len(stems):
             print(f"{name:32s} {len(rows):5d}  -- incomplete, not scored --")
+            continue
+        n, shown, have = complete(root, stems)
+        if shown and have < shown - 2:
+            print(f"{name:32s} {len(rows):5d}  -- STILL RENDERING: {have}/{shown} pictures exist, not scored --")
             continue
         agg = S.aggregate(rows)
         hits = sum(r["hit"] for r in rows)
