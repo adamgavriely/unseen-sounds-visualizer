@@ -648,12 +648,15 @@ for that arithmetically (dividing by 1 − max(Speech, Music)) lifts those nine 
 
 **FlexSED passed all three rules declared before it was run** (DEV half, 79 clips, 65 needed sounds
 rated ≥ 2; 215 depictable family names as queries, fixed in advance):
-1. *Recovers ≥ 4 of the 9 masked sounds:* **6 of 7 cached** — siren 0.042 → 0.853, footsteps 0.016 →
-   0.695, whistle 0.044 → 0.586 and 0.011 → 0.585, door 0.027 → 0.574, civil-defence siren 0.006 →
-   0.493; hammer 0.019 → 0.194 is the one miss.
-2. *Union adds ≥ 0.05 onset-recall at matched false labels:* BEATs 0.35 ∪ FlexSED 0.8 gives
-   **onset-recall 0.59 at 1.58 false labels per clip**, where BEATs alone needs bar 0.15 and
-   **3.05** false labels to reach 0.57. At the shipped false-label budget the union is +0.14.
+1. *Recovers ≥ 4 of the 9 masked sounds:* **7 of 9** on the complete cache — siren 0.042 → 0.853,
+   alarm 0.029 → 0.711, footsteps 0.016 → 0.695, whistle 0.044 → 0.586 and 0.011 → 0.585, door
+   0.027 → 0.574, civil-defence siren 0.006 → 0.493; the two misses are hammer (0.019 → 0.194) and
+   crow (0.049 → 0.032).
+2. *Union adds ≥ 0.05 onset-recall at matched false labels:* on the complete cache BEATs 0.35 ∪
+   FlexSED 0.8 gives **onset-recall 0.57 at 1.61 false labels per clip** — the same recall BEATs
+   alone reaches only at bar 0.15 and **3.05** false labels, i.e. the same recall at **half** the
+   false labels, and +0.12 over the shipped bar at 2.2× its false labels. The stricter union
+   (FlexSED 0.7) reaches **0.62 at 2.78**, beating BEATs 0.15 on both axes.
 3. *No-ambient false-label rate ≤ 2× BEATs:* 1.33 vs 0.72 per clip = **1.85×**.
 
 **Adopted: `FLEXSED_BAR = 0.8`, union with BEATs at the unchanged bar 0.35** (`config.V4["0"]`,
@@ -671,8 +674,8 @@ reported as the single-detector alternative at a comparable false-label budget.
 |---|---|---|---|---|---|---|---|
 | BEATs 0.35 (shipped) | 0.45 | 0.60 | 0.73 | 1.00 | 0.33 | 0.83 | 0.72 |
 | BEATs 0.15 | 0.57 | 0.71 | 3.05 | 4.58 | 1.72 | 2.71 | 3.22 |
-| **BEATs 0.35 ∪ FlexSED 0.8** | **0.59** | 0.72 | **1.58** | 2.28 | 1.47 | 1.33 | 1.33 |
-| BEATs 0.35 ∪ FlexSED 0.7 | 0.62 | 0.75 | 2.73 | 4.11 | 2.35 | 2.12 | 2.50 |
-| BEATs 0.15 ∪ FlexSED 0.7 | 0.70 | 0.84 | 4.83 | 7.22 | 3.71 | 3.88 | — |
+| **BEATs 0.35 ∪ FlexSED 0.8 (adopted)** | **0.57** | 0.69 | **1.61** | 2.21 | 1.61 | 1.33 | 1.33 |
+| BEATs 0.35 ∪ FlexSED 0.7 | **0.62** | 0.74 | 2.78 | 4.11 | 2.56 | 2.12 | 2.50 |
 
-Onset-recall on the categories that carry needed sounds: mixed 0.44 → 0.52, unseen 0.45 → 0.67.
+(Complete 139-clip cache. Onset-recall on the two categories that carry needed sounds: mixed
+0.44 → 0.50, **unseen 0.45 → 0.64** with the adopted union and **0.73** with FlexSED 0.7.)

@@ -87,6 +87,18 @@ def main():
     os.chdir(FLEXSED)                      # the model config path is relative to the repo
     from api import FlexSED
     m = FlexSED(device="cuda")
+    # a clip whose length is just over a 10-s boundary leaves a remainder of a few milliseconds, and
+    # the mel front-end pads by 256 samples either side -> "padding size should be less than the
+    # input dimension". The remainder is zero-padded to 1 s, which changes no frame that carries audio.
+    _split = m.split_audio_fixed
+    def split(audio, sr, chunk_duration=10.0):
+        out = []
+        for c in _split(audio, sr, chunk_duration):
+            if len(c) < sr:
+                c = np.pad(c, (0, sr - len(c)))
+            out.append(c)
+        return out
+    m.split_audio_fixed = split
     for i, name in enumerate(names, 1):
         stem = Path(name).stem
         f = out / f"{stem}.npz"
