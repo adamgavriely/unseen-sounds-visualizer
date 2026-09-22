@@ -1051,3 +1051,58 @@ model failing to see a source that a person sees immediately, and one aggregatio
 alternative is worth exactly nothing at the declared trade-off. This is a limitation of the
 visibility models (OWLv2 + the VLM) and of the visible/obvious definition at the edges, and is
 reported as such rather than presented as future work with a proposed fix.
+
+## Amendment 15 — the object detector's verdict is computed and thrown away (2026-09-23, declared before the test)
+
+Found while reading a running log: for london_protest_01 the stage-2 concept pass printed
+`[stage2/owlv2] visible: ['Train', 'Vehicle']` and the gate then recorded
+`visible? Vehicle -> no (name=no a/b=no desc=no)`. The picture was drawn, and that Vehicle picture is
+one of the eleven leaks amendment 14 attributed to "the vision model saw nothing".
+
+It is not that the vision model saw nothing. `SceneContext.visible_entities` is produced by every
+stage-2 backend (owl.py, sam3.py, siglip.py) and is read by nothing outside stage 2 -- a grep of the
+whole source finds no consumer. The gate's verdict is the VLM's alone, and an open-vocabulary object
+detector that already located the source on screen has no vote.
+
+**The change to test.** A sound is silenced if the VLM's majority says its source is visible in every
+stretch (the current rule) OR the stage-2 concept pass lists its family among the visible entities.
+This is an OR of two independent visibility opinions, so it can only silence more, never less.
+
+**The risk, stated first.** OWLv2 is run at a low threshold over six frames and reports what it finds
+anywhere in the clip, with no time alignment. A car parked in frame one will silence a passing
+ambulance heard in frame six. That is the same failure mode that sank the family-level gate
+(amendment 13), and the go/no-go must catch it.
+
+**Go/no-go, fixed now.** Adopt only if, on DEV, the viewer cost per clip falls AND at most one hit is
+lost -- the same cap amendment 13 was rejected against, so the two are judged identically. It joins
+amendment 10's grid and shares its single TEST look, and is applied to both arms.
+
+**Measurement note.** The verdicts for the cells already rendered are recovered from the run logs,
+which interleave each clip's `Done -> ..._augmented.mp4` line, so an OWLv2 line is attributable to
+the clip that follows it. Going forward the pipeline writes them to scene.json so no future analysis
+depends on parsing a log.
+
+### Amendment 15, outcome (2026-09-23): REJECTED by its own rule
+
+    DEV (49 clips)                      F1     P      R      hits  wrong  FA/clip  cost
+    veto only (the current best cell)   0.264  0.207  0.364   12     46    0.94    3.59
+    veto + OWLv2 also silences          0.222  0.188  0.273    9     39    0.80    3.55
+    silence                                                                        2.69
+
+The cost moved by 0.04 and three hits were lost where the rule allowed one. The reason is the one
+written down before the test: the concept pass reports what it finds anywhere in six frames with no
+time alignment, so a vehicle parked at the start of a clip silences an ambulance heard at the end.
+Seven wrong pictures removed is not worth three sounds at beta = 2, and it is the same failure that
+sank the family-level gate.
+
+**Correction to amendment 14.** That amendment said of eleven leaks "the vision model saw nothing".
+That was true of the VLM but not of the pipeline: for some of them the object detector had located
+the source, and its verdict was discarded. The accurate statement is that the gate's verdict rests
+on the VLM alone, that the object detector's opinion is available and unused, and that ORing the two
+has now been tested and costs more recall than it saves. The unused `visible_entities` field remains
+a genuine oddity of the design and is reported as one.
+
+**Score so far for the stage-4/stage-5 ideas tested today, all against rules fixed in advance:**
+adopted 1 (the cross-detector veto), rejected 4 (speech-removal view, onset refinement from the
+residual, family-level gating, the object detector as a second silencing vote), closed on evidence 1
+(onset preference between detectors, only four comparable cases on DEV).
