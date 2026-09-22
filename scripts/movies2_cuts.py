@@ -75,8 +75,9 @@ def main() -> None:
     known = _known()
     audio = json.loads(AUDIO.read_text(encoding="utf-8")) if AUDIO.exists() else {}
     kept = 0
+    first = int(sys.argv[1]) if len(sys.argv) > 1 else 1        # start at this query index (e.g. 107 = the Fable scenes)
     for i, (genre, film, query) in enumerate(QUERIES, 1):
-        if query is None:
+        if query is None or i < first:
             continue
         base = f"m5_{genre}_{film}_{i}"
         if base in known:

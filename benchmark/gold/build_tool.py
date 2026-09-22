@@ -184,11 +184,14 @@ def build_extra(done=frozenset()):
         if clip["wave"] in (1, 4) and stem + ".mp4" not in done:
             clip["parked"] = True          # the page still shows a parked clip you marked done
         if clip["wave"] in (5, 6):
-            # m5: only the pre-screen's seen/empty cuts are parked (Adam 2026-09-22 evening: "I don't see videos" --
-            # new m5 cuts keep arriving; use "only not done" to skip the finished ones)
             clip["vlm"] = (VLM5 if clip["wave"] == 5 else VLM6).get(stem, {}).get("verdict", "")
-            if clip["vlm"] in ("seen", "empty") and stem + ".mp4" not in done:
-                clip["parked"] = True      # VLM says nothing off screen: parked, still reachable
+            # Adam, 2026-09-22 night: "remove the 106 scenes in m5 and m6; only show the new candidates after
+            # Fable's advice" -> m5 scenes 1-106 (and their cuts) and all m6 are parked (a parked clip you marked
+            # done stays visible); only the Fable scenes (m5 index >= 107) are shown, seen/empty verdicts parked
+            m = re.search(r"_(\d+)[a-d]?$", stem)
+            old_scene = clip["wave"] == 6 or (m is not None and int(m.group(1)) <= 106)
+            if (old_scene or clip["vlm"] in ("seen", "empty")) and stem + ".mp4" not in done:
+                clip["parked"] = True
         if clip["wave"] == 2:
             clip["vlm"] = VLM2.get(stem, {}).get("verdict", "")
             if VLM2 and clip["vlm"] != "mixed" and stem + ".mp4" not in done:
