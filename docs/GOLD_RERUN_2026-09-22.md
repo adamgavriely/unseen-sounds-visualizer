@@ -316,6 +316,20 @@ So the central claim of the project is true and measurable — the shipped syste
 **detector's** ceiling, not the gate's. (The "obvious" question is the fourth vote added today; it
 is a gate change, so it stays a declared secondary until it is pre-registered and run end to end.)
 
+### 9a-bis. Half-oracle: which half of the gap matters (the decisive number)
+
+| row | gate F1 | blind F1 | ΔF1 |
+|---|---|---|---|
+| A — the shipped system (real detector) | 0.287 | 0.260 | +0.027 [−0.022, +0.073] |
+| **B — gold sounds + *every* false alarm the real detector made** | 0.498 | 0.423 | **+0.075 [+0.029, +0.119]** |
+| C — gold sounds only (full oracle) | 0.687 | 0.620 | +0.067 [+0.012, +0.117] |
+
+Row B is the one that matters: keep all the detector's phantom labels but give the system the sounds
+it missed, and **the gate becomes significant**. So the end-to-end null is caused by **missed
+sounds, not by wrong labels** — which reverses the obvious guess and tells us exactly what to fix
+(detector recall and onsets, not a phantom verifier). This is also why the two verifiers tried
+earlier (CLAP top-k, Qwen2-Audio) would not have rescued the result even had they passed.
+
 ### 9b. Miss autopsy — what the 43 missed needed sounds actually are (benchmark clips, BLIND row)
 
 | cause | n | fix |

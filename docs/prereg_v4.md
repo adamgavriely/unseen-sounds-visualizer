@@ -586,3 +586,34 @@ misses 58 % of the sources DCASE marks on screen; on the same 258 events the Qwe
 reasoning check reached 69.8 % agreement (`eval_dcase_visibility_q38_direct.json`), so
 the VLM stays the stronger visibility witness and the stage-2 detector remains a supporting
 vote under `VISIBILITY_RULE`.
+
+
+## Amendment 6 — 2026-09-22 19:30 (declared after the oracle test and the miss autopsy, before the runs below; three Fables × three rounds)
+
+**What the diagnostics showed.** (a) Oracle-gate test: with the annotator's own sound list in place
+of the detector, the gate is significant on every subset (ΔF1 +0.067 [+0.012, +0.117] on the 109
+benchmark clips, +0.060 on TEST-60, +0.084 on slice B; +0.097 with the extra "obvious" question).
+(b) Half-oracle decomposition (`benchmark/gold/oracle_gate.py` + the row-B variant): giving the
+system the right sounds **while keeping every false alarm the real detector produced** already makes
+the gate significant — ΔF1 +0.075 [+0.029, +0.119]. So the end-to-end null is caused by **missed
+sounds, not by phantom labels**. (c) Miss autopsy of the 43 missed needed sounds: 16 timing (a
+picture of the right family exists outside the ±1 s window), 15 sub-threshold (BEATs 0.05–0.35),
+9 detector-blind (< 0.05), 2 display bar, 1 label filter.
+
+**Declared rows (before running).**
+1. **v4b5 — display bar 0.15** (`AED_THRESHOLD` = 0.075), everything else exactly as v4b4, rendered
+   for real on all 139 clips for proposed and blind_a2i. Rationale, declared here: the division of
+   labour in this architecture is detector = recall, gate = precision, and the half-oracle shows
+   phantoms do not destroy the gate's benefit. This row is **not** a tuned point estimate: the
+   result is reported as the pair (0.35, 0.15) for both arms, with ΔF1 as a function of detector
+   recall. The pre-registered v4b4 row stays the headline whatever v4b5 shows.
+2. **Gate variant "majority + obvious"** (the fourth VLM question, the annotator's own rubric):
+   declared now as a secondary row, to be rendered end to end if GPU allows. It was measured on the
+   gold set in the oracle setting, so it is exploratory and can never become the headline; the
+   sensitivity analysis (3-vote vs 4-vote on all three subsets) is reported with it.
+3. **No metric change.** The ±1 s onset window, the primary F1 and the population are unchanged. The
+   +3 s and +8 s windows stay sensitivity rows (ΔF1 +0.032 and +0.054 [+0.002, +0.105]).
+4. **Not run** (declared as closed): CLAP top-k verifier (failed its DCASE calibration), Qwen2-Audio
+   verifier (failed its declared bar in September), PretrainedSED (rejected three times), bigger
+   VLM for the gate (27B ≈ 7B on gate accuracy), CED-base (clip-level, cannot fix onsets),
+   audio-visual segmentation / MLLM localisation (they assume the source is on screen).
