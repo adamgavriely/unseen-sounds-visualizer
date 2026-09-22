@@ -1619,5 +1619,297 @@
    "start": 10.2,
    "end": 14.8
   }
+ ],
+ "m5_horror_quiet_place_2b": [
+  {
+   "family": "Sigh",
+   "detail": "Sigh",
+   "conf": 0.57,
+   "start": 4.6,
+   "end": 6.2
+  },
+  {
+   "family": "Gasp",
+   "detail": "Gasp",
+   "conf": 0.45,
+   "start": 4.3,
+   "end": 6.2
+  },
+  {
+   "family": "Snort",
+   "detail": "Snort",
+   "conf": 0.43,
+   "start": 4.1,
+   "end": 6.0
+  }
+ ],
+ "m5_action_no_country_30b": [
+  {
+   "family": "Air brake",
+   "detail": "Air brake",
+   "conf": 0.42,
+   "start": 3.0,
+   "end": 3.5
+  }
+ ],
+ "m5_drama_sound_of_metal_41c": [
+  {
+   "family": "Gasp",
+   "detail": "Gasp",
+   "conf": 0.46,
+   "start": 0.2,
+   "end": 1.0
+  }
+ ],
+ "m5_classic_the_birds_56d": [
+  {
+   "family": "Crack",
+   "detail": "Crack",
+   "conf": 0.55,
+   "start": 3.0,
+   "end": 5.2
+  }
+ ],
+ "m5_disaster_impossible_69c": [
+  {
+   "family": "Explosion",
+   "detail": "Eruption",
+   "conf": 0.42,
+   "start": 3.4,
+   "end": 5.8
+  }
+ ],
+ "m5_disaster_twister_70c": [
+  {
+   "family": "Thunder",
+   "detail": "Thunder",
+   "conf": 0.64,
+   "start": 10.3,
+   "end": 12.8
+  }
+ ],
+ "m5_horror_the_others_107b": [
+  {
+   "family": "Chink, clink",
+   "detail": "Chink, clink",
+   "conf": 0.41,
+   "start": 12.1,
+   "end": 13.5
+  }
+ ],
+ "m5_horror_the_others_107d": [
+  {
+   "family": "Cat",
+   "detail": "Meow",
+   "conf": 0.41,
+   "start": 0.5,
+   "end": 1.5
+  },
+  {
+   "family": "Glass",
+   "detail": "Shatter",
+   "conf": 0.27,
+   "start": 8.8,
+   "end": 10.5
+  }
+ ],
+ "m5_thriller_panic_room_108c": [
+  {
+   "family": "Thunder",
+   "detail": "Thunder",
+   "conf": 0.64,
+   "start": 6.2,
+   "end": 9.0
+  }
+ ],
+ "m5_thriller_panic_room_108d": [
+  {
+   "family": "Explosion",
+   "detail": "Eruption",
+   "conf": 0.27,
+   "start": 3.7,
+   "end": 4.8
+  },
+  {
+   "family": "Train",
+   "detail": "Train",
+   "conf": 0.27,
+   "start": 8.2,
+   "end": 9.5
+  }
+ ],
+ "m5_horror_hereditary_109b": [
+  {
+   "family": "Bird",
+   "detail": "Chicken, rooster",
+   "conf": 0.34,
+   "start": 7.8,
+   "end": 9.2
+  }
+ ],
+ "m5_horror_hereditary_109c": [
+  {
+   "family": "Thunk",
+   "detail": "Thunk",
+   "conf": 0.73,
+   "start": 8.1,
+   "end": 10.0
+  },
+  {
+   "family": "Sigh",
+   "detail": "Sigh",
+   "conf": 0.36,
+   "start": 2.5,
+   "end": 5.2
+  }
+ ],
+ "m5_horror_hereditary_109d": [
+  {
+   "family": "Cricket",
+   "detail": "Cricket",
+   "conf": 0.63,
+   "start": 10.3,
+   "end": 12.5
+  },
+  {
+   "family": "Insect",
+   "detail": "Insect",
+   "conf": 0.6,
+   "start": 9.5,
+   "end": 12.5
+  },
+  {
+   "family": "Siren",
+   "detail": "Siren",
+   "conf": 0.42,
+   "start": 1.7,
+   "end": 3.5
+  },
+  {
+   "family": "Aircraft",
+   "detail": "Aircraft",
+   "conf": 0.36,
+   "start": 2.7,
+   "end": 5.0
+  }
+ ],
+ "m5_war_the_pianist_110c": [
+  {
+   "family": "Gunshot",
+   "detail": "Fusillade",
+   "conf": 0.52,
+   "start": 0.1,
+   "end": 1.2
+  },
+  {
+   "family": "Door",
+   "detail": "Door",
+   "conf": 0.25,
+   "start": 2.2,
+   "end": 3.5
+  }
+ ],
+ "m5_war_the_pianist_110d": [
+  {
+   "family": "Glass",
+   "detail": "Shatter",
+   "conf": 0.44,
+   "start": 6.7,
+   "end": 8.0
+  },
+  {
+   "family": "Gears",
+   "detail": "Gears",
+   "conf": 0.39,
+   "start": 5.8,
+   "end": 6.2
+  },
+  {
+   "family": "Thunk",
+   "detail": "Thunk",
+   "conf": 0.31,
+   "start": 2.7,
+   "end": 3.2
+  }
+ ],
+ "m5_drama_room_111b": [
+  {
+   "family": "Wail, moan",
+   "detail": "Wail, moan",
+   "conf": 0.57,
+   "start": 0.9,
+   "end": 3.5
+  },
+  {
+   "family": "Gasp",
+   "detail": "Gasp",
+   "conf": 0.53,
+   "start": 12.4,
+   "end": 14.2
+  },
+  {
+   "family": "Sigh",
+   "detail": "Sigh",
+   "conf": 0.39,
+   "start": 8.5,
+   "end": 9.2
+  },
+  {
+   "family": "Whimper",
+   "detail": "Whimper",
+   "conf": 0.31,
+   "start": 4.5,
+   "end": 6.2
+  }
+ ],
+ "m5_drama_room_111c": [
+  {
+   "family": "Sigh",
+   "detail": "Sigh",
+   "conf": 0.5,
+   "start": 0.7,
+   "end": 2.5
+  }
+ ],
+ "m5_classic_wait_until_dark_113c": [
+  {
+   "family": "Telephone",
+   "detail": "Telephone",
+   "conf": 0.66,
+   "start": 3.9,
+   "end": 7.0
+  }
+ ],
+ "m5_scifi_cloverfield_114c": [
+  {
+   "family": "Glass",
+   "detail": "Shatter",
+   "conf": 0.63,
+   "start": 4.4,
+   "end": 7.5
+  },
+  {
+   "family": "Explosion",
+   "detail": "Explosion",
+   "conf": 0.54,
+   "start": 2.3,
+   "end": 4.5
+  },
+  {
+   "family": "Burst, pop",
+   "detail": "Burst, pop",
+   "conf": 0.3,
+   "start": 5.8,
+   "end": 7.2
+  }
+ ],
+ "m5_scifi_cloverfield_114d": [
+  {
+   "family": "Glass",
+   "detail": "Shatter",
+   "conf": 0.63,
+   "start": 11.8,
+   "end": 14.8
+  }
  ]
 }
