@@ -181,11 +181,13 @@ def build_extra(done=frozenset()):
                 "tag": "unseen_ambient" if wave >= 5 else "mixed", "split": "extra", "wave": wave,
                 "picture_due": True, "sentence": "nothing beyond the picture"}
         # 2026-09-21 night, Adam: wave 1 parked ("park") -- hidden unless done, or "also the parked ones"
-        if clip["wave"] in (1, 4, 5) and stem + ".mp4" not in done:
-            clip["parked"] = True          # the page still shows a parked clip you marked done (m5 finished 2026-09-22)
+        if clip["wave"] in (1, 4) and stem + ".mp4" not in done:
+            clip["parked"] = True          # the page still shows a parked clip you marked done
         if clip["wave"] in (5, 6):
-            clip["vlm"] = VLM5.get(stem, {}).get("verdict", "")
-            if clip["wave"] == 6 and VLM6 and clip["vlm"] in ("seen", "empty") and stem + ".mp4" not in done:
+            # m5: only the pre-screen's seen/empty cuts are parked (Adam 2026-09-22 evening: "I don't see videos" --
+            # new m5 cuts keep arriving; use "only not done" to skip the finished ones)
+            clip["vlm"] = (VLM5 if clip["wave"] == 5 else VLM6).get(stem, {}).get("verdict", "")
+            if clip["vlm"] in ("seen", "empty") and stem + ".mp4" not in done:
                 clip["parked"] = True      # VLM says nothing off screen: parked, still reachable
         if clip["wave"] == 2:
             clip["vlm"] = VLM2.get(stem, {}).get("verdict", "")
