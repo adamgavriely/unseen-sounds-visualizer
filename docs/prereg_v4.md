@@ -1414,3 +1414,46 @@ it is quiet exactly where FlexSED's text query hallucinates a sustained texture.
 AudioSet transformers are not that. **Diversity has to be the right kind, and adding models is not a
 substitute for it.** Amendment 17 is not adopted, and the AST and CED caches stay in the repository
 as the evidence for this negative result.
+
+### Amendment 17, CORRECTION (2026-09-23): the first reading was confounded by a broken score scale
+
+The conclusion above (PANNs alone wins, ensembling does not help) survives. The MECHANISM stated
+with it was wrong, and it was wrong in a way that a reviewer would have caught, so it is corrected
+here rather than quietly edited.
+
+**The confound.** The three models were thresholded at the SAME tau2 without checking that their
+scores mean the same thing. They do not. Share of the 527 labels whose clip peak exceeds the
+threshold, median DEV clip:
+
+    model     t=0.02   t=0.05   t=0.10
+    PANNs       3.2%     1.7%     0.9%
+    AST         2.5%     1.3%     0.9%
+    CED       100.0%   100.0%   100.0%
+
+**CED puts every one of 527 labels above every threshold in every clip.** It therefore "supports"
+everything, which is the entire reason "any 1 of 3" had literally no effect, and it silently turned
+"2 of 3" into "PANNs or AST" and "3 of 3" into "PANNs and AST". The sentence written earlier -- that
+AST and CED "hear the families PANNs correctly refuses" -- described a calibration artefact as if it
+were a fact about hearing. Withdrawn.
+
+**Re-run with CED dropped** (AST is calibrated comparably to PANNs, so the comparison is fair):
+
+    cell                    F1     P      R      FA/clip  cost   hits
+    veto only               0.264  0.207  0.364  0.94     3.59   12
+    PANNs only (adopted)    0.297  0.268  0.333  0.61     3.02   11
+    AST only                0.250  0.231  0.273  0.61     3.18    9
+    PANNs or AST            0.282  0.244  0.333  0.69     3.18   11
+    PANNs and AST           0.265  0.257  0.273  0.53     3.02    9
+
+**PANNs alone still wins, and now the reason is supported rather than asserted.** AST removes the
+same quantity of false alarms at the same threshold (0.61 per clip, identical to PANNs) but costs
+three sounds instead of one -- it is not miscalibrated, it is simply a weaker discriminator for this
+particular question. Combining them helps in neither direction: the OR is looser and costs more, the
+AND is stricter and loses the same three sounds.
+
+**What can honestly be claimed:** a second opinion from a model unlike the first is worth a great
+deal (4.12 -> 3.02), and which model it is matters more than how many there are. What cannot be
+claimed from this evidence is a general story about architectures; two AudioSet taggers were tried,
+one helped and one did not, and one of the two was unusable at a shared threshold. CED could be
+re-tested with a per-model threshold fitted on the AudioSet calibration set, exactly as amendment 11
+did for FlexSED, and that is left as untested rather than reported as a failure of the model.
