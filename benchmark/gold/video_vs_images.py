@@ -55,10 +55,17 @@ def ask_video(mdl, proc, prompt, frames, fps):
     text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
                                     add_generation_prompt=True)
     kw = {"text": [text], "videos": [frames], "return_tensors": "pt"}
-    try:
-        inputs = proc(**kw, fps=[fps])
-    except TypeError:
-        inputs = proc(**kw)
+    # fps is a SCALAR here, not a list: the processor validates it as int|float|None and an
+    # earlier version of this test passed [fps], which made every call raise and produced a
+    # meaningless "FAIL". Recorded rather than silently fixed.
+    for attempt in ({"fps": float(fps)}, {}):
+        try:
+            inputs = proc(**kw, **attempt)
+            break
+        except Exception:
+            inputs = None
+    if inputs is None:
+        raise RuntimeError("processor rejected the video input")
     inputs = inputs.to(mdl.device)
     with torch.no_grad():
         out = mdl.generate(**inputs, max_new_tokens=24, do_sample=False)
