@@ -1308,3 +1308,36 @@ viewer who dislikes wrong pictures, the per-family cell for one who minds them l
 **TEST is deliberately NOT read yet.** Adam's instruction was to push the pipeline further before
 the single look, and reading TEST now would spend it on a cell that further work may supersede. The
 look happens once, at the end, on whatever cell DEV selects then, under the go/no-go already fixed.
+
+## Amendment 17 — agreement across independent models (2026-09-23, declared before any score is read)
+
+The PANNs veto worked because PANNs is genuinely different from FlexSED: different architecture,
+different training, so the two fail in different places. That argument does not stop at one extra
+model. Two further AudioSet taggers are cached over the gold clips, in the same 527-label space as
+PANNs and BEATs so their scores are directly comparable per canonical family:
+
+    AST   MIT/ast-finetuned-audioset-10-10-0.4593   spectrogram transformer, AudioSet mAP ~0.459
+    CED   mispeech/ced-base                         consistent ensemble distillation, mAP ~0.496
+
+Neither is frame-level. For a veto that is irrelevant: the only question asked of a supporting model
+is whether it hears the family ANYWHERE in the clip, which is exactly what a clip-level tagger
+answers. They are never used to create a span, only to confirm or refuse one, so they cannot add a
+false alarm and cannot move an onset.
+
+**The rule.** A span raised by exactly ONE of the two span-producing detectors (BEATs, FlexSED) must
+be supported by at least **k** of the supporting models {PANNs, AST, CED}. A span both BEATs and
+FlexSED raised is never touched -- the same guard as amendments 10 and 16. Support means the model's
+peak for that canonical family reaches tau2 somewhere in the clip.
+
+**Grid, fixed now:** k in {1, 2, 3} x tau2 in {0.02, 0.05, 0.10}. Selection on DEV only, by
+amendment 10's corrected rule (minimum cost among cells keeping hits within 2 of v4b6). Nine cells,
+scored on pictures already rendered, so nothing new is generated to choose among them.
+
+**Predicted before the result, so it can be wrong in writing:** k = 1 should behave close to the
+adopted PANNs veto since PANNs already carries most of the signal; k = 2 should trade a little
+recall for precision; k = 3 should be too strict and lose more than two sounds. If instead the extra
+models add nothing at any k, that is a real finding about ensemble diversity -- that PANNs' value
+was specifically its architecture being unlike FlexSED's, not that "more models" helps -- and it is
+reported as such.
+
+**This shares amendment 10's single TEST look.** No TEST number has been read for any cell.
