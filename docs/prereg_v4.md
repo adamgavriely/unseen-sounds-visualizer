@@ -1280,3 +1280,31 @@ nothing scores below silence on this benchmark, so any cell that appears to beat
 be shown to have drawn pictures that exist.** That check is now enforced in
 benchmark/gold/grid_select.py rather than promised in prose, because the next cell to fail this way
 will look exactly like a win.
+
+### Amendment 10/11/16 — the complete DEV grid and the selected cell (2026-09-23)
+
+Every cell rendered end to end, both arms, placeholder generation, and every one passing the
+pictures-exist guard:
+
+    cell                          F1      P      R      FA/clip  cost   hits  miss
+    v4b6 (current, no veto)       0.231  0.169  0.364   1.20     4.12   12    21
+    bar 0.8 + veto [replication]  0.261  0.203  0.364   0.96     3.63   12    21
+    bar 0.7 + veto                0.182  0.130  0.303   1.37     4.61   10    23
+    bar 0.6 + veto                0.187  0.123  0.394   1.90     5.43   13    20
+    per-family bars + veto        0.238  0.161  0.455   1.59     4.65   15    18
+    veto + PANNs veto 0.05        0.289  0.256  0.333   0.65     3.10   11    22
+    silence                                             0.00     2.69
+
+By the corrected rule -- minimum cost among cells keeping hits within 2 of v4b6 -- the selected cell
+is **veto + PANNs veto at tau2 = 0.05**, cost 3.10 against v4b6's 4.12, a 25% reduction, with
+precision up from 0.169 to 0.256 and one sound lost where two were allowed. The scorer-side estimate
+for this cell was 3.02, so the pipeline-side replication holds a second time (0.08 apart).
+
+The per-family cell is the opposite trade and is reported alongside rather than discarded: it is the
+only configuration that RAISES recall (0.364 -> 0.455, three more sounds found), and it wins below
+beta ~ 1.2. The two cells together are the project's operating curve -- the conservative cell for a
+viewer who dislikes wrong pictures, the per-family cell for one who minds them less.
+
+**TEST is deliberately NOT read yet.** Adam's instruction was to push the pipeline further before
+the single look, and reading TEST now would spend it on a cell that further work may supersede. The
+look happens once, at the end, on whatever cell DEV selects then, under the go/no-go already fixed.
