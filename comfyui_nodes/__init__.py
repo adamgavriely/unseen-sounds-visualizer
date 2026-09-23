@@ -193,6 +193,16 @@ class MscCrossModalGate:
 
     def run(self, media, scene, segments, events, gate_enabled):
         from src.stage5_cross_modal_analysis import plan_augmentations, reason
+        # Turning the switch off must produce the SAME system the thesis calls "blind", or the
+        # demo would be showing a comparison nobody measured. benchmark/run_protocol.py sets four
+        # flags for that arm, not one: the rule-based gate, the visibility question asked of the
+        # VLM, the depiction reasoning, and the speech context. gate_enabled only covered the
+        # first, which is why an earlier run produced two identical videos.
+        config.GATE_ENABLED = bool(gate_enabled)
+        config.VLM_VISIBILITY = bool(gate_enabled)
+        config.DEPICTION_REASONING = bool(gate_enabled)
+        config.SPEECH_CONTEXT = bool(gate_enabled)
+        config.RENDER_MODE = "side" if gate_enabled else "full"
         specs = plan_augmentations(scene, segments, events,
                                    threshold=config.AED_THRESHOLD,
                                    gate_enabled=bool(gate_enabled),
