@@ -196,3 +196,66 @@ more positive about enriched captions while several Deaf viewers disliked them (
 population-dependent as well as sound-dependent, and a single number would be a mixture over that
 axis too. This is not a gap to apologise for; it is a third dimension of the same finding, and it is
 the strongest argument in this project for reporting an operating curve rather than a point.
+
+## 10. The corrected mapping (2026-09-23) — and why the first one made the project look worse
+
+Adam asked why the literature-derived beta made our result worse. The answer is that it did not;
+the mapping did, and the mapping was mine.
+
+**The error.** SoundWatch's two regimes are *urgent* (users tolerate errors to get speed and recall)
+and *non-urgent* (users want accuracy "to not be unnecessarily disturbed"). Its non-urgent examples
+are speech and background noise. Section 8 mapped that non-urgent regime onto sounds the annotator
+rated **importance 2**, and priced them at beta = 3.0. But importance 2 in this gold set is:
+
+    Machine gun x5, Explosion x4, Bird x5, Vehicle x2, Hammer x2, Laughter x2, Footsteps x2,
+    Door x2, Helicopter x2, Alarm x2, Chainsaw x2, Ice cream van x2, ...
+
+Machine guns and explosions are not background noise. The literature's non-urgent tier corresponds
+to **importance 1** -- Bird x3, Sheep, Vehicle, Chainsaw, the "noise of the place" -- which the
+metric already treats as don't-care and never scores at all. Section 8 therefore priced consequential
+events as if they were room tone, and that, not the literature, is what raised our cost.
+
+**The corrected regime.** The distraction cost belongs to the PICTURE, not to the sound that was
+missed (Beyond Subtitles, Caption Royale), so the regime keys on what the clip contains: a clip
+holding any needed sound the annotator thought worth showing is one where misses dominate; a clip
+holding none is one where any picture is pure disturbance. The literature fixes the DIRECTION of the
+two betas but not their magnitude, so both are swept rather than chosen.
+
+    TEST (60 clips: 28 with something to show, 32 with nothing)
+    beta low/high     ours   blind   silence   ours cheaper than silence?
+      0.75 / 2.5      2.22   2.71     2.87     YES
+      0.75 / 3.0      2.26   2.86     2.87     YES
+      0.75 / 4.0      2.35   3.16     2.87     YES
+      1.00 / 2.5      2.29   2.85     2.87     YES
+      1.00 / 3.0      2.33   3.00     2.87     YES
+      1.00 / 4.0      2.42   3.30     2.87     YES
+      1.50 / 2.5      2.43   3.13     2.87     YES
+      1.50 / 3.0      2.48   3.28     2.87     YES
+      1.50 / 4.0      2.56   3.58     2.87     YES
+
+**Under every cell of the grid the system is cheaper to a viewer than showing nothing**, and the
+result does not depend on picking a value inside it. The whole grid is reported for that reason.
+
+**Significance, on the same TEST rows:**
+
+    beta            vs silence                       vs blind
+    0.75 / 3.0      +0.60  [-0.04, +1.32]            +0.60  [+0.08, +1.16]  significant
+    1.00 / 3.0      +0.53  [-0.12, +1.25]            +0.67  [+0.12, +1.23]  significant
+    1.50 / 3.0      +0.39  [-0.30, +1.12]            +0.81  [+0.25, +1.42]  significant
+    1.00 / 2.5      +0.57  [-0.05, +1.30]            +0.56  [+0.07, +1.07]  significant
+    1.00 / 4.0      +0.45  [-0.23, +1.17]            +0.88  [+0.23, +1.62]  significant
+
+The advantage over the **blind baseline is significant in every cell**. The advantage over silence
+is positive in every cell but its interval touches zero, so it is reported as a consistent direction
+without a significance claim -- the same honest position as at the flat beta = 2.
+
+**DEV disagrees, and that is reported too.** On DEV no cell of the grid puts us below silence
+(2.79-3.49 against 2.69). DEV has been the harder half throughout -- our cost there is 3.10 against
+TEST's 2.53 at the declared flat beta -- and nothing about the split changes that. The honest
+summary is that the conclusion holds on the held-out half and not on the selection half, which is
+the opposite of the direction that would worry a reviewer, but it is stated rather than smoothed.
+
+**What Adam's instinct turns out to be worth.** For every sound this project actually scores, the
+literature places beta BELOW the rubric's 2 -- because every scored sound has already passed the
+annotator's filter of "a hearing viewer would notice and it matters". The instinct was right. The
+sounds for which a wrong picture is dear are the ones the metric already ignores.
