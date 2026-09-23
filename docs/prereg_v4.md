@@ -1728,3 +1728,50 @@ Train in a subway, and a Gunshot -- all cases where the source really is on scre
   * What the result DOES establish, and belongs in the thesis: the gate's remaining errors are not a
     model deficiency. They are the boundary between "the object is on screen" and "the sound you
     cannot hear comes from that object", which no current vision model is asked to answer.
+
+## Amendment 19 — audio-visual synchrony: FAILS, and is barely measurable (2026-09-23)
+
+Adam's idea, and the only visibility signal nobody had tried: a source that is on screen AND making
+the sound should MOVE when the sound happens; a bystander object should not. Measured as the change
+inside the detected object's box DIVIDED BY the change outside it, so a panning camera cancels, at
+the instant of the onset against that object's own usual level. Measured only where the detector
+already finds the object, because otherwise the answer would merely repeat the detector's verdict.
+
+Go/no-go, fixed before the run: a threshold must remove more than two leaks per needed sound lost.
+
+    DEV: 10 gate leaks, 12 hits
+    stretches where an object was confident enough to measure:  3 leaks, 2 hits
+
+    leaks (annotator says the source IS visible)   median +0.835   mean +0.906
+    hits  (source is off screen)                   median +54.9    mean +54.9
+
+    best threshold found: 1 leak removed per 1 sound lost -> ratio 1.00
+
+**FAIL, on the declared rule.** But the number that matters is the one above it: **only 5 of the 22
+stretches had an object the detector was confident enough about to measure synchrony at all.** The
+signal exists exactly where a detector already sees something, which is the case the gate is already
+handling. Even a perfect synchrony rule could touch a fifth of the cases.
+
+Worse for the hypothesis, the direction is BACKWARDS in this sample: the off-screen-source cases show
+MORE local change (+54.9 median) than the on-screen-source cases (+0.84). The extreme value is
+`mv_protest_scene_movie` Crowd at +108 -- a protest crowd churns continuously whether or not the
+chanting being scored comes from off camera. Motion is not causation, and a crowd is the case where
+that is most obviously true.
+
+**Stated honestly: with three leaks and two hits this is not a clean negative, it is an
+inconclusive test on a sample too small to settle anything.** What it does establish is the
+structural point -- synchrony is only measurable where an object is already detected, which is a
+fifth of the relevant stretches, so it cannot be the lever even if the mechanism were sound.
+
+### What the four visibility experiments together now say
+
+    every-stretch gate rule          4 leaks removed / 2 sounds lost     ratio 2.00
+    per-stretch OWLv2 vote          16 leaks removed / 8 sounds lost     ratio 2.00
+    per-stretch SAM 3 vote           6 leaks removed / 3 sounds lost     ratio 2.00
+    audio-visual synchrony           1 leak  removed / 1 sound  lost     ratio 1.00 (n = 5)
+
+Three independent mechanisms on the break-even line, and the fourth not measurable. **The visibility
+side of this pipeline is closed.** The gate's remaining errors are not a model deficiency and not a
+missing signal; they are the boundary between "this object is on screen" and "the sound you cannot
+hear comes from that object", which is a question no current model is asked and which this project
+cannot answer with the data it has.
