@@ -21,6 +21,8 @@ import shutil
 import sys
 from pathlib import Path
 
+import numpy as np
+
 _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 import config
@@ -62,6 +64,30 @@ WHY = {
 }
 
 
+def blank_pictures(root: Path, stem: str):
+    """Starts of the pictures that came out of the generator with nothing on them.
+
+    Found while checking this page: 2 of the 33 pictures are a plain white square. The viewer pays
+    the full price of a picture appearing and gets no information, so the card has to say so.
+    """
+    out = set()
+    d = root / stem / "augmentations.json"
+    if not d.exists():
+        return out
+    for sp in json.loads(d.read_text(encoding="utf-8")):
+        ip = sp.get("image_path")
+        if not (sp.get("augment") and ip and Path(ip).exists()):
+            continue
+        try:
+            from PIL import Image
+            a = np.asarray(Image.open(ip).convert("L"), dtype=np.float32)
+        except Exception:
+            continue
+        if a.std() < 3.0:
+            out.add(round(float(sp.get("start") or 0), 1))
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out", default=str(_ROOT / "data" / "work" / "error_site"))
@@ -89,6 +115,7 @@ def main():
         if vp is None:
             continue
         snds = gold[stem]
+        blanks = blank_pictures(root, stem)
         ev = json.loads((root / stem / "events.json").read_text(encoding="utf-8")) if (root / stem / "events.json").exists() else []
         au = json.loads((root / stem / "augmentations.json").read_text(encoding="utf-8")) if (root / stem / "augmentations.json").exists() else []
 
@@ -132,6 +159,7 @@ def main():
                 continue
             items.append({"kind": "WRONG", "clip": stem, "t": round(float(x), 1),
                           "label": lab, "importance": 0, "cause": bk,
+                          "blank": any(abs(b - round(float(x), 1)) < 0.2 for b in blanks),
                           "real_now": sorted({s["label"] for s in other})[:3]})
             used.add(stem)
 
@@ -178,6 +206,9 @@ def write_page(out: Path, items, vids: Path):
                     f'We showed a picture of <b>{html.escape(it["label"])}</b> here.')
             if kind == "MISSED" and it.get("importance") == 3:
                 line += ' <span class="imp">the annotator rated this one important</span>'
+            if it.get("blank"):
+                line += (' <span class="imp">the picture came out of the generator blank &mdash; '
+                         'the panel changes and shows nothing</span>')
             if kind == "WRONG" and it.get("real_now"):
                 line += f' The real sound at that moment was: <i>{html.escape(", ".join(it["real_now"]))}</i>.'
             cards.append(f"""
