@@ -1457,3 +1457,20 @@ claimed from this evidence is a general story about architectures; two AudioSet 
 one helped and one did not, and one of the two was unusable at a shared threshold. CED could be
 re-tested with a per-model threshold fitted on the AudioSet calibration set, exactly as amendment 11
 did for FlexSED, and that is left as untested rather than reported as a failure of the model.
+
+### The noise-name label filter: sized, and NOT changed (2026-09-23)
+
+The picture check found that labels naming a noise rather than an object are almost never depicted
+(1 of 3 for us, 0 of 4 for blind), which suggested a cheap precision win in src/labels.py. Sized
+before writing any code, on the whole benchmark with both vetoes applied: **two pictures**, "Chink,
+clink" and "Steam", both wrong. No needed gold sound carries such a label, so a filter would cost no
+recall -- but it would buy two pictures out of 111 in exchange for a hand-written list of words,
+which is a fitting surface for no measurable gain. **Not changed.** The depictable allow-list
+(amendment "9") already removes nearly all of these; this is the residue, and it is smaller than the
+noise in any statistic reported here.
+
+Also declined, and worth recording because it was tempting: eight labels are drawn on this benchmark
+and are never once correct (Thunder x4, Fire x2, Coin, Power tool, Shout, Snoring, Microwave oven,
+Shofar -- twelve pictures). Removing them would look like a free win and would be **exactly the
+family whitelist that failed before** (DEV 61% -> TEST 30%): a rule fitted to which labels happen to
+be wrong on the data being scored. Not done.
