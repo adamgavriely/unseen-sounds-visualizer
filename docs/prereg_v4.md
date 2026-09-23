@@ -1333,7 +1333,16 @@ peak for that canonical family reaches tau2 somewhere in the clip.
 amendment 10's corrected rule (minimum cost among cells keeping hits within 2 of v4b6). Nine cells,
 scored on pictures already rendered, so nothing new is generated to choose among them.
 
-**Predicted before the result, so it can be wrong in writing:** k = 1 should behave close to the
+**Predicted before the result, so it can be wrong in writing.** First a correction to the obvious
+reading: k = 1 over {PANNs, AST, CED} is LOOSER than the adopted PANNs-only veto, because a span
+PANNs would refuse now survives if AST or CED hears the family. So k = 1 should lose fewer sounds
+AND remove fewer false alarms than the adopted cell -- not behave like it. The interesting cell is
+k = 2, and the real question is whether AST and CED disagree with PANNs where PANNs is WRONG
+(diversity helps, and the ensemble is worth its cost) or merely agree with it where it is RIGHT
+(all three are AudioSet-trained on the same data and are redundant, in which case the PANNs result
+was about its architecture being unlike FlexSED's, not about ensembling).
+
+k = 1 should behave close to the
 adopted PANNs veto since PANNs already carries most of the signal; k = 2 should trade a little
 recall for precision; k = 3 should be too strict and lose more than two sounds. If instead the extra
 models add nothing at any k, that is a real finding about ensemble diversity -- that PANNs' value
