@@ -1775,3 +1775,31 @@ side of this pipeline is closed.** The gate's remaining errors are not a model d
 missing signal; they are the boundary between "this object is on screen" and "the sound you cannot
 hear comes from that object", which is a question no current model is asked and which this project
 cannot answer with the data it has.
+
+## Amendment 20 — SAM 3 re-tested on OUR question and OUR clips: still loses (2026-09-23)
+
+Adam's objection to the September SAM 3 comparison was correct. That run used DCASE clips, where
+"visible" means the source is geometrically inside the field of view. This project's question is the
+annotator's: *can a viewer see the thing making this sound* — a car behind a wall is in frame and not
+visible, a crowd on screen is not the source of chanting from around the corner. SAM 3 had never
+been asked our question.
+
+`benchmark/gold/visibility_models.py` (job 30991800, H200) asks all three models the same question
+on the DEV clips, scored against the annotator's own `visible` tick on each gold sound of importance
+2-3 (35 sounds: 16 visible, 19 not). Each model's own best bar, swept until the peak was interior:
+
+    model            best bar   agreement   right when visible   false alarm
+    OWLv2              0.10       71.4%          14/16               8/19
+    SAM 3              0.10       62.9%          10/16               7/19
+    the VLM (gate)      -         66.7%          10/16               5/17
+
+The first sweep reported SAM 3 at 57.1% because both models peaked at the lowest bar tried; the
+numbers above are from the re-sweep on the saved scores (`visibility_models_dev.json`), where each
+peak is interior to its range. The conclusion does not change: **OWLv2 stays the stage-2 default,
+and the shipping VLM gate is already within 5 points of the best detector.**
+
+This is the second independent confirmation of amendment 19's finding, and the stronger one. SAM 3
+scores roughly double OWLv2 on open-vocabulary detection benchmarks and *loses* here by 8.5 points.
+A model gets better at *presence* without getting better at *source*, because presence is what it is
+trained and measured on. Reported against interest: this was run to give SAM 3 its fair chance, and
+it was the objection of the project's own author that prompted it.
