@@ -154,7 +154,13 @@ A single pooled beta is a mixture of the two weighted by the gold set's own rati
 1.5-2.5. **The September rubric's asserted 2 is, as a pooled number, close to where the literature
 puts it.**
 
-## 8. The result under the literature's own weights — reported against interest
+## 8. The result under the literature's own weights — SUPERSEDED, see section 10
+
+**The mapping used in this section is wrong and its two conclusions do not stand.** It assigned the
+"ambient" beta of 3.0 to sounds rated importance 2, which in this gold set are machine guns,
+explosions, chainsaws, alarms and helicopters -- not room tone. The literature's non-urgent regime
+(SoundWatch's "speech, background noise") corresponds to the importance-1 tier, which the metric
+already treats as don't-care and never scores. Kept below for the record; read section 10 instead.
 
 A wrong picture carries no importance of its own, so the regime is set by the CLIP: a clip holding a
 needed sound rated 3 is "urgent" (beta 0.75), every other clip is "ambient" (beta 3.0).
