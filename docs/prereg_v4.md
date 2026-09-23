@@ -1524,3 +1524,83 @@ would like: on this evidence neither "we beat silence at beta = 2" nor "silence 
 Figure: benchmark/gold/beta_figure_dev.png (benchmark/gold/beta_figure.py). Two panels, all clips
 and unseen clips, x capped at the derived 4.30, the band where the system is cheaper than silence
 shaded, and the rubric's 2.0 drawn dashed so it reads as an assertion rather than a measurement.
+
+# THE SINGLE TEST LOOK (2026-09-23) — taken once, under rules fixed before it
+
+Completeness guard passed on all four arms before any number was read. All 60 TEST clips have a
+complete oracle vote record.
+
+## Go/no-go, in the order declared
+
+    (a) cost per clip below v4b6's       2.53 vs 3.67      PASS
+    (b) at least 15 hits                 16 (v4b6 has 18)  PASS
+    (c) sign of the DEV improvement      DEV 4.12->3.10, TEST 3.67->2.53, both fell   PASS
+
+    VERDICT: the cross-detector veto + the PANNs veto are ADOPTED.
+
+## TEST, 60 clips
+
+    system        F1      P      R      FA/clip  cost   hits  miss
+    v4b6         0.298  0.231  0.419   1.00     3.67   18    25
+    v4b6 blind   0.275  0.185  0.535   1.68     4.70   23    20
+    OURS         0.395  0.421  0.372   0.37     2.53   16    27
+    blind        0.348  0.278  0.465   0.87     3.27   20    23
+    silence                                     2.87    0    43
+
+Precision rises 0.231 -> 0.421 (+82%) and false pictures per clip fall 1.00 -> 0.37 (-63%), for
+three sounds lost, named in full below.
+
+## The primary comparison, ours vs blind (paired clip bootstrap, 2000 draws, seed 0)
+
+    before (v4b6)        dF1 +0.022 [-0.045,+0.081]   dP +0.045 [-0.010,+0.105]    dcost +1.03 [+0.37,+1.73] *
+    after (final cell)   dF1 +0.047 [-0.057,+0.134]   dP +0.143 [+0.034,+0.264] *  dcost +0.73 [+0.20,+1.33] *
+
+**The gate's precision advantage over the blind baseline is SIGNIFICANT on TEST** (+0.143), where
+before today's work it was not (+0.045, interval crossing zero). The cost advantage was already
+significant and remains so, while shrinking from 1.03 to 0.73 for the reason recorded on DEV: the
+vetoes are a shared stage, so the blind arm gets them too. Equal-weight F1 stays non-significant,
+exactly as it has throughout, and for the structural reason established in September.
+
+## Against showing nothing
+
+    ALL 60 TEST clips     silence - ours = +0.33   95% CI [-0.33, +1.07]   not significant
+    unseen clips (13)     silence - ours = +3.08   95% CI [+1.08, +5.38]   SIGNIFICANT
+       (v4b6 on the same 13 clips was already +2.62 [+0.46, +5.23])
+
+**On the off-screen clips the project exists for, the gated pipeline is significantly cheaper for a
+viewer than showing nothing, at the operating point this project declared for itself in September.**
+Across all 60 TEST clips the pipeline is cheaper on the point estimate (2.53 against 2.87) but the
+interval contains zero, so no claim is made there.
+
+## Per category
+
+    category     clips   ours   blind  silence   ours P   ours R
+    unseen         13    4.00   3.54    7.08     0.846    0.478
+    mixed          15    6.00   7.60    5.33     0.250    0.250
+    seen           12    0.50   2.50    0.00     -        -
+    no_ambient     20    0.20   0.30    0.00     -        -
+
+On the unseen clips precision reaches 0.846 -- five of every six pictures shown are the right sound
+at the right moment. The crossing where the system stops beating silence on those clips is beyond
+the search range (beta > 20, 95% CI [6.00, 20.00] on 13 clips), so at any plausible price of a wrong
+picture it is worth using there. Mixed clips remain the weak category, and clips with nothing to
+draw cost 0.20-0.50 against silence's zero, which is the residue the vetoes could not remove.
+
+**Honouring the disclosure made before the look:** TEST was known in advance to be no-ambient heavy
+(20 clips against DEV's 9) and therefore loaded in favour of a detector change, which is what was
+adopted. The per-category table above is exactly what lets a reader discount for that, and the
+effect is visible: on the 20 no-ambient clips our cost is 0.20, near-perfect, and those clips are a
+third of TEST. The DEV/TEST difference in the all-clips comparison against silence (DEV 3.10 vs 2.69,
+losing; TEST 2.53 vs 2.87, winning on the point estimate) is explained by that composition, and
+neither half is claimed as significant against silence overall.
+
+## Every sound the change costs
+
+    m4_fire_bodycam_23a              Siren      at  3.00s   importance 3
+    mc_bridge_scene                  Bow-wow    at  0.10s   importance 2
+    w8_film_hunt_for_red_october_1b  Sonar      at  0.00s   importance 2
+
+Three, of which one is rated 3 (the highest importance the annotator assigns). That is the price of
+the 38 wrong pictures the vetoes removed.
+
+TEST is now closed. No further number is read from it.
