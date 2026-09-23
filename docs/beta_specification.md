@@ -117,3 +117,76 @@ number. The sentence is: *the gated pipeline is cheaper for a deaf viewer than s
 whenever a wrong picture costs less than about 1.4 missed-sound-units, and the visibility gate earns
 its place whenever a wrong picture costs more than 0.35; where a real viewer sits in that band is an
 empirical question this project defines and leaves open.*
+
+## 7. What the published DHH literature says beta is (2026-09-23)
+
+The viewer study in section 5 cannot be run -- there is no DHH participant community available to
+this project -- so beta was estimated from the literature instead, and the estimate is reported with
+its direction of disagreement rather than its convenience.
+
+**The strongest single number, and why it is NOT transferable.** The NER model (Romero-Fresco), the
+viewer-centred standard for live caption quality, scores a *serious* error -- "misleading but
+credible information" -- at -1.0 and a *standard* error -- "confusion and loss of information" -- at
+-0.5. A misleading item is priced at twice an omission, which in our units would put beta near 8,
+above the 4.30 ceiling at which no system of this shape can win at all. That transfer fails for a
+structural reason: NER prices a SUBSTITUTION, where a wrong word replaces the right word in a
+channel the viewer trusts completely and cannot check. Our wrong picture is an ADDITION -- it sits
+beside correct subtitles, in a panel the viewer knows is machine-made, with the video present to
+contradict it. A horse drawn over a street scene is a glance and a dismissal; a wrong caption is
+believed. NER therefore bounds beta for an unverifiable channel, and ours is verifiable.
+
+**What the sound-awareness literature actually gives is two regimes, not one number.** SoundWatch
+(Jain et al., ASSETS 2020, 8 DHH participants) found users wanted minimum delay for urgent sounds
+but "maximum accuracy for non-urgent sounds, to not be unnecessarily disturbed". The large
+preference survey found users want filtering by importance, not every sound. Beyond Subtitles
+(Adobe, ASSETS 2022, 11 DHH viewers) found viewers want the IMPORTANT non-speech sounds shown and
+warns graphics are "evocative, but potentially ambiguous or distracting". Caption Royale (39 DHH)
+found any visual enhancement is judged first on readability and MINIMAL DISTRACTION.
+
+Read together: **for danger sounds a miss is the catastrophe and a false alarm is an annoyance;
+for atmosphere a picture is a courtesy and a wrong one is pure distraction.** That is exactly the
+axis the annotator already rated. The literature-motivated estimate is therefore
+
+    sounds rated importance 3 (danger, consequence)   beta ~ 0.75   (range 0.5-1.0)
+    sounds rated importance 2 (atmosphere, narrative) beta ~ 3.0    (range 2-4)
+
+A single pooled beta is a mixture of the two weighted by the gold set's own ratio, which lands near
+1.5-2.5. **The September rubric's asserted 2 is, as a pooled number, close to where the literature
+puts it.**
+
+## 8. The result under the literature's own weights — reported against interest
+
+A wrong picture carries no importance of its own, so the regime is set by the CLIP: a clip holding a
+needed sound rated 3 is "urgent" (beta 0.75), every other clip is "ambient" (beta 3.0).
+
+    DEV (49 clips: 8 urgent, 41 ambient)        flat beta=2   literature split
+      ours (final cell)                            3.10           3.30
+      blind                                        3.88           4.45
+      silence                                      2.69           2.69
+      silence - ours: -0.60, 95% CI [-1.35, +0.12]            not significant
+
+    TEST (60 clips: 10 urgent, 50 ambient)      flat beta=2   literature split
+      ours (final cell)                            2.53           2.67
+      blind                                        3.27           3.72
+      silence                                      2.87           2.87
+      silence - ours: +0.19, 95% CI [-0.59, +1.01]            not significant
+
+**This is worse for the project than the rubric's flat beta = 2, not better**, because most clips in
+the gold set are ambient and the literature prices a wrong picture higher there. Adam's instinct --
+that a missed picture hurts more than an unnecessary one -- is supported by the literature for the
+sounds rated 3, which are the 28 that matter most, and is contradicted for the majority of sounds in
+the set. Both halves of that are reported.
+
+**One thing the split makes stronger, not weaker:** the gate's advantage over the blind baseline
+GROWS under it (TEST: 2.67 against 3.72, a gap of 1.05, against 0.74 at flat beta = 2), because
+blind draws roughly twice as many wrong pictures and the split prices them higher on the clips where
+most of them fall.
+
+## 9. The third axis: DHH is not one audience
+
+The project's own literature review already records that hard-of-hearing viewers were significantly
+more positive about enriched captions while several Deaf viewers disliked them (emotive captions,
+11 DHH), and that Deaf participants cannot decode phonetic onomatopoeia at all. Beta is therefore
+population-dependent as well as sound-dependent, and a single number would be a mixture over that
+axis too. This is not a gap to apologise for; it is a third dimension of the same finding, and it is
+the strongest argument in this project for reporting an operating curve rather than a point.
