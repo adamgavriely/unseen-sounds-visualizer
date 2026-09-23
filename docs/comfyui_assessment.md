@@ -75,3 +75,44 @@ number is used against the 20% threshold.
 Do not build it now. It is a defence-and-demo investment, not a thesis result, and the thesis result
 is what is short. Revisit if the depiction check fails its threshold, or once the significance work
 is finished and there is time to make the demo look like the system it is.
+
+## The deciding experiment — RESULT (2026-09-23): the generator is not the bottleneck
+
+A VLM was asked of every picture the system actually showed, "does this picture show {label}?"
+
+    ours (proposed)                     pictures   image matches its label
+      all                                    88      72  = 82%
+      concrete-noun labels                   85      71  = 84%
+      sound-verb labels                       3       1  = 33%
+      the pictures that are CORRECT           19      17  = 89%
+      correct AND concrete-noun               19      17  = 89%
+
+    blind baseline                           144     103  = 72%
+      concrete-noun labels                   140     103  = 74%
+      the pictures that are CORRECT           27      23  = 85%
+
+**Against the threshold declared before the run -- adopt only at more than 20% depiction failure on
+the labels the shipping configuration draws -- the answer is NO.** Depiction fails on 16% of our
+concrete-noun labels and on 11% of the pictures that are actually right. The generator is doing its
+job; the pipeline's errors are decisions about WHICH sound and WHEN, not about the image.
+
+Two things worth keeping from the result anyway:
+
+  * **Sound-verb labels are undrawable and the sample proves it**, 1 of 3 for us and 0 of 4 for
+    blind. These are labels like "Chink, clink" and "Whack, thwack" that name a noise rather than an
+    object. The right fix is in the depictable label filter (src/labels.py), not in the generator --
+    a cheaper and more defensible change than a new image stack.
+  * **Our pictures depict their label better than blind's** (82% vs 72%, and 84% vs 74% on concrete
+    nouns) even though both use the same generator. That is not a generator effect: the gate removes
+    sounds whose source is on screen, which are disproportionately the vague ones, so what reaches
+    FLUX from our arm is a cleaner set of prompts.
+
+## Final recommendation
+
+**Do not build ComfyUI for the thesis.** It cannot move the metric by construction, and the one
+quality gap it would fix turns out to be small: 89% of the pictures that matter already show what
+they claim. The work it would replace — the sound-verb labels — is a twenty-line change to the label
+filter.
+
+Keep it on the list for the demo and the defence, where consistency between the pictures of one clip
+is the thing a viewer notices first and no number in this project measures it.
