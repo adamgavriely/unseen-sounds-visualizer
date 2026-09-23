@@ -46,20 +46,60 @@ def _free():
         pass
 
 
+# --------------------------------------------------------------------------- 0. the system switch
+class MscSystem:
+    """Which system is being demonstrated. Runs BEFORE every stage and sets the flags.
+
+    The five flags below are copied from benchmark/run_protocol.py, which is what produced every
+    number in the thesis. `gate_enabled` on gives the proposed system; off gives the blind baseline
+    exactly as it was measured -- not a guess at it. RENDER_MODE is "full" for both, because that is
+    what the protocol used for both.
+
+    It exists as its own node because ComfyUI caches and may execute nodes out of order: flags set
+    inside a later node would arrive after earlier nodes had already read them. Everything
+    downstream takes `cfg`, so the graph cannot run a stage before this has run.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"gate_enabled": ("BOOLEAN", {"default": True})}}
+
+    RETURN_TYPES = ("MSC_CFG", "STRING")
+    RETURN_NAMES = ("cfg", "system")
+    FUNCTION = "run"
+    CATEGORY = "MscProj"
+
+    @classmethod
+    def IS_CHANGED(cls, gate_enabled):
+        return float(bool(gate_enabled))
+
+    def run(self, gate_enabled):
+        on = bool(gate_enabled)
+        config.use_v4("590")                 # the shipping row (docs/prereg_v4.md)
+        config.GATE_ENABLED = on
+        config.DEPICTION_REASONING = on
+        config.VLM_VISIBILITY = on
+        config.SPEECH_CONTEXT = on
+        config.RENDER_MODE = "full"          # the protocol uses "full" for proposed AND blind
+        name = "proposed (cross-modal gate)" if on else "blind_a2i (draw every detected sound)"
+        return ({"gate_enabled": on}, name)
+
+
 # --------------------------------------------------------------------------- 1. the video
 class MscLoadVideo:
     """Stage 1 — take any video, pull its audio out. The only node that touches the filesystem."""
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": {"video_path": ("STRING", {"default": "", "multiline": False})}}
+        return {"required": {"cfg": ("MSC_CFG",),
+                             "video_path": ("STRING", {"default": "", "multiline": False})}}
 
     RETURN_TYPES = ("MSC_MEDIA",)
     RETURN_NAMES = ("media",)
     FUNCTION = "run"
     CATEGORY = "MscProj"
 
-    def run(self, video_path):
+    def run(self, cfg, video_path):
         from src.stage1_audio_extraction import extract_audio
         p = Path(video_path).expanduser().resolve()
         if not p.exists():
@@ -183,7 +223,7 @@ class MscCrossModalGate:
             "scene": ("MSC_SCENE",),
             "segments": ("MSC_SEGMENTS",),
             "events": ("MSC_EVENTS",),
-            "gate_enabled": ("BOOLEAN", {"default": True}),
+            "cfg": ("MSC_CFG",),
         }}
 
     RETURN_TYPES = ("MSC_SPECS", "STRING")
@@ -191,18 +231,9 @@ class MscCrossModalGate:
     FUNCTION = "run"
     CATEGORY = "MscProj"
 
-    def run(self, media, scene, segments, events, gate_enabled):
+    def run(self, media, scene, segments, events, cfg):
         from src.stage5_cross_modal_analysis import plan_augmentations, reason
-        # Turning the switch off must produce the SAME system the thesis calls "blind", or the
-        # demo would be showing a comparison nobody measured. benchmark/run_protocol.py sets four
-        # flags for that arm, not one: the rule-based gate, the visibility question asked of the
-        # VLM, the depiction reasoning, and the speech context. gate_enabled only covered the
-        # first, which is why an earlier run produced two identical videos.
-        config.GATE_ENABLED = bool(gate_enabled)
-        config.VLM_VISIBILITY = bool(gate_enabled)
-        config.DEPICTION_REASONING = bool(gate_enabled)
-        config.SPEECH_CONTEXT = bool(gate_enabled)
-        config.RENDER_MODE = "side" if gate_enabled else "full"
+        gate_enabled = bool(cfg.get("gate_enabled", True))
         specs = plan_augmentations(scene, segments, events,
                                    threshold=config.AED_THRESHOLD,
                                    gate_enabled=bool(gate_enabled),
@@ -292,6 +323,7 @@ class MscComposite:
 
 
 NODE_CLASS_MAPPINGS = {
+    "MscSystem": MscSystem,
     "MscLoadVideo": MscLoadVideo,
     "MscSceneUnderstanding": MscSceneUnderstanding,
     "MscTranscribe": MscTranscribe,
@@ -302,6 +334,7 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
+    "MscSystem": "0 · System: gate ON = ours, OFF = blind baseline",
     "MscLoadVideo": "1 · Load video + extract audio",
     "MscSceneUnderstanding": "2 · What is on screen",
     "MscTranscribe": "3 · Speech recognition",

@@ -25,7 +25,6 @@ def main():
     a = ap.parse_args()
 
     import config
-    config.use_v4("590")          # the shipping row: depictable filter, Qwen gate, FlexSED union
     config.DEVICE = "cuda"
     config.VIDEO_BACKEND = "owlv2"
     config.TRANSCRIBE = True
@@ -33,7 +32,7 @@ def main():
     config.OUTPUT_DIR = Path(config.OUTPUT_DIR) / f"demo_gate_{a.gate}"
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    from comfyui_nodes import (MscLoadVideo, MscSceneUnderstanding, MscTranscribe,
+    from comfyui_nodes import (MscSystem, MscLoadVideo, MscSceneUnderstanding, MscTranscribe,
                                MscDetectEvents, MscCrossModalGate, MscGeneratePictures,
                                MscComposite)
 
@@ -43,7 +42,9 @@ def main():
         print(f"[{n}/7] {name}: {time.time() - t:.1f}s", flush=True)
         return out
 
-    (media,) = step(1, "load video + audio", lambda: MscLoadVideo().run(a.video))
+    cfg, sysname = MscSystem().run(a.gate == "on")
+    print(f"[0/7] system: {sysname}")
+    (media,) = step(1, "load video + audio", lambda: MscLoadVideo().run(cfg, a.video))
     print(f"      {media['stem']}  {media['media'].duration:.1f}s")
 
     scene, vis = step(2, "what is on screen", lambda: MscSceneUnderstanding().run(media, "owlv2", 6))
@@ -57,8 +58,7 @@ def main():
     print(f"      heard: {heard}")
 
     specs, decisions = step(5, "cross-modal gate",
-                            lambda: MscCrossModalGate().run(media, scene, segs, events,
-                                                            a.gate == "on"))
+                            lambda: MscCrossModalGate().run(media, scene, segs, events, cfg))
     print("      " + decisions.replace("\n", "\n      "))
 
     specs2, _ = step(6, f"pictures ({a.gen})",
