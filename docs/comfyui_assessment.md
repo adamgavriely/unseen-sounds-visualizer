@@ -116,3 +116,79 @@ filter.
 
 Keep it on the list for the demo and the defence, where consistency between the pictures of one clip
 is the thing a viewer notices first and no number in this project measures it.
+
+---
+
+# Addendum (2026-09-23): the supervisor meant something different, and it fits
+
+Adam's supervisor recommended ComfyUI as a **GUI and orchestration layer for the pipeline itself**,
+not as a way to make pictures. Everything above answers the wrong question. It is left in place
+because the picture-quality measurement is still worth having, but the recommendation at the end of
+it -- "do not build it" -- was an answer to a question nobody asked.
+
+## What ComfyUI actually is, for this purpose
+
+A node is a Python class with three attributes: `INPUT_TYPES` (a classmethod returning the input
+names and their types), `RETURN_TYPES` (a tuple of output types), and `FUNCTION` (the name of the
+method to call). It **wraps** existing code rather than replacing it -- our seven stage functions
+would each become a thin class whose `FUNCTION` calls the code that is already written.
+
+Three facts from the documentation decide the fit:
+
+  * **A custom data type can be any Python object.** Declare a unique upper-case name -- `AUDIO_EVENTS`,
+    `SCENE_CONTEXT`, `AUG_SPECS` -- and the graph will only let those outputs connect to matching
+    inputs. Our `AudioEvent`, `SceneContext` and `AugmentationSpec` dataclasses pass between nodes
+    unchanged. No serialisation layer to write.
+  * **The graph re-executes only nodes whose inputs changed**, with `IS_CHANGED` available to
+    override the rule per node.
+  * It is a server (`main.py --listen 127.0.0.1 --port 8188`) driven by JSON over HTTP, so it can be
+    started inside a SLURM allocation and driven from a script in the same job.
+
+## Why the caching matters more than the GUI
+
+Every DEV cell run last night re-executed audio extraction, the OWLv2 concept pass, Whisper and the
+VLM gate on the same 49 clips, when amendments 10, 11 and 16 differ **only at stage 4**. The gate
+votes are the expensive part and they did not need recomputing. A graph with correct change-keys
+would have re-run stage 4 onward and reused the rest. That is not a cosmetic benefit; it is most of
+the GPU time spent last night.
+
+## Why the GUI matters for the defence
+
+The seven stages drawn as connected boxes, with the gate switchable and the veto threshold draggable,
+**is the thesis's Figure 1 made live**. A committee can be shown the same clip with the gate on and
+off, and watch the wrong pictures appear. No slide does that.
+
+## The three things that must be checked before anyone builds it
+
+1. **Memory.** This is the real risk. Qwen3.8-27B, FLUX.1-schnell, BEATs and FlexSED resident at
+   once is roughly 80 GB. Today they are loaded and freed stage by stage, which is why the pipeline
+   fits on the cards we have. ComfyUI does manage model offloading, but that manager is tuned for
+   one diffusion pipeline plus adapters, not four unrelated heavy models. Must be tested, not
+   assumed.
+2. **Batching.** ComfyUI runs one graph per queued prompt, so 139 clips means 139 submissions.
+   That is exactly the loop `benchmark/run_protocol.py` already performs, with an HTTP call in place
+   of a function call -- so the fit is good. (A community extension, ComfyUI-BatchFolderTools,
+   provides a loader plus a loop engine that re-queues the workflow per file and resumes an
+   interrupted batch. Worth looking at, but our own loop is probably simpler and we already trust
+   it.)
+3. **Staging, because the compute nodes have no internet.** ComfyUI, its custom nodes and every
+   model must be pre-staged, with `ComfyUI/models/*` symlinked into the existing Hugging Face cache.
+   It also needs its own conda environment; its torch pin will not co-exist with `msproj`.
+
+## The question only the supervisor can settle
+
+**Is this for the thesis, or for continued development?** They are different amounts of work and
+different amounts of risk:
+
+  * **Thesis artefact** -- a graph that runs one clip for the demo, plus a system-architecture
+    section and a screenshot. About a day. No risk to any result, because the batch numbers keep
+    coming from the code that produced them.
+  * **The new pipeline** -- `run_protocol.py` becomes a ComfyUI client and the graph is how
+    experiments are run. About a week, and it carries a real obligation: **any rewrite must
+    reproduce `test_final_v30` exactly before it is trusted**, because every number in the
+    preregistration came from the current code path.
+
+Recommended answer if he leaves it to us: **build the thesis artefact first.** It is a day, it gives
+the defence the thing a static diagram cannot, it de-risks the memory question cheaply, and it keeps
+the validated pipeline untouched while the results are being written up. The full migration is a
+good idea for whoever continues the project, and a bad idea to start the week the results land.
