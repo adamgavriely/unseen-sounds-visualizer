@@ -1350,3 +1350,33 @@ was specifically its architecture being unlike FlexSED's, not that "more models"
 reported as such.
 
 **This shares amendment 10's single TEST look.** No TEST number has been read for any cell.
+
+### The primary comparison after the vetoes: ours vs blind on DEV (2026-09-23)
+
+Both arms get the vetoes -- they are a shared stage-4 change, so the comparison stays paired and
+fair. 49 DEV clips, clip bootstrap 2000 draws, seed 0:
+
+    before today (v4b6)          F1     P      R      FA/clip  cost
+      ours                       0.231  0.169  0.364  1.20     4.12
+      blind                      0.199  0.130  0.424  1.92     5.39
+      delta F1  +0.032  95% CI [-0.029, +0.090]   P(d>0) 0.853
+      delta P   +0.039  95% CI [-0.008, +0.087]   P(d>0) 0.945     not significant
+      cost advantage over blind  +1.27  95% CI [+0.61, +2.00]      significant
+
+    after both vetoes            F1     P      R      FA/clip  cost
+      ours                       0.289  0.256  0.333  0.65     3.10
+      blind                      0.257  0.191  0.394  1.12     3.88
+      delta F1  +0.032  95% CI [-0.044, +0.094]   P(d>0) 0.809
+      delta P   +0.065  95% CI [+0.001, +0.121]   P(d>0) 0.976     SIGNIFICANT
+      cost advantage over blind  +0.78  95% CI [+0.29, +1.27]      significant
+
+**The gate's precision advantage over the blind baseline becomes significant for the first time**,
+on DEV, and the equal-weight F1 difference stays exactly where it has always been (+0.032, not
+significant) -- which is the structural point established earlier: F1 prices a picture of a sound
+that is not there the same as a sound left undrawn, and cannot see the trade the gate makes.
+
+**Reported against interest:** the gate's COST advantage over blind SHRANK, 1.27 to 0.78, and the
+shrinkage is real rather than noise. The vetoes are a shared stage, so blind gets them too, and the
+better the detector becomes the less there is for a visibility gate to remove. That is a genuine
+finding about where the gate's value comes from -- it is worth most when the detector is worst --
+and it belongs in the thesis next to the claim that the gate helps.
