@@ -1507,3 +1507,20 @@ excuse. It is a property of a split fixed before any of this work existed, and r
 after seeing DEV results would be a far worse error than living with it. The correct treatment is to
 report the TEST result per category as well as overall, so a reader can see the effect directly
 rather than take this paragraph on trust.
+
+### Correction to a number already reported (2026-09-23): the unseen crossing is 3.33, not 5.00
+
+An earlier entry, and a report to Adam, put the crossing where the gated pipeline meets silence on
+the unseen clips at beta = 5.00. That figure came from applying the PANNs veto to v4b6's pictures
+inside the scorer. The rendered configuration -- the one that actually ships -- crosses at **beta =
+3.33**, with a 95% interval of [1.33, 10.0] on 14 clips. The blind baseline crosses at 3.11 on the
+same clips, so the gate's advantage in this category is small, not large.
+
+The all-clips crossing is **beta = 1.37, 95% interval [0.71, 2.19]**. That interval CONTAINS the
+rubric's asserted 2.0, which means the honest statement is stronger and duller than either side
+would like: on this evidence neither "we beat silence at beta = 2" nor "silence beats us at beta =
+2" is established. The point estimate favours silence; the uncertainty covers both.
+
+Figure: benchmark/gold/beta_figure_dev.png (benchmark/gold/beta_figure.py). Two panels, all clips
+and unseen clips, x capped at the derived 4.30, the band where the system is cheaper than silence
+shaded, and the rubric's 2.0 drawn dashed so it reads as an assertion rather than a measurement.

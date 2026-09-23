@@ -31,15 +31,28 @@ Two ends of the range are fixed by the structure of the problem, not by preferen
                    list -- costs a viewer more than showing nothing. Above this price no system of
                    this shape can win, however good its detector, so the question is moot.
                    (Checked: all 49 DEV clips have a complete oracle vote record, so this bound is
-                   exact on DEV and not an artefact of missing data.)
+                   exact on DEV and not an artefact of missing data. Note precisely what "oracle"
+                   means here: the gate is handed the annotator's perfect SOUND LIST, but it is
+                   still OUR gate, with the same visibility model and the same eleven cases where it
+                   looks at a source that is plainly on screen and says it is not there. So 4.30 is
+                   the ceiling for "a perfect detector feeding this gate", not for a perfect system.
+                   A perfect gate as well would push the bound higher, and that number is not
+                   measured here.)
 
 So **beta is only a meaningful question on [0.35, 4.30]**. Inside it, the two crossings that matter:
 
     beta = 0.95    the blind baseline meets silence
-    beta = 1.37    OUR system meets silence (all clips)
-    beta = 5.00    our system meets silence on the UNSEEN clips alone (point estimate; the 95%
-                   interval on that crossing is [2.00, 8.00] on 14 clips -- underpowered, and
-                   reported as such)
+    beta = 1.37    OUR system meets silence (all clips), 95% interval [0.71, 2.19] -- an interval
+                   that CONTAINS the rubric's asserted 2.0, so on this evidence neither "we beat
+                   silence at beta = 2" nor "silence beats us at beta = 2" is established
+    beta = 3.33    our system meets silence on the UNSEEN clips alone (95% interval [1.33, 10.0]
+                   on 14 clips -- badly underpowered, and reported as such). For comparison the
+                   blind baseline crosses at 3.11 on the same clips, so on this category the gate's
+                   advantage is small.
+
+                   CORRECTION: an earlier note in this project put this crossing at 5.00. That came
+                   from applying the veto to v4b6's pictures in the scorer rather than from the
+                   rendered configuration. The rendered number is 3.33 and supersedes it.
 
 **Two different intervals, which must not be conflated:**
 
