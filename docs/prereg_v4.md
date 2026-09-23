@@ -1604,3 +1604,77 @@ Three, of which one is rated 3 (the highest importance the annotator assigns). T
 the 38 wrong pictures the vetoes removed.
 
 TEST is now closed. No further number is read from it.
+
+## Amendment 18 — the video side, tested (2026-09-23)
+
+Adam asked three things: does the model need to see MOTION rather than stills, does it need to sync
+with the audio, and is there a better model than OWLv2. Two are now answered with measurements.
+
+### (a) Sending the frames as VIDEO rather than as loose images: NO EFFECT
+
+`reason._ask` gives the VLM one `{"type": "image"}` per frame, so it never receives temporal
+position ids or the spacing between frames. Re-asking the same question, on the same stretches, with
+the same model and frames, changed only to `{"type": "video"}` with an fps:
+
+    blind leaks that now name the source        0 / 8
+    hits that would be lost (now named)         0 / 12
+
+**Video encoding changes nothing.** The model answers "nothing" either way; in one case
+(`mv_tornado_scene` Siren) the image mode named "air horn" and the video mode did not, so if
+anything the video path abstains slightly more. Together with the vote log -- ten of eleven blind
+cases answered "nothing" in EVERY stretch -- this closes the question: **the gate's blindness is
+perception, not encoding and not prompting.**
+
+*Two earlier runs of this test were void and are recorded as such: the first crashed on every call
+(`fps` expected a float, was given a list) and the second left the chat template's reasoning mode
+on, so the model emitted "The user is asking about..." which the flip test scored as success. The
+result above is the third run.*
+
+### (b) A TIME-ALIGNED object-detector vote: exactly cost-neutral at the declared bar
+
+The earlier rejection of OWLv2 as a silencing vote was CLIP-level, with no time alignment. Per
+stretch, over the same frames the VLM saw, at our config's own `OWL_THRESHOLD` of 0.20, on DEV:
+
+                          OWL sees it     OWL blind
+    VLM says visible          ...             ...
+    VLM says NOT visible       24              51
+
+Of those 24, silencing them would remove **16 wrong pictures** and lose **8 needed sounds** -- a
+ratio of exactly **2.00** against the beta = 2 break-even of 2.0. It fails, by nothing at all. This
+is the second rule today to land exactly on the break-even line (the every-stretch gate rule was the
+other), which is worth noting as a property of the trade rather than a coincidence.
+
+**Diagnostic, reported as post-hoc:** the two groups are not inseparable. Needed-sound scores top out
+at 0.33 while leak scores run to 0.87, so a stricter bar does separate them:
+
+    bar 0.20   16 leaks removed,  8 hits lost   ratio 2.00
+    bar 0.25    8 leaks removed,  4 hits lost   ratio 2.00
+    bar 0.30    4 leaks removed,  3 hits lost   ratio 1.33
+    bar 0.35    4 leaks removed,  0 hits lost   clears
+    bar 0.40    3 leaks removed,  0 hits lost   clears
+
+A bar of 0.35 removes four wrong pictures and loses nothing. Selecting it on DEV is the same
+procedure that selected tau = 0.3 and tau2 = 0.05, so it is legitimate -- but the gain is small:
+four pictures on 49 clips is about 0.16 cost per clip, against the 1.14 the two detector vetoes
+moved. It is recorded as available rather than pursued, because a stricter silencing bar is also the
+kind of knob that looks free on DEV and costs recall on TEST, and the current cell has already been
+through its single TEST look.
+
+### (c) A better model than OWLv2: the strongest remaining video lever, not yet run
+
+SAM 3 (`facebook/sam3`, Meta, ICLR 2026) scores more than double OWLv2's cgF1 on the open-vocabulary
+SA-Co benchmark -- where OWLv2 is the paper's own strongest baseline -- and carries a concept through
+frames rather than judging each alone. `src/stage2_video_understanding/sam3.py` has been in this
+repository since the v4 plan and was never adopted, because stage 2's verdict is read by nothing.
+
+The harness now takes `--backend sam3`, so the same 2x2 can be run against it. Two experiments with
+different ceilings, and they must not be conflated:
+
+  **supplement**  SAM 3 as an extra silencing vote. Bounded by the 11 leaks: at most -0.37 cost per
+                  clip, and it needs the same better-than-2:1 clearance OWLv2 just missed.
+  **replace**     SAM 3 INSTEAD of the VLM's visibility vote, with DISPLAY_THRESHOLD then lowered.
+                  This is the version with the real ceiling, because a gate that can be trusted buys
+                  RECALL rather than precision. It is a full amendment: DEV selection, both arms,
+                  one TEST look.
+
+Full review of what the pipeline does and does not do with the video: docs/video_understanding_review.md
