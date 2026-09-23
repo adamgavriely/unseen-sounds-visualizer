@@ -27,7 +27,7 @@ import config
 from benchmark.gold import score_per_sound as S
 from benchmark.gold.error_taxonomy import bucket, GOLD, EARLY, LATE
 
-TAG = "dev_sym_v30"
+TAG = "dev_symgen_v30"
 
 
 def clip_path(stem):
@@ -72,6 +72,10 @@ def main():
     subs = S.subsets_of(gold)
     stems = sorted(set(subs[a.half]) & set(subs["bench"]))
     root = _ROOT / "data" / "work" / f"protocol_proposed_{TAG}"
+    # what the VIEWER saw: the composite the pipeline rendered for this same run, original video
+    # on the left and our panel on the right. Adam asked for this instead of the clean clip -- a
+    # mistake is only judgeable next to the picture the system actually put on screen.
+    rend = _ROOT / "data" / "output" / f"protocol_proposed_{TAG}"
     out = Path(a.out)
     vids = out / "clips"
     vids.mkdir(parents=True, exist_ok=True)
@@ -131,11 +135,17 @@ def main():
                           "real_now": sorted({s["label"] for s in other})[:3]})
             used.add(stem)
 
+    missing = []
     for stem in sorted(used):
-        vp = clip_path(stem)
-        dst = vids / f"{stem}{vp.suffix}"
+        src = rend / f"{stem}_augmented.mp4"
+        if not src.exists():                       # fall back to the clean clip, and say so
+            src = clip_path(stem)
+            missing.append(stem)
+        dst = vids / f"{stem}{src.suffix}"
         if not dst.exists():
-            shutil.copy(vp, dst)
+            shutil.copy(src, dst)
+    if missing:
+        print(f"no rendered video for {len(missing)} clip(s): {', '.join(missing[:5])}")
 
     items.sort(key=lambda i: (i["kind"], i["cause"], i["clip"], i["t"]))
     (out / "errors.json").write_text(json.dumps(items, indent=1), encoding="utf-8")
@@ -194,10 +204,11 @@ def write_page(out: Path, items, vids: Path):
  h2 .n {{ color:#5a6672; font-weight:400; }}
  p.why {{ margin:4px 0 14px 14px; color:#3d4852; }}
  .dim {{ color:#7b8794; }}
- .card {{ display:flex; gap:16px; background:#fff; border:1px solid #e2e6ea; border-radius:8px;
-          padding:12px; margin-bottom:12px; align-items:flex-start; }}
- .card video {{ width:340px; max-width:45vw; border-radius:5px; background:#000; }}
- .meta {{ flex:1; min-width:0; }}
+ .card {{ background:#fff; border:1px solid #e2e6ea; border-radius:8px;
+          padding:12px; margin-bottom:16px; }}
+ /* the video is the original beside our panel, so it is very wide -- it gets the whole card */
+ .card video {{ width:100%; display:block; border-radius:5px; background:#000; }}
+ .meta {{ margin-top:10px; }}
  .clip {{ font-family: ui-monospace, Menlo, monospace; font-size:12px; color:#7b8794; margin:2px 0 8px; }}
  .t button {{ font:inherit; border:1px solid #c8cfd6; background:#eef1f4; border-radius:5px;
               padding:2px 9px; cursor:pointer; }}
@@ -217,6 +228,10 @@ def write_page(out: Path, items, vids: Path):
   <br><br>
   <b>Missed</b> means the annotator said a deaf viewer needs to know about that sound and we showed
   nothing. <b>Wrong</b> means we put a picture on screen that should not have been there.
+  <br><br>
+  <b>These are our own videos.</b> Each one is the original clip on the left and the panel the
+  system produced on the right &mdash; so you see exactly what a viewer would have seen at that
+  second, not the clean clip.
  </div>
  {''.join(cards)}
 </main></body></html>"""
