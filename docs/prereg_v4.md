@@ -1474,3 +1474,36 @@ and are never once correct (Thunder x4, Fire x2, Coin, Power tool, Shout, Snorin
 Shofar -- twelve pictures). Removing them would look like a free win and would be **exactly the
 family whitelist that failed before** (DEV 61% -> TEST 30%): a rule fitted to which labels happen to
 be wrong on the data being scored. Not done.
+
+## Split balance, checked before the TEST read (2026-09-23, Adam's question)
+
+Adam asked whether DEV and TEST are equally representative by category, so that neither half is
+biased. Checked rather than assumed. The split was made once (benchmark/gold/split.py, seed 7,
+stratified by category x population x sourcing wave) and is not changed by this check.
+
+    half      clips  unseen  mixed  seen  no_ambient   needed sounds  unseen/mixed share
+    DEV        49     14      8     18      9              33          52% / 48%
+    TEST       60     13     15     12     20              43          53% / 47%
+    slice B    30      6      8     14      2              28          61% / 39%
+
+**On the quantity the metric actually measures the split is well balanced.** The needed sounds --
+the only thing that can produce a hit or a miss -- are 52/48 unseen-to-mixed on DEV and 53/47 on
+TEST, and the share of clips containing nothing that should ever be drawn is 55% on DEV and 53% on
+TEST. Neither half is loaded toward the easy or the hard side of the measurement.
+
+**One real asymmetry, disclosed before the TEST numbers are read.** The two "nothing to draw"
+categories are split unevenly, and they test different stages:
+
+    seen        source IS on screen -> tests whether the GATE silences it     DEV 18, TEST 12
+    no_ambient  no such sound at all -> tests whether the DETECTOR invents it  DEV  9, TEST 20
+
+TEST therefore carries proportionally more of the clips that punish an inventing detector and fewer
+of the clips that punish a leaking gate. Since everything adopted today is a DETECTOR change --
+two vetoes whose whole purpose is to stop the detector naming sounds that are not there -- TEST is
+loaded slightly in favour of the change being evaluated.
+
+This is stated now, before the read, so it cannot be presented afterwards as either a triumph or an
+excuse. It is a property of a split fixed before any of this work existed, and re-drawing the split
+after seeing DEV results would be a far worse error than living with it. The correct treatment is to
+report the TEST result per category as well as overall, so a reader can see the effect directly
+rather than take this paragraph on trust.
