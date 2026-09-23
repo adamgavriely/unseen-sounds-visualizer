@@ -1,0 +1,521 @@
+{
+ "id": "mscproj-demo",
+ "revision": 0,
+ "last_node_id": 8,
+ "last_link_id": 14,
+ "nodes": [
+  {
+   "id": 1,
+   "type": "MscSystem",
+   "title": "0 \u00b7 System \u2014 gate ON = ours, OFF = blind baseline",
+   "pos": [
+    40,
+    60
+   ],
+   "size": [
+    380,
+    146
+   ],
+   "flags": {},
+   "order": 0,
+   "mode": 0,
+   "inputs": [],
+   "outputs": [
+    {
+     "name": "cfg",
+     "type": "MSC_CFG",
+     "links": [
+      1,
+      9
+     ],
+     "slot_index": 0
+    },
+    {
+     "name": "system",
+     "type": "STRING",
+     "links": [],
+     "slot_index": 1
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscSystem"
+   },
+   "widgets_values": [
+    true
+   ]
+  },
+  {
+   "id": 2,
+   "type": "MscLoadVideo",
+   "title": "1 \u00b7 Load video + extract audio",
+   "pos": [
+    40,
+    260
+   ],
+   "size": [
+    380,
+    172
+   ],
+   "flags": {},
+   "order": 1,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "cfg",
+     "type": "MSC_CFG",
+     "link": 1
+    }
+   ],
+   "outputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "links": [
+      2,
+      3,
+      4,
+      5,
+      10,
+      12
+     ],
+     "slot_index": 0
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscLoadVideo"
+   },
+   "widgets_values": [
+    "/home/dsi/adamg/MscProj/data/input/demo/un_dog_barking_3doKyrCe.mp4"
+   ]
+  },
+  {
+   "id": 3,
+   "type": "MscSceneUnderstanding",
+   "title": "2 \u00b7 What is on screen",
+   "pos": [
+    460,
+    60
+   ],
+   "size": [
+    380,
+    198
+   ],
+   "flags": {},
+   "order": 2,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "link": 2
+    }
+   ],
+   "outputs": [
+    {
+     "name": "scene",
+     "type": "MSC_SCENE",
+     "links": [
+      6
+     ],
+     "slot_index": 0
+    },
+    {
+     "name": "visible_entities",
+     "type": "STRING",
+     "links": [],
+     "slot_index": 1
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscSceneUnderstanding"
+   },
+   "widgets_values": [
+    "owlv2",
+    6
+   ]
+  },
+  {
+   "id": 4,
+   "type": "MscTranscribe",
+   "title": "3 \u00b7 Speech recognition",
+   "pos": [
+    460,
+    300
+   ],
+   "size": [
+    380,
+    172
+   ],
+   "flags": {},
+   "order": 3,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "link": 3
+    }
+   ],
+   "outputs": [
+    {
+     "name": "segments",
+     "type": "MSC_SEGMENTS",
+     "links": [
+      7
+     ],
+     "slot_index": 0
+    },
+    {
+     "name": "transcript",
+     "type": "STRING",
+     "links": [],
+     "slot_index": 1
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscTranscribe"
+   },
+   "widgets_values": [
+    true
+   ]
+  },
+  {
+   "id": 5,
+   "type": "MscDetectEvents",
+   "title": "4 \u00b7 Sound detection + the two vetoes",
+   "pos": [
+    460,
+    520
+   ],
+   "size": [
+    380,
+    224
+   ],
+   "flags": {},
+   "order": 4,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "link": 4
+    }
+   ],
+   "outputs": [
+    {
+     "name": "events",
+     "type": "MSC_EVENTS",
+     "links": [
+      8,
+      14
+     ],
+     "slot_index": 0
+    },
+    {
+     "name": "heard",
+     "type": "STRING",
+     "links": [],
+     "slot_index": 1
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscDetectEvents"
+   },
+   "widgets_values": [
+    0.8,
+    0.3,
+    0.05
+   ]
+  },
+  {
+   "id": 6,
+   "type": "MscCrossModalGate",
+   "title": "5 \u00b7 Cross-modal gate  \u2190  the contribution",
+   "pos": [
+    900,
+    240
+   ],
+   "size": [
+    380,
+    250
+   ],
+   "flags": {},
+   "order": 5,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "link": 5
+    },
+    {
+     "name": "scene",
+     "type": "MSC_SCENE",
+     "link": 6
+    },
+    {
+     "name": "segments",
+     "type": "MSC_SEGMENTS",
+     "link": 7
+    },
+    {
+     "name": "events",
+     "type": "MSC_EVENTS",
+     "link": 8
+    },
+    {
+     "name": "cfg",
+     "type": "MSC_CFG",
+     "link": 9
+    }
+   ],
+   "outputs": [
+    {
+     "name": "specs",
+     "type": "MSC_SPECS",
+     "links": [
+      11
+     ],
+     "slot_index": 0
+    },
+    {
+     "name": "decisions",
+     "type": "STRING",
+     "links": [],
+     "slot_index": 1
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscCrossModalGate"
+   },
+   "widgets_values": []
+  },
+  {
+   "id": 7,
+   "type": "MscGeneratePictures",
+   "title": "6 \u00b7 Generate pictures",
+   "pos": [
+    1320,
+    200
+   ],
+   "size": [
+    380,
+    198
+   ],
+   "flags": {},
+   "order": 6,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "link": 10
+    },
+    {
+     "name": "specs",
+     "type": "MSC_SPECS",
+     "link": 11
+    }
+   ],
+   "outputs": [
+    {
+     "name": "specs",
+     "type": "MSC_SPECS",
+     "links": [
+      13
+     ],
+     "slot_index": 0
+    },
+    {
+     "name": "preview",
+     "type": "IMAGE",
+     "links": [],
+     "slot_index": 1
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscGeneratePictures"
+   },
+   "widgets_values": [
+    "diffusion"
+   ]
+  },
+  {
+   "id": 8,
+   "type": "MscComposite",
+   "title": "7 \u00b7 Composite beside the video",
+   "pos": [
+    1740,
+    240
+   ],
+   "size": [
+    380,
+    198
+   ],
+   "flags": {},
+   "order": 7,
+   "mode": 0,
+   "inputs": [
+    {
+     "name": "media",
+     "type": "MSC_MEDIA",
+     "link": 12
+    },
+    {
+     "name": "specs",
+     "type": "MSC_SPECS",
+     "link": 13
+    },
+    {
+     "name": "events",
+     "type": "MSC_EVENTS",
+     "link": 14
+    }
+   ],
+   "outputs": [
+    {
+     "name": "output_video",
+     "type": "STRING",
+     "links": [],
+     "slot_index": 0
+    }
+   ],
+   "properties": {
+    "Node name for S&R": "MscComposite"
+   },
+   "widgets_values": []
+  }
+ ],
+ "links": [
+  [
+   1,
+   1,
+   0,
+   2,
+   0,
+   "MSC_CFG"
+  ],
+  [
+   2,
+   2,
+   0,
+   3,
+   0,
+   "MSC_MEDIA"
+  ],
+  [
+   3,
+   2,
+   0,
+   4,
+   0,
+   "MSC_MEDIA"
+  ],
+  [
+   4,
+   2,
+   0,
+   5,
+   0,
+   "MSC_MEDIA"
+  ],
+  [
+   5,
+   2,
+   0,
+   6,
+   0,
+   "MSC_MEDIA"
+  ],
+  [
+   6,
+   3,
+   0,
+   6,
+   1,
+   "MSC_SCENE"
+  ],
+  [
+   7,
+   4,
+   0,
+   6,
+   2,
+   "MSC_SEGMENTS"
+  ],
+  [
+   8,
+   5,
+   0,
+   6,
+   3,
+   "MSC_EVENTS"
+  ],
+  [
+   9,
+   1,
+   0,
+   6,
+   4,
+   "MSC_CFG"
+  ],
+  [
+   10,
+   2,
+   0,
+   7,
+   0,
+   "MSC_MEDIA"
+  ],
+  [
+   11,
+   6,
+   0,
+   7,
+   1,
+   "MSC_SPECS"
+  ],
+  [
+   12,
+   2,
+   0,
+   8,
+   0,
+   "MSC_MEDIA"
+  ],
+  [
+   13,
+   7,
+   0,
+   8,
+   1,
+   "MSC_SPECS"
+  ],
+  [
+   14,
+   5,
+   0,
+   8,
+   2,
+   "MSC_EVENTS"
+  ]
+ ],
+ "groups": [
+  {
+   "id": 1,
+   "title": "the pipeline (docs/prereg_v4.md)",
+   "bounding": [
+    20,
+    10,
+    2110,
+    700
+   ],
+   "color": "#3f789e",
+   "font_size": 24,
+   "flags": {}
+  }
+ ],
+ "config": {},
+ "extra": {},
+ "version": 0.4
+}
