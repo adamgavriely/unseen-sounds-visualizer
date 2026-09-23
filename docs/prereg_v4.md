@@ -1380,3 +1380,37 @@ shrinkage is real rather than noise. The vetoes are a shared stage, so blind get
 better the detector becomes the less there is for a visibility gate to remove. That is a genuine
 finding about where the gate's value comes from -- it is worth most when the detector is worst --
 and it belongs in the thesis next to the claim that the gate helps.
+
+### Amendment 17, outcome (2026-09-23): more models do NOT help — PANNs alone wins
+
+    DEV (49 clips)          F1     P      R      FA/clip  cost   hits  miss
+    veto only               0.264  0.207  0.364  0.94     3.59   12    21
+    any 1 of {P,A,C} 0.02   0.264  0.207  0.364  0.94     3.59   12    21
+    any 1 of {P,A,C} 0.05   0.264  0.207  0.364  0.94     3.59   12    21
+    any 1 of {P,A,C} 0.10   0.264  0.207  0.364  0.94     3.59   12    21
+    2 of 3, tau2 0.02       0.275  0.234  0.333  0.73     3.27   11    22
+    2 of 3, tau2 0.05       0.282  0.244  0.333  0.69     3.18   11    22
+    2 of 3, tau2 0.10       0.270  0.244  0.303  0.63     3.14   10    23
+    3 of 3, tau2 0.05       0.265  0.257  0.273  0.53     3.02    9    24   INELIGIBLE (recall cap 10)
+    PANNs alone (adopted)   0.297  0.268  0.333  0.61     3.02   11    22
+    silence                                               2.69
+
+**The adopted PANNs-only veto beats every cell of the ensemble grid.** "Any one of three" has
+literally no effect at any threshold -- at least one of PANNs, AST or CED hears the family every
+single time, so the rule never fires. "Two of three" is strictly worse than PANNs alone at matching
+recall (3.18 against 3.02 at 11 hits). "Three of three" matches PANNs' cost but at nine hits, which
+the recall cap refuses.
+
+**The prediction written in advance was right on the shape and wrong on the size.** It said k = 1
+would be looser than PANNs alone -- it is, to the point of doing nothing -- and that k = 3 would lose
+more than two sounds, which it does. It also posed the real question, and the answer is the
+unflattering one for ensembling: AST and CED hear the families PANNs hears when PANNs is right, and
+ALSO hear the ones it correctly refuses, so they can only weaken the veto.
+
+**The finding, stated as the thing worth keeping:** PANNs' value was never that it was a third
+model. It was that its architecture and training are unlike FlexSED's *in the specific way that
+matters* -- a CNN on log-mel with clip-level supervision versus a text-queried SSL transformer -- so
+it is quiet exactly where FlexSED's text query hallucinates a sustained texture. Two further
+AudioSet transformers are not that. **Diversity has to be the right kind, and adding models is not a
+substitute for it.** Amendment 17 is not adopted, and the AST and CED caches stay in the repository
+as the evidence for this negative result.
