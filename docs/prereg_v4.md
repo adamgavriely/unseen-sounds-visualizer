@@ -1678,3 +1678,47 @@ different ceilings, and they must not be conflated:
                   one TEST look.
 
 Full review of what the pipeline does and does not do with the video: docs/video_understanding_review.md
+
+### Amendment 18c, outcome (2026-09-23): SAM 3 is a better detector and lands on the SAME line
+
+Same harness, same concept phrases, same stretches as the OWLv2 run, so the two are comparable one
+for one. DEV, 118 (sound, stretch) decisions, SAM 3 at its own default bar of 0.5:
+
+                             SAM 3 sees it    SAM 3 blind
+    VLM says visible               28              15
+    VLM says NOT visible            9              66
+
+**SAM 3 is visibly the better model, and it shows in the right place.** It disagrees with the VLM on
+only 9 stretches where OWLv2 disagreed on 24 -- it is not seeing more things, it is seeing the right
+things. But the 9 split into **6 wrong pictures removed and 3 needed sounds lost: a ratio of exactly
+2.00**, against the beta = 2 break-even of 2.0. And unlike OWLv2, no threshold separates them: the
+ratio is 2.00 at every bar from 0.25 to 0.70.
+
+**Three different mechanisms have now landed on exactly 2.00**: the every-stretch gate rule
+(amendment 14), the per-stretch OWLv2 vote, and the per-stretch SAM 3 vote. That is no longer a
+coincidence worth remarking on -- it is the finding. **A visibility signal trades leaked pictures for
+lost sounds at the break-even rate whatever model produces it**, because the two populations are the
+same events seen from two sides. Better vision does not move that line; it only makes the
+disagreements fewer and sharper.
+
+**Why SAM 3 loses the three sounds, which is the useful part.** All three are the same clip and the
+same family: `mv_protest_scene_movie` Crowd, at 0.0 s, 2.1 s and 7.1 s, with SAM 3 confidence
+0.60-0.90. A crowd IS plainly on screen. The crowd SOUND the annotator marked as needed is off-screen
+chanting. SAM 3 answers "is a crowd visible" correctly and the gate needs "is the crowd we can hear
+the one on screen" -- presence is not source. That is the wrong-family problem relocated into the
+visual channel, predicted before the run, and it is why a concept detector cannot simply replace a
+visibility judgement.
+
+The six pictures it correctly removes are Insect x4 in a pet shop (there are visible insects),
+Train in a subway, and a Gunshot -- all cases where the source really is on screen.
+
+**Consequences, stated plainly:**
+
+  * The **supplement** route is closed. Three models, one line, no separation. It is not worth
+    another experiment.
+  * The **replace** route (SAM 3 instead of the VLM's visibility vote, then lowering
+    DISPLAY_THRESHOLD) is now much less attractive than it looked an hour ago: the Crowd failure is
+    what a replacement would do systematically, and a replacement has no second opinion to catch it.
+  * What the result DOES establish, and belongs in the thesis: the gate's remaining errors are not a
+    model deficiency. They are the boundary between "the object is on screen" and "the sound you
+    cannot hear comes from that object", which no current vision model is asked to answer.
