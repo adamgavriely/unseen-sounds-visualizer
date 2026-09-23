@@ -47,7 +47,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--half", default="dev")
     ap.add_argument("--fps", type=float, default=4.0, help="frames per second inside the stretch")
-    ap.add_argument("--bar", type=float, default=0.2, help="OWLv2 score that counts as seeing it")
+    ap.add_argument("--bar", type=float, default=0.2, help="detector score that counts as seeing it")
+    ap.add_argument("--backend", default="owl", choices=["owl", "sam3"],
+                    help="sam3 is the recognised successor: more than double OWLv2's open-vocabulary "
+                         "score on SA-Co, and it carries concepts through frames rather than judging "
+                         "each one alone. The concept phrases are shared, so the two are comparable.")
     a = ap.parse_args()
     config.use_v4("59")
     import torch
@@ -58,14 +62,16 @@ def main():
     subs = S.subsets_of(gold)
     stems = sorted(set(subs[a.half]) & set(subs["bench"]))
     root = _ROOT / "data" / "work" / "protocol_proposed_v4b6"
-    mdl, proc = _load("google/owlv2-base-patch16-ensemble", "cuda")
+    if a.backend == "owl":
+        mdl, proc = _load("google/owlv2-base-patch16-ensemble", "cuda")
+    else:
+        from src.stage2_video_understanding.sam3 import _load as _load_sam3
+        mdl, proc = _load_sam3(config.SAM3_MODEL, "cuda")
 
-    def owl_peak(vp, lab, lo, hi):
+    def peak_owl(vp, lab, lo, hi, times):
         q = DETECT_QUERY.get(lab)
         if q is None:
             return None
-        n = max(2, int((hi - lo) * a.fps))
-        times = [lo + (hi - lo) * i / (n - 1) for i in range(n)]
         best = 0.0
         for img in _sample_frames_at(vp, times):
             inp = proc(text=[[q]], images=img, return_tensors="pt").to("cuda")
@@ -76,6 +82,33 @@ def main():
                 target_sizes=torch.tensor([[img.height, img.width]]).to("cuda"))[0]
             best = max(best, max([float(x) for x in r["scores"]], default=0.0))
         return best
+
+    def peak_sam3(vp, lab, lo, hi, times):
+        q = DETECT_QUERY.get(lab)
+        if q is None:
+            return None
+        best = 0.0
+        for img in _sample_frames_at(vp, times):
+            inp = proc(images=img, text=q, return_tensors="pt").to("cuda")
+            with torch.no_grad():
+                out = mdl(**inp)
+            r = proc.post_process_instance_segmentation(
+                out, threshold=0.05, mask_threshold=0.5,
+                target_sizes=[(img.height, img.width)])[0]
+            sc = r.get("scores")
+            if sc is not None and len(sc):
+                best = max(best, float(max(float(x) for x in sc)))
+        return best
+
+    def detector_peak(vp, lab, lo, hi):
+        n = max(2, int((hi - lo) * a.fps))
+        times = [lo + (hi - lo) * i / (n - 1) for i in range(n)]
+        fn = peak_owl if a.backend == "owl" else peak_sam3
+        try:
+            return fn(vp, lab, lo, hi, times)
+        except Exception as e:
+            print(f"   [{a.backend}] failed on {lab}: {type(e).__name__}: {e}", flush=True)
+            return None
 
     cell = Counter()
     would_silence = {"needed_hit": [], "leak_or_fa": []}
@@ -92,7 +125,7 @@ def main():
             lo, hi = float(v["stretch"][0]), float(v["stretch"][1])
             yes = sum(1 for k in ("name", "ab", "desc") if v.get(k) is True)
             vlm_visible = yes >= 2
-            pk = owl_peak(vp, lab, lo - 1.0, hi + 1.0)
+            pk = detector_peak(vp, lab, lo - 1.0, hi + 1.0)
             if pk is None:
                 continue
             owl_visible = pk >= a.bar
@@ -105,7 +138,7 @@ def main():
                     (stem, lab, round(lo, 1), round(pk, 2)))
 
     print(f"== {a.half}: {sum(cell.values())} (sound, stretch) decisions, OWL at {a.fps} fps, bar {a.bar}\n")
-    print(f"{'':22s} {'OWL sees it':>12s} {'OWL blind':>12s}")
+    print(f"{'':22s} {a.backend + ' sees it':>12s} {a.backend + ' blind':>12s}")
     print(f"{'VLM says visible':22s} {cell[(True, True)]:12d} {cell[(True, False)]:12d}")
     print(f"{'VLM says NOT visible':22s} {cell[(False, True)]:12d} {cell[(False, False)]:12d}")
     nh, nl = len(would_silence["needed_hit"]), len(would_silence["leak_or_fa"])
@@ -120,7 +153,7 @@ def main():
     for k in ("needed_hit", "leak_or_fa"):
         for x in would_silence[k][:8]:
             print(f"     {k:11s} {x[0][:28]:28s} {x[1][:18]:18s} at {x[2]:5.1f}s  owl {x[3]:.2f}")
-    out = _ROOT / "benchmark" / "gold" / f"owl_per_stretch_{a.half}.json"
+    out = _ROOT / "benchmark" / "gold" / f"{a.backend}_per_stretch_{a.half}.json"
     out.write_text(json.dumps({"cells": {str(k): v for k, v in cell.items()},
                                "would_silence": would_silence}, indent=1), encoding="utf-8")
     print("\n->", out)
