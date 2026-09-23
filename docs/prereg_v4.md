@@ -1060,8 +1060,14 @@ Found while reading a running log: for london_protest_01 the stage-2 concept pas
 one of the eleven leaks amendment 14 attributed to "the vision model saw nothing".
 
 It is not that the vision model saw nothing. `SceneContext.visible_entities` is produced by every
-stage-2 backend (owl.py, sam3.py, siglip.py) and is read by nothing outside stage 2 -- a grep of the
-whole source finds no consumer. The gate's verdict is the VLM's alone, and an open-vocabulary object
+stage-2 backend (owl.py, sam3.py, siglip.py). **Correction (2026-09-23, later the same day): an
+earlier version of this paragraph said it is read by nothing. That is wrong.**
+`plan_augmentations` does read it, but in the shipping configuration the verdict is deliberately
+deferred to the per-sound VLM check (`defer = redundant and VLM_VISIBILITY and
+DEPICTION_REASONING`), for a reason recorded in the code: stage 2 is a whole-clip object pass and it
+once silenced a fire alarm because the pull station was visible somewhere in the video. The effect
+on the gate is the same -- the final word is the VLM's -- but it is a design decision, not an
+oversight. The gate's verdict is the VLM's alone, and an open-vocabulary object
 detector that already located the source on screen has no vote.
 
 **The change to test.** A sound is silenced if the VLM's majority says its source is visible in every

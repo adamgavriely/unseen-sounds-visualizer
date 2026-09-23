@@ -29,8 +29,14 @@ That is the whole of it.
   * **No audio-visual synchrony.** Nothing asks whether the picture changes AT the onset.
   * **Sparse sampling.** A 5-second stretch gets 6 frames -- one every 1.4 s. A car passing behind
     the camera is on screen for about half a second.
-  * **`visible_entities` is computed on every clip and read by nothing.** A grep of the source finds
-    no consumer outside stage 2. The gate's verdict is the VLM's alone.
+  * **`visible_entities` is computed, read, and then deliberately overridden.** An earlier draft of
+    this review said "read by nothing"; that was wrong. `plan_augmentations` does read it -- a sound
+    whose label appears in the list is marked redundant. But in the shipping configuration
+    `defer = redundant and VLM_VISIBILITY and DEPICTION_REASONING` is true, which collapses the
+    decision back to salience alone and hands the final word to the per-sound VLM check. The code
+    says why, in a comment: stage 2 is a whole-clip object pass, and it once silenced a fire alarm
+    because the pull station was on screen somewhere. So the verdict is not ignored by oversight, it
+    is deferred by design -- and the consequence is the same, the gate's verdict is the VLM's.
   * **SAM 3 is written and unused.** `src/stage2_video_understanding/sam3.py` exists and was listed
     in the v4 plan as OWLv2's successor; it never entered the adopted row.
 
