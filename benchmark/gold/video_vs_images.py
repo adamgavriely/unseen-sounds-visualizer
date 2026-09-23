@@ -52,8 +52,15 @@ def ask_video(mdl, proc, prompt, frames, fps):
     """the same question, with the frames declared as a video so temporal ids exist"""
     import torch
     content = [{"type": "video"}, {"type": "text", "text": prompt}]
-    text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
-                                    add_generation_prompt=True)
+    # enable_thinking=False, exactly as reason._ask does. Without it the template turns reasoning
+    # ON and the model emits "The user is asking about..." instead of the answer -- which an
+    # earlier version of this test scored as a successful flip. Recorded rather than hidden.
+    try:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
+                                        add_generation_prompt=True, enable_thinking=False)
+    except TypeError:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
+                                        add_generation_prompt=True)
     kw = {"text": [text], "videos": [frames], "return_tensors": "pt"}
     # fps is a SCALAR here, not a list: the processor validates it as int|float|None and an
     # earlier version of this test passed [fps], which made every call raise and produced a
@@ -68,8 +75,11 @@ def ask_video(mdl, proc, prompt, frames, fps):
         raise RuntimeError("processor rejected the video input")
     inputs = inputs.to(mdl.device)
     with torch.no_grad():
-        out = mdl.generate(**inputs, max_new_tokens=24, do_sample=False)
-    return proc.batch_decode(out[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0].strip()
+        out = mdl.generate(**inputs, max_new_tokens=64, do_sample=False)
+    t = proc.batch_decode(out[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0].strip()
+    if "</think>" in t:
+        t = t.split("</think>")[-1].strip()
+    return t
 
 
 def main():
@@ -140,9 +150,13 @@ def main():
             except Exception as e:
                 as_video = f"<error {type(e).__name__}: {e}>"
             as_images = reason._ask(mdl, proc, q, images=frames, max_new=24)
+            vid = as_video.strip().lower()
             flipped = (as_images.strip().lower().startswith("nothing")
-                       and not as_video.strip().lower().startswith("nothing")
-                       and not as_video.startswith("<error"))
+                       and not vid.startswith("nothing")
+                       and not as_video.startswith("<error")
+                       # a short noun phrase is an answer; a sentence is the model reasoning
+                       and len(vid.split()) <= 6
+                       and not vid.startswith("the user"))
             res[name].append({"clip": stem, "label": lab, "stretch": [lo, hi],
                               "as_images": as_images, "as_video": as_video, "flipped": flipped})
             print(f"   [{name:5s}] {stem[:26]:26s} {lab[:16]:16s} images={as_images[:26]!r:28s} video={as_video[:26]!r}")
