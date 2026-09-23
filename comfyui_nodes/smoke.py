@@ -22,6 +22,7 @@ def main():
     ap.add_argument("--video", required=True)
     ap.add_argument("--gen", default="diffusion", choices=["diffusion", "placeholder", "retrieve"])
     ap.add_argument("--gate", default="on", choices=["on", "off"])
+    ap.add_argument("--tag", default="", help="keep this run's work dir separate, e.g. the torch version")
     a = ap.parse_args()
 
     import config
@@ -29,8 +30,12 @@ def main():
     config.VIDEO_BACKEND = "owlv2"
     config.TRANSCRIBE = True
     # gate on and gate off must not write to the same file: the A/B for the defence is two videos
-    config.OUTPUT_DIR = Path(config.OUTPUT_DIR) / f"demo_gate_{a.gate}"
+    config.OUTPUT_DIR = Path(config.OUTPUT_DIR) / f"demo_gate_{a.gate}{('_' + a.tag) if a.tag else ''}"
     config.OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    if a.tag:
+        # a separate work dir per run, so the SAME clip under two torch builds can be diffed
+        config.WORK_DIR = Path(config.WORK_DIR) / f"torch_{a.tag}"
+        config.WORK_DIR.mkdir(parents=True, exist_ok=True)
 
     from comfyui_nodes import (MscSystem, MscLoadVideo, MscSceneUnderstanding, MscTranscribe,
                                MscDetectEvents, MscCrossModalGate, MscGeneratePictures,
