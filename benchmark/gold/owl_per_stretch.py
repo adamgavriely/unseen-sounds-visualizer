@@ -153,6 +153,21 @@ def main():
     for k in ("needed_hit", "leak_or_fa"):
         for x in would_silence[k][:8]:
             print(f"     {k:11s} {x[0][:28]:28s} {x[1][:18]:18s} at {x[2]:5.1f}s  owl {x[3]:.2f}")
+    # the same post-hoc diagnostic reported for OWLv2: is there ANY bar that separates the sounds
+    # worth keeping from the pictures worth removing? Reported as exploration, not as a selection.
+    hs = [x[3] for x in would_silence["needed_hit"]]
+    ls = [x[3] for x in would_silence["leak_or_fa"]]
+    if hs or ls:
+        print()
+        print("   needed-sound scores:", sorted(hs))
+        print("   leak scores:        ", sorted(ls))
+        print(f"   {'bar':>6s} {'leaks removed':>14s} {'hits lost':>10s} {'ratio':>8s}")
+        for bar in (a.bar, 0.25, 0.30, 0.35, 0.40, 0.50, 0.60, 0.70):
+            h = sum(1 for x in hs if x >= bar)
+            l = sum(1 for x in ls if x >= bar)
+            r = f"{l / h:.2f}" if h else ("inf" if l else "-")
+            flag = "CLEARS" if ((h == 0 and l > 0) or (h and l / h > 2)) else ""
+            print(f"   {bar:6.2f} {l:14d} {h:10d} {r:>8s}  {flag}")
     out = _ROOT / "benchmark" / "gold" / f"{a.backend}_per_stretch_{a.half}.json"
     out.write_text(json.dumps({"cells": {str(k): v for k, v in cell.items()},
                                "would_silence": would_silence}, indent=1), encoding="utf-8")
