@@ -1,0 +1,862 @@
+{
+ "today:0": {
+  "object": "a sandwich with legs.",
+  "sound": "nothing.",
+  "raw": "<|begin_of_box|>OBJECT: a sandwich with legs.\nSOUND: nothing.<|end_of_box|>"
+ },
+ "today:1": {
+  "object": "water droplets",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: water droplets  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:2": {
+  "object": "wind chime.",
+  "sound": "nothing.",
+  "raw": "<|begin_of_box|>OBJECT: wind chime.\nSOUND: nothing.<|end_of_box|>"
+ },
+ "today:3": {
+  "object": "bicycle bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:4": {
+  "object": "submachine gun",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: submachine gun  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:5": {
+  "object": "cannon",
+  "sound": "loud explosion",
+  "raw": "<|begin_of_box|>OBJECT: cannon  \nSOUND: loud explosion<|end_of_box|>"
+ },
+ "today:6": {
+  "object": "whistle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: whistle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:7": {
+  "object": "train",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: train  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:8": {
+  "object": "nothing",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: nothing\nSOUND: nothing<|end_of_box|>"
+ },
+ "today:9": {
+  "object": "a black horn.",
+  "sound": "nothing.",
+  "raw": "<|begin_of_box|>OBJECT: a black horn.\nSOUND: nothing.<|end_of_box|>"
+ },
+ "today:10": {
+  "object": "green frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: green frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:11": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:12": {
+  "object": "mosquito",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: mosquito  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:13": {
+  "object": "house fly",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: house fly  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:14": {
+  "object": "a beetle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a beetle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:15": {
+  "object": "excited man",
+  "sound": "shouting loudly",
+  "raw": "<|begin_of_box|>OBJECT: excited man  \nSOUND: shouting loudly<|end_of_box|>"
+ },
+ "today:16": {
+  "object": "tree stump",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: tree stump\nSOUND: nothing<|end_of_box|>"
+ },
+ "today:17": {
+  "object": "ambulance",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: ambulance  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:18": {
+  "object": "wooden xylophone.",
+  "sound": "nothing.",
+  "raw": "<|begin_of_box|>OBJECT: wooden xylophone.\nSOUND: nothing.<|end_of_box|>"
+ },
+ "today:19": {
+  "object": "hanging lantern",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: hanging lantern  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:20": {
+  "object": "dumbbell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: dumbbell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:21": {
+  "object": "people running",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: people running  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:22": {
+  "object": "chocolate splash",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: chocolate splash  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:23": {
+  "object": "chicken",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: chicken  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:24": {
+  "object": "crying child",
+  "sound": "crying out loud",
+  "raw": "<|begin_of_box|>OBJECT: crying child  \nSOUND: crying out loud<|end_of_box|>"
+ },
+ "today:25": {
+  "object": "crying baby",
+  "sound": "crying/yawning sound",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: crying/yawning sound<|end_of_box|>"
+ },
+ "today:26": {
+  "object": "bicycle bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:27": {
+  "object": "a bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:28": {
+  "object": "bicycle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:29": {
+  "object": "fire truck",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: fire truck  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:30": {
+  "object": "three Chinese characters",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: three Chinese characters\nSOUND: nothing<|end_of_box|>"
+ },
+ "today:31": {
+  "object": "open mouth",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: open mouth  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:32": {
+  "object": "cat-shaped broom.",
+  "sound": "nothing.",
+  "raw": "<|begin_of_box|>OBJECT: cat-shaped broom.\nSOUND: nothing.<|end_of_box|>"
+ },
+ "today:33": {
+  "object": "brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:34": {
+  "object": "bicycle bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:35": {
+  "object": "person in traditional attire",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: person in traditional attire  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:36": {
+  "object": "a large crowd",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a large crowd  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:37": {
+  "object": "assault rifle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: assault rifle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:38": {
+  "object": "a crying boy",
+  "sound": "a loud wail",
+  "raw": "<|begin_of_box|>OBJECT: a crying boy  \nSOUND: a loud wail<|end_of_box|>"
+ },
+ "today:39": {
+  "object": "man with open mouth",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man with open mouth  \nSOUND: nothing<|end_of_box|>"
+ },
+ "today:40": {
+  "object": "baby",
+  "sound": "crying/yawning",
+  "raw": "<|begin_of_box|>OBJECT: baby  \nSOUND: crying/yawning<|end_of_box|>"
+ },
+ "today:41": {
+  "object": "laughing woman",
+  "sound": "hearty laugh",
+  "raw": "<|begin_of_box|>OBJECT: laughing woman  \nSOUND: hearty laugh<|end_of_box|>"
+ },
+ "today:42": {
+  "object": "police car",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: police car  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:0": {
+  "object": "wine glasses",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: wine glasses  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:1": {
+  "object": "rain falling",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: rain falling  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:2": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:3": {
+  "object": "bicycle bell",
+  "sound": "ring",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: ring<|end_of_box|>"
+ },
+ "N:4": {
+  "object": "cannon",
+  "sound": "loud bang",
+  "raw": "<|begin_of_box|>OBJECT: cannon  \nSOUND: loud bang<|end_of_box|>"
+ },
+ "N:5": {
+  "object": "old cannon",
+  "sound": "loud explosion",
+  "raw": "<|begin_of_box|>OBJECT: old cannon  \nSOUND: loud explosion<|end_of_box|>"
+ },
+ "N:6": {
+  "object": "steam locomotive",
+  "sound": "loud horn blast",
+  "raw": "<|begin_of_box|>OBJECT: steam locomotive  \nSOUND: loud horn blast<|end_of_box|>"
+ },
+ "N:7": {
+  "object": "train",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: train  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:8": {
+  "object": "steam locomotive",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: steam locomotive  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:9": {
+  "object": "megaphone",
+  "sound": "loud announcement",
+  "raw": "<|begin_of_box|>OBJECT: megaphone  \nSOUND: loud announcement<|end_of_box|>"
+ },
+ "N:10": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:11": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:12": {
+  "object": "mosquito",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: mosquito  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:13": {
+  "object": "housefly",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: housefly  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:14": {
+  "object": "cricket",
+  "sound": "chirping",
+  "raw": "<|begin_of_box|>OBJECT: cricket  \nSOUND: chirping<|end_of_box|>"
+ },
+ "N:15": {
+  "object": "man with open mouth",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man with open mouth  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:16": {
+  "object": "man shouting",
+  "sound": "loud scream",
+  "raw": "<|begin_of_box|>OBJECT: man shouting  \nSOUND: loud scream<|end_of_box|>"
+ },
+ "N:17": {
+  "object": "ambulance",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: ambulance  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:18": {
+  "object": "xylophone",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: xylophone  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:19": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:20": {
+  "object": "wooden rattle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: wooden rattle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:21": {
+  "object": "man running",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man running  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:22": {
+  "object": "megaphone",
+  "sound": "loud announcement",
+  "raw": "<|begin_of_box|>OBJECT: megaphone  \nSOUND: loud announcement<|end_of_box|>"
+ },
+ "N:23": {
+  "object": "brown chicken",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: brown chicken  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:24": {
+  "object": "crying man",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: crying man  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:25": {
+  "object": "crying baby",
+  "sound": "wailing or crying",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: wailing or crying<|end_of_box|>"
+ },
+ "N:26": {
+  "object": "bicycle bell",
+  "sound": "ring",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: ring<|end_of_box|>"
+ },
+ "N:27": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:28": {
+  "object": "bicycle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:29": {
+  "object": "fire truck",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: fire truck  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:30": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:31": {
+  "object": "angry person",
+  "sound": "shouting loudly",
+  "raw": "<|begin_of_box|>OBJECT: angry person  \nSOUND: shouting loudly<|end_of_box|>"
+ },
+ "N:32": {
+  "object": "cat",
+  "sound": "meow",
+  "raw": "<|begin_of_box|>OBJECT: cat  \nSOUND: meow<|end_of_box|>"
+ },
+ "N:33": {
+  "object": "brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:34": {
+  "object": "bicycle bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:35": {
+  "object": "wine glasses",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: wine glasses  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:36": {
+  "object": "cheering crowd",
+  "sound": "loud cheers",
+  "raw": "<|begin_of_box|>OBJECT: cheering crowd  \nSOUND: loud cheers<|end_of_box|>"
+ },
+ "N:37": {
+  "object": "soldier with machine gun",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: soldier with machine gun  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:38": {
+  "object": "crying woman",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: crying woman  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:39": {
+  "object": "man with open mouth",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man with open mouth  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N:40": {
+  "object": "crying baby",
+  "sound": "crying out loud",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: crying out loud<|end_of_box|>"
+ },
+ "N:41": {
+  "object": "two laughing women",
+  "sound": "laughter (or \"hilarious laughter\")",
+  "raw": "<|begin_of_box|>OBJECT: two laughing women  \nSOUND: laughter (or \"hilarious laughter\")<|end_of_box|>"
+ },
+ "N:42": {
+  "object": "police car",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: police car  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:0": {
+  "object": "kitten",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: kitten  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:1": {
+  "object": "water droplets",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: water droplets  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:2": {
+  "object": "bronze bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bronze bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:3": {
+  "object": "service bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: service bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:4": {
+  "object": "pistol",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: pistol  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:5": {
+  "object": "artillery gun",
+  "sound": "loud explosion",
+  "raw": "<|begin_of_box|>OBJECT: artillery gun  \nSOUND: loud explosion<|end_of_box|>"
+ },
+ "N0:6": {
+  "object": "vintage horn",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: vintage horn  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:7": {
+  "object": "train",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: train  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:8": {
+  "object": "smoke",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: smoke  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:9": {
+  "object": "megaphone",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: megaphone\nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:10": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:11": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:12": {
+  "object": "mosquito",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: mosquito  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:13": {
+  "object": "housefly",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: housefly  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:14": {
+  "object": "housefly",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: housefly  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:15": {
+  "object": "person",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: person  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:16": {
+  "object": "man",
+  "sound": "scream",
+  "raw": "<|begin_of_box|>OBJECT: man  \nSOUND: scream<|end_of_box|>"
+ },
+ "N0:17": {
+  "object": "ambulance",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: ambulance  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:18": {
+  "object": "rubber mallet",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: rubber mallet  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:19": {
+  "object": "copper bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: copper bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:20": {
+  "object": "fur pom-pom",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: fur pom-pom  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:21": {
+  "object": "man running",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man running  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:22": {
+  "object": "man",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:23": {
+  "object": "rooster",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: rooster  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:24": {
+  "object": "crying woman",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: crying woman  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:25": {
+  "object": "crying baby",
+  "sound": "wailing or crying",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: wailing or crying<|end_of_box|>"
+ },
+ "N0:26": {
+  "object": "bicycle bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:27": {
+  "object": "large bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: large bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:28": {
+  "object": "bicycle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:29": {
+  "object": "fire truck",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: fire truck  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:30": {
+  "object": "a man",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a man  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:31": {
+  "object": "angry man",
+  "sound": "shouting loudly",
+  "raw": "<|begin_of_box|>OBJECT: angry man  \nSOUND: shouting loudly<|end_of_box|>"
+ },
+ "N0:32": {
+  "object": "a tabby cat",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a tabby cat  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:33": {
+  "object": "a bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:34": {
+  "object": "service bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: service bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:35": {
+  "object": "small dog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: small dog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:36": {
+  "object": "purple wheat ears",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: purple wheat ears  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:37": {
+  "object": "assault rifle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: assault rifle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:38": {
+  "object": "crying woman",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: crying woman  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:39": {
+  "object": "woman",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: woman  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N0:40": {
+  "object": "crying baby",
+  "sound": "wailing or crying",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: wailing or crying<|end_of_box|>"
+ },
+ "N0:41": {
+  "object": "woman",
+  "sound": "laughter",
+  "raw": "<|begin_of_box|>OBJECT: woman  \nSOUND: laughter<|end_of_box|>"
+ },
+ "N0:42": {
+  "object": "police car",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: police car  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:0": {
+  "object": "wine glasses",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: wine glasses  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:1": {
+  "object": "water droplets on glass",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: water droplets on glass  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:2": {
+  "object": "brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:3": {
+  "object": "service bell",
+  "sound": "ringing",
+  "raw": "<|begin_of_box|>OBJECT: service bell  \nSOUND: ringing<|end_of_box|>"
+ },
+ "N1:4": {
+  "object": "missile",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: missile  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:5": {
+  "object": "firework",
+  "sound": "loud bang",
+  "raw": "<|begin_of_box|>OBJECT: firework  \nSOUND: loud bang<|end_of_box|>"
+ },
+ "N1:6": {
+  "object": "steam locomotive",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: steam locomotive  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:7": {
+  "object": "steam locomotive",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: steam locomotive  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:8": {
+  "object": "electric kettle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: electric kettle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:9": {
+  "object": "blue megaphone",
+  "sound": "loud announcement",
+  "raw": "<|begin_of_box|>OBJECT: blue megaphone  \nSOUND: loud announcement<|end_of_box|>"
+ },
+ "N1:10": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:11": {
+  "object": "frog",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: frog  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:12": {
+  "object": "mosquito",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: mosquito  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:13": {
+  "object": "housefly",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: housefly  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:14": {
+  "object": "housefly",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: housefly  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:15": {
+  "object": "man with open mouth",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man with open mouth  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:16": {
+  "object": "man shouting",
+  "sound": "loud scream",
+  "raw": "<|begin_of_box|>OBJECT: man shouting  \nSOUND: loud scream<|end_of_box|>"
+ },
+ "N1:17": {
+  "object": "ambulance",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: ambulance  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:18": {
+  "object": "rubber mallet",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: rubber mallet  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:19": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:20": {
+  "object": "colorful bangles",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: colorful bangles  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:21": {
+  "object": "man running",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man running  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:22": {
+  "object": "man",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:23": {
+  "object": "rooster",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: rooster  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:24": {
+  "object": "crying baby",
+  "sound": "wailing or crying",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: wailing or crying<|end_of_box|>"
+ },
+ "N1:25": {
+  "object": "crying baby",
+  "sound": "crying out loud",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: crying out loud<|end_of_box|>"
+ },
+ "N1:26": {
+  "object": "service bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: service bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:27": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:28": {
+  "object": "bicycle",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: bicycle  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:29": {
+  "object": "fire truck",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: fire truck  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:30": {
+  "object": "a brass bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: a brass bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:31": {
+  "object": "angry cat",
+  "sound": "hissing or growling",
+  "raw": "<|begin_of_box|>OBJECT: angry cat  \nSOUND: hissing or growling<|end_of_box|>"
+ },
+ "N1:32": {
+  "object": "cat",
+  "sound": "meow",
+  "raw": "<|begin_of_box|>OBJECT: cat  \nSOUND: meow<|end_of_box|>"
+ },
+ "N1:33": {
+  "object": "golden bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: golden bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:34": {
+  "object": "service bell",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: service bell  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:35": {
+  "object": "wine glasses",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: wine glasses  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:36": {
+  "object": "crowd at concert",
+  "sound": "cheering and clapping",
+  "raw": "<|begin_of_box|>OBJECT: crowd at concert  \nSOUND: cheering and clapping<|end_of_box|>"
+ },
+ "N1:37": {
+  "object": "assault rifle",
+  "sound": "bang or gunshot",
+  "raw": "<|begin_of_box|>OBJECT: assault rifle  \nSOUND: bang or gunshot<|end_of_box|>"
+ },
+ "N1:38": {
+  "object": "crying woman",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: crying woman  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:39": {
+  "object": "man with open mouth",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: man with open mouth  \nSOUND: nothing<|end_of_box|>"
+ },
+ "N1:40": {
+  "object": "crying baby",
+  "sound": "wailing or crying",
+  "raw": "<|begin_of_box|>OBJECT: crying baby  \nSOUND: wailing or crying<|end_of_box|>"
+ },
+ "N1:41": {
+  "object": "a woman laughing",
+  "sound": "a loud, joyful laugh",
+  "raw": "<|begin_of_box|>OBJECT: a woman laughing  \nSOUND: a loud, joyful laugh<|end_of_box|>"
+ },
+ "N1:42": {
+  "object": "police car",
+  "sound": "nothing",
+  "raw": "<|begin_of_box|>OBJECT: police car  \nSOUND: nothing<|end_of_box|>"
+ }
+}

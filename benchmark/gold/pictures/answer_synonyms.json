@@ -1,46 +1,405 @@
 {
  "_note": "Plain words a person uses for each source, written 2026-09-25 from the list of V3 sources on picfresh_v32 alone, before any picture was seen or any answer received. Where the AudioSet label names a sound, the thing that makes it is listed (rooster for crowing).",
- "Chirp, tweet": ["chirping", "tweeting", "songbird", "singing bird", "bird singing", "bird chirping", "bird tweeting"],
- "Bird vocalization, bird call, bird song": ["birdsong", "singing bird", "bird singing", "songbird", "chirping", "bird chirping", "bird calling"],
- "Bird": ["bird", "birds"],
- "Cluck": ["chicken", "hen", "clucking"],
- "Crowing, cock-a-doodle-doo": ["rooster", "cock", "cockerel", "crowing"],
- "Church bell": ["church bell", "bell tower", "church bells"],
- "Artillery fire": ["cannon", "artillery", "howitzer", "cannon firing", "big gun"],
- "Vehicle": ["vehicle"],
- "Cupboard open or close": ["cupboard", "cabinet", "closet", "wardrobe", "cupboard door"],
- "Buzz": ["bee", "fly", "wasp", "insect", "buzzing"],
- "Sheep": ["sheep", "lamb", "bleating"],
- "Goose": ["goose", "geese", "honking goose"],
- "Boat, Water vehicle": ["boat", "ship", "vessel"],
- "Frog": ["frog", "toad", "croaking"],
- "Fowl": ["poultry", "fowl"],
- "Railroad car, train wagon": ["train car", "train wagon", "railcar", "rail car", "freight car", "wagon", "carriage", "train carriage"],
- "Whoosh, swoosh, swish": ["whoosh", "swoosh", "swish", "whooshing"],
- "Meow": ["cat", "kitten", "meowing"],
- "Moo": ["cow", "cattle", "bull", "mooing"],
- "Rain on surface": ["raindrops", "rain drops", "rain on", "rain hitting", "rain falling on", "rain on window"],
- "Thunder": ["thunder", "lightning", "thunderbolt"],
- "Siren": ["siren"],
- "Shatter": ["shatter", "shattering", "shattered", "breaking glass", "glass breaking", "broken glass", "smashed glass"],
- "Tick": ["clock", "ticking", "clock ticking"],
- "Pigeon, dove": ["pigeon", "dove", "cooing"],
- "Walk, footsteps": ["footsteps", "walking", "walker", "steps", "feet", "person walking"],
- "Chewing, mastication": ["chewing", "eating", "mouth chewing"],
- "Telephone bell ringing": ["phone", "telephone", "phone ringing", "telephone ringing", "ringing phone"],
- "Sigh": ["sigh", "sighing", "exhale", "exhaling"],
- "Thunk": ["thunk"],
- "Ice cream truck, ice cream van": ["ice cream truck", "ice cream van"],
- "Smash, crash": ["smash", "crash", "smashing", "crashing"],
- "Train horn": ["train horn", "train whistle", "locomotive horn", "train honking"],
- "Laughter": ["laughing", "laugh", "laughter", "people laughing"],
- "Police car (siren)": ["police car", "police siren", "cop car", "police"],
- "Emergency vehicle": ["emergency vehicle"],
- "Waves, surf": ["waves", "surf", "ocean waves", "sea waves", "wave crashing", "breaking waves"],
- "Owl": ["owl", "hooting"],
- "Caw": ["crow", "raven", "cawing"],
- "Basketball bounce": ["basketball", "bouncing ball", "dribbling"],
- "Clip-clop": ["horse", "hooves", "galloping", "trotting", "horse walking"],
- "Children playing": ["children", "kids", "kids playing", "children playing", "playground"],
- "Car alarm": ["car alarm"]
+ "Chirp, tweet": [
+  "chirping",
+  "tweeting",
+  "songbird",
+  "singing bird",
+  "bird singing",
+  "bird chirping",
+  "bird tweeting"
+ ],
+ "Bird vocalization, bird call, bird song": [
+  "birdsong",
+  "singing bird",
+  "bird singing",
+  "songbird",
+  "chirping",
+  "bird chirping",
+  "bird calling"
+ ],
+ "Bird": [
+  "bird",
+  "birds"
+ ],
+ "Cluck": [
+  "chicken",
+  "hen",
+  "clucking"
+ ],
+ "Crowing, cock-a-doodle-doo": [
+  "rooster",
+  "cock",
+  "cockerel",
+  "crowing"
+ ],
+ "Church bell": [
+  "church bell",
+  "bell tower",
+  "church bells"
+ ],
+ "Artillery fire": [
+  "cannon",
+  "artillery",
+  "howitzer",
+  "cannon firing",
+  "big gun"
+ ],
+ "Vehicle": [
+  "vehicle"
+ ],
+ "Cupboard open or close": [
+  "cupboard",
+  "cabinet",
+  "closet",
+  "wardrobe",
+  "cupboard door"
+ ],
+ "Buzz": [
+  "bee",
+  "fly",
+  "wasp",
+  "insect",
+  "buzzing"
+ ],
+ "Sheep": [
+  "sheep",
+  "lamb",
+  "bleating"
+ ],
+ "Goose": [
+  "goose",
+  "geese",
+  "honking goose"
+ ],
+ "Boat, Water vehicle": [
+  "boat",
+  "ship",
+  "vessel"
+ ],
+ "Frog": [
+  "frog",
+  "toad",
+  "croaking"
+ ],
+ "Fowl": [
+  "poultry",
+  "fowl"
+ ],
+ "Railroad car, train wagon": [
+  "train car",
+  "train wagon",
+  "railcar",
+  "rail car",
+  "freight car",
+  "wagon",
+  "carriage",
+  "train carriage"
+ ],
+ "Whoosh, swoosh, swish": [
+  "whoosh",
+  "swoosh",
+  "swish",
+  "whooshing"
+ ],
+ "Meow": [
+  "cat",
+  "kitten",
+  "meowing"
+ ],
+ "Moo": [
+  "cow",
+  "cattle",
+  "bull",
+  "mooing"
+ ],
+ "Rain on surface": [
+  "raindrops",
+  "rain drops",
+  "rain on",
+  "rain hitting",
+  "rain falling on",
+  "rain on window"
+ ],
+ "Thunder": [
+  "thunder",
+  "lightning",
+  "thunderbolt"
+ ],
+ "Siren": [
+  "siren"
+ ],
+ "Shatter": [
+  "shatter",
+  "shattering",
+  "shattered",
+  "breaking glass",
+  "glass breaking",
+  "broken glass",
+  "smashed glass"
+ ],
+ "Tick": [
+  "clock",
+  "ticking",
+  "clock ticking"
+ ],
+ "Pigeon, dove": [
+  "pigeon",
+  "dove",
+  "cooing"
+ ],
+ "Walk, footsteps": [
+  "footsteps",
+  "walking",
+  "walker",
+  "steps",
+  "feet",
+  "person walking"
+ ],
+ "Chewing, mastication": [
+  "chewing",
+  "eating",
+  "mouth chewing"
+ ],
+ "Telephone bell ringing": [
+  "phone",
+  "telephone",
+  "phone ringing",
+  "telephone ringing",
+  "ringing phone"
+ ],
+ "Sigh": [
+  "sigh",
+  "sighing",
+  "exhale",
+  "exhaling"
+ ],
+ "Thunk": [
+  "thunk"
+ ],
+ "Ice cream truck, ice cream van": [
+  "ice cream truck",
+  "ice cream van"
+ ],
+ "Smash, crash": [
+  "smash",
+  "crash",
+  "smashing",
+  "crashing"
+ ],
+ "Train horn": [
+  "train horn",
+  "train whistle",
+  "locomotive horn",
+  "train honking"
+ ],
+ "Laughter": [
+  "laughing",
+  "laugh",
+  "laughter",
+  "people laughing"
+ ],
+ "Police car (siren)": [
+  "police car",
+  "police siren",
+  "cop car",
+  "police"
+ ],
+ "Emergency vehicle": [
+  "emergency vehicle"
+ ],
+ "Waves, surf": [
+  "waves",
+  "surf",
+  "ocean waves",
+  "sea waves",
+  "wave crashing",
+  "breaking waves"
+ ],
+ "Owl": [
+  "owl",
+  "hooting"
+ ],
+ "Caw": [
+  "crow",
+  "raven",
+  "cawing"
+ ],
+ "Basketball bounce": [
+  "basketball",
+  "bouncing ball",
+  "dribbling"
+ ],
+ "Clip-clop": [
+  "horse",
+  "hooves",
+  "galloping",
+  "trotting",
+  "horse walking"
+ ],
+ "Children playing": [
+  "children",
+  "kids",
+  "kids playing",
+  "children playing",
+  "playground"
+ ],
+ "Car alarm": [
+  "car alarm"
+ ],
+ "_note_sliceB": "Added 2026-09-25 from the list of slice-B sources alone, before any slice-B picture was rated. Honk is AudioSet's goose honk (parent Goose).",
+ "Ambulance (siren)": [
+  "ambulance"
+ ],
+ "Baby cry, infant cry": [
+  "baby",
+  "infant",
+  "baby crying",
+  "crying baby"
+ ],
+ "Bell": [
+  "bell",
+  "bells",
+  "church bell"
+ ],
+ "Bicycle": [
+  "bicycle",
+  "bike",
+  "cyclist",
+  "cycling"
+ ],
+ "Bicycle bell": [
+  "bicycle bell",
+  "bike bell"
+ ],
+ "Caterwaul": [
+  "cat",
+  "cats",
+  "yowling",
+  "cat fight",
+  "cats fighting"
+ ],
+ "Chime": [
+  "chime",
+  "chimes",
+  "wind chime",
+  "wind chimes"
+ ],
+ "Chink, clink": [
+  "clinking",
+  "clinking glasses",
+  "glasses clinking",
+  "toast",
+  "cheers"
+ ],
+ "Croak": [
+  "frog",
+  "toad",
+  "croaking"
+ ],
+ "Crowd": [
+  "crowd",
+  "audience",
+  "cheering crowd",
+  "people cheering"
+ ],
+ "Crying, sobbing": [
+  "crying",
+  "sobbing",
+  "person crying",
+  "tears"
+ ],
+ "Ding": [
+  "ding"
+ ],
+ "Fire engine, fire truck (siren)": [
+  "fire engine",
+  "fire truck",
+  "firetruck"
+ ],
+ "Fly, housefly": [
+  "fly",
+  "housefly",
+  "flies"
+ ],
+ "Gasp": [
+  "gasp",
+  "gasping"
+ ],
+ "Groan": [
+  "groan",
+  "groaning",
+  "moaning",
+  "moan"
+ ],
+ "Honk": [
+  "honk",
+  "honking",
+  "goose"
+ ],
+ "Insect": [
+  "insect",
+  "bug",
+  "insects"
+ ],
+ "Machine gun": [
+  "machine gun",
+  "automatic gun",
+  "automatic weapon",
+  "gunfire"
+ ],
+ "Mallet percussion": [
+  "marimba",
+  "xylophone",
+  "vibraphone",
+  "glockenspiel",
+  "mallet"
+ ],
+ "Mosquito": [
+  "mosquito"
+ ],
+ "Rain": [
+  "rain",
+  "raining",
+  "raindrops"
+ ],
+ "Rattle (instrument)": [
+  "rattle",
+  "baby rattle",
+  "maraca",
+  "maracas",
+  "shaker"
+ ],
+ "Run": [
+  "running",
+  "runner",
+  "person running",
+  "jogging",
+  "jogger"
+ ],
+ "Screaming": [
+  "screaming",
+  "scream",
+  "person screaming"
+ ],
+ "Steam": [
+  "steam",
+  "hissing steam",
+  "steam rising"
+ ],
+ "Steam whistle": [
+  "steam whistle",
+  "whistle"
+ ],
+ "Train": [
+  "train",
+  "trains",
+  "locomotive"
+ ],
+ "Vehicle horn, car horn, honking": [
+  "car horn",
+  "horn",
+  "honking",
+  "horn honking"
+ ]
 }

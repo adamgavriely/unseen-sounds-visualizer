@@ -1,0 +1,690 @@
+{
+ "today:0": {
+  "text": "a sandwich with legs. ; nothing.",
+  "class": "unclassified"
+ },
+ "today:1": {
+  "text": "water droplets ; nothing",
+  "class": "vague"
+ },
+ "today:2": {
+  "text": "wind chime. ; nothing.",
+  "class": "correct"
+ },
+ "today:3": {
+  "text": "bicycle bell ; nothing",
+  "class": "correct"
+ },
+ "today:4": {
+  "text": "submachine gun ; nothing",
+  "class": "unclassified"
+ },
+ "today:5": {
+  "text": "cannon ; loud explosion",
+  "class": "correct"
+ },
+ "today:6": {
+  "text": "whistle ; nothing",
+  "class": "correct"
+ },
+ "today:7": {
+  "text": "train ; nothing",
+  "class": "correct"
+ },
+ "today:8": {
+  "text": "nothing ; nothing",
+  "class": "unclassified"
+ },
+ "today:9": {
+  "text": "a black horn. ; nothing.",
+  "class": "correct"
+ },
+ "today:10": {
+  "text": "green frog ; nothing",
+  "class": "correct"
+ },
+ "today:11": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "today:12": {
+  "text": "mosquito ; nothing",
+  "class": "correct"
+ },
+ "today:13": {
+  "text": "house fly ; nothing",
+  "class": "correct"
+ },
+ "today:14": {
+  "text": "a beetle ; nothing",
+  "class": "unclassified"
+ },
+ "today:15": {
+  "text": "excited man ; shouting loudly",
+  "class": "unclassified"
+ },
+ "today:16": {
+  "text": "tree stump ; nothing",
+  "class": "unclassified"
+ },
+ "today:17": {
+  "text": "ambulance ; nothing",
+  "class": "correct"
+ },
+ "today:18": {
+  "text": "wooden xylophone. ; nothing.",
+  "class": "correct"
+ },
+ "today:19": {
+  "text": "hanging lantern ; nothing",
+  "class": "unclassified"
+ },
+ "today:20": {
+  "text": "dumbbell ; nothing",
+  "class": "unclassified"
+ },
+ "today:21": {
+  "text": "people running ; nothing",
+  "class": "correct"
+ },
+ "today:22": {
+  "text": "chocolate splash ; nothing",
+  "class": "unclassified"
+ },
+ "today:23": {
+  "text": "chicken ; nothing",
+  "class": "narrower"
+ },
+ "today:24": {
+  "text": "crying child ; crying out loud",
+  "class": "correct"
+ },
+ "today:25": {
+  "text": "crying baby ; crying/yawning sound",
+  "class": "correct"
+ },
+ "today:26": {
+  "text": "bicycle bell ; nothing",
+  "class": "correct"
+ },
+ "today:27": {
+  "text": "a bell ; nothing",
+  "class": "correct"
+ },
+ "today:28": {
+  "text": "bicycle ; nothing",
+  "class": "correct"
+ },
+ "today:29": {
+  "text": "fire truck ; nothing",
+  "class": "correct"
+ },
+ "today:30": {
+  "text": "three Chinese characters ; nothing",
+  "class": "unclassified"
+ },
+ "today:31": {
+  "text": "open mouth ; nothing",
+  "class": "unclassified"
+ },
+ "today:32": {
+  "text": "cat-shaped broom. ; nothing.",
+  "class": "correct"
+ },
+ "today:33": {
+  "text": "brass bell ; nothing",
+  "class": "correct"
+ },
+ "today:34": {
+  "text": "bicycle bell ; nothing",
+  "class": "correct"
+ },
+ "today:35": {
+  "text": "person in traditional attire ; nothing",
+  "class": "unclassified"
+ },
+ "today:36": {
+  "text": "a large crowd ; nothing",
+  "class": "correct"
+ },
+ "today:37": {
+  "text": "assault rifle ; nothing",
+  "class": "unclassified"
+ },
+ "today:38": {
+  "text": "a crying boy ; a loud wail",
+  "class": "correct"
+ },
+ "today:39": {
+  "text": "man with open mouth ; nothing",
+  "class": "unclassified"
+ },
+ "today:40": {
+  "text": "baby ; crying/yawning",
+  "class": "correct"
+ },
+ "today:41": {
+  "text": "laughing woman ; hearty laugh",
+  "class": "correct"
+ },
+ "today:42": {
+  "text": "police car ; nothing",
+  "class": "correct"
+ },
+ "N:0": {
+  "text": "wine glasses ; nothing",
+  "class": "vague"
+ },
+ "N:1": {
+  "text": "rain falling ; nothing",
+  "class": "correct"
+ },
+ "N:2": {
+  "text": "a brass bell ; nothing",
+  "class": "vague"
+ },
+ "N:3": {
+  "text": "bicycle bell ; ring",
+  "class": "correct"
+ },
+ "N:4": {
+  "text": "cannon ; loud bang",
+  "class": "correct"
+ },
+ "N:5": {
+  "text": "old cannon ; loud explosion",
+  "class": "correct"
+ },
+ "N:6": {
+  "text": "steam locomotive ; loud horn blast",
+  "class": "unclassified"
+ },
+ "N:7": {
+  "text": "train ; nothing",
+  "class": "correct"
+ },
+ "N:8": {
+  "text": "steam locomotive ; nothing",
+  "class": "correct"
+ },
+ "N:9": {
+  "text": "megaphone ; loud announcement",
+  "class": "unclassified"
+ },
+ "N:10": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "N:11": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "N:12": {
+  "text": "mosquito ; nothing",
+  "class": "correct"
+ },
+ "N:13": {
+  "text": "housefly ; nothing",
+  "class": "correct"
+ },
+ "N:14": {
+  "text": "cricket ; chirping",
+  "class": "narrower"
+ },
+ "N:15": {
+  "text": "man with open mouth ; nothing",
+  "class": "unclassified"
+ },
+ "N:16": {
+  "text": "man shouting ; loud scream",
+  "class": "wrong"
+ },
+ "N:17": {
+  "text": "ambulance ; nothing",
+  "class": "correct"
+ },
+ "N:18": {
+  "text": "xylophone ; nothing",
+  "class": "correct"
+ },
+ "N:19": {
+  "text": "a brass bell ; nothing",
+  "class": "vague"
+ },
+ "N:20": {
+  "text": "wooden rattle ; nothing",
+  "class": "correct"
+ },
+ "N:21": {
+  "text": "man running ; nothing",
+  "class": "correct"
+ },
+ "N:22": {
+  "text": "megaphone ; loud announcement",
+  "class": "unclassified"
+ },
+ "N:23": {
+  "text": "brown chicken ; nothing",
+  "class": "narrower"
+ },
+ "N:24": {
+  "text": "crying man ; nothing",
+  "class": "correct"
+ },
+ "N:25": {
+  "text": "crying baby ; wailing or crying",
+  "class": "correct"
+ },
+ "N:26": {
+  "text": "bicycle bell ; ring",
+  "class": "correct"
+ },
+ "N:27": {
+  "text": "a brass bell ; nothing",
+  "class": "correct"
+ },
+ "N:28": {
+  "text": "bicycle ; nothing",
+  "class": "correct"
+ },
+ "N:29": {
+  "text": "fire truck ; nothing",
+  "class": "correct"
+ },
+ "N:30": {
+  "text": "a brass bell ; nothing",
+  "class": "vague"
+ },
+ "N:31": {
+  "text": "angry person ; shouting loudly",
+  "class": "unclassified"
+ },
+ "N:32": {
+  "text": "cat ; meow",
+  "class": "correct"
+ },
+ "N:33": {
+  "text": "brass bell ; nothing",
+  "class": "correct"
+ },
+ "N:34": {
+  "text": "bicycle bell ; nothing",
+  "class": "correct"
+ },
+ "N:35": {
+  "text": "wine glasses ; nothing",
+  "class": "vague"
+ },
+ "N:36": {
+  "text": "cheering crowd ; loud cheers",
+  "class": "correct"
+ },
+ "N:37": {
+  "text": "soldier with machine gun ; nothing",
+  "class": "correct"
+ },
+ "N:38": {
+  "text": "crying woman ; nothing",
+  "class": "correct"
+ },
+ "N:39": {
+  "text": "man with open mouth ; nothing",
+  "class": "unclassified"
+ },
+ "N:40": {
+  "text": "crying baby ; crying out loud",
+  "class": "correct"
+ },
+ "N:41": {
+  "text": "two laughing women ; laughter (or \"hilarious laughter\")",
+  "class": "correct"
+ },
+ "N:42": {
+  "text": "police car ; nothing",
+  "class": "correct"
+ },
+ "N0:0": {
+  "text": "kitten ; nothing",
+  "class": "unclassified"
+ },
+ "N0:1": {
+  "text": "water droplets ; nothing",
+  "class": "vague"
+ },
+ "N0:2": {
+  "text": "bronze bell ; nothing",
+  "class": "vague"
+ },
+ "N0:3": {
+  "text": "service bell ; nothing",
+  "class": "vague"
+ },
+ "N0:4": {
+  "text": "pistol ; nothing",
+  "class": "unclassified"
+ },
+ "N0:5": {
+  "text": "artillery gun ; loud explosion",
+  "class": "correct"
+ },
+ "N0:6": {
+  "text": "vintage horn ; nothing",
+  "class": "unclassified"
+ },
+ "N0:7": {
+  "text": "train ; nothing",
+  "class": "correct"
+ },
+ "N0:8": {
+  "text": "smoke ; nothing",
+  "class": "unclassified"
+ },
+ "N0:9": {
+  "text": "megaphone ; nothing",
+  "class": "unclassified"
+ },
+ "N0:10": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "N0:11": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "N0:12": {
+  "text": "mosquito ; nothing",
+  "class": "correct"
+ },
+ "N0:13": {
+  "text": "housefly ; nothing",
+  "class": "correct"
+ },
+ "N0:14": {
+  "text": "housefly ; nothing",
+  "class": "narrower"
+ },
+ "N0:15": {
+  "text": "person ; nothing",
+  "class": "unclassified"
+ },
+ "N0:16": {
+  "text": "man ; scream",
+  "class": "wrong"
+ },
+ "N0:17": {
+  "text": "ambulance ; nothing",
+  "class": "correct"
+ },
+ "N0:18": {
+  "text": "rubber mallet ; nothing",
+  "class": "correct"
+ },
+ "N0:19": {
+  "text": "copper bell ; nothing",
+  "class": "vague"
+ },
+ "N0:20": {
+  "text": "fur pom-pom ; nothing",
+  "class": "unclassified"
+ },
+ "N0:21": {
+  "text": "man running ; nothing",
+  "class": "correct"
+ },
+ "N0:22": {
+  "text": "man ; nothing",
+  "class": "unclassified"
+ },
+ "N0:23": {
+  "text": "rooster ; nothing",
+  "class": "narrower"
+ },
+ "N0:24": {
+  "text": "crying woman ; nothing",
+  "class": "correct"
+ },
+ "N0:25": {
+  "text": "crying baby ; wailing or crying",
+  "class": "correct"
+ },
+ "N0:26": {
+  "text": "bicycle bell ; nothing",
+  "class": "correct"
+ },
+ "N0:27": {
+  "text": "large bell ; nothing",
+  "class": "correct"
+ },
+ "N0:28": {
+  "text": "bicycle ; nothing",
+  "class": "correct"
+ },
+ "N0:29": {
+  "text": "fire truck ; nothing",
+  "class": "correct"
+ },
+ "N0:30": {
+  "text": "a man ; nothing",
+  "class": "unclassified"
+ },
+ "N0:31": {
+  "text": "angry man ; shouting loudly",
+  "class": "unclassified"
+ },
+ "N0:32": {
+  "text": "a tabby cat ; nothing",
+  "class": "correct"
+ },
+ "N0:33": {
+  "text": "a bell ; nothing",
+  "class": "correct"
+ },
+ "N0:34": {
+  "text": "service bell ; nothing",
+  "class": "vague"
+ },
+ "N0:35": {
+  "text": "small dog ; nothing",
+  "class": "unclassified"
+ },
+ "N0:36": {
+  "text": "purple wheat ears ; nothing",
+  "class": "unclassified"
+ },
+ "N0:37": {
+  "text": "assault rifle ; nothing",
+  "class": "unclassified"
+ },
+ "N0:38": {
+  "text": "crying woman ; nothing",
+  "class": "correct"
+ },
+ "N0:39": {
+  "text": "woman ; nothing",
+  "class": "unclassified"
+ },
+ "N0:40": {
+  "text": "crying baby ; wailing or crying",
+  "class": "correct"
+ },
+ "N0:41": {
+  "text": "woman ; laughter",
+  "class": "correct"
+ },
+ "N0:42": {
+  "text": "police car ; nothing",
+  "class": "correct"
+ },
+ "N1:0": {
+  "text": "wine glasses ; nothing",
+  "class": "vague"
+ },
+ "N1:1": {
+  "text": "water droplets on glass ; nothing",
+  "class": "vague"
+ },
+ "N1:2": {
+  "text": "brass bell ; nothing",
+  "class": "vague"
+ },
+ "N1:3": {
+  "text": "service bell ; ringing",
+  "class": "vague"
+ },
+ "N1:4": {
+  "text": "missile ; nothing",
+  "class": "unclassified"
+ },
+ "N1:5": {
+  "text": "firework ; loud bang",
+  "class": "unclassified"
+ },
+ "N1:6": {
+  "text": "steam locomotive ; nothing",
+  "class": "unclassified"
+ },
+ "N1:7": {
+  "text": "steam locomotive ; nothing",
+  "class": "correct"
+ },
+ "N1:8": {
+  "text": "electric kettle ; nothing",
+  "class": "unclassified"
+ },
+ "N1:9": {
+  "text": "blue megaphone ; loud announcement",
+  "class": "unclassified"
+ },
+ "N1:10": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "N1:11": {
+  "text": "frog ; nothing",
+  "class": "correct"
+ },
+ "N1:12": {
+  "text": "mosquito ; nothing",
+  "class": "correct"
+ },
+ "N1:13": {
+  "text": "housefly ; nothing",
+  "class": "correct"
+ },
+ "N1:14": {
+  "text": "housefly ; nothing",
+  "class": "narrower"
+ },
+ "N1:15": {
+  "text": "man with open mouth ; nothing",
+  "class": "unclassified"
+ },
+ "N1:16": {
+  "text": "man shouting ; loud scream",
+  "class": "wrong"
+ },
+ "N1:17": {
+  "text": "ambulance ; nothing",
+  "class": "correct"
+ },
+ "N1:18": {
+  "text": "rubber mallet ; nothing",
+  "class": "correct"
+ },
+ "N1:19": {
+  "text": "a brass bell ; nothing",
+  "class": "vague"
+ },
+ "N1:20": {
+  "text": "colorful bangles ; nothing",
+  "class": "unclassified"
+ },
+ "N1:21": {
+  "text": "man running ; nothing",
+  "class": "correct"
+ },
+ "N1:22": {
+  "text": "man ; nothing",
+  "class": "unclassified"
+ },
+ "N1:23": {
+  "text": "rooster ; nothing",
+  "class": "narrower"
+ },
+ "N1:24": {
+  "text": "crying baby ; wailing or crying",
+  "class": "correct"
+ },
+ "N1:25": {
+  "text": "crying baby ; crying out loud",
+  "class": "correct"
+ },
+ "N1:26": {
+  "text": "service bell ; nothing",
+  "class": "vague"
+ },
+ "N1:27": {
+  "text": "a brass bell ; nothing",
+  "class": "correct"
+ },
+ "N1:28": {
+  "text": "bicycle ; nothing",
+  "class": "correct"
+ },
+ "N1:29": {
+  "text": "fire truck ; nothing",
+  "class": "correct"
+ },
+ "N1:30": {
+  "text": "a brass bell ; nothing",
+  "class": "vague"
+ },
+ "N1:31": {
+  "text": "angry cat ; hissing or growling",
+  "class": "unclassified"
+ },
+ "N1:32": {
+  "text": "cat ; meow",
+  "class": "correct"
+ },
+ "N1:33": {
+  "text": "golden bell ; nothing",
+  "class": "correct"
+ },
+ "N1:34": {
+  "text": "service bell ; nothing",
+  "class": "vague"
+ },
+ "N1:35": {
+  "text": "wine glasses ; nothing",
+  "class": "vague"
+ },
+ "N1:36": {
+  "text": "crowd at concert ; cheering and clapping",
+  "class": "correct"
+ },
+ "N1:37": {
+  "text": "assault rifle ; bang or gunshot",
+  "class": "vague"
+ },
+ "N1:38": {
+  "text": "crying woman ; nothing",
+  "class": "correct"
+ },
+ "N1:39": {
+  "text": "man with open mouth ; nothing",
+  "class": "unclassified"
+ },
+ "N1:40": {
+  "text": "crying baby ; wailing or crying",
+  "class": "correct"
+ },
+ "N1:41": {
+  "text": "a woman laughing ; a loud, joyful laugh",
+  "class": "correct"
+ },
+ "N1:42": {
+  "text": "police car ; nothing",
+  "class": "correct"
+ }
+}
