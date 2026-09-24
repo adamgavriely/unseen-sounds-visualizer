@@ -16,8 +16,11 @@ cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs
 source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate msproj
+# Gemma-4 reading images needs torch >= 2.6; msproj has 2.5.1, so the judge runs in a venv on top of
+# the sota env (torch 2.7.1) with transformers 5.16.1 (same version as msproj)
+PY="${PY:-$HOME/venvs/judge/bin/python}"
 export PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
-python benchmark/gold/judge_direct.py --tag "${TAG:?}" --systems "${SYSTEMS:-proposed,blind_a2i,audio_caption}" \
+"$PY" benchmark/gold/judge_direct.py --tag "${TAG:?}" --systems "${SYSTEMS:-proposed,blind_a2i,audio_caption}" \
     --out "${OUT:?}" ${REPEAT:+--repeat "$REPEAT"}
 echo "DONE"

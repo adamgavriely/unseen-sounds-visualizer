@@ -130,3 +130,12 @@ person is retried once with "Do not show any person" and otherwise falls back to
 gap, not fixed this round: in the pipeline path (`decide_subjects`) the raw firings are not on the spec,
 so the guard runs with none allowed (stricter than the bench, where the fired labels are passed);
 carrying them on the spec is required before V3.1 could ship.
+
+**Amendment 2b (2026-09-25, before any slice-B rating).** (1) Slice B's pictures come from the
+**ungated** render (`sliceBblind_v32`: every detected sound drawn, 43 sounds) rather than the gated one
+(20 sounds) or a top-up with unannotated clips: picture quality does not depend on the gate, and 20 sounds
+were too few. (2) Reading V3.1's slice-B subjects (text) shows a gap in the guard: a qualifier that is
+itself a sound class in another ontology branch passes `names_forbidden` (neither a sibling nor a kind
+under the source) and can become the picture's main noun (an Artillery-fire sound drawn as fireworks; a
+Screaming sound drawn as a cat). Not fixed and not redrawn — that would make slice B in-sample again. Pass
+2 ("anything false?") is the instrument that measures it; a fix is for the next round, on new clips.
