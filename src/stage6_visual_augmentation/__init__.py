@@ -296,14 +296,17 @@ def _subject_bbox(img: Image.Image, tol: int = 28):
 # street firecracker, thunder as a full-frame sky). A diffusion negative has no clauses, so any word
 # that names the source itself is removed from it per picture (a crowd must not be negated away).
 NEGATIVE_V3 = ["scenery", "landscape", "background scene", "room interior", "street", "buildings",
-               "sky background", "text", "letters", "watermark", "people"]
+               "sky background", "text", "letters", "watermark"]
+# "people" was in this list and is not any more (P4, round 3): whenever a sound is made by people the
+# subject does not always say so ("Someone coughing", "Runner's feet"), and negating people there
+# pushes the generator away from the source -- the one route to a false message.
 
 
 def negative_for(subject: str) -> str:
     words = {w.strip(",.").lower() for w in subject.split()}
     human = words & {"people", "crowd", "audience", "person", "man", "woman", "child", "children",
                      "baby", "hands", "clapping", "laughing", "cheering", "applause", "laughter"}
-    keep = [n for n in NEGATIVE_V3 if not (set(n.split()) & words) and not (n == "people" and human)]
+    keep = [n for n in NEGATIVE_V3 if not (set(n.split()) & words)]
     return ", ".join(keep)
 
 

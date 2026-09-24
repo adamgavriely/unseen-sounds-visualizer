@@ -36,9 +36,20 @@ displayed picture end measured on the rendered panel.
 
   * **Keep** (both changes become the default) if on TEST at most **one** needed sound is lost against
     the base **and** the F1 point estimate is not below the base.
-  * **Revert** if the F1 change is negative with its 95% interval excluding zero, **or** more than one
-    needed sound is lost. If it is the cap that loses them (checked by the per-sound list), the onset
-    rule alone may be kept, and the cap restored — the rule is stated here so it is not chosen later.
+  * **Revert the onset rule** if the F1 change is negative with its 95% interval excluding zero, **or**
+    more than one needed sound is lost.
   * **Anything in between**: reported as inconclusive; the onset rule stays as a bug fix proven by the
     trace (before it, the refinement moved 223 of 442 starts earlier, the worst by 8.98 s; with it, 0),
     and the gain is reported as DEV-only.
+
+## Amendment — written while the run was in progress, before any TEST number was seen
+
+Adam: *"Time limit is not a thing we should use — it depends on the sound. We should not manually
+limit timing. The evidence significance should not be dependent on the cut. If so, it's manipulation."*
+
+So the eight-second cap is **removed whatever TEST shows**, and the option above to restore it if it
+turned out to be the cap that lost sounds is **deleted**: choosing to keep or drop a cap according to
+which one makes the result significant is exactly the forking path he objects to. The decision rule now
+concerns the onset rule only. If removing the cap costs sounds, that is reported as the cost of a
+principled change, and the fix is a principled end rule that follows each sound (not a fixed number of
+seconds), tested on DEV as its own change.

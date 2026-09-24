@@ -207,8 +207,9 @@ DEPICT_PROMPT_V3 = (
     "The action must be the one that makes THIS sound, not something else the same thing can do."
     + chr(10) +
     "If what the detector heard is the name of a sound rather than of a thing, name the thing that "
-    "makes it. If it is weather, name the visible sign in the weather that goes with this sound. If a "
-    "word could mean something else, add the word that makes it clear."
+    "makes it. The thing is never the sky, the air, or a body part on its own. If it is weather, "
+    "name the visible sign that appears at the same instant as the sound, not the weather around it. "
+    "If a word could mean something else, add the word that says which kind of thing it is."
     + chr(10) +
     "Answer with 3 to 6 plain words. No place, no scenery, no other objects, no punctuation."
 )
@@ -852,12 +853,15 @@ _PREPS = {"in", "on", "at", "near", "inside", "outside", "by", "beside", "across
 
 def _source_chain(source: str, family: str) -> list:
     """The source and its ontology ancestors up to (and including) the family it is gated as."""
-    from src.labels import ancestors
+    from src.labels import ancestors, canonical
     chain = [source]
-    for a in ancestors(source):
-        chain.append(a)
-        if a == family:
+    # stop at the family, at the first ancestor that is itself a gated family, or after three links:
+    # walking to the ontology root put "Sounds of things" and "Livestock, farm animals" in the prompt
+    # (P1, round 3)
+    for a in ancestors(source)[:3]:
+        if a == family or canonical(a) == a:
             break
+        chain.append(a)
     if family not in chain:
         chain.append(family)
     return chain

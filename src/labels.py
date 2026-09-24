@@ -416,10 +416,17 @@ def choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float]) -
         return fam
     labels.sort(key=lambda x: (-_depth(x), -cand[x]))
     top = labels[0]
-    for other in labels[1:]:
-        if _depth(other) != _depth(top):
-            break
-        if cand[other] >= margin * cand[top] and not same_source(top, other):
+    # The tie test sees EVERY sibling at the detector's bar, not only those that cleared the floor
+    # (P1, round 3): with a loud family firing, the floor alone hid a Fire engine at 0.34 behind an
+    # Ambulance at 0.40, and a 0.06 gap between two identical sirens decided the picture.
+    allfirings = {}
+    for e in mine:
+        if e.confidence >= bar and e.label != fam and not is_descendant(fam, e.label):
+            allfirings[e.label] = max(allfirings.get(e.label, 0.0), e.confidence)
+    for other in sorted(allfirings, key=lambda x: -allfirings[x]):
+        if other == top or _depth(other) != _depth(top):
+            continue
+        if allfirings[other] >= margin * cand[top] and not same_source(top, other):
             parent = _common_parent(top, other)
             # the fallback may never be broader than the family (Subway vs Railroad car share
             # "Rail transport", which says less than "Train")
