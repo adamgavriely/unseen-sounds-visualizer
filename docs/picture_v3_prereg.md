@@ -99,3 +99,26 @@ frozen; if it fails, it stays a logged column and any redesign is calibrated on 
 beat the thing that made it (a horn over a bus) — logged per picture through the candidate list. The
 scene does not act this round, so Adam's **car-door example cannot be fixed yet**: AudioSet has no
 car-door sound, and only the scene could tell a car door from a house door. The rooster case can be.
+
+## Amendment 2 — 2026-09-25, after round 2 of the night panel, before any N picture is seen or rated
+
+Written after V3's *subjects* on the 50 clips were read (text only) and before any picture of any arm
+was looked at or any rating received (`docs/panel_2026-09-25_brief.md`, `…_round2.md`).
+
+* **Adam rates today / N0 / N, as declared.** N stays: dropping it after reading its subjects would be
+  a fork, and N vs N0 is the prompt-versus-model split he asked for. **Primary: N vs today.** N0 vs
+  today, N vs N0, the seed rows and the checker are secondary.
+* **Seed 0 stays the picture shown.** Seeds 1 and 2 are drawn for every arm and go to the checker's
+  logged column only (seed noise), never to Adam's cards and never to choose a picture.
+* **V3.1 (`PICTURE_SCENE`) is not rated on these 50.** Its rules were written from these clips' V3
+  subjects (eight named sounds: #10, 19, 20, 27, 29, 39, 41, 53). Its fresh set, reserved now: the
+  **30 slice-B clips** (no picture rule has been written on them; rendered under the current config as
+  `sliceB_v32`), topped up with unannotated `seen_ambient`/`no_ambient` clips if they yield too few
+  sounds. On these 50 it is drawn only as checker-logged examples, labelled in-sample. N1's verdict
+  also needs pass 2 (the source name + a frame: "does this say anything false?"), because pass 1 scores
+  a narrower-but-wrong kind as correct.
+* **V3.1, as signed:** the scene may add at most two qualifier words to the heard word, never a new noun
+  and never a person; a list guard in `src/labels.py` (`names_forbidden`: siblings, unfired kinds, kinds
+  inside a tie, and labels carrying the heard word) refuses anything the audio did not establish; no
+  question to the model that wrote the answer is used as a check; a sound-name source with no qualifier
+  is drawn as its visible effect, not a guessed maker.

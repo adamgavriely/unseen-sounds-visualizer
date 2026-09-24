@@ -197,6 +197,10 @@ DEPICT_V2 = False
 PICTURE_V3 = False
 SOURCE_REL_FLOOR = 0.5
 SOURCE_TIE_MARGIN = 0.8
+# V3.1 (docs/panel_2026-09-25_round2.md): the scene may add up to two qualifier words to the heard
+# source ("car door", "farm vehicle"), never a new noun; a list guard refuses kinds the audio never
+# established. Needs PICTURE_V3. Off until rated on a fresh set.
+PICTURE_SCENE = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time

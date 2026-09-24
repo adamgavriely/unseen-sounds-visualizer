@@ -11,6 +11,7 @@
 # Picture quality bench (docs/picture_quality_prereg.md). STEPS is a space-separated list of
 # "phase[:arm]", run in order, each in its own process so one large model is resident at a time.
 #   STEPS="specs eval:shipped report" sbatch slurm/job_picture_bench.sh
+#   PBARGS="--tag picfresh_v32 --bench data/work/picture_bench_fresh" adds arguments to every step
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs
@@ -22,6 +23,6 @@ for step in ${STEPS:?STEPS required}; do
   phase="${step%%:*}"; arm=""
   [[ "$step" == *:* ]] && arm="${step#*:}"
   echo "=== $phase ${arm}"
-  python benchmark/gold/picture_bench.py "$phase" ${arm:+--arm "$arm"}
+  python benchmark/gold/picture_bench.py "$phase" ${arm:+--arm "$arm"} ${PBARGS:-}
 done
 echo "DONE $STEPS"

@@ -451,6 +451,70 @@ def _choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float]) 
     return top
 
 
+def label_names(label: str) -> list:
+    """The plain words a label goes by: its comma parts, without AudioSet's bracketed disambiguation
+    ("Ambulance (siren)" -> ambulance). Lower case."""
+    return [p.strip().lower() for p in label.split("(")[0].split(",") if p.strip()]
+
+
+def forbidden_names(source: str, fired) -> set:
+    """PICTURE_SCENE guard: words a picture of `source` may not use, because the audio never
+    established them -- the source's ontology siblings (and everything under them), and any kind
+    under the source that the detector did not fire. A bare Siren may not become a police car; a tie
+    between Police car and Ambulance may not be settled by a guess."""
+    par = _parents()
+    kids = {}
+    for c, p in par.items():
+        kids.setdefault(p, []).append(c)
+
+    def below(x):
+        out, todo, seen = [], list(kids.get(x, [])), {x}
+        while todo:
+            y = todo.pop()
+            if y not in seen:
+                seen.add(y)
+                out.append(y)
+                todo.extend(kids.get(y, []))
+        return out
+    fired = set(fired or [])
+    bad = set()
+    p = par.get(source)
+    for s in (kids.get(p, []) if p else []):
+        if s != source and s not in fired and not is_descendant(source, s):
+            bad |= {s, *below(s)}
+    bad |= {d for d in below(source) if d not in fired}
+    # the single-parent map loses AudioSet's second parents ("Police car (siren)" sits under Emergency
+    # vehicle only), so a label is also a kind of the source when its full name carries the source's
+    # head word: "Police car (siren)", "Civil defense siren" are kinds of Siren
+    head = (label_names(source) or [""])[0].split()[-1:] or [""]
+    for x in par:
+        words = set("".join(c if c.isalnum() else " " for c in x.lower()).split())
+        if head[0] and head[0] in words and x != source and x not in fired and x not in ancestors(source):
+            bad.add(x)
+    allowed = {w for x in [source, *ancestors(source), *fired] for w in label_names(x)}
+    return {w for x in bad for w in label_names(x)} - allowed
+
+
+_STOP = {"a", "an", "the", "of", "or", "and", "in", "on", "with", "sound", "sounds", "noise"}
+
+
+def names_forbidden(phrase: str, source: str, fired) -> list:
+    """The forbidden words (forbidden_names, reduced to the words that tell them apart from what the
+    audio did establish) that `phrase` uses. Mechanical: a list, not a question to a model."""
+    def toks(s):
+        return set("".join(c if c.isalnum() else " " for c in s.lower()).split())
+    allowed = set()
+    for x in [source, *ancestors(source), *(fired or [])]:
+        allowed |= toks(" ".join(label_names(x)))
+    got = toks(phrase)
+    hits = []
+    for n in forbidden_names(source, fired):
+        distinct = toks(n) - allowed - _STOP
+        if distinct and distinct <= got:
+            hits.append(n)
+    return sorted(hits)
+
+
 def consolidate_families(events: List[AudioEvent],
                          threshold: float = 0.0) -> List[AudioEvent]:
     """Relabel sub-types to their canonical parent, then merge. One entry/source.

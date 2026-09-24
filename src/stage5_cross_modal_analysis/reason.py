@@ -891,6 +891,104 @@ def _depict_v3(spec, place: str, mdl, proc) -> str:
     return phrase
 
 
+# V3.1, PICTURE_SCENE (2026-09-25, panel of five, two rounds). V3's subjects on 50 never-annotated clips,
+# read before any picture was drawn, showed two failures. It INVENTED what the audio never established
+# (a Whoosh became "a person swinging a sword", a bare Siren "a police car", a Thunk "a heavy door") and
+# it LOST what the scene had established (a Vehicle on a farm had been a tractor, now "a car driving
+# down the road"). The scene is therefore let back in, but only as a qualifier on the word the detector
+# heard -- "car door", "farm vehicle" -- never as a new noun, and every check on it is a list, not a
+# question to the model that wrote the answer (P1, P3, P4: the model's own yes/no passes every sword).
+RESOLVE_PROMPT = (
+    "A sound detector heard: {source}. What makes it may be out of view. These frames show where "
+    "the video is."
+    + chr(10) +
+    "If these frames and this place make one kind of {head} clearly more likely than any other, "
+    "answer with one or two words that say which kind, followed by the word {head}. Otherwise answer "
+    "exactly: {head}."
+    + chr(10) +
+    "Never name a person, and never replace the word {head} with another thing."
+)
+
+DEPICT_PROMPT_V31 = (
+    "A deaf viewer is watching a video and cannot hear it."
+    + chr(10) +
+    "A sound detector heard: {thing}. Where that sits among kinds of sound: {chain}."
+    + chr(10) + chr(10) +
+    "Describe ONE picture that shows this sound being made. Name the whole thing that makes it -- the "
+    "whole animal, machine, vehicle or instrument, never one part of it -- and what it is doing at the "
+    "moment it makes this sound."
+    + chr(10) +
+    "The action must be the one that makes THIS sound, not something else the same thing can do."
+    + chr(10) +
+    "If {thing} is the name of a sound and the words above do not say what makes it, show the visible "
+    "effect of the sound instead of guessing what makes it. Show a person only if the sound comes from "
+    "a person's own body or voice. The thing is never the sky or the air on its own. If it is weather, "
+    "name the visible sign that appears at the same instant as the sound."
+    + chr(10) +
+    "Never name a more specific kind than {thing}. If a word could mean something else, choose the "
+    "meaning that makes a sound."
+    + chr(10) +
+    "Answer with 3 to 6 plain words. No place, no scenery, no other objects, no punctuation."
+)
+DEPICT_V31_GUARD = "Do not name any more specific kind than: {thing}."
+
+
+def _scene_thing(source: str, family: str, frames, place: str, fired, mdl, proc) -> str:
+    """RESOLVE: the heard source, with at most two qualifier words from the scene. Accepted only when
+    the answer still contains the heard word and uses no kind the audio did not establish."""
+    from src.labels import label_names, names_forbidden, is_descendant
+    head = (label_names(source) or [source.lower()])[0]
+    if not frames:
+        return head
+    ans = _clean_phrase(_ask(mdl, proc, RESOLVE_PROMPT.format(source=source, head=head),
+                             images=frames, max_new=16), max_words=4)
+    low = " ".join("".join(c if c.isalnum() else " " for c in ans.lower()).split())
+    # a fired kind UNDER the source was not chosen for a reason (a tie, or under the floor): the
+    # scene may not settle it either (P1, round 2)
+    ok_fired = [x for x in (fired or []) if not is_descendant(x, source)]
+    bad = names_forbidden(low, source, ok_fired)
+    words = low.split()
+    if (not low or not low.endswith(head) or len(words) > len(head.split()) + 2 or bad
+            or any(w in {"person", "man", "woman", "people", "someone", "hand", "hands"} for w in words)):
+        if low and low != head:
+            print("       [stage5] scene kind refused: " + source + " -> " + ans
+                  + (" (names " + ", ".join(bad) + ")" if bad else ""), flush=True)
+        return head
+    if low != head:
+        print("       [stage5] scene kind: " + source + " -> " + low + " (place: " + place + ")", flush=True)
+    return low
+
+
+def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
+    """V3.1 depiction: RESOLVE's thing, the source's chain, no place; the same list guard on the answer."""
+    from src.labels import names_forbidden, is_descendant
+    src = getattr(spec, "source", "") or spec.event_label
+    thing = _scene_thing(src, spec.event_label, frames, place, fired, mdl, proc)
+    chain = _source_chain(src, spec.event_label)
+    chain_txt = " > ".join(chain)
+    keep = " ".join(chain + [thing])
+    ok_fired = [x for x in (fired or []) if not is_descendant(x, src)]
+    prompt = DEPICT_PROMPT_V31.format(thing=thing, chain=chain_txt)
+
+    def one(p):
+        ph = _clean_phrase(_ask(mdl, proc, p, max_new=48))
+        ph = _without_place(ph, place, keep=keep)
+        return _drop_place_phrase(ph, place, spec.event_label, keep)
+    phrase = one(prompt)
+    bad = names_forbidden(phrase, src, ok_fired) if phrase else []
+    if phrase and bad:
+        again = one(prompt + chr(10) + DEPICT_V31_GUARD.format(thing=thing))
+        print("       [stage5] v3.1 guard (" + ", ".join(bad) + "): " + phrase + " -> " + again, flush=True)
+        phrase = again if again and not names_forbidden(again, src, ok_fired) else ""
+    if phrase and not any(_about_the_sound(phrase, x) for x in chain + [thing]):
+        again = one(prompt + chr(10) + DEPICT_V3_RESTATE.format(chain=chain_txt))
+        ok = again and not names_forbidden(again, src, ok_fired)
+        if ok and any(_about_the_sound(again, x) for x in chain + [thing]):
+            print("       [stage5] v3.1 restated: " + phrase + " -> " + again, flush=True)
+            phrase = again
+    return phrase or thing
+
+
 def _drop_place_phrase(phrase: str, place: str, label: str = "", detail: str = "") -> str:
     """DEPICT_V2 only: remove a trailing "in / on / at ... <place>" phrase.
 
@@ -1217,7 +1315,13 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     v3 = bool(getattr(config, "PICTURE_V3", False))
     for spec in active:
         if v3:
-            phrase = _depict_v3(spec, place, mdl, proc) or (
+            if getattr(config, "PICTURE_SCENE", False):
+                # V3.1: the scene may qualify the heard word; the raw firings are not on the spec, so
+                # the guard runs with none allowed beyond the source and its ancestors (the strict side)
+                phrase = _depict_v31(spec, place, spec_frames.get(id(spec)), [], mdl, proc) or ""
+            else:
+                phrase = ""
+            phrase = phrase or _depict_v3(spec, place, mdl, proc) or (
                 (getattr(spec, "source", "") or spec.event_label).split(",")[0].split("(")[0].strip()
                 + " making its sound")
             spec.subject = phrase
