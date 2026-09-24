@@ -66,3 +66,27 @@ is unchanged in kind: precision, false alarms, viewer cost and clean-clip accura
 No end rule (ends already follow the sound: −0.06 s median); the bell lost to the visibility vote is
 booked as the cost of removing the cap. Gate stability under frame shifts (P1) and the final
 like-for-like reporting render (P2) wait until the picture setup is frozen.
+
+## 7. The rebuilt judge: trust checks (139 clips, `v4b4` renders)
+
+`judge_direct.py` (Gemma-4-31B sees the pictures; reference = template over the annotator's ticks;
+0 of 417 replies unparsed). Bars unchanged from `docs/judge_plan.md`:
+
+    system          B1 Spearman rho vs viewer cost      B2 clean - wrong-picture clips
+    proposed        -0.722 [-0.815, -0.617]  PASS       +1.11 [+0.61, +1.58]  PASS
+    blind           -0.661 [-0.763, -0.542]  PASS       +1.33 [+0.80, +1.84]  PASS
+    caption         -0.730 [-0.799, -0.644]  PASS       +0.89 [+0.41, +1.36]  PASS
+
+Far stronger than the old describe-then-judge chain (Gemma there: B1 passed narrowly; Mistral failed B2).
+Paired judge scores on these renders (a superseded row, used to calibrate the instrument; it contains
+TEST clips already read on 22 Sept, so it is not a new look at the current system):
+
+    all 139     ours 2.05   vs blind +0.27 [+0.07, +0.50] *   vs caption -0.04 [-0.22, +0.15]
+    DEV 49      ours 2.04   vs blind +0.39 [+0.08, +0.73] *   vs caption +0.10 [-0.18, +0.39]
+    seen 44     ours 2.45   vs blind +1.00 [+0.59, +1.45] *   vs caption +0.23 [-0.18, +0.64]
+    unseen 33   ours 1.27   vs blind -0.15 [-0.61, +0.27]     vs caption -0.21 [-0.61, +0.15]
+
+Caveats: captions are judged as text tags naming the sound, pictures as pixels the judge must
+recognise; at most 4 pictures per clip are shown to the judge. B3 (self-agreement, 20 clips, sampling
+on) and the judge on the current DEV system (`dev_monocap_v31`, all three arms at the new timing) are
+running.
