@@ -180,6 +180,12 @@ VISIBILITY_RULE = "majority"
 # label fixed in the question and "unknown" as an answer. The answer must still name the
 # sound or it is discarded, so the frames can qualify a label but never replace it.
 KIND_FROM_FRAMES = True
+# 2026-09-24 picture quality (docs/NIGHT_REPORT_2026-09-24.md). Both off = as shipped.
+# KIND_ALWAYS: ask the frames which KIND of source it is even when the detector gave a sub-label.
+# DEPICT_V2: the object that makes the sound first, never an abstract subject, homonyms qualified,
+# and the kind word read from the frames is not stripped as if it were the place.
+KIND_ALWAYS = False
+DEPICT_V2 = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time

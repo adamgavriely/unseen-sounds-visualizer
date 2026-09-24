@@ -88,10 +88,31 @@ KIND_PROMPT = (
 )
 
 
+# v2 (2026-09-24, panel of three, two rounds). The v1 question -- do the frames SHOW what kind it
+# is -- is nearly always "no" for the sounds this pipeline draws, because the gate has already
+# decided the source is off screen. What the frames do show is the setting, and the setting is
+# what separates a steam locomotive from a subway train. The first clause keeps the partly visible
+# case. The era cue is stated as a rule, not an example: an example sentence in a prompt leaks its
+# content (see the note under DEPICT_PROMPT).
+KIND_PROMPT_V2 = (
+    "A sound detector heard: {label}. These frames are from that moment."
+    + chr(10) +
+    "If the frames show what kind of {label} this is, say so. Otherwise, the thing making "
+    "the sound is out of view: from the place and the era the frames show, which kind of "
+    "{label} would it be? An old or a modern setting means an old or a modern kind."
+    + chr(10) +
+    "Answer with at most 4 words naming the kind of {label} only. Do not name the place, a "
+    "person, or anything that is not the source of {label}."
+    + chr(10) +
+    "If the frames tell you nothing about it, answer exactly: unknown."
+)
+
+
 def _kind_from_frames(label: str, frames, mdl, proc) -> str:
     if not frames or not getattr(config, "KIND_FROM_FRAMES", True):
         return ""
-    ans = _clean_phrase(_ask(mdl, proc, KIND_PROMPT.format(label=label), images=frames,
+    kp = KIND_PROMPT_V2 if getattr(config, "KIND_ALWAYS", False) else KIND_PROMPT
+    ans = _clean_phrase(_ask(mdl, proc, kp.format(label=label), images=frames,
                              max_new=16), max_words=4)
     low = ans.lower()
     if not ans or low.startswith(("unknown", "none", "not ", "no ")):
@@ -135,6 +156,35 @@ DEPICT_PROMPT = (
     "Do not name the place in your answer unless the sound cannot be drawn without it. "
     "Do not add any object that is not the source of the sound."
 )
+# v2 (2026-09-24, docs/NIGHT_REPORT_2026-09-24.md). Of the 33 DEV pictures, 2 were blank ("Sky
+# rumbles"), 1 was the mythological Siren ("Siren spinning"), 2 left out the object ("Fingers strike
+# keyboard", "Man shaves face") and 3 were the wrong kind for the scene. The v1 prompt asks for the
+# ACTION and bans adjectives, and between them the object that makes the sound -- and the one word
+# saying which kind it is -- were prompted out. v2 puts the object first. Still no examples: the
+# rule below this prompt holds.
+DEPICT_PROMPT_V2 = (
+    "A deaf viewer is watching a video and cannot hear it."
+    + chr(10) +
+    "A sound detector heard: {label}{detail}."
+    + chr(10) +
+    "The video is set in: {scene}."
+    + chr(10) + chr(10) +
+    "Describe ONE picture of that sound being made. Name FIRST the solid object that makes "
+    "the sound -- something a person could point at -- and then what it is doing."
+    + chr(10) +
+    "The object is never the sky, the air, the weather, a feeling, or a body part on its "
+    "own. For a sound made by weather, name the visible thing in the weather that makes it."
+    + chr(10) +
+    "If the name of the sound can also mean something else, name the device, animal or "
+    "machine that makes this sound, so the picture cannot be read the other way."
+    + chr(10) +
+    "If the brackets say which kind of object it is, keep that one word."
+    + chr(10) +
+    "Answer with 3 to 6 plain words. No scenery, no poetry, no punctuation. Do not name "
+    "the place unless the sound cannot be drawn without it. Do not add any object that is "
+    "not the source of the sound."
+)
+
 # No example sentences, on purpose. They were there to teach a 7B model the format, but
 # an example carries content as well as format and the content leaks: "a police car
 # with its siren on" was copied over the detector's own "Civil defense siren". Adam's
@@ -767,7 +817,7 @@ def _disambiguate(specs, video_path, mdl, proc, frames_per_sound: int = 4) -> No
             done.add(id(loser))
 
 
-def _without_place(phrase: str, place: str) -> str:
+def _without_place(phrase: str, place: str, keep: str = "") -> str:
     """Drop the place's own words from a depiction, if something is left.
 
     The prompt says not to name the place unless the sound cannot be drawn without it,
@@ -778,6 +828,9 @@ def _without_place(phrase: str, place: str) -> str:
     """
     stop = {"a", "an", "the", "of", "in", "on", "at"}
     bad = {w for w in place.lower().replace(",", " ").split() if w not in stop and len(w) > 2}
+    # the kind of the SOURCE, read from the frames, is not the place: "subway" in "subway train"
+    # is what makes the generator draw a subway train and not a steam locomotive
+    bad -= {w for w in keep.lower().replace(",", " ").split()}
     if not bad:
         return phrase
     kept = [w for w in phrase.split() if w.lower().strip(",.") not in bad
@@ -1060,18 +1113,27 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
 
     # 2. depiction: the sound as an EVENT, the place as a modifier.
     labels = [s.event_label for s in active]
+    v2 = bool(getattr(config, "DEPICT_V2", False))
     for spec in active:
-        detail = ""
+        detail, kind = "", ""
         if spec.detail and spec.detail != spec.event_label:
             detail = " (specifically: " + spec.detail.split(",")[0].split("(")[0].strip() + ")"
+            if getattr(config, "KIND_ALWAYS", False):
+                # The detector's sub-label is usually generic ("Rail transport", "Thunderstorm")
+                # and it used to switch the frames off entirely: a subway clip got a steam
+                # locomotive. The frames now always get a say about which kind it is.
+                kind = _kind_from_frames(spec.event_label, spec_frames.get(id(spec)), mdl, proc)
+                if kind:
+                    detail = detail[:-1] + "; the frames suggest: " + kind + ")"
         else:
             # no sub-label from the detector: let the frames say what kind, if they can
             kind = _kind_from_frames(spec.event_label, spec_frames.get(id(spec)), mdl, proc)
             if kind:
                 detail = " (specifically: " + kind + ")"
-        prompt = DEPICT_PROMPT.format(label=spec.event_label, detail=detail, scene=place)
+        prompt = (DEPICT_PROMPT_V2 if v2 else DEPICT_PROMPT).format(
+            label=spec.event_label, detail=detail, scene=place)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
-        phrase = _without_place(phrase, place)
+        phrase = _without_place(phrase, place, keep=kind if v2 else "")
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
             print("       [stage5] rejected (not about " + spec.event_label + "): "
                   + phrase, flush=True)
