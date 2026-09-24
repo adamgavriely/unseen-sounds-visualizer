@@ -101,6 +101,21 @@ def _extract_events(framewise, times, labels, threshold, top_k, min_dur,
                 i = j
                 continue
             start, end = float(times[i]), float(times[j - 1] + dt)
+            # Release (2026-09-24, docs/onset_timing.md): the span ends where the score falls
+            # below `low`, but a sustained sound dips below it and keeps going -- measured on the
+            # rendered panel the picture leaves 2.30 s before the sound stops. With AED_RELEASE
+            # set, the end extends through any following stretch above that absolute score,
+            # tolerating gaps shorter than AED_RELEASE_GAP.
+            rel = getattr(config, "AED_RELEASE", None)
+            if rel:
+                gap_frames = int(round(float(getattr(config, "AED_RELEASE_GAP", 1.0)) / dt))
+                k, quiet = j, 0
+                while k < n and quiet <= gap_frames:
+                    quiet = 0 if framewise[k, c] >= float(rel) else quiet + 1
+                    k += 1
+                k -= quiet                       # step back off the trailing quiet stretch
+                if k > j:
+                    end = float(times[min(k, n - 1)] + dt)
             if end - start >= min_dur:
                 events.append(AudioEvent(label=labels[c], start=start, end=end,
                                          confidence=float(framewise[i:j, c].max())))

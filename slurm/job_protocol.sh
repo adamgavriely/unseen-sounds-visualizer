@@ -71,6 +71,7 @@ BAR="${BAR:-}"           # display bar override (amendment 6, v4b5: 0.15); AED b
 MONO="${MONO:-}"         # 1 = no stage may move an onset earlier than its anchor (docs/onset_timing.md)
 MSTART="${MSTART:-}"     # "strongest": a chained burst starts at its strongest firing, not its earliest
 MAXSPAN="${MAXSPAN:-}"   # "none" turns the eight-second picture cap off; a number sets it
+RELEASE="${RELEASE:-}"   # a span's end extends through any later stretch at or above this score
 SYSTEMS="${SYSTEMS:-}"   # e.g. "proposed" or "blind_a2i audio_caption": one system per job when sharding
 V4="${V4:-}"          # v4 stages to apply (docs/prereg_v4.md), e.g. "4", "45", "23456"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
@@ -121,6 +122,8 @@ if "${MSTART}":
 if "${MAXSPAN}":
     config.MAX_SPAN = None if "${MAXSPAN}".lower() == "none" else float("${MAXSPAN}")
     print("[v4] MAX_SPAN", config.MAX_SPAN, flush=True)
+if "${RELEASE}":
+    config.AED_RELEASE = float("${RELEASE}"); print("[v4] AED_RELEASE", config.AED_RELEASE, flush=True)
 if "${PSED_BAR}":                      # v4ab2: PSED's own operating point (benchmark/psed_f1_bar.json)
     config.PSED_BAR = float("${PSED_BAR}"); print("[v4] PSED_BAR", config.PSED_BAR, flush=True)
 # GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which

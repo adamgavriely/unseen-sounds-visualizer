@@ -85,9 +85,12 @@ ONSET_CAM = True
 ONSET_MONOTONE = False
 # "earliest" (as shipped) or "strongest": where a burst of chained firings is deemed to start.
 MERGE_START = "earliest"
-# End of a span: the last frame at or above this fraction of the display bar after the peak. None
-# keeps the shipped behaviour (the span ends where hysteresis ends).
+# End of a span (2026-09-24). Hysteresis ends a span the moment the score dips below its bar, and a
+# sustained sound dips: measured on the rendered panel the picture leaves 2.30 s before the sound
+# stops. With this set, the span extends through any later stretch at or above this absolute score,
+# tolerating silences shorter than AED_RELEASE_GAP. None keeps the shipped behaviour.
 AED_RELEASE = None
+AED_RELEASE_GAP = 1.0
 # Hysteresis: a sound must reach DISPLAY_THRESHOLD to count, and then extends through any
 # contiguous stretch above this fraction of it. Standard SED post-processing; it is what
 # lets an approaching helicopter start when the ear hears it, not when it gets loud.
