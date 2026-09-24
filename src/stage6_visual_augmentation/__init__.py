@@ -291,9 +291,26 @@ def _subject_bbox(img: Image.Image, tol: int = 28):
         return None
 
 
+# PICTURE_V3: what the generator is told to leave out. Qwen-Image runs true classifier-free guidance
+# and was being called with an empty negative, so scenery was free to appear (the palace crowd, the
+# street firecracker, thunder as a full-frame sky). A diffusion negative has no clauses, so any word
+# that names the source itself is removed from it per picture (a crowd must not be negated away).
+NEGATIVE_V3 = ["scenery", "landscape", "background scene", "room interior", "street", "buildings",
+               "sky background", "text", "letters", "watermark", "people"]
+
+
+def negative_for(subject: str) -> str:
+    words = {w.strip(",.").lower() for w in subject.split()}
+    human = words & {"people", "crowd", "audience", "person", "man", "woman", "child", "children",
+                     "baby", "hands", "clapping", "laughing", "cheering", "applause", "laughter"}
+    keep = [n for n in NEGATIVE_V3 if not (set(n.split()) & words) and not (n == "people" and human)]
+    return ", ".join(keep)
+
+
 def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
                      model: str = "stabilityai/stable-diffusion-xl-base-1.0",
-                     device: str = "cuda", seed: Optional[int] = None) -> bool:
+                     device: str = "cuda", seed: Optional[int] = None,
+                     negative: Optional[str] = None) -> bool:
     """v2-b backend: generate the augmentation with SDXL (GPU). One pipeline is
     kept loaded across calls -- model load dominates cost, generation is ~2 s."""
     global _PIPE
@@ -322,7 +339,7 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
             _PIPE.set_progress_bar_config(disable=True)
         kw = dict(prompt=prompt, width=size[0], height=size[1])
         if is_qwen:
-            kw.update(num_inference_steps=50, true_cfg_scale=4.0, negative_prompt=" ")
+            kw.update(num_inference_steps=50, true_cfg_scale=4.0, negative_prompt=negative or " ")
         elif 'turbo' in model or (is_flux and "schnell" in model.lower()):
             # Distilled: trained for very few steps and ignores classifier-free
             # guidance, so a negative prompt does nothing here and a high guidance
@@ -448,13 +465,14 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
             # style is this backend's business, not the gate's.
             prompt = plain_prompt(spec.subject or query)
             spec.image_prompt = prompt          # the exact string the generator saw
-            if _diffusion_image(path, prompt, size, model=model, device=device):
+            neg = negative_for(spec.subject or query) if getattr(config, "PICTURE_V3", False) else None
+            if _diffusion_image(path, prompt, size, model=model, device=device, negative=neg):
                 # Two of the 33 pictures in the final DEV render came out a plain white square
                 # (2026-09-24). The panel changes, the viewer looks, and there is nothing there --
                 # the full price of a picture for none of the information. One retry at a
                 # different seed costs a few seconds and the failure is rare.
                 if _is_blank(path) and _diffusion_image(path, prompt, size, model=model,
-                                                        device=device):
+                                                        device=device, negative=neg):
                     print(f"       [stage6] {spec.event_label}: the picture came out blank; redrew it")
                 spec.image_path = str(path)
                 spec.backend = "diffusion"

@@ -125,7 +125,7 @@ def phase_specs(a):
     for it in items:
         it["decoys"] = decoys_for(it["label"], pool)
     # join the hand verdicts by content, not by position
-    hand = json.loads(HAND.read_text(encoding="utf-8"))["pictures"]
+    hand = json.loads(HAND.read_text(encoding="utf-8"))["pictures"] if TAG == "dev_symgen_v30" else []
     key = {(h["clip"], h["label"], h["subject"]): h for h in hand}
     for it in items:
         h = key.get((it["clip"], it["label"], it["subject"]))
@@ -138,7 +138,43 @@ def phase_specs(a):
 
 
 # ---------------------------------------------------------------------------------- subjects
+def phase_subjects_v3(a):
+    """PICTURE_V3 subjects for the bench's sounds: the specific source from the render's own raw
+    detector events (labels.choose_source on the drawn burst), then reason._depict_v3. The gate is not
+    re-run, so both arms draw exactly the same sounds."""
+    config.use_v4("590")
+    config.DEVICE = "cuda"
+    config.PICTURE_V3 = True
+    from src.types import AudioEvent
+    from src.labels import choose_source, canonical
+    from src.stage2_video_understanding import _sample_frames
+    from src.stage5_cross_modal_analysis import reason as R
+    items = load_specs()
+    work = _ROOT / "data" / "work" / f"protocol_proposed_{TAG}"
+    mdl, proc = R._load(config.VLM_MODEL, "cuda")
+    out, places = {}, {}
+    for it in items:
+        ev = [AudioEvent(e["label"], e["start"], e["end"], e["confidence"])
+              for e in json.loads((work / it["clip"] / "events.json").read_text(encoding="utf-8"))]
+        src = choose_source(ev, canonical(it["label"]), (it["start"], it["end"]))
+        if it["clip"] not in places:            # only for the strip backstops; v3 never sees it
+            frames = _sample_frames(clip_path(it["clip"]), 4)
+            places[it["clip"]] = R._clean_phrase(R._ask(mdl, proc, R.PLACE_PROMPT, images=frames,
+                                                        max_new=16), max_words=4) or "an unknown place"
+
+        class _Spec:                            # the fields _depict_v3 reads
+            event_label, detail, source = it["label"], it["detail"], src
+        phrase = R._depict_v3(_Spec, places[it["clip"]], mdl, proc) or (src + " making its sound")
+        out[str(it["i"])] = {"subject": phrase, "source": src, "place": places[it["clip"]]}
+        print(f"   {it['i']:2d} {it['label'][:14]:14s} [{src[:24]:24s}] {it['subject'][:28]:28s} -> {phrase}",
+              flush=True)
+    (BENCH / "subjects_V3.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print("->", BENCH / "subjects_V3.json")
+
+
 def phase_subjects(a):
+    if a.arm == "V3":
+        return phase_subjects_v3(a)
     """Re-run ONLY the depiction step of stage 5, as reason.decide_subjects does it, with the new
     rules switched on. The gate is not re-run: every arm draws the same 33 sounds."""
     config.use_v4("590")
@@ -206,6 +242,7 @@ ARMS = {
     "A2": {"subjects": "A2", "guard": True, "gen": "flux"},
     "A3": {"subjects": "A2", "guard": True, "gen": "qwen"},
     "A3b": {"subjects": "A2b", "guard": True, "gen": "qwen"},
+    "N": {"subjects": "V3", "guard": True, "gen": "qwen", "negative": True},
 }
 # Reviewer A, round 4: a full-frame picture breaks the white-background contract the other way (a
 # dark sky for thunder is a scene, not an object). Added AFTER seeing A3, and reported as such.
@@ -217,13 +254,14 @@ def arm_spec(name):
     spec = dict(ARMS[base])
     spec["seed_offset"] = 1000 * int(s) if s else 0
     spec["upper"] = base == "A3b"
+    spec.setdefault("negative", False)
     return spec
 GEN = {"flux": ("black-forest-labs/FLUX.1-schnell", (768, 768)),
        "qwen": ("Qwen/Qwen-Image-2512", (1024, 1024))}
 
 
 def phase_draw(a):
-    from src.stage6_visual_augmentation import _diffusion_image, plain_prompt
+    from src.stage6_visual_augmentation import _diffusion_image, plain_prompt, negative_for
     arm = arm_spec(a.arm)
     model, size = GEN[arm["gen"]]
     items = load_specs()
@@ -238,13 +276,15 @@ def phase_draw(a):
         prompt = plain_prompt(subject)
         p = out_dir / f"{it['i']:02d}.png"
         seed = seed_of(it) + arm["seed_offset"]
-        ok = _diffusion_image(p, prompt, size, model=model, device="cuda", seed=seed)
+        neg = negative_for(subject) if arm["negative"] else None
+        ok = _diffusion_image(p, prompt, size, model=model, device="cuda", seed=seed, negative=neg)
         fired, dropped = 0, False
         bad = (lambda q: ink(q) < INK_BAR or (arm["upper"] and ink(q) > INK_MAX))
         if ok and arm["guard"]:
             while bad(p) and fired < 2:
                 fired += 1
-                _diffusion_image(p, prompt, size, model=model, device="cuda", seed=seed + fired)
+                _diffusion_image(p, prompt, size, model=model, device="cuda", seed=seed + fired,
+                                 negative=neg)
             if bad(p):
                 dropped = True            # counted as a failure, never shown as a blank
         manifest.append({"i": it["i"], "subject": subject, "prompt": prompt, "seed": seed,
@@ -259,6 +299,8 @@ def phase_draw(a):
 
 # -------------------------------------------------------------------------------------- eval
 def picture_paths(arm, items):
+    if arm == "today":
+        return {it["i"]: Path(it["shipped_image"]) for it in items}
     if arm == "shipped":
         # the render's own pictures, copied next to the bench by specs time on the cluster
         return {it["i"]: Path(it["shipped_image"]) for it in items}
@@ -427,6 +469,51 @@ def phase_eval2(a):
               f"{agree}/{len(ref)}  disagreements: {', '.join(miss)}")
 
 
+# ------------------------------------------------------------------------------------- check
+CHECK_MODEL = "zai-org/GLM-4.6V-Flash"      # a model family used nowhere else in the pipeline
+CHECK_PROMPT = ("Look at this picture. Answer in exactly two lines."
+                + chr(10) + "OBJECT: the main thing actually drawn, at most 4 words. If the picture is "
+                "blank, answer: nothing."
+                + chr(10) + "SOUND: the sound it is making, at most 6 words. If nothing in it makes a "
+                "sound, answer: nothing.")
+
+
+def phase_check(a):
+    """Adam's "ask what is seen" step, run as a logged verdict column. It is NOT told the sound or the
+    subject, and it changes nothing: the panel ruled it may not reject or redraw anything until it has
+    passed calibration against Adam's own ratings."""
+    import torch
+    from PIL import Image
+    from transformers import AutoProcessor, AutoModelForImageTextToText
+    items = load_specs()
+    proc = AutoProcessor.from_pretrained(CHECK_MODEL)
+    mdl = AutoModelForImageTextToText.from_pretrained(CHECK_MODEL, dtype=torch.bfloat16).to("cuda").eval()
+    res = {}
+    for arm in a.arm.split(","):
+        paths = picture_paths(arm, items)
+        for it in items:
+            p = paths[it["i"]]
+            if not p.exists():
+                continue
+            msgs = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": CHECK_PROMPT}]}]
+            try:
+                text = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False,
+                                                enable_thinking=False)
+            except TypeError:
+                text = proc.apply_chat_template(msgs, add_generation_prompt=True, tokenize=False)
+            inp = proc(text=[text], images=[Image.open(p).convert("RGB")], return_tensors="pt").to("cuda")
+            with torch.no_grad():
+                out = mdl.generate(**inp, max_new_tokens=160, do_sample=False)
+            raw = proc.batch_decode(out[:, inp["input_ids"].shape[1]:], skip_special_tokens=True)[0]
+            raw = raw.split("</" + "think>")[-1].replace("<" + "answer>", "").replace("</" + "answer>", "")
+            obj, snd = _two_lines(raw)
+            res[f"{arm}:{it['i']}"] = {"object": obj, "sound": snd, "raw": raw.strip()[:300]}
+            print(f"   {arm} {it['i']:2d} {it['label'][:14]:14s} OBJECT {obj[:30]:30s} SOUND {snd[:34]}",
+                  flush=True)
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    (RESULTS / f"check_{TAG}.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+
+
 # ------------------------------------------------------------------------------------ report
 def phase_report(a):
     items = load_specs()
@@ -494,12 +581,18 @@ def phase_report(a):
 
 
 def main():
+    global TAG, BENCH
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", choices=["specs", "subjects", "draw", "eval", "eval2", "report"])
+    ap.add_argument("phase", choices=["specs", "subjects", "draw", "eval", "eval2", "check", "report"])
     ap.add_argument("--arm", default="")
+    ap.add_argument("--tag", default=TAG, help="the render whose drawn sounds are the bench")
+    ap.add_argument("--bench", default="", help="bench folder (default: data/work/picture_bench)")
     a = ap.parse_args()
+    TAG = a.tag
+    if a.bench:
+        BENCH = Path(a.bench) if Path(a.bench).is_absolute() else _ROOT / a.bench
     {"specs": phase_specs, "subjects": phase_subjects, "draw": phase_draw,
-     "eval": phase_eval, "eval2": phase_eval2, "report": phase_report}[a.phase](a)
+     "eval": phase_eval, "eval2": phase_eval2, "check": phase_check, "report": phase_report}[a.phase](a)
 
 
 if __name__ == "__main__":

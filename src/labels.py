@@ -361,6 +361,74 @@ def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEven
     return sorted(out, key=lambda e: -e.confidence)
 
 
+def _depth(label: str) -> int:
+    return len(ancestors(label))
+
+
+def _common_parent(a: str, b: str) -> str:
+    """The deepest label both descend from (itself included), or "" if they share none."""
+    chain_a = [a] + ancestors(a)
+    chain_b = set([b] + ancestors(b))
+    for x in chain_a:
+        if x in chain_b:
+            return x
+    return ""
+
+
+def choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float]) -> str:
+    """The most specific sound the detector really heard in one burst of a family (PICTURE_V3).
+
+    Adam, 2026-09-24: pictures were drawn from the family tag -- a bus drawn as a car, a horn drawn
+    as a train. The detector usually DID hear the specific sound; it was lost because only children
+    above the display bar could become ``detail``, and the most confident member was often an
+    ontology ancestor ("Rail transport") rather than a child. Panel of five, two rounds:
+
+      * candidates: every raw firing of this family at or above the detector's own bar
+        (AED_THRESHOLD) that overlaps the burst, and at least SOURCE_REL_FLOOR x the family's peak
+        in it -- so a 0.05 "Reversing beeps" can still never turn a car into a reversing tractor;
+      * a candidate that is an ancestor of another candidate is dropped (it says less);
+      * ranked by ontology depth, then confidence;
+      * two siblings within SOURCE_TIE_MARGIN of each other are not guessed between: their common
+        parent is drawn (Ambulance / Police car / Fire engine -> Emergency vehicle). A wrong specific
+        source is the error DHH users rank worst (Jain et al., CHI 2019);
+      * nothing qualifies -> the family itself.
+    Both numbers are fixed a priori (not tuned on the clips the rules were written from).
+    """
+    import config
+    floor = float(getattr(config, "SOURCE_REL_FLOOR", 0.5))
+    margin = float(getattr(config, "SOURCE_TIE_MARGIN", 0.8))
+    bar = float(getattr(config, "AED_THRESHOLD", 0.175))
+    a, b = burst
+    mine = [e for e in raw if canonical(e.label) == fam and e.start <= b and e.end >= a]
+    if not mine:
+        return fam
+    peak = max(e.confidence for e in mine)
+    cand = {}
+    for e in mine:
+        if e.confidence >= max(bar, floor * peak):
+            cand[e.label] = max(cand.get(e.label, 0.0), e.confidence)
+    cand.pop(fam, None)
+    # never broader than the family itself: "Rail transport" is mapped onto Train and "Thunderstorm"
+    # onto Thunder, but both say LESS than the family does
+    cand = {x: c for x, c in cand.items() if not is_descendant(fam, x)}
+    labels = [x for x in cand if not any(x != y and is_descendant(y, x) for y in cand)]
+    if not labels:
+        return fam
+    labels.sort(key=lambda x: (-_depth(x), -cand[x]))
+    top = labels[0]
+    for other in labels[1:]:
+        if _depth(other) != _depth(top):
+            break
+        if cand[other] >= margin * cand[top] and not same_source(top, other):
+            parent = _common_parent(top, other)
+            # the fallback may never be broader than the family (Subway vs Railroad car share
+            # "Rail transport", which says less than "Train")
+            if not parent or parent == fam or is_descendant(fam, parent):
+                return fam
+            return parent
+    return top
+
+
 def consolidate_families(events: List[AudioEvent],
                          threshold: float = 0.0) -> List[AudioEvent]:
     """Relabel sub-types to their canonical parent, then merge. One entry/source.
@@ -381,6 +449,7 @@ def consolidate_families(events: List[AudioEvent],
     # detail. It was never going to be shown on its own, so it must not be able to
     # change what IS shown -- "Reversing beeps" at 0.05 turned a rodeo Vehicle into a
     # reversing tractor.
+    raw = list(events)            # PICTURE_V3 reads the unfiltered list for the drawn source only
     events = [e for e in events if e.confidence >= threshold]
     relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence) for e in events]
     merged = merge_by_label(relabelled)
@@ -395,6 +464,10 @@ def consolidate_families(events: List[AudioEvent],
         child = best.get(m.label)
         if child is not None:
             m.detail = child.label
+    import config as _c
+    if getattr(_c, "PICTURE_V3", False):
+        for m in merged:
+            m.source = choose_source(raw, m.label, (m.start, m.end))
     return merged
 
 

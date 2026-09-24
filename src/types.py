@@ -69,6 +69,9 @@ class AudioEvent:
     # Every separate burst of this sound, as (start, end). ``start``/``end`` above are
     # the strongest burst only; a picture is shown during each burst, not across them.
     spans: List[Tuple[float, float]] = field(default_factory=list)
+    # PICTURE_V3 (2026-09-24): the most specific sound the detector really heard in the drawn burst,
+    # chosen by labels.choose_source. Drawing only -- the gate keeps reasoning on ``label``.
+    source: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -97,6 +100,7 @@ class AugmentationSpec:
     detail: str = ""                 # most specific sub-label PANNs heard (e.g. Shatter under Glass)
     talked_about: bool = False       # people on the soundtrack are reacting to this sound
     spans: List[Tuple[float, float]] = field(default_factory=list)  # every burst; see AudioEvent
+    source: str = ""                 # PICTURE_V3: the specific sound to DRAW (labels.choose_source)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

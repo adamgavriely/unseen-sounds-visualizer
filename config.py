@@ -188,6 +188,15 @@ KIND_FROM_FRAMES = True
 # and the kind word read from the frames is not stripped as if it were the place.
 KIND_ALWAYS = False
 DEPICT_V2 = False
+# PICTURE_V3 (2026-09-24, picture panel of five, docs/picture_panel_round2.md). Draw the most specific
+# sound the detector really heard (labels.choose_source), with a depiction prompt that asks for the
+# whole recognisable source caught making THAT sound, no place in it, and a negative prompt for the
+# generator. The gate is untouched. The two numbers are fixed a priori, never tuned on the 33 bench
+# sounds: a child must reach half the family's peak in the burst, and two siblings within 80% of each
+# other are not guessed between (their common parent is drawn).
+PICTURE_V3 = False
+SOURCE_REL_FLOOR = 0.5
+SOURCE_TIE_MARGIN = 0.8
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time

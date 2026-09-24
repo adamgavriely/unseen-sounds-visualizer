@@ -108,10 +108,13 @@ KIND_PROMPT_V2 = (
 )
 
 
-def _kind_from_frames(label: str, frames, mdl, proc) -> str:
+def _kind_from_frames(label: str, frames, mdl, proc, seen_only: bool = False) -> str:
     if not frames or not getattr(config, "KIND_FROM_FRAMES", True):
         return ""
-    kp = KIND_PROMPT_V2 if getattr(config, "KIND_ALWAYS", False) else KIND_PROMPT
+    # seen_only: the corroboration step needs evidence -- the frames SHOWING the source (v1). The v2
+    # question INFERS a kind from the setting, and a guess must never count as proof that a faint
+    # sound is real (picture panel, P2, round 1).
+    kp = KIND_PROMPT if seen_only else (KIND_PROMPT_V2 if getattr(config, "KIND_ALWAYS", False) else KIND_PROMPT)
     ans = _clean_phrase(_ask(mdl, proc, kp.format(label=label), images=frames,
                              max_new=16), max_words=4)
     low = ans.lower()
@@ -184,6 +187,33 @@ DEPICT_PROMPT_V2 = (
     "the place unless the sound cannot be drawn without it. Do not add any object that is "
     "not the source of the sound."
 )
+
+# v3 (2026-09-24, picture panel of five, two rounds; Adam's blind ratings). v2's "name FIRST the
+# solid object... do not add any object that is not the source" drew PARTS: an engine block for a car,
+# a wheelset for a train, two pairs of hands for a clapping crowd, a desk bell for a fire alarm -- 4 of
+# the 5 pictures Adam rated worse. What he rewarded was the whole recognisable source caught in the act
+# (a rooster with its beak open yes, roosters with beaks closed no). v3 is given the SPECIFIC sound the
+# detector heard (labels.choose_source) with its ontology chain, and never the place: the place is what
+# painted palaces and streets into the pictures, and what the strip functions then had to scrub.
+DEPICT_PROMPT_V3 = (
+    "A deaf viewer is watching a video and cannot hear it."
+    + chr(10) +
+    "A sound detector heard: {source}. Where that sits among kinds of sound: {chain}."
+    + chr(10) + chr(10) +
+    "Describe ONE picture that shows this sound being made. Name the whole thing a person would "
+    "point at as making it -- the whole animal, machine, vehicle, instrument or group of people, "
+    "never one part of it -- and what it is doing at the moment it makes this sound."
+    + chr(10) +
+    "The action must be the one that makes THIS sound, not something else the same thing can do."
+    + chr(10) +
+    "If what the detector heard is the name of a sound rather than of a thing, name the thing that "
+    "makes it. If it is weather, name the visible sign in the weather that goes with this sound. If a "
+    "word could mean something else, add the word that makes it clear."
+    + chr(10) +
+    "Answer with 3 to 6 plain words. No place, no scenery, no other objects, no punctuation."
+)
+DEPICT_V3_RESTATE = ("Your answer must name the thing that makes the sound, which is filed under: "
+                     "{chain}.")
 
 # No example sentences, on purpose. They were there to teach a 7B model the format, but
 # an example carries content as well as format and the content leaks: "a police car
@@ -820,6 +850,43 @@ def _disambiguate(specs, video_path, mdl, proc, frames_per_sound: int = 4) -> No
 _PREPS = {"in", "on", "at", "near", "inside", "outside", "by", "beside", "across", "through", "along"}
 
 
+def _source_chain(source: str, family: str) -> list:
+    """The source and its ontology ancestors up to (and including) the family it is gated as."""
+    from src.labels import ancestors
+    chain = [source]
+    for a in ancestors(source):
+        chain.append(a)
+        if a == family:
+            break
+    if family not in chain:
+        chain.append(family)
+    return chain
+
+
+def _depict_v3(spec, place: str, mdl, proc) -> str:
+    """v3 depiction: the specific source, its chain, no place. Never drops a sound -- dropping is a
+    gate decision and v3 changes only what is drawn."""
+    src = getattr(spec, "source", "") or spec.event_label
+    chain = _source_chain(src, spec.event_label)
+    chain_txt = " > ".join(chain)
+    keep = " ".join(chain + [spec.detail or ""])
+    prompt = DEPICT_PROMPT_V3.format(source=src, chain=chain_txt)
+
+    def one(p):
+        ph = _clean_phrase(_ask(mdl, proc, p, max_new=48))
+        ph = _without_place(ph, place, keep=keep)             # backstops only: no place was given
+        return _drop_place_phrase(ph, place, spec.event_label, keep)
+    phrase = one(prompt)
+    # backstop, no model judgement: an answer that names nothing in the source's chain is asked once
+    # more with the chain restated; the restated answer is taken only if it does name it
+    if phrase and not any(_about_the_sound(phrase, x) for x in chain):
+        again = one(prompt + chr(10) + DEPICT_V3_RESTATE.format(chain=chain_txt))
+        if again and any(_about_the_sound(again, x) for x in chain):
+            print("       [stage5] v3 restated: " + phrase + " -> " + again, flush=True)
+            phrase = again
+    return phrase
+
+
 def _drop_place_phrase(phrase: str, place: str, label: str = "", detail: str = "") -> str:
     """DEPICT_V2 only: remove a trailing "in / on / at ... <place>" phrase.
 
@@ -1097,7 +1164,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             backed = bool(spec.detail and spec.detail != spec.event_label)
             if not backed:
                 kind = _kind_from_frames(spec.event_label, spec_frames.get(id(spec)),
-                                         mdl, proc)
+                                         mdl, proc, seen_only=True)
                 if kind:
                     spec.detail = kind
                     backed = True
@@ -1143,7 +1210,17 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     # 2. depiction: the sound as an EVENT, the place as a modifier.
     labels = [s.event_label for s in active]
     v2 = bool(getattr(config, "DEPICT_V2", False))
+    v3 = bool(getattr(config, "PICTURE_V3", False))
     for spec in active:
+        if v3:
+            phrase = _depict_v3(spec, place, mdl, proc) or (
+                (getattr(spec, "source", "") or spec.event_label) + " making its sound")
+            spec.subject = phrase
+            spec.reason += " | depiction (v3, source " + (getattr(spec, "source", "") or "-") + "): " + phrase
+            spec.image_prompt = spec.subject
+            print("       [stage5] " + spec.event_label + " [" + (getattr(spec, "source", "") or "-")
+                  + "] -> " + spec.subject, flush=True)
+            continue
         detail, kind = "", ""
         if spec.detail and spec.detail != spec.event_label:
             detail = " (specifically: " + spec.detail.split(",")[0].split("(")[0].strip() + ")"
