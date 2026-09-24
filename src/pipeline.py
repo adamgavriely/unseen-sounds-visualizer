@@ -92,6 +92,11 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                                gate_enabled=config.GATE_ENABLED,
                                display_threshold=config.DISPLAY_THRESHOLD,
                                augment_threshold=config.AUGMENT_THRESHOLD)
+    from src.stage4_audio_event_detection import trace_spans, TRACE as _TRACE
+    trace_spans("family", [(sp.event_label, sp.start, sp.end) for sp in specs],
+                "after consolidate_families and the plan")
+    for sp in specs:
+        trace_spans("family_spans", [(sp.event_label, a, b) for a, b in (sp.spans or [])], sp.detail)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
     n_aug = sum(1 for s in specs if s.augment)
     print(f"       {n_aug}/{len(specs)} sound(s) selected to visualize")
@@ -112,6 +117,14 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                                    size=config.RESOLUTION, model=config.GEN_MODEL,
                                    device=config.DEVICE)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
+
+    try:        # the window the viewer really gets: what stage 6 will draw, before it draws it
+        from src.stage6_visual_augmentation import _display_spans
+        shown = _display_spans(specs, media.duration)
+        trace_spans("display", [(r[0], r[1], r[2]) for r in shown], "as the panel will show it")
+    except Exception as ex:
+        print(f"       [trace] display spans unavailable ({type(ex).__name__}: {ex})")
+    _dump(work / "onset_trace.json", list(_TRACE))
 
     print(f"[7/7] compositing alongside the video (mode={config.RENDER_MODE})...")
     out_mp4 = config.OUTPUT_DIR / f"{video_path.stem}_augmented.mp4"

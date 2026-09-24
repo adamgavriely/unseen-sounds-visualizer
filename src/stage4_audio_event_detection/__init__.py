@@ -24,6 +24,29 @@ import numpy as np
 import config
 from src.types import AudioEvent
 
+# Onset provenance (2026-09-24). Three reviewers gave three different accounts of which step moves
+# an onset earlier, and none of them reconciles with the cached detector scores end to end: the
+# adopted run emitted a Siren anchor of 2.60 s and a Laughter span that neither cache produces.
+# Nothing outside the pipeline can recover an intermediate start, so the pipeline records its own:
+# one row per (step, label, start, end), reset per clip, dumped to the work dir as onset_trace.json.
+TRACE: List[dict] = []
+
+
+def trace(step: str, events, note: str = "") -> None:
+    for e in events:
+        TRACE.append({"step": step, "label": getattr(e, "label", ""),
+                      "start": round(float(getattr(e, "start", 0.0)), 3),
+                      "end": round(float(getattr(e, "end", 0.0)), 3),
+                      "conf": round(float(getattr(e, "confidence", 0.0)), 3), "note": note})
+
+
+def trace_spans(step: str, rows, note: str = "") -> None:
+    """Same log, for stages that carry (label, start, end) rather than an AudioEvent."""
+    for label, a, b in rows:
+        TRACE.append({"step": step, "label": label, "start": round(float(a), 3),
+                      "end": round(float(b), 3), "conf": 0.0, "note": note})
+
+
 _SED = None          # lazy-loaded model singleton (avoid reloading per call)
 _PANNS_SR = 32000    # PANNs operates at 32 kHz
 _PANNS_FPS = 100.0   # framewise output rate (hop 320 @ 32 kHz)
@@ -174,6 +197,8 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
 
     low = threshold * float(getattr(config, "AED_HYSTERESIS", 1.0))
     events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low)
+    TRACE.clear()
+    trace("extract", events, backend)
     # amendment 8 (2026-09-22): the open-vocabulary second detector, added as a UNION with its own
     # bar -- BEATs is deaf to sounds that speech or music masks, FlexSED is asked one label at a
     # time and hears them (docs/GOLD_RERUN_2026-09-22.md sec 10). Both bars are set on Adam's DEV
@@ -220,7 +245,9 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                 else:
                     fresh.append(e)
             print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
+            trace("flexsed_raw", fev, "FlexSED spans as extracted")
             events = events + fresh
+            trace("union", events, "after the twin rule kept the earlier start")
             # Amendment 10 (2026-09-23): the second detector also carries the DISagreement. Where
             # BEATs names a family FlexSED never hears anywhere in the clip, the taxonomy shows the
             # sound is usually not there at all (Whale 0.13, Horse 0.13, Cat 0.00, Telephone 0.00).
@@ -265,12 +292,15 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                     print(f"       [stage4] PANNs veto unavailable ({type(e2).__name__}: {e2}); skipped", flush=True)
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
+    trace("veto", events, "after the cross-detector and PANNs vetoes")
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):
         events = _refine_onsets_cam(Path(wav_path), events, labels, device)
+        trace("refine", events, "after occlusion onset refinement")
     cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/prereg_v4.md)
     if cap:
         for e in events:
             e.end = min(e.end, e.start + float(cap))
+        trace("cap", events, f"MAX_SPAN {cap}")
     n_classes = len({e.label for e in events})
     print(f"       [stage4] {backend} SED: {len(events)} event span(s) over "
           f"{n_classes} class(es) (threshold={threshold}).")
