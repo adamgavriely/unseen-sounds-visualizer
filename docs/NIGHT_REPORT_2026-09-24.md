@@ -133,3 +133,21 @@ Honest limits, all of which matter:
 
 What would make it real: Adam (or anyone who is not me) labels a sample of A3 against today's
 pictures, blind, on clips the rules were not written from.
+
+**Result 4 — the first timing runs were not a fair test (my mistake), and are being redone.**
+The four timing arms (`dev_*_v30`) finished with the fix doing what it should — the Siren and the
+rooster landed on time, 5 more needed sounds got a picture, none were lost, and the picture's end
+moved from 1.70 s early to 0.55 s early — **but** false alarms nearly doubled (0.57 → 1.04 per clip).
+Tracing the extra pictures (insects in a pet shop, cooking, coins, a cash register, a microwave)
+showed they never reached the pipeline in the base run at all. The reason: the base run was started
+with the two adopted false-alarm filters switched on from the command line (`VETO=0.3 PVETO=0.05`),
+and I started the arms without them. So every one of those arms differs from the base by the
+filters, not only by the timing fix, and none of its numbers can be used.
+
+Redone as `dev_*_v31` with the filters on (jobs 30993797-800), plus a fourth run with **no** new
+switch at all (`dev_repro_v31`), which must reproduce the base: that is the check that the
+instrumentation and the switched-off code change nothing.
+
+What survives from the confounded runs: the named onset fixes (Siren −1.50 → 0.00, Bird −1.29 →
+−0.15) are pictures that were drawn in both runs, so they are the timing fix and not the filters.
+The +5 hits and the false-alarm rise are not attributable until the v31 runs land.
