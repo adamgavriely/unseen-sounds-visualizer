@@ -1,0 +1,157 @@
+<title>Sound Pictures, 25 Sept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root {
+  --ground:#f4f6f8; --paper:#ffffff; --ink:#16202e; --dim:#566172; --line:#dde2e8;
+  --accent:#0f6e68; --accent-soft:#e3f1ef; --warn:#a4520a; --warn-soft:#fbeedd; --bad:#a12c2c; --bad-soft:#f8e4e4;
+  --mono:"IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --ground:#10151d; --paper:#18202b; --ink:#e6ebf1; --dim:#9aa6b6; --line:#2a3441;
+  --accent:#4fc1b6; --accent-soft:#16312f; --warn:#e3a25a; --warn-soft:#342617; --bad:#ec8a8a; --bad-soft:#3a1c1c; } }
+:root[data-theme="dark"] {
+  --ground:#10151d; --paper:#18202b; --ink:#e6ebf1; --dim:#9aa6b6; --line:#2a3441;
+  --accent:#4fc1b6; --accent-soft:#16312f; --warn:#e3a25a; --warn-soft:#342617; --bad:#ec8a8a; --bad-soft:#3a1c1c; }
+body { background:var(--ground); color:var(--ink); font:15.5px/1.6 "IBM Plex Sans", "Segoe UI", system-ui, sans-serif; }
+.wrap { max-width:980px; margin:0 auto; padding-inline:16px; padding-block:24px 64px; }
+h1 { font-size:28px; line-height:1.2; margin:0 0 6px; text-wrap:balance; font-weight:600; }
+h2 { font-size:19px; margin:0 0 10px; text-wrap:balance; font-weight:600; }
+h3 { font-size:15px; margin:14px 0 6px; font-weight:600; }
+.sub { color:var(--dim); margin:0 0 22px; max-width:70ch; }
+section { background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin-bottom:16px; }
+p, li { max-width:72ch; }
+.label { font:500 11.5px/1 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--dim); margin-bottom:8px; display:block; }
+.tag { display:inline-block; font:500 11.5px/1.5 var(--mono); padding:1px 7px; border-radius:5px; background:var(--accent-soft); color:var(--accent); white-space:nowrap; }
+.tag.warn { background:var(--warn-soft); color:var(--warn); } .tag.bad { background:var(--bad-soft); color:var(--bad); }
+.claims { display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); }
+.claim { border:1px solid var(--line); border-radius:8px; padding:12px 14px; }
+.claim b { display:block; margin-bottom:4px; }
+.num { font-family:var(--mono); font-variant-numeric:tabular-nums; }
+.tbl { overflow-x:auto; }
+table { border-collapse:collapse; width:100%; font-size:14px; }
+th, td { text-align:left; padding:6px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { font-weight:600; color:var(--dim); font-size:12.5px; }
+td.n { font-family:var(--mono); font-variant-numeric:tabular-nums; white-space:nowrap; }
+.sig { color:var(--accent); font-weight:600; }
+ol.q li { margin-bottom:8px; }
+.note { color:var(--dim); font-size:14px; }
+.pending { color:var(--warn); font-family:var(--mono); font-size:13px; }
+</style>
+<div class="wrap">
+<span class="label">MSc thesis · visual augmentation of off-screen sound · supervisor meeting 25 Sept 2026</span>
+<h1>What changed since 17 September</h1>
+<p class="sub">Pictures beside a video for off-screen sounds, for deaf and hard-of-hearing viewers. No training.
+One annotator, 139 clips (DEV 49 · TEST 60 · slice B 30). Every number below carries that label.</p>
+
+<section>
+<h2>Three things we can say with a straight face</h2>
+<div class="claims">
+ <div class="claim"><b>Pictures beat showing nothing</b>
+  Per-sound F1 <span class="num">+0.29 [+0.20, +0.38]</span> over silence (109 clips, pre-registered).
+  <br><span class="tag">significant</span> <span class="tag warn">one annotator</span></div>
+ <div class="claim"><b>The gate cuts wrong pictures</b>
+  Against "draw every detected sound", on the single TEST look (23 Sept): precision
+  <span class="num">+0.14 [+0.03, +0.26]</span>, viewer cost <span class="num">−0.73</span> better.
+  F1 is a tie, as it has always been. Re-checked tonight on DEV with both arms on the same timing: same pattern.
+  <br><span class="tag">significant on P and cost</span> <span class="tag warn">F1 null</span></div>
+ <div class="claim"><b>A timing bug, found and fixed by trace</b>
+  Two stages pulled picture starts earlier, never later: 223 of 442 starts moved early, one by 9 s. Now 0.
+  On DEV: F1 <span class="num">+0.10 [+0.02, +0.20]</span>. On TEST: neither helped nor hurt.
+  <br><span class="tag warn">DEV, selected</span> <span class="tag warn">TEST inconclusive</span></div>
+</div>
+</section>
+
+<section>
+<h2>Timing: the TEST look, read under a rule written first</h2>
+<p>Adam approved one more TEST look for the timing fix, and decided to remove the 8-second picture cap
+("time limit depends on the sound, not a number"). The rule was committed before the run; a switches-off
+reproduction matched the old run exactly (23 of 23 starts) before TEST was read.</p>
+<div class="tbl"><table>
+<tr><th>60 TEST clips</th><th>F1</th><th>precision</th><th>recall</th><th>wrong / clip</th><th>viewer cost</th></tr>
+<tr><td>before (23 Sept)</td><td class="n">0.400</td><td class="n">0.432</td><td class="n">0.372</td><td class="n">0.35</td><td class="n">2.50</td></tr>
+<tr><td>onset rule + no cap</td><td class="n">0.381</td><td class="n">0.390</td><td class="n">0.372</td><td class="n">0.42</td><td class="n">2.63</td></tr>
+<tr><td>difference, 95% CI</td><td class="n">−0.02 [−0.13, +0.08]</td><td class="n">−0.04 [−0.15, +0.06]</td><td class="n">0.00</td><td class="n">+0.07 [−0.02, +0.15]</td><td class="n">+0.13 [−0.27, +0.60]</td></tr>
+</table></div>
+<h3>Every sound that changed</h3>
+<div class="tbl"><table>
+<tr><th>sound</th><th>what happened</th><th>cause</th></tr>
+<tr><td>Bark, pet parrot clip</td><td><span class="tag">gained</span> start 0.72 s early → 0.3 s early</td><td>onset rule</td></tr>
+<tr><td>Alarm, chainsaw roof clip</td><td><span class="tag bad">lost</span> start held at 8.25 s, the sound began at 7.0</td><td>onset rule: it blocked a correct earlier move</td></tr>
+<tr><td>Church bell (importance 3)</td><td><span class="tag">gained</span> now shown</td><td>no cap</td></tr>
+<tr><td>Chainsaw, second onset</td><td><span class="tag bad">lost</span> one picture 0–16.75 s instead of two</td><td>no cap; the viewer does see it — the metric scores starts only</td></tr>
+</table></div>
+<p><b>Verdict (rule + its amendment, statistics reviewer):</b> <span class="tag warn">inconclusive</span> —
+the onset rule stays as a bug fix proven by the trace; its gain is reported as DEV-only. Picture ends
+now follow the detector: median on time, but <b>4 of 15 pictures stay more than 2 s after the sound</b>
+on TEST (1 of 16 on DEV) — the cost of removing the cap. The fix to test next, on DEV: end each picture
+where the detector's own score falls away, not at a fixed number of seconds.</p>
+</section>
+
+<section>
+<h2>Pictures: Adam's complaint, and what it led to</h2>
+<p>Adam: the pictures showed the <i>family tag</i> ("vehicle", a generic siren) instead of the sound
+heard, and ignored the scene (a car door in a car drawn as a house door; a rooster drawn as a generic bird).</p>
+<ul>
+ <li><b>Generator matters most:</b> across seeds, FLUX pictures were judged readable ~30 % of the time,
+  Qwen-Image ~48 % <span class="tag warn">one rater, name shown</span>.</li>
+ <li><b>V3</b> draws the most specific sound the detector heard (its own sub-labels, a tie → the common
+  parent). Reading its subjects before drawing showed it <b>invented</b> things the audio never established
+  ("a person swinging a sword" for a whoosh; "a police car" for a bare siren).</li>
+ <li><b>V3.1</b> lets the scene add a qualifier only ("car door", "farm vehicle"), never a new noun or a
+  person; a word-list from the AudioSet ontology refuses kinds the audio did not establish. No model is
+  asked to approve its own answer.</li>
+ <li><b>Measured blind:</b> Adam types what each picture shows, with no name under it; 172 cards, 10 repeats
+  for his own consistency; the answer sheet was committed before any answer. V3.1 is tested on 30 clips
+  its rules were not written from.</li>
+</ul>
+<p class="pending" id="pic-status">Round 2 ratings: in progress.</p>
+</section>
+
+<section>
+<h2>The automatic judge, rebuilt</h2>
+<p>Before: one model described the picture, and that model also wrote the picture's subject — circular.
+The reference sentence was written from the detector's own output — circular again. Now: Gemma-4-31B
+looks at the pictures directly, against a reference built only from the annotator's labels. It must pass
+two trust checks on 139 clips before its ranking is shown (does it track the annotator's cost; does it
+notice a known-wrong picture).</p>
+<p class="pending" id="judge-status">Trust check: running.</p>
+</section>
+
+<section>
+<h2>Every time TEST was read</h2>
+<div class="tbl"><table>
+<tr><th>when</th><th>what</th><th>what hung on it</th></tr>
+<tr><td class="n">22 Sept</td><td>the v4b4 headline row and the detector arm (PSED)</td><td>PSED not adopted</td></tr>
+<tr><td class="n">22 Sept</td><td>oracle-gate diagnostic (perfect detector)</td><td>nothing; showed the gate works with a perfect detector</td></tr>
+<tr><td class="n">22 Sept</td><td>family whitelist (DEV 61 % → TEST 30 %)</td><td>rejected</td></tr>
+<tr><td class="n">22–23 Sept</td><td>accidental look at veto rows; grid endpoints mildly TEST-informed</td><td>disclosed in the prereg</td></tr>
+<tr><td class="n">23 Sept</td><td>the single planned look (vetoes)</td><td>vetoes adopted</td></tr>
+<tr><td class="n">24 Sept</td><td>second deliberate look (onset rule + no cap)</td><td>inconclusive; cap stays off</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>What we do not claim</h2>
+<ul>
+ <li>That the gate beats "draw everything" on F1. It does not; it wins on precision and viewer cost.</li>
+ <li>That pictures beat silence on all 60 TEST clips (only on the 13 off-screen clips, +3.08 cost).</li>
+ <li>Any picture-quality number from more than one rater. Every gold number is one annotator.</li>
+ <li>The timing gain on TEST.</li>
+</ul>
+</section>
+
+<section>
+<h2>Questions for you</h2>
+<ol class="q">
+ <li>Accept "inconclusive" for the timing fix — kept as a bug fix, gain reported as DEV-only?</li>
+ <li>Headline framing: the gate's pre-registered primary (F1) is a tie; precision and viewer cost are
+  significant. Report F1 as primary and precision/cost as secondary, as registered?</li>
+ <li>One final reporting run — one frozen configuration, all 139 clips, three picture seeds, declared in
+  advance with no decision hanging on it — as the thesis's last look at TEST?</li>
+ <li>A second annotator on a subset (and one or more DHH raters for pictures): possible, and how many clips?</li>
+</ol>
+</section>
+<p class="note">Sources: docs/test_second_look.md, docs/NIGHT_REPORT_2026-09-25.md, docs/picture_v3_prereg.md,
+docs/panel_2026-09-25_*.md, docs/prereg_v4.md. Reviewed by a five-member panel over two rounds.</p>
+</div>

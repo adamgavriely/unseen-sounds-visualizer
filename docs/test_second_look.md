@@ -82,3 +82,13 @@ below the base, so no keep. The onset rule stays as a bug fix proven by the trac
 as **DEV, selected**. The cap stays off; its account is one chainsaw lost and one church bell gained.
 Limitation recorded: the clamp can block a correct earlier move when the anchor is late. TEST is not
 read again for this.
+
+**Displayed ends on the rendered TEST panel** (`timing_audit.py --render`, one-picture clips): median
+displayed end vs the sound's end +0.00 s, mean +1.25 s; **4 of 15 linger more than 2 s** (ice-cream
+truck +11.9 s, thriller basement +7.8 s, pet parrot +5.5 s — measured against the first sound, a bark
+follows —, live fire +3.2 s). DEV had 1 of 16. The base run's panels could not be measured (the audit
+found no one-picture composites under its render folder), so there is no base panel figure; the base's
+spec-level median end was -0.13 s. This is the cost side of removing the cap: with no cap, a picture ends
+when the detector's span ends, and on these clips the detector's span outlasts the annotated sound. The
+principled response is an end rule that follows the detector's own score (`AED_RELEASE`), tested on DEV
+as its own change — not a return of a fixed number of seconds, and not tuned on TEST.
