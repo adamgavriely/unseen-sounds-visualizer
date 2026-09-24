@@ -320,6 +320,97 @@ def phase_eval(a):
           f"{right('clip')}/{len(items)}")
 
 
+# ------------------------------------------------------------------------------------- eval2
+# The single declared redesign (round 3, docs/picture_quality_prereg.md, amendment). The forced
+# choice failed calibration (25/32 both) because a wrong picture wins whenever the target is the
+# least-bad option, and because offering the word lets a model make the pun no viewer makes. So:
+# an OPEN question with no sound named, in two lines, and the answer matched as TEXT by a sentence
+# embedder that is in neither the pipeline nor a judge row. Framing is not a language question and
+# goes to a no-model rule. Nothing below is tuned after seeing a number; there is no second redesign.
+EVAL2_PROMPT = ("This picture is shown to a viewer who cannot hear. Answer in exactly two lines."
+                + chr(10) +
+                "OBJECT: the main thing actually drawn, at most 4 words. Do not guess at anything "
+                "that is not visible. If the picture is blank, answer: nothing."
+                + chr(10) +
+                "SOUND: the sound it makes, at most 6 words. If nothing in it makes a sound, "
+                "answer: nothing.")
+MATCHER = "sentence-transformers/all-MiniLM-L6-v2"
+FRAME_MIN_HEIGHT = 0.25     # reviewer A: a subject shorter than a quarter of the frame is not a glance
+
+
+def framing_ok(path) -> bool:
+    from PIL import Image
+    a = np.asarray(Image.open(path).convert("RGB"), dtype=np.uint8).min(axis=2) < NEAR_WHITE
+    rows = np.where(a.any(axis=1))[0]
+    if not len(rows):
+        return False
+    return (rows[-1] - rows[0] + 1) / a.shape[0] >= FRAME_MIN_HEIGHT
+
+
+def _two_lines(text):
+    obj, snd = "", ""
+    for line in text.splitlines():
+        low = line.strip().lower()
+        if low.startswith("object:"):
+            obj = line.split(":", 1)[1].strip()
+        elif low.startswith("sound:"):
+            snd = line.split(":", 1)[1].strip()
+    return obj, snd
+
+
+def phase_eval2(a):
+    import torch
+    from PIL import Image
+    from sentence_transformers import SentenceTransformer
+    items = load_specs()
+    paths = picture_paths(a.arm, items)
+    from transformers import AutoProcessor
+    try:
+        from transformers import AutoModelForImageTextToText as _Auto
+    except ImportError:
+        from transformers import AutoModelForVision2Seq as _Auto
+    mid = "HuggingFaceM4/Idefics3-8B-Llama3"
+    ip = AutoProcessor.from_pretrained(mid)
+    im = _Auto.from_pretrained(mid, dtype=torch.bfloat16).to("cuda").eval()
+    st = SentenceTransformer(MATCHER, device="cuda")
+    res = {}
+    for it in items:
+        p = paths[it["i"]]
+        if not p.exists():
+            res[str(it["i"])] = {"pass": False, "why": "no picture"}
+            continue
+        msgs = [{"role": "user", "content": [{"type": "image"}, {"type": "text", "text": EVAL2_PROMPT}]}]
+        text = ip.apply_chat_template(msgs, add_generation_prompt=True)
+        inp = ip(text=text, images=[Image.open(p).convert("RGB")], return_tensors="pt").to("cuda")
+        with torch.no_grad():
+            out = im.generate(**inp, max_new_tokens=40, do_sample=False)
+        ans = ip.batch_decode(out[:, inp["input_ids"].shape[1]:], skip_special_tokens=True)[0].strip()
+        obj, snd = _two_lines(ans)
+        opts = [it["label"]] + it["decoys"] + ["nothing"]
+        e = st.encode([snd or "nothing"] + [f"the sound of {o}" if o != "nothing" else "nothing"
+                                            for o in opts], normalize_embeddings=True)
+        sims = e[1:] @ e[0]
+        pick = opts[int(np.argmax(sims))]
+        blank = ink(p) < INK_BAR
+        framed = framing_ok(p)
+        empty = (not obj) or obj.strip().lower().startswith("nothing")
+        ok = pick == it["label"] and not empty and not blank and framed
+        why = ("blank" if blank else "subject too small" if not framed else "no object named" if empty
+               else "" if pick == it["label"] else f"sound read as {pick}")
+        res[str(it["i"])] = {"pass": bool(ok), "object": obj, "sound": snd, "pick": pick,
+                             "blank": blank, "framed": framed, "why": why, "raw": ans}
+    RESULTS.mkdir(parents=True, exist_ok=True)
+    (RESULTS / f"eval2_{a.arm}.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+    print(f"{a.arm}: eval2 passes {sum(r['pass'] for r in res.values())}/{len(items)}")
+    ref = [it for it in items if it["hand_readable"] is not None]
+    if a.arm == "shipped":
+        agree = sum(1 for it in ref if res[str(it["i"])]["pass"] == it["hand_readable"])
+        miss = [f"{it['i']}:{it['hand']}({res[str(it['i'])]['why'] or 'pass'})" for it in ref
+                if res[str(it["i"])]["pass"] != it["hand_readable"]]
+        print(f"CALIBRATION (development set -- it has now seen these labels twice): "
+              f"{agree}/{len(ref)}  disagreements: {', '.join(miss)}")
+
+
 # ------------------------------------------------------------------------------------ report
 def phase_report(a):
     items = load_specs()
@@ -388,11 +479,11 @@ def phase_report(a):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", choices=["specs", "subjects", "draw", "eval", "report"])
+    ap.add_argument("phase", choices=["specs", "subjects", "draw", "eval", "eval2", "report"])
     ap.add_argument("--arm", default="")
     a = ap.parse_args()
     {"specs": phase_specs, "subjects": phase_subjects, "draw": phase_draw,
-     "eval": phase_eval, "report": phase_report}[a.phase](a)
+     "eval": phase_eval, "eval2": phase_eval2, "report": phase_report}[a.phase](a)
 
 
 if __name__ == "__main__":

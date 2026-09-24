@@ -78,3 +78,26 @@ the right sound is the least-bad option — the winged woman is closer to "Siren
 is the pre-registered outcome "no marker votes"; per the plan, the arms are judged by eye unless a
 redesigned marker passes the same check. The redesign (an open question — "what is making a sound in
 this picture?" — whose answer is then matched as text) went to the reviewers before being run.
+
+**Result 2 — what the new subject rules did, by eye** (arms drawn by job 30993606/30993607; A1 = old
+subjects with a new seed and the guard, A2 = new subjects):
+
+  * **Clearly fixed by the new rules (5):** the electric shaver is now a shaver, not a man with foam;
+    the "Siren" is now a red siren light, not the winged woman; the subway gets a modern subway train,
+    not steam wheels; the white cupboard on white is now a wooden cupboard; the keyboard now has a
+    keyboard.
+  * **Blank thunder → clouds.** "Sky rumbles" drew a white square three times in a row even with the
+    guard (so the guard dropped it); the new subject "Thunderclouds rumble loudly" draws a storm cloud
+    every time. Better than blank, but a cloud without lightning still does not say *thunder*.
+  * **Made worse (2):** the place leaked back into the picture — "Crowd cheering in palace" drew a
+    crowd in front of a palace, "Firecracker exploding on street" drew a street scene. The prompt
+    forbids scenery; the model added it anyway and the old strip rule kept it because removing the
+    place would have left a dangling "in"/"on".
+  * **Unchanged (3):** the steam train at a modern crossing (the frames were asked for the kind but
+    said "unknown"); the alarm clock at the crime scene (the frames show a bedroom, so this may even
+    be right); faint glass shards.
+  * **A surprise worth knowing:** several "bad pictures" were just an unlucky draw. With nothing
+    changed but the random seed, the cropped crowd became a full crowd and the lone finger became
+    hands on a keyboard. One sample per picture is noisy.
+  * **The scene step barely spoke:** asked about the setting for all 33 sounds, it named a kind only
+    once (the subway) and said "unknown" 32 times.
