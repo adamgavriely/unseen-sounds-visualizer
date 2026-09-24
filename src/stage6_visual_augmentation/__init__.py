@@ -405,6 +405,16 @@ def _retrieve(query: str, out_path: Path, size: Tuple[int, int]) -> Optional[dic
 # ----------------------------------------------------------------------
 # Stage 6 entry: produce one image per augmented sound
 # ----------------------------------------------------------------------
+def _is_blank(path: Path) -> bool:
+    """A generated picture with nothing on it: every pixel within a shade of every other."""
+    try:
+        import numpy as np
+        from PIL import Image
+        return float(np.asarray(Image.open(path).convert("L"), dtype="float32").std()) < 3.0
+    except Exception:
+        return False
+
+
 def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
                            backend: str = "retrieve", size=(1024, 1024),
                            model: str = "", device: str = "cpu") -> List[AugmentationSpec]:
@@ -435,6 +445,13 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
             prompt = plain_prompt(spec.subject or query)
             spec.image_prompt = prompt          # the exact string the generator saw
             if _diffusion_image(path, prompt, size, model=model, device=device):
+                # Two of the 33 pictures in the final DEV render came out a plain white square
+                # (2026-09-24). The panel changes, the viewer looks, and there is nothing there --
+                # the full price of a picture for none of the information. One retry at a
+                # different seed costs a few seconds and the failure is rare.
+                if _is_blank(path) and _diffusion_image(path, prompt, size, model=model,
+                                                        device=device):
+                    print(f"       [stage6] {spec.event_label}: the picture came out blank; redrew it")
                 spec.image_path = str(path)
                 spec.backend = "diffusion"
             else:
