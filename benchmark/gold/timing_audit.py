@@ -217,7 +217,7 @@ def main():
     if not a.skip_render:
         check_render(clips)
     check_panel(clips, specs)
-    check_spec(specs, out_json=_ROOT / "benchmark" / "gold" / "timing_audit_dev.json")
+    check_spec(specs, out_json=_ROOT / "benchmark" / "gold" / f"timing_audit_{specs.name}.json")
     check_display(clips, specs)
 
 

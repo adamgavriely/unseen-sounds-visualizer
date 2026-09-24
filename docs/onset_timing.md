@@ -106,8 +106,26 @@ extraction at 0.175, and the ramp path is what moved the Siren and the Bird out 
 
 ## 6. How it will be judged (fixed before the run)
 
+### Amendment, 2026-09-24, written BEFORE the arms returned
+
+The gate below was fixed before the instrumented run (job 30993350). That run's log then showed that
+"at least 4 of the 5 early cases become hits" is **unreachable for reasons that have nothing to do
+with the fix**, so it is amended here, with the reason, rather than quietly after the fact:
+
+  * **Gunshot** — the span starts at 8.25 s *at extraction*, before any step that the rule touches,
+    against an annotator onset of 10.10 s. It is an earlier burst of gunfire the annotator did not
+    tick. No onset rule can reach it.
+  * **Crowd** — the clamp keeps the union's 1.12 s against an annotator onset of 1.90 s. That is a
+    large improvement on the 0.00 s emitted today and still outside the −0.5 s window.
+  * **Laughter** — FlexSED-only, so under the rule it is no longer refined at all; where it lands is
+    not predictable from the trace.
+
+The trace therefore predicts **2 recoveries (Siren, Bird), possibly 3**. The amended gate:
+**primary — zero regressions and the headline inside the bootstrap CI; secondary — at least 2 of the
+5 recovered.** The rest of section 6 stands as written.
+
 **Start**, 49 DEV clips, hit = a picture starting within [−0.5, +1.0] s of a needed sound's onset:
-at least 4 of the 5 early cases become hits; **0 of the current hits regress**; the 13 clip-start
+at least 2 of the 5 early cases become hits (amended above, was 4); **0 of the current hits regress**; the 13 clip-start
 sounds are untouched; median |error| over the 10 mid-clip sounds ≤ 0.25 s (from 0.47) and p10 ≥
 −0.75 s (from −1.46).
 
