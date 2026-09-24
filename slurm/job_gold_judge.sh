@@ -14,7 +14,7 @@
 #   TAG=v4b4 V4=59 sbatch slurm/job_gold_judge.sh      (after every render shard of the tag is done)
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"; mkdir -p logs benchmark/.chain
-TAG="${TAG:-v4b4}"; V4="${V4:-59}"; JUDGE="${JUDGE:-mistralai/Mistral-7B-Instruct-v0.3}"
+TAG="${TAG:-v4b4}"; V4="${V4:-59}"; JUDGE="${JUDGE:-google/gemma-4-31B-it}"   # Gemma: the only judge that passed both trust checks
 CLIP_DIR="${CLIP_DIR:-data/input/gold139/all}"
 DESC_STAGES="$V4"; [[ "$DESC_STAGES" == *5* ]] || DESC_STAGES="${DESC_STAGES}5"
 STAMP=benchmark/.chain/gold_$TAG; mkdir -p "$STAMP"

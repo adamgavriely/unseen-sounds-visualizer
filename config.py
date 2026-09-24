@@ -263,7 +263,10 @@ FPS = 25
 # The judge MUST be a different model from the describing VLM: a model scoring its
 # own descriptions measures self-consistency, not quality. Mistral-7B-Instruct is a
 # different family from Qwen2.5-VL, text-only, and fits alongside it on one GPU.
-JUDGE_MODEL = "mistralai/Mistral-7B-Instruct-v0.3"
+# 2026-09-24: Gemma-4-31B is the only judge that passes both trust checks against Adam's labels
+# (tracks his viewer cost AND separates clips with a known-wrong picture, 139 clips); Mistral-7B fails
+# the second even on 139 (docs/NIGHT_REPORT_2026-09-24.md, Result 7). Adam: "if Gemma is stronger use it".
+JUDGE_MODEL = "google/gemma-4-31B-it"
 
 # ---------------------------------------------------------------------------------------
 # v4 (docs/prereg_v4.md): the SOTA configuration, applied one stage at a time so that each
