@@ -87,9 +87,20 @@ TEST clips already read on 22 Sept, so it is not a new look at the current syste
     unseen 33   ours 1.27   vs blind -0.15 [-0.61, +0.27]     vs caption -0.21 [-0.61, +0.15]
 
 Caveats: captions are judged as text tags naming the sound, pictures as pixels the judge must
-recognise; at most 4 pictures per clip are shown to the judge. B3 (self-agreement, 20 clips, sampling
-on) and the judge on the current DEV system (`dev_monocap_v31`, all three arms at the new timing) are
-running.
+recognise; at most 4 pictures per clip are shown to the judge.
+
+**B3, self-agreement** (`judge_direct_v4b4_repeat.json`: 20 clips x 3 systems re-judged with sampling on,
+temperature 1.0): 59 of 60 scores identical, 1 off by one point.
+
+**The current DEV system** (`judge_direct_dev_monocap_v31.json`; all three arms at the new timing, 49
+clips; B1/B2 pass for all three arms here too, e.g. ours rho -0.71 [-0.87, -0.50], gap +0.98 [+0.24, +1.68]):
+
+    DEV 49      ours 2.29   vs blind +0.20 [-0.18, +0.61]     vs caption +0.06 [-0.31, +0.39]
+    seen 18     ours 3.11   vs blind +1.00 [+0.33, +1.67] *   vs caption +0.56 [0.00, +1.11]
+    unseen 14   ours 0.93   vs blind -0.50 [-1.36, +0.29]     vs caption -0.50 [-1.36, +0.29]
+
+A tie with both baselines overall; the gate's value is on the clips whose source is on screen, and the
+pictures are weakest on the off-screen clips the project exists for.
 
 ## 8. Two controls
 
