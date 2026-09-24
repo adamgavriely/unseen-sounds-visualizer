@@ -24,6 +24,8 @@ import json
 from pathlib import Path
 from typing import Tuple
 
+import config as _CFG
+
 import numpy as np
 
 REPO = "WeiChihChen/BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2"
@@ -176,6 +178,13 @@ def occlusion_onset(audio, sr, window_start: float, class_idx: int, device: str 
     i = int(np.argmax(below))
     i50 = int(np.argmax(Lm < L0 - RAMP_FRAC * span)) if (Lm < L0 - RAMP_FRAC * span).any() else i
     ramp = (i50 - i) * CUT > RAMP_SEC
+    if i <= 1:
+        # The evidence is already gone at the first cut, which means the sound fills the window --
+        # the window cannot say where inside it the sound began. Returning `window_start` (the
+        # anchor minus 1.5 s) asserted an onset a second and a half before anything was heard, and
+        # that is the single largest timing error on the DEV clips (docs/onset_timing.md).
+        if bool(getattr(_CFG, "ONSET_MONOTONE", False)):
+            return (None, False, L) if debug else (None, False)
     onset = window_start if i <= 1 else window_start + (i - 0.5) * CUT
     if debug:
         return onset, ramp, L

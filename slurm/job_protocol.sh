@@ -68,6 +68,9 @@ FAMBARS="${FAMBARS:-}"   # amendment 11: per-family FlexSED bars
 PVETO="${PVETO:-}"       # amendment 16: PANNs veto on FlexSED-only spans
 VETO="${VETO:-}"         # cross-detector veto tau (amendment 10)
 BAR="${BAR:-}"           # display bar override (amendment 6, v4b5: 0.15); AED bar follows at BAR/2
+MONO="${MONO:-}"         # 1 = no stage may move an onset earlier than its anchor (docs/onset_timing.md)
+MSTART="${MSTART:-}"     # "strongest": a chained burst starts at its strongest firing, not its earliest
+MAXSPAN="${MAXSPAN:-}"   # "none" turns the eight-second picture cap off; a number sets it
 SYSTEMS="${SYSTEMS:-}"   # e.g. "proposed" or "blind_a2i audio_caption": one system per job when sharding
 V4="${V4:-}"          # v4 stages to apply (docs/prereg_v4.md), e.g. "4", "45", "23456"
 echo "[cfg] phase=$PHASE limit=${LIMIT:-all} gen=$GEN tag=${TAG:-<main>} judge=${JUDGE:-<config>}"
@@ -111,6 +114,13 @@ if "${PVETO}":
     config.PANNS_VETO = float("${PVETO}"); print("[v4] PANNS_VETO", config.PANNS_VETO, flush=True)
 if "${VETO}":                          # amendment 10: drop a label the second detector never hears
     config.FLEXSED_VETO = float("${VETO}"); print("[v4] FLEXSED_VETO", config.FLEXSED_VETO, flush=True)
+if "${MONO}":                          # 2026-09-24: the monotone-onset rule
+    config.ONSET_MONOTONE = True; print("[v4] ONSET_MONOTONE", config.ONSET_MONOTONE, flush=True)
+if "${MSTART}":
+    config.MERGE_START = "${MSTART}"; print("[v4] MERGE_START", config.MERGE_START, flush=True)
+if "${MAXSPAN}":
+    config.MAX_SPAN = None if "${MAXSPAN}".lower() == "none" else float("${MAXSPAN}")
+    print("[v4] MAX_SPAN", config.MAX_SPAN, flush=True)
 if "${PSED_BAR}":                      # v4ab2: PSED's own operating point (benchmark/psed_f1_bar.json)
     config.PSED_BAR = float("${PSED_BAR}"); print("[v4] PSED_BAR", config.PSED_BAR, flush=True)
 # GEN_MODEL deliberately NOT overridden: this job used to pin SDXL-base here, which

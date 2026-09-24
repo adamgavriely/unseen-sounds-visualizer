@@ -319,6 +319,11 @@ def search_query(label: str) -> str:
     return QUERY_HINTS.get(label, label)
 
 
+def _start_rule() -> str:
+    import config
+    return str(getattr(config, "MERGE_START", "earliest"))
+
+
 def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEvent]:
     """One event per label, carrying every separate BURST of that sound.
 
@@ -342,6 +347,11 @@ def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEven
         for e in firings:
             if bursts and e.start - bursts[-1][1] <= gap:
                 bursts[-1][1] = max(bursts[-1][1], e.end)
+                # a burst starts where its STRONGEST firing starts, not where its earliest one
+                # does: chaining firings a second apart made the Gunshot burst start at 8.25 for a
+                # shot the annotator marked at 10.10 (docs/onset_timing.md). Off by default.
+                if _start_rule() == "strongest" and e.confidence > bursts[-1][2]:
+                    bursts[-1][0] = e.start
                 bursts[-1][2] = max(bursts[-1][2], e.confidence)
             else:
                 bursts.append([e.start, e.end, e.confidence])

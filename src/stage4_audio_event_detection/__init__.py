@@ -138,7 +138,7 @@ def plot_timeline(framewise, times, labels, out_png: Path,
     plt.close(fig)
 
 
-def _refine_onsets_cam(wav_path: Path, events, labels, device: str):
+def _refine_onsets_cam(wav_path: Path, events, labels, device: str, skip_ids=None):
     """Move each BEATs event's start to where silencing the window's opening starts to
     cost the class its evidence (beats_infer.occlusion_onset). The sliding-window stamp
     is within about a second; this is within a cut (80 ms) for abrupt sounds and marks
@@ -150,10 +150,17 @@ def _refine_onsets_cam(wav_path: Path, events, labels, device: str):
     from src.stage4_audio_event_detection import beats_infer as B
     audio, _ = librosa.load(str(wav_path), sr=B.SR, mono=True)
     idx = {l: i for i, l in enumerate(labels)}
+    mono = bool(getattr(config, "ONSET_MONOTONE", False))
+    skip_ids = skip_ids or set()
     out = []
     for e in events:
         c = idx.get(e.label)
         if c is None:
+            out.append(e); continue
+        # A span FlexSED raised is already frame-level (25 fps). Treating its start as a BEATs
+        # sliding-window stamp and searching [start-1.5, start+0.5] is what produced the Siren at
+        # 1.10 (= 2.60 - 1.50) and the Applause at 0.00 (= max(0, 1.12 - 1.50)).
+        if mono and id(e) in skip_ids:
             out.append(e); continue
         # the first window that fired ends STAMP_OFFSET after the stamp
         w0 = e.start + B.STAMP_OFFSET - B.WINDOW
@@ -162,6 +169,8 @@ def _refine_onsets_cam(wav_path: Path, events, labels, device: str):
         except Exception as ex:
             print(f"       [stage4] onset refinement failed for {e.label}: {ex}")
             t = None
+        if mono and t is not None:
+            t = min(max(float(t), e.start), e.end)      # sharpen inside the anchor, never before it
         if t is not None and t < e.end:
             e = AudioEvent(e.label, max(0.0, float(t)), e.end, e.confidence)
         out.append(e)
@@ -199,6 +208,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
     events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low)
     TRACE.clear()
     trace("extract", events, backend)
+    flex_ids = set()          # spans FlexSED raised alone: frame-level already, never re-anchored
     # amendment 8 (2026-09-22): the open-vocabulary second detector, added as a UNION with its own
     # bar -- BEATs is deaf to sounds that speech or music masks, FlexSED is asked one label at a
     # time and hears them (docs/GOLD_RERUN_2026-09-22.md sec 10). Both bars are set on Adam's DEV
@@ -247,6 +257,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
             trace("flexsed_raw", fev, "FlexSED spans as extracted")
             events = events + fresh
+            flex_ids |= {id(e) for e in fresh}
             trace("union", events, "after the twin rule kept the earlier start")
             # Amendment 10 (2026-09-23): the second detector also carries the DISagreement. Where
             # BEATs names a family FlexSED never hears anywhere in the clip, the taxonomy shows the
@@ -294,7 +305,8 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     trace("veto", events, "after the cross-detector and PANNs vetoes")
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):
-        events = _refine_onsets_cam(Path(wav_path), events, labels, device)
+        events = _refine_onsets_cam(Path(wav_path), events, labels, device,
+                                    skip_ids=flex_ids)
         trace("refine", events, "after occlusion onset refinement")
     cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/prereg_v4.md)
     if cap:

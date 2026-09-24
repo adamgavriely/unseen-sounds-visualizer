@@ -76,6 +76,18 @@ AED_MODEL = "beats"
 # 80 ms for abrupt sounds. (A CAM on BEATs' tokens was tried first and cannot work: the
 # model was trained only through the token mean, so its tokens are not local.)
 ONSET_CAM = True
+# 2026-09-24, docs/onset_timing.md. Adam watched the rendered clips and found the picture out of
+# step with its sound; the render and the panel are exact, so the error is the onset. Every stage
+# that can move a span moves it EARLIER and none ever moves one later, while the metric forgives
+# late twice as much as early. The rule all three reviewers signed: a later stage may sharpen an
+# onset inside its own evidence window, extend an end, or merge spans, but may never produce a
+# start earlier than the anchor it was given. Off by default until the DEV numbers are in.
+ONSET_MONOTONE = False
+# "earliest" (as shipped) or "strongest": where a burst of chained firings is deemed to start.
+MERGE_START = "earliest"
+# End of a span: the last frame at or above this fraction of the display bar after the peak. None
+# keeps the shipped behaviour (the span ends where hysteresis ends).
+AED_RELEASE = None
 # Hysteresis: a sound must reach DISPLAY_THRESHOLD to count, and then extends through any
 # contiguous stretch above this fraction of it. Standard SED post-processing; it is what
 # lets an approaching helicopter start when the ear hears it, not when it gets loud.
