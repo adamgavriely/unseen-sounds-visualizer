@@ -48,16 +48,25 @@ def main():
         at = min(len(order), k + len(pool) // 3 + rng.randint(0, len(pool) // 3))
         order.insert(at, pool[k])
 
-    cards, key = [], {}
+    v3 = {}
+    if (bench / "subjects_V3.json").exists():
+        v3 = json.loads((bench / "subjects_V3.json").read_text(encoding="utf-8"))
+    cards, sound_key, arm_key = [], {}, {}
     for n, (arm, it) in enumerate(order, 1):
         code = f"P{n:03d}"
         Image.open(src(arm, it)).convert("RGB").resize((384, 384)).save(out / "img" / f"{code}.jpg",
                                                                         quality=86)
         cards.append(code)
-        key[code] = {"arm": arm, "i": it["i"], "clip": it["clip"], "family": it["label"],
-                     "detail": it.get("detail", ""), "start": it["start"]}
-    (out.parent / f"{out.name}_KEY_do_not_open_before_rating.json").write_text(
-        json.dumps(key, indent=1), encoding="utf-8")
+        # two keys, so whoever scores Adam's answers sees the sound but never which version drew it
+        # (P4, P5, round 3): the SOUND key is opened for scoring, the ARM key only after scoring
+        sound_key[code] = {"i": it["i"], "clip": it["clip"], "family": it["label"],
+                           "source": v3.get(str(it["i"]), {}).get("source", it["label"]),
+                           "detail": it.get("detail", ""), "start": it["start"]}
+        arm_key[code] = {"arm": arm, "i": it["i"]}
+    (out.parent / f"{out.name}_SOUND_KEY_open_for_scoring.json").write_text(
+        json.dumps(sound_key, indent=1), encoding="utf-8")
+    (out.parent / f"{out.name}_ARM_KEY_do_not_open_until_scored.json").write_text(
+        json.dumps(arm_key, indent=1), encoding="utf-8")
     (out / "index.html").write_text(page(cards), encoding="utf-8")
     print(f"{len(cards)} cards ({len(pool)} pictures + {len(order) - len(pool)} repeats) -> {out / 'index.html'}")
 

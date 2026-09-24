@@ -375,7 +375,7 @@ def _common_parent(a: str, b: str) -> str:
     return ""
 
 
-def choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float]) -> str:
+def choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float], explain: bool = False):
     """The most specific sound the detector really heard in one burst of a family (PICTURE_V3).
 
     Adam, 2026-09-24: pictures were drawn from the family tag -- a bus drawn as a car, a horn drawn
@@ -394,6 +394,21 @@ def choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float]) -
       * nothing qualifies -> the family itself.
     Both numbers are fixed a priori (not tuned on the clips the rules were written from).
     """
+    out = _choose_source(raw, fam, burst)
+    if not explain:
+        return out
+    a, b = burst
+    top = sorted(((e.confidence, e.label) for e in raw if canonical(e.label) == fam
+                  and e.start <= b and e.end >= a), reverse=True)
+    seen, cands = set(), []
+    for c, lab in top:
+        if lab not in seen:
+            seen.add(lab)
+            cands.append([lab, round(float(c), 3)])
+    return out, cands[:4]
+
+
+def _choose_source(raw: List[AudioEvent], fam: str, burst: Tuple[float, float]) -> str:
     import config
     floor = float(getattr(config, "SOURCE_REL_FLOOR", 0.5))
     margin = float(getattr(config, "SOURCE_TIE_MARGIN", 0.8))

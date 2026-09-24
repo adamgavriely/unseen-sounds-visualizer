@@ -303,6 +303,9 @@ V4 = {
     "9": {"LABEL_FILTER": "depictable", "MAX_SPAN": 8.0},
     # "0": the BEATs union with FlexSED (amendment 8), the adopted detector of row v4b6
     "0": {"FLEXSED_BAR": 0.8},
+    # "1": PICTURE_V3 (2026-09-24, docs/picture_v3_prereg.md) -- the specific source, the v3 depiction
+    # prompt and the scenery negative. Changes what is drawn, never whether (checked on DEV).
+    "1": {"PICTURE_V3": True},
 }
 # Amendment 8 (2026-09-22): the second, open-vocabulary detector. 0 = off (every row up to v4b5);
 # the adopted union row v4b6 sets 0.8, chosen on Adam's DEV half (onset-recall 0.45 -> 0.59 at

@@ -156,7 +156,7 @@ def phase_subjects_v3(a):
     for it in items:
         ev = [AudioEvent(e["label"], e["start"], e["end"], e["confidence"])
               for e in json.loads((work / it["clip"] / "events.json").read_text(encoding="utf-8"))]
-        src = choose_source(ev, canonical(it["label"]), (it["start"], it["end"]))
+        src, cands = choose_source(ev, canonical(it["label"]), (it["start"], it["end"]), explain=True)
         if it["clip"] not in places:            # only for the strip backstops; v3 never sees it
             frames = _sample_frames(clip_path(it["clip"]), 4)
             places[it["clip"]] = R._clean_phrase(R._ask(mdl, proc, R.PLACE_PROMPT, images=frames,
@@ -165,7 +165,8 @@ def phase_subjects_v3(a):
         class _Spec:                            # the fields _depict_v3 reads
             event_label, detail, source = it["label"], it["detail"], src
         phrase = R._depict_v3(_Spec, places[it["clip"]], mdl, proc) or (src + " making its sound")
-        out[str(it["i"])] = {"subject": phrase, "source": src, "place": places[it["clip"]]}
+        out[str(it["i"])] = {"subject": phrase, "source": src, "place": places[it["clip"]],
+                             "candidates": cands}
         print(f"   {it['i']:2d} {it['label'][:14]:14s} [{src[:24]:24s}] {it['subject'][:28]:28s} -> {phrase}",
               flush=True)
     (BENCH / "subjects_V3.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
@@ -408,11 +409,12 @@ def framing_ok(path) -> bool:
 def _two_lines(text):
     obj, snd = "", ""
     for line in text.splitlines():
-        low = line.strip().lower()
+        clean = line.strip().lstrip("*-#• ").replace("**", "")   # GLM answers in markdown (P3, round 3)
+        low = clean.lower()
         if low.startswith("object:"):
-            obj = line.split(":", 1)[1].strip()
+            obj = clean.split(":", 1)[1].strip()
         elif low.startswith("sound:"):
-            snd = line.split(":", 1)[1].strip()
+            snd = clean.split(":", 1)[1].strip()
     return obj, snd
 
 

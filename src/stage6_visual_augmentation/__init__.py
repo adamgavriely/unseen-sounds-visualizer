@@ -306,7 +306,10 @@ def negative_for(subject: str) -> str:
     words = {w.strip(",.").lower() for w in subject.split()}
     human = words & {"people", "crowd", "audience", "person", "man", "woman", "child", "children",
                      "baby", "hands", "clapping", "laughing", "cheering", "applause", "laughter"}
-    keep = [n for n in NEGATIVE_V3 if not (set(n.split()) & words)]
+    weather = words & {"cloud", "clouds", "lightning", "rain", "raining", "storm", "thunder",
+                       "thunderstorm", "wind", "snow", "hail"}
+    keep = [n for n in NEGATIVE_V3 if not (set(n.split()) & words)
+            and not (weather and n in ("sky background", "landscape"))]
     return ", ".join(keep)
 
 

@@ -1218,7 +1218,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     for spec in active:
         if v3:
             phrase = _depict_v3(spec, place, mdl, proc) or (
-                (getattr(spec, "source", "") or spec.event_label) + " making its sound")
+                (getattr(spec, "source", "") or spec.event_label).split(",")[0].split("(")[0].strip()
+                + " making its sound")
             spec.subject = phrase
             spec.reason += " | depiction (v3, source " + (getattr(spec, "source", "") or "-") + "): " + phrase
             spec.image_prompt = spec.subject
