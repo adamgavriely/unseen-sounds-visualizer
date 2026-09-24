@@ -46,3 +46,25 @@ one by one:
 So the scene is not *ignored* by accident; three deliberate rules squeeze it out. The distinction a
 fix must keep is: the **setting** (a palace, a forest) stays out, but the **kind of the thing making
 the sound** (a subway train, a burglar alarm) is exactly what a viewer needs.
+
+**Pictures — the plan the reviewers settled** (two rounds, three reviewers;
+`docs/picture_quality_prereg.md`, committed before any picture was drawn):
+
+  * **Scene context, done the safe way.** The frames are now *always* asked which kind of thing is
+    making the sound, and asked about the **setting and era** — because the gate already decided the
+    source is off screen, so what the frames show is the place, and the place is what separates a
+    steam locomotive from a subway train. The background stays white. All three reviewers rejected
+    feeding the frames to the picture model itself: the frames contain everything *except* the thing
+    to draw, and the picture model would paint the scene the viewer already has.
+  * **A new instruction for what to draw**: the object that makes the sound first; never the sky or a
+    body part on its own; a sound name that means two things gets the word that fixes it. No example
+    sentences in the prompt (Adam's earlier rule — examples leak).
+  * **A blank-picture guard**: too little ink → redraw twice → otherwise drop, counted as a failure.
+  * **Qwen-Image-2512** (already on the cluster) as a separate arm, same subjects, same seeds.
+  * **Adam's "ask a model what was drawn"**: kept as a *measurement*, not a redraw loop. All three
+    reviewers warned that "redraw until the checker says yes" keeps exactly the pictures the checker
+    is lenient on. So two independent markers (Idefics3 and CLIP-L — neither used anywhere in the
+    pipeline, and not sharing a vision tower) mark every picture, and each must first agree with my
+    hand verdicts on at least 26 of 32 pictures or it does not get a vote.
+
+Jobs: 30993605 (check the markers), 30993606 (arms A0, A1), 30993607 (new subjects, arms A2, A3).
