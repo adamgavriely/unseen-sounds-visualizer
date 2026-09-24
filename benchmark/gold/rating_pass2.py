@@ -49,7 +49,10 @@ def main():
         f = out / "frame" / f"s{it['i']:02d}.jpg"
         if not f.exists():
             subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{it['start'] + 1.0:.2f}", "-i",
-                            str(clip_path(it["clip"])), "-frames:v", "1", "-vf", "scale=512:-2", str(f)])
+                            str(clip_path(it["clip"])), "-frames:v", "1", "-vf", "scale=512:-2,format=yuvj420p", str(f)])
+            if not f.exists():                     # the sound starts within a second of the end: take the last frame
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-sseof", "-0.5", "-i", str(clip_path(it["clip"])),
+                                "-frames:v", "1", "-vf", "scale=512:-2,format=yuvj420p", str(f)])
     rng = random.Random(25092026)
     pool = [(arm, it) for arm in a.arms.split(",") for it in specs if src(arm, it).exists()]
     rng.shuffle(pool)
