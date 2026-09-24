@@ -53,3 +53,32 @@ which one makes the result significant is exactly the forking path he objects to
 concerns the onset rule only. If removing the cap costs sounds, that is reported as the cost of a
 principled change, and the fix is a principled end rule that follows each sound (not a fixed number of
 seconds), tested on DEV as its own change.
+
+## Result (read 2026-09-24 ~21:00, after the reproduction check passed)
+
+`test_final_v30` (base) vs `test_monocap_v31` (onset rule on, cap off), 60 TEST clips, paired clip
+bootstrap (2000, seed 0), `arm_compare.py --subset test --boot`:
+
+    F1 0.400 -> 0.381   dF1 -0.019 [-0.127, +0.082]   dP -0.042 [-0.146, +0.061]   dR +0.000
+    dFA/clip +0.067 [-0.017, +0.150]   dcost +0.133 [-0.267, +0.600]   recovered 2, lost 2
+    median end error (specs) -0.13 s -> -0.05 s
+
+Every change, attributed by trace (mechanical, but done after the numbers were seen):
+
+| sound | change | cause |
+|---|---|---|
+| Alarm at 7.0 s (chainsaw roof) | lost: start 6.95 -> 8.25 | onset rule: the clamp blocked a correct earlier move (the union anchor was late) |
+| Bark at 16.3 s (pet parrot) | gained: start 15.58 -> 16.00 | onset rule |
+| Chainsaw at 10.3 s (chainsaw roof) | lost: two pictures [0.06, 8.06] + [10.3, …] became one [0.06, 16.75] | cap (8.06 = start + 8.00); the picture is on screen through the whole sound, the start-only metric misses the second onset |
+| Bell, importance 3 (bell_kazansky) | gained: silenced by the visibility vote before, shown now | cap (mirror of the DEV bell loss) |
+
+The +4 wrong pictures (five clips gain a later same-family picture) cannot be split between the two
+changes and are the run's cost. Hardware: base on A100, new on L40S with CPU offload; the gate differs
+on 1 of 60 clips (the bell).
+
+**Verdict under the rule and its amendment (panel P2): INCONCLUSIVE.** Onset-attributed: 1 lost, 1
+gained — not "more than one lost", and the F1 interval contains zero, so no revert; the F1 point is
+below the base, so no keep. The onset rule stays as a bug fix proven by the trace; its gain is reported
+as **DEV, selected**. The cap stays off; its account is one chainsaw lost and one church bell gained.
+Limitation recorded: the clamp can block a correct earlier move when the anchor is late. TEST is not
+read again for this.

@@ -77,9 +77,11 @@ def main():
     ap.add_argument("--base", required=True)
     ap.add_argument("--arms", nargs="+", default=[])
     ap.add_argument("--identical", default="", help="tagA,tagB: assert the two produced equal starts")
+    ap.add_argument("--subset", default="dev", help="gold subset: dev (default) or test")
+    ap.add_argument("--boot", action="store_true", help="paired clip bootstrap (2000 draws, seed 0) vs the base")
     a = ap.parse_args()
     gold = S.load_gold([GOLD])
-    dev = set(S.subsets_of(gold)["dev"])
+    dev = set(S.subsets_of(gold)[a.subset])
     gold = {k: v for k, v in gold.items() if k in dev}
 
     if a.identical:
@@ -126,6 +128,29 @@ def main():
             print(f"        LOST  {k[0][:28]:28s} {k[1][:16]:16s} at {k[2]}")
         for k in gained:
             print(f"        gained {k[0][:28]:28s} {k[1][:16]:16s} at {k[2]}")
+
+    if a.boot:
+        print("\npaired clip bootstrap against the base (2000 draws, seed 0): arm minus base")
+        by_base = {r["clip"]: r for r in base_rows}
+        for tag in a.arms:
+            if not root_of(tag).exists():
+                continue
+            rows, _ = scored(tag, gold)
+            by_arm = {r["clip"]: r for r in rows}
+            clips = sorted(set(by_base) & set(by_arm))
+            B = [by_base[c] for c in clips]
+            A = [by_arm[c] for c in clips]
+            stats = {"F1": lambda rs: S.aggregate(rs)["F1"], "P": lambda rs: S.aggregate(rs)["P"],
+                     "R": lambda rs: S.aggregate(rs)["R"], "FA/clip": S.fa_per_clip, "cost": S.viewer_cost}
+            rng = np.random.default_rng(0)
+            idx = [rng.integers(0, len(clips), len(clips)) for _ in range(2000)]
+            print(f"   {tag} ({len(clips)} clips)")
+            for name, fn in stats.items():
+                d = fn(A) - fn(B)
+                bs = np.array([fn([A[i] for i in ix]) - fn([B[i] for i in ix]) for ix in idx])
+                lo, hi = np.percentile(bs, [2.5, 97.5])
+                flag = "*" if lo > 0 or hi < 0 else " "
+                print(f"      d{name:8s} {d:+.3f}  [{lo:+.3f}, {hi:+.3f}] {flag}")
 
     print("\nthe five named early cases: our start minus the annotator's")
     print(f"   {'clip / family':38s} {'base':>7s}" + "".join(f" {t[:11]:>12s}" for t in a.arms))
