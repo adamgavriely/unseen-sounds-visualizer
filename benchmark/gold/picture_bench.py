@@ -173,9 +173,54 @@ def phase_subjects_v3(a):
     print("->", BENCH / "subjects_V3.json")
 
 
+def phase_subjects_v31(a):
+    """V3.1 (PICTURE_SCENE) subjects: V3's source, then RESOLVE on six frames over the drawn burst (the
+    burst the source was chosen on, P1 round 2) with the clip's place, then the V3.1 depiction and the
+    list guard. `fired` = every raw firing of the family in the burst at the detector's bar."""
+    config.use_v4("590")
+    config.DEVICE = "cuda"
+    config.PICTURE_V3 = True
+    config.PICTURE_SCENE = True
+    from src.types import AudioEvent
+    from src.labels import choose_source, canonical
+    from src.stage2_video_understanding import _sample_frames, _sample_frames_at
+    from src.stage5_cross_modal_analysis import reason as R
+    items = load_specs()
+    work = _ROOT / "data" / "work" / f"protocol_proposed_{TAG}"
+    mdl, proc = R._load(config.VLM_MODEL, "cuda")
+    out, places = {}, {}
+    bar = float(getattr(config, "AED_THRESHOLD", 0.175))
+    for it in items:
+        ev = [AudioEvent(e["label"], e["start"], e["end"], e["confidence"])
+              for e in json.loads((work / it["clip"] / "events.json").read_text(encoding="utf-8"))]
+        fam = canonical(it["label"])
+        a0, b0 = it["start"], it["end"]
+        src, cands = choose_source(ev, fam, (a0, b0), explain=True)
+        fired = sorted({e.label for e in ev if canonical(e.label) == fam and e.start <= b0 and e.end >= a0
+                        and e.confidence >= bar})
+        vp = clip_path(it["clip"])
+        if it["clip"] not in places:
+            places[it["clip"]] = R._clean_phrase(R._ask(mdl, proc, R.PLACE_PROMPT, images=_sample_frames(vp, 4),
+                                                        max_new=16), max_words=4) or "an unknown place"
+        lo, hi = a0 - 1.0, min(b0, a0 + 5.0) + 1.0
+        frames = _sample_frames_at(vp, [lo + (hi - lo) * k / 5 for k in range(6)])
+
+        class _Spec:
+            event_label, detail, source = it["label"], it["detail"], src
+        phrase = R._depict_v31(_Spec, places[it["clip"]], frames, fired, mdl, proc)
+        out[str(it["i"])] = {"subject": phrase, "source": src, "place": places[it["clip"]],
+                             "candidates": cands, "fired": fired}
+        print(f"   {it['i']:2d} {it['label'][:14]:14s} [{src[:24]:24s}] {it['subject'][:28]:28s} -> {phrase}",
+              flush=True)
+    (BENCH / "subjects_V31.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print("->", BENCH / "subjects_V31.json")
+
+
 def phase_subjects(a):
     if a.arm == "V3":
         return phase_subjects_v3(a)
+    if a.arm == "V31":
+        return phase_subjects_v31(a)
     """Re-run ONLY the depiction step of stage 5, as reason.decide_subjects does it, with the new
     rules switched on. The gate is not re-run: every arm draws the same 33 sounds."""
     config.use_v4("590")
@@ -245,6 +290,7 @@ ARMS = {
     "A3b": {"subjects": "A2b", "guard": True, "gen": "qwen"},
     "N": {"subjects": "V3", "guard": True, "gen": "qwen", "negative": True},
     "N0": {"subjects": "shipped", "guard": True, "gen": "qwen", "negative": True},
+    "N1": {"subjects": "V31", "guard": True, "gen": "qwen", "negative": True},
 }
 # Reviewer A, round 4: a full-frame picture breaks the white-background contract the other way (a
 # dark sky for thunder is a scene, not an object). Added AFTER seeing A3, and reported as such.
@@ -514,7 +560,8 @@ def phase_check(a):
             print(f"   {arm} {it['i']:2d} {it['label'][:14]:14s} OBJECT {obj[:30]:30s} SOUND {snd[:34]}",
                   flush=True)
     RESULTS.mkdir(parents=True, exist_ok=True)
-    (RESULTS / f"check_{TAG}.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
+    (RESULTS / f"check_{TAG}__{a.arm.replace(',', '+')}.json").write_text(json.dumps(res, indent=1),
+                                                                        encoding="utf-8")
 
 
 # ------------------------------------------------------------------------------------ report
