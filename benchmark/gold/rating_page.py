@@ -22,11 +22,30 @@ from pathlib import Path
 
 from PIL import Image
 
-PART1 = [("shipped", 0), ("A3b", 0)]
+PART1 = [("shipped", 0), ("A3c", 0)]
 PART2 = [("A0", 1), ("A0", 2), ("A3b", 1), ("A3b", 2)]
+# A3c is the configuration recommended from the night: the new subject rules with the place-phrase
+# strip, drawn by Qwen-Image, with ONLY the blank guard. A3b is the same plus an upper "full-frame"
+# guard, which turned out to throw away the best thunder pictures (storm clouds with lightning) and
+# drop both thunders, so it is not recommended. For A3c the picture is A3b's, except where A3b's upper
+# guard fired: there the subject is unchanged from A2 (checked below) and the seed-0 Qwen-Image draw of
+# that subject is A3's picture, i.e. exactly what A3c would have drawn.
+
+
+def _a3c(bench: Path, it) -> Path:
+    import json as _j
+    man = {m["i"]: m for m in _j.loads((bench / "A3b" / "manifest.json").read_text(encoding="utf-8"))}
+    sa = _j.loads((bench / "subjects_A2.json").read_text(encoding="utf-8"))
+    sb = _j.loads((bench / "subjects_A2b.json").read_text(encoding="utf-8"))
+    m = man[it["i"]]
+    if m["guard_fired"] and sa[str(it["i"])]["subject"] == sb[str(it["i"])]["subject"]:
+        return bench / "A3" / f"{it['i']:02d}.png"
+    return bench / "A3b" / f"{it['i']:02d}.png"
 
 
 def picture(bench: Path, shipped_dir: Path, arm: str, seed: int, it) -> Path:
+    if arm == "A3c":
+        return _a3c(bench, it)
     if arm == "shipped":
         return shipped_dir / it["clip"] / "augmentations" / Path(it["shipped_image"]).name
     folder = arm if seed == 0 else f"{arm}_s{seed}"
@@ -52,6 +71,12 @@ def main():
             src = picture(bench, Path(a.shipped), arm, seed, it)
             if not src.exists():
                 continue
+            if arm != "A3c" and arm != "shipped":
+                folder = arm if seed == 0 else f"{arm}_s{seed}"
+                mf = bench / folder / "manifest.json"
+                if mf.exists() and any(x["i"] == it["i"] and x.get("dropped")
+                                       for x in json.loads(mf.read_text(encoding="utf-8"))):
+                    continue             # the system would show nothing here, so there is nothing to rate
             code = f"{part}-{len(cards[part]) + 1:03d}"
             Image.open(src).convert("RGB").resize((384, 384)).save(out / "img" / f"{code}.jpg", quality=86)
             cards[part].append({"code": code, "sound": it["label"]})

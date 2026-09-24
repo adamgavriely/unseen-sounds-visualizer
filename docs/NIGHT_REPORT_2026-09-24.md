@@ -297,3 +297,18 @@ adopt only if no needed sound is lost and early starts do not rise.
 Both lose the approaching helicopter — the exact case the early pull exists for (the second detector
 hears it fade in before BEATs does). So the union's median −4 s pull is mostly *right*, not a bug; the
 remaining early Crowd (−1.90 s) is not worth that price. The union stays as shipped.
+
+**Result 12 — the place fix works; the "full-frame" guard backfires on thunder.**
+The place-phrase strip changed 5 subjects ("Crowd cheering in palace" → "Crowd cheering", "Firecracker
+exploding on street" → "Firecracker exploding", "Car driving on hillside" → "A car drives", "People
+laughing on street" → "People laughing"). By eye, all four affected pictures are now the object on a
+plain background: no palace, no street, the car on a road instead of a speck on a hill.
+
+The upper guard (redraw a picture that fills more than 85% of the frame), added after seeing A3 at a
+reviewer's suggestion, fired on both thunders, redrew them twice, and **dropped** them — throwing away
+what is, by eye, the best thunder picture of the night (storm clouds *with lightning*). It has no
+upside on these 33 and costs two readable pictures, so it is **not recommended**. The recommended
+picture setup from the night is therefore **A3c: the new subject rules + the place strip + Qwen-Image,
+with only the blank guard**. Its pictures are A3b's, except the four where A3b's upper guard fired;
+for three of those the subject is unchanged, so A3's seed-0 picture is exactly what A3c draws, and for
+the fourth (the firecracker, whose subject changed) A3b's redraw is used — a small, recorded deviation.
