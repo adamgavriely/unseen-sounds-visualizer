@@ -151,3 +151,14 @@ instrumentation and the switched-off code change nothing.
 What survives from the confounded runs: the named onset fixes (Siren −1.50 → 0.00, Bird −1.29 →
 −0.15) are pictures that were drawn in both runs, so they are the timing fix and not the filters.
 The +5 hits and the false-alarm rise are not attributable until the v31 runs land.
+
+**Result 5 — the one allowed marker redesign also failed.** Asked openly "what is drawn, and what
+sound does it make", Idefics3 agreed with my verdicts on only 8 of 32. It mostly ignored the two-line
+answer format and answered "nothing" for the sound. As agreed with the reviewers there is no second
+redesign tonight, so the picture arms stand judged by eye (Result 3).
+
+One thing worth keeping for tomorrow: asked what *object* is drawn, it names exactly the failures I
+found by eye — "man with face mask" for the shaver picture with no shaver, "hand, two fingers" for
+the keyboard picture with no keyboard, "hat" for the mythological Siren, "nothing" for the blank
+thunder. An *object-only* check may be a usable marker, but it has to be calibrated on fresh pictures
+labelled by someone else before it counts.
