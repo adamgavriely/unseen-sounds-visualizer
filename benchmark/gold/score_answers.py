@@ -24,9 +24,12 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import sys
 from pathlib import Path
 
 import numpy as np
+
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent.parent))
 
 CANT = "__cant__"
 ORDER = ["correct", "narrower", "wrong", "vague"]      # first list that matches decides
@@ -88,7 +91,11 @@ def cmd_check(a):
     out = {}
     for k, c in chk.items():
         i = k.split(":")[1]
-        txt = (c.get("object", "") + " ; " + c.get("sound", "")).strip()
+        obj, snd = c.get("object", ""), c.get("sound", "")
+        if not obj and c.get("raw"):                  # replies saved before the box-token parser fix
+            from benchmark.gold.picture_bench import _two_lines
+            obj, snd = _two_lines(c["raw"])
+        txt = (obj + " ; " + snd).strip(" ;")
         out[k] = {"text": txt, "class": classify(txt, sheet[i])}
     dst = Path(a.out or Path(a.check).with_name(Path(a.check).stem + "_scored.json"))
     dst.write_text(json.dumps(out, indent=1), encoding="utf-8")

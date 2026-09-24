@@ -455,6 +455,8 @@ def framing_ok(path) -> bool:
 
 def _two_lines(text):
     obj, snd = "", ""
+    # GLM-4.6V wraps its answer in box tokens: "<|begin_of_box|>OBJECT: cannon ...<|end_of_box|>"
+    text = text.replace("<|begin_of_box|>", "").replace("<|end_of_box|>", "")
     for line in text.splitlines():
         clean = line.strip().lstrip("*-#• ").replace("**", "")   # GLM answers in markdown (P3, round 3)
         low = clean.lower()
