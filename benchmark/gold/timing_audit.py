@@ -103,7 +103,8 @@ def check_panel(clips, specs):
     print("\nB. does the panel follow the spec?")
     d = []
     for mp4 in sorted(clips.glob("*.mp4")):
-        f = specs / mp4.stem / "augmentations.json"
+        stem = mp4.stem[:-len("_augmented")] if mp4.stem.endswith("_augmented") else mp4.stem
+        f = specs / stem / "augmentations.json"
         if not f.exists():
             continue
         sp = [s for s in json.loads(f.read_text(encoding="utf-8"))
@@ -120,6 +121,9 @@ def check_panel(clips, specs):
         says = min(min(x[0] for x in (s.get("spans") or [[s["start"], s["end"]]])) for s in sp)
         d.append(first - says)
     d = np.array(d)
+    if not len(d):
+        print("   no clip with a drawn picture found")
+        return
     print(f"   {len(d)} clips: panel lights {np.median(d):+.2f}s (median) from what the spec says "
           f"[{d.min():+.2f}, {d.max():+.2f}]")
 
@@ -200,6 +204,8 @@ def check_display(clips, specs, pattern="{stem}.mp4"):
               f"sound {g['start']:5.1f}-{g['end']:5.1f}   end {shown[1] - g['end']:+5.1f}")
     d = np.array([r[1][1] - r[2][1] for r in rows])
     capped = sum(1 for r in rows if abs((r[1][1] - r[1][0]) - 8.0) < 0.25)
+    linger = sum(1 for x in d if x > 2.0)
+    print(f"   lingering more than 2 s past the sound's end: {linger} of {len(rows)}")
     print(f"   {len(rows)} one-picture clips: displayed end vs sound end median {np.median(d):+.2f}s "
           f"mean {d.mean():+.2f}s;  {capped} of them are exactly 8.0 s long (config.MAX_SPAN)")
 

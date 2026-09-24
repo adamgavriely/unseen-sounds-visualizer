@@ -256,3 +256,29 @@ listening to. The honest reading: the old system was significantly worse than si
 sound's name; the current one is level with it. The two columns are different clip sets, so this is
 not a paired comparison. To settle it the current system would need judging on more clips — **not**
 the 60 TEST clips, whose judge results must not be looked at without a decision to take a second look.
+
+**Result 10 — the reviewers signed the onset rule off, and their doubts were checked.**
+All three: **pass** against the gate written before the run. Their doubts, and the answers
+(`benchmark/gold/onset_attribution.py`, base = the switches-off run):
+
+  * *"An onset rule cannot lower false alarms; the precision gain may be the visibility vote drifting."*
+    Checked: of the 4 recovered sounds, **3 are the picture's start moving into the window** (Siren
+    1.1 → 2.6 s, rooster 9.1 → 10.25 s, laughter 11.9 → 13.4 s); only 1 (a glass) is a new picture.
+    The false-alarm drop is **exactly those 3 pictures**: an early picture counted both as a wrong
+    picture *and* as a missed sound, and moving it into the window turns both into one hit. No drift.
+  * *No clip-start sound may move*: none did. *No picture may become more than 1 s late*: the largest
+    later move is +1.50 s (the laughter), which lands 0.66 s after the sound — inside the window.
+  * *"It rests on 4 sounds, 4 to 0: fragile. TEST decides."* Agreed; an exact sign test on 4-0 is
+    p = 0.125. Reviewer C's own stricter primary (net +5 on the pre-gate detector set) is **not** met:
+    that set has only 16 sounds with an early-able onset, and the rule recovers 2 and loses 0.
+  * **The eight-second cap stays, 2 votes to 1.** Removing it is a separate change that touches the
+    visibility vote (the bell); test it on its own, with a release rule. The dissenting reviewer's
+    condition for removing it (no more than 3 of 17 pictures lingering 2 s past the sound) *is* met —
+    1 of 16 — so this is a close call for Adam, not a clear no.
+
+**What all three say the morning summary must say about TEST.** The rule was chosen on DEV, so the
+DEV gain is optimistic by construction and is not the thesis number. The configuration is frozen now
+(the base plus `ONSET_MONOTONE`, cap at 8 s, filters 0.3 / 0.05) and run **once** on TEST with no
+further change; that is the **second look at TEST** and is recorded as such. Keep if TEST loses at most
+one needed sound and F1 does not fall; if TEST does not confirm, the rule stays as a bug fix proven by
+the trace (223 of 442 starts moved earlier before, 0 after), with the gain reported as DEV-only.
