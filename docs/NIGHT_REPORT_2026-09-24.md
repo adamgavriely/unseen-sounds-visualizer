@@ -175,3 +175,19 @@ grounded judge):
   * **So the ranking is not reportable yet**, by the rule fixed before the run — even though it puts
     the system first (ours 2.80, draw-everything 2.71, captions 2.49). Check 2 is a sample-size miss,
     not a wrong-direction one; the same test on all 139 gold clips would very likely settle it.
+
+**Result 7 — a stronger judge passes both trust checks, and prefers the caption baseline.** The same
+checks on all 139 gold clips of the earlier `v4b4` run (from before the false-alarm filters), where
+both judges exist:
+
+| judge | tracks Adam's labels | separates wrong-picture clips | its ranking |
+|---|---|---|---|
+| Mistral-7B (current) | ρ −0.53 [−0.67, −0.38] ✓ | gap +0.41 [−0.03, +0.83] ✗ | blind 2.70 ≈ ours 2.68 > caption 2.51 |
+| **Gemma-4-31B** | ρ −0.61 [−0.73, −0.48] ✓ | **gap +0.86 [+0.37, +1.32] ✓** | **caption 2.84 > blind 2.48 > ours 2.43** |
+
+So the judge we *can* trust ranks the text-caption baseline first and our pictures last — on the
+older system. Reported against interest. Two structural reasons it may be unfair to pictures, both to
+be checked before anyone draws a conclusion: captions are judged on their own text, while a picture is
+first described by another model (information is lost before the judge sees it); and v4b4 predates the
+filters that removed a third of the false alarms. The fair test — Gemma on the current system — is
+running (job below).
