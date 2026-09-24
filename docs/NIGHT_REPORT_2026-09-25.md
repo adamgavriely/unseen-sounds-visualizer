@@ -90,3 +90,20 @@ Caveats: captions are judged as text tags naming the sound, pictures as pixels t
 recognise; at most 4 pictures per clip are shown to the judge. B3 (self-agreement, 20 clips, sampling
 on) and the judge on the current DEV system (`dev_monocap_v31`, all three arms at the new timing) are
 running.
+
+## 8. Two controls
+
+**Hardware.** `dev_repro_v32L` (switches off, on an L40S with the 27B gate CPU-offloaded) vs
+`dev_repro_v31` (A100): every shared start identical, no needed sound changed, but 21 vs 23 spans
+(F1 0.293 -> 0.297). So the card class moves about one picture in 49 clips. The TEST base ran on A100
+and the TEST arm on L40S; on TEST the gate differed on 1 of 60 clips. Rule from now on: comparison arms
+run on the base's card class (H200/A100).
+
+**Is V3 gate-neutral?** No. On the H200 (`dev_v3gate_v32h`) vs `dev_monocap_v31`: the same 14 hits,
+but 2 clips gain a picture (FA/clip +0.08 [0.00, +0.20], dF1 -0.019 [-0.049, 0.00]). Cause: the
+duplicate check compares the subjects' wording; today's generic "Vehicle" was depicted as the train
+the scene showed, so it merged with "Train"; V3 depicts it as a generic vehicle, so it no longer merges,
+and the family keeps its bursts outside the train as a second picture (b3_laundromat, ly_helicopter).
+Not fixed tonight: changing the duplicate rule on the two clips that showed it would be tuning. Stated
+as V3's gate cost; a fix (merge by the audio — overlapping bursts with an ancestor/descendant source —
+rather than by wording) is a separate DEV change for the panel.
