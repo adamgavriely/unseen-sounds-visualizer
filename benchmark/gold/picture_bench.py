@@ -184,6 +184,8 @@ def phase_subjects(a):
             prompt = R.DEPICT_PROMPT_V2.format(label=it["label"], detail=detail, scene=place)
             phrase = R._without_place(R._clean_phrase(R._ask(mdl, proc, prompt, max_new=48)),
                                       place, keep=kind)
+            if a.arm == "A2b":
+                phrase = R._drop_place_phrase(phrase, place, it["label"], it["detail"])
             if phrase and not R._still_the_sound(phrase, it["label"], labels, mdl, proc):
                 phrase = R._without_place(R._clean_phrase(R._ask(mdl, proc, R.RETRY_PROMPT.format(
                     label=it["label"], detail=detail, scene=place), max_new=48)), place, keep=kind)
@@ -192,8 +194,9 @@ def phase_subjects(a):
             out[str(it["i"])] = {"subject": phrase, "kind": kind, "place": place}
             print(f"   {it['i']:2d} {it['label'][:14]:14s} {it['subject'][:28]:28s} -> {phrase:34s} "
                   f"[kind: {kind or '-'}]", flush=True)
-    (BENCH / "subjects_A2.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
-    print("->", BENCH / "subjects_A2.json")
+    name = a.arm or "A2"
+    (BENCH / f"subjects_{name}.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print("->", BENCH / f"subjects_{name}.json")
 
 
 # -------------------------------------------------------------------------------------- draw
@@ -202,14 +205,26 @@ ARMS = {
     "A1": {"subjects": "shipped", "guard": True, "gen": "flux"},
     "A2": {"subjects": "A2", "guard": True, "gen": "flux"},
     "A3": {"subjects": "A2", "guard": True, "gen": "qwen"},
+    "A3b": {"subjects": "A2b", "guard": True, "gen": "qwen"},
 }
+# Reviewer A, round 4: a full-frame picture breaks the white-background contract the other way (a
+# dark sky for thunder is a scene, not an object). Added AFTER seeing A3, and reported as such.
+INK_MAX = 0.85
+
+
+def arm_spec(name):
+    base, _, s = name.partition("_s")
+    spec = dict(ARMS[base])
+    spec["seed_offset"] = 1000 * int(s) if s else 0
+    spec["upper"] = base == "A3b"
+    return spec
 GEN = {"flux": ("black-forest-labs/FLUX.1-schnell", (768, 768)),
        "qwen": ("Qwen/Qwen-Image-2512", (1024, 1024))}
 
 
 def phase_draw(a):
     from src.stage6_visual_augmentation import _diffusion_image, plain_prompt
-    arm = ARMS[a.arm]
+    arm = arm_spec(a.arm)
     model, size = GEN[arm["gen"]]
     items = load_specs()
     subj = {}
@@ -222,14 +237,15 @@ def phase_draw(a):
         subject = subj.get(str(it["i"]), {}).get("subject", it["subject"])
         prompt = plain_prompt(subject)
         p = out_dir / f"{it['i']:02d}.png"
-        seed = seed_of(it)
+        seed = seed_of(it) + arm["seed_offset"]
         ok = _diffusion_image(p, prompt, size, model=model, device="cuda", seed=seed)
         fired, dropped = 0, False
+        bad = (lambda q: ink(q) < INK_BAR or (arm["upper"] and ink(q) > INK_MAX))
         if ok and arm["guard"]:
-            while ink(p) < INK_BAR and fired < 2:
+            while bad(p) and fired < 2:
                 fired += 1
                 _diffusion_image(p, prompt, size, model=model, device="cuda", seed=seed + fired)
-            if ink(p) < INK_BAR:
+            if bad(p):
                 dropped = True            # counted as a failure, never shown as a blank
         manifest.append({"i": it["i"], "subject": subject, "prompt": prompt, "seed": seed,
                          "ink": round(ink(p), 4) if ok else 0.0, "guard_fired": fired,

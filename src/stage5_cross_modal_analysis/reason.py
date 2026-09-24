@@ -817,6 +817,35 @@ def _disambiguate(specs, video_path, mdl, proc, frames_per_sound: int = 4) -> No
             done.add(id(loser))
 
 
+_PREPS = {"in", "on", "at", "near", "inside", "outside", "by", "beside", "across", "through", "along"}
+
+
+def _drop_place_phrase(phrase: str, place: str, label: str = "", detail: str = "") -> str:
+    """DEPICT_V2 only: remove a trailing "in / on / at ... <place>" phrase.
+
+    Under v2 the answer leads with the object, so the place is never needed to make the object
+    drawable, and when the model adds it anyway ("Crowd cheering in palace", "Firecracker exploding
+    on street") the generator paints the place -- two crowds in front of a palace on DEV. Scoped to
+    the clip's OWN place answer, not a word list: the phrase goes only if every content word after
+    the preposition is a word of that answer, so no object can ever be removed.
+    """
+    stop = {"a", "an", "the", "of"}
+    words = phrase.split()
+    placew = {w.lower().strip(",.") for w in place.replace(",", " ").split()} - stop
+    for k in range(len(words) - 1, 0, -1):
+        if words[k].lower() in _PREPS:
+            tail = [w.lower().strip(",.") for w in words[k + 1:] if w.lower() not in stop]
+            # never strip a word that names the sound or its source ("Knock on door" keeps the door,
+            # even in a clip whose place answer happens to contain it) -- reviewer C, round 4
+            own = {w.lower().strip(",.()") for w in (label + " " + detail).replace(",", " ").split()}
+            if (tail and all(w in placew or w.rstrip("s") in placew for w in tail)
+                    and not any(w in own or w.rstrip("s") in own for w in tail)
+                    and k >= 2 and words[k - 1].lower() not in _PREPS):
+                return " ".join(words[:k])
+            break
+    return phrase
+
+
 def _without_place(phrase: str, place: str, keep: str = "") -> str:
     """Drop the place's own words from a depiction, if something is left.
 
@@ -1134,6 +1163,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             label=spec.event_label, detail=detail, scene=place)
         phrase = _clean_phrase(_ask(mdl, proc, prompt, max_new=48))
         phrase = _without_place(phrase, place, keep=kind if v2 else "")
+        if v2:
+            phrase = _drop_place_phrase(phrase, place, spec.event_label, spec.detail or "")
         if phrase and not _still_the_sound(phrase, spec.event_label, labels, mdl, proc):
             print("       [stage5] rejected (not about " + spec.event_label + "): "
                   + phrase, flush=True)
