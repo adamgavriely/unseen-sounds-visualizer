@@ -101,11 +101,14 @@ heard, and ignored the scene (a car door in a car drawn as a house door; a roost
  <li><b>V3.1</b> lets the scene add a qualifier only ("car door", "farm vehicle"), never a new noun or a
   person; a word-list from the AudioSet ontology refuses kinds the audio did not establish. No model is
   asked to approve its own answer.</li>
+ <li><b>Side effect:</b> V3 changes what the gate shows on 2 of 49 DEV clips (a generic "vehicle" picture
+  no longer merges with the train it duplicates), about +0.08 wrong pictures per clip. Reported as a cost,
+  not tuned away.</li>
  <li><b>Measured blind:</b> Adam types what each picture shows, with no name under it; 172 cards, 10 repeats
   for his own consistency; the answer sheet was committed before any answer. V3.1 is tested on 30 clips
   its rules were not written from.</li>
 </ul>
-<p class="pending" id="pic-status">Round 2 ratings: in progress.</p>
+<p class="pending" id="pic-status">Round 2 (50 new clips) and the fresh V3.1 round (slice B, two passes): pages ready, waiting for Adam's ratings.</p>
 </section>
 
 <section>
@@ -115,7 +118,18 @@ The reference sentence was written from the detector's own output — circular a
 looks at the pictures directly, against a reference built only from the annotator's labels. It must pass
 two trust checks on 139 clips before its ranking is shown (does it track the annotator's cost; does it
 notice a known-wrong picture).</p>
-<p class="pending" id="judge-status">Trust check: running.</p>
+<div class="tbl"><table>
+<tr><th>trust check, 139 clips</th><th>our pipeline</th><th>draw everything</th><th>caption only</th><th>bar</th></tr>
+<tr><td>score follows the annotator's cost (Spearman)</td><td class="n">−0.72</td><td class="n">−0.66</td><td class="n">−0.73</td><td class="n">≤ −0.40</td></tr>
+<tr><td>clips with a known-wrong picture score lower</td><td class="n">+1.11</td><td class="n">+1.33</td><td class="n">+0.89</td><td class="n">gap &gt; 0, CI excl. 0</td></tr>
+</table></div>
+<p>All pass; asked again with sampling on, 59 of 60 scores come back identical. What it says, on the
+current DEV system (49 clips, all arms at the new timing): ours <span class="num">2.29</span>;
+against "draw everything" <span class="num">+0.20 [−0.18, +0.61]</span>, against captions
+<span class="num">+0.06 [−0.31, +0.39]</span> — a tie. On the older 139-clip renders: ours beats "draw
+everything" <span class="num">+0.27 [+0.07, +0.50]</span>, mostly by not drawing what is already on screen
+(+1.00 on those clips); ties captions. Weakest: clips whose sound is off screen (ours 0.93 of 4 on DEV).
+<span class="tag warn">one annotator</span> <span class="tag warn">captions judged as text, pictures as pixels</span></p>
 </section>
 
 <section>
