@@ -163,6 +163,46 @@ def check_spec(specs, out_json=None):
         print("   ->", out_json)
 
 
+def check_display(clips, specs):
+    """The window the VIEWER actually gets, against the window the sound actually occupies.
+
+    check_spec reads the spec's spans, but the panel adds a minimum dwell and caps a picture at
+    config.MAX_SPAN, so the two are not the same window. Only clips showing exactly one picture
+    are used, because with two pictures the lit panel cannot be attributed to either.
+    """
+    print("\nD. the window the viewer gets, against the sound")
+    gold = S.load_gold([GOLD])
+    rows = []
+    for mp4 in sorted(clips.glob("*.mp4")):
+        f = specs / mp4.stem / "augmentations.json"
+        if not f.exists():
+            continue
+        sp = [s for s in json.loads(f.read_text(encoding="utf-8"))
+              if s.get("augment") and s.get("image_path")]
+        if len(sp) != 1:
+            continue
+        ser, dt = panel_series(mp4)
+        lit = ser > (ser.min() + 20)
+        if not lit.any():
+            continue
+        idx = np.where(lit)[0]
+        shown = (float(idx[0]) * dt, float(idx[-1] + 1) * dt)
+        s0 = sp[0]
+        spans = s0.get("spans") or [[s0["start"], s0["end"]]]
+        first = min(x[0] for x in spans)
+        cand = [g for g in gold.get(mp4.stem, []) if S.same_family(s0["event_label"], g["label"])]
+        if not cand:
+            continue
+        g = min(cand, key=lambda g: abs(g["start"] - first))
+        rows.append((mp4.stem, shown, (g["start"], g["end"])))
+        print(f"   {mp4.stem[:30]:30s} shown {shown[0]:5.1f}-{shown[1]:5.1f}   "
+              f"sound {g['start']:5.1f}-{g['end']:5.1f}   end {shown[1] - g['end']:+5.1f}")
+    d = np.array([r[1][1] - r[2][1] for r in rows])
+    capped = sum(1 for r in rows if abs((r[1][1] - r[1][0]) - 8.0) < 0.25)
+    print(f"   {len(rows)} one-picture clips: displayed end vs sound end median {np.median(d):+.2f}s "
+          f"mean {d.mean():+.2f}s;  {capped} of them are exactly 8.0 s long (config.MAX_SPAN)")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--site", default="data/work/error_site")
@@ -174,6 +214,7 @@ def main():
         check_render(clips)
     check_panel(clips, specs)
     check_spec(specs, out_json=_ROOT / "benchmark" / "gold" / "timing_audit_dev.json")
+    check_display(clips, specs)
 
 
 if __name__ == "__main__":
