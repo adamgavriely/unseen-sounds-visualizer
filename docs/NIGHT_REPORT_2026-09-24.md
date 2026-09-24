@@ -312,3 +312,27 @@ picture setup from the night is therefore **A3c: the new subject rules + the pla
 with only the blank guard**. Its pictures are A3b's, except the four where A3b's upper guard fired;
 for three of those the subject is unchanged, so A3's seed-0 picture is exactly what A3c draws, and for
 the fourth (the firecracker, whose subject changed) A3b's redraw is used — a small, recorded deviation.
+
+---
+
+## Morning — Adam's blind ratings (`benchmark/gold/pictures/adam_ratings_2026-09-24.json`)
+
+189 answers, unsealed against the key after he sent them.
+
+| version | yes | no | not sure |
+|---|---|---|---|
+| today's pictures (shipped) | 12 / 31 | 17 | 2 |
+| **new: rules + place strip + Qwen-Image (A3c)** | **18 / 32** | 13 | 1 |
+| FLUX, two more seeds | 8 / 33, 9 / 33 | | |
+| Qwen-Image, two more seeds | 12 / 30, 14 / 30 | | |
+
+Paired on 31 sounds: 11 got better (no/unsure → yes), 5 got worse. The gain holds on every seed
+(FLUX ~26% yes, Qwen-Image ~43-56%), so it is not luck. Adam is far stricter than I was (43% yes on
+today's pictures against my 71%; Cohen's kappa 0.46 on 28 shared yes/no). He used "not sure" for
+"it depends on the scene".
+
+A flaw of mine in the page: it showed the sound's **family** name ("Vehicle", "Siren") under each
+picture — the very thing Adam then flagged. His main finding: pictures are drawn from the family tag,
+not the specific sound (a bus drawn as a car, a car horn drawn as a train, thunder drawn as a sky);
+7 of 33 pictures had a more specific detector label available and did not use it. And the scene must
+be used to pick the right source (a car door in a car scene, not a house door).
