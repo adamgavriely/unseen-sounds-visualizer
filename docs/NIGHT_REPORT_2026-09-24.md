@@ -231,3 +231,12 @@ not an out-of-sample result, even though the rule has no tuned parameter. The co
 TEST clips — which would be a **second look at TEST** (Adam and the supervisor decide). The remaining
 early starts come from the step that joins the two detectors, which moves 77 starts earlier by a median
 4 s; that is the next lead, not tonight's.
+
+*Why the bell vanishes without the cap.* With the cap, the bell's 8 s span is cut into two stretches;
+the visibility model says "church bell on screen" for the first and — on a 2-to-1 vote — "not on
+screen" for the second, so the picture is shown and counts as a hit. Without the cap, the 14 s span is
+cut into three stretches and the model says "on screen" for all three, so the picture is silenced.
+Adam's label says the bell is not visible. So the "regression" is the visibility model disagreeing
+with Adam *consistently* instead of *inconsistently*: the base's hit was a lucky vote. By the rule
+fixed in advance it still counts as a loss, so the cap stays for now; the decision on the cap should be
+taken knowing this.
