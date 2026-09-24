@@ -101,3 +101,35 @@ subjects with a new seed and the guard, A2 = new subjects):
     hands on a keyboard. One sample per picture is noisy.
   * **The scene step barely spoke:** asked about the setting for all 33 sounds, it named a kind only
     once (the subway) and said "unknown" 32 times.
+
+**Result 3 — the picture arms, marked by eye with the arm hidden** (99 pictures: arms A1, A2, A3 × 33
+sounds, shuffled into three sheets under codes, labelled, and only then unsealed;
+`benchmark/gold/pictures/blind_labels_arms.json`). The question for each: *would a viewer glancing
+at it read the right sound?*
+
+| arm | what changed | readable (of 32) | vs the arm before |
+|---|---|---|---|
+| shipped | today's pictures | 24 | — |
+| A1 | new random seed + blank guard | 23 | −1 (noise: fixed 2, broke 3) |
+| A2 | + new "what to draw" rules | 25 | +2 (fixed 4, broke 2) |
+| **A3** | **+ Qwen-Image-2512 instead of FLUX** | **30** | **+5** (fixed 6, broke 1) |
+
+Against today's pictures, A3 fixes 7 (both blank thunders, the electric shaver, the cropped crowd, the
+mythological Siren, the sparkler, the lone finger) and breaks 1 (a train drawn as a bare wheelset).
+
+Against the gates written before the run — judged by eye, because neither automatic marker passed its
+own check (the pre-registered fallback): **A3 passes** (0 blank; net +5 ≥ +4; one good picture got
+worse, and it was looked at; no picture tells a viewer something false). **A2 alone does not** (+2).
+
+Honest limits, all of which matter:
+  * the labeller is me, the same person who wrote the reference, and the arm was hidden but I had seen
+    the subject lists, and Qwen-Image's style is recognisable — this is *not* an independent verdict;
+  * the new rules were written from these same 33 pictures, so DEV flatters them;
+  * **scenery crept back in** with the new rules: two crowds in front of a palace, a firecracker in a
+    street, two thunders drawn as a full dark sky rather than an object on white. None of these says
+    something false, but it is exactly the drift the white background was chosen to stop, and the
+    place-strip rule needs fixing before any of this is adopted;
+  * Qwen-Image costs ~20 s per picture on an H200 against under 1 s for FLUX, and needs an 80 GB card.
+
+What would make it real: Adam (or anyone who is not me) labels a sample of A3 against today's
+pictures, blind, on clips the rules were not written from.

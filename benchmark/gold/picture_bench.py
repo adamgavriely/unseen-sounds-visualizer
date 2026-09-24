@@ -344,7 +344,7 @@ def framing_ok(path) -> bool:
     rows = np.where(a.any(axis=1))[0]
     if not len(rows):
         return False
-    return (rows[-1] - rows[0] + 1) / a.shape[0] >= FRAME_MIN_HEIGHT
+    return bool((rows[-1] - rows[0] + 1) / a.shape[0] >= FRAME_MIN_HEIGHT)
 
 
 def _two_lines(text):
@@ -391,8 +391,8 @@ def phase_eval2(a):
                                             for o in opts], normalize_embeddings=True)
         sims = e[1:] @ e[0]
         pick = opts[int(np.argmax(sims))]
-        blank = ink(p) < INK_BAR
-        framed = framing_ok(p)
+        blank = bool(ink(p) < INK_BAR)
+        framed = bool(framing_ok(p))
         empty = (not obj) or obj.strip().lower().startswith("nothing")
         ok = pick == it["label"] and not empty and not blank and framed
         why = ("blank" if blank else "subject too small" if not framed else "no object named" if empty

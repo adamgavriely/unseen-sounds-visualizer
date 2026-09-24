@@ -1,0 +1,605 @@
+{
+ "per_arm": {
+  "A1": {
+   "22": {
+    "readable": true,
+    "code": "P02",
+    "note": "",
+    "remark": ""
+   },
+   "23": {
+    "readable": true,
+    "code": "P06",
+    "note": "",
+    "remark": ""
+   },
+   "16": {
+    "readable": true,
+    "code": "P07",
+    "note": "",
+    "remark": ""
+   },
+   "8": {
+    "readable": true,
+    "code": "P09",
+    "note": "",
+    "remark": ""
+   },
+   "24": {
+    "readable": true,
+    "code": "P11",
+    "note": "",
+    "remark": ""
+   },
+   "5": {
+    "readable": true,
+    "code": "P12",
+    "note": "",
+    "remark": ""
+   },
+   "20": {
+    "readable": true,
+    "code": "P14",
+    "note": "",
+    "remark": ""
+   },
+   "19": {
+    "readable": true,
+    "code": "P15",
+    "note": "",
+    "remark": ""
+   },
+   "21": {
+    "readable": false,
+    "code": "P16",
+    "note": "car dashboard from inside",
+    "remark": ""
+   },
+   "12": {
+    "readable": true,
+    "code": "P20",
+    "note": "",
+    "remark": ""
+   },
+   "6": {
+    "readable": true,
+    "code": "P21",
+    "note": "",
+    "remark": ""
+   },
+   "30": {
+    "readable": true,
+    "code": "P22",
+    "note": "",
+    "remark": ""
+   },
+   "0": {
+    "readable": true,
+    "code": "P25",
+    "note": "",
+    "remark": ""
+   },
+   "3": {
+    "readable": false,
+    "code": "P29",
+    "note": "blank",
+    "remark": ""
+   },
+   "13": {
+    "readable": true,
+    "code": "P30",
+    "note": "",
+    "remark": ""
+   },
+   "14": {
+    "readable": false,
+    "code": "P32",
+    "note": "train tiny in the frame",
+    "remark": ""
+   },
+   "15": {
+    "readable": false,
+    "code": "P36",
+    "note": "car dashboard from inside",
+    "remark": ""
+   },
+   "29": {
+    "readable": true,
+    "code": "P41",
+    "note": "",
+    "remark": ""
+   },
+   "25": {
+    "readable": true,
+    "code": "P50",
+    "note": "",
+    "remark": ""
+   },
+   "10": {
+    "readable": false,
+    "code": "P52",
+    "note": "man with foam, no shaver",
+    "remark": ""
+   },
+   "2": {
+    "readable": false,
+    "code": "P56",
+    "note": "grey sky, says nothing about thunder",
+    "remark": ""
+   },
+   "17": {
+    "readable": true,
+    "code": "P57",
+    "note": "",
+    "remark": ""
+   },
+   "27": {
+    "readable": true,
+    "code": "P60",
+    "note": "",
+    "remark": ""
+   },
+   "28": {
+    "readable": true,
+    "code": "P66",
+    "note": "",
+    "remark": ""
+   },
+   "32": {
+    "readable": true,
+    "code": "P68",
+    "note": "",
+    "remark": ""
+   },
+   "9": {
+    "readable": true,
+    "code": "P69",
+    "note": "",
+    "remark": ""
+   },
+   "11": {
+    "readable": true,
+    "code": "P73",
+    "note": "",
+    "remark": ""
+   },
+   "4": {
+    "readable": true,
+    "code": "P74",
+    "note": "",
+    "remark": ""
+   },
+   "26": {
+    "readable": false,
+    "code": "P76",
+    "note": "the mythological Siren again",
+    "remark": ""
+   },
+   "31": {
+    "readable": false,
+    "code": "P79",
+    "note": "a sparkler, not a firecracker",
+    "remark": ""
+   },
+   "7": {
+    "readable": false,
+    "code": "P90",
+    "note": "a red dial, could be a timer",
+    "remark": ""
+   },
+   "18": {
+    "readable": true,
+    "code": "P93",
+    "note": "",
+    "remark": ""
+   },
+   "1": {
+    "readable": true,
+    "code": "P98",
+    "note": "",
+    "remark": ""
+   }
+  },
+  "A2": {
+   "18": {
+    "readable": true,
+    "code": "P00",
+    "note": "",
+    "remark": ""
+   },
+   "29": {
+    "readable": true,
+    "code": "P01",
+    "note": "",
+    "remark": ""
+   },
+   "7": {
+    "readable": true,
+    "code": "P05",
+    "note": "",
+    "remark": ""
+   },
+   "22": {
+    "readable": true,
+    "code": "P10",
+    "note": "",
+    "remark": ""
+   },
+   "16": {
+    "readable": true,
+    "code": "P13",
+    "note": "",
+    "remark": ""
+   },
+   "6": {
+    "readable": true,
+    "code": "P17",
+    "note": "",
+    "remark": ""
+   },
+   "10": {
+    "readable": true,
+    "code": "P19",
+    "note": "",
+    "remark": ""
+   },
+   "17": {
+    "readable": true,
+    "code": "P24",
+    "note": "",
+    "remark": ""
+   },
+   "32": {
+    "readable": true,
+    "code": "P26",
+    "note": "",
+    "remark": ""
+   },
+   "4": {
+    "readable": true,
+    "code": "P27",
+    "note": "",
+    "remark": ""
+   },
+   "12": {
+    "readable": true,
+    "code": "P35",
+    "note": "",
+    "remark": ""
+   },
+   "15": {
+    "readable": true,
+    "code": "P38",
+    "note": "",
+    "remark": ""
+   },
+   "3": {
+    "readable": false,
+    "code": "P39",
+    "note": "a cloud, says nothing about thunder",
+    "remark": ""
+   },
+   "24": {
+    "readable": true,
+    "code": "P43",
+    "note": "",
+    "remark": ""
+   },
+   "5": {
+    "readable": true,
+    "code": "P47",
+    "note": "",
+    "remark": ""
+   },
+   "13": {
+    "readable": true,
+    "code": "P48",
+    "note": "",
+    "remark": ""
+   },
+   "20": {
+    "readable": false,
+    "code": "P51",
+    "note": "two open hands, not clapping",
+    "remark": ""
+   },
+   "19": {
+    "readable": true,
+    "code": "P55",
+    "note": "",
+    "remark": ""
+   },
+   "28": {
+    "readable": false,
+    "code": "P58",
+    "note": "tiny unreadable object",
+    "remark": ""
+   },
+   "25": {
+    "readable": true,
+    "code": "P63",
+    "note": "",
+    "remark": ""
+   },
+   "30": {
+    "readable": true,
+    "code": "P64",
+    "note": "",
+    "remark": "readable, street scene behind"
+   },
+   "31": {
+    "readable": false,
+    "code": "P65",
+    "note": "a small spark in a street scene",
+    "remark": ""
+   },
+   "26": {
+    "readable": true,
+    "code": "P67",
+    "note": "",
+    "remark": ""
+   },
+   "8": {
+    "readable": true,
+    "code": "P70",
+    "note": "",
+    "remark": ""
+   },
+   "27": {
+    "readable": true,
+    "code": "P71",
+    "note": "",
+    "remark": ""
+   },
+   "1": {
+    "readable": true,
+    "code": "P75",
+    "note": "",
+    "remark": ""
+   },
+   "0": {
+    "readable": true,
+    "code": "P77",
+    "note": "",
+    "remark": ""
+   },
+   "11": {
+    "readable": true,
+    "code": "P82",
+    "note": "",
+    "remark": ""
+   },
+   "9": {
+    "readable": true,
+    "code": "P83",
+    "note": "",
+    "remark": ""
+   },
+   "23": {
+    "readable": true,
+    "code": "P85",
+    "note": "",
+    "remark": "crowd in front of a palace"
+   },
+   "14": {
+    "readable": false,
+    "code": "P87",
+    "note": "train tiny in the frame",
+    "remark": ""
+   },
+   "2": {
+    "readable": false,
+    "code": "P88",
+    "note": "a cloud, says nothing about thunder",
+    "remark": ""
+   },
+   "21": {
+    "readable": false,
+    "code": "P89",
+    "note": "tiny car on a slope",
+    "remark": ""
+   }
+  },
+  "A3": {
+   "9": {
+    "readable": true,
+    "code": "P03",
+    "note": "",
+    "remark": ""
+   },
+   "26": {
+    "readable": true,
+    "code": "P04",
+    "note": "",
+    "remark": ""
+   },
+   "25": {
+    "readable": false,
+    "code": "P08",
+    "note": "a bare wheelset, reads as wheels not a train",
+    "remark": ""
+   },
+   "20": {
+    "readable": true,
+    "code": "P18",
+    "note": "",
+    "remark": ""
+   },
+   "29": {
+    "readable": true,
+    "code": "P23",
+    "note": "",
+    "remark": ""
+   },
+   "8": {
+    "readable": true,
+    "code": "P28",
+    "note": "",
+    "remark": ""
+   },
+   "27": {
+    "readable": true,
+    "code": "P31",
+    "note": "",
+    "remark": ""
+   },
+   "13": {
+    "readable": true,
+    "code": "P33",
+    "note": "",
+    "remark": ""
+   },
+   "32": {
+    "readable": true,
+    "code": "P34",
+    "note": "",
+    "remark": ""
+   },
+   "16": {
+    "readable": true,
+    "code": "P37",
+    "note": "",
+    "remark": ""
+   },
+   "11": {
+    "readable": true,
+    "code": "P40",
+    "note": "",
+    "remark": ""
+   },
+   "7": {
+    "readable": true,
+    "code": "P42",
+    "note": "",
+    "remark": ""
+   },
+   "31": {
+    "readable": true,
+    "code": "P44",
+    "note": "",
+    "remark": "readable, but a whole street scene around it"
+   },
+   "12": {
+    "readable": true,
+    "code": "P45",
+    "note": "",
+    "remark": ""
+   },
+   "10": {
+    "readable": true,
+    "code": "P46",
+    "note": "",
+    "remark": ""
+   },
+   "4": {
+    "readable": true,
+    "code": "P49",
+    "note": "",
+    "remark": ""
+   },
+   "22": {
+    "readable": true,
+    "code": "P53",
+    "note": "",
+    "remark": ""
+   },
+   "28": {
+    "readable": true,
+    "code": "P54",
+    "note": "",
+    "remark": ""
+   },
+   "1": {
+    "readable": true,
+    "code": "P59",
+    "note": "",
+    "remark": ""
+   },
+   "0": {
+    "readable": true,
+    "code": "P61",
+    "note": "",
+    "remark": ""
+   },
+   "15": {
+    "readable": true,
+    "code": "P62",
+    "note": "",
+    "remark": ""
+   },
+   "21": {
+    "readable": false,
+    "code": "P72",
+    "note": "tiny car on a hillside",
+    "remark": ""
+   },
+   "24": {
+    "readable": true,
+    "code": "P78",
+    "note": "",
+    "remark": ""
+   },
+   "30": {
+    "readable": true,
+    "code": "P80",
+    "note": "",
+    "remark": ""
+   },
+   "19": {
+    "readable": true,
+    "code": "P81",
+    "note": "",
+    "remark": ""
+   },
+   "2": {
+    "readable": true,
+    "code": "P84",
+    "note": "",
+    "remark": "dark storm sky, reads as a storm"
+   },
+   "17": {
+    "readable": true,
+    "code": "P86",
+    "note": "",
+    "remark": ""
+   },
+   "6": {
+    "readable": true,
+    "code": "P91",
+    "note": "",
+    "remark": ""
+   },
+   "5": {
+    "readable": true,
+    "code": "P92",
+    "note": "",
+    "remark": ""
+   },
+   "23": {
+    "readable": true,
+    "code": "P94",
+    "note": "",
+    "remark": "crowd in front of a palace"
+   },
+   "14": {
+    "readable": true,
+    "code": "P95",
+    "note": "",
+    "remark": ""
+   },
+   "3": {
+    "readable": true,
+    "code": "P96",
+    "note": "",
+    "remark": "dark storm sky, reads as a storm"
+   },
+   "18": {
+    "readable": true,
+    "code": "P97",
+    "note": "",
+    "remark": ""
+   }
+  }
+ },
+ "who": "Claude, by eye, arm hidden (the labeller had seen the subject lists); unsealed after all 99"
+}
