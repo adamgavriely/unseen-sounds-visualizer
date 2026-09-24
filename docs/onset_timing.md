@@ -48,7 +48,31 @@ BEATs sliding-window stamp, `w0 = start - 1.5`, and the snap branch returns `w0`
 Siren 2.60 - 1.50 = 1.10 exactly; Applause 1.12 - 1.50 = -0.38, clamped by `max(0.0, t)` to the
 0.00 the panel could not otherwise explain.
 
-**So the pipeline now records its own provenance** (`onset_trace.json`, one row per step per span:
+### What the instrumented run actually showed (job 30993350, five clips)
+
+The log settles it, and no reviewer had it exactly right. Two steps move starts, and they compound:
+
+    ly_applause   union   Applause            6.00 ->  1.12   -4.88
+    ly_applause   union   Laughter            2.75 ->  0.00   -2.75
+    mv_storm      union   Siren               3.00 ->  2.60   -0.40
+    mv_storm      union   Civil defense siren 3.50 ->  2.60   -0.90
+    all five      refine  49 spans moved: 30 earlier, 19 later, median -0.47, worst -6.00
+
+  * **The FlexSED twin rule is a real mover.** It supplied the 2.60 s Siren anchor that no cache
+    reproduced, and it pulled Applause from 6.00 to 1.12. Note it moved Applause **towards** the
+    annotator (gold 1.90), so it is not simply wrong -- it is the better of the two detectors here.
+  * **The occlusion refinement then takes another 1.5 s off.** Siren 2.60 - 1.50 = **1.10**, the
+    number that was emitted. Applause 1.12 - 1.50 = -0.38, clamped to **0.00**, the number that was
+    emitted. Both exactly.
+  * Refinement is not uniformly early-biased -- 19 of 49 moves were later -- but its bad tail is
+    severe, and it is the step that turns two acceptable onsets into two misses.
+
+So the fix is the clamp, not the deletion of either step: **the union forms the anchor, and
+refinement may sharpen inside it but never precede it.** On these five clips that alone should
+return the Siren to 2.60 (annotator 2.60), the Bird to about 10.25 (annotator 10.40) and the Crowd
+to 1.12 (annotator 1.90) -- two misses recovered and one large error halved.
+
+**The pipeline records its own provenance** (`onset_trace.json`, one row per step per span:
 extract, FlexSED raw, union, vetoes, occlusion refinement, MAX_SPAN cap, family merge, display
 join). An intermediate start is not recoverable from outside; it is now recoverable from inside.
 

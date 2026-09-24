@@ -2,7 +2,7 @@
 #SBATCH --job-name=gold_render
 #SBATCH --output=logs/gold_%j.out
 #SBATCH --error=logs/gold_%j.err
-#SBATCH --partition=A100-4h
+#SBATCH --partition=A100-4h,H200-4h,L40s-4h
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=8
 #SBATCH --mem=128G
