@@ -191,3 +191,43 @@ be checked before anyone draws a conclusion: captions are judged on their own te
 first described by another model (information is lost before the judge sees it); and v4b4 predates the
 filters that removed a third of the false alarms. The fair test — Gemma on the current system — is
 running (job below).
+
+**Result 8 — THE TIMING FIX WORKS, and it is significant** (fair runs, filters on, DEV 49 clips).
+
+First, the check that makes the rest trustworthy: a run with every new switch off (`dev_repro_v31`)
+reproduces the base **exactly** — 0 of 23 starts differ, every metric identical. So the logging and
+the switched-off code change nothing.
+
+| run | hits | P | R | F1 | wrong pictures / clip | viewer cost | early starts | picture ends early by |
+|---|---|---|---|---|---|---|---|---|
+| base | 11 | 0.282 | 0.306 | 0.293 | 0.57 | 3.18 | 5 | 1.70 s |
+| **onset rule (`MONO`)** | **15** | **0.375** | **0.417** | **0.395** | **0.51** | **2.73** | **2** | 1.05 s |
+| cap off only | 10 | 0.263 | 0.278 | 0.270 | 0.57 | 3.27 | 5 | 0.21 s |
+| onset rule + cap off | 14 | 0.368 | 0.389 | 0.378 | 0.49 | 2.78 | 2 | 0.06 s |
+
+**The onset rule alone, paired against the base (2000 bootstrap draws over clips):**
+F1 **+0.101** [+0.022, +0.196] · precision **+0.093** [+0.018, +0.192] · recall **+0.111**
+[+0.024, +0.225] · viewer cost saved **+0.45** [+0.08, +0.94]. All four intervals exclude zero.
+**4 needed sounds recovered, 0 lost** (the Siren and the rooster as the trace predicted, plus a glass
+and a laughter). This is the first time equal-weight F1 has moved significantly in this project —
+because a picture that arrived early was being counted as a *wrong* picture, and is now a hit.
+
+The log confirms the rule is really implemented: under it the refinement step moved 197 starts, **0
+earlier** (median +0.14 s); without it, the same step moved 223 of 442 starts earlier, the worst by
+8.98 s.
+
+Against the go/no-go written before the run: zero regressions ✓, headline up and outside the CI ✓,
+at least 2 of the 5 early cases recovered (2 — Siren, Bird — plus 2 other sounds) ✓, no start earlier
+than its anchor ✓. **Passes.**
+
+**The eight-second cap: fixes the end, not adoptable yet.** Removing it makes pictures stay until the
+sound actually ends (1.70 s early → 0.06 s), which is Adam's second complaint — but it loses one
+needed sound (the bell in `bell_miami` disappears entirely rather than being cut short), so it fails
+"zero regressions", and on top of the onset rule it is not significant. Worth one targeted look at why
+the long bell vanishes before trying again.
+
+**Caveats that belong beside the numbers.** DEV is where the five early cases were found, so this is
+not an out-of-sample result, even though the rule has no tuned parameter. The confirmation is the 60
+TEST clips — which would be a **second look at TEST** (Adam and the supervisor decide). The remaining
+early starts come from the step that joins the two detectors, which moves 77 starts earlier by a median
+4 s; that is the next lead, not tonight's.
