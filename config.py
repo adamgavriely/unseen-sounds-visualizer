@@ -83,6 +83,8 @@ ONSET_CAM = True
 # onset inside its own evidence window, extend an end, or merge spans, but may never produce a
 # start earlier than the anchor it was given. Off by default until the DEV numbers are in.
 ONSET_MONOTONE = False
+# "min" (as shipped), "bounded" or "beats": how the FlexSED twin rule may move a BEATs start.
+UNION_START = "min"
 # "earliest" (as shipped) or "strongest": where a burst of chained firings is deemed to start.
 MERGE_START = "earliest"
 # End of a span (2026-09-24). Hysteresis ends a span the moment the score dips below its bar, and a

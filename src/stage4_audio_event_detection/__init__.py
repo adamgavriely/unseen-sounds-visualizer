@@ -265,8 +265,20 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             for e in fev:
                 twin = [b for b in events if key(b) == key(e) and b.start - 1.0 <= e.end and e.start - 1.0 <= b.end]
                 if twin:
+                    # UNION_START (2026-09-24, docs/NIGHT_REPORT_2026-09-24.md): the trace shows this
+                    # step moving 77 starts earlier on DEV by a median of 4 s, the worst by 14 s -- a long
+                    # FlexSED span pulling a BEATs start to near the clip's beginning. "min" is as shipped;
+                    # "bounded" lets a twin pull the start at most as far as the twin tolerance itself
+                    # (1 s), since a start 4-14 s earlier is by definition a different moment; "beats"
+                    # keeps BEATs' own start and lets FlexSED only confirm.
+                    rule = str(getattr(config, "UNION_START", "min"))
                     for b in twin:
-                        b.start = min(b.start, e.start)
+                        if rule == "beats":
+                            continue
+                        if rule == "bounded":
+                            b.start = max(min(b.start, e.start), b.start - 1.0)
+                        else:
+                            b.start = min(b.start, e.start)
                 else:
                     fresh.append(e)
             print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
