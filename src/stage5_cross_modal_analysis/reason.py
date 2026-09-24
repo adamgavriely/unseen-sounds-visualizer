@@ -975,6 +975,18 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
         ph = _without_place(ph, place, keep=keep)
         return _drop_place_phrase(ph, place, spec.event_label, keep)
     phrase = one(prompt)
+    # a person is drawn only for a human sound: "A person whooshing a flag" for a Whoosh on the 50
+    # in-sample clips (the prompt's own "show a person only if" was ignored), so it is a list check too
+    from src.labels import ancestors
+    human = "Human sounds" in ancestors(src) or src == "Human sounds"
+    people = {"person", "man", "woman", "people", "someone", "boy", "girl", "child", "hand", "hands"}
+
+    def has_person(ph):
+        return (not human) and bool(people & set("".join(c if c.isalnum() else " " for c in ph.lower()).split()))
+    if phrase and has_person(phrase):
+        again = one(prompt + chr(10) + "Do not show any person.")
+        print("       [stage5] v3.1 person guard: " + phrase + " -> " + again, flush=True)
+        phrase = again if again and not has_person(again) else ""
     bad = names_forbidden(phrase, src, ok_fired) if phrase else []
     if phrase and bad:
         again = one(prompt + chr(10) + DEPICT_V31_GUARD.format(thing=thing))

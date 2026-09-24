@@ -122,3 +122,11 @@ was looked at or any rating received (`docs/panel_2026-09-25_brief.md`, `…_rou
   inside a tie, and labels carrying the heard word) refuses anything the audio did not establish; no
   question to the model that wrote the answer is used as a check; a sound-name source with no qualifier
   is drawn as its visible effect, not a guessed maker.
+
+**Amendment 2a (2026-09-24 ~21:15, before slice B is drawn).** V3.1's subjects on the 50 in-sample clips
+(text only) still put a person into a sound with no human source ("A person whooshing a flag" for a
+Whoosh, twice). A list check is added: outside the AudioSet "Human sounds" branch, a subject naming a
+person is retried once with "Do not show any person" and otherwise falls back to the heard word. Known
+gap, not fixed this round: in the pipeline path (`decide_subjects`) the raw firings are not on the spec,
+so the guard runs with none allowed (stricter than the bench, where the fired labels are passed);
+carrying them on the spec is required before V3.1 could ship.
