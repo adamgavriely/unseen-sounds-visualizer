@@ -293,7 +293,7 @@ def _subject_bbox(img: Image.Image, tol: int = 28):
 
 def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
                      model: str = "stabilityai/stable-diffusion-xl-base-1.0",
-                     device: str = "cuda") -> bool:
+                     device: str = "cuda", seed: Optional[int] = None) -> bool:
     """v2-b backend: generate the augmentation with SDXL (GPU). One pipeline is
     kept loaded across calls -- model load dominates cost, generation is ~2 s."""
     global _PIPE
@@ -332,6 +332,10 @@ def _diffusion_image(path: Path, prompt: str, size=(1024, 1024),
             kw.update(num_inference_steps=25, guidance_scale=4.5)
         if is_flux:
             kw["max_sequence_length"] = 256
+        if seed is not None:
+            # unseeded by default (as shipped); a seed makes two variants of the same picture
+            # comparable, which the picture bench needs and the thesis will want
+            kw["generator"] = torch.Generator(device=device).manual_seed(int(seed))
         img = _PIPE(**kw).images[0]
         img.save(path)
         return True
