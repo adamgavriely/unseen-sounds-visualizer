@@ -240,3 +240,19 @@ Adam's label says the bell is not visible. So the "regression" is the visibility
 with Adam *consistently* instead of *inconsistently*: the base's hit was a lucky vote. By the rule
 fixed in advance it still counts as a loss, so the cap stays for now; the decision on the cap should be
 taken knowing this.
+
+**Result 9 — the trustworthy judge on the *current* system: a tie with captions, not a loss.**
+Gemma-4-31B, the judge that passed both trust checks on 139 clips, run on the current system (DEV 49):
+
+| | old system (v4b4, 139 clips) | current system (DEV 49 clips) |
+|---|---|---|
+| ours − captions | **−0.41** [−0.66, −0.16] — captions significantly better | **+0.08** [−0.24, +0.39] — a tie |
+| ours − draw-everything | −0.05 [−0.31, +0.21] | +0.24 [−0.08, +0.57] |
+| ranking | captions > blind > ours | ours 2.80 > captions 2.71 > blind 2.55 |
+
+On these 49 clips Gemma's second trust check misses (gap +0.54, CI [−0.24, +1.25]) for the same
+sample-size reason as Mistral's, but it passed both checks on 139 clips, so it is the judge worth
+listening to. The honest reading: the old system was significantly worse than simply writing the
+sound's name; the current one is level with it. The two columns are different clip sets, so this is
+not a paired comparison. To settle it the current system would need judging on more clips — **not**
+the 60 TEST clips, whose judge results must not be looked at without a decision to take a second look.
