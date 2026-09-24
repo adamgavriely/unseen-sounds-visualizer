@@ -162,3 +162,16 @@ found by eye — "man with face mask" for the shaver picture with no shaver, "ha
 the keyboard picture with no keyboard, "hat" for the mythological Siren, "nothing" for the blank
 thunder. An *object-only* check may be a usable marker, but it has to be calibrated on fresh pictures
 labelled by someone else before it counts.
+
+**Result 6 — the judge, checked against Adam's labels before its verdict is used**
+(`benchmark/gold/judge_trust.py`, gates from `docs/judge_plan.md`, DEV 49 clips, rubric-capped
+grounded judge):
+
+  * **Check 1 — does the judge's score fall where Adam's labels say a clip went badly? PASS.**
+    Spearman −0.647, 95% CI [−0.838, −0.413]. The judge tracks the annotator well overall.
+  * **Check 2 — does it separate clips with a known-wrong picture from clean ones? Just FAILS.**
+    Clean 3.07 vs wrong-picture 2.45: the right direction, gap +0.62, but the CI [−0.08, +1.27]
+    touches zero at 49 clips.
+  * **So the ranking is not reportable yet**, by the rule fixed before the run — even though it puts
+    the system first (ours 2.80, draw-everything 2.71, captions 2.49). Check 2 is a sample-size miss,
+    not a wrong-direction one; the same test on all 139 gold clips would very likely settle it.
