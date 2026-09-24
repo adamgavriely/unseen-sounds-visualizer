@@ -68,3 +68,13 @@ the sound** (a subway train, a burglar alarm) is exactly what a viewer needs.
     hand verdicts on at least 26 of 32 pictures or it does not get a vote.
 
 Jobs: 30993605 (check the markers), 30993606 (arms A0, A1), 30993607 (new subjects, arms A2, A3).
+
+**Result 1 — neither automatic marker can be trusted as designed** (job 30993605). Checked against my
+hand verdicts on 32 pictures, Idefics3 agreed on 25 and CLIP-L on 25; the bar was 26. The failure is
+systematic: **both called all five pictures I judged wrong correct** — the mythological Siren, the
+finger with no keyboard, the shaving man with no razor, the car dashboard, the cropped crowd. Reason:
+the question was multiple choice (the right sound plus five decoys), and a wrong picture still wins if
+the right sound is the least-bad option — the winged woman is closer to "Siren" than to "Quack". This
+is the pre-registered outcome "no marker votes"; per the plan, the arms are judged by eye unless a
+redesigned marker passes the same check. The redesign (an open question — "what is making a sound in
+this picture?" — whose answer is then matched as text) went to the reviewers before being run.
