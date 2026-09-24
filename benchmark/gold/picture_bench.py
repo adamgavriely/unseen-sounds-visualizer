@@ -244,6 +244,7 @@ ARMS = {
     "A3": {"subjects": "A2", "guard": True, "gen": "qwen"},
     "A3b": {"subjects": "A2b", "guard": True, "gen": "qwen"},
     "N": {"subjects": "V3", "guard": True, "gen": "qwen", "negative": True},
+    "N0": {"subjects": "shipped", "guard": True, "gen": "qwen", "negative": True},
 }
 # Reviewer A, round 4: a full-frame picture breaks the white-background contract the other way (a
 # dark sky for thunder is a scene, not an object). Added AFTER seeing A3, and reported as such.
