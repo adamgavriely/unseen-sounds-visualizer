@@ -282,3 +282,18 @@ DEV gain is optimistic by construction and is not the thesis number. The configu
 further change; that is the **second look at TEST** and is recorded as such. Keep if TEST loses at most
 one needed sound and F1 does not fall; if TEST does not confirm, the rule stays as a bug fix proven by
 the trace (223 of 442 starts moved earlier before, 0 after), with the gain reported as DEV-only.
+
+**Result 11 — limiting the detector union's early pull: rejected, as the rule fixed in advance says.**
+Two variants on top of the onset rule (`dev_monobound_v31`: a twin may pull a start at most ~1 s
+earlier; `dev_monobeats_v31`: BEATs keeps its own start). Decision rule, written before the run:
+adopt only if no needed sound is lost and early starts do not rise.
+
+| run | hits | F1 | cost | lost vs onset rule |
+|---|---|---|---|---|
+| onset rule (`dev_mono_v31`) | 15 | 0.395 | 2.73 | — |
+| + bounded union | 14 | 0.364 | 2.90 | the approaching **helicopter** |
+| + BEATs start | 13 | 0.338 | 3.02 | the helicopter and a train |
+
+Both lose the approaching helicopter — the exact case the early pull exists for (the second detector
+hears it fade in before BEATs does). So the union's median −4 s pull is mostly *right*, not a bug; the
+remaining early Crowd (−1.90 s) is not worth that price. The union stays as shipped.
