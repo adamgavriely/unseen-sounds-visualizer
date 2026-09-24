@@ -163,7 +163,7 @@ def check_spec(specs, out_json=None):
         print("   ->", out_json)
 
 
-def check_display(clips, specs):
+def check_display(clips, specs, pattern="{stem}.mp4"):
     """The window the VIEWER actually gets, against the window the sound actually occupies.
 
     check_spec reads the spec's spans, but the panel adds a minimum dwell and caps a picture at
@@ -174,7 +174,8 @@ def check_display(clips, specs):
     gold = S.load_gold([GOLD])
     rows = []
     for mp4 in sorted(clips.glob("*.mp4")):
-        f = specs / mp4.stem / "augmentations.json"
+        stem = mp4.stem[:-len("_augmented")] if mp4.stem.endswith("_augmented") else mp4.stem
+        f = specs / stem / "augmentations.json"
         if not f.exists():
             continue
         sp = [s for s in json.loads(f.read_text(encoding="utf-8"))
@@ -190,12 +191,12 @@ def check_display(clips, specs):
         s0 = sp[0]
         spans = s0.get("spans") or [[s0["start"], s0["end"]]]
         first = min(x[0] for x in spans)
-        cand = [g for g in gold.get(mp4.stem, []) if S.same_family(s0["event_label"], g["label"])]
+        cand = [g for g in gold.get(stem, []) if S.same_family(s0["event_label"], g["label"])]
         if not cand:
             continue
         g = min(cand, key=lambda g: abs(g["start"] - first))
-        rows.append((mp4.stem, shown, (g["start"], g["end"])))
-        print(f"   {mp4.stem[:30]:30s} shown {shown[0]:5.1f}-{shown[1]:5.1f}   "
+        rows.append((stem, shown, (g["start"], g["end"])))
+        print(f"   {stem[:30]:30s} shown {shown[0]:5.1f}-{shown[1]:5.1f}   "
               f"sound {g['start']:5.1f}-{g['end']:5.1f}   end {shown[1] - g['end']:+5.1f}")
     d = np.array([r[1][1] - r[2][1] for r in rows])
     capped = sum(1 for r in rows if abs((r[1][1] - r[1][0]) - 8.0) < 0.25)
@@ -208,8 +209,11 @@ def main():
     ap.add_argument("--site", default="data/work/error_site")
     ap.add_argument("--specs", required=True)
     ap.add_argument("--skip-render", action="store_true")
+    ap.add_argument("--render", default="", help="a data/output/protocol_* folder of composites; "
+                                                 "use this instead of the error page's clips/")
     a = ap.parse_args()
-    clips, specs = Path(a.site) / "clips", Path(a.specs)
+    specs = Path(a.specs)
+    clips = Path(a.render) if a.render else Path(a.site) / "clips"
     if not a.skip_render:
         check_render(clips)
     check_panel(clips, specs)
