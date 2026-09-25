@@ -19,3 +19,10 @@ Cohen's kappa >= 0.5.
 sitting; the screening bar (right >= control + 8/54) is applied to its yes-rate. Adam still rates the final
 50-clip confirmation, blind — the thesis claim rests on a human. **If it fails:** Adam screens, as planned;
 the verifier is reported as a failed instrument.
+
+## Result (2026-09-25) — FAIL
+
+170 pictures: agreement 61 %; it rejects only 2 of Adam's 73 "yes" (3 %, bar 15 %) but catches only 33 of
+his 97 "no" (34 %, bar 70 %); kappa 0.28 (bar 0.5). Told the sound's name, the VLM says "yes" to 135 of
+170: it is lenient — it confirms what it is told to look for. Adam screens, as declared. The prompt is not
+changed on these ratings.
