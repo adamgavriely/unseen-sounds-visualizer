@@ -1,0 +1,2918 @@
+{
+ "A001": {
+  "i": 25,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A002": {
+  "i": 39,
+  "text": "heavy ball thudding on the ground",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "'thudding' names the parent sound (Thump, thud)"
+ },
+ "A003": {
+  "i": 40,
+  "text": "food truck",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A004": {
+  "i": 47,
+  "text": "water drop splashing",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A005": {
+  "i": 28,
+  "text": "cow",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A006": {
+  "i": 8,
+  "text": "cupboard",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A007": {
+  "i": 30,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A008": {
+  "i": 41,
+  "text": "glass shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A009": {
+  "i": 39,
+  "text": "falling rock",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A010": {
+  "i": 47,
+  "text": "rain on a window",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A011": {
+  "i": 2,
+  "text": "children playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A012": {
+  "i": 17,
+  "text": "chicken",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A013": {
+  "i": 20,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A014": {
+  "i": 28,
+  "text": "cow mooing",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A015": {
+  "i": 52,
+  "text": "horse trotting",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A016": {
+  "i": 1,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A017": {
+  "i": 40,
+  "text": "truck honking its horn",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A018": {
+  "i": 48,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A019": {
+  "i": 46,
+  "text": "ocean waves",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A020": {
+  "i": 39,
+  "text": "heavy object thudding on the ground",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "'thudding' names the parent sound (Thump, thud)"
+ },
+ "A021": {
+  "i": 32,
+  "text": "pigeon",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A022": {
+  "i": 29,
+  "text": "alarm siren light",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A023": {
+  "i": 26,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A024": {
+  "i": 51,
+  "text": "basketball",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A025": {
+  "i": 1,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A026": {
+  "i": 9,
+  "text": "chicken",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A027": {
+  "i": 10,
+  "text": "truck",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A028": {
+  "i": 44,
+  "text": "police car",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A029": {
+  "i": 31,
+  "text": "clock ticking",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A030": {
+  "i": 38,
+  "text": "man yawning",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A031": {
+  "i": 32,
+  "text": "pigeon",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A032": {
+  "i": 50,
+  "text": "bird singing",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A033": {
+  "i": 40,
+  "text": "ice cream truck",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A034": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A035": {
+  "i": 37,
+  "text": "telephone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A036": {
+  "i": 24,
+  "text": "rain on a window",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A037": {
+  "i": 31,
+  "text": "clock ticking",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A038": {
+  "i": 42,
+  "text": "steam train horn",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A039": {
+  "i": 21,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A040": {
+  "i": 25,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A041": {
+  "i": 2,
+  "text": "children playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A042": {
+  "i": 43,
+  "text": "man laughing",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A043": {
+  "i": 29,
+  "text": "alarm siren light",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A044": {
+  "i": 18,
+  "text": "train wagon on tracks",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A045": {
+  "i": 24,
+  "text": "rain drops splashing",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A046": {
+  "i": 49,
+  "text": "owl hooting",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A047": {
+  "i": 33,
+  "text": "person walking in snow",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A048": {
+  "i": 41,
+  "text": "broken glass",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A049": {
+  "i": 3,
+  "text": "sparrow chirping",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A050": {
+  "i": 13,
+  "text": "sheep bleating",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A051": {
+  "i": 0,
+  "text": "sparrow chirping",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A052": {
+  "i": 27,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A053": {
+  "i": 7,
+  "text": "truck driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A054": {
+  "i": 2,
+  "text": "children playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A055": {
+  "i": 53,
+  "text": "glass window shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A056": {
+  "i": 42,
+  "text": "steam train horn",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A057": {
+  "i": 33,
+  "text": "person walking in snow",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A058": {
+  "i": 14,
+  "text": "goose honking",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A059": {
+  "i": 46,
+  "text": "ocean waves",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A060": {
+  "i": 36,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A061": {
+  "i": 19,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A062": {
+  "i": 15,
+  "text": "boat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A063": {
+  "i": 5,
+  "text": "bell ringing",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A064": {
+  "i": 8,
+  "text": "cupboard",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A065": {
+  "i": 15,
+  "text": "motorboat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A066": {
+  "i": 50,
+  "text": "bird singing in flight",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A067": {
+  "i": 29,
+  "text": "siren / alarm horn",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A068": {
+  "i": 39,
+  "text": "thud",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A069": {
+  "i": 3,
+  "text": "sparrow chirping",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A070": {
+  "i": 53,
+  "text": "glass shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A071": {
+  "i": 50,
+  "text": "crow cawing",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A072": {
+  "i": 41,
+  "text": "glass shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A073": {
+  "i": 22,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A074": {
+  "i": 39,
+  "text": "rock crashing down",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A075": {
+  "i": 45,
+  "text": "emergency truck with lights",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "A076": {
+  "i": 34,
+  "text": "person walking",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A077": {
+  "i": 4,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A078": {
+  "i": 47,
+  "text": "rain on a window",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A079": {
+  "i": 38,
+  "text": "woman sighing",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A080": {
+  "i": 17,
+  "text": "rooster crowing",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A081": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A082": {
+  "i": 12,
+  "text": "bee buzzing",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A083": {
+  "i": 52,
+  "text": "horse galloping",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A084": {
+  "i": 43,
+  "text": "man laughing",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A085": {
+  "i": 48,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A086": {
+  "i": 12,
+  "text": "bee buzzing",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A087": {
+  "i": 6,
+  "text": "cannon firing",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A088": {
+  "i": 23,
+  "text": "bird singing",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A089": {
+  "i": 53,
+  "text": "glass shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A090": {
+  "i": 6,
+  "text": "cannon firing",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A091": {
+  "i": 20,
+  "text": "dog shaking off water",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A092": {
+  "i": 34,
+  "text": "person walking",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A093": {
+  "i": 14,
+  "text": "goose honking",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A094": {
+  "i": 1,
+  "text": "sparrow chirping",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A095": {
+  "i": 18,
+  "text": "train wagon on tracks",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A096": {
+  "i": 46,
+  "text": "ocean waves",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A097": {
+  "i": 17,
+  "text": "rooster crowing",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A098": {
+  "i": 33,
+  "text": "person walking in snow",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A099": {
+  "i": 42,
+  "text": "person blowing a horn",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a hand horn is another kind of horn, not a train horn (as 'megaphone')"
+ },
+ "A100": {
+  "i": 14,
+  "text": "goose honking",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A101": {
+  "i": 40,
+  "text": "van",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "a van, not the ice-cream truck"
+ },
+ "A102": {
+  "i": 23,
+  "text": "bird singing",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A103": {
+  "i": 29,
+  "text": "alarm siren light",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A104": {
+  "i": 48,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A105": {
+  "i": 9,
+  "text": "chicken clucking",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A106": {
+  "i": 20,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A107": {
+  "i": 10,
+  "text": "truck",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A108": {
+  "i": 3,
+  "text": "sparrow chirping",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A109": {
+  "i": 53,
+  "text": "glass shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A110": {
+  "i": 0,
+  "text": "robin singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "unclassified",
+  "class": "correct",
+  "why": "a bird singing"
+ },
+ "A111": {
+  "i": 14,
+  "text": "goose honking",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A112": {
+  "i": 37,
+  "text": "man talking on the phone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A113": {
+  "i": 23,
+  "text": "bird singing",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A114": {
+  "i": 1,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A115": {
+  "i": 12,
+  "text": "bee",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A116": {
+  "i": 16,
+  "text": "frog croaking",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A117": {
+  "i": 35,
+  "text": "man eating",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A118": {
+  "i": 35,
+  "text": "man eating",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A119": {
+  "i": 39,
+  "text": "man straining / grunting",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A120": {
+  "i": 18,
+  "text": "train wagon on tracks",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A121": {
+  "i": 5,
+  "text": "church bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A122": {
+  "i": 49,
+  "text": "owl",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A123": {
+  "i": 9,
+  "text": "chicken clucking",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A124": {
+  "i": 9,
+  "text": "chicken",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A125": {
+  "i": 35,
+  "text": "person shouting",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "shouting is not chewing"
+ },
+ "A126": {
+  "i": 17,
+  "text": "chicken",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A127": {
+  "i": 16,
+  "text": "frog croaking",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A128": {
+  "i": 5,
+  "text": "bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A129": {
+  "i": 48,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A130": {
+  "i": 27,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A131": {
+  "i": 7,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A132": {
+  "i": 36,
+  "text": "broken glass",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A133": {
+  "i": 35,
+  "text": "man eating",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A134": {
+  "i": 6,
+  "text": "cannon firing",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A135": {
+  "i": 25,
+  "text": "lightning / thunder",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A136": {
+  "i": 4,
+  "text": "police car with siren",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A137": {
+  "i": 12,
+  "text": "bee buzzing",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A138": {
+  "i": 8,
+  "text": "cupboard",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A139": {
+  "i": 45,
+  "text": "ambulance with siren",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A140": {
+  "i": 2,
+  "text": "children playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A141": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A142": {
+  "i": 19,
+  "text": "car with hood open",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A143": {
+  "i": 46,
+  "text": "ocean waves",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A144": {
+  "i": 4,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A145": {
+  "i": 38,
+  "text": "man yawning",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A146": {
+  "i": 30,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A147": {
+  "i": 26,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A148": {
+  "i": 32,
+  "text": "pigeon",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A149": {
+  "i": 36,
+  "text": "broken glass",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A150": {
+  "i": 36,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A151": {
+  "i": 53,
+  "text": "broken glass",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A152": {
+  "i": 9,
+  "text": "chicken",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A153": {
+  "i": 21,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A154": {
+  "i": 42,
+  "text": "steam train horn",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A155": {
+  "i": 30,
+  "text": "glass window shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A156": {
+  "i": 8,
+  "text": "cupboard",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A157": {
+  "i": 19,
+  "text": "car",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A158": {
+  "i": 26,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A159": {
+  "i": 51,
+  "text": "basketball bouncing",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A160": {
+  "i": 49,
+  "text": "owl hooting",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A161": {
+  "i": 43,
+  "text": "woman laughing",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A162": {
+  "i": 44,
+  "text": "police car with siren",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A163": {
+  "i": 14,
+  "text": "goose honking",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A164": {
+  "i": 41,
+  "text": "glass shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A165": {
+  "i": 13,
+  "text": "sheep bleating",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A166": {
+  "i": 34,
+  "text": "woman walking",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A167": {
+  "i": 51,
+  "text": "basketball bouncing",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A168": {
+  "i": 21,
+  "text": "alarm beeping",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A169": {
+  "i": 7,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A170": {
+  "i": 16,
+  "text": "frog croaking",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A171": {
+  "i": 52,
+  "text": "horse trotting",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A172": {
+  "i": 45,
+  "text": "ambulance with siren",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A173": {
+  "i": 7,
+  "text": "truck driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A174": {
+  "i": 22,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A175": {
+  "i": 18,
+  "text": "train wagon on tracks",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A176": {
+  "i": 45,
+  "text": "emergency vehicle with siren",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A177": {
+  "i": 22,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A178": {
+  "i": 29,
+  "text": "siren / alarm horn",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A179": {
+  "i": 10,
+  "text": "truck driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A180": {
+  "i": 32,
+  "text": "pigeon",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A181": {
+  "i": 6,
+  "text": "cannon firing",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A182": {
+  "i": 3,
+  "text": "sparrow",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "the bird, not its chirp (as Adam's 'bird')"
+ },
+ "A183": {
+  "i": 43,
+  "text": "woman laughing",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A184": {
+  "i": 21,
+  "text": "police car with siren",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A185": {
+  "i": 25,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A186": {
+  "i": 36,
+  "text": "glass window shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A187": {
+  "i": 47,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A188": {
+  "i": 42,
+  "text": "man blowing a horn",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a hand horn is another kind of horn, not a train horn (as 'megaphone')"
+ },
+ "A189": {
+  "i": 44,
+  "text": "police car",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A190": {
+  "i": 5,
+  "text": "bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A191": {
+  "i": 13,
+  "text": "sheep bleating",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A192": {
+  "i": 50,
+  "text": "bird singing",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A193": {
+  "i": 15,
+  "text": "motorboat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A194": {
+  "i": 38,
+  "text": "man yawning",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A195": {
+  "i": 35,
+  "text": "man eating",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A196": {
+  "i": 49,
+  "text": "owl hooting",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A197": {
+  "i": 23,
+  "text": "bird singing",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A198": {
+  "i": 24,
+  "text": "water drop splashing",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A199": {
+  "i": 20,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A200": {
+  "i": 30,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A201": {
+  "i": 49,
+  "text": "owl hooting",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A202": {
+  "i": 29,
+  "text": "alarm siren light",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A203": {
+  "i": 40,
+  "text": "food truck",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A204": {
+  "i": 37,
+  "text": "man talking on the phone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A205": {
+  "i": 34,
+  "text": "man walking",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A206": {
+  "i": 3,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A207": {
+  "i": 30,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A208": {
+  "i": 43,
+  "text": "woman laughing",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A209": {
+  "i": 34,
+  "text": "footsteps in a puddle",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A210": {
+  "i": 23,
+  "text": "bird singing",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A211": {
+  "i": 33,
+  "text": "person walking in snow",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A212": {
+  "i": 8,
+  "text": "cupboard",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A213": {
+  "i": 22,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A214": {
+  "i": 35,
+  "text": "man eating",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A215": {
+  "i": 37,
+  "text": "woman on the phone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A216": {
+  "i": 37,
+  "text": "woman on the phone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A217": {
+  "i": 19,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A218": {
+  "i": 20,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A219": {
+  "i": 24,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A220": {
+  "i": 0,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A221": {
+  "i": 24,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A222": {
+  "i": 19,
+  "text": "truck driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A223": {
+  "i": 11,
+  "text": "bird singing",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A224": {
+  "i": 25,
+  "text": "storm clouds",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A225": {
+  "i": 44,
+  "text": "police car with siren",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A226": {
+  "i": 33,
+  "text": "person walking in snow",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A227": {
+  "i": 48,
+  "text": "lightning / thunder",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A228": {
+  "i": 51,
+  "text": "basketball",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A229": {
+  "i": 49,
+  "text": "owl hooting",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A230": {
+  "i": 17,
+  "text": "rooster crowing",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A231": {
+  "i": 2,
+  "text": "children playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A232": {
+  "i": 14,
+  "text": "goose honking",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A233": {
+  "i": 47,
+  "text": "water splashing",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A234": {
+  "i": 12,
+  "text": "bee buzzing",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A235": {
+  "i": 4,
+  "text": "alarm beeping",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A236": {
+  "i": 24,
+  "text": "rain on a window",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A237": {
+  "i": 0,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A238": {
+  "i": 7,
+  "text": "van",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "unclassified",
+  "class": "narrower",
+  "why": "a van is a kind of vehicle"
+ },
+ "A239": {
+  "i": 22,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A240": {
+  "i": 7,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A241": {
+  "i": 18,
+  "text": "train wagon on tracks",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A242": {
+  "i": 4,
+  "text": "alarm beeping",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A243": {
+  "i": 37,
+  "text": "telephone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A244": {
+  "i": 36,
+  "text": "glass shattering",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A245": {
+  "i": 12,
+  "text": "bee buzzing",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A246": {
+  "i": 19,
+  "text": "truck driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A247": {
+  "i": 21,
+  "text": "alarm siren light",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A248": {
+  "i": 4,
+  "text": "alarm beeping",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A249": {
+  "i": 25,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A250": {
+  "i": 16,
+  "text": "frog croaking",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A251": {
+  "i": 27,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A252": {
+  "i": 15,
+  "text": "motorboat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A253": {
+  "i": 13,
+  "text": "sheep bleating",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A254": {
+  "i": 53,
+  "text": "broken glass",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A255": {
+  "i": 21,
+  "text": "car alarm",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A256": {
+  "i": 32,
+  "text": "pigeon",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A257": {
+  "i": 11,
+  "text": "robin singing",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "unclassified",
+  "class": "correct",
+  "why": "a bird singing"
+ },
+ "A258": {
+  "i": 44,
+  "text": "police car with siren",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A259": {
+  "i": 34,
+  "text": "person walking",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A260": {
+  "i": 16,
+  "text": "frog / toad",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A261": {
+  "i": 41,
+  "text": "glass window shattering",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A262": {
+  "i": 28,
+  "text": "cow mooing",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A263": {
+  "i": 40,
+  "text": "ice cream truck",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A264": {
+  "i": 15,
+  "text": "motorboat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A265": {
+  "i": 6,
+  "text": "cannon firing",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A266": {
+  "i": 33,
+  "text": "person walking in snow",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A267": {
+  "i": 1,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A268": {
+  "i": 26,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A269": {
+  "i": 0,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A270": {
+  "i": 11,
+  "text": "bird singing",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A271": {
+  "i": 6,
+  "text": "cannon firing",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A272": {
+  "i": 15,
+  "text": "motorboat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A273": {
+  "i": 50,
+  "text": "bird singing",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A274": {
+  "i": 28,
+  "text": "cow mooing",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A275": {
+  "i": 27,
+  "text": "whoosh",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A276": {
+  "i": 20,
+  "text": "whoosh",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A277": {
+  "i": 11,
+  "text": "bird singing",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A278": {
+  "i": 1,
+  "text": "sparrow",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "the bird, not its chirp (as Adam's 'bird')"
+ },
+ "A279": {
+  "i": 47,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A280": {
+  "i": 3,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A281": {
+  "i": 23,
+  "text": "bird singing",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A282": {
+  "i": 17,
+  "text": "rooster crowing",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A283": {
+  "i": 18,
+  "text": "train on tracks",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A284": {
+  "i": 30,
+  "text": "broken glass",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A285": {
+  "i": 38,
+  "text": "man yawning",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A286": {
+  "i": 5,
+  "text": "bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A287": {
+  "i": 51,
+  "text": "basketball bouncing",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A288": {
+  "i": 10,
+  "text": "truck driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A289": {
+  "i": 52,
+  "text": "horse",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A290": {
+  "i": 0,
+  "text": "bird singing",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A291": {
+  "i": 8,
+  "text": "cupboard",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A292": {
+  "i": 26,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A293": {
+  "i": 9,
+  "text": "rooster",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A294": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A295": {
+  "i": 13,
+  "text": "sheep bleating",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A296": {
+  "i": 27,
+  "text": "wind blowing hair",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A297": {
+  "i": 51,
+  "text": "basketball bouncing",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A298": {
+  "i": 10,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A299": {
+  "i": 5,
+  "text": "bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A300": {
+  "i": 11,
+  "text": "bird singing",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A301": {
+  "i": 38,
+  "text": "man yawning",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A302": {
+  "i": 16,
+  "text": "frog / toad",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A303": {
+  "i": 45,
+  "text": "police vehicle",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A304": {
+  "i": 52,
+  "text": "horse trotting",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A305": {
+  "i": 32,
+  "text": "pigeon",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A306": {
+  "i": 44,
+  "text": "police car with siren",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A307": {
+  "i": 2,
+  "text": "children playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A308": {
+  "i": 45,
+  "text": "emergency vehicle with lights",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A309": {
+  "i": 27,
+  "text": "flag flapping in the wind",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A310": {
+  "i": 10,
+  "text": "car driving",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "A311": {
+  "i": 41,
+  "text": "broken glass",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A312": {
+  "i": 11,
+  "text": "bird singing",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A313": {
+  "i": 50,
+  "text": "bird singing",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "A314": {
+  "i": 46,
+  "text": "ocean waves",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A315": {
+  "i": 28,
+  "text": "cow mooing",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A316": {
+  "i": 26,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A317": {
+  "i": 22,
+  "text": "cat meowing",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A318": {
+  "i": 46,
+  "text": "ocean waves",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A319": {
+  "i": 42,
+  "text": "steam train horn",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A320": {
+  "i": 48,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "A321": {
+  "i": 28,
+  "text": "cow",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A322": {
+  "i": 52,
+  "text": "horse galloping",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A323": {
+  "i": 43,
+  "text": "man laughing",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "A324": {
+  "i": 13,
+  "text": "sheep bleating",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ }
+}

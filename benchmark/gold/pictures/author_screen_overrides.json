@@ -1,0 +1,142 @@
+{
+ "A001": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A018": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A040": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A085": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A129": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A185": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A224": {
+  "class": "vague",
+  "why": "storm clouds: the storm, not the thunder"
+ },
+ "A002": {
+  "class": "vague",
+  "why": "'thudding' names the parent sound (Thump, thud)"
+ },
+ "A020": {
+  "class": "vague",
+  "why": "'thudding' names the parent sound (Thump, thud)"
+ },
+ "A009": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A074": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A119": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A030": {
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A145": {
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A194": {
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A285": {
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A301": {
+  "class": "wrong",
+  "why": "yawning is another human sound, not a sigh"
+ },
+ "A052": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A106": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A130": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A199": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A218": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A251": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A309": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A091": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A296": {
+  "class": "wrong",
+  "why": "made-up maker the audio never established (same rule as Adam's 'house door')"
+ },
+ "A099": {
+  "class": "wrong",
+  "why": "a hand horn is another kind of horn, not a train horn (as 'megaphone')"
+ },
+ "A188": {
+  "class": "wrong",
+  "why": "a hand horn is another kind of horn, not a train horn (as 'megaphone')"
+ },
+ "A101": {
+  "class": "vague",
+  "why": "a van, not the ice-cream truck"
+ },
+ "A238": {
+  "class": "narrower",
+  "why": "a van is a kind of vehicle"
+ },
+ "A110": {
+  "class": "correct",
+  "why": "a bird singing"
+ },
+ "A257": {
+  "class": "correct",
+  "why": "a bird singing"
+ },
+ "A182": {
+  "class": "vague",
+  "why": "the bird, not its chirp (as Adam's 'bird')"
+ },
+ "A278": {
+  "class": "vague",
+  "why": "the bird, not its chirp (as Adam's 'bird')"
+ },
+ "A125": {
+  "class": "wrong",
+  "why": "shouting is not chewing"
+ }
+}
