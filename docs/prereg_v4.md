@@ -1803,3 +1803,20 @@ scores roughly double OWLv2 on open-vocabulary detection benchmarks and *loses* 
 A model gets better at *presence* without getting better at *source*, because presence is what it is
 trained and measured on. Reported against interest: this was run to give SAM 3 its fair chance, and
 it was the objection of the project's own author that prompted it.
+
+## Amendment 21 — the final like-for-like TEST table (2026-09-26, before any render; decision pending Adam)
+
+Panel of five, four rounds (`docs/panel_2026-09-26_plan.md`, signed 5/5; D2 carried 4–1, P5 dissenting: "a fifth
+read"). Proposed: render ours, blind and ungated text tags on TEST at the shipped configuration (onset rule on, cap
+off), one card class (H200/A100), each arm copying the base env of `test_monocap_v31` (`V4=590 FBAR=0.8 VETO=0.3
+PVETO=0.05`, `MAXSPAN=none`), checked in the `[v4]` log lines. **Both the render and the scoring wait for Adam's
+explicit yes** (a TEST render of a baseline is a further look — `docs/NIGHT_REPORT_2026-09-25.md` §5).
+
+Committed now: *If Adam says yes, this table replaces the 23 Sep table as the thesis's TEST table whatever it shows;
+the 23 Sep table moves to the read history. If Adam says no, the 23 Sep table stays the headline and the onset fix
+is reported as DEV-selected, TEST inconclusive.* The table is scored once, with the two Holm families of the plan
+(§A.2–A.3) and the category rows, and the read joins the history as the fifth; no other TEST number is read after
+it. Guards: no scorer, judge or audit is pointed at the TEST tag before the yes; the TEST directories are excluded
+from every both-halves script; job logs are read for completion and errors only.
+
+Adam's decision: _pending_ (timestamp: ____).
