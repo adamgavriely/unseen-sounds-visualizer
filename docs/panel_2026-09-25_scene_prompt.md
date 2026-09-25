@@ -167,3 +167,28 @@ Adam's question, answered: the scene chooses the *kind* of source ("campfire fla
 sound's visible *effect where it lands* may be drawn ("rain on a window pane"); a painted background is not
 tested (all five). The VLM never writes the picture's noun; a text-only rewriter may lengthen the prompt with
 how it looks, under a mechanical noun guard, falling back to the short prompt on any failure.
+
+## Amendment — Adam: "don't make more work for me, only what is necessary" (before any screening picture is looked at)
+
+Consulted P2 and G2 (both agree). **Adam's two screening sittings are dropped.** The author screens the
+arms on picture-DEV (the 54 round-2 sounds), blind to arm (shuffled codes, arm key sealed until his answers
+are typed), labelled "selected, author-screened" (author vs Adam kappa 0.46 on round 1: the author is lenient).
+The three automatic instruments all failed and are not used. Adam rates only the **one confirmation sitting**
+(repeats cut to 8, burst cards left out of the sitting).
+
+**Author screening rule (written before looking):** default final setup = G2's pick: Qwen-Image-2512 + V3.1
+with guard 2 (`PICTURE_SCENE_GUARD2`) + the rules tail + group (b) templates (+ burst cards in the pipeline,
+not rated). An alternative arm replaces a part only if it beats the default by ≥ 8/54 in the author's blind
+naming AND has no false message (widened rule 2): the Qwen-Image-2.1 arms for the generator, the expansion arm
+for the text. By-eye checks before freezing (G2): rule 2 on every picture of the final arm; the six templates
+at 3 seeds (the maker fills the frame); no part-only crops; no blanks; the guard log (fallbacks, no person
+outside human sounds).
+
+**Claims:** only the composite "final setup vs today" on the 50 frozen clips; every part stays "picture-DEV,
+selected". Already reportable without more rating (P2): round 2's N0 vs today, the generator alone,
++0.22 [+0.07, +0.37], blind, fresh clips, no false-message veto against N0.
+
+**Confirmation bars (unchanged):** correct incl. narrower, paired over sounds, CI excluding zero; zero false
+messages in the final arm; repeats ≥ 80 %; ties keep today; the answer sheet for the 81 sounds committed
+before Adam's file is opened; pictures sealed, mechanical rule-2 pass sealed, by-eye pass after his answers
+are saved and before they are scored.
