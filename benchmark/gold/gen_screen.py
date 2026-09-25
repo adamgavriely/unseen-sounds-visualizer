@@ -30,7 +30,8 @@ TEMPLATES = {
     "Thunderstorm": "one large lightning bolt striking down from a dark storm cloud",
     "Rain on surface": "heavy rain drops splashing on a window pane",
     "Rain": "heavy rain drops splashing on a window pane",
-    "Car alarm": "a whole parked car with its hazard lights flashing",
+    # reworded after the by-eye check (GP-4, before the freeze): "hazard lights flashing" drew a police light bar
+    "Car alarm": "an ordinary parked car with its orange hazard lights blinking, no lights on the roof",
     "Train horn": "the front of a whole locomotive blowing its horn",
     "Church bell": "a large church bell swinging in its tower",
     "Shatter": "a glass window shattering with sharp pieces flying",
