@@ -54,3 +54,55 @@ forest → "fire crackling in a forest"; possibly a longer, richer prompt (G1: t
    check screen the prompt variants, and what must still be a human? (P4, P2.)
 5. **Forking paths:** we have now changed the picture rules several times on the same clips. What is the
    cleanest order and set of clips so the final claim holds? (P2 leads.)
+
+---
+
+# Round 2 — merged plan GP-3 (sign or amend)
+
+**New fact since round 1:** the named verifier **failed** calibration (catches 34 % of Adam's "no", rejects
+3 % of his "yes", kappa 0.28): told the sound, it says "yes" to 135 of 170. So **Adam screens**; the
+verifier's conditional role in Q4 does not apply. Both blind and named automatic checkers are now recorded
+as failed instruments.
+
+**Agreed by all five in round 1**
+* **Generator:** GP-2's list stands — HiDream-O1-Image (MIT), Qwen-Image-2.1 (research licence: usable in
+  the thesis, labelled non-deployable), Mage-Flow (MIT, gated), control Qwen-Image-2512. LLaDA-Image
+  (Apache-2.0 on its card, 4 Sept 2026) is an optional fourth arm if disk and its licence tag allow. The
+  compute gate's outcome per candidate is written into the prereg before any screening picture exists.
+* **Scene in the picture: a qualifier word only, never a background.** The viewer already sees the scene;
+  a background shrinks the subject, invites looking for the thing in the video, and is where false
+  messages came from. The scene decides the *kind*, not the backdrop: Adam's "fire in a forest" →
+  "campfire flames crackling".
+* **VLM prompt, two steps:** (1) frames enter only through RESOLVE (V3.1, ≤2 qualifier words, list guard);
+  (2) a **text-only** rewriter expands the resolved subject to 40-80 words describing only *how* — pose,
+  act, its visible effect, framing (PE-T2I on Qwen-Image-2.1; Qwen3.8 elsewhere). A mechanical noun guard
+  runs on the rewritten text: every noun must be the source, its chain, the qualifier, or a fixed
+  effect/material word (pieces, splash, flash, smoke, steam, sparks, dust); no person outside human-sound
+  families; no place noun. Any failure → the short prompt. Fallback rate reported per arm. A false message
+  in this arm vetoes it (declared now).
+* **Gemma never acts inside the pipeline** while it is the judge (P4, G1).
+* **Forking paths (P2):** the picture rules were rewritten on three sets after reading results; nothing
+  about V3.1 or the generator is yet confirmed out of sample.
+
+**The order (GP-3)**
+1. **Freeze the confirmation list now:** run the shipped detector + gate (pictures off) over the 489
+   unannotated `unsorted` clips; take the first 50 by filename hash with ≥1 off-screen sound in group (a) or
+   (b); commit the list before anything else is drawn on them.
+2. Compute gate for each candidate; outcome committed.
+3. **Screening on picture-DEV (the 54 + the 33 DEV bench sounds), all labelled "selected":** generators at
+   seed_of(item)+1 on frozen V3.1 text; then prompt arms on the winner (image-prompt rules; two-step
+   expansion); group (b) templates; group (c) burst cards; the V3.1 guard fix for the other-branch qualifier
+   gap found on slice B. Adam rates, blind, glance fidelity (384 px, 1.5 s).
+4. **Freeze commit** naming the final setup.
+5. **One confirmation sitting** on the 50 frozen clips, blind, 10 repeats: primary = final setup vs **today**
+   (the thesis claim); secondary = final vs Qwen-Image-2512 + V3 text (the generator's share). Bars fixed
+   before: paired CI over sounds excluding zero, zero false messages under the widened rule 2, repeats
+   ≥ 80 %. Ties keep the control. Every part-attribution stays "picture-DEV, selected"; only the composite
+   is a claim.
+
+## Round 2 questions (at most six lines each)
+1. Sign GP-3 or amend points 1-5.
+2. One disagreement: on a guard failure, P4 allows one retry ("do not mention X"); G1, G2, P2 and P5 say fall
+   back to the short prompt, never retry. Which, and why?
+3. Adam's own question, answered plainly: is there any form of "scene in the picture" worth testing as a
+   screening arm, or is the qualifier word the whole answer?
