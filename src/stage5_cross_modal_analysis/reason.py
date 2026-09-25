@@ -1010,9 +1010,13 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
     if phrase and getattr(config, "PICTURE_SCENE_GUARD2", False):
         # the drawn phrase must still name the heard thing: "fireworks artillery fire" became "Fireworks
         # exploding in the night sky" and the artillery vanished (slice B, prereg amendment 2b)
-        head_word = thing.split()[-1]
-        if not _about_the_sound(phrase, head_word):
-            print("       [stage5] v3.1 head word lost (" + head_word + "): " + phrase + " -> " + thing, flush=True)
+        # any word of the SOURCE's own name counts (not the qualifier, not only the last word: "A bird
+        # singing" names Bird vocalization; "Fireworks exploding" names nothing of Artillery fire)
+        from src.labels import label_names
+        names = [w for x in chain for w in (label_names(x) or [x.lower()])]
+        if not any(_about_the_sound(phrase, n) for n in names):
+            print("       [stage5] v3.1 head word lost (" + "/".join(names) + "): " + phrase + " -> " + thing,
+                  flush=True)
             phrase = ""
     return phrase or thing
 
