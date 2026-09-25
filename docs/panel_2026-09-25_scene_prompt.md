@@ -151,3 +151,19 @@ answered by (i).
 
 ## Round 3 question (at most five lines)
 Sign GP-4, or name the single point you cannot sign and the fix.
+
+## Round 3 outcome — GP-4 signed by all five, with these final lines (binding)
+
+* **Point 4 (P2, P4):** the pairwise check may drop the bottom generator arm only when it is bottom by more
+  than the check's own CI; the dropped arm is still drawn at the committed seed and sealed, a fixed 15-sound
+  sample of it (chosen by hash before sitting 3(a)) goes into Adam's screening sheet under codes, and the drop
+  is reported as confirmed or wrong against that sample.
+* **Point 6, the order (G1, G2, P5):** draw and seal → the mechanical widened-rule-2 pass (checker's OBJECT
+  line vs the subject text, and the blank guard) runs on the sealed pictures, output written to a file nobody
+  reads → Adam rates → the by-eye rule-2 pass, with his answer file still closed → open and score. A veto is
+  decided before anyone sees whether the final arm won.
+
+Adam's question, answered: the scene chooses the *kind* of source ("campfire flames crackling"), and the
+sound's visible *effect where it lands* may be drawn ("rain on a window pane"); a painted background is not
+tested (all five). The VLM never writes the picture's noun; a text-only rewriter may lengthen the prompt with
+how it looks, under a mechanical noun guard, falling back to the short prompt on any failure.
