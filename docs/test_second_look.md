@@ -92,3 +92,11 @@ spec-level median end was -0.13 s. This is the cost side of removing the cap: wi
 when the detector's span ends, and on these clips the detector's span outlasts the annotated sound. The
 principled response is an end rule that follows the detector's own score (`AED_RELEASE`), tested on DEV
 as its own change — not a return of a fixed number of seconds, and not tuned on TEST.
+
+**The end rule, looked into (2026-09-25, panel P1).** P1's candidate: end each raw firing where its own curve
+falls below a fraction of its peak, calibrated on AudioSet-Strong, checked once on DEV. Not built: on DEV
+(`dev_monocap_v31`) none of the 28 displayed spans matched to a gold sound lingers more than 2 s, so DEV holds no
+case to check a fix against; the AudioSet calibration clips are 10 s long, too short to show a long tail; and
+TEST, where the four cases are, may not be used to design it. Left as a stated limitation of removing the cap
+(P1's likely mechanism: sustained texture firings of one family chained by `merge_by_label`), to be revisited
+only with a new development set that contains long sounds.
