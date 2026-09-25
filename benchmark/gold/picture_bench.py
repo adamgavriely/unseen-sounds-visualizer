@@ -218,6 +218,31 @@ def phase_subjects_v31(a):
     print("->", BENCH / f"subjects_{name}.json")
 
 
+def phase_expand(a):
+    """GP-4 3(b): the text-only two-step expansion of an existing subjects file (--arm names it, e.g. V31)
+    into subjects_<arm>X.json, with the refused words and the fallback rate logged."""
+    config.use_v4("590")
+    config.DEVICE = "cuda"
+    from src.labels import canonical
+    from src.stage5_cross_modal_analysis import reason as R
+    items = load_specs()
+    subj = json.loads((BENCH / f"subjects_{a.arm}.json").read_text(encoding="utf-8"))
+    mdl, proc = R._load(config.VLM_MODEL, "cuda")
+    out, fell = {}, 0
+    for it in items:
+        s = dict(subj.get(str(it["i"]), {}))
+        subject = s.get("subject") or it["subject"]
+        source = s.get("source") or canonical(it["label"])
+        long, bad = R.expand_prompt(subject, source, canonical(it["label"]), mdl, proc)
+        fell += not long
+        s.update({"subject": subject, "long": long, "refused": bad})
+        out[str(it["i"])] = s
+        print(f"   {it['i']:2d} {'FALLBACK ' + ','.join(bad) if not long else 'ok'} | {subject} -> {long[:90]}",
+              flush=True)
+    (BENCH / f"subjects_{a.arm}X.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print(f"-> subjects_{a.arm}X.json; fallback {fell}/{len(items)}")
+
+
 def phase_subjects(a):
     if a.arm == "V3":
         return phase_subjects_v3(a)
@@ -637,7 +662,7 @@ def phase_report(a):
 def main():
     global TAG, BENCH
     ap = argparse.ArgumentParser()
-    ap.add_argument("phase", choices=["specs", "subjects", "draw", "eval", "eval2", "check", "report"])
+    ap.add_argument("phase", choices=["specs", "subjects", "expand", "draw", "eval", "eval2", "check", "report"])
     ap.add_argument("--arm", default="")
     ap.add_argument("--tag", default=TAG, help="the render whose drawn sounds are the bench")
     ap.add_argument("--bench", default="", help="bench folder (default: data/work/picture_bench)")
@@ -646,7 +671,8 @@ def main():
     if a.bench:
         BENCH = Path(a.bench) if Path(a.bench).is_absolute() else _ROOT / a.bench
     {"specs": phase_specs, "subjects": phase_subjects, "draw": phase_draw,
-     "eval": phase_eval, "eval2": phase_eval2, "check": phase_check, "report": phase_report}[a.phase](a)
+     "eval": phase_eval, "eval2": phase_eval2, "check": phase_check, "report": phase_report,
+     "expand": phase_expand}[a.phase](a)
 
 
 if __name__ == "__main__":

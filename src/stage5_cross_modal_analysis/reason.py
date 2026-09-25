@@ -1017,6 +1017,64 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
     return phrase or thing
 
 
+# GP-4 two-step prompt (five-panel, 2026-09-25): the frames choose the thing (RESOLVE, above); a TEXT-ONLY
+# rewrite may then lengthen the prompt to the 40-80 words these generators were trained on, describing only
+# HOW the thing looks at the moment it makes the sound. It never sees the frames and never chooses the noun;
+# a mechanical word check refuses any other sound source, person or place, and on any refusal the short
+# prompt is used (never a retry).
+EXPAND_PROMPT = (
+    "Rewrite this picture description as one detailed caption of 40 to 60 words for an image generator: "
+    "{subject}."
+    + chr(10) +
+    "Describe only how this thing looks at the moment it makes its sound: the whole of it fully in frame, "
+    "its pose or motion, the visible effect of the sound (for example what moves, splashes, breaks or "
+    "flashes), and the framing: one large subject, centred, on a plain white background."
+    + chr(10) +
+    "Do not add any other object, animal, person or place. Answer with the caption only."
+)
+EFFECT_WORDS = {"pieces", "shards", "splash", "splashes", "droplets", "drops", "flash", "flashes", "smoke",
+                "steam", "sparks", "dust", "debris", "ripples", "waves", "light", "lights", "glow", "motion",
+                "lines", "blur", "air", "water", "fragments", "feathers", "beak", "mouth", "wings", "legs",
+                "wheels", "tail", "head", "body", "background", "white", "frame", "centre", "center"}
+PEOPLE = {"person", "man", "woman", "people", "someone", "boy", "girl", "child", "children", "hand", "hands",
+          "driver", "rider", "player", "worker", "soldier", "farmer"}
+PLACES = {"street", "road", "room", "kitchen", "forest", "city", "building", "house", "field", "park", "beach",
+          "sky", "farm", "station", "shop", "office", "garden", "mountain", "river", "lake", "sea", "town",
+          "village", "yard", "interior", "landscape", "scenery", "night"}
+
+
+def expand_guard(text: str, subject: str, source: str, family: str) -> list:
+    """Words of the long prompt that name a sound source, person or place the short subject does not."""
+    from src.labels import _parents, label_names, ancestors
+    allowed = set()
+    for x in [source, family, *ancestors(source)]:
+        for n in label_names(x):
+            allowed |= set(n.split())
+    words = set("".join(c if c.isalnum() else " " for c in text.lower()).split())
+    subj = set("".join(c if c.isalnum() else " " for c in subject.lower()).split())
+    allowed |= subj | EFFECT_WORDS
+    vocab = set()
+    for lab in _parents():
+        for n in label_names(lab):
+            if " " not in n:
+                vocab.add(n)
+    bad = sorted(w for w in words - allowed if w in vocab or w in PEOPLE or w in PLACES
+                 or (w.endswith("s") and (w[:-1] in vocab or w[:-1] in PEOPLE)))
+    if "person" in subj or "people" in subj:          # a human-sound subject keeps its person words
+        bad = [w for w in bad if w not in PEOPLE]
+    return bad
+
+
+def expand_prompt(subject: str, source: str, family: str, mdl, proc) -> tuple:
+    """-> (long prompt or "", refused words). Text only; one call; no retry."""
+    raw = _ask(mdl, proc, EXPAND_PROMPT.format(subject=subject), max_new=120)
+    text = " ".join(raw.replace(chr(10), " ").split()).strip().strip('"')
+    if not text or len(text.split()) < 15:
+        return "", ["(empty)"]
+    bad = expand_guard(text, subject, source, family)
+    return ("" if bad else text), bad
+
+
 def _drop_place_phrase(phrase: str, place: str, label: str = "", detail: str = "") -> str:
     """DEPICT_V2 only: remove a trailing "in / on / at ... <place>" phrase.
 
