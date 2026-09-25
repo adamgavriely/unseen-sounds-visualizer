@@ -105,12 +105,18 @@ def phase_specs(a):
     from src.labels import canonical
     root = _ROOT / "data" / "work" / f"protocol_proposed_{TAG}"
     items = []
+    frozen = None
+    if getattr(a, "frozen", ""):                 # GP-4 confirmation: only the frozen clips and sounds
+        fz = json.loads((_ROOT / a.frozen).read_text(encoding="utf-8"))
+        frozen = {(s["clip"], s["label"], s["start"]) for s in fz["sounds"]}
     for f in sorted(root.glob("*/augmentations.json")):
         stem = f.parent.name
         for sp in json.loads(f.read_text(encoding="utf-8")):
             if not (sp.get("augment") and sp.get("image_path")):
                 continue
             spans = sp.get("spans") or [[sp["start"], sp["end"]]]
+            if frozen is not None and (stem, sp["event_label"], round(float(sp["start"]), 2)) not in frozen:
+                continue
             items.append({"i": len(items), "clip": stem, "label": sp["event_label"],
                           "detail": sp.get("detail", ""), "subject": sp.get("subject", ""),
                           "start": float(sp["start"]), "end": float(sp["end"]),
@@ -131,6 +137,8 @@ def phase_specs(a):
         h = key.get((it["clip"], it["label"], it["subject"]))
         it["hand"] = h["verdict"] if h else None
         it["hand_readable"] = h["readable_as_the_sound"] if h else None
+    if frozen is not None:
+        assert len(items) == len(frozen), f"{len(items)} specs vs {len(frozen)} frozen sounds"
     BENCH.mkdir(parents=True, exist_ok=True)
     (BENCH / "specs.json").write_text(json.dumps(items, indent=1), encoding="utf-8")
     print(f"{len(items)} drawn sounds; {sum(1 for i in items if i['hand'])} joined to a hand verdict; "
@@ -666,6 +674,7 @@ def main():
     ap.add_argument("--arm", default="")
     ap.add_argument("--tag", default=TAG, help="the render whose drawn sounds are the bench")
     ap.add_argument("--bench", default="", help="bench folder (default: data/work/picture_bench)")
+    ap.add_argument("--frozen", default="", help="frozen confirmation set json (GP-4): restrict specs to it")
     a = ap.parse_args()
     TAG = a.tag
     if a.bench:
