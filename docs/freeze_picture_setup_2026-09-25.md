@@ -1,7 +1,8 @@
 # FREEZE — the final picture setup (GP-4 step 5), committed before any confirmation picture is drawn
 
-Code at commit 3995769. Selected on picture-DEV by the author, blind to arm ("selected, author-screened";
-`docs/panel_2026-09-25_scene_prompt.md`, author screening result).
+Code at commit 3995769. Selected on picture-DEV by the AI assistant (Claude), blind to arm ("selected, assistant-screened" — a model-based
+selection, not a calibrated instrument; assistant vs Adam kappa 0.46 on round 1;
+`docs/panel_2026-09-25_scene_prompt.md`, assistant screening result).
 
 **Final setup ("final")**
 * Subject text: V3.1 — `PICTURE_V3` + `PICTURE_SCENE` + `PICTURE_SCENE_GUARD2` (the specific source; the scene may add

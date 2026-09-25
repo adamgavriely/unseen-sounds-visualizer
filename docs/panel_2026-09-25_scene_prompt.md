@@ -170,15 +170,15 @@ how it looks, under a mechanical noun guard, falling back to the short prompt on
 
 ## Amendment — Adam: "don't make more work for me, only what is necessary" (before any screening picture is looked at)
 
-Consulted P2 and G2 (both agree). **Adam's two screening sittings are dropped.** The author screens the
+Consulted P2 and G2 (both agree). **Adam's two screening sittings are dropped.** The AI assistant (Claude) screens the
 arms on picture-DEV (the 54 round-2 sounds), blind to arm (shuffled codes, arm key sealed until his answers
-are typed), labelled "selected, author-screened" (author vs Adam kappa 0.46 on round 1: the author is lenient).
+are typed), labelled "selected, assistant-screened" (the screen was done by the AI assistant, Claude, not by Adam: a model-based selection, not a calibrated instrument — it chose the setup and proves nothing; assistant vs Adam kappa 0.46 on round 1).
 The three automatic instruments all failed and are not used. Adam rates only the **one confirmation sitting**
 (repeats cut to 8, burst cards left out of the sitting).
 
-**Author screening rule (written before looking):** default final setup = G2's pick: Qwen-Image-2512 + V3.1
+**Assistant screening rule (written before looking):** default final setup = G2's pick: Qwen-Image-2512 + V3.1
 with guard 2 (`PICTURE_SCENE_GUARD2`) + the rules tail + group (b) templates (+ burst cards in the pipeline,
-not rated). An alternative arm replaces a part only if it beats the default by ≥ 8/54 in the author's blind
+not rated). An alternative arm replaces a part only if it beats the default by ≥ 8/54 in the assistant's blind
 naming AND has no false message (widened rule 2): the Qwen-Image-2.1 arms for the generator, the expansion arm
 for the text. By-eye checks before freezing (G2): rule 2 on every picture of the final arm; the six templates
 at 3 seeds (the maker fills the frame); no part-only crops; no blanks; the guard log (fallbacks, no person
@@ -203,7 +203,7 @@ answered without its reasoning mode; running it again with reasoning on would be
 declared last instrument, so it is not done. **Three automatic instruments failed; the picture claim rests on
 Adam's blind confirmation.**
 
-## Author screening result (54 sounds, blind to arm; answers and decisions committed before the key was opened)
+## Assistant screening result (54 sounds, blind to arm; done by the AI assistant, not Adam; answers and decisions committed before the key was opened)
 
     arm                                              right   vague  wrong  can't
     Qwen-Image-2512 + V3.1 (control)                 39/54    12      3      0
@@ -216,5 +216,5 @@ Adam's blind confirmation.**
 vs control: RT +6/54 (+0.111 [0.000, +0.222]); R +3; X +2; Q21 -1; Q21-RGBA -3. By the rule written first,
 no alternative beats the default by >= 8/54, so the **default stands: Qwen-Image-2512 + V3.1 with guard 2 +
 the rules tail + group (b) templates + group (c) burst cards.** Qwen-Image-2.1 is not adopted (no gain in this
-screen; research licence). Labelled "selected, author-screened"; the author is lenient (39/54 on the control
-arm where Adam gave the similar N arm 32/54).
+screen; research licence). Labelled "selected, assistant-screened"; the assistant is lenient (39/54 on the control
+arm where Adam gave the similar N arm 32/54) and is not a calibrated instrument: it chose, it proves nothing.
