@@ -401,5 +401,349 @@
   "horn",
   "honking",
   "horn honking"
+ ],
+ "_note_gold": "Added 2026-09-25 for the per-picture judge (PP-1) from the list of gold labels alone, before any judge answer was produced.",
+ "Air horn, truck horn": [
+  "air horn",
+  "truck horn",
+  "horn",
+  "truck honking"
+ ],
+ "Aircraft": [
+  "aircraft",
+  "airplane",
+  "plane",
+  "jet",
+  "aeroplane"
+ ],
+ "Alarm": [
+  "alarm",
+  "alarm bell",
+  "alarm ringing"
+ ],
+ "Arrow": [
+  "arrow",
+  "arrows",
+  "archery",
+  "bow and arrow"
+ ],
+ "Bark": [
+  "bark",
+  "barking",
+  "dog",
+  "dog barking"
+ ],
+ "Bow-wow": [
+  "bow-wow",
+  "barking",
+  "dog",
+  "dog barking"
+ ],
+ "Breathing": [
+  "breathing",
+  "breath",
+  "panting",
+  "person breathing"
+ ],
+ "Car": [
+  "car",
+  "cars",
+  "automobile"
+ ],
+ "Cellphone buzz, vibrating alert": [
+  "phone vibrating",
+  "vibrating phone",
+  "cellphone",
+  "mobile phone",
+  "smartphone",
+  "phone"
+ ],
+ "Chainsaw": [
+  "chainsaw",
+  "chain saw"
+ ],
+ "Cheering": [
+  "cheering",
+  "cheer",
+  "crowd cheering",
+  "people cheering"
+ ],
+ "Civil defense siren": [
+  "air raid siren",
+  "civil defense siren",
+  "warning siren",
+  "siren tower"
+ ],
+ "Clang": [
+  "clang",
+  "clanging",
+  "metal clang",
+  "metal"
+ ],
+ "Clapping": [
+  "clapping",
+  "applause",
+  "hands clapping"
+ ],
+ "Clickety-clack": [
+  "clickety-clack",
+  "train on tracks",
+  "train wheels"
+ ],
+ "Computer keyboard": [
+  "keyboard",
+  "typing",
+  "computer keyboard",
+  "laptop"
+ ],
+ "Crack": [
+  "crack",
+  "cracking"
+ ],
+ "Creak": [
+  "creak",
+  "creaking",
+  "creaky door"
+ ],
+ "Cricket": [
+  "cricket",
+  "crickets",
+  "chirping cricket"
+ ],
+ "Crow": [
+  "crow",
+  "crows",
+  "raven",
+  "cawing"
+ ],
+ "Crumpling, crinkling": [
+  "crumpling",
+  "crinkling",
+  "paper",
+  "crumpled paper",
+  "plastic bag"
+ ],
+ "Dog": [
+  "dog",
+  "dogs",
+  "puppy"
+ ],
+ "Door": [
+  "door",
+  "door closing",
+  "door opening"
+ ],
+ "Doorbell": [
+  "doorbell",
+  "door bell",
+  "ding-dong"
+ ],
+ "Duck": [
+  "duck",
+  "ducks"
+ ],
+ "Electric shaver, electric razor": [
+  "electric shaver",
+  "electric razor",
+  "shaver",
+  "razor"
+ ],
+ "Electric toothbrush": [
+  "electric toothbrush",
+  "toothbrush"
+ ],
+ "Engine": [
+  "engine",
+  "motor",
+  "engine running"
+ ],
+ "Explosion": [
+  "explosion",
+  "blast",
+  "bomb",
+  "exploding"
+ ],
+ "Fire": [
+  "fire",
+  "flames",
+  "burning",
+  "crackling fire"
+ ],
+ "Firecracker": [
+  "firecracker",
+  "firecrackers",
+  "fireworks"
+ ],
+ "Fireworks": [
+  "fireworks",
+  "firework"
+ ],
+ "Frying (food)": [
+  "frying",
+  "frying pan",
+  "cooking",
+  "sizzling"
+ ],
+ "Glass": [
+  "glass",
+  "glasses"
+ ],
+ "Gunshot, gunfire": [
+  "gunshot",
+  "gunfire",
+  "gun",
+  "shooting",
+  "gun firing",
+  "pistol",
+  "rifle"
+ ],
+ "Hammer": [
+  "hammer",
+  "hammering"
+ ],
+ "Helicopter": [
+  "helicopter",
+  "chopper"
+ ],
+ "Hiss": [
+  "hiss",
+  "hissing"
+ ],
+ "Horse": [
+  "horse",
+  "horses"
+ ],
+ "Howl": [
+  "howl",
+  "howling",
+  "wolf",
+  "wolves"
+ ],
+ "Human voice": [
+  "voice",
+  "person talking",
+  "person"
+ ],
+ "Keys jangling": [
+  "keys",
+  "keys jangling",
+  "bunch of keys"
+ ],
+ "Motorcycle": [
+  "motorcycle",
+  "motorbike",
+  "motor bike"
+ ],
+ "Ping": [
+  "ping"
+ ],
+ "Quack": [
+  "quack",
+  "quacking",
+  "duck"
+ ],
+ "Radio": [
+  "radio"
+ ],
+ "Roaring cats (lions, tigers)": [
+  "lion",
+  "tiger",
+  "roaring",
+  "roar",
+  "big cat"
+ ],
+ "Rustle": [
+  "rustle",
+  "rustling",
+  "leaves rustling"
+ ],
+ "Screech": [
+  "screech",
+  "screeching"
+ ],
+ "Shofar": [
+  "shofar",
+  "ram's horn",
+  "horn blowing"
+ ],
+ "Slam": [
+  "slam",
+  "slamming",
+  "door slam"
+ ],
+ "Slap, smack": [
+  "slap",
+  "smack",
+  "slapping"
+ ],
+ "Snicker": [
+  "snicker",
+  "snickering",
+  "giggle",
+  "laughing"
+ ],
+ "Sonar": [
+  "sonar",
+  "submarine"
+ ],
+ "Squeal": [
+  "squeal",
+  "squealing"
+ ],
+ "Tap": [
+  "tap",
+  "tapping"
+ ],
+ "Telephone": [
+  "telephone",
+  "phone",
+  "phone ringing"
+ ],
+ "Thunderstorm": [
+  "thunderstorm",
+  "storm",
+  "thunder",
+  "lightning"
+ ],
+ "Tick-tock": [
+  "tick-tock",
+  "clock",
+  "ticking clock",
+  "clock ticking"
+ ],
+ "Train wheels squealing": [
+  "train wheels",
+  "train squealing",
+  "train"
+ ],
+ "Truck": [
+  "truck",
+  "lorry"
+ ],
+ "Typing": [
+  "typing",
+  "keyboard",
+  "typewriter"
+ ],
+ "Water": [
+  "water",
+  "stream",
+  "river",
+  "waves",
+  "flowing water"
+ ],
+ "Whack, thwack": [
+  "whack",
+  "thwack",
+  "hit",
+  "hitting"
+ ],
+ "Whip": [
+  "whip",
+  "whip crack"
+ ],
+ "Whistle": [
+  "whistle",
+  "whistling"
  ]
 }
