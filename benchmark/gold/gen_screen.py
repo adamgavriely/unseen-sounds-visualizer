@@ -21,6 +21,24 @@ _ROOT = Path(__file__).resolve().parent.parent.parent
 PLAIN_TAIL = ", plain white background, clearly visible"          # stage6.plain_prompt, unchanged
 NEGATIVE_V3 = ["scenery", "landscape", "background scene", "room interior", "street", "buildings",
                "sky background", "text", "letters", "watermark"]
+# GP-4 3(b) image-prompt rules (G2): the whole thing, mid-act with its visible effect, one large subject
+RULES_TAIL = (", the whole thing fully in frame, caught at the moment it makes the sound with its visible "
+              "effect, one large subject filling the picture, plain white background")
+# group (b): sounds with a canonical maker get a fixed subject per label (G2, G1; five-panel GP-4)
+TEMPLATES = {
+    "Thunder": "one large lightning bolt striking down from a dark storm cloud",
+    "Thunderstorm": "one large lightning bolt striking down from a dark storm cloud",
+    "Rain on surface": "heavy rain drops splashing on a window pane",
+    "Rain": "heavy rain drops splashing on a window pane",
+    "Car alarm": "a whole parked car with its hazard lights flashing",
+    "Train horn": "the front of a whole locomotive blowing its horn",
+    "Church bell": "a large church bell swinging in its tower",
+    "Shatter": "a glass window shattering with sharp pieces flying",
+    "Smash, crash": "a glass window shattering with sharp pieces flying",
+}
+# group (c): no maker the audio established -> a fixed comic burst card with the word, never generated
+CARDS = {"Whoosh, swoosh, swish": "WHOOSH", "Thunk": "THUD", "Thump, thud": "THUD", "Bang": "BANG",
+         "Slap, smack": "SMACK", "Whack, thwack": "WHACK"}
 RGBA_WRAP = ("This is an RGBA image with transparency. {subject}. The image has alpha channel and the "
              "background is transparent.")                           # the Qwen-Image-2.1 card's own format
 
@@ -60,15 +78,44 @@ def load(model_key):
     return pipe
 
 
-def draw(pipe, model_key, subject, seed):
+def burst_card(word):
+    """A fixed comic burst with the word inside it (drawn once per word, identical every time)."""
+    import math
+    from PIL import Image, ImageDraw, ImageFont
+    img = Image.new("RGB", (1024, 1024), "white")
+    d = ImageDraw.Draw(img)
+    pts = []
+    for k in range(24):
+        r = 470 if k % 2 == 0 else 330
+        a = 2 * math.pi * k / 24
+        pts.append((512 + r * math.cos(a), 512 + r * math.sin(a)))
+    d.polygon(pts, fill=(255, 214, 64), outline=(30, 30, 30), width=10)
+    size = 170 if len(word) <= 5 else 140
+    font = None
+    for f in ("DejaVuSans-Bold.ttf", "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "arialbd.ttf", "C:/Windows/Fonts/arialbd.ttf"):
+        try:
+            font = ImageFont.truetype(f, size)
+            break
+        except OSError:
+            continue
+    font = font or ImageFont.load_default(size=size)
+    x0, y0, x1, y1 = d.textbbox((0, 0), word, font=font)
+    d.text((512 - (x1 - x0) / 2 - x0, 512 - (y1 - y0) / 2 - y0), word, fill=(20, 20, 20), font=font)
+    return img
+
+
+def draw(pipe, model_key, subject, seed, tail=PLAIN_TAIL, long_prompt=""):
     import torch
     from PIL import Image
     _, _, kw, uses_neg = MODELS[model_key]
     kw = dict(kw, width=1024, height=1024, generator=torch.Generator("cuda").manual_seed(seed))
     if model_key == "q21rgba":
         prompt = RGBA_WRAP.format(subject=subject)
+    elif long_prompt:
+        prompt = long_prompt
     else:
-        prompt = subject + PLAIN_TAIL
+        prompt = subject + tail
     if uses_neg:
         kw["negative_prompt"] = negative_for(subject) or " "
     img = pipe(prompt=prompt, **kw).images[0]
@@ -87,6 +134,10 @@ def main():
     ap.add_argument("--subjects", default="V31")
     ap.add_argument("--arm", default="")
     ap.add_argument("--seed-offset", type=int, default=1)      # GP-4: seed_of(item) + 1 for every arm
+    ap.add_argument("--tail", choices=["plain", "rules"], default="plain")
+    ap.add_argument("--long", action="store_true", help="use the subjects file's guarded 'long' prompt")
+    ap.add_argument("--templates", action="store_true", help="group (b) templates and group (c) cards")
+    ap.add_argument("--only", default="", help="comma list of item ids (e.g. the template sounds)")
     a = ap.parse_args()
     import torch
     bench = _ROOT / a.bench
@@ -94,6 +145,10 @@ def main():
     subj = json.loads((bench / f"subjects_{a.subjects}.json").read_text(encoding="utf-8"))
     if a.gate:                                 # five fixed sounds: the first five by seed
         specs = sorted(specs, key=seed_of)[:5]
+    if a.only:
+        keep = {int(x) for x in a.only.split(",")}
+        specs = [s for s in specs if s["i"] in keep]
+    tail = RULES_TAIL if a.tail == "rules" else PLAIN_TAIL
     out = bench / (a.arm or f"gate_{a.model}")
     out.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
@@ -102,12 +157,22 @@ def main():
     torch.cuda.reset_peak_memory_stats()
     manifest, times = [], []
     for it in specs:
-        subject = subj.get(str(it["i"]), {}).get("subject") or it["subject"]
+        s = subj.get(str(it["i"]), {})
+        subject = s.get("subject") or it["subject"]
+        source = s.get("source") or it["label"]
+        long_prompt = s.get("long", "") if a.long else ""
         seed = seed_of(it) + a.seed_offset
         t = time.time()
-        img, prompt = draw(pipe, a.model, subject, seed)
-        if ink(img) < 0.05:                    # the blank guard, as in the pipeline: redraw once
-            img, prompt = draw(pipe, a.model, subject, seed + 1)
+        if a.templates and (source in CARDS or it["label"] in CARDS):
+            word = CARDS.get(source) or CARDS.get(it["label"])
+            img, prompt = burst_card(word), "CARD:" + word
+        else:
+            if a.templates and (source in TEMPLATES or it["label"] in TEMPLATES):
+                subject = TEMPLATES.get(source) or TEMPLATES[it["label"]]
+                long_prompt = ""
+            img, prompt = draw(pipe, a.model, subject, seed, tail, long_prompt)
+            if ink(img) < 0.05:                # the blank guard, as in the pipeline: redraw once
+                img, prompt = draw(pipe, a.model, subject, seed + 1, tail, long_prompt)
         times.append(time.time() - t)
         img.save(out / f"{it['i']:02d}.png")
         manifest.append({"i": it["i"], "subject": subject, "prompt": prompt, "seed": seed,
