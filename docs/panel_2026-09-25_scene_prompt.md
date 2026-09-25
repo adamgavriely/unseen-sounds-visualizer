@@ -106,3 +106,9 @@ as failed instruments.
    back to the short prompt, never retry. Which, and why?
 3. Adam's own question, answered plainly: is there any form of "scene in the picture" worth testing as a
    screening arm, or is the qualifier word the whole answer?
+4. **P4's last automatic proposal:** a *pairwise* check — two pictures of the same sound, "which would a deaf
+   viewer more likely read as X, or neither", asked in both orders so a lenient or strict bias cancels —
+   calibrated on round 1's discordant pairs (same sound, Adam said yes to one arm and no to another); bar
+   written first: ≥ 75 % agreement with ≥ 90 % order-swap consistency. It may only *order* arms to shorten
+   Adam's sitting; never choose per-sound pictures, never act in the pipeline. Allow this one attempt, or stop
+   automatic screening here?
