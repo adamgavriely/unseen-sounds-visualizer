@@ -135,7 +135,10 @@ def load_gold(paths):
                              # tick was read (22 visible-only rows counted as needed) -- corrected before any
                              # TEST number was read (docs/GOLD_RERUN_2026-09-22.md).
                              "needed": not (bool(s.get("obvious", False)) or bool(s.get("visible", False))),
-                             "importance": int(s.get("importance") or 2)})
+                             "importance": int(s.get("importance") or 2),
+                             # kept apart for the per-picture judge's counts (PP-1); nothing here reads them
+                             "visible": bool(s.get("visible", False)),
+                             "obvious": bool(s.get("obvious", False))})
             gold[stem] = snds
     return gold
 
