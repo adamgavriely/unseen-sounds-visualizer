@@ -82,10 +82,11 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--bench", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--subjects", default="V3", help="which subjects file carries the sources (V3, V31G, ...)")
     a = ap.parse_args()
     bench = Path(a.bench) if Path(a.bench).is_absolute() else _ROOT / a.bench
     specs = json.loads((bench / "specs.json").read_text(encoding="utf-8"))
-    v3 = json.loads((bench / "subjects_V3.json").read_text(encoding="utf-8"))
+    v3 = json.loads((bench / f"subjects_{a.subjects}.json").read_text(encoding="utf-8"))
     syn = json.loads(SYN.read_text(encoding="utf-8")) if SYN.exists() else {}
     syn = {k: v for k, v in syn.items() if not k.startswith("_")}
     kids = _children()
