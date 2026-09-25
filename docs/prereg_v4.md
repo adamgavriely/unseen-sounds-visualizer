@@ -1819,4 +1819,4 @@ is reported as DEV-selected, TEST inconclusive.* The table is scored once, with 
 it. Guards: no scorer, judge or audit is pointed at the TEST tag before the yes; the TEST directories are excluded
 from every both-halves script; job logs are read for completion and errors only.
 
-Adam's decision: _pending_ (timestamp: ____).
+Adam's decision: **YES** — render and score (chat, 2026-09-25 21:50 JDT: "2 yes"). Second annotator: yes, DEV/TEST clips only, no slice B ("because they are weird").
