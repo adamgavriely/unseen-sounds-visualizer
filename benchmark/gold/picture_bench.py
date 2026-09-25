@@ -181,6 +181,8 @@ def phase_subjects_v31(a):
     config.DEVICE = "cuda"
     config.PICTURE_V3 = True
     config.PICTURE_SCENE = True
+    name = a.arm or "V31"
+    config.PICTURE_SCENE_GUARD2 = name == "V31G"      # GP-4 3(b): the other-branch / head-word guard
     from src.types import AudioEvent
     from src.labels import choose_source, canonical
     from src.stage2_video_understanding import _sample_frames, _sample_frames_at
@@ -212,14 +214,14 @@ def phase_subjects_v31(a):
                              "candidates": cands, "fired": fired}
         print(f"   {it['i']:2d} {it['label'][:14]:14s} [{src[:24]:24s}] {it['subject'][:28]:28s} -> {phrase}",
               flush=True)
-    (BENCH / "subjects_V31.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
-    print("->", BENCH / "subjects_V31.json")
+    (BENCH / f"subjects_{name}.json").write_text(json.dumps(out, indent=1), encoding="utf-8")
+    print("->", BENCH / f"subjects_{name}.json")
 
 
 def phase_subjects(a):
     if a.arm == "V3":
         return phase_subjects_v3(a)
-    if a.arm == "V31":
+    if a.arm in ("V31", "V31G"):
         return phase_subjects_v31(a)
     """Re-run ONLY the depiction step of stage 5, as reason.decide_subjects does it, with the new
     rules switched on. The gate is not re-run: every arm draws the same 33 sounds."""
