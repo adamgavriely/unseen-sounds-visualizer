@@ -31,12 +31,15 @@ TEMPLATES = {
     "Rain on surface": "heavy rain drops splashing on a window pane",
     "Rain": "heavy rain drops splashing on a window pane",
     # reworded after the by-eye check (GP-4, before the freeze): "hazard lights flashing" drew a police light bar
-    "Car alarm": "an ordinary parked car with its orange hazard lights blinking, no lights on the roof",
+    "Car alarm": "an ordinary parked car seen from the front, its headlights and indicator lights flashing",
     "Train horn": "the front of a whole locomotive blowing its horn",
     "Church bell": "a large church bell swinging in its tower",
     "Shatter": "a glass window shattering with sharp pieces flying",
     "Smash, crash": "a glass window shattering with sharp pieces flying",
 }
+# words a template must never draw, added to the negative prompt (generators ignore "no ..." in a prompt):
+# the car alarm drew a police light bar, then roof beacons, at the by-eye check (GP-4, before the freeze)
+TEMPLATE_NEG = {"Car alarm": "roof light, light bar, beacon, police car, emergency vehicle, siren"}
 # group (c): no maker the audio established -> a fixed comic burst card with the word, never generated
 CARDS = {"Whoosh, swoosh, swish": "WHOOSH", "Thunk": "THUD", "Thump, thud": "THUD", "Bang": "BANG",
          "Slap, smack": "SMACK", "Whack, thwack": "WHACK"}
@@ -106,7 +109,7 @@ def burst_card(word):
     return img
 
 
-def draw(pipe, model_key, subject, seed, tail=PLAIN_TAIL, long_prompt=""):
+def draw(pipe, model_key, subject, seed, tail=PLAIN_TAIL, long_prompt="", extra_neg=""):
     import torch
     from PIL import Image
     _, _, kw, uses_neg = MODELS[model_key]
@@ -118,7 +121,7 @@ def draw(pipe, model_key, subject, seed, tail=PLAIN_TAIL, long_prompt=""):
     else:
         prompt = subject + tail
     if uses_neg:
-        kw["negative_prompt"] = negative_for(subject) or " "
+        kw["negative_prompt"] = ", ".join(x for x in (negative_for(subject), extra_neg) if x) or " "
     img = pipe(prompt=prompt, **kw).images[0]
     if img.mode == "RGBA":                     # the viewer sees it on white
         bg = Image.new("RGB", img.size, "white")
@@ -168,12 +171,15 @@ def main():
             word = CARDS.get(source) or CARDS.get(it["label"])
             img, prompt = burst_card(word), "CARD:" + word
         else:
+            extra_neg = ""
             if a.templates and (source in TEMPLATES or it["label"] in TEMPLATES):
-                subject = TEMPLATES.get(source) or TEMPLATES[it["label"]]
+                key = source if source in TEMPLATES else it["label"]
+                subject = TEMPLATES[key]
+                extra_neg = TEMPLATE_NEG.get(key, "")
                 long_prompt = ""
-            img, prompt = draw(pipe, a.model, subject, seed, tail, long_prompt)
+            img, prompt = draw(pipe, a.model, subject, seed, tail, long_prompt, extra_neg)
             if ink(img) < 0.05:                # the blank guard, as in the pipeline: redraw once
-                img, prompt = draw(pipe, a.model, subject, seed + 1, tail, long_prompt)
+                img, prompt = draw(pipe, a.model, subject, seed + 1, tail, long_prompt, extra_neg)
         times.append(time.time() - t)
         img.save(out / f"{it['i']:02d}.png")
         manifest.append({"i": it["i"], "subject": subject, "prompt": prompt, "seed": seed,
