@@ -7,8 +7,8 @@
 - You were consistent: 9 of 10 repeated pictures got the same answer.
 - The new text (V3) is **not adopted**: one picture showed a door for a sound that was only a "thud" — a false
   message, which our rule forbids.
-- **Usable today:** "the new picture model alone beats today by +22 points, significant, blind, on fresh
-  clips".
+- **Usable today, with one caveat:** "the new picture model alone beats today by +22 points, significant, blind,
+  on fresh clips" — the false-message check was only run on N, not on this version, so it is not yet checked.
 
 ## Can an AI judge pictures instead of you? We tried three ways — all failed
 - Asked "what is this?": said "can't tell" to almost everything (502 of 567).
@@ -48,7 +48,9 @@
 - Three AI "judges" of pictures all failed against your ratings (see above) — reported as a finding.
 
 ## Actions for you
-1. Run the cleanup command (frees ~95 GB so two more picture models can be tested):
+1. Optional disk cleanup (frees ~95 GB; the disk is 97 % full). I do **not** recommend testing more picture models:
+   the newer one gave no gain, and the reviewers agree the remaining failures are about *what* is drawn. All of
+   these can be downloaded again (Qwen2.5-VL-7B is only the old default model, not used by the current pipeline):
    `ssh adamg@slurm-login1.lnx.biu.ac.il 'cd ~ && rm -rf .cache/huggingface/hub/models--HuggingFaceM4--Idefics3-8B-Llama3 .cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.3 .cache/huggingface/hub/models--Qwen--Qwen2.5-VL-7B-Instruct .cache/openflam && source miniconda3/etc/profile.d/conda.sh && conda env remove -n comfy -y && conda env remove -n psed -y && df -h ~ | tail -1'`
    (the safety system blocked me from deleting; package lists of the two environments are saved in `docs/envs/`).
 2. Mage-Flow: nothing to do — there is no official download, so it is dropped.

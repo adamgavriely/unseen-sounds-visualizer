@@ -34,3 +34,12 @@ once when it is uniform (`stage6._is_blank`, pixel std < 3); arm A0 was drawn wi
 control pictures, 11 have little ink but only 1 (#12, "Rain hits") is blank by the shipped test; it was redrawn
 once at seed + 1 (`scripts/redraw_control_blank.py`) and is still blank, which is what the shipped pipeline would
 show. So the control is faithful to today's system; the page is unchanged. FINAL has no blank picture.
+
+**Scoring commands, fixed before any answer exists:**
+
+    python benchmark/gold/score_answers.py score --answers <Adam's answers/confirm export> \
+        --key benchmark/gold/pictures/rate_confirm_SOUND_KEY.json \
+        --sheet benchmark/gold/pictures/answer_sheet_confirm_v32.json [--overrides <decided with the arm key closed>]
+    (by-eye rule-2 pass on FINAL, answers still unopened; the sealed checker file is opened now, sha256 checked)
+    python benchmark/gold/score_answers.py unseal --scored <scored> \
+        --arms data/work/rate_confirm_ARM_KEY_do_not_open_until_scored.json --pairs FINAL:A0 --look-arm FINAL

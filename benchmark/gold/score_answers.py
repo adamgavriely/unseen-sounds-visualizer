@@ -140,7 +140,8 @@ def cmd_unseal(a):
               f"  {cs.count('wrong'):3d}  {cs.count('cant'):3d}  {cs.count('unclassified'):3d}")
     sounds = sorted({k[1] for k in first})
     fam_diff = {int(scored[c]["i"]): scored[c]["source"] != scored[c]["family"] for c in scored}
-    for x, y in [("N", "today"), ("N", "N0"), ("N0", "today")]:
+    pairs = [tuple(x.split(":")) for x in a.pairs.split(",")] if a.pairs else [("N", "today"), ("N", "N0"), ("N0", "today")]
+    for x, y in pairs:
         if x not in arm_names or y not in arm_names:
             continue
         both = [i for i in sounds if (x, i) in right and (y, i) in right]
@@ -157,9 +158,10 @@ def cmd_unseal(a):
     if agree:
         print(f"repeats: same class {sum(agree)}/{len(agree)}, same right/not-right {sum(agree_b)}/{len(agree_b)}"
               f" ({100 * sum(agree_b) / len(agree_b):.0f}%; below 80% the round is inconclusive)")
-    wrong_n = [(k, scored[c]) for k, c in first.items() if k[0] == "N" and scored[c]["class"] == "wrong"]
+    look = a.look_arm or "N"
+    wrong_n = [(k, scored[c]) for k, c in first.items() if k[0] == look and scored[c]["class"] == "wrong"]
     for k, r in wrong_n:
-        print(f"   LOOK (possible false message) N:{k[1]} sound {r['source']}: {r['text']!r}")
+        print(f"   LOOK (possible false message) {look}:{k[1]} sound {r['source']}: {r['text']!r}")
     if a.check and Path(a.check).exists():
         chk = json.loads(Path(a.check).read_text(encoding="utf-8"))     # the cmd_check output
         adam, mach = [], []
@@ -191,6 +193,8 @@ def main():
     ap.add_argument("--scored")
     ap.add_argument("--arms")
     ap.add_argument("--check", default="")
+    ap.add_argument("--pairs", default="", help="comma list of ARM:BASE pairs for the paired bootstrap, e.g. FINAL:A0")
+    ap.add_argument("--look-arm", default="", help="the arm whose wrong answers are looked at for false messages")
     a = ap.parse_args()
     {"check": cmd_check, "score": cmd_score, "unseal": cmd_unseal}[a.cmd](a)
 
