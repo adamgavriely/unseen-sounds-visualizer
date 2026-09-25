@@ -254,9 +254,47 @@ def cmd_score(a):
         print("->", out)
 
 
+def cmd_b4(a):
+    """B4: the judge's answers on the round-2 pictures vs Adam's blind answers, both classified with the
+    committed round-2 sheet; the checker's frozen bars. Reported overall and per generator."""
+    from benchmark.gold.score_answers import _kappa
+    import benchmark.gold.picture_bench as PB
+    bench = _ROOT / "data" / "work" / "picture_bench_fresh"
+    PB.BENCH = bench
+    items = json.loads((bench / "specs.json").read_text(encoding="utf-8"))
+    sheet = json.loads((_ROOT / "benchmark/gold/pictures/answer_sheet_picfresh_v32.json").read_text(encoding="utf-8"))
+    scored = json.loads((_ROOT / "benchmark/gold/pictures/adam_answers_round2_scored.json").read_text(encoding="utf-8"))
+    arms = json.loads((_ROOT / "benchmark/gold/pictures/rate_pictures2_ARM_KEY.json").read_text(encoding="utf-8"))
+    cache = json.loads(CACHE.read_text(encoding="utf-8"))
+    good = {"correct", "narrower"}
+    paths = {arm: PB.picture_paths(arm, items) for arm in ("today", "N", "N0")}
+    seen, rows = set(), []
+    for code in sorted(scored):
+        k = (arms[code]["arm"], arms[code]["i"])
+        if k in seen:
+            continue                                 # repeats excluded
+        seen.add(k)
+        p = Path(paths[k[0]][k[1]])
+        ans = cache.get(_key(p), {}).get("answer") if p.exists() else None
+        if ans is None:
+            continue
+        low = re.sub(r"[^a-z]", "", ans.lower())
+        jc = "cant" if low in ("canttell", "cannottell") else classify(ans, sheet[str(k[1])])
+        rows.append((k[0], scored[code]["class"] in good, jc in good))
+    for name, sel in [("all", None), ("FLUX (today)", "today"), ("Qwen-Image (N, N0)", ("N", "N0"))]:
+        rs = [r for r in rows if sel is None or r[0] == sel or (isinstance(sel, tuple) and r[0] in sel)]
+        adam = np.array([r[1] for r in rs]); judge = np.array([r[2] for r in rs])
+        catch = float((~judge[~adam]).mean()) if (~adam).any() else float("nan")
+        falsrej = float((~judge[adam]).mean()) if adam.any() else float("nan")
+        kap = _kappa(list(adam), list(judge))
+        ok = catch >= 0.70 and falsrej <= 0.15 and kap >= 0.5
+        print(f"B4 {name:20s} n={len(rs):3d}  catches {catch:.0%} of Adam's not-right (bar 70%), rejects "
+              f"{falsrej:.0%} of his right (bar 15%), kappa {kap:.2f} (bar 0.5) -> {'PASS' if ok else 'FAIL'}")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["answers", "score"])
+    ap.add_argument("cmd", choices=["answers", "score", "b4"])
     ap.add_argument("--tags", nargs="+", default=["v4b4", "dev_monocap_v31"])
     ap.add_argument("--tag", default="dev_monocap_v31")
     ap.add_argument("--subset", default="dev")
@@ -264,7 +302,7 @@ def main():
     ap.add_argument("--repeat", type=int, default=0)
     ap.add_argument("--unlock", action="store_true", help="show the ranking; only after B4 has passed")
     a = ap.parse_args()
-    {"answers": cmd_answers, "score": cmd_score}[a.cmd](a)
+    {"answers": cmd_answers, "score": cmd_score, "b4": cmd_b4}[a.cmd](a)
 
 
 if __name__ == "__main__":
