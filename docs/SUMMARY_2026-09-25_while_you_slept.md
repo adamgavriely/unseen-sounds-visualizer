@@ -27,7 +27,25 @@
 - 50 fresh clips for that final sitting are already chosen and frozen, before any picture exists.
 
 ## What I did tonight
-- (pending — filled in as results arrive)
+- **Picked 50 fresh clips for your final sitting** — by a fixed random order, before any picture existed
+  (81 sounds). Nothing was tuned on them.
+- **Tried a newer picture model (Qwen-Image-2.1).** It runs fine but was **not better** in my blind check,
+  and its licence is research-only — so we keep the current model (Qwen-Image-2512).
+- **Tried prompt versions** (I looked at 324 pictures myself, without knowing which version drew which —
+  I am a generous rater, so these numbers only choose, they prove nothing):
+  | version | right, of 54 |
+  |---|---|
+  | current (new model + new text) | 39 |
+  | + "the whole thing, caught making the sound" | 42 |
+  | + that, + fixed pictures for thunder/rain/alarms/bells/glass/train horns, + word cards | **45** (fewest wrong) |
+  | longer AI-written description (its word check rejected 70 % of them) | 41 |
+- **Fixed things I found by checking every picture of the chosen version:** the car-alarm picture drew a
+  *police* light bar (a false message) — fixed; a bug in my new word check (it turned "a bird singing" into
+  "bird vocalization") — fixed before anything was rated.
+- **Froze the final setup** (commit c0d1d1b) and drew your final sitting.
+- **Did not build an "end the picture when the sound ends" rule:** the development clips have no case of a
+  picture staying too long, so there is nothing honest to test it on. Written down as a limitation.
+- Three AI "judges" of pictures all failed against your ratings (see above) — reported as a finding.
 
 ## Actions for you
 1. Run the cleanup command (frees ~95 GB so two more picture models can be tested):
