@@ -1,0 +1,1346 @@
+{
+ "C001": {
+  "bench": "confirm",
+  "i": 78,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Printer",
+  "source": "Printer",
+  "start": 9.75
+ },
+ "C002": {
+  "bench": "confirm",
+  "i": 16,
+  "clip": "m5_disaster_san_andreas_71",
+  "family": "Explosion",
+  "source": "Explosion",
+  "start": 13.75
+ },
+ "C003": {
+  "bench": "confirm",
+  "i": 48,
+  "clip": "t1_san_andreasa",
+  "family": "Water",
+  "source": "Waves, surf",
+  "start": 2.0
+ },
+ "C004": {
+  "bench": "confirm",
+  "i": 19,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Tick",
+  "source": "Tick",
+  "start": 2.5
+ },
+ "C005": {
+  "bench": "confirm",
+  "i": 32,
+  "clip": "m5_tv_band_of_brothers_135b",
+  "family": "Gunshot",
+  "source": "Artillery fire",
+  "start": 7.75
+ },
+ "C006": {
+  "bench": "confirm",
+  "i": 63,
+  "clip": "w8_helmetcam_chainsaw_roof_1b",
+  "family": "Chainsaw",
+  "source": "Chainsaw",
+  "start": 0.14000000000000012
+ },
+ "C007": {
+  "bench": "confirm",
+  "i": 61,
+  "clip": "w8_film_the_mist_2a",
+  "family": "Vehicle",
+  "source": "Reversing beeps",
+  "start": 15.5
+ },
+ "C008": {
+  "bench": "confirm",
+  "i": 27,
+  "clip": "m5_family_jurassic_79c",
+  "family": "Chink, clink",
+  "source": "Chink, clink",
+  "start": 2.3
+ },
+ "C009": {
+  "bench": "confirm",
+  "i": 67,
+  "clip": "w8_helmetcam_interior_2a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 1.25
+ },
+ "C010": {
+  "bench": "confirm",
+  "i": 29,
+  "clip": "m5_horror_dont_breathe_6c",
+  "family": "Gasp",
+  "source": "Gasp",
+  "start": 11.25
+ },
+ "C011": {
+  "bench": "confirm",
+  "i": 34,
+  "clip": "m5_war_private_ryan_18",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 1.5
+ },
+ "C012": {
+  "bench": "confirm",
+  "i": 62,
+  "clip": "w8_film_the_mist_2a",
+  "family": "Gunshot",
+  "source": "Gunshot, gunfire",
+  "start": 11.75
+ },
+ "C013": {
+  "bench": "confirm",
+  "i": 77,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Whale vocalization",
+  "source": "Whale vocalization",
+  "start": 11.5
+ },
+ "C014": {
+  "bench": "confirm",
+  "i": 17,
+  "clip": "m5_doc_restrepo_138c",
+  "family": "Bell",
+  "source": "Ding",
+  "start": 13.0
+ },
+ "C015": {
+  "bench": "confirm",
+  "i": 25,
+  "clip": "m5_family_jurassic_79c",
+  "family": "Roar",
+  "source": "Roar",
+  "start": 14.0
+ },
+ "C016": {
+  "bench": "confirm",
+  "i": 59,
+  "clip": "w8_dog_fireworks_window_1a",
+  "family": "Jackhammer",
+  "source": "Jackhammer",
+  "start": 3.89
+ },
+ "C017": {
+  "bench": "confirm",
+  "i": 49,
+  "clip": "t1_talk_to_me_2022a",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 8.0
+ },
+ "C018": {
+  "bench": "confirm",
+  "i": 36,
+  "clip": "m6_workshop_ambience_10b1",
+  "family": "Writing",
+  "source": "Writing",
+  "start": 5.5
+ },
+ "C019": {
+  "bench": "confirm",
+  "i": 67,
+  "clip": "w8_helmetcam_interior_2a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 1.25
+ },
+ "C020": {
+  "bench": "confirm",
+  "i": 47,
+  "clip": "t1_san_andreasa",
+  "family": "Explosion",
+  "source": "Eruption",
+  "start": 9.25
+ },
+ "C021": {
+  "bench": "confirm",
+  "i": 27,
+  "clip": "m5_family_jurassic_79c",
+  "family": "Chink, clink",
+  "source": "Chink, clink",
+  "start": 2.3
+ },
+ "C022": {
+  "bench": "confirm",
+  "i": 12,
+  "clip": "m4_storm_chasers_21a",
+  "family": "Rain",
+  "source": "Rain on surface",
+  "start": 8.25
+ },
+ "C023": {
+  "bench": "confirm",
+  "i": 45,
+  "clip": "t1_american_sniperc",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.14000000000000012
+ },
+ "C024": {
+  "bench": "confirm",
+  "i": 64,
+  "clip": "w8_helmetcam_interior_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.75
+ },
+ "C025": {
+  "bench": "confirm",
+  "i": 40,
+  "clip": "mc_siren_arrival",
+  "family": "Screaming",
+  "source": "Screaming",
+  "start": 11.64
+ },
+ "C026": {
+  "bench": "confirm",
+  "i": 57,
+  "clip": "w8_dashcam_crossing_horn_2a",
+  "family": "Train",
+  "source": "Train horn",
+  "start": 13.25
+ },
+ "C027": {
+  "bench": "confirm",
+  "i": 25,
+  "clip": "m5_family_jurassic_79c",
+  "family": "Roar",
+  "source": "Roar",
+  "start": 14.0
+ },
+ "C028": {
+  "bench": "confirm",
+  "i": 74,
+  "clip": "w8_u_frozen_chairlift_1a",
+  "family": "Gasp",
+  "source": "Gasp",
+  "start": 7.25
+ },
+ "C029": {
+  "bench": "confirm",
+  "i": 1,
+  "clip": "fx_car_passing_by_0c_zFIRX",
+  "family": "Cattle",
+  "source": "Moo",
+  "start": 15.64
+ },
+ "C030": {
+  "bench": "confirm",
+  "i": 26,
+  "clip": "m5_family_jurassic_79c",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 1.0
+ },
+ "C031": {
+  "bench": "confirm",
+  "i": 45,
+  "clip": "t1_american_sniperc",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.14000000000000012
+ },
+ "C032": {
+  "bench": "confirm",
+  "i": 4,
+  "clip": "m4_duck_hunt_28b",
+  "family": "Bird",
+  "source": "Fowl",
+  "start": 6.5
+ },
+ "C033": {
+  "bench": "confirm",
+  "i": 52,
+  "clip": "t1_the_covenant_2023b",
+  "family": "Mosquito",
+  "source": "Mosquito",
+  "start": 8.75
+ },
+ "C034": {
+  "bench": "confirm",
+  "i": 73,
+  "clip": "w8_tv_band_bros_bastogne_1b",
+  "family": "Explosion",
+  "source": "Boom",
+  "start": 4.75
+ },
+ "C035": {
+  "bench": "confirm",
+  "i": 41,
+  "clip": "t1_10_cloverfield_lanea",
+  "family": "Jingle bell",
+  "source": "Jingle bell",
+  "start": 2.5
+ },
+ "C036": {
+  "bench": "confirm",
+  "i": 69,
+  "clip": "w8_jungle_howler_monkeys_1a",
+  "family": "Spray",
+  "source": "Spray",
+  "start": 14.64
+ },
+ "C037": {
+  "bench": "confirm",
+  "i": 57,
+  "clip": "w8_dashcam_crossing_horn_2a",
+  "family": "Train",
+  "source": "Train horn",
+  "start": 13.25
+ },
+ "C038": {
+  "bench": "confirm",
+  "i": 37,
+  "clip": "m6_workshop_ambience_10b2",
+  "family": "Bird",
+  "source": "Bird",
+  "start": 10.75
+ },
+ "C039": {
+  "bench": "confirm",
+  "i": 6,
+  "clip": "m4_film_omaha_31b",
+  "family": "Boat",
+  "source": "Boat, Water vehicle",
+  "start": 9.75
+ },
+ "C040": {
+  "bench": "confirm",
+  "i": 7,
+  "clip": "m4_goat_barn_3b",
+  "family": "Sheep",
+  "source": "Bleat",
+  "start": 0.30000000000000004
+ },
+ "C041": {
+  "bench": "confirm",
+  "i": 76,
+  "clip": "w8_u_frozen_chairlift_2a",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 17.75
+ },
+ "C042": {
+  "bench": "confirm",
+  "i": 13,
+  "clip": "m5_action_heat_27c",
+  "family": "Fireworks",
+  "source": "Fireworks",
+  "start": 13.75
+ },
+ "C043": {
+  "bench": "confirm",
+  "i": 38,
+  "clip": "mc_siren_arrival",
+  "family": "Toothbrush",
+  "source": "Toothbrush",
+  "start": 19.75
+ },
+ "C044": {
+  "bench": "confirm",
+  "i": 23,
+  "clip": "m5_drama_manchester_45b",
+  "family": "Siren",
+  "source": "Police car (siren)",
+  "start": 5.140000000000001
+ },
+ "C045": {
+  "bench": "confirm",
+  "i": 69,
+  "clip": "w8_jungle_howler_monkeys_1a",
+  "family": "Spray",
+  "source": "Spray",
+  "start": 14.64
+ },
+ "C046": {
+  "bench": "confirm",
+  "i": 8,
+  "clip": "m4_goat_barn_3b",
+  "family": "Mouse",
+  "source": "Mouse",
+  "start": 6.5
+ },
+ "C047": {
+  "bench": "confirm",
+  "i": 11,
+  "clip": "m4_storm_chasers_21a",
+  "family": "Door",
+  "source": "Door",
+  "start": 1.8
+ },
+ "C048": {
+  "bench": "confirm",
+  "i": 58,
+  "clip": "w8_dashcam_tornado_siren_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 8.0
+ },
+ "C049": {
+  "bench": "confirm",
+  "i": 59,
+  "clip": "w8_dog_fireworks_window_1a",
+  "family": "Jackhammer",
+  "source": "Jackhammer",
+  "start": 3.89
+ },
+ "C050": {
+  "bench": "confirm",
+  "i": 63,
+  "clip": "w8_helmetcam_chainsaw_roof_1b",
+  "family": "Chainsaw",
+  "source": "Chainsaw",
+  "start": 0.14000000000000012
+ },
+ "C051": {
+  "bench": "confirm",
+  "i": 38,
+  "clip": "mc_siren_arrival",
+  "family": "Toothbrush",
+  "source": "Toothbrush",
+  "start": 19.75
+ },
+ "C052": {
+  "bench": "confirm",
+  "i": 39,
+  "clip": "mc_siren_arrival",
+  "family": "Gunshot",
+  "source": "Artillery fire",
+  "start": 5.0
+ },
+ "C053": {
+  "bench": "confirm",
+  "i": 56,
+  "clip": "w8_dashcam_crossing_horn_2a",
+  "family": "Vehicle",
+  "source": "Toot",
+  "start": 1.5
+ },
+ "C054": {
+  "bench": "confirm",
+  "i": 47,
+  "clip": "t1_san_andreasa",
+  "family": "Explosion",
+  "source": "Eruption",
+  "start": 9.25
+ },
+ "C055": {
+  "bench": "confirm",
+  "i": 14,
+  "clip": "m5_action_sicario_29",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.0
+ },
+ "C056": {
+  "bench": "confirm",
+  "i": 58,
+  "clip": "w8_dashcam_tornado_siren_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 8.0
+ },
+ "C057": {
+  "bench": "confirm",
+  "i": 62,
+  "clip": "w8_film_the_mist_2a",
+  "family": "Gunshot",
+  "source": "Gunshot, gunfire",
+  "start": 11.75
+ },
+ "C058": {
+  "bench": "confirm",
+  "i": 70,
+  "clip": "w8_kyiv_balcony_siren_2a",
+  "family": "Snicker",
+  "source": "Snicker",
+  "start": 14.75
+ },
+ "C059": {
+  "bench": "confirm",
+  "i": 80,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 7.25
+ },
+ "C060": {
+  "bench": "confirm",
+  "i": 13,
+  "clip": "m5_action_heat_27c",
+  "family": "Fireworks",
+  "source": "Fireworks",
+  "start": 13.75
+ },
+ "C061": {
+  "bench": "confirm",
+  "i": 30,
+  "clip": "m5_horror_quiet_place_2_120b",
+  "family": "Footsteps",
+  "source": "Run",
+  "start": 7.5
+ },
+ "C062": {
+  "bench": "confirm",
+  "i": 65,
+  "clip": "w8_helmetcam_interior_1a",
+  "family": "Siren",
+  "source": "Police car (siren)",
+  "start": 14.0
+ },
+ "C063": {
+  "bench": "confirm",
+  "i": 10,
+  "clip": "m4_storm_chasers_21a",
+  "family": "Keys jangling",
+  "source": "Keys jangling",
+  "start": 5.0
+ },
+ "C064": {
+  "bench": "confirm",
+  "i": 51,
+  "clip": "t1_the_covenant_2023b",
+  "family": "Heart sounds, heartbeat",
+  "source": "Heart sounds, heartbeat",
+  "start": 0.75
+ },
+ "C065": {
+  "bench": "confirm",
+  "i": 43,
+  "clip": "t1_a_quiet_place_day_oned",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.25
+ },
+ "C066": {
+  "bench": "confirm",
+  "i": 75,
+  "clip": "w8_u_frozen_chairlift_2a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 13.25
+ },
+ "C067": {
+  "bench": "confirm",
+  "i": 39,
+  "clip": "mc_siren_arrival",
+  "family": "Gunshot",
+  "source": "Artillery fire",
+  "start": 5.0
+ },
+ "C068": {
+  "bench": "confirm",
+  "i": 77,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Whale vocalization",
+  "source": "Whale vocalization",
+  "start": 11.5
+ },
+ "C069": {
+  "bench": "confirm",
+  "i": 80,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 7.25
+ },
+ "C070": {
+  "bench": "confirm",
+  "i": 22,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Mouse",
+  "source": "Mouse",
+  "start": 13.0
+ },
+ "C071": {
+  "bench": "confirm",
+  "i": 29,
+  "clip": "m5_horror_dont_breathe_6c",
+  "family": "Gasp",
+  "source": "Gasp",
+  "start": 11.25
+ },
+ "C072": {
+  "bench": "confirm",
+  "i": 46,
+  "clip": "t1_extraction_2020a",
+  "family": "Glass",
+  "source": "Breaking",
+  "start": 1.0
+ },
+ "C073": {
+  "bench": "confirm",
+  "i": 71,
+  "clip": "w8_pet_dog_doorbell_tv_2a",
+  "family": "Cat",
+  "source": "Meow",
+  "start": 2.75
+ },
+ "C074": {
+  "bench": "confirm",
+  "i": 68,
+  "clip": "w8_jungle_howler_monkeys_1a",
+  "family": "Cricket",
+  "source": "Cricket",
+  "start": 0.06000000000000005
+ },
+ "C075": {
+  "bench": "confirm",
+  "i": 24,
+  "clip": "m5_drama_the_conversation_38c",
+  "family": "Tambourine",
+  "source": "Tambourine",
+  "start": 11.5
+ },
+ "C076": {
+  "bench": "confirm",
+  "i": 68,
+  "clip": "w8_jungle_howler_monkeys_1a",
+  "family": "Cricket",
+  "source": "Cricket",
+  "start": 0.06000000000000005
+ },
+ "C077": {
+  "bench": "confirm",
+  "i": 46,
+  "clip": "t1_extraction_2020a",
+  "family": "Glass",
+  "source": "Breaking",
+  "start": 1.0
+ },
+ "C078": {
+  "bench": "confirm",
+  "i": 52,
+  "clip": "t1_the_covenant_2023b",
+  "family": "Mosquito",
+  "source": "Mosquito",
+  "start": 8.75
+ },
+ "C079": {
+  "bench": "confirm",
+  "i": 24,
+  "clip": "m5_drama_the_conversation_38c",
+  "family": "Tambourine",
+  "source": "Tambourine",
+  "start": 11.5
+ },
+ "C080": {
+  "bench": "confirm",
+  "i": 2,
+  "clip": "m4_duck_hunt_28a",
+  "family": "Fireworks",
+  "source": "Firecracker",
+  "start": 5.0
+ },
+ "C081": {
+  "bench": "confirm",
+  "i": 7,
+  "clip": "m4_goat_barn_3b",
+  "family": "Sheep",
+  "source": "Bleat",
+  "start": 0.30000000000000004
+ },
+ "C082": {
+  "bench": "confirm",
+  "i": 66,
+  "clip": "w8_helmetcam_interior_1a",
+  "family": "Chop",
+  "source": "Chop",
+  "start": 7.25
+ },
+ "C083": {
+  "bench": "confirm",
+  "i": 22,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Mouse",
+  "source": "Mouse",
+  "start": 13.0
+ },
+ "C084": {
+  "bench": "confirm",
+  "i": 31,
+  "clip": "m5_scifi_cloverfield_114c",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 4.75
+ },
+ "C085": {
+  "bench": "confirm",
+  "i": 54,
+  "clip": "t1_top_gun_maverickc",
+  "family": "Fly, housefly",
+  "source": "Fly, housefly",
+  "start": 9.0
+ },
+ "C086": {
+  "bench": "confirm",
+  "i": 5,
+  "clip": "m4_film_omaha_31b",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.30000000000000004
+ },
+ "C087": {
+  "bench": "confirm",
+  "i": 53,
+  "clip": "t1_the_town_2010b",
+  "family": "Gunshot",
+  "source": "Artillery fire",
+  "start": 4.5
+ },
+ "C088": {
+  "bench": "confirm",
+  "i": 3,
+  "clip": "m4_duck_hunt_28a",
+  "family": "Gunshot",
+  "source": "Machine gun",
+  "start": 1.75
+ },
+ "C089": {
+  "bench": "confirm",
+  "i": 74,
+  "clip": "w8_u_frozen_chairlift_1a",
+  "family": "Gasp",
+  "source": "Gasp",
+  "start": 7.25
+ },
+ "C090": {
+  "bench": "confirm",
+  "i": 31,
+  "clip": "m5_scifi_cloverfield_114c",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 4.75
+ },
+ "C091": {
+  "bench": "confirm",
+  "i": 52,
+  "clip": "t1_the_covenant_2023b",
+  "family": "Mosquito",
+  "source": "Mosquito",
+  "start": 8.75
+ },
+ "C092": {
+  "bench": "confirm",
+  "i": 1,
+  "clip": "fx_car_passing_by_0c_zFIRX",
+  "family": "Cattle",
+  "source": "Moo",
+  "start": 15.64
+ },
+ "C093": {
+  "bench": "confirm",
+  "i": 0,
+  "clip": "fx_car_passing_by_0c_zFIRX",
+  "family": "Sheep",
+  "source": "Bleat",
+  "start": 0.06000000000000005
+ },
+ "C094": {
+  "bench": "confirm",
+  "i": 28,
+  "clip": "m5_horror_dont_breathe_6c",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 4.5
+ },
+ "C095": {
+  "bench": "confirm",
+  "i": 32,
+  "clip": "m5_tv_band_of_brothers_135b",
+  "family": "Gunshot",
+  "source": "Artillery fire",
+  "start": 7.75
+ },
+ "C096": {
+  "bench": "confirm",
+  "i": 79,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Microwave oven",
+  "source": "Microwave oven",
+  "start": 0.14000000000000012
+ },
+ "C097": {
+  "bench": "confirm",
+  "i": 26,
+  "clip": "m5_family_jurassic_79c",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 1.0
+ },
+ "C098": {
+  "bench": "confirm",
+  "i": 37,
+  "clip": "m6_workshop_ambience_10b2",
+  "family": "Bird",
+  "source": "Bird",
+  "start": 10.75
+ },
+ "C099": {
+  "bench": "confirm",
+  "i": 69,
+  "clip": "w8_jungle_howler_monkeys_1a",
+  "family": "Spray",
+  "source": "Spray",
+  "start": 14.64
+ },
+ "C100": {
+  "bench": "confirm",
+  "i": 16,
+  "clip": "m5_disaster_san_andreas_71",
+  "family": "Explosion",
+  "source": "Explosion",
+  "start": 13.75
+ },
+ "C101": {
+  "bench": "confirm",
+  "i": 41,
+  "clip": "t1_10_cloverfield_lanea",
+  "family": "Jingle bell",
+  "source": "Jingle bell",
+  "start": 2.5
+ },
+ "C102": {
+  "bench": "confirm",
+  "i": 12,
+  "clip": "m4_storm_chasers_21a",
+  "family": "Rain",
+  "source": "Rain on surface",
+  "start": 8.25
+ },
+ "C103": {
+  "bench": "confirm",
+  "i": 50,
+  "clip": "t1_talk_to_me_2022a",
+  "family": "Gunshot",
+  "source": "Fusillade",
+  "start": 8.25
+ },
+ "C104": {
+  "bench": "confirm",
+  "i": 50,
+  "clip": "t1_talk_to_me_2022a",
+  "family": "Gunshot",
+  "source": "Fusillade",
+  "start": 8.25
+ },
+ "C105": {
+  "bench": "confirm",
+  "i": 15,
+  "clip": "m5_comedy_home_alone_58b",
+  "family": "Roar",
+  "source": "Roar",
+  "start": 10.75
+ },
+ "C106": {
+  "bench": "confirm",
+  "i": 2,
+  "clip": "m4_duck_hunt_28a",
+  "family": "Fireworks",
+  "source": "Firecracker",
+  "start": 5.0
+ },
+ "C107": {
+  "bench": "confirm",
+  "i": 23,
+  "clip": "m5_drama_manchester_45b",
+  "family": "Siren",
+  "source": "Police car (siren)",
+  "start": 5.140000000000001
+ },
+ "C108": {
+  "bench": "confirm",
+  "i": 65,
+  "clip": "w8_helmetcam_interior_1a",
+  "family": "Siren",
+  "source": "Police car (siren)",
+  "start": 14.0
+ },
+ "C109": {
+  "bench": "confirm",
+  "i": 61,
+  "clip": "w8_film_the_mist_2a",
+  "family": "Vehicle",
+  "source": "Reversing beeps",
+  "start": 15.5
+ },
+ "C110": {
+  "bench": "confirm",
+  "i": 60,
+  "clip": "w8_dog_fireworks_window_1a",
+  "family": "Pulleys",
+  "source": "Pulleys",
+  "start": 5.5
+ },
+ "C111": {
+  "bench": "confirm",
+  "i": 66,
+  "clip": "w8_helmetcam_interior_1a",
+  "family": "Chop",
+  "source": "Chop",
+  "start": 7.25
+ },
+ "C112": {
+  "bench": "confirm",
+  "i": 15,
+  "clip": "m5_comedy_home_alone_58b",
+  "family": "Roar",
+  "source": "Roar",
+  "start": 10.75
+ },
+ "C113": {
+  "bench": "confirm",
+  "i": 20,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.75
+ },
+ "C114": {
+  "bench": "confirm",
+  "i": 23,
+  "clip": "m5_drama_manchester_45b",
+  "family": "Siren",
+  "source": "Police car (siren)",
+  "start": 5.140000000000001
+ },
+ "C115": {
+  "bench": "confirm",
+  "i": 34,
+  "clip": "m5_war_private_ryan_18",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 1.5
+ },
+ "C116": {
+  "bench": "confirm",
+  "i": 36,
+  "clip": "m6_workshop_ambience_10b1",
+  "family": "Writing",
+  "source": "Writing",
+  "start": 5.5
+ },
+ "C117": {
+  "bench": "confirm",
+  "i": 0,
+  "clip": "fx_car_passing_by_0c_zFIRX",
+  "family": "Sheep",
+  "source": "Bleat",
+  "start": 0.06000000000000005
+ },
+ "C118": {
+  "bench": "confirm",
+  "i": 10,
+  "clip": "m4_storm_chasers_21a",
+  "family": "Keys jangling",
+  "source": "Keys jangling",
+  "start": 5.0
+ },
+ "C119": {
+  "bench": "confirm",
+  "i": 53,
+  "clip": "t1_the_town_2010b",
+  "family": "Gunshot",
+  "source": "Artillery fire",
+  "start": 4.5
+ },
+ "C120": {
+  "bench": "confirm",
+  "i": 40,
+  "clip": "mc_siren_arrival",
+  "family": "Screaming",
+  "source": "Screaming",
+  "start": 11.64
+ },
+ "C121": {
+  "bench": "confirm",
+  "i": 44,
+  "clip": "t1_a_quiet_place_day_oned",
+  "family": "Sonar",
+  "source": "Sonar",
+  "start": 9.3
+ },
+ "C122": {
+  "bench": "confirm",
+  "i": 30,
+  "clip": "m5_horror_quiet_place_2_120b",
+  "family": "Footsteps",
+  "source": "Run",
+  "start": 7.5
+ },
+ "C123": {
+  "bench": "confirm",
+  "i": 78,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Printer",
+  "source": "Printer",
+  "start": 9.75
+ },
+ "C124": {
+  "bench": "confirm",
+  "i": 21,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Boat",
+  "source": "Sailboat, sailing ship",
+  "start": 1.25
+ },
+ "C125": {
+  "bench": "confirm",
+  "i": 72,
+  "clip": "w8_streamer_fireworks_2b",
+  "family": "Battle cry",
+  "source": "Battle cry",
+  "start": 0.25
+ },
+ "C126": {
+  "bench": "confirm",
+  "i": 4,
+  "clip": "m4_duck_hunt_28b",
+  "family": "Bird",
+  "source": "Fowl",
+  "start": 6.5
+ },
+ "C127": {
+  "bench": "confirm",
+  "i": 44,
+  "clip": "t1_a_quiet_place_day_oned",
+  "family": "Sonar",
+  "source": "Sonar",
+  "start": 9.3
+ },
+ "C128": {
+  "bench": "confirm",
+  "i": 35,
+  "clip": "m5_war_the_pianist_110c",
+  "family": "Gunshot",
+  "source": "Fusillade",
+  "start": 0.25
+ },
+ "C129": {
+  "bench": "confirm",
+  "i": 33,
+  "clip": "m5_tv_band_of_brothers_135b",
+  "family": "Groan",
+  "source": "Groan",
+  "start": 0.30000000000000004
+ },
+ "C130": {
+  "bench": "confirm",
+  "i": 51,
+  "clip": "t1_the_covenant_2023b",
+  "family": "Heart sounds, heartbeat",
+  "source": "Heart sounds, heartbeat",
+  "start": 0.75
+ },
+ "C131": {
+  "bench": "confirm",
+  "i": 64,
+  "clip": "w8_helmetcam_interior_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.75
+ },
+ "C132": {
+  "bench": "confirm",
+  "i": 14,
+  "clip": "m5_action_sicario_29",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.0
+ },
+ "C133": {
+  "bench": "confirm",
+  "i": 73,
+  "clip": "w8_tv_band_bros_bastogne_1b",
+  "family": "Explosion",
+  "source": "Boom",
+  "start": 4.75
+ },
+ "C134": {
+  "bench": "confirm",
+  "i": 28,
+  "clip": "m5_horror_dont_breathe_6c",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 4.5
+ },
+ "C135": {
+  "bench": "confirm",
+  "i": 18,
+  "clip": "m5_doc_restrepo_138c",
+  "family": "Horse",
+  "source": "Clip-clop",
+  "start": 5.0
+ },
+ "C136": {
+  "bench": "confirm",
+  "i": 21,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Boat",
+  "source": "Sailboat, sailing ship",
+  "start": 1.25
+ },
+ "C137": {
+  "bench": "confirm",
+  "i": 19,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Tick",
+  "source": "Tick",
+  "start": 2.5
+ },
+ "C138": {
+  "bench": "confirm",
+  "i": 17,
+  "clip": "m5_doc_restrepo_138c",
+  "family": "Bell",
+  "source": "Ding",
+  "start": 13.0
+ },
+ "C139": {
+  "bench": "confirm",
+  "i": 33,
+  "clip": "m5_tv_band_of_brothers_135b",
+  "family": "Groan",
+  "source": "Groan",
+  "start": 0.30000000000000004
+ },
+ "C140": {
+  "bench": "confirm",
+  "i": 6,
+  "clip": "m4_film_omaha_31b",
+  "family": "Boat",
+  "source": "Boat, Water vehicle",
+  "start": 9.75
+ },
+ "C141": {
+  "bench": "confirm",
+  "i": 55,
+  "clip": "t1_twisters_2024c",
+  "family": "Explosion",
+  "source": "Explosion",
+  "start": 3.25
+ },
+ "C142": {
+  "bench": "confirm",
+  "i": 55,
+  "clip": "t1_twisters_2024c",
+  "family": "Explosion",
+  "source": "Explosion",
+  "start": 3.25
+ },
+ "C143": {
+  "bench": "confirm",
+  "i": 18,
+  "clip": "m5_doc_restrepo_138c",
+  "family": "Horse",
+  "source": "Clip-clop",
+  "start": 5.0
+ },
+ "C144": {
+  "bench": "confirm",
+  "i": 6,
+  "clip": "m4_film_omaha_31b",
+  "family": "Boat",
+  "source": "Boat, Water vehicle",
+  "start": 9.75
+ },
+ "C145": {
+  "bench": "confirm",
+  "i": 60,
+  "clip": "w8_dog_fireworks_window_1a",
+  "family": "Pulleys",
+  "source": "Pulleys",
+  "start": 5.5
+ },
+ "C146": {
+  "bench": "confirm",
+  "i": 72,
+  "clip": "w8_streamer_fireworks_2b",
+  "family": "Battle cry",
+  "source": "Battle cry",
+  "start": 0.25
+ },
+ "C147": {
+  "bench": "confirm",
+  "i": 8,
+  "clip": "m4_goat_barn_3b",
+  "family": "Mouse",
+  "source": "Mouse",
+  "start": 6.5
+ },
+ "C148": {
+  "bench": "confirm",
+  "i": 35,
+  "clip": "m5_war_the_pianist_110c",
+  "family": "Gunshot",
+  "source": "Fusillade",
+  "start": 0.25
+ },
+ "C149": {
+  "bench": "confirm",
+  "i": 59,
+  "clip": "w8_dog_fireworks_window_1a",
+  "family": "Jackhammer",
+  "source": "Jackhammer",
+  "start": 3.89
+ },
+ "C150": {
+  "bench": "confirm",
+  "i": 42,
+  "clip": "t1_13_hoursd",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 4.5
+ },
+ "C151": {
+  "bench": "confirm",
+  "i": 42,
+  "clip": "t1_13_hoursd",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 4.5
+ },
+ "C152": {
+  "bench": "confirm",
+  "i": 54,
+  "clip": "t1_top_gun_maverickc",
+  "family": "Fly, housefly",
+  "source": "Fly, housefly",
+  "start": 9.0
+ },
+ "C153": {
+  "bench": "confirm",
+  "i": 43,
+  "clip": "t1_a_quiet_place_day_oned",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.25
+ },
+ "C154": {
+  "bench": "confirm",
+  "i": 11,
+  "clip": "m4_storm_chasers_21a",
+  "family": "Door",
+  "source": "Door",
+  "start": 1.8
+ },
+ "C155": {
+  "bench": "confirm",
+  "i": 70,
+  "clip": "w8_kyiv_balcony_siren_2a",
+  "family": "Snicker",
+  "source": "Snicker",
+  "start": 14.75
+ },
+ "C156": {
+  "bench": "confirm",
+  "i": 49,
+  "clip": "t1_talk_to_me_2022a",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 8.0
+ },
+ "C157": {
+  "bench": "confirm",
+  "i": 48,
+  "clip": "t1_san_andreasa",
+  "family": "Water",
+  "source": "Waves, surf",
+  "start": 2.0
+ },
+ "C158": {
+  "bench": "confirm",
+  "i": 75,
+  "clip": "w8_u_frozen_chairlift_2a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 13.25
+ },
+ "C159": {
+  "bench": "confirm",
+  "i": 56,
+  "clip": "w8_dashcam_crossing_horn_2a",
+  "family": "Vehicle",
+  "source": "Toot",
+  "start": 1.5
+ },
+ "C160": {
+  "bench": "confirm",
+  "i": 76,
+  "clip": "w8_u_frozen_chairlift_2a",
+  "family": "Glass",
+  "source": "Shatter",
+  "start": 17.75
+ },
+ "C161": {
+  "bench": "confirm",
+  "i": 24,
+  "clip": "m5_drama_the_conversation_38c",
+  "family": "Tambourine",
+  "source": "Tambourine",
+  "start": 11.5
+ },
+ "C162": {
+  "bench": "confirm",
+  "i": 1,
+  "clip": "fx_car_passing_by_0c_zFIRX",
+  "family": "Cattle",
+  "source": "Moo",
+  "start": 15.64
+ },
+ "C163": {
+  "bench": "confirm",
+  "i": 3,
+  "clip": "m4_duck_hunt_28a",
+  "family": "Gunshot",
+  "source": "Machine gun",
+  "start": 1.75
+ },
+ "C164": {
+  "bench": "confirm",
+  "i": 20,
+  "clip": "m5_drama_blow_out_39c",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.75
+ },
+ "C165": {
+  "bench": "confirm",
+  "i": 71,
+  "clip": "w8_pet_dog_doorbell_tv_2a",
+  "family": "Cat",
+  "source": "Meow",
+  "start": 2.75
+ },
+ "C166": {
+  "bench": "confirm",
+  "i": 5,
+  "clip": "m4_film_omaha_31b",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 0.30000000000000004
+ },
+ "C167": {
+  "bench": "confirm",
+  "i": 79,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Microwave oven",
+  "source": "Microwave oven",
+  "start": 0.14000000000000012
+ },
+ "C168": {
+  "bench": "confirm",
+  "i": 80,
+  "clip": "w8_u_open_water_storm_1a",
+  "family": "Vehicle",
+  "source": "Vehicle",
+  "start": 7.25
+ }
+}

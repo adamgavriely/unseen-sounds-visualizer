@@ -52,4 +52,7 @@
    `ssh adamg@slurm-login1.lnx.biu.ac.il 'cd ~ && rm -rf .cache/huggingface/hub/models--HuggingFaceM4--Idefics3-8B-Llama3 .cache/huggingface/hub/models--mistralai--Mistral-7B-Instruct-v0.3 .cache/huggingface/hub/models--Qwen--Qwen2.5-VL-7B-Instruct .cache/openflam && source miniconda3/etc/profile.d/conda.sh && conda env remove -n comfy -y && conda env remove -n psed -y && df -h ~ | tail -1'`
    (the safety system blocked me from deleting; package lists of the two environments are saved in `docs/envs/`).
 2. Mage-Flow: nothing to do — there is no official download, so it is dropped.
-3. When ready: the one final rating sitting (link will be here).
+3. **The one final rating sitting** (168 pictures, ~30–40 min; stop and resume any time; answers save online):
+   https://claude.ai/artifact/3UV2qKvwA8rkhLudtrgVPf — press Show, the picture appears for 1.5 s like beside a
+   video, type what is making the sound (or Can't tell). This is the only rating the plan needs from you.
+   After it: I score it blind, then open the key; that number is the thesis's picture result.
