@@ -28,3 +28,9 @@ detector's source recognisably" (no gold on these clips).
 
 Known risks written now: a tie between two emergency-vehicle kinds can still be drawn with one kind's livery;
 the car-alarm template reads as "a car"; birds tend to be head close-ups.
+
+**Control fairness check (after drawing, before any rating; advisor).** The shipped pipeline redraws a picture
+once when it is uniform (`stage6._is_blank`, pixel std < 3); arm A0 was drawn with that guard off. On the 81
+control pictures, 11 have little ink but only 1 (#12, "Rain hits") is blank by the shipped test; it was redrawn
+once at seed + 1 (`scripts/redraw_control_blank.py`) and is still blank, which is what the shipped pipeline would
+show. So the control is faithful to today's system; the page is unchanged. FINAL has no blank picture.
