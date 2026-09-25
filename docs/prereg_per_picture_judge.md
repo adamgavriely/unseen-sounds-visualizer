@@ -82,3 +82,13 @@ judge as a result.
 
 **Written predictions** (so the result can be wrong on record): the gate beats blind on unnecessary
 pictures; captions beat pictures on recognisability; V3's pictures are vague less often than today's.
+
+## Amendment (Adam, 2026-09-25, before any per-picture number) — count the bad results, show a graph
+
+The primary display of PP-1 is **counts, not a weighted sum**: per arm, a stacked bar of the bad results
+over the clips — missed needed sounds, wrong pictures, pictures of a sound the annotator ticked *visible*
+(source on screen), pictures of a sound ticked *obvious*, vague pictures, "can't tell", duplicates — beside
+the count of good pictures (needed sounds covered). Counts need no weights; the weighted cost stays as the
+secondary line. "How obvious" comes from the annotator's ticks (visible / obvious / importance), not from
+the judge; a judge-rated obviousness grade may be logged as a column, never scored (the judge deciding
+what was needed would redo the gate's job — panel round 1).
