@@ -310,7 +310,8 @@
   "tears"
  ],
  "Ding": [
-  "ding"
+  "ding",
+  "bell"
  ],
  "Fire engine, fire truck (siren)": [
   "fire engine",
@@ -745,5 +746,134 @@
  "Whistle": [
   "whistle",
   "whistling"
+ ],
+ "_note_confirm": "Added 2026-09-25 from the list of confirmation-set sources alone, before any confirmation picture was rated.",
+ "Battle cry": [
+  "battle cry",
+  "war cry",
+  "soldiers shouting",
+  "warriors shouting",
+  "charging soldiers"
+ ],
+ "Bleat": [
+  "sheep",
+  "goat",
+  "lamb",
+  "bleating"
+ ],
+ "Boom": [
+  "boom",
+  "explosion",
+  "blast"
+ ],
+ "Breaking": [
+  "breaking",
+  "smashing",
+  "shattering"
+ ],
+ "Chop": [
+  "chop",
+  "chopping",
+  "axe",
+  "chopping wood",
+  "knife chopping"
+ ],
+ "Eruption": [
+  "eruption",
+  "volcano",
+  "volcano erupting"
+ ],
+ "Fusillade": [
+  "fusillade",
+  "gunfire",
+  "rifles firing",
+  "firing squad",
+  "volley"
+ ],
+ "Heart sounds, heartbeat": [
+  "heart",
+  "heartbeat",
+  "heart beating"
+ ],
+ "Jackhammer": [
+  "jackhammer",
+  "pneumatic drill",
+  "road drill"
+ ],
+ "Jingle bell": [
+  "jingle bell",
+  "jingle bells",
+  "sleigh bells"
+ ],
+ "Microwave oven": [
+  "microwave",
+  "microwave oven"
+ ],
+ "Mouse": [
+  "mouse",
+  "mice",
+  "rat",
+  "squeaking mouse"
+ ],
+ "Printer": [
+  "printer",
+  "printing"
+ ],
+ "Pulleys": [
+  "pulley",
+  "pulleys",
+  "rope and pulley",
+  "winch"
+ ],
+ "Reversing beeps": [
+  "reversing beeps",
+  "truck reversing",
+  "backing up",
+  "reversing truck"
+ ],
+ "Roar": [
+  "roar",
+  "roaring",
+  "lion",
+  "tiger"
+ ],
+ "Sailboat, sailing ship": [
+  "sailboat",
+  "sailing ship",
+  "sailing boat",
+  "yacht",
+  "sail"
+ ],
+ "Spray": [
+  "spray",
+  "spraying",
+  "spray can",
+  "aerosol",
+  "hose spraying"
+ ],
+ "Tambourine": [
+  "tambourine"
+ ],
+ "Toot": [
+  "toot",
+  "horn",
+  "car horn",
+  "honk"
+ ],
+ "Toothbrush": [
+  "toothbrush",
+  "brushing teeth"
+ ],
+ "Whale vocalization": [
+  "whale",
+  "whale song",
+  "whale singing"
+ ],
+ "Writing": [
+  "writing",
+  "pen",
+  "pencil",
+  "pen writing",
+  "handwriting"
  ]
 }
