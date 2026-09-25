@@ -202,3 +202,19 @@ pictures reach the model (two image grids; it describes each correctly), so this
 answered without its reasoning mode; running it again with reasoning on would be a second attempt at a
 declared last instrument, so it is not done. **Three automatic instruments failed; the picture claim rests on
 Adam's blind confirmation.**
+
+## Author screening result (54 sounds, blind to arm; answers and decisions committed before the key was opened)
+
+    arm                                              right   vague  wrong  can't
+    Qwen-Image-2512 + V3.1 (control)                 39/54    12      3      0
+    Qwen-Image-2.1 + V3.1                            38/54     7      4      5
+    Qwen-Image-2.1 RGBA + V3.1                       36/54     7      4      7
+    2512 + V3.1-guard2 + rules tail                  42/54     8      4      0
+    2512 + V3.1-guard2 + rules + templates + cards   45/54     8      1      0     (the declared default)
+    2512 + guarded expansion (70 % fell back)        41/54     8      5      0
+
+vs control: RT +6/54 (+0.111 [0.000, +0.222]); R +3; X +2; Q21 -1; Q21-RGBA -3. By the rule written first,
+no alternative beats the default by >= 8/54, so the **default stands: Qwen-Image-2512 + V3.1 with guard 2 +
+the rules tail + group (b) templates + group (c) burst cards.** Qwen-Image-2.1 is not adopted (no gain in this
+screen; research licence). Labelled "selected, author-screened"; the author is lenient (39/54 on the control
+arm where Adam gave the similar N arm 32/54).
