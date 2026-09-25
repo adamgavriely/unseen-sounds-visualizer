@@ -139,3 +139,25 @@ itself a sound class in another ontology branch passes `names_forbidden` (neithe
 under the source) and can become the picture's main noun (an Artillery-fire sound drawn as fireworks; a
 Screaming sound drawn as a cat). Not fixed and not redrawn — that would make slice B in-sample again. Pass
 2 ("anything false?") is the instrument that measures it; a fix is for the next round, on new clips.
+
+## Result of round 2 (read 2026-09-25, Adam's 171/172 answers; scored arm-hidden, then unsealed)
+
+    arm      right (incl. narrower)   narrower  vague  wrong  can't tell
+    today    14/54 (26 %)              2         8      3      28
+    N0       26/54 (48 %)              3        12      5      11
+    N        32/54 (59 %)              6         8      3      11
+
+    N - today  +0.333 [+0.222, +0.463]  (primary, significant)   source != family +0.281 [+0.125, +0.438]
+    N - N0     +0.111 [+0.000, +0.241]                             source == family +0.409 [+0.227, +0.636]
+    N0 - today +0.222 [+0.074, +0.370]  (the generator)
+    Adam's consistency on the 10 repeats: 9/10 (90 %, bar 80 %)
+    checker vs Adam: catches 64 % (bar 70), rejects 18 % (bar 15), kappa 0.45 (bar 0.5) -> stays a logged column
+
+15 answers were unclassified by the sheet and decided by hand with the arm key closed
+(`answer_overrides_picfresh_v32.json`). **Rule 2 (false message): N:39 — a Thunk drawn as "Heavy door
+slamming shut", read as "house door" — shows a thing the audio never established. Confirmed; N is not
+adopted**, whatever its correct rate. (N:13, a sheep read as a goat, and N:38, a person sighing read as a
+sneeze, show the heard source: misreadings, not false messages.) This is exactly the failure V3.1 was built
+for; V3.1's verdict comes from slice B. Most of the gain is the generator (N0 vs today); the rest of the
+failures are sounds that are hard to draw (whoosh, thunder, rain on a surface, a car alarm, a smash, a
+train horn: "can't tell") and bird actions read as "bird" (vague).
