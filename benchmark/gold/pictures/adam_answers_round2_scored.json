@@ -1,0 +1,1550 @@
+{
+ "P001": {
+  "i": 26,
+  "text": "cat",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P002": {
+  "i": 11,
+  "text": "bird",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P003": {
+  "i": 20,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P004": {
+  "i": 19,
+  "text": "__cant__",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P005": {
+  "i": 27,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P006": {
+  "i": 38,
+  "text": "sneeze",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "sneeze is another human sound, not a sigh"
+ },
+ "P007": {
+  "i": 8,
+  "text": "closet",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P008": {
+  "i": 5,
+  "text": "bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P009": {
+  "i": 13,
+  "text": "goat",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "P010": {
+  "i": 52,
+  "text": "horse",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P011": {
+  "i": 7,
+  "text": "__cant__",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P012": {
+  "i": 20,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P013": {
+  "i": 26,
+  "text": "cat",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P014": {
+  "i": 33,
+  "text": "steps",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P015": {
+  "i": 46,
+  "text": "wave",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "unclassified",
+  "class": "correct",
+  "why": "'wave' = waves (singular)"
+ },
+ "P016": {
+  "i": 39,
+  "text": "__cant__",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P017": {
+  "i": 0,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P018": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P019": {
+  "i": 23,
+  "text": "bird",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P020": {
+  "i": 17,
+  "text": "chicken",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P021": {
+  "i": 21,
+  "text": "",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "missing",
+  "class": "missing",
+  "why": ""
+ },
+ "P022": {
+  "i": 47,
+  "text": "water drops",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P023": {
+  "i": 45,
+  "text": "police car",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P024": {
+  "i": 46,
+  "text": "__cant__",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P025": {
+  "i": 25,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P026": {
+  "i": 41,
+  "text": "shattered glass",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P027": {
+  "i": 2,
+  "text": "__cant__",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P028": {
+  "i": 41,
+  "text": "__cant__",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P029": {
+  "i": 27,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P030": {
+  "i": 36,
+  "text": "__cant__",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P031": {
+  "i": 3,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P032": {
+  "i": 34,
+  "text": "person walking",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P033": {
+  "i": 32,
+  "text": "bird",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P034": {
+  "i": 1,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P035": {
+  "i": 30,
+  "text": "shattered window",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P036": {
+  "i": 11,
+  "text": "bird",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P037": {
+  "i": 51,
+  "text": "__cant__",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P038": {
+  "i": 35,
+  "text": "__cant__",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P039": {
+  "i": 2,
+  "text": "__cant__",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P040": {
+  "i": 25,
+  "text": "thunder",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P041": {
+  "i": 4,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P042": {
+  "i": 43,
+  "text": "laughter",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P043": {
+  "i": 17,
+  "text": "checken",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "unclassified",
+  "class": "narrower",
+  "why": "typo for chicken, a kind of fowl"
+ },
+ "P044": {
+  "i": 15,
+  "text": "boat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P045": {
+  "i": 14,
+  "text": "goose",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P046": {
+  "i": 48,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P047": {
+  "i": 14,
+  "text": "goose",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P048": {
+  "i": 34,
+  "text": "walk",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P049": {
+  "i": 45,
+  "text": "siren",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P050": {
+  "i": 7,
+  "text": "car",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P051": {
+  "i": 30,
+  "text": "__cant__",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P052": {
+  "i": 33,
+  "text": "__cant__",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P053": {
+  "i": 34,
+  "text": "__cant__",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P054": {
+  "i": 37,
+  "text": "phone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P055": {
+  "i": 29,
+  "text": "police",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "unclassified",
+  "class": "narrower",
+  "why": "police (siren) is a kind of siren; narrower counts as correct, reported apart"
+ },
+ "P056": {
+  "i": 28,
+  "text": "cow",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P057": {
+  "i": 45,
+  "text": "police",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P058": {
+  "i": 12,
+  "text": "bee",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P059": {
+  "i": 12,
+  "text": "bee",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P060": {
+  "i": 21,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P061": {
+  "i": 10,
+  "text": "tractor",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "unclassified",
+  "class": "narrower",
+  "why": "a tractor is a kind of vehicle; narrower counts as correct, reported apart"
+ },
+ "P062": {
+  "i": 52,
+  "text": "horse steps",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P063": {
+  "i": 32,
+  "text": "bird",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P064": {
+  "i": 1,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P065": {
+  "i": 48,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P066": {
+  "i": 48,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P067": {
+  "i": 1,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P068": {
+  "i": 21,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P069": {
+  "i": 9,
+  "text": "chicken",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P070": {
+  "i": 49,
+  "text": "owl",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P071": {
+  "i": 22,
+  "text": "cat",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P072": {
+  "i": 42,
+  "text": "megaphone",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a megaphone is not a train horn"
+ },
+ "P073": {
+  "i": 40,
+  "text": "ice cream truck",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P074": {
+  "i": 53,
+  "text": "glass shattered",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P075": {
+  "i": 25,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P076": {
+  "i": 46,
+  "text": "wave",
+  "source": "Waves, surf",
+  "family": "Water",
+  "auto": "unclassified",
+  "class": "correct",
+  "why": "'wave' = waves (singular)"
+ },
+ "P077": {
+  "i": 18,
+  "text": "train",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P078": {
+  "i": 44,
+  "text": "police",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P079": {
+  "i": 38,
+  "text": "crying woman",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "P080": {
+  "i": 20,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P081": {
+  "i": 33,
+  "text": "walk",
+  "source": "Walk, footsteps",
+  "family": "Footsteps",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P082": {
+  "i": 18,
+  "text": "train",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P083": {
+  "i": 50,
+  "text": "crow",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P084": {
+  "i": 15,
+  "text": "boat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P085": {
+  "i": 15,
+  "text": "boat",
+  "source": "Boat, Water vehicle",
+  "family": "Boat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P086": {
+  "i": 13,
+  "text": "goat",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "P087": {
+  "i": 19,
+  "text": "__cant__",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P088": {
+  "i": 6,
+  "text": "__cant__",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P089": {
+  "i": 29,
+  "text": "megaphone",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a megaphone is not a siren"
+ },
+ "P090": {
+  "i": 23,
+  "text": "__cant__",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P091": {
+  "i": 32,
+  "text": "bird",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P092": {
+  "i": 7,
+  "text": "car",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P093": {
+  "i": 53,
+  "text": "__cant__",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P094": {
+  "i": 35,
+  "text": "__cant__",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P095": {
+  "i": 42,
+  "text": "__cant__",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P096": {
+  "i": 8,
+  "text": "__cant__",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P097": {
+  "i": 24,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P098": {
+  "i": 35,
+  "text": "eating?",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P099": {
+  "i": 9,
+  "text": "chicken",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P100": {
+  "i": 40,
+  "text": "ice cream truck",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P101": {
+  "i": 11,
+  "text": "bird",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P102": {
+  "i": 43,
+  "text": "laughter",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P103": {
+  "i": 6,
+  "text": "shot from cannon",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P104": {
+  "i": 9,
+  "text": "chicken",
+  "source": "Cluck",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P105": {
+  "i": 36,
+  "text": "shattered window",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P106": {
+  "i": 23,
+  "text": "bird",
+  "source": "Bird",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P107": {
+  "i": 37,
+  "text": "phone",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P108": {
+  "i": 44,
+  "text": "red alert?",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "'red alert' conveys an alarm, not which source"
+ },
+ "P109": {
+  "i": 20,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P110": {
+  "i": 19,
+  "text": "car racing",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P111": {
+  "i": 51,
+  "text": "basketball",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P112": {
+  "i": 32,
+  "text": "pegion",
+  "source": "Pigeon, dove",
+  "family": "Bird",
+  "auto": "unclassified",
+  "class": "correct",
+  "why": "typo for pigeon"
+ },
+ "P113": {
+  "i": 17,
+  "text": "__cant__",
+  "source": "Fowl",
+  "family": "Bird",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P114": {
+  "i": 22,
+  "text": "cat",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P115": {
+  "i": 39,
+  "text": "house door",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a door is a thing the audio (Thunk) never established"
+ },
+ "P116": {
+  "i": 53,
+  "text": "__cant__",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P117": {
+  "i": 0,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P118": {
+  "i": 5,
+  "text": "bell",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P119": {
+  "i": 52,
+  "text": "horse steps",
+  "source": "Clip-clop",
+  "family": "Horse",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P120": {
+  "i": 22,
+  "text": "cat yawn",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P121": {
+  "i": 43,
+  "text": "people",
+  "source": "Laughter",
+  "family": "Laughter",
+  "auto": "unclassified",
+  "class": "vague",
+  "why": "'people' names who, not that they laugh"
+ },
+ "P122": {
+  "i": 11,
+  "text": "bird",
+  "source": "Bird vocalization, bird call, bird song",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P123": {
+  "i": 24,
+  "text": "drops of water",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P124": {
+  "i": 3,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P125": {
+  "i": 14,
+  "text": "duck",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "P126": {
+  "i": 12,
+  "text": "bee",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P127": {
+  "i": 5,
+  "text": "door bells",
+  "source": "Church bell",
+  "family": "Bell",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P128": {
+  "i": 26,
+  "text": "cat",
+  "source": "Meow",
+  "family": "Cat",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P129": {
+  "i": 41,
+  "text": "__cant__",
+  "source": "Smash, crash",
+  "family": "Glass",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P130": {
+  "i": 28,
+  "text": "cow",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P131": {
+  "i": 2,
+  "text": "kids playing",
+  "source": "Children playing",
+  "family": "Children playing",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P132": {
+  "i": 40,
+  "text": "__cant__",
+  "source": "Ice cream truck, ice cream van",
+  "family": "Ice cream truck, ice cream van",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P133": {
+  "i": 30,
+  "text": "shattered window",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P134": {
+  "i": 13,
+  "text": "goat",
+  "source": "Sheep",
+  "family": "Sheep",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "P135": {
+  "i": 29,
+  "text": "__cant__",
+  "source": "Siren",
+  "family": "Siren",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P136": {
+  "i": 50,
+  "text": "crow",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P137": {
+  "i": 10,
+  "text": "tractor",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "unclassified",
+  "class": "narrower",
+  "why": "a tractor is a kind of vehicle; narrower counts as correct, reported apart"
+ },
+ "P138": {
+  "i": 36,
+  "text": "shattered glassreachable now",
+  "source": "Shatter",
+  "family": "Glass",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P139": {
+  "i": 47,
+  "text": "drops of water on window",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P140": {
+  "i": 51,
+  "text": "basketball",
+  "source": "Basketball bounce",
+  "family": "Basketball bounce",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P141": {
+  "i": 10,
+  "text": "car",
+  "source": "Vehicle",
+  "family": "Vehicle",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P142": {
+  "i": 39,
+  "text": "punch",
+  "source": "Thunk",
+  "family": "Thunk",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a punch is a thing the audio (Thunk) never established; same rule as P115"
+ },
+ "P143": {
+  "i": 16,
+  "text": "frog",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P144": {
+  "i": 24,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P145": {
+  "i": 25,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P146": {
+  "i": 38,
+  "text": "__cant__",
+  "source": "Sigh",
+  "family": "Sigh",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P147": {
+  "i": 16,
+  "text": "frog",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P148": {
+  "i": 50,
+  "text": "__cant__",
+  "source": "Caw",
+  "family": "Bird",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P149": {
+  "i": 49,
+  "text": "owls",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P150": {
+  "i": 12,
+  "text": "bee",
+  "source": "Buzz",
+  "family": "Buzz",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P151": {
+  "i": 42,
+  "text": "__cant__",
+  "source": "Train horn",
+  "family": "Train",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P152": {
+  "i": 47,
+  "text": "__cant__",
+  "source": "Rain on surface",
+  "family": "Rain",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P153": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P154": {
+  "i": 6,
+  "text": "cannon",
+  "source": "Artillery fire",
+  "family": "Gunshot",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P155": {
+  "i": 14,
+  "text": "duck",
+  "source": "Goose",
+  "family": "Goose",
+  "auto": "wrong",
+  "class": "wrong",
+  "why": ""
+ },
+ "P156": {
+  "i": 4,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P157": {
+  "i": 28,
+  "text": "__cant__",
+  "source": "Moo",
+  "family": "Cattle",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P158": {
+  "i": 49,
+  "text": "owl",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P159": {
+  "i": 31,
+  "text": "clock",
+  "source": "Tick",
+  "family": "Tick",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P160": {
+  "i": 18,
+  "text": "train",
+  "source": "Railroad car, train wagon",
+  "family": "Train",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P161": {
+  "i": 45,
+  "text": "police car",
+  "source": "Emergency vehicle",
+  "family": "Siren",
+  "auto": "narrower",
+  "class": "narrower",
+  "why": ""
+ },
+ "P162": {
+  "i": 8,
+  "text": "__cant__",
+  "source": "Cupboard open or close",
+  "family": "Door",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P163": {
+  "i": 27,
+  "text": "__cant__",
+  "source": "Whoosh, swoosh, swish",
+  "family": "Whoosh, swoosh, swish",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P164": {
+  "i": 0,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P165": {
+  "i": 35,
+  "text": "__cant__",
+  "source": "Chewing, mastication",
+  "family": "Chewing, mastication",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P166": {
+  "i": 37,
+  "text": "reception bell",
+  "source": "Telephone bell ringing",
+  "family": "Telephone",
+  "auto": "unclassified",
+  "class": "wrong",
+  "why": "a reception bell is not a telephone"
+ },
+ "P167": {
+  "i": 44,
+  "text": "__cant__",
+  "source": "Police car (siren)",
+  "family": "Siren",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P168": {
+  "i": 4,
+  "text": "__cant__",
+  "source": "Car alarm",
+  "family": "Alarm",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P169": {
+  "i": 16,
+  "text": "frog",
+  "source": "Frog",
+  "family": "Frog",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ },
+ "P170": {
+  "i": 48,
+  "text": "__cant__",
+  "source": "Thunder",
+  "family": "Thunder",
+  "auto": "cant",
+  "class": "cant",
+  "why": ""
+ },
+ "P171": {
+  "i": 3,
+  "text": "bird",
+  "source": "Chirp, tweet",
+  "family": "Bird",
+  "auto": "vague",
+  "class": "vague",
+  "why": ""
+ },
+ "P172": {
+  "i": 49,
+  "text": "owl",
+  "source": "Owl",
+  "family": "Owl",
+  "auto": "correct",
+  "class": "correct",
+  "why": ""
+ }
+}
