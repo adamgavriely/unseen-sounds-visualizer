@@ -112,3 +112,42 @@ as failed instruments.
    written first: ≥ 75 % agreement with ≥ 90 % order-swap consistency. It may only *order* arms to shorten
    Adam's sitting; never choose per-sound pictures, never act in the pipeline. Allow this one attempt, or stop
    automatic screening here?
+
+---
+
+# Round 3 — final plan GP-4 (sign, or name the single point you cannot sign)
+
+**Unanimous from round 2:** fall back to the short prompt on any guard failure, never retry (P4 withdrew the
+retry). The scene enters only as (i) RESOLVE's ≤2-word qualifier choosing the *kind or state* of the source
+("campfire flames", "burning branches") and (ii) effect/material/surface words where the sound lands
+("rain on a window pane", "footsteps on gravel") — **no background arm**. Adam's "fire in a forest" is
+answered by (i).
+
+**GP-4**
+1. **Freeze** (before anything is drawn on them): the confirmation clip list by the committed hash order
+   (`benchmark/gold/pictures/confirm_hash_order.*`), the **sound list** the gate chose on them, the config
+   hash of that run, and a check that none is in the 54, the 33, the gold set or slice B.
+2. **Compute gate:** five fixed sounds per candidate, V3.1 text, no rating; seconds per picture, peak VRAM,
+   negative prompt accepted, licence tag (LLaDA-Image) — committed. HiDream falls to Dev-2604 if too slow.
+3. **Screening, two sittings, both "selected, re-exposed"**, arm hidden, shuffled codes, repeats, glance
+   fidelity (384 px, 1.5 s): (a) generators at seed_of(item)+1 on frozen V3.1 text; (b) on the winner only:
+   image-prompt rules / two-step guarded expansion (fallback rate reported) / group (b) templates / the V3.1
+   other-branch-qualifier fix. Group (c) burst cards are rated but counted separately, never inside the
+   correct rate. The 33 DEV bench sounds are never quoted alone.
+4. **Pairwise check (majority: allow one attempt; P4: report-only):** GLM-4.6V-Flash (not Gemma, the judge;
+   not Qwen3.8, in the pipeline); calibrated on the discordant pairs of round 1 **and** round 2 (both orders,
+   384 px, "neither" = disagreement), bar ≥ 75 % agreement and ≥ 90 % order-swap consistency, reported with
+   its CI; if it passes it may drop only the **bottom generator arm** before sitting 3(a), never prompt arms,
+   never anything about false messages. Pass or fail it is the last automatic instrument; if it fails,
+   automatic screening is closed and reported as three failed instruments.
+5. **Freeze commit** naming the final setup.
+6. **Confirmation, one sitting:** the frozen 50 clips' pictures drawn once at the committed seed and sealed
+   until Adam's answers are in (nobody looks first); his first sight of those clips; glance fidelity; arms =
+   final vs **today** (primary) and final vs Qwen-Image-2512 + V3 text (secondary). Primary quantity: correct
+   incl. narrower, paired over sounds, CI excluding zero; zero false messages (widened rule 2) in the final
+   arm; repeats ≥ 80 %. Power, stated now: ~55 sounds resolve a +0.3 difference, probably not +0.1 — a null
+   secondary is "unresolved". The claim: "the pictures show the detector's source recognisably", not "the
+   right sounds were drawn" (no gold on these clips).
+
+## Round 3 question (at most five lines)
+Sign GP-4, or name the single point you cannot sign and the fix.
