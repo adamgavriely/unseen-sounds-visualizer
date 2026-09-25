@@ -192,3 +192,13 @@ selected". Already reportable without more rating (P2): round 2's N0 vs today, t
 messages in the final arm; repeats ≥ 80 %; ties keep today; the answer sheet for the 81 sounds committed
 before Adam's file is opened; pictures sealed, mechanical rule-2 pass sealed, by-eye pass after his answers
 are saved and before they are scored.
+
+## Result of the pairwise check (GP-4 point 4) — FAIL; automatic screening closed
+
+190 discordant pairs (140 round 1, 50 round 2), GLM-4.6V-Flash, both orders: agreement 46 % [39 %, 54 %]
+(bar 75 %), order-swap consistency 48 % (bar 90 %). It answered "first" in 187 of 190 first orderings — a
+position bias, which the order swap exists to expose. A probe (`scripts/pairwise_probe.py`) confirmed both
+pictures reach the model (two image grids; it describes each correctly), so this is not an input bug. It
+answered without its reasoning mode; running it again with reasoning on would be a second attempt at a
+declared last instrument, so it is not done. **Three automatic instruments failed; the picture claim rests on
+Adam's blind confirmation.**
