@@ -149,3 +149,16 @@ PE-T2I model (G1).
 
 ## Round 3 question (at most six lines)
 Sign GP-2, or name the single point you cannot sign and the fix.
+
+## Round 3 outcome — GP-2 signed by both, with one shared fix
+
+Both reviewers signed GP-2 (G2 including the burst-with-word compromise, drawn once per word as a fixed asset).
+Both flagged the same power problem: 30 confirmation clips cannot exclude zero for a real ~+10-15 point gain.
+**Fix adopted: the confirmation set is 50 fresh `unsorted` clips** (same filename-hash rule, list frozen in the
+prereg before any picture), one seed per item for both arms, a second seed only on group (b) sounds. G1:
+if HiDream-O1-Image (full, 50 steps, pixel space) misses 20 s per picture at the compute gate, fall back to
+Dev-2604 (28 steps, no negative prompt, recorded as such) rather than drop it.
+
+**Slice B:** Adam (2026-09-25): "most of them are clearly trash" — the slice-B pages show V3.1 on the
+generator being replaced, so rating them is dropped. V3.1 is judged in the confirmation round instead,
+on the new generator. The few pass-2 answers already given are kept as they are and reported, not scored.

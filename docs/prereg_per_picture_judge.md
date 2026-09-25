@@ -92,3 +92,13 @@ the count of good pictures (needed sounds covered). Counts need no weights; the 
 secondary line. "How obvious" comes from the annotator's ticks (visible / obvious / importance), not from
 the judge; a judge-rated obviousness grade may be logged as a column, never scored (the judge deciding
 what was needed would redo the gate's job — panel round 1).
+
+## Result of B4 (2026-09-25) — FAIL; the per-picture judge stays a logged column
+
+Gemma answered "can't tell" to 502 of 567 pictures: it reads "what is making a sound in this picture?"
+literally (a clear photo of a sitting cat → "can't tell", because nothing visibly makes a sound). Against
+Adam's blind round-2 answers: catches 93 % of his not-right, but rejects 74 % of his right; kappa 0.21
+(bars 70 % / 15 % / 0.5) — fail, for FLUX and Qwen-Image alike. B1 (rho +0.79) and B2 (+3.21) pass, and B3
+shows no flips on 44 pictures, but by the frozen rule **no per-picture ranking is read**. A reworded question
+("what is the thing in this picture that makes a sound?") may be tried only against a fresh set of Adam's
+ratings (the GP-2 confirmation round), never tuned on round 2.
