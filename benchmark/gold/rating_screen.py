@@ -23,16 +23,28 @@ def main():
     ap.add_argument("--arms", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--seed", type=int, default=25092027)
+    ap.add_argument("--bench", default="", help="one bench folder instead of the two screening benches")
+    ap.add_argument("--subjects", default="V31")
+    ap.add_argument("--repeats", type=int, default=N_REPEATS)
+    ap.add_argument("--skip-cards", default="", help="arm whose manifest marks burst cards (CARD:...) to leave out")
+    ap.add_argument("--prefix", default="S")
     a = ap.parse_args()
     out = _ROOT / a.out
     (out / "img").mkdir(parents=True, exist_ok=True)
     pool = []
-    for bname, bdir in BENCHES.items():
+    benches = {"confirm": a.bench} if a.bench else BENCHES
+    cards = set()
+    if a.skip_cards:
+        man = json.loads((_ROOT / a.bench / a.skip_cards / "manifest.json").read_text(encoding="utf-8"))
+        cards = {m["i"] for m in man if str(m.get("prompt", "")).startswith("CARD:")}
+    for bname, bdir in benches.items():
         bench = _ROOT / bdir
         specs = json.loads((bench / "specs.json").read_text(encoding="utf-8"))
-        subj = json.loads((bench / "subjects_V31.json").read_text(encoding="utf-8"))
+        subj = json.loads((bench / f"subjects_{a.subjects}.json").read_text(encoding="utf-8"))
         for arm in a.arms.split(","):
             for it in specs:
+                if it["i"] in cards:
+                    continue                          # burst cards are counted separately, never rated
                 p = bench / arm / f"{it['i']:02d}.png"
                 if p.exists():
                     s = subj.get(str(it["i"]), {})
@@ -40,12 +52,12 @@ def main():
     rng = random.Random(a.seed)
     rng.shuffle(pool)
     order = list(pool)
-    for k in sorted(rng.sample(range(len(pool) // 2), min(N_REPEATS, len(pool) // 2)), reverse=True):
+    for k in sorted(rng.sample(range(len(pool) // 2), min(a.repeats, len(pool) // 2)), reverse=True):
         at = min(len(order), k + len(pool) // 3 + rng.randint(0, len(pool) // 3))
         order.insert(at, pool[k])
     sound_key, arm_key = {}, {}
     for n, (arm, bname, it, source, p) in enumerate(order, 1):
-        code = f"S{n:03d}"
+        code = f"{a.prefix}{n:03d}"
         Image.open(p).convert("RGB").resize((384, 384)).save(out / "img" / f"{code}.jpg", quality=86)
         sound_key[code] = {"bench": bname, "i": it["i"], "clip": it["clip"], "family": it["label"],
                            "source": source, "start": it["start"]}
