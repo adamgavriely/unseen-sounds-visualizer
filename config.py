@@ -201,6 +201,9 @@ SOURCE_TIE_MARGIN = 0.8
 # source ("car door", "farm vehicle"), never a new noun; a list guard refuses kinds the audio never
 # established. Needs PICTURE_V3. Off until rated on a fresh set.
 PICTURE_SCENE = False
+# GP-4 3(b): refuse a scene qualifier that names a maker from another ontology branch, and a depiction that
+# drops the heard head word (slice B, prereg amendment 2b). Screened on picture-DEV; off until frozen.
+PICTURE_SCENE_GUARD2 = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time

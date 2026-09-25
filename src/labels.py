@@ -498,6 +498,32 @@ def forbidden_names(source: str, fired) -> set:
 _STOP = {"a", "an", "the", "of", "or", "and", "in", "on", "with", "sound", "sounds", "noise"}
 
 
+def _top(label: str) -> str:
+    chain = [label] + ancestors(label)
+    return chain[-1]
+
+
+def other_branch_makers(words, source: str) -> list:
+    """PICTURE_SCENE_GUARD2: qualifier words that name a sound class ONLY in other top-level branches of
+    the ontology than the source's. "car" before "door" is in the source's own branch (Sounds of things)
+    and passes; "cat" before "screaming" names an Animal where the source is a Human sound."""
+    top = _top(source)
+    by_word = {}
+    for lab in _parents():
+        for n in label_names(lab):
+            if " " not in n:
+                by_word.setdefault(n, set()).add(_top(lab))
+    out = []
+    for w in words:
+        w = w.lower().rstrip("s") if w.lower() not in by_word else w.lower()
+        tops = by_word.get(w)
+        # only LIVING makers are refused (an animal or a person brought in from another branch -- the
+        # invention risk); a material or natural qualifier is a kind ("steam train", "farm vehicle")
+        if tops and top not in tops and tops & {"Animal", "Human sounds"}:
+            out.append(w)
+    return out
+
+
 def names_forbidden(phrase: str, source: str, fired) -> list:
     """The forbidden words (forbidden_names, reduced to the words that tell them apart from what the
     audio did establish) that `phrase` uses. Mechanical: a list, not a question to a model."""

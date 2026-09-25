@@ -954,6 +954,15 @@ def _scene_thing(source: str, family: str, frames, place: str, fired, mdl, proc)
             print("       [stage5] scene kind refused: " + source + " -> " + ans
                   + (" (names " + ", ".join(bad) + ")" if bad else ""), flush=True)
         return head
+    if getattr(config, "PICTURE_SCENE_GUARD2", False) and low != head:
+        from src.labels import other_branch_makers
+        alien = other_branch_makers(words[: len(words) - len(head.split())], source)
+        if alien:
+            # a qualifier that is itself a sound source in another branch of the ontology is a new maker,
+            # not a kind of this one: Screaming -> "cat screaming", found on slice B (prereg amendment 2b)
+            print("       [stage5] scene kind refused (other-branch maker " + ", ".join(alien) + "): "
+                  + source + " -> " + ans, flush=True)
+            return head
     if low != head:
         print("       [stage5] scene kind: " + source + " -> " + low + " (place: " + place + ")", flush=True)
     return low
@@ -998,6 +1007,13 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
         if ok and any(_about_the_sound(again, x) for x in chain + [thing]):
             print("       [stage5] v3.1 restated: " + phrase + " -> " + again, flush=True)
             phrase = again
+    if phrase and getattr(config, "PICTURE_SCENE_GUARD2", False):
+        # the drawn phrase must still name the heard thing: "fireworks artillery fire" became "Fireworks
+        # exploding in the night sky" and the artillery vanished (slice B, prereg amendment 2b)
+        head_word = thing.split()[-1]
+        if not _about_the_sound(phrase, head_word):
+            print("       [stage5] v3.1 head word lost (" + head_word + "): " + phrase + " -> " + thing, flush=True)
+            phrase = ""
     return phrase or thing
 
 
