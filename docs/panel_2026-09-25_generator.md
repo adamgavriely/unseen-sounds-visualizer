@@ -104,3 +104,48 @@ seed noise 25-30 %.
 2. Point 3(b): template subject or pictogram, and point 3(c): onomatopoeia card or pictogram — one answer
    each, with the reason a supervisor would accept.
 3. Point 6: which clips for the screening round, and which for confirmation, given the thin pool?
+
+---
+
+# Round 3 — final plan GP-2 (sign, or name the one point you cannot sign)
+
+**Settled in round 2:** Qwen-Image 2.0 (never published) and Ideogram 4.0 (JSON-prompt model, fp8 only) are
+excluded. Candidates: **HiDream-O1-Image** (MIT, 35 GB), **Qwen-Image-2.1** (research licence, 33 GB + its
+18 GB official prompt rewriter), **Mage-Flow** (MIT, 17 GB; Microsoft repo gated — needs Adam to accept the
+terms; the ungated mirror is ComfyUI layout). Control: Qwen-Image-2512. Ties keep 2512. Group (b) sounds
+(thunder, rain on a surface, car alarm, train horn, church bell, glass) get a **fixed template subject per
+label**, same generator (both). LLM expansion must pass the list and person guards *after* rewriting; any
+new noun → fall back to the short prompt, never retry (both); on Qwen-Image-2.1 the rewriter is its own
+PE-T2I model (G1).
+
+**GP-2, the plan**
+1. **Compute gate first** (no rating): each candidate loads on one A100/H200, draws ≤ 20 s at 1024 px,
+   accepts a negative prompt (or the missing negative is recorded). Downloaded one at a time on the login
+   node; **disk is short** (86 GB needed, 37 GB free) — Adam decides: request more, or run-then-delete.
+2. **Screening, picture-DEV (the 54 rated sounds), one sitting**: control / HiDream / Qwen-Image-2.1 /
+   Mage-Flow (if its terms are accepted), identical V3.1 text, **all arms at seed_of(item)+1** so the control
+   is not the picture Adam already saw (G2), shuffled together, 10 repeats, **glance fidelity** (384 px,
+   1.5 s, then the answer box).
+3. **Prompt arms on the screening winner**: + image-prompt rules (whole thing in frame, mid-act with its
+   visible effect, one large subject) / + guarded expansion; group (b) templates on.
+4. **Group (c), sourceless (whoosh, thunk, smash with no object):** G2 says onomatopoeia card (the DCMP
+   convention DHH viewers already read); G1 says a language-free pictogram (the panel's contract is "no
+   text", and a word card is the text control). **Compromise: a comic burst glyph with the word inside it,
+   as its own arm, counted separately and never as a picture win.** ~9 % of DEV sounds, ~20 % of gold
+   human-rated off-screen sounds.
+5. **Confirmation on fresh clips** (G1): run the shipped detector + gate over the 489 unannotated
+   `unsorted` clips, take the first 30 by filename hash with ≥ 1 off-screen sound in group (a) or (b),
+   **freeze the list in the prereg before any picture is drawn**; winner vs control, two seeds. The key is the
+   detector's source, as in round 2, so no annotation is needed.
+6. **Slice B stays for V3.1** (G1) — its pages are already published; V3.1 is re-run on the confirmed winner
+   later if one wins, and the generator gain is otherwise reported as additive.
+7. **Rule 2 widened** (G2): a picture clearly showing a thing the audio never established is a false message
+   whatever Adam types; flagged first mechanically (the checker's logged OBJECT line vs the subject), then by
+   eye, before Adam's file is opened.
+8. **Pass bar** (written now): adopt only if right ≥ control + 8/54 on screening **and** the confirmation
+   difference is positive with its CI excluding zero; wrong ≤ control's; zero false messages under the
+   widened rule; repeats ≥ 80 % (if under, lengthen the reveal to 2.5 s, never remove it). The same bar for
+   each prompt arm, against its own generator's control.
+
+## Round 3 question (at most six lines)
+Sign GP-2, or name the single point you cannot sign and the fix.
