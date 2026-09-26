@@ -161,3 +161,13 @@ sneeze, show the heard source: misreadings, not false messages.) This is exactly
 for; V3.1's verdict comes from slice B. Most of the gain is the generator (N0 vs today); the rest of the
 failures are sounds that are hard to draw (whoosh, thunder, rain on a surface, a car alarm, a smash, a
 train horn: "can't tell") and bird actions read as "bird" (vague).
+
+## N0 rule-2 pass (2026-09-26, week plan B.2; by the assistant, arm key already open — post hoc, disclosed)
+
+Rule 2 applied to N0 exactly as to N: every answer Adam classed *wrong* on an N0 picture, looked at by eye. Five:
+N0:13 sheep → "goat" (shows the heard animal kind: misreading, as N:13), N0:14 goose → "duck" (a goose: misreading),
+N0:29 siren → "megaphone" (an electric siren horn: shows the heard source, misreading), N0:38 sigh → "crying woman"
+(a person: misreading, as N:38), **N0:37 telephone bell ringing → "reception bell" (P166): the picture shows a desk
+bell, not a telephone — an object the audio never established. Confirmed false message.** So the "+22 points,
+generator alone" claim stands as a correct-rate result, but it is **not clean**: N0 carries one false message, as N did
+(N:39 door). The frozen final setup must pass its own rule-2 check in the confirmation sitting.

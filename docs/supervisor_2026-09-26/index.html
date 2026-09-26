@@ -199,7 +199,7 @@ ul.plain{margin:0; padding-left:1.1em; max-width:80ch} ul.plain li{margin:4px 0}
   <div class="kicker">6 · Pictures — blind human test, 54 sounds on fresh clips</div>
   <div class="grid g2" style="margin-bottom:16px">
     <div class="fig"><img src="fig/pictures_round2.png" alt="Recognition rate by picture version"></div>
-    <div class="card" style="padding:14px"><b>Glance test.</b> Each picture shown 1.5 s at 384 px; the rater types what makes the sound. Old vs new model: 14 → 26 of 54 recognised. Three automatic picture checkers failed against the human, so the claim rests on a person.</div>
+    <div class="card" style="padding:14px"><b>Glance test.</b> Each picture shown 1.5 s at 384 px; the rater types what makes the sound. Old vs new model: 14 → 26 of 54 recognised (+22 points, significant). One new-model picture showed a wrong object (a ringing phone drawn as a desk bell), so the final setup must pass that check too. Three automatic picture checkers failed against the human, so the claim rests on a person.</div>
   </div>
   <div class="grid g4">
     <div class="card"><div class="pair"><figure><img src="media/pics/P075.jpg" alt=""><figcaption>old</figcaption></figure><figure><img src="media/pics/P040.jpg" alt=""><figcaption>new</figcaption></figure></div><div class="cap"><b>Thunder</b>can't tell → “thunder”</div></div>
@@ -209,7 +209,7 @@ ul.plain{margin:0; padding-left:1.1em; max-width:80ch} ul.plain li{margin:4px 0}
   </div>
   <div class="grid g4" style="margin-top:16px">
     <div class="card"><img src="media/pics/P115.jpg" alt=""><div class="cap"><span class="tag bad">false message</span><b>A thud drawn as a door</b>Why the text model may not invent objects.</div></div>
-    <div class="card"><img src="media/pics/P166.jpg" alt=""><div class="cap"><span class="tag bad">wrong kind</span><b>Phone ringing → desk bell</b>Right family, wrong object.</div></div>
+    <div class="card"><img src="media/pics/P166.jpg" alt=""><div class="cap"><span class="tag bad">false message</span><b>Phone ringing → desk bell</b>New generator, today’s text: the one wrong object.</div></div>
     <div class="card"><img src="media/pics/P041.jpg" alt=""><div class="cap"><span class="tag mix">unreadable</span><b>Car alarm</b>Nobody can draw an alarm → fixed template.</div></div>
     <div class="card"><img src="media/pics/P003.jpg" alt=""><div class="cap"><span class="tag mix">unreadable</span><b>Whoosh</b>No object makes it → a “WHOOSH” word card.</div></div>
   </div>
@@ -245,7 +245,7 @@ ul.plain{margin:0; padding-left:1.1em; max-width:80ch} ul.plain li{margin:4px 0}
   <div class="kicker">9 · What an examiner will ask — our answers</div>
   <ul class="plain">
     <li><b>One annotator.</b> A second person on 30 clips is planned (agreement will be reported).</li>
-    <li><b>TEST was read 10 times in total</b>, each dated and disclosed; the final table was scored once under a rule written first.</li>
+    <li><b>TEST: 5 deliberate reads, 10 exposures</b> counting prints and diagnostics — each dated and disclosed; the final table was scored once under a rule written first.</li>
     <li><b>The detector's threshold was picked on a clip set that shares 35 TEST clips</b> — both systems use it; a clean DEV-only check also picked it. Disclosed.</li>
     <li><b>The caption baseline had no gate.</b> A fair one (same gate, text instead of pictures) ties with pictures: −0.04 [−0.22, +0.14].</li>
     <li><b>Viewer cost was added after F1 came out a tie</b> — its weights date from September; we show the whole cost curve, not one point.</li>

@@ -62,7 +62,7 @@ ax.barh([a for a, _ in arms][::-1], [v / 54 * 100 for _, v in arms][::-1], color
 for i, (_, v) in enumerate(arms[::-1]):
     ax.text(v / 54 * 100 + 1, i, f"{v}/54", va="center", color=INK)
 ax.set_xlim(0, 75); ax.set_xlabel("% of pictures recognised in a 1.5-s glance (blind)")
-ax.set_title("Pictures: +22 points from the generator (significant)", loc="left", color=INK, fontsize=12)
+ax.set_title("Pictures: new generator recognised more often (+22 points)", loc="left", color=INK, fontsize=12)
 save(fig, "pictures_round2.png")
 # 4. gate accuracy on the gold sounds (balanced accuracy; GOLD_RERUN §4d)
 fig, ax = plt.subplots(figsize=(6.2, 2.4))

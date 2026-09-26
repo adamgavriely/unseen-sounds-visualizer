@@ -1873,3 +1873,5 @@ rules on DEV-49 from caches is reported beside this note. The original line stay
 +0.78 [+0.12, +1.40]; pictures +0.98 [+0.24, +1.68]). Pictures − same-gate text tags = −0.04 [−0.22, +0.14] (paired
 clip bootstrap, 2000, seed 0; the two differ on 7 of 49 clips): a tie, as expected (the judge reads the text tag as the
 label itself). The ungated text row stays in the table as the baseline, with its confound stated.
+Read count (2026-09-26): amendment 21 is the **fifth deliberate read** of TEST and the **tenth exposure** counting prints
+and diagnostics (`docs/LEDGER_2026-09-26.md`, audit finding 1).
