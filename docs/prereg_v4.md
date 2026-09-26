@@ -1804,7 +1804,7 @@ A model gets better at *presence* without getting better at *source*, because pr
 trained and measured on. Reported against interest: this was run to give SAM 3 its fair chance, and
 it was the objection of the project's own author that prompted it.
 
-## Amendment 21 — the final like-for-like TEST table (2026-09-26, before any render; decision pending Adam)
+## Amendment 21 — the final like-for-like TEST table (2026-09-25 evening, before any render)
 
 Panel of five, four rounds (`docs/panel_2026-09-26_plan.md`, signed 5/5; D2 carried 4–1, P5 dissenting: "a fifth
 read"). Proposed: render ours, blind and ungated text tags on TEST at the shipped configuration (onset rule on, cap
@@ -1820,3 +1820,37 @@ it. Guards: no scorer, judge or audit is pointed at the TEST tag before the yes;
 from every both-halves script; job logs are read for completion and errors only.
 
 Adam's decision: **YES** — render and score (chat, 2026-09-25 21:50 JDT: "2 yes"). Second annotator: yes, DEV/TEST clips only, no slice B ("because they are weird").
+
+### Amendment 21 — result (scored once, 2026-09-26; `benchmark/gold/holm_table.py`, `holm_test_final_v33_test_bench.json`)
+
+Renders `test_final_v33` (ours and blind on H200, ungated text on A100; `[v4]` lines checked: FLEXSED_BAR 0.8,
+PANNS_VETO 0.05, FLEXSED_VETO 0.3, ONSET_MONOTONE True, MAX_SPAN None); completeness guard 60/60 for every arm. (A
+first call named the subset `test`, which includes slice B; the guard stopped it before any number was computed; the
+declared 60 TEST clips are `test_bench`.)
+
+    60 TEST clips, 43 needed sounds     F1     P      R      FA/clip  cost
+    ours                                0.381  0.390  0.372  0.42     2.63
+    blind                               0.322  0.253  0.442  0.93     3.47
+    silence                             0      -      0      0        2.87
+
+    PRIMARY  dF1 ours - blind +0.059 [-0.030, +0.144]  p 0.183   null
+    FAMILY 1 (Holm over 7)        d      95% CI              p       Holm
+      dP                       +0.137 [+0.043, +0.256]   0.002   0.010   survives
+      dFA/clip                 -0.517 [-0.800, -0.283]  <0.001  <0.001   survives
+      d cost/clip              -0.833 [-1.434, -0.300]   0.003   0.012   survives
+      d clean-clip accuracy    +0.219 [+0.086, +0.364]   0.001   0.006   survives
+      dF0.5                    +0.110 [+0.017, +0.210]   0.023   0.069   -
+      dR                       -0.070 [-0.154, +0.000]   0.103   0.206   -
+      dwF1                     +0.022 [-0.074, +0.103]   0.580   0.580   -
+    FAMILY 2 (Holm over 3)
+      F1 vs silence (all)      +0.381 [+0.217, +0.557]  <0.001  <0.001   survives (= ours' F1)
+      cost vs silence (all)    -0.233 [-1.000, +0.467]   0.585   0.585   -
+      cost vs silence (unseen, 13; pre-declared subgroup of a post-hoc metric)
+                               -3.077 [-4.769, -1.385]  <0.001  <0.001   survives
+    CATEGORY (CIs only): mixed d cost vs blind -1.73 [-3.73, -0.13]; seen -1.83 [-2.83, -1.00];
+      unseen +0.00 [-0.62, +0.77]; no-ambient -0.10 [-0.30, +0.00]
+
+By the committed rule this table **replaces the 23 Sep table** as the thesis's TEST table; the 23 Sep table moves to
+the read history as read 4, this is read 5. No further TEST number is read. DEV like-for-like under the same code
+(`holm_dev_monocap_v31_dev.json`): primary +0.048 null; family 1 survivors dFA, d cost, d clean-acc (dP p 0.020, Holm
+0.080, does not survive); family 2 survivors F1 vs silence only (unseen cost -0.86, p 0.091).
