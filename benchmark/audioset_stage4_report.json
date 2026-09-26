@@ -1,0 +1,61 @@
+{
+ "clips": 280,
+ "note": "descriptive, no selection; shipped bars; onset refinement not re-run",
+ "rows": {
+  "A BEATs 0.35": {
+   "masked_conseq_recall": 0.3870967741935484,
+   "conseq_recall": 0.5446428571428571,
+   "all_recall": 0.34810126582278483,
+   "masked_conseq_n": 31,
+   "conseq_n": 224,
+   "all_n": 1264,
+   "onset_recall_conseq": 0.2767857142857143,
+   "fp_per_min": 6.407142857142874,
+   "onset_mae": 2.6085245901639347
+  },
+  "B FlexSED 0.8": {
+   "masked_conseq_recall": 0.0,
+   "conseq_recall": 0.15625,
+   "all_recall": 0.12262658227848101,
+   "masked_conseq_n": 31,
+   "conseq_n": 224,
+   "all_n": 1264,
+   "onset_recall_conseq": 0.13392857142857142,
+   "fp_per_min": 2.871428571428579,
+   "onset_mae": 0.7722857142857144
+  },
+  "C union": {
+   "masked_conseq_recall": 0.3870967741935484,
+   "conseq_recall": 0.5892857142857143,
+   "all_recall": 0.3829113924050633,
+   "masked_conseq_n": 31,
+   "conseq_n": 224,
+   "all_n": 1264,
+   "onset_recall_conseq": 0.3080357142857143,
+   "fp_per_min": 8.828571428571452,
+   "onset_mae": 2.414242424242424
+  },
+  "D + FlexSED veto 0.3": {
+   "masked_conseq_recall": 0.3870967741935484,
+   "conseq_recall": 0.53125,
+   "all_recall": 0.35443037974683544,
+   "masked_conseq_n": 31,
+   "conseq_n": 224,
+   "all_n": 1264,
+   "onset_recall_conseq": 0.2767857142857143,
+   "fp_per_min": 6.21428571428573,
+   "onset_mae": 2.4074789915966393
+  },
+  "E + PANNs veto 0.05 (shipped)": {
+   "masked_conseq_recall": 0.3870967741935484,
+   "conseq_recall": 0.5133928571428571,
+   "all_recall": 0.3370253164556962,
+   "masked_conseq_n": 31,
+   "conseq_n": 224,
+   "all_n": 1264,
+   "onset_recall_conseq": 0.25892857142857145,
+   "fp_per_min": 4.5642857142857265,
+   "onset_mae": 2.489652173913044
+  }
+ }
+}

@@ -1902,3 +1902,20 @@ make the curve reproduce the scored tables exactly (β = 2: TEST ours 2.63 / bli
 2.94). Crossings: ours beats blind for β above 0.39 (TEST) / 0.46 (DEV); ours beats silence for β below 2.56 (TEST) / 2.33 (DEV).
 `cost_curve_test_final_v33.png`, `cost_curve_dev_monocap_v31.png`. (The oracle line reuses the cached gate votes of
 `gate_gold`, frames sampled around the gold sounds.)
+
+### Stage 4 on the 280-clip AudioSet-Strong calibration set (plan B.4 / D6, 2026-09-27; descriptive, no selection)
+`benchmark/audioset_stage4_report.py` → `audioset_stage4_report.json`. Shipped bars; stage 4's own union/veto rules on
+the cached frame scores (onset refinement not re-run). Non-speech, non-music events; recall = matched by family with
+≥ 0.5 s overlap; "consequential" and "masked" as tagged in the calibration set (31 masked consequential events).
+
+    row                              masked-conseq  conseq   all    onset-recall  false/min  onset MAE
+    A BEATs 0.35                         38.7 %      54.5 %  34.8 %    27.7 %       6.41      2.61 s
+    B FlexSED 0.8 alone                   0.0 %      15.6 %  12.3 %    13.4 %       2.87      0.77 s
+    C union                              38.7 %      58.9 %  38.3 %    30.8 %       8.83      2.41 s
+    D + FlexSED veto 0.3                 38.7 %      53.1 %  35.4 %    27.7 %       6.21      2.41 s
+    E + PANNs veto 0.05 (shipped)        38.7 %      51.3 %  33.7 %    25.9 %       4.56      2.49 s
+Reading: on out-of-sample AudioSet-Strong clips the shipped stack keeps BEATs' recall within about 3 points and cuts
+false spans per minute by 29 % (6.41 → 4.56) — the same direction as on the gold (precision up, recall slightly down).
+FlexSED at bar 0.8 recovers none of the 31 masked consequential events here (its score scale is family-dependent; the
+per-family bars fitted on this very set were not adopted), unlike on the gold DEV set; the union's masked recall equals
+BEATs'. Onset errors are the extractor's (≈ 2.5 s mean on 10-s clips), not the shipped refined onsets.
