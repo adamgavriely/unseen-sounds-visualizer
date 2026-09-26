@@ -1866,3 +1866,10 @@ GOLD §13) were selected on split.json DEV-79. The vetoes (amendments 10, 16), t
 used the clean DEV-49. Mitigation: the DEV-49 end-to-end grid also selected 0.8 (cost 3.63 / 4.61 / 5.43 for 0.8 / 0.7 /
 0.6); amendment 8's criteria were gate-blind (a shared stage, applied to both arms). A re-check of amendment 8's three
 rules on DEV-49 from caches is reported beside this note. The original line stays as written.
+
+### Derived gated text arm on DEV (plan B.4; declared decision-free, 2026-09-26)
+`derive_gated_text.py --src dev_monocap_v31 --new dev_gtext_v34`: spans identical to ours on 49/49 clips. Direct judge
+(Gemma-4-31B, `judge_direct_dev_gtext_v34.json`, 98 rows, 0 unparsed); trust checks pass for both arms (text B2 gap
++0.78 [+0.12, +1.40]; pictures +0.98 [+0.24, +1.68]). Pictures − same-gate text tags = −0.04 [−0.22, +0.14] (paired
+clip bootstrap, 2000, seed 0; the two differ on 7 of 49 clips): a tie, as expected (the judge reads the text tag as the
+label itself). The ungated text row stays in the table as the baseline, with its confound stated.

@@ -1,0 +1,268 @@
+<meta charset="utf-8">
+<title>Seeing Off-Screen Sound</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --bg:#f5f6f8; --paper:#ffffff; --ink:#1d2433; --muted:#5d6678; --line:#dde1e8;
+  --ours:#2f6fdb; --blind:#c9772b; --sil:#9aa3b2; --good:#1f9d6b; --bad:#c8453b; --warn:#b7791f;
+  --chip:#eef1f6; --good-bg:#e5f5ee; --bad-bg:#fbeceb; --warn-bg:#fbf3e4;
+  --sans:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11151d; --paper:#1a1f2a; --ink:#e7eaf0; --muted:#9aa3b5; --line:#2c3342;
+    --chip:#232a37; --good-bg:#15332a; --bad-bg:#3a1f1d; --warn-bg:#382c17;
+    --ours:#6b9bf0; --good:#43c08e; --bad:#ec7a70; --warn:#e0a54a;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11151d; --paper:#1a1f2a; --ink:#e7eaf0; --muted:#9aa3b5; --line:#2c3342;
+  --chip:#232a37; --good-bg:#15332a; --bad-bg:#3a1f1d; --warn-bg:#382c17;
+  --ours:#6b9bf0; --good:#43c08e; --bad:#ec7a70; --warn:#e0a54a;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:16px; line-height:1.5; margin:0}
+.wrap{max-width:1120px; margin:0 auto; padding-inline:20px; padding-block:28px 64px}
+h1{font-size:2.1rem; line-height:1.15; margin:0 0 6px; text-wrap:balance}
+h2{font-size:1.35rem; margin:0 0 4px; text-wrap:balance}
+.lede{color:var(--muted); margin:0; max-width:68ch}
+section{margin-top:44px}
+.kicker{font:600 .72rem/1 var(--mono); letter-spacing:.09em; text-transform:uppercase; color:var(--muted); margin-bottom:8px}
+.sub{color:var(--muted); margin:0 0 16px; max-width:70ch}
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.chip{font:600 .78rem/1 var(--mono); padding:7px 10px; border-radius:6px; background:var(--chip); color:var(--ink)}
+.chip.ok{background:var(--good-bg); color:var(--good)}
+.chip.wait{background:var(--warn-bg); color:var(--warn)}
+.chip.no{background:var(--bad-bg); color:var(--bad)}
+.grid{display:grid; gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr))}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:10px; overflow:hidden}
+.card .cap{padding:10px 12px 12px; font-size:.92rem}
+.card .cap b{display:block; margin-bottom:2px}
+video,img{display:block; width:100%; max-width:100%; height:auto; background:#000}
+.fig{background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px}
+.fig img{background:#fff}
+.tag{display:inline-block; font:600 .68rem/1 var(--mono); letter-spacing:.06em; text-transform:uppercase; padding:4px 6px; border-radius:4px; margin-right:6px; vertical-align:2px}
+.tag.good{background:var(--good-bg); color:var(--good)} .tag.bad{background:var(--bad-bg); color:var(--bad)} .tag.mix{background:var(--warn-bg); color:var(--warn)} .tag.cmp{background:var(--chip); color:var(--muted)}
+/* pipeline */
+.pipe{display:flex; flex-wrap:wrap; gap:10px; align-items:stretch}
+.stage{flex:1 1 150px; background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px; position:relative}
+.stage .n{font:600 .7rem/1 var(--mono); color:var(--muted)}
+.stage .t{font-weight:700; margin:4px 0 6px}
+.stage .m{font:600 .8rem/1.35 var(--mono); color:var(--ours)}
+.stage.key{border-color:var(--ours); box-shadow:0 0 0 1px var(--ours) inset}
+.tablewrap{overflow-x:auto; margin-top:16px; border:1px solid var(--line); border-radius:10px; background:var(--paper)}
+table{border-collapse:collapse; width:100%; min-width:720px; font-size:.9rem}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font:600 .72rem/1.2 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.mono{font-family:var(--mono); font-size:.82rem}
+.x{color:var(--bad)} .v{color:var(--good)}
+/* numbers */
+.nums{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr)); gap:12px; margin-bottom:16px}
+.num{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px 14px}
+.num .k{font-size:.85rem; color:var(--muted)}
+.num .val{font:600 1.35rem/1.2 var(--mono); font-variant-numeric:tabular-nums}
+.num .val .o{color:var(--ours)} .num .val .b{color:var(--blind)} .num .val .s{color:var(--sil)}
+.num .d{font:600 .78rem/1.2 var(--mono); color:var(--good); margin-top:3px}
+.num .d.n{color:var(--muted)}
+/* pictures */
+.pair{display:grid; grid-template-columns:1fr 1fr; gap:4px}
+.pair figure{margin:0; position:relative}
+.pair figcaption{position:absolute; left:6px; top:6px; font:600 .68rem/1 var(--mono); padding:4px 6px; border-radius:4px; background:rgba(20,24,33,.78); color:#fff}
+.pics .card img{background:#fff; aspect-ratio:1/1; object-fit:contain}
+/* tried */
+.tried .card{padding:14px}
+.tried h3{margin:0 0 8px; font-size:1rem}
+.tried .row{display:flex; flex-wrap:wrap; gap:6px}
+.pill{font:600 .74rem/1 var(--mono); padding:6px 8px; border-radius:5px; background:var(--bad-bg); color:var(--bad)}
+.pill.keep{background:var(--good-bg); color:var(--good)}
+.pill.open{background:var(--warn-bg); color:var(--warn)}
+.tried .score{font:600 .8rem/1.2 var(--mono); color:var(--muted); margin:2px 0 10px}
+/* questions */
+ol.q{padding-left:1.3em; margin:0; display:grid; gap:10px; max-width:78ch}
+ol.q li{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:10px 14px}
+ol.q li::marker{font-family:var(--mono); color:var(--muted)}
+ul.plain{margin:0; padding-left:1.1em; max-width:80ch} ul.plain li{margin:4px 0}
+.foot{margin-top:48px; color:var(--muted); font-size:.85rem}
+@media (prefers-reduced-motion: reduce){*{scroll-behavior:auto}}
+</style>
+
+<div class="wrap">
+
+<header>
+  <div class="kicker">MSc · Bar-Ilan · status 26 Sept 2026</div>
+  <h1>Seeing off-screen sound</h1>
+  <p class="lede">Pictures beside a video for sounds a deaf viewer misses: heard on the soundtrack, not seen on screen. No training: detectors, a visual check and an image generator, chained.</p>
+  <div class="chips">
+    <span class="chip ok">Final TEST table scored (60 clips)</span>
+    <span class="chip ok">4 of 7 gains survive Holm</span>
+    <span class="chip wait">Final pictures: one blind sitting pending</span>
+    <span class="chip">One annotator · 139 gold clips</span>
+  </div>
+</header>
+
+<section id="what">
+  <div class="kicker">1 · What it does</div>
+  <div class="grid g2">
+    <div class="card">
+      <video controls preload="none" poster="media/dev_ours_ambulance.jpg" src="media/dev_ours_ambulance.mp4"></video>
+      <div class="cap"><b>A siren you hear but do not see → a picture appears</b>DEV clip, final system. Left: the video. Right: the panel a deaf viewer reads.</div>
+    </div>
+    <div class="card">
+      <video controls preload="none" poster="media/dev_ours_waterfall_kawaida_01.jpg" src="media/dev_ours_waterfall_kawaida_01.mp4"></video>
+      <div class="cap"><b>A waterfall you can see → nothing is drawn</b>The gate: if the sound's source is on screen, a picture adds nothing.</div>
+    </div>
+  </div>
+</section>
+
+<section id="system">
+  <div class="kicker">2 · The system and why each model</div>
+  <div class="pipe">
+    <div class="stage"><div class="n">1–3</div><div class="t">Audio + speech</div><div class="m">ffmpeg · Whisper</div></div>
+    <div class="stage key"><div class="n">4</div><div class="t">Hear the sounds</div><div class="m">BEATs ∪ FlexSED<br>+ 2 vetoes (FlexSED, PANNs)</div></div>
+    <div class="stage"><div class="n">4b</div><div class="t">Drawable?</div><div class="m">ontology filter</div></div>
+    <div class="stage key"><div class="n">5</div><div class="t">Is the source on screen?</div><div class="m">Qwen3.8-27B<br>3 votes, 6 frames / 5 s</div></div>
+    <div class="stage"><div class="n">5b</div><div class="t">What to draw</div><div class="m">Qwen3.8-27B + word guards</div></div>
+    <div class="stage key"><div class="n">6</div><div class="t">Draw it</div><div class="m">FLUX (shipped) →<br>Qwen-Image-2512</div></div>
+  </div>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Stage</th><th>Chosen</th><th>Also tried (SOTA and others)</th><th>Why the chosen one</th></tr></thead>
+      <tbody>
+        <tr><td>Sound detection</td><td class="mono">BEATs ∪ FlexSED 0.8</td><td>PANNs, PretrainedSED ×5, FLAM ×2, AST, CED, SSLAM, CLAP, Qwen2-Audio</td><td>Only setup that raised recall at half the false alarms; 11 others failed their pre-set bar</td></tr>
+        <tr><td>False-alarm filter</td><td class="mono">FlexSED veto 0.3 + PANNs veto 0.05</td><td>AST/CED ensemble, Demucs, HTDemucs, DeepFilterNet views</td><td>Gave the only significant TEST gain in precision</td></tr>
+        <tr><td>Source on screen?</td><td class="mono">Qwen3.8-27B, majority of 3</td><td>CLIP, SigLIP, OWLv2, SAM 3, Qwen2.5-VL-7B / 32B, video input, audio-visual sync</td><td>Best on the gold ticks (0.62); object detectors are at chance (0.50)</td></tr>
+        <tr><td>What to draw</td><td class="mono">Qwen3.8 + word lists</td><td>VLM writes the whole prompt, long descriptions</td><td>Free writing invented objects (a door for a thud); lists cannot</td></tr>
+        <tr><td>Picture</td><td class="mono">Qwen-Image-2512 (Apache-2.0)</td><td>Retrieval, SDXL, SDXL-Turbo, PixArt-Σ, FLUX, Qwen-Image-2.1</td><td>+22 points recognised, blind; 2.1 no better and research-only licence</td></tr>
+        <tr><td>Judge (2nd opinion)</td><td class="mono">Gemma-4-31B sees the panel</td><td>Mistral-7B, describe-then-judge, 6 picture checkers</td><td>Passes all three trust checks against the annotator; sees the pictures itself</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="results">
+  <div class="kicker">3 · Results — TEST, 60 clips, final like-for-like table</div>
+  <div class="nums">
+    <div class="num"><div class="k">Pictures that are right</div><div class="val"><span class="o">0.39</span> vs <span class="b">0.25</span></div><div class="d">+0.14 · survives Holm</div></div>
+    <div class="num"><div class="k">Wrong pictures per clip</div><div class="val"><span class="o">0.42</span> vs <span class="b">0.93</span></div><div class="d">−0.52 · survives Holm</div></div>
+    <div class="num"><div class="k">Off-screen clips: viewer cost</div><div class="val"><span class="o">4.0</span> vs <span class="s">7.1</span> nothing</div><div class="d">−3.08 · survives Holm</div></div>
+    <div class="num"><div class="k">F1 (primary)</div><div class="val"><span class="o">0.38</span> vs <span class="b">0.32</span></div><div class="d n">+0.06 · not significant</div></div>
+  </div>
+  <div class="grid g2">
+    <div class="fig"><img src="fig/test_vs_blind.png" alt="Forest plot: gate minus draw-every-sound on TEST and DEV"></div>
+    <div class="fig"><img src="fig/cost_by_category.png" alt="Viewer cost per clip category for ours, draw every sound, show nothing"></div>
+  </div>
+  <p class="sub" style="margin-top:12px">Blue = ours · orange = draw every detected sound · grey = show nothing. Cost = 4 × missed + 2 × wrong picture.</p>
+</section>
+
+<section id="why">
+  <div class="kicker">4 · Why F1 is a tie</div>
+  <div class="grid g2">
+    <div class="fig"><img src="fig/miss_causes.png" alt="Why needed sounds are missed"></div>
+    <div class="fig"><img src="fig/gate_accuracy.png" alt="Gate accuracy on the gold"></div>
+  </div>
+  <p class="sub" style="margin-top:12px">Each silenced wrong picture is worth as much as one lost right one, and the detector misses most sounds before the gate sees them. With a perfect detector the gate is significant (+0.067).</p>
+</section>
+
+<section id="examples">
+  <div class="kicker">5 · Examples — good, bad, complicated</div>
+  <div class="grid g3">
+    <div class="card"><video controls preload="none" poster="media/dev_ours_ly_helicopter_-v62cK1.jpg" src="media/dev_ours_ly_helicopter_-v62cK1.mp4"></video>
+      <div class="cap"><span class="tag good">good</span><b>Helicopter off screen, drawn on time</b>“Draw every sound” adds 3 wrong pictures here.</div></div>
+    <div class="card"><video controls preload="none" poster="media/test_ours_w8_kids_ice_cream_truck_2a.jpg" src="media/test_ours_w8_kids_ice_cream_truck_2a.mp4"></video>
+      <div class="cap"><span class="tag good">good · TEST</span><b>Ice-cream van heard, not seen</b>Both needed sounds drawn.</div></div>
+    <div class="card"><video controls preload="none" poster="media/dev_blind_waterfall_kawaida_01.jpg" src="media/dev_blind_waterfall_kawaida_01.mp4"></video>
+      <div class="cap"><span class="tag cmp">baseline</span><b>“Draw every sound” on the waterfall</b>Draws what is already on screen. Compare section 1.</div></div>
+    <div class="card"><video controls preload="none" poster="media/dev_ours_bell_miami.jpg" src="media/dev_ours_bell_miami.mp4"></video>
+      <div class="cap"><span class="tag bad">bad</span><b>Bell silenced as “visible”</b>A bell tower is on screen; the ringing one is not.</div></div>
+    <div class="card"><video controls preload="none" poster="media/test_ours_m5_war_fury_25b.jpg" src="media/test_ours_m5_war_fury_25b.mp4"></video>
+      <div class="cap"><span class="tag bad">bad · TEST</span><b>Helicopter silenced because a tank is visible</b>“A kind of vehicle” rule — too broad.</div></div>
+    <div class="card"><video controls preload="none" poster="media/dev_ours_b3_laundromat.jpg" src="media/dev_ours_b3_laundromat.mp4"></video>
+      <div class="cap"><span class="tag bad">bad</span><b>Laundromat machines drawn as a “vehicle”</b>A detector error no gate can fix.</div></div>
+    <div class="card"><video controls preload="none" poster="media/test_ours_w8_hide_wolves_howl_1a.jpg" src="media/test_ours_w8_hide_wolves_howl_1a.mp4"></video>
+      <div class="cap"><span class="tag bad">bad · TEST</span><b>Wolves howling drawn as a crying baby</b>Wrong label from the detector.</div></div>
+    <div class="card"><video controls preload="none" poster="media/dev_ours_mv_protest_scene_movie.jpg" src="media/dev_ours_mv_protest_scene_movie.mp4"></video>
+      <div class="cap"><span class="tag mix">complicated</span><b>Crowd on screen, chanting off screen</b>Seeing people ≠ seeing who makes the sound.</div></div>
+    <div class="card"><video controls preload="none" poster="media/dev_ours_ambient_nature_rainforest_7629.jpg" src="media/dev_ours_ambient_nature_rainforest_7629.mp4"></video>
+      <div class="cap"><span class="tag mix">complicated</span><b>Macaws visible, another bird calls</b>Is that bird “visible”? The gold says no.</div></div>
+  </div>
+  <p class="sub" style="margin-top:12px">Videos show the shipped generator (FLUX). The new generator is in section 6.</p>
+</section>
+
+<section id="pictures" class="pics">
+  <div class="kicker">6 · Pictures — blind human test, 54 sounds on fresh clips</div>
+  <div class="grid g2" style="margin-bottom:16px">
+    <div class="fig"><img src="fig/pictures_round2.png" alt="Recognition rate by picture version"></div>
+    <div class="card" style="padding:14px"><b>Glance test.</b> Each picture shown 1.5 s at 384 px; the rater types what makes the sound. Old vs new model: 14 → 26 of 54 recognised. Three automatic picture checkers failed against the human, so the claim rests on a person.</div>
+  </div>
+  <div class="grid g4">
+    <div class="card"><div class="pair"><figure><img src="media/pics/P075.jpg" alt=""><figcaption>old</figcaption></figure><figure><img src="media/pics/P040.jpg" alt=""><figcaption>new</figcaption></figure></div><div class="cap"><b>Thunder</b>can't tell → “thunder”</div></div>
+    <div class="card"><div class="pair"><figure><img src="media/pics/P157.jpg" alt=""><figcaption>old</figcaption></figure><figure><img src="media/pics/P056.jpg" alt=""><figcaption>new</figcaption></figure></div><div class="cap"><b>Moo</b>can't tell → “cow”</div></div>
+    <div class="card"><div class="pair"><figure><img src="media/pics/P132.jpg" alt=""><figcaption>old</figcaption></figure><figure><img src="media/pics/P073.jpg" alt=""><figcaption>new</figcaption></figure></div><div class="cap"><b>Ice-cream van</b>can't tell → correct</div></div>
+    <div class="card"><div class="pair"><figure><img src="media/pics/P024.jpg" alt=""><figcaption>old</figcaption></figure><figure><img src="media/pics/P076.jpg" alt=""><figcaption>new</figcaption></figure></div><div class="cap"><b>Waves</b>can't tell → “wave”</div></div>
+  </div>
+  <div class="grid g4" style="margin-top:16px">
+    <div class="card"><img src="media/pics/P115.jpg" alt=""><div class="cap"><span class="tag bad">false message</span><b>A thud drawn as a door</b>Why the text model may not invent objects.</div></div>
+    <div class="card"><img src="media/pics/P166.jpg" alt=""><div class="cap"><span class="tag bad">wrong kind</span><b>Phone ringing → desk bell</b>Right family, wrong object.</div></div>
+    <div class="card"><img src="media/pics/P041.jpg" alt=""><div class="cap"><span class="tag mix">unreadable</span><b>Car alarm</b>Nobody can draw an alarm → fixed template.</div></div>
+    <div class="card"><img src="media/pics/P003.jpg" alt=""><div class="cap"><span class="tag mix">unreadable</span><b>Whoosh</b>No object makes it → a “WHOOSH” word card.</div></div>
+  </div>
+</section>
+
+<section id="timing">
+  <div class="kicker">7 · Timing bug, found and fixed</div>
+  <div class="grid g2">
+    <div class="card"><video controls preload="none" poster="media/timing_before.jpg" src="media/timing_before.mp4"></video><div class="cap"><span class="tag bad">before</span><b>Pictures came up to 9 s early</b>223 of 442 starts were moved before the sound.</div></div>
+    <div class="card"><video controls preload="none" poster="media/timing_after.jpg" src="media/timing_after.mp4"></video><div class="cap"><span class="tag good">after</span><b>A start may never move earlier than the sound</b>0 of 442. DEV F1 +0.10 (significant); TEST: inconclusive.</div></div>
+  </div>
+</section>
+
+<section id="tried" class="tried">
+  <div class="kicker">8 · Everything we tried (green = kept)</div>
+  <div class="grid g2">
+    <div class="card"><h3>Hearing the sounds</h3><div class="score">15 tried · 4 kept · each judged by a bar written first</div><div class="row">
+      <span class="pill keep">BEATs</span><span class="pill keep">FlexSED union</span><span class="pill keep">FlexSED veto</span><span class="pill keep">PANNs veto</span>
+      <span class="pill">PANNs alone</span><span class="pill">CLAP check</span><span class="pill">Qwen2-Audio check</span><span class="pill">Demucs</span><span class="pill">FLAM ×2</span><span class="pill">PretrainedSED</span><span class="pill">PSED ×5</span><span class="pill">fusion V1–V3</span><span class="pill">HTDemucs views</span><span class="pill">AST/CED</span><span class="pill">DeepFilterNet</span></div></div>
+    <div class="card"><h3>Is the source on screen?</h3><div class="score">12 tried · 1 kept · 3 land exactly at break-even</div><div class="row">
+      <span class="pill keep">Qwen3.8-27B · 3 votes</span>
+      <span class="pill">CLIP</span><span class="pill">SigLIP</span><span class="pill">OWLv2</span><span class="pill">SAM 3</span><span class="pill">Qwen2.5-VL-7B</span><span class="pill">Qwen2.5-VL-32B</span><span class="pill">video input</span><span class="pill">audio-visual sync</span><span class="pill">any-stretch rule</span><span class="pill">family rule</span><span class="pill">OWLv2 / SAM 3 votes</span></div></div>
+    <div class="card"><h3>Drawing</h3><div class="score">8 generators · 4 prompt versions</div><div class="row">
+      <span class="pill keep">Qwen-Image-2512</span><span class="pill keep">guarded prompt V3.1</span><span class="pill open">templates + word cards (pending)</span>
+      <span class="pill">image retrieval</span><span class="pill">SDXL</span><span class="pill">SDXL-Turbo</span><span class="pill">PixArt-Σ</span><span class="pill">FLUX (shipped)</span><span class="pill">Qwen-Image-2.1</span><span class="pill">AnimateDiff</span><span class="pill">free-text prompt V3</span></div></div>
+    <div class="card"><h3>Measuring</h3><div class="score">what counts as evidence</div><div class="row">
+      <span class="pill keep">per-sound gold (139 clips)</span><span class="pill keep">blind human glance test</span><span class="pill keep">Gemma direct judge</span><span class="pill keep">Holm + cost curve</span>
+      <span class="pill">Mistral judge</span><span class="pill">model-made reference</span><span class="pill">with/without-sound reference</span><span class="pill">gap-closing score</span><span class="pill">6 picture checkers</span></div></div>
+  </div>
+</section>
+
+<section id="honest">
+  <div class="kicker">9 · What an examiner will ask — our answers</div>
+  <ul class="plain">
+    <li><b>One annotator.</b> A second person on 30 clips is planned (agreement will be reported).</li>
+    <li><b>TEST was read 10 times in total</b>, each dated and disclosed; the final table was scored once under a rule written first.</li>
+    <li><b>The detector's threshold was picked on a clip set that shares 35 TEST clips</b> — both systems use it; a clean DEV-only check also picked it. Disclosed.</li>
+    <li><b>The caption baseline had no gate.</b> A fair one (same gate, text instead of pictures) ties with pictures: −0.04 [−0.22, +0.14].</li>
+    <li><b>Viewer cost was added after F1 came out a tie</b> — its weights date from September; we show the whole cost curve, not one point.</li>
+  </ul>
+</section>
+
+<section id="questions">
+  <div class="kicker">10 · Questions for you</div>
+  <ol class="q">
+    <li>F1 is the registered primary and it is a tie. May the abstract lead with precision and viewer cost (Holm-corrected), with F1 stated first as null?</li>
+    <li>Is “the detector is the ceiling; the gate and the pictures are the contribution on top” an acceptable thesis claim?</li>
+    <li>Timing fix: kept as a proven bug fix, its gain reported as DEV-only — acceptable?</li>
+    <li>Is one blind rater (plus a second rater if possible) enough for the picture result, or is a small viewer study needed?</li>
+    <li>Who could annotate 30 clips (~1 hour) as a second annotator?</li>
+    <li>Thesis format, length and submission date — can the results chapter come to you by 30 Sept?</li>
+  </ol>
+</section>
+
+<p class="foot">Every number here is from committed files: the final TEST table (amendment 21, prereg), the DEV table, and the blind picture round 2. Full list of what was tried and dropped: <span style="font-family:var(--mono)">docs/LEDGER_2026-09-26.md</span>.</p>
+</div>
