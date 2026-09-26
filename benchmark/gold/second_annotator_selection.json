@@ -1,0 +1,182 @@
+[
+ {
+  "id": "C01",
+  "stem": "mv_arrest_street_scene",
+  "half": "dev",
+  "category": "seen"
+ },
+ {
+  "id": "C02",
+  "stem": "w8_helmetcam_chainsaw_roof_2b",
+  "half": "test_bench",
+  "category": "unseen"
+ },
+ {
+  "id": "C03",
+  "stem": "w8_duel_diner_horn_1a",
+  "half": "test_bench",
+  "category": "seen"
+ },
+ {
+  "id": "C04",
+  "stem": "m5_horror_conjuring_82",
+  "half": "test_bench",
+  "category": "unseen"
+ },
+ {
+  "id": "C05",
+  "stem": "mv_air_raid_scene",
+  "half": "test_bench",
+  "category": "mixed"
+ },
+ {
+  "id": "C06",
+  "stem": "m4_dog_doorbell_cam_30a",
+  "half": "test_bench",
+  "category": "no_ambient"
+ },
+ {
+  "id": "C07",
+  "stem": "b3_ia_alcf_heydari_0005_0",
+  "half": "test_bench",
+  "category": "unseen"
+ },
+ {
+  "id": "C08",
+  "stem": "mv_detective_crime_scene",
+  "half": "dev",
+  "category": "unseen"
+ },
+ {
+  "id": "C09",
+  "stem": "m4_fire_bodycam_23a",
+  "half": "test_bench",
+  "category": "mixed"
+ },
+ {
+  "id": "C10",
+  "stem": "ambient_nature_rainforest_7629",
+  "half": "dev",
+  "category": "unseen"
+ },
+ {
+  "id": "C11",
+  "stem": "b3_laundromat",
+  "half": "dev",
+  "category": "no_ambient"
+ },
+ {
+  "id": "C12",
+  "stem": "mc_thriller_basement",
+  "half": "test_bench",
+  "category": "mixed"
+ },
+ {
+  "id": "C13",
+  "stem": "bell_miami",
+  "half": "dev",
+  "category": "unseen"
+ },
+ {
+  "id": "C14",
+  "stem": "ly_helicopter_-v62cK1",
+  "half": "dev",
+  "category": "unseen"
+ },
+ {
+  "id": "C15",
+  "stem": "un_driving_motorcycle_4O3bZRYO",
+  "half": "dev",
+  "category": "mixed"
+ },
+ {
+  "id": "C16",
+  "stem": "as_fire_alarm_kGKZ0YK4",
+  "half": "dev",
+  "category": "seen"
+ },
+ {
+  "id": "C17",
+  "stem": "b3_ia_youtube_skxtz9foauw_0",
+  "half": "dev",
+  "category": "seen"
+ },
+ {
+  "id": "C18",
+  "stem": "mv_storm_scene_house",
+  "half": "dev",
+  "category": "mixed"
+ },
+ {
+  "id": "C19",
+  "stem": "m4_film_blackhawk_32a",
+  "half": "test_bench",
+  "category": "mixed"
+ },
+ {
+  "id": "C20",
+  "stem": "m4_live_fire_26a",
+  "half": "test_bench",
+  "category": "mixed"
+ },
+ {
+  "id": "C21",
+  "stem": "w8_dashcam_ambulance_behind_1a",
+  "half": "test_bench",
+  "category": "fill"
+ },
+ {
+  "id": "C22",
+  "stem": "b3_bakery_morning",
+  "half": "dev",
+  "category": "mixed"
+ },
+ {
+  "id": "C23",
+  "stem": "mv_protest_scene_movie",
+  "half": "dev",
+  "category": "mixed"
+ },
+ {
+  "id": "C24",
+  "stem": "b3_aquarium_walk",
+  "half": "test_bench",
+  "category": "seen"
+ },
+ {
+  "id": "C25",
+  "stem": "ambient_weather_storm_16200",
+  "half": "dev",
+  "category": "seen"
+ },
+ {
+  "id": "C26",
+  "stem": "m5_doc_restrepo_138b",
+  "half": "test_bench",
+  "category": "unseen"
+ },
+ {
+  "id": "C27",
+  "stem": "ambient_nature_rainforest_2179",
+  "half": "dev",
+  "category": "fill"
+ },
+ {
+  "id": "C28",
+  "stem": "ly_applause_62ZYD0u",
+  "half": "dev",
+  "category": "mixed"
+ },
+ {
+  "id": "C29",
+  "stem": "w8_dashcam_avalanche_road_2b",
+  "half": "test_bench",
+  "category": "seen"
+ },
+ {
+  "id": "C30",
+  "stem": "movie_junglebook_95",
+  "half": "test_bench",
+  "category": "seen"
+ }
+]
