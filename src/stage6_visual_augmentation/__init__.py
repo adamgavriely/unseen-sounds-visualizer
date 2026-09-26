@@ -442,6 +442,36 @@ def _is_blank(path: Path) -> bool:
         return False
 
 
+def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: str, device: str) -> None:
+    """One picture of the frozen final setup: a burst card for a sound with no maker, a fixed template subject for
+    a sound with a canonical maker, otherwise the V3.1 subject; the rules tail; the template's extra negative words;
+    seed_of + 1 as in the screening arms; one redraw when the picture is nearly blank (ink < 0.05)."""
+    from PIL import Image
+    from benchmark.gold.gen_screen import (TEMPLATES, TEMPLATE_NEG, CARDS, RULES_TAIL, burst_card, ink, seed_of,
+                                           negative_for as screen_negative)
+    source = getattr(spec, "source", "") or spec.event_label
+    word = CARDS.get(source) or CARDS.get(spec.event_label)
+    if word:
+        burst_card(word).resize(size).save(path)
+        spec.image_prompt, spec.image_path, spec.backend = "CARD:" + word, str(path), "card"
+        return
+    key = source if source in TEMPLATES else (spec.event_label if spec.event_label in TEMPLATES else None)
+    subject = TEMPLATES[key] if key else (spec.subject or query)
+    prompt = subject + RULES_TAIL
+    neg = ", ".join(x for x in (screen_negative(subject), TEMPLATE_NEG.get(key or "", "")) if x) or " "
+    seed = seed_of({"clip": work_dir.name, "label": spec.event_label, "start": float(spec.start)}) + 1
+    spec.image_prompt = prompt
+    ok = _diffusion_image(path, prompt, size, model=model, device=device, seed=seed, negative=neg)
+    if ok and ink(Image.open(path)) < 0.05:
+        ok = _diffusion_image(path, prompt, size, model=model, device=device, seed=seed + 1, negative=neg)
+        print(f"       [stage6] {spec.event_label}: the picture came out nearly blank; redrew it")
+    if ok:
+        spec.image_path, spec.backend = str(path), "diffusion"
+    else:
+        _placeholder_image(path, query, size)
+        spec.image_path, spec.backend = str(path), "placeholder"
+
+
 def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
                            backend: str = "retrieve", size=(1024, 1024),
                            model: str = "", device: str = "cpu") -> List[AugmentationSpec]:
@@ -466,6 +496,11 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
                 _placeholder_image(path, query, size)
                 spec.image_path = str(path)
                 spec.backend = "placeholder"
+        elif backend == "diffusion" and getattr(config, "PICTURE_FINAL", False):
+            # The frozen final picture setup (docs/freeze_picture_setup_2026-09-25.md), for demo videos only
+            # (week plan C.1, level 2: switched on only if the blind confirmation passes). One source of truth:
+            # the templates, cards, rules tail and blank guard are imported from the screening code as frozen.
+            _final_picture(spec, path, work_dir, query, size, model, device)
         elif backend == "diffusion":                # v2-b, university GPU
             # Always the pictogram prompt: what Stage 5 stored is the subject, and the
             # style is this backend's business, not the gate's.

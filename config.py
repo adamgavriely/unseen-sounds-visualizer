@@ -204,6 +204,9 @@ PICTURE_SCENE = False
 # GP-4 3(b): refuse a scene qualifier that names a maker from another ontology branch, and a depiction that
 # drops the heard head word (slice B, prereg amendment 2b). Screened on picture-DEV; off until frozen.
 PICTURE_SCENE_GUARD2 = False
+# Week plan C.1 (docs/WEEK_PLAN_2026-09-26.md): the frozen final picture setup inside stage 6 (templates, burst cards,
+# rules tail, blank guard). Display only, for demo videos; never a scored row. See use_final_pictures().
+PICTURE_FINAL = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time
@@ -349,6 +352,24 @@ def use_shipped() -> dict:
     changed = use_v4("590")
     for k, v in (("VIDEO_BACKEND", "owlv2"), ("FLEXSED_BAR", 0.8), ("FLEXSED_VETO", 0.3), ("PANNS_VETO", 0.05),
                  ("ONSET_MONOTONE", True), ("ONSET_CAM", True), ("MAX_SPAN", None)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
+    return changed
+
+
+def use_final_pictures(level: int) -> dict:
+    """Demo videos only (week plan C.1, signed 6/6). Level 1 = Qwen-Image-2512 with the shipped subjects (arm N0 of
+    the blind round 2); NOT triggered: the N0 rule-2 pass found one false message (phone drawn as a desk bell).
+    Level 2 = the frozen final setup (V3.1 subject with guard 2 + templates + cards + rules tail), to be switched on
+    only if the blind confirmation sitting passes (CI > 0, zero false messages). Call after use_shipped().
+    In the pipeline the V3.1 guard runs with no raw firings (the strict side, stage-5 note)."""
+    import sys
+    me = sys.modules[__name__]
+    sets = [("GEN_MODEL", "Qwen/Qwen-Image-2512"), ("RESOLUTION", (1024, 1024))]
+    if level >= 2:
+        sets += [("PICTURE_V3", True), ("PICTURE_SCENE", True), ("PICTURE_SCENE_GUARD2", True), ("PICTURE_FINAL", True)]
+    changed = {}
+    for k, v in sets:
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
