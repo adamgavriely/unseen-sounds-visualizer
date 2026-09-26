@@ -53,8 +53,16 @@ def main():
     ap.add_argument("--subset", default="bench")
     ap.add_argument("--weighted", action="store_true", help="price a missed sound by its importance")
     ap.add_argument("--out", default=None)
+    ap.add_argument("--maxspan", default="8", help="display cap in seconds, or 'none' for rows rendered without the cap "
+                    "(the shipped system since 24 Sept: test_final_v33, dev_monocap_v31); must match the scored table")
+    ap.add_argument("--match-scorer", action="store_true",
+                    help="use score_per_sound's own configuration (no use_v4: LABEL_FILTER 'lists', i.e. gold sounds the "
+                         "depictable filter never draws still count as needed, as in every per-sound table) -- needed for "
+                         "the curve to reproduce the scored table (holm_table.py)")
     a = ap.parse_args()
-    config.use_v4("59")
+    if not a.match_scorer:
+        config.use_v4("59")
+    config.MAX_SPAN = None if a.maxspan.lower() == "none" else float(a.maxspan)   # stage "9" sets 8.0
     gold = S.load_gold([GOLD])
     subs = S.subsets_of(gold)
     w = _ROOT / "data" / "work"

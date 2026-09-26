@@ -1892,3 +1892,13 @@ of the 60 TEST clips; on the clean DEV-49 it passes two of its three adoption ru
     majority of 3 (shipped)0.37 (16/43)    0.86 (31/36)  0.62
 All within the ±0.11 half-width of balanced accuracy on 79 sounds; nothing is changed (choosing "name alone" after
 seeing this table would be selection on DEV, and the difference is noise).
+
+### Cost curve of the final tables (plan §A.5, 2026-09-27) and a scoring-configuration fix
+`cost_curve.py` called `config.use_v4("59")`, which (a) switches the 8-s display cap back on (stage "9") and (b) sets
+LABEL_FILTER "depictable", under which gold sounds the filter never draws stop counting as needed (DEV 36 → 33). Every
+per-sound table, including amendment 21, is scored with `score_per_sound`'s own configuration (no cap on uncapped rows;
+those sounds still count as needed, and both systems miss them equally). New flags `--maxspan none --match-scorer`
+make the curve reproduce the scored tables exactly (β = 2: TEST ours 2.63 / blind 3.47 / silence 2.87; DEV 2.78 / 3.59 /
+2.94). Crossings on TEST: ours beats blind for β above ≈ 0.4; ours beats silence for β below ≈ 2.4.
+`cost_curve_test_final_v33.png`, `cost_curve_dev_monocap_v31.png`. (The oracle line reuses the cached gate votes of
+`gate_gold`, frames sampled around the gold sounds.)
