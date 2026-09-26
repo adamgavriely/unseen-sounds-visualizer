@@ -97,7 +97,8 @@ the ±0.11 interval of the shipped majority (`gate_vote_table.py`). Three furthe
 SAM 3 per-stretch votes) each removed exactly two wrong pictures per needed sound lost — the break-even at β = 2
 (amendments 14, 18). The remaining errors are *presence without source*: a visible bell tower silences an off-screen bell;
 a visible tank silences a helicopter through the "kind of vehicle" rule (3 such kinship silences on DEV).
-**Stability under a 0.5-s frame shift: [pending — B.3]**.
+**Stability:** re-running the gate on the same frames changes no verdict; moving every frame by 0.5 s changes 6 of 79
+(7.6 %, below the 10 % bar set before the run), five of them towards drawing (`gate_shift_compare.py`).
 
 ## 5.8 Pictures versus text
 

@@ -1919,3 +1919,12 @@ false spans per minute by 29 % (6.41 → 4.56) — the same direction as on the 
 FlexSED at bar 0.8 recovers none of the 31 masked consequential events here (its score scale is family-dependent; the
 per-family bars fitted on this very set were not adopted), unlike on the gold DEV set; the union's masked recall equals
 BEATs'. Onset errors are the extractor's (≈ 2.5 s mean on 10-s clips), not the shipped refined onsets.
+
+### Gate frame-shift stability (week plan B.3, 2026-09-27; report only, rule written first: > 10 % flips = frame-sensitive)
+`gate_gold.py --dev-only --shift 0.5` and a same-frames repeat (`--suffix _repeat`), Qwen3.8-27B, H200;
+`gate_shift_compare.py` on the 79 DEV gold sounds rated ≥ 2: the repeat flips **0** verdicts (deterministic); a +0.5-s
+shift of every frame flips **6 (7.6 %) → stable within 10 %**. Of the six, five move from silent to drawn (four of them
+sources the annotator marked visible — a machine gun, a glass clink and shatter, a phone buzz — and one a vehicle marked
+not visible), one from drawn to silent (visible water). The 1-of-60 TEST difference between card classes is consistent
+with this. Reported as: the gate is repeatable and changes about one verdict in thirteen when its frames move by half a
+second.
