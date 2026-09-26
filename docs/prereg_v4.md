@@ -1883,3 +1883,12 @@ the same false-label rate): union 0.576 at 1.51 false labels/clip vs BEATs inter
 (narrowly). Rule 3 (no-ambient false labels ≤ 2×): 1.44 vs 0.78 = **1.86×, PASS**. By the rule written before the run,
 nothing is reverted and the thesis states: *"FlexSED's bar was selected on a split (split.json DEV-79) that overlaps 35
 of the 60 TEST clips; on the clean DEV-49 it passes two of its three adoption rules and misses the third by 0.011."*
+
+### Per-vote table (week plan B.4, 2026-09-27; report only) — `gate_vote_table.py`, DEV gold sounds, importance ≥ 2
+    vote alone             seen silenced   needed kept   balanced
+    name (open naming)     0.44 (19/43)    0.83 (30/36)  0.64
+    a/b (both orders)      0.26 (11/43)    0.94 (34/36)  0.60     the safety vote: almost never silences a needed sound
+    desc (description)     0.37 (16/43)    0.75 (27/36)  0.56
+    majority of 3 (shipped)0.37 (16/43)    0.86 (31/36)  0.62
+All within the ±0.11 half-width of balanced accuracy on 79 sounds; nothing is changed (choosing "name alone" after
+seeing this table would be selection on DEV, and the difference is noise).
