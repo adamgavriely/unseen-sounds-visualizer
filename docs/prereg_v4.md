@@ -1854,3 +1854,15 @@ By the committed rule this table **replaces the 23 Sep table** as the thesis's T
 the read history as read 4, this is read 5. No further TEST number is read. DEV like-for-like under the same code
 (`holm_dev_monocap_v31_dev.json`): primary +0.048 null; family 1 survivors dFA, d cost, d clean-acc (dP p 0.020, Holm
 0.080, does not survive); family 2 survivors F1 vs silence only (unseen cost -0.86, p 0.091).
+
+### Correction (2026-09-26, after the fifth deliberate TEST read) — two DEV/TEST definitions
+
+The sentence at l.1487 ("the split was made once … stratified") is incomplete. Two definitions coexist:
+`benchmark/gold/split.json` (DEV 79 / TEST 60, seed 7; read by `detector_bench.py`) and the scorer's amendment-5 subsets
+(DEV = gold ∩ `judge100.txt`, 49; TEST = `test_bench`, 60; slice B separate). **35 of the scorer's 60 TEST clips are in
+split.json's DEV-79; 20 of the scorer's DEV-49 are split.json TEST** (recomputed 2026-09-26 from `split.json`,
+`judge100.txt`, `audioset_slice.json`). FlexSED's bar 0.8 (amendment 8) and the detector-level rejections (amendment 12,
+GOLD §13) were selected on split.json DEV-79. The vetoes (amendments 10, 16), the onset rule and every end-to-end DEV cell
+used the clean DEV-49. Mitigation: the DEV-49 end-to-end grid also selected 0.8 (cost 3.63 / 4.61 / 5.43 for 0.8 / 0.7 /
+0.6); amendment 8's criteria were gate-blind (a shared stage, applied to both arms). A re-check of amendment 8's three
+rules on DEV-49 from caches is reported beside this note. The original line stays as written.
