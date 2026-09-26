@@ -1,3 +1,5 @@
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+
 # Executive summary — Visual Augmentation of Audio Semantics for Accessibility
 
 *For someone stepping into this project today (updated 2026-09-15, night). Plain

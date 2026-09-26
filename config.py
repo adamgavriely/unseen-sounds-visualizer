@@ -335,3 +335,20 @@ def use_v4(stages: str = "23456") -> dict:
             changed[k] = (getattr(me, k, None), v)
             setattr(me, k, v)
     return changed
+
+
+def use_shipped() -> dict:
+    """The thesis system in one call (the defaults above stay v3 so that v3 remains reproducible).
+
+    Exactly what the final TEST table (amendment 21, tag test_final_v33) ran with: slurm/job_protocol.sh
+    sets VIDEO_BACKEND owlv2, then V4=590, FBAR=0.8, VETO=0.3, PVETO=0.05, MONO=1, MAXSPAN=none. Stage "9"
+    sets MAX_SPAN 8.0, so the cap is switched off AFTER use_v4; ONSET_CAM stays on (the onset clamp needs the
+    refinement step). Pictures stay FLUX.1-schnell, as rendered in every scored row."""
+    import sys
+    me = sys.modules[__name__]
+    changed = use_v4("590")
+    for k, v in (("VIDEO_BACKEND", "owlv2"), ("FLEXSED_BAR", 0.8), ("FLEXSED_VETO", 0.3), ("PANNS_VETO", 0.05),
+                 ("ONSET_MONOTONE", True), ("ONSET_CAM", True), ("MAX_SPAN", None)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
+    return changed

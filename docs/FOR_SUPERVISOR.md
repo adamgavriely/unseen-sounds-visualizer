@@ -1,3 +1,5 @@
+> **Superseded (stamped 2026-09-27).** This document describes an earlier system and earlier numbers. Current results: `docs/prereg_v4.md` amendment 21 (final TEST table), `docs/WEEK_PLAN_2026-09-26.md`, `docs/LEDGER_2026-09-26.md`, supervisor page `docs/supervisor_2026-09-26/index.html`. The text below is kept unchanged as a record.
+
 # For the supervisor — where the project stands, and what needs a decision
 
 Adam Gavriely, 2026-09-23. One page of results, then every question that needs you, then every
