@@ -53,12 +53,17 @@ def _short(model: str) -> str:
     return model.split("/")[-1].replace("-Instruct", "").replace(".", "")
 
 
-def run_vlm(model: str, device: str = "cuda"):
+def run_vlm(model: str, device: str = "cuda", shift: float = 0.0, dev_only: bool = False, suffix: str = ""):
+    """shift: move every sampled frame time by this many seconds (week plan B.3, frame-shift stability;
+    report only). dev_only: skip clips outside the DEV judge set."""
     from src.stage5_cross_modal_analysis import reason
     from src.stage2_video_understanding import _sample_frames_at
-    out_dir = OUT_DIR / _short(model); out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = OUT_DIR / (_short(model) + (f"_shift{shift:g}" if shift else "") + suffix); out_dir.mkdir(parents=True, exist_ok=True)
+    judge = set(JUDGE100.read_text().split()) if dev_only else None
     mdl, proc = reason._load(model, device)
     for name, stem, snds in gold_sounds():
+        if judge is not None and stem not in judge:
+            continue
         f = out_dir / f"{stem}.json"
         if f.exists():
             continue
@@ -73,7 +78,7 @@ def run_vlm(model: str, device: str = "cuda"):
             stretches = []
             for a, b in zip(edges, edges[1:]):
                 n = 6; lo, hi = a - 1.0, b + 1.0
-                times = [lo + (hi - lo) * t / (n - 1) for t in range(n)]
+                times = [max(0.0, lo + (hi - lo) * t / (n - 1) + shift) for t in range(n)]
                 win = _sample_frames_at(p, times)
                 seen, named = reason._sound_is_visible(s["label"], win, mdl, proc, device)
                 # a fourth, separate reading (not on the inference path): "obvious" -- would a viewer
@@ -176,10 +181,13 @@ def main():
     ap.add_argument("--owl", action="store_true")
     ap.add_argument("--score", action="store_true")
     ap.add_argument("--device", default="cuda")
+    ap.add_argument("--shift", type=float, default=0.0, help="move every frame time by this many seconds (B.3)")
+    ap.add_argument("--dev-only", action="store_true")
+    ap.add_argument("--suffix", default="", help="output folder suffix, e.g. _repeat for the same-frames control")
     ap.add_argument("--subsets", nargs="+", default=["dev54"], help="rule selection on DEV only; add test85 / all after the freeze")
     a = ap.parse_args()
     if a.model:
-        run_vlm(a.model, a.device)
+        run_vlm(a.model, a.device, a.shift, a.dev_only, a.suffix)
     if a.owl:
         run_owl(a.device)
     if a.score:
