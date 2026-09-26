@@ -1899,6 +1899,6 @@ LABEL_FILTER "depictable", under which gold sounds the filter never draws stop c
 per-sound table, including amendment 21, is scored with `score_per_sound`'s own configuration (no cap on uncapped rows;
 those sounds still count as needed, and both systems miss them equally). New flags `--maxspan none --match-scorer`
 make the curve reproduce the scored tables exactly (β = 2: TEST ours 2.63 / blind 3.47 / silence 2.87; DEV 2.78 / 3.59 /
-2.94). Crossings on TEST: ours beats blind for β above ≈ 0.4; ours beats silence for β below ≈ 2.4.
+2.94). Crossings: ours beats blind for β above 0.39 (TEST) / 0.46 (DEV); ours beats silence for β below 2.56 (TEST) / 2.33 (DEV).
 `cost_curve_test_final_v33.png`, `cost_curve_dev_monocap_v31.png`. (The oracle line reuses the cached gate votes of
 `gate_gold`, frames sampled around the gold sounds.)
