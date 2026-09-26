@@ -1928,3 +1928,7 @@ sources the annotator marked visible — a machine gun, a glass clink and shatte
 not visible), one from drawn to silent (visible water). The 1-of-60 TEST difference between card classes is consistent
 with this. Reported as: the gate is repeatable and changes about one verdict in thirteen when its frames move by half a
 second.
+Note to the B.1 re-check (2026-09-27): at FlexSED's **shipped** bar 0.8 only 1 of the 7 masked DEV-49 sounds is recovered
+(and 0 of 31 masked consequential events on AudioSet-Strong, D6). Amendment 8's "7 of 9 recovered" counted scores of
+≈ 0.35–0.49 and above, below the adopted bar. The union's recall gain at bar 0.8 therefore comes from other sounds, not
+from the masked sounds that motivated FlexSED; the thesis states this.

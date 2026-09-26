@@ -28,7 +28,8 @@ silent. No component is trained or fine-tuned; the contribution is the chaining 
 
 **Stage 4 in detail.** BEATs (AudioSet-2M, 527 classes) is the base detector. Under speech or music it misses quiet
 sounds: at every masked needed sound its top labels were Speech or Music. FlexSED — a text-queried frame-level detector
-asked one label at a time over 215 drawable family names — hears those, and is added as a union with its own bar; a
+asked one label at a time over 215 drawable family names — scores those sounds far higher, though mostly below its
+shipped bar (1 of 7 masked DEV sounds reaches 0.8), and is added as a union with its own bar; a
 family both detectors report at the same moment keeps the earlier start. Two one-sided vetoes remove what one model
 alone claims: a BEATs label that FlexSED never hears in the clip (τ = 0.3), and a FlexSED-only span that PANNs CNN14 does
 not support (τ₂ = 0.05). A span both detectors raised is never removed.

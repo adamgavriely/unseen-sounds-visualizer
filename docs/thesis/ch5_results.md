@@ -80,7 +80,8 @@ ranges. The gate given the annotator's own sound list would cost 1.23 per clip a
 - **Detector on 280 human-labelled AudioSet-Strong clips** (descriptive, shipped bars, out of sample; `benchmark/audioset_stage4_report.json`):
   the shipped stack keeps BEATs' recall of consequential events within about 3 points (51.3 % vs 54.5 %) and cuts false
   spans per minute by 29 % (4.56 vs 6.41). FlexSED at its shipped bar recovers none of the 31 masked consequential events
-  there (0 %), unlike on the gold — its score scale differs by family.
+  there — and on the clean DEV-49 it recovers only 1 of 7 at that bar. Amendment 8's recovery count used scores below
+  the adopted bar, so the union's recall gain at 0.8 comes from other sounds, not from the masked ones that motivated it.
 - **Detector threshold and TEST overlap.** FlexSED's bar was chosen on a split overlapping 35 of the 60 TEST clips; on
   the clean DEV-49 it passes two of its three adoption rules and misses the third by 0.011 (`flexsed_recheck_dev49.json`).
 
