@@ -1875,3 +1875,11 @@ clip bootstrap, 2000, seed 0; the two differ on 7 of 49 clips): a tie, as expect
 label itself). The ungated text row stays in the table as the baseline, with its confound stated.
 Read count (2026-09-26): amendment 21 is the **fifth deliberate read** of TEST and the **tenth exposure** counting prints
 and diagnostics (`docs/LEDGER_2026-09-26.md`, audit finding 1).
+
+### Amendment 8 re-checked on the clean DEV-49 (week plan B.1, 2026-09-27; report only, rules unchanged)
+`benchmark/gold/flexsed_recheck_dev49.py` → `flexsed_recheck_dev49.json`. Rule 1 (masked sounds recovered ≥ 44 %):
+**6 of 7 = 86 %, PASS** (at FlexSED's shipped bar 0.8 only 1 of 7). Rule 2 (union ≥ +0.05 onset-recall over BEATs at
+the same false-label rate): union 0.576 at 1.51 false labels/clip vs BEATs interpolated 0.536 → **+0.039, FAIL**
+(narrowly). Rule 3 (no-ambient false labels ≤ 2×): 1.44 vs 0.78 = **1.86×, PASS**. By the rule written before the run,
+nothing is reverted and the thesis states: *"FlexSED's bar was selected on a split (split.json DEV-79) that overlaps 35
+of the 60 TEST clips; on the clean DEV-49 it passes two of its three adoption rules and misses the third by 0.011."*
