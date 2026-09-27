@@ -2150,3 +2150,7 @@ the listener score ≥ θ; θ from the 20/40/60/80th percentiles of the pool's l
 **Pick, held-out test and DEV sign check: exactly amendment 24's** (lowest C-overlap that also lowers C-onset below shipped;
 one cell; held-out 415 clips, paired ΔC-overlap upper 95 % CI < 0; then DEV-49 renders both arms as a sign check). No TEST.
 This is the last detector question before submission; the rule is not revised after a number is seen.
+
+**Amendment 25 — pool counts (written before any listener score):** the 280 give 214 candidate spans (union of the spans E
+and E-AND add over shipped): **14 hit, 96 false, 104 neutral**. With 14 positives the AUROC interval is wide; the gate
+(lower bound ≥ 0.70) stands as written.
