@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Results Inspector</title>
+<meta name="description" content="Look at every clip, sound and picture of the scored sets: what the system showed, what it missed, and why.">
+<link rel="stylesheet" href="inspector.css">
+<script>
+  /* theme before first paint: saved choice, else the system setting */
+  try { var t = localStorage.getItem('inspector-theme'); if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+</script>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <div class="brand">Inspector<small>sounds you cannot see &rarr; pictures</small></div>
+    <nav class="tabs" id="nav">
+      <a href="#/overview" data-p="overview">Overview</a>
+      <a href="#/mistakes" data-p="mistakes">Mistakes</a>
+      <a href="#/clips" data-p="clips">Clips</a>
+      <a href="#/defs" data-p="defs">Definitions</a>
+    </nav>
+    <button id="theme" type="button" title="Switch light / dark">Dark</button>
+  </div>
+</header>
+<main id="app"><p class="muted">Loading&hellip;</p></main>
+
+<div class="modal" id="modal" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="modal-head">
+      <h3 id="m-title"></h3>
+      <div><a id="m-open" href="#">Open clip view</a> &nbsp; <button type="button" id="m-close">Close (Esc)</button></div>
+    </div>
+    <div id="m-badge"></div>
+    <div class="vtabs" id="m-tabs"></div>
+    <div class="player"><video id="m-video" controls preload="metadata" playsinline></video><div class="vnote" id="m-note" hidden></div></div>
+    <p class="small muted" id="m-info"></p>
+  </div>
+</div>
+<div class="tip" id="tip"></div>
+
+<script src="data.js"></script>
+<script src="inspector.js"></script>
+</body>
+</html>
