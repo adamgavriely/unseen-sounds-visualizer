@@ -93,3 +93,14 @@ label), **off-ontology** (none). Raw answers kept.
 **Prompt B** (choose one of the fired labels, or "unsure"): a **noun change** is a choice that is neither the source, one of its
 ancestors, nor "unsure". Bar (report-only): prompt B is worth a future micro-sitting only if it makes ≥ 5 noun changes of 54
 (changes to an unfired kind are impossible by construction and are reported as 0). Nothing enters the frozen setup.
+
+**Result of the report-only listener job (2026-09-27; `benchmark/gold/pictures/listener_pictures.json`).** Parse fix, disclosed:
+the model ran on past its answer, so prompt A is classed on the answer's first line (the counts are the same either way).
+Prompt A (free "what is making this sound?"), 54 sounds: **source 9, family 8, fired sibling 2, other ontology 30,
+off-ontology 5** — the free listener names a different maker on 35 of 54 (cluck → "goats bleating", meow → "human beatboxing",
+shatter → "a sword", sheep → "a bee hive"). This confirms the panel's rule: free audio-LLM text must never reach the prompt.
+Prompt B (closed choice over the fired labels): population 8; **6 noun changes** (≥ 5, so the written bar is met): church
+bell → change ringing, pigeon → coo, telephone bell ringing → ringtone, railroad car → train, police car (siren) → siren,
+emergency vehicle → siren. By eye, three of the six make the drawn noun vaguer (train, siren ×2), one is the same bird's
+call, and two could help (change ringing; ringtone for the phone that was drawn as a desk bell). Reported as future work; no
+micro-sitting before submission, and nothing changes in the frozen setup.
