@@ -1978,3 +1978,35 @@ passes it is reported as a bug fix. (2) *Disclosure:* while the rule was being w
 dry sweep of lower FlexSED bars on DEV-49 from the caches (bar 0.5 + both vetoes: onset-recall 0.545 vs 0.515, false
 labels/clip 0.45 vs 0.24). It chose nothing: the pick is made on the AudioSet-280 set (Stage 0) and decided by the blind
 arm's rendered DEV numbers (Stage B).
+
+### Amendment 22 — Stage 0 result (2026-09-27; `benchmark/detector_round_stage0.py` → `detector_round_stage0.json`)
+280 AudioSet-Strong calibration clips, stage-4 logic from caches (shipped stack recomputed by the same code: 4.46 false
+spans/min; the D6 report's 4.56 omitted the weak-twin absorption).
+
+    cell                    conseq onset-recall  conseq recall  masked (31)  false/min
+    shipped (0.8)                 25.0 %            50.4 %        38.7 %       4.46
+    A bar 0.6                     25.4 %            52.2 %        38.7 %       4.89
+    B bar 0.5                     25.4 %            53.6 %        38.7 %       5.12
+    C bar 0.6 + tier 2            25.4 %            52.2 %        38.7 %       4.61
+    D bar 0.5 + tier 2            25.4 %            53.6 %        38.7 %       4.80
+    E D + tier 3 (cascade)        46.4 %            58.9 %        45.2 %       6.90
+    F twin fix (0.8)              25.9 %            51.3 %        38.7 %       4.56
+**By the rule written first, nothing is picked:** no cell stays at or below the shipped false-span rate while raising
+onset-recall. Amendment 22 ends here: no cell is adopted through it. The twin fix (F) changes almost nothing (+0.9 pts
+onset-recall, +0.10 false spans/min). Tiers 1–2 (lower FlexSED bars, time-aligned corroboration of FlexSED) buy ≤ 0.4 pts
+onset-recall — consistent with F1's diagnosis that the corroborating detectors are deaf where BEATs is deaf.
+
+## Amendment 23 — the cascade (cell E) as a new question (2026-09-27, written after Stage 0, before any DEV number)
+
+Stage 0 showed one cell with a large recall gain at a false-alarm price (E: consequential onset-recall 25.0 → 46.4 %,
+recall 50.4 → 58.9 %, masked 38.7 → 45.2 %, false spans/min 4.46 → 6.90). Whether that trade is worth it to a viewer is a
+new question, motivated by the Stage-0 table (disclosed) and tested on data that has not seen cell E: the DEV-49 renders of
+E (`dev_fbar05cl_v35`, both arms, H200, base env, `[v4]` lines checked; F1's earlier DEV dry sweep did not include tier 3).
+
+**Rule (the blind arm decides; the price of a wrong picture is the declared β = 2):** E passes iff, against the shipped
+blind arm on DEV-49 (`dev_monocap_v31`: 17 hits, cost 3.59), the E blind arm has **more hits (≥ 19, i.e. + 2)** and a
+**viewer cost at β = 2 not higher (≤ 3.59)**. Reported beside it: blind F1/P/R with paired CIs, the gated arm (ours) for
+information, the β at which E and shipped cross, and every added hit and added wrong picture by name. Pass → reported as a
+**detector upgrade on DEV + AudioSet-280 (fit set), not confirmed on held-out data or TEST**, beside the frozen system;
+a held-out AudioSet-Strong confirmation (Stage A of amendment 22) is then required before any stronger wording, and needs
+Adam's approval to download. Fail → reported as a negative. TEST is not touched either way.
