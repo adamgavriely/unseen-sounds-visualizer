@@ -78,3 +78,18 @@ Amendment, 2026-09-27 (panel 3, topic 2), written before any FINAL picture or an
 Report-only side job (touches nothing sealed): Qwen3-Omni-30B-A3B-Instruct on the 54 picture-DEV sounds (span ±1 s),
 prompt A free, prompt B closed over the fired sub-labels + "unsure" → parent; B earns a future micro-sitting only if it
 changes the drawn noun on ≥ 5/54 sounds with 0 changes to an unfired kind (majority of the three reviewers).
+
+### Report-only listener job — counts defined before it runs (2026-09-27)
+
+Sounds: the 54 fresh-picture sounds (`data/work/picture_bench_fresh/specs.json`, sources and fired lists from
+`subjects_V31G.json`, the frozen text), audio from `data/input/pic_fresh/<clip>.mp4`, span start − 1 s to end + 1 s (at most
+7 s past the start). Model: Qwen3-Omni-30B-A3B-Instruct, text only, greedy.
+**Population for prompt B, counted first:** sounds with at least one fired label that is neither the source nor one of the
+source's ontology ancestors (a real alternative). If fewer than 5, prompt B cannot meet the bar and is reported moot.
+**Prompt A** ("What is making this sound? Answer with a short noun phrase."): each answer is matched by words to the
+AudioSet display names and classed, in this order, as **source** (names the chosen source or a descendant), **family** (names
+an ancestor of the source only), **fired sibling** (names another fired label), **other ontology** (names another AudioSet
+label), **off-ontology** (none). Raw answers kept.
+**Prompt B** (choose one of the fired labels, or "unsure"): a **noun change** is a choice that is neither the source, one of its
+ancestors, nor "unsure". Bar (report-only): prompt B is worth a future micro-sitting only if it makes ≥ 5 noun changes of 54
+(changes to an unfired kind are impossible by construction and are reported as 0). Nothing enters the frozen setup.
