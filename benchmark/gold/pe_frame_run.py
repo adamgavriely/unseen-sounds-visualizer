@@ -4,8 +4,9 @@ independent of FlexSED's (Dasheng + CLAP), cached exactly like FlexSED so stage-
 Model: facebook/pe-a-frame-large (Apache-2.0; PE-AV, arXiv 2512.19687), `transformers.PeAudioFrameLevelModel`.
 Queries: the 215 depictable families (benchmark/gold/depictable_vocab.json), worded "The sound of {family}" -- FlexSED's
 wording -- fixed in advance, never looking at gold. Audio: 48 kHz mono, scored in 30-s pieces; one frame per 40 ms
-(hop 1920 = 25 fps). Score = sigmoid(model logit, with the model's own learned scale and bias). Output per clip:
-npz fw [n_labels, T] float16, labels, fps -- the FlexSED cache layout. Nothing is decided here.
+(hop 1920 = 25 fps). Stored: the model's logit (its own learned scale and bias applied), NOT the sigmoid -- the sigmoid
+saturates (amendment 24, clarification 2); readers derive their score from the logit. Output per clip: npz fw
+[n_labels, T] float32, labels, fps, kind="logit" -- the FlexSED cache layout. Nothing is decided here.
 
     python benchmark/gold/pe_frame_run.py --out data/work/pe_frame_cache                       # the gold clips
     python benchmark/gold/pe_frame_run.py --clip-dir data/input/audioset_calib --out benchmark/audioset_calib_windows/pe_frame
@@ -64,7 +65,9 @@ def main():
     model = PeAudioFrameLevelModel.from_pretrained(MODEL, torch_dtype=torch.float32).to(dev).eval()
     with torch.inference_mode():
         tok = proc.tokenizer(queries, padding=True, return_tensors="pt").to(dev)
-        text = model.get_text_audio_embeds(tok["input_ids"], tok.get("attention_mask"))          # [L, D]
+        # as PeAudioFrameLevelModel.forward: get_text_audio_embeds in transformers 5.16 omits output_hidden_states
+        tout = model.text_model(input_ids=tok["input_ids"], attention_mask=tok.get("attention_mask"), output_hidden_states=True)
+        text = model.text_audio_head(tout.hidden_states[-1][:, 0])                                 # [L, D]
         scale = model.text_audio_logit_scale.float(); bias = model.text_audio_logit_bias.float()
     print(f"[pe] {len(paths)} clips, {len(queries)} queries, device {dev}, logit scale {scale.item():.3f} bias {bias.item():.3f}", flush=True)
     for i, p in enumerate(paths, 1):
@@ -84,9 +87,9 @@ def main():
                 aud = model.get_audio_embeds(feats["input_values"].to(dev), pm.to(dev) if pm is not None else None)
                 logit = (aud[0].float() @ text.float().T) * scale + bias                        # [T, L]
             n = int(np.ceil(len(w) / HOP))
-            cols.append(torch.sigmoid(logit)[:n].cpu().numpy())
-        fw = np.concatenate(cols, axis=0).T.astype(np.float16)                                 # [L, T]
-        np.savez_compressed(dst, fw=fw, labels=np.array(vocab), fps=FPS)
+            cols.append(logit[:n].cpu().numpy())
+        fw = np.concatenate(cols, axis=0).T.astype(np.float32)                                 # [L, T] logits
+        np.savez_compressed(dst, fw=fw, labels=np.array(vocab), fps=FPS, kind="logit")
         if i % 20 == 0 or i == len(paths):
             print(f"[pe] {i}/{len(paths)} {p.stem} {fw.shape} max {float(fw.max()):.3f}", flush=True)
     print("done ->", out)

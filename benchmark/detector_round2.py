@@ -34,8 +34,15 @@ def caches(cid):
     f = R.load(R.FLEX / f"{cid}.npz")
     p = R.load(R.PANNS / f"{cid}.npz")
     pe_p = R.PEF / f"{cid}.npz"
-    pe = R.load(pe_p) if pe_p.exists() else None
+    pe = pe_load(pe_p) if pe_p.exists() else None
     return b, f, p, pe
+
+
+def pe_load(path):
+    """PE-A-Frame score (amendment 24, clarification 2): the frame's logit minus the median logit over the 215 families
+    in that frame -- how much this family stands out from the rest at that moment (the sigmoid saturates)."""
+    fw, ts, labs = R.load(path)                        # [T, L] logits
+    return fw - np.median(fw, axis=1, keepdims=True), ts, labs
 
 
 def peak_near(fr, e, win=WIN):
@@ -168,7 +175,7 @@ def boot(d, n=2000, seed=0):
 # ----------------------------------------------------------------------------- steps
 def screen(cl, log):
     pe_ok = [c for c in cl if (R.PEF / f"{c['id']}.npz").exists()]
-    vals = np.concatenate([R.load(R.PEF / f"{c['id']}.npz")[0].ravel() for c in pe_ok])
+    vals = np.concatenate([pe_load(R.PEF / f"{c['id']}.npz")[0].ravel() for c in pe_ok])
     grid = [float(np.percentile(vals, q)) for q in (50, 80, 90, 95, 99)]
     log["pe_grid"] = {"percentiles": [50, 80, 90, 95, 99], "theta": grid, "clips": len(pe_ok)}
     print(f"[screen] PE-A-Frame percentile grid over {len(pe_ok)} clips: {[round(g, 4) for g in grid]}")

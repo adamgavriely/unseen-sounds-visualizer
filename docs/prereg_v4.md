@@ -2084,3 +2084,11 @@ round 3: "at the operating point keeping ≥ 80 % of true items"). The script is
 The recall gain cell E showed on the 280 (onset-recall 25 → 46 %) does not reach a single needed DEV sound; it matches
 the panel's forecast (≈ 2 new sounds at most, most of the 280's gain was earlier starts on sounds already found). Cell E
 is not adopted. Amendment 24 (committed before this number) is unaffected.
+
+**Amendment 24 — clarification 2 (2026-09-27, before any screen or cell number).** A probe on 12 calibration clips (the fit
+set; no cell, no pool, no gold) checked that the cache is sane: the labelled families rank 3rd–4th of 215 by clip peak
+(76 % in the top 10), but the sigmoid saturates — a median of 148 of 215 families exceed 0.5 in every clip, and many peak at
+1.000. So the cache stores the model's **logit** (its learned scale 2.30 and bias −10.0 applied), and every reader uses
+**PE score = the family's logit minus the median logit over the 215 families in the same frame** (how much the family
+stands out at that moment). This replaces the sigmoid everywhere in amendment 24 (screen, θ grid percentiles, D+PE, E+PE,
+U+PE); no second variant is scored. The 3 sigmoid smoke-test files are deleted and recomputed.
