@@ -2183,3 +2183,6 @@ On the 280 (fit set): cell **E+3** = cell E, where every span E adds over shippe
 PE-A-Frame ≥ 5.20 (the 95th-percentile grid value of amendment 24) and the listener says yes (score > 0)**, all three for the
 span's family within 1 s. Fixed values, no grid. Same rule as amendment 24: it goes on only if it lowers C-overlap and
 C-onset below shipped's; then the held-out test of amendment 24. Script `benchmark/agree3.py`.
+**Result:** E+3 C-overlap 3.279 vs shipped 3.071 (worse), C-onset 3.707 vs 3.886 (better); recall 58.9 % vs 50.4 %, false
+spans/min 5.89 vs 4.46. The agreement keeps every true span cell E adds but still lets through too many false ones; it does
+not lower C-overlap, so by the rule it stops here (`benchmark/agree3.json`).
