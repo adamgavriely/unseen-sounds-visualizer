@@ -2067,3 +2067,10 @@ all held-out clips has **upper 95 % CI < 0**. Reported beside (no gate): ΔC-ons
 Fail → the thesis reports the exchange rate on the 280 and held-out as the detector ceiling. Cell E's amendment-23 DEV
 render runs anyway and is reported as its own question. No TEST number; no bar from DEV scores; this rule is not revised
 after a number is seen.
+
+**Amendment 24 — clarification 1 (2026-09-27, before any PE-A-Frame or round-2 number exists).** "At the loosest grid θ that
+keeps ≥ 80 % of true items" is read as **the operating point at the 80 % recall floor: the highest grid θ that still keeps
+≥ 80 % of the pool's true items**, where kept-false/kept-true is computed (the panel's wording, T1-a round 2 and T1-c
+round 3: "at the operating point keeping ≥ 80 % of true items"). The script is `benchmark/detector_round2.py`
+(steps `screen`, `fit`, `heldout`), committed with this line. Every cell is scored on the clips that have all four caches
+(BEATs, FlexSED, PANNs, PE-A-Frame).
