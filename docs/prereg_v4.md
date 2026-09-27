@@ -2092,3 +2092,28 @@ set; no cell, no pool, no gold) checked that the cache is sane: the labelled fam
 **PE score = the family's logit minus the median logit over the 215 families in the same frame** (how much the family
 stands out at that moment). This replaces the sigmoid everywhere in amendment 24 (screen, θ grid percentiles, D+PE, E+PE,
 U+PE); no second variant is scored. The 3 sigmoid smoke-test files are deleted and recomputed.
+
+### Amendment 24 — result (2026-09-27; `benchmark/detector_round2.py` → `detector_round2.json`; the 280 = fit set)
+
+**Screen.** PE-A-Frame score grid (percentiles 50/80/90/95/99 over all frames and families): 0.00 / 2.25 / 3.72 / 5.20 /
+8.73. E-delta pool: 216 spans, 118 true, 98 false (true = overlaps a labelled event of the same family). At the operating
+point keeping ≥ 80 % of true spans (θ = 5.20): 99 true, 75 false kept, ratio 0.76 ≤ 0.84 → **passes by the written rule —
+but only because the pool was already at 0.83 before filtering**: PE-A-Frame's AUROC on the pool is **0.53 [0.45, 0.61]**,
+chance level, below PANNs' 0.64. Reported as it is: the rule let the PE cells be scored; the ranking says PE-A-Frame does not
+separate true from false candidates here.
+
+    cell       C-overlap  C-onset  recall  onset-recall  false/min
+    shipped      3.071     3.886   50.4 %    25.0 %        4.46
+    F            3.079     3.893   51.3 %    25.9 %        4.56
+    E            3.614     4.014   58.9 %    46.4 %        6.90
+    E-F 0.3      3.529     3.971   58.9 %    45.1 %        6.64
+    E-F 0.5      3.321     4.107   58.9 %    34.4 %        6.02
+    E-AND        3.286     3.757   58.5 %    43.8 %        5.87
+    D+PE         3.136     4.050   53.6 %    25.0 %        4.95   (θ from the grid, argmin C-overlap)
+    E+PE         3.329     4.257   58.5 %    29.5 %        6.00
+    U+PE         4.750     5.536   52.7 %    28.1 %        9.71
+**No pick: no cell lowers C-overlap below shipped's 3.071.** E-AND is the only cell that lowers C-onset (3.757 vs 3.886) and
+it raises C-overlap. The round ends here, as written; **the held-out set is not scored** (its caches are kept, unread, for a
+future pre-registered question). Reading: the shipped stack sits at the cost optimum of every training-free stack tried;
+extra recall costs more false spans than β = 2 allows, and a second text-queried detector with an independent encoder
+(PE-A-Frame) does not tell masked true sounds from false ones. This is the detector-ceiling result for the thesis.

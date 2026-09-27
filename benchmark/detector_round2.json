@@ -1,0 +1,148 @@
+{
+ "pe_grid": {
+  "percentiles": [
+   50,
+   80,
+   90,
+   95,
+   99
+  ],
+  "theta": [
+   0.0,
+   2.2514539718627935,
+   3.722803211212157,
+   5.196442604064941,
+   8.725646514892567
+  ],
+  "clips": 280
+ },
+ "pool": {
+  "n": 216,
+  "true": 118,
+  "false": 98
+ },
+ "auroc": {
+  "pe": 0.5256831546177794,
+  "pe_ci": [
+   0.45010492897115795,
+   0.6054846194272258
+  ],
+  "panns": 0.6359823590453131,
+  "panns_ci": [
+   0.56381923587692,
+   0.7077347341769239
+  ]
+ },
+ "keep": [
+  {
+   "theta": 8.725646514892567,
+   "kept_true": 65,
+   "kept_false": 49
+  },
+  {
+   "theta": 5.196442604064941,
+   "kept_true": 99,
+   "kept_false": 75
+  },
+  {
+   "theta": 3.722803211212157,
+   "kept_true": 101,
+   "kept_false": 85
+  },
+  {
+   "theta": 2.2514539718627935,
+   "kept_true": 102,
+   "kept_false": 89
+  },
+  {
+   "theta": 0.0,
+   "kept_true": 118,
+   "kept_false": 98
+  }
+ ],
+ "screen_point": {
+  "theta": 5.196442604064941,
+  "kept_true": 99,
+  "kept_false": 75,
+  "ratio": 0.7575757575757576
+ },
+ "screen_pass": true,
+ "fit": {
+  "shipped": {
+   "C_overlap": 3.0714285714285716,
+   "C_onset": 3.8857142857142857,
+   "fp_per_min": 4.457142857142857,
+   "recall_overlap": 0.5044642857142857,
+   "recall_onset": 0.25,
+   "label": "strict pass"
+  },
+  "F": {
+   "C_overlap": 3.0785714285714287,
+   "C_onset": 3.892857142857143,
+   "fp_per_min": 4.564285714285715,
+   "recall_overlap": 0.5133928571428572,
+   "recall_onset": 0.2589285714285714,
+   "label": "trade pass"
+  },
+  "E": {
+   "C_overlap": 3.6142857142857143,
+   "C_onset": 4.014285714285714,
+   "fp_per_min": 6.9,
+   "recall_overlap": 0.5892857142857143,
+   "recall_onset": 0.4642857142857143,
+   "label": "trade pass"
+  },
+  "E-F 0.3": {
+   "C_overlap": 3.5285714285714285,
+   "C_onset": 3.9714285714285715,
+   "fp_per_min": 6.642857142857143,
+   "recall_overlap": 0.5892857142857143,
+   "recall_onset": 0.4508928571428571,
+   "label": "trade pass"
+  },
+  "E-F 0.5": {
+   "C_overlap": 3.3214285714285716,
+   "C_onset": 4.107142857142857,
+   "fp_per_min": 6.021428571428571,
+   "recall_overlap": 0.5892857142857143,
+   "recall_onset": 0.34375,
+   "label": "trade pass"
+  },
+  "E-AND": {
+   "C_overlap": 3.2857142857142856,
+   "C_onset": 3.757142857142857,
+   "fp_per_min": 5.871428571428572,
+   "recall_overlap": 0.5848214285714286,
+   "recall_onset": 0.4375,
+   "label": "trade pass"
+  },
+  "D+PE": {
+   "C_overlap": 3.1357142857142857,
+   "C_onset": 4.05,
+   "fp_per_min": 4.95,
+   "recall_overlap": 0.5357142857142857,
+   "recall_onset": 0.25,
+   "theta": 8.725646514892567,
+   "label": "trade pass"
+  },
+  "E+PE": {
+   "C_overlap": 3.3285714285714287,
+   "C_onset": 4.257142857142857,
+   "fp_per_min": 6.0,
+   "recall_overlap": 0.5848214285714286,
+   "recall_onset": 0.2946428571428571,
+   "theta": 8.725646514892567,
+   "label": "trade pass"
+  },
+  "U+PE": {
+   "C_overlap": 4.75,
+   "C_onset": 5.535714285714286,
+   "fp_per_min": 9.707142857142857,
+   "recall_overlap": 0.5267857142857143,
+   "recall_onset": 0.28125,
+   "theta_u": 8.725646514892567,
+   "label": "trade pass"
+  }
+ },
+ "pick": null
+}
