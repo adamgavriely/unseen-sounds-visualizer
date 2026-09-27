@@ -8,6 +8,10 @@ watched, in the clean or the debug view (detections and gate verdicts under the 
 
     python scripts/recomposite.py --tag v3 --system proposed --clips a.mp4 b.mp4 --out data/output/recomp_v3
     python scripts/recomposite.py --tag v3 --system proposed --shown --tags unseen_ambient mixed --out ...
+
+Inspector videos (shipped pictures; blind arm as label chips, so no FLUX picture is shown):
+    python scripts/recomposite.py --root data/work/shipped_<tag> --shipped --require-local-images         --modes clean --out-name "{stem}.mp4" --out <dir>
+    python scripts/recomposite.py --root data/work/protocol_blind_a2i_<tag> --shipped --render-mode minimal         --modes clean --out-name "{stem}_blind.mp4" --out <dir>
 """
 from __future__ import annotations
 
@@ -38,6 +42,23 @@ def load_work(work: Path):
     return media, events, specs
 
 
+def local_images_ok(work: Path, specs) -> bool:
+    """Every picture a spec will show lives in this work dir's own augmentations/ (no stale path elsewhere)."""
+    own = (work / "augmentations").resolve()
+    return all(Path(s.image_path).resolve().parent == own and Path(s.image_path).exists()
+               for s in specs if s.augment and s.image_path)
+
+
+def video_for(work: Path, stem: str) -> Path | None:
+    try:
+        p = Path(json.loads((work / "media.json").read_text(encoding="utf-8"))["video_path"])
+        if p.exists():
+            return p
+    except (OSError, KeyError, ValueError):
+        pass
+    return find_clip(stem)
+
+
 def find_clip(stem: str) -> Path | None:
     for p in (_ROOT / "data" / "input" / "benchmark").rglob("*"):
         if p.is_file() and p.stem == stem:
@@ -53,8 +74,23 @@ def main():
     ap.add_argument("--tags", nargs="*", default=[], help="restrict to these human tags (needs benchmark/tags.json)")
     ap.add_argument("--out", default=str(_ROOT / "data" / "output" / "recomp"))
     ap.add_argument("--modes", nargs="*", default=["clean", "debug"])
+    ap.add_argument("--root", default="", help="work root to read (default: data/work/protocol_<system>_<tag>)")
+    ap.add_argument("--render-mode", default="full", choices=["full", "minimal"],
+                    help="full = pictures; minimal = label chips, no imagery")
+    ap.add_argument("--shipped", action="store_true",
+                    help="config.use_shipped(): the scored display settings, pictures at full opacity")
+    ap.add_argument("--require-local-images", action="store_true",
+                    help="skip a clip whose pictures are not in its own work dir's augmentations/")
+    ap.add_argument("--out-name", default="{mode}/{stem}_augmented.mp4", help="output path under --out")
+    ap.add_argument("--keep-panels", action="store_true", default=True)
+    ap.add_argument("--drop-panels", dest="keep_panels", action="store_false",
+                    help="delete the per-clip panel frames after encoding")
     a = ap.parse_args()
-    root = _ROOT / "data" / "work" / f"protocol_{a.system}_{a.tag}"
+    if a.shipped:
+        print("[cfg]", config.use_shipped(), flush=True)
+    root = Path(a.root) if a.root else _ROOT / "data" / "work" / f"protocol_{a.system}_{a.tag}"
+    if not root.is_absolute():
+        root = _ROOT / root
     tags = {}
     if a.tags:
         raw = json.loads((_ROOT / "benchmark" / "tags.json").read_text(encoding="utf-8"))
@@ -73,16 +109,21 @@ def main():
             t = next((tags[k] for k in tags if Path(k).stem == stem), None)
             if t not in a.tags:
                 continue
-        video = find_clip(stem)
+        if a.require_local_images and not local_images_ok(work, specs):
+            print(f"  ! {stem}: a picture is missing from {work / 'augmentations'}; skipped"); continue
+        video = video_for(work, stem)
         if video is None:
             print(f"  ! no video for {stem}"); continue
         for mode in a.modes:
             config.SHOW_DEBUG_SOUNDS = config.SHOW_PROMPT = (mode == "debug")
-            out = out_root / mode / f"{stem}_augmented.mp4"
+            out = out_root / a.out_name.format(mode=mode, stem=stem)
             if out.exists():
                 continue
             composite_alongside(video, specs, out, duration=media["duration"], panel=config.PANEL_SIZE,
-                                fps=config.FPS, mode="full", events=events)
+                                fps=config.FPS, mode=a.render_mode, events=events)
+            if not a.keep_panels:
+                import shutil
+                shutil.rmtree(out.parent / f"_{out.stem}_panels", ignore_errors=True)
             print(f"[{mode}] {stem} -> {out}", flush=True)
         done += 1
     print(f"recomposited {done} clips -> {out_root}")
