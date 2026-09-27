@@ -226,3 +226,89 @@ docs/freeze_picture_setup_2026-09-25.md:
 scoring; raters by amendment now, secondary; annotator 2 among them; nothing touches the sealed sitting; HiDream after.
 **Open:** who does the by-eye rule-2 pass; rater count/names; Omni job before or after the sitting.
 
+---
+# Round 3 (final)
+
+## T2-b — round 3
+
+(a) Omni bar: Instruct, both prompts; count > 1-fired-sub-label sounds first. Bar = T2-c's: closed question changes the
+drawn noun on ≥ 5/54 and 0 to an unfired or names_forbidden kind; "second attempt at the 09-15 negative". Run before the
+sitting (0 Adam). (b) Declared-word list closed from gen_screen.py TEMPLATES l.28–39: lightning bolt, storm cloud, rain
+drops, window pane, parked car, headlights, indicator lights, locomotive, horn, church bell, tower, glass window, pieces;
++ gravel, splash, flash, smoke, drops. Coordinator closes it; nothing added after a picture is seen. (c) Raters: N = 2
+target, 1 minimum, hearing, naive; annotator 2 only if gold doesn't compete. (d) Opacity: CONFIDENCE_FADE = False, own
+commit after scoring; demos re-rendered; TEST judge rows untouched. (e) ch5 wording: "Qwen-Image-2512 with the shipped
+text: 26/54 recognised vs 14/54 for FLUX.1-schnell (+22 points, paired, significant); one of the 26 showed a wrong object
+(phone → desk bell). The sealed confirmation scores the frozen setup (generator + V3.1 text) as one composite; the gain is
+not attributed to the generator alone." (f) By-eye rule-2 pass: annotator 2 if available, else the assistant, named.
+
+Plan: 1 commit amendment + export/check rating page HTML (1 h coordinator). 2 Omni job (~1 H200-h). 3 mechanical rule-2 +
+OWLv2 flags (< 1 GPU-h). 4 Adam's sitting (~1.5 h). 5 by-eye pass (~1 h). 6 naive raters (~1 h each). 7 open key, score
+primary + sensitivities. 8 own commit: CONFIDENCE_FADE, demos, ch3/ch5 wording, Omni paragraph. HiDream + picture+word →
+future work. **Signs.** Condition: if the 1.5-s hide is not enforced, fix the page before step 4 and record it.
+
+## T2-a — round 3
+
+1. Amendment committed before any FINAL picture/answer is seen: T2-c's six points with edits — (i) declared words cover
+   TEMPLATES nouns (storm cloud, window pane, locomotive, tower, headlights, indicator lights) but **not TEMPLATE_NEG**
+   nouns (roof light, light bar, police car, beacon) — those stay false messages; (ii) "wrong count per arm: reported,
+   never a bar"; (iii) "enforced by the built artifact page; its HTML exported to the repo before the sitting". By-eye pass
+   by the assistant, arm known, per-picture yes/no committed before Adam's file is opened.
+2. Export glance page HTML, confirm 1.5-s hide / no re-reveal. 3. Adam's sitting (~45 min). 4. GLM OBJECT + OWLv2 flags
+   with anchors, after Adam saves (~0.5 GPU-h). 5. Extra raters N = 2 (annotator 2 + one naive), κ + pooled, Adam-only
+   primary, templates split. 6. Score and unseal by frozen commands. 7. Omni Instruct job, prompts A + B; if < 5 sounds
+   have > 1 fired sub-label, only A runs; bar T2-c's (≥ 5/54, 0 unfired); P166/P089/P072 named, not a bar (~1–2 H200-h).
+8. Opacity after scoring, pictures byte-identical to 3995769; thesis states TEST judge rows and demos were faded. 9.
+   HiDream-O1 / FLUX.2-dev: future-work table.
+
+**Signs. Dissents** only: declared-word list must never include TEMPLATE_NEG nouns.
+
+## T2-c — round 3
+
+**Final amendment text** (for docs/freeze_picture_setup_2026-09-25.md; template nouns from gen_screen.py TEMPLATES):
+
+    Amendment, 2026-09-27 (panel 3, topic 2), written before any FINAL picture or answer is seen. Code unchanged (3995769).
+    1. Rule 2. A FINAL picture is a false message if it shows as the maker an object that is not the source, its chain, the
+       RESOLVE qualifier, or a declared word, or if it shows a person for a sound outside Human sounds. Declared words —
+       general: pieces, splash, flash, smoke, sparks, dust, drops; per template: Thunder/Thunderstorm: lightning bolt, storm
+       cloud; Rain/Rain on surface: drops, window pane; Car alarm: parked car, headlights, indicator lights; Train horn:
+       locomotive; Church bell: bell, tower; Shatter/Smash: glass window, pieces. This list is closed now; nothing is added
+       after a picture is seen.
+    2. The pass: by eye, by [NAME], on all 80 FINAL pictures in the sitting (1 of 81 is a burst card), arm known, Adam's
+       file unopened; the GLM OBJECT line and an OWLv2 pass over each sound's forbidden nouns are flag lists only (a
+       non-flag clears nothing); a per-picture yes/no with the object named is committed before Adam's file is opened.
+    3. Report-only rows beside the primary, never replacing it: clip-cluster bootstrap over the 50 clips; the split
+       source != family (34) / source == family (47); wrong count per arm; template pictures separately.
+    4. Glance: each card is shown at 384 px for 1.5 s, then hidden and never re-shown. The built page's HTML is committed
+       before Adam sits; the report states whether this held for every card.
+    5. Disclosed: the confirm sheet counts "goat" correct for the 2 Bleat sources (Bleat sits under Sheep and Goat);
+       round 2's Sheep source did not.
+    6. Additional raters, secondary: after Adam's answers are saved and before the arm key is opened, [N = 1-3: NAMES]
+       hearing raters with no pipeline knowledge and no prior sight of any picture rate the same cards on the same page;
+       reported as kappa with Adam and as a pooled rate; never a bar; Adam-only stays the primary.
+    7. Display: stage6 `_opacity` fades a shown picture to alpha 0.77 at bar 0.35 over near-black; the sitting rates
+       full-opacity pictures. After the sitting is scored, alpha is set to 1 for any drawn picture (one switch, own
+       commit); the frozen TEST rows are never re-rendered; demo videos may be re-rendered and the change is stated in ch3.
+
+**Omni bar (T2-c's final):** Qwen3-Omni-30B-A3B-Instruct, prompts A (free) + B (closed over fired sub-labels + "unsure" →
+parent); pre-count B's population. B earns a future Adam micro-sitting only if it changes the drawn noun on ≥ 3 pre-listed
+sounds (P166, P089, P072 + bare-family) **and** 0 names_forbidden hits across all 54. "Second attempt at the 09-15
+negative"; "≤ 5/172" post hoc.
+
+Plan (Adam / GPU): 1 commit amendment, Adam fills names (5 min). 2 export + commit rating-page HTML, check hide. 3 Adam
+rates 168 cards (~40 min). 4 OWLv2 + by-eye pass, per-picture log (~10 GPU-min). 5 open, score, sensitivities. 6 naive
+raters (~40 min each; annotator 2 may be one). 7 alpha = 1 own commit, demos only (≤ 1 GPU-h). 8 Omni job (~1 H200-h).
+9 HiDream after submission.
+
+**Signs**, condition: [NAME] for the rule-2 pass should not default to the assistant that selected the setup — Adam or
+annotator 2 preferred; if the assistant, the per-picture log is mandatory.
+
+---
+# Topic 2 — outcome (coordinator)
+
+**Signed by all three.** Frozen setup untouched until the sealed sitting is scored. Amendment = T2-c's final text above
+(TEMPLATE_NEG nouns stay false messages — T2-a; the list as written already excludes them). Remaining small split: Omni
+bar — T2-a and T2-b chose "≥ 5/54 changed, 0 to an unfired kind", T2-c's final says "≥ 3 pre-listed changed, 0 forbidden";
+coordinator takes the majority (≥ 5/54) — report-only either way. Rule-2 pass by annotator 2 if available, else Adam
+(~20 min), else the assistant with a mandatory per-picture log.
+

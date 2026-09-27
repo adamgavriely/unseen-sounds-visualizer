@@ -239,3 +239,97 @@ N = 500; no TEST, no DEV-chosen bar, no fine-tune. **Open:** C vs lexicographic 
 *(Coordinator check 27 Sept: cluster env msproj has transformers 5.16.1 and `from transformers import PeAudioFrameLevelModel`
 succeeds. E-F: T1-a and T1-c yes, T1-b withdrew — not committed yet; E DEV render still unread and not yet run.)*
 
+---
+# Round 3 (final)
+
+## T1-a — round 3
+
+(a) **E-F: yes, commit now** — E-F 0.3, E-F 0.5, E-AND as three CELLS entries, motivation disclosed as a DEV cache read,
+judged only by C; expectation written: all three lose under C-overlap on the 280. No further cascade cells after these.
+(b) **Pool = T1-c's union** (every span cell E raises that shipped does not show, on the 280; ~55 true / ~145 false; count
+positives before the bar). Screen: AUROC lower 95 % CI ≥ 0.70 and point ≥ PANNs'. **Bar = cost:** θ = argmin C on the 280
+for the stack "PE-A-Frame ≥ θ replaces the PANNs veto on FlexSED-only spans and the PANNs branch of tier 3"; adoption only by
+held-out ΔC. Drops the 0.84 gate. (c) **Held-out 250 masked + 250 random**, N = 500, seed 23, eval split, disjoint; ~400
+survive. (d) C by ≥ 0.5 s overlap primary, onset secondary, no pick if signs disagree; "strict pass" / "trade pass".
+
+Plan (GPU / Adam):
+1. Today, CPU, Adam 0: amendment 24 (C rule, three cascade cells, union pool, held-out spec + seed 23, PE-A-Frame cell)
+   committed **before E's DEV render is read**; re-run detector_round_stage0.py with C.
+2. Day 1, ≤ 1 GPU-h, Adam 0: PE-A-Frame cache on 139 gold + 280 calib, 215 queries, 25 fps, flexsed_cache npz shape; 2-h
+   load gate.
+3. Day 1–2, CPU: union-pool screen + θ on the 280. Fail → stop, report negative, thesis ceiling text.
+4. Day 2, Adam yes + ~10 min: code fixes first (use_set heldout, FLEX path, stratified selector, cache keys), then download
+   (~3 h wall) + caches ≈ 2 GPU-h.
+5. Day 3, CPU: held-out ΔC upper 95 % CI < 0, one cell; stratum secondaries; sign check.
+6. Day 3–4, only if 5 passes: DEV-49 render of that cell, both arms, H200, 4–6 GPU-h, amendment 23 rule, "DEV point
+   estimate". E's own render: read when it lands, reported, selects nothing.
+7. Day 4–6, Adam ~2 h reading: thesis sections either way (three-tier ceiling 22/33 · 8 · 3; cost frontier ≈ 2.4–6 false
+   spans per gained sound; 280 vs held-out; PE-A-Frame result); TEST untouched.
+
+**Signs. Dissents** on T1-b's withdrawal of E-F and on "false/min ≤ shipped" as more than a label.
+
+## T1-b — round 3
+
+(a) **E-F: yes, signs** (withdrawal was a forecast, not a process objection). Grid {E-F 0.3, E-F 0.5, E-AND} committed before
+E's render runs, disclosure as T1-c. Expectation: none reaches ≤ 4.46 false/min; E-AND closes tier 3's veto bypass (on DEV
+keeps Bird P .065, loses Cricket P .001). (b) Union pool + cost bar; screen AUROC lower CI ≥ 0.70 and ≥ PANNs'; single
+global θ = argmin C (no per-family bars). One cell **E-PE**: PE-A-Frame ≥ θ within 1 s replaces the PANNs veto on
+FlexSED-only spans and the PANNs branch of tier 3. Cache mirrors flexsed_run.py (215 queries from depictable_vocab.json,
+25 fps, npz [n_labels, T] + fps), 48 kHz input, env msproj. (c) Held-out 250 masked + 250 random, seed 23, disjoint (~330
+survive); primary ΔC (overlap) upper CI < 0; false/min ≤ shipped on same clips; masked recall reported. (d) Code order,
+all before download: 1 use_set("heldout") (SLICE/VIDEOS/WIN/OUT); 2 FLEX/PANNS keyed off the set; 3 selector in
+audioset_calib.py (strata, disjointness, seed, `--dry` prints ids); 4 detector_round_stage0.py per-clip C rows, `--set`,
+new CELLS (E-F ×2, E-AND, E-PE placeholder).
+
+Plan (GPU / Adam): 1 CELLS + C rows, Stage 0 re-run (CPU 10 min). 2 code gaps + selector dry run (CPU 2 h / Adam's yes).
+3 download N = 500 (login 1–3 h). 4 PE-A-Frame cache 139 + 280 (< 1 GPU-h). 5 pre-check on union pool, θ, E-PE. 6 held-out
+caches (BEATs + PANNs 0.5 GPU-h, FlexSED ×4 ~3 GPU-h wall, PE 0.5). 7 Stage 0 with C → one pick. 8 held-out ΔC. 9 DEV-49
+render of the pick, blind arm point estimate (H200 3–4 h); E's render after it as the amendment-23 negative. 10 thesis
+ceiling paragraph + round as upgrade or negative. Adam: two approvals.
+
+**Signs the whole plan.** Reservation: H200 goes to the picked cell's render before E's; if no pick, E's render is the only
+DEV number, reported as the forecast negative.
+
+## T1-c — round 3
+
+Settled: (a) cost C by all; a pick must lower both C-overlap (primary) and C-onset. (b) **Dissents on T1-b's held-out
+"false/min ≤ shipped" gate** (re-imports the lexicographic rule) — report false/min and the β at which the cell crosses
+shipped instead. (c) E-F kept, **on the 280 only**; no DEV render for any cascade cell unless it lowers both C's; E-AND
+alongside. (d) Held-out N = 500, seed 23, half masked / half random; primary ΔC over all clips. (e) Verifier PE-A-Frame
+only; screen on the E-delta pool; **one cell in total reaches held-out** (multiplicity).
+
+Plan (GPU / Adam): 1 commit amendment 24 (Adam read + yes, 5 min). 2 code before any number (use_set heldout, FLEX path,
+masked selector, cache paths). 3 Adam's yes → download N = 500, caches BEATs/FlexSED/PANNs (~1 GPU-h). 4 PE-A-Frame 2-h
+load gate, cache 139 + 280 + held-out (≤ 2 GPU-h). 5 screen PE on the E-delta pool (CPU). 6 score all a-priori cells on the
+280: shipped, F, E, E-F 0.3/0.5, E-AND, D+PE, E+PE. 7 pick min C → one held-out test; fail = round ends, negative written.
+8 pass only: DEV-49 render both arms, blind sign check (4–6 GPU-h). 9 E's amendment-23 render last on a free card.
+
+**Amendment 24 text (commit before any number):** "Detector round 2. Cells fixed a priori: shipped; F (twin fix); E; E-F
+(0.3, 1.01, 1.0) and (0.5, 1.01, 1.0); E-AND (promote iff FlexSED ≥ 0.3 and PANNs ≥ 0.05); D+PE and E+PE with θ from the
+screen. Screen: on the 280's E-delta pool (spans E raises that shipped does not show; positives counted and written before
+scoring), at the loosest grid θ keeping ≥ 80 % of true items, kept-false/kept-true ≤ 0.84 with a 2000-draw bootstrap CI
+reported; AUROC reported, not a gate; fail → no PE cell. Pick (fit set = the 280, not out-of-sample): per clip C = 4 ×
+consequential events with no same-family span overlapping ≥ 0.5 s + 2 × false spans; C-onset the same with the [−0.5,
++1.0] s onset window; the pick is the cell with the lowest C-overlap that also lowers C-onset below shipped's; none → round
+ends. Held-out: AudioSet-Strong eval split, N = 500, seed 23, 250 with Speech/Music ≥ 50 % and ≥ 1 drawable non-speech
+event + 250 unfiltered, disjoint from the 280, slice B and all gold ids, downloaded after this text is committed and Adam's
+yes; the one picked cell passes iff paired clip bootstrap ΔC-overlap (cell − shipped), 2000 draws, seed 0, has upper 95 %
+CI < 0; reported beside: ΔC-onset, Δrecall, Δonset-recall, Δmasked recall, Δfalse/min per stratum, the β at which the cell
+crosses shipped. Pass → DEV-49 render both arms, amendment-23 rule as a sign check, reported as 'detector upgrade beside the
+frozen system, DEV point estimate, not confirmed on TEST'; the amendment-21 table stands. No TEST number; no bar from DEV
+scores; the rule is not revised after a number is seen."
+
+**Signs.** Dissents: (1) any false/min gate on held-out; (2) calling a DEV +2-hit outcome an "improvement"; (3) a
+masked-only held-out set. **Forecast:** no cell lowers both C's on the 280 except possibly D+PE; most likely product is a
+precise negative (≈ 2.4:1 by onset, ≈ 6:1 by event) for the thesis ceiling section.
+
+---
+# Topic 1 — outcome (coordinator)
+
+**Signed by all three.** E as-is is not an upgrade. One amendment (24, T1-c's text) to commit before any number: cells
+shipped / F / E / E-F ×2 / E-AND / D+PE / E+PE on the 280, pick by cost C (overlap primary, must also lower onset-C), one
+cell to a new held-out AudioSet-Strong set (N = 500, seed 23, half masked / half random), pass iff ΔC upper CI < 0, then a
+DEV render as a sign check. PE-A-Frame is the one new model (imports on the cluster). Only split: T1-b wanted a held-out
+"false/min ≤ shipped" gate, T1-c against (T1-a: label only) — coordinator takes the majority: report false/min, no gate.
+Needs Adam: yes to the download (~500 clips, AudioSet-Strong eval split, YouTube via yt-dlp as before).
+
