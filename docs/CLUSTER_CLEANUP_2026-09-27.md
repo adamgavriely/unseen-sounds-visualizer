@@ -25,3 +25,9 @@ ssh adamg@slurm-login1.lnx.biu.ac.il 'cd ~/.cache/huggingface/hub && rm -rf mode
 
 Not deleted on purpose: `data/` (experiment records and renders — the evidence), the DCASE dataset (20 GB, could go
 later if space is still needed).
+
+## Done (27 Sept, on Adam's request "only what we don't need")
+Deleted: Qwen-Image-2.1 (+ its blobs), GLM-4.6V-Flash, Idefics3-8B, Qwen2.5-VL-7B, Mistral-7B, SAM 3, Granite Speech, the
+FLAM cache, the `psed` env, conda's package cache. **Kept on purpose:** the `comfy` env (the ComfyUI GUI demo for the
+supervisor may still be shown), every model the final system uses, all data and results. Disk: 389 → 276 GB used
+(12 → 125 GB free).
