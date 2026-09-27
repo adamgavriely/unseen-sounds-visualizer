@@ -1968,3 +1968,13 @@ CI > 0, false spans/min ≤ shipped on the same clips, masked recall not lower.
 not confirmed on TEST"); the amendment-21 TEST table stays the thesis's TEST table; no TEST read. Fail → reported as a
 negative, nothing changes. Not allowed: choosing by ours' F1 or ΔF1, choosing on the 36 DEV sounds' scores, any TEST
 number.
+
+**Amendment 22, addendum (2026-09-27, before any cell is scored).** (1) *Cell F — a union bug found by trace:* in the
+twin rule a BEATs span too weak to be shown (peak < 0.35) absorbed a FlexSED span above FlexSED's own bar, and the merged
+sound was then dropped at the display bar; on DEV-49 six FlexSED detections at 0.89–0.93 vanished this way (one at a
+needed sound: rainforest insects). Cell F = shipped + `UNION_WEAK_TWIN = "ignore"` (only a displayable BEATs twin absorbs;
+otherwise the FlexSED span stays FlexSED-only and faces the PANNs veto). It is judged by the same Stages 0/B/A; if it
+passes it is reported as a bug fix. (2) *Disclosure:* while the rule was being written, reviewer F1 ran a detector-level
+dry sweep of lower FlexSED bars on DEV-49 from the caches (bar 0.5 + both vetoes: onset-recall 0.545 vs 0.515, false
+labels/clip 0.45 vs 0.24). It chose nothing: the pick is made on the AudioSet-280 set (Stage 0) and decided by the blind
+arm's rendered DEV numbers (Stage B).

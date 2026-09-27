@@ -66,6 +66,7 @@ WORK_TAG="${WORK_TAG:-}"
 FBAR="${FBAR:-}"         # FLEXSED_BAR override (amendment 10: the second detector's own firing bar)
 FAMBARS="${FAMBARS:-}"   # amendment 11: per-family FlexSED bars
 PVETO="${PVETO:-}"       # amendment 16: PANNs veto on FlexSED-only spans
+UTWIN="${UTWIN:-}"      # amendment 22 cell F: absorb | ignore
 LOWBAND="${LOWBAND:-}"   # amendment 22 tier 3: "flexsed_min,panns_min,window"
 CORROB="${CORROB:-}"     # amendment 22: "beats_min,panns_min,window" -- FlexSED-only spans need a nearby second detector
 VETO="${VETO:-}"         # cross-detector veto tau (amendment 10)
@@ -116,6 +117,8 @@ if "${FAMBARS}":
     config.FLEXSED_FAMILY_BARS = "${FAMBARS}"; print("[v4] FLEXSED_FAMILY_BARS", config.FLEXSED_FAMILY_BARS, flush=True)
 if "${PVETO}":
     config.PANNS_VETO = float("${PVETO}"); print("[v4] PANNS_VETO", config.PANNS_VETO, flush=True)
+if "${UTWIN}":
+    config.UNION_WEAK_TWIN = "${UTWIN}"; print("[v4] UNION_WEAK_TWIN", config.UNION_WEAK_TWIN, flush=True)
 if "${LOWBAND}":
     config.BEATS_LOWBAND_CORROB = tuple(float(x) for x in "${LOWBAND}".split(",")); print("[v4] BEATS_LOWBAND_CORROB", config.BEATS_LOWBAND_CORROB, flush=True)
 if "${CORROB}":

@@ -264,6 +264,12 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             fresh = []
             for e in fev:
                 twin = [b for b in events if key(b) == key(e) and b.start - 1.0 <= e.end and e.start - 1.0 <= b.end]
+                # Amendment 22, cell F (bug found 2026-09-27): a BEATs twin too weak to be shown (peak below the display
+                # bar) used to absorb a FlexSED span above FlexSED's own bar, and the merged sound was then dropped at the
+                # display bar -- on DEV 6 strong FlexSED detections vanished this way. With UNION_WEAK_TWIN = "ignore" only a
+                # displayable BEATs twin absorbs; otherwise the FlexSED span stays FlexSED-only (and faces the PANNs veto).
+                if str(getattr(config, "UNION_WEAK_TWIN", "absorb")) == "ignore":
+                    twin = [b for b in twin if b.confidence >= float(getattr(config, "DISPLAY_THRESHOLD", 0.35))]
                 if twin:
                     # UNION_START (2026-09-24, docs/NIGHT_REPORT_2026-09-24.md): the trace shows this
                     # step moving 77 starts earlier on DEV by a median of 4 s, the worst by 14 s -- a long
