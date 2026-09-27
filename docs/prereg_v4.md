@@ -1932,3 +1932,39 @@ Note to the B.1 re-check (2026-09-27): at FlexSED's **shipped** bar 0.8 only 1 o
 (and 0 of 31 masked consequential events on AudioSet-Strong, D6). Amendment 8's "7 of 9 recovered" counted scores of
 ≈ 0.35–0.49 and above, below the adopted bar. The union's recall gain at bar 0.8 therefore comes from other sounds, not
 from the masked sounds that motivated FlexSED; the thesis states this.
+
+## Amendment 22 — the detector round (2026-09-27, written before any cell is scored; TEST is not touched)
+
+Adam: *"we HAVE to recognize more sounds"*; *"try it on DEV without touching TEST"*. Panel (F1, F4, P2;
+`docs/panel_2026-09-27_detector_brief.md`). Motivation, not a selection source: on DEV-49 the caches reach 30 of 36 needed
+sounds at looser bars vs 21 at the shipped ones (only 4 below every detector) — an oracle-bar ceiling read on the very
+sounds it would be scored on, so **no bar is chosen from it**.
+
+**Cells (fixed; floors a priori, not swept):** every cell = the shipped stack (BEATs 0.35 ∪ FlexSED, FlexSED veto 0.3,
+PANNs veto 0.05, onset rule, no cap, `config.use_shipped()`) with one change —
+- A: FlexSED bar 0.6 · B: FlexSED bar 0.5 (the lower-bar × PANNs-veto cell was never run: the 0.7/0.6 costs of amendment
+  10 had the FlexSED veto only);
+- C: bar 0.6 + tier 2 · D: bar 0.5 + tier 2 — tier 2 (`FLEXSED_CORROB = (0.1, 0.05, 1.0)`): a FlexSED-only span is admitted
+  only if BEATs ≥ 0.1 or PANNs ≥ 0.05 rises for the same family within 1 s of it (0.05 = the shipped PANNs veto; never tried
+  time-aligned);
+- E: D + tier 3 (Adam's cascade, `BEATS_LOWBAND_CORROB = (0.3, 0.05, 1.0)`): a BEATs span with peak in
+  [AED_THRESHOLD 0.175, 0.35) — heard but too weak to show — is promoted to the display bar if FlexSED ≥ 0.3 (the shipped
+  FlexSED veto τ) or PANNs ≥ 0.05 rises for the same family within 1 s.
+
+**Stage 0 — pick (280 AudioSet-Strong calibration clips, detector level, cached scores):** the cell with the highest
+consequential onset-recall among the cells whose false spans/min ≤ the shipped stack's on the same clips (4.56). If no
+cell qualifies, nothing is picked and the round ends (reported). Masked recall reported, not used.
+
+**Stage B — DEV-49 (real renders, both arms, H200, base env copied, `[v4]` lines checked), the BLIND arm decides:** the
+picked cell passes iff the blind arm's hits ≥ shipped blind hits (17) **and** its viewer cost (β = 2) ≤ shipped blind cost
+(3.59) **and** its blind F1 paired CI vs shipped blind is not entirely below 0. The gated arm (ours) is printed for every
+cell, never selects.
+
+**Stage A — held-out confirmation (only if Adam approves downloading a new, disjoint AudioSet-Strong evaluation set; N
+and seed written before the download):** paired clip bootstrap Δ consequential onset-recall (picked − shipped) with lower
+CI > 0, false spans/min ≤ shipped on the same clips, masked recall not lower.
+
+**Outcome:** pass B (+ A if run) → reported as a **detector upgrade beside the frozen system** ("DEV-49 + AudioSet-Strong,
+not confirmed on TEST"); the amendment-21 TEST table stays the thesis's TEST table; no TEST read. Fail → reported as a
+negative, nothing changes. Not allowed: choosing by ours' F1 or ΔF1, choosing on the 36 DEV sounds' scores, any TEST
+number.

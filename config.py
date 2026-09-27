@@ -324,6 +324,8 @@ FLEXSED_BAR = 0.0
 FLEXSED_FAMILY_BARS = None    # amendment 11: path to the per-family bars fitted on the AudioSet calibration set
 PANNS_VETO = 0.0              # amendment 16: a third detector settles spans only FlexSED raised
 FLEXSED_VETO = 0.0            # amendment 10: drop a label the second detector never hears in the clip
+FLEXSED_CORROB = None         # amendment 22: (beats_min, panns_min, window_s) -- FlexSED-only spans need a nearby second detector
+BEATS_LOWBAND_CORROB = None   # amendment 22 tier 3: (flexsed_min, panns_min, window_s) -- weak BEATs spans promoted when corroborated
 MAX_SPAN = None               # seconds; None = no cap (v4ab3/v4b3 use 8.0)
 LABEL_FILTER = "lists"        # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 

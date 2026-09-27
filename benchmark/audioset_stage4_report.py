@@ -65,11 +65,11 @@ def spans(fw, times, labels, bar, low):
     return _extract_events(fw, times, labels, bar, None, config.AED_MIN_DUR, low=low)
 
 
-def rows_for(cid):
+def rows_for(cid, fbar=0.8):
     bfw, bt, bl = load(E.WIN / "beats" / f"{cid}.npz")
     beats = spans(bfw, bt, bl, config.DISPLAY_THRESHOLD, config.DISPLAY_THRESHOLD * 0.5)
     ffw, ft, fl = load(FLEX / f"{cid}.npz")
-    flex = spans(ffw, ft, fl, 0.8, 0.8 * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+    flex = spans(ffw, ft, fl, fbar, fbar * float(getattr(config, "AED_HYSTERESIS", 1.0)))
     key = lambda e: canonical(e.label)
     union = [dataclasses.replace(e) for e in beats]
     fresh = []
@@ -121,12 +121,27 @@ def score(name, per_clip):
 
 
 def main():
-    panns_cache("cuda" if len(sys.argv) < 2 else sys.argv[1])
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--device", default="cuda")
+    ap.add_argument("--fbars", nargs="+", type=float, default=[0.8], help="FlexSED bars to report (the detector round's grid)")
+    ap.add_argument("--set", default="calib", help="calib (the 280) or heldout (a new, disjoint AudioSet-Strong set)")
+    ap.add_argument("--out", default=None)
+    a = ap.parse_args()
+    if a.set != "calib":
+        E.use_set(a.set)
+    panns_cache(a.device)
     cl = [c for c in E.clips() if (FLEX / f"{c['id']}.npz").exists() and (E.WIN / "beats" / f"{c['id']}.npz").exists()]
     per = {}
-    for c in cl:
-        for name, ev in rows_for(c["id"]).items():
-            per.setdefault(name, []).append((c, ev))
+    for fb in a.fbars:
+        for c in cl:
+            for name, ev in rows_for(c["id"], fb).items():
+                if name.startswith("A "):
+                    if fb != a.fbars[0]:
+                        continue                      # BEATs alone does not depend on the FlexSED bar
+                elif len(a.fbars) > 1 or fb != 0.8:
+                    name = f"{name[:1]} FlexSED {fb:g}: " + name[2:]
+                per.setdefault(name, []).append((c, ev))
     res = {"clips": len(cl), "note": "descriptive, no selection; shipped bars; onset refinement not re-run", "rows": {}}
     print(f"{len(cl)} AudioSet-Strong calibration clips (10 s each), non-speech non-music events")
     print(f"{'row':32s} {'masked-conseq':>14} {'conseq':>7} {'all':>7} {'onset-recall':>12} {'false/min':>9} {'onset MAE':>9}")
@@ -134,8 +149,9 @@ def main():
         r = score(name, pc); res["rows"][name] = r
         print(f"{name:32s} {r['masked_conseq_recall']:9.1%} ({r['masked_conseq_n']}) {r['conseq_recall']:7.1%} {r['all_recall']:7.1%} "
               f"{r['onset_recall_conseq']:12.1%} {r['fp_per_min']:9.2f} {r['onset_mae'] if r['onset_mae'] is None else round(r['onset_mae'], 2):>9}")
-    OUT.write_text(json.dumps(res, indent=1), encoding="utf-8")
-    print("->", OUT)
+    out = Path(a.out) if a.out else OUT
+    out.write_text(json.dumps(res, indent=1), encoding="utf-8")
+    print("->", out)
 
 
 if __name__ == "__main__":

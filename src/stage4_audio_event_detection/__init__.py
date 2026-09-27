@@ -281,6 +281,26 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                             b.start = min(b.start, e.start)
                 else:
                     fresh.append(e)
+            # Detector round 2026-09-27 (docs/prereg_v4.md amendment 22): at a LOWER FlexSED bar, a span FlexSED
+            # raised alone is admitted only if another detector rises for the same family near it in time --
+            # BEATs >= b or PANNs >= p within `win` seconds of the span. Off unless FLEXSED_CORROB = (b, p, win).
+            corr = getattr(config, "FLEXSED_CORROB", None)
+            if corr and fresh:
+                b_min, p_min, win = (float(x) for x in corr)
+                try:
+                    cfw, ct, cl = _infer(Path(wav_path), device)
+                except Exception as e3:
+                    cfw = None
+                    print(f"       [stage4] corroboration: PANNs unavailable ({type(e3).__name__}); BEATs only", flush=True)
+
+                def _near(fw_, ts_, labs_, e_, thr):
+                    m = (np.asarray(ts_) >= e_.start - win) & (np.asarray(ts_) <= e_.end + win)
+                    cols = [i for i, lab_ in enumerate(labs_) if canonical(lab_) == key(e_)]
+                    return bool(cols) and bool(m.any()) and float(np.asarray(fw_)[m][:, cols].max()) >= thr
+                n0 = len(fresh)
+                fresh = [e for e in fresh if _near(framewise, times, labels, e, b_min)
+                         or (cfw is not None and _near(cfw, ct, cl, e, p_min))]
+                print(f"       [stage4] corroboration (BEATs {b_min} / PANNs {p_min} within {win} s): kept {len(fresh)} of {n0} FlexSED-only span(s)", flush=True)
             print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
             trace("flexsed_raw", fev, "FlexSED spans as extracted")
             events = events + fresh
@@ -328,6 +348,31 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                           f"dropped {before2 - len(events)} span(s)", flush=True)
                 except Exception as e2:
                     print(f"       [stage4] PANNs veto unavailable ({type(e2).__name__}: {e2}); skipped", flush=True)
+            # Amendment 22, tier 3 (Adam, 2026-09-27: "take all sounds above X, then for sounds below X try Y"):
+            # a BEATs span whose peak is in the band [AED_THRESHOLD, DISPLAY_THRESHOLD) -- heard, but too weak to be
+            # shown -- is promoted to the display bar when FlexSED (>= f) or PANNs (>= p) rises for the same family
+            # within `win` seconds of it. Off unless BEATS_LOWBAND_CORROB = (f, p, win).
+            low = getattr(config, "BEATS_LOWBAND_CORROB", None)
+            if low:
+                f_min, p_min, win = (float(x) for x in low)
+                disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+                try:
+                    lfw, lt, ll = _infer(Path(wav_path), device)
+                except Exception:
+                    lfw = None
+
+                def _near2(fw_, ts_, labs_, e_, thr):
+                    m = (np.asarray(ts_) >= e_.start - win) & (np.asarray(ts_) <= e_.end + win)
+                    cols = [i for i, lab_ in enumerate(labs_) if canonical(lab_) == key(e_)]
+                    return bool(cols) and bool(m.any()) and float(np.asarray(fw_)[m][:, cols].max()) >= thr
+                promoted = 0
+                for e in events:
+                    if id(e) in flex_ids or e.confidence >= disp:
+                        continue
+                    if _near2(ffw, ftimes, flabels, e, f_min) or (lfw is not None and _near2(lfw, lt, ll, e, p_min)):
+                        e.confidence = disp; promoted += 1
+                print(f"       [stage4] low-band corroboration (FlexSED {f_min} / PANNs {p_min} within {win} s): "
+                      f"promoted {promoted} weak BEATs span(s) to the display bar", flush=True)
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     trace("veto", events, "after the cross-detector and PANNs vetoes")
