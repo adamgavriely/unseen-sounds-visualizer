@@ -2176,3 +2176,10 @@ pay at β = 2; the shipped stack stays.
    set we measure on, TEST included, with pooled DEV + TEST numbers. It re-presents existing renders and scores; nothing is
    re-rendered for scoring and no setting is chosen from it. From here on, anything changed after looking at TEST mistakes
    is reported as tuned on TEST.
+
+## 2026-09-28 — one cheap extra detector check: all three must agree (Adam's request; written before the number)
+
+On the 280 (fit set): cell **E+3** = cell E, where every span E adds over shipped is kept only if **FlexSED ≥ 0.5 and
+PE-A-Frame ≥ 5.20 (the 95th-percentile grid value of amendment 24) and the listener says yes (score > 0)**, all three for the
+span's family within 1 s. Fixed values, no grid. Same rule as amendment 24: it goes on only if it lowers C-overlap and
+C-onset below shipped's; then the held-out test of amendment 24. Script `benchmark/agree3.py`.
