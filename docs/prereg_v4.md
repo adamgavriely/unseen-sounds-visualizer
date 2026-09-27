@@ -2117,3 +2117,36 @@ it raises C-overlap. The round ends here, as written; **the held-out set is not 
 future pre-registered question). Reading: the shipped stack sits at the cost optimum of every training-free stack tried;
 extra recall costs more false spans than β = 2 allows, and a second text-queried detector with an independent encoder
 (PE-A-Frame) does not tell masked true sounds from false ones. This is the detector-ceiling result for the thesis.
+
+Definition note to the result above: the screen's "true" is span-level (overlaps any labelled event of the same family,
+consequential or not), so the pool's 118/98 is not the panel's ~48 true onsets / ~114 false spans (consequential onsets
+only); C itself counts only consequential misses. This is one reason the ratio screen was near-trivial.
+
+## Amendment 25 — last detector question: an audio "listener" as verifier (2026-09-27, after amendment 24's result, before any listener output)
+
+**Trigger, disclosed as post hoc.** All three detection reviewers listed a per-candidate audio-LLM verifier as the fallback
+"if PE-A-Frame fails its screen". PE-A-Frame passed amendment 24's ratio screen only by the letter (AUROC 0.53 [0.45, 0.61],
+below PANNs' 0.64); the coordinator triggers the fallback on that, after seeing the screen. Adam authorised "anything you
+can to improve the detector" (27 Sept).
+
+**Listener.** Qwen3-Omni-30B-A3B-Instruct (Apache-2.0; `Qwen3OmniMoeForConditionalGeneration`, text output only), one
+bf16 load on an H200/A100-80. Per candidate span: the clip's audio from start − 1 s to end + 1 s (clipped to the clip), 16
+kHz mono, and the question "Is the sound of {family} present in this recording? Answer yes or no." Score = logit(yes) −
+logit(no) at the first generated token (max over the "yes"/"Yes" and "no"/"No" token ids). **Null control:** each window
+is also asked about one family from the 215 that is labelled nowhere in that clip (seeded, seed 0); the share of yes
+(score > 0) on those is reported as the listener's yes-bias. **Load gate:** if 10 windows are not scored within 2 h of
+wall time, stop and report.
+
+**Pool (the 280).** Spans cell E raises that the shipped stack does not show (as amendment 24), each labelled **hit** (overlaps
+a consequential event of its family by ≥ 0.5 s or half the event), **false** (overlaps no labelled event of its family) or
+**neutral** (overlaps only non-consequential events of its family). Counts written to the log before any score.
+
+**Screen (hard gate this time; the ratio-only screen of amendment 24 let a chance-level corroborator through).** On hit vs
+false spans: listener AUROC with a 2000-draw bootstrap CI; pass iff the **lower 95 % bound ≥ 0.70 and the point AUROC > PANNs'**
+on the same spans. Fail → no listener cell is scored; the round and detection are closed with a negative.
+
+**Cells (only if the screen passes).** E+L and E-AND+L: E (resp. E-AND) where every span not shown by shipped is kept only if
+the listener score ≥ θ; θ from the 20/40/60/80th percentiles of the pool's listener scores, argmin C-overlap on the 280.
+**Pick, held-out test and DEV sign check: exactly amendment 24's** (lowest C-overlap that also lowers C-onset below shipped;
+one cell; held-out 415 clips, paired ΔC-overlap upper 95 % CI < 0; then DEV-49 renders both arms as a sign check). No TEST.
+This is the last detector question before submission; the rule is not revised after a number is seen.
