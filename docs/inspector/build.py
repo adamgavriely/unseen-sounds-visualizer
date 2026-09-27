@@ -33,12 +33,16 @@ try:
     from benchmark.gold import score_per_sound as S
     same_family = S.same_family
     EARLY, LATE = S.EARLY, S.LATE
+    from src.labels import canonical
 except Exception as e:  # the page still works, but family matches are exact-name only
     NOTE = f"WARNING: could not import the scorer ({e!r}); family match = exact label only. Reasons may be wrong."
     print(NOTE)
 
     def same_family(a, b):
         return a == b
+
+    def canonical(label):
+        return label
 
 
 def in_window(pic_start, onset):
@@ -106,6 +110,76 @@ def miss_reason(snd, own_pics, blind_pics, events, is_ours):
     return {"reason": "never detected"}
 
 
+def position(t, snd):
+    """where a picture starts against a sound: early / window / during (later, sound still playing) / after"""
+    on, end = snd["start"], snd["end"]
+    if t < on - EARLY:
+        return "early"
+    if t <= on + LATE:
+        return "window"
+    if t <= end:
+        return "during"
+    return "after"
+
+
+def family_name(label):
+    try:
+        return canonical(label) or label
+    except Exception:
+        return label
+
+
+def sensitivity(d):
+    """Sensitivity row (not the scoring rule): a wrong picture of the same family that starts anywhere in
+    [onset - 0.5, end] of a MISSED needed sound (importance 2-3) turns into a hit; one picture per sound,
+    sounds in onset order, the picture nearest the onset first. Cost = (4 x misses + 2 x wrong) / clips."""
+    out = {}
+    groups = {"DEV": ["DEV"], "TEST": ["TEST"], "DEV+TEST": ["DEV", "TEST"], "sliceB": ["sliceB"]}
+    for gname, splits in groups.items():
+        out[gname] = {}
+        for sysn in ("ours", "blind", "silence"):
+            acc = {"onset": {"hits": 0, "misses": 0, "wrong": 0}, "during": {"hits": 0, "misses": 0, "wrong": 0}, "clips": 0}
+            for c in d["clips"]:
+                if c["split"] not in splits:
+                    continue
+                acc["clips"] += 1
+                sd = c["systems"].get(sysn) or {"sounds": [], "pictures": []}
+                gold = c["sounds"]
+                outs = sd.get("sounds") or []
+                pics = sd.get("pictures") or []
+                if sysn == "silence":
+                    h = 0
+                    m = sum(1 for s in gold if s["needed"] and s["importance"] >= 2)
+                    w = 0
+                else:
+                    h = sum(1 for o in outs if o and o["outcome"] == "hit")
+                    m = sum(1 for o in outs if o and o["outcome"] == "miss")
+                    w = sum(1 for p in pics if p["class"].startswith("wrong"))
+                conv, used = 0, set()
+                for i in sorted(range(len(outs)), key=lambda i: gold[i]["start"]):
+                    if not (outs[i] and outs[i]["outcome"] == "miss"):
+                        continue
+                    s = gold[i]
+                    cands = [j for j, p in enumerate(pics) if j not in used and p["class"].startswith("wrong")
+                             and same_family(p["label"], s["label"]) and s["start"] - EARLY <= p["start"] <= max(s["end"], s["start"] + LATE)]
+                    if cands:
+                        j = min(cands, key=lambda j: abs(pics[j]["start"] - s["start"]))
+                        used.add(j); conv += 1
+                for k, v in (("onset", (h, m, w)), ("during", (h + conv, m - conv, w - conv))):
+                    acc[k]["hits"] += v[0]; acc[k]["misses"] += v[1]; acc[k]["wrong"] += v[2]
+            n = max(1, acc["clips"])
+            for k in ("onset", "during"):
+                a = acc[k]
+                shown = a["hits"] + a["wrong"]
+                a["P"] = a["hits"] / shown if shown else None
+                a["R"] = a["hits"] / (a["hits"] + a["misses"]) if a["hits"] + a["misses"] else None
+                a["F1"] = 2 * a["P"] * a["R"] / (a["P"] + a["R"]) if a["P"] and a["R"] else 0.0
+                a["cost"] = (4 * a["misses"] + 2 * a["wrong"]) / n
+            acc["clips"] = n
+            out[gname][sysn] = acc
+    return out
+
+
 def near_gate(snd, gate):
     """gate entries (stretches) of the sound's family that overlap its onset window or its span"""
     lab, on, end = snd["label"], snd["start"], max(snd["end"], snd["start"] + LATE)
@@ -142,10 +216,24 @@ def main():
                     r = miss_reason(s, sysd.get("pictures") or [], blind.get("pictures") or [], events, is_ours)
                     if r["reason"] == "removed by the gate":
                         r["gate"] = ng
+                    # every same-family picture (both systems) and detector event, placed against the sound
+                    r["fam_pics"] = [{"sys": sn, "j": j, "label": p["label"], "start": p["start"], "end": p["end"],
+                                      "class": p["class"], "pos": position(p["start"], s)}
+                                     for sn, sd in (("ours", ours), ("blind", blind))
+                                     for j, p in enumerate(sd.get("pictures") or []) if same_family(p["label"], s["label"])]
+                    r["fam_events"] = [{"label": e["label"], "start": e["start"], "end": e["end"], "confidence": e.get("confidence")}
+                                       for e in events if same_family(e["label"], s["label"])]
                     der["miss"][name][str(i)] = r
                     key = (c["split"], name, r["reason"])
                     counts[key] = counts.get(key, 0) + 1
+        der["family"] = [family_name(s["label"]) for s in c["sounds"]]
         c["derived"] = der
+    d["sensitivity"] = sensitivity(d)
+    print("sensitivity (onset rule -> 'any time while the sound plays'):")
+    for sp, v in d["sensitivity"].items():
+        for sysn, x in v.items():
+            print(f"   {sp:7s} {sysn:7s} hits {x['onset']['hits']}->{x['during']['hits']} of {x['onset']['hits'] + x['onset']['misses']}, "
+                  f"wrong {x['onset']['wrong']}->{x['during']['wrong']}, cost {x['onset']['cost']:.2f}->{x['during']['cost']:.2f}")
     d["build_note"] = NOTE
     d["window"] = [-EARLY, LATE]
     OUT.write_text("window.INSPECTOR = " + json.dumps(d, separators=(",", ":")) + ";\n", encoding="utf-8")

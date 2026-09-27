@@ -343,7 +343,13 @@
     h += '<h2>Results</h2><p class="lede">A <b>hit</b> is a picture of the right kind of sound that starts between 0.5 s before and 1.0 s after the sound starts. ' +
       'A <b>wrong picture</b> is any other picture: its source was visible, it showed a different sound, or there was no sound at all. ' +
       'Precision = hits / all pictures; recall = hits / needed sounds. Viewer cost = (4 × misses + 2 × wrong pictures) / clips; lower is better.</p>';
+    h += '<div class="callout"><b>Two kinds of miss to look at first:</b>' +
+      '<a class="bigbtn" href="#/mistakes/late">Late or early pictures &rarr;<small>' + countMiss('timing') + ' needed sounds (ours + blind, DEV + TEST) had a picture of the right kind at the wrong moment</small></a>' +
+      '<a class="bigbtn" href="#/mistakes/gated">Removed by the gate &rarr;<small>' + countMiss('removed by the gate') + ' needed sounds (DEV + TEST): blind drew them in time, ours stayed quiet</small></a></div>';
     h += '<div id="res-DEV"></div><div id="res-TEST"></div><div id="res-POOL"></div><div id="res-sliceB"></div>';
+    h += '<h2>Sensitivity: what if a late picture counted?</h2><p class="lede">The scoring rule counts a picture as correct only if it starts within 0.5 s before to 1 s after the sound\'s start. ' +
+      'Here the rule is relaxed: a wrong picture of the same kind that starts <b>any time while the sound plays</b> (from 0.5 s before its start to its end) turns a miss into a hit ' +
+      '(one picture per sound). This is only a check, not the score.</p><div id="sens"></div>';
     h += '<h2>What wrong pictures are left?</h2><p class="lede">Blind draws every sound the detector hears. Ours draws the same pictures but asks the VLM first and ' +
       'skips a sound whose source is on screen. The bars show the wrong pictures of each system by type. ' +
       'A “different sound” picture means the detector named the wrong sound; the gate can only remove it by chance (when the VLM sees something that could make the wrong sound).</p>';
@@ -363,10 +369,50 @@
       }
     });
     wrongChart(document.getElementById('wchart'));
+    sensTable(document.getElementById('sens'));
+  }
+
+  function countMiss(reason) {
+    var n = 0;
+    CLIPS.forEach(function (c) {
+      if (c.split !== 'DEV' && c.split !== 'TEST') return;
+      ['ours', 'blind'].forEach(function (s) {
+        var mm = c.derived.miss[s] || {};
+        Object.keys(mm).forEach(function (i) { if (mm[i].reason === reason) n++; });
+      });
+    });
+    return n;
+  }
+
+  function sensTable(host) {
+    var S = D.sensitivity;
+    if (!S) { host.innerHTML = '<p class="muted">Not in data.js: re-run build.py.</p>'; return; }
+    var rows = [];
+    ['DEV', 'TEST', 'DEV+TEST', 'sliceB'].forEach(function (g) {
+      if (!S[g]) return;
+      ['ours', 'blind', 'silence'].forEach(function (s) { rows.push({ g: g, s: s, x: S[g][s] }); });
+    });
+    function ar(a, b, f) { f = f || function (v) { return v; }; return f(a) + (a === b ? '' : ' → <b>' + f(b) + '</b>'); }
+    var h = '<div class="tw"><table class="results"><thead><tr><th>split</th><th>system</th><th class="num">hits (onset rule → while playing)</th><th class="num">misses</th>' +
+      '<th class="num">wrong pictures</th><th class="num">F1</th><th class="num">viewer cost / clip</th></tr></thead><tbody>';
+    rows.forEach(function (r, k) {
+      var o = r.x.onset, d = r.x.during;
+      var first = k % 3 === 0;
+      h += '<tr' + (r.s === 'ours' ? ' class="ours"' : '') + '><td>' + (first ? esc(r.g) + (r.g.indexOf('TEST') >= 0 ? ' ' + badge() : '') : '') + '</td><td>' + r.s + '</td>' +
+        '<td class="num">' + ar(o.hits, d.hits) + ' <span class="muted">of ' + (o.hits + o.misses) + '</span></td><td class="num">' + ar(o.misses, d.misses) + '</td>' +
+        '<td class="num">' + ar(o.wrong, d.wrong) + '</td><td class="num">' + ar(o.F1, d.F1, pct) + '</td><td class="num">' + ar(o.cost, d.cost, f2) + '</td></tr>';
+    });
+    h += '</tbody></table></div>';
+    var t = S.TEST;
+    function order(k) { return ['ours', 'blind', 'silence'].sort(function (a, b) { return t[a][k].cost - t[b][k].cost; }).join(' < '); }
+    if (t) h += '<p class="sentence">On TEST the relaxed rule adds ' + (t.ours.during.hits - t.ours.onset.hits) + ' hits to ours and ' + (t.blind.during.hits - t.blind.onset.hits) +
+      ' to blind (each one also removes a wrong picture). Cost order with the scoring rule: <b>' + order('onset') + '</b>; with the relaxed rule: <b>' + order('during') + '</b>. ' +
+      'See the <a href="#/mistakes/late">late or early pictures</a> to judge each case.</p>';
+    host.innerHTML = h;
   }
 
   // ------------------------------------------------------------------ MISTAKES
-  var M = { tab: 'miss', split: 'DEVTEST', cat: '', sys: 'ours', q: '', reason: '', wtype: '' };
+  var M = { tab: 'miss', split: 'DEVTEST', cat: '', sys: 'ours', q: '', reason: '', wtype: '', pos: '' };
   function splitOk(sp) {
     if (M.split === 'ALL') return true;
     if (M.split === 'DEVTEST') return sp === 'DEV' || sp === 'TEST';
@@ -491,6 +537,131 @@
   var colCat = { k: 'cat', t: 'clip type', h: function (r) { return CAT[r.c.category]; }, v: function (r) { return CAT[r.c.category]; }, cls: 'nowrap' };
   var colSys = { k: 'sys', t: 'system', h: function (r) { return r.sys; }, v: function (r) { return r.sys; } };
 
+  // ---- late or early pictures (timing misses)
+  var POS_TEXT = { early: 'early (before the window)', window: 'in the window', during: 'late, sound still playing', after: 'after the sound ended' };
+  function posOf(t, s) {
+    if (t < s.start + WIN[0]) return 'early';
+    if (t <= s.start + WIN[1]) return 'window';
+    if (t <= s.end) return 'during';
+    return 'after';
+  }
+  function posTag(p) { return '<span class="pos ' + p + '">' + POS_TEXT[p] + '</span>'; }
+  function miniTL(row) {
+    var c = row.c, s = row.s, r = row.r, fam = c.derived.family || [];
+    var dur = duration(c), W = 300, L = 52, R = 6;
+    var X = function (t) { return L + Math.max(0, Math.min(dur, t)) / dur * (W - L - R); };
+    var h = '', y = 2;
+    function lab(t, yy) { h += '<text x="0" y="' + (yy + 10) + '" class="ink2" style="font-size:10px">' + t + '</text>'; }
+    function bar(a, b, yy, hh, k, tipTxt, extra) {
+      h += '<rect class="m k-' + k + '" x="' + X(a) + '" y="' + yy + '" width="' + Math.max(3, X(b) - X(a)) + '" height="' + hh + '" rx="2"' +
+        (extra || '') + ' data-tip="' + esc(tipTxt) + '"></rect>';
+    }
+    // the hit window of this sound, across all rows
+    var rowsH = 12 * 3 + 6 * 2 + 8;
+    h += '<rect class="win" x="' + X(s.start + WIN[0]) + '" y="0" width="' + (X(s.start + WIN[1]) - X(s.start + WIN[0])) + '" height="' + rowsH + '"></rect>';
+    lab('sound', y);
+    c.sounds.forEach(function (g, k) {
+      if (k !== row.i && fam[k] !== fam[row.i]) return;
+      var kk = k === row.i ? 'needed' : soundKind(g);
+      bar(g.start, Math.max(g.end, g.start + 0.1), y, 12, kk, '<b>' + esc(g.label) + '</b> ' + ft(g.start) + '–' + ft(g.end) + ' s' + (k === row.i ? ' (this sound)' : ' (' + KIND_TEXT[soundKind(g)] + ')'),
+        k === row.i ? ' style="fill-opacity:.45"' : '');
+    });
+    y += 18;
+    lab('pictures', y);
+    (r.fam_pics || []).forEach(function (p) {
+      var own = p.sys === row.sys;
+      bar(p.start, Math.max(p.end, p.start + 0.1), y + (own ? 0 : 7), own ? 12 : 5, pclass(p.class).k,
+        '<b>' + p.sys + ': ' + esc(p.label) + '</b> ' + ft(p.start) + '–' + ft(p.end) + ' s<br>' + POS_TEXT[posOf(p.start, s)] + ' (' + sgn(p.start - s.start) + ' s)<br>' + esc(pclass(p.class).s));
+    });
+    y += 18;
+    lab('detector', y);
+    (r.fam_events || []).forEach(function (e) {
+      bar(e.start, Math.max(e.end, e.start + 0.1), y + 3, 6, 'event', '<b>' + esc(e.label) + '</b> ' + ft(e.start) + '–' + ft(e.end) + ' s, score ' + f2(e.confidence));
+    });
+    y += 16;
+    h += '<line class="axisl" x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '"></line>';
+    var step = dur <= 12 ? 2 : dur <= 30 ? 5 : 10;
+    for (var t = 0; t <= dur + 1e-6; t += step) h += '<text x="' + X(t) + '" y="' + (y + 11) + '" text-anchor="middle" class="muted-t" style="font-size:10px">' + t + '</text>';
+    return '<svg class="tl mini" width="' + W + '" height="' + (y + 14) + '" viewBox="0 0 ' + W + ' ' + (y + 14) + '">' + h + '</svg>';
+  }
+  function renderLate(chips, ex, tb) {
+    var rows = missRows().filter(function (r) { return r.r.reason === 'timing'; });
+    rows.forEach(function (r) { r.pos = posOf(r.r.pic_start, r.s); });
+    var cnt = {};
+    rows.forEach(function (r) { cnt[r.pos] = (cnt[r.pos] || 0) + 1; });
+    chips.innerHTML = '<div class="rule-note">The scoring rule counts a picture as correct only if it starts within 0.5 s before to 1 s after the sound\'s start. ' +
+      'A picture that appears later while a long sound is still playing counts as a miss plus a wrong picture.</div>' +
+      '<div class="reasons"><button type="button" class="chip' + (M.pos ? '' : ' on') + '" data-pos="">all <b>' + rows.length + '</b></button>' +
+      ['early', 'during', 'after'].filter(function (p) { return cnt[p]; }).map(function (p) {
+        return '<button type="button" class="chip' + (M.pos === p ? ' on' : '') + '" data-pos="' + p + '">' + POS_TEXT[p] + ' <b>' + cnt[p] + '</b></button>';
+      }).join('') + '</div>';
+    ex.innerHTML = '<div class="explain">Each row is a needed sound (importance 2–3) that had a picture of the right kind, but at the wrong moment. ' +
+      'The small timeline shows the whole clip: the sound (and other sounds of the same kind), the shaded band = the hit window, the pictures ' +
+      '(thin bars = the other system) and the detector. If a picture starts well after the sound\'s start but the detector shows a new burst there, ' +
+      'the annotation may have merged two occurrences into one long sound. Chips count by the picture nearest the start.</div>';
+    var shown = rows.filter(function (r) { return !M.pos || r.pos === M.pos; });
+    var cols = [
+      { k: 'play', t: 'sound start', h: function (r) { return playBtn(r.c, r.s.start, r.sys === 'blind' ? 'blind' : 'ours'); }, v: function (r) { return r.s.start; } },
+      { k: 'clip', t: 'clip · system', h: function (r) { return splitTag(r.c.split) + ' ' + clipLink(r.c) + '<br><span class="small">' + r.sys + ' · ' + CAT[r.c.category] + '</span>'; }, v: function (r) { return r.c.clip; } },
+      { k: 'snd', t: 'sound', h: function (r) { return '<b>' + esc(r.s.label) + '</b><br><span class="small">' + ft(r.s.start) + '–' + ft(r.s.end) + ' s (' + ft(r.s.end - r.s.start) + ' s long)</span>'; }, v: function (r) { return r.s.label; } },
+      { k: 'pos', t: 'nearest picture', h: function (r) { return posTag(r.pos) + '<br><span class="small">' + sgn(r.r.late) + ' s from the start</span>'; }, v: function (r) { return r.r.late; } },
+      { k: 'pics', t: 'pictures of this kind (play at picture)', h: function (r) {
+        var ps = (r.r.fam_pics || []).slice().sort(function (a, b) { return (a.sys === r.sys ? 0 : 1) - (b.sys === r.sys ? 0 : 1) || a.start - b.start; });
+        return ps.map(function (p) {
+          return '<div class="picline' + (p.sys === r.sys ? '' : ' other') + '">' + playBtn(r.c, p.start, p.sys === 'blind' ? 'blind' : 'ours') + ' ' +
+            (p.sys === r.sys ? '' : '<span class="small">(' + p.sys + ')</span> ') + esc(p.label) + ' ' + ft(p.start) + '–' + ft(p.end) + ' s ' + posTag(posOf(p.start, r.s)) + ' ' + classTag(p.class) + '</div>';
+        }).join('') || '<span class="muted">—</span>';
+      } },
+      { k: 'tl', t: 'whole clip', h: miniTL }
+    ];
+    mkTable(tb, 'late', cols, shown);
+    bindTips(tb);
+    Array.prototype.forEach.call(chips.querySelectorAll('[data-pos]'), function (b) {
+      b.addEventListener('click', function () { M.pos = b.getAttribute('data-pos'); renderMistakesBody(); });
+    });
+  }
+
+  // ---- removed by the gate, grouped by family
+  function renderGated(chips, ex, tb) {
+    var ok = qOk(), rows = [];
+    baseClips().forEach(function (c) {
+      var mm = c.derived.miss.ours || {};
+      Object.keys(mm).forEach(function (i) {
+        if (mm[i].reason !== 'removed by the gate') return;
+        var s = c.sounds[+i];
+        if (!ok(s.label, c.clip)) return;
+        rows.push({ c: c, sys: 'ours', s: s, i: +i, r: mm[i], fam: (c.derived.family || [])[+i] || s.label });
+      });
+    });
+    var groups = {};
+    rows.forEach(function (r) { (groups[r.fam] = groups[r.fam] || []).push(r); });
+    var fams = Object.keys(groups).sort(function (a, b) { return groups[b].length - groups[a].length || (a < b ? -1 : 1); });
+    chips.innerHTML = '<p class="small muted">Only ours has a gate, so the system filter is ignored here.</p><div class="reasons"><span class="chip">all <b>' + rows.length + '</b></span>' +
+      fams.map(function (f) { return '<a class="chip" href="#" data-fam="' + esc(f) + '">' + esc(f) + ' <b>' + groups[f].length + '</b></a>'; }).join('') + '</div>';
+    ex.innerHTML = '<div class="explain">A needed sound the gate withheld: blind drew a picture of it in time, ours did not, because the VLM said the source is visible ' +
+      'in every stretch of that detected sound. The last column shows what the VLM said it saw in each stretch, and its three votes ' +
+      '(name / a-b choice / description; “visible” = it said the source is on screen).</div>';
+    if (!rows.length) { tb.innerHTML = '<p class="muted">Nothing matches these filters.</p>'; return; }
+    tb.innerHTML = fams.map(function (f, k) { return '<h3 class="famhead" id="fam-' + k + '">' + esc(f) + ' <span class="muted">(' + groups[f].length + ')</span></h3><div id="famt-' + k + '"></div>'; }).join('');
+    fams.forEach(function (f, k) {
+      mkTable(document.getElementById('famt-' + k), 'gated-' + f, [
+        { k: 'play', t: 'ours', h: function (r) { return playBtn(r.c, r.s.start, 'ours'); }, v: function (r) { return r.s.start; } },
+        { k: 'playb', t: 'blind', h: function (r) { return playBtn(r.c, r.r.pic_start, 'blind'); } },
+        colSplit, colClip, colCat,
+        { k: 'snd', t: 'sound', h: function (r) { return esc(r.s.label) + '<br><span class="small">' + ft(r.s.start) + '–' + ft(r.s.end) + ' s, imp. ' + r.s.importance + '</span>'; }, v: function (r) { return r.s.label; } },
+        { k: 'bp', t: 'blind picture', h: function (r) { return esc(r.r.pic_label) + ' at ' + ft(r.r.pic_start) + ' s (' + sgn(r.r.pic_start - r.s.start) + ' s)'; } },
+        { k: 'vlm', t: 'what the VLM said it saw', h: function (r) { var g = gateOf(r.c); return (r.r.gate || []).map(function (x) { return gateLine(g[x]); }).join('') || '<span class="muted">no stretch found</span>'; } }
+      ], groups[f], { nocount: 1 });
+    });
+    Array.prototype.forEach.call(chips.querySelectorAll('[data-fam]'), function (a) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        var k = fams.indexOf(a.getAttribute('data-fam'));
+        var el = document.getElementById('fam-' + k); if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
+  }
+
   function renderMistakesBody() {
     var body = document.getElementById('mbody');
     var hasTest = CLIPS.some(function (c) { return c.split === 'TEST' && splitOk(c.split); });
@@ -542,6 +713,10 @@
         { k: 'gate', t: M.sys === 'ours' ? 'gate (VLM) at this stretch' : 'gate (VLM)', h: gateForPic }
       ]);
       mkTable(tb, 'wrong', colsw, roww);
+    } else if (M.tab === 'late') {
+      renderLate(chips, ex, tb);
+    } else if (M.tab === 'gated') {
+      renderGated(chips, ex, tb);
     } else {
       var ra = gateRowsA(), rb = gateRowsB();
       chips.innerHTML = '<p class="small muted">Gate errors are about ours only (blind has no gate). The system filter is ignored here.</p>';
@@ -589,7 +764,7 @@
   function renderMistakes() {
     var h = '<h2>Mistakes</h2><p class="lede">Every mistake, one row each. Press &#9654; to play the clip from one second before the moment. ' +
       'Click a column title to sort. Click a clip name to see the whole clip.</p>';
-    h += '<div class="subtabs">' + [['miss', 'Missed sounds'], ['wrong', 'Wrong pictures'], ['gate', 'Gate errors']].map(function (t) {
+    h += '<div class="subtabs">' + [['miss', 'Missed sounds'], ['late', 'Late or early pictures'], ['gated', 'Removed by the gate'], ['wrong', 'Wrong pictures'], ['gate', 'Gate errors']].map(function (t) {
       return '<button type="button" data-tab="' + t[0] + '" class="' + (M.tab === t[0] ? 'on' : '') + '">' + t[1] + '</button>';
     }).join('') + '</div>';
     h += '<div class="filters"><label>split' + splitSelect(M.split) + '</label><label>clip type' + catSelect(M.cat) + '</label>' +
@@ -603,6 +778,7 @@
       b.addEventListener('click', function () {
         M.tab = b.getAttribute('data-tab');
         Array.prototype.forEach.call(app.querySelectorAll('.subtabs button'), function (x) { x.className = x === b ? 'on' : ''; });
+        if (location.hash !== '#/mistakes/' + M.tab) { SKIP_ROUTE = true; location.hash = '#/mistakes/' + M.tab; }   // a link to this view, no re-render
         renderMistakesBody();
       });
     });
@@ -963,6 +1139,7 @@
       ['Viewer cost and β', 'A modelled price per clip: 4 for each missed needed sound plus β for each wrong picture, with β = 2 assumed. Lower is better. Example: 1 miss and 2 wrong pictures cost 4 + 2 × 2 = 8. No one has measured β for deaf viewers yet, so the thesis shows the whole curve over β in chapter 5 §5.5 (on TEST, ours is the cheapest for β between 0.39 and 2.56).'],
       ['DEV, TEST, Slice B', 'DEV (49 clips) was used to build and tune the system. TEST (60 clips) was only scored at the end; <em>look only, do not tune</em>. Slice B (30 AudioSet clips where speech or music covers the sound) is reported apart.'],
       ['Clip type', 'off-screen: every important sound is needed. mixed: at least one needed and one seen sound (importance 2–3). on-screen: sounds are there but none is needed. nothing to draw: no non-speech, non-music sound.'],
+      ['Early / late picture (Mistakes → Late or early pictures)', 'Where a picture of the right kind starts, compared with the sound: <em>early</em> = more than 0.5 s before the start; <em>in the window</em> = a hit; <em>late, sound still playing</em> = more than 1 s after the start but before the sound ends; <em>after the sound ended</em>. Only the window counts. A late picture counts as a miss plus a wrong picture. The Overview has a sensitivity table where “late, sound still playing” also counts.'],
       ['Miss reasons (Mistakes page)', 'Checked in this order. <em>removed by the gate</em>: blind drew it in time, ours did not. <em>timing</em>: a picture of that family overlapped the sound but started outside the window. <em>detected, not drawn</em>: the detector heard it but no picture was made. <em>never detected</em>: the detector did not hear it. These are a diagnosis for explaining, not part of the score.']
     ];
     defs.forEach(function (d) { h += '<dt>' + d[0] + '</dt><dd>' + d[1] + '</dd>'; });
@@ -971,7 +1148,10 @@
   }
 
   // ------------------------------------------------------------------ router and theme
+  var SKIP_ROUTE = false;
+  var TABS = ['miss', 'late', 'gated', 'wrong', 'gate'];
   function route() {
+    if (SKIP_ROUTE) { SKIP_ROUTE = false; return; }
     REDRAW = [];
     tip.style.display = 'none';
     var h = location.hash.replace(/^#\/?/, '');
@@ -981,7 +1161,7 @@
       var p = a.getAttribute('data-p');
       a.className = (p === page || (page === 'clip' && p === 'clips')) ? 'on' : '';
     });
-    if (page === 'mistakes') renderMistakes();
+    if (page === 'mistakes') { if (TABS.indexOf(parts[1]) >= 0) M.tab = parts[1]; renderMistakes(); }
     else if (page === 'clips') renderClips();
     else if (page === 'clip') renderClip(decodeURIComponent(parts[1] || ''), decodeURIComponent(parts.slice(2).join('/') || ''));
     else if (page === 'defs') renderDefs();
