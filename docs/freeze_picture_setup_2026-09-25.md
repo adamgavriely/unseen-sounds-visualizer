@@ -43,3 +43,38 @@ show. So the control is faithful to today's system; the page is unchanged. FINAL
     (by-eye rule-2 pass on FINAL, answers still unopened; the sealed checker file is opened now, sha256 checked)
     python benchmark/gold/score_answers.py unseal --scored <scored> \
         --arms data/work/rate_confirm_ARM_KEY_do_not_open_until_scored.json --pairs FINAL:A0 --look-arm FINAL
+
+## Amendment (panel 3, topic 2) — rules for the sealed sitting, written before any FINAL picture or answer is seen
+
+Signed by the three picture reviewers (`docs/panel3_topic2_rounds.md`, round 3). [NAME] / [NAMES] are filled in by Adam
+before he sits; nothing else changes after that.
+
+```
+Amendment, 2026-09-27 (panel 3, topic 2), written before any FINAL picture or answer is seen. Code unchanged (3995769).
+1. Rule 2. A FINAL picture is a false message if it shows as the maker an object that is not the source, its chain, the
+   RESOLVE qualifier, or a declared word, or if it shows a person for a sound outside Human sounds. Declared words —
+   general: pieces, splash, flash, smoke, sparks, dust, drops; per template: Thunder/Thunderstorm: lightning bolt, storm
+   cloud; Rain/Rain on surface: drops, window pane; Car alarm: parked car, headlights, indicator lights; Train horn:
+   locomotive; Church bell: bell, tower; Shatter/Smash: glass window, pieces. This list is closed now; nothing is added
+   after a picture is seen.
+2. The pass: by eye, by [NAME], on all 80 FINAL pictures in the sitting (1 of 81 is a burst card), arm known, Adam's
+   file unopened; the GLM OBJECT line and an OWLv2 pass over each sound's forbidden nouns are flag lists only (a
+   non-flag clears nothing); a per-picture yes/no with the object named is committed before Adam's file is opened.
+3. Report-only rows beside the primary, never replacing it: clip-cluster bootstrap over the 50 clips; the split
+   source != family (34) / source == family (47); wrong count per arm; template pictures separately.
+4. Glance: each card is shown at 384 px for 1.5 s, then hidden and never re-shown. The page shows a card for 1.5 s after
+   "Show" (as built 2026-09-25, docs/SUMMARY_2026-09-25_while_you_slept.md); its HTML sits with the sealed files and
+   is committed after scoring; the report states whether this held for every card.
+5. Disclosed: the confirm sheet counts "goat" correct for the 2 Bleat sources (Bleat sits under Sheep and Goat);
+   round 2's Sheep source did not.
+6. Additional raters, secondary: after Adam's answers are saved and before the arm key is opened, [N = 1-3: NAMES]
+   hearing raters with no pipeline knowledge and no prior sight of any picture rate the same cards on the same page;
+   reported as kappa with Adam and as a pooled rate; never a bar; Adam-only stays the primary.
+7. Display: stage6 `_opacity` fades a shown picture to alpha 0.77 at bar 0.35 over near-black; the sitting rates
+   full-opacity pictures. After the sitting is scored, alpha is set to 1 for any drawn picture (one switch, own
+   commit); the frozen TEST rows are never re-rendered; demo videos may be re-rendered and the change is stated in ch3.
+```
+
+Report-only side job (touches nothing sealed): Qwen3-Omni-30B-A3B-Instruct on the 54 picture-DEV sounds (span ±1 s),
+prompt A free, prompt B closed over the fired sub-labels + "unsure" → parent; B earns a future micro-sitting only if it
+changes the drawn noun on ≥ 5/54 sounds with 0 changes to an unfired kind (majority of the three reviewers).
