@@ -1,5 +1,8 @@
 # Beta: what it is, what values it may take, and how it should be measured
 
+> **Note 2026-09-27:** every crossing number in this file (1.37, 0.35, 4.30, 5.00) comes from the 23 Sept DEV pipeline and is
+> superseded — see ch5 §5.5 (final: 0.39 / 2.56 TEST, 0.46 / 2.33 DEV). §5's TEST stimuli become DEV stimuli for any hearing pilot.
+
 Adam, 2026-09-23: *we don't choose 1 or 2 regarding beta — we discuss it, make a graph to show that
 the significance depends on the DHH viewers, and say further study should be done. Define its limits,
 define how it should be scored.*
@@ -20,6 +23,12 @@ showing exactly when its probability of being right exceeds
 This is why beta is not a scoring detail. It sets how trigger-happy the system should be.
 
 ## 2. The admissible range, derived rather than chosen (DEV, 49 clips)
+
+> **Superseded 2026-09-27 — see ch5 (final crossings 0.39/2.56 TEST, 0.46/2.33 DEV).** The numbers in this section
+> (0.35, 1.37 [0.71, 2.19], 4.30) come from the 23 Sep DEV curve under `use_v4("59")` (8-s cap on, before amendment 21).
+> Final: ours cheaper than blind above β = 0.39 (TEST, `test_final_v33`) / 0.46 (DEV, `dev_monocap_v31`); cheaper than
+> silence below β = 2.56 (TEST) / 2.33 (DEV); the oracle line is not crossed within β ≤ 4, and 4.30 is not verified from a
+> committed file (`docs/thesis/ch5_results.md` §5.5). The text below is kept as a record.
 
 Two ends of the range are fixed by the structure of the problem, not by preference:
 
@@ -111,6 +120,10 @@ stimuli are exactly where the experimenter's own beta leaks in.
 a clip and before the number is compared with anything in section 2.
 
 ## 6. What this means for the thesis
+
+> **Superseded 2026-09-27 — see ch5 (final crossings 0.39/2.56 TEST, 0.46/2.33 DEV).** The sentence below uses the
+> stale 1.4 and 0.35. Final wording (`docs/thesis/ch5_results.md` §5.5): on TEST the gated system is the cheapest of the
+> three for β between 0.39 and 2.56 (DEV 0.46 to 2.33). The text below is kept as a record.
 
 The significance of this work is conditional, and saying so precisely is stronger than picking a
 number. The sentence is: *the gated pipeline is cheaper for a deaf viewer than showing nothing

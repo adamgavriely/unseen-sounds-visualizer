@@ -66,6 +66,10 @@ there". The metric fixes a missed sound at 4 and calls the wrong-picture cost be
     perfect detector feeding this gate loses to showing nothing. So beta is only a question on
     [0.35, 4.30].
   * The system beats silence below **beta = 1.37** (95% CI [0.71, 2.19]) on all clips.
+    [**Superseded 2026-09-27 — see ch5 (final crossings 0.39/2.56 TEST, 0.46/2.33 DEV).** The 0.35, 1.37 and 4.30 in
+    this block are the 23 Sep DEV values (8-s cap on). Final: ours cheaper than blind above β = 0.39 (TEST) / 0.46
+    (DEV) and cheaper than silence below β = 2.56 (TEST) / 2.33 (DEV); the oracle line is not crossed within β ≤ 4 and
+    4.30 is not verified from a committed file (`docs/thesis/ch5_results.md` §5.5).]
   * The project's own September rubric asserted **2.0**, which lies inside that interval -- so on
     this evidence neither "we win at beta = 2" nor "we lose at beta = 2" is established.
   * The published DHH literature does not give one number. It gives a low beta for danger sounds
