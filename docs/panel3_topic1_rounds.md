@@ -143,3 +143,99 @@ timing artefact; forecast ≤ 2 new DEV sounds). No bar from DEV oracle counts, 
 **Actions it proposes:** (1) cache PE-A-Frame on 139 + 280 clips (≤ 1 GPU-h) + Step-0 AUROC pre-check; (2) approve held-out
 download (masked filter, N = 500); (3) let E finish.
 
+---
+# Round 2
+
+## T1-a — round 2
+
+(One more DEV-49 cache read, disclosed: span lists for the six disputed sounds. No E render output read.)
+
+**(1) Counts reconciled.** T1-b's 27/33 = oracle frame-peak presence in window; T1-a's 2 = span level after AED_MIN_DUR
+0.5 s, FlexSED veto, twin rule. Of the six tier-3 adds: Cricket (weak span 0.00–0.75 at 0.25, F 0.92) and Bird
+birds_forest (weak 2.0–2.75 at 0.22, onset 1.3, F 0.71) are real; Telephone is already a shipped hit; Laughter 8.1 s,
+Gunshot 0.0 s, Explosion 2.8/5.6 s have no BEATs span ≥ 0.175 at the onset (single 0.25-s windows die at min_dur) —
+reachable only as FlexSED-only spans at bar 0.5 (tier 2; Explosion 2.8 passes PANNs 0.12, Laughter fails 0.001). **On DEV:
+E = 2 new by tier 3, ≈ 2–4 more by tier 2, none by the PANNs branch.** Forecast stands: E fails amendment 23 on cost.
+
+**(2) E-F: commit now**, before E's render is read: `E-F = D + tier 3 (0.3, 1.01, 1.0)`, a-priori grid {0.3, 0.5}. DEV
+read: promoted spans 247 → ≈ 160, same 2 tier-3 adds; PANNs branch buys nothing on DEV. Its 280 false/min decides it; do
+not expect 4.46.
+
+**(3) Pick rule: converges on T1-c's cost**, post hoc this round: C = 4 × missed + 2 × false spans per clip on the 280;
+pick = lowest C; confirm on held-out, ΔC upper 95 % CI < 0. Amendment: miss term = consequential events with **no
+same-family span overlapping** (not "no onset in window") — repeated short events make the onset jump an artefact; report
+onset-recall + onset MAE beside. E loses under either (+0.13 or ≈ +0.5 per clip). Drops the lexicographic rule.
+
+**(4) One corroborator: PE-A-Frame** if `from transformers import PeAudioFrameLevelModel` works on the login node
+(1-minute check); else Qwen2.5-Omni-7B logit yes/no, no new env. Pools: E-delta on the 280 (~48 true / ~114 false) and
+FlexSED-only [0.5, 0.8). **Go iff at the point keeping ≥ 80 % of true items, kept-false / kept-true ≤ 0.84** (p > 1/3),
+bootstrap CI written first; AUROC reported, not the gate. Then corroborator-replaces-PANNs-veto = one more CELLS entry.
+
+**(5) Held-out spec.** AudioSet-Strong eval split, new seed ≠ 11, disjoint from 280 + slice B + gold's 111; **N = 400
+sampled (~330 survive), half from clips with Speech/Music ≥ 50 % and a drawable consequential event** (≥ 100 masked events);
+N + seed before download; per-clip SD states power, doesn't raise N. Fix use_set() heldout branch + FLEX path first.
+**Primary ΔC (overlap miss) upper CI < 0**, 2000 draws seed 0, one cell; secondary recall, onset-recall, masked recall,
+false/min. DEV-49 = amendment 23, "DEV point estimate". No TEST.
+
+**Agreed:** E fails on the 280 under any cost; E-F committed now; cost C; PE-A-Frame first, gate 0.84; held-out N = 400
+stratified, ΔC primary; no synthetic mixes for selection. **Open:** PE-A-Frame import under 5.16; Adam's download yes;
+overlap vs onset miss term.
+
+## T1-b — round 2
+
+**(1) Concedes to T1-a.** Named re-run: six tier-3 adds were Cricket, Laughter, Gunshot, Explosion 5.6 s, Bird
+birds_forest, Siren mv_tornado (B 0.34998 — float16 rounding at the bar, not real). Telephone was a transcription error
+(shipped-reachable). Only Cricket and Bird are new by any bar; Laughter is killed by the shipped stack (PANNs clip peak .001;
+also weak-twin bug); Gunshot/Explosion are in T1-a's FlexSED [0.5, 0.8) bucket. E's real DEV gain ≤ 5 needed sounds (2
+new-by-bar) at ≈ 247 promoted spans (≈ 4.7/clip). **E fails amendment 23 by a wide margin**; "27/33" was oracle reach.
+
+**(2) One corroborator: PE-A-Frame, not the Omni verifier** — same shape as the FlexSED cache (plugs into near/veto code),
+cached once, no prompt, no yes-bias, threshold by AUROC on exhaustive AudioSet labels; Omni needs prompt, logit plumbing,
+thin pool, yes-bias control. Risk: local transformers 4.56.2 lacks it; cluster 5.16 may have it. Go/no-go (2 h): import in
+msproj; if absent, clone msproj + upgrade transformers only; if one clip doesn't score in 2 h, drop and report. Then T1-a's
+pre-check (AUROC ≥ 0.80, ≥ PANNs + 0.05); it replaces the PANNs veto on FlexSED-only spans as one cell.
+
+**(3) E-F withdrawn — no CELLS entry.** Stricter FlexSED keeps ~2+ false promotions/clip for 2 sounds; at ≥ 0.8 tier 3
+degenerates to cell F. Only defensible cascade = E + corroborator on the E-delta pool = (2).
+
+**(4) Adopts cost C** (post hoc, disclosed; lexicographic beside). C on overlap-matched events primary, C on onsets
+secondary; **a pick must lower both**. Paired bootstrap 2000, seed 0.
+
+**(5) Held-out spec.** eval_strong.tsv (16,997 segments), disjoint from the 280 (+40 missing), slice B (111 + 39 missing),
+every gold AudioSet id; T1-a's filter (Speech/Music ≥ 50 % + ≥ 1 drawable non-speech event); **N = 500, seed 23**, written
+before download (~400 survive). Primary ΔC (overlap) upper 95 % CI < 0 for the one picked cell + false/min ≤ shipped on the
+same clips; masked recall reported. Code first: (a) use_set() heldout branch; (b) FLEX path hard-coded; (c) a ~20-line
+selector implementing the filter; (d) cache paths keyed off use_set. Commit all four, then download.
+
+**Agreed:** E fails on cost, ≤ 2 new-by-bar on DEV; no E-F; PE-A-Frame the one corroborator, 2-h load gate + 280 AUROC
+pre-check; cost C; held-out N = 500 masked-filtered, seed 23; DEV blind = sign check; no TEST, no oracle-DEV bars, no new
+env beyond a transformers upgrade in a cloned env. **Open:** PeAudioFrameLevelModel under 5.16; C vs recall wording (takes
+C-overlap); Adam's download yes.
+
+## T1-c — round 2
+
+1. **Verifier: PE-A-Frame** (audio-LLM only if it fails). The 280's FlexSED-only-at-0.5 pool holds ~7 true in ~38 spans →
+   AUROC SE ≈ 0.15, T1-a's pre-check undecidable; E-delta pool ~48 true / ~114 false (SE ≈ 0.045). One candidate
+   definition: every span cell E raises that shipped does not show, on the 280 (expect ~55 true / ~145 false; count
+   positives before writing the bar). Screen: AUROC lower 95 % CI ≥ 0.70 and point ≥ PANNs' (drop +0.05). θ = argmin C
+   on the 280; adoption only by held-out. Bar must be a cost, not an AUROC (required rejection is pool-dependent).
+2. **E-F: yes, one CELLS entry before E's DEV render is read** (disclose its motivation is a DEV cache read). Add **E-AND**
+   a priori (promote iff FlexSED ≥ 0.3 AND PANNs ≥ 0.05): tier 3 launders FlexSED-only spans past the PANNs veto. Grid
+   {E-F 0.3, E-F 0.5, E-AND}, CPU minutes, judged by (3).
+3. **Pick rule C** (lexicographic is dominated). pick = min C = 4 × unmatched consequential events + 2 × false spans per
+   clip on the 280; label "strict pass" (also ≤ shipped false/min) or "trade pass". C by ≥ 0.5 s overlap primary, by onset
+   window secondary; **if the two disagree in sign, no pick.** E ≈ 6 false per gained event (overlap) / 2.4 (onset).
+4. **Held-out:** eval split, N = 500 (~330 survive), seed ≠ 11, disjoint, Adam's yes; **stratified 250 masked + 250
+   unfiltered random** (masked-only can't see false alarms on quiet clips). Primary ΔC upper 95 % CI < 0 over all clips;
+   secondary Δrecall (overlap) in masked stratum, Δfalse/min per stratum, masked recall not lower. Code gaps fixed first.
+5. **Reconcile:** of T1-b's six, three have FlexSED ≥ 0.8 (Laughter, Telephone, Cricket) — lost to twin absorption or PANNs
+   veto, recovered by tier 3 bypassing the veto; three are genuine weak-BEATs (Gunshot, Explosion, Bird). E's plausible DEV
+   yield 2–3 new + up to 3 rescued. Only the render is evidence, as a point estimate.
+
+**Agreed:** E as-is not an upgrade; PE-A-Frame the one corroborator; E-F (+ E-AND) before E render; stratified held-out
+N = 500; no TEST, no DEV-chosen bar, no fine-tune. **Open:** C vs lexicographic (others now accept C); verifier pool
+(E-delta vs FlexSED-only; union proposed); PE-A-Frame availability.
+
+*(Coordinator check 27 Sept: cluster env msproj has transformers 5.16.1 and `from transformers import PeAudioFrameLevelModel`
+succeeds. E-F: T1-a and T1-c yes, T1-b withdrew — not committed yet; E DEV render still unread and not yet run.)*
+

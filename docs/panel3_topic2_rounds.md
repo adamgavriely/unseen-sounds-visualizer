@@ -145,3 +145,84 @@ answers saved; (5) one-hour audio-LLM noun pilot on the 54.
 
 Sources: Matthews et al. 2006; Jain CHI 2015; Findlater CHI 2019; DCMP Captioning Key.
 
+---
+# Round 2
+
+## T2-b — round 2
+
+(1) **Concedes the closed-question arm** (ceiling ≈ 5/172, still costs a sitting). One report-only job: **Qwen3-Omni-30B-
+A3B-Captioner** on the 54 picture-DEV sound spans ±1 s, 0 Adam, ~1 GPU-h; pre-written counts: main noun = fired source /
+unfired sibling / off-ontology, + which of the 5 text-fixable misses would change under the guard. Thesis paragraph +
+future work only. Frames: ≤ 2-word qualifier only (all agree).
+(2) **Opacity fix confirmed display-only.** `_opacity` stage6 l.695–698, applied l.751 (`img.putalpha`, picture cell) and
+l.729 (chip mode); confidence = detector framewise max (stage4 l.121) → alpha 0.77 at 0.35 over base (16,18,24), white →
+~grey 200. Sealed sitting never uses this path (`rating_screen.py` l.48–61 loads `{arm}/{i:02d}.png` → RGB → 384 px). Fix:
+`CONFIDENCE_FADE = False` in config.py gating l.751. Caveat: the closed TEST panels the Gemma judge saw had the fade — apply
+after the confirmation is scored, never re-render/re-score, disclose in ch3.
+(3) **Drops the forced-choice picture+word arm**; disclosed display decision (SHOW_LABELS False, config l.156); limitation
+line as T2-c; forced-choice design → future work.
+(4) **Second raters: converges on T2-c** — one naive rater after Adam's file is saved, arm key closed, κ, never a gate; two
+if available.
+(5) **Adopts rule-2 sentence** (surface/effect word list declared per template before the seal opens; no-person corollary)
+**and OWLv2 flag pass** (flag list only, declared before, run after save, sanity cases; non-flag clears nothing).
+**Agreed:** frozen setup untouched until scored; frames = qualifier; one Captioner count job; picture+word = display
+decision; one naive rater after save; rule-2 sentence + OWLv2 flags; opacity fix post-scoring, disclosed.
+**Open:** (a) opacity applied before submission (demo renders) or limitation; (b) 1.5-s hide / no re-reveal enforcement
+unverified in repo — coordinator to confirm from the artifact source before Adam sits; (c) "+22 pts not clean" wording.
+
+## T2-a — round 2
+
+(1) One report-only job: **Qwen3-Omni-30B-A3B-Instruct** (audio + text; Captioner dropped — no prompt), 54 picture-DEV
+spans ±1 s, two prompts: (A) free "what is making this sound?" → main noun fired source / unfired sibling / off-ontology;
+(B) closed question over the sound's fired list (subjects_V31.json, picture_bench.py l.222) + "unsure" → parent. First count
+how many of the 54 have > 1 fired sub-label; if ≈ 0, (B) is moot. Targets: phone bell P166, siren P089, train horn P072 +
+bare-family sounds (Thunk now a card). Future-work bar: (B) earns an Adam micro-sitting only if it changes the drawn noun on
+≥ 3 pre-listed sounds with zero names_forbidden hits.
+(2) `_opacity`: judge reads image_path PNGs (judge_direct.py l.82); sitting rates JPEGs from PNGs (rating_screen.py l.61);
+nothing scored consumes the composited panel → alpha = 1 touches nothing scored; one switch, own commit, pictures
+byte-identical to freeze commit 3995769. Demo videos were rendered faded → thesis footnote; re-render demos only.
+(3) Picture + word = disclosed display decision, not scored; if deployed, state the confound (picture + word vs word).
+(4) Adopt T2-c's pre-sitting items with fixes: declared-word list must cover template nouns (window pane, storm cloud,
+tower, locomotive, headlights); wrong-per-arm reported, not gated; cluster bootstrap + source≠family = sensitivity rows;
+glance hide lives in the built artifact page → export/commit that HTML. Post-sitting: second naive rater(s) by amendment
+written now; OWLv2 flag pass yes (flag list for a human pass adopts nothing).
+(5) HiDream-O1 after submission.
+**Agreed:** frames never condition a picture; no free audio-LLM text in prompts; frozen setup untouched; picture + word =
+display decision; no new checker; second naive rater; HiDream after submission; alpha = 1 disclosed. **Open:** (B)'s
+population; who the raters are; who closes the declared-word list.
+
+## T2-c — round 2
+
+Confirmed opacity finding (stage6 l.695–753) and ledger negative (l.61). (1) One job, **Qwen3-Omni Instruct**, 54 sounds,
+span ±1 s, 0 Adam, no picture; counts: (i) free caption main noun = fired source / family / unfired sibling / off-ontology;
+(ii) closed question over fired sub-labels: agreement with choose_source + how many of the ~5 misses change. Bar for "worth a
+future round": closed question changes ≥ 5/54 sources and 0 to an unfired kind. "≤ 5/172" is post hoc (upper bound in that
+sample); closed question = second attempt at the 09-15 negative, reported as such. (2) Alpha = 1 legitimate and needed;
+compositing is downstream of the frozen setup; disclose it was a deliberate confidence channel, list pictures it touched;
+Gemma rows + demos saw grey cards — state, don't re-render TEST; commit after the sitting is scored. (3) Raters: amendment
+written now, raters act after Adam's file is saved and before the arm key opens; Adam-only primary; naive raters; template
+pictures reported split. (4) Annotator 2 as one of the raters (gold first if time competes). (5) Draft amendment for
+docs/freeze_picture_setup_2026-09-25.md:
+
+    Amendment, 2026-09-27 (panel 3, topic 2), before any FINAL picture or answer is seen.
+    1. Rule 2: a FINAL picture is a false message if it shows as the maker an object that is not the source, its chain,
+       the RESOLVE qualifier, or a declared surface/effect word (window pane, gravel, pieces, splash, flash, smoke, drops),
+       or a person outside Human sounds. Applied by eye by [name] to all 80 FINAL pictures in the sitting (1 of 81 is a
+       burst card), arm known, Adam's file unopened; the GLM OBJECT line is a flag list only — a non-flag clears nothing; a
+       per-picture yes/no with the object named is committed before the file is opened.
+    2. Sensitivities, reported beside the primary and never replacing it: clip-cluster bootstrap over the 50 clips; the
+       split source != family (34) / source == family (47); wrong count per arm.
+    3. Glance: each card is shown at 384 px for 1.5 s, then hidden and not shown again; the report states whether this
+       held for every card.
+    4. Disclosed: the confirm sheet counts "goat" correct for the 2 Bleat sources; round 2's Sheep source did not.
+    5. Additional raters, secondary: after Adam's answers are saved and before the arm key opens, N = [1-3, names] hearing
+       raters with no pipeline knowledge rate the same cards on the same page; kappa with Adam and pooled; never a bar;
+       Adam-only stays the primary; template pictures reported split.
+    6. Display: stage6 `_opacity` fades a shown picture to alpha 0.77 at bar 0.35 over near-black; the sitting rates
+       full-opacity pictures. Alpha is set to 1 for any drawn picture after the sitting is scored (disclosed display
+       change); the frozen TEST judge rows and demos stay as rendered.
+
+**Agreed:** frames = qualifier only; no audio-conditioned generator; no free audio-LLM text; one Omni job; alpha = 1 after
+scoring; raters by amendment now, secondary; annotator 2 among them; nothing touches the sealed sitting; HiDream after.
+**Open:** who does the by-eye rule-2 pass; rater count/names; Omni job before or after the sitting.
+
