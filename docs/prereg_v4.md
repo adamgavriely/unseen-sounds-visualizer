@@ -2074,3 +2074,13 @@ keeps ≥ 80 % of true items" is read as **the operating point at the 80 % recal
 round 3: "at the operating point keeping ≥ 80 % of true items"). The script is `benchmark/detector_round2.py`
 (steps `screen`, `fit`, `heldout`), committed with this line. Every cell is scored on the clips that have all four caches
 (BEATs, FlexSED, PANNs, PE-A-Frame).
+
+### Amendment 23 — result (2026-09-27; DEV-49 blind arms, `score_per_sound.py --subsets dev`, base env checked in `[v4]` lines)
+
+    blind arm                    hits  miss  wrong pictures (visible / cross / phantom)   viewer cost β=2   P     R     F1
+    shipped  dev_monocap_v31      17    19     50  (17 / 21 / 12)                           3.59           0.25  0.47  0.33
+    cascade E dev_fbar05cl_v35    17    19     80  (25 / 35 / 20)                           4.82           0.18  0.47  0.26
+**Fail on both parts of the rule:** no added hit (17 vs ≥ 19 required) and 30 more wrong pictures (cost 4.82 vs ≤ 3.59).
+The recall gain cell E showed on the 280 (onset-recall 25 → 46 %) does not reach a single needed DEV sound; it matches
+the panel's forecast (≈ 2 new sounds at most, most of the 280's gain was earlier starts on sounds already found). Cell E
+is not adopted. Amendment 24 (committed before this number) is unaffected.
