@@ -2010,3 +2010,60 @@ information, the β at which E and shipped cross, and every added hit and added 
 **detector upgrade on DEV + AudioSet-280 (fit set), not confirmed on held-out data or TEST**, beside the frozen system;
 a held-out AudioSet-Strong confirmation (Stage A of amendment 22) is then required before any stronger wording, and needs
 Adam's approval to download. Fail → reported as a negative. TEST is not touched either way.
+
+## Amendment 24 — detector round 2: a new corroborator, a cost rule, a held-out set of complex scenes (2026-09-27, written before any number; TEST is not touched)
+
+Source: the three-reviewer detection panel (`docs/panel3_topic1_rounds.md`, rounds 1–3, signed by all three). Adam's
+direction (27 Sept): "do anything you can to improve the detector — we want complex-situation audio, not clean audio";
+his yes to a new AudioSet-Strong download was given the same day.
+
+**Why.** Amendment 22 showed the recall is in the caches but every route to it pays ≈ 2.4 false spans per gained onset
+(≈ 6 per gained event) on the 280, above the 2.0 break-even at β = 2; the masked sounds are heard only by FlexSED, and
+every corroborator tried (BEATs, PANNs, CLAP, PSED, AST, CED) is deaf there. One public-weights model not yet tried is a
+text-queried frame-level detector with an encoder independent of FlexSED's: **PE-A-Frame** (`facebook/pe-a-frame-large`,
+Apache-2.0, PE-AV arXiv 2512.19687; `transformers.PeAudioFrameLevelModel`, imports in env msproj, transformers 5.16.1).
+Its cache: the 215 depictable families (`benchmark/gold/depictable_vocab.json`), query "The sound of {family}" (FlexSED's
+wording), 48 kHz mono, one score per 40 ms (sigmoid of the model's own logit scale and bias), stored as FlexSED's npz
+(`fw` [labels, T], `labels`, `fps` 25). Nothing in the cache is chosen from gold.
+
+**Cells, fixed a priori** (stage-4 logic from caches, `benchmark/detector_round_stage0.py`):
+shipped; F (twin fix); E (amendment 22: FlexSED bar 0.5 + tier 2 + tier 3); **E-F** as E, with tier 3 = (0.3, 1.01,
+1.0) and (0.5, 1.01, 1.0), i.e. FlexSED-only corroboration; **E-AND** as E, with tier 3 = FlexSED ≥ 0.3 **and** PANNs ≥
+0.05 within 1 s (closes tier 3's bypass of the PANNs veto);
+**D+PE** FlexSED bar 0.5, PE-A-Frame ≥ θ within 1 s replaces the PANNs veto on FlexSED-only spans; **E+PE** as D+PE plus
+PE-A-Frame ≥ θ as the tier-3 corroborator instead of FlexSED/PANNs; **U+PE** shipped stack plus PE-A-Frame spans at bar
+θ_u (a third detector) kept only if FlexSED ≥ 0.3 for the same family within 1 s — **U+PE was added by the coordinator,
+not proposed by a reviewer** (disclosed; multiplicity is still one cell to held-out). **Grid for θ and θ_u:** PE-A-Frame's
+score is sigmoid(logit × learned scale + learned bias), so its scale is unknown; the grid is the 50/80/90/95/99th
+percentiles of all per-frame, per-family scores over the 280, computed once from the cache and written to the log before
+any cell is scored.
+
+**Screen for PE-A-Frame** (before any PE cell is scored): on the 280's E-delta pool (spans cell E raises that shipped does
+not show; positives counted and written into the log before scoring) — AUROC of PE-A-Frame's same-family peak within 1 s
+reported with a 2000-draw bootstrap CI beside PANNs' on the same spans; at the loosest grid θ (percentile grid above) that keeps ≥ 80 % of true
+items, kept-false/kept-true ≤ 0.84 (p > 1/3). Fail → no PE cell is scored; reported as a negative.
+
+**Pick (fit set = the 280, called a fit set, not out-of-sample).** Per clip C = 4 × consequential events with no
+same-family span overlapping (≥ 0.5 s or half the event) + 2 × false spans; C-onset the same with the [−0.5, +1.0] s onset
+window. θ / θ_u per PE cell = argmin C-overlap on the 280. **The pick is the one cell with the lowest mean C-overlap that
+also has C-onset below shipped's; none → the round ends and the negative is written.** Each cell is labelled "strict
+pass" (false spans/min also ≤ shipped) or "trade pass". Only the pick goes on (multiplicity: one cell reaches held-out).
+
+**Held-out set (new, disjoint).** AudioSet-Strong evaluation split (`audioset_eval_strong.tsv`), seed 23, disjoint from
+the 280 (+ their 40 missing), slice B (111 + 39 missing) and every gold clip whose name is an AudioSet segment id (73 in
+gold_AG.json, 4 of them outside slice B's list). **N = 500 requested: 300 complex + 200 random.** The panel signed
+250 + 250; the coordinator moved it to 300 + 200 on Adam's direction of 27 Sept (complex scenes); the random part stays
+because false alarms on quiet clips are part of C. Complex = Speech or Music covers ≥ 50 % of the clip **and** at least one labelled non-speech, non-music event lies ≥ half
+under Speech/Music (masked). The id list is written to `benchmark/gold/audioset_heldout.json` by
+`benchmark/gold/audioset_heldout.py --dry` and committed before any download. Caches: BEATs, PANNs, FlexSED, PE-A-Frame,
+same code as the 280.
+
+**Held-out test.** The pick passes iff the paired clip bootstrap of ΔC-overlap (pick − shipped), 2000 draws, seed 0, over
+all held-out clips has **upper 95 % CI < 0**. Reported beside (no gate): ΔC-onset, Δ consequential recall, Δ onset-recall,
+Δ masked recall, Δ false spans/min — each per stratum (complex / random) — and the β at which the pick crosses shipped.
+
+**Then.** Pass → DEV-49 render of the pick, both arms, H200, base env, amendment 23's rule as a sign check, reported as
+"detector upgrade beside the frozen system, DEV point estimate, not confirmed on TEST"; the amendment-21 TEST table stands.
+Fail → the thesis reports the exchange rate on the 280 and held-out as the detector ceiling. Cell E's amendment-23 DEV
+render runs anyway and is reported as its own question. No TEST number; no bar from DEV scores; this rule is not revised
+after a number is seen.
