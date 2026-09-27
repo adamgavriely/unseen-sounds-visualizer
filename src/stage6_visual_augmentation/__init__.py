@@ -695,6 +695,8 @@ def _timeline(specs: List[AugmentationSpec], duration: float, extra_bounds=()):
 def _opacity(confidence: float) -> float:
     """Confidence -> visual weight: faint sounds render translucent, strong ones
     solid (evidence: SoundVizVR loudness encoding / Fortnite distance-as-opacity)."""
+    if not getattr(config, "CONFIDENCE_FADE", True):
+        return 1.0
     return 0.45 + 0.55 * max(0.0, min(1.0, confidence / 0.6))
 
 

@@ -2164,3 +2164,15 @@ says yes to most false ones too. **Gate failed (lower bound 0.525 < 0.70): no li
 unread, and the detector question is closed** as written. Thesis reading: at the training-free frontier, neither a second
 text-queried detector (PE-A-Frame) nor an audio LLM separates the masked true sounds from the false candidates well enough to
 pay at β = 2; the shipped stack stays.
+
+## 2026-09-28 — shipped picture model and a TEST inspection (Adam's decisions)
+
+1. **Qwen-Image is the shipped picture model; FLUX is retired** (Adam, 28 Sept: "qwen is confirmed, use qwen, remove flux").
+   `config.use_shipped()` now = the scored stack (`use_scored()`, what the amendment-21 table ran) + the frozen final
+   picture setup (`use_final_pictures(2)`) + full-opacity pictures. The per-sound tables do not look at pictures, so no
+   scored number changes. Disclosed: the picture claim still rests on the author-rater round 2 (Qwen-Image 26/54 vs FLUX
+   14/54, one wrong object); the sealed confirmation sitting stays available as the clean check.
+2. **TEST exposure 11: inspection.** Adam asked for a viewer ("inspector") that shows every clip, sound and picture of every
+   set we measure on, TEST included, with pooled DEV + TEST numbers. It re-presents existing renders and scores; nothing is
+   re-rendered for scoring and no setting is chosen from it. From here on, anything changed after looking at TEST mistakes
+   is reported as tuned on TEST.

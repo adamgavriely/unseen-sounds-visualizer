@@ -154,6 +154,9 @@ RENDER_MODE = "full"
 # "indoors" over an outdoor street.
 DEPICTION_REASONING = True
 SHOW_LABELS = False
+# Pictures fade with detector confidence (alpha 0.45-1.0). use_shipped() switches it off: every shown picture is
+# drawn at full opacity, as the glance test rated it (panel 3, topic 2).
+CONFIDENCE_FADE = True
 # Print the generator's prompt under each picture. Debugging only -- it is how a bad
 # picture gets traced to the words that produced it. Off for anything a viewer sees.
 SHOW_PROMPT = False
@@ -343,13 +346,12 @@ def use_v4(stages: str = "23456") -> dict:
     return changed
 
 
-def use_shipped() -> dict:
-    """The thesis system in one call (the defaults above stay v3 so that v3 remains reproducible).
-
-    Exactly what the final TEST table (amendment 21, tag test_final_v33) ran with: slurm/job_protocol.sh
+def use_scored() -> dict:
+    """Exactly what the final TEST table (amendment 21, tag test_final_v33) ran with: slurm/job_protocol.sh
     sets VIDEO_BACKEND owlv2, then V4=590, FBAR=0.8, VETO=0.3, PVETO=0.05, MONO=1, MAXSPAN=none. Stage "9"
     sets MAX_SPAN 8.0, so the cap is switched off AFTER use_v4; ONSET_CAM stays on (the onset clamp needs the
-    refinement step). Pictures stay FLUX.1-schnell, as rendered in every scored row."""
+    refinement step). Pictures FLUX.1-schnell, as rendered in every scored row (the per-sound metric does not look at
+    the picture, so the scored numbers hold for either generator)."""
     import sys
     me = sys.modules[__name__]
     changed = use_v4("590")
@@ -357,6 +359,19 @@ def use_shipped() -> dict:
                  ("ONSET_MONOTONE", True), ("ONSET_CAM", True), ("MAX_SPAN", None)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
+    return changed
+
+
+def use_shipped() -> dict:
+    """The shipped system (Adam, 28 Sept 2026: Qwen-Image is the picture model; FLUX is retired): the scored stack
+    (use_scored) with the frozen final picture setup -- Qwen-Image-2512, V3.1 subject with guard 2, templates, cards,
+    rules tail -- and pictures shown at full opacity (CONFIDENCE_FADE off: the glance test rated full-opacity pictures)."""
+    import sys
+    me = sys.modules[__name__]
+    changed = use_scored()
+    changed.update(use_final_pictures(2))
+    changed["CONFIDENCE_FADE"] = (getattr(me, "CONFIDENCE_FADE", True), False)
+    setattr(me, "CONFIDENCE_FADE", False)
     return changed
 
 
