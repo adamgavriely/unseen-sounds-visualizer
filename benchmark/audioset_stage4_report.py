@@ -31,9 +31,19 @@ from benchmark import audioset_detector_eval as E
 from src.labels import canonical, is_salient_nonspeech, is_music
 from src.stage4_audio_event_detection import _extract_events, _infer
 
-E.use_set("calib")
-FLEX = _ROOT / "data" / "work" / "flexsed_calib"
-PANNS = E.WIN / "panns"
+FLEX = PANNS = PEF = None
+
+
+def use_set(name: str):
+    """all cache paths follow the set: 'calib' (the 280) or 'heldout' (amendment 24)"""
+    global FLEX, PANNS, PEF
+    E.use_set(name)
+    FLEX = _ROOT / "data" / "work" / f"flexsed_{name}"
+    PANNS = E.WIN / "panns"
+    PEF = E.WIN / "pe_frame"
+
+
+use_set("calib")
 OUT = _ROOT / "benchmark" / "audioset_stage4_report.json"
 EARLY, LATE = 0.5, 1.0
 
@@ -129,7 +139,7 @@ def main():
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
     if a.set != "calib":
-        E.use_set(a.set)
+        use_set(a.set)
     panns_cache(a.device)
     cl = [c for c in E.clips() if (FLEX / f"{c['id']}.npz").exists() and (E.WIN / "beats" / f"{c['id']}.npz").exists()]
     per = {}

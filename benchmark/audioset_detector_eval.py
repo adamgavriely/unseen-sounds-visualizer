@@ -38,18 +38,26 @@ WIN = _ROOT / "benchmark" / "audioset_windows"
 
 
 def use_set(name: str):
-    """switch the module to another AudioSet-Strong set: 'sliceB' (default) or 'calib'"""
+    """switch the module to another AudioSet-Strong set: 'sliceB' (default), 'calib' (the 280) or 'heldout'
+    (amendment 24's new set). An unknown name is an error, never a silent fall-back to slice B."""
     global SLICE, VIDEOS, WIN, OUT
-    if name == "calib":
+    if name == "heldout":
+        SLICE = _ROOT / "benchmark" / "gold" / "audioset_heldout.json"
+        VIDEOS = _ROOT / "data" / "input" / "audioset_heldout"
+        WIN = _ROOT / "benchmark" / "audioset_heldout_windows"
+        OUT = _ROOT / "benchmark" / "audioset_heldout_eval.json"
+    elif name == "calib":
         SLICE = _ROOT / "benchmark" / "gold" / "audioset_calib.json"
         VIDEOS = _ROOT / "data" / "input" / "audioset_calib"
         WIN = _ROOT / "benchmark" / "audioset_calib_windows"
         OUT = _ROOT / "benchmark" / "audioset_calib_eval.json"
-    else:
+    elif name == "sliceB":
         SLICE = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
         VIDEOS = _ROOT / "data" / "input" / "audioset_strong"
         WIN = _ROOT / "benchmark" / "audioset_windows"
         OUT = _ROOT / "benchmark" / "audioset_detector_eval.json"
+    else:
+        raise ValueError(f"unknown AudioSet set {name!r}")
 OUT = _ROOT / "benchmark" / "audioset_detector_eval.json"
 BAR = 0.35            # config.DISPLAY_THRESHOLD; FLAM-v2 is rescaled to it, PSED's bar is its DCASE-chosen one
 MIN_DUR = 0.5
@@ -164,7 +172,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cache", choices=("beats", "psed", "flam"))
     ap.add_argument("--eval", action="store_true")
-    ap.add_argument("--set", choices=("sliceB", "calib"), default="sliceB")
+    ap.add_argument("--set", choices=("sliceB", "calib", "heldout"), default="sliceB")
     a = ap.parse_args()
     use_set(a.set)
     if a.cache: cache(a.cache)
