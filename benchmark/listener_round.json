@@ -1,0 +1,15 @@
+{
+ "screen": {
+  "n_hit": 14,
+  "n_false": 96,
+  "auroc_listener": 0.6610863095238095,
+  "ci": [
+   0.5254037981015857,
+   0.7837695133149677
+  ],
+  "auroc_panns": 0.5744047619047619,
+  "yes_rate_true_family": 0.8364485981308412,
+  "yes_rate_absent_family": 0.07476635514018691,
+  "pass": false
+ }
+}

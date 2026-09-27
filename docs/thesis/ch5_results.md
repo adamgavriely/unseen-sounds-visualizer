@@ -217,7 +217,7 @@ for itself only at two false spans or fewer. The new text-queried detector with 
 screen only because the pool was already near the bar before filtering.
 
 **Amendment 25 (an audio "listener", Qwen3-Omni, as a per-candidate verifier; hard AUROC gate: lower 95 % bound ≥ 0.70
-and above PANNs).** **[amendment 25 result]**
+and above PANNs).** **Amendment 25 (the last detector question): an audio LLM (Qwen3-Omni-30B-A3B-Instruct) asked "is the sound of X present?" about each candidate span. It is a sane listener (yes to 84 % of asked families, 7 % of families absent from the clip), but on the 280's uncertain candidates it separates real needed sounds from false ones only weakly: AUROC 0.661 [0.525, 0.784] (14 hit / 96 false spans; PANNs 0.574). The pre-written gate (lower bound ≥ 0.70) failed, so nothing was scored on the held-out set and the shipped detector stays.**
 
 **Reading.** The shipped stack sits at the cost optimum of every training-free stack tried. Extra recall costs more false
 spans than β = 2 allows, and the missing sounds are those masked under speech or music, which closed-set taggers cannot

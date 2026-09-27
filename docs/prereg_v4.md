@@ -2154,3 +2154,13 @@ This is the last detector question before submission; the rule is not revised af
 **Amendment 25 — pool counts (written before any listener score):** the 280 give 214 candidate spans (union of the spans E
 and E-AND add over shipped): **14 hit, 96 false, 104 neutral**. With 14 positives the AUROC interval is wide; the gate
 (lower bound ≥ 0.70) stands as written.
+
+### Amendment 25 — result (2026-09-27; `benchmark/listener_round.py screen` → `listener_round.json`, `listener_pool_calib.json`)
+
+Load gate met (model loaded in 18 min; 10 windows in 1070 s wall < 7200 s). On the 280's pool (14 hit / 96 false spans):
+listener AUROC **0.661 [0.525, 0.784]**, PANNs 0.574 on the same spans. The listener is a sane model — it says yes to 84 %
+of the asked families and to only 7 % of families absent from the clip — but on the candidates the stack is unsure about it
+says yes to most false ones too. **Gate failed (lower bound 0.525 < 0.70): no listener cell is scored, the held-out set stays
+unread, and the detector question is closed** as written. Thesis reading: at the training-free frontier, neither a second
+text-queried detector (PE-A-Frame) nor an audio LLM separates the masked true sounds from the false candidates well enough to
+pay at β = 2; the shipped stack stays.
