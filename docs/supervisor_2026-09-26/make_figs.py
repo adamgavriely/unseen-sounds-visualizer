@@ -52,7 +52,7 @@ for j, (sys_, col, lab) in enumerate((("proposed", OURS, "ours"), ("blind_a2i", 
 ax.set_xticks(range(len(cats))); ax.set_xticklabels([f"{n}\n({t['categories'][c]['clips']} clips)" for c, n in cats])
 ax.set_ylabel("viewer cost per clip (lower = better)")
 ax.legend(frameon=False, ncol=3, loc="lower left", bbox_to_anchor=(0, 1.0)); ax.set_ylim(0, 9)
-ax.set_title("TEST: where the system pays off", loc="left", color=INK, fontsize=12, pad=28)
+ax.set_title("TEST: cost per clip by kind of clip (lower is better)", loc="left", color=INK, fontsize=12, pad=28)
 save(fig, "cost_by_category.png")
 
 # 3. pictures: blind human recognition, round 2 (54 sounds, fresh clips)
