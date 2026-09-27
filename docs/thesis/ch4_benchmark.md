@@ -61,8 +61,9 @@ box on a wall is not visibly ringing; a source seen for only part of the sound i
 it); **obvious**, meaning that with the sound off a viewer would still know the sound is happening now; and
 **importance** 1–3.
 
-**Needed.** A sound is *needed* when it is neither visible nor obvious. This is the captioners' rule: a sound needs
-a picture only if the video does not already show that it is happening.
+**Needed.** A sound is *needed* when it is neither visible nor obvious. This extends a captioning practice
+(Chapter 2 §2.1) to whole sounds: a sound needs a picture only if the video does not already show that it is
+happening.
 
 **Importance (rule of 22 Sept 2026,** declared before the gold re-run; `docs/metric_per_sound.md`). Importance is a
 property of the sound, not of the screen: the annotator rates it **as if the screen were black**. **1** = the steady
@@ -202,20 +203,12 @@ provisional. The evaluation panel's minimal release (`docs/panel3_topic3_rounds.
 8. a metric card (collar, β range) and a data card (category counts, licences), with a version tag and the task
    name.
 
+**Before any release:** 28 benchmark clips have no source record yet (§4.1), and each must be traced to its source
+and licence before the benchmark is released.
+
 **v2 needs** at least 300 clips, at least two annotators, a β measured with DHH viewers, and a sealed held-out split
 with a script that scores a submission folder (T3-a, T3-b).
 
 ## References
 
-Alonzo, O., Shin, H. V., & Li, D. (2022). Beyond Subtitles: Captioning and visualizing non-speech sounds to
-improve accessibility of user-generated videos. In *Proceedings of ASSETS 2022*. https://doi.org/10.1145/3517428.3544808
-
-Hershey, S., Ellis, D. P. W., Fonseca, E., Jansen, A., Liu, C., Moore, R. C., & Plakal, M. (2021). The benefit of
-temporally-strong labels in audio event classification. In *Proceedings of ICASSP 2021*. arXiv:2105.07031
-
-Jain, D., Ngo, H., Patel, P., Goodman, S., Findlater, L., & Froehlich, J. (2020). SoundWatch: Exploring
-smartwatch-based deep learning approaches to support sound awareness for deaf and hard of hearing users. In
-*Proceedings of ASSETS 2020*. https://doi.org/10.1145/3373625.3416991
-
-Mesaros, A., Heittola, T., & Virtanen, T. (2016). Metrics for polyphonic sound event detection. *Applied
-Sciences, 6*(6), 162.
+All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.

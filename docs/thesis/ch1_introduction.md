@@ -12,22 +12,23 @@ even though nothing in the picture changes. A deaf or hard-of-hearing (DHH) view
 viewer, a sound whose source is not visible is simply lost.
 
 The usual tool for this gap is captions. Subtitles for the deaf and hard of hearing (SDH) write sounds in words,
-for example "[siren wailing]". Captions carry speech well, but they carry non-speech sound poorly. Most non-speech
-sounds on YouTube are not captioned at all, and background and environmental sounds are the least covered group
-(May et al., 2024). When a sound is captioned, the short label often loses what the sound means for the scene.
-An EEG study found that captions of non-verbal sounds tend to cause extra attention work rather than an emotional
-response (Gerber-Morón et al., 2020). In a study with 168 DHH participants, users asked for more than a label. They
-wanted the sound's emotional tone, where it comes from, and why it matters to the story, and above all they
-wanted choice (May et al., 2025).
+for example "[siren wailing]". Captions carry speech well, but they carry non-speech sound poorly. In a large
+sample of YouTube videos, only 5–7 % had any hand-written non-speech caption beyond the few tags that automatic
+captioning adds, and environmental sounds were captioned in only 2–3 % of videos (May et al., 2024). When a sound is
+captioned, the short label often loses what the sound means for the scene. An EEG study found that sounds caused
+more emotional reactions than their text captions, and that captions of music raised attention work rather than
+emotional processing (Revuelta et al., 2020). In a survey of 168 DHH participants, viewers asked for more than a
+label. Many wanted the type and timing of a sound, and sounds that matter to the story or set its mood. Above all
+they wanted choice, because their needs differed (May et al., 2025).
 
-Pictures are one way to carry this information. Prior work shows that DHH users can read sound icons and graphics
-quickly. In Beyond Subtitles, DHH viewers asked for the *important* non-speech sounds to be shown, and noted that
-graphics are evocative but can be ambiguous or distracting (Alonzo et al., 2022). Sound-awareness
-systems such as SoundWatch show that users want to filter sounds by importance, not see every sound (Jain et al.,
-2020; Findlater et al., 2019). Users judge any added visual first on readability and low distraction (de Lacerda
-Pataca et al., 2024). Sound words such as "swish" do not work for everyone, because a person who has never heard
-the sound cannot decode the word (CapTune, 2025). A picture of the thing that makes the sound needs no knowledge of
-how it sounds.
+Pictures are one way to carry this information. In Beyond Subtitles, DHH viewers asked for the *important*
+non-speech sounds to be included, and discussed when text or a graphic suits a sound (Alonzo et al., 2022).
+Sound-awareness studies show that DHH users care most about some sounds (urgent and safety sounds first) and want
+to choose which sounds they are alerted to (Findlater et al., 2019; Jain et al., 2020). In a study of styled
+captions, DHH users named readability and minimal distraction among the key reasons for their choices (de Lacerda
+Pataca et al., 2024). Sound words (onomatopoeia such as "swish") do not suit everyone: in the CapTune study,
+preferences for them varied, and a Deaf participant noted that their phonetic side may not be understood (Huang
+et al., 2025). A picture of the thing that makes the sound needs no knowledge of how it sounds.
 
 This thesis asks whether such pictures can be chosen and shown **automatically**, for recorded video, without any
 model training.
@@ -38,13 +39,14 @@ A picture beside the video costs the viewer attention. A picture of a sound whos
 no information: the viewer can see the dog that barks. So the system should show a picture only when the picture
 tells the viewer something new.
 
-Professional captioners already follow this rule by hand. The DCMP Captioning Key asks captioners to name the source
-of a sound effect unless the source is clearly seen on screen, and not to caption a sound that the viewer can infer
-from the picture (DCMP, n.d.). The visibility gate in this thesis automates that editorial rule. It is the one
-design choice that makes this task different from "turn every sound into a picture". Audio-to-image systems such
-as Sound2Scene (Sung-Bin et al., 2023) draw what they hear and never look at the video. Sound-source localisation
-work asks *where* in the frame a sound comes from (Senocak et al., 2023), which assumes that the source is visible.
-Our question is the opposite one: is the source missing from the frame?
+Professional captioners already use a similar judgement by hand. The DCMP Captioning Key asks captioners to include
+the source of a sound effect, but says that the source may be left out when it can be clearly seen on screen. It
+also asks them to caption background sound effects only when they are essential to the plot (DCMP, n.d.). The
+visibility gate in this thesis automates a similar editorial judgement: what the picture already shows need not be
+repeated. It is the one design choice that makes this task different from "turn every sound into a picture".
+Audio-to-image systems such as Sound2Scene (Sung-Bin et al., 2023) draw what they hear and never look at the video.
+Sound-source localisation work mostly asks *where* in the frame a sound comes from, and its tests mainly use sources
+that are visible (Juanola et al., 2025a). Our question is the opposite one: is the source missing from the frame?
 
 ## 1.3 The task: off-screen sound visualisation
 
@@ -67,8 +69,8 @@ thesis where it is answered, and says how fully.
 
 | # | research question (proposal) | short answer | where |
 |---|---|---|---|
-| RQ1 | Which types of audio information contribute most to scene understanding when presented visually? | Answered as a design rule, not by viewers. A sound is *needed* when it matters (importance 2 or 3: an event you can say in one sentence, or danger or a key moment), and its source is neither visible nor obvious. The steady noise of a place (importance 1) is not scored. Whether viewers agree is untested. | Ch. 4; §5.6; Ch. 6 |
-| RQ2 | What level of semantic granularity should be used? | A picture counts when it shows the right sound *family* (for example any dog sound for a bark); root-level words such as "sound" or "vehicle" never count. Pictures name the specific source. In an author-rater glance test, a newer generator was recognised 26 of 54 times against 14 of 54. | §3.2; Ch. 4; §5.11 |
+| RQ1 | Which types of audio information contribute most to scene understanding when presented visually? | Answered as a design rule, not by viewers. A sound is *needed* when its source is neither visible nor obvious; a needed sound is scored when it matters (importance 2 or 3: an event you can say in one sentence, or danger or a key moment). The steady noise of a place (importance 1) is not scored. Whether viewers agree is untested. | Ch. 4; §5.6; Ch. 6 |
+| RQ2 | What level of semantic granularity should be used? | A picture counts when it shows the right sound *family* (for example any dog sound for a bark); top-level categories such as "Sounds of things" or "Animal" never count, while broad families such as Vehicle or Water do (§4.6). Pictures name the specific source. In an author-rater glance test, a newer generator was recognised 26 of 54 times against 14 of 54. | §3.2; Ch. 4; §5.11 |
 | RQ3 | Can generated visual augmentations improve accessibility beyond subtitles? | **Not answered.** No DHH viewer has used the system. The study that would answer it is designed, not run. The automatic judge scores pictures and text tags alike, and it cannot tell them apart. | §5.10; §5.14; Ch. 6 |
 | RQ4 | How should such systems be evaluated? | Per sound, against human labels, with an onset window; a modelled viewer cost over a range of prices for a wrong picture; rules written before each run. The proposal's automatic protocol (a vision-language model describes, a language model judges) was tried and failed: its references were circular or at chance. | Ch. 4; §5.5; §5.13 |
 | RQ5 | How does the pipeline compare with audio-to-visual generation approaches? | Partly. A direct audio-to-image model was not run. The *blind* arm stands in for it: the same detector and generator, drawing every detected sound without looking at the video. The audio-captioning baseline became the text-tags arm. | §5.3–5.4; §5.10; Ch. 6 |
@@ -143,37 +145,4 @@ The thesis makes five contributions. Each is stated at the strength the evidence
 
 ## References
 
-Alonzo, O., Shin, H. V., & Li, D. (2022). Beyond Subtitles: Captioning and visualizing non-speech sounds to
-improve accessibility of user-generated videos. *ASSETS 2022*.
-
-CapTune (2025). CapTune: Adapting non-speech captions with anchored generative models. arXiv:2508.19971.
-*[authors to verify]*
-
-DCMP — Described and Captioned Media Program (n.d.). *Captioning Key: Guidelines and preferred techniques* (sound
-effects, music, non-speech information). https://dcmp.org/learn/captioningkey
-
-de Lacerda Pataca, C., Hassan, S., Tinker, N., Peiris, R., & Huenerfauth, M. (2024). Caption Royale: Exploring the
-design space of affective captions from the perspective of deaf and hard-of-hearing individuals. *CHI 2024*.
-*[author list to verify]*
-
-Findlater, L., Chinh, B., Jain, D., Froehlich, J., & Kushalnagar, R. (2019). Deaf and hard-of-hearing
-individuals' preferences for wearable and mobile sound awareness technologies. *CHI 2019*. *[author order to
-verify]*
-
-Gerber-Morón, V., et al. (2020). Limitations of standard accessible captioning of sounds and music for DHH people:
-An EEG study. *Frontiers in Integrative Neuroscience*. *[authors to verify]*
-
-Jain, D., et al. (2020). SoundWatch: Smartwatch-based deep learning approaches to support sound awareness for DHH
-users. *ASSETS 2020*.
-
-May, L., et al. (2024). Unspoken Sound: Identifying trends in non-speech audio captioning on YouTube.
-https://sinc-lab.com/files/may2024unspoken.pdf
-
-May, L., et al. (2025). "Choices? That's the dream": Challenges and opportunities in non-speech information
-closed-captioning. *[venue to verify]*
-
-Senocak, A., et al. (2023). Sound source localization is all about cross-modal alignment. *ICCV 2023*.
-arXiv:2309.10724.
-
-Sung-Bin, K., et al. (2023). Sound to visual scene generation by audio-to-visual latent alignment (Sound2Scene).
-*CVPR 2023*. arXiv:2306.11504.
+All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.

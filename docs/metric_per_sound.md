@@ -6,10 +6,17 @@ the same brief without seeing our results, then debated eight disagreements. Bel
 ten agree on, the one split, and the rule we adopt. The brief and both rounds are kept in the
 session scratchpad; positions are summarised in docs/scoring_panel_2026-09-19.md.*
 
+*Note, 27 Sept 2026 (thesis consistency pass): two facts below were stale and are corrected in place. (1) The label
+rule in the code is `MIN_DEPTH = 1` (`benchmark/gold/score_per_sound.py`, fix of 2026-09-21), not "depth < 2 never
+matches": only top-level categories (depth 0) never match, and depth-1 families such as Vehicle, Water or Alarm do.
+(2) The benchmark has 109 clips, not 100 (49 DEV + 60 TEST; with the 30 slice-B clips, 139 in all;
+`benchmark/gold/annotations/gold_AG.json`). Also observed, not changed: the code's family match
+(`src/labels.py`, `is_descendant`) accepts any ancestor or descendant, with no two-hop limit.*
+
 ## Unit and data
 The unit is **one sound in one clip**. Two gold sets, reported separately:
 Set 1 = 111 AudioSet-Strong clips (every sound human-timed; Adam adds needed / obvious /
-importance); Set 2 = the 100 benchmark clips (Adam's per-sound annotation). A system's output
+importance); Set 2 = the 109 benchmark clips (Adam's per-sound annotation; see the note of 27 Sept below). A system's output
 per clip = panel events (start, end, depicted label).
 
 ## Step 1 — match each picture to the gold (time first, label second)
@@ -23,9 +30,10 @@ per clip = panel events (start, end, depicted label).
    error on DCASE, PretrainedSED 0.19 s) and, for a sound that spans two 5-s stretches, a
    first stretch judged "visible" delays the picture to the second — such cases count as
    misses under this rule, which is the right pressure on the design.
-2. **Label.** Same AudioSet family (parent or child within two hops) = match. Labels at
-   ontology depth < 2 (root-level words such as "sound", "vehicle") **never** match — so
-   "vehicle" shown for a car horn is a cross-trigger. Exact-class numbers in a second column.
+2. **Label.** Same AudioSet family (parent or child within two hops) = match. Top-level
+   categories (ontology depth 0, such as "Sounds of things", "Animal") **never** match; depth-1
+   families such as "Vehicle", "Water", "Alarm" do (`MIN_DEPTH = 1` in `score_per_sound.py`,
+   fix of 2026-09-21; see the note of 27 Sept below). Exact-class numbers in a second column.
 3. **One-to-one.** Each gold sound takes at most one picture (the nearest in time); one
    picture may cover several overlapping sounds of the **same** family only (two barks, not
    rain and traffic). Extra pictures on a sound already matched are **duplicates**: not
@@ -100,7 +108,7 @@ cross-triggers | phantoms | duplicates | median lateness | clean-clip accuracy
 
 ## Anti-gaming (why each rule exists)
 Show everything → phantoms and visible-pictures sink precision. Show nothing → recall 0,
-precision defined as 0. Show a vague label → depth < 2 never matches. Re-fire every dwell →
+precision defined as 0. Show a vague label → a top-level category (depth 0) never matches. Re-fire every dwell →
 duplicates are not credited. Two labels per event → one label per event.
 
 ## Worked example
@@ -116,7 +124,7 @@ Before receiving any slice-B annotations (obvious / importance), the frozen v4ab
 gate; FLUX; systems proposed / blind / audio-caption; render only, no judge, no parameter
 changes; `slurm/job_sliceb_render.sh`, `--clip-dir data/input/audioset_strong`, tag
 `v4ab_sliceB`) is run once on all 111 slice-B clips. Per-sound results on slice B are
-reported separately from the 100-clip benchmark, noting that slice B was earlier used to
+reported separately from the benchmark clips (100 at the time of writing; 109 today), noting that slice B was earlier used to
 *evaluate* the detector (never to select its bar).
 
 **Addendum (2026-09-20 09:10):** the detector-arm rule (docs/prereg_v4.md) kept BEATs (v4ab

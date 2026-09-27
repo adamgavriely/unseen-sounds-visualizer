@@ -2,7 +2,7 @@
 #SBATCH --job-name=peframe
 #SBATCH --output=logs/pef_%j.out
 #SBATCH --error=logs/pef_%j.err
-#SBATCH --partition=H200-4h,A100-4h
+#SBATCH --partition=H200-4h,A100-4h,generic
 #SBATCH --gres=gpu:1
 #SBATCH --cpus-per-task=4
 #SBATCH --mem=48G

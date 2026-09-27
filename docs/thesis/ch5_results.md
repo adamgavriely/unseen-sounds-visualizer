@@ -14,7 +14,7 @@ Three systems share every stage up to the visibility gate: the same detector sta
 cross-model vetoes), the same onset rule, the same label filter and the same renderer. **Ours** draws a sound only if the
 gate finds its source off screen; **blind** draws every detected sound; **silence** shows nothing. A fourth arm, text
 tags, is discussed in §5.10. Gold: one annotator, per-sound labels (label, onset, visible, obvious, importance). A needed
-sound (importance ≥ 2, neither visible nor obvious) is *hit* when a picture of its family starts within [−0.5, +1.0] s of
+sound (neither visible nor obvious; scored when rated 2–3, Chapter 4 §4.6) is *hit* when a picture of its family starts within [−0.5, +1.0] s of
 its onset. **Modelled viewer cost** per clip (β = 2 assumed; weights pre-specified, promoted to a reported outcome after
 F1 was null) = 4 × missed needed sounds + β × wrong pictures. All intervals are paired clip bootstraps (2000 draws,
 seed 0). **TEST** = 60 clips, *held out, with disclosed exposure*: the final table (amendment 21) is the tenth exposure of
@@ -156,7 +156,9 @@ screen and mixed clips.
 
 - **Oracle diagnostics** (§5.3; `docs/GOLD_RERUN_2026-09-22.md` §9a): with the annotator's sound list the gate's F1 gain is
   significant; with the missed sounds alone given back it already is. Misses, not false alarms, cause the null.
-- **Where needed sounds are lost** (DEV autopsy, 21 misses): 11 never detected, 5 timing, 3 gate, 2 label filter.
+- **Where needed sounds are lost** (DEV miss autopsy of the `v4b6` row of 23 Sep, an earlier pipeline, 21 misses;
+  `docs/GOLD_RERUN_2026-09-22.md` §15): 11 never detected, 5 timing, 3 gate, 2 label filter. The final
+  DEV row (§5.4) has 22 misses (14 of 36 hit); it has not been re-autopsied.
 - **Detector on 280 human-labelled AudioSet-Strong clips** (descriptive, shipped bars, out of sample; `benchmark/audioset_stage4_report.json`):
   the shipped stack keeps BEATs' recall of consequential events within about 3 points (51.3 % vs 54.5 %) and cuts false
   spans per minute by 29 % (4.56 vs 6.41). (The detector-round scripts of §5.8 recompute the shipped stack at 4.46 false
@@ -217,7 +219,11 @@ for itself only at two false spans or fewer. The new text-queried detector with 
 screen only because the pool was already near the bar before filtering.
 
 **Amendment 25 (an audio "listener", Qwen3-Omni, as a per-candidate verifier; hard AUROC gate: lower 95 % bound ≥ 0.70
-and above PANNs).** **Amendment 25 (the last detector question): an audio LLM (Qwen3-Omni-30B-A3B-Instruct) asked "is the sound of X present?" about each candidate span. It is a sane listener (yes to 84 % of asked families, 7 % of families absent from the clip), but on the 280's uncertain candidates it separates real needed sounds from false ones only weakly: AUROC 0.661 [0.525, 0.784] (14 hit / 96 false spans; PANNs 0.574). The pre-written gate (lower bound ≥ 0.70) failed, so nothing was scored on the held-out set and the shipped detector stays.**
+and above PANNs).** This was the last detector question. An audio LLM (Qwen3-Omni-30B-A3B-Instruct) was asked "is the
+sound of X present?" about each candidate span. It is a sane listener (yes to 84 % of asked families, 7 % of families
+absent from the clip), but on the 280's uncertain candidates it separates real needed sounds from false ones only
+weakly: **AUROC 0.661 [0.525, 0.784]** (14 hit / 96 false spans; PANNs 0.574). The pre-written gate (lower bound
+≥ 0.70) failed, so nothing was scored on the held-out set and the shipped detector stays.
 
 **Reading.** The shipped stack sits at the cost optimum of every training-free stack tried. Extra recall costs more false
 spans than β = 2 allows, and the missing sounds are those masked under speech or music, which closed-set taggers cannot
@@ -255,7 +261,9 @@ three versions interleaved and hidden: today's generator (FLUX.1-schnell) 14 of 
 same text 26 (+0.22 [+0.07, +0.37]); with the V3 text 32 (+0.33 [+0.22, +0.46]); 9 of 10 repeated pictures answered the
 same. V3 was rejected for one invented object (a thud drawn as a door), and the new generator alone shows one wrong
 object (a ringing phone drawn as a desk bell), so neither is adopted as clean. Six automatic picture checkers failed
-calibration against the human rater (§5.13). **Final frozen setup: [pending — blind confirmation sitting]**.
+calibration against the human rater (§5.13). The frozen final setup is Qwen-Image-2512 with the V3.1 text
+(`docs/freeze_picture_setup_2026-09-25.md`); it replaces FLUX.1-schnell only if the sealed confirmation sitting
+confirms it (rules in Chapter 6 §6.3). **Final frozen setup: [pending — blind confirmation sitting]**.
 
 ## 5.12 Timing
 
@@ -338,3 +346,7 @@ effect was about 0.13). In the Holm-corrected secondary family, the visibility g
 sound costs 4 and a wrong picture β (β = 2 assumed), the gated system is the cheapest option for β between 0.39 and 2.56.
 A newer picture generator was recognised 22 points more often in an author-rater glance test. The detector, not the gate,
 limits recall. DHH helpfulness is untested.
+
+## References
+
+This chapter cites no literature; the shared reference list is `docs/thesis/references.md`.

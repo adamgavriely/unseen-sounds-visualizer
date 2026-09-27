@@ -23,7 +23,7 @@ silent. No component is trained or fine-tuned; the contribution is the chaining 
 | 4c | drawable? | ontology-rule label filter (speech and music never drawn) | which sounds may become pictures |
 | 5 | visibility gate | Qwen3.8-27B, 6 frames per ≤ 5-s stretch, 3 questions, majority | draw only if the source is off screen in some stretch |
 | 5b | subject | Qwen3.8-27B + fixed word lists | the specific thing to draw |
-| 6 | picture | FLUX.1-schnell (shipped); Qwen-Image-2512 (tested, ch5 §5.11) | the image |
+| 6 | picture | FLUX.1-schnell (shipped); Qwen-Image-2512 with the V3.1 text is the frozen final setup, adopted only if the sealed sitting confirms it (ch5 §5.11, ch6 §6.3) | the image |
 | 7 | display | fixed slots, ≥ 1.5 s on screen, repeats < 2 s merged, no length cap | when the picture is visible |
 
 **Stage 4 in detail.** BEATs (AudioSet-2M, 527 classes) is the base detector. Under speech or music it misses quiet
@@ -48,7 +48,7 @@ overlapping time is silenced too (the kinship rule).
 | false-alarm filter | FlexSED veto + PANNs veto | AST/CED votes, Demucs/HTDemucs/DeepFilterNet views | the vetoes gave the precision gain on TEST (+0.137, Holm-significant; TEST-only, not replicated on DEV, Holm 0.080 there) |
 | visibility | Qwen3.8-27B | CLIP, SigLIP, OWLv2, SAM 3, Qwen2.5-VL-7B/32B, video input, audio-visual sync | balanced accuracy on the gold ticks 0.62 (OWLv2 0.50 = chance); three extra mechanisms each landed at the β = 2 break-even |
 | subject text | word-list guards | free VLM prompt (V3) | V3 invented an object (a thud drawn as a door) in the blind rating |
-| picture | FLUX.1-schnell today; Qwen-Image-2512 (Apache-2.0) is the frozen final setup, adopted only if the sealed confirmation sitting confirms it | retrieval, SDXL, SDXL-Turbo, PixArt-Σ, FLUX, Qwen-Image-2.1 | +22 points recognised in an author-rater glance test (ch5 §5.11); 2.1 no better and research-only licence |
+| picture | FLUX.1-schnell today; Qwen-Image-2512 (Apache-2.0) with the V3.1 text is the frozen final setup, adopted only if the sealed confirmation sitting confirms it | retrieval, SDXL, SDXL-Turbo, PixArt-Σ, FLUX, Qwen-Image-2.1 | +22 points recognised in an author-rater glance test (ch5 §5.11); 2.1 no better and research-only licence |
 | judge (secondary) | Gemma-4-31B, sees the panel | Mistral-7B, describe-then-judge, six picture checkers | passes all three trust checks against the annotator; Qwen models excluded (same family as the gate/subject model) |
 
 ## 3.4 What the system does not do
@@ -56,3 +56,7 @@ overlapping time is silenced too (the kinship rule).
 It does not localise sources in the image, does not generate video, and does not decide *how much* of a picture a viewer
 needs (no importance ranking beyond confidence). Pictures end when the detector's span ends; with no length cap, 4 of 15
 TEST pictures outlast their sound by more than 2 s (a principled end rule could not be tested without a DEV case).
+
+## References
+
+This chapter cites no literature; the shared reference list is `docs/thesis/references.md`.

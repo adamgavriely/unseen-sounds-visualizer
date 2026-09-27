@@ -30,11 +30,12 @@ blind) and mixed clips (−1.73 [−3.73, −0.13]). On off-screen clips ours an
 large gain against silence there (−3.08) is a detection and picture result, not a gate result.
 
 The literature gives a direction for β, not a number. SoundWatch users wanted speed for
-urgent sounds and accuracy for non-urgent ones (Jain et al., 2020), and users judge any added visual first on
-readability and low distraction (de Lacerda Pataca et al., 2024). For a danger sound, a miss is the worst outcome
-and β is low; for atmosphere, a wrong picture is pure distraction and β is high. DHH viewers are also not one
-audience: in an early study of enhanced captions, hard-of-hearing viewers liked them while several Deaf viewers
-did not (Fels et al., 2007). So a single β mixes sounds and people; hence a curve, not a point, as in cost curves
+urgent sounds and accuracy for non-urgent ones, so as not to be disturbed without need (Jain et al., 2020). In a
+study of styled captions, DHH users named readability and minimal distraction among the key reasons for their
+choices (de Lacerda Pataca et al., 2024). For a danger sound, a miss is the worst outcome and β is low; for
+atmosphere, a wrong picture is pure distraction and β is high. DHH viewers are also not one audience: in an early
+study of emotive captions with 11 viewers, hard-of-hearing viewers seemed to enjoy them while deaf viewers
+strongly disliked them (Lee et al., 2007). So a single β mixes sounds and people; hence a curve, not a point, as in cost curves
 (Drummond & Holte, 2006).
 
 ## 6.2 Why the detector is the binding constraint
@@ -47,8 +48,9 @@ makes it significant (+0.075 [+0.029, +0.119]) (§5.3). These come from the 22 S
 which include the TEST clips (exposure row 1, §5.15). On the final cost curve (§5.5), the gate given the gold sound list would cost
 1.23 per clip at β = 2 on TEST (DEV 1.63), against 2.63 for the shipped system (amendment 21). The headroom lies in detection.
 
-**Where needed sounds are lost.** Of 21 missed DEV sounds, 11 were never detected, 5 were late, 3 were silenced by
-the gate and 2 were removed by the label filter (§5.7).
+**Where needed sounds are lost.** In the miss autopsy of the 23 Sep DEV row (`v4b6`, an earlier pipeline than
+the final one), of 21 missed DEV sounds, 11 were never detected, 5 were late, 3 were silenced by the gate and 2 were removed
+by the label filter (§5.7).
 
 **Masking.** The missed sounds are mostly quiet sounds under speech or music. At every masked needed sound, BEATs'
 top labels were Speech or Music (Chapter 3): a tagger of the whole mixture reports what dominates it. FlexSED,
@@ -198,18 +200,4 @@ cost curve and logged protocol let the next system, and the first DHH study, be 
 
 ## References
 
-Bilen, Ç., et al. (2020). A framework for the robust evaluation of sound event detection (PSDS). *ICASSP 2020*.
-arXiv:1910.08440. *[title and authors to verify]*
-
-de Lacerda Pataca, C., Hassan, S., Tinker, N., Peiris, R., & Huenerfauth, M. (2024). Caption Royale: Exploring the
-design space of affective captions from the perspective of deaf and hard-of-hearing individuals. *CHI 2024*.
-*[author list to verify]*
-
-Drummond, C., & Holte, R. C. (2006). Cost curves: An improved method for visualizing classifier performance.
-*Machine Learning*. *[to verify]*
-
-Fels, D. I., Lee, D. G., Branje, C., & Hornburg, M. (2007). Emotive captioning. *ACM Computers in Entertainment*.
-*[to verify]*
-
-Jain, D., et al. (2020). SoundWatch: Smartwatch-based deep learning approaches to support sound awareness for DHH
-users. *ASSETS 2020*.
+All works cited in this chapter are listed in the shared reference list, `docs/thesis/references.md`.
