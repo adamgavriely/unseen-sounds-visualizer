@@ -29,7 +29,8 @@ import config
 from benchmark.gold import dev_candidates_check as DCC
 from benchmark.gold import score_per_sound as S
 from src.labels import canonical
-from src.stage4_audio_event_detection import (TRACE, _extract_events, attach_breaks, fuse_flexsed)
+from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_events, attach_breaks, fuse_flexsed,
+                                              listener_from_cache)
 from src.types import AudioEvent
 
 WORK = DCC.WORK
@@ -46,7 +47,8 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "UNION_WEAK_TWIN": "absorb", "UNION_START": "min", "BEATS_LOWBAND_CORROB": None, "ONSET_CAM": True,
         "ONSET_MONOTONE": True, "MAX_SPAN": None, "MERGE_START": "earliest",
         "TWIN_MAX": False, "MIRROR_VETO": None, "MIRROR_OWN_MAX": 0.4, "IMPULSE_MIN_SPAN": None,
-        "RETRIGGER": None, "RETRIGGER_RAW": False}
+        "RETRIGGER": None, "RETRIGGER_RAW": False,
+        "LISTENER_RESCUE": False, "LISTENER_CACHE": None, "LISTENER_LO": 0.4, "LISTENER_TH": 0.0, "LISTENER_BEATS_TH": None}
 RT = (1.5, 0.4, 0.175)
 R1_ = {"TWIN_MAX": True}
 R6_ = {"RETRIGGER": RT, "RETRIGGER_RAW": True}
@@ -63,6 +65,15 @@ ARMS = {
     "STACK1256b08": {**R1_, "MIRROR_VETO": 0.8, "IMPULSE_MIN_SPAN": 0.2, **R6_},
     "STACK1256b07": {**R1_, "MIRROR_VETO": 0.7, "IMPULSE_MIN_SPAN": 0.2, **R6_},
 }
+# R13-3 (coordinator, 2026-09-29): listener rescue, LO x TH grid, each alone and + R13-1; + the P3 BEATs band (score > 3)
+for _lo in (0.4, 0.5):
+    for _th in (0, 2, 3):
+        _n = f"L{int(_lo * 10):02d}t{_th}"
+        _c = {"LISTENER_RESCUE": True, "LISTENER_CACHE": str(LISTENER), "LISTENER_LO": _lo, "LISTENER_TH": float(_th)}
+        ARMS[_n] = dict(_c)
+        ARMS[_n + "+1"] = {**_c, **R1_}
+        ARMS[_n + "+P3"] = {**_c, "LISTENER_BEATS_TH": 3.0}
+        ARMS[_n + "+1+P3"] = {**_c, **R1_, "LISTENER_BEATS_TH": 3.0}
 STAGE5_KEYS = ("RETRIGGER_RAW",)                         # arm flags read after stage 4 (consolidate_families)
 
 
@@ -160,8 +171,11 @@ def build(st, sysn, arm, C, tr, offline=False):
         TRACE.extend({"step": "extract", "label": e.label, "start": round(e.start, 3), "end": round(e.end, 3),
                       "conf": round(e.confidence, 3)} for e in events)
         prov = trace_provider(tr) if offline else panns_provider(st)
+        lis = listener_from_cache(config.LISTENER_CACHE, st) if config.LISTENER_RESCUE else None
         events, flex_ids, ffw = fuse_flexsed(events, Bfr[0], Bfr[1], Bfr[2], Ffr[0], Ffr[1], Ffr[2],
-                                             config.AED_MIN_DUR, backend="BEATs", panns=prov)
+                                             config.AED_MIN_DUR, backend="BEATs", panns=prov, listener=lis)
+        if lis is not None:
+            info["listener"] = json.loads(json.dumps(LISTENER_STATS))
         mine = {n: [(x["label"], x["start"], x["end"]) for x in TRACE if x["step"] == n]
                 for n in ("extract", "flexsed_raw", "union")}
         mine["veto"] = [(e.label, e.start, e.end) for e in events]
@@ -216,7 +230,7 @@ def stage4(arms, offline=False):
         ref = json.loads((_ROOT / "data" / "work" / "devcand" / "stage4.json").read_text(encoding="utf-8"))
     res = {} if offline or not STAGE4.exists() else json.loads(STAGE4.read_text(encoding="utf-8"))
     res.setdefault("arms", {}); res.setdefault("d0", {}); res.setdefault("conf_eq", {}); res.setdefault("mirror", {})
-    res["cfg"] = {a: {k: v for k, v in arm_cfg(a).items()} for a in arms}
+    res.setdefault("cfg", {}).update({a: {k: v for k, v in arm_cfg(a).items()} for a in arms})
     for st in stems:
         C = {"beats": DCC.load_fr(DCC.BEATS_DIR / f"{st}.npz"), "flex": DCC.load_fr(DCC.FLEX_DIR / f"{st}.npz")}
         for sysn in SYSTEMS:
@@ -235,6 +249,8 @@ def stage4(arms, offline=False):
                         sig = lambda rr: sorted((r["label"], round(r["pre_start"], 3), round(r["start"], 3), round(r["end"], 3),
                                                  round(r["conf"], 4), r["origin"]) for r in rr)
                         res["conf_eq"][f"{sysn}|{st}"] = sig(rows) == sig(ref["arms"][f"B0r|{sysn}"][st])
+                if "listener" in info:
+                    res.setdefault("listener", {})[f"{k}|{st}"] = info["listener"]
                 if info["mirror_dropped"]:
                     res["mirror"][f"{k}|{st}"] = info["mirror_dropped"]
                 live = [r for r in rows if r["refine"] == "live"]
@@ -351,7 +367,18 @@ def score():
     res = {"plan": "docs/prereg_round13_detector_push.md", "base": BASE, "arms": {a: ARMS[a] for a in arms},
            "d0": {}, "conf_eq": {}, "d5": {}, "rows": {}, "heard": {}, "delta_vs_B0r": {}, "delta_vs_B1": {},
            "eligible": {}, "needed_changes": {}, "picture_changes": {}, "stage5": {}, "mirror_dropped": s4.get("mirror", {}),
-           "twin_blast": {}, "breaks": {}}
+           "twin_blast": {}, "breaks": {}, "listener": {}}
+    for k, v in s4.get("listener", {}).items():                  # per arm and system: rescues and cache coverage
+        arm_sys = k.rsplit("|", 1)[0]
+        agg = res["listener"].setdefault(arm_sys, {"a_added": 0, "b_kept": 0, "c_added": 0, "a_asked": 0, "a_missing": 0,
+                                                   "b_asked": 0, "b_missing": 0, "c_asked": 0, "c_missing": 0,
+                                                   "b_missing_list": [], "a_missing_list": []})
+        for f in ("a_added", "b_kept", "c_added"):
+            agg[f] += len(v[f])
+        for f in ("a_asked", "a_missing", "b_asked", "b_missing", "c_asked", "c_missing"):
+            agg[f] += v[f]
+        agg["b_missing_list"] += [[k.rsplit("|", 1)[1]] + x for x in v.get("b_missing_list", [])]
+        agg["a_missing_list"] += [[k.rsplit("|", 1)[1]] + x for x in v.get("a_missing_list", [])]
     d0 = s4["d0"]
     res["d0"] = {"pass": sum(v["pass"] for v in d0.values()), "of": len(d0), "fails": [k for k, v in d0.items() if not v["pass"]]}
     ce = s4.get("conf_eq", {})

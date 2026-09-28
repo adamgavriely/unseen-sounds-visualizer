@@ -235,7 +235,8 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
         try:
             ffw, ftimes, flabels = FX.infer_flexsed(Path(wav_path), device)
             events, flex_ids, ffw = fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur,
-                                                 backend=backend, panns=lambda: _infer(Path(wav_path), device))
+                                                 backend=backend, panns=lambda: _infer(Path(wav_path), device),
+                                                 listener=_pipeline_listener(wav_path))
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     trace("veto", events, "after the cross-detector and PANNs vetoes")
@@ -258,6 +259,14 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                       top_k=plot_top_k, threshold=threshold)
         print(f"       [stage4] timeline plot -> {plot_path}")
     return events
+
+
+def _pipeline_listener(wav_path):
+    """R13-3 in the pipeline: the listener cache (config.LISTENER_CACHE) for this clip (its work dir name = the clip id)"""
+    path = getattr(config, "LISTENER_CACHE", None)
+    if not (getattr(config, "LISTENER_RESCUE", False) and path):
+        return None
+    return listener_from_cache(path, Path(wav_path).parent.name)
 
 
 def _impulse_cols(flabels) -> list:
@@ -341,17 +350,21 @@ def attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels) -> Non
 
 
 def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur, backend: str = "BEATs",
-                 panns=None):
+                 panns=None, listener=None):
     """The union of the tagger's spans with FlexSED's, and the vetoes (amendments 8, 10, 11, 16, 22; round 4; round 13).
 
     Pure given its inputs, so a benchmark can run the exact pipeline rule on cached scores. `events` are the tagger's
     extracted spans; (ffw, ftimes, flabels) are FlexSED's frame scores; `panns` is a callable returning PANNs
     (framewise, times, labels) for the clip, called at most once. Returns (events, flex_ids, ffw), where flex_ids are the
-    ids of the spans FlexSED raised alone and ffw the (possibly per-family rescaled) FlexSED scores."""
+    ids of the spans FlexSED raised alone and ffw the (possibly per-family rescaled) FlexSED scores. `listener` (R13-3,
+    config.LISTENER_RESCUE) is a lookup(label, start, end, contain=False) -> the cached listener item or None."""
     from src.labels import canonical
     fbar = float(getattr(config, "FLEXSED_BAR", 0) or 0)
     flex_ids = set()
     _pc = {}
+    _reset_listener_stats()
+    listen_on = bool(getattr(config, "LISTENER_RESCUE", False)) and listener is not None
+    lth = float(getattr(config, "LISTENER_TH", 0.0))
 
     def _panns():
         if "v" not in _pc:
@@ -520,8 +533,22 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             # guard exists to prevent.
             flex_only = {id(e) for e in fresh}          # raised by FlexSED, no BEATs twin
             before2 = len(events)
+            keep_b = set()
+            if listen_on:
+                # R13-3 (b): a FlexSED >= bar span the PANNs clip veto would drop is kept when the listener, asked about
+                # the FlexSED 0.4-run that contains it, says the family is there (score > LISTENER_TH)
+                for e in events:
+                    if id(e) in flex_only and ppeak.get(key(e), 1.0) < veto2:
+                        it = listener(e.label, e.start, e.end, contain=True)
+                        LISTENER_STATS["b_asked"] += 1
+                        if it is None:
+                            LISTENER_STATS["b_missing"] += 1
+                            LISTENER_STATS["b_missing_list"].append([e.label, round(e.start, 2), round(e.end, 2)])
+                        elif float(it["score"]) > lth:
+                            keep_b.add(id(e))
+                            LISTENER_STATS["b_kept"].append([e.label, round(e.start, 2), round(e.end, 2), float(it["score"])])
             events = [e for e in events
-                      if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2]
+                      if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2 or id(e) in keep_b]
             print(f"       [stage4] PANNs veto (tau2 {veto2}) on FlexSED-only spans: "
                   f"dropped {before2 - len(events)} span(s)", flush=True)
         except Exception as e2:
@@ -551,4 +578,128 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 e.confidence = disp; promoted += 1
         print(f"       [stage4] low-band corroboration (FlexSED {f_min} / PANNs {p_min} within {win} s): "
               f"promoted {promoted} weak BEATs span(s) to the display bar", flush=True)
+    if listen_on:
+        events = _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flabels, fbar, listener, lth)
+        print(f"       [stage4] listener rescue: kept {len(LISTENER_STATS['b_kept'])} vetoed, added "
+              f"{len(LISTENER_STATS['a_added'])} band + {len(LISTENER_STATS['c_added'])} BEATs-band span(s); cache misses "
+              f"a {LISTENER_STATS['a_missing']}/{LISTENER_STATS['a_asked']} b {LISTENER_STATS['b_missing']}/"
+              f"{LISTENER_STATS['b_asked']} c {LISTENER_STATS['c_missing']}/{LISTENER_STATS['c_asked']}", flush=True)
     return events, flex_ids, ffw
+
+
+# ----------------------------------------------------------------------------- R13-3: listener rescue
+LISTENER_STATS: dict = {}
+LISTEN_RUN_BAR, LISTEN_RUN_GAP, LISTEN_SHORT = 0.4, 0.24, 0.5
+
+
+def _reset_listener_stats():
+    LISTENER_STATS.clear()
+    LISTENER_STATS.update({"b_asked": 0, "b_missing": 0, "b_kept": [], "b_missing_list": [],
+                           "a_asked": 0, "a_missing": 0, "a_added": [], "a_missing_list": [],
+                           "c_asked": 0, "c_missing": 0, "c_added": [], "c_missing_list": []})
+
+
+def _runs(col, ts, bar, gap_s):
+    """frames >= bar, runs separated by <= gap_s merged; (i, j) frame ranges (as benchmark/gold/dev_listener.py)"""
+    dt = float(ts[1] - ts[0]) if len(ts) > 1 else 0.04
+    on = col >= bar
+    out, i, n = [], 0, len(on)
+    while i < n:
+        if not on[i]:
+            i += 1; continue
+        j = i
+        while j < n and on[j]:
+            j += 1
+        if out and (i - out[-1][1]) * dt <= gap_s + 1e-6:
+            out[-1] = (out[-1][0], j)
+        else:
+            out.append((i, j))
+        i = j
+    return out, dt
+
+
+def listener_from_cache(path, clip: str, tol: float = 0.02):
+    """R13-3: per-span listener scores (benchmark/gold/dev_listener.json: items with clip, family, label, start, end,
+    cut_start, cut_end, score). Returns lookup(label, start, end, contain=False) -> the cached item or None: the same
+    (family, start, end) within tol, or with contain=True the P2 run of that family that contains [start, end]."""
+    from src.labels import canonical
+    d = json.loads(Path(path).read_text(encoding="utf-8"))
+    items = [x for x in (d["items"] if isinstance(d, dict) else d) if x.get("clip") == clip and x.get("score") is not None]
+
+    def look(label, start, end, contain=False):
+        fam = canonical(label)
+        if contain:
+            c = [x for x in items if x.get("pool") == "P2" and x["family"] == fam
+                 and x["start"] <= start + tol and x["end"] >= end - tol]
+        else:
+            c = [x for x in items if x["family"] == fam and abs(x["start"] - start) <= tol and abs(x["end"] - end) <= tol]
+        if not c:
+            return None
+        same = [x for x in c if x.get("label") == label]
+        return max(same or c, key=lambda x: float(x["score"]))
+    return look
+
+
+def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flabels, fbar, listener, lth):
+    """R13-3 (a): a FlexSED 0.4-run (gaps <= 0.24 s merged) with peak in [LISTENER_LO, bar) and no same-family span over it
+    becomes a FlexSED-only span (its run, or the listener's 1-s cut when shorter than 0.5 s) when the listener's score >
+    LISTENER_TH; added after the PANNs clip veto, so exempt from it. (c) with LISTENER_BEATS_TH set: a BEATs run >=
+    AED_THRESHOLD with peak below the display bar and no same-family span over it is added at the display bar when its
+    score > LISTENER_BEATS_TH. A run with no cached score is not rescued (counted in LISTENER_STATS)."""
+    from src.labels import canonical
+    lo = float(getattr(config, "LISTENER_LO", 0.4))
+    fw_, ft_ = np.asarray(ffw), np.asarray(ftimes)
+
+    def covered(fam, a, b):
+        return any(canonical(e.label) == fam and min(b, e.end) - max(a, e.start) > 0 for e in events)
+    add = []
+    for c, lab in enumerate(flabels):
+        fam = canonical(lab)
+        rr, dt = _runs(fw_[:, c], ft_, LISTEN_RUN_BAR, LISTEN_RUN_GAP)
+        for i, j in rr:
+            pk = float(fw_[i:j, c].max())
+            if not (lo <= pk < fbar):
+                continue
+            a, b = float(ft_[i]), float(ft_[j - 1] + dt)
+            if covered(fam, a, b):
+                continue
+            LISTENER_STATS["a_asked"] += 1
+            it = listener(lab, a, b)
+            if it is None:
+                LISTENER_STATS["a_missing"] += 1
+                LISTENER_STATS["a_missing_list"].append([lab, round(a, 2), round(b, 2), round(pk, 3)])
+                continue
+            if float(it["score"]) > lth:
+                s, e_ = (a, b) if b - a >= LISTEN_SHORT else (float(it["cut_start"]), float(it["cut_end"]))
+                add.append(AudioEvent(lab, s, e_, pk))
+                LISTENER_STATS["a_added"].append([lab, round(s, 2), round(e_, 2), round(pk, 3), float(it["score"])])
+    events = events + add
+    flex_ids |= {id(e) for e in add}
+    bth = getattr(config, "LISTENER_BEATS_TH", None)
+    if bth is not None:
+        disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+        tlo = float(getattr(config, "AED_THRESHOLD", 0.175))
+        bw, bt = np.asarray(framewise), np.asarray(times)
+        seen, addc = set(), []
+        for c, lab in enumerate(labels):
+            fam = canonical(lab)
+            rr, dt = _runs(bw[:, c], bt, tlo, 0.0)
+            for i, j in rr:
+                pk = float(bw[i:j, c].max())
+                if pk >= disp:
+                    continue
+                a, b = float(bt[i]), float(bt[j - 1] + dt)
+                if covered(fam, a, b) or (fam, round(a, 3), round(b, 3)) in seen:
+                    continue
+                seen.add((fam, round(a, 3), round(b, 3)))
+                LISTENER_STATS["c_asked"] += 1
+                it = listener(lab, a, b)
+                if it is None:
+                    LISTENER_STATS["c_missing"] += 1
+                    LISTENER_STATS["c_missing_list"].append([lab, round(a, 2), round(b, 2), round(pk, 3)])
+                    continue
+                if float(it["score"]) > float(bth):
+                    addc.append(AudioEvent(lab, a, b, disp))
+                    LISTENER_STATS["c_added"].append([lab, round(a, 2), round(b, 2), round(pk, 3), float(it["score"])])
+        events = events + addc
+    return events

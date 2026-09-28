@@ -379,7 +379,14 @@ RETRIGGER = None              # R13-6: (gap_s, flexsed_low, beats_low) = (1.5, 0
                               # stretch >= gap_s where its family has no evidence (a new onset gets a new appearance)
 RETRIGGER_RAW = False         # R13-6 (Crowd mechanism): consolidate_families does not chain a later firing of a different
                               # sound (not same label / ancestor / descendant) into a burst; the boundary is a break
-LABEL_FILTER = "lists"       # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
+LISTENER_RESCUE = False       # R13-3: a Qwen3-Omni listener (cached per span, LISTENER_CACHE) rescues (a) FlexSED 0.4-runs
+                              # with peak in [LISTENER_LO, FLEXSED_BAR) and (b) FlexSED spans the PANNs clip veto drops,
+                              # when its yes-no logit > LISTENER_TH; a span with no cached score is not rescued
+LISTENER_CACHE = None         # path of the listener cache (benchmark/gold/dev_listener.json format)
+LISTENER_LO = 0.4
+LISTENER_TH = 0.0
+LISTENER_BEATS_TH = None      # R13-3 (c): also a short BEATs run (peak 0.175-0.35, not covered) at the display bar if score > this
+LABEL_FILTER = "lists"      # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 
 
 def use_v4(stages: str = "23456") -> dict:
