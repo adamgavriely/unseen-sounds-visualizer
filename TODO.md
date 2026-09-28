@@ -21,6 +21,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Cluster disk: delete the PE-A-Frame `perception_models` revision (6.1 GB, fetched for 7b) after fresh caches job 31330209 ends (only that revision's snapshot/blobs); sam-audio-large + 7b wavs being deleted now; `shipped_v2_*`, `shipped_v_*_r1` folders.
 
 ## Waiting on Adam
+- [ ] Where to confirm detector ideas now that the AudioSet test is retired: (A) DEV screen + ONE pre-registered TEST confirmation of the single best candidate (new logged TEST exposure, reported beside the frozen table) — recommended; (B) Adam annotates a new small held-out video set (~20–30 clips, 2–3 h); (C) DEV only, report-only.
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
