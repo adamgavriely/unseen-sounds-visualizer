@@ -2402,3 +2402,5 @@ on the 280 the gain appeared only with the refitted bar (at the shipped bars nei
 ## 2026-09-28 — detector round 7 (SAM-Audio: remove speech and music, re-run BEATs + FlexSED on the residual, union with the shipped stack): pre-registered in `docs/prereg_round7_samaudio.md` (written before any SAM-Audio output or cost)
 
 ## 2026-09-28 — detector round 8 (new ideas: repetition bar, per-clip normalisation, parent emission, VLM scene prior, local-contrast veto, onset fixes, multi-scale and band-limited BEATs/FlexSED): pre-registered in `docs/prereg_round8_ideas.md` (written before any round-8 cache or cost)
+
+## 2026-09-28 — fresh AudioSet-Strong confirmation set (500 eval ids drawn with the 415 recipe, seed 20260928, disjoint from the 280, the 415, DEV, TEST, slice B and every repo list; final check only for a candidate that passes the 415, no result read before that): pre-registered in `docs/prereg_fresh_confirm_set.md` (written before any download)
