@@ -17,7 +17,7 @@ from benchmark.gold import score_per_sound as S
 def main():
     gold = S.load_gold([_ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"])
     dev = sorted(S.subsets_of(gold)["dev"])
-    steps = (("scored", {}), ("display: 1 s after end, join <= 1 s", {"MAX_AFTER_END": 1.0, "MERGE_GAP": 1.0}),
+    steps = (("scored", {}), ("display: 1 s after end, join <= 1 s", {"MAX_AFTER_END": 1.0, "MERGE_GAP": 1.0}), ("display: 1 s after end, join <= 1.5 s", {"MAX_AFTER_END": 1.0, "MERGE_GAP": 1.5}),
              ("+ confidence floor 0.40", {"PICTURE_MIN_CONF": 0.40}))
     for name, sets in steps:
         for k, v in sets.items():
