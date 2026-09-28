@@ -4,7 +4,7 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
-- [ ] DEV check (report-only) of EAT-R, DASM D1, I4, I6, I7 — jobs 31330562 (caches) → 31330563 (stages+score) queued. When done: read D5 first, scp benchmark/gold/dev_candidates_check.json + data/work/devcand/stage4.json + */_stage5_log.json, write Results in `docs/dev_candidates_check_2026-09-28.md`, delete ~/Transformer4SED. Baseline B1 (shipped) primary, B0 beside.
+- [ ] DEV CONFIRMATORY check (Adam: test and confirm on DEV; goal = more needed sounds heard, fewer real sounds dropped): EAT-R, DASM D1, I4, I6, I7 (job 31330563) + R1, R6, R7 (extra job); Holm over 8 vs B1 (ours re-run); ship rule. Tweaks after this need TEST-once or new videos. `docs/dev_candidates_check_2026-09-28.md`
 - [x] Round 12 STOPPED at step 1 (28 Sept, job 31330706): under the corrected cost v2 (MID names, depictable filter, runs merged <= 2 s, video hit window) ours is WORSE than showing nothing on the 280 (1.650 vs 0.986, d +0.664 [+0.379, +0.950]); its 159 false spans alone cost 1.136. By the prereg the AudioSet harness cannot track the task; no cell re-scored, no new cell, nothing on 415/DEV/fresh, no src change. `docs/prereg_round12_v2.md`
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs, PANNs, PE-A-Frame 422/422; FlexSED 20/422) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
@@ -21,7 +21,6 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Cluster disk: delete the PE-A-Frame `perception_models` revision (6.1 GB, fetched for 7b) after fresh caches job 31330209 ends (only that revision's snapshot/blobs); sam-audio-large + 7b wavs being deleted now; `shipped_v2_*`, `shipped_v_*_r1` folders.
 
 ## Waiting on Adam
-- [ ] Where to confirm detector ideas now that the AudioSet test is retired: (A) DEV screen + ONE pre-registered TEST confirmation of the single best candidate (new logged TEST exposure, reported beside the frozen table) — recommended; (B) Adam annotates a new small held-out video set (~20–30 clips, 2–3 h); (C) DEV only, report-only.
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
