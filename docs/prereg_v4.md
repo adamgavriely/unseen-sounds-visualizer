@@ -2375,3 +2375,24 @@ true order ≥ 0.30 AND ≥ 10 × the agreement under each ±1 shifted order; ρ
 was set after seeing the diagnostics above (disclosed). Cells, bars, the pick rule and the 415 test are unchanged.
 *Gate 1 note:* the shipped bar 0.1218 gives 3.036 / 3.850 / 51.3 % / 4.44 on the 280 — one false span fewer than round 4's
 b = 0.12176514 row (3.043 / 3.857 / 51.3 % / 4.46, reproduced exactly) — so the baseline is 3.036 / 3.850.
+**Result (`benchmark/detector_round5.json`; jobs 31329223 caches, 31329261 check + fit, 31329518 the 415).** Gates 1–4 pass
+(gate 3 as amended: top-1 agreement 0.636 true vs ≤ 0.018 shifted, both models). Baseline at the shipped b 0.1218: the 280
+3.036 / 3.850 / 51.3 % / 4.44; the 415 1.928 / 2.207 / 49.7 % / 3.30 (on the 415 identical to round 4's b).
+*The 280 (ΔC = cell − baseline, clip bootstrap 95 % CI; end error = paired median baseline → cell):*
+
+| cell | display / AED | b | C-overlap (ΔC) | C-onset (ΔC) | recall | onset-recall | false/min | shown | end error |
+|---|---|---|---|---|---|---|---|---|---|
+| baseline (BEATs) | 0.35 / 0.175 | 0.1218 | 3.036 | 3.850 | 51.3 % | 25.9 % | 4.44 | 564 | — |
+| EAT-P | 0.35 / 0.175 | 0.1267 | 3.407 (+0.371 [−0.293, +0.914]) | 4.393 (+0.543 [+0.043, +1.007]) | 65.6 % | 34.8 % | 6.92 | 802 | 1.40 → 1.44 s |
+| EAT-R | 0.515 / 0.2575 | 0.1659 | **2.679 (−0.357 [−0.964, +0.121])** | 3.579 (−0.271 [−0.772, +0.143]) | 59.4 % | 31.2 % | 4.14 | 565 | 1.44 → 1.39 s |
+| Dasheng-P | 0.35 / 0.175 | 0.1667 | 2.971 (−0.064 [−0.557, +0.350]) | 3.871 (+0.021) | 57.6 % | 29.5 % | 4.84 | 649 | 1.44 → 1.44 s |
+| Dasheng-R | 0.39 / 0.195 | 0.1775 | 2.707 (−0.329 [−0.821, +0.064]) | 3.621 (−0.229 [−0.657, +0.157]) | 56.7 % | 28.1 % | 3.96 | 569 | 1.44 → 1.50 s |
+
+Eligible (both C below baseline): EAT-R, Dasheng-R. **Pick = EAT-R** (d = 0.515, AED 0.2575, b 0.1659), frozen.
+*The 415, EAT-R vs baseline:* C-overlap 1.928 → 2.014, **ΔC-overlap +0.087 [−0.159, +0.357] → fails** (upper CI not < 0);
+C-onset 2.207 → 2.294 (ΔC +0.087 [−0.212, +0.386]); recall 49.7 → 54.4 %; onset-recall 32.7 → 37.4 %; false/min 3.30 → 3.79
+(228 → 262 false spans); shown spans 672 → 763; end error (76 paired events) 1.595 → 1.670 s; strata ΔC complex +0.063
+[−0.262, +0.381] (n 252), random +0.123 [−0.270, +0.491] (n 163). **Not adopted: BEATs stays the stage-4 tagger.** Both newer
+taggers find more of the sounds (recall +5 to +14 points at the same bars), but at BEATs' bar they also raise more false spans,
+and with a bar refitted to BEATs' span count on the 280 the gain did not carry over to the 415. So
+on the 280 the gain appeared only with the refitted bar (at the shipped bars neither tagger was better).
