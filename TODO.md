@@ -5,7 +5,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 ## Running now (28 Sept)
 - [ ] Detector round 9: J2 (local-contrast check) PASSED the 415 (ΔC −0.106 [−0.178, −0.039]); now: fresh-set confirmation (after caches) + DEV simulation. Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
-- [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs 180/422, then PANNs, PE-A-Frame, FlexSED) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
+- [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs, PANNs, PE-A-Frame 422/422; FlexSED 20/422) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
 - [ ] Label "sense traps" (Honk → goose, Toot → car, Caw → crow, …): audit + code the subject/maker/checker on the ontology parent chain; car-horn "sound-wave lines" redraw.
 - [ ] Picture wording 3-arm test (jobs 31330354 prep → 31330355 A+B, 31330356 C): when done, pull results, blind verdicts BEFORE opening key.json, `scripts/picture_sense_sheet.py --phase blind/table/sheet`, results into `docs/picture_sense_test_2026-09-28.md`. Watch the weak slot forms (dental drill "patient's mouth").
 
