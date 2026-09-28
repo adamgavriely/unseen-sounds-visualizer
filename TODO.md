@@ -10,6 +10,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Picture wording 3-arm test: hand table vs VLM free text vs new (a) slot form + official ontology descriptions, (b) mistake mining. `docs/picture_sense_test_2026-09-28.md`
 
 ## Later
+- [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
 - [ ] **Mistake mining for all 215 drawable labels** (one-time, ~4–7 GPU h, at night) — only if the a+b test adopts the new method. Re-run whenever the picture model changes.
 - [ ] Final check on the fresh set for whatever passes round 8 (and 7b), then decide on the detector (BEATs stays unless something passes).
 - [ ] Sync the cluster copy of `src/stage4_audio_event_detection/__init__.py` (missing the BEATs self-veto block) and `config.py` after the round-7b/8 jobs finish.
