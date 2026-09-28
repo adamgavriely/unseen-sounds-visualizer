@@ -254,6 +254,29 @@ button.seek { padding: 2px 8px; border-radius: 6px; white-space: nowrap; font-si
 .famhead { margin: 18px 0 6px; font-size: 16px; scroll-margin-top: 70px; }
 .rule-note { background: var(--warn-bg); border: 1px solid var(--warn-border); border-radius: 10px; padding: 8px 12px; margin: 8px 0; font-size: 14px; }
 
+/* what the detectors heard */
+td.heardcol { min-width: 340px; max-width: 480px; }
+.heard { font-size: 12.5px; line-height: 1.45; }
+.heard .hl { margin: 1px 0; }
+.heard .hl b { color: var(--ink); }
+.own { display: inline-block; font-size: 12px; font-weight: 600; padding: 0 5px; border-radius: 4px; border: 1px solid var(--border); white-space: nowrap; }
+.own.ok { border-color: var(--c-hit); background: color-mix(in srgb, var(--c-hit) 20%, transparent); color: var(--ink); }
+.own.half { border-color: var(--c-diff); background: color-mix(in srgb, var(--c-diff) 22%, transparent); color: var(--ink); }
+.own.low { border-color: var(--c-dup); color: var(--muted); background: transparent; font-weight: 500; }
+.own.nobar { border-color: var(--border); color: var(--ink-2); background: var(--surface-2); font-weight: 500; }
+.heard-note { max-width: 110ch; }
+button.quick {
+  display: block; width: 100%; max-width: 640px; text-align: left; margin: 4px 0 10px;
+  background: var(--surface); border: 2px solid var(--accent); border-radius: 12px; padding: 10px 14px;
+  font-size: 16px; font-weight: 700; color: var(--ink);
+}
+button.quick small { display: block; font-size: 13px; font-weight: 400; color: var(--ink-2); margin-top: 2px; }
+button.quick:hover { background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+button.quick.on { background: color-mix(in srgb, var(--accent) 14%, var(--surface)); }
+.subh { font-size: 14px; margin: 14px 0 6px; }
+td.wrapcell { min-width: 200px; }
+.narrowtw { max-width: 720px; }
+
 /* chart & timeline */
 svg text { fill: var(--ink); font: 12px system-ui, -apple-system, "Segoe UI", sans-serif; }
 svg .muted-t { fill: var(--muted); }
@@ -286,7 +309,7 @@ svg .axisl { stroke: var(--axis); stroke-width: 1; }
 .tl .k-seen { fill: var(--c-seen); stroke: var(--c-seen); }
 .tl .k-unseen { fill: var(--c-unseen); stroke: var(--c-unseen); fill-opacity: 0.08; stroke-dasharray: 3 2; }
 .tl .k-event { fill: var(--c-event); stroke: var(--c-event); fill-opacity: 0.5; stroke-width: 0; }
-.tl .win { fill: var(--c-needed); fill-opacity: 0.10; }
+.tl .win { fill: var(--c-needed); fill-opacity: 0.15; }
 .tl .sec { fill: var(--surface-2); }
 .tl .playhead { stroke: #e34948; stroke-width: 2; }
 .tl text.lab { font-size: 11px; pointer-events: none; }
@@ -332,3 +355,22 @@ summary { cursor: pointer; font-weight: 600; }
   .big { font-size: 22px; }
   th, td { padding: 5px 7px; }
 }
+.basediffs { grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr)); }
+
+/* timeline (lanes) */
+.tl .lanet { font-size: 12px; font-weight: 600; fill: var(--ink-2); }
+.tl .onset { stroke: var(--c-needed); stroke-width: 1.2; stroke-dasharray: 4 3; pointer-events: none; }
+.tl .win { pointer-events: none; }
+.tl rect.kept { stroke: none; cursor: pointer; }
+.tl .hbg { fill: var(--surface); fill-opacity: 0.55; stroke: none; }
+.tl line.hs { stroke-width: 2; stroke-opacity: 0.75; fill: none; }
+.tl rect.a2ibox { fill: transparent; stroke: var(--border); stroke-width: 1; cursor: pointer; }
+.tl rect.a2ihl { fill: none; stroke: #e34948; stroke-width: 3; pointer-events: none; }
+.sw.hatch { border: 1px solid var(--c-hit); background: repeating-linear-gradient(45deg, color-mix(in srgb, var(--c-hit) 70%, transparent) 0 2px, var(--surface) 2px 5px); }
+.tip .tipimg { display: block; width: 120px; height: 120px; object-fit: cover; border-radius: 6px; margin-top: 6px; }
+#tl-ev { margin-top: 6px; }
+a.chip { text-decoration: none; color: var(--ink); }
+a.chip.on { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+.a2inow { position: relative; aspect-ratio: 1 / 1; max-width: 360px; background: var(--surface-2); border-radius: 10px; overflow: hidden; }
+.a2inow img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.a2inow img[hidden] { display: none; }

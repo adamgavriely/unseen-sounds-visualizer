@@ -11,6 +11,9 @@ cannot compute in JavaScript:
   - which augmentation (index) each of ours' pictures belongs to (for the picture thumbnail)
   - gate errors: a needed sound where the VLM voted "visible" at the onset
 
+It also copies the existing-approach result (benchmark/gold/baseline_panns.json: PANNs alone + a picture for every
+detection) into a "baseline" block for the Overview. data.json keeps the key "blind" for the pipeline without gate.
+
 Decides nothing and changes no score. Re-run after data.json changes:
 
     python docs/inspector/build.py
@@ -180,11 +183,42 @@ def sensitivity(d):
     return out
 
 
+def kept_parts(pic, gate, augs):
+    """Parts of a picture's time on screen where its detected sound was not playing: the display keeps a picture up
+    at least MIN_DWELL (1.5 s) and joins repeats of the same sound closer than MERGE_GAP (2.0 s) into one picture
+    (src/stage6_visual_augmentation._display_spans). The sound = the same-label gate stretches (one per burst) and
+    augmentation spans inside the picture. Returns [[a, b, kind]] with kind 'dwell' (after the last burst) or 'join'
+    (between two bursts), or None when no burst of that label was found."""
+    a0, b0 = pic["start"], pic["end"]
+    parts = [tuple(g["stretch"]) for g in gate if g["label"] == pic["label"]]
+    parts += [(float(x["start"]), float(x["end"])) for x in augs if x.get("event_label") == pic["label"] and x.get("augment")]
+    parts = sorted((max(a, a0), min(b, b0)) for a, b in parts if b > a0 - 1e-6 and a < b0 + 1e-6)
+    if not parts:
+        return None
+    merged = []
+    for a, b in parts:
+        if merged and a <= merged[-1][1] + 1e-6:
+            merged[-1][1] = max(merged[-1][1], b)
+        else:
+            merged.append([a, b])
+    out, t = [], a0
+    for a, b in merged:
+        if a - t > 0.05:
+            out.append([round(t, 3), round(a, 3), "join" if t > a0 else "before"])
+        t = max(t, b)
+    if b0 - t > 0.05:
+        out.append([round(t, 3), round(b0, 3), "dwell"])
+    return out
+
+
 def near_gate(snd, gate):
     """gate entries (stretches) of the sound's family that overlap its onset window or its span"""
     lab, on, end = snd["label"], snd["start"], max(snd["end"], snd["start"] + LATE)
     return [k for k, g in enumerate(gate)
             if same_family(g["label"], lab) and g["stretch"][1] >= on - EARLY and g["stretch"][0] <= end]
+
+
+KEPT_STATS = []
 
 
 def main():
@@ -200,12 +234,16 @@ def main():
         for p in ours.get("pictures") or []:
             gk, ga = gate_of_picture(p, gate)
             ai, aa = aug_of_picture(p, gate, augs, gk)
-            der["ours_pics"].append({"gate": gk, "gate_approx": ga, "aug": ai, "aug_approx": aa})
+            kp = kept_parts(p, gate, augs)
+            der["ours_pics"].append({"gate": gk, "gate_approx": ga, "aug": ai, "aug_approx": aa, "kept": kp})
+            KEPT_STATS.append(kp)
         for p in blind.get("pictures") or []:
             gk, ga = gate_of_picture(p, gate)
             # was the same stretch also drawn by ours? (if not, the gate removed it)
             in_ours = any(q["label"] == p["label"] and abs(q["start"] - p["start"]) < 0.05 for q in ours.get("pictures") or [])
-            der["blind_pics"].append({"gate": gk, "gate_approx": ga, "in_ours": in_ours})
+            kp = kept_parts(p, gate, augs)
+            der["blind_pics"].append({"gate": gk, "gate_approx": ga, "in_ours": in_ours, "kept": kp})
+            KEPT_STATS.append(kp)
         for i, s in enumerate(c["sounds"]):
             ng = near_gate(s, gate)
             if ng:
@@ -228,6 +266,14 @@ def main():
                     counts[key] = counts.get(key, 0) + 1
         der["family"] = [family_name(s["label"]) for s in c["sounds"]]
         c["derived"] = der
+    n_none = sum(1 for k in KEPT_STATS if k is None)
+    allp = [x for k in KEPT_STATS if k for x in k]
+    kinds = {}
+    for x in allp:
+        kinds[x[2]] = kinds.get(x[2], 0) + 1
+    too_long = [x for x in allp if (x[2] == "dwell" and x[1] - x[0] > 1.5 + 0.05) or (x[2] == "join" and x[1] - x[0] > 2.0 + 0.05)]
+    print(f"kept-on-screen parts: {len(KEPT_STATS)} pictures, {n_none} with no burst found, parts by kind {kinds}, "
+          f"{len(too_long)} longer than the rule allows (dwell > 1.5 s or join > 2.0 s)")
     d["sensitivity"] = sensitivity(d)
     print("sensitivity (onset rule -> 'any time while the sound plays'):")
     for sp, v in d["sensitivity"].items():
@@ -236,6 +282,32 @@ def main():
                   f"wrong {x['onset']['wrong']}->{x['during']['wrong']}, cost {x['onset']['cost']:.2f}->{x['during']['cost']:.2f}")
     d["build_note"] = NOTE
     d["window"] = [-EARLY, LATE]
+    # existing approaches (one detector alone + a picture for every detection, threshold chosen on DEV), scored on TEST.
+    # Both files share one script, so their keys are named panns_* / ours_minus_panns_* even for PretrainedSED.
+    d["baselines"] = {}
+    for key, fname in (("psed", "baseline_psed.json"), ("panns", "baseline_panns.json")):
+        bp = ROOT / "benchmark" / "gold" / fname
+        try:
+            b = json.loads(bp.read_text(encoding="utf-8"))
+            t = b["test"]
+            d["baselines"][key] = {"threshold": b.get("threshold"), "base": t["panns_every_detection"], "ours": t["ours"],
+                                   "silence": t.get("silence"),
+                                   "diff": {m: t.get("ours_minus_panns_" + m) for m in ("F1", "P", "R", "viewer_cost")}}
+            print(f"baseline {key} (thr {b.get('threshold')}): TEST F1 {t['panns_every_detection']['F1']:.3f} vs ours {t['ours']['F1']:.3f}")
+        except Exception as e:  # the page still works without this block
+            print(f"WARNING: no baseline {key} ({e!r})")
+    # audio-to-image comparison (made by another script): wrap a2i.json into a2i.js if it is there
+    a2i = HERE / "a2i.json"
+    if a2i.exists():
+        try:
+            a = json.loads(a2i.read_text(encoding="utf-8"))
+            (HERE / "a2i.js").write_text("window.A2I = " + json.dumps(a, separators=(",", ":")) + ";\n", encoding="utf-8")
+            print("->", HERE / "a2i.js", f"({len(a.get('clips') or [])} clips)")
+        except Exception as e:
+            print(f"WARNING: a2i.json not read ({e!r}); a2i.js not written")
+    else:
+        (HERE / "a2i.js").write_text("window.A2I = null;\n", encoding="utf-8")
+        print("a2i.json not there yet: the Audio-to-image tab will say 'not ready yet'")
     OUT.write_text("window.INSPECTOR = " + json.dumps(d, separators=(",", ":")) + ";\n", encoding="utf-8")
     print("miss reasons (split, system, reason): count")
     for k in sorted(counts):
