@@ -412,9 +412,99 @@ def heldout(log):
     OUT.write_text(json.dumps(log, indent=1), encoding="utf-8")
 
 
+# ============================================================================= reach diagnosis (lead, after the HOLD; 280 only, descriptive)
+def cands_opt(x, twin="any", min_dur=None, high=False, sv=True):
+    """band candidates with one rule changed. twin: 'any' (shipped: any BEATs 0.175 twin discards) | 'shown' (only a twin
+    with confidence >= 0.35 discards); min_dur; high: keep 0.4-spans that also reach >= 0.8; sv: BEATs self-veto"""
+    fw, ts, labs = x.f
+    bev = beats_raw(x)
+    bp = D.clip_peak(x.b)
+    out = []
+    for e in _extract_events(fw, ts, labs, BAND, None, M.MIN_DUR if min_dur is None else min_dur, low=BAND * M.HYS):
+        if e.confidence >= FBAR and not high:
+            continue
+        tw = [y for y in bev if key(y) == key(e) and y.start - 1.0 <= e.end and e.start - 1.0 <= y.end]
+        if (twin == "any" and tw) or (twin == "shown" and any(y.confidence >= M.DISP for y in tw)):
+            continue
+        if sv and bp.get(key(e), 1.0) < M.B:
+            continue
+        out.append(e)
+    return out
+
+
+def hits(ev, g):
+    return [e for e in ev if same(e.label, g["label"]) and R.E._overlap_ok(e.start, e.end, g["start"], g["end"])]
+
+
+def reach(log):
+    cl, xs, base_evs, brows, brows_d, Sb = M.gate_set("calib", log)
+    xs = [X(x.c, "calib") for x in xs]
+    flags = M.hbd_flags(xs, base_evs)
+    cands = json.loads(cands_path().read_text(encoding="utf-8"))
+    ev_by = {}
+    for i, gi in flags:
+        ev_by.setdefault(i, []).append(gi)
+    reasons, rows = {}, []
+    for i, gis in ev_by.items():
+        x = xs[i]
+        cs = cands_opt(x)
+        assert [[e.label, e.start, e.end, e.confidence] for e in cs] == cands[x.cid]
+        fw, ts, labs = x.f
+        bev = beats_raw(x)
+        bp = D.clip_peak(x.b)
+        for gi in gis:
+            g = x.c["events"][gi]
+            if hits(cs, g):
+                r = "reachable (a candidate hits it)"
+            else:
+                cols = M.fam_cols(labs, g["label"])
+                raw = hits(_extract_events(fw[:, cols], ts, [labs[c] for c in cols], BAND, None, M.MIN_DUR, low=BAND * M.HYS), g)
+                if not raw:
+                    inside = (ts >= g["start"]) & (ts <= g["end"])
+                    if not (inside.any() and fw[inside][:, cols].max() >= BAND):
+                        r = "FlexSED >= 0.4 only outside the event (in the +-1 s margin)"
+                    elif hits(_extract_events(fw[:, cols], ts, [labs[c] for c in cols], BAND, None, 0.0, low=BAND * M.HYS), g):
+                        r = "span shorter than 0.5 s"
+                    else:
+                        r = "other (0.4 span overlaps the event too little)"
+                else:
+                    stage = []
+                    for e in raw:                      # how far each hitting raw span gets through the rules
+                        if e.confidence >= FBAR:
+                            stage.append((0, "span also reaches >= 0.8 (not a band span)")); continue
+                        tw = [y for y in bev if key(y) == key(e) and y.start - 1.0 <= e.end and e.start - 1.0 <= y.end]
+                        if tw:
+                            shown = any(y.confidence >= M.DISP for y in tw)
+                            stage.append((1, "BEATs twin within 1 s, " + ("shown (>= 0.35)" if shown else "weak (< 0.35, not shown)"))); continue
+                        if bp.get(key(e), 1.0) < M.B:
+                            stage.append((2, "BEATs self-veto")); continue
+                        stage.append((3, "other"))
+                    r = max(stage)[1]
+            reasons[r] = reasons.get(r, 0) + 1
+            rows.append({"clip": x.cid, "label": g["label"], "start": g["start"], "end": g["end"], "reason": r})
+    base_n = sum(len(v) for v in cands.values())
+    changes = {"weak twin kept (only a shown twin discards)": {"twin": "shown"}, "min duration 0.25 s": {"min_dur": 0.25},
+               "keep 0.4 spans that reach >= 0.8": {"high": True}, "self-veto off": {"sv": False},
+               "all four": {"twin": "shown", "min_dur": 0.25, "high": True, "sv": False}}
+    ch = {}
+    for name, kw in changes.items():
+        n = nf = reach_n = 0
+        for i, x in enumerate(xs):
+            cs = cands_opt(x, **kw)
+            n += len(cs); nf += sum(M.is_false(e, x.c) for e in D._ev(cs))
+            reach_n += sum(bool(hits(cs, x.c["events"][gi])) for gi in ev_by.get(i, []))
+        ch[name] = {"reachable_of_band": reach_n, "candidates": n, "extra_candidates": n - base_n, "candidates_false": nf}
+        print(f"[reach] {name}: reachable {reach_n}/{len(flags)}, candidates {n} (+{n - base_n}), false {nf}", flush=True)
+    log["reach"] = {"band_pool": len(flags), "base_candidates": base_n,
+                    "base_candidates_false": sum(M.is_false(e, x.c) for x in xs for e in D._ev(cands_opt(x))),
+                    "reasons": reasons, "changes": ch, "events": rows}
+    print(f"[reach] reasons {json.dumps(reasons, indent=1)}", flush=True)
+    OUT.write_text(json.dumps(log, indent=1), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("paraphrases", "prep", "check", "fit", "heldout"))
+    ap.add_argument("step", choices=("paraphrases", "prep", "check", "fit", "heldout", "reach"))
     ap.add_argument("--set", choices=("calib", "heldout"))
     a = ap.parse_args()
     if a.step == "paraphrases":
@@ -426,6 +516,8 @@ def main():
         ok = check(log); sys.exit(0 if ok else "check failed")
     if a.step in ("fit", "heldout") and not check(log):
         sys.exit("caches incomplete or misaligned: stop")
+    if a.step == "reach":
+        reach(log); return
     {"fit": fit, "heldout": heldout}[a.step](log)
 
 

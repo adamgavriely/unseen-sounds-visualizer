@@ -186,3 +186,36 @@ cost is being defined. **So the 415 is not scored for any cell, and DEV and fres
 reported exactly as registered. The picks (R1, R2, R4, R5, R6, R7) will be re-evaluated under the corrected cost before
 anything is sent to the 415. All round-10 caches (DASM, paraphrase and perturbed-audio FlexSED scores, candidate lists)
 exist for both sets, so re-scoring needs no GPU.
+
+## Note 2026-09-28 — why only 9 of the 61 band events can be reached (lead's request; CPU, the 280 only, descriptive; no cell scored, no 415)
+Code: `detector_round10.py reach` (job 31330617), numbers and one row per event in `benchmark/detector_round10.json` →
+`reach`. For each band event missed by every candidate, the raw FlexSED 0.4 spans of its family (`E._same` columns) that hit
+it are followed through the candidate rules; the reason is the rule that stops the span that gets furthest. The 61 events sit
+in 19 clips; one clip (`v5IM8b…`, Dog) holds 15 of them.
+
+| reason | events |
+|---|---|
+| reachable (a candidate hits it) | 9 |
+| the 0.4 span is shorter than 0.5 s (min duration) | 22 (Dog 11, Beep 5, Gunshot 3; 11 in one clip) |
+| BEATs self-veto (BEATs clip-max of the family < 0.1218) | 9 |
+| BEATs twin within 1 s, shown (≥ 0.35) — the shown span misses the event by timing | 7 |
+| BEATs twin within 1 s, weak (< 0.35, not shown) | 4 |
+| a 0.4 span exists but overlaps the event too little | 7 |
+| FlexSED ≥ 0.4 only in the ±1 s margin, not inside the event | 3 |
+| 0.4 span also reaches ≥ 0.8 (so not a band span) | 0 |
+
+One rule changed at a time (base: 209 candidates, 127 false):
+
+| change | band events reachable (of 61) | candidates (extra) | false candidates |
+|---|---|---|---|
+| keep a candidate whose BEATs twin is weak (only a shown twin discards) | 13 (+4) | 260 (+51) | 147 (+20) |
+| min duration 0.25 s | 14 (+5) | 329 (+120) | 209 (+82) |
+| keep 0.4 spans that also reach ≥ 0.8 | 9 (+0) | 273 (+64) | 157 (+30) |
+| self-veto off for candidates | 18 (+9) | 1121 (+912) | 867 (+740) |
+| all four | 31 (+22) | 2168 (+1959) | 1619 (+1492) |
+
+Reading: no single change opens much. The weak-twin rule is the cheapest (+4 events for +20 false candidates, before any
+filter such as R1). Lowering the minimum to 0.25 s reaches only 5 of the 22 short-span events (most are shorter still,
+single barks and beeps) at +82 false candidates. Turning the self-veto off adds 9 events but about 80 false candidates per
+event. "All four" reaches half the band group, but with 10× the candidates, far beyond what R1 can clean (R1 kept 12 false
+of 127).
