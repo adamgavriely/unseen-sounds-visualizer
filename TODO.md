@@ -6,7 +6,6 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 ## Running now (28 Sept)
 - [ ] Detector round 9: J2 (local-contrast check) PASSED the 415 (ΔC −0.106 [−0.178, −0.039]); now: fresh-set confirmation (after caches) + DEV simulation. Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs, PANNs, PE-A-Frame 422/422; FlexSED 20/422) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
-- [ ] Label "sense traps" (Honk → goose, Toot → car, Caw → crow, …): audit + code the subject/maker/checker on the ontology parent chain; car-horn "sound-wave lines" redraw.
 - [ ] Picture wording 3-arm test (jobs 31330354 prep → 31330355 A+B, 31330356 C): when done, pull results, blind verdicts BEFORE opening key.json, `scripts/picture_sense_sheet.py --phase blind/table/sheet`, results into `docs/picture_sense_test_2026-09-28.md`. Watch the weak slot forms (dental drill "patient's mouth").
 
 ## Later
@@ -23,6 +22,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-28 Label sense traps: makers from all ontology parents; multi-sense labels never guessed; Honk → goose; horn sound-wave wording (0429a0e).
 - 2026-09-28 Detector round 7b: SAM-Audio retry fails QC again (music not removed); separation idea closed (6133f4f).
 - 2026-09-28 Detector round 8: 17 cells, none passes the 415; closest I7 local-contrast veto (114fae3).
 - 2026-09-28 Detector rounds 4 (BEATs self-veto replaces PANNs, 84de50b), 5 (EAT/Dasheng fail, 0ba10a6), 6 (DASM fails, 7315606), 7 (SAM-Audio QC stop, fd5444c); audit (20160d4).
