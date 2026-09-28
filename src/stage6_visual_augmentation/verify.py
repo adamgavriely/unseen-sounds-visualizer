@@ -42,7 +42,7 @@ AMBIGUOUS = [
      "confusions": ["a police car with a light bar", "an alarm bell"],
      "rewrite": None, "neg": ""},
     {"name": "smoke_alarm", "sound": {"smoke detector", "smoke alarm"}, "subject": ["smoke detector", "smoke alarm"],
-     "intended": "a smoke detector",
+     "intended": "a smoke detector", "maker": "smoke detector", "noise": "alarm",
      # 28 Sept (Adam): + dome / CCTV camera -- round 3 passed a dome security camera wreathed in smoke
      "confusions": ["a security camera", "a ceiling lamp", "a dome security camera", "a CCTV camera"],
      "rewrite": "a round white smoke detector on a ceiling, sounding its alarm", "neg": "camera, lens",
@@ -50,12 +50,14 @@ AMBIGUOUS = [
      # rewrite drew a real one (round 2, try 3)
      "rewrite_first": True},
     {"name": "alarm_bell", "sound": {"alarm", "fire alarm", "alarm bell"}, "subject": ["alarm bell", "fire alarm"],
-     "intended": "a fire alarm (a bell or alarm box on a wall)",
+     "intended": "a fire alarm (a bell or alarm box on a wall)", "maker": "fire alarm bell", "noise": "alarm",
      "confusions": ["a desk bell (service bell)", "a church bell", "a telephone"],
      "rewrite": "a red fire-alarm bell mounted on a wall, ringing", "neg": "desk bell, service bell, counter"},
     {"name": "horn", "sound": {"toot", "honk", "vehicle horn", "car horn", "honking", "air horn"},
      "subject": ["honk", "horn"],
-     "intended": "a {veh} sounding its horn",
+     # AudioSet "Honk" is a goose (Goose > Fowl): a goose subject is not a horn (PICTURE_MAKER, 28 Sept)
+     "unless_subject": ["goose", "geese"],
+     "intended": "a {veh} sounding its horn", "maker": "{veh}", "noise": "horn",
      "confusions": ["a megaphone or loudspeaker", "a vehicle with a megaphone or loudspeaker on it",
                     "a trumpet or musical horn",
                     # 28 Sept: the sliceB Honk redraw passed with a trumpet-shaped horn stuck in a car's grille
@@ -63,23 +65,23 @@ AMBIGUOUS = [
      "rewrite": "a {veh} on a street with its horn sounding, seen from the front",
      "neg": "megaphone, loudspeaker, bullhorn, trumpet, horn-shaped object, speaker cone"},
     {"name": "steam", "sound": {"steam"}, "subject": ["steam"],
-     "intended": "steam hissing out of a pipe or valve",
+     "intended": "steam hissing out of a pipe or valve", "maker": "jet of steam", "noise": "hissing",
      "confusions": ["a kettle", "smoke from a fire", "a cloud"],
      "rewrite": "white steam hissing out of a metal pipe valve", "neg": "kettle, teapot, cup, pot"},
     {"name": "crowd", "sound": {"crowd", "cheering", "hubbub, speech noise, speech babble"},
      "subject": ["crowd"],
-     "intended": "a crowd of people",
+     "intended": "a crowd of people", "maker": "crowd of people", "noise": "cheering",
      "confusions": ["a flock of birds", "a single person", "a building or landscape"],
      "rewrite": "a crowd of people cheering with raised arms", "neg": "birds, crows, ravens, animals"},
     {"name": "typing", "sound": {"typing", "computer keyboard", "typewriter"}, "subject": ["typing", "keyboard"],
-     "intended": "hands typing on a keyboard",
+     "intended": "hands typing on a keyboard", "maker": "computer keyboard", "noise": "typing",
      "confusions": ["a person's face", "a computer screen"],
      "rewrite": "two hands typing on a computer keyboard, seen from above", "neg": "face, head, mouth"},
     # 28 Sept (Adam): the sliceB rattle passed on try 3 as a ball of yarn. The instrument only: AudioSet's plain
     # "Rattle" is a rattling noise (a loose part, a vehicle), not a thing to draw as a toy.
     {"name": "rattle", "sound": {"rattle (instrument)", "maraca", "maracas"},
      "subject": ["rattle instrument", "baby rattle", "maraca"],
-     "intended": "a rattle or maraca being shaken",
+     "intended": "a rattle or maraca being shaken", "maker": "maraca", "noise": "rattle",
      "confusions": ["a ball of yarn", "a spinning top", "a toy ball"],
      "rewrite": "a hand shaking a wooden maraca, a rattle instrument with a handle",
      "neg": "yarn, wool, thread, spinning top, ball, swirl"},
@@ -174,9 +176,12 @@ def ambiguous_entry(spec, subject: str) -> Optional[dict]:
     subj = (subject or "").lower()
     for e in AMBIGUOUS:
         if names & e["sound"] or any(re.search(r"\b" + re.escape(p), subj) for p in e["subject"]):
+            if getattr(config, "PICTURE_MAKER", False) and any(re.search(r"\b" + re.escape(p), subj)
+                                                               for p in e.get("unless_subject", [])):
+                continue
             veh = _vehicle(spec, subject)
             f = lambda x: x.format(veh=veh) if isinstance(x, str) else x
-            return {**e, "intended": f(e["intended"]), "rewrite": f(e["rewrite"]),
+            return {**e, "intended": f(e["intended"]), "rewrite": f(e["rewrite"]), "maker": f(e.get("maker")),
                     "confusions": [f(c) for c in e["confusions"]]}
     return None
 
@@ -191,6 +196,8 @@ def options_for(spec, subject: str, max_conf: Optional[int] = None) -> Dict:
     entry = ambiguous_entry(spec, subject)
     intended = entry["intended"] if entry else _phrase(subject or spec.source or spec.event_label)
     confusions = list(entry["confusions"]) if entry else []
+    if entry and entry.get("maker") and getattr(config, "PICTURE_LOOKALIKE_VLM", False):
+        confusions = lookalikes(entry["maker"], entry["intended"]) or confusions      # the hand-written ones if the answer is unusable
     cat_words = _words(" ".join([subject or "", intended, getattr(spec, "source", "") or "", spec.event_label]))
     for opt, words in GENERIC:
         if max_conf is not None and len(confusions) >= max_conf:
@@ -315,11 +322,95 @@ def rewrite_first(spec, subject: str) -> bool:
 
 
 def rewrite_for(spec, subject: str) -> Optional[dict]:
-    """The clearer fixed subject for an ambiguous word (try 3 on), with its extra negative words."""
+    """The clearer subject for an ambiguous word (try 3 on), with its extra negative words. PICTURE_LOOK_VLM: written
+    by the VLM from the entry's maker object (describe); None when its answer fails the guards (plain subject)."""
     e = ambiguous_entry(spec, subject)
+    if e and e.get("rewrite") and getattr(config, "PICTURE_LOOK_VLM", False):
+        d = describe(e["maker"], e["noise"], spec) if e.get("maker") else ""
+        return {"subject": d, "neg": ""} if d else None
     if e and e.get("rewrite"):
         return {"subject": e["rewrite"], "neg": e.get("neg", "")}
     return None
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# PICTURE_LOOK_VLM / PICTURE_LOOKALIKE_VLM (Adam, 28 Sept 2026: the hand-written rewrite wording is "too specific").
+# The pipeline VLM, text only, greedy, one answer per (maker, sound) cached for the run.
+DESCRIBE_PROMPT = ("In one short sentence for an image generator, describe what a typical {maker} looks like while it "
+                   "makes its {noise} sound. Name only that object and its visible parts; no other objects, {people}"
+                   "no place, no text. Begin the sentence with: A {maker}")
+LOOKALIKE_PROMPT = ("A picture is meant to show {intended}. What could such a picture be mistaken for? List 3 common "
+                    "objects, comma separated, each with 'a' or 'an'. Answer with the list only.")
+_DESC: Dict = {}
+_LOOK: Dict = {}
+DESCRIBE_LOG: list = []
+
+
+def describe(maker: str, noise: str, spec) -> str:
+    """The VLM's one-sentence look of the maker object while it makes the sound, or "" when a guard refuses it:
+    it must name the maker noun (list), and pass the same word guards as V3.1 -- reason.expand_guard (no other sound
+    source, person or place than the maker and the sound's own names), labels.names_forbidden and, for the words
+    before the maker noun, labels.other_branch_makers."""
+    from src.stage5_cross_modal_analysis import reason as R
+    from src.labels import names_forbidden, other_branch_makers, ancestors
+    src = getattr(spec, "source", "") or spec.event_label
+    key = (maker, noise, src)
+    if key in _DESC:
+        return _DESC[key]
+    human = "Human sounds" in ancestors(src) or src == "Human sounds"
+    mdl, proc = _vlm()
+    prompt = DESCRIBE_PROMPT.format(maker=maker, noise=noise,
+                                    people="" if human else "no people or hands, ")
+    raw = R._ask(mdl, proc, prompt, max_new=80)
+    text = " ".join("".join(c if ord(c) < 0x250 else " " for c in raw).split()).strip().strip('"').rstrip(".")
+    noun = maker.split()[-1].lower()
+    words = _words(text)
+    why = []
+    if not text or len(text.split()) < 4:
+        why.append("empty")
+    if not ({noun, noun + "s", noun + "es"} & words):
+        why.append("no maker noun " + noun)
+    own = _words(maker + " " + noise)            # the maker was chosen (entry / MAKERS): its own words never refused
+    bad = [w for w in R.expand_guard(text, maker + " " + noise, src, spec.event_label)
+           if w not in own and w.rstrip("s") not in own and w[:-2] not in own]         # plural of an allowed word
+    if bad:
+        why.append("guard " + ",".join(bad))
+    nf = [n for n in names_forbidden(text, src, []) if not _words(n) <= own]
+    if nf:
+        why.append("forbidden " + ",".join(nf))
+    alien = other_branch_makers([w for w in re.split(r"[^a-z]+", text.lower()) if w], src)
+    if alien:
+        why.append("other-branch " + ",".join(alien))
+    out = "" if why else text
+    _DESC[key] = out
+    DESCRIBE_LOG.append({"maker": maker, "noise": noise, "source": src, "answer": text, "refused": why, "used": out})
+    print(f"       [verify] describe {maker!r} ({noise}): {text!r} -> {'OK' if not why else 'REFUSED ' + '; '.join(why)}",
+          flush=True)
+    return out
+
+
+def lookalikes(maker: str, intended: str) -> List[str]:
+    """Three look-alikes of the intended picture written by the VLM (text only), for the checker's options; [] if
+    unusable. An answer that is the maker itself (all its words) is dropped."""
+    from src.stage5_cross_modal_analysis import reason as R
+    if intended in _LOOK:
+        return _LOOK[intended]
+    mdl, proc = _vlm()
+    raw = R._ask(mdl, proc, LOOKALIKE_PROMPT.format(intended=intended), max_new=48)
+    raw = " ".join(raw.replace(chr(10), ", ").split())
+    out = []
+    mw = _words(maker) - _FILLER
+    for part in raw.split(","):
+        t = part.strip().strip(".").strip()
+        if not t or mw <= _words(t):
+            continue
+        if not re.match(r"^(a|an)\s", t, re.I):
+            t = ("an " if t[:1].lower() in "aeiou" else "a ") + t
+        out.append(t[0].lower() + t[1:])
+    out = out[:3] if len(out) >= 2 else []
+    _LOOK[intended] = out
+    print(f"       [verify] look-alikes of {intended!r}: {raw!r} -> {out}", flush=True)
+    return out
 
 
 def card_word(spec) -> str:

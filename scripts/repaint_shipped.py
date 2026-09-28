@@ -111,6 +111,74 @@ def kind_of(spec) -> str:
     return "diffusion"
 
 
+def redo_only(a):
+    """--only clip:index ... (with --verify): copy data/work/shipped_v_<tag>/<clip> to data/work/<dest>_<tag>/<clip>
+    and redraw ONLY the listed pictures there, with the flags given (--maker: PICTURE_MAKER on the shipped subject, the
+    VLM on the sound's own frames; --look-vlm: PICTURE_LOOK_VLM). Every other picture and field is copied unchanged;
+    image_path is pointed at the new dir so recomposite.py --require-local-images accepts it. Log: redo.json."""
+    from src.labels import search_query
+    from src.stage2_video_understanding import _sample_frames_at
+    from src.stage5_cross_modal_analysis import reason as R
+    from src.stage6_visual_augmentation import _final_picture, VERIFY_LOG
+    from src.stage6_visual_augmentation import verify as V
+    src_root = _ROOT / "data" / "work" / f"shipped_v_{a.tag}"
+    dst_root = _ROOT / "data" / "work" / f"{a.dest}_{a.tag}"
+    want = {}
+    for x in a.only:
+        clip, idx = x.rsplit(":", 1)
+        want.setdefault(clip, []).append(int(idx))
+    for clip, idxs in want.items():
+        d = dst_root / clip
+        if (d / "redo.json").exists():
+            print(f"[redo] {clip}: done already", flush=True)
+            continue
+        shutil.copytree(src_root / clip, d, dirs_exist_ok=True)
+        raw = json.loads((d / "augmentations.json").read_text(encoding="utf-8"))
+        for r in raw:
+            if r.get("image_path"):
+                r["image_path"] = str(d / "augmentations" / Path(r["image_path"]).name)
+        old_raw = [dict(r) for r in raw]
+        media = json.loads((d / "media.json").read_text(encoding="utf-8"))
+        vp = Path(media["video_path"])
+        from src.types import AugmentationSpec
+        log = []
+        for r in raw:
+            if r["index"] not in idxs:
+                continue
+            assert r.get("augment"), f"{clip}:{r['index']} is not a shown picture"
+            s = AugmentationSpec(**{k: v for k, v in r.items() if k in AugmentationSpec.__dataclass_fields__})
+            old_subject, old_prompt = s.subject, s.image_prompt
+            if config.PICTURE_MAKER:
+                mdl, proc = V._vlm()
+                frames = _sample_frames_at(vp, spec_frames_times(s))
+                s.subject = R.with_maker(s, s.subject, frames, mdl, proc)
+            for f in (d / "augmentations").glob(f"aug_{s.index:03d}_try*.png"):
+                f.unlink()                                      # the old tries belong to the old picture
+            path = d / "augmentations" / f"aug_{s.index:03d}.png"
+            t0 = time.time()
+            _final_picture(s, path, d, search_query(s.subject or s.event_label), config.RESOLUTION,
+                           config.GEN_MODEL, "cuda")
+            v = next((x for x in reversed(VERIFY_LOG) if x["clip"] == clip and x["index"] == s.index),
+                     {"tries": [], "final": "card"})
+            r.update(subject=s.subject, source=s.source, image_prompt=s.image_prompt, image_path=s.image_path,
+                     backend=s.backend)
+            log.append({"index": s.index, "label": s.event_label, "source": s.source, "old_subject": old_subject,
+                        "subject": s.subject, "old_prompt": old_prompt, "prompt": s.image_prompt, "kind": kind_of(s),
+                        "verify": {"n_tries": len(v["tries"]), "final": v["final"], "tries": v["tries"]},
+                        "seconds": round(time.time() - t0, 1)})
+            print(f"   {clip} [{s.index}] {s.event_label}: {old_subject!r} -> {s.subject!r} -> {kind_of(s)} "
+                  f"({len(v['tries'])} tries, {v['final']}, {time.time() - t0:.0f}s)", flush=True)
+        for r0, r1 in zip(old_raw, raw):
+            for k in KEEP:
+                assert r0.get(k) == r1.get(k), f"{clip}: {k} changed for spec {r0.get('index')}"
+        (d / "augmentations.json").write_text(json.dumps(raw, indent=2, ensure_ascii=False), encoding="utf-8")
+        (d / "redo.json").write_text(json.dumps({"flags": {k: getattr(config, k) for k in
+                                                           ("PICTURE_MAKER", "PICTURE_LOOK_VLM", "PICTURE_VERIFY")},
+                                                 "pictures": log, "describe": V.DESCRIBE_LOG,
+                                                 "maker": R.MAKER_LOG}, indent=1, ensure_ascii=False),
+                                     encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", required=True)
@@ -120,6 +188,10 @@ def main():
     ap.add_argument("--clips", nargs="*", default=[])
     ap.add_argument("--phase", choices=["all", "subjects", "draw"], default="all")
     ap.add_argument("--verify", action="store_true", help="PICTURE_VERIFY on, into data/work/shipped_v_<tag>")
+    ap.add_argument("--only", nargs="*", default=[], help="clip:index ... -- redraw only these (needs --verify)")
+    ap.add_argument("--dest", default="shipped_v2", help="with --only: data/work/<dest>_<tag>/")
+    ap.add_argument("--maker", action="store_true", help="PICTURE_MAKER on (with --only)")
+    ap.add_argument("--look-vlm", action="store_true", help="PICTURE_LOOK_VLM on (with --only)")
     a = ap.parse_args()
 
     print("[cfg]", config.use_shipped(), flush=True)
@@ -127,6 +199,16 @@ def main():
     if a.verify:
         config.PICTURE_VERIFY = True
         print("[cfg] PICTURE_VERIFY on, tries", config.PICTURE_VERIFY_TRIES, "VLM", config.VLM_MODEL, flush=True)
+    if a.only:
+        assert a.verify, "--only redraws with the check on"
+        if a.maker:
+            config.PICTURE_MAKER = True
+        if a.look_vlm:
+            config.PICTURE_LOOK_VLM = True
+        print("[cfg] PICTURE_MAKER", config.PICTURE_MAKER, "PICTURE_LOOK_VLM", config.PICTURE_LOOK_VLM,
+              "PICTURE_LOOKALIKE_VLM", config.PICTURE_LOOKALIKE_VLM, "->", a.dest, flush=True)
+        redo_only(a)
+        return
     src_root = _ROOT / "data" / "work" / f"protocol_proposed_{a.tag}"
     dst_root = _ROOT / "data" / "work" / (f"shipped_v_{a.tag}" if a.verify else f"shipped_{a.tag}")
     stems = sorted(p.name for p in src_root.iterdir() if (p / "augmentations.json").exists())

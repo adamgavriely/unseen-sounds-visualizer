@@ -120,7 +120,7 @@ def items():
     return out
 
 
-def phase_check():
+def phase_check(out_name: str = "results.json"):
     from PIL import Image
     from src.stage6_visual_augmentation import verify as V
     res = []
@@ -140,22 +140,29 @@ def phase_check():
         print(f"{key:55s} {'OK ' if row['ok1'] else 'REJ'} {'OK ' if row['ok2'] else 'REJ'} "
               f"picked={row['pass1']['picked']!r} / {row['pass2']['picked']!r} text={row['ocr']['words']} "
               f"vlm_text={row['vlm_text']} saw={row['saw']!r}", flush=True)
-    (OUT / "results.json").write_text(json.dumps(res, indent=1, ensure_ascii=False), encoding="utf-8")
+    (OUT / out_name).write_text(json.dumps(res, indent=1, ensure_ascii=False), encoding="utf-8")
     print(f"[validate] {len(res)} pictures checked in {time.time() - t0:.0f}s", flush=True)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--phase", choices=["draw", "check", "all"], default="all")
+    ap.add_argument("--lookalike-vlm", action="store_true",
+                    help="PICTURE_LOOKALIKE_VLM on (the AMBIGUOUS look-alikes written by the VLM), into --out-name")
+    ap.add_argument("--out-name", default="results.json")
     a = ap.parse_args()
     print("[cfg]", config.use_shipped(), flush=True)
+    if a.lookalike_vlm:
+        config.PICTURE_LOOKALIKE_VLM = True
+        assert a.out_name != "results.json", "keep the round-2 baseline: write the look-alike run to another file"
+    print("[cfg] PICTURE_LOOKALIKE_VLM", config.PICTURE_LOOKALIKE_VLM, "->", a.out_name, flush=True)
     print("[cfg] VLM", config.VLM_MODEL, "GEN", config.GEN_MODEL, flush=True)
     config.DEVICE = "cuda"
     OUT.mkdir(parents=True, exist_ok=True)
     if a.phase in ("draw", "all"):
         phase_draw()
     if a.phase in ("check", "all"):
-        phase_check()
+        phase_check(a.out_name)
 
 
 if __name__ == "__main__":

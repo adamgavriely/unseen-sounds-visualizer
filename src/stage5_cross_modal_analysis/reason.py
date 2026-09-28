@@ -1021,6 +1021,83 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
     return phrase or thing
 
 
+# PICTURE_MAKER (Adam, 28 Sept 2026): "If the sound is already an object (ambulance, bird, frog, car) it is easy. If it
+# is an action (honk, chirp, knock, bang...), the picture must show the OBJECT that makes the sound. If several objects
+# could make it, use context from the video to choose." Audit of the 82 shipped pictures: 5 subjects named only the
+# action ("laughter" x2, "applause", "run", "typing"). Cause: every guard in _depict_v31 that empties the phrase falls
+# back to the bare head word, and the head-word guard misses inflections and synonyms ("A man laughing" does not name
+# "laughter", "People clapping" does not name "applause"). Fix: for the action labels below, a subject that names none
+# of the makers gets one. One maker -> its fixed phrase. Several makers (ontology or word lists) -> the VLM picks one
+# from the sound's own frames (same model, same frames as RESOLVE; one closed question, asked only here), exact match
+# against the list; unsure / no match -> the maker the subject already names, else the default (first in the list).
+# Key: the drawn source (spec.source) or the event label. Value: [(maker words, fixed subject)], default first.
+_PERSON = ("person", "man", "woman", "people", "child", "boy", "girl", "men", "women", "children")
+MAKERS = {
+    "Laughter": [(_PERSON, "a person laughing")],
+    "Giggle": [(_PERSON, "a person giggling")],
+    "Chuckle, chortle": [(_PERSON, "a person chuckling")],
+    "Belly laugh": [(_PERSON, "a person laughing loudly")],
+    "Snicker": [(_PERSON, "a person snickering")],
+    "Baby laughter": [(("baby", "infant"), "a baby laughing")],
+    "Applause": [(_PERSON + ("audience", "crowd", "hands"), "an audience clapping their hands")],
+    "Clapping": [(_PERSON + ("hands",), "two hands clapping")],
+    "Run": [(_PERSON + ("runner", "feet"), "a person running")],
+    "Walk, footsteps": [(_PERSON + ("feet", "shoes", "walker"), "a person walking")],
+    "Typing": [(("keyboard",), "hands typing on a computer keyboard"),
+               (("typewriter",), "hands typing on a typewriter")],
+    # AudioSet "Honk" is the GOOSE's call (Goose > Fowl > Animal); "honk" is also the word lists' car horn
+    # (verify.AMBIGUOUS "horn"). Two makers, so the frames choose. Default: the ontology's goose.
+    "Honk": [(("goose", "geese"), "a goose honking with its beak open"),
+             (("car", "bus", "truck", "vehicle", "van", "taxi"), "a car sounding its horn")],
+    "Toot": [(("car",), "a car sounding its horn"), (("bus",), "a bus sounding its horn"),
+             (("truck", "lorry"), "a truck sounding its horn"), (("motorcycle", "scooter"), "a motorcycle sounding its horn")],
+    "Vehicle horn, car horn, honking": [(("car",), "a car sounding its horn"), (("bus",), "a bus sounding its horn"),
+                                        (("truck", "lorry"), "a truck sounding its horn"),
+                                        (("motorcycle", "scooter"), "a motorcycle sounding its horn")],
+}
+MAKER_PROMPT = (
+    "A sound detector heard: {sound}. What makes it may be out of view. These frames show where the video is."
+    + chr(10) +
+    "Which of these most likely made this sound here? {options}"
+    + chr(10) +
+    "If none of them is visible or suggested by the place, or you are not sure, answer exactly: unsure. "
+    "Otherwise answer with one option exactly as written."
+)
+MAKER_LOG: list = []          # one entry per changed subject (clip-agnostic; the caller adds the clip)
+
+
+def _maker_named(phrase: str, words) -> bool:
+    got = set("".join(c if c.isalnum() else " " for c in (phrase or "").lower()).split())
+    return any(w in got or w + "s" in got for w in words)
+
+
+def with_maker(spec, phrase: str, frames, mdl, proc) -> str:
+    """PICTURE_MAKER: the subject for an action sound names the object that makes it (see MAKERS)."""
+    src = getattr(spec, "source", "") or spec.event_label
+    makers = MAKERS.get(src) or MAKERS.get(spec.event_label)
+    if not makers:
+        return phrase
+    named = [i for i, (words, _) in enumerate(makers) if _maker_named(phrase, words)]
+    pick, how = None, ""
+    if len(makers) > 1 and frames and mdl is not None:
+        names = [m[0][0] for m in makers]
+        ans = _clean_phrase(_ask(mdl, proc, MAKER_PROMPT.format(sound=src, options=", ".join(names)),
+                                 images=frames, max_new=8), max_words=3).lower()
+        if ans in names:
+            pick, how = names.index(ans), "frames"
+        print("       [stage5] maker from frames: " + src + " -> " + (ans or "-"), flush=True)
+    if pick is None and named:
+        return phrase                                    # unsure: keep the maker the subject already names
+    if pick is not None and pick in named:
+        return phrase                                    # the frames agree with the subject
+    if pick is None:
+        pick, how = 0, ("default" if len(makers) > 1 else "only maker")
+    new = makers[pick][1]
+    MAKER_LOG.append({"label": spec.event_label, "source": src, "old": phrase, "new": new, "how": how})
+    print("       [stage5] maker (" + how + "): " + src + ": " + repr(phrase) + " -> " + repr(new), flush=True)
+    return new
+
+
 # GP-4 two-step prompt (five-panel, 2026-09-25): the frames choose the thing (RESOLVE, above); a TEXT-ONLY
 # rewrite may then lengthen the prompt to the 40-80 words these generators were trained on, describing only
 # HOW the thing looks at the moment it makes the sound. It never sees the frames and never chooses the noun;
@@ -1422,6 +1499,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             phrase = phrase or _depict_v3(spec, place, mdl, proc) or (
                 (getattr(spec, "source", "") or spec.event_label).split(",")[0].split("(")[0].strip()
                 + " making its sound")
+            if getattr(config, "PICTURE_MAKER", False):
+                phrase = with_maker(spec, phrase, spec_frames.get(id(spec)), mdl, proc)
             spec.subject = phrase
             spec.reason += " | depiction (v3, source " + (getattr(spec, "source", "") or "-") + "): " + phrase
             spec.image_prompt = spec.subject

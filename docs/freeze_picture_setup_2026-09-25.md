@@ -113,3 +113,53 @@ pictures caught, 33/33 deliberately wrong pictures caught, 3/68 good pictures re
 replaces it. The sealed files stay unopened. The picture claim rests on the blind human glance test round 2
 (14 → 26 of 54, +22 points) and on the loop's validation; the thesis states that the loop is a model check, not a
 human recognition test, and that the final human confirmation was not run.
+
+## Amendment, 2026-09-28 (after the sitting was cancelled) — the maker rule and VLM-written looks (Adam)
+
+**Rule (Adam, 28 Sept).** If the sound is already an object (ambulance, bird, frog, car), draw it. If the sound is an
+action (honk, chirp, knock, bang, laughter, applause, run, typing), the picture must show the OBJECT that makes it. If
+several objects could make it, the video decides: the VLM picks one maker from the sound's own frames.
+
+**How (config `PICTURE_MAKER`, `reason.with_maker`, table `reason.MAKERS`).** Only for the action labels in the table.
+If the V3.1 subject already names one of the makers, it stays. Otherwise: one maker -> its fixed subject; several makers
+-> one closed question to the same VLM on the same six frames as RESOLVE ("which of these ... or unsure"), answer
+matched exactly against the list; unsure or no match -> the maker the subject names, else the default (first):
+
+| label (source) | makers (default first) |
+|---|---|
+| Laughter, Giggle, Chuckle, Belly laugh, Snicker | a person |
+| Baby laughter | a baby |
+| Applause | an audience clapping their hands |
+| Clapping | two hands |
+| Run / Walk, footsteps | a person running / walking |
+| Typing | computer keyboard (hands typing), typewriter |
+| Honk (AudioSet: the goose's call) | goose, car |
+| Toot / Vehicle horn | car, bus, truck, motorcycle |
+
+Cause of the five action-only subjects in the 82 shipped pictures: every guard in `_depict_v31` that empties the phrase
+falls back to the bare head word, and the head-word guard misses inflections and synonyms ("A man laughing" does not
+name "laughter"). Burst cards (Whoosh, Thud, Bang, Smack, Whack) are unchanged: open question whether they need a maker.
+
+**VLM-written looks (config `PICTURE_LOOK_VLM`, `verify.describe`).** Adam: the hand-written rewrite wording in the
+checker's AMBIGUOUS table is "too specific". The clearer wording used by the redraw loop (from try 3, from try 1 for the
+smoke detector) is written by the VLM, text only: "In one short sentence for an image generator, describe what a
+typical <maker> looks like while it makes its <sound> sound ...". Guards (lists, no model judgement): it must name the
+maker noun and pass `expand_guard`, `names_forbidden` and `other_branch_makers` (the maker's own words allowed);
+otherwise the plain subject is used. Look-alike options written the same way (`PICTURE_LOOKALIKE_VLM`) are adopted only
+if the checker validation still meets its four targets.
+
+**Results (28 Sept).** Audit of the 82 shipped pictures: 70 subjects name a maker object, 5 name only the action
+(applause, laughter x2, run, typing), 7 are a sound's own visible form (explosion x3, thunder x2, rain x2), 0 scene only.
+With `PICTURE_MAKER` the 5 action-only subjects change (applause -> "an audience clapping their hands", laughter ->
+"a person laughing" x2, run -> "a person running", typing -> "hands typing on a computer keyboard", the frames picked the
+keyboard); all 5 pass the check on try 1 and are fine by eye. No other subject changes. **Adopted: `PICTURE_MAKER` on in
+`use_shipped()`**; the 5 inspector pictures and their videos are redrawn (`data/work/shipped_vm_<tag>`); no score changes.
+`PICTURE_LOOK_VLM`: **not adopted**. On the 12 redraws that reach the rewrite, it was worse by eye than the hand-written
+wording: both DEV fire-alarm bells and the steam fell to word cards (the VLM's look was refused by the guard for
+"hammer", and a plume of steam reads as a cloud), the crowd became a giant head in a crowd, the two smoke detectors look
+like a fan or a speaker, the rattle a bowl of seeds. The hand-written rewrites stay. `PICTURE_LOOKALIKE_VLM`: **not
+adopted** -- checker validation 3/7 known-bad caught (target 7/7), 29/33 wrong caught (33/33), 2/68 good rejected,
+108/115 same on reshuffle; the hand-written look-alikes stay. Horn wordings on the sliceB Honk clip (2 seeds each):
+"driver's hand pressing the horn on the steering wheel" 0/4 pass (an interior close-up of a hand), "a car seen from the
+front with curved sound-wave lines coming out of its front grille" 4/4 pass and clear by eye, a goose (AudioSet's Honk)
+2/2 pass; not adopted until Adam chooses (Honk = goose or car horn).

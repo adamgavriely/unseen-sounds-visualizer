@@ -227,6 +227,17 @@ PICTURE_FINAL = False
 # it on (Adam, 28 Sept 2026, after validation).
 PICTURE_VERIFY = False
 PICTURE_VERIFY_TRIES = 5      # Adam, 28 Sept: 5 tries, each refined by the last refusal, then a word card
+# 2026-09-28 (Adam's rule, docs/freeze_picture_setup_2026-09-25.md, amendment "after the sitting was cancelled"): an
+# action sound (laughter, applause, run, typing, honk) is drawn as the OBJECT that makes it; several possible makers ->
+# the VLM picks from the sound's frames, else the maker the subject names, else a fixed default (reason.MAKERS).
+PICTURE_MAKER = False
+# 2026-09-28 (Adam: the hand-written rewrite wording is "too specific"): the clearer wording used by the redraw loop is
+# written by the VLM (text only) from the maker object and the sound, with list guards; fallback the plain subject
+# (verify.describe). Off = the hand-written AMBIGUOUS rewrites.
+PICTURE_LOOK_VLM = False
+# the checker's look-alike options for the AMBIGUOUS entries written by the VLM too (verify.lookalikes); adopted only if
+# scripts/verify_validate.py still meets the four validation targets
+PICTURE_LOOKALIKE_VLM = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time
@@ -398,7 +409,11 @@ def use_shipped() -> dict:
                  # 2/68 good rejected, 115/115 same on reshuffle; round 2, all generic options + trumpet-horn confusion
                  # + umbrella rain template: 7/7, 33/33, 3/68, 113/115; src/stage6_visual_augmentation/verify.py).
                  # Needs the VLM next to the generator (one H200).
-                 ("PICTURE_VERIFY", True)):
+                 ("PICTURE_VERIFY", True),
+                 # Adam's maker rule (28 Sept, after the sitting was cancelled): an action sound is drawn as the object
+                 # that makes it. Redraw of the 5 changed inspector pictures: all pass try 1, all fine by eye.
+                 # PICTURE_LOOK_VLM stays off: its redraws were worse by eye (2 fire alarms + steam fell to word cards).
+                 ("PICTURE_MAKER", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
