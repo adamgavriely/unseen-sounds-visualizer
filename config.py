@@ -343,6 +343,7 @@ V4 = {
 FLEXSED_BAR = 0.0
 FLEXSED_FAMILY_BARS = None    # amendment 11: path to the per-family bars fitted on the AudioSet calibration set
 PANNS_VETO = 0.0              # amendment 16: a third detector settles spans only FlexSED raised
+BEATS_SELF_VETO = 0.0         # round 4: BEATs' own clip-max settles them instead (0.1218 in use_shipped; PANNs off)
 FLEXSED_VETO = 0.0            # amendment 10: drop a label the second detector never hears in the clip
 FLEXSED_CORROB = None         # amendment 22: (beats_min, panns_min, window_s) -- FlexSED-only spans need a nearby second detector
 UNION_WEAK_TWIN = "absorb"      # amendment 22 cell F: "ignore" = a sub-display BEATs twin no longer swallows a FlexSED span
@@ -391,7 +392,8 @@ def use_shipped() -> dict:
     setattr(me, "CONFIDENCE_FADE", False)
     changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
     setattr(me, "PICTURE_MIN_CONF", 0.40)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.5), ("KINSHIP_DIRECTED", True)):
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.5), ("KINSHIP_DIRECTED", True),
+                 ("BEATS_SELF_VETO", 0.1218), ("PANNS_VETO", 0.0)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

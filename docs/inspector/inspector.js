@@ -533,21 +533,26 @@
       if (!S[g]) return;
       ['ours', 'blind', 'silence'].forEach(function (s) { rows.push({ g: g, s: s, x: S[g][s] }); });
     });
-    function ar(a, b, f) { f = f || function (v) { return v; }; return f(a) + (a === b ? '' : ' → <b>' + f(b) + '</b>'); }
+    function ar(a, b, f, c) {
+      f = f || function (v) { return v; };
+      var t = f(a) + (a === b ? '' : ' → ' + f(b));
+      return c === undefined ? t : t + ' → <b>' + f(c) + '</b>';
+    }
     var h = '<div class="tw"><table class="results"><thead><tr><th>split</th><th>system</th><th class="num">hits (onset rule → while playing)</th><th class="num">misses</th>' +
-      '<th class="num">wrong pictures</th><th class="num">F1</th><th class="num">viewer cost / clip</th></tr></thead><tbody>';
+      '<th class="num">wrong pictures (… → + repeats fine)</th><th class="num">F1 (… → + repeats fine)</th><th class="num">viewer cost / clip (… → + repeats fine)</th></tr></thead><tbody>';
     rows.forEach(function (r, k) {
-      var o = r.x.onset, d = r.x.during;
+      var o = r.x.onset, d = r.x.during, q = r.x.during_rep || d;
       var first = k % 3 === 0;
       h += '<tr' + (r.s === 'ours' ? ' class="ours"' : '') + '><td>' + (first ? esc(r.g) + (r.g.indexOf('TEST') >= 0 ? ' ' + badge() : '') : '') + '</td><td>' + sysName(r.s) + '</td>' +
         '<td class="num">' + ar(o.hits, d.hits) + ' <span class="muted">of ' + (o.hits + o.misses) + '</span></td><td class="num">' + ar(o.misses, d.misses) + '</td>' +
-        '<td class="num">' + ar(o.wrong, d.wrong) + '</td><td class="num">' + ar(o.F1, d.F1, pct) + '</td><td class="num">' + ar(o.cost, d.cost, f2) + '</td></tr>';
+        '<td class="num">' + ar(o.wrong, d.wrong, null, q.wrong) + '</td><td class="num">' + ar(o.F1, d.F1, pct, q.F1) + '</td><td class="num">' + ar(o.cost, d.cost, f2, q.cost) + '</td></tr>';
     });
     h += '</tbody></table></div>';
     var t = S.TEST;
     function order(k) { return ['ours', 'blind', 'silence'].sort(function (a, b) { return t[a][k].cost - t[b][k].cost; }).map(sysName).join(' < '); }
     if (t) h += '<p class="sentence">On TEST the relaxed rule adds ' + (t.ours.during.hits - t.ours.onset.hits) + ' hits to ours and ' + (t.blind.during.hits - t.blind.onset.hits) +
-      ' to the pipeline without gate (each one also removes a wrong picture). Cost order with the scoring rule: <b>' + order('onset') + '</b>; with the relaxed rule: <b>' + order('during') + '</b>. ' +
+      ' to the pipeline without gate (each one also removes a wrong picture). Cost order with the scoring rule: <b>' + order('onset') + '</b>; with the relaxed rule: <b>' + order('during') + '</b>; when a picture that comes back while its sound still plays also counts as fine (' +
+      (t.ours.during.wrong - (t.ours.during_rep || t.ours.during).wrong) + ' such repeats for ours): <b>' + order('during_rep') + '</b>. ' +
       'See the <a href="#/mistakes/late">late or early pictures</a> to judge each case.</p>';
     host.innerHTML = h;
   }

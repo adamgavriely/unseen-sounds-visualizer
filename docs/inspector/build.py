@@ -296,7 +296,8 @@ def sensitivity(d):
     for gname, splits in groups.items():
         out[gname] = {}
         for sysn in ("ours", "blind", "silence"):
-            acc = {"onset": {"hits": 0, "misses": 0, "wrong": 0}, "during": {"hits": 0, "misses": 0, "wrong": 0}, "clips": 0}
+            acc = {"onset": {"hits": 0, "misses": 0, "wrong": 0}, "during": {"hits": 0, "misses": 0, "wrong": 0},
+                   "during_rep": {"hits": 0, "misses": 0, "wrong": 0}, "clips": 0}
             for c in d["clips"]:
                 if c["split"] not in splits:
                     continue
@@ -313,7 +314,7 @@ def sensitivity(d):
                     h = sum(1 for o in outs if o and o["outcome"] == "hit")
                     m = sum(1 for o in outs if o and o["outcome"] == "miss")
                     w = sum(1 for p in pics if p["class"].startswith("wrong"))
-                conv, used = 0, set()
+                conv, used, conv_ids = 0, set(), set()
                 for i in sorted(range(len(outs)), key=lambda i: gold[i]["start"]):
                     if not (outs[i] and outs[i]["outcome"] == "miss"):
                         continue
@@ -322,11 +323,23 @@ def sensitivity(d):
                              and same_family(p["label"], s["label"]) and s["start"] - EARLY <= p["start"] <= max(s["end"], s["start"] + LATE)]
                     if cands:
                         j = min(cands, key=lambda j: abs(pics[j]["start"] - s["start"]))
-                        used.add(j); conv += 1
-                for k, v in (("onset", (h, m, w)), ("during", (h + conv, m - conv, w - conv))):
+                        used.add(j); conv += 1; conv_ids.add(i)
+                # Adam, 28 Sept ("3 yes"): a same-family picture that comes BACK while a needed sound that already has
+                # its picture is still playing is a repeat (the sound restarted), not a wrong picture
+                have = [i for i in range(len(outs)) if outs[i] and outs[i]["outcome"] in ("hit", "miss")
+                        and (outs[i]["outcome"] == "hit" or i in conv_ids)]
+                rep = 0
+                for j, p in enumerate(pics):
+                    if j in used or not p["class"].startswith("wrong"):
+                        continue
+                    if any(same_family(p["label"], gold[i]["label"]) and gold[i]["start"] - EARLY <= p["start"] <= gold[i]["end"]
+                           for i in have):
+                        used.add(j); rep += 1
+                for k, v in (("onset", (h, m, w)), ("during", (h + conv, m - conv, w - conv)),
+                             ("during_rep", (h + conv, m - conv, w - conv - rep))):
                     acc[k]["hits"] += v[0]; acc[k]["misses"] += v[1]; acc[k]["wrong"] += v[2]
             n = max(1, acc["clips"])
-            for k in ("onset", "during"):
+            for k in ("onset", "during", "during_rep"):
                 a = acc[k]
                 shown = a["hits"] + a["wrong"]
                 a["P"] = a["hits"] / shown if shown else None

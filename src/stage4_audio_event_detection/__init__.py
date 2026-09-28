@@ -334,6 +334,20 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             # differently, scores median 0.424 where FlexSED is right and 0.026 where it is wrong.
             # The guard is the same as before -- a span BOTH detectors raised is never touched -- so
             # this can only remove spans that rest on one model's word alone.
+            # Round 4 (docs/prereg_v4.md, 2026-09-28): BEATs' own clip-max for the family settles FlexSED-only spans
+            # in place of PANNs -- the bar b keeps the same share PANNs kept on the 280; held-out 415 dC +0.005
+            # [-0.048, +0.067], recall 49.7 vs 49.1 %. Same identity guard as the PANNs veto below.
+            bveto = float(getattr(config, "BEATS_SELF_VETO", 0) or 0)
+            if bveto > 0 and backend == "BEATs":
+                bpeak = {}
+                for i, lab in enumerate(labels):
+                    k = canonical(lab)
+                    bpeak[k] = max(bpeak.get(k, 0.0), float(framewise[:, i].max()))
+                flex_only = {id(e) for e in fresh}
+                before3 = len(events)
+                events = [e for e in events if id(e) not in flex_only or bpeak.get(key(e), 1.0) >= bveto]
+                print(f"       [stage4] BEATs self-veto (b {bveto}) on FlexSED-only spans: "
+                      f"dropped {before3 - len(events)} span(s)", flush=True)
             veto2 = float(getattr(config, "PANNS_VETO", 0) or 0)
             if veto2 > 0:
                 try:
