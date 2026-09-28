@@ -104,3 +104,12 @@ bell → change ringing, pigeon → coo, telephone bell ringing → ringtone, ra
 emergency vehicle → siren. By eye, three of the six make the drawn noun vaguer (train, siren ×2), one is the same bird's
 call, and two could help (change ringing; ringtone for the phone that was drawn as a desk bell). Reported as future work; no
 micro-sitting before submission, and nothing changes in the frozen setup.
+
+## Amendment, 2026-09-28 — the confirmation sitting is cancelled (Adam)
+
+Adam's decision: the sealed confirmation sitting (GP-4 step 6) will not be held. The picture check-and-redraw loop
+(`src/stage6_visual_augmentation/verify.py`, PICTURE_VERIFY on in `use_shipped()`; validated before use: 7/7 named bad
+pictures caught, 33/33 deliberately wrong pictures caught, 3/68 good pictures rejected, 113/115 same answer on reshuffle)
+replaces it. The sealed files stay unopened. The picture claim rests on the blind human glance test round 2
+(14 → 26 of 54, +22 points) and on the loop's validation; the thesis states that the loop is a model check, not a
+human recognition test, and that the final human confirmation was not run.
