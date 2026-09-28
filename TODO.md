@@ -4,7 +4,7 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
-- [ ] Detector round 9 — local-contrast veto on BEATs-only spans (J1) and J1 + I7 (J2); pick on 280, then 415; if it passes, stop before the fresh set. `docs/prereg_round9_contrast.md`
+- [ ] Detector round 9: J2 (local-contrast check) PASSED the 415 (ΔC −0.106 [−0.178, −0.039]); now: fresh-set confirmation (after caches) + DEV simulation. Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs 180/422, then PANNs, PE-A-Frame, FlexSED) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
 - [ ] Label "sense traps" (Honk → goose, Toot → car, Caw → crow, …): audit + code the subject/maker/checker on the ontology parent chain; car-horn "sound-wave lines" redraw.
 - [ ] Picture wording 3-arm test: hand table vs VLM free text vs new (a) slot form + official ontology descriptions, (b) mistake mining. `docs/picture_sense_test_2026-09-28.md`
