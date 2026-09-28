@@ -125,3 +125,40 @@ any change is a new, separately declared test.
 ## Results
 
 (filled in after the run, below this line)
+
+Run: jobs 31330354 (prep + mining), 31330355 (A, B), 31330356 (C), all COMPLETED. 32 sounds, 0 swaps. By-eye verdicts
+were written blind (71 pictures, random ids, `verdicts.json` before `key.json`). Contact sheet:
+`docs/picture_sense_test/index.html`.
+
+| arm | sounds | pass at try 1 | pass within 5 | word cards | by eye right | by eye wrong |
+|---|---|---|---|---|---|---|
+| **A hand table (shipped)** | known 7 | 2 | 7 | 0 | **7** | 0 |
+| B VLM free text | known 7 | 2 | 5 | 2 | 3 | 2 |
+| C new (slots + mining) | known 7 | 2 | 3 | 4 | 3 | 0 |
+| **A hand table (shipped)** | unseen 25 | 16 | 19 | 6 | **17** | 2 |
+| B VLM free text (= A by construction) | unseen 25 | 16 | 19 | 6 | 17 | 2 |
+| C new (slots + mining) | unseen 25 | 16 | 19 | 6 | 17 | 2 |
+
+C's own table-free checker passed 2/3 of its known pictures and 17/19 of its unseen pictures.
+
+**Decision (pre-set rule): C does NOT replace A.** Rule 1 fails (known: C 3 < A 7). Rule 2 holds (unseen: 17 = 17
+right, 6 = 6 cards). A stays.
+
+Where the arms differ:
+- **Typing.** A: hands on a keyboard, passed at try 1. C: its slot sentence has no hands (the no-people guard), and
+  mining added "hands" as a negative word. So C drew a keyboard alone five times. The fixed question expects "hands
+  typing on a keyboard", so every try was refused and C ended with a word card. This is partly a checker mismatch:
+  a keyboard alone is not a wrong picture.
+- **Fire alarm.** A: a red alarm bell on a wall (try 3, the table rewrite). C: the slot object was just "alarm", so all 5
+  tries drew a glowing alarm clock and it ended as a word card. B also ended as a word card.
+- **Car horn.** A and B: a car with sound-wave lines (try 3). C: the slots were refused ("driver's finger") and
+  mining found nothing, so C had no new wording and ended as a word card.
+- **Unseen.** The only differences were Chorus effect (A card, C a correct effects unit), Stomach rumble (A a wrong
+  picture, a face in a belly; C card) and Miscellaneous sources (A card; C a wrong picture, a ball of twigs). They
+  even out.
+
+Weak points of C seen here (for a possible later, separately declared test):
+- the object slot can be too generic ("alarm");
+- the no-hands guard fights human-action makers (typing);
+- the mining judge marks the right thing as wrong, so it becomes a negative word: "phone" for Dial tone, "water" for
+  Splash, "man" for Battle cry.
