@@ -2204,3 +2204,7 @@ cost 3.20; ours 16/43, 25 wrong, P 0.39, R 0.37, F1 0.381, cost 2.63. Ours − P
 **Same baseline with a state-of-the-art detector (2026-09-28, before the number; Adam: PANNs is old).** PretrainedSED
 (Schmid et al., CP-JKU, ICASSP 2025; BEATs backbone fine-tuned frame by frame on AudioSet-Strong, 447 classes) alone, every
 drawable detection drawn, no gate; same threshold grid chosen on DEV by cost at β = 2; TEST once. `baseline_panns.py --model psed`.
+**Result (`benchmark/gold/baseline_psed.json`; its keys say "panns_every_detection" because the script is shared).** DEV
+picked 0.5 (grid top). TEST: PretrainedSED alone 6/43 hits, 41 wrong pictures, P 0.13, R 0.14, F1 0.133, cost 3.83. Ours −
+PretrainedSED: **F1 +0.248 [+0.100, +0.421], cost −1.200 [−2.168, −0.300], precision +0.263 [+0.093, +0.472], recall +0.233
+[+0.073, +0.425]** — all four significant.
