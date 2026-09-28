@@ -2298,3 +2298,80 @@ C-overlap 1.923 → 1.928, **ΔC +0.005 [−0.048, +0.067]**, C-onset 2.193 → 
 +0.067 < +0.1; recall ≥ shipped − 0.5 points): PANNs can be dropped** — the BEATs self-veto at b = 0.1218 does the same job
 within the pre-set margin. The two vetoes disagree on about a quarter of the spans but trade equal numbers each way, so the cost
 does not move. Not yet applied in `src/` (Adam's call).
+
+## 2026-09-28 — detector round 5 (EAT, Dasheng) (Adam's question; written before any number)
+
+**Question.** Does a newer AudioSet tagger beat BEATs iter3+ AS2M as the main (framewise) tagger in the stage-4 stack? Two
+candidates, official weights only: **A = EAT-large** fine-tuned on AS2M (HF `worstchan/EAT-large_epoch20_finetune_AS2M`,
+linked from github.com/cwx-worst-one/EAT) and **B = Dasheng-base** AudioSet fine-tuned (Zenodo `dasheng_audioset_mAP497.pt`,
+github.com/RicherMans/Dasheng; encoder from the `dasheng` package). `benchmark/detector_round5.py` (steps `cache`, `check`,
+`fit` = the 280, `heldout` = the 415) → `benchmark/detector_round5.json`; caches in new folders `eat_cache/`, `dasheng_cache/`
+beside `beats/` (nothing overwritten). No TEST, no DEV.
+
+**Baseline = the stack shipped now (commit 84de50b):** BEATs 0.175 / 0.35 + FlexSED bar 0.8 + FlexSED clip veto 0.3 + BEATs
+self-veto b = 0.1218 on FlexSED-only spans, PANNs veto off. From round 4's json it scores 3.043 / 3.857 / 51.3 % / 4.46
+(C-overlap / C-onset / recall / false per min) on the 280 and 1.928 / 2.207 / 49.7 % / 3.30 on the 415. Every Δ, the pick and
+the 415 test are against this stack (not the PANNs-veto numbers 3.071 / 3.886 / 50.4 % / 4.46, which are only the chain check).
+
+**Gates (stop if any fails, before `fit`):**
+1. *Sanity.* Round 4's tagged stack (imported, not re-run; round 4's json is not touched) equals `detector_round2.stack()` on
+   every clip; the PANNs-veto stack reproduces round 4's numbers and the self-veto baseline reproduces the numbers above
+   (round 4's tolerances).
+2. *Same windows.* Both candidates score exactly BEATs' windows: the `infer_beats` windowing copied line for line (2-s window,
+   0.25-s hop, 1.75-s reflected lead-in, tail cover, stamp = window end − 0.5 s, keep t ≥ 0) on the same audio (ffmpeg mono
+   16 kHz → `librosa.load` 16 kHz). Per clip the window count must equal the BEATs cache's and the times match (|Δ| ≤ 1e-4 s).
+3. *Labels.* Index → AudioSet mid from EAT's official `inference/labels.csv` (527 rows); it must equal the `class_labels_indices`
+   order in `panns_inference`, which is then used for Dasheng (its checkpoint carries no label file); mid → display name via
+   `src/audioset_mid_names.json`, the route BEATs uses. The candidate's name set must equal the BEATs cache's. Order check on
+   the 280 (scores only, no cost): per name, Spearman ρ across clips between candidate clip-max and BEATs clip-max (matched by
+   name); the median ρ with the true order must exceed the median with the order shifted by ±1 index by ≥ 0.2.
+4. *Weights.* EAT: the repo's `EAT` class built from `config.json`, `model.safetensors` loaded with `strict=True` (no
+   `AutoModel`: the remote code targets transformers 4.51, the env has 5.x). Dasheng: the README's classifier; the encoder
+   load must report no missing keys and only `outputlayer.*` unexpected.
+
+**Preprocessing (fixed).** EAT, per 2-s window: subtract the window mean; Kaldi fbank (128 mel, Hanning, 10-ms shift,
+htk_compat, no dither) = 198 frames, zero-padded to **208** (the official recipes scale target_length with clip length: 1024
+for 10 s, 512 for ESC-50's 5 s, 128 for Speech Commands' 1 s; 208 = the smallest multiple of the 16-frame patch ≥ 198, so no
+audio is cut); normalise (x + 4.268) / (2 × 4.569); CLS head logits → sigmoid (once). Dasheng: the raw 2-s waveform into the
+README classifier (mean of tokens → LayerNorm → Linear → sigmoid, sigmoid already inside). fp32, no autocast, both models.
+Saved as the BEATs caches are (`fw` float16 probabilities, `times` float32, `labels`).
+
+**Cells on the 280 (four).** Each candidate replaces BEATs framewise in the baseline stack; FlexSED unchanged.
+- *Primary (EAT-P, Dasheng-P):* same bars (AED 0.175, display 0.35, hysteresis 1.0, min dur 0.5). Self-veto uses the
+  candidate's own clip-max for the family, bar b refitted on the 280 by round 4's rule: s0 = the baseline's kept share of its
+  280 pool (57 / 167 = 0.3413); k = floor(s0 × |candidate pool| + 0.5); b = the k-th largest candidate clip-max over the
+  candidate's 280 pool (ties can raise the share; actual share reported).
+- *Secondary (EAT-R, Dasheng-R):* display bar d refitted on the 280 so the number of shown spans equals the baseline's. Shown
+  spans = the scored set (salient non-speech, non-music spans after all vetoes, display ≥ d), summed over the 280. d on the
+  grid 0.050, 0.055, …, 0.950; AED = d / 2 (hysteresis 1.0); b refitted per d by the rule above (the pool moves with the AED
+  bar); d = argmin |N(d) − N_baseline|, tie → larger d. d and b are then frozen.
+Onsets: the extractor's onsets in every cell and the baseline; the BEATs occlusion refinement (ONSET_CAM) is not run in any
+arm (caches only, as rounds 2–4). It is model-agnostic (forward passes), so it would carry over to either candidate; its effect
+is not measured here. No 0.40 display floor (display-level), as rounds 2–4.
+Numbers per cell: C-overlap, C-onset, paired ΔC-overlap and ΔC-onset (cell − baseline, clip bootstrap 2000 draws, seed 0),
+recall (overlap, onset), false spans and false spans/min, median end error (round 4 test 1's `end_errors`: primary = paired Δ
+baseline − cell over events matched in both arms, bootstrap CI; per-arm medians and counts beside), b, d, pool, shown spans.
+Clip set = clips with BEATs, FlexSED, PANNs, PE-A-Frame, EAT and Dasheng caches (expected 280 / 415; a missing candidate cache
+stops the run).
+
+**Pick on the 280.** Eligible iff C-overlap < baseline AND C-onset < baseline (point values). Pick = lowest C-overlap among
+eligible (tie → lower C-onset, then primary before secondary). No eligible cell → the 415 is not scored and BEATs stays.
+**Held-out (the 415, pick only, frozen d and b):** passes iff the paired clip bootstrap (2000 draws, seed 0) upper 95 % CI of
+ΔC-overlap (pick − baseline) < 0. Same secondary numbers reported, plus the complex / random strata. The 415 has been used by
+rounds 2–4; disclosed. No rule is revised after a number is seen.
+*Clarification (written before any number):* round 4's json holds b = 0.12176513671875 (a float16 cache value); `config.py`
+ships 0.1218, which is above that value, so the shipped bar may drop the one span sitting exactly on round 4's b. Gate 1
+reproduces round 4's numbers with round 4's exact b; **the baseline for every Δ is the shipped bar 0.1218**, and both rows are
+printed (if they differ, the difference is reported, not chosen). s0 stays 0.3413 (round 4's fitted share).
+*Clarification 2 — gate 3 amended (2026-09-28, after the order check fired, before any candidate cost number; only the
+baseline's gate-1 row exists).* The Spearman order check as written failed for both candidates: median ρ true order / shift
++1 / shift −1 = 0.558 / 0.454 / 0.452 (EAT) and 0.561 / 0.393 / 0.399 (Dasheng), margins 0.10 and 0.16 < 0.2. The statistic
+was mis-specified: clip-max rank across clips is inflated for every column pairing by a shared per-clip activity level (busy
+clips raise all 527 scores in both models), so even a shifted order scores ~0.4 and a 0.2 margin was never reachable. The
+label-sanity diagnostics that isolate order (none is a cost): per-clip top-1 agreement with BEATs 0.636 true vs 0.018 / 0.007
+shifted (EAT) and 0.636 vs 0.018 / 0.004 (Dasheng); top-5 overlap 0.62 / 0.59 vs ~0.13; median Pearson 0.77 / 0.75 vs
+0.17–0.22; the true order wins per class for 76 % / 86 % of classes. **Replacement gate 3 (the 280):** top-1 agreement under the
+true order ≥ 0.30 AND ≥ 10 × the agreement under each ±1 shifted order; ρ and Pearson reported as descriptive. This threshold
+was set after seeing the diagnostics above (disclosed). Cells, bars, the pick rule and the 415 test are unchanged.
+*Gate 1 note:* the shipped bar 0.1218 gives 3.036 / 3.850 / 51.3 % / 4.44 on the 280 — one false span fewer than round 4's
+b = 0.12176514 row (3.043 / 3.857 / 51.3 % / 4.46, reproduced exactly) — so the baseline is 3.036 / 3.850.
