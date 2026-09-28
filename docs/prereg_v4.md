@@ -2208,3 +2208,10 @@ drawable detection drawn, no gate; same threshold grid chosen on DEV by cost at 
 picked 0.5 (grid top). TEST: PretrainedSED alone 6/43 hits, 41 wrong pictures, P 0.13, R 0.14, F1 0.133, cost 3.83. Ours −
 PretrainedSED: **F1 +0.248 [+0.100, +0.421], cost −1.200 [−2.168, −0.300], precision +0.263 [+0.093, +0.472], recall +0.233
 [+0.073, +0.425]** — all four significant.
+
+## 2026-09-28 — confidence floor 0.40, chosen on DEV, tested once on the held-out 415 (Adam's yes; before the number)
+
+On DEV a floor of 0.40 (show a picture only if its detector confidence ≥ 0.40) kept all 14 hits and cut wrong pictures 24 → 20
+(cost 2.78 → 2.61; `benchmark/gold/dev_post_filters.json`). Test: on the unread held-out AudioSet-Strong set (415 clips),
+shipped stack vs shipped + floor 0.40, amendment 24's cost C (overlap primary); passes iff the paired clip bootstrap ΔC-overlap
+(2000, seed 0) has upper 95 % CI < 0. The 280 fit set reported beside. Script `benchmark/floor_heldout.py`.
