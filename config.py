@@ -157,6 +157,9 @@ SHOW_LABELS = False
 # Pictures fade with detector confidence (alpha 0.45-1.0). use_shipped() switches it off: every shown picture is
 # drawn at full opacity, as the glance test rated it (panel 3, topic 2).
 CONFIDENCE_FADE = True
+# Show a picture only if its detector confidence is >= this (None = off). 0.40 chosen on DEV and confirmed on the held-out
+# 415 AudioSet-Strong clips (docs/prereg_v4.md, 2026-09-28); use_shipped() switches it on.
+PICTURE_MIN_CONF = None
 # Print the generator's prompt under each picture. Debugging only -- it is how a bad
 # picture gets traced to the words that produced it. Off for anything a viewer sees.
 SHOW_PROMPT = False
@@ -210,6 +213,13 @@ PICTURE_SCENE_GUARD2 = False
 # Week plan C.1 (docs/WEEK_PLAN_2026-09-26.md): the frozen final picture setup inside stage 6 (templates, burst cards,
 # rules tail, blank guard). Display only, for demo videos; never a scored row. See use_final_pictures().
 PICTURE_FINAL = False
+# 2026-09-28: check each final picture before it is shown (src/stage6_visual_augmentation/verify.py): a shuffled
+# multiple-choice question to VLM_MODEL (the intended thing vs its known look-alikes) and an OCR text check; up to
+# PICTURE_VERIFY_TRIES draws (new seed each, a clearer fixed rewrite from try 3), then a word card. Needs
+# PICTURE_FINAL, and the VLM next to the generator (one H200, or two cards). Off until validated; use_shipped()
+# does not switch it on.
+PICTURE_VERIFY = False
+PICTURE_VERIFY_TRIES = 4
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time
@@ -372,6 +382,8 @@ def use_shipped() -> dict:
     changed.update(use_final_pictures(2))
     changed["CONFIDENCE_FADE"] = (getattr(me, "CONFIDENCE_FADE", True), False)
     setattr(me, "CONFIDENCE_FADE", False)
+    changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
+    setattr(me, "PICTURE_MIN_CONF", 0.40)
     return changed
 
 

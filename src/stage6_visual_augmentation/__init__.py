@@ -460,16 +460,72 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     prompt = subject + RULES_TAIL
     neg = ", ".join(x for x in (screen_negative(subject), TEMPLATE_NEG.get(key or "", "")) if x) or " "
     seed = seed_of({"clip": work_dir.name, "label": spec.event_label, "start": float(spec.start)}) + 1
-    spec.image_prompt = prompt
-    ok = _diffusion_image(path, prompt, size, model=model, device=device, seed=seed, negative=neg)
-    if ok and ink(Image.open(path)) < 0.05:
-        ok = _diffusion_image(path, prompt, size, model=model, device=device, seed=seed + 1, negative=neg)
-        print(f"       [stage6] {spec.event_label}: the picture came out nearly blank; redrew it")
+    import shutil
+    verify = bool(getattr(config, "PICTURE_VERIFY", False))
+    tries = int(getattr(config, "PICTURE_VERIFY_TRIES", 4)) if verify else 1
+    log = {"clip": work_dir.name, "index": spec.index, "label": spec.event_label, "source": source,
+           "subject": subject, "tries": []}
+    ok = False
+    for t in range(tries):
+        # PICTURE_VERIFY (src/stage6_visual_augmentation/verify.py): try 1 is exactly the shipped picture (same seed);
+        # each later try a new seed (stride 1000, clear of the blank guard's +1); from try 3 the clearer fixed rewrite
+        # for an ambiguous word, "no text" in the prompt and text words in the negative
+        subj_t, prompt_t, neg_t, seed_t = subject, prompt, neg, seed + 1000 * t
+        if t >= 2:
+            from src.stage6_visual_augmentation.verify import rewrite_for
+            rw = rewrite_for(spec, subject)
+            if rw:
+                subj_t = rw["subject"]
+                neg_t = ", ".join(x for x in (screen_negative(subj_t), TEMPLATE_NEG.get(key or "", ""), rw["neg"])
+                                  if x)
+            prompt_t = subj_t + RULES_TAIL + ", no text, no letters, no signs"
+            neg_t = ", ".join(x for x in (neg_t.strip(), "text, letters, words, writing, sign, label, logo") if x)
+        spec.image_prompt = prompt_t
+        ok = _diffusion_image(path, prompt_t, size, model=model, device=device, seed=seed_t, negative=neg_t)
+        if ok and ink(Image.open(path)) < 0.05:
+            ok = _diffusion_image(path, prompt_t, size, model=model, device=device, seed=seed_t + 1, negative=neg_t)
+            print(f"       [stage6] {spec.event_label}: the picture came out nearly blank; redrew it")
+        if not ok or not verify:
+            break
+        from src.stage6_visual_augmentation.verify import check
+        res = check(path, spec, subject, salt=0, tag=work_dir.name)
+        log["tries"].append({"try": t + 1, "seed": seed_t, "prompt": prompt_t, "ok": res["ok"],
+                             "picked": res["mc"]["picked"], "intended": res["mc"]["intended"],
+                             "options": res["mc"]["options"], "text": res["text"]["words"], "saw": res.get("saw", "")})
+        print(f"       [verify] {spec.event_label} try {t + 1}: {'OK' if res['ok'] else 'REJECT'} "
+              f"picked={res['mc']['picked']!r} text={res['text']['words']} saw={res.get('saw', '')!r}", flush=True)
+        if res["ok"]:
+            break
+        if t < tries - 1:                        # keep each refused try for the audit trail
+            shutil.copy2(path, path.with_name(f"{path.stem}_try{t + 1}.png"))
+    else:
+        if verify and ok:                        # every try refused: a word card with the sound's name
+            from src.stage6_visual_augmentation.verify import card_word
+            shutil.copy2(path, path.with_name(f"{path.stem}_try{tries}.png"))
+            word = card_word(spec)
+            burst_card(word, fit=True).resize(size).save(path)
+            spec.image_prompt, spec.image_path, spec.backend = "VCARD:" + word, str(path), "card"
+            log["final"] = "word card"
+            VERIFY_LOG.append(log)
+            return
+    if verify:
+        log["final"] = ("picture" if len(log["tries"]) <= 2 else "rewritten") if ok else "placeholder"
+        if ok and len(log["tries"]) > 2 and not rewrite_applies(spec, subject):
+            log["final"] = "picture"             # try 3-4 without a table rewrite: only the seed / no-text changed
+        VERIFY_LOG.append(log)
     if ok:
         spec.image_path, spec.backend = str(path), "diffusion"
     else:
         _placeholder_image(path, query, size)
         spec.image_path, spec.backend = str(path), "placeholder"
+
+
+VERIFY_LOG: list = []          # one entry per verified picture (PICTURE_VERIFY); generate_augmentations writes it out
+
+
+def rewrite_applies(spec, subject: str) -> bool:
+    from src.stage6_visual_augmentation.verify import rewrite_for
+    return rewrite_for(spec, subject) is not None
 
 
 def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
@@ -529,6 +585,10 @@ def generate_augmentations(specs: List[AugmentationSpec], work_dir: Path,
 
     (work_dir / "credits.json").write_text(
         json.dumps(credits, indent=2, ensure_ascii=False), encoding="utf-8")
+    mine = [r for r in VERIFY_LOG if r.get("clip") == work_dir.name]
+    if mine:                                        # PICTURE_VERIFY: tries, what the VLM saw, final kind
+        (work_dir / "picture_verify.json").write_text(json.dumps(mine, indent=1, ensure_ascii=False),
+                                                      encoding="utf-8")
     print(f"       [stage6] {backend}: produced {n} augmentation image(s); "
           f"{len(credits)} retrieved (rest placeholder).")
     return specs
@@ -580,7 +640,9 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     gap = max(float(getattr(config, "MERGE_GAP", MERGE_GAP)), dwell)   # gap < dwell would put one label in two rows at once
     cap = getattr(config, "MAX_SPAN", None)      # picture-level cap (amendment 3)
     by_label = {}
-    for s in sorted((s for s in specs if s.augment and (s.image_path or not require_image)),
+    floor = getattr(config, "PICTURE_MIN_CONF", None)
+    for s in sorted((s for s in specs if s.augment and (s.image_path or not require_image)
+                     and (floor is None or s.confidence >= floor)),
                     key=lambda s: s.start):
         by_label.setdefault(s.event_label, []).append(s)
     spans = []

@@ -2215,3 +2215,6 @@ On DEV a floor of 0.40 (show a picture only if its detector confidence ≥ 0.40)
 (cost 2.78 → 2.61; `benchmark/gold/dev_post_filters.json`). Test: on the unread held-out AudioSet-Strong set (415 clips),
 shipped stack vs shipped + floor 0.40, amendment 24's cost C (overlap primary); passes iff the paired clip bootstrap ΔC-overlap
 (2000, seed 0) has upper 95 % CI < 0. The 280 fit set reported beside. Script `benchmark/floor_heldout.py`.
+**Result (`benchmark/floor_heldout.json`): passes.** Held-out 415: C-overlap 1.923 → 1.696, ΔC **−0.227 [−0.304, −0.154]**;
+recall 49.1 % → 48.5 %; false spans/min 3.25 → 2.54. (The 280 fit set: −0.129 [−0.250, +0.036].) Adopted: `use_shipped()` sets
+`PICTURE_MIN_CONF = 0.40` (display-level, as tested on DEV). The scored TEST table is unchanged (it ran without the floor).
