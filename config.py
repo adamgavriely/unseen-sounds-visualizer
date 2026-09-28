@@ -160,6 +160,10 @@ CONFIDENCE_FADE = True
 # Show a picture only if its detector confidence is >= this (None = off). 0.40 chosen on DEV and confirmed on the held-out
 # 415 AudioSet-Strong clips (docs/prereg_v4.md, 2026-09-28); use_shipped() switches it on.
 PICTURE_MIN_CONF = None
+# A picture may stay on screen at most this long after its sound's real end (the 1.5-s minimum only lengthens short
+# sounds, and never by more than this). None = off. use_shipped() sets 1.0 s and joins repeats only if the gap <= 1.0 s
+# (Adam, 28 Sept 2026).
+MAX_AFTER_END = None
 # Print the generator's prompt under each picture. Debugging only -- it is how a bad
 # picture gets traced to the words that produced it. Off for anything a viewer sees.
 SHOW_PROMPT = False
@@ -384,6 +388,9 @@ def use_shipped() -> dict:
     setattr(me, "CONFIDENCE_FADE", False)
     changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
     setattr(me, "PICTURE_MIN_CONF", 0.40)
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.0)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
     return changed
 
 

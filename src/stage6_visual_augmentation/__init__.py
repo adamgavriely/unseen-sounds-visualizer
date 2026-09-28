@@ -637,7 +637,9 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     every appearance at least MIN_DWELL on screen.
     """
     dwell = float(getattr(config, "MIN_DWELL", MIN_DWELL))
-    gap = max(float(getattr(config, "MERGE_GAP", MERGE_GAP)), dwell)   # gap < dwell would put one label in two rows at once
+    after = getattr(config, "MAX_AFTER_END", None)
+    # gap < the stretched tail would put one label in two rows at once; with MAX_AFTER_END the tail is at most that long
+    gap = max(float(getattr(config, "MERGE_GAP", MERGE_GAP)), dwell if after is None else min(dwell, float(after)))
     cap = getattr(config, "MAX_SPAN", None)      # picture-level cap (amendment 3)
     by_label = {}
     floor = getattr(config, "PICTURE_MIN_CONF", None)
@@ -646,6 +648,7 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
                     key=lambda s: s.start):
         by_label.setdefault(s.event_label, []).append(s)
     spans = []
+    cur_raw = {}                                   # span -> the real end of its last burst (before dwell)
     for label, group in by_label.items():
         cur = None; raw_end = None
         # every burst of the sound gets the picture; a spec with no burst list is an
@@ -667,10 +670,13 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
             else:
                 cur = [label, a, b, s]; raw_end = b0
                 spans.append(cur)
-    for sp in spans:
+            cur_raw[id(cur)] = raw_end
+    for sp in spans:                                 # MAX_AFTER_END (Adam, 28 Sept): at most this long past the real end
         sp[2] = min(float(duration), max(sp[2], sp[1] + dwell))
         if cap:
             sp[2] = min(sp[2], sp[1] + float(cap))
+        if after is not None:
+            sp[2] = min(sp[2], max(cur_raw[id(sp)], sp[1]) + float(after))
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
 
 
