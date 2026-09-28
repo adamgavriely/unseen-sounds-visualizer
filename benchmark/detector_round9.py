@@ -8,6 +8,7 @@ Reuses detector_round8 (stack, gate 0, scoring, bootstrap, Holm). Reads the cach
 
     python benchmark/detector_round9.py fit       # gate 0 on the 280, J1 and J2, the picks
     python benchmark/detector_round9.py heldout   # the picks on the 415 (+ Holm)
+    python benchmark/detector_round9.py fresh     # amendment 1: J2 once on the fresh set (+ coverage seconds)
 """
 from __future__ import annotations
 
@@ -93,12 +94,63 @@ def heldout(log):
     OUT.write_text(json.dumps(log, indent=1), encoding="utf-8")
 
 
+def coverage(xs, evs):
+    """per consequential salient gold event: share of its seconds covered by the union of shown same-family spans"""
+    out = []
+    for x, ev in zip(xs, evs):
+        ev = M.D._ev(ev)
+        for g in M.conseq(x.c):
+            iv = sorted((max(e.start, g["start"]), min(e.end, g["end"])) for e in ev if M.same(e.label, g["label"]))
+            iv = [(a, b) for a, b in iv if b > a]
+            cov, cur = 0.0, None
+            for a, b in iv:
+                if cur and a <= cur[1]:
+                    cur = (cur[0], max(cur[1], b))
+                else:
+                    if cur:
+                        cov += cur[1] - cur[0]
+                    cur = (a, b)
+            if cur:
+                cov += cur[1] - cur[0]
+            out.append(cov / max(1e-9, g["end"] - g["start"]))
+    return out
+
+
+def fresh(log):
+    import numpy as np
+    from benchmark import audioset_stage4_report as R
+    R.use_set("fresh")
+    counts = {"beats": len(list((R.E.WIN / "beats").glob("*.npz"))), "panns": len(list((R.E.WIN / "panns").glob("*.npz"))),
+              "pe_frame": len(list((R.E.WIN / "pe_frame").glob("*.npz"))), "flexsed": len(list(R.FLEX.glob("*.npz")))}
+    assert all(v == 422 for v in counts.values()), f"fresh caches incomplete: {counts}"
+    cl, xs = M.load_set("fresh")
+    ref = M.base_run(xs)
+    for x, a in zip(xs, ref):
+        assert M.sig(a) == M.sig(M.stack8(x)), f"stack8 differs from round 5 on {x.cid}"
+    brows, brows_d, Sb = M.score(xs, ref)
+    base = (ref, brows, brows_d, M.hbd_flags(xs, ref))
+    jl = {"beats_only": 0, "no_flank": 0, "dropped": 0}
+    evs = run("J2", xs, jl)
+    rows, _rd, S = M.score(xs, evs, base)
+    S["j1_log"] = jl
+    S["pass"] = bool(S["dC_overlap"][2] < 0)
+    d = [a["C_overlap"] - b["C_overlap"] for a, b in zip(rows, brows)]
+    S["strata"] = {s: {"n": len(ix), "dC_overlap": M.boot8([d[i] for i in ix]) if ix else None}
+                   for s, ix in ((s, [i for i, x in enumerate(xs) if x.c.get("stratum") == s]) for s in ("complex", "random"))}
+    cb, cj = coverage(xs, ref), coverage(xs, evs)
+    S["coverage"] = {"n_events": len(cb), "baseline": float(np.mean(cb)), "J2": float(np.mean(cj))}
+    log["fresh"] = {"caches": counts, "clips": len(cl), "span_for_span": True, "baseline": Sb, "J2": S}
+    M.show("fresh base", Sb); M.show("fresh J2", S)
+    print(f"[fresh] {len(cl)} clips; J2 {'PASS' if S['pass'] else 'fail'}; J1 log {jl}; coverage {S['coverage']}; strata {S['strata']}", flush=True)
+    OUT.write_text(json.dumps(log, indent=1), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("fit", "heldout"))
+    ap.add_argument("step", choices=("fit", "heldout", "fresh"))
     a = ap.parse_args()
     log = json.loads(OUT.read_text(encoding="utf-8")) if OUT.exists() else {}
-    {"fit": fit, "heldout": heldout}[a.step](log)
+    {"fit": fit, "heldout": heldout, "fresh": fresh}[a.step](log)
 
 
 if __name__ == "__main__":

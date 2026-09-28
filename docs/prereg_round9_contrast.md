@@ -60,3 +60,60 @@ removed true spans sit on events that another span still hits or on non-conseque
 (recall 49.7 → 48.5 %), but onset recall falls 32.7 → 30.4 % and shown spans fall 672 → 573. C does not charge for a
 removed duplicate, so part of the gain is "fewer pictures" rather than "fewer wrong pictures".
 As pre-registered, the round stops here: the fresh set is not scored.
+
+## Amendment 1 (2026-09-28, written before any fresh-set number and before any DEV J2 number): the two confirmation checks and the ship rule
+Decision (lead): no guard is added to J2 (a guard chosen after seeing the 415 would be post hoc). The removed true spans
+are cost-neutral on the 415 (26 false × 2 / 415 ≈ −0.125; 2 lost needed events × 4 / 415 ≈ +0.019; total −0.106).
+
+**A. Fresh set (`R.use_set("fresh")`, `docs/prereg_fresh_confirm_set.md`), scored once.** J2 exactly as registered above
+(margins 0.1 / 0.2, ±3 s flanks, no-flank spans kept), no refit. Start only when the four caches (BEATs, PANNs, PE-A-Frame
+in `benchmark/audioset_fresh_windows/`, FlexSED in `data/work/flexsed_fresh/`) each hold 422 `.npz` files; the clip list is
+`detector_round2.usable()`. Gate: the round-8 stack with no option equals round 5's stack span for span on every fresh
+clip (no expected numbers exist for this set). **Primary (one cell): J2 passes iff the upper 95 % CI of ΔC-overlap < 0**
+(paired clip bootstrap, 2000 draws, seed 0). Secondary (reported, not decisive): C-onset (ΔC, CI), onset recall, recall,
+false/min, shown spans, true / false spans removed, the "depictable" row, strata, and **coverage seconds**: for every
+consequential salient gold event, the share of its seconds covered by the union of shown spans of the same family
+(`E._same`); a missed event counts 0; mean over events, baseline vs J2.
+
+**B. DEV check (DEV only, never TEST).** Renders: `data/work/protocol_{proposed,blind_a2i}_dev_monocap_v31/` (ours and the
+pipeline without the gate), the DEV stems of `gold_AG.json` (`score_per_sound.subsets_of(gold)["dev"]`).
+1. Frame scores: BEATs recomputed on each DEV clip's `audio.wav` with the shipped `infer_beats` (GPU); FlexSED from the
+   pipeline's cache `data/work/flexsed_cache/<stem>.npz` (raw scores, as in the harness). **Gate D0 per clip:** the
+   recomputed BEATs spans at 0.175 (`_extract_events`, as stage 4) equal the trace's `extract` step (same labels, starts
+   and ends within 0.01 s), and the twin rule rebuilt from the trace's `extract` + `flexsed_raw` steps equals its `union`
+   step. A clip that fails D0 keeps its pictures unchanged and is counted.
+2. J2 is applied to the trace's `veto` step spans (the stage-4 output before onset refinement): origin = FlexSED-only if
+   the span came from `flexsed_raw` without a BEATs twin, BEATs-only if it is an `extract` span with no FlexSED twin; the
+   J1 test (BEATs, margin 0.1) and the I7 test (FlexSED, margin 0.2) exactly as above. `veto` and `refine` steps are paired
+   by position (asserted same label and end).
+3. A picture span (`spans` in `augmentations.json`, shown pictures only) is removed iff every refined stage-4 event that
+   matches its label (same canonical family or ancestor/descendant) and overlaps it in time is dropped by J2; a span with
+   no matching event is kept and counted; a picture with no span left is not shown. (A merged span whose events are only
+   partly dropped is kept whole: shrinking is not simulated.)
+4. Scored with the official `score_per_sound` (onset rule, default settings), before / after, for both systems: hits,
+   wrong pictures by type (visible, cross-trigger, phantom), duplicates, F1, viewer cost, coverage.
+
+**Ship rule.** J2 goes into `use_shipped()` only if (i) the fresh set passes (A, primary) AND (ii) on DEV, for ours
+("proposed"), hits do not drop AND wrong pictures (visible + cross + phantom) drop. The pipeline-without-gate row is
+reported, not decisive.
+
+## Result B — DEV check (2026-09-28; `benchmark/gold/j2_dev_check.py`, `benchmark/gold/j2_dev_check.json`, job 31330369)
+Gate D0 passed on all 49 DEV clips of both systems: recomputed BEATs spans equal the trace's `extract` step and the twin
+rule (weak-twin mode "absorb") rebuilds its `union` step. J2 looked at 602 BEATs-only and 16 FlexSED-only stage-4 spans per
+system and would drop 276 and 8 (most are below the display bar and never became pictures). Picture spans removed: 5 in
+ours, 6 without the gate (4 Crowd spans in `mv_protest_scene_movie`, 1 Siren span in `mv_tornado_scene`, + 1 Water span
+in `waves_herzliya` without the gate); no whole picture removed, no span unmapped.
+
+| system | run | hits / 36 | wrong (visible / cross / phantom) | dup | F1 | viewer cost | coverage |
+|---|---|---|---|---|---|---|---|
+| ours (proposed) | scored | 14 | 24 (6 / 11 / 7) | 0 | 0.378 | 2.78 | 0.300 |
+| ours (proposed) | J2 | **13** | **25** (6 / 12 / 7) | 0 | 0.351 | 2.90 | 0.262 |
+| without gate (blind_a2i) | scored | 17 | 50 (17 / 21 / 12) | 3 | 0.330 | 3.59 | 0.363 |
+| without gate (blind_a2i) | J2 | 16 | 50 (16 / 22 / 12) | 3 | 0.314 | 3.67 | 0.324 |
+
+Why: in `mv_protest_scene_movie` the needed Crowd sound lasts the whole clip (0–20 s). Its BEATs spans do not stand out
+from their surroundings (the crowd is there before and after each span), so J2 drops them; only a late Crowd piece at
+18.9 s is left, which misses the onset and counts as a cross-trigger. So one hit is lost and one wrong picture is added.
+The Siren picture in `mv_tornado_scene` is only shortened. **DEV rule: hits drop (14 → 13) and wrong pictures do not
+drop (24 → 25), so the DEV part of the ship rule fails: J2 is not shipped, whatever the fresh set shows.** The fresh-set
+check (A) is still scored once, as registered, when its caches are complete.

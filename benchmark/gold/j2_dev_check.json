@@ -1,0 +1,183 @@
+{
+ "proposed": {
+  "rows": {
+   "scored": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.37837837837837834,
+    "viewer_cost": 2.7755102040816326,
+    "coverage": 0.30035147976283944,
+    "wrong": 24
+   },
+   "J2": {
+    "hits": 13,
+    "misses": 23,
+    "visible": 6,
+    "cross": 12,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.35135135135135137,
+    "viewer_cost": 2.8979591836734695,
+    "coverage": 0.2617942658324911,
+    "wrong": 25
+   }
+  },
+  "removed_spans": [
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     0.0,
+     1.08
+    ]
+   ],
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     2.12,
+     4.76
+    ]
+   ],
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     5.96,
+     11.12
+    ]
+   ],
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     12.28,
+     17.04
+    ]
+   ],
+   [
+    "mv_tornado_scene",
+    "Siren",
+    [
+     14.32,
+     16.0
+    ]
+   ]
+  ],
+  "log": {
+   "no_trace": [],
+   "d0_fail": [],
+   "weak_mode": {
+    "absorb": 49
+   },
+   "veto_unmatched": 0,
+   "beats_only": 602,
+   "beats_only_dropped": 276,
+   "flex_only": 16,
+   "flex_only_dropped": 8,
+   "span_unmapped": 0,
+   "pictures_removed": 0
+  }
+ },
+ "blind_a2i": {
+  "rows": {
+   "scored": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 21,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3300970873786408,
+    "viewer_cost": 3.5918367346938775,
+    "coverage": 0.3626612309646961,
+    "wrong": 50
+   },
+   "J2": {
+    "hits": 16,
+    "misses": 20,
+    "visible": 16,
+    "cross": 22,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3137254901960784,
+    "viewer_cost": 3.673469387755102,
+    "coverage": 0.3241040170343477,
+    "wrong": 50
+   }
+  },
+  "removed_spans": [
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     0.0,
+     1.08
+    ]
+   ],
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     2.12,
+     4.76
+    ]
+   ],
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     5.96,
+     11.12
+    ]
+   ],
+   [
+    "mv_protest_scene_movie",
+    "Crowd",
+    [
+     12.28,
+     17.04
+    ]
+   ],
+   [
+    "mv_tornado_scene",
+    "Siren",
+    [
+     14.32,
+     16.0
+    ]
+   ],
+   [
+    "waves_herzliya",
+    "Water",
+    [
+     0.14,
+     2.5
+    ]
+   ]
+  ],
+  "log": {
+   "no_trace": [],
+   "d0_fail": [],
+   "weak_mode": {
+    "absorb": 49
+   },
+   "veto_unmatched": 0,
+   "beats_only": 602,
+   "beats_only_dropped": 276,
+   "flex_only": 16,
+   "flex_only_dropped": 8,
+   "span_unmapped": 0,
+   "pictures_removed": 0
+  }
+ },
+ "dev_rule": {
+  "hits_not_down": false,
+  "wrong_down": false,
+  "pass": false
+ }
+}
