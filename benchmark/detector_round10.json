@@ -1,0 +1,665 @@
+{
+ "check": {
+  "calib": {
+   "clips": 280,
+   "cand_clips": 85,
+   "missing": 0,
+   "missing_first": [],
+   "misaligned": 0,
+   "bad_first": [],
+   "gpu_logs": [
+    {
+     "shard": 0,
+     "of": 2,
+     "c1": [
+      {
+       "id": "VzYc-c-uHjI_30000",
+       "shape_ok": true,
+       "max_diff": 5.538761615753174e-05
+      },
+      {
+       "id": "nN8fv4eZ7FM_350000",
+       "shape_ok": true,
+       "max_diff": 0.00024324655532836914
+      }
+     ],
+     "c2": 2.3283064365386963e-09
+    },
+    {
+     "shard": 1,
+     "of": 2,
+     "c1": [
+      {
+       "id": "yhcmPrU3QSk_61000",
+       "shape_ok": true,
+       "max_diff": 0.00024384260177612305
+      },
+      {
+       "id": "EvJzWmX4Vrc_30000",
+       "shape_ok": true,
+       "max_diff": 0.00024396181106567383
+      }
+     ],
+     "c2": 2.0116567611694336e-07
+    }
+   ]
+  },
+  "heldout": {
+   "clips": 415,
+   "cand_clips": 153,
+   "missing": 0,
+   "missing_first": [],
+   "misaligned": 0,
+   "bad_first": [],
+   "gpu_logs": [
+    {
+     "shard": 0,
+     "of": 3,
+     "c1": [
+      {
+       "id": "tfy8va10NJ4_310000",
+       "shape_ok": true,
+       "max_diff": 0.00024390220642089844
+      },
+      {
+       "id": "CMzLTmZsUGo_0",
+       "shape_ok": true,
+       "max_diff": 0.00024324655532836914
+      }
+     ],
+     "c2": 1.909211277961731e-08
+    },
+    {
+     "shard": 1,
+     "of": 3,
+     "c1": [
+      {
+       "id": "I1N1eIQubFc_0",
+       "shape_ok": true,
+       "max_diff": 0.00024378299713134766
+      },
+      {
+       "id": "Ged4_VKv334_60000",
+       "shape_ok": true,
+       "max_diff": 0.0002459287643432617
+      }
+     ],
+     "c2": 4.6566128730773926e-09
+    },
+    {
+     "shard": 2,
+     "of": 3,
+     "c1": [
+      {
+       "id": "IjvWW6rr77c_140000",
+       "shape_ok": true,
+       "max_diff": 5.310773849487305e-05
+      },
+      {
+       "id": "91k-dD34c94_560000",
+       "shape_ok": true,
+       "max_diff": 0.0002435445785522461
+      }
+     ],
+     "c2": 6.693881005048752e-10
+    }
+   ]
+  }
+ },
+ "gate0": {
+  "calib": {
+   "clips": 280,
+   "baseline": {
+    "C_overlap": 3.0357142857142856,
+    "C_onset": 3.85,
+    "fp": 207,
+    "fp_per_min": 4.435714285714286,
+    "recall_overlap": 0.5133928571428572,
+    "recall_onset": 0.2589285714285714,
+    "n_conseq": 224,
+    "shown": 564,
+    "depictable": {
+     "C_overlap": 2.664285714285714,
+     "C_onset": 3.4785714285714286,
+     "fp": 165,
+     "fp_per_min": 3.535714285714286,
+     "recall_overlap": 0.5251141552511416,
+     "recall_onset": 0.2648401826484018,
+     "n_conseq": 219,
+     "shown": 515
+    }
+   },
+   "span_for_span": true,
+   "expected_ok": true,
+   "round5_ok": true
+  }
+ },
+ "gate0b": {
+  "span_for_span": true,
+  "round8_costs": {
+   "I4": [
+    2.9214285714285713,
+    3.807142857142857
+   ],
+   "I6": [
+    2.9285714285714284,
+    3.842857142857143
+   ]
+  }
+ },
+ "fit": {
+  "baseline": {
+   "C_overlap": 3.0357142857142856,
+   "C_onset": 3.85,
+   "fp": 207,
+   "fp_per_min": 4.435714285714286,
+   "recall_overlap": 0.5133928571428572,
+   "recall_onset": 0.2589285714285714,
+   "n_conseq": 224,
+   "shown": 564,
+   "depictable": {
+    "C_overlap": 2.664285714285714,
+    "C_onset": 3.4785714285714286,
+    "fp": 165,
+    "fp_per_min": 3.535714285714286,
+    "recall_overlap": 0.5251141552511416,
+    "recall_onset": 0.2648401826484018,
+    "n_conseq": 219,
+    "shown": 515
+   }
+  },
+  "band_pool": 61,
+  "candidates": {
+   "n": 209,
+   "clips": 85
+  },
+  "R0": {
+   "C_overlap": 3.8142857142857145,
+   "C_onset": 4.628571428571429,
+   "fp": 334,
+   "fp_per_min": 7.1571428571428575,
+   "recall_overlap": 0.5535714285714286,
+   "recall_onset": 0.2991071428571429,
+   "n_conseq": 224,
+   "shown": 773,
+   "depictable": {
+    "C_overlap": 3.442857142857143,
+    "C_onset": 4.257142857142857,
+    "fp": 292,
+    "fp_per_min": 6.257142857142857,
+    "recall_overlap": 0.5662100456621004,
+    "recall_onset": 0.30593607305936077,
+    "n_conseq": 219,
+    "shown": 724,
+    "dC_overlap": [
+     0.7785714285714286,
+     0.4642857142857143,
+     1.0642857142857143,
+     1.0
+    ],
+    "dC_onset": [
+     0.7785714285714286,
+     0.4642857142857143,
+     1.0642857142857143,
+     1.0
+    ]
+   },
+   "dC_overlap": [
+    0.7785714285714286,
+    0.4642857142857143,
+    1.0642857142857143,
+    1.0
+   ],
+   "dC_onset": [
+    0.7785714285714286,
+    0.4642857142857143,
+    1.0642857142857143,
+    1.0
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 9
+   },
+   "recovered_all": 9,
+   "false_removed": 0,
+   "true_removed": 0,
+   "new_false_gross": 127,
+   "new_false_net": 127,
+   "filter": {
+    "considered": 209,
+    "admitted": 209,
+    "admitted_scored": 209,
+    "admitted_false": 127,
+    "admitted_true": 82
+   }
+  },
+  "R1": {
+   "C_overlap": 3.0214285714285714,
+   "C_onset": 3.835714285714286,
+   "fp": 219,
+   "fp_per_min": 4.692857142857143,
+   "recall_overlap": 0.5446428571428572,
+   "recall_onset": 0.2901785714285714,
+   "n_conseq": 224,
+   "shown": 596,
+   "depictable": {
+    "C_overlap": 2.65,
+    "C_onset": 3.4642857142857144,
+    "fp": 177,
+    "fp_per_min": 3.792857142857143,
+    "recall_overlap": 0.5570776255707763,
+    "recall_onset": 0.29680365296803657,
+    "n_conseq": 219,
+    "shown": 547,
+    "dC_overlap": [
+     -0.014285714285714285,
+     -0.22142857142857142,
+     0.12857142857142856,
+     0.4965
+    ],
+    "dC_onset": [
+     -0.014285714285714285,
+     -0.22142857142857142,
+     0.12857142857142856,
+     0.4965
+    ]
+   },
+   "dC_overlap": [
+    -0.014285714285714285,
+    -0.22142857142857142,
+    0.12857142857142856,
+    0.4965
+   ],
+   "dC_onset": [
+    -0.014285714285714285,
+    -0.22142857142857142,
+    0.12857142857142856,
+    0.4965
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 7
+   },
+   "recovered_all": 7,
+   "false_removed": 0,
+   "true_removed": 0,
+   "new_false_gross": 12,
+   "new_false_net": 12,
+   "filter": {
+    "considered": 209,
+    "admitted": 32,
+    "admitted_scored": 32,
+    "admitted_false": 12,
+    "admitted_true": 20
+   }
+  },
+  "R2": {
+   "C_overlap": 3.0285714285714285,
+   "C_onset": 3.842857142857143,
+   "fp": 208,
+   "fp_per_min": 4.457142857142857,
+   "recall_overlap": 0.5178571428571428,
+   "recall_onset": 0.2633928571428571,
+   "n_conseq": 224,
+   "shown": 572,
+   "depictable": {
+    "C_overlap": 2.657142857142857,
+    "C_onset": 3.4714285714285715,
+    "fp": 166,
+    "fp_per_min": 3.5571428571428574,
+    "recall_overlap": 0.5296803652968036,
+    "recall_onset": 0.26940639269406397,
+    "n_conseq": 219,
+    "shown": 523,
+    "dC_overlap": [
+     -0.007142857142857143,
+     -0.04285714285714286,
+     0.02142857142857143,
+     0.4655
+    ],
+    "dC_onset": [
+     -0.007142857142857143,
+     -0.04285714285714286,
+     0.02142857142857143,
+     0.4655
+    ]
+   },
+   "dC_overlap": [
+    -0.007142857142857143,
+    -0.04285714285714286,
+    0.02142857142857143,
+    0.4655
+   ],
+   "dC_onset": [
+    -0.007142857142857143,
+    -0.04285714285714286,
+    0.02142857142857143,
+    0.4655
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 1
+   },
+   "recovered_all": 1,
+   "false_removed": 0,
+   "true_removed": 0,
+   "new_false_gross": 1,
+   "new_false_net": 1,
+   "filter": {
+    "considered": 209,
+    "admitted": 8,
+    "admitted_scored": 8,
+    "admitted_false": 1,
+    "admitted_true": 7
+   }
+  },
+  "R3": {
+   "C_overlap": 3.2071428571428573,
+   "C_onset": 4.021428571428571,
+   "fp": 243,
+   "fp_per_min": 5.207142857142857,
+   "recall_overlap": 0.5401785714285714,
+   "recall_onset": 0.2857142857142857,
+   "n_conseq": 224,
+   "shown": 635,
+   "depictable": {
+    "C_overlap": 2.835714285714286,
+    "C_onset": 3.65,
+    "fp": 201,
+    "fp_per_min": 4.307142857142857,
+    "recall_overlap": 0.5525114155251142,
+    "recall_onset": 0.2922374429223744,
+    "n_conseq": 219,
+    "shown": 586,
+    "dC_overlap": [
+     0.17142857142857143,
+     -0.06428571428571428,
+     0.35,
+     0.9395
+    ],
+    "dC_onset": [
+     0.17142857142857143,
+     -0.06428571428571428,
+     0.35,
+     0.9395
+    ]
+   },
+   "dC_overlap": [
+    0.17142857142857143,
+    -0.06428571428571428,
+    0.35,
+    0.9395
+   ],
+   "dC_onset": [
+    0.17142857142857143,
+    -0.06428571428571428,
+    0.35,
+    0.9395
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 6
+   },
+   "recovered_all": 6,
+   "false_removed": 0,
+   "true_removed": 0,
+   "new_false_gross": 36,
+   "new_false_net": 36,
+   "filter": {
+    "considered": 209,
+    "admitted": 71,
+    "admitted_scored": 71,
+    "admitted_false": 36,
+    "admitted_true": 35
+   }
+  },
+  "R4": {
+   "C_overlap": 3.0285714285714285,
+   "C_onset": 3.842857142857143,
+   "fp": 208,
+   "fp_per_min": 4.457142857142857,
+   "recall_overlap": 0.5178571428571428,
+   "recall_onset": 0.2633928571428571,
+   "n_conseq": 224,
+   "shown": 567,
+   "depictable": {
+    "C_overlap": 2.657142857142857,
+    "C_onset": 3.4714285714285715,
+    "fp": 166,
+    "fp_per_min": 3.5571428571428574,
+    "recall_overlap": 0.5296803652968036,
+    "recall_onset": 0.26940639269406397,
+    "n_conseq": 219,
+    "shown": 518,
+    "dC_overlap": [
+     -0.007142857142857143,
+     -0.04285714285714286,
+     0.02142857142857143,
+     0.4655
+    ],
+    "dC_onset": [
+     -0.007142857142857143,
+     -0.04285714285714286,
+     0.02142857142857143,
+     0.4655
+    ]
+   },
+   "dC_overlap": [
+    -0.007142857142857143,
+    -0.04285714285714286,
+    0.02142857142857143,
+    0.4655
+   ],
+   "dC_onset": [
+    -0.007142857142857143,
+    -0.04285714285714286,
+    0.02142857142857143,
+    0.4655
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 1
+   },
+   "recovered_all": 1,
+   "false_removed": 0,
+   "true_removed": 0,
+   "new_false_gross": 1,
+   "new_false_net": 1,
+   "filter": {
+    "considered": 209,
+    "admitted": 3,
+    "admitted_scored": 3,
+    "admitted_false": 1,
+    "admitted_true": 2
+   }
+  },
+  "R5": {
+   "C_overlap": 3.0214285714285714,
+   "C_onset": 3.835714285714286,
+   "fp": 219,
+   "fp_per_min": 4.692857142857143,
+   "recall_overlap": 0.5446428571428572,
+   "recall_onset": 0.2901785714285714,
+   "n_conseq": 224,
+   "shown": 601,
+   "depictable": {
+    "C_overlap": 2.65,
+    "C_onset": 3.4642857142857144,
+    "fp": 177,
+    "fp_per_min": 3.792857142857143,
+    "recall_overlap": 0.5570776255707763,
+    "recall_onset": 0.29680365296803657,
+    "n_conseq": 219,
+    "shown": 552,
+    "dC_overlap": [
+     -0.014285714285714285,
+     -0.22142857142857142,
+     0.12857142857142856,
+     0.4965
+    ],
+    "dC_onset": [
+     -0.014285714285714285,
+     -0.22142857142857142,
+     0.12857142857142856,
+     0.4965
+    ]
+   },
+   "dC_overlap": [
+    -0.014285714285714285,
+    -0.22142857142857142,
+    0.12857142857142856,
+    0.4965
+   ],
+   "dC_onset": [
+    -0.014285714285714285,
+    -0.22142857142857142,
+    0.12857142857142856,
+    0.4965
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 7
+   },
+   "recovered_all": 7,
+   "false_removed": 0,
+   "true_removed": 0,
+   "new_false_gross": 12,
+   "new_false_net": 12,
+   "filter": {
+    "considered": 209,
+    "admitted": 37,
+    "admitted_scored": 37,
+    "admitted_false": 12,
+    "admitted_true": 25
+   }
+  },
+  "R6": {
+   "C_overlap": 2.914285714285714,
+   "C_onset": 3.8,
+   "fp": 210,
+   "fp_per_min": 4.5,
+   "recall_overlap": 0.5580357142857143,
+   "recall_onset": 0.28125,
+   "n_conseq": 224,
+   "shown": 591,
+   "depictable": {
+    "C_overlap": 2.5428571428571427,
+    "C_onset": 3.4285714285714284,
+    "fp": 168,
+    "fp_per_min": 3.6,
+    "recall_overlap": 0.5707762557077626,
+    "recall_onset": 0.28767123287671237,
+    "n_conseq": 219,
+    "shown": 542,
+    "dC_overlap": [
+     -0.12142857142857143,
+     -0.36428571428571427,
+     0.007142857142857143,
+     0.0835
+    ],
+    "dC_onset": [
+     -0.05,
+     -0.12142857142857143,
+     0.007142857142857143,
+     0.0715
+    ]
+   },
+   "dC_overlap": [
+    -0.12142857142857143,
+    -0.36428571428571427,
+    0.007142857142857143,
+    0.0835
+   ],
+   "dC_onset": [
+    -0.05,
+    -0.12142857142857143,
+    0.007142857142857143,
+    0.0715
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 7
+   },
+   "recovered_all": 10,
+   "false_removed": 0,
+   "true_removed": 1,
+   "new_false_gross": 3,
+   "new_false_net": 3,
+   "filter": {
+    "considered": 105,
+    "admitted": 40,
+    "admitted_scored": 33,
+    "admitted_false": 5,
+    "admitted_true": 28
+   }
+  },
+  "R7": {
+   "C_overlap": 2.8857142857142857,
+   "C_onset": 3.8,
+   "fp": 202,
+   "fp_per_min": 4.328571428571429,
+   "recall_overlap": 0.5491071428571428,
+   "recall_onset": 0.2633928571428571,
+   "n_conseq": 224,
+   "shown": 579,
+   "depictable": {
+    "C_overlap": 2.5142857142857142,
+    "C_onset": 3.4285714285714284,
+    "fp": 160,
+    "fp_per_min": 3.428571428571429,
+    "recall_overlap": 0.5616438356164384,
+    "recall_onset": 0.26940639269406397,
+    "n_conseq": 219,
+    "shown": 530,
+    "dC_overlap": [
+     -0.15,
+     -0.34285714285714286,
+     -0.007142857142857143,
+     0.0195
+    ],
+    "dC_onset": [
+     -0.05,
+     -0.17142857142857143,
+     0.04303571428571331,
+     0.2095
+    ]
+   },
+   "dC_overlap": [
+    -0.15,
+    -0.34285714285714286,
+    -0.007142857142857143,
+    0.0195
+   ],
+   "dC_onset": [
+    -0.05,
+    -0.17142857142857143,
+    0.04303571428571331,
+    0.2095
+   ],
+   "heard_but_dropped": {
+    "pool": 61,
+    "recovered": 4
+   },
+   "recovered_all": 8,
+   "false_removed": 4,
+   "true_removed": 1,
+   "new_false_gross": 3,
+   "new_false_net": -5,
+   "filter": {
+    "considered": 172,
+    "admitted": 92,
+    "admitted_scored": 92,
+    "admitted_false": 16,
+    "admitted_true": 76
+   }
+  }
+ },
+ "picks": [
+  "R1",
+  "R2",
+  "R4",
+  "R5",
+  "R6",
+  "R7"
+ ]
+}

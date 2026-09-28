@@ -1,0 +1,1084 @@
+{
+ "_template": {
+  "p1": "first sentence of the family's AudioSet description (first ontology entry whose canonical name = family), as is",
+  "p2": "family name split at ', ', leading and/or removed, joined with ' or ', first letter upper-case, + ' can be heard in this recording.'",
+  "encoding": "full sentences given to FlexSED's CLAP text tower without the 'The sound of' wrapper"
+ },
+ "families": {
+  "Air brake": {
+   "ontology_name": "Air brake",
+   "p1": "Sounds of a vehicle braking system in which compressed air is used to transmit force to the brake pads on the wheels.",
+   "p2": "Air brake can be heard in this recording."
+  },
+  "Air conditioning": {
+   "ontology_name": "Air conditioning",
+   "p1": "The sound of a device that removes heat from the air inside a building or vehicle, thus lowering the air temperature.",
+   "p2": "Air conditioning can be heard in this recording."
+  },
+  "Air horn, truck horn": {
+   "ontology_name": "Air horn, truck horn",
+   "p1": "The sound of a pneumatic device mounted on large vehicles designed to create an extremely loud noise for signalling purposes.",
+   "p2": "Air horn or truck horn can be heard in this recording."
+  },
+  "Aircraft": {
+   "ontology_name": "Aircraft",
+   "p1": "Sound of vehicles that fly by gaining support from the air.",
+   "p2": "Aircraft can be heard in this recording."
+  },
+  "Alarm": {
+   "ontology_name": "Car alarm",
+   "p1": "The loud sound of an electronic device installed in a vehicle in an attempt to discourage theft of the vehicle or its contents.",
+   "p2": "Alarm can be heard in this recording."
+  },
+  "Arrow": {
+   "ontology_name": "Arrow",
+   "p1": "Sounds of a shafted projectile that is shot with a bow.",
+   "p2": "Arrow can be heard in this recording."
+  },
+  "Baby cry, infant cry": {
+   "ontology_name": "Baby cry, infant cry",
+   "p1": "The sound of a young child crying or bawling.",
+   "p2": "Baby cry or infant cry can be heard in this recording."
+  },
+  "Baby laughter": {
+   "ontology_name": "Baby laughter",
+   "p1": "Laughter that is produced by a baby or infant.",
+   "p2": "Baby laughter can be heard in this recording."
+  },
+  "Basketball bounce": {
+   "ontology_name": "Basketball bounce",
+   "p1": "The sound of a basketball bouncing on a hard surface, such as a basketball court.",
+   "p2": "Basketball bounce can be heard in this recording."
+  },
+  "Bathtub (filling or washing)": {
+   "ontology_name": "Bathtub (filling or washing)",
+   "p1": "Sounds originating from a large container for holding water in which a person may bathe.",
+   "p2": "Bathtub (filling or washing) can be heard in this recording."
+  },
+  "Battle cry": {
+   "ontology_name": "Battle cry",
+   "p1": "A yell or chant taken up in battle, usually by members of the same combatant group, aiming at arousing aggression on one's own side and intimidating the enemy.",
+   "p2": "Battle cry can be heard in this recording."
+  },
+  "Bay": {
+   "ontology_name": "Bay",
+   "p1": "The sound made by a hound on the scent.",
+   "p2": "Bay can be heard in this recording."
+  },
+  "Bee, wasp, etc.": {
+   "ontology_name": "Bee, wasp, etc.",
+   "p1": "Sounds associated with these closely-related species of flying insects known for pollination, honey-production, and the ability to sting humans.",
+   "p2": "Bee or wasp or etc. can be heard in this recording."
+  },
+  "Bell": {
+   "ontology_name": "Bell",
+   "p1": "The sound of a simple instrument usually consisting of metal cast in the shape of a hollow cup, whose sides form a resonator which vibrates in a single tone upon being struck by a \"clapper\" suspended within, or by a separate mallet or hammer.",
+   "p2": "Bell can be heard in this recording."
+  },
+  "Bellow": {
+   "ontology_name": "Bellow",
+   "p1": "A very loud utterance by a person that seems more animal than human.",
+   "p2": "Bellow can be heard in this recording."
+  },
+  "Belly laugh": {
+   "ontology_name": "Belly laugh",
+   "p1": "Very loud and abrupt laughter that encompasses much of the body.",
+   "p2": "Belly laugh can be heard in this recording."
+  },
+  "Bicycle": {
+   "ontology_name": "Bicycle",
+   "p1": "Sounds of a human-powered, pedal-driven vehicle, having two wheels attached to a frame, one behind the other.",
+   "p2": "Bicycle can be heard in this recording."
+  },
+  "Bird": {
+   "ontology_name": "Fowl",
+   "p1": "Sounds associated with the bird species commonly raised for human consumption.",
+   "p2": "Bird can be heard in this recording."
+  },
+  "Bird flight, flapping wings": {
+   "ontology_name": "Bird flight, flapping wings",
+   "p1": "Sounds caused by a bird's use of its wings to travel through the air.",
+   "p2": "Bird flight or flapping wings can be heard in this recording."
+  },
+  "Biting": {
+   "ontology_name": "Biting",
+   "p1": "Gripping or chewing off with the teeth and jaws.",
+   "p2": "Biting can be heard in this recording."
+  },
+  "Blender": {
+   "ontology_name": "Blender",
+   "p1": "The sound of a kitchen and laboratory appliance used to mix, purée, or emulsify food and other substances, usually by means of metal blades at the base of a container spun rapidly by an electric motor.",
+   "p2": "Blender can be heard in this recording."
+  },
+  "Boat": {
+   "ontology_name": "Boat, Water vehicle",
+   "p1": "Sounds of watercraft designed to float, plane, work, or travel on water.",
+   "p2": "Boat can be heard in this recording."
+  },
+  "Boiling": {
+   "ontology_name": "Boiling",
+   "p1": "The sound of a liquid that is reaching the temperature at which it transitions to a vapor, resulting in bubbles emerging at the surface.",
+   "p2": "Boiling can be heard in this recording."
+  },
+  "Booing": {
+   "ontology_name": "Booing",
+   "p1": "Vocal display of displeasure for someone or something, generally an entertainer, by loudly yelling \"boo!\" or making other noises of disparagement.",
+   "p2": "Booing can be heard in this recording."
+  },
+  "Burping, eructation": {
+   "ontology_name": "Burping, eructation",
+   "p1": "The release of gas from the digestive tract through the mouth.",
+   "p2": "Burping or eructation can be heard in this recording."
+  },
+  "Burst, pop": {
+   "ontology_name": "Burst, pop",
+   "p1": "The sound of an enclosure holding gas or liquid coming open suddenly and violently.",
+   "p2": "Burst or pop can be heard in this recording."
+  },
+  "Busy signal": {
+   "ontology_name": "Busy signal",
+   "p1": "A sound (usually a simple repeating tone) played over a telephone line to indicate that the requested connection could not be completed, for instance because the remote party is already engaged in a different call.",
+   "p2": "Busy signal can be heard in this recording."
+  },
+  "Buzz": {
+   "ontology_name": "Buzz",
+   "p1": "The sound of rapid vibration, commonly the wings of a flying insect.",
+   "p2": "Buzz can be heard in this recording."
+  },
+  "Camera": {
+   "ontology_name": "Camera",
+   "p1": "Sounds of mechanical or electronic instruments that employ optics to record or capture images.",
+   "p2": "Camera can be heard in this recording."
+  },
+  "Car passing by": {
+   "ontology_name": "Car passing by",
+   "p1": "The sound of a motorized vehicle as it passes by a listener close to the vehicle's path.",
+   "p2": "Car passing by can be heard in this recording."
+  },
+  "Cash register": {
+   "ontology_name": "Cash register",
+   "p1": "Sounds of a mechanical or electronic device for registering and calculating transactions, usually attached to a drawer for storing cash.",
+   "p2": "Cash register can be heard in this recording."
+  },
+  "Cat": {
+   "ontology_name": "Cat",
+   "p1": "Sounds associated with the familiar, furry, domestic carnivorous mammal.",
+   "p2": "Cat can be heard in this recording."
+  },
+  "Caterwaul": {
+   "ontology_name": "Caterwaul",
+   "p1": "The yowling sound made by a cat in heat.",
+   "p2": "Caterwaul can be heard in this recording."
+  },
+  "Cattle": {
+   "ontology_name": "Cattle, bovinae",
+   "p1": "Sounds associated with the most common type of large domesticated ungulates.",
+   "p2": "Cattle can be heard in this recording."
+  },
+  "Cellphone buzz, vibrating alert": {
+   "ontology_name": "Cellphone buzz, vibrating alert",
+   "p1": "The low buzz emitted by the vibrotactile actuator used to provide \"silent alarms\" on mobile phones and other devices.",
+   "p2": "Cellphone buzz or vibrating alert can be heard in this recording."
+  },
+  "Chainsaw": {
+   "ontology_name": "Chainsaw",
+   "p1": "The sound of a portable mechanical saw which cuts with a set of teeth attached to a rotating chain.",
+   "p2": "Chainsaw can be heard in this recording."
+  },
+  "Chewing, mastication": {
+   "ontology_name": "Chewing, mastication",
+   "p1": "Food being crushed and ground by teeth.",
+   "p2": "Chewing or mastication can be heard in this recording."
+  },
+  "Children playing": {
+   "ontology_name": "Children playing",
+   "p1": "The sound of children at play, including any of vocalization or the sounds of their activities.",
+   "p2": "Children playing can be heard in this recording."
+  },
+  "Chink, clink": {
+   "ontology_name": "Chink, clink",
+   "p1": "A short light metallic sound.",
+   "p2": "Chink or clink can be heard in this recording."
+  },
+  "Chipmunk": {
+   "ontology_name": "Chipmunk",
+   "p1": "Sounds associated with the small, striped rodents of the family Sciuridae.",
+   "p2": "Chipmunk can be heard in this recording."
+  },
+  "Chop": {
+   "ontology_name": "Chop",
+   "p1": "The sound of cutting a solid material such as wood into smaller pieces by using an ax or other hacking tool.",
+   "p2": "Chop can be heard in this recording."
+  },
+  "Chorus effect": {
+   "ontology_name": "Chorus effect",
+   "p1": "The ensemble sound produced by an electronic effects unit which outputs simultaneous versions of the input source with small variations in pitch and timbre.",
+   "p2": "Chorus effect can be heard in this recording."
+  },
+  "Chuckle, chortle": {
+   "ontology_name": "Chuckle, chortle",
+   "p1": "Laugh quietly or with restraint.",
+   "p2": "Chuckle or chortle can be heard in this recording."
+  },
+  "Clapping": {
+   "ontology_name": "Clapping",
+   "p1": "A percussive sound made by a human striking together the palms of their two hands, often quickly and repeatedly to express appreciation or approval.",
+   "p2": "Clapping can be heard in this recording."
+  },
+  "Clock": {
+   "ontology_name": "Clock",
+   "p1": "Sounds made by an instrument designed to keep and indicate time.",
+   "p2": "Clock can be heard in this recording."
+  },
+  "Clunk": {
+   "ontology_name": "Clunk",
+   "p1": "A predominantly low-frequency impact noise that starts with a cleaner, high-frequency click, suggesting the contact of rigid surfaces (as of a car door closing).",
+   "p2": "Clunk can be heard in this recording."
+  },
+  "Coin (dropping)": {
+   "ontology_name": "Coin (dropping)",
+   "p1": "The sound of a small, flat, round piece of hard material such as metal or plastic colliding with or bouncing on a hard surface.",
+   "p2": "Coin (dropping) can be heard in this recording."
+  },
+  "Computer keyboard": {
+   "ontology_name": "Computer keyboard",
+   "p1": "Sounds created by a typewriter-style device which uses an arrangement of buttons or keys controlling switches to enter text or other information into a computer or other electronic device.",
+   "p2": "Computer keyboard can be heard in this recording."
+  },
+  "Cooking": {
+   "ontology_name": "Chopping (food)",
+   "p1": "The sound of cutting ingredients into pieces with a knife or similar blade tool.",
+   "p2": "Cooking can be heard in this recording."
+  },
+  "Cough": {
+   "ontology_name": "Cough",
+   "p1": "A sudden and often repetitively occurring reflex which consists of an inhalation, a forced exhalation against a closed glottis, and a violent release of air following opening of the glottis.",
+   "p2": "Cough can be heard in this recording."
+  },
+  "Crack": {
+   "ontology_name": "Crack",
+   "p1": "Abrupt sounds of individual ruptures in a rigid substance under stress.",
+   "p2": "Crack can be heard in this recording."
+  },
+  "Crackle": {
+   "ontology_name": "Crackle",
+   "p1": "An irregular sequence of sharp sounds, as from sudden vaporization of liquids trapped in a burning solid, or from a collection of snapping noises.",
+   "p2": "Crackle can be heard in this recording."
+  },
+  "Cricket": {
+   "ontology_name": "Cricket",
+   "p1": "Sounds associated with these relatives of grasshoppers characterized by enlarged hind legs, providing power for jumping.",
+   "p2": "Cricket can be heard in this recording."
+  },
+  "Croak": {
+   "ontology_name": "Croak",
+   "p1": "The harsh hoarse utterance of a frog.",
+   "p2": "Croak can be heard in this recording."
+  },
+  "Crow": {
+   "ontology_name": "Crow",
+   "p1": "Sounds associated with the species of medium-to-large birds, Corvus.",
+   "p2": "Crow can be heard in this recording."
+  },
+  "Crowd": {
+   "ontology_name": "Children shouting",
+   "p1": "The boisterous vocalizations of a group of children, for instance in a playground.",
+   "p2": "Crowd can be heard in this recording."
+  },
+  "Crying, sobbing": {
+   "ontology_name": "Crying, sobbing",
+   "p1": "Sound associated with the shedding of tears in response to an emotional state, arising from slow but erratic inhalation, occasional instances of breath holding and muscular tremor.",
+   "p2": "Crying or sobbing can be heard in this recording."
+  },
+  "Dental drill, dentist's drill": {
+   "ontology_name": "Dental drill, dentist's drill",
+   "p1": "The sound of a small, high-speed drill used during dental procedures, usually to remove decay and shape tooth structure prior to the insertion of a filling or crown.",
+   "p2": "Dental drill or dentist's drill can be heard in this recording."
+  },
+  "Dial tone": {
+   "ontology_name": "Dial tone",
+   "p1": "The sound of a signal that a telephone exchange or other switching equipment sends to a telephone to confirm that it is ready to initiate a connection.",
+   "p2": "Dial tone can be heard in this recording."
+  },
+  "Digestive": {
+   "ontology_name": "Digestive",
+   "p1": "Sounds associated with the human function of eating and processing nutrition (food).",
+   "p2": "Digestive can be heard in this recording."
+  },
+  "Ding-dong": {
+   "ontology_name": "Ding-dong",
+   "p1": "A multi-tone chime made by a doorbell.",
+   "p2": "Ding-dong can be heard in this recording."
+  },
+  "Dishes": {
+   "ontology_name": "Dishes, pots, and pans",
+   "p1": "The sound of non-destructive collisions between plates, dishes, glassware, cooking vessels, and kitchen and eating utensils.",
+   "p2": "Dishes can be heard in this recording."
+  },
+  "Dog": {
+   "ontology_name": "Dog",
+   "p1": "Any sounds coming from the familiar domesticated canid which has been selectively bred over millennia for companionship, protection, as well as for superior sensory capabilities, and other useful behaviors.",
+   "p2": "Dog can be heard in this recording."
+  },
+  "Donkey, ass": {
+   "ontology_name": "Donkey, ass",
+   "p1": "Sounds associated with the domesticated working animal that is a smaller member of the horse family.",
+   "p2": "Donkey or ass can be heard in this recording."
+  },
+  "Door": {
+   "ontology_name": "Door",
+   "p1": "Sounds of a moving structure used to open or close an entrance to an enclosed space such as a building or vehicle.",
+   "p2": "Door can be heard in this recording."
+  },
+  "Doorbell": {
+   "ontology_name": "Doorbell",
+   "p1": "The sound of a signaling device typically placed near a building's entrance with which a visitor can announce their presence to occupants.",
+   "p2": "Doorbell can be heard in this recording."
+  },
+  "Drawer open or close": {
+   "ontology_name": "Drawer open or close",
+   "p1": "The sound of the opening or closing of a box-shaped container that fits into a piece of furniture in such a way that it can be drawn out horizontally to reach its contents.",
+   "p2": "Drawer open or close can be heard in this recording."
+  },
+  "Drill": {
+   "ontology_name": "Drill",
+   "p1": "Sounds of a tool used for making holes in various materials via a rotating drill bit.",
+   "p2": "Drill can be heard in this recording."
+  },
+  "Duck": {
+   "ontology_name": "Duck",
+   "p1": "Sounds associated with this collection of waterfowl species.",
+   "p2": "Duck can be heard in this recording."
+  },
+  "Duck call (hunting tool)": {
+   "ontology_name": "Duck call (hunting tool)",
+   "p1": "The sound of a tool which imitates the communication calls of waterfowl and is used primarily by hunters to lure prey.",
+   "p2": "Duck call (hunting tool) can be heard in this recording."
+  },
+  "Effects unit": {
+   "ontology_name": "Effects unit",
+   "p1": "Sounds associated with an electronic device that alters how a musical instrument or other audio source sounds.",
+   "p2": "Effects unit can be heard in this recording."
+  },
+  "Electric shaver, electric razor": {
+   "ontology_name": "Electric shaver, electric razor",
+   "p1": "The sound of a bladed tool primarily used in the removal of unwanted body hair where the blades are continually moved by an electric motor.",
+   "p2": "Electric shaver or electric razor can be heard in this recording."
+  },
+  "Electric toothbrush": {
+   "ontology_name": "Electric toothbrush",
+   "p1": "The sound of a toothbrush that makes rapid, automatic bristle motions driven by an electric motor in order to clean teeth.",
+   "p2": "Electric toothbrush can be heard in this recording."
+  },
+  "Electronic tuner": {
+   "ontology_name": "Electronic tuner",
+   "p1": "Sounds produced by an electronic device whose purpose is to aid in the tuning of musical instruments.",
+   "p2": "Electronic tuner can be heard in this recording."
+  },
+  "Engine knocking": {
+   "ontology_name": "Engine knocking",
+   "p1": "A metallic \"pinging\" sound caused by a malfunctioning spark-ignited internal combustion engine.",
+   "p2": "Engine knocking can be heard in this recording."
+  },
+  "Explosion": {
+   "ontology_name": "Explosion",
+   "p1": "The sound of a rapid increase in volume and release of energy in an extreme manner, usually with the generation of high temperatures and the release of gases.",
+   "p2": "Explosion can be heard in this recording."
+  },
+  "Fart": {
+   "ontology_name": "Fart",
+   "p1": "The release of gasses produced by digestion through the anus; flatulence.",
+   "p2": "Fart can be heard in this recording."
+  },
+  "Filing (rasp)": {
+   "ontology_name": "Filing (rasp)",
+   "p1": "Sounds of a common wood- and metal-working tool used to remove fine amounts of material from a workpiece.",
+   "p2": "Filing (rasp) can be heard in this recording."
+  },
+  "Finger snapping": {
+   "ontology_name": "Finger snapping",
+   "p1": "A snapping or clicking sound usually caused by building tension between the thumb and another finger and then moving the other finger forcefully downward to hits the palm at high speed.",
+   "p2": "Finger snapping can be heard in this recording."
+  },
+  "Fire": {
+   "ontology_name": "Fire",
+   "p1": "Sounds resulting from the rapid oxidation of a material in the exothermic chemical process of combustion, releasing heat, light, and various reaction products.",
+   "p2": "Fire can be heard in this recording."
+  },
+  "Fireworks": {
+   "ontology_name": "Fireworks",
+   "p1": "Sounds of a class of low explosive pyrotechnic devices used for aesthetic and entertainment purposes.",
+   "p2": "Fireworks can be heard in this recording."
+  },
+  "Fly, housefly": {
+   "ontology_name": "Fly, housefly",
+   "p1": "Sounds associated with these insects of the order Diptera, which use only a single pair of wings to fly.",
+   "p2": "Fly or housefly can be heard in this recording."
+  },
+  "Foghorn": {
+   "ontology_name": "Foghorn",
+   "p1": "A signaling sound used primarily in foggy conditions to warn watercraft of the presence of nearby vessels or other navigational hazards.",
+   "p2": "Foghorn can be heard in this recording."
+  },
+  "Footsteps": {
+   "ontology_name": "Run",
+   "p1": "Move fast by using one's feet.",
+   "p2": "Footsteps can be heard in this recording."
+  },
+  "Frog": {
+   "ontology_name": "Frog",
+   "p1": "Sounds associated with the short-bodied, tailless amphibians composing the order Anura.",
+   "p2": "Frog can be heard in this recording."
+  },
+  "Gargling": {
+   "ontology_name": "Gargling",
+   "p1": "Air from the lungs bubbling through a liquid in the mouth.",
+   "p2": "Gargling can be heard in this recording."
+  },
+  "Gasp": {
+   "ontology_name": "Gasp",
+   "p1": "A short labored intake of breath with the mouth open.",
+   "p2": "Gasp can be heard in this recording."
+  },
+  "Gears": {
+   "ontology_name": "Gears",
+   "p1": "Sounds of rotating machine parts having cut teeth, or cogs, which mesh with other toothed parts to transmit torque.",
+   "p2": "Gears can be heard in this recording."
+  },
+  "Giggle": {
+   "ontology_name": "Giggle",
+   "p1": "A foolish or nervous laugh.",
+   "p2": "Giggle can be heard in this recording."
+  },
+  "Glass": {
+   "ontology_name": "Glass",
+   "p1": "Sounds associated with the non-crystalline amorphous solid that is often transparent and has widespread practical, technological, and decorative uses.",
+   "p2": "Glass can be heard in this recording."
+  },
+  "Gobble": {
+   "ontology_name": "Gobble",
+   "p1": "The characteristic sound made by a turkey cock.",
+   "p2": "Gobble can be heard in this recording."
+  },
+  "Goose": {
+   "ontology_name": "Goose",
+   "p1": "Sounds associated with this species of larger waterfowl.",
+   "p2": "Goose can be heard in this recording."
+  },
+  "Groan": {
+   "ontology_name": "Groan",
+   "p1": "An utterance expressing pain or disapproval.",
+   "p2": "Groan can be heard in this recording."
+  },
+  "Grunt": {
+   "ontology_name": "Grunt",
+   "p1": "A short low gruff noise, resembling the sound made by animals such as pigs.",
+   "p2": "Grunt can be heard in this recording."
+  },
+  "Guitar amplifier": {
+   "ontology_name": "Guitar amplifier",
+   "p1": "Sounds specifically associated with an audio amplifier intended for use with an electric guitar, such as overdrive distortion.",
+   "p2": "Guitar amplifier can be heard in this recording."
+  },
+  "Gull, seagull": {
+   "ontology_name": "Gull, seagull",
+   "p1": "Sounds associated with the family of seabirds often encountered in coastal regions.",
+   "p2": "Gull or seagull can be heard in this recording."
+  },
+  "Gunshot": {
+   "ontology_name": "Gunshot, gunfire",
+   "p1": "The sound of the discharge of a firearm, or multiple such discharges.",
+   "p2": "Gunshot can be heard in this recording."
+  },
+  "Gush": {
+   "ontology_name": "Gush",
+   "p1": "The sound of a liquid coming out of a pipe or other opening rapidly and in large volumes.",
+   "p2": "Gush can be heard in this recording."
+  },
+  "Hair dryer": {
+   "ontology_name": "Hair dryer",
+   "p1": "The sound of an electromechanical device designed to blow normal or hot air over damp hair, in order to dry the hair.",
+   "p2": "Hair dryer can be heard in this recording."
+  },
+  "Hammer": {
+   "ontology_name": "Hammer",
+   "p1": "Sounds made by a tool or device that delivers a blow to an object.",
+   "p2": "Hammer can be heard in this recording."
+  },
+  "Hands": {
+   "ontology_name": "Hands",
+   "p1": "Sounds originating primarily from the hands and fingers of humans.",
+   "p2": "Hands can be heard in this recording."
+  },
+  "Heart murmur": {
+   "ontology_name": "Heart murmur",
+   "p1": "Heart sounds produced by abnormal blood flow across one of the heart valves, typically detected by a stethoscope.",
+   "p2": "Heart murmur can be heard in this recording."
+  },
+  "Heart sounds, heartbeat": {
+   "ontology_name": "Heart sounds, heartbeat",
+   "p1": "Noises generated by the beating heart and the resultant flow of blood through it.",
+   "p2": "Heart sounds or heartbeat can be heard in this recording."
+  },
+  "Helicopter": {
+   "ontology_name": "Helicopter",
+   "p1": "Sounds of a type of rotorcraft in which lift and thrust are supplied by rotors.",
+   "p2": "Helicopter can be heard in this recording."
+  },
+  "Hiccup": {
+   "ontology_name": "Hiccup",
+   "p1": "A strong, involuntary contraction of the diaphragm that may repeat several times per minute.",
+   "p2": "Hiccup can be heard in this recording."
+  },
+  "Honk": {
+   "ontology_name": "Honk",
+   "p1": "The cry of a goose.",
+   "p2": "Honk can be heard in this recording."
+  },
+  "Hoot": {
+   "ontology_name": "Hoot",
+   "p1": "The loud raucous cry of an owl.",
+   "p2": "Hoot can be heard in this recording."
+  },
+  "Horse": {
+   "ontology_name": "Horse",
+   "p1": "Sounds associated with the familiar domesticated large, fast, and strong ungulate mammal.",
+   "p2": "Horse can be heard in this recording."
+  },
+  "Human locomotion": {
+   "ontology_name": "Human locomotion",
+   "p1": "Sounds resulting from human body actions involved in changing location.",
+   "p2": "Human locomotion can be heard in this recording."
+  },
+  "Ice cream truck, ice cream van": {
+   "ontology_name": "Ice cream truck, ice cream van",
+   "p1": "Sounds of a commercial vehicle that serves as a mobile retail outlet for ice cream, usually during the summer.",
+   "p2": "Ice cream truck or ice cream van can be heard in this recording."
+  },
+  "Insect": {
+   "ontology_name": "Insect",
+   "p1": "Sounds associated with invertebrates from the arthropod phylum that have a chitinous exoskeleton, a three-part body, three pairs of jointed legs, compound eyes, and one pair of antennae.",
+   "p2": "Insect can be heard in this recording."
+  },
+  "Jackhammer": {
+   "ontology_name": "Jackhammer",
+   "p1": "The sound of a pneumatic or electro-mechanical tool that combines a hammer directly with a chisel, usually used to break up rock, pavement, and concrete.",
+   "p2": "Jackhammer can be heard in this recording."
+  },
+  "Kettle whistle": {
+   "ontology_name": "Kettle whistle",
+   "p1": "The high-pitched sound of a whistle attached to the spout of an appliance for boiling water.",
+   "p2": "Kettle whistle can be heard in this recording."
+  },
+  "Keys jangling": {
+   "ontology_name": "Keys jangling",
+   "p1": "Sounds made by the mutual collision of small pieces of metal, which are often linked on a ring, used to operate locks.",
+   "p2": "Keys jangling can be heard in this recording."
+  },
+  "Knock": {
+   "ontology_name": "Knock",
+   "p1": "A sharp noise of a rigid surface being struck, usually without damage and deliberately, most often with the knuckles of the hand.",
+   "p2": "Knock can be heard in this recording."
+  },
+  "Laughter": {
+   "ontology_name": "Laughter",
+   "p1": "The sound of rhythmical contractions of the diaphragm in response to stimuli such as tickling, or from humorous stories or thoughts.",
+   "p2": "Laughter can be heard in this recording."
+  },
+  "Lawn mower": {
+   "ontology_name": "Lawn mower",
+   "p1": "The sound of a machine utilizing one or more revolving blades to cut grass, powered by an electric motor, a small internal combustion engine, or by a human pushing the machine.",
+   "p2": "Lawn mower can be heard in this recording."
+  },
+  "Mechanical fan": {
+   "ontology_name": "Mechanical fan",
+   "p1": "Sounds of a machine used to create air flow via the motion of a rotating arrangement of vanes or blades.",
+   "p2": "Mechanical fan can be heard in this recording."
+  },
+  "Microphone": {
+   "ontology_name": "Microphone",
+   "p1": "Sounds whose origin lie with the microphone used in the recording, rather than the external sound source that was intended to be recorded.",
+   "p2": "Microphone can be heard in this recording."
+  },
+  "Microwave oven": {
+   "ontology_name": "Microwave oven",
+   "p1": "Sounds made by a kitchen appliance that heats food by exposing it to microwave radiation, including the noise of the fan, rotation mechanism, and microwave source, as well as the alert sound used to indicate that cooking is complete.",
+   "p2": "Microwave oven can be heard in this recording."
+  },
+  "Miscellaneous sources": {
+   "ontology_name": "Miscellaneous sources",
+   "p1": "Portmanteau class for sound categories that clearly suggest specific sources not covered in the other categories.",
+   "p2": "Miscellaneous sources can be heard in this recording."
+  },
+  "Mosquito": {
+   "ontology_name": "Mosquito",
+   "p1": "Sounds associated with these small, midge-like flies whose tube-like mouth parts pierce the hosts' skin to consume blood.",
+   "p2": "Mosquito can be heard in this recording."
+  },
+  "Mouse": {
+   "ontology_name": "Mouse",
+   "p1": "Sounds associated with the familiar small rodent.",
+   "p2": "Mouse can be heard in this recording."
+  },
+  "Natural sounds": {
+   "ontology_name": "Natural sounds",
+   "p1": "Sounds produced by natural sources in their normal soundscape, excluding animal and human sounds.",
+   "p2": "Natural sounds can be heard in this recording."
+  },
+  "Nicker": {
+   "ontology_name": "Nicker",
+   "p1": "A soft neighing sound made by a horse.",
+   "p2": "Nicker can be heard in this recording."
+  },
+  "Non-motorized land vehicle": {
+   "ontology_name": "Non-motorized land vehicle",
+   "p1": "Sounds of human-powered vehicles used on roads or elsewhere on land.",
+   "p2": "Non-motorized land vehicle can be heard in this recording."
+  },
+  "Otoacoustic emission": {
+   "ontology_name": "Otoacoustic emission",
+   "p1": "A sound generated within the inner ear, generally understood to result from positive feedback in the highly-sensitive ear mechanism.",
+   "p2": "Otoacoustic emission can be heard in this recording."
+  },
+  "Owl": {
+   "ontology_name": "Owl",
+   "p1": "Sounds associated with the mostly solitary and nocturnal carnivorous birds from the order Strigiformes.",
+   "p2": "Owl can be heard in this recording."
+  },
+  "Packing tape, duct tape": {
+   "ontology_name": "Packing tape, duct tape",
+   "p1": "Sounds associated with self-adhesive tape from wide rolls used to seal cardboard boxes and other temporary attachments.",
+   "p2": "Packing tape or duct tape can be heard in this recording."
+  },
+  "Pant": {
+   "ontology_name": "Pant",
+   "p1": "Fast and noisy breathing, often associated with physical exertion.",
+   "p2": "Pant can be heard in this recording."
+  },
+  "Patter": {
+   "ontology_name": "Patter",
+   "p1": "A quick succession of light rapid sounds, usually suggesting the locomotion of small animals.",
+   "p2": "Patter can be heard in this recording."
+  },
+  "Pig": {
+   "ontology_name": "Pig",
+   "p1": "Sounds associated with the highly intelligent, very common, domesticated relative of the boar.",
+   "p2": "Pig can be heard in this recording."
+  },
+  "Power tool": {
+   "ontology_name": "Power tool",
+   "p1": "Sounds of tools that employ a power source other than the manual labor used with hand tools.",
+   "p2": "Power tool can be heard in this recording."
+  },
+  "Power windows, electric windows": {
+   "ontology_name": "Power windows, electric windows",
+   "p1": "The sound of automobile windows being raised and lowered by a built-in electric motor, controlled by a button or switch.",
+   "p2": "Power windows or electric windows can be heard in this recording."
+  },
+  "Printer": {
+   "ontology_name": "Printer",
+   "p1": "Sounds of a computer peripheral which makes a persistent human readable representation of graphics or text on paper or similar physical media.",
+   "p2": "Printer can be heard in this recording."
+  },
+  "Pulleys": {
+   "ontology_name": "Pulleys",
+   "p1": "Sounds of a wheel on an axle or shaft that is designed to support movement and change of direction of a taut cable or belt along its circumference.",
+   "p2": "Pulleys can be heard in this recording."
+  },
+  "Pump (liquid)": {
+   "ontology_name": "Pump (liquid)",
+   "p1": "The sound of a liquid being drawn or poured with a pump.",
+   "p2": "Pump (liquid) can be heard in this recording."
+  },
+  "Quack": {
+   "ontology_name": "Quack",
+   "p1": "The harsh communication sound made by a duck.",
+   "p2": "Quack can be heard in this recording."
+  },
+  "Rain": {
+   "ontology_name": "Rain",
+   "p1": "The sound of droplets of liquid water that have condensed from atmospheric water vapor and then fallen under gravity.",
+   "p2": "Rain can be heard in this recording."
+  },
+  "Ratchet, pawl": {
+   "ontology_name": "Ratchet, pawl",
+   "p1": "The sound of a mechanical device that allows continuous linear or rotary motion in only one direction while preventing motion in the opposite direction.",
+   "p2": "Ratchet or pawl can be heard in this recording."
+  },
+  "Rattle": {
+   "ontology_name": "Rattle",
+   "p1": "A rapid series of short loud sounds as of small hard items loose inside a container.",
+   "p2": "Rattle can be heard in this recording."
+  },
+  "Roar": {
+   "ontology_name": "Roar",
+   "p1": "A deep, bellowing outburst of sound forced through an open mouth, made by a lion or other \"big cat\" species.",
+   "p2": "Roar can be heard in this recording."
+  },
+  "Roaring cats (lions, tigers)": {
+   "ontology_name": "Roaring cats (lions, tigers)",
+   "p1": "Sounds associated with the larger and more ferocious wild relatives of cats.",
+   "p2": "Roaring cats (lions or tigers) can be heard in this recording."
+  },
+  "Rodents, rats, mice": {
+   "ontology_name": "Rodents, rats, mice",
+   "p1": "Sounds associated with the small mammals of the order Rodentia, found in vast numbers on all continents except Antarctica.",
+   "p2": "Rodents or rats or mice can be heard in this recording."
+  },
+  "Rowboat, canoe, kayak": {
+   "ontology_name": "Rowboat, canoe, kayak",
+   "p1": "Sounds of a boat propelled using the motion of oars in the water.",
+   "p2": "Rowboat or canoe or kayak can be heard in this recording."
+  },
+  "Sanding": {
+   "ontology_name": "Sanding",
+   "p1": "The sounds of a surface being scraped by an abrasive material affixed to sheets of paper or cloth, either to make the surface smoother, remove a layer of material, or sometimes to make the surface rougher.",
+   "p2": "Sanding can be heard in this recording."
+  },
+  "Sawing": {
+   "ontology_name": "Sawing",
+   "p1": "Sounds of a tool consisting of a tough blade, wire, or chain with a hard toothed edge, used to cut through material, most often wood.",
+   "p2": "Sawing can be heard in this recording."
+  },
+  "Scissors": {
+   "ontology_name": "Scissors",
+   "p1": "The sound of hand-operated shearing tools consisting of a pair of metal blades pivoted so that the sharpened edges slide against each other when the handles opposite to the pivot are closed.",
+   "p2": "Scissors can be heard in this recording."
+  },
+  "Screaming": {
+   "ontology_name": "Screaming",
+   "p1": "A sharp, high-pitched human vocalization; often an instinctive action indicating fear, pain, surprise, joy, anger, etc. Verbal content is absent or overwhelmed, unlike Shout and Yell.",
+   "p2": "Screaming can be heard in this recording."
+  },
+  "Sewing machine": {
+   "ontology_name": "Sewing machine",
+   "p1": "Sounds of a machine used to stitch fabric and other materials together with thread.",
+   "p2": "Sewing machine can be heard in this recording."
+  },
+  "Sheep": {
+   "ontology_name": "Goat",
+   "p1": "Sounds of the medium-sized domesticated bovidae.",
+   "p2": "Sheep can be heard in this recording."
+  },
+  "Shout": {
+   "ontology_name": "Shout",
+   "p1": "Talk in a loud voice to deliberately command attention or overcome interfering sounds.",
+   "p2": "Shout can be heard in this recording."
+  },
+  "Shuffling cards": {
+   "ontology_name": "Shuffling cards",
+   "p1": "The sound of playing cards being manually rearranged into a random order.",
+   "p2": "Shuffling cards can be heard in this recording."
+  },
+  "Sigh": {
+   "ontology_name": "Sigh",
+   "p1": "An utterance made by exhaling audibly.",
+   "p2": "Sigh can be heard in this recording."
+  },
+  "Single-lens reflex camera": {
+   "ontology_name": "Single-lens reflex camera",
+   "p1": "Sounds of camera that uses a mirror and prism system to permit the photographer to view through the lens and see exactly what will be captured.",
+   "p2": "Single-lens reflex camera can be heard in this recording."
+  },
+  "Siren": {
+   "ontology_name": "Emergency vehicle",
+   "p1": "The sound of any vehicle that is designated and authorized to respond to an emergency.",
+   "p2": "Siren can be heard in this recording."
+  },
+  "Skateboard": {
+   "ontology_name": "Skateboard",
+   "p1": "Sounds of a type of sports equipment consisting of a board mounted on two pairs of wheels.",
+   "p2": "Skateboard can be heard in this recording."
+  },
+  "Sliding door": {
+   "ontology_name": "Sliding door",
+   "p1": "The sound of a type of door which opens horizontally by sliding, usually parallel to a wall.",
+   "p2": "Sliding door can be heard in this recording."
+  },
+  "Snake": {
+   "ontology_name": "Snake",
+   "p1": "Sounds associated with the elongated, legless, carnivorous reptiles of the suborder Serpentes.",
+   "p2": "Snake can be heard in this recording."
+  },
+  "Snap": {
+   "ontology_name": "Snap",
+   "p1": "The sound of a thin and rigid element breaking suddenly and abruptly.",
+   "p2": "Snap can be heard in this recording."
+  },
+  "Sneeze": {
+   "ontology_name": "Sneeze",
+   "p1": "A convulsive expulsion of air from the lungs through the nose and mouth, usually caused by foreign particles irritating the nasal mucous.",
+   "p2": "Sneeze can be heard in this recording."
+  },
+  "Snicker": {
+   "ontology_name": "Snicker",
+   "p1": "A disrespectful laugh.",
+   "p2": "Snicker can be heard in this recording."
+  },
+  "Sniff": {
+   "ontology_name": "Sniff",
+   "p1": "Inhale audibly through the nose.",
+   "p2": "Sniff can be heard in this recording."
+  },
+  "Snoring": {
+   "ontology_name": "Snoring",
+   "p1": "The sound resulting from obstructed respiratory airways during breathing while sleeping.",
+   "p2": "Snoring can be heard in this recording."
+  },
+  "Snort": {
+   "ontology_name": "Snort",
+   "p1": "The sound of a single, hard exhalation through the nose.",
+   "p2": "Snort can be heard in this recording."
+  },
+  "Snort (horse)": {
+   "ontology_name": "Snort (horse)",
+   "p1": "The sound of a rapid exhale through a horse's nose.",
+   "p2": "Snort (horse) can be heard in this recording."
+  },
+  "Sonar": {
+   "ontology_name": "Sonar",
+   "p1": "Sounds associated with underwater sensing via acoustic signals.",
+   "p2": "Sonar can be heard in this recording."
+  },
+  "Sonic boom": {
+   "ontology_name": "Sonic boom",
+   "p1": "The sound associated with the shock waves created by an object traveling through the air faster than the speed of sound.",
+   "p2": "Sonic boom can be heard in this recording."
+  },
+  "Sound equipment": {
+   "ontology_name": "Sound equipment",
+   "p1": "Sounds that suggest the involvement of electronic audio processing equipment.",
+   "p2": "Sound equipment can be heard in this recording."
+  },
+  "Specific impact sounds": {
+   "ontology_name": "Specific impact sounds",
+   "p1": "Transient contact sounds that are strongly suggestive of the particular objects involved in the collision.",
+   "p2": "Specific impact sounds can be heard in this recording."
+  },
+  "Splash, splatter": {
+   "ontology_name": "Splash, splatter",
+   "p1": "The sound of a liquid colliding with a hard surface.",
+   "p2": "Splash or splatter can be heard in this recording."
+  },
+  "Splinter": {
+   "ontology_name": "Splinter",
+   "p1": "The sound of a rigid fibrous material, typically wood, breaking up into splinters or slivers.",
+   "p2": "Splinter can be heard in this recording."
+  },
+  "Spray": {
+   "ontology_name": "Spray",
+   "p1": "The sound of a liquid being transferred in a scatter or jet of droplets.",
+   "p2": "Spray can be heard in this recording."
+  },
+  "Squawk": {
+   "ontology_name": "Squawk",
+   "p1": "Abrasive, unpleasant sharp sound produced by a bird.",
+   "p2": "Squawk can be heard in this recording."
+  },
+  "Squish": {
+   "ontology_name": "Squish",
+   "p1": "Sounds made by a liquid-saturated material being squeezed.",
+   "p2": "Squish can be heard in this recording."
+  },
+  "Steam": {
+   "ontology_name": "Steam",
+   "p1": "Sounds caused by water in the gas phase, which is formed when water boils.",
+   "p2": "Steam can be heard in this recording."
+  },
+  "Steam whistle": {
+   "ontology_name": "Steam whistle",
+   "p1": "The sound of a device used to produce sound with the aid of live steam, which acts as a vibrating system.",
+   "p2": "Steam whistle can be heard in this recording."
+  },
+  "Stir": {
+   "ontology_name": "Stir",
+   "p1": "The sound of moving an implement through a fluid substance.",
+   "p2": "Stir can be heard in this recording."
+  },
+  "Stomach rumble": {
+   "ontology_name": "Stomach rumble",
+   "p1": "A rumbling, growling or gurgling noise produced by movement of the contents of the gastro-intestinal tract.",
+   "p2": "Stomach rumble can be heard in this recording."
+  },
+  "Tap": {
+   "ontology_name": "Tap",
+   "p1": "The sound of a light collision between a rigid object and a rigid surface, for instance to deliberately attract attention.",
+   "p2": "Tap can be heard in this recording."
+  },
+  "Telephone": {
+   "ontology_name": "Telephone",
+   "p1": "The sound of a telecommunications device that permits two or more users to conduct a conversation when they are too far apart to be heard directly.",
+   "p2": "Telephone can be heard in this recording."
+  },
+  "Throat clearing": {
+   "ontology_name": "Throat clearing",
+   "p1": "Forced exhalation through a partially-closed glottis to disrupt built-up mucus, or used as a social signal to draw attention to one's presence.",
+   "p2": "Throat clearing can be heard in this recording."
+  },
+  "Thump, thud": {
+   "ontology_name": "Thump, thud",
+   "p1": "A heavy dull sound, as made by impact of heavy objects with a relatively soft point of contact.",
+   "p2": "Thump or thud can be heard in this recording."
+  },
+  "Thunder": {
+   "ontology_name": "Thunderstorm",
+   "p1": "The sound of a storm characterized by the presence of lightning and its acoustic effect on the Earth's atmosphere, known as thunder.",
+   "p2": "Thunder can be heard in this recording."
+  },
+  "Thunk": {
+   "ontology_name": "Thunk",
+   "p1": "A partly dull hollow sound with a damped resonance.",
+   "p2": "Thunk can be heard in this recording."
+  },
+  "Tick": {
+   "ontology_name": "Tick",
+   "p1": "A metallic tapping sound.",
+   "p2": "Tick can be heard in this recording."
+  },
+  "Tick-tock": {
+   "ontology_name": "Tick-tock",
+   "p1": "A steady recurrent ticking sound as made by a clock.",
+   "p2": "Tick-tock can be heard in this recording."
+  },
+  "Tinnitus, ringing in the ears": {
+   "ontology_name": "Tinnitus, ringing in the ears",
+   "p1": "A sound perceived when no external sound is present, often described as ringing, usually related to short-term trauma or longer-lasting damage to the ear.",
+   "p2": "Tinnitus or ringing in the ears can be heard in this recording."
+  },
+  "Toilet flush": {
+   "ontology_name": "Toilet flush",
+   "p1": "The sound of a toilet flushing water along with any waste through a drainpipe.",
+   "p2": "Toilet flush can be heard in this recording."
+  },
+  "Tools": {
+   "ontology_name": "Tools",
+   "p1": "Sounds associated with any physical item that can be used to achieve a goal, especially if the item is not consumed in the process.",
+   "p2": "Tools can be heard in this recording."
+  },
+  "Toothbrush": {
+   "ontology_name": "Toothbrush",
+   "p1": "Sounds of an instrument used to clean the teeth and gums consisting of a head of tightly clustered bristles mounted on a handle.",
+   "p2": "Toothbrush can be heard in this recording."
+  },
+  "Train": {
+   "ontology_name": "Rail transport",
+   "p1": "Sounds associated with wheeled vehicles running on rails (tracks).",
+   "p2": "Train can be heard in this recording."
+  },
+  "Turkey": {
+   "ontology_name": "Turkey",
+   "p1": "Sounds associated with the large poultry bird, originally domesticated in the Americas.",
+   "p2": "Turkey can be heard in this recording."
+  },
+  "Typewriter": {
+   "ontology_name": "Typewriter",
+   "p1": "Sounds of a mechanical or electromechanical machine for printing characters by means of keyboard-operated types striking a ribbon to transfer ink or carbon impressions onto paper.",
+   "p2": "Typewriter can be heard in this recording."
+  },
+  "Typing": {
+   "ontology_name": "Typing",
+   "p1": "The sound of writing or inputting text by pressing keys on a typewriter, computer keyboard, cell phone, or calculator.",
+   "p2": "Typing can be heard in this recording."
+  },
+  "Vacuum cleaner": {
+   "ontology_name": "Vacuum cleaner",
+   "p1": "The sound of a device that uses an air pump to create a partial vacuum to suck up dust and dirt, usually from floors and other surfaces such as upholstery and draperies.",
+   "p2": "Vacuum cleaner can be heard in this recording."
+  },
+  "Vehicle": {
+   "ontology_name": "Vehicle",
+   "p1": "Sounds of mobile machines that transport people or cargo.",
+   "p2": "Vehicle can be heard in this recording."
+  },
+  "Velcro, hook and loop fastener": {
+   "ontology_name": "Velcro, hook and loop fastener",
+   "p1": "Sounds of fasteners typically consisting of two lineal fabric strips, one featuring tiny hooks, the second consisting of even smaller and \"hairier\" loops.",
+   "p2": "Velcro or hook and loop fastener can be heard in this recording."
+  },
+  "Wail, moan": {
+   "ontology_name": "Wail, moan",
+   "p1": "A weak or soft emotional vocalization, possibly indicating pain, sadness, or pleasure.",
+   "p2": "Wail or moan can be heard in this recording."
+  },
+  "Water": {
+   "ontology_name": "Water",
+   "p1": "Sounds caused by motion of liquid water.",
+   "p2": "Water can be heard in this recording."
+  },
+  "Whale vocalization": {
+   "ontology_name": "Whale vocalization",
+   "p1": "Sounds produced by whales for different kinds of communication.",
+   "p2": "Whale vocalization can be heard in this recording."
+  },
+  "Wheeze": {
+   "ontology_name": "Wheeze",
+   "p1": "A continuous, coarse, whistling sound produced by obstruction of the respiratory airways during breathing.",
+   "p2": "Wheeze can be heard in this recording."
+  },
+  "Whimper": {
+   "ontology_name": "Whimper",
+   "p1": "A plaintive, whining vocalization with some abrupt changes in loudness.",
+   "p2": "Whimper can be heard in this recording."
+  },
+  "Whistle": {
+   "ontology_name": "Whistle",
+   "p1": "The sound of an instrument that produces sound from a stream of forced air.",
+   "p2": "Whistle can be heard in this recording."
+  },
+  "Whoop": {
+   "ontology_name": "Whoop",
+   "p1": "A loud hooting cry of exultation or excitement.",
+   "p2": "Whoop can be heard in this recording."
+  },
+  "Whoosh, swoosh, swish": {
+   "ontology_name": "Whoosh, swoosh, swish",
+   "p1": "A sibilant sound caused by a rigid object sweeping through the air.",
+   "p2": "Whoosh or swoosh or swish can be heard in this recording."
+  },
+  "Wildfire": {
+   "ontology_name": "Wildfire",
+   "p1": "Sounds of an uncontrolled fire in an area of combustible vegetation that occurs in the countryside.",
+   "p2": "Wildfire can be heard in this recording."
+  },
+  "Wobble": {
+   "ontology_name": "Wobble",
+   "p1": "The sound of a structure shaking unsteadily back and forth, as in response to an impact.",
+   "p2": "Wobble can be heard in this recording."
+  },
+  "Wolf-whistling": {
+   "ontology_name": "Wolf-whistling",
+   "p1": "A two-toned whistle commonly made to show high interest or approval of something or someone (typically sexual).",
+   "p2": "Wolf-whistling can be heard in this recording."
+  },
+  "Wood": {
+   "ontology_name": "Wood",
+   "p1": "Sounds associated with the porous and fibrous structural tissue found in the stems and roots of trees, and other woody plants.",
+   "p2": "Wood can be heard in this recording."
+  },
+  "Writing": {
+   "ontology_name": "Writing",
+   "p1": "The sound of inscribing signs and symbols, most often by using a purpose-made hand-held device, such as a pen or pencil, directly upon paper or similar media.",
+   "p2": "Writing can be heard in this recording."
+  },
+  "Yak": {
+   "ontology_name": "Yak",
+   "p1": "The sound of the long-haired bovid found throughout the Himalaya region of southern Central Asia.",
+   "p2": "Yak can be heard in this recording."
+  },
+  "Yawn": {
+   "ontology_name": "Yawn",
+   "p1": "The sound of a reflex consisting of the simultaneous inhalation of air and the stretching of the eardrums, followed by an exhalation of breath, commonly associated with tiredness.",
+   "p2": "Yawn can be heard in this recording."
+  },
+  "Yell": {
+   "ontology_name": "Yell",
+   "p1": "Utter or declare in a very loud voice that seems excessive or involuntary, or that is deliberately startling in order to command attention, as distinct from the pragmatically raised voice of Shout.",
+   "p2": "Yell can be heard in this recording."
+  },
+  "Zipper (clothing)": {
+   "ontology_name": "Zipper (clothing)",
+   "p1": "The sound of a device consisting of two rows of small interlocking teeth for binding the edges of an opening of fabric or other flexible material, like on a garment or a bag.",
+   "p2": "Zipper (clothing) can be heard in this recording."
+  }
+ }
+}

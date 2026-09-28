@@ -2406,3 +2406,7 @@ on the 280 the gain appeared only with the refitted bar (at the shipped bars nei
 ## 2026-09-28 — fresh AudioSet-Strong confirmation set (500 eval ids drawn with the 415 recipe, seed 20260928, disjoint from the 280, the 415, DEV, TEST, slice B and every repo list; final check only for a candidate that passes the 415, no result read before that): pre-registered in `docs/prereg_fresh_confirm_set.md` (written before any download)
 
 ## 2026-09-28 — detector round 9 (local-contrast veto on BEATs-only spans, alone and with round 8's I7): pre-registered in `docs/prereg_round9_contrast.md` (written before any round-9 cost)
+
+## 2026-09-28 — detector round 10 (a discriminator for heard-but-dropped FlexSED 0.4–0.8 sounds: DASM agreement, query paraphrases, perturbation stability; + I4 / I6 confirmed): pre-registered in `docs/prereg_round10_rescue.md` (written before any round-10 cache or cost)
+
+## 2026-09-28 — detector round 11 (is the FlexSED 0.4–0.8 band evidence caused by the speech / music masker? foreign-masker dose-response, argmax margin, masker-envelope correlation, two-regime shape, per-clip cap, time reversal): pre-registered in `docs/prereg_round11_masker.md` (written before any round-11 cache or cost)
