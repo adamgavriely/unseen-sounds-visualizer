@@ -768,6 +768,40 @@ or fire on a look-alike (in testing, a bright lab flame read as ``Fire'' (correc
 ``Bell''); the threshold needs tuning; it judges whole frames, not precise localization. A full VLM
 or a sound-source-localization model (Section~\ref{sec:stage5}) would sharpen this.
 
+\subsection{EasyOCR (text reader) --- Stage 6 picture check \emph{[implemented, 2026-09-28]}}
+\textbf{What it is.} EasyOCR (JaidedAI, open source) is a small tool that finds and reads printed
+words in a picture. OCR means ``optical character recognition'': turning letters in an image into
+text. It has two parts: CRAFT, which finds where text is, and a small recogniser, which reads each
+piece. We use the English model.
+
+\textbf{What it does for us.} It is half of the picture check (\texttt{PICTURE\_VERIFY}, file
+\texttt{src/stage6\_visual\_augmentation/verify.py}). Image generators often paint fake letters. For
+example, a fire-alarm box came out with ``FARKS SCMAND'' on it. A deaf viewer may try to read such
+words, and they mean nothing. So after each picture is drawn, EasyOCR reads it. If it finds a real
+word, the picture is drawn again. The other half of the check is a multiple-choice question to the
+pipeline's VLM (Qwen3.8-27B): ``What is the main thing in this picture?'', with the intended thing
+and its look-alikes as options (for example ``a crowd of people'' against ``a flock of birds'').
+
+\textbf{How it works (simply).} CRAFT marks each area of the picture that looks like a letter and
+joins letters into words. The recogniser reads each word and gives a confidence from 0 to 1. Our rule,
+fixed before any test: a picture fails if it has a word with at least 3 letters, confidence at least
+0.5, and letters at least 2\,\% of the picture tall. Digits alone do not count (a train's number is
+not a message), and tiny text cannot be read on the panel anyway.
+
+\textbf{Why we chose it.} Free, runs on the same GPU in under a second, needs no training, and its
+answer is a list of words we can log, not an opinion. We also tried asking the VLM ``does this
+picture contain letters?''. It said ``yes'' for plain church bells and trucks, so it was too noisy.
+
+\textbf{Inputs / outputs.} In: one generated picture (1024\,px). Out: the words found, each with its
+position and confidence; the check turns this into pass or fail.
+
+\textbf{Cost / footprint.} About 100\,MB of weights (downloaded once to \texttt{\textasciitilde/.EasyOCR});
+pip package plus 8 small dependencies in the \texttt{msproj} environment (numpy and torch unchanged).
+
+\textbf{Limitations.} It reads only clear printed text; handwriting-like or very distorted letters can
+be missed. On the validation set it caught the garbled fire-alarm text and all painted test words, and
+it wrongly rejected no good picture; but it let the ice-cream truck's small garbled lettering pass. It says nothing about \emph{what} the picture shows --- that is the VLM question's job.
+
 \subsection{Is AudioSet's 527-class ontology enough? (coverage assessment)}\label{sec:coverage}
 An honest assessment, because it shapes whether PANNs is sufficient or needs an open-vocabulary
 companion.

@@ -223,8 +223,8 @@ PICTURE_FINAL = False
 # 2026-09-28: check each final picture before it is shown (src/stage6_visual_augmentation/verify.py): a shuffled
 # multiple-choice question to VLM_MODEL (the intended thing vs its known look-alikes) and an OCR text check; up to
 # PICTURE_VERIFY_TRIES draws (new seed each, a clearer fixed rewrite from try 3), then a word card. Needs
-# PICTURE_FINAL, and the VLM next to the generator (one H200, or two cards). Off until validated; use_shipped()
-# does not switch it on.
+# PICTURE_FINAL, and the VLM next to the generator (one H200, or two cards). Off by default; use_shipped() switches
+# it on (Adam, 28 Sept 2026, after validation).
 PICTURE_VERIFY = False
 PICTURE_VERIFY_TRIES = 4
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
@@ -393,7 +393,12 @@ def use_shipped() -> dict:
     changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
     setattr(me, "PICTURE_MIN_CONF", 0.40)
     for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.5), ("KINSHIP_DIRECTED", True),
-                 ("BEATS_SELF_VETO", 0.1218), ("PANNS_VETO", 0.0)):
+                 ("BEATS_SELF_VETO", 0.1218), ("PANNS_VETO", 0.0),
+                 # picture check-and-redraw (Adam, 28 Sept: on after validation; round 1: 7/7 named bad, 32/33 wrong,
+                 # 2/68 good rejected, 115/115 same on reshuffle; round 2, all generic options + trumpet-horn confusion
+                 # + umbrella rain template: 7/7, 33/33, 3/68, 113/115; src/stage6_visual_augmentation/verify.py).
+                 # Needs the VLM next to the generator (one H200).
+                 ("PICTURE_VERIFY", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

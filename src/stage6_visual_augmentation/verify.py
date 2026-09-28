@@ -7,7 +7,7 @@ carries garbled letters. A deaf viewer cannot tell a wrong picture from a right 
 Two checks, both on the finished picture:
 
   * a SHUFFLED MULTIPLE-CHOICE question to the pipeline's VLM (config.VLM_MODEL, Qwen3.8-27B under use_shipped):
-    "What is the main thing in this picture?" The options are the intended thing, 2-3 likely confusions and
+    "What is the main thing in this picture?" The options are the intended thing, its likely confusions and
     "something else". The picture passes only if the model picks the intended option. A free question ("is this a
     crowd?") is answered yes far too easily; a choice between the intended thing and its known look-alikes is not.
       - intended thing and confusions for known ambiguous words come from a small fixed table (AMBIGUOUS), matched
@@ -53,9 +53,11 @@ AMBIGUOUS = [
      "subject": ["honk", "horn"],
      "intended": "a {veh} sounding its horn",
      "confusions": ["a megaphone or loudspeaker", "a vehicle with a megaphone or loudspeaker on it",
-                    "a trumpet or musical horn"],
+                    "a trumpet or musical horn",
+                    # 28 Sept: the sliceB Honk redraw passed with a trumpet-shaped horn stuck in a car's grille
+                    "a vehicle with a large trumpet-shaped horn stuck on it"],
      "rewrite": "a {veh} on a street with its horn sounding, seen from the front",
-     "neg": "megaphone, loudspeaker, bullhorn, trumpet"},
+     "neg": "megaphone, loudspeaker, bullhorn, trumpet, horn-shaped object, speaker cone"},
     {"name": "steam", "sound": {"steam"}, "subject": ["steam"],
      "intended": "steam hissing out of a pipe or valve",
      "confusions": ["a kettle", "smoke from a fire", "a cloud"],
@@ -154,21 +156,24 @@ def _phrase(subject: str) -> str:
     return s[0].lower() + s[1:] if s else s
 
 
-def options_for(spec, subject: str, max_conf: int = 3) -> Dict:
+def options_for(spec, subject: str, max_conf: Optional[int] = None) -> Dict:
     """intended option + confusions (table first, then generics not in the sound's category)."""
     entry = ambiguous_entry(spec, subject)
     intended = entry["intended"] if entry else _phrase(subject or spec.source or spec.event_label)
     confusions = list(entry["confusions"]) if entry else []
     cat_words = _words(" ".join([subject or "", intended, getattr(spec, "source", "") or "", spec.event_label]))
     for opt, words in GENERIC:
-        if len(confusions) >= max_conf:
+        if max_conf is not None and len(confusions) >= max_conf:
             break
         if cat_words & words:
             continue
         if any(opt.split()[-1] in c for c in confusions):      # "a building or landscape" already in the table's
             continue
         confusions.append(opt)
-    return {"intended": intended, "confusions": confusions[:max_conf], "entry": entry["name"] if entry else None}
+    # 28 Sept (round 2): every allowed generic is offered, not the first three -- with the cap, "a building or
+    # landscape" was dropped for a siren and a drawn house passed as the siren (validation w18)
+    return {"intended": intended, "confusions": confusions if max_conf is None else confusions[:max_conf],
+            "entry": entry["name"] if entry else None}
 
 
 def _order_seed(spec, salt: int, tag: str = "") -> int:
@@ -237,10 +242,10 @@ def ask_mc(img, spec, subject: str, salt: int = 0, tag: str = "") -> Dict:
     opts = [o["intended"]] + o["confusions"]
     random.Random(_order_seed(spec, salt, tag)).shuffle(opts)
     opts.append(SOMETHING_ELSE)
-    letters = "ABCDEFG"[: len(opts)]
+    letters = "ABCDEFGHIJ"[: len(opts)]
     q = MC_PROMPT.format(options="\n".join(f"{l}. {t}" for l, t in zip(letters, opts)))
     ans = R._ask(mdl, proc, q, images=[img], max_new=8)
-    m = re.search(r"\b([A-G])\b", ans.upper()) or re.search(r"([A-G])", ans.upper())
+    m = re.search(r"\b([A-J])\b", ans.upper()) or re.search(r"([A-J])", ans.upper())
     pick = opts[letters.index(m.group(1))] if m and m.group(1) in letters else None
     return {"options": opts, "answer": ans, "picked": pick, "intended": o["intended"], "entry": o["entry"],
             "ok": pick == o["intended"]}
