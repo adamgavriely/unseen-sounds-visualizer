@@ -168,7 +168,8 @@ def load_pictures(work_root: Path, stem: str, system: str):
     for s in specs:
         o = AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
                              augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
-                             talked_about=bool(s.get("talked_about")), spans=[tuple(x) for x in s.get("spans", [])])
+                             talked_about=bool(s.get("talked_about")), spans=[tuple(x) for x in s.get("spans", [])],
+                             breaks=[tuple(x) for x in s.get("breaks", [])])
         objs.append(o)
     d = dur or max((o.end for o in objs), default=0.0) + 5.0
     spans = _display_spans(objs, d, require_image=(system != "audio_caption"))

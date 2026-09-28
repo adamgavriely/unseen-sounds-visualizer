@@ -105,6 +105,7 @@ def plan_augmentations(scene: SceneContext,
             augment=augment, confidence=ev.confidence, reason=reason,
             subject=subject, detail=ev.detail or "", spans=list(ev.spans),
             source=getattr(ev, "source", "") or "",
+            breaks=list(getattr(ev, "breaks", None) or []),
             image_prompt=(f"A clear, simple photograph of: {subject}" if augment else ""),
         ))
     # Deduplication now happens in reason.py, on the depictions the VLM chose,

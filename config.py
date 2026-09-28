@@ -365,7 +365,21 @@ FLEXSED_CORROB = None         # amendment 22: (beats_min, panns_min, window_s) -
 UNION_WEAK_TWIN = "absorb"      # amendment 22 cell F: "ignore" = a sub-display BEATs twin no longer swallows a FlexSED span
 BEATS_LOWBAND_CORROB = None   # amendment 22 tier 3: (flexsed_min, panns_min, window_s) -- weak BEATs spans promoted when corroborated
 MAX_SPAN = None               # seconds; None = no cap (v4ab3/v4b3 use 8.0)
-LABEL_FILTER = "lists"        # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
+# Round 13 detector push (docs/prereg_round13_detector_push.md; DEV-developed, all OFF = the scored/shipped behaviour).
+TWIN_MAX = False              # R13-1: a BEATs span that absorbed a same-family FlexSED span keeps the stronger side's
+                              # bar-normalised evidence (displayable if BEATs >= 0.35 OR FlexSED >= its 0.8 bar)
+MIRROR_VETO = None            # R13-2: b; drop a BEATs-only span where FlexSED's top query is another family >= b ...
+MIRROR_OWN_MAX = 0.4          #        ... and the span's own family's FlexSED score is < this
+IMPULSE_MIN_SPAN = None       # R13-5: seconds (0.2); FlexSED min span for the impulsive queries below (else AED_MIN_DUR)
+# the impulsive families, fixed by physics; FlexSED has queries for Gunshot, Gasp, Hammer, Explosion, Knock (no
+# Whack/Clang/Slam/Bang query; "Slam" is not the Door family, so Door queries are not affected)
+IMPULSE_FAMILIES = ("Gunshot", "Gunshot, gunfire", "Gasp", "Whack, thwack", "Clang", "Hammer", "Explosion", "Slam",
+                    "Knock", "Bang")
+RETRIGGER = None              # R13-6: (gap_s, flexsed_low, beats_low) = (1.5, 0.4, 0.175): a picture never bridges a
+                              # stretch >= gap_s where its family has no evidence (a new onset gets a new appearance)
+RETRIGGER_RAW = False         # R13-6 (Crowd mechanism): consolidate_families does not chain a later firing of a different
+                              # sound (not same label / ancestor / descendant) into a burst; the boundary is a break
+LABEL_FILTER = "lists"       # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 
 
 def use_v4(stages: str = "23456") -> dict:

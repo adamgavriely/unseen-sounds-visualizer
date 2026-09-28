@@ -1,0 +1,6948 @@
+{
+ "plan": "docs/prereg_round13_detector_push.md",
+ "base": {
+  "AED_MODEL": "beats",
+  "AED_THRESHOLD": 0.175,
+  "DISPLAY_THRESHOLD": 0.35,
+  "AED_MIN_DUR": 0.5,
+  "AED_HYSTERESIS": 1.0,
+  "AED_RELEASE": null,
+  "FLEXSED_BAR": 0.8,
+  "FLEXSED_FAMILY_BARS": null,
+  "FLEXSED_VETO": 0.3,
+  "PANNS_VETO": 0.05,
+  "BEATS_SELF_VETO": 0.0,
+  "FLEXSED_CORROB": null,
+  "UNION_WEAK_TWIN": "absorb",
+  "UNION_START": "min",
+  "BEATS_LOWBAND_CORROB": null,
+  "ONSET_CAM": true,
+  "ONSET_MONOTONE": true,
+  "MAX_SPAN": null,
+  "MERGE_START": "earliest",
+  "TWIN_MAX": false,
+  "MIRROR_VETO": null,
+  "MIRROR_OWN_MAX": 0.4,
+  "IMPULSE_MIN_SPAN": null,
+  "RETRIGGER": null,
+  "RETRIGGER_RAW": false
+ },
+ "arms": {
+  "B0r": {},
+  "R13-1": {
+   "TWIN_MAX": true
+  },
+  "R13-2b08": {
+   "MIRROR_VETO": 0.8
+  },
+  "R13-2b07": {
+   "MIRROR_VETO": 0.7
+  },
+  "R13-5": {
+   "IMPULSE_MIN_SPAN": 0.2
+  },
+  "R13-6": {
+   "RETRIGGER": [
+    1.5,
+    0.4,
+    0.175
+   ],
+   "RETRIGGER_RAW": true
+  },
+  "R13-6ev": {
+   "RETRIGGER": [
+    1.5,
+    0.4,
+    0.175
+   ]
+  },
+  "STACK12b08": {
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.8
+  },
+  "STACK12b07": {
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.7
+  },
+  "STACK1256b08": {
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.8,
+   "IMPULSE_MIN_SPAN": 0.2,
+   "RETRIGGER": [
+    1.5,
+    0.4,
+    0.175
+   ],
+   "RETRIGGER_RAW": true
+  },
+  "STACK1256b07": {
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.7,
+   "IMPULSE_MIN_SPAN": 0.2,
+   "RETRIGGER": [
+    1.5,
+    0.4,
+    0.175
+   ],
+   "RETRIGGER_RAW": true
+  }
+ },
+ "d0": {
+  "pass": 98,
+  "of": 98,
+  "fails": []
+ },
+ "conf_eq": {
+  "equal": 98,
+  "of": 98,
+  "differ": []
+ },
+ "d5": {
+  "proposed": {
+   "pass": 49,
+   "of": 49,
+   "differ": []
+  },
+  "blind_a2i": {
+   "pass": 49,
+   "of": 49,
+   "differ": []
+  }
+ },
+ "rows": {
+  "proposed": {
+   "B0": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.37837837837837834,
+    "P": 0.3684210526315789,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.7755102040816326,
+    "coverage": 0.30035147976283944,
+    "wrong": 24
+   },
+   "B1": {
+    "hits": 13,
+    "misses": 23,
+    "visible": 6,
+    "cross": 18,
+    "phantom": 6,
+    "dup": 0,
+    "F1": 0.32911392405063294,
+    "P": 0.3023255813953488,
+    "R": 0.3611111111111111,
+    "viewer_cost": 3.1020408163265305,
+    "coverage": 0.28966771907907873,
+    "wrong": 30
+   },
+   "B0r": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.37837837837837834,
+    "P": 0.3684210526315789,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.7755102040816326,
+    "coverage": 0.30035147976283944,
+    "wrong": 24
+   },
+   "R13-1": {
+    "hits": 15,
+    "misses": 21,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.4,
+    "P": 0.38461538461538464,
+    "R": 0.4166666666666667,
+    "viewer_cost": 2.693877551020408,
+    "coverage": 0.318407035318395,
+    "wrong": 24
+   },
+   "R13-2b08": {
+    "hits": 13,
+    "misses": 23,
+    "visible": 6,
+    "cross": 9,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.3661971830985915,
+    "P": 0.37142857142857144,
+    "R": 0.3611111111111111,
+    "viewer_cost": 2.7755102040816326,
+    "coverage": 0.27257370198506164,
+    "wrong": 22
+   },
+   "R13-2b07": {
+    "hits": 13,
+    "misses": 23,
+    "visible": 6,
+    "cross": 8,
+    "phantom": 6,
+    "dup": 0,
+    "F1": 0.37681159420289856,
+    "P": 0.3939393939393939,
+    "R": 0.3611111111111111,
+    "viewer_cost": 2.693877551020408,
+    "coverage": 0.27257370198506164,
+    "wrong": 20
+   },
+   "R13-5": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.37837837837837834,
+    "P": 0.3684210526315789,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.7755102040816326,
+    "coverage": 0.30035147976283944,
+    "wrong": 24
+   },
+   "R13-6": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 12,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.3733333333333333,
+    "P": 0.358974358974359,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.816326530612245,
+    "coverage": 0.30035147976283944,
+    "wrong": 25
+   },
+   "R13-6ev": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.37837837837837834,
+    "P": 0.3684210526315789,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.7755102040816326,
+    "coverage": 0.30035147976283944,
+    "wrong": 24
+   },
+   "STACK12b08": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 9,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.3888888888888889,
+    "P": 0.3888888888888889,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.693877551020408,
+    "coverage": 0.2906292575406172,
+    "wrong": 22
+   },
+   "STACK12b07": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 8,
+    "phantom": 6,
+    "dup": 0,
+    "F1": 0.39999999999999997,
+    "P": 0.4117647058823529,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.6122448979591835,
+    "coverage": 0.2906292575406172,
+    "wrong": 20
+   },
+   "STACK1256b08": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 10,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.3835616438356164,
+    "P": 0.3783783783783784,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.7346938775510203,
+    "coverage": 0.2906292575406172,
+    "wrong": 23
+   },
+   "STACK1256b07": {
+    "hits": 14,
+    "misses": 22,
+    "visible": 6,
+    "cross": 9,
+    "phantom": 6,
+    "dup": 0,
+    "F1": 0.39436619718309857,
+    "P": 0.4,
+    "R": 0.3888888888888889,
+    "viewer_cost": 2.6530612244897958,
+    "coverage": 0.2906292575406172,
+    "wrong": 21
+   }
+  },
+  "blind_a2i": {
+   "B0": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 21,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3300970873786408,
+    "P": 0.2537313432835821,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.5918367346938775,
+    "coverage": 0.3626612309646961,
+    "wrong": 50
+   },
+   "B1": {
+    "hits": 16,
+    "misses": 20,
+    "visible": 17,
+    "cross": 28,
+    "phantom": 11,
+    "dup": 3,
+    "F1": 0.2962962962962963,
+    "P": 0.2222222222222222,
+    "R": 0.4444444444444444,
+    "viewer_cost": 3.9183673469387754,
+    "coverage": 0.3519774702809354,
+    "wrong": 56
+   },
+   "B0r": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 21,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3300970873786408,
+    "P": 0.2537313432835821,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.5918367346938775,
+    "coverage": 0.3626612309646961,
+    "wrong": 50
+   },
+   "R13-1": {
+    "hits": 18,
+    "misses": 18,
+    "visible": 17,
+    "cross": 24,
+    "phantom": 12,
+    "dup": 4,
+    "F1": 0.3364485981308411,
+    "P": 0.2535211267605634,
+    "R": 0.5,
+    "viewer_cost": 3.63265306122449,
+    "coverage": 0.3807167865202516,
+    "wrong": 53
+   },
+   "R13-2b08": {
+    "hits": 16,
+    "misses": 20,
+    "visible": 16,
+    "cross": 18,
+    "phantom": 12,
+    "dup": 2,
+    "F1": 0.32653061224489793,
+    "P": 0.25806451612903225,
+    "R": 0.4444444444444444,
+    "viewer_cost": 3.510204081632653,
+    "coverage": 0.33488345318691826,
+    "wrong": 46
+   },
+   "R13-2b07": {
+    "hits": 16,
+    "misses": 20,
+    "visible": 16,
+    "cross": 17,
+    "phantom": 9,
+    "dup": 2,
+    "F1": 0.3404255319148936,
+    "P": 0.27586206896551724,
+    "R": 0.4444444444444444,
+    "viewer_cost": 3.3469387755102042,
+    "coverage": 0.33488345318691826,
+    "wrong": 42
+   },
+   "R13-5": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 21,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3300970873786408,
+    "P": 0.2537313432835821,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.5918367346938775,
+    "coverage": 0.3626612309646961,
+    "wrong": 50
+   },
+   "R13-6": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 23,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3238095238095238,
+    "P": 0.2463768115942029,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.673469387755102,
+    "coverage": 0.3626612309646961,
+    "wrong": 52
+   },
+   "R13-6ev": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 21,
+    "phantom": 12,
+    "dup": 3,
+    "F1": 0.3300970873786408,
+    "P": 0.2537313432835821,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.5918367346938775,
+    "coverage": 0.3626612309646961,
+    "wrong": 50
+   },
+   "STACK12b08": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 21,
+    "phantom": 12,
+    "dup": 2,
+    "F1": 0.3300970873786408,
+    "P": 0.2537313432835821,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.5918367346938775,
+    "coverage": 0.3529390087424738,
+    "wrong": 50
+   },
+   "STACK12b07": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 20,
+    "phantom": 9,
+    "dup": 2,
+    "F1": 0.34343434343434337,
+    "P": 0.2698412698412698,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.4285714285714284,
+    "coverage": 0.3529390087424738,
+    "wrong": 46
+   },
+   "STACK1256b08": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 23,
+    "phantom": 12,
+    "dup": 2,
+    "F1": 0.3238095238095238,
+    "P": 0.2463768115942029,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.673469387755102,
+    "coverage": 0.3529390087424738,
+    "wrong": 52
+   },
+   "STACK1256b07": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 17,
+    "cross": 22,
+    "phantom": 9,
+    "dup": 2,
+    "F1": 0.3366336633663366,
+    "P": 0.26153846153846155,
+    "R": 0.4722222222222222,
+    "viewer_cost": 3.510204081632653,
+    "coverage": 0.3529390087424738,
+    "wrong": 48
+   }
+  }
+ },
+ "heard": {
+  "proposed": {
+   "B0r": 17,
+   "R13-1": 18,
+   "R13-2b08": 16,
+   "R13-2b07": 16,
+   "R13-5": 17,
+   "R13-6": 17,
+   "R13-6ev": 17,
+   "STACK12b08": 17,
+   "STACK12b07": 17,
+   "STACK1256b08": 17,
+   "STACK1256b07": 17,
+   "B1": 16,
+   "B0": 17
+  },
+  "blind_a2i": {
+   "B0r": 17,
+   "R13-1": 18,
+   "R13-2b08": 16,
+   "R13-2b07": 16,
+   "R13-5": 17,
+   "R13-6": 17,
+   "R13-6ev": 17,
+   "STACK12b08": 17,
+   "STACK12b07": 17,
+   "STACK1256b08": 17,
+   "STACK1256b07": 17,
+   "B1": 16,
+   "B0": 17
+  }
+ },
+ "delta_vs_B0r": {
+  "proposed": {
+   "B0": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "B1": [
+    0.32653061224489793,
+    0.04081632653061224,
+    0.6938775510204082,
+    0.994
+   ],
+   "R13-1": [
+    -0.08163265306122448,
+    -0.3673469387755102,
+    0.12244897959183673,
+    0.3925
+   ],
+   "R13-2b08": [
+    0.0,
+    -0.12244897959183673,
+    0.12244897959183673,
+    0.6435
+   ],
+   "R13-2b07": [
+    -0.08163265306122448,
+    -0.24489795918367346,
+    0.08163265306122448,
+    0.216
+   ],
+   "R13-5": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "R13-6": [
+    0.04081632653061224,
+    0.0,
+    0.12244897959183673,
+    1.0
+   ],
+   "R13-6ev": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "STACK12b08": [
+    -0.08163265306122448,
+    -0.40816326530612246,
+    0.12346938775509647,
+    0.3615
+   ],
+   "STACK12b07": [
+    -0.16326530612244897,
+    -0.4897959183673469,
+    0.08163265306122448,
+    0.1605
+   ],
+   "STACK1256b08": [
+    -0.04081632653061224,
+    -0.3673469387755102,
+    0.20408163265306123,
+    0.465
+   ],
+   "STACK1256b07": [
+    -0.12244897959183673,
+    -0.4489795918367347,
+    0.16326530612244897,
+    0.2655
+   ]
+  },
+  "blind_a2i": {
+   "B0": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "B1": [
+    0.32653061224489793,
+    0.04081632653061224,
+    0.6938775510204082,
+    0.994
+   ],
+   "R13-1": [
+    0.04081632653061224,
+    -0.20408163265306123,
+    0.24489795918367346,
+    0.7245
+   ],
+   "R13-2b08": [
+    -0.08163265306122448,
+    -0.20408163265306123,
+    0.0,
+    0.128
+   ],
+   "R13-2b07": [
+    -0.24489795918367346,
+    -0.5306122448979592,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "R13-5": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "R13-6": [
+    0.08163265306122448,
+    0.0,
+    0.20408163265306123,
+    1.0
+   ],
+   "R13-6ev": [
+    0.0,
+    0.0,
+    0.0,
+    1.0
+   ],
+   "STACK12b08": [
+    0.0,
+    -0.24489795918367346,
+    0.20408163265306123,
+    0.589
+   ],
+   "STACK12b07": [
+    -0.16326530612244897,
+    -0.5306122448979592,
+    0.12244897959183673,
+    0.2155
+   ],
+   "STACK1256b08": [
+    0.08163265306122448,
+    -0.20408163265306123,
+    0.3673469387755102,
+    0.7575
+   ],
+   "STACK1256b07": [
+    -0.08163265306122448,
+    -0.4897959183673469,
+    0.2857142857142857,
+    0.3875
+   ]
+  }
+ },
+ "delta_vs_B1": {
+  "proposed": {
+   "B0": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "B0r": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "R13-1": [
+    -0.40816326530612246,
+    -0.8979591836734694,
+    0.0,
+    0.0265
+   ],
+   "R13-2b08": [
+    -0.32653061224489793,
+    -0.7346938775510204,
+    0.04081632653061224,
+    0.0445
+   ],
+   "R13-2b07": [
+    -0.40816326530612246,
+    -0.8163265306122449,
+    -0.04081632653061224,
+    0.0215
+   ],
+   "R13-5": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "R13-6": [
+    -0.2857142857142857,
+    -0.6530612244897959,
+    0.0,
+    0.0475
+   ],
+   "R13-6ev": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "STACK12b08": [
+    -0.40816326530612246,
+    -0.9387755102040817,
+    0.04081632653061224,
+    0.0515
+   ],
+   "STACK12b07": [
+    -0.4897959183673469,
+    -1.0204081632653061,
+    0.0,
+    0.026
+   ],
+   "STACK1256b08": [
+    -0.3673469387755102,
+    -0.9387755102040817,
+    0.08163265306122448,
+    0.077
+   ],
+   "STACK1256b07": [
+    -0.4489795918367347,
+    -0.9795918367346939,
+    0.04081632653061224,
+    0.038
+   ]
+  },
+  "blind_a2i": {
+   "B0": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "B0r": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "R13-1": [
+    -0.2857142857142857,
+    -0.7346938775510204,
+    0.08163265306122448,
+    0.0915
+   ],
+   "R13-2b08": [
+    -0.40816326530612246,
+    -0.7755102040816326,
+    -0.08163265306122448,
+    0.007
+   ],
+   "R13-2b07": [
+    -0.5714285714285714,
+    -1.0204081632653061,
+    -0.2030612244898015,
+    0.0
+   ],
+   "R13-5": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "R13-6": [
+    -0.24489795918367346,
+    -0.6122448979591837,
+    0.08163265306122448,
+    0.093
+   ],
+   "R13-6ev": [
+    -0.32653061224489793,
+    -0.6938775510204082,
+    -0.04081632653061224,
+    0.0155
+   ],
+   "STACK12b08": [
+    -0.32653061224489793,
+    -0.7765306122448978,
+    0.04081632653061224,
+    0.0675
+   ],
+   "STACK12b07": [
+    -0.4897959183673469,
+    -1.0204081632653061,
+    -0.04081632653061224,
+    0.019
+   ],
+   "STACK1256b08": [
+    -0.24489795918367346,
+    -0.7346938775510204,
+    0.16326530612244897,
+    0.173
+   ],
+   "STACK1256b07": [
+    -0.40816326530612246,
+    -0.9387755102040817,
+    0.08163265306122448,
+    0.066
+   ]
+  }
+ },
+ "eligible": {
+  "proposed": {
+   "R13-1": true,
+   "R13-2b08": false,
+   "R13-2b07": false,
+   "R13-5": false,
+   "R13-6": false,
+   "R13-6ev": false,
+   "STACK12b08": false,
+   "STACK12b07": false,
+   "STACK1256b08": false,
+   "STACK1256b07": false
+  },
+  "blind_a2i": {
+   "R13-1": false,
+   "R13-2b08": false,
+   "R13-2b07": false,
+   "R13-5": false,
+   "R13-6": false,
+   "R13-6ev": false,
+   "STACK12b08": false,
+   "STACK12b07": false,
+   "STACK1256b08": false,
+   "STACK1256b07": false
+  }
+ },
+ "needed_changes": {
+  "proposed": {
+   "R13-1": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": []
+   },
+   "R13-2b08": {
+    "gained": [],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "R13-2b07": {
+    "gained": [],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "R13-5": {
+    "gained": [],
+    "lost": []
+   },
+   "R13-6": {
+    "gained": [],
+    "lost": []
+   },
+   "R13-6ev": {
+    "gained": [],
+    "lost": []
+   },
+   "STACK12b08": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "STACK12b07": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "STACK1256b08": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "STACK1256b07": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "B1": {
+    "gained": [],
+    "lost": [
+     [
+      "un_driving_motorcycle_4O3bZRYO",
+      "Laughter",
+      12.7
+     ]
+    ]
+   }
+  },
+  "blind_a2i": {
+   "R13-1": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": []
+   },
+   "R13-2b08": {
+    "gained": [],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "R13-2b07": {
+    "gained": [],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "R13-5": {
+    "gained": [],
+    "lost": []
+   },
+   "R13-6": {
+    "gained": [],
+    "lost": []
+   },
+   "R13-6ev": {
+    "gained": [],
+    "lost": []
+   },
+   "STACK12b08": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "STACK12b07": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "STACK1256b08": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "STACK1256b07": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ]
+    ],
+    "lost": [
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      11.0
+     ]
+    ]
+   },
+   "B1": {
+    "gained": [],
+    "lost": [
+     [
+      "un_driving_motorcycle_4O3bZRYO",
+      "Laughter",
+      12.7
+     ]
+    ]
+   }
+  }
+ },
+ "picture_changes": {
+  "proposed": {
+   "R13-1": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ]
+    ]
+   },
+   "R13-2b08": {
+    "appeared": [
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      2.5,
+      "phantom"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ]
+    ]
+   },
+   "R13-2b07": {
+    "appeared": [
+     [
+      "b3_laundromat",
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      16.25,
+      17.75,
+      "phantom"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "R13-5": {
+    "appeared": [],
+    "disappeared": []
+   },
+   "R13-6": {
+    "appeared": [
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      1.12,
+      7.75,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      7.75,
+      "cross"
+     ]
+    ]
+   },
+   "R13-6ev": {
+    "appeared": [],
+    "disappeared": []
+   },
+   "STACK12b08": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      2.5,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ]
+    ]
+   },
+   "STACK12b07": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      16.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "STACK1256b08": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      2.5,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      1.12,
+      7.75,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ]
+    ]
+   },
+   "STACK1256b07": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      16.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      1.12,
+      7.75,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "B1": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      12.08,
+      16.0,
+      "cross"
+     ],
+     [
+      "as_glass_oHil9Ip_",
+      "Coin (dropping)",
+      9.0,
+      10.5,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bicycle",
+      17.84,
+      19.52,
+      "cross"
+     ],
+     [
+      "b3_pet_shop",
+      "Insect",
+      0.0,
+      2.76,
+      "cross"
+     ],
+     [
+      "b3_pet_shop",
+      "Insect",
+      7.84,
+      19.28,
+      "cross"
+     ],
+     [
+      "b3_pet_shop",
+      "Insect",
+      22.6,
+      24.32,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Snoring",
+      2.64,
+      4.14,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Train",
+      21.48,
+      22.98,
+      "phantom"
+     ],
+     [
+      "un_driving_motorcycle_4O3bZRYO",
+      "Laughter",
+      13.36,
+      14.86,
+      "hit"
+     ]
+    ]
+   }
+  },
+  "blind_a2i": {
+   "R13-1": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "dup"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ]
+    ],
+    "disappeared": []
+   },
+   "R13-2b08": {
+    "appeared": [
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      2.25,
+      "phantom"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      9.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Snicker",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Baby cry, infant cry",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ]
+    ]
+   },
+   "R13-2b07": {
+    "appeared": [
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      9.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.25,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Snicker",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Baby cry, infant cry",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "R13-5": {
+    "appeared": [],
+    "disappeared": []
+   },
+   "R13-6": {
+    "appeared": [
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      1.12,
+      7.75,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.75,
+      12.21,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      7.75,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.0,
+      12.21,
+      "cross"
+     ]
+    ]
+   },
+   "R13-6ev": {
+    "appeared": [],
+    "disappeared": []
+   },
+   "STACK12b08": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      2.25,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      9.0,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Snicker",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Baby cry, infant cry",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ]
+    ]
+   },
+   "STACK12b07": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      9.0,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.25,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Snicker",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Baby cry, infant cry",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "STACK1256b08": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      2.25,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      1.12,
+      7.75,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      9.0,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.75,
+      12.21,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      7.75,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Snicker",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Baby cry, infant cry",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.0,
+      12.21,
+      "cross"
+     ]
+    ]
+   },
+   "STACK1256b07": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      1.12,
+      7.75,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      9.0,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.75,
+      12.21,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.25,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Crowd",
+      0.0,
+      7.75,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Snicker",
+      0.3,
+      4.25,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Baby cry, infant cry",
+      5.0,
+      6.5,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      4.75,
+      7.75,
+      "cross"
+     ],
+     [
+      "mv_protest_scene_movie",
+      "Glass",
+      10.75,
+      13.75,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ],
+     [
+      "waves_herzliya",
+      "Water",
+      5.0,
+      12.21,
+      "cross"
+     ]
+    ]
+   },
+   "B1": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      12.08,
+      16.0,
+      "cross"
+     ],
+     [
+      "as_glass_oHil9Ip_",
+      "Coin (dropping)",
+      9.0,
+      10.5,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bicycle",
+      17.84,
+      19.52,
+      "cross"
+     ],
+     [
+      "b3_pet_shop",
+      "Insect",
+      0.0,
+      2.76,
+      "cross"
+     ],
+     [
+      "b3_pet_shop",
+      "Insect",
+      7.84,
+      19.28,
+      "cross"
+     ],
+     [
+      "b3_pet_shop",
+      "Insect",
+      22.6,
+      24.32,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Snoring",
+      2.64,
+      4.14,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "mv_protest_scene_movie",
+      "Train",
+      21.48,
+      22.98,
+      "phantom"
+     ],
+     [
+      "un_driving_motorcycle_4O3bZRYO",
+      "Laughter",
+      13.36,
+      14.86,
+      "hit"
+     ]
+    ]
+   }
+  }
+ },
+ "stage5": {
+  "B0r|proposed": {
+   "gate_reused": 126,
+   "gate_live": 0,
+   "ask_memo": 206,
+   "ask_live": 0
+  },
+  "R13-1|proposed": {
+   "gate_reused": 126,
+   "gate_live": 5,
+   "ask_memo": 206,
+   "ask_live": 28
+  },
+  "R13-2b08|proposed": {
+   "gate_reused": 116,
+   "gate_live": 1,
+   "ask_memo": 199,
+   "ask_live": 5
+  },
+  "R13-2b07|proposed": {
+   "gate_reused": 113,
+   "gate_live": 0,
+   "ask_memo": 191,
+   "ask_live": 0
+  },
+  "R13-5|proposed": {
+   "gate_reused": 126,
+   "gate_live": 0,
+   "ask_memo": 206,
+   "ask_live": 0
+  },
+  "R13-6|proposed": {
+   "gate_reused": 123,
+   "gate_live": 4,
+   "ask_memo": 206,
+   "ask_live": 18
+  },
+  "R13-6ev|proposed": {
+   "gate_reused": 126,
+   "gate_live": 0,
+   "ask_memo": 206,
+   "ask_live": 0
+  },
+  "STACK12b08|proposed": {
+   "gate_reused": 116,
+   "gate_live": 6,
+   "ask_memo": 232,
+   "ask_live": 0
+  },
+  "STACK12b07|proposed": {
+   "gate_reused": 113,
+   "gate_live": 5,
+   "ask_memo": 219,
+   "ask_live": 0
+  },
+  "STACK1256b08|proposed": {
+   "gate_reused": 113,
+   "gate_live": 10,
+   "ask_memo": 250,
+   "ask_live": 0
+  },
+  "STACK1256b07|proposed": {
+   "gate_reused": 110,
+   "gate_live": 9,
+   "ask_memo": 237,
+   "ask_live": 0
+  },
+  "B0r|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "R13-1|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "R13-2b08|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "R13-2b07|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "R13-5|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "R13-6|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "R13-6ev|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "STACK12b08|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "STACK12b07|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "STACK1256b08|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "STACK1256b07|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  }
+ },
+ "mirror_dropped": {
+  "R13-2b08|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "R13-2b07|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK12b08|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK12b07|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK1256b08|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK1256b07|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "R13-2b07|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK12b07|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "STACK1256b07|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "R13-2b08|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "R13-2b07|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK12b08|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK12b07|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK1256b08|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK1256b07|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "R13-2b08|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "R13-2b07|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK12b08|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK12b07|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK1256b08|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "STACK1256b07|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "R13-2b08|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ]
+  ],
+  "R13-2b07|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "STACK12b08|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ]
+  ],
+  "STACK12b07|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "STACK1256b08|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ]
+  ],
+  "STACK1256b07|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "R13-2b08|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "STACK12b08|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "STACK1256b08|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "R13-2b08|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b07|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b08|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b07|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b08|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b07|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b08|proposed|b3_favela_rio": [
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "R13-2b07|proposed|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK12b08|proposed|b3_favela_rio": [
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK12b07|proposed|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK1256b08|proposed|b3_favela_rio": [
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK1256b07|proposed|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|b3_favela_rio": [
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|b3_favela_rio": [
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|b3_favela_rio": [
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "R13-2b08|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b07|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b08|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b07|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b08|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b07|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "R13-2b07|proposed|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "STACK12b07|proposed|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "STACK1256b07|proposed|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "R13-2b08|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ]
+  ],
+  "R13-2b07|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "STACK12b08|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ]
+  ],
+  "STACK12b07|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "STACK1256b08|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ]
+  ],
+  "STACK1256b07|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "R13-2b08|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "R13-2b07|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK12b08|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK12b07|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK1256b08|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK1256b07|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "R13-2b08|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "R13-2b07|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK12b08|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK12b07|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK1256b08|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "STACK1256b07|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "R13-2b08|proposed|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "R13-2b07|proposed|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK12b08|proposed|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK12b07|proposed|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK1256b08|proposed|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK1256b07|proposed|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "R13-2b08|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "R13-2b07|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK12b08|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK12b07|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK1256b08|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "STACK1256b07|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Snicker",
+    0.0,
+    4.25
+   ],
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "R13-2b08|proposed|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "R13-2b07|proposed|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK12b08|proposed|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK12b07|proposed|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK1256b08|proposed|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK1256b07|proposed|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "R13-2b07|blind_a2i|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK12b07|blind_a2i|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "STACK1256b07|blind_a2i|ly_helicopter_-v62cK1": [
+   [
+    "Vehicle",
+    10.5,
+    17.75
+   ]
+  ],
+  "R13-2b08|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "R13-2b07|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK12b08|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK12b07|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK1256b08|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK1256b07|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "R13-2b08|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "R13-2b07|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK12b08|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK12b07|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK1256b08|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "STACK1256b07|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "R13-2b07|proposed|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "STACK12b07|proposed|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "STACK1256b07|proposed|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "R13-2b07|blind_a2i|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "STACK12b07|blind_a2i|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "STACK1256b07|blind_a2i|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "R13-2b08|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "R13-2b07|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK12b08|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK12b07|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK1256b08|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK1256b07|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "R13-2b08|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "R13-2b07|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK12b08|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK12b07|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK1256b08|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK1256b07|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "R13-2b08|proposed|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "R13-2b07|proposed|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK12b08|proposed|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK12b07|proposed|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK1256b08|proposed|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK1256b07|proposed|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "R13-2b08|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "R13-2b07|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK12b08|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK12b07|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK1256b08|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "STACK1256b07|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Shatter",
+    4.75,
+    5.25
+   ],
+   [
+    "Breaking",
+    4.75,
+    5.25
+   ],
+   [
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   [
+    "Shatter",
+    6.0,
+    7.75
+   ],
+   [
+    "Shatter",
+    10.75,
+    13.75
+   ],
+   [
+    "Breaking",
+    11.0,
+    13.75
+   ],
+   [
+    "Glass",
+    11.5,
+    12.25
+   ],
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "R13-2b07|proposed|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "STACK12b07|proposed|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "STACK1256b07|proposed|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "R13-2b07|blind_a2i|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "STACK12b07|blind_a2i|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "STACK1256b07|blind_a2i|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "R13-2b08|proposed|mv_tornado_scene": [
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "R13-2b07|proposed|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK12b08|proposed|mv_tornado_scene": [
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK12b07|proposed|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK1256b08|proposed|mv_tornado_scene": [
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK1256b07|proposed|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "R13-2b08|blind_a2i|mv_tornado_scene": [
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "R13-2b07|blind_a2i|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK12b08|blind_a2i|mv_tornado_scene": [
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK12b07|blind_a2i|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK1256b08|blind_a2i|mv_tornado_scene": [
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "STACK1256b07|blind_a2i|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "R13-2b07|proposed|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK12b07|proposed|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK1256b07|proposed|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "R13-2b07|blind_a2i|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK12b07|blind_a2i|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "STACK1256b07|blind_a2i|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "R13-2b07|proposed|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "STACK12b07|proposed|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "STACK1256b07|proposed|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "R13-2b07|blind_a2i|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "STACK12b07|blind_a2i|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "STACK1256b07|blind_a2i|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "R13-2b08|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "R13-2b07|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK12b08|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK12b07|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK1256b08|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK1256b07|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "R13-2b08|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "R13-2b07|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK12b08|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK12b07|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK1256b08|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "STACK1256b07|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ]
+ },
+ "twin_blast": {
+  "proposed": [
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.246,
+    0.406
+   ],
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.312,
+    0.406
+   ],
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.297,
+    0.406
+   ],
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.234,
+    0.406
+   ],
+   [
+    "ambient_transport_subway_10800",
+    "Clickety-clack",
+    0.06,
+    0.244,
+    0.413
+   ],
+   [
+    "ambient_transport_subway_10800",
+    "Subway, metro, underground",
+    0.06,
+    0.298,
+    0.413
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Raindrop",
+    0.06,
+    0.297,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Rain on surface",
+    0.06,
+    0.244,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Rain on surface",
+    0.06,
+    0.209,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Raindrop",
+    0.06,
+    0.253,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Raindrop",
+    0.06,
+    0.341,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Raindrop",
+    0.06,
+    0.209,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Raindrop",
+    0.06,
+    0.184,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Rain on surface",
+    0.06,
+    0.279,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Rain on surface",
+    0.06,
+    0.313,
+    0.419
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    0.14,
+    0.337,
+    0.41
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    9.18,
+    0.318,
+    0.412
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    11.94,
+    0.219,
+    0.385
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    11.94,
+    0.341,
+    0.385
+   ],
+   [
+    "as_fire_alarm_kGKZ0YK4",
+    "Smoke detector, smoke alarm",
+    9.05,
+    0.335,
+    0.404
+   ],
+   [
+    "b3_crossing_bells",
+    "Train",
+    0.0,
+    0.259,
+    0.426
+   ],
+   [
+    "bell_miami",
+    "Train horn",
+    8.0,
+    0.27,
+    0.408
+   ],
+   [
+    "bell_miami",
+    "Train",
+    8.0,
+    0.248,
+    0.408
+   ],
+   [
+    "bell_miami",
+    "Railroad car, train wagon",
+    8.0,
+    0.24,
+    0.408
+   ],
+   [
+    "bell_miami",
+    "Rail transport",
+    8.0,
+    0.217,
+    0.408
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.305,
+    0.389
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.226,
+    0.389
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.2,
+    0.389
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.234,
+    0.389
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    0.3,
+    0.322,
+    0.399
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    0.3,
+    0.314,
+    0.399
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    7.4,
+    0.22,
+    0.41
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    9.84,
+    0.234,
+    0.41
+   ],
+   [
+    "ly_helicopter_-v62cK1",
+    "Helicopter",
+    0.14,
+    0.297,
+    0.421
+   ],
+   [
+    "ly_helicopter_-v62cK1",
+    "Helicopter",
+    0.14,
+    0.206,
+    0.421
+   ],
+   [
+    "mv_detective_crime_scene",
+    "Sigh",
+    0.14,
+    0.226,
+    0.402
+   ],
+   [
+    "waterfall_kawaida_01",
+    "Waterfall",
+    0.18,
+    0.319,
+    0.395
+   ],
+   [
+    "waterfall_kawaida_01",
+    "Waves, surf",
+    0.1,
+    0.293,
+    0.395
+   ],
+   [
+    "waterfall_kawaida_01",
+    "Ocean",
+    0.18,
+    0.233,
+    0.395
+   ]
+  ],
+  "blind_a2i": [
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.246,
+    0.406
+   ],
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.312,
+    0.406
+   ],
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.297,
+    0.406
+   ],
+   [
+    "ambient_nature_rainforest_7629",
+    "Insect",
+    0.14,
+    0.234,
+    0.406
+   ],
+   [
+    "ambient_transport_subway_10800",
+    "Clickety-clack",
+    0.06,
+    0.244,
+    0.413
+   ],
+   [
+    "ambient_transport_subway_10800",
+    "Subway, metro, underground",
+    0.06,
+    0.298,
+    0.413
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Raindrop",
+    0.06,
+    0.297,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Rain on surface",
+    0.06,
+    0.244,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Rain on surface",
+    0.06,
+    0.209,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_16200",
+    "Raindrop",
+    0.06,
+    0.253,
+    0.417
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Raindrop",
+    0.06,
+    0.341,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Raindrop",
+    0.06,
+    0.209,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Raindrop",
+    0.06,
+    0.184,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Rain on surface",
+    0.06,
+    0.279,
+    0.419
+   ],
+   [
+    "ambient_weather_storm_7200",
+    "Rain on surface",
+    0.06,
+    0.313,
+    0.419
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    0.14,
+    0.337,
+    0.41
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    9.18,
+    0.318,
+    0.412
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    11.94,
+    0.219,
+    0.385
+   ],
+   [
+    "as_church_bell_pJRAWkLM",
+    "Bell",
+    11.94,
+    0.341,
+    0.385
+   ],
+   [
+    "as_fire_alarm_kGKZ0YK4",
+    "Smoke detector, smoke alarm",
+    9.05,
+    0.335,
+    0.404
+   ],
+   [
+    "b3_crossing_bells",
+    "Train",
+    0.0,
+    0.259,
+    0.426
+   ],
+   [
+    "bell_miami",
+    "Train horn",
+    8.0,
+    0.27,
+    0.408
+   ],
+   [
+    "bell_miami",
+    "Train",
+    8.0,
+    0.248,
+    0.408
+   ],
+   [
+    "bell_miami",
+    "Railroad car, train wagon",
+    8.0,
+    0.24,
+    0.408
+   ],
+   [
+    "bell_miami",
+    "Rail transport",
+    8.0,
+    0.217,
+    0.408
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.305,
+    0.389
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.226,
+    0.389
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.2,
+    0.389
+   ],
+   [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Police car (siren)",
+    10.0,
+    0.234,
+    0.389
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    0.3,
+    0.322,
+    0.399
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    0.3,
+    0.314,
+    0.399
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    7.4,
+    0.22,
+    0.41
+   ],
+   [
+    "ly_applause_62ZYD0u",
+    "Laughter",
+    9.84,
+    0.234,
+    0.41
+   ],
+   [
+    "ly_helicopter_-v62cK1",
+    "Helicopter",
+    0.14,
+    0.297,
+    0.421
+   ],
+   [
+    "ly_helicopter_-v62cK1",
+    "Helicopter",
+    0.14,
+    0.206,
+    0.421
+   ],
+   [
+    "mv_detective_crime_scene",
+    "Sigh",
+    0.14,
+    0.226,
+    0.402
+   ],
+   [
+    "waterfall_kawaida_01",
+    "Waterfall",
+    0.18,
+    0.319,
+    0.395
+   ],
+   [
+    "waterfall_kawaida_01",
+    "Waves, surf",
+    0.1,
+    0.293,
+    0.395
+   ],
+   [
+    "waterfall_kawaida_01",
+    "Ocean",
+    0.18,
+    0.233,
+    0.395
+   ]
+  ]
+ },
+ "breaks": {
+  "proposed": {
+   "B0r": 0,
+   "R13-1": 0,
+   "R13-2b08": 0,
+   "R13-2b07": 0,
+   "R13-5": 0,
+   "R13-6": 353,
+   "R13-6ev": 353,
+   "STACK12b08": 0,
+   "STACK12b07": 0,
+   "STACK1256b08": 337,
+   "STACK1256b07": 328
+  },
+  "blind_a2i": {
+   "B0r": 0,
+   "R13-1": 0,
+   "R13-2b08": 0,
+   "R13-2b07": 0,
+   "R13-5": 0,
+   "R13-6": 353,
+   "R13-6ev": 353,
+   "STACK12b08": 0,
+   "STACK12b07": 0,
+   "STACK1256b08": 337,
+   "STACK1256b07": 328
+  }
+ }
+}

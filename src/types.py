@@ -72,6 +72,9 @@ class AudioEvent:
     # PICTURE_V3 (2026-09-24): the most specific sound the detector really heard in the drawn burst,
     # chosen by labels.choose_source. Drawing only -- the gate keeps reasoning on ``label``.
     source: str = ""
+    # Round 13, R13-6 (config.RETRIGGER): the family's evidence absences (start, end) >= the retrigger gap; no merge may
+    # join two appearances across one. Empty = no constraint (every run before round 13).
+    breaks: List[Tuple[float, float]] = field(default_factory=list)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -101,6 +104,7 @@ class AugmentationSpec:
     talked_about: bool = False       # people on the soundtrack are reacting to this sound
     spans: List[Tuple[float, float]] = field(default_factory=list)  # every burst; see AudioEvent
     source: str = ""                 # PICTURE_V3: the specific sound to DRAW (labels.choose_source)
+    breaks: List[Tuple[float, float]] = field(default_factory=list)  # R13-6: see AudioEvent.breaks
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

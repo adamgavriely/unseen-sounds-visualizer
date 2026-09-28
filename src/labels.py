@@ -324,7 +324,15 @@ def _start_rule() -> str:
     return str(getattr(config, "MERGE_START", "earliest"))
 
 
-def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEvent]:
+BREAK_TOL = 0.05     # s: frame-grid slack when testing whether a gap between two bursts spans a recorded break
+
+
+def crosses_break(breaks, end: float, start: float) -> bool:
+    """R13-6: does the gap between a burst ending at `end` and one starting at `start` contain a recorded break?"""
+    return any(g0 >= end - BREAK_TOL and g1 <= start + BREAK_TOL for g0, g1 in (breaks or ()))
+
+
+def merge_by_label(events: List[AudioEvent], gap: float = 1.0, raw_labels: dict = None) -> List[AudioEvent]:
     """One event per label, carrying every separate BURST of that sound.
 
     This used to take min-start and max-end over every firing of a label, which made
@@ -343,9 +351,24 @@ def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEven
         by_label.setdefault(e.label, []).append(e)
     out = []
     for label, firings in by_label.items():
-        bursts = []                      # [start, end, conf]
+        bursts = []                      # [start, end, conf, raw labels in the burst]
+        # R13-6: breaks recorded by stage 4 (the family's evidence absences) are never bridged; with raw_labels given
+        # (config.RETRIGGER_RAW), a firing that starts after the burst has ended and names a different sound (not the
+        # same label, not an ancestor or descendant) starts a new burst, and the boundary is recorded as a break too.
+        brk = sorted({tuple(b) for f in firings for b in (getattr(f, "breaks", None) or [])})
+        extra = []
         for e in firings:
-            if bursts and e.start - bursts[-1][1] <= gap:
+            join = bool(bursts) and e.start - bursts[-1][1] <= gap
+            if join and brk and crosses_break(brk, bursts[-1][1], e.start):
+                join = False
+            if join and raw_labels is not None and e.start >= bursts[-1][1]:
+                r = raw_labels.get(id(e))
+                if r is not None and not any(r == q or same_source(r, q) for q in bursts[-1][3]):
+                    join = False
+                    extra.append((round(float(bursts[-1][1]), 3), round(float(e.start), 3)))
+            if join:
+                if raw_labels is not None and raw_labels.get(id(e)) is not None:
+                    bursts[-1][3].add(raw_labels[id(e)])
                 bursts[-1][1] = max(bursts[-1][1], e.end)
                 # a burst starts where its STRONGEST firing starts, not where its earliest one
                 # does: chaining firings a second apart made the Gunshot burst start at 8.25 for a
@@ -354,10 +377,11 @@ def merge_by_label(events: List[AudioEvent], gap: float = 1.0) -> List[AudioEven
                     bursts[-1][0] = e.start
                 bursts[-1][2] = max(bursts[-1][2], e.confidence)
             else:
-                bursts.append([e.start, e.end, e.confidence])
+                bursts.append([e.start, e.end, e.confidence,
+                               {raw_labels[id(e)]} if raw_labels is not None and id(e) in raw_labels else set()])
         best = max(bursts, key=lambda b: b[2])
         out.append(AudioEvent(label, best[0], best[1], best[2],
-                              spans=[(b[0], b[1]) for b in bursts]))
+                              spans=[(b[0], b[1]) for b in bursts], breaks=sorted(set(brk) | set(extra))))
     return sorted(out, key=lambda e: -e.confidence)
 
 
@@ -563,8 +587,12 @@ def consolidate_families(events: List[AudioEvent],
     # reversing tractor.
     raw = list(events)            # PICTURE_V3 reads the unfiltered list for the drawn source only
     events = [e for e in events if e.confidence >= threshold]
-    relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence) for e in events]
-    merged = merge_by_label(relabelled)
+    relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence,
+                             breaks=list(getattr(e, "breaks", None) or [])) for e in events]
+    import config as _cfg
+    rawlab = ({id(r): e.label for r, e in zip(relabelled, events)}
+              if getattr(_cfg, "RETRIGGER_RAW", False) else None)
+    merged = merge_by_label(relabelled, raw_labels=rawlab)
     best = {}
     for e in events:
         fam = canonical(e.label)

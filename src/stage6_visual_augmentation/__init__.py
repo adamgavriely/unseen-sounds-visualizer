@@ -687,13 +687,17 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
         # older artefact and falls back to its single start/end
         bursts = [(s, a, b) for s in group
                   for a, b in (getattr(s, "spans", None) or [(s.start, s.end)])]
+        # R13-6: a recorded break (the family's evidence gone for >= the retrigger gap, or a new sound) is never bridged;
+        # no spec carries one unless config.RETRIGGER / RETRIGGER_RAW was on in stage 4, so nothing else changes
+        from src.labels import crosses_break
+        brk = sorted({tuple(x) for s in group for x in (getattr(s, "breaks", None) or [])})
         for s, a0, b0 in sorted(bursts, key=lambda t: t[1]):
             a, b = max(0.0, a0), min(float(duration), max(b0, a0 + dwell))
             # Amendment 3 (2026-09-21, bug fixes): the gap is measured from the sound's REAL
             # end, not from the stretched end (raw end + dwell), which chained repeats up to
             # gap + dwell apart into one picture and hid every later onset; and a chain never
             # runs past its first start + MAX_SPAN -- the stage-4 cap was undone here.
-            if cur and a - raw_end <= gap and (not cap or a < cur[1] + cap):
+            if cur and a - raw_end <= gap and (not cap or a < cur[1] + cap) and not (brk and crosses_break(brk, raw_end, a0)):
                 # same sound again, right away: extend rather than blink
                 cur[2] = max(cur[2], b)
                 raw_end = max(raw_end, b0)
