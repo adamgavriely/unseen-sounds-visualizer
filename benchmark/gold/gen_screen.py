@@ -28,8 +28,10 @@ RULES_TAIL = (", the whole thing fully in frame, caught at the moment it makes t
 TEMPLATES = {
     "Thunder": "one large lightning bolt striking down from a dark storm cloud",
     "Thunderstorm": "one large lightning bolt striking down from a dark storm cloud",
-    "Rain on surface": "heavy rain drops splashing on a window pane",
-    "Rain": "heavy rain drops splashing on a window pane",
+    # reworded 28 Sept 2026 (picture check): "heavy rain drops splashing on a window pane" drew a single water-crown
+    # splash, which the checker (and a viewer) reads as a splash, not rain -- both good pictures it rejected
+    "Rain on surface": "heavy rain pouring down in long falling streaks onto an open umbrella",
+    "Rain": "heavy rain pouring down in long falling streaks onto an open umbrella",
     # reworded after the by-eye check (GP-4, before the freeze): "hazard lights flashing" drew a police light bar
     "Car alarm": "an ordinary parked car seen from the front, its headlights and indicator lights flashing",
     "Train horn": "the front of a whole locomotive blowing its horn",
@@ -39,7 +41,9 @@ TEMPLATES = {
 }
 # words a template must never draw, added to the negative prompt (generators ignore "no ..." in a prompt):
 # the car alarm drew a police light bar, then roof beacons, at the by-eye check (GP-4, before the freeze)
-TEMPLATE_NEG = {"Car alarm": "roof light, light bar, beacon, police car, emergency vehicle, siren"}
+TEMPLATE_NEG = {"Car alarm": "roof light, light bar, beacon, police car, emergency vehicle, siren",
+                "Rain": "splash crown, water crown, single droplet, splash close-up",
+                "Rain on surface": "splash crown, water crown, single droplet, splash close-up"}
 # group (c): no maker the audio established -> a fixed comic burst card with the word, never generated
 CARDS = {"Whoosh, swoosh, swish": "WHOOSH", "Thunk": "THUD", "Thump, thud": "THUD", "Bang": "BANG",
          "Slap, smack": "SMACK", "Whack, thwack": "WHACK"}

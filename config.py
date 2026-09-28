@@ -226,7 +226,7 @@ PICTURE_FINAL = False
 # PICTURE_FINAL, and the VLM next to the generator (one H200, or two cards). Off by default; use_shipped() switches
 # it on (Adam, 28 Sept 2026, after validation).
 PICTURE_VERIFY = False
-PICTURE_VERIFY_TRIES = 4
+PICTURE_VERIFY_TRIES = 5      # Adam, 28 Sept: 5 tries, each refined by the last refusal, then a word card
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time

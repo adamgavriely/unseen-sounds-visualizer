@@ -462,16 +462,19 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     seed = seed_of({"clip": work_dir.name, "label": spec.event_label, "start": float(spec.start)}) + 1
     import shutil
     verify = bool(getattr(config, "PICTURE_VERIFY", False))
-    tries = int(getattr(config, "PICTURE_VERIFY_TRIES", 4)) if verify else 1
+    tries = int(getattr(config, "PICTURE_VERIFY_TRIES", 5)) if verify else 1
     log = {"clip": work_dir.name, "index": spec.index, "label": spec.event_label, "source": source,
            "subject": subject, "tries": []}
     ok = False
+    learned, saw_text = [], False               # refinement carried from each refused try to the next
     for t in range(tries):
         # PICTURE_VERIFY (src/stage6_visual_augmentation/verify.py): try 1 is exactly the shipped picture (same seed);
         # each later try a new seed (stride 1000, clear of the blank guard's +1); from try 3 the clearer fixed rewrite
-        # for an ambiguous word, "no text" in the prompt and text words in the negative
+        # for an ambiguous word, "no text" in the prompt and text words in the negative. Refined each time (Adam,
+        # 28 Sept): every refused try adds what the VLM saw instead (verify.feedback_negative) to the next negative, and
+        # text found by OCR switches "no text" on from the next try
         subj_t, prompt_t, neg_t, seed_t = subject, prompt, neg, seed + 1000 * t
-        if t >= 2:
+        if t >= 2 or saw_text:
             from src.stage6_visual_augmentation.verify import rewrite_for
             rw = rewrite_for(spec, subject)
             if rw:
@@ -480,6 +483,8 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
                                   if x)
             prompt_t = subj_t + RULES_TAIL + ", no text, no letters, no signs"
             neg_t = ", ".join(x for x in (neg_t.strip(), "text, letters, words, writing, sign, label, logo") if x)
+        if learned:
+            neg_t = ", ".join(x for x in (neg_t.strip(), ", ".join(learned)) if x)
         spec.image_prompt = prompt_t
         ok = _diffusion_image(path, prompt_t, size, model=model, device=device, seed=seed_t, negative=neg_t)
         if ok and ink(Image.open(path)) < 0.05:
@@ -496,6 +501,13 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
               f"picked={res['mc']['picked']!r} text={res['text']['words']} saw={res.get('saw', '')!r}", flush=True)
         if res["ok"]:
             break
+        from src.stage6_visual_augmentation.verify import feedback_negative
+        fb = feedback_negative(res["mc"]["picked"], res["mc"]["intended"], subject, spec)
+        for w in (x.strip() for x in fb.split(",")):
+            if w and w not in learned:
+                learned.append(w)
+        saw_text = saw_text or bool(res["text"]["words"])
+        log["tries"][-1]["learned"] = list(learned)
         if t < tries - 1:                        # keep each refused try for the audit trail
             shutil.copy2(path, path.with_name(f"{path.stem}_try{t + 1}.png"))
     else:
@@ -511,7 +523,7 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     if verify:
         log["final"] = ("picture" if len(log["tries"]) <= 2 else "rewritten") if ok else "placeholder"
         if ok and len(log["tries"]) > 2 and not rewrite_applies(spec, subject):
-            log["final"] = "picture"             # try 3-4 without a table rewrite: only the seed / no-text changed
+            log["final"] = "picture"             # later tries without a table rewrite: seed / no-text / feedback only
         VERIFY_LOG.append(log)
     if ok:
         spec.image_path, spec.backend = str(path), "diffusion"

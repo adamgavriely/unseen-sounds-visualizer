@@ -1064,7 +1064,7 @@
   // opts.a2iWin = window length in s; opts.events / opts.windows = show detector events / hit windows;
   // opts.onTime(t) is called as the video plays; opts.dur overrides the clip length.
   var TL_KIND = { needed: 'needed — must be shown', visible: 'visible on screen', obvious: 'obvious without sound', imp1: 'needed, importance 1 (not scored)' };
-  var TL_KEPT = { dwell: 'kept on screen: minimum 1.5 s', join: 'kept on screen: joined with a repeat of the same sound (less than 2 s apart)' };
+  var TL_KEPT = { dwell: 'kept on screen: minimum 1.5 s', join: 'kept on screen: joined with a repeat of the same sound (in the videos: less than 1.5 s apart; the scored pictures used 2 s)' };
   var TLX = { padL: 8, padR: 12, pxPerS: 28, row: 24, gap: 3 };
   var TLX_LEG = {
     sounds: [['snd-needed', 'must be shown'], ['snd-visible', 'visible on screen'], ['snd-obvious', 'obvious'], ['snd-imp1', 'importance 1']],

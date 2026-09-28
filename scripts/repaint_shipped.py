@@ -22,7 +22,7 @@ with PLACE_PROMPT (then SCENE_PROMPT), as decide_subjects does.
     python scripts/repaint_shipped.py --tag dev_monocap_v31 [--shard 0 --of 2] [--limit 2] [--clips a b]
 Output: data/work/shipped_<tag>/<clip>/ (json copies, augmentations/aug_XXX.png, repaint.json)
 
---verify (2026-09-28): the same repaint with config.PICTURE_VERIFY on (check each picture, redraw up to 4 times, else
+--verify (2026-09-28): the same repaint with config.PICTURE_VERIFY on (check each picture, redraw up to PICTURE_VERIFY_TRIES (5) times, else
 a word card; src/stage6_visual_augmentation/verify.py), into data/work/shipped_v_<tag>/. The subjects are copied from
 shipped_<tag> (phase A is not re-run), so try 1 is the shipped picture's own prompt and seed. Per picture,
 repaint.json gets the tries, what the VLM picked and saw, and the final kind (picture / rewritten / word card).

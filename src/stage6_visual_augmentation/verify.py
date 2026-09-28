@@ -19,7 +19,7 @@ Two checks, both on the finished picture:
   * a TEXT check: EasyOCR; a picture with a readable word (>= 3 letters, confidence >= 0.5, letters at least 2% of
     the picture tall) is refused. Digits alone do not count (a locomotive's running number is not a message).
 
-The redraw loop lives in stage6._final_picture: up to 4 tries with a new seed each; from try 3 a clearer fixed
+The redraw loop lives in stage6._final_picture: up to 5 tries (PICTURE_VERIFY_TRIES), each with a new seed and the wrong thing the VLM saw added to the negative; from try 3 a clearer fixed
 rewrite for ambiguous words and "no text" in the prompt; if every try fails, a word card with the sound's name.
 """
 from __future__ import annotations
@@ -71,6 +71,14 @@ AMBIGUOUS = [
      "intended": "hands typing on a keyboard",
      "confusions": ["a person's face", "a computer screen"],
      "rewrite": "two hands typing on a computer keyboard, seen from above", "neg": "face, head, mouth"},
+    # 28 Sept (Adam): the sliceB rattle passed on try 3 as a ball of yarn. The instrument only: AudioSet's plain
+    # "Rattle" is a rattling noise (a loose part, a vehicle), not a thing to draw as a toy.
+    {"name": "rattle", "sound": {"rattle (instrument)", "maraca", "maracas"},
+     "subject": ["rattle instrument", "baby rattle", "maraca"],
+     "intended": "a rattle or maraca being shaken",
+     "confusions": ["a ball of yarn", "a spinning top", "a toy ball"],
+     "rewrite": "a hand shaking a wooden maraca, a rattle instrument with a handle",
+     "neg": "yarn, wool, thread, spinning top, ball, swirl"},
     {"name": "bell", "sound": {"bell", "ding", "chime", "church bell", "jingle bell"}, "subject": ["bell"],
      "intended": "a bell",
      "confusions": ["a desk bell (service bell)", "a lamp"],
@@ -117,6 +125,24 @@ OCR_MIN_HEIGHT = 0.02
 
 def _words(s: str) -> set:
     return {w for w in re.split(r"[^a-z\-]+", (s or "").lower()) if w}
+
+
+_FILLER = {"a", "an", "the", "or", "and", "of", "on", "in", "with", "it", "its", "large", "small", "stuck", "something",
+           "else", "shaped", "trumpet-shaped", "picture", "some", "person", "people", "thing"}
+
+
+def feedback_negative(picked: str, intended: str, subject: str, spec) -> str:
+    """Refinement for the next try (Adam, 28 Sept): the wrong thing the VLM saw goes into the negative prompt. Words that
+    name the source itself (subject, intended option, the sound's names) are never negated."""
+    if not picked or picked == SOMETHING_ELSE or picked == intended:
+        return ""
+    keep = _words(" ".join([subject or "", intended or ""] + _sound_names(spec)))
+    # the source's own category word is never negated either: "a vehicle with a megaphone on it" for a car horn must
+    # not put "vehicle" in the negative (28 Sept fix)
+    for opt, words in GENERIC:
+        if keep & words:
+            keep |= _words(opt)
+    return ", ".join(w for w in sorted(_words(picked)) if w not in keep and w not in _FILLER and len(w) > 2)
 
 
 def _sound_names(spec) -> List[str]:
