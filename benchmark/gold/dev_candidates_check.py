@@ -42,10 +42,13 @@ STAGE4, MEMO = DC / "stage4.json", DC / "ask_memo.json"
 OUT = _ROOT / "benchmark" / "gold" / "dev_candidates_check.json"
 PLACEHOLDER = str(_ROOT / "README.md")          # any existing file: a shown picture, as a placeholder counts in the scored run
 TOL = 0.01
-ARMS = ["B0r", "B1", "EATR", "D1", "I4", "I6"]   # arms that go through stage 5
-CANDS = ["EATR", "D1", "I4", "I6", "I7"]
+ARMS = ["B0r", "B1", "EATR", "D1", "I4", "I6"]   # arms that go through stage 5 (job 31330563)
+EXTRA = ["R1", "R6", "R7"]                       # amendment 1: round 10's rescue cells (job_devcand_extra.sh)
+CANDS = ["EATR", "D1", "I4", "I6", "I7"] + EXTRA
+PARA_DIR, WAV16 = DC / "para", DC / "wav16"
 NAMES = {"B0": "B0 scored render (PANNs veto)", "B0r": "B0 repro (this code)", "B1": "B1 shipped stack (self-veto)",
-         "EATR": "EAT-R", "D1": "DASM D1", "I4": "I4 parent emission", "I6": "I6 VLM scene prior", "I7": "I7 contrast veto"}
+         "EATR": "EAT-R", "D1": "DASM D1", "I4": "I4 parent emission", "I6": "I6 VLM scene prior", "I7": "I7 contrast veto",
+         "R1": "R1 DASM-agreed band", "R6": "R6 I4 confirmed", "R7": "R7 I6 confirmed"}
 FLANK, I7_MARGIN = 3.0, 0.2
 
 
@@ -53,7 +56,9 @@ def frozen():
     """the candidates' values, read from the rounds' own result files (not retyped)"""
     r5 = json.loads((_ROOT / "benchmark" / "detector_round5.json").read_text(encoding="utf-8"))["fit"]["EAT-R"]
     r6 = json.loads((_ROOT / "benchmark" / "detector_round6.json").read_text(encoding="utf-8"))["bars"]
-    return {"AED": 0.175, "DISP": 0.35, "FBAR": 0.8, "FVETO": 0.3, "B_SELF": 0.1218,
+    from benchmark import detector_round10 as R10
+    return {"BAND": R10.BAND, "R1_BAR": R10.DASM_BAR, "R1_PAD": R10.R1_PAD, "R2_ADMIT": R10.ADMIT,
+            "AED": 0.175, "DISP": 0.35, "FBAR": 0.8, "FVETO": 0.3, "B_SELF": 0.1218,
             "EAT_AED": float(r5["aed"]), "EAT_DISP": float(r5["disp"]), "EAT_B": float(r5["b"]),
             "DASM_G": float(r6["g"]), "DASM_V": float(r6["v"]), "I6_BAR": 0.5, "I7_MARGIN": I7_MARGIN, "FLANK": FLANK}
 
@@ -190,6 +195,28 @@ def vlm():
     dump(VLM_JSON, out)
 
 
+def paralist():
+    """amendment 1 (R2): DEV work list for round 10's own FlexSED worker (benchmark/round10_flexsed.py, unchanged):
+    16-kHz wav = ffmpeg of the clip's mp4 (as flexsed_run.py), the DEV FlexSED cache for its c1 check, paraphrase outputs"""
+    import subprocess
+    from benchmark import detector_round10 as R10
+    _g, stems = dev_stems()
+    fams = json.loads((_ROOT / "benchmark" / "gold" / "depictable_vocab.json").read_text(encoding="utf-8"))["families"]
+    para = json.loads(R10.PARA.read_text(encoding="utf-8"))["families"]
+    WAV16.mkdir(parents=True, exist_ok=True); PARA_DIR.mkdir(parents=True, exist_ok=True)
+    clips = []
+    for st in stems:
+        video = json.loads((scored_dir("proposed") / st / "media.json").read_text(encoding="utf-8"))["video_path"]
+        wav = WAV16 / f"{st}.wav"
+        if not wav.exists():
+            subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", video, "-ac", "1", "-ar", "16000", str(wav)], check=True)
+        clips.append({"id": st, "wav": str(wav.resolve()), "flex_cache": str((FLEX_DIR / f"{st}.npz").resolve()),
+                      "para_out": str((PARA_DIR / f"{st}.npz").resolve())})
+    dump(DC / "para_work_dev.json", {"set": "dev", "families": fams, "paraphrases": para, "clips": clips,
+                                     "log_dir": str(DC.resolve())})
+    print(f"[paralist] {len(clips)} clips -> {DC / 'para_work_dev.json'}", flush=True)
+
+
 # ============================================================================= stage 4
 def load_fr(p):
     z = np.load(p)
@@ -263,7 +290,58 @@ def contrast(fr, label, a, b):
     return float(s[ins].mean() - s[fl].mean())
 
 
-def build(st, sysn, arm, C, vlm_ans, d0):
+def _win(fr, t0, t1):
+    ts = fr[1]
+    m = (ts >= t0) & (ts <= t1)
+    if not m.any():
+        m = np.zeros(len(ts), bool); m[int(np.argmin(np.abs(ts - 0.5 * (t0 + t1))))] = True
+    return m
+
+
+def _cols(labs, label, match):
+    from benchmark import detector_round8 as M
+    return M.fam_cols(labs, label) if match else [i for i, l in enumerate(labs) if canonical(l) == canonical(label)]
+
+
+def r1(C, e, match=False):
+    """round 10's R1: DASM same family >= 0.359375 at some frame in [start - 0.5, end + 0.5] (nearest frame if none)"""
+    fr = C["dasm"]
+    cols = _cols(fr[2], e.label, match)
+    if not cols:
+        return False
+    m = _win(fr, e.start - F["R1_PAD"], e.end + F["R1_PAD"])
+    return float(fr[0][m][:, cols].max()) >= F["R1_BAR"]
+
+
+def r2(C, e, match=False):
+    """round 10's R2: both FlexSED paraphrases >= 0.5 in the span (some matching family)"""
+    from benchmark import detector_round8 as M
+    fr = C["para"]
+    fams = [l.split("||")[0] for l in fr[2][::2]]
+    for f in [f for f in fams if (M.same(f, e.label) if match else canonical(f) == canonical(e.label))]:
+        c1, c2 = fr[2].index(f"{f}||p1"), fr[2].index(f"{f}||p2")
+        if M.peak_in(fr, [c1], e.start, e.end) >= F["R2_ADMIT"] and M.peak_in(fr, [c2], e.start, e.end) >= F["R2_ADMIT"]:
+            return True
+    return False
+
+
+def band_cands(C):
+    """round 10's band candidates: FlexSED 0.4 spans, peak < 0.8, no BEATs 0.175 twin within 1 s, BEATs self-veto"""
+    bev = ext(C["beats"], F["AED"])
+    bp = clip_peak(C["beats"])
+    out = []
+    for e in ext(C["flex"], F["BAND"]):
+        if e.confidence >= F["FBAR"]:
+            continue
+        if any(key(y) == key(e) and y.start - 1.0 <= e.end and e.start - 1.0 <= y.end for y in bev):
+            continue
+        if bp.get(key(e), 1.0) < F["B_SELF"]:
+            continue
+        out.append(e)
+    return out
+
+
+def build(st, sysn, arm, C, vlm_ans, d0, stat=None):
     """one arm's stage-4 output on one clip: events after the vetoes (pipeline order), tagged; refinement is done later"""
     tr = json.loads((scored_dir(sysn) / st / "onset_trace.json").read_text(encoding="utf-8"))
     step = lambda n: [x for x in tr if x["step"] == n]
@@ -273,15 +351,26 @@ def build(st, sysn, arm, C, vlm_ans, d0):
     if arm == "B0r":                                       # gate D0
         d0["extract"] = same_list([(e.label, e.start, e.end) for e in events], [sp(x) for x in step("extract")])
     origin = {id(e): "tagger" for e in events}
-    if arm == "I4":
+    if arm in ("I4", "R6"):
         from benchmark import detector_round8 as R8
         par = R8.parent_spans(Bfr)
+        if arm == "R6":                                  # confirmed by R1 OR R2 (E._same columns), else removed
+            ok = [p for p in par if r1(C, p, True) or r2(C, p, True)]
+            if stat is not None:
+                stat["considered"] += len(par); stat["admitted"] += len(ok)
+            par = ok
         origin.update({id(e): "parent" for e in par})
         events = events + par
     if arm == "D1":
         fev = ext(C["dasm"], F["DASM_G"])
-    elif arm == "I6":
+    elif arm in ("I6", "R7"):
         fev = flex_i6(Ffr, set(vlm_ans.get(st, {}).get("families", [])))
+        if arm == "R7":                                  # lowered-bar spans confirmed by R1 OR R2 (own columns), else removed
+            low = [e for e in fev if e.confidence < F["FBAR"]]
+            okid = {id(e) for e in low if r1(C, e) or r2(C, e)}
+            if stat is not None:
+                stat["considered"] += len(low); stat["admitted"] += len(okid)
+            fev = [e for e in fev if e.confidence >= F["FBAR"] or id(e) in okid]
     else:
         fev = ext(Ffr, F["FBAR"])
     if arm == "B0r":
@@ -303,6 +392,13 @@ def build(st, sysn, arm, C, vlm_ans, d0):
         spk = clip_peak(tagfr)
         b = F["EAT_B"] if arm == "EATR" else F["B_SELF"]
         events = [e for e in events if id(e) not in only or spk.get(key(e), 1.0) >= b]
+    if arm == "R1":                                      # admitted band candidates are added as FlexSED-only spans
+        cs = band_cands(C)
+        ok = [e for e in cs if r1(C, e)]
+        if stat is not None:
+            stat["considered"] += len(cs); stat["admitted"] += len(ok)
+        origin.update({id(e): "band" for e in ok})
+        events = events + ok
     refine_tr = [x for x in step("refine")]
     assert len(refine_tr) == len(veto_tr), st
     rows = []
@@ -310,7 +406,7 @@ def build(st, sysn, arm, C, vlm_ans, d0):
         o = origin[id(e)]
         r = {"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": o,
              "pre_start": float(e.start)}
-        if o in ("flex", "dasm"):
+        if o in ("flex", "dasm", "band"):
             r["refine"] = "none (frame-level)"
             if o == "flex":
                 c = contrast(Ffr, e.label, e.start, e.end)
@@ -326,7 +422,8 @@ def build(st, sysn, arm, C, vlm_ans, d0):
     return rows
 
 
-def stage4():
+def stage4(arms=None):
+    arms = arms or ARMS
     from src.stage4_audio_event_detection import _refine_onsets_cam
     from src.stage4_audio_event_detection import beats_infer as B
     config.ONSET_MONOTONE = True                            # the scored run's MONO=1
@@ -334,21 +431,24 @@ def stage4():
     vlm_ans = json.loads(VLM_JSON.read_text(encoding="utf-8"))
     res = json.loads(STAGE4.read_text(encoding="utf-8")) if STAGE4.exists() else {}
     res["frozen"] = F
-    res.setdefault("d0", {}); res.setdefault("arms", {})
+    res.setdefault("d0", {}); res.setdefault("arms", {}); res.setdefault("filter", {})
     for sysn in SYSTEMS:
-        for arm in ARMS:
+        for arm in arms:
             res["arms"].setdefault(f"{arm}|{sysn}", {})
     todo_eat = []
     B._MODEL = None
     for st in stems:
         C = {"beats": load_fr(BEATS_DIR / f"{st}.npz"), "flex": load_fr(FLEX_DIR / f"{st}.npz"),
              "eat": load_fr(EAT_DIR / f"{st}.npz"), "dasm": load_fr(DASM_DIR / f"{st}.npz")}
+        if any(a in ("R6", "R7") for a in arms):
+            C["para"] = load_fr(PARA_DIR / f"{st}.npz")
         for sysn in SYSTEMS:
-            for arm in ARMS:
+            for arm in arms:
                 if st in res["arms"][f"{arm}|{sysn}"]:
                     continue
                 d0 = {}
-                rows = build(st, sysn, arm, C, vlm_ans, d0)
+                stat = res["filter"].setdefault(f"{arm}|{sysn}", {"considered": 0, "admitted": 0})
+                rows = build(st, sysn, arm, C, vlm_ans, d0, stat)
                 if arm == "B0r":
                     d0["pass"] = all(d0.values())
                     res["d0"][f"{sysn}|{st}"] = d0
@@ -594,12 +694,53 @@ def diff_pics(a, b):
     return add, rem
 
 
+def needed_hit(gold_clip, pics):
+    """per needed sound (importance >= MIN_IMPORTANCE): True iff a same-family picture starts in its onset window (the
+    official rule's matching, which also covers same-family sounds in the window); checked against score_clip's hits"""
+    out = []
+    for g in gold_clip:
+        if not g["needed"] or g["importance"] < S.MIN_IMPORTANCE:
+            continue
+        out.append((g, any(S.same_family(l, g["label"]) and S.in_window(a, g["start"], S.EARLY, S.LATE) for l, a, _b in pics)))
+    return out
+
+
+def heard_pics(rows, disp):
+    """the stage-4 spans a viewer could get: at or above the display bar, salient non-speech (depictable filter, as the run)"""
+    from src.labels import is_salient_nonspeech
+    old = config.LABEL_FILTER
+    config.LABEL_FILTER = "depictable"
+    try:
+        return [(r["label"], r["start"], r["end"]) for r in rows if r["conf"] >= disp and is_salient_nonspeech(r["label"])]
+    finally:
+        config.LABEL_FILTER = old
+
+
+def band_flag(fr, g):
+    """round 8's heard-but-dropped flag on DEV: same-family FlexSED reaches 0.4-0.8 within [start - 1, end + 1]"""
+    fw, ts, labs = fr
+    cols = [i for i, l in enumerate(labs) if same(l, g["label"])]
+    m = (ts >= g["start"] - 1.0) & (ts <= g["end"] + 1.0)
+    if not cols or not m.any():
+        return False
+    v = float(fw[m][:, cols].max())
+    return 0.4 <= v < 0.8
+
+
+def complete(root, stems):
+    return all((root / st / "augmentations.json").exists() for st in stems)
+
+
 def score():
     gold, stems = dev_stems()
     s4 = json.loads(STAGE4.read_text(encoding="utf-8"))
-    res = {"plan": "docs/dev_candidates_check_2026-09-28.md", "frozen": F, "clips": len(stems),
-           "needed": None, "d0": {}, "d5": {}, "stage5": {}, "rows": {}, "delta_vs_B1": {}, "delta_vs_B0": {},
-           "holm_vs_B1": {}, "ship_rule": {}, "changes_vs_B1": {}, "i7": {}}
+    arms = [a for a in ARMS + EXTRA if all(complete(DC / f"{a}_{s}", stems) for s in SYSTEMS)
+            and all(f"{a}|{s}" in s4["arms"] for s in SYSTEMS)]
+    cands = [c for c in CANDS if c in arms or c == "I7"]
+    res = {"plan": "docs/dev_candidates_check_2026-09-28.md (amendment 1: confirmatory)", "frozen": F, "clips": len(stems),
+           "arms_scored": arms, "candidates": cands, "needed": None, "d0": {}, "d5": {}, "stage5": {}, "rows": {},
+           "delta_vs_B1": {}, "delta_vs_B0": {}, "holm_vs_B1": {}, "ship_rule": {}, "verdict": {}, "changes_vs_B1": {},
+           "i7": {}, "heard_stage4": {}, "hbd": {}, "filter": s4.get("filter", {})}
     d0 = s4["d0"]
     res["d0"] = {"pass": sum(v["pass"] for v in d0.values()), "of": len(d0), "fails": {k: v for k, v in d0.items() if not v["pass"]}}
     refine = {}
@@ -611,10 +752,11 @@ def score():
             cnt["live_moved"] = cnt.get("live_moved", 0) + sum(1 for r in rows if r["refine"] == "live" and r["start"] != r["pre_start"])
         refine[k] = cnt
     res["stage4_refine"] = refine
+    flex = {st: load_fr(FLEX_DIR / f"{st}.npz") for st in stems}
     for sysn in SYSTEMS:
         P, rows = {}, {}
         P["B0"] = {st: S.load_pictures(scored_dir(sysn), st, sysn) or [] for st in stems}
-        for arm in ARMS:
+        for arm in arms:
             P[arm] = {st: S.load_pictures(DC / f"{arm}_{sysn}", st, sysn) or [] for st in stems}
             lg = DC / f"{arm}_{sysn}" / "_stage5_log.json"
             st5 = json.loads(lg.read_text(encoding="utf-8")) if lg.exists() else {}
@@ -624,12 +766,10 @@ def score():
                     tot[k2] = tot.get(k2, 0) + v.get(k2, 0)
             tot["gate_live_list"] = [[st] + x for st, v in st5.items() for x in v.get("gate_live_list", [])]
             res["stage5"][f"{arm}|{sysn}"] = tot
-        # gate D5: the repro arm gives the scored render's pictures
         bad = [st for st in stems if pics_sig(P["B0r"][st]) != pics_sig(P["B0"][st])
                or spec_sig(DC / f"B0r_{sysn}", st) != spec_sig(scored_dir(sysn), st)]
         res["d5"][sysn] = {"pass": len(stems) - len(bad), "of": len(stems), "differ": bad,
                            "detail": {st: {"scored": pics_sig(P["B0"][st]), "repro": pics_sig(P["B0r"][st])} for st in bad}}
-        # I7: J2-style removal on the B1 render (primary) and on the scored render (beside)
         for base, root, arm4 in (("B1", DC / f"B1_{sysn}", "B1"), ("B0", scored_dir(sysn), "B0r")):
             log = {"span_unmapped": 0, "pictures_removed": 0}
             tmp, ch = simulate_i7(root, stems, sysn, s4["arms"][f"{arm4}|{sysn}"], log)
@@ -643,43 +783,75 @@ def score():
             rows[name] = [S.score_clip(gold[st], pp[st]) for st in stems]
         res["rows"][sysn] = {name: metrics(r) for name, r in rows.items()}
         res["needed"] = res["rows"][sysn]["B0"]["hits"] + res["rows"][sysn]["B0"]["misses"]
+        # needed sounds heard by stage 4 (before the gate; I7 = B1's stage 4 minus its I7 drops)
+        heard = {}
+        for name in arms + ["I7"]:
+            src4 = "B1" if name == "I7" else name
+            disp = F["EAT_DISP"] if name == "EATR" else F["DISP"]
+            hr = []
+            for st in stems:
+                r4 = [r for r in s4["arms"][f"{src4}|{sysn}"][st] if not (name == "I7" and r.get("i7_drop"))]
+                hr.append(S.score_clip(gold[st], heard_pics(r4, disp)))
+            heard[name] = sum(r["hit"] for r in hr)
+        heard["B0"] = heard["B0r"]
+        res["heard_stage4"][sysn] = heard
+        # heard-but-dropped group: needed sounds B1 misses (this system) with FlexSED 0.4-0.8 nearby; rescued by each arm
+        grp = {st: [g for g, h in needed_hit(gold[st], P["B1"][st]) if not h and band_flag(flex[st], g)] for st in stems}
+        chk = sum(h for st in stems for _g, h in needed_hit(gold[st], P["B1"][st]))
+        hb = {"group": sum(len(v) for v in grp.values()), "per_sound_hits_check_B1": [chk, res["rows"][sysn]["B1"]["hits"]],
+              "group_list": [[st, g["label"], g["start"]] for st, v in grp.items() for g in v]}
+        for name in P:
+            hb[name] = sum(1 for st in stems for g, h in needed_hit(gold[st], P[name][st]) if h and g in grp[st])
+        res["hbd"][sysn] = hb
         cost = {name: [clip_cost(r) for r in rr] for name, rr in rows.items()}
-        res["delta_vs_B1"][sysn] = {c: boot(np.subtract(cost[c], cost["B1"])) for c in CANDS + ["B0", "B0r"]}
-        res["delta_vs_B0"][sysn] = {c: boot(np.subtract(cost[c], cost["B0"])) for c in CANDS + ["B1", "B0r", "I7_on_B0"]}
-        res["holm_vs_B1"][sysn] = holm({c: res["delta_vs_B1"][sysn][c][3] for c in CANDS})
+        res["delta_vs_B1"][sysn] = {c: boot(np.subtract(cost[c], cost["B1"])) for c in cands + ["B0", "B0r"]}
+        res["delta_vs_B0"][sysn] = {c: boot(np.subtract(cost[c], cost["B0"])) for c in cands + ["B1", "B0r", "I7_on_B0"]}
+        res["holm_vs_B1"][sysn] = holm({c: res["delta_vs_B1"][sysn][c][3] for c in cands})
+        R_ = res["rows"][sysn]
+        res["ship_rule"][sysn], res["verdict"][sysn] = {}, {}
+        for c in cands:
+            sr = {}
+            for bname in ("B1", "B0"):
+                cc = "I7_on_B0" if (c == "I7" and bname == "B0") else c
+                x, y = R_[cc], R_[bname]
+                gain = x["hits"] - y["hits"]
+                ok = gain >= 0 and (x["wrong"] - y["wrong"]) <= 2 * max(0, gain)
+                sr[bname] = {"hits": [y["hits"], x["hits"]], "wrong": [y["wrong"], x["wrong"]], "pass": bool(ok)}
+            res["ship_rule"][sysn][c] = sr
+            d = res["delta_vs_B1"][sysn][c]
+            rej = res["holm_vs_B1"][sysn][c]["rejected"]
+            if rej and d[2] < 0 and sr["B1"]["pass"]:
+                v = "better"
+            elif (d[0] > 0 and d[1] > 0) or not sr["B1"]["pass"]:
+                v = "worse"
+            else:
+                v = "same"
+            res["verdict"][sysn][c] = v
         if sysn == "proposed":
-            R_ = res["rows"][sysn]
-            for c in CANDS:
-                res["ship_rule"][c] = {}
-                for bname in ("B1", "B0"):
-                    bb = "B0" if (bname == "B0" and c != "I7") else bname
-                    cc = "I7_on_B0" if (c == "I7" and bname == "B0") else c
-                    x, y = R_[cc], R_[bb]
-                    res["ship_rule"][c][bname] = {"hits": [y["hits"], x["hits"]], "wrong": [y["wrong"], x["wrong"]],
-                                                  "hits_not_down": x["hits"] >= y["hits"], "wrong_down": x["wrong"] < y["wrong"],
-                                                  "pass": bool(x["hits"] >= y["hits"] and x["wrong"] < y["wrong"])}
-            for c in CANDS + ["B0"]:
+            for c in cands + ["B0"]:
                 add, rem = diff_pics(P["B1"], P[c])
                 res["changes_vs_B1"][c] = {"added": add, "removed": rem}
-        for name in ["B0", "B0r", "B1"] + CANDS + ["I7_on_B0"]:
+        print(f"[D5 {sysn}] {res['d5'][sysn]['pass']}/{len(stems)} clips reproduce the scored render; differ: {bad}", flush=True)
+        for name in ["B0", "B0r", "B1"] + cands + ["I7_on_B0"]:
             x = res["rows"][sysn][name]
             dd = res["delta_vs_B1"][sysn].get(name)
-            print(f"DEV {sysn:9s} {name:9s} hits {x['hits']}/{x['hits'] + x['misses']} wrong {x['wrong']} (vis {x['visible']}, "
-                  f"cross {x['cross']}, phantom {x['phantom']}) dup {x['dup']} F1 {x['F1']:.3f} cost {x['viewer_cost']:.2f} "
-                  f"cov {x['coverage'] if x['coverage'] is None else round(x['coverage'], 3)}"
-                  + (f"  dcost vs B1 {dd[0]:+.3f} [{dd[1]:+.3f}, {dd[2]:+.3f}] p {dd[3]:.3f}" if dd else ""), flush=True)
-        print(f"[D5 {sysn}] {res['d5'][sysn]['pass']}/{len(stems)} clips reproduce the scored render; differ: {bad}", flush=True)
+            print(f"DEV {sysn:9s} {name:9s} heard {heard.get(name, '-')} hits {x['hits']}/{x['hits'] + x['misses']} "
+                  f"rescued {hb.get(name, '-')}/{hb['group']} wrong {x['wrong']} (vis {x['visible']}, cross {x['cross']}, "
+                  f"phantom {x['phantom']}) dup {x['dup']} F1 {x['F1']:.3f} cost {x['viewer_cost']:.2f}"
+                  + (f"  dcost vs B1 {dd[0]:+.3f} [{dd[1]:+.3f}, {dd[2]:+.3f}] p {dd[3]:.3f}" if dd else "")
+                  + (f"  -> {res['verdict'][sysn][name]}" if name in res["verdict"][sysn] else ""), flush=True)
         print(f"[holm {sysn}] {res['holm_vs_B1'][sysn]}", flush=True)
-    print(f"[ship rule] {json.dumps(res['ship_rule'])}", flush=True)
     OUT.write_text(json.dumps(res, indent=1), encoding="utf-8")
+
 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("eat", "dasm", "vlm", "stage4", "stage5", "score"))
+    ap.add_argument("step", choices=("eat", "dasm", "vlm", "paralist", "stage4", "stage5", "score"))
     ap.add_argument("--arms", nargs="+", default=ARMS)
     a = ap.parse_args()
-    {"eat": eat, "dasm": dasm, "vlm": vlm, "stage4": stage4, "score": score}.get(a.step, lambda: stage5(a.arms))()
+    {"eat": eat, "dasm": dasm, "vlm": vlm, "paralist": paralist, "stage4": lambda: stage4(a.arms),
+     "score": score}.get(a.step, lambda: stage5(a.arms))()
 
 
 if __name__ == "__main__":
