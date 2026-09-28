@@ -467,6 +467,9 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
            "subject": subject, "tries": []}
     ok = False
     learned, saw_text = [], False               # refinement carried from each refused try to the next
+    if verify:
+        from src.stage6_visual_augmentation.verify import rewrite_first
+    first = bool(verify and rewrite_first(spec, subject))
     for t in range(tries):
         # PICTURE_VERIFY (src/stage6_visual_augmentation/verify.py): try 1 is exactly the shipped picture (same seed);
         # each later try a new seed (stride 1000, clear of the blank guard's +1); from try 3 the clearer fixed rewrite
@@ -474,7 +477,9 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
         # 28 Sept): every refused try adds what the VLM saw instead (verify.feedback_negative) to the next negative, and
         # text found by OCR switches "no text" on from the next try
         subj_t, prompt_t, neg_t, seed_t = subject, prompt, neg, seed + 1000 * t
-        if t >= 2 or saw_text:
+        # an entry flagged rewrite_first (smoke detector, Adam 28 Sept) uses its clearer fixed wording from try 1: the
+        # checker cannot tell its look-alike (a dome camera) from it, so only the wording keeps the look-alike out
+        if t >= 2 or saw_text or first:
             from src.stage6_visual_augmentation.verify import rewrite_for
             rw = rewrite_for(spec, subject)
             if rw:
@@ -521,7 +526,7 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
             VERIFY_LOG.append(log)
             return
     if verify:
-        log["final"] = ("picture" if len(log["tries"]) <= 2 else "rewritten") if ok else "placeholder"
+        log["final"] = ("picture" if len(log["tries"]) <= 2 and not first else "rewritten") if ok else "placeholder"
         if ok and len(log["tries"]) > 2 and not rewrite_applies(spec, subject):
             log["final"] = "picture"             # later tries without a table rewrite: seed / no-text / feedback only
         VERIFY_LOG.append(log)

@@ -43,8 +43,12 @@ AMBIGUOUS = [
      "rewrite": None, "neg": ""},
     {"name": "smoke_alarm", "sound": {"smoke detector", "smoke alarm"}, "subject": ["smoke detector", "smoke alarm"],
      "intended": "a smoke detector",
-     "confusions": ["a security camera", "a ceiling lamp"],
-     "rewrite": "a round white smoke detector on a ceiling, sounding its alarm", "neg": "camera, lens"},
+     # 28 Sept (Adam): + dome / CCTV camera -- round 3 passed a dome security camera wreathed in smoke
+     "confusions": ["a security camera", "a ceiling lamp", "a dome security camera", "a CCTV camera"],
+     "rewrite": "a round white smoke detector on a ceiling, sounding its alarm", "neg": "camera, lens",
+     # 28 Sept (Adam): the rewrite from try 1 -- the checker passes a dome camera as a smoke detector, and only the
+     # rewrite drew a real one (round 2, try 3)
+     "rewrite_first": True},
     {"name": "alarm_bell", "sound": {"alarm", "fire alarm", "alarm bell"}, "subject": ["alarm bell", "fire alarm"],
      "intended": "a fire alarm (a bell or alarm box on a wall)",
      "confusions": ["a desk bell (service bell)", "a church bell", "a telephone"],
@@ -268,10 +272,11 @@ def ask_mc(img, spec, subject: str, salt: int = 0, tag: str = "") -> Dict:
     opts = [o["intended"]] + o["confusions"]
     random.Random(_order_seed(spec, salt, tag)).shuffle(opts)
     opts.append(SOMETHING_ELSE)
-    letters = "ABCDEFGHIJ"[: len(opts)]
+    letters = "ABCDEFGHIJKL"[: len(opts)]
+    assert len(letters) == len(opts), "more options than letters"
     q = MC_PROMPT.format(options="\n".join(f"{l}. {t}" for l, t in zip(letters, opts)))
     ans = R._ask(mdl, proc, q, images=[img], max_new=8)
-    m = re.search(r"\b([A-J])\b", ans.upper()) or re.search(r"([A-J])", ans.upper())
+    m = re.search(r"\b([A-L])\b", ans.upper()) or re.search(r"([A-L])", ans.upper())
     pick = opts[letters.index(m.group(1))] if m and m.group(1) in letters else None
     return {"options": opts, "answer": ans, "picked": pick, "intended": o["intended"], "entry": o["entry"],
             "ok": pick == o["intended"]}
@@ -301,6 +306,12 @@ def check(path, spec, subject: str, salt: int = 0, tag: str = "", see: bool = Tr
     if see:
         out["saw"] = what_it_sees(small)
     return out
+
+
+def rewrite_first(spec, subject: str) -> bool:
+    """True when the entry says its rewrite is used from try 1 (a look-alike the checker cannot catch)."""
+    e = ambiguous_entry(spec, subject)
+    return bool(e and e.get("rewrite_first") and e.get("rewrite"))
 
 
 def rewrite_for(spec, subject: str) -> Optional[dict]:
