@@ -2227,3 +2227,7 @@ C4 bar 0.6 in quiet / 0.8 under speech or music (BEATs Speech or Music ≥ 0.3 i
 0.7 speech-music + PretrainedSED local veto. Pick on the 280 by amendment 24's rule; the one pick tested once on the held-out 415
 (ΔC-overlap upper 95 % CI < 0). Leak check: none of the 280 or 415 clips is in the AudioSet-Strong train split (0 of 103,463
 train segments), so PretrainedSED has not seen them.
+**Result (`benchmark/detector_round3.json`): no pick.** 280 fit set — C0 3.071 / 3.886 (C-overlap / C-onset), recall 50.4 %, 4.46
+false/min; C1 4.457, 60.3 %, 9.56; C2 4.207, 60.3 %, 8.81; C3 4.979, 62.1 %, 11.29; C4 3.064 / 3.921, 52.2 %, 4.61; C5 4.186,
+60.7 %, 8.79. The PretrainedSED and relative-PANNs vetoes let a lower FlexSED bar find ~10 points more events but double the false
+spans; C4 lowers C-overlap by 0.007 but raises C-onset, so it fails the rule. The held-out set stays unread for this round.
