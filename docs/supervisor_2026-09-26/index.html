@@ -240,7 +240,7 @@ textarea.notes{min-height:160px}
     <table>
       <thead><tr><th>Step</th><th>We use</th><th>Also tried (incl. newest models)</th><th>Why ours</th></tr></thead>
       <tbody>
-        <tr><td>2 · Detect sounds</td><td class="mono">BEATs + FlexSED</td><td>PANNs, PretrainedSED (5 versions), FLAM ×2, AST, CED, SSLAM, CLAP, Qwen2-Audio, PE-A-Frame (Meta, Dec 2025), Qwen3-Omni as a “listener”, all 3 detectors must agree. <b>Running now:</b> EAT-large, Dasheng-base</td><td>Only combination that found more sounds <em>and</em> halved false alarms. Every other one failed its test (e.g. PE-A-Frame AUROC 0.53, where 0.5 = coin toss). A search for newer taggers (EAT, Dasheng, OpenBEATs, M2D, BAT, COSED) found nothing public that clearly beats BEATs</td></tr>
+        <tr><td>2 · Detect sounds</td><td class="mono">BEATs + FlexSED</td><td>PANNs, PretrainedSED (5 versions), FLAM ×2, AST, CED, SSLAM, CLAP, Qwen2-Audio, PE-A-Frame (Meta, Dec 2025), Qwen3-Omni as a “listener”, all 3 detectors must agree, EAT-large and Dasheng-base (2024; they hear more sounds but add more false alarms: the pick failed on the 415 held-out clips, cost +0.087 [−0.159, +0.357])</td><td>Only combination that found more sounds <em>and</em> halved false alarms. Every other one failed its test (e.g. PE-A-Frame AUROC 0.53, where 0.5 = coin toss). A search for newer taggers (EAT, Dasheng, OpenBEATs, M2D, BAT, COSED) found nothing public that clearly beats BEATs</td></tr>
         <tr><td>2 · Remove false alarms</td><td class="mono">two cross-checks: FlexSED + BEATs self-check</td><td>PANNs cross-check (used in the frozen table), AST/CED vote, sound separation (Demucs, HTDemucs), noise removal, speech/music-aware bar, end-trim</td><td><b>After the frozen table</b> (held-out AudioSet, 415 clips): the BEATs self-check does the PANNs job at the same cost (+0.005 [−0.048, +0.067]; recall 49.7 % vs 49.1 %), so the system needs 2 detectors, not 3. The frozen TEST table was scored with PANNs</td></tr>
         <tr><td>2 · Confidence floor</td><td class="mono">show a picture only if confidence ≥ 0.40</td><td>no floor</td><td><b>After the frozen table</b>, chosen on DEV, then tested once on the 415 held-out clips: cost −0.227 [−0.304, −0.154], significant. Adopted</td></tr>
         <tr><td>4 · Source on screen?</td><td class="mono">Qwen3.8-27B, 3 questions, majority</td><td>CLIP, SigLIP, OWLv2, SAM 3, Qwen2.5-VL 7B and 32B, video input, sound–motion sync, “name it, then point at it” (SAM 3 or OWLv2)</td><td>Best agreement with the human labels (0.62); object detectors were at chance (0.50). Pointing raised the cost on DEV in every version (section 10)</td></tr>
@@ -436,9 +436,9 @@ textarea.notes{min-height:160px}
   <div class="grid g2">
     <div class="card"><h3>Hearing the sounds</h3><p class="score">23 tried · 5 kept · 2 running</p><div class="row">
       <span class="pill keep">BEATs</span><span class="pill keep">FlexSED</span><span class="pill keep">FlexSED cross-check</span><span class="pill keep">BEATs self-check (new)</span><span class="pill keep">confidence floor 0.40 (new)</span>
-      <span class="pill open">EAT-large (running)</span><span class="pill open">Dasheng-base (running)</span>
+      <span class="pill">EAT-large</span><span class="pill">Dasheng-base</span>
       <span class="pill">PANNs cross-check (replaced 28 Sept)</span><span class="pill">PANNs alone</span><span class="pill">CLAP check</span><span class="pill">Qwen2-Audio check</span><span class="pill">Demucs</span><span class="pill">FLAM ×2</span><span class="pill">PretrainedSED</span><span class="pill">PSED ×5</span><span class="pill">fusion V1–V3</span><span class="pill">HTDemucs</span><span class="pill">AST/CED</span><span class="pill">DeepFilterNet</span><span class="pill">looser detector (“cascade E”)</span><span class="pill">PE-A-Frame</span><span class="pill">Qwen3-Omni listener</span><span class="pill">all 3 detectors agree</span><span class="pill">speech/music-aware bar</span><span class="pill">end-trim</span></div>
-      <p class="score" style="margin:10px 0 0">New results, all on held-out AudioSet clips (not TEST): PE-A-Frame AUROC 0.53 (0.5 = coin toss). Qwen3-Omni listener AUROC 0.661 [0.525, 0.784], below the 0.70 bar set in advance. End-trim: sound ends only 0.295 s closer, and 2.2 points of recall lost. EAT-large and Dasheng-base: detection only, first on 280 clips, then on the 415 held-out clips.</p></div>
+      <p class="score" style="margin:10px 0 0">New results, all on held-out AudioSet clips (not TEST): PE-A-Frame AUROC 0.53 (0.5 = coin toss). Qwen3-Omni listener AUROC 0.661 [0.525, 0.784], below the 0.70 bar set in advance. End-trim: sound ends only 0.295 s closer, and 2.2 points of recall lost. EAT-large and Dasheng-base (detection only): EAT won on the 280 clips (cost 3.04 → 2.68) but failed on the 415 held-out clips (+0.087 [−0.159, +0.357]); more sounds found (recall 49.7 → 54.4 %), but more false alarms too.</p></div>
     <div class="card"><h3>Is the source on screen?</h3><p class="score">13 tried · 1 kept · 3 others exactly break even · 1 rule bug fixed</p><div class="row">
       <span class="pill keep">Qwen3.8-27B, 3 questions</span><span class="pill keep">family rule, one direction (bug fix)</span>
       <span class="pill">CLIP</span><span class="pill">SigLIP</span><span class="pill">OWLv2</span><span class="pill">SAM 3</span><span class="pill">Qwen2.5-VL-7B</span><span class="pill">Qwen2.5-VL-32B</span><span class="pill">video input</span><span class="pill">sound–motion sync</span><span class="pill">any-moment rule</span><span class="pill">family-rule variant (lost 3 hits)</span><span class="pill">OWLv2 / SAM 3 votes</span><span class="pill">name it, then point at it (SAM 3 / OWLv2)</span></div>
@@ -450,7 +450,7 @@ textarea.notes{min-height:160px}
       <span class="pill keep">human gold labels, 139 clips</span><span class="pill keep">blind human picture test</span><span class="pill keep">Gemma judge</span><span class="pill keep">multiple-testing correction</span><span class="pill keep">existing-approach baselines (PretrainedSED, PANNs)</span><span class="pill keep">held-out AudioSet set (415 clips)</span>
       <span class="pill">Mistral judge</span><span class="pill">model-made reference</span><span class="pill">with/without-sound reference</span><span class="pill">6 picture scorers</span><span class="pill">captions-only baseline (dropped)</span></div></div>
   </div>
-  <p class="why">Negative results are part of the thesis: e.g. stronger object detectors do not help, because seeing an object is not seeing a sound's source; and no newer public sound tagger we found clearly beats BEATs (two are still being tested).</p>
+  <p class="why">Negative results are part of the thesis: e.g. stronger object detectors do not help, because seeing an object is not seeing a sound's source; and no newer public sound tagger we found clearly beats BEATs; the two newest (EAT, Dasheng) failed on the held-out clips.</p>
 </section>
 
 <section id="s10">
@@ -480,7 +480,7 @@ textarea.notes{min-height:160px}
       <li>“Cascade E” (a looser detector) is <b>not an upgrade</b>: each extra sound it finds costs ≈ 2.4 false alarms. At β = 2 it would need 2.0 or fewer to pay.</li>
       <li>One new model only: <b>PE-A-Frame</b> (Meta). <b>→ Failed</b>: AUROC 0.53. A second try, Qwen3-Omni as a listener, also failed (0.661, bar 0.70).</li>
       <li>Tested on a <b>new held-out AudioSet set</b>. <b>→ Done</b>: 280 clips to fit, 415 clips held out. There, the <b>confidence floor 0.40 passed</b> (cost −0.227 [−0.304, −0.154]) and the <b>BEATs self-check replaced PANNs</b> at the same cost.</li>
-      <li>TEST is not touched. <b>→ Kept.</b> Newest taggers (EAT-large, Dasheng-base) are <b>running now</b>.</li>
+      <li>TEST is not touched. <b>→ Kept.</b> Newest taggers (EAT-large, Dasheng-base): <b>failed</b> on the held-out clips; BEATs stays.</li>
     </ul></div>
     <div class="card panelcard"><h3>Pictures</h3><ul>
       <li>The picture setup is <b>frozen</b> until the sealed blind sitting is scored. <b>→ Changed</b> on 28 Sept (Adam): Qwen-Image is shipped, and the sealed sitting is <b>cancelled</b>. The validated picture check (a model check) takes its place (question in the Questions tab).</li>
@@ -496,7 +496,7 @@ textarea.notes{min-height:160px}
       <li><b>→ Added</b> at your request: existing-approach baselines (section 4).</li>
     </ul></div>
   </div>
-  <p class="why">The detector question is closed on the held-out set, apart from the two taggers still running: the detector is the ceiling. The rest of the week goes to honest reporting, the second annotator, and the thesis text.</p>
+  <p class="why">The detector question is closed on the held-out set, including the two newest taggers (EAT, Dasheng): the detector is the ceiling. The rest of the week goes to honest reporting, the second annotator, and the thesis text.</p>
   <h3 class="subh">A tool for the meeting: the results inspector</h3>
   <p style="max-width:82ch">I can open a local results inspector on my laptop (docs/inspector/index.html in the project). It shows every clip, every sound and every picture, with the videos, and every mistake. Each missed sound has a reason (for example “never detected” or “gate said visible”). If you want to see any clip or number from this page, we can look it up there.</p>
   <p style="margin-top:22px"><a class="btn" href="#questions">Go to the questions →</a></p>
@@ -544,7 +544,7 @@ textarea.notes{min-height:160px}
       </li>
       <li id="q7" data-yn="1">
         <div class="qh"><p class="qt">Is this an acceptable main claim: “the sound detector is the ceiling; the gate and the pictures add on top”?</p><span class="yn">yes / no</span></div>
-        <small class="ctx">57 % of the missed sounds (DEV + TEST) were never detected by any detector. Given the human's sound list, the gate's F1 gain becomes significant (+0.067). No newer public tagger we found clearly beats BEATs; two are still running.</small>
+        <small class="ctx">57 % of the missed sounds (DEV + TEST) were never detected by any detector. Given the human's sound list, the gate's F1 gain becomes significant (+0.067). No newer public tagger we found clearly beats BEATs; EAT and Dasheng failed on the held-out clips.</small>
         <fieldset class="choices"><legend>Main claim</legend><label><input type="radio" name="q7-c" value="yes">Yes</label><label><input type="radio" name="q7-c" value="no">No</label><label><input type="radio" name="q7-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q7-a">Reply</label><textarea id="q7-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
