@@ -4,6 +4,7 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
+- [ ] DEV check (report-only) of the best detector candidates: EAT-R, DASM D1, I4, I6, I7 vs shipped, ours + no-gate. `docs/dev_candidates_check_2026-09-28.md`
 - [ ] Setup audit of the detector tests (Adam: "weird that nothing passes"): download time alignment (yt-dlp keyframe cuts), gold label mapping, scorer sanity (gold as predictions), harness vs real pipeline, BEATs window timestamps. `docs/setup_audit_2026-09-28.md`
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs, PANNs, PE-A-Frame 422/422; FlexSED 20/422) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
