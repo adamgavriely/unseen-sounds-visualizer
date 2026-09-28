@@ -4,6 +4,7 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
+- [ ] Detector round 10 — rescue heard-but-dropped sounds (FlexSED 0.4–0.8) with a discriminator: R1 DASM agrees, R2 query paraphrases agree, R3 stable under small audio changes, R4/R5 combos, R6/R7 = I4 / I6 rescues filtered by R1 or R2. 280 → 415 → DEV + fresh. `docs/prereg_round10_rescue.md`
 - [ ] DEV check (report-only) of the best detector candidates: EAT-R, DASM D1, I4, I6, I7 vs shipped, ours + no-gate. `docs/dev_candidates_check_2026-09-28.md`
 - [ ] Setup audit of the detector tests (Adam: "weird that nothing passes"): download time alignment (yt-dlp keyframe cuts), gold label mapping, scorer sanity (gold as predictions), harness vs real pipeline, BEATs window timestamps. `docs/setup_audit_2026-09-28.md`
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
