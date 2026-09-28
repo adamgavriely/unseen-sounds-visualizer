@@ -2186,3 +2186,12 @@ C-onset below shipped's; then the held-out test of amendment 24. Script `benchma
 **Result:** E+3 C-overlap 3.279 vs shipped 3.071 (worse), C-onset 3.707 vs 3.886 (better); recall 58.9 % vs 50.4 %, false
 spans/min 5.89 vs 4.46. The agreement keeps every true span cell E adds but still lets through too many false ones; it does
 not lower C-overlap, so by the rule it stops here (`benchmark/agree3.json`).
+
+## 2026-09-28 — external baseline: one off-the-shelf detector + a picture for every detection (written before any number)
+
+The supervisor asked for comparisons to existing approaches, not only ablations. Baseline (b): PANNs CNN14 (AudioSet,
+frame-level, the most cited open sound-event tagger) alone, every drawable detection drawn, no gate. Threshold picked on DEV
+by viewer cost at β = 2 from the grid {0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5}; TEST scored once at that threshold; ours vs
+PANNs paired clip bootstrap on F1, cost, precision, recall. Script `benchmark/gold/baseline_panns.py`. "Blind" is renamed
+**"pipeline without gate"** in reports: same detector stack, label filter, subject text and pictures; only the visibility gate
+is removed.
