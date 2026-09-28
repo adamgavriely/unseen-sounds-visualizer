@@ -2404,3 +2404,5 @@ on the 280 the gain appeared only with the refitted bar (at the shipped bars nei
 ## 2026-09-28 — detector round 8 (new ideas: repetition bar, per-clip normalisation, parent emission, VLM scene prior, local-contrast veto, onset fixes, multi-scale and band-limited BEATs/FlexSED): pre-registered in `docs/prereg_round8_ideas.md` (written before any round-8 cache or cost)
 
 ## 2026-09-28 — fresh AudioSet-Strong confirmation set (500 eval ids drawn with the 415 recipe, seed 20260928, disjoint from the 280, the 415, DEV, TEST, slice B and every repo list; final check only for a candidate that passes the 415, no result read before that): pre-registered in `docs/prereg_fresh_confirm_set.md` (written before any download)
+
+## 2026-09-28 — detector round 9 (local-contrast veto on BEATs-only spans, alone and with round 8's I7): pre-registered in `docs/prereg_round9_contrast.md` (written before any round-9 cost)
