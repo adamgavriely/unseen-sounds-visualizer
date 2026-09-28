@@ -177,3 +177,28 @@ cost 3.80, Δ +1.02 [−0.12, +1.88]. + R13-1 adds nothing (the Cricket is alrea
 arm (L05t3+P3) is worse: 109 BEATs-band spans admitted, cost 4.16, Δ +1.39 [+0.20, +2.37]. (At LO 0.5 with TH 0 and 2, + P3 costs one
 hit, 22 → 21, by the scorer's greedy matching.)
 A higher bar or a second check on the admitted spans would be needed before this rescue can pay.
+
+### Amendment A (2026-09-29, written BEFORE any output of these variants exists) — stricter listener questions
+The yes/no listener (R13-3) saturates: wrong rescues score 3.25–7.4, hits 3.5–6.0. Fable consult: the question tests
+"is X plausible here", not "is X in this cut". Four variants are scored in ONE Qwen3-Omni job on the same candidates
+(DEV: FlexSED runs peak >= 0.5 of the P2 pool + the PANNs-vetoed >= 0.8 spans; TEST: the same construction on the
+gold-free superset, features only, no scoring). Same model, same audio cut as R13-3 unless stated.
+- **V1 multiple choice.** "Listen carefully. Which ONE of these is actually present in this recording? A) {X} B) {s1}
+  C) {s2} D) {u} E) none of A-D. Answer with a single letter." s1, s2 = two ontology siblings of X (same parent in
+  `src/audioset_ontology.json`, depictable vocab first, `random.Random(hash of clip|family|start)`; if fewer than two,
+  cousins via the grandparent); u = a random depictable family from another top-level branch. Asked twice (X at A,
+  X at D; the others rotate); score = mean over the two of softmax over the 5 letter logits for X's letter.
+  **Rule V1:** accept iff p(X) > 0.5 and p(X) > 2 × max(other options' p).
+- **V2 paired cut.** The R13-3 yes/no score on the run cut minus the same question on a control cut from the same clip:
+  the nearest window of the same length (>= 1 s) whose FlexSED(X) max < 0.2. **Rule V2:** s_run > 3 and s_run − s_ctrl > 2
+  (no control window → reject).
+- **V3 localisation.** Cut [start − 3, end + 3]. "If {X} occurs in this recording, reply with the second it starts
+  (for example 4.5). If it does not occur, reply none." **Rule V3:** a number is returned and start − 0.5 <= t (clip
+  time) <= end + 0.5.
+- **V4 open inventory.** "List every distinct non-speech sound you hear in this recording, one per line, most prominent
+  first." A line matches X iff it contains X's name or one of its comma-separated AudioSet synonyms, or a child/parent
+  name, case-insensitive; else all-mpnet-base-v2 cosine(line, X name) > 0.6. **Rule V4:** some line matches X.
+**Selection (on DEV, full pipeline, B0r base):** the rescue uses exactly one rule (V1, V2, V3, V4) or V1 AND V2; no
+per-family thresholds; LO fixed at 0.5. Guard (Fable): each rule is also reported on DEV halves A/B (clips sorted by
+name, alternate) and its null-control accept-rate must be <= 10 % on both halves. Then the DEV selection rule above
+picks at most one candidate for TEST.
