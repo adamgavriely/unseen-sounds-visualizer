@@ -4,8 +4,6 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
-- [ ] Detector round 11 — Fable's "test the cause" discriminators for FlexSED 0.4–0.8 rescues: M1 add foreign speech/music and re-score (true sound drops, phantom holds), M2 top-family margin, M3 masker-envelope correlation, M5 curve shape, M7 one rescue per clip, W time-reversal. `docs/prereg_round11_masker.md`
-- [ ] Detector round 10 — rescue heard-but-dropped sounds (FlexSED 0.4–0.8) with a discriminator: R1 DASM agrees, R2 query paraphrases agree, R3 stable under small audio changes, R4/R5 combos, R6/R7 = I4 / I6 rescues filtered by R1 or R2. 280 → 415 → DEV + fresh. `docs/prereg_round10_rescue.md`
 - [ ] DEV check (report-only) of EAT-R, DASM D1, I4, I6, I7 — jobs 31330562 (caches) → 31330563 (stages+score) queued. When done: read D5 first, scp benchmark/gold/dev_candidates_check.json + data/work/devcand/stage4.json + */_stage5_log.json, write Results in `docs/dev_candidates_check_2026-09-28.md`, delete ~/Transformer4SED. Baseline B1 (shipped) primary, B0 beside.
 - [ ] WAITING ON ADAM: corrected AudioSet cost (bark runs merged ≤ 2 s; video benchmark's hit window as time tolerance; gold names by sound ID; depictable filter). Then: check shipped beats silence on the 280 under it; re-score all past candidates on the 280; pick → fresh set → DEV ship rule. Rounds 10/11 on HOLD after their 280 step; J2 fresh scoring cancelled.
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
@@ -13,6 +11,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Picture wording 3-arm test (jobs 31330354 prep → 31330355 A+B, 31330356 C): when done, pull results, blind verdicts BEFORE opening key.json, `scripts/picture_sense_sheet.py --phase blind/table/sheet`, results into `docs/picture_sense_test_2026-09-28.md`. Watch the weak slot forms (dental drill "patient's mouth").
 
 ## Later
+- [ ] After the corrected cost: re-score on the 280 the round-10 picks (R1, R5, R6, R7) and round-11 (CPU only); new cells: weak-BEATs-twin candidates + short-sound path (FlexSED peak, min span < 0.5 s), both filtered by DASM agreement (R1); then fresh set → DEV ship rule.
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
 - [ ] **Mistake mining for all 215 drawable labels** (one-time, ~4–7 GPU h, at night) — only if the a+b test adopts the new method. Re-run whenever the picture model changes.
 - [ ] Final check on the fresh set for whatever passes round 8 (and 7b), then decide on the detector (BEATs stays unless something passes).
@@ -26,6 +25,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-28 Round 10 (280): DASM agreement filters band rescues well (7 rescued, 12 false); 9 of 61 reachable, 22 blocked by the 0.5-s minimum (4b5f446, f6d2cc3). Round 11 (280): masker tests separate nothing (latest commit).
 - 2026-09-28 Label sense traps: makers from all ontology parents; multi-sense labels never guessed; Honk → goose; horn sound-wave wording (0429a0e).
 - 2026-09-28 Detector round 7b: SAM-Audio retry fails QC again (music not removed); separation idea closed (6133f4f).
 - 2026-09-28 Detector round 8: 17 cells, none passes the 415; closest I7 local-contrast veto (114fae3).
