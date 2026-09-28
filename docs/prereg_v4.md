@@ -2396,3 +2396,9 @@ C-onset 2.207 → 2.294 (ΔC +0.087 [−0.212, +0.386]); recall 49.7 → 54.4 %;
 taggers find more of the sounds (recall +5 to +14 points at the same bars), but at BEATs' bar they also raise more false spans,
 and with a bar refitted to BEATs' span count on the 280 the gain did not carry over to the 415. So
 on the 280 the gain appeared only with the refitted bar (at the shipped bars neither tagger was better).
+
+## 2026-09-28 — detector round 6 (DASM in place of or next to FlexSED): pre-registered in `docs/prereg_round6_dasm.md` (written before any DASM score or cost)
+
+## 2026-09-28 — detector round 7 (SAM-Audio: remove speech and music, re-run BEATs + FlexSED on the residual, union with the shipped stack): pre-registered in `docs/prereg_round7_samaudio.md` (written before any SAM-Audio output or cost)
+
+## 2026-09-28 — detector round 8 (new ideas: repetition bar, per-clip normalisation, parent emission, VLM scene prior, local-contrast veto, onset fixes, multi-scale and band-limited BEATs/FlexSED): pre-registered in `docs/prereg_round8_ideas.md` (written before any round-8 cache or cost)
