@@ -82,8 +82,12 @@ def load(model_key):
     return pipe
 
 
-def burst_card(word):
-    """A fixed comic burst with the word inside it (drawn once per word, identical every time)."""
+def burst_card(word, fit=False):
+    """A fixed comic burst with the word inside it (drawn once per word, identical every time).
+    fit=True (PICTURE_VERIFY word card, a sound's name of any length): the font shrinks and the name wraps onto up
+    to two lines so it stays inside the burst; the default path is the frozen card, unchanged."""
+    if fit:
+        return _burst_card_fit(word)
     import math
     from PIL import Image, ImageDraw, ImageFont
     img = Image.new("RGB", (1024, 1024), "white")
@@ -106,6 +110,47 @@ def burst_card(word):
     font = font or ImageFont.load_default(size=size)
     x0, y0, x1, y1 = d.textbbox((0, 0), word, font=font)
     d.text((512 - (x1 - x0) / 2 - x0, 512 - (y1 - y0) / 2 - y0), word, fill=(20, 20, 20), font=font)
+    return img
+
+
+def _font(size):
+    from PIL import ImageFont
+    for f in ("DejaVuSans-Bold.ttf", "/usr/share/fonts/dejavu/DejaVuSans-Bold.ttf",
+              "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", "arialbd.ttf", "C:/Windows/Fonts/arialbd.ttf"):
+        try:
+            return ImageFont.truetype(f, size)
+        except OSError:
+            continue
+    return ImageFont.load_default(size=size)
+
+
+def _burst_card_fit(word):
+    """burst_card's burst with a name of any length: one line if it fits at >= 90 px, else two balanced lines."""
+    from PIL import ImageDraw
+    img = burst_card("")
+    d = ImageDraw.Draw(img)
+    words = word.split()
+    splits = [[word]] + ([[" ".join(words[:k]), " ".join(words[k:])] for k in range(1, len(words))]
+                         if len(words) > 1 else [])
+    best = None
+    for lines in splits:
+        for size in range(170, 49, -10):
+            font = _font(size)
+            boxes = [d.textbbox((0, 0), ln, font=font) for ln in lines]
+            w = max(b[2] - b[0] for b in boxes)
+            h = sum(b[3] - b[1] for b in boxes) + 20 * (len(lines) - 1)
+            if w <= 600 and h <= 420:
+                if best is None or size > best[0] + (10 if len(lines) > len(best[1]) else 0):
+                    best = (size, lines)
+                break
+    size, lines = best or (50, [word])
+    font = _font(size)
+    boxes = [d.textbbox((0, 0), ln, font=font) for ln in lines]
+    total = sum(b[3] - b[1] for b in boxes) + 20 * (len(lines) - 1)
+    y = 512 - total / 2
+    for ln, (x0, y0, x1, y1) in zip(lines, boxes):
+        d.text((512 - (x1 - x0) / 2 - x0, y - y0), ln, fill=(20, 20, 20), font=font)
+        y += (y1 - y0) + 20
     return img
 
 

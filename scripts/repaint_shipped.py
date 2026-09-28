@@ -21,6 +21,11 @@ with PLACE_PROMPT (then SCENE_PROMPT), as decide_subjects does.
 
     python scripts/repaint_shipped.py --tag dev_monocap_v31 [--shard 0 --of 2] [--limit 2] [--clips a b]
 Output: data/work/shipped_<tag>/<clip>/ (json copies, augmentations/aug_XXX.png, repaint.json)
+
+--verify (2026-09-28): the same repaint with config.PICTURE_VERIFY on (check each picture, redraw up to 4 times, else
+a word card; src/stage6_visual_augmentation/verify.py), into data/work/shipped_v_<tag>/. The subjects are copied from
+shipped_<tag> (phase A is not re-run), so try 1 is the shipped picture's own prompt and seed. Per picture,
+repaint.json gets the tries, what the VLM picked and saw, and the final kind (picture / rewritten / word card).
 """
 from __future__ import annotations
 
@@ -98,7 +103,7 @@ def load_specs(path: Path):
 def kind_of(spec) -> str:
     from benchmark.gold.gen_screen import TEMPLATES
     if spec.backend == "card":
-        return "card"
+        return "word card" if (spec.image_prompt or "").startswith("VCARD:") else "card"
     if spec.backend == "placeholder":
         return "PLACEHOLDER"
     if (spec.source or spec.event_label) in TEMPLATES or spec.event_label in TEMPLATES:
@@ -114,12 +119,16 @@ def main():
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--clips", nargs="*", default=[])
     ap.add_argument("--phase", choices=["all", "subjects", "draw"], default="all")
+    ap.add_argument("--verify", action="store_true", help="PICTURE_VERIFY on, into data/work/shipped_v_<tag>")
     a = ap.parse_args()
 
     print("[cfg]", config.use_shipped(), flush=True)
     config.DEVICE = "cuda"
+    if a.verify:
+        config.PICTURE_VERIFY = True
+        print("[cfg] PICTURE_VERIFY on, tries", config.PICTURE_VERIFY_TRIES, "VLM", config.VLM_MODEL, flush=True)
     src_root = _ROOT / "data" / "work" / f"protocol_proposed_{a.tag}"
-    dst_root = _ROOT / "data" / "work" / f"shipped_{a.tag}"
+    dst_root = _ROOT / "data" / "work" / (f"shipped_v_{a.tag}" if a.verify else f"shipped_{a.tag}")
     stems = sorted(p.name for p in src_root.iterdir() if (p / "augmentations.json").exists())
     if a.clips:
         stems = [s for s in stems if s in set(a.clips)]
@@ -137,6 +146,9 @@ def main():
                 shutil.copy2(src_root / stem / f, d / f)
         if not (d / "scored_augmentations.json").exists():
             shutil.copy2(src_root / stem / "augmentations.json", d / "scored_augmentations.json")
+        old = _ROOT / "data" / "work" / f"shipped_{a.tag}" / stem / "subjects.json"
+        if a.verify and old.exists() and not (d / "subjects.json").exists():
+            shutil.copy2(old, d / "subjects.json")          # the shipped subjects: try 1 == the shipped picture
 
     # --- phase A: subjects (VLM), one file per clip so a later crash never redoes them
     if a.phase in ("all", "subjects"):
@@ -197,13 +209,16 @@ def main():
     # --- phase B: pictures (Qwen-Image-2512 via the frozen final setup)
     if a.phase in ("all", "draw"):
         from src.labels import search_query
-        from src.stage6_visual_augmentation import _final_picture
+        from src.stage6_visual_augmentation import _final_picture, VERIFY_LOG
         n = {"card": 0, "template": 0, "diffusion": 0, "PLACEHOLDER": 0}
+        nv = {}
         for stem in stems:
             d = dst_root / stem
             if (d / "repaint.json").exists():
                 for r in json.loads((d / "repaint.json").read_text(encoding="utf-8")):
                     n[r["kind"]] = n.get(r["kind"], 0) + 1
+                    if "verify" in r:
+                        nv[r["verify"]["final"]] = nv.get(r["verify"]["final"], 0) + 1
                 continue
             subj = json.loads((d / "subjects.json").read_text(encoding="utf-8"))
             raw, specs = load_specs(d / "scored_augmentations.json")
@@ -222,6 +237,12 @@ def main():
                 log.append({"index": s.index, "label": s.event_label, "source": s.source, "subject": s.subject,
                             "old_subject": info["old_subject"], "kind": k, "prompt": s.image_prompt,
                             "image": path.name, "seconds": round(time.time() - t0, 1)})
+                if a.verify:
+                    v = next((r for r in reversed(VERIFY_LOG) if r["clip"] == stem and r["index"] == s.index), None)
+                    if v is None:                     # a CARDS sound: never drawn, never checked
+                        v = {"tries": [], "final": "card"}
+                    log[-1]["verify"] = {"n_tries": len(v["tries"]), "final": v["final"], "tries": v["tries"]}
+                    nv[v["final"]] = nv.get(v["final"], 0) + 1
                 print(f"   {stem} [{s.index}] {s.event_label} -> {s.subject} -> {k} ({time.time() - t0:.0f}s)",
                       flush=True)
             # write the copy: only subject/source/image_prompt/image_path/backend may differ from the scored file
@@ -240,7 +261,7 @@ def main():
             assert len(raw) == len(new)
             (d / "augmentations.json").write_text(json.dumps(new, indent=2, ensure_ascii=False), encoding="utf-8")
             (d / "repaint.json").write_text(json.dumps(log, indent=1, ensure_ascii=False), encoding="utf-8")
-        print(f"[repaint] done: {n}", flush=True)
+        print(f"[repaint] done: {n}" + (f" verify: {nv}" if a.verify else ""), flush=True)
 
 
 if __name__ == "__main__":
