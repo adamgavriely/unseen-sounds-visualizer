@@ -1,0 +1,686 @@
+"""DEV check of the best detector candidates (report only; plan: docs/dev_candidates_check_2026-09-28.md). DEV only.
+
+Candidates (unchanged, values frozen on the 280): EAT-R (round 5), DASM D1 (round 6), I4 parent emission, I6 VLM scene prior,
+I7 FlexSED local-contrast veto (round 8). Baselines: B0 = the scored DEV render (dev_monocap_v31, PANNs veto 0.05);
+B1 = the shipped stack on DEV (the same config with the BEATs self-veto 0.1218, PANNs off) = primary.
+
+    python benchmark/gold/dev_candidates_check.py eat      # GPU: EAT-large frame scores on each DEV audio.wav (BEATs windows)
+    python benchmark/gold/dev_candidates_check.py dasm     # GPU: DASM frame scores (round-6 queries), 10-s pieces
+    python benchmark/gold/dev_candidates_check.py vlm      # GPU: I6 scene prior answers (Qwen3.8-27B, round-8 prompt)
+    python benchmark/gold/dev_candidates_check.py stage4   # GPU (occlusion onsets of new spans only): gate D0, spans of every arm
+    python benchmark/gold/dev_candidates_check.py stage5   # GPU: stage 5 per arm and system, gate answers reused
+    python benchmark/gold/dev_candidates_check.py score    # CPU: gate D5, the table, bootstrap, Holm, ship rule
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import re
+import shutil
+import sys
+import tempfile
+from pathlib import Path
+
+import numpy as np
+
+_ROOT = Path(__file__).resolve().parent.parent.parent
+sys.path.insert(0, str(_ROOT))
+import config
+from benchmark.gold import score_per_sound as S
+from src.labels import canonical, is_descendant
+from src.stage4_audio_event_detection import _extract_events
+from src.types import AudioEvent
+
+WORK = _ROOT / "data" / "work"
+TAG = "dev_monocap_v31"
+SYSTEMS = ("proposed", "blind_a2i")
+DC = WORK / "devcand"
+BEATS_DIR, FLEX_DIR = WORK / "j2_dev_beats", WORK / "flexsed_cache"
+EAT_DIR, DASM_DIR, VLM_JSON = DC / "eat_cache", DC / "dasm_cache", DC / "i6_vlm.json"
+STAGE4, MEMO = DC / "stage4.json", DC / "ask_memo.json"
+OUT = _ROOT / "benchmark" / "gold" / "dev_candidates_check.json"
+PLACEHOLDER = str(_ROOT / "README.md")          # any existing file: a shown picture, as a placeholder counts in the scored run
+TOL = 0.01
+ARMS = ["B0r", "B1", "EATR", "D1", "I4", "I6"]   # arms that go through stage 5
+CANDS = ["EATR", "D1", "I4", "I6", "I7"]
+NAMES = {"B0": "B0 scored render (PANNs veto)", "B0r": "B0 repro (this code)", "B1": "B1 shipped stack (self-veto)",
+         "EATR": "EAT-R", "D1": "DASM D1", "I4": "I4 parent emission", "I6": "I6 VLM scene prior", "I7": "I7 contrast veto"}
+FLANK, I7_MARGIN = 3.0, 0.2
+
+
+def frozen():
+    """the candidates' values, read from the rounds' own result files (not retyped)"""
+    r5 = json.loads((_ROOT / "benchmark" / "detector_round5.json").read_text(encoding="utf-8"))["fit"]["EAT-R"]
+    r6 = json.loads((_ROOT / "benchmark" / "detector_round6.json").read_text(encoding="utf-8"))["bars"]
+    return {"AED": 0.175, "DISP": 0.35, "FBAR": 0.8, "FVETO": 0.3, "B_SELF": 0.1218,
+            "EAT_AED": float(r5["aed"]), "EAT_DISP": float(r5["disp"]), "EAT_B": float(r5["b"]),
+            "DASM_G": float(r6["g"]), "DASM_V": float(r6["v"]), "I6_BAR": 0.5, "I7_MARGIN": I7_MARGIN, "FLANK": FLANK}
+
+
+F = frozen()
+key = lambda e: canonical(e.label)
+
+
+def same(a, b):
+    return a == b or canonical(a) == canonical(b) or is_descendant(a, b) or is_descendant(b, a)
+
+
+def dev_stems():
+    gold = S.load_gold([_ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"])
+    return gold, sorted(S.subsets_of(gold)["dev"])
+
+
+def scored_dir(sysn):
+    return WORK / f"protocol_{sysn}_{TAG}"
+
+
+def wav_of(st):
+    return scored_dir("proposed") / st / "audio.wav"
+
+
+def dump(p, obj):
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_suffix(p.suffix + ".tmp")
+    tmp.write_text(json.dumps(obj, indent=1), encoding="utf-8")
+    tmp.replace(p)
+
+
+# ============================================================================= caches (GPU)
+def eat():
+    import librosa
+    from benchmark import detector_round5 as R5
+    _g, stems = dev_stems()
+    EAT_DIR.mkdir(parents=True, exist_ok=True)
+    score, info = R5.eat_model("cuda")
+    _m, names = R5.label_names()
+    print(f"[eat] {info}", flush=True)
+    for st in stems:
+        dst = EAT_DIR / f"{st}.npz"
+        if dst.exists():
+            continue
+        audio, _ = librosa.load(str(wav_of(st)), sr=R5.SR, mono=True)       # as infer_beats reads audio.wav
+        chunks, times = R5.windows(audio)
+        zb = np.load(BEATS_DIR / f"{st}.npz")
+        assert len(zb["times"]) == len(times) and np.allclose(zb["times"], times, atol=1e-4), f"window mismatch {st}"
+        assert sorted(str(x) for x in zb["labels"]) == sorted(names), "EAT names differ from BEATs names"
+        fw = np.concatenate([score(chunks[i:i + 64]) for i in range(0, len(chunks), 64)], axis=0)
+        np.savez_compressed(dst, fw=fw.astype(np.float32), times=np.asarray(times, np.float64), labels=np.array(names))
+        print(f"[eat] {st} {fw.shape}", flush=True)
+
+
+def dasm():
+    """round 6's scorer and queries; 10-s pieces, the last piece = the clip's final 10 s (no zero-padded piece)"""
+    import librosa
+    import torch
+    from benchmark import detector_round6 as R6
+    _g, stems = dev_stems()
+    DASM_DIR.mkdir(parents=True, exist_ok=True)
+    wavs = {st: str(wav_of(st).resolve()) for st in stems}
+    out = DASM_DIR.resolve()
+    q = torch.load(str(R6.QFILE))
+    voc = R6.vocab()
+    assert q["vocab"] == voc and q["queries"] == [R6.dasm_text(x) for x in voc], "query file differs from the vocab"
+    E = q["embeds"]
+    d = R6._Dasm("cuda")                       # takes this project off sys.path (foreign repo imports): nothing of ours after
+    print(f"[dasm] load strict=True {d.load_info}", flush=True)
+    n, SR = int(round(R6.CLIP_S * R6.SR)), R6.SR
+    log = {"load": d.load_info, "clips": {}}
+    for st in stems:
+        dst = out / f"{st}.npz"
+        if dst.exists():
+            continue
+        a, _ = librosa.load(wavs[st], sr=SR, mono=True)
+        L = len(a)
+        fws, ts = [], []
+        if L <= n:
+            fw, _at = d.score(a, E); fws.append(fw); ts.append(np.arange(fw.shape[1]) / R6.FPS)
+        else:
+            k = 0
+            while (k + 1) * n <= L:
+                fw, _at = d.score(a[k * n:(k + 1) * n], E)
+                assert fw.shape[1] == 500
+                fws.append(fw); ts.append(k * R6.CLIP_S + np.arange(500) / R6.FPS); k += 1
+            if k * n < L:                                   # remainder: score the final 10 s, keep only its new frames
+                s0 = (L - n) / SR
+                fw, _at = d.score(a[L - n:], E)
+                t = s0 + np.arange(fw.shape[1]) / R6.FPS
+                keep = t >= k * R6.CLIP_S - 1e-9
+                fws.append(fw[:, keep]); ts.append(t[keep])
+        fw = np.concatenate(fws, axis=1).T                   # [T, 215]
+        t = np.concatenate(ts)
+        np.savez_compressed(dst, fw=fw.astype(np.float32), times=t.astype(np.float64), labels=np.array(voc))
+        log["clips"][st] = {"seconds": L / SR, "frames": int(fw.shape[0])}
+        print(f"[dasm] {st} {L / SR:.2f} s -> {fw.shape}", flush=True)
+    (out / "_log.json").write_text(json.dumps(log, indent=1), encoding="utf-8")
+
+
+def vlm():
+    import torch
+    from transformers import AutoProcessor, AutoModelForImageTextToText
+    from benchmark import detector_round8 as R8
+    from src.stage2_video_understanding.vlm import _frames
+    _g, stems = dev_stems()
+    fams = json.loads(R8.VOCAB.read_text(encoding="utf-8"))["families"]
+    assert len(fams) == 215
+    prompt = R8.VLM_PROMPT + "\n".join(f"{i}. {f}" for i, f in enumerate(fams, 1)) + R8.VLM_FORMAT
+    proc = AutoProcessor.from_pretrained(R8.VLM_MODEL)
+    mdl = AutoModelForImageTextToText.from_pretrained(R8.VLM_MODEL, dtype=torch.bfloat16, device_map="auto").eval()
+    out = json.loads(VLM_JSON.read_text(encoding="utf-8")) if VLM_JSON.exists() else {}
+    out.setdefault("_meta", {"model": R8.VLM_MODEL, "prompt": prompt, "max_new": R8.VLM_MAX_NEW, "thinking": False, "frames": 4})
+    for st in [s for s in stems if s not in out]:
+        video = json.loads((scored_dir("proposed") / st / "media.json").read_text(encoding="utf-8"))["video_path"]
+        imgs = _frames(Path(video), 4)
+        content = [{"type": "image"} for _ in imgs] + [{"type": "text", "text": prompt}]
+        try:
+            text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True,
+                                            enable_thinking=False)
+        except TypeError:
+            text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True)
+        inputs = proc(text=[text], images=imgs, return_tensors="pt").to(mdl.device)
+        with torch.no_grad():
+            g = mdl.generate(**inputs, max_new_tokens=R8.VLM_MAX_NEW, do_sample=False)
+        new = g[:, inputs["input_ids"].shape[1]:]
+        ans = proc.batch_decode(new, skip_special_tokens=True)[0].strip()
+        nums = sorted({int(x) for x in re.findall(r"\d+", ans) if 1 <= int(x) <= 215})
+        out[st] = {"answer": ans, "n_frames": len(imgs), "cut": bool(new.shape[1] >= R8.VLM_MAX_NEW),
+                   "families": [fams[k - 1] for k in nums]}
+        print(f"[vlm] {st}: {len(nums)} families, cut {out[st]['cut']}", flush=True)
+        dump(VLM_JSON, out)
+    dump(VLM_JSON, out)
+
+
+# ============================================================================= stage 4
+def load_fr(p):
+    z = np.load(p)
+    fw = z["fw"].astype(np.float32)
+    labs = [str(x) for x in z["labels"]]
+    if "times" in z:
+        return fw, z["times"].astype(np.float64), labs
+    fw = fw.T
+    return fw, np.arange(fw.shape[0], dtype=np.float64) / float(z["fps"]), labs
+
+
+def ext(fr, bar):
+    return _extract_events(fr[0], fr[1], fr[2], bar, None, config.AED_MIN_DUR,
+                           low=bar * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+
+
+def clip_peak(fr):
+    out = {}
+    for i, lab in enumerate(fr[2]):
+        k = canonical(lab); out[k] = max(out.get(k, 0.0), float(fr[0][:, i].max()))
+    return out
+
+
+def sp(x):
+    return (x["label"], float(x["start"]), float(x["end"]))
+
+
+def close(a, b):
+    return a[0] == b[0] and abs(a[1] - b[1]) <= TOL and abs(a[2] - b[2]) <= TOL
+
+
+def same_list(a, b):
+    a, b = sorted(a), sorted(b)
+    return len(a) == len(b) and all(close(x, y) for x, y in zip(a, b))
+
+
+def twin(events, new):
+    """stage 4's union ("absorb", UNION_START min): a new span with a same-family tagger span within 1 s pulls its start
+    earlier; otherwise it is fresh (only-this-detector)"""
+    fresh = []
+    for e in new:
+        tw = [b for b in events if key(b) == key(e) and b.start - 1.0 <= e.end and e.start - 1.0 <= b.end]
+        if tw:
+            for b in tw:
+                b.start = min(b.start, e.start)
+        else:
+            fresh.append(e)
+    return fresh
+
+
+def flex_i6(Ffr, listed):
+    fw, ts, labs = Ffr
+    out = []
+    for j, lab in enumerate(labs):
+        bar = F["I6_BAR"] if lab in listed else F["FBAR"]
+        out += ext((fw[:, [j]], ts, [lab]), bar)
+    out.sort(key=lambda e: (e.start, -e.confidence))
+    return out
+
+
+def contrast(fr, label, a, b):
+    fw, ts, labs = fr
+    cols = [i for i, l in enumerate(labs) if canonical(l) == canonical(label)]
+    if not cols:
+        return None
+    s = fw[:, cols].max(axis=1)
+    ins = (ts >= a) & (ts < b)
+    fl = ((ts >= a - FLANK) & (ts < a)) | ((ts >= b) & (ts < b + FLANK))
+    if not fl.any() or not ins.any():
+        return None
+    return float(s[ins].mean() - s[fl].mean())
+
+
+def build(st, sysn, arm, C, vlm_ans, d0):
+    """one arm's stage-4 output on one clip: events after the vetoes (pipeline order), tagged; refinement is done later"""
+    tr = json.loads((scored_dir(sysn) / st / "onset_trace.json").read_text(encoding="utf-8"))
+    step = lambda n: [x for x in tr if x["step"] == n]
+    Bfr, Ffr = C["beats"], C["flex"]
+    tagfr = C["eat"] if arm == "EATR" else Bfr
+    events = ext(tagfr, F["EAT_AED"] if arm == "EATR" else F["AED"])
+    if arm == "B0r":                                       # gate D0
+        d0["extract"] = same_list([(e.label, e.start, e.end) for e in events], [sp(x) for x in step("extract")])
+    origin = {id(e): "tagger" for e in events}
+    if arm == "I4":
+        from benchmark import detector_round8 as R8
+        par = R8.parent_spans(Bfr)
+        origin.update({id(e): "parent" for e in par})
+        events = events + par
+    if arm == "D1":
+        fev = ext(C["dasm"], F["DASM_G"])
+    elif arm == "I6":
+        fev = flex_i6(Ffr, set(vlm_ans.get(st, {}).get("families", [])))
+    else:
+        fev = ext(Ffr, F["FBAR"])
+    if arm == "B0r":
+        d0["flexsed_raw"] = same_list([(e.label, e.start, e.end) for e in fev], [sp(x) for x in step("flexsed_raw")])
+    fresh = twin(events, fev)
+    only = {id(e) for e in fresh}
+    origin.update({id(e): ("dasm" if arm == "D1" else "flex") for e in fresh})
+    events = events + fresh
+    if arm == "B0r":
+        d0["union"] = same_list([(e.label, e.start, e.end) for e in events], [sp(x) for x in step("union")])
+    vfr, vbar = (C["dasm"], F["DASM_V"]) if arm == "D1" else (Ffr, F["FVETO"])
+    pk = clip_peak(vfr)
+    events = [e for e in events if pk.get(key(e), 1.0) >= vbar]
+    veto_tr = [sp(x) for x in step("veto")]
+    if arm == "B0r":                                        # PANNs veto: which second-detector-only spans the run kept
+        events = [e for e in events if id(e) not in only or any(close((e.label, e.start, e.end), v) for v in veto_tr)]
+        d0["veto"] = same_list([(e.label, e.start, e.end) for e in events], veto_tr)
+    else:
+        spk = clip_peak(tagfr)
+        b = F["EAT_B"] if arm == "EATR" else F["B_SELF"]
+        events = [e for e in events if id(e) not in only or spk.get(key(e), 1.0) >= b]
+    refine_tr = [x for x in step("refine")]
+    assert len(refine_tr) == len(veto_tr), st
+    rows = []
+    for e in events:
+        o = origin[id(e)]
+        r = {"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": o,
+             "pre_start": float(e.start)}
+        if o in ("flex", "dasm"):
+            r["refine"] = "none (frame-level)"
+            if o == "flex":
+                c = contrast(Ffr, e.label, e.start, e.end)
+                r["i7_contrast"] = c
+                r["i7_drop"] = bool(c is not None and c < I7_MARGIN)
+        else:
+            m = [i for i, v in enumerate(veto_tr) if close(v, (e.label, e.start, e.end))] if arm != "EATR" else []
+            if m:
+                r["start"] = float(refine_tr[m[0]]["start"]); r["refine"] = "trace"
+            else:
+                r["refine"] = "live"
+        rows.append(r)
+    return rows
+
+
+def stage4():
+    from src.stage4_audio_event_detection import _refine_onsets_cam
+    from src.stage4_audio_event_detection import beats_infer as B
+    config.ONSET_MONOTONE = True                            # the scored run's MONO=1
+    gold, stems = dev_stems()
+    vlm_ans = json.loads(VLM_JSON.read_text(encoding="utf-8"))
+    res = json.loads(STAGE4.read_text(encoding="utf-8")) if STAGE4.exists() else {}
+    res["frozen"] = F
+    res.setdefault("d0", {}); res.setdefault("arms", {})
+    for sysn in SYSTEMS:
+        for arm in ARMS:
+            res["arms"].setdefault(f"{arm}|{sysn}", {})
+    todo_eat = []
+    B._MODEL = None
+    for st in stems:
+        C = {"beats": load_fr(BEATS_DIR / f"{st}.npz"), "flex": load_fr(FLEX_DIR / f"{st}.npz"),
+             "eat": load_fr(EAT_DIR / f"{st}.npz"), "dasm": load_fr(DASM_DIR / f"{st}.npz")}
+        for sysn in SYSTEMS:
+            for arm in ARMS:
+                if st in res["arms"][f"{arm}|{sysn}"]:
+                    continue
+                d0 = {}
+                rows = build(st, sysn, arm, C, vlm_ans, d0)
+                if arm == "B0r":
+                    d0["pass"] = all(d0.values())
+                    res["d0"][f"{sysn}|{st}"] = d0
+                    if not d0["pass"]:
+                        print(f"[D0 FAIL] {sysn} {st}: {d0}", flush=True)
+                if arm == "EATR":
+                    todo_eat.append((st, sysn, rows)); continue
+                live = [r for r in rows if r["refine"] == "live"]
+                if live:                                         # occlusion onsets (BEATs) of new/changed tagger spans
+                    ev = [AudioEvent(r["label"], r["pre_start"], r["end"], r["conf"]) for r in live]
+                    out = _refine_onsets_cam(wav_of(st), ev, C["beats"][2], "cuda", skip_ids=set())
+                    for r, e in zip(live, out):
+                        r["start"] = float(e.start)
+                res["arms"][f"{arm}|{sysn}"][st] = rows
+        dump(STAGE4, res)
+        print(f"[stage4] {st} done", flush=True)
+    if todo_eat:                                                 # EAT-R: the same occlusion with EAT as the model
+        from benchmark import detector_round5 as R5
+        import torch
+        score, _info = R5.eat_model("cuda")
+
+        class EatAsBeats:
+            def extract_features(self, x, padding_mask=None):
+                return torch.from_numpy(score(x.detach().cpu().numpy())), None
+        for st, sysn, rows in todo_eat:
+            eat_labels = load_fr(EAT_DIR / f"{st}.npz")[2]
+            B._MODEL = (EatAsBeats(), eat_labels, "cuda")
+            live = [r for r in rows if r["refine"] == "live"]
+            ev = [AudioEvent(r["label"], r["pre_start"], r["end"], r["conf"]) for r in live]
+            out = _refine_onsets_cam(wav_of(st), ev, eat_labels, "cuda", skip_ids=set()) if ev else []
+            for r, e in zip(live, out):
+                r["start"] = float(e.start)
+            res["arms"][f"EATR|{sysn}"][st] = rows
+        B._MODEL = None
+        dump(STAGE4, res)
+    fails = [k for k, v in res["d0"].items() if not v["pass"]]
+    print(f"[D0] {len(res['d0']) - len(fails)} / {len(res['d0'])} clip x system pass; fails {fails}", flush=True)
+
+
+# ============================================================================= stage 5
+class Reuse:
+    """gate answers of the scored run (per label and stretch) + a memo of every other stage-5 question"""
+    def __init__(self):
+        from src.stage5_cross_modal_analysis import reason
+        import src.stage2_video_understanding as S2
+        self.reason, self.S2 = reason, S2
+        self.memo = json.loads(MEMO.read_text(encoding="utf-8")) if MEMO.exists() else {}
+        self.votes, self.last_t = [], None
+        self.stats = {}
+        self._ask, self._vis, self._sfa = reason._ask, reason._sound_is_visible, S2._sample_frames_at
+        reason._ask = self.ask
+        reason._sound_is_visible = self.vis
+        S2._sample_frames_at = self.sfa
+
+    def bump(self, k):
+        self.stats[k] = self.stats.get(k, 0) + 1
+
+    @staticmethod
+    def _img(i):
+        try:
+            return hashlib.md5(i.tobytes()).hexdigest() + f"{i.size}"
+        except Exception:
+            return hashlib.md5(np.asarray(i).tobytes()).hexdigest()
+
+    def ask(self, mdl, proc, prompt, *a, **kw):
+        images = kw.get("images", a[0] if a else None)
+        max_new = kw.get("max_new", a[1] if len(a) > 1 else 48)
+        k = hashlib.sha1((prompt + "|" + str(max_new) + "|" + "|".join(self._img(i) for i in (images or []))).encode("utf-8")).hexdigest()
+        if k in self.memo:
+            self.bump("ask_memo"); return self.memo[k]
+        ans = self._ask(mdl, proc, prompt, *a, **kw)
+        self.memo[k] = ans; self.bump("ask_live")
+        return ans
+
+    def sfa(self, video, times, *a, **kw):
+        self.last_t = list(times)
+        return self._sfa(video, times, *a, **kw)
+
+    def vis(self, label, frames, mdl, proc, device="cpu"):
+        if frames and self.last_t:
+            a, b = self.last_t[0] + 1.0, self.last_t[-1] - 1.0
+            for v in self.votes:
+                if v["label"] == label and abs(v["stretch"][0] - a) <= TOL and abs(v["stretch"][1] - b) <= TOL:
+                    self.reason.LAST_VOTES = {k: v.get(k) for k in ("name", "ab", "desc", "named")}
+                    self.bump("gate_reused"); self.stats.setdefault("gate_reused_list", []).append([label, a, b])
+                    return bool(v["seen"]), v.get("named", "")
+        self.bump("gate_live")
+        a_b = [round(self.last_t[0] + 1.0, 2), round(self.last_t[-1] - 1.0, 2)] if self.last_t else None
+        self.stats.setdefault("gate_live_list", []).append([label] + (a_b or []))
+        return self._vis(label, frames, mdl, proc, device)
+
+    def save(self):
+        dump(MEMO, self.memo)
+
+
+def stage5(arms):
+    from benchmark.run_protocol import configure
+    from src.stage5_cross_modal_analysis import plan_augmentations, reason
+    from src.types import SceneContext, SpeechSegment
+    changed = config.use_scored()
+    config.DEVICE = "cuda"; config.TRANSCRIBE = True
+    print("[cfg] use_scored:", {k: v[1] for k, v in changed.items()}, flush=True)
+    for k, v in (("FLEXSED_BAR", 0.8), ("FLEXSED_VETO", 0.3), ("PANNS_VETO", 0.05), ("ONSET_MONOTONE", True), ("MAX_SPAN", None),
+                 ("VLM_MODEL", "Qwen/Qwen3.8-27B"), ("VLM_THINKING", False), ("LABEL_FILTER", "depictable"),
+                 ("KINSHIP_DIRECTED", False), ("PICTURE_MIN_CONF", None)):
+        assert getattr(config, k, None) == v, (k, getattr(config, k, None), v)
+    _g, stems = dev_stems()
+    s4 = json.loads(STAGE4.read_text(encoding="utf-8"))
+    R = Reuse()
+    base = {k: getattr(config, k) for k in ("DISPLAY_THRESHOLD", "AUGMENT_THRESHOLD", "AED_THRESHOLD")}
+    for sysn in ("blind_a2i", "proposed"):          # the pipeline without gate first: no VLM
+        configure(sysn)
+        for arm in arms:
+            for k, v in base.items():
+                setattr(config, k, v)
+            if arm == "EATR":                           # the BAR= path of slurm/job_protocol.sh
+                config.DISPLAY_THRESHOLD = config.AUGMENT_THRESHOLD = F["EAT_DISP"]; config.AED_THRESHOLD = F["EAT_AED"]
+            root = DC / f"{arm}_{sysn}"
+            logp = root / "_stage5_log.json"
+            log = json.loads(logp.read_text(encoding="utf-8")) if logp.exists() else {}
+            for st in stems:
+                d = root / st
+                if (d / "augmentations.json").exists():
+                    continue
+                src = scored_dir(sysn) / st
+                media = json.loads((src / "media.json").read_text(encoding="utf-8"))
+                scene = SceneContext(**json.loads((src / "scene.json").read_text(encoding="utf-8")))
+                segments = [SpeechSegment(**x) for x in json.loads((src / "segments.json").read_text(encoding="utf-8"))]
+                events = [AudioEvent(r["label"], r["start"], r["end"], r["conf"]) for r in s4["arms"][f"{arm}|{sysn}"][st]]
+                gv = src / "gate_votes.json"
+                R.votes = json.loads(gv.read_text(encoding="utf-8")) if gv.exists() else []
+                R.stats = {}
+                print(f"[stage5] {arm} {sysn} {st}: {len(events)} events", flush=True)
+                specs = plan_augmentations(scene, segments, events, threshold=config.AED_THRESHOLD,
+                                           gate_enabled=config.GATE_ENABLED, display_threshold=config.DISPLAY_THRESHOLD,
+                                           augment_threshold=config.AUGMENT_THRESHOLD)
+                votes = []
+                if getattr(config, "DEPICTION_REASONING", True) and any(s.augment for s in specs):
+                    reason.decide_subjects(Path(media["video_path"]), specs, segments=segments, model=config.VLM_MODEL,
+                                           device=config.DEVICE, display_threshold=config.DISPLAY_THRESHOLD)
+                    votes = list(reason.VOTE_LOG)
+                for s in specs:
+                    if s.augment:
+                        s.image_path = PLACEHOLDER; s.backend = "placeholder"
+                d.mkdir(parents=True, exist_ok=True)
+                shutil.copy(src / "media.json", d / "media.json")
+                (d / "gate_votes.json").write_text(json.dumps(votes, indent=1), encoding="utf-8")
+                (d / "augmentations.json").write_text(json.dumps([s.to_dict() for s in specs], indent=1), encoding="utf-8")
+                log[st] = R.stats
+                dump(logp, log)
+                R.save()
+    for k, v in base.items():
+        setattr(config, k, v)
+    R.save()
+    print("[stage5] done", flush=True)
+
+
+# ============================================================================= scoring
+def pics_sig(pics):
+    return sorted((l, round(a, 2), round(b, 2)) for l, a, b in (pics or []))
+
+
+def spec_sig(d, st):
+    p = d / st / "augmentations.json"
+    if not p.exists():
+        return None
+    return sorted((s["event_label"], [[round(a, 2), round(b, 2)] for a, b in (s.get("spans") or [[s["start"], s["end"]]])])
+                  for s in json.loads(p.read_text(encoding="utf-8")) if s.get("augment"))
+
+
+def simulate_i7(root, stems, sysn, events_by_stem, log):
+    """J2's rule with only the I7 test: drop a picture span iff every refined event of the same family overlapping it is a
+    FlexSED-only span that I7 drops; a picture with no span left is not shown"""
+    tmp = Path(tempfile.mkdtemp(prefix="i7_"))
+    changes = []
+    for st in stems:
+        d = root / st
+        if not (d / "augmentations.json").exists():
+            continue
+        (tmp / st).mkdir()
+        if (d / "media.json").exists():
+            shutil.copy(d / "media.json", tmp / st / "media.json")
+        specs = json.loads((d / "augmentations.json").read_text(encoding="utf-8"))
+        rows = events_by_stem[st]
+        for s in specs:
+            if s.get("augment") and s.get("image_path") and not Path(s["image_path"]).exists():
+                s["image_path"] = PLACEHOLDER
+            if not s.get("augment"):
+                continue
+            keep = []
+            for span in s.get("spans") or [[s["start"], s["end"]]]:
+                ev = [r for r in rows if same(r["label"], s["event_label"]) and min(span[1], r["end"]) - max(span[0], r["start"]) > 0]
+                if not ev:
+                    log["span_unmapped"] += 1; keep.append(span); continue
+                if all(r.get("i7_drop", False) for r in ev):
+                    changes.append((st, s["event_label"], [round(x, 2) for x in span]))
+                else:
+                    keep.append(span)
+            if not keep:
+                s["augment"] = False; log["pictures_removed"] += 1
+            s["spans"] = keep
+        (tmp / st / "augmentations.json").write_text(json.dumps(specs), encoding="utf-8")
+    return tmp, changes
+
+
+def metrics(rows):
+    a = S.aggregate(rows)
+    m = {k: a[k] for k in ("hits", "misses", "visible", "cross", "phantom", "dup", "F1", "P", "R", "viewer_cost", "coverage")}
+    m["wrong"] = a["visible"] + a["cross"] + a["phantom"]
+    return m
+
+
+def clip_cost(r):
+    return S.COST_MISS * r["miss"] + S.COST_FA * (r["visible"] + r["cross"] + r["phantom"])
+
+
+def boot(d, n=2000, seed=0):
+    """paired clip bootstrap of the mean per-clip difference (the draws of S.paired_ci / detector_round8.boot8);
+    returns [mean, lo, hi, one-sided p = share of draws with mean >= 0]"""
+    rng = np.random.default_rng(seed); d = np.asarray(d, float)
+    m = np.array([d[rng.integers(0, len(d), len(d))].mean() for _ in range(n)])
+    return [float(d.mean()), float(np.percentile(m, 2.5)), float(np.percentile(m, 97.5)), float((m >= 0).mean())]
+
+
+def holm(ps, alpha=0.025):
+    order = sorted(ps, key=lambda k: ps[k])
+    out, stop = {}, False
+    for i, k in enumerate(order):
+        thr = alpha / (len(order) - i)
+        rej = (not stop) and ps[k] <= thr
+        stop = stop or not rej
+        out[k] = {"p": ps[k], "threshold": thr, "rejected": bool(rej)}
+    return out
+
+
+def diff_pics(a, b):
+    """pictures in b not in a (added) and in a not in b (removed), per clip, by label and time"""
+    add, rem = [], []
+    for st in a:
+        A, Bq = pics_sig(a[st]), pics_sig(b[st])
+        add += [(st,) + x for x in Bq if x not in A]
+        rem += [(st,) + x for x in A if x not in Bq]
+    return add, rem
+
+
+def score():
+    gold, stems = dev_stems()
+    s4 = json.loads(STAGE4.read_text(encoding="utf-8"))
+    res = {"plan": "docs/dev_candidates_check_2026-09-28.md", "frozen": F, "clips": len(stems),
+           "needed": None, "d0": {}, "d5": {}, "stage5": {}, "rows": {}, "delta_vs_B1": {}, "delta_vs_B0": {},
+           "holm_vs_B1": {}, "ship_rule": {}, "changes_vs_B1": {}, "i7": {}}
+    d0 = s4["d0"]
+    res["d0"] = {"pass": sum(v["pass"] for v in d0.values()), "of": len(d0), "fails": {k: v for k, v in d0.items() if not v["pass"]}}
+    refine = {}
+    for k, v in s4["arms"].items():
+        cnt = {}
+        for rows in v.values():
+            for r in rows:
+                cnt[r["refine"]] = cnt.get(r["refine"], 0) + 1
+            cnt["live_moved"] = cnt.get("live_moved", 0) + sum(1 for r in rows if r["refine"] == "live" and r["start"] != r["pre_start"])
+        refine[k] = cnt
+    res["stage4_refine"] = refine
+    for sysn in SYSTEMS:
+        P, rows = {}, {}
+        P["B0"] = {st: S.load_pictures(scored_dir(sysn), st, sysn) or [] for st in stems}
+        for arm in ARMS:
+            P[arm] = {st: S.load_pictures(DC / f"{arm}_{sysn}", st, sysn) or [] for st in stems}
+            lg = DC / f"{arm}_{sysn}" / "_stage5_log.json"
+            st5 = json.loads(lg.read_text(encoding="utf-8")) if lg.exists() else {}
+            tot = {}
+            for v in st5.values():
+                for k2 in ("gate_reused", "gate_live", "ask_memo", "ask_live"):
+                    tot[k2] = tot.get(k2, 0) + v.get(k2, 0)
+            tot["gate_live_list"] = [[st] + x for st, v in st5.items() for x in v.get("gate_live_list", [])]
+            res["stage5"][f"{arm}|{sysn}"] = tot
+        # gate D5: the repro arm gives the scored render's pictures
+        bad = [st for st in stems if pics_sig(P["B0r"][st]) != pics_sig(P["B0"][st])
+               or spec_sig(DC / f"B0r_{sysn}", st) != spec_sig(scored_dir(sysn), st)]
+        res["d5"][sysn] = {"pass": len(stems) - len(bad), "of": len(stems), "differ": bad,
+                           "detail": {st: {"scored": pics_sig(P["B0"][st]), "repro": pics_sig(P["B0r"][st])} for st in bad}}
+        # I7: J2-style removal on the B1 render (primary) and on the scored render (beside)
+        for base, root, arm4 in (("B1", DC / f"B1_{sysn}", "B1"), ("B0", scored_dir(sysn), "B0r")):
+            log = {"span_unmapped": 0, "pictures_removed": 0}
+            tmp, ch = simulate_i7(root, stems, sysn, s4["arms"][f"{arm4}|{sysn}"], log)
+            name = "I7" if base == "B1" else "I7_on_B0"
+            P[name] = {st: S.load_pictures(tmp, st, sysn) or [] for st in stems}
+            shutil.rmtree(tmp, ignore_errors=True)
+            fo = [r for rr in s4["arms"][f"{arm4}|{sysn}"].values() for r in rr if r["origin"] == "flex"]
+            res["i7"][f"{name}|{sysn}"] = {"removed_spans": ch, "log": log, "flex_only_spans": len(fo),
+                                           "flex_only_dropped": sum(1 for r in fo if r.get("i7_drop"))}
+        for name, pp in P.items():
+            rows[name] = [S.score_clip(gold[st], pp[st]) for st in stems]
+        res["rows"][sysn] = {name: metrics(r) for name, r in rows.items()}
+        res["needed"] = res["rows"][sysn]["B0"]["hits"] + res["rows"][sysn]["B0"]["misses"]
+        cost = {name: [clip_cost(r) for r in rr] for name, rr in rows.items()}
+        res["delta_vs_B1"][sysn] = {c: boot(np.subtract(cost[c], cost["B1"])) for c in CANDS + ["B0", "B0r"]}
+        res["delta_vs_B0"][sysn] = {c: boot(np.subtract(cost[c], cost["B0"])) for c in CANDS + ["B1", "B0r", "I7_on_B0"]}
+        res["holm_vs_B1"][sysn] = holm({c: res["delta_vs_B1"][sysn][c][3] for c in CANDS})
+        if sysn == "proposed":
+            R_ = res["rows"][sysn]
+            for c in CANDS:
+                res["ship_rule"][c] = {}
+                for bname in ("B1", "B0"):
+                    bb = "B0" if (bname == "B0" and c != "I7") else bname
+                    cc = "I7_on_B0" if (c == "I7" and bname == "B0") else c
+                    x, y = R_[cc], R_[bb]
+                    res["ship_rule"][c][bname] = {"hits": [y["hits"], x["hits"]], "wrong": [y["wrong"], x["wrong"]],
+                                                  "hits_not_down": x["hits"] >= y["hits"], "wrong_down": x["wrong"] < y["wrong"],
+                                                  "pass": bool(x["hits"] >= y["hits"] and x["wrong"] < y["wrong"])}
+            for c in CANDS + ["B0"]:
+                add, rem = diff_pics(P["B1"], P[c])
+                res["changes_vs_B1"][c] = {"added": add, "removed": rem}
+        for name in ["B0", "B0r", "B1"] + CANDS + ["I7_on_B0"]:
+            x = res["rows"][sysn][name]
+            dd = res["delta_vs_B1"][sysn].get(name)
+            print(f"DEV {sysn:9s} {name:9s} hits {x['hits']}/{x['hits'] + x['misses']} wrong {x['wrong']} (vis {x['visible']}, "
+                  f"cross {x['cross']}, phantom {x['phantom']}) dup {x['dup']} F1 {x['F1']:.3f} cost {x['viewer_cost']:.2f} "
+                  f"cov {x['coverage'] if x['coverage'] is None else round(x['coverage'], 3)}"
+                  + (f"  dcost vs B1 {dd[0]:+.3f} [{dd[1]:+.3f}, {dd[2]:+.3f}] p {dd[3]:.3f}" if dd else ""), flush=True)
+        print(f"[D5 {sysn}] {res['d5'][sysn]['pass']}/{len(stems)} clips reproduce the scored render; differ: {bad}", flush=True)
+        print(f"[holm {sysn}] {res['holm_vs_B1'][sysn]}", flush=True)
+    print(f"[ship rule] {json.dumps(res['ship_rule'])}", flush=True)
+    OUT.write_text(json.dumps(res, indent=1), encoding="utf-8")
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("step", choices=("eat", "dasm", "vlm", "stage4", "stage5", "score"))
+    ap.add_argument("--arms", nargs="+", default=ARMS)
+    a = ap.parse_args()
+    {"eat": eat, "dasm": dasm, "vlm": vlm, "stage4": stage4, "score": score}.get(a.step, lambda: stage5(a.arms))()
+
+
+if __name__ == "__main__":
+    main()
