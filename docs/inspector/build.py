@@ -7,6 +7,8 @@ cannot compute in JavaScript:
 
   - why each missed needed sound (importance 2-3) was missed, per system
     (reasons in the order of benchmark/gold/dev_miss_table.py, plus one bookkeeping case)
+  - "why missed" in plain English for the same sounds (Adam's chain: detected near the start? -> what the plan said
+    (the augmentation's reason) -> a picture came but not in time -> in time but matched to another sound)
   - which gate stretch each shown picture came from (and the gate votes there)
   - which augmentation (index) each of ours' pictures belongs to (for the picture thumbnail)
   - gate errors: a needed sound where the VLM voted "visible" at the onset
@@ -21,6 +23,7 @@ Decides nothing and changes no score. Re-run after data.json changes:
 from __future__ import annotations
 
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -111,6 +114,158 @@ def miss_reason(snd, own_pics, blind_pics, events, is_ours):
         return {"reason": "detected, not drawn", "event_label": e["label"], "event_start": e["start"],
                 "confidence": e.get("confidence")}
     return {"reason": "never detected"}
+
+
+def _sc(x):
+    return "—" if x is None else f"{x:.2f}".replace("0.", ".", 1) if x < 1 else f"{x:.2f}"
+
+
+def _sgn(x):
+    return ("+" if x >= 0 else "−") + f"{abs(x):.1f}"
+
+
+def plain_reason(a, gate):
+    """an augmentation's 'not drawn' reason (stage 5/6 text) in plain words"""
+    r = a.get("reason") or ""
+    m = re.match(r"below display threshold \(([\d.]+) < ([\d.]+)\)", r)
+    if m:
+        t = f"below the display threshold (score {_sc(float(m.group(1)))}, needs {_sc(float(m.group(2)))})"
+        return t + ("; its source was visible anyway" if "source visible on screen anyway" in r else "")
+    m = re.match(r"a kind of (.+?), whose source is visible", r)
+    if m:
+        t = f"silenced by the family rule: a kind of {m.group(1)}, whose source is visible"
+        own = [g for g in gate if g["label"] == a.get("event_label")
+               and g["stretch"][1] >= float(a["start"]) - 0.05 and g["stretch"][0] <= float(a["end"]) + 0.05]
+        if own and not any(g["seen"] for g in own):
+            t += " (the gate itself said NOT visible — this is the bug fixed on 28 Sept)"
+        elif own:
+            t += " (the gate also said visible)"
+        return t
+    m = re.match(r"source visible on screen \((.+)\) - stay silent", r)
+    if m:
+        return f"gate said the source is visible (VLM saw: ‘{m.group(1)}’)"
+    m = re.match(r"same picture as (.+?) \(same sound under two names\)", r)
+    if m:
+        return f"not drawn twice: the same picture was planned as {m.group(1)} (one sound under two names)"
+    return r or "not drawn (no reason recorded)"
+
+
+def heard_text(snd):
+    """what the detectors heard at the onset instead (from add_heard.py): the 3 loudest labels + the sound's own score"""
+    H = snd.get("heard") or {}
+    top = {}
+    for det in ("BEATs", "FlexSED", "PANNs"):
+        for lab, sc in (H.get(det) or {}).get("top") or []:
+            if sc > top.get(lab, (-1,))[0]:
+                top[lab] = (sc, det)
+    if not top:
+        return "no detector scores recorded (run add_heard.py)"
+    best = sorted(top.items(), key=lambda kv: -kv[1][0])[:3]
+    t = "the detectors heard " + ", ".join(f"{lab.split(',')[0]} {_sc(v[0])}" for lab, v in best)
+    own = [f"{det} {_sc(x['own'])} (bar {_sc(x['bar'])})" for det, x in ((k, H.get(k) or {}) for k in ("BEATs", "FlexSED"))
+           if x.get("own") is not None and x.get("bar") is not None]
+    if own:
+        t += f"; ‘{snd['label']}’ itself scored " + ", ".join(own)
+    return t
+
+
+def drawable(label):
+    """the shipped label filter ('depictable'): False = never drawn, whatever the gate says; None = unknown"""
+    try:
+        import config
+        from src.labels import is_salient_nonspeech
+        old = getattr(config, "LABEL_FILTER", "lists")
+        config.LABEL_FILTER = "depictable"
+        try:
+            return bool(is_salient_nonspeech(label))
+        finally:
+            config.LABEL_FILTER = old
+    except Exception:
+        return None
+
+
+def why_missed(snd, pics, events, augs, gate, is_ours, sounds=()):
+    """Plain-English reason a needed sound got no correct picture, in Adam's order: (1) was it detected near its start,
+    (2) if so, what the plan for that sound said (the augmentation's reason), (3) a picture came but not in time,
+    (4) a picture was in time but the scorer gave it to another sound. A diagnosis for reading, not part of the score."""
+    lab, on, end = snd["label"], snd["start"], snd["end"]
+    end2 = max(end, on + LATE)
+    fam_ev = [e for e in events if same_family(e["label"], lab)]
+    near = [e for e in fam_ev if e["end"] >= on - EARLY and e["start"] <= on + LATE]
+    fam_pics = [p for p in pics if same_family(p["label"], lab)]
+    inwin = [p for p in fam_pics if in_window(p["start"], on)]
+    other = sorted((p for p in fam_pics if not in_window(p["start"], on) and p["end"] > on - EARLY and p["start"] < end2),
+                   key=lambda p: abs(p["start"] - on))
+
+    def taken(p):   # a picture that scored for another sound (not a late picture of this one)
+        return str(p.get("class", "")).startswith("hit") or p.get("class") in ("duplicate", "don't care")
+
+    def owner(p):
+        k = (p.get("sound") or [None])[0]
+        return f" ({sounds[k]['label']})" if k is not None and 0 <= k < len(sounds) else ""
+
+    def timing_tail(p):
+        d = p["start"] - on
+        if taken(p):
+            return (f"the only picture of {p['label']} near it (at {p['start']:.1f} s, {_sgn(d)} s) was the correct picture "
+                    f"for another sound{owner(p)}")
+        return (f"a picture of {p['label']} came {abs(d):.1f} s {'after' if d > 0 else 'before'} the sound started "
+                f"(at {p['start']:.1f} s), outside the hit window (−0.5 to +1.0 s)")
+
+    if inwin:   # (4)
+        p = min(inwin, key=lambda p: abs(p["start"] - on))
+        return {"step": "matched to another sound",
+                "text": f"shown in time ({p['label']} at {p['start']:.1f} s, {_sgn(p['start'] - on)} s), but the scorer matched "
+                        f"that picture to another sound of the same kind (one picture per sound)"}
+    if not near:   # (1)
+        t = "never detected near its start — " + heard_text(snd)
+        later = [e for e in fam_ev if on + LATE < e["start"] <= end]
+        if later:
+            e = min(later, key=lambda e: e["start"])
+            t += f". First heard as {e['label']} at {e['start']:.1f} s ({_sgn(e['start'] - on)} s)"
+        if other:
+            t += "; " + timing_tail(other[0])
+        return {"step": "never detected", "text": t}
+    # (2) detected: what the plan said for this family around the start
+    e0 = max(near, key=lambda e: e.get("confidence") or 0)
+    bar = ((snd.get("heard") or {}).get("BEATs") or {}).get("bar") or 0.35
+    weak = (e0.get("confidence") or 0) < bar
+    det = (f"detected {'only weakly ' if weak else ''}({e0['label']} {_sc(e0.get('confidence'))} at {e0['start']:.1f} s"
+           f"{', below the display bar ' + _sc(bar) if weak else ''})")
+    fam_aug = [a for a in augs if same_family(a.get("event_label", ""), lab)
+               and float(a["end"]) >= on - EARLY and float(a["start"]) <= end2]
+    at_on = [a for a in fam_aug if float(a["end"]) >= on - EARLY and float(a["start"]) <= on + LATE] or fam_aug
+    silent = [a for a in at_on if not a.get("augment")]
+    if not is_ours:   # the pipeline without gate ignores the gate's reasons
+        silent = [a for a in silent if not re.search(r"stay silent", a.get("reason") or "")]
+    if silent:
+        a = min(silent, key=lambda a: abs(float(a["start"]) - on))
+        t = det + ", but not drawn: " + plain_reason(a, gate)
+        if other:
+            t += "; " + timing_tail(other[0])
+        return {"step": "detected, not drawn", "text": t}
+    late = [p for p in other if not taken(p)]
+    if other and not late:   # the only picture of this kind belonged to another sound
+        return {"step": "picture was for another sound", "text": det + ", " + ("so no picture then; " if weak else "but no picture at its start; ")
+                + timing_tail(other[0])}
+    if late:   # (3)
+        p = late[0]
+        d = p["start"] - on
+        t = (f"timing — the picture started {abs(d):.1f} s {'after' if d > 0 else 'before'} the sound "
+             f"(at {p['start']:.1f} s); a hit must start between 0.5 s before and 1.0 s after")
+        return {"step": "timing", "text": t + (f". Near its start it was {det}" if weak else "")}
+    if not fam_aug:
+        if drawable(e0["label"]) is False:
+            why = f"label filter: ‘{e0['label']}’ is not a drawable sound"
+        elif weak:
+            why = "too weak to plan a picture"
+        else:
+            why = "no picture was planned for it before the gate"
+        return {"step": "detected, no plan", "text": det + ", but not drawn: " + why}
+    a = min(at_on, key=lambda a: abs(float(a["start"]) - on))
+    return {"step": "detected, drawn elsewhere",
+            "text": det + f", planned as a picture at {float(a['start']):.1f}–{float(a['end']):.1f} s, but no picture of this kind "
+                          "was on screen near the sound"}
 
 
 def position(t, snd):
@@ -219,6 +374,7 @@ def near_gate(snd, gate):
 
 
 KEPT_STATS = []
+WHY_STATS = {}
 
 
 def main():
@@ -261,6 +417,8 @@ def main():
                                      for j, p in enumerate(sd.get("pictures") or []) if same_family(p["label"], s["label"])]
                     r["fam_events"] = [{"label": e["label"], "start": e["start"], "end": e["end"], "confidence": e.get("confidence")}
                                        for e in events if same_family(e["label"], s["label"])]
+                    r["why"] = why_missed(s, sysd.get("pictures") or [], events, augs, gate, is_ours, c["sounds"])
+                    WHY_STATS[(name, r["why"]["step"])] = WHY_STATS.get((name, r["why"]["step"]), 0) + 1
                     der["miss"][name][str(i)] = r
                     key = (c["split"], name, r["reason"])
                     counts[key] = counts.get(key, 0) + 1
@@ -309,6 +467,9 @@ def main():
         (HERE / "a2i.js").write_text("window.A2I = null;\n", encoding="utf-8")
         print("a2i.json not there yet: the Audio-to-image tab will say 'not ready yet'")
     OUT.write_text("window.INSPECTOR = " + json.dumps(d, separators=(",", ":")) + ";\n", encoding="utf-8")
+    print("why missed (system, step): count")
+    for k in sorted(WHY_STATS):
+        print("  ", k, WHY_STATS[k])
     print("miss reasons (split, system, reason): count")
     for k in sorted(counts):
         print("  ", k, counts[k])

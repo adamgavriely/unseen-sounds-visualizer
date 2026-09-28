@@ -58,6 +58,24 @@
   function classTag(c) { var p = pclass(c); return '<span class="tag ' + p.k + '">' + esc(p.s) + '</span>'; }
   function clipHref(c) { return '#/clip/' + encodeURIComponent(c.split) + '/' + encodeURIComponent(c.clip); }
   function clipLink(c) { return '<a href="' + clipHref(c) + '">' + esc(c.clip) + '</a>'; }
+  // links with filters in the hash, e.g. #/clips?split=DEV&cat=mixed or #/mistakes/wrong?split=TEST&sys=blind&wtype=vis
+  function hashQuery() {
+    var o = {};
+    (location.hash.split('?')[1] || '').split('&').forEach(function (kv) {
+      if (!kv) return;
+      var i = kv.indexOf('=');
+      o[decodeURIComponent(i < 0 ? kv : kv.slice(0, i))] = i < 0 ? '' : decodeURIComponent(kv.slice(i + 1));
+    });
+    return o;
+  }
+  function qstr(o) {
+    return Object.keys(o).filter(function (k) { return o[k] != null && o[k] !== ''; })
+      .map(function (k) { return encodeURIComponent(k) + '=' + encodeURIComponent(o[k]); }).join('&');
+  }
+  function splitKey(splits) { return splits.length === 1 ? splits[0] : splits.indexOf('sliceB') >= 0 ? 'ALL' : 'DEVTEST'; }
+  function nlink(n, href, title) { return '<a class="nlink" href="' + esc(href) + '" title="' + esc(title) + '">' + n + '</a>'; }
+  function clipsHref(o) { return '#/clips?' + qstr(o); }
+  function mistakesHref(tab, o) { return '#/mistakes/' + tab + '?' + qstr(o); }
   function media(split, clip, kind) {
     var base = 'media/' + encodeURIComponent(split) + '/' + encodeURIComponent(clip);
     return base + (kind === 'debug' ? '_debug.mp4' : kind === 'blind' ? '_blind.mp4' : '.mp4');
@@ -134,6 +152,20 @@
       return '<span class="tag miss">miss</span>' + (r ? ' <span class="small">' + esc(r.reason) + '</span>' : '');
     }
     return '<span class="muted small">' + esc(x.outcome) + '</span>';
+  }
+
+  // plain-English reason a needed sound was missed (build.py: why_missed), per system; null when it was not missed
+  function whyMissed(c, sys, i) {
+    var r = (c.derived.miss[sys] || {})[String(i)];
+    return r && r.why ? r.why : null;
+  }
+  function whyCell(c, i) {
+    var o = whyMissed(c, 'ours', i), b = whyMissed(c, 'blind', i);
+    if (!o && !b) return '<span class="muted">—</span>';
+    var h = '';
+    if (o) h += '<div class="why"><b>ours:</b> ' + esc(o.text) + '</div>';
+    if (b) h += '<div class="why"><b>without gate:</b> ' + (o && b.text === o.text ? '<span class="muted">same</span>' : esc(b.text)) + '</div>';
+    return h;
   }
 
   var CLIPS = D.clips;
@@ -271,32 +303,45 @@
       ['visible', f.visible, 'var(--c-visible)', 'visible: the source is on screen'],
       ['obvious', f.obvious, 'var(--c-obvious)', 'obvious: not on screen, but you know it happens'],
       ['imp1', f.imp1, 'var(--c-imp1)', 'needed, but importance 1 (steady background; not scored)']];
+    var sk = splitKey(splits);
     var h = '<div class="card"><h3>' + esc(title) + ' ' + (hasTest ? badge() : '') + '</h3>';
-    h += '<div class="funnel-top"><span class="big">' + f.clips + '</span> clips <span class="arrow">&rarr;</span> <span class="big">' +
-      f.sounds + '</span> gold sounds</div>';
+    h += '<div class="funnel-top"><span class="big">' + nlink(f.clips, clipsHref({ split: sk }), 'List these clips') + '</span> clips <span class="arrow">&rarr;</span> <span class="big">' +
+      nlink(f.sounds, clipsHref({ split: sk, sort: 'snd' }), 'List these clips, most sounds first') + '</span> gold sounds</div>';
     h += '<div class="stack" role="img" aria-label="sounds by type">' + parts.map(function (p) {
       return p[1] ? '<span style="flex:' + p[1] + ';background:' + p[2] + (p[0] === 'imp1' ? ';opacity:.55' : '') + '" title="' + esc(p[3]) + ': ' + p[1] + '"></span>' : '';
     }).join('') + '</div>';
     h += '<ul class="legend-list">' + parts.map(function (p) {
-      return '<li><span class="sw' + (p[0] === 'imp1' ? ' dash' : '') + '" style="background:' + p[2] + '"></span><b>' + p[1] + '</b><span>' + esc(p[3]) + '</span></li>';
+      return '<li><span class="sw' + (p[0] === 'imp1' ? ' dash' : '') + '" style="background:' + p[2] + '"></span><b>' +
+        nlink(p[1], clipsHref({ split: sk, has: p[0] }), 'List the clips that have a sound of this kind') + '</b><span>' + esc(p[3]) + '</span></li>';
     }).join('') + '</ul>';
     h += '<div class="cats">' + CAT_ORDER.map(function (k) {
-      return '<span class="chip">' + CAT[k] + ' <b>' + f.cats[k] + '</b></span>';
+      return '<a class="chip" href="' + esc(clipsHref({ split: sk, cat: k })) + '" title="List these clips">' + CAT[k] + ' <b>' + f.cats[k] + '</b></a>';
     }).join('') + '</div>';
     return h + '</div>';
   }
 
   function resultsTable(host, splits, key) {
     var P = pooled(splits);
+    var sk = splitKey(splits);
     var rows = ['ours', 'blind', 'silence'].map(function (s) { var r = P[s]; r.sys = s; return r; });
+    function wl(r, n, wtype, what) {   // a wrong-picture count -> Mistakes -> Wrong pictures, filtered
+      if (r.sys === 'silence' || !n) return n;
+      return nlink(n, mistakesHref('wrong', { split: sk, sys: r.sys, wtype: wtype }), 'List these ' + what + ' of ' + sysName(r.sys));
+    }
     var cols = [
       { k: 'sys', t: 'system', h: function (r) { return sysName(r.sys); } },
-      { k: 'h', t: 'hits', num: 1, h: function (r) { return r.hits; } },
-      { k: 'm', t: 'misses', num: 1, h: function (r) { return r.misses; } },
-      { k: 'v', t: 'wrong: source visible', num: 1, h: function (r) { return r.visible; } },
-      { k: 'c', t: 'wrong: different sound', num: 1, h: function (r) { return r.cross; } },
-      { k: 'p', t: 'wrong: no such sound', num: 1, h: function (r) { return r.phantom; } },
-      { k: 'w', t: 'wrong total', num: 1, h: function (r) { return '<b>' + r.wrong + '</b>'; } },
+      { k: 'h', t: 'hits', num: 1, h: function (r) {
+        return r.sys === 'silence' || !r.hits ? r.hits : nlink(r.hits, clipsHref({ split: sk, sort: r.sys === 'ours' ? 'oh' : 'bh' }), 'List the clips, most hits of ' + sysName(r.sys) + ' first');
+      } },
+      { k: 'm', t: 'misses', num: 1, h: function (r) {
+        if (!r.misses) return r.misses;
+        if (r.sys === 'silence') return nlink(r.misses, clipsHref({ split: sk, has: 'needed' }), 'Silence misses every needed sound: list the clips that have one');
+        return nlink(r.misses, mistakesHref('miss', { split: sk, sys: r.sys }), 'List these missed sounds of ' + sysName(r.sys));
+      } },
+      { k: 'v', t: 'wrong: source visible', num: 1, h: function (r) { return wl(r, r.visible, 'vis', '“source visible” pictures'); } },
+      { k: 'c', t: 'wrong: different sound', num: 1, h: function (r) { return wl(r, r.cross, 'diff', '“different sound” pictures'); } },
+      { k: 'p', t: 'wrong: no such sound', num: 1, h: function (r) { return wl(r, r.phantom, 'none', '“no such sound” pictures'); } },
+      { k: 'w', t: 'wrong total', num: 1, h: function (r) { return '<b>' + wl(r, r.wrong, '', 'wrong pictures') + '</b>'; } },
       { k: 'P', t: 'precision', num: 1, h: function (r) { return r.shown ? pct(r.P) : '—'; } },
       { k: 'R', t: 'recall', num: 1, h: function (r) { return pct(r.R); } },
       { k: 'F', t: 'F1', num: 1, h: function (r) { return pct(r.F1); } },
@@ -343,7 +388,8 @@
             if (seg[1] > 0) {
               var ww = Math.max(1, w - 2);
               var tipTxt = '<b>' + esc(sp) + ' · ' + sysName(row[0]) + '</b><br>' + seg[2] + ': <b>' + seg[1] + '</b> of ' + (s.visible + s.cross + s.phantom) + ' wrong pictures';
-              h += '<rect class="f-' + seg[0] + '" x="' + x + '" y="' + y + '" width="' + ww + '" height="' + (rowH - 4) + '" rx="3" data-tip="' + esc(tipTxt) + '"></rect>';
+              h += '<rect class="f-' + seg[0] + ' golink" x="' + x + '" y="' + y + '" width="' + ww + '" height="' + (rowH - 4) + '" rx="3" data-tip="' + esc(tipTxt + '<br><span class="muted">click to list them</span>') +
+                '" data-href="' + esc(mistakesHref('wrong', { split: sp, sys: row[0], wtype: seg[0] })) + '"></rect>';
               if (ww > 22) h += '<text x="' + (x + ww / 2) + '" y="' + (y + rowH / 2 + 2) + '" text-anchor="middle" style="fill:#fff;font-weight:600;pointer-events:none">' + seg[1] + '</text>';
             }
             x += w;
@@ -363,6 +409,9 @@
       host.innerHTML = '<svg width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Wrong pictures by type, ours versus the pipeline without gate">' + h + '</svg>' +
         '<ul class="small" style="margin:6px 0 0;padding-left:18px">' + txt + '</ul>';
       bindTips(host);
+      Array.prototype.forEach.call(host.querySelectorAll('[data-href]'), function (n) {
+        n.addEventListener('click', function () { tip.style.display = 'none'; location.hash = n.getAttribute('data-href'); });
+      });
     }
     draw();
     REDRAW.push(function () { if (document.body.contains(host)) draw(); });
@@ -388,6 +437,7 @@
       '<a class="bigbtn" href="#/mistakes/gated">Removed by the gate &rarr;<small>' + countMiss('removed by the gate') + ' needed sounds (DEV + TEST): the pipeline without gate drew them in time, ours stayed quiet</small></a>' +
       '<a class="bigbtn" href="#/mistakes/never">Never detected &rarr;<small>' + countMiss('never detected', ['ours']) + ' needed sounds (ours, DEV + TEST) that the detector did not hear near their start. See what each detector heard instead</small></a></div>';
     h += '<p class="small"><b>Pipeline without gate</b> = ' + esc(NOGATE_DEF) + '</p>';
+    h += '<p class="small muted">The counts in these tables are links: click one to see the clips, sounds or pictures behind it.</p>';
     h += '<div id="res-DEV"></div><div id="res-TEST"></div><div id="res-base"></div><div id="res-POOL"></div><div id="res-sliceB"></div>';
     h += '<h2>Sensitivity: what if a late picture counted?</h2><p class="lede">The scoring rule counts a picture as correct only if it starts within 0.5 s before to 1 s after the sound\'s start. ' +
       'Here the rule is relaxed: a wrong picture of the same kind that starts <b>any time while the sound plays</b> (from 0.5 s before its start to its end) turns a miss into a hit ' +
@@ -398,7 +448,7 @@
     h += '<div class="card"><div class="legend-row"><span><span class="sw" style="background:var(--c-vis)"></span>source visible</span>' +
       '<span><span class="sw" style="background:var(--c-diff)"></span>different sound</span>' +
       '<span><span class="sw" style="background:var(--c-none)"></span>no such sound</span></div><div class="chartbox" id="wchart"></div>' +
-      '<p class="small muted">The exact numbers are in the tables above. The same data per picture: Mistakes &rarr; Wrong pictures.</p></div>';
+      '<p class="small muted">The exact numbers are in the tables above. Click a bar to list those pictures (Mistakes &rarr; Wrong pictures).</p></div>';
     app.innerHTML = h;
     [['DEV', ['DEV'], 'DEV (49 clips)'], ['TEST', ['TEST'], 'TEST (60 clips)'], ['POOL', ['DEV', 'TEST'], 'DEV + TEST pooled (109 clips)'], ['sliceB', ['sliceB'], 'Slice B (30 AudioSet clips, reported apart)']].forEach(function (g) {
       var box = document.getElementById('res-' + g[0]);
@@ -889,10 +939,14 @@
   }
 
   // ------------------------------------------------------------------ CLIPS list
-  var C = { split: 'DEVTEST', cat: '', q: '' };
+  var C = { split: 'DEVTEST', cat: '', q: '', has: '' };
+  var HAS_TEXT = { needed: 'needed (importance 2–3)', imp1: 'needed, importance 1', visible: 'visible', obvious: 'obvious' };
   function renderClips() {
     var h = '<h2>Clips</h2><p class="lede">All clips with their scores. Click a row to open the clip: video, timeline, and every sound and picture.</p>';
     h += '<div class="filters"><label>split' + splitSelect(C.split) + '</label><label>clip type' + catSelect(C.cat) + '</label>' +
+      '<label>has a sound that is<select id="f-has"><option value="">any</option>' + Object.keys(HAS_TEXT).map(function (k) {
+        return '<option value="' + k + '"' + (C.has === k ? ' selected' : '') + '>' + HAS_TEXT[k] + '</option>';
+      }).join('') + '</select></label>' +
       '<label>clip or sound name<input id="f-q" type="search" placeholder="e.g. citywalk, siren" value="' + esc(C.q) + '"></label></div>';
     h += '<div id="cbadge"></div><div id="ctable"></div>';
     app.innerHTML = h;
@@ -901,6 +955,7 @@
       var rows = CLIPS.filter(function (c) {
         var sp = C.split === 'ALL' || (C.split === 'DEVTEST' ? (c.split === 'DEV' || c.split === 'TEST') : c.split === C.split);
         if (!sp || (C.cat && c.category !== C.cat)) return false;
+        if (C.has && !c.sounds.some(function (s) { return soundKind(s) === C.has; })) return false;
         if (!q) return true;
         if (lc(c.clip).indexOf(q) >= 0) return true;
         return c.sounds.some(function (s) { return lc(s.label).indexOf(q) >= 0; });
@@ -925,6 +980,7 @@
     }
     document.getElementById('f-split').addEventListener('change', function (e) { C.split = e.target.value; draw(); });
     document.getElementById('f-cat').addEventListener('change', function (e) { C.cat = e.target.value; draw(); });
+    document.getElementById('f-has').addEventListener('change', function (e) { C.has = e.target.value; draw(); });
     document.getElementById('f-q').addEventListener('input', function (e) { C.q = e.target.value; draw(); });
     draw();
   }
@@ -993,182 +1049,258 @@
       ends.push(it.b); return ends.length - 1;
     });
   }
-  // Clip timeline: fixed lanes, top to bottom, one time axis. opts.lanes picks the lanes (default: the clip view's set);
-  // opts.a2i = audio-to-image windows [{k,start,end,src}] for the Audio-to-image tab; opts.onTime(t) is called as the video plays.
+  // Clip timeline (HTML, not SVG), laid out like a table: one compact row per source with a header cell on the left
+  // (name, a few words, the row's own legend), thin row lines, one time axis at the top and the bottom, a gridline every
+  // second, and a playhead. Positions are shares of the track width; a redraw on resize only re-decides which bars get text.
+  // opts.lanes picks the lanes (default: the clip view's set); opts.a2i = audio-to-image windows [{k,start,end,src}];
+  // opts.a2iWin = window length in s; opts.events / opts.windows = show detector events / hit windows;
+  // opts.onTime(t) is called as the video plays; opts.dur overrides the clip length.
   var TL_KIND = { needed: 'needed — must be shown', visible: 'visible on screen', obvious: 'obvious without sound', imp1: 'needed, importance 1 (not scored)' };
   var TL_KEPT = { dwell: 'kept on screen: minimum 1.5 s', join: 'kept on screen: joined with a repeat of the same sound (less than 2 s apart)' };
-  function tlLegend(showGate) {
-    function sw(style) { return '<span class="sw" style="' + style + '"></span>'; }
-    return '<div class="legend-row"><b>Sounds:</b>' +
-      '<span>' + sw('background:var(--c-needed)') + 'needed — must be shown</span><span>' + sw('background:var(--c-visible)') + 'visible on screen</span>' +
-      '<span>' + sw('background:var(--c-obvious)') + 'obvious</span><span><span class="sw dash"></span>importance 1</span>' +
-      '<span>' + sw('background:var(--c-needed);opacity:.22') + 'hit window of a needed sound (−0.5 to +1.0 s; dashed line = its start)</span></div>' +
-      '<div class="legend-row"><b>Pictures:</b>' +
-      '<span>' + sw('background:var(--c-hit)') + 'correct</span><span>' + sw('background:var(--c-vis)') + 'wrong: source visible</span>' +
-      '<span>' + sw('background:var(--c-diff)') + 'wrong: different sound</span><span>' + sw('background:var(--c-none)') + 'wrong: no such sound</span>' +
-      '<span>' + sw('background:var(--c-dup)') + 'duplicate / don’t care</span>' +
-      '<span><span class="sw hatch"></span>kept on screen after its sound ended</span></div>' +
-      (showGate ? '<div class="legend-row"><b>Gate:</b><span>' + sw('background:var(--c-seen)') + 'VLM: visible</span>' +
-        '<span><span class="sw" style="border:1.5px dashed var(--c-unseen)"></span>VLM: not visible</span></div>' : '');
+  var TLX = { padL: 8, padR: 12, pxPerS: 28, row: 24, gap: 3 };
+  var TLX_LEG = {
+    sounds: [['snd-needed', 'must be shown'], ['snd-visible', 'visible on screen'], ['snd-obvious', 'obvious'], ['snd-imp1', 'importance 1']],
+    pics: [['pic-hit', 'correct'], ['pic-vis', 'wrong: source visible'], ['pic-diff', 'wrong: different sound'], ['pic-none', 'wrong: no such sound'],
+      ['pic-dup', 'repeat'], ['kept', 'kept on after its sound']],
+    gate: [['gate-seen', 'visible → not drawn'], ['gate-unseen', 'not visible → drawn'], ['gate-other', 'other (see label)']],
+    events: [['event', 'event (score)']]
+  };
+  var TLX_SND = { needed: 'snd-needed', visible: 'snd-visible', obvious: 'snd-obvious', imp1: 'snd-imp1' };
+  function tlxX(t, dur) {   // left edge of time t inside a track
+    var f = Math.max(0, Math.min(1, t / dur));
+    return 'calc(' + TLX.padL + 'px + (100% - ' + (TLX.padL + TLX.padR) + 'px) * ' + f.toFixed(5) + ')';
   }
+  function tlxW(a, b, dur) {
+    var f = Math.max(0, Math.min(1, b / dur)) - Math.max(0, Math.min(1, a / dur));
+    return 'calc((100% - ' + (TLX.padL + TLX.padR) + 'px) * ' + Math.max(0, f).toFixed(5) + ')';
+  }
+  function tlxLegend(key) {
+    return '<div class="tlx-leg">' + (TLX_LEG[key] || []).map(function (x) {
+      return '<span><i class="tlx-sw ' + x[0] + '"></i>' + esc(x[1]) + '</span>';
+    }).join('') + '</div>';
+  }
+  var lightbox = null;
+  function openLightbox(src, cap) {
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.hidden = true;
+      lightbox.innerHTML = '<figure><img alt=""><figcaption></figcaption><button type="button">Close (Esc)</button></figure>';
+      document.body.appendChild(lightbox);
+      lightbox.addEventListener('click', function () { lightbox.hidden = true; });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') lightbox.hidden = true; });
+    }
+    lightbox.querySelector('img').src = src;
+    lightbox.querySelector('figcaption').textContent = cap;
+    lightbox.hidden = false;
+  }
+
   function drawTimeline(host, c, video, opts) {
     opts = opts || {};
     var laneSet = opts.lanes || ['sounds', 'ours', 'blind', 'gate', 'events'];
-    var W = Math.max(320, host.clientWidth || 700);
     var dur = opts.dur || duration(c);
-    var L = 6, R = 10;
-    var X = function (t) { return L + Math.max(0, Math.min(dur, t)) / dur * (W - L - R); };
-    var secPerPx = dur / (W - L - R);
     var g = gateOf(c);
     var der = c.derived || {};
     var lanesOut = [];
-    function lane(key, title, items, o) { if (laneSet.indexOf(key) >= 0) lanesOut.push({ key: key, title: title, items: items, o: o || {} }); }
-    function fit(text, px) {
-      var n = Math.floor((px - 6) / 6.4);
-      if (n < 3) return '';
-      return text.length > n ? text.slice(0, Math.max(1, n - 1)) + '…' : text;
+    function lane(key, title, sub, legKey, items, o) {
+      if (laneSet.indexOf(key) >= 0) lanesOut.push({ key: key, title: title, sub: sub, leg: legKey, items: items, o: o || {} });
     }
+    var LANE_TIP = {
+      a2i: 'An audio-to-image model drew one picture per window from the sound alone (no detector, no timing, no gate). Click a picture to see it big.',
+      sounds: 'The sounds a human marked in this clip (not speech or music), coloured by what the system should do with them.',
+      ours: 'The pictures ours put on screen, coloured by how the scorer judged each one. Small square = the picture itself.',
+      blind: 'The pictures of the same system with the visibility gate removed (it draws every detected sound).',
+      gate: 'For every stretch of a detected sound, the VLM said whether its source can be seen. Ours draws a sound only if some stretch is “not visible”.',
+      events: 'Everything the sound detector reported, with its score, before any rule or gate.'
+    };
 
-    if (opts.a2i) lane('a2i', 'Audio-to-image pictures (one per window, made from the sound alone)', opts.a2i.map(function (w) {
-      return { a: w.start, b: w.end, img: w.src, k: 'a2i', t: w.start,
-        tip: '<b>audio-to-image, window ' + esc(w.k) + '</b><br>' + ft(w.start) + '–' + ft(w.end) + ' s<br><img class="tipimg" src="' + esc(w.src) + '" alt="">' };
-    }), { h: 0 });
-    lane('sounds', 'Sounds in the clip (human labels)', c.sounds.map(function (s, i) {
+    if (opts.a2i) lane('a2i', 'Audio-to-image', 'one picture per ' + (opts.a2iWin || 2) + '-s window', null,
+      opts.a2i.map(function (w) {
+        return { a: w.start, b: w.end, img: w.src, k: 'a2i', kk: w.k,
+          tip: '<b>audio-to-image, window ' + esc(w.k) + '</b><br>' + ft(w.start) + '–' + ft(w.end) + ' s · click to enlarge' };
+      }), { h: 72, note: 'made from the sound alone · click a picture to enlarge' });
+    lane('sounds', 'Human labels', 'sounds in the clip', 'sounds', c.sounds.map(function (s, i) {
       var k = soundKind(s);
-      return { a: s.start, b: Math.max(s.end, s.start + 0.15), k: k, lab: s.label, t: s.start,
+      return { a: s.start, b: Math.max(s.end, s.start + 0.15), cls: TLX_SND[k], lab: s.label,
         tip: '<b>' + esc(s.label) + '</b> ' + ft(s.start) + '–' + ft(s.end) + ' s<br>' + TL_KIND[k] + ', importance ' + s.importance +
-          '<br>ours: ' + outcomeText(c, 'ours', i) + '<br>without gate: ' + outcomeText(c, 'blind', i) };
-    }), { h: 20 });
-    function picItems(sys, sd, dd, withThumb) {
+          '<br>ours: ' + outcomeText(c, 'ours', i) + '<br>without gate: ' + outcomeText(c, 'blind', i) +
+          (function () {
+            var o = whyMissed(c, 'ours', i), b = whyMissed(c, 'blind', i);
+            return (o ? '<br><b>why missed (ours):</b> ' + esc(o.text) : '') +
+              (b && (!o || b.text !== o.text) ? '<br><b>why missed (without gate):</b> ' + esc(b.text) : '');
+          })() };
+    }));
+    // the pipeline without gate uses ours' pictures: borrow the thumbnail of the ours picture with the same label and start
+    var oursThumb = {};
+    (ours(c).pictures || []).forEach(function (p, j) {
+      var d = (der.ours_pics || [])[j] || {};
+      if (d.aug != null) oursThumb[p.label + '@' + p.start.toFixed(2)] = picSrc(c, d.aug);
+    });
+    function picItems(sys, sd, dd) {
       return (sd.pictures || []).map(function (p, j) {
         var pc = pclass(p.class), d = (dd || [])[j] || {};
-        var img = withThumb && d.aug != null ? picSrc(c, d.aug) : null;
+        var img = sys === 'ours' ? (d.aug != null ? picSrc(c, d.aug) : null) : oursThumb[p.label + '@' + p.start.toFixed(2)] || null;
         var kept = (d.kept || []).filter(function (x) { return x[2] === 'dwell' || x[2] === 'join'; });
         var head = '<b>' + sysName(sys) + ': ' + esc(p.label) + '</b><br>' + ft(p.start) + '–' + ft(p.end) + ' s on screen<br>' + esc(pc.s);
-        return { a: p.start, b: Math.max(p.end, p.start + 0.15), k: pc.k, lab: p.label, t: p.start, img: img, kept: kept, head: head,
+        return { a: p.start, b: Math.max(p.end, p.start + 0.15), cls: 'pic-' + pc.k, lab: p.label, img: img, kept: kept,
           tip: head + (kept.length ? '<br><span class="muted">hatched: ' + kept.map(function (x) { return TL_KEPT[x[2]] + ' (' + ft(x[0]) + '–' + ft(x[1]) + ' s)'; }).join('; ') + '</span>' : '') +
             (img ? '<br><img class="tipimg" src="' + esc(img) + '" alt="" onerror="this.remove()">' : '') };
       });
     }
-    lane('ours', 'What ours showed', picItems('ours', ours(c), der.ours_pics, true), { h: 30 });
-    lane('blind', 'What the pipeline without gate showed', picItems('blind', blind(c), der.blind_pics, false), { h: 20 });
-    lane('gate', W < 520 ? 'Gate decision (ours only)' : 'Gate decision (per stretch of a detected sound; ours only)', g.map(function (e) {
+    lane('ours', 'Ours', 'pictures shown', 'pics', picItems('ours', ours(c), der.ours_pics));
+    lane('blind', 'Pipeline without gate', 'pictures shown', 'pics', picItems('blind', blind(c), der.blind_pics));
+    lane('gate', 'Gate (VLM)', 'can the source be seen?', 'gate', g.map(function (e) {
       var a = augFor(c, e.label, e.start);
       var drawn = a ? !!a.augment : !g.every(function (x) { return x.label !== e.label || Math.abs(x.start - e.start) > 0.01 || x.seen; });
-      var txt = (e.seen ? 'visible' : 'not visible') + ' → ' + (drawn ? 'drawn' : 'not drawn');
-      return { a: e.stretch[0], b: Math.max(e.stretch[1], e.stretch[0] + 0.15), k: e.seen ? 'seen' : 'unseen', lab: e.label + ': ' + txt, t: e.stretch[0],
+      var cls = e.seen && !drawn ? 'gate-seen' : !e.seen && drawn ? 'gate-unseen' : 'gate-other';
+      return { a: e.stretch[0], b: Math.max(e.stretch[1], e.stretch[0] + 0.15), cls: cls,
+        lab: e.label + ' · ' + (cls === 'gate-other' ? (e.seen ? 'visible' : 'not visible') + ' → ' : '') + (drawn ? 'drawn' : 'not drawn'),
         tip: '<b>' + esc(e.label) + '</b> ' + ft(e.stretch[0]) + '–' + ft(e.stretch[1]) + ' s<br>VLM: <b>' + (e.seen ? 'visible' : 'not visible') + '</b> → ' + (drawn ? 'drawn' : 'not drawn') +
-          '<br>the VLM saw “' + esc(e.named) + '”<br>' + esc(votes(e)) + (a && !a.augment ? '<br><span class="muted">' + esc(a.reason) + '</span>' : '') };
-    }), { h: 18 });
+          '<br>the VLM saw “' + esc(e.named) + '”<br>' + esc(votes(e)) + (a && !a.augment ? '<br><span class="muted">' + esc(a.reason) + '</span>' : '') +
+          (cls === 'gate-other' && e.seen && drawn ? '<br><span class="muted">drawn because another stretch of this sound was “not visible”</span>' : '') };
+    }));
     var evs = (ours(c).events || []).slice().sort(function (a, b) { return a.start - b.start; });
-    if (opts.events) lane('events', 'Detector events', evs.map(function (e) {
-      return { a: e.start, b: Math.max(e.end, e.start + 0.1), k: 'event', lab: e.label, t: e.start,
+    if (opts.events) lane('events', 'Detector', 'raw events', 'events', evs.map(function (e) {
+      return { a: e.start, b: Math.max(e.end, e.start + 0.1), cls: 'event', lab: e.label + ' ' + sc2(e.confidence),
         tip: '<b>' + esc(e.label) + '</b> ' + ft(e.start) + '–' + ft(e.end) + ' s<br>detector score ' + f2(e.confidence) };
-    }), { h: 12, small: 1 });
+    }));
 
-    var y = 0, titleH = 17, laneGap = 3, secGap = 8;
-    var bodyTop = null, pieces = [], a2iRects = [];
-    lanesOut.forEach(function (ln) {
-      var items = ln.items.slice().sort(function (a, b) { return a.a - b.a; });
-      var rh = ln.o.h;
-      if (ln.key === 'a2i') {
-        var ww = items.length ? (X(items[0].b) - X(items[0].a)) : 60;
-        rh = Math.max(28, Math.min(84, ww - 2));
+    // ---- axis rows (top and bottom): a tick and a number every whole second
+    function axisRow(pos) {
+      var h = '<div class="tlx-row tlx-axis ' + pos + '"><div class="tlx-head"><span>' + (pos === 'top' ? 'seconds' : 'seconds · click to jump') + '</span></div><div class="tlx-track">';
+      for (var t = 0; t <= dur + 1e-6; t += 1) {
+        h += '<span class="tlx-tick' + (t % 5 === 0 ? ' major' : '') + '" style="left:' + tlxX(t, dur) + '"><b>' + t + '</b></span>';
       }
-      var lnIdx = ln.key === 'a2i' ? items.map(function () { return 0; }) : lanes(items, 0.05);
-      var nl = Math.max(1, lnIdx.reduce(function (m, v) { return Math.max(m, v + 1); }, 0));
-      var hh = nl * (rh + laneGap) - laneGap + 8;
-      pieces.push('<text x="' + L + '" y="' + (y + 12) + '" class="lanet">' + esc(ln.title) + (items.length ? '' : ' — none') + '</text>');
-      y += titleH;
-      if (bodyTop == null) bodyTop = y;
-      pieces.push('<rect class="sec" x="' + L + '" y="' + y + '" width="' + (W - L - R) + '" height="' + hh + '" rx="4"></rect>');
+      if (pos === 'top' && opts.windows !== false) {
+        c.sounds.forEach(function (s) {
+          if (!(s.needed && s.importance >= 2)) return;
+          h += '<span class="tlx-onmark" style="left:' + tlxX(s.start, dur) + '" data-tip="' + esc('<b>' + esc(s.label) + '</b> starts at ' + ft(s.start) + ' s (needed)<br>a picture is correct if it starts in ' +
+            ft(s.start + WIN[0]) + '–' + ft(s.start + WIN[1]) + ' s (the shaded window)') + '"></span>';
+        });
+      }
+      return h + '</div></div>';
+    }
+
+    // ---- lanes
+    // about how many pixels one second gets now (labels are left out of bars too narrow to show a word)
+    var headPx = window.innerWidth <= 760 ? 150 : 262;
+    var pxPerS = Math.max(TLX.pxPerS, ((host.clientWidth || 900) - headPx - 2 - TLX.padL - TLX.padR) / dur);
+    var body = '';
+    lanesOut.forEach(function (ln, li) {
+      var items = ln.items.slice().sort(function (a, b) { return a.a - b.a; });
+      var rows = ln.key === 'a2i' ? items.map(function () { return 0; }) : lanes(items, 0.12);
+      var nr = Math.max(1, rows.reduce(function (m, v) { return Math.max(m, v + 1); }, 0));
+      var rh = ln.o.h || TLX.row;
+      var bh = nr * (rh + TLX.gap) - TLX.gap;
+      var h = '<div class="tlx-row tlx-lane" data-lane="' + ln.key + '">' +
+        '<div class="tlx-head" data-tip="' + esc(LANE_TIP[ln.key] || '') + '"><div class="tlx-name"><b>' + esc(ln.title) + '</b> <span class="tlx-sub">' + esc(ln.sub) + '</span></div>' +
+        (ln.leg ? tlxLegend(ln.leg) : '') + (ln.o.note ? '<div class="tlx-leg">' + esc(ln.o.note) + '</div>' : '') + '</div>' +
+        '<div class="tlx-track"><div class="tlx-bars" style="height:' + bh + 'px">';
+      if (!items.length) h += '<span class="tlx-none">none</span>';
       items.forEach(function (it, i) {
-        var x0 = X(it.a), x1 = X(it.b), yy = y + 4 + lnIdx[i] * (rh + laneGap);
-        var w = Math.max(3, x1 - x0);
+        var top = rows[i] * (rh + TLX.gap);
+        var st = 'left:' + tlxX(it.a, dur) + ';width:' + tlxW(it.a, it.b, dur) + ';top:' + top + 'px;height:' + rh + 'px';
         if (it.k === 'a2i') {
-          pieces.push('<image href="' + esc(it.img) + '" x="' + (x0 + 1) + '" y="' + yy + '" width="' + Math.max(1, w - 2) + '" height="' + rh + '" preserveAspectRatio="xMidYMid slice" onerror="this.remove()"></image>');
-          pieces.push('<rect class="a2ibox" x="' + (x0 + 1) + '" y="' + yy + '" width="' + Math.max(1, w - 2) + '" height="' + rh + '" data-tip="' + esc(it.tip) + '"></rect>');
-          a2iRects.push({ a: it.a, b: it.b, x: x0 + 1, y: yy, w: Math.max(1, w - 2), h: rh });
+          h += '<button type="button" class="tlx-a2i" data-k="' + esc(it.kk) + '" data-a="' + it.a + '" data-b="' + it.b + '" data-src="' + esc(it.img) +
+            '" data-cap="' + esc('audio-to-image, window ' + it.kk + ': ' + ft(it.a) + '–' + ft(it.b) + ' s') + '" style="' + st + '" data-tip="' + esc(it.tip) + '">' +
+            '<img loading="lazy" alt="window ' + esc(it.kk) + '" src="' + esc(it.img) + '" onerror="this.remove()"><span>' + ft(it.a) + '–' + ft(it.b) + ' s</span></button>';
           return;
         }
-        pieces.push('<rect class="m k-' + it.k + '" x="' + x0 + '" y="' + yy + '" width="' + w + '" height="' + rh + '" rx="3" data-tip="' + esc(it.tip) + '"></rect>');
-        (it.kept || []).forEach(function (kp) {
-          var kx0 = X(kp[0]), kx1 = X(kp[1]);
-          if (kx1 - kx0 < 1) return;
-          pieces.push('<rect class="kept" fill="url(#tlh-' + it.k + ')" x="' + kx0 + '" y="' + (yy + 1) + '" width="' + (kx1 - kx0) + '" height="' + (rh - 2) + '" data-tip="' +
-            esc(it.head + '<br><b>' + TL_KEPT[kp[2]] + '</b> (' + ft(kp[0]) + '–' + ft(kp[1]) + ' s)') + '"></rect>');
-        });
-        var tx = x0 + 4;
-        if (it.img && w > 16) {
-          var ts = rh - 4;
-          pieces.push('<image href="' + esc(it.img) + '" x="' + (x0 + 2) + '" y="' + (yy + 2) + '" width="' + ts + '" height="' + ts + '" preserveAspectRatio="xMidYMid slice" onerror="this.remove()" style="pointer-events:none"></image>');
-          tx = x0 + ts + 6;
-        }
-        if (!ln.o.small) {
-          var lab = fit(it.lab, x0 + w - tx);
-          if (lab) pieces.push('<text class="lab" x="' + tx + '" y="' + (yy + rh / 2 + 4) + '">' + esc(lab) + '</text>');
-        }
+        var kept = (it.kept || []).map(function (kp) {
+          var span = it.b - it.a, l = (Math.max(kp[0], it.a) - it.a) / span, r = (Math.min(kp[1], it.b) - it.a) / span;
+          if (r - l <= 0) return '';
+          return '<i class="tlx-kept" style="left:' + (l * 100).toFixed(2) + '%;width:' + ((r - l) * 100).toFixed(2) + '%"></i>';
+        }).join('');
+        h += '<div class="tlx-bar ' + it.cls + '" style="' + st + '" data-tip="' + esc(it.tip) + '">' + kept +
+          (it.img ? '<img alt="" src="' + esc(it.img) + '" onerror="this.remove()">' : '') +
+          ((it.b - it.a) * pxPerS - (it.img ? 24 : 0) >= 26 ? '<span>' + esc(it.lab) + '</span>' : '') + '</div>';
       });
-      y += hh + secGap;
+      body += h + '</div></div></div>';
     });
-    if (bodyTop == null) bodyTop = 0;
-    var bodyBot = y - secGap;
-    // hit windows and onset lines of needed sounds, across every lane (windows behind the bars, lines in front)
+
+    // ---- overlays: gridlines and hit windows behind the bars; onset lines, playhead and hover line in front
     var back = '', front = '';
-    c.sounds.forEach(function (s) {
-      if (!(s.needed && s.importance >= 2)) return;
-      back += '<rect class="win" x="' + X(s.start + WIN[0]) + '" y="' + bodyTop + '" width="' + (X(s.start + WIN[1]) - X(s.start + WIN[0])) + '" height="' + (bodyBot - bodyTop) + '"></rect>';
-      front += '<line class="onset" x1="' + X(s.start) + '" x2="' + X(s.start) + '" y1="' + bodyTop + '" y2="' + bodyBot + '"></line>';
-    });
-    // axis: a tick every second, a number every 1/2/5/10 s
-    var ax = '';
-    var yA = bodyBot + 4;
-    var step = dur <= 20 ? 1 : dur <= 40 ? 2 : dur <= 100 ? 5 : 10;
-    var minor = dur <= 100 ? 1 : 5;
-    ax += '<line class="axisl" x1="' + L + '" x2="' + (W - R) + '" y1="' + yA + '" y2="' + yA + '"></line>';
-    for (var t = 0; t <= dur + 1e-6; t += minor) {
-      var major = Math.abs(t / step - Math.round(t / step)) < 1e-6;
-      ax += '<line class="axisl" x1="' + X(t) + '" x2="' + X(t) + '" y1="' + yA + '" y2="' + (yA + (major ? 6 : 3)) + '"></line>';
-      if (major) ax += '<text x="' + X(t) + '" y="' + (yA + 18) + '" text-anchor="middle" class="muted-t" style="font-size:11px">' + t + '</text>';
+    for (var t = 0; t <= dur + 1e-6; t += 1) back += '<i class="tlx-grid' + (t % 5 === 0 ? ' major' : '') + '" style="left:' + tlxX(t, dur) + '"></i>';
+    if (opts.windows !== false) {
+      c.sounds.forEach(function (s) {
+        if (!(s.needed && s.importance >= 2)) return;
+        back += '<i class="tlx-win" style="left:' + tlxX(s.start + WIN[0], dur) + ';width:' + tlxW(s.start + WIN[0], s.start + WIN[1], dur) + '"></i>';
+        front += '<i class="tlx-onset" style="left:' + tlxX(s.start, dur) + '"></i>';
+      });
     }
-    ax += '<text x="' + (W - R) + '" y="' + (yA + 32) + '" text-anchor="end" class="muted-t" style="font-size:11px">seconds · click anywhere to jump there</text>';
-    var H = yA + 38;
-    var defs = '<defs>' + ['hit', 'vis', 'diff', 'none', 'dup'].map(function (k) {
-      return '<pattern id="tlh-' + k + '" patternUnits="userSpaceOnUse" width="6" height="6" patternTransform="rotate(45)"><rect width="6" height="6" class="hbg"></rect>' +
-        '<line x1="1" y1="0" x2="1" y2="6" class="hs k-' + k + '"></line></pattern>';
-    }).join('') + '</defs>';
-    var hl = opts.a2i ? '<rect id="a2i-hl" class="a2ihl" x="-100" y="0" width="0" height="0"></rect>' : '';
-    var ph = '<line class="playhead" x1="' + L + '" x2="' + L + '" y1="' + bodyTop + '" y2="' + yA + '"></line>';
-    host.innerHTML = '<svg class="tl" width="' + W + '" height="' + H + '" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Timeline: sounds, pictures, gate">' +
-      defs + back + pieces.join('') + front + ax + hl + ph + '</svg>';
+    front += '<i class="tlx-hover" hidden><b></b></i><i class="tlx-play"><b>0.0 s</b></i>';
+    var minW = 'calc(var(--tlx-head) + ' + Math.ceil(dur * TLX.pxPerS + TLX.padL + TLX.padR) + 'px)';
+    host.innerHTML = '<div class="tlx"><div class="tlx-scroll"><div class="tlx-inner" style="min-width:' + minW + '">' +
+      axisRow('top') + body + axisRow('bottom') +
+      '<div class="tlx-over back">' + back + '</div><div class="tlx-over front">' + front + '</div>' +
+      '</div></div></div>';
     bindTips(host);
-    var svg = host.firstChild;
-    var phl = svg.querySelector('.playhead'), hlr = svg.querySelector('#a2i-hl');
+
+    var scroller = host.querySelector('.tlx-scroll'), inner = host.querySelector('.tlx-inner');
+    var over = host.querySelector('.tlx-over.front');
+    var play = over.querySelector('.tlx-play'), playLab = play.querySelector('b');
+    var hov = over.querySelector('.tlx-hover'), hovLab = hov.querySelector('b');
+    var a2iBtns = Array.prototype.slice.call(host.querySelectorAll('.tlx-a2i'));
+    function place(el, lab, t) {
+      var f = Math.max(0, Math.min(1, t / dur));
+      el.style.left = tlxX(t, dur);
+      lab.textContent = ft(t) + ' s';
+      lab.style.transform = f < 0.04 ? 'translateX(-8px)' : f > 0.96 ? 'translateX(calc(-100% + 8px))' : 'translateX(-50%)';
+    }
+    function tAt(clientX) {   // time under the mouse, or null over the header column
+      var r = over.getBoundingClientRect();
+      var x = clientX - r.left;
+      if (x < 0) return null;
+      return Math.max(0, Math.min(dur, (x - TLX.padL) / (r.width - TLX.padL - TLX.padR) * dur));
+    }
     var lastA2i = -2;
     function upd(tForce) {
       var t = tForce != null ? tForce : (video.currentTime || 0);
-      var x = X(t); phl.setAttribute('x1', x); phl.setAttribute('x2', x);
-      if (hlr) {
+      place(play, playLab, t);
+      if (a2iBtns.length) {
         var k = -1;
-        a2iRects.forEach(function (r, i) { if (t >= r.a && t < r.b) k = i; });
-        if (k !== lastA2i) {
-          lastA2i = k;
-          if (k < 0) hlr.setAttribute('x', -100);
-          else { var r = a2iRects[k]; hlr.setAttribute('x', r.x - 1.5); hlr.setAttribute('y', r.y - 1.5); hlr.setAttribute('width', r.w + 3); hlr.setAttribute('height', r.h + 3); }
-        }
+        a2iBtns.forEach(function (b, i) { if (t >= +b.getAttribute('data-a') && t < +b.getAttribute('data-b')) k = i; });
+        if (k !== lastA2i) { lastA2i = k; a2iBtns.forEach(function (b, i) { b.classList.toggle('on', i === k); }); }
+      }
+      // keep the playhead in view when the timeline scrolls sideways (long clips)
+      if (scroller.scrollWidth > scroller.clientWidth + 2) {
+        var r = over.getBoundingClientRect(), sr = scroller.getBoundingClientRect();
+        var px = r.left + TLX.padL + (r.width - TLX.padL - TLX.padR) * Math.max(0, Math.min(1, t / dur));
+        var headW = host.querySelector('.tlx-head').offsetWidth;
+        if (px < sr.left + headW + 20 || px > sr.right - 20) scroller.scrollLeft += px - (sr.left + headW + (sr.width - headW) / 3);
       }
       if (opts.onTime) opts.onTime(t);
     }
-    svg.addEventListener('click', function (e) {
-      var box = svg.getBoundingClientRect();
-      var px = (e.clientX - box.left) * (W / box.width);
-      var tt = Math.max(0, Math.min(dur, (px - L) * secPerPx));
-      if (video.readyState >= 1) video.currentTime = tt;
-      upd(tt);
+    inner.addEventListener('mousemove', function (e) {
+      var t = tAt(e.clientX);
+      if (t == null) { hov.hidden = true; return; }
+      hov.hidden = false;
+      place(hov, hovLab, t);
+    });
+    inner.addEventListener('mouseleave', function () { hov.hidden = true; });
+    inner.addEventListener('click', function (e) {
+      var ab = e.target.closest && e.target.closest('.tlx-a2i');
+      if (ab) { openLightbox(ab.getAttribute('data-src'), ab.getAttribute('data-cap')); tip.style.display = 'none'; return; }
+      var t = tAt(e.clientX);
+      if (t == null) return;
+      if (video.readyState >= 1) video.currentTime = t;
+      upd(t);
     });
     video.ontimeupdate = function () { upd(); };
     video.onseeked = function () { upd(); };
     upd();
+  }
+
+  // the switches above a timeline; their state lives in opts, so a redraw keeps it
+  function tlControls(withEvents, nEvents) {
+    return '<div class="tlx-ctl"><label><input type="checkbox" data-o="windows" checked> show hit windows <span class="muted">(shaded −0.5 to +1.0 s around each needed sound’s start)</span></label>' +
+      (withEvents ? '<label><input type="checkbox" data-o="events"> show detector events (' + nEvents + ')</label>' : '') + '</div>';
+  }
+  function bindTlControls(tl, c, video, opts) {
+    Array.prototype.forEach.call(tl.parentNode.querySelectorAll('.tlx-ctl input[data-o]'), function (x) {
+      x.addEventListener('change', function () { opts[x.getAttribute('data-o')] = x.checked; drawTimeline(tl, c, video, opts); });
+    });
+    REDRAW.push(function () { if (document.body.contains(tl)) drawTimeline(tl, c, video, opts); });   // bar labels depend on the width
   }
 
   function renderClip(split, name) {
@@ -1185,9 +1317,10 @@
       '<dt>pipeline without gate</dt><dd>' + c._b.h + ' hits · ' + c._b.m + ' misses · ' + c._b.w + ' wrong of ' + c._b.n + ' pictures</dd>' +
       '<dt>gate</dt><dd>' + g.length + ' stretches judged (' + g.filter(function (x) { return x.seen; }).length + ' “visible”)</dd>' +
       '</dl><p class="small muted" style="margin-top:10px">Clean = the video a viewer sees (ours). Debug = the same with labels. Pipeline without gate = ' + esc(NOGATE_DEF) + ' Its video shows text label chips instead of pictures.</p></div></div>';
-    h += '<h3 style="margin-top:16px">Timeline</h3><p class="small muted">Read it top to bottom: what was in the clip, what each system showed, and what the gate decided. ' +
-      'A picture is correct only if it starts inside the shaded window of a needed sound. Hover a bar for details; click anywhere to jump the video there.</p>' + tlLegend(true);
-    h += '<div class="card" style="padding:10px"><div id="tl"></div><button type="button" id="tl-ev" class="small">Show detector events (' + (o.events || []).length + ')</button></div>';
+    h += '<h3 style="margin-top:16px">Timeline</h3><p class="small muted">One row per source, one time axis: what a human marked, what each system showed, and what the gate decided. ' +
+      'Each row’s colours are explained in its left cell. A picture is correct only if it starts inside the shaded window around a needed sound’s start (dashed line). ' +
+      'Hover a bar for details; click anywhere to jump the video there.</p>';
+    h += '<div class="card tlcard">' + tlControls(true, (o.events || []).length) + '<div id="tl"></div></div>';
     h += '<h3 style="margin-top:18px">Gold sounds</h3>' + heardNote() + '<div id="t-snd"></div>';
     h += '<h3 style="margin-top:18px">Ours: pictures shown</h3><div id="t-op"></div>';
     h += '<h3 style="margin-top:18px">Pipeline without gate: pictures shown</h3><div id="t-bp"></div>';
@@ -1204,14 +1337,9 @@
     });
     var t0 = parseFloat((location.hash.split('?t=')[1] || ''));
     setVideo(video, note, media(c.split, c.clip, kind), isNaN(t0) ? null : t0);
-    var tl = document.getElementById('tl'), tlOpts = { events: false };
+    var tl = document.getElementById('tl'), tlOpts = { events: false, windows: true };
     drawTimeline(tl, c, video, tlOpts);
-    REDRAW.push(function () { if (document.body.contains(tl)) drawTimeline(tl, c, video, tlOpts); });
-    document.getElementById('tl-ev').addEventListener('click', function (e) {
-      tlOpts.events = !tlOpts.events;
-      e.target.textContent = (tlOpts.events ? 'Hide' : 'Show') + ' detector events (' + (o.events || []).length + ')';
-      drawTimeline(tl, c, video, tlOpts);
-    });
+    bindTlControls(tl, c, video, tlOpts);
 
     var sndRows = c.sounds.map(function (s, i) { return { c: c, s: s, i: i }; });
     mkTable(document.getElementById('t-snd'), 'c-snd', [
@@ -1223,6 +1351,8 @@
       { k: 'vis', t: 'visible / obvious', h: function (r) { return (r.s.visible ? 'yes' : 'no') + ' / ' + (r.s.obvious ? 'yes' : 'no'); } },
       { k: 'o', t: 'ours', h: function (r) { return outcomeText(c, 'ours', r.i); } },
       { k: 'b', t: 'without gate', h: function (r) { return outcomeText(c, 'blind', r.i); } },
+      { k: 'why', t: 'why missed', h: function (r) { return whyCell(c, r.i); }, cls: 'whycol',
+        v: function (r) { var w = whyMissed(c, 'ours', r.i); return w ? w.step : ''; } },
       { k: 'g', t: 'gate near the start', h: function (r) { return (c.derived.near_gate[String(r.i)] || []).map(function (k) { return gateLine(g[k]); }).join('') || '<span class="muted">—</span>'; } },
       { k: 'heard', t: 'what the detectors heard (−0.5 to +1.0 s)', h: function (r) { return heardCell(c, r.i); }, cls: 'heardcol' }
     ], sndRows);
@@ -1336,9 +1466,9 @@
       '<div class="card"><p class="small muted" style="margin:0 0 6px">Audio-to-image picture for the moment the video is at</p>' +
       '<div class="a2inow"><img id="a2i-now" alt="audio-to-image picture for this window"><div class="vnote" id="a2i-miss" hidden>No picture for this moment.</div></div>' +
       '<p class="small" id="a2i-cap"></p></div></div>';
-    h += '<h3 style="margin-top:16px">Timeline</h3><p class="small muted">Same time axis for both approaches. The top strip is the audio-to-image pictures; ' +
-      'the highlighted one is where the video is now. Below: the sounds a human marked, and what ours showed. Click anywhere to jump the video there.</p>' + tlLegend(false);
-    h += '<div class="card" style="padding:10px"><div id="tl"></div></div>';
+    h += '<h3 style="margin-top:16px">Timeline</h3><p class="small muted">Same time axis for both approaches. The top row is the audio-to-image pictures, one per window; ' +
+      'the outlined one is where the video is now (click a picture to enlarge it). Below: the sounds a human marked, and what ours showed. Click anywhere else to jump the video there.</p>';
+    h += '<div class="card tlcard">' + tlControls(false) + '<div id="tl"></div></div>';
     app.innerHTML = h;
     var video = document.getElementById('v'), note = document.getElementById('v-note');
     var wins = (ac.windows || []).slice().sort(function (a, b) { return a.start - b.start; }).map(function (w) {
@@ -1361,9 +1491,9 @@
     var tl = document.getElementById('tl');
     if (c) {
       var endW = wins.reduce(function (m, w) { return Math.max(m, w.end); }, 0);
-      var opts = { lanes: ['a2i', 'sounds', 'ours'], a2i: wins, onTime: onTime, dur: Math.max(duration(c), endW) };
+      var opts = { lanes: ['a2i', 'sounds', 'ours'], a2i: wins, a2iWin: A.window_s, onTime: onTime, dur: Math.max(duration(c), endW), windows: true };
       drawTimeline(tl, c, video, opts);
-      REDRAW.push(function () { if (document.body.contains(tl)) drawTimeline(tl, c, video, opts); });
+      bindTlControls(tl, c, video, opts);
     } else {
       tl.innerHTML = '<p class="muted">This clip is not in data.js, so there are no human labels or pictures of ours to compare.</p>';
       video.ontimeupdate = function () { onTime(video.currentTime || 0); };
@@ -1418,12 +1548,23 @@
       var p = a.getAttribute('data-p');
       a.className = (p === page || (page === 'clip' && p === 'clips')) ? 'on' : '';
     });
+    var Q = hashQuery(), hasQ = Object.keys(Q).length > 0;
     if (page === 'mistakes') {
       if (parts[1] === 'never') { M.tab = 'miss'; M.reason = 'never detected'; M.sys = 'ours'; }   // link from the Overview
       else if (TABS.indexOf(parts[1]) >= 0) M.tab = parts[1];
+      if (hasQ) {   // a filtered link (Overview numbers): start from clean filters, then apply the link's
+        M.split = 'DEVTEST'; M.cat = ''; M.sys = 'ours'; M.q = ''; M.reason = ''; M.wtype = ''; M.pos = '';
+        ['split', 'cat', 'sys', 'q', 'reason', 'wtype', 'pos'].forEach(function (k) { if (Q[k] != null) M[k] = Q[k]; });
+      }
       renderMistakes();
     }
-    else if (page === 'clips') renderClips();
+    else if (page === 'clips') {
+      if (hasQ) {
+        C = { split: Q.split || 'DEVTEST', cat: Q.cat || '', q: Q.q || '', has: Q.has || '' };
+        if (Q.sort) SORT.clips = { k: Q.sort, dir: -1 };
+      }
+      renderClips();
+    }
     else if (page === 'clip') renderClip(decodeURIComponent(parts[1] || ''), decodeURIComponent(parts.slice(2).join('/') || ''));
     else if (page === 'a2i') renderA2I(decodeURIComponent(parts.slice(1).join('/') || ''));
     else if (page === 'defs') renderDefs();
