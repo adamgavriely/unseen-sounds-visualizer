@@ -5,8 +5,8 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 ## Running now (28 Sept)
 - [ ] Detector round 7b — SAM-Audio retry ("a person talking" / "background music", predict_spans, erase check). `docs/prereg_round7_samaudio.md`
-- [ ] Detector round 8 — Fable's ideas I1–I10 (repeats window {±5, ±10 s, clip} × bar {0.5, 0.4}; per-clip normalisation; parent emission; VLM scene prior; local-contrast veto; ontology-aware vetoes; stricter BEATs-only rule under speech/music; onset fixes; 1-s windows; band-limited views). `docs/prereg_round8_ideas.md`
-- [ ] Fresh confirmation set caches (job 31330209, 422 clips) — then check 4 cache folders × 422 `.npz`. Nothing may be scored on it until a candidate passes the 415.
+- [ ] Detector round 9 — local-contrast veto on BEATs-only spans (J1) and J1 + I7 (J2); pick on 280, then 415; if it passes, stop before the fresh set. `docs/prereg_round9_contrast.md`
+- [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs 180/422, then PANNs, PE-A-Frame, FlexSED) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
 - [ ] Label "sense traps" (Honk → goose, Toot → car, Caw → crow, …): audit + code the subject/maker/checker on the ontology parent chain; car-horn "sound-wave lines" redraw.
 - [ ] Picture wording 3-arm test: hand table vs VLM free text vs new (a) slot form + official ontology descriptions, (b) mistake mining. `docs/picture_sense_test_2026-09-28.md`
 
@@ -23,6 +23,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-28 Detector round 8: 17 cells, none passes the 415; closest I7 local-contrast veto (114fae3).
 - 2026-09-28 Detector rounds 4 (BEATs self-veto replaces PANNs, 84de50b), 5 (EAT/Dasheng fail, 0ba10a6), 6 (DASM fails, 7315606), 7 (SAM-Audio QC stop, fd5444c); audit (20160d4).
 - 2026-09-28 Picture check-and-redraw (5 refined tries), smoke/rattle/horn fixes, maker rule (8209491, bf54684, 64f336d).
 - 2026-09-28 Sealed picture sitting cancelled (3d0d734); supervisor page updated (3509de1, 32750a4).
