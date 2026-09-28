@@ -4,20 +4,25 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
-- [ ] DEV CONFIRMATORY check (Adam: test and confirm on DEV; goal = more needed sounds heard, fewer real sounds dropped): EAT-R, DASM D1, I4, I6, I7 (job 31330563) + R1, R6, R7 (extra job); Holm over 8 vs B1 (ours re-run); ship rule. Tweaks after this need TEST-once or new videos. `docs/dev_candidates_check_2026-09-28.md`
+- [ ] DEV CONFIRMATORY check (Adam: test and confirm on DEV; goal = more needed sounds heard, fewer real sounds dropped): EAT-R, DASM D1, I4, I6, I7 (job 31330563) + R1, R6, R7 (extra job 31330792); Holm over 8 vs B1 (ours re-run); ship rule. Tweaks after this need TEST-once or new videos. `docs/dev_candidates_check_2026-09-28.md`
+  - When done: collect numbers, commit, give Adam a SHORT table ours (B1) vs each candidate: heard, rescued, hits, misses, wrong, cost, verdict better/same/worse. Agent aac2759c5df34ff2f was running it; if the session/limit cut it, rerun only the scoring step from the job outputs in `~/MscProj/data/work/devcand/` (do not relaunch jobs that finished).
+  - If a candidate passes: put it behind a flag, turn it on in `use_shipped()`, note it beside the frozen TEST table.
+- [ ] Commit the uncommitted files after the DEV check ends: `benchmark/gold/dev_candidates_check.py`, `docs/dev_candidates_check_2026-09-28.md`, `slurm/job_devcand_extra.sh`, `benchmark/detector_round2.py`, `benchmark/gold/pe_frame_run.py` (check each diff first).
 - [x] Round 12 STOPPED at step 1 (28 Sept, job 31330706): under the corrected cost v2 (MID names, depictable filter, runs merged <= 2 s, video hit window) ours is WORSE than showing nothing on the 280 (1.650 vs 0.986, d +0.664 [+0.379, +0.950]); its 159 false spans alone cost 1.136. By the prereg the AudioSet harness cannot track the task; no cell re-scored, no new cell, nothing on 415/DEV/fresh, no src change. `docs/prereg_round12_v2.md`
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
-- [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs, PANNs, PE-A-Frame 422/422; FlexSED 20/422) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
+- [x] Fresh confirmation set caches complete (422 clips). AudioSet harness is retired as a decision test (round 12), so the fresh set is report-only now.
 
 ## Later
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
 - [ ] (Only if a fixed generic method wins a new test) mistake mining for all 215 labels at night. Possible fixes for a new test: more specific object slot, allow hands for human-action makers, better mining judge.
 - [ ] Final check on the fresh set for whatever passes round 8 (and 7b), then decide on the detector (BEATs stays unless something passes).
+- [ ] Next detector ideas (only after the DEV check; confirmation then needs TEST-once or new videos, since DEV is used): (1) short-sound path: FlexSED peak whose run is < 0.5 s -> make a 1-s span, keep only if DASM agrees (22 of 61 band sounds are blocked by the 0.5-s minimum); (2) weak-twin rule.
+- [ ] After DEV jobs end: delete `~/Transformer4SED` on the cluster (not needed).
 - [ ] URGENT before any cluster pipeline run: sync `src/stage4_audio_event_detection/__init__.py` (cluster copy lacks the self-veto; use_shipped() sets PANNS_VETO 0 → NO veto at all on FlexSED-only spans) and `config.py`, when no job imports them.
-- [ ] Update thesis ch5/ch6 with: external baselines, confidence floor, BEATs self-veto, family-rule fix, display rules, picture check + maker rule, rounds 4–8, sensitivity rows, sitting cancelled.
-- [ ] Update the supervisor page (`docs/supervisor_2026-09-26/index.html`) with rounds 6–8 and the picture results.
+- [ ] Update thesis ch5/ch6 with: external baselines, confidence floor, BEATs self-veto, family-rule fix, display rules, picture check + maker rule, rounds 4–12 (AudioSet test retired, DEV confirmatory), sensitivity rows, sitting cancelled, picture wording test.
+- [ ] Update the supervisor page (`docs/supervisor_2026-09-26/index.html`) with rounds 6–12, the audits, the retired AudioSet test, the picture wording test and the DEV check results.
 - [ ] Future-work note for the thesis: a visible bird/macaw that is not the sound's source (gate error Adam accepts for now); COSED (Sept 2026, no code yet) for the FlexSED slot.
-- [ ] Cluster disk: delete the PE-A-Frame `perception_models` revision (6.1 GB, fetched for 7b) after fresh caches job 31330209 ends (only that revision's snapshot/blobs); sam-audio-large + 7b wavs being deleted now; `shipped_v2_*`, `shipped_v_*_r1` folders.
+- [ ] Cluster disk: delete the PE-A-Frame `perception_models` revision (6.1 GB, fetched for 7b) now that fresh caches are done (only snapshot 40187271298f… and its unshared blobs; keep main d7fd29e…); sam-audio-large + 7b wavs being deleted now; `shipped_v2_*`, `shipped_v_*_r1` folders.
 
 ## Waiting on Adam
 - [ ] Look at the picture wording contact sheet `docs/picture_sense_test/index.html` (confirm/override the blind by-eye verdicts); decide: drop the generic method or run a new test with its fixes.
