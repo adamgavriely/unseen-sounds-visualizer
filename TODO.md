@@ -4,6 +4,7 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
+- [ ] Detector round 11 — Fable's "test the cause" discriminators for FlexSED 0.4–0.8 rescues: M1 add foreign speech/music and re-score (true sound drops, phantom holds), M2 top-family margin, M3 masker-envelope correlation, M5 curve shape, M7 one rescue per clip, W time-reversal. `docs/prereg_round11_masker.md`
 - [ ] Detector round 10 — rescue heard-but-dropped sounds (FlexSED 0.4–0.8) with a discriminator: R1 DASM agrees, R2 query paraphrases agree, R3 stable under small audio changes, R4/R5 combos, R6/R7 = I4 / I6 rescues filtered by R1 or R2. 280 → 415 → DEV + fresh. `docs/prereg_round10_rescue.md`
 - [ ] DEV check (report-only) of the best detector candidates: EAT-R, DASM D1, I4, I6, I7 vs shipped, ours + no-gate. `docs/dev_candidates_check_2026-09-28.md`
 - [ ] Setup audit of the detector tests (Adam: "weird that nothing passes"): download time alignment (yt-dlp keyframe cuts), gold label mapping, scorer sanity (gold as predictions), harness vs real pipeline, BEATs window timestamps. `docs/setup_audit_2026-09-28.md`
