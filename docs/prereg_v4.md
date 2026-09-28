@@ -2195,3 +2195,8 @@ by viewer cost at β = 2 from the grid {0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5}; TE
 PANNs paired clip bootstrap on F1, cost, precision, recall. Script `benchmark/gold/baseline_panns.py`. "Blind" is renamed
 **"pipeline without gate"** in reports: same detector stack, label filter, subject text and pictures; only the visibility gate
 is removed.
+**Result (`benchmark/gold/baseline_panns.json`).** DEV picked threshold 0.5 (the grid's top; cost fell steadily with the
+threshold, towards "show nothing", 2.94). TEST, 60 clips: PANNs alone 5/43 hits, 20 wrong pictures, P 0.20, R 0.12, F1 0.147,
+cost 3.20; ours 16/43, 25 wrong, P 0.39, R 0.37, F1 0.381, cost 2.63. Ours − PANNs (paired clip bootstrap, 2000, seed 0):
+**F1 +0.234 [+0.085, +0.409], precision +0.190 [+0.029, +0.378], recall +0.256 [+0.095, +0.452]**; cost −0.567 [−1.267, +0.100]
+(not significant). Unlike the ablation, against an existing single-detector approach the F1 gain is significant.
