@@ -1,0 +1,29 @@
+# TODO
+
+Living list of work we decided to do later. Add when something is postponed; move to "Done" (with date and
+commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
+
+## Running now (28 Sept)
+- [ ] Detector round 7b — SAM-Audio retry ("a person talking" / "background music", predict_spans, erase check). `docs/prereg_round7_samaudio.md`
+- [ ] Detector round 8 — Fable's ideas I1–I10 (repeats window {±5, ±10 s, clip} × bar {0.5, 0.4}; per-clip normalisation; parent emission; VLM scene prior; local-contrast veto; ontology-aware vetoes; stricter BEATs-only rule under speech/music; onset fixes; 1-s windows; band-limited views). `docs/prereg_round8_ideas.md`
+- [ ] Fresh confirmation set caches (job 31330209, 422 clips) — then check 4 cache folders × 422 `.npz`. Nothing may be scored on it until a candidate passes the 415.
+- [ ] Label "sense traps" (Honk → goose, Toot → car, Caw → crow, …): audit + code the subject/maker/checker on the ontology parent chain; car-horn "sound-wave lines" redraw.
+- [ ] Picture wording 3-arm test: hand table vs VLM free text vs new (a) slot form + official ontology descriptions, (b) mistake mining. `docs/picture_sense_test_2026-09-28.md`
+
+## Later
+- [ ] **Mistake mining for all 215 drawable labels** (one-time, ~4–7 GPU h, at night) — only if the a+b test adopts the new method. Re-run whenever the picture model changes.
+- [ ] Final check on the fresh set for whatever passes round 8 (and 7b), then decide on the detector (BEATs stays unless something passes).
+- [ ] Sync the cluster copy of `src/stage4_audio_event_detection/__init__.py` (missing the BEATs self-veto block) and `config.py` after the round-7b/8 jobs finish.
+- [ ] Update thesis ch5/ch6 with: external baselines, confidence floor, BEATs self-veto, family-rule fix, display rules, picture check + maker rule, rounds 4–8, sensitivity rows, sitting cancelled.
+- [ ] Update the supervisor page (`docs/supervisor_2026-09-26/index.html`) with rounds 6–8 and the picture results.
+- [ ] Future-work note for the thesis: a visible bird/macaw that is not the sound's source (gate error Adam accepts for now); COSED (Sept 2026, no code yet) for the FlexSED slot.
+- [ ] Cluster disk (~17 GB free): after round 7b, decide on `sam-audio-large` (15 GB) and round-7 residual wavs; `shipped_v2_*`, `shipped_v_*_r1` folders.
+
+## Waiting on Adam
+- [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
+
+## Done
+- 2026-09-28 Detector rounds 4 (BEATs self-veto replaces PANNs, 84de50b), 5 (EAT/Dasheng fail, 0ba10a6), 6 (DASM fails, 7315606), 7 (SAM-Audio QC stop, fd5444c); audit (20160d4).
+- 2026-09-28 Picture check-and-redraw (5 refined tries), smoke/rattle/horn fixes, maker rule (8209491, bf54684, 64f336d).
+- 2026-09-28 Sealed picture sitting cancelled (3d0d734); supervisor page updated (3509de1, 32750a4).
+- 2026-09-28 Fresh confirmation set downloaded (931ecea).
