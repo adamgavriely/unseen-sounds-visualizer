@@ -2218,3 +2218,12 @@ shipped stack vs shipped + floor 0.40, amendment 24's cost C (overlap primary); 
 **Result (`benchmark/floor_heldout.json`): passes.** Held-out 415: C-overlap 1.923 → 1.696, ΔC **−0.227 [−0.304, −0.154]**;
 recall 49.1 % → 48.5 %; false spans/min 3.25 → 2.54. (The 280 fit set: −0.129 [−0.250, +0.036].) Adopted: `use_shipped()` sets
 `PICTURE_MIN_CONF = 0.40` (display-level, as tested on DEV). The scored TEST table is unchanged (it ran without the floor).
+
+## 2026-09-28 — detector round 3: a speech/music-aware FlexSED bar and a better veto (Adam's question; reviewer's design; before any number)
+
+Six fixed cells (no grid), `benchmark/detector_round3.py`: C0 shipped; C1 bar 0.6 + PANNs relative veto (class 95th percentile
+over the 280); C2 bar 0.6 + PretrainedSED local veto (class 95th percentile within ±1 s); C3 bar 0.5 + PretrainedSED local veto;
+C4 bar 0.6 in quiet / 0.8 under speech or music (BEATs Speech or Music ≥ 0.3 in the span) + shipped PANNs veto; C5 bar 0.5 quiet /
+0.7 speech-music + PretrainedSED local veto. Pick on the 280 by amendment 24's rule; the one pick tested once on the held-out 415
+(ΔC-overlap upper 95 % CI < 0). Leak check: none of the 280 or 415 clips is in the AudioSet-Strong train split (0 of 103,463
+train segments), so PretrainedSED has not seen them.
