@@ -5,6 +5,8 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 ## Running now (28 Sept)
 - [ ] Round 13: 12-h detector push (Adam, 28 Sept). DEV = development, ONE TEST exposure of one candidate on top of B0. `docs/prereg_round13_detector_push.md`
+  - Status 29 Sept: R13-1 twin-max is the only DEV-eligible rule (+1 hit, cost 2.78 -> 2.69). Yes/no listener rescue +8 hits but +41 wrong (not eligible). Running: 4 stricter listener variants (amendment A) on DEV + TEST features. TEST caches + gold-free TEST listener cache ready (D0 120/120, D5 60/60). TEST scorer not built yet (the one exposure).
+  - If Adam wants more annotation: draft a job offer for ~50-60 new clips (same tool/labels as DEV) to confirm without spending TEST.
 - [x] Round 12 STOPPED at step 1 (28 Sept, job 31330706): under the corrected cost v2 (MID names, depictable filter, runs merged <= 2 s, video hit window) ours is WORSE than showing nothing on the 280 (1.650 vs 0.986, d +0.664 [+0.379, +0.950]); its 159 false spans alone cost 1.136. By the prereg the AudioSet harness cannot track the task; no cell re-scored, no new cell, nothing on 415/DEV/fresh, no src change. `docs/prereg_round12_v2.md`
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [x] Fresh confirmation set caches complete (422 clips). AudioSet harness is retired as a decision test (round 12), so the fresh set is report-only now.
