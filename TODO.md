@@ -4,7 +4,6 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
-- [ ] Detector round 7b — SAM-Audio retry ("a person talking" / "background music", predict_spans, erase check). `docs/prereg_round7_samaudio.md`
 - [ ] Detector round 9 — local-contrast veto on BEATs-only spans (J1) and J1 + I7 (J2); pick on 280, then 415; if it passes, stop before the fresh set. `docs/prereg_round9_contrast.md`
 - [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs 180/422, then PANNs, PE-A-Frame, FlexSED) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
 - [ ] Label "sense traps" (Honk → goose, Toot → car, Caw → crow, …): audit + code the subject/maker/checker on the ontology parent chain; car-horn "sound-wave lines" redraw.
@@ -17,12 +16,13 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Update thesis ch5/ch6 with: external baselines, confidence floor, BEATs self-veto, family-rule fix, display rules, picture check + maker rule, rounds 4–8, sensitivity rows, sitting cancelled.
 - [ ] Update the supervisor page (`docs/supervisor_2026-09-26/index.html`) with rounds 6–8 and the picture results.
 - [ ] Future-work note for the thesis: a visible bird/macaw that is not the sound's source (gate error Adam accepts for now); COSED (Sept 2026, no code yet) for the FlexSED slot.
-- [ ] Cluster disk (~17 GB free): after round 7b, decide on `sam-audio-large` (15 GB) and round-7 residual wavs; `shipped_v2_*`, `shipped_v_*_r1` folders.
+- [ ] Cluster disk: delete the PE-A-Frame `perception_models` revision (6.1 GB, fetched for 7b) after fresh caches job 31330209 ends (only that revision's snapshot/blobs); sam-audio-large + 7b wavs being deleted now; `shipped_v2_*`, `shipped_v_*_r1` folders.
 
 ## Waiting on Adam
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-28 Detector round 7b: SAM-Audio retry fails QC again (music not removed); separation idea closed (6133f4f).
 - 2026-09-28 Detector round 8: 17 cells, none passes the 415; closest I7 local-contrast veto (114fae3).
 - 2026-09-28 Detector rounds 4 (BEATs self-veto replaces PANNs, 84de50b), 5 (EAT/Dasheng fail, 0ba10a6), 6 (DASM fails, 7315606), 7 (SAM-Audio QC stop, fd5444c); audit (20160d4).
 - 2026-09-28 Picture check-and-redraw (5 refined tries), smoke/rattle/horn fixes, maker rule (8209491, bf54684, 64f336d).
