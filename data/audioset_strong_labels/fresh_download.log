@@ -1,0 +1,26 @@
+[fresh] 20/500: 14 fetched, 6 gone
+[fresh] 40/500: 29 fetched, 11 gone
+[fresh] 60/500: 47 fetched, 13 gone
+[fresh] 80/500: 64 fetched, 16 gone
+[fresh] 100/500: 81 fetched, 19 gone
+[fresh] 120/500: 96 fetched, 24 gone
+[fresh] 140/500: 115 fetched, 25 gone
+[fresh] 160/500: 131 fetched, 29 gone
+[fresh] 180/500: 146 fetched, 34 gone
+[fresh] 200/500: 163 fetched, 37 gone
+[fresh] 220/500: 181 fetched, 39 gone
+[fresh] 240/500: 199 fetched, 41 gone
+[fresh] 260/500: 215 fetched, 45 gone
+[fresh] 280/500: 232 fetched, 48 gone
+[fresh] 300/500: 251 fetched, 49 gone
+[fresh] 320/500: 268 fetched, 52 gone
+[fresh] 340/500: 286 fetched, 54 gone
+[fresh] 360/500: 303 fetched, 57 gone
+[fresh] 380/500: 320 fetched, 60 gone
+[fresh] 400/500: 337 fetched, 63 gone
+[fresh] 420/500: 354 fetched, 66 gone
+[fresh] 440/500: 372 fetched, 68 gone
+[fresh] 460/500: 386 fetched, 74 gone
+[fresh] 480/500: 404 fetched, 76 gone
+[fresh] 500/500: 422 fetched, 78 gone
+[fresh] done: 422 clips, 78 gone -> P:\MscProj\benchmark\gold\audioset_fresh.json

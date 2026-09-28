@@ -51,6 +51,11 @@ def use_set(name: str):
         VIDEOS = _ROOT / "data" / "input" / "audioset_calib"
         WIN = _ROOT / "benchmark" / "audioset_calib_windows"
         OUT = _ROOT / "benchmark" / "audioset_calib_eval.json"
+    elif name == "fresh":             # docs/prereg_fresh_confirm_set.md: read only after a candidate passes the 415
+        SLICE = _ROOT / "benchmark" / "gold" / "audioset_fresh.json"
+        VIDEOS = _ROOT / "data" / "input" / "audioset_fresh"
+        WIN = _ROOT / "benchmark" / "audioset_fresh_windows"
+        OUT = _ROOT / "benchmark" / "audioset_fresh_eval.json"
     elif name == "sliceB":
         SLICE = _ROOT / "benchmark" / "gold" / "audioset_slice.json"
         VIDEOS = _ROOT / "data" / "input" / "audioset_strong"
@@ -172,7 +177,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--cache", choices=("beats", "psed", "flam"))
     ap.add_argument("--eval", action="store_true")
-    ap.add_argument("--set", choices=("sliceB", "calib", "heldout"), default="sliceB")
+    ap.add_argument("--set", choices=("sliceB", "calib", "heldout", "fresh"), default="sliceB")
     a = ap.parse_args()
     use_set(a.set)
     if a.cache: cache(a.cache)

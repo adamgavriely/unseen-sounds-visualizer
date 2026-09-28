@@ -35,7 +35,8 @@ FLEX = PANNS = PEF = None
 
 
 def use_set(name: str):
-    """all cache paths follow the set: 'calib' (the 280) or 'heldout' (amendment 24)"""
+    """all cache paths follow the set: 'calib' (the 280), 'heldout' (amendment 24) or 'fresh' (the confirmation set,
+    docs/prereg_fresh_confirm_set.md: caches only until a candidate passes the 415)"""
     global FLEX, PANNS, PEF
     E.use_set(name)
     FLEX = _ROOT / "data" / "work" / f"flexsed_{name}"
