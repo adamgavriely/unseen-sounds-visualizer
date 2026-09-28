@@ -620,3 +620,160 @@ def depiction_query(label: str, detail: str = "") -> str:
     if not name or name in DEPICTION_SKIP:
         return QUERY_HINTS.get(label, label)      # the family depicts better
     return name
+
+
+# ---------------------------------------------------------------------------------------------------------------
+# SENSE ANCHOR (Adam, 28 Sept 2026): a label word is read in its ONTOLOGY sense, never its plain-English one. "Honk"
+# is the goose's call (Honk > Goose > Fowl), not a car horn; "Tap" is a knock on a door (Tap > Door), not a water tap;
+# "Bark" is a dog (Bark > Dog), not tree bark. For an ACTION label (a sound word that names no thing) the maker is the
+# nearest ancestor that is a THING. Two fixed lists, read off the 346 drawable labels (benchmark/gold/
+# depictable_vocab.json, 215 families and their children):
+#   ACTION_LABELS    -- labels whose name is the sound or the action, not the thing that makes it;
+#   NON_MAKERS       -- grouping labels that are no thing to draw (branches, "Onomatopoeia", "Domestic sounds"...),
+#                       and "Arrow", the single-parent map's parent for Whoosh / Thump / Wobble (AudioSet lists
+#                       Onomatopoeia as their other parent; an arrow is not what makes a thud).
+ACTION_LABELS = {
+    "Accelerating, revving, vroom", "Air horn, truck horn", "Applause", "Bang", "Bark", "Bay", "Beep, bleep",
+    "Bellow", "Belly laugh", "Biting", "Bleat", "Boiling", "Booing", "Boom", "Bow-wow", "Breaking",
+    "Burping, eructation", "Burst, pop", "Busy signal", "Buzz", "Caterwaul", "Caw", "Change ringing (campanology)",
+    "Cheering", "Chewing, mastication", "Chink, clink", "Chirp, tweet", "Chop", "Chopping (food)", "Chorus effect",
+    "Chuckle, chortle", "Clapping", "Clickety-clack", "Clip-clop", "Cluck", "Clunk", "Coo", "Cough", "Crack",
+    "Crackle", "Creak", "Croak", "Crowing, cock-a-doodle-doo", "Crying, sobbing", "Dial tone", "Ding", "Ding-dong",
+    "Drip", "Eruption", "Fart", "Fill (with liquid)", "Footsteps", "Frying (food)", "Fusillade", "Gargling", "Gasp",
+    "Giggle", "Gobble", "Groan", "Growling", "Grunt", "Gurgling", "Gush", "Hiccup", "Hiss", "Honk", "Hoot", "Howl",
+    "Howl (wind)", "Idling", "Knock", "Laughter", "Meow", "Moo", "Neigh, whinny", "Nicker", "Oink", "Pant", "Patter",
+    "Pour", "Purr", "Quack", "Rattle", "Reversing beeps", "Ringing (of resonator)", "Ringtone", "Roar", "Run",
+    "Sanding", "Sawing", "Screaming", "Shatter", "Shout", "Shuffle", "Sigh", "Sizzle", "Skidding", "Slam", "Slosh",
+    "Smash, crash", "Snap", "Sneeze", "Snicker", "Sniff", "Snoring", "Snort", "Snort (horse)", "Sonic boom",
+    "Splash, splatter", "Splinter", "Spray", "Squawk", "Squeak", "Squish", "Stir", "Stomach rumble", "Tap",
+    "Throat clearing", "Thump, thud", "Thunk", "Tick", "Tick-tock", "Toot", "Train horn", "Train whistle",
+    "Trickle, dribble", "Typing", "Vehicle horn, car horn, honking", "Wail, moan", "Walk, footsteps", "Wheeze",
+    "Whimper", "Whoop", "Whoosh, swoosh, swish", "Wobble", "Wolf-whistling", "Writing", "Yawn", "Yell", "Yip",
+    "Bird vocalization, bird call, bird song", "Whistling", "Heart murmur", "Otoacoustic emission",
+    "Tinnitus, ringing in the ears", "Baby laughter", "Baby cry, infant cry", "Battle cry", "Children shouting",
+}
+NON_MAKERS = {
+    "Animal", "Wild animals", "Domestic animals, pets", "Livestock, farm animals, working animals", "Human sounds",
+    "Human voice", "Human group actions", "Human locomotion", "Respiratory sounds", "Digestive", "Breathing",
+    "Sounds of things", "Natural sounds", "Source-ambiguous sounds", "Generic impact sounds", "Onomatopoeia",
+    "Brief tone", "Clicking", "Other sourceless", "Miscellaneous sources", "Specific impact sounds",
+    "Domestic sounds, home sounds", "Mechanisms", "Tools", "Liquid", "Music", "Musical instrument", "Explosion",
+    "Sound equipment", "Heart sounds, heartbeat", "Arrow", "Channel, environment and background",
+}
+# how a maker label is drawn when its own name is a category-like plural or a material
+MAKER_NAME = {"Roaring cats (lions, tigers)": "lion", "Rodents, rats, mice": "mouse", "Cattle, bovinae": "cow",
+              "Wood": "piece of wood", "Fly, housefly": "housefly", "Canidae, dogs, wolves": "dog",
+              "Chicken, rooster": "chicken", "Pigeon, dove": "pigeon", "Bee, wasp, etc.": "bee",
+              "Boat, Water vehicle": "boat", "Motor vehicle (road)": "car", "Snake": "snake",
+              "Steam": "jet of steam", "Fire": "fire"}
+
+
+def is_action(label: str) -> bool:
+    return label in ACTION_LABELS
+
+
+# The official ontology keeps EVERY parent of a label (38 labels have several: Hiss < Cat, Snake, Steam, Onomatopoeia).
+# ancestors() / is_descendant() above read the single-parent map and stay as they are (the scoring and the family rule
+# use them); the maker decision reads all parents from the vendored src/audioset_ontology.json.
+_ONTO_PARENTS = None
+_ONTO_ABSTRACT = None
+# a parent that is a group of sounds, not a thing that makes one (in addition to NON_MAKERS and the ontology's own
+# "abstract" flag): an alarm is what a horn or a doorbell is FOR, not what makes it
+GROUP_PARENTS = {"Alarm", "Whistle", "Engine", "Siren"}
+
+
+def ontology_parents(label: str) -> list:
+    """All parents of a label in the official AudioSet ontology (src/audioset_ontology.json); falls back to the
+    single-parent map when the file is missing."""
+    global _ONTO_PARENTS, _ONTO_ABSTRACT
+    if _ONTO_PARENTS is None:
+        import json
+        from pathlib import Path
+        f = Path(__file__).resolve().parent / "audioset_ontology.json"
+        _ONTO_PARENTS, _ONTO_ABSTRACT = {}, set()
+        if f.exists():
+            d = json.loads(f.read_text(encoding="utf-8"))
+            byid = {x["id"]: x["name"] for x in d}
+            for x in d:
+                if "abstract" in (x.get("restrictions") or []):
+                    _ONTO_ABSTRACT.add(x["name"])
+                for c in x.get("child_ids") or []:
+                    _ONTO_PARENTS.setdefault(byid[c], []).append(x["name"])
+    if label in _ONTO_PARENTS:
+        return list(_ONTO_PARENTS[label])
+    p = _parents().get(label)
+    return [p] if p else []
+
+
+def _not_a_maker(x: str) -> bool:
+    ontology_parents(x)
+    return x in NON_MAKERS or x in ACTION_LABELS or x in (_ONTO_ABSTRACT or set())
+
+
+def ontology_senses(label: str) -> list:
+    """The label's senses as makers, one per parent branch, in ontology order: the nearest THING up each parent
+    (several parents -> several makers: Hiss -> Cat, Snake, Steam), and None for a branch that reaches no thing (an
+    abstract group such as Onomatopoeia, Brief tone, Generic impact sounds, Clicking: the label also has a generic,
+    source-less sense). A label that names a thing itself is its own single sense. Duplicates removed."""
+    if not _not_a_maker(label):
+        return [label]
+    out = []
+
+    def up(x, seen):
+        for p in ontology_parents(x):
+            if p in seen:
+                continue
+            if p in GROUP_PARENTS:
+                continue                  # what the sound is FOR (a horn is an alarm), neither a maker nor a sense
+            elif _not_a_maker(p):
+                before = len(out)
+                up(p, seen | {p})
+                if len(out) == before:
+                    out.append(None)
+            else:
+                out.append(p)
+    up(label, {label})
+    res = []
+    for m in out:
+        if m not in res:
+            res.append(m)
+    return res
+
+
+def ontology_maker(label: str):
+    """The sense anchor: the ONE thing that makes this sound in every sense the ontology gives it, else None (no
+    thing at all -- Bang, Thump; several things -- Hiss, Growling; or a thing plus a source-less sense -- Rattle,
+    Crack, Tap). A human sound has no thing maker (the maker is a person)."""
+    s = ontology_senses(label)
+    return s[0] if len(s) == 1 and s[0] is not None else None
+
+
+def maker_name(label: str) -> str:
+    return MAKER_NAME.get(label) or (label_names(label) or [label.lower()])[0]
+
+
+def maker_words(label: str) -> set:
+    """Words that name this maker in a subject (every name of the label, its drawing name, singular and plural)."""
+    out = set()
+    for n in label_names(label) + [maker_name(label)] + [MAKER_NAME.get(label, "")]:
+        for w in n.split():
+            if len(w) > 2:
+                out |= {w, w.rstrip("s"), w + "s"}
+    return out - {"motor", "piece", "wood", "water"} | ({"wood", "wooden", "plank", "branch", "log"}
+                                                        if label == "Wood" else set())
+
+
+def _thing_chain(label: str) -> set:
+    return {x for x in [label] + ancestors(label) if x not in NON_MAKERS and x not in ACTION_LABELS}
+
+
+def sense_consistent(maker_label, sound_label: str) -> bool:
+    """A maker is consistent with the sound's ontology sense when they share a THING in their chains (a bus and a
+    Toot share Motor vehicle; a car and a Honk share nothing). A person (None) is consistent with a human sound."""
+    if maker_label is None:
+        return "Human sounds" in ancestors(sound_label) or sound_label == "Human sounds"
+    if maker_label == sound_label or is_descendant(maker_label, sound_label):      # a kind of it (Typing > keyboard)
+        return True
+    if maker_label in ontology_senses(sound_label):                                 # one of its parents' senses
+        return True
+    return bool(_thing_chain(maker_label) & _thing_chain(sound_label))

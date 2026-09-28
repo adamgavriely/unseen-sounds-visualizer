@@ -163,3 +163,37 @@ adopted** -- checker validation 3/7 known-bad caught (target 7/7), 29/33 wrong c
 "driver's hand pressing the horn on the steering wheel" 0/4 pass (an interior close-up of a hand), "a car seen from the
 front with curved sound-wave lines coming out of its front grille" 4/4 pass and clear by eye, a goose (AudioSet's Honk)
 2/2 pass; not adopted until Adam chooses (Honk = goose or car horn).
+
+**Follow-up, 28 Sept (Adam): the ontology sense is the anchor.** A label word is read in its AudioSet sense, never its
+plain-English one (`labels.ontology_maker`, `labels.sense_consistent`, `tests/test_ontology_traps.py`). For an action
+label (the fixed list `labels.ACTION_LABELS`, read off the 346 drawable labels = 215 families + children) the default
+maker is the nearest ancestor that is a thing (`labels.NON_MAKERS` lists the grouping labels, and "Arrow", the
+single-parent map's artifact above Whoosh / Thump / Wobble). A maker outside that sense (a car for Honk) is taken only
+when the frames clearly show it, never from the subject's words. The checker's table is matched on the ontology label
+(a Honk selects the horn entry only when its subject names a vehicle; "Ding", a Brief tone, is no longer a bell by
+label). Traps found (label -> ontology maker; wrong plain reading): Honk -> goose (car horn); Toot -> car (flute);
+Tap -> door (water tap); Bark, Bay -> dog (tree bark; a bay); Crowing -> rooster (the bird crow); Rattle -> rattlesnake
+(baby rattle); Hiss -> cat (steam, tyre); Buzz -> housefly (buzzer); Squeak -> door (mouse, shoe); Patter -> mouse
+(rain); Growling -> dog (stomach); Roar -> lion (engine, sea); Tick -> clock (the insect); Crack, Snap, Chop -> wood
+(whip, finger snap, food); Nicker -> horse (underwear); Gobble -> turkey (eating); Purr -> cat (engine); Squawk -> bird
+(radio); Air horn / Vehicle horn / Train horn -> truck / car / train (a trumpet-shaped horn); Ding -> no maker (a bell).
+Thing names that are homonyms themselves (Mouse, Cricket, Crow, Fly) keep their drawn noun; DEPICT's "choose the meaning
+that makes a sound" line and the checker cover them. Effect on the 82: one subject changes -- the sliceB Honk, "A car
+honking" -> "a goose honking with its beak open" (frames unsure), 1 try, fine by eye. Adam's horn wording ("a car seen
+from the front with curved sound-wave lines coming out of its front grille") is the horn entry's rewrite (from try 3):
+97aoiaWwRVk car horn redrawn, 3 tries, fine by eye; the car version of the Honk clip also passed on try 3 and is kept
+in data/work/shipped_vh_sliceB_v32 for comparison.
+
+**Correction, 28 Sept: all parents, not one.** `src/audioset_parents.json` keeps one parent per label; the official
+ontology (`src/audioset_ontology.json`) gives 38 labels several (33 of them drawable). The maker decision now reads all
+parents (`labels.ontology_parents` / `ontology_senses`; `ancestors()` / `is_descendant()` are unchanged for scoring and
+the family rule). A parent that is an abstract group (Onomatopoeia, Brief tone, Generic impact sounds, Clicking, the
+ontology's "abstract" labels) is a source-less sense, not a maker; Alarm / Whistle / Engine / Siren as a parent say what
+the sound is for and are skipped. One sense -> that maker (Honk -> goose, Toot -> car, Bark -> dog, Caw -> crow, Roar ->
+lion, Patter -> mouse, Chop -> wood, Nicker -> horse, Gobble -> turkey). Several senses -> no forced maker: (1) a
+co-detected label at the same moment that is one of them decides (Steam with Hiss), else (2) the VLM's closed choice
+from the frames, else (3) the subject stays as it is. Several-sense traps: Hiss (cat, snake, steam, generic), Rattle
+(snake, generic), Growling (dog, cat, lion, wild dog), Buzz (fly, bee, generic), Tap / Knock / Squeak (door, generic),
+Tick (clock, generic), Crack / Snap (wood, generic), Clip-clop (horse, generic), Bleat (goat, sheep), Howl (dog, wild
+dog), Crackle (fire, generic), Chirp (bird, generic). On the 82: no further subject changes (the three Chirps name a
+bird and are kept); no redraw.

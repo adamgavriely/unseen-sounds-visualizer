@@ -238,6 +238,11 @@ PICTURE_LOOK_VLM = False
 # the checker's look-alike options for the AMBIGUOUS entries written by the VLM too (verify.lookalikes); adopted only if
 # scripts/verify_validate.py still meets the four validation targets
 PICTURE_LOOKALIKE_VLM = False
+# 2026-09-28 (Adam: a GENERIC method instead of the per-word table): PICTURE_SENSE draws from a 4-slot form the VLM fills
+# from the label, its ontology path and its official AudioSet description, adds negative words mined from 4 test
+# pictures of the plain subject, and checks with the mined look-alikes (src/stage6_visual_augmentation/sense.py; the
+# AMBIGUOUS table is not used). Off until docs/picture_sense_test_2026-09-28.md decides.
+PICTURE_SENSE = False
 # The place may veto a sound that plainly does not belong in it (a horse at a quarry
 # blast, an ice-cream truck on a train platform), never a sound people are reacting to
 # and never one the detector is more than 90% sure of. An assumption made at run time

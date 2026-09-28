@@ -1031,71 +1031,138 @@ def _depict_v31(spec, place: str, frames, fired, mdl, proc) -> str:
 # from the sound's own frames (same model, same frames as RESOLVE; one closed question, asked only here), exact match
 # against the list; unsure / no match -> the maker the subject already names, else the default (first in the list).
 # Key: the drawn source (spec.source) or the event label. Value: [(maker words, fixed subject)], default first.
-_PERSON = ("person", "man", "woman", "people", "child", "boy", "girl", "men", "women", "children")
+_PERSON = ("person", "man", "woman", "people", "child", "boy", "girl", "men", "women", "children", "baby", "infant",
+           "kid", "kids", "crowd", "audience")
+# Fixed subjects where the ontology maker alone would draw badly or where the word lists add a maker. Each maker is
+# (ontology label of the maker, or None for a person; words that name it in a subject; the fixed subject). Default
+# first. Every other ACTION label (labels.ACTION_LABELS) gets its maker from the ontology (labels.ontology_maker).
 MAKERS = {
-    "Laughter": [(_PERSON, "a person laughing")],
-    "Giggle": [(_PERSON, "a person giggling")],
-    "Chuckle, chortle": [(_PERSON, "a person chuckling")],
-    "Belly laugh": [(_PERSON, "a person laughing loudly")],
-    "Snicker": [(_PERSON, "a person snickering")],
-    "Baby laughter": [(("baby", "infant"), "a baby laughing")],
-    "Applause": [(_PERSON + ("audience", "crowd", "hands"), "an audience clapping their hands")],
-    "Clapping": [(_PERSON + ("hands",), "two hands clapping")],
-    "Run": [(_PERSON + ("runner", "feet"), "a person running")],
-    "Walk, footsteps": [(_PERSON + ("feet", "shoes", "walker"), "a person walking")],
-    "Typing": [(("keyboard",), "hands typing on a computer keyboard"),
-               (("typewriter",), "hands typing on a typewriter")],
-    # AudioSet "Honk" is the GOOSE's call (Goose > Fowl > Animal); "honk" is also the word lists' car horn
-    # (verify.AMBIGUOUS "horn"). Two makers, so the frames choose. Default: the ontology's goose.
-    "Honk": [(("goose", "geese"), "a goose honking with its beak open"),
-             (("car", "bus", "truck", "vehicle", "van", "taxi"), "a car sounding its horn")],
-    "Toot": [(("car",), "a car sounding its horn"), (("bus",), "a bus sounding its horn"),
-             (("truck", "lorry"), "a truck sounding its horn"), (("motorcycle", "scooter"), "a motorcycle sounding its horn")],
-    "Vehicle horn, car horn, honking": [(("car",), "a car sounding its horn"), (("bus",), "a bus sounding its horn"),
-                                        (("truck", "lorry"), "a truck sounding its horn"),
-                                        (("motorcycle", "scooter"), "a motorcycle sounding its horn")],
+    "Laughter": [(None, _PERSON, "a person laughing")],
+    "Giggle": [(None, _PERSON, "a person giggling")],
+    "Chuckle, chortle": [(None, _PERSON, "a person chuckling")],
+    "Belly laugh": [(None, _PERSON, "a person laughing loudly")],
+    "Snicker": [(None, _PERSON, "a person snickering")],
+    "Baby laughter": [(None, ("baby", "infant"), "a baby laughing")],
+    "Applause": [(None, _PERSON + ("hands",), "an audience clapping their hands")],
+    "Clapping": [(None, _PERSON + ("hands",), "two hands clapping")],
+    "Run": [(None, _PERSON + ("runner", "feet"), "a person running")],
+    "Walk, footsteps": [(None, _PERSON + ("feet", "shoes", "walker"), "a person walking")],
+    "Typing": [("Computer keyboard", ("keyboard",), "hands typing on a computer keyboard"),
+               ("Typewriter", ("typewriter",), "hands typing on a typewriter")],
+    # AudioSet "Honk" is the GOOSE's call (Honk > Goose > Fowl). The word lists' car horn is offered too, but it is
+    # not consistent with that sense, so it is taken only when the frames show it (never from the subject's words)
+    "Honk": [("Goose", ("goose", "geese"), "a goose honking with its beak open"),
+             ("Car", ("car", "bus", "truck", "vehicle", "van", "taxi"), "a car sounding its horn")],
+    "Toot": [("Car", ("car",), "a car sounding its horn"), ("Bus", ("bus",), "a bus sounding its horn"),
+             ("Truck", ("truck", "lorry"), "a truck sounding its horn"),
+             ("Motorcycle", ("motorcycle", "scooter"), "a motorcycle sounding its horn")],
+    "Vehicle horn, car horn, honking": [("Car", ("car",), "a car sounding its horn"),
+                                        ("Bus", ("bus",), "a bus sounding its horn"),
+                                        ("Truck", ("truck", "lorry"), "a truck sounding its horn"),
+                                        ("Motorcycle", ("motorcycle", "scooter"), "a motorcycle sounding its horn")],
 }
 MAKER_PROMPT = (
     "A sound detector heard: {sound}. What makes it may be out of view. These frames show where the video is."
     + chr(10) +
     "Which of these most likely made this sound here? {options}"
     + chr(10) +
-    "If none of them is visible or suggested by the place, or you are not sure, answer exactly: unsure. "
+    "If none of them is visible or suggested by the place, or you are not sure, answer exactly: unsure. {strict}"
     "Otherwise answer with one option exactly as written."
 )
+MAKER_STRICT = "Answer {alts} only if you can clearly see it in the frames. "
 MAKER_LOG: list = []          # one entry per changed subject (clip-agnostic; the caller adds the clip)
 
 
 def _maker_named(phrase: str, words) -> bool:
     got = set("".join(c if c.isalnum() else " " for c in (phrase or "").lower()).split())
-    return any(w in got or w + "s" in got for w in words)
+    return any(w in got or w + "s" in got or w + "es" in got for w in words)
 
 
-def with_maker(spec, phrase: str, frames, mdl, proc) -> str:
-    """PICTURE_MAKER: the subject for an action sound names the object that makes it (see MAKERS)."""
+def makers_for(src: str, event_label: str = ""):
+    """(makers, forced) for an action sound. makers = [(maker label or None for a person, words, fixed subject)],
+    default first. forced = the ontology gives this sound exactly ONE thing that makes it (Honk -> goose, Bark -> dog),
+    so a subject without it gets it. Not forced = several senses (Hiss < Cat, Snake, Steam, Onomatopoeia; Rattle <
+    Snake, Onomatopoeia): the maker comes only from a co-detected parent or the frames, else the subject stays as it
+    is. ([], False) for a sound that names a thing, or whose senses reach no thing (Bang, Thump: a burst card)."""
+    from src.labels import is_action, ontology_senses, maker_name, maker_words, ancestors
+    if src in MAKERS or (not src and event_label in MAKERS):
+        return (MAKERS.get(src) or MAKERS[event_label]), True
+    if not is_action(src):
+        return [], False
+    head = (label_names_safe(src) or [src.lower()])[0]
+    if "Human sounds" in ancestors(src):
+        return [(None, _PERSON, "a person making a " + head + " sound")], True
+    senses = ontology_senses(src)
+    things = [m for m in senses if m]
+    if not things:
+        return [], False
+    makers = [(m, tuple(sorted(maker_words(m))), "a " + maker_name(m) + " making a " + head + " sound") for m in things]
+    return makers, len(senses) == 1
+
+
+def label_names_safe(label):
+    from src.labels import label_names
+    return label_names(label)
+
+
+def codetected_for(spec, specs) -> list:
+    """Labels heard at the same moment as this sound (other planned sounds overlapping it, and its own sub-label)."""
+    out = [getattr(spec, "detail", "") or ""]
+    for g in specs or []:
+        if g is spec:
+            continue
+        if float(g.start) <= float(spec.end) and float(g.end) >= float(spec.start):
+            out += [g.event_label, getattr(g, "source", "") or "", getattr(g, "detail", "") or ""]
+    return [x for x in out if x]
+
+
+def with_maker(spec, phrase: str, frames, mdl, proc, codetected=()) -> str:
+    """PICTURE_MAKER: the subject for an action sound names the object that makes it, in the ONTOLOGY sense of the
+    label, over ALL its parents (labels.ontology_senses; "Honk" is a goose, "Hiss" is a cat, a snake or steam).
+    1. a co-detected label that is one of the makers (Steam heard with Hiss) decides; 2. else the VLM's closed choice
+    among the makers from the frames (a maker outside the ontology sense, labels.sense_consistent, only when the frames
+    clearly show it); 3. else: one-sense sounds get their maker (the subject's own, if it names a consistent one);
+    several-sense sounds keep the subject as it is -- no guessed maker."""
+    from src.labels import sense_consistent, is_descendant
     src = getattr(spec, "source", "") or spec.event_label
-    makers = MAKERS.get(src) or MAKERS.get(spec.event_label)
+    makers, forced = makers_for(src, spec.event_label)
     if not makers:
         return phrase
-    named = [i for i, (words, _) in enumerate(makers) if _maker_named(phrase, words)]
+    ok = [sense_consistent(m[0], src) for m in makers]
+    named = [i for i, (_, words, _) in enumerate(makers) if _maker_named(phrase, words)]
     pick, how = None, ""
-    if len(makers) > 1 and frames and mdl is not None:
-        names = [m[0][0] for m in makers]
-        ans = _clean_phrase(_ask(mdl, proc, MAKER_PROMPT.format(sound=src, options=", ".join(names)),
+    co = [i for i, m in enumerate(makers) if m[0] and any(c == m[0] or is_descendant(c, m[0]) for c in codetected)]
+    if len(co) == 1:
+        pick, how = co[0], "co-detected"
+    elif (len(makers) > 1 or not forced) and frames and mdl is not None:
+        table = src in MAKERS or spec.event_label in MAKERS         # table words; else the drawing name
+        names = [m[1][0] if table else _drawn(m) for m in makers]
+        alts = [n for n, c in zip(names, ok) if not c]
+        strict = MAKER_STRICT.format(alts=" or ".join(alts)) if alts else ""
+        ans = _clean_phrase(_ask(mdl, proc, MAKER_PROMPT.format(sound=src, options=", ".join(names), strict=strict),
                                  images=frames, max_new=8), max_words=3).lower()
         if ans in names:
             pick, how = names.index(ans), "frames"
         print("       [stage5] maker from frames: " + src + " -> " + (ans or "-"), flush=True)
-    if pick is None and named:
-        return phrase                                    # unsure: keep the maker the subject already names
-    if pick is not None and pick in named:
-        return phrase                                    # the frames agree with the subject
     if pick is None:
-        pick, how = 0, ("default" if len(makers) > 1 else "only maker")
-    new = makers[pick][1]
+        if not forced or any(ok[i] for i in named):
+            return phrase                        # several senses and nothing decides / the subject's maker is fine
+        pick = next(i for i, c in enumerate(ok) if c) if any(ok) else 0
+        how = "default" if len(makers) > 1 else "only maker"
+        if named:
+            how += ", subject's maker not in the ontology sense"
+    elif pick in named:
+        return phrase                            # the evidence agrees with the subject
+    new = makers[pick][2]
     MAKER_LOG.append({"label": spec.event_label, "source": src, "old": phrase, "new": new, "how": how})
     print("       [stage5] maker (" + how + "): " + src + ": " + repr(phrase) + " -> " + repr(new), flush=True)
     return new
+
+
+def _drawn(m) -> str:
+    """The option word for a maker in the closed question: its drawing name (goose, lion, piece of wood)."""
+    from src.labels import maker_name
+    return maker_name(m[0]) if m[0] else m[1][0]
 
 
 # GP-4 two-step prompt (five-panel, 2026-09-25): the frames choose the thing (RESOLVE, above); a TEXT-ONLY
@@ -1500,7 +1567,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 (getattr(spec, "source", "") or spec.event_label).split(",")[0].split("(")[0].strip()
                 + " making its sound")
             if getattr(config, "PICTURE_MAKER", False):
-                phrase = with_maker(spec, phrase, spec_frames.get(id(spec)), mdl, proc)
+                phrase = with_maker(spec, phrase, spec_frames.get(id(spec)), mdl, proc,
+                                    codetected=codetected_for(spec, specs))
             spec.subject = phrase
             spec.reason += " | depiction (v3, source " + (getattr(spec, "source", "") or "-") + "): " + phrase
             spec.image_prompt = spec.subject

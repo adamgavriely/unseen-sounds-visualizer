@@ -37,11 +37,11 @@ import config
 # try 3 on (with extra negative-prompt words: a diffusion model draws what a prompt names, "no megaphone" included).
 # Order matters: the first entry that applies wins.
 AMBIGUOUS = [
-    {"name": "car_alarm", "sound": {"car alarm"}, "subject": [],
+    {"name": "car_alarm", "labels": {"Car alarm"}, "subject": [],
      "intended": "a parked car with its lights flashing",
      "confusions": ["a police car with a light bar", "an alarm bell"],
      "rewrite": None, "neg": ""},
-    {"name": "smoke_alarm", "sound": {"smoke detector", "smoke alarm"}, "subject": ["smoke detector", "smoke alarm"],
+    {"name": "smoke_alarm", "labels": {"Smoke detector, smoke alarm"}, "subject": ["smoke detector", "smoke alarm"],
      "intended": "a smoke detector", "maker": "smoke detector", "noise": "alarm",
      # 28 Sept (Adam): + dome / CCTV camera -- round 3 passed a dome security camera wreathed in smoke
      "confusions": ["a security camera", "a ceiling lamp", "a dome security camera", "a CCTV camera"],
@@ -49,43 +49,48 @@ AMBIGUOUS = [
      # 28 Sept (Adam): the rewrite from try 1 -- the checker passes a dome camera as a smoke detector, and only the
      # rewrite drew a real one (round 2, try 3)
      "rewrite_first": True},
-    {"name": "alarm_bell", "sound": {"alarm", "fire alarm", "alarm bell"}, "subject": ["alarm bell", "fire alarm"],
+    {"name": "alarm_bell", "labels": {"Alarm", "Fire alarm"}, "subject": ["alarm bell", "fire alarm"],
      "intended": "a fire alarm (a bell or alarm box on a wall)", "maker": "fire alarm bell", "noise": "alarm",
      "confusions": ["a desk bell (service bell)", "a church bell", "a telephone"],
      "rewrite": "a red fire-alarm bell mounted on a wall, ringing", "neg": "desk bell, service bell, counter"},
-    {"name": "horn", "sound": {"toot", "honk", "vehicle horn", "car horn", "honking", "air horn"},
-     "subject": ["honk", "horn"],
-     # AudioSet "Honk" is a goose (Goose > Fowl): a goose subject is not a horn (PICTURE_MAKER, 28 Sept)
-     "unless_subject": ["goose", "geese"],
+    # matched on the ONTOLOGY label (28 Sept): AudioSet "Honk" is a goose (Honk > Goose > Fowl), so the label Honk
+    # never selects this entry; a Honk whose subject names a vehicle (the frames showed a car) still does
+    {"name": "horn", "labels": {"Toot", "Vehicle horn, car horn, honking", "Air horn, truck horn"},
+     "subject": ["honk", "horn"], "subject_requires": ["car", "bus", "truck", "vehicle", "van", "taxi", "motorcycle",
+                                                       "scooter", "lorry"],
      "intended": "a {veh} sounding its horn", "maker": "{veh}", "noise": "horn",
      "confusions": ["a megaphone or loudspeaker", "a vehicle with a megaphone or loudspeaker on it",
                     "a trumpet or musical horn",
                     # 28 Sept: the sliceB Honk redraw passed with a trumpet-shaped horn stuck in a car's grille
                     "a vehicle with a large trumpet-shaped horn stuck on it"],
-     "rewrite": "a {veh} on a street with its horn sounding, seen from the front",
+     # Adam, 28 Sept (an image is always preferred over a word card): the wording that passed 4/4 on the sliceB Honk
+     # clip and the 97ao horn clip (scripts/horn_trials.py); the steering-wheel wording passed 0/4
+     "rewrite": "a {veh} seen from the front with curved sound-wave lines coming out of its front grille",
      "neg": "megaphone, loudspeaker, bullhorn, trumpet, horn-shaped object, speaker cone"},
-    {"name": "steam", "sound": {"steam"}, "subject": ["steam"],
+    {"name": "steam", "labels": {"Steam"}, "subject": ["steam"],
      "intended": "steam hissing out of a pipe or valve", "maker": "jet of steam", "noise": "hissing",
      "confusions": ["a kettle", "smoke from a fire", "a cloud"],
      "rewrite": "white steam hissing out of a metal pipe valve", "neg": "kettle, teapot, cup, pot"},
-    {"name": "crowd", "sound": {"crowd", "cheering", "hubbub, speech noise, speech babble"},
+    {"name": "crowd", "labels": {"Crowd", "Cheering", "Hubbub, speech noise, speech babble"},
      "subject": ["crowd"],
      "intended": "a crowd of people", "maker": "crowd of people", "noise": "cheering",
      "confusions": ["a flock of birds", "a single person", "a building or landscape"],
      "rewrite": "a crowd of people cheering with raised arms", "neg": "birds, crows, ravens, animals"},
-    {"name": "typing", "sound": {"typing", "computer keyboard", "typewriter"}, "subject": ["typing", "keyboard"],
+    {"name": "typing", "labels": {"Typing", "Computer keyboard", "Typewriter"}, "subject": ["typing", "keyboard"],
      "intended": "hands typing on a keyboard", "maker": "computer keyboard", "noise": "typing",
      "confusions": ["a person's face", "a computer screen"],
      "rewrite": "two hands typing on a computer keyboard, seen from above", "neg": "face, head, mouth"},
     # 28 Sept (Adam): the sliceB rattle passed on try 3 as a ball of yarn. The instrument only: AudioSet's plain
     # "Rattle" is a rattling noise (a loose part, a vehicle), not a thing to draw as a toy.
-    {"name": "rattle", "sound": {"rattle (instrument)", "maraca", "maracas"},
+    {"name": "rattle", "labels": {"Rattle (instrument)", "Maraca"},
      "subject": ["rattle instrument", "baby rattle", "maraca"],
      "intended": "a rattle or maraca being shaken", "maker": "maraca", "noise": "rattle",
      "confusions": ["a ball of yarn", "a spinning top", "a toy ball"],
      "rewrite": "a hand shaking a wooden maraca, a rattle instrument with a handle",
      "neg": "yarn, wool, thread, spinning top, ball, swirl"},
-    {"name": "bell", "sound": {"bell", "ding", "chime", "church bell", "jingle bell"}, "subject": ["bell"],
+    # "Ding" is not here: in the ontology it is a Brief tone (Onomatopoeia), not a bell; a Ding drawn as a bell is
+    # still matched by its subject
+    {"name": "bell", "labels": {"Bell", "Chime", "Church bell", "Jingle bell"}, "subject": ["bell"],
      "intended": "a bell",
      "confusions": ["a desk bell (service bell)", "a lamp"],
      "rewrite": None, "neg": ""},
@@ -172,13 +177,16 @@ def _vehicle(spec, subject: str) -> str:
 
 def ambiguous_entry(spec, subject: str) -> Optional[dict]:
     """The AMBIGUOUS entry that applies to this sound, with {veh} filled in; None for an ordinary sound."""
-    names = set(_sound_names(spec))
+    labels = {getattr(spec, "source", "") or "", spec.event_label or ""} - {""}
     subj = (subject or "").lower()
     for e in AMBIGUOUS:
-        if names & e["sound"] or any(re.search(r"\b" + re.escape(p), subj) for p in e["subject"]):
-            if getattr(config, "PICTURE_MAKER", False) and any(re.search(r"\b" + re.escape(p), subj)
-                                                               for p in e.get("unless_subject", [])):
-                continue
+        # the sound is matched on its ontology LABEL, never on a loose word of it ("honk" is the label of a goose's
+        # call); the subject on words, and only when it also names the entry's kind of maker where one is required
+        by_label = bool(labels & e["labels"])
+        by_subject = any(re.search(r"\b" + re.escape(p), subj) for p in e["subject"]) and (
+            not e.get("subject_requires") or any(re.search(r"\b" + re.escape(w) + r"s?\b", subj)
+                                                 for w in e["subject_requires"]))
+        if by_label or by_subject:
             veh = _vehicle(spec, subject)
             f = lambda x: x.format(veh=veh) if isinstance(x, str) else x
             return {**e, "intended": f(e["intended"]), "rewrite": f(e["rewrite"]), "maker": f(e.get("maker")),

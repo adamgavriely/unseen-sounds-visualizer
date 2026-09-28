@@ -469,7 +469,16 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
     learned, saw_text = [], False               # refinement carried from each refused try to the next
     if verify:
         from src.stage6_visual_augmentation.verify import rewrite_first
-    first = bool(verify and rewrite_first(spec, subject))
+    # PICTURE_SENSE (src/stage6_visual_augmentation/sense.py, 28 Sept, test docs/picture_sense_test_2026-09-28.md): the
+    # generic method instead of the AMBIGUOUS table -- the slot sentence and the mined negatives from try 1, sense.check;
+    # templates are left as they are
+    sense = bool(verify and getattr(config, "PICTURE_SENSE", False))
+    sp = None
+    if sense and not key:
+        from src.stage6_visual_augmentation.sense import plan as sense_plan
+        sp = sense_plan(spec, subject, model, device, size)
+        log["sense"] = sp
+    first = bool(verify and not sense and rewrite_first(spec, subject))
     for t in range(tries):
         # PICTURE_VERIFY (src/stage6_visual_augmentation/verify.py): try 1 is exactly the shipped picture (same seed);
         # each later try a new seed (stride 1000, clear of the blank guard's +1); from try 3 the clearer fixed rewrite
@@ -477,11 +486,14 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
         # 28 Sept): every refused try adds what the VLM saw instead (verify.feedback_negative) to the next negative, and
         # text found by OCR switches "no text" on from the next try
         subj_t, prompt_t, neg_t, seed_t = subject, prompt, neg, seed + 1000 * t
+        if sp:
+            subj_t, prompt_t = sp["subject"], sp["subject"] + RULES_TAIL
+            neg_t = ", ".join(x for x in (screen_negative(subj_t), sp["neg"]) if x) or " "
         # an entry flagged rewrite_first (smoke detector, Adam 28 Sept) uses its clearer fixed wording from try 1: the
         # checker cannot tell its look-alike (a dome camera) from it, so only the wording keeps the look-alike out
         if t >= 2 or saw_text or first:
             from src.stage6_visual_augmentation.verify import rewrite_for
-            rw = rewrite_for(spec, subject)
+            rw = None if sense else rewrite_for(spec, subject)
             if rw:
                 subj_t = rw["subject"]
                 neg_t = ", ".join(x for x in (screen_negative(subj_t), TEMPLATE_NEG.get(key or "", ""), rw["neg"])
@@ -497,7 +509,10 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
             print(f"       [stage6] {spec.event_label}: the picture came out nearly blank; redrew it")
         if not ok or not verify:
             break
-        from src.stage6_visual_augmentation.verify import check
+        if sense:
+            from src.stage6_visual_augmentation.sense import check
+        else:
+            from src.stage6_visual_augmentation.verify import check
         res = check(path, spec, subject, salt=0, tag=work_dir.name)
         log["tries"].append({"try": t + 1, "seed": seed_t, "prompt": prompt_t, "ok": res["ok"],
                              "picked": res["mc"]["picked"], "intended": res["mc"]["intended"],
@@ -507,7 +522,7 @@ def _final_picture(spec, path: Path, work_dir: Path, query: str, size, model: st
         if res["ok"]:
             break
         from src.stage6_visual_augmentation.verify import feedback_negative
-        fb = feedback_negative(res["mc"]["picked"], res["mc"]["intended"], subject, spec)
+        fb = feedback_negative(res["mc"]["picked"], res["mc"]["intended"], subj_t if sp else subject, spec)
         for w in (x.strip() for x in fb.split(",")):
             if w and w not in learned:
                 learned.append(w)

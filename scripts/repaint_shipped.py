@@ -151,7 +151,12 @@ def redo_only(a):
             if config.PICTURE_MAKER:
                 mdl, proc = V._vlm()
                 frames = _sample_frames_at(vp, spec_frames_times(s))
-                s.subject = R.with_maker(s, s.subject, frames, mdl, proc)
+                allspecs = [AugmentationSpec(**{k: v for k, v in x.items() if k in AugmentationSpec.__dataclass_fields__})
+                            for x in old_raw if x.get("augment")]
+                events = json.loads((d / "events.json").read_text(encoding="utf-8"))
+                codet = R.codetected_for(s, allspecs) + [e["label"] for e in events
+                                                         if e["start"] <= s.end and e["end"] >= s.start]
+                s.subject = R.with_maker(s, s.subject, frames, mdl, proc, codetected=codet)
             for f in (d / "augmentations").glob(f"aug_{s.index:03d}_try*.png"):
                 f.unlink()                                      # the old tries belong to the old picture
             path = d / "augmentations" / f"aug_{s.index:03d}.png"
