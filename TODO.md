@@ -8,11 +8,10 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [x] Round 12 STOPPED at step 1 (28 Sept, job 31330706): under the corrected cost v2 (MID names, depictable filter, runs merged <= 2 s, video hit window) ours is WORSE than showing nothing on the 280 (1.650 vs 0.986, d +0.664 [+0.379, +0.950]); its 159 false spans alone cost 1.136. By the prereg the AudioSet harness cannot track the task; no cell re-scored, no new cell, nothing on 415/DEV/fresh, no src change. `docs/prereg_round12_v2.md`
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [ ] Fresh confirmation set caches (job 31330209 RUNNING; BEATs, PANNs, PE-A-Frame 422/422; FlexSED 20/422) — then check 4 cache folders × 422 `.npz` (do not read logs/freshc_*.out). Nothing may be scored on it until a candidate passes the 415.
-- [ ] Picture wording 3-arm test (jobs 31330354 prep → 31330355 A+B, 31330356 C): when done, pull results, blind verdicts BEFORE opening key.json, `scripts/picture_sense_sheet.py --phase blind/table/sheet`, results into `docs/picture_sense_test_2026-09-28.md`. Watch the weak slot forms (dental drill "patient's mouth").
 
 ## Later
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
-- [ ] **Mistake mining for all 215 drawable labels** (one-time, ~4–7 GPU h, at night) — only if the a+b test adopts the new method. Re-run whenever the picture model changes.
+- [ ] (Only if a fixed generic method wins a new test) mistake mining for all 215 labels at night. Possible fixes for a new test: more specific object slot, allow hands for human-action makers, better mining judge.
 - [ ] Final check on the fresh set for whatever passes round 8 (and 7b), then decide on the detector (BEATs stays unless something passes).
 - [ ] URGENT before any cluster pipeline run: sync `src/stage4_audio_event_detection/__init__.py` (cluster copy lacks the self-veto; use_shipped() sets PANNS_VETO 0 → NO veto at all on FlexSED-only spans) and `config.py`, when no job imports them.
 - [ ] Update thesis ch5/ch6 with: external baselines, confidence floor, BEATs self-veto, family-rule fix, display rules, picture check + maker rule, rounds 4–8, sensitivity rows, sitting cancelled.
@@ -21,9 +20,11 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Cluster disk: delete the PE-A-Frame `perception_models` revision (6.1 GB, fetched for 7b) after fresh caches job 31330209 ends (only that revision's snapshot/blobs); sam-audio-large + 7b wavs being deleted now; `shipped_v2_*`, `shipped_v_*_r1` folders.
 
 ## Waiting on Adam
+- [ ] Look at the picture wording contact sheet `docs/picture_sense_test/index.html` (confirm/override the blind by-eye verdicts); decide: drop the generic method or run a new test with its fixes.
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-28 Picture wording test: hand table 7/7 vs new generic 3/7 on known cases, tie on 25 unseen → hand table stays.
 - 2026-09-28 Round 10 (280): DASM agreement filters band rescues well (7 rescued, 12 false); 9 of 61 reachable, 22 blocked by the 0.5-s minimum (4b5f446, f6d2cc3). Round 11 (280): masker tests separate nothing (latest commit).
 - 2026-09-28 Label sense traps: makers from all ontology parents; multi-sense labels never guessed; Honk → goose; horn sound-wave wording (0429a0e).
 - 2026-09-28 Detector round 7b: SAM-Audio retry fails QC again (music not removed); separation idea closed (6133f4f).
