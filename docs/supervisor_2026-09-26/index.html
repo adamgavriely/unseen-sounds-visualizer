@@ -177,18 +177,21 @@ textarea.notes{min-height:160px}
 <div class="wrap">
 
 <header>
-  <div class="num-h">MSc project · Adam Gavriely · Bar-Ilan · 27 Sept 2026</div>
+  <div class="num-h">MSc project · Adam Gavriely · Bar-Ilan · status 28 Sept 2026</div>
   <h1>Seeing off-screen sound</h1>
   <p class="lede">A deaf viewer misses sounds that are heard but not seen. Our system finds those sounds and shows a small picture of them beside the video. No model was trained; existing models are chained.</p>
-  <div class="oneline"><b>In one line:</b> F1, the main number I registered, is a tie. But the gate shows <b>half as many wrong pictures</b> as drawing every sound, and the real sounds it loses are <b>too few to measure</b>. Sections 3–5 show why.</div>
+  <div class="oneline"><b>In one line:</b> against <b>existing approaches</b> (a strong sound detector + a picture for every sound it finds), ours wins clearly: <b>F1 +0.25, significant</b> (section 4). Against our own <b>pipeline without gate</b>, F1 is a tie, but the gate shows <b>half as many wrong pictures</b>, and the real sounds it loses are <b>too few to measure</b>. Sections 3–6 show why.</div>
 
   <div class="keys">
     <div class="key"><b><span class="dot" style="background:var(--ours)"></span>Ours</b>Draws a sound only if its source is <em>not</em> on screen (the “gate”).</div>
-    <div class="key"><b><span class="dot" style="background:var(--blind)"></span>Draw every sound</b>Baseline: same detector, no gate — draws everything it hears.</div>
+    <div class="key"><b><span class="dot" style="background:var(--blind)"></span>Pipeline without gate</b>Baseline: our same system with only the gate removed — it draws every sound it hears. (Earlier pages called it “blind” or “draw every sound”.)</div>
     <div class="key"><b><span class="dot" style="background:var(--sil)"></span>Show nothing</b>Baseline: no pictures at all (what a deaf viewer gets today).</div>
-    <div class="key"><b>Viewer cost (a model, not measured)</b>4 points per missed sound + 2 per wrong picture. Lower is better. The “2” (called β) is our guess; section 3 shows other values.</div>
+    <div class="key"><b>Existing approaches</b>Baselines from outside the project: one published sound detector (PretrainedSED or PANNs) + a picture for every sound it finds. Section 4.</div>
+    <div class="key"><b>Viewer cost (a model, not measured)</b>4 points per missed sound + 2 per wrong picture. Lower is better. The “2” (called β) is our guess; sections 3 and 5 show other values.</div>
     <div class="key"><b>DEV / TEST</b>49 clips we developed on / 60 clips held back and scored once at the end.</div>
     <div class="key"><b>Significant</b>Still holds after correcting for testing many numbers at once.</div>
+    <div class="key"><b>Held-out AudioSet clips</b>415 short clips with human time-stamped sound labels (AudioSet-Strong), not used to choose settings. We test detector changes there, so TEST stays untouched.</div>
+    <div class="key"><b>Frozen table / after it</b>The final TEST table (26 Sept) does not change. Anything changed later is marked “after the frozen table”, with where it was tested.</div>
   </div>
 
 </header>
@@ -201,13 +204,13 @@ textarea.notes{min-height:160px}
 <div role="tabpanel" id="presentation" aria-labelledby="tab-presentation" tabindex="0">
 
   <nav class="toc" aria-label="Sections">
-    <a href="#s1">1 Idea</a><a href="#s2">2 System</a><a href="#s3">3 Main result</a><a href="#s4">4 Where the gate helps</a><a href="#s5">5 Why F1 ties</a><a href="#s6">6 Examples</a><a href="#s7">7 Pictures</a><a href="#s8">8 Timing fix</a><a href="#s9">9 What we tried</a><a href="#s10">10 Limits</a><a href="#s11">11 This week</a><a href="#questions">Questions →</a>
+    <a href="#s1">1 Idea</a><a href="#s2">2 System</a><a href="#s3">3 Main result</a><a href="#s-ext">4 Existing approaches</a><a href="#s4">5 Where the gate helps</a><a href="#s5">6 Why sounds are missed</a><a href="#s6">7 Examples</a><a href="#s7">8 Pictures</a><a href="#s8">9 Timing + display</a><a href="#s9">10 What we tried</a><a href="#s10">11 Limits</a><a href="#s11">12 This week</a><a href="#questions">Questions →</a>
   </nav>
 
 <section id="s1">
   <div class="num-h">1 · The idea</div>
   <h2>Draw a sound only when the viewer cannot see where it comes from</h2>
-  <p class="look">Press play on both. Left: a siren is heard but no ambulance is on screen → a picture appears on the right. Right: the waterfall is on screen → nothing is drawn.</p>
+  <p class="look">Press play on both (these videos are the scored version, with the older FLUX pictures). Left: a siren is heard but no ambulance is on screen → a picture appears on the right. Right: the waterfall is on screen → nothing is drawn.</p>
   <div class="grid g2">
     <div class="card">
       <video controls preload="none" poster="media/dev_ours_ambulance.jpg" src="media/dev_ours_ambulance.mp4"></video>
@@ -224,91 +227,113 @@ textarea.notes{min-height:160px}
 <section id="s2">
   <div class="num-h">2 · The system</div>
   <h2>Six steps; every model was picked by a test written before it ran</h2>
-  <p class="look">The chain below (the three framed boxes are the core), then the table: what we use, what else we tried, and why ours won.</p>
+  <p class="look">The chain below (the three framed boxes are the core), then the table: what we use today (28 Sept), what else we tried, and why ours won. Rows marked <b>after the frozen table</b> changed after the final TEST table was scored; each says where it was tested.</p>
   <div class="pipe">
     <div class="stage"><div class="n">1</div><div class="t">Sound + speech out of the video</div><div class="m">ffmpeg · Whisper</div></div>
-    <div class="stage key2"><div class="n">2</div><div class="t">Which sounds are there, when?</div><div class="m">BEATs + FlexSED, 2 filters</div></div>
+    <div class="stage key2"><div class="n">2</div><div class="t">Which sounds are there, when?</div><div class="m">BEATs + FlexSED, 2 cross-checks, confidence floor 0.40</div></div>
     <div class="stage"><div class="n">3</div><div class="t">Can it be drawn?</div><div class="m">sound-category list</div></div>
-    <div class="stage key2"><div class="n">4</div><div class="t">Is its source on screen?</div><div class="m">Qwen3.8-27B looks at frames</div></div>
-    <div class="stage"><div class="n">5</div><div class="t">What exactly to draw</div><div class="m">Qwen3.8-27B + word lists</div></div>
-    <div class="stage key2"><div class="n">6</div><div class="t">Draw it beside the video</div><div class="m">image generator</div></div>
+    <div class="stage key2"><div class="n">4</div><div class="t">Is its source on screen?</div><div class="m">Qwen3.8-27B looks at frames + family rule (one direction)</div></div>
+    <div class="stage"><div class="n">5</div><div class="t">What exactly to draw</div><div class="m">Qwen3.8-27B names the source (guarded) · fixed pictures + word cards for hard sounds</div></div>
+    <div class="stage key2"><div class="n">6</div><div class="t">Draw it, check it, show it</div><div class="m">Qwen-Image-2512 · picture check (up to 4 tries, then a word card) · display rules</div></div>
   </div>
   <div class="tablewrap">
     <table>
       <thead><tr><th>Step</th><th>We use</th><th>Also tried (incl. newest models)</th><th>Why ours</th></tr></thead>
       <tbody>
-        <tr><td>2 · Detect sounds</td><td class="mono">BEATs + FlexSED</td><td>PANNs, PretrainedSED (5 versions), FLAM ×2, AST, CED, SSLAM, CLAP, Qwen2-Audio</td><td>Only combination that found more sounds <em>and</em> halved false alarms; 11 others failed their test</td></tr>
-        <tr><td>2 · Remove false alarms</td><td class="mono">two cross-checks (FlexSED, PANNs)</td><td>AST/CED vote, sound separation (Demucs, HTDemucs), noise removal</td><td>Removed many false alarms (the precision gain is significant on TEST only, not on DEV)</td></tr>
-        <tr><td>4 · Source on screen?</td><td class="mono">Qwen3.8-27B, 3 questions, majority</td><td>CLIP, SigLIP, OWLv2, SAM 3, Qwen2.5-VL 7B and 32B, video input, sound–motion sync</td><td>Best agreement with the human labels (0.62); object detectors were at chance (0.50)</td></tr>
-        <tr><td>5 · What to draw</td><td class="mono">Qwen3.8 + word lists</td><td>Letting the model write the whole prompt</td><td>Free writing invented objects (a door for a thud); fixed lists cannot</td></tr>
-        <tr><td>6 · Picture</td><td class="mono">Qwen-Image-2512</td><td>Photo search, SDXL, SDXL-Turbo, PixArt-Σ, FLUX, Qwen-Image-2.1</td><td>Recognised far more often in a blind test (section 7); open licence; the newer 2.1 was no better</td></tr>
-        <tr><td>Automatic judge</td><td class="mono">Gemma-4-31B</td><td>Mistral-7B, 6 other picture checkers</td><td>Agreed with the human labels on all three trust checks; Mistral and the picture checkers did not</td></tr>
+        <tr><td>2 · Detect sounds</td><td class="mono">BEATs + FlexSED</td><td>PANNs, PretrainedSED (5 versions), FLAM ×2, AST, CED, SSLAM, CLAP, Qwen2-Audio, PE-A-Frame (Meta, Dec 2025), Qwen3-Omni as a “listener”, all 3 detectors must agree. <b>Running now:</b> EAT-large, Dasheng-base</td><td>Only combination that found more sounds <em>and</em> halved false alarms. Every other one failed its test (e.g. PE-A-Frame AUROC 0.53, where 0.5 = coin toss). A search for newer taggers (EAT, Dasheng, OpenBEATs, M2D, BAT, COSED) found nothing public that clearly beats BEATs</td></tr>
+        <tr><td>2 · Remove false alarms</td><td class="mono">two cross-checks: FlexSED + BEATs self-check</td><td>PANNs cross-check (used in the frozen table), AST/CED vote, sound separation (Demucs, HTDemucs), noise removal, speech/music-aware bar, end-trim</td><td><b>After the frozen table</b> (held-out AudioSet, 415 clips): the BEATs self-check does the PANNs job at the same cost (+0.005 [−0.048, +0.067]; recall 49.7 % vs 49.1 %), so the system needs 2 detectors, not 3. The frozen TEST table was scored with PANNs</td></tr>
+        <tr><td>2 · Confidence floor</td><td class="mono">show a picture only if confidence ≥ 0.40</td><td>no floor</td><td><b>After the frozen table</b>, chosen on DEV, then tested once on the 415 held-out clips: cost −0.227 [−0.304, −0.154], significant. Adopted</td></tr>
+        <tr><td>4 · Source on screen?</td><td class="mono">Qwen3.8-27B, 3 questions, majority</td><td>CLIP, SigLIP, OWLv2, SAM 3, Qwen2.5-VL 7B and 32B, video input, sound–motion sync, “name it, then point at it” (SAM 3 or OWLv2)</td><td>Best agreement with the human labels (0.62); object detectors were at chance (0.50). Pointing raised the cost on DEV in every version (section 10)</td></tr>
+        <tr><td>4 · Family rule</td><td class="mono">a visible sound silences only the same or a more general label</td><td>the old rule, which worked both ways</td><td><b>Bug fix after the frozen table</b> (section 7, war film example). Simulated on the scored renders only: TEST 16 → 18 hits, 25 → 28 wrong, cost 2.63 → 2.60; DEV no new hits, 24 → 28 wrong (cost 2.78 → 2.94). Kept as a logic fix. Found while inspecting a TEST clip (disclosed)</td></tr>
+        <tr><td>5 · What to draw</td><td class="mono">Qwen3.8 names the source from fixed word lists, with a guard; fixed pictures and word cards for hard sounds</td><td>Letting the model write the whole prompt</td><td>Free writing invented objects (a door for a thud); fixed lists cannot. Example of a word card: “WHOOSH” for a whoosh, which no object makes</td></tr>
+        <tr><td>6 · Picture</td><td class="mono">Qwen-Image-2512 (shipped 28 Sept)</td><td>Photo search, SDXL, SDXL-Turbo, PixArt-Σ, FLUX (now retired), Qwen-Image-2.1</td><td>Recognised far more often in a blind test (section 8); open licence; the newer 2.1 was no better</td></tr>
+        <tr><td>6 · Picture check</td><td class="mono">Qwen3.8-27B multiple choice + text check (OCR)</td><td>none (new)</td><td><b>After the frozen table</b>, checked on known pictures before use: caught 7/7 known bad and 33/33 deliberately wrong pictures; wrongly rejected 3 of 68 good ones (section 8)</td></tr>
+        <tr><td>Automatic judge</td><td class="mono">Gemma-4-31B</td><td>Mistral-7B, 6 picture scorers</td><td>Agreed with the human labels on all three trust checks; Mistral and the picture scorers did not</td></tr>
       </tbody>
     </table>
   </div>
-  <p class="why">Nothing was picked by taste. Every swap had a pass/fail bar written down before the run, so the choices are defensible.</p>
+  <p class="why">Nothing was picked by taste. Every swap had a pass/fail bar written down before the run, so the choices are defensible. Detector changes are tested on held-out AudioSet clips, not on TEST.</p>
 </section>
 
 <section id="s3">
-  <div class="num-h">3 · Main result (TEST, 60 clips, scored once)</div>
-  <h2>Against “draw every sound”: F1 is a tie, but wrong pictures fall by half</h2>
+  <div class="num-h">3 · Main result (TEST, 60 clips, scored once — the frozen table)</div>
+  <h2>Against the pipeline without gate: F1 is a tie, but wrong pictures fall by half</h2>
   <p class="look">The four boxes, left to right, in the order I will report them. Then the chart: green lines = significant win for us; grey lines cross zero = no clear difference. Filled dots = TEST, hollow = DEV.</p>
   <div class="nums">
     <div class="num null"><div class="k">1 · F1 (the main metric I registered)</div><div class="val"><span class="o">0.38</span> vs <span class="b">0.32</span></div><div class="ci">+0.059 [−0.030, +0.144]</div><div class="d n">not significant. To see a gain this small we would need ~320–570 clips (smallest gain we can see: 0.13)</div></div>
     <div class="num lead"><div class="k">2 · Wrong pictures per clip (lead result)</div><div class="val"><span class="o">0.42</span> vs <span class="b">0.93</span></div><div class="ci">−0.52 [−0.80, −0.28], Holm p &lt; 0.001</div><div class="d">half as many; same on DEV. Real sounds lost: −0.07 [−0.15, 0.00] recall, no detectable price</div></div>
     <div class="num"><div class="k">3 · Share of pictures that are right</div><div class="val"><span class="o">0.39</span> vs <span class="b">0.25</span></div><div class="ci">+0.137 [+0.043, +0.256]</div><div class="d n">significant on TEST only; not replicated on DEV</div></div>
-    <div class="num"><div class="k">4 · Viewer cost per clip (modelled, β = 2)</div><div class="val"><span class="o">2.6</span> vs <span class="b">3.5</span></div><div class="ci">−0.83 [−1.43, −0.30]</div><div class="d">significant. Ours is cheaper whenever a wrong picture costs more than 0.39 points (TEST) / 0.46 (DEV)</div></div>
+    <div class="num"><div class="k">4 · Viewer cost per clip (modelled, β = 2)</div><div class="val"><span class="o">2.6</span> vs <span class="b">3.5</span></div><div class="ci">−0.83 [−1.43, −0.30]</div><div class="d">significant. Ours has the lower cost (the point estimate) whenever a wrong picture costs more than 0.39 points (TEST) / 0.46 (DEV)</div></div>
   </div>
-  <div class="fig"><img src="fig/test_vs_blind.png" alt="Differences between ours and draw-every-sound, with confidence intervals, on TEST and DEV"></div>
-  <p class="why">The gate does what it should: it removes pictures of things already on screen. It also silences a few real sounds, and F1 counts those losses as heavily as the gains, so F1 ties (section 5).</p>
+  <div class="fig"><img src="fig/test_vs_blind.png" alt="Differences between ours and the pipeline without gate, with confidence intervals, on TEST and DEV"></div>
+  <p class="why">The gate does what it should: it removes pictures of things already on screen. It also silences a few real sounds, and F1 counts those losses as heavily as the gains, so F1 ties (section 6).</p>
+  <h3 class="subh">How much should a wrong picture weigh? (β, checked after the fact)</h3>
+  <p style="max-width:82ch">β is the price of one wrong picture; a missed sound always costs 4. Example: β = 1 means four wrong pictures hurt as much as one missed sound. Here “clearly better” means the 95 % interval is below zero, not only the middle value.</p>
+  <ul class="plain">
+    <li><b>TEST (60 clips):</b> ours is clearly better than <b>show nothing</b> for β ≤ 1.1, and clearly better than the <b>pipeline without gate</b> for β ≥ 1.2. No single β wins both clearly on TEST alone.</li>
+    <li><b>DEV + TEST (109 clips):</b> ours is clearly better than <b>both at once</b> for β from 0.9 to 1.5.</li>
+  </ul>
+  <p class="why">This band was computed after the results (post hoc), so it is a description, not a new test. It tells the reader for which prices of a wrong picture the gate is worth it.</p>
+</section>
+
+<section id="s-ext">
+  <div class="num-h">4 · Against existing approaches (TEST, 60 clips · after the frozen table)</div>
+  <h2>Against a published sound detector that draws every sound it finds, ours wins clearly — F1 included</h2>
+  <p class="look">You asked for a comparison with existing approaches, not only with parts of our own system. The baseline: take one published detector, draw a picture for <em>every</em> sound it finds, no gate. Its threshold was chosen on DEV (by viewer cost); TEST was scored once. Compared with a paired clip bootstrap (2000 draws). Example of “paired”: each draw picks the same clips for both systems.</p>
+  <div class="nums">
+    <div class="num lead"><div class="k">vs PretrainedSED (CP-JKU, ICASSP 2025) — the strongest open detector that marks sounds frame by frame on AudioSet-Strong</div><div class="val"><span class="o">0.38</span> vs <span>0.13</span> F1</div><div class="ci">F1 +0.248 [+0.100, +0.421]</div><div class="d">significant. It found 6 of 43 needed sounds and drew 41 wrong pictures</div></div>
+    <div class="num lead"><div class="k">Same comparison, viewer cost per clip (lower is better)</div><div class="val"><span class="o">2.63</span> vs <span>3.83</span></div><div class="ci">−1.20 [−2.17, −0.30]</div><div class="d">significant. Precision +0.263 and recall +0.233, both significant too</div></div>
+    <div class="num"><div class="k">vs PANNs CNN14 (the most cited open sound tagger), same set-up</div><div class="val"><span class="o">0.38</span> vs <span>0.15</span> F1</div><div class="ci">F1 +0.234 [+0.085, +0.409]</div><div class="d">F1 significant.</div><div class="d n">Viewer cost: not significant (−0.57 [−1.27, +0.10])</div></div>
+  </div>
+  <p class="why">Against our own pipeline without gate, F1 ties (section 3), because both share the same detector. Against existing single-detector approaches, the whole system — combined detectors, filters, gate and picture choice — wins clearly on F1. These are new baselines scored once on TEST after the frozen table; the frozen table itself does not change. (A captions-only baseline was dropped; it is not reported.)</p>
 </section>
 
 <section id="s4">
-  <div class="num-h">4 · Where the gate helps (TEST, viewer cost per clip)</div>
+  <div class="num-h">5 · Where the gate helps (TEST, viewer cost per clip)</div>
   <h2>The gate helps when the source is on screen and in busy scenes. On off-screen clips it changes nothing.</h2>
-  <p class="look">Compare blue (ours) with orange (draw every sound) in each group. Lower is better. On “sound off screen” the two bars are equal (4.00 = 4.00).</p>
+  <p class="look">Compare blue (ours) with orange (pipeline without gate) in each group. Lower is better. On “sound off screen” the two bars are equal (4.00 = 4.00).</p>
   <div class="nums">
     <div class="num lead"><div class="k">Source on screen (12 clips)</div><div class="val"><span class="o">0.67</span> vs <span class="b">2.50</span></div><div class="ci">−1.83 [−2.83, −1.00]</div><div class="d">the gate helps</div></div>
     <div class="num lead"><div class="k">Mixed, busy scenes (15 clips)</div><div class="val"><span class="o">6.27</span> vs <span class="b">8.00</span></div><div class="ci">−1.73 [−3.73, −0.13]</div><div class="d">the gate helps</div></div>
     <div class="num null"><div class="k">Sound off screen (13 clips)</div><div class="val"><span class="o">4.00</span> vs <span class="b">4.00</span></div><div class="ci">0.00 [−0.62, +0.77]</div><div class="d n">gate plays no part. Both beat “show nothing” (7.08): a detection + picture result</div></div>
     <div class="num null"><div class="k">All 60 clips: ours vs show nothing</div><div class="val"><span class="o">2.63</span> vs <span class="s">2.87</span></div><div class="ci">−0.23 [−1.00, +0.47]</div><div class="d n">no clear difference</div></div>
   </div>
-  <div class="fig"><img src="fig/cost_by_category.png" alt="Viewer cost per clip type for ours, draw every sound, show nothing"></div>
-  <p class="why">The gate removes pictures of sources the viewer can already see, so it can only help where such pictures exist. On off-screen clips there is nothing to remove, so the win over “show nothing” there comes from the detector and the pictures, not from the gate. On “mixed” clips “show nothing” (5.33) is still cheaper than ours — an honest weak spot. Ours beats “show nothing” overall only if a wrong picture costs less than 2.56 points (TEST) / 2.33 (DEV). The per-group rows are descriptive.</p>
+  <div class="fig"><img src="fig/cost_by_category.png" alt="Viewer cost per clip type for ours, the pipeline without gate, and show nothing"></div>
+  <p class="why">The gate removes pictures of sources the viewer can already see, so it can only help where such pictures exist. On off-screen clips there is nothing to remove, so the win over “show nothing” there comes from the detector and the pictures, not from the gate. On “mixed” clips “show nothing” (5.33) is still cheaper than ours — an honest weak spot. Ours has a lower cost than “show nothing” overall (point estimate) only if a wrong picture costs less than 2.56 points (TEST) / 2.33 (DEV); section 3 gives the band where the win is clear. The per-group rows are descriptive.</p>
 </section>
 
 <section id="s5">
-  <div class="num-h">5 · Why F1 does not move</div>
-  <h2>Most misses happen before the gate: the sound detector never hears them</h2>
-  <p class="look">Left: of 21 missed sounds, 11 (orange) were never heard by the detector; only 3 were wrongly judged “visible”. Right: an object detector is at chance at the “is the source visible?” question; the large vision-language model is better.</p>
+  <div class="num-h">6 · Why sounds are missed (F1 does not move)</div>
+  <h2>Most misses happen before the gate: no detector ever hears them</h2>
+  <p class="look">Left: every missed needed sound in the frozen-table runs, with a reason for each. 28 of 49 (57 %) were never detected by <em>any</em> of our detectors (orange). The gate wrongly said “visible” for only 3 on DEV and 3 on TEST. Right: an object detector is at chance at the “is the source visible?” question; the large vision-language model is better.</p>
   <div class="grid g2">
-    <div class="fig"><img src="fig/miss_causes.png" alt="Why needed sounds are missed"></div>
+    <div class="fig"><img src="fig/miss_causes.png" alt="Why needed sounds are missed: DEV 15 never detected, 4 timing, 3 gate; TEST 13 never detected, 8 timing, 3 detected but not drawn, 3 gate"></div>
     <div class="fig"><img src="fig/gate_accuracy.png" alt="Accuracy of three models at judging if the source is on screen"></div>
   </div>
-  <p class="why">When we give the system the human's sound list instead of the detector's, the gate's F1 gain becomes significant (+0.067). So the ceiling is the sound detector — today's best models still miss sounds under speech and music.</p>
+  <p class="why">When we give the system the human's sound list instead of the detector's, the gate's F1 gain becomes significant (+0.067). So the ceiling is the sound detector — today's best models still miss sounds under speech and music. “Timing” means a picture came, but too late or too early to count (section 9).</p>
 </section>
 
 <section id="s6">
-  <div class="num-h">6 · Examples (real output of the final system)</div>
+  <div class="num-h">7 · Examples (real output of the scored system)</div>
   <h2>What it does well, where it fails, and cases where even “correct” is unclear</h2>
-  <p class="look">Watch the right half of each video — that is what a deaf viewer would see.</p>
+  <p class="look">Watch the right half of each video — that is what a deaf viewer would see. The videos are the renders scored in the frozen table (FLUX pictures, before the 28 Sept fixes).</p>
 
   <h3 class="subh">Works</h3>
   <div class="grid g3">
     <div class="card"><video controls preload="none" poster="media/dev_ours_ly_helicopter_-v62cK1.jpg" src="media/dev_ours_ly_helicopter_-v62cK1.mp4"></video>
-      <div class="cap"><span class="tag good">works</span><b>Helicopter heard, not seen → drawn</b>“Draw every sound” adds 3 wrong pictures on this clip.</div></div>
+      <div class="cap"><span class="tag good">works</span><b>Helicopter heard, not seen → drawn</b>The pipeline without gate adds 3 wrong pictures on this clip.</div></div>
     <div class="card"><video controls preload="none" poster="media/test_ours_w8_kids_ice_cream_truck_2a.jpg" src="media/test_ours_w8_kids_ice_cream_truck_2a.mp4"></video>
       <div class="cap"><span class="tag good">works · TEST</span><b>Ice-cream van jingle → ice-cream van</b>Both sounds the annotator marked as needed are drawn.</div></div>
     <div class="card"><video controls preload="none" poster="media/dev_blind_waterfall_kawaida_01.jpg" src="media/dev_blind_waterfall_kawaida_01.mp4"></video>
-      <div class="cap"><span class="tag cmp">baseline, for comparison</span><b>“Draw every sound” on the waterfall</b>It draws the waterfall that is already on screen. Ours: nothing (section 1).</div></div>
+      <div class="cap"><span class="tag cmp">baseline, for comparison</span><b>Pipeline without gate, on the waterfall</b>It draws the waterfall that is already on screen. Ours: nothing (section 1).</div></div>
   </div>
 
   <h3 class="subh">Fails</h3>
   <div class="grid g4">
     <div class="card"><video controls preload="none" poster="media/dev_ours_bell_miami.jpg" src="media/dev_ours_bell_miami.mp4"></video>
-      <div class="cap"><span class="tag bad">gate error</span><b>Bell not drawn</b>A bell tower is on screen, but the ringing bell is a different one.</div></div>
+      <div class="cap"><span class="tag bad">gate error</span><b>Bell not drawn</b>A bell tower is on screen, but the ringing bell is a different one. Accepted for now (future work), like the bird case below.</div></div>
     <div class="card"><video controls preload="none" poster="media/test_ours_m5_war_fury_25b.jpg" src="media/test_ours_m5_war_fury_25b.mp4"></video>
-      <div class="cap"><span class="tag bad">gate error · TEST</span><b>Helicopter not drawn</b>A tank is visible, and “vehicle” covers both.</div></div>
+      <div class="cap"><span class="tag bad">rule bug · TEST · fixed on 28 Sept</span><b>Helicopter not drawn</b>A tank is visible → “Vehicle” is visible → the old family rule silenced the helicopter, although the gate itself said the helicopter was <em>not</em> visible. Now a visible label silences only the same or a more general label (numbers: section 2). The video shows the old behaviour.</div></div>
     <div class="card"><video controls preload="none" poster="media/dev_ours_b3_laundromat.jpg" src="media/dev_ours_b3_laundromat.mp4"></video>
       <div class="cap"><span class="tag bad">detector error</span><b>Laundromat machines → “vehicle”</b>Wrong sound label; no gate can fix that.</div></div>
     <div class="card"><video controls preload="none" poster="media/test_ours_w8_hide_wolves_howl_1a.jpg" src="media/test_ours_w8_hide_wolves_howl_1a.mp4"></video>
@@ -320,18 +345,18 @@ textarea.notes{min-height:160px}
     <div class="card"><video controls preload="none" poster="media/dev_ours_mv_protest_scene_movie.jpg" src="media/dev_ours_mv_protest_scene_movie.mp4"></video>
       <div class="cap"><span class="tag mix">unclear</span><b>A crowd is on screen, but the chanting comes from off screen</b>Seeing people is not seeing who makes the sound.</div></div>
     <div class="card"><video controls preload="none" poster="media/dev_ours_ambient_nature_rainforest_7629.jpg" src="media/dev_ours_ambient_nature_rainforest_7629.mp4"></video>
-      <div class="cap"><span class="tag mix">unclear</span><b>Parrots are visible, another bird calls</b>Is that bird “visible”? The annotator said no; the system said yes.</div></div>
+      <div class="cap"><span class="tag mix">unclear</span><b>Parrots are visible, another bird calls</b>Is that bird “visible”? The annotator said no; the system said yes. A known, accepted error for now: a visible bird (here a macaw) that is not the one singing. Future work.</div></div>
   </div>
-  <p class="why">The failures come in two kinds: the detector names the wrong sound, or “something like it is on screen” is taken as “its source is on screen”. The second is a real research question, not a bug.</p>
+  <p class="why">The failures come in two kinds: the detector names the wrong sound, or “something like it is on screen” is taken as “its source is on screen”. The second is a real research question, not a bug. We tried to fix it by asking the model to point at the source (SAM 3 or OWLv2 must find it in the frames); on DEV every version raised the cost, and even a perfect pointer would win back only 3 sounds (section 10).</p>
 </section>
 
 <section id="s7" class="pics">
-  <div class="num-h">7 · Pictures</div>
-  <h2>A newer image model is recognised almost twice as often</h2>
-  <p class="look">Each pair is the same sound: “old” = the model in the videos above, “new” = the new model. One rater (me) saw each picture for 1.5 seconds, without knowing which model made it, and typed what makes the sound.</p>
+  <div class="num-h">8 · Pictures</div>
+  <h2>The newer image model is recognised almost twice as often — it is now the shipped model</h2>
+  <p class="look">Each pair is the same sound: “old” = FLUX, the model in the videos above (now retired), “new” = Qwen-Image-2512 (shipped since 28 Sept). One rater (me) saw each picture for 1.5 seconds, without knowing which model made it, and typed what makes the sound.</p>
   <div class="grid g2" style="margin-bottom:16px">
     <div class="fig"><img src="fig/pictures_round2.png" alt="Share of pictures recognised by version"></div>
-    <div class="card" style="padding:14px 16px"><b>Result on 54 sounds from new clips:</b> old model 14 recognised, new model 26 (+22 points, significant).<br><br><b>Honest caveat:</b> one of the 26 recognised pictures showed a wrong object (a ringing phone drawn as a desk bell). The final setup (new model + fixed pictures for hard sounds) is only confirmed by the last sealed blind sitting. Until then it is frozen.</div>
+    <div class="card" style="padding:14px 16px"><b>Result on 54 sounds from new clips:</b> old model 14 recognised, new model 26 (+22 points, significant).<br><br><b>Do the TEST scores still hold?</b> Yes. The scored TEST rows used FLUX pictures, but the per-sound score only asks “was the right sound shown at the right time?” — it never looks at the picture. So changing the picture model changes no score.<br><br><b>Honest caveat:</b> one of the 26 recognised pictures showed a wrong object (a ringing phone drawn as a desk bell). The planned final sealed sitting was <b>cancelled</b> on 28 Sept (Adam’s decision). The picture claim now rests on two things: (a) this blind human glance test, round 2 (14 → 26 of 54, +22 points, significant; one rater, me), and (b) the validated picture check below (7/7, 33/33, 3/68, 113/115). Honest note: (b) is a <em>model</em> check, not a human test.</div>
   </div>
   <div class="grid g4">
     <div class="card"><div class="pair"><figure><img src="media/pics/P075.jpg" alt="old thunder picture"><figcaption>old</figcaption></figure><figure><img src="media/pics/P040.jpg" alt="new thunder picture"><figcaption>new</figcaption></figure></div><div class="cap"><b>Thunder</b>“can't tell” → “thunder”</div></div>
@@ -342,15 +367,35 @@ textarea.notes{min-height:160px}
   <h3 class="subh">What still goes wrong — and the fix</h3>
   <div class="grid g4">
     <div class="card"><img src="media/pics/P115.jpg" alt="a door"><div class="cap"><span class="tag bad">invented object</span><b>A thud drawn as a door</b>Fix: the text model may no longer add objects.</div></div>
-    <div class="card"><img src="media/pics/P166.jpg" alt="a desk bell"><div class="cap"><span class="tag bad">wrong object</span><b>Phone ringing → desk bell</b>Being re-checked in the last sitting.</div></div>
+    <div class="card"><img src="media/pics/P166.jpg" alt="a desk bell"><div class="cap"><span class="tag bad">wrong object</span><b>Phone ringing → desk bell</b>Now caught by the new picture check (below), which redraws it.</div></div>
     <div class="card"><img src="media/pics/P041.jpg" alt="unclear car alarm picture"><div class="cap"><span class="tag mix">unreadable</span><b>Car alarm</b>Fix: a fixed, clear picture for alarms.</div></div>
     <div class="card"><img src="media/pics/P003.jpg" alt="unclear whoosh picture"><div class="cap"><span class="tag mix">unreadable</span><b>“Whoosh”</b>No object makes it. Fix: a comic-style “WHOOSH” word card.</div></div>
   </div>
-  <p class="why">The picture is what the viewer actually reads, so it had to be tested by a person, blind. Three automatic picture checkers all disagreed with the human, so we do not use them.</p>
+  <h3 class="subh">New: every picture is checked, and redrawn if wrong (after the frozen table)</h3>
+  <div class="grid g2">
+    <div class="card panelcard"><h3>How it works</h3><ul>
+      <li>The vision-language model (Qwen3.8-27B) gets a multiple-choice question: “What is the main thing in this picture?” The options are shuffled. Example: “A. a fire alarm bell · B. a desk bell · C. a kettle …”.</li>
+      <li>A text check (OCR, reading any letters in the picture) catches pictures with wrong words in them.</li>
+      <li>If the answer is wrong, it draws again — up to 4 tries. Then it shows a word card instead.</li>
+    </ul></div>
+    <div class="card panelcard"><h3>Checked before we used it</h3><ul>
+      <li>Caught <b>7 / 7</b> known bad pictures and <b>33 / 33</b> deliberately wrong pictures.</li>
+      <li>Wrongly rejected <b>3 of 68</b> good pictures (4.4 %).</li>
+      <li>Gave the same answer after reshuffling the options in <b>113 / 115</b> cases.</li>
+    </ul></div>
+    <div class="card panelcard"><h3>Examples it fixed</h3><ul>
+      <li>Fire alarm drawn as a desk bell → a red wall bell.</li>
+      <li>Crowd drawn as crows → people.</li>
+      <li>Steam drawn as a kettle → a pipe valve.</li>
+      <li>Typing drawn as a shouting man → hands on a keyboard.</li>
+      <li>One car horn could not be drawn well → a “HONK” word card.</li>
+    </ul></div>
+  </div>
+  <p class="why">The picture is what the viewer actually reads, so it had to be tested by a person, blind. The earlier automatic picture <em>scorers</em> (asked “how good is this picture?”) disagreed with the human, so we do not use them to score. The new check is different: it only asks “is this the right object?” as a pass/fail guard, and it was tested on pictures with a known answer before use. It is not used for any score.</p>
 </section>
 
 <section id="s8">
-  <div class="num-h">8 · A bug we found and fixed</div>
+  <div class="num-h">9 · Timing and display</div>
   <h2>Pictures used to appear before the sound — up to 9 seconds early</h2>
   <p class="look">Watch when the picture appears compared with the shots: before the fix it jumps in early; after the fix it starts with the sound.</p>
   <div class="grid g2">
@@ -358,143 +403,202 @@ textarea.notes{min-height:160px}
     <div class="card"><video controls preload="none" poster="media/timing_after.jpg" src="media/timing_after.mp4"></video><div class="cap"><span class="tag good">after</span><b>A picture may never start before its sound</b></div></div>
   </div>
   <p class="why">Found by tracing each step, not by tuning. It improved DEV significantly; on TEST the change was too small to tell, and we report exactly that.</p>
+
+  <h3 class="subh">Display rules today (after the frozen table)</h3>
+  <ul class="plain">
+    <li>A picture stays <b>at most 1 second</b> after its sound ends.</li>
+    <li>If the same sound repeats within <b>1.5 seconds</b>, the repeats become <b>one picture</b>. Example: a dog barks three times in 2 seconds → one dog picture, not three flashes.</li>
+    <li><b>No fading:</b> pictures show at full strength (before, they faded to 77 %).</li>
+  </ul>
+
+  <h3 class="subh">A scoring check: what if we are less strict about timing? (report only)</h3>
+  <p style="max-width:82ch">The main rule counts a picture as right only if it starts near the start of its sound. Two looser readings, shown only to see how much timing matters. Viewer cost per clip, lower is better; the main rule stays the one we report.</p>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>System</th><th>Main rule (picture starts with the sound)</th><th>+ a late picture counts if its sound still plays</th><th>+ a picture that comes back while its sound still plays is a repeat, not wrong</th></tr></thead>
+      <tbody>
+        <tr><td><b>TEST</b> · ours</td><td class="mono">2.63</td><td class="mono">2.13</td><td class="mono">2.03</td></tr>
+        <tr><td>TEST · pipeline without gate</td><td class="mono">3.47</td><td class="mono">2.97</td><td class="mono">2.80</td></tr>
+        <tr><td>TEST · show nothing</td><td class="mono">2.87</td><td class="mono">2.87</td><td class="mono">2.87</td></tr>
+        <tr><td><b>DEV + TEST</b> · ours</td><td class="mono">2.70</td><td class="mono">2.37</td><td class="mono">2.26</td></tr>
+        <tr><td>DEV + TEST · pipeline without gate</td><td class="mono">3.52</td><td class="mono">3.19</td><td class="mono">2.97</td></tr>
+        <tr><td>DEV + TEST · show nothing</td><td class="mono">2.90</td><td class="mono">2.90</td><td class="mono">2.90</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="why">Looser timing helps both drawing systems by about the same amount; “show nothing” draws nothing, so it does not change. Under the looser readings ours is cheaper than “show nothing” by a wider margin. This is a sensitivity row, not the main result; it was not used to choose anything.</p>
 </section>
 
 <section id="s9" class="tried">
-  <div class="num-h">9 · What we tried</div>
-  <h2>About 45 approaches tested; most were dropped because they failed a test set in advance</h2>
-  <p class="look">Green = kept, red = tried and dropped, amber = waiting for the last check.</p>
+  <div class="num-h">10 · What we tried (updated 28 Sept)</div>
+  <h2>About 60 approaches tested; most were dropped because they failed a test set in advance</h2>
+  <p class="look">Green = kept (in the system today), red = tried and dropped, amber = still running.</p>
   <div class="grid g2">
-    <div class="card"><h3>Hearing the sounds</h3><p class="score">15 tried · 4 kept</p><div class="row">
-      <span class="pill keep">BEATs</span><span class="pill keep">FlexSED</span><span class="pill keep">FlexSED cross-check</span><span class="pill keep">PANNs cross-check</span>
-      <span class="pill">PANNs alone</span><span class="pill">CLAP check</span><span class="pill">Qwen2-Audio check</span><span class="pill">Demucs</span><span class="pill">FLAM ×2</span><span class="pill">PretrainedSED</span><span class="pill">PSED ×5</span><span class="pill">fusion V1–V3</span><span class="pill">HTDemucs</span><span class="pill">AST/CED</span><span class="pill">DeepFilterNet</span></div></div>
-    <div class="card"><h3>Is the source on screen?</h3><p class="score">12 tried · 1 kept · 3 others exactly break even</p><div class="row">
-      <span class="pill keep">Qwen3.8-27B, 3 questions</span>
-      <span class="pill">CLIP</span><span class="pill">SigLIP</span><span class="pill">OWLv2</span><span class="pill">SAM 3</span><span class="pill">Qwen2.5-VL-7B</span><span class="pill">Qwen2.5-VL-32B</span><span class="pill">video input</span><span class="pill">sound–motion sync</span><span class="pill">any-moment rule</span><span class="pill">family rule</span><span class="pill">OWLv2 / SAM 3 votes</span></div></div>
-    <div class="card"><h3>Drawing</h3><p class="score">8 image models · 4 prompt versions</p><div class="row">
-      <span class="pill keep">Qwen-Image-2512</span><span class="pill keep">guarded prompt</span><span class="pill open">fixed pictures + word cards</span>
-      <span class="pill">photo search</span><span class="pill">SDXL</span><span class="pill">SDXL-Turbo</span><span class="pill">PixArt-Σ</span><span class="pill">FLUX (in videos)</span><span class="pill">Qwen-Image-2.1</span><span class="pill">AnimateDiff</span><span class="pill">free-text prompt</span></div></div>
+    <div class="card"><h3>Hearing the sounds</h3><p class="score">23 tried · 5 kept · 2 running</p><div class="row">
+      <span class="pill keep">BEATs</span><span class="pill keep">FlexSED</span><span class="pill keep">FlexSED cross-check</span><span class="pill keep">BEATs self-check (new)</span><span class="pill keep">confidence floor 0.40 (new)</span>
+      <span class="pill open">EAT-large (running)</span><span class="pill open">Dasheng-base (running)</span>
+      <span class="pill">PANNs cross-check (replaced 28 Sept)</span><span class="pill">PANNs alone</span><span class="pill">CLAP check</span><span class="pill">Qwen2-Audio check</span><span class="pill">Demucs</span><span class="pill">FLAM ×2</span><span class="pill">PretrainedSED</span><span class="pill">PSED ×5</span><span class="pill">fusion V1–V3</span><span class="pill">HTDemucs</span><span class="pill">AST/CED</span><span class="pill">DeepFilterNet</span><span class="pill">looser detector (“cascade E”)</span><span class="pill">PE-A-Frame</span><span class="pill">Qwen3-Omni listener</span><span class="pill">all 3 detectors agree</span><span class="pill">speech/music-aware bar</span><span class="pill">end-trim</span></div>
+      <p class="score" style="margin:10px 0 0">New results, all on held-out AudioSet clips (not TEST): PE-A-Frame AUROC 0.53 (0.5 = coin toss). Qwen3-Omni listener AUROC 0.661 [0.525, 0.784], below the 0.70 bar set in advance. End-trim: sound ends only 0.295 s closer, and 2.2 points of recall lost. EAT-large and Dasheng-base: detection only, first on 280 clips, then on the 415 held-out clips.</p></div>
+    <div class="card"><h3>Is the source on screen?</h3><p class="score">13 tried · 1 kept · 3 others exactly break even · 1 rule bug fixed</p><div class="row">
+      <span class="pill keep">Qwen3.8-27B, 3 questions</span><span class="pill keep">family rule, one direction (bug fix)</span>
+      <span class="pill">CLIP</span><span class="pill">SigLIP</span><span class="pill">OWLv2</span><span class="pill">SAM 3</span><span class="pill">Qwen2.5-VL-7B</span><span class="pill">Qwen2.5-VL-32B</span><span class="pill">video input</span><span class="pill">sound–motion sync</span><span class="pill">any-moment rule</span><span class="pill">family-rule variant (lost 3 hits)</span><span class="pill">OWLv2 / SAM 3 votes</span><span class="pill">name it, then point at it (SAM 3 / OWLv2)</span></div>
+      <p class="score" style="margin:10px 0 0">Pointing test on DEV: the model names the source, then SAM 3 or OWLv2 must find it in the frames. Every version raised the cost (best: SAM 3, 2.78 → 2.94). Even a perfect pointer would win back only 3 sounds.</p></div>
+    <div class="card"><h3>Drawing and showing</h3><p class="score">8 image models · 4 prompt versions · 1 picture check</p><div class="row">
+      <span class="pill keep">Qwen-Image-2512 (shipped)</span><span class="pill keep">guarded prompt</span><span class="pill keep">picture check + redraw (new)</span><span class="pill keep">display rules: 1 s, join repeats, no fade (new)</span><span class="pill keep">fixed pictures + word cards</span>
+      <span class="pill">photo search</span><span class="pill">SDXL</span><span class="pill">SDXL-Turbo</span><span class="pill">PixArt-Σ</span><span class="pill">FLUX (retired; in the videos)</span><span class="pill">Qwen-Image-2.1</span><span class="pill">AnimateDiff</span><span class="pill">free-text prompt</span><span class="pill">fading pictures</span></div></div>
     <div class="card"><h3>Measuring</h3><p class="score">what we trust as evidence</p><div class="row">
-      <span class="pill keep">human gold labels, 139 clips</span><span class="pill keep">blind human picture test</span><span class="pill keep">Gemma judge</span><span class="pill keep">multiple-testing correction</span>
-      <span class="pill">Mistral judge</span><span class="pill">model-made reference</span><span class="pill">with/without-sound reference</span><span class="pill">6 picture checkers</span></div></div>
+      <span class="pill keep">human gold labels, 139 clips</span><span class="pill keep">blind human picture test</span><span class="pill keep">Gemma judge</span><span class="pill keep">multiple-testing correction</span><span class="pill keep">existing-approach baselines (PretrainedSED, PANNs)</span><span class="pill keep">held-out AudioSet set (415 clips)</span>
+      <span class="pill">Mistral judge</span><span class="pill">model-made reference</span><span class="pill">with/without-sound reference</span><span class="pill">6 picture scorers</span><span class="pill">captions-only baseline (dropped)</span></div></div>
   </div>
-  <p class="why">Negative results are part of the thesis: e.g. stronger object detectors do not help, because seeing an object is not seeing a sound's source.</p>
+  <p class="why">Negative results are part of the thesis: e.g. stronger object detectors do not help, because seeing an object is not seeing a sound's source; and no newer public sound tagger we found clearly beats BEATs (two are still being tested).</p>
 </section>
 
 <section id="s10">
-  <div class="num-h">10 · Honest limits (so you hear them from me first)</div>
-  <h2>Six things an examiner will ask about</h2>
+  <div class="num-h">11 · Honest limits (so you hear them from me first)</div>
+  <h2>Seven things an examiner will ask about</h2>
   <ul class="plain">
     <li><b>Helpfulness for deaf viewers is not tested.</b> All results are about sounds and pictures, scored against labels. No deaf viewer used the system. This goes in the abstract.</li>
     <li><b>One annotator</b> labelled all 139 clips. A second person on 30 clips is planned, to report agreement. This also goes in the abstract.</li>
-    <li><b>TEST was looked at more than once</b> (5 planned reads, 10 exposures counting printouts), all dated and disclosed. The final table was scored once, under a rule written before.</li>
+    <li><b>TEST was looked at more than once</b> (5 planned reads; 11 logged exposures counting printouts and, on 28 Sept, the results inspector), all dated and disclosed. The final table was scored once, under a rule written before. The two existing-approach baselines were each scored once on TEST, with their threshold chosen on DEV. Nothing was tuned on TEST.</li>
     <li><b>The detector threshold was chosen on clips that overlap TEST</b> (35 of 60). Both systems use it; a clean check on DEV picked the same value.</li>
-    <li><b>The caption baseline had no gate.</b> A fair version (same gate, text instead of pictures) ties with pictures on the automatic judge.</li>
+    <li><b>Things changed after the frozen table.</b> The frozen TEST table does not include them, and it stays as it is:
+      <br>– confidence floor 0.40: chosen on DEV, passed on the 415 held-out AudioSet clips;
+      <br>– BEATs self-check instead of PANNs: tested on the 415 held-out clips (the frozen table used PANNs);
+      <br>– family-rule bug fix: simulated on the scored DEV and TEST renders; found while inspecting a TEST clip (a logic fix, not a tuned setting);
+      <br>– Qwen-Image pictures, the picture check and the display rules: they change what the viewer sees, not the per-sound scores. Pictures were tested by a blind human rating on new clips; the check was validated on pictures with known answers.</li>
+    <li><b>The human picture test has one rater (me)</b> (round 2, blind). The final sealed sitting was cancelled on 28 Sept; the validated picture check replaces it. That check is a model check, not a human test.</li>
     <li><b>Viewer cost was introduced after F1 came out a tie.</b> Its weights date from before; we show results for every weight, not one chosen point.</li>
   </ul>
 </section>
 
 <section id="s11">
-  <div class="num-h">11 · Three expert panels (27 Sept)</div>
-  <h2>Three expert panels: what we will do this week</h2>
-  <p class="look">Three small panels (three experts each, three rounds) looked at detection, pictures and evaluation. All three signed a plan. One card per panel.</p>
+  <div class="num-h">12 · This week: the panels' plan and what happened (status 28 Sept)</div>
+  <h2>The plan from 27 Sept, and where each part stands now</h2>
+  <p class="look">Three small panels (three experts each, three rounds) looked at detection, pictures and evaluation, and signed a plan. Each card shows the plan, then <b>→ the outcome</b> by 28 Sept.</p>
   <div class="grid g3">
     <div class="card panelcard"><h3>Detection</h3><ul>
       <li>“Cascade E” (a looser detector) is <b>not an upgrade</b>: each extra sound it finds costs ≈ 2.4 false alarms. At β = 2 it would need 2.0 or fewer to pay.</li>
-      <li>One new model only: <b>PE-A-Frame</b> (Meta, open licence). It asks for each sound by name, but it hears with a different model than FlexSED, so its vote is new evidence.</li>
-      <li>Tested on a <b>new held-out AudioSet set</b> (500 clips, half of them busy scenes with speech or music). The rule is written before any number.</li>
-      <li>TEST is not touched. If it fails, the thesis reports a clear negative: the detector is the ceiling.</li>
+      <li>One new model only: <b>PE-A-Frame</b> (Meta). <b>→ Failed</b>: AUROC 0.53. A second try, Qwen3-Omni as a listener, also failed (0.661, bar 0.70).</li>
+      <li>Tested on a <b>new held-out AudioSet set</b>. <b>→ Done</b>: 280 clips to fit, 415 clips held out. There, the <b>confidence floor 0.40 passed</b> (cost −0.227 [−0.304, −0.154]) and the <b>BEATs self-check replaced PANNs</b> at the same cost.</li>
+      <li>TEST is not touched. <b>→ Kept.</b> Newest taggers (EAT-large, Dasheng-base) are <b>running now</b>.</li>
     </ul></div>
     <div class="card panelcard"><h3>Pictures</h3><ul>
-      <li>The picture setup is <b>frozen</b> until the sealed blind sitting is scored.</li>
+      <li>The picture setup is <b>frozen</b> until the sealed blind sitting is scored. <b>→ Changed</b> on 28 Sept (Adam): Qwen-Image is shipped, and the sealed sitting is <b>cancelled</b>. The validated picture check (a model check) takes its place (question in the Questions tab).</li>
       <li>The rules for “wrong object” are <b>written and committed first</b>. Nothing is added after a picture is seen.</li>
-      <li><b>1–2 extra raters</b> (no project knowledge) rate the same cards after me. Reported beside my score; mine stays the main one.</li>
-      <li>After scoring: fix the <b>fading display</b> (pictures now fade to 77 %; set to full strength), in its own commit.</li>
+      <li><b>1–2 extra raters</b> (no project knowledge) rate the same cards after me. <b>→ Open</b>: only if you want them (ethics question in the Questions tab).</li>
+      <li>Fix the <b>fading display</b>. <b>→ Done</b>: no fading; plus the 1 s / 1.5 s display rules and the picture check (section 8).</li>
     </ul></div>
     <div class="card panelcard"><h3>Evaluation</h3><ul>
       <li><b>Headline order:</b> F1 first (a tie; smallest gain we could have seen: 0.13), then wrong pictures −0.52, then viewer cost for every β.</li>
       <li>Precision is marked “TEST only”. The off-screen row is relabelled “detection + picture result, gate-free”.</li>
       <li>The abstract says <b>“one annotator”</b> and <b>“helpfulness for deaf viewers not tested”</b>.</li>
-      <li>Human checks, in this order: <b>second annotator</b> &gt; 3–5 glance raters &gt; sound-off pilot (only if no ethics filing).</li>
+      <li>Human checks, in this order: <b>second annotator</b> &gt; 3–5 glance raters &gt; sound-off pilot (only if no ethics filing). <b>→ Second annotator on 30 clips: still to do.</b></li>
+      <li><b>→ Added</b> at your request: existing-approach baselines (section 4).</li>
     </ul></div>
   </div>
-  <p class="why">The panels agreed that no model change can be shown to help this week except one carefully tested detector check. So the week goes to honest reporting and human checks.</p>
+  <p class="why">The detector question is closed on the held-out set, apart from the two taggers still running: the detector is the ceiling. The rest of the week goes to honest reporting, the second annotator, and the thesis text.</p>
+  <h3 class="subh">A tool for the meeting: the results inspector</h3>
+  <p style="max-width:82ch">I can open a local results inspector on my laptop (docs/inspector/index.html in the project). It shows every clip, every sound and every picture, with the videos, and every mistake. Each missed sound has a reason (for example “never detected” or “gate said visible”). If you want to see any clip or number from this page, we can look it up there.</p>
   <p style="margin-top:22px"><a class="btn" href="#questions">Go to the questions →</a></p>
 </section>
 
-<p class="foot">All numbers come from committed result files (final TEST table: amendment 21 of the pre-registration, benchmark/gold/holm_test_final_v33_test_bench.json; blind picture test: round 2; expert panels: docs/panel3_topic1–3_rounds.md). Videos are the final system's real output on DEV and TEST clips; the videos use the older image model. Full list of everything tried: docs/LEDGER_2026-09-26.md.</p>
+<p class="foot">All numbers come from committed result files (final TEST table: amendment 21 of the pre-registration, benchmark/gold/holm_test_final_v33_test_bench.json; existing-approach baselines: benchmark/gold/baseline_psed.json and baseline_panns.json; β band: benchmark/gold/beta_band.json; changes after the frozen table: the 28 Sept entries of docs/prereg_v4.md; blind picture test: round 2; expert panels: docs/panel3_topic1–3_rounds.md). Videos are the scored system's real output on DEV and TEST clips, with the older image model (FLUX) and before the 28 Sept fixes. Full list of everything tried: docs/LEDGER_2026-09-26.md. Page status: 28 Sept 2026.</p>
 </div><!-- /presentation -->
 
 <div role="tabpanel" id="questions" aria-labelledby="tab-questions" tabindex="0" hidden>
   <section id="qa-top" style="margin-top:28px">
-    <div class="num-h">Questions &amp; answers · meeting 27 Sept 2026</div>
+    <div class="num-h">Questions &amp; answers · status 28 Sept 2026</div>
     <h2>What I need from you, so I can finish by 3 October</h2>
-    <p class="qa-intro">Most important first. Questions marked <span class="yn">yes / no</span> need only a quick choice; type anything else in the box. Replies are kept in this browser. At the end, press “Save answers to file”.</p>
+    <p class="qa-intro">Most important first. Questions marked “New” were added on 28 Sept; replies you already typed are kept. Questions marked <span class="yn">yes / no</span> need only a quick choice; type anything else in the box. Replies are kept in this browser. At the end, press “Save answers to file”.</p>
     <p class="store-warn" id="store-warn" hidden>This browser does not allow saving here. Replies will be lost on reload — please press “Save answers to file” before closing.</p>
 
     <ol class="qa" id="qa-list">
       <li id="q1" data-yn="0">
-        <div class="qh"><p class="qt">The deadline is 3 October. What is the minimum you expect in the written thesis?</p></div>
-        <small class="ctx">Also: format and length. Can I send you the results chapter by 30 September?</small>
+        <div class="qh"><p class="qt">The deadline is 3 October. What thesis format and length do you expect, and can the results chapter reach you by 1 October?</p></div>
+        <small class="ctx">Also: what is the minimum you expect in the written thesis? (Before: I asked about 30 September; the new date for the results chapter is 1 October.)</small>
         <div class="ans"><label for="q1-a">Reply</label><textarea id="q1-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
+      <li id="q12" data-yn="1">
+        <div class="qh"><p class="qt">New · Is this acceptable as the core of the abstract?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">Draft: “Against existing single-detector approaches, the system is clearly better (F1 +0.25 vs PretrainedSED, significant). Against the same pipeline without the gate, F1 ties, but the gate halves wrong pictures. One annotator; helpfulness for deaf viewers not tested.” If not: what should the abstract lead with?</small>
+        <fieldset class="choices"><legend>Abstract</legend><label><input type="radio" name="q12-c" value="yes">Yes</label><label><input type="radio" name="q12-c" value="no">No</label><label><input type="radio" name="q12-c" value="depends">Depends</label></fieldset>
+        <div class="ans"><label for="q12-a">Reply</label><textarea id="q12-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
+      </li>
       <li id="q2" data-yn="1">
-        <div class="qh"><p class="qt">F1, my pre-registered main metric, is a tie. Is it OK that the headline is “the gate halves wrong pictures”, with F1 reported first as a tie?</p><span class="yn">yes / no</span></div>
-        <small class="ctx">Wrong pictures −0.52 [−0.80, −0.28], Holm p &lt; 0.001; F1 +0.059 [−0.030, +0.144]. If not: which single number should lead?</small>
-        <fieldset class="choices"><legend>Question 2</legend><label><input type="radio" name="q2-c" value="yes">Yes</label><label><input type="radio" name="q2-c" value="no">No</label><label><input type="radio" name="q2-c" value="depends">Depends</label></fieldset>
+        <div class="qh"><p class="qt">F1, my pre-registered main metric, is a tie against the pipeline without gate. Is it OK that the headline of that comparison is “the gate halves wrong pictures”, with F1 reported first as a tie?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">Wrong pictures −0.52 [−0.80, −0.28], Holm p &lt; 0.001; F1 +0.059 [−0.030, +0.144]. (“Pipeline without gate” is the new name for “blind” / “draw every sound”.) If not: which single number should lead?</small>
+        <fieldset class="choices"><legend>Headline</legend><label><input type="radio" name="q2-c" value="yes">Yes</label><label><input type="radio" name="q2-c" value="no">No</label><label><input type="radio" name="q2-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q2-a">Reply</label><textarea id="q2-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
+      </li>
+      <li id="q13" data-yn="1">
+        <div class="qh"><p class="qt">New · Are PretrainedSED and PANNs enough as “existing approaches”, or do you expect another one?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">Each is one published detector + a picture for every sound it finds, threshold chosen on DEV, TEST scored once. Ours wins F1 against both (+0.248 and +0.234, significant). The captions-only baseline was dropped. Yes = enough; if not, please name the approach.</small>
+        <fieldset class="choices"><legend>Existing approaches</legend><label><input type="radio" name="q13-c" value="yes">Yes</label><label><input type="radio" name="q13-c" value="no">No</label><label><input type="radio" name="q13-c" value="depends">Depends</label></fieldset>
+        <div class="ans"><label for="q13-a">Reply</label><textarea id="q13-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
+      </li>
+      <li id="q15" data-yn="1">
+        <div class="qh"><p class="qt">New · Is the round-2 human test plus the validated picture check enough for the picture claim, now that the final sealed sitting is dropped?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">(a) Blind human glance test, round 2: 14 → 26 of 54 recognised (+22 points, significant), one rater (me). (b) Picture check-and-redraw, validated: 7/7 known bad and 33/33 deliberately wrong pictures caught, 3/68 good ones wrongly rejected, 113/115 same answer on reshuffle. (b) is a model check, not a human test. If not enough: what would you expect?</small>
+        <fieldset class="choices"><legend>Picture claim</legend><label><input type="radio" name="q15-c" value="yes">Yes</label><label><input type="radio" name="q15-c" value="no">No</label><label><input type="radio" name="q15-c" value="depends">Depends</label></fieldset>
+        <div class="ans"><label for="q15-a">Reply</label><textarea id="q15-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
+      </li>
+      <li id="q7" data-yn="1">
+        <div class="qh"><p class="qt">Is this an acceptable main claim: “the sound detector is the ceiling; the gate and the pictures add on top”?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">57 % of the missed sounds (DEV + TEST) were never detected by any detector. Given the human's sound list, the gate's F1 gain becomes significant (+0.067). No newer public tagger we found clearly beats BEATs; two are still running.</small>
+        <fieldset class="choices"><legend>Main claim</legend><label><input type="radio" name="q7-c" value="yes">Yes</label><label><input type="radio" name="q7-c" value="no">No</label><label><input type="radio" name="q7-c" value="depends">Depends</label></fieldset>
+        <div class="ans"><label for="q7-a">Reply</label><textarea id="q7-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
+      </li>
+      <li id="q14" data-yn="1">
+        <div class="qh"><p class="qt">New · May I show the looser timing rule as a report-only row, next to the main rule?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">Looser rule: a late picture counts while its sound still plays, and a picture that comes back while its sound plays is a repeat, not wrong. TEST viewer cost, ours: 2.63 (main) → 2.13 → 2.03; show nothing 2.87 (section 9). The main rule does not change.</small>
+        <fieldset class="choices"><legend>Report-only timing rule</legend><label><input type="radio" name="q14-c" value="yes">Yes</label><label><input type="radio" name="q14-c" value="no">No</label><label><input type="radio" name="q14-c" value="depends">Depends</label></fieldset>
+        <div class="ans"><label for="q14-a">Reply</label><textarea id="q14-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
       <li id="q3" data-yn="1">
         <div class="qh"><p class="qt">Second annotator: who can do it? And is a thesis with one annotator plus this 30-clip second pass acceptable?</p><span class="yn">yes / no</span></div>
         <small class="ctx">The packet is ready: 30 clips, about 3 hours of their time. Yes / no is for “acceptable”; please write the name in the box.</small>
-        <fieldset class="choices"><legend>Question 3</legend><label><input type="radio" name="q3-c" value="yes">Yes</label><label><input type="radio" name="q3-c" value="no">No</label><label><input type="radio" name="q3-c" value="depends">Depends</label></fieldset>
+        <fieldset class="choices"><legend>Second annotator</legend><label><input type="radio" name="q3-c" value="yes">Yes</label><label><input type="radio" name="q3-c" value="no">No</label><label><input type="radio" name="q3-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q3-a">Reply</label><textarea id="q3-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
+      </li>
+      <li id="q5" data-yn="1">
+        <div class="qh"><p class="qt">Ethics for the extra picture raters: does the picture-naming test need an ethics filing?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">1–2 outside raters (no project knowledge) see each picture for 1.5 seconds and type what makes the sound. Today I am the only rater — is that enough, or do you expect these raters (or a viewer study)?</small>
+        <fieldset class="choices"><legend>Ethics, picture raters</legend><label><input type="radio" name="q5-c" value="yes">Yes</label><label><input type="radio" name="q5-c" value="no">No</label><label><input type="radio" name="q5-c" value="depends">Depends</label></fieldset>
+        <div class="ans"><label for="q5-a">Reply</label><textarea id="q5-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
       <li id="q4" data-yn="1">
         <div class="qh"><p class="qt">Does a small sound-off test need an ethics filing at BIU?</p><span class="yn">yes / no</span></div>
         <small class="ctx">About 12 hearing lab members watch clips with the sound off. No deaf participants, DEV clips only. If yes, we skip it and only describe the design.</small>
-        <fieldset class="choices"><legend>Question 4</legend><label><input type="radio" name="q4-c" value="yes">Yes</label><label><input type="radio" name="q4-c" value="no">No</label><label><input type="radio" name="q4-c" value="depends">Depends</label></fieldset>
+        <fieldset class="choices"><legend>Ethics, sound-off test</legend><label><input type="radio" name="q4-c" value="yes">Yes</label><label><input type="radio" name="q4-c" value="no">No</label><label><input type="radio" name="q4-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q4-a">Reply</label><textarea id="q4-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
-      <li id="q5" data-yn="1">
-        <div class="qh"><p class="qt">Same question for the picture-naming test: does it need an ethics filing?</p><span class="yn">yes / no</span></div>
-        <small class="ctx">3–5 people see each picture for 1.5 seconds and type what makes the sound. Today I am the only rater — is that enough, or do you expect these raters (or a viewer study)?</small>
-        <fieldset class="choices"><legend>Question 5</legend><label><input type="radio" name="q5-c" value="yes">Yes</label><label><input type="radio" name="q5-c" value="no">No</label><label><input type="radio" name="q5-c" value="depends">Depends</label></fieldset>
-        <div class="ans"><label for="q5-a">Reply</label><textarea id="q5-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
-      </li>
       <li id="q6" data-yn="1">
-        <div class="qh"><p class="qt">The held-out TEST set was looked at 10 times, all logged and dated. Is it acceptable to present it as “held out, with disclosed exposure”?</p><span class="yn">yes / no</span></div>
-        <small class="ctx">The final table was scored once, under a rule written before. 35 of the 60 TEST clips overlap the clips used to set the detector threshold (disclosed).</small>
-        <fieldset class="choices"><legend>Question 6</legend><label><input type="radio" name="q6-c" value="yes">Yes</label><label><input type="radio" name="q6-c" value="no">No</label><label><input type="radio" name="q6-c" value="depends">Depends</label></fieldset>
+        <div class="qh"><p class="qt">The held-out TEST set has 11 logged exposures, all dated. Is it acceptable to present it as “held out, with disclosed exposure”?</p><span class="yn">yes / no</span></div>
+        <small class="ctx">The final table was scored once, under a rule written before; nothing was tuned on TEST. The 11th exposure is the results inspector (28 Sept); the two existing-approach baselines were each scored once on TEST. 35 of the 60 TEST clips overlap the clips used to set the detector threshold (disclosed).</small>
+        <fieldset class="choices"><legend>TEST exposure</legend><label><input type="radio" name="q6-c" value="yes">Yes</label><label><input type="radio" name="q6-c" value="no">No</label><label><input type="radio" name="q6-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q6-a">Reply</label><textarea id="q6-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
-      </li>
-      <li id="q7" data-yn="1">
-        <div class="qh"><p class="qt">Is this an acceptable main claim: “the sound detector is the ceiling; the gate and the pictures are the contribution on top”?</p><span class="yn">yes / no</span></div>
-        <small class="ctx">Given the human's sound list, the gate's F1 gain becomes significant (+0.067).</small>
-        <fieldset class="choices"><legend>Question 7</legend><label><input type="radio" name="q7-c" value="yes">Yes</label><label><input type="radio" name="q7-c" value="no">No</label><label><input type="radio" name="q7-c" value="depends">Depends</label></fieldset>
-        <div class="ans"><label for="q7-a">Reply</label><textarea id="q7-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
       <li id="q8" data-yn="1">
         <div class="qh"><p class="qt">Can the benchmark be presented as a contribution, called “pilot benchmark v1”?</p><span class="yn">yes / no</span></div>
         <small class="ctx">139 clips + labelling protocol + scorer. One annotator, so we claim the protocol more than the numbers.</small>
-        <fieldset class="choices"><legend>Question 8</legend><label><input type="radio" name="q8-c" value="yes">Yes</label><label><input type="radio" name="q8-c" value="no">No</label><label><input type="radio" name="q8-c" value="depends">Depends</label></fieldset>
+        <fieldset class="choices"><legend>Benchmark</legend><label><input type="radio" name="q8-c" value="yes">Yes</label><label><input type="radio" name="q8-c" value="no">No</label><label><input type="radio" name="q8-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q8-a">Reply</label><textarea id="q8-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
       <li id="q9" data-yn="1">
         <div class="qh"><p class="qt">Is light training acceptable (for example a small model that combines the detectors' scores), or must the thesis stay training-free?</p><span class="yn">yes / no</span></div>
         <small class="ctx">Yes = light training is allowed. Today no model is trained; existing models are chained.</small>
-        <fieldset class="choices"><legend>Question 9</legend><label><input type="radio" name="q9-c" value="yes">Yes</label><label><input type="radio" name="q9-c" value="no">No</label><label><input type="radio" name="q9-c" value="depends">Depends</label></fieldset>
+        <fieldset class="choices"><legend>Light training</legend><label><input type="radio" name="q9-c" value="yes">Yes</label><label><input type="radio" name="q9-c" value="no">No</label><label><input type="radio" name="q9-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q9-a">Reply</label><textarea id="q9-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
       <li id="q10" data-yn="1">
         <div class="qh"><p class="qt">The timing fix improved DEV but was inconclusive on TEST. Is it fine to keep it as a bug fix and report the gain as DEV only?</p><span class="yn">yes / no</span></div>
-        <fieldset class="choices"><legend>Question 10</legend><label><input type="radio" name="q10-c" value="yes">Yes</label><label><input type="radio" name="q10-c" value="no">No</label><label><input type="radio" name="q10-c" value="depends">Depends</label></fieldset>
+        <fieldset class="choices"><legend>Timing fix</legend><label><input type="radio" name="q10-c" value="yes">Yes</label><label><input type="radio" name="q10-c" value="no">No</label><label><input type="radio" name="q10-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q10-a">Reply</label><textarea id="q10-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
       <li id="q11" data-yn="1">
         <div class="qh"><p class="qt">Picture + word label in the panel: the literature recommends it. Is it OK to add it as a display choice, without testing it?</p><span class="yn">yes / no</span></div>
-        <small class="ctx">The sealed picture test stays picture-only; the word would be a stated design choice.</small>
-        <fieldset class="choices"><legend>Question 11</legend><label><input type="radio" name="q11-c" value="yes">Yes</label><label><input type="radio" name="q11-c" value="no">No</label><label><input type="radio" name="q11-c" value="depends">Depends</label></fieldset>
+        <small class="ctx">The human picture test (round 2) was picture-only; the word would be a stated design choice. (Today word cards appear only for sounds with no object to draw, e.g. “WHOOSH”, or when a picture fails the check 4 times.)</small>
+        <fieldset class="choices"><legend>Picture + word label</legend><label><input type="radio" name="q11-c" value="yes">Yes</label><label><input type="radio" name="q11-c" value="no">No</label><label><input type="radio" name="q11-c" value="depends">Depends</label></fieldset>
         <div class="ans"><label for="q11-a">Reply</label><textarea id="q11-a"></textarea><div class="print-ans" aria-hidden="true"></div></div>
       </li>
     </ol>
@@ -590,7 +694,7 @@ textarea.notes{min-height:160px}
   function collect(){
     return {
       page: "Seeing off-screen sound — supervisor meeting",
-      meeting_date: "2026-09-27",
+      meeting_date: "2026-09-28",
       saved_at: new Date().toISOString(),
       questions: items.map(function(li, i){
         var yn = li.getAttribute("data-yn") === "1";

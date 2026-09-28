@@ -1,4 +1,4 @@
-"""Graphs for the 26 Sept supervisor page, from committed result files only."""
+"""Graphs for the supervisor page (updated 28 Sept), from committed result files only."""
 import json
 from pathlib import Path
 import matplotlib
@@ -37,16 +37,16 @@ for off, tab, name, filled in ((0.17, t, "TEST 60 (final table)", True), (-0.17,
     ax.plot([], [], "o", color=INK, mfc=INK if filled else "white", label=name)
 ax.axvline(0, color=INK, lw=1)
 ax.set_yticks(range(len(labels))); ax.set_yticklabels(labels[::-1])
-ax.set_xlabel("difference, ours − blind (right = ours better; bar = 95% CI; green = survives Holm)")
+ax.set_xlabel("difference, ours − pipeline without gate\n(right = ours better; bar = 95% CI; green = survives Holm)")
 ax.legend(frameon=False, loc="lower right")
-ax.set_title("Gate vs “draw every sound”", loc="left", color=INK, fontsize=12)
+ax.set_title("Gate vs “pipeline without gate”", loc="left", color=INK, fontsize=12)
 save(fig, "test_vs_blind.png")
 
 # 2. viewer cost per clip category, ours / blind / silence
 cats = [("cat_unseen", "sound off screen"), ("cat_mixed", "mixed"), ("cat_seen", "source on screen"), ("cat_no_ambient", "nothing to draw")]
 fig, ax = plt.subplots(figsize=(7.2, 3.2))
 w = 0.26
-for j, (sys_, col, lab) in enumerate((("proposed", OURS, "ours"), ("blind_a2i", BLIND, "draw every sound"), ("silence", SIL, "show nothing"))):
+for j, (sys_, col, lab) in enumerate((("proposed", OURS, "ours"), ("blind_a2i", BLIND, "pipeline without gate"), ("silence", SIL, "show nothing"))):
     xs = [i + (j - 1) * w for i in range(len(cats))]
     ax.bar(xs, [t["categories"][c]["cost"][sys_] for c, _ in cats], w, color=col, label=lab)
 ax.set_xticks(range(len(cats))); ax.set_xticklabels([f"{n}\n({t['categories'][c]['clips']} clips)" for c, n in cats])
@@ -57,7 +57,7 @@ save(fig, "cost_by_category.png")
 
 # 3. pictures: blind human recognition, round 2 (54 sounds, fresh clips)
 fig, ax = plt.subplots(figsize=(6.2, 2.6))
-arms = [("today (FLUX)", 14), ("new model (Qwen-Image)", 26), ("new model + new text", 32)]
+arms = [("old (FLUX, retired)", 14), ("new (Qwen-Image, shipped)", 26), ("new model + new text", 32)]
 ax.barh([a for a, _ in arms][::-1], [v / 54 * 100 for _, v in arms][::-1], color=[OURS, OURS, MUTED][::-1])
 for i, (_, v) in enumerate(arms[::-1]):
     ax.text(v / 54 * 100 + 1, i, f"{v}/54", va="center", color=INK)
@@ -75,15 +75,21 @@ ax.set_xlim(0.4, 0.75); ax.set_xlabel("balanced accuracy: is the sound's source 
 ax.set_title("Seeing the object ≠ seeing the sound's source", loc="left", color=INK, fontsize=12)
 save(fig, "gate_accuracy.png")
 
-# 5. why sounds are missed (DEV, 21 misses, corrected autopsy, amendment 10)
-fig, ax = plt.subplots(figsize=(6.4, 2.6))
-parts = [("detector never heard it", 11, BLIND), ("picture too late/early", 5, OURS), ("gate: \"visible\"", 3, SIL), ("label filter", 2, MUTED)]
-left = 0
-for n, v, c in parts:
-    ax.barh([0], [v], left=left, color=c); ax.text(left + v / 2, 0, str(v), ha="center", va="center", color="white", fontsize=12, fontweight="bold")
-    left += v
-ax.set_yticks([]); ax.set_xlim(0, 21); ax.set_xticks([]); ax.set_xlabel("21 missed needed sounds, DEV (autopsy of the 22 Sept row, GOLD_RERUN §15)")
-ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for _, _, c in parts], [n for n, _, _ in parts], frameon=False, ncol=2, loc="lower left", bbox_to_anchor=(0, 1.02))
+# 5. why sounds are missed (frozen-table renders, 28 Sept autopsy: DEV 22 misses, TEST 27; 28 of 49 never detected = 57 %)
+fig, ax = plt.subplots(figsize=(6.8, 2.9))
+parts = [("never detected by any detector", BLIND), ("picture too late/early", OURS), ("gate: \"visible\"", SIL), ("detected, not drawn", MUTED)]
+data = {"DEV (22 misses)": [15, 4, 3, 0], "TEST (27 misses)": [13, 8, 3, 3]}
+for y, (row, vals) in enumerate(reversed(list(data.items()))):
+    left = 0
+    for (n, c), v in zip(parts, vals):
+        if not v:
+            continue
+        ax.barh([y], [v], left=left, color=c)
+        ax.text(left + v / 2, y, str(v), ha="center", va="center", color="white", fontsize=12, fontweight="bold")
+        left += v
+ax.set_yticks(range(len(data))); ax.set_yticklabels(list(data)[::-1]); ax.set_xlim(0, 27); ax.set_xticks([])
+ax.set_xlabel("missed needed sounds, final-table renders (57 % of DEV + TEST misses never detected)")
+ax.legend([plt.Rectangle((0, 0), 1, 1, color=c) for _, c in parts], [n for n, _ in parts], frameon=False, ncol=2, loc="lower left", bbox_to_anchor=(0, 1.02))
 ax.set_title("Why sounds are missed: mostly the detector", loc="left", color=INK, fontsize=12, pad=52)
 save(fig, "miss_causes.png")
 print("ok")
