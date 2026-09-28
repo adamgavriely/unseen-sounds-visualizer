@@ -836,6 +836,9 @@
         { k: 'imp', t: 'imp.', num: 1, h: function (r) { return r.s.importance; }, v: function (r) { return r.s.importance; } },
         { k: 'why', t: 'reason', h: function (r) { return '<b>' + esc(r.r.reason) + '</b>'; }, v: function (r) { return REASONS.indexOf(r.r.reason); } },
         { k: 'det', t: 'what happened', h: missDetail },
+        { k: 'why2', t: 'why missed (plain words)', cls: 'whycol',
+          h: function (r) { return r.r.why ? '<div class="why">' + esc(r.r.why.text) + '</div>' : '<span class="muted">—</span>'; },
+          v: function (r) { return r.r.why ? r.r.why.step : ''; } },
         { k: 'heard', t: 'what the detectors heard (−0.5 to +1.0 s)', h: function (r) { return heardCell(r.c, r.i); }, cls: 'heardcol',
           v: function (r) { var x = r.s.heard && r.s.heard.BEATs; return x && x.own != null ? x.own : null; } }
       ]);
