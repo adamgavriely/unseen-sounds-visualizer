@@ -160,3 +160,87 @@ Also pre-computed (baseline only, no cell): the "unheard" definition on the 280 
 consequential misses (62 %; beside the "57 %" figure). The secondary label filter gives a shipped baseline of
 2.664 / 3.479 / 52.5 % / 3.54 false per min on the 280 (depictable) against 3.036 / 3.850 / 51.3 % / 4.44 (lists). The
 true-span count is 0 by construction (the union only adds), and no cell was scored.
+
+---
+
+## Round 7b — retry with descriptive queries and span prediction (pre-registered 2026-09-28, before any 7b output)
+
+*Why:* Adam asked for SAM-Audio to be tested properly, and round 7 failed at the QC gate for a reason that looks like
+set-up (the one-word `"music"` query removed almost nothing). 7b is a new round with its own gate. Round 7's result
+stays as recorded above. Harness: the same `benchmark/detector_round7.py` with `R7_TAG=7b`; results go to
+`benchmark/detector_round7b.json`; jobs `slurm/job_round7b_{sep,cache,score}.sh`; outputs go to new folders
+(`data/work/r7b_samaudio/`, `beats_r7bres/`, `flexsed_<set>_r7bres/`, `*_r7bident/`).
+
+**What changes (nothing else does):**
+- **Queries, in this order:** `"a person talking"` first, then `"background music"` (the fall-back pair written in the
+  20 Sept design). The order is the same as round 7: speech first, then music on what is left.
+- **`predict_spans=True`.** This is the official README's setting for text prompts: the span predictor tells the model
+  *when* the target sounds. Span predictor = PE-A-Frame-large, the official `facebook/pe-a-frame-large` at revision
+  `perception_models` (the format SAM-Audio loads, 6.1 GB). The copy already cached is the transformers-format `main`
+  revision (a different file), so the `perception_models` revision is fetched once on the login node (disk: 23 GB free
+  before the fetch). The model is loaded with `span_predictor="pe-a-frame-large"`. Still no re-ranking models;
+  `reranking_candidates=1`, seed 0 before every call, fp32, offline jobs.
+- Model: `facebook/sam-audio-large`, as in round 7. Both routes (arithmetic x − t_s − t_m, and the model's residual stem)
+  are made for every clip, as in round 7.
+
+**Gate 1 — QC (as round 7, same 10 clips):** (a) length ok on 10/10; (b) the dominant class (Speech or Music) falls by
+≥ 0.3 in BEATs clip-max on ≥ 6/10 clips; (c) median RMS residual / input in speech/music windows < 1.0.
+
+**Gate 2 — erase check (new, fixed now):** does the separation keep the sounds we want to find? Events = the gold events
+of the same 10 QC clips that are salient non-speech, non-music (`is_salient_nonspeech` and not `is_music`, the harness's
+"lists" filter, consequential or not), counted only if the ORIGINAL BEATs same-family peak in [start − 1, end + 1] s is
+≥ 0.3 (so a loss of 0.3 is possible). Checked before any residual output: 11 such events (of 33 salient events) in the
+10 clips. Per event, drop = original peak − residual peak (BEATs, same window, same family). An event is **erased** iff
+drop > 0.3. Gate 2 passes iff at most 25 % of the counted events are erased (at most 2 of 11). FlexSED is not used in the
+gate (it is not run on the QC residuals); the median drop and the per-event rows are reported.
+
+**Route choice:** the arithmetic route if it passes Gates 1 and 2; else the stem route if it passes both; else **7b stops,
+recorded as a negative result, with no cost computed**.
+
+**After the gates, everything is exactly as round 7:** the identity gate (≥ 18/20 same shown spans, on 7b's own identity
+wavs); the residual view = the shipped stack on the residual caches (shipped bars, same vetoes measured on the residual,
+b = 0.1218, no refit); cells S1 and S2 with the same union rule (a twin is absorbed and shipped spans are never moved; S2
+only where the ORIGINAL BEATs Speech or Music is ≥ 0.3); the pick on the 280 (C-overlap and C-onset both below shipped;
+lowest C-overlap); the 415 for the pick only (paired clip bootstrap, 2000 draws, seed 0; pass iff upper 95 % CI of
+ΔC-overlap < 0); the "unheard" definition and recovered counts; the secondary "depictable" rows (never used to pick or
+pass); true spans removed and added. The 415 has now been used by rounds 2–7 (disclosed).
+
+**Disk:** keep `sam-audio-large`; the round-7 residual wavs (`data/work/r7_samaudio/`, 1.3 GB) are deleted only after 7b's
+own wavs are written.
+
+### Round 7b results
+*(filled in after the runs)*
+
+**Result (2026-09-28): Gate 1 (QC) fails for both routes again → 7b stops before any cost. Negative result.** No
+residual cache, no identity gate, no S1/S2 number on the 280 or the 415. The shipped stack stays.
+(`benchmark/detector_round7b.json` → `qc`.)
+
+Runs: jobs 31330158–61 separated all 280 + 415 clips (sam-audio-large, predict_spans=True with PE-A-Frame-large
+`perception_models`; about 11 s per clip on an A100, 5 s on an H200). Job 31330162 = QC (it exits non-zero on the
+declared stop). Jobs 31330163–67 were cancelled.
+
+| route | (b) dominant class falls ≥ 0.3 (need ≥ 6/10) | (c) median RMS ratio (< 1) | Gate 1 | erase check: erased / counted (≤ 25 %) | Gate 2 |
+|---|---|---|---|---|---|
+| arithmetic | **2/10** | 0.88 | fail | 0/11 (median drop 0.000) | pass |
+| model's residual stem | **5/10** | 0.79 | fail | 2/11 (median drop 0.04) | pass |
+
+In plain words:
+- **Speech:** the stem route now removes speech well enough on 4 of 6 speech clips (BEATs Speech falls by 0.38–0.77). It
+  did the same in round 7, so the descriptive wording and span prediction add little here.
+- **Music: still not removed.** `"background music"` removes almost nothing, like `"music"` before. Its output is under
+  1 % of the input's loudness on 154 of 280 and 222 of 415 clips (median 0.6 %). On the 4 music clips, only one
+  (92BvO3) passes. So the gate fails for one reason in both rounds: this separator does not take out music when asked
+  with text.
+- **Subtracting the targets hardly changes the audio.** Median residual/input loudness is 0.97 (280) and 0.95 (415), and
+  the speech target is only 8–13 % of the input's loudness. The arithmetic route therefore keeps the target sounds
+  (0/11 erased), but it also keeps the speech and music.
+- **The stem route removes some target sounds as well.** Two cash-register events drop from 0.98 and 0.49 to 0.38 and
+  0.01. The alarm clock (−0.26) and the heartbeat (−0.19, −0.24) fall too, though below the 0.3 limit.
+
+Both rounds together: SAM-Audio text prompts can take speech out of the model's own residual on about two thirds of
+speech-heavy clips, but not music, so a "listen again without speech and music" view cannot be built fairly with it.
+This closes the idea as a negative result; no cost was ever computed, so the 280 and the 415 were not spent on it.
+
+Disk: `sam-audio-large` (15 GB) and PE-A-Frame-large `perception_models` (6.1 GB) are kept in the HF cache. The round-7
+wavs (`data/work/r7_samaudio/`) were deleted after 7b's wavs were written. 7b's wavs (`data/work/r7b_samaudio/`,
+1.3 GB) remain. 18 GB free.

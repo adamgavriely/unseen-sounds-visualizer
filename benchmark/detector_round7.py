@@ -29,10 +29,17 @@ from pathlib import Path
 import numpy as np
 
 _ROOT = Path(__file__).resolve().parent.parent
-OUT = _ROOT / "benchmark" / "detector_round7.json"
-SEP = _ROOT / "data" / "work" / "r7_samaudio"          # SEP/<set>/{arith,stem,ident,qc}/<id>.{wav,json}
+# R7_TAG=7 (default): round 7 as run. R7_TAG=7b: the retry pre-registered in the same doc (descriptive queries,
+# predict_spans=True with PE-A-Frame-large, erase check); own json, own folders.
+TAG = os.environ.get("R7_TAG", "7")
+assert TAG in ("7", "7b"), TAG
+SFX = "r" + TAG                                          # folder suffix: r7 / r7b
+OUT = _ROOT / "benchmark" / f"detector_round{TAG}.json"
+SEP = _ROOT / "data" / "work" / f"{SFX}_samaudio"      # SEP/<set>/{arith,stem,ident,qc}/<id>.{wav,json}
 MODEL_ID = os.environ.get("R7_MODEL", "facebook/sam-audio-large")
-QUERIES = ("speech", "music")
+QUERIES = ("speech", "music") if TAG == "7" else ("a person talking", "background music")
+PREDICT_SPANS = TAG == "7b"
+ERASE_DROP, ERASE_SHARE, ERASE_MIN_ORIG = 0.3, 0.25, 0.3
 SR_SEP, SR_DET = 48000, 16000
 HOP48 = 1920                                             # SAM-Audio codec hop at 48 kHz
 B_SHIPPED = 0.1218
@@ -53,11 +60,11 @@ def vid_dir(set_name):
 
 
 def beats_dir(set_name, route):
-    return win_dir(set_name) / f"beats_r7{route}"
+    return win_dir(set_name) / f"beats_{SFX}{route}"
 
 
 def flex_dir(set_name, route):
-    return _ROOT / "data" / "work" / f"flexsed_{set_name}_r7{route}"
+    return _ROOT / "data" / "work" / f"flexsed_{set_name}_{SFX}{route}"
 
 
 def load_log():
@@ -126,16 +133,17 @@ def sep(set_name, shard=0, of=1, limit=None):
         (out / d).mkdir(parents=True, exist_ok=True)
     dev = "cuda"
     t0 = time.time()
-    model = SAMAudio.from_pretrained(MODEL_ID, visual_ranker=None, text_ranker=None, span_predictor=None).to(dev).eval()
+    model = SAMAudio.from_pretrained(MODEL_ID, visual_ranker=None, text_ranker=None,
+                                     span_predictor="pe-a-frame-large" if PREDICT_SPANS else None).to(dev).eval()
     proc = SAMAudioProcessor.from_pretrained(MODEL_ID)
     assert proc.audio_sampling_rate == SR_SEP, proc.audio_sampling_rate
     print(f"[sep] {MODEL_ID} loaded in {time.time() - t0:.0f} s; {torch.cuda.get_device_name(0)}; set {set_name} shard {shard}/{of}: "
-          f"{len(ids)} clips; queries {QUERIES}", flush=True)
+          f"{len(ids)} clips; queries {QUERIES}; predict_spans {PREDICT_SPANS}", flush=True)
 
     def separate(a, q):
         torch.manual_seed(0)
         batch = proc(descriptions=[q], audios=[torch.from_numpy(np.ascontiguousarray(a))[None]]).to(dev)
-        r = model.separate(batch, predict_spans=False, reranking_candidates=1)
+        r = model.separate(batch, predict_spans=PREDICT_SPANS, reranking_candidates=1)
         t, s = r.target[0].float().cpu().numpy(), r.residual[0].float().cpu().numpy()
         return t, s
 
@@ -168,7 +176,7 @@ def sep(set_name, shard=0, of=1, limit=None):
                       "r_stem": rms(r_stem)},
               "peak": {"x": float(np.abs(x).max()), "r_arith": float(np.abs(r_arith).max()), "r_stem": float(np.abs(r_stem).max())},
               "nan": bool(np.isnan(r_arith).any() or np.isnan(r_stem).any()), "secs": round(time.time() - ts0, 2),
-              "model": MODEL_ID, "queries": list(QUERIES)}
+              "model": MODEL_ID, "queries": list(QUERIES), "predict_spans": PREDICT_SPANS}
         qj.write_text(json.dumps(qc), encoding="utf-8")
         done += 1
         if done <= 3 or done % 20 == 0:
@@ -223,8 +231,9 @@ def qc(log):
     cl = qc_clips(R, D)
     assert len(cl) == N_QC, len(cl)
     res = {"clips": [c["id"] for c in cl]}
+    from src.labels import is_salient_nonspeech, is_music
     for route in ("arith", "stem"):
-        rows = []
+        rows, erase_all = [], []
         dst = beats_dir("calib", f"qc_{route}"); dst.mkdir(parents=True, exist_ok=True)
         for c in cl:
             cid = c["id"]
@@ -246,6 +255,17 @@ def qc(log):
                 a, b = int(max(0, (ot[k] - 1.5) * 16000)), int(min(n, (ot[k] + 0.5) * 16000))
                 m[a:b] = True
             ratio = float(np.sqrt(np.mean(xr[:n][m] ** 2)) / max(1e-9, np.sqrt(np.mean(xin[:n][m] ** 2)))) if m.any() else None
+            erase = []
+            for g in c["events"]:
+                if not (is_salient_nonspeech(g["label"]) and not is_music(g["label"])):
+                    continue
+                ge = types.SimpleNamespace(start=g["start"], end=g["end"], label=g["label"])
+                po = D.peak_near((ofw, ot, ol), ge)
+                if po >= ERASE_MIN_ORIG:
+                    pr = D.peak_near((fw, t, labs), ge)
+                    erase.append({"label": g["label"], "start": g["start"], "orig": float(po), "res": float(pr),
+                                  "drop": float(po - pr), "erased": bool(po - pr > ERASE_DROP)})
+            erase_all.extend(erase)
             rows.append({"id": cid, "len_ok": bool(q["len_ok"] and len(xr) == len(xin)), "lag_speech": q["lag_speech"],
                          "lag_music": q["lag_music"], "dominant": ol[dom], "orig_clipmax": float(opk[dom]),
                          "res_clipmax": float(rpk[dom]), "drop": drop, "drop_ok": drop >= 0.3, "rms_ratio_speechy": ratio})
@@ -256,7 +276,20 @@ def qc(log):
         passed = bool(a_ok and b_n >= 6 and c_med is not None and c_med < 1.0)
         res[route] = {"rows": rows, "a_len_ok_10_of_10": a_ok, "b_drop_ok": b_n, "c_median_rms_ratio": c_med, "pass": passed}
         print(f"[qc] {route}: len ok {a_ok}; dominant class falls >= 0.3 on {b_n}/10; median RMS ratio in speech/music "
-              f"windows {c_med}; PASS {passed}", flush=True)
+              f"windows {c_med}; gate 1 PASS {passed}", flush=True)
+        if TAG == "7b":                                      # gate 2: the erase check (prereg, round 7b)
+            n_er = sum(e["erased"] for e in erase_all)
+            ok2 = bool(erase_all) and n_er <= ERASE_SHARE * len(erase_all)
+            res[route]["erase"] = {"events": erase_all, "counted": len(erase_all), "erased": n_er,
+                                   "median_drop": float(np.median([e["drop"] for e in erase_all])) if erase_all else None,
+                                   "pass": ok2}
+            res[route]["gate1_pass"] = passed
+            passed = bool(passed and ok2)
+            res[route]["pass"] = passed
+            print(f"[qc] {route}: erase check: {n_er}/{len(erase_all)} counted gold events lose > {ERASE_DROP} "
+                  f"(allowed <= {ERASE_SHARE:.0%}); median drop {res[route]['erase']['median_drop']}; gate 2 PASS {ok2}", flush=True)
+            for e in erase_all:
+                print(f"   erase {e}", flush=True)
         for r in rows:
             print(f"   {r}", flush=True)
     route = "arith" if res["arith"]["pass"] else ("stem" if res["stem"]["pass"] else None)
@@ -265,7 +298,7 @@ def qc(log):
     save_log(log)
     print(f"[qc] route chosen by the declared rule: {route}", flush=True)
     if route is None:
-        sys.exit("QC: neither route passes -> round 7 stops here (as pre-registered)")
+        sys.exit(f"QC: neither route passes -> round {TAG} stops here (as pre-registered)")
 
 
 def src_route(set_name, route, log):
