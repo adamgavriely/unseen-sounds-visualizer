@@ -1332,6 +1332,14 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 # Amendment 3 (2026-09-21, bug fix): the kinship test alone was time-blind --
                 # a Vehicle seen at 0-4 s silenced a horn at 20 s whose own check said "not
                 # visible". Same source means same family AND the same moment (_dedup's test).
+                # Direction (Adam, 28 Sept 2026; bug found in mc_bridge_scene): a visible label may silence only
+                # the same label or a MORE GENERAL one (a visible "Chink, clink" silences "Glass"). A visible general
+                # label never silences a specific one whose own check said "not visible" ("cars" seen -> Vehicle
+                # visible must not silence Helicopter). Off with KINSHIP_DIRECTED = False (the scored runs).
+                from src.labels import is_descendant as _desc
+                directed = getattr(config, "KINSHIP_DIRECTED", False)
+                if directed and not (g.event_label == spec.event_label or _desc(g.event_label, spec.event_label)):
+                    continue
                 if same_source(spec.event_label, g.event_label) and _overlap(spec, g):
                     spec.augment = False
                     spec.subject = ""

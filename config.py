@@ -164,6 +164,9 @@ PICTURE_MIN_CONF = None
 # sounds, and never by more than this). None = off. use_shipped() sets 1.0 s and joins repeats if the gap <= 1.5 s
 # (Adam, 28 Sept 2026).
 MAX_AFTER_END = None
+# Stage 5 family rule: a visible sound silences a related one only in the right direction (see reason.py). The scored
+# runs had it off; use_shipped() switches it on (Adam, 28 Sept 2026).
+KINSHIP_DIRECTED = False
 # Print the generator's prompt under each picture. Debugging only -- it is how a bad
 # picture gets traced to the words that produced it. Off for anything a viewer sees.
 SHOW_PROMPT = False
@@ -388,7 +391,7 @@ def use_shipped() -> dict:
     setattr(me, "CONFIDENCE_FADE", False)
     changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
     setattr(me, "PICTURE_MIN_CONF", 0.40)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.5)):
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.5), ("KINSHIP_DIRECTED", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

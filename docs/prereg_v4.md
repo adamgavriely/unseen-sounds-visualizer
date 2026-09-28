@@ -2231,3 +2231,11 @@ train segments), so PretrainedSED has not seen them.
 false/min; C1 4.457, 60.3 %, 9.56; C2 4.207, 60.3 %, 8.81; C3 4.979, 62.1 %, 11.29; C4 3.064 / 3.921, 52.2 %, 4.61; C5 4.186,
 60.7 %, 8.79. The PretrainedSED and relative-PANNs vetoes let a lower FlexSED bar find ~10 points more events but double the false
 spans; C4 lowers C-overlap by 0.007 but raises C-onset, so it fails the rule. The held-out set stays unread for this round.
+
+## 2026-09-28 — bug fix: the stage-5 family rule had no direction (found in TEST clip mc_bridge_scene)
+
+A visible label silenced every related label at the same moment, both ways: "cars" seen → Vehicle visible → Helicopter silenced
+although the Helicopter's own gate check said "not visible". Fix (Adam): a visible label silences only the same label or a more
+general one. On the scored renders (simulated, `benchmark/gold/kinship_fix_check.py`): TEST 16 → 18 hits, 25 → 28 wrong, cost
+2.63 → 2.60; DEV 14 hits unchanged, 24 → 28 wrong, 2.78 → 2.94. Adopted in `use_shipped()` (`KINSHIP_DIRECTED`) as a logic fix;
+the scored tables are unchanged. Disclosed: found by inspecting a TEST clip.
