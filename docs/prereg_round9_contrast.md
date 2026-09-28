@@ -117,3 +117,10 @@ from their surroundings (the crowd is there before and after each span), so J2 d
 The Siren picture in `mv_tornado_scene` is only shortened. **DEV rule: hits drop (14 → 13) and wrong pictures do not
 drop (24 → 25), so the DEV part of the ship rule fails: J2 is not shipped, whatever the fresh set shows.** The fresh-set
 check (A) is still scored once, as registered, when its caches are complete.
+
+## Deviation (2026-09-28): the fresh-set check (A) is withdrawn, not scored
+Stopped on the lead's instruction before any fresh-set number existed (the scoring job was never submitted; no fresh
+output was produced or read; `detector_round9.json` has no `fresh` entry). Reasons: (1) J2 already failed the DEV part of
+the ship rule (result B), so the fresh set could not change the decision; (2) the setup audit
+(`docs/setup_audit_2026-09-28.md`) found that the AudioSet cost definition must be revised, so the clean fresh set is kept
+unread for a test under the corrected cost. The `fresh` step stays in `benchmark/detector_round9.py` but is not run.
