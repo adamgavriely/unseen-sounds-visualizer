@@ -2239,3 +2239,62 @@ although the Helicopter's own gate check said "not visible". Fix (Adam): a visib
 general one. On the scored renders (simulated, `benchmark/gold/kinship_fix_check.py`): TEST 16 → 18 hits, 25 → 28 wrong, cost
 2.63 → 2.60; DEV 14 hits unchanged, 24 → 28 wrong, 2.78 → 2.94. Adopted in `use_shipped()` (`KINSHIP_DIRECTED`) as a logic fix;
 the scored tables are unchanged. Disclosed: found by inspecting a TEST clip.
+
+## 2026-09-28 — detector round 4: BEATs end-trim by FlexSED, and a BEATs self-veto in place of PANNs (before any number)
+
+Two fixed questions from the saved caches only (BEATs, FlexSED, PANNs; no model run), `benchmark/detector_round4.py`
+(steps `fit` = the 280, `heldout` = the 415) → `benchmark/detector_round4.json`. Cost C, clip sets and bootstrap exactly as
+amendment 24 (paired clip bootstrap, 2000 draws, seed 0). Both tests score the stack without the display floor 0.40
+(`PICTURE_MIN_CONF` is display-level), as amendments 24–26 and round 3 did. **Sanity gate first:** the script rebuilds the
+shipped stack with origin tags (BEATs-origin vs FlexSED-only) and asserts, clip by clip, that its spans equal
+`detector_round2.stack()`; the shipped rows must reproduce 3.071 / 3.886 / 50.4 % / 4.46 (280) and 1.923 / 49.1 % / 3.25 (415).
+If not, stop.
+
+**Test 1 — end-trim.** BEATs (0.25 s hop) blurs sound ends by ~1 s; FlexSED is frame-level (25 fps). For every final shown span
+that came from BEATs (not FlexSED-only; its start may already have been pulled earlier by the twin rule), with family score
+per FlexSED frame = max over FlexSED columns of the same canonical family: frames "inside" = frame time t with start ≤ t < end
+(frame i covers [i/25, (i+1)/25)); P = peak family score inside; t_last = the last inside frame with score ≥ 0.5 × P; new end =
+t_last + 1/25, then clamped: never later than the old end, never earlier than old end − 1.5 s, never earlier than start + 0.5 s
+(if start + 0.5 ≥ old end the span is untouched). No same-family FlexSED column, no inside frame, or P ≤ 0 → untouched. No
+peak floor; the number of trims that fire with P < 0.3 is reported (descriptive).
+*End error:* for each consequential gold event (salient non-speech, non-music) matched by at least one span (same family and
+overlap by the scorer's rule, `_overlap_ok`), take the matched span with the largest overlap (tie → earlier start); error =
+|span end − gold end|. Trimming can un-match an event, so the **primary Δ = median error shipped − median error trimmed over
+the events matched in both arms**; per-arm medians and matched counts reported beside.
+*Other numbers:* recall (overlap, onset), false spans/min, C-overlap, C-onset — shipped vs trimmed. Onset recall cannot change
+(starts untouched); a trim can only add false spans, so "false spans not higher" is a count: fp(trimmed) ≤ fp(shipped).
+*Rule on the 280:* **adopt-candidate iff Δ ≥ 0.3 s AND recall-overlap(trimmed) ≥ recall-overlap(shipped) − 0.5 points AND
+fp(trimmed) ≤ fp(shipped)**. Only a candidate goes to the 415; otherwise the 415 is not scored for Test 1.
+*Confirmation on the 415 (only if a candidate):* **adopt iff Δ ≥ 0.3 s with its clip-bootstrap 95 % CI excluding 0 (lower
+bound > 0) AND the paired ΔC-overlap (trimmed − shipped) upper 95 % CI ≤ 0.** Same numbers as the 280 reported.
+
+**Test 2 — BEATs self-veto in place of PANNs.** Pool = the FlexSED-only spans that survive the FlexSED clip-level veto (exactly
+the spans the shipped PANNs veto acts on); pool sizes on the 280 and 415 printed before b. Shipped: kept iff PANNs clip-max for
+the span's canonical family ≥ 0.05. Self-veto: kept iff BEATs clip-max (`clip_peak` of the BEATs cache) for the family ≥ b.
+A family absent from the model's labels is kept (the shipped convention); BEATs and PANNs share the 527 AudioSet labels, so
+coverage is the same. *b:* k = the number of pool spans PANNs keeps on the 280; b = the k-th largest BEATs clip-max over the
+280 pool (ties can push the kept share above PANNs'; the actual share is reported beside b, 4 decimals). b is written to the
+json by `fit` before any C comparison of the self-veto and before any 415 number.
+*Numbers on the 280 and on the 415:* false spans/min, recall (overlap, onset), C-overlap, C-onset, paired ΔC-overlap
+(self − shipped) with bootstrap CI, and the agreement between the vetoes on the same pool spans as a 2×2 (both keep / both
+drop / PANNs-only keep / BEATs-only keep) and a rate. The 415 is scored for Test 2 whatever the 280 shows (the question is a
+replacement, not a pick).
+*Rule on the 415:* **drop PANNs iff ΔC-overlap upper 95 % CI < +0.1 AND recall-overlap(self) ≥ recall-overlap(shipped) − 0.5
+points**; otherwise PANNs stays and its measured value (the Δ in C, recall and false spans it buys over BEATs alone) is reported.
+Neither rule is revised after a number is seen; no TEST, no DEV.
+**Result (`benchmark/detector_round4.json`).** Sanity gate passed: the tagged stack equals `detector_round2.stack()` on every clip;
+shipped reproduces 3.071 / 3.886 / 50.4 % / 4.46 (280) and 1.923 / 49.1 % / 3.25 (415).
+*Test 1, the 280: not a candidate, so the 415 is not scored for it.* 104 of 1,225 BEATs-origin shown spans (all labels, before the salient filter) were trimmed (median
+cut 0.57 s, mean 0.70 s; 19 of the 104 with FlexSED in-span peak < 0.3). End error on the 108 events matched in both arms: median
+1.440 → 1.145 s, **Δ +0.295 s [+0.073, +0.800]** (below the 0.3 s bar); per arm 113 / 108 matched. Recall-overlap **50.4 → 48.2 %**
+(−2.2 points, outside 0.5); onset-recall 25.0 → 25.0 %; false spans 208 → 208 (4.46/min both); C-overlap 3.071 → 3.143 (ΔC +0.071
+[0.000, +0.186]); C-onset 3.886 → 3.886. Fails two of three parts (Δ < 0.3 s, recall −2.2 points): the trim makes ends closer
+but cuts 5 events below the overlap bar. Not adopted.
+*Test 2.* b = **0.1218** (280 pool 167 FlexSED-only spans; PANNs keeps 57 = 0.3413; BEATs ≥ b keeps 0.3413). The 280: C-overlap
+3.071 → 3.043 (ΔC −0.029 [−0.136, +0.064]), C-onset 3.886 → 3.857, recall 50.4 → 51.3 %, onset-recall 25.0 → 25.9 %, false/min
+4.46 → 4.46; agreement 71.3 % (both keep 33, both drop 86, PANNs-only keep 24, BEATs-only keep 24). **The 415** (pool 174):
+C-overlap 1.923 → 1.928, **ΔC +0.005 [−0.048, +0.067]**, C-onset 2.193 → 2.207, **recall 49.1 → 49.7 %**, onset-recall 32.7 →
+32.7 %, false/min 3.25 → 3.30; agreement 76.4 % (35 / 98 / 20 / 21; kept share PANNs 0.316, BEATs 0.322). **Rule met (upper CI
++0.067 < +0.1; recall ≥ shipped − 0.5 points): PANNs can be dropped** — the BEATs self-veto at b = 0.1218 does the same job
+within the pre-set margin. The two vetoes disagree on about a quarter of the spans but trade equal numbers each way, so the cost
+does not move. Not yet applied in `src/` (Adam's call).
