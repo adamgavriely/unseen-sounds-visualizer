@@ -4,7 +4,8 @@ stack. Onset = first frame above the threshold (span extractor, min duration 0.5
 our system. The threshold is chosen on DEV by the viewer cost at beta = 2 (grid fixed below), then TEST is scored once.
 Per-sound scorer and paired clip bootstrap as for every other system; ours = the scored renders (docs/inspector/data.json).
 
-    python benchmark/gold/baseline_panns.py        # local (PANNs cache benchmark/gold/panns_fw) -> baseline_panns.json
+    python benchmark/gold/baseline_panns.py                 # PANNs (cache benchmark/gold/panns_fw) -> baseline_panns.json
+    python benchmark/gold/baseline_panns.py --model psed    # PretrainedSED (data/work/psed_cache) -> baseline_psed.json
 """
 from __future__ import annotations
 
@@ -21,9 +22,12 @@ from benchmark.gold import score_per_sound as S
 from src.labels import is_salient_nonspeech, is_music
 from src.stage4_audio_event_detection import _extract_events
 
-CACHE = _ROOT / "benchmark" / "gold" / "panns_fw"
+MODELS = {"panns": (_ROOT / "benchmark" / "gold" / "panns_fw", _ROOT / "benchmark" / "gold" / "baseline_panns.json"),
+          # PretrainedSED (Schmid et al., CP-JKU, ICASSP 2025), BEATs backbone fine-tuned frame by frame on AudioSet-Strong
+          # (447 classes): the strongest open frame-level sound-event detector on AudioSet-Strong
+          "psed": (_ROOT / "data" / "work" / "psed_cache", _ROOT / "benchmark" / "gold" / "baseline_psed.json")}
+CACHE, OUT = MODELS["panns"]
 GRID = [0.05, 0.1, 0.15, 0.2, 0.3, 0.4, 0.5]
-OUT = _ROOT / "benchmark" / "gold" / "baseline_panns.json"
 
 
 def pictures(stem, thr):
@@ -38,6 +42,11 @@ def rows_for(gold, stems, thr):
 
 
 def main():
+    import argparse
+    global CACHE, OUT
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--model", choices=tuple(MODELS), default="panns")
+    CACHE, OUT = MODELS[ap.parse_args().model]
     gold = S.load_gold([_ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"])
     subs = S.subsets_of(gold)
     dev, test = sorted(subs["dev"]), sorted(subs["test_bench"])

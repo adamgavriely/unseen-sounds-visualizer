@@ -2200,3 +2200,7 @@ threshold, towards "show nothing", 2.94). TEST, 60 clips: PANNs alone 5/43 hits,
 cost 3.20; ours 16/43, 25 wrong, P 0.39, R 0.37, F1 0.381, cost 2.63. Ours − PANNs (paired clip bootstrap, 2000, seed 0):
 **F1 +0.234 [+0.085, +0.409], precision +0.190 [+0.029, +0.378], recall +0.256 [+0.095, +0.452]**; cost −0.567 [−1.267, +0.100]
 (not significant). Unlike the ablation, against an existing single-detector approach the F1 gain is significant.
+
+**Same baseline with a state-of-the-art detector (2026-09-28, before the number; Adam: PANNs is old).** PretrainedSED
+(Schmid et al., CP-JKU, ICASSP 2025; BEATs backbone fine-tuned frame by frame on AudioSet-Strong, 447 classes) alone, every
+drawable detection drawn, no gate; same threshold grid chosen on DEV by cost at β = 2; TEST once. `baseline_panns.py --model psed`.
