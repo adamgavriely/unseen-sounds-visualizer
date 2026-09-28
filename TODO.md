@@ -4,7 +4,7 @@ Living list of work we decided to do later. Add when something is postponed; mov
 commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oct 2026.
 
 ## Running now (28 Sept)
-- [ ] DEV CONFIRMATORY check (Adam: test and confirm on DEV; goal = more needed sounds heard, fewer real sounds dropped): EAT-R, DASM D1, I4, I6, I7 (job 31330563) + R1, R6, R7 (extra job 31330792); Holm over 8 vs B1 (ours re-run); ship rule. Tweaks after this need TEST-once or new videos. `docs/dev_candidates_check_2026-09-28.md`
+- [ ] DEV CONFIRMATORY check (Adam: test and confirm on DEV; goal = more needed sounds heard, fewer real sounds dropped): EAT-R, DASM D1, I4, I6, I7 (job 31330563 COMPLETED) + R1, R6, R7 (extra job 31330792 RUNNING at 28 Sept); Holm over 8 vs B1 (ours re-run); ship rule. Tweaks after this need TEST-once or new videos. `docs/dev_candidates_check_2026-09-28.md`
   - When done: collect numbers, commit, give Adam a SHORT table ours (B1) vs each candidate: heard, rescued, hits, misses, wrong, cost, verdict better/same/worse. Agent aac2759c5df34ff2f was running it; if the session/limit cut it, rerun only the scoring step from the job outputs in `~/MscProj/data/work/devcand/` (do not relaunch jobs that finished).
   - If a candidate passes: put it behind a flag, turn it on in `use_shipped()`, note it beside the frozen TEST table.
 - [ ] Commit the uncommitted files after the DEV check ends: `benchmark/gold/dev_candidates_check.py`, `docs/dev_candidates_check_2026-09-28.md`, `slurm/job_devcand_extra.sh`, `benchmark/detector_round2.py`, `benchmark/gold/pe_frame_run.py` (check each diff first).
