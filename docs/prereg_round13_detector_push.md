@@ -457,3 +457,16 @@ and beats C1 on DEV cost, else none. Baselines re-run in the same job: B0r (prim
 p < 0.05; else **same** unless Δcost > 0 with lower CI > 0 (**worse**). With 9 needed sounds this set is small: it is read
 together with the 100-clip set later (same rule), not alone. Scored ONCE; features (caches, listener answers, stage
 1–5 for B0r) may be built before, without reading the tags.
+**Round 14 amendment I (Fable consult 4; written before any number of these arms; not part of confirmation set 1's
+frozen candidates — any winner goes to the 100-clip set).** On top of TO1+F7F8:
+- **I1 onset re-localisation:** inside each displayed span, the picture START moves to the frame of the steepest rise of
+  the family's evidence (max of BEATs column and FlexSED family/specific queries, 25-fps grid) within the span's first 3 s
+  after any dip below half its peak; a second rise after a dip >= 1.5 s splits the span. No new pictures.
+- **I5 specific-query evidence:** the rescue tier's "peak" = max over the family query and its specific child queries
+  (the 120 folded queries) in the run window; no new spans from child queries by themselves.
+- **I6 impulsive short runs:** for impulsive families (Gunshot, Gasp, Explosion, Knock, Hammer, Glass, Door, Slam-type as
+  in R13-5), rescue runs shorter than 0.5 s are allowed (cut as 1 s around the peak), still needing the TIER listener rule.
+- **I2 activity gate:** a sound the gate calls visible is kept if the VLM, on frames at onset ± 0.5 s, answers "no" to "Is
+  a {family} source visibly PRODUCING this sound right now (for example a beak open, a bell swinging, a vehicle moving)?
+  Answer yes or no."
+Arms: TO1+F7F8 + I1; + I5; + I6; + I2; + all four.
