@@ -1,4 +1,580 @@
 {
+ "d001.mp4": [
+  {
+   "label": "Goose",
+   "family": "Goose",
+   "raw": "Goose",
+   "start": 0.1,
+   "end": 3.8,
+   "conf": 0.43,
+   "source": "BEATs"
+  },
+  {
+   "label": "Honk",
+   "family": "Honk",
+   "raw": "Honk",
+   "start": 0.1,
+   "end": 3.8,
+   "conf": 0.39,
+   "source": "BEATs"
+  },
+  {
+   "label": "Duck",
+   "family": "Duck",
+   "raw": "Duck",
+   "start": 0.1,
+   "end": 5.2,
+   "conf": 0.72,
+   "source": "BEATs"
+  },
+  {
+   "label": "Quack",
+   "family": "Quack",
+   "raw": "Quack",
+   "start": 0.1,
+   "end": 5.2,
+   "conf": 0.65,
+   "source": "BEATs"
+  },
+  {
+   "label": "Honk",
+   "family": "Honk",
+   "raw": "Honk",
+   "start": 6.2,
+   "end": 7.2,
+   "conf": 0.36,
+   "source": "BEATs"
+  }
+ ],
+ "d002.mp4": [],
+ "d003.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.0,
+   "end": 16.8,
+   "conf": 0.92,
+   "source": "BEATs"
+  },
+  {
+   "label": "Air horn, truck horn",
+   "family": "Air horn, truck horn",
+   "raw": "Air horn, truck horn",
+   "start": 8.7,
+   "end": 11.5,
+   "conf": 0.36,
+   "source": "BEATs"
+  }
+ ],
+ "d004.mp4": [
+  {
+   "label": "Door",
+   "family": "Door",
+   "raw": "Door",
+   "start": 5.8,
+   "end": 8.2,
+   "conf": 0.66,
+   "source": "BEATs"
+  }
+ ],
+ "d005.mp4": [
+  {
+   "label": "Grunt",
+   "family": "Grunt",
+   "raw": "Grunt",
+   "start": 6.5,
+   "end": 7.2,
+   "conf": 0.84,
+   "source": "FlexSED"
+  },
+  {
+   "label": "Dog",
+   "family": "Dog",
+   "raw": "Dog",
+   "start": 13.2,
+   "end": 14.8,
+   "conf": 0.76,
+   "source": "BEATs"
+  },
+  {
+   "label": "Snicker",
+   "family": "Snicker",
+   "raw": "Snicker",
+   "start": 14.5,
+   "end": 15.8,
+   "conf": 0.46,
+   "source": "BEATs"
+  }
+ ],
+ "d006.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 1.8,
+   "end": 8.0,
+   "conf": 0.36,
+   "source": "BEATs"
+  }
+ ],
+ "d007.mp4": [
+  {
+   "label": "Power windows, electric windows",
+   "family": "Power windows, electric windows",
+   "raw": "Power windows, electric windows",
+   "start": 4.8,
+   "end": 6.5,
+   "conf": 0.79,
+   "source": "BEATs"
+  }
+ ],
+ "d008.mp4": [
+  {
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "raw": "Helicopter",
+   "start": 0.0,
+   "end": 0.5,
+   "conf": 0.5,
+   "source": "BEATs"
+  },
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 1.0,
+   "end": 16.8,
+   "conf": 0.74,
+   "source": "BEATs"
+  },
+  {
+   "label": "Air brake",
+   "family": "Air brake",
+   "raw": "Air brake",
+   "start": 6.5,
+   "end": 7.8,
+   "conf": 0.38,
+   "source": "BEATs"
+  }
+ ],
+ "d009.mp4": [
+  {
+   "label": "Sneeze",
+   "family": "Sneeze",
+   "raw": "Sneeze",
+   "start": 9.5,
+   "end": 10.0,
+   "conf": 0.43,
+   "source": "BEATs"
+  }
+ ],
+ "d010.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.0,
+   "end": 17.8,
+   "conf": 0.68,
+   "source": "BEATs"
+  }
+ ],
+ "d011.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 8.2,
+   "end": 9.5,
+   "conf": 0.37,
+   "source": "BEATs"
+  },
+  {
+   "label": "Train",
+   "family": "Train",
+   "raw": "Train",
+   "start": 10.0,
+   "end": 11.2,
+   "conf": 0.78,
+   "source": "BEATs"
+  }
+ ],
+ "d012.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 3.5,
+   "end": 16.8,
+   "conf": 0.45,
+   "source": "BEATs"
+  }
+ ],
+ "d013.mp4": [],
+ "d014.mp4": [],
+ "d015.mp4": [
+  {
+   "label": "Stream",
+   "family": "Water",
+   "raw": "Stream",
+   "start": 5.8,
+   "end": 6.5,
+   "conf": 0.35,
+   "source": "BEATs"
+  },
+  {
+   "label": "Rain",
+   "family": "Rain",
+   "raw": "Rain",
+   "start": 6.5,
+   "end": 7.0,
+   "conf": 0.4,
+   "source": "BEATs"
+  },
+  {
+   "label": "Stream",
+   "family": "Water",
+   "raw": "Stream",
+   "start": 9.5,
+   "end": 10.2,
+   "conf": 0.38,
+   "source": "BEATs"
+  },
+  {
+   "label": "Rain",
+   "family": "Rain",
+   "raw": "Rain",
+   "start": 13.3,
+   "end": 14.8,
+   "conf": 0.37,
+   "source": "BEATs"
+  }
+ ],
+ "d016.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.8,
+   "end": 3.5,
+   "conf": 0.36,
+   "source": "BEATs"
+  },
+  {
+   "label": "Cough",
+   "family": "Cough",
+   "raw": "Cough",
+   "start": 5.8,
+   "end": 6.8,
+   "conf": 0.41,
+   "source": "BEATs"
+  }
+ ],
+ "d017.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 2.8,
+   "end": 4.8,
+   "conf": 0.71,
+   "source": "BEATs"
+  }
+ ],
+ "d018.mp4": [
+  {
+   "label": "Train",
+   "family": "Train",
+   "raw": "Train",
+   "start": 15.7,
+   "end": 19.0,
+   "conf": 0.93,
+   "source": "FlexSED"
+  },
+  {
+   "label": "Sliding door",
+   "family": "Sliding door",
+   "raw": "Sliding door",
+   "start": 16.2,
+   "end": 16.8,
+   "conf": 0.57,
+   "source": "BEATs"
+  },
+  {
+   "label": "Smoke detector, smoke alarm",
+   "family": "Alarm",
+   "raw": "Smoke detector, smoke alarm",
+   "start": 16.5,
+   "end": 18.8,
+   "conf": 0.51,
+   "source": "BEATs"
+  }
+ ],
+ "d019.mp4": [
+  {
+   "label": "Siren",
+   "family": "Siren",
+   "raw": "Siren",
+   "start": 2.2,
+   "end": 6.2,
+   "conf": 0.49,
+   "source": "BEATs"
+  },
+  {
+   "label": "Siren",
+   "family": "Siren",
+   "raw": "Siren",
+   "start": 8.0,
+   "end": 9.8,
+   "conf": 0.58,
+   "source": "BEATs"
+  }
+ ],
+ "d020.mp4": [
+  {
+   "label": "Rain on surface",
+   "family": "Rain",
+   "raw": "Rain on surface",
+   "start": 2.0,
+   "end": 3.0,
+   "conf": 0.36,
+   "source": "BEATs"
+  },
+  {
+   "label": "Rain on surface",
+   "family": "Rain",
+   "raw": "Rain on surface",
+   "start": 7.0,
+   "end": 7.8,
+   "conf": 0.37,
+   "source": "BEATs"
+  },
+  {
+   "label": "Rain on surface",
+   "family": "Rain",
+   "raw": "Rain on surface",
+   "start": 9.5,
+   "end": 10.5,
+   "conf": 0.41,
+   "source": "BEATs"
+  },
+  {
+   "label": "Rain on surface",
+   "family": "Rain",
+   "raw": "Rain on surface",
+   "start": 12.8,
+   "end": 14.5,
+   "conf": 0.46,
+   "source": "BEATs"
+  }
+ ],
+ "d021.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.3,
+   "end": 4.2,
+   "conf": 0.37,
+   "source": "BEATs"
+  },
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 9.0,
+   "end": 19.8,
+   "conf": 0.67,
+   "source": "BEATs"
+  },
+  {
+   "label": "Train",
+   "family": "Train",
+   "raw": "Train",
+   "start": 14.5,
+   "end": 15.2,
+   "conf": 0.35,
+   "source": "BEATs"
+  },
+  {
+   "label": "Train",
+   "family": "Train",
+   "raw": "Train",
+   "start": 18.1,
+   "end": 19.8,
+   "conf": 0.52,
+   "source": "BEATs"
+  }
+ ],
+ "d022.mp4": [
+  {
+   "label": "Pant",
+   "family": "Pant",
+   "raw": "Pant",
+   "start": 0.2,
+   "end": 1.5,
+   "conf": 0.86,
+   "source": "BEATs"
+  },
+  {
+   "label": "Pant",
+   "family": "Pant",
+   "raw": "Pant",
+   "start": 7.0,
+   "end": 8.2,
+   "conf": 0.57,
+   "source": "BEATs"
+  },
+  {
+   "label": "Dog",
+   "family": "Dog",
+   "raw": "Dog",
+   "start": 7.2,
+   "end": 8.2,
+   "conf": 0.61,
+   "source": "BEATs"
+  }
+ ],
+ "d023.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.8,
+   "end": 2.5,
+   "conf": 0.47,
+   "source": "BEATs"
+  },
+  {
+   "label": "Bee, wasp, etc.",
+   "family": "Bee, wasp, etc.",
+   "raw": "Bee, wasp, etc.",
+   "start": 10.2,
+   "end": 11.8,
+   "conf": 0.7,
+   "source": "BEATs"
+  },
+  {
+   "label": "Insect",
+   "family": "Insect",
+   "raw": "Insect",
+   "start": 10.2,
+   "end": 11.8,
+   "conf": 0.56,
+   "source": "BEATs"
+  }
+ ],
+ "d024.mp4": [
+  {
+   "label": "Whale vocalization",
+   "family": "Whale vocalization",
+   "raw": "Whale vocalization",
+   "start": 9.8,
+   "end": 10.5,
+   "conf": 0.43,
+   "source": "BEATs"
+  }
+ ],
+ "d025.mp4": [
+  {
+   "label": "Dog",
+   "family": "Dog",
+   "raw": "Dog",
+   "start": 6.0,
+   "end": 12.5,
+   "conf": 0.72,
+   "source": "BEATs"
+  },
+  {
+   "label": "Bow-wow",
+   "family": "Dog",
+   "raw": "Bow-wow",
+   "start": 14.5,
+   "end": 19.8,
+   "conf": 0.57,
+   "source": "BEATs"
+  }
+ ],
+ "d026.mp4": [
+  {
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "raw": "Vehicle",
+   "start": 0.1,
+   "end": 15.8,
+   "conf": 0.62,
+   "source": "BEATs"
+  }
+ ],
+ "d027.mp4": [],
+ "d028.mp4": [
+  {
+   "label": "Insect",
+   "family": "Insect",
+   "raw": "Insect",
+   "start": 0.1,
+   "end": 7.8,
+   "conf": 0.48,
+   "source": "BEATs"
+  },
+  {
+   "label": "Cricket",
+   "family": "Cricket",
+   "raw": "Cricket",
+   "start": 0.4,
+   "end": 1.5,
+   "conf": 0.44,
+   "source": "BEATs"
+  },
+  {
+   "label": "Bird vocalization, bird call, bird song",
+   "family": "Bird",
+   "raw": "Bird vocalization, bird call, bird song",
+   "start": 2.2,
+   "end": 3.2,
+   "conf": 0.36,
+   "source": "BEATs"
+  },
+  {
+   "label": "Cricket",
+   "family": "Cricket",
+   "raw": "Cricket",
+   "start": 4.6,
+   "end": 7.2,
+   "conf": 0.64,
+   "source": "BEATs"
+  },
+  {
+   "label": "Insect",
+   "family": "Insect",
+   "raw": "Insect",
+   "start": 13.7,
+   "end": 16.0,
+   "conf": 0.94,
+   "source": "FlexSED"
+  }
+ ],
+ "d029.mp4": [
+  {
+   "label": "Goose",
+   "family": "Goose",
+   "raw": "Goose",
+   "start": 11.0,
+   "end": 12.2,
+   "conf": 0.57,
+   "source": "BEATs"
+  },
+  {
+   "label": "Honk",
+   "family": "Honk",
+   "raw": "Honk",
+   "start": 11.5,
+   "end": 12.2,
+   "conf": 0.42,
+   "source": "BEATs"
+  }
+ ],
  "d030.mp4": [
   {
    "label": "Vehicle",

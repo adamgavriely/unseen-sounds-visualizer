@@ -53,6 +53,12 @@ def duration(p: Path) -> float:
 
 
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--videos", default=str(VID), help="folder of tsug_<id>.mp4 clips")
+    ap.add_argument("--out", default=str(OUT))
+    a = ap.parse_args()
+    vid_dir, out_path = Path(a.videos), Path(a.out)
     changed = config.use_scored()
     config.DEVICE = "cuda"
     print("use_scored:", {k: v[1] for k, v in changed.items()}, flush=True)
@@ -76,7 +82,7 @@ def main():
 
     bar = min_confidence("", config.DISPLAY_THRESHOLD)
     out = {}
-    vids = sorted(VID.glob("tsug_*.mp4"))
+    vids = sorted(vid_dir.glob("tsug_*.mp4"))
     print(f"{len(vids)} clips, display bar {bar}", flush=True)
     for i, p in enumerate(vids, 1):
         cid = p.name[len("tsug_"):]
@@ -123,8 +129,8 @@ def main():
         out[cid] = sugg
         print(f"[{i}/{len(vids)}] {cid}: {len(sugg)} suggestion(s) "
               + "; ".join(f"{s['label']} {s['start']}-{s['end']} {s['conf']} {s['source']}" for s in sugg), flush=True)
-        OUT.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
-    print("wrote", OUT, flush=True)
+        out_path.write_text(json.dumps(out, indent=1, ensure_ascii=False), encoding="utf-8")
+    print("wrote", out_path, flush=True)
 
 
 if __name__ == "__main__":
