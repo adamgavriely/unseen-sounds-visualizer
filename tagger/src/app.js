@@ -129,7 +129,7 @@
       row.appendChild(seg([[true, "Yes", "with the sound off, the picture still makes it clear this sound is happening"],
                            [false, "No", "with the sound off, you would not know"]], s.obvious,
         function (v) { sel = i; s.obvious = v; touch(); renderSounds(); }, "Obvious?"));
-      row.appendChild(seg([[1, "1", "background texture"], [2, "2", "useful context"], [3, "3", "safety or story-critical"]], s.importance,
+      row.appendChild(seg([[1, "1", "steady background noise, no clear start"], [2, "2", "something that happens (clear start)"], [3, "3", "danger or key story moment"]], s.importance,
         function (v) { sel = i; s.importance = v; touch(); renderSounds(); }, "Importance"));
 
       var ops = el("span", "ops");
