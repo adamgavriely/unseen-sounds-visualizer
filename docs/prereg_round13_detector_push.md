@@ -523,3 +523,9 @@ votes re-decided from their three stored votes). **G2 is a no-op** on both bases
 
 **No rule change is a candidate** (Δhits >= 1 and Δwrong <= 2 × Δhits) on either base, so no stacked arm was run. Every
 loosening adds 3–11 wrong pictures for at most one hit.
+**Amendment J screen result (2026-09-30): J3 and J4 dropped before any pipeline arm.** J3: a motion peak lands in the hit
+window for 1 of 13 needed impulsive DEV sounds (chance on the same clips 0.21; 17 of 49 clips never reach 3 × median
+with a moving camera). J4: the two audio LLMs "agree" mostly by both answering 0 (Audio Flamingo 94 % of its numbers,
+Qwen 62 %); runs with no gold sound agree 58 % of the time; the agreed mean lands in the hit window less often than the
+runs' own starts (19 vs 24 of 74). Both would make timing worse, so the +J3/+J4 arms are not run.
+`benchmark/gold/motion_ts_screen.json`.

@@ -1,0 +1,2571 @@
+{
+ "_meta": {
+  "amendment": "round 14 J (DEV screen)",
+  "split": "DEV 49 clips",
+  "gold": "gold_AG.json, DEV stems only"
+ },
+ "J3": {
+  "rule": "motion peak = local max (largest within +-0.5 s, rising) of energy >= 3.0 x clip median (median floored at 0.05); hit window [onset - 0.5, onset + 1.0]; needed = gold needed and importance >= 2; impulsive = label or canonical family contains one of ['Gunshot', 'Gasp', 'Explosion', 'Knock', 'Hammer', 'Glass', 'Door', 'Whack', 'Clang', 'Slam'] (word)",
+  "n_sounds": 13,
+  "peak_in_window": 1,
+  "any_frame_3x_in_window": 1,
+  "chance_same_clips": 0.20942958025444813,
+  "peaks_per_clip": {
+   "mean": 2.7551020408163267,
+   "median": 2.0,
+   "max": 12,
+   "min": 0,
+   "per_10s_mean": 1.3667645148293117
+  },
+  "chance_window_has_peak_mean_all_clips": 0.18717174683236396,
+  "clips_raw_median_below_floor": [],
+  "sounds": [
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "label": "Hammer",
+    "onset": 13.7,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 16.260000228881836,
+    "clip_peaks": 0
+   },
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "label": "Hammer",
+    "onset": 8.1,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 16.260000228881836,
+    "clip_peaks": 0
+   },
+   {
+    "clip": "ambient_citywalk_nyc_2627",
+    "label": "Clang",
+    "onset": 3.8,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 17.696945190429688,
+    "clip_peaks": 0
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "label": "Gunshot, gunfire",
+    "onset": 0.0,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 11.217846870422363,
+    "clip_peaks": 4
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "label": "Explosion",
+    "onset": 2.8,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 11.217846870422363,
+    "clip_peaks": 4
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "label": "Explosion",
+    "onset": 5.6,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 11.217846870422363,
+    "clip_peaks": 4
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "label": "Gasp",
+    "onset": 6.7,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 11.217846870422363,
+    "clip_peaks": 4
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "label": "Explosion",
+    "onset": 9.1,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 11.217846870422363,
+    "clip_peaks": 4
+   },
+   {
+    "clip": "b3_bakery_morning",
+    "label": "Door",
+    "onset": 3.9,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 1.1691666841506958,
+    "clip_peaks": 12
+   },
+   {
+    "clip": "b3_golf_course",
+    "label": "Whack, thwack",
+    "onset": 6.5,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 0.5833333134651184,
+    "clip_peaks": 2
+   },
+   {
+    "clip": "b3_golf_course",
+    "label": "Whack, thwack",
+    "onset": 24.4,
+    "peak_in_window": true,
+    "peaks_in_window": [
+     24.2
+    ],
+    "any_frame_3x_in_window": true,
+    "clip_median": 0.5833333134651184,
+    "clip_peaks": 2
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "label": "Glass",
+    "onset": 11.0,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 1.4668055772781372,
+    "clip_peaks": 5
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "label": "Shatter",
+    "onset": 16.9,
+    "peak_in_window": false,
+    "peaks_in_window": [],
+    "any_frame_3x_in_window": false,
+    "clip_median": 1.4668055772781372,
+    "clip_peaks": 5
+   }
+  ],
+  "per_clip": {
+   "ambient_citywalk_nyc_1689": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 16.260000228881836,
+    "raw_median": 16.260000228881836,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ambient_citywalk_nyc_2627": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 17.696945190429688,
+    "raw_median": 17.696945190429688,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ambient_harbour_boats_724": {
+    "peaks": 1,
+    "per_10s": 0.6289308176100629,
+    "median": 4.819583415985107,
+    "raw_median": 4.819583415985107,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.09296482412060302
+   },
+   "ambient_market_marrakech_3102": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 21.931320190429688,
+    "raw_median": 21.931320190429688,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ambient_nature_rainforest_2179": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 4.472222328186035,
+    "raw_median": 4.472222328186035,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ambient_nature_rainforest_7629": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 5.3441667556762695,
+    "raw_median": 5.3441667556762695,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ambient_snow_walk_930": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 10.883749961853027,
+    "raw_median": 10.883749961853027,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ambient_transport_subway_10800": {
+    "peaks": 8,
+    "per_10s": 5.031446540880503,
+    "median": 2.527430534362793,
+    "raw_median": 2.527430534362793,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.6381909547738693
+   },
+   "ambient_weather_storm_16200": {
+    "peaks": 2,
+    "per_10s": 1.2578616352201257,
+    "median": 2.2332639694213867,
+    "raw_median": 2.2332639694213867,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.19095477386934673
+   },
+   "ambient_weather_storm_7200": {
+    "peaks": 2,
+    "per_10s": 1.2578616352201257,
+    "median": 2.27013897895813,
+    "raw_median": 2.27013897895813,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.19095477386934673
+   },
+   "as_church_bell_pJRAWkLM": {
+    "peaks": 1,
+    "per_10s": 0.5025125628140704,
+    "median": 10.807239532470703,
+    "raw_median": 10.807239532470703,
+    "duration": 19.9,
+    "chance_window_has_peak": 0.07630522088353414
+   },
+   "as_explosion_XJ8lc3I6": {
+    "peaks": 4,
+    "per_10s": 2.0100502512562817,
+    "median": 11.217846870422363,
+    "raw_median": 11.217846870422363,
+    "duration": 19.9,
+    "chance_window_has_peak": 0.2991967871485944
+   },
+   "as_fire_alarm_kGKZ0YK4": {
+    "peaks": 3,
+    "per_10s": 1.5075376884422111,
+    "median": 6.242499828338623,
+    "raw_median": 6.242499828338623,
+    "duration": 19.9,
+    "chance_window_has_peak": 0.22690763052208834
+   },
+   "as_glass_oHil9Ip_": {
+    "peaks": 7,
+    "per_10s": 3.5175879396984926,
+    "median": 0.26750001311302185,
+    "raw_median": 0.26750001311302185,
+    "duration": 19.9,
+    "chance_window_has_peak": 0.5020080321285141
+   },
+   "b3_airport_terminal": {
+    "peaks": 1,
+    "per_10s": 0.35842293906810035,
+    "median": 3.934861183166504,
+    "raw_median": 3.934861183166504,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.054441260744985676
+   },
+   "b3_aviary_birds": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 39.99763870239258,
+    "raw_median": 39.99763870239258,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.0
+   },
+   "b3_bakery_morning": {
+    "peaks": 12,
+    "per_10s": 4.301075268817205,
+    "median": 1.1691666841506958,
+    "raw_median": 1.1691666841506958,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.5071633237822349
+   },
+   "b3_barbershop": {
+    "peaks": 2,
+    "per_10s": 0.7168458781362007,
+    "median": 5.867499828338623,
+    "raw_median": 5.867499828338623,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.10888252148997135
+   },
+   "b3_botanic_garden": {
+    "peaks": 1,
+    "per_10s": 0.35842293906810035,
+    "median": 16.106111526489258,
+    "raw_median": 16.106111526489258,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.054441260744985676
+   },
+   "b3_carnival_parade": {
+    "peaks": 2,
+    "per_10s": 0.8368200836820084,
+    "median": 28.503263473510742,
+    "raw_median": 28.503263473510742,
+    "duration": 23.9,
+    "chance_window_has_peak": 0.12709030100334448
+   },
+   "b3_construction_site": {
+    "peaks": 2,
+    "per_10s": 0.7168458781362007,
+    "median": 5.162499904632568,
+    "raw_median": 5.162499904632568,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.10888252148997135
+   },
+   "b3_cow_farm": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 15.092986106872559,
+    "raw_median": 15.092986106872559,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.0
+   },
+   "b3_crossing_bells": {
+    "peaks": 3,
+    "per_10s": 1.775147928994083,
+    "median": 5.3125,
+    "raw_median": 5.3125,
+    "duration": 16.9,
+    "chance_window_has_peak": 0.2695035460992908
+   },
+   "b3_favela_rio": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 36.13666534423828,
+    "raw_median": 36.13666534423828,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.0
+   },
+   "b3_flea_market": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 28.48638916015625,
+    "raw_median": 28.48638916015625,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.0
+   },
+   "b3_golf_course": {
+    "peaks": 2,
+    "per_10s": 0.7168458781362007,
+    "median": 0.5833333134651184,
+    "raw_median": 0.5833333134651184,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.10888252148997135
+   },
+   "b3_ia_youtube_skxtz9foauw_0": {
+    "peaks": 3,
+    "per_10s": 1.0752688172043012,
+    "median": 1.8545833826065063,
+    "raw_median": 1.8545833826065063,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.15472779369627507
+   },
+   "b3_laundromat": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 0.8119444251060486,
+    "raw_median": 0.8119444251060486,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.0
+   },
+   "b3_pet_shop": {
+    "peaks": 5,
+    "per_10s": 1.7921146953405018,
+    "median": 0.2623611092567444,
+    "raw_median": 0.2623611092567444,
+    "duration": 27.9,
+    "chance_window_has_peak": 0.2722063037249284
+   },
+   "bell_miami": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 17.990272521972656,
+    "raw_median": 17.990272521972656,
+    "duration": 15.5,
+    "chance_window_has_peak": 0.0
+   },
+   "birds_forest": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 10.680468559265137,
+    "raw_median": 10.680468559265137,
+    "duration": 17.9,
+    "chance_window_has_peak": 0.0
+   },
+   "helicopter_ossetia": {
+    "peaks": 7,
+    "per_10s": 3.910614525139665,
+    "median": 2.3583333492279053,
+    "raw_median": 2.3583333492279053,
+    "duration": 17.9,
+    "chance_window_has_peak": 0.5178571428571429
+   },
+   "kit_piano": {
+    "peaks": 3,
+    "per_10s": 1.6759776536312851,
+    "median": 0.8690277934074402,
+    "raw_median": 0.8690277934074402,
+    "duration": 17.9,
+    "chance_window_has_peak": 0.22544642857142858
+   },
+   "london_protest_01": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 34.482500076293945,
+    "raw_median": 34.482500076293945,
+    "duration": 11.0,
+    "chance_window_has_peak": 0.0
+   },
+   "ly_ambulance_(siren)_-yPSgCn": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 12.412551879882812,
+    "raw_median": 12.412551879882812,
+    "duration": 17.9,
+    "chance_window_has_peak": 0.0
+   },
+   "ly_applause_62ZYD0u": {
+    "peaks": 7,
+    "per_10s": 3.910614525139665,
+    "median": 7.0308332443237305,
+    "raw_median": 7.0308332443237305,
+    "duration": 17.9,
+    "chance_window_has_peak": 0.5714285714285714
+   },
+   "ly_helicopter_-v62cK1": {
+    "peaks": 1,
+    "per_10s": 0.5555555555555556,
+    "median": 1.2015095353126526,
+    "raw_median": 1.2015095353126526,
+    "duration": 18.0,
+    "chance_window_has_peak": 0.08444444444444445
+   },
+   "movie_blueplanet_115": {
+    "peaks": 8,
+    "per_10s": 5.031446540880503,
+    "median": 7.504583358764648,
+    "raw_median": 7.504583358764648,
+    "duration": 15.9,
+    "chance_window_has_peak": 0.7135678391959799
+   },
+   "mv_arrest_street_scene": {
+    "peaks": 10,
+    "per_10s": 4.184100418410042,
+    "median": 15.20847225189209,
+    "raw_median": 15.20847225189209,
+    "duration": 23.9,
+    "chance_window_has_peak": 0.5183946488294314
+   },
+   "mv_detective_crime_scene": {
+    "peaks": 10,
+    "per_10s": 5.291005291005291,
+    "median": 0.3995833396911621,
+    "raw_median": 0.3995833396911621,
+    "duration": 18.9,
+    "chance_window_has_peak": 0.6701902748414377
+   },
+   "mv_protest_scene_movie": {
+    "peaks": 5,
+    "per_10s": 2.092050209205021,
+    "median": 1.4668055772781372,
+    "raw_median": 1.4668055772781372,
+    "duration": 23.9,
+    "chance_window_has_peak": 0.2508361204013378
+   },
+   "mv_storm_scene_house": {
+    "peaks": 3,
+    "per_10s": 1.2552301255230127,
+    "median": 6.869375228881836,
+    "raw_median": 6.869375228881836,
+    "duration": 23.9,
+    "chance_window_has_peak": 0.1806020066889632
+   },
+   "mv_tornado_scene": {
+    "peaks": 3,
+    "per_10s": 1.5075376884422111,
+    "median": 13.509742736816406,
+    "raw_median": 13.509742736816406,
+    "duration": 19.9,
+    "chance_window_has_peak": 0.1827309236947791
+   },
+   "un_driving_motorcycle_4O3bZRYO": {
+    "peaks": 1,
+    "per_10s": 0.5025125628140704,
+    "median": 21.977014541625977,
+    "raw_median": 21.977014541625977,
+    "duration": 19.9,
+    "chance_window_has_peak": 0.07429718875502007
+   },
+   "un_driving_motorcycle_DgdHSmwA": {
+    "peaks": 5,
+    "per_10s": 2.958579881656805,
+    "median": 14.65451431274414,
+    "raw_median": 14.65451431274414,
+    "duration": 16.9,
+    "chance_window_has_peak": 0.44680851063829785
+   },
+   "un_hair_dryer_drying_WWu24rJs": {
+    "peaks": 7,
+    "per_10s": 3.5,
+    "median": 7.034479141235352,
+    "raw_median": 7.034479141235352,
+    "duration": 20.0,
+    "chance_window_has_peak": 0.452
+   },
+   "un_people_clapping__bAVmK7n": {
+    "peaks": 4,
+    "per_10s": 2.23463687150838,
+    "median": 3.7245311737060547,
+    "raw_median": 3.7245311737060547,
+    "duration": 17.9,
+    "chance_window_has_peak": 0.29910714285714285
+   },
+   "waterfall_kawaida_01": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 11.681604385375977,
+    "raw_median": 11.681604385375977,
+    "duration": 11.1,
+    "chance_window_has_peak": 0.0
+   },
+   "waves_herzliya": {
+    "peaks": 0,
+    "per_10s": 0.0,
+    "median": 2.5481250286102295,
+    "raw_median": 2.5481250286102295,
+    "duration": 12.5,
+    "chance_window_has_peak": 0.0
+   }
+  }
+ },
+ "J4": {
+  "rule": "runs (J4 items) of the same family as a DEV needed gold sound (score_per_sound.same_family) whose [start, end] overlaps it; hit = inside [onset - 0.5, onset + 1.0] of any overlapped sound; run start = start if run_len >= 0.5 else cut_start (the harness' effective start); rule = mean if both within 1 s else run start",
+  "n_runs": 74,
+  "qwen_number": 70,
+  "afn_number": 74,
+  "both_number": 70,
+  "agree_1s": 59,
+  "agree_mean_hit": 19,
+  "agree_start_hit": 24,
+  "all_start_hit": 33,
+  "all_rule_hit": 28,
+  "qwen_hit": 31,
+  "afn_hit": 19,
+  "distinct_sounds_start_hit": 16,
+  "runs": [
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "family": "Air horn, truck horn",
+    "label": "Air horn, truck horn",
+    "pools": [
+     "P2"
+    ],
+    "start": 3.76,
+    "end": 4.4,
+    "eff_start": 3.76,
+    "onsets": [
+     3.8
+    ],
+    "qwen": 4.9399999999999995,
+    "afn": 1.94,
+    "qwen_text": "3\nAssistant\n3",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 3.76,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "family": "Hammer",
+    "label": "Hammer",
+    "pools": [
+     "P2"
+    ],
+    "start": 13.76,
+    "end": 15.959999999999999,
+    "eff_start": 13.76,
+    "onsets": [
+     13.7
+    ],
+    "qwen": 13.26,
+    "afn": 13.26,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 13.26,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 13.26,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 6.52,
+    "end": 6.68,
+    "eff_start": 6.039999999999999,
+    "onsets": [
+     6.5
+    ],
+    "qwen": 6.539999999999999,
+    "afn": 4.539999999999999,
+    "qwen_text": "2\nAssistant\n2",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 6.039999999999999,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 6.96,
+    "end": 7.04,
+    "eff_start": 6.52,
+    "onsets": [
+     6.5
+    ],
+    "qwen": 6.02,
+    "afn": 5.02,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.52,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 5.52,
+    "rule_hit": false
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 7.48,
+    "end": 7.5200000000000005,
+    "eff_start": 7.0,
+    "onsets": [
+     6.5
+    ],
+    "qwen": 6.5,
+    "afn": 5.5,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 6.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 6.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 7.88,
+    "end": 8.04,
+    "eff_start": 7.3999999999999995,
+    "onsets": [
+     6.5
+    ],
+    "qwen": 5.8999999999999995,
+    "afn": 5.8999999999999995,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.8999999999999995,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 5.8999999999999995,
+    "rule_hit": false
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 9.48,
+    "end": 9.6,
+    "eff_start": 9.0,
+    "onsets": [
+     6.5
+    ],
+    "qwen": 7.5,
+    "afn": 7.5,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 7.5,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 7.5,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 10.04,
+    "end": 10.12,
+    "eff_start": 9.559999999999999,
+    "onsets": [
+     6.5
+    ],
+    "qwen": 8.059999999999999,
+    "afn": 8.059999999999999,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 8.059999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 8.059999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 10.92,
+    "end": 10.959999999999999,
+    "eff_start": 10.44,
+    "onsets": [
+     0.1
+    ],
+    "qwen": 10.94,
+    "afn": 8.94,
+    "qwen_text": "2\nAssistant",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 10.44,
+    "rule_hit": false
+   },
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P2"
+    ],
+    "start": 11.24,
+    "end": 12.76,
+    "eff_start": 11.24,
+    "onsets": [
+     0.1
+    ],
+    "qwen": 10.7,
+    "afn": 9.7,
+    "qwen_text": "1\nAssistant\n1",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 10.2,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 10.2,
+    "rule_hit": false
+   },
+   {
+    "clip": "ambient_snow_walk_930",
+    "family": "Belly laugh",
+    "label": "Belly laugh",
+    "pools": [
+     "P2"
+    ],
+    "start": 8.04,
+    "end": 8.799999999999999,
+    "eff_start": 8.04,
+    "onsets": [
+     8.1
+    ],
+    "qwen": 8.219999999999999,
+    "afn": 6.219999999999999,
+    "qwen_text": "2\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 8.04,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_snow_walk_930",
+    "family": "Chuckle, chortle",
+    "label": "Chuckle, chortle",
+    "pools": [
+     "P2"
+    ],
+    "start": 8.2,
+    "end": 8.52,
+    "eff_start": 7.719999999999999,
+    "onsets": [
+     8.1
+    ],
+    "qwen": 8.219999999999999,
+    "afn": 6.219999999999999,
+    "qwen_text": "2\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 7.719999999999999,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_snow_walk_930",
+    "family": "Giggle",
+    "label": "Giggle",
+    "pools": [
+     "P2"
+    ],
+    "start": 8.04,
+    "end": 9.399999999999999,
+    "eff_start": 8.04,
+    "onsets": [
+     8.1
+    ],
+    "qwen": 8.459999999999999,
+    "afn": 6.959999999999999,
+    "qwen_text": "2\n*",
+    "afn_text": "0.5",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 8.04,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_snow_walk_930",
+    "family": "Laughter",
+    "label": "Laughter",
+    "pools": [
+     "P2"
+    ],
+    "start": 7.96,
+    "end": 9.639999999999999,
+    "eff_start": 7.96,
+    "onsets": [
+     8.1
+    ],
+    "qwen": 8.42,
+    "afn": 6.42,
+    "qwen_text": "2\nAssistant\n2",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 7.96,
+    "rule_hit": true
+   },
+   {
+    "clip": "ambient_snow_walk_930",
+    "family": "Snicker",
+    "label": "Snicker",
+    "pools": [
+     "P3"
+    ],
+    "start": 8.25,
+    "end": 8.5,
+    "eff_start": 8.25,
+    "onsets": [
+     8.1
+    ],
+    "qwen": 7.375,
+    "afn": 6.875,
+    "qwen_text": "1\nbox",
+    "afn_text": "0.5",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 7.125,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 7.125,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Explosion",
+    "label": "Explosion",
+    "pools": [
+     "P2"
+    ],
+    "start": 0.16,
+    "end": 0.27999999999999997,
+    "eff_start": 0.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Explosion",
+    "label": "Explosion",
+    "pools": [
+     "P2"
+    ],
+    "start": 1.4,
+    "end": 1.6,
+    "eff_start": 1.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nments",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Explosion",
+    "label": "Explosion",
+    "pools": [
+     "P2"
+    ],
+    "start": 2.84,
+    "end": 3.64,
+    "eff_start": 2.84,
+    "onsets": [
+     2.8
+    ],
+    "qwen": 1.94,
+    "afn": 0.94,
+    "qwen_text": "1\nwise",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 1.44,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 1.44,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Explosion",
+    "label": "Explosion",
+    "pools": [
+     "P2"
+    ],
+    "start": 5.68,
+    "end": 6.2,
+    "eff_start": 5.68,
+    "onsets": [
+     5.6
+    ],
+    "qwen": 4.819999999999999,
+    "afn": 5.319999999999999,
+    "qwen_text": "1\nAssistant\n1",
+    "afn_text": "1.5",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.069999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 5.069999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Footsteps",
+    "label": "Footsteps",
+    "pools": [
+     "P2"
+    ],
+    "start": 2.08,
+    "end": 2.72,
+    "eff_start": 2.08,
+    "onsets": [
+     2.1
+    ],
+    "qwen": 2.46,
+    "afn": 0.45999999999999996,
+    "qwen_text": "2\nAssistant\n2",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 2.08,
+    "rule_hit": true
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Footsteps",
+    "label": "Footsteps",
+    "pools": [
+     "P2"
+    ],
+    "start": 4.0,
+    "end": 5.24,
+    "eff_start": 4.0,
+    "onsets": [
+     2.1
+    ],
+    "qwen": 4.579999999999999,
+    "afn": 3.579999999999999,
+    "qwen_text": "2\nAssistant",
+    "afn_text": "1.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 4.079999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 4.079999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Footsteps",
+    "label": "Footsteps",
+    "pools": [
+     "P2"
+    ],
+    "start": 6.12,
+    "end": 6.68,
+    "eff_start": 6.12,
+    "onsets": [
+     2.1
+    ],
+    "qwen": 4.26,
+    "afn": 4.26,
+    "qwen_text": "0\nwise",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 4.26,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 4.26,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Footsteps",
+    "label": "Footsteps",
+    "pools": [
+     "P2"
+    ],
+    "start": 7.28,
+    "end": 7.36,
+    "eff_start": 6.8,
+    "onsets": [
+     2.1
+    ],
+    "qwen": 5.3,
+    "afn": 5.3,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.3,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 5.3,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Footsteps",
+    "label": "Footsteps",
+    "pools": [
+     "P2"
+    ],
+    "start": 8.36,
+    "end": 9.079999999999998,
+    "eff_start": 8.36,
+    "onsets": [
+     2.1
+    ],
+    "qwen": 7.74,
+    "afn": 6.74,
+    "qwen_text": "1\nAssistant\n1",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 7.24,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 7.24,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Gasp",
+    "label": "Gasp",
+    "pools": [
+     "P2"
+    ],
+    "start": 6.72,
+    "end": 6.92,
+    "eff_start": 6.319999999999999,
+    "onsets": [
+     6.7
+    ],
+    "qwen": 5.819999999999999,
+    "afn": 5.119999999999999,
+    "qwen_text": "1\nAssistant\n1",
+    "afn_text": "0.3",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.469999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 5.469999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Gunshot",
+    "label": "Gunshot",
+    "pools": [
+     "P2"
+    ],
+    "start": 0.16,
+    "end": 0.39999999999999997,
+    "eff_start": 0.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Gunshot",
+    "label": "Fusillade",
+    "pools": [
+     "P3"
+    ],
+    "start": 0.5,
+    "end": 0.75,
+    "eff_start": 0.5,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nwise",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "family": "Gunshot",
+    "label": "Fusillade",
+    "pools": [
+     "P3"
+    ],
+    "start": 6.0,
+    "end": 6.25,
+    "eff_start": 6.0,
+    "onsets": [
+     5.6
+    ],
+    "qwen": 5.125,
+    "afn": 4.625,
+    "qwen_text": "1\nAssistant\n1",
+    "afn_text": "0.5",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 4.875,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 4.875,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_bakery_morning",
+    "family": "Door",
+    "label": "Door",
+    "pools": [
+     "P2"
+    ],
+    "start": 8.52,
+    "end": 8.559999999999999,
+    "eff_start": 8.04,
+    "onsets": [
+     3.9
+    ],
+    "qwen": 7.539999999999999,
+    "afn": 6.539999999999999,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 7.039999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 7.039999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_bakery_morning",
+    "family": "Door",
+    "label": "Door",
+    "pools": [
+     "P3"
+    ],
+    "start": 8.25,
+    "end": 8.5,
+    "eff_start": 8.25,
+    "onsets": [
+     3.9
+    ],
+    "qwen": 7.375,
+    "afn": 6.375,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 6.875,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 6.875,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_bakery_morning",
+    "family": "Door",
+    "label": "Cupboard open or close",
+    "pools": [
+     "P3"
+    ],
+    "start": 5.75,
+    "end": 6.0,
+    "eff_start": 5.75,
+    "onsets": [
+     3.9
+    ],
+    "qwen": 3.875,
+    "afn": 3.875,
+    "qwen_text": "0\nust",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 3.875,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 3.875,
+    "rule_hit": true
+   },
+   {
+    "clip": "b3_barbershop",
+    "family": "Electric shaver, electric razor",
+    "label": "Electric shaver, electric razor",
+    "pools": [
+     "P3"
+    ],
+    "start": 24.5,
+    "end": 24.75,
+    "eff_start": 24.5,
+    "onsets": [
+     0.1
+    ],
+    "qwen": 22.625,
+    "afn": 22.625,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 22.625,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 22.625,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_barbershop",
+    "family": "Electric shaver, electric razor",
+    "label": "Electric shaver, electric razor",
+    "pools": [
+     "P3"
+    ],
+    "start": 25.0,
+    "end": 25.25,
+    "eff_start": 25.0,
+    "onsets": [
+     0.1
+    ],
+    "qwen": 23.125,
+    "afn": 23.125,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 23.125,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 23.125,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_barbershop",
+    "family": "Electric shaver, electric razor",
+    "label": "Electric shaver, electric razor",
+    "pools": [
+     "P3"
+    ],
+    "start": 25.5,
+    "end": 25.75,
+    "eff_start": 25.5,
+    "onsets": [
+     0.1
+    ],
+    "qwen": 23.625,
+    "afn": 23.625,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 23.625,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 23.625,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_carnival_parade",
+    "family": "Steam whistle",
+    "label": "Steam whistle",
+    "pools": [
+     "P2"
+    ],
+    "start": 6.32,
+    "end": 7.16,
+    "eff_start": 6.32,
+    "onsets": [
+     6.1
+    ],
+    "qwen": 5.619999999999999,
+    "afn": 4.619999999999999,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.119999999999999,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 5.119999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_carnival_parade",
+    "family": "Whistle",
+    "label": "Whistle",
+    "pools": [
+     "P2"
+    ],
+    "start": 6.32,
+    "end": 7.16,
+    "eff_start": 6.32,
+    "onsets": [
+     6.1
+    ],
+    "qwen": 5.699999999999999,
+    "afn": 5.699999999999999,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "1.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.699999999999999,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 5.699999999999999,
+    "rule_hit": true
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 15.12,
+    "end": 15.44,
+    "eff_start": 14.92,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 13.42,
+    "afn": 13.42,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 13.42,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 13.42,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 17.36,
+    "end": 17.599999999999998,
+    "eff_start": 17.0,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 15.5,
+    "afn": 15.5,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 15.5,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 15.5,
+    "rule_hit": true
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 18.04,
+    "end": 18.24,
+    "eff_start": 17.72,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 16.22,
+    "afn": 16.22,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 16.22,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 16.22,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 19.0,
+    "end": 19.4,
+    "eff_start": 18.64,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 17.14,
+    "afn": 17.14,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 17.14,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 17.14,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 19.72,
+    "end": 19.759999999999998,
+    "eff_start": 19.24,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 17.74,
+    "afn": 17.74,
+    "qwen_text": "0\n by the vehicle",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 17.74,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 17.74,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Train",
+    "label": "Railroad car, train wagon",
+    "pools": [
+     "P3"
+    ],
+    "start": 18.25,
+    "end": 18.5,
+    "eff_start": 18.25,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 16.375,
+    "afn": 16.375,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 16.375,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 16.375,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P3"
+    ],
+    "start": 16.75,
+    "end": 17.0,
+    "eff_start": 16.75,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 14.875,
+    "afn": 14.875,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 14.875,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 14.875,
+    "rule_hit": true
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P3"
+    ],
+    "start": 18.75,
+    "end": 19.0,
+    "eff_start": 18.75,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 16.875,
+    "afn": 16.875,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 16.875,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 16.875,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_favela_rio",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P3"
+    ],
+    "start": 22.0,
+    "end": 22.25,
+    "eff_start": 22.0,
+    "onsets": [
+     14.6
+    ],
+    "qwen": 20.125,
+    "afn": 20.125,
+    "qwen_text": "0\n by",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 20.125,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 20.125,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_pet_shop",
+    "family": "Bird flight, flapping wings",
+    "label": "Bird flight, flapping wings",
+    "pools": [
+     "P2"
+    ],
+    "start": 23.16,
+    "end": 23.279999999999998,
+    "eff_start": 22.68,
+    "onsets": [
+     0.1
+    ],
+    "qwen": null,
+    "afn": 21.18,
+    "qwen_text": "none\nAssistant\nnone",
+    "afn_text": "0",
+    "both_number": false,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 22.68,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_pet_shop",
+    "family": "Owl",
+    "label": "Owl",
+    "pools": [
+     "P3"
+    ],
+    "start": 11.0,
+    "end": 12.75,
+    "eff_start": 11.0,
+    "onsets": [
+     0.1
+    ],
+    "qwen": null,
+    "afn": 10.375,
+    "qwen_text": "none\nAssistant\nnone",
+    "afn_text": "0",
+    "both_number": false,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 11.0,
+    "rule_hit": false
+   },
+   {
+    "clip": "b3_pet_shop",
+    "family": "Owl",
+    "label": "Owl",
+    "pools": [
+     "P3"
+    ],
+    "start": 15.25,
+    "end": 15.5,
+    "eff_start": 15.25,
+    "onsets": [
+     0.1
+    ],
+    "qwen": null,
+    "afn": 13.375,
+    "qwen_text": "none\nAssistant\nnone",
+    "afn_text": "0",
+    "both_number": false,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 15.25,
+    "rule_hit": false
+   },
+   {
+    "clip": "birds_forest",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P3"
+    ],
+    "start": 3.5,
+    "end": 3.75,
+    "eff_start": 3.5,
+    "onsets": [
+     1.3
+    ],
+    "qwen": 1.625,
+    "afn": 1.625,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 1.625,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 1.625,
+    "rule_hit": true
+   },
+   {
+    "clip": "birds_forest",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P3"
+    ],
+    "start": 4.25,
+    "end": 4.5,
+    "eff_start": 4.25,
+    "onsets": [
+     1.3
+    ],
+    "qwen": 2.375,
+    "afn": 2.375,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 2.375,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 2.375,
+    "rule_hit": false
+   },
+   {
+    "clip": "birds_forest",
+    "family": "Bird",
+    "label": "Bird",
+    "pools": [
+     "P3"
+    ],
+    "start": 7.25,
+    "end": 7.5,
+    "eff_start": 7.25,
+    "onsets": [
+     1.3
+    ],
+    "qwen": 7.375,
+    "afn": 5.375,
+    "qwen_text": "2\nAssistant\n2",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 7.25,
+    "rule_hit": false
+   },
+   {
+    "clip": "ly_ambulance_(siren)_-yPSgCn",
+    "family": "Ice cream truck, ice cream van",
+    "label": "Ice cream truck, ice cream van",
+    "pools": [
+     "P2"
+    ],
+    "start": 0.0,
+    "end": 18.0,
+    "eff_start": 0.0,
+    "onsets": [
+     7.3
+    ],
+    "qwen": 6.619999999999999,
+    "afn": 6.619999999999999,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 6.619999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 6.619999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "ly_applause_62ZYD0u",
+    "family": "Crowd",
+    "label": "Applause",
+    "pools": [
+     "P3"
+    ],
+    "start": 8.5,
+    "end": 8.75,
+    "eff_start": 8.5,
+    "onsets": [
+     1.9
+    ],
+    "qwen": 6.625,
+    "afn": 6.625,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 6.625,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 6.625,
+    "rule_hit": false
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 0.0,
+    "end": 0.56,
+    "eff_start": 0.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 0.92,
+    "end": 0.9600000000000001,
+    "eff_start": 0.44000000000000006,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "family": "Vehicle",
+    "label": "Vehicle",
+    "pools": [
+     "P2"
+    ],
+    "start": 1.68,
+    "end": 1.76,
+    "eff_start": 1.24,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.0,
+    "afn": 0.0,
+    "qwen_text": "0\nment",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.0,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 0.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "family": "Aircraft",
+    "label": "Aircraft",
+    "pools": [
+     "P3"
+    ],
+    "start": 3.0,
+    "end": 3.25,
+    "eff_start": 3.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 1.125,
+    "afn": 1.125,
+    "qwen_text": "0\nAssistant:",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 1.125,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 1.125,
+    "rule_hit": false
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "family": "Aircraft",
+    "label": "Aircraft",
+    "pools": [
+     "P3"
+    ],
+    "start": 3.75,
+    "end": 4.0,
+    "eff_start": 3.75,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 1.875,
+    "afn": 1.875,
+    "qwen_text": "0\nment",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 1.875,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 1.875,
+    "rule_hit": false
+   },
+   {
+    "clip": "ly_helicopter_-v62cK1",
+    "family": "Aircraft",
+    "label": "Aircraft",
+    "pools": [
+     "P3"
+    ],
+    "start": 8.5,
+    "end": 8.75,
+    "eff_start": 8.5,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 6.625,
+    "afn": 6.625,
+    "qwen_text": "0\nant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 6.625,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 6.625,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "family": "Alarm",
+    "label": "Alarm",
+    "pools": [
+     "P2"
+    ],
+    "start": 2.48,
+    "end": 2.6,
+    "eff_start": 2.08,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 0.5800000000000001,
+    "afn": 0.5800000000000001,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 0.5800000000000001,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 0.5800000000000001,
+    "rule_hit": true
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "family": "Alarm",
+    "label": "Alarm",
+    "pools": [
+     "P2"
+    ],
+    "start": 3.24,
+    "end": 3.44,
+    "eff_start": 2.88,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 3.38,
+    "afn": 2.88,
+    "qwen_text": "2\nAssistant\n2",
+    "afn_text": "1.5",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 3.13,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 3.13,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "family": "Telephone",
+    "label": "Telephone",
+    "pools": [
+     "P3"
+    ],
+    "start": 9.0,
+    "end": 9.5,
+    "eff_start": 9.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 9.125,
+    "afn": 7.125,
+    "qwen_text": "2\nAssistant\n2",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 9.0,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "family": "Telephone",
+    "label": "Telephone",
+    "pools": [
+     "P3"
+    ],
+    "start": 9.75,
+    "end": 10.0,
+    "eff_start": 9.75,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 8.875,
+    "afn": 7.875,
+    "qwen_text": "1\nAssistant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 8.375,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 8.375,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "family": "Telephone",
+    "label": "Telephone bell ringing",
+    "pools": [
+     "P3"
+    ],
+    "start": 7.0,
+    "end": 7.5,
+    "eff_start": 7.0,
+    "onsets": [
+     0.0
+    ],
+    "qwen": 5.375,
+    "afn": 5.375,
+    "qwen_text": "0\nment",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 5.375,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 5.375,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "family": "Chink, clink",
+    "label": "Chink, clink",
+    "pools": [
+     "P3"
+    ],
+    "start": 11.0,
+    "end": 11.25,
+    "eff_start": 11.0,
+    "onsets": [
+     11.0
+    ],
+    "qwen": 11.125,
+    "afn": 9.125,
+    "qwen_text": "2\ning",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 11.0,
+    "rule_hit": true
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "family": "Chink, clink",
+    "label": "Chink, clink",
+    "pools": [
+     "P3"
+    ],
+    "start": 11.75,
+    "end": 12.0,
+    "eff_start": 11.75,
+    "onsets": [
+     11.0
+    ],
+    "qwen": 10.875,
+    "afn": 9.875,
+    "qwen_text": "1\nAssistant\n1",
+    "afn_text": "0.0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 10.375,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 10.375,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_storm_scene_house",
+    "family": "Siren",
+    "label": "Siren",
+    "pools": [
+     "P2"
+    ],
+    "start": 16.88,
+    "end": 16.96,
+    "eff_start": 16.4,
+    "onsets": [
+     16.9
+    ],
+    "qwen": null,
+    "afn": 14.899999999999999,
+    "qwen_text": "none\nAssistant\nnone",
+    "afn_text": "0",
+    "both_number": false,
+    "agree_1s": false,
+    "mean": null,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 16.4,
+    "rule_hit": true
+   },
+   {
+    "clip": "mv_tornado_scene",
+    "family": "Alarm",
+    "label": "Alarm",
+    "pools": [
+     "P2"
+    ],
+    "start": 9.52,
+    "end": 9.559999999999999,
+    "eff_start": 9.04,
+    "onsets": [
+     8.9
+    ],
+    "qwen": 7.539999999999999,
+    "afn": 7.539999999999999,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 7.539999999999999,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 7.539999999999999,
+    "rule_hit": false
+   },
+   {
+    "clip": "mv_tornado_scene",
+    "family": "Alarm",
+    "label": "Alarm",
+    "pools": [
+     "P2"
+    ],
+    "start": 10.0,
+    "end": 16.16,
+    "eff_start": 10.0,
+    "onsets": [
+     8.9
+    ],
+    "qwen": 10.58,
+    "afn": 10.58,
+    "qwen_text": "0\nment",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 10.58,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": false,
+    "rule_start": 10.58,
+    "rule_hit": false
+   },
+   {
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "family": "Baby laughter",
+    "label": "Baby laughter",
+    "pools": [
+     "P2"
+    ],
+    "start": 13.28,
+    "end": 14.719999999999999,
+    "eff_start": 13.28,
+    "onsets": [
+     12.7
+    ],
+    "qwen": 12.66,
+    "afn": 11.66,
+    "qwen_text": "1\ny",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 12.16,
+    "mean_hit": false,
+    "qwen_hit": true,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 12.16,
+    "rule_hit": false
+   },
+   {
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "family": "Belly laugh",
+    "label": "Belly laugh",
+    "pools": [
+     "P2"
+    ],
+    "start": 13.0,
+    "end": 14.76,
+    "eff_start": 13.0,
+    "onsets": [
+     12.7
+    ],
+    "qwen": 13.219999999999999,
+    "afn": 12.219999999999999,
+    "qwen_text": "1\n*",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 12.719999999999999,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 12.719999999999999,
+    "rule_hit": true
+   },
+   {
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "family": "Chuckle, chortle",
+    "label": "Chuckle, chortle",
+    "pools": [
+     "P2"
+    ],
+    "start": 13.32,
+    "end": 13.719999999999999,
+    "eff_start": 12.92,
+    "onsets": [
+     12.7
+    ],
+    "qwen": 11.42,
+    "afn": 11.42,
+    "qwen_text": "0\nAssistant\n0",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 11.42,
+    "mean_hit": false,
+    "qwen_hit": false,
+    "afn_hit": false,
+    "start_hit": true,
+    "rule_start": 11.42,
+    "rule_hit": false
+   },
+   {
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "family": "Chuckle, chortle",
+    "label": "Chuckle, chortle",
+    "pools": [
+     "P2"
+    ],
+    "start": 15.2,
+    "end": 15.52,
+    "eff_start": 14.92,
+    "onsets": [
+     12.7
+    ],
+    "qwen": 13.42,
+    "afn": 13.42,
+    "qwen_text": "0\nant",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 13.42,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": false,
+    "rule_start": 13.42,
+    "rule_hit": true
+   },
+   {
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "family": "Giggle",
+    "label": "Giggle",
+    "pools": [
+     "P2"
+    ],
+    "start": 12.84,
+    "end": 15.92,
+    "eff_start": 12.84,
+    "onsets": [
+     12.7
+    ],
+    "qwen": 13.219999999999999,
+    "afn": 12.219999999999999,
+    "qwen_text": "1\nwise",
+    "afn_text": "0",
+    "both_number": true,
+    "agree_1s": true,
+    "mean": 12.719999999999999,
+    "mean_hit": true,
+    "qwen_hit": true,
+    "afn_hit": true,
+    "start_hit": true,
+    "rule_start": 12.719999999999999,
+    "rule_hit": true
+   }
+  ],
+  "no_gold_runs": {
+   "n": 1218,
+   "both_number": 874,
+   "agree_1s": 705
+  }
+ }
+}
