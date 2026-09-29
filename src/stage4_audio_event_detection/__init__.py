@@ -292,8 +292,7 @@ def listener_p1_lookup(vcache, cache, clip: str, tol: float = 0.02):
     def items(path, pool="P1"):
         if not path:
             return []
-        d = json.loads(Path(path).read_text(encoding="utf-8"))
-        return [x for x in (d["items"] if isinstance(d, dict) else d) if x.get("clip") == clip and x.get("pool") == pool]
+        return [x for x in _cache_items(path) if x.get("clip") == clip and x.get("pool") == pool]
     V, Y = items(vcache), items(cache)
 
     def find(its, label, start, end):

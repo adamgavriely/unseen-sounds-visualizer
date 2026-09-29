@@ -1,0 +1,6008 @@
+{
+ "_meta": {
+  "amendment": "round 14 K2 supplement",
+  "source": "/home/dsi/adamg/MscProj_r13/data/work/r13/k2_runs.json",
+  "model": "Qwen/Qwen3-Omni-30B-A3B-Instruct",
+  "V1": "Listen carefully. Which ONE of these is actually present in this recording? A) {} B) {} C) {} D) {} E) none of A-D. Answer with a single letter.",
+  "V3": "If {} occurs in this recording, reply with the second it starts (for example 4.5). If it does not occur, reply none.",
+  "V4": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+  "null": "listener_variants.gold_free_null, random.Random(0)",
+  "n": 27,
+  "yes_ids": [
+   7414,
+   9454,
+   9693,
+   9834
+  ],
+  "no_ids": [
+   902,
+   2152,
+   2308,
+   2753
+  ],
+  "letter_ids": [
+   [
+    32,
+    362
+   ],
+   [
+    33,
+    425
+   ],
+   [
+    34,
+    356
+   ],
+   [
+    35,
+    422
+   ],
+   [
+    36,
+    468
+   ]
+  ],
+  "seconds": 121.75042748451233
+ },
+ "items": [
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_len": 10.0,
+   "peak": 0.564453125,
+   "depictable": true,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Power tool",
+   "v1_x_options": [
+    "water",
+    "glass",
+    "hiccup"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "filing (rasp)",
+    "sawing",
+    "laughter"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": null,
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    13.0
+   ],
+   "accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.729329526424408,
+     0.0001483954838477075,
+     0.0020485366694629192,
+     0.00016815410344861448,
+     0.26830536127090454
+    ],
+    "probs_XatD": [
+     0.002447794657200575,
+     0.004573082085698843,
+     0.0035615202505141497,
+     0.2203434407711029,
+     0.7690741419792175
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     36
+    ],
+    "p": {
+     "X": 0.47483648359775543,
+     "s1": 0.0012980950705241412,
+     "s2": 0.003310809377580881,
+     "u": 0.001864837176981382,
+     "none": 0.518689751625061
+    }
+   },
+   "v2_x": {
+    "s_run": 1.0,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_text": "Train\nTrain wheels squealing\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4481058716773987,
+     0.2504781484603882,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113,
+     0.2920462489128113
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0009100049501284957,
+     0.0008030765457078815,
+     0.00026072075706906617,
+     8.464363781968132e-05,
+     0.9979415535926819
+    ],
+    "probs_XatD": [
+     0.002796805463731289,
+     0.0003340307448524982,
+     0.00022957574401516467,
+     0.0009079897427000105,
+     0.9957316517829895
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0009089973464142531,
+     "s1": 0.0017999410047195852,
+     "s2": 0.00029737575096078217,
+     "u": 0.000157109690917423,
+     "none": 0.9968366026878357
+    }
+   },
+   "v2_null": {
+    "s_run": -2.625,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "drill",
+     "power tool",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1851460039615631,
+     0.060056012123823166,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061,
+     0.2264295220375061
+    ]
+   }
+  },
+  {
+   "clip": "ambient_market_marrakech_3102",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 10.0,
+   "end": 16.0,
+   "cut_start": 10.0,
+   "cut_end": 16.0,
+   "run_len": 6.0,
+   "peak": 0.58544921875,
+   "depictable": true,
+   "run_start": 10.0,
+   "run_end": 16.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Sound equipment",
+   "v1_x_options": [
+    "bell",
+    "water",
+    "human locomotion"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "arrow",
+    "sonar",
+    "water"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    9.0,
+    16.0
+   ],
+   "v2_x_ctrl": [
+    3.0,
+    10.0
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    3.0,
+    10.0
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    7.0,
+    16.0
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": true,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9966562986373901,
+     3.1098552426556125e-05,
+     6.583563663298264e-05,
+     7.460155757144094e-05,
+     0.0031721387058496475
+    ],
+    "probs_XatD": [
+     0.00033241690834984183,
+     0.00015702263044659048,
+     0.0010239161783829331,
+     0.990920901298523,
+     0.007565774023532867
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9937885999679565,
+     "s1": 0.00018175773038819898,
+     "s2": 0.00011142913353978656,
+     "u": 0.000549258867977187,
+     "none": 0.0053689563646912575
+    }
+   },
+   "v2_x": {
+    "s_run": 6.375,
+    "s_ctrl": -1.875,
+    "ctrl": [
+     3.0,
+     10.0
+    ]
+   },
+   "v3_x": {
+    "text": "5.1\nAssistant",
+    "t_rel": 5.1,
+    "t_clip": 12.1
+   },
+   "v4_text": "Car engine revving\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "Car engine revving"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.30793893337249756,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665,
+     0.2920461893081665
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.007531088311225176,
+     0.0007937709451653063,
+     0.0031394250690937042,
+     0.0021576930303126574,
+     0.9863779544830322
+    ],
+    "probs_XatD": [
+     0.0031581695657223463,
+     0.0007985102711245418,
+     0.002459584968164563,
+     0.0013165208511054516,
+     0.9922673106193542
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.004423804581165314,
+     "s1": 0.0019759702554438263,
+     "s2": 0.001968967670109123,
+     "u": 0.0023086389992386103,
+     "none": 0.9893226325511932
+    }
+   },
+   "v2_null": {
+    "s_run": -3.5,
+    "s_ctrl": -3.125,
+    "ctrl": [
+     3.0,
+     10.0
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "effects unit",
+     "electronic tuner",
+     "guitar amplifier",
+     "microphone",
+     "miscellaneous sources",
+     "sound equipment"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.03403950482606888,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324,
+     0.09514498710632324
+    ]
+   }
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 7.88,
+   "end": 8.799999999999999,
+   "cut_start": 7.639999999999999,
+   "cut_end": 8.639999999999999,
+   "run_len": 0.919999999999999,
+   "peak": 0.771484375,
+   "depictable": true,
+   "run_start": 7.88,
+   "run_end": 8.799999999999999,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Rowboat, canoe, kayak",
+   "v1_x_options": [
+    "whale vocalization",
+    "dog",
+    "grunt"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "boat",
+    "vehicle",
+    "wail, moan"
+   ],
+   "v1_null_source": "cousins",
+   "run_audio": [
+    6.639999999999999,
+    9.639999999999999
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    4.64,
+    7.64
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    4.88,
+    11.799999999999999
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9971753358840942,
+     1.4697565347887576e-05,
+     6.126856987975771e-06,
+     2.894122644647723e-06,
+     0.0028008604422211647
+    ],
+    "probs_XatD": [
+     4.539570363704115e-05,
+     2.9020504825894022e-06,
+     4.784672000823775e-06,
+     0.9999068975448608,
+     4.006156450486742e-05
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9985411167144775,
+     "s1": 3.0046634492464364e-05,
+     "s2": 4.514453735282586e-06,
+     "u": 3.839397322735749e-06,
+     "none": 0.001420461003363016
+    }
+   },
+   "v2_x": {
+    "s_run": 4.5,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 4.88
+   },
+   "v4_text": "Piano\nBirdsong\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3438199460506439,
+     0.5849548578262329,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111,
+     0.1581490933895111
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.001024912460707128,
+     0.006683269049972296,
+     0.00017810307326726615,
+     0.00022868887754157186,
+     0.9918850660324097
+    ],
+    "probs_XatD": [
+     0.0021717988420277834,
+     0.0006222306983545423,
+     0.0035806908272206783,
+     0.000798960099928081,
+     0.9928263425827026
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0009119362803176045,
+     "s1": 0.00442753394600004,
+     "s2": 0.0004001668858109042,
+     "u": 0.001904689852381125,
+     "none": 0.9923557043075562
+    }
+   },
+   "v2_null": {
+    "s_run": -5.5,
+    "s_ctrl": -5.125,
+    "ctrl": [
+     4.64,
+     7.64
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "boat",
+     "canoe",
+     "kayak",
+     "rowboat",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.22146716713905334,
+     0.21177682280540466,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381,
+     0.0896570011973381
+    ]
+   }
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 15.32,
+   "end": 16.0,
+   "cut_start": 14.92,
+   "cut_end": 15.92,
+   "run_len": 0.6799999999999997,
+   "peak": 0.6005859375,
+   "depictable": true,
+   "run_start": 15.32,
+   "run_end": 16.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Bellow",
+   "v1_x_options": [
+    "roaring cats (lions, tigers)",
+    "snake",
+    "whoop"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "battle cry",
+    "yell",
+    "cattle"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    13.92,
+    16.0
+   ],
+   "v2_x_ctrl": [
+    12.84,
+    14.92
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    12.84,
+    14.92
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    12.32,
+    16.0
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": true,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.995354413986206,
+     1.1425573575252201e-05,
+     1.4670726159238257e-05,
+     1.0083032975671813e-05,
+     0.004609405528753996
+    ],
+    "probs_XatD": [
+     1.8924398318631575e-05,
+     4.222603820380755e-06,
+     7.888862455729395e-06,
+     0.9999414682388306,
+     2.7534839318832383e-05
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9976479411125183,
+     "s1": 1.5174985946941888e-05,
+     "s2": 9.446664989809506e-06,
+     "u": 8.985947715700604e-06,
+     "none": 0.002318470184036414
+    }
+   },
+   "v2_x": {
+    "s_run": 4.0,
+    "s_ctrl": -0.625,
+    "ctrl": [
+     12.84,
+     14.92
+    ]
+   },
+   "v3_x": {
+    "text": "3.0\nAssistant",
+    "t_rel": 3.0,
+    "t_clip": 15.32
+   },
+   "v4_text": "Music\nBirdsong\nAssistant\nMusic\nBirdsong\nAssistant\nMusic\nAssistant\nBirdsong\nAssistant\nMusic\nAssistant\nBirdsong\nAssistant\nMusic\nAssistant\nBirdsong\nAssistant",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.23581793904304504,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.23581793904304504,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.23581793904304504,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.23581793904304504,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.23581793904304504,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0002303370856679976,
+     0.00013970652071293443,
+     0.00033513849484734237,
+     0.00026100612012669444,
+     0.9990338087081909
+    ],
+    "probs_XatD": [
+     0.0001583580597070977,
+     0.00010883780487347394,
+     0.0002610882802400738,
+     0.00012332938786130399,
+     0.9993483424186707
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0001768332367646508,
+     "s1": 0.00014903229021001607,
+     "s2": 0.00022198814986040816,
+     "u": 0.0002610472001833841,
+     "none": 0.9991910755634308
+    }
+   },
+   "v2_null": {
+    "s_run": -4.25,
+    "s_ctrl": -3.625,
+    "ctrl": [
+     12.84,
+     14.92
+    ]
+   },
+   "v3_null": {
+    "text": "none\nust",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "bellow",
+     "shout"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1931411772966385,
+     0.2810096740722656,
+     0.16819657385349274,
+     0.1931411772966385,
+     0.2810096740722656,
+     0.16819657385349274,
+     0.1931411772966385,
+     0.16819657385349274,
+     0.2810096740722656,
+     0.16819657385349274,
+     0.1931411772966385,
+     0.16819657385349274,
+     0.2810096740722656,
+     0.16819657385349274,
+     0.1931411772966385,
+     0.16819657385349274,
+     0.2810096740722656,
+     0.16819657385349274
+    ]
+   }
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 8.6,
+   "end": 16.0,
+   "cut_start": 8.6,
+   "cut_end": 16.0,
+   "run_len": 7.4,
+   "peak": 0.70263671875,
+   "depictable": true,
+   "run_start": 8.6,
+   "run_end": 16.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Hands",
+   "v1_x_options": [
+    "booing",
+    "clapping",
+    "bird flight, flapping wings"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "heart sounds, heartbeat",
+    "whistling",
+    "mechanical fan"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    7.6,
+    16.0
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    0.2,
+    8.6
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    5.6,
+    16.0
+   ],
+   "accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.4070832431316376,
+     7.309594366233796e-05,
+     0.0004206381272524595,
+     0.00012051484372932464,
+     0.5923025608062744
+    ],
+    "probs_XatD": [
+     9.095839050132781e-05,
+     8.027049625525251e-05,
+     0.0001925589021993801,
+     0.8351796865463257,
+     0.16445662081241608
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     35
+    ],
+    "p": {
+     "X": 0.6211314648389816,
+     "s1": 8.202716708183289e-05,
+     "s2": 0.000250454311753856,
+     "u": 0.00015653687296435237,
+     "none": 0.37837959080934525
+    }
+   },
+   "v2_x": {
+    "s_run": 5.25,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 5.6
+   },
+   "v4_text": "Birds chirping\nCrowd chatter\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [
+     "Crowd chatter"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.2307090312242508,
+     0.7268531918525696,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747,
+     0.11000940948724747
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.00020331519772298634,
+     0.0001397363521391526,
+     0.0002303862856933847,
+     0.0001794250274542719,
+     0.9992471933364868
+    ],
+    "probs_XatD": [
+     0.0007091332226991653,
+     0.0002608755312394351,
+     0.0004301110457163304,
+     6.595966260647401e-05,
+     0.9985339641571045
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.00013463743016473018,
+     "s1": 0.00042443478741915897,
+     "s2": 0.0002456309084664099,
+     "u": 0.00030476803658530116,
+     "none": 0.9988905787467957
+    }
+   },
+   "v2_null": {
+    "s_run": -3.375,
+    "s_ctrl": -4.875,
+    "ctrl": [
+     0.2,
+     8.6
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "clapping",
+     "finger snapping",
+     "hands"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.10967589169740677,
+     0.17261968553066254,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158,
+     0.18129190802574158
+    ]
+   }
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "pool": "P2",
+   "family": "Train",
+   "label": "Train",
+   "start": 0.0,
+   "end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_len": 10.0,
+   "peak": 0.77490234375,
+   "depictable": true,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Turkey",
+   "v1_x_options": [
+    "vehicle",
+    "bicycle",
+    "wail, moan"
+   ],
+   "v1_x_source": "cousins",
+   "v1_null_options": [
+    "goose",
+    "bird",
+    "bicycle"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": null,
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    13.0
+   ],
+   "accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.003310189815238118,
+     0.917823851108551,
+     0.0025779784191399813,
+     0.0009483852190896869,
+     0.07533957064151764
+    ],
+    "probs_XatD": [
+     0.4623834788799286,
+     0.00019916825112886727,
+     0.0011461341055110097,
+     0.523949146270752,
+     0.012322102673351765
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     33,
+     35
+    ],
+    "p": {
+     "X": 0.26362966804299504,
+     "s1": 0.6901036649942398,
+     "s2": 0.0013885733351344243,
+     "u": 0.0010472596623003483,
+     "none": 0.0438308366574347
+    }
+   },
+   "v2_x": {
+    "s_run": 3.125,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Train\nTrain horn\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand",
+   "v4_x": {
+    "names": [
+     "clickety-clack",
+     "metro",
+     "rail transport",
+     "railroad car",
+     "subway",
+     "train",
+     "train horn",
+     "train wagon",
+     "train wheels squealing",
+     "train whistle",
+     "underground"
+    ],
+    "matched_word": [
+     "Train",
+     "Train horn"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.9999998211860657,
+     0.4570970833301544,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768,
+     0.21499662101268768
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.7617224454879761,
+     0.04869528487324715,
+     0.03792392835021019,
+     0.0016662611160427332,
+     0.14999203383922577
+    ],
+    "probs_XatD": [
+     0.10109739750623703,
+     0.00269415439106524,
+     0.0020982096903026104,
+     0.7470143437385559,
+     0.14709582924842834
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.754368394613266,
+     "s1": 0.07489634118974209,
+     "s2": 0.020309041370637715,
+     "u": 0.0018822354031726718,
+     "none": 0.14854393154382706
+    }
+   },
+   "v2_null": {
+    "s_run": 1.75,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_null": {
+    "text": "none\n*",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "fowl",
+     "gobble",
+     "turkey"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19020619988441467,
+     0.10206751525402069,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365,
+     0.18296584486961365
+    ]
+   }
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_len": 10.0,
+   "peak": 0.5595703125,
+   "depictable": true,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Thunder",
+   "v1_x_options": [
+    "wood",
+    "glass",
+    "bird"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "rain",
+    "water",
+    "chink, clink"
+   ],
+   "v1_null_source": "cousins",
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": null,
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    13.0
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9930049777030945,
+     8.877242180460598e-06,
+     0.00013886344095226377,
+     0.0027891467325389385,
+     0.004058184567838907
+    ],
+    "probs_XatD": [
+     0.0010592964245006442,
+     0.001200340106151998,
+     0.018776478245854378,
+     0.9047014713287354,
+     0.07426241785287857
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9488532245159149,
+     "s1": 0.0005340868333405524,
+     "s2": 0.0006696017735521309,
+     "u": 0.010782812489196658,
+     "none": 0.03916030121035874
+    }
+   },
+   "v2_x": {
+    "s_run": 5.625,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Train\nTrain horn\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand",
+   "v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.44810599088668823,
+     0.37018248438835144,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854,
+     0.27365416288375854
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0017820487264543772,
+     0.003772597061470151,
+     0.4941127300262451,
+     0.00621996121481061,
+     0.4941127300262451
+    ],
+    "probs_XatD": [
+     0.0014221958117559552,
+     0.14506788551807404,
+     0.01529004517942667,
+     0.0034116702154278755,
+     0.8348081111907959
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     34,
+     36
+    ],
+    "p": {
+     "X": 0.0025968594709411263,
+     "s1": 0.002597396436613053,
+     "s2": 0.3195903077721596,
+     "u": 0.01075500319711864,
+     "none": 0.6644604206085205
+    }
+   },
+   "v2_null": {
+    "s_run": -2.0,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2625415623188019,
+     0.31795182824134827,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604,
+     0.23839740455150604
+    ]
+   }
+  },
+  {
+   "clip": "as_glass_oHil9Ip_",
+   "pool": "P2",
+   "family": "Chink, clink",
+   "label": "Chink, clink",
+   "start": 8.96,
+   "end": 9.559999999999999,
+   "cut_start": 8.68,
+   "cut_end": 9.68,
+   "run_len": 0.5999999999999979,
+   "peak": 0.75146484375,
+   "depictable": true,
+   "run_start": 8.96,
+   "run_end": 9.559999999999999,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Sneeze",
+   "v1_x_options": [
+    "glass",
+    "alarm",
+    "snicker"
+   ],
+   "v1_x_source": "cousins",
+   "v1_null_options": [
+    "sniff",
+    "cough",
+    "rowboat, canoe, kayak"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    7.68,
+    10.68
+   ],
+   "v2_x_ctrl": [
+    9.72,
+    12.72
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    5.68,
+    8.68
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    5.960000000000001,
+    12.559999999999999
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9589513540267944,
+     0.01756380684673786,
+     0.0030521319713443518,
+     0.0005303809884935617,
+     0.01990239880979061
+    ],
+    "probs_XatD": [
+     0.0002951292262878269,
+     6.585222581634298e-05,
+     0.00026045061531476676,
+     0.9969075322151184,
+     0.0024710868019610643
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9779294431209564,
+     "s1": 0.008929468036512844,
+     "s2": 0.0015589920985803474,
+     "u": 0.00039541580190416425,
+     "none": 0.011186742805875838
+    }
+   },
+   "v2_x": {
+    "s_run": 4.25,
+    "s_ctrl": 1.125,
+    "ctrl": [
+     9.72,
+     12.72
+    ]
+   },
+   "v3_x": {
+    "text": "1.8\nAssistant",
+    "t_rel": 1.8,
+    "t_clip": 7.760000000000001
+   },
+   "v4_text": "Coin (dropping)\nscript\nscript\n\nscript\n\nscript\n\nscript\n\n\n\nscript\n\n\n\nscript\n\n\n\nscript\n\n\n\nscript\n\n\n\nscript\n\n\n\nscript",
+   "v4_x": {
+    "names": [
+     "chink",
+     "clink",
+     "glass"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.13869670033454895,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356,
+     0.13325339555740356
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.03894484415650368,
+     0.15402983129024506,
+     0.023621242493391037,
+     0.0011760323541238904,
+     0.7822281122207642
+    ],
+    "probs_XatD": [
+     0.034397952258586884,
+     0.0052750976756215096,
+     0.0031995081808418036,
+     0.5380745530128479,
+     0.4190528690814972
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     35
+    ],
+    "p": {
+     "X": 0.2885096985846758,
+     "s1": 0.09421389177441597,
+     "s2": 0.014448170084506273,
+     "u": 0.002187770267482847,
+     "none": 0.6006404906511307
+    }
+   },
+   "v2_null": {
+    "s_run": -1.875,
+    "s_ctrl": -3.625,
+    "ctrl": [
+     5.68,
+     8.68
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "respiratory sounds",
+     "sneeze"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11537899076938629,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377,
+     0.21112988889217377
+    ]
+   }
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 15.88,
+   "end": 17.84,
+   "cut_start": 15.88,
+   "cut_end": 17.84,
+   "run_len": 1.959999999999999,
+   "peak": 0.7021484375,
+   "depictable": true,
+   "run_start": 15.88,
+   "run_end": 17.84,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Wolf-whistling",
+   "v1_x_options": [
+    "snake",
+    "roaring cats (lions, tigers)",
+    "thunder"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "clapping",
+    "hiccup",
+    "sonic boom"
+   ],
+   "v1_null_source": "cousins",
+   "run_audio": [
+    14.88,
+    18.84
+   ],
+   "v2_x_ctrl": [
+    19.080000000000002,
+    23.04
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    17.84,
+    21.799999999999997
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    12.88,
+    20.84
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9924098253250122,
+     3.474294544503209e-06,
+     7.829443347873166e-06,
+     1.7469849353801692e-06,
+     0.007577142212539911
+    ],
+    "probs_XatD": [
+     1.1478105079731904e-05,
+     4.784786142408848e-06,
+     1.3006397239223588e-05,
+     0.999930739402771,
+     4.006251765531488e-05
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9961702823638916,
+     "s1": 7.4761998121175566e-06,
+     "s2": 6.307114745141007e-06,
+     "u": 7.376691087301879e-06,
+     "none": 0.003808602365097613
+    }
+   },
+   "v2_x": {
+    "s_run": 5.25,
+    "s_ctrl": -2.625,
+    "ctrl": [
+     19.080000000000002,
+     23.04
+    ]
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 12.88
+   },
+   "v4_text": "Birdsong\nAssistant\nBirdsong\nAssistant\nBirdsong\nAssistant\nBirdsong\nAssistant\nBirdsong\nAssistant\nBirdsong\nAssistant\nBirdsong\nAssistant\nBirdsong\nAssistant",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575,
+     0.5849548578262329,
+     0.24186354875564575
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.00023003593378234655,
+     5.8162193454336375e-05,
+     0.0019260672852396965,
+     5.8162193454336375e-05,
+     0.9977275729179382
+    ],
+    "probs_XatD": [
+     7.47974991099909e-05,
+     0.00048774093738757074,
+     0.00012332022015471011,
+     4.003620779258199e-05,
+     0.9992740750312805
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.00013503607078746427,
+     "s1": 6.647984628216363e-05,
+     "s2": 0.0012069041113136336,
+     "u": 9.074120680452324e-05,
+     "none": 0.9985008239746094
+    }
+   },
+   "v2_null": {
+    "s_run": -3.75,
+    "s_ctrl": -2.25,
+    "ctrl": [
+     17.84,
+     21.799999999999997
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "whistling",
+     "wolf-whistling"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586,
+     0.4913640320301056,
+     0.19065867364406586
+    ]
+   }
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 18.36,
+   "end": 19.0,
+   "cut_start": 18.08,
+   "cut_end": 19.08,
+   "run_len": 0.6400000000000006,
+   "peak": 0.5400390625,
+   "depictable": true,
+   "run_start": 18.36,
+   "run_end": 19.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Stir",
+   "v1_x_options": [
+    "snake",
+    "roaring cats (lions, tigers)",
+    "finger snapping"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "water",
+    "pump (liquid)",
+    "laughter"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    17.08,
+    20.08
+   ],
+   "v2_x_ctrl": [
+    19.080000000000002,
+    22.080000000000002
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    15.08,
+    18.08
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    15.36,
+    22.0
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9462518692016602,
+     5.516143573913723e-05,
+     0.00021816769731231034,
+     9.094583219848573e-05,
+     0.053383879363536835
+    ],
+    "probs_XatD": [
+     0.00023008737480267882,
+     5.817519922857173e-05,
+     0.0002607231435831636,
+     0.9979507327079773,
+     0.0015003582229837775
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9721013009548187,
+     "s1": 0.00014262440527090803,
+     "s2": 0.00013817144827044103,
+     "u": 0.00017583448789082468,
+     "none": 0.027442118793260306
+    }
+   },
+   "v2_x": {
+    "s_run": 4.5,
+    "s_ctrl": -2.875,
+    "ctrl": [
+     19.080000000000002,
+     22.080000000000002
+    ]
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 15.36
+   },
+   "v4_text": "Birdsong\nst\nst\nst\nst\nst\nst\nst\nst\nst\nst\nst\nst\nst\nst",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5849549174308777,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427,
+     0.13501493632793427
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.002442041179165244,
+     0.008523560129106045,
+     0.003553148591890931,
+     0.000291660224320367,
+     0.9851896166801453
+    ],
+    "probs_XatD": [
+     0.00668161129578948,
+     0.001161089981906116,
+     0.000259074178757146,
+     0.000259074178757146,
+     0.9916390776634216
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.001350557678961195,
+     "s1": 0.0076025857124477625,
+     "s2": 0.0023571192868985236,
+     "u": 0.0002753672015387565,
+     "none": 0.9884143471717834
+    }
+   },
+   "v2_null": {
+    "s_run": -4.75,
+    "s_ctrl": -5.5,
+    "ctrl": [
+     15.08,
+     18.08
+    ]
+   },
+   "v3_null": {
+    "text": "none\nant",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "liquid",
+     "stir"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15611891448497772,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736,
+     0.14908039569854736
+    ]
+   }
+  },
+  {
+   "clip": "b3_favela_rio",
+   "pool": "P2",
+   "family": "Footsteps",
+   "label": "Footsteps",
+   "start": 3.96,
+   "end": 4.44,
+   "cut_start": 3.5999999999999996,
+   "cut_end": 4.6,
+   "run_len": 0.4800000000000004,
+   "peak": 0.57080078125,
+   "depictable": true,
+   "run_start": 3.96,
+   "run_end": 4.44,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Wail, moan",
+   "v1_x_options": [
+    "grunt",
+    "laughter",
+    "dishes"
+   ],
+   "v1_x_source": "cousins",
+   "v1_null_options": [
+    "groan",
+    "yawn",
+    "fire"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    2.5999999999999996,
+    5.6
+   ],
+   "v2_x_ctrl": [
+    10.0,
+    13.0
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    0.6,
+    3.6
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.96,
+    7.44
+   ],
+   "accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.7747791409492493,
+     0.00029451597947627306,
+     0.001027961727231741,
+     0.0019204855198040605,
+     0.22197794914245605
+    ],
+    "probs_XatD": [
+     0.002823729533702135,
+     0.0005560253048315644,
+     0.038980379700660706,
+     0.17469796538352966,
+     0.7829419374465942
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     36
+    ],
+    "p": {
+     "X": 0.47473855316638947,
+     "s1": 0.001559122756589204,
+     "s2": 0.0007919935160316527,
+     "u": 0.020450432610232383,
+     "none": 0.5024599432945251
+    }
+   },
+   "v2_x": {
+    "s_run": 3.375,
+    "s_ctrl": 3.75,
+    "ctrl": [
+     10.0,
+     13.0
+    ]
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.96
+   },
+   "v4_text": "Birds chirping\nWheeled cart rolling\nAssistant\nBirds chirping\nWheeled cart rolling\nAssistant\nBirds chirping\nWheeled cart rolling\nAssistant\nBirds chirping\nWheeled cart rolling\nAssistant",
+   "v4_x": {
+    "names": [
+     "footsteps",
+     "human locomotion",
+     "run",
+     "shuffle",
+     "walk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27667123079299927,
+     0.1701454222202301,
+     0.15878061950206757,
+     0.27667123079299927,
+     0.1701454222202301,
+     0.15878061950206757,
+     0.27667123079299927,
+     0.1701454222202301,
+     0.15878061950206757,
+     0.27667123079299927,
+     0.1701454222202301,
+     0.15878061950206757
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0009082956239581108,
+     0.0021788878366351128,
+     0.0005509091424755752,
+     0.0002948804176412523,
+     0.9960671067237854
+    ],
+    "probs_XatD": [
+     0.0024560396559536457,
+     0.0004836228908970952,
+     0.001023829565383494,
+     0.005199435632675886,
+     0.9908370971679688
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0030538656283169985,
+     "s1": 0.0023174637462943792,
+     "s2": 0.0005172660166863352,
+     "u": 0.0006593549915123731,
+     "none": 0.9934521019458771
+    }
+   },
+   "v2_null": {
+    "s_run": -3.375,
+    "s_ctrl": -3.125,
+    "ctrl": [
+     0.6,
+     3.6
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "human voice",
+     "moan",
+     "wail"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2139153629541397,
+     0.08583254367113113,
+     0.13048383593559265,
+     0.2139153629541397,
+     0.08583254367113113,
+     0.13048383593559265,
+     0.2139153629541397,
+     0.08583254367113113,
+     0.13048383593559265,
+     0.2139153629541397,
+     0.08583254367113113,
+     0.13048383593559265
+    ]
+   }
+  },
+  {
+   "clip": "b3_flea_market",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 20.0,
+   "end": 28.0,
+   "cut_start": 20.0,
+   "cut_end": 28.0,
+   "run_len": 8.0,
+   "peak": 0.66064453125,
+   "depictable": true,
+   "run_start": 20.0,
+   "run_end": 28.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Engine knocking",
+   "v1_x_options": [
+    "glass",
+    "water",
+    "horse"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "vehicle",
+    "aircraft",
+    "turkey"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    19.0,
+    28.0
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    11.0,
+    20.0
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    17.0,
+    28.0
+   ],
+   "accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.02348511852324009,
+     0.0010318640852347016,
+     0.881272554397583,
+     0.00132493965793401,
+     0.09288544207811356
+    ],
+    "probs_XatD": [
+     0.002102045575156808,
+     0.5828389525413513,
+     0.007336859591305256,
+     0.05421246588230133,
+     0.35350969433784485
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     34,
+     33
+    ],
+    "p": {
+     "X": 0.03884879220277071,
+     "s1": 0.0015669548301957548,
+     "s2": 0.7320557534694672,
+     "u": 0.004330899624619633,
+     "none": 0.2231975682079792
+    }
+   },
+   "v2_x": {
+    "s_run": 1.0,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_text": "Water\nVehicle\nAssistant\nWater\nVehicle\nAssistant\nWater\nAssistant\nWater\nAssistant\nWater\nAssistant\nWater\nAssistant\nWater\n\nAssistant\nWater\n\nAssistant\nWater\n\nAssistant",
+   "v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "Vehicle",
+     "Vehicle"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.2791263461112976,
+     1.0,
+     0.31576481461524963,
+     0.2791263461112976,
+     1.0,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963,
+     0.2791263461112976,
+     0.31576481461524963
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0004158930096309632,
+     0.7519521713256836,
+     0.0016448887763544917,
+     0.0018639032496139407,
+     0.24412313103675842
+    ],
+    "probs_XatD": [
+     0.009121469222009182,
+     0.0004007693787571043,
+     0.930415153503418,
+     0.000583115965127945,
+     0.059479448944330215
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     33,
+     34
+    ],
+    "p": {
+     "X": 0.0004995044873794541,
+     "s1": 0.3805368202738464,
+     "s2": 0.001022829077555798,
+     "u": 0.46613952837651595,
+     "none": 0.15180128999054432
+    }
+   },
+   "v2_null": {
+    "s_run": -2.375,
+    "s_ctrl": -2.625,
+    "ctrl": [
+     11.0,
+     20.0
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "engine",
+     "engine knocking"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.07116302847862244,
+     0.2660854458808899,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.2660854458808899,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775,
+     0.07116302847862244,
+     0.06899503618478775
+    ]
+   }
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 3.8,
+   "end": 5.84,
+   "cut_start": 3.8,
+   "cut_end": 5.84,
+   "run_len": 2.04,
+   "peak": 0.74365234375,
+   "depictable": true,
+   "run_start": 3.8,
+   "run_end": 5.84,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Pump (liquid)",
+   "v1_x_options": [
+    "snake",
+    "dog",
+    "sneeze"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "water",
+    "stir",
+    "crow"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    2.8,
+    6.84
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    5.84,
+    9.879999999999999
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.7999999999999998,
+    8.84
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9901524186134338,
+     2.4061526346486062e-05,
+     9.516518912278116e-05,
+     2.1234223822830245e-05,
+     0.009707113727927208
+    ],
+    "probs_XatD": [
+     0.00015813810750842094,
+     5.817575947730802e-05,
+     0.00012315808271523565,
+     0.9979603290557861,
+     0.0017001450760290027
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.99405637383461,
+     "s1": 9.10998169274535e-05,
+     "s2": 7.667047430004459e-05,
+     "u": 7.219615326903295e-05,
+     "none": 0.005703629401978105
+    }
+   },
+   "v2_x": {
+    "s_run": 5.25,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.7999999999999998
+   },
+   "v4_text": "Bird vocalization - bird call - bird song\nInsect\nBark\nAssistant\nBird vocalization - bird call - bird song\nInsect\nBark\nAssistant\nBird vocalization - bird call - bird song\nInsect\nBark\nAssistant\nBird",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "Bird vocalization - bird call - bird song",
+     "Bird vocalization - bird call - bird song",
+     "Bird vocalization - bird call - bird song",
+     "Bird"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5890446305274963,
+     0.4832819402217865,
+     0.3164810836315155,
+     0.24186353385448456,
+     0.5890446305274963,
+     0.4832819402217865,
+     0.3164810836315155,
+     0.24186353385448456,
+     0.5890446305274963,
+     0.4832819402217865,
+     0.3164810836315155,
+     0.24186353385448456,
+     1.0000003576278687
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0015656223986297846,
+     0.07543590664863586,
+     0.0029249675571918488,
+     0.0010760353179648519,
+     0.9189974665641785
+    ],
+    "probs_XatD": [
+     0.008272436447441578,
+     0.0008719083853065968,
+     0.14663243293762207,
+     0.0004118603828828782,
+     0.8438114523887634
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0009887413907563314,
+     "s1": 0.04185417154803872,
+     "s2": 0.0018984379712492228,
+     "u": 0.07385423412779346,
+     "none": 0.881404459476471
+    }
+   },
+   "v2_null": {
+    "s_run": -4.875,
+    "s_ctrl": -4.5,
+    "ctrl": [
+     5.84,
+     9.879999999999999
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "liquid",
+     "pump"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08576954156160355,
+     0.13369011878967285,
+     0.10660713911056519,
+     0.14464548230171204,
+     0.08576954156160355,
+     0.13369011878967285,
+     0.10660713911056519,
+     0.14464548230171204,
+     0.08576954156160355,
+     0.13369011878967285,
+     0.10660713911056519,
+     0.14464548230171204,
+     0.19386525452136993
+    ]
+   }
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 6.24,
+   "end": 10.36,
+   "cut_start": 6.24,
+   "cut_end": 10.36,
+   "run_len": 4.119999999999999,
+   "peak": 0.7890625,
+   "depictable": true,
+   "run_start": 6.24,
+   "run_end": 10.36,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Guitar amplifier",
+   "v1_x_options": [
+    "insect",
+    "snake",
+    "thump, thud"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "effects unit",
+    "whoosh, swoosh, swish",
+    "chewing, mastication"
+   ],
+   "v1_null_source": "cousins",
+   "run_audio": [
+    5.24,
+    11.36
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    10.36,
+    16.479999999999997
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    3.24,
+    13.36
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9832172393798828,
+     0.0010159560479223728,
+     0.00029107631416991353,
+     0.0045531997457146645,
+     0.010922557674348354
+    ],
+    "probs_XatD": [
+     0.0024700365029275417,
+     6.582423520740122e-05,
+     0.0004292279772926122,
+     0.9964838027954102,
+     0.0005511395866051316
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9898505210876465,
+     "s1": 0.0017429962754249573,
+     "s2": 0.00017845027468865737,
+     "u": 0.0024912138615036383,
+     "none": 0.005736848630476743
+    }
+   },
+   "v2_x": {
+    "s_run": 5.75,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 3.24
+   },
+   "v4_text": "Bird\nTap\nAssistant\nBird\nTap\nAssistant\nBird\nTap\nAssistant\nBird\nTap\nAssistant\nBird\nTap\nAssistant\nBird\nTap\nAssistant\nBird\nTap\nAssistant\nBird",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "Bird",
+     "Bird",
+     "Bird",
+     "Bird",
+     "Bird",
+     "Bird",
+     "Bird",
+     "Bird"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896,
+     0.2711508572101593,
+     0.24186354875564575,
+     1.0000001192092896
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.000611394876614213,
+     0.0014666600618511438,
+     0.01786757819354534,
+     0.004517631605267525,
+     0.9755367040634155
+    ],
+    "probs_XatD": [
+     0.0008512095082551241,
+     0.031941402703523636,
+     0.1431514173746109,
+     0.000276347273029387,
+     0.8237796425819397
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0004438710748218,
+     "s1": 0.001158934785053134,
+     "s2": 0.02490449044853449,
+     "u": 0.07383452448993921,
+     "none": 0.8996581733226776
+    }
+   },
+   "v2_null": {
+    "s_run": -7.125,
+    "s_ctrl": -8.0,
+    "ctrl": [
+     10.36,
+     16.479999999999997
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "guitar amplifier",
+     "sound equipment"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972,
+     0.13810312747955322,
+     0.17989827692508698,
+     0.0903170183300972
+    ]
+   }
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 10.76,
+   "end": 11.399999999999999,
+   "cut_start": 10.4,
+   "cut_end": 11.4,
+   "run_len": 0.6399999999999988,
+   "peak": 0.70703125,
+   "depictable": true,
+   "run_start": 10.76,
+   "run_end": 11.399999999999999,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Snoring",
+   "v1_x_options": [
+    "roaring cats (lions, tigers)",
+    "snake",
+    "guitar amplifier"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "wheeze",
+    "snort",
+    "splinter"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    9.4,
+    12.4
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    7.4,
+    10.4
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    7.76,
+    14.399999999999999
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9947163462638855,
+     1.2938571671838872e-05,
+     4.5160053559811786e-05,
+     5.741455879615387e-06,
+     0.005219792481511831
+    ],
+    "probs_XatD": [
+     4.539264045888558e-05,
+     8.938341125031002e-06,
+     2.1441965145641007e-05,
+     0.9998394250869751,
+     8.480461110593751e-05
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9972778856754303,
+     "s1": 2.9165606065362226e-05,
+     "s2": 2.7049197342421394e-05,
+     "u": 1.3591710512628197e-05,
+     "none": 0.0026522985463088844
+    }
+   },
+   "v2_x": {
+    "s_run": 5.75,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 7.76
+   },
+   "v4_text": "Bird vocalization - bird call - bird song\nWhip\nAssistant\nBird vocalization - bird call - bird song\nWhip\nAssistant\nBird vocalization - bird call - bird song\nWhip\nAssistant\nBird vocalization - bird call - bird song",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "Bird vocalization - bird call - bird song",
+     "Bird vocalization - bird call - bird song",
+     "Bird vocalization - bird call - bird song",
+     "Bird vocalization - bird call - bird song"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5890448689460754,
+     0.1604035496711731,
+     0.24186359345912933,
+     0.5890448689460754,
+     0.1604035496711731,
+     0.24186359345912933,
+     0.5890448689460754,
+     0.1604035496711731,
+     0.24186359345912933,
+     0.5890448689460754
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.00040104315849021077,
+     0.0007492472650483251,
+     0.06744509190320969,
+     0.00035391937126405537,
+     0.931050717830658
+    ],
+    "probs_XatD": [
+     0.0011335407616570592,
+     0.02579926885664463,
+     0.003956445958465338,
+     0.0010003461502492428,
+     0.9681104421615601
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0007006946543697268,
+     "s1": 0.0009413940133526921,
+     "s2": 0.04662218037992716,
+     "u": 0.0021551826648646966,
+     "none": 0.949580579996109
+    }
+   },
+   "v2_null": {
+    "s_run": -7.0,
+    "s_ctrl": -4.125,
+    "ctrl": [
+     7.4,
+     10.4
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "breathing",
+     "snoring"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2005152553319931,
+     0.14773082733154297,
+     0.1368521898984909,
+     0.2005152553319931,
+     0.14773082733154297,
+     0.1368521898984909,
+     0.2005152553319931,
+     0.14773082733154297,
+     0.1368521898984909,
+     0.2005152553319931
+    ]
+   }
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 14.68,
+   "end": 15.319999999999999,
+   "cut_start": 14.68,
+   "cut_end": 15.68,
+   "run_len": 0.6399999999999988,
+   "peak": 0.74609375,
+   "depictable": true,
+   "run_start": 14.68,
+   "run_end": 15.319999999999999,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Dial tone",
+   "v1_x_options": [
+    "dog",
+    "frog",
+    "snoring"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "telephone",
+    "busy signal",
+    "turkey"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    13.68,
+    16.68
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    11.68,
+    14.68
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    11.68,
+    18.32
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9980599284172058,
+     5.411728579929331e-06,
+     6.132292128313566e-06,
+     1.756931169438758e-06,
+     0.0019267089664936066
+    ],
+    "probs_XatD": [
+     1.994712420128053e-06,
+     1.2098541901650606e-06,
+     5.368695497054432e-07,
+     0.9999892711639404,
+     6.96223014529096e-06
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9990245997905731,
+     "s1": 3.703220500028692e-06,
+     "s2": 3.671073159239313e-06,
+     "u": 1.1469003595721006e-06,
+     "none": 0.0009668355983194488
+    }
+   },
+   "v2_x": {
+    "s_run": 7.125,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 11.68
+   },
+   "v4_text": "Birdsong\n by the same person\n by the same person\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong\nBirdsong",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5849548578262329,
+     0.10509679466485977,
+     0.10509679466485977,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329,
+     0.5849548578262329
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0001499537320341915,
+     7.083312084432691e-05,
+     0.000218181376112625,
+     0.8351167440414429,
+     0.1644442230463028
+    ],
+    "probs_XatD": [
+     0.00021356801153160632,
+     0.0001884730882011354,
+     0.43755394220352173,
+     0.00021356801153160632,
+     0.5618304014205933
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     35,
+     36
+    ],
+    "p": {
+     "X": 0.0001817608717828989,
+     "s1": 0.00014220056618796661,
+     "s2": 0.0002033272321568802,
+     "u": 0.6363353431224823,
+     "none": 0.36313731223344803
+    }
+   },
+   "v2_null": {
+    "s_run": -7.5,
+    "s_ctrl": -7.875,
+    "ctrl": [
+     11.68,
+     14.68
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "dial tone",
+     "telephone"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2232317477464676,
+     0.14054226875305176,
+     0.14054226875305176,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676,
+     0.2232317477464676
+    ]
+   }
+  },
+  {
+   "clip": "bell_miami",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 10.0,
+   "end": 15.559999999999999,
+   "cut_start": 10.0,
+   "cut_end": 15.559999999999999,
+   "run_len": 5.559999999999999,
+   "peak": 0.68212890625,
+   "depictable": true,
+   "run_start": 10.0,
+   "run_end": 15.559999999999999,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Snap",
+   "v1_x_options": [
+    "wood",
+    "alarm",
+    "chewing, mastication"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "door",
+    "squish",
+    "gasp"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    9.0,
+    15.5936875
+   ],
+   "v2_x_ctrl": [
+    3.4,
+    9.9936875
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    3.4,
+    9.9936875
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    7.0,
+    15.5936875
+   ],
+   "accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.04637186601758003,
+     0.00013024904183112085,
+     0.9314038753509521,
+     0.00018951123638544232,
+     0.02190452069044113
+    ],
+    "probs_XatD": [
+     0.00028859314625151455,
+     0.591264009475708,
+     0.0012933847028762102,
+     0.316480815410614,
+     0.09067327529191971
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     34,
+     33
+    ],
+    "p": {
+     "X": 0.18142634071409702,
+     "s1": 0.0002094210940413177,
+     "s2": 0.7613339424133301,
+     "u": 0.0007414479696308263,
+     "none": 0.05628889799118042
+    }
+   },
+   "v2_x": {
+    "s_run": 0.75,
+    "s_ctrl": -2.5,
+    "ctrl": [
+     3.4,
+     9.9936875
+    ]
+   },
+   "v3_x": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_text": "Bell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell\nAssistant\nBell",
+   "v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022,
+     0.31576481461524963,
+     0.18849541246891022
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.00043044963967986405,
+     0.00012332588084973395,
+     7.48009406379424e-05,
+     5.1409879233688116e-05,
+     0.9993200302124023
+    ],
+    "probs_XatD": [
+     0.00043044958147220314,
+     7.480092608602718e-05,
+     0.0001088347053155303,
+     6.601158384000883e-05,
+     0.9993199110031128
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.00024823061175993644,
+     "s1": 0.00027688773116096854,
+     "s2": 7.480093336198479e-05,
+     "u": 8.012229227460921e-05,
+     "none": 0.9993199706077576
+    }
+   },
+   "v2_null": {
+    "s_run": -4.375,
+    "s_ctrl": -5.875,
+    "ctrl": [
+     3.4,
+     9.9936875
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "onomatopoeia",
+     "snap",
+     "wood"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301,
+     0.14682906866073608,
+     0.2360633909702301
+    ]
+   }
+  },
+  {
+   "clip": "birds_forest",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 0.52,
+   "end": 6.36,
+   "cut_start": 0.52,
+   "cut_end": 6.36,
+   "run_len": 5.84,
+   "peak": 0.70849609375,
+   "depictable": true,
+   "run_start": 0.52,
+   "run_end": 6.36,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Crowd",
+   "v1_x_options": [
+    "snake",
+    "rodents, rats, mice",
+    "electronic tuner"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "children playing",
+    "booing",
+    "busy signal"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    0.0,
+    7.36
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    6.36,
+    13.72
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    9.36
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9984838366508484,
+     8.385409273614641e-06,
+     4.216448360239156e-06,
+     2.4024598133109976e-06,
+     0.0015011596260592341
+    ],
+    "probs_XatD": [
+     7.888855179771781e-06,
+     1.9946151041949634e-06,
+     4.222600182401948e-06,
+     0.9999405145645142,
+     4.539723158814013e-05
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9992121756076813,
+     "s1": 8.137132226693211e-06,
+     "s2": 3.1055317322170595e-06,
+     "u": 3.3125299978564726e-06,
+     "none": 0.0007732784288236871
+    }
+   },
+   "v2_x": {
+    "s_run": 6.375,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Birdsong\nCockcrow\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5849549174308777,
+     0.5008142590522766,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194,
+     0.1735834777355194
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     1.300690109928837e-05,
+     6.144025064713787e-06,
+     7.889083462941926e-06,
+     3.5007599308300996e-06,
+     0.999969482421875
+    ],
+    "probs_XatD": [
+     5.143786620465107e-05,
+     4.539375731837936e-05,
+     3.119864413747564e-05,
+     7.888251275289804e-06,
+     0.9998639822006226
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 1.0447576187289087e-05,
+     "s1": 2.879094563468243e-05,
+     "s2": 2.6641420390660642e-05,
+     "u": 1.734970203415287e-05,
+     "none": 0.9999167323112488
+    }
+   },
+   "v2_null": {
+    "s_run": -8.375,
+    "s_ctrl": -9.125,
+    "ctrl": [
+     6.36,
+     13.72
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.25746995210647583,
+     0.18189288675785065,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186,
+     0.10153281688690186
+    ]
+   }
+  },
+  {
+   "clip": "birds_forest",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 15.48,
+   "end": 18.0,
+   "cut_start": 15.48,
+   "cut_end": 18.0,
+   "run_len": 2.5199999999999996,
+   "peak": 0.70751953125,
+   "depictable": true,
+   "run_start": 15.48,
+   "run_end": 18.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Hands",
+   "v1_x_options": [
+    "frog",
+    "insect",
+    "hair dryer"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "heart sounds, heartbeat",
+    "whistling",
+    "owl"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    14.48,
+    18.00025
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    11.92,
+    15.44025
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    12.48,
+    18.00025
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9911613464355469,
+     5.099015834275633e-05,
+     0.00020166998729109764,
+     1.0688117981771939e-05,
+     0.008575226180255413
+    ],
+    "probs_XatD": [
+     7.4832743848674e-05,
+     3.534848292474635e-05,
+     2.1439938791445456e-05,
+     0.9997449517250061,
+     0.00012337832595221698
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9954531490802765,
+     "s1": 6.291145109571517e-05,
+     "s2": 0.000118509235107922,
+     "u": 1.6064028386608697e-05,
+     "none": 0.004349302253103815
+    }
+   },
+   "v2_x": {
+    "s_run": 6.0,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 12.48
+   },
+   "v4_text": "Birdsong\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson\nson",
+   "v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5849549174308777,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535,
+     0.29221367835998535
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0002594446996226907,
+     0.005904933903366327,
+     0.000549244461581111,
+     0.0002289591502631083,
+     0.9930572509765625
+    ],
+    "probs_XatD": [
+     0.025907492265105247,
+     0.0005376928602345288,
+     0.001289858017116785,
+     9.343700367026031e-05,
+     0.9721714854240417
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0001764408516464755,
+     "s1": 0.015906213084235787,
+     "s2": 0.0005434686609078199,
+     "u": 0.0007594085836899467,
+     "none": 0.9826143682003021
+    }
+   },
+   "v2_null": {
+    "s_run": -6.0,
+    "s_ctrl": -6.0,
+    "ctrl": [
+     11.92,
+     15.44025
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "clapping",
+     "finger snapping",
+     "hands"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.158204585313797,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885,
+     0.2146865874528885
+    ]
+   }
+  },
+  {
+   "clip": "london_protest_01",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 0.04,
+   "end": 11.12,
+   "cut_start": 0.04,
+   "cut_end": 11.12,
+   "run_len": 11.08,
+   "peak": 0.7958984375,
+   "depictable": true,
+   "run_start": 0.04,
+   "run_end": 11.12,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Digestive",
+   "v1_x_options": [
+    "booing",
+    "children playing",
+    "power windows, electric windows"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "heart sounds, heartbeat",
+    "hands",
+    "effects unit"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    0.0,
+    11.132625
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": null,
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    11.132625
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.880286455154419,
+     0.0003346223966218531,
+     0.0001791104587027803,
+     6.589105760212988e-05,
+     0.11913381516933441
+    ],
+    "probs_XatD": [
+     0.00017814236343838274,
+     3.507831206661649e-05,
+     0.00010804881458170712,
+     0.9921038150787354,
+     0.007574805989861488
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9361951351165771,
+     "s1": 0.00025638238003011793,
+     "s2": 0.0001070943853846984,
+     "u": 8.69699360919185e-05,
+     "none": 0.06335431057959795
+    }
+   },
+   "v2_x": {
+    "s_run": 6.0,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Air horn\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.22383640706539154,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.00013973422755952924,
+     0.00043041168828494847,
+     0.00013973422755952924,
+     5.824988693348132e-05,
+     0.9992319345474243
+    ],
+    "probs_XatD": [
+     0.0004876853490713984,
+     0.00010881730850087479,
+     0.00020329748804215342,
+     4.00316457671579e-05,
+     0.9991601705551147
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 8.988293666334357e-05,
+     "s1": 0.0004590485186781734,
+     "s2": 0.00012427576803020202,
+     "u": 0.00013077368748781737,
+     "none": 0.9991960525512695
+    }
+   },
+   "v2_null": {
+    "s_run": -5.25,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "biting",
+     "burping",
+     "chewing",
+     "digestive",
+     "eructation",
+     "fart",
+     "gargling",
+     "hiccup",
+     "mastication",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.12366067618131638,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922,
+     0.2384319305419922
+    ]
+   }
+  },
+  {
+   "clip": "mv_detective_crime_scene",
+   "pool": "P2",
+   "family": "Sigh",
+   "label": "Sigh",
+   "start": 2.08,
+   "end": 3.52,
+   "cut_start": 2.08,
+   "cut_end": 3.52,
+   "run_len": 1.44,
+   "peak": 0.7802734375,
+   "depictable": true,
+   "run_start": 2.08,
+   "run_end": 3.52,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Tinnitus, ringing in the ears",
+   "v1_x_options": [
+    "laughter",
+    "yawn",
+    "power windows, electric windows"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "crowd",
+    "crying, sobbing",
+    "toothbrush"
+   ],
+   "v1_null_source": "cousins",
+   "run_audio": [
+    1.08,
+    4.52
+   ],
+   "v2_x_ctrl": [
+    3.56,
+    7.0
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    3.52,
+    6.959999999999999
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    6.52
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": false,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.8469943404197693,
+     0.0003219670907128602,
+     0.1298907846212387,
+     0.0002212844992754981,
+     0.022571634501218796
+    ],
+    "probs_XatD": [
+     0.00011490351607790217,
+     0.059521496295928955,
+     0.0012353291967883706,
+     0.9310728311538696,
+     0.008055358193814754
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.8890335857868195,
+     "s1": 0.0002184353033953812,
+     "s2": 0.09470614045858383,
+     "u": 0.0007283068480319344,
+     "none": 0.015313496347516775
+    }
+   },
+   "v2_x": {
+    "s_run": 5.75,
+    "s_ctrl": -2.75,
+    "ctrl": [
+     3.56,
+     7.0
+    ]
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Sigh\nBeep\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't\n't",
+   "v4_x": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [
+     "Sigh"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0000001192092896,
+     0.21399958431720734,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955,
+     0.33070120215415955
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.5303434729576111,
+     6.148419925011694e-05,
+     0.0014896257780492306,
+     7.894726877566427e-05,
+     0.4680264890193939
+    ],
+    "probs_XatD": [
+     0.00019903604697901756,
+     0.0035279986914247274,
+     0.0006130742258392274,
+     0.132387176156044,
+     0.8632727861404419
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     36
+    ],
+    "p": {
+     "X": 0.33136532455682755,
+     "s1": 0.00013026012311456725,
+     "s2": 0.002508812234736979,
+     "u": 0.00034601074730744585,
+     "none": 0.6656496375799179
+    }
+   },
+   "v2_null": {
+    "s_run": -2.25,
+    "s_ctrl": 1.125,
+    "ctrl": [
+     3.52,
+     6.959999999999999
+    ]
+   },
+   "v3_null": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_null": {
+    "names": [
+     "otoacoustic emission",
+     "ringing in the ears",
+     "tinnitus"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1044725626707077,
+     0.2525613605976105,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204,
+     0.0834147185087204
+    ]
+   }
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "pool": "P2",
+   "family": "Baby cry, infant cry",
+   "label": "Baby cry, infant cry",
+   "start": 3.64,
+   "end": 4.64,
+   "cut_start": 3.44,
+   "cut_end": 4.4399999999999995,
+   "run_len": 0.9999999999999996,
+   "peak": 0.576171875,
+   "depictable": true,
+   "run_start": 3.64,
+   "run_end": 4.64,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Cattle",
+   "v1_x_options": [
+    "whimper",
+    "chuckle, chortle",
+    "ratchet, pawl"
+   ],
+   "v1_x_source": "cousins",
+   "v1_null_options": [
+    "sheep",
+    "horse",
+    "biting"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    2.44,
+    5.4399999999999995
+   ],
+   "v2_x_ctrl": [
+    0.44,
+    3.4399999999999995
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    0.44,
+    3.4399999999999995
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.6400000000000001,
+    7.64
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": true,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.9737855195999146,
+     0.00017485312127973884,
+     3.90150016755797e-05,
+     5.0096259656129405e-05,
+     0.02595050446689129
+    ],
+    "probs_XatD": [
+     3.533333438099362e-05,
+     1.2998406418773811e-05,
+     8.933665412769187e-06,
+     0.9993164539337158,
+     0.0006262982496991754
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9865509867668152,
+     "s1": 0.00010509322783036623,
+     "s2": 2.6006704047176754e-05,
+     "u": 2.9514962534449296e-05,
+     "none": 0.013288401358295232
+    }
+   },
+   "v2_x": {
+    "s_run": 6.125,
+    "s_ctrl": -1.625,
+    "ctrl": [
+     0.44,
+     3.4399999999999995
+    ]
+   },
+   "v3_x": {
+    "text": "3.0\nAssistant",
+    "t_rel": 3.0,
+    "t_clip": 3.64
+   },
+   "v4_text": "Sheep bleating\nMetal clank\nAssistant\nSheep bleating\nMetal clank\nAssistant\nSheep bleating\nAssistant\nSheep bleating\nAssistant\nSheep bleating\nAssistant\nSheep bleating",
+   "v4_x": {
+    "names": [
+     "baby cry",
+     "crying",
+     "infant cry",
+     "sobbing"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.36477312445640564,
+     0.28032633662223816,
+     0.08645995706319809,
+     0.36477312445640564,
+     0.28032633662223816,
+     0.08645995706319809,
+     0.36477312445640564,
+     0.08645995706319809,
+     0.36477312445640564,
+     0.08645995706319809,
+     0.36477312445640564,
+     0.08645995706319809,
+     0.36477312445640564
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.023465126752853394,
+     0.7770582437515259,
+     0.002802509581670165,
+     0.00020301309996284544,
+     0.19647109508514404
+    ],
+    "probs_XatD": [
+     0.8655052781105042,
+     0.00013714910892304033,
+     0.0006146596861071885,
+     0.001013402477838099,
+     0.13272954523563385
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     33,
+     32
+    ],
+    "p": {
+     "X": 0.012239264615345746,
+     "s1": 0.821281760931015,
+     "s2": 0.0014698293452966027,
+     "u": 0.00040883639303501695,
+     "none": 0.16460032016038895
+    }
+   },
+   "v2_null": {
+    "s_run": 2.0,
+    "s_ctrl": -1.625,
+    "ctrl": [
+     0.44,
+     3.4399999999999995
+    ]
+   },
+   "v3_null": {
+    "text": "3.0\nAssistant",
+    "t_rel": 3.0,
+    "t_clip": 3.64
+   },
+   "v4_null": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "cowbell",
+     "farm animals",
+     "livestock",
+     "moo",
+     "working animals",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.39742597937583923,
+     0.22784839570522308,
+     0.18012790381908417,
+     0.39742597937583923,
+     0.22784839570522308,
+     0.18012790381908417,
+     0.39742597937583923,
+     0.18012790381908417,
+     0.39742597937583923,
+     0.18012790381908417,
+     0.39742597937583923,
+     0.18012790381908417,
+     0.39742597937583923
+    ]
+   }
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "pool": "P2",
+   "family": "Crying, sobbing",
+   "label": "Crying, sobbing",
+   "start": 3.64,
+   "end": 4.64,
+   "cut_start": 3.5199999999999996,
+   "cut_end": 4.52,
+   "run_len": 0.9999999999999996,
+   "peak": 0.68505859375,
+   "depictable": true,
+   "run_start": 3.64,
+   "run_end": 4.64,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Spray",
+   "v1_x_options": [
+    "grunt",
+    "screaming",
+    "duck call (hunting tool)"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "pump (liquid)",
+    "squish",
+    "baby cry, infant cry"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    2.5199999999999996,
+    5.52
+   ],
+   "v2_x_ctrl": [
+    4.76,
+    7.76
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    0.52,
+    3.52
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.6400000000000001,
+    7.64
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": true,
+    "V4": false
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.5463981628417969,
+     0.00043970465776510537,
+     0.003681601956486702,
+     0.07394695281982422,
+     0.3755336105823517
+    ],
+    "probs_XatD": [
+     0.0018153950804844499,
+     0.0005201193853281438,
+     0.010446878150105476,
+     0.9403979182243347,
+     0.04681965336203575
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.7433980405330658,
+     "s1": 0.0011275498691247776,
+     "s2": 0.002100860670907423,
+     "u": 0.04219691548496485,
+     "none": 0.21117663197219372
+    }
+   },
+   "v2_x": {
+    "s_run": 3.25,
+    "s_ctrl": -3.25,
+    "ctrl": [
+     4.76,
+     7.76
+    ]
+   },
+   "v3_x": {
+    "text": "3.0\nAssistant",
+    "t_rel": 3.0,
+    "t_clip": 3.64
+   },
+   "v4_text": "Sheep bleating\nMetal gate slamming shut\nAssistant\nSheep bleating\nMetal gate slamming shut\nAssistant\nSheep bleating\nMetal gate slamming shut\nAssistant\nSheep bleating\nMetal gate slamming shut\nAssistant\nSheep bleating",
+   "v4_x": {
+    "names": [
+     "baby cry",
+     "crying",
+     "human voice",
+     "infant cry",
+     "sobbing",
+     "whimper"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3735409080982208,
+     0.15626533329486847,
+     0.17072993516921997,
+     0.3735409080982208,
+     0.15626533329486847,
+     0.17072993516921997,
+     0.3735409080982208,
+     0.15626533329486847,
+     0.17072993516921997,
+     0.3735409080982208,
+     0.15626533329486847,
+     0.17072993516921997,
+     0.3735409080982208
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0003344617143739015,
+     0.0004294573445804417,
+     0.0002951614442281425,
+     0.9970163106918335,
+     0.0019246942829340696
+    ],
+    "probs_XatD": [
+     5.1421990065136924e-05,
+     6.602713983738795e-05,
+     0.9995554089546204,
+     3.118901440757327e-05,
+     0.000295913137961179
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     35,
+     34
+    ],
+    "p": {
+     "X": 0.00018282536439073738,
+     "s1": 0.00024043966732278932,
+     "s2": 0.00018059429203276522,
+     "u": 0.9982858598232269,
+     "none": 0.0011103037104476243
+    }
+   },
+   "v2_null": {
+    "s_run": 0.0,
+    "s_ctrl": -3.25,
+    "ctrl": [
+     0.52,
+     3.52
+    ]
+   },
+   "v3_null": {
+    "text": "4.1\nust",
+    "t_rel": 4.1,
+    "t_clip": 4.74
+   },
+   "v4_null": {
+    "names": [
+     "liquid",
+     "spray"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.22982347011566162,
+     0.013655981980264187,
+     0.23032958805561066,
+     0.22982347011566162,
+     0.013655981980264187,
+     0.23032958805561066,
+     0.22982347011566162,
+     0.013655981980264187,
+     0.23032958805561066,
+     0.22982347011566162,
+     0.013655981980264187,
+     0.23032958805561066,
+     0.22982347011566162
+    ]
+   }
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "pool": "P2",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 20.16,
+   "end": 21.16,
+   "cut_start": 20.16,
+   "cut_end": 21.16,
+   "run_len": 1.0,
+   "peak": 0.65576171875,
+   "depictable": true,
+   "run_start": 20.16,
+   "run_end": 21.16,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Stir",
+   "v1_x_options": [
+    "alarm",
+    "vehicle",
+    "grunt"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "spray",
+    "splash, splatter",
+    "squawk"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    19.16,
+    22.16
+   ],
+   "v2_x_ctrl": [
+    10.0,
+    13.0
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    17.16,
+    20.16
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    17.16,
+    24.0
+   ],
+   "accept": {
+    "V1": false,
+    "V2": true,
+    "V12": false,
+    "V3": true,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.2622944712638855,
+     0.0002710282278712839,
+     0.002913828007876873,
+     0.7129902243614197,
+     0.02153044007718563
+    ],
+    "probs_XatD": [
+     0.0016037308378145099,
+     0.0038471498992294073,
+     0.3463093936443329,
+     0.5709676742553711,
+     0.07727207243442535
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     35,
+     35
+    ],
+    "p": {
+     "X": 0.4166310727596283,
+     "s1": 0.0009373795328428969,
+     "s2": 0.00338048895355314,
+     "u": 0.5296498090028763,
+     "none": 0.04940125625580549
+    }
+   },
+   "v2_x": {
+    "s_run": 5.375,
+    "s_ctrl": -3.125,
+    "ctrl": [
+     10.0,
+     13.0
+    ]
+   },
+   "v3_x": {
+    "text": "2.5\nAssistant",
+    "t_rel": 2.5,
+    "t_clip": 19.66
+   },
+   "v4_text": "Explosion\nGunfire\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith",
+   "v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "Explosion",
+     "Gunfire"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.9999999403953552,
+     0.5122388601303101,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.00015426646859850734,
+     0.00025434239068999887,
+     0.9735276103019714,
+     0.00012014284584438428,
+     0.025943631306290627
+    ],
+    "probs_XatD": [
+     0.00046418028068728745,
+     0.9510034322738647,
+     0.0011135104577988386,
+     7.118435314623639e-05,
+     0.047347668558359146
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     34,
+     33
+    ],
+    "p": {
+     "X": 0.00011272541087237187,
+     "s1": 0.00035926133568864316,
+     "s2": 0.9622655212879181,
+     "u": 0.0006168266518216114,
+     "none": 0.036645649932324886
+    }
+   },
+   "v2_null": {
+    "s_run": -3.25,
+    "s_ctrl": -2.0,
+    "ctrl": [
+     17.16,
+     20.16
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant\nnone",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "liquid",
+     "stir"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3281307816505432,
+     0.2148815095424652,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454,
+     0.23494334518909454
+    ]
+   }
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.12,
+   "end": 10.0,
+   "cut_start": 0.12,
+   "cut_end": 10.0,
+   "run_len": 9.88,
+   "peak": 0.60888671875,
+   "depictable": true,
+   "run_start": 0.12,
+   "run_end": 10.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Donkey, ass",
+   "v1_x_options": [
+    "water",
+    "explosion",
+    "roar"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "sheep",
+    "bird",
+    "water"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "v2_x_ctrl": [
+    10.0,
+    21.0
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    10.0,
+    21.0
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    13.0
+   ],
+   "accept": {
+    "V1": true,
+    "V2": true,
+    "V12": true,
+    "V3": true,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.845369815826416,
+     0.06123838573694229,
+     0.01754509098827839,
+     0.0064544775523245335,
+     0.06939218193292618
+    ],
+    "probs_XatD": [
+     0.21302101016044617,
+     0.0014353242004290223,
+     0.009359490126371384,
+     0.7435163259506226,
+     0.03266783058643341
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.7944430708885193,
+     "s1": 0.13712969794869423,
+     "s2": 0.009490207594353706,
+     "u": 0.007906983839347959,
+     "none": 0.051030006259679794
+    }
+   },
+   "v2_x": {
+    "s_run": 4.5,
+    "s_ctrl": 1.125,
+    "ctrl": [
+     10.0,
+     21.0
+    ]
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Siren\nVehicle engine\no\no\no\no\no\no\no\no\no\no\no\no\no",
+   "v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "Vehicle engine"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.30462610721588135,
+     0.7188417315483093,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279,
+     0.2512577474117279
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.002790546277537942,
+     0.0002941214188467711,
+     0.0014936717925593257,
+     0.7737411260604858,
+     0.22168055176734924
+    ],
+    "probs_XatD": [
+     5.039108873461373e-05,
+     6.470343214459717e-05,
+     0.9795164465904236,
+     3.924461270798929e-05,
+     0.02032921463251114
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     35,
+     34
+    ],
+    "p": {
+     "X": 0.0014148954451229656,
+     "s1": 0.00017225625379069243,
+     "s2": 0.0007791876123519614,
+     "u": 0.8766287863254547,
+     "none": 0.12100488319993019
+    }
+   },
+   "v2_null": {
+    "s_run": -4.25,
+    "s_ctrl": -4.25,
+    "ctrl": [
+     10.0,
+     21.0
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "ass",
+     "donkey",
+     "farm animals",
+     "livestock",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2392241507768631,
+     0.13572359085083008,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127,
+     0.19379225373268127
+    ]
+   }
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 0.16,
+   "end": 17.0,
+   "cut_start": 0.16,
+   "cut_end": 17.0,
+   "run_len": 16.84,
+   "peak": 0.77734375,
+   "depictable": true,
+   "run_start": 0.16,
+   "run_end": 17.0,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Whale vocalization",
+   "v1_x_options": [
+    "clapping",
+    "booing",
+    "cooking"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "bird",
+    "dog",
+    "children playing"
+   ],
+   "v1_null_source": "siblings",
+   "run_audio": [
+    0.0,
+    17.0
+   ],
+   "v2_x_ctrl": null,
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": null,
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    0.0,
+    17.0
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.988973081111908,
+     7.802329491823912e-06,
+     2.7232808861299418e-05,
+     5.362457613955485e-06,
+     0.01098649948835373
+    ],
+    "probs_XatD": [
+     7.888309482950717e-06,
+     2.901947254940751e-06,
+     8.938626706367359e-06,
+     0.9998713731765747,
+     0.00010889476834563538
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.9944222271442413,
+     "s1": 7.845319487387314e-06,
+     "s2": 1.5067378058120084e-05,
+     "u": 7.150542160161422e-06,
+     "none": 0.005547697128349682
+    }
+   },
+   "v2_x": {
+    "s_run": 6.5,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_x": {
+    "text": "0.0\nAssistant",
+    "t_rel": 0.0,
+    "t_clip": 0.0
+   },
+   "v4_text": "Gunshot\nCrowd noise\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [
+     "Crowd noise"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.2822932004928589,
+     0.8171974420547485,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105,
+     0.11000945419073105
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.001324285170994699,
+     0.00023012625752016902,
+     0.000203085714019835,
+     0.00012317771324887872,
+     0.9981192946434021
+    ],
+    "probs_XatD": [
+     0.00023039492953103036,
+     0.00012332151527516544,
+     0.00015834796067792922,
+     0.000203322822926566,
+     0.9992846846580505
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0007638039969606325,
+     "s1": 0.0002302605935255997,
+     "s2": 0.00016320361464750022,
+     "u": 0.00014076283696340397,
+     "none": 0.9987019896507263
+    }
+   },
+   "v2_null": {
+    "s_run": -4.875,
+    "s_ctrl": null,
+    "ctrl": null
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "whale vocalization",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27257782220840454,
+     0.35939085483551025,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195,
+     0.18885453045368195
+    ]
+   }
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "pool": "P2",
+   "family": "Typing",
+   "label": "Typing",
+   "start": 10.32,
+   "end": 11.719999999999999,
+   "cut_start": 10.32,
+   "cut_end": 11.719999999999999,
+   "run_len": 1.3999999999999986,
+   "peak": 0.6376953125,
+   "depictable": true,
+   "run_start": 10.32,
+   "run_end": 11.719999999999999,
+   "variants": [
+    "V1",
+    "V2",
+    "V3",
+    "V4"
+   ],
+   "source": "K2 (covered by a sub-display BEATs span)",
+   "null_family": "Quack",
+   "v1_x_options": [
+    "blender",
+    "hair dryer",
+    "children playing"
+   ],
+   "v1_x_source": "siblings",
+   "v1_null_options": [
+    "bird",
+    "gobble",
+    "belly laugh"
+   ],
+   "v1_null_source": "cousins",
+   "run_audio": [
+    9.32,
+    12.719999999999999
+   ],
+   "v2_x_ctrl": [
+    6.6000000000000005,
+    10.0
+   ],
+   "v2_x_flex_col": true,
+   "v2_null_ctrl": [
+    6.92,
+    10.319999999999999
+   ],
+   "v2_null_flex_col": true,
+   "v3_cut": [
+    7.32,
+    14.719999999999999
+   ],
+   "accept": {
+    "V1": true,
+    "V2": false,
+    "V12": false,
+    "V3": true,
+    "V4": true
+   },
+   "null_accept": {
+    "V1": false,
+    "V2": false,
+    "V12": false,
+    "V3": false,
+    "V4": false
+   },
+   "v1_x": {
+    "probs_XatA": [
+     0.8932242393493652,
+     1.6904719814192504e-05,
+     6.685947300866246e-05,
+     1.1618432836257853e-05,
+     0.10668042302131653
+    ],
+    "probs_XatD": [
+     0.00013815169222652912,
+     8.379323844565079e-05,
+     6.525823846459389e-05,
+     0.6789836287498474,
+     0.32072916626930237
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     32,
+     35
+    ],
+    "p": {
+     "X": 0.7861039340496063,
+     "s1": 7.752820602036081e-05,
+     "s2": 7.532635572715662e-05,
+     "u": 3.843833565042587e-05,
+     "none": 0.21370479464530945
+    }
+   },
+   "v2_x": {
+    "s_run": 1.875,
+    "s_ctrl": -3.875,
+    "ctrl": [
+     6.6000000000000005,
+     10.0
+    ]
+   },
+   "v3_x": {
+    "text": "3.5\nAssistant",
+    "t_rel": 3.5,
+    "t_clip": 10.82
+   },
+   "v4_text": "Typing\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com",
+   "v4_x": {
+    "names": [
+     "computer keyboard",
+     "domestic sounds",
+     "home sounds",
+     "typewriter",
+     "typing"
+    ],
+    "matched_word": [
+     "Typing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469,
+     0.1515587419271469
+    ]
+   },
+   "v1_null": {
+    "probs_XatA": [
+     0.0011667173821479082,
+     0.0005511182826012373,
+     0.0016975639155134559,
+     0.00013934452726971358,
+     0.9964452385902405
+    ],
+    "probs_XatD": [
+     0.0007082129013724625,
+     0.0011676456779241562,
+     0.0003345361037645489,
+     0.0005515567609108984,
+     0.997238039970398
+    ],
+    "top1_letter": [
+     true,
+     true
+    ],
+    "top1_id": [
+     36,
+     36
+    ],
+    "p": {
+     "X": 0.0008591370715294033,
+     "s1": 0.0006296655919868499,
+     "s2": 0.001432604796718806,
+     "u": 0.00023694031551713124,
+     "none": 0.9968416392803192
+    }
+   },
+   "v2_null": {
+    "s_run": -4.125,
+    "s_ctrl": -3.25,
+    "ctrl": [
+     6.92,
+     10.319999999999999
+    ]
+   },
+   "v3_null": {
+    "text": "none\nAssistant: none",
+    "t_rel": null,
+    "t_clip": null
+   },
+   "v4_null": {
+    "names": [
+     "duck",
+     "quack"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21513673663139343,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379,
+     0.09680904448032379
+    ]
+   }
+  }
+ ]
+}

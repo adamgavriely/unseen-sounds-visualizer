@@ -591,3 +591,27 @@ Gates: flags off D0 98/98, conf-equality 98/98, D5 49/49 both systems.
 **Reading.** XQ adds wrong pictures and loses the `birds_forest` Crowing (10.4 s) in every arm. The best AGREE arm is the old
 best round-14 arm with its rule replaced by AGREE_V4 (2.57, Δ −0.20 [−0.57, +0.12]; gains Cricket and the snow-walk
 Laughter); it does not beat TO1+F7F8 (2.45).
+
+### Round 14 amendment K2 re-test with listener answers for the offered runs, DEV, jobs 31562960 (scores) + 31563031 (arms)
+The 27 band runs that K2 newly offers (a same-family BEATs span below the display bar covers them, so they were never in P2;
+list = the arm's own stage-4 log, `data/work/r13/k2_runs.json`) were scored with the amendment-A/C verifiers by importing
+`listener_variants.py` and `listener_afnext.py` unchanged (`benchmark/gold/listener_k2.py`; P2 cut rule; null family by
+`gold_free_null`, the gold-free rule, since these runs are not in the gold-based DEV cache): `dev_listener_k2.json` (Qwen:
+V4 12/27, V12 9/27; nulls V1 1, V3 2, others 0) and `dev_listener_k2_afn.json` (AF V4 19/27, null 0). They are merged at
+lookup (`LISTENER_VCACHE` / `LISTENER_AFCACHE` accept "base;supplement"). Arms K2x = TO1+F7F8 + K2, K2K3x = + K3; 0 missing
+of 539 asked. (First attempt failed in the P1 lookup, which did not split joined paths; fixed, arms re-run; the scores were
+kept.) Gates: D0 98/98, conf-equality 98/98, D5 49/49 both systems.
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible | half A: hits / wrong / Δ | half B: hits / wrong / Δ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| TO1+F7F8 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1F7F8+K2 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1F7F8+K2x | 21 | 18 | 25 (6 / 12 / 7) | 2.49 | -0.29 [-0.82, +0.12] | 1.98 | 16.00 | yes | 9 / 11 / -0.08 [-0.56, +0.32] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1F7F8+K2K3x | 21 | 18 | 26 (6 / 12 / 8) | 2.53 | -0.24 [-0.73, +0.16] | 2.00 | 8.00 | yes | 9 / 12 / +0.00 [-0.48, +0.40] | 9 / 14 / -0.50 [-1.42, +0.17] |
+
+
+**Reading.** With answers, K2 still adds no hit: the offered runs mostly overlap BEATs spans of the same family that already
+give (or miss) the picture; K2x adds 1 phantom (flea-market Vehicle 20.0 s) and swaps a hair-dryer Computer keyboard phantom
+for a Typing one; K2K3x adds 2 more (rainforest Insect 11.24, and a `birds_forest` Bird at 0.52 s, 0.78 s before the needed
+Bird's onset at 1.3 s — the K2 target stays a miss). TO1+F7F8 remains the best round-14 arm.

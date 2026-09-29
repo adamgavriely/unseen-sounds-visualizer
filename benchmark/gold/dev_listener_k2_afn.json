@@ -1,0 +1,2027 @@
+{
+ "_meta": {
+  "amendment": "round 14 C (docs/prereg_round13_detector_push.md)",
+  "split": "dev",
+  "candidates": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_k2.json (all items: P2 peak >= 0.5, PV, P1 depictable conf < 0.6)",
+  "audio": "item run_audio = [cut_start - 1, cut_end + 1] clipped, >= 1 s, from /home/dsi/adamg/MscProj_r13/data/work/devcand/wav16",
+  "V4": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+  "V4_decoding": "greedy (do_sample=False), max_new_tokens 64, no repetition_penalty (the model card example uses 1.2; left out to match the Qwen V4 decoding)",
+  "V4_rule": "some line matches X (listener_variants match_names word match, else all-mpnet-base-v2 cosine > 0.6)",
+  "YN": "Is the sound of {} present in this recording? Answer yes or no.",
+  "YN_score": "max logit over yes ids - max logit over no ids at the first answer position",
+  "chat": "content [audio, text]; the model's chat template inserts its own default system prompt (Audio Flamingo-Next)",
+  "null": "the item's cached null_family on the same cut",
+  "model": "nvidia/audio-flamingo-next-hf",
+  "class": "MusicFlamingoForConditionalGeneration",
+  "processor": "MusicFlamingoProcessor",
+  "transformers": "5.16.1",
+  "yes_ids": [
+   7414,
+   9454,
+   9693,
+   9834
+  ],
+  "no_ids": [
+   902,
+   2152,
+   2308,
+   2753
+  ],
+  "yes_tokens": [
+   " Yes",
+   "Yes",
+   "yes",
+   " yes"
+  ],
+  "no_tokens": [
+   " no",
+   "no",
+   " No",
+   "No"
+  ],
+  "load_seconds": 3.5,
+  "seconds_dev": 5.3
+ },
+ "items": [
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.564453125,
+   "depictable": true,
+   "null_family": "Power tool",
+   "afn_v4_text": "air conditioner",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.347082257270813
+    ]
+   },
+   "afn_yn_x": 1.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "drill",
+     "power tool",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.26014190912246704
+    ]
+   },
+   "afn_yn_null": -0.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "ambient_market_marrakech_3102",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 10.0,
+   "end": 16.0,
+   "run_start": 10.0,
+   "run_end": 16.0,
+   "cut_start": 10.0,
+   "cut_end": 16.0,
+   "run_audio": [
+    9.0,
+    16.0
+   ],
+   "run_len": 6.0,
+   "peak": 0.58544921875,
+   "depictable": true,
+   "null_family": "Sound equipment",
+   "afn_v4_text": "motor vehicle (road), vehicle",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "motor vehicle (road), vehicle"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.7462021112442017
+    ]
+   },
+   "afn_yn_x": 3.6875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "effects unit",
+     "electronic tuner",
+     "guitar amplifier",
+     "microphone",
+     "miscellaneous sources",
+     "sound equipment"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17884697020053864
+    ]
+   },
+   "afn_yn_null": -0.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 7.88,
+   "end": 8.799999999999999,
+   "run_start": 7.88,
+   "run_end": 8.799999999999999,
+   "cut_start": 7.639999999999999,
+   "cut_end": 8.639999999999999,
+   "run_audio": [
+    6.639999999999999,
+    9.639999999999999
+   ],
+   "run_len": 0.919999999999999,
+   "peak": 0.771484375,
+   "depictable": true,
+   "null_family": "Rowboat, canoe, kayak",
+   "afn_v4_text": "bird",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 0.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "boat",
+     "canoe",
+     "kayak",
+     "rowboat",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2206072211265564
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 15.32,
+   "end": 16.0,
+   "run_start": 15.32,
+   "run_end": 16.0,
+   "cut_start": 14.92,
+   "cut_end": 15.92,
+   "run_audio": [
+    13.92,
+    16.0
+   ],
+   "run_len": 0.6799999999999997,
+   "peak": 0.6005859375,
+   "depictable": true,
+   "null_family": "Bellow",
+   "afn_v4_text": "bird",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bellow",
+     "shout"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2593455910682678
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 8.6,
+   "end": 16.0,
+   "run_start": 8.6,
+   "run_end": 16.0,
+   "cut_start": 8.6,
+   "cut_end": 16.0,
+   "run_audio": [
+    7.6,
+    16.0
+   ],
+   "run_len": 7.4,
+   "peak": 0.70263671875,
+   "depictable": true,
+   "null_family": "Hands",
+   "afn_v4_text": "vehicle",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24866974353790283
+    ]
+   },
+   "afn_yn_x": 2.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "clapping",
+     "finger snapping",
+     "hands"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20805835723876953
+    ]
+   },
+   "afn_yn_null": -1.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "pool": "P2",
+   "family": "Train",
+   "label": "Train",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.77490234375,
+   "depictable": true,
+   "null_family": "Turkey",
+   "afn_v4_text": "train",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "clickety-clack",
+     "metro",
+     "rail transport",
+     "railroad car",
+     "subway",
+     "train",
+     "train horn",
+     "train wagon",
+     "train wheels squealing",
+     "train whistle",
+     "underground"
+    ],
+    "matched_word": [
+     "train"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 1.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "fowl",
+     "gobble",
+     "turkey"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19020608067512512
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.5595703125,
+   "depictable": true,
+   "null_family": "Thunder",
+   "afn_v4_text": "train",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4481058120727539
+    ]
+   },
+   "afn_yn_x": 4.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2625415325164795
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "as_glass_oHil9Ip_",
+   "pool": "P2",
+   "family": "Chink, clink",
+   "label": "Chink, clink",
+   "start": 8.96,
+   "end": 9.559999999999999,
+   "run_start": 8.96,
+   "run_end": 9.559999999999999,
+   "cut_start": 8.68,
+   "cut_end": 9.68,
+   "run_audio": [
+    7.68,
+    10.68
+   ],
+   "run_len": 0.5999999999999979,
+   "peak": 0.75146484375,
+   "depictable": true,
+   "null_family": "Sneeze",
+   "afn_v4_text": "coin (dropping), glass, tapping",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "chink",
+     "clink",
+     "glass"
+    ],
+    "matched_word": [
+     "coin (dropping), glass, tapping"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.25315362215042114
+    ]
+   },
+   "afn_yn_x": 2.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "respiratory sounds",
+     "sneeze"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1898253858089447
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 15.88,
+   "end": 17.84,
+   "run_start": 15.88,
+   "run_end": 17.84,
+   "cut_start": 15.88,
+   "cut_end": 17.84,
+   "run_audio": [
+    14.88,
+    18.84
+   ],
+   "run_len": 1.959999999999999,
+   "peak": 0.7021484375,
+   "depictable": true,
+   "null_family": "Wolf-whistling",
+   "afn_v4_text": "siren",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.36841028928756714
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "whistling",
+     "wolf-whistling"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.38297975063323975
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 18.36,
+   "end": 19.0,
+   "run_start": 18.36,
+   "run_end": 19.0,
+   "cut_start": 18.08,
+   "cut_end": 19.08,
+   "run_audio": [
+    17.08,
+    20.08
+   ],
+   "run_len": 0.6400000000000006,
+   "peak": 0.5400390625,
+   "depictable": true,
+   "null_family": "Stir",
+   "afn_v4_text": "bird",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 1.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "liquid",
+     "stir"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.146689310669899
+    ]
+   },
+   "afn_yn_null": -1.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_favela_rio",
+   "pool": "P2",
+   "family": "Footsteps",
+   "label": "Footsteps",
+   "start": 3.96,
+   "end": 4.44,
+   "run_start": 3.96,
+   "run_end": 4.44,
+   "cut_start": 3.5999999999999996,
+   "cut_end": 4.6,
+   "run_audio": [
+    2.5999999999999996,
+    5.6
+   ],
+   "run_len": 0.4800000000000004,
+   "peak": 0.57080078125,
+   "depictable": true,
+   "null_family": "Wail, moan",
+   "afn_v4_text": "bird",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "footsteps",
+     "human locomotion",
+     "run",
+     "shuffle",
+     "walk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15258808434009552
+    ]
+   },
+   "afn_yn_x": 0.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "human voice",
+     "moan",
+     "wail"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.14362333714962006
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_flea_market",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 20.0,
+   "end": 28.0,
+   "run_start": 20.0,
+   "run_end": 28.0,
+   "cut_start": 20.0,
+   "cut_end": 28.0,
+   "run_audio": [
+    19.0,
+    28.0
+   ],
+   "run_len": 8.0,
+   "peak": 0.66064453125,
+   "depictable": true,
+   "null_family": "Engine knocking",
+   "afn_v4_text": "vehicle",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "vehicle"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 3.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "engine",
+     "engine knocking"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.26608532667160034
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 3.8,
+   "end": 5.84,
+   "run_start": 3.8,
+   "run_end": 5.84,
+   "cut_start": 3.8,
+   "cut_end": 5.84,
+   "run_audio": [
+    2.8,
+    6.84
+   ],
+   "run_len": 2.04,
+   "peak": 0.74365234375,
+   "depictable": true,
+   "null_family": "Pump (liquid)",
+   "afn_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird vocalization and bird call and bird song, bird, wild animals, animal"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5099552869796753
+    ]
+   },
+   "afn_yn_x": 2.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "liquid",
+     "pump"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.06200632452964783
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 6.24,
+   "end": 10.36,
+   "run_start": 6.24,
+   "run_end": 10.36,
+   "cut_start": 6.24,
+   "cut_end": 10.36,
+   "run_audio": [
+    5.24,
+    11.36
+   ],
+   "run_len": 4.119999999999999,
+   "peak": 0.7890625,
+   "depictable": true,
+   "null_family": "Guitar amplifier",
+   "afn_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird vocalization and bird call and bird song, bird, wild animals, animal"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5099552869796753
+    ]
+   },
+   "afn_yn_x": 4.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "guitar amplifier",
+     "sound equipment"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.028554048389196396
+    ]
+   },
+   "afn_yn_null": -2.8125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 10.76,
+   "end": 11.399999999999999,
+   "run_start": 10.76,
+   "run_end": 11.399999999999999,
+   "cut_start": 10.4,
+   "cut_end": 11.4,
+   "run_audio": [
+    9.4,
+    12.4
+   ],
+   "run_len": 0.6399999999999988,
+   "peak": 0.70703125,
+   "depictable": true,
+   "null_family": "Snoring",
+   "afn_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal, pop, impact",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird vocalization and bird call and bird song, bird, wild animals, animal, pop, impact"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.4872160851955414
+    ]
+   },
+   "afn_yn_x": 3.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "breathing",
+     "snoring"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19896653294563293
+    ]
+   },
+   "afn_yn_null": -2.6875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 14.68,
+   "end": 15.319999999999999,
+   "run_start": 14.68,
+   "run_end": 15.319999999999999,
+   "cut_start": 14.68,
+   "cut_end": 15.68,
+   "run_audio": [
+    13.68,
+    16.68
+   ],
+   "run_len": 0.6399999999999988,
+   "peak": 0.74609375,
+   "depictable": true,
+   "null_family": "Dial tone",
+   "afn_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird vocalization and bird call and bird song, bird, wild animals, animal"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5099552869796753
+    ]
+   },
+   "afn_yn_x": 3.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "dial tone",
+     "telephone"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1860094517469406
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "bell_miami",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 10.0,
+   "end": 15.559999999999999,
+   "run_start": 10.0,
+   "run_end": 15.559999999999999,
+   "cut_start": 10.0,
+   "cut_end": 15.559999999999999,
+   "run_audio": [
+    9.0,
+    15.5936875
+   ],
+   "run_len": 5.559999999999999,
+   "peak": 0.68212890625,
+   "depictable": true,
+   "null_family": "Snap",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "car horn"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.516188383102417
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "onomatopoeia",
+     "snap",
+     "wood"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17557945847511292
+    ]
+   },
+   "afn_yn_null": -1.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "birds_forest",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 0.52,
+   "end": 6.36,
+   "run_start": 0.52,
+   "run_end": 6.36,
+   "cut_start": 0.52,
+   "cut_end": 6.36,
+   "run_audio": [
+    0.0,
+    7.36
+   ],
+   "run_len": 5.84,
+   "peak": 0.70849609375,
+   "depictable": true,
+   "null_family": "Crowd",
+   "afn_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird vocalization and bird call and bird song, bird, wild animals, animal"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5099552869796753
+    ]
+   },
+   "afn_yn_x": 4.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1833786815404892
+    ]
+   },
+   "afn_yn_null": -2.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "birds_forest",
+   "pool": "P2",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 15.48,
+   "end": 18.0,
+   "run_start": 15.48,
+   "run_end": 18.0,
+   "cut_start": 15.48,
+   "cut_end": 18.0,
+   "run_audio": [
+    14.48,
+    18.00025
+   ],
+   "run_len": 2.5199999999999996,
+   "peak": 0.70751953125,
+   "depictable": true,
+   "null_family": "Hands",
+   "afn_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [
+     "bird vocalization and bird call and bird song, bird, wild animals, animal"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5099552869796753
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "clapping",
+     "finger snapping",
+     "hands"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.06499731540679932
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "london_protest_01",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 0.04,
+   "end": 11.12,
+   "run_start": 0.04,
+   "run_end": 11.12,
+   "cut_start": 0.04,
+   "cut_end": 11.12,
+   "run_audio": [
+    0.0,
+    11.132625
+   ],
+   "run_len": 11.08,
+   "peak": 0.7958984375,
+   "depictable": true,
+   "null_family": "Digestive",
+   "afn_v4_text": "siren, horn, crowd",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [
+     "siren, horn, crowd"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5305967330932617
+    ]
+   },
+   "afn_yn_x": 1.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "biting",
+     "burping",
+     "chewing",
+     "digestive",
+     "eructation",
+     "fart",
+     "gargling",
+     "hiccup",
+     "mastication",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08055384457111359
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "mv_detective_crime_scene",
+   "pool": "P2",
+   "family": "Sigh",
+   "label": "Sigh",
+   "start": 2.08,
+   "end": 3.52,
+   "run_start": 2.08,
+   "run_end": 3.52,
+   "cut_start": 2.08,
+   "cut_end": 3.52,
+   "run_audio": [
+    1.08,
+    4.52
+   ],
+   "run_len": 1.44,
+   "peak": 0.7802734375,
+   "depictable": true,
+   "null_family": "Tinnitus, ringing in the ears",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27887871861457825
+    ]
+   },
+   "afn_yn_x": 2.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "otoacoustic emission",
+     "ringing in the ears",
+     "tinnitus"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08798697590827942
+    ]
+   },
+   "afn_yn_null": 0.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "pool": "P2",
+   "family": "Baby cry, infant cry",
+   "label": "Baby cry, infant cry",
+   "start": 3.64,
+   "end": 4.64,
+   "run_start": 3.64,
+   "run_end": 4.64,
+   "cut_start": 3.44,
+   "cut_end": 4.4399999999999995,
+   "run_audio": [
+    2.44,
+    5.4399999999999995
+   ],
+   "run_len": 0.9999999999999996,
+   "peak": 0.576171875,
+   "depictable": true,
+   "null_family": "Cattle",
+   "afn_v4_text": "crying",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby cry",
+     "crying",
+     "infant cry",
+     "sobbing"
+    ],
+    "matched_word": [
+     "crying"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.491044282913208
+    ]
+   },
+   "afn_yn_x": 2.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "cowbell",
+     "farm animals",
+     "livestock",
+     "moo",
+     "working animals",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17619536817073822
+    ]
+   },
+   "afn_yn_null": -0.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "pool": "P2",
+   "family": "Crying, sobbing",
+   "label": "Crying, sobbing",
+   "start": 3.64,
+   "end": 4.64,
+   "run_start": 3.64,
+   "run_end": 4.64,
+   "cut_start": 3.5199999999999996,
+   "cut_end": 4.52,
+   "run_audio": [
+    2.5199999999999996,
+    5.52
+   ],
+   "run_len": 0.9999999999999996,
+   "peak": 0.68505859375,
+   "depictable": true,
+   "null_family": "Spray",
+   "afn_v4_text": "crying",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby cry",
+     "crying",
+     "human voice",
+     "infant cry",
+     "sobbing",
+     "whimper"
+    ],
+    "matched_word": [
+     "crying"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.7983076572418213
+    ]
+   },
+   "afn_yn_x": 1.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "liquid",
+     "spray"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24533504247665405
+    ]
+   },
+   "afn_yn_null": -0.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "pool": "P2",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 20.16,
+   "end": 21.16,
+   "run_start": 20.16,
+   "run_end": 21.16,
+   "cut_start": 20.16,
+   "cut_end": 21.16,
+   "run_audio": [
+    19.16,
+    22.16
+   ],
+   "run_len": 1.0,
+   "peak": 0.65576171875,
+   "depictable": true,
+   "null_family": "Stir",
+   "afn_v4_text": "explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 3.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "liquid",
+     "stir"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.32813090085983276
+    ]
+   },
+   "afn_yn_null": -0.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.12,
+   "end": 10.0,
+   "run_start": 0.12,
+   "run_end": 10.0,
+   "cut_start": 0.12,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 9.88,
+   "peak": 0.60888671875,
+   "depictable": true,
+   "null_family": "Donkey, ass",
+   "afn_v4_text": "siren, dog barking, human voice",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29966679215431213
+    ]
+   },
+   "afn_yn_x": 2.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "ass",
+     "donkey",
+     "farm animals",
+     "livestock",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21322321891784668
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 0.16,
+   "end": 17.0,
+   "run_start": 0.16,
+   "run_end": 17.0,
+   "cut_start": 0.16,
+   "cut_end": 17.0,
+   "run_audio": [
+    0.0,
+    17.0
+   ],
+   "run_len": 16.84,
+   "peak": 0.77734375,
+   "depictable": true,
+   "null_family": "Whale vocalization",
+   "afn_v4_text": "gunshot and gunfire, explosion",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19975674152374268
+    ]
+   },
+   "afn_yn_x": 3.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "whale vocalization",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2178507298231125
+    ]
+   },
+   "afn_yn_null": -3.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "pool": "P2",
+   "family": "Typing",
+   "label": "Typing",
+   "start": 10.32,
+   "end": 11.719999999999999,
+   "run_start": 10.32,
+   "run_end": 11.719999999999999,
+   "cut_start": 10.32,
+   "cut_end": 11.719999999999999,
+   "run_audio": [
+    9.32,
+    12.719999999999999
+   ],
+   "run_len": 1.3999999999999986,
+   "peak": 0.6376953125,
+   "depictable": true,
+   "null_family": "Quack",
+   "afn_v4_text": "keyboard typing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "computer keyboard",
+     "domestic sounds",
+     "home sounds",
+     "typewriter",
+     "typing"
+    ],
+    "matched_word": [
+     "keyboard typing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.855703592300415
+    ]
+   },
+   "afn_yn_x": 0.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "duck",
+     "quack"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20822268724441528
+    ]
+   },
+   "afn_yn_null": -2.75,
+   "afn_yn_null_top1": 2152
+  }
+ ]
+}
