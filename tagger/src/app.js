@@ -1,5 +1,7 @@
 /* Sound tagging tool (manual listening, no pre-fill). Works from file:// : no fetch, no server.
-   Data: window.DELEGATION_CLIPS (src/clips.js), window.DELEGATION_VOCAB (src/vocab.js).
+   Data: window.DELEGATION_CLIPS (src/clips.js), window.DELEGATION_VOCAB (src/vocab.js),
+   window.DELEGATION_SUGGEST (src/suggest.js: detector suggestions for some clips, hidden until the human asks;
+   pressing "Show" records suggestions_shown_at; a row copied from one carries from_suggestion: true).
    Export schema = the project's gold export ({annotator, exported, clips:[{clip, sounds:[{label,
    family?, start, end, visible, obvious, importance, ...}], done, bad, picture_due, ...}]}),
    readable by benchmark/gold/score_per_sound.load_gold. */
@@ -7,6 +9,7 @@
   "use strict";
   var CLIPS = window.DELEGATION_CLIPS || [];
   var VOCAB = window.DELEGATION_VOCAB || [];
+  var SUGGEST = window.DELEGATION_SUGGEST || {};
   var STORE_KEY = "delegation-sound-tagging-v1";   // distinct from the gold tool's "gold-..." keys
   var TOOL = "delegation-manual-v1";
   var VOCAB_LC = {};
@@ -143,8 +146,59 @@
       });
       ops.appendChild(play); ops.appendChild(del);
       row.appendChild(ops);
+      if (s.from_suggestion) row.appendChild(el("span", "fromsug", "from a detector suggestion — please check it by ear"));
       box.appendChild(row);
     });
+    renderSuggest();
+  }
+
+  // ------------------------------------------------------------------ detector suggestions (hidden by default)
+  // Shown only after the human presses the button (to avoid anchoring). They are never rows: they do not count for
+  // done/started; "Add as a row" copies one into a normal row whose visible/obvious/importance stay empty.
+  function renderSuggest() {
+    var box = $("suggestBox"); if (!box) return;
+    box.innerHTML = "";
+    var c = CLIPS[idx], list = SUGGEST[c.id];
+    if (!list || !list.length) { box.hidden = true; return; }
+    box.hidden = false;
+    var r = rec(c);
+    if (!r.suggestions_shown_at) {
+      var b = el("button", "sugbtn", "Show detector suggestions (" + list.length + ")"); b.type = "button";
+      b.id = "showSuggestBtn";
+      b.title = "Tag by ear first. The suggestions come from our detector and can be wrong or miss sounds.";
+      b.addEventListener("click", function () {
+        var q = rec(c); q.suggestions_shown_at = new Date().toISOString(); save(); renderSuggest();
+      });
+      box.appendChild(b);
+      box.appendChild(el("span", "hint", " Tag by ear first; open these only as a last check."));
+      return;
+    }
+    var wrap = el("div", "suglist");
+    wrap.appendChild(el("div", "sughead", "Detector suggestions — not checked; they can be wrong or missing sounds"));
+    list.forEach(function (g) {
+      var row = el("div", "sugrow");
+      row.appendChild(el("span", "suglabel", g.label));
+      row.appendChild(el("span", "sugtime", fmt(g.start) + "–" + fmt(g.end) + " s"));
+      var p = el("button", "", "▶ play"); p.type = "button"; p.title = "play from half a second before the start";
+      p.addEventListener("click", function () {
+        clearSpan(); video.currentTime = Math.max(0, Number(g.start) - 0.5);
+        var pr = video.play(); if (pr && pr.catch) pr.catch(function () {});
+      });
+      var have = r.sounds.some(function (s) { return s.from_suggestion && s.label === g.label && s.start === num(g.start) && s.end === num(g.end); });
+      var a = el("button", "", have ? "Added" : "Add as a row"); a.type = "button"; a.disabled = have;
+      a.title = "copy this into the sound rows; you still answer Visible, Obvious and Importance";
+      a.addEventListener("click", function () { addFromSuggestion(g); });
+      row.appendChild(p); row.appendChild(a);
+      wrap.appendChild(row);
+    });
+    box.appendChild(wrap);
+  }
+  function addFromSuggestion(g) {
+    var r = rec();
+    r.sounds.push({ label: g.label, start: num(g.start), end: num(g.end), visible: null, obvious: null, importance: null,
+                    added: new Date().toISOString(), from_suggestion: true });
+    if (r.no_sounds) { r.no_sounds = false; $("noSounds").checked = false; }
+    sel = r.sounds.length - 1; touch(); renderSounds();
   }
   function markSel() {
     var rows = document.querySelectorAll("#sounds .srow");
@@ -253,12 +307,13 @@
         o.obvious = s.obvious === true;
         o.importance = s.importance || null;
         o.added = s.added || null;
+        o.from_suggestion = s.from_suggestion === true;
         return o;
       });
       clips.push({ clip: c.id, sounds: sounds, no_sounds: !!r.no_sounds, bad: !!r.bad, note: r.note || "",
                    done: !!r.done, picture_due: sounds.some(function (s) { return s.label && !s.visible && !s.obvious; }),
                    annotator: who, first_opened: r.first_opened || null, updated: r.updated || null, done_at: r.done_at || null,
-                   seconds_on_clip: Math.round(r.seconds || 0) });
+                   seconds_on_clip: Math.round(r.seconds || 0), suggestions_shown_at: r.suggestions_shown_at || null });
     });
     return { annotator: who, exported: new Date().toISOString(), started: store.started, tool: TOOL, tool_version: 1,
              n_clips_total: CLIPS.length, n_done: clips.filter(function (c) { return c.done; }).length, clips: clips };
@@ -289,11 +344,13 @@
           store.clips[c.clip] = {
             clip: c.clip, no_sounds: !!c.no_sounds, bad: !!c.bad, note: c.note || "", done: !!c.done,
             first_opened: c.first_opened || null, updated: c.updated || null, done_at: c.done_at || null, seconds: c.seconds_on_clip || 0,
+            suggestions_shown_at: c.suggestions_shown_at || null,
             sounds: (c.sounds || []).map(function (s) {
               return { label: s.label || s.family || "", start: s.start == null ? null : Number(s.start), end: s.end == null ? null : Number(s.end),
                        visible: typeof s.visible === "boolean" ? s.visible : null,
                        obvious: typeof s.obvious === "boolean" ? s.obvious : null,
-                       importance: [1, 2, 3].indexOf(Number(s.importance)) >= 0 ? Number(s.importance) : null, added: s.added || null };
+                       importance: [1, 2, 3].indexOf(Number(s.importance)) >= 0 ? Number(s.importance) : null, added: s.added || null,
+                       from_suggestion: s.from_suggestion === true };
             })
           };
         });

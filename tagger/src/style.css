@@ -85,3 +85,13 @@ textarea{width:100%;min-height:54px;margin-top:6px}
   .wrap{grid-template-columns:1fr}
   .side{position:static;max-height:220px}
 }
+/* detector suggestions: hidden until asked; styled apart from the human's rows */
+.suggest{margin:8px 0 10px;padding:8px 10px;border:1px dashed var(--warn);border-radius:8px;background:var(--warn-soft)}
+.suggest[hidden]{display:none}
+.suggest .sugbtn{border-color:var(--warn);color:#5a3f00}
+.suglist .sughead{font-size:13px;font-weight:600;color:#5a3f00;margin-bottom:6px}
+.sugrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:3px 0;border-top:1px solid rgba(154,107,0,.25)}
+.sugrow .suglabel{min-width:200px;font-style:italic}
+.sugrow .sugtime{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:13px;min-width:110px}
+.sugrow button{font-size:12px;padding:2px 8px}
+.srow > span.fromsug{grid-column:1 / -1;font-size:12px;color:var(--warn);padding-left:30px}
