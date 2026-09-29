@@ -633,3 +633,18 @@ them with the unchanged Qwen3-Omni (V1–V4) and Audio Flamingo Next (V4 + yes/n
 Qwen V4) and adds one phantom (`un_hair_dryer_drying_WWu24rJs` Typing 10.32 s, both listeners say "typing"); K2+K3 adds a
 second phantom (`birds_forest` Bird 0.52 s) and a rainforest Insect cross. Nothing beats TO1+F7F8; round 14 amendments
 C, D, E–K and P3 are closed on DEV.
+
+## Round 15 screens (2026-09-30, DEV, offline, candidate level; no pipeline arm run) — `benchmark/gold/r15_screen.py`
+Adam: "keep trying more". Three offline screens on the pictures of TO1+F7F8 (and B0r), same scorer and cost:
+- **Two-listener veto on drawn pictures** (drop a drawn picture when Qwen V1 no AND AF V4 no AND AF yes/no < 0 on its P1/PV
+  items): removes 2 wrong (favela Train 3.8, laundromat Train 1.0) and 2 hits (rainforest Insect/Cricket 0.14, favela Train
+  14.72). Dead: the listeners reject real sounds as often as phantoms.
+- **S1 strict gate** (silent if ANY vote on ANY stretch says visible): B0r 14/24/2.78 → 14/20/2.61; TO1+F7F8 18/24/2.45 →
+  17/21/2.41 (loses the rescued Laughter 8.08). This is §10d's any-stretch rule family (GOLD_RERUN_2026-09-22), already swept
+  and rejected (higher sensitivity made end-to-end ΔF1 worse); Fable: report-only, not a TEST2 candidate.
+- **S2 one sound, one picture** (drop a later same-family picture when the family's BEATs/FlexSED evidence stays >= 0.2 from
+  the earlier picture's start): 17/22/2.45, same cost (drops detective Alarm 3.92, laundromat Train 16.25, and the favela
+  Train 14.72 hit). Dead.
+- **V5 masking-aware listener** ("apart from {louder sounds}, what else?"): not run. Fable: 0 DEV hits reachable (Footsteps
+  2.1 and Gasp 6.7 are killed by F8, DASM 0.26 / below bar; Whistle 6.1 needs AF yes). The suspected AF duplicate-answer bug
+  ("gunshot and gunfire, explosion" on 41 items) was checked: same cut → same answer, mostly the explosion clip; not a bug.

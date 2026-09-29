@@ -1,0 +1,184 @@
+{
+ "B0r": {
+  "hits": 14,
+  "wrong": 24,
+  "v/c/p": [
+   6,
+   11,
+   7
+  ],
+  "cost": 2.776,
+  "d_vs_B0r": null
+ },
+ "TO1+F7F8": {
+  "hits": 18,
+  "wrong": 24,
+  "v/c/p": [
+   6,
+   12,
+   6
+  ],
+  "cost": 2.449,
+  "d_vs_B0r": [
+   -0.32653061224489793,
+   -0.8571428571428571,
+   0.08163265306122448,
+   0.092
+  ]
+ },
+ "S1": {
+  "hits": 17,
+  "wrong": 21,
+  "v/c/p": [
+   5,
+   10,
+   6
+  ],
+  "cost": 2.408,
+  "d_vs_B0r": [
+   -0.3673469387755102,
+   -0.8571428571428571,
+   0.04081632653061224,
+   0.058
+  ]
+ },
+ "S2": {
+  "hits": 17,
+  "wrong": 22,
+  "v/c/p": [
+   6,
+   11,
+   5
+  ],
+  "cost": 2.449,
+  "d_vs_B0r": [
+   -0.32653061224489793,
+   -0.8571428571428571,
+   0.12244897959183673,
+   0.1095
+  ]
+ },
+ "S1+S2": {
+  "hits": 16,
+  "wrong": 19,
+  "v/c/p": [
+   5,
+   9,
+   5
+  ],
+  "cost": 2.408,
+  "d_vs_B0r": [
+   -0.3673469387755102,
+   -0.8979591836734694,
+   0.08163265306122448,
+   0.073
+  ]
+ },
+ "S1_dropped": [
+  [
+   "ambient_snow_walk_930",
+   [
+    [
+     "Laughter",
+     8.08
+    ]
+   ],
+   "hits lost:",
+   [
+    [
+     {
+      "label": "Laughter",
+      "start": 8.1,
+      "end": 9.4,
+      "needed": true,
+      "importance": 2,
+      "visible": false,
+      "obvious": false
+     },
+     true
+    ]
+   ]
+  ],
+  [
+   "as_fire_alarm_kGKZ0YK4",
+   [
+    [
+     "Alarm",
+     8.89
+    ]
+   ],
+   "hits lost:",
+   []
+  ],
+  [
+   "b3_crossing_bells",
+   [
+    [
+     "Steam",
+     0.22
+    ]
+   ],
+   "hits lost:",
+   []
+  ],
+  [
+   "ly_applause_62ZYD0u",
+   [
+    [
+     "Crowd",
+     0.0
+    ]
+   ],
+   "hits lost:",
+   []
+  ]
+ ],
+ "S2_dropped": [
+  [
+   "b3_favela_rio",
+   [
+    [
+     "Train",
+     14.72
+    ]
+   ],
+   "hits lost:",
+   [
+    [
+     {
+      "label": "Train",
+      "start": 14.6,
+      "end": 28.0,
+      "needed": true,
+      "importance": 2,
+      "visible": false,
+      "obvious": false
+     },
+     true
+    ]
+   ]
+  ],
+  [
+   "b3_laundromat",
+   [
+    [
+     "Train",
+     16.25
+    ]
+   ],
+   "hits lost:",
+   []
+  ],
+  [
+   "mv_detective_crime_scene",
+   [
+    [
+     "Alarm",
+     3.92
+    ]
+   ],
+   "hits lost:",
+   []
+  ]
+ ]
+}
