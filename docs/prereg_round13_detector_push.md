@@ -615,3 +615,21 @@ kept.) Gates: D0 98/98, conf-equality 98/98, D5 49/49 both systems.
 give (or miss) the picture; K2x adds 1 phantom (flea-market Vehicle 20.0 s) and swaps a hair-dryer Computer keyboard phantom
 for a Typing one; K2K3x adds 2 more (rainforest Insect 11.24, and a `birds_forest` Bird at 0.52 s, 0.78 s before the needed
 Bird's onset at 1.3 s — the K2 target stays a miss). TO1+F7F8 remains the best round-14 arm.
+
+### Round 14 amendment K2 supplement (listener answers for the 27 missing runs), DEV, job 31563031 (6 min)
+`benchmark/gold/listener_k2.py` built the 27 runs K2 newly offers (`data/work/r13/k2_runs.json`) like P2 items and scored
+them with the unchanged Qwen3-Omni (V1–V4) and Audio Flamingo Next (V4 + yes/no) code → `dev_listener_k2.json`,
+`dev_listener_k2_afn.json` (0 missing). `LISTENER_VCACHE` / `LISTENER_AFCACHE` take `;`-joined paths (`_cache_items`, also in
+`listener_p1_lookup`). "x" = the K2 arms with these answers merged. Halves were not written by this job.
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible |
+|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — |
+| TO1+F7F8 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes |
+| TO1F7F8+K2x | 21 | 18 | 25 (6 / 12 / 7) | 2.49 | -0.29 [-0.82, +0.12] | 1.98 | 16.00 | yes |
+| TO1F7F8+K2K3x | 21 | 18 | 26 (6 / 12 / 8) | 2.53 | -0.24 [-0.73, +0.16] | 2.00 | 8.00 | yes |
+
+**Reading.** With the answers in, K2 gains no needed sound (the `birds_forest` Bird runs are accepted by AF only, not by
+Qwen V4) and adds one phantom (`un_hair_dryer_drying_WWu24rJs` Typing 10.32 s, both listeners say "typing"); K2+K3 adds a
+second phantom (`birds_forest` Bird 0.52 s) and a rainforest Insect cross. Nothing beats TO1+F7F8; round 14 amendments
+C, D, E–K and P3 are closed on DEV.
