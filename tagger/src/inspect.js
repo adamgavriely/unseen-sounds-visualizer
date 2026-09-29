@@ -86,7 +86,7 @@
       var s = el("span", null, t + "s"); s.style.left = (100 * t / dur) + "%"; $("axis").appendChild(s);
     }
     var thead = el("tr");
-    ["who", "#", "sound", "start", "end", "visible", "obvious", "importance"].forEach(function (h) { thead.appendChild(el("th", null, h)); });
+    ["who", "#", "sound", "start", "end", "visible", "obvious", "importance", "covered"].forEach(function (h) { thead.appendChild(el("th", null, h)); });
     $("rows").appendChild(thead);
     runs.forEach(function (r) {
       var rec = r.data[c.id];
@@ -102,7 +102,7 @@
         var bar = el("div", "bar-s " + kind(s), (s.label || "?") + (s.importance ? " · " + s.importance : ""));
         bar.style.left = (100 * a / dur) + "%"; bar.style.width = Math.max(1.5, 100 * (b - a) / dur) + "%";
         bar.style.top = (4 + level * 26) + "px"; bar.tabIndex = 0;
-        bar.title = (s.label || "") + "  " + f1(s.start) + "–" + f1(s.end) + " s  visible " + (s.visible ? "yes" : "no") + ", obvious " + (s.obvious ? "yes" : "no") + ", importance " + (s.importance || "–");
+        bar.title = (s.label || "") + "  " + f1(s.start) + "–" + f1(s.end) + " s  visible " + (s.visible ? "yes" : "no") + ", obvious " + (s.obvious ? "yes" : "no") + ", importance " + (s.importance || "–") + (s.masked ? ", covered by speech/music" : "");
         bar.onclick = function () { seek(s.start); };
         bar.onkeydown = function (e) { if (e.key === "Enter") seek(s.start); };
         track.appendChild(bar);
@@ -111,6 +111,7 @@
         tr.appendChild(el("td", s.visible ? "yes" : "no", s.visible ? "yes" : "no"));
         tr.appendChild(el("td", s.obvious ? "yes" : "no", s.obvious ? "yes" : "no"));
         tr.appendChild(el("td", null, s.importance == null ? "–" : String(s.importance)));
+        tr.appendChild(el("td", s.masked ? "yes" : "no", s.masked ? "yes" : "no"));
         tr.onclick = function () { seek(s.start); };
         $("rows").appendChild(tr);
       });

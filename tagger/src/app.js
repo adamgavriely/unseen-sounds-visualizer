@@ -134,6 +134,12 @@
         function (v) { sel = i; s.obvious = v; touch(); renderSounds(); }, "Obvious?"));
       row.appendChild(seg([[1, "1", "steady background noise, no clear start"], [2, "2", "something that happens (clear start)"], [3, "3", "danger or key story moment"]], s.importance,
         function (v) { sel = i; s.importance = v; touch(); renderSounds(); }, "Importance"));
+      var mk = el("label", "masked"); mk.title = "tick if speech or music makes this sound hard to hear";
+      var cb = el("input"); cb.type = "checkbox"; cb.checked = s.masked === true;
+      cb.addEventListener("click", function (ev) { ev.stopPropagation(); });
+      cb.addEventListener("change", function () { sel = i; s.masked = cb.checked; touch(); });
+      mk.appendChild(cb); mk.appendChild(el("span", "", " covered by speech/music"));
+      row.appendChild(mk);
 
       var ops = el("span", "ops");
       var play = el("button", "", "▶ row"); play.type = "button"; play.title = "play this sound from start to end";
@@ -195,7 +201,7 @@
   }
   function addFromSuggestion(g) {
     var r = rec();
-    r.sounds.push({ label: g.label, start: num(g.start), end: num(g.end), visible: null, obvious: null, importance: null,
+    r.sounds.push({ label: g.label, start: num(g.start), end: num(g.end), visible: null, obvious: null, importance: null, masked: false,
                     added: new Date().toISOString(), from_suggestion: true });
     if (r.no_sounds) { r.no_sounds = false; $("noSounds").checked = false; }
     sel = r.sounds.length - 1; touch(); renderSounds();
@@ -206,7 +212,7 @@
   }
   function addRow(startNow) {
     var r = rec();
-    r.sounds.push({ label: "", start: startNow ? num(video.currentTime) : null, end: null, visible: null, obvious: null, importance: null,
+    r.sounds.push({ label: "", start: startNow ? num(video.currentTime) : null, end: null, visible: null, obvious: null, importance: null, masked: false,
                     added: new Date().toISOString() });
     if (r.no_sounds) { r.no_sounds = false; $("noSounds").checked = false; }
     sel = r.sounds.length - 1; touch(); renderSounds();
@@ -305,6 +311,7 @@
         o.start = s.start; o.end = s.end;
         o.visible = s.visible === true;                  // gold schema: needed = not (visible or obvious)
         o.obvious = s.obvious === true;
+        o.masked = s.masked === true;                    // speech or music makes it hard to hear (gold schema "masked")
         o.importance = s.importance || null;
         o.added = s.added || null;
         o.from_suggestion = s.from_suggestion === true;
@@ -350,7 +357,7 @@
                        visible: typeof s.visible === "boolean" ? s.visible : null,
                        obvious: typeof s.obvious === "boolean" ? s.obvious : null,
                        importance: [1, 2, 3].indexOf(Number(s.importance)) >= 0 ? Number(s.importance) : null, added: s.added || null,
-                       from_suggestion: s.from_suggestion === true };
+                       masked: s.masked === true, from_suggestion: s.from_suggestion === true };
             })
           };
         });
