@@ -284,3 +284,11 @@ if its break-even β is ≥ 1.0 on DEV and on the new clips; reported with the f
 Tagger agreement at the peak (Fable idea 2) is NOT added: BEATs/PANNs are deaf (<= 0.05) to 4 of the 6 reachable band
 hits (round 13 diagnosis), so it would remove the hits it is meant to keep.
 Extra arms: best round-14 arm + F5, + F6, + F5 + F6.
+**Round 14 amendment B — "swap, don't add" (Adam: add rescued sounds without adding wrong pictures; written before any
+round-14 number).** Target on DEV: hits >= B0 + 4 with wrong <= 33 (cost below B0r at β = 2).
+- **F7 confirmed mirror veto:** R13-2 (b 0.7) — drop a BEATs-only span when FlexSED's top query there is a different family
+  >= 0.7 and its own family < 0.4 — but KEEP it if the listener accepts the span's family (rule V4, else V12; P1 items of
+  `dev_listener_v.json`; if the item has no V4/V12 flag, use yes/no score > 3 from `dev_listener.json`).
+- **F8 third vote:** a rescued run is kept only if DASM (round 6 / devcand D1 DEV scores) gives the same family >= its D1
+  bar anywhere in the run ± 0.5 s.
+Arms: best round-14 arm (after F1–F6) + F7, + F8, + F7 + F8.
