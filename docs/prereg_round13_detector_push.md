@@ -565,3 +565,29 @@ steepest-rise start lands after the annotated onset (e.g. Hammer 13.76 → 15.64
 Audio Flamingo V4. Even the pool upper bound (every P3 span) recovers NONE of the 18 needed sounds TO1+F7F8 misses; every
 rule's accepts are mostly cross/phantom (e.g. both-V4 + once: 2 hit-class / 13 wrong-class, and the 2 hits are sounds
 already shown). `benchmark/gold/dev_listener_p3*.json`, `benchmark/gold/listener_p3.py`.
+
+### Round 14 amendments C (AGREE) and D (XQ), DEV, job 31523769 (20 min)
+Flags: `LISTENER_AFCACHE` (`dev_listener_afn.json`, merged in `listener_from_vcache`: AGREE_V4 = Qwen V4 AND AF V4, AGREE_V12 =
+Qwen V12 AND AF V4; AF covers every amendment-A candidate, 0 missing); `FLEXSED_EXTRA` + `FLEXSED_EXTRA_DIR` +
+`FLEXSED_EXTRA_QUERIES` (`add_flexsed_extra`: the 120 group-a queries appended as FlexSED columns, same fps 25 and frame
+count as the main cache on all 49 clips; everything downstream treats them like the 215). With XQ the listener has no answer
+for the new queries' runs (396 of 940 missing → not rescued). "@AG4" = the arm with its rule replaced by AGREE_V4.
+Gates: flags off D0 98/98, conf-equality 98/98, D5 49/49 both systems.
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible | half A: hits / wrong / Δ | half B: hits / wrong / Δ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| XQ | 16 | 13 | 29 (7 / 15 / 7) | 3.06 | +0.29 [-0.04, +0.65] | 2.47 | -0.80 | no | 7 / 15 / +0.56 [+0.16, +1.12] | 6 / 14 / +0.00 [-0.33, +0.42] |
+| XQ+1 | 18 | 14 | 33 (7 / 17 / 9) | 3.14 | +0.37 [-0.16, +0.98] | 2.47 | 0.00 | no | 7 / 16 / +0.64 [+0.16, +1.28] | 7 / 17 / +0.08 [-0.83, +1.17] |
+| LR-V12+1+F1F4F3+F7F8+XQ | 18 | 14 | 34 (7 / 18 / 9) | 3.18 | +0.41 [-0.12, +1.06] | 2.49 | 0.00 | no | 7 / 16 / +0.64 [+0.16, +1.28] | 7 / 18 / +0.17 [-0.75, +1.33] |
+| LR-AG4+1 | 23 | 20 | 32 (5 / 20 / 7) | 2.61 | -0.16 [-0.86, +0.45] | 1.96 | 3.00 | yes | 10 / 13 / -0.08 [-0.64, +0.40] | 10 / 19 / -0.25 [-1.58, +0.75] |
+| LR-AG12+1 | 19 | 16 | 32 (7 / 18 / 7) | 2.94 | +0.16 [-0.24, +0.53] | 2.29 | 1.00 | no | 9 / 13 / +0.08 [-0.40, +0.48] | 7 / 19 / +0.25 [-0.50, +0.83] |
+| LR-AG4+1+F1F4 | 19 | 16 | 29 (6 / 16 / 7) | 2.82 | +0.04 [-0.33, +0.37] | 2.22 | 1.60 | no | 9 / 11 / -0.08 [-0.48, +0.24] | 7 / 18 / +0.17 [-0.50, +0.83] |
+| LR-AG12+1+F1F4 | 18 | 15 | 26 (6 / 13 / 7) | 2.78 | +0.00 [-0.33, +0.24] | 2.24 | 2.00 | no | 8 / 10 / +0.00 [+0.00, +0.00] | 7 / 16 / +0.00 [-0.58, +0.50] |
+| LR-V12+1+F1F4F3+F7F8@AG4 | 19 | 16 | 23 (6 / 11 / 6) | 2.57 | -0.20 [-0.57, +0.12] | 2.10 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 7 / 13 / -0.25 [-0.92, +0.25] |
+| LR-AG4+1+XQ | 23 | 18 | 36 (6 / 21 / 9) | 2.94 | +0.16 [-0.57, +0.82] | 2.20 | 1.33 | no | 9 / 19 / +0.56 [-0.24, +1.36] | 9 / 17 / -0.25 [-1.50, +0.83] |
+
+
+**Reading.** XQ adds wrong pictures and loses the `birds_forest` Crowing (10.4 s) in every arm. The best AGREE arm is the old
+best round-14 arm with its rule replaced by AGREE_V4 (2.57, Δ −0.20 [−0.57, +0.12]; gains Cricket and the snow-walk
+Laughter); it does not beat TO1+F7F8 (2.45).

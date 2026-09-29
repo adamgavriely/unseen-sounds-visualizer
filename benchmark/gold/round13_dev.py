@@ -164,6 +164,11 @@ for _n in ("K1", "K2", "K3", "K1K2", "K1K2K3"):
         if _k in _n:
             _c.update(_K[_k])
     ARMS[f"TO1F7F8+{_n}"] = _c
+# K2 with the supplementary listener answers of the 27 newly offered runs (benchmark/gold/listener_k2.py)
+_K2X = {"LISTENER_VCACHE": str(VCACHE) + ";" + str(_ROOT / "benchmark" / "gold" / "dev_listener_k2.json"),
+        "LISTENER_AFCACHE": str(AFCACHE) + ";" + str(_ROOT / "benchmark" / "gold" / "dev_listener_k2_afn.json")}
+ARMS["TO1F7F8+K2x"] = {**ARMS["TO1F7F8+K2"], **_K2X}
+ARMS["TO1F7F8+K2K3x"] = {**ARMS["TO1F7F8+K2"], **_K["K3"], **_K2X}
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
 # picture floor) is a no-op on these bases (the scored config has no floor) and is not run; G6 = MERGE_GAP 2.0 -> 1.0
 GRULES = {"G1": {"DISPLAY_THRESHOLD": 0.30, "AUGMENT_THRESHOLD": 0.30}, "G3": {"AED_MIN_DUR": 0.3},

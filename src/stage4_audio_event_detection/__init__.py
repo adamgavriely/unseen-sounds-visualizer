@@ -875,20 +875,27 @@ def _accepted(it, lth: float) -> bool:
     return float(it["score"]) > lth
 
 
+def _cache_items(path):
+    """the items of one listener cache, or of several joined by ';' (a base cache + a supplement, e.g. the K2 runs)"""
+    out = []
+    for p in str(path).split(";"):
+        d = json.loads(Path(p).read_text(encoding="utf-8"))
+        out += list(d["items"] if isinstance(d, dict) else d)
+    return out
+
+
 def listener_from_vcache(path, clip: str, tol: float = 0.02):
     """Amendment A: the variants cache (benchmark/gold/listener_variants.py; items with clip, pool P2 / PV, family, label,
     start, end, cut_start, cut_end, accept{rule: bool}). lookup(label, start, end, contain=False): (a) the P2 run with this
     (family, start, end); contain=True (b): the PV item of this vetoed span (same family, start, end). P1 is never used."""
     from src.labels import canonical
-    d = json.loads(Path(path).read_text(encoding="utf-8"))
-    items = [x for x in (d["items"] if isinstance(d, dict) else d) if x.get("clip") == clip and x.get("pool") in ("P2", "PV")]
+    items = [x for x in _cache_items(path) if x.get("clip") == clip and x.get("pool") in ("P2", "PV")]
     # Round 14 amendment C: the second listener (Audio Flamingo Next, LISTENER_AFCACHE, same keys) -- rule AGREE_V4 =
     # Qwen V4 AND AF V4, AGREE_V12 = Qwen V12 AND AF V4; an item AF did not score is not accepted by AGREE
     afp = getattr(config, "LISTENER_AFCACHE", None)
     af = {}
     if afp:
-        da = json.loads(Path(afp).read_text(encoding="utf-8"))
-        for x in (da["items"] if isinstance(da, dict) else da):
+        for x in _cache_items(afp):
             if x.get("clip") == clip:
                 af[(x.get("pool"), x["family"], x.get("label"), round(x["start"], 2), round(x["end"], 2))] = x
 
