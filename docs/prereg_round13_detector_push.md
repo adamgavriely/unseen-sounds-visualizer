@@ -307,3 +307,62 @@ the query's AudioSet label, family by the existing mapping). Group b (27 labels 
 added. Screen facts seen: the 4 unheard misses stay unheard (Whack 0.09, Clang 0.01, Hammer 0.00); at 0.8 the new
 queries give 111 runs on same-family gold vs 34 off gold. Arms: **XQ** (B0r + extra queries), **XQ + R13-1**, and the
 best round-14 listener arm + XQ. Same full-pipeline DEV test and report.
+
+### Round 14 results (2026-09-29/30), DEV, job 31506544 (H200, 59 min) — filters F1–F8 on the rescued spans
+**Implementation (flags default off, `config.py`).** `filter_rescued()` (`src/stage4_audio_event_detection/__init__.py`) runs
+after onset refinement in `detect_events` and in the harness, order F4, F6, F5, F8, F1: F4 `LISTENER_LOCAL_WINNER`, F6
+`LISTENER_EDGE` (0.3 s), F5 `LISTENER_SHADOW` (±0.2 s, higher conf), F8 `LISTENER_DASM_VOTE` (DASM DEV scores
+`data/work/devcand/dasm_cache`, job 31330562, round-6 queries; bar = D1's g 0.575 from `benchmark/detector_round6.json`),
+F1 `LISTENER_NEW_TYPE_ONCE`. "B0 picture" in F1/F5 = a non-rescued drawable stage-4 span at or above the display bar (the
+stage-4 picture candidates; stage 4 cannot see the gate). F3 `LISTENER_SCENE_FIT` in `reason.decide_subjects` on rescued
+specs only: the prereg prompt per gate stretch (the gate's frames), majority of yes. F7 `LISTENER_CONFIRMED_MIRROR`:
+mirror veto b 0.7 keeps a span the listener accepts (P1 items of `dev_listener_v.json` carry V1/V2/V12 only, so V12; else
+yes/no > 3 from `dev_listener.json`). Rescued spans carry `rescued` on `AudioEvent`/`AugmentationSpec`.
+**Gates.** Flags off: D0 98/98, conf-equality 98/98 (offline with every flag present, and on the cluster), D5 49/49 both
+systems after every stage of the job. Cache misses: (a) 0/512, (b) 0/34; F7: 30 of 66 mirror-dropped spans have no P1
+item, all of them spans the FlexSED clip veto removes later (none is in B0r).
+Arms picked in the job: best of the 8 = LR-V12+1+F1F4F3 (cost 2.78, ties broken by fewer wrong) → + F5/F6; best so far
+= the same (F5, F6 changed no picture) → + F7/F8.
+
+*ours (with gate); cost = (4 × miss + β × wrong) / 49; break-even β = the β where the arm's cost equals B0r's (below it the
+arm is cheaper; "any" = cheaper at every β)*
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible | half A hits / wrong / Δ | half B hits / wrong / Δ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| B1 | 16 | 13 | 30 (6 / 18 / 6) | 3.10 | +0.33 [+0.04, +0.69] | 2.49 | -0.67 | — | 8 / 12 / +0.16 [-0.24, +0.72] | 5 / 18 / +0.50 [+0.08, +0.92] |
+| LR-V4+1 | 23 | 20 | 41 (6 / 26 / 9) | 2.98 | +0.20 [-0.49, +0.86] | 2.14 | 1.41 | no | 10 / 19 / +0.40 [-0.24, +1.12] | 10 / 22 / +0.00 [-1.25, +1.08] |
+| LR-V12+1 | 22 | 19 | 38 (7 / 21 / 10) | 2.94 | +0.16 [-0.45, +0.73] | 2.16 | 1.43 | no | 9 / 14 / +0.16 [-0.16, +0.48] | 10 / 24 / +0.17 [-1.08, +1.33] |
+| LR-V4+1+F1 | 20 | 17 | 37 (5 / 23 / 9) | 3.06 | +0.29 [-0.20, +0.69] | 2.31 | 0.92 | no | 10 / 16 / +0.16 [-0.40, +0.72] | 7 / 21 / +0.42 [-0.33, +1.09] |
+| LR-V4+1+F4 | 22 | 19 | 36 (7 / 20 / 9) | 2.86 | +0.08 [-0.57, +0.65] | 2.12 | 1.67 | no | 9 / 15 / +0.24 [-0.32, +0.88] | 10 / 21 / -0.08 [-1.25, +0.83] |
+| LR-V4+1+F1F4 | 19 | 16 | 33 (6 / 18 / 9) | 2.98 | +0.20 [-0.20, +0.57] | 2.31 | 0.89 | no | 9 / 12 / +0.00 [-0.40, +0.32] | 7 / 21 / +0.42 [-0.33, +1.08] |
+| LR-V4+1+F1F4F3 | 19 | 16 | 29 (6 / 15 / 8) | 2.82 | +0.04 [-0.37, +0.37] | 2.22 | 1.60 | no | 9 / 12 / +0.00 [-0.40, +0.32] | 7 / 17 / +0.08 [-0.58, +0.67] |
+| LR-V12+1+F1 | 20 | 17 | 36 (7 / 19 / 10) | 3.02 | +0.24 [-0.16, +0.65] | 2.29 | 1.00 | no | 9 / 13 / +0.08 [-0.16, +0.32] | 8 / 23 / +0.42 [-0.42, +1.17] |
+| LR-V12+1+F4 | 20 | 17 | 30 (6 / 15 / 9) | 2.78 | +0.00 [-0.49, +0.41] | 2.16 | 2.00 | no | 8 / 12 / +0.16 [+0.00, +0.40] | 9 / 18 / -0.17 [-1.17, +0.67] |
+| LR-V12+1+F1F4 | 19 | 16 | 29 (6 / 14 / 9) | 2.82 | +0.04 [-0.29, +0.33] | 2.22 | 1.60 | no | 8 / 11 / +0.08 [+0.00, +0.24] | 8 / 18 / +0.00 [-0.67, +0.50] |
+| LR-V12+1+F1F4F3 | 19 | 16 | 28 (6 / 13 / 9) | 2.78 | +0.00 [-0.33, +0.29] | 2.20 | 2.00 | no | 8 / 11 / +0.08 [+0.00, +0.24] | 8 / 17 / -0.08 [-0.67, +0.42] |
+| LR-V12+1+F1F4F3+F5 | 19 | 16 | 28 (6 / 13 / 9) | 2.78 | +0.00 [-0.33, +0.29] | 2.20 | 2.00 | no | 8 / 11 / +0.08 [+0.00, +0.24] | 8 / 17 / -0.08 [-0.67, +0.42] |
+| LR-V12+1+F1F4F3+F6 | 19 | 16 | 28 (6 / 13 / 9) | 2.78 | +0.00 [-0.33, +0.29] | 2.20 | 2.00 | no | 8 / 11 / +0.08 [+0.00, +0.24] | 8 / 17 / -0.08 [-0.67, +0.42] |
+| LR-V12+1+F1F4F3+F5F6 | 19 | 16 | 28 (6 / 13 / 9) | 2.78 | +0.00 [-0.33, +0.29] | 2.20 | 2.00 | no | 8 / 11 / +0.08 [+0.00, +0.24] | 8 / 17 / -0.08 [-0.67, +0.42] |
+| LR-V12+1+F1F4F3+F7 | 19 | 16 | 25 (6 / 11 / 8) | 2.65 | -0.12 [-0.49, +0.16] | 2.14 | 8.00 | yes | 8 / 10 / +0.00 [-0.24, +0.24] | 8 / 15 / -0.25 [-0.92, +0.33] |
+| LR-V12+1+F1F4F3+F8 | 18 | 15 | 25 (6 / 12 / 7) | 2.73 | -0.04 [-0.33, +0.16] | 2.22 | 4.00 | yes | 8 / 10 / +0.00 [+0.00, +0.00] | 7 / 15 / -0.08 [-0.67, +0.33] |
+| LR-V12+1+F1F4F3+F7F8 | 18 | 15 | 22 (6 / 10 / 6) | 2.61 | -0.16 [-0.49, +0.08] | 2.16 | any | yes | 8 / 9 / -0.08 [-0.24, +0.00] | 7 / 13 / -0.25 [-0.92, +0.25] |
+
+
+**Best round-14 arm = LR-V12+1+F1F4F3+F7F8** (cost 2.61, Δ −0.16 [−0.49, +0.08], β=1 2.16, cheaper than B0r at every β,
+halves A −0.08 / B −0.25; **DEV-eligible**, as are +F7 (2.65) and +F8 (2.73)). Needed gained: `ambient_nature_rainforest_7629` Cricket 0.1 s. Lost: none.
+Wrong pictures appeared (4): `b3_laundromat` Train 1.00 (phantom); `b3_laundromat` Train 16.25 (phantom); `bell_miami` Train 8.00 (cross); `mv_storm_scene_house` Shout 23.00 (cross). Disappeared (6): `ambient_nature_rainforest_7629` Cricket 4.50 (cross); `b3_favela_rio` Bird 14.00 (cross); `b3_laundromat` Vehicle 0.30 (phantom); `b3_laundromat` Vehicle 14.25 (phantom); `b3_laundromat` Vehicle 23.25 (phantom); `mv_tornado_scene` Vehicle 7.25 (cross).
+**Reading.** The DEV-eligible arms win through R13-1 (the Cricket) and the listener-confirmed mirror veto (laundromat
+Vehicle ×3, tornado Vehicle, favela Bird; the listener keeps the Glass hit that plain R13-2 lost), not through the rescue:
+R13-1 alone gives 15 hits, the filtered rescue (F1+F4+F3) adds 1 (16), and F8 removes that one again (15). The filters do cut the rescue's wrong pictures (V12+R13-1: 38 → 28 with F1+F4+F3), but
+not below B0r's 24 until F7 swaps wrong BEATs pictures out. F5 and F6 change no picture on DEV.
+Pipeline without gate (hits / wrong / cost): B0r 17/50/3.59; LR-V4+1 23/81/4.37; LR-V12+1 22/79/4.37; LR-V4+1+F1 20/79/4.53; LR-V4+1+F4 22/69/3.96; LR-V4+1+F1F4 19/66/4.08; LR-V4+1+F1F4F3 19/66/4.08; LR-V12+1+F1 20/77/4.45; LR-V12+1+F4 20/65/3.96; LR-V12+1+F1F4 19/63/3.96; LR-V12+1+F1F4F3 19/63/3.96; LR-V12+1+F1F4F3+F5 19/63/3.96; LR-V12+1+F1F4F3+F6 19/62/3.92; LR-V12+1+F1F4F3+F5F6 19/62/3.92; LR-V12+1+F1F4F3+F7 19/58/3.76; LR-V12+1+F1F4F3+F8 18/55/3.71; LR-V12+1+F1F4F3+F7F8 18/50/3.51.
+**Round 14 amendment E — confidence-tiered verification (Adam's idea) + once per family (Fable consult 3; written
+before any pipeline number; candidate-level DEV screen seen: TIER + once-per-family-first gives 9 hit-candidates vs 28
+wrong-class candidates, vs 10 vs 52 for Qwen V4 alone).**
+- **TIER:** a FlexSED band run (peak 0.5–0.8) is rescued if Qwen V4 accepts and peak >= 0.6; if peak < 0.6 it needs Qwen V4
+  AND Audio Flamingo Next V4. (0.6 = the midpoint of the band; not tuned.)
+- **ONCE (F1b):** at most one rescued picture per family per clip: the EARLIEST accepted run (the sound's first onset is
+  the one a viewer needs); no "already shown" condition.
+Arms: TIER, TIER+ONCE, TIER+ONCE+R13-1, TIER+ONCE+R13-1+XQ, and (QV4 & AF yes/no > 0)+ONCE+R13-1. Same full-pipeline DEV
+test and report. Confirmation of whichever is picked = the 100 new annotated clips.
