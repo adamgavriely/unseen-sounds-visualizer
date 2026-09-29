@@ -387,6 +387,18 @@ LISTENER_LO = 0.4
 LISTENER_TH = 0.0
 LISTENER_RULE = None          # amendment A: "V1" | "V2" | "V3" | "V4" | "V12" -- (a) and (b) use that rule's accept flag from
 LISTENER_VCACHE = None        # this variants cache (benchmark/gold/listener_variants.py) instead of score > LISTENER_TH
+LISTENER_NEW_TYPE_ONCE = False  # Round 14 F1: rescue only families with no B0 picture, one rescued span per family per clip
+LISTENER_LOCAL_WINNER = False   # Round 14 F4: the rescued family must be the top depictable FlexSED query at its peak frame
+LISTENER_SHADOW = False         # Round 14 F5: drop a rescued run peaking within LISTENER_SHADOW_S of a stronger B0 onset
+LISTENER_SHADOW_S = 0.2         #   of another family
+LISTENER_EDGE = False           # Round 14 F6: drop a rescued run peaking in the first/last LISTENER_EDGE_S of the clip
+LISTENER_EDGE_S = 0.3
+LISTENER_CONFIRMED_MIRROR = False  # Round 14 amendment B, F7: the MIRROR_VETO keeps a span the listener accepts (V4/V12/yes-no>3)
+LISTENER_DASM_VOTE = False    # Round 14 amendment B, F8: a rescued run needs DASM >= LISTENER_DASM_BAR within the run +- 0.5 s
+LISTENER_DASM_DIR = None      #   DASM frame scores per clip (<dir>/<clip>.npz: fw [T, Q], times, labels)
+LISTENER_DASM_BAR = 0.575     #   round 6 / devcand D1 span bar (benchmark/detector_round6.json bars.g)
+LISTENER_DASM_PAD = 0.5
+LISTENER_SCENE_FIT = False      # Round 14 F3: the gate VLM must say the rescued sound could plausibly be heard in the scene
 LISTENER_BEATS_TH = None      # R13-3 (c): also a short BEATs run (peak 0.175-0.35, not covered) at the display bar if score > this
 LABEL_FILTER = "lists"      # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 

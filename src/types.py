@@ -75,6 +75,8 @@ class AudioEvent:
     # Round 13, R13-6 (config.RETRIGGER): the family's evidence absences (start, end) >= the retrigger gap; no merge may
     # join two appearances across one. Empty = no constraint (every run before round 13).
     breaks: List[Tuple[float, float]] = field(default_factory=list)
+    # Round 14: raised by the listener rescue (R13-3), so the precision filters can act on these spans only
+    rescued: bool = False
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -105,6 +107,7 @@ class AugmentationSpec:
     spans: List[Tuple[float, float]] = field(default_factory=list)  # every burst; see AudioEvent
     source: str = ""                 # PICTURE_V3: the specific sound to DRAW (labels.choose_source)
     breaks: List[Tuple[float, float]] = field(default_factory=list)  # R13-6: see AudioEvent.breaks
+    rescued: bool = False            # Round 14: every burst came from the listener rescue (see AudioEvent.rescued)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

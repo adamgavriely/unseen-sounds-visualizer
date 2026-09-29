@@ -1313,6 +1313,39 @@ def _fits_the_place(label: str, place: str, frames, mdl, proc):
     return _about_the_sound(expect, label)
 
 
+SCENE_FIT_PROMPT = "Could the sound of {label} plausibly be heard in this scene? Answer yes or no."
+
+
+def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
+    """Round 14 F3: per stretch (VISIBILITY_STRETCH cuts, 1 s before to 1 s after, >= 6 frames, as the gate), the question
+    SCENE_FIT_PROMPT; True iff yes > no over the stretches, None if no frames."""
+    from src.stage2_video_understanding import _sample_frames_at
+    STRETCH = float(getattr(config, "VISIBILITY_STRETCH", 5.0))
+    pieces = []
+    for a, b in list(getattr(spec, "spans", None) or [(spec.start, spec.end)]):
+        k = max(1, int(round((b - a) / STRETCH)))
+        edges = [a + (b - a) * i / k for i in range(k + 1)]
+        pieces += list(zip(edges, edges[1:]))
+    yes = no = 0
+    label = spec.event_label.split(",")[0].split("(")[0].strip().lower()
+    for a, b in pieces:
+        n = max(frames_per_sound, 6)
+        lo, hi = a - 1.0, b + 1.0
+        times = [lo + (hi - lo) * t / (n - 1) for t in range(n)]
+        win = _sample_frames_at(Path(video_path), times)
+        if not win:
+            continue
+        ans = _ask(mdl, proc, SCENE_FIT_PROMPT.format(label=label), images=win, max_new=4).strip().lower()
+        if ans.startswith("y"):
+            yes += 1
+        elif ans.startswith("n"):
+            no += 1
+    print("       [stage5] F3 scene fit? " + spec.event_label + ": yes " + str(yes) + " / no " + str(no), flush=True)
+    if yes + no == 0:
+        return None
+    return yes > no
+
+
 def _speech_near(segments, start: float, end: float) -> str:
     """Whatever was said within SPEECH_WINDOW seconds of the sound, in order."""
     lo, hi = start - SPEECH_WINDOW, end + SPEECH_WINDOW
@@ -1497,6 +1530,21 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         if not active:
             print("       [stage5] every sound was already visible; nothing to add",
                   flush=True)
+            return
+
+    # 1a''. Round 14, F3 (LISTENER_SCENE_FIT): a sound the listener rescued is kept only if the VLM, on the frames of each
+    # stretch of it (the gate's own stretches and frames), says it could plausibly be heard in this scene; the stretch
+    # answers are combined by majority, as the gate combines its votes. Only rescued sounds are asked.
+    if getattr(config, "LISTENER_SCENE_FIT", False):
+        for spec in [s for s in specs if s.augment and getattr(s, "rescued", False)]:
+            if _scene_fit(spec, video_path, mdl, proc, frames_per_sound) is False:
+                spec.augment = False
+                spec.subject = ""
+                spec.image_prompt = ""
+                spec.reason = "rescued, but not plausible in this scene (F3) - dropped"
+                print("       [stage5] F3 dropped rescued " + spec.event_label, flush=True)
+        active = [s for s in specs if s.augment]
+        if not active:
             return
 
     # 1a'. corroboration: a sound in the band just above the bar needs a second signal

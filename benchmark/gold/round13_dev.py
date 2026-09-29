@@ -30,7 +30,8 @@ from benchmark.gold import dev_candidates_check as DCC
 from benchmark.gold import score_per_sound as S
 from src.labels import canonical
 from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_events, attach_breaks, fuse_flexsed,
-                                              listener_from_cache, listener_from_vcache)
+                                              listener_from_cache, listener_from_vcache, filter_rescued,
+                                              listener_p1_lookup)
 from src.types import AudioEvent
 
 WORK = DCC.WORK
@@ -49,7 +50,12 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "TWIN_MAX": False, "MIRROR_VETO": None, "MIRROR_OWN_MAX": 0.4, "IMPULSE_MIN_SPAN": None,
         "RETRIGGER": None, "RETRIGGER_RAW": False,
         "LISTENER_RESCUE": False, "LISTENER_CACHE": None, "LISTENER_LO": 0.4, "LISTENER_TH": 0.0, "LISTENER_BEATS_TH": None,
-        "LISTENER_RULE": None, "LISTENER_VCACHE": None}
+        "LISTENER_RULE": None, "LISTENER_VCACHE": None,
+        "LISTENER_NEW_TYPE_ONCE": False, "LISTENER_LOCAL_WINNER": False, "LISTENER_SCENE_FIT": False,
+        "LISTENER_SHADOW": False, "LISTENER_SHADOW_S": 0.2, "LISTENER_EDGE": False, "LISTENER_EDGE_S": 0.3,
+        "LISTENER_CONFIRMED_MIRROR": False, "LISTENER_DASM_VOTE": False, "LISTENER_DASM_DIR": None,
+        "LISTENER_DASM_BAR": 0.575, "LISTENER_DASM_PAD": 0.5,
+        "LABEL_FILTER": "depictable"}
 RT = (1.5, 0.4, 0.175)
 R1_ = {"TWIN_MAX": True}
 R6_ = {"RETRIGGER": RT, "RETRIGGER_RAW": True}
@@ -81,7 +87,24 @@ for _r in ("V1", "V2", "V3", "V4", "V12"):
     _c = {"LISTENER_RESCUE": True, "LISTENER_RULE": _r, "LISTENER_VCACHE": str(VCACHE), "LISTENER_LO": 0.5}
     ARMS[f"LR-{_r}"] = dict(_c)
     ARMS[f"LR-{_r}+1"] = {**_c, **R1_}
-STAGE5_KEYS = ("RETRIGGER_RAW",)                         # arm flags read after stage 4 (consolidate_families)
+# Round 14 (2026-09-29): precision filters on rescued spans, on the two amendment-A bases
+for _b in ("LR-V4+1", "LR-V12+1"):
+    for _fn, _f in (("F1", {"LISTENER_NEW_TYPE_ONCE": True}), ("F4", {"LISTENER_LOCAL_WINNER": True}),
+                    ("F1F4", {"LISTENER_NEW_TYPE_ONCE": True, "LISTENER_LOCAL_WINNER": True}),
+                    ("F1F4F3", {"LISTENER_NEW_TYPE_ONCE": True, "LISTENER_LOCAL_WINNER": True, "LISTENER_SCENE_FIT": True})):
+        ARMS[f"{_b}+{_fn}"] = {**ARMS[_b], **_f}
+R14 = [a for a in ARMS if a.startswith("LR-V4+1+") or a.startswith("LR-V12+1+")]
+for _a in list(R14):                                  # addendum: F5 / F6 on the best round-14 arm (picked in the job)
+    for _fn, _f in (("F5", {"LISTENER_SHADOW": True}), ("F6", {"LISTENER_EDGE": True}),
+                    ("F5F6", {"LISTENER_SHADOW": True, "LISTENER_EDGE": True})):
+        ARMS[f"{_a}+{_fn}"] = {**ARMS[_a], **_f}
+R14b = [a for a in ARMS if a.startswith(("LR-V4+1+", "LR-V12+1+"))]
+_F7 = {"MIRROR_VETO": 0.7, "LISTENER_CONFIRMED_MIRROR": True, "LISTENER_CACHE": str(LISTENER)}
+_F8 = {"LISTENER_DASM_VOTE": True, "LISTENER_DASM_DIR": str(DCC.DASM_DIR), "LISTENER_DASM_BAR": DCC.F["DASM_G"]}
+for _a in list(R14b):                                 # amendment B on the best arm after F1-F6 (picked in the job)
+    for _fn, _f in (("F7", _F7), ("F8", _F8), ("F7F8", {**_F7, **_F8})):
+        ARMS[f"{_a}+{_fn}"] = {**ARMS[_a], **_f}
+STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT")      # arm flags read after stage 4
 
 
 @contextlib.contextmanager
@@ -178,12 +201,17 @@ def build(st, sysn, arm, C, tr, offline=False):
         TRACE.extend({"step": "extract", "label": e.label, "start": round(e.start, 3), "end": round(e.end, 3),
                       "conf": round(e.confidence, 3)} for e in events)
         prov = trace_provider(tr) if offline else panns_provider(st)
+        lp1 = (listener_p1_lookup(config.LISTENER_VCACHE, config.LISTENER_CACHE, st)
+               if config.LISTENER_CONFIRMED_MIRROR else None)
         lis = None
         if config.LISTENER_RESCUE:
             lis = (listener_from_vcache(config.LISTENER_VCACHE, st) if config.LISTENER_RULE
                    else listener_from_cache(config.LISTENER_CACHE, st))
         events, flex_ids, ffw = fuse_flexsed(events, Bfr[0], Bfr[1], Bfr[2], Ffr[0], Ffr[1], Ffr[2],
-                                             config.AED_MIN_DUR, backend="BEATs", panns=prov, listener=lis)
+                                             config.AED_MIN_DUR, backend="BEATs", panns=prov, listener=lis,
+                                             listener_p1=lp1)
+        if lp1 is not None:
+            info["f7"] = list(LISTENER_STATS.get("f7", []))
         if lis is not None:
             info["listener"] = json.loads(json.dumps(LISTENER_STATS))
         mine = {n: [(x["label"], x["start"], x["end"]) for x in TRACE if x["step"] == n]
@@ -200,6 +228,7 @@ def build(st, sysn, arm, C, tr, offline=False):
         for e in events:
             o = "flex" if id(e) in flex_ids else "tagger"
             r = {"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": o,
+                 "rescued": bool(getattr(e, "rescued", False)),
                  "pre_start": float(e.start)}
             if o == "flex":
                 r["refine"] = "none (frame-level)"
@@ -212,6 +241,24 @@ def build(st, sysn, arm, C, tr, offline=False):
             rows.append(r)
         info["ffw"] = ffw
     return rows, info
+
+
+def filter_rows(rows, arm, C, ffw, res, k, st):
+    """round 14: the pipeline's filter_rescued on the refined rows (as detect_events, after refinement)"""
+    cfg = arm_cfg(arm)
+    if not cfg.get("LISTENER_RESCUE"):
+        return rows
+    with flags(cfg):
+        evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False)) for r in rows]
+        dasm = None
+        if cfg.get("LISTENER_DASM_VOTE") and cfg.get("LISTENER_DASM_DIR"):
+            f = Path(cfg["LISTENER_DASM_DIR"]) / f"{st}.npz"
+            dasm = DCC.load_fr(f) if f.exists() else None
+        kept, dropped = filter_rescued(evs, ffw, C["flex"][1], C["flex"][2], dasm=dasm)
+    keep = {id(e) for e in kept}
+    if any(dropped.values()):
+        res.setdefault("r14_dropped", {})[f"{k}|{st}"] = dropped
+    return [r for r, e in zip(rows, evs) if id(e) in keep]
 
 
 def add_breaks(rows, arm, C, ffw):
@@ -259,6 +306,8 @@ def stage4(arms, offline=False):
                         sig = lambda rr: sorted((r["label"], round(r["pre_start"], 3), round(r["start"], 3), round(r["end"], 3),
                                                  round(r["conf"], 4), r["origin"]) for r in rr)
                         res["conf_eq"][f"{sysn}|{st}"] = sig(rows) == sig(ref["arms"][f"B0r|{sysn}"][st])
+                if "f7" in info:
+                    res.setdefault("f7", {})[f"{k}|{st}"] = info["f7"]
                 if "listener" in info:
                     res.setdefault("listener", {})[f"{k}|{st}"] = info["listener"]
                 if info["mirror_dropped"]:
@@ -270,6 +319,7 @@ def stage4(arms, offline=False):
                         out = _refine_onsets_cam(DCC.wav_of(st), ev, C["beats"][2], "cuda", skip_ids=set())
                     for r, e in zip(live, out):
                         r["start"] = float(e.start)
+                rows = filter_rows(rows, arm, C, info["ffw"], res, k, st)
                 add_breaks(rows, arm, C, info["ffw"])
                 res["arms"][k][st] = rows
         if not offline:
@@ -298,7 +348,7 @@ def stage5(arms):
     for k, v in (("FLEXSED_BAR", 0.8), ("FLEXSED_VETO", 0.3), ("PANNS_VETO", 0.05), ("ONSET_MONOTONE", True),
                  ("MAX_SPAN", None), ("VLM_MODEL", "Qwen/Qwen3.8-27B"), ("VLM_THINKING", False),
                  ("LABEL_FILTER", "depictable"), ("KINSHIP_DIRECTED", False), ("PICTURE_MIN_CONF", None),
-                 ("BEATS_SELF_VETO", 0.0), ("RETRIGGER_RAW", False)):
+                 ("BEATS_SELF_VETO", 0.0), ("RETRIGGER_RAW", False), ("LISTENER_SCENE_FIT", False)):
         assert getattr(config, k, None) == v, (k, getattr(config, k, None), v)
     if not MEMO.exists() and (DCC.DC / "ask_memo.json").exists():
         MEMO.parent.mkdir(parents=True, exist_ok=True)
@@ -327,7 +377,7 @@ def stage5(arms):
                 scene = SceneContext(**json.loads((src / "scene.json").read_text(encoding="utf-8")))
                 segments = [SpeechSegment(**x) for x in json.loads((src / "segments.json").read_text(encoding="utf-8"))]
                 events = [AudioEvent(r["label"], r["start"], r["end"], r["conf"],
-                                     breaks=[tuple(b) for b in r.get("breaks", [])])
+                                     breaks=[tuple(b) for b in r.get("breaks", [])], rescued=bool(r.get("rescued", False)))
                           for r in s4["arms"][f"{arm}|{sysn}"][st]]
                 gv = src / "gate_votes.json"
                 R.votes = json.loads(gv.read_text(encoding="utf-8")) if gv.exists() else []
@@ -480,14 +530,27 @@ def _find(pics, x):
     raise KeyError(x)
 
 
+def best14(which="F5F6"):
+    """the best round-14 arm so far (lowest DEV cost at beta 2, ties fewer wrong) and its next extra arms: which = F5F6
+    (addendum, among the 8 filter arms) or F7F8 (amendment B, among all round-14 arms incl. F5/F6)"""
+    r = json.loads(OUT.read_text(encoding="utf-8"))["rows"]["proposed"]
+    pool = R14 if which == "F5F6" else R14b
+    c = [a for a in pool if a in r]
+    b = min(c, key=lambda a: (r[a]["viewer_cost"], r[a]["wrong"]))
+    ext = ("F5", "F6", "F5F6") if which == "F5F6" else ("F7", "F8", "F7F8")
+    print(" ".join(f"{b}+{x}" for x in ext))
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("panns", "stage4", "stage5", "score"))
-    ap.add_argument("--arms", nargs="+", default=list(ARMS))
+    ap.add_argument("step", choices=("panns", "stage4", "stage5", "score", "best14"))
+    ap.add_argument("--arms", nargs="+", default=[a for a in ARMS if not a.endswith(("+F5", "+F6", "+F5F6", "+F7", "+F8",
+                                                                                      "+F7F8"))])
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--which", default="F5F6")
     a = ap.parse_args()
     {"panns": panns, "stage4": lambda: stage4(a.arms, a.offline), "stage5": lambda: stage5(a.arms),
-     "score": score}[a.step]()
+     "score": score, "best14": lambda: best14(a.which)}[a.step]()
 
 
 if __name__ == "__main__":
