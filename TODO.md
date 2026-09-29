@@ -29,6 +29,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-30 Round 14 amendments C, D, I, J, K (+K2 with the 27 missing listener answers, 58e9420) and the BEATs weak-band P3 screen: none beats TO1+F7F8 on DEV. `docs/prereg_round13_detector_push.md`
 - 2026-09-29 Round 13 (12-h detector push): only R13-1 twin-max passed DEV (+1 hit); TEST = same (no picture changed), nothing ships. Audio-LLM (Qwen3-Omni) rescue: +5..8 real dropped sounds but ~3 wrong per hit under yes/no, MC, paired-cut, localisation, open-list questions; worse on both DEV halves. B1 self-veto worse than PANNs on TEST too (2.83 vs 2.63, p 0.043). `docs/prereg_round13_detector_push.md`
 - 2026-09-28 Cluster: PE-A-Frame old revision deleted (7.7 GB; 37 GB free); `~/Transformer4SED` deleted.
 - 2026-09-28 DEV confirmatory detector check: all 8 candidates (EAT-R, DASM D1, I4, I6, I7, R1, R6, R7) worse than ours; best I7 −0.08 cost but loses 1 hit; R1 +3 hits but +7 wrong. `~/Transformer4SED` deleted. `docs/dev_candidates_check_2026-09-28.md`
