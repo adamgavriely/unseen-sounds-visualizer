@@ -395,3 +395,65 @@ ontology siblings (Dog and Cat stay different). Arms of amendment F that used th
 (2) Stack: TIER + ONCE + R13-1 gained 5 needed sounds (Hammer, Cricket, Laughter, Gunshot, Explosion) at +10 wrong (cost
 = B0r); the swap rule F7 removed wrong pictures in the filter arms. Arms: **TIER+ONCE+R13-1+F7**, **TIER+ONCE+R13-1+F7+F8**,
 and the same two with FIX-FAM (canonical) + FIX-CTRL + FIX-GATE.
+
+### Round 14 amendment E (TIER, ONCE, QV4_AFYN), DEV, job 31526089 (27 min)
+Flags: `LISTENER_RULE` "TIER" (Qwen V4, and below a FlexSED run peak of 0.6 also AF V4) and "QV4_AFYN" (Qwen V4 AND AF
+yes/no > 0), both derived in `listener_from_vcache` with `LISTENER_AFCACHE`; `LISTENER_ONCE` (earliest rescued span per
+family per clip) in `filter_rescued`. Gates: flags off D0 98/98, D5 49/49 both systems. Cache misses (a) 0, (b) 0; with XQ
+the extra queries' runs have no listener entry (not rescued).
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible | half A: hits / wrong / Δ | half B: hits / wrong / Δ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| TIER | 22 | 19 | 35 (5 / 23 / 7) | 2.82 | +0.04 [-0.65, +0.61] | 2.10 | 1.82 | no | 10 / 15 / +0.08 [-0.56, +0.72] | 9 / 20 / +0.00 [-1.33, +1.00] |
+| TIER+ONCE | 21 | 18 | 34 (5 / 22 / 7) | 2.86 | +0.08 [-0.45, +0.57] | 2.16 | 1.60 | no | 10 / 15 / +0.08 [-0.56, +0.72] | 8 / 19 / +0.08 [-0.83, +0.83] |
+| TIER+ONCE+1 | 22 | 19 | 34 (5 / 22 / 7) | 2.78 | +0.00 [-0.57, +0.57] | 2.08 | 2.00 | no | 10 / 15 / +0.08 [-0.56, +0.72] | 9 / 19 / -0.08 [-1.17, +0.83] |
+| TIER+ONCE+1+XQ | 22 | 17 | 40 (6 / 25 / 9) | 3.18 | +0.41 [-0.33, +1.18] | 2.37 | 0.75 | no | 9 / 21 / +0.72 [-0.08, +1.68] | 8 / 19 / +0.08 [-1.00, +1.25] |
+| QV4AFYN+ONCE+1 | 22 | 19 | 35 (5 / 21 / 9) | 2.82 | +0.04 [-0.49, +0.53] | 2.10 | 1.82 | no | 10 / 15 / +0.08 [-0.40, +0.56] | 9 / 20 / +0.00 [-1.00, +0.84] |
+
+
+TIER+ONCE+R13-1: needed gained `ambient_citywalk_nyc_1689` Hammer 13.7 s; `ambient_nature_rainforest_7629` Cricket 0.1 s; `ambient_snow_walk_930` Laughter 8.1 s; `as_explosion_XJ8lc3I6` Gunshot, gunfire 0.0 s; `as_explosion_XJ8lc3I6` Explosion 2.8 s; lost none. Wrong pictures appeared: `ambient_citywalk_nyc_2627` Train 10.00 (cross); `ambient_market_marrakech_3102` Car passing by 13.52 (cross); `ambient_nature_rainforest_2179` Bell 10.60 (cross); `as_glass_oHil9Ip_` Coin (dropping) 9.00 (cross); `b3_crossing_bells` Insect 15.00 (cross); `b3_crossing_bells` Water 10.00 (cross); `b3_favela_rio` Bird 4.60 (cross); `b3_golf_course` Bird 18.84 (cross); `b3_golf_course` Insect 10.00 (cross); `bell_miami` Train 8.00 (cross); `movie_blueplanet_115` Laughter 0.00 (cross); `mv_tornado_scene` Alarm 13.00 (cross); `un_driving_motorcycle_DgdHSmwA` Gunshot 13.52 (cross). Disappeared: `ambient_nature_rainforest_7629` Cricket 4.50 (cross); `as_fire_alarm_kGKZ0YK4` Alarm 8.89 (visible); `london_protest_01` Vehicle 0.25 (visible); `mv_detective_crime_scene` Alarm 3.92 (cross).
+Without gate (hits / wrong / cost): B0r 17/50/3.59; TIER 22/73/4.12; TIER+ONCE 21/70/4.08; TIER+ONCE+1 22/73/4.12; TIER+ONCE+1+XQ 21/88/4.82; QV4AFYN+ONCE+1 22/73/4.12.
+**Reading.** No arm is eligible; TIER+ONCE+R13-1 ties B0r (+5 hits, +10 wrong); + XQ is worse (loses a Crowing and the Gunshot).
+
+### Round 14 amendments F and H (fixes, arbiter; TIER + F7/F8), DEV, job 31543142 (16 min)
+Flags: `FIX_FAM` (F4 compares families: canonical equal or ontology ancestor/descendant; amendment H: NOT siblings —
+the sibling reading was corrected before any arm ran, so no sibling-reading row exists), `FIX_EARLY` (F1 keeps the earliest),
+`FIX_CTRL` (V12 = V1 when the item has no V2 control window), `FIX_GATE` (`reason.decide_subjects`: a "visible" verdict that
+names nothing is not visible; 2 scored-run votes on DEV, both the ambulance Vehicle), `LISTENER_ARBITER` (Qwen V4 & AF V4 but
+V12 no → kept as `arbiter`; stage 5 asks the prereg prompt on 6 frames of the span, accepts "plausible" + a named cue).
+A0 = LR-V12+R13-1+F1F4F3+F7F8 + FIX_FAM + FIX_EARLY + FIX_CTRL; TO1 = TIER+ONCE+R13-1; FIX = FIX_FAM + FIX_CTRL + FIX_GATE.
+Gates: flags off D0 98/98, conf-equality 98/98, D5 49/49 both systems.
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible | half A: hits / wrong / Δ | half B: hits / wrong / Δ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| B0r+FIXGATE | 17 | 14 | 25 (6 / 12 / 7) | 2.82 | +0.04 [+0.00, +0.12] | 2.31 | 0.00 | no | 8 / 11 / +0.08 [+0.00, +0.24] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| A0 | 18 | 15 | 22 (6 / 10 / 6) | 2.61 | -0.16 [-0.49, +0.08] | 2.16 | any | yes | 8 / 9 / -0.08 [-0.24, +0.00] | 7 / 13 / -0.25 [-0.92, +0.25] |
+| A0+FIXGATE | 18 | 15 | 23 (6 / 11 / 6) | 2.65 | -0.12 [-0.45, +0.12] | 2.18 | any | yes | 8 / 10 / +0.00 [-0.24, +0.24] | 7 / 13 / -0.25 [-0.92, +0.25] |
+| A1 | 19 | 16 | 24 (6 / 12 / 6) | 2.61 | -0.16 [-0.53, +0.16] | 2.12 | any | yes | 9 / 11 / -0.08 [-0.56, +0.32] | 7 / 13 / -0.25 [-0.92, +0.25] |
+| TO1+F7 | 22 | 18 | 32 (5 / 21 / 6) | 2.78 | +0.00 [-0.61, +0.61] | 2.12 | 2.00 | no | 10 / 14 / +0.00 [-0.56, +0.56] | 8 / 18 / +0.00 [-1.17, +1.08] |
+| TO1+F7F8 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1+F7+FIX | 22 | 18 | 34 (5 / 23 / 6) | 2.86 | +0.08 [-0.57, +0.69] | 2.16 | 1.60 | no | 10 / 15 / +0.08 [-0.56, +0.64] | 8 / 19 / +0.08 [-1.08, +1.17] |
+| TO1+F7F8+FIX | 21 | 18 | 26 (6 / 14 / 6) | 2.53 | -0.24 [-0.78, +0.20] | 2.00 | 8.00 | yes | 9 / 11 / -0.08 [-0.56, +0.32] | 9 / 15 / -0.42 [-1.42, +0.42] |
+
+
+**Best = TO1+F7F8** (TIER + ONCE + R13-1 + confirmed mirror veto + DASM vote): needed gained `ambient_nature_rainforest_7629` Cricket 0.1 s; `ambient_snow_walk_930` Laughter 8.1 s; `as_explosion_XJ8lc3I6` Gunshot, gunfire 0.0 s; `as_explosion_XJ8lc3I6` Explosion 5.6 s; lost none. Wrong pictures appeared: `b3_golf_course` Bird 18.84 (cross); `b3_laundromat` Train 1.00 (phantom); `b3_laundromat` Train 16.25 (phantom); `bell_miami` Train 8.00 (cross); `movie_blueplanet_115` Laughter 0.00 (cross); `un_driving_motorcycle_DgdHSmwA` Gunshot 13.52 (cross). Disappeared: `ambient_nature_rainforest_7629` Cricket 4.50 (cross); `b3_favela_rio` Bird 14.00 (cross); `b3_laundromat` Vehicle 0.30 (phantom); `b3_laundromat` Vehicle 14.25 (phantom); `b3_laundromat` Vehicle 23.25 (phantom); `mv_tornado_scene` Vehicle 7.25 (cross).
+A1 (arbiter): needed gained `ambient_nature_rainforest_7629` Cricket 0.1 s; `ambient_snow_walk_930` Laughter 8.1 s; lost none. Wrong pictures appeared: `b3_laundromat` Train 1.00 (phantom); `b3_laundromat` Train 16.25 (phantom); `bell_miami` Train 8.00 (cross); `ly_ambulance_(siren)_-yPSgCn` Vehicle 0.00 (cross); `mv_storm_scene_house` Shout 23.00 (cross); `un_driving_motorcycle_DgdHSmwA` Gunshot 13.52 (cross). Disappeared: `ambient_nature_rainforest_7629` Cricket 4.50 (cross); `b3_favela_rio` Bird 14.00 (cross); `b3_laundromat` Vehicle 0.30 (phantom); `b3_laundromat` Vehicle 14.25 (phantom); `b3_laundromat` Vehicle 23.25 (phantom); `mv_tornado_scene` Vehicle 7.25 (cross).
+Without gate: B0r 17/50/3.59; B0r+FIXGATE 17/50/3.59; A0 18/50/3.51; A0+FIXGATE 18/50/3.51; A1 19/51/3.47; TO1+F7 22/68/3.92; TO1+F7F8 21/53/3.39; TO1+F7+FIX 22/68/3.92; TO1+F7F8+FIX 21/53/3.39.
+**Reading.** TO1+F7F8 is the best DEV arm so far: +4 hits for 0 extra wrong, Δ −0.33 [−0.86, +0.08], cheaper than B0r at
+every β, better on both halves; DEV-eligible. A0 gives the same pictures as LR-V12+1+F1F4F3+F7F8 (the three fixes change
+nothing once F8 is on). FIX_GATE hurts in every arm: it lets the ambulance Vehicle 0.0 s picture through (a cross; the 7.3 s
+onset is still missed). FIX_FAM/FIX_CTRL have no effect on TIER arms (they touch only F4 and V12).
+
+## Confirmation set 1: Adam's tagger set (written 2026-09-29, before any pipeline run on these clips)
+16 new clips `data/input/tagger_set/tg_dNNN.mp4`, tags `benchmark/gold/annotations/tagger_AG.json` (31 sounds, 9 needed;
+none of the clips is in DEV or TEST). Only counts were read; no pipeline output exists for them. Disclosure: the tagger
+tool showed detector suggestions to the annotator (`from_suggestion` / `suggestions_shown_at` fields).
+**Candidates (frozen now):** C1 = TO1+F7F8 (the best DEV arm); C2 = the stacked amendment-G arm IF it is DEV-eligible
+and beats C1 on DEV cost, else none. Baselines re-run in the same job: B0r (primary) and B1.
+**Test:** full pipeline, `score_per_sound` on the 16 clips, paired clip bootstrap 2000 seed 0; Holm over the candidates.
+**Better** iff hits do not drop, wrong <= B0r wrong + 2 × hits gained, and Δcost < 0 with Holm-adjusted one-sided
+p < 0.05; else **same** unless Δcost > 0 with lower CI > 0 (**worse**). With 9 needed sounds this set is small: it is read
+together with the 100-clip set later (same rule), not alone. Scored ONCE; features (caches, listener answers, stage
+1–5 for B0r) may be built before, without reading the tags.
