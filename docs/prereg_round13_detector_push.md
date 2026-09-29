@@ -389,3 +389,9 @@ gap 1.5 → 1.0 s; G7 near-duplicate merge (DEDUP_SIM 0.80) → off; G8 gate: dr
 visible (instead of the majority).
 Report per rule: Δhits, Δwrong (v/c/p), Δcost vs its base, which needed sounds were gained. **A rule change becomes a
 candidate iff Δhits >= 1 and Δwrong <= 2 × Δhits.** Candidates are then stacked (in order of Δcost) into one final arm.
+**Round 14 amendment H (written after the amendment-E table, before any number of these arms).** (1) Clarification of
+FIX-FAM: "same family" = the pipeline's canonical family / `same_family` (ancestor or descendant in the family map), NOT
+ontology siblings (Dog and Cat stay different). Arms of amendment F that used the sibling reading are re-run with this one.
+(2) Stack: TIER + ONCE + R13-1 gained 5 needed sounds (Hammer, Cricket, Laughter, Gunshot, Explosion) at +10 wrong (cost
+= B0r); the swap rule F7 removed wrong pictures in the filter arms. Arms: **TIER+ONCE+R13-1+F7**, **TIER+ONCE+R13-1+F7+F8**,
+and the same two with FIX-FAM (canonical) + FIX-CTRL + FIX-GATE.
