@@ -561,3 +561,7 @@ K2 offered 27 new runs (539 vs 512 asked), all without listener answers → not 
 steepest-rise start lands after the annotated onset (e.g. Hammer 13.76 → 15.64 s), 7 hits lost. I2 keeps visible sources
 (+2 hits, +6 visible). K1 brings back Hammer 13.7 and Explosion 2.8 but ONCE then drops Explosion 5.6, the favela Train
 14.6 is lost, and 6 cross pictures come in: same hits, +6 wrong.
+**BEATs weak-band rescue screen (P3, 2026-09-30): no pipeline arm run.** 272 DEV P3 spans scored by Qwen V4/V1/V2 and
+Audio Flamingo V4. Even the pool upper bound (every P3 span) recovers NONE of the 18 needed sounds TO1+F7F8 misses; every
+rule's accepts are mostly cross/phantom (e.g. both-V4 + once: 2 hit-class / 13 wrong-class, and the 2 hits are sounds
+already shown). `benchmark/gold/dev_listener_p3*.json`, `benchmark/gold/listener_p3.py`.
