@@ -78,6 +78,7 @@ class AudioEvent:
     # Round 14: raised by the listener rescue (R13-3), so the precision filters can act on these spans only
     rescued: bool = False
     arbiter: bool = False    # Round 14 amendment F: rescued only pending the stage-5 VLM arbiter question
+    agree: bool = False      # Round 14 amendment K1: both listeners (Qwen V4 and AF V4) accepted this rescued span
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

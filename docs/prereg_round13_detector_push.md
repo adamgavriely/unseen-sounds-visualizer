@@ -529,3 +529,35 @@ with a moving camera). J4: the two audio LLMs "agree" mostly by both answering 0
 Qwen 62 %); runs with no gold sound agree 58 % of the time; the agreed mean lands in the hit window less often than the
 runs' own starts (19 vs 24 of 74). Both would make timing worse, so the +J3/+J4 arms are not run.
 `benchmark/gold/motion_ts_screen.json`.
+
+### Round 14 amendments I and K (on TO1+F7F8), DEV, job 31562590 (30 min)
+Flags: I1 `ONSET_RELOC` (`relocate_onsets`, stage 4 after refinement, before the rescue filters: start at the steepest rise of
+the family evidence — BEATs held per window, FlexSED family + specific queries — within the span's first 3 s after the last
+dip below half the span's peak; a >= 1.5 s dip below half splits the span), I5 `TIER_SPECIFIC` (tier peak includes the 120
+folded queries of `data/work/flexsed_extra_dev` as evidence), I2 `ACTIVITY_GATE` (`reason._not_producing`: a spec the gate
+silences is kept if the prereg question on 6 frames at onset ± 0.5 s gets "no"), K1 `F8_BYPASS_BOTH` (rescues accepted by
+Qwen V4 AND AF V4 skip F8), K2 `RESCUE_COVERED` (a sub-display BEATs span no longer counts as covering a band run), K3
+`TIER_HIGH_OR`. **I6 was not run: it is the existing behaviour** (P2 holds runs of any length; 29 short (< 0.5 s) impulsive
+runs — Explosion, Gasp, Gunshot, Hammer — all with cached answers; the rescue already cuts them to the 1-s window).
+K2 offered 27 new runs (539 vs 512 asked), all without listener answers → not rescued. Gates: D0 98/98, conf-equality
+98/98, D5 49/49 both systems.
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ β=2 vs B0r [95 % CI] | cost β=1 | break-even β | eligible | half A: hits / wrong / Δ | half B: hits / wrong / Δ |
+|---|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | 2.29 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] |
+| TO1+F7F8 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1F7F8+I1 | 13 | 11 | 41 (6 / 29 / 6) | 3.71 | +0.94 [+0.16, +1.71] | 2.88 | -0.71 | no | 4 / 20 / +1.44 [+0.32, +2.64] | 7 / 21 / +0.42 [-0.67, +1.42] |
+| TO1F7F8+I5 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1F7F8+I2 | 21 | 20 | 41 (12 / 20 / 9) | 2.98 | +0.20 [-0.45, +0.82] | 2.14 | 1.41 | no | 10 / 19 / +0.40 [-0.40, +1.28] | 10 / 22 / +0.00 [-1.00, +0.92] |
+| TO1F7F8+I125 | 13 | 11 | 58 (9 / 43 / 6) | 4.41 | +1.63 [+0.82, +2.49] | 3.22 | -0.35 | no | 4 / 28 / +2.08 [+0.96, +3.36] | 7 / 30 / +1.17 [+0.08, +2.25] |
+| TO1F7F8+K1 | 22 | 18 | 30 (5 / 19 / 6) | 2.69 | -0.08 [-0.69, +0.49] | 2.08 | 2.67 | yes | 10 / 12 / -0.16 [-0.72, +0.24] | 8 / 18 / +0.00 [-1.17, +1.00] |
+| TO1F7F8+K2 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.86, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.50, +0.25] |
+| TO1F7F8+K3 | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | -0.33 [-0.82, +0.08] | 1.96 | any | yes | 9 / 10 / -0.16 [-0.56, +0.16] | 9 / 14 / -0.50 [-1.42, +0.17] |
+| TO1F7F8+K1K2 | 22 | 18 | 30 (5 / 19 / 6) | 2.69 | -0.08 [-0.69, +0.49] | 2.08 | 2.67 | yes | 10 / 12 / -0.16 [-0.72, +0.24] | 8 / 18 / +0.00 [-1.17, +1.00] |
+| TO1F7F8+K1K2K3 | 22 | 18 | 30 (5 / 19 / 6) | 2.69 | -0.08 [-0.65, +0.45] | 2.08 | 2.67 | yes | 10 / 12 / -0.16 [-0.72, +0.24] | 8 / 18 / +0.00 [-1.08, +1.00] |
+
+
+**Reading.** Nothing beats TO1+F7F8. I5, K2, K3 leave it unchanged (K3 swaps one cross picture). I1 as written is harmful: the
+steepest-rise start lands after the annotated onset (e.g. Hammer 13.76 → 15.64 s), 7 hits lost. I2 keeps visible sources
+(+2 hits, +6 visible). K1 brings back Hammer 13.7 and Explosion 2.8 but ONCE then drops Explosion 5.6, the favela Train
+14.6 is lost, and 6 cross pictures come in: same hits, +6 wrong.

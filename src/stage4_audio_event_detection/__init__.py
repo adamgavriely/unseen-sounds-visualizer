@@ -467,7 +467,8 @@ def relocate_onsets(events, framewise, times, labels, ffw, ftimes, flabels, extr
             if en - st <= dt:
                 continue
             ne = AudioEvent(e.label, st, en, e.confidence, rescued=getattr(e, "rescued", False),
-                            arbiter=getattr(e, "arbiter", False), breaks=list(getattr(e, "breaks", []) or []))
+                            arbiter=getattr(e, "arbiter", False), breaks=list(getattr(e, "breaks", []) or []),
+                            agree=getattr(e, "agree", False))
             new.append(ne)
         if not new:
             out.append(e); continue
@@ -764,7 +765,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                             LISTENER_STATS["b_missing"] += 1
                             LISTENER_STATS["b_missing_list"].append([e.label, round(e.start, 2), round(e.end, 2)])
                         elif _accepted(it, lth):
-                            keep_b.add(id(e))
+                            keep_b.add(id(e)); e.agree = bool((it.get("accept") or {}).get("AGREE_V4", False))
                             LISTENER_STATS["b_kept"].append([e.label, round(e.start, 2), round(e.end, 2), it.get("score")])
                         elif _arbiter_candidate(it):
                             keep_b.add(id(e)); e.arbiter = True
@@ -857,6 +858,14 @@ def _arbiter_candidate(it) -> bool:
     return bool(acc.get("AGREE_V4", False)) and not bool(acc.get("V12", False))
 
 
+def _tier(acc: dict, peak: float) -> bool:
+    """amendment E TIER: peak >= 0.6 -> Qwen V4 (amendment K3, TIER_HIGH_OR: Qwen V4 OR AF V4); below -> Qwen V4 AND AF V4"""
+    v4, af = bool(acc.get("V4", False)), bool(acc.get("AF_V4", False))
+    if peak >= 0.6:
+        return (v4 or af) if getattr(config, "TIER_HIGH_OR", False) else v4
+    return v4 and af
+
+
 def _accepted(it, lth: float) -> bool:
     """R13-3 decision for one cached item: the named variant's accept flag (config.LISTENER_RULE, amendment A) or, with no
     rule, the yes/no score > LISTENER_TH"""
@@ -901,10 +910,11 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
             av4 = bool(((a or {}).get("accept") or {}).get("V4", False))
             acc = dict(it.get("accept") or {})
             acc["AGREE_V4"] = bool(acc.get("V4", False)) and av4
+            acc["AF_V4"] = av4
             acc["AGREE_V12"] = bool(acc.get("V12", False)) and av4
             # amendment E: TIER = Qwen V4, and below a FlexSED run peak of 0.6 also AF V4; QV4_AFYN = Qwen V4 AND AF yes/no > 0
             pk = float(it.get("peak", 1.0) if it.get("peak") is not None else 1.0)
-            acc["TIER"] = bool(acc.get("V4", False)) and (pk >= 0.6 or av4)
+            acc["TIER"] = _tier(acc, pk)
             ayn = (a or {}).get("afn_yn_x")
             acc["QV4_AFYN"] = bool(acc.get("V4", False)) and ayn is not None and float(ayn) > 0
             acc["AF_missing"] = a is None
@@ -1031,6 +1041,8 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
         for e in resc:
             if id(e) in drop:
                 continue
+            if getattr(config, "F8_BYPASS_BOTH", False) and getattr(e, "agree", False):
+                dropped.setdefault("F8_bypassed", []).append(sig(e)); continue   # amendment K1: two audio LLMs outvote one SED
             if dasm is None:
                 dropped.setdefault("F8_no_dasm", []).append(sig(e)); continue
             dfw, dts, dl = dasm
@@ -1081,8 +1093,13 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
     lo = float(getattr(config, "LISTENER_LO", 0.4))
     fw_, ft_ = np.asarray(ffw), np.asarray(ftimes)
 
+    k2 = bool(getattr(config, "RESCUE_COVERED", False))
+    disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+
     def covered(fam, a, b):
-        return any(canonical(e.label) == fam and min(b, e.end) - max(a, e.start) > 0 for e in events)
+        # amendment K2 (RESCUE_COVERED): a same-family BEATs span below the display bar no longer hides a band run
+        return any(canonical(e.label) == fam and min(b, e.end) - max(a, e.start) > 0
+                   and not (k2 and id(e) not in flex_ids and e.confidence < disp) for e in events)
     add = []
     for c, lab in enumerate(flabels):
         fam = canonical(lab)
@@ -1104,7 +1121,7 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 # amendment I5: the tier's peak = max over the family's queries and its specific child queries in the run
                 spk = max(pk, _family_peak(fam, a, b, fw_, ft_, flabels, extra))
                 acc = dict(it["accept"])
-                acc["TIER"] = bool(acc.get("V4", False)) and (spk >= 0.6 or bool(acc.get("AGREE_V4", False)))
+                acc["TIER"] = _tier(acc, spk)
                 it = {**it, "accept": acc}
             arb = False
             if not _accepted(it, lth) and _arbiter_candidate(it):
@@ -1112,7 +1129,8 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 LISTENER_STATS.setdefault("arbiter", []).append([lab, round(a, 2), round(b, 2), "a"])
             if arb or _accepted(it, lth):
                 s, e_ = (a, b) if b - a >= LISTEN_SHORT else (float(it["cut_start"]), float(it["cut_end"]))
-                add.append(AudioEvent(lab, s, e_, pk, rescued=True, arbiter=arb))
+                add.append(AudioEvent(lab, s, e_, pk, rescued=True, arbiter=arb,
+                                      agree=bool((it.get("accept") or {}).get("AGREE_V4", False))))
                 LISTENER_STATS["a_added"].append([lab, round(s, 2), round(e_, 2), round(pk, 3), it.get("score")])
     events = events + add
     flex_ids |= {id(e) for e in add}

@@ -407,6 +407,9 @@ PANNS_VETO_SKIP_ABOVE = None  # Round 14 amendment G5: FlexSED-only spans with p
 ONSET_RELOC = False           # Round 14 amendment I1: picture start at the steepest rise of the family's evidence; split at dips
 TIER_SPECIFIC = False         # Round 14 amendment I5: TIER peak includes the specific (folded) child queries (evidence only)
 ACTIVITY_GATE = False         # Round 14 amendment I2: a gate-visible sound is kept if its source is not visibly producing it
+F8_BYPASS_BOTH = False        # Round 14 amendment K1: no DASM vote for a rescue both Qwen V4 and AF V4 accept
+RESCUE_COVERED = False        # Round 14 amendment K2: a sub-display BEATs span does not hide a FlexSED band run from the rescue
+TIER_HIGH_OR = False          # Round 14 amendment K3: TIER, peak >= 0.6: Qwen V4 OR AF V4
 FIX_FAM = False               # Round 14 amendment F: F4 compares families (sibling/child queries = own family)
 FIX_EARLY = False             # Round 14 amendment F: F1 keeps the earliest accepted run, not the strongest
 FIX_CTRL = False              # Round 14 amendment F: V12 = V1 alone when V2 has no control window

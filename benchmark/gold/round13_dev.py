@@ -59,6 +59,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority",
         "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
+        "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
         "FLEXSED_EXTRA": False, "FLEXSED_EXTRA_DIR": None, "FLEXSED_EXTRA_QUERIES": None,
@@ -155,6 +156,14 @@ ARMS["TO1F7F8+I1"] = {**ARMS["TO1+F7F8"], **_EV, "ONSET_RELOC": True}
 ARMS["TO1F7F8+I5"] = {**ARMS["TO1+F7F8"], **_EV, "TIER_SPECIFIC": True}
 ARMS["TO1F7F8+I2"] = {**ARMS["TO1+F7F8"], "ACTIVITY_GATE": True}
 ARMS["TO1F7F8+I125"] = {**ARMS["TO1+F7F8"], **_EV, "ONSET_RELOC": True, "TIER_SPECIFIC": True, "ACTIVITY_GATE": True}
+# amendment K on TO1+F7F8
+_K = {"K1": {"F8_BYPASS_BOTH": True}, "K2": {"RESCUE_COVERED": True}, "K3": {"TIER_HIGH_OR": True}}
+for _n in ("K1", "K2", "K3", "K1K2", "K1K2K3"):
+    _c = dict(ARMS["TO1+F7F8"])
+    for _k in ("K1", "K2", "K3"):
+        if _k in _n:
+            _c.update(_K[_k])
+    ARMS[f"TO1F7F8+{_n}"] = _c
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
 # picture floor) is a no-op on these bases (the scored config has no floor) and is not run; G6 = MERGE_GAP 2.0 -> 1.0
 GRULES = {"G1": {"DISPLAY_THRESHOLD": 0.30, "AUGMENT_THRESHOLD": 0.30}, "G3": {"AED_MIN_DUR": 0.3},
@@ -303,6 +312,7 @@ def build(st, sysn, arm, C, tr, offline=False):
             o = "flex" if id(e) in flex_ids else "tagger"
             r = {"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": o,
                  "rescued": bool(getattr(e, "rescued", False)), "arbiter": bool(getattr(e, "arbiter", False)),
+                 "agree": bool(getattr(e, "agree", False)),
                  "pre_start": float(e.start)}
             if o == "flex":
                 r["refine"] = "none (frame-level)"
@@ -325,7 +335,7 @@ def reloc_rows(rows, arm, C, info, res, k, st):
         return rows
     with flags(cfg):
         evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False),
-                          arbiter=r.get("arbiter", False)) for r in rows]
+                          arbiter=r.get("arbiter", False), agree=r.get("agree", False)) for r in rows]
         src = {id(e): r for e, r in zip(evs, rows)}
         out, log = relocate_onsets(evs, C["beats"][0], C["beats"][1], C["beats"][2], info["ffw"], C["flex"][1],
                                    C["flex"][2], extra=info.get("extra"))
@@ -348,7 +358,7 @@ def filter_rows(rows, arm, C, ffw, res, k, st):
         return rows
     with flags(cfg):
         evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False),
-                          arbiter=r.get("arbiter", False)) for r in rows]
+                          arbiter=r.get("arbiter", False), agree=r.get("agree", False)) for r in rows]
         dasm = None
         if cfg.get("LISTENER_DASM_VOTE") and cfg.get("LISTENER_DASM_DIR"):
             f = Path(cfg["LISTENER_DASM_DIR"]) / f"{st}.npz"
