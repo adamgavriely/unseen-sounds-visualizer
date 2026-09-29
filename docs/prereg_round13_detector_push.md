@@ -298,3 +298,12 @@ Scored on exactly the amendment-A candidates (DEV and gold-free TEST): V4 open i
 rule) and the yes/no question (score = logit yes − logit no). **Rule AF:** V4 match; **Rule AGREE:** the Qwen3-Omni rule
 of the arm (V4 or V12) AND AF-Next V4 match. Arms: best round-14 arm with its listener rule replaced by AGREE, and AGREE
 alone on the LR-V4+R13-1 and LR-V12+R13-1 bases (+F1+F4). Same report as round 14.
+**Round 14 amendment D — FlexSED specific queries (written before any pipeline number; only the component screen
+`benchmark/gold/flexsed_extra_dev.json` was seen).** FlexSED gets the 120 "folded" labels (group a of
+`benchmark/gold/flexsed_extra_queries.json`: depictable labels that had no query of their own, e.g. "Vehicle horn, car
+horn, honking", "Bird vocalization, bird call, bird song") as extra queries, cache `data/work/flexsed_extra_{dev,test}/`,
+and they enter stage 4 exactly like the 215 (same 0.8 bar, same min span, same twin rule, same PANNs clip veto, label =
+the query's AudioSet label, family by the existing mapping). Group b (27 labels outside the depictable vocab) is NOT
+added. Screen facts seen: the 4 unheard misses stay unheard (Whack 0.09, Clang 0.01, Hammer 0.00); at 0.8 the new
+queries give 111 runs on same-family gold vs 34 off gold. Arms: **XQ** (B0r + extra queries), **XQ + R13-1**, and the
+best round-14 listener arm + XQ. Same full-pipeline DEV test and report.
