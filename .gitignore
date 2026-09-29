@@ -43,3 +43,6 @@ benchmark/gold/beats_cam_memo.pkl
 docs/supervisor_page_*.zip
 docs/second_annotator_*.zip
 docs/inspector/media/
+
+# Delegation package videos (downloaded clips, shared with the hired annotator; not committed)
+tagger/videos/

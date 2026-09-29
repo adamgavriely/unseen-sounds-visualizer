@@ -24,6 +24,28 @@
         "data/work/second_annotator"
       ],
       "port": 8766
+    },
+    {
+      "name": "inspector",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "8767",
+        "--directory",
+        "docs/inspector"
+      ],
+      "port": 8767
+    },
+    {
+      "name": "tagger",
+      "runtimeExecutable": "python",
+      "runtimeArgs": [
+        "scripts/rangeserver.py",
+        "tagger",
+        "8768"
+      ],
+      "port": 8768
     }
   ]
 }

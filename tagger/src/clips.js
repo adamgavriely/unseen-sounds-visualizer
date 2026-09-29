@@ -1,0 +1,503 @@
+// The clips to tag (in this order). Generated; do not edit by hand.
+window.DELEGATION_CLIPS = [
+{
+"id": "d001.mp4",
+"src": "videos/d001.mp4",
+"duration": 17.0
+},
+{
+"id": "d002.mp4",
+"src": "videos/d002.mp4",
+"duration": 19.0
+},
+{
+"id": "d003.mp4",
+"src": "videos/d003.mp4",
+"duration": 17.0
+},
+{
+"id": "d004.mp4",
+"src": "videos/d004.mp4",
+"duration": 18.0
+},
+{
+"id": "d005.mp4",
+"src": "videos/d005.mp4",
+"duration": 18.0
+},
+{
+"id": "d006.mp4",
+"src": "videos/d006.mp4",
+"duration": 15.0
+},
+{
+"id": "d007.mp4",
+"src": "videos/d007.mp4",
+"duration": 17.0
+},
+{
+"id": "d008.mp4",
+"src": "videos/d008.mp4",
+"duration": 17.0
+},
+{
+"id": "d009.mp4",
+"src": "videos/d009.mp4",
+"duration": 16.0
+},
+{
+"id": "d010.mp4",
+"src": "videos/d010.mp4",
+"duration": 18.0
+},
+{
+"id": "d011.mp4",
+"src": "videos/d011.mp4",
+"duration": 18.0
+},
+{
+"id": "d012.mp4",
+"src": "videos/d012.mp4",
+"duration": 17.0
+},
+{
+"id": "d013.mp4",
+"src": "videos/d013.mp4",
+"duration": 18.0
+},
+{
+"id": "d014.mp4",
+"src": "videos/d014.mp4",
+"duration": 20.0
+},
+{
+"id": "d015.mp4",
+"src": "videos/d015.mp4",
+"duration": 15.0
+},
+{
+"id": "d016.mp4",
+"src": "videos/d016.mp4",
+"duration": 18.0
+},
+{
+"id": "d017.mp4",
+"src": "videos/d017.mp4",
+"duration": 18.0
+},
+{
+"id": "d018.mp4",
+"src": "videos/d018.mp4",
+"duration": 19.0
+},
+{
+"id": "d019.mp4",
+"src": "videos/d019.mp4",
+"duration": 17.0
+},
+{
+"id": "d020.mp4",
+"src": "videos/d020.mp4",
+"duration": 17.0
+},
+{
+"id": "d021.mp4",
+"src": "videos/d021.mp4",
+"duration": 20.0
+},
+{
+"id": "d022.mp4",
+"src": "videos/d022.mp4",
+"duration": 17.0
+},
+{
+"id": "d023.mp4",
+"src": "videos/d023.mp4",
+"duration": 19.0
+},
+{
+"id": "d024.mp4",
+"src": "videos/d024.mp4",
+"duration": 17.0
+},
+{
+"id": "d025.mp4",
+"src": "videos/d025.mp4",
+"duration": 20.0
+},
+{
+"id": "d026.mp4",
+"src": "videos/d026.mp4",
+"duration": 16.0
+},
+{
+"id": "d027.mp4",
+"src": "videos/d027.mp4",
+"duration": 19.0
+},
+{
+"id": "d028.mp4",
+"src": "videos/d028.mp4",
+"duration": 16.0
+},
+{
+"id": "d029.mp4",
+"src": "videos/d029.mp4",
+"duration": 16.0
+},
+{
+"id": "d030.mp4",
+"src": "videos/d030.mp4",
+"duration": 17.0
+},
+{
+"id": "d031.mp4",
+"src": "videos/d031.mp4",
+"duration": 20.0
+},
+{
+"id": "d032.mp4",
+"src": "videos/d032.mp4",
+"duration": 15.0
+},
+{
+"id": "d033.mp4",
+"src": "videos/d033.mp4",
+"duration": 18.0
+},
+{
+"id": "d034.mp4",
+"src": "videos/d034.mp4",
+"duration": 17.0
+},
+{
+"id": "d035.mp4",
+"src": "videos/d035.mp4",
+"duration": 18.0
+},
+{
+"id": "d036.mp4",
+"src": "videos/d036.mp4",
+"duration": 19.0
+},
+{
+"id": "d037.mp4",
+"src": "videos/d037.mp4",
+"duration": 19.0
+},
+{
+"id": "d038.mp4",
+"src": "videos/d038.mp4",
+"duration": 17.0
+},
+{
+"id": "d039.mp4",
+"src": "videos/d039.mp4",
+"duration": 15.0
+},
+{
+"id": "d040.mp4",
+"src": "videos/d040.mp4",
+"duration": 20.0
+},
+{
+"id": "d041.mp4",
+"src": "videos/d041.mp4",
+"duration": 19.0
+},
+{
+"id": "d042.mp4",
+"src": "videos/d042.mp4",
+"duration": 16.0
+},
+{
+"id": "d043.mp4",
+"src": "videos/d043.mp4",
+"duration": 20.0
+},
+{
+"id": "d044.mp4",
+"src": "videos/d044.mp4",
+"duration": 20.0
+},
+{
+"id": "d045.mp4",
+"src": "videos/d045.mp4",
+"duration": 18.0
+},
+{
+"id": "d046.mp4",
+"src": "videos/d046.mp4",
+"duration": 15.0
+},
+{
+"id": "d047.mp4",
+"src": "videos/d047.mp4",
+"duration": 16.0
+},
+{
+"id": "d048.mp4",
+"src": "videos/d048.mp4",
+"duration": 16.0
+},
+{
+"id": "d049.mp4",
+"src": "videos/d049.mp4",
+"duration": 20.0
+},
+{
+"id": "d050.mp4",
+"src": "videos/d050.mp4",
+"duration": 19.0
+},
+{
+"id": "d051.mp4",
+"src": "videos/d051.mp4",
+"duration": 20.0
+},
+{
+"id": "d052.mp4",
+"src": "videos/d052.mp4",
+"duration": 19.0
+},
+{
+"id": "d053.mp4",
+"src": "videos/d053.mp4",
+"duration": 15.0
+},
+{
+"id": "d054.mp4",
+"src": "videos/d054.mp4",
+"duration": 16.0
+},
+{
+"id": "d055.mp4",
+"src": "videos/d055.mp4",
+"duration": 16.0
+},
+{
+"id": "d056.mp4",
+"src": "videos/d056.mp4",
+"duration": 19.0
+},
+{
+"id": "d057.mp4",
+"src": "videos/d057.mp4",
+"duration": 15.0
+},
+{
+"id": "d058.mp4",
+"src": "videos/d058.mp4",
+"duration": 19.0
+},
+{
+"id": "d059.mp4",
+"src": "videos/d059.mp4",
+"duration": 20.0
+},
+{
+"id": "d060.mp4",
+"src": "videos/d060.mp4",
+"duration": 19.0
+},
+{
+"id": "d061.mp4",
+"src": "videos/d061.mp4",
+"duration": 20.0
+},
+{
+"id": "d062.mp4",
+"src": "videos/d062.mp4",
+"duration": 15.0
+},
+{
+"id": "d063.mp4",
+"src": "videos/d063.mp4",
+"duration": 17.0
+},
+{
+"id": "d064.mp4",
+"src": "videos/d064.mp4",
+"duration": 19.0
+},
+{
+"id": "d065.mp4",
+"src": "videos/d065.mp4",
+"duration": 15.0
+},
+{
+"id": "d066.mp4",
+"src": "videos/d066.mp4",
+"duration": 16.0
+},
+{
+"id": "d067.mp4",
+"src": "videos/d067.mp4",
+"duration": 19.0
+},
+{
+"id": "d068.mp4",
+"src": "videos/d068.mp4",
+"duration": 16.0
+},
+{
+"id": "d069.mp4",
+"src": "videos/d069.mp4",
+"duration": 17.0
+},
+{
+"id": "d070.mp4",
+"src": "videos/d070.mp4",
+"duration": 20.0
+},
+{
+"id": "d071.mp4",
+"src": "videos/d071.mp4",
+"duration": 18.0
+},
+{
+"id": "d072.mp4",
+"src": "videos/d072.mp4",
+"duration": 19.0
+},
+{
+"id": "d073.mp4",
+"src": "videos/d073.mp4",
+"duration": 20.0
+},
+{
+"id": "d074.mp4",
+"src": "videos/d074.mp4",
+"duration": 18.0
+},
+{
+"id": "d075.mp4",
+"src": "videos/d075.mp4",
+"duration": 19.0
+},
+{
+"id": "d076.mp4",
+"src": "videos/d076.mp4",
+"duration": 16.0
+},
+{
+"id": "d077.mp4",
+"src": "videos/d077.mp4",
+"duration": 19.0
+},
+{
+"id": "d078.mp4",
+"src": "videos/d078.mp4",
+"duration": 17.0
+},
+{
+"id": "d079.mp4",
+"src": "videos/d079.mp4",
+"duration": 15.0
+},
+{
+"id": "d080.mp4",
+"src": "videos/d080.mp4",
+"duration": 18.0
+},
+{
+"id": "d081.mp4",
+"src": "videos/d081.mp4",
+"duration": 17.0
+},
+{
+"id": "d082.mp4",
+"src": "videos/d082.mp4",
+"duration": 16.0
+},
+{
+"id": "d083.mp4",
+"src": "videos/d083.mp4",
+"duration": 20.0
+},
+{
+"id": "d084.mp4",
+"src": "videos/d084.mp4",
+"duration": 20.0
+},
+{
+"id": "d085.mp4",
+"src": "videos/d085.mp4",
+"duration": 17.0
+},
+{
+"id": "d086.mp4",
+"src": "videos/d086.mp4",
+"duration": 17.0
+},
+{
+"id": "d087.mp4",
+"src": "videos/d087.mp4",
+"duration": 16.0
+},
+{
+"id": "d088.mp4",
+"src": "videos/d088.mp4",
+"duration": 15.0
+},
+{
+"id": "d089.mp4",
+"src": "videos/d089.mp4",
+"duration": 15.0
+},
+{
+"id": "d090.mp4",
+"src": "videos/d090.mp4",
+"duration": 16.0
+},
+{
+"id": "d091.mp4",
+"src": "videos/d091.mp4",
+"duration": 20.0
+},
+{
+"id": "d092.mp4",
+"src": "videos/d092.mp4",
+"duration": 17.0
+},
+{
+"id": "d093.mp4",
+"src": "videos/d093.mp4",
+"duration": 19.0
+},
+{
+"id": "d094.mp4",
+"src": "videos/d094.mp4",
+"duration": 15.0
+},
+{
+"id": "d095.mp4",
+"src": "videos/d095.mp4",
+"duration": 20.0
+},
+{
+"id": "d096.mp4",
+"src": "videos/d096.mp4",
+"duration": 18.0
+},
+{
+"id": "d097.mp4",
+"src": "videos/d097.mp4",
+"duration": 19.0
+},
+{
+"id": "d098.mp4",
+"src": "videos/d098.mp4",
+"duration": 20.0
+},
+{
+"id": "d099.mp4",
+"src": "videos/d099.mp4",
+"duration": 18.0
+},
+{
+"id": "d100.mp4",
+"src": "videos/d100.mp4",
+"duration": 18.0
+}
+];
