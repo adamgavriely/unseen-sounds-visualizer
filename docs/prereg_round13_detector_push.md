@@ -202,3 +202,51 @@ gold-free superset, features only, no scoring). Same model, same audio cut as R1
 per-family thresholds; LO fixed at 0.5. Guard (Fable): each rule is also reported on DEV halves A/B (clips sorted by
 name, alternate) and its null-control accept-rate must be <= 10 % on both halves. Then the DEV selection rule above
 picks at most one candidate for TEST.
+
+### 2026-09-29 — amendment A arms (stricter listener rules), DEV, job 31418824 (H200, 26 min)
+**What.** Flag `LISTENER_RULE` ("V1" … "V4", "V12"; default None = the R13-3 yes/no score) + `LISTENER_VCACHE`
+(`benchmark/gold/dev_listener_v.json`): R13-3 (a) and (b) take the named rule's accept flag instead of score > TH; LO 0.5.
+(a) looks up the P2 run (clip, family, start, end); (b) the PV item of the vetoed span. P1 is never used. Missing key = not
+rescued. Arms LR-V1, V2, V3, V4, V12, each alone and + R13-1 (all five run; the best two by cost are V12 and V4).
+**Gates.** Flags off: D0 98/98, conf-equality 98/98, D5 49/49 both systems. **Cache coverage: 0 missing** ((a) 512 runs
+asked, (b) 34 vetoed spans asked, every arm). **Null-control accept rate** (P2 peak >= 0.5 + PV, halves A / B): V1 1.8 / 0.9 %,
+V2 0.7 / 0.0 %, V3 2.1 / 5.0 %, V4 0.4 / 0.6 %, V12 0.4 / 0.0 %: all <= 10 % on both halves (guard passes).
+Halves: DEV clips sorted by name, alternate (A = 25 clips, 16 needed; B = 24 clips, 20 needed); B0r A 8 hits / 10 wrong,
+B 6 / 14.
+
+*ours (with gate)*
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost | Δ vs B0r [95 % CI] | eligible | half A: hits / wrong / Δ [CI] | half B: hits / wrong / Δ [CI] | rescued (a) / kept (b) |
+|---|---|---|---|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — | — | 8 / 10 / +0.00 [+0.00, +0.00] | 6 / 14 / +0.00 [+0.00, +0.00] | — |
+| B1 | 16 | 13 | 30 (6 / 18 / 6) | 3.10 | +0.33 [+0.04, +0.69] | — | 8 / 12 / +0.16 [-0.24, +0.72] | 5 / 18 / +0.50 [+0.08, +0.92] | — |
+| LR-V1 | 23 | 20 | 72 (8 / 46 / 18) | 4.24 | +1.47 [+0.49, +2.53] | no | 9 / 26 / +1.12 [+0.56, +1.76] | 11 / 46 / +1.83 [-0.25, +3.75] | 104 / 7 |
+| LR-V1+1 | 24 | 20 | 73 (8 / 47 / 18) | 4.29 | +1.51 [+0.53, +2.57] | no | 9 / 26 / +1.12 [+0.56, +1.76] | 11 / 47 / +1.92 [-0.17, +3.83] | 104 / 7 |
+| LR-V2 | 22 | 19 | 49 (8 / 30 / 11) | 3.39 | +0.61 [-0.12, +1.22] | no | 9 / 20 / +0.64 [+0.16, +1.20] | 10 / 29 / +0.58 [-0.83, +1.67] | 61 / 2 |
+| LR-V2+1 | 23 | 20 | 49 (8 / 30 / 11) | 3.31 | +0.53 [-0.24, +1.22] | no | 9 / 20 / +0.64 [+0.16, +1.20] | 11 / 29 / +0.42 [-1.08, +1.67] | 61 / 2 |
+| LR-V3 | 22 | 19 | 58 (7 / 33 / 18) | 3.76 | +0.98 [+0.24, +1.71] | no | 10 / 25 / +0.88 [+0.08, +1.76] | 9 / 33 / +1.08 [-0.17, +2.25] | 66 / 9 |
+| LR-V3+1 | 23 | 20 | 58 (7 / 33 / 18) | 3.67 | +0.90 [+0.12, +1.67] | no | 10 / 25 / +0.88 [+0.08, +1.76] | 10 / 33 / +0.92 [-0.50, +2.25] | 66 / 9 |
+| LR-V4 | 22 | 19 | 41 (6 / 26 / 9) | 3.06 | +0.29 [-0.37, +0.86] | no | 10 / 19 / +0.40 [-0.24, +1.12] | 9 / 22 / +0.17 [-1.00, +1.08] | 49 / 6 |
+| LR-V4+1 | 23 | 20 | 41 (6 / 26 / 9) | 2.98 | +0.20 [-0.49, +0.86] | no | 10 / 19 / +0.40 [-0.24, +1.12] | 10 / 22 / +0.00 [-1.25, +1.08] | 49 / 6 |
+| LR-V12 | 21 | 18 | 38 (7 / 21 / 10) | 3.02 | +0.24 [-0.33, +0.78] | no | 9 / 14 / +0.16 [-0.16, +0.48] | 9 / 24 / +0.33 [-0.75, +1.33] | 43 / 1 |
+| LR-V12+1 | 22 | 19 | 38 (7 / 21 / 10) | 2.94 | +0.16 [-0.45, +0.73] | no | 9 / 14 / +0.16 [-0.16, +0.48] | 10 / 24 / +0.17 [-1.08, +1.33] | 43 / 1 |
+
+Pipeline without gate (hits / wrong / cost): B0r 17/50/3.59; LR-V1 23/119/5.92; LR-V1+1 24/121/5.92; LR-V2 22/88/4.73; LR-V2+1 23/91/4.78; LR-V3 22/103/5.35; LR-V3+1 23/105/5.35; LR-V4 22/79/4.37; LR-V4+1 23/81/4.37; LR-V12 21/76/4.33; LR-V12+1 22/79/4.37.
+
+**Best arm = LR-V12+1** (V1 AND V2, + R13-1): hits 14 → 19, wrong 24 → 38, cost 2.94, Δ +0.16 [−0.45, +0.74]; not
+eligible (wrong 38 > 24 + 2 × 5 = 34, cost above B0r). Needed gained: `ambient_citywalk_nyc_1689` Hammer 13.7 s; `ambient_nature_rainforest_7629` Cricket 0.1 s; `as_explosion_XJ8lc3I6` Walk, footsteps 2.1 s; `as_explosion_XJ8lc3I6` Gasp 6.7 s; `b3_carnival_parade` Whistle 6.1 s. Lost: none. Wrong pictures appeared (16):
+`ambient_citywalk_nyc_1689` Sliding door 2.48 (phantom); `ambient_nature_rainforest_2179` Bell 10.60 (cross); `as_glass_oHil9Ip_` Coin (dropping) 9.00 (cross); `as_glass_oHil9Ip_` Coin (dropping) 18.52 (cross); `as_glass_oHil9Ip_` Tools 18.44 (cross); `b3_botanic_garden` Bird 12.80 (cross); `b3_carnival_parade` Whistle 14.64 (phantom); `b3_construction_site` Honk 0.40 (visible); `bell_miami` Train 8.00 (cross); `ly_applause_62ZYD0u` Splash, splatter 3.44 (cross); `movie_blueplanet_115` Laughter 0.00 (cross); `mv_storm_scene_house` Pant 6.16 (cross); `mv_storm_scene_house` Shout 14.48 (cross); `un_driving_motorcycle_4O3bZRYO` Honk 5.12 (cross); `un_driving_motorcycle_4O3bZRYO` Honk 9.40 (cross); `un_driving_motorcycle_4O3bZRYO` Shout 2.36 (phantom). Disappeared: `ambient_nature_rainforest_7629` Cricket 4.50 (cross); `mv_detective_crime_scene` Alarm 3.92 (cross).
+**Reading.** The stricter rules cut the wrong rescues sharply (V12 admits 43 runs against 95 for L05t3, wrong 38 against 65)
+and keep 4–6 of the 8 band hits. **No arm is DEV-eligible and no Δ cost is below 0**, on the whole of DEV or on either half.
+R13-1 adds the Cricket hit to every rule at no extra wrong picture (except V1).
+
+### Selection and TEST (2026-09-29, written BEFORE the TEST run)
+**DEV selection:** the only DEV-eligible arm of the whole round is **R13-1 (TWIN_MAX)**: 15 hits, 24 wrong, cost 2.69
+vs B0r 2.78. Every listener arm (yes/no R13-3 and amendment A V1–V4, V12, each ± R13-1) adds more wrong pictures than
+2 × the hits it gains; the best, V12 + R13-1 (19 hits, 38 wrong, 2.94), is worse than B0r on both DEV halves
+(+0.16 / +0.17). The listener line is closed: an audio LLM verifier finds 5–8 real dropped sounds but at ~3 wrong
+pictures per gained hit under every question form tried (precision ~24 % vs the 33 % break-even).
+**TEST (one exposure):** `sbatch slurm/job_r13_test_final.sh R13-1` (B0r, B1, R13-1 in one job). Expectation written
+now: R13-1 changes about one picture per 50 clips, so the TEST rule (Δ cost < 0 with one-sided p < 0.05 on 60 clips)
+is very unlikely to be met; the expected verdict is **same**, and then nothing ships. The B1 row is the first TEST number
+for the current `use_shipped()` (self-veto) and is reported beside, as disclosure for Adam's veto decision.

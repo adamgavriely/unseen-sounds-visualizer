@@ -263,10 +263,13 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
 
 def _pipeline_listener(wav_path):
     """R13-3 in the pipeline: the listener cache (config.LISTENER_CACHE) for this clip (its work dir name = the clip id)"""
-    path = getattr(config, "LISTENER_CACHE", None)
-    if not (getattr(config, "LISTENER_RESCUE", False) and path):
+    if not getattr(config, "LISTENER_RESCUE", False):
         return None
-    return listener_from_cache(path, Path(wav_path).parent.name)
+    if getattr(config, "LISTENER_RULE", None):
+        vpath = getattr(config, "LISTENER_VCACHE", None)
+        return listener_from_vcache(vpath, Path(wav_path).parent.name) if vpath else None
+    path = getattr(config, "LISTENER_CACHE", None)
+    return listener_from_cache(path, Path(wav_path).parent.name) if path else None
 
 
 def _impulse_cols(flabels) -> list:
@@ -544,9 +547,9 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                         if it is None:
                             LISTENER_STATS["b_missing"] += 1
                             LISTENER_STATS["b_missing_list"].append([e.label, round(e.start, 2), round(e.end, 2)])
-                        elif float(it["score"]) > lth:
+                        elif _accepted(it, lth):
                             keep_b.add(id(e))
-                            LISTENER_STATS["b_kept"].append([e.label, round(e.start, 2), round(e.end, 2), float(it["score"])])
+                            LISTENER_STATS["b_kept"].append([e.label, round(e.start, 2), round(e.end, 2), it.get("score")])
             events = [e for e in events
                       if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2 or id(e) in keep_b]
             print(f"       [stage4] PANNs veto (tau2 {veto2}) on FlexSED-only spans: "
@@ -618,6 +621,35 @@ def _runs(col, ts, bar, gap_s):
     return out, dt
 
 
+def _accepted(it, lth: float) -> bool:
+    """R13-3 decision for one cached item: the named variant's accept flag (config.LISTENER_RULE, amendment A) or, with no
+    rule, the yes/no score > LISTENER_TH"""
+    rule = getattr(config, "LISTENER_RULE", None)
+    if rule:
+        return bool((it.get("accept") or {}).get(rule, False))
+    return float(it["score"]) > lth
+
+
+def listener_from_vcache(path, clip: str, tol: float = 0.02):
+    """Amendment A: the variants cache (benchmark/gold/listener_variants.py; items with clip, pool P2 / PV, family, label,
+    start, end, cut_start, cut_end, accept{rule: bool}). lookup(label, start, end, contain=False): (a) the P2 run with this
+    (family, start, end); contain=True (b): the PV item of this vetoed span (same family, start, end). P1 is never used."""
+    from src.labels import canonical
+    d = json.loads(Path(path).read_text(encoding="utf-8"))
+    items = [x for x in (d["items"] if isinstance(d, dict) else d) if x.get("clip") == clip and x.get("pool") in ("P2", "PV")]
+
+    def look(label, start, end, contain=False):
+        fam = canonical(label)
+        pool = "PV" if contain else "P2"
+        c = [x for x in items if x["pool"] == pool and x["family"] == fam
+             and abs(x["start"] - start) <= tol and abs(x["end"] - end) <= tol]
+        if not c:
+            return None
+        same = [x for x in c if x.get("label") == label]
+        return (same or c)[0]
+    return look
+
+
 def listener_from_cache(path, clip: str, tol: float = 0.02):
     """R13-3: per-span listener scores (benchmark/gold/dev_listener.json: items with clip, family, label, start, end,
     cut_start, cut_end, score). Returns lookup(label, start, end, contain=False) -> the cached item or None: the same
@@ -669,10 +701,10 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 LISTENER_STATS["a_missing"] += 1
                 LISTENER_STATS["a_missing_list"].append([lab, round(a, 2), round(b, 2), round(pk, 3)])
                 continue
-            if float(it["score"]) > lth:
+            if _accepted(it, lth):
                 s, e_ = (a, b) if b - a >= LISTEN_SHORT else (float(it["cut_start"]), float(it["cut_end"]))
                 add.append(AudioEvent(lab, s, e_, pk))
-                LISTENER_STATS["a_added"].append([lab, round(s, 2), round(e_, 2), round(pk, 3), float(it["score"])])
+                LISTENER_STATS["a_added"].append([lab, round(s, 2), round(e_, 2), round(pk, 3), it.get("score")])
     events = events + add
     flex_ids |= {id(e) for e in add}
     bth = getattr(config, "LISTENER_BEATS_TH", None)

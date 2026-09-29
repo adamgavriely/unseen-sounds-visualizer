@@ -30,7 +30,7 @@ from benchmark.gold import dev_candidates_check as DCC
 from benchmark.gold import score_per_sound as S
 from src.labels import canonical
 from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_events, attach_breaks, fuse_flexsed,
-                                              listener_from_cache)
+                                              listener_from_cache, listener_from_vcache)
 from src.types import AudioEvent
 
 WORK = DCC.WORK
@@ -48,7 +48,8 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "ONSET_MONOTONE": True, "MAX_SPAN": None, "MERGE_START": "earliest",
         "TWIN_MAX": False, "MIRROR_VETO": None, "MIRROR_OWN_MAX": 0.4, "IMPULSE_MIN_SPAN": None,
         "RETRIGGER": None, "RETRIGGER_RAW": False,
-        "LISTENER_RESCUE": False, "LISTENER_CACHE": None, "LISTENER_LO": 0.4, "LISTENER_TH": 0.0, "LISTENER_BEATS_TH": None}
+        "LISTENER_RESCUE": False, "LISTENER_CACHE": None, "LISTENER_LO": 0.4, "LISTENER_TH": 0.0, "LISTENER_BEATS_TH": None,
+        "LISTENER_RULE": None, "LISTENER_VCACHE": None}
 RT = (1.5, 0.4, 0.175)
 R1_ = {"TWIN_MAX": True}
 R6_ = {"RETRIGGER": RT, "RETRIGGER_RAW": True}
@@ -74,6 +75,12 @@ for _lo in (0.4, 0.5):
         ARMS[_n + "+1"] = {**_c, **R1_}
         ARMS[_n + "+P3"] = {**_c, "LISTENER_BEATS_TH": 3.0}
         ARMS[_n + "+1+P3"] = {**_c, **R1_, "LISTENER_BEATS_TH": 3.0}
+# amendment A (2026-09-29): the rescue decided by one stricter listener rule (variants cache), LO 0.5; each + R13-1
+VCACHE = _ROOT / "benchmark" / "gold" / "dev_listener_v.json"
+for _r in ("V1", "V2", "V3", "V4", "V12"):
+    _c = {"LISTENER_RESCUE": True, "LISTENER_RULE": _r, "LISTENER_VCACHE": str(VCACHE), "LISTENER_LO": 0.5}
+    ARMS[f"LR-{_r}"] = dict(_c)
+    ARMS[f"LR-{_r}+1"] = {**_c, **R1_}
 STAGE5_KEYS = ("RETRIGGER_RAW",)                         # arm flags read after stage 4 (consolidate_families)
 
 
@@ -171,7 +178,10 @@ def build(st, sysn, arm, C, tr, offline=False):
         TRACE.extend({"step": "extract", "label": e.label, "start": round(e.start, 3), "end": round(e.end, 3),
                       "conf": round(e.confidence, 3)} for e in events)
         prov = trace_provider(tr) if offline else panns_provider(st)
-        lis = listener_from_cache(config.LISTENER_CACHE, st) if config.LISTENER_RESCUE else None
+        lis = None
+        if config.LISTENER_RESCUE:
+            lis = (listener_from_vcache(config.LISTENER_VCACHE, st) if config.LISTENER_RULE
+                   else listener_from_cache(config.LISTENER_CACHE, st))
         events, flex_ids, ffw = fuse_flexsed(events, Bfr[0], Bfr[1], Bfr[2], Ffr[0], Ffr[1], Ffr[2],
                                              config.AED_MIN_DUR, backend="BEATs", panns=prov, listener=lis)
         if lis is not None:
@@ -419,6 +429,13 @@ def score():
         res["heard"][sysn] = heard
         cost = {n: [DCC.clip_cost(r) for r in rr] for n, rr in rows.items()}
         res["delta_vs_B0r"][sysn] = {n: DCC.boot(np.subtract(cost[n], cost["B0r"])) for n in P if n != "B0r"}
+        res.setdefault("halves", {})[sysn] = {}
+        for h, idx in (("A", range(0, len(stems), 2)), ("B", range(1, len(stems), 2))):
+            idx = list(idx)
+            res["halves"][sysn][h] = {n: {**DCC.metrics([rows[n][i] for i in idx]),
+                                          "delta_vs_B0r": DCC.boot(np.subtract([cost[n][i] for i in idx],
+                                                                               [cost["B0r"][i] for i in idx]))}
+                                      for n in P}
         res["delta_vs_B1"][sysn] = {n: DCC.boot(np.subtract(cost[n], cost["B1"])) for n in P if n != "B1"}
         R_ = res["rows"][sysn]
         res["eligible"][sysn] = {}

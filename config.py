@@ -385,6 +385,8 @@ LISTENER_RESCUE = False       # R13-3: a Qwen3-Omni listener (cached per span, L
 LISTENER_CACHE = None         # path of the listener cache (benchmark/gold/dev_listener.json format)
 LISTENER_LO = 0.4
 LISTENER_TH = 0.0
+LISTENER_RULE = None          # amendment A: "V1" | "V2" | "V3" | "V4" | "V12" -- (a) and (b) use that rule's accept flag from
+LISTENER_VCACHE = None        # this variants cache (benchmark/gold/listener_variants.py) instead of score > LISTENER_TH
 LISTENER_BEATS_TH = None      # R13-3 (c): also a short BEATs run (peak 0.175-0.35, not covered) at the display bar if score > this
 LABEL_FILTER = "lists"      # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)
 
