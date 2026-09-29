@@ -1,0 +1,653 @@
+{
+ "annotator": "AG",
+ "source_exports": [
+  "tagger_AG_2026-09-29_2248.json"
+ ],
+ "note": "second gold set from the tagger tool (not DEV/TEST); built by benchmark/gold/tagger_set.py",
+ "clips": [
+  {
+   "clip": "tg_d001.mp4",
+   "sounds": [
+    {
+     "label": "ducks",
+     "start": 0,
+     "end": 6.8,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T18:41:29.322Z",
+     "from_suggestion": false,
+     "family": "Duck"
+    },
+    {
+     "label": "seagull",
+     "start": 5.5,
+     "end": 6.1,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T18:41:46.481Z",
+     "from_suggestion": false,
+     "family": "Gull, seagull"
+    },
+    {
+     "label": "water",
+     "family": "Water",
+     "start": 16.4,
+     "end": 17,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T18:52:11.306Z",
+     "from_suggestion": false
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T15:14:13.649Z",
+   "updated": "2026-09-29T18:52:52.842Z",
+   "done_at": "2026-09-29T18:52:52.842Z",
+   "seconds_on_clip": 300,
+   "suggestions_shown_at": null,
+   "source_clip": "d001.mp4"
+  },
+  {
+   "clip": "tg_d007.mp4",
+   "sounds": [
+    {
+     "label": "car door closes",
+     "start": 4.9,
+     "end": 5.3,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:43:21.845Z",
+     "from_suggestion": false,
+     "family": "Door"
+    },
+    {
+     "label": "car door closes",
+     "start": 7.3,
+     "end": 7.6,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:43:27.548Z",
+     "from_suggestion": false,
+     "family": "Door"
+    },
+    {
+     "label": "knock on door",
+     "start": 7.6,
+     "end": 8,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:43:39.580Z",
+     "from_suggestion": false,
+     "family": "Knock"
+    },
+    {
+     "label": "check car door handle",
+     "start": 9.1,
+     "end": 10,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:45:20.549Z",
+     "from_suggestion": false,
+     "family": "Door"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:43:09.276Z",
+   "updated": "2026-09-29T19:46:06.901Z",
+   "done_at": "2026-09-29T19:46:06.901Z",
+   "seconds_on_clip": 175,
+   "suggestions_shown_at": "2026-09-29T19:43:11.229Z",
+   "source_clip": "d007.mp4"
+  },
+  {
+   "clip": "tg_d011.mp4",
+   "sounds": [
+    {
+     "label": "breathing",
+     "start": 0,
+     "end": 18,
+     "visible": false,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T18:56:51.458Z",
+     "from_suggestion": false,
+     "family": "Breathing"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T18:56:36.394Z",
+   "updated": "2026-09-29T18:57:07.346Z",
+   "done_at": "2026-09-29T18:57:07.346Z",
+   "seconds_on_clip": 30,
+   "suggestions_shown_at": null,
+   "source_clip": "d011.mp4"
+  },
+  {
+   "clip": "tg_d013.mp4",
+   "sounds": [
+    {
+     "label": "water",
+     "family": "Water",
+     "start": 0,
+     "end": 18,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T18:58:43.690Z",
+     "from_suggestion": false
+    },
+    {
+     "label": "screams",
+     "start": 4.3,
+     "end": 16.6,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T18:59:03.299Z",
+     "from_suggestion": false,
+     "family": "Screaming"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T18:58:32.562Z",
+   "updated": "2026-09-29T18:59:29.234Z",
+   "done_at": "2026-09-29T18:59:29.234Z",
+   "seconds_on_clip": 60,
+   "suggestions_shown_at": null,
+   "source_clip": "d013.mp4"
+  },
+  {
+   "clip": "tg_d016.mp4",
+   "sounds": [
+    {
+     "label": "cough",
+     "family": "Cough",
+     "start": 5,
+     "end": 6.6,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:02:01.034Z",
+     "from_suggestion": false
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:01:55.970Z",
+   "updated": "2026-09-29T19:04:11.706Z",
+   "done_at": "2026-09-29T19:04:11.706Z",
+   "seconds_on_clip": 70,
+   "suggestions_shown_at": null,
+   "source_clip": "d016.mp4"
+  },
+  {
+   "clip": "tg_d017.mp4",
+   "sounds": [
+    {
+     "label": "birds",
+     "start": 0,
+     "end": 18,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T19:04:45.362Z",
+     "from_suggestion": false,
+     "family": "Bird"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:04:11.709Z",
+   "updated": "2026-09-29T19:05:31.426Z",
+   "done_at": "2026-09-29T19:05:31.426Z",
+   "seconds_on_clip": 80,
+   "suggestions_shown_at": null,
+   "source_clip": "d017.mp4"
+  },
+  {
+   "clip": "tg_d020.mp4",
+   "sounds": [
+    {
+     "label": "rain",
+     "family": "Rain",
+     "start": 0,
+     "end": 17,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T19:07:15.274Z",
+     "from_suggestion": false
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:07:04.139Z",
+   "updated": "2026-09-29T19:07:29.763Z",
+   "done_at": "2026-09-29T19:07:29.763Z",
+   "seconds_on_clip": 25,
+   "suggestions_shown_at": null,
+   "source_clip": "d020.mp4"
+  },
+  {
+   "clip": "tg_d033.mp4",
+   "sounds": [
+    {
+     "label": "alert / siren",
+     "start": 0,
+     "end": 18,
+     "visible": false,
+     "obvious": false,
+     "masked": true,
+     "importance": 3,
+     "added": "2026-09-29T19:48:09.125Z",
+     "from_suggestion": false,
+     "family": "Siren"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:48:02.693Z",
+   "updated": "2026-09-29T19:48:34.437Z",
+   "done_at": "2026-09-29T19:48:34.437Z",
+   "seconds_on_clip": 35,
+   "suggestions_shown_at": null,
+   "source_clip": "d033.mp4"
+  },
+  {
+   "clip": "tg_d040.mp4",
+   "sounds": [
+    {
+     "label": "Aircraft",
+     "family": "Aircraft",
+     "start": 0,
+     "end": 20,
+     "visible": true,
+     "obvious": true,
+     "masked": true,
+     "importance": 2,
+     "added": "2026-09-29T19:20:32.124Z",
+     "from_suggestion": true
+    },
+    {
+     "label": "Crowd",
+     "family": "Crowd",
+     "start": 14.5,
+     "end": 20,
+     "visible": false,
+     "obvious": false,
+     "masked": true,
+     "importance": 2,
+     "added": "2026-09-29T19:20:32.915Z",
+     "from_suggestion": true
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:20:21.051Z",
+   "updated": "2026-09-29T19:24:33.228Z",
+   "done_at": "2026-09-29T19:24:33.228Z",
+   "seconds_on_clip": 115,
+   "suggestions_shown_at": "2026-09-29T19:20:24.411Z",
+   "source_clip": "d040.mp4"
+  },
+  {
+   "clip": "tg_d075.mp4",
+   "sounds": [
+    {
+     "label": "fire alert ring",
+     "start": 0,
+     "end": 19,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 3,
+     "added": "2026-09-29T19:35:01.220Z",
+     "from_suggestion": false,
+     "family": "Fire alarm"
+    },
+    {
+     "label": "spilling water",
+     "start": 0.6,
+     "end": 3.6,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:34:32.004Z",
+     "from_suggestion": false,
+     "family": "Water"
+    },
+    {
+     "label": "glass shatter",
+     "start": 5.4,
+     "end": 7,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:35:39.756Z",
+     "from_suggestion": false,
+     "family": "Shatter"
+    },
+    {
+     "label": "glass ratteling",
+     "start": 7,
+     "end": 10.5,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:36:03.724Z",
+     "from_suggestion": false,
+     "family": "Glass"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:34:26.156Z",
+   "updated": "2026-09-29T19:37:01.356Z",
+   "done_at": "2026-09-29T19:37:01.356Z",
+   "seconds_on_clip": 145,
+   "suggestions_shown_at": null,
+   "source_clip": "d075.mp4"
+  },
+  {
+   "clip": "tg_d076.mp4",
+   "sounds": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "start": 0,
+     "end": 12.2,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:37:14.396Z",
+     "from_suggestion": true
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:37:01.358Z",
+   "updated": "2026-09-29T19:37:40.108Z",
+   "done_at": "2026-09-29T19:37:40.108Z",
+   "seconds_on_clip": 35,
+   "suggestions_shown_at": "2026-09-29T19:37:13.012Z",
+   "source_clip": "d076.mp4"
+  },
+  {
+   "clip": "tg_d077.mp4",
+   "sounds": [
+    {
+     "label": "rain and water",
+     "start": 0,
+     "end": 19,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T19:37:46.524Z",
+     "from_suggestion": false,
+     "family": "Water"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:37:40.111Z",
+   "updated": "2026-09-29T19:38:30.372Z",
+   "done_at": "2026-09-29T19:38:30.372Z",
+   "seconds_on_clip": 50,
+   "suggestions_shown_at": null,
+   "source_clip": "d077.mp4"
+  },
+  {
+   "clip": "tg_d078.mp4",
+   "sounds": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "start": 0,
+     "end": 17,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T19:24:44.348Z",
+     "from_suggestion": true
+    },
+    {
+     "label": "car honk",
+     "start": 5.2,
+     "end": 5.8,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:25:05.604Z",
+     "from_suggestion": false,
+     "family": "Vehicle horn, car horn, honking"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T17:11:24.421Z",
+   "updated": "2026-09-29T19:25:40.932Z",
+   "done_at": "2026-09-29T19:25:40.932Z",
+   "seconds_on_clip": 80,
+   "suggestions_shown_at": "2026-09-29T19:24:41.828Z",
+   "source_clip": "d078.mp4"
+  },
+  {
+   "clip": "tg_d079.mp4",
+   "sounds": [
+    {
+     "label": "car winker",
+     "start": 0,
+     "end": 11.2,
+     "visible": false,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:25:45.956Z",
+     "from_suggestion": true,
+     "family": "Tick"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": true,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:25:40.933Z",
+   "updated": "2026-09-29T19:27:14.540Z",
+   "done_at": "2026-09-29T19:27:14.540Z",
+   "seconds_on_clip": 90,
+   "suggestions_shown_at": "2026-09-29T19:25:43.083Z",
+   "source_clip": "d079.mp4"
+  },
+  {
+   "clip": "tg_d080.mp4",
+   "sounds": [
+    {
+     "label": "soazzle (sand raking)",
+     "start": 0,
+     "end": 4.2,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:27:36.916Z",
+     "from_suggestion": false,
+     "family": "Scrape"
+    },
+    {
+     "label": "Chicken, rooster",
+     "family": "Chicken, rooster",
+     "start": 5.8,
+     "end": 8.5,
+     "visible": true,
+     "obvious": false,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:27:21.452Z",
+     "from_suggestion": true
+    },
+    {
+     "label": "soazzle (sand raking)",
+     "start": 9.7,
+     "end": 17.1,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:29:44.868Z",
+     "from_suggestion": false,
+     "family": "Scrape"
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:27:14.542Z",
+   "updated": "2026-09-29T19:30:39.444Z",
+   "done_at": "2026-09-29T19:30:39.444Z",
+   "seconds_on_clip": 120,
+   "suggestions_shown_at": "2026-09-29T19:27:18.148Z",
+   "source_clip": "d080.mp4"
+  },
+  {
+   "clip": "tg_d088.mp4",
+   "sounds": [
+    {
+     "label": "Rain",
+     "family": "Rain",
+     "start": 0,
+     "end": 14.8,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 1,
+     "added": "2026-09-29T19:39:09.876Z",
+     "from_suggestion": true
+    },
+    {
+     "label": "Thunder",
+     "family": "Thunder",
+     "start": 1.3,
+     "end": 2.7,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:39:07.164Z",
+     "from_suggestion": true
+    },
+    {
+     "label": "Thunder",
+     "family": "Thunder",
+     "start": 11.1,
+     "end": 14.7,
+     "visible": true,
+     "obvious": true,
+     "masked": false,
+     "importance": 2,
+     "added": "2026-09-29T19:39:05.468Z",
+     "from_suggestion": true
+    }
+   ],
+   "no_sounds": false,
+   "bad": false,
+   "note": "",
+   "done": true,
+   "picture_due": false,
+   "annotator": "AG",
+   "first_opened": "2026-09-29T19:38:38.956Z",
+   "updated": "2026-09-29T19:41:40.308Z",
+   "done_at": "2026-09-29T19:41:40.308Z",
+   "seconds_on_clip": 180,
+   "suggestions_shown_at": "2026-09-29T19:38:48.228Z",
+   "source_clip": "d088.mp4"
+  }
+ ]
+}
