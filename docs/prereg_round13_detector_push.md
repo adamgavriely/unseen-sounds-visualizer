@@ -277,3 +277,10 @@ A/B) plus **cost at β = 1 and the break-even β** (where the arm's cost equals 
 **Two claims, kept apart:** (1) default setting: an arm ships as default only if it passes the DEV selection rule AND
 then wins on the new clips at β = 2 (prereg TEST rule). (2) "more sounds" viewer setting: an arm is offered as an option
 if its break-even β is ≥ 1.0 on DEV and on the new clips; reported with the full cost-vs-β curve.
+**Round 14 addendum (Fable consult 2, written before any round-14 number):** two more filters on rescued spans:
+- **F5 co-onset shadow:** drop a rescued run whose peak lies within ±0.2 s of the onset of an already-drawn (B0) picture
+  of a different family with a higher score (one impulse lighting many impulsive queries).
+- **F6 clip edge:** drop a rescued run whose peak lies in the first or last 0.3 s of the clip.
+Tagger agreement at the peak (Fable idea 2) is NOT added: BEATs/PANNs are deaf (<= 0.05) to 4 of the 6 reachable band
+hits (round 13 diagnosis), so it would remove the hits it is meant to keep.
+Extra arms: best round-14 arm + F5, + F6, + F5 + F6.
