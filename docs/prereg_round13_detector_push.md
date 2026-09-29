@@ -366,3 +366,17 @@ wrong-class candidates, vs 10 vs 52 for Qwen V4 alone).**
   the one a viewer needs); no "already shown" condition.
 Arms: TIER, TIER+ONCE, TIER+ONCE+R13-1, TIER+ONCE+R13-1+XQ, and (QV4 & AF yes/no > 0)+ONCE+R13-1. Same full-pipeline DEV
 test and report. Confirmation of whichever is picked = the 100 new annotated clips.
+**Round 14 amendment F — bug fixes from the per-video trace + 3 Fable consults (written before any pipeline number of
+these arms; the per-video trace `docs/dev_heard_dropped_2026-09-29.md` and candidate screens were seen).**
+Fixes (each a mechanism fix, no new threshold):
+- **FIX-FAM (F4):** the local-winner test compares FAMILIES (canonical family; a sibling/child query such as 'Steam whistle'
+  counts as the candidate's own family), not raw query names. (Whistle case.)
+- **FIX-EARLY (F1):** once-per-family keeps the EARLIEST accepted run, not the strongest (= ONCE of amendment E). (Footsteps.)
+- **FIX-CTRL (V12):** when no control window exists (the family is >= 0.2 across the whole clip), the paired-cut leg V2 is
+  not evaluable and counts as neutral: V12 = V1 alone. (Both Explosions: V1 yes, V2 rejected only for lack of a window.)
+- **FIX-GATE:** a gate "visible" vote that names no object counts as "not visible". (Ambulance: voted seen, named nothing.)
+Arms (full pipeline, B0r re-run, same report): **B0r + FIX-GATE** (gate fix alone); **A0** = best round-14 arm
+(LR-V12+R13-1+F1F4F3+F7F8) with FIX-FAM, FIX-EARLY, FIX-CTRL; **A0 + FIX-GATE**; **A1** = A0 + FIX-GATE + VLM arbiter
+(Fable A): a band candidate with Qwen V4 yes AND AF V4 yes but V12 no is accepted iff the gate VLM, on frames of the span,
+answers "plausible" AND names a visual cue to "Is a {family} sound plausible in this scene? Answer plausible or
+implausible, then name the visual cue."
