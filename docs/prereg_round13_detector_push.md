@@ -486,3 +486,12 @@ later batches' TEST2 clips are added to it before that single scoring, unless Ad
   number within 1 s of each other, the picture starts at their mean (clip time); if either says none, no change for
   rescued runs and no rescue for weak runs outside the TIER rule.
 Arms on top of TO1+F7F8: +J3, +J4, +J3+J4, and + the best amendment-I combination.
+**Round 14 amendment K (from the per-sound trace of TO1+F7F8, `docs/dev_heard_dropped_best_2026-09-29.md`; written before
+any number of these arms).** On top of TO1+F7F8:
+- **K1 F8 bypass:** the DASM vote is skipped for a rescued run that BOTH Qwen V4 and Audio Flamingo V4 accept (two audio
+  LLMs outvote one SED). (F8 killed Hammer 13.7 and Explosion 2.8.)
+- **K2 covered runs:** a FlexSED band run is still offered to the rescue when a same-family BEATs span BELOW the display
+  bar covers it (today it is skipped as "covered"; the listener is never asked). (birds_forest Bird.)
+- **K3 high tier OR:** for peak >= 0.6, accept if Qwen V4 OR Audio Flamingo V4 accepts (low tier unchanged: both).
+Arms: +K1, +K2, +K3, +K1+K2, +K1+K2+K3. K2 needs listener answers for the newly offered runs: if missing from the caches,
+they count as not rescued and the number missing is reported.
