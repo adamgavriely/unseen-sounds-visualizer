@@ -470,3 +470,19 @@ frozen candidates — any winner goes to the 100-clip set).** On top of TO1+F7F8
   a {family} source visibly PRODUCING this sound right now (for example a beak open, a bell swinging, a vehicle moving)?
   Answer yes or no."
 Arms: TO1+F7F8 + I1; + I5; + I6; + I2; + all four.
+**Confirmation set 1 — REVISED (Adam, 2026-09-29, before any pipeline run or score on these clips): split, not all-test.**
+Every tagger-set clip, now and in future batches, goes to **DEV2** or **TEST2** by `sha256(stem) % 2` (0 → DEV2, 1 →
+TEST2), fixed now, independent of content. Batch 1: DEV2 = tg_d007, d016, d020, d033, d075, d088 (6); TEST2 = tg_d001,
+d011, d013, d017, d040, d076, d077, d078, d079, d080 (10). DEV2 joins DEV for development (its tags may be read and tuned
+on). TEST2 stays sealed: scored once per frozen candidate set with the rule above (candidates C1 and C2 as frozen), and
+later batches' TEST2 clips are added to it before that single scoring, unless Adam asks to score earlier.
+**Round 14 amendment J (Fable consult 4, ideas 3–4; written before any number):**
+- **J3 motion-timed impacts:** for impulsive families, a weak run of any detector (BEATs >= 0.1, FlexSED >= 0.3) is
+  rescued if the video's frame-difference energy (grayscale, 10 fps) has a peak (>= 3 × the clip median, within the 3 s
+  around the run) within 0.5 s of the run's peak; the picture starts at the motion peak; the TIER listener rule is still
+  required; no motion-only pictures.
+- **J4 audio-LLM timestamps:** for each rescued or weak run, a 4-s window around it; Qwen3-Omni and Audio Flamingo Next are
+  asked "At which second of this recording does the {family} sound start? Reply with a number, or none."; if both give a
+  number within 1 s of each other, the picture starts at their mean (clip time); if either says none, no change for
+  rescued runs and no rescue for weak runs outside the TIER rule.
+Arms on top of TO1+F7F8: +J3, +J4, +J3+J4, and + the best amendment-I combination.
