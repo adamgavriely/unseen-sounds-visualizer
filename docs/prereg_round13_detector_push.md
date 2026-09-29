@@ -256,3 +256,9 @@ for the current `use_shipped()` (self-veto) and is reported beside, as disclosur
 (and `test_stems.txt`) is "test_bench" (60 clips). Only clip names were compared; no picture was scored, no hit, miss,
 cost or per-clip number was computed or printed. The assertion was changed to "test_bench", the marker removed, and the
 same job re-submitted unchanged otherwise. This is recorded as a plumbing failure, not a second exposure.
+
+### TEST result (one exposure, job 31419058; stages reused from attempt 1)
+Ours (with gate), TEST 60 clips, 43 needed sounds: **R13-1 = B0r exactly** (16 hits, 25 wrong, cost 2.63; no picture
+changed) → verdict **same**, nothing ships, as expected before the run. **B1 (current `use_shipped()`, self-veto) is
+worse than B0 on TEST too:** 15 hits, 29 wrong, cost 2.83; B0 − B1 = −0.20 [−0.47, +0.00], one-sided p 0.043 (DEV:
+−0.33 [−0.69, −0.04]). Blind (no gate): same picture (R13-1 = B0r; B1 +0.17). Full table: `benchmark/gold/r13_test_final.md`.
