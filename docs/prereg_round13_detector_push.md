@@ -380,3 +380,12 @@ Arms (full pipeline, B0r re-run, same report): **B0r + FIX-GATE** (gate fix alon
 (Fable A): a band candidate with Qwen V4 yes AND AF V4 yes but V12 no is accepted iff the gate VLM, on frames of the span,
 answers "plausible" AND names a visual cue to "Is a {family} sound plausible in this scene? Answer plausible or
 implausible, then name the visual cue."
+**Round 14 amendment G — rule audit (Adam: "maybe some rules are bad"; written before any number of it).** Loosen ONE
+shipped rule at a time, full pipeline on DEV, on top of B0r and on top of the best amendment-F arm (A0 + FIX-GATE if it
+is best, else A0). Each change is pre-set, no sweep:
+G1 BEATs display bar 0.35 → 0.30; G2 picture confidence floor (PICTURE_MIN_CONF 0.40) → off; G3 minimum span 0.5 → 0.3 s
+(BEATs and FlexSED); G4 FlexSED clip veto 0.3 → off; G5 PANNs clip veto → off for FlexSED spans >= 0.9; G6 display merge
+gap 1.5 → 1.0 s; G7 near-duplicate merge (DEDUP_SIM 0.80) → off; G8 gate: drop a sound as visible only if ALL votes say
+visible (instead of the majority).
+Report per rule: Δhits, Δwrong (v/c/p), Δcost vs its base, which needed sounds were gained. **A rule change becomes a
+candidate iff Δhits >= 1 and Δwrong <= 2 × Δhits.** Candidates are then stacked (in order of Δcost) into one final arm.
