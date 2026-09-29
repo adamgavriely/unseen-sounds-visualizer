@@ -1,0 +1,795 @@
+{
+ "note": "The FlexSED cache (data/work/flexsed_cache, benchmark/gold/flexsed_run.py) asks one query per depictable FAMILY (215).\nTwo kinds of sound have no query of their own:\n  (a) \"folded\": the 120 labels of benchmark/gold/depictable_vocab.json whose name is not one of the 215 families\n      (Bang is asked only as \"Explosion\", Slam only as \"Door\", Shatter only as \"Glass\" ...);\n  (b) \"outside\": AudioSet labels that can be a gold sound (the gold loader's default filter) but are not in the\n      depictable vocab at all -- the Source-ambiguous event sounds (Clang, Whack/thwack, Clatter, Slap ...). Category\n      nodes, textures (src.labels.TEXTURE_LABELS), sourceless tones (fixed list SKIP_B below), music, voice and the\n      recording/environment branch are left out.\nThe list is built from the vocab and the ontology only; no gold label is read to build it.",
+ "n": 147,
+ "queries": [
+  {
+   "query": "Accelerating, revving, vroom",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Aircraft engine",
+   "bucket": "a_folded",
+   "asked_as": "Aircraft"
+  },
+  {
+   "query": "Alarm clock",
+   "bucket": "a_folded",
+   "asked_as": "Alarm"
+  },
+  {
+   "query": "Ambulance (siren)",
+   "bucket": "a_folded",
+   "asked_as": "Siren"
+  },
+  {
+   "query": "Applause",
+   "bucket": "a_folded",
+   "asked_as": "Crowd"
+  },
+  {
+   "query": "Artillery fire",
+   "bucket": "a_folded",
+   "asked_as": "Gunshot"
+  },
+  {
+   "query": "Bang",
+   "bucket": "a_folded",
+   "asked_as": "Explosion"
+  },
+  {
+   "query": "Bark",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Beep, bleep",
+   "bucket": "a_folded",
+   "asked_as": "Alarm"
+  },
+  {
+   "query": "Bird vocalization, bird call, bird song",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Bleat",
+   "bucket": "a_folded",
+   "asked_as": "Sheep"
+  },
+  {
+   "query": "Boat, Water vehicle",
+   "bucket": "a_folded",
+   "asked_as": "Boat"
+  },
+  {
+   "query": "Boom",
+   "bucket": "a_folded",
+   "asked_as": "Explosion"
+  },
+  {
+   "query": "Bow-wow",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Breaking",
+   "bucket": "a_folded",
+   "asked_as": "Glass"
+  },
+  {
+   "query": "Bus",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Buzzer",
+   "bucket": "a_folded",
+   "asked_as": "Alarm"
+  },
+  {
+   "query": "Canidae, dogs, wolves",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Cap gun",
+   "bucket": "a_folded",
+   "asked_as": "Gunshot"
+  },
+  {
+   "query": "Car",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Car alarm",
+   "bucket": "a_folded",
+   "asked_as": "Alarm"
+  },
+  {
+   "query": "Cat communication",
+   "bucket": "a_folded",
+   "asked_as": "Cat"
+  },
+  {
+   "query": "Cattle, bovinae",
+   "bucket": "a_folded",
+   "asked_as": "Cattle"
+  },
+  {
+   "query": "Caw",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Cheering",
+   "bucket": "a_folded",
+   "asked_as": "Crowd"
+  },
+  {
+   "query": "Chicken, rooster",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Children shouting",
+   "bucket": "a_folded",
+   "asked_as": "Crowd"
+  },
+  {
+   "query": "Chirp, tweet",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Chopping (food)",
+   "bucket": "a_folded",
+   "asked_as": "Cooking"
+  },
+  {
+   "query": "Civil defense siren",
+   "bucket": "a_folded",
+   "asked_as": "Siren"
+  },
+  {
+   "query": "Clickety-clack",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Clip-clop",
+   "bucket": "a_folded",
+   "asked_as": "Horse"
+  },
+  {
+   "query": "Cluck",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Coo",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Creak",
+   "bucket": "a_folded",
+   "asked_as": "Door"
+  },
+  {
+   "query": "Crowing, cock-a-doodle-doo",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Cupboard open or close",
+   "bucket": "a_folded",
+   "asked_as": "Door"
+  },
+  {
+   "query": "Cutlery, silverware",
+   "bucket": "a_folded",
+   "asked_as": "Dishes"
+  },
+  {
+   "query": "Ding",
+   "bucket": "a_folded",
+   "asked_as": "Bell"
+  },
+  {
+   "query": "Dishes, pots, and pans",
+   "bucket": "a_folded",
+   "asked_as": "Dishes"
+  },
+  {
+   "query": "Drip",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Emergency vehicle",
+   "bucket": "a_folded",
+   "asked_as": "Siren"
+  },
+  {
+   "query": "Engine",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Engine starting",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Eruption",
+   "bucket": "a_folded",
+   "asked_as": "Explosion"
+  },
+  {
+   "query": "Fill (with liquid)",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Fire alarm",
+   "bucket": "a_folded",
+   "asked_as": "Alarm"
+  },
+  {
+   "query": "Fire engine, fire truck (siren)",
+   "bucket": "a_folded",
+   "asked_as": "Siren"
+  },
+  {
+   "query": "Firecracker",
+   "bucket": "a_folded",
+   "asked_as": "Fireworks"
+  },
+  {
+   "query": "Fixed-wing aircraft, airplane",
+   "bucket": "a_folded",
+   "asked_as": "Aircraft"
+  },
+  {
+   "query": "Fowl",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Frying (food)",
+   "bucket": "a_folded",
+   "asked_as": "Cooking"
+  },
+  {
+   "query": "Fusillade",
+   "bucket": "a_folded",
+   "asked_as": "Gunshot"
+  },
+  {
+   "query": "Goat",
+   "bucket": "a_folded",
+   "asked_as": "Sheep"
+  },
+  {
+   "query": "Growling",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Gunshot, gunfire",
+   "bucket": "a_folded",
+   "asked_as": "Gunshot"
+  },
+  {
+   "query": "Gurgling",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Heavy engine (low frequency)",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Hiss",
+   "bucket": "a_folded",
+   "asked_as": "Cat"
+  },
+  {
+   "query": "Howl",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Idling",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Jet engine",
+   "bucket": "a_folded",
+   "asked_as": "Aircraft"
+  },
+  {
+   "query": "Light engine (high frequency)",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Liquid",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Machine gun",
+   "bucket": "a_folded",
+   "asked_as": "Gunshot"
+  },
+  {
+   "query": "Medium engine (mid frequency)",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Meow",
+   "bucket": "a_folded",
+   "asked_as": "Cat"
+  },
+  {
+   "query": "Moo",
+   "bucket": "a_folded",
+   "asked_as": "Cattle"
+  },
+  {
+   "query": "Motor vehicle (road)",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Motorboat, speedboat",
+   "bucket": "a_folded",
+   "asked_as": "Boat"
+  },
+  {
+   "query": "Motorcycle",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Neigh, whinny",
+   "bucket": "a_folded",
+   "asked_as": "Horse"
+  },
+  {
+   "query": "Ocean",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Oink",
+   "bucket": "a_folded",
+   "asked_as": "Pig"
+  },
+  {
+   "query": "Pigeon, dove",
+   "bucket": "a_folded",
+   "asked_as": "Bird"
+  },
+  {
+   "query": "Police car (siren)",
+   "bucket": "a_folded",
+   "asked_as": "Siren"
+  },
+  {
+   "query": "Pour",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Propeller, airscrew",
+   "bucket": "a_folded",
+   "asked_as": "Aircraft"
+  },
+  {
+   "query": "Purr",
+   "bucket": "a_folded",
+   "asked_as": "Cat"
+  },
+  {
+   "query": "Race car, auto racing",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Rail transport",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Railroad car, train wagon",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Rain on surface",
+   "bucket": "a_folded",
+   "asked_as": "Rain"
+  },
+  {
+   "query": "Raindrop",
+   "bucket": "a_folded",
+   "asked_as": "Rain"
+  },
+  {
+   "query": "Reversing beeps",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Ringing (of resonator)",
+   "bucket": "a_folded",
+   "asked_as": "Bell"
+  },
+  {
+   "query": "Ringtone",
+   "bucket": "a_folded",
+   "asked_as": "Telephone"
+  },
+  {
+   "query": "Run",
+   "bucket": "a_folded",
+   "asked_as": "Footsteps"
+  },
+  {
+   "query": "Sailboat, sailing ship",
+   "bucket": "a_folded",
+   "asked_as": "Boat"
+  },
+  {
+   "query": "Shatter",
+   "bucket": "a_folded",
+   "asked_as": "Glass"
+  },
+  {
+   "query": "Ship",
+   "bucket": "a_folded",
+   "asked_as": "Boat"
+  },
+  {
+   "query": "Shuffle",
+   "bucket": "a_folded",
+   "asked_as": "Footsteps"
+  },
+  {
+   "query": "Sink (filling or washing)",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Sizzle",
+   "bucket": "a_folded",
+   "asked_as": "Cooking"
+  },
+  {
+   "query": "Skidding",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Slam",
+   "bucket": "a_folded",
+   "asked_as": "Door"
+  },
+  {
+   "query": "Slosh",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Smash, crash",
+   "bucket": "a_folded",
+   "asked_as": "Glass"
+  },
+  {
+   "query": "Smoke detector, smoke alarm",
+   "bucket": "a_folded",
+   "asked_as": "Alarm"
+  },
+  {
+   "query": "Squeak",
+   "bucket": "a_folded",
+   "asked_as": "Door"
+  },
+  {
+   "query": "Stream",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Subway, metro, underground",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Telephone bell ringing",
+   "bucket": "a_folded",
+   "asked_as": "Telephone"
+  },
+  {
+   "query": "Telephone dialing, DTMF",
+   "bucket": "a_folded",
+   "asked_as": "Telephone"
+  },
+  {
+   "query": "Thunderstorm",
+   "bucket": "a_folded",
+   "asked_as": "Thunder"
+  },
+  {
+   "query": "Tire squeal",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Toot",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Traffic noise, roadway noise",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Train horn",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Train wheels squealing",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Train whistle",
+   "bucket": "a_folded",
+   "asked_as": "Train"
+  },
+  {
+   "query": "Trickle, dribble",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Truck",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Vehicle horn, car horn, honking",
+   "bucket": "a_folded",
+   "asked_as": "Vehicle"
+  },
+  {
+   "query": "Walk, footsteps",
+   "bucket": "a_folded",
+   "asked_as": "Footsteps"
+  },
+  {
+   "query": "Water tap, faucet",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Waterfall",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Waves, surf",
+   "bucket": "a_folded",
+   "asked_as": "Water"
+  },
+  {
+   "query": "Whimper (dog)",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Yip",
+   "bucket": "a_folded",
+   "asked_as": "Dog"
+  },
+  {
+   "query": "Blare",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Boing",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Bouncing",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Clang",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Clatter",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Crumpling, crinkling",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Crunch",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Crushing",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Fizz",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Flap",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Grind",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Jingle, tinkle",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Ping",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Plop",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Puff",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Roll",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Rub",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Scrape",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Scratch",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Screech",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Slap, smack",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Squeal",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Tearing",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Twang",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Whack, thwack",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Whip",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  },
+  {
+   "query": "Zing",
+   "bucket": "b_outside",
+   "asked_as": null,
+   "nearest_family": [],
+   "drawn_under_depictable_filter": false
+  }
+ ]
+}
