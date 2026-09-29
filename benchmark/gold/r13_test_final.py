@@ -158,8 +158,8 @@ def score(a, T, R, arms, fin):
     S.load_gold = _REAL_LOAD_GOLD
     gold = S.load_gold([GOLD])
     stems = T.STEMS
-    test = sorted(S.subsets_of(gold)["test"])
-    assert test == sorted(stems), "gold test subset != test_stems.txt"
+    test = sorted(S.subsets_of(gold)["test_bench"])   # the frozen TEST table subset (test minus slice B); was "test" (30 slice-B clips too)
+    assert test == sorted(stems), "gold test_bench subset != test_stems.txt"
     s4 = json.loads(R.STAGE4.read_text(encoding="utf-8"))
     names = ["B0", "B0r", "B1", a.arm] if a.arm not in ("B0r", "B1") else ["B0", "B0r", "B1"]
     res = {"plan": "docs/prereg_round13_detector_push.md (TEST decision, one exposure)", "arm": a.arm,

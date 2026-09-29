@@ -250,3 +250,9 @@ pictures per gained hit under every question form tried (precision ~24 % vs the 
 now: R13-1 changes about one picture per 50 clips, so the TEST rule (Δ cost < 0 with one-sided p < 0.05 on 60 clips)
 is very unlikely to be met; the expected verdict is **same**, and then nothing ships. The B1 row is the first TEST number
 for the current `use_shipped()` (self-veto) and is reported beside, as disclosure for Adam's veto decision.
+**TEST attempt 1 (job 31419006, 2026-09-29 05:18) stopped before any score.** Stages 4/5 and the D0/D5 gates passed
+(120/120, 60/60). After the `.started` marker, the script loaded the gold file and asserted that its "test" subset equals
+`test_stems.txt`; it failed because "test" = gold minus DEV includes the 30 slice-B clips, while the frozen TEST table
+(and `test_stems.txt`) is "test_bench" (60 clips). Only clip names were compared; no picture was scored, no hit, miss,
+cost or per-clip number was computed or printed. The assertion was changed to "test_bench", the marker removed, and the
+same job re-submitted unchanged otherwise. This is recorded as a plumbing failure, not a second exposure.
