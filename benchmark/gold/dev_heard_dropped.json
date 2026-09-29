@@ -1,0 +1,8044 @@
+{
+ "meta": {
+  "what": "DEV (49 clips, gold_AG, 36 needed sounds of importance >= 2): where each needed sound is lost, for B0r and the best round-14 arm LR-V12+1+F1F4F3+F7F8 (LR-V12 + R13-1 + F1 + F4 + F3 + F7 + F8; DEV proposed 15/36 hits, 22 wrong, cost 2.612)",
+  "date": "2026-09-29",
+  "split": "DEV only; no TEST gold read",
+  "hit_rule": "dev_candidates_check.needed_hit on the proposed pictures (same family, picture start in [onset-0.5, onset+1.0] s)",
+  "heard_rule": "same-family best frame score in [onset-0.5, onset+1.0] s: BEATs >= 0.175 (benchmark/gold/beats_fw = the j2 cache, checked equal to dev_miss_table on the 22 misses), FlexSED-215 >= 0.4 (data/work/flexsed_cache), PANNs >= 0.1 (benchmark/gold/panns_fw), FlexSED extra queries >= 0.4 (data/work/flexsed_extra_dev); BEATs times are 2-s window starts",
+  "sources": {
+   "B0r": "data/work/r13/stage4.json arm B0r|proposed + data/work/r13/B0r_proposed (augmentations, gate_votes, stage-5 log); local",
+   "best_hits": "round13_dev.json needed_changes[proposed][best] applied to B0r (equals the pictures B0r + picture_changes appeared - disappeared: 15 hits / 22 wrong, = rows[proposed][best])",
+   "best_stage4": "NOT LOCAL (the F-arm stage-4 rows, r14_dropped and stage-5 folders are on the cluster only). Used: LR-V12+1|proposed rows (local), rescued = rows absent from R13-1|proposed; F1 and F4 replayed locally with the pipeline's filter_rescued (round13_dev.flags/arm_cfg, FlexSED cache as ffw); F8 (DASM cache not local) and F3/F7 read from the arm chain in round13_dev.json needed_changes (F3 and F7 changed no needed sound)",
+   "best_stage5": "proxy: data/work/r13/LR-V12+1_proposed specs (gate answers are reused/memoised, so a span that survives the filters gets the same answer)",
+   "listener": "dev_listener.json (Qwen3-Omni yes/no score), dev_listener_v.json (V1/V2/V3/V4/V12 accept + V4 text), dev_listener_afn.json (Audio Flamingo Next V4 accept + text + yes/no score); items of the same family overlapping the hit window; the rescue reads P2 (FlexSED run peak >= 0.5) and PV (PANNs-vetoed) only"
+  },
+  "cause_rule": "first match: hit; A unheard; F label outside the drawable vocab; [best arm only] C rescued by the listener (V12) then dropped by F1/F4/F8; D a same-family stage-5 span over the window that the gate called visible; E a picture that covers the onset but starts early (merge), or FlexSED >= 0.8 absorbed by a weak BEATs twin below the display bar; C FlexSED >= 0.8 with no stage-4 span (PANNs clip veto) or BEATs >= 0.35 cut by the 0.5-s min span; else B (below every bar; for the best arm with the listener status). C is used for both the rescue filters and B0r's own vetoes (named in 'why').",
+  "causes": {
+   "hit": "hit",
+   "A": "unheard",
+   "B": "heard, below every bar, no listener yes",
+   "C": "heard, passed a bar or the listener, killed by a named filter/veto",
+   "D": "emitted, gate said visible",
+   "E": "emitted, timing / merge",
+   "F": "other"
+  }
+ },
+ "counts": {
+  "B0r": {
+   "hit": 14,
+   "A": 3,
+   "B": 10,
+   "C": 2,
+   "D": 4,
+   "E": 2,
+   "F": 1
+  },
+  "best": {
+   "hit": 15,
+   "A": 3,
+   "B": 7,
+   "C": 5,
+   "D": 4,
+   "E": 1,
+   "F": 1
+  }
+ },
+ "per_clip": {
+  "ambient_citywalk_nyc_1689": {
+   "needed": 3,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "B Vehicle@3.8",
+    "B Hammer@13.7",
+    "A Hammer@8.1"
+   ],
+   "causes_best": [
+    "B Vehicle@3.8",
+    "C Hammer@13.7",
+    "A Hammer@8.1"
+   ]
+  },
+  "ambient_citywalk_nyc_2627": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "F Clang@3.8"
+   ],
+   "causes_best": [
+    "F Clang@3.8"
+   ]
+  },
+  "ambient_nature_rainforest_2179": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "B Bird@6.5"
+   ],
+   "causes_best": [
+    "B Bird@6.5"
+   ]
+  },
+  "ambient_nature_rainforest_7629": {
+   "needed": 2,
+   "hit_B0r": 0,
+   "hit_best": 1,
+   "causes_B0r": [
+    "D Bird@0.1",
+    "E Cricket@0.1"
+   ],
+   "causes_best": [
+    "D Bird@0.1"
+   ]
+  },
+  "ambient_snow_walk_930": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "C Laughter@8.1"
+   ],
+   "causes_best": [
+    "C Laughter@8.1"
+   ]
+  },
+  "as_explosion_XJ8lc3I6": {
+   "needed": 6,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [
+    "B Gunshot, gunfire@0.0",
+    "B Walk, footsteps@2.1",
+    "B Explosion@2.8",
+    "B Explosion@5.6",
+    "C Gasp@6.7"
+   ],
+   "causes_best": [
+    "B Gunshot, gunfire@0.0",
+    "C Walk, footsteps@2.1",
+    "B Explosion@2.8",
+    "B Explosion@5.6",
+    "C Gasp@6.7"
+   ]
+  },
+  "b3_bakery_morning": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "b3_barbershop": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "b3_carnival_parade": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "B Whistle@6.1"
+   ],
+   "causes_best": [
+    "C Whistle@6.1"
+   ]
+  },
+  "b3_favela_rio": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "b3_golf_course": {
+   "needed": 2,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "A Whack, thwack@6.5",
+    "A Whack, thwack@24.4"
+   ],
+   "causes_best": [
+    "A Whack, thwack@6.5",
+    "A Whack, thwack@24.4"
+   ]
+  },
+  "b3_pet_shop": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "D Bird@0.1"
+   ],
+   "causes_best": [
+    "D Bird@0.1"
+   ]
+  },
+  "bell_miami": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "D Bell@0.2"
+   ],
+   "causes_best": [
+    "D Bell@0.2"
+   ]
+  },
+  "birds_forest": {
+   "needed": 2,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [
+    "B Bird@1.3"
+   ],
+   "causes_best": [
+    "B Bird@1.3"
+   ]
+  },
+  "ly_ambulance_(siren)_-yPSgCn": {
+   "needed": 2,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [
+    "D Vehicle@7.3"
+   ],
+   "causes_best": [
+    "D Vehicle@7.3"
+   ]
+  },
+  "ly_applause_62ZYD0u": {
+   "needed": 1,
+   "hit_B0r": 0,
+   "hit_best": 0,
+   "causes_B0r": [
+    "E Crowd@1.9"
+   ],
+   "causes_best": [
+    "E Crowd@1.9"
+   ]
+  },
+  "ly_helicopter_-v62cK1": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "mv_detective_crime_scene": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "mv_protest_scene_movie": {
+   "needed": 3,
+   "hit_B0r": 3,
+   "hit_best": 3,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "mv_storm_scene_house": {
+   "needed": 2,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [
+    "B Civil defense siren@16.9"
+   ],
+   "causes_best": [
+    "B Civil defense siren@16.9"
+   ]
+  },
+  "mv_tornado_scene": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  },
+  "un_driving_motorcycle_4O3bZRYO": {
+   "needed": 1,
+   "hit_B0r": 1,
+   "hit_best": 1,
+   "causes_B0r": [],
+   "causes_best": []
+  }
+ },
+ "rows": [
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Vehicle",
+   "onset": 3.8,
+   "end": 4.3,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "flex",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.1,
+     "Vehicle horn, car horn, honking"
+    ],
+    "flex": [
+     0.708,
+     "Air horn, truck horn"
+    ],
+    "panns": [
+     0.041,
+     "Vehicle"
+    ],
+    "xq": [
+     0.816,
+     "Subway, metro, underground"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Air horn, truck horn",
+    "start": 3.76,
+    "end": 4.4,
+    "len": 0.64,
+    "peak": 0.708
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "xq",
+     "query": "Subway, metro, underground",
+     "start": 4.28,
+     "end": 4.56,
+     "len": 0.28,
+     "peak": 0.816
+    },
+    {
+     "src": "xq",
+     "query": "Tire squeal",
+     "start": 4.28,
+     "end": 4.56,
+     "len": 0.28,
+     "peak": 0.711
+    },
+    {
+     "src": "215",
+     "query": "Air horn, truck horn",
+     "start": 3.76,
+     "end": 4.4,
+     "len": 0.64,
+     "peak": 0.708
+    },
+    {
+     "src": "xq",
+     "query": "Toot",
+     "start": 4.28,
+     "end": 4.56,
+     "len": 0.28,
+     "peak": 0.707
+    },
+    {
+     "src": "xq",
+     "query": "Sailboat, sailing ship",
+     "start": 4.28,
+     "end": 4.32,
+     "len": 0.04,
+     "peak": 0.663
+    },
+    {
+     "src": "xq",
+     "query": "Car alarm",
+     "start": 4.28,
+     "end": 4.52,
+     "len": 0.24,
+     "peak": 0.656
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Air horn, truck horn",
+     "start": 3.76,
+     "end": 4.4,
+     "peak": 0.708,
+     "qwen_yn": -0.25,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "Door closing",
+     "af_v4": true,
+     "af_v4_text": "car horn",
+     "af_yn": -0.75
+    }
+   ],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Air horn, truck horn 0.708 < 0.8 (run 0.64 s); extra query Subway, metro, underground 0.816 for 0.28 s (XQ not in this arm)",
+   "cause_best": "B",
+   "why_best": "FlexSED Air horn, truck horn 0.708 < 0.8 (run 0.64 s); listener asked (Air horn, truck horn peak 0.708), V12 no [AF V4 yes: 'car horn']; extra query Subway, metro, underground 0.816 for 0.28 s (XQ not in this arm)",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Hammer",
+   "onset": 13.7,
+   "end": 16.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.032,
+     "Hammer"
+    ],
+    "flex": [
+     0.7,
+     "Hammer"
+    ],
+    "panns": [
+     0.01,
+     "Hammer"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Hammer",
+    "start": 13.76,
+    "end": 15.96,
+    "len": 2.2,
+    "peak": 0.747
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Hammer",
+     "start": 13.76,
+     "end": 15.96,
+     "len": 2.2,
+     "peak": 0.747
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Hammer",
+     "start": 13.76,
+     "end": 15.96,
+     "peak": 0.747,
+     "qwen_yn": 5.75,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "V12"
+     ],
+     "qwen_v4_text": "Hammer/with",
+     "af_v4": true,
+     "af_v4_text": "hammer",
+     "af_yn": 2.375
+    }
+   ],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [
+    [
+     "Hammer",
+     13.76,
+     15.96,
+     0.747,
+     "flex",
+     true,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {
+    "LR-V12+1+F4": {
+     "F4": [
+      [
+       "Hammer",
+       13.76,
+       15.96,
+       "Train"
+      ]
+     ]
+    },
+    "LR-V12+1+F1F4": {
+     "F4": [
+      [
+       "Hammer",
+       13.76,
+       15.96,
+       "Train"
+      ]
+     ]
+    }
+   },
+   "arm_chain": {
+    "LR-V12": "gained",
+    "LR-V12+1": "gained",
+    "LR-V12+1+F1": "gained"
+   },
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [
+    [
+     "Hammer",
+     13.76,
+     15.96,
+     0.747,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Hammer strikes nail",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Hammer 0.747 < 0.8 (run 2.2 s)",
+   "cause_best": "C",
+   "why_best": "listener V12 yes, rescued Hammer 13.76-15.96 (peak 0.747); killed by F4 local winner: 'Train' is the top query at the peak",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Hammer",
+   "onset": 8.1,
+   "end": 10.7,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [],
+   "evidence_window": {
+    "beats": [
+     0.01,
+     "Tools"
+    ],
+    "flex": [
+     0.005,
+     "Hammer"
+    ],
+    "panns": [
+     0.0,
+     "Hammer"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": null,
+   "flexsed_runs_all": [],
+   "listener": [],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "A",
+   "why_B0r": "no detector reaches its heard bar in the window",
+   "cause_best": "A",
+   "why_best": "no detector reaches its heard bar in the window",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "ambient_citywalk_nyc_2627",
+   "label": "Clang",
+   "onset": 3.8,
+   "end": 4.4,
+   "importance": 2,
+   "depictable": false,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.015,
+     "Clang"
+    ],
+    "flex": [
+     0.0,
+     null
+    ],
+    "panns": [
+     0.0,
+     "Clang"
+    ],
+    "xq": [
+     0.826,
+     "Clang"
+    ]
+   },
+   "flexsed_run": {
+    "src": "xq",
+    "query": "Clang",
+    "start": 4.28,
+    "end": 4.52,
+    "len": 0.24,
+    "peak": 0.826
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "xq",
+     "query": "Clang",
+     "start": 4.28,
+     "end": 4.52,
+     "len": 0.24,
+     "peak": 0.826
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "F",
+   "why_B0r": "label outside the drawable (depictable) vocabulary: no FlexSED-215 query, cannot be drawn",
+   "cause_best": "F",
+   "why_best": "label outside the drawable (depictable) vocabulary: no FlexSED-215 query, cannot be drawn",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ambient_nature_rainforest_2179",
+   "label": "Bird",
+   "onset": 6.5,
+   "end": 16.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.033,
+     "Owl"
+    ],
+    "flex": [
+     0.435,
+     "Bird"
+    ],
+    "panns": [
+     0.024,
+     "Bird"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Bird",
+    "start": 6.96,
+    "end": 7.04,
+    "len": 0.08,
+    "peak": 0.435
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Bird",
+     "start": 6.96,
+     "end": 7.04,
+     "len": 0.08,
+     "peak": 0.435
+    },
+    {
+     "src": "215",
+     "query": "Bird",
+     "start": 6.52,
+     "end": 6.68,
+     "len": 0.16,
+     "peak": 0.424
+    },
+    {
+     "src": "215",
+     "query": "Bird",
+     "start": 7.48,
+     "end": 7.52,
+     "len": 0.04,
+     "peak": 0.413
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Bird 0.435 < 0.8 (run 0.08 s)",
+   "cause_best": "B",
+   "why_best": "FlexSED Bird 0.435 < 0.8 (run 0.08 s); listener not asked: run peak 0.435 < LO 0.5",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Bird",
+   "onset": 0.1,
+   "end": 16.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.42,
+     "Bird vocalization, bird call, bird song"
+    ],
+    "flex": [
+     0.682,
+     "Bird"
+    ],
+    "panns": [
+     0.052,
+     "Bird"
+    ],
+    "xq": [
+     0.839,
+     "Chicken, rooster"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Bird",
+    "start": 0.4,
+    "end": 2.04,
+    "len": 1.64,
+    "peak": 0.691
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "xq",
+     "query": "Chicken, rooster",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.839
+    },
+    {
+     "src": "xq",
+     "query": "Cluck",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.817
+    },
+    {
+     "src": "xq",
+     "query": "Coo",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.811
+    },
+    {
+     "src": "xq",
+     "query": "Chicken, rooster",
+     "start": 1.08,
+     "end": 1.12,
+     "len": 0.04,
+     "peak": 0.802
+    },
+    {
+     "src": "xq",
+     "query": "Crowing, cock-a-doodle-doo",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.792
+    },
+    {
+     "src": "xq",
+     "query": "Caw",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.779
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.14,
+     "end": 0.5,
+     "peak": null,
+     "qwen_yn": 3.125,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird",
+     "af_yn": 1.75
+    },
+    {
+     "pool": "P1",
+     "label": "Bird",
+     "start": 0.14,
+     "end": 0.5,
+     "peak": null,
+     "qwen_yn": 3.125,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird",
+     "af_yn": 1.75
+    },
+    {
+     "pool": "P1",
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.89,
+     "end": 3.25,
+     "peak": null,
+     "qwen_yn": 3.875,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird",
+     "af_yn": 4.5625
+    },
+    {
+     "pool": "P1",
+     "label": "Bird",
+     "start": 0.81,
+     "end": 3.0,
+     "peak": null,
+     "qwen_yn": 3.625,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird",
+     "af_yn": 3.375
+    },
+    {
+     "pool": "P1",
+     "label": "Chirp, tweet",
+     "start": 0.89,
+     "end": 2.75,
+     "peak": null,
+     "qwen_yn": 3.875,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird",
+     "af_yn": 3.9375
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.14,
+     "end": 0.5,
+     "qwen_yn": 3.125
+    },
+    {
+     "label": "Bird",
+     "start": 0.14,
+     "end": 0.5,
+     "qwen_yn": 3.125
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.89,
+     "end": 3.25,
+     "qwen_yn": 3.875
+    },
+    {
+     "label": "Bird",
+     "start": 0.81,
+     "end": 3.0,
+     "qwen_yn": 3.625
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 0.89,
+     "end": 2.75,
+     "qwen_yn": 3.875
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Bird vocalization, bird call, bird song",
+     0.14,
+     0.5,
+     0.263,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     0.14,
+     0.5,
+     0.259,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     0.89,
+     3.25,
+     0.458,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     0.81,
+     3.0,
+     0.356,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Chirp, tweet",
+     0.89,
+     2.75,
+     0.342,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     3.56,
+     4.75,
+     0.357,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     3.5,
+     4.5,
+     0.268,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     6.0,
+     6.75,
+     0.236,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     8.05,
+     10.0,
+     0.346,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chirp, tweet",
+     8.05,
+     8.25,
+     0.257,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     8.05,
+     8.25,
+     0.228,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chirp, tweet",
+     8.5,
+     9.25,
+     0.234,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     15.55,
+     15.75,
+     0.231,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Bird vocalization, bird call, bird song",
+     0.14,
+     0.5,
+     0.263,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     0.14,
+     0.5,
+     0.259,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     0.89,
+     3.25,
+     0.458,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     0.81,
+     3.0,
+     0.356,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Chirp, tweet",
+     0.89,
+     2.75,
+     0.342,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     3.56,
+     4.75,
+     0.357,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     3.5,
+     4.5,
+     0.268,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     6.0,
+     6.75,
+     0.236,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     8.05,
+     10.0,
+     0.346,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chirp, tweet",
+     8.05,
+     8.25,
+     0.257,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     8.05,
+     8.25,
+     0.228,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chirp, tweet",
+     8.5,
+     9.25,
+     0.234,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     15.55,
+     15.75,
+     0.231,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Bird",
+     0.81,
+     4.75,
+     0.458,
+     false,
+     "source visible on screen (macaws) - stay silent",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Bird",
+     0.81,
+     4.75,
+     0.458,
+     false,
+     "source visible on screen (macaws) - stay silent",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Bird",
+     [
+      0.81,
+      4.75
+     ],
+     true,
+     "macaws"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "D",
+   "why_B0r": "span Bird 0.81-4.75 (conf 0.458) reached stage 5; gate: 'source visible on screen (macaws) - stay silent'; gate votes over the window: 0.8-4.8 s seen=True named 'macaws'",
+   "cause_best": "D",
+   "why_best": "span Bird 0.81-4.75 (conf 0.458) reached stage 5; gate: 'source visible on screen (macaws) - stay silent'; gate votes over the window: 0.8-4.8 s seen=True named 'macaws'",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Cricket",
+   "onset": 0.1,
+   "end": 9.5,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.318,
+     "Cricket"
+    ],
+    "flex": [
+     0.918,
+     "Insect"
+    ],
+    "panns": [
+     0.001,
+     "Insect"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Insect",
+    "start": 0.0,
+    "end": 16.0,
+    "len": 16.0,
+    "peak": 0.929
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Insect",
+     "start": 0.0,
+     "end": 16.0,
+     "len": 16.0,
+     "peak": 0.929
+    },
+    {
+     "src": "215",
+     "query": "Cricket",
+     "start": 0.0,
+     "end": 16.0,
+     "len": 16.0,
+     "peak": 0.823
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Insect",
+     "start": 0.14,
+     "end": 0.75,
+     "peak": null,
+     "qwen_yn": -1.375,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "bird",
+     "af_yn": -0.75
+    },
+    {
+     "pool": "P1",
+     "label": "Cricket",
+     "start": 0.14,
+     "end": 0.75,
+     "peak": null,
+     "qwen_yn": -0.375,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "bird",
+     "af_yn": -0.5
+    },
+    {
+     "pool": "P1",
+     "label": "Cricket",
+     "start": 1.0,
+     "end": 1.5,
+     "peak": null,
+     "qwen_yn": -0.5,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "bird",
+     "af_yn": -0.125
+    },
+    {
+     "pool": "P1",
+     "label": "Insect",
+     "start": 0.14,
+     "end": 1.5,
+     "peak": null,
+     "qwen_yn": -0.625,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "bird",
+     "af_yn": -0.625
+    },
+    {
+     "pool": "P1",
+     "label": "Insect",
+     "start": 0.14,
+     "end": 5.0,
+     "peak": null,
+     "qwen_yn": -1.25,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "bird",
+     "af_yn": -1.5
+    },
+    {
+     "pool": "P1",
+     "label": "Insect",
+     "start": 0.14,
+     "end": 6.0,
+     "peak": null,
+     "qwen_yn": -0.75,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "bird",
+     "af_yn": -0.75
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Insect",
+     "start": 0.14,
+     "end": 0.75,
+     "qwen_yn": -1.375
+    },
+    {
+     "label": "Cricket",
+     "start": 0.14,
+     "end": 0.75,
+     "qwen_yn": -0.375
+    },
+    {
+     "label": "Cricket",
+     "start": 1.0,
+     "end": 1.5,
+     "qwen_yn": -0.5
+    },
+    {
+     "label": "Insect",
+     "start": 0.14,
+     "end": 1.5,
+     "qwen_yn": -0.625
+    },
+    {
+     "label": "Insect",
+     "start": 0.14,
+     "end": 5.0,
+     "qwen_yn": -1.25
+    },
+    {
+     "label": "Insect",
+     "start": 0.14,
+     "end": 6.0,
+     "qwen_yn": -0.75
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Insect",
+     0.14,
+     0.75,
+     0.246,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cricket",
+     0.14,
+     0.75,
+     0.197,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cricket",
+     1.0,
+     1.5,
+     0.318,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Insect",
+     0.14,
+     1.5,
+     0.312,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Insect",
+     0.14,
+     5.0,
+     0.297,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cricket",
+     4.5,
+     6.25,
+     0.363,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Insect",
+     0.14,
+     6.0,
+     0.234,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Insect",
+     0.14,
+     0.75,
+     0.406,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cricket",
+     0.14,
+     0.75,
+     0.197,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cricket",
+     1.0,
+     1.5,
+     0.318,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Insect",
+     0.14,
+     1.5,
+     0.406,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Insect",
+     0.14,
+     5.0,
+     0.406,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cricket",
+     4.5,
+     6.25,
+     0.363,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Insect",
+     0.14,
+     6.0,
+     0.406,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {
+    "R13-1": "gained",
+    "LR-V12+1": "gained",
+    "LR-V12+1+F1": "gained",
+    "LR-V12+1+F4": "gained",
+    "LR-V12+1+F1F4": "gained",
+    "LR-V12+1+F1F4F3": "gained",
+    "LR-V12+1+F1F4F3+F7": "gained",
+    "LR-V12+1+F1F4F3+F8": "gained",
+    "LR-V12+1+F1F4F3+F7F8": "gained"
+   },
+   "stage5_B0r_family": [
+    [
+     "Cricket",
+     4.5,
+     6.25,
+     0.363,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Cricket chirping",
+     ""
+    ],
+    [
+     "Insect",
+     0.14,
+     6.0,
+     0.312,
+     false,
+     "below display threshold (0.31 < 0.35)",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Insect",
+     0.14,
+     6.0,
+     0.406,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Insect buzzing",
+     ""
+    ],
+    [
+     "Cricket",
+     4.5,
+     6.25,
+     0.363,
+     false,
+     "same picture as Insect (same sound under two names)",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Cricket",
+     [
+      4.5,
+      6.25
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Cricket",
+     4.5,
+     6.25
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Insect",
+     0.14,
+     6.25
+    ]
+   ],
+   "other_B0r_candidates_in_window": [
+    [
+     "Bird vocalization, bird call, bird song",
+     0.89,
+     0.458
+    ],
+    [
+     "Bird",
+     0.81,
+     0.356
+    ]
+   ],
+   "cause_B0r": "E",
+   "why_B0r": "FlexSED Insect 0.929 absorbed by a weak BEATs twin (Insect 0.246 < display 0.35), dropped at the display bar; the later same-family picture is out of window",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "label": "Laughter",
+   "onset": 8.1,
+   "end": 9.4,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.208,
+     "Snicker"
+    ],
+    "flex": [
+     0.919,
+     "Laughter"
+    ],
+    "panns": [
+     0.001,
+     "Snicker"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Laughter",
+    "start": 7.96,
+    "end": 9.64,
+    "len": 1.68,
+    "peak": 0.919
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Laughter",
+     "start": 7.96,
+     "end": 9.64,
+     "len": 1.68,
+     "peak": 0.919
+    },
+    {
+     "src": "215",
+     "query": "Belly laugh",
+     "start": 8.04,
+     "end": 8.8,
+     "len": 0.76,
+     "peak": 0.759
+    },
+    {
+     "src": "215",
+     "query": "Giggle",
+     "start": 8.04,
+     "end": 9.4,
+     "len": 1.36,
+     "peak": 0.727
+    },
+    {
+     "src": "215",
+     "query": "Chuckle, chortle",
+     "start": 8.2,
+     "end": 8.52,
+     "len": 0.32,
+     "peak": 0.435
+    }
+   ],
+   "listener": [
+    {
+     "pool": "PV",
+     "label": "Laughter",
+     "start": 8.08,
+     "end": 8.76,
+     "peak": 0.919,
+     "qwen_yn": 2.875,
+     "qwen_yes_flags": [
+      "V3",
+      "V4"
+     ],
+     "qwen_v4_text": "Laughter/Train/Assis",
+     "af_v4": true,
+     "af_v4_text": "laughing",
+     "af_yn": 0.5
+    },
+    {
+     "pool": "P2",
+     "label": "Laughter",
+     "start": 7.96,
+     "end": 9.64,
+     "peak": 0.919,
+     "qwen_yn": 2.875,
+     "qwen_yes_flags": [
+      "V3",
+      "V4"
+     ],
+     "qwen_v4_text": "Laughter/Train/Assis",
+     "af_v4": true,
+     "af_v4_text": "laughing",
+     "af_yn": 0.5
+    },
+    {
+     "pool": "P2",
+     "label": "Belly laugh",
+     "start": 8.04,
+     "end": 8.8,
+     "peak": 0.759,
+     "qwen_yn": -0.625,
+     "qwen_yes_flags": [
+      "V3",
+      "V4"
+     ],
+     "qwen_v4_text": "Wind/Laughter",
+     "af_v4": false,
+     "af_v4_text": "laughing",
+     "af_yn": 0.875
+    },
+    {
+     "pool": "P2",
+     "label": "Giggle",
+     "start": 8.04,
+     "end": 9.4,
+     "peak": 0.727,
+     "qwen_yn": 2.5,
+     "qwen_yes_flags": [
+      "V3",
+      "V4"
+     ],
+     "qwen_v4_text": "Laughter/Laught",
+     "af_v4": false,
+     "af_v4_text": "vehicle",
+     "af_yn": -0.75
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Snicker",
+     "start": 8.25,
+     "end": 8.5,
+     "qwen_yn": 1.375
+    }
+   ],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "C",
+   "why_B0r": "FlexSED Laughter 0.919 (run 1.68 s) >= bar 0.8, dropped by the PANNs clip veto (PANNs 0.001)",
+   "cause_best": "C",
+   "why_best": "FlexSED Laughter 0.919 (run 1.68 s) >= bar 0.8, dropped by the PANNs clip veto (PANNs 0.001); PV listener asked, V12 no (Qwen yes on V3/V4, AF V4 True)",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Gunshot, gunfire",
+   "onset": 0.0,
+   "end": 2.2,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.211,
+     "Fusillade"
+    ],
+    "flex": [
+     0.549,
+     "Gunshot"
+    ],
+    "panns": [
+     0.24,
+     "Fusillade"
+    ],
+    "xq": [
+     0.159,
+     "Artillery fire"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Gunshot",
+    "start": 0.16,
+    "end": 0.4,
+    "len": 0.24,
+    "peak": 0.549
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Gunshot",
+     "start": 0.16,
+     "end": 0.4,
+     "len": 0.24,
+     "peak": 0.549
+    },
+    {
+     "src": "215",
+     "query": "Explosion",
+     "start": 0.16,
+     "end": 0.28,
+     "len": 0.12,
+     "peak": 0.433
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Gunshot",
+     "start": 0.16,
+     "end": 0.4,
+     "peak": 0.549,
+     "qwen_yn": 4.375,
+     "qwen_yes_flags": [
+      "V2",
+      "V3",
+      "V4"
+     ],
+     "qwen_v4_text": "Explosion/wise",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 2.875
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Fusillade",
+     "start": 0.5,
+     "end": 0.75,
+     "qwen_yn": 3.75
+    }
+   ],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [
+    [
+     "Gunshot",
+     [
+      8.25,
+      10.75
+     ],
+     true,
+     "AK-47 rifle"
+    ],
+    [
+     "Gunshot",
+     [
+      12.5,
+      16.5
+     ],
+     true,
+     "AK-47 rifle"
+    ],
+    [
+     "Gunshot",
+     [
+      18.0,
+      19.5
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Explosion",
+     [
+      9.25,
+      9.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Gunshot 0.549 < 0.8 (run 0.24 s)",
+   "cause_best": "B",
+   "why_best": "FlexSED Gunshot 0.549 < 0.8 (run 0.24 s); listener asked (Gunshot peak 0.549), V12 no [Qwen yes on V2/V3/V4] [AF V4 yes: 'gunshot and gunfire, explosion']",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Walk, footsteps",
+   "onset": 2.1,
+   "end": 11.3,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.008,
+     "Walk, footsteps"
+    ],
+    "flex": [
+     0.658,
+     "Footsteps"
+    ],
+    "panns": [
+     0.001,
+     "Walk, footsteps"
+    ],
+    "xq": [
+     0.152,
+     "Run"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Footsteps",
+    "start": 2.08,
+    "end": 2.72,
+    "len": 0.64,
+    "peak": 0.658
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Footsteps",
+     "start": 2.08,
+     "end": 2.72,
+     "len": 0.64,
+     "peak": 0.658
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Footsteps",
+     "start": 2.08,
+     "end": 2.72,
+     "peak": 0.658,
+     "qwen_yn": 3.625,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V3",
+      "V12"
+     ],
+     "qwen_v4_text": "Explosion/Gunshot/Shatter",
+     "af_v4": false,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": -0.25
+    }
+   ],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [
+    [
+     "Footsteps",
+     2.08,
+     2.72,
+     0.658,
+     "flex",
+     true,
+     true
+    ],
+    [
+     "Footsteps",
+     4.0,
+     5.24,
+     0.695,
+     "flex",
+     true,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {
+    "LR-V12+1+F1": {
+     "F1": [
+      [
+       "Footsteps",
+       2.08,
+       2.72,
+       "not the strongest"
+      ]
+     ]
+    },
+    "LR-V12+1+F1F4": {
+     "F1": [
+      [
+       "Footsteps",
+       2.08,
+       2.72,
+       "not the strongest"
+      ]
+     ]
+    }
+   },
+   "arm_chain": {
+    "LR-V12": "gained",
+    "LR-V12+1": "gained",
+    "LR-V12+1+F4": "gained"
+   },
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [
+    [
+     "Footsteps",
+     4.0,
+     5.24,
+     0.695,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Character feet hitting ground",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Footsteps 0.658 < 0.8 (run 0.64 s)",
+   "cause_best": "C",
+   "why_best": "listener V12 yes, rescued Footsteps 2.08-2.72 (peak 0.658); killed by F1 once-per-family: not the strongest",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "onset": 2.8,
+   "end": 4.2,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "flex",
+    "panns",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.136,
+     "Fusillade"
+    ],
+    "flex": [
+     0.621,
+     "Explosion"
+    ],
+    "panns": [
+     0.118,
+     "Boom"
+    ],
+    "xq": [
+     0.726,
+     "Machine gun"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Explosion",
+    "start": 2.84,
+    "end": 3.64,
+    "len": 0.8,
+    "peak": 0.621
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "xq",
+     "query": "Machine gun",
+     "start": 3.48,
+     "end": 3.52,
+     "len": 0.04,
+     "peak": 0.726
+    },
+    {
+     "src": "xq",
+     "query": "Gunshot, gunfire",
+     "start": 3.48,
+     "end": 3.52,
+     "len": 0.04,
+     "peak": 0.705
+    },
+    {
+     "src": "215",
+     "query": "Explosion",
+     "start": 2.84,
+     "end": 3.64,
+     "len": 0.8,
+     "peak": 0.621
+    },
+    {
+     "src": "xq",
+     "query": "Fusillade",
+     "start": 3.48,
+     "end": 3.52,
+     "len": 0.04,
+     "peak": 0.618
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Explosion",
+     "start": 2.84,
+     "end": 3.64,
+     "peak": 0.621,
+     "qwen_yn": 5.625,
+     "qwen_yes_flags": [
+      "V1",
+      "V4"
+     ],
+     "qwen_v4_text": "Explosion/Gunshot/Shatter",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 3.75
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Fusillade",
+     "start": 2.25,
+     "end": 2.5,
+     "qwen_yn": 2.375
+    }
+   ],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [
+    [
+     "Explosion",
+     [
+      9.25,
+      9.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Explosion 0.621 < 0.8 (run 0.8 s)",
+   "cause_best": "B",
+   "why_best": "FlexSED Explosion 0.621 < 0.8 (run 0.8 s); listener asked (Explosion peak 0.621), V12 no [Qwen yes on V1/V4] [AF V4 yes: 'gunshot and gunfire, explosion']",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "onset": 5.6,
+   "end": 6.7,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.242,
+     "Fusillade"
+    ],
+    "flex": [
+     0.557,
+     "Explosion"
+    ],
+    "panns": [
+     0.174,
+     "Fusillade"
+    ],
+    "xq": [
+     0.223,
+     "Bang"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Explosion",
+    "start": 5.68,
+    "end": 6.2,
+    "len": 0.52,
+    "peak": 0.557
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Explosion",
+     "start": 5.68,
+     "end": 6.2,
+     "len": 0.52,
+     "peak": 0.557
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Explosion",
+     "start": 5.68,
+     "end": 6.2,
+     "peak": 0.557,
+     "qwen_yn": 5.75,
+     "qwen_yes_flags": [
+      "V1",
+      "V4"
+     ],
+     "qwen_v4_text": "Gunshot/Explosion/Shatter",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, screaming",
+     "af_yn": 5.3125
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Fusillade",
+     "start": 6.0,
+     "end": 6.25,
+     "qwen_yn": 6.625
+    }
+   ],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [
+    [
+     "Explosion",
+     [
+      9.25,
+      9.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Explosion 0.557 < 0.8 (run 0.52 s)",
+   "cause_best": "B",
+   "why_best": "FlexSED Explosion 0.557 < 0.8 (run 0.52 s); listener asked (Explosion peak 0.557), V12 no [Qwen yes on V1/V4] [AF V4 yes: 'gunshot and gunfire, screaming']",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Gasp",
+   "onset": 6.7,
+   "end": 7.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.415,
+     "Gasp"
+    ],
+    "flex": [
+     0.758,
+     "Gasp"
+    ],
+    "panns": [
+     0.001,
+     "Gasp"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Gasp",
+    "start": 6.72,
+    "end": 6.92,
+    "len": 0.2,
+    "peak": 0.758
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Gasp",
+     "start": 6.72,
+     "end": 6.92,
+     "len": 0.2,
+     "peak": 0.758
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Gasp",
+     "start": 6.72,
+     "end": 6.92,
+     "peak": 0.758,
+     "qwen_yn": 3.5,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "Explosion/Gunshot/Screaming",
+     "af_v4": false,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 1.875
+    }
+   ],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [
+    [
+     "Gasp",
+     6.32,
+     7.32,
+     0.758,
+     "flex",
+     true,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {
+    "LR-V12": "gained",
+    "LR-V12+1": "gained",
+    "LR-V12+1+F1": "gained",
+    "LR-V12+1+F4": "gained",
+    "LR-V12+1+F1F4": "gained",
+    "LR-V12+1+F1F4F3": "gained",
+    "LR-V12+1+F1F4F3+F7": "gained"
+   },
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [
+    [
+     "Gasp",
+     6.32,
+     7.32,
+     0.758,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Character gasps",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "C",
+   "why_B0r": "BEATs Gasp 0.415 >= display bar for one 0.25-s frame, cut by the 0.5-s min span (FlexSED 0.758 < 0.8)",
+   "cause_best": "C",
+   "why_best": "listener V12 yes, rescued Gasp 6.32-7.32 (peak 0.758); killed by F8 DASM vote below bar (from the arm chain; DASM cache not local)",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "onset": 9.1,
+   "end": 10.9,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.533,
+     "Fusillade"
+    ],
+    "flex": [
+     0.61,
+     "Explosion"
+    ],
+    "panns": [
+     0.137,
+     "Boom"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Explosion",
+    "start": 9.08,
+    "end": 10.0,
+    "len": 0.92,
+    "peak": 0.61
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Explosion",
+     "start": 9.08,
+     "end": 10.0,
+     "len": 0.92,
+     "peak": 0.61
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Fusillade",
+     "start": 8.25,
+     "end": 9.5,
+     "peak": null,
+     "qwen_yn": 5.375,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 3.25
+    },
+    {
+     "pool": "P1",
+     "label": "Machine gun",
+     "start": 8.5,
+     "end": 9.0,
+     "peak": null,
+     "qwen_yn": 3.625,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 1.0
+    },
+    {
+     "pool": "P1",
+     "label": "Gunshot, gunfire",
+     "start": 8.5,
+     "end": 9.0,
+     "peak": null,
+     "qwen_yn": 3.625,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 1.0
+    },
+    {
+     "pool": "P1",
+     "label": "Boom",
+     "start": 9.25,
+     "end": 9.75,
+     "peak": null,
+     "qwen_yn": 3.75,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "gunshots, footsteps",
+     "af_yn": 2.5
+    },
+    {
+     "pool": "P1",
+     "label": "Fusillade",
+     "start": 10.0,
+     "end": 10.75,
+     "peak": null,
+     "qwen_yn": 4.0,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 3.25
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Fusillade",
+     "start": 8.25,
+     "end": 9.5,
+     "qwen_yn": 5.375
+    },
+    {
+     "label": "Machine gun",
+     "start": 8.5,
+     "end": 9.0,
+     "qwen_yn": 3.625
+    },
+    {
+     "label": "Gunshot, gunfire",
+     "start": 8.5,
+     "end": 9.0,
+     "qwen_yn": 3.625
+    },
+    {
+     "label": "Boom",
+     "start": 9.25,
+     "end": 9.75,
+     "qwen_yn": 3.75
+    },
+    {
+     "label": "Fusillade",
+     "start": 10.0,
+     "end": 10.75,
+     "qwen_yn": 4.0
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Fusillade",
+     8.25,
+     9.5,
+     0.533,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Machine gun",
+     8.5,
+     9.0,
+     0.305,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Gunshot, gunfire",
+     8.5,
+     9.0,
+     0.206,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Boom",
+     9.25,
+     9.75,
+     0.448,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Fusillade",
+     10.0,
+     10.75,
+     0.441,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Fusillade",
+     8.25,
+     9.5,
+     0.533,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Machine gun",
+     8.5,
+     9.0,
+     0.305,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Gunshot, gunfire",
+     8.5,
+     9.0,
+     0.206,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Boom",
+     9.25,
+     9.75,
+     0.448,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Fusillade",
+     10.0,
+     10.75,
+     0.441,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Explosion",
+     9.25,
+     9.75,
+     0.448,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Bomb explodes",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Explosion",
+     9.25,
+     9.75,
+     0.448,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Bomb explodes",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Explosion",
+     [
+      9.25,
+      9.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Explosion",
+     9.25,
+     10.75
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Explosion",
+     9.25,
+     10.75
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Door",
+   "onset": 3.9,
+   "end": 9.3,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.411,
+     "Cupboard open or close"
+    ],
+    "flex": [
+     0.239,
+     "Door"
+    ],
+    "panns": [
+     0.443,
+     "Cupboard open or close"
+    ],
+    "xq": [
+     0.312,
+     "Squeak"
+    ]
+   },
+   "flexsed_run": null,
+   "flexsed_runs_all": [],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Cupboard open or close",
+     "start": 4.25,
+     "end": 5.25,
+     "peak": null,
+     "qwen_yn": 1.25,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "drawer open or close, domestic sounds and home sounds",
+     "af_yn": 0.75
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Cupboard open or close",
+     "start": 4.25,
+     "end": 5.25,
+     "qwen_yn": 1.25
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Cupboard open or close",
+     4.25,
+     5.25,
+     0.442,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Door",
+     8.75,
+     10.0,
+     0.282,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Cupboard open or close",
+     4.25,
+     5.25,
+     0.442,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Door",
+     8.75,
+     10.0,
+     0.282,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Door",
+     4.25,
+     5.25,
+     0.442,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Cupboard door closing",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Door",
+     4.25,
+     5.25,
+     0.442,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Cupboard door closing",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Door",
+     [
+      4.25,
+      5.25
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Door",
+     4.25,
+     5.75
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Door",
+     4.25,
+     5.75
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "b3_barbershop",
+   "label": "Electric shaver, electric razor",
+   "onset": 0.1,
+   "end": 27.8,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.771,
+     "Electric shaver, electric razor"
+    ],
+    "flex": [
+     0.663,
+     "Electric shaver, electric razor"
+    ],
+    "panns": [
+     0.209,
+     "Electric shaver, electric razor"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Electric shaver, electric razor",
+    "start": 0.0,
+    "end": 10.0,
+    "len": 10.0,
+    "peak": 0.664
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Electric shaver, electric razor",
+     "start": 0.0,
+     "end": 10.0,
+     "len": 10.0,
+     "peak": 0.664
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Electric shaver, electric razor",
+     "start": 0.14,
+     "end": 13.25,
+     "qwen_yn": 6.625
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Electric shaver, electric razor",
+     0.14,
+     13.25,
+     0.79,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Electric shaver, electric razor",
+     15.25,
+     15.75,
+     0.217,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Electric shaver, electric razor",
+     16.0,
+     23.25,
+     0.87,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Electric shaver, electric razor",
+     0.14,
+     13.25,
+     0.79,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Electric shaver, electric razor",
+     15.25,
+     15.75,
+     0.217,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Electric shaver, electric razor",
+     16.0,
+     23.25,
+     0.87,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Electric shaver, electric razor",
+     16.0,
+     23.25,
+     0.87,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Man shaves face",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Electric shaver, electric razor",
+     16.0,
+     23.25,
+     0.87,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Man shaves face",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Electric shaver, electric razor",
+     [
+      0.14,
+      4.51
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Electric shaver, electric razor",
+     [
+      4.51,
+      8.88
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Electric shaver, electric razor",
+     [
+      8.88,
+      13.25
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Electric shaver, electric razor",
+     [
+      16.0,
+      23.25
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Electric shaver, electric razor",
+     0.14,
+     13.25
+    ],
+    [
+     "Electric shaver, electric razor",
+     16.0,
+     23.25
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Electric shaver, electric razor",
+     0.14,
+     13.25
+    ],
+    [
+     "Electric shaver, electric razor",
+     16.0,
+     23.25
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "b3_carnival_parade",
+   "label": "Whistle",
+   "onset": 6.1,
+   "end": 7.4,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.006,
+     "Alarm"
+    ],
+    "flex": [
+     0.585,
+     "Steam whistle"
+    ],
+    "panns": [
+     0.0,
+     "Whistle"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Steam whistle",
+    "start": 6.32,
+    "end": 7.16,
+    "len": 0.84,
+    "peak": 0.585
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Steam whistle",
+     "start": 6.32,
+     "end": 7.16,
+     "len": 0.84,
+     "peak": 0.585
+    },
+    {
+     "src": "215",
+     "query": "Whistle",
+     "start": 6.32,
+     "end": 7.16,
+     "len": 0.84,
+     "peak": 0.502
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Steam whistle",
+     "start": 6.32,
+     "end": 7.16,
+     "peak": 0.585,
+     "qwen_yn": 3.0,
+     "qwen_yes_flags": [
+      "V1",
+      "V3"
+     ],
+     "qwen_v4_text": "Train/Train wheels squealing/Tra",
+     "af_v4": false,
+     "af_v4_text": "gunshot and gunfire, explosion",
+     "af_yn": 0.625
+    },
+    {
+     "pool": "P2",
+     "label": "Whistle",
+     "start": 6.32,
+     "end": 7.16,
+     "peak": 0.502,
+     "qwen_yn": 6.0,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V3",
+      "V12"
+     ],
+     "qwen_v4_text": "Train/Train wheels squealing/Tra",
+     "af_v4": false,
+     "af_v4_text": "squeal, metallic clatter, rumble",
+     "af_yn": 1.375
+    }
+   ],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [
+    [
+     "Whistle",
+     6.32,
+     7.16,
+     0.502,
+     "flex",
+     true,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {
+    "LR-V12+1+F1": {
+     "F1": [
+      [
+       "Whistle",
+       6.32,
+       7.16,
+       "not the strongest"
+      ]
+     ]
+    },
+    "LR-V12+1+F4": {
+     "F4": [
+      [
+       "Whistle",
+       6.32,
+       7.16,
+       "Steam whistle"
+      ]
+     ]
+    },
+    "LR-V12+1+F1F4": {
+     "F4": [
+      [
+       "Whistle",
+       6.32,
+       7.16,
+       "Steam whistle"
+      ]
+     ]
+    }
+   },
+   "arm_chain": {
+    "LR-V12": "gained",
+    "LR-V12+1": "gained"
+   },
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Steam whistle 0.585 < 0.8 (run 0.84 s)",
+   "cause_best": "C",
+   "why_best": "listener V12 yes, rescued Whistle 6.32-7.16 (peak 0.502); killed by F4 local winner: 'Steam whistle' is the top query at the peak and F1 once-per-family: not the strongest",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "b3_favela_rio",
+   "label": "Train",
+   "onset": 14.6,
+   "end": 28.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.076,
+     "Vehicle"
+    ],
+    "flex": [
+     0.871,
+     "Train"
+    ],
+    "panns": [
+     0.1,
+     "Train"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Train",
+    "start": 0.0,
+    "end": 28.0,
+    "len": 28.0,
+    "peak": 0.901
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Train",
+     "start": 0.0,
+     "end": 28.0,
+     "len": 28.0,
+     "peak": 0.901
+    },
+    {
+     "src": "215",
+     "query": "Vehicle",
+     "start": 15.12,
+     "end": 15.44,
+     "len": 0.32,
+     "peak": 0.423
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Train",
+     "start": 14.72,
+     "end": 16.5,
+     "peak": null,
+     "qwen_yn": 3.25,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "wind",
+     "af_yn": -1.5
+    },
+    {
+     "pool": "P1",
+     "label": "Rail transport",
+     "start": 14.72,
+     "end": 16.5,
+     "peak": null,
+     "qwen_yn": 3.25,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "wind",
+     "af_yn": -1.5
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Train",
+     "start": 14.72,
+     "end": 16.5,
+     "qwen_yn": 3.25
+    },
+    {
+     "label": "Rail transport",
+     "start": 14.72,
+     "end": 16.5,
+     "qwen_yn": 3.25
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Train",
+     14.72,
+     16.5,
+     0.429,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Rail transport",
+     14.72,
+     16.5,
+     0.401,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Vehicle",
+     16.0,
+     16.5,
+     0.368,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Train",
+     14.72,
+     16.5,
+     0.429,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Rail transport",
+     14.72,
+     16.5,
+     0.401,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Vehicle",
+     16.0,
+     16.5,
+     0.368,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Vehicle",
+     16.0,
+     16.5,
+     0.368,
+     false,
+     "same picture as Train (same sound under two names)",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Vehicle",
+     16.0,
+     16.5,
+     0.368,
+     false,
+     "same picture as Train (same sound under two names)",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Train",
+     [
+      3.8,
+      4.0
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Train",
+     [
+      14.72,
+      16.5
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Vehicle",
+     [
+      16.0,
+      16.5
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Train",
+     14.72,
+     17.5
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Train",
+     14.72,
+     17.5
+    ]
+   ],
+   "other_B0r_candidates_in_window": [
+    [
+     "Pigeon, dove",
+     14.25,
+     0.438
+    ]
+   ],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Whack, thwack",
+   "onset": 6.5,
+   "end": 7.1,
+   "importance": 2,
+   "depictable": false,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [],
+   "evidence_window": {
+    "beats": [
+     0.006,
+     "Whack, thwack"
+    ],
+    "flex": [
+     0.0,
+     null
+    ],
+    "panns": [
+     0.001,
+     "Whack, thwack"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": null,
+   "flexsed_runs_all": [],
+   "listener": [],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "A",
+   "why_B0r": "no detector reaches its heard bar in the window; also outside the drawable vocabulary",
+   "cause_best": "A",
+   "why_best": "no detector reaches its heard bar in the window; also outside the drawable vocabulary",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Whack, thwack",
+   "onset": 24.4,
+   "end": 25.1,
+   "importance": 2,
+   "depictable": false,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [],
+   "evidence_window": {
+    "beats": [
+     0.005,
+     "Whack, thwack"
+    ],
+    "flex": [
+     0.0,
+     null
+    ],
+    "panns": [
+     0.004,
+     "Whack, thwack"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": null,
+   "flexsed_runs_all": [],
+   "listener": [],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "A",
+   "why_B0r": "no detector reaches its heard bar in the window; also outside the drawable vocabulary",
+   "cause_best": "A",
+   "why_best": "no detector reaches its heard bar in the window; also outside the drawable vocabulary",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "b3_pet_shop",
+   "label": "Bird",
+   "onset": 0.1,
+   "end": 27.8,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.839,
+     "Bird vocalization, bird call, bird song"
+    ],
+    "flex": [
+     0.682,
+     "Bird"
+    ],
+    "panns": [
+     0.321,
+     "Bird"
+    ],
+    "xq": [
+     0.898,
+     "Bird vocalization, bird call, bird song"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Bird",
+    "start": 0.0,
+    "end": 19.6,
+    "len": 19.6,
+    "peak": 0.719
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "xq",
+     "query": "Bird vocalization, bird call, bird song",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.898
+    },
+    {
+     "src": "xq",
+     "query": "Caw",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.88
+    },
+    {
+     "src": "xq",
+     "query": "Fowl",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.876
+    },
+    {
+     "src": "xq",
+     "query": "Pigeon, dove",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.873
+    },
+    {
+     "src": "xq",
+     "query": "Chicken, rooster",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.86
+    },
+    {
+     "src": "xq",
+     "query": "Crowing, cock-a-doodle-doo",
+     "start": 0.36,
+     "end": 0.4,
+     "len": 0.04,
+     "peak": 0.844
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.22,
+     "end": 27.75,
+     "qwen_yn": 8.75
+    },
+    {
+     "label": "Bird",
+     "start": 0.14,
+     "end": 27.75,
+     "qwen_yn": 8.75
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 0.3,
+     "end": 27.75,
+     "qwen_yn": 8.75
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Bird vocalization, bird call, bird song",
+     0.22,
+     27.75,
+     0.856,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     0.14,
+     27.75,
+     0.792,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Chirp, tweet",
+     0.3,
+     27.75,
+     0.783,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Bird vocalization, bird call, bird song",
+     0.22,
+     27.75,
+     0.856,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     0.14,
+     27.75,
+     0.792,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Chirp, tweet",
+     0.3,
+     27.75,
+     0.783,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Bird",
+     0.14,
+     27.75,
+     0.856,
+     false,
+     "source visible on screen (birds) - stay silent",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Bird",
+     0.14,
+     27.75,
+     0.856,
+     false,
+     "source visible on screen (birds) - stay silent",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Bird",
+     [
+      0.14,
+      4.741666666666666
+     ],
+     true,
+     "a small bird"
+    ],
+    [
+     "Bird",
+     [
+      4.741666666666666,
+      9.343333333333334
+     ],
+     true,
+     "a small bird"
+    ],
+    [
+     "Bird",
+     [
+      9.343333333333334,
+      13.945
+     ],
+     true,
+     "a small bird"
+    ],
+    [
+     "Bird",
+     [
+      13.945,
+      18.546666666666667
+     ],
+     true,
+     "European robin"
+    ],
+    [
+     "Bird",
+     [
+      18.546666666666667,
+      23.148333333333337
+     ],
+     true,
+     "a small bird"
+    ],
+    [
+     "Bird",
+     [
+      23.148333333333337,
+      27.75
+     ],
+     true,
+     "birds"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "D",
+   "why_B0r": "span Bird 0.14-27.75 (conf 0.856) reached stage 5; gate: 'source visible on screen (birds) - stay silent'; gate votes over the window: 0.1-4.7 s seen=True named 'a small bird'",
+   "cause_best": "D",
+   "why_best": "span Bird 0.14-27.75 (conf 0.856) reached stage 5; gate: 'source visible on screen (birds) - stay silent'; gate votes over the window: 0.1-4.7 s seen=True named 'a small bird'",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "bell_miami",
+   "label": "Bell",
+   "onset": 0.2,
+   "end": 14.5,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.699,
+     "Church bell"
+    ],
+    "flex": [
+     0.978,
+     "Bell"
+    ],
+    "panns": [
+     0.542,
+     "Church bell"
+    ],
+    "xq": [
+     0.115,
+     "Ding"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Bell",
+    "start": 0.0,
+    "end": 14.24,
+    "len": 14.24,
+    "peak": 0.981
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Bell",
+     "start": 0.0,
+     "end": 14.24,
+     "len": 14.24,
+     "peak": 0.981
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Bell",
+     "start": 0.22,
+     "end": 13.25,
+     "peak": null,
+     "qwen_yn": 8.375,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "church bell, bell",
+     "af_yn": 4.375
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Church bell",
+     "start": 0.22,
+     "end": 14.5,
+     "qwen_yn": 8.0
+    },
+    {
+     "label": "Bell",
+     "start": 0.22,
+     "end": 13.25,
+     "qwen_yn": 8.375
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Church bell",
+     0.22,
+     14.5,
+     0.699,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bell",
+     0.22,
+     13.25,
+     0.535,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Church bell",
+     0.22,
+     14.5,
+     0.699,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bell",
+     0.22,
+     13.25,
+     0.535,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Bell",
+     0.22,
+     14.5,
+     0.699,
+     false,
+     "source visible on screen (church bell) - stay silent",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Bell",
+     0.22,
+     14.5,
+     0.699,
+     false,
+     "source visible on screen (church bell) - stay silent",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Bell",
+     [
+      0.22,
+      4.9799999999999995
+     ],
+     true,
+     "church bell"
+    ],
+    [
+     "Bell",
+     [
+      4.9799999999999995,
+      9.74
+     ],
+     true,
+     "church bell"
+    ],
+    [
+     "Bell",
+     [
+      9.74,
+      14.5
+     ],
+     true,
+     "church bell"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "D",
+   "why_B0r": "span Bell 0.22-14.5 (conf 0.699) reached stage 5; gate: 'source visible on screen (church bell) - stay silent'; gate votes over the window: 0.2-5.0 s seen=True named 'church bell'",
+   "cause_best": "D",
+   "why_best": "span Bell 0.22-14.5 (conf 0.699) reached stage 5; gate: 'source visible on screen (church bell) - stay silent'; gate votes over the window: 0.2-5.0 s seen=True named 'church bell'",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "birds_forest",
+   "label": "Crowing, cock-a-doodle-doo",
+   "onset": 10.4,
+   "end": 12.7,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.45,
+     "Crowing, cock-a-doodle-doo"
+    ],
+    "flex": [
+     0.59,
+     "Bird"
+    ],
+    "panns": [
+     0.508,
+     "Crowing, cock-a-doodle-doo"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Bird",
+    "start": 7.16,
+    "end": 10.32,
+    "len": 3.16,
+    "peak": 0.75
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Bird",
+     "start": 7.16,
+     "end": 10.32,
+     "len": 3.16,
+     "peak": 0.75
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Bird",
+     "start": 8.22,
+     "end": 12.0,
+     "peak": null,
+     "qwen_yn": 5.0,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "rooster crowing",
+     "af_yn": 4.25
+    },
+    {
+     "pool": "P1",
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 9.5,
+     "end": 10.0,
+     "peak": null,
+     "qwen_yn": 5.125,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+     "af_yn": 3.6875
+    },
+    {
+     "pool": "P1",
+     "label": "Fowl",
+     "start": 10.25,
+     "end": 14.0,
+     "peak": null,
+     "qwen_yn": 3.25,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "rooster crowing",
+     "af_yn": 3.4375
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Bird",
+     "start": 8.22,
+     "end": 12.0,
+     "qwen_yn": 5.0
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 9.5,
+     "end": 10.0,
+     "qwen_yn": 5.125
+    },
+    {
+     "label": "Crowing, cock-a-doodle-doo",
+     "start": 10.25,
+     "end": 14.0,
+     "qwen_yn": 3.25
+    },
+    {
+     "label": "Fowl",
+     "start": 10.25,
+     "end": 14.0,
+     "qwen_yn": 3.25
+    },
+    {
+     "label": "Chicken, rooster",
+     "start": 10.75,
+     "end": 14.0,
+     "qwen_yn": 2.625
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Bird",
+     8.22,
+     12.0,
+     0.332,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     9.5,
+     10.0,
+     0.263,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowing, cock-a-doodle-doo",
+     10.25,
+     14.0,
+     0.649,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Fowl",
+     10.25,
+     14.0,
+     0.475,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Chicken, rooster",
+     10.75,
+     14.0,
+     0.643,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cluck",
+     11.75,
+     12.5,
+     0.234,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Bird",
+     8.22,
+     12.0,
+     0.332,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     9.5,
+     10.0,
+     0.263,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowing, cock-a-doodle-doo",
+     10.25,
+     14.0,
+     0.649,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Fowl",
+     10.25,
+     14.0,
+     0.475,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Chicken, rooster",
+     10.75,
+     14.0,
+     0.643,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Cluck",
+     11.75,
+     12.5,
+     0.234,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Bird",
+     10.25,
+     14.0,
+     0.649,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Rooster crows",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Bird",
+     10.25,
+     14.0,
+     0.649,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Rooster crows",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Bird",
+     [
+      10.25,
+      14.0
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Bird",
+     10.25,
+     14.0
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Bird",
+     10.25,
+     14.0
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "birds_forest",
+   "label": "Bird",
+   "onset": 1.3,
+   "end": 18.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.211,
+     "Bird"
+    ],
+    "flex": [
+     0.708,
+     "Bird"
+    ],
+    "panns": [
+     0.065,
+     "Bird"
+    ],
+    "xq": [
+     0.842,
+     "Fowl"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Bird",
+    "start": 0.52,
+    "end": 6.36,
+    "len": 5.84,
+    "peak": 0.708
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "xq",
+     "query": "Fowl",
+     "start": 1.08,
+     "end": 1.12,
+     "len": 0.04,
+     "peak": 0.842
+    },
+    {
+     "src": "xq",
+     "query": "Chicken, rooster",
+     "start": 1.08,
+     "end": 1.36,
+     "len": 0.28,
+     "peak": 0.79
+    },
+    {
+     "src": "xq",
+     "query": "Caw",
+     "start": 1.08,
+     "end": 1.12,
+     "len": 0.04,
+     "peak": 0.777
+    },
+    {
+     "src": "xq",
+     "query": "Cluck",
+     "start": 1.08,
+     "end": 1.36,
+     "len": 0.28,
+     "peak": 0.745
+    },
+    {
+     "src": "xq",
+     "query": "Coo",
+     "start": 1.08,
+     "end": 1.36,
+     "len": 0.28,
+     "peak": 0.73
+    },
+    {
+     "src": "xq",
+     "query": "Chirp, tweet",
+     "start": 1.08,
+     "end": 1.36,
+     "len": 0.28,
+     "peak": 0.729
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Bird",
+     "start": 2.22,
+     "end": 2.75,
+     "peak": null,
+     "qwen_yn": 6.5,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "bird vocalization and bird call and bird song, bird, wild animals, animal",
+     "af_yn": 3.25
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Bird",
+     "start": 2.22,
+     "end": 2.75,
+     "qwen_yn": 6.5
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Bird",
+     2.22,
+     2.75,
+     0.221,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     4.75,
+     6.75,
+     0.289,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     4.75,
+     5.25,
+     0.187,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowing, cock-a-doodle-doo",
+     6.25,
+     6.75,
+     0.295,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chicken, rooster",
+     6.25,
+     6.75,
+     0.209,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     8.22,
+     12.0,
+     0.332,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     8.8,
+     9.25,
+     0.225,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     9.5,
+     10.0,
+     0.263,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowing, cock-a-doodle-doo",
+     10.25,
+     14.0,
+     0.649,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Fowl",
+     10.25,
+     14.0,
+     0.475,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chicken, rooster",
+     10.75,
+     14.0,
+     0.643,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Cluck",
+     11.75,
+     12.5,
+     0.234,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     14.05,
+     17.75,
+     0.343,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     14.06,
+     15.25,
+     0.258,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Bird",
+     2.22,
+     2.75,
+     0.221,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Bird",
+     4.75,
+     6.75,
+     0.289,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     4.75,
+     5.25,
+     0.187,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowing, cock-a-doodle-doo",
+     6.25,
+     6.75,
+     0.295,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chicken, rooster",
+     6.25,
+     6.75,
+     0.209,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     8.22,
+     12.0,
+     0.332,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     8.8,
+     9.25,
+     0.225,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     9.5,
+     10.0,
+     0.263,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowing, cock-a-doodle-doo",
+     10.25,
+     14.0,
+     0.649,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Fowl",
+     10.25,
+     14.0,
+     0.475,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Chicken, rooster",
+     10.75,
+     14.0,
+     0.643,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Cluck",
+     11.75,
+     12.5,
+     0.234,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird",
+     14.05,
+     17.75,
+     0.343,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Bird vocalization, bird call, bird song",
+     14.06,
+     15.25,
+     0.258,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Bird",
+     10.25,
+     14.0,
+     0.649,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Rooster crows",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Bird",
+     10.25,
+     14.0,
+     0.649,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Rooster crows",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Bird",
+     [
+      10.25,
+      14.0
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Bird",
+     10.25,
+     14.0
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Bird",
+     10.25,
+     14.0
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "BEATs span Bird 2.22-2.75 conf 0.221 < display 0.35; FlexSED Bird 0.708 < 0.8 (run 5.84 s); extra query Fowl 0.842 for 0.04 s (XQ not in this arm)",
+   "cause_best": "B",
+   "why_best": "BEATs span Bird 2.22-2.75 conf 0.221 < display 0.35; FlexSED Bird 0.708 < 0.8 (run 5.84 s); listener not asked: the FlexSED run is covered by a same-family stage-4 span; extra query Fowl 0.842 for 0.04 s (XQ not in this arm)",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "label": "Siren",
+   "onset": 0.0,
+   "end": 17.8,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.703,
+     "Ambulance (siren)"
+    ],
+    "flex": [
+     0.688,
+     "Siren"
+    ],
+    "panns": [
+     0.421,
+     "Emergency vehicle"
+    ],
+    "xq": [
+     0.757,
+     "Emergency vehicle"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Siren",
+    "start": 0.0,
+    "end": 18.0,
+    "len": 18.0,
+    "peak": 0.89
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Siren",
+     "start": 0.0,
+     "end": 18.0,
+     "len": 18.0,
+     "peak": 0.89
+    },
+    {
+     "src": "xq",
+     "query": "Emergency vehicle",
+     "start": 0.6,
+     "end": 0.8,
+     "len": 0.2,
+     "peak": 0.757
+    },
+    {
+     "src": "xq",
+     "query": "Police car (siren)",
+     "start": 0.6,
+     "end": 0.8,
+     "len": 0.2,
+     "peak": 0.736
+    },
+    {
+     "src": "xq",
+     "query": "Ambulance (siren)",
+     "start": 0.6,
+     "end": 0.8,
+     "len": 0.2,
+     "peak": 0.729
+    },
+    {
+     "src": "xq",
+     "query": "Civil defense siren",
+     "start": 0.6,
+     "end": 0.8,
+     "len": 0.2,
+     "peak": 0.71
+    },
+    {
+     "src": "xq",
+     "query": "Fire engine, fire truck (siren)",
+     "start": 0.6,
+     "end": 0.8,
+     "len": 0.2,
+     "peak": 0.71
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Police car (siren)",
+     "start": 0.0,
+     "end": 2.0,
+     "peak": null,
+     "qwen_yn": 7.0,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "siren",
+     "af_yn": 3.25
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Emergency vehicle",
+     "start": 0.0,
+     "end": 17.75,
+     "qwen_yn": 6.75
+    },
+    {
+     "label": "Ambulance (siren)",
+     "start": 0.0,
+     "end": 8.5,
+     "qwen_yn": 5.625
+    },
+    {
+     "label": "Siren",
+     "start": 0.0,
+     "end": 17.75,
+     "qwen_yn": 6.75
+    },
+    {
+     "label": "Police car (siren)",
+     "start": 0.0,
+     "end": 2.0,
+     "qwen_yn": 7.0
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Emergency vehicle",
+     0.0,
+     17.75,
+     0.796,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Ambulance (siren)",
+     0.0,
+     8.5,
+     0.747,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Siren",
+     0.0,
+     17.75,
+     0.741,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Police car (siren)",
+     0.0,
+     2.0,
+     0.233,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Police car (siren)",
+     2.75,
+     3.25,
+     0.203,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     3.75,
+     4.5,
+     0.236,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     4.75,
+     8.5,
+     0.309,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Fire engine, fire truck (siren)",
+     5.5,
+     6.0,
+     0.22,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Ambulance (siren)",
+     8.75,
+     17.75,
+     0.843,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     13.5,
+     0.305,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     14.75,
+     0.226,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     17.0,
+     0.2,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     17.75,
+     0.234,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Emergency vehicle",
+     0.0,
+     17.75,
+     0.796,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Ambulance (siren)",
+     0.0,
+     8.5,
+     0.747,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Siren",
+     0.0,
+     17.75,
+     0.741,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Police car (siren)",
+     0.0,
+     2.0,
+     0.233,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Police car (siren)",
+     2.75,
+     3.25,
+     0.203,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     3.75,
+     4.5,
+     0.236,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     4.75,
+     8.5,
+     0.309,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Fire engine, fire truck (siren)",
+     5.5,
+     6.0,
+     0.22,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Ambulance (siren)",
+     8.75,
+     17.75,
+     0.843,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     13.5,
+     0.389,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     14.75,
+     0.389,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     17.0,
+     0.389,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     10.0,
+     17.75,
+     0.389,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Siren",
+     0.0,
+     17.75,
+     0.843,
+     true,
+     "salient non-speech sound, source not visible -> augment | people are reacting to it | depiction: Ambulance siren",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Siren",
+     0.0,
+     17.75,
+     0.843,
+     true,
+     "salient non-speech sound, source not visible -> augment | people are reacting to it | depiction: Ambulance siren",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Siren",
+     [
+      0.0,
+      4.4375
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Siren",
+     [
+      4.4375,
+      8.875
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Siren",
+     [
+      8.875,
+      13.3125
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Siren",
+     [
+      13.3125,
+      17.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Siren",
+     0.0,
+     17.75
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Siren",
+     0.0,
+     17.75
+    ]
+   ],
+   "other_B0r_candidates_in_window": [
+    [
+     "Vehicle",
+     0.0,
+     0.611
+    ]
+   ],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "label": "Vehicle",
+   "onset": 7.3,
+   "end": 8.8,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.544,
+     "Emergency vehicle"
+    ],
+    "flex": [
+     0.929,
+     "Ice cream truck, ice cream van"
+    ],
+    "panns": [
+     0.217,
+     "Vehicle"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Ice cream truck, ice cream van",
+    "start": 0.0,
+    "end": 18.0,
+    "len": 18.0,
+    "peak": 0.939
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Ice cream truck, ice cream van",
+     "start": 0.0,
+     "end": 18.0,
+     "len": 18.0,
+     "peak": 0.939
+    },
+    {
+     "src": "215",
+     "query": "Vehicle",
+     "start": 0.0,
+     "end": 10.4,
+     "len": 10.4,
+     "peak": 0.757
+    }
+   ],
+   "listener": [
+    {
+     "pool": "PV",
+     "label": "Ice cream truck, ice cream van",
+     "start": 0.0,
+     "end": 18.0,
+     "peak": 0.939,
+     "qwen_yn": -0.375,
+     "qwen_yes_flags": [
+      "V3"
+     ],
+     "qwen_v4_text": "Siren/ment",
+     "af_v4": false,
+     "af_v4_text": "siren",
+     "af_yn": -2.5
+    },
+    {
+     "pool": "P2",
+     "label": "Ice cream truck, ice cream van",
+     "start": 0.0,
+     "end": 18.0,
+     "peak": 0.939,
+     "qwen_yn": -0.375,
+     "qwen_yes_flags": [
+      "V3"
+     ],
+     "qwen_v4_text": "Siren/ment",
+     "af_v4": false,
+     "af_v4_text": "siren",
+     "af_yn": -2.5
+    },
+    {
+     "pool": "P1",
+     "label": "Police car (siren)",
+     "start": 4.75,
+     "end": 8.5,
+     "peak": null,
+     "qwen_yn": 5.625,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "car horn",
+     "af_yn": 2.0
+    },
+    {
+     "pool": "P1",
+     "label": "Car",
+     "start": 8.25,
+     "end": 8.75,
+     "peak": null,
+     "qwen_yn": 4.625,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "siren",
+     "af_yn": 1.75
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Emergency vehicle",
+     "start": 0.0,
+     "end": 17.75,
+     "qwen_yn": 6.75
+    },
+    {
+     "label": "Ambulance (siren)",
+     "start": 0.0,
+     "end": 8.5,
+     "qwen_yn": 5.625
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 14.75,
+     "qwen_yn": 5.75
+    },
+    {
+     "label": "Police car (siren)",
+     "start": 4.75,
+     "end": 8.5,
+     "qwen_yn": 5.625
+    },
+    {
+     "label": "Car",
+     "start": 8.25,
+     "end": 8.75,
+     "qwen_yn": 4.625
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Emergency vehicle",
+     0.0,
+     17.75,
+     0.796,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Ambulance (siren)",
+     0.0,
+     8.5,
+     0.747,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Vehicle",
+     0.0,
+     14.75,
+     0.611,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     4.75,
+     8.5,
+     0.309,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Car",
+     8.25,
+     8.75,
+     0.317,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Ambulance (siren)",
+     8.75,
+     17.75,
+     0.843,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Car",
+     9.75,
+     10.5,
+     0.21,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Emergency vehicle",
+     0.0,
+     17.75,
+     0.796,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Ambulance (siren)",
+     0.0,
+     8.5,
+     0.747,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Vehicle",
+     0.0,
+     14.75,
+     0.611,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Police car (siren)",
+     4.75,
+     8.5,
+     0.309,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Car",
+     8.25,
+     8.75,
+     0.317,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Ambulance (siren)",
+     8.75,
+     17.75,
+     0.843,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Car",
+     9.75,
+     10.5,
+     0.21,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Vehicle",
+     0.0,
+     14.75,
+     0.611,
+     false,
+     "source visible on screen (nothing) - stay silent",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Vehicle",
+     0.0,
+     14.75,
+     0.611,
+     false,
+     "source visible on screen (nothing) - stay silent",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Vehicle",
+     [
+      0.0,
+      4.916666666666667
+     ],
+     true,
+     "white car"
+    ],
+    [
+     "Vehicle",
+     [
+      4.916666666666667,
+      9.833333333333334
+     ],
+     true,
+     "nothing"
+    ],
+    [
+     "Vehicle",
+     [
+      9.833333333333334,
+      14.75
+     ],
+     true,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "D",
+   "why_B0r": "span Vehicle 0.0-14.75 (conf 0.611) reached stage 5; gate: 'source visible on screen (nothing) - stay silent'; gate votes over the window: 4.9-9.8 s seen=True named 'nothing'",
+   "cause_best": "D",
+   "why_best": "span Vehicle 0.0-14.75 (conf 0.611) reached stage 5; gate: 'source visible on screen (nothing) - stay silent'; gate votes over the window: 4.9-9.8 s seen=True named 'nothing'",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ly_applause_62ZYD0u",
+   "label": "Crowd",
+   "onset": 1.9,
+   "end": 10.0,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.005,
+     "Crowd"
+    ],
+    "flex": [
+     0.886,
+     "Crowd"
+    ],
+    "panns": [
+     0.075,
+     "Applause"
+    ],
+    "xq": [
+     0.082,
+     "Applause"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Crowd",
+    "start": 0.0,
+    "end": 13.36,
+    "len": 13.36,
+    "peak": 0.946
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Crowd",
+     "start": 0.0,
+     "end": 13.36,
+     "len": 13.36,
+     "peak": 0.946
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Applause",
+     "start": 1.12,
+     "end": 7.75,
+     "peak": null,
+     "qwen_yn": 4.0,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "laughter, human voice",
+     "af_yn": 4.0
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Applause",
+     "start": 1.12,
+     "end": 7.75,
+     "qwen_yn": 4.0
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Applause",
+     1.12,
+     7.75,
+     0.453,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     0.0,
+     1.04,
+     0.867,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Applause",
+     1.12,
+     7.75,
+     0.453,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     0.0,
+     1.04,
+     0.867,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Crowd",
+     0.0,
+     7.75,
+     0.867,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Crowd clapping hands",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Crowd",
+     0.0,
+     7.75,
+     0.867,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Crowd clapping hands",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Crowd",
+     [
+      0.0,
+      3.875
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Crowd",
+     [
+      3.875,
+      7.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Crowd",
+     0.0,
+     7.75
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Crowd",
+     0.0,
+     7.75
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "E",
+   "why_B0r": "picture Crowd 0.0-7.75 covers the onset but starts 1.9 s early (merged span)",
+   "cause_best": "E",
+   "why_best": "picture Crowd 0.0-7.75 covers the onset but starts 1.9 s early (merged span)",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "ly_helicopter_-v62cK1",
+   "label": "Helicopter",
+   "onset": 0.0,
+   "end": 18.1,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.159,
+     "Vehicle"
+    ],
+    "flex": [
+     0.935,
+     "Helicopter"
+    ],
+    "panns": [
+     0.312,
+     "Vehicle"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Helicopter",
+    "start": 0.0,
+    "end": 18.0,
+    "len": 18.0,
+    "peak": 0.961
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Helicopter",
+     "start": 0.0,
+     "end": 18.0,
+     "len": 18.0,
+     "peak": 0.961
+    },
+    {
+     "src": "215",
+     "query": "Aircraft",
+     "start": 0.0,
+     "end": 18.0,
+     "len": 18.0,
+     "peak": 0.622
+    },
+    {
+     "src": "215",
+     "query": "Vehicle",
+     "start": 0.0,
+     "end": 0.56,
+     "len": 0.56,
+     "peak": 0.428
+    },
+    {
+     "src": "215",
+     "query": "Vehicle",
+     "start": 0.92,
+     "end": 0.96,
+     "len": 0.04,
+     "peak": 0.402
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 6.75,
+     "peak": null,
+     "qwen_yn": 5.5,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": false,
+     "af_v4_text": "airplane",
+     "af_yn": 2.625
+    },
+    {
+     "pool": "P1",
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 8.25,
+     "peak": null,
+     "qwen_yn": 5.625,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "Helicopter",
+     "af_yn": 4.1875
+    },
+    {
+     "pool": "P1",
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 12.25,
+     "peak": null,
+     "qwen_yn": 4.625,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "helicopter",
+     "af_yn": 3.5
+    },
+    {
+     "pool": "P1",
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 13.25,
+     "peak": null,
+     "qwen_yn": 4.25,
+     "qwen_yes_flags": [
+      "V1"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "helicopter",
+     "af_yn": 3.375
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 6.75,
+     "qwen_yn": 5.5
+    },
+    {
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 8.25,
+     "qwen_yn": 5.625
+    },
+    {
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 12.25,
+     "qwen_yn": 4.625
+    },
+    {
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 13.25,
+     "qwen_yn": 4.25
+    },
+    {
+     "label": "Helicopter",
+     "start": 0.14,
+     "end": 17.75,
+     "qwen_yn": 5.625
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Vehicle",
+     2.25,
+     6.0,
+     0.477,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     5.55,
+     6.0,
+     0.231,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Vehicle",
+     6.31,
+     9.0,
+     0.758,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     6.25,
+     8.25,
+     0.611,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Helicopter",
+     0.14,
+     6.75,
+     0.297,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Helicopter",
+     0.14,
+     8.25,
+     0.427,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Vehicle",
+     9.55,
+     10.25,
+     0.343,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     9.25,
+     10.25,
+     0.321,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Vehicle",
+     10.64,
+     17.75,
+     0.857,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     10.5,
+     17.75,
+     0.671,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Helicopter",
+     0.14,
+     12.25,
+     0.422,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Helicopter",
+     0.14,
+     13.25,
+     0.206,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Helicopter",
+     0.14,
+     17.75,
+     0.75,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Vehicle",
+     2.25,
+     6.0,
+     0.477,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     5.55,
+     6.0,
+     0.231,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Vehicle",
+     6.31,
+     9.0,
+     0.758,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     6.25,
+     8.25,
+     0.611,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Helicopter",
+     0.14,
+     6.75,
+     0.421,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Helicopter",
+     0.14,
+     8.25,
+     0.427,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Vehicle",
+     9.55,
+     10.25,
+     0.343,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     9.25,
+     10.25,
+     0.321,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Vehicle",
+     10.64,
+     17.75,
+     0.857,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Aircraft",
+     10.5,
+     17.75,
+     0.671,
+     "tagger",
+     false,
+     false
+    ],
+    [
+     "Helicopter",
+     0.14,
+     12.25,
+     0.422,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Helicopter",
+     0.14,
+     13.25,
+     0.421,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Helicopter",
+     0.14,
+     17.75,
+     0.75,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Vehicle",
+     10.64,
+     17.75,
+     0.857,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Car driving",
+     ""
+    ],
+    [
+     "Helicopter",
+     0.14,
+     17.75,
+     0.75,
+     false,
+     "same picture as Vehicle (same sound under two names)",
+     ""
+    ],
+    [
+     "Aircraft",
+     10.5,
+     17.75,
+     0.671,
+     false,
+     "same picture as Vehicle (same sound under two names)",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Vehicle",
+     10.64,
+     17.75,
+     0.857,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Car driving",
+     ""
+    ],
+    [
+     "Helicopter",
+     0.14,
+     17.75,
+     0.75,
+     false,
+     "same picture as Vehicle (same sound under two names)",
+     ""
+    ],
+    [
+     "Aircraft",
+     10.5,
+     17.75,
+     0.671,
+     false,
+     "same picture as Vehicle (same sound under two names)",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Vehicle",
+     [
+      2.25,
+      9.0
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Vehicle",
+     [
+      10.64,
+      17.75
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Helicopter",
+     [
+      0.14,
+      4.5424999999999995
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Helicopter",
+     [
+      4.5424999999999995,
+      8.945
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Helicopter",
+     [
+      8.945,
+      13.3475
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Helicopter",
+     [
+      13.3475,
+      17.75
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Aircraft",
+     [
+      6.25,
+      8.25
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Aircraft",
+     [
+      10.5,
+      17.75
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Vehicle",
+     0.14,
+     17.75
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Vehicle",
+     0.14,
+     17.75
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "mv_detective_crime_scene",
+   "label": "Telephone",
+   "onset": 0.0,
+   "end": 9.9,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.332,
+     "Telephone bell ringing"
+    ],
+    "flex": [
+     0.904,
+     "Alarm"
+    ],
+    "panns": [
+     0.053,
+     "Telephone bell ringing"
+    ],
+    "xq": [
+     0.838,
+     "Telephone dialing, DTMF"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Alarm",
+    "start": 0.0,
+    "end": 1.16,
+    "len": 1.16,
+    "peak": 0.904
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Alarm",
+     "start": 0.0,
+     "end": 1.16,
+     "len": 1.16,
+     "peak": 0.904
+    },
+    {
+     "src": "xq",
+     "query": "Telephone dialing, DTMF",
+     "start": 0.08,
+     "end": 0.36,
+     "len": 0.28,
+     "peak": 0.838
+    },
+    {
+     "src": "xq",
+     "query": "Telephone bell ringing",
+     "start": 0.08,
+     "end": 0.36,
+     "len": 0.28,
+     "peak": 0.807
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Alarm",
+     "start": 0.04,
+     "end": 1.04,
+     "qwen_yn": 3.375
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Alarm",
+     0.04,
+     1.04,
+     0.904,
+     "flex",
+     false,
+     true
+    ],
+    [
+     "Alarm",
+     3.92,
+     6.12,
+     0.918,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Alarm",
+     9.08,
+     9.84,
+     0.911,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Alarm",
+     0.04,
+     1.04,
+     0.904,
+     "flex",
+     false,
+     true
+    ],
+    [
+     "Alarm",
+     3.92,
+     6.12,
+     0.918,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Alarm",
+     9.08,
+     9.84,
+     0.911,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Alarm",
+     2.88,
+     3.88,
+     0.608,
+     "flex",
+     true,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {
+    "LR-V12+1+F1": {
+     "F1": [
+      [
+       "Alarm",
+       2.88,
+       3.88,
+       "B0 has the family"
+      ]
+     ]
+    },
+    "LR-V12+1+F4": {
+     "F4": [
+      [
+       "Alarm",
+       2.88,
+       3.88,
+       "Yawn"
+      ]
+     ]
+    },
+    "LR-V12+1+F1F4": {
+     "F4": [
+      [
+       "Alarm",
+       2.88,
+       3.88,
+       "Yawn"
+      ]
+     ]
+    }
+   },
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Alarm",
+     3.92,
+     6.12,
+     0.918,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Alarm ringing",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Alarm",
+     2.88,
+     6.12,
+     0.918,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Alarm ringing",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Alarm",
+     [
+      0.04,
+      1.04
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Alarm",
+     [
+      3.92,
+      6.12
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Alarm",
+     [
+      9.08,
+      9.84
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Alarm",
+     0.04,
+     1.54
+    ],
+    [
+     "Alarm",
+     3.92,
+     6.12
+    ],
+    [
+     "Alarm",
+     9.08,
+     10.58
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Alarm",
+     0.04,
+     1.54
+    ],
+    [
+     "Alarm",
+     3.92,
+     6.12
+    ],
+    [
+     "Alarm",
+     9.08,
+     10.58
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Crowd",
+   "onset": 0.0,
+   "end": 20.0,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.003,
+     "Crowd"
+    ],
+    "flex": [
+     0.882,
+     "Crowd"
+    ],
+    "panns": [
+     0.0,
+     "Crowd"
+    ],
+    "xq": [
+     0.646,
+     "Applause"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Crowd",
+    "start": 0.0,
+    "end": 20.0,
+    "len": 20.0,
+    "peak": 0.916
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Crowd",
+     "start": 0.0,
+     "end": 20.0,
+     "len": 20.0,
+     "peak": 0.916
+    },
+    {
+     "src": "xq",
+     "query": "Applause",
+     "start": 0.96,
+     "end": 1.0,
+     "len": 0.04,
+     "peak": 0.646
+    },
+    {
+     "src": "xq",
+     "query": "Children shouting",
+     "start": 0.96,
+     "end": 1.0,
+     "len": 0.04,
+     "peak": 0.514
+    },
+    {
+     "src": "xq",
+     "query": "Cheering",
+     "start": 0.96,
+     "end": 1.0,
+     "len": 0.04,
+     "peak": 0.449
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Crowd",
+     "start": 0.0,
+     "end": 1.08,
+     "qwen_yn": -2.0
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Crowd",
+     0.0,
+     1.08,
+     0.882,
+     "flex",
+     false,
+     true
+    ],
+    [
+     "Crowd",
+     2.12,
+     4.76,
+     0.885,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     5.96,
+     11.12,
+     0.915,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     12.28,
+     17.04,
+     0.916,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     18.92,
+     20.0,
+     0.864,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Crowd",
+     0.0,
+     1.08,
+     0.882,
+     "flex",
+     false,
+     true
+    ],
+    [
+     "Crowd",
+     2.12,
+     4.76,
+     0.885,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     5.96,
+     11.12,
+     0.915,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     12.28,
+     17.04,
+     0.916,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Crowd",
+     18.92,
+     20.0,
+     0.864,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Crowd",
+     12.28,
+     17.04,
+     0.916,
+     true,
+     "stage 2 saw the source somewhere in the clip; VLM to confirm | depiction: Crowd cheering",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Crowd",
+     12.28,
+     17.04,
+     0.916,
+     true,
+     "stage 2 saw the source somewhere in the clip; VLM to confirm | depiction: Crowd cheering",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Crowd",
+     [
+      0.0,
+      1.08
+     ],
+     false,
+     "crowd of people"
+    ],
+    [
+     "Crowd",
+     [
+      2.12,
+      4.76
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Crowd",
+     [
+      5.96,
+      11.12
+     ],
+     false,
+     "group of people"
+    ],
+    [
+     "Crowd",
+     [
+      12.28,
+      17.04
+     ],
+     true,
+     "the people in the room"
+    ],
+    [
+     "Crowd",
+     [
+      18.92,
+      20.0
+     ],
+     true,
+     "crowd of people"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Crowd",
+     0.0,
+     20.42
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Crowd",
+     0.0,
+     20.42
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Glass",
+   "onset": 11.0,
+   "end": 12.8,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.845,
+     "Shatter"
+    ],
+    "flex": [
+     0.224,
+     "Glass"
+    ],
+    "panns": [
+     0.616,
+     "Shatter"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": null,
+   "flexsed_runs_all": [],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Breaking",
+     "start": 11.14,
+     "end": 13.75,
+     "peak": null,
+     "qwen_yn": 7.25,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "shatter, glass",
+     "af_yn": 3.5
+    },
+    {
+     "pool": "P1",
+     "label": "Glass",
+     "start": 11.5,
+     "end": 12.25,
+     "peak": null,
+     "qwen_yn": 7.25,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "shatter, glass",
+     "af_yn": 3.375
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Shatter",
+     "start": 10.75,
+     "end": 13.75,
+     "qwen_yn": 7.25
+    },
+    {
+     "label": "Breaking",
+     "start": 11.14,
+     "end": 13.75,
+     "qwen_yn": 7.25
+    },
+    {
+     "label": "Glass",
+     "start": 11.5,
+     "end": 12.25,
+     "qwen_yn": 7.25
+    },
+    {
+     "label": "Chink, clink",
+     "start": 11.0,
+     "end": 11.25,
+     "qwen_yn": 3.25
+    },
+    {
+     "label": "Chink, clink",
+     "start": 11.75,
+     "end": 12.0,
+     "qwen_yn": 3.0
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Shatter",
+     10.75,
+     13.75,
+     0.877,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Breaking",
+     11.14,
+     13.75,
+     0.414,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Glass",
+     11.5,
+     12.25,
+     0.34,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Shatter",
+     10.75,
+     13.75,
+     0.877,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Breaking",
+     11.14,
+     13.75,
+     0.414,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Glass",
+     11.5,
+     12.25,
+     0.34,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Glass",
+     10.75,
+     13.75,
+     0.877,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Glass shatters",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Glass",
+     10.75,
+     13.75,
+     0.877,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: Glass shatters",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Glass",
+     [
+      4.75,
+      7.75
+     ],
+     false,
+     "candlestick"
+    ],
+    [
+     "Glass",
+     [
+      10.75,
+      13.75
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Glass",
+     [
+      16.89,
+      20.0
+     ],
+     false,
+     "candles"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Glass",
+     10.75,
+     13.75
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Glass",
+     10.75,
+     13.75
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Shatter",
+   "onset": 16.9,
+   "end": 19.3,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.675,
+     "Shatter"
+    ],
+    "flex": [
+     0.459,
+     "Glass"
+    ],
+    "panns": [
+     0.339,
+     "Shatter"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Glass",
+    "start": 17.64,
+    "end": 18.92,
+    "len": 1.28,
+    "peak": 0.481
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Glass",
+     "start": 17.64,
+     "end": 18.92,
+     "len": 1.28,
+     "peak": 0.481
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Glass",
+     "start": 17.5,
+     "end": 18.75,
+     "peak": null,
+     "qwen_yn": 6.5,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V12"
+     ],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "shatter, glass",
+     "af_yn": 3.25
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Shatter",
+     "start": 16.89,
+     "end": 20.0,
+     "qwen_yn": 7.25
+    },
+    {
+     "label": "Glass",
+     "start": 17.5,
+     "end": 18.75,
+     "qwen_yn": 6.5
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Shatter",
+     16.89,
+     20.0,
+     0.675,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Glass",
+     17.5,
+     18.75,
+     0.366,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Breaking",
+     18.25,
+     18.75,
+     0.259,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Shatter",
+     16.89,
+     20.0,
+     0.675,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Glass",
+     17.5,
+     18.75,
+     0.366,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Breaking",
+     18.25,
+     18.75,
+     0.259,
+     "tagger",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [
+    [
+     "Glass",
+     [
+      4.75,
+      7.75
+     ],
+     false,
+     "candlestick"
+    ],
+    [
+     "Glass",
+     [
+      10.75,
+      13.75
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Glass",
+     [
+      16.89,
+      20.0
+     ],
+     false,
+     "candles"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Glass",
+     16.89,
+     20.0
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Glass",
+     16.89,
+     20.0
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "label": "Siren",
+   "onset": 2.6,
+   "end": 11.0,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "xq"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.371,
+     "Siren"
+    ],
+    "flex": [
+     0.93,
+     "Siren"
+    ],
+    "panns": [
+     0.034,
+     "Emergency vehicle"
+    ],
+    "xq": [
+     0.756,
+     "Police car (siren)"
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Siren",
+    "start": 2.28,
+    "end": 10.0,
+    "len": 7.72,
+    "peak": 0.959
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Siren",
+     "start": 2.28,
+     "end": 10.0,
+     "len": 7.72,
+     "peak": 0.959
+    },
+    {
+     "src": "xq",
+     "query": "Police car (siren)",
+     "start": 2.72,
+     "end": 3.32,
+     "len": 0.6,
+     "peak": 0.756
+    },
+    {
+     "src": "xq",
+     "query": "Fire engine, fire truck (siren)",
+     "start": 2.72,
+     "end": 2.76,
+     "len": 0.04,
+     "peak": 0.699
+    },
+    {
+     "src": "xq",
+     "query": "Emergency vehicle",
+     "start": 2.72,
+     "end": 2.76,
+     "len": 0.04,
+     "peak": 0.698
+    },
+    {
+     "src": "xq",
+     "query": "Civil defense siren",
+     "start": 2.72,
+     "end": 2.76,
+     "len": 0.04,
+     "peak": 0.695
+    },
+    {
+     "src": "xq",
+     "query": "Ambulance (siren)",
+     "start": 2.72,
+     "end": 2.76,
+     "len": 0.04,
+     "peak": 0.543
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Siren",
+     "start": 2.6,
+     "end": 11.5,
+     "qwen_yn": 3.625
+    },
+    {
+     "label": "Civil defense siren",
+     "start": 2.6,
+     "end": 11.25,
+     "qwen_yn": 4.375
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Siren",
+     2.6,
+     11.5,
+     0.791,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Civil defense siren",
+     2.6,
+     11.25,
+     0.799,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Siren",
+     2.6,
+     11.5,
+     0.791,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Civil defense siren",
+     2.6,
+     11.25,
+     0.799,
+     "tagger",
+     false,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Siren",
+     2.6,
+     11.5,
+     0.799,
+     true,
+     "salient non-speech sound, source not visible -> augment | people are reacting to it | depiction: Siren sounding",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Siren",
+     2.6,
+     11.5,
+     0.799,
+     true,
+     "salient non-speech sound, source not visible -> augment | people are reacting to it | depiction: Siren sounding",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Siren",
+     [
+      2.6,
+      7.050000000000001
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Siren",
+     [
+      7.050000000000001,
+      11.5
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Siren",
+     2.6,
+     11.5
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Siren",
+     2.6,
+     11.5
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "label": "Civil defense siren",
+   "onset": 16.9,
+   "end": 20.4,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": false,
+   "hit_best": false,
+   "hit_LR-V12+1": false,
+   "heard_by": [
+    "flex"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.006,
+     "Emergency vehicle"
+    ],
+    "flex": [
+     0.42,
+     "Siren"
+    ],
+    "panns": [
+     0.0,
+     "Emergency vehicle"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Siren",
+    "start": 16.88,
+    "end": 16.96,
+    "len": 0.08,
+    "peak": 0.42
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Siren",
+     "start": 16.88,
+     "end": 16.96,
+     "len": 0.08,
+     "peak": 0.42
+    }
+   ],
+   "listener": [],
+   "listener_P1_B0rspans": [],
+   "stage4_B0r_family": [],
+   "stage4_LR-V12+1_family": [],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [],
+   "stage5_LR-V12+1_family": [],
+   "gate_votes_B0r": [
+    [
+     "Siren",
+     [
+      2.6,
+      7.050000000000001
+     ],
+     false,
+     "nothing"
+    ],
+    [
+     "Siren",
+     [
+      7.050000000000001,
+      11.5
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [],
+   "pictures_best": [],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "B",
+   "why_B0r": "FlexSED Siren 0.42 < 0.8 (run 0.08 s)",
+   "cause_best": "B",
+   "why_best": "FlexSED Siren 0.42 < 0.8 (run 0.08 s); listener not asked: run peak 0.42 < LO 0.5",
+   "heard_dropped_best": true
+  },
+  {
+   "clip": "mv_tornado_scene",
+   "label": "Siren",
+   "onset": 8.9,
+   "end": 15.6,
+   "importance": 3,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "beats",
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.35,
+     "Siren"
+    ],
+    "flex": [
+     0.787,
+     "Siren"
+    ],
+    "panns": [
+     0.392,
+     "Siren"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Siren",
+    "start": 8.44,
+    "end": 20.0,
+    "len": 11.56,
+    "peak": 0.919
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Siren",
+     "start": 8.44,
+     "end": 20.0,
+     "len": 11.56,
+     "peak": 0.919
+    },
+    {
+     "src": "215",
+     "query": "Alarm",
+     "start": 9.52,
+     "end": 9.56,
+     "len": 0.04,
+     "peak": 0.415
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P1",
+     "label": "Civil defense siren",
+     "start": 9.72,
+     "end": 13.0,
+     "peak": null,
+     "qwen_yn": 1.875,
+     "qwen_yes_flags": [],
+     "qwen_v4_text": "",
+     "af_v4": true,
+     "af_v4_text": "siren",
+     "af_yn": 2.75
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Siren",
+     "start": 9.25,
+     "end": 13.0,
+     "qwen_yn": 3.0
+    },
+    {
+     "label": "Civil defense siren",
+     "start": 9.72,
+     "end": 13.0,
+     "qwen_yn": 1.875
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Siren",
+     9.25,
+     13.0,
+     0.654,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Civil defense siren",
+     9.72,
+     13.0,
+     0.599,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Siren",
+     14.32,
+     15.2,
+     0.913,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Siren",
+     15.24,
+     16.0,
+     0.894,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Siren",
+     9.25,
+     13.0,
+     0.654,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Civil defense siren",
+     9.72,
+     13.0,
+     0.599,
+     "tagger",
+     false,
+     true
+    ],
+    [
+     "Siren",
+     14.32,
+     15.2,
+     0.913,
+     "flex",
+     false,
+     false
+    ],
+    [
+     "Siren",
+     15.24,
+     16.0,
+     0.894,
+     "flex",
+     false,
+     false
+    ]
+   ],
+   "filter_replay_F1_F4": {},
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Siren",
+     14.32,
+     16.0,
+     0.913,
+     true,
+     "salient non-speech sound, source not visible -> augment | people are reacting to it | depiction: Siren sounding",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Siren",
+     14.32,
+     16.0,
+     0.913,
+     true,
+     "salient non-speech sound, source not visible -> augment | people are reacting to it | depiction: Siren sounding",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Siren",
+     [
+      9.25,
+      13.0
+     ],
+     false,
+     "air raid siren"
+    ],
+    [
+     "Siren",
+     [
+      14.32,
+      16.0
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Siren",
+     9.25,
+     16.0
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Siren",
+     9.25,
+     16.0
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  },
+  {
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "label": "Laughter",
+   "onset": 12.7,
+   "end": 16.6,
+   "importance": 2,
+   "depictable": true,
+   "hit_B0r": true,
+   "hit_best": true,
+   "hit_LR-V12+1": true,
+   "heard_by": [
+    "flex",
+    "panns"
+   ],
+   "evidence_window": {
+    "beats": [
+     0.042,
+     "Laughter"
+    ],
+    "flex": [
+     0.91,
+     "Laughter"
+    ],
+    "panns": [
+     0.419,
+     "Laughter"
+    ],
+    "xq": [
+     0.0,
+     null
+    ]
+   },
+   "flexsed_run": {
+    "src": "215",
+    "query": "Laughter",
+    "start": 13.0,
+    "end": 15.88,
+    "len": 2.88,
+    "peak": 0.928
+   },
+   "flexsed_runs_all": [
+    {
+     "src": "215",
+     "query": "Laughter",
+     "start": 13.0,
+     "end": 15.88,
+     "len": 2.88,
+     "peak": 0.928
+    },
+    {
+     "src": "215",
+     "query": "Giggle",
+     "start": 12.84,
+     "end": 15.92,
+     "len": 3.08,
+     "peak": 0.803
+    },
+    {
+     "src": "215",
+     "query": "Belly laugh",
+     "start": 13.0,
+     "end": 14.76,
+     "len": 1.76,
+     "peak": 0.699
+    },
+    {
+     "src": "215",
+     "query": "Baby laughter",
+     "start": 13.28,
+     "end": 14.72,
+     "len": 1.44,
+     "peak": 0.606
+    },
+    {
+     "src": "215",
+     "query": "Chuckle, chortle",
+     "start": 13.32,
+     "end": 13.72,
+     "len": 0.4,
+     "peak": 0.451
+    },
+    {
+     "src": "215",
+     "query": "Baby laughter",
+     "start": 12.48,
+     "end": 12.52,
+     "len": 0.04,
+     "peak": 0.402
+    }
+   ],
+   "listener": [
+    {
+     "pool": "P2",
+     "label": "Giggle",
+     "start": 12.84,
+     "end": 15.92,
+     "peak": 0.803,
+     "qwen_yn": 6.875,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V3",
+      "V4",
+      "V12"
+     ],
+     "qwen_v4_text": "Laughter/of the same./of the same",
+     "af_v4": true,
+     "af_v4_text": "laughing",
+     "af_yn": 4.375
+    },
+    {
+     "pool": "P2",
+     "label": "Belly laugh",
+     "start": 13.0,
+     "end": 14.76,
+     "peak": 0.699,
+     "qwen_yn": 3.75,
+     "qwen_yes_flags": [
+      "V2",
+      "V3",
+      "V4"
+     ],
+     "qwen_v4_text": "Laughter",
+     "af_v4": false,
+     "af_v4_text": "laughing",
+     "af_yn": 3.6875
+    },
+    {
+     "pool": "P2",
+     "label": "Baby laughter",
+     "start": 13.28,
+     "end": 14.72,
+     "peak": 0.606,
+     "qwen_yn": 5.25,
+     "qwen_yes_flags": [
+      "V1",
+      "V2",
+      "V4",
+      "V12"
+     ],
+     "qwen_v4_text": "Laughter",
+     "af_v4": false,
+     "af_v4_text": "laughing",
+     "af_yn": 2.375
+    }
+   ],
+   "listener_P1_B0rspans": [
+    {
+     "label": "Laughter",
+     "start": 13.36,
+     "end": 14.68,
+     "qwen_yn": 6.875
+    }
+   ],
+   "stage4_B0r_family": [
+    [
+     "Laughter",
+     13.36,
+     14.68,
+     0.928,
+     "flex",
+     false,
+     true
+    ]
+   ],
+   "stage4_LR-V12+1_family": [
+    [
+     "Laughter",
+     13.36,
+     14.68,
+     0.928,
+     "flex",
+     false,
+     true
+    ],
+    [
+     "Baby laughter",
+     13.28,
+     14.72,
+     0.606,
+     "flex",
+     true,
+     true
+    ]
+   ],
+   "filter_replay_F1_F4": {
+    "LR-V12+1+F4": {
+     "F4": [
+      [
+       "Baby laughter",
+       13.28,
+       14.72,
+       "Laughter"
+      ]
+     ]
+    },
+    "LR-V12+1+F1F4": {
+     "F4": [
+      [
+       "Baby laughter",
+       13.28,
+       14.72,
+       "Laughter"
+      ]
+     ],
+     "F1": []
+    }
+   },
+   "arm_chain": {},
+   "stage5_B0r_family": [
+    [
+     "Laughter",
+     13.36,
+     14.68,
+     0.928,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: People laughing",
+     ""
+    ]
+   ],
+   "stage5_LR-V12+1_family": [
+    [
+     "Laughter",
+     13.36,
+     14.68,
+     0.928,
+     true,
+     "salient non-speech sound, source not visible -> augment | depiction: People laughing",
+     ""
+    ],
+    [
+     "Baby laughter",
+     13.28,
+     14.72,
+     0.606,
+     false,
+     "same picture as Laughter (same sound under two names)",
+     ""
+    ]
+   ],
+   "gate_votes_B0r": [
+    [
+     "Laughter",
+     [
+      13.36,
+      14.68
+     ],
+     false,
+     "nothing"
+    ]
+   ],
+   "pictures_B0r": [
+    [
+     "Laughter",
+     13.36,
+     14.86
+    ]
+   ],
+   "pictures_best": [
+    [
+     "Laughter",
+     13.36,
+     14.86
+    ]
+   ],
+   "other_B0r_candidates_in_window": [],
+   "cause_B0r": "hit",
+   "why_B0r": "hit",
+   "cause_best": "hit",
+   "why_best": "hit",
+   "heard_dropped_best": false
+  }
+ ]
+}
