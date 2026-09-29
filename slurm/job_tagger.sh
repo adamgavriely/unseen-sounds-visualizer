@@ -12,7 +12,9 @@
 # TEST2 (10, sealed), benchmark/gold/tagger_prep.py. Submit from ~/MscProj_tg (a frozen copy of the ~/MscProj code;
 # data/ and ckpts/ link to ~/MscProj). One phase per job, chained with --dependency=afterok:
 #   sbatch slurm/job_tagger.sh prep    # FlexSED 215 + extra, render (use_scored, placeholder pictures), wav16, BEATs,
-#                                      # PANNs, DASM, B0r stage 4/5, gates
+#                                      # PANNs, B0r stage 4/5, gates
+#   sbatch slurm/job_tagger.sh dasm    # DASM (round 6) caches: needs ~/Transformer4SED
+#   sbatch slurm/job_tagger.sh b1      # B0r + B1 stage 4/5, gates
 #   sbatch slurm/job_tagger.sh qwen    # listener pools + Qwen3-Omni yes/no + amendment-A variants (both splits, one load)
 #   sbatch slurm/job_tagger.sh afn     # Audio Flamingo Next V4 + yes/no (both splits)
 #   sbatch slurm/job_tagger.sh arms    # B1 and C1 = TO1+F7F8 stage 4/5, gates; then DEV2 ONLY is scored
@@ -23,7 +25,7 @@ source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate msproj
 export PYTHONUNBUFFERED=1
 export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
-PHASE="${1:?prep|qwen|afn|arms}"
+PHASE="${1:?prep|qwen|afn|dasm|b1|arms}"
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 P=benchmark/gold/tagger_prep.py
 case "$PHASE" in
@@ -36,7 +38,6 @@ case "$PHASE" in
       python $P --split $S wav16
       python $P --split $S beats
       python $P --split $S panns
-      python $P --split $S dasm
       python $P --split $S stage4 --arms B0r
       python $P --split $S stage5 --arms B0r
       python $P --split $S gates --arms B0r
@@ -49,7 +50,17 @@ case "$PHASE" in
   afn)
     python $P afn
     python $P check ;;
-  arms)
+  dasm)                                # needs ~/Transformer4SED (repo + DASM weights); own process per split
+    for S in dev2 test2; do python $P --split $S dasm; done
+    python $P check ;;
+  b1)
+    for S in dev2 test2; do
+      python $P --split $S stage4 --arms B0r B1
+      python $P --split $S stage5 --arms B0r B1
+      python $P --split $S gates --arms B0r B1
+    done
+    python $P check ;;
+  arms)                                # C1 refuses to run until every DASM / listener input exists
     for S in dev2 test2; do
       python $P --split $S stage4 --arms B0r B1 "TO1+F7F8"
       python $P --split $S stage5 --arms B0r B1 "TO1+F7F8"

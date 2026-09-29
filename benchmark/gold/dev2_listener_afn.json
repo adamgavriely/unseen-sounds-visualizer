@@ -1,0 +1,7844 @@
+{
+ "_meta": {
+  "amendment": "round 14 C (docs/prereg_round13_detector_push.md)",
+  "split": "dev2",
+  "candidates": "/home/dsi/adamg/MscProj_tg/benchmark/gold/dev2_listener_v.json (all items: P2 peak >= 0.5, PV, P1 depictable conf < 0.6)",
+  "audio": "item run_audio = [cut_start - 1, cut_end + 1] clipped, >= 1 s, from /home/dsi/adamg/MscProj_tg/data/work/r13dev2/wav16",
+  "V4": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+  "V4_decoding": "greedy (do_sample=False), max_new_tokens 64, no repetition_penalty (the model card example uses 1.2; left out to match the Qwen V4 decoding)",
+  "V4_rule": "some line matches X (listener_variants match_names word match, else all-mpnet-base-v2 cosine > 0.6)",
+  "YN": "Is the sound of {} present in this recording? Answer yes or no.",
+  "YN_score": "max logit over yes ids - max logit over no ids at the first answer position",
+  "chat": "content [audio, text]; the model's chat template inserts its own default system prompt (Audio Flamingo-Next)",
+  "null": "the item's cached null_family on the same cut",
+  "model": "nvidia/audio-flamingo-next-hf",
+  "class": "MusicFlamingoForConditionalGeneration",
+  "processor": "MusicFlamingoProcessor",
+  "transformers": "5.16.1",
+  "yes_ids": [
+   7414,
+   9454,
+   9693,
+   9834
+  ],
+  "no_ids": [
+   902,
+   2152,
+   2308,
+   2753
+  ],
+  "yes_tokens": [
+   " Yes",
+   "Yes",
+   "yes",
+   " yes"
+  ],
+  "no_tokens": [
+   " no",
+   "no",
+   " No",
+   "No"
+  ],
+  "load_seconds": 4.0,
+  "seconds_dev2": 19.2
+ },
+ "items": [
+  {
+   "clip": "tg_d007",
+   "pool": "P1",
+   "family": "Door",
+   "label": "Door",
+   "start": 5.05,
+   "end": 5.5,
+   "run_start": 5.05,
+   "run_end": 5.5,
+   "cut_start": 5.05,
+   "cut_end": 5.5,
+   "run_audio": [
+    4.05,
+    6.5
+   ],
+   "run_len": 0.4500000000000002,
+   "conf": 0.26986175775527954,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Blender",
+   "afn_v4_text": "door opening",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door opening"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.8208571076393127
+    ]
+   },
+   "afn_yn_x": 1.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "blender",
+     "domestic sounds",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2113940715789795
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P1",
+   "family": "Door",
+   "label": "Door",
+   "start": 7.39,
+   "end": 8.25,
+   "run_start": 7.39,
+   "run_end": 8.25,
+   "cut_start": 7.39,
+   "cut_end": 8.25,
+   "run_audio": [
+    6.39,
+    9.25
+   ],
+   "run_len": 0.8600000000000003,
+   "conf": 0.3477952778339386,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Groan",
+   "afn_v4_text": "door opening",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door opening"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.8208571076393127
+    ]
+   },
+   "afn_yn_x": 2.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "groan",
+     "human voice"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11344026029109955
+    ]
+   },
+   "afn_yn_null": -1.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Alarm",
+   "label": "Alarm",
+   "start": 4.68,
+   "end": 4.92,
+   "run_start": 4.68,
+   "run_end": 4.92,
+   "cut_start": 4.279999999999999,
+   "cut_end": 5.279999999999999,
+   "run_audio": [
+    3.2799999999999994,
+    6.279999999999999
+   ],
+   "run_len": 0.2400000000000002,
+   "peak": 0.64208984375,
+   "depictable": true,
+   "null_family": "Thunder",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4095478653907776
+    ]
+   },
+   "afn_yn_x": -1.875,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3032671809196472
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 16.16,
+   "end": 17.0,
+   "run_start": 16.16,
+   "run_end": 17.0,
+   "cut_start": 16.0,
+   "cut_end": 17.0,
+   "run_audio": [
+    15.0,
+    17.0
+   ],
+   "run_len": 0.8399999999999999,
+   "peak": 0.517578125,
+   "depictable": true,
+   "null_family": "Heart murmur",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3485163450241089
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "heart murmur",
+     "heart sounds",
+     "heartbeat"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29417693614959717
+    ]
+   },
+   "afn_yn_null": -1.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Cash register",
+   "label": "Cash register",
+   "start": 4.64,
+   "end": 5.12,
+   "run_start": 4.64,
+   "run_end": 5.12,
+   "cut_start": 4.279999999999999,
+   "cut_end": 5.279999999999999,
+   "run_audio": [
+    3.2799999999999994,
+    6.279999999999999
+   ],
+   "run_len": 0.4800000000000004,
+   "peak": 0.85693359375,
+   "depictable": true,
+   "null_family": "Packing tape, duct tape",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "cash register",
+     "mechanisms"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3355165123939514
+    ]
+   },
+   "afn_yn_x": -2.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "duct tape",
+     "home sounds",
+     "packing tape"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3060157299041748
+    ]
+   },
+   "afn_yn_null": -1.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Coin (dropping)",
+   "label": "Coin (dropping)",
+   "start": 4.68,
+   "end": 4.92,
+   "run_start": 4.68,
+   "run_end": 4.92,
+   "cut_start": 4.279999999999999,
+   "cut_end": 5.279999999999999,
+   "run_audio": [
+    3.2799999999999994,
+    6.279999999999999
+   ],
+   "run_len": 0.2400000000000002,
+   "peak": 0.56103515625,
+   "depictable": true,
+   "null_family": "Stomach rumble",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "coin",
+     "domestic sounds",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.23324386775493622
+    ]
+   },
+   "afn_yn_x": -1.9375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19668146967887878
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Door",
+   "label": "Door",
+   "start": 4.76,
+   "end": 5.2,
+   "run_start": 4.76,
+   "run_end": 5.2,
+   "cut_start": 4.6,
+   "cut_end": 5.6,
+   "run_audio": [
+    3.5999999999999996,
+    6.6
+   ],
+   "run_len": 0.4400000000000004,
+   "peak": 0.57470703125,
+   "depictable": true,
+   "null_family": "Gush",
+   "afn_v4_text": "door opening",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door opening"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.8208571076393127
+    ]
+   },
+   "afn_yn_x": 1.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "gush",
+     "pour"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1328277736902237
+    ]
+   },
+   "afn_yn_null": -0.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Door",
+   "label": "Door",
+   "start": 6.88,
+   "end": 7.5200000000000005,
+   "run_start": 6.88,
+   "run_end": 7.5200000000000005,
+   "cut_start": 6.88,
+   "cut_end": 7.88,
+   "run_audio": [
+    5.88,
+    8.879999999999999
+   ],
+   "run_len": 0.6400000000000006,
+   "peak": 0.6318359375,
+   "depictable": true,
+   "null_family": "Croak",
+   "afn_v4_text": "door opening",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door opening"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.8208571076393127
+    ]
+   },
+   "afn_yn_x": 1.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "croak",
+     "frog"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1770658940076828
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Door",
+   "label": "Door",
+   "start": 7.92,
+   "end": 8.12,
+   "run_start": 7.92,
+   "run_end": 8.12,
+   "cut_start": 7.52,
+   "cut_end": 8.52,
+   "run_audio": [
+    6.52,
+    9.52
+   ],
+   "run_len": 0.1999999999999993,
+   "peak": 0.65673828125,
+   "depictable": true,
+   "null_family": "Chewing, mastication",
+   "afn_v4_text": "door opening, door closing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door opening, door closing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6677005290985107
+    ]
+   },
+   "afn_yn_x": 2.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "chewing",
+     "digestive",
+     "mastication"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1508672833442688
+    ]
+   },
+   "afn_yn_null": -1.8125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Door",
+   "label": "Door",
+   "start": 9.24,
+   "end": 10.0,
+   "run_start": 9.24,
+   "run_end": 10.0,
+   "cut_start": 9.44,
+   "cut_end": 10.44,
+   "run_audio": [
+    8.44,
+    11.44
+   ],
+   "run_len": 0.7599999999999998,
+   "peak": 0.60986328125,
+   "depictable": true,
+   "null_family": "Yawn",
+   "afn_v4_text": "door",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 0.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "human voice",
+     "yawn"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.22495244443416595
+    ]
+   },
+   "afn_yn_null": -2.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Power tool",
+   "label": "Power tool",
+   "start": 4.68,
+   "end": 4.96,
+   "run_start": 4.68,
+   "run_end": 4.96,
+   "cut_start": 4.279999999999999,
+   "cut_end": 5.279999999999999,
+   "run_audio": [
+    3.2799999999999994,
+    6.279999999999999
+   ],
+   "run_len": 0.28000000000000025,
+   "peak": 0.53466796875,
+   "depictable": true,
+   "null_family": "Burping, eructation",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "drill",
+     "power tool",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1705881655216217
+    ]
+   },
+   "afn_yn_x": -0.75,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "burping",
+     "digestive",
+     "eructation"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.10428313910961151
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Sigh",
+   "label": "Sigh",
+   "start": 11.48,
+   "end": 11.799999999999999,
+   "run_start": 11.48,
+   "run_end": 11.799999999999999,
+   "cut_start": 11.2,
+   "cut_end": 12.2,
+   "run_audio": [
+    10.2,
+    13.2
+   ],
+   "run_len": 0.3199999999999985,
+   "peak": 0.61669921875,
+   "depictable": true,
+   "null_family": "Wail, moan",
+   "afn_v4_text": "footsteps",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1783239096403122
+    ]
+   },
+   "afn_yn_x": -1.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "human voice",
+     "moan",
+     "wail"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24220827221870422
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Sliding door",
+   "label": "Sliding door",
+   "start": 4.64,
+   "end": 5.16,
+   "run_start": 4.64,
+   "run_end": 5.16,
+   "cut_start": 4.279999999999999,
+   "cut_end": 5.279999999999999,
+   "run_audio": [
+    3.2799999999999994,
+    6.279999999999999
+   ],
+   "run_len": 0.5200000000000005,
+   "peak": 0.630859375,
+   "depictable": true,
+   "null_family": "Chewing, mastication",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "door",
+     "sliding door"
+    ],
+    "matched_word": [
+     "door closing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6801593899726868
+    ]
+   },
+   "afn_yn_x": 1.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "chewing",
+     "digestive",
+     "mastication"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.09928657114505768
+    ]
+   },
+   "afn_yn_null": -2.5625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d007",
+   "pool": "P2",
+   "family": "Thump, thud",
+   "label": "Thump, thud",
+   "start": 7.36,
+   "end": 7.48,
+   "run_start": 7.36,
+   "run_end": 7.48,
+   "cut_start": 6.92,
+   "cut_end": 7.92,
+   "run_audio": [
+    5.92,
+    8.92
+   ],
+   "run_len": 0.1200000000000001,
+   "peak": 0.53759765625,
+   "depictable": true,
+   "null_family": "Engine knocking",
+   "afn_v4_text": "door opening",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "arrow",
+     "clunk",
+     "generic impact sounds",
+     "thud",
+     "thump",
+     "thunk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.12243486940860748
+    ]
+   },
+   "afn_yn_x": 0.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "engine",
+     "engine knocking"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3271728456020355
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P1",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.75,
+   "end": 3.5,
+   "run_start": 0.75,
+   "run_end": 3.5,
+   "cut_start": 0.75,
+   "cut_end": 3.5,
+   "run_audio": [
+    0.0,
+    4.5
+   ],
+   "run_len": 2.75,
+   "conf": 0.361295223236084,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Heart murmur",
+   "afn_v4_text": "engine idling",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [
+     "engine idling"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.28752297163009644
+    ]
+   },
+   "afn_yn_x": 2.5625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "heart murmur",
+     "heart sounds",
+     "heartbeat"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27597901225090027
+    ]
+   },
+   "afn_yn_null": -1.8125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P1",
+   "family": "Cough",
+   "label": "Cough",
+   "start": 5.75,
+   "end": 6.75,
+   "run_start": 5.75,
+   "run_end": 6.75,
+   "cut_start": 5.75,
+   "cut_end": 6.75,
+   "run_audio": [
+    4.75,
+    7.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.4089844524860382,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Doorbell",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "cough",
+     "respiratory sounds",
+     "throat clearing"
+    ],
+    "matched_word": [
+     "cough"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "alarm",
+     "ding-dong",
+     "door",
+     "doorbell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17271006107330322
+    ]
+   },
+   "afn_yn_null": -2.5625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Baby laughter",
+   "label": "Baby laughter",
+   "start": 5.16,
+   "end": 5.48,
+   "run_start": 5.16,
+   "run_end": 5.48,
+   "cut_start": 4.72,
+   "cut_end": 5.72,
+   "run_audio": [
+    3.7199999999999998,
+    6.72
+   ],
+   "run_len": 0.3200000000000003,
+   "peak": 0.51513671875,
+   "depictable": true,
+   "null_family": "Pump (liquid)",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "laughter"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20165547728538513
+    ]
+   },
+   "afn_yn_x": -3.0625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "liquid",
+     "pump"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.14848646521568298
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 0.0,
+   "end": 18.0,
+   "run_start": 0.0,
+   "run_end": 18.0,
+   "cut_start": 0.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    0.0,
+    18.0
+   ],
+   "run_len": 18.0,
+   "peak": 0.5439453125,
+   "depictable": true,
+   "null_family": "Zipper (clothing)",
+   "afn_v4_text": "crowd, engine, human group actions",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20289194583892822
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "home sounds",
+     "zipper"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1214463859796524
+    ]
+   },
+   "afn_yn_null": -1.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Cough",
+   "label": "Cough",
+   "start": 5.08,
+   "end": 5.96,
+   "run_start": 5.08,
+   "run_end": 5.96,
+   "cut_start": 4.72,
+   "cut_end": 5.72,
+   "run_audio": [
+    3.7199999999999998,
+    6.72
+   ],
+   "run_len": 0.8799999999999999,
+   "peak": 0.8623046875,
+   "depictable": true,
+   "null_family": "Nicker",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "cough",
+     "respiratory sounds",
+     "throat clearing"
+    ],
+    "matched_word": [
+     "cough"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "horse",
+     "nicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11759109795093536
+    ]
+   },
+   "afn_yn_null": -0.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 0.0,
+   "end": 18.0,
+   "run_start": 0.0,
+   "run_end": 18.0,
+   "cut_start": 0.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    0.0,
+    18.0
+   ],
+   "run_len": 18.0,
+   "peak": 0.83935546875,
+   "depictable": true,
+   "null_family": "Croak",
+   "afn_v4_text": "crowd, engine, human group actions",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [
+     "crowd, engine, human group actions"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5662305951118469
+    ]
+   },
+   "afn_yn_x": 3.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "croak",
+     "frog"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.09831943362951279
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Giggle",
+   "label": "Giggle",
+   "start": 5.12,
+   "end": 5.56,
+   "run_start": 5.12,
+   "run_end": 5.56,
+   "cut_start": 4.72,
+   "cut_end": 5.72,
+   "run_audio": [
+    3.7199999999999998,
+    6.72
+   ],
+   "run_len": 0.4399999999999995,
+   "peak": 0.603515625,
+   "depictable": true,
+   "null_family": "Chipmunk",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "giggle",
+     "laughter"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.36623498797416687
+    ]
+   },
+   "afn_yn_x": 1.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "chipmunk",
+     "mice",
+     "rats",
+     "rodents"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21971115469932556
+    ]
+   },
+   "afn_yn_null": -2.1875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Hiccup",
+   "label": "Hiccup",
+   "start": 5.08,
+   "end": 5.5200000000000005,
+   "run_start": 5.08,
+   "run_end": 5.5200000000000005,
+   "cut_start": 4.88,
+   "cut_end": 5.88,
+   "run_audio": [
+    3.88,
+    6.88
+   ],
+   "run_len": 0.4400000000000004,
+   "peak": 0.5625,
+   "depictable": true,
+   "null_family": "Sonar",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "digestive",
+     "hiccup"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3783622980117798
+    ]
+   },
+   "afn_yn_x": 0.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "miscellaneous sources",
+     "sonar"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08616593480110168
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 5.16,
+   "end": 5.96,
+   "run_start": 5.16,
+   "run_end": 5.96,
+   "cut_start": 4.76,
+   "cut_end": 5.76,
+   "run_audio": [
+    3.76,
+    6.76
+   ],
+   "run_len": 0.7999999999999998,
+   "peak": 0.62548828125,
+   "depictable": true,
+   "null_family": "Pump (liquid)",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3069992661476135
+    ]
+   },
+   "afn_yn_x": -0.125,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "liquid",
+     "pump"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.14848646521568298
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Pig",
+   "label": "Pig",
+   "start": 5.08,
+   "end": 5.96,
+   "run_start": 5.08,
+   "run_end": 5.96,
+   "cut_start": 4.76,
+   "cut_end": 5.76,
+   "run_audio": [
+    3.76,
+    6.76
+   ],
+   "run_len": 0.8799999999999999,
+   "peak": 0.681640625,
+   "depictable": true,
+   "null_family": "Heart murmur",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "farm animals",
+     "livestock",
+     "oink",
+     "pig",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2433169186115265
+    ]
+   },
+   "afn_yn_x": -1.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "heart murmur",
+     "heart sounds",
+     "heartbeat"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2785375714302063
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Sneeze",
+   "label": "Sneeze",
+   "start": 5.12,
+   "end": 5.5200000000000005,
+   "run_start": 5.12,
+   "run_end": 5.5200000000000005,
+   "cut_start": 4.88,
+   "cut_end": 5.88,
+   "run_audio": [
+    3.88,
+    6.88
+   ],
+   "run_len": 0.40000000000000036,
+   "peak": 0.60693359375,
+   "depictable": true,
+   "null_family": "Finger snapping",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "respiratory sounds",
+     "sneeze"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.45235320925712585
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "finger snapping",
+     "hands"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16117212176322937
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Throat clearing",
+   "label": "Throat clearing",
+   "start": 5.08,
+   "end": 5.48,
+   "run_start": 5.08,
+   "run_end": 5.48,
+   "cut_start": 4.76,
+   "cut_end": 5.76,
+   "run_audio": [
+    3.76,
+    6.76
+   ],
+   "run_len": 0.40000000000000036,
+   "peak": 0.623046875,
+   "depictable": true,
+   "null_family": "Fireworks",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "cough",
+     "throat clearing"
+    ],
+    "matched_word": [
+     "cough"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.47637873888015747
+    ]
+   },
+   "afn_yn_x": 1.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "explosion",
+     "firecracker",
+     "fireworks"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19545400142669678
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "P2",
+   "family": "Vehicle",
+   "label": "Vehicle",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.50244140625,
+   "depictable": true,
+   "null_family": "Blender",
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "accelerating",
+     "aircraft",
+     "auto racing",
+     "boat",
+     "bus",
+     "car",
+     "car horn",
+     "engine",
+     "engine starting",
+     "heavy engine",
+     "honking",
+     "idling",
+     "light engine",
+     "medium engine",
+     "motor vehicle",
+     "motorcycle",
+     "non-motorized land vehicle",
+     "race car",
+     "rail transport",
+     "reversing beeps",
+     "revving",
+     "roadway noise",
+     "skidding",
+     "tire squeal",
+     "toot",
+     "traffic noise",
+     "truck",
+     "vehicle",
+     "vehicle horn",
+     "vroom",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16216042637825012
+    ]
+   },
+   "afn_yn_x": 1.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "blender",
+     "domestic sounds",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11516667157411575
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 2.0,
+   "end": 3.0,
+   "run_start": 2.0,
+   "run_end": 3.0,
+   "cut_start": 2.0,
+   "cut_end": 3.0,
+   "run_audio": [
+    1.0,
+    4.0
+   ],
+   "run_len": 1.0,
+   "conf": 0.35761696100234985,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Gargling",
+   "afn_v4_text": "boiling",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28810954093933105
+    ]
+   },
+   "afn_yn_x": -0.875,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "gargling"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.40395379066467285
+    ]
+   },
+   "afn_yn_null": -0.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 2.0,
+   "end": 3.0,
+   "run_start": 2.0,
+   "run_end": 3.0,
+   "cut_start": 2.0,
+   "cut_end": 3.0,
+   "run_audio": [
+    1.0,
+    4.0
+   ],
+   "run_len": 1.0,
+   "conf": 0.31452780961990356,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Roar",
+   "afn_v4_text": "boiling",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28810954093933105
+    ]
+   },
+   "afn_yn_x": -0.875,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "roar",
+     "roaring cats"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1636769324541092
+    ]
+   },
+   "afn_yn_null": -1.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 2.0,
+   "end": 3.0,
+   "run_start": 2.0,
+   "run_end": 3.0,
+   "cut_start": 2.0,
+   "cut_end": 3.0,
+   "run_audio": [
+    1.0,
+    4.0
+   ],
+   "run_len": 1.0,
+   "conf": 0.28108924627304077,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Sigh",
+   "afn_v4_text": "boiling",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28810954093933105
+    ]
+   },
+   "afn_yn_x": -0.875,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27541249990463257
+    ]
+   },
+   "afn_yn_null": -1.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 3.75,
+   "end": 4.75,
+   "run_start": 3.75,
+   "run_end": 4.75,
+   "cut_start": 3.75,
+   "cut_end": 4.75,
+   "run_audio": [
+    2.75,
+    5.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.2681862711906433,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Whale vocalization",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "whale vocalization",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.10256814956665039
+    ]
+   },
+   "afn_yn_null": -2.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 3.75,
+   "end": 4.75,
+   "run_start": 3.75,
+   "run_end": 4.75,
+   "cut_start": 3.75,
+   "cut_end": 4.75,
+   "run_audio": [
+    2.75,
+    5.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.23389634490013123,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Jackhammer",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "jackhammer",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15554757416248322
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 7.0,
+   "end": 7.75,
+   "run_start": 7.0,
+   "run_end": 7.75,
+   "cut_start": 7.0,
+   "cut_end": 7.75,
+   "run_audio": [
+    6.0,
+    8.75
+   ],
+   "run_len": 0.75,
+   "conf": 0.37396228313446045,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Hammer",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 0.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "hammer",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.25773802399635315
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 8.5,
+   "end": 9.0,
+   "run_start": 8.5,
+   "run_end": 9.0,
+   "cut_start": 8.5,
+   "cut_end": 9.0,
+   "run_audio": [
+    7.5,
+    10.0
+   ],
+   "run_len": 0.5,
+   "conf": 0.2616054117679596,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Children playing",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 1.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "children playing",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17153190076351166
+    ]
+   },
+   "afn_yn_null": -3.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 9.5,
+   "end": 10.5,
+   "run_start": 9.5,
+   "run_end": 10.5,
+   "cut_start": 9.5,
+   "cut_end": 10.5,
+   "run_audio": [
+    8.5,
+    11.5
+   ],
+   "run_len": 1.0,
+   "conf": 0.40697580575942993,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Shout",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.23099027574062347
+    ]
+   },
+   "afn_yn_null": -2.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 9.5,
+   "end": 10.25,
+   "run_start": 9.5,
+   "run_end": 10.25,
+   "cut_start": 9.5,
+   "cut_end": 10.25,
+   "run_audio": [
+    8.5,
+    11.25
+   ],
+   "run_len": 0.75,
+   "conf": 0.3535890281200409,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Thump, thud",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "arrow",
+     "clunk",
+     "generic impact sounds",
+     "thud",
+     "thump",
+     "thunk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1737331748008728
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 10.0,
+   "end": 10.5,
+   "run_start": 10.0,
+   "run_end": 10.5,
+   "cut_start": 10.0,
+   "cut_end": 10.5,
+   "run_audio": [
+    9.0,
+    11.5
+   ],
+   "run_len": 0.5,
+   "conf": 0.3358152508735657,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Vacuum cleaner",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 0.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "home sounds",
+     "vacuum cleaner"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21835201978683472
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 12.75,
+   "end": 13.75,
+   "run_start": 12.75,
+   "run_end": 13.75,
+   "cut_start": 12.75,
+   "cut_end": 13.75,
+   "run_audio": [
+    11.75,
+    14.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.46137166023254395,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Ding-dong",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "ding-dong",
+     "doorbell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.10923764854669571
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 12.75,
+   "end": 13.75,
+   "run_start": 12.75,
+   "run_end": 13.75,
+   "cut_start": 12.75,
+   "cut_end": 13.75,
+   "run_audio": [
+    11.75,
+    14.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.42334720492362976,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Explosion",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.25201576948165894
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 12.75,
+   "end": 13.75,
+   "run_start": 12.75,
+   "run_end": 13.75,
+   "cut_start": 12.75,
+   "cut_end": 13.75,
+   "run_audio": [
+    11.75,
+    14.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.41691091656684875,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Baby laughter",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "baby laughter",
+     "laughter"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2366544008255005
+    ]
+   },
+   "afn_yn_null": -3.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 14.0,
+   "end": 14.5,
+   "run_start": 14.0,
+   "run_end": 14.5,
+   "cut_start": 14.0,
+   "cut_end": 14.5,
+   "run_audio": [
+    13.0,
+    15.5
+   ],
+   "run_len": 0.5,
+   "conf": 0.36062148213386536,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Frog",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "croak",
+     "frog",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.30619046092033386
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 14.0,
+   "end": 14.5,
+   "run_start": 14.0,
+   "run_end": 14.5,
+   "cut_start": 14.0,
+   "cut_end": 14.5,
+   "run_audio": [
+    13.0,
+    15.5
+   ],
+   "run_len": 0.5,
+   "conf": 0.3335670530796051,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Children playing",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "children playing",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17153190076351166
+    ]
+   },
+   "afn_yn_null": -3.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 14.0,
+   "end": 14.5,
+   "run_start": 14.0,
+   "run_end": 14.5,
+   "cut_start": 14.0,
+   "cut_end": 14.5,
+   "run_audio": [
+    13.0,
+    15.5
+   ],
+   "run_len": 0.5,
+   "conf": 0.29049763083457947,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Duck call (hunting tool)",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "duck call",
+     "miscellaneous sources"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08685573190450668
+    ]
+   },
+   "afn_yn_null": -1.9375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 14.75,
+   "end": 15.75,
+   "run_start": 14.75,
+   "run_end": 15.75,
+   "cut_start": 14.75,
+   "cut_end": 15.75,
+   "run_audio": [
+    13.75,
+    16.75
+   ],
+   "run_len": 1.0,
+   "conf": 0.2369660586118698,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Laughter",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": -0.125,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3508880138397217
+    ]
+   },
+   "afn_yn_null": -2.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 14.75,
+   "end": 15.5,
+   "run_start": 14.75,
+   "run_end": 15.5,
+   "cut_start": 14.75,
+   "cut_end": 15.5,
+   "run_audio": [
+    13.75,
+    16.5
+   ],
+   "run_len": 0.75,
+   "conf": 0.22433872520923615,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Crowd",
+   "afn_v4_text": "fire",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3711743652820587
+    ]
+   },
+   "afn_yn_x": -0.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2519732713699341
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P2",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 0.0,
+   "end": 17.0,
+   "run_start": 0.0,
+   "run_end": 17.0,
+   "cut_start": 0.0,
+   "cut_end": 17.0,
+   "run_audio": [
+    0.0,
+    17.0
+   ],
+   "run_len": 17.0,
+   "peak": 0.7353515625,
+   "depictable": true,
+   "null_family": "Heart murmur",
+   "afn_v4_text": "fire",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2615731954574585
+    ]
+   },
+   "afn_yn_x": -2.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "heart murmur",
+     "heart sounds",
+     "heartbeat"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2198474109172821
+    ]
+   },
+   "afn_yn_null": -2.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P2",
+   "family": "Fire",
+   "label": "Fire",
+   "start": 0.0,
+   "end": 17.0,
+   "run_start": 0.0,
+   "run_end": 17.0,
+   "cut_start": 0.0,
+   "cut_end": 17.0,
+   "run_audio": [
+    0.0,
+    17.0
+   ],
+   "run_len": 17.0,
+   "peak": 0.69287109375,
+   "depictable": true,
+   "null_family": "Pig",
+   "afn_v4_text": "fire",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "crackle",
+     "fire",
+     "wildfire"
+    ],
+    "matched_word": [
+     "fire"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 3.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "farm animals",
+     "livestock",
+     "oink",
+     "pig",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2333536148071289
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P2",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 0.0,
+   "end": 17.0,
+   "run_start": 0.0,
+   "run_end": 17.0,
+   "cut_start": 0.0,
+   "cut_end": 17.0,
+   "run_audio": [
+    0.0,
+    17.0
+   ],
+   "run_len": 17.0,
+   "peak": 0.8251953125,
+   "depictable": true,
+   "null_family": "Duck call (hunting tool)",
+   "afn_v4_text": "fire",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3711743652820587
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "duck call",
+     "miscellaneous sources"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.09719391167163849
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P2",
+   "family": "Ratchet, pawl",
+   "label": "Ratchet, pawl",
+   "start": 0.0,
+   "end": 17.0,
+   "run_start": 0.0,
+   "run_end": 17.0,
+   "cut_start": 0.0,
+   "cut_end": 17.0,
+   "run_audio": [
+    0.0,
+    17.0
+   ],
+   "run_len": 17.0,
+   "peak": 0.552734375,
+   "depictable": true,
+   "null_family": "Bellow",
+   "afn_v4_text": "fire",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "pawl",
+     "ratchet"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17584195733070374
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "bellow",
+     "shout"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20321647822856903
+    ]
+   },
+   "afn_yn_null": -2.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d020",
+   "pool": "P2",
+   "family": "Tick",
+   "label": "Tick",
+   "start": 10.72,
+   "end": 10.76,
+   "run_start": 10.72,
+   "run_end": 10.76,
+   "cut_start": 10.24,
+   "cut_end": 11.24,
+   "run_audio": [
+    9.24,
+    12.24
+   ],
+   "run_len": 0.03999999999999915,
+   "peak": 0.5654296875,
+   "depictable": true,
+   "null_family": "Knock",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "clicking",
+     "clock",
+     "tick"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16051329672336578
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "door",
+     "generic impact sounds",
+     "knock"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2185574769973755
+    ]
+   },
+   "afn_yn_null": -0.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P1",
+   "family": "Gasp",
+   "label": "Gasp",
+   "start": 7.25,
+   "end": 7.75,
+   "run_start": 7.25,
+   "run_end": 7.75,
+   "cut_start": 7.25,
+   "cut_end": 7.75,
+   "run_audio": [
+    6.25,
+    8.75
+   ],
+   "run_len": 0.5,
+   "conf": 0.2871358096599579,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Buzz",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [
+     "breathing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3412989675998688
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bee",
+     "brief tone",
+     "buzz",
+     "etc.",
+     "fly",
+     "housefly",
+     "wasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2001926302909851
+    ]
+   },
+   "afn_yn_null": 0.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P1",
+   "family": "Gasp",
+   "label": "Gasp",
+   "start": 8.25,
+   "end": 8.75,
+   "run_start": 8.25,
+   "run_end": 8.75,
+   "cut_start": 8.25,
+   "cut_end": 8.75,
+   "run_audio": [
+    7.25,
+    9.75
+   ],
+   "run_len": 0.5,
+   "conf": 0.3722631633281708,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Gush",
+   "afn_v4_text": "beep",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.206726536154747
+    ]
+   },
+   "afn_yn_x": -0.25,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "gush",
+     "pour"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29745733737945557
+    ]
+   },
+   "afn_yn_null": -0.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Alarm",
+   "label": "Alarm",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.6083984375,
+   "depictable": true,
+   "null_family": "Whale vocalization",
+   "afn_v4_text": "footsteps",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2384900599718094
+    ]
+   },
+   "afn_yn_x": -1.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "whale vocalization",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.25969019532203674
+    ]
+   },
+   "afn_yn_null": -2.9375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Gasp",
+   "label": "Gasp",
+   "start": 6.64,
+   "end": 6.92,
+   "run_start": 6.64,
+   "run_end": 6.92,
+   "cut_start": 6.239999999999999,
+   "cut_end": 7.239999999999999,
+   "run_audio": [
+    5.239999999999999,
+    8.239999999999998
+   ],
+   "run_len": 0.28000000000000025,
+   "peak": 0.51171875,
+   "depictable": true,
+   "null_family": "Tinnitus, ringing in the ears",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [
+     "breathing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3412989675998688
+    ]
+   },
+   "afn_yn_x": 1.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "otoacoustic emission",
+     "ringing in the ears",
+     "tinnitus"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08798697590827942
+    ]
+   },
+   "afn_yn_null": -0.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Gasp",
+   "label": "Gasp",
+   "start": 10.0,
+   "end": 10.2,
+   "run_start": 10.0,
+   "run_end": 10.2,
+   "cut_start": 9.6,
+   "cut_end": 10.6,
+   "run_audio": [
+    8.6,
+    11.6
+   ],
+   "run_len": 0.1999999999999993,
+   "peak": 0.6650390625,
+   "depictable": true,
+   "null_family": "Blender",
+   "afn_v4_text": "male speaking",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16472917795181274
+    ]
+   },
+   "afn_yn_x": -1.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "blender",
+     "domestic sounds",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17017218470573425
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Gasp",
+   "label": "Gasp",
+   "start": 15.84,
+   "end": 16.119999999999997,
+   "run_start": 15.84,
+   "run_end": 16.119999999999997,
+   "cut_start": 15.44,
+   "cut_end": 16.439999999999998,
+   "run_audio": [
+    14.44,
+    17.439999999999998
+   ],
+   "run_len": 0.2799999999999976,
+   "peak": 0.546875,
+   "depictable": true,
+   "null_family": "Toothbrush",
+   "afn_v4_text": "doorbell",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.14174696803092957
+    ]
+   },
+   "afn_yn_x": -1.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "electric toothbrush",
+     "home sounds",
+     "toothbrush"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24539656937122345
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Grunt",
+   "label": "Grunt",
+   "start": 5.88,
+   "end": 6.48,
+   "run_start": 5.88,
+   "run_end": 6.48,
+   "cut_start": 5.8,
+   "cut_end": 6.8,
+   "run_audio": [
+    4.8,
+    7.8
+   ],
+   "run_len": 0.6000000000000005,
+   "peak": 0.60595703125,
+   "depictable": true,
+   "null_family": "Wobble",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "grunt",
+     "human voice"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16643208265304565
+    ]
+   },
+   "afn_yn_x": 1.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "arrow",
+     "wobble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20586013793945312
+    ]
+   },
+   "afn_yn_null": 0.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 4.24,
+   "end": 4.56,
+   "run_start": 4.24,
+   "run_end": 4.56,
+   "cut_start": 3.8,
+   "cut_end": 4.8,
+   "run_audio": [
+    2.8,
+    5.8
+   ],
+   "run_len": 0.3199999999999994,
+   "peak": 0.5048828125,
+   "depictable": true,
+   "null_family": "Chorus effect",
+   "afn_v4_text": "footsteps",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3062717318534851
+    ]
+   },
+   "afn_yn_x": -2.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "chorus effect",
+     "effects unit"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.22179445624351501
+    ]
+   },
+   "afn_yn_null": -0.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Mechanical fan",
+   "label": "Mechanical fan",
+   "start": 0.0,
+   "end": 10.879999999999999,
+   "run_start": 0.0,
+   "run_end": 10.879999999999999,
+   "cut_start": 0.0,
+   "cut_end": 10.879999999999999,
+   "run_audio": [
+    0.0,
+    11.879999999999999
+   ],
+   "run_len": 10.879999999999999,
+   "peak": 0.56201171875,
+   "depictable": true,
+   "null_family": "Frog",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanical fan",
+     "mechanisms"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11799626052379608
+    ]
+   },
+   "afn_yn_x": -0.25,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "croak",
+     "frog",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.31102824211120605
+    ]
+   },
+   "afn_yn_null": -2.4375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Printer",
+   "label": "Printer",
+   "start": 0.0,
+   "end": 1.8,
+   "run_start": 0.0,
+   "run_end": 1.8,
+   "cut_start": 0.0,
+   "cut_end": 1.8,
+   "run_audio": [
+    0.0,
+    2.8
+   ],
+   "run_len": 1.8,
+   "peak": 0.56640625,
+   "depictable": true,
+   "null_family": "Microphone",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "printer"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.09519656002521515
+    ]
+   },
+   "afn_yn_x": -1.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "microphone",
+     "sound equipment",
+     "wind noise"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.44527193903923035
+    ]
+   },
+   "afn_yn_null": 0.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Printer",
+   "label": "Printer",
+   "start": 2.4,
+   "end": 5.56,
+   "run_start": 2.4,
+   "run_end": 5.56,
+   "cut_start": 2.4,
+   "cut_end": 5.56,
+   "run_audio": [
+    1.4,
+    6.56
+   ],
+   "run_len": 3.1599999999999997,
+   "peak": 0.52001953125,
+   "depictable": true,
+   "null_family": "Specific impact sounds",
+   "afn_v4_text": "footsteps",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "printer"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1661093682050705
+    ]
+   },
+   "afn_yn_x": -2.25,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24317213892936707
+    ]
+   },
+   "afn_yn_null": 0.875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Printer",
+   "label": "Printer",
+   "start": 5.92,
+   "end": 6.5200000000000005,
+   "run_start": 5.92,
+   "run_end": 6.5200000000000005,
+   "cut_start": 5.84,
+   "cut_end": 6.84,
+   "run_audio": [
+    4.84,
+    7.84
+   ],
+   "run_len": 0.6000000000000005,
+   "peak": 0.5283203125,
+   "depictable": true,
+   "null_family": "Heart murmur",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "printer"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.0757332369685173
+    ]
+   },
+   "afn_yn_x": -1.9375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "heart murmur",
+     "heart sounds",
+     "heartbeat"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.33894985914230347
+    ]
+   },
+   "afn_yn_null": -0.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Printer",
+   "label": "Printer",
+   "start": 7.08,
+   "end": 7.36,
+   "run_start": 7.08,
+   "run_end": 7.36,
+   "cut_start": 6.68,
+   "cut_end": 7.68,
+   "run_audio": [
+    5.68,
+    8.68
+   ],
+   "run_len": 0.28000000000000025,
+   "peak": 0.55615234375,
+   "depictable": true,
+   "null_family": "Quack",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "printer"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.0757332369685173
+    ]
+   },
+   "afn_yn_x": -2.1875,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "duck",
+     "quack"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.135951429605484
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Printer",
+   "label": "Printer",
+   "start": 8.36,
+   "end": 10.0,
+   "run_start": 8.36,
+   "run_end": 10.0,
+   "cut_start": 8.36,
+   "cut_end": 10.0,
+   "run_audio": [
+    7.359999999999999,
+    11.0
+   ],
+   "run_len": 1.6400000000000006,
+   "peak": 0.564453125,
+   "depictable": true,
+   "null_family": "Otoacoustic emission",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "printer"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.0757332369685173
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "otoacoustic emission",
+     "ringing in the ears",
+     "tinnitus"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15842074155807495
+    ]
+   },
+   "afn_yn_null": -1.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Ratchet, pawl",
+   "label": "Ratchet, pawl",
+   "start": 17.72,
+   "end": 18.0,
+   "run_start": 17.72,
+   "run_end": 18.0,
+   "cut_start": 17.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    16.0,
+    18.0
+   ],
+   "run_len": 0.28000000000000114,
+   "peak": 0.5146484375,
+   "depictable": true,
+   "null_family": "Fart",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "pawl",
+     "ratchet"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2695094347000122
+    ]
+   },
+   "afn_yn_x": 0.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "fart"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.36506056785583496
+    ]
+   },
+   "afn_yn_null": 0.875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Sigh",
+   "label": "Sigh",
+   "start": 5.92,
+   "end": 6.5200000000000005,
+   "run_start": 5.92,
+   "run_end": 6.5200000000000005,
+   "cut_start": 5.8,
+   "cut_end": 6.8,
+   "run_audio": [
+    4.8,
+    7.8
+   ],
+   "run_len": 0.6000000000000005,
+   "peak": 0.75244140625,
+   "depictable": true,
+   "null_family": "Gobble",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27887871861457825
+    ]
+   },
+   "afn_yn_x": 1.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "gobble",
+     "turkey"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.14785358309745789
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Sigh",
+   "label": "Sigh",
+   "start": 7.08,
+   "end": 7.32,
+   "run_start": 7.08,
+   "run_end": 7.32,
+   "cut_start": 6.76,
+   "cut_end": 7.76,
+   "run_audio": [
+    5.76,
+    8.76
+   ],
+   "run_len": 0.2400000000000002,
+   "peak": 0.63134765625,
+   "depictable": true,
+   "null_family": "Gunshot",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27887871861457825
+    ]
+   },
+   "afn_yn_x": 1.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2420007735490799
+    ]
+   },
+   "afn_yn_null": -1.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Single-lens reflex camera",
+   "label": "Single-lens reflex camera",
+   "start": 17.68,
+   "end": 17.88,
+   "run_start": 17.68,
+   "run_end": 17.88,
+   "cut_start": 17.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    16.0,
+    18.0
+   ],
+   "run_len": 0.1999999999999993,
+   "peak": 0.5390625,
+   "depictable": true,
+   "null_family": "Whale vocalization",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "camera",
+     "single-lens reflex camera"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11571989208459854
+    ]
+   },
+   "afn_yn_x": -1.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "whale vocalization",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.37975120544433594
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Sliding door",
+   "label": "Sliding door",
+   "start": 17.72,
+   "end": 18.0,
+   "run_start": 17.72,
+   "run_end": 18.0,
+   "cut_start": 17.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    16.0,
+    18.0
+   ],
+   "run_len": 0.28000000000000114,
+   "peak": 0.525390625,
+   "depictable": true,
+   "null_family": "Sonar",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "door",
+     "sliding door"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.25198864936828613
+    ]
+   },
+   "afn_yn_x": -0.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "miscellaneous sources",
+     "sonar"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.38962966203689575
+    ]
+   },
+   "afn_yn_null": -0.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Sneeze",
+   "label": "Sneeze",
+   "start": 7.08,
+   "end": 7.32,
+   "run_start": 7.08,
+   "run_end": 7.32,
+   "cut_start": 6.64,
+   "cut_end": 7.64,
+   "run_audio": [
+    5.64,
+    8.64
+   ],
+   "run_len": 0.2400000000000002,
+   "peak": 0.513671875,
+   "depictable": true,
+   "null_family": "Duck call (hunting tool)",
+   "afn_v4_text": "breathing, respiratory sounds",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "respiratory sounds",
+     "sneeze"
+    ],
+    "matched_word": [
+     "breathing, respiratory sounds"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.30117660760879517
+    ]
+   },
+   "afn_yn_x": 0.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "duck call",
+     "miscellaneous sources"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.12554672360420227
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Tick",
+   "label": "Tick",
+   "start": 5.52,
+   "end": 5.56,
+   "run_start": 5.52,
+   "run_end": 5.56,
+   "cut_start": 5.039999999999999,
+   "cut_end": 6.039999999999999,
+   "run_audio": [
+    4.039999999999999,
+    7.039999999999999
+   ],
+   "run_len": 0.040000000000000036,
+   "peak": 0.5205078125,
+   "depictable": true,
+   "null_family": "Bathtub (filling or washing)",
+   "afn_v4_text": "human activity",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "clicking",
+     "clock",
+     "tick"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15545031428337097
+    ]
+   },
+   "afn_yn_x": -0.75,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "bathtub",
+     "domestic sounds",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.09306684136390686
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d033",
+   "pool": "P2",
+   "family": "Yawn",
+   "label": "Yawn",
+   "start": 5.92,
+   "end": 6.48,
+   "run_start": 5.92,
+   "run_end": 6.48,
+   "cut_start": 5.8,
+   "cut_end": 6.8,
+   "run_audio": [
+    4.8,
+    7.8
+   ],
+   "run_len": 0.5600000000000005,
+   "peak": 0.64599609375,
+   "depictable": true,
+   "null_family": "Burping, eructation",
+   "afn_v4_text": "breathing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "yawn"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.33309274911880493
+    ]
+   },
+   "afn_yn_x": 0.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "burping",
+     "digestive",
+     "eructation"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3190326392650604
+    ]
+   },
+   "afn_yn_null": -0.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P1",
+   "family": "Alarm",
+   "label": "Alarm clock",
+   "start": 0.14,
+   "end": 9.25,
+   "run_start": 0.14,
+   "run_end": 9.25,
+   "cut_start": 0.14,
+   "cut_end": 9.25,
+   "run_audio": [
+    0.0,
+    10.25
+   ],
+   "run_len": 9.11,
+   "conf": 0.30683112144470215,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Wobble",
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [
+     "car horn"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5167372822761536
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "arrow",
+     "wobble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16881173849105835
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P1",
+   "family": "Jingle bell",
+   "label": "Jingle bell",
+   "start": 13.5,
+   "end": 14.5,
+   "run_start": 13.5,
+   "run_end": 14.5,
+   "cut_start": 13.5,
+   "cut_end": 14.5,
+   "run_audio": [
+    12.5,
+    15.5
+   ],
+   "run_len": 1.0,
+   "conf": 0.2708137035369873,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Power windows, electric windows",
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bell",
+     "jingle bell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2853967249393463
+    ]
+   },
+   "afn_yn_x": -2.125,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "car",
+     "electric windows",
+     "power windows"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.049186550080776215
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Alarm",
+   "label": "Alarm",
+   "start": 0.0,
+   "end": 19.0,
+   "run_start": 0.0,
+   "run_end": 19.0,
+   "cut_start": 0.0,
+   "cut_end": 19.0,
+   "run_audio": [
+    0.0,
+    19.0
+   ],
+   "run_len": 19.0,
+   "peak": 0.93408203125,
+   "depictable": true,
+   "null_family": "Yak",
+   "afn_v4_text": "crickets, footsteps, rustling, a man shouting, a woman shouting, a man speaking, a woman speaking, a man laughing, a woman laughing, a man coughing, a woman coughing, a man gasping, a woman gasping, a man screaming, a woman screaming, a man groaning",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4067583382129669
+    ]
+   },
+   "afn_yn_x": 0.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.108248770236969
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Bell",
+   "label": "Bell",
+   "start": 10.0,
+   "end": 11.92,
+   "run_start": 10.0,
+   "run_end": 11.92,
+   "cut_start": 10.0,
+   "cut_end": 11.92,
+   "run_audio": [
+    9.0,
+    12.92
+   ],
+   "run_len": 1.92,
+   "peak": 0.55224609375,
+   "depictable": true,
+   "null_family": "Blender",
+   "afn_v4_text": "doorbell, door, human voice",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bell",
+     "bicycle bell",
+     "change ringing",
+     "chime",
+     "church bell",
+     "cowbell",
+     "ding",
+     "jingle bell",
+     "musical instrument",
+     "ringing",
+     "tuning fork",
+     "wind chime"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4612213969230652
+    ]
+   },
+   "afn_yn_x": 0.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "blender",
+     "domestic sounds",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1124361902475357
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Cricket",
+   "label": "Cricket",
+   "start": 0.0,
+   "end": 4.36,
+   "run_start": 0.0,
+   "run_end": 4.36,
+   "cut_start": 0.0,
+   "cut_end": 4.36,
+   "run_audio": [
+    0.0,
+    5.36
+   ],
+   "run_len": 4.36,
+   "peak": 0.59912109375,
+   "depictable": true,
+   "null_family": "Booing",
+   "afn_v4_text": "door slam, footsteps, impact",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "cricket",
+     "insect"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.10625724494457245
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "booing",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1696304976940155
+    ]
+   },
+   "afn_yn_null": -2.3125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Cricket",
+   "label": "Cricket",
+   "start": 6.36,
+   "end": 19.0,
+   "run_start": 6.36,
+   "run_end": 19.0,
+   "cut_start": 6.36,
+   "cut_end": 19.0,
+   "run_audio": [
+    5.36,
+    19.0
+   ],
+   "run_len": 12.64,
+   "peak": 0.71826171875,
+   "depictable": true,
+   "null_family": "Roaring cats (lions, tigers)",
+   "afn_v4_text": "shackling",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "cricket",
+     "insect"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1828588843345642
+    ]
+   },
+   "afn_yn_x": -1.25,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "growling",
+     "roar",
+     "roaring cats",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15514981746673584
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Door",
+   "label": "Door",
+   "start": 3.28,
+   "end": 3.64,
+   "run_start": 3.28,
+   "run_end": 3.64,
+   "cut_start": 3.04,
+   "cut_end": 4.04,
+   "run_audio": [
+    2.04,
+    5.04
+   ],
+   "run_len": 0.3600000000000003,
+   "peak": 0.5537109375,
+   "depictable": true,
+   "null_family": "Stomach rumble",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "creak",
+     "cupboard open or close",
+     "domestic sounds",
+     "door",
+     "doorbell",
+     "home sounds",
+     "knock",
+     "slam",
+     "sliding door",
+     "squeak",
+     "tap"
+    ],
+    "matched_word": [
+     "door closing"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6633571982383728
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19668146967887878
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Gasp",
+   "label": "Gasp",
+   "start": 17.64,
+   "end": 17.84,
+   "run_start": 17.64,
+   "run_end": 17.84,
+   "cut_start": 17.24,
+   "cut_end": 18.24,
+   "run_audio": [
+    16.24,
+    19.0
+   ],
+   "run_len": 0.1999999999999993,
+   "peak": 0.6259765625,
+   "depictable": true,
+   "null_family": "Boat",
+   "afn_v4_text": "squeak",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3587130904197693
+    ]
+   },
+   "afn_yn_x": -0.125,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "boat",
+     "canoe",
+     "kayak",
+     "motorboat",
+     "rowboat",
+     "sailboat",
+     "sailing ship",
+     "ship",
+     "speedboat",
+     "vehicle",
+     "water vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.26959899067878723
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Groan",
+   "label": "Groan",
+   "start": 0.2,
+   "end": 0.68,
+   "run_start": 0.2,
+   "run_end": 0.68,
+   "cut_start": 0.0,
+   "cut_end": 1.0,
+   "run_audio": [
+    0.0,
+    2.0
+   ],
+   "run_len": 0.48000000000000004,
+   "peak": 0.7392578125,
+   "depictable": true,
+   "null_family": "Wobble",
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "groan",
+     "human voice"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.324462890625
+    ]
+   },
+   "afn_yn_x": 1.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "arrow",
+     "wobble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24007588624954224
+    ]
+   },
+   "afn_yn_null": 0.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Grunt",
+   "label": "Grunt",
+   "start": 0.24,
+   "end": 0.64,
+   "run_start": 0.24,
+   "run_end": 0.64,
+   "cut_start": 0.0,
+   "cut_end": 1.0,
+   "run_audio": [
+    0.0,
+    2.0
+   ],
+   "run_len": 0.4,
+   "peak": 0.5048828125,
+   "depictable": true,
+   "null_family": "Camera",
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "grunt",
+     "human voice"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2901400327682495
+    ]
+   },
+   "afn_yn_x": 1.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "camera",
+     "mechanisms",
+     "single-lens reflex camera"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.23038583993911743
+    ]
+   },
+   "afn_yn_null": -1.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Insect",
+   "label": "Insect",
+   "start": 0.0,
+   "end": 19.0,
+   "run_start": 0.0,
+   "run_end": 19.0,
+   "cut_start": 0.0,
+   "cut_end": 19.0,
+   "run_audio": [
+    0.0,
+    19.0
+   ],
+   "run_len": 19.0,
+   "peak": 0.81005859375,
+   "depictable": true,
+   "null_family": "Power windows, electric windows",
+   "afn_v4_text": "crickets, footsteps, rustling, a man shouting, a woman shouting, a man speaking, a woman speaking, a man laughing, a woman laughing, a man coughing, a woman coughing, a man gasping, a woman gasping, a man screaming, a woman screaming, a man groaning",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bee",
+     "cricket",
+     "etc.",
+     "fly",
+     "housefly",
+     "insect",
+     "mosquito",
+     "wasp",
+     "wild animals"
+    ],
+    "matched_word": [
+     "crickets, footsteps, rustling, a man shouting, a woman shouting, a man speaking, a woman speaking, a man laughing, a woman laughing, a man coughing, a woman coughing, a man gasping, a woman gasping, a man screaming, a woman screaming, a man groaning"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.35330748558044434
+    ]
+   },
+   "afn_yn_x": 3.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "car",
+     "electric windows",
+     "power windows"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.04390576481819153
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 7.08,
+   "end": 7.36,
+   "run_start": 7.08,
+   "run_end": 7.36,
+   "cut_start": 6.72,
+   "cut_end": 7.72,
+   "run_audio": [
+    5.72,
+    8.719999999999999
+   ],
+   "run_len": 0.28000000000000025,
+   "peak": 0.58837890625,
+   "depictable": true,
+   "null_family": "Pulleys",
+   "afn_v4_text": "mechanisms",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.30565857887268066
+    ]
+   },
+   "afn_yn_x": -2.75,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "mechanisms",
+     "pulleys"
+    ],
+    "matched_word": [
+     "mechanisms"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.42932748794555664
+    ]
+   },
+   "afn_yn_null": 1.125,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 13.24,
+   "end": 13.6,
+   "run_start": 13.24,
+   "run_end": 13.6,
+   "cut_start": 12.959999999999999,
+   "cut_end": 13.959999999999999,
+   "run_audio": [
+    11.959999999999999,
+    14.959999999999999
+   ],
+   "run_len": 0.35999999999999943,
+   "peak": 0.60546875,
+   "depictable": true,
+   "null_family": "Honk",
+   "afn_v4_text": "shout, human voice",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [
+     "shout, human voice"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.2995346784591675
+    ]
+   },
+   "afn_yn_x": -2.25,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "goose",
+     "honk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3298937678337097
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 14.28,
+   "end": 16.119999999999997,
+   "run_start": 14.28,
+   "run_end": 16.119999999999997,
+   "cut_start": 14.28,
+   "cut_end": 16.119999999999997,
+   "run_audio": [
+    13.28,
+    17.119999999999997
+   ],
+   "run_len": 1.839999999999998,
+   "peak": 0.73193359375,
+   "depictable": true,
+   "null_family": "Air conditioning",
+   "afn_v4_text": "squeak, footsteps, breathing, male speech, human voice",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [
+     "squeak, footsteps, breathing, male speech, human voice"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3479166328907013
+    ]
+   },
+   "afn_yn_x": -2.0625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "air conditioning",
+     "mechanisms"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1957254707813263
+    ]
+   },
+   "afn_yn_null": -2.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Pant",
+   "label": "Pant",
+   "start": 17.52,
+   "end": 17.88,
+   "run_start": 17.52,
+   "run_end": 17.88,
+   "cut_start": 17.24,
+   "cut_end": 18.24,
+   "run_audio": [
+    16.24,
+    19.0
+   ],
+   "run_len": 0.35999999999999943,
+   "peak": 0.681640625,
+   "depictable": true,
+   "null_family": "Air horn, truck horn",
+   "afn_v4_text": "squeak",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "breathing",
+     "pant"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2548319697380066
+    ]
+   },
+   "afn_yn_x": 0.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "air horn",
+     "alarm",
+     "truck",
+     "truck horn"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.40245944261550903
+    ]
+   },
+   "afn_yn_null": -0.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Ratchet, pawl",
+   "label": "Ratchet, pawl",
+   "start": 6.28,
+   "end": 7.44,
+   "run_start": 6.28,
+   "run_end": 7.44,
+   "cut_start": 6.28,
+   "cut_end": 7.44,
+   "run_audio": [
+    5.28,
+    8.440000000000001
+   ],
+   "run_len": 1.1600000000000001,
+   "peak": 0.51220703125,
+   "depictable": true,
+   "null_family": "Sound equipment",
+   "afn_v4_text": "mechanisms",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "pawl",
+     "ratchet"
+    ],
+    "matched_word": [
+     "mechanisms"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.24221375584602356
+    ]
+   },
+   "afn_yn_x": 2.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "effects unit",
+     "electronic tuner",
+     "guitar amplifier",
+     "microphone",
+     "miscellaneous sources",
+     "sound equipment"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27728164196014404
+    ]
+   },
+   "afn_yn_null": -0.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Ratchet, pawl",
+   "label": "Ratchet, pawl",
+   "start": 9.64,
+   "end": 10.0,
+   "run_start": 9.64,
+   "run_end": 10.0,
+   "cut_start": 9.32,
+   "cut_end": 10.32,
+   "run_audio": [
+    8.32,
+    11.32
+   ],
+   "run_len": 0.35999999999999943,
+   "peak": 0.5009765625,
+   "depictable": true,
+   "null_family": "Chainsaw",
+   "afn_v4_text": "mechanical, impact",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "mechanisms",
+     "pawl",
+     "ratchet"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15852105617523193
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "chainsaw",
+     "light engine"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.38513219356536865
+    ]
+   },
+   "afn_yn_null": 0.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Screaming",
+   "label": "Screaming",
+   "start": 0.2,
+   "end": 0.64,
+   "run_start": 0.2,
+   "run_end": 0.64,
+   "cut_start": 0.0,
+   "cut_end": 1.0,
+   "run_audio": [
+    0.0,
+    2.0
+   ],
+   "run_len": 0.44,
+   "peak": 0.6865234375,
+   "depictable": true,
+   "null_family": "Turkey",
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "screaming"
+    ],
+    "matched_word": [
+     "screaming"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 2.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "fowl",
+     "gobble",
+     "turkey"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19028528034687042
+    ]
+   },
+   "afn_yn_null": -1.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 0.16,
+   "end": 0.68,
+   "run_start": 0.16,
+   "run_end": 0.68,
+   "cut_start": 0.040000000000000036,
+   "cut_end": 1.04,
+   "run_audio": [
+    0.0,
+    2.04
+   ],
+   "run_len": 0.52,
+   "peak": 0.8779296875,
+   "depictable": true,
+   "null_family": "Writing",
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_x": 2.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "home sounds",
+     "writing"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.39103877544403076
+    ]
+   },
+   "afn_yn_null": -2.5625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 12.6,
+   "end": 14.84,
+   "run_start": 12.6,
+   "run_end": 14.84,
+   "cut_start": 12.6,
+   "cut_end": 14.84,
+   "run_audio": [
+    11.6,
+    15.84
+   ],
+   "run_len": 2.24,
+   "peak": 0.65380859375,
+   "depictable": true,
+   "null_family": "Heart sounds, heartbeat",
+   "afn_v4_text": "dog barking, human voice",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [
+     "dog barking, human voice"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.4000968337059021
+    ]
+   },
+   "afn_yn_x": 3.3125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "heart murmur",
+     "heart sounds",
+     "heartbeat"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.303095281124115
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 15.6,
+   "end": 16.24,
+   "run_start": 15.6,
+   "run_end": 16.24,
+   "cut_start": 15.44,
+   "cut_end": 16.439999999999998,
+   "run_audio": [
+    14.44,
+    17.439999999999998
+   ],
+   "run_len": 0.6399999999999988,
+   "peak": 0.57177734375,
+   "depictable": true,
+   "null_family": "Gush",
+   "afn_v4_text": "dog barking",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.45059895515441895
+    ]
+   },
+   "afn_yn_x": 1.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "gush",
+     "pour"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1686101257801056
+    ]
+   },
+   "afn_yn_null": -0.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Sneeze",
+   "label": "Sneeze",
+   "start": 13.12,
+   "end": 13.52,
+   "run_start": 13.12,
+   "run_end": 13.52,
+   "cut_start": 12.84,
+   "cut_end": 13.84,
+   "run_audio": [
+    11.84,
+    14.84
+   ],
+   "run_len": 0.40000000000000036,
+   "peak": 0.6328125,
+   "depictable": true,
+   "null_family": "Patter",
+   "afn_v4_text": "sneeze",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "respiratory sounds",
+     "sneeze"
+    ],
+    "matched_word": [
+     "sneeze"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": -1.125,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "mice",
+     "patter",
+     "rats",
+     "rodents"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1733379065990448
+    ]
+   },
+   "afn_yn_null": 0.875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Splash, splatter",
+   "label": "Splash, splatter",
+   "start": 13.12,
+   "end": 13.44,
+   "run_start": 13.12,
+   "run_end": 13.44,
+   "cut_start": 12.84,
+   "cut_end": 13.84,
+   "run_audio": [
+    11.84,
+    14.84
+   ],
+   "run_len": 0.3200000000000003,
+   "peak": 0.53369140625,
+   "depictable": true,
+   "null_family": "Whale vocalization",
+   "afn_v4_text": "sneeze",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "liquid",
+     "slosh",
+     "splash",
+     "splatter"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.31029069423675537
+    ]
+   },
+   "afn_yn_x": 0.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "whale vocalization",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.12700606882572174
+    ]
+   },
+   "afn_yn_null": -2.0625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Thump, thud",
+   "label": "Thump, thud",
+   "start": 2.84,
+   "end": 3.0,
+   "run_start": 2.84,
+   "run_end": 3.0,
+   "cut_start": 2.4,
+   "cut_end": 3.4,
+   "run_audio": [
+    1.4,
+    4.4
+   ],
+   "run_len": 0.16000000000000014,
+   "peak": 0.64306640625,
+   "depictable": true,
+   "null_family": "Camera",
+   "afn_v4_text": "crushing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "arrow",
+     "clunk",
+     "generic impact sounds",
+     "thud",
+     "thump",
+     "thunk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3563227653503418
+    ]
+   },
+   "afn_yn_x": 1.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "camera",
+     "mechanisms",
+     "single-lens reflex camera"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16015243530273438
+    ]
+   },
+   "afn_yn_null": -1.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Thump, thud",
+   "label": "Thump, thud",
+   "start": 3.28,
+   "end": 3.72,
+   "run_start": 3.28,
+   "run_end": 3.72,
+   "cut_start": 3.04,
+   "cut_end": 4.04,
+   "run_audio": [
+    2.04,
+    5.04
+   ],
+   "run_len": 0.4400000000000004,
+   "peak": 0.7431640625,
+   "depictable": true,
+   "null_family": "Aircraft",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "arrow",
+     "clunk",
+     "generic impact sounds",
+     "thud",
+     "thump",
+     "thunk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.23407921195030212
+    ]
+   },
+   "afn_yn_x": 2.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "aircraft",
+     "aircraft engine",
+     "airplane",
+     "airscrew",
+     "fixed-wing aircraft",
+     "helicopter",
+     "jet engine",
+     "propeller",
+     "vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1398884505033493
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Thump, thud",
+   "label": "Thump, thud",
+   "start": 10.4,
+   "end": 10.639999999999999,
+   "run_start": 10.4,
+   "run_end": 10.639999999999999,
+   "cut_start": 10.0,
+   "cut_end": 11.0,
+   "run_audio": [
+    9.0,
+    12.0
+   ],
+   "run_len": 0.23999999999999844,
+   "peak": 0.580078125,
+   "depictable": true,
+   "null_family": "Gush",
+   "afn_v4_text": "door opening, door closing, metal clanking, metal rattling, metal scraping, metal clanging, metal clinking, metal thudding, metal scraping, metal clanking, metal rattling, metal clanging, metal clinking, metal thudding, metal scraping, metal clanking, metal rattling",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "arrow",
+     "clunk",
+     "generic impact sounds",
+     "thud",
+     "thump",
+     "thunk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.18618598580360413
+    ]
+   },
+   "afn_yn_x": 0.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "gush",
+     "pour"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.03594408929347992
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Thunk",
+   "label": "Thunk",
+   "start": 3.44,
+   "end": 3.72,
+   "run_start": 3.44,
+   "run_end": 3.72,
+   "cut_start": 3.04,
+   "cut_end": 4.04,
+   "run_audio": [
+    2.04,
+    5.04
+   ],
+   "run_len": 0.28000000000000025,
+   "peak": 0.615234375,
+   "depictable": true,
+   "null_family": "Roaring cats (lions, tigers)",
+   "afn_v4_text": "door closing",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "thud",
+     "thump",
+     "thunk"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2791454792022705
+    ]
+   },
+   "afn_yn_x": 2.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "growling",
+     "roar",
+     "roaring cats",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21035517752170563
+    ]
+   },
+   "afn_yn_null": -3.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d075",
+   "pool": "P2",
+   "family": "Whoosh, swoosh, swish",
+   "label": "Whoosh, swoosh, swish",
+   "start": 13.12,
+   "end": 13.44,
+   "run_start": 13.12,
+   "run_end": 13.44,
+   "cut_start": 12.76,
+   "cut_end": 13.76,
+   "run_audio": [
+    11.76,
+    14.76
+   ],
+   "run_len": 0.3200000000000003,
+   "peak": 0.615234375,
+   "depictable": true,
+   "null_family": "Cooking",
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "arrow",
+     "onomatopoeia",
+     "swish",
+     "swoosh",
+     "whoosh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28778934478759766
+    ]
+   },
+   "afn_yn_x": 0.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "chopping",
+     "cooking",
+     "domestic sounds",
+     "frying",
+     "home sounds",
+     "sizzle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.37340354919433594
+    ]
+   },
+   "afn_yn_null": -1.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Thunder",
+   "label": "Thunder",
+   "start": 0.06,
+   "end": 0.5,
+   "run_start": 0.06,
+   "run_end": 0.5,
+   "cut_start": 0.06,
+   "cut_end": 0.5,
+   "run_audio": [
+    0.0,
+    1.5
+   ],
+   "run_len": 0.44,
+   "conf": 0.582929790019989,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Kettle whistle",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.40496474504470825
+    ]
+   },
+   "afn_yn_x": -0.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "home sounds",
+     "kettle whistle",
+     "whistle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.34825512766838074
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 0.18,
+   "end": 4.25,
+   "run_start": 0.18,
+   "run_end": 4.25,
+   "cut_start": 0.18,
+   "cut_end": 4.25,
+   "run_audio": [
+    0.0,
+    5.25
+   ],
+   "run_len": 4.07,
+   "conf": 0.5935804843902588,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Writing",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "rain"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.000000238418579
+    ]
+   },
+   "afn_yn_x": 3.8125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "home sounds",
+     "writing"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2368026226758957
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Thunder",
+   "label": "Thunderstorm",
+   "start": 1.0,
+   "end": 1.75,
+   "run_start": 1.0,
+   "run_end": 1.75,
+   "cut_start": 1.0,
+   "cut_end": 1.75,
+   "run_audio": [
+    0.0,
+    2.75
+   ],
+   "run_len": 0.75,
+   "conf": 0.5189781188964844,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Power tool",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5603407621383667
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "drill",
+     "power tool",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16234761476516724
+    ]
+   },
+   "afn_yn_null": -2.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 5.0,
+   "end": 5.75,
+   "run_start": 5.0,
+   "run_end": 5.75,
+   "cut_start": 5.0,
+   "cut_end": 5.75,
+   "run_audio": [
+    4.0,
+    6.75
+   ],
+   "run_len": 0.75,
+   "conf": 0.570570170879364,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Engine knocking",
+   "afn_v4_text": "water dripping",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "water dripping"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5527006983757019
+    ]
+   },
+   "afn_yn_x": -1.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "engine",
+     "engine knocking"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.33314573764801025
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 5.25,
+   "end": 5.75,
+   "run_start": 5.25,
+   "run_end": 5.75,
+   "cut_start": 5.25,
+   "cut_end": 5.75,
+   "run_audio": [
+    4.25,
+    6.75
+   ],
+   "run_len": 0.5,
+   "conf": 0.5399097204208374,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Baby cry, infant cry",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5579527616500854
+    ]
+   },
+   "afn_yn_x": -2.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "baby cry",
+     "crying",
+     "infant cry",
+     "sobbing"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.18045997619628906
+    ]
+   },
+   "afn_yn_null": -3.1875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 5.25,
+   "end": 5.75,
+   "run_start": 5.25,
+   "run_end": 5.75,
+   "cut_start": 5.25,
+   "cut_end": 5.75,
+   "run_audio": [
+    4.25,
+    6.75
+   ],
+   "run_len": 0.5,
+   "conf": 0.4287911355495453,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Chop",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5579527616500854
+    ]
+   },
+   "afn_yn_x": -2.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "chop",
+     "wood"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1631963700056076
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Rain on surface",
+   "start": 8.0,
+   "end": 10.75,
+   "run_start": 8.0,
+   "run_end": 10.75,
+   "cut_start": 8.0,
+   "cut_end": 10.75,
+   "run_audio": [
+    7.0,
+    11.75
+   ],
+   "run_len": 2.75,
+   "conf": 0.5946445465087891,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Gasp",
+   "afn_v4_text": "siren",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2149367332458496
+    ]
+   },
+   "afn_yn_x": 1.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.291684627532959
+    ]
+   },
+   "afn_yn_null": -0.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Rain",
+   "label": "Raindrop",
+   "start": 9.0,
+   "end": 10.75,
+   "run_start": 9.0,
+   "run_end": 10.75,
+   "cut_start": 9.0,
+   "cut_end": 10.75,
+   "run_audio": [
+    8.0,
+    11.75
+   ],
+   "run_len": 1.75,
+   "conf": 0.5571483969688416,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Typewriter",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.22691571712493896
+    ]
+   },
+   "afn_yn_x": -0.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "typewriter",
+     "typing"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.13211052119731903
+    ]
+   },
+   "afn_yn_null": -3.1875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Thunder",
+   "label": "Thunderstorm",
+   "start": 9.0,
+   "end": 10.5,
+   "run_start": 9.0,
+   "run_end": 10.5,
+   "cut_start": 9.0,
+   "cut_end": 10.5,
+   "run_audio": [
+    8.0,
+    11.5
+   ],
+   "run_len": 1.5,
+   "conf": 0.5199763178825378,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Groan",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.43139132857322693
+    ]
+   },
+   "afn_yn_x": 0.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "groan",
+     "human voice"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.127230703830719
+    ]
+   },
+   "afn_yn_null": -1.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 10.75,
+   "end": 12.75,
+   "run_start": 10.75,
+   "run_end": 12.75,
+   "cut_start": 10.75,
+   "cut_end": 12.75,
+   "run_audio": [
+    9.75,
+    13.75
+   ],
+   "run_len": 2.0,
+   "conf": 0.5876654982566833,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Cash register",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "siren, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6932876706123352
+    ]
+   },
+   "afn_yn_x": 4.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "cash register",
+     "mechanisms"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.14477771520614624
+    ]
+   },
+   "afn_yn_null": -3.0625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P1",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 13.0,
+   "end": 13.75,
+   "run_start": 13.0,
+   "run_end": 13.75,
+   "cut_start": 13.0,
+   "cut_end": 13.75,
+   "run_audio": [
+    12.0,
+    14.75
+   ],
+   "run_len": 0.75,
+   "conf": 0.3025028705596924,
+   "origin": "tagger",
+   "depictable": true,
+   "null_family": "Gears",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.31416618824005127
+    ]
+   },
+   "afn_yn_x": 3.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "gears",
+     "mechanisms"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17469283938407898
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 0.0,
+   "end": 8.319999999999999,
+   "run_start": 0.0,
+   "run_end": 8.319999999999999,
+   "cut_start": 0.0,
+   "cut_end": 8.319999999999999,
+   "run_audio": [
+    0.0,
+    9.319999999999999
+   ],
+   "run_len": 8.319999999999999,
+   "peak": 0.52099609375,
+   "depictable": true,
+   "null_family": "Sawing",
+   "afn_v4_text": "Rain",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28422388434410095
+    ]
+   },
+   "afn_yn_x": -3.875,
+   "afn_yn_x_top1": 2753,
+   "afn_v4_null": {
+    "names": [
+     "sawing",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2677484154701233
+    ]
+   },
+   "afn_yn_null": -4.5,
+   "afn_yn_null_top1": 2753
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 8.84,
+   "end": 14.959999999999999,
+   "run_start": 8.84,
+   "run_end": 14.959999999999999,
+   "cut_start": 8.84,
+   "cut_end": 14.959999999999999,
+   "run_audio": [
+    7.84,
+    15.0
+   ],
+   "run_len": 6.119999999999999,
+   "peak": 0.6953125,
+   "depictable": true,
+   "null_family": "Engine knocking",
+   "afn_v4_text": "siren, explosion, rain",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2200278341770172
+    ]
+   },
+   "afn_yn_x": -2.75,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "engine",
+     "engine knocking"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3642556667327881
+    ]
+   },
+   "afn_yn_null": -2.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 11.0,
+   "end": 13.68,
+   "run_start": 11.0,
+   "run_end": 13.68,
+   "cut_start": 11.0,
+   "cut_end": 13.68,
+   "run_audio": [
+    10.0,
+    14.68
+   ],
+   "run_len": 2.6799999999999997,
+   "peak": 0.7587890625,
+   "depictable": true,
+   "null_family": "Hair dryer",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "siren, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6932876706123352
+    ]
+   },
+   "afn_yn_x": 4.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "hair dryer",
+     "home sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.19618618488311768
+    ]
+   },
+   "afn_yn_null": -3.875,
+   "afn_yn_null_top1": 2753
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Ice cream truck, ice cream van",
+   "label": "Ice cream truck, ice cream van",
+   "start": 1.04,
+   "end": 1.84,
+   "run_start": 1.04,
+   "run_end": 1.84,
+   "cut_start": 0.56,
+   "cut_end": 1.56,
+   "run_audio": [
+    0.0,
+    2.56
+   ],
+   "run_len": 0.8,
+   "peak": 0.52392578125,
+   "depictable": true,
+   "null_family": "Cattle",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "ice cream truck",
+     "ice cream van",
+     "truck"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1430038958787918
+    ]
+   },
+   "afn_yn_x": -3.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "cowbell",
+     "farm animals",
+     "livestock",
+     "moo",
+     "working animals",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1712380051612854
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Ice cream truck, ice cream van",
+   "label": "Ice cream truck, ice cream van",
+   "start": 2.76,
+   "end": 9.959999999999999,
+   "run_start": 2.76,
+   "run_end": 9.959999999999999,
+   "cut_start": 2.76,
+   "cut_end": 9.959999999999999,
+   "run_audio": [
+    1.7599999999999998,
+    10.959999999999999
+   ],
+   "run_len": 7.199999999999999,
+   "peak": 0.78515625,
+   "depictable": true,
+   "null_family": "Stomach rumble",
+   "afn_v4_text": "Rain, Piano, Water",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "ice cream truck",
+     "ice cream van",
+     "truck"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.09749048948287964
+    ]
+   },
+   "afn_yn_x": -4.25,
+   "afn_yn_x_top1": 2753,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08556035161018372
+    ]
+   },
+   "afn_yn_null": -3.375,
+   "afn_yn_null_top1": 2753
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.88232421875,
+   "depictable": true,
+   "null_family": "Donkey, ass",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5579527616500854
+    ]
+   },
+   "afn_yn_x": 3.3125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "ass",
+     "donkey",
+     "farm animals",
+     "livestock",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.15614163875579834
+    ]
+   },
+   "afn_yn_null": -2.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Rain",
+   "label": "Rain",
+   "start": 12.64,
+   "end": 14.76,
+   "run_start": 12.64,
+   "run_end": 14.76,
+   "cut_start": 12.64,
+   "cut_end": 14.76,
+   "run_audio": [
+    11.64,
+    15.0
+   ],
+   "run_len": 2.119999999999999,
+   "peak": 0.5556640625,
+   "depictable": true,
+   "null_family": "Cooking",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": true,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rain",
+     "rain on surface",
+     "raindrop",
+     "water"
+    ],
+    "matched_word": [
+     "water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5579527616500854
+    ]
+   },
+   "afn_yn_x": -0.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "chopping",
+     "cooking",
+     "domestic sounds",
+     "frying",
+     "home sounds",
+     "sizzle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3394348919391632
+    ]
+   },
+   "afn_yn_null": -2.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Screaming",
+   "label": "Screaming",
+   "start": 10.0,
+   "end": 11.0,
+   "run_start": 10.0,
+   "run_end": 11.0,
+   "cut_start": 10.0,
+   "cut_end": 11.0,
+   "run_audio": [
+    9.0,
+    12.0
+   ],
+   "run_len": 1.0,
+   "peak": 0.71923828125,
+   "depictable": true,
+   "null_family": "Wolf-whistling",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "human voice",
+     "screaming"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.41369813680648804
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "whistling",
+     "wolf-whistling"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3338879346847534
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 10.0,
+   "end": 11.0,
+   "run_start": 10.0,
+   "run_end": 11.0,
+   "cut_start": 10.0,
+   "cut_end": 11.0,
+   "run_audio": [
+    9.0,
+    12.0
+   ],
+   "run_len": 1.0,
+   "peak": 0.7392578125,
+   "depictable": true,
+   "null_family": "Packing tape, duct tape",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3288998603820801
+    ]
+   },
+   "afn_yn_x": -1.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "domestic sounds",
+     "duct tape",
+     "home sounds",
+     "packing tape"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20696471631526947
+    ]
+   },
+   "afn_yn_null": -2.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Siren",
+   "label": "Siren",
+   "start": 10.0,
+   "end": 11.04,
+   "run_start": 10.0,
+   "run_end": 11.04,
+   "cut_start": 10.0,
+   "cut_end": 11.04,
+   "run_audio": [
+    9.0,
+    12.04
+   ],
+   "run_len": 1.0399999999999991,
+   "peak": 0.84765625,
+   "depictable": true,
+   "null_family": "Stomach rumble",
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "alarm",
+     "ambulance",
+     "civil defense siren",
+     "emergency vehicle",
+     "fire engine",
+     "fire truck",
+     "police car",
+     "siren"
+    ],
+    "matched_word": [
+     "siren, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.7197273969650269
+    ]
+   },
+   "afn_yn_x": 0.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28707027435302734
+    ]
+   },
+   "afn_yn_null": -2.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Thunder",
+   "label": "Thunder",
+   "start": 1.0,
+   "end": 1.96,
+   "run_start": 1.0,
+   "run_end": 1.96,
+   "cut_start": 1.04,
+   "cut_end": 2.04,
+   "run_audio": [
+    0.040000000000000036,
+    3.04
+   ],
+   "run_len": 0.96,
+   "peak": 0.65625,
+   "depictable": true,
+   "null_family": "Booing",
+   "afn_v4_text": "rain",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5603407621383667
+    ]
+   },
+   "afn_yn_x": 0.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "booing",
+     "human group actions"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24218687415122986
+    ]
+   },
+   "afn_yn_null": -2.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Thunder",
+   "label": "Thunder",
+   "start": 9.0,
+   "end": 9.959999999999999,
+   "run_start": 9.0,
+   "run_end": 9.959999999999999,
+   "cut_start": 9.2,
+   "cut_end": 10.2,
+   "run_audio": [
+    8.2,
+    11.2
+   ],
+   "run_len": 0.9599999999999991,
+   "peak": 0.61083984375,
+   "depictable": true,
+   "null_family": "Hammer",
+   "afn_v4_text": "siren",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4610326886177063
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "hammer",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28416284918785095
+    ]
+   },
+   "afn_yn_null": -2.125,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Thunder",
+   "label": "Thunder",
+   "start": 12.72,
+   "end": 14.44,
+   "run_start": 12.72,
+   "run_end": 14.44,
+   "cut_start": 12.72,
+   "cut_end": 14.44,
+   "run_audio": [
+    11.72,
+    15.0
+   ],
+   "run_len": 1.7199999999999989,
+   "peak": 0.716796875,
+   "depictable": true,
+   "null_family": "Wheeze",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "rumble",
+     "thunder",
+     "thunderstorm"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.40496474504470825
+    ]
+   },
+   "afn_yn_x": 1.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "breathing",
+     "wheeze"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17197680473327637
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Tick",
+   "label": "Tick",
+   "start": 9.2,
+   "end": 9.36,
+   "run_start": 9.2,
+   "run_end": 9.36,
+   "cut_start": 8.799999999999999,
+   "cut_end": 9.799999999999999,
+   "run_audio": [
+    7.799999999999999,
+    10.799999999999999
+   ],
+   "run_len": 0.16000000000000014,
+   "peak": 0.654296875,
+   "depictable": true,
+   "null_family": "Gasp",
+   "afn_v4_text": "siren",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "clicking",
+     "clock",
+     "tick"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2927755117416382
+    ]
+   },
+   "afn_yn_x": -1.75,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "breathing",
+     "gasp"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.291684627532959
+    ]
+   },
+   "afn_yn_null": -0.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "P2",
+   "family": "Water",
+   "label": "Water",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.72216796875,
+   "depictable": true,
+   "null_family": "Caterwaul",
+   "afn_v4_text": "water",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [
+     "water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0
+    ]
+   },
+   "afn_yn_x": 4.5625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "cat",
+     "caterwaul"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.20093517005443573
+    ]
+   },
+   "afn_yn_null": -1.75,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "PV",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 12.28,
+   "end": 13.0,
+   "run_start": 0.0,
+   "run_end": 18.0,
+   "cut_start": 0.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    0.0,
+    18.0
+   ],
+   "run_len": 18.0,
+   "peak": 0.83935546875,
+   "depictable": true,
+   "null_family": "Groan",
+   "run_from_cache": true,
+   "afn_v4_text": "crowd, engine, human group actions",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [
+     "crowd, engine, human group actions"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5662305951118469
+    ]
+   },
+   "afn_yn_x": 3.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "groan",
+     "human voice"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.07546212524175644
+    ]
+   },
+   "afn_yn_null": -0.25,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d016",
+   "pool": "PV",
+   "family": "Crowd",
+   "label": "Crowd",
+   "start": 15.96,
+   "end": 17.76,
+   "run_start": 0.0,
+   "run_end": 18.0,
+   "cut_start": 0.0,
+   "cut_end": 18.0,
+   "run_audio": [
+    0.0,
+    18.0
+   ],
+   "run_len": 18.0,
+   "peak": 0.83935546875,
+   "depictable": true,
+   "null_family": "Stomach rumble",
+   "run_from_cache": true,
+   "afn_v4_text": "crowd, engine, human group actions",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "applause",
+     "cheering",
+     "children shouting",
+     "crowd",
+     "human group actions"
+    ],
+    "matched_word": [
+     "crowd, engine, human group actions"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5662305951118469
+    ]
+   },
+   "afn_yn_x": 3.625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "stomach rumble"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1328061819076538
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d088",
+   "pool": "PV",
+   "family": "Siren",
+   "label": "Siren",
+   "start": 10.0,
+   "end": 10.8,
+   "run_start": 10.0,
+   "run_end": 11.04,
+   "cut_start": 10.0,
+   "cut_end": 11.04,
+   "run_audio": [
+    9.0,
+    12.04
+   ],
+   "run_len": 1.0399999999999991,
+   "peak": 0.84765625,
+   "depictable": true,
+   "null_family": "Fart",
+   "run_from_cache": true,
+   "afn_v4_text": "siren, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "alarm",
+     "ambulance",
+     "civil defense siren",
+     "emergency vehicle",
+     "fire engine",
+     "fire truck",
+     "police car",
+     "siren"
+    ],
+    "matched_word": [
+     "siren, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.7197273969650269
+    ]
+   },
+   "afn_yn_x": 0.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "digestive",
+     "fart"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.27406126260757446
+    ]
+   },
+   "afn_yn_null": -1.875,
+   "afn_yn_null_top1": 2152
+  }
+ ]
+}

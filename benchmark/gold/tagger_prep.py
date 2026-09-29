@@ -444,6 +444,15 @@ def main():
         for arm in a.arms:
             if arm not in R.ARMS:
                 raise SystemExit(f"unknown arm {arm}")
+            cfg = R.arm_cfg(arm)
+            need = [p for p in (cfg.get("LISTENER_CACHE"), cfg.get("LISTENER_VCACHE"), cfg.get("LISTENER_AFCACHE"))
+                    if cfg.get("LISTENER_RESCUE") or cfg.get("LISTENER_CONFIRMED_MIRROR") if p]
+            miss = [p for p in need if not Path(p).exists()]
+            if cfg.get("LISTENER_DASM_VOTE"):            # a missing DASM file silently turns the F8 vote off: refuse
+                miss += [str(Path(cfg["LISTENER_DASM_DIR"]) / f"{s}.npz") for s in stems
+                         if not (Path(cfg["LISTENER_DASM_DIR"]) / f"{s}.npz").exists()]
+            if miss:
+                raise SystemExit(f"{arm}: inputs missing, not run: {miss[:5]} ({len(miss)})")
         return (R.stage4 if a.step == "stage4" else R.stage5)(a.arms)
     if a.step == "gates":
         return gates(a.split, a.arms)
