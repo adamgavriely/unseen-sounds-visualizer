@@ -262,3 +262,18 @@ Ours (with gate), TEST 60 clips, 43 needed sounds: **R13-1 = B0r exactly** (16 h
 changed) → verdict **same**, nothing ships, as expected before the run. **B1 (current `use_shipped()`, self-veto) is
 worse than B0 on TEST too:** 15 hits, 29 wrong, cost 2.83; B0 − B1 = −0.20 [−0.47, +0.00], one-sided p 0.043 (DEV:
 −0.33 [−0.69, −0.04]). Blind (no gate): same picture (R13-1 = B0r; B1 +0.17). Full table: `benchmark/gold/r13_test_final.md`.
+
+## Round 14 (2026-09-29, Adam: "how can we let more sounds that were heard but dropped? we have to do it")
+Written BEFORE any round-14 number. TEST is spent; DEV is development; **confirmation = the 100 new annotated clips**
+(Adam's annotator job, all sounds tagged) under the same pipeline, scorer and B0 baseline.
+Base arms: LR-V4 + R13-1 and LR-V12 + R13-1 (round 13, amendment A). Precision filters on the RESCUED spans only:
+- **F1 new-type-once:** rescue only a family that has no B0 picture in the clip, and at most one rescued picture per family
+  per clip (the rescued run with the highest FlexSED peak).
+- **F4 local winner:** at the rescued run's peak frame, its family must be the top-scoring depictable FlexSED query.
+- **F3 scene fit:** the gate VLM (Qwen3.8-27B, frames of the span) is asked "Could the sound of {X} plausibly be heard in
+  this scene? Answer yes or no."; rescue only on yes (same voting as the gate's other asks).
+Arms: each base × {F1, F4, F1+F4, F1+F4+F3}. Report as always (heard, hits, wrong v/c/p, cost β=2, Δ vs B0r [CI], halves
+A/B) plus **cost at β = 1 and the break-even β** (where the arm's cost equals B0r's).
+**Two claims, kept apart:** (1) default setting: an arm ships as default only if it passes the DEV selection rule AND
+then wins on the new clips at β = 2 (prereg TEST rule). (2) "more sounds" viewer setting: an arm is offered as an option
+if its break-even β is ≥ 1.0 on DEV and on the new clips; reported with the full cost-vs-β curve.
