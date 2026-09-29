@@ -23,12 +23,12 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 ## Waiting on Adam
 - [ ] OK to re-download the official DASM weights (`CPF2/detect_any_sound`, 0.64 GB; code copy is local) — the best arm's F8 vote needs DASM on new clips; I deleted `~/Transformer4SED` on 28 Sept.
-- [ ] Revert `use_shipped()` to the PANNs veto 0.05 (the scored config)? TEST now agrees: B1 2.83 vs B0 2.63 (−0.20 [−0.47, 0.00], p 0.043). On DEV the BEATs self-veto is worse: hits 13 vs 14, wrong 30 vs 24, cost 3.10 vs 2.78 (B0 - B1 = -0.33 [-0.69, -0.04]). Self-veto lets through 8 FlexSED-only pictures (5 Insect, Coin, Bicycle, Snoring). Recommend yes.
 - [ ] Close the detector search? None of the 8 frozen candidates passes DEV. If not closed, next ideas below need TEST-once or new videos.
 - [ ] Look at the picture wording contact sheet `docs/picture_sense_test/index.html` (confirm/override the blind by-eye verdicts); decide: drop the generic method or run a new test with its fixes.
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-30 `use_shipped()` reverted to the PANNs veto 0.05 (scored config); BEATs self-veto worse on DEV and TEST. Fable supports.
 - 2026-09-30 Round 14 amendments C, D, I, J, K (+K2 with the 27 missing listener answers, 58e9420) and the BEATs weak-band P3 screen: none beats TO1+F7F8 on DEV. `docs/prereg_round13_detector_push.md`
 - 2026-09-29 Round 13 (12-h detector push): only R13-1 twin-max passed DEV (+1 hit); TEST = same (no picture changed), nothing ships. Audio-LLM (Qwen3-Omni) rescue: +5..8 real dropped sounds but ~3 wrong per hit under yes/no, MC, paired-cut, localisation, open-list questions; worse on both DEV halves. B1 self-veto worse than PANNs on TEST too (2.83 vs 2.63, p 0.043). `docs/prereg_round13_detector_push.md`
 - 2026-09-28 Cluster: PE-A-Frame old revision deleted (7.7 GB; 37 GB free); `~/Transformer4SED` deleted.
