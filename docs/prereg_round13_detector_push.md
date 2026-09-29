@@ -292,3 +292,9 @@ round-14 number).** Target on DEV: hits >= B0 + 4 with wrong <= 33 (cost below B
 - **F8 third vote:** a rescued run is kept only if DASM (round 6 / devcand D1 DEV scores) gives the same family >= its D1
   bar anywhere in the run ± 0.5 s.
 Arms: best round-14 arm (after F1–F6) + F7, + F8, + F7 + F8.
+**Round 14 amendment C — second listener (written before any output of it).** Audio Flamingo Next
+(`nvidia/audio-flamingo-next-hf`, NVIDIA OneWay Noncommercial licence accepted by Adam 2026-09-29; official weights).
+Scored on exactly the amendment-A candidates (DEV and gold-free TEST): V4 open inventory (same prompt, same matching
+rule) and the yes/no question (score = logit yes − logit no). **Rule AF:** V4 match; **Rule AGREE:** the Qwen3-Omni rule
+of the arm (V4 or V12) AND AF-Next V4 match. Arms: best round-14 arm with its listener rule replaced by AGREE, and AGREE
+alone on the LR-V4+R13-1 and LR-V12+R13-1 bases (+F1+F4). Same report as round 14.
