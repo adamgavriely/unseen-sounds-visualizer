@@ -386,6 +386,7 @@ LISTENER_CACHE = None         # path of the listener cache (benchmark/gold/dev_l
 LISTENER_LO = 0.4
 LISTENER_TH = 0.0
 LISTENER_RULE = None          # amendment A: "V1" | "V2" | "V3" | "V4" | "V12" -- (a) and (b) use that rule's accept flag from
+LISTENER_AFCACHE = None       # Round 14 amendment C: second-listener cache (dev_listener_afn.json) for rules AGREE_V4 / AGREE_V12
 LISTENER_VCACHE = None        # this variants cache (benchmark/gold/listener_variants.py) instead of score > LISTENER_TH
 LISTENER_NEW_TYPE_ONCE = False  # Round 14 F1: rescue only families with no B0 picture, one rescued span per family per clip
 LISTENER_LOCAL_WINNER = False   # Round 14 F4: the rescued family must be the top depictable FlexSED query at its peak frame
@@ -398,6 +399,16 @@ LISTENER_DASM_VOTE = False    # Round 14 amendment B, F8: a rescued run needs DA
 LISTENER_DASM_DIR = None      #   DASM frame scores per clip (<dir>/<clip>.npz: fw [T, Q], times, labels)
 LISTENER_DASM_BAR = 0.575     #   round 6 / devcand D1 span bar (benchmark/detector_round6.json bars.g)
 LISTENER_DASM_PAD = 0.5
+FLEXSED_EXTRA = False         # Round 14 amendment D: the group-a extra FlexSED queries (folded labels) as more columns
+FLEXSED_EXTRA_DIR = None      #   <dir>/<clip>.npz (fw [Q, frames], labels, fps); DEV data/work/flexsed_extra_dev
+FLEXSED_EXTRA_QUERIES = None  #   benchmark/gold/flexsed_extra_queries.json (bucket "a_folded" is used)
+LISTENER_ONCE = False         # Round 14 amendment E (F1b): one rescued span per family per clip, the earliest
+PANNS_VETO_SKIP_ABOVE = None  # Round 14 amendment G5: FlexSED-only spans with peak >= this skip the PANNs clip veto (0.9)
+FIX_FAM = False               # Round 14 amendment F: F4 compares families (sibling/child queries = own family)
+FIX_EARLY = False             # Round 14 amendment F: F1 keeps the earliest accepted run, not the strongest
+FIX_CTRL = False              # Round 14 amendment F: V12 = V1 alone when V2 has no control window
+FIX_GATE = False              # Round 14 amendment F: a gate "visible" verdict naming no object counts as not visible
+LISTENER_ARBITER = False      # Round 14 amendment F: Qwen V4 & AF V4 but V12 no -> the VLM arbiter decides in stage 5
 LISTENER_SCENE_FIT = False      # Round 14 F3: the gate VLM must say the rescued sound could plausibly be heard in the scene
 LISTENER_BEATS_TH = None      # R13-3 (c): also a short BEATs run (peak 0.175-0.35, not covered) at the display bar if score > this
 LABEL_FILTER = "lists"      # "lists" (v1-v4ab hand lists) | "branch" (speech, music, environment branch only)

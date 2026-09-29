@@ -234,6 +234,8 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
         from src.stage4_audio_event_detection import flexsed_infer as FX
         try:
             ffw, ftimes, flabels = FX.infer_flexsed(Path(wav_path), device)
+            if getattr(config, "FLEXSED_EXTRA", False):
+                ffw, ftimes, flabels = add_flexsed_extra(ffw, ftimes, flabels, Path(wav_path).parent.name)
             events, flex_ids, ffw = fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur,
                                                  backend=backend, panns=lambda: _infer(Path(wav_path), device),
                                                  listener=_pipeline_listener(wav_path),
@@ -327,6 +329,34 @@ def _pipeline_dasm(wav_path):
         return None
     z = np.load(f)
     return z["fw"].astype(np.float32), z["times"].astype(np.float64), [str(x) for x in z["labels"]]
+
+
+def add_flexsed_extra(ffw, ftimes, flabels, clip: str):
+    """Round 14 amendment D (FLEXSED_EXTRA): append the group-a ("a_folded") extra FlexSED queries of
+    config.FLEXSED_EXTRA_QUERIES as more columns, read from config.FLEXSED_EXTRA_DIR/<clip>.npz (fw [Q, frames], labels,
+    fps). Label = the query's AudioSet label; every later step treats them like the 215. The frame rate must equal the
+    main cache's; a frame-count difference of a few frames is trimmed to the shorter one. No file = unchanged."""
+    d = getattr(config, "FLEXSED_EXTRA_DIR", None)
+    qf = getattr(config, "FLEXSED_EXTRA_QUERIES", None)
+    f = Path(d) / f"{clip}.npz" if d else None
+    if f is None or not f.exists() or not qf:
+        print(f"       [stage4] FlexSED extra queries: no cache for {clip}; main queries only", flush=True)
+        return ffw, ftimes, flabels
+    want = [q["query"] for q in json.loads(Path(qf).read_text(encoding="utf-8"))["queries"]
+            if q.get("bucket") == "a_folded"]
+    z = np.load(f)
+    efw = z["fw"].astype(np.float32).T                     # [frames, Q]
+    elab = [str(x) for x in z["labels"]]
+    fps = float(z["fps"])
+    ft = np.asarray(ftimes, float)
+    main_fps = 1.0 / float(ft[1] - ft[0]) if len(ft) > 1 else fps
+    assert abs(fps - main_fps) < 1e-3, (clip, fps, main_fps)
+    cols = [elab.index(q) for q in want if q in elab and q not in flabels]
+    n = min(len(ft), efw.shape[0])
+    if abs(len(ft) - efw.shape[0]) > 2:
+        print(f"       [stage4] FlexSED extra: frame counts differ ({len(ft)} vs {efw.shape[0]}) for {clip}", flush=True)
+    out = np.concatenate([np.asarray(ffw)[:n], efw[:n][:, cols]], axis=1)
+    return out, ft[:n], list(flabels) + [elab[i] for i in cols]
 
 
 def _impulse_cols(flabels) -> list:
@@ -618,8 +648,14 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                         elif _accepted(it, lth):
                             keep_b.add(id(e))
                             LISTENER_STATS["b_kept"].append([e.label, round(e.start, 2), round(e.end, 2), it.get("score")])
+                        elif _arbiter_candidate(it):
+                            keep_b.add(id(e)); e.arbiter = True
+                            LISTENER_STATS.setdefault("arbiter", []).append([e.label, round(e.start, 2), round(e.end, 2), "b"])
+            # Round 14 amendment G5 (PANNS_VETO_SKIP_ABOVE): a FlexSED span this strong is not put to the PANNs clip veto
+            skip = getattr(config, "PANNS_VETO_SKIP_ABOVE", None)
             events = [e for e in events
-                      if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2 or id(e) in keep_b]
+                      if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2 or id(e) in keep_b
+                      or (skip is not None and e.confidence >= float(skip))]
             print(f"       [stage4] PANNs veto (tau2 {veto2}) on FlexSED-only spans: "
                   f"dropped {before2 - len(events)} span(s)", flush=True)
         except Exception as e2:
@@ -693,6 +729,15 @@ def _runs(col, ts, bar, gap_s):
     return out, dt
 
 
+def _arbiter_candidate(it) -> bool:
+    """Round 14 amendment F, LISTENER_ARBITER: a band candidate the rule rejects but Qwen V4 AND Audio Flamingo V4 accept
+    while V12 says no; it is kept as rescued and marked `arbiter`, and stage 5 asks the VLM arbiter question about it."""
+    if not getattr(config, "LISTENER_ARBITER", False):
+        return False
+    acc = it.get("accept") or {}
+    return bool(acc.get("AGREE_V4", False)) and not bool(acc.get("V12", False))
+
+
 def _accepted(it, lth: float) -> bool:
     """R13-3 decision for one cached item: the named variant's accept flag (config.LISTENER_RULE, amendment A) or, with no
     rule, the yes/no score > LISTENER_TH"""
@@ -709,6 +754,15 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
     from src.labels import canonical
     d = json.loads(Path(path).read_text(encoding="utf-8"))
     items = [x for x in (d["items"] if isinstance(d, dict) else d) if x.get("clip") == clip and x.get("pool") in ("P2", "PV")]
+    # Round 14 amendment C: the second listener (Audio Flamingo Next, LISTENER_AFCACHE, same keys) -- rule AGREE_V4 =
+    # Qwen V4 AND AF V4, AGREE_V12 = Qwen V12 AND AF V4; an item AF did not score is not accepted by AGREE
+    afp = getattr(config, "LISTENER_AFCACHE", None)
+    af = {}
+    if afp:
+        da = json.loads(Path(afp).read_text(encoding="utf-8"))
+        for x in (da["items"] if isinstance(da, dict) else da):
+            if x.get("clip") == clip:
+                af[(x.get("pool"), x["family"], x.get("label"), round(x["start"], 2), round(x["end"], 2))] = x
 
     def look(label, start, end, contain=False):
         fam = canonical(label)
@@ -718,7 +772,25 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
         if not c:
             return None
         same = [x for x in c if x.get("label") == label]
-        return (same or c)[0]
+        it = (same or c)[0]
+        if getattr(config, "FIX_CTRL", False) and it.get("v2_x_ctrl") is None and "V1" in (it.get("accept") or {}):
+            # amendment F, FIX-CTRL: no control window (the family is >= 0.2 across the whole clip) -> the paired-cut leg V2
+            # cannot be evaluated and counts as neutral: V12 = V1 alone
+            it = {**it, "accept": {**it["accept"], "V12": bool(it["accept"]["V1"])}}
+        if afp:
+            a = af.get((it["pool"], it["family"], it.get("label"), round(it["start"], 2), round(it["end"], 2)))
+            av4 = bool(((a or {}).get("accept") or {}).get("V4", False))
+            acc = dict(it.get("accept") or {})
+            acc["AGREE_V4"] = bool(acc.get("V4", False)) and av4
+            acc["AGREE_V12"] = bool(acc.get("V12", False)) and av4
+            # amendment E: TIER = Qwen V4, and below a FlexSED run peak of 0.6 also AF V4; QV4_AFYN = Qwen V4 AND AF yes/no > 0
+            pk = float(it.get("peak", 1.0) if it.get("peak") is not None else 1.0)
+            acc["TIER"] = bool(acc.get("V4", False)) and (pk >= 0.6 or av4)
+            ayn = (a or {}).get("afn_yn_x")
+            acc["QV4_AFYN"] = bool(acc.get("V4", False)) and ayn is not None and float(ayn) > 0
+            acc["AF_missing"] = a is None
+            it = {**it, "accept": acc}
+        return it
     return look
 
 
@@ -744,6 +816,17 @@ def listener_from_cache(path, clip: str, tol: float = 0.02):
     return look
 
 
+def _family_match(a: str, b: str) -> bool:
+    """amendment F / H, FIX-FAM: two query labels are one family if their canonical families are equal or one is an
+    ontology ancestor or descendant of the other (the pipeline's canonical family / score_per_sound.same_family; siblings
+    such as Dog and Cat are NOT one family; amendment H corrected an earlier sibling reading)"""
+    from src.labels import canonical, is_descendant
+    if a == b or canonical(a) == canonical(b) or is_descendant(a, b) or is_descendant(b, a):
+        return True
+    ca, cb = canonical(a), canonical(b)
+    return is_descendant(ca, cb) or is_descendant(cb, ca) or is_descendant(a, cb) or is_descendant(b, ca)
+
+
 def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
     """Round 14 precision filters on RESCUED spans only (docs/prereg_round13_detector_push.md, Round 14 + addendum), run
     after onset refinement so the B0 onsets are final. Order: F4, F6, F5, F8, then F1 (F1 picks among the survivors).
@@ -762,9 +845,10 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
     f5 = bool(getattr(config, "LISTENER_SHADOW", False))
     f6 = bool(getattr(config, "LISTENER_EDGE", False))
     f8 = bool(getattr(config, "LISTENER_DASM_VOTE", False))
-    dropped = {"F4": [], "F6": [], "F5": [], "F8": [], "F1": []}
+    once = bool(getattr(config, "LISTENER_ONCE", False))
+    dropped = {"F4": [], "F6": [], "F5": [], "F8": [], "F1": [], "ONCE": []}
     resc = [e for e in events if getattr(e, "rescued", False)]
-    if not (f4 or f1 or f5 or f6 or f8) or not resc or ffw is None:
+    if not (f4 or f1 or f5 or f6 or f8 or once) or not resc or ffw is None:
         return events, dropped
     fw_, ft_ = np.asarray(ffw), np.asarray(ftimes)
     dt = float(ft_[1] - ft_[0]) if len(ft_) > 1 else 0.04
@@ -799,7 +883,8 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
             if k is None or not dep.any():
                 continue
             top = int(np.argmax(np.where(dep, fw_[k], -1.0)))
-            if canonical(flabels[top]) != canonical(e.label):
+            if not (_family_match(flabels[top], e.label) if getattr(config, "FIX_FAM", False)
+                    else canonical(flabels[top]) == canonical(e.label)):
                 drop.add(id(e)); dropped["F4"].append(sig(e) + [flabels[top]])
     if f6:
         edge = float(getattr(config, "LISTENER_EDGE_S", 0.3))
@@ -846,12 +931,24 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
                 drop.add(id(e)); dropped["F1"].append(sig(e) + ["B0 has the family"])
                 continue
             pk = P[id(e)][1]
+            if getattr(config, "FIX_EARLY", False):             # amendment F, FIX-EARLY: the earliest, not the strongest
+                pk = -float(e.start)
             if fam not in best or pk > best[fam][0] or (pk == best[fam][0] and e.start < best[fam][1].start):
                 if fam in best:
                     o = best[fam][1]; drop.add(id(o)); dropped["F1"].append(sig(o) + ["not the strongest"])
                 best[fam] = (pk, e)
             else:
                 drop.add(id(e)); dropped["F1"].append(sig(e) + ["not the strongest"])
+    if once:
+        # amendment E, ONCE (F1b): at most one rescued span per family per clip, the EARLIEST (the first onset is the one
+        # a viewer needs); no "already shown" condition
+        first = {}
+        for e in sorted([e for e in resc if id(e) not in drop], key=lambda e: (e.start, e.end)):
+            fam = canonical(e.label)
+            if fam in first:
+                drop.add(id(e)); dropped["ONCE"].append(sig(e) + ["not the first"])
+            else:
+                first[fam] = e
     return [e for e in events if id(e) not in drop], dropped
 
 
@@ -884,9 +981,13 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 LISTENER_STATS["a_missing"] += 1
                 LISTENER_STATS["a_missing_list"].append([lab, round(a, 2), round(b, 2), round(pk, 3)])
                 continue
-            if _accepted(it, lth):
+            arb = False
+            if not _accepted(it, lth) and _arbiter_candidate(it):
+                arb = True
+                LISTENER_STATS.setdefault("arbiter", []).append([lab, round(a, 2), round(b, 2), "a"])
+            if arb or _accepted(it, lth):
                 s, e_ = (a, b) if b - a >= LISTEN_SHORT else (float(it["cut_start"]), float(it["cut_end"]))
-                add.append(AudioEvent(lab, s, e_, pk, rescued=True))
+                add.append(AudioEvent(lab, s, e_, pk, rescued=True, arbiter=arb))
                 LISTENER_STATS["a_added"].append([lab, round(s, 2), round(e_, 2), round(pk, 3), it.get("score")])
     events = events + add
     flex_ids |= {id(e) for e in add}

@@ -77,6 +77,7 @@ class AudioEvent:
     breaks: List[Tuple[float, float]] = field(default_factory=list)
     # Round 14: raised by the listener rescue (R13-3), so the precision filters can act on these spans only
     rescued: bool = False
+    arbiter: bool = False    # Round 14 amendment F: rescued only pending the stage-5 VLM arbiter question
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)
@@ -108,6 +109,7 @@ class AugmentationSpec:
     source: str = ""                 # PICTURE_V3: the specific sound to DRAW (labels.choose_source)
     breaks: List[Tuple[float, float]] = field(default_factory=list)  # R13-6: see AudioEvent.breaks
     rescued: bool = False            # Round 14: every burst came from the listener rescue (see AudioEvent.rescued)
+    arbiter: bool = False            # Round 14 amendment F: every burst awaits the VLM arbiter (see AudioEvent.arbiter)
 
     def to_dict(self) -> Dict[str, Any]:
         return asdict(self)

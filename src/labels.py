@@ -382,7 +382,8 @@ def merge_by_label(events: List[AudioEvent], gap: float = 1.0, raw_labels: dict 
         best = max(bursts, key=lambda b: b[2])
         out.append(AudioEvent(label, best[0], best[1], best[2],
                               spans=[(b[0], b[1]) for b in bursts], breaks=sorted(set(brk) | set(extra)),
-                              rescued=all(bool(getattr(f, "rescued", False)) for f in firings)))
+                              rescued=all(bool(getattr(f, "rescued", False)) for f in firings),
+                              arbiter=any(bool(getattr(f, "arbiter", False)) for f in firings)))
     return sorted(out, key=lambda e: -e.confidence)
 
 
@@ -590,7 +591,8 @@ def consolidate_families(events: List[AudioEvent],
     events = [e for e in events if e.confidence >= threshold]
     relabelled = [AudioEvent(canonical(e.label), e.start, e.end, e.confidence,
                              breaks=list(getattr(e, "breaks", None) or []),
-                             rescued=bool(getattr(e, "rescued", False))) for e in events]
+                             rescued=bool(getattr(e, "rescued", False)),
+                             arbiter=bool(getattr(e, "arbiter", False))) for e in events]
     import config as _cfg
     rawlab = ({id(r): e.label for r, e in zip(relabelled, events)}
               if getattr(_cfg, "RETRIGGER_RAW", False) else None)

@@ -1314,6 +1314,31 @@ def _fits_the_place(label: str, place: str, frames, mdl, proc):
 
 
 SCENE_FIT_PROMPT = "Could the sound of {label} plausibly be heard in this scene? Answer yes or no."
+ARBITER_PROMPT = "Is a {family} sound plausible in this scene? Answer plausible or implausible, then name the visual cue."
+_NO_CUE = {"none", "no", "nothing", "n/a", "na", "unknown", "not", "applicable", "there", "is", "are", "visual", "cue", "the",
+           "a", "an", "of", "in", "this", "scene", "plausible", "implausible", "sound", "and", "then", "name", "named", "any",
+           "clear", "specific", "obvious", "visible", "i", "it", "can't", "cannot", "see", "seen"}
+
+
+def _arbiter(spec, video_path, mdl, proc, frames_per_sound: int = 4) -> bool:
+    """Round 14 amendment F: ARBITER_PROMPT on 6 frames from 1 s before to 1 s after the span; accept iff the answer says
+    plausible (not implausible) AND names a visual cue (a content word beyond the answer words; "none"/"nothing" = no cue)"""
+    import re
+    from src.stage2_video_understanding import _sample_frames_at
+    n = max(frames_per_sound, 6)
+    lo, hi = spec.start - 1.0, spec.end + 1.0
+    win = _sample_frames_at(Path(video_path), [lo + (hi - lo) * t / (n - 1) for t in range(n)])
+    if not win:
+        return False
+    fam = spec.event_label.split(",")[0].split("(")[0].strip().lower()
+    ans = _ask(mdl, proc, ARBITER_PROMPT.format(family=fam), images=win, max_new=40).strip().lower()
+    if "implausible" in ans or "plausible" not in ans:
+        return False
+    rest = ans.split("plausible", 1)[1]
+    if re.search(r"\b(no|none|nothing)\b( visual)?( cue)?", rest) and len(re.findall(r"[a-z]+", rest)) <= 6:
+        return False
+    words = [w for w in re.findall(r"[a-z']+", rest) if w not in _NO_CUE]
+    return len(words) > 0
 
 
 def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
@@ -1471,11 +1496,16 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 if id(spec) not in spec_frames:
                     spec_frames[id(spec)] = win
                 seen, named = _sound_is_visible(spec.event_label, win, mdl, proc, sim_device)
+                # Round 14 amendment F, FIX-GATE: a "visible" verdict that names no object on screen is not a sighting
+                # (the ambulance Vehicle: voted seen, named nothing) -> not visible
+                fixed = False
+                if seen and getattr(config, "FIX_GATE", False) and (not named or str(named).strip().lower() == "nothing"):
+                    seen, fixed = False, True
                 # raw votes per sound per stretch, dumped by the pipeline to gate_votes.json so
                 # that the silence rule (majority / unanimous) can be re-decided on CPU later
                 VOTE_LOG.append({"label": spec.event_label, "start": spec.start, "end": spec.end,
                                  "confidence": spec.confidence, "stretch": [a, b], "seen": bool(seen),
-                                 **{k: v for k, v in LAST_VOTES.items()}})
+                                 **{k: v for k, v in LAST_VOTES.items()}, **({"fix_gate": True} if fixed else {})})
                 if seen:
                     named_any = named
                 else:
@@ -1535,6 +1565,21 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     # 1a''. Round 14, F3 (LISTENER_SCENE_FIT): a sound the listener rescued is kept only if the VLM, on the frames of each
     # stretch of it (the gate's own stretches and frames), says it could plausibly be heard in this scene; the stretch
     # answers are combined by majority, as the gate combines its votes. Only rescued sounds are asked.
+    if getattr(config, "LISTENER_ARBITER", False):
+        # Round 14 amendment F: a rescued sound kept only for the arbiter (Qwen V4 AND AF V4, but V12 no) is shown only if the
+        # VLM, on frames of the span, answers "plausible" AND names a visual cue
+        for spec in [s for s in specs if s.augment and getattr(s, "arbiter", False)]:
+            ok = _arbiter(spec, video_path, mdl, proc, frames_per_sound)
+            print("       [stage5] arbiter: " + spec.event_label + " -> " + ("accept" if ok else "reject"), flush=True)
+            if not ok:
+                spec.augment = False
+                spec.subject = ""
+                spec.image_prompt = ""
+                spec.reason = "rescued for the arbiter, and the VLM found it implausible or named no visual cue - dropped"
+        active = [s for s in specs if s.augment]
+        if not active:
+            return
+
     if getattr(config, "LISTENER_SCENE_FIT", False):
         for spec in [s for s in specs if s.augment and getattr(s, "rescued", False)]:
             if _scene_fit(spec, video_path, mdl, proc, frames_per_sound) is False:

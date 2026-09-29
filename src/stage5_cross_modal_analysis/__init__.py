@@ -107,6 +107,7 @@ def plan_augmentations(scene: SceneContext,
             source=getattr(ev, "source", "") or "",
             breaks=list(getattr(ev, "breaks", None) or []),
             rescued=bool(getattr(ev, "rescued", False)),
+            arbiter=bool(getattr(ev, "arbiter", False)),
             image_prompt=(f"A clear, simple photograph of: {subject}" if augment else ""),
         ))
     # Deduplication now happens in reason.py, on the depictions the VLM chose,

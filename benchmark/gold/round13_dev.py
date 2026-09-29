@@ -31,7 +31,7 @@ from benchmark.gold import score_per_sound as S
 from src.labels import canonical
 from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_events, attach_breaks, fuse_flexsed,
                                               listener_from_cache, listener_from_vcache, filter_rescued,
-                                              listener_p1_lookup)
+                                              listener_p1_lookup, add_flexsed_extra)
 from src.types import AudioEvent
 
 WORK = DCC.WORK
@@ -50,11 +50,16 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "TWIN_MAX": False, "MIRROR_VETO": None, "MIRROR_OWN_MAX": 0.4, "IMPULSE_MIN_SPAN": None,
         "RETRIGGER": None, "RETRIGGER_RAW": False,
         "LISTENER_RESCUE": False, "LISTENER_CACHE": None, "LISTENER_LO": 0.4, "LISTENER_TH": 0.0, "LISTENER_BEATS_TH": None,
-        "LISTENER_RULE": None, "LISTENER_VCACHE": None,
+        "LISTENER_RULE": None, "LISTENER_VCACHE": None, "LISTENER_AFCACHE": None,
         "LISTENER_NEW_TYPE_ONCE": False, "LISTENER_LOCAL_WINNER": False, "LISTENER_SCENE_FIT": False,
         "LISTENER_SHADOW": False, "LISTENER_SHADOW_S": 0.2, "LISTENER_EDGE": False, "LISTENER_EDGE_S": 0.3,
         "LISTENER_CONFIRMED_MIRROR": False, "LISTENER_DASM_VOTE": False, "LISTENER_DASM_DIR": None,
         "LISTENER_DASM_BAR": 0.575, "LISTENER_DASM_PAD": 0.5,
+        "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority",
+        "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None,
+        "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
+        "LISTENER_ARBITER": False,
+        "FLEXSED_EXTRA": False, "FLEXSED_EXTRA_DIR": None, "FLEXSED_EXTRA_QUERIES": None,
         "LABEL_FILTER": "depictable"}
 RT = (1.5, 0.4, 0.175)
 R1_ = {"TWIN_MAX": True}
@@ -101,10 +106,65 @@ for _a in list(R14):                                  # addendum: F5 / F6 on the
 R14b = [a for a in ARMS if a.startswith(("LR-V4+1+", "LR-V12+1+"))]
 _F7 = {"MIRROR_VETO": 0.7, "LISTENER_CONFIRMED_MIRROR": True, "LISTENER_CACHE": str(LISTENER)}
 _F8 = {"LISTENER_DASM_VOTE": True, "LISTENER_DASM_DIR": str(DCC.DASM_DIR), "LISTENER_DASM_BAR": DCC.F["DASM_G"]}
+_XQ = {"FLEXSED_EXTRA": True, "FLEXSED_EXTRA_DIR": str(WORK / "flexsed_extra_dev"),
+       "FLEXSED_EXTRA_QUERIES": str(_ROOT / "benchmark" / "gold" / "flexsed_extra_queries.json")}
 for _a in list(R14b):                                 # amendment B on the best arm after F1-F6 (picked in the job)
     for _fn, _f in (("F7", _F7), ("F8", _F8), ("F7F8", {**_F7, **_F8})):
         ARMS[f"{_a}+{_fn}"] = {**ARMS[_a], **_f}
-STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT")      # arm flags read after stage 4
+# amendment C: the AGREE rules (Qwen rule AND Audio Flamingo Next V4); "<arm>@AG4" = that arm with its rule -> AGREE_V4
+AFCACHE = _ROOT / "benchmark" / "gold" / "dev_listener_afn.json"
+for _a in [a for a in ARMS if a.startswith(("LR-V4+1", "LR-V12+1"))]:
+    ARMS[f"{_a}@AG4"] = {**ARMS[_a], "LISTENER_RULE": "AGREE_V4", "LISTENER_AFCACHE": str(AFCACHE)}
+ARMS["LR-AG4+1"] = dict(ARMS["LR-V4+1@AG4"])
+ARMS["LR-AG12+1"] = {**ARMS["LR-V12+1"], "LISTENER_RULE": "AGREE_V12", "LISTENER_AFCACHE": str(AFCACHE)}
+ARMS["LR-AG4+1+F1F4"] = dict(ARMS["LR-V4+1+F1F4@AG4"])
+ARMS["LR-AG12+1+F1F4"] = {**ARMS["LR-V12+1+F1F4"], "LISTENER_RULE": "AGREE_V12", "LISTENER_AFCACHE": str(AFCACHE)}
+# amendment D: the extra FlexSED queries alone, + R13-1, and on any round-14 listener arm (run on the best one)
+ARMS["XQ"] = dict(_XQ)
+ARMS["XQ+1"] = {**_XQ, **R1_}
+ARMS["LR-AG4+1+XQ"] = {**ARMS["LR-AG4+1"], **_XQ}
+# amendment E: confidence-tiered verification (TIER) and once per family (earliest)
+_TIER = {"LISTENER_RESCUE": True, "LISTENER_RULE": "TIER", "LISTENER_VCACHE": str(VCACHE),
+         "LISTENER_AFCACHE": str(AFCACHE), "LISTENER_LO": 0.5}
+ARMS["TIER"] = dict(_TIER)
+ARMS["TIER+ONCE"] = {**_TIER, "LISTENER_ONCE": True}
+ARMS["TIER+ONCE+1"] = {**_TIER, "LISTENER_ONCE": True, **R1_}
+ARMS["TIER+ONCE+1+XQ"] = {**_TIER, "LISTENER_ONCE": True, **R1_, **_XQ}
+ARMS["QV4AFYN+ONCE+1"] = {**_TIER, "LISTENER_RULE": "QV4_AFYN", "LISTENER_ONCE": True, **R1_}
+# amendment F: mechanism fixes and the VLM arbiter
+ARMS["B0r+FIXGATE"] = {"FIX_GATE": True}
+_A0 = {**ARMS["LR-V12+1+F1F4F3+F7F8"], "FIX_FAM": True, "FIX_EARLY": True, "FIX_CTRL": True}
+ARMS["A0"] = dict(_A0)
+ARMS["A0+FIXGATE"] = {**_A0, "FIX_GATE": True}
+ARMS["A1"] = {**_A0, "FIX_GATE": True, "LISTENER_ARBITER": True, "LISTENER_AFCACHE": str(AFCACHE)}
+# amendment H: TIER + ONCE + R13-1 with the confirmed mirror veto (F7) and the DASM vote (F8), and with the fixes
+_TO1 = dict(ARMS["TIER+ONCE+1"])
+ARMS["TO1+F7"] = {**_TO1, **_F7}
+ARMS["TO1+F7F8"] = {**_TO1, **_F7, **_F8}
+_FX = {"FIX_FAM": True, "FIX_CTRL": True, "FIX_GATE": True}
+ARMS["TO1+F7+FIX"] = {**ARMS["TO1+F7"], **_FX}
+ARMS["TO1+F7F8+FIX"] = {**ARMS["TO1+F7F8"], **_FX}
+for _a in [a for a in ARMS if a.startswith(("LR-V4+1", "LR-V12+1"))]:
+    ARMS[f"{_a}+XQ"] = {**ARMS[_a], **_XQ}
+# amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
+# picture floor) is a no-op on these bases (the scored config has no floor) and is not run; G6 = MERGE_GAP 2.0 -> 1.0
+GRULES = {"G1": {"DISPLAY_THRESHOLD": 0.30, "AUGMENT_THRESHOLD": 0.30}, "G3": {"AED_MIN_DUR": 0.3},
+          "G4": {"FLEXSED_VETO": 0.0}, "G5": {"PANNS_VETO_SKIP_ABOVE": 0.9}, "G6": {"MERGE_GAP": 1.0},
+          "G7": {"DEDUP_SIM": 1.01}, "G8": {"VISIBILITY_RULE": "unanimous"}}
+GBASES = ["B0r", "A0", "A0+FIXGATE", "A1", "TO1+F7", "TO1+F7F8", "TO1+F7+FIX", "TO1+F7F8+FIX"]
+for _b in GBASES:
+    for _g, _c in GRULES.items():
+        ARMS[f"{_b}~{_g}"] = {**ARMS[_b], **_c}
+GSTACK = R13 / "gstack.json"
+if GSTACK.exists():
+    _gs = json.loads(GSTACK.read_text(encoding="utf-8"))
+    _c = dict(ARMS[_gs["base"]])
+    for _g in _gs["changes"]:
+        _c.update(GRULES[_g])
+    ARMS["GSTACK"] = _c
+STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT", "FIX_GATE", "LISTENER_ARBITER", "DISPLAY_THRESHOLD",
+               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE")      # arm flags read after stage 4
+DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF")                           # read by _display_spans at score time
 
 
 @contextlib.contextmanager
@@ -192,6 +252,9 @@ def build(st, sysn, arm, C, tr, offline=False):
     (label, start, end) equals a trace veto-step span, else marked live"""
     step = lambda n: [x for x in tr if x["step"] == n]
     Bfr, Ffr = C["beats"], C["flex"]
+    if arm_cfg(arm).get("FLEXSED_EXTRA"):                  # amendment D: the pipeline's own column append
+        with flags(arm_cfg(arm)):
+            Ffr = add_flexsed_extra(Ffr[0], Ffr[1], Ffr[2], st)
     cfg = arm_cfg(arm)
     info = {}
     with flags(cfg):
@@ -228,7 +291,7 @@ def build(st, sysn, arm, C, tr, offline=False):
         for e in events:
             o = "flex" if id(e) in flex_ids else "tagger"
             r = {"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": o,
-                 "rescued": bool(getattr(e, "rescued", False)),
+                 "rescued": bool(getattr(e, "rescued", False)), "arbiter": bool(getattr(e, "arbiter", False)),
                  "pre_start": float(e.start)}
             if o == "flex":
                 r["refine"] = "none (frame-level)"
@@ -240,6 +303,7 @@ def build(st, sysn, arm, C, tr, offline=False):
                     r["refine"] = "live"
             rows.append(r)
         info["ffw"] = ffw
+        info["flex"] = (ffw, Ffr[1], Ffr[2])
     return rows, info
 
 
@@ -249,7 +313,8 @@ def filter_rows(rows, arm, C, ffw, res, k, st):
     if not cfg.get("LISTENER_RESCUE"):
         return rows
     with flags(cfg):
-        evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False)) for r in rows]
+        evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False),
+                          arbiter=r.get("arbiter", False)) for r in rows]
         dasm = None
         if cfg.get("LISTENER_DASM_VOTE") and cfg.get("LISTENER_DASM_DIR"):
             f = Path(cfg["LISTENER_DASM_DIR"]) / f"{st}.npz"
@@ -319,8 +384,9 @@ def stage4(arms, offline=False):
                         out = _refine_onsets_cam(DCC.wav_of(st), ev, C["beats"][2], "cuda", skip_ids=set())
                     for r, e in zip(live, out):
                         r["start"] = float(e.start)
-                rows = filter_rows(rows, arm, C, info["ffw"], res, k, st)
-                add_breaks(rows, arm, C, info["ffw"])
+                C2 = {**C, "flex": info["flex"]}
+                rows = filter_rows(rows, arm, C2, info["ffw"], res, k, st)
+                add_breaks(rows, arm, C2, info["ffw"])
                 res["arms"][k][st] = rows
         if not offline:
             DCC.dump(STAGE4, res)
@@ -338,6 +404,23 @@ def stage4(arms, offline=False):
 
 
 # ============================================================================= stage 5 (DCC's path, events with breaks)
+class UReuse(DCC.Reuse):
+    """DCC.Reuse, but a reused gate verdict is re-decided from its three stored votes under config.VISIBILITY_RULE
+    (amendment G8: "unanimous" = visible only if all three votes say visible), as _sound_is_visible decides live ones"""
+    def vis(self, label, frames, mdl, proc, device="cpu"):
+        if getattr(config, "VISIBILITY_RULE", "majority") == "majority":
+            return super().vis(label, frames, mdl, proc, device)
+        if frames and self.last_t:
+            a, b = self.last_t[0] + 1.0, self.last_t[-1] - 1.0
+            for v in self.votes:
+                if v["label"] == label and abs(v["stretch"][0] - a) <= DCC.TOL and abs(v["stretch"][1] - b) <= DCC.TOL:
+                    self.reason.LAST_VOTES = {k: v.get(k) for k in ("name", "ab", "desc", "named")}
+                    self.bump("gate_reused")
+                    yes = sum(1 for k in ("name", "ab", "desc") if v.get(k) is True)
+                    return yes == 3, v.get("named", "")
+        return super().vis(label, frames, mdl, proc, device)
+
+
 def stage5(arms):
     from benchmark.run_protocol import configure
     from src.stage5_cross_modal_analysis import plan_augmentations, reason
@@ -348,7 +431,8 @@ def stage5(arms):
     for k, v in (("FLEXSED_BAR", 0.8), ("FLEXSED_VETO", 0.3), ("PANNS_VETO", 0.05), ("ONSET_MONOTONE", True),
                  ("MAX_SPAN", None), ("VLM_MODEL", "Qwen/Qwen3.8-27B"), ("VLM_THINKING", False),
                  ("LABEL_FILTER", "depictable"), ("KINSHIP_DIRECTED", False), ("PICTURE_MIN_CONF", None),
-                 ("BEATS_SELF_VETO", 0.0), ("RETRIGGER_RAW", False), ("LISTENER_SCENE_FIT", False)):
+                 ("BEATS_SELF_VETO", 0.0), ("RETRIGGER_RAW", False), ("LISTENER_SCENE_FIT", False), ("FIX_GATE", False),
+                 ("LISTENER_ARBITER", False)):
         assert getattr(config, k, None) == v, (k, getattr(config, k, None), v)
     if not MEMO.exists() and (DCC.DC / "ask_memo.json").exists():
         MEMO.parent.mkdir(parents=True, exist_ok=True)
@@ -356,7 +440,7 @@ def stage5(arms):
     DCC.MEMO = MEMO
     _g, stems = DCC.dev_stems()
     s4 = json.loads(STAGE4.read_text(encoding="utf-8"))
-    R = DCC.Reuse()
+    R = UReuse()
     base = {k: getattr(config, k) for k in ("DISPLAY_THRESHOLD", "AUGMENT_THRESHOLD", "AED_THRESHOLD") + STAGE5_KEYS}
     for sysn in ("blind_a2i", "proposed"):
         configure(sysn)
@@ -377,7 +461,8 @@ def stage5(arms):
                 scene = SceneContext(**json.loads((src / "scene.json").read_text(encoding="utf-8")))
                 segments = [SpeechSegment(**x) for x in json.loads((src / "segments.json").read_text(encoding="utf-8"))]
                 events = [AudioEvent(r["label"], r["start"], r["end"], r["conf"],
-                                     breaks=[tuple(b) for b in r.get("breaks", [])], rescued=bool(r.get("rescued", False)))
+                                     breaks=[tuple(b) for b in r.get("breaks", [])], rescued=bool(r.get("rescued", False)),
+                                     arbiter=bool(r.get("arbiter", False)))
                           for r in s4["arms"][f"{arm}|{sysn}"][st]]
                 gv = src / "gate_votes.json"
                 R.votes = json.loads(gv.read_text(encoding="utf-8")) if gv.exists() else []
@@ -458,7 +543,8 @@ def score():
         P = {"B0": {st: S.load_pictures(DCC.scored_dir(sysn), st, sysn) or [] for st in stems},
              "B1": {st: S.load_pictures(DCC.DC / f"B1_{sysn}", st, sysn) or [] for st in stems}}
         for a in arms:
-            P[a] = {st: S.load_pictures(R13 / f"{a}_{sysn}", st, sysn) or [] for st in stems}
+            with flags({k: arm_cfg(a)[k] for k in DISPLAY_KEYS}):
+                P[a] = {st: S.load_pictures(R13 / f"{a}_{sysn}", st, sysn) or [] for st in stems}
             lg = R13 / f"{a}_{sysn}" / "_stage5_log.json"
             st5 = json.loads(lg.read_text(encoding="utf-8")) if lg.exists() else {}
             tot = {}
@@ -473,7 +559,8 @@ def score():
         res["rows"][sysn] = {n: DCC.metrics(r) for n, r in rows.items()}
         heard = {}
         for n in arms:
-            heard[n] = sum(S.score_clip(gold[st], DCC.heard_pics(s4["arms"][f"{n}|{sysn}"][st], 0.35))["hit"] for st in stems)
+            heard[n] = sum(S.score_clip(gold[st], DCC.heard_pics(s4["arms"][f"{n}|{sysn}"][st],
+                                                                 arm_cfg(n)["DISPLAY_THRESHOLD"]))["hit"] for st in stems)
         heard["B1"] = sum(S.score_clip(gold[st], DCC.heard_pics(dc4["arms"][f"B1|{sysn}"][st], 0.35))["hit"] for st in stems)
         heard["B0"] = heard.get("B0r")
         res["heard"][sysn] = heard
@@ -511,6 +598,27 @@ def score():
             res["picture_changes"][sysn][n] = {
                 "appeared": [list(x) + [pic_type(gold[x[0]], P[n][x[0]], _find(P[n][x[0]], x))] for x in add],
                 "disappeared": [list(x) + [pic_type(gold[x[0]], P["B0r"][x[0]], _find(P["B0r"][x[0]], x))] for x in rem]}
+        res.setdefault("vs_base", {})[sysn] = {}
+        gsb = json.loads(GSTACK.read_text(encoding="utf-8"))["base"] if GSTACK.exists() else None
+        for n in arms:                                     # amendment G: each rule arm against its own base
+            b = n.split("~")[0] if "~" in n else (gsb if n == "GSTACK" else None)
+            if not b or b not in P:
+                continue
+            gained, lost = [], []
+            for st in stems:
+                for (g, a0), (_g2, a1) in zip(DCC.needed_hit(gold[st], P[b][st]), DCC.needed_hit(gold[st], P[n][st])):
+                    if a1 and not a0:
+                        gained.append([st, g["label"], g["start"]])
+                    if a0 and not a1:
+                        lost.append([st, g["label"], g["start"]])
+            add, rem = DCC.diff_pics(P[b], P[n])
+            x, y = R_[n], R_[b]
+            res["vs_base"][sysn][n] = {
+                "base": b, "d_hits": x["hits"] - y["hits"], "d_wrong": x["wrong"] - y["wrong"],
+                "d_vcp": [x["visible"] - y["visible"], x["cross"] - y["cross"], x["phantom"] - y["phantom"]],
+                "d_cost": DCC.boot(np.subtract(cost[n], cost[b])), "gained": gained, "lost": lost,
+                "appeared": [list(z) + [pic_type(gold[z[0]], P[n][z[0]], _find(P[n][z[0]], z))] for z in add],
+                "disappeared": [list(z) + [pic_type(gold[z[0]], P[b][z[0]], _find(P[b][z[0]], z))] for z in rem]}
         print(f"[D5 {sysn}] {res['d5'][sysn]['pass']}/{len(stems)}; differ {bad}", flush=True)
         for n in ["B0", "B1"] + arms:
             x = R_[n]; dd = res["delta_vs_B0r"][sysn].get(n)
@@ -541,16 +649,40 @@ def best14(which="F5F6"):
     print(" ".join(f"{b}+{x}" for x in ext))
 
 
+def gplan():
+    """the G arms to run: every rule on B0r and on the best amendment-F / H arm (lowest DEV cost, ties fewer wrong)"""
+    r = json.loads(OUT.read_text(encoding="utf-8"))["rows"]["proposed"]
+    fb = min([a for a in GBASES[1:] if a in r], key=lambda a: (r[a]["viewer_cost"], r[a]["wrong"]))
+    print(" ".join(f"{b}~{g}" for b in ("B0r", fb) for g in GRULES))
+
+
+def gstack():
+    """the candidates on the best F / H base (d_hits >= 1 and d_wrong <= 2 x d_hits), in order of d_cost; writes gstack.json"""
+    r = json.loads(OUT.read_text(encoding="utf-8"))
+    vb = r["vs_base"]["proposed"]
+    bases = {v["base"] for k, v in vb.items() if "~" in k and v["base"] != "B0r"}
+    assert len(bases) == 1, bases
+    fb = bases.pop()
+    cand = [(vb[f"{fb}~{g}"]["d_cost"][0], g) for g in GRULES if f"{fb}~{g}" in vb
+            and vb[f"{fb}~{g}"]["d_hits"] >= 1 and vb[f"{fb}~{g}"]["d_wrong"] <= 2 * vb[f"{fb}~{g}"]["d_hits"]]
+    ch = [g for _d, g in sorted(cand)]
+    DCC.dump(GSTACK, {"base": fb, "changes": ch})
+    print("GSTACK" if ch else "")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("panns", "stage4", "stage5", "score", "best14"))
+    ap.add_argument("step", choices=("panns", "stage4", "stage5", "score", "best14", "gplan", "gstack"))
     ap.add_argument("--arms", nargs="+", default=[a for a in ARMS if not a.endswith(("+F5", "+F6", "+F5F6", "+F7", "+F8",
-                                                                                      "+F7F8"))])
+                                                                                      "+F7F8")) and "XQ" not in a
+                                                  and "AG" not in a and "TIER" not in a and "AFYN" not in a
+                                                  and not a.startswith(("A0", "A1", "B0r+", "TO1")) and "~" not in a
+                                                  and a != "GSTACK"])
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--which", default="F5F6")
     a = ap.parse_args()
     {"panns": panns, "stage4": lambda: stage4(a.arms, a.offline), "stage5": lambda: stage5(a.arms),
-     "score": score, "best14": lambda: best14(a.which)}[a.step]()
+     "score": score, "best14": lambda: best14(a.which), "gplan": gplan, "gstack": gstack}[a.step]()
 
 
 if __name__ == "__main__":
