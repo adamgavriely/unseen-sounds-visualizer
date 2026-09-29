@@ -404,6 +404,9 @@ FLEXSED_EXTRA_DIR = None      #   <dir>/<clip>.npz (fw [Q, frames], labels, fps)
 FLEXSED_EXTRA_QUERIES = None  #   benchmark/gold/flexsed_extra_queries.json (bucket "a_folded" is used)
 LISTENER_ONCE = False         # Round 14 amendment E (F1b): one rescued span per family per clip, the earliest
 PANNS_VETO_SKIP_ABOVE = None  # Round 14 amendment G5: FlexSED-only spans with peak >= this skip the PANNs clip veto (0.9)
+ONSET_RELOC = False           # Round 14 amendment I1: picture start at the steepest rise of the family's evidence; split at dips
+TIER_SPECIFIC = False         # Round 14 amendment I5: TIER peak includes the specific (folded) child queries (evidence only)
+ACTIVITY_GATE = False         # Round 14 amendment I2: a gate-visible sound is kept if its source is not visibly producing it
 FIX_FAM = False               # Round 14 amendment F: F4 compares families (sibling/child queries = own family)
 FIX_EARLY = False             # Round 14 amendment F: F1 keeps the earliest accepted run, not the strongest
 FIX_CTRL = False              # Round 14 amendment F: V12 = V1 alone when V2 has no control window

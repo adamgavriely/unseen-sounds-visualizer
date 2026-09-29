@@ -495,3 +495,31 @@ any number of these arms).** On top of TO1+F7F8:
 - **K3 high tier OR:** for peak >= 0.6, accept if Qwen V4 OR Audio Flamingo V4 accepts (low tier unchanged: both).
 Arms: +K1, +K2, +K3, +K1+K2, +K1+K2+K3. K2 needs listener answers for the newly offered runs: if missing from the caches,
 they count as not rescued and the number missing is reported.
+
+### Round 14 amendment G (rule audit), DEV, job 31562318 (29 min)
+One rule loosened at a time on B0r and on the best F/H arm (picked in the job by lowest DEV cost: **TO1+F7F8**). Implementation:
+G1 `DISPLAY_THRESHOLD`/`AUGMENT_THRESHOLD` 0.30 (AED 0.175 kept); G3 `AED_MIN_DUR` 0.3 (BEATs spans live on a 0.25-s grid, so
+this changes FlexSED spans only); G4 `FLEXSED_VETO` 0; G5 new flag `PANNS_VETO_SKIP_ABOVE` 0.9; G6 `MERGE_GAP` 1.0 (B0r's is
+2.0, the scored config; applied at score time per arm); G7 `DEDUP_SIM` 1.01; G8 `VISIBILITY_RULE` "unanimous" (reused gate
+votes re-decided from their three stored votes). **G2 is a no-op** on both bases (the scored config has no picture floor;
+0.40 exists only in `use_shipped`) and was not run. Gates: D5 49/49 both systems. Δ = vs the arm's own base.
+
+| rule | base | Δhits | Δwrong (v / c / p) | Δcost [95 % CI] | gained needed | lost needed | candidate |
+|---|---|---|---|---|---|---|---|
+| G1 display bar 0.35 → 0.30 (and augment bar) | B0r | +1 | +3 (+2 / +2 / -1) | +0.04 [-0.33, +0.45] | `ambient_nature_rainforest_7629` Bird 0.1 s; `ambient_nature_rainforest_7629` Cricket 0.1 s | `birds_forest` Crowing, cock-a-doodle-doo 10.4 s | no |
+| G3 min span 0.5 → 0.3 s (BEATs + FlexSED) | B0r | -1 | +3 (+0 / +3 / +0) | +0.20 [+0.00, +0.57] | — | `b3_favela_rio` Train 14.6 s | no |
+| G4 FlexSED clip veto 0.3 → off | B0r | +0 | +11 (+2 / +5 / +4) | +0.45 [+0.12, +0.78] | — | — | no |
+| G5 PANNs veto skipped for FlexSED spans >= 0.9 | B0r | +1 | +7 (+0 / +5 / +2) | +0.20 [-0.08, +0.49] | `ambient_snow_walk_930` Laughter 8.1 s | — | no |
+| G6 display merge gap 2.0 → 1.0 s | B0r | +0 | +5 (+1 / +4 / +0) | +0.20 [+0.04, +0.37] | — | — | no |
+| G7 DEDUP_SIM 0.80 → off | B0r | +0 | +4 (+0 / +2 / +2) | +0.16 [+0.00, +0.41] | — | — | no |
+| G8 gate: visible only if all 3 votes say so | B0r | +1 | +6 (+3 / +3 / +0) | +0.16 [-0.12, +0.41] | `bell_miami` Bell 0.2 s | — | no |
+| G1 display bar 0.35 → 0.30 (and augment bar) | TO1+F7F8 | +0 | +5 (+2 / +3 / +0) | +0.20 [+0.00, +0.53] | `ambient_nature_rainforest_7629` Bird 0.1 s | `birds_forest` Crowing, cock-a-doodle-doo 10.4 s | no |
+| G3 min span 0.5 → 0.3 s (BEATs + FlexSED) | TO1+F7F8 | -1 | +2 (+0 / +2 / +0) | +0.16 [+0.00, +0.49] | — | `b3_favela_rio` Train 14.6 s | no |
+| G4 FlexSED clip veto 0.3 → off | TO1+F7F8 | +0 | +7 (+0 / +5 / +2) | +0.29 [+0.08, +0.57] | — | — | no |
+| G5 PANNs veto skipped for FlexSED spans >= 0.9 | TO1+F7F8 | +0 | +5 (+0 / +3 / +2) | +0.20 [+0.04, +0.45] | — | — | no |
+| G6 display merge gap 2.0 → 1.0 s | TO1+F7F8 | +0 | +5 (+1 / +4 / +0) | +0.20 [+0.04, +0.37] | — | — | no |
+| G7 DEDUP_SIM 0.80 → off | TO1+F7F8 | +0 | +3 (+0 / +3 / +0) | +0.12 [+0.00, +0.33] | — | — | no |
+| G8 gate: visible only if all 3 votes say so | TO1+F7F8 | +1 | +9 (+4 / +5 / +0) | +0.29 [+0.00, +0.57] | `bell_miami` Bell 0.2 s | — | no |
+
+**No rule change is a candidate** (Δhits >= 1 and Δwrong <= 2 × Δhits) on either base, so no stacked arm was run. Every
+loosening adds 3–11 wrong pictures for at most one hit.

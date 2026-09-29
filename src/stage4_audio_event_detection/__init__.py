@@ -239,7 +239,9 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             events, flex_ids, ffw = fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur,
                                                  backend=backend, panns=lambda: _infer(Path(wav_path), device),
                                                  listener=_pipeline_listener(wav_path),
-                                                 listener_p1=_pipeline_listener_p1(wav_path))
+                                                 listener_p1=_pipeline_listener_p1(wav_path),
+                                                 extra=(load_extra_evidence(Path(wav_path).parent.name)
+                                                        if getattr(config, "TIER_SPECIFIC", False) else None))
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     trace("veto", events, "after the cross-detector and PANNs vetoes")
@@ -252,6 +254,9 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
         for e in events:
             e.end = min(e.end, e.start + float(cap))
         trace("cap", events, f"MAX_SPAN {cap}")
+    if getattr(config, "ONSET_RELOC", False):              # round 14 amendment I1
+        events, _log = relocate_onsets(events, framewise, times, labels, ffw, ftimes, flabels,
+                                       extra=load_extra_evidence(Path(wav_path).parent.name))
     if getattr(config, "LISTENER_RESCUE", False):          # round 14: precision filters on the rescued spans
         events, _dropped = filter_rescued(events, ffw, ftimes, flabels, dasm=_pipeline_dasm(wav_path))
     if getattr(config, "RETRIGGER", None):
@@ -359,6 +364,119 @@ def add_flexsed_extra(ffw, ftimes, flabels, clip: str):
     return out, ft[:n], list(flabels) + [elab[i] for i in cols]
 
 
+def load_extra_evidence(clip: str):
+    """amendment I: the specific (group-a, folded) FlexSED queries of this clip as EVIDENCE only (no spans): (fw [T, Q],
+    times, labels) from config.FLEXSED_EXTRA_DIR / FLEXSED_EXTRA_QUERIES, or None if absent"""
+    d, qf = getattr(config, "FLEXSED_EXTRA_DIR", None), getattr(config, "FLEXSED_EXTRA_QUERIES", None)
+    f = Path(d) / f"{clip}.npz" if d else None
+    if f is None or not f.exists() or not qf:
+        return None
+    want = [q["query"] for q in json.loads(Path(qf).read_text(encoding="utf-8"))["queries"] if q.get("bucket") == "a_folded"]
+    z = np.load(f)
+    efw = z["fw"].astype(np.float32).T
+    elab = [str(x) for x in z["labels"]]
+    cols = [elab.index(q) for q in want if q in elab]
+    return efw[:, cols], np.arange(efw.shape[0], dtype=np.float64) / float(z["fps"]), [elab[i] for i in cols]
+
+
+def _family_peak(fam, a, b, fw_, ft_, flabels, extra=None):
+    """max FlexSED score in [a, b) over the family's own queries and its specific child queries (amendment I5)"""
+    from src.labels import canonical
+    best = 0.0
+    for fw, ft, fl in [(fw_, ft_, flabels)] + ([extra] if extra is not None else []):
+        fw, ft = np.asarray(fw), np.asarray(ft)
+        cols = [i for i, l in enumerate(fl) if canonical(l) == fam]
+        m = (ft >= a) & (ft < b)
+        if cols and m.any():
+            best = max(best, float(fw[m][:, cols].max()))
+    return best
+
+
+def _family_evidence(fam, grid, framewise, times, labels, ffw, ftimes, flabels, extra=None):
+    """amendment I1: the family's evidence on the FlexSED grid = max of its BEATs columns (a window's score held over
+    [t, t + hop)) and its FlexSED family / specific queries"""
+    from src.labels import canonical
+    ev = np.zeros(len(grid), np.float32)
+    tt = np.asarray(times, float)
+    tc = [i for i, l in enumerate(labels) if canonical(l) == fam]
+    if tc and len(tt):
+        k = np.clip(np.searchsorted(tt, grid, side="right") - 1, 0, len(tt) - 1)
+        hop = (tt[1] - tt[0]) if len(tt) > 1 else 0.25
+        ok = (grid >= tt[0]) & (grid < tt[-1] + hop)
+        ev = np.maximum(ev, np.where(ok, np.asarray(framewise)[:, tc].max(axis=1)[k], 0.0))
+    for fw, ft, fl in [(ffw, ftimes, flabels)] + ([extra] if extra is not None else []):
+        cols = [i for i, l in enumerate(fl) if canonical(l) == fam]
+        if not cols:
+            continue
+        fw, ft = np.asarray(fw), np.asarray(ft)
+        n = min(len(ft), len(grid))
+        ev[:n] = np.maximum(ev[:n], fw[:n][:, cols].max(axis=1))
+    return ev
+
+
+def relocate_onsets(events, framewise, times, labels, ffw, ftimes, flabels, extra=None):
+    """Round 14 amendment I1 (ONSET_RELOC): inside each span, its START moves to the frame of the steepest rise of the family's
+    evidence within the span's first 3 s, searched after the last dip below half the span's evidence peak (no dip -> from
+    the start); a later rise after a dip >= 1.5 s below half the peak splits the span in two. Only later, never earlier;
+    no new sound. Returns the new event list and a log."""
+    from src.labels import canonical
+    grid = np.asarray(ftimes, float)
+    if len(grid) < 2:
+        return events, []
+    dt = float(grid[1] - grid[0])
+    memo, out, log = {}, [], []
+    for e in events:
+        fam = canonical(e.label)
+        if fam not in memo:
+            memo[fam] = _family_evidence(fam, grid, framewise, times, labels, ffw, ftimes, flabels, extra)
+        ev = memo[fam]
+        idx = np.where((grid >= e.start - 1e-6) & (grid < e.end))[0]
+        if len(idx) < 3 or float(ev[idx].max()) <= 0:
+            out.append(e); continue
+        half = 0.5 * float(ev[idx].max())
+        pieces, cur, low = [], [idx[0]], 0
+        for k in idx[1:]:                                   # split at dips >= 1.5 s below half the peak
+            if ev[k] < half:
+                low += 1
+            else:
+                if low * dt >= 1.5 and len(cur) > low:
+                    pieces.append(cur[:len(cur) - low]); cur = []
+                low = 0
+            cur.append(k)
+        pieces.append(cur)
+        segs = []
+        for pi, p in enumerate(pieces):
+            p = np.asarray(p)
+            w = p[grid[p] < grid[p[0]] + 3.0]
+            dips = [k for k in w if ev[k] < half]
+            s0 = dips[-1] if dips else w[0]
+            cand = w[w >= s0]
+            if len(cand) >= 2:
+                d = np.diff(ev[cand])
+                j = int(cand[int(np.argmax(d)) + 1]) if float(d.max()) > 0 else int(cand[0])
+            else:
+                j = int(cand[0])
+            st = max(float(e.start), float(grid[j]))
+            en = float(e.end) if pi == len(pieces) - 1 else float(grid[p[-1]] + dt)
+            segs.append((st, en))
+        new = []
+        for k, (st, en) in enumerate(segs):
+            if k < len(segs) - 1:
+                nxt = segs[k + 1][0]
+                en = min(en, nxt)
+            if en - st <= dt:
+                continue
+            ne = AudioEvent(e.label, st, en, e.confidence, rescued=getattr(e, "rescued", False),
+                            arbiter=getattr(e, "arbiter", False), breaks=list(getattr(e, "breaks", []) or []))
+            new.append(ne)
+        if not new:
+            out.append(e); continue
+        if len(new) > 1 or abs(new[0].start - e.start) > 1e-6:
+            log.append([e.label, round(e.start, 2), round(e.end, 2), [[round(x.start, 2), round(x.end, 2)] for x in new]])
+        out += new
+    return out, log
+
+
 def _impulse_cols(flabels) -> list:
     """R13-5: the FlexSED queries of the impulsive families (config.IMPULSE_FAMILIES, matched on the query name)"""
     fams = set(getattr(config, "IMPULSE_FAMILIES", ()) or ())
@@ -440,7 +558,7 @@ def attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels) -> Non
 
 
 def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur, backend: str = "BEATs",
-                 panns=None, listener=None, listener_p1=None):
+                 panns=None, listener=None, listener_p1=None, extra=None):
     """The union of the tagger's spans with FlexSED's, and the vetoes (amendments 8, 10, 11, 16, 22; round 4; round 13).
 
     Pure given its inputs, so a benchmark can run the exact pipeline rule on cached scores. `events` are the tagger's
@@ -689,7 +807,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
         for e in events:                                     # (b) kept by the listener = rescued
             if id(e) in keep_b:
                 e.rescued = True
-        events = _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flabels, fbar, listener, lth)
+        events = _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flabels, fbar, listener, lth,
+                                extra=extra)
         print(f"       [stage4] listener rescue: kept {len(LISTENER_STATS['b_kept'])} vetoed, added "
               f"{len(LISTENER_STATS['a_added'])} band + {len(LISTENER_STATS['c_added'])} BEATs-band span(s); cache misses "
               f"a {LISTENER_STATS['a_missing']}/{LISTENER_STATS['a_asked']} b {LISTENER_STATS['b_missing']}/"
@@ -952,7 +1071,7 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
     return [e for e in events if id(e) not in drop], dropped
 
 
-def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flabels, fbar, listener, lth):
+def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flabels, fbar, listener, lth, extra=None):
     """R13-3 (a): a FlexSED 0.4-run (gaps <= 0.24 s merged) with peak in [LISTENER_LO, bar) and no same-family span over it
     becomes a FlexSED-only span (its run, or the listener's 1-s cut when shorter than 0.5 s) when the listener's score >
     LISTENER_TH; added after the PANNs clip veto, so exempt from it. (c) with LISTENER_BEATS_TH set: a BEATs run >=
@@ -981,6 +1100,12 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 LISTENER_STATS["a_missing"] += 1
                 LISTENER_STATS["a_missing_list"].append([lab, round(a, 2), round(b, 2), round(pk, 3)])
                 continue
+            if getattr(config, "TIER_SPECIFIC", False) and (it.get("accept") or {}).get("TIER") is not None:
+                # amendment I5: the tier's peak = max over the family's queries and its specific child queries in the run
+                spk = max(pk, _family_peak(fam, a, b, fw_, ft_, flabels, extra))
+                acc = dict(it["accept"])
+                acc["TIER"] = bool(acc.get("V4", False)) and (spk >= 0.6 or bool(acc.get("AGREE_V4", False)))
+                it = {**it, "accept": acc}
             arb = False
             if not _accepted(it, lth) and _arbiter_candidate(it):
                 arb = True

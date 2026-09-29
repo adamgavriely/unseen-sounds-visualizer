@@ -1341,6 +1341,23 @@ def _arbiter(spec, video_path, mdl, proc, frames_per_sound: int = 4) -> bool:
     return len(words) > 0
 
 
+ACTIVITY_PROMPT = ("Is a {family} source visibly PRODUCING this sound right now (for example a beak open, a bell swinging, "
+                   "a vehicle moving)? Answer yes or no.")
+
+
+def _not_producing(spec, video_path, mdl, proc) -> bool:
+    """Round 14 amendment I2: True iff the VLM answers "no" to ACTIVITY_PROMPT on 6 frames at the sound's onset +- 0.5 s"""
+    from src.stage2_video_understanding import _sample_frames_at
+    t0 = min([a for a, _b in (getattr(spec, "spans", None) or [(spec.start, spec.end)])])
+    win = _sample_frames_at(Path(video_path), [t0 - 0.5 + 0.2 * i for i in range(6)])
+    if not win:
+        return False
+    fam = spec.event_label.split(",")[0].split("(")[0].strip().lower()
+    ans = _ask(mdl, proc, ACTIVITY_PROMPT.format(family=fam), images=win, max_new=4).strip().lower()
+    print("       [stage5] I2 producing? " + spec.event_label + " -> " + ans[:10], flush=True)
+    return ans.startswith("n")
+
+
 def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
     """Round 14 F3: per stretch (VISIBILITY_STRETCH cuts, 1 s before to 1 s after, >= 6 frames, as the gate), the question
     SCENE_FIT_PROMPT; True iff yes > no over the stretches, None if no frames."""
@@ -1510,6 +1527,11 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                     named_any = named
                 else:
                     kept.append((a, b))
+            if not kept and getattr(config, "ACTIVITY_GATE", False) and _not_producing(spec, video_path, mdl, proc):
+                # Round 14 amendment I2: the source is on screen but not visibly PRODUCING the sound at its onset -> keep
+                kept = pieces[:1]
+                spec.reason += " | gate: visible, but not visibly producing it at the onset (I2) - kept"
+                print("       [stage5] I2 kept " + spec.event_label + ": visible but not producing it", flush=True)
             if not kept:
                 spec.augment = False
                 spec.subject = ""

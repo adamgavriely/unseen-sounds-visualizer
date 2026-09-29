@@ -31,7 +31,8 @@ from benchmark.gold import score_per_sound as S
 from src.labels import canonical
 from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_events, attach_breaks, fuse_flexsed,
                                               listener_from_cache, listener_from_vcache, filter_rescued,
-                                              listener_p1_lookup, add_flexsed_extra)
+                                              listener_p1_lookup, add_flexsed_extra, load_extra_evidence,
+                                              relocate_onsets)
 from src.types import AudioEvent
 
 WORK = DCC.WORK
@@ -57,6 +58,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "LISTENER_DASM_BAR": 0.575, "LISTENER_DASM_PAD": 0.5,
         "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority",
         "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None,
+        "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
         "FLEXSED_EXTRA": False, "FLEXSED_EXTRA_DIR": None, "FLEXSED_EXTRA_QUERIES": None,
@@ -146,6 +148,13 @@ ARMS["TO1+F7+FIX"] = {**ARMS["TO1+F7"], **_FX}
 ARMS["TO1+F7F8+FIX"] = {**ARMS["TO1+F7F8"], **_FX}
 for _a in [a for a in ARMS if a.startswith(("LR-V4+1", "LR-V12+1"))]:
     ARMS[f"{_a}+XQ"] = {**ARMS[_a], **_XQ}
+# amendment I on TO1+F7F8 (I6 is the existing behaviour: rescue runs of any length, cut to 1 s when < 0.5 s -> not run)
+_EV = {"FLEXSED_EXTRA_DIR": str(WORK / "flexsed_extra_dev"),
+       "FLEXSED_EXTRA_QUERIES": str(_ROOT / "benchmark" / "gold" / "flexsed_extra_queries.json")}
+ARMS["TO1F7F8+I1"] = {**ARMS["TO1+F7F8"], **_EV, "ONSET_RELOC": True}
+ARMS["TO1F7F8+I5"] = {**ARMS["TO1+F7F8"], **_EV, "TIER_SPECIFIC": True}
+ARMS["TO1F7F8+I2"] = {**ARMS["TO1+F7F8"], "ACTIVITY_GATE": True}
+ARMS["TO1F7F8+I125"] = {**ARMS["TO1+F7F8"], **_EV, "ONSET_RELOC": True, "TIER_SPECIFIC": True, "ACTIVITY_GATE": True}
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
 # picture floor) is a no-op on these bases (the scored config has no floor) and is not run; G6 = MERGE_GAP 2.0 -> 1.0
 GRULES = {"G1": {"DISPLAY_THRESHOLD": 0.30, "AUGMENT_THRESHOLD": 0.30}, "G3": {"AED_MIN_DUR": 0.3},
@@ -163,7 +172,7 @@ if GSTACK.exists():
         _c.update(GRULES[_g])
     ARMS["GSTACK"] = _c
 STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT", "FIX_GATE", "LISTENER_ARBITER", "DISPLAY_THRESHOLD",
-               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE")      # arm flags read after stage 4
+               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE")      # arm flags read after stage 4
 DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF")                           # read by _display_spans at score time
 
 
@@ -270,9 +279,11 @@ def build(st, sysn, arm, C, tr, offline=False):
         if config.LISTENER_RESCUE:
             lis = (listener_from_vcache(config.LISTENER_VCACHE, st) if config.LISTENER_RULE
                    else listener_from_cache(config.LISTENER_CACHE, st))
+        ext = load_extra_evidence(st) if (config.TIER_SPECIFIC or config.ONSET_RELOC) else None
+        info["extra"] = ext
         events, flex_ids, ffw = fuse_flexsed(events, Bfr[0], Bfr[1], Bfr[2], Ffr[0], Ffr[1], Ffr[2],
                                              config.AED_MIN_DUR, backend="BEATs", panns=prov, listener=lis,
-                                             listener_p1=lp1)
+                                             listener_p1=lp1, extra=ext if config.TIER_SPECIFIC else None)
         if lp1 is not None:
             info["f7"] = list(LISTENER_STATS.get("f7", []))
         if lis is not None:
@@ -305,6 +316,29 @@ def build(st, sysn, arm, C, tr, offline=False):
         info["ffw"] = ffw
         info["flex"] = (ffw, Ffr[1], Ffr[2])
     return rows, info
+
+
+def reloc_rows(rows, arm, C, info, res, k, st):
+    """amendment I1: the pipeline's relocate_onsets on the refined rows (as detect_events, before the rescue filters)"""
+    cfg = arm_cfg(arm)
+    if not cfg.get("ONSET_RELOC"):
+        return rows
+    with flags(cfg):
+        evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False),
+                          arbiter=r.get("arbiter", False)) for r in rows]
+        src = {id(e): r for e, r in zip(evs, rows)}
+        out, log = relocate_onsets(evs, C["beats"][0], C["beats"][1], C["beats"][2], info["ffw"], C["flex"][1],
+                                   C["flex"][2], extra=info.get("extra"))
+    if log:
+        res.setdefault("reloc", {})[f"{k}|{st}"] = log
+    new = []
+    for e in out:
+        base = src.get(id(e))
+        if base is None:                                    # a relocated / split piece of an original row
+            base = next(r for r in rows if r["label"] == e.label and r["start"] - 1e-6 <= e.start <= r["end"] + 1e-6
+                        and r.get("rescued", False) == getattr(e, "rescued", False))
+        new.append({**base, "start": float(e.start), "end": float(e.end)})
+    return new
 
 
 def filter_rows(rows, arm, C, ffw, res, k, st):
@@ -385,6 +419,7 @@ def stage4(arms, offline=False):
                     for r, e in zip(live, out):
                         r["start"] = float(e.start)
                 C2 = {**C, "flex": info["flex"]}
+                rows = reloc_rows(rows, arm, C2, info, res, k, st)
                 rows = filter_rows(rows, arm, C2, info["ffw"], res, k, st)
                 add_breaks(rows, arm, C2, info["ffw"])
                 res["arms"][k][st] = rows
@@ -677,7 +712,7 @@ def main():
                                                                                       "+F7F8")) and "XQ" not in a
                                                   and "AG" not in a and "TIER" not in a and "AFYN" not in a
                                                   and not a.startswith(("A0", "A1", "B0r+", "TO1")) and "~" not in a
-                                                  and a != "GSTACK"])
+                                                  and a != "GSTACK" and not a.startswith("TO1F7F8")])
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--which", default="F5F6")
     a = ap.parse_args()
