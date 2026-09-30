@@ -716,3 +716,15 @@ batch 2's own tags were read; batch 1 stays exactly as it was (sha256 % 2; TEST2
 Batch 2: **DEV2** = tg_d022, d029, d030, d032, d054, d085, d095 (7; 6 needed sounds); **TEST2** = tg_d009, d014, d019,
 d023, d031, d045, d046, d068 (8; 7 needed). Totals: DEV2 13, TEST2 18. Membership: `benchmark/gold/tagger_split.json`.
 Disclosure: Adam opened the BEATs-only suggestions on most batch-2 clips before tagging (`suggestions_shown_at`).
+
+## Round 15 amendment O — Whisper-AT as F8's third vote (Fable idea 3; Adam: "do whatever needed"; written 2026-09-30 BEFORE any number of it)
+Motive: F8 (DASM) killed two rescued needed sounds (Hammer 13.7, DASM 0.281; Explosion 2.8, DASM 0.516 < 0.575), and the
+misses are speech/music-masked (GOLD §10a). Whisper-AT (Gong et al., Interspeech 2023; pip `whisper-at`, official
+checkpoints; Whisper large-v2 encoder + AudioSet-2M tagging head) was built to tag sounds under speech.
+- **Scores.** Whisper-AT on each clip's 16-kHz audio, `at_time_res` 0.4 s → 527 AudioSet logits per 0.4-s step. Stored as a
+  rank score: 1 / (rank of the class at that step), cache `data/work/wat_cache/<clip>.npz` (fw [T, 527], times = step start,
+  labels = AudioSet names), same format F8 reads.
+- **F8-W:** F8 unchanged (same family by `canonical`, span ± 0.5 s) but with `LISTENER_DASM_DIR` = the Whisper-AT cache and
+  `LISTENER_DASM_BAR` = 0.33, i.e. the family is among Whisper-AT's top 3 classes at some step. Top-3 is fixed now (no sweep).
+- **Arm O1** = TO1+F7F8 with F8-W in place of F8. Same full DEV pipeline and report; then DEV2 (report). Candidate for TEST2
+  iff DEV-eligible and cost < TO1+F7F8's 2.45 with no needed sound lost vs TO1+F7F8.
