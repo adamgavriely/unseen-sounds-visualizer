@@ -44,13 +44,12 @@ def load_model(device: str):
     sys.modules.setdefault("ipdb", types.ModuleType("ipdb"))       # model_ssltie imports it at module level
     sys.path.append(str(REPO))                                       # after the project: 'models' / 'networks' names
     from models.model_ssltie import AVENet_ssltie
-    from utils_dir.opts_ssltie import SSLTIE_args
     ck = torch.load(str(CKPT), map_location="cpu", weights_only=False)
     sd = ck.get("state_dict", ck.get("model", ck))
     sd = {k.replace("module.", "", 1): v for k, v in sd.items()}
-    args = SSLTIE_args().ssltie_args
-    args.out_channels = 512
-    args.pth_name = str(CKPT) + ("_learnable" if "epsilon" in sd else "")
+    # the fields AVENet_ssltie / base_models read, with the values of utils_dir/opts_ssltie.SSLTIE_args (no easydict)
+    args = types.SimpleNamespace(heatmap_size=14, epsilon=0.65, epsilon2=0.4, tri_map=True, Neg=True, out_channels=512,
+                                 pth_name=str(CKPT) + ("_learnable" if "epsilon" in sd else ""))
     model = AVENet_ssltie(args)
     missing, unexpected = model.load_state_dict(sd, strict=False)
     print("checkpoint keys", len(sd), "missing", missing, "unexpected", unexpected, flush=True)
