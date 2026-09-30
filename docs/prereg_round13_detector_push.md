@@ -1373,3 +1373,25 @@ Three of the nine visible wrong pictures are one-yes splits on a plainly active 
   stretch (14.32–19.75, ratio 4.8 — a camera whip-pan) flips to seen, and its first stretch (8.89–14.32, zero yes) keeps the
   picture; the Water and Laughter splits sit at ratio 0.8–1.0 (a splash or a laugh does not move the frame). 25 / 33 / 2.620 =
   base, nothing dropped → **STOP**. Gate group closed for round 31 (both ideas report-only, no arm run, no TEST read).
+
+## Round 31 SPOT (SOTA scan; written 2026-09-30 BEFORE any SpotSound answer exists)
+**Model.** SpotSound-A (Sun et al., arXiv 2604.13023, Apr 2026): LoRA adapter `Loie/SpotSound` (r 8, alpha 16) merged into
+`nvidia/audio-flamingo-3-hf`, bf16, greedy, 64 new tokens. Timestamp-interleaved processor vendored from the SpotSound repo
+(`processor/af3.py`, "timestamp: t seconds; feature:" + 25 audio tokens per second). Trained to answer "No." for absent queries.
+**Questions (the repo's own wording, + " Answer: " as `inference.py`).** EXIST: "This is a sequence of audio stream. Your task
+is to identify whether the sound event in the query occurs. The query is: {q}." GROUND: "... identify the temporal window
+(start and end timestamps) when the given query appears. The query is: {q}." q = `src.labels.canonical(label)` lowercased;
+one rule, no per-family phrasing. Audio = the exact cut the listeners heard: P2/PV `run_audio` (≥ 1 s, as `listener_v4d.py`),
+P1 [cut_start − 1, cut_end + 1] clipped, ≥ 1 s (as `dev_listener.py`).
+**SPOT-yes (decisive).** EXIST not starting with "no" AND GROUND returns ≥ 1 parsed interval (regex "From a (seconds) to b"
+or "(a, b)"; times are cut-relative, shifted by the cut start) overlapping the candidate run [start, end] widened by ± 0.5 s
+(the model's 1-s grid). Reported beside, not decisive: SPOT-any (EXIST yes, any interval), GROUND-only overlap, and a null
+control (q = item `null_family` on the same cut).
+**Data.** Merged DEV P2/PV candidates: `dev_listener_v.json` (~/MscProj_r13, 602) + tagger `dev2_listener_v.json`
+(~/MscProj_tg copy, 402; the local copy is an older 92-item version). "Shipped accepts" = Qwen `accept.V4` (as `v4d_screen.py`).
+Class by `dev_listener.gold_class` on gold_AG / tagger_AG; candidates dropped for "clip not in gold" are counted and printed.
+**Screen (`benchmark/gold/spotsound_screen.py`, `spotsound_screen.json`).** (a) new accepts = SPOT-yes AND V4 false:
+**GO iff needed added ≥ 2 AND other added ≤ 1 × needed added.** (b) veto on V4 accepts = V4 true AND SPOT-no:
+**GO iff other removed ≥ 3 × needed lost** (and ≥ 1 other removed). (c) SPOT alone vs V4 alone: needed / other accept counts.
+Report-only: P1 items of `dev_listener.json` (its `gold` field): SPOT-yes rate on hit_needed vs none. If both STOP, SpotSound
+is closed for the listener role; no threshold or prompt is tuned after the numbers.
