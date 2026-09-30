@@ -950,3 +950,14 @@ spent and was not scored on TEST; it ships as an opt-in flag and contributes to 
 `main.py --input ambient_snow_walk_930.mp4` with the shipped setup and no precomputed answers: on-the-spot listener inputs
 built (yes/no 71 spans, variants 19, AF 19, DASM), stage 4 rescued 3 band runs and kept 1 vetoed span, the gate kept the
 off-screen Laughter (the needed sound TO1+F7F8 gains on DEV), Qwen-Image drew "a person laughing", video written.
+
+## Round 19 — DASM as a third ear for missed sounds (exploratory; TEST spent → opt-in at best; written BEFORE any arm number)
+Candidate-level screen seen (merged DEV): of the base's 32 missed needed sounds, 11 have a same-family DASM frame ≥ 0.575
+(its F8 bar) within [onset − 0.5, onset + 1.0] s — e.g. tg_d133 Fart ×2, tg_d120 Meow, tg_d107 Laughter, citywalk air horn,
+birds_forest Bird, ambulance Vehicle — while 3 of the 11 are gate-visible misses no detector change can fix.
+- **P4 pool:** DASM runs (family column ≥ 0.575, gaps ≤ 0.5 s merged) that no B0r stage-4 span of the same family touches
+  within ± 0.5 s; cut = run ± 1 s (at least 1 s), as the other pools.
+- **Listeners:** Qwen3-Omni V4 and Audio Flamingo Next V4 on each P4 cut (same prompt, decoding and matcher).
+- **Arm DR = TO1+F7F8 + DASM rescue:** a P4 run becomes a rescued span (label = its family, confidence = its DASM peak) iff
+  BOTH listeners name its family (the base's low-tier rule); then the base's rescue filters (ONCE, F8) apply unchanged.
+- Pass rule vs TO1+F7F8 as round 16 (hits ≥ 23, wrong ≤ 48 + 2 × gain, cost < 3.155, no needed hit lost on either part).
