@@ -945,3 +945,8 @@ No second TEST read: underpowered for a 0.11 gain (MDE ≈ 0.19) and it would en
 "After the single pre-registered TEST exposure, one further variant (N2b: weak masked BEATs-only spans under speech or music
 require confirmation by a listener) lowered wrong pictures on merged DEV (44 vs 48, no hit lost) but was found after TEST was
 spent and was not scored on TEST; it ships as an opt-in flag and contributes to no reported TEST result."
+
+### End-to-end check of the shipped pipeline (job 31568897, 4 min 38 s on an H200)
+`main.py --input ambient_snow_walk_930.mp4` with the shipped setup and no precomputed answers: on-the-spot listener inputs
+built (yes/no 71 spans, variants 19, AF 19, DASM), stage 4 rescued 3 band runs and kept 1 vetoed span, the gate kept the
+off-screen Laughter (the needed sound TO1+F7F8 gains on DEV), Qwen-Image drew "a person laughing", video written.
