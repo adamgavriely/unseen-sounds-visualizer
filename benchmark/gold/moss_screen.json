@@ -42,8 +42,22 @@
   }
  },
  "known_misses": [
+  "[dev] ambient_citywalk_nyc_1689 'Air horn, truck horn' 3.76-4.40 peak 0.71 [hit_needed] Q 0 A 1 M 0 | MOSS: 'slamming\\nhumming'",
   "[dev] as_explosion_XJ8lc3I6 'Footsteps' 2.08-2.72 peak 0.66 [hit_needed] Q 0 A 0 M 0 | MOSS: 'Explosion\\nBeep'",
+  "[dev] as_explosion_XJ8lc3I6 'Footsteps' 4.00-5.24 peak 0.69 [other_gold] Q 0 A 1 M 1 | MOSS: 'Explosion\\nFootsteps\\nGunshot'",
+  "[dev] as_explosion_XJ8lc3I6 'Footsteps' 6.12-6.68 peak 0.60 [other_gold] Q 0 A 0 M 0 | MOSS: 'Gunshot\\nGasp\\nShout'",
+  "[dev] as_explosion_XJ8lc3I6 'Footsteps' 8.36-9.08 peak 0.66 [other_gold] Q 0 A 0 M 0 | MOSS: 'Explosion\\nCrashing'",
   "[dev] as_explosion_XJ8lc3I6 'Gasp' 6.72-6.92 peak 0.76 [hit_needed] Q 0 A 0 M 1 | MOSS: 'Gunshot\\nGasp\\nShouting'",
+  "[dev] b3_carnival_parade 'Whistle' 6.32-7.16 peak 0.50 [hit_needed] Q 0 A 0 M 0 | MOSS: 'train'",
+  "[dev] b3_carnival_parade 'Whistle' 14.96-15.40 peak 0.73 [none] Q 0 A 0 M 0 | MOSS: 'machine gun firing\\ncar horn'",
+  "[dev2] tg_d032 'Thunder' 1.16-1.72 peak 0.50 [other_gold] Q 0 A 0 M 0 | MOSS: 'water rushing'",
+  "[dev2] tg_d032 'Thunder' 2.04-4.64 peak 0.65 [other_gold] Q 0 A 0 M 0 | MOSS: 'heavy rain or strong wind'",
+  "[dev2] tg_d032 'Thunder' 6.20-8.56 peak 0.73 [other_gold] Q 0 A 0 M 0 | MOSS: 'Heavy rain'",
+  "[dev2] tg_d032 'Thunder' 9.52-10.00 peak 0.52 [other_gold] Q 0 A 0 M 0 | MOSS: 'water splashing and flowing'",
+  "[dev2] tg_d032 'Thunder' 14.20-15.00 peak 0.68 [other_gold] Q 1 A 0 M 0 | MOSS: 'rushing water'",
+  "[dev2] tg_d107 'Laughter' 0.00-0.52 peak 0.86 [other_gold] Q 1 A 1 M 0 | MOSS: 'Baby laughing'",
+  "[dev2] tg_d107 'Laughter' 0.80-1.76 peak 0.77 [other_gold] Q 0 A 1 M 0 | MOSS: 'Crying'",
+  "[dev2] tg_d107 'Laughter' 2.28-4.60 peak 0.74 [other_gold] Q 0 A 0 M 0 | MOSS: 'crying'",
   "[dev2] tg_d107 'Laughter' 8.40-9.56 peak 0.89 [hit_needed] Q 0 A 1 M 1 | MOSS: 'Screaming\\nLaughter'"
  ],
  "changes": [

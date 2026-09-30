@@ -1793,3 +1793,8 @@ tg_d033 Siren have no P2/PV candidate for any ear. P1 sanity (274 drawn spans, s
 vs none 15/43 (0.35) — MOSS 0.52 / 0.35, Qwen 0.55 / 0.44, AF 0.66 / 0.63: MOSS is the most selective ear on the drawn
 spans but not a better one on the needed side. Listener seat stays closed; `~/venv_moss` and the 18 GB weights remain on
 the cluster (delete on request).
+**Ledger note (after the result above; counts unchanged).** The known-misses lookup in `moss_screen.py` matched the label
+`"Air horn"` exactly and `startswith("nyc")`; fixed to clip substring + family prefix and re-run. Correction: nyc
+'Air horn, truck horn' 3.76 (peak 0.71, hit_needed) IS a P2 candidate — Q no, A yes, MOSS no ('slamming, humming'); tg_d033
+has no Siren-family P2/PV item (its Alarm 0.0–10.0 cut: MOSS 'heavy breathing'). Siren stays unreachable by any ear; Air horn
+is refused by MOSS too.

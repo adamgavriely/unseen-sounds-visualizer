@@ -75,7 +75,7 @@ def main():
                 elif r["TIER"] and not r[rn]:
                     tot[rn]["needed_lost" if needed else "other_lost"] += 1
                     lines.append(f"{rn} - {desc}")
-            if any(x["clip"].startswith(c) and x["label"] == lab for c, lab in KNOWN) and needed:
+            if any(c in x["clip"] and x["family"].startswith(lab) for c, lab in KNOWN):
                 known.append(desc)
     go = {rn: t["needed_added"] >= 2 and t["other_added"] <= 2 * t["needed_added"] and t["needed_lost"] == 0 for rn, t in tot.items()}
     for s in lines:
