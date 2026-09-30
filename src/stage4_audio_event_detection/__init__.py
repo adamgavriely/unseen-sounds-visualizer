@@ -802,6 +802,27 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
     # The veto is deliberately one-sided -- it is applied only to labels FlexSED did not
     # itself raise (its own bar is higher than tau), so the sounds the union was adopted to
     # recover can never be deleted by it.
+    dv = getattr(config, "DASM_CLIP_VETO", None)
+    if dv:
+        # round 28 DV: a span whose family DASM never reaches the calibrated clip bar is dropped unless a listener keeps it
+        d, clip = getattr(config, "LISTENER_DASM_DIR", None), getattr(config, "_CURRENT_CLIP", None)
+        f = Path(d) / f"{clip}.npz" if d and clip else None
+        if f is not None and f.exists():
+            z = np.load(f, allow_pickle=True)
+            dpk = {}
+            for i, lab_ in enumerate([str(x) for x in z["labels"]]):
+                dpk[canonical(lab_)] = max(dpk.get(canonical(lab_), 0.0), float(z["fw"][:, i].max()))
+            gone = []
+            for e in events:
+                if getattr(e, "rescued", False) or dpk.get(canonical(e.label), 1.0) >= float(dv):
+                    continue
+                if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
+                    continue
+                if _af_p1_accepts(e):
+                    continue
+                gone.append(e)
+            events = [e for e in events if e not in gone]
+            print(f"       [stage4] DASM clip veto ({dv}): dropped {len(gone)} span(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
     if veto > 0:
         peak = {}

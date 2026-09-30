@@ -1130,3 +1130,11 @@ the Qwen leg of TIER accepts if V4 OR V4b names the family (AF leg unchanged). S
 V4b answers (job 31594441, 62 min): accepts DEV 78/602, tagger DEV 52/402, TEST 145/778, tagger TEST 72/399. Arm SHIP3+QE
 (jobs 31594896 / 31594897): merged DEV 24 hits / 41 wrong / 2.901 — the same pictures as the shipped version (the extra Qwen
 accepts are all removed later by ONCE, F8 or K-V4). Not adopted.
+
+## Round 28 — DASM clip veto with a listener keep (from the wrong-picture profile; written before its number)
+Profile of the shipped version's merged-DEV pictures (`scratchpad wrong_feats`): DASM's same-family score near the picture
+start is high for hits (median 0.63) and low for cross (0.38, q25 0.08) and phantom (0.23) pictures; BEATs, FlexSED and PANNs
+do not separate them. **DV:** a non-rescued stage-4 span whose family DASM never reaches the round-6 calibrated clip-veto bar
+v = 0.084 anywhere in the clip (the 280-clip calibration, same construction as the FlexSED veto 0.3) is dropped, unless
+Qwen (F7's P1 rule) or Audio Flamingo V4 accepts it. Base SHIP3; pass rule hits ≥ 24, wrong ≤ 41 + 2 × gain, cost < 2.901,
+no needed hit lost on either part.

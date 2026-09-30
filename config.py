@@ -423,6 +423,7 @@ KEEP_NEEDS_V4 = False             # round 21 K-V4
 TIER_2OF3_DASM = False            # round 22 TD
 ONCE_GAP = None                   # round 22 ONCE-G (2.0)
 LISTENER_V4B_CACHE = None         # round 27 QE: second Qwen inventory prompt answers
+DASM_CLIP_VETO = None             # round 28 DV (0.084, round-6 calibrated)
 TIER_SPLIT = 0.6                  # the TIER rule's peak split (amendment E; round 25 re-selects it by CV)
 DASM_P4_CACHE = None              # round 19 DR: benchmark/gold/<split>_listener_p4.json
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener
