@@ -1652,3 +1652,15 @@ rescored with `score_per_sound`). **Pass = the combined rule vs SHIP7 (25/55, 27
 wrong ≤ 27 + 2 × gain, cost < 2.451, no needed hit lost on either part) OR fewer-pictures clause (cost < 2.451,
 wrong ≤ 27 − 3 × hits lost, hits ≥ 22). The primary cell decides; a grid cell is adopted instead only if the CV picks it and
 it passes. GO → arm on the real pipeline (a `src/` flag: not this thread's remit; an Adam decision). STOP → recorded, closed.
+- **CPO screen result** (`benchmark/gold/cpo_screen.json`; base re-placed = 25/55, 27 (9/16/2), 2.451 exactly; 53 placed
+  pictures; every clip has a FlexSED and a BEATs cache): **primary CPO(0.48, 0.15): 18/55, 22 wrong (9/11/2), cost 2.704 → STOP**.
+  It drops 12 pictures: 5 cross (Gunshot 8.25 explosion clip, Electric shaver 16.0, Pant 7.0 + Dog 7.25 tg_d022, Hammer 9.0
+  tg_d128) and **7 hits** (bakery Door 4.25, birds_forest Bird 10.25, protest Glass 10.75 + 16.89, storm-house Alarm 2.18,
+  tg_d120 Cat 0.56, tg_d149 Bee 1.25): for these needed sounds FlexSED's family score shows no rise ≥ 0.15 near the picture
+  start — they are BEATs / listener-rescued faint sounds the text-queried detector barely hears, so a FlexSED change point is
+  not a witness of our hits. The whole 3 × 3 grid is STOP (hits 16–18, wrong 16–23, cost 2.620–2.732; the 0.64/0.2 and
+  0.64/0.3 cells at 2.620 lose 7–8 hits for 8–10 wrong removed, under the 3:1 clause). CV over {SHIP7 + 9 cells}: split-half
+  picks SHIP7 17/20 (procedure 2.519 vs fixed 2.448), 5-fold 45/50 (2.581 vs 2.457); full argmin SHIP7. Record: the same gate
+  on BEATs tagger frames 12/55, 19, 2.958 (13 hits lost) — coarser 1-s windows have no usable change points.
+  **Closed.** Reading: on this benchmark the wrong pictures are not "onsets that aren't there" more often than the hits are;
+  the misses are dominated by families never drawn (23/30), which no post-processing of frame scores can reach.

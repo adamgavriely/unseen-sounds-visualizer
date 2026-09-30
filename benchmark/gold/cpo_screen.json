@@ -1,0 +1,2074 @@
+{
+ "base": {
+  "merged": {
+   "hits": 25,
+   "n": 55,
+   "wrong": 27,
+   "visible": 9,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 2.4507042253521125
+  },
+  "dev": {
+   "hits": 17,
+   "n": 36,
+   "wrong": 16,
+   "visible": 6,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.204081632653061
+  },
+  "dev2": {
+   "hits": 8,
+   "n": 19,
+   "wrong": 11,
+   "visible": 3,
+   "cross": 8,
+   "phantom": 0,
+   "cost": 3.0
+  }
+ },
+ "cells": {
+  "CPO(0.32,0.15)": {
+   "tau": 0.32,
+   "th": 0.15,
+   "rows": {
+    "merged": {
+     "hits": 18,
+     "n": 55,
+     "wrong": 23,
+     "visible": 9,
+     "cross": 12,
+     "phantom": 2,
+     "cost": 2.732394366197183
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 14,
+     "visible": 6,
+     "cross": 6,
+     "phantom": 2,
+     "cost": 2.5306122448979593
+    },
+    "dev2": {
+     "hits": 6,
+     "n": 19,
+     "wrong": 9,
+     "visible": 3,
+     "cross": 6,
+     "phantom": 0,
+     "cost": 3.1818181818181817
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.32,0.2)": {
+   "tau": 0.32,
+   "th": 0.2,
+   "rows": {
+    "merged": {
+     "hits": 17,
+     "n": 55,
+     "wrong": 19,
+     "visible": 8,
+     "cross": 9,
+     "phantom": 2,
+     "cost": 2.676056338028169
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 12,
+     "visible": 5,
+     "cross": 5,
+     "phantom": 2,
+     "cost": 2.4489795918367347
+    },
+    "dev2": {
+     "hits": 5,
+     "n": 19,
+     "wrong": 7,
+     "visible": 3,
+     "cross": 4,
+     "phantom": 0,
+     "cost": 3.1818181818181817
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 4.75,
+     "end": 6.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_DgdHSmwA",
+     "label": "Explosion",
+     "start": 13.52,
+     "end": 15.42,
+     "was": "visible"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d032",
+     "label": "Thunder",
+     "start": 13.75,
+     "end": 15.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d088",
+     "label": "Thunder",
+     "start": 13.25,
+     "end": 14.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d032",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.32,0.3)": {
+   "tau": 0.32,
+   "th": 0.3,
+   "rows": {
+    "merged": {
+     "hits": 16,
+     "n": 55,
+     "wrong": 16,
+     "visible": 7,
+     "cross": 7,
+     "phantom": 2,
+     "cost": 2.647887323943662
+    },
+    "dev": {
+     "hits": 11,
+     "n": 36,
+     "wrong": 11,
+     "visible": 5,
+     "cross": 4,
+     "phantom": 2,
+     "cost": 2.489795918367347
+    },
+    "dev2": {
+     "hits": 5,
+     "n": 19,
+     "wrong": 5,
+     "visible": 2,
+     "cross": 3,
+     "phantom": 0,
+     "cost": 3.0
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_golf_course",
+     "label": "Bird",
+     "start": 18.84,
+     "end": 20.34,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 4.75,
+     "end": 6.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_4O3bZRYO",
+     "label": "Laughter",
+     "start": 13.36,
+     "end": 14.86,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_DgdHSmwA",
+     "label": "Explosion",
+     "start": 13.52,
+     "end": 15.42,
+     "was": "visible"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d029",
+     "label": "Goose",
+     "start": 11.0,
+     "end": 12.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d032",
+     "label": "Thunder",
+     "start": 13.75,
+     "end": 15.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d088",
+     "label": "Thunder",
+     "start": 1.0,
+     "end": 2.5,
+     "was": "visible"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d088",
+     "label": "Thunder",
+     "start": 13.25,
+     "end": 14.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev",
+     "un_driving_motorcycle_4O3bZRYO",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d032",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.48,0.15)": {
+   "tau": 0.48,
+   "th": 0.15,
+   "rows": {
+    "merged": {
+     "hits": 18,
+     "n": 55,
+     "wrong": 22,
+     "visible": 9,
+     "cross": 11,
+     "phantom": 2,
+     "cost": 2.704225352112676
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 14,
+     "visible": 6,
+     "cross": 6,
+     "phantom": 2,
+     "cost": 2.5306122448979593
+    },
+    "dev2": {
+     "hits": 6,
+     "n": 19,
+     "wrong": 8,
+     "visible": 3,
+     "cross": 5,
+     "phantom": 0,
+     "cost": 3.090909090909091
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": true
+  },
+  "CPO(0.48,0.2)": {
+   "tau": 0.48,
+   "th": 0.2,
+   "rows": {
+    "merged": {
+     "hits": 18,
+     "n": 55,
+     "wrong": 21,
+     "visible": 9,
+     "cross": 10,
+     "phantom": 2,
+     "cost": 2.676056338028169
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 13,
+     "visible": 6,
+     "cross": 5,
+     "phantom": 2,
+     "cost": 2.489795918367347
+    },
+    "dev2": {
+     "hits": 6,
+     "n": 19,
+     "wrong": 8,
+     "visible": 3,
+     "cross": 5,
+     "phantom": 0,
+     "cost": 3.090909090909091
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 4.75,
+     "end": 6.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.48,0.3)": {
+   "tau": 0.48,
+   "th": 0.3,
+   "rows": {
+    "merged": {
+     "hits": 16,
+     "n": 55,
+     "wrong": 18,
+     "visible": 8,
+     "cross": 8,
+     "phantom": 2,
+     "cost": 2.704225352112676
+    },
+    "dev": {
+     "hits": 11,
+     "n": 36,
+     "wrong": 11,
+     "visible": 5,
+     "cross": 4,
+     "phantom": 2,
+     "cost": 2.489795918367347
+    },
+    "dev2": {
+     "hits": 5,
+     "n": 19,
+     "wrong": 7,
+     "visible": 3,
+     "cross": 4,
+     "phantom": 0,
+     "cost": 3.1818181818181817
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_golf_course",
+     "label": "Bird",
+     "start": 18.84,
+     "end": 20.34,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 4.75,
+     "end": 6.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_4O3bZRYO",
+     "label": "Laughter",
+     "start": 13.36,
+     "end": 14.86,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_DgdHSmwA",
+     "label": "Explosion",
+     "start": 13.52,
+     "end": 15.42,
+     "was": "visible"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d032",
+     "label": "Thunder",
+     "start": 13.75,
+     "end": 15.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d088",
+     "label": "Thunder",
+     "start": 13.25,
+     "end": 14.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev",
+     "un_driving_motorcycle_4O3bZRYO",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d032",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.64,0.15)": {
+   "tau": 0.64,
+   "th": 0.15,
+   "rows": {
+    "merged": {
+     "hits": 18,
+     "n": 55,
+     "wrong": 22,
+     "visible": 9,
+     "cross": 11,
+     "phantom": 2,
+     "cost": 2.704225352112676
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 14,
+     "visible": 6,
+     "cross": 6,
+     "phantom": 2,
+     "cost": 2.5306122448979593
+    },
+    "dev2": {
+     "hits": 6,
+     "n": 19,
+     "wrong": 8,
+     "visible": 3,
+     "cross": 5,
+     "phantom": 0,
+     "cost": 3.090909090909091
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.64,0.2)": {
+   "tau": 0.64,
+   "th": 0.2,
+   "rows": {
+    "merged": {
+     "hits": 18,
+     "n": 55,
+     "wrong": 19,
+     "visible": 8,
+     "cross": 9,
+     "phantom": 2,
+     "cost": 2.619718309859155
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 11,
+     "visible": 5,
+     "cross": 4,
+     "phantom": 2,
+     "cost": 2.4081632653061225
+    },
+    "dev2": {
+     "hits": 6,
+     "n": 19,
+     "wrong": 8,
+     "visible": 3,
+     "cross": 5,
+     "phantom": 0,
+     "cost": 3.090909090909091
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_golf_course",
+     "label": "Bird",
+     "start": 18.84,
+     "end": 20.34,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 4.75,
+     "end": 6.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_DgdHSmwA",
+     "label": "Explosion",
+     "start": 13.52,
+     "end": 15.42,
+     "was": "visible"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  },
+  "CPO(0.64,0.3)": {
+   "tau": 0.64,
+   "th": 0.3,
+   "rows": {
+    "merged": {
+     "hits": 17,
+     "n": 55,
+     "wrong": 17,
+     "visible": 8,
+     "cross": 7,
+     "phantom": 2,
+     "cost": 2.619718309859155
+    },
+    "dev": {
+     "hits": 12,
+     "n": 36,
+     "wrong": 11,
+     "visible": 5,
+     "cross": 4,
+     "phantom": 2,
+     "cost": 2.4081632653061225
+    },
+    "dev2": {
+     "hits": 5,
+     "n": 19,
+     "wrong": 6,
+     "visible": 3,
+     "cross": 3,
+     "phantom": 0,
+     "cost": 3.090909090909091
+    }
+   },
+   "dropped": [
+    {
+     "part": "dev",
+     "clip": "as_explosion_XJ8lc3I6",
+     "label": "Gunshot",
+     "start": 8.25,
+     "end": 19.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_bakery_morning",
+     "label": "Door",
+     "start": 4.25,
+     "end": 5.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_barbershop",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0,
+     "end": 23.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "b3_golf_course",
+     "label": "Bird",
+     "start": 18.84,
+     "end": 20.34,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "birds_forest",
+     "label": "Bird",
+     "start": 10.25,
+     "end": 14.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 4.75,
+     "end": 6.25,
+     "was": "cross"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 10.75,
+     "end": 13.75,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_protest_scene_movie",
+     "label": "Glass",
+     "start": 16.89,
+     "end": 20.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "mv_storm_scene_house",
+     "label": "Alarm",
+     "start": 2.18,
+     "end": 11.5,
+     "was": "hit"
+    },
+    {
+     "part": "dev",
+     "clip": "un_driving_motorcycle_DgdHSmwA",
+     "label": "Explosion",
+     "start": 13.52,
+     "end": 15.42,
+     "was": "visible"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Pant",
+     "start": 7.0,
+     "end": 8.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d022",
+     "label": "Dog",
+     "start": 7.25,
+     "end": 8.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d029",
+     "label": "Goose",
+     "start": 11.0,
+     "end": 12.5,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d032",
+     "label": "Thunder",
+     "start": 13.75,
+     "end": 15.0,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d088",
+     "label": "Thunder",
+     "start": 13.25,
+     "end": 14.75,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d120",
+     "label": "Cat",
+     "start": 0.56,
+     "end": 2.24,
+     "was": "hit"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d128",
+     "label": "Hammer",
+     "start": 9.0,
+     "end": 10.0,
+     "was": "cross"
+    },
+    {
+     "part": "dev2",
+     "clip": "tg_d149",
+     "label": "Bee, wasp, etc.",
+     "start": 1.25,
+     "end": 3.75,
+     "was": "hit"
+    }
+   ],
+   "hits_lost": [
+    [
+     "dev",
+     "b3_bakery_morning",
+     1
+    ],
+    [
+     "dev",
+     "birds_forest",
+     1
+    ],
+    [
+     "dev",
+     "mv_protest_scene_movie",
+     2
+    ],
+    [
+     "dev",
+     "mv_storm_scene_house",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d032",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d120",
+     1
+    ],
+    [
+     "dev2",
+     "tg_d149",
+     1
+    ]
+   ],
+   "old_rule": false,
+   "fewer_pictures": false,
+   "verdict": "STOP",
+   "primary": false
+  }
+ },
+ "cv": {
+  "half": {
+   "procedure": 2.5193650793650795,
+   "fixed_ship": 2.448492063492063,
+   "picks": {
+    "SHIP7": 17,
+    "CPO(0.32,0.3)": 1,
+    "CPO(0.64,0.2)": 1,
+    "CPO(0.64,0.3)": 1
+   }
+  },
+  "fold5": {
+   "procedure": 2.581377289377289,
+   "fixed_ship": 2.4573772893772894,
+   "picks": {
+    "CPO(0.64,0.2)": 2,
+    "SHIP7": 45,
+    "CPO(0.32,0.3)": 3
+   }
+  },
+  "full_argmin": "SHIP7"
+ },
+ "beats_record": {
+  "rows": {
+   "merged": {
+    "hits": 12,
+    "n": 55,
+    "wrong": 19,
+    "visible": 6,
+    "cross": 11,
+    "phantom": 2,
+    "cost": 2.9577464788732395
+   },
+   "dev": {
+    "hits": 9,
+    "n": 36,
+    "wrong": 11,
+    "visible": 4,
+    "cross": 5,
+    "phantom": 2,
+    "cost": 2.6530612244897958
+   },
+   "dev2": {
+    "hits": 3,
+    "n": 19,
+    "wrong": 8,
+    "visible": 2,
+    "cross": 6,
+    "phantom": 0,
+    "cost": 3.6363636363636362
+   }
+  },
+  "dropped": [
+   {
+    "part": "dev",
+    "clip": "ambient_snow_walk_930",
+    "label": "Laughter",
+    "start": 8.08,
+    "end": 9.58,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "as_church_bell_pJRAWkLM",
+    "label": "Bell",
+    "start": 0.14,
+    "end": 13.75,
+    "was": "visible"
+   },
+   {
+    "part": "dev",
+    "clip": "as_explosion_XJ8lc3I6",
+    "label": "Explosion",
+    "start": 5.68,
+    "end": 7.18,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "b3_golf_course",
+    "label": "Bird",
+    "start": 18.84,
+    "end": 20.34,
+    "was": "cross"
+   },
+   {
+    "part": "dev",
+    "clip": "birds_forest",
+    "label": "Bird",
+    "start": 10.25,
+    "end": 14.0,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "ly_applause_62ZYD0u",
+    "label": "Crowd",
+    "start": 0.0,
+    "end": 7.75,
+    "was": "cross"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_detective_crime_scene",
+    "label": "Alarm",
+    "start": 0.04,
+    "end": 1.54,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_detective_crime_scene",
+    "label": "Alarm",
+    "start": 9.08,
+    "end": 10.58,
+    "was": "cross"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_protest_scene_movie",
+    "label": "Crowd",
+    "start": 0.0,
+    "end": 1.5,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_storm_scene_house",
+    "label": "Alarm",
+    "start": 2.18,
+    "end": 11.5,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_tornado_scene",
+    "label": "Siren",
+    "start": 9.25,
+    "end": 13.0,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "un_driving_motorcycle_4O3bZRYO",
+    "label": "Laughter",
+    "start": 13.36,
+    "end": 14.86,
+    "was": "hit"
+   },
+   {
+    "part": "dev",
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "label": "Explosion",
+    "start": 13.52,
+    "end": 15.42,
+    "was": "visible"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d016",
+    "label": "Cough",
+    "start": 5.75,
+    "end": 7.25,
+    "was": "hit"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d022",
+    "label": "Dog",
+    "start": 7.25,
+    "end": 8.75,
+    "was": "cross"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d030",
+    "label": "Vehicle",
+    "start": 0.0,
+    "end": 17.0,
+    "was": "hit"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d075",
+    "label": "Alarm",
+    "start": 0.14,
+    "end": 9.25,
+    "was": "hit"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "label": "Crying, sobbing",
+    "start": 0.38,
+    "end": 2.75,
+    "was": "hit"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "label": "Screaming",
+    "start": 7.0,
+    "end": 9.0,
+    "was": "cross"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d127",
+    "label": "Laughter",
+    "start": 9.32,
+    "end": 10.01,
+    "was": "hit"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d128",
+    "label": "Laughter",
+    "start": 3.08,
+    "end": 4.58,
+    "was": "visible"
+   }
+  ],
+  "hits_lost": [
+   [
+    "dev",
+    "ambient_snow_walk_930",
+    1
+   ],
+   [
+    "dev",
+    "as_explosion_XJ8lc3I6",
+    1
+   ],
+   [
+    "dev",
+    "birds_forest",
+    1
+   ],
+   [
+    "dev",
+    "mv_detective_crime_scene",
+    1
+   ],
+   [
+    "dev",
+    "mv_protest_scene_movie",
+    1
+   ],
+   [
+    "dev",
+    "mv_storm_scene_house",
+    1
+   ],
+   [
+    "dev",
+    "mv_tornado_scene",
+    1
+   ],
+   [
+    "dev",
+    "un_driving_motorcycle_4O3bZRYO",
+    1
+   ],
+   [
+    "dev2",
+    "tg_d016",
+    1
+   ],
+   [
+    "dev2",
+    "tg_d030",
+    1
+   ],
+   [
+    "dev2",
+    "tg_d075",
+    1
+   ],
+   [
+    "dev2",
+    "tg_d107",
+    1
+   ],
+   [
+    "dev2",
+    "tg_d127",
+    1
+   ]
+  ],
+  "old_rule": false,
+  "fewer_pictures": false
+ }
+}
