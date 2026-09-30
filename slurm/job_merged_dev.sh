@@ -20,6 +20,7 @@ nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 CAND="TO1+F7 TO1+F7F8+FIX TO1F7F8+K3 A1 LR-V12+1+F1F4F3+F7F8 LR-V12+1+F1F4F3+F7F8@AG4 R13-1"
 export TG_ARMS="$CAND"
 P=benchmark/gold/tagger_prep.py
+python benchmark/gold/tagger_coverage.py
 python $P --split dev2 stage4 --arms B0r B1 "TO1+F7F8" $CAND
 python $P --split dev2 stage5 --arms B0r B1 "TO1+F7F8" $CAND
 python $P --split dev2 gates --arms B0r B1 "TO1+F7F8" $CAND
