@@ -57,6 +57,9 @@ WORK = _ROOT / "data" / "work"
 CLIPS = _ROOT / "data" / "input" / "tagger_set"
 TAGGER_GOLD = GOLDD / "annotations" / "tagger_AG.json"
 SPLITS = ("dev2", "test2")
+# extra, gold-free splits for running a version on any folder of clips (scripts/run_best.sh): TG_EXTRA_SPLITS="name ...";
+# clips in data/input/tagger_<name>, stems in benchmark/gold/<name>_stems.txt; never scored here
+EXTRA = tuple(x for x in os.environ.get("TG_EXTRA_SPLITS", "").split() if x and x not in SPLITS)
 C1 = "TO1+F7F8"
 B1_FLAGS = {"BEATS_SELF_VETO": 0.1218, "PANNS_VETO": 0.0}
 SYSTEMS = ("proposed", "blind_a2i")
@@ -68,6 +71,10 @@ def parity(stem):
 
 def stems_of(split):
     st = sorted(x.strip() for x in (GOLDD / f"{split}_stems.txt").read_text(encoding="utf-8").split() if x.strip())
+    if split in EXTRA:
+        have = {p.stem for p in clip_dir(split).glob("*.mp4")}
+        assert st and set(st) <= have, sorted(set(st) - have)
+        return st
     # batch 1 by sha256 parity, batch 2 by the tag-balanced split; membership = benchmark/gold/tagger_split.json
     sp = json.loads((GOLDD / "tagger_split.json").read_text(encoding="utf-8"))["batches"]
     want = sorted(x for b in sp.values() for x in b[split])
@@ -427,7 +434,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=("links", "check", "flexsed", "flexx", "render", "wav16", "beats", "panns", "dasm",
                                      "lpool", "qwen", "afn", "stage4", "stage5", "gates", "score"))
-    ap.add_argument("--split", choices=SPLITS)
+    ap.add_argument("--split", choices=SPLITS + EXTRA)
     ap.add_argument("--arms", nargs="+", default=["B0r"])
     a = ap.parse_args()
     if a.step in ("links", "check"):
