@@ -1352,3 +1352,20 @@ castle, protest, bath) and the per-stretch gate, asked for an object, finds none
   Also reported: the judge-set view (gate_gold DEV clips: seen silenced / 43, needed kept / 36) is not available for a
   whole-clip rule without the scene sentences of the non-picture clips — reported only where a sentence exists.
 - If STOP, a second idea is written here before its number.
+- **SUBJ result (word path, CPU; `subj_screen.json`):** SUBJ-W drops 3 pictures — as_fire_alarm Alarm 8.89 (visible wrong),
+  tg_d127 Water 0.14 (visible wrong) and tg_d120 Cat 0.56, a HIT ("a red alarm clock with a cat picture on the face"):
+  24 / 31 / 2.620 vs 25 / 33 / 2.620. SUBJ ⊇ SUBJ-W, so the hit is lost whatever the VLM answers → **STOP** (the VLM
+  answers, job 31596035, are reported when they land; SUBJ-50 25 / 32 / 2.592 on the word path, report only). The scene
+  sentence names the family of a sound the viewer cannot assume — the "obvious" trade-off again, one level up.
+
+## Round 31 OM — onset-motion tiebreak (Fable, gate group; second idea, written BEFORE any number)
+Three of the nine visible wrong pictures are one-yes splits on a plainly active source (fire-alarm pull 8.89, splashing Water
+0.14, kids' Laughter 3.08). Honest reach: at most these three; Water starts at the clip start (no onset to see).
+- **Rule OM.** A gate stretch with exactly one "yes" among name / a-b / description is re-decided as "seen" iff the video
+  itself changes at the stretch's onset: mean |ΔI| between grey frames 0.25 s apart (160 px wide), averaged over
+  [onset − 0.5, onset + 0.5] s, ≥ K = 3 × the clip's median frame-to-frame change (same spacing, whole clip). K fixed now.
+  The clip verdict stays "silent only if every stretch is seen". No VLM call, no label lists; on the spot for a new video.
+- **Screen.** `benchmark/gold/onset_motion_screen.py` on the saved SHIP5 pictures of merged DEV (CPU). **GO** to a full arm
+  iff 0 current hits lost and wrong ≤ 31 (≥ 2 of the 3 reachable pictures gone, cost < 2.620). Otherwise report-only, and
+  the gate group is closed for this round: the miss side is at the frame ceiling, the wrong side is 4 "obvious" scene
+  sounds (no object to see) + 3 splits + 1 label mismatch + 1 annotation-level bell.
