@@ -1078,3 +1078,10 @@ later same-family rescues are mostly repeats of one sound (3 more wrong pictures
 - **FV** (strong BEATs spans removed by the FlexSED clip veto, e.g. tg_d029 Chicken 0.81, FlexSED family max 0.26): merged DEV
   has 3 needed-class candidates (one chicken twice, one cat) vs 47 others; with the listeners' usual precision (~3 wrong per
   hit) it cannot meet wrong ≤ 2 × gain: NO GO.
+
+## Round 24 — Gemma-4-31B as the visibility gate (written before any number)
+The gate VLMs tried so far are Qwen3.8-27B (shipped), Qwen2.5-VL-7B, OWLv2 and SAM 3; Gemma-4-31B (cached, the only
+judge that passed the trust checks) was never asked the gate's questions. Screen: `gate_gold.py --model google/gemma-4-31B-it
+--dev-only` (same six frames, same three votes, majority rule) on the DEV judge clips, scored like amendment M against
+Qwen3.8-27B. GO to a full arm iff Gemma silences ≥ 3 more seen sounds AND keeps ≥ as many needed sounds (the gate's
+known failure is missed visible sources and wrongly silenced needed ones — the Fart / pet-shop / bell cases).
