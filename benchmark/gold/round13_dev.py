@@ -60,6 +60,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
+        "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
         "FLEXSED_EXTRA": False, "FLEXSED_EXTRA_DIR": None, "FLEXSED_EXTRA_QUERIES": None,
@@ -172,6 +173,10 @@ ARMS["TO1F7F8+K2K3x"] = {**ARMS["TO1F7F8+K2"], **_K["K3"], **_K2X}
 # round 15 amendment O: F8's third vote from Whisper-AT (benchmark/gold/wat_cache.py): family in the top 3 classes at some
 # 0.4-s step of the span +- 0.5 s (cache value = 1 / rank, bar 0.33)
 ARMS["TO1F7F8+O"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_DIR": str(WORK / "wat_cache" / "dev"), "LISTENER_DASM_BAR": 0.33}
+# round 16 night arms (N1 scene fit on all pictures, N2 masked weak BEATs, N4 DASM rank readout)
+ARMS["TO1F7F8+N1"] = {**ARMS["TO1+F7F8"], "SCENE_FIT_ALL": True}
+ARMS["TO1F7F8+N2"] = {**ARMS["TO1+F7F8"], "MASKED_WEAK_VETO": True}
+ARMS["TO1F7F8+N4"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_RANK": 3}
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
 # picture floor) is a no-op on these bases (the scored config has no floor) and is not run; G6 = MERGE_GAP 2.0 -> 1.0
 GRULES = {"G1": {"DISPLAY_THRESHOLD": 0.30, "AUGMENT_THRESHOLD": 0.30}, "G3": {"AED_MIN_DUR": 0.3},

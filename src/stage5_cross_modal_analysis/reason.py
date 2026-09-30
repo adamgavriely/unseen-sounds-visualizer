@@ -1602,14 +1602,17 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
         if not active:
             return
 
-    if getattr(config, "LISTENER_SCENE_FIT", False):
-        for spec in [s for s in specs if s.augment and getattr(s, "rescued", False)]:
+    # Round 16 N1 (SCENE_FIT_ALL): the same F3 question for EVERY drawn sound, not only rescued ones
+    if getattr(config, "LISTENER_SCENE_FIT", False) or getattr(config, "SCENE_FIT_ALL", False):
+        allf = bool(getattr(config, "SCENE_FIT_ALL", False))
+        for spec in [s for s in specs if s.augment and (allf or getattr(s, "rescued", False))]:
             if _scene_fit(spec, video_path, mdl, proc, frames_per_sound) is False:
                 spec.augment = False
                 spec.subject = ""
                 spec.image_prompt = ""
-                spec.reason = "rescued, but not plausible in this scene (F3) - dropped"
-                print("       [stage5] F3 dropped rescued " + spec.event_label, flush=True)
+                spec.reason = ("rescued, but not plausible in this scene (F3) - dropped" if getattr(spec, "rescued", False)
+                               else "not plausible in this scene (N1) - dropped")
+                print("       [stage5] F3/N1 dropped " + spec.event_label, flush=True)
         active = [s for s in specs if s.augment]
         if not active:
             return

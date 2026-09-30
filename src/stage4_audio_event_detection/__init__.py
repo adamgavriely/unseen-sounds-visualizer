@@ -724,6 +724,25 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             dropped = [e for e in dropped if e not in back]
         trace("mirror_veto", dropped, f"R13-2 dropped (b {mb})")
         print(f"       [stage4] mirror veto (b {mb}): dropped {len(dropped)} BEATs-only span(s)", flush=True)
+    # Round 16 N2 (MASKED_WEAK_VETO): a weak BEATs-only span (conf < 0.5) that sits under speech or music (BEATs Speech or
+    # Music >= 0.3 inside it) is mostly a phantom (280/415 audit): dropped unless FlexSED backs it (a twin >= its bar) or the
+    # listener accepts its family (F7's P1 rule). Constants from the audit, not from DEV.
+    if getattr(config, "MASKED_WEAK_VETO", False):
+        sm = [i for i, lab_ in enumerate(labels) if lab_ in ("Speech", "Music")]
+        gone = []
+        if sm:
+            T = np.asarray(times)
+            tw = locals().get("twinned", set())
+            for e in [e for e in events if id(e) not in flex_ids and id(e) not in tw and e.confidence < 0.5]:
+                m = (T >= e.start - 1e-6) & (T <= e.end + 1e-6)
+                if not m.any() or float(np.asarray(framewise)[m][:, sm].max()) < 0.3:
+                    continue
+                if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
+                    continue
+                gone.append(e)
+        events = [e for e in events if e not in gone]
+        trace("masked_weak_veto", gone, "N2 dropped")
+        print(f"       [stage4] N2 masked weak BEATs: dropped {len(gone)} span(s)", flush=True)
     # Amendment 10 (2026-09-23): the second detector also carries the DISagreement. Where
     # BEATs names a family FlexSED never hears anywhere in the clip, the taxonomy shows the
     # sound is usually not there at all (Whale 0.13, Horse 0.13, Cat 0.00, Telephone 0.00).
@@ -1077,6 +1096,13 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
             cols = [i for i, l in enumerate(dl) if canonical(l) == canonical(e.label)]
             m = (np.asarray(dts) >= e.start - pad) & (np.asarray(dts) <= e.end + pad)
             v = float(np.asarray(dfw)[m][:, cols].max()) if cols and m.any() else 0.0
+            rk = getattr(config, "LISTENER_DASM_RANK", None)
+            if rk and cols and m.any():
+                # Round 16 N4: rank readout -- the family is among DASM's top-rk queries at some frame of the span +- pad
+                sub = np.asarray(dfw)[m]
+                kth = np.sort(sub, axis=1)[:, -int(rk)]
+                v = 1.0 if bool((sub[:, cols].max(axis=1) >= kth).any()) else 0.0
+                bar = 0.5
             if v < bar:
                 drop.add(id(e)); dropped["F8"].append(sig(e) + [round(v, 3) if cols else "no DASM query"])
     if f1:
