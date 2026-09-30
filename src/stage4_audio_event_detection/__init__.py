@@ -871,6 +871,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             names = set(q) | set(a)
             if fam in names or (kall == "onto" and any(is_descendant(n, fam) for n in names)):
                 continue
+            if getattr(config, "KEEP_NEEDS_V4_ALL_DASM_KEEP", False) and _dasm_keeps(e):
+                continue                                   # round 35 K4A-D: DASM >= F8's bar in the span +- 0.5 s keeps it
             gone.append(e)
         events = [e for e in events if e not in gone]
         print(f"       [stage4] K4A ({kall}): dropped {len(gone)} span(s)", flush=True)

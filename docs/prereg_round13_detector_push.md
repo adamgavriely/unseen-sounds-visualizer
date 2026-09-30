@@ -1849,3 +1849,8 @@ TEST untouched. Every system is re-scored on the corrected DEV gold.
 Re-scored merged DEV on the corrected gold (58 needed): B0r 18/58, 51 wrong, 3.690; TO1+F7F8 26/45/3.070; SHIP3+DV
 27/31/2.620; SHIP4+BTP 28/30/2.535; SHIP5+CONT 28/25/2.394; **SHIP7 (SHIP6+FLAP) 28/58, 24 wrong (6/16/2), 2.366**;
 SHIP7+K4AO 27/21/2.338. Order of the shipped chain unchanged; every step still lowers cost.
+
+### Round 35 K4A-D (written before its arm number; disclosure: motivated by the round-33 post-hoc note that DASM separates
+K4AO's one lost hit from its three drops on the saved pictures)
+K4AO on SHIP7, except a span that DASM hears (family ≥ 0.575, F8's bar, in the span ± 0.5 s; the existing N2c-D keep) is
+kept. Arm SHIP7+K4AD vs SHIP7 on the corrected merged DEV gold (base 28/58, 24 wrong, 2.366); combined pass rule.

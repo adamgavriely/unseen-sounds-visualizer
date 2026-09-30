@@ -427,6 +427,7 @@ DASM_LOCAL_VETO = None            # round 29 DV-L (0.084) / DV-G (0.575)
 DASM_LOCAL_KEEP = "either"        # round 29: 'either' listener or 'both'
 DASM_CLIP_VETO = None             # round 28 DV (0.084, round-6 calibrated)
 KEEP_NEEDS_V4_ALL = None   # round 30 K4A: "exact" | "onto" (off)
+KEEP_NEEDS_V4_ALL_DASM_KEEP = False   # round 35 K4A-D: DASM (F8 bar) keeps a K4A drop
 BAND_TWIN_PULL = None      # round 30 BTP: FlexSED run bar for the start pull (off)
 REPEAT_NEEDS_SILENCE = None   # round 31 RPT-S: FlexSED bar of the >= 1 s silence a repeat needs (off)
 CONTINUATION_VETO = None   # round 31 CONT: FlexSED bar of the run a continuation span sits in (off)
