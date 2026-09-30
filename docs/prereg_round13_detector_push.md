@@ -838,3 +838,9 @@ TEST2 items for both V and AF). Coverage: every tagged clip has yes/no, variant,
 5 vs 2 hits, 24 vs 29 wrong. It is the one candidate for the merged TEST.
 N1 (scene fit on all pictures, job 31564838) on DEV 49: 14 hits / 16 wrong / 2.45 — same cost as the base but 4 hits lost:
 fails the pre-set rule.
+
+### Round 16 N3 (Kimi-Audio third listener, TIER3) — fails
+DEV 49 (job 31564918): 18 / 24 / 2.45, identical to the base. Merged DEV (job 31564919): 22 hits / 48 wrong / 3.21 vs base
+23 / 48 / 3.16 — loses one needed hit on the tagger DEV part (4 vs 5). Fails the pre-set rule.
+Merged TEST preparation (job 31564931, gold-free): DASM for the old TEST 60; old TEST stage 4/5 of B0r and TO1+F7F8 in
+data/work/r16final, gates pass; tagger TEST part (28 clips) stage 4/5 of B0r and TO1+F7F8, D0 56/56, D5 28/28. Not scored.
