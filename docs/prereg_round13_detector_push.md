@@ -1900,3 +1900,11 @@ on one clip; the merged TEST is spent and cannot confirm it. GO = a `src/` flag 
   19/14 and tagger 9/7; no needed hit lost on either part → **passes the old rule; shipped as SHIP8** (use_shipped
   KEEP_NEEDS_V4_ALL "onto" + KEEP_NEEDS_V4_ALL_DASM_KEEP). K4AO alone 27/21/2.338 (the DASM keep saves the insect hit).
   DBR re-queued on SHIP8; TEST read of SHIP8 follows.
+
+### Visibility re-check round 2 = control sample (written before Adam's answers)
+Round 1 re-checked only sounds where the pipeline disagreed with the gold, which can only help the pipeline. Round 2 is
+the control: 20 merged-DEV sounds (importance ≥ 2, not in round 1) drawn at random with a fixed seed (20261001), 10 marked
+seen and 10 needed (benchmark/gold/visibility_recheck2_items.json), re-judged blind with the same two questions (clips play
+0.5 s before to 0.5 s after, Adam 23:43). Same applying rule (unsure keeps the old value). Report: the flip rate here vs
+round 1 (3/14); if this sample flips at a similar rate, the round-1 corrections are a general label-noise fix, not a
+pipeline-favouring one. Flips here are applied to the gold too and every system re-scored.

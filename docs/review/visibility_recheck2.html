@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visibility Re-check 2</title>
+<style>
+  :root { --bg:#f7f7f5; --card:#fff; --ink:#1d1d1b; --muted:#6b6b66; --line:#e2e2dc; --accent:#2f6fde; --ok:#2e8b57; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#1a1a19; --card:#242422; --ink:#ecece8; --muted:#a3a39c; --line:#3a3a36; --accent:#6f9df0; --ok:#5cc28a; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.45 system-ui, sans-serif; }
+  main { max-width:900px; margin:0 auto; padding:16px; }
+  h1 { font-size:22px; margin:8px 0 4px; }
+  .guide { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 16px; margin:12px 0; }
+  .guide li { margin:4px 0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:14px 0; }
+  .card.done { border-color:var(--ok); }
+  .head { display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; align-items:baseline; }
+  .sound { font-size:19px; font-weight:600; }
+  .meta { color:var(--muted); font-size:14px; }
+  video { width:100%; max-height:420px; background:#000; border-radius:8px; margin:8px 0; }
+  .q { margin:10px 0 4px; font-weight:600; }
+  .opts { display:flex; gap:8px; flex-wrap:wrap; }
+  .opts label { border:1px solid var(--line); border-radius:8px; padding:6px 12px; cursor:pointer; }
+  .opts input { margin-right:6px; }
+  button { font:inherit; padding:7px 14px; border-radius:8px; border:1px solid var(--line); background:var(--card); color:var(--ink); cursor:pointer; }
+  button.primary { background:var(--accent); color:#fff; border-color:var(--accent); }
+  textarea { width:100%; font:inherit; min-height:38px; border:1px solid var(--line); border-radius:8px; padding:6px; background:var(--bg); color:var(--ink); }
+  .bar { position:sticky; bottom:0; background:var(--bg); padding:10px 0; display:flex; gap:10px; align-items:center; border-top:1px solid var(--line); }
+</style>
+</head>
+<body>
+<main>
+<h1>Visibility Re-check, round 2 (20 sounds)</h1>
+<div class="guide">
+  <b>For each sound:</b>
+  <ol>
+    <li>Press <b>Play the sound</b>. It plays from 0.5 s before the sound to 0.5 s after.</li>
+    <li><b>Q1. Is the thing that makes THIS sound on screen while you hear it?</b> Answer "yes" only if you see the actual source. If you see a look-alike (a bird is on screen, but the singing bird is a different one), answer "no".</li>
+    <li><b>Q2. With the sound off, would a viewer already know this sound is happening?</b> For example, lightning on screen means thunder is obvious; a man pulling the fire-alarm handle means the alarm is obvious.</li>
+    <li>If you really can't tell, pick "unsure". Add a note if something is odd, like a wrong label.</li>
+  </ol>
+  Your old answers are hidden on purpose. Answers save in this browser. At the end, press <b>Download answers</b> and put the file in <code>P:\MscProj\benchmark\gold\</code>.
+</div>
+<div id="list"></div>
+<div class="bar">
+  <span id="count" class="meta"></span>
+  <span style="flex:1"></span>
+  <button class="primary" id="dl">Download answers</button>
+</div>
+</main>
+<script>
+const ROOT = "recheck_media/";
+const ITEMS = [
+{
+"id": "r2_01",
+"clip": "mv_storm_scene_house",
+"file": "mv_storm_scene_house.mp4",
+"sound": "Siren",
+"text": "civil defense siren",
+"s": 2.6,
+"e": 11.0
+},
+{
+"id": "r2_02",
+"clip": "b3_botanic_garden",
+"file": "b3_botanic_garden.mp4",
+"sound": "Footsteps",
+"text": "walk, footsteps",
+"s": 0.0,
+"e": 13.3
+},
+{
+"id": "r2_03",
+"clip": "tg_d095",
+"file": "tg_d095.mp4",
+"sound": "Clicking",
+"text": "stovetop gas start",
+"s": 2.3,
+"e": 3.2
+},
+{
+"id": "r2_04",
+"clip": "ambient_snow_walk_930",
+"file": "ambient_snow_walk_930.mp4",
+"sound": "laughter",
+"text": "laughter",
+"s": 8.1,
+"e": 9.4
+},
+{
+"id": "r2_05",
+"clip": "tg_d022",
+"file": "tg_d022.mp4",
+"sound": "Chopping (food)",
+"text": "knife slicing on wood",
+"s": 0.0,
+"e": 2.0
+},
+{
+"id": "r2_06",
+"clip": "b3_golf_course",
+"file": "b3_golf_course.mp4",
+"sound": "Whip",
+"text": "golf swings / ball strikes",
+"s": 11.2,
+"e": 12.0
+},
+{
+"id": "r2_07",
+"clip": "ambient_citywalk_nyc_1689",
+"file": "ambient_citywalk_nyc_1689.mp4",
+"sound": "construction , hammering on metal",
+"text": "construction , hammering on metal",
+"s": 8.1,
+"e": 10.7
+},
+{
+"id": "r2_08",
+"clip": "tg_d120",
+"file": "tg_d120.mp4",
+"sound": "Caterwaul",
+"text": "caterwauling",
+"s": 0.3,
+"e": 2.2
+},
+{
+"id": "r2_09",
+"clip": "tg_d033",
+"file": "tg_d033.mp4",
+"sound": "Siren",
+"text": "alert / siren",
+"s": 0.0,
+"e": 18.0
+},
+{
+"id": "r2_10",
+"clip": "b3_bakery_morning",
+"file": "b3_bakery_morning.mp4",
+"sound": "crumpling",
+"text": "crumpling",
+"s": 10.0,
+"e": 12.1
+},
+{
+"id": "r2_11",
+"clip": "tg_d007",
+"file": "tg_d007.mp4",
+"sound": "Door",
+"text": "car door closes",
+"s": 7.3,
+"e": 7.6
+},
+{
+"id": "r2_12",
+"clip": "tg_d121",
+"file": "tg_d121.mp4",
+"sound": "Explosion",
+"text": "explosion, tearing",
+"s": 3.2,
+"e": 3.3
+},
+{
+"id": "r2_13",
+"clip": "as_explosion_XJ8lc3I6",
+"file": "as_explosion_XJ8lc3I6.mp4",
+"sound": "distant explosion / boom",
+"text": "distant explosion / boom",
+"s": 2.8,
+"e": 4.2
+},
+{
+"id": "r2_14",
+"clip": "b3_bakery_morning",
+"file": "b3_bakery_morning.mp4",
+"sound": "Door",
+"text": "drawer/cupboard open or close",
+"s": 3.9,
+"e": 9.3
+},
+{
+"id": "r2_15",
+"clip": "mv_tornado_scene",
+"file": "mv_tornado_scene.mp4",
+"sound": "Horse",
+"text": "neigh, whinny",
+"s": 17.1,
+"e": 19.8
+},
+{
+"id": "r2_16",
+"clip": "mv_protest_scene_movie",
+"file": "mv_protest_scene_movie.mp4",
+"sound": "Baby cry, infant cry",
+"text": "baby cry, infant cry",
+"s": 3.2,
+"e": 5.1
+},
+{
+"id": "r2_17",
+"clip": "as_explosion_XJ8lc3I6",
+"file": "as_explosion_XJ8lc3I6.mp4",
+"sound": "distant explosion / boom",
+"text": "distant explosion / boom",
+"s": 9.1,
+"e": 10.9
+},
+{
+"id": "r2_18",
+"clip": "as_explosion_XJ8lc3I6",
+"file": "as_explosion_XJ8lc3I6.mp4",
+"sound": "Footsteps",
+"text": "walk, footsteps",
+"s": 2.1,
+"e": 11.3
+},
+{
+"id": "r2_19",
+"clip": "tg_d075",
+"file": "tg_d075.mp4",
+"sound": "Water",
+"text": "spilling water",
+"s": 0.6,
+"e": 3.6
+},
+{
+"id": "r2_20",
+"clip": "as_explosion_XJ8lc3I6",
+"file": "as_explosion_XJ8lc3I6.mp4",
+"sound": "Explosion",
+"text": "distant explosion / boom",
+"s": 5.6,
+"e": 6.7
+}
+];
+const KEY = "visibility_recheck_v2";
+let ans = {};
+try { ans = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { ans = {}; }
+function save() { try { localStorage.setItem(KEY, JSON.stringify(ans)); } catch (e) {} render_count(); }
+function render_count() {
+  const n = ITEMS.filter(it => ans[it.id] && ans[it.id].visible && ans[it.id].obvious).length;
+  document.getElementById("count").textContent = n + " / " + ITEMS.length + " done";
+  ITEMS.forEach(it => document.getElementById("c_" + it.id).classList.toggle("done", !!(ans[it.id] && ans[it.id].visible && ans[it.id].obvious)));
+}
+function radio(it, field, opts) {
+  return '<div class="opts">' + opts.map(o =>
+    `<label><input type="radio" name="${it.id}_${field}" value="${o}" ${(ans[it.id]||{})[field]===o?"checked":""}>${o}</label>`).join("") + "</div>";
+}
+const list = document.getElementById("list");
+ITEMS.forEach((it, i) => {
+  const d = document.createElement("div");
+  d.className = "card"; d.id = "c_" + it.id;
+  d.innerHTML = `<div class="head"><span class="sound">${i+1}. ${it.sound}</span>
+    <span class="meta">${it.clip} · ${it.s.toFixed(1)}–${it.e.toFixed(1)} s · tagged as "${it.text}"</span></div>
+    <video id="v_${it.id}" src="${ROOT + it.file}" controls preload="metadata"></video>
+    <button data-play="${it.id}">Play the sound</button>
+    <div class="q">Q1. Is the thing that makes this sound on screen while you hear it?</div>${radio(it, "visible", ["yes","no","unsure"])}
+    <div class="q">Q2. With the sound off, would a viewer already know this sound is happening?</div>${radio(it, "obvious", ["yes","no","unsure"])}
+    <div class="q">Note (optional)</div><textarea data-note="${it.id}">${(ans[it.id]||{}).note||""}</textarea>`;
+  list.appendChild(d);
+});
+list.addEventListener("change", ev => {
+  const t = ev.target; if (t.type !== "radio") return;
+  const [id, field] = [t.name.slice(0, t.name.lastIndexOf("_")), t.name.slice(t.name.lastIndexOf("_") + 1)];
+  ans[id] = ans[id] || {}; ans[id][field] = t.value; save();
+});
+list.addEventListener("input", ev => {
+  const id = ev.target.dataset.note; if (!id) return;
+  ans[id] = ans[id] || {}; ans[id].note = ev.target.value; save();
+});
+const stops = {};
+list.addEventListener("click", ev => {
+  const id = ev.target.dataset.play; if (!id) return;
+  const it = ITEMS.find(x => x.id === id), v = document.getElementById("v_" + id);
+  v.currentTime = Math.max(0, it.s - 0.5); v.play();
+  if (stops[id]) v.removeEventListener("timeupdate", stops[id]);
+  stops[id] = () => { if (v.currentTime >= it.e + 0.5) { v.pause(); v.removeEventListener("timeupdate", stops[id]); } };
+  v.addEventListener("timeupdate", stops[id]);
+});
+document.getElementById("dl").onclick = () => {
+  const out = {made: new Date().toISOString(), items: ITEMS.map(it => ({id: it.id, clip: it.clip, sound: it.sound, start: it.s, end: it.e, ...(ans[it.id] || {})}))};
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(out, null, 1)], {type: "application/json"}));
+  a.download = "visibility_recheck2_answers.json"; a.click();
+};
+render_count();
+</script>
+</body>
+</html>
