@@ -1731,3 +1731,15 @@ audio-image cosine map should sit near zero when the sound's source is not on sc
   not-seen stretch non-unanimous (+3 needed), 4 already-silenced needed sounds could be rescued, and 6 kept needed sounds
   have all their not-seen stretches non-unanimous (at risk). If the weights or code do not run within about an hour the
   screen stops and says why.
+### Round 33 result — SSL-SaN gate vote: STOP (job 31596662, H200/A100 4 h partition, ~25 min; `benchmark/gold/gate_gold/sslsan/`, `sslsan_summary.json`)
+The official weights (`sslsan.tar`, epoch 200, keys = `AVENet_ssltie`) run in msproj (torch 2.5.1). The silence claim holds
+on our clips: median stretch peak 0.453 with the real audio vs 0.072 with zero audio on the same frames. But the peak does
+not separate on-screen from off-screen: calibration on the 176 non-judge sounds gives t = 0.372 with balanced accuracy
+0.61 (80 / 98 seen silenced, 32 / 78 needed kept) — the map lights up for nearly every real sound, source on screen or not.
+DEV judge clips (43 seen, 36 needed; base 16 / 31): SSL-SaN alone 33 / 43 but 7 / 36; (a) tie-break 16 / 43, 29 / 36 (2
+flips, both needed sounds lost: as_explosion Gunshot, golf Whack); (b) fourth vote 20 / 43, 26 / 36 (9 flips: +4 seen —
+as_glass Glass, crossing_bells Train, ia_youtube Water and Tap — for 5 needed lost: snow_walk Laughter, as_explosion Gunshot
+/ Footsteps / Explosion, golf Whack). Neither variant reaches the bar (≥ 19 / 43 with ≥ 31 / 36) → **STOP**, report-only.
+An audio-visual localiser trained on single-source clips answers "does this audio match this image" — on our scenes it
+says yes for the scene-typical off-screen sounds (explosions in a war street, a siren over a storm house) as readily as for
+visible ones; it is not the missing gate signal. Gate group stays closed.
