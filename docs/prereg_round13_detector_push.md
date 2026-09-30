@@ -1223,3 +1223,81 @@ N2c on the new base, DV-G on the new base, then new mechanisms (re-time instead 
 - **RT (re-time instead of drop; GO bar pre-registered: 0 hits lost, cross −3, wrong not up):** on saved SHIP5 pictures, 30
   drawn non-rescued pictures meet the DV-G condition; none has a family DASM peak ≥ 0.575 within ±3 s (max 0.516). No picture
   moves. **STOP** — these pictures are not mistimed; DASM does not hear the family nearby at all.
+
+### Round 31 RPT-S — repeat pictures need a FlexSED silence (Fable, filter group; written BEFORE any number of it)
+Base = shipped SHIP5 (SHIP4+BTP): merged DEV 25/55, 33 wrong (9/21/3), cost 2.620. Regrouping of the filter group after
+reading the SHIP5 stage-4 trace (`stage4.json` r14_dropped / listener): tg_d107 Crying is a HIT under SHIP5 (BTP pulled it
+to 0.38); tg_d125 Clapping was asked (a_asked 7) and refused by the TIER listener rule, not a filter; so the filter group is
+3: nyc_1689 Hammer 13.76 (F8, DASM 0.281), as_explosion Explosion 2.84 (F8, 0.516), tg_d120 Meow/Cat 2.94 (ONCE, "not the
+first" after Cat 0.56). The "timing" and "veto" cases (birds_forest Bird 2.22 conf 0.22, tg_d032 Thunder 8.0 conf 0.27,
+tg_d095 Dishes 16.5 conf 0.37, ly_ambulance Car 8.25 conf 0.32) are all below PICTURE_MIN_CONF 0.40 and would not be drawn
+with every veto off (not screenable on saved pictures: no image exists for them); ly_applause Crowd starts 1.9 s early
+(0.0 vs 1.9). Display layer: score_per_sound counts a later same-family picture as a free "dup" only if its start falls
+in the onset window of an already-matched gold; a later piece of one long sound (onset far back) is a CROSS, so a texture
+split into pieces costs one wrong per piece. Disclosure (seen before writing, as round 28's profile): in the SHIP5
+pictures 8 wrong pictures are later same-family repeats (barbershop Shaver 16.0; detective Alarm 3.36, 9.08; tg_d020 Rain
+7.0, 12.75; tg_d088 Thunder 8.5, 13.25; as_explosion Gunshot 8.25) and 3 hits are (mv_protest Glass 10.75, 16.89;
+as_explosion Explosion 9.25); a blanket one-picture-per-family rule would give 22/25/2.563 and fail clause (c) by one.
+- **Rule RPT-S:** a placed picture whose family (canonical label) already has an earlier placed picture in the clip is
+  dropped unless the family's FlexSED score (max over its queries per frame) is < 0.5 for a contiguous stretch >= 1.0 s
+  somewhere inside [previous same-family picture START, this picture's start] (the previous start, not its display end,
+  which dwell / MAX_AFTER_END stretch). No FlexSED query for the family -> kept (no evidence of continuity). Rescued and
+  non-rescued alike. Constants reused, not fitted: 0.5 = the BTP / LISTEN_RUN bar, 1.0 s = MAX_AFTER_END / the hit
+  window's late tolerance. Secondary (reported only): the silence must sit in [start - 1.0, start).
+- Screen: `benchmark/gold/rpt_screen.py` on the saved SHIP4+BTP pictures of merged DEV (CPU, FlexSED cache), rescored
+  with score_per_sound. GO iff the combined rule vs SHIP5 holds: old rule (hits >= 25, wrong <= 33 + 2 x gain, cost <
+  2.620, no needed hit lost on either part) OR fewer-pictures clause (cost < 2.620, wrong <= 33 - 3 x hits lost, <= 3 hits
+  lost). If GO the arm lives in stage 4 after BTP (it needs ffw), flag `REPEAT_NEEDS_SILENCE` = 0.5.
+- Second idea if STOP: **ONCE-S** — the same silence test on the ONCE-dropped rescues (r14_dropped ONCE lists + FlexSED);
+  survivors added as (label, start, start + 1.5) to the base pictures and rescored; same GO bar.
+- **RPT-S screen result (saved SHIP5 pictures, merged DEV; `benchmark/gold/rpt_screen_bar0.5_sil1.0.json`):** primary
+  ("between") 25/55, 31 wrong (9/19/3), cost 2.563 vs 25/33/2.620; 0 hits lost; old DEV 18/18 unchanged, tagger 7/13 vs
+  7/15. Only tg_d020 Rain 7.0 and 12.75 are dropped (Rain never falls below 0.5 in FlexSED); every other repeat (Shaver,
+  Alarm rings, Thunder, Gunshot, Glass, Explosion) has a >= 1 s FlexSED silence before it and stays. **Passes the old rule
+  -> GO** to an arm (SHIP5+RPTS, `REPEAT_NEEDS_SILENCE` 0.5 in stage 4 after BTP; same pass rule vs SHIP5). Secondary
+  ("before", reported only): 24/29/2.563, loses as_explosion Explosion 9.25 (silence 0.84 s before it) — fewer-pictures
+  clause only; not adopted. ONCE-S not run (RPT-S is GO).
+  Clarifications (no number changes): "previous same-family picture" = the family's FIRST kept picture in the clip (a
+  dropped repeat never becomes the previous one; `rpt_screen.apply`). The screen sees placed, gate-kept, image-bearing
+  display spans; the arm sees stage-4 spans. Arm definition, written before it exists: "earlier picture" = a same-family
+  span with conf >= the display bar that survives stage 4 after BTP; the gate (which can silence the earlier span) is a
+  known divergence, reported if arm != screen. Files uncommitted: this entry, `benchmark/gold/rpt_screen.py`,
+  `benchmark/gold/rpt_screen_bar0.5_sil1.0.json`.
+
+### Round 31 CONT — continuation veto (Fable, cross group; written 2026-09-30 BEFORE any number of it)
+**Group listing (SHIP5 = saved SHIP4+BTP pictures, merged DEV, `benchmark/gold/cross_group.py` → `cross_group.json`; 21
+cross pictures, base reproduced 25/55, 33 (9/21/3), 2.620).** Groups: **L late repeat, 9** — the family's sound was
+already going on and its onset was shown or missed earlier (barbershop Shaver 16.0 [+15.9 s], detective Alarm 3.36 and
+9.08 [Telephone 0.0], tg_d020 Rain 2.0 / 7.0 / 12.75 [Rain 0.0 V/O], tg_d030 Vehicle 13.5 [Motorcycle 7.7 V/O], tg_d088
+Thunder 13.25 [+2.15], golf Bird 18.84 rescued [Bird 0.0]); **E early, 4** (explosion Gunshot 8.25 [Machine gun 10.1,
+−1.85 s], applause Crowd 0.0 [−1.9, the known chain], protest Glass 4.75 [Glass 11.0; a Baby cry is there], tg_d088 Thunder
+8.5 [−2.6]); **X wrong family, 8** — a picture of another family at the moment of a visible/obvious sound (crossing_bells
+Steam on the Train, blueplanet Laughter on a Quack, tg_d022 Pant and Dog on Chopping, tg_d088 Explosion on Thunder, tg_d107
+Screaming on a bird, tg_d128 Hammer on Clang; tg_d029 Goose on a needed Chicken). Stage: 17 tagger-origin BEATs spans, 2
+FlexSED-only (detective Alarm ×2), 2 rescued (golf Bird, blueplanet Laughter; both listeners + DASM say yes). Listeners on
+the P1 cut: in L the family is named by Qwen or AF on 8/9 (they hear the sound — it IS there, only late); in X neither
+names the family on 3/8 (Pant, Goose, and Dog/Screaming/Hammer/Explosion/Steam are named by at least one). K4A (other
+thread) covers X's "nobody names it" cases; the gate-side X cases are amendment M/N territory (closed).
+**Rule CONT (`CONTINUATION_VETO`, general, stage 4 after BTP on every drawn span, rescued included):** a picture is a
+continuation, not an onset, when its family's FlexSED evidence was already up before it starts: a FlexSED run of the
+family (frame score ≥ 0.5 = the BTP / LISTENER_LO bar, gaps ≤ LISTEN_RUN_GAP merged, the `_runs` construction) that starts
+≥ 1.5 s before the picture's start (1.5 s = BTP's start window / MERGE_GAP) and reaches it (run end ≥ picture start) drops
+the picture. A picture starting in the clip's first 1.5 s is never dropped (no "before" exists). No other constant.
+**Screen:** CPU, saved SHIP4+BTP pictures of merged DEV (`benchmark/gold/cont_screen.py`), rescored with score_per_sound.
+**GO bar = the combined pass rule vs SHIP5 (25/55, 33, 2.620):** old rule (hits ≥ 25, wrong ≤ 33 + 2 × gain, cost <
+2.620, no needed hit lost on either part) OR the fewer-pictures clause (cost < 2.620, wrong ≤ 33 − 3 × hits lost, hits ≥ 22).
+Reported only, not judged: the same rule with the BEATs family column in place of FlexSED, and with 1.0 s in place of 1.5 s.
+- **CONT screen result (saved SHIP5 pictures, merged DEV, `benchmark/gold/cont_screen.json`):** 24/55 hits, 28 wrong
+  (9/17/2), cost 2.535 vs SHIP5 25/33/2.620. Dropped 6 pictures: 4 cross (tg_d020 Rain 2.0 / 7.0 / 12.75, tg_d030 Vehicle
+  13.5 — all group L), 1 phantom (mv_protest Siren 22.75), 1 hit (b3_favela_rio Train 14.72: FlexSED hears the train ≥ 0.5
+  from > 1.5 s before the annotated onset). Old DEV 17/17/2.245 (one needed hit lost), tagger DEV 7/11/3.182. Old rule
+  fails (a hit lost); **fewer-pictures clause passes** (cost down, 5 wrong per hit lost ≥ 3:1, 1 ≤ 3 lost) → **GO** to
+  the arm SHIP5+CONT (flag `CONTINUATION_VETO` 0.5 / 1.5 s in stage 4 after BTP), judged under the combined rule vs SHIP5.
+  Reported only: BEATs column instead of FlexSED changes nothing (BEATs spans are the pictures' own starts); WIN 1.0 s
+  drops 8 (2 hits: + tg_d149 Bee 1.25), 23/27/2.563 — worse than 1.5 s on hits, not adopted. Not caught by CONT: the
+  L cases whose family FlexSED is not continuously ≥ 0.5 before the start (barbershop Shaver, detective Alarm ×2, tg_d088
+  Thunder 13.25, golf Bird) and every E / X case.
+- **RPT-S screen result (saved SHIP5 pictures):** 25/55, 31 wrong (9/19/3), cost 2.563; 0 hits lost; GO → arm SHIP5+RPTS
+  (`REPEAT_NEEDS_SILENCE` 0.5, stage 4 after BTP).
+- **PMC (written before its number):** 4 heard misses sit just under the picture floor PICTURE_MIN_CONF 0.40 (0.22–0.37).
+  One value, not a sweep: floor = DISPLAY_THRESHOLD 0.35 (the pipeline's own display bar). Arm SHIP5+PMC; combined rule.

@@ -890,6 +890,33 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             if best is not None:
                 e.start = best; n += 1
         print(f"       [stage4] BTP ({btp}): pulled {n} span start(s)", flush=True)
+    rps = getattr(config, "REPEAT_NEEDS_SILENCE", None)
+    if rps and ffw is not None:
+        # round 31 RPT-S: a later span of a family already drawn in the clip is kept only if the family's FlexSED score is
+        # below rps for >= 1.0 s somewhere between the family's first kept span start and this start (a new occurrence,
+        # not a piece of one long sound); no FlexSED query for the family -> kept
+        fa, ft = np.asarray(ffw), np.asarray(ftimes)
+        dt = float(ft[1] - ft[0]) if len(ft) > 1 else 0.04
+        disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+        first, gone = {}, []
+        for e in sorted([e for e in events if e.confidence >= disp], key=lambda e: e.start):
+            fam = canonical(e.label)
+            if fam not in first:
+                first[fam] = e.start; continue
+            cols = [i for i, lab_ in enumerate(flabels) if canonical(lab_) == fam]
+            if not cols:
+                continue
+            m = (ft >= first[fam]) & (ft <= e.start)
+            low = fa[m][:, cols].max(axis=1) < float(rps) if m.any() else np.zeros(0, bool)
+            run = best = 0
+            for v in low:
+                run = run + 1 if v else 0; best = max(best, run)
+            if best * dt >= 1.0:
+                first[fam] = e.start
+            else:
+                gone.append(e)
+        events = [e for e in events if e not in gone]
+        print(f"       [stage4] RPT-S ({rps}): dropped {len(gone)} repeat span(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
     if veto > 0:
         peak = {}
