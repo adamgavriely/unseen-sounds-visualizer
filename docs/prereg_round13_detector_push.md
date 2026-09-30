@@ -1069,3 +1069,12 @@ pre-registered exposure (TO1+F7F8 vs B0r, "same"); reads 2–4 are a labelled se
 
 ### Round 22 ONCE-G — fails (merged DEV 24 hits / 44 wrong / 2.986 vs base 24 / 41 / 2.901; jobs 31593905 / 31593906):
 later same-family rescues are mostly repeats of one sound (3 more wrong pictures), no hit gained.
+
+### Round 23 screens (Fable, candidate level; no arm run)
+- **SS short-burst path** (FlexSED ≥ 0.8 runs shorter than 0.5 s, not covered, DASM ≥ 0.575 within ± 0.5 s): merged DEV has
+  2 hit-class candidates vs 75 others (a vacuum cleaner alone gives 27). Far above the GO bar (≤ 2 wrong per hit): NO GO.
+- **F8-A** (F8 abstains where DASM is deaf): the tagger-DEV Thunder runs (the only targets) are rejected by both listeners
+  (Qwen V4 and AF V4 no at 2.04–4.64 and 6.2–8.56 s) — nothing to rescue: not run.
+- **FV** (strong BEATs spans removed by the FlexSED clip veto, e.g. tg_d029 Chicken 0.81, FlexSED family max 0.26): merged DEV
+  has 3 needed-class candidates (one chicken twice, one cat) vs 47 others; with the listeners' usual precision (~3 wrong per
+  hit) it cannot meet wrong ≤ 2 × gain: NO GO.
