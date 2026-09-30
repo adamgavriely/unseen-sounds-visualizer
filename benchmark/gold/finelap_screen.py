@@ -7,6 +7,7 @@ GO iff needed added >= 2 and other added <= needed added. (b) veto: TIER true AN
     # from ~/MscProj_tg on the cluster
     python benchmark/gold/finelap_screen.py run     # GPU, ~/venv_flap (transformers 4.51.3), HF offline
     python benchmark/gold/finelap_screen.py score   # CPU, msproj env
+    python benchmark/gold/finelap_screen.py run test test2   # TEST frame caches -> data/work/finelap_test{,2}/
 """
 from __future__ import annotations
 
@@ -29,6 +30,11 @@ PARTS = {"dev": {"p1": R13 / "benchmark" / "gold" / "dev_listener.json", "v": R1
                  "wav": R13 / "data" / "work" / "devcand" / "wav16"},
          "dev2": {"p1": G / "dev2_listener.json", "v": G / "dev2_listener_v.json", "af": G / "dev2_listener_afn.json",
                   "gold": G / "annotations" / "tagger_AG.json", "wav": _ROOT / "data" / "work" / "r13dev2" / "wav16"}}
+# TEST caches for the SHIP6+FLAP TEST read (no TEST gold is read): same windows, same families-per-clip rule
+TEST_PARTS = {"test": {"p1": G / "test_listener.json", "v": G / "test_listener_v.json",
+                       "wav": _ROOT / "data" / "work" / "r13test" / "wav16", "out": _ROOT / "data" / "work" / "finelap_test"},
+              "test2": {"p1": G / "test2_listener.json", "v": G / "test2_listener_v.json",
+                        "wav": _ROOT / "data" / "work" / "r13test2" / "wav16", "out": _ROOT / "data" / "work" / "finelap_test2"}}
 CACHE = _ROOT / "data" / "work" / "finelap_cache"
 OUT = G / "finelap_screen.json"
 SR, WIN_FR, HOP_S, FRAME_S = 16000, 1024, 5.12, 0.16
@@ -40,7 +46,7 @@ def key(x):
 
 
 def items(part):
-    c = PARTS[part]
+    c = PARTS[part] if part in PARTS else TEST_PARTS[part]
     p1 = [x for x in json.loads(c["p1"].read_text(encoding="utf-8"))["items"] if x.get("pool") == "P1"]
     cand = [x for x in json.loads(c["v"].read_text(encoding="utf-8"))["items"] if x.get("pool") in ("P2", "PV")]
     return p1, cand
@@ -94,7 +100,7 @@ def frame_scores(model, wav, phrases, device):
     return np.array(fs), np.array(fe), np.stack(sc)
 
 
-def run():
+def run(splits=None):
     import torch
     from transformers import AutoModel
     dev = "cuda" if torch.cuda.is_available() else "cpu"
@@ -105,8 +111,9 @@ def run():
         ref = type(model).load_audio(model, [str(smoke)], device=dev)[0, 0].cpu()
         mine = _mel(_load(smoke)[: int(WIN_S * SR)])
         print(f"[check] mel max abs diff vs load_audio: {float((ref - mine).abs().max()):.2e}", flush=True)
-    CACHE.mkdir(parents=True, exist_ok=True)
-    for part, c in PARTS.items():
+    todo = {k: {**v, "out": CACHE} for k, v in PARTS.items()} if not splits else {k: TEST_PARTS[k] for k in splits}
+    for part, c in todo.items():
+        c["out"].mkdir(parents=True, exist_ok=True)
         p1, cand = items(part)
         want = {}
         for x in p1 + cand:
@@ -118,7 +125,7 @@ def run():
                 print(f"[run] {part} {clip}: no wav", flush=True)
                 continue
             fs, fe, sc = frame_scores(model, _load(wp), ph, dev)
-            np.savez(CACHE / f"{clip}.npz", fs=fs, fe=fe, scores=sc, labels=np.array(ph))
+            np.savez(c["out"] / f"{clip}.npz", fs=fs, fe=fe, scores=sc, labels=np.array(ph))
             print(f"[run] {part} {clip}: {len(ph)} queries, {len(fs)} frames", flush=True)
 
 
@@ -207,4 +214,7 @@ def score():
 
 
 if __name__ == "__main__":
-    {"run": run, "score": score}[sys.argv[1]]()
+    if sys.argv[1] == "run":
+        run(sys.argv[2:] or None)
+    else:
+        score()
