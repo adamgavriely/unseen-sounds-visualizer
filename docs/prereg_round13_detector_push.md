@@ -1100,3 +1100,9 @@ the cell with the lowest training cost (ties → SHIP3); report the procedure's 
 Candidate = the full-merged-DEV argmin. Adopt iff the procedure's CV cost ≤ SHIP3's CV cost AND the standard pass rule (hits ≥
 24, wrong ≤ 41 + 2 × gain, cost < 2.901, no needed hit lost on either part). If the argmin is SHIP3: "stable under CV", no
 TEST read. Any adopted cell is reported on TEST afterwards, never chosen on it.
+
+### Round 25 result — stable under CV (jobs 31594170 / 31594171; `benchmark/gold/cv_select.json`)
+Merged DEV: CV54, CV64, CV74, CV75 give exactly the shipped pictures (24 / 41 / 2.901); CV76 (LO 0.6) loses 2 hits (22 / 41 /
+3.014). 5-fold CV (10 seeds): the procedure picks the shipped cell in 50/50 folds; held-out cost 2.906 = fixed SHIP3 2.906.
+The two never-tuned listener parameters do not matter below LO 0.6 (the rescue filters ONCE / F8 / K-V4 decide); the
+shipped values are kept. No TEST read.
