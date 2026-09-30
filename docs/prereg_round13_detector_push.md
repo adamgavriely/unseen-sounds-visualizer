@@ -715,7 +715,7 @@ needed sounds, then all sounds, then sha256; consecutive pairs, alternating whic
 batch 2's own tags were read; batch 1 stays exactly as it was (sha256 % 2; TEST2 tags never read).
 Batch 2: **DEV2** = tg_d022, d029, d030, d032, d054, d085, d095 (7; 6 needed sounds); **TEST2** = tg_d009, d014, d019,
 d023, d031, d045, d046, d068 (8; 7 needed). Totals: DEV2 13, TEST2 18. Membership: `benchmark/gold/tagger_split.json`.
-Disclosure: Adam opened the BEATs-only suggestions on most batch-2 clips before tagging (`suggestions_shown_at`).
+Disclosure: Adam opened the BEATs-only suggestions on all 15 batch-2 clips while tagging (`suggestions_shown_at`).
 
 ## Round 15 amendment O — Whisper-AT as F8's third vote (Fable idea 3; Adam: "do whatever needed"; written 2026-09-30 BEFORE any number of it)
 Motive: F8 (DASM) killed two rescued needed sounds (Hammer 13.7, DASM 0.281; Explosion 2.8, DASM 0.516 < 0.575), and the
