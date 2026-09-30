@@ -404,6 +404,12 @@ FLEXSED_EXTRA_DIR = None      #   <dir>/<clip>.npz (fw [Q, frames], labels, fps)
 FLEXSED_EXTRA_QUERIES = None  #   benchmark/gold/flexsed_extra_queries.json (bucket "a_folded" is used)
 LISTENER_ONCE = False         # Round 14 amendment E (F1b): one rescued span per family per clip, the earliest
 PANNS_VETO_SKIP_ABOVE = None  # Round 14 amendment G5: FlexSED-only spans with peak >= this skip the PANNs clip veto (0.9)
+# Round 16 night arms (docs/prereg_round13_detector_push.md), all off by default: N1 scene-fit question for every drawn sound,
+# N2 drop weak BEATs-only spans under speech/music unless FlexSED or the listener backs them, N4 DASM vote by rank (top-k)
+SCENE_FIT_ALL = False
+MASKED_WEAK_VETO = False
+LISTENER_DASM_RANK = None
+LISTENER_REQUIRE_CACHES = False   # use_shipped sets True: stage 4 stops on a clip without listener answers / DASM scores
 ONSET_RELOC = False           # Round 14 amendment I1: picture start at the steepest rise of the family's evidence; split at dips
 TIER_SPECIFIC = False         # Round 14 amendment I5: TIER peak includes the specific (folded) child queries (evidence only)
 ACTIVITY_GATE = False         # Round 14 amendment I2: a gate-visible sound is kept if its source is not visibly producing it
