@@ -1172,3 +1172,8 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
   {family} sound or something else". A firm "b" in both orderings vetoes the "seen" vote for that stretch. Screen on the DEV
   judge clips (43 seen, 36 needed; shipped majority 16 / 31). GO to a full arm iff ≥ 3 more needed kept with ≤ 1 fewer seen
   silenced. Otherwise report-only.
+- **F8-U result (old DEV 49, proposed):** SHIP4+F8U 20/36 hits, 25 wrong, cost 2.327 vs SHIP4 (=SHIP3+DV) 18/36, 18, 2.204:
+  +2 hits for +7 wrong (rule allows +4), cost up. **Fail** on old DEV; tagger part only reported.
+- **GA screen result (DEV judge clips):** majority 16/43 seen silenced, 31/36 needed kept; GA 9/43 and 32/36. +1 needed kept
+  (bell_miami Bell) for 7 fewer seen silenced (the listener says "not the named thing" on real visible sounds: Water, Vehicle,
+  Laughter, Machine gun). **STOP.** The listener cannot tell a named visible source from another of the same family.
