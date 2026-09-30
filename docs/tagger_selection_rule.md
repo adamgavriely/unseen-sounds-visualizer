@@ -47,3 +47,9 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
   Screaming, Crying, Baby cry, Thunder, Crash/Smash, car/air horn, Doorbell, Telephone ringing, Dog bark/growl,
   Breaking; descendants included). Striking clips first in the seed order until 25, then the rest of the eligible
   pool in the same order. Chosen from labels only, never from detector output.
+
+## Amendment 4 (Adam, 2026-09-30 02:23 UTC)
+The AudioSet-Strong labels ARE shown in the tool, as "other annotators' tags" behind their own hidden button
+(`benchmark/gold/tagger_annot.py`; the export records `annotators_shown_at` / `from_annotators`). They are not used as a
+quality check of Adam's tags ("we just want a tagged dataset; AudioSet-Strong contains errors"). This replaces the
+"never shown in the tool" line of point 2.
