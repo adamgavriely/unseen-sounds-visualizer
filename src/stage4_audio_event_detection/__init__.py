@@ -851,6 +851,26 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 gone.append(e)
             events = [e for e in events if e not in gone]
             print(f"       [stage4] DASM local veto ({lv}, keep {mode}): dropped {len(gone)} span(s)", flush=True)
+    kall = getattr(config, "KEEP_NEEDS_V4_ALL", None)
+    if kall:
+        # round 30 K4A: K-V4 on every drawn non-rescued span -- dropped when both open-inventory listeners were asked on its
+        # P1 cut and neither names its family ("exact"), or no named family is it or a kind of it ("onto"); unasked -> kept
+        from src.labels import is_descendant
+        disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+        gone = []
+        for e in events:
+            if getattr(e, "rescued", False) or e.confidence < disp:
+                continue
+            q, a = _p1v4_lists(e)
+            if q is None or a is None:
+                continue
+            fam = canonical(e.label)
+            names = set(q) | set(a)
+            if fam in names or (kall == "onto" and any(is_descendant(n, fam) for n in names)):
+                continue
+            gone.append(e)
+        events = [e for e in events if e not in gone]
+        print(f"       [stage4] K4A ({kall}): dropped {len(gone)} span(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
     if veto > 0:
         peak = {}
@@ -1164,6 +1184,23 @@ def _v4_names(e) -> bool:
         if c and fam in (min(c, key=lambda x: abs(x["start"] - e.start)).get("qwen_fams") or []):
             return True
     return _af_p1_accepts(e)
+
+
+def _p1v4_lists(e):
+    """round 30 K4A: (qwen_fams, af_fams) of e's P1 cut in config.RELABEL_P1V4 (None where not asked)"""
+    from src.labels import canonical
+    p, clip = getattr(config, "RELABEL_P1V4", None), getattr(config, "_CURRENT_CLIP", None)
+    if not p or clip is None:
+        return None, None
+    key = (p, clip)
+    if key not in _P1V4:
+        _P1V4[key] = [x for x in _cache_items(p) if x.get("clip") == clip]
+    fam = canonical(e.label)
+    c = [x for x in _P1V4[key] if x["family"] == fam and abs(x["end"] - e.end) <= 0.02 and e.start - 0.02 <= x["start"] <= e.end]
+    if not c:
+        return None, None
+    it = min(c, key=lambda x: abs(x["start"] - e.start))
+    return it.get("qwen_fams"), it.get("af_fams")
 
 
 def _v4_names_qwen(e) -> bool:

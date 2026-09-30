@@ -1183,3 +1183,11 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
 - **DV-L / DV-G results (merged DEV):** DV-L = SHIP4 exactly (24/55, 34, 2.704; no span changed — the clip veto already
   covers it). DV-G 19/55, 21 wrong (8/12/1), cost 2.620: −13 wrong but −5 hits. **Fail** (hits drop). Noted as a
   fewer-pictures option only.
+
+### Round 30 (Fable, written before any arm number)
+- **K4A (`KEEP_NEEDS_V4_ALL`):** K-V4's test on every drawn non-rescued span (conf ≥ display bar): the span is dropped
+  when both open-inventory listeners were asked on its P1 cut (`RELABEL_P1V4` item with qwen_fams and af_fams) and neither
+  names its family; unasked spans are kept. "exact" = family match (K-V4's own); "onto" = a named family that is a kind of
+  the span's family also keeps it (e.g. Aircraft keeps Vehicle). Pre-registered primary: **onto** (K4AO); exact reported.
+  Fable's candidate count (seen before the arm, DEV P1 items with gold): 0 of 15 hit_needed items fail the test, 16 non-hit
+  items do. Pass rule vs SHIP4 (24/55, 34, 2.704): hits ≥ 24, no needed hit lost on either part, wrong ≤ 34, cost < 2.704.

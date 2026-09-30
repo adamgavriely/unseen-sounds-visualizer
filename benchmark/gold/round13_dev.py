@@ -210,6 +210,8 @@ ARMS["SHIP4"] = {**ARMS["SHIP3+DV"]}                    # the shipped default si
 ARMS["SHIP4+F8U"] = {**ARMS["SHIP4"], "F8_BYPASS_BOTH": True, "ONCE_GAP": 2.0}
 ARMS["SHIP4+DVL"] = {**ARMS["SHIP4"], "DASM_LOCAL_VETO": 0.08392333984375, "DASM_LOCAL_KEEP": "either"}
 ARMS["SHIP4+DVG"] = {**ARMS["SHIP4"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "both"}
+ARMS["SHIP4+K4A"] = {**ARMS["SHIP4"], "KEEP_NEEDS_V4_ALL": "exact"}      # round 30 K4A
+ARMS["SHIP4+K4AO"] = {**ARMS["SHIP4"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
