@@ -41,6 +41,10 @@ def main() -> None:
         config.use_shipped()
         if args.listener_split:
             config.set_listener_split(args.listener_split)
+        else:
+            # no precomputed answers named: compute them on the spot (same harness as the benchmark, slow)
+            from src.listener_prep import ensure_listener_inputs
+            config.set_listener_split(ensure_listener_inputs(Path(args.input)))
     for k, v in (("WHISPER_MODEL", args.whisper_model), ("DEVICE", args.device), ("GEN_BACKEND", args.generator),
                  ("VIDEO_BACKEND", args.video_backend)):
         if v is not None:
