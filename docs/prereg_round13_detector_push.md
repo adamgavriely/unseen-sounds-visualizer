@@ -1846,3 +1846,6 @@ Three sounds flip from seen to needed (visible and obvious both no): as_church_b
 (Q2 unsure → old obvious "no" kept), tg_d088 Thunder 1.3. The other 11 keep their class (the 5 gate-silenced stay needed;
 storm Thunder ×2, protest horn, bath water, kids' laughter, starter's bang stay seen). DEV gold only (gold_AG / tagger_AG);
 TEST untouched. Every system is re-scored on the corrected DEV gold.
+Re-scored merged DEV on the corrected gold (58 needed): B0r 18/58, 51 wrong, 3.690; TO1+F7F8 26/45/3.070; SHIP3+DV
+27/31/2.620; SHIP4+BTP 28/30/2.535; SHIP5+CONT 28/25/2.394; **SHIP7 (SHIP6+FLAP) 28/58, 24 wrong (6/16/2), 2.366**;
+SHIP7+K4AO 27/21/2.338. Order of the shipped chain unchanged; every step still lowers cost.
