@@ -934,3 +934,7 @@ a "fewer false pictures" setting if he prefers precision; DEV-only, TEST spent.
 N2b on the tagger TEST part and old TEST: stage 4/5 built gold-free (job 31565818, D0 56/56, D5 28/28; old TEST gates pass).
 - **N2d (exploratory, written before its number):** N2b plus the same confirmation for FlexSED-only spans (not rescued):
   kept only if BEATs gives the family ≥ its own bar (0.175) somewhere inside, or either listener accepts it. Same rule.
+
+### Round 18 N2d — fails
+DEV 49 (job 31565866): 16 / 22 / 2.53; merged DEV (job 31565867): 20 hits / 43 wrong / 3.18 — three needed hits lost
+(FlexSED-only real sounds that neither BEATs nor a listener confirms). Fails.
