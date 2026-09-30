@@ -1525,3 +1525,5 @@ DASM-DV-dropped rows (SHIP2+KV4 rows absent from SHIP3+DV) it would keep back, e
 stratified by part (10 seeds x 2 halves and 5-fold): the cell with the lowest training cost is scored on the held-out
 clips; the procedure's held-out cost vs fixed SHIP6. The full-merged-DEV argmin is the candidate; it is adopted only if
 the CV cost <= SHIP6's CV cost AND it passes the combined rule. If the argmin is SHIP6: stable, STOP. No TEST read.
+- **TEST read of SHIP6 (reported):** SHIP5+CONT 24 hits / 32 wrong (5/22/5) / 2.591 vs B0r 21/40/2.909; d −0.318
+  [−0.614, −0.023], one-sided p 0.025 → **better** (benchmark/gold/final_test_ship6.md).
