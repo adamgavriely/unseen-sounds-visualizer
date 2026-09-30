@@ -1106,3 +1106,10 @@ Merged DEV: CV54, CV64, CV74, CV75 give exactly the shipped pictures (24 / 41 / 
 3.014). 5-fold CV (10 seeds): the procedure picks the shipped cell in 50/50 folds; held-out cost 2.906 = fixed SHIP3 2.906.
 The two never-tuned listener parameters do not matter below LO 0.6 (the rescue filters ONCE / F8 / K-V4 decide); the
 shipped values are kept. No TEST read.
+
+## Round 26 — Step-Audio-2-mini as an ear (candidate-level screen; written before any of its answers exist)
+Step-Audio-2-mini (StepFun, official weights; a different audio encoder lineage from Qwen, AF-Next, Kimi and Dasheng) answers
+the V4 prompt on the P2/PV cuts of DEV and the tagger DEV part (same cut, decoding and matcher as Qwen/AF; tag-style answers
+normalised as for Kimi). **GO to an arm** only if, on the needed-class candidates of merged DEV, Step names at least as many as
+Qwen V4 while accepting no more other-class candidates; the arm would then replace Qwen by Step in the TIER high tier
+(base SHIP3, standard pass rule). Otherwise the screen is reported and closed.
