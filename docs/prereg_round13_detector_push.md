@@ -1482,3 +1482,46 @@ restored ≥ 2 AND other restored ≤ 2 × needed restored.** Candidate level on
   needed hit lost on either part → **passes the old rule; shipped as SHIP7** (config.use_shipped FINELAP_VETO 0.329,
   FINELAP_DIR per split). SHIP6+K4AO 24/25/2.451 passes the clause too; re-run on SHIP7 (old-rule pass first).
   SHIP5+FLAP 25/32/2.592 (for the record). TEST caches for FineLAP being built; TEST read of SHIP6 and SHIP7 follow.
+
+## Round 32 — joint swap: FineLAP in place of DASM, with the bars it needs (written 2026-09-30 BEFORE any number of it)
+**Why joint.** Every new model so far was one extra vote on a pipeline whose bars were tuned for FlexSED + DASM. Adam: a
+detector swap may need the mechanism around it re-tuned. Facts read from the code before writing this: the listener band
+rescue (`_listener_band`) runs at the END of `fuse_flexsed`, after DV / BTP / CONT, so CONT never sees a rescued span;
+rescued spans are FlexSED runs at 0.5 with gaps <= 0.24 s merged (= `LISTEN_RUN_GAP`), so CONT cannot fire on one anyway.
+Hence "CONT lets ONCE loosen" has no coupling: **idea 3 (ONCE-G under CONT) is closed on this fact** (ONCE-G failed +3
+wrong / 0 hits on SHIP3, round 22); the ONCE-dropped spans of SHIP6 are listed with their gold class for the record only.
+Base = SHIP6 (merged DEV 25/55, 28 wrong, 2.479); pass = the combined rule vs SHIP6 (old rule: hits >= 25, wrong <= 28 +
+2 x gain, cost < 2.479, no needed hit lost on either part; OR fewer-pictures: cost < 2.479, wrong <= 28 - 3 x lost, hits >= 22).
+**Bars (one fixed rule, P1 items only, never the gold of rescue candidates).** As the FLAP screen: P1 items of
+`dev_listener.json` (r13) + `dev2_listener.json` (tg) with `gold_class == hit_needed`; bar = the value at index
+floor(0.10 n) of the ascending scores (>= 90 % of needed P1 items kept). Span bar (F8 seat): FineLAP family max over the
+frames overlapping [start, end] = **0.329** (FLAP, n 59; not re-fit). Clip bar (DV seat): the same rule on the family's
+FineLAP max over the WHOLE clip; the number is appended below after `finelap_full.py calib` prints it.
+**FineLAP cache 2** (`data/work/finelap_cache2`, `benchmark/gold/finelap_full.py run`, `slurm/job_finelap_full.sh`): the
+FLAP windowing, queries per clip = cache-1 queries + every family of the SHIP2+KV4 / SHIP3+DV / SHIP6 stage-4 rows, the
+SHIP6 F8- / ONCE-dropped spans and the P4 (DR2) items, so no family the vetoes ask about is unqueried. Same model, same
+frames: the scores of cache-1 queries must be equal (checked, reported). `build` writes the same scores in the DASM npz
+layout (`fw`, `times` = frame midpoints, `labels`) to `data/work/finelap_as_dasm/<clip>.npz`, so the shipped F8 and DV
+code read FineLAP through `LISTENER_DASM_DIR` with no edit to `src/` or `config.py`.
+**Arms (real pipeline runs, DEV in ~/MscProj_r13, tagger DEV in ~/MscProj_tg; `benchmark/gold/flap_joint_arms.py`,
+`slurm/job_flap_joint.sh`).**
+- **SHIP6+FLR** = SHIP6 with `LISTENER_DASM_DIR` = finelap_as_dasm, `LISTENER_DASM_BAR` 0.329, `LISTENER_DASM_PAD` 0.08
+  (half a 0.16-s frame: a midpoint within +-0.08 s = a frame overlapping the span, the calibration's window),
+  `DASM_CLIP_VETO` = the clip bar. FineLAP replaces DASM in both seats (F8, DV); DR2 keeps its P4 answers (DASM's own finds,
+  `DASM_P4_CACHE`, untouched); ONCE, BTP, CONT, K-V4, N2b unchanged.
+- **SHIP6+FLR+F1** = the same + `LISTENER_NEW_TYPE_ONCE` (a family already drawn from a non-rescued span is not rescued
+  again; the strongest run per new family) — the filter that stops the rescue from repeating families FineLAP re-admits.
+**Screens first (CPU, `benchmark/gold/flap_joint_sim.py`, on the saved SHIP6 state; run before the arms, reported beside):**
+(A) FLAP-F8 at arm level: SHIP6 F8-dropped rescued spans (`stage4.json` r14_dropped) with FineLAP span max >= 0.329 are
+restored (conf = their listener-pool peak), ONCE re-run over kept + restored rescued spans (earliest per family; a
+restored earlier span displaces a kept later one), the gate verdict of a restored span = the `augment` flag of the
+same-family spec within 0.5 s in the F8-less arm `TO1+F7_proposed` (the harness memo would reuse the same votes); no such
+spec -> counted and treated as drawn (pessimistic). Pictures = SHIP6 `augmentations.json` + restored specs through
+`_display_spans`, rescored. Variants OR (DASM >= 0.575 or FineLAP >= 0.329) and R (FineLAP alone, the arm's rule).
+(B) DV seat at candidate level: SHIP6 non-rescued rows the FineLAP clip bar would drop (no Qwen P1 / AF P1 keep) and the
+DASM-DV-dropped rows (SHIP2+KV4 rows absent from SHIP3+DV) it would keep back, each with its gold class.
+(C) the ONCE-dropped list (record only).
+**Selection.** Between SHIP6+FLR and SHIP6+FLR+F1 (and SHIP6): split-half CV as `cv_select.py` — per-clip costs, halves
+stratified by part (10 seeds x 2 halves and 5-fold): the cell with the lowest training cost is scored on the held-out
+clips; the procedure's held-out cost vs fixed SHIP6. The full-merged-DEV argmin is the candidate; it is adopted only if
+the CV cost <= SHIP6's CV cost AND it passes the combined rule. If the argmin is SHIP6: stable, STOP. No TEST read.
