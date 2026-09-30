@@ -1613,3 +1613,42 @@ Rescored with `score_per_sound` as the BTP / CONT screens. **GO bar = the combin
 hits >= 22). Known before writing: SHIP7 has 14 rescued specs (8 DEV, 6 tagger DEV) in its augmentations.json, so the reach is
 at most those; the candidate-level (b) screen listed the snow-walk Belly laugh 8.0 (the Laughter 8.08 hit) among its SPOT-no items.
 One new idea is written below AFTER the ledger is read and BEFORE its number.
+### Round 33 CPO — change-point onset gate on the saved SHIP7 pictures (written BEFORE its number)
+**Research (2024–2026 post-processing of SED frame scores; picked for our ONSET-only score).** Sound Event Bounding Boxes
+(Ebbers et al., Interspeech 2024, https://www.isca-archive.org/interspeech_2024/ebbers24_interspeech.pdf, code
+https://github.com/merlresearch/sebbs): an event's onset is a local maximum of the "delta" score = the family's frame score
+filtered with an ideal step filter of length τ (mean of the next τ/2 s minus the mean of the previous τ/2 s); tentative
+events are kept when the contrast between their peak and the neighbouring gap passes a merge threshold (absolute or relative);
+tuning grid τ ∈ {0.32, 0.48, 0.64} s, abs ∈ {0.15, 0.2, 0.3}, rel ∈ {1.5, 2, 3}; +4.1 pt PSDS1 over median filtering on all
+13 DCASE-2023 systems. nSEBBs (Cui et al. 2025, arXiv 2505.11889) makes τ and the absolute threshold adaptive per class
+(τ 0.384–0.8 s by average event duration; abs 0.12–0.30 by duration; rel 2.0–3.2 by a posterior-contrast ratio) for
++≤4 % PSDS1 on SSL models. Boundary-aware inference (arXiv 2601.04178) needs event-proposal-network outputs: not applicable
+to cached scores. Class-wise median-filter tuning "tends to overfit the validation set" (RealDESED, arXiv 2607.16736).
+**Why this one.** The round-33 diagnostic (`benchmark/gold/cp_diag.py`, record only, no rule applied) on SHIP7's merged-DEV
+pictures: of the 30 misses, 23 have NO same-family picture anywhere in the clip (unreachable by any picture post-processing)
+and the 7 same-family pictures sit −14.7, −2.3, −1.9, +2.9, +6.4, +9.0, +11.0 s from the gold onset — re-timing (I1's
+failure mode) can reach at most one; every family confusion at the right time sits on a visible / non-needed gold sound, so
+relabeling (winner-take-all) turns cross into visible at the same cost. The live lever is a DROP: several wrong pictures start
+where the family's FlexSED score shows no rise at all (delta peaks ≤ 0.1 near the start: a re-trigger of a sound already
+going, or a family confused with a steady sound), which is exactly what cSEBB's change-point onset denies.
+**Rule CPO (one rule; constants from the paper, none fitted).** For each placed SHIP7 picture (label L, start a): the family
+evidence e(t) = max over the FlexSED cache columns whose canonical family is canonical(L) (cache `data/work/flexsed_cache`,
+frames 0.04 s); no column → no evidence → the picture is KEPT (the rule is silent). Delta d(t) = mean e over [t, t+τ/2) −
+mean e over [t−τ/2, t), the step filter zero-padded at both clip ends (a sound already present at t = 0 has its onset at frame
+0 — the paper's convention, no clip-start exemption). The picture is kept iff d has a local maximum ≥ θabs at some frame in
+[a − LATE, a + EARLY + τ/2] = [a − 1.0, a + 0.74] (the score's own collar mirrored — a hit's gold onset lies in
+[a − 1.0, a + 0.5] — plus the filter's half-length lag); otherwise it is dropped. Nothing is re-timed or relabeled.
+Primary cell: τ = 0.48 s (grid middle), θabs = 0.15 (the lowest grid value = the most permissive = the least hit risk).
+Reported: the 3 × 3 grid τ ∈ {0.32, 0.48, 0.64} × θabs ∈ {0.15, 0.2, 0.3}; selection among them ONLY by split-half CV as
+`cv_select.py` (per-clip costs, halves stratified by part, 10 seeds × 2 halves and 5-fold × 10 seeds; the cell with the
+lowest training cost, ties → SHIP7, scored on held-out clips; the procedure's held-out cost vs fixed SHIP7). Also reported
+(record only): the same gate on the family's BEATs tagger frames instead of FlexSED.
+**Scope.** The gate cannot touch the 23 no-picture misses nor pictures of visible sources at real onsets; it differs from
+the shipped CONT (round 31) in needing no run above 0.5 — it catches continuations whose evidence never reaches the bar
+(e.g. a 0.175 re-trigger) and confusions with steady sounds.
+**Screen** (`benchmark/gold/cpo_screen.py`, CPU, `~/MscProj_tg`, on the saved SHIP7 = SHIP6+FLAP pictures of merged DEV via
+`btp_screen.parts` with `TG_ARMS=SHIP7`; the reproduced base MUST equal 25/55, 27 wrong, 2.451 before any cell is read;
+rescored with `score_per_sound`). **Pass = the combined rule vs SHIP7 (25/55, 27, 2.451):** old rule (hits ≥ 25,
+wrong ≤ 27 + 2 × gain, cost < 2.451, no needed hit lost on either part) OR fewer-pictures clause (cost < 2.451,
+wrong ≤ 27 − 3 × hits lost, hits ≥ 22). The primary cell decides; a grid cell is adopted instead only if the CV picks it and
+it passes. GO → arm on the real pipeline (a `src/` flag: not this thread's remit; an Adam decision). STOP → recorded, closed.
