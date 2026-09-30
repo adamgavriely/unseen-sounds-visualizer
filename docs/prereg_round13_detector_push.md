@@ -1000,3 +1000,13 @@ DEV 49 (job 31586738): 18 / 21 (6 / 10 / 5) / 2.33 vs base 18 / 22 / 2.37. Merge
 (9 / 29 / 6) / 2.986** vs base (TO1+F7F8 + N2b) 23 / 44 / 3.042; no needed hit lost on either part (old DEV 18 / 21, tagger
 DEV 6 / 23 vs 18 / 22, 5 / 22). DASM, as a third ear for sound types nothing else detected in the clip, confirmed by both
 audio LLMs, adds a needed sound without adding wrong pictures overall. Merged into `use_shipped()`; TEST read 3 prepared.
+**DR2 (shipped TO1+F7F8 + N2b + DR2) on the merged TEST (third TEST read, reported; `final_test_dr2.{json,md}`):**
+
+| arm | hits | misses | wrong (v / c / p) | cost | old TEST hits / wrong | tagger TEST hits / wrong |
+|---|---|---|---|---|---|---|
+| B0r | 21 | 44 | 40 (2 / 31 / 7) | 2.909 | 16 / 25 | 5 / 15 |
+| TO1+F7F8 + N2b (read 2) | 22 | 43 | 35 (3 / 27 / 5) | 2.750 | 16 / 24 | 6 / 11 |
+| **+ DR2 (shipped)** | **24** | **41** | **37 (3 / 28 / 6)** | **2.705** | 18 / 25 | 6 / 12 |
+
+Δ cost vs B0r −0.205 [−0.455, +0.023], one-sided p 0.051 → "same" by the rule's p < 0.05 (third read; reported only). DR2
+adds 2 needed hits on the old TEST for 2 more wrong pictures than N2b: the lowest TEST cost of any version so far.
