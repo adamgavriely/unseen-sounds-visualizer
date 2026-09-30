@@ -1113,3 +1113,8 @@ the V4 prompt on the P2/PV cuts of DEV and the tagger DEV part (same cut, decodi
 normalised as for Kimi). **GO to an arm** only if, on the needed-class candidates of merged DEV, Step names at least as many as
 Qwen V4 while accepting no more other-class candidates; the arm would then replace Qwen by Step in the TIER high tier
 (base SHIP3, standard pass rule). Otherwise the screen is reported and closed.
+
+### Round 26 result — Step-Audio-2-mini: NO GO (jobs 31594384 smoke, 31594407 full, 3.5 min on an H200)
+It answers the V4 prompt with one caption per cut, not a list (mean 1.0 lines). On the merged-DEV P2/PV candidates it names 19
+of 35 needed-class candidates (Qwen V4 24, AF 15) and 95 of 969 others (Qwen 107, AF 189): fewer needed than Qwen, so the
+pre-set GO bar fails. Files: `benchmark/gold/dev{,2}_listener_step.json`, `listener_step.py`, env `~/venvs/stepaudio`.
