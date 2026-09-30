@@ -529,7 +529,10 @@ def use_shipped() -> dict:
                  ("DASM_CLIP_VETO", 0.08392333984375),
                  # round 30 BTP (new DEV best 30 Sept): a drawn span whose family has a FlexSED run >= 0.5 ending 0-1 s
                  # before it and starting 0-1.5 s before it starts at that run. Merged DEV 25 / 33 / 2.620
-                 ("BAND_TWIN_PULL", 0.5)):
+                 ("BAND_TWIN_PULL", 0.5),
+                 # round 31 CONT (new DEV best 30 Sept, fewer-pictures rule): a span that is a later piece of a sound
+                 # FlexSED already hears (family run >= 0.5 from >= 1.5 s before it) is dropped. Merged DEV 25 / 28 / 2.479
+                 ("CONTINUATION_VETO", 0.5)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

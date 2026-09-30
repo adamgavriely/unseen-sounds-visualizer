@@ -1458,3 +1458,8 @@ general rules on this data.
 - **RPT-S arm (merged DEV):** 24/55, 31 (10/18/3), cost 2.620 — at stage 4 it removed an old-DEV hit the screen kept (the
   screen saw placed pictures only). Cost not lower → **fail**.
 - **PMC arm:** identical to SHIP5 (25/33/2.620): the four sub-0.40 spans do not reach stage 5 pictures at 0.35 either. No-op.
+- **TEST read of SHIP5 (reported, not selected on):** SHIP4+BTP 23 hits / 33 wrong (3/25/5) / 2.659 vs B0r 21/40/2.909;
+  d −0.250 [−0.523, +0.000], one-sided p 0.033 → **better** (benchmark/gold/final_test_ship5.md).
+- **CONT arm (merged DEV):** SHIP5+CONT 25/55, 28 wrong (9/17/2), cost 2.479 vs SHIP5 25/33/2.620; old DEV 17/17 (one hit
+  lost), tagger 8/11 (one gained). Old rule fails (a hit lost on old DEV); **fewer-pictures clause passes** (cost down, 0 net
+  hits lost, wrong −5). **Shipped as SHIP6** (config.use_shipped CONTINUATION_VETO 0.5). Next on SHIP6: K4AO, FLAP; TEST read.
