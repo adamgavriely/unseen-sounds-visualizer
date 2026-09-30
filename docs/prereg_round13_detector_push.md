@@ -1678,3 +1678,31 @@ it passes. GO → arm on the real pipeline (a `src/` flag: not this thread's rem
   under it (conf >= 0.35, non-rescued) fails the test; K4AO alone is reported beside as the check against its arm (24/24).
   **GO bar = the combined rule vs SHIP7** (old: hits >= 25, wrong <= 27 + 2 x gain, cost < 2.451, no needed hit lost on either
   part; OR fewer-pictures: cost < 2.451, wrong <= 27 - 3 x lost, hits >= 22). If GO, the arm needs a `src/` flag (Adam's call).
+### Round 33 results (CPU, `benchmark/gold/ship7_errors.py` -> `ship7_errors.json`; base reproduced 25/55, 27 (9/16/2), 2.451)
+**Ledger.** 27 wrong = 9 visible (7 BEATs spans + 2 rescued: motorcycle Explosion on visible fireworks, tg_d128 Laughter of
+people on screen), 16 cross (15 BEATs / FlexSED spans, 1 rescued: golf Bird 18.84), 2 phantom. Cross by group: late repeat 5
+(barbershop Shaver 16.0, detective Alarm 3.36 / 9.08, tg_d088 Thunder 13.25, golf Bird), early 4 (explosion Gunshot 8.25, applause
+Crowd 0.0, protest Glass 4.75, tg_d088 Thunder 8.5), wrong family at a visible sound 7 (crossing Steam, tg_d022 Pant + Dog, tg_d088
+Explosion, tg_d107 Screaming, tg_d128 Hammer, tg_d029 Goose). 30 misses by the registered order: gate-silenced 5 (macaws, pet-shop
+birds, church bell, boxer dog Fart 0.0 and 5.6 — the 5.6 row is merged into the silenced 0.22 spec), unheard by every detector 5
+(nyc Hammer 8.1, Clang, golf Whack x2, tg_d125 Explosion), B0 FlexSED clip veto 1 (tg_d029 Chicken, BEATs 0.81, FlexSED clip max
+0.26), below the display bar / picture floor 4 (birds_forest Bird 0.22, tg_d032 Thunder 7.4 0.27, tg_d095 Dishes 0.37, ambulance
+Vehicle 0.32), rescue filters 3 (F8: Hammer 13.7, Explosion 2.8; ONCE + kinship dedup: tg_d120 Meow 2.9), listener refused 7 (nyc
+Air horn and tg_d107 Laughter: AF yes / Qwen no at the Qwen-only tier; Footsteps, Gasp, Whistle, tg_d033 Siren, tg_d125 Clapping),
+below LO 2 (rainforest_2179 Bird 0.435, storm siren 0.42), P2 run mistimed 1 (tg_d032 Thunder 2.8, run starts 2.04), CONT 1
+(favela Train 14.6), timing 1 (applause Crowd 1.9, span from 0.0).
+**What is left.** Hit side: every group is at a ceiling (gate = annotation "visible" for a same-family thing on screen; unheard;
+below bar) or on a line already closed by a pre-registered test (listener: H2 / K3 / PTC / V4D / QE / Step / Kimi; filters: F8-U /
+K1 / FLAP-F8 / ONCE-G; LO: CV54–CV76; FlexSED clip veto: FV; CONT: bought −5 wrong). No miss is reachable by an untried general
+rule on this data. Wrong side: 9 visible = gate perception (M / N / GA / Gemma / SUBJ / OM closed); the 7 wrong-family cross
+pictures are the only group a general rule still touches (K4AO takes 3 of them at −1 hit).
+**SPOT-V: STOP.** 8 rescued placed pictures: 6 matched to their own P2/PV item — every EXIST answer is "Yes." (snow-walk
+Laughter, golf Bird, storm Alarm, tg_d030 Vehicle, tg_d127 Laughter, tg_d128 Giggle); tg_d120 Cat is a DR2 rescue (no P2 item);
+the motorcycle Explosion picture is the rescued Gunshot child span (its P2 Gunshot item: "Yes."). No picture changes under EXIST-no
+or the round-31 SPOT-no: 25/27/2.451 = SHIP7. The candidate-level (b) losses ("Belly laugh" items) were sibling items the rescue
+did not use. SpotSound is closed for the listener role.
+**K4A-4E: STOP.** K4AO on the saved pictures = 24/55, 24 (9/13/2), 2.423 — exactly its arm (drops rainforest_7629 Insect 0.14, a
+HIT, and Pant 7.0, Goose 11.0, Thunder 8.5, all cross). With the DASM-or-FineLAP keep nothing is dropped (25/27/2.451 = SHIP7):
+FineLAP scores 0.95 on the Insect and 0.70–0.77 on the three wrong pictures, so its 0.329 bar keeps all four. Post-hoc, reported
+only (not pre-registered, not adopted): DASM alone separates them (Insect 0.59 vs 0.15 / 0.15 / 0.38 at the 0.575 bar) and would
+read 25/24/2.34 on the saved pictures — a 0.015 margin on one hit; if Adam wants it, it is a new pre-registered arm on SHIP7.
