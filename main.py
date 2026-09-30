@@ -23,6 +23,8 @@ def main() -> None:
                     help="where to write intermediate artifacts")
     ap.add_argument("--raw-config", action="store_true",
                     help="use the bare config.py defaults instead of the shipped system (config.use_shipped())")
+    ap.add_argument("--fewer-false", action="store_true",
+                    help="opt-in N2b (DEV only, not TEST-checked): weak sounds under speech/music need a second opinion")
     ap.add_argument("--listener-split", default=None,
                     help="name given to slurm/run_best.sh for this clip's folder: where the audio-LLM answers and DASM "
                          "scores of the shipped detector are (without them stage 4 stops)")
@@ -39,6 +41,8 @@ def main() -> None:
     # the shipped system by default (Qwen-Image pictures, scored detector stack, PANNs veto); CLI flags override it
     if not args.raw_config:
         config.use_shipped()
+        if args.fewer_false:
+            config.use_n2b()
         if args.listener_split:
             config.set_listener_split(args.listener_split)
         else:

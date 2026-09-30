@@ -938,3 +938,10 @@ N2b on the tagger TEST part and old TEST: stage 4/5 built gold-free (job 3156581
 ### Round 18 N2d — fails
 DEV 49 (job 31565866): 16 / 22 / 2.53; merged DEV (job 31565867): 20 hits / 43 wrong / 3.18 — three needed hits lost
 (FlexSED-only real sounds that neither BEATs nor a listener confirms). Fails.
+
+### Shipping decision for N2b (Fable, 2026-09-30 ~07:30 UTC)
+Option (b): TO1+F7F8 stays the default (TEST-guarded); N2b ships as an opt-in (`config.use_n2b()`, `main.py --fewer-false`).
+No second TEST read: underpowered for a 0.11 gain (MDE ≈ 0.19) and it would end the one-exposure claim. Thesis disclosure:
+"After the single pre-registered TEST exposure, one further variant (N2b: weak masked BEATs-only spans under speech or music
+require confirmation by a listener) lowered wrong pictures on merged DEV (44 vs 48, no hit lost) but was found after TEST was
+spent and was not scored on TEST; it ships as an opt-in flag and contributes to no reported TEST result."

@@ -500,6 +500,19 @@ def use_shipped() -> dict:
     return changed
 
 
+def use_n2b() -> dict:
+    """Opt-in (round 18 N2b, DEV-only evidence, found after TEST was spent): weak BEATs-only spans heard under speech or music
+    need FlexSED or a listener (Qwen or Audio Flamingo) to be drawn. Merged DEV 23 hits / 44 wrong vs 23 / 48. Call after
+    use_shipped()."""
+    import sys
+    me = sys.modules[__name__]
+    changed = {}
+    for k, v in (("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
+    return changed
+
+
 def set_listener_split(name: str) -> dict:
     """point the shipped listener rescue at the answers slurm/run_best.sh built for split <name>:
     benchmark/gold/<name>_listener{,_v,_afn}.json and data/work/dasm_<name>/"""
