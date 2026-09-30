@@ -1705,4 +1705,4 @@ did not use. SpotSound is closed for the listener role.
 HIT, and Pant 7.0, Goose 11.0, Thunder 8.5, all cross). With the DASM-or-FineLAP keep nothing is dropped (25/27/2.451 = SHIP7):
 FineLAP scores 0.95 on the Insect and 0.70–0.77 on the three wrong pictures, so its 0.329 bar keeps all four. Post-hoc, reported
 only (not pre-registered, not adopted): DASM alone separates them (Insect 0.59 vs 0.15 / 0.15 / 0.38 at the 0.575 bar) and would
-read 25/24/2.34 on the saved pictures — a 0.015 margin on one hit; if Adam wants it, it is a new pre-registered arm on SHIP7.
+read 25/24/2.366 on the saved pictures ((4 x 30 + 2 x 24) / 71) — a 0.015 margin on one hit; if Adam wants it, it is a new pre-registered arm on SHIP7.
