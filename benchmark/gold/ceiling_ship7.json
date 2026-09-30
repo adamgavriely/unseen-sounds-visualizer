@@ -1,0 +1,2428 @@
+{
+ "base": {
+  "hits": 25,
+  "n": 55,
+  "wrong": 27,
+  "visible": 9,
+  "cross": 16,
+  "phantom": 2,
+  "cost": 2.451,
+  "dev": [
+   17,
+   16
+  ],
+  "dev2": [
+   8,
+   11
+  ]
+ },
+ "base_parts": {
+  "dev": {
+   "hits": 17,
+   "n": 36,
+   "wrong": 16,
+   "visible": 6,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.204081632653061
+  },
+  "dev2": {
+   "hits": 8,
+   "n": 19,
+   "wrong": 11,
+   "visible": 3,
+   "cross": 8,
+   "phantom": 0,
+   "cost": 3.0
+  },
+  "merged": {
+   "hits": 25,
+   "n": 55,
+   "wrong": 27,
+   "visible": 9,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 2.4507042253521125
+  }
+ },
+ "needed_class_check": {
+  "rule": 17,
+  "file_hit_needed": 15
+ },
+ "alone": {
+  "O1_gate": {
+   "hits": 30,
+   "n": 55,
+   "wrong": 18,
+   "visible": 0,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 1.915,
+   "dev": [
+    20,
+    10
+   ],
+   "dev2": [
+    10,
+    8
+   ],
+   "d_cost": -0.536,
+   "d_hits": 5,
+   "d_wrong": -9
+  },
+  "O2_listener": {
+   "hits": 27,
+   "n": 55,
+   "wrong": 24,
+   "visible": 7,
+   "cross": 15,
+   "phantom": 2,
+   "cost": 2.254,
+   "dev": [
+    17,
+    14
+   ],
+   "dev2": [
+    10,
+    10
+   ],
+   "d_cost": -0.197,
+   "d_hits": 2,
+   "d_wrong": -3
+  },
+  "O2_listener_filters_lifted": {
+   "hits": 35,
+   "n": 55,
+   "wrong": 24,
+   "visible": 7,
+   "cross": 15,
+   "phantom": 2,
+   "cost": 1.803,
+   "dev": [
+    23,
+    14
+   ],
+   "dev2": [
+    12,
+    10
+   ],
+   "d_cost": -0.648,
+   "d_hits": 10,
+   "d_wrong": -3
+  },
+  "O3_vetoes": {
+   "hits": 30,
+   "n": 55,
+   "wrong": 27,
+   "visible": 9,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 2.169,
+   "dev": [
+    20,
+    16
+   ],
+   "dev2": [
+    10,
+    11
+   ],
+   "d_cost": -0.282,
+   "d_hits": 5,
+   "d_wrong": 0
+  },
+  "O4_timing": {
+   "hits": 26,
+   "n": 55,
+   "wrong": 20,
+   "visible": 11,
+   "cross": 7,
+   "phantom": 2,
+   "cost": 2.197,
+   "dev": [
+    18,
+    10
+   ],
+   "dev2": [
+    8,
+    10
+   ],
+   "d_cost": -0.254,
+   "d_hits": 1,
+   "d_wrong": -7
+  },
+  "O5_family": {
+   "hits": 25,
+   "n": 55,
+   "wrong": 26,
+   "visible": 14,
+   "cross": 10,
+   "phantom": 2,
+   "cost": 2.423,
+   "dev": [
+    17,
+    16
+   ],
+   "dev2": [
+    8,
+    10
+   ],
+   "d_cost": -0.028,
+   "d_hits": 0,
+   "d_wrong": -1
+  },
+  "O54_family_plus_timing": {
+   "hits": 27,
+   "n": 55,
+   "wrong": 25,
+   "visible": 9,
+   "cross": 14,
+   "phantom": 2,
+   "cost": 2.282,
+   "dev": [
+    18,
+    15
+   ],
+   "dev2": [
+    9,
+    10
+   ],
+   "d_cost": -0.169,
+   "d_hits": 2,
+   "d_wrong": -2
+  }
+ },
+ "logs": {
+  "O1_gate": [
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "act": "restore gate-silenced",
+    "label": "Bird",
+    "start": 0.81,
+    "end": 4.75,
+    "conf": 0.458,
+    "has_image": false,
+    "gate_reason": "source visible on screen (macaws) - stay silent",
+    "gold": "Bird",
+    "gold_start": 0.1
+   },
+   {
+    "clip": "ambient_weather_storm_16200",
+    "act": "drop visible picture",
+    "label": "Thunder",
+    "start": 0.06
+   },
+   {
+    "clip": "ambient_weather_storm_7200",
+    "act": "drop visible picture",
+    "label": "Thunder",
+    "start": 0.06
+   },
+   {
+    "clip": "as_church_bell_pJRAWkLM",
+    "act": "drop visible picture",
+    "label": "Bell",
+    "start": 0.14
+   },
+   {
+    "clip": "as_fire_alarm_kGKZ0YK4",
+    "act": "drop visible picture",
+    "label": "Alarm",
+    "start": 8.89
+   },
+   {
+    "clip": "b3_pet_shop",
+    "act": "restore gate-silenced",
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "conf": 0.856,
+    "has_image": false,
+    "gate_reason": "source visible on screen (birds) - stay silent",
+    "gold": "Bird",
+    "gold_start": 0.1
+   },
+   {
+    "clip": "bell_miami",
+    "act": "restore gate-silenced",
+    "label": "Bell",
+    "start": 0.22,
+    "end": 14.5,
+    "conf": 0.699,
+    "has_image": false,
+    "gate_reason": "source visible on screen (church bell) - stay silent",
+    "gold": "Bell",
+    "gold_start": 0.2
+   },
+   {
+    "clip": "london_protest_01",
+    "act": "drop visible picture",
+    "label": "Vehicle",
+    "start": 0.25
+   },
+   {
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "act": "drop visible picture",
+    "label": "Explosion",
+    "start": 13.52
+   },
+   {
+    "clip": "tg_d088",
+    "act": "drop visible picture",
+    "label": "Thunder",
+    "start": 1.0
+   },
+   {
+    "clip": "tg_d127",
+    "act": "drop visible picture",
+    "label": "Water",
+    "start": 0.14
+   },
+   {
+    "clip": "tg_d128",
+    "act": "drop visible picture",
+    "label": "Laughter",
+    "start": 3.08
+   },
+   {
+    "clip": "tg_d133",
+    "act": "restore gate-silenced",
+    "label": "Digestive",
+    "start": 0.06,
+    "end": 0.92,
+    "conf": 0.985,
+    "has_image": false,
+    "gate_reason": "a kind of Fart, whose source is visible - stay silent",
+    "gold": "Fart",
+    "gold_start": 0.0
+   },
+   {
+    "clip": "tg_d133",
+    "act": "restore gate-silenced (display merge into the silenced spec)",
+    "label": "Fart",
+    "start": 6.3,
+    "end": 8.0,
+    "conf": 0.908,
+    "has_image": false,
+    "gold": "Fart",
+    "gold_start": 5.6
+   }
+  ],
+  "O2_listener": [
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Air horn, truck horn",
+    "start": 3.76,
+    "end": 4.76,
+    "peak": 0.708,
+    "qwen_v4": false,
+    "gold": "Vehicle",
+    "gold_start": 3.8,
+    "dasm_span": 0.051,
+    "finelap_span": 0.809,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": [
+     "F8 (DASM 0.051 < 0.575)"
+    ]
+   },
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Hammer",
+    "start": 13.76,
+    "end": 15.96,
+    "peak": 0.747,
+    "qwen_v4": true,
+    "gold": "Hammer",
+    "gold_start": 13.7,
+    "dasm_span": 0.281,
+    "finelap_span": 0.775,
+    "gate_proxy": "spec Hammer 13.76 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+    "blocked_by": [
+     "F8 (DASM 0.281 < 0.575)"
+    ]
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Footsteps",
+    "start": 2.08,
+    "end": 3.08,
+    "peak": 0.658,
+    "qwen_v4": false,
+    "gold": "Walk, footsteps",
+    "gold_start": 2.1,
+    "dasm_span": 0.262,
+    "finelap_span": 0.464,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": [
+     "F8 (DASM 0.262 < 0.575)"
+    ]
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Explosion",
+    "start": 2.84,
+    "end": 3.84,
+    "peak": 0.621,
+    "qwen_v4": true,
+    "gold": "Explosion",
+    "gold_start": 2.8,
+    "dasm_span": 0.516,
+    "finelap_span": 0.699,
+    "gate_proxy": "spec Explosion 2.84 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+    "blocked_by": [
+     "F8 (DASM 0.516 < 0.575)"
+    ]
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Gasp",
+    "start": 6.72,
+    "end": 7.72,
+    "peak": 0.758,
+    "qwen_v4": false,
+    "gold": "Gasp",
+    "gold_start": 6.7,
+    "dasm_span": 0.065,
+    "finelap_span": 0.126,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": [
+     "F8 (DASM 0.065 < 0.575)",
+     "FLAP (FineLAP 0.126 < 0.329)"
+    ]
+   },
+   {
+    "clip": "b3_carnival_parade",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Steam whistle",
+    "start": 6.32,
+    "end": 7.32,
+    "peak": 0.585,
+    "qwen_v4": false,
+    "gold": "Whistle",
+    "gold_start": 6.1,
+    "dasm_span": 0.021,
+    "finelap_span": 0.242,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": [
+     "F8 (DASM 0.021 < 0.575)",
+     "FLAP (FineLAP 0.242 < 0.329)"
+    ]
+   },
+   {
+    "clip": "b3_golf_course",
+    "act": "reject wrong rescue",
+    "label": "Bird",
+    "start": 18.84,
+    "class": "cross"
+   },
+   {
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "act": "reject wrong rescue",
+    "label": "Explosion",
+    "start": 13.52,
+    "class": "visible"
+   },
+   {
+    "clip": "tg_d033",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Alarm",
+    "start": 0.0,
+    "end": 10.0,
+    "peak": 0.608,
+    "qwen_v4": false,
+    "gold": "Siren",
+    "gold_start": 0.0,
+    "dasm_span": 0.199,
+    "finelap_span": 0.97,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": [
+     "F8 (DASM 0.199 < 0.575)"
+    ]
+   },
+   {
+    "clip": "tg_d107",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Laughter",
+    "start": 8.4,
+    "end": 9.56,
+    "peak": 0.886,
+    "qwen_v4": false,
+    "gold": "Laughter",
+    "gold_start": 8.2,
+    "dasm_span": 0.89,
+    "finelap_span": 0.978,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "tg_d125",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Clapping",
+    "start": 8.32,
+    "end": 9.84,
+    "peak": 0.802,
+    "qwen_v4": true,
+    "gold": "Clapping",
+    "gold_start": 8.5,
+    "dasm_span": 0.349,
+    "finelap_span": 0.848,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": [
+     "F8 (DASM 0.349 < 0.575)"
+    ]
+   },
+   {
+    "clip": "tg_d128",
+    "act": "reject wrong rescue",
+    "label": "Laughter",
+    "start": 3.08,
+    "class": "visible"
+   },
+   {
+    "clip": "tg_d133",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Fart",
+    "start": 0.08,
+    "end": 1.08,
+    "peak": 0.869,
+    "qwen_v4": true,
+    "gold": "Fart",
+    "gold_start": 0.0,
+    "dasm_span": 0.612,
+    "finelap_span": 0.967,
+    "gate_proxy": "spec Digestive 0.06 augment=False reason=a kind of Fart, whose source is visible - stay silent",
+    "blocked_by": [
+     "gate (spec Digestive 0.06 augment=False reason=a kind of Fart, whose source is visible - stay silent)"
+    ]
+   },
+   {
+    "clip": "tg_d133",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Fart",
+    "start": 5.72,
+    "end": 7.2,
+    "peak": 0.86,
+    "qwen_v4": true,
+    "gold": "Fart",
+    "gold_start": 5.6,
+    "dasm_span": 0.578,
+    "finelap_span": 0.776,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   }
+  ],
+  "O2_listener_filters_lifted": [
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Air horn, truck horn",
+    "start": 3.76,
+    "end": 4.76,
+    "peak": 0.708,
+    "qwen_v4": false,
+    "gold": "Vehicle",
+    "gold_start": 3.8,
+    "dasm_span": 0.051,
+    "finelap_span": 0.809,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Hammer",
+    "start": 13.76,
+    "end": 15.96,
+    "peak": 0.747,
+    "qwen_v4": true,
+    "gold": "Hammer",
+    "gold_start": 13.7,
+    "dasm_span": 0.281,
+    "finelap_span": 0.775,
+    "gate_proxy": "spec Hammer 13.76 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+    "blocked_by": []
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Footsteps",
+    "start": 2.08,
+    "end": 3.08,
+    "peak": 0.658,
+    "qwen_v4": false,
+    "gold": "Walk, footsteps",
+    "gold_start": 2.1,
+    "dasm_span": 0.262,
+    "finelap_span": 0.464,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Explosion",
+    "start": 2.84,
+    "end": 3.84,
+    "peak": 0.621,
+    "qwen_v4": true,
+    "gold": "Explosion",
+    "gold_start": 2.8,
+    "dasm_span": 0.516,
+    "finelap_span": 0.699,
+    "gate_proxy": "spec Explosion 2.84 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+    "blocked_by": []
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Gasp",
+    "start": 6.72,
+    "end": 7.72,
+    "peak": 0.758,
+    "qwen_v4": false,
+    "gold": "Gasp",
+    "gold_start": 6.7,
+    "dasm_span": 0.065,
+    "finelap_span": 0.126,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "b3_carnival_parade",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Steam whistle",
+    "start": 6.32,
+    "end": 7.32,
+    "peak": 0.585,
+    "qwen_v4": false,
+    "gold": "Whistle",
+    "gold_start": 6.1,
+    "dasm_span": 0.021,
+    "finelap_span": 0.242,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "b3_golf_course",
+    "act": "reject wrong rescue",
+    "label": "Bird",
+    "start": 18.84,
+    "class": "cross"
+   },
+   {
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "act": "reject wrong rescue",
+    "label": "Explosion",
+    "start": 13.52,
+    "class": "visible"
+   },
+   {
+    "clip": "tg_d033",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Alarm",
+    "start": 0.0,
+    "end": 10.0,
+    "peak": 0.608,
+    "qwen_v4": false,
+    "gold": "Siren",
+    "gold_start": 0.0,
+    "dasm_span": 0.199,
+    "finelap_span": 0.97,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "tg_d107",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Laughter",
+    "start": 8.4,
+    "end": 9.56,
+    "peak": 0.886,
+    "qwen_v4": false,
+    "gold": "Laughter",
+    "gold_start": 8.2,
+    "dasm_span": 0.89,
+    "finelap_span": 0.978,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "tg_d125",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Clapping",
+    "start": 8.32,
+    "end": 9.84,
+    "peak": 0.802,
+    "qwen_v4": true,
+    "gold": "Clapping",
+    "gold_start": 8.5,
+    "dasm_span": 0.349,
+    "finelap_span": 0.848,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   },
+   {
+    "clip": "tg_d128",
+    "act": "reject wrong rescue",
+    "label": "Laughter",
+    "start": 3.08,
+    "class": "visible"
+   },
+   {
+    "clip": "tg_d133",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Fart",
+    "start": 0.08,
+    "end": 1.08,
+    "peak": 0.869,
+    "qwen_v4": true,
+    "gold": "Fart",
+    "gold_start": 0.0,
+    "dasm_span": 0.612,
+    "finelap_span": 0.967,
+    "gate_proxy": "spec Digestive 0.06 augment=False reason=a kind of Fart, whose source is visible - stay silent",
+    "blocked_by": [
+     "gate (spec Digestive 0.06 augment=False reason=a kind of Fart, whose source is visible - stay silent)"
+    ]
+   },
+   {
+    "clip": "tg_d133",
+    "act": "accept needed candidate",
+    "pool": "P2",
+    "label": "Fart",
+    "start": 5.72,
+    "end": 7.2,
+    "peak": 0.86,
+    "qwen_v4": true,
+    "gold": "Fart",
+    "gold_start": 5.6,
+    "dasm_span": 0.578,
+    "finelap_span": 0.776,
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "blocked_by": []
+   }
+  ],
+  "O3_vetoes": [
+   {
+    "clip": "ambient_citywalk_nyc_1689",
+    "act": "restore veto-removed",
+    "label": "Hammer",
+    "start": 13.76,
+    "end": 15.96,
+    "how": "rescue filter F8 (row conf 0.281)",
+    "gate_proxy": "spec Hammer 13.76 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+    "gold": "Hammer",
+    "gold_start": 13.7
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "restore veto-removed",
+    "label": "Explosion",
+    "start": 2.84,
+    "end": 3.64,
+    "how": "rescue filter F8 (row conf 0.516)",
+    "gate_proxy": "spec Explosion 2.84 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+    "gold": "Explosion",
+    "gold_start": 2.8
+   },
+   {
+    "clip": "b3_favela_rio",
+    "act": "restore veto-removed",
+    "label": "Train",
+    "start": 14.72,
+    "end": 16.5,
+    "how": "removed by CONT continuation veto (row conf 0.429)",
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "gold": "Train",
+    "gold_start": 14.6
+   },
+   {
+    "clip": "ly_ambulance_(siren)_-yPSgCn",
+    "act": "NOT restorable: below the 0.40 picture floor",
+    "label": "Car",
+    "start": 8.25,
+    "conf": 0.317,
+    "removed_by": "removed by N2b masked-weak veto (present in TO1+F7F8, row conf 0.32 < floor anyway)",
+    "gold": "Vehicle"
+   },
+   {
+    "clip": "tg_d029",
+    "act": "restore veto-removed",
+    "label": "Chicken, rooster",
+    "start": 6.75,
+    "end": 13.25,
+    "how": "B0 clip veto (BEATs span reconstructed, peak 0.813)",
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "gold": "Chicken, rooster",
+    "gold_start": 6.9
+   },
+   {
+    "clip": "tg_d095",
+    "act": "NOT restorable: below the 0.40 picture floor",
+    "label": "Dishes, pots, and pans",
+    "start": 16.5,
+    "conf": 0.373,
+    "removed_by": "removed by TO1+F7F8 (mirror veto F7 / rescue filters) (present in B0r, row conf 0.37 < floor anyway)",
+    "gold": "Dishes, pots, and pans"
+   },
+   {
+    "clip": "tg_d120",
+    "act": "restore veto-removed",
+    "label": "Cat",
+    "start": 2.94,
+    "end": 3.38,
+    "how": "rescue filter ONCE (row conf not the first)",
+    "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+    "gold": "Meow",
+    "gold_start": 2.9
+   }
+  ],
+  "O4_timing": [
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "move to gold onset",
+    "label": "Gunshot",
+    "from": 8.25,
+    "to": 10.1,
+    "gold": "Machine gun",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "b3_barbershop",
+    "act": "move to gold onset",
+    "label": "Electric shaver, electric razor",
+    "from": 16.0,
+    "to": 0.1,
+    "gold": "Electric shaver, electric razor",
+    "gold_needed": true,
+    "gold_visible": false,
+    "gold_importance": 3,
+    "new_class": "hit"
+   },
+   {
+    "clip": "b3_golf_course",
+    "act": "move to gold onset",
+    "label": "Bird",
+    "from": 18.84,
+    "to": 0.0,
+    "gold": "Bird",
+    "gold_needed": true,
+    "gold_visible": false,
+    "gold_importance": 1,
+    "new_class": "dontcare"
+   },
+   {
+    "clip": "ly_applause_62ZYD0u",
+    "act": "move to gold onset",
+    "label": "Crowd",
+    "from": 0.0,
+    "to": 1.9,
+    "gold": "Crowd",
+    "gold_needed": true,
+    "gold_visible": false,
+    "gold_importance": 2,
+    "new_class": "hit"
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "act": "move to gold onset",
+    "label": "Alarm",
+    "from": 3.36,
+    "to": 0.0,
+    "gold": "Telephone",
+    "gold_needed": true,
+    "gold_visible": false,
+    "gold_importance": 3,
+    "new_class": "hit"
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "act": "move to gold onset",
+    "label": "Alarm",
+    "from": 9.08,
+    "to": 0.0,
+    "gold": "Telephone",
+    "gold_needed": true,
+    "gold_visible": false,
+    "gold_importance": 3,
+    "new_class": "dup"
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "act": "move to gold onset",
+    "label": "Glass",
+    "from": 4.75,
+    "to": 11.0,
+    "gold": "Glass",
+    "gold_needed": true,
+    "gold_visible": false,
+    "gold_importance": 3,
+    "new_class": "dup"
+   },
+   {
+    "clip": "tg_d088",
+    "act": "move to gold onset",
+    "label": "Thunder",
+    "from": 8.5,
+    "to": 11.1,
+    "gold": "Thunder",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "tg_d088",
+    "act": "move to gold onset",
+    "label": "Thunder",
+    "from": 13.25,
+    "to": 11.1,
+    "gold": "Thunder",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "dup"
+   }
+  ],
+  "O5_family": [
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Gunshot",
+    "start": 8.25
+   },
+   {
+    "clip": "b3_barbershop",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Electric shaver, electric razor",
+    "start": 16.0
+   },
+   {
+    "clip": "b3_crossing_bells",
+    "act": "relabel",
+    "label": "Steam",
+    "start": 0.22,
+    "to": "Train",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "b3_golf_course",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Bird",
+    "start": 18.84
+   },
+   {
+    "clip": "ly_applause_62ZYD0u",
+    "act": "relabel",
+    "label": "Crowd",
+    "start": 0.0,
+    "to": "Laughter",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Alarm",
+    "start": 3.36
+   },
+   {
+    "clip": "mv_detective_crime_scene",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Alarm",
+    "start": 9.08
+   },
+   {
+    "clip": "mv_protest_scene_movie",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Glass",
+    "start": 4.75
+   },
+   {
+    "clip": "tg_d022",
+    "act": "relabel",
+    "label": "Pant",
+    "start": 7.0,
+    "to": "Chopping (food)",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "tg_d022",
+    "act": "relabel",
+    "label": "Dog",
+    "start": 7.25,
+    "to": "Chopping (food)",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "dup"
+   },
+   {
+    "clip": "tg_d029",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Goose",
+    "start": 11.0
+   },
+   {
+    "clip": "tg_d088",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Thunder",
+    "start": 8.5
+   },
+   {
+    "clip": "tg_d088",
+    "act": "relabel",
+    "label": "Explosion",
+    "start": 10.75,
+    "to": "Thunder",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "tg_d088",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Thunder",
+    "start": 13.25
+   },
+   {
+    "clip": "tg_d107",
+    "act": "relabel",
+    "label": "Screaming",
+    "start": 7.0,
+    "to": "Bird vocalization, bird call, bird song",
+    "gold_needed": false,
+    "gold_visible": true,
+    "gold_importance": 2,
+    "new_class": "visible"
+   },
+   {
+    "clip": "tg_d128",
+    "act": "cannot relabel: no gold onset window holds the picture start",
+    "label": "Hammer",
+    "start": 9.0
+   }
+  ],
+  "O54_family_plus_timing": [
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "act": "relabel + move",
+    "label": "Gunshot",
+    "from": 8.25,
+    "to_label": "Walk, footsteps",
+    "to": 2.1
+   },
+   {
+    "clip": "tg_d029",
+    "act": "relabel + move",
+    "label": "Goose",
+    "from": 11.0,
+    "to_label": "Chicken, rooster",
+    "to": 6.9
+   }
+  ],
+  "combined": {
+   "O5_family": [
+    {
+     "clip": "as_explosion_XJ8lc3I6",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Gunshot",
+     "start": 8.25
+    },
+    {
+     "clip": "b3_barbershop",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Electric shaver, electric razor",
+     "start": 16.0
+    },
+    {
+     "clip": "b3_crossing_bells",
+     "act": "relabel",
+     "label": "Steam",
+     "start": 0.22,
+     "to": "Train",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "b3_golf_course",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Bird",
+     "start": 18.84
+    },
+    {
+     "clip": "ly_applause_62ZYD0u",
+     "act": "relabel",
+     "label": "Crowd",
+     "start": 0.0,
+     "to": "Laughter",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "mv_detective_crime_scene",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Alarm",
+     "start": 3.36
+    },
+    {
+     "clip": "mv_detective_crime_scene",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Alarm",
+     "start": 9.08
+    },
+    {
+     "clip": "mv_protest_scene_movie",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Glass",
+     "start": 4.75
+    },
+    {
+     "clip": "tg_d022",
+     "act": "relabel",
+     "label": "Pant",
+     "start": 7.0,
+     "to": "Chopping (food)",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d022",
+     "act": "relabel",
+     "label": "Dog",
+     "start": 7.25,
+     "to": "Chopping (food)",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "dup"
+    },
+    {
+     "clip": "tg_d029",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Goose",
+     "start": 11.0
+    },
+    {
+     "clip": "tg_d088",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Thunder",
+     "start": 8.5
+    },
+    {
+     "clip": "tg_d088",
+     "act": "relabel",
+     "label": "Explosion",
+     "start": 10.75,
+     "to": "Thunder",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d088",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Thunder",
+     "start": 13.25
+    },
+    {
+     "clip": "tg_d107",
+     "act": "relabel",
+     "label": "Screaming",
+     "start": 7.0,
+     "to": "Bird vocalization, bird call, bird song",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d128",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Hammer",
+     "start": 9.0
+    }
+   ],
+   "O4_timing": [
+    {
+     "clip": "as_explosion_XJ8lc3I6",
+     "act": "move to gold onset",
+     "label": "Gunshot",
+     "from": 8.25,
+     "to": 10.1,
+     "gold": "Machine gun",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "b3_barbershop",
+     "act": "move to gold onset",
+     "label": "Electric shaver, electric razor",
+     "from": 16.0,
+     "to": 0.1,
+     "gold": "Electric shaver, electric razor",
+     "gold_needed": true,
+     "gold_visible": false,
+     "gold_importance": 3,
+     "new_class": "hit"
+    },
+    {
+     "clip": "b3_golf_course",
+     "act": "move to gold onset",
+     "label": "Bird",
+     "from": 18.84,
+     "to": 0.0,
+     "gold": "Bird",
+     "gold_needed": true,
+     "gold_visible": false,
+     "gold_importance": 1,
+     "new_class": "dontcare"
+    },
+    {
+     "clip": "mv_detective_crime_scene",
+     "act": "move to gold onset",
+     "label": "Alarm",
+     "from": 3.36,
+     "to": 0.0,
+     "gold": "Telephone",
+     "gold_needed": true,
+     "gold_visible": false,
+     "gold_importance": 3,
+     "new_class": "hit"
+    },
+    {
+     "clip": "mv_detective_crime_scene",
+     "act": "move to gold onset",
+     "label": "Alarm",
+     "from": 9.08,
+     "to": 0.0,
+     "gold": "Telephone",
+     "gold_needed": true,
+     "gold_visible": false,
+     "gold_importance": 3,
+     "new_class": "dup"
+    },
+    {
+     "clip": "mv_protest_scene_movie",
+     "act": "move to gold onset",
+     "label": "Glass",
+     "from": 4.75,
+     "to": 11.0,
+     "gold": "Glass",
+     "gold_needed": true,
+     "gold_visible": false,
+     "gold_importance": 3,
+     "new_class": "dup"
+    },
+    {
+     "clip": "tg_d088",
+     "act": "move to gold onset",
+     "label": "Thunder",
+     "from": 8.5,
+     "to": 11.1,
+     "gold": "Thunder",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "dup"
+    },
+    {
+     "clip": "tg_d088",
+     "act": "move to gold onset",
+     "label": "Thunder",
+     "from": 13.25,
+     "to": 11.1,
+     "gold": "Thunder",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "dup"
+    }
+   ],
+   "O54_family_plus_timing": [
+    {
+     "clip": "tg_d029",
+     "act": "relabel + move",
+     "label": "Goose",
+     "from": 11.0,
+     "to_label": "Chicken, rooster",
+     "to": 6.9
+    }
+   ],
+   "O1_gate": [
+    {
+     "clip": "ambient_nature_rainforest_7629",
+     "act": "restore gate-silenced",
+     "label": "Bird",
+     "start": 0.81,
+     "end": 4.75,
+     "conf": 0.458,
+     "has_image": false,
+     "gate_reason": "source visible on screen (macaws) - stay silent",
+     "gold": "Bird",
+     "gold_start": 0.1
+    },
+    {
+     "clip": "ambient_weather_storm_16200",
+     "act": "drop visible picture",
+     "label": "Thunder",
+     "start": 0.06
+    },
+    {
+     "clip": "ambient_weather_storm_7200",
+     "act": "drop visible picture",
+     "label": "Thunder",
+     "start": 0.06
+    },
+    {
+     "clip": "as_church_bell_pJRAWkLM",
+     "act": "drop visible picture",
+     "label": "Bell",
+     "start": 0.14
+    },
+    {
+     "clip": "as_explosion_XJ8lc3I6",
+     "act": "drop visible picture",
+     "label": "Gunshot",
+     "start": 10.1
+    },
+    {
+     "clip": "as_fire_alarm_kGKZ0YK4",
+     "act": "drop visible picture",
+     "label": "Alarm",
+     "start": 8.89
+    },
+    {
+     "clip": "b3_crossing_bells",
+     "act": "drop visible picture",
+     "label": "Train",
+     "start": 0.22
+    },
+    {
+     "clip": "b3_pet_shop",
+     "act": "restore gate-silenced",
+     "label": "Bird",
+     "start": 0.14,
+     "end": 27.75,
+     "conf": 0.856,
+     "has_image": false,
+     "gate_reason": "source visible on screen (birds) - stay silent",
+     "gold": "Bird",
+     "gold_start": 0.1
+    },
+    {
+     "clip": "bell_miami",
+     "act": "restore gate-silenced",
+     "label": "Bell",
+     "start": 0.22,
+     "end": 14.5,
+     "conf": 0.699,
+     "has_image": false,
+     "gate_reason": "source visible on screen (church bell) - stay silent",
+     "gold": "Bell",
+     "gold_start": 0.2
+    },
+    {
+     "clip": "london_protest_01",
+     "act": "drop visible picture",
+     "label": "Vehicle",
+     "start": 0.25
+    },
+    {
+     "clip": "ly_applause_62ZYD0u",
+     "act": "drop visible picture",
+     "label": "Laughter",
+     "start": 0.0
+    },
+    {
+     "clip": "un_driving_motorcycle_DgdHSmwA",
+     "act": "drop visible picture",
+     "label": "Explosion",
+     "start": 13.52
+    },
+    {
+     "clip": "tg_d022",
+     "act": "drop visible picture",
+     "label": "Chopping (food)",
+     "start": 7.0
+    },
+    {
+     "clip": "tg_d022",
+     "act": "drop visible picture",
+     "label": "Chopping (food)",
+     "start": 7.25
+    },
+    {
+     "clip": "tg_d088",
+     "act": "drop visible picture",
+     "label": "Thunder",
+     "start": 1.0
+    },
+    {
+     "clip": "tg_d088",
+     "act": "drop visible picture",
+     "label": "Thunder",
+     "start": 10.75
+    },
+    {
+     "clip": "tg_d088",
+     "act": "drop visible picture",
+     "label": "Thunder",
+     "start": 11.1
+    },
+    {
+     "clip": "tg_d088",
+     "act": "drop visible picture",
+     "label": "Thunder",
+     "start": 11.1
+    },
+    {
+     "clip": "tg_d107",
+     "act": "drop visible picture",
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 7.0
+    },
+    {
+     "clip": "tg_d127",
+     "act": "drop visible picture",
+     "label": "Water",
+     "start": 0.14
+    },
+    {
+     "clip": "tg_d128",
+     "act": "drop visible picture",
+     "label": "Laughter",
+     "start": 3.08
+    },
+    {
+     "clip": "tg_d133",
+     "act": "restore gate-silenced",
+     "label": "Digestive",
+     "start": 0.06,
+     "end": 0.92,
+     "conf": 0.985,
+     "has_image": false,
+     "gate_reason": "a kind of Fart, whose source is visible - stay silent",
+     "gold": "Fart",
+     "gold_start": 0.0
+    },
+    {
+     "clip": "tg_d133",
+     "act": "restore gate-silenced (display merge into the silenced spec)",
+     "label": "Fart",
+     "start": 6.3,
+     "end": 8.0,
+     "conf": 0.908,
+     "has_image": false,
+     "gold": "Fart",
+     "gold_start": 5.6
+    }
+   ],
+   "O3_vetoes": [
+    {
+     "clip": "ambient_citywalk_nyc_1689",
+     "act": "restore veto-removed",
+     "label": "Hammer",
+     "start": 13.76,
+     "end": 15.96,
+     "how": "rescue filter F8 (row conf 0.281)",
+     "gate_proxy": "spec Hammer 13.76 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+     "gold": "Hammer",
+     "gold_start": 13.7
+    },
+    {
+     "clip": "as_explosion_XJ8lc3I6",
+     "act": "restore veto-removed",
+     "label": "Explosion",
+     "start": 2.84,
+     "end": 3.64,
+     "how": "rescue filter F8 (row conf 0.516)",
+     "gate_proxy": "spec Explosion 2.84 augment=True reason=salient non-speech sound, source not visible -> augment | de",
+     "gold": "Explosion",
+     "gold_start": 2.8
+    },
+    {
+     "clip": "b3_favela_rio",
+     "act": "restore veto-removed",
+     "label": "Train",
+     "start": 14.72,
+     "end": 16.5,
+     "how": "removed by CONT continuation veto (row conf 0.429)",
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "gold": "Train",
+     "gold_start": 14.6
+    },
+    {
+     "clip": "ly_ambulance_(siren)_-yPSgCn",
+     "act": "NOT restorable: below the 0.40 picture floor",
+     "label": "Car",
+     "start": 8.25,
+     "conf": 0.317,
+     "removed_by": "removed by N2b masked-weak veto (present in TO1+F7F8, row conf 0.32 < floor anyway)",
+     "gold": "Vehicle"
+    },
+    {
+     "clip": "tg_d095",
+     "act": "NOT restorable: below the 0.40 picture floor",
+     "label": "Dishes, pots, and pans",
+     "start": 16.5,
+     "conf": 0.373,
+     "removed_by": "removed by TO1+F7F8 (mirror veto F7 / rescue filters) (present in B0r, row conf 0.37 < floor anyway)",
+     "gold": "Dishes, pots, and pans"
+    },
+    {
+     "clip": "tg_d120",
+     "act": "restore veto-removed",
+     "label": "Cat",
+     "start": 2.94,
+     "end": 3.38,
+     "how": "rescue filter ONCE (row conf not the first)",
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "gold": "Meow",
+     "gold_start": 2.9
+    }
+   ],
+   "O2_listener (filters perfect after O3)": [
+    {
+     "clip": "ambient_citywalk_nyc_1689",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Air horn, truck horn",
+     "start": 3.76,
+     "end": 4.76,
+     "peak": 0.708,
+     "qwen_v4": false,
+     "gold": "Vehicle",
+     "gold_start": 3.8,
+     "dasm_span": 0.051,
+     "finelap_span": 0.809,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    },
+    {
+     "clip": "as_explosion_XJ8lc3I6",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Footsteps",
+     "start": 2.08,
+     "end": 3.08,
+     "peak": 0.658,
+     "qwen_v4": false,
+     "gold": "Walk, footsteps",
+     "gold_start": 2.1,
+     "dasm_span": 0.262,
+     "finelap_span": 0.464,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    },
+    {
+     "clip": "as_explosion_XJ8lc3I6",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Gasp",
+     "start": 6.72,
+     "end": 7.72,
+     "peak": 0.758,
+     "qwen_v4": false,
+     "gold": "Gasp",
+     "gold_start": 6.7,
+     "dasm_span": 0.065,
+     "finelap_span": 0.126,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    },
+    {
+     "clip": "b3_carnival_parade",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Steam whistle",
+     "start": 6.32,
+     "end": 7.32,
+     "peak": 0.585,
+     "qwen_v4": false,
+     "gold": "Whistle",
+     "gold_start": 6.1,
+     "dasm_span": 0.021,
+     "finelap_span": 0.242,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    },
+    {
+     "clip": "tg_d033",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Alarm",
+     "start": 0.0,
+     "end": 10.0,
+     "peak": 0.608,
+     "qwen_v4": false,
+     "gold": "Siren",
+     "gold_start": 0.0,
+     "dasm_span": 0.199,
+     "finelap_span": 0.97,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    },
+    {
+     "clip": "tg_d107",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Laughter",
+     "start": 8.4,
+     "end": 9.56,
+     "peak": 0.886,
+     "qwen_v4": false,
+     "gold": "Laughter",
+     "gold_start": 8.2,
+     "dasm_span": 0.89,
+     "finelap_span": 0.978,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    },
+    {
+     "clip": "tg_d125",
+     "act": "accept needed candidate",
+     "pool": "P2",
+     "label": "Clapping",
+     "start": 8.32,
+     "end": 9.84,
+     "peak": 0.802,
+     "qwen_v4": true,
+     "gold": "Clapping",
+     "gold_start": 8.5,
+     "dasm_span": 0.349,
+     "finelap_span": 0.848,
+     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
+     "blocked_by": []
+    }
+   ]
+  }
+ },
+ "waterfall": [
+  {
+   "step": "shipped SHIP7",
+   "hits": 25,
+   "n": 55,
+   "wrong": 27,
+   "visible": 9,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 2.451,
+   "dev": [
+    17,
+    16
+   ],
+   "dev2": [
+    8,
+    11
+   ]
+  },
+  {
+   "step": "O5_family",
+   "hits": 25,
+   "n": 55,
+   "wrong": 26,
+   "visible": 14,
+   "cross": 10,
+   "phantom": 2,
+   "cost": 2.423,
+   "dev": [
+    17,
+    16
+   ],
+   "dev2": [
+    8,
+    10
+   ],
+   "marginal_cost": -0.028,
+   "marginal_hits": 0,
+   "marginal_wrong": -1
+  },
+  {
+   "step": "O4_timing",
+   "hits": 25,
+   "n": 55,
+   "wrong": 19,
+   "visible": 15,
+   "cross": 2,
+   "phantom": 2,
+   "cost": 2.225,
+   "dev": [
+    17,
+    11
+   ],
+   "dev2": [
+    8,
+    8
+   ],
+   "marginal_cost": -0.198,
+   "marginal_hits": 0,
+   "marginal_wrong": -7
+  },
+  {
+   "step": "O54_family_plus_timing",
+   "hits": 26,
+   "n": 55,
+   "wrong": 18,
+   "visible": 15,
+   "cross": 1,
+   "phantom": 2,
+   "cost": 2.141,
+   "dev": [
+    17,
+    11
+   ],
+   "dev2": [
+    9,
+    7
+   ],
+   "marginal_cost": -0.084,
+   "marginal_hits": 1,
+   "marginal_wrong": -1
+  },
+  {
+   "step": "O1_gate",
+   "hits": 31,
+   "n": 55,
+   "wrong": 3,
+   "visible": 0,
+   "cross": 1,
+   "phantom": 2,
+   "cost": 1.437,
+   "dev": [
+    20,
+    2
+   ],
+   "dev2": [
+    11,
+    1
+   ],
+   "marginal_cost": -0.704,
+   "marginal_hits": 5,
+   "marginal_wrong": -15
+  },
+  {
+   "step": "O3_vetoes",
+   "hits": 35,
+   "n": 55,
+   "wrong": 3,
+   "visible": 0,
+   "cross": 1,
+   "phantom": 2,
+   "cost": 1.211,
+   "dev": [
+    23,
+    2
+   ],
+   "dev2": [
+    12,
+    1
+   ],
+   "marginal_cost": -0.226,
+   "marginal_hits": 4,
+   "marginal_wrong": 0
+  },
+  {
+   "step": "O2_listener (filters perfect after O3)",
+   "hits": 42,
+   "n": 55,
+   "wrong": 3,
+   "visible": 0,
+   "cross": 1,
+   "phantom": 2,
+   "cost": 0.817,
+   "dev": [
+    27,
+    2
+   ],
+   "dev2": [
+    15,
+    1
+   ],
+   "marginal_cost": -0.394,
+   "marginal_hits": 7,
+   "marginal_wrong": 0
+  }
+ ],
+ "residual": {
+  "wrong": [
+   {
+    "part": "dev",
+    "clip": "b3_laundromat",
+    "label": "Train",
+    "start": 1.0,
+    "class": "phantom"
+   },
+   {
+    "part": "dev",
+    "clip": "un_hair_dryer_drying_WWu24rJs",
+    "label": "Computer keyboard",
+    "start": 11.25,
+    "class": "phantom"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d128",
+    "label": "Hammer",
+    "start": 9.0,
+    "class": "cross"
+   }
+  ],
+  "misses": [
+   {
+    "part": "dev",
+    "clip": "ambient_citywalk_nyc_1689",
+    "label": "Hammer",
+    "start": 8.1,
+    "importance": 2,
+    "removed_by": "unheard (FlexSED 0.005, BEATs 0.006, DASM 0.003)"
+   },
+   {
+    "part": "dev",
+    "clip": "ambient_citywalk_nyc_2627",
+    "label": "Clang",
+    "start": 3.8,
+    "importance": 2,
+    "removed_by": "unheard (FlexSED None, BEATs 0.015, DASM None)"
+   },
+   {
+    "part": "dev",
+    "clip": "ambient_nature_rainforest_2179",
+    "label": "Bird",
+    "start": 6.5,
+    "importance": 2,
+    "removed_by": "below LO 0.5 (FlexSED 0.435)"
+   },
+   {
+    "part": "dev",
+    "clip": "b3_golf_course",
+    "label": "Whack, thwack",
+    "start": 6.5,
+    "importance": 2,
+    "removed_by": "unheard (FlexSED None, BEATs 0.006, DASM None)"
+   },
+   {
+    "part": "dev",
+    "clip": "b3_golf_course",
+    "label": "Whack, thwack",
+    "start": 24.4,
+    "importance": 2,
+    "removed_by": "unheard (FlexSED None, BEATs 0.005, DASM None)"
+   },
+   {
+    "part": "dev",
+    "clip": "birds_forest",
+    "label": "Bird",
+    "start": 1.3,
+    "importance": 2,
+    "removed_by": "below display bar / floor (row conf 0.22)"
+   },
+   {
+    "part": "dev",
+    "clip": "ly_ambulance_(siren)_-yPSgCn",
+    "label": "Vehicle",
+    "start": 7.3,
+    "importance": 2,
+    "removed_by": "removed by N2b masked-weak veto (present in TO1+F7F8, row conf 0.32 < floor anyway)"
+   },
+   {
+    "part": "dev",
+    "clip": "ly_applause_62ZYD0u",
+    "label": "Crowd",
+    "start": 1.9,
+    "importance": 2,
+    "removed_by": "stage-4 timing (row overlaps the sound, start outside the window)"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_storm_scene_house",
+    "label": "Civil defense siren",
+    "start": 16.9,
+    "importance": 2,
+    "removed_by": "below LO 0.5 (FlexSED 0.42)"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d032",
+    "label": "Thunder",
+    "start": 2.8,
+    "importance": 2,
+    "removed_by": "listener candidate mistimed (P2 run starts 2.04, outside the onset window)"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d032",
+    "label": "Thunder",
+    "start": 7.4,
+    "importance": 2,
+    "removed_by": "below display bar / floor (row conf 0.27)"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d095",
+    "label": "Dishes, pots, and pans",
+    "start": 16.6,
+    "importance": 2,
+    "removed_by": "removed by TO1+F7F8 (mirror veto F7 / rescue filters) (present in B0r, row conf 0.37 < floor anyway)"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d125",
+    "label": "Explosion",
+    "start": 5.4,
+    "importance": 3,
+    "removed_by": "unheard (FlexSED 0.032, BEATs 0.004, DASM 0.152)"
+   }
+  ]
+ },
+ "O6_recall_ceiling": {
+  "unheard": [
+   {
+    "part": "dev",
+    "clip": "ambient_citywalk_nyc_1689",
+    "label": "Hammer",
+    "start": 8.1,
+    "importance": 2,
+    "removed_by": "unheard",
+    "beats": 0.006,
+    "flexsed": 0.005,
+    "dasm": 0.003,
+    "finelap": 0.031,
+    "flexsed_queried": true,
+    "finelap_queried": true,
+    "all_models_under_lowest_bar": true
+   },
+   {
+    "part": "dev",
+    "clip": "ambient_citywalk_nyc_2627",
+    "label": "Clang",
+    "start": 3.8,
+    "importance": 2,
+    "removed_by": "unheard",
+    "beats": 0.015,
+    "flexsed": null,
+    "dasm": null,
+    "finelap": null,
+    "flexsed_queried": false,
+    "finelap_queried": false,
+    "all_models_under_lowest_bar": true
+   },
+   {
+    "part": "dev",
+    "clip": "b3_golf_course",
+    "label": "Whack, thwack",
+    "start": 6.5,
+    "importance": 2,
+    "removed_by": "unheard",
+    "beats": 0.006,
+    "flexsed": null,
+    "dasm": null,
+    "finelap": null,
+    "flexsed_queried": false,
+    "finelap_queried": false,
+    "all_models_under_lowest_bar": true
+   },
+   {
+    "part": "dev",
+    "clip": "b3_golf_course",
+    "label": "Whack, thwack",
+    "start": 24.4,
+    "importance": 2,
+    "removed_by": "unheard",
+    "beats": 0.005,
+    "flexsed": null,
+    "dasm": null,
+    "finelap": null,
+    "flexsed_queried": false,
+    "finelap_queried": false,
+    "all_models_under_lowest_bar": true
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d125",
+    "label": "Explosion",
+    "start": 5.4,
+    "importance": 3,
+    "removed_by": "unheard",
+    "beats": 0.004,
+    "flexsed": 0.032,
+    "dasm": 0.152,
+    "finelap": null,
+    "flexsed_queried": true,
+    "finelap_queried": false,
+    "all_models_under_lowest_bar": false
+   }
+  ],
+  "faint": [
+   {
+    "part": "dev",
+    "clip": "ambient_nature_rainforest_2179",
+    "label": "Bird",
+    "start": 6.5,
+    "importance": 2,
+    "removed_by": "below LO 0.5",
+    "beats": 0.03,
+    "flexsed": 0.435,
+    "dasm": 0.495,
+    "finelap": 0.567,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   },
+   {
+    "part": "dev",
+    "clip": "birds_forest",
+    "label": "Bird",
+    "start": 1.3,
+    "importance": 2,
+    "removed_by": "below display bar / floor",
+    "beats": 0.211,
+    "flexsed": 0.708,
+    "dasm": 0.599,
+    "finelap": 0.349,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   },
+   {
+    "part": "dev",
+    "clip": "ly_ambulance_(siren)_-yPSgCn",
+    "label": "Vehicle",
+    "start": 7.3,
+    "importance": 2,
+    "removed_by": "removed by N2b masked-weak veto",
+    "beats": 0.461,
+    "flexsed": 0.734,
+    "dasm": 0.599,
+    "finelap": 0.553,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   },
+   {
+    "part": "dev",
+    "clip": "mv_storm_scene_house",
+    "label": "Civil defense siren",
+    "start": 16.9,
+    "importance": 2,
+    "removed_by": "below LO 0.5",
+    "beats": 0.006,
+    "flexsed": 0.42,
+    "dasm": 0.022,
+    "finelap": 0.019,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d029",
+    "label": "Chicken, rooster",
+    "start": 6.9,
+    "importance": 2,
+    "removed_by": "B0 veto: BEATs 0.813 >= display bar in window, no B0r row",
+    "beats": 0.813,
+    "flexsed": 0.258,
+    "dasm": 0.107,
+    "finelap": null,
+    "flexsed_queried": true,
+    "finelap_queried": false
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d032",
+    "label": "Thunder",
+    "start": 2.8,
+    "importance": 2,
+    "removed_by": "listener candidate mistimed",
+    "beats": 0.015,
+    "flexsed": 0.646,
+    "dasm": 0.013,
+    "finelap": 0.299,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d032",
+    "label": "Thunder",
+    "start": 7.4,
+    "importance": 2,
+    "removed_by": "below display bar / floor",
+    "beats": 0.426,
+    "flexsed": 0.73,
+    "dasm": 0.013,
+    "finelap": 0.376,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d095",
+    "label": "Dishes, pots, and pans",
+    "start": 16.6,
+    "importance": 2,
+    "removed_by": "removed by TO1+F7F8",
+    "beats": 0.373,
+    "flexsed": 0.311,
+    "dasm": 0.193,
+    "finelap": 0.969,
+    "flexsed_queried": true,
+    "finelap_queried": true
+   }
+  ],
+  "bars": {
+   "beats": 0.175,
+   "flexsed": 0.3,
+   "dasm": 0.084,
+   "finelap": 0.329
+  }
+ },
+ "O7_annotation_doubt": {
+  "annotator_flags": [
+   {
+    "clip": "ambient_nature_rainforest_2179",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Bird",
+    "start": 6.5
+   },
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Bird",
+    "start": 0.1
+   },
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Cricket",
+    "start": 0.1
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Footsteps",
+    "start": 2.1
+   },
+   {
+    "clip": "as_explosion_XJ8lc3I6",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Explosion",
+    "start": 5.6
+   },
+   {
+    "clip": "b3_favela_rio",
+    "flag": "clip marked unsure",
+    "note": ""
+   },
+   {
+    "clip": "mv_storm_scene_house",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "civil defense siren",
+    "start": 16.9
+   },
+   {
+    "clip": "mv_tornado_scene",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Siren",
+    "start": 8.9
+   },
+   {
+    "clip": "tg_d029",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Chicken, rooster",
+    "start": 6.9
+   },
+   {
+    "clip": "tg_d033",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Siren",
+    "start": 0
+   },
+   {
+    "clip": "tg_d125",
+    "flag": "needed sound marked masked (hard to hear)",
+    "label": "Clapping",
+    "start": 8.5
+   }
+  ],
+  "alias_labels": [
+   {
+    "clip": "ambient_citywalk_nyc_2627",
+    "text": "clank",
+    "resolved": "Clang",
+    "start": 3.8
+   },
+   {
+    "clip": "b3_golf_course",
+    "text": "golf swings / ball strikes",
+    "resolved": "Whack, thwack",
+    "start": 6.5
+   },
+   {
+    "clip": "b3_golf_course",
+    "text": "golf swings / ball strikes",
+    "resolved": "Whack, thwack",
+    "start": 24.4
+   }
+  ],
+  "visible_wrong_pictures": [
+   {
+    "clip": "ambient_weather_storm_16200",
+    "label": "Thunder",
+    "start": 0.06,
+    "gold_at": [
+     [
+      "Rain",
+      true,
+      true,
+      1
+     ],
+     [
+      "Thunder",
+      true,
+      true,
+      2
+     ]
+    ]
+   },
+   {
+    "clip": "ambient_weather_storm_7200",
+    "label": "Thunder",
+    "start": 0.06,
+    "gold_at": [
+     [
+      "Thunder",
+      true,
+      true,
+      2
+     ],
+     [
+      "Rain",
+      true,
+      true,
+      2
+     ]
+    ]
+   },
+   {
+    "clip": "as_church_bell_pJRAWkLM",
+    "label": "Bell",
+    "start": 0.14,
+    "gold_at": [
+     [
+      "Bell",
+      true,
+      false,
+      3
+     ]
+    ]
+   },
+   {
+    "clip": "as_fire_alarm_kGKZ0YK4",
+    "label": "Alarm",
+    "start": 8.89,
+    "gold_at": [
+     [
+      "Alarm",
+      true,
+      false,
+      3
+     ]
+    ]
+   },
+   {
+    "clip": "london_protest_01",
+    "label": "Vehicle",
+    "start": 0.25,
+    "gold_at": [
+     [
+      "Crowd",
+      true,
+      true,
+      1
+     ],
+     [
+      "Air horn, truck horn",
+      true,
+      true,
+      2
+     ]
+    ]
+   },
+   {
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "label": "Explosion",
+    "start": 13.52,
+    "gold_at": [
+     [
+      "Crowd",
+      true,
+      true,
+      1
+     ],
+     [
+      "Fireworks",
+      false,
+      true,
+      2
+     ]
+    ]
+   },
+   {
+    "clip": "tg_d088",
+    "label": "Thunder",
+    "start": 1.0,
+    "gold_at": [
+     [
+      "Rain",
+      true,
+      true,
+      1
+     ],
+     [
+      "Thunder",
+      true,
+      true,
+      2
+     ]
+    ]
+   },
+   {
+    "clip": "tg_d127",
+    "label": "Water",
+    "start": 0.14,
+    "gold_at": [
+     [
+      "Water",
+      true,
+      true,
+      1
+     ]
+    ]
+   },
+   {
+    "clip": "tg_d128",
+    "label": "Laughter",
+    "start": 3.08,
+    "gold_at": [
+     [
+      "Laughter",
+      true,
+      true,
+      1
+     ]
+    ]
+   }
+  ],
+  "gate_silenced_needed": [
+   {
+    "clip": "ambient_nature_rainforest_7629",
+    "label": "Bird",
+    "start": 0.1
+   },
+   {
+    "clip": "b3_pet_shop",
+    "label": "Bird",
+    "start": 0.1
+   },
+   {
+    "clip": "bell_miami",
+    "label": "Bell",
+    "start": 0.2
+   },
+   {
+    "clip": "tg_d133",
+    "label": "Fart",
+    "start": 0.0
+   },
+   {
+    "clip": "tg_d133",
+    "label": "Fart",
+    "start": 5.6
+   }
+  ],
+  "reading": "round 31 SUBJ/gate-group and round 33: the 9 visible pictures are scene sounds (rainstorm thunder x3, church bell, fire alarm, protest air horn, starter's bang, bath water, kids' laughter) whose 'visible' call is a judgement; the 5 gate-silenced needed sounds (macaws, robin, church tower, boxer dog x2) have a same-family thing on screen that the annotator says is not the source. Both groups are one tick away from the other class."
+ },
+ "cost_units": {
+  "per_wrong": 0.0282,
+  "per_miss": 0.0563,
+  "clips": 71
+ },
+ "TEST": {
+  "per_item_available": false,
+  "note": "final_test_ship7.json holds only aggregate rows (rows / parts); TEST gold was not read",
+  "reported_rows": {
+   "B0r": {
+    "hits": 21,
+    "misses": 44,
+    "visible": 2,
+    "cross": 31,
+    "phantom": 7,
+    "dup": 0,
+    "F1": 0.3333333333333333,
+    "P": 0.3442622950819672,
+    "R": 0.3230769230769231,
+    "viewer_cost": 2.909090909090909,
+    "coverage": 0.2701091415743011,
+    "wrong": 40
+   },
+   "SHIP6+FLAP": {
+    "hits": 24,
+    "misses": 41,
+    "visible": 5,
+    "cross": 21,
+    "phantom": 5,
+    "dup": 0,
+    "F1": 0.4,
+    "P": 0.43636363636363634,
+    "R": 0.36923076923076925,
+    "viewer_cost": 2.5681818181818183,
+    "coverage": 0.27455269482621913,
+    "wrong": 31
+   }
+  }
+ }
+}
