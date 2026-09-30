@@ -1583,3 +1583,9 @@ bar also removes the weak Thunder 13.75 (conf 0.376, FineLAP clip max < 0.433, n
 Train, Car, Coin, Water ×2, Bird, Alarm, Sigh, Thump ×2, Toilet flush, Chewing) for +1 old-DEV hit (Hammer; the Explosion
 2.84 displaces the 5.68 hit), and in DV's seat it is deaf to a needed Thunder. FineLAP's calibrated clip bar (0.433) sits
 far above DASM's (0.084): FineLAP's clip-wide scores separate needed P1 items from others worse than DASM's do.
+**Correction (replaces the "no yes/no fallback" and the (B) Cat sentences above).** The screen DID call the pipeline's
+`listener_p1_lookup`; its flaw was elsewhere: `flap_joint_sim.py` did not name SHIP6 in `TG_ARMS`, so `tagger_prep.configure`
+left SHIP6's listener caches on the DEV files and every tagger-DEV keep came back "missing". Fixed (TG_ARMS set in `parts()`)
+and re-run: screen (B) now drops 34 rows (0 needed-class; Dog / Domestic animals / Livestock kept by the yes/no P1 answer),
+the DV2 picture screen removes 0 pictures (25/28/2.479 = SHIP6, STOP), the Cat claim disappears; screen (A) and the CV are
+unchanged (they never used the keep). The arm numbers stand; the screens now agree with them on both parts.

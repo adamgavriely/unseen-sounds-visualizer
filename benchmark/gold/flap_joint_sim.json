@@ -875,50 +875,10 @@
    ],
    [
     "dev2",
-    "tg_d016",
-    "Speech",
-    0.0,
-    0.333,
-    "none"
-   ],
-   [
-    "dev2",
     "tg_d022",
     "Animal",
     7.25,
     0.064,
-    "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d022",
-    "Dog",
-    7.25,
-    0.378,
-    "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d022",
-    "Domestic animals, pets",
-    7.25,
-    0.041,
-    "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d054",
-    "Speech",
-    1.0,
-    0.215,
-    "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d054",
-    "Speech",
-    13.05,
-    0.215,
     "other_gold"
    ],
    [
@@ -948,14 +908,6 @@
    [
     "dev2",
     "tg_d120",
-    "Domestic animals, pets",
-    2.97,
-    0.031,
-    "hit_needed"
-   ],
-   [
-    "dev2",
-    "tg_d120",
     "Speech",
     5.0,
     0.317,
@@ -965,33 +917,9 @@
     "dev2",
     "tg_d128",
     "Livestock, farm animals, working animals",
-    1.5,
-    0.004,
-    "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d128",
-    "Livestock, farm animals, working animals",
     7.5,
     0.004,
     "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d128",
-    "Hammer",
-    9.0,
-    0.154,
-    "other_gold"
-   ],
-   [
-    "dev2",
-    "tg_d129",
-    "Speech",
-    0.06,
-    0.202,
-    "none"
    ],
    [
     "dev2",

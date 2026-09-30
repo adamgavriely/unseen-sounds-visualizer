@@ -66,6 +66,8 @@ def parts():
     s4 = json.loads(R.STAGE4.read_text(encoding="utf-8"))
     cfg = R.arm_cfg("SHIP6")
     P = [("dev", st, gold[st], R.R13, s4, cfg) for st in stems]
+    import os
+    os.environ.setdefault("TG_ARMS", "SHIP6")        # configure remaps the listener caches only for arms named here
     from benchmark.gold import tagger_prep as T
     DCC2, R2, stems2 = T.configure("dev2")
     keep = set(stems2)
