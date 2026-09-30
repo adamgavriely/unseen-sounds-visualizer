@@ -1921,3 +1921,7 @@ gold_AG_2026-09-20.json, the re-check answer/item files (their outcome is on the
 recheck2_2026_09_30 notes; the answers are in commits of 30 Sept).
 Check after the merge and the round-2 flip (merged DEV, 57 needed): B0r 18/57, 51, 3.634; SHIP7 (SHIP6+FLAP) 27/25/2.394;
 SHIP8 (SHIP7+K4AD) 27/22/2.310.
+- **DBR arm (stage 4, on SHIP8):** 27/57, 22 wrong (7/12/3), 2.310 = SHIP8 cost: at stage 4 it also fires on other clips
+  (one cross becomes a phantom). Cost not lower → **fail**; not shipped.
+- **TEST read of SHIP8 (reported; TEST gold unchanged):** SHIP7+K4AD 23 hits / 29 wrong (4/20/5) / 2.568 vs B0r 21/40/2.909;
+  d −0.341 [−0.636, −0.045], one-sided p 0.017 → better. Same cost as SHIP7 on TEST (24/31): −1 hit, −2 wrong.
