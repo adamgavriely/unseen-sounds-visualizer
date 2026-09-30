@@ -1198,3 +1198,7 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
 - **PIC-SIM (gate picture-vs-frames similarity; screen on gate_gold DEV judge set):** SigLIP-2 image-image cosine between the
   blind_a2i picture and the gate's stretch frames (max over frames). One pre-set pair: s_hi = 0.80 flips "not seen"→seen,
   s_lo = 0.30 flips seen→not seen. GO iff seen silenced ≥ 20/43 and needed kept ≥ 31/36.
+- **BTP screen result (saved SHIP4 pictures, bar 0.5 as pre-registered):** merged 25/55, 33 wrong (9/21/3), cost 2.620; 0 hits
+  lost; one outcome change (tg_d107 Crying 1.25→0.08, cross→hit); mv_detective Alarm and tg_d107 Screaming moved, outcomes
+  unchanged. **GO.** (src LISTEN_RUN_BAR is 0.4; at 0.4 same totals — reported only.) Arm SHIP4+BTP (`BAND_TWIN_PULL` 0.5,
+  in stage 4 after the vetoes, non-rescued spans) runs on merged DEV; same pass rule vs SHIP4.

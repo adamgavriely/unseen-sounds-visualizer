@@ -1,0 +1,170 @@
+{
+ "bar": 0.5,
+ "base": {
+  "merged": {
+   "hits": 24,
+   "n": 55,
+   "wrong": 34,
+   "visible": 9,
+   "cross": 22,
+   "phantom": 3,
+   "cost": 2.704225352112676
+  },
+  "dev": {
+   "hits": 18,
+   "n": 36,
+   "wrong": 18,
+   "visible": 6,
+   "cross": 9,
+   "phantom": 3,
+   "cost": 2.204081632653061
+  },
+  "dev2": {
+   "hits": 6,
+   "n": 19,
+   "wrong": 16,
+   "visible": 3,
+   "cross": 13,
+   "phantom": 0,
+   "cost": 3.8181818181818183
+  }
+ },
+ "nonrescued": {
+  "rows": {
+   "merged": {
+    "hits": 25,
+    "n": 55,
+    "wrong": 33,
+    "visible": 9,
+    "cross": 21,
+    "phantom": 3,
+    "cost": 2.619718309859155
+   },
+   "dev": {
+    "hits": 18,
+    "n": 36,
+    "wrong": 18,
+    "visible": 6,
+    "cross": 9,
+    "phantom": 3,
+    "cost": 2.204081632653061
+   },
+   "dev2": {
+    "hits": 7,
+    "n": 19,
+    "wrong": 15,
+    "visible": 3,
+    "cross": 12,
+    "phantom": 0,
+    "cost": 3.5454545454545454
+   }
+  },
+  "changed": [
+   {
+    "part": "dev",
+    "clip": "mv_detective_crime_scene",
+    "changes": [
+     [
+      "Alarm",
+      3.92,
+      3.36,
+      false
+     ]
+    ],
+    "before": "h1 v0 c2 p0 d0",
+    "after": "h1 v0 c2 p0 d0"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "changes": [
+     [
+      "Crying, sobbing",
+      1.25,
+      0.08,
+      false
+     ],
+     [
+      "Screaming",
+      7.75,
+      7.0,
+      false
+     ]
+    ],
+    "before": "h0 v0 c2 p0 d0",
+    "after": "h1 v0 c1 p0 d0"
+   }
+  ],
+  "hits_lost": [],
+  "GO": true
+ },
+ "all": {
+  "rows": {
+   "merged": {
+    "hits": 25,
+    "n": 55,
+    "wrong": 33,
+    "visible": 9,
+    "cross": 21,
+    "phantom": 3,
+    "cost": 2.619718309859155
+   },
+   "dev": {
+    "hits": 18,
+    "n": 36,
+    "wrong": 18,
+    "visible": 6,
+    "cross": 9,
+    "phantom": 3,
+    "cost": 2.204081632653061
+   },
+   "dev2": {
+    "hits": 7,
+    "n": 19,
+    "wrong": 15,
+    "visible": 3,
+    "cross": 12,
+    "phantom": 0,
+    "cost": 3.5454545454545454
+   }
+  },
+  "changed": [
+   {
+    "part": "dev",
+    "clip": "mv_detective_crime_scene",
+    "changes": [
+     [
+      "Alarm",
+      3.92,
+      3.36,
+      false
+     ]
+    ],
+    "before": "h1 v0 c2 p0 d0",
+    "after": "h1 v0 c2 p0 d0"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "changes": [
+     [
+      "Crying, sobbing",
+      1.25,
+      0.08,
+      false
+     ],
+     [
+      "Screaming",
+      7.75,
+      7.0,
+      false
+     ]
+    ],
+    "before": "h0 v0 c2 p0 d0",
+    "after": "h1 v0 c1 p0 d0"
+   }
+  ],
+  "hits_lost": [],
+  "GO": true
+ }
+}

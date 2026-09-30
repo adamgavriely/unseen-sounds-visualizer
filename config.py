@@ -427,6 +427,7 @@ DASM_LOCAL_VETO = None            # round 29 DV-L (0.084) / DV-G (0.575)
 DASM_LOCAL_KEEP = "either"        # round 29: 'either' listener or 'both'
 DASM_CLIP_VETO = None             # round 28 DV (0.084, round-6 calibrated)
 KEEP_NEEDS_V4_ALL = None   # round 30 K4A: "exact" | "onto" (off)
+BAND_TWIN_PULL = None      # round 30 BTP: FlexSED run bar for the start pull (off)
 TIER_SPLIT = 0.6                  # the TIER rule's peak split (amendment E; round 25 re-selects it by CV)
 DASM_P4_CACHE = None              # round 19 DR: benchmark/gold/<split>_listener_p4.json
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener

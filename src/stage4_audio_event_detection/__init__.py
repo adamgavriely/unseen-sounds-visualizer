@@ -871,6 +871,25 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             gone.append(e)
         events = [e for e in events if e not in gone]
         print(f"       [stage4] K4A ({kall}): dropped {len(gone)} span(s)", flush=True)
+    btp = getattr(config, "BAND_TWIN_PULL", None)
+    if btp and ffw is not None:
+        # round 30 BTP: a non-rescued span whose family has a FlexSED run (>= btp, gaps <= LISTEN_RUN_GAP merged) ending
+        # 0-1.0 s before its start and starting 0-1.5 s before it starts at that run's start (the latest such run)
+        fa, ft = np.asarray(ffw), np.asarray(ftimes)
+        n = 0
+        for e in events:
+            if getattr(e, "rescued", False):
+                continue
+            best = None
+            for c in [i for i, lab_ in enumerate(flabels) if canonical(lab_) == canonical(e.label)]:
+                rr, dt = _runs(fa[:, c], ft, float(btp), LISTEN_RUN_GAP)
+                for i, j in rr:
+                    rs, re_ = float(ft[i]), float(ft[j - 1]) + dt
+                    if 0.0 <= e.start - re_ <= 1.0 and 0.0 <= e.start - rs <= 1.5 and (best is None or rs > best):
+                        best = rs
+            if best is not None:
+                e.start = best; n += 1
+        print(f"       [stage4] BTP ({btp}): pulled {n} span start(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
     if veto > 0:
         peak = {}
