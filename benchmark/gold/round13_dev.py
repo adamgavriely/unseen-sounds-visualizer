@@ -61,7 +61,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
-        "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False,
+        "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False, "MASKED_WEAK_NEED_MASK": True,
         "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
@@ -180,6 +180,7 @@ ARMS["TO1F7F8+N1"] = {**ARMS["TO1+F7F8"], "SCENE_FIT_ALL": True}
 ARMS["TO1F7F8+N2"] = {**ARMS["TO1+F7F8"], "MASKED_WEAK_VETO": True}
 ARMS["TO1F7F8+N4"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_RANK": 3}
 ARMS["TO1F7F8+N2b"] = {**ARMS["TO1+F7F8"], "MASKED_WEAK_VETO": True, "MASKED_WEAK_AF": True}
+ARMS["TO1F7F8+N2c"] = {**ARMS["TO1F7F8+N2b"], "MASKED_WEAK_NEED_MASK": False}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}

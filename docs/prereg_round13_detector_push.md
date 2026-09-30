@@ -922,3 +922,6 @@ DEV 49 (job 31565770): 18 hits / 22 wrong (6 / 11 / 5) / 2.37 vs base 18 / 24 / 
 Flamingo as a second keep vote the Door stays and 4 wrong pictures still go. Status: a DEV-only improvement found after TEST
 was spent — it cannot be confirmed on TEST (one exposure used). Shipping it is Adam's call; its TEST stage 4/5 are prepared
 gold-free (not scored) in case he wants a descriptive read, which would be a second TEST look and must be labelled so.
+- **N2c (exploratory, written before its number):** N2b without the masking condition — every weak (conf < 0.5) BEATs-only
+  span without a FlexSED twin needs either listener (Qwen P1 rule or AF V4 on the P1 cut) to be kept. Same pass rule vs the
+  base TO1+F7F8, and reported vs N2b.

@@ -740,8 +740,9 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             tw = locals().get("twinned", set())
             for e in [e for e in events if id(e) not in flex_ids and id(e) not in tw and e.confidence < 0.5]:
                 m = (T >= e.start - 1e-6) & (T <= e.end + 1e-6)
-                if not m.any() or float(np.asarray(framewise)[m][:, sm].max()) < 0.3:
-                    continue
+                if getattr(config, "MASKED_WEAK_NEED_MASK", True) and (
+                        not m.any() or float(np.asarray(framewise)[m][:, sm].max()) < 0.3):
+                    continue                                     # round 18 N2c drops the masking condition
                 if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
                     continue
                 if getattr(config, "MASKED_WEAK_AF", False) and _af_p1_accepts(e):   # round 18 N2b: or AF V4 on the P1 cut
