@@ -53,6 +53,16 @@ TAGGER_ALIASES = {
     "stovetop gas start": "Clicking",                    # unresolved (the igniter's clicks)
     "tongs": "Cutlery, silverware",                      # unresolved
     "plate": "Dishes, pots, and pans",                   # unresolved
+    # export 2026-09-30_0635
+    "clanks and hits to operate the cannon": "Clang",    # -> "Opera"
+    "game ammo reload": "Mechanisms",                    # unresolved (a gun's reload clicks)
+    "electricity": "Crackle",                            # unresolved (an electric spark)
+    "sliding": "Scrape",                                 # -> "Ding"
+    "bottles and cans falling": "Clatter",               # unresolved
+    "parrot sounds": "Bird vocalization, bird call, bird song",   # unresolved (no Parrot class)
+    "whsitle": "Whistle",                                # typo; unresolved
+    "scraping": "Scrape",                                # -> "Ping"
+    "horse sputter": "Snort",                            # -> "Horse" (a horse's snort)
 }
 
 

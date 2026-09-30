@@ -44,6 +44,32 @@
     "tg_d068"
    ],
    "rule": "tag-balanced pairs (needed, all, sha256), alternating"
+  },
+  "3": {
+   "dev2": [
+    "tg_d107",
+    "tg_d120",
+    "tg_d121",
+    "tg_d125",
+    "tg_d127",
+    "tg_d128",
+    "tg_d129",
+    "tg_d133",
+    "tg_d149"
+   ],
+   "test2": [
+    "tg_d101",
+    "tg_d103",
+    "tg_d104",
+    "tg_d105",
+    "tg_d106",
+    "tg_d109",
+    "tg_d110",
+    "tg_d112",
+    "tg_d141",
+    "tg_d146"
+   ],
+   "rule": "tag-balanced pairs (needed, all, sha256), alternating"
   }
  },
  "dev2": [
@@ -59,7 +85,16 @@
   "tg_d075",
   "tg_d085",
   "tg_d088",
-  "tg_d095"
+  "tg_d095",
+  "tg_d107",
+  "tg_d120",
+  "tg_d121",
+  "tg_d125",
+  "tg_d127",
+  "tg_d128",
+  "tg_d129",
+  "tg_d133",
+  "tg_d149"
  ],
  "test2": [
   "tg_d001",
@@ -79,6 +114,16 @@
   "tg_d077",
   "tg_d078",
   "tg_d079",
-  "tg_d080"
+  "tg_d080",
+  "tg_d101",
+  "tg_d103",
+  "tg_d104",
+  "tg_d105",
+  "tg_d106",
+  "tg_d109",
+  "tg_d110",
+  "tg_d112",
+  "tg_d141",
+  "tg_d146"
  ]
 }

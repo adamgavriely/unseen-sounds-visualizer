@@ -769,3 +769,13 @@ gain, cost < B0r); ties → fewer wrong. The pick is the ONE candidate for the f
   `config.set_listener_split(NAME)` / `main.py --listener-split NAME`. A clip without them stops in stage 4 (no silent
   fallback). Stage 6: `scripts/best_to_protocol.py` → `repaint_shipped.py` → `recomposite.py`. Live (cache-free) listener
   and DASM for ComfyUI: TODO. The merged TEST (scored once, end) decides whether the switch stays.
+
+**Confirmation set 1 — batch 3 (Adam, 2026-09-30; fixed and committed before any pipeline run or output on these
+clips).** 19 AudioSet-Strong eval clips (`docs/tagger_selection_rule.md`, amendments 1–4; source map
+`benchmark/gold/tagger_audioset_sources.json`) from Adam's export `tagger_AG_2026-09-30_0635.json` (done, not broken;
+d102, d108 broken to `_bad/`), added by `tagger_set.py`. Split tag-balanced by `tagger_split.py` (same rule as batch 2):
+**DEV2** = tg_d107, d120, d121, d125, d127, d128, d129, d133, d149 (9; 10 needed sounds); **TEST2** = tg_d101, d103,
+d104, d105, d106, d109, d110, d112, d141, d146 (10; 10 needed). Totals: DEV2 22, TEST2 28.
+Disclosure: Adam saw BEATs-only suggestions and/or the clips' AudioSet-Strong labels ("other annotators' tags") while
+tagging most of these clips (`suggestions_shown_at`, `annotators_shown_at`, `from_annotators`), so this batch's gold is
+anchored partly on AudioSet-Strong; clips are eval split (DASM's checkpoint was picked on that split).
