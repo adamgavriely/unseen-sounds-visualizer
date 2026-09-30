@@ -1061,3 +1061,8 @@ pre-registered exposure (TO1+F7F8 vs B0r, "same"); reads 2–4 are a labelled se
   least two of {Qwen V4 names it, Audio Flamingo V4 names it, DASM gives its family ≥ 0.575 within the run ± 0.5 s} agree.
   Screen motive: the citywalk air horn (AF yes, Qwen no, DASM 0.72) is rejected today. Pass rule vs the base: hits ≥ 24,
   wrong ≤ 41 + 2 × gain, cost < 2.901, no needed hit lost on either part.
+
+### Round 22 TD — fails (merged DEV 24 hits / 43 wrong / 2.958 vs base 24 / 41 / 2.901; jobs 31593870 / 31593871)
+- **ONCE-G (written before its number):** ONCE keeps the earliest rescued span of a family, and drops a later one only if it
+  starts within MERGE_GAP (2.0 s, the scored display's merge gap) of the previous kept one — later rescues farther apart are
+  separate events. Base SHIP3; same pass rule (hits ≥ 24, wrong ≤ 41 + 2 × gain, cost < 2.901, no hit lost on either part).

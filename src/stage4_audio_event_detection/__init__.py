@@ -1329,9 +1329,10 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
         # amendment E, ONCE (F1b): at most one rescued span per family per clip, the EARLIEST (the first onset is the one
         # a viewer needs); no "already shown" condition
         first = {}
+        gap = getattr(config, "ONCE_GAP", None)                 # round 22 ONCE-G: a later rescue > gap s away is a new event
         for e in sorted([e for e in resc if id(e) not in drop], key=lambda e: (e.start, e.end)):
             fam = canonical(e.label)
-            if fam in first:
+            if fam in first and (gap is None or e.start - first[fam].start <= float(gap)):
                 drop.add(id(e)); dropped["ONCE"].append(sig(e) + ["not the first"])
             else:
                 first[fam] = e

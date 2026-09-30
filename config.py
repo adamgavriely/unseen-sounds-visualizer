@@ -421,6 +421,7 @@ MASKED_WEAK_MISSING_KEEP = False  # round 21 N2c-D
 MASKED_WEAK_DASM_KEEP = False     # round 21 N2c-D
 KEEP_NEEDS_V4 = False             # round 21 K-V4
 TIER_2OF3_DASM = False            # round 22 TD
+ONCE_GAP = None                   # round 22 ONCE-G (2.0)
 DASM_P4_CACHE = None              # round 19 DR: benchmark/gold/<split>_listener_p4.json
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener
 RELABEL_2L = False                # round 17 R1
