@@ -648,3 +648,19 @@ Adam: "keep trying more". Three offline screens on the pictures of TO1+F7F8 (and
 - **V5 masking-aware listener** ("apart from {louder sounds}, what else?"): not run. Fable: 0 DEV hits reachable (Footsteps
   2.1 and Gasp 6.7 are killed by F8, DASM 0.26 / below bar; Whistle 6.1 needs AF yes). The suspected AF duplicate-answer bug
   ("gunshot and gunfire, explosion" on 41 items) was checked: same cut → same answer, mostly the explosion clip; not a bug.
+
+## Round 15 amendment M — Set-of-Mark crop vote for the gate (Fable idea 2; written 2026-09-30 BEFORE any number of it)
+Motive (GOLD_RERUN §10e): 40 of 47 missed visible DEV sources are seen by no stretch at all — perception, not aggregation.
+The whole-frame VLM misses small sources (church bell, fire-alarm box, air horn). Mechanism: look closer.
+- **Crop vote.** For every (gold sound, stretch) of the cached DEV gate run (`benchmark/gold/gate_gold/Qwen38-27B`, same 6
+  frames: stretch ± 1 s, as `gate_gold.run_vlm`), OWLv2 (`google/owlv2-base-patch16-ensemble`) is run with the family's
+  `DETECT_QUERY` phrase (`src/stage2_video_understanding/owl.py`; no phrase → no crop vote, the stretch is decided as today).
+  Boxes with score >= 0.1, top 2 per frame, cropped with a 20 % margin (at least 224 px on the short side after upscaling).
+  Each crop goes to the gate VLM (Qwen3.8-27B, greedy) with: "This is a close-up cut from a video frame. Is it {phrase}? Answer
+  yes or no." Crop vote = yes iff some crop gets "yes".
+- **Rule M:** a stretch is "seen" iff the shipped majority says seen, OR (crop vote yes AND at least one of name/ab/desc says
+  yes). The clip-level verdict stays "silent only if every stretch is seen". Rule M-any (report only): majority OR crop vote.
+- **Screen (DEV 54 judge clips, all importance >= 2 gold sounds, `gate_gold.score` style):** seen_silenced and needed_kept for
+  majority vs M vs M-any. **Go to a full DEV arm iff** M silences >= 3 more seen sounds AND loses <= 1 needed sound
+  (needed_kept drop <= 1/needed). Full arm: TO1+F7F8 and B0r with rule M applied to their stored stage-5 votes plus crop votes
+  on their gate stretches; adopted as a candidate for TEST2 only if cost drops on both bases and no needed hit is lost.
