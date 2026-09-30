@@ -1706,3 +1706,28 @@ HIT, and Pant 7.0, Goose 11.0, Thunder 8.5, all cross). With the DASM-or-FineLAP
 FineLAP scores 0.95 on the Insect and 0.70–0.77 on the three wrong pictures, so its 0.329 bar keeps all four. Post-hoc, reported
 only (not pre-registered, not adopted): DASM alone separates them (Insect 0.59 vs 0.15 / 0.15 / 0.38 at the 0.575 bar) and would
 read 25/24/2.366 on the saved pictures ((4 x 30 + 2 x 24) / 71) — a 0.015 margin on one hit; if Adam wants it, it is a new pre-registered arm on SHIP7.
+
+## Round 33 SSL-SaN — audio-visual localisation as a gate vote (SOTA scan; written 2026-09-30 BEFORE any SSL-SaN number)
+The gate VLMs only see frames; every audio-visual idea so far (N Qwen3-Omni, GA, PIC-SIM, SUBJ, OM) failed. SSL-SaN (BMVC
+2025, `xavijuanola/SSL_SaN`, arXiv 2508.21761, official `sslsan` weights from the authors' Drive folder; the Zenodo record
+17064608 holds only the IS3+ dataset) is a sound-source localiser trained with silence / noise / off-screen negatives: its
+audio-image cosine map should sit near zero when the sound's source is not on screen — exactly the gate's question.
+- **Score.** `benchmark/gold/gate_sslsan.py` (`slurm/job_gate_sslsan.sh`): for every cached Qwen3.8-27B gate stretch of
+  all 139 gold clips (`gate_gold/Qwen38-27B`), the same six frames (stretch ± 1 s, `gate_gold.run_vlm` times) and the stretch
+  audio (± 1 s, 16 kHz mono, repeated to 10 s as the official test dataloader does; mel 512 / 239 / 257 normalised, dB)
+  go through the official encoders; stretch score = max over the 6 frames of the max of the raw 14 × 14 cosine map
+  (no sigmoid, no per-image normalisation). Sound score = MIN over its stretches (the gate silences only if every stretch
+  is seen). Report-only: the same frames with zero audio (the paper's silence claim, checked on our clips).
+- **Threshold t**, fixed on the NON-judge gold clips (the test85 part of `gate_gold`: 90 clips, 176 sounds of importance ≥ 2,
+  98 seen / 78 needed): the value with the best balanced accuracy of the SSL-SaN-alone verdict (seen iff score ≥ t), over
+  the observed sound scores, highest t on ties. Those clips are consumed by this calibration.
+- **DEV judge clips (43 seen, 36 needed; shipped majority 16 / 43, 31 / 36), two pre-set variants:** (a) tie-break: a
+  stretch with yes == no among name / a-b / description (1–1 with a None, 0–0) is decided by score ≥ t; (b) fourth vote:
+  seen iff yes > no over the four votes, a 2–2 tie decided by SSL-SaN — which means SSL-SaN decides every non-unanimous
+  VLM stretch and unanimous stretches stand. Also reported: SSL-SaN alone at t.
+- **GO iff seen silenced ≥ 19 / 43 with needed kept ≥ 31 / 36 in (a) or (b).** Otherwise report-only, no arm.
+- **Reach, from the cached votes alone (no SSL-SaN number):** of the 27 leaked seen sounds, 0 have only tied not-seen
+  stretches, so (a) cannot add a single silenced seen sound and GO is reachable only through (b): 7 leaks have every
+  not-seen stretch non-unanimous (+3 needed), 4 already-silenced needed sounds could be rescued, and 6 kept needed sounds
+  have all their not-seen stretches non-unanimous (at risk). If the weights or code do not run within about an hour the
+  screen stops and says why.
