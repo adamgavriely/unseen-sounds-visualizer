@@ -750,3 +750,10 @@ same way). All selection happens on the merged DEV. The merged TEST is scored ON
 the shipped config (B0) under the prereg TEST rule (paired clip bootstrap, Holm over the candidates). Disclosure: the old
 TEST part was read before for other detector candidates (rounds 4–13; R13-1 once); the final candidate (TO1+F7F8 unless a
 merged-DEV winner replaces it) was chosen on DEV only and has never been run on TEST.
+
+### Merged-DEV selection (written 2026-09-30, before any merged-DEV number)
+Candidates (fixed now; all DEV-eligible arms of rounds 13–15 within 0.2 of the best DEV cost): TO1+F7F8, TO1+F7,
+TO1+F7F8+FIX, TO1F7F8+K3, A1, LR-V12+1+F1F4F3+F7F8, LR-V12+1+F1F4F3+F7F8@AG4, R13-1; baselines B0r, B1. Each is run on the
+tagger DEV part through `tagger_prep` (TG_ARMS) and scored with `benchmark/gold/merged_dev.py` on DEV + tagger DEV as one
+set. **Pick** = the lowest merged-DEV cost among the candidates that are merged-DEV-eligible (hits > B0r, wrong <= B0r + 2 ×
+gain, cost < B0r); ties → fewer wrong. The pick is the ONE candidate for the final merged TEST scoring (vs B0).
