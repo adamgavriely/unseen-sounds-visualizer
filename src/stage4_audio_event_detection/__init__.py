@@ -243,6 +243,9 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                                                  listener_p1=_pipeline_listener_p1(wav_path),
                                                  extra=(load_extra_evidence(Path(wav_path).parent.name)
                                                         if getattr(config, "TIER_SPECIFIC", False) else None))
+            _dr = dasm_rescue_events(Path(wav_path).parent.name)          # round 19 DR
+            events = events + _dr
+            flex_ids |= {id(e) for e in _dr}
         except FileNotFoundError as e:
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     trace("veto", events, "after the cross-detector and PANNs vetoes")
@@ -1038,6 +1041,23 @@ def _family_match(a: str, b: str) -> bool:
         return True
     ca, cb = canonical(a), canonical(b)
     return is_descendant(ca, cb) or is_descendant(cb, ca) or is_descendant(a, cb) or is_descendant(b, ca)
+
+
+def dasm_rescue_events(clip: str):
+    """Round 19 DR (DASM_RESCUE): DASM runs no B0r stage-4 span touched (config.DASM_P4_CACHE, benchmark/gold/dasm_rescue.py)
+    that BOTH open-inventory listeners name (Qwen V4 and Audio Flamingo V4) become rescued spans (label = the family,
+    confidence = the DASM peak). The base's rescue filters (ONCE, F8) then apply as to any rescued span."""
+    from src.types import AudioEvent
+    p = getattr(config, "DASM_P4_CACHE", None)
+    if not (getattr(config, "DASM_RESCUE", False) and p):
+        return []
+    out = []
+    for x in _cache_items(p):
+        if x.get("clip") == clip and x.get("qwen_v4") and (x.get("accept") or {}).get("V4"):
+            out.append(AudioEvent(x["family"], float(x["start"]), float(x["end"]), float(x["peak"]), rescued=True, agree=True))
+    if out:
+        print(f"       [stage4] DASM rescue: {len(out)} span(s) {[(e.label, round(e.start, 2)) for e in out]}", flush=True)
+    return out
 
 
 _AFP1 = {}
