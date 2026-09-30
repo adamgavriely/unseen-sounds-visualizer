@@ -15,10 +15,10 @@ from pathlib import Path
 _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 from benchmark.gold import gate_gold as G
+from benchmark.gold import detector_dry as DD
 
 SRC = G.OUT_DIR / "Qwen38-27B"
 OUT = G.OUT_DIR / "aveto_Qwen38-27B"
-WAV = _ROOT / "data" / "work" / "devcand" / "wav16"
 MODEL = "Qwen/Qwen3-Omni-30B-A3B-Instruct"
 SR = 16000
 Q = ("Listen to this recording. Which is true? (a) this is the sound of {a} (b) {b}. Answer with the letter only.")
@@ -51,11 +51,9 @@ def run():
     for f in sorted(SRC.glob("*.json")):
         if f.stem not in judge or (OUT / f.name).exists():
             continue
-        wp = WAV / f"{f.stem}.wav"
-        if not wp.exists():
-            print("no wav", f.stem); continue
-        w, sr = sf.read(str(wp), dtype="float32")
         d = json.loads(f.read_text(encoding="utf-8"))
+        w, sr = sf.read(str(DD.wav_for(DD.clip_path(d["clip"]))), dtype="float32")
+        assert sr == SR, sr
         for s in d["sounds"]:
             fam = s["label"].lower()
             for st in s["stretches"]:
@@ -76,10 +74,9 @@ def run():
         print(f.stem, sum(st.get("aveto") is True for s in d["sounds"] for st in s["stretches"]), "vetoes", flush=True)
 
 
-def seen(st, veto):
-    votes = [st.get("name"), st.get("ab"), st.get("desc")]
-    maj = sum(v is True for v in votes) > sum(v is False for v in votes)
-    return maj and not (veto and st.get("aveto") is True)
+def seen_all(sts, veto):
+    """the shipped majority rule (gate_gold.decide); a vetoed stretch counts as not seen"""
+    return G.decide(sts, "majority") and not (veto and any(st.get("aveto") is True for st in sts))
 
 
 def score():
@@ -90,8 +87,8 @@ def score():
             for s in json.loads(f.read_text(encoding="utf-8"))["sounds"]:
                 if s["importance"] < 2:
                     continue
-                pred = all(seen(st, veto) for st in s["stretches"])
-                base = all(seen(st, False) for st in s["stretches"])
+                pred = seen_all(s["stretches"], veto)
+                base = seen_all(s["stretches"], False)
                 if s["seen"]:
                     c["seen"] += 1; c["seen_sil"] += pred
                 else:

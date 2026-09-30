@@ -8,7 +8,7 @@
 #SBATCH --mem=128G
 #SBATCH --time=04:00:00
 #
-# Round 15 GA (docs/prereg_round13_detector_push.md): Set-of-Mark crop vote for the gate, DEV screen.
+# Round 29 GA (docs/prereg_round13_detector_push.md): gate audio-identity veto, DEV screen.
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs
