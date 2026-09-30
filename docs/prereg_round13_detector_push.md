@@ -1161,3 +1161,8 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
 - **DV-G (same; base SHIP4):** a non-rescued span is dropped if its family's DASM does not reach g = 0.575 within the span
   ± 0.5 s, unless BOTH Qwen V4 (P1 open inventory) and AF V4 name the family on its cut. Both bars are the round-6 280-clip
   calibration. Same pass rule as F8-U (hits ≥ 24, wrong ≤ 34 + 2 × gain, cost < 2.704, no needed hit lost on either part).
+- **V4D (Fable; candidate-level screen, written before any of its answers):** on each P2/PV cut, 20-ms frames with RMS above
+  the cut's 85th percentile are attenuated by 20 dB (20-ms fades) — the loud co-occurring event is ducked — and the unchanged
+  V4 prompt is asked again (Qwen3-Omni, greedy, 64 tokens, same matcher). GO to an arm iff, on merged-DEV candidates, V4D adds
+  ≥ 2 needed-class accepts beyond Qwen V4 with ≤ 2× that many other-class accepts added. The arm would then let the Qwen leg
+  of TIER accept on V4 OR V4D.
