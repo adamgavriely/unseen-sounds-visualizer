@@ -224,6 +224,40 @@ def arm_rows(s4, names, st):
     return []
 
 
+def sim_d(P, bar):
+    """amendment DV2: SHIP6 pictures of the (B) would-drop rows removed, rescored"""
+    Bres = sim_b(P, bar)
+    wd = {}
+    for part, st, lab, a, _m, _c in Bres["would_drop"]:
+        wd.setdefault((part, st), []).append((canonical(lab), a))
+    rows = {"dev": [], "dev2": []}; base = {"dev": [], "dev2": []}; gone = []; lost = []
+    for part, st, g, root, s4, cfg in P:
+        specs = specs_of(root / "SHIP6_proposed", st)
+        pics = place(specs, root / "SHIP6_proposed", st)
+        ends = {}
+        for r in s4["arms"]["SHIP6|proposed"][st]:
+            ends.setdefault((canonical(r["label"]), round(r["start"], 2)), float(r["end"]))
+        keep = []
+        for lab, a, b in pics:
+            hit = any(f == canonical(lab) and s - 1.5 <= a <= ends.get((f, s), s) for f, s in wd.get((part, st), []))
+            (gone if hit else keep).append((lab, a, b))
+            if hit:
+                gone[-1] = [part, st, lab, round(a, 2), round(b, 2), L.gold_class(g, lab, a, b)]
+        r0 = S.score_clip(g, pics); r1 = S.score_clip(g, keep)
+        base[part].append(r0); rows[part].append(r1)
+        if r1["hit"] < r0["hit"]:
+            lost.append((part, st, r0["hit"] - r1["hit"]))
+    Bm = {"merged": B.summ(base["dev"] + base["dev2"])}
+    assert (Bm["merged"]["hits"], Bm["merged"]["wrong"]) == (BASE["hits"], BASE["wrong"]), Bm
+    BASE["cost"] = Bm["merged"]["cost"]
+    M = {"merged": B.summ(rows["dev"] + rows["dev2"]), "dev": B.summ(rows["dev"]), "dev2": B.summ(rows["dev2"])}
+    verdict = passes(M["merged"], lost)
+    print(f"DV2 (clip bar {bar:.4f}): merged {B.fmt(M['merged'])} | DEV {B.fmt(M['dev'])} | DEV2 {B.fmt(M['dev2'])}  removed {len(gone)} hits lost {lost} -> {verdict}")
+    for x in gone:
+        print("    removed:", x)
+    return {"rows": M, "removed": gone, "hits_lost": lost, "verdict": verdict}
+
+
 def sim_c(P):
     return [[part, st, lab, round(a, 2), L.gold_class(g, lab, a, b)]
             for part, st, g, root, s4, cfg in P
@@ -263,6 +297,12 @@ def main():
     calib = json.loads(CALIB.read_text(encoding="utf-8")) if CALIB.exists() else None
     clip_bar = calib["clip_bar"] if calib else None
     P = parts()
+    if len(sys.argv) > 1 and sys.argv[1] == "dv2":
+        for k in R.DISPLAY_KEYS:
+            setattr(config, k, R.arm_cfg("SHIP6")[k])
+        res = sim_d(P, clip_bar)
+        (G / "flap_dv2_screen.json").write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")
+        return
     pk = {"dev": peaks("dev"), "dev2": peaks("dev2")}
     disp = {k: R.arm_cfg("SHIP6")[k] for k in R.DISPLAY_KEYS}
     for k, v in disp.items():

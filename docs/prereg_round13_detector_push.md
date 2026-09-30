@@ -1547,3 +1547,10 @@ the CV cost <= SHIP6's CV cost AND it passes the combined rule. If the argmin is
   needed-class but already hit by the non-rescued Domestic-animals span).
 - **Arms SHIP6+FLR / SHIP6+FLR+F1** (job 31596369, queued after the other thread's r16dev / tgarms; real pipeline, both parts)
   are reported below when they finish; the screen's expectation is STOP for both (F8 seat +2 hits / +10 wrong, DV seat −1 hit).
+### Round 32 amendment DV2 — FineLAP as a SECOND clip veto beside DASM's (written BEFORE its number; from screen (B))
+Screen (B) showed the FineLAP clip bar catching two cross-group X pictures DASM's DV keeps (tg_d022 Dog, tg_d128 Hammer)
+at the price of one needed hit (tg_d120 Cat). **Rule DV2:** SHIP6 + a second clip veto: a non-rescued span whose family's
+FineLAP max over the whole clip is < 0.4331 (the P1 clip bar) is dropped unless Qwen P1 / AF P1 keeps it (DV's own keep);
+DASM's DV stays. **Screen** (`flap_joint_sim.py dv2`, CPU): the saved SHIP6 pictures whose stage-4 row is in the (B)
+would-drop list (same family, picture start inside [row start − 1.5, row end]) are removed, rescored on merged DEV.
+**GO bar = the combined rule vs SHIP6** (old rule, or fewer-pictures: cost < 2.479, wrong ≤ 28 − 3 × hits lost, hits ≥ 22).
