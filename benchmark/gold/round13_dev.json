@@ -58,6 +58,10 @@
   "F8_BYPASS_BOTH": false,
   "RESCUE_COVERED": false,
   "TIER_HIGH_OR": false,
+  "SCENE_FIT_ALL": false,
+  "MASKED_WEAK_VETO": false,
+  "LISTENER_DASM_RANK": null,
+  "LISTENER_REQUIRE_CACHES": false,
   "LISTENER_ONCE": false,
   "FIX_FAM": false,
   "FIX_EARLY": false,
@@ -972,6 +976,54 @@
    "LISTENER_DASM_VOTE": true,
    "LISTENER_DASM_DIR": "/home/dsi/adamg/MscProj_r13/data/work/wat_cache/dev",
    "LISTENER_DASM_BAR": 0.33
+  },
+  "TO1F7F8+N1": {
+   "LISTENER_RESCUE": true,
+   "LISTENER_RULE": "TIER",
+   "LISTENER_VCACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_v.json",
+   "LISTENER_AFCACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_afn.json",
+   "LISTENER_LO": 0.5,
+   "LISTENER_ONCE": true,
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.7,
+   "LISTENER_CONFIRMED_MIRROR": true,
+   "LISTENER_CACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener.json",
+   "LISTENER_DASM_VOTE": true,
+   "LISTENER_DASM_DIR": "/home/dsi/adamg/MscProj_r13/data/work/devcand/dasm_cache",
+   "LISTENER_DASM_BAR": 0.575,
+   "SCENE_FIT_ALL": true
+  },
+  "TO1F7F8+N2": {
+   "LISTENER_RESCUE": true,
+   "LISTENER_RULE": "TIER",
+   "LISTENER_VCACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_v.json",
+   "LISTENER_AFCACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_afn.json",
+   "LISTENER_LO": 0.5,
+   "LISTENER_ONCE": true,
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.7,
+   "LISTENER_CONFIRMED_MIRROR": true,
+   "LISTENER_CACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener.json",
+   "LISTENER_DASM_VOTE": true,
+   "LISTENER_DASM_DIR": "/home/dsi/adamg/MscProj_r13/data/work/devcand/dasm_cache",
+   "LISTENER_DASM_BAR": 0.575,
+   "MASKED_WEAK_VETO": true
+  },
+  "TO1F7F8+N4": {
+   "LISTENER_RESCUE": true,
+   "LISTENER_RULE": "TIER",
+   "LISTENER_VCACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_v.json",
+   "LISTENER_AFCACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_afn.json",
+   "LISTENER_LO": 0.5,
+   "LISTENER_ONCE": true,
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.7,
+   "LISTENER_CONFIRMED_MIRROR": true,
+   "LISTENER_CACHE": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener.json",
+   "LISTENER_DASM_VOTE": true,
+   "LISTENER_DASM_DIR": "/home/dsi/adamg/MscProj_r13/data/work/devcand/dasm_cache",
+   "LISTENER_DASM_BAR": 0.575,
+   "LISTENER_DASM_RANK": 3
   },
   "B0r~G1": {
    "DISPLAY_THRESHOLD": 0.3,
@@ -2462,6 +2514,48 @@
     "viewer_cost": 2.693877551020408,
     "coverage": 0.36113180640137504,
     "wrong": 26
+   },
+   "TO1F7F8+N1": {
+    "hits": 18,
+    "misses": 18,
+    "visible": 6,
+    "cross": 12,
+    "phantom": 6,
+    "dup": 0,
+    "F1": 0.4615384615384615,
+    "P": 0.42857142857142855,
+    "R": 0.5,
+    "viewer_cost": 2.4489795918367347,
+    "coverage": 0.39088178279314245,
+    "wrong": 24
+   },
+   "TO1F7F8+N2": {
+    "hits": 17,
+    "misses": 19,
+    "visible": 4,
+    "cross": 12,
+    "phantom": 4,
+    "dup": 0,
+    "F1": 0.4657534246575342,
+    "P": 0.4594594594594595,
+    "R": 0.4722222222222222,
+    "viewer_cost": 2.36734693877551,
+    "coverage": 0.38035399423396826,
+    "wrong": 20
+   },
+   "TO1F7F8+N4": {
+    "hits": 18,
+    "misses": 18,
+    "visible": 5,
+    "cross": 19,
+    "phantom": 6,
+    "dup": 1,
+    "F1": 0.42857142857142855,
+    "P": 0.375,
+    "R": 0.5,
+    "viewer_cost": 2.693877551020408,
+    "coverage": 0.4195934199354523,
+    "wrong": 30
    },
    "B0r~G1": {
     "hits": 15,
@@ -3991,6 +4085,48 @@
     "coverage": 0.42920441000787507,
     "wrong": 57
    },
+   "TO1F7F8+N1": {
+    "hits": 21,
+    "misses": 15,
+    "visible": 18,
+    "cross": 26,
+    "phantom": 9,
+    "dup": 3,
+    "F1": 0.38181818181818183,
+    "P": 0.28378378378378377,
+    "R": 0.5833333333333334,
+    "viewer_cost": 3.3877551020408165,
+    "coverage": 0.45319153399499906,
+    "wrong": 53
+   },
+   "TO1F7F8+N2": {
+    "hits": 19,
+    "misses": 17,
+    "visible": 16,
+    "cross": 23,
+    "phantom": 7,
+    "dup": 2,
+    "F1": 0.3762376237623763,
+    "P": 0.2923076923076923,
+    "R": 0.5277777777777778,
+    "viewer_cost": 3.2653061224489797,
+    "coverage": 0.43578044704309254,
+    "wrong": 46
+   },
+   "TO1F7F8+N4": {
+    "hits": 22,
+    "misses": 14,
+    "visible": 18,
+    "cross": 34,
+    "phantom": 10,
+    "dup": 4,
+    "F1": 0.36666666666666675,
+    "P": 0.2619047619047619,
+    "R": 0.6111111111111112,
+    "viewer_cost": 3.673469387755102,
+    "coverage": 0.4876660235419523,
+    "wrong": 62
+   },
    "B0r~G1": {
     "hits": 17,
     "misses": 19,
@@ -4284,6 +4420,9 @@
    "TO1F7F8+K2x": 21,
    "TO1F7F8+K2K3x": 21,
    "TO1F7F8+O": 20,
+   "TO1F7F8+N1": 21,
+   "TO1F7F8+N2": 19,
+   "TO1F7F8+N4": 22,
    "B0r~G1": 19,
    "B0r~G3": 17,
    "B0r~G4": 17,
@@ -4395,6 +4534,9 @@
    "TO1F7F8+K2x": 21,
    "TO1F7F8+K2K3x": 21,
    "TO1F7F8+O": 20,
+   "TO1F7F8+N1": 21,
+   "TO1F7F8+N2": 19,
+   "TO1F7F8+N4": 22,
    "B0r~G1": 19,
    "B0r~G3": 17,
    "B0r~G4": 17,
@@ -4978,6 +5120,24 @@
     -0.6122448979591837,
     0.40816326530612246,
     0.416
+   ],
+   "TO1F7F8+N1": [
+    -0.32653061224489793,
+    -0.8571428571428571,
+    0.08163265306122448,
+    0.092
+   ],
+   "TO1F7F8+N2": [
+    -0.40816326530612246,
+    -0.9387755102040817,
+    0.08163265306122448,
+    0.0575
+   ],
+   "TO1F7F8+N4": [
+    -0.08163265306122448,
+    -0.6938775510204082,
+    0.5306122448979592,
+    0.4135
    ],
    "B0r~G1": [
     0.04081632653061224,
@@ -5628,6 +5788,24 @@
     -0.4908163265306122,
     0.5306122448979592,
     0.6225
+   ],
+   "TO1F7F8+N1": [
+    -0.20408163265306123,
+    -0.7755102040816326,
+    0.2857142857142857,
+    0.2575
+   ],
+   "TO1F7F8+N2": [
+    -0.32653061224489793,
+    -0.9795918367346939,
+    0.24489795918367346,
+    0.1435
+   ],
+   "TO1F7F8+N4": [
+    0.08163265306122448,
+    -0.5714285714285714,
+    0.6938775510204082,
+    0.6335
    ],
    "B0r~G1": [
     0.20408163265306123,
@@ -6281,6 +6459,24 @@
     0.16326530612244897,
     0.106
    ],
+   "TO1F7F8+N1": [
+    -0.6530612244897959,
+    -1.3061224489795917,
+    -0.12244897959183673,
+    0.0105
+   ],
+   "TO1F7F8+N2": [
+    -0.7346938775510204,
+    -1.3877551020408163,
+    -0.16224489795918923,
+    0.0085
+   ],
+   "TO1F7F8+N4": [
+    -0.40816326530612246,
+    -1.1020408163265305,
+    0.24489795918367346,
+    0.136
+   ],
    "B0r~G1": [
     -0.2857142857142857,
     -0.8571428571428571,
@@ -6931,6 +7127,24 @@
     0.2857142857142857,
     0.205
    ],
+   "TO1F7F8+N1": [
+    -0.5306122448979592,
+    -1.2244897959183674,
+    0.04081632653061224,
+    0.048
+   ],
+   "TO1F7F8+N2": [
+    -0.6530612244897959,
+    -1.3877551020408163,
+    0.0,
+    0.032
+   ],
+   "TO1F7F8+N4": [
+    -0.24489795918367346,
+    -0.9795918367346939,
+    0.4489795918367347,
+    0.271
+   ],
    "B0r~G1": [
     -0.12244897959183673,
     -0.5714285714285714,
@@ -7111,6 +7325,9 @@
    "TO1F7F8+K2x": true,
    "TO1F7F8+K2K3x": true,
    "TO1F7F8+O": true,
+   "TO1F7F8+N1": true,
+   "TO1F7F8+N2": true,
+   "TO1F7F8+N4": true,
    "B0r~G1": false,
    "B0r~G3": false,
    "B0r~G4": false,
@@ -7219,6 +7436,9 @@
    "TO1F7F8+K2x": true,
    "TO1F7F8+K2K3x": false,
    "TO1F7F8+O": false,
+   "TO1F7F8+N1": true,
+   "TO1F7F8+N2": true,
+   "TO1F7F8+N4": false,
    "B0r~G1": false,
    "B0r~G3": false,
    "B0r~G4": false,
@@ -9876,6 +10096,98 @@
      ]
     ]
    },
+   "TO1F7F8+N1": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.1
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot, gunfire",
+      0.0
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.6
+     ]
+    ],
+    "lost": []
+   },
+   "TO1F7F8+N2": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.1
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot, gunfire",
+      0.0
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.6
+     ]
+    ],
+    "lost": [
+     [
+      "b3_bakery_morning",
+      "Door",
+      3.9
+     ]
+    ]
+   },
+   "TO1F7F8+N4": {
+    "gained": [
+     [
+      "ambient_citywalk_nyc_1689",
+      "Hammer",
+      13.7
+     ],
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.1
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot, gunfire",
+      0.0
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      2.8
+     ]
+    ],
+    "lost": [
+     [
+      "b3_favela_rio",
+      "Train",
+      14.6
+     ]
+    ]
+   },
    "B0r~G1": {
     "gained": [
      [
@@ -12714,6 +13026,97 @@
       "ambient_nature_rainforest_7629",
       "Cricket",
       0.1
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot, gunfire",
+      0.0
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      2.8
+     ]
+    ],
+    "lost": []
+   },
+   "TO1F7F8+N1": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.1
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot, gunfire",
+      0.0
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.6
+     ]
+    ],
+    "lost": []
+   },
+   "TO1F7F8+N2": {
+    "gained": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.1
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot, gunfire",
+      0.0
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.6
+     ]
+    ],
+    "lost": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Bird",
+      0.1
+     ],
+     [
+      "b3_bakery_morning",
+      "Door",
+      3.9
+     ]
+    ]
+   },
+   "TO1F7F8+N4": {
+    "gained": [
+     [
+      "ambient_citywalk_nyc_1689",
+      "Hammer",
+      13.7
+     ],
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      0.1
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.1
      ],
      [
       "as_explosion_XJ8lc3I6",
@@ -43922,6 +44325,570 @@
      ]
     ]
    },
+   "TO1F7F8+N1": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.08,
+      9.58,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.68,
+      7.18,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      0.0,
+      1.5,
+      "hit"
+     ],
+     [
+      "b3_golf_course",
+      "Bird",
+      18.84,
+      20.34,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      16.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "movie_blueplanet_115",
+      "Laughter",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Gunshot",
+      13.52,
+      15.02,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "TO1F7F8+N2": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.08,
+      9.58,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.68,
+      7.18,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      0.0,
+      1.5,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      8.25,
+      9.75,
+      "cross"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      12.5,
+      19.5,
+      "cross"
+     ],
+     [
+      "b3_botanic_garden",
+      "Bird",
+      1.0,
+      6.5,
+      "dontcare"
+     ],
+     [
+      "b3_favela_rio",
+      "Train",
+      14.72,
+      16.5,
+      "hit"
+     ],
+     [
+      "b3_golf_course",
+      "Bird",
+      18.84,
+      20.34,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "movie_blueplanet_115",
+      "Laughter",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Gunshot",
+      13.52,
+      15.02,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      8.25,
+      19.5,
+      "cross"
+     ],
+     [
+      "b3_bakery_morning",
+      "Door",
+      4.25,
+      5.75,
+      "hit"
+     ],
+     [
+      "b3_botanic_garden",
+      "Bird",
+      1.0,
+      9.75,
+      "dontcare"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Train",
+      3.8,
+      5.3,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Train",
+      14.72,
+      17.5,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "london_protest_01",
+      "Vehicle",
+      0.25,
+      1.75,
+      "visible"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Fireworks",
+      13.97,
+      15.47,
+      "visible"
+     ],
+     [
+      "un_hair_dryer_drying_WWu24rJs",
+      "Computer keyboard",
+      11.25,
+      12.75,
+      "phantom"
+     ]
+    ]
+   },
+   "TO1F7F8+N4": {
+    "appeared": [
+     [
+      "ambient_citywalk_nyc_1689",
+      "Hammer",
+      13.76,
+      15.96,
+      "hit"
+     ],
+     [
+      "ambient_market_marrakech_3102",
+      "Car passing by",
+      13.52,
+      15.16,
+      "cross"
+     ],
+     [
+      "ambient_nature_rainforest_2179",
+      "Bell",
+      10.6,
+      12.1,
+      "cross"
+     ],
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.25,
+      "hit"
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.08,
+      9.58,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      2.84,
+      4.34,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      0.0,
+      1.5,
+      "hit"
+     ],
+     [
+      "as_fire_alarm_kGKZ0YK4",
+      "Alarm",
+      10.0,
+      19.75,
+      "dup"
+     ],
+     [
+      "as_fire_alarm_kGKZ0YK4",
+      "Whistle",
+      9.08,
+      10.58,
+      "dup"
+     ],
+     [
+      "as_glass_oHil9Ip_",
+      "Coin (dropping)",
+      9.0,
+      10.5,
+      "cross"
+     ],
+     [
+      "b3_crossing_bells",
+      "Water",
+      10.0,
+      17.0,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      3.8,
+      6.1,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.72,
+      16.5,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Vehicle",
+      16.0,
+      17.5,
+      "cross"
+     ],
+     [
+      "b3_golf_course",
+      "Bird",
+      18.84,
+      20.34,
+      "cross"
+     ],
+     [
+      "b3_golf_course",
+      "Insect",
+      10.0,
+      11.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      16.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "movie_blueplanet_115",
+      "Laughter",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Alarm",
+      0.04,
+      6.12,
+      "hit"
+     ],
+     [
+      "mv_tornado_scene",
+      "Alarm",
+      13.0,
+      14.5,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Gunshot",
+      13.52,
+      15.02,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "as_fire_alarm_kGKZ0YK4",
+      "Alarm",
+      8.89,
+      19.75,
+      "visible"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Train",
+      3.8,
+      5.3,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Train",
+      14.72,
+      17.5,
+      "hit"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "london_protest_01",
+      "Vehicle",
+      0.25,
+      1.75,
+      "visible"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Alarm",
+      0.04,
+      1.54,
+      "hit"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Alarm",
+      3.92,
+      6.12,
+      "cross"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
    "B0r~G1": {
     "appeared": [
      [
@@ -85183,6 +86150,654 @@
      ]
     ]
    },
+   "TO1F7F8+N1": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.08,
+      9.58,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.68,
+      7.18,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      0.0,
+      1.5,
+      "hit"
+     ],
+     [
+      "b3_golf_course",
+      "Bird",
+      18.84,
+      20.34,
+      "cross"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "dup"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "movie_blueplanet_115",
+      "Laughter",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "mv_arrest_street_scene",
+      "Footsteps",
+      0.0,
+      1.5,
+      "visible"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ],
+     [
+      "mv_storm_scene_house",
+      "Explosion",
+      17.84,
+      19.88,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Gunshot",
+      13.52,
+      15.02,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.25,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
+   "TO1F7F8+N2": {
+    "appeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.08,
+      9.58,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      5.68,
+      7.18,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      0.0,
+      1.5,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      8.25,
+      9.75,
+      "cross"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      12.5,
+      19.5,
+      "cross"
+     ],
+     [
+      "b3_botanic_garden",
+      "Bird",
+      1.0,
+      6.5,
+      "dontcare"
+     ],
+     [
+      "b3_golf_course",
+      "Bird",
+      18.84,
+      20.34,
+      "cross"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      0.3,
+      4.25,
+      "dup"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      6.31,
+      17.75,
+      "cross"
+     ],
+     [
+      "movie_blueplanet_115",
+      "Laughter",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "mv_arrest_street_scene",
+      "Footsteps",
+      0.0,
+      1.5,
+      "visible"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ],
+     [
+      "mv_storm_scene_house",
+      "Explosion",
+      17.84,
+      19.88,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Gunshot",
+      13.52,
+      15.02,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "ambient_nature_rainforest_7629",
+      "Bird",
+      0.81,
+      4.75,
+      "hit"
+     ],
+     [
+      "ambient_nature_rainforest_7629",
+      "Cricket",
+      4.5,
+      6.25,
+      "cross"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      8.25,
+      19.5,
+      "cross"
+     ],
+     [
+      "as_glass_oHil9Ip_",
+      "Glass",
+      18.75,
+      20.02,
+      "dup"
+     ],
+     [
+      "b3_bakery_morning",
+      "Door",
+      4.25,
+      5.75,
+      "hit"
+     ],
+     [
+      "b3_botanic_garden",
+      "Bird",
+      1.0,
+      9.75,
+      "dontcare"
+     ],
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Train",
+      3.8,
+      5.3,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Vehicle",
+      16.0,
+      17.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Train",
+      16.25,
+      17.75,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.25,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "london_protest_01",
+      "Vehicle",
+      0.25,
+      1.75,
+      "visible"
+     ],
+     [
+      "ly_helicopter_-v62cK1",
+      "Vehicle",
+      2.25,
+      17.75,
+      "cross"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Fireworks",
+      13.97,
+      15.47,
+      "visible"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Vehicle",
+      3.8,
+      5.3,
+      "cross"
+     ],
+     [
+      "un_hair_dryer_drying_WWu24rJs",
+      "Computer keyboard",
+      11.25,
+      12.75,
+      "phantom"
+     ]
+    ]
+   },
+   "TO1F7F8+N4": {
+    "appeared": [
+     [
+      "ambient_citywalk_nyc_1689",
+      "Hammer",
+      13.76,
+      15.96,
+      "hit"
+     ],
+     [
+      "ambient_market_marrakech_3102",
+      "Car passing by",
+      13.52,
+      15.16,
+      "cross"
+     ],
+     [
+      "ambient_nature_rainforest_2179",
+      "Bell",
+      10.6,
+      12.1,
+      "cross"
+     ],
+     [
+      "ambient_nature_rainforest_2179",
+      "Water",
+      4.6,
+      10.0,
+      "phantom"
+     ],
+     [
+      "ambient_nature_rainforest_7629",
+      "Insect",
+      0.14,
+      6.0,
+      "hit"
+     ],
+     [
+      "ambient_snow_walk_930",
+      "Laughter",
+      8.08,
+      9.58,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Explosion",
+      2.84,
+      4.34,
+      "hit"
+     ],
+     [
+      "as_explosion_XJ8lc3I6",
+      "Gunshot",
+      0.0,
+      1.5,
+      "hit"
+     ],
+     [
+      "as_fire_alarm_kGKZ0YK4",
+      "Whistle",
+      9.08,
+      10.58,
+      "dup"
+     ],
+     [
+      "as_glass_oHil9Ip_",
+      "Coin (dropping)",
+      9.0,
+      10.5,
+      "cross"
+     ],
+     [
+      "b3_crossing_bells",
+      "Water",
+      10.0,
+      17.0,
+      "cross"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      4.6,
+      6.1,
+      "cross"
+     ],
+     [
+      "b3_golf_course",
+      "Bird",
+      18.84,
+      20.34,
+      "cross"
+     ],
+     [
+      "b3_golf_course",
+      "Insect",
+      10.0,
+      11.5,
+      "cross"
+     ],
+     [
+      "bell_miami",
+      "Train",
+      8.0,
+      15.0,
+      "cross"
+     ],
+     [
+      "london_protest_01",
+      "Air horn, truck horn",
+      1.68,
+      3.18,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Belly laugh",
+      7.4,
+      13.36,
+      "cross"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Giggle",
+      0.0,
+      1.5,
+      "dup"
+     ],
+     [
+      "ly_applause_62ZYD0u",
+      "Laughter",
+      7.4,
+      12.0,
+      "cross"
+     ],
+     [
+      "movie_blueplanet_115",
+      "Laughter",
+      0.0,
+      1.5,
+      "cross"
+     ],
+     [
+      "mv_arrest_street_scene",
+      "Footsteps",
+      0.0,
+      1.5,
+      "visible"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Alarm",
+      0.04,
+      6.12,
+      "hit"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Sigh",
+      0.14,
+      2.0,
+      "cross"
+     ],
+     [
+      "mv_storm_scene_house",
+      "Explosion",
+      17.84,
+      19.88,
+      "cross"
+     ],
+     [
+      "mv_tornado_scene",
+      "Alarm",
+      10.0,
+      16.16,
+      "cross"
+     ],
+     [
+      "un_driving_motorcycle_DgdHSmwA",
+      "Gunshot",
+      13.52,
+      15.02,
+      "cross"
+     ]
+    ],
+    "disappeared": [
+     [
+      "b3_crossing_bells",
+      "Vehicle",
+      0.0,
+      11.75,
+      "dup"
+     ],
+     [
+      "b3_favela_rio",
+      "Bird",
+      14.0,
+      15.5,
+      "cross"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      0.3,
+      11.5,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      14.25,
+      17.25,
+      "phantom"
+     ],
+     [
+      "b3_laundromat",
+      "Vehicle",
+      23.25,
+      27.75,
+      "phantom"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Alarm",
+      0.04,
+      1.54,
+      "hit"
+     ],
+     [
+      "mv_detective_crime_scene",
+      "Alarm",
+      3.92,
+      6.12,
+      "cross"
+     ],
+     [
+      "mv_tornado_scene",
+      "Vehicle",
+      7.25,
+      9.75,
+      "cross"
+     ]
+    ]
+   },
    "B0r~G1": {
     "appeared": [
      [
@@ -87817,6 +89432,24 @@
    "ask_memo": 331,
    "ask_live": 0
   },
+  "TO1F7F8+N1|proposed": {
+   "gate_reused": 118,
+   "gate_live": 13,
+   "ask_memo": 290,
+   "ask_live": 0
+  },
+  "TO1F7F8+N2|proposed": {
+   "gate_reused": 104,
+   "gate_live": 15,
+   "ask_memo": 256,
+   "ask_live": 14
+  },
+  "TO1F7F8+N4|proposed": {
+   "gate_reused": 114,
+   "gate_live": 30,
+   "ask_memo": 407,
+   "ask_live": 0
+  },
   "B0r~G1|proposed": {
    "gate_reused": 114,
    "gate_live": 25,
@@ -88454,6 +90087,24 @@
    "ask_live": 0
   },
   "TO1F7F8+O|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "TO1F7F8+N1|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "TO1F7F8+N2|blind_a2i": {
+   "gate_reused": 0,
+   "gate_live": 0,
+   "ask_memo": 0,
+   "ask_live": 0
+  },
+  "TO1F7F8+N4|blind_a2i": {
    "gate_reused": 0,
    "gate_live": 0,
    "ask_memo": 0,
@@ -111420,6 +113071,1944 @@
     9.5,
     10.0
    ]
+  ],
+  "TO1F7F8+N1|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "TO1F7F8+N2|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "TO1F7F8+N4|proposed|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|ambient_nature_rainforest_7629": [
+   [
+    "Bird vocalization, bird call, bird song",
+    6.0,
+    6.75
+   ]
+  ],
+  "TO1F7F8+N1|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "TO1F7F8+N2|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "TO1F7F8+N4|proposed|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|ambient_transport_subway_10800": [
+   [
+    "Vehicle",
+    0.25,
+    15.0
+   ],
+   [
+    "Sliding door",
+    5.0,
+    5.5
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_construction_site": [
+   [
+    "Air brake",
+    10.75,
+    15.75
+   ],
+   [
+    "Air brake",
+    18.25,
+    19.0
+   ],
+   [
+    "Fire",
+    20.75,
+    21.25
+   ],
+   [
+    "Air brake",
+    23.0,
+    23.5
+   ],
+   [
+    "Air brake",
+    25.25,
+    26.25
+   ],
+   [
+    "Air brake",
+    26.5,
+    27.0
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_crossing_bells": [
+   [
+    "Hiss",
+    0.0,
+    4.25
+   ],
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    2.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    4.25,
+    11.75
+   ],
+   [
+    "Hiss",
+    4.75,
+    9.25
+   ],
+   [
+    "Vehicle",
+    12.5,
+    13.0
+   ],
+   [
+    "Vehicle",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_favela_rio": [
+   [
+    "Walk, footsteps",
+    9.25,
+    10.0
+   ],
+   [
+    "Bird",
+    14.0,
+    15.0
+   ],
+   [
+    "Pigeon, dove",
+    14.25,
+    14.75
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_golf_course": [
+   [
+    "Chirp, tweet",
+    16.0,
+    16.75
+   ],
+   [
+    "Bird vocalization, bird call, bird song",
+    16.0,
+    16.75
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_ia_youtube_skxtz9foauw_0": [
+   [
+    "Water",
+    24.5,
+    26.5
+   ],
+   [
+    "Liquid",
+    24.75,
+    27.25
+   ],
+   [
+    "Fill (with liquid)",
+    24.75,
+    26.5
+   ],
+   [
+    "Drip",
+    25.75,
+    26.5
+   ],
+   [
+    "Pour",
+    25.75,
+    26.25
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_laundromat": [
+   [
+    "Vehicle",
+    0.0,
+    2.25
+   ],
+   [
+    "Vehicle",
+    3.25,
+    7.5
+   ],
+   [
+    "Bus",
+    3.5,
+    4.0
+   ],
+   [
+    "Vehicle",
+    8.25,
+    11.5
+   ],
+   [
+    "Vehicle",
+    11.75,
+    13.75
+   ],
+   [
+    "Vehicle",
+    14.25,
+    17.25
+   ],
+   [
+    "Vehicle",
+    20.75,
+    21.25
+   ],
+   [
+    "Vehicle",
+    23.25,
+    27.75
+   ]
+  ],
+  "TO1F7F8+N1|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "TO1F7F8+N2|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "TO1F7F8+N4|proposed|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|b3_pet_shop": [
+   [
+    "Owl",
+    11.0,
+    12.75
+   ],
+   [
+    "Owl",
+    15.75,
+    16.25
+   ]
+  ],
+  "TO1F7F8+N1|proposed|ly_applause_62ZYD0u": [
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "TO1F7F8+N2|proposed|ly_applause_62ZYD0u": [
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "TO1F7F8+N4|proposed|ly_applause_62ZYD0u": [
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|ly_applause_62ZYD0u": [
+   [
+    "Chuckle, chortle",
+    0.0,
+    2.0
+   ]
+  ],
+  "TO1F7F8+N1|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "TO1F7F8+N2|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "TO1F7F8+N4|proposed|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|movie_blueplanet_115": [
+   [
+    "Quack",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.0,
+    0.5
+   ],
+   [
+    "Duck",
+    0.75,
+    1.25
+   ],
+   [
+    "Quack",
+    0.75,
+    1.25
+   ]
+  ],
+  "TO1F7F8+N1|proposed|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "TO1F7F8+N2|proposed|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "TO1F7F8+N4|proposed|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|mv_arrest_street_scene": [
+   [
+    "Shatter",
+    11.25,
+    14.25
+   ]
+  ],
+  "TO1F7F8+N1|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N2|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N4|proposed|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|mv_detective_crime_scene": [
+   [
+    "Telephone bell ringing",
+    0.5,
+    2.25
+   ],
+   [
+    "Telephone bell ringing",
+    4.0,
+    4.75
+   ],
+   [
+    "Telephone bell ringing",
+    9.0,
+    10.5
+   ],
+   [
+    "Telephone",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N1|proposed|mv_protest_scene_movie": [
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "TO1F7F8+N2|proposed|mv_protest_scene_movie": [
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "TO1F7F8+N4|proposed|mv_protest_scene_movie": [
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|mv_protest_scene_movie": [
+   [
+    "Eruption",
+    21.75,
+    22.25
+   ]
+  ],
+  "TO1F7F8+N1|proposed|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "TO1F7F8+N2|proposed|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "TO1F7F8+N4|proposed|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|mv_storm_scene_house": [
+   [
+    "Vehicle",
+    16.5,
+    17.5
+   ]
+  ],
+  "TO1F7F8+N1|proposed|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "TO1F7F8+N2|proposed|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "TO1F7F8+N4|proposed|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|mv_tornado_scene": [
+   [
+    "Vehicle",
+    7.25,
+    9.75
+   ],
+   [
+    "Car",
+    7.75,
+    8.75
+   ],
+   [
+    "Neigh, whinny",
+    17.5,
+    19.75
+   ],
+   [
+    "Horse",
+    17.75,
+    19.75
+   ],
+   [
+    "Clip-clop",
+    18.25,
+    19.75
+   ]
+  ],
+  "TO1F7F8+N1|proposed|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N2|proposed|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N4|proposed|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|un_hair_dryer_drying_WWu24rJs": [
+   [
+    "Vehicle",
+    9.0,
+    9.5
+   ]
+  ],
+  "TO1F7F8+N1|proposed|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "TO1F7F8+N2|proposed|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "TO1F7F8+N4|proposed|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|un_people_clapping__bAVmK7n": [
+   [
+    "Shuffling cards",
+    3.25,
+    3.75
+   ],
+   [
+    "Cash register",
+    3.5,
+    4.5
+   ]
+  ],
+  "TO1F7F8+N1|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "TO1F7F8+N2|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "TO1F7F8+N4|proposed|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "TO1F7F8+N1|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "TO1F7F8+N2|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
+  ],
+  "TO1F7F8+N4|blind_a2i|waterfall_kawaida_01": [
+   [
+    "Vehicle",
+    9.5,
+    10.0
+   ]
   ]
  },
  "twin_blast": {
@@ -112069,6 +115658,9 @@
    "TO1F7F8+K2x": 0,
    "TO1F7F8+K2K3x": 0,
    "TO1F7F8+O": 0,
+   "TO1F7F8+N1": 0,
+   "TO1F7F8+N2": 0,
+   "TO1F7F8+N4": 0,
    "B0r~G1": 0,
    "B0r~G3": 0,
    "B0r~G4": 0,
@@ -112178,6 +115770,9 @@
    "TO1F7F8+K2x": 0,
    "TO1F7F8+K2K3x": 0,
    "TO1F7F8+O": 0,
+   "TO1F7F8+N1": 0,
+   "TO1F7F8+N2": 0,
+   "TO1F7F8+N4": 0,
    "B0r~G1": 0,
    "B0r~G3": 0,
    "B0r~G4": 0,
@@ -133128,6 +136723,296 @@
    "c_missing": 0,
    "b_missing_list": [],
    "a_missing_list": []
+  },
+  "TO1F7F8+N1|proposed": {
+   "a_added": 43,
+   "b_kept": 6,
+   "c_added": 0,
+   "a_asked": 512,
+   "a_missing": 0,
+   "b_asked": 34,
+   "b_missing": 0,
+   "c_asked": 0,
+   "c_missing": 0,
+   "b_missing_list": [],
+   "a_missing_list": []
+  },
+  "TO1F7F8+N2|proposed": {
+   "a_added": 43,
+   "b_kept": 6,
+   "c_added": 0,
+   "a_asked": 527,
+   "a_missing": 15,
+   "b_asked": 34,
+   "b_missing": 0,
+   "c_asked": 0,
+   "c_missing": 0,
+   "b_missing_list": [],
+   "a_missing_list": [
+    [
+     "ambient_citywalk_nyc_1689",
+     "Vehicle",
+     0.0,
+     10.0,
+     0.564
+    ],
+    [
+     "ambient_nature_rainforest_7629",
+     "Bird",
+     2.64,
+     2.92,
+     0.545
+    ],
+    [
+     "ambient_nature_rainforest_7629",
+     "Bird",
+     3.8,
+     5.32,
+     0.702
+    ],
+    [
+     "ambient_snow_walk_930",
+     "Crowd",
+     8.6,
+     16.0,
+     0.703
+    ],
+    [
+     "as_glass_oHil9Ip_",
+     "Glass",
+     18.48,
+     19.36,
+     0.773
+    ],
+    [
+     "b3_favela_rio",
+     "Footsteps",
+     3.96,
+     4.44,
+     0.571
+    ],
+    [
+     "b3_flea_market",
+     "Vehicle",
+     20.0,
+     28.0,
+     0.661
+    ],
+    [
+     "b3_golf_course",
+     "Bird",
+     3.8,
+     5.84,
+     0.744
+    ],
+    [
+     "london_protest_01",
+     "Crowd",
+     0.04,
+     11.12,
+     0.796
+    ],
+    [
+     "london_protest_01",
+     "Vehicle",
+     0.04,
+     11.12,
+     0.547
+    ],
+    [
+     "mv_protest_scene_movie",
+     "Crying, sobbing",
+     3.64,
+     4.64,
+     0.685
+    ],
+    [
+     "un_driving_motorcycle_DgdHSmwA",
+     "Crowd",
+     0.16,
+     17.0,
+     0.777
+    ],
+    [
+     "un_driving_motorcycle_DgdHSmwA",
+     "Vehicle",
+     1.56,
+     17.0,
+     0.641
+    ],
+    [
+     "un_hair_dryer_drying_WWu24rJs",
+     "Computer keyboard",
+     10.32,
+     11.76,
+     0.746
+    ],
+    [
+     "un_hair_dryer_drying_WWu24rJs",
+     "Typing",
+     10.32,
+     11.72,
+     0.638
+    ]
+   ]
+  },
+  "TO1F7F8+N4|proposed": {
+   "a_added": 43,
+   "b_kept": 6,
+   "c_added": 0,
+   "a_asked": 512,
+   "a_missing": 0,
+   "b_asked": 34,
+   "b_missing": 0,
+   "c_asked": 0,
+   "c_missing": 0,
+   "b_missing_list": [],
+   "a_missing_list": []
+  },
+  "TO1F7F8+N1|blind_a2i": {
+   "a_added": 43,
+   "b_kept": 6,
+   "c_added": 0,
+   "a_asked": 512,
+   "a_missing": 0,
+   "b_asked": 34,
+   "b_missing": 0,
+   "c_asked": 0,
+   "c_missing": 0,
+   "b_missing_list": [],
+   "a_missing_list": []
+  },
+  "TO1F7F8+N2|blind_a2i": {
+   "a_added": 43,
+   "b_kept": 6,
+   "c_added": 0,
+   "a_asked": 527,
+   "a_missing": 15,
+   "b_asked": 34,
+   "b_missing": 0,
+   "c_asked": 0,
+   "c_missing": 0,
+   "b_missing_list": [],
+   "a_missing_list": [
+    [
+     "ambient_citywalk_nyc_1689",
+     "Vehicle",
+     0.0,
+     10.0,
+     0.564
+    ],
+    [
+     "ambient_nature_rainforest_7629",
+     "Bird",
+     2.64,
+     2.92,
+     0.545
+    ],
+    [
+     "ambient_nature_rainforest_7629",
+     "Bird",
+     3.8,
+     5.32,
+     0.702
+    ],
+    [
+     "ambient_snow_walk_930",
+     "Crowd",
+     8.6,
+     16.0,
+     0.703
+    ],
+    [
+     "as_glass_oHil9Ip_",
+     "Glass",
+     18.48,
+     19.36,
+     0.773
+    ],
+    [
+     "b3_favela_rio",
+     "Footsteps",
+     3.96,
+     4.44,
+     0.571
+    ],
+    [
+     "b3_flea_market",
+     "Vehicle",
+     20.0,
+     28.0,
+     0.661
+    ],
+    [
+     "b3_golf_course",
+     "Bird",
+     3.8,
+     5.84,
+     0.744
+    ],
+    [
+     "london_protest_01",
+     "Crowd",
+     0.04,
+     11.12,
+     0.796
+    ],
+    [
+     "london_protest_01",
+     "Vehicle",
+     0.04,
+     11.12,
+     0.547
+    ],
+    [
+     "mv_protest_scene_movie",
+     "Crying, sobbing",
+     3.64,
+     4.64,
+     0.685
+    ],
+    [
+     "un_driving_motorcycle_DgdHSmwA",
+     "Crowd",
+     0.16,
+     17.0,
+     0.777
+    ],
+    [
+     "un_driving_motorcycle_DgdHSmwA",
+     "Vehicle",
+     1.56,
+     17.0,
+     0.641
+    ],
+    [
+     "un_hair_dryer_drying_WWu24rJs",
+     "Computer keyboard",
+     10.32,
+     11.76,
+     0.746
+    ],
+    [
+     "un_hair_dryer_drying_WWu24rJs",
+     "Typing",
+     10.32,
+     11.72,
+     0.638
+    ]
+   ]
+  },
+  "TO1F7F8+N4|blind_a2i": {
+   "a_added": 43,
+   "b_kept": 6,
+   "c_added": 0,
+   "a_asked": 512,
+   "a_missing": 0,
+   "b_asked": 34,
+   "b_missing": 0,
+   "c_asked": 0,
+   "c_missing": 0,
+   "b_missing_list": [],
+   "a_missing_list": []
   }
  },
  "halves": {
@@ -135031,6 +138916,66 @@
       -0.16,
       0.32,
       0.8195
+     ]
+    },
+    "TO1F7F8+N1": {
+     "hits": 9,
+     "misses": 7,
+     "visible": 4,
+     "cross": 3,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.5142857142857142,
+     "P": 0.47368421052631576,
+     "R": 0.5625,
+     "viewer_cost": 1.92,
+     "coverage": 0.5122286349899476,
+     "wrong": 10,
+     "delta_vs_B0r": [
+      -0.16,
+      -0.56,
+      0.16,
+      0.281
+     ]
+    },
+    "TO1F7F8+N2": {
+     "hits": 8,
+     "misses": 8,
+     "visible": 3,
+     "cross": 3,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.48484848484848486,
+     "P": 0.47058823529411764,
+     "R": 0.5,
+     "viewer_cost": 2.0,
+     "coverage": 0.4948675238788366,
+     "wrong": 9,
+     "delta_vs_B0r": [
+      -0.08,
+      -0.56,
+      0.4,
+      0.424
+     ]
+    },
+    "TO1F7F8+N4": {
+     "hits": 10,
+     "misses": 6,
+     "visible": 4,
+     "cross": 6,
+     "phantom": 3,
+     "dup": 1,
+     "F1": 0.5128205128205128,
+     "P": 0.43478260869565216,
+     "R": 0.625,
+     "viewer_cost": 2.0,
+     "coverage": 0.5720112436855999,
+     "wrong": 13,
+     "delta_vs_B0r": [
+      -0.08,
+      -0.64,
+      0.4,
+      0.468
      ]
     },
     "B0r~G1": {
@@ -137213,6 +141158,66 @@
       -1.3333333333333333,
       0.75,
       0.3795
+     ]
+    },
+    "TO1F7F8+N1": {
+     "hits": 9,
+     "misses": 11,
+     "visible": 2,
+     "cross": 9,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.4186046511627907,
+     "P": 0.391304347826087,
+     "R": 0.45,
+     "viewer_cost": 3.0,
+     "coverage": 0.2938043010356982,
+     "wrong": 14,
+     "delta_vs_B0r": [
+      -0.5,
+      -1.5,
+      0.25,
+      0.1595
+     ]
+    },
+    "TO1F7F8+N2": {
+     "hits": 9,
+     "misses": 11,
+     "visible": 1,
+     "cross": 9,
+     "phantom": 1,
+     "dup": 0,
+     "F1": 0.45,
+     "P": 0.45,
+     "R": 0.45,
+     "viewer_cost": 2.75,
+     "coverage": 0.2887431705180735,
+     "wrong": 11,
+     "delta_vs_B0r": [
+      -0.75,
+      -1.6666666666666667,
+      0.0020833333333219644,
+      0.049
+     ]
+    },
+    "TO1F7F8+N4": {
+     "hits": 8,
+     "misses": 12,
+     "visible": 1,
+     "cross": 13,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.35555555555555557,
+     "P": 0.32,
+     "R": 0.4,
+     "viewer_cost": 3.4166666666666665,
+     "coverage": 0.2976591609353342,
+     "wrong": 17,
+     "delta_vs_B0r": [
+      -0.08333333333333333,
+      -1.25,
+      1.0,
+      0.487
      ]
     },
     "B0r~G1": {
@@ -139399,6 +143404,66 @@
       0.966
      ]
     },
+    "TO1F7F8+N1": {
+     "hits": 10,
+     "misses": 6,
+     "visible": 8,
+     "cross": 10,
+     "phantom": 6,
+     "dup": 0,
+     "F1": 0.4,
+     "P": 0.29411764705882354,
+     "R": 0.625,
+     "viewer_cost": 2.88,
+     "coverage": 0.5745255663978899,
+     "wrong": 24,
+     "delta_vs_B0r": [
+      -0.08,
+      -0.56,
+      0.24,
+      0.4465
+     ]
+    },
+    "TO1F7F8+N2": {
+     "hits": 9,
+     "misses": 7,
+     "visible": 7,
+     "cross": 9,
+     "phantom": 6,
+     "dup": 0,
+     "F1": 0.3829787234042554,
+     "P": 0.2903225806451613,
+     "R": 0.5625,
+     "viewer_cost": 2.88,
+     "coverage": 0.5571644552867788,
+     "wrong": 22,
+     "delta_vs_B0r": [
+      -0.08,
+      -0.56,
+      0.48,
+      0.431
+     ]
+    },
+    "TO1F7F8+N4": {
+     "hits": 11,
+     "misses": 5,
+     "visible": 8,
+     "cross": 13,
+     "phantom": 7,
+     "dup": 1,
+     "F1": 0.4,
+     "P": 0.28205128205128205,
+     "R": 0.6875,
+     "viewer_cost": 3.04,
+     "coverage": 0.6343081750935421,
+     "wrong": 28,
+     "delta_vs_B0r": [
+      0.08,
+      -0.56,
+      0.64,
+      0.6675
+     ]
+    },
     "B0r~G1": {
      "hits": 8,
      "misses": 8,
@@ -141579,6 +145644,66 @@
       -1.3333333333333333,
       0.5833333333333334,
       0.3565
+     ]
+    },
+    "TO1F7F8+N1": {
+     "hits": 11,
+     "misses": 9,
+     "visible": 10,
+     "cross": 16,
+     "phantom": 3,
+     "dup": 3,
+     "F1": 0.3666666666666667,
+     "P": 0.275,
+     "R": 0.55,
+     "viewer_cost": 3.9166666666666665,
+     "coverage": 0.3561243080726863,
+     "wrong": 29,
+     "delta_vs_B0r": [
+      -0.3333333333333333,
+      -1.3354166666666665,
+      0.5833333333333334,
+      0.2945
+     ]
+    },
+    "TO1F7F8+N2": {
+     "hits": 10,
+     "misses": 10,
+     "visible": 9,
+     "cross": 14,
+     "phantom": 1,
+     "dup": 2,
+     "F1": 0.37037037037037035,
+     "P": 0.29411764705882354,
+     "R": 0.5,
+     "viewer_cost": 3.6666666666666665,
+     "coverage": 0.33867324044814345,
+     "wrong": 24,
+     "delta_vs_B0r": [
+      -0.5833333333333334,
+      -1.6666666666666667,
+      0.4166666666666667,
+      0.1605
+     ]
+    },
+    "TO1F7F8+N4": {
+     "hits": 11,
+     "misses": 9,
+     "visible": 10,
+     "cross": 21,
+     "phantom": 3,
+     "dup": 3,
+     "F1": 0.3384615384615384,
+     "P": 0.24444444444444444,
+     "R": 0.55,
+     "viewer_cost": 4.333333333333333,
+     "coverage": 0.37035230230068056,
+     "wrong": 34,
+     "delta_vs_B0r": [
+      0.08333333333333333,
+      -1.0833333333333333,
+      1.0833333333333333,
+      0.6165
      ]
     },
     "B0r~G1": {

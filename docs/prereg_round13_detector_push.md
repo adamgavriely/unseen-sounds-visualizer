@@ -798,3 +798,16 @@ merged cost and the stack is scored once. These arms are never added to the froz
   (instead of ≥ 0.575).
 - **N5 audio-visual gate vote** (DenseAV, if the official weights load): stretch "seen" only if the shipped majority says
   seen AND DenseAV grounds the stretch audio in the frames; screen and GO bar as amendment M.
+
+### Round 16 N2 / N4 on the old DEV 49 (job 31564506, 12 min) — both fail the pre-set rule
+| arm | heard | hits / 36 | wrong (v / c / p) | cost | Δ vs B0r [95 % CI] |
+|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — |
+| TO1+F7F8 (base) | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | −0.33 [−0.86, +0.08] |
+| TO1F7F8+N2 masked weak BEATs | 19 | 17 | 20 (4 / 12 / 4) | 2.37 | −0.41 [−0.94, +0.08] |
+| TO1F7F8+N4 DASM rank top-3 | 22 | 18 | 30 (5 / 19 / 6) | 2.69 | −0.08 [−0.69, +0.53] |
+
+N2 removes 6 wrong pictures (london Vehicle and motorcycle Fireworks visible, hair-dryer Keyboard and laundromat Train
+phantoms, explosion Gunshot and favela Train cross; 2 come back re-cut) but loses the bakery Door 3.9 hit: lower cost, yet
+it fails the pre-set rule (a needed hit lost on a part). N4 lets 7 more cross pictures through: fails. N1's first run was
+void (SCENE_FIT_ALL was not in the harness's stage-5 keys; fixed, re-run as job 31564722).
