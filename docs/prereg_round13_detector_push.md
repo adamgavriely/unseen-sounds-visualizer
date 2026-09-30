@@ -1823,3 +1823,17 @@ more than 0.5 s (EARLY) before its gold onset becomes an early cross.
 **Pass = the combined rule vs SHIP7 (25/55, 27, 2.451):** old rule (hits >= 25, wrong <= 27 + 2 x gain, cost < 2.451, no needed
 hit lost on either part) OR fewer-pictures clause (cost < 2.451, wrong <= 27 - 3 x hits lost, hits >= 22). DBX decides; DBX-S is
 recorded beside. GO -> an arm on the real pipeline is a `src/` flag = Adam's decision; STOP -> recorded, closed.
+### Round 35 result — DBX: STOP on both rules (CPU, `~/MscProj_tg`, `benchmark/gold/dbx_screen.py` -> `dbx_screen.json`)
+Base reproduced exactly: merged 25/55, 27 (9/16/2), 2.451; DEV 17/36, 16 (6/8/2), 2.204; tagger DEV 8/19, 11 (3/8/0), 3.000.
+53 placed pictures (8 rescued, never moved); every clip has a DASM cache. 45 non-rescued pictures: 37 have DASM < 0.575 at their
+start, 6 sit in a run that begins < 1.0 s earlier, 2 move.
+**DBX: merged 24/55, 27 (9/15/3), 2.507 | DEV 17/36, 15 (6/7/2), 2.163 | tagger DEV 7/19, 12 (3/8/1), 3.273 -> STOP** (1 hit lost,
+cost up). Moved: (1) b3_barbershop Electric shaver 16.0 -> 0.0 (end 23.25): cross -> hit, but the clip already had the shaver
+hit at 0.14 (the motivation's premise was wrong for SHIP7: the 0.14–13.25 picture IS the hit; the 16.0 picture is a late-repeat
+cross), so the moved picture is a dup: clip h1 c1 -> h1 d1 (−1 wrong). (2) tg_d149 Bee, wasp 1.25 -> 0.0 (end 3.75): gold Bee onset
+1.0, so the new start is 1.0 s early (> EARLY 0.5): hit -> phantom, clip h1 -> p1 (−1 hit, +1 wrong).
+**DBX-S (record): merged 24/55, 28 (9/16/3), 2.535 -> STOP**: the barbershop move is blocked by the overlap with the 0.14 picture,
+only the tg_d149 loss remains.
+**Closed.** Reading: DASM at 0.575 runs from 0 s on a steady sound, so back-extension lands on the clip start, ahead of the gold
+onset where the sound ramps up; the one late-repeat it fixes was already a dup-in-waiting next to a hit. No other SHIP7 picture has
+DASM evidence at its start that reaches back >= 1 s.

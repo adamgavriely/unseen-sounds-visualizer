@@ -1,0 +1,172 @@
+{
+ "base": {
+  "merged": {
+   "hits": 25,
+   "n": 55,
+   "wrong": 27,
+   "visible": 9,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 2.4507042253521125
+  },
+  "dev": {
+   "hits": 17,
+   "n": 36,
+   "wrong": 16,
+   "visible": 6,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.204081632653061
+  },
+  "dev2": {
+   "hits": 8,
+   "n": 19,
+   "wrong": 11,
+   "visible": 3,
+   "cross": 8,
+   "phantom": 0,
+   "cost": 3.0
+  }
+ },
+ "bar": 0.575,
+ "min_move": 1.0,
+ "DBX": {
+  "rows": {
+   "merged": {
+    "hits": 24,
+    "n": 55,
+    "wrong": 27,
+    "visible": 9,
+    "cross": 15,
+    "phantom": 3,
+    "cost": 2.507042253521127
+   },
+   "dev": {
+    "hits": 17,
+    "n": 36,
+    "wrong": 15,
+    "visible": 6,
+    "cross": 7,
+    "phantom": 2,
+    "cost": 2.163265306122449
+   },
+   "dev2": {
+    "hits": 7,
+    "n": 19,
+    "wrong": 12,
+    "visible": 3,
+    "cross": 8,
+    "phantom": 1,
+    "cost": 3.272727272727273
+   }
+  },
+  "moved": [
+   {
+    "part": "dev",
+    "clip": "b3_barbershop",
+    "label": "Electric shaver, electric razor",
+    "family": "Electric shaver, electric razor",
+    "old_start": 16.0,
+    "new_start": 0.0,
+    "end": 23.25,
+    "before": "cross",
+    "after": "hit",
+    "clip_before": "h1 v0 c1 p0 d0",
+    "clip_after": "h1 v0 c0 p0 d1"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d149",
+    "label": "Bee, wasp, etc.",
+    "family": "Bee, wasp, etc.",
+    "old_start": 1.25,
+    "new_start": 0.0,
+    "end": 3.75,
+    "before": "hit",
+    "after": "phantom",
+    "clip_before": "h1 v0 c0 p0 d0",
+    "clip_after": "h0 v0 c0 p1 d0"
+   }
+  ],
+  "hits_lost": [
+   [
+    "dev2",
+    "tg_d149",
+    1
+   ]
+  ],
+  "untouched": {
+   "no DASM evidence": 0,
+   "DASM < bar at start": 37,
+   "short": 6,
+   "overlap (DBX-S)": 0
+  },
+  "old_rule": false,
+  "fewer_pictures": false,
+  "verdict": "STOP",
+  "decisive": true
+ },
+ "DBX-S": {
+  "rows": {
+   "merged": {
+    "hits": 24,
+    "n": 55,
+    "wrong": 28,
+    "visible": 9,
+    "cross": 16,
+    "phantom": 3,
+    "cost": 2.535211267605634
+   },
+   "dev": {
+    "hits": 17,
+    "n": 36,
+    "wrong": 16,
+    "visible": 6,
+    "cross": 8,
+    "phantom": 2,
+    "cost": 2.204081632653061
+   },
+   "dev2": {
+    "hits": 7,
+    "n": 19,
+    "wrong": 12,
+    "visible": 3,
+    "cross": 8,
+    "phantom": 1,
+    "cost": 3.272727272727273
+   }
+  },
+  "moved": [
+   {
+    "part": "dev2",
+    "clip": "tg_d149",
+    "label": "Bee, wasp, etc.",
+    "family": "Bee, wasp, etc.",
+    "old_start": 1.25,
+    "new_start": 0.0,
+    "end": 3.75,
+    "before": "hit",
+    "after": "phantom",
+    "clip_before": "h1 v0 c0 p0 d0",
+    "clip_after": "h0 v0 c0 p1 d0"
+   }
+  ],
+  "hits_lost": [
+   [
+    "dev2",
+    "tg_d149",
+    1
+   ]
+  ],
+  "untouched": {
+   "no DASM evidence": 0,
+   "DASM < bar at start": 37,
+   "short": 6,
+   "overlap (DBX-S)": 1
+  },
+  "old_rule": false,
+  "fewer_pictures": false,
+  "verdict": "STOP",
+  "decisive": false
+ }
+}
