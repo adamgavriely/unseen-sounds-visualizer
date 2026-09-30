@@ -904,3 +904,9 @@ with different pictures), netting zero change there; the gain is on the tagger T
 - Winner's curse: the DEV gain (−0.54 on merged DEV) was selected from 8 frozen candidates after 106 DEV arms; on fresh
   tagged clips the gain is smaller (tagger DEV +3 hits / −5 wrong; tagger TEST +1 / −2). Pooled DEV+TEST numbers are
   descriptive only.
+
+### On-the-spot inputs for new videos (Adam: "everything needs to be able to calculate on spot", for ComfyUI)
+`src/listener_prep.py` runs the same harness (tagger_prep: FlexSED, scored render, wav16, BEATs, PANNs, B0r stage 4/5, pools,
+Qwen3-Omni, Audio Flamingo Next, DASM) as a one-clip split; `main.py` calls it when no `--listener-split` is given, so the
+shipped TO1+F7F8 runs on any new video with no manual step. Check (job 31565735, 5 min): as_explosion_XJ8lc3I6 answers
+identical to the shipcheck run (yes/no 95/95, variants 37/37, AF 37/37).

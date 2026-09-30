@@ -14,7 +14,6 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 - [ ] Thesis: insert `docs/thesis/detector_rounds_13_15.md` after §5.8 of ch5; ch5 §5.14 add the R13-1 TEST exposure (29 Sept, 11th), §5.15 row 11; §5.7 stale 'not re-autopsied' line (TO1+F7F8 has a full trace). Arm count on DEV = 106 full-pipeline arms (not ~60).
 
-- [ ] (Adam 30 Sept, for ComfyUI) Every step must compute on the spot when no cache exists: the listener rescue (Qwen3-Omni V1/V2/V4, Audio Flamingo Next V4 on the band runs, P1 and PV spans) and the DASM vote must run live inside stage 4 for a new clip, giving the same answers as the caches (check on DEV clips). Until then `slurm/run_best.sh` precomputes them and LISTENER_REQUIRE_CACHES stops a clip without them.
 
 ## Later
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
@@ -34,6 +33,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-09-30 On-the-spot listener inputs for new videos (ComfyUI): `src/listener_prep.py` runs the benchmark harness for one clip; `main.py` calls it when no `--listener-split` is given. Check: as_explosion answers identical to the shipcheck run (yes/no 95/95, variants 37/37, AF 37/37), ~5 min per clip on an H200.
 - 2026-09-30 `use_shipped()` reverted to the PANNs veto 0.05 (scored config); BEATs self-veto worse on DEV and TEST. Fable supports.
 - 2026-09-30 Round 14 amendments C, D, I, J, K (+K2 with the 27 missing listener answers, 58e9420) and the BEATs weak-band P3 screen: none beats TO1+F7F8 on DEV. `docs/prereg_round13_detector_push.md`
 - 2026-09-29 Round 13 (12-h detector push): only R13-1 twin-max passed DEV (+1 hit); TEST = same (no picture changed), nothing ships. Audio-LLM (Qwen3-Omni) rescue: +5..8 real dropped sounds but ~3 wrong per hit under yes/no, MC, paired-cut, localisation, open-list questions; worse on both DEV halves. B1 self-veto worse than PANNs on TEST too (2.83 vs 2.63, p 0.043). `docs/prereg_round13_detector_push.md`
