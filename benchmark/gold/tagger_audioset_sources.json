@@ -1,0 +1,7219 @@
+{
+ "rule": "docs/tagger_selection_rule.md point 2 with Adam's final spec (2026-09-30): AudioSet-Strong is the only source of new clips; 50 clips a001..a050; eligible = strong labels with >= 3 distinct depictable non-speech, non-music sound types (same_source grouping); striking clips first (an event on the STRIKING list, by name, family or ontology ancestor) in seed order until 25 kept, then the remaining eligible clips in the same order until 50; kept iff downloadable, not a still image / slideshow, not silent. No BEATs keep rule (BEATs suggestions recorded for the tool). Numbered in selection order. Strong labels are private: only for checking Adam's tagging.",
+ "seed": 20260930,
+ "n_keep_target": 50,
+ "n_striking_target": 25,
+ "striking_list": [
+  "Air horn, truck horn",
+  "Alarm",
+  "Ambulance (siren)",
+  "Baby cry, infant cry",
+  "Bark",
+  "Boom",
+  "Breaking",
+  "Burst, pop",
+  "Car alarm",
+  "Crockery breaking and smashing",
+  "Crying, sobbing",
+  "Doorbell",
+  "Explosion",
+  "Fire alarm",
+  "Fire engine, fire truck (siren)",
+  "Fireworks",
+  "Glass shatter",
+  "Growling",
+  "Gunshot, gunfire",
+  "Police car (siren)",
+  "Ringtone",
+  "Screaming",
+  "Shatter",
+  "Siren",
+  "Smash, crash",
+  "Smoke detector, smoke alarm",
+  "Telephone bell ringing",
+  "Thunder",
+  "Vehicle horn, car horn, honking",
+  "Vehicle horn, car horn, honking, toot"
+ ],
+ "pool": {
+  "heldout_builder": 470,
+  "heldout_500": 500,
+  "repo_scan": 2823,
+  "as_stub_prefix": 16,
+  "excluded_eval_ytids": 2824,
+  "scanned_text_files": 18975,
+  "not_opened": 175,
+  "fresh_500": 500,
+  "excluded_eval_ytids_total": 2902,
+  "eval_segments": 16996,
+  "eval_ytids": 16996,
+  "pool_segments": 14094,
+  "unmapped_mids": 0,
+  "eligible_segments": 1954,
+  "eligible_striking": 560
+ },
+ "order_sha256": "11d817c669828f2b592d673999affa1146110965106a453ec014782f79d09c89",
+ "thresholds": {
+  "mean_db_gt": -45.0,
+  "motion_ge": 2.0,
+  "slideshow": "fraction of 0.5-s frame pairs with mean gray diff < 1.0 >= 0.9",
+  "min_duration_s": 8.0,
+  "strong_types_ge": 3
+ },
+ "builder": "benchmark/gold/tagger_audioset.py",
+ "tried": 72,
+ "kept": 50,
+ "kept_striking": 25,
+ "pool_exhausted": false,
+ "drop_counts": {
+  "unavailable": 19,
+  "BLOCKED": 1,
+  "silent": 2
+ },
+ "clips": [
+  {
+   "clip": "a001",
+   "segment_id": "_PZsFjrElCU_30000",
+   "youtube_id": "_PZsFjrElCU",
+   "start": 30.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 2.984,
+     "offset": 3.54,
+     "matched": "Vehicle horn, car horn, honking, toot"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.0,
+     "offset": 0.908
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 0.469,
+     "offset": 0.92
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 1.533,
+     "offset": 1.758
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 1.648,
+     "offset": 2.846
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.729,
+     "offset": 2.603
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 2.603,
+     "offset": 2.805
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 2.984,
+     "offset": 3.54
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 3.841,
+     "offset": 4.806
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 4.031,
+     "offset": 4.228
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 4.141,
+     "offset": 4.621
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 5.026,
+     "offset": 5.205
+    },
+    {
+     "name": "Caw",
+     "onset": 5.13,
+     "offset": 5.477
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 5.356,
+     "offset": 10.0
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 5.529,
+     "offset": 5.761
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 6.154,
+     "offset": 6.31
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 7.224,
+     "offset": 7.438
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 8.132,
+     "offset": 8.421
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 8.901,
+     "offset": 9.057
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 9.248,
+     "offset": 9.451
+    }
+   ],
+   "strong_types": [
+    [
+     "Bird"
+    ],
+    [
+     "Footsteps"
+    ],
+    [
+     "Vehicle horn, car horn, honking, toot"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Crow"
+    ],
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Toot",
+     "family": "Vehicle",
+     "raw": "Toot",
+     "start": 3.1,
+     "end": 3.5,
+     "conf": 0.37,
+     "source": "BEATs"
+    },
+    {
+     "label": "Crow",
+     "family": "Crow",
+     "raw": "Crow",
+     "start": 5.3,
+     "end": 7.0,
+     "conf": 0.51,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -23.1,
+    "motion": 66.96,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a002",
+   "segment_id": "SYRLMsvEHJc_9000",
+   "youtube_id": "SYRLMsvEHJc",
+   "start": 9.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Glass shatter",
+     "onset": 0.432,
+     "offset": 1.079,
+     "matched": "Glass shatter"
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 2.334,
+     "offset": 2.973,
+     "matched": "Vehicle horn, car horn, honking, toot"
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 3.628,
+     "offset": 3.924,
+     "matched": "Vehicle horn, car horn, honking, toot"
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 3.988,
+     "offset": 4.651,
+     "matched": "Glass shatter"
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 6.481,
+     "offset": 7.192,
+     "matched": "Glass shatter"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Background noise",
+     "onset": 0.0,
+     "offset": 9.646
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 0.432,
+     "offset": 1.079
+    },
+    {
+     "name": "Squeal",
+     "onset": 0.967,
+     "offset": 1.462
+    },
+    {
+     "name": "Tap",
+     "onset": 1.375,
+     "offset": 1.502
+    },
+    {
+     "name": "Tap",
+     "onset": 1.654,
+     "offset": 1.758
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 2.334,
+     "offset": 2.973
+    },
+    {
+     "name": "Sound effect",
+     "onset": 2.581,
+     "offset": 3.42
+    },
+    {
+     "name": "Squeal",
+     "onset": 3.117,
+     "offset": 3.396
+    },
+    {
+     "name": "Tap",
+     "onset": 3.229,
+     "offset": 3.324
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 3.628,
+     "offset": 3.924
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 3.988,
+     "offset": 4.651
+    },
+    {
+     "name": "Tap",
+     "onset": 4.028,
+     "offset": 4.291
+    },
+    {
+     "name": "Tap",
+     "onset": 4.475,
+     "offset": 4.731
+    },
+    {
+     "name": "Sound effect",
+     "onset": 4.651,
+     "offset": 5.45
+    },
+    {
+     "name": "Squeal",
+     "onset": 5.043,
+     "offset": 5.418
+    },
+    {
+     "name": "Tap",
+     "onset": 5.882,
+     "offset": 5.978
+    },
+    {
+     "name": "Tap",
+     "onset": 6.153,
+     "offset": 6.233
+    },
+    {
+     "name": "Tap",
+     "onset": 6.377,
+     "offset": 6.521
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 6.481,
+     "offset": 7.192
+    },
+    {
+     "name": "Squeal",
+     "onset": 7.153,
+     "offset": 7.528
+    },
+    {
+     "name": "Sound effect",
+     "onset": 8.591,
+     "offset": 9.334
+    },
+    {
+     "name": "Tap",
+     "onset": 9.15,
+     "offset": 9.246
+    },
+    {
+     "name": "Tap",
+     "onset": 9.35,
+     "offset": 9.454
+    },
+    {
+     "name": "Tap",
+     "onset": 9.534,
+     "offset": 9.646
+    }
+   ],
+   "strong_types": [
+    [
+     "Glass shatter"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Vehicle horn, car horn, honking, toot"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Door"
+    ],
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle horn, car horn, honking",
+     "family": "Vehicle",
+     "raw": "Vehicle horn, car horn, honking",
+     "start": 2.5,
+     "end": 4.2,
+     "conf": 0.39,
+     "source": "BEATs"
+    },
+    {
+     "label": "Creak",
+     "family": "Door",
+     "raw": "Creak",
+     "start": 5.2,
+     "end": 5.8,
+     "conf": 0.46,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.66,
+    "mean_db": -30.7,
+    "motion": 31.52,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a003",
+   "segment_id": "v94qdpJqK9w_30000",
+   "youtube_id": "v94qdpJqK9w",
+   "start": 30.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Explosion",
+     "onset": 8.654,
+     "offset": 10.0,
+     "matched": "Explosion"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Tap",
+     "onset": 0.0,
+     "offset": 0.362
+    },
+    {
+     "name": "Aircraft",
+     "onset": 0.0,
+     "offset": 8.73
+    },
+    {
+     "name": "Clang",
+     "onset": 0.843,
+     "offset": 1.031
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.984,
+     "offset": 1.394
+    },
+    {
+     "name": "Conversation",
+     "onset": 1.0,
+     "offset": 3.772
+    },
+    {
+     "name": "Tap",
+     "onset": 1.654,
+     "offset": 1.748
+    },
+    {
+     "name": "Clang",
+     "onset": 1.874,
+     "offset": 1.992
+    },
+    {
+     "name": "Clang",
+     "onset": 2.15,
+     "offset": 2.283
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 2.173,
+     "offset": 3.732
+    },
+    {
+     "name": "Clang",
+     "onset": 2.394,
+     "offset": 2.543
+    },
+    {
+     "name": "Clang",
+     "onset": 2.921,
+     "offset": 3.063
+    },
+    {
+     "name": "Clang",
+     "onset": 3.268,
+     "offset": 3.559
+    },
+    {
+     "name": "Tap",
+     "onset": 3.976,
+     "offset": 4.583
+    },
+    {
+     "name": "Clang",
+     "onset": 5.134,
+     "offset": 5.622
+    },
+    {
+     "name": "Tap",
+     "onset": 5.78,
+     "offset": 6.039
+    },
+    {
+     "name": "Tap",
+     "onset": 6.354,
+     "offset": 6.638
+    },
+    {
+     "name": "Tap",
+     "onset": 7.386,
+     "offset": 7.535
+    },
+    {
+     "name": "Tap",
+     "onset": 7.732,
+     "offset": 7.882
+    },
+    {
+     "name": "Clang",
+     "onset": 8.283,
+     "offset": 8.48
+    },
+    {
+     "name": "Explosion",
+     "onset": 8.654,
+     "offset": 10.0
+    },
+    {
+     "name": "Tick",
+     "onset": 9.425,
+     "offset": 9.535
+    },
+    {
+     "name": "Tick",
+     "onset": 9.764,
+     "offset": 9.819
+    },
+    {
+     "name": "Tick",
+     "onset": 9.913,
+     "offset": 9.984
+    }
+   ],
+   "strong_types": [
+    [
+     "Aircraft"
+    ],
+    [
+     "Explosion"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Gunshot"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Artillery fire",
+     "family": "Gunshot",
+     "raw": "Artillery fire",
+     "start": 1.8,
+     "end": 2.5,
+     "conf": 0.52,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -16.8,
+    "motion": 6.89,
+    "static_frac": 0.05,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a004",
+   "segment_id": "pGKTuyBDkt4_50000",
+   "youtube_id": "pGKTuyBDkt4",
+   "start": 50.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Machine gun",
+     "onset": 2.953,
+     "offset": 3.52,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 4.079,
+     "offset": 4.307,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 4.52,
+     "offset": 4.748,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 4.984,
+     "offset": 5.22,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 5.559,
+     "offset": 6.268,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Fusillade",
+     "onset": 6.315,
+     "offset": 10.0,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Machine gun",
+     "onset": 6.315,
+     "offset": 7.102,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 7.244,
+     "offset": 7.417,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Machine gun",
+     "onset": 7.709,
+     "offset": 10.0,
+     "matched": "Explosion"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Shout",
+     "onset": 0.0,
+     "offset": 1.039
+    },
+    {
+     "name": "Sound effect",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Tick",
+     "onset": 0.835,
+     "offset": 1.188
+    },
+    {
+     "name": "Tick",
+     "onset": 1.636,
+     "offset": 1.915
+    },
+    {
+     "name": "Tick",
+     "onset": 2.274,
+     "offset": 2.478
+    },
+    {
+     "name": "Machine gun",
+     "onset": 2.953,
+     "offset": 3.52
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 4.079,
+     "offset": 4.307
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 4.52,
+     "offset": 4.748
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 4.984,
+     "offset": 5.22
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 5.559,
+     "offset": 6.268
+    },
+    {
+     "name": "Machine gun",
+     "onset": 6.315,
+     "offset": 7.102
+    },
+    {
+     "name": "Fusillade",
+     "onset": 6.315,
+     "offset": 10.0
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 7.244,
+     "offset": 7.417
+    },
+    {
+     "name": "Machine gun",
+     "onset": 7.709,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Gunshot"
+    ],
+    [
+     "Shout"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Gunshot"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Fusillade",
+     "family": "Gunshot",
+     "raw": "Fusillade",
+     "start": 6.0,
+     "end": 7.8,
+     "conf": 0.44,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -14.8,
+    "motion": 29.55,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a005",
+   "segment_id": "YP5NMmYsHt0_180000",
+   "youtube_id": "YP5NMmYsHt0",
+   "start": 180.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 4.465,
+     "offset": 4.961,
+     "matched": "Vehicle horn, car horn, honking, toot"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Medium engine (mid frequency)",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Outside, urban or manmade",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.764,
+     "offset": 0.984
+    },
+    {
+     "name": "Narration, monologue",
+     "onset": 0.803,
+     "offset": 0.992
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.197,
+     "offset": 4.307
+    },
+    {
+     "name": "Narration, monologue",
+     "onset": 1.22,
+     "offset": 4.323
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 4.465,
+     "offset": 4.961
+    },
+    {
+     "name": "Narration, monologue",
+     "onset": 6.063,
+     "offset": 7.386
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 6.079,
+     "offset": 7.409
+    },
+    {
+     "name": "Narration, monologue",
+     "onset": 7.709,
+     "offset": 10.0
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 9.252,
+     "offset": 9.528
+    }
+   ],
+   "strong_types": [
+    [
+     "Alarm"
+    ],
+    [
+     "Vehicle"
+    ],
+    [
+     "Vehicle horn, car horn, honking, toot"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 0.3,
+     "end": 2.2,
+     "conf": 0.37,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 4.4,
+     "end": 8.8,
+     "conf": 0.46,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -20.5,
+    "motion": 83.84,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a006",
+   "segment_id": "tJ7tqVXa-PQ_16000",
+   "youtube_id": "tJ7tqVXa-PQ",
+   "start": 16.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Breaking",
+     "onset": 6.077,
+     "offset": 7.5,
+     "matched": "Breaking"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Background noise",
+     "onset": 0.0,
+     "offset": 8.992
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 0.015,
+     "offset": 0.199
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 0.797,
+     "offset": 0.986
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 1.346,
+     "offset": 2.006
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 2.482,
+     "offset": 2.665
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 2.759,
+     "offset": 2.903
+    },
+    {
+     "name": "Surface contact",
+     "onset": 2.888,
+     "offset": 3.248
+    },
+    {
+     "name": "Static",
+     "onset": 3.945,
+     "offset": 4.289
+    },
+    {
+     "name": "Human voice",
+     "onset": 4.119,
+     "offset": 4.43
+    },
+    {
+     "name": "Shuffle",
+     "onset": 4.444,
+     "offset": 5.092
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 5.246,
+     "offset": 5.805
+    },
+    {
+     "name": "Laughter",
+     "onset": 5.455,
+     "offset": 5.766
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 6.038,
+     "offset": 6.33
+    },
+    {
+     "name": "Breaking",
+     "onset": 6.077,
+     "offset": 7.5
+    },
+    {
+     "name": "Laughter",
+     "onset": 6.296,
+     "offset": 8.997
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 7.146,
+     "offset": 7.428
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 7.534,
+     "offset": 9.001
+    }
+   ],
+   "strong_types": [
+    [
+     "Footsteps"
+    ],
+    [
+     "Glass"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Thump, thud"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 9.01,
+    "mean_db": -23.8,
+    "motion": 125.93,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a007",
+   "segment_id": "PVSHN_arz2k_21000",
+   "youtube_id": "PVSHN_arz2k",
+   "start": 21.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Crying, sobbing",
+     "onset": 0.0,
+     "offset": 0.423,
+     "matched": "Crying, sobbing"
+    },
+    {
+     "name": "Crying, sobbing",
+     "onset": 0.748,
+     "offset": 1.875,
+     "matched": "Crying, sobbing"
+    },
+    {
+     "name": "Crying, sobbing",
+     "onset": 2.201,
+     "offset": 5.503,
+     "matched": "Crying, sobbing"
+    },
+    {
+     "name": "Crying, sobbing",
+     "onset": 6.779,
+     "offset": 8.435,
+     "matched": "Crying, sobbing"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Crying, sobbing",
+     "onset": 0.0,
+     "offset": 0.423
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 9.544
+    },
+    {
+     "name": "Breathing",
+     "onset": 0.564,
+     "offset": 0.775
+    },
+    {
+     "name": "Crying, sobbing",
+     "onset": 0.748,
+     "offset": 1.875
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.776,
+     "offset": 1.074
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.532,
+     "offset": 2.641
+    },
+    {
+     "name": "Crying, sobbing",
+     "onset": 2.201,
+     "offset": 5.503
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 5.195,
+     "offset": 6.357
+    },
+    {
+     "name": "Bird vocalization, bird call, bird song",
+     "onset": 6.075,
+     "offset": 6.656
+    },
+    {
+     "name": "Crying, sobbing",
+     "onset": 6.779,
+     "offset": 8.435
+    },
+    {
+     "name": "Bird vocalization, bird call, bird song",
+     "onset": 7.096,
+     "offset": 7.695
+    },
+    {
+     "name": "Bird vocalization, bird call, bird song",
+     "onset": 7.977,
+     "offset": 8.646
+    },
+    {
+     "name": "Laughter",
+     "onset": 8.84,
+     "offset": 9.57
+    }
+   ],
+   "strong_types": [
+    [
+     "Bird"
+    ],
+    [
+     "Crying, sobbing"
+    ],
+    [
+     "Laughter"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 3,
+   "beats_sounds": [
+    [
+     "Bird"
+    ],
+    [
+     "Screaming"
+    ],
+    [
+     "Baby cry, infant cry",
+     "Crying, sobbing",
+     "Whimper"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Baby cry, infant cry",
+     "family": "Baby cry, infant cry",
+     "raw": "Baby cry, infant cry",
+     "start": 1.2,
+     "end": 5.5,
+     "conf": 0.47,
+     "source": "BEATs"
+    },
+    {
+     "label": "Crying, sobbing",
+     "family": "Crying, sobbing",
+     "raw": "Crying, sobbing",
+     "start": 1.2,
+     "end": 5.5,
+     "conf": 0.39,
+     "source": "BEATs"
+    },
+    {
+     "label": "Whimper",
+     "family": "Whimper",
+     "raw": "Whimper",
+     "start": 2.6,
+     "end": 5.2,
+     "conf": 0.45,
+     "source": "BEATs"
+    },
+    {
+     "label": "Bird",
+     "family": "Bird",
+     "raw": "Bird",
+     "start": 6.1,
+     "end": 8.2,
+     "conf": 0.69,
+     "source": "BEATs"
+    },
+    {
+     "label": "Screaming",
+     "family": "Screaming",
+     "raw": "Screaming",
+     "start": 7.8,
+     "end": 9.0,
+     "conf": 0.54,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.73,
+    "mean_db": -22.2,
+    "motion": 35.02,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a008",
+   "segment_id": "blAiAadPVKk_80000",
+   "youtube_id": "blAiAadPVKk",
+   "start": 80.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Breaking",
+     "onset": 8.22,
+     "offset": 10.0,
+     "matched": "Breaking"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Sound effect",
+     "onset": 0.0,
+     "offset": 2.378
+    },
+    {
+     "name": "Aircraft",
+     "onset": 0.008,
+     "offset": 10.0
+    },
+    {
+     "name": "Whoosh, swoosh, swish",
+     "onset": 2.283,
+     "offset": 2.772
+    },
+    {
+     "name": "Sound effect",
+     "onset": 3.323,
+     "offset": 3.638
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 3.669,
+     "offset": 3.882
+    },
+    {
+     "name": "Sound effect",
+     "onset": 3.961,
+     "offset": 4.15
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 4.157,
+     "offset": 4.496
+    },
+    {
+     "name": "Sound effect",
+     "onset": 4.496,
+     "offset": 4.787
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 4.661,
+     "offset": 4.953
+    },
+    {
+     "name": "Sound effect",
+     "onset": 5.15,
+     "offset": 5.37
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 5.213,
+     "offset": 6.339
+    },
+    {
+     "name": "Sound effect",
+     "onset": 5.614,
+     "offset": 6.89
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 7.102,
+     "offset": 7.362
+    },
+    {
+     "name": "Breaking",
+     "onset": 8.22,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Aircraft"
+    ],
+    [
+     "Glass"
+    ],
+    [
+     "Thump, thud"
+    ],
+    [
+     "Whoosh, swoosh, swish"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Explosion"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Boom",
+     "family": "Explosion",
+     "raw": "Boom",
+     "start": 6.2,
+     "end": 9.8,
+     "conf": 0.43,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -16.4,
+    "motion": 64.18,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a009",
+   "segment_id": "618gUklTSH8_30000",
+   "youtube_id": "618gUklTSH8",
+   "start": 30.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Steam whistle",
+     "onset": 3.464,
+     "offset": 5.095,
+     "matched": "Alarm"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Railroad car, train wagon",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Steam",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Clickety-clack",
+     "onset": 2.059,
+     "offset": 5.043
+    },
+    {
+     "name": "Steam whistle",
+     "onset": 3.464,
+     "offset": 5.095
+    }
+   ],
+   "strong_types": [
+    [
+     "Steam"
+    ],
+    [
+     "Steam whistle"
+    ],
+    [
+     "Train"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Steam whistle"
+    ],
+    [
+     "Train",
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 1.1,
+     "end": 9.8,
+     "conf": 0.61,
+     "source": "BEATs"
+    },
+    {
+     "label": "Train",
+     "family": "Train",
+     "raw": "Train",
+     "start": 1.2,
+     "end": 9.8,
+     "conf": 0.94,
+     "source": "BEATs"
+    },
+    {
+     "label": "Steam whistle",
+     "family": "Steam whistle",
+     "raw": "Steam whistle",
+     "start": 3.4,
+     "end": 6.0,
+     "conf": 0.52,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -10.6,
+    "motion": 29.22,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a010",
+   "segment_id": "lxJ0z9P0avc_160000",
+   "youtube_id": "lxJ0z9P0avc",
+   "start": 160.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Glass shatter",
+     "onset": 3.244,
+     "offset": 4.504,
+     "matched": "Glass shatter"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Tap",
+     "onset": 0.0,
+     "offset": 0.076
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 4.945
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 0.22,
+     "offset": 1.228
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 1.417,
+     "offset": 2.134
+    },
+    {
+     "name": "Glass chink, clink",
+     "onset": 2.827,
+     "offset": 3.22
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 3.244,
+     "offset": 4.504
+    },
+    {
+     "name": "Glass chink, clink",
+     "onset": 4.575,
+     "offset": 4.709
+    },
+    {
+     "name": "Glass chink, clink",
+     "onset": 5.047,
+     "offset": 5.69
+    },
+    {
+     "name": "Music",
+     "onset": 5.189,
+     "offset": 6.087
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 5.417,
+     "offset": 6.031
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 6.354,
+     "offset": 8.094
+    },
+    {
+     "name": "Clapping",
+     "onset": 6.921,
+     "offset": 7.055
+    },
+    {
+     "name": "Tap",
+     "onset": 7.811,
+     "offset": 7.929
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 8.551,
+     "offset": 9.598
+    },
+    {
+     "name": "Tap",
+     "onset": 9.225,
+     "offset": 9.362
+    },
+    {
+     "name": "Tap",
+     "onset": 9.602,
+     "offset": 9.898
+    }
+   ],
+   "strong_types": [
+    [
+     "Clapping"
+    ],
+    [
+     "Glass chink, clink"
+    ],
+    [
+     "Glass shatter"
+    ],
+    [
+     "Tap"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Chink, clink",
+     "Glass"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Chink, clink",
+     "family": "Chink, clink",
+     "raw": "Chink, clink",
+     "start": 3.5,
+     "end": 7.0,
+     "conf": 0.54,
+     "source": "BEATs"
+    },
+    {
+     "label": "Breaking",
+     "family": "Glass",
+     "raw": "Breaking",
+     "start": 4.5,
+     "end": 5.8,
+     "conf": 0.54,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -25.9,
+    "motion": 137.71,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a011",
+   "segment_id": "KTHsyIQI2L0_200000",
+   "youtube_id": "KTHsyIQI2L0",
+   "start": 200.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Growling",
+     "onset": 3.488,
+     "offset": 4.094,
+     "matched": "Growling"
+    },
+    {
+     "name": "Growling",
+     "onset": 6.78,
+     "offset": 7.189,
+     "matched": "Growling"
+    },
+    {
+     "name": "Growling",
+     "onset": 9.646,
+     "offset": 10.0,
+     "matched": "Growling"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Animal",
+     "onset": 0.016,
+     "offset": 1.693
+    },
+    {
+     "name": "Wild animals",
+     "onset": 0.016,
+     "offset": 1.835
+    },
+    {
+     "name": "Outside, rural or natural",
+     "onset": 0.016,
+     "offset": 10.0
+    },
+    {
+     "name": "Water",
+     "onset": 1.425,
+     "offset": 7.661
+    },
+    {
+     "name": "Growling",
+     "onset": 3.488,
+     "offset": 4.094
+    },
+    {
+     "name": "Wild animals",
+     "onset": 3.488,
+     "offset": 4.126
+    },
+    {
+     "name": "Animal",
+     "onset": 3.528,
+     "offset": 4.079
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 4.236,
+     "offset": 4.89
+    },
+    {
+     "name": "Speech",
+     "onset": 4.315,
+     "offset": 4.882
+    },
+    {
+     "name": "Growling",
+     "onset": 6.78,
+     "offset": 7.189
+    },
+    {
+     "name": "Laughter",
+     "onset": 6.811,
+     "offset": 7.142
+    },
+    {
+     "name": "Wild animals",
+     "onset": 6.827,
+     "offset": 7.15
+    },
+    {
+     "name": "Animal",
+     "onset": 6.827,
+     "offset": 7.189
+    },
+    {
+     "name": "Laughter",
+     "onset": 7.575,
+     "offset": 7.677
+    },
+    {
+     "name": "Laughter",
+     "onset": 7.764,
+     "offset": 8.087
+    },
+    {
+     "name": "Wild animals",
+     "onset": 9.614,
+     "offset": 10.0
+    },
+    {
+     "name": "Animal",
+     "onset": 9.63,
+     "offset": 10.0
+    },
+    {
+     "name": "Growling",
+     "onset": 9.646,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Dog"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 3,
+   "beats_sounds": [
+    [
+     "Boat"
+    ],
+    [
+     "Horse"
+    ],
+    [
+     "Roar",
+     "Roaring cats (lions, tigers)"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Motorboat, speedboat",
+     "family": "Boat",
+     "raw": "Motorboat, speedboat",
+     "start": 0.1,
+     "end": 2.8,
+     "conf": 0.63,
+     "source": "BEATs"
+    },
+    {
+     "label": "Roaring cats (lions, tigers)",
+     "family": "Roaring cats (lions, tigers)",
+     "raw": "Roaring cats (lions, tigers)",
+     "start": 4.5,
+     "end": 8.5,
+     "conf": 0.7,
+     "source": "BEATs"
+    },
+    {
+     "label": "Roar",
+     "family": "Roar",
+     "raw": "Roar",
+     "start": 4.8,
+     "end": 5.8,
+     "conf": 0.47,
+     "source": "BEATs"
+    },
+    {
+     "label": "Horse",
+     "family": "Horse",
+     "raw": "Horse",
+     "start": 5.8,
+     "end": 6.5,
+     "conf": 0.67,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -26.1,
+    "motion": 20.5,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a012",
+   "segment_id": "SuCNLfY7b8U_60000",
+   "youtube_id": "SuCNLfY7b8U",
+   "start": 60.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Breaking",
+     "onset": 0.0,
+     "offset": 1.46,
+     "matched": "Breaking"
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 0.0,
+     "offset": 1.453,
+     "matched": "Glass shatter"
+    },
+    {
+     "name": "Breaking",
+     "onset": 1.874,
+     "offset": 2.716,
+     "matched": "Breaking"
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 1.874,
+     "offset": 2.682,
+     "matched": "Glass shatter"
+    },
+    {
+     "name": "Breaking",
+     "onset": 3.7,
+     "offset": 5.438,
+     "matched": "Breaking"
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 3.707,
+     "offset": 5.452,
+     "matched": "Glass shatter"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Glass shatter",
+     "onset": 0.0,
+     "offset": 1.453
+    },
+    {
+     "name": "Breaking",
+     "onset": 0.0,
+     "offset": 1.46
+    },
+    {
+     "name": "Glass",
+     "onset": 0.068,
+     "offset": 1.5
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 1.874,
+     "offset": 2.682
+    },
+    {
+     "name": "Breaking",
+     "onset": 1.874,
+     "offset": 2.716
+    },
+    {
+     "name": "Glass",
+     "onset": 1.901,
+     "offset": 2.716
+    },
+    {
+     "name": "Music",
+     "onset": 3.686,
+     "offset": 10.0
+    },
+    {
+     "name": "Breaking",
+     "onset": 3.7,
+     "offset": 5.438
+    },
+    {
+     "name": "Glass",
+     "onset": 3.707,
+     "offset": 5.438
+    },
+    {
+     "name": "Glass shatter",
+     "onset": 3.707,
+     "offset": 5.452
+    },
+    {
+     "name": "Water",
+     "onset": 7.481,
+     "offset": 9.24
+    }
+   ],
+   "strong_types": [
+    [
+     "Glass"
+    ],
+    [
+     "Glass shatter"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Glass"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Breaking",
+     "family": "Glass",
+     "raw": "Breaking",
+     "start": 0.2,
+     "end": 4.2,
+     "conf": 0.85,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -9.5,
+    "motion": 101.03,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a013",
+   "segment_id": "5jn-KJICC9g_10000",
+   "youtube_id": "5jn-KJICC9g",
+   "start": 10.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Steam whistle",
+     "onset": 4.216,
+     "offset": 4.534,
+     "matched": "Alarm"
+    },
+    {
+     "name": "Steam whistle",
+     "onset": 4.945,
+     "offset": 10.0,
+     "matched": "Alarm"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Rail transport",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Steam",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Steam whistle",
+     "onset": 4.216,
+     "offset": 4.534
+    },
+    {
+     "name": "Steam whistle",
+     "onset": 4.945,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Steam"
+    ],
+    [
+     "Steam whistle"
+    ],
+    [
+     "Train"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 4,
+   "beats_sounds": [
+    [
+     "Cat"
+    ],
+    [
+     "Steam"
+    ],
+    [
+     "Steam whistle"
+    ],
+    [
+     "Train",
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Steam whistle",
+     "family": "Steam whistle",
+     "raw": "Steam whistle",
+     "start": 0.9,
+     "end": 1.8,
+     "conf": 0.58,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 1.8,
+     "end": 7.2,
+     "conf": 0.42,
+     "source": "BEATs"
+    },
+    {
+     "label": "Train",
+     "family": "Train",
+     "raw": "Train",
+     "start": 3.5,
+     "end": 9.5,
+     "conf": 0.9,
+     "source": "BEATs"
+    },
+    {
+     "label": "Hiss",
+     "family": "Cat",
+     "raw": "Hiss",
+     "start": 3.8,
+     "end": 9.0,
+     "conf": 0.48,
+     "source": "BEATs"
+    },
+    {
+     "label": "Steam",
+     "family": "Steam",
+     "raw": "Steam",
+     "start": 3.8,
+     "end": 9.5,
+     "conf": 0.52,
+     "source": "BEATs"
+    },
+    {
+     "label": "Steam whistle",
+     "family": "Steam whistle",
+     "raw": "Steam whistle",
+     "start": 3.8,
+     "end": 9.5,
+     "conf": 0.65,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -15.7,
+    "motion": 76.59,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a014",
+   "segment_id": "gvnM4kK4r70_40000",
+   "youtube_id": "gvnM4kK4r70",
+   "start": 40.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 1.377,
+     "offset": 1.63,
+     "matched": "Vehicle horn, car horn, honking, toot"
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 7.989,
+     "offset": 8.442,
+     "matched": "Vehicle horn, car horn, honking, toot"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Noise",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Railroad car, train wagon",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Train wheels squealing",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 1.25,
+     "offset": 1.63
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 1.377,
+     "offset": 1.63
+    },
+    {
+     "name": "Tap",
+     "onset": 6.739,
+     "offset": 6.929
+    },
+    {
+     "name": "Vehicle horn, car horn, honking, toot",
+     "onset": 7.989,
+     "offset": 8.442
+    }
+   ],
+   "strong_types": [
+    [
+     "Tap"
+    ],
+    [
+     "Train"
+    ],
+    [
+     "Vehicle horn, car horn, honking, toot"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 0.0,
+     "end": 2.5,
+     "conf": 0.5,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -18.4,
+    "motion": 51.68,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a015",
+   "segment_id": "5gJ_PWgJWIw_420000",
+   "youtube_id": "5gJ_PWgJWIw",
+   "start": 420.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Fusillade",
+     "onset": 0.0,
+     "offset": 6.964,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Screaming",
+     "onset": 0.0,
+     "offset": 0.272,
+     "matched": "Screaming"
+    },
+    {
+     "name": "Screaming",
+     "onset": 1.07,
+     "offset": 2.441,
+     "matched": "Screaming"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 7.785,
+     "offset": 8.253,
+     "matched": "Explosion"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Screaming",
+     "onset": 0.0,
+     "offset": 0.272
+    },
+    {
+     "name": "Fusillade",
+     "onset": 0.0,
+     "offset": 6.964
+    },
+    {
+     "name": "Music",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Screaming",
+     "onset": 1.07,
+     "offset": 2.441
+    },
+    {
+     "name": "Groan",
+     "onset": 7.785,
+     "offset": 8.08
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 7.785,
+     "offset": 8.253
+    }
+   ],
+   "strong_types": [
+    [
+     "Groan"
+    ],
+    [
+     "Gunshot"
+    ],
+    [
+     "Screaming"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 3,
+   "beats_sounds": [
+    [
+     "Gunshot"
+    ],
+    [
+     "Sigh"
+    ],
+    [
+     "Helicopter",
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Machine gun",
+     "family": "Gunshot",
+     "raw": "Machine gun",
+     "start": 3.2,
+     "end": 7.0,
+     "conf": 0.57,
+     "source": "BEATs"
+    },
+    {
+     "label": "Helicopter",
+     "family": "Helicopter",
+     "raw": "Helicopter",
+     "start": 4.8,
+     "end": 6.0,
+     "conf": 0.52,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 5.0,
+     "end": 5.8,
+     "conf": 0.36,
+     "source": "BEATs"
+    },
+    {
+     "label": "Sigh",
+     "family": "Sigh",
+     "raw": "Sigh",
+     "start": 8.2,
+     "end": 9.5,
+     "conf": 0.36,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -14.3,
+    "motion": 53.46,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a016",
+   "segment_id": "jNjUU01quLs_100000",
+   "youtube_id": "jNjUU01quLs",
+   "start": 100.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Screaming",
+     "onset": 7.937,
+     "offset": 10.0,
+     "matched": "Screaming"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Boing",
+     "onset": 0.0,
+     "offset": 0.276
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.0,
+     "offset": 5.134
+    },
+    {
+     "name": "Music",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Sound effect",
+     "onset": 0.433,
+     "offset": 0.646
+    },
+    {
+     "name": "Boing",
+     "onset": 0.457,
+     "offset": 0.685
+    },
+    {
+     "name": "Sound effect",
+     "onset": 0.945,
+     "offset": 1.142
+    },
+    {
+     "name": "Boing",
+     "onset": 0.992,
+     "offset": 1.205
+    },
+    {
+     "name": "Sound effect",
+     "onset": 1.425,
+     "offset": 1.654
+    },
+    {
+     "name": "Boing",
+     "onset": 1.488,
+     "offset": 1.732
+    },
+    {
+     "name": "Sound effect",
+     "onset": 1.953,
+     "offset": 2.157
+    },
+    {
+     "name": "Boing",
+     "onset": 1.961,
+     "offset": 2.22
+    },
+    {
+     "name": "Sound effect",
+     "onset": 2.449,
+     "offset": 2.63
+    },
+    {
+     "name": "Boing",
+     "onset": 2.457,
+     "offset": 2.693
+    },
+    {
+     "name": "Sound effect",
+     "onset": 2.921,
+     "offset": 3.157
+    },
+    {
+     "name": "Boing",
+     "onset": 2.953,
+     "offset": 3.205
+    },
+    {
+     "name": "Sound effect",
+     "onset": 3.441,
+     "offset": 3.669
+    },
+    {
+     "name": "Boing",
+     "onset": 3.465,
+     "offset": 3.693
+    },
+    {
+     "name": "Sound effect",
+     "onset": 3.898,
+     "offset": 4.181
+    },
+    {
+     "name": "Boing",
+     "onset": 3.976,
+     "offset": 4.205
+    },
+    {
+     "name": "Boing",
+     "onset": 4.441,
+     "offset": 4.677
+    },
+    {
+     "name": "Sound effect",
+     "onset": 4.472,
+     "offset": 4.654
+    },
+    {
+     "name": "Boing",
+     "onset": 4.945,
+     "offset": 5.173
+    },
+    {
+     "name": "Boiling",
+     "onset": 4.953,
+     "offset": 6.283
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 6.299,
+     "offset": 7.331
+    },
+    {
+     "name": "Sound effect",
+     "onset": 6.433,
+     "offset": 7.189
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 7.858,
+     "offset": 10.0
+    },
+    {
+     "name": "Screaming",
+     "onset": 7.937,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Bird"
+    ],
+    [
+     "Boiling"
+    ],
+    [
+     "Screaming"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Bird"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Chirp, tweet",
+     "family": "Bird",
+     "raw": "Chirp, tweet",
+     "start": 8.0,
+     "end": 9.8,
+     "conf": 0.46,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -11.3,
+    "motion": 18.36,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a017",
+   "segment_id": "FLcqMSBS0H8_100000",
+   "youtube_id": "FLcqMSBS0H8",
+   "start": 100.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Boom",
+     "onset": 3.984,
+     "offset": 4.78,
+     "matched": "Boom"
+    },
+    {
+     "name": "Boom",
+     "onset": 7.173,
+     "offset": 8.22,
+     "matched": "Boom"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Music",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Boom",
+     "onset": 3.984,
+     "offset": 4.78
+    },
+    {
+     "name": "Sound effect",
+     "onset": 4.063,
+     "offset": 4.488
+    },
+    {
+     "name": "Helicopter",
+     "onset": 5.724,
+     "offset": 8.339
+    },
+    {
+     "name": "Groan",
+     "onset": 5.811,
+     "offset": 10.0
+    },
+    {
+     "name": "Boom",
+     "onset": 7.173,
+     "offset": 8.22
+    }
+   ],
+   "strong_types": [
+    [
+     "Explosion"
+    ],
+    [
+     "Groan"
+    ],
+    [
+     "Helicopter"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -11.0,
+    "motion": 35.16,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a018",
+   "segment_id": "AyfuBDN3Vdw_40000",
+   "youtube_id": "AyfuBDN3Vdw",
+   "start": 40.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Car alarm",
+     "onset": 0.0,
+     "offset": 10.0,
+     "matched": "Car alarm"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Clapping",
+     "onset": 0.0,
+     "offset": 2.375
+    },
+    {
+     "name": "Car alarm",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Conversation",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Crowd",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Hubbub, speech noise, speech babble",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Outside, urban or manmade",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 1.047,
+     "offset": 10.0
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 1.354,
+     "offset": 10.0
+    },
+    {
+     "name": "Belly laugh",
+     "onset": 4.534,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Alarm"
+    ],
+    [
+     "Belly laugh"
+    ],
+    [
+     "Clapping"
+    ],
+    [
+     "Crowd"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Footsteps"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Run",
+     "family": "Footsteps",
+     "raw": "Run",
+     "start": 0.1,
+     "end": 3.5,
+     "conf": 0.71,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -24.9,
+    "motion": 39.35,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a019",
+   "segment_id": "glAxzomb7ws_30000",
+   "youtube_id": "glAxzomb7ws",
+   "start": 30.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Air horn, truck horn",
+     "onset": 4.441,
+     "offset": 5.213,
+     "matched": "Air horn, truck horn"
+    },
+    {
+     "name": "Screaming",
+     "onset": 5.079,
+     "offset": 5.654,
+     "matched": "Screaming"
+    },
+    {
+     "name": "Air horn, truck horn",
+     "onset": 7.236,
+     "offset": 7.929,
+     "matched": "Air horn, truck horn"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Laughter",
+     "onset": 0.0,
+     "offset": 0.858
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.071,
+     "offset": 1.89
+    },
+    {
+     "name": "Laughter",
+     "onset": 2.583,
+     "offset": 3.047
+    },
+    {
+     "name": "Motor vehicle (road)",
+     "onset": 3.252,
+     "offset": 5.087
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 3.622,
+     "offset": 3.913
+    },
+    {
+     "name": "Air horn, truck horn",
+     "onset": 4.441,
+     "offset": 5.213
+    },
+    {
+     "name": "Screaming",
+     "onset": 5.079,
+     "offset": 5.654
+    },
+    {
+     "name": "Laughter",
+     "onset": 5.583,
+     "offset": 6.472
+    },
+    {
+     "name": "Cricket",
+     "onset": 6.417,
+     "offset": 7.22
+    },
+    {
+     "name": "Air horn, truck horn",
+     "onset": 7.236,
+     "offset": 7.929
+    },
+    {
+     "name": "Motor vehicle (road)",
+     "onset": 7.976,
+     "offset": 10.0
+    },
+    {
+     "name": "Laughter",
+     "onset": 8.244,
+     "offset": 8.748
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 8.984,
+     "offset": 9.142
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 9.339,
+     "offset": 9.543
+    }
+   ],
+   "strong_types": [
+    [
+     "Cricket"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Screaming"
+    ],
+    [
+     "Air horn, truck horn",
+     "Vehicle"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Gasp"
+    ],
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Gasp",
+     "family": "Gasp",
+     "raw": "Gasp",
+     "start": 0.5,
+     "end": 1.0,
+     "conf": 0.75,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle horn, car horn, honking",
+     "family": "Vehicle",
+     "raw": "Vehicle horn, car horn, honking",
+     "start": 7.6,
+     "end": 8.8,
+     "conf": 0.45,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -18.2,
+    "motion": 51.05,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a020",
+   "segment_id": "VwRHF1tpdU8_18000",
+   "youtube_id": "VwRHF1tpdU8",
+   "start": 18.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Alarm",
+     "onset": 0.299,
+     "offset": 1.047,
+     "matched": "Alarm"
+    },
+    {
+     "name": "Alarm",
+     "onset": 1.307,
+     "offset": 2.197,
+     "matched": "Alarm"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 8.213
+    },
+    {
+     "name": "Alarm",
+     "onset": 0.299,
+     "offset": 1.047
+    },
+    {
+     "name": "Alarm",
+     "onset": 1.307,
+     "offset": 2.197
+    },
+    {
+     "name": "Meow",
+     "onset": 2.89,
+     "offset": 3.386
+    },
+    {
+     "name": "Tick",
+     "onset": 3.504,
+     "offset": 3.669
+    },
+    {
+     "name": "Meow",
+     "onset": 3.882,
+     "offset": 4.402
+    },
+    {
+     "name": "Meow",
+     "onset": 4.606,
+     "offset": 5.598
+    },
+    {
+     "name": "Tick",
+     "onset": 5.827,
+     "offset": 6.063
+    },
+    {
+     "name": "Tick",
+     "onset": 7.024,
+     "offset": 7.213
+    }
+   ],
+   "strong_types": [
+    [
+     "Alarm"
+    ],
+    [
+     "Cat"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Cat"
+    ],
+    [
+     "Screaming"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Screaming",
+     "family": "Screaming",
+     "raw": "Screaming",
+     "start": 1.5,
+     "end": 1.8,
+     "conf": 0.36,
+     "source": "BEATs"
+    },
+    {
+     "label": "Meow",
+     "family": "Cat",
+     "raw": "Meow",
+     "start": 2.2,
+     "end": 6.8,
+     "conf": 0.83,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -21.3,
+    "motion": 33.7,
+    "static_frac": 0.05,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a021",
+   "segment_id": "9FcaCBrrCfg_17000",
+   "youtube_id": "9FcaCBrrCfg",
+   "start": 17.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Breaking",
+     "onset": 3.178,
+     "offset": 3.974,
+     "matched": "Breaking"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Tools",
+     "onset": 0.0,
+     "offset": 8.962
+    },
+    {
+     "name": "Breaking",
+     "onset": 3.178,
+     "offset": 3.974
+    },
+    {
+     "name": "Tap",
+     "onset": 4.094,
+     "offset": 4.417
+    },
+    {
+     "name": "Tap",
+     "onset": 4.71,
+     "offset": 4.89
+    },
+    {
+     "name": "Tap",
+     "onset": 5.138,
+     "offset": 5.551
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 9.015,
+     "offset": 9.21
+    },
+    {
+     "name": "Tick",
+     "onset": 9.105,
+     "offset": 9.187
+    },
+    {
+     "name": "Tick",
+     "onset": 9.27,
+     "offset": 9.398
+    }
+   ],
+   "strong_types": [
+    [
+     "Glass"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tick"
+    ],
+    [
+     "Tools"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Blender"
+    ],
+    [
+     "Drill",
+     "Tools"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Drill",
+     "family": "Drill",
+     "raw": "Drill",
+     "start": 0.0,
+     "end": 1.8,
+     "conf": 0.64,
+     "source": "BEATs"
+    },
+    {
+     "label": "Tools",
+     "family": "Tools",
+     "raw": "Tools",
+     "start": 0.0,
+     "end": 1.8,
+     "conf": 0.46,
+     "source": "BEATs"
+    },
+    {
+     "label": "Blender",
+     "family": "Blender",
+     "raw": "Blender",
+     "start": 5.0,
+     "end": 7.5,
+     "conf": 0.59,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.51,
+    "mean_db": -18.6,
+    "motion": 34.0,
+    "static_frac": 0.56,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a022",
+   "segment_id": "cqeVEFFzz7E_110000",
+   "youtube_id": "cqeVEFFzz7E",
+   "start": 110.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 3.403,
+     "offset": 3.866,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Explosion",
+     "onset": 4.291,
+     "offset": 5.079,
+     "matched": "Explosion"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Crackle",
+     "onset": 0.0,
+     "offset": 1.953
+    },
+    {
+     "name": "Music",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Whoosh, swoosh, swish",
+     "onset": 2.126,
+     "offset": 2.677
+    },
+    {
+     "name": "Sound effect",
+     "onset": 2.874,
+     "offset": 3.118
+    },
+    {
+     "name": "Crackle",
+     "onset": 2.874,
+     "offset": 3.126
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 3.403,
+     "offset": 3.866
+    },
+    {
+     "name": "Explosion",
+     "onset": 4.291,
+     "offset": 5.079
+    },
+    {
+     "name": "Tick",
+     "onset": 4.882,
+     "offset": 4.969
+    },
+    {
+     "name": "Liquid",
+     "onset": 4.945,
+     "offset": 8.087
+    },
+    {
+     "name": "Tick",
+     "onset": 5.11,
+     "offset": 5.197
+    },
+    {
+     "name": "Tick",
+     "onset": 5.378,
+     "offset": 5.496
+    },
+    {
+     "name": "Tick",
+     "onset": 5.63,
+     "offset": 5.748
+    },
+    {
+     "name": "Tick",
+     "onset": 6.118,
+     "offset": 6.213
+    },
+    {
+     "name": "Tick",
+     "onset": 6.339,
+     "offset": 6.449
+    },
+    {
+     "name": "Tick",
+     "onset": 6.835,
+     "offset": 6.906
+    },
+    {
+     "name": "Crackle",
+     "onset": 7.575,
+     "offset": 7.913
+    },
+    {
+     "name": "Whoosh, swoosh, swish",
+     "onset": 8.52,
+     "offset": 9.031
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 9.11,
+     "offset": 9.835
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 9.803,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Crackle"
+    ],
+    [
+     "Explosion"
+    ],
+    [
+     "Footsteps"
+    ],
+    [
+     "Gunshot"
+    ],
+    [
+     "Tick"
+    ],
+    [
+     "Water"
+    ],
+    [
+     "Whoosh, swoosh, swish"
+    ]
+   ],
+   "n_strong_types": 7,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -14.5,
+    "motion": 19.63,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a023",
+   "segment_id": "LJ5dIeTKCqA_80000",
+   "youtube_id": "LJ5dIeTKCqA",
+   "start": 80.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Car alarm",
+     "onset": 7.866,
+     "offset": 8.023,
+     "matched": "Car alarm"
+    },
+    {
+     "name": "Car alarm",
+     "onset": 8.126,
+     "offset": 8.25,
+     "matched": "Car alarm"
+    },
+    {
+     "name": "Car alarm",
+     "onset": 8.401,
+     "offset": 8.524,
+     "matched": "Car alarm"
+    },
+    {
+     "name": "Car alarm",
+     "onset": 8.655,
+     "offset": 8.785,
+     "matched": "Car alarm"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Outside, urban or manmade",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.103,
+     "offset": 1.942
+    },
+    {
+     "name": "Laughter",
+     "onset": 1.737,
+     "offset": 2.1
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 2.903,
+     "offset": 3.562
+    },
+    {
+     "name": "Laughter",
+     "onset": 4.317,
+     "offset": 5.141
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 5.518,
+     "offset": 5.676
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 5.861,
+     "offset": 6.102
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 6.87,
+     "offset": 7.845
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 7.866,
+     "offset": 8.01
+    },
+    {
+     "name": "Car alarm",
+     "onset": 7.866,
+     "offset": 8.023
+    },
+    {
+     "name": "Car alarm",
+     "onset": 8.126,
+     "offset": 8.25
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 8.126,
+     "offset": 8.264
+    },
+    {
+     "name": "Car passing by",
+     "onset": 8.305,
+     "offset": 10.0
+    },
+    {
+     "name": "Laughter",
+     "onset": 8.353,
+     "offset": 8.559
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 8.387,
+     "offset": 8.538
+    },
+    {
+     "name": "Car alarm",
+     "onset": 8.401,
+     "offset": 8.524
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 8.641,
+     "offset": 8.778
+    },
+    {
+     "name": "Car alarm",
+     "onset": 8.655,
+     "offset": 8.785
+    }
+   ],
+   "strong_types": [
+    [
+     "Alarm"
+    ],
+    [
+     "Car passing by"
+    ],
+    [
+     "Footsteps"
+    ],
+    [
+     "Laughter"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -20.0,
+    "motion": 56.06,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a024",
+   "segment_id": "hRHKxyErgZw_30000",
+   "youtube_id": "hRHKxyErgZw",
+   "start": 30.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 2.376,
+     "offset": 2.485,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 6.295,
+     "offset": 6.487,
+     "matched": "Explosion"
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 8.844,
+     "offset": 8.968,
+     "matched": "Explosion"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Crow",
+     "onset": 0.0,
+     "offset": 1.307
+    },
+    {
+     "name": "Wind",
+     "onset": 0.0,
+     "offset": 2.638
+    },
+    {
+     "name": "Insect",
+     "onset": 0.614,
+     "offset": 6.354
+    },
+    {
+     "name": "Crow",
+     "onset": 1.599,
+     "offset": 2.38
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 2.376,
+     "offset": 2.485
+    },
+    {
+     "name": "Crow",
+     "onset": 2.586,
+     "offset": 5.382
+    },
+    {
+     "name": "Wind",
+     "onset": 5.094,
+     "offset": 10.0
+    },
+    {
+     "name": "Crow",
+     "onset": 5.559,
+     "offset": 6.295
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 6.295,
+     "offset": 6.487
+    },
+    {
+     "name": "Crow",
+     "onset": 6.501,
+     "offset": 8.638
+    },
+    {
+     "name": "Insect",
+     "onset": 7.134,
+     "offset": 10.0
+    },
+    {
+     "name": "Bird vocalization, bird call, bird song",
+     "onset": 7.268,
+     "offset": 8.315
+    },
+    {
+     "name": "Gunshot, gunfire",
+     "onset": 8.844,
+     "offset": 8.968
+    },
+    {
+     "name": "Crow",
+     "onset": 9.013,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Bird",
+     "Crow"
+    ],
+    [
+     "Gunshot"
+    ],
+    [
+     "Insect"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Bird",
+     "Crow"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Caw",
+     "family": "Bird",
+     "raw": "Caw",
+     "start": 0.1,
+     "end": 9.8,
+     "conf": 0.88,
+     "source": "BEATs"
+    },
+    {
+     "label": "Crow",
+     "family": "Crow",
+     "raw": "Crow",
+     "start": 0.5,
+     "end": 9.8,
+     "conf": 0.9,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -17.9,
+    "motion": 19.01,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a025",
+   "segment_id": "_WheLp0RdLQ_30000",
+   "youtube_id": "_WheLp0RdLQ",
+   "start": 30.0,
+   "selected_in": "striking",
+   "striking": true,
+   "striking_events": [
+    {
+     "name": "Explosion",
+     "onset": 5.429,
+     "offset": 6.175,
+     "matched": "Explosion"
+    }
+   ],
+   "strong_events": [
+    {
+     "name": "Breathing",
+     "onset": 1.449,
+     "offset": 2.102
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 3.414,
+     "offset": 4.123
+    },
+    {
+     "name": "Speech",
+     "onset": 3.451,
+     "offset": 4.16
+    },
+    {
+     "name": "Explosion",
+     "onset": 5.429,
+     "offset": 6.175
+    },
+    {
+     "name": "Speech",
+     "onset": 6.325,
+     "offset": 10.0
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 6.362,
+     "offset": 10.0
+    },
+    {
+     "name": "Shout",
+     "onset": 6.455,
+     "offset": 7.201
+    },
+    {
+     "name": "Tap",
+     "onset": 8.899,
+     "offset": 10.0
+    },
+    {
+     "name": "Laughter",
+     "onset": 9.049,
+     "offset": 9.59
+    }
+   ],
+   "strong_types": [
+    [
+     "Explosion"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Shout"
+    ],
+    [
+     "Tap"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -15.6,
+    "motion": 27.64,
+    "static_frac": 0.11,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a026",
+   "segment_id": "3rOi5Gd0LLY_250000",
+   "youtube_id": "3rOi5Gd0LLY",
+   "start": 250.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Slosh",
+     "onset": 0.0,
+     "offset": 3.597
+    },
+    {
+     "name": "Human voice",
+     "onset": 0.688,
+     "offset": 1.157
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 1.909,
+     "offset": 2.955
+    },
+    {
+     "name": "Conversation",
+     "onset": 1.909,
+     "offset": 9.132
+    },
+    {
+     "name": "Crowd",
+     "onset": 1.909,
+     "offset": 10.0
+    },
+    {
+     "name": "Human voice",
+     "onset": 2.267,
+     "offset": 2.875
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 3.534,
+     "offset": 4.158
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 4.228,
+     "offset": 4.407
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 4.506,
+     "offset": 4.835
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 4.881,
+     "offset": 6.489
+    },
+    {
+     "name": "Shout",
+     "onset": 6.455,
+     "offset": 10.0
+    },
+    {
+     "name": "Cheering",
+     "onset": 6.46,
+     "offset": 10.0
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 8.236,
+     "offset": 9.208
+    }
+   ],
+   "strong_types": [
+    [
+     "Crowd"
+    ],
+    [
+     "Shout"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 4,
+   "beats_sounds": [
+    [
+     "Crowd"
+    ],
+    [
+     "Pump (liquid)"
+    ],
+    [
+     "Splash, splatter"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Pump (liquid)",
+     "family": "Pump (liquid)",
+     "raw": "Pump (liquid)",
+     "start": 0.2,
+     "end": 0.8,
+     "conf": 0.44,
+     "source": "BEATs"
+    },
+    {
+     "label": "Water",
+     "family": "Water",
+     "raw": "Water",
+     "start": 0.2,
+     "end": 4.5,
+     "conf": 0.58,
+     "source": "BEATs"
+    },
+    {
+     "label": "Splash, splatter",
+     "family": "Splash, splatter",
+     "raw": "Splash, splatter",
+     "start": 1.5,
+     "end": 4.5,
+     "conf": 0.82,
+     "source": "BEATs"
+    },
+    {
+     "label": "Crowd",
+     "family": "Crowd",
+     "raw": "Crowd",
+     "start": 7.2,
+     "end": 9.8,
+     "conf": 0.64,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -10.0,
+    "motion": 53.88,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a027",
+   "segment_id": "BgjdCfaJfsE_50000",
+   "youtube_id": "BgjdCfaJfsE",
+   "start": 50.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Slosh",
+     "onset": 0.0,
+     "offset": 3.134
+    },
+    {
+     "name": "Liquid",
+     "onset": 0.0,
+     "offset": 3.157
+    },
+    {
+     "name": "Outside, rural or natural",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Water",
+     "onset": 0.016,
+     "offset": 3.165
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 0.031,
+     "offset": 3.031
+    },
+    {
+     "name": "Speech",
+     "onset": 4.583,
+     "offset": 5.315
+    },
+    {
+     "name": "Slosh",
+     "onset": 4.717,
+     "offset": 10.0
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 5.732,
+     "offset": 6.118
+    },
+    {
+     "name": "Speech",
+     "onset": 5.78,
+     "offset": 6.165
+    },
+    {
+     "name": "Speech",
+     "onset": 6.52,
+     "offset": 6.913
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 6.528,
+     "offset": 6.937
+    },
+    {
+     "name": "Liquid",
+     "onset": 7.291,
+     "offset": 9.843
+    },
+    {
+     "name": "Water",
+     "onset": 7.315,
+     "offset": 9.835
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 7.386,
+     "offset": 10.0
+    },
+    {
+     "name": "Laughter",
+     "onset": 8.921,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Laughter"
+    ],
+    [
+     "Splash, splatter"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Water"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Pour",
+     "family": "Water",
+     "raw": "Pour",
+     "start": 0.1,
+     "end": 5.0,
+     "conf": 0.69,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -28.5,
+    "motion": 33.3,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a028",
+   "segment_id": "hd_w0MHqpQo_450000",
+   "youtube_id": "hd_w0MHqpQo",
+   "start": 450.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Generic impact sounds",
+     "onset": 0.0,
+     "offset": 2.896
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.817,
+     "offset": 1.091
+    },
+    {
+     "name": "Tick",
+     "onset": 0.929,
+     "offset": 1.071
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.311,
+     "offset": 1.73
+    },
+    {
+     "name": "Moo",
+     "onset": 1.567,
+     "offset": 2.898
+    },
+    {
+     "name": "Tap",
+     "onset": 1.669,
+     "offset": 1.819
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 2.37,
+     "offset": 2.654
+    },
+    {
+     "name": "Tick",
+     "onset": 2.858,
+     "offset": 2.992
+    },
+    {
+     "name": "Laughter",
+     "onset": 3.295,
+     "offset": 3.404
+    },
+    {
+     "name": "Laughter",
+     "onset": 3.535,
+     "offset": 3.754
+    },
+    {
+     "name": "Whistling",
+     "onset": 3.905,
+     "offset": 4.18
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 4.29,
+     "offset": 5.553
+    },
+    {
+     "name": "Whistling",
+     "onset": 4.324,
+     "offset": 4.887
+    },
+    {
+     "name": "Moo",
+     "onset": 4.441,
+     "offset": 5.161
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 4.887,
+     "offset": 7.248
+    },
+    {
+     "name": "Tap",
+     "onset": 5.764,
+     "offset": 5.89
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 6.157,
+     "offset": 6.733
+    },
+    {
+     "name": "Tick",
+     "onset": 7.197,
+     "offset": 7.323
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 7.584,
+     "offset": 7.818
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 7.653,
+     "offset": 8.593
+    },
+    {
+     "name": "Tap",
+     "onset": 7.992,
+     "offset": 8.173
+    },
+    {
+     "name": "Moo",
+     "onset": 8.49,
+     "offset": 9.149
+    },
+    {
+     "name": "Tick",
+     "onset": 8.614,
+     "offset": 8.799
+    },
+    {
+     "name": "Tap",
+     "onset": 8.819,
+     "offset": 9.512
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 9.588,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Cattle"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Thump, thud"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 5,
+   "n_sounds": 3,
+   "beats_sounds": [
+    [
+     "Cattle"
+    ],
+    [
+     "Hammer"
+    ],
+    [
+     "Sewing machine"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Sewing machine",
+     "family": "Sewing machine",
+     "raw": "Sewing machine",
+     "start": 0.3,
+     "end": 1.2,
+     "conf": 0.8,
+     "source": "BEATs"
+    },
+    {
+     "label": "Cattle, bovinae",
+     "family": "Cattle",
+     "raw": "Cattle, bovinae",
+     "start": 1.5,
+     "end": 9.2,
+     "conf": 0.99,
+     "source": "BEATs"
+    },
+    {
+     "label": "Hammer",
+     "family": "Hammer",
+     "raw": "Hammer",
+     "start": 7.0,
+     "end": 9.8,
+     "conf": 0.57,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -20.6,
+    "motion": 61.92,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a029",
+   "segment_id": "O5Oa1PeAI_M_400000",
+   "youtube_id": "O5Oa1PeAI_M",
+   "start": 400.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Speech",
+     "onset": 0.0,
+     "offset": 0.197
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.0,
+     "offset": 0.244
+    },
+    {
+     "name": "Outside, rural or natural",
+     "onset": 0.008,
+     "offset": 10.0
+    },
+    {
+     "name": "Speech",
+     "onset": 0.409,
+     "offset": 0.661
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.425,
+     "offset": 0.693
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 0.969,
+     "offset": 1.409
+    },
+    {
+     "name": "Tools",
+     "onset": 2.102,
+     "offset": 2.354
+    },
+    {
+     "name": "Scissors",
+     "onset": 2.134,
+     "offset": 2.378
+    },
+    {
+     "name": "Scissors",
+     "onset": 2.598,
+     "offset": 2.827
+    },
+    {
+     "name": "Tools",
+     "onset": 2.614,
+     "offset": 2.85
+    },
+    {
+     "name": "Scissors",
+     "onset": 3.449,
+     "offset": 3.724
+    },
+    {
+     "name": "Tools",
+     "onset": 3.504,
+     "offset": 3.803
+    },
+    {
+     "name": "Scissors",
+     "onset": 4.016,
+     "offset": 4.331
+    },
+    {
+     "name": "Tools",
+     "onset": 4.15,
+     "offset": 4.315
+    },
+    {
+     "name": "Scissors",
+     "onset": 4.409,
+     "offset": 4.945
+    },
+    {
+     "name": "Tools",
+     "onset": 4.63,
+     "offset": 4.961
+    },
+    {
+     "name": "Scissors",
+     "onset": 5.394,
+     "offset": 5.787
+    },
+    {
+     "name": "Tools",
+     "onset": 5.425,
+     "offset": 5.709
+    },
+    {
+     "name": "Scissors",
+     "onset": 6.102,
+     "offset": 6.583
+    },
+    {
+     "name": "Tools",
+     "onset": 6.118,
+     "offset": 6.496
+    },
+    {
+     "name": "Tools",
+     "onset": 6.882,
+     "offset": 7.331
+    },
+    {
+     "name": "Scissors",
+     "onset": 6.929,
+     "offset": 7.354
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 7.378,
+     "offset": 7.74
+    },
+    {
+     "name": "Tools",
+     "onset": 7.74,
+     "offset": 8.181
+    },
+    {
+     "name": "Scissors",
+     "onset": 7.748,
+     "offset": 8.26
+    },
+    {
+     "name": "Tools",
+     "onset": 8.945,
+     "offset": 9.236
+    },
+    {
+     "name": "Scissors",
+     "onset": 8.961,
+     "offset": 9.244
+    },
+    {
+     "name": "Tools",
+     "onset": 9.583,
+     "offset": 9.882
+    },
+    {
+     "name": "Scissors",
+     "onset": 9.598,
+     "offset": 9.898
+    }
+   ],
+   "strong_types": [
+    [
+     "Bird"
+    ],
+    [
+     "Scissors"
+    ],
+    [
+     "Tools"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Scissors"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Scissors",
+     "family": "Scissors",
+     "raw": "Scissors",
+     "start": 3.0,
+     "end": 8.2,
+     "conf": 0.69,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -38.7,
+    "motion": 43.21,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a030",
+   "segment_id": "CwW67bBZ4Bk_30000",
+   "youtube_id": "CwW67bBZ4Bk",
+   "start": 30.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Unmodified field recording",
+     "onset": 0.016,
+     "offset": 10.0
+    },
+    {
+     "name": "Motor vehicle (road)",
+     "onset": 0.031,
+     "offset": 10.0
+    },
+    {
+     "name": "Outside, urban or manmade",
+     "onset": 0.031,
+     "offset": 10.0
+    },
+    {
+     "name": "Wood",
+     "onset": 3.937,
+     "offset": 4.441
+    },
+    {
+     "name": "Chop",
+     "onset": 3.961,
+     "offset": 4.669
+    },
+    {
+     "name": "Wood",
+     "onset": 6.622,
+     "offset": 6.976
+    },
+    {
+     "name": "Chop",
+     "onset": 6.677,
+     "offset": 7.079
+    },
+    {
+     "name": "Wood",
+     "onset": 9.472,
+     "offset": 10.0
+    },
+    {
+     "name": "Chop",
+     "onset": 9.52,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Unmodified field recording"
+    ],
+    [
+     "Vehicle"
+    ],
+    [
+     "Chop",
+     "Wood"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 0.8,
+     "end": 4.2,
+     "conf": 0.38,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -32.2,
+    "motion": 25.66,
+    "static_frac": 0.05,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a031",
+   "segment_id": "_3F2ThHyn64_30000",
+   "youtube_id": "_3F2ThHyn64",
+   "start": 30.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Bang",
+     "onset": 0.0,
+     "offset": 3.724
+    },
+    {
+     "name": "Sound effect",
+     "onset": 0.008,
+     "offset": 10.0
+    },
+    {
+     "name": "Shout",
+     "onset": 1.024,
+     "offset": 4.071
+    },
+    {
+     "name": "Whoop",
+     "onset": 1.441,
+     "offset": 10.0
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.535,
+     "offset": 10.0
+    },
+    {
+     "name": "Cheering",
+     "onset": 1.63,
+     "offset": 4.26
+    }
+   ],
+   "strong_types": [
+    [
+     "Crowd"
+    ],
+    [
+     "Explosion"
+    ],
+    [
+     "Shout",
+     "Whoop"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -9.2,
+    "motion": 46.62,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a032",
+   "segment_id": "77Mv8pauMKc_10000",
+   "youtube_id": "77Mv8pauMKc",
+   "start": 10.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Splash, splatter",
+     "onset": 0.0,
+     "offset": 1.583
+    },
+    {
+     "name": "Dishes, pots, and pans",
+     "onset": 0.102,
+     "offset": 0.205
+    },
+    {
+     "name": "Dishes, pots, and pans",
+     "onset": 1.299,
+     "offset": 1.638
+    },
+    {
+     "name": "Water tap, faucet",
+     "onset": 2.094,
+     "offset": 5.772
+    },
+    {
+     "name": "Drip",
+     "onset": 5.85,
+     "offset": 6.0
+    },
+    {
+     "name": "Liquid",
+     "onset": 6.819,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Dishes"
+    ],
+    [
+     "Splash, splatter"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Water"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Liquid",
+     "family": "Water",
+     "raw": "Liquid",
+     "start": 0.3,
+     "end": 7.0,
+     "conf": 0.46,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -27.7,
+    "motion": 45.71,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a033",
+   "segment_id": "0QYedLfOwcI_40000",
+   "youtube_id": "0QYedLfOwcI",
+   "start": 40.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Fart",
+     "onset": 0.079,
+     "offset": 0.835
+    },
+    {
+     "name": "Tap",
+     "onset": 1.409,
+     "offset": 1.433
+    },
+    {
+     "name": "Human voice",
+     "onset": 3.047,
+     "offset": 3.307
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 5.024,
+     "offset": 5.575
+    },
+    {
+     "name": "Fart",
+     "onset": 5.575,
+     "offset": 5.858
+    },
+    {
+     "name": "Fart",
+     "onset": 5.961,
+     "offset": 6.417
+    },
+    {
+     "name": "Human sounds",
+     "onset": 6.583,
+     "offset": 6.685
+    },
+    {
+     "name": "Human sounds",
+     "onset": 7.016,
+     "offset": 7.118
+    },
+    {
+     "name": "Breathing",
+     "onset": 8.37,
+     "offset": 8.74
+    },
+    {
+     "name": "Chuckle, chortle",
+     "onset": 8.984,
+     "offset": 9.918
+    },
+    {
+     "name": "Tap",
+     "onset": 9.535,
+     "offset": 9.616
+    }
+   ],
+   "strong_types": [
+    [
+     "Chuckle, chortle"
+    ],
+    [
+     "Fart"
+    ],
+    [
+     "Tap"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 4,
+   "beats_sounds": [
+    [
+     "Cat"
+    ],
+    [
+     "Dog"
+    ],
+    [
+     "Fart"
+    ],
+    [
+     "Sniff"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Fart",
+     "family": "Fart",
+     "raw": "Fart",
+     "start": 0.2,
+     "end": 2.5,
+     "conf": 0.94,
+     "source": "BEATs"
+    },
+    {
+     "label": "Dog",
+     "family": "Dog",
+     "raw": "Dog",
+     "start": 3.0,
+     "end": 5.0,
+     "conf": 0.71,
+     "source": "BEATs"
+    },
+    {
+     "label": "Cat",
+     "family": "Cat",
+     "raw": "Cat",
+     "start": 5.0,
+     "end": 6.0,
+     "conf": 0.36,
+     "source": "BEATs"
+    },
+    {
+     "label": "Fart",
+     "family": "Fart",
+     "raw": "Fart",
+     "start": 6.3,
+     "end": 8.0,
+     "conf": 0.91,
+     "source": "BEATs"
+    },
+    {
+     "label": "Sniff",
+     "family": "Sniff",
+     "raw": "Sniff",
+     "start": 8.2,
+     "end": 9.8,
+     "conf": 0.45,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -31.3,
+    "motion": 17.63,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a034",
+   "segment_id": "73cuZZq-J3w_20000",
+   "youtube_id": "73cuZZq-J3w",
+   "start": 20.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Car",
+     "onset": 0.0,
+     "offset": 9.118
+    },
+    {
+     "name": "Accelerating, revving, vroom",
+     "onset": 0.264,
+     "offset": 0.917
+    },
+    {
+     "name": "Accelerating, revving, vroom",
+     "onset": 1.181,
+     "offset": 2.235
+    },
+    {
+     "name": "Tap",
+     "onset": 2.131,
+     "offset": 2.28
+    },
+    {
+     "name": "Tap",
+     "onset": 3.437,
+     "offset": 3.551
+    },
+    {
+     "name": "Accelerating, revving, vroom",
+     "onset": 4.757,
+     "offset": 5.426
+    },
+    {
+     "name": "Crack",
+     "onset": 5.41,
+     "offset": 5.971
+    },
+    {
+     "name": "Crack",
+     "onset": 6.236,
+     "offset": 6.83
+    },
+    {
+     "name": "Tap",
+     "onset": 7.243,
+     "offset": 7.417
+    }
+   ],
+   "strong_types": [
+    [
+     "Crack"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Vehicle"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 0.1,
+     "end": 8.8,
+     "conf": 0.67,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.04,
+    "mean_db": -9.5,
+    "motion": 34.39,
+    "static_frac": 0.53,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a035",
+   "segment_id": "mD0AmqVX6sA_150000",
+   "youtube_id": "mD0AmqVX6sA",
+   "start": 150.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Breathing",
+     "onset": 0.0,
+     "offset": 0.299
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Tick",
+     "onset": 0.781,
+     "offset": 0.93
+    },
+    {
+     "name": "Tick",
+     "onset": 1.433,
+     "offset": 1.568
+    },
+    {
+     "name": "Tick",
+     "onset": 1.724,
+     "offset": 1.853
+    },
+    {
+     "name": "Tick",
+     "onset": 2.268,
+     "offset": 2.369
+    },
+    {
+     "name": "Breathing",
+     "onset": 2.417,
+     "offset": 3.191
+    },
+    {
+     "name": "Tick",
+     "onset": 3.184,
+     "offset": 3.286
+    },
+    {
+     "name": "Tick",
+     "onset": 3.944,
+     "offset": 4.121
+    },
+    {
+     "name": "Breathing",
+     "onset": 4.406,
+     "offset": 4.779
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 4.65,
+     "offset": 5.37
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 5.458,
+     "offset": 5.73
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 5.805,
+     "offset": 6.083
+    },
+    {
+     "name": "Laughter",
+     "onset": 5.995,
+     "offset": 6.741
+    },
+    {
+     "name": "Tap",
+     "onset": 6.551,
+     "offset": 6.728
+    },
+    {
+     "name": "Laughter",
+     "onset": 6.864,
+     "offset": 7.4
+    },
+    {
+     "name": "Laughter",
+     "onset": 7.509,
+     "offset": 8.018
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 7.631,
+     "offset": 8.018
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 8.113,
+     "offset": 8.568
+    },
+    {
+     "name": "Tap",
+     "onset": 8.995,
+     "offset": 9.145
+    }
+   ],
+   "strong_types": [
+    [
+     "Laughter"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 3,
+   "beats_sounds": [
+    [
+     "Door"
+    ],
+    [
+     "Sniff"
+    ],
+    [
+     "Wheeze"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Sniff",
+     "family": "Sniff",
+     "raw": "Sniff",
+     "start": 0.1,
+     "end": 0.8,
+     "conf": 0.51,
+     "source": "BEATs"
+    },
+    {
+     "label": "Wheeze",
+     "family": "Wheeze",
+     "raw": "Wheeze",
+     "start": 4.0,
+     "end": 4.5,
+     "conf": 0.52,
+     "source": "BEATs"
+    },
+    {
+     "label": "Door",
+     "family": "Door",
+     "raw": "Door",
+     "start": 8.8,
+     "end": 9.8,
+     "conf": 0.57,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -24.5,
+    "motion": 50.66,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a036",
+   "segment_id": "MGeg6ubJ35I_60000",
+   "youtube_id": "MGeg6ubJ35I",
+   "start": 60.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Clapping",
+     "onset": 0.0,
+     "offset": 1.575
+    },
+    {
+     "name": "Cheering",
+     "onset": 0.0,
+     "offset": 1.591
+    },
+    {
+     "name": "Whoop",
+     "onset": 0.0,
+     "offset": 1.591
+    },
+    {
+     "name": "Crowd",
+     "onset": 0.0,
+     "offset": 1.606
+    },
+    {
+     "name": "Shout",
+     "onset": 0.008,
+     "offset": 1.591
+    },
+    {
+     "name": "Applause",
+     "onset": 0.039,
+     "offset": 1.598
+    },
+    {
+     "name": "Music",
+     "onset": 0.425,
+     "offset": 10.0
+    },
+    {
+     "name": "Singing",
+     "onset": 0.48,
+     "offset": 10.0
+    },
+    {
+     "name": "Male singing",
+     "onset": 0.488,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Clapping"
+    ],
+    [
+     "Crowd"
+    ],
+    [
+     "Shout",
+     "Whoop"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Crowd"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Cheering",
+     "family": "Crowd",
+     "raw": "Cheering",
+     "start": 0.2,
+     "end": 1.5,
+     "conf": 0.63,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -17.4,
+    "motion": 52.98,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a037",
+   "segment_id": "y6a5Brqohnk_20000",
+   "youtube_id": "y6a5Brqohnk",
+   "start": 20.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Water",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Tools",
+     "onset": 0.144,
+     "offset": 0.817
+    },
+    {
+     "name": "Pulleys",
+     "onset": 0.55,
+     "offset": 0.87
+    },
+    {
+     "name": "Pulleys",
+     "onset": 1.057,
+     "offset": 1.764
+    },
+    {
+     "name": "Tools",
+     "onset": 1.56,
+     "offset": 1.777
+    },
+    {
+     "name": "Pulleys",
+     "onset": 2.052,
+     "offset": 3.246
+    },
+    {
+     "name": "Tools",
+     "onset": 2.916,
+     "offset": 3.031
+    },
+    {
+     "name": "Pulleys",
+     "onset": 3.597,
+     "offset": 4.111
+    },
+    {
+     "name": "Tools",
+     "onset": 4.015,
+     "offset": 4.246
+    },
+    {
+     "name": "Pulleys",
+     "onset": 4.736,
+     "offset": 5.971
+    },
+    {
+     "name": "Tools",
+     "onset": 5.038,
+     "offset": 5.256
+    },
+    {
+     "name": "Tap",
+     "onset": 6.189,
+     "offset": 6.419
+    },
+    {
+     "name": "Pulleys",
+     "onset": 6.688,
+     "offset": 7.136
+    },
+    {
+     "name": "Tools",
+     "onset": 7.419,
+     "offset": 7.982
+    },
+    {
+     "name": "Pulleys",
+     "onset": 7.724,
+     "offset": 8.031
+    },
+    {
+     "name": "Tap",
+     "onset": 7.903,
+     "offset": 8.082
+    },
+    {
+     "name": "Tools",
+     "onset": 8.209,
+     "offset": 8.73
+    },
+    {
+     "name": "Pulleys",
+     "onset": 8.325,
+     "offset": 8.734
+    },
+    {
+     "name": "Pulleys",
+     "onset": 9.552,
+     "offset": 9.847
+    },
+    {
+     "name": "Tools",
+     "onset": 9.561,
+     "offset": 9.746
+    }
+   ],
+   "strong_types": [
+    [
+     "Pulleys"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tools"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 5,
+   "beats_sounds": [
+    [
+     "Boat"
+    ],
+    [
+     "Gears"
+    ],
+    [
+     "Pulleys"
+    ],
+    [
+     "Ratchet, pawl"
+    ],
+    [
+     "Rowboat, canoe, kayak",
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Gears",
+     "family": "Gears",
+     "raw": "Gears",
+     "start": 3.8,
+     "end": 5.8,
+     "conf": 0.86,
+     "source": "BEATs"
+    },
+    {
+     "label": "Ratchet, pawl",
+     "family": "Ratchet, pawl",
+     "raw": "Ratchet, pawl",
+     "start": 3.8,
+     "end": 5.8,
+     "conf": 0.78,
+     "source": "BEATs"
+    },
+    {
+     "label": "Pulleys",
+     "family": "Pulleys",
+     "raw": "Pulleys",
+     "start": 4.5,
+     "end": 5.8,
+     "conf": 0.79,
+     "source": "BEATs"
+    },
+    {
+     "label": "Boat, Water vehicle",
+     "family": "Boat",
+     "raw": "Boat, Water vehicle",
+     "start": 7.2,
+     "end": 8.2,
+     "conf": 0.72,
+     "source": "BEATs"
+    },
+    {
+     "label": "Rowboat, canoe, kayak",
+     "family": "Rowboat, canoe, kayak",
+     "raw": "Rowboat, canoe, kayak",
+     "start": 7.2,
+     "end": 8.2,
+     "conf": 0.63,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 7.2,
+     "end": 8.2,
+     "conf": 0.51,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -30.0,
+    "motion": 39.61,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a038",
+   "segment_id": "BPv-DH1xuBI_80000",
+   "youtube_id": "BPv-DH1xuBI",
+   "start": 80.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Outside, rural or natural",
+     "onset": 0.008,
+     "offset": 6.953
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 0.11,
+     "offset": 7.874
+    },
+    {
+     "name": "Bird",
+     "onset": 0.118,
+     "offset": 7.803
+    },
+    {
+     "name": "Bird vocalization, bird call, bird song",
+     "onset": 0.126,
+     "offset": 7.835
+    },
+    {
+     "name": "Sheep",
+     "onset": 2.307,
+     "offset": 2.85
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 3.559,
+     "offset": 3.953
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 5.693,
+     "offset": 6.724
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 6.913,
+     "offset": 7.26
+    },
+    {
+     "name": "Music",
+     "onset": 7.016,
+     "offset": 10.0
+    },
+    {
+     "name": "Thump, thud",
+     "onset": 7.543,
+     "offset": 7.992
+    }
+   ],
+   "strong_types": [
+    [
+     "Bird"
+    ],
+    [
+     "Sheep"
+    ],
+    [
+     "Thump, thud"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 3,
+   "beats_sounds": [
+    [
+     "Bird"
+    ],
+    [
+     "Sheep"
+    ],
+    [
+     "Thunk"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "family": "Bird",
+     "raw": "Bird vocalization, bird call, bird song",
+     "start": 0.3,
+     "end": 5.0,
+     "conf": 0.68,
+     "source": "BEATs"
+    },
+    {
+     "label": "Bleat",
+     "family": "Sheep",
+     "raw": "Bleat",
+     "start": 3.2,
+     "end": 4.2,
+     "conf": 0.39,
+     "source": "BEATs"
+    },
+    {
+     "label": "Thunk",
+     "family": "Thunk",
+     "raw": "Thunk",
+     "start": 7.8,
+     "end": 9.8,
+     "conf": 0.5,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -23.2,
+    "motion": 3.76,
+    "static_frac": 0.74,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a039",
+   "segment_id": "yjyXVRIjv1E_10000",
+   "youtube_id": "yjyXVRIjv1E",
+   "start": 10.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Male speech, man speaking",
+     "onset": 0.0,
+     "offset": 1.373
+    },
+    {
+     "name": "Music",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Tick",
+     "onset": 1.528,
+     "offset": 1.793
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 2.124,
+     "offset": 5.405
+    },
+    {
+     "name": "Shuffling cards",
+     "onset": 4.661,
+     "offset": 6.669
+    },
+    {
+     "name": "Tap",
+     "onset": 7.115,
+     "offset": 7.226
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 7.457,
+     "offset": 8.003
+    },
+    {
+     "name": "Breathing",
+     "onset": 8.119,
+     "offset": 8.274
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 8.356,
+     "offset": 9.051
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 9.162,
+     "offset": 9.857
+    }
+   ],
+   "strong_types": [
+    [
+     "Shuffling cards"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -23.0,
+    "motion": 76.86,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a040",
+   "segment_id": "yu0De8n7Tog_30000",
+   "youtube_id": "yu0De8n7Tog",
+   "start": 30.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Motorboat, speedboat",
+     "onset": 0.0,
+     "offset": 9.922
+    },
+    {
+     "name": "Shout",
+     "onset": 0.071,
+     "offset": 0.706
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 0.227,
+     "offset": 1.028
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 0.659,
+     "offset": 2.094
+    },
+    {
+     "name": "Human voice",
+     "onset": 1.984,
+     "offset": 2.926
+    },
+    {
+     "name": "Laughter",
+     "onset": 2.588,
+     "offset": 3.31
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 2.714,
+     "offset": 4.996
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 3.938,
+     "offset": 4.212
+    },
+    {
+     "name": "Human voice",
+     "onset": 4.212,
+     "offset": 4.73
+    },
+    {
+     "name": "Human voice",
+     "onset": 5.028,
+     "offset": 5.859
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 5.906,
+     "offset": 6.024
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 6.079,
+     "offset": 6.832
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 6.659,
+     "offset": 7.365
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 6.683,
+     "offset": 9.891
+    },
+    {
+     "name": "Human sounds",
+     "onset": 6.73,
+     "offset": 7.083
+    },
+    {
+     "name": "Speech",
+     "onset": 7.004,
+     "offset": 7.616
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 7.82,
+     "offset": 7.954
+    },
+    {
+     "name": "Laughter",
+     "onset": 7.899,
+     "offset": 8.746
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 8.769,
+     "offset": 8.918
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 9.13,
+     "offset": 9.248
+    }
+   ],
+   "strong_types": [
+    [
+     "Boat"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Shout"
+    ],
+    [
+     "Splash, splatter"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 4,
+   "beats_sounds": [
+    [
+     "Boat"
+    ],
+    [
+     "Burst, pop",
+     "Explosion"
+    ],
+    [
+     "Gunshot"
+    ],
+    [
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Burst, pop",
+     "family": "Burst, pop",
+     "raw": "Burst, pop",
+     "start": 1.8,
+     "end": 3.0,
+     "conf": 0.37,
+     "source": "BEATs"
+    },
+    {
+     "label": "Explosion",
+     "family": "Explosion",
+     "raw": "Explosion",
+     "start": 1.8,
+     "end": 3.0,
+     "conf": 0.57,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 3.0,
+     "end": 6.5,
+     "conf": 0.59,
+     "source": "BEATs"
+    },
+    {
+     "label": "Boat, Water vehicle",
+     "family": "Boat",
+     "raw": "Boat, Water vehicle",
+     "start": 3.3,
+     "end": 6.5,
+     "conf": 0.72,
+     "source": "BEATs"
+    },
+    {
+     "label": "Artillery fire",
+     "family": "Gunshot",
+     "raw": "Artillery fire",
+     "start": 6.5,
+     "end": 8.5,
+     "conf": 0.85,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.98,
+    "mean_db": -16.3,
+    "motion": 128.1,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a041",
+   "segment_id": "00wORCOKNHw_14000",
+   "youtube_id": "00wORCOKNHw",
+   "start": 14.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Run",
+     "onset": 0.0,
+     "offset": 9.081
+    },
+    {
+     "name": "Wind",
+     "onset": 0.0,
+     "offset": 9.081
+    },
+    {
+     "name": "Breathing",
+     "onset": 5.162,
+     "offset": 5.763
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 7.701,
+     "offset": 8.065
+    },
+    {
+     "name": "Neigh, whinny",
+     "onset": 8.044,
+     "offset": 8.587
+    },
+    {
+     "name": "Tap",
+     "onset": 8.673,
+     "offset": 8.823
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 8.959,
+     "offset": 9.081
+    }
+   ],
+   "strong_types": [
+    [
+     "Footsteps"
+    ],
+    [
+     "Horse"
+    ],
+    [
+     "Tap"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Horse"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Clip-clop",
+     "family": "Horse",
+     "raw": "Clip-clop",
+     "start": 0.1,
+     "end": 8.5,
+     "conf": 0.91,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.01,
+    "mean_db": -34.2,
+    "motion": 54.03,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a042",
+   "segment_id": "3LiCT1BSrgQ_150000",
+   "youtube_id": "3LiCT1BSrgQ",
+   "start": 150.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Beep, bleep",
+     "onset": 0.0,
+     "offset": 0.299
+    },
+    {
+     "name": "Heavy engine (low frequency)",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 0.543,
+     "offset": 0.906
+    },
+    {
+     "name": "Tap",
+     "onset": 0.772,
+     "offset": 0.89
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 3.197,
+     "offset": 3.677
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 3.953,
+     "offset": 4.449
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 4.74,
+     "offset": 5.165
+    },
+    {
+     "name": "Tap",
+     "onset": 5.228,
+     "offset": 5.331
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 8.756,
+     "offset": 9.236
+    },
+    {
+     "name": "Beep, bleep",
+     "onset": 9.535,
+     "offset": 9.921
+    }
+   ],
+   "strong_types": [
+    [
+     "Alarm"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Vehicle"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Aircraft",
+     "Train",
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Reversing beeps",
+     "family": "Vehicle",
+     "raw": "Reversing beeps",
+     "start": 0.1,
+     "end": 9.8,
+     "conf": 0.93,
+     "source": "BEATs"
+    },
+    {
+     "label": "Train",
+     "family": "Train",
+     "raw": "Train",
+     "start": 1.8,
+     "end": 3.0,
+     "conf": 0.59,
+     "source": "BEATs"
+    },
+    {
+     "label": "Fixed-wing aircraft, airplane",
+     "family": "Aircraft",
+     "raw": "Fixed-wing aircraft, airplane",
+     "start": 6.9,
+     "end": 8.8,
+     "conf": 0.7,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -13.4,
+    "motion": 24.92,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a043",
+   "segment_id": "uR0W234PpW4_17000",
+   "youtube_id": "uR0W234PpW4",
+   "start": 17.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Hubbub, speech noise, speech babble",
+     "onset": 0.0,
+     "offset": 9.564
+    },
+    {
+     "name": "Wind noise (microphone)",
+     "onset": 0.554,
+     "offset": 1.488
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.013,
+     "offset": 1.488
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 2.743,
+     "offset": 4.494
+    },
+    {
+     "name": "Hoot",
+     "onset": 3.608,
+     "offset": 3.751
+    },
+    {
+     "name": "Hoot",
+     "onset": 4.083,
+     "offset": 4.231
+    },
+    {
+     "name": "Hoot",
+     "onset": 4.584,
+     "offset": 4.748
+    },
+    {
+     "name": "Laughter",
+     "onset": 4.69,
+     "offset": 5.307
+    },
+    {
+     "name": "Hoot",
+     "onset": 5.096,
+     "offset": 5.206
+    },
+    {
+     "name": "Run",
+     "onset": 5.412,
+     "offset": 6.356
+    },
+    {
+     "name": "Child speech, kid speaking",
+     "onset": 5.481,
+     "offset": 5.755
+    },
+    {
+     "name": "Hoot",
+     "onset": 6.325,
+     "offset": 6.968
+    },
+    {
+     "name": "Laughter",
+     "onset": 6.694,
+     "offset": 7.29
+    },
+    {
+     "name": "Bleat",
+     "onset": 8.066,
+     "offset": 8.572
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 8.34,
+     "offset": 9.173
+    },
+    {
+     "name": "Hoot",
+     "onset": 8.82,
+     "offset": 9.358
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 9.226,
+     "offset": 9.384
+    }
+   ],
+   "strong_types": [
+    [
+     "Footsteps"
+    ],
+    [
+     "Hoot"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Sheep"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Children playing"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Children playing",
+     "family": "Children playing",
+     "raw": "Children playing",
+     "start": 8.0,
+     "end": 9.3,
+     "conf": 0.42,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 9.56,
+    "mean_db": -26.7,
+    "motion": 11.78,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a044",
+   "segment_id": "9BXbL0m6iq8_130000",
+   "youtube_id": "9BXbL0m6iq8",
+   "start": 130.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Music",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Tap dance",
+     "onset": 0.341,
+     "offset": 0.486
+    },
+    {
+     "name": "Tap dance",
+     "onset": 0.792,
+     "offset": 1.11
+    },
+    {
+     "name": "Tap dance",
+     "onset": 1.371,
+     "offset": 1.544
+    },
+    {
+     "name": "Tap dance",
+     "onset": 2.001,
+     "offset": 2.198
+    },
+    {
+     "name": "Tap dance",
+     "onset": 2.545,
+     "offset": 2.747
+    },
+    {
+     "name": "Laughter",
+     "onset": 3.181,
+     "offset": 3.968
+    },
+    {
+     "name": "Tap dance",
+     "onset": 3.187,
+     "offset": 3.378
+    },
+    {
+     "name": "Tap dance",
+     "onset": 3.754,
+     "offset": 3.962
+    },
+    {
+     "name": "Tap dance",
+     "onset": 4.939,
+     "offset": 5.148
+    },
+    {
+     "name": "Tap dance",
+     "onset": 5.408,
+     "offset": 5.604
+    },
+    {
+     "name": "Tap dance",
+     "onset": 5.882,
+     "offset": 6.125
+    },
+    {
+     "name": "Tap dance",
+     "onset": 6.489,
+     "offset": 6.645
+    },
+    {
+     "name": "Tap dance",
+     "onset": 7.12,
+     "offset": 7.322
+    },
+    {
+     "name": "Tap dance",
+     "onset": 7.727,
+     "offset": 7.924
+    },
+    {
+     "name": "Tap dance",
+     "onset": 8.329,
+     "offset": 8.502
+    },
+    {
+     "name": "Clapping",
+     "onset": 8.913,
+     "offset": 9.104
+    },
+    {
+     "name": "Clapping",
+     "onset": 9.572,
+     "offset": 9.884
+    }
+   ],
+   "strong_types": [
+    [
+     "Clapping"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Tap dance"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Thunk"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Thunk",
+     "family": "Thunk",
+     "raw": "Thunk",
+     "start": 2.2,
+     "end": 6.0,
+     "conf": 0.7,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -29.8,
+    "motion": 22.73,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a045",
+   "segment_id": "SXRFLZqVm6Q_30000",
+   "youtube_id": "SXRFLZqVm6Q",
+   "start": 30.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Speech",
+     "onset": 0.0,
+     "offset": 0.312
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 0.0,
+     "offset": 0.319
+    },
+    {
+     "name": "Engine",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Vehicle",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Speech",
+     "onset": 2.064,
+     "offset": 2.478
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 2.071,
+     "offset": 2.505
+    },
+    {
+     "name": "Liquid",
+     "onset": 3.761,
+     "offset": 6.626
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 3.985,
+     "offset": 4.589
+    },
+    {
+     "name": "Speech",
+     "onset": 4.012,
+     "offset": 4.576
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 4.908,
+     "offset": 6.633
+    },
+    {
+     "name": "Speech",
+     "onset": 4.936,
+     "offset": 6.592
+    },
+    {
+     "name": "Laughter",
+     "onset": 6.538,
+     "offset": 8.52
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 6.952,
+     "offset": 8.432
+    },
+    {
+     "name": "Speech",
+     "onset": 6.972,
+     "offset": 8.398
+    },
+    {
+     "name": "Speech",
+     "onset": 9.572,
+     "offset": 10.0
+    },
+    {
+     "name": "Female speech, woman speaking",
+     "onset": 9.586,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Laughter"
+    ],
+    [
+     "Vehicle"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Vehicle"
+    ],
+    [
+     "Whimper"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 0.0,
+     "end": 2.0,
+     "conf": 0.53,
+     "source": "BEATs"
+    },
+    {
+     "label": "Whimper",
+     "family": "Whimper",
+     "raw": "Whimper",
+     "start": 7.2,
+     "end": 8.2,
+     "conf": 0.45,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -15.1,
+    "motion": 42.04,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a046",
+   "segment_id": "KnzKguXRJ-4_30000",
+   "youtube_id": "KnzKguXRJ-4",
+   "start": 30.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Boat, Water vehicle",
+     "onset": 0.008,
+     "offset": 10.0
+    },
+    {
+     "name": "Rowboat, canoe, kayak",
+     "onset": 0.016,
+     "offset": 10.0
+    },
+    {
+     "name": "Liquid",
+     "onset": 0.024,
+     "offset": 10.0
+    },
+    {
+     "name": "Gurgling, bubbling",
+     "onset": 7.756,
+     "offset": 10.0
+    }
+   ],
+   "strong_types": [
+    [
+     "Boat"
+    ],
+    [
+     "Gurgling, bubbling"
+    ],
+    [
+     "Rowboat, canoe, kayak"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 2,
+   "beats_sounds": [
+    [
+     "Boat"
+    ],
+    [
+     "Rowboat, canoe, kayak",
+     "Vehicle"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Boat, Water vehicle",
+     "family": "Boat",
+     "raw": "Boat, Water vehicle",
+     "start": 0.1,
+     "end": 8.2,
+     "conf": 0.55,
+     "source": "BEATs"
+    },
+    {
+     "label": "Vehicle",
+     "family": "Vehicle",
+     "raw": "Vehicle",
+     "start": 0.2,
+     "end": 8.2,
+     "conf": 0.37,
+     "source": "BEATs"
+    },
+    {
+     "label": "Rowboat, canoe, kayak",
+     "family": "Rowboat, canoe, kayak",
+     "raw": "Rowboat, canoe, kayak",
+     "start": 1.2,
+     "end": 4.2,
+     "conf": 0.41,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -14.2,
+    "motion": 32.89,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a047",
+   "segment_id": "aQ4bJmSyPfg_0",
+   "youtube_id": "aQ4bJmSyPfg",
+   "start": 0.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Splash, splatter",
+     "onset": 0.0,
+     "offset": 0.417
+    },
+    {
+     "name": "Water",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Insect",
+     "onset": 0.008,
+     "offset": 10.0
+    },
+    {
+     "name": "Outside, rural or natural",
+     "onset": 0.008,
+     "offset": 10.0
+    },
+    {
+     "name": "Laughter",
+     "onset": 0.409,
+     "offset": 0.803
+    },
+    {
+     "name": "Speech",
+     "onset": 0.457,
+     "offset": 0.701
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 1.087,
+     "offset": 2.244
+    },
+    {
+     "name": "Laughter",
+     "onset": 1.535,
+     "offset": 1.772
+    },
+    {
+     "name": "Laughter",
+     "onset": 2.142,
+     "offset": 3.346
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 4.63,
+     "offset": 5.756
+    },
+    {
+     "name": "Speech",
+     "onset": 5.055,
+     "offset": 5.866
+    },
+    {
+     "name": "Laughter",
+     "onset": 5.346,
+     "offset": 6.614
+    },
+    {
+     "name": "Speech",
+     "onset": 7.315,
+     "offset": 7.63
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 7.528,
+     "offset": 8.441
+    },
+    {
+     "name": "Splash, splatter",
+     "onset": 8.63,
+     "offset": 8.929
+    }
+   ],
+   "strong_types": [
+    [
+     "Insect"
+    ],
+    [
+     "Laughter"
+    ],
+    [
+     "Splash, splatter"
+    ],
+    [
+     "Water"
+    ]
+   ],
+   "n_strong_types": 4,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Water"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Stream",
+     "family": "Water",
+     "raw": "Stream",
+     "start": 3.8,
+     "end": 4.5,
+     "conf": 0.47,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -28.1,
+    "motion": 37.79,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a048",
+   "segment_id": "3h-9ltE4t9c_420000",
+   "youtube_id": "3h-9ltE4t9c",
+   "start": 420.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Cricket",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Creak",
+     "onset": 2.008,
+     "offset": 2.165
+    },
+    {
+     "name": "Arrow",
+     "onset": 3.937,
+     "offset": 4.079
+    },
+    {
+     "name": "Arrow",
+     "onset": 4.181,
+     "offset": 4.307
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 6.205,
+     "offset": 6.638
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 6.748,
+     "offset": 6.961
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 7.094,
+     "offset": 7.378
+    },
+    {
+     "name": "Chirp, tweet",
+     "onset": 7.606,
+     "offset": 7.921
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 8.402,
+     "offset": 8.496
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 9.197,
+     "offset": 9.331
+    },
+    {
+     "name": "Walk, footsteps",
+     "onset": 9.74,
+     "offset": 9.843
+    }
+   ],
+   "strong_types": [
+    [
+     "Arrow"
+    ],
+    [
+     "Bird"
+    ],
+    [
+     "Cricket"
+    ],
+    [
+     "Door"
+    ],
+    [
+     "Footsteps"
+    ]
+   ],
+   "n_strong_types": 5,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Cricket",
+     "Insect"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Cricket",
+     "family": "Cricket",
+     "raw": "Cricket",
+     "start": 6.0,
+     "end": 8.2,
+     "conf": 0.65,
+     "source": "BEATs"
+    },
+    {
+     "label": "Insect",
+     "family": "Insect",
+     "raw": "Insect",
+     "start": 6.0,
+     "end": 9.8,
+     "conf": 0.8,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.0,
+    "mean_db": -37.9,
+    "motion": 30.27,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a049",
+   "segment_id": "5fzwZ3YnYi8_240000",
+   "youtube_id": "5fzwZ3YnYi8",
+   "start": 240.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Breathing",
+     "onset": 0.0,
+     "offset": 0.102
+    },
+    {
+     "name": "Buzz",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Breathing",
+     "onset": 0.496,
+     "offset": 0.63
+    },
+    {
+     "name": "Breathing",
+     "onset": 0.772,
+     "offset": 1.425
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 1.402,
+     "offset": 1.835
+    },
+    {
+     "name": "Tap",
+     "onset": 2.787,
+     "offset": 3.299
+    },
+    {
+     "name": "Tap",
+     "onset": 3.535,
+     "offset": 3.638
+    },
+    {
+     "name": "Tap",
+     "onset": 3.85,
+     "offset": 4.441
+    },
+    {
+     "name": "Surface contact",
+     "onset": 5.228,
+     "offset": 5.52
+    },
+    {
+     "name": "Tick",
+     "onset": 6.252,
+     "offset": 6.346
+    },
+    {
+     "name": "Breathing",
+     "onset": 6.992,
+     "offset": 8.016
+    },
+    {
+     "name": "Male speech, man speaking",
+     "onset": 8.047,
+     "offset": 9.654
+    },
+    {
+     "name": "Generic impact sounds",
+     "onset": 8.858,
+     "offset": 10.0
+    },
+    {
+     "name": "Tap",
+     "onset": 9.748,
+     "offset": 9.858
+    }
+   ],
+   "strong_types": [
+    [
+     "Buzz"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 1,
+   "beats_sounds": [
+    [
+     "Bee, wasp, etc.",
+     "Fly, housefly",
+     "Insect"
+    ]
+   ],
+   "beats_suggestions": [
+    {
+     "label": "Bee, wasp, etc.",
+     "family": "Bee, wasp, etc.",
+     "raw": "Bee, wasp, etc.",
+     "start": 1.2,
+     "end": 3.8,
+     "conf": 0.9,
+     "source": "BEATs"
+    },
+    {
+     "label": "Fly, housefly",
+     "family": "Fly, housefly",
+     "raw": "Fly, housefly",
+     "start": 1.2,
+     "end": 4.2,
+     "conf": 0.68,
+     "source": "BEATs"
+    },
+    {
+     "label": "Insect",
+     "family": "Insect",
+     "raw": "Insect",
+     "start": 1.2,
+     "end": 4.2,
+     "conf": 0.8,
+     "source": "BEATs"
+    },
+    {
+     "label": "Fly, housefly",
+     "family": "Fly, housefly",
+     "raw": "Fly, housefly",
+     "start": 7.0,
+     "end": 8.5,
+     "conf": 0.43,
+     "source": "BEATs"
+    },
+    {
+     "label": "Insect",
+     "family": "Insect",
+     "raw": "Insect",
+     "start": 7.0,
+     "end": 8.5,
+     "conf": 0.41,
+     "source": "BEATs"
+    },
+    {
+     "label": "Bee, wasp, etc.",
+     "family": "Bee, wasp, etc.",
+     "raw": "Bee, wasp, etc.",
+     "start": 8.0,
+     "end": 8.5,
+     "conf": 0.48,
+     "source": "BEATs"
+    }
+   ],
+   "qc": {
+    "duration": 10.01,
+    "mean_db": -24.9,
+    "motion": 84.78,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  },
+  {
+   "clip": "a050",
+   "segment_id": "cy7yYRlsmwA_30000",
+   "youtube_id": "cy7yYRlsmwA",
+   "start": 30.0,
+   "selected_in": "fill",
+   "striking": false,
+   "striking_events": [],
+   "strong_events": [
+    {
+     "name": "Raindrop",
+     "onset": 0.0,
+     "offset": 4.091
+    },
+    {
+     "name": "Mechanisms",
+     "onset": 0.0,
+     "offset": 10.0
+    },
+    {
+     "name": "Tick",
+     "onset": 1.866,
+     "offset": 1.937
+    },
+    {
+     "name": "Tick",
+     "onset": 2.496,
+     "offset": 2.575
+    },
+    {
+     "name": "Raindrop",
+     "onset": 4.633,
+     "offset": 5.12
+    },
+    {
+     "name": "Raindrop",
+     "onset": 5.505,
+     "offset": 5.971
+    },
+    {
+     "name": "Tap",
+     "onset": 6.486,
+     "offset": 6.61
+    },
+    {
+     "name": "Raindrop",
+     "onset": 7.433,
+     "offset": 7.818
+    },
+    {
+     "name": "Tick",
+     "onset": 8.882,
+     "offset": 9.008
+    },
+    {
+     "name": "Tick",
+     "onset": 9.181,
+     "offset": 9.307
+    },
+    {
+     "name": "Raindrop",
+     "onset": 9.54,
+     "offset": 9.849
+    }
+   ],
+   "strong_types": [
+    [
+     "Rain"
+    ],
+    [
+     "Tap"
+    ],
+    [
+     "Tick"
+    ]
+   ],
+   "n_strong_types": 3,
+   "n_sounds": 0,
+   "beats_sounds": [],
+   "beats_suggestions": [],
+   "qc": {
+    "duration": 10.03,
+    "mean_db": -41.5,
+    "motion": 43.74,
+    "static_frac": 0.0,
+    "codecs": {
+     "video": "h264",
+     "audio": "aac"
+    }
+   }
+  }
+ ],
+ "skipped": [
+  {
+   "segment_id": "vQHKa69Mkzo_420000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: [youtube] vQHKa69Mkzo: Video unavailable"
+  },
+  {
+   "segment_id": "EaBRGh2s0rU_30000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: [youtube] EaBRGh2s0rU: This video is unavailable"
+  },
+  {
+   "segment_id": "w1Q0f1HbzgI_4000",
+   "pass": "striking",
+   "reason": "BLOCKED: ERROR: [youtube] w1Q0f1HbzgI: Sign in to confirm you’re not a bot. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dl"
+  },
+  {
+   "segment_id": "RN-_agT8_Cg_0",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: [youtube] RN-_agT8_Cg: Private video"
+  },
+  {
+   "segment_id": "EibjrMy1TtI_30000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: ffmpeg exited with code 1"
+  },
+  {
+   "segment_id": "ywT8FDcHlvU_140000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: ffmpeg exited with code 1"
+  },
+  {
+   "segment_id": "5XYhqCIk15Y_3000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: [youtube] 5XYhqCIk15Y: This video has been removed for violating YouTube's Terms of Service"
+  },
+  {
+   "segment_id": "m4LZQbH5tsc_360000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: [youtube] m4LZQbH5tsc: Video unavailable"
+  },
+  {
+   "segment_id": "Uj-OBIGK240_440000",
+   "pass": "striking",
+   "reason": "unavailable: ERROR: [youtube] Uj-OBIGK240: Please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how"
+  },
+  {
+   "segment_id": "_xMMWHVbjGk_30000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] _xMMWHVbjGk: This video is not available"
+  },
+  {
+   "segment_id": "LAioE289jR4_80000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] LAioE289jR4: This video is not available"
+  },
+  {
+   "segment_id": "D_QEW1Lnl2Q_30000",
+   "pass": "fill",
+   "reason": "silent (mean -50.0 dB)"
+  },
+  {
+   "segment_id": "qlDYIPHzfRM_50000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] qlDYIPHzfRM: Private video"
+  },
+  {
+   "segment_id": "zOfThlg_c7M_300000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] zOfThlg_c7M: Please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how"
+  },
+  {
+   "segment_id": "sGRQHO6LXtk_9000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] sGRQHO6LXtk: Private video"
+  },
+  {
+   "segment_id": "DxyzoMkz24I_150000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] DxyzoMkz24I: This video is not available"
+  },
+  {
+   "segment_id": "cGzNyfp3mW4_30000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] cGzNyfp3mW4: Video unavailable"
+  },
+  {
+   "segment_id": "rpxgZXOkr1A_30000",
+   "pass": "fill",
+   "reason": "silent (mean -45.3 dB)"
+  },
+  {
+   "segment_id": "w1QTsJn1z-g_40000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] w1QTsJn1z-g: Please sign in. Use --cookies-from-browser or --cookies for the authentication. See  https://github.com/yt-dlp/yt-dlp/wiki/FAQ#how"
+  },
+  {
+   "segment_id": "HKTpZBmsIgs_30000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] HKTpZBmsIgs: This video is not available"
+  },
+  {
+   "segment_id": "-fmmdkXn5YA_210000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] -fmmdkXn5YA: Private video"
+  },
+  {
+   "segment_id": "7Cg5tp9oQ6Y_30000",
+   "pass": "fill",
+   "reason": "unavailable: ERROR: [youtube] 7Cg5tp9oQ6Y: This video is unavailable"
+  }
+ ],
+ "a001.mp4": {
+  "tagger_clip": "d101.mp4"
+ },
+ "a002.mp4": {
+  "tagger_clip": "d102.mp4"
+ },
+ "a003.mp4": {
+  "tagger_clip": "d103.mp4"
+ },
+ "a004.mp4": {
+  "tagger_clip": "d104.mp4"
+ },
+ "a005.mp4": {
+  "tagger_clip": "d105.mp4"
+ },
+ "a006.mp4": {
+  "tagger_clip": "d106.mp4"
+ },
+ "a007.mp4": {
+  "tagger_clip": "d107.mp4"
+ },
+ "a008.mp4": {
+  "tagger_clip": "d108.mp4"
+ },
+ "a009.mp4": {
+  "tagger_clip": "d109.mp4"
+ },
+ "a010.mp4": {
+  "tagger_clip": "d110.mp4"
+ },
+ "a011.mp4": {
+  "tagger_clip": "d111.mp4"
+ },
+ "a012.mp4": {
+  "tagger_clip": "d112.mp4"
+ },
+ "a013.mp4": {
+  "tagger_clip": "d113.mp4"
+ },
+ "a014.mp4": {
+  "tagger_clip": "d114.mp4"
+ },
+ "a015.mp4": {
+  "tagger_clip": "d115.mp4"
+ },
+ "a016.mp4": {
+  "tagger_clip": "d116.mp4"
+ },
+ "a017.mp4": {
+  "tagger_clip": "d117.mp4"
+ },
+ "a018.mp4": {
+  "tagger_clip": "d118.mp4"
+ },
+ "a019.mp4": {
+  "tagger_clip": "d119.mp4"
+ },
+ "a020.mp4": {
+  "tagger_clip": "d120.mp4"
+ },
+ "a021.mp4": {
+  "tagger_clip": "d121.mp4"
+ },
+ "a022.mp4": {
+  "tagger_clip": "d122.mp4"
+ },
+ "a023.mp4": {
+  "tagger_clip": "d123.mp4"
+ },
+ "a024.mp4": {
+  "tagger_clip": "d124.mp4"
+ },
+ "a025.mp4": {
+  "tagger_clip": "d125.mp4"
+ },
+ "a026.mp4": {
+  "tagger_clip": "d126.mp4"
+ },
+ "a027.mp4": {
+  "tagger_clip": "d127.mp4"
+ },
+ "a028.mp4": {
+  "tagger_clip": "d128.mp4"
+ },
+ "a029.mp4": {
+  "tagger_clip": "d129.mp4"
+ },
+ "a030.mp4": {
+  "tagger_clip": "d130.mp4"
+ },
+ "a031.mp4": {
+  "tagger_clip": "d131.mp4"
+ },
+ "a032.mp4": {
+  "tagger_clip": "d132.mp4"
+ },
+ "a033.mp4": {
+  "tagger_clip": "d133.mp4"
+ },
+ "a034.mp4": {
+  "tagger_clip": "d134.mp4"
+ },
+ "a035.mp4": {
+  "tagger_clip": "d135.mp4"
+ },
+ "a036.mp4": {
+  "tagger_clip": "d136.mp4"
+ },
+ "a037.mp4": {
+  "tagger_clip": "d137.mp4"
+ },
+ "a038.mp4": {
+  "tagger_clip": "d138.mp4"
+ },
+ "a039.mp4": {
+  "tagger_clip": "d139.mp4"
+ },
+ "a040.mp4": {
+  "tagger_clip": "d140.mp4"
+ },
+ "a041.mp4": {
+  "tagger_clip": "d141.mp4"
+ },
+ "a042.mp4": {
+  "tagger_clip": "d142.mp4"
+ },
+ "a043.mp4": {
+  "tagger_clip": "d143.mp4"
+ },
+ "a044.mp4": {
+  "tagger_clip": "d144.mp4"
+ },
+ "a045.mp4": {
+  "tagger_clip": "d145.mp4"
+ },
+ "a046.mp4": {
+  "tagger_clip": "d146.mp4"
+ },
+ "a047.mp4": {
+  "tagger_clip": "d147.mp4"
+ },
+ "a048.mp4": {
+  "tagger_clip": "d148.mp4"
+ },
+ "a049.mp4": {
+  "tagger_clip": "d149.mp4"
+ },
+ "a050.mp4": {
+  "tagger_clip": "d150.mp4"
+ }
+}
