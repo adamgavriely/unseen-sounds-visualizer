@@ -25,3 +25,12 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
    The strong labels stay private (`benchmark/gold/tagger_audioset_sources.json`) and are used only to check Adam's
    tagging quality, never shown in the tool.
 3. Web and AudioSet clips are interleaved when numbered, so the names don't reveal the source.
+
+## Amendment 1 (Adam, 2026-09-30 00:40 UTC, before any new clip is in the tool)
+"I don't want street scene preference. Use the AudioSet-Strong sets, videos I did not use already, with 3+ sounds."
+- New clips come from **AudioSet-Strong only** (point 2); the web sourcing (point 1) is stopped and none of its clips
+  go into the tool.
+- Eligible AudioSet clips need **>= 3** distinct depictable non-speech, non-music strong-labelled event types (grouped
+  with `labels.same_source`), plus BEATs n_sounds >= 2 as before. Same pool, exclusions, seed and order; the fresh set
+  stays untouched.
+- Target: 53 clips (a001–a053), so the tool lists 100. `tagger_refresh.py` uses MAX_AUDIOSET = 53 and no web clips.
