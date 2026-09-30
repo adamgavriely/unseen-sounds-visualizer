@@ -1369,3 +1369,7 @@ Three of the nine visible wrong pictures are one-yes splits on a plainly active 
   iff 0 current hits lost and wrong ≤ 31 (≥ 2 of the 3 reachable pictures gone, cost < 2.620). Otherwise report-only, and
   the gate group is closed for this round: the miss side is at the frame ceiling, the wrong side is 4 "obvious" scene
   sounds (no object to see) + 3 splits + 1 label mismatch + 1 annotation-level bell.
+- **OM result (`onset_motion_screen.json`, K = 3):** 16 pictures have a one-yes stretch; only the fire-alarm's second
+  stretch (14.32–19.75, ratio 4.8 — a camera whip-pan) flips to seen, and its first stretch (8.89–14.32, zero yes) keeps the
+  picture; the Water and Laughter splits sit at ratio 0.8–1.0 (a splash or a laugh does not move the frame). 25 / 33 / 2.620 =
+  base, nothing dropped → **STOP**. Gate group closed for round 31 (both ideas report-only, no arm run, no TEST read).
