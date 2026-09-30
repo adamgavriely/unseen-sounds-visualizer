@@ -925,3 +925,10 @@ gold-free (not scored) in case he wants a descriptive read, which would be a sec
 - **N2c (exploratory, written before its number):** N2b without the masking condition — every weak (conf < 0.5) BEATs-only
   span without a FlexSED twin needs either listener (Qwen P1 rule or AF V4 on the P1 cut) to be kept. Same pass rule vs the
   base TO1+F7F8, and reported vs N2b.
+
+### Round 18 N2c — lowest cost, but fails the rule (loses one needed hit)
+DEV 49 (job 31565819): 18 / 21 (6 / 11 / 4) / 2.33. Merged DEV (job 31565832): **22 hits / 38 wrong (8 / 26 / 4) / 2.930**
+(Δ vs B0r −0.76 [−1.24, −0.34]) vs base 23 / 48 / 3.155 and N2b 23 / 44 / 3.042; tagger DEV part 4 / 17 (one needed hit
+lost). Fails the pre-set rule. Note for Adam: it is the cheapest arm on merged DEV (10 fewer wrong pictures for one hit) —
+a "fewer false pictures" setting if he prefers precision; DEV-only, TEST spent.
+N2b on the tagger TEST part and old TEST: stage 4/5 built gold-free (job 31565818, D0 56/56, D5 28/28; old TEST gates pass).
