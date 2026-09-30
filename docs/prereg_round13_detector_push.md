@@ -1453,3 +1453,8 @@ general rules on this data.
   shipped-accepted rescue candidates: 5 needed lost, 30 other removed → **GO** (≥ 3×). Arm SHIP5+FLAP: a rescued span whose
   family's FineLAP max over the span < 0.329 is dropped (family not queried → kept). Combined rule vs SHIP5. Risk noted:
   FineLAP is weak on laugh families (4 of 5 losses).
+  Smoke note (15 items, no gold read): GROUND answers "from 1.004s to 1.801s"; "from 0.000s to 0.000s" (the model's
+  "none") and any b ≤ a count as no interval. Written before the full run's screen.
+- **RPT-S arm (merged DEV):** 24/55, 31 (10/18/3), cost 2.620 — at stage 4 it removed an old-DEV hit the screen kept (the
+  screen saw placed pictures only). Cost not lower → **fail**.
+- **PMC arm:** identical to SHIP5 (25/33/2.620): the four sub-0.40 spans do not reach stage 5 pictures at 0.35 either. No-op.
