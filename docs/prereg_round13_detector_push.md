@@ -1143,3 +1143,6 @@ no needed hit lost on either part.
 DEV 49 (job 31595098): 18 / 18 (6 / 9 / 3) / 2.20 vs base 18 / 20 / 2.29. Merged DEV (job 31595099): **24 hits / 34 wrong
 (9 / 22 / 3) / 2.704** vs base 24 / 41 / 2.901; no needed hit lost on either part (old DEV 18 / 18, tagger DEV 6 / 16).
 Merged into `use_shipped()`; TEST read 5 prepared and reported below.
+**DV (shipped TO1+F7F8 + N2b + DR2 + K-V4 + DV) on the merged TEST (fifth read, reported; `final_test_dv.{json,md}`):**
+23 hits / 34 wrong (3 / 25 / 6) / **2.682** vs B0r 21 / 40 / 2.909, Δ −0.227 [−0.500, +0.023], p 0.051 → "same". Lowest TEST
+cost of all reads; versus read 4 (K-V4) −2 wrong, same hits: DV's DEV gain shows on TEST too.
