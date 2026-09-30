@@ -779,3 +779,22 @@ d104, d105, d106, d109, d110, d112, d141, d146 (10; 10 needed). Totals: DEV2 22,
 Disclosure: Adam saw BEATs-only suggestions and/or the clips' AudioSet-Strong labels ("other annotators' tags") while
 tagging most of these clips (`suggestions_shown_at`, `annotators_shown_at`, `from_annotators`), so this batch's gold is
 anchored partly on AudioSet-Strong; clips are eval split (DASM's checkpoint was picked on that split).
+
+## Round 16 — night arms on merged DEV (Adam asleep, 2026-09-30; Fable night plan; written BEFORE any merged-DEV number)
+Base = **TO1+F7F8**. Pass rule for every arm, on merged DEV (DEV 49 + tagger DEV 22): hits ≥ base hits, wrong ≤ base wrong +
+2 × hits gained, cost < base cost, AND no needed hit lost on either part (old 49 / tagger 22) separately; each arm also
+reported on the tagger part alone (a win only on the old 49 is "not confirmed"). Arms that pass are stacked in order of
+merged cost and the stack is scored once. These arms are never added to the frozen 8-candidate merged-DEV pick.
+- **N1 scene fit on all pictures** (`SCENE_FIT_ALL`): the F3 prompt ("Could the sound of {X} plausibly be heard in this
+  scene? Answer yes or no.", gate VLM, gate frames, majority of stretches) asked for EVERY drawn sound, not only rescued ones;
+  "no" → silent. Extra pass condition: wrong ≤ base − 2.
+- **N2 masked weak BEATs** (`MASKED_WEAK_VETO`): a BEATs-origin span with conf < 0.5 AND BEATs Speech or Music ≥ 0.3 at some
+  frame inside it is dropped unless its FlexSED twin is ≥ 0.8 or the listener accepts it (F7's P1 keep rule). Constants from
+  the 280/415 phantom audit, not DEV. Extra pass condition: wrong ≤ base − 3.
+- **N3 third listener, 2-of-3** (`LISTENER_RULE` "TIER3"): a third open-inventory audio LLM (Kimi-Audio-7B-Instruct, official
+  weights, if the HF id resolves; same V4 prompt and matching) on the same P2/PV cuts; high tier (peak ≥ 0.6): ≥ 2 of
+  {Qwen, AF-Next, Kimi} name the family; low tier: all 3.
+- **N4 DASM rank readout** (F8 variant): the family is among DASM's top-3 of the 215 queries at some frame in span ± 0.5 s
+  (instead of ≥ 0.575).
+- **N5 audio-visual gate vote** (DenseAV, if the official weights load): stretch "seen" only if the shipped majority says
+  seen AND DenseAV grounds the stretch audio in the frames; screen and GO bar as amendment M.
