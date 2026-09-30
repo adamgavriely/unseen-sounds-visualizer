@@ -32,6 +32,13 @@ from benchmark.gold import score_per_sound as S
 _REAL_LOAD_GOLD = S.load_gold
 G = _ROOT / "benchmark" / "gold"
 OUT, STARTED, MD = G / "final_test.json", G / "final_test.json.started", G / "final_test.md"
+
+
+def set_tag(tag):
+    """a later, separately recorded TEST read (Adam 30 Sept 07:50: every new DEV best is also reported on TEST)"""
+    global OUT, STARTED, MD
+    if tag:
+        OUT, STARTED, MD = G / f"final_test_{tag}.json", G / f"final_test_{tag}.json.started", G / f"final_test_{tag}.md"
 WORKD = _ROOT / "data" / "work"
 DASM_TEST = WORKD / "dasm_test"
 CMAP = [f"dev_listener_v.json={G / 'test_listener_v.json'}", f"dev_listener_afn.json={G / 'test_listener_afn.json'}",
@@ -145,7 +152,9 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=("dasm", "stage", "score"))
     ap.add_argument("--arm", default="TO1+F7F8")
+    ap.add_argument("--tag", default=None, help="record a later TEST read in final_test_<tag>.json (reported, not selected on)")
     a = ap.parse_args()
+    set_tag(a.tag)
     {"dasm": dasm, "stage": lambda: stage(a.arm), "score": lambda: score(a.arm)}[a.step]()
 
 

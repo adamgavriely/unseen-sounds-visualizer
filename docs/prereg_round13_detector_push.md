@@ -977,3 +977,20 @@ no TEST check (thesis disclosure as written above, "ships as an opt-in" → "shi
 - **DR2 (DASM third ear, new families only):** as DR, but a confirmed P4 run is added only if its family has no stage-4 span
   anywhere in the clip (DR's failure: a DASM run of an already-present family came first and ONCE then dropped the later hit).
   Pass rule vs the base: hits ≥ 23, wrong ≤ 44 + 2 × gain, cost < 3.042, no needed hit lost on either part.
+
+### TEST reads of later bests (Adam, 2026-09-30 07:50 UTC: "it is winning on dev so its better but need to also check test.
+to report the stats")
+Each new shipped best is also scored on the merged TEST and REPORTED (`final_test.py score --tag <name>`, its own record
+file). These are later TEST reads made after selection on DEV; they are reported, never used to choose between arms, and the
+thesis must state how many TEST reads were made. First: N2b (tag n2b).
+**N2b on the merged TEST (second TEST read, reported; `benchmark/gold/final_test_n2b.{json,md}`):**
+
+| arm | hits | misses | wrong (v / c / p) | cost | old TEST hits / wrong | tagger TEST hits / wrong |
+|---|---|---|---|---|---|---|
+| B0r | 21 | 44 | 40 (2 / 31 / 7) | 2.909 | 16 / 25 | 5 / 15 |
+| TO1+F7F8 (first read) | 22 | 43 | 38 (2 / 30 / 6) | 2.818 | 16 / 25 | 6 / 13 |
+| **TO1+F7F8 + N2b (shipped)** | **22** | **43** | **35 (3 / 27 / 5)** | **2.750** | 16 / 24 | 6 / 11 |
+
+Δ cost vs B0r −0.159 [−0.341, +0.000], one-sided p 0.031 → "better" under the prereg rule (hits not lower, wrong −5, p <
+0.05). Caveat for the thesis: this is the second TEST read, made after N2b was chosen on DEV; with two reads a Holm/Bonferroni
+correction (α 0.025) would make p 0.031 not significant.
