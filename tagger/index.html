@@ -54,6 +54,7 @@
         <span class="hint">Click a row to select it; the Set start / Set end buttons fill the selected row.</span>
       </div>
       <div id="suggestBox" class="suggest" hidden></div>
+      <div id="annotBox" class="suggest" hidden></div>
       <label class="check"><input type="checkbox" id="noSounds"> No sounds in this clip besides speech or music</label>
       <label class="check danger"><input type="checkbox" id="bad"> This video is broken or cannot be tagged (explain in the comment)</label>
       <textarea id="note" placeholder="Comment (optional): anything unclear, a sound you could not name, a problem with the video"></textarea>
@@ -142,6 +143,11 @@
       <li>Suggestions come from a computer and are often wrong or missing sounds. Check each one by ear (▶ play). <b>Add as a row</b> copies only the name and times; you still answer visible, obvious and importance yourself, and fix the times if needed.</li>
     </ul>
 
+    <h3>Other annotators' tags (some clips)</h3>
+    <ul>
+      <li>Some clips also have a button <b>Show other annotators' tags</b>: sounds other people tagged in this clip. Same use as the detector suggestions: tag by ear first, then check. Their times can differ from yours, they may miss sounds, and they also list background noise you do not need to tag.</li>
+    </ul>
+
     <h3>Examples</h3>
     <div class="ex">
       <p><b>Example 1 — street walk, 18 s.</b> The camera walks down a busy street. Cars pass in view all the time. At 4 s a scooter horn beeps; no scooter in view. From 11 s a siren gets louder; no ambulance appears. People talk.</p>
@@ -186,6 +192,7 @@
 <script src="src/clips.js"></script>
 <script src="src/vocab.js"></script>
 <script src="src/suggest.js"></script>
+<script src="src/annot.js"></script>
 <script src="src/app.js"></script>
 </body>
 </html>
