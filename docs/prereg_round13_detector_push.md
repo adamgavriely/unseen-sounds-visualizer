@@ -1301,3 +1301,31 @@ Reported only, not judged: the same rule with the BEATs family column in place o
   (`REPEAT_NEEDS_SILENCE` 0.5, stage 4 after BTP).
 - **PMC (written before its number):** 4 heard misses sit just under the picture floor PICTURE_MIN_CONF 0.40 (0.22–0.37).
   One value, not a sweep: floor = DISPLAY_THRESHOLD 0.35 (the pipeline's own display bar). Arm SHIP5+PMC; combined rule.
+
+## Round 31 PTC — peak-tight cut for both ears (Fable, hit group; written 2026-09-30 BEFORE any PTC answer exists)
+**Group (HIT side, 11 heard misses of SHIP5 on merged DEV, `scratchpad weak_trace`).** Both listeners no (6): as_explosion
+Footsteps 2.1 (8 dB under the explosions; Qwen V12 yes, Kimi yes), Gasp 6.7 (0.2 s long; V12 yes), carnival Whistle 6.1
+(under music; Qwen hears "train wheels squealing", AF "squeal"; V12 yes), tg_d032 Thunder 2.8 and 7.4 (all five ears say
+wind / ocean waves; DASM 0.01 — treated as closed), tg_d033 Siren 0.0 (10-s Alarm run; Qwen says "Breathing, Footsteps" on
+the 0–11 s cut but "Siren" first on the 0–2.8 s Printer cut of the same clip). Never asked (3): rainforest_2179 Bird 6.5
+(FlexSED 0.44 < LO 0.5, −40 dB), storm Civil defense siren 16.9 (FlexSED 0.42 < LO, 4 dB under screaming), tg_d095 Dishes 16.6
+(FlexSED 0.31, no P2 run). One listener (2): nyc Air horn 3.8 and tg_d107 Laughter 8.4 — both peak ≥ 0.6 (Qwen-only tier),
+AF V4 yes ("car horn", "laughing"), Qwen V4 no ("Door closing", "Squeak"). Newer ear not reachable this round: every cached
+audio-LLM lineage has been asked, Gemma-4-31B-it has `audio_config: null`, home disk 27 GB free.
+**Mechanism.** Qwen V4 names 2–3 sounds and stops (the rest of the 64 tokens is post-EOS noise: "wise wise", "Assistant");
+on a long cut the loudest 2–3 sounds crowd the candidate out. The listener cut is [run − 1, run + 1] s; runs < 1 s already get a
+1-s window centred on the peak frame (3 s of audio), runs ≥ 1 s get the whole run. Merged-DEV P2/PV candidates with a cut
+longer than 4 s: DEV 162 / 602, tagger DEV 100 / 402 (counts only; no class split seen).
+**Rule PTC.** For every P2/PV candidate whose listener cut is longer than 4 s, both ears — Qwen3-Omni V4 and Audio Flamingo
+Next V4, same prompt, greedy decoding, 64 tokens, same matcher — are asked again on a 3-s window centred on the family's
+FlexSED peak frame inside [start, end] (`data/work/flexsed_cache/<clip>.npz`, the item's own query column; PV items: the
+vetoed span's own start/end; no column → the span midpoint; clipped to the clip, shifted to keep 3 s). Each ear's flag
+becomes original OR tight (no accept can be lost). Arm (only on GO): SHIP5 with TIER on the OR'ed flags.
+**Screen (candidate level, merged DEV, as `v4d_screen.py`; `benchmark/gold/ptc_screen.py`).** added = `_tier(OR flags,
+peak)` true and `_tier(original flags, peak)` false, class by `gold_class` (hit_needed vs other). **GO iff needed-class added
+≥ 2 AND other-class added ≤ 2 × needed-class added.** Reported beside, not decisive: per-leg additions (Qwen-only, AF-only);
+of the needed-class additions, how many have DASM ≥ 0.575 within ± 0.5 s (F8's ceiling at arm level). If STOP, a second
+idea is written here before its number. Files: `listener_ptc.py`, `slurm/job_ptc.sh`, `dev{,2}_listener_ptc.json`.
+  Faithful stage-4 reading (every burst of a spec tested, surviving bursts re-placed through `_display_spans`; `CONT-rows`
+  in `cont_screen.json`): identical, 24/55, 28 (9/17/2), 2.535, same hit lost. The screen reads the raw FlexSED cache
+  columns (no per-family rescale), the same shortcut the BTP screen used, which its arm then matched exactly.

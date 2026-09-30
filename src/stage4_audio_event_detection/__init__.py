@@ -917,6 +917,26 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 gone.append(e)
         events = [e for e in events if e not in gone]
         print(f"       [stage4] RPT-S ({rps}): dropped {len(gone)} repeat span(s)", flush=True)
+    cv = getattr(config, "CONTINUATION_VETO", None)
+    if cv and ffw is not None:
+        # round 31 CONT: a span (rescued included) is dropped when a FlexSED run of its family (>= cv, gaps <= LISTEN_RUN_GAP)
+        # starts >= 1.5 s before the span's start and reaches it (a later piece of a sound already going on); spans that
+        # start in the clip's first 1.5 s are exempt
+        fa, ft = np.asarray(ffw), np.asarray(ftimes)
+        gone = []
+        for e in events:
+            if e.start < 1.5:
+                continue
+            hit = False
+            for c in [i for i, lab_ in enumerate(flabels) if canonical(lab_) == canonical(e.label)]:
+                rr, dt = _runs(fa[:, c], ft, float(cv), LISTEN_RUN_GAP)
+                for i, j in rr:
+                    if float(ft[i]) <= e.start - 1.5 and float(ft[j - 1]) + dt >= e.start:
+                        hit = True
+            if hit:
+                gone.append(e)
+        events = [e for e in events if e not in gone]
+        print(f"       [stage4] CONT ({cv}): dropped {len(gone)} continuation span(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
     if veto > 0:
         peak = {}

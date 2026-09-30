@@ -220,6 +220,7 @@ ARMS["SHIP5+N2c"] = {**ARMS["SHIP5"], "MASKED_WEAK_NEED_MASK": False}
 ARMS["SHIP5+DVG"] = {**ARMS["SHIP5"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "both"}
 ARMS["SHIP5+RPTS"] = {**ARMS["SHIP5"], "REPEAT_NEEDS_SILENCE": 0.5}          # round 31 RPT-S
 ARMS["SHIP5+PMC"] = {**ARMS["SHIP5"], "PICTURE_MIN_CONF": 0.35}                 # round 31 PMC: floor = DISPLAY_THRESHOLD
+ARMS["SHIP5+CONT"] = {**ARMS["SHIP5"], "CONTINUATION_VETO": 0.5}             # round 31 CONT
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
