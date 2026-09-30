@@ -43,7 +43,7 @@ WORKD = _ROOT / "data" / "work"
 DASM_TEST = WORKD / "dasm_test"
 CMAP = [f"dev_listener_v.json={G / 'test_listener_v.json'}", f"dev_listener_afn.json={G / 'test_listener_afn.json'}",
         f"dev_listener_kimi.json={G / 'test_listener_kimi.json'}", f"dasm_cache={DASM_TEST}",
-        f"dev_listener_p4.json={G / 'test_listener_p4.json'}"]
+        f"dev_listener_p4.json={G / 'test_listener_p4.json'}", f"dev_listener_p1v4.json={G / 'test_listener_p1v4.json'}"]
 
 
 def guard():

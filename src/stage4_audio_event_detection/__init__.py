@@ -296,6 +296,9 @@ def _require_caches(wav_path):
     d = getattr(config, "LISTENER_DASM_DIR", None)
     if getattr(config, "LISTENER_DASM_VOTE", False) and not (d and (Path(d) / f"{clip}.npz").exists()):
         miss.append(f"LISTENER_DASM_DIR (no {clip}.npz)")
+    pv = getattr(config, "RELABEL_P1V4", None)
+    if getattr(config, "KEEP_NEEDS_V4", False) and not (pv and Path(pv).exists()):
+        miss.append("RELABEL_P1V4 (no file)")
     p4 = getattr(config, "DASM_P4_CACHE", None)
     if getattr(config, "DASM_RESCUE", False) and not (p4 and Path(p4).exists()):
         miss.append("DASM_P4_CACHE (no file)")

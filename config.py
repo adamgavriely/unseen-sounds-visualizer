@@ -507,7 +507,10 @@ def use_shipped() -> dict:
                  ("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True),
                  # round 20 DR2 (new DEV best 30 Sept): DASM as a third ear for sound types nothing else found in the clip,
                  # kept only if both audio LLMs name it. Merged DEV 24 / 44 / 2.986. Its P4 answers: set_listener_split
-                 ("DASM_RESCUE", True), ("DASM_RESCUE_NEW_ONLY", True)):
+                 ("DASM_RESCUE", True), ("DASM_RESCUE_NEW_ONLY", True),
+                 # round 21 K-V4 (new DEV best 30 Sept): a disputed BEATs picture (F7 / N2b keep) also needs an open-inventory
+                 # naming by Qwen or Audio Flamingo on its cut. Merged DEV 24 / 41 / 2.901. Its answers: set_listener_split
+                 ("KEEP_NEEDS_V4", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
@@ -536,7 +539,8 @@ def set_listener_split(name: str) -> dict:
     vals = {"LISTENER_CACHE": str(g / f"{name}_listener.json"), "LISTENER_VCACHE": str(g / f"{name}_listener_v.json"),
             "LISTENER_AFCACHE": str(g / f"{name}_listener_afn.json"),
             "LISTENER_DASM_DIR": str(root / "data" / "work" / f"dasm_{name}"),
-            "DASM_P4_CACHE": str(g / f"{name}_listener_p4.json")}
+            "DASM_P4_CACHE": str(g / f"{name}_listener_p4.json"),
+            "RELABEL_P1V4": str(g / f"{name}_listener_p1v4.json")}
     for k, v in vals.items():
         setattr(me, k, v)
     return vals

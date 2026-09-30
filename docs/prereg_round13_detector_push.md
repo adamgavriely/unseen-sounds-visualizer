@@ -1027,3 +1027,8 @@ Pass rule vs the base: hits ≥ 24, wrong ≤ 44 + 2 × gain, cost < 2.986, no n
 (jobs 31593633 / 31593634). Lower cost, but the rule forbids losing a needed hit.
 - **K-V4 (written before its number):** base SHIP2; the F7 and N2b keeps additionally need an open-inventory naming of the
   span's family on its P1 cut (Qwen V4 from `*_listener_p1v4.json` or AF V4). Same pass rule.
+
+### Round 21 K-V4 — PASSES; new shipped best
+DEV 49 (job 31593679): 18 / 20 (6 / 10 / 4) / 2.29. Merged DEV (job 31593680): **24 hits / 41 wrong (9 / 27 / 5) / 2.901** vs
+base SHIP2 24 / 44 / 2.986; no needed hit lost on either part (old DEV 18 / 20, tagger DEV 6 / 21). Merged into
+`use_shipped()`; on-the-spot prep now also builds the P1 open-inventory answers (`listener_p1v4.py`). TEST read 4 prepared.
