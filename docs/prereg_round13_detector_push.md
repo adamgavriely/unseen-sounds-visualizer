@@ -1191,3 +1191,10 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
   the span's family also keeps it (e.g. Aircraft keeps Vehicle). Pre-registered primary: **onto** (K4AO); exact reported.
   Fable's candidate count (seen before the arm, DEV P1 items with gold): 0 of 15 hit_needed items fail the test, 16 non-hit
   items do. Pass rule vs SHIP4 (24/55, 34, 2.704): hits ≥ 24, no needed hit lost on either part, wrong ≤ 34, cost < 2.704.
+- **BTP (band-twin pull; screen on saved SHIP4 pictures, CPU):** a drawn non-rescued picture whose family has a FlexSED run
+  (score ≥ 0.5, `LISTEN_RUN_BAR`) ending ≤ 1.0 s before the picture's start and starting ≤ 1.5 s before it has its start
+  pulled to that run's start (the latest such run). Rescore with score_per_sound on merged DEV. GO to an arm iff 0 current
+  hits lost, hits ≥ 25, wrong ≤ 33.
+- **PIC-SIM (gate picture-vs-frames similarity; screen on gate_gold DEV judge set):** SigLIP-2 image-image cosine between the
+  blind_a2i picture and the gate's stretch frames (max over frames). One pre-set pair: s_hi = 0.80 flips "not seen"→seen,
+  s_lo = 0.30 flips seen→not seen. GO iff seen silenced ≥ 20/43 and needed kept ≥ 31/36.
