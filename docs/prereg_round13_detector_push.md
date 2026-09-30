@@ -1037,3 +1037,21 @@ base SHIP2 24 / 44 / 2.986; no needed hit lost on either part (old DEV 18 / 20, 
 previous shipped version on TEST (read 3: 24 / 37 / 2.705) it is one hit and one wrong picture lower (tagger TEST part 5 / 11 vs
 6 / 12): on TEST, K-V4's DEV gain does not show. TEST reads are reported, not used to choose, so K-V4 stays shipped by the DEV
 rule; the thesis should show all four TEST reads together.
+
+### Statistics of the shipped stack (Fable review; recomputed from saved pictures — no new exposure, no decision)
+`benchmark/gold/stack_stats.{py,json}`; paired clip bootstrap 2000, seed 0.
+
+| step | DEV Δ cost [95 % CI] | TEST Δ cost [95 % CI] |
+|---|---|---|
+| B0r → TO1+F7F8 | −0.535 [−0.958, −0.169] | −0.091 [−0.250, +0.045] |
+| + N2b | −0.113 [−0.225, −0.028] | −0.068 [−0.182, +0.045] |
+| + DR2 | −0.056 [−0.225, +0.056] | −0.045 [−0.250, +0.136] |
+| + K-V4 | −0.085 [−0.197, +0.000] | +0.023 [−0.068, +0.136] |
+| **stack vs B0r** | **−0.789 [−1.268, −0.366]** | **−0.182 [−0.455, +0.068]** |
+
+TEST vs B0r over the four reads (one-sided p → Holm): TO1+F7F8 0.132 → 0.206; +N2b 0.031 → 0.124; +DR2 0.051 → 0.153;
++K-V4 0.103 → 0.206 — none significant after Holm; MDE ≈ 0.19 on 88 clips. Every step points the same way on TEST except
+K-V4 (+0.02, well inside one SE). About a quarter of the DEV gain survives on TEST (winner's curse after ~120 DEV arms).
+Fable: keep K-V4 shipped (reverting to DR2 because of read 3 would be choosing on TEST); stop stacking DEV precision rules —
+TEST wrong pictures are flat since N2b; the only TEST signal is recall (DR2 +2 hits). Primary thesis result = the one
+pre-registered exposure (TO1+F7F8 vs B0r, "same"); reads 2–4 are a labelled secondary table.
