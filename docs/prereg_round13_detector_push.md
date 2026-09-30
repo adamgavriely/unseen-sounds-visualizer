@@ -1743,3 +1743,37 @@ as_glass Glass, crossing_bells Train, ia_youtube Water and Tap — for 5 needed 
 An audio-visual localiser trained on single-source clips answers "does this audio match this image" — on our scenes it
 says yes for the scene-typical off-screen sounds (explosions in a war street, a siren over a storm house) as readily as for
 visible ones; it is not the missing gate signal. Gate group stays closed.
+
+## Round 34 MOSS — MOSS-Audio-8B-Thinking as a listener (SOTA scan; written 2026-09-30 BEFORE any MOSS number)
+The listener rescue (TIER) is at a ceiling with Qwen3-Omni + Audio Flamingo Next; the third-ear tries so far (Kimi-Audio
+N3 / TIER3, Step-Audio, H2 / K3 / PTC / V4D / QE) all stopped. MOSS-Audio-8B-Thinking (OpenMOSS-Team, Jun 2026, Apache-2.0,
+arXiv 2606.01802; Qwen3-8B backbone, explicit time tokens; MMAU / MMAR / MMSU 71.1 vs Qwen3-Omni 67.9) is the current SOTA
+open audio-LLM, so it is screened once in the same seat, the same way.
+- **Model / code.** `OpenMOSS-Team/MOSS-Audio-8B-Thinking` (18.1 GB bf16 safetensors) with the official `src/` code
+  (github.com/OpenMOSS/MOSS-Audio, `MossAudioModel`, `MossAudioProcessor`, `enable_time_marker=True`) in `~/venv_moss`
+  (msproj + transformers 4.57.1, the pinned version; torch 2.5.1 kept). Thinking cannot be switched off for audio requests
+  (official usage guide: audio prompts take the template's shortcut branch), so the Thinking model is used as it is.
+  Fallback (decided before the smoke): if the smoke shows > 40 s per cut or the code does not run in ~1 h of fixing,
+  `MOSS-Audio-8B-Instruct` replaces it and the report says so.
+- **Question.** `benchmark/gold/listener_moss.py` (`slurm/job_listener_moss.sh`): the UNCHANGED V4 question
+  (`listener_variants.V4_Q`, asserted equal) on exactly the `run_audio` cut Qwen V4 and AF V4 heard, for every P2 / PV item
+  of `dev_listener_v.json` (r13) and `dev2_listener_v.json` (tg); the processor's default prompt (audio, then the text = the
+  Qwen / AF order); GREEDY; up to 2048 new tokens including the thinking; if no `</think>` came out the thought is closed
+  (`\n</think>\n\n` appended) and at most 64 answer tokens follow (flagged `moss_forced`). The answer = the text after the
+  LAST `</think>`; only that text goes to the unchanged matcher (`listener_afnext.v4_match`: match_names word match, else
+  all-mpnet-base-v2 cosine > 0.6) → accept {V4}; null_accept on the item's cached null_family (the control). No gold in gen / match.
+- **Rules screened** (`benchmark/gold/moss_screen.py`, CPU; per candidate Q = Qwen V4, A = AF V4, M = MOSS V4, peak = the
+  FlexSED run peak, split = `config.TIER_SPLIT` = 0.6; shipped TIER = Q at peak ≥ 0.6, Q AND A below):
+  (a) **MOSS replaces Qwen:** peak ≥ 0.6 → M; below → M AND A (the AF leg kept).
+  (b) **MOSS as a third ear:** peak ≥ 0.6 → Q OR (A AND M); below → (Q AND A) OR (M AND (Q OR A)). (b) ⊇ TIER, so it can
+  only add; (a) can also lose.
+  Counted per rule on merged-DEV P2/PV candidates of the gold clips (`ptc_screen.PARTS`; class by `dev_listener.gold_class`:
+  needed = hit_needed, other = other_gold + none): needed-class and other-class accepts ADDED and LOST vs shipped TIER.
+  **GO iff needed added ≥ 2 AND other added ≤ 2 × needed added AND needed lost = 0** (per rule). GO → an arm on the real
+  pipeline is a `src/` flag = Adam's decision; STOP → recorded, closed. Also printed: the 7 known hit-side misses the ears
+  refuse (nyc Air horn, tg_d107 Laughter, carnival Whistle, as_explosion Footsteps / Gasp, tg_d033 Siren, tg_d032 Thunder) with
+  Q / A / M and the MOSS text.
+- **Sanity (report only).** MOSS on the 274 P1 items of `dev_listener_p1v4.json` (the drawn BEATs spans whose cuts Qwen and
+  AF already answered; 29 hit_needed / 43 none / 202 other_gold by the `dev_listener.json` gold field): MOSS yes-rate on
+  hit_needed vs none, next to Qwen's and AF's on the same cuts (`qwen_fams` / `af_fams`). A listener that says yes to
+  everything is not an ear; the P2/PV null-accept rate is reported for the same reason.
