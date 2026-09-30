@@ -16,7 +16,7 @@ from benchmark.gold import dev_listener as L
 
 G = _ROOT / "benchmark" / "gold"
 PARTS = {"dev": (G / "dev_listener_v.json", G / "dev_listener_v4d.json", G / "annotations" / "gold_AG.json"),
-         "dev2": (G / "dev2_listener_v.json", G / "dev2_listener_v4d.json", G / "annotations" / "tagger_AG.json")}
+         "dev2": (G / "dev2_listener_v.json", G / "dev2_listener_v4d.json", G / "annotations" / "gold_AG.json")}
 
 
 def key(x):

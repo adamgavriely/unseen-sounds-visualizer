@@ -363,7 +363,7 @@ def o6_recall(clips):
 
 def o7_doubt(clips):
     """doubtful gold calls, from the annotator's own flags and the prereg readings (round 31 SUBJ / gate group, round 33)"""
-    gold_files = {"dev": G / "annotations" / "gold_AG.json", "dev2": G / "annotations" / "tagger_AG.json"}
+    gold_files = {"dev": G / "annotations" / "gold_AG.json", "dev2": G / "annotations" / "gold_AG.json"}
     raw = {}
     for pt, f in gold_files.items():
         d = json.loads(f.read_text(encoding="utf-8"))

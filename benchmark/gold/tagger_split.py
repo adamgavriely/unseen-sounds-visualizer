@@ -21,7 +21,7 @@ _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 from benchmark.gold import score_per_sound as S
 
-TAGS = _ROOT / "benchmark" / "gold" / "annotations" / "tagger_AG.json"
+TAGS = _ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"
 OUT = _ROOT / "benchmark" / "gold" / "tagger_split.json"
 BATCH1 = {"dev2": ["tg_d007", "tg_d016", "tg_d020", "tg_d033", "tg_d075", "tg_d088"],
           "test2": ["tg_d001", "tg_d011", "tg_d013", "tg_d017", "tg_d040", "tg_d076", "tg_d077", "tg_d078",

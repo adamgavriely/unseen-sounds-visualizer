@@ -55,7 +55,7 @@ S.load_gold = _no_gold
 GOLDD = _ROOT / "benchmark" / "gold"
 WORK = _ROOT / "data" / "work"
 CLIPS = _ROOT / "data" / "input" / "tagger_set"
-TAGGER_GOLD = GOLDD / "annotations" / "tagger_AG.json"
+TAGGER_GOLD = GOLDD / "annotations" / "gold_AG.json"
 SPLITS = ("dev2", "test2")
 # extra, gold-free splits for running a version on any folder of clips (scripts/run_best.sh): TG_EXTRA_SPLITS="name ...";
 # clips in data/input/tagger_<name>, stems in benchmark/gold/<name>_stems.txt; never scored here

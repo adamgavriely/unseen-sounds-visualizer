@@ -1912,3 +1912,12 @@ pipeline-favouring one. Flips here are applied to the gold too and every system 
   screen); it counts against the pipeline (its Cat picture was a hit). Round 1 (pipeline-disagreement sample): 3 of 14 (21 %).
   Reading: random label noise is about 5 %; disagreement cases hold more label errors, as expected, so round 1's gain is
   partly a selection effect — both rounds are applied and disclosed. Merged DEV now 57 needed.
+
+### One gold file (Adam, 1 Oct 00:49)
+tagger_AG.json merged into benchmark/gold/annotations/gold_AG.json (50 tg_* clips, marked "set": "tagger"; header "sets");
+score_per_sound.subsets_of keeps them out of the old dev/test subsets (checked: dev 49, test_bench 60, tagger 50 = dev2 22 +
+test2 28, all present); every reader now points at gold_AG.json. Removed as redundant (in git history): tagger_AG.json,
+gold_AG_2026-09-20.json, the re-check answer/item files (their outcome is on the gold entries: recheck_2026_09_30 /
+recheck2_2026_09_30 notes; the answers are in commits of 30 Sept).
+Check after the merge and the round-2 flip (merged DEV, 57 needed): B0r 18/57, 51, 3.634; SHIP7 (SHIP6+FLAP) 27/25/2.394;
+SHIP8 (SHIP7+K4AD) 27/22/2.310.

@@ -29,7 +29,7 @@ PARTS = {"dev": {"p1": R13 / "benchmark" / "gold" / "dev_listener.json", "v": R1
                  "af": R13 / "benchmark" / "gold" / "dev_listener_afn.json", "gold": G / "annotations" / "gold_AG.json",
                  "wav": R13 / "data" / "work" / "devcand" / "wav16"},
          "dev2": {"p1": G / "dev2_listener.json", "v": G / "dev2_listener_v.json", "af": G / "dev2_listener_afn.json",
-                  "gold": G / "annotations" / "tagger_AG.json", "wav": _ROOT / "data" / "work" / "r13dev2" / "wav16"}}
+                  "gold": G / "annotations" / "gold_AG.json", "wav": _ROOT / "data" / "work" / "r13dev2" / "wav16"}}
 # TEST caches for the SHIP6+FLAP TEST read (no TEST gold is read): same windows, same families-per-clip rule
 TEST_PARTS = {"test": {"p1": G / "test_listener.json", "v": G / "test_listener_v.json",
                        "wav": _ROOT / "data" / "work" / "r13test" / "wav16", "out": _ROOT / "data" / "work" / "finelap_test"},

@@ -27,7 +27,7 @@ PARTS = {"dev": (H / "MscProj_r13" / "benchmark" / "gold" / "dev_listener_v.json
                  G / "dev_listener_ptc.json", G / "annotations" / "gold_AG.json",
                  H / "MscProj_r13" / "data" / "work" / "devcand" / "dasm_cache"),
          "dev2": (G / "dev2_listener_v.json", G / "dev2_listener_afn.json", G / "dev2_listener_ptc.json",
-                  G / "annotations" / "tagger_AG.json", H / "MscProj" / "data" / "work" / "dasm_dev2")}
+                  G / "annotations" / "gold_AG.json", H / "MscProj" / "data" / "work" / "dasm_dev2")}
 DASM_BAR = float(getattr(config, "LISTENER_DASM_BAR", 0.575))
 
 

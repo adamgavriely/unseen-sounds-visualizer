@@ -25,7 +25,7 @@ H = Path(os.path.expanduser("~"))
 W = H / "MscProj" / "data" / "work"
 PARTS = {  # part: (items json, wav dir, pools, gold annotations for the screen)
     "dev": (H / "MscProj_r13/benchmark/gold/dev_listener_v.json", W / "devcand/wav16", ("P2", "PV"), "gold_AG.json"),
-    "dev2": (H / "MscProj_tg/benchmark/gold/dev2_listener_v.json", W / "r13dev2/wav16", ("P2", "PV"), "tagger_AG.json"),
+    "dev2": (H / "MscProj_tg/benchmark/gold/dev2_listener_v.json", W / "r13dev2/wav16", ("P2", "PV"), "gold_AG.json"),
     "p1": (H / "MscProj_r13/benchmark/gold/dev_listener.json", W / "devcand/wav16", ("P1",), "gold_AG.json"),
 }
 BASE = "nvidia/audio-flamingo-3-hf"
