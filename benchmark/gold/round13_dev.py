@@ -194,7 +194,7 @@ if GSTACK.exists():
         _c.update(GRULES[_g])
     ARMS["GSTACK"] = _c
 STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT", "FIX_GATE", "LISTENER_ARBITER", "DISPLAY_THRESHOLD",
-               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE")      # arm flags read after stage 4
+               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE", "SCENE_FIT_ALL")  # arm flags read after stage 4
 DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF")                           # read by _display_spans at score time
 
 
