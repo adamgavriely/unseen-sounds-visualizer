@@ -1,0 +1,3651 @@
+{
+ "_meta": {
+  "split": "test2",
+  "bar": 0.575,
+  "gap": 0.5,
+  "pad": 0.5,
+  "wav": "/home/dsi/adamg/MscProj/data/work/r13test2/wav16",
+  "seconds_p4": 7.1
+ },
+ "items": [
+  {
+   "clip": "tg_d001",
+   "pool": "P4",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 0.28,
+   "end": 2.14,
+   "peak": 0.609,
+   "run_audio": [
+    0.0,
+    3.14
+   ],
+   "cut_start": 0.0,
+   "cut_end": 3.14,
+   "run_len": 1.86,
+   "null_family": "Bird",
+   "qwen_v4_text": "Duck\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "qwen_v4_match": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [
+     "Duck"
+    ],
+    "cos": [
+     0.613638162612915,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287,
+     0.40036332607269287
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "ducks",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4543576240539551
+    ]
+   },
+   "afn_yn_x": 0.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4543576240539551
+    ]
+   },
+   "afn_yn_null": 0.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d001",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 16.18,
+   "end": 16.62,
+   "peak": 0.592,
+   "run_audio": [
+    15.18,
+    17.0
+   ],
+   "cut_start": 15.18,
+   "cut_end": 17.0,
+   "run_len": 0.44,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Splash\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.280354768037796,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426,
+     0.052686113864183426
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "drawer open or close, wood",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.03318319469690323
+    ]
+   },
+   "afn_yn_x": 2.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.03318319469690323
+    ]
+   },
+   "afn_yn_null": 2.125,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d009",
+   "pool": "P4",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 8.7,
+   "end": 9.16,
+   "peak": 0.746,
+   "run_audio": [
+    7.699999999999999,
+    10.16
+   ],
+   "cut_start": 7.699999999999999,
+   "cut_end": 10.16,
+   "run_len": 0.46,
+   "null_family": "Laughter",
+   "qwen_v4_text": "Laughter\n\u65f6\n\u65f6\n\u65f6\n\nRustling\nCough\nSigh\nThroat clearing\nBuzzer\nSneeze\nSniffle\nCreak\nClick\nBuzzer",
+   "qwen_v4_match": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [
+     "Laughter"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.9999997019767761,
+     0.343316912651062,
+     0.343316912651062,
+     0.343316912651062,
+     0.3014361560344696,
+     0.30699920654296875,
+     0.3459966778755188,
+     0.18379586935043335,
+     0.28966906666755676,
+     0.4049935042858124,
+     0.26435813307762146,
+     0.329385906457901,
+     0.30341818928718567,
+     0.28966906666755676
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "laughing",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [
+     "laughing"
+    ],
+    "cos": [
+     0.8293774127960205
+    ]
+   },
+   "afn_yn_x": 1.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [
+     "laughing"
+    ],
+    "cos": [
+     0.8293774127960205
+    ]
+   },
+   "afn_yn_null": 1.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d009",
+   "pool": "P4",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 15.68,
+   "end": 16.0,
+   "peak": 0.692,
+   "run_audio": [
+    14.68,
+    16.0
+   ],
+   "cut_start": 14.68,
+   "cut_end": 16.0,
+   "run_len": 0.32,
+   "null_family": "Laughter",
+   "qwen_v4_text": "Laughter\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com",
+   "qwen_v4_match": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [
+     "Laughter"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.9999998211860657,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346,
+     0.13804733753204346
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "depo oh yeah",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1633147895336151
+    ]
+   },
+   "afn_yn_x": -1.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1633147895336151
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d013",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 13.26,
+   "end": 15.18,
+   "peak": 0.712,
+   "run_audio": [
+    12.26,
+    16.18
+   ],
+   "cut_start": 12.26,
+   "cut_end": 16.18,
+   "run_len": 1.92,
+   "null_family": "Shout",
+   "qwen_v4_text": "Siren\nExplosion\nAssistant\nSiren\nExplosion\nAssistant\nSiren\nAssistant\nExplosion\nAssistant\nSiren\nAssistant\nExplosion\nAssistant\nSiren\nAssistant\nExplosion",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29127195477485657,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.31871068477630615
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_x": 3.0625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_null": 3.0625,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d013",
+   "pool": "P4",
+   "family": "Water",
+   "label": "Water",
+   "start": 0.02,
+   "end": 1.54,
+   "peak": 0.635,
+   "run_audio": [
+    0.0,
+    2.54
+   ],
+   "cut_start": 0.0,
+   "cut_end": 2.54,
+   "run_len": 1.52,
+   "null_family": "Water",
+   "qwen_v4_text": "Siren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren",
+   "qwen_v4_match": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853,
+     0.09579428285360336,
+     0.1496395468711853
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2371872067451477
+    ]
+   },
+   "afn_yn_x": -0.625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2371872067451477
+    ]
+   },
+   "afn_yn_null": -0.625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d013",
+   "pool": "P4",
+   "family": "Water",
+   "label": "Water",
+   "start": 2.1,
+   "end": 10.0,
+   "peak": 0.659,
+   "run_audio": [
+    1.1,
+    11.0
+   ],
+   "cut_start": 1.1,
+   "cut_end": 11.0,
+   "run_len": 7.9,
+   "null_family": "Water",
+   "qwen_v4_text": "Waves crashing\nOcean surf\nously\nous\nous\nous\nous\nous\nous\nous\nous\nous\nous\nous\nous",
+   "qwen_v4_match": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [
+     "Waves crashing",
+     "Ocean surf"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3264992833137512,
+     0.48367223143577576,
+     0.11132961511611938,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642,
+     0.08753647655248642
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "siren, vehicle, crowd, water",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [
+     "siren, vehicle, crowd, water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.35673344135284424
+    ]
+   },
+   "afn_yn_x": 2.5625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "dribble",
+     "drip",
+     "faucet",
+     "fill",
+     "gurgling",
+     "liquid",
+     "ocean",
+     "pour",
+     "rain",
+     "sink",
+     "slosh",
+     "steam",
+     "stream",
+     "surf",
+     "trickle",
+     "water",
+     "water tap",
+     "waterfall",
+     "waves"
+    ],
+    "matched_word": [
+     "siren, vehicle, crowd, water"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.35673344135284424
+    ]
+   },
+   "afn_yn_null": 2.5625,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d019",
+   "pool": "P4",
+   "family": "Alarm",
+   "label": "Alarm",
+   "start": 10.0,
+   "end": 13.36,
+   "peak": 0.619,
+   "run_audio": [
+    9.0,
+    14.36
+   ],
+   "cut_start": 9.0,
+   "cut_end": 14.36,
+   "run_len": 3.36,
+   "null_family": "Alarm",
+   "qwen_v4_text": "Siren\nApplause\no\no\no\no\no\no\no\no\no\no\no\no\no",
+   "qwen_v4_match": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [
+     "Siren"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5018099546432495,
+     0.3498413860797882,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937,
+     0.24613305926322937
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "siren, applause",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [
+     "siren, applause"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.4951387345790863
+    ]
+   },
+   "afn_yn_x": 1.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [
+     "siren, applause"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.4951387345790863
+    ]
+   },
+   "afn_yn_null": 1.375,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d019",
+   "pool": "P4",
+   "family": "Alarm",
+   "label": "Alarm",
+   "start": 14.1,
+   "end": 14.36,
+   "peak": 0.595,
+   "run_audio": [
+    13.1,
+    15.36
+   ],
+   "cut_start": 13.1,
+   "cut_end": 15.36,
+   "run_len": 0.26,
+   "null_family": "Alarm",
+   "qwen_v4_text": "Siren\n\nora\nora\nora\nSiren\nSiren\nSiren\nSiren\nSiren\nSiren\nSiren\nSiren\nSiren\nS",
+   "qwen_v4_match": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren",
+     "Siren"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5018099546432495,
+     0.24118337035179138,
+     0.24118337035179138,
+     0.24118337035179138,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.5018099546432495,
+     0.20255199074745178
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "applause, human voice, cheering, human group actions",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21791428327560425
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "air horn",
+     "alarm",
+     "alarm clock",
+     "beep",
+     "bicycle bell",
+     "bleep",
+     "buzzer",
+     "car alarm",
+     "car horn",
+     "doorbell",
+     "fire alarm",
+     "foghorn",
+     "honking",
+     "siren",
+     "smoke alarm",
+     "smoke detector",
+     "telephone",
+     "truck horn",
+     "vehicle horn",
+     "whistle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.21791428327560425
+    ]
+   },
+   "afn_yn_null": 0.375,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d040",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 9.72,
+   "end": 9.86,
+   "peak": 0.639,
+   "run_audio": [
+    8.72,
+    10.86
+   ],
+   "cut_start": 8.72,
+   "cut_end": 10.86,
+   "run_len": 0.14,
+   "null_family": "Shout",
+   "qwen_v4_text": "Siren\nement\nement\nement\nement\nement\nement\nement\nement\nement\nement\nement\nement",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29127195477485657,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734,
+     0.2498551309108734
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "squeak",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.45429906249046326
+    ]
+   },
+   "afn_yn_x": -1.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.45429906249046326
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d040",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 13.4,
+   "end": 15.06,
+   "peak": 0.629,
+   "run_audio": [
+    12.4,
+    16.06
+   ],
+   "cut_start": 12.4,
+   "cut_end": 16.06,
+   "run_len": 1.66,
+   "null_family": "Shout",
+   "qwen_v4_text": "Siren\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand\nhand",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29127195477485657,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792,
+     0.2762393653392792
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "siren",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2912721037864685
+    ]
+   },
+   "afn_yn_x": -0.875,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2912721037864685
+    ]
+   },
+   "afn_yn_null": -0.875,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d040",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 18.08,
+   "end": 18.32,
+   "peak": 0.588,
+   "run_audio": [
+    17.08,
+    19.32
+   ],
+   "cut_start": 17.08,
+   "cut_end": 19.32,
+   "run_len": 0.24,
+   "null_family": "Shout",
+   "qwen_v4_text": "Siren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren\nAssistant\nSiren",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.29127195477485657
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "siren",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2912721037864685
+    ]
+   },
+   "afn_yn_x": 0.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2912721037864685
+    ]
+   },
+   "afn_yn_null": 0.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d040",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 18.84,
+   "end": 19.32,
+   "peak": 0.629,
+   "run_audio": [
+    17.84,
+    20.0
+   ],
+   "cut_start": 17.84,
+   "cut_end": 20.0,
+   "run_len": 0.48,
+   "null_family": "Shout",
+   "qwen_v4_text": "Siren\n\n by the same person\n by the same person\n by the same person\n by the same person\n by the same person\n by the same person\n by the same person\n by the same",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29127195477485657,
+     0.19531609117984772,
+     0.19531609117984772,
+     0.19531609117984772,
+     0.19531609117984772,
+     0.19531609117984772,
+     0.19531609117984772,
+     0.19531609117984772,
+     0.2339870035648346
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_x": 1.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_null": 1.5,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d068",
+   "pool": "P4",
+   "family": "Cattle",
+   "label": "Cattle",
+   "start": 0.22,
+   "end": 16.0,
+   "peak": 0.976,
+   "run_audio": [
+    0.0,
+    16.0
+   ],
+   "cut_start": 0.0,
+   "cut_end": 16.0,
+   "run_len": 15.78,
+   "null_family": "Cattle",
+   "qwen_v4_text": "Wind\nAnimal\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny\ny",
+   "qwen_v4_match": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "cowbell",
+     "farm animals",
+     "livestock",
+     "moo",
+     "working animals",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2798958122730255,
+     0.5511483550071716,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873,
+     0.21496018767356873
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "wind",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "cowbell",
+     "farm animals",
+     "livestock",
+     "moo",
+     "working animals",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2798958718776703
+    ]
+   },
+   "afn_yn_x": 4.5625,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bovinae",
+     "cattle",
+     "cowbell",
+     "farm animals",
+     "livestock",
+     "moo",
+     "working animals",
+     "yak"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2798958718776703
+    ]
+   },
+   "afn_yn_null": 4.5625,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d101",
+   "pool": "P4",
+   "family": "Bird",
+   "label": "Bird",
+   "start": 4.2,
+   "end": 4.22,
+   "peak": 0.582,
+   "run_audio": [
+    3.2,
+    5.22
+   ],
+   "cut_start": 3.2,
+   "cut_end": 5.22,
+   "run_len": 0.02,
+   "null_family": "Bird",
+   "qwen_v4_text": "Train horn\nAssistant\nTrain horn\nAssistant\nTrain horn\nAssistant\nTrain horn\nAssistant\nTrain horn\nAssistant\nTrain horn\nAssistant\nTrain horn\nAssistant\nTrain horn\nAssistant\nTrain horn",
+   "qwen_v4_match": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997,
+     0.24186354875564575,
+     0.26252681016921997
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "car horn",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.32003289461135864
+    ]
+   },
+   "afn_yn_x": -2.0625,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "bird",
+     "bird call",
+     "bird flight",
+     "bird song",
+     "bird vocalization",
+     "caw",
+     "chicken",
+     "chirp",
+     "cluck",
+     "cock-a-doodle-doo",
+     "coo",
+     "crow",
+     "crowing",
+     "dove",
+     "flapping wings",
+     "fowl",
+     "gull",
+     "owl",
+     "pigeon",
+     "rooster",
+     "seagull",
+     "tweet",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.32003289461135864
+    ]
+   },
+   "afn_yn_null": -2.0625,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 0.08,
+   "end": 0.2,
+   "peak": 0.591,
+   "run_audio": [
+    0.0,
+    1.2
+   ],
+   "cut_start": 0.0,
+   "cut_end": 1.2,
+   "run_len": 0.12,
+   "null_family": "Explosion",
+   "qwen_v4_text": "Gunshot\nExplosion\nAssistant\nGunshot\nExplosion\nAssistant\nGunshot\nExplosion\nAssistant\nGunshot\nExplosion\nAssistant\nGunshot\nExplosion\nAssistant\nGunshot\nExplosion",
+   "qwen_v4_match": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "Gunshot",
+     "Explosion",
+     "Gunshot",
+     "Explosion",
+     "Gunshot",
+     "Explosion",
+     "Gunshot",
+     "Explosion",
+     "Gunshot",
+     "Explosion",
+     "Gunshot",
+     "Explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5130224227905273,
+     0.9999999403953552,
+     0.17963069677352905,
+     0.5130224227905273,
+     0.9999999403953552,
+     0.17963069677352905,
+     0.5130224227905273,
+     0.9999999403953552,
+     0.17963069677352905,
+     0.5130224227905273,
+     0.9999999403953552,
+     0.17963069677352905,
+     0.5130224227905273,
+     0.9999999403953552,
+     0.17963069677352905,
+     0.5130224227905273,
+     0.9999999403953552
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "gunshot and gunfire, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6089667081832886
+    ]
+   },
+   "afn_yn_x": 1.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6089667081832886
+    ]
+   },
+   "afn_yn_null": 1.875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 3.26,
+   "end": 3.38,
+   "peak": 0.604,
+   "run_audio": [
+    2.26,
+    4.38
+   ],
+   "cut_start": 2.26,
+   "cut_end": 4.38,
+   "run_len": 0.12,
+   "null_family": "Explosion",
+   "qwen_v4_text": "Gunshot\nRattle\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant",
+   "qwen_v4_match": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "Gunshot"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5130224227905273,
+     0.26751163601875305,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704,
+     0.30672433972358704
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "gunshot and gunfire, metal clanking, shouting",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, metal clanking, shouting"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3397403657436371
+    ]
+   },
+   "afn_yn_x": 0.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, metal clanking, shouting"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3397403657436371
+    ]
+   },
+   "afn_yn_null": 0.375,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 4.02,
+   "end": 4.18,
+   "peak": 0.607,
+   "run_audio": [
+    3.0199999999999996,
+    5.18
+   ],
+   "cut_start": 3.0199999999999996,
+   "cut_end": 5.18,
+   "run_len": 0.16,
+   "null_family": "Explosion",
+   "qwen_v4_text": "Gunshot\nRifle bolt\nAssistant\nGunshot\nRifle bolt\nAssistant\nGunshot\nRifle bolt\nAssistant\nGunshot\nRifle bolt\nAssistant\nGunshot\nRifle bolt\nAssistant\nGunshot\nR",
+   "qwen_v4_match": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "Gunshot",
+     "Gunshot",
+     "Gunshot",
+     "Gunshot",
+     "Gunshot",
+     "Gunshot"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5130224823951721,
+     0.21060121059417725,
+     0.17963054776191711,
+     0.5130224823951721,
+     0.21060121059417725,
+     0.17963054776191711,
+     0.5130224823951721,
+     0.21060121059417725,
+     0.17963054776191711,
+     0.5130224823951721,
+     0.21060121059417725,
+     0.17963054776191711,
+     0.5130224823951721,
+     0.21060121059417725,
+     0.17963054776191711,
+     0.5130224823951721,
+     0.23783063888549805
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "gunshot and gunfire, metal clanking, shouting",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, metal clanking, shouting"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3397403657436371
+    ]
+   },
+   "afn_yn_x": 0.5,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, metal clanking, shouting"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.3397403657436371
+    ]
+   },
+   "afn_yn_null": 0.5,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 5.12,
+   "end": 6.62,
+   "peak": 0.708,
+   "run_audio": [
+    4.12,
+    7.619999999999999
+   ],
+   "cut_start": 4.12,
+   "cut_end": 7.619999999999999,
+   "run_len": 1.5,
+   "null_family": "Explosion",
+   "qwen_v4_text": "Metal clanking\nRattling\nAssistant\nMetal clanking\nRattling\nAssistant\nMetal clanking\nRattling\nAssistant\nMetal clanking\nRattling\nAssistant\nMetal clanking\nRattling\nAssistant",
+   "qwen_v4_match": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28706851601600647,
+     0.3325101137161255,
+     0.17963054776191711,
+     0.28706851601600647,
+     0.3325101137161255,
+     0.17963054776191711,
+     0.28706851601600647,
+     0.3325101137161255,
+     0.17963054776191711,
+     0.28706851601600647,
+     0.3325101137161255,
+     0.17963054776191711,
+     0.28706851601600647,
+     0.3325101137161255,
+     0.17963054776191711
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "metallic clank, heavy thud, low rumble",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28824567794799805
+    ]
+   },
+   "afn_yn_x": -1.375,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.28824567794799805
+    ]
+   },
+   "afn_yn_null": -1.375,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 8.24,
+   "end": 10.0,
+   "peak": 0.876,
+   "run_audio": [
+    7.24,
+    10.0
+   ],
+   "cut_start": 7.24,
+   "cut_end": 10.0,
+   "run_len": 1.76,
+   "null_family": "Explosion",
+   "qwen_v4_text": "Explosion\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith",
+   "qwen_v4_match": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "Explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.9999999403953552,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "gunshot and gunfire, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6089667081832886
+    ]
+   },
+   "afn_yn_x": 3.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6089667081832886
+    ]
+   },
+   "afn_yn_null": 3.875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Gunshot",
+   "label": "Gunshot",
+   "start": 5.16,
+   "end": 5.42,
+   "peak": 0.611,
+   "run_audio": [
+    4.16,
+    6.42
+   ],
+   "cut_start": 4.16,
+   "cut_end": 6.42,
+   "run_len": 0.26,
+   "null_family": "Gunshot",
+   "qwen_v4_text": "Printer\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith",
+   "qwen_v4_match": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.16752861440181732,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "metallic clank",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.44172704219818115
+    ]
+   },
+   "afn_yn_x": -1.5,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.44172704219818115
+    ]
+   },
+   "afn_yn_null": -1.5,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Gunshot",
+   "label": "Gunshot",
+   "start": 8.24,
+   "end": 10.0,
+   "peak": 0.959,
+   "run_audio": [
+    7.24,
+    10.0
+   ],
+   "cut_start": 7.24,
+   "cut_end": 10.0,
+   "run_len": 1.76,
+   "null_family": "Gunshot",
+   "qwen_v4_text": "Explosion\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith",
+   "qwen_v4_match": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [
+     "Explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5130224227905273,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205,
+     0.21157583594322205
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "gunshot and gunfire, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.7006989121437073
+    ]
+   },
+   "afn_yn_x": 2.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "artillery fire",
+     "cap gun",
+     "explosion",
+     "fusillade",
+     "gunfire",
+     "gunshot",
+     "machine gun"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.7006989121437073
+    ]
+   },
+   "afn_yn_null": 2.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 1.02,
+   "end": 1.16,
+   "peak": 0.634,
+   "run_audio": [
+    0.020000000000000018,
+    2.16
+   ],
+   "cut_start": 0.020000000000000018,
+   "cut_end": 2.16,
+   "run_len": 0.14,
+   "null_family": "Shout",
+   "qwen_v4_text": "Explosion\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.318710595369339,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.1642889678478241,
+     0.22344762086868286
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "gunshot and gunfire, metal clanking, shouting",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.31321847438812256
+    ]
+   },
+   "afn_yn_x": 1.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.31321847438812256
+    ]
+   },
+   "afn_yn_null": 1.75,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 2.4,
+   "end": 3.62,
+   "peak": 0.647,
+   "run_audio": [
+    1.4,
+    4.62
+   ],
+   "cut_start": 1.4,
+   "cut_end": 4.62,
+   "run_len": 1.22,
+   "null_family": "Shout",
+   "qwen_v4_text": "Gunshot\nMetal clatter\nAssistant\nGunshot\nMetal clatter\nAssistant\nGunshot\nMetal clatter\nAssistant\nGunshot\nMetal clatter\nAssistant\nGunshot\nMetal clatter\nAssistant\nGunshot\nMetal",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3721410632133484,
+     0.2520132064819336,
+     0.18387462198734283,
+     0.3721410632133484,
+     0.2520132064819336,
+     0.18387462198734283,
+     0.3721410632133484,
+     0.2520132064819336,
+     0.18387462198734283,
+     0.3721410632133484,
+     0.2520132064819336,
+     0.18387462198734283,
+     0.3721410632133484,
+     0.2520132064819336,
+     0.18387462198734283,
+     0.3721410632133484,
+     0.17365387082099915
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "clank, crash, shout",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [
+     "clank, crash, shout"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.42531347274780273
+    ]
+   },
+   "afn_yn_x": 2.125,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [
+     "clank, crash, shout"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.42531347274780273
+    ]
+   },
+   "afn_yn_null": 2.125,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 1.5,
+   "end": 3.44,
+   "peak": 0.773,
+   "run_audio": [
+    0.5,
+    4.4399999999999995
+   ],
+   "cut_start": 0.5,
+   "cut_end": 4.4399999999999995,
+   "run_len": 1.94,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Gunshot\nMetallic clatter\nAssistant\nGunshot\nMetallic clatter\nAssistant\nGunshot\nMetallic clatter\nAssistant\nGunshot\nMetallic clatter\nAssistant\nGunshot\nMetallic clatter\nAssistant",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.38943877816200256,
+     0.47155019640922546,
+     0.004011714365333319,
+     0.38943877816200256,
+     0.47155019640922546,
+     0.004011714365333319,
+     0.38943877816200256,
+     0.47155019640922546,
+     0.004011714365333319,
+     0.38943877816200256,
+     0.47155019640922546,
+     0.004011714365333319,
+     0.38943877816200256,
+     0.47155019640922546,
+     0.004011714365333319
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard, skateboard,",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11095758527517319
+    ]
+   },
+   "afn_yn_x": 2.375,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.11095758527517319
+    ]
+   },
+   "afn_yn_null": 2.375,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 3.96,
+   "end": 4.46,
+   "peak": 0.755,
+   "run_audio": [
+    2.96,
+    5.46
+   ],
+   "cut_start": 2.96,
+   "cut_end": 5.46,
+   "run_len": 0.5,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Gunshot\nMetallic clatter\n with the same prompt\n with the same prompt\n with the same prompt\n with the same prompt\n with the same prompt\n with the same prompt\n with the same prompt\n with",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.38943877816200256,
+     0.471550315618515,
+     0.007418177556246519,
+     0.007418177556246519,
+     0.007418177556246519,
+     0.007418177556246519,
+     0.007418177556246519,
+     0.007418177556246519,
+     0.007418177556246519,
+     0.05268610641360283
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "gunshot and gunfire, metal clanking, shouting",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5172945261001587
+    ]
+   },
+   "afn_yn_x": 2.6875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5172945261001587
+    ]
+   },
+   "afn_yn_null": 2.6875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 5.12,
+   "end": 5.48,
+   "peak": 0.734,
+   "run_audio": [
+    4.12,
+    6.4799999999999995
+   ],
+   "cut_start": 4.12,
+   "cut_end": 6.4799999999999995,
+   "run_len": 0.36,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Mechanical sounds\nAssistant\nMechanical sounds\nAssistant\nMechanical sounds\nAssistant\nMechanical sounds\nAssistant\nMechanical sounds\nAssistant\nMechanical sounds\nAssistant\nMechanical sounds\nAssistant\nMechanical",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [
+     "Mechanical sounds",
+     "Mechanical sounds",
+     "Mechanical sounds",
+     "Mechanical sounds",
+     "Mechanical sounds",
+     "Mechanical sounds",
+     "Mechanical sounds"
+    ],
+    "cos": [
+     0.6054719090461731,
+     0.004011714365333319,
+     0.6054719090461731,
+     0.004011714365333319,
+     0.6054719090461731,
+     0.004011714365333319,
+     0.6054719090461731,
+     0.004011714365333319,
+     0.6054719090461731,
+     0.004011714365333319,
+     0.6054719090461731,
+     0.004011714365333319,
+     0.6054719090461731,
+     0.004011714365333319,
+     0.2509061396121979
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "metallic clank",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3947266638278961
+    ]
+   },
+   "afn_yn_x": 2.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3947266638278961
+    ]
+   },
+   "afn_yn_null": 2.0,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 6.36,
+   "end": 6.46,
+   "peak": 0.592,
+   "run_audio": [
+    5.36,
+    7.46
+   ],
+   "cut_start": 5.36,
+   "cut_end": 7.46,
+   "run_len": 0.1,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Train\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain\nAssistant\nTrain",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369,
+     0.00401165708899498,
+     0.08240062743425369
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "train",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.0824006050825119
+    ]
+   },
+   "afn_yn_x": 2.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.0824006050825119
+    ]
+   },
+   "afn_yn_null": 2.0,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d103",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 7.66,
+   "end": 8.4,
+   "peak": 0.673,
+   "run_audio": [
+    6.66,
+    9.4
+   ],
+   "cut_start": 6.66,
+   "cut_end": 9.4,
+   "run_len": 0.74,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Explosion\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user\n by the same user",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3244569003582001,
+     0.02331281080842018,
+     0.02331281080842018,
+     0.02331281080842018,
+     0.02331281080842018,
+     0.02331281080842018,
+     0.02331281080842018,
+     0.02331281080842018,
+     0.02331281080842018
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "gunshot and gunfire, explosion",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.43870753049850464
+    ]
+   },
+   "afn_yn_x": 2.25,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.43870753049850464
+    ]
+   },
+   "afn_yn_null": 2.25,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d104",
+   "pool": "P4",
+   "family": "Explosion",
+   "label": "Explosion",
+   "start": 2.72,
+   "end": 10.0,
+   "peak": 0.955,
+   "run_audio": [
+    1.7200000000000002,
+    10.0
+   ],
+   "cut_start": 1.7200000000000002,
+   "cut_end": 10.0,
+   "run_len": 7.28,
+   "null_family": "Explosion",
+   "qwen_v4_text": "Gunshot\nExplosion\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith\nwith",
+   "qwen_v4_match": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "Gunshot",
+     "Explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.5130224227905273,
+     0.9999999403953552,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386,
+     0.24240872263908386
+    ]
+   },
+   "qwen_v4": true,
+   "afn_v4_text": "gunshot and gunfire, explosion",
+   "accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": true,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6089667081832886
+    ]
+   },
+   "afn_yn_x": 4.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "bang",
+     "boom",
+     "burst",
+     "eruption",
+     "explosion",
+     "fireworks",
+     "gunfire",
+     "gunshot",
+     "pop"
+    ],
+    "matched_word": [
+     "gunshot and gunfire, explosion"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.6089667081832886
+    ]
+   },
+   "afn_yn_null": 4.75,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d104",
+   "pool": "P4",
+   "family": "Shout",
+   "label": "Shout",
+   "start": 0.0,
+   "end": 0.96,
+   "peak": 0.629,
+   "run_audio": [
+    0.0,
+    1.96
+   ],
+   "cut_start": 0.0,
+   "cut_end": 1.96,
+   "run_len": 0.96,
+   "null_family": "Shout",
+   "qwen_v4_text": "Siren\nExplosion\nAssistant\nSiren\nExplosion\nAssistant\nSiren\nAssistant\nExplosion\nAssistant\nSiren\nAssistant\nExplosion\nAssistant\nSiren\nAssistant\nExplosion",
+   "qwen_v4_match": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.29127195477485657,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.31871068477630615,
+     0.18387450277805328,
+     0.29127195477485657,
+     0.18387450277805328,
+     0.31871068477630615
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "screaming",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_x": 2.0,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "battle cry",
+     "bellow",
+     "children shouting",
+     "human voice",
+     "shout",
+     "whoop",
+     "yell"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5461845397949219
+    ]
+   },
+   "afn_yn_null": 2.0,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d106",
+   "pool": "P4",
+   "family": "Laughter",
+   "label": "Laughter",
+   "start": 7.52,
+   "end": 8.94,
+   "peak": 0.628,
+   "run_audio": [
+    6.52,
+    9.002
+   ],
+   "cut_start": 6.52,
+   "cut_end": 9.002,
+   "run_len": 1.42,
+   "null_family": "Laughter",
+   "qwen_v4_text": "Cough\n by the same person\n by the same person\nCough\nCough\nCough\nCough\nCough\nCough\nCough\nCough\nCough\nCough\nCough",
+   "qwen_v4_match": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.30699920654296875,
+     0.16935375332832336,
+     0.16935375332832336,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875,
+     0.30699920654296875
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": false
+   },
+   "afn_v4_x": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3069992661476135
+    ]
+   },
+   "afn_yn_x": 0.0,
+   "afn_yn_x_top1": 2152,
+   "afn_v4_null": {
+    "names": [
+     "baby laughter",
+     "belly laugh",
+     "chortle",
+     "chuckle",
+     "giggle",
+     "human voice",
+     "laughter",
+     "snicker"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3069992661476135
+    ]
+   },
+   "afn_yn_null": 0.0,
+   "afn_yn_null_top1": 2152
+  },
+  {
+   "clip": "tg_d106",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 5.2,
+   "end": 7.48,
+   "peak": 0.891,
+   "run_audio": [
+    4.2,
+    8.48
+   ],
+   "cut_start": 4.2,
+   "cut_end": 8.48,
+   "run_len": 2.28,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Cough\nExplosion\nShatter\nAssistant\nCough\nExplosion\nShatter\nAssistant\nCough\nExplosion\nShatter\nAssistant\nCough\nExplosion\nShatter\nAssistant\nCough\nExplosion\nShatter",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.06335772573947906,
+     0.3244568407535553,
+     0.3403231203556061,
+     0.00401165708899498,
+     0.06335772573947906,
+     0.3244568407535553,
+     0.3403231203556061,
+     0.00401165708899498,
+     0.06335772573947906,
+     0.3244568407535553,
+     0.3403231203556061,
+     0.00401165708899498,
+     0.06335772573947906,
+     0.3244568407535553,
+     0.3403231203556061,
+     0.00401165708899498,
+     0.06335772573947906,
+     0.3244568407535553,
+     0.3403231203556061
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "cough",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.06335776299238205
+    ]
+   },
+   "afn_yn_x": 2.6875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.06335776299238205
+    ]
+   },
+   "afn_yn_null": 2.6875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d110",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 3.14,
+   "end": 5.18,
+   "peak": 0.83,
+   "run_audio": [
+    2.14,
+    6.18
+   ],
+   "cut_start": 2.14,
+   "cut_end": 6.18,
+   "run_len": 2.04,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Shatter\nGlass\nClatter\nAssistant\nShatter\nGlass\nClatter\nAssistant\nShatter\nGlass\nClatter\nAssistant\nShatter\nGlass\nClatter\nAssistant\nShatter\nGlass\nClatter\nAssistant",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3403231203556061,
+     0.11651545017957687,
+     0.41914430260658264,
+     0.00401165708899498,
+     0.3403231203556061,
+     0.11651545017957687,
+     0.41914430260658264,
+     0.00401165708899498,
+     0.3403231203556061,
+     0.11651545017957687,
+     0.41914430260658264,
+     0.00401165708899498,
+     0.3403231203556061,
+     0.11651545017957687,
+     0.41914430260658264,
+     0.00401165708899498,
+     0.3403231203556061,
+     0.11651545017957687,
+     0.41914430260658264,
+     0.00401165708899498
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "shatter, glass",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3585284948348999
+    ]
+   },
+   "afn_yn_x": 2.75,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3585284948348999
+    ]
+   },
+   "afn_yn_null": 2.75,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d112",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 0.08,
+   "end": 2.86,
+   "peak": 0.741,
+   "run_audio": [
+    0.0,
+    3.86
+   ],
+   "cut_start": 0.0,
+   "cut_end": 3.86,
+   "run_len": 2.78,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Shattering glass\n\u65f6\n,\n,\n,\n,\n,\n,\n,\n,\n,\n,\n,\n,",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3515026569366455,
+     0.036338578909635544,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189,
+     0.04078773409128189
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "shatter, glass",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3585284948348999
+    ]
+   },
+   "afn_yn_x": 3.1875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3585284948348999
+    ]
+   },
+   "afn_yn_null": 3.1875,
+   "afn_yn_null_top1": 9693
+  },
+  {
+   "clip": "tg_d112",
+   "pool": "P4",
+   "family": "Specific impact sounds",
+   "label": "Specific impact sounds",
+   "start": 3.72,
+   "end": 4.3,
+   "peak": 0.72,
+   "run_audio": [
+    2.72,
+    5.3
+   ],
+   "cut_start": 2.72,
+   "cut_end": 5.3,
+   "run_len": 0.58,
+   "null_family": "Specific impact sounds",
+   "qwen_v4_text": "Gunshot\nMusic\nAssistant\nGunshot\nMusic\nAssistant\nGunshot\nMusic\nAssistant\nGunshot\nMusic\nAssistant\nGunshot\nMusic\nAssistant\nGunshot\nMusic\nAssistant\nGunshot\nMusic",
+   "qwen_v4_match": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.38943856954574585,
+     0.23979656398296356,
+     0.00401165708899498,
+     0.38943856954574585,
+     0.23979656398296356,
+     0.00401165708899498,
+     0.38943856954574585,
+     0.23979656398296356,
+     0.00401165708899498,
+     0.38943856954574585,
+     0.23979656398296356,
+     0.00401165708899498,
+     0.38943856954574585,
+     0.23979656398296356,
+     0.00401165708899498,
+     0.38943856954574585,
+     0.23979656398296356,
+     0.00401165708899498,
+     0.38943856954574585,
+     0.23979656398296356
+    ]
+   },
+   "qwen_v4": false,
+   "afn_v4_text": "thump and thud",
+   "accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "null_accept": {
+    "V4": false,
+    "YN0": true
+   },
+   "afn_v4_x": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5388688445091248
+    ]
+   },
+   "afn_yn_x": 1.875,
+   "afn_yn_x_top1": 9693,
+   "afn_v4_null": {
+    "names": [
+     "basketball bounce",
+     "specific impact sounds"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.5388688445091248
+    ]
+   },
+   "afn_yn_null": 1.875,
+   "afn_yn_null_top1": 9693
+  }
+ ]
+}
