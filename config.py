@@ -500,7 +500,10 @@ def use_shipped() -> dict:
                  ("LISTENER_DASM_VOTE", True), ("LISTENER_DASM_BAR", 0.575), ("LISTENER_REQUIRE_CACHES", True),
                  # round 18 N2b (Adam 30 Sept: every new best is merged): a weak BEATs-only span under speech or music needs
                  # FlexSED, Qwen or Audio Flamingo to confirm it. Merged DEV 23 hits / 44 wrong vs 23 / 48; DEV only (TEST spent)
-                 ("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True)):
+                 ("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True),
+                 # round 20 DR2 (new DEV best 30 Sept): DASM as a third ear for sound types nothing else found in the clip,
+                 # kept only if both audio LLMs name it. Merged DEV 24 / 44 / 2.986. Its P4 answers: set_listener_split
+                 ("DASM_RESCUE", True), ("DASM_RESCUE_NEW_ONLY", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
@@ -528,7 +531,8 @@ def set_listener_split(name: str) -> dict:
     g = root / "benchmark" / "gold"
     vals = {"LISTENER_CACHE": str(g / f"{name}_listener.json"), "LISTENER_VCACHE": str(g / f"{name}_listener_v.json"),
             "LISTENER_AFCACHE": str(g / f"{name}_listener_afn.json"),
-            "LISTENER_DASM_DIR": str(root / "data" / "work" / f"dasm_{name}")}
+            "LISTENER_DASM_DIR": str(root / "data" / "work" / f"dasm_{name}"),
+            "DASM_P4_CACHE": str(g / f"{name}_listener_p4.json")}
     for k, v in vals.items():
         setattr(me, k, v)
     return vals

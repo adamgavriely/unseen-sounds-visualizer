@@ -28,7 +28,7 @@ def split_name(video: Path) -> str:
 def ready(split: str, stem: str) -> bool:
     g = _ROOT / "benchmark" / "gold"
     need = [g / f"{split}_listener.json", g / f"{split}_listener_v.json", g / f"{split}_listener_afn.json",
-            _ROOT / "data" / "work" / f"dasm_{split}" / f"{stem}.npz"]
+            _ROOT / "data" / "work" / f"dasm_{split}" / f"{stem}.npz", g / f"{split}_listener_p4.json"]
     return all(p.exists() for p in need)
 
 
@@ -54,6 +54,14 @@ def ensure_listener_inputs(video: Path) -> str:
         cmd = [sys.executable, prep, step, "--split", split] + (["--arms", "B0r"] if step in ("stage4", "stage5") else [])
         print(f"       [listener-prep] {split}: {step}", flush=True)
         subprocess.run(cmd, check=True, cwd=str(_ROOT), env=env)
+    # round 20 DR2: DASM-only runs (P4) and both listeners' answers on them
+    w = _ROOT / "data" / "work"
+    p4 = _ROOT / "benchmark" / "gold" / f"{split}_listener_p4.json"
+    dr = str(_ROOT / "benchmark" / "gold" / "dasm_rescue.py")
+    print(f"       [listener-prep] {split}: dasm rescue pool + listeners", flush=True)
+    subprocess.run([sys.executable, dr, "pool", split, str(w / f"r13{split}" / "stage4.json"), str(w / f"dasm_{split}"),
+                    str(w / f"r13{split}" / "wav16"), str(p4)], check=True, cwd=str(_ROOT), env=env)
+    subprocess.run([sys.executable, dr, "listen", str(p4)], check=True, cwd=str(_ROOT), env=env)
     if not ready(split, stem):
         raise RuntimeError(f"[listener-prep] {split}: inputs still missing after the harness ran")
     return split

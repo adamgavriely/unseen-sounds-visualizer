@@ -296,6 +296,9 @@ def _require_caches(wav_path):
     d = getattr(config, "LISTENER_DASM_DIR", None)
     if getattr(config, "LISTENER_DASM_VOTE", False) and not (d and (Path(d) / f"{clip}.npz").exists()):
         miss.append(f"LISTENER_DASM_DIR (no {clip}.npz)")
+    p4 = getattr(config, "DASM_P4_CACHE", None)
+    if getattr(config, "DASM_RESCUE", False) and not (p4 and Path(p4).exists()):
+        miss.append("DASM_P4_CACHE (no file)")
     if miss:
         raise RuntimeError(f"[stage4] {clip}: the shipped listener rescue needs precomputed answers "
                            f"(run slurm/run_best.sh on this clip first): missing {miss}")
