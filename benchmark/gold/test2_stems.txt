@@ -1,8 +1,16 @@
 tg_d001
+tg_d009
 tg_d011
 tg_d013
+tg_d014
 tg_d017
+tg_d019
+tg_d023
+tg_d031
 tg_d040
+tg_d045
+tg_d046
+tg_d068
 tg_d076
 tg_d077
 tg_d078
