@@ -1395,3 +1395,30 @@ Class by `dev_listener.gold_class` on gold_AG / tagger_AG; candidates dropped fo
 **GO iff other removed ≥ 3 × needed lost** (and ≥ 1 other removed). (c) SPOT alone vs V4 alone: needed / other accept counts.
 Report-only: P1 items of `dev_listener.json` (its `gold` field): SPOT-yes rate on hit_needed vs none. If both STOP, SpotSound
 is closed for the listener role; no threshold or prompt is tuned after the numbers.
+
+## Round 31 FLAP (SOTA scan; written 2026-09-30 BEFORE any FineLAP number on project audio)
+**Model.** FineLAP (Li et al., ACL 2026; github xiquan-li/FineLAP, HF `AndreasXi/FineLAP` rev b419aa2, MIT, 0.2 B; EAT audio
+encoder + RoBERTa text, contrastive dense audio-text). `get_frame_level_score` = sigmoid(cos / 0.1 − 10) per 160-ms frame per
+text query. Own env `~/venv_flap` (msproj + transformers 4.51.3; the remote code breaks on transformers 5), HF offline.
+Only smoke-tested on the repo's own `resources/1.wav` before this entry.
+**Windowing (FineLAP cuts audio at 10.24 s).** The listener wav (`devcand/wav16` DEV, `r13dev2/wav16` tagger DEV) is cut into
+10.24-s windows at hop 5.12 s, the last window aligned to the clip end (clip ≤ 10.24 s: one window, zero-padded as FineLAP does);
+the fbank block of `load_audio` is applied to each slice in memory. Frame i of a window at w0 covers [w0 + 0.16 i, w0 + 0.16 (i+1));
+the score of a time frame is the max over windows covering it (padded frames are dropped).
+**Score of an item.** Query = `canonical(label)`. Score = max over frames overlapping [start, end] (PV: the vetoed span's own
+start/end); if no frame overlaps, the frame holding the midpoint.
+**Calibration (fixed rule, one bar).** P1 items (the drawn BEATs spans; not rescue candidates) of `dev_listener.json`
+(~/MscProj_r13) + `dev2_listener.json` (~/MscProj_tg), pooled, kept iff `dev_listener.gold_class == "hit_needed"`. Bar = the
+score at index floor(0.10 n) of the ascending list (FineLAP ≥ bar keeps ≥ 90 %). Reported beside: n, per-split bars.
+**Candidates.** Every P2 / PV item of `dev_listener_v.json` (r13) and `dev2_listener_v.json` (tg) with gold, AF answers from
+`*_listener_afn.json` (same key as `v4d_screen.py`). Shipped accept = candidate-level `_tier({"V4": Qwen V4, "AF_V4": AF V4},
+peak)` (TIER_SPLIT 0.6, TIER_HIGH_OR off) — the same proxy as the V4D / PTC screens, not full stage 4 (ONCE, F8, veto order).
+Class by `gold_class`: needed = hit_needed, other = none + other_gold.
+- **(a) new accept path:** TIER false AND FineLAP ≥ bar AND (Qwen V4 OR AF V4). **GO iff needed added ≥ 2 AND other added
+  ≤ 1 × needed added.**
+- **(b) veto:** TIER true AND FineLAP < bar. **GO iff other removed ≥ 3 × needed lost** (and other removed ≥ 1).
+Each item is listed. Script `benchmark/gold/finelap_screen.py` (`run` on GPU, `score` on CPU), `slurm/job_finelap.sh`, frame
+cache `data/work/finelap_cache/<clip>.npz`, result `benchmark/gold/finelap_screen.json`. A GO arm is written here before its run.
+- **Results on SHIP5 (25/55, 33, 2.620), combined rule:** SHIP5+K4AO 24/55, 30 (9/18/3), 2.592 — −1 hit, −3 wrong, cost
+  down → **passes the fewer-pictures clause** (kept pending the RPT-S / CONT / PMC results, then stacked in order: old-rule
+  passes first). SHIP5+N2c 24/31/2.620 — cost not lower, fail. SHIP5+DVG 20/20/2.535 — 5 hits lost (> 3), fail.
