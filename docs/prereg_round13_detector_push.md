@@ -1854,3 +1854,29 @@ SHIP7+K4AO 27/21/2.338. Order of the shipped chain unchanged; every step still l
 K4AO's one lost hit from its three drops on the saved pictures)
 K4AO on SHIP7, except a span that DASM hears (family ≥ 0.575, F8's bar, in the span ± 0.5 s; the existing N2c-D keep) is
 kept. Arm SHIP7+K4AD vs SHIP7 on the corrected merged DEV gold (base 28/58, 24 wrong, 2.366); combined pass rule.
+
+## Round 35 DBR — DASM-covered repeat drop (written 2026-10-01 BEFORE any DBR number; corrected DEV gold)
+**Motivation.** b3_barbershop: gold "Electric shaver" 0.1–27.8 s (needed). SHIP7 draws the shaver twice: 0.14–13.25 (hit) and
+16.0–23.25 (late-repeat, counted wrong) because BEATs dips below its bar at 12–16 s (0.08–0.28) while DASM's shaver score is
+0.93 in every frame. RPT-S (round 31, FlexSED silence between repeats) failed at arm level; DBR asks DASM the same question.
+**Base = SHIP7** (saved arm `SHIP6+FLAP|proposed`) on the corrected DEV gold (visibility re-check, 58 needed): merged 28/58 hits,
+24 wrong (6/16/2), cost 2.366; the screen MUST reproduce this before any DBR line is read.
+**Rule DBR (one rule; every constant is a shipped one, none fitted).** For each placed NON-rescued picture (label L, start a,
+end b; `rescued` = the representative spec's flag, as BTP/DBX): "earlier" = the placed pictures of the clip (any rescue status,
+the ORIGINAL placed set, not kept-only) with canonical family = canonical(L) and original start < a; none -> untouched (first of
+family). prev_end = the latest end among them. Family evidence e(t) = max over the DASM cache columns whose canonical family is
+canonical(L) (`data/work/devcand/dasm_cache` for DEV, `data/work/dasm_dev2` for tagger DEV, frames 0.02 s); no column or no
+cache -> untouched (counted). Runs = frames with e >= 0.575 (LISTENER_DASM_BAR, F8's bar), gaps <= 0.24 s (LISTEN_RUN_GAP)
+merged, the pipeline's `_runs`, run end = last frame + dt (`dbx_screen.family_runs`, byte-identical to DBX). If prev_end >= a
+(the pictures overlap; no gap) -> untouched (counted "overlap"; not a late repeat). Else the picture is DROPPED iff one merged run
+[s, r] has s <= prev_end + 1e-6 and r >= a - 1e-6 (every frame of the gap is >= the bar). Rescued pictures are never dropped.
+**Screen** (`benchmark/gold/dbr_screen.py`, CPU, `~/MscProj_tg`, `TG_ARMS=SHIP6+FLAP`, pictures via `btp_screen.parts`, DASM roots
+from `cross_group.PARTS`; rescored with `score_per_sound`; nothing in `src/` or `config.py` edited). Reported: base per part and
+merged; DBR per part and merged; every dropped picture (part, clip, family, start, end, earlier end, class before via
+`cross_group.classify`, clip tally before -> after); untouched counts by reason; hits lost per part. Data-quality note: clips whose
+DASM family score is flat (max - min < 0.05 over the whole clip), counted on placed-picture families (the score the rule reads)
+and on any family. Known risk: the dropped picture, not the earlier one, is the hit (earlier = visible/cross); that shows as a
+lost hit.
+**Pass = vs SHIP7 on the corrected gold (28/58, 24, 2.366):** old rule (hits >= 28, wrong <= 24 + 2 x gain, cost < 2.366, no needed
+hit lost on either part) OR fewer-pictures clause (cost < 2.366, wrong <= 24 - 3 x hits lost, hits lost <= 3). GO -> an arm on the
+real pipeline is a `src/` flag = Adam's decision; STOP -> recorded, closed.
