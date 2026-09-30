@@ -63,7 +63,7 @@ def main():
         if isinstance(src.get(p.name), dict) and src[p.name].get("tagger_clip"):
             continue
         b = beats.get(p.name)
-        if not b or b["n_sounds"] < 2:
+        if not b or (p.parent != AS_DIR and b["n_sounds"] < 2):   # amendment 2: no BEATs rule for AudioSet clips
             continue
         while f"d{nxt:03d}.mp4" in used or (TAGGER / "videos" / f"d{nxt:03d}.mp4").exists():
             nxt += 1

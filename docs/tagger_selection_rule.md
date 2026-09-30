@@ -36,3 +36,7 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
 - Target: 53 clips (a001–a053), so the tool lists 100. `tagger_refresh.py` uses MAX_AUDIOSET = 53 and no web clips.
 - Disclosure: eval split only, so BEATs/PANNs (trained on AudioSet train) see unseen clips; DASM's checkpoint was picked
   on AudioSet-Strong eval (`docs/prereg_round6_dasm.md`), so these clips slightly favour DASM.
+
+## Amendment 2 (Adam, 2026-09-30 00:47 UTC, before any new clip is in the tool): "I don't care if BEATs detected"
+- New AudioSet clips no longer need BEATs n_sounds >= 2; the keep rule is >= 3 labelled sound types + download,
+  still-image and silence checks. BEATs still runs on them, for the suggestions only.
