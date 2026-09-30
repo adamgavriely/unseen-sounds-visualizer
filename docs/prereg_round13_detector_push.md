@@ -1422,3 +1422,30 @@ cache `data/work/finelap_cache/<clip>.npz`, result `benchmark/gold/finelap_scree
 - **Results on SHIP5 (25/55, 33, 2.620), combined rule:** SHIP5+K4AO 24/55, 30 (9/18/3), 2.592 — −1 hit, −3 wrong, cost
   down → **passes the fewer-pictures clause** (kept pending the RPT-S / CONT / PMC results, then stacked in order: old-rule
   passes first). SHIP5+N2c 24/31/2.620 — cost not lower, fail. SHIP5+DVG 20/20/2.535 — 5 hits lost (> 3), fail.
+### Round 31 PTC result — STOP (job 31596021, 9 min on an H200; `benchmark/gold/ptc_screen.json`)
+262 long-cut candidates (5 needed-class). Tight windows: Qwen adds 22 + 19 accepts, AF 39 + 16. Under TIER (original OR
+tight): **0 needed-class added, 17 other-class added** (Crowd murmur, Rain, Siren, Train, Cricket … on cuts of wall sounds
+already drawn or visible). The Siren 0.0 Alarm run: the Alarm query peaks at 7.6 s, so the tight window [6.12, 9.12] misses the siren at 0 s
+(Qwen "Sigh", AF "breathing"); tg_d032 Thunder 6.2 is named ("Rain,
+Thunder") but its run start is outside the 7.4 onset window, and its DASM is 0.01 anyway. The mechanism holds (the tight
+cut makes both ears name more) but what they name is the wall sound, not the masked one. Not adopted.
+
+## Round 31 H2 — high-tier second opinion (Fable, hit group, second idea; written BEFORE any number of it)
+Facts seen: the two "one listener only" misses (nyc Air horn 3.76, tg_d107 Laughter 8.40) sit in the Qwen-only tier (peak ≥
+0.6) with AF V4 yes; Kimi V4 also names Laughter ("Laughter,Human_voice"), not the horn ("Bus, Motor vehicle"). K3 (AF alone at
+the high tier, round 14) changed no picture on the old DEV, and its tagger-DEV arm ran before the tagger AF answers existed
+(08:09) — never really tested there. DASM own-family within ± 0.5 s: Air horn 0.05 (F8 removes it whatever the ears say),
+Laughter 0.89. **Rule H2:** at peak ≥ TIER_SPLIT the tier accepts on Qwen V4 OR (AF V4 AND Kimi V4) — two independent ears
+agreeing while Qwen is silent; below the split unchanged (Qwen AND AF). Screen (`benchmark/gold/h2_screen.py`, CPU, existing
+caches): high-tier merged-DEV P2/PV candidates newly accepted, needed-class vs other-class by `gold_class`. **GO iff needed
+added ≥ 2 AND other added ≤ 2 × needed.** Beside: AF-alone additions (K3) and the DASM ≥ 0.575 count among needed additions.
+### Round 31 H2 result — STOP (`benchmark/gold/h2_screen.json`, CPU)
+551 high-tier merged-DEV candidates. AF alone (K3) adds 3 needed / 85 other. AF AND Kimi adds **2 needed (both the tg_d107
+Laughter at 8.40 / 8.80 — one sound) / 21 other** (Bird ×7, Crowd ×6, Laughter/Giggle of visible people, Alarm, Rain,
+Splash, Chewing): 10.5 : 1, bar ≤ 2 : 1. Only one of the two needed has DASM ≥ 0.575 (F8). Not adopted.
+**Hit-group reading.** Of the 11 heard misses: Thunder 2.8 is named by no ear on any cut; Thunder 7.4 IS named by Qwen on the tight window
+("Rain, Thunder") but its run starts at 6.2, outside the onset window, and own-family DASM is 0.01, so timing + F8 block it, not the ears; Footsteps, Gasp,
+Whistle, Siren, Air horn have own-family DASM 0.05–0.37, so F8 removes them even when an ear says yes (F8-U already cost
++7 wrong for +2 hits); the 3 never-asked are below LO 0.5 with no P2 run; Laughter 8.4 is the one candidate reachable
+(AF + Kimi + DASM 0.89) but every general rule that admits it admits ≥ 10 other-class accepts. The group is closed for
+general rules on this data.

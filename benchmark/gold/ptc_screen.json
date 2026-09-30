@@ -1,0 +1,31 @@
+{
+ "needed_added": 0,
+ "other_added": 17,
+ "needed_added_dasm_ok": 0,
+ "qwen_only_needed": 0,
+ "qwen_only_other": 17,
+ "af_only_needed": 1,
+ "af_only_other": 7,
+ "long_cut_items": 262,
+ "needed_class_long": 5,
+ "go": false,
+ "added": [
+  "[dev] ambient_market_marrakech_3102 'Bicycle' 0.00-16.00 peak 0.62 win [1.56, 4.56] [none] qwen False->True af False->False dasm_ok False | Q: 'Bicycle bell\\n by the same user\\n by the same user\\n by the sam' | AF: 'crowd murmur'",
+  "[dev] ambient_market_marrakech_3102 'Crowd' 0.00-13.20 peak 0.84 win [0.0, 3.0] [none] qwen False->True af True->True dasm_ok False | Q: 'Crowd murmur\\narrow\\narrow\\narrow\\narrow\\narrow\\narrow\\narrow\\narrow' | AF: 'screaming'",
+  "[dev] ambient_market_marrakech_3102 'Crowd' 0.00-0.64 peak 0.84 win [0.0, 3.0] [none] qwen False->True af True->True dasm_ok False | Q: 'Crowd murmur\\narrow\\narrow\\narrow\\narrow\\narrow\\narrow\\narrow\\narrow' | AF: 'screaming'",
+  "[dev] b3_airport_terminal 'Crowd' 0.00-28.00 peak 0.87 win [6.24, 9.24] [none] qwen False->True af True->True dasm_ok False | Q: 'Crowd murmur\\n by the AI\\n by the AI\\n by the AI\\n by the AI\\n\\n b' | AF: 'crowd murmur'",
+  "[dev] b3_airport_terminal 'Crowd' 0.00-22.84 peak 0.87 win [6.24, 9.24] [none] qwen False->True af True->True dasm_ok False | Q: 'Crowd murmur\\n by the AI\\n by the AI\\n by the AI\\n by the AI\\n\\n b' | AF: 'crowd murmur'",
+  "[dev] b3_crossing_bells 'Rain' 10.00-17.00 peak 0.63 win [10.68, 13.68] [other_gold] qwen False->True af False->False dasm_ok False | Q: 'Rain\\nThunder\\nAssistant\\nRain\\nThunder\\nAssistant\\nRain\\nAssistant' | AF: 'wind'",
+  "[dev] ly_applause_62ZYD0u 'Clapping' 2.32-9.56 peak 0.70 win [3.8, 6.8] [other_gold] qwen False->True af True->True dasm_ok False | Q: 'Laughter\\nApplause\\nAssistant\\nLaughter\\nApplause\\nAssistant\\nLaug' | AF: 'laughing'",
+  "[dev] mv_protest_scene_movie 'Alarm' 18.16-24.00 peak 0.69 win [20.08, 23.08] [other_gold] qwen False->True af True->True dasm_ok False | Q: 'Siren\\nWind\\n by\\n by\\n by\\n by\\n by\\n by\\n by\\n by\\n by\\n by\\n by\\n by\\n ' | AF: 'siren'",
+  "[dev] mv_tornado_scene 'Siren' 1.16-7.16 peak 0.67 win [3.08, 6.08] [other_gold] qwen False->True af False->False dasm_ok False | Q: 'Siren\\ned by an AI\\ned by an AI\\ned by an AI\\ned by an AI\\ned by ' | AF: 'crowd, human group actions'",
+  "[dev] un_hair_dryer_drying_WWu24rJs 'Car passing by' 6.40-9.28 peak 0.62 win [6.0, 9.0] [none] qwen False->True af True->True dasm_ok False | Q: 'Car\\nwise\\nwise\\nwise\\nwise\\nwise\\nwise\\nwise\\nwise\\nwise\\nwise\\nwise\\nw' | AF: 'car horn'",
+  "[dev] un_people_clapping__bAVmK7n 'Insect' 0.00-8.32 peak 0.75 win [2.24, 5.24] [none] qwen False->True af False->False dasm_ok False | Q: 'Cough\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nant\\nan' | AF: 'human voice'",
+  "[dev2] tg_d016 'Crowd' 0.00-18.00 peak 0.84 win [15.0, 18.0] [none] qwen False->True af True->True dasm_ok False | Q: \"Camera\\nCrowd\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\" | AF: 'crowd, human group actions'",
+  "[dev2] tg_d016 'Crowd' 15.96-17.76 peak 0.84 win [15.0, 18.0] [none] qwen False->True af True->True dasm_ok False | Q: \"Camera\\nCrowd\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\\n't\" | AF: 'crowd, human group actions'",
+  "[dev2] tg_d032 'Rain' 0.00-15.00 peak 0.91 win [11.92, 14.92] [other_gold] qwen False->True af False->False dasm_ok True | Q: 'Rain\\nThunder\\nwith\\nwith\\nwith\\nwith\\nwith\\nwith\\nwith\\nwith\\nwith\\nwi' | AF: 'wind'",
+  "[dev2] tg_d032 'Thunder' 6.20-8.56 peak 0.73 win [6.6, 9.6] [other_gold] qwen False->True af False->False dasm_ok False | Q: 'Rain\\nThunder\\nAssistant\\nRain\\nThunder\\nAssistant\\nRain\\nThunder\\nA' | AF: 'wind'",
+  "[dev2] tg_d085 'Train' 0.00-10.00 peak 0.60 win [1.48, 4.48] [other_gold] qwen False->True af False->True dasm_ok False | Q: 'Train\\nTrain wheels squealing\\nAssistant\\nTrain\\nTrain wheels sq' | AF: 'train'",
+  "[dev2] tg_d095 'Cricket' 1.96-18.72 peak 0.68 win [3.88, 6.88] [other_gold] qwen False->True af False->True dasm_ok False | Q: 'Cricket\\no\\no\\no\\no\\no\\no\\no\\no\\no\\no\\no\\no\\no\\no' | AF: 'crickets'"
+ ]
+}
