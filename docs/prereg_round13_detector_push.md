@@ -1146,3 +1146,13 @@ Merged into `use_shipped()`; TEST read 5 prepared and reported below.
 **DV (shipped TO1+F7F8 + N2b + DR2 + K-V4 + DV) on the merged TEST (fifth read, reported; `final_test_dv.{json,md}`):**
 23 hits / 34 wrong (3 / 25 / 6) / **2.682** vs B0r 21 / 40 / 2.909, Δ −0.227 [−0.500, +0.023], p 0.051 → "same". Lowest TEST
 cost of all reads; versus read 4 (K-V4) −2 wrong, same hits: DV's DEV gain shows on TEST too.
+
+## Round 29 — the weak-sound misses traced (Adam: "inspect the 17 misses that are weak and group them to causes")
+All 26 heard-but-missed needed sounds of the shipped version on merged DEV (`scratchpad weak_trace`), grouped with Fable:
+gate-visible 5; both listeners no 6; listeners yes but a filter removed it (F8 DASM vote or ONCE) 5 (Hammer 13.7, Explosion 2.8,
+tg_d107 Crying, tg_d125 Clapping, tg_d120 Meow/Cat 2.94 — ONCE dropped it after the Cat 0.56 picture); one listener only 2;
+never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; unclear 1 (tg_d030 Motorcycle).
+- **F8-U (written before its number; base = shipped SHIP4 = SHIP3+DV):** F8 passes a rescued span if DASM ≥ 0.575 OR both
+  Qwen V4 and Audio Flamingo V4 name its family (K1's bypass, round 14), together with ONCE-G (a later rescue of a family
+  counts as new if it starts > 2.0 s after the kept one, round 22). Each part alone failed on older bases (K1 +6 wrong, ONCE-G
+  +3 wrong); the pair was never run. Pass rule: hits ≥ 24, wrong ≤ 34 + 2 × gain, cost < 2.704, no needed hit lost on either part.

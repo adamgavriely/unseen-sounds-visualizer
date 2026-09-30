@@ -206,6 +206,8 @@ ARMS["SHIP3+CV75"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.7, "LISTENER_LO": 0.5}
 ARMS["SHIP3+CV76"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.7, "LISTENER_LO": 0.6}
 ARMS["SHIP3+QE"] = {**ARMS["SHIP3"], "LISTENER_V4B_CACHE": str(_ROOT / "benchmark" / "gold" / "dev_listener_v4b.json")}
 ARMS["SHIP3+DV"] = {**ARMS["SHIP3"], "DASM_CLIP_VETO": 0.08392333984375}
+ARMS["SHIP4"] = {**ARMS["SHIP3+DV"]}                    # the shipped default since round 28
+ARMS["SHIP4+F8U"] = {**ARMS["SHIP4"], "F8_BYPASS_BOTH": True, "ONCE_GAP": 2.0}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
