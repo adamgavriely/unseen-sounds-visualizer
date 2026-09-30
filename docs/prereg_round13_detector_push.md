@@ -972,3 +972,8 @@ first). Fails the rule.
 `config.use_shipped()` now = TO1+F7F8 + N2b (MASKED_WEAK_VETO, MASKED_WEAK_AF). Evidence: merged DEV 71 clips, 23 hits / 44
 wrong / 3.042 vs TO1+F7F8 23 / 48 / 3.155, no needed hit lost on either part; found after the one TEST exposure, so it has
 no TEST check (thesis disclosure as written above, "ships as an opt-in" → "ships as the default").
+
+## Round 20 (base = shipped TO1+F7F8 + N2b, merged DEV 23 / 44 / 3.042; exploratory, DEV-only; written before its number)
+- **DR2 (DASM third ear, new families only):** as DR, but a confirmed P4 run is added only if its family has no stage-4 span
+  anywhere in the clip (DR's failure: a DASM run of an already-present family came first and ONCE then dropped the later hit).
+  Pass rule vs the base: hits ≥ 23, wrong ≤ 44 + 2 × gain, cost < 3.042, no needed hit lost on either part.

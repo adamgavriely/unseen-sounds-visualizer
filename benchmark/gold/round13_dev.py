@@ -62,7 +62,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
         "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False, "MASKED_WEAK_NEED_MASK": True, "FLEX_ONLY_CONFIRM": False,
-        "DASM_RESCUE": False, "DASM_P4_CACHE": None,
+        "DASM_RESCUE": False, "DASM_P4_CACHE": None, "DASM_RESCUE_NEW_ONLY": False,
         "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
@@ -185,6 +185,9 @@ ARMS["TO1F7F8+N2c"] = {**ARMS["TO1F7F8+N2b"], "MASKED_WEAK_NEED_MASK": False}
 ARMS["TO1F7F8+N2d"] = {**ARMS["TO1F7F8+N2b"], "FLEX_ONLY_CONFIRM": True}
 ARMS["TO1F7F8+DR"] = {**ARMS["TO1+F7F8"], "DASM_RESCUE": True,
                       "DASM_P4_CACHE": str(_ROOT / "benchmark" / "gold" / "dev_listener_p4.json")}
+ARMS["SHIP"] = {**ARMS["TO1F7F8+N2b"]}                      # the shipped default since 30 Sept 07:50
+ARMS["SHIP+DR2"] = {**ARMS["SHIP"], "DASM_RESCUE": True, "DASM_RESCUE_NEW_ONLY": True,
+                    "DASM_P4_CACHE": str(_ROOT / "benchmark" / "gold" / "dev_listener_p4.json")}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
@@ -320,7 +323,8 @@ def build(st, sysn, arm, C, tr, offline=False):
         events, flex_ids, ffw = fuse_flexsed(events, Bfr[0], Bfr[1], Bfr[2], Ffr[0], Ffr[1], Ffr[2],
                                              config.AED_MIN_DUR, backend="BEATs", panns=prov, listener=lis,
                                              listener_p1=lp1, extra=ext if config.TIER_SPECIFIC else None)
-        _dr = dasm_rescue_events(st)                                  # round 19 DR
+        from src.labels import canonical as _cn
+        _dr = dasm_rescue_events(st, {_cn(e.label) for e in events})  # round 19 DR / round 20 DR2
         events = events + _dr
         flex_ids |= {id(e) for e in _dr}
         if lp1 is not None:

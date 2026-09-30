@@ -415,6 +415,7 @@ CO_ONSET_ARB = False              # round 17 R3
 MASKED_WEAK_AF = False            # round 18 N2b
 FLEX_ONLY_CONFIRM = False         # round 18 N2d
 DASM_RESCUE = False               # round 19 DR
+DASM_RESCUE_NEW_ONLY = False      # round 20 DR2
 DASM_P4_CACHE = None              # round 19 DR: benchmark/gold/<split>_listener_p4.json
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener
 RELABEL_2L = False                # round 17 R1
