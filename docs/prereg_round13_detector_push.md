@@ -728,3 +728,17 @@ checkpoints; Whisper large-v2 encoder + AudioSet-2M tagging head) was built to t
   `LISTENER_DASM_BAR` = 0.33, i.e. the family is among Whisper-AT's top 3 classes at some step. Top-3 is fixed now (no sweep).
 - **Arm O1** = TO1+F7F8 with F8-W in place of F8. Same full DEV pipeline and report; then DEV2 (report). Candidate for TEST2
   iff DEV-eligible and cost < TO1+F7F8's 2.45 with no needed sound lost vs TO1+F7F8.
+
+### Round 15 amendment O result, DEV, job 31563681 — fails
+Whisper-AT caches built for DEV (49), DEV2 and TEST2 (65 clips, `data/work/wat_cache/`), 0.4-s steps (the tool warns its head
+was trained at 10 s). Gates as before.
+
+| arm | heard | hits / 36 | wrong (v / c / p) | cost β=2 | Δ vs B0r [95 % CI] |
+|---|---|---|---|---|---|
+| B0r | 17 | 14 | 24 (6 / 11 / 7) | 2.78 | — |
+| TO1+F7F8 (DASM vote) | 21 | 18 | 24 (6 / 12 / 6) | 2.45 | −0.33 [−0.86, +0.08] |
+| TO1F7F8+O (Whisper-AT vote) | 20 | 16 | 26 (5 / 15 / 6) | 2.69 | −0.08 [−0.61, +0.41] |
+
+Whisper-AT keeps Explosion 2.8 (DASM killed it) but not Hammer 13.7; it lets through more cross pictures (crossing_bells
+Water, favela Bird ×2 and Vehicle, citywalk Train, rainforest Bell) and loses the favela Train 14.6 and snow-walk Laughter.
+Worse than the DASM vote on cost, hits and wrong: not a candidate. DASM stays as F8.
