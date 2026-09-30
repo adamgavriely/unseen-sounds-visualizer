@@ -816,3 +816,25 @@ one comma-separated line of AudioSet-style tags (`Bird,Wild_animals,Animal`) ins
 applied to its list read as items (commas → lines, `_` → spaces; flag `accept_norm.V4`), the faithful parse of the prompt's
 "one per line". Its audio cut is each item's `run_audio` (the cut Qwen and AF heard). Candidate-level counts seen (DEV P2+PV):
 Kimi-norm accepts 141 (null 27), Qwen 68 (null 3), AF 129 (null 16). Arm TO1F7F8+N3 = TO1+F7F8 with rule TIER3.
+
+### Merged DEV (DEV 49 + tagger DEV 22 = 71 clips, 55 needed sounds) — pick, jobs 31564839 + CPU scoring (2026-09-30)
+Listener caches for all 50 tagged clips rebuilt from scratch (batch-1 answers reproduced exactly: 129/129 DEV2, 208/208
+TEST2 items for both V and AF). Coverage: every tagged clip has yes/no, variant, AF answers and DASM.
+
+| arm | hits / 55 | wrong (v / c / p) | cost | Δ vs B0r [95 % CI] | old DEV hits / wrong | tagger DEV hits / wrong |
+|---|---|---|---|---|---|---|
+| B0r | 16 | 53 (7 / 37 / 9) | 3.69 | — | 14 / 24 | 2 / 29 |
+| B1 | 15 | 62 (7 / 47 / 8) | 4.00 | +0.31 [+0.09, +0.62] | 13 / 30 | 2 / 32 |
+| **TO1+F7F8** | **23** | **48 (8 / 32 / 8)** | **3.16** | **−0.54 [−0.96, −0.17]** | 18 / 24 | 5 / 24 |
+| TO1F7F8+K3 | 23 | 49 (8 / 33 / 8) | 3.18 | −0.51 [−0.90, −0.17] | 18 / 24 | 5 / 25 |
+| TO1+F7F8+FIX | 23 | 50 (8 / 34 / 8) | 3.21 | −0.48 [−0.93, −0.09] | 18 / 26 | 5 / 24 |
+| A1 | 21 | 48 (8 / 32 / 8) | 3.27 | −0.42 [−0.79, −0.11] | 16 / 24 | 5 / 24 |
+| LR-V12+1+F1F4F3+F7F8 | 20 | 46 (8 / 30 / 8) | 3.27 | −0.42 [−0.73, −0.14] | 15 / 22 | 5 / 24 |
+| LR-V12+1+F1F4F3+F7F8@AG4 | 20 | 47 (8 / 31 / 8) | 3.30 | −0.39 [−0.73, −0.11] | 16 / 23 | 4 / 24 |
+| TO1+F7 | 23 | 63 (7 / 47 / 9) | 3.58 | −0.11 [−0.59, +0.37] | 18 / 32 | 5 / 31 |
+| R13-1 | 18 | 53 (7 / 37 / 9) | 3.58 | −0.11 [−0.34, +0.06] | 15 / 24 | 3 / 29 |
+
+**Pick (pre-set rule): TO1+F7F8** (lowest merged-DEV cost, merged-DEV-eligible). On the tagger DEV part alone it also wins:
+5 vs 2 hits, 24 vs 29 wrong. It is the one candidate for the merged TEST.
+N1 (scene fit on all pictures, job 31564838) on DEV 49: 14 hits / 16 wrong / 2.45 — same cost as the base but 4 hits lost:
+fails the pre-set rule.

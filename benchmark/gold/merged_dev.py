@@ -28,8 +28,11 @@ def rows_dev(arms):
     gold, stems = DCC.dev_stems()
     out = {}
     for a in arms:
-        with R.flags({k: R.arm_cfg(a)[k] for k in R.DISPLAY_KEYS}):
-            P = {st: S.load_pictures(R.R13 / f"{a}_{SYS}", st, SYS) or [] for st in stems}
+        if a == "B1":                                   # B1 ran in the devcand harness on DEV (round13_dev scores it the same way)
+            P = {st: S.load_pictures(DCC.DC / f"B1_{SYS}", st, SYS) or [] for st in stems}
+        else:
+            with R.flags({k: R.arm_cfg(a)[k] for k in R.DISPLAY_KEYS}):
+                P = {st: S.load_pictures(R.R13 / f"{a}_{SYS}", st, SYS) or [] for st in stems}
         out[a] = [(st, S.score_clip(gold[st], P[st])) for st in stems]
     return out
 
