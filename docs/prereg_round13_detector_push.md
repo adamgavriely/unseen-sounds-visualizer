@@ -1554,3 +1554,9 @@ FineLAP max over the whole clip is < 0.4331 (the P1 clip bar) is dropped unless 
 DASM's DV stays. **Screen** (`flap_joint_sim.py dv2`, CPU): the saved SHIP6 pictures whose stage-4 row is in the (B)
 would-drop list (same family, picture start inside [row start − 1.5, row end]) are removed, rescored on merged DEV.
 **GO bar = the combined rule vs SHIP6** (old rule, or fewer-pictures: cost < 2.479, wrong ≤ 28 − 3 × hits lost, hits ≥ 22).
+- **DV2 screen result** (`benchmark/gold/flap_dv2_screen.json`): merged **25/55, 26 wrong (9/15/2), cost 2.423** vs SHIP6
+  25/28/2.479; removed exactly 2 pictures (tg_d022 Dog 7.25, tg_d128 Hammer 9.0, both cross), 0 hits lost (the Cat hit is a
+  Cat picture, not the Domestic-animals row). **Passes the old rule → GO to the arm SHIP6+DV2** (`flap_joint_arms.py`:
+  `FINELAP_CLIP_VETO2` 0.4331 applied by a wrapper around the harness's `fuse_flexsed` call — the pipeline's own code plus
+  the one veto, listener keep as DV; `slurm/job_flap_dv2.sh`, after the FLR job). DV2 joins the CV selection set. To ship it
+  would need a `src/` flag (not this thread's remit): reported as an Adam decision.
