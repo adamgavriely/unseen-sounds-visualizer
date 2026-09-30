@@ -892,3 +892,15 @@ parts map from the DEV originals. No `.started` marker existed before the scored
 as intended on the old TEST (46 band rescues accepted, 24 removed by the filters, 13 PANNs-vetoed spans kept, 5 of 60 clips
 with different pictures), netting zero change there; the gain is on the tagger TEST part (+1 hit, −2 wrong).
 **Decision (Adam's rule: switch back only if TEST shows it is worse):** TO1+F7F8 stays the shipped setting.
+
+**Post-hoc checks of the TEST exposure (descriptive only; no config choice follows).**
+- Funnel, gold-free: after the rescue filters, TO1+F7F8 keeps 8 rescued stage-4 rows on the old TEST (6 clips; 2 shown after
+  the gate/display) vs 8 on DEV 49 (7 clips; 4 shown). 5 of 60 old-TEST clips have different pictures (aquarium Water added,
+  smoke-alarm Alarm moved 10.0 → 9.55 s, film Gunshot removed, air-raid Alarm added, dog-barking Vehicle removed / Siren
+  moved); their gains and losses cancel. No sign of a broken path; later arms re-ran TO1+F7F8 on the tagger DEV part and
+  reproduced 5 hits / 24 wrong each time.
+- Power (approximate, from the bootstrap CI half-width 0.15): SD of the per-clip Δ ≈ 0.71, so the one-sided 80 %-power
+  minimum detectable effect on 88 clips is ≈ 0.19 cost; detecting −0.09 would need ≈ 385 clips.
+- Winner's curse: the DEV gain (−0.54 on merged DEV) was selected from 8 frozen candidates after 106 DEV arms; on fresh
+  tagged clips the gain is smaller (tagger DEV +3 hits / −5 wrong; tagger TEST +1 / −2). Pooled DEV+TEST numbers are
+  descriptive only.
