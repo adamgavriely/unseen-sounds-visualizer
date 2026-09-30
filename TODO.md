@@ -14,6 +14,8 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 - [ ] Thesis: insert `docs/thesis/detector_rounds_13_15.md` after §5.8 of ch5; ch5 §5.14 add the R13-1 TEST exposure (29 Sept, 11th), §5.15 row 11; §5.7 stale 'not re-autopsied' line (TO1+F7F8 has a full trace). Arm count on DEV = 106 full-pipeline arms (not ~60).
 
+- [ ] (Adam 30 Sept, for ComfyUI) Every step must compute on the spot when no cache exists: the listener rescue (Qwen3-Omni V1/V2/V4, Audio Flamingo Next V4 on the band runs, P1 and PV spans) and the DASM vote must run live inside stage 4 for a new clip, giving the same answers as the caches (check on DEV clips). Until then `slurm/run_best.sh` precomputes them and LISTENER_REQUIRE_CACHES stops a clip without them.
+
 ## Later
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
 - [ ] (Only if a fixed generic method wins a new test) mistake mining for all 215 labels at night. Possible fixes for a new test: more specific object slot, allow hands for human-action makers, better mining judge.
