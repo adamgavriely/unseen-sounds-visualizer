@@ -664,3 +664,11 @@ The whole-frame VLM misses small sources (church bell, fire-alarm box, air horn)
   majority vs M vs M-any. **Go to a full DEV arm iff** M silences >= 3 more seen sounds AND loses <= 1 needed sound
   (needed_kept drop <= 1/needed). Full arm: TO1+F7F8 and B0r with rule M applied to their stored stage-5 votes plus crop votes
   on their gate stretches; adopted as a candidate for TEST2 only if cost drops on both bases and no needed hit is lost.
+
+## Round 15 amendment N — audio-visual gate vote with Qwen3-Omni (Fable idea 4; written 2026-09-30 BEFORE any number of it)
+The gate VLM sees frames but never hears the sound. Qwen3-Omni-30B-A3B gets the same 6 frames of each cached DEV gate
+stretch (as amendment M) AND the audio of the stretch (16 kHz, `data/work/devcand/wav16`, stretch ± 1 s), with: "These are
+frames from a video, and this is its sound. Is the {label} sound you hear made by something you can see in these frames?
+Answer yes or no." Omni vote = (logit yes − logit no) > 0, the listener's yes/no readout. **Rule N:** stretch seen iff the
+shipped majority, OR (Omni vote yes AND at least one of name/ab/desc says yes). Report-only: N-any (majority OR Omni yes).
+Same screen, same GO bar as amendment M (>= 3 more seen sounds silenced, <= 1 needed sound lost, DEV judge clips).
