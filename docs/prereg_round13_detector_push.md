@@ -1205,3 +1205,12 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
 - **PIC-SIM result:** coverage 34/79 sounds (the rest keep the majority vote). SigLIP-2 cosine seen median 0.518, needed
   0.448, ranges overlap; none ≥ 0.80 or < 0.30, so nothing flips (16/43, 31/36). **STOP.** Exploratory grid: best s_hi 0.60
   gives 18/43, 31/36 — still short.
+
+### Rule change (Adam, 30 Sept 16:02; wording by Fable; written before any arm is judged under it)
+Adam: "its ok to take a bit fewer hits if we also take much less wrongs. then we can think how to improve the hits only".
+From now on a candidate passes against its base iff EITHER the old rule holds (hits ≥ base, wrong ≤ base + 2×gain, cost <
+base, no needed hit lost on either part) OR the **fewer-pictures clause** holds on merged DEV: (a) cost < base; (c) wrong ≤
+base wrong − 3 × hits lost (3:1 is a fixed 50% margin over the cost's 2:1 break-even, not fitted); (d) hits ≥ base hits − 3.
+The paired bootstrap CI is reported, not required (as for every earlier ship). Disclosure: DV-G (19/21/2.620, 2.6:1, 5 lost)
+motivated the change and fails (c) and (d); it is re-run only on a new base and judged as any other arm. Order: BTP, K4A,
+N2c on the new base, DV-G on the new base, then new mechanisms (re-time instead of drop first).
