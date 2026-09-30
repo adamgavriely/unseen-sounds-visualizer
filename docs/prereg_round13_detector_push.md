@@ -860,3 +860,11 @@ tagger DEV part. TEST stays TO1+F7F8 (a passing arm is prepared gold-free on mer
   detection limits, not a bug (BEATs < 0.175 before 1.25 s; the Thunder 8.0 span is below the display bar); hysteresis onsets
   were tried on 14 and 22 Sept (ledger). The 0.25-s uniform lead (screened: +1 hit, −1 wrong on merged DEV for both B0r and
   the base) is not an arm: a 2-value sweep on the selection set, reported as a screen only.
+
+### Round 17 R3 (co-onset arbitration) — fails
+DEV 49 (job 31565012): 17 / 23 / 2.49 vs base 18 / 24 / 2.45. Merged DEV (job 31565013): 22 / 47 / 3.18 vs base 23 / 48 /
+3.16 — one needed hit lost on the old DEV part, no change on the tagger part. Fails.
+P1 V4 job (31565000, 26 min): Qwen V4 on the P1 cuts of DEV 274, tagger DEV 102, TEST 259, tagger TEST 166 items, with both
+listeners' family lists (`benchmark/gold/*_listener_p1v4.json`). Candidate-level count seen before the R1 arm: the R1 rule
+would relabel 21 DEV and 13 tagger-DEV P1 spans (e.g. bell_miami Train → Bell, helicopter Vehicle → Aircraft, waterfall
+Vehicle → Water, tg_d120 Screaming → Cat; also many → Alarm, "Natural sounds", "Arrow").
