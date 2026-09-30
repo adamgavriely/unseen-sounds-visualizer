@@ -1589,3 +1589,27 @@ left SHIP6's listener caches on the DEV files and every tagger-DEV keep came bac
 and re-run: screen (B) now drops 34 rows (0 needed-class; Dog / Domestic animals / Livestock kept by the yes/no P1 answer),
 the DV2 picture screen removes 0 pictures (25/28/2.479 = SHIP6, STOP), the Cat claim disappears; screen (A) and the CV are
 unchanged (they never used the keep). The arm numbers stand; the screens now agree with them on both parts.
+
+## Round 33 — SHIP7 error ledger and SpotSound second-opinion veto (advisor thread; written 2026-09-30 BEFORE any number)
+**Base = SHIP7** (= SHIP6 + FineLAP veto; saved pictures = arm `SHIP6+FLAP|proposed`, rows identical to `SHIP7|proposed`):
+merged DEV 71 clips, 25/55 hits, 27 wrong (9/16/2), cost 2.451; old DEV 17/16, tagger DEV 8/11.
+**Ledger (descriptive, no rule; `benchmark/gold/ship7_errors.py` -> `ship7_errors.json`).** Every wrong picture (27) and every
+missed needed sound (30) in one table: part, clip, family, time, class, and the stage that produced / removed it. Producing stage
+of a picture = its stage-4 row (`origin` tagger / flex, `rescued`, `pre_start` = BTP moved it) and the arm's listener record
+(`a_added` band rescue, `b_kept` PV keep, `f7` mirror keep, DASM P4 = DR2). Removing stage of a miss, in this fixed order:
+gate-silenced (same-family spec in the onset window with `augment` false; the gate's reason kept) -> timing (a same-family
+picture exists in the clip outside the window) -> below the picture floor (spec conf < 0.40) -> the first arm of the chain
+B0r -> TO1+F7F8 -> +N2b -> +DR2 -> +KV4 -> +DV -> +BTP -> +CONT -> +FLAP where a same-family stage-4 row in the window disappears
+-> rescue filter (`r14_dropped` F8 / ONCE / FLAP) -> listener refused (P2/PV item, Qwen V4 / AF V4 flags) -> FlexSED family peak
+in [onset - 0.5, onset + 1.0] (>= 0.5 covered / never asked; 0.3-0.5 below LO) -> BEATs peak >= 0.175 (weak) -> unheard.
+"Ceiling" = gate-visible (annotation says visible), unheard by every detector, or timing of a sound already drawn.
+**SPOT-V (arm-level simulation on saved pictures; pre-registered rule).** A RESCUED placed picture of SHIP7 (spec `rescued`
+true) is dropped when SpotSound-A's EXIST answer on its own candidate cut (`benchmark/gold/spotsound_raw.json`, matched by
+part, clip, pool, canonical family and run overlap as `cross_group.p2_item`) starts with "no". DR2 / P4 rescues and rescued
+pictures with no SpotSound item are kept and counted. Non-rescued pictures are never touched (the round-31 SPOT screen (b) was on
+V4 accepts only). Reported beside, not decisive: SPOT-no as round 31 (EXIST no OR no GROUND interval overlapping the run +- 0.5 s).
+Rescored with `score_per_sound` as the BTP / CONT screens. **GO bar = the combined rule vs SHIP7:** old rule (hits >= 25, wrong <=
+27 + 2 x gain, cost < 2.451, no needed hit lost on either part) OR fewer-pictures (cost < 2.451, wrong <= 27 - 3 x hits lost,
+hits >= 22). Known before writing: SHIP7 has 14 rescued specs (8 DEV, 6 tagger DEV) in its augmentations.json, so the reach is
+at most those; the candidate-level (b) screen listed the snow-walk Belly laugh 8.0 (the Laughter 8.08 hit) among its SPOT-no items.
+One new idea is written below AFTER the ledger is read and BEFORE its number.
