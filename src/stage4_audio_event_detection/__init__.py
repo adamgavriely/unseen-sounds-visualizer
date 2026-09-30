@@ -823,6 +823,34 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 gone.append(e)
             events = [e for e in events if e not in gone]
             print(f"       [stage4] DASM clip veto ({dv}): dropped {len(gone)} span(s)", flush=True)
+    lv = getattr(config, "DASM_LOCAL_VETO", None)
+    if lv:
+        # round 29 DV-L / DV-G: the DASM test inside the span +- 0.5 s; keep by either listener ("either") or by both ("both")
+        d, clip = getattr(config, "LISTENER_DASM_DIR", None), getattr(config, "_CURRENT_CLIP", None)
+        f = Path(d) / f"{clip}.npz" if d and clip else None
+        if f is not None and f.exists():
+            z = np.load(f, allow_pickle=True)
+            dl, dfw, dt = [str(x) for x in z["labels"]], z["fw"], z["times"]
+            mode = getattr(config, "DASM_LOCAL_KEEP", "either")
+            gone = []
+            for e in events:
+                if getattr(e, "rescued", False):
+                    continue
+                cols = [i for i, l in enumerate(dl) if canonical(l) == canonical(e.label)]
+                m = (dt >= e.start - 0.5) & (dt <= e.end + 0.5)
+                if not cols or not m.any() or float(dfw[m][:, cols].max()) >= float(lv):
+                    continue
+                if mode == "both":
+                    if _v4_names_qwen(e) and _af_p1_accepts(e):
+                        continue
+                else:
+                    if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
+                        continue
+                    if _af_p1_accepts(e):
+                        continue
+                gone.append(e)
+            events = [e for e in events if e not in gone]
+            print(f"       [stage4] DASM local veto ({lv}, keep {mode}): dropped {len(gone)} span(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
     if veto > 0:
         peak = {}
@@ -1136,6 +1164,20 @@ def _v4_names(e) -> bool:
         if c and fam in (min(c, key=lambda x: abs(x["start"] - e.start)).get("qwen_fams") or []):
             return True
     return _af_p1_accepts(e)
+
+
+def _v4_names_qwen(e) -> bool:
+    """Qwen V4 (P1 open inventory, config.RELABEL_P1V4) names e's family on its P1 cut"""
+    from src.labels import canonical
+    p, clip = getattr(config, "RELABEL_P1V4", None), getattr(config, "_CURRENT_CLIP", None)
+    if not p or clip is None:
+        return False
+    key = (p, clip)
+    if key not in _P1V4:
+        _P1V4[key] = [x for x in _cache_items(p) if x.get("clip") == clip]
+    fam = canonical(e.label)
+    c = [x for x in _P1V4[key] if x["family"] == fam and abs(x["end"] - e.end) <= 0.02 and e.start - 0.02 <= x["start"] <= e.end]
+    return bool(c) and fam in (min(c, key=lambda x: abs(x["start"] - e.start)).get("qwen_fams") or [])
 
 
 _DASMC = {}

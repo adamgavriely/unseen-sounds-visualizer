@@ -1156,3 +1156,8 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
   Qwen V4 and Audio Flamingo V4 name its family (K1's bypass, round 14), together with ONCE-G (a later rescue of a family
   counts as new if it starts > 2.0 s after the kept one, round 22). Each part alone failed on older bases (K1 +6 wrong, ONCE-G
   +3 wrong); the pair was never run. Pass rule: hits ≥ 24, wrong ≤ 34 + 2 × gain, cost < 2.704, no needed hit lost on either part.
+- **DV-L (Fable; written before its number; base SHIP4):** DV with a span-local window: a non-rescued stage-4 span is dropped
+  if its family's DASM never reaches v = 0.084 within [start − 0.5, end + 0.5] s, unless Qwen (P1 rule) or AF V4 names it.
+- **DV-G (same; base SHIP4):** a non-rescued span is dropped if its family's DASM does not reach g = 0.575 within the span
+  ± 0.5 s, unless BOTH Qwen V4 (P1 open inventory) and AF V4 name the family on its cut. Both bars are the round-6 280-clip
+  calibration. Same pass rule as F8-U (hits ≥ 24, wrong ≤ 34 + 2 × gain, cost < 2.704, no needed hit lost on either part).

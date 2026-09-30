@@ -63,7 +63,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
         "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False, "MASKED_WEAK_NEED_MASK": True, "FLEX_ONLY_CONFIRM": False,
         "DASM_RESCUE": False, "DASM_P4_CACHE": None, "DASM_RESCUE_NEW_ONLY": False, "MASKED_WEAK_PANNS": False,
-        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6, "LISTENER_V4B_CACHE": None, "DASM_CLIP_VETO": None,
+        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6, "LISTENER_V4B_CACHE": None, "DASM_CLIP_VETO": None, "DASM_LOCAL_VETO": None, "DASM_LOCAL_KEEP": "either",
         "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
@@ -208,6 +208,8 @@ ARMS["SHIP3+QE"] = {**ARMS["SHIP3"], "LISTENER_V4B_CACHE": str(_ROOT / "benchmar
 ARMS["SHIP3+DV"] = {**ARMS["SHIP3"], "DASM_CLIP_VETO": 0.08392333984375}
 ARMS["SHIP4"] = {**ARMS["SHIP3+DV"]}                    # the shipped default since round 28
 ARMS["SHIP4+F8U"] = {**ARMS["SHIP4"], "F8_BYPASS_BOTH": True, "ONCE_GAP": 2.0}
+ARMS["SHIP4+DVL"] = {**ARMS["SHIP4"], "DASM_LOCAL_VETO": 0.08392333984375, "DASM_LOCAL_KEEP": "either"}
+ARMS["SHIP4+DVG"] = {**ARMS["SHIP4"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "both"}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
