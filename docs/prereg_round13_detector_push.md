@@ -672,3 +672,16 @@ frames from a video, and this is its sound. Is the {label} sound you hear made b
 Answer yes or no." Omni vote = (logit yes − logit no) > 0, the listener's yes/no readout. **Rule N:** stretch seen iff the
 shipped majority, OR (Omni vote yes AND at least one of name/ab/desc says yes). Report-only: N-any (majority OR Omni yes).
 Same screen, same GO bar as amendment M (>= 3 more seen sounds silenced, <= 1 needed sound lost, DEV judge clips).
+
+### Confirmation set 1, DEV2 (6 clips, 3 needed sounds), jobs 31563213–15 (2026-09-30)
+DASM restored (GitHub cai525/Transformer4SED c3e883d + HF CPF2/detect_any_sound); restore check: 4 DEV clips re-scored,
+max |diff| 0.0 against the old cache (`benchmark/gold/dasm_restore_check.py`). DASM caches built for DEV2 and TEST2; gates
+D0 20/20, D5 10/10. TEST2 stage 4/5 were built but NOT scored.
+
+| arm | hits / 3 | wrong (v / c / p) | cost | Δ vs B0r [95 % CI] |
+|---|---|---|---|---|
+| B0r | 1 | 8 (0 / 8 / 0) | 4.00 | — |
+| B1 | 1 | 8 (0 / 8 / 0) | 4.00 | +0.00 |
+| TO1+F7F8 | 2 | 8 (1 / 7 / 0) | 3.33 | −0.67 [−2.00, +0.00] |
+
+Same direction as DEV (+1 hit, same wrong), on 3 needed sounds: not a test. `benchmark/gold/dev2_score.json`.

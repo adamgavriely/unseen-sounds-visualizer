@@ -14,6 +14,21 @@
   "B1": {
    "BEATS_SELF_VETO": 0.1218,
    "PANNS_VETO": 0.0
+  },
+  "TO1+F7F8": {
+   "LISTENER_RESCUE": true,
+   "LISTENER_RULE": "TIER",
+   "LISTENER_VCACHE": "/home/dsi/adamg/MscProj_tg/benchmark/gold/dev2_listener_v.json",
+   "LISTENER_AFCACHE": "/home/dsi/adamg/MscProj_tg/benchmark/gold/dev2_listener_afn.json",
+   "LISTENER_LO": 0.5,
+   "LISTENER_ONCE": true,
+   "TWIN_MAX": true,
+   "MIRROR_VETO": 0.7,
+   "LISTENER_CONFIRMED_MIRROR": true,
+   "LISTENER_CACHE": "/home/dsi/adamg/MscProj_tg/benchmark/gold/dev2_listener.json",
+   "LISTENER_DASM_VOTE": true,
+   "LISTENER_DASM_DIR": "/home/dsi/adamg/MscProj_tg/data/work/dasm_dev2",
+   "LISTENER_DASM_BAR": 0.575
   }
  },
  "rows": {
@@ -59,6 +74,20 @@
     "viewer_cost": 4.0,
     "coverage": 0.1770833333333333,
     "wrong": 8
+   },
+   "TO1+F7F8": {
+    "hits": 2,
+    "misses": 1,
+    "visible": 1,
+    "cross": 7,
+    "phantom": 0,
+    "dup": 0,
+    "F1": 0.30769230769230765,
+    "P": 0.2,
+    "R": 0.6666666666666666,
+    "viewer_cost": 3.3333333333333335,
+    "coverage": 0.336907894736842,
+    "wrong": 8
    }
   },
   "blind_a2i": {
@@ -103,17 +132,33 @@
     "viewer_cost": 6.0,
     "coverage": 0.1770833333333333,
     "wrong": 14
+   },
+   "TO1+F7F8": {
+    "hits": 2,
+    "misses": 1,
+    "visible": 2,
+    "cross": 8,
+    "phantom": 1,
+    "dup": 0,
+    "F1": 0.25,
+    "P": 0.15384615384615385,
+    "R": 0.6666666666666666,
+    "viewer_cost": 4.333333333333333,
+    "coverage": 0.336907894736842,
+    "wrong": 11
    }
   }
  },
  "heard": {
   "proposed": {
    "B0r": 1,
-   "B1": 1
+   "B1": 1,
+   "TO1+F7F8": 2
   },
   "blind_a2i": {
    "B0r": 1,
-   "B1": 1
+   "B1": 1,
+   "TO1+F7F8": 2
   }
  },
  "delta_vs_B0r": {
@@ -129,6 +174,12 @@
     0.0,
     0.0,
     1.0
+   ],
+   "TO1+F7F8": [
+    -0.6666666666666666,
+    -2.0,
+    0.0,
+    0.328
    ]
   },
   "blind_a2i": {
@@ -143,6 +194,12 @@
     0.0,
     2.0,
     1.0
+   ],
+   "TO1+F7F8": [
+    -1.0,
+    -2.3333333333333335,
+    0.0,
+    0.083
    ]
   }
  },
@@ -159,6 +216,12 @@
     0.0,
     0.0,
     1.0
+   ],
+   "TO1+F7F8": [
+    -0.6666666666666666,
+    -2.0,
+    0.0,
+    0.328
    ]
   },
   "blind_a2i": {
@@ -173,6 +236,12 @@
     -2.0,
     0.0,
     0.356
+   ],
+   "TO1+F7F8": [
+    -1.6666666666666667,
+    -3.0,
+    -0.3333333333333333,
+    0.0175
    ]
   }
  },
@@ -181,11 +250,31 @@
    "B1": {
     "gained": [],
     "lost": []
+   },
+   "TO1+F7F8": {
+    "gained": [
+     [
+      "tg_d075",
+      "Fire alarm",
+      0.0
+     ]
+    ],
+    "lost": []
    }
   },
   "blind_a2i": {
    "B1": {
     "gained": [],
+    "lost": []
+   },
+   "TO1+F7F8": {
+    "gained": [
+     [
+      "tg_d075",
+      "Fire alarm",
+      0.0
+     ]
+    ],
     "lost": []
    }
   }
