@@ -68,8 +68,10 @@ def parity(stem):
 
 def stems_of(split):
     st = sorted(x.strip() for x in (GOLDD / f"{split}_stems.txt").read_text(encoding="utf-8").split() if x.strip())
-    want = {"dev2": 0, "test2": 1}[split]
-    assert st and all(parity(s) == want for s in st), (split, st)
+    # batch 1 by sha256 parity, batch 2 by the tag-balanced split; membership = benchmark/gold/tagger_split.json
+    sp = json.loads((GOLDD / "tagger_split.json").read_text(encoding="utf-8"))["batches"]
+    want = sorted(x for b in sp.values() for x in b[split])
+    assert st and st == want, (split, st, want)
     have = {p.stem for p in CLIPS.glob("tg_d*.mp4")}
     assert set(st) <= have, sorted(set(st) - have)
     return st
