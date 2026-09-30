@@ -431,6 +431,7 @@ KEEP_NEEDS_V4_ALL_DASM_KEEP = False   # round 35 K4A-D: DASM (F8 bar) keeps a K4
 BAND_TWIN_PULL = None      # round 30 BTP: FlexSED run bar for the start pull (off)
 REPEAT_NEEDS_SILENCE = None   # round 31 RPT-S: FlexSED bar of the >= 1 s silence a repeat needs (off)
 CONTINUATION_VETO = None   # round 31 CONT: FlexSED bar of the run a continuation span sits in (off)
+REPEAT_DASM_BRIDGE = None  # round 35 DBR: DASM bar a gap between two same-family spans must stay above (off)
 FINELAP_VETO = None        # round 31 FLAP (b): FineLAP bar for rescued spans (off)
 FINELAP_DIR = None         # per-clip FineLAP frame scores (<clip>.npz: labels, fs, fe, scores)
 TIER_SPLIT = 0.6                  # the TIER rule's peak split (amendment E; round 25 re-selects it by CV)

@@ -922,6 +922,33 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 gone.append(e)
         events = [e for e in events if e not in gone]
         print(f"       [stage4] RPT-S ({rps}): dropped {len(gone)} repeat span(s)", flush=True)
+    dbr = getattr(config, "REPEAT_DASM_BRIDGE", None)
+    if dbr:
+        # round 35 DBR: a later non-rescued span of a family already drawn in the clip is dropped when DASM hears the family
+        # (>= dbr) in every frame of the gap between the earlier span's end and this span's start (DASM gaps <= LISTEN_RUN_GAP)
+        d, clip = getattr(config, "LISTENER_DASM_DIR", None), getattr(config, "_CURRENT_CLIP", None)
+        f = Path(d) / f"{clip}.npz" if d and clip else None
+        if f is not None and f.exists():
+            z = np.load(f, allow_pickle=True)
+            dl, dfw, dt_ = [canonical(str(x)) for x in z["labels"]], z["fw"], z["times"]
+            disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+            last_end, gone = {}, []
+            for e in sorted([e for e in events if e.confidence >= disp], key=lambda e: e.start):
+                fam = canonical(e.label)
+                if fam in last_end and not getattr(e, "rescued", False) and e.start > last_end[fam]:
+                    cols = [i for i, l in enumerate(dl) if l == fam]
+                    m = (dt_ >= last_end[fam]) & (dt_ <= e.start)
+                    if cols and m.any():
+                        low = dfw[m][:, cols].max(axis=1) < float(dbr)
+                        run = best = 0
+                        for v in low:
+                            run = run + 1 if v else 0; best = max(best, run)
+                        step = float(dt_[1] - dt_[0]) if len(dt_) > 1 else 0.02
+                        if best * step <= LISTEN_RUN_GAP:
+                            gone.append(e); continue
+                last_end[fam] = max(last_end.get(fam, 0.0), e.end)
+            events = [e for e in events if e not in gone]
+            print(f"       [stage4] DBR ({dbr}): dropped {len(gone)} repeat span(s)", flush=True)
     cv = getattr(config, "CONTINUATION_VETO", None)
     if cv and ffw is not None:
         # round 31 CONT: a span (rescued included) is dropped when a FlexSED run of its family (>= cv, gaps <= LISTEN_RUN_GAP)

@@ -1893,3 +1893,6 @@ ambulance Siren (0.15–0.19), helicopter Vehicle (0.12–0.15), tg_d128 Hammer 
 the bar, so the rule never fires on them. Every one of the 71 clips has some flat family (absent families sit near 0); only the
 placed-family count is informative. The one drop rests on a DASM score that is constant for 28 s, so DBR's win is one picture
 on one clip; the merged TEST is spent and cannot confirm it. GO = a `src/` flag on the real pipeline is Adam's decision.
+- **DBR arm (after its GO screen):** stage-4 flag `REPEAT_DASM_BRIDGE` 0.575 (before CONT): same rule on stage-4 spans ≥ the
+  display bar. Arm SHIP7+DBR on the corrected merged DEV; old rule vs SHIP7. Disclosure: the screen fired only on the
+  motivating clip (b3_barbershop).
