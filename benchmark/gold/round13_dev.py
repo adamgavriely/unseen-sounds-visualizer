@@ -30,7 +30,7 @@ from benchmark.gold import dev_candidates_check as DCC
 from benchmark.gold import score_per_sound as S
 from src.labels import canonical
 from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_events, attach_breaks, fuse_flexsed,
-                                              listener_from_cache, listener_from_vcache, filter_rescued,
+                                              listener_from_cache, listener_from_vcache, filter_rescued, post_rules,
                                               listener_p1_lookup, add_flexsed_extra, load_extra_evidence,
                                               relocate_onsets)
 from src.types import AudioEvent
@@ -61,7 +61,8 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
-        "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm",
+        "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False,
+        "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
         "FLEXSED_EXTRA": False, "FLEXSED_EXTRA_DIR": None, "FLEXSED_EXTRA_QUERIES": None,
@@ -178,6 +179,9 @@ ARMS["TO1F7F8+O"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_DIR": str(WORK / "wat_ca
 ARMS["TO1F7F8+N1"] = {**ARMS["TO1+F7F8"], "SCENE_FIT_ALL": True}
 ARMS["TO1F7F8+N2"] = {**ARMS["TO1+F7F8"], "MASKED_WEAK_VETO": True}
 ARMS["TO1F7F8+N4"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_RANK": 3}
+ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
+ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
+                      "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
 ARMS["TO1F7F8+N3"] = {**ARMS["TO1+F7F8"], "LISTENER_RULE": "TIER3",
                       "LISTENER_KCACHE": str(_ROOT / "benchmark" / "gold" / "dev_listener_kimi.json")}
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
@@ -370,7 +374,7 @@ def reloc_rows(rows, arm, C, info, res, k, st):
 def filter_rows(rows, arm, C, ffw, res, k, st):
     """round 14: the pipeline's filter_rescued on the refined rows (as detect_events, after refinement)"""
     cfg = arm_cfg(arm)
-    if not cfg.get("LISTENER_RESCUE"):
+    if not (cfg.get("LISTENER_RESCUE") or cfg.get("CO_ONSET_ARB") or cfg.get("RELABEL_2L")):
         return rows
     with flags(cfg):
         evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"], rescued=r.get("rescued", False),
@@ -383,7 +387,19 @@ def filter_rows(rows, arm, C, ffw, res, k, st):
     keep = {id(e) for e in kept}
     if any(dropped.values()):
         res.setdefault("r14_dropped", {})[f"{k}|{st}"] = dropped
-    return [r for r, e in zip(rows, evs) if id(e) in keep]
+    out = [r for r, e in zip(rows, evs) if id(e) in keep]
+    if cfg.get("CO_ONSET_ARB") or cfg.get("RELABEL_2L"):                 # round 17 R3 / R1, as detect_events
+        with flags(cfg):
+            ev2 = [e for e in evs if id(e) in keep]
+            org = {id(e): r.get("origin", "tagger") for r, e in zip(rows, evs) if id(e) in keep}
+            lp1 = (listener_p1_lookup(cfg.get("LISTENER_VCACHE"), cfg.get("LISTENER_CACHE"), st)
+                   if cfg.get("LISTENER_CONFIRMED_MIRROR") else None)
+            ev3, log = post_rules(ev2, ffw, C["flex"][1], C["flex"][2], st, origin=org, listener_p1=lp1)
+        if log["R1"] or log["R3"]:
+            res.setdefault("r17", {})[f"{k}|{st}"] = log
+        k3 = {id(e): e for e in ev3}
+        out = [{**r, "label": k3[id(e)].label} for r, e in zip(rows, evs) if id(e) in k3]
+    return out
 
 
 def add_breaks(rows, arm, C, ffw):

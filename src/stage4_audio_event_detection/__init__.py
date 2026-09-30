@@ -259,6 +259,10 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                                        extra=load_extra_evidence(Path(wav_path).parent.name))
     if getattr(config, "LISTENER_RESCUE", False):          # round 14: precision filters on the rescued spans
         events, _dropped = filter_rescued(events, ffw, ftimes, flabels, dasm=_pipeline_dasm(wav_path))
+    if getattr(config, "CO_ONSET_ARB", False) or getattr(config, "RELABEL_2L", False):   # round 17 R3 / R1
+        events, _r17 = post_rules(events, ffw, ftimes, flabels, Path(wav_path).parent.name,
+                                  origin={id(e): ("flex" if id(e) in flex_ids else "tagger") for e in events},
+                                  listener_p1=_pipeline_listener_p1(wav_path))
     if getattr(config, "RETRIGGER", None):
         attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels)
     n_classes = len({e.label for e in events})
@@ -1014,6 +1018,59 @@ def _family_match(a: str, b: str) -> bool:
         return True
     ca, cb = canonical(a), canonical(b)
     return is_descendant(ca, cb) or is_descendant(cb, ca) or is_descendant(a, cb) or is_descendant(b, ca)
+
+
+def post_rules(events, ffw, ftimes, flabels, clip: str, origin=None, listener_p1=None):
+    """Round 17 (docs/prereg_round13_detector_push.md), after the rescue filters; both flags default off.
+    R3 CO_ONSET_ARB: two display-level spans of different families starting within +-0.3 s -> keep the one with the higher
+      FlexSED family peak inside its own span, unless the listener (listener_p1, F7's rule) accepts both.
+    R1 RELABEL_2L: a display-level tagger-origin, non-rescued span whose P1 cut neither open-inventory listener (Qwen V4 and
+      Audio Flamingo V4 family lists, config.RELABEL_P1V4) names as its own family, while both name one same depictable
+      family F -> the span is relabelled F (first such F in Qwen's order). origin: {id(event): "tagger"|"flex"}.
+    Returns (events, log)."""
+    from src.labels import canonical
+    log = {"R3": [], "R1": []}
+    disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+    origin = origin or {}
+
+    def fpeak(e):
+        cols = [i for i, lab in enumerate(flabels) if canonical(lab) == canonical(e.label)]
+        m = (np.asarray(ftimes) >= e.start - 1e-6) & (np.asarray(ftimes) <= e.end + 1e-6)
+        return float(np.asarray(ffw)[m][:, cols].max()) if cols and m.any() else 0.0   # ffw is [frames, queries]
+    if getattr(config, "CO_ONSET_ARB", False) and ffw is not None:
+        vis = sorted([e for e in events if e.confidence >= disp], key=lambda e: e.start)
+        drop = set()
+        for i, a in enumerate(vis):
+            for b in vis[i + 1:]:
+                if b.start - a.start > 0.3:
+                    break
+                if id(a) in drop or id(b) in drop or canonical(a.label) == canonical(b.label):
+                    continue
+                if listener_p1 is not None and listener_p1(a.label, a.start, a.end)[0] and listener_p1(b.label, b.start, b.end)[0]:
+                    continue
+                pa, pb = fpeak(a), fpeak(b)
+                lo = b if pa >= pb else a
+                drop.add(id(lo)); log["R3"].append([lo.label, round(lo.start, 2), round(min(pa, pb), 3), round(max(pa, pb), 3)])
+        events = [e for e in events if id(e) not in drop]
+    path = getattr(config, "RELABEL_P1V4", None)
+    if getattr(config, "RELABEL_2L", False) and path:
+        its = [x for x in _cache_items(path) if x.get("clip") == clip]
+        for e in events:
+            if e.confidence < disp or getattr(e, "rescued", False) or origin.get(id(e), "tagger") != "tagger":
+                continue
+            fam = canonical(e.label)
+            c = [x for x in its if x["family"] == fam and abs(x["end"] - e.end) <= 0.02 and e.start - 0.02 <= x["start"] <= e.end]
+            if not c:
+                continue
+            it = min(c, key=lambda x: abs(x["start"] - e.start))
+            q, a = it.get("qwen_fams") or [], it.get("af_fams")
+            if a is None or fam in q or fam in a:
+                continue
+            both = [f for f in q if f in a and f != fam]
+            if both:
+                log["R1"].append([e.label, round(e.start, 2), both[0]])
+                e.label = both[0]
+    return events, log
 
 
 def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
