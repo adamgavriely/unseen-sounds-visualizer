@@ -1202,3 +1202,6 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
   lost; one outcome change (tg_d107 Crying 1.25→0.08, cross→hit); mv_detective Alarm and tg_d107 Screaming moved, outcomes
   unchanged. **GO.** (src LISTEN_RUN_BAR is 0.4; at 0.4 same totals — reported only.) Arm SHIP4+BTP (`BAND_TWIN_PULL` 0.5,
   in stage 4 after the vetoes, non-rescued spans) runs on merged DEV; same pass rule vs SHIP4.
+- **PIC-SIM result:** coverage 34/79 sounds (the rest keep the majority vote). SigLIP-2 cosine seen median 0.518, needed
+  0.448, ranges overlap; none ≥ 0.80 or < 0.30, so nothing flips (16/43, 31/36). **STOP.** Exploratory grid: best s_hi 0.60
+  gives 18/43, 31/36 — still short.
