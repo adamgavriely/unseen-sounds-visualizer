@@ -1329,3 +1329,26 @@ idea is written here before its number. Files: `listener_ptc.py`, `slurm/job_ptc
   Faithful stage-4 reading (every burst of a spec tested, surviving bursts re-placed through `_display_spans`; `CONT-rows`
   in `cont_screen.json`): identical, 24/55, 28 (9/17/2), 2.535, same hit lost. The screen reads the raw FlexSED cache
   columns (no per-family rescale), the same shortcut the BTP screen used, which its arm then matched exactly.
+
+## Round 31 SUBJ (Fable, gate group; written 2026-09-30 BEFORE any number)
+Trace of the shipped SHIP5 pictures on merged DEV (`benchmark/gold/gate_group.py`, `gate_group.json`, frames = the gate's
+own six per stretch): 9 visible wrong pictures = 5 with every vote "no" and "nothing" named on every stretch (storm ×2
+Thunder, as_church_bell Bell, london_protest Vehicle for the air horn, un_driving Explosion for the starter's bang), 3 one-yes
+splits on a plainly active source (fire-alarm pull, elephant splashing Water, kids' Laughter), 1 mixed across stretches
+(tg_d088 Thunder: "lightning" seen on one stretch only). 6 gate-silenced needed sounds: macaws, robin, church tower, boxer
+dog ×2 (Fart 0.0 and 5.6) — a real same-family thing on screen, unanimous or 2-of-3 "seen", the annotator's "not this one"
+inaudible in stills (N and GA already failed there); ly_ambulance Vehicle is unreachable (span starts at 0.0, onset 7.3).
+The miss side is at the frame ceiling; the screen goes to the wrong side, where the sound IS the scene (rainstorm,
+castle, protest, bath) and the per-stretch gate, asked for an object, finds none.
+- **Rule SUBJ (scene-subject silence).** A drawn spec whose every gate stretch said "not seen" is silenced iff the clip's
+  scene sentence (the pipeline's own `SCENE_PROMPT` answer, printed as `[stage5] scene:` and computed on the spot for a new
+  video) is about the sound: `reason._about_the_sound(scene, event_label)` (word overlap, SUBJ-W) OR the gate VLM
+  (Qwen3.8-27B, greedy, text only) answers "yes" to `MAKES_SOUND_PROMPT` with the scene sentence as the thing visible
+  (SUBJ). Applies to every drawn picture, rescued or not; no label lists. Report-only variant SUBJ-50: also requires the
+  picture to cover ≥ 50 % of the clip.
+- **Screen.** Saved SHIP4+BTP (= SHIP5) pictures of merged DEV, scene sentences from the SHIP5 job logs (55 clips with
+  pictures, `scene_sentences_ship5.json`), rescored with `score_per_sound` as the BTP screen (`benchmark/gold/subj_screen.py`).
+  Base 25 / 33 / 2.620. **GO** to a full arm iff wrong ≤ 30 with 0 current hits lost (hits ≥ 25, cost < 2.620 follow).
+  Also reported: the judge-set view (gate_gold DEV clips: seen silenced / 43, needed kept / 36) is not available for a
+  whole-clip rule without the scene sentences of the non-picture clips — reported only where a sentence exists.
+- If STOP, a second idea is written here before its number.
