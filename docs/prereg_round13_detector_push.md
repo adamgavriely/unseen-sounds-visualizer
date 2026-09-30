@@ -1091,3 +1091,12 @@ DEV judge clips (79 sounds: 43 seen, 36 needed), majority rule: Gemma silences 2
 26/36 needed (Qwen3.8 31/36) — 8 more leaks caught for 5 needed sounds lost, below the break-even and the pre-set bar
 (keep ≥ as many needed). Unanimous: 10/43 and 33/36; obvious: 18/43 and 31/36 (+2 seen, same needed, below the ≥ 3 bar).
 A fourth VLM moves the gate along the same trade-off line, as the 26 Sept panel predicted.
+
+## Round 25 — cross-validated re-selection of the two never-tuned listener parameters (Fable; written before any number)
+Base SHIP3 (= SHIP2+KV4). `config.TIER_SPLIT` (default 0.6, read by `_tier`) and `LISTENER_LO` (0.5). Grid TIER_SPLIT ∈
+{0.5, 0.6, 0.7} × LISTENER_LO ∈ {0.4, 0.5, 0.6}, cells with LO ≥ SPLIT void; SHIP3 = (0.6, 0.5), already scored; new cells
+CV54, CV64, CV74, CV75, CV76, each run once on merged DEV. Selection: 5-fold over clips stratified by part, seeds 0–9; per fold
+the cell with the lowest training cost (ties → SHIP3); report the procedure's mean held-out cost vs the fixed SHIP3 cell.
+Candidate = the full-merged-DEV argmin. Adopt iff the procedure's CV cost ≤ SHIP3's CV cost AND the standard pass rule (hits ≥
+24, wrong ≤ 41 + 2 × gain, cost < 2.901, no needed hit lost on either part). If the argmin is SHIP3: "stable under CV", no
+TEST read. Any adopted cell is reported on TEST afterwards, never chosen on it.

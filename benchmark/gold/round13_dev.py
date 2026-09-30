@@ -63,7 +63,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
         "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False, "MASKED_WEAK_NEED_MASK": True, "FLEX_ONLY_CONFIRM": False,
         "DASM_RESCUE": False, "DASM_P4_CACHE": None, "DASM_RESCUE_NEW_ONLY": False, "MASKED_WEAK_PANNS": False,
-        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None,
+        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6,
         "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
@@ -198,6 +198,12 @@ ARMS["SHIP2+KV4"] = {**ARMS["SHIP2"], "KEEP_NEEDS_V4": True,
 ARMS["SHIP3"] = {**ARMS["SHIP2+KV4"]}                  # the shipped default since round 21
 ARMS["SHIP3+TD"] = {**ARMS["SHIP3"], "TIER_2OF3_DASM": True}
 ARMS["SHIP3+ONCEG"] = {**ARMS["SHIP3"], "ONCE_GAP": 2.0}
+# round 25 CV grid (TIER_SPLIT x LISTENER_LO) on the shipped stack
+ARMS["SHIP3+CV54"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.5, "LISTENER_LO": 0.4}
+ARMS["SHIP3+CV64"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.6, "LISTENER_LO": 0.4}
+ARMS["SHIP3+CV74"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.7, "LISTENER_LO": 0.4}
+ARMS["SHIP3+CV75"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.7, "LISTENER_LO": 0.5}
+ARMS["SHIP3+CV76"] = {**ARMS["SHIP3"], "TIER_SPLIT": 0.7, "LISTENER_LO": 0.6}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}

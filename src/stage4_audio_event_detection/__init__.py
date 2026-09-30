@@ -954,7 +954,7 @@ def _arbiter_candidate(it) -> bool:
 def _tier(acc: dict, peak: float) -> bool:
     """amendment E TIER: peak >= 0.6 -> Qwen V4 (amendment K3, TIER_HIGH_OR: Qwen V4 OR AF V4); below -> Qwen V4 AND AF V4"""
     v4, af = bool(acc.get("V4", False)), bool(acc.get("AF_V4", False))
-    if peak >= 0.6:
+    if peak >= float(getattr(config, "TIER_SPLIT", 0.6)):          # round 25: the split is a config value (was 0.6)
         return (v4 or af) if getattr(config, "TIER_HIGH_OR", False) else v4
     return v4 and af
 
@@ -1034,7 +1034,7 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
                 kv4 = bool(((k or {}).get(kfield) or {}).get("V4", False))
                 acc["KIMI_V4"] = kv4
                 votes = int(bool(acc.get("V4", False))) + int(av4) + int(kv4)
-                acc["TIER3"] = votes >= 2 if pk >= 0.6 else votes == 3
+                acc["TIER3"] = votes >= 2 if pk >= float(getattr(config, "TIER_SPLIT", 0.6)) else votes == 3
             it = {**it, "accept": acc}
         return it
     return look
