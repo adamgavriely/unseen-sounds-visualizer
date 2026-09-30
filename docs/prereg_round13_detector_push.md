@@ -1449,3 +1449,7 @@ Whistle, Siren, Air horn have own-family DASM 0.05–0.37, so F8 removes them ev
 +7 wrong for +2 hits); the 3 never-asked are below LO 0.5 with no P2 run; Laughter 8.4 is the one candidate reachable
 (AF + Kimi + DASM 0.89) but every general rule that admits it admits ≥ 10 other-class accepts. The group is closed for
 general rules on this data.
+- **FLAP screen result:** bar 0.329 (P1 hit_needed 54/59). (a) new accept path: +3 needed, +58 other → STOP. (b) veto on
+  shipped-accepted rescue candidates: 5 needed lost, 30 other removed → **GO** (≥ 3×). Arm SHIP5+FLAP: a rescued span whose
+  family's FineLAP max over the span < 0.329 is dropped (family not queried → kept). Combined rule vs SHIP5. Risk noted:
+  FineLAP is weak on laugh families (4 of 5 losses).

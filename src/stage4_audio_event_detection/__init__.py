@@ -1395,7 +1395,24 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
     f6 = bool(getattr(config, "LISTENER_EDGE", False))
     f8 = bool(getattr(config, "LISTENER_DASM_VOTE", False))
     once = bool(getattr(config, "LISTENER_ONCE", False))
-    dropped = {"F4": [], "F6": [], "F5": [], "F8": [], "F1": [], "ONCE": []}
+    dropped = {"F4": [], "F6": [], "F5": [], "F8": [], "F1": [], "ONCE": [], "FLAP": []}
+    flv, fld = getattr(config, "FINELAP_VETO", None), getattr(config, "FINELAP_DIR", None)
+    clip = getattr(config, "_CURRENT_CLIP", None)
+    if flv and fld and clip is not None and (Path(fld) / f"{clip}.npz").exists():
+        # round 31 FLAP (b): a rescued span whose family FineLAP scores below the P1-calibrated bar over the span is dropped
+        # (family not queried -> kept)
+        from src.labels import canonical
+        z = np.load(Path(fld) / f"{clip}.npz", allow_pickle=True)
+        fl, fs_, fe_, sc = [canonical(str(x)) for x in z["labels"]], z["fs"], z["fe"], z["scores"]
+        keep = []
+        for e in events:
+            if getattr(e, "rescued", False) and canonical(e.label) in fl:
+                c = fl.index(canonical(e.label))
+                m = (fe_ > e.start) & (fs_ < e.end)
+                if m.any() and float(sc[m, c].max()) < float(flv):
+                    dropped["FLAP"].append([e.label, round(e.start, 2)]); continue
+            keep.append(e)
+        events = keep
     resc = [e for e in events if getattr(e, "rescued", False)]
     if not (f4 or f1 or f5 or f6 or f8 or once) or not resc or ffw is None:
         return events, dropped

@@ -430,6 +430,8 @@ KEEP_NEEDS_V4_ALL = None   # round 30 K4A: "exact" | "onto" (off)
 BAND_TWIN_PULL = None      # round 30 BTP: FlexSED run bar for the start pull (off)
 REPEAT_NEEDS_SILENCE = None   # round 31 RPT-S: FlexSED bar of the >= 1 s silence a repeat needs (off)
 CONTINUATION_VETO = None   # round 31 CONT: FlexSED bar of the run a continuation span sits in (off)
+FINELAP_VETO = None        # round 31 FLAP (b): FineLAP bar for rescued spans (off)
+FINELAP_DIR = None         # per-clip FineLAP frame scores (<clip>.npz: labels, fs, fe, scores)
 TIER_SPLIT = 0.6                  # the TIER rule's peak split (amendment E; round 25 re-selects it by CV)
 DASM_P4_CACHE = None              # round 19 DR: benchmark/gold/<split>_listener_p4.json
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener
