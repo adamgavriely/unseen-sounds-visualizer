@@ -685,3 +685,13 @@ D0 20/20, D5 10/10. TEST2 stage 4/5 were built but NOT scored.
 | TO1+F7F8 | 2 | 8 (1 / 7 / 0) | 3.33 | −0.67 [−2.00, +0.00] |
 
 Same direction as DEV (+1 hit, same wrong), on 3 needed sounds: not a test. `benchmark/gold/dev2_score.json`.
+
+### Round 15 amendment M result, DEV screen, job 31563428 (6 min) — STOP
+| rule | seen silenced / 43 | needed kept / 36 |
+|---|---|---|
+| majority (shipped) | 16 | 31 |
+| M | 17 | 30 |
+| M-any (report only) | 17 | 28 |
+
+M silences one more seen sound (crossing_bells Train 0.0) and one needed one (as_explosion Gunshot 0.0): below the GO bar
+(>= 3 more seen, <= 1 needed lost). The close-up crops do not see the sources the whole frame misses. `gate_gold/som_summary.json`.
