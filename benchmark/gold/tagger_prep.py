@@ -125,7 +125,7 @@ def configure(split):
             "dev_listener_afn.json": lcache(split, "_afn"), "dasm_cache": DCC.DASM_DIR,
             "dev_listener_kimi.json": lcache(split, "_kimi"), "dev_listener_p1v4.json": lcache(split, "_p1v4"),
             "dev_listener_p4.json": lcache(split, "_p4"), "dev_listener_v4b.json": lcache(split, "_v4b"),
-            "flexsed_extra_dev": WORK / f"flexsed_extra_{split}"}
+            "flexsed_extra_dev": WORK / f"flexsed_extra_{split}", "finelap_cache": WORK / f"finelap_{split}"}
     # extra DEV arms for the merged DEV (Adam 30 Sept): TG_ARMS="arm1 arm2" remaps them the same way
     for arm in ("B0r", "B1", C1, *[x for x in os.environ.get("TG_ARMS", "").split() if x in R.ARMS]):
         _ORIG.setdefault(arm, dict(R.ARMS[arm]))       # map from the DEV originals, whatever split came before

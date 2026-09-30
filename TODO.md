@@ -15,6 +15,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Thesis: insert `docs/thesis/detector_rounds_13_15.md` after §5.8 of ch5; ch5 §5.14 add the R13-1 TEST exposure (29 Sept, 11th), §5.15 row 11; §5.7 stale 'not re-autopsied' line (TO1+F7F8 has a full trace). Arm count on DEV = 106 full-pipeline arms (not ~60).
 
 
+- [ ] `src/listener_prep.py`: add the FineLAP step (AndreasXi/FineLAP in ~/venv_flap, transformers 4.51; benchmark/gold/finelap_screen.py) so new clips get `data/work/finelap_<split>/<clip>.npz`; the shipped FLAP veto (SHIP7) stops stage 4 without it.
 - [ ] ComfyUI nodes (`comfyui_nodes/__init__.py`) still configure `config.use_v4("590")` (the old shipping row): switch them to `config.use_shipped()` and call `src/listener_prep.ensure_listener_inputs` + `config.set_listener_split` before stage 4, so ComfyUI runs the shipped TO1+F7F8 + N2b + DR2 + K-V4.
 
 ## Later

@@ -1478,3 +1478,7 @@ no DASM file → kept. DASM dir: `set_listener_split(split)` → `data/work/dasm
 `data/work/devcand/dasm_cache` (DCC.DASM_DIR, the arms' F8 input). FineLAP score and gold class as the FLAP screen.
 Restored = F8 drops, rule passes; newly dropped (FLAP-R only) = F8 passes, FineLAP < bar. **GO (FLAP-F8) iff needed
 restored ≥ 2 AND other restored ≤ 2 × needed restored.** Candidate level only (ONCE, veto order not modelled).
+- **Results on SHIP6 (25/55, 28, 2.479):** SHIP6+FLAP 25/55, 27 wrong (9/16/2), cost 2.451; old DEV 17/16, tagger 8/11; no
+  needed hit lost on either part → **passes the old rule; shipped as SHIP7** (config.use_shipped FINELAP_VETO 0.329,
+  FINELAP_DIR per split). SHIP6+K4AO 24/25/2.451 passes the clause too; re-run on SHIP7 (old-rule pass first).
+  SHIP5+FLAP 25/32/2.592 (for the record). TEST caches for FineLAP being built; TEST read of SHIP6 and SHIP7 follow.

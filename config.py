@@ -532,7 +532,11 @@ def use_shipped() -> dict:
                  ("BAND_TWIN_PULL", 0.5),
                  # round 31 CONT (new DEV best 30 Sept, fewer-pictures rule): a span that is a later piece of a sound
                  # FlexSED already hears (family run >= 0.5 from >= 1.5 s before it) is dropped. Merged DEV 25 / 28 / 2.479
-                 ("CONTINUATION_VETO", 0.5)):
+                 ("CONTINUATION_VETO", 0.5),
+                 # round 31 FLAP (new DEV best 30 Sept): a rescued span whose family FineLAP (ACL 2026, AndreasXi/FineLAP)
+                 # scores < 0.329 over the span (bar calibrated on drawn P1 spans) is dropped. Merged DEV 25 / 27 / 2.451.
+                 # Its frame scores: FINELAP_DIR from set_listener_split
+                 ("FINELAP_VETO", 0.329)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
@@ -562,7 +566,8 @@ def set_listener_split(name: str) -> dict:
             "LISTENER_AFCACHE": str(g / f"{name}_listener_afn.json"),
             "LISTENER_DASM_DIR": str(root / "data" / "work" / f"dasm_{name}"),
             "DASM_P4_CACHE": str(g / f"{name}_listener_p4.json"),
-            "RELABEL_P1V4": str(g / f"{name}_listener_p1v4.json")}
+            "RELABEL_P1V4": str(g / f"{name}_listener_p1v4.json"),
+            "FINELAP_DIR": str(root / "data" / "work" / f"finelap_{name}")}
     for k, v in vals.items():
         setattr(me, k, v)
     return vals

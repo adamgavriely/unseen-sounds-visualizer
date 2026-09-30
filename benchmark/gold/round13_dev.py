@@ -226,6 +226,8 @@ ARMS["SHIP5+FLAP"] = {**ARMS["SHIP5"], "FINELAP_VETO": 0.329,                   
 ARMS["SHIP6"] = {**ARMS["SHIP5+CONT"]}                 # the shipped default since round 31
 ARMS["SHIP6+K4AO"] = {**ARMS["SHIP6"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP6+FLAP"] = {**ARMS["SHIP6"], "FINELAP_VETO": 0.329, "FINELAP_DIR": ARMS["SHIP5+FLAP"]["FINELAP_DIR"]}
+ARMS["SHIP7"] = {**ARMS["SHIP6+FLAP"]}                 # the shipped default since round 31 FLAP
+ARMS["SHIP7+K4AO"] = {**ARMS["SHIP7"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}

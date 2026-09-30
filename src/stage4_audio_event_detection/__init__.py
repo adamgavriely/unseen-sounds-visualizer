@@ -302,6 +302,9 @@ def _require_caches(wav_path):
     p4 = getattr(config, "DASM_P4_CACHE", None)
     if getattr(config, "DASM_RESCUE", False) and not (p4 and Path(p4).exists()):
         miss.append("DASM_P4_CACHE (no file)")
+    fd = getattr(config, "FINELAP_DIR", None)
+    if getattr(config, "FINELAP_VETO", None) and not (fd and (Path(fd) / f"{clip}.npz").exists()):
+        miss.append("FINELAP_DIR (no <clip>.npz)")
     if miss:
         raise RuntimeError(f"[stage4] {clip}: the shipped listener rescue needs precomputed answers "
                            f"(run slurm/run_best.sh on this clip first): missing {miss}")
