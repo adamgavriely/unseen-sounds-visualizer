@@ -194,11 +194,8 @@
       var row = el("div", "sugrow");
       row.appendChild(el("span", "suglabel", g.label));
       row.appendChild(el("span", "sugtime", fmt(g.start) + "–" + fmt(g.end) + " s"));
-      var p = el("button", "", "▶ play"); p.type = "button"; p.title = "play from half a second before the start";
-      p.addEventListener("click", function () {
-        clearSpan(); video.currentTime = Math.max(0, Number(g.start) - 0.5);
-        var pr = video.play(); if (pr && pr.catch) pr.catch(function () {});
-      });
+      var p = el("button", "", "▶ play"); p.type = "button"; p.title = "play only this sound, from its start to its end";
+      p.addEventListener("click", function () { playSpan(Number(g.start), Number(g.end)); });
       var have = r.sounds.some(function (s) { return s[L.from] && s.label === g.label && s.start === num(g.start) && s.end === num(g.end); });
       var a = el("button", "", have ? "Added" : "Add as a row"); a.type = "button"; a.disabled = have;
       a.title = "copy this into the sound rows; you still answer Visible, Obvious and Importance";
