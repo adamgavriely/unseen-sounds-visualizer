@@ -757,3 +757,15 @@ TO1+F7F8+FIX, TO1F7F8+K3, A1, LR-V12+1+F1F4F3+F7F8, LR-V12+1+F1F4F3+F7F8@AG4, R1
 tagger DEV part through `tagger_prep` (TG_ARMS) and scored with `benchmark/gold/merged_dev.py` on DEV + tagger DEV as one
 set. **Pick** = the lowest merged-DEV cost among the candidates that are merged-DEV-eligible (hits > B0r, wrong <= B0r + 2 ×
 gain, cost < B0r); ties → fewer wrong. The pick is the ONE candidate for the final merged TEST scoring (vs B0).
+
+### Shipping TO1+F7F8 (Adam, 2026-09-30: "the shipped version SHOULD be the best version")
+- **Runner** `slurm/run_best.sh NAME DIR [ARM]`: the tagger harness (`tagger_prep.py`, split NAME via TG_EXTRA_SPLITS) on any
+  folder of clips, gold-free: FlexSED, scored render, wav16, BEATs, PANNs, B0r stage 4/5, listener pools, Qwen3-Omni, Audio
+  Flamingo Next, DASM, then the arm's stage 4/5.
+- **Check (job 31564168, 16 min):** 5 DEV clips re-run from scratch as split `shipcheck` (as_explosion, snow_walk,
+  rainforest_7629, laundromat, tornado — the clips with rescues, F7 swaps and the PV keep): pictures of B0r and TO1+F7F8
+  identical to the DEV harness run on 5/5 clips (`benchmark/gold/shipcheck_compare.py`); D0 10/10, D5 5/5.
+- **Switch:** `config.use_shipped()` now sets the TO1+F7F8 flags and LISTENER_REQUIRE_CACHES; per-clip answers via
+  `config.set_listener_split(NAME)` / `main.py --listener-split NAME`. A clip without them stops in stage 4 (no silent
+  fallback). Stage 6: `scripts/best_to_protocol.py` → `repaint_shipped.py` → `recomposite.py`. Live (cache-free) listener
+  and DASM for ComfyUI: TODO. The merged TEST (scored once, end) decides whether the switch stays.

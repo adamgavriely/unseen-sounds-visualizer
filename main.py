@@ -23,6 +23,9 @@ def main() -> None:
                     help="where to write intermediate artifacts")
     ap.add_argument("--raw-config", action="store_true",
                     help="use the bare config.py defaults instead of the shipped system (config.use_shipped())")
+    ap.add_argument("--listener-split", default=None,
+                    help="name given to slurm/run_best.sh for this clip's folder: where the audio-LLM answers and DASM "
+                         "scores of the shipped detector are (without them stage 4 stops)")
     ap.add_argument("--whisper-model", default=None, help="tiny|base|small|medium|large-v3")
     ap.add_argument("--device", default=None, help="cpu|cuda")
     ap.add_argument("--generator", default=None, choices=["retrieve", "placeholder", "diffusion"],
@@ -36,6 +39,8 @@ def main() -> None:
     # the shipped system by default (Qwen-Image pictures, scored detector stack, PANNs veto); CLI flags override it
     if not args.raw_config:
         config.use_shipped()
+        if args.listener_split:
+            config.set_listener_split(args.listener_split)
     for k, v in (("WHISPER_MODEL", args.whisper_model), ("DEVICE", args.device), ("GEN_BACKEND", args.generator),
                  ("VIDEO_BACKEND", args.video_backend)):
         if v is not None:

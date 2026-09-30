@@ -474,7 +474,32 @@ def use_shipped() -> dict:
                  ("PICTURE_MAKER", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
+    # the best DEV detector TO1+F7F8 (docs/prereg_round13_detector_push.md, Adam 30 Sept: ship the best): confidence-tiered
+    # audio-LLM rescue of FlexSED 0.5-0.8 runs (Qwen3-Omni open list; below peak 0.6 also Audio Flamingo Next), earliest
+    # rescue per family, twin-max, listener-confirmed mirror veto, DASM third vote. Its listener answers and DASM scores are
+    # per-clip inputs (set_listener_split / slurm/run_best.sh); without them stage 4 stops (LISTENER_REQUIRE_CACHES).
+    for k, v in (("LISTENER_RESCUE", True), ("LISTENER_RULE", "TIER"), ("LISTENER_LO", 0.5), ("LISTENER_ONCE", True),
+                 ("TWIN_MAX", True), ("MIRROR_VETO", 0.7), ("LISTENER_CONFIRMED_MIRROR", True),
+                 ("LISTENER_DASM_VOTE", True), ("LISTENER_DASM_BAR", 0.575), ("LISTENER_REQUIRE_CACHES", True)):
+        changed[k] = (getattr(me, k, None), v)
+        setattr(me, k, v)
     return changed
+
+
+def set_listener_split(name: str) -> dict:
+    """point the shipped listener rescue at the answers slurm/run_best.sh built for split <name>:
+    benchmark/gold/<name>_listener{,_v,_afn}.json and data/work/dasm_<name>/"""
+    import sys
+    from pathlib import Path
+    me = sys.modules[__name__]
+    root = Path(__file__).resolve().parent
+    g = root / "benchmark" / "gold"
+    vals = {"LISTENER_CACHE": str(g / f"{name}_listener.json"), "LISTENER_VCACHE": str(g / f"{name}_listener_v.json"),
+            "LISTENER_AFCACHE": str(g / f"{name}_listener_afn.json"),
+            "LISTENER_DASM_DIR": str(root / "data" / "work" / f"dasm_{name}")}
+    for k, v in vals.items():
+        setattr(me, k, v)
+    return vals
 
 
 def use_final_pictures(level: int) -> dict:
