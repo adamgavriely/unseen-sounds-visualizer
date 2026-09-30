@@ -994,3 +994,9 @@ thesis must state how many TEST reads were made. First: N2b (tag n2b).
 Δ cost vs B0r −0.159 [−0.341, +0.000], one-sided p 0.031 → "better" under the prereg rule (hits not lower, wrong −5, p <
 0.05). Caveat for the thesis: this is the second TEST read, made after N2b was chosen on DEV; with two reads a Holm/Bonferroni
 correction (α 0.025) would make p 0.031 not significant.
+
+### Round 20 DR2 — PASSES; new shipped best
+DEV 49 (job 31586738): 18 / 21 (6 / 10 / 5) / 2.33 vs base 18 / 22 / 2.37. Merged DEV (job 31586739): **24 hits / 44 wrong
+(9 / 29 / 6) / 2.986** vs base (TO1+F7F8 + N2b) 23 / 44 / 3.042; no needed hit lost on either part (old DEV 18 / 21, tagger
+DEV 6 / 23 vs 18 / 22, 5 / 22). DASM, as a third ear for sound types nothing else detected in the clip, confirmed by both
+audio LLMs, adds a needed sound without adding wrong pictures overall. Merged into `use_shipped()`; TEST read 3 prepared.
