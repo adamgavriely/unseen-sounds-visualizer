@@ -40,3 +40,10 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
 ## Amendment 2 (Adam, 2026-09-30 00:47 UTC, before any new clip is in the tool): "I don't care if BEATs detected"
 - New AudioSet clips no longer need BEATs n_sounds >= 2; the keep rule is >= 3 labelled sound types + download,
   still-image and silence checks. BEATs still runs on them, for the suggestions only.
+
+## Amendment 3 (Adam, 2026-09-30 00:47 UTC, before any new clip is in the tool): "50 clips with 3+ sounds and some interesting ones like explosions"
+- 50 AudioSet clips (a001–a050), each >= 3 labelled sound types. Up to 25 must contain a strong-labelled "striking"
+  event (Explosion, Gunshot, Fireworks, Burst/pop, Boom, Siren, alarms incl. smoke/fire/car alarm, Glass/shatter,
+  Screaming, Crying, Baby cry, Thunder, Crash/Smash, car/air horn, Doorbell, Telephone ringing, Dog bark/growl,
+  Breaking; descendants included). Striking clips first in the seed order until 25, then the rest of the eligible
+  pool in the same order. Chosen from labels only, never from detector output.
