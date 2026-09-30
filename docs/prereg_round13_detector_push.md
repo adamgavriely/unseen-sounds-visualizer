@@ -1055,3 +1055,9 @@ K-V4 (+0.02, well inside one SE). About a quarter of the DEV gain survives on TE
 Fable: keep K-V4 shipped (reverting to DR2 because of read 3 would be choosing on TEST); stop stacking DEV precision rules —
 TEST wrong pictures are flat since N2b; the only TEST signal is recall (DR2 +2 hits). Primary thesis result = the one
 pre-registered exposure (TO1+F7F8 vs B0r, "same"); reads 2–4 are a labelled secondary table.
+
+## Round 22 (recall; base = shipped SHIP2+KV4, merged DEV 24 / 41 / 2.901; written before its number)
+- **TD (two of three independent opinions):** a FlexSED band run (P2) is rescued if the current TIER rule accepts it, OR if at
+  least two of {Qwen V4 names it, Audio Flamingo V4 names it, DASM gives its family ≥ 0.575 within the run ± 0.5 s} agree.
+  Screen motive: the citywalk air horn (AF yes, Qwen no, DASM 0.72) is rejected today. Pass rule vs the base: hits ≥ 24,
+  wrong ≤ 41 + 2 × gain, cost < 2.901, no needed hit lost on either part.

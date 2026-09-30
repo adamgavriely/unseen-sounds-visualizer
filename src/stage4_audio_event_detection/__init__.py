@@ -1020,6 +1020,10 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
             # amendment E: TIER = Qwen V4, and below a FlexSED run peak of 0.6 also AF V4; QV4_AFYN = Qwen V4 AND AF yes/no > 0
             pk = float(it.get("peak", 1.0) if it.get("peak") is not None else 1.0)
             acc["TIER"] = _tier(acc, pk)
+            if getattr(config, "TIER_2OF3_DASM", False):       # round 22 TD: or two of {Qwen V4, AF V4, DASM >= bar}
+                from src.types import AudioEvent as _AE
+                dv = _dasm_keeps(_AE(it["family"], float(it["start"]), float(it["end"]), 0.0))
+                acc["TIER"] = acc["TIER"] or (int(bool(acc.get("V4", False))) + int(av4) + int(dv)) >= 2
             ayn = (a or {}).get("afn_yn_x")
             acc["QV4_AFYN"] = bool(acc.get("V4", False)) and ayn is not None and float(ayn) > 0
             acc["AF_missing"] = a is None
