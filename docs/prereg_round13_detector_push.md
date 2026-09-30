@@ -1125,3 +1125,8 @@ class-uniform prompt V4b: "List every distinct non-speech sound you hear in this
 sounds, one per line." (same model, cut, greedy decoding, 64 tokens, same matcher) on the P2/PV cuts. **Arm QE (base SHIP3):**
 the Qwen leg of TIER accepts if V4 OR V4b names the family (AF leg unchanged). Standard pass rule (hits ≥ 24, wrong ≤ 41 +
 2 × gain, cost < 2.901, no needed hit lost on either part).
+
+### Round 27 result — QE (second Qwen prompt): no change
+V4b answers (job 31594441, 62 min): accepts DEV 78/602, tagger DEV 52/402, TEST 145/778, tagger TEST 72/399. Arm SHIP3+QE
+(jobs 31594896 / 31594897): merged DEV 24 hits / 41 wrong / 2.901 — the same pictures as the shipped version (the extra Qwen
+accepts are all removed later by ONCE, F8 or K-V4). Not adopted.
