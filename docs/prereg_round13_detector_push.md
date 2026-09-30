@@ -1830,7 +1830,7 @@ start, 6 sit in a run that begins < 1.0 s earlier, 2 move.
 **DBX: merged 24/55, 27 (9/15/3), 2.507 | DEV 17/36, 15 (6/7/2), 2.163 | tagger DEV 7/19, 12 (3/8/1), 3.273 -> STOP** (1 hit lost,
 cost up). Moved: (1) b3_barbershop Electric shaver 16.0 -> 0.0 (end 23.25): cross -> hit, but the clip already had the shaver
 hit at 0.14 (the motivation's premise was wrong for SHIP7: the 0.14–13.25 picture IS the hit; the 16.0 picture is a late-repeat
-cross), so the moved picture is a dup: clip h1 c1 -> h1 d1 (−1 wrong). (2) tg_d149 Bee, wasp 1.25 -> 0.0 (end 3.75): gold Bee onset
+cross); both shaver pictures now start inside the gold window: one is the hit, the other a dup (clip h1 c1 -> h1 d1, −1 wrong). (2) tg_d149 Bee, wasp 1.25 -> 0.0 (end 3.75): gold Bee onset
 1.0, so the new start is 1.0 s early (> EARLY 0.5): hit -> phantom, clip h1 -> p1 (−1 hit, +1 wrong).
 **DBX-S (record): merged 24/55, 28 (9/16/3), 2.535 -> STOP**: the barbershop move is blocked by the overlap with the 0.14 picture,
 only the tg_d149 loss remains.
