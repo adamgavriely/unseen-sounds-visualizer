@@ -1190,12 +1190,13 @@
      "family": "Thunder",
      "start": 1.3,
      "end": 2.7,
-     "visible": true,
-     "obvious": true,
+     "visible": false,
+     "obvious": false,
      "masked": false,
      "importance": 2,
      "added": "2026-09-29T19:39:07.164Z",
-     "from_suggestion": true
+     "from_suggestion": true,
+     "recheck_2026_09_30": "visible and obvious set to no by Adam's blind re-check"
     },
     {
      "label": "Thunder",

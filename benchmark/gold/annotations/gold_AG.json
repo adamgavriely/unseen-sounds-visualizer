@@ -2937,7 +2937,7 @@
     {
      "label": "church bell",
      "family": "Bell",
-     "visible": true,
+     "visible": false,
      "obvious": false,
      "importance": 3,
      "masked": false,
@@ -2946,7 +2946,8 @@
      "from_detector": true,
      "from_human_label": false,
      "suggested": true,
-     "gate": "shown"
+     "gate": "shown",
+     "recheck_2026_09_30": "visible and obvious set to no by Adam's blind re-check"
     }
    ],
    "sentence": "A hearing viewer notices the church and the crowd's presence, while a deaf viewer misses the sound of the bell.",
@@ -3316,7 +3317,7 @@
     {
      "label": "fire alarm",
      "family": "Alarm",
-     "visible": true,
+     "visible": false,
      "obvious": false,
      "importance": 3,
      "masked": false,
@@ -3325,7 +3326,8 @@
      "from_detector": true,
      "from_human_label": false,
      "suggested": true,
-     "gate": "shown"
+     "gate": "shown",
+     "recheck_2026_09_30": "visible and obvious set to no by Adam's blind re-check"
     }
    ],
    "sentence": "A hearing viewer gets the additional information that there is an alarm, and keys jiggling, while a deaf viewer would only see the alarm on screen.",

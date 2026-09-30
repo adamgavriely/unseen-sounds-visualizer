@@ -1837,3 +1837,12 @@ only the tg_d149 loss remains.
 **Closed.** Reading: DASM at 0.575 runs from 0 s on a steady sound, so back-extension lands on the clip start, ahead of the gold
 onset where the sound ramps up; the one late-repeat it fixes was already a dup-in-waiting next to a hit. No other SHIP7 picture has
 DASM evidence at its start that reaches back >= 1 s.
+
+### Visibility re-check (Adam, 30 Sept 23:26; blind to the old tick; tool docs/review/visibility_recheck.html)
+14 borderline gate-side gold sounds (9 visible-wrong pictures, 5 gate-silenced needed sounds) re-judged blind:
+Q1 source on screen, Q2 obvious without sound. Rule for applying, fixed before scoring: a question answered "unsure"
+keeps its old value; seen = visible or obvious. Answers: benchmark/gold/visibility_recheck_answers.json.
+Three sounds flip from seen to needed (visible and obvious both no): as_church_bell Bell 0.0, as_fire_alarm Alarm 9.0
+(Q2 unsure → old obvious "no" kept), tg_d088 Thunder 1.3. The other 11 keep their class (the 5 gate-silenced stay needed;
+storm Thunder ×2, protest horn, bath water, kids' laughter, starter's bang stay seen). DEV gold only (gold_AG / tagger_AG);
+TEST untouched. Every system is re-scored on the corrected DEV gold.

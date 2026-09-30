@@ -1,0 +1,133 @@
+{
+ "made": "2026-09-30T23:26:24.598Z",
+ "items": [
+  {
+   "id": "storm16200_thunder",
+   "clip": "ambient_weather_storm_16200",
+   "sound": "Thunder",
+   "start": 0.3,
+   "end": 7.5,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "storm7200_thunder",
+   "clip": "ambient_weather_storm_7200",
+   "sound": "Thunder",
+   "start": 0.1,
+   "end": 15.8,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "churchbell_bell",
+   "clip": "as_church_bell_pJRAWkLM",
+   "sound": "Bell",
+   "start": 0,
+   "end": 15.2,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "firealarm_alarm",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "sound": "Alarm",
+   "start": 9,
+   "end": 19.8,
+   "visible": "no",
+   "obvious": "unsure",
+   "note": "a viewer that knows how this type of alarms work would assume it rings only at 0:16 when we see this blink but its not seen before"
+  },
+  {
+   "id": "protest_horn",
+   "clip": "london_protest_01",
+   "sound": "Air horn / vuvuzela",
+   "start": 0.4,
+   "end": 11.1,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "motorcycle_bang",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "sound": "Fireworks / bang",
+   "start": 13.9,
+   "end": 14.2,
+   "visible": "no",
+   "obvious": "unsure",
+   "note": "we dont see the shot or the gun since the hand of the person firing is hidden but we see a bit of dust and the ppl starting the marathon so im unsure "
+  },
+  {
+   "id": "d088_thunder",
+   "clip": "tg_d088",
+   "sound": "Thunder",
+   "start": 1.3,
+   "end": 2.7,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "d127_water",
+   "clip": "tg_d127",
+   "sound": "Water",
+   "start": 0,
+   "end": 3.8,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "d128_laughter",
+   "clip": "tg_d128",
+   "sound": "Laughter",
+   "start": 3.5,
+   "end": 4,
+   "obvious": "yes",
+   "visible": "no"
+  },
+  {
+   "id": "rainforest7629_bird",
+   "clip": "ambient_nature_rainforest_7629",
+   "sound": "Bird",
+   "start": 0.1,
+   "end": 16,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "petshop_bird",
+   "clip": "b3_pet_shop",
+   "sound": "Bird",
+   "start": 0.1,
+   "end": 27.8,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "bellmiami_bell",
+   "clip": "bell_miami",
+   "sound": "Bell",
+   "start": 0.2,
+   "end": 14.5,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "d133_fart1",
+   "clip": "tg_d133",
+   "sound": "Fart",
+   "start": 0,
+   "end": 1.1,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "d133_fart2",
+   "clip": "tg_d133",
+   "sound": "Fart",
+   "start": 5.6,
+   "end": 6.4,
+   "visible": "no",
+   "obvious": "no"
+  }
+ ]
+}
