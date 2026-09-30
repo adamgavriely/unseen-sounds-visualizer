@@ -742,3 +742,11 @@ was trained at 10 s). Gates as before.
 Whisper-AT keeps Explosion 2.8 (DASM killed it) but not Hammer 13.7; it lets through more cross pictures (crossing_bells
 Water, favela Bird ×2 and Vehicle, citywalk Train, rainforest Bell) and loses the favela Train 14.6 and snow-walk Laughter.
 Worse than the DASM vote on cost, hits and wrong: not a candidate. DASM stays as F8.
+
+## Merge of the tagger set into DEV and TEST (Adam, 2026-09-30, written before any merged score)
+"The purpose of me tagging more is to make dev and test larger." From now on **DEV = DEV (49) + DEV2** and **TEST = TEST (60)
++ TEST2**, with the same per-clip membership as before (batch 1 by sha256 parity, batch 2 tag-balanced, later batches the
+same way). All selection happens on the merged DEV. The merged TEST is scored ONCE, at the end, for the final candidate vs
+the shipped config (B0) under the prereg TEST rule (paired clip bootstrap, Holm over the candidates). Disclosure: the old
+TEST part was read before for other detector candidates (rounds 4–13; R13-1 once); the final candidate (TO1+F7F8 unless a
+merged-DEV winner replaces it) was chosen on DEV only and has never been run on TEST.

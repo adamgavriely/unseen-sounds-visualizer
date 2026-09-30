@@ -10,6 +10,8 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Detector round 9: J2 PASSED the 415 (ΔC −0.106) but FAILED the DEV ship check (hits 14→13, wrong 24→25) → not shipped; fresh-set score still runs as pre-registered (report only). Ship only if fresh passes AND DEV hits don't drop AND DEV wrong drops. `docs/prereg_round9_contrast.md`
 - [x] Fresh confirmation set caches complete (422 clips). AudioSet harness is retired as a decision test (round 12), so the fresh set is report-only now.
 
+- [ ] Merged sets (Adam 30 Sept): DEV = DEV + DEV2, TEST = TEST + TEST2; final candidate scored once on merged TEST at the end. Build merged scoring after the batch-2 prep chain (jobs 31563919-23).
+
 ## Later
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
 - [ ] (Only if a fixed generic method wins a new test) mistake mining for all 215 labels at night. Possible fixes for a new test: more specific object slot, allow hands for human-action makers, better mining judge.
