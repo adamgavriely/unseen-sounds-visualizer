@@ -24,7 +24,7 @@ def main() -> None:
     ap.add_argument("--raw-config", action="store_true",
                     help="use the bare config.py defaults instead of the shipped system (config.use_shipped())")
     ap.add_argument("--fewer-false", action="store_true",
-                    help="opt-in N2b (DEV only, not TEST-checked): weak sounds under speech/music need a second opinion")
+                    help="N2b (already in the shipped default; kept for old command lines)")
     ap.add_argument("--listener-split", default=None,
                     help="name given to slurm/run_best.sh for this clip's folder: where the audio-LLM answers and DASM "
                          "scores of the shipped detector are (without them stage 4 stops)")

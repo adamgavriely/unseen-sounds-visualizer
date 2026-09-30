@@ -961,3 +961,14 @@ birds_forest Bird, ambulance Vehicle — while 3 of the 11 are gate-visible miss
 - **Arm DR = TO1+F7F8 + DASM rescue:** a P4 run becomes a rescued span (label = its family, confidence = its DASM peak) iff
   BOTH listeners name its family (the base's low-tier rule); then the base's rescue filters (ONCE, F8) apply unchanged.
 - Pass rule vs TO1+F7F8 as round 16 (hits ≥ 23, wrong ≤ 48 + 2 × gain, cost < 3.155, no needed hit lost on either part).
+
+### Round 19 DR (DASM third ear) — fails
+DEV 49 (job 31580331): 17 / 24 / 2.53; merged DEV (job 31580332): 23 hits / 49 wrong / 3.18 — gains a hit on the tagger part
+(6 vs 5) but loses one on the old DEV part (ONCE keeps the earliest rescued span of a family, and a DASM run can come
+first). Fails the rule.
+
+### N2b becomes the shipped default (Adam, 2026-09-30 07:50 UTC: "merged means u can push the new best every time u find one
+(after documented it)")
+`config.use_shipped()` now = TO1+F7F8 + N2b (MASKED_WEAK_VETO, MASKED_WEAK_AF). Evidence: merged DEV 71 clips, 23 hits / 44
+wrong / 3.042 vs TO1+F7F8 23 / 48 / 3.155, no needed hit lost on either part; found after the one TEST exposure, so it has
+no TEST check (thesis disclosure as written above, "ships as an opt-in" → "ships as the default").

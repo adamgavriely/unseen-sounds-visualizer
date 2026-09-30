@@ -496,16 +496,18 @@ def use_shipped() -> dict:
     # per-clip inputs (set_listener_split / slurm/run_best.sh); without them stage 4 stops (LISTENER_REQUIRE_CACHES).
     for k, v in (("LISTENER_RESCUE", True), ("LISTENER_RULE", "TIER"), ("LISTENER_LO", 0.5), ("LISTENER_ONCE", True),
                  ("TWIN_MAX", True), ("MIRROR_VETO", 0.7), ("LISTENER_CONFIRMED_MIRROR", True),
-                 ("LISTENER_DASM_VOTE", True), ("LISTENER_DASM_BAR", 0.575), ("LISTENER_REQUIRE_CACHES", True)):
+                 ("LISTENER_DASM_VOTE", True), ("LISTENER_DASM_BAR", 0.575), ("LISTENER_REQUIRE_CACHES", True),
+                 # round 18 N2b (Adam 30 Sept: every new best is merged): a weak BEATs-only span under speech or music needs
+                 # FlexSED, Qwen or Audio Flamingo to confirm it. Merged DEV 23 hits / 44 wrong vs 23 / 48; DEV only (TEST spent)
+                 ("MASKED_WEAK_VETO", True), ("MASKED_WEAK_AF", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed
 
 
 def use_n2b() -> dict:
-    """Opt-in (round 18 N2b, DEV-only evidence, found after TEST was spent): weak BEATs-only spans heard under speech or music
-    need FlexSED or a listener (Qwen or Audio Flamingo) to be drawn. Merged DEV 23 hits / 44 wrong vs 23 / 48. Call after
-    use_shipped()."""
+    """Round 18 N2b (now part of use_shipped; kept so `--fewer-false` still works): weak BEATs-only spans heard under speech
+    or music need FlexSED or a listener (Qwen or Audio Flamingo) to be drawn."""
     import sys
     me = sys.modules[__name__]
     changed = {}
