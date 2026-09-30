@@ -1925,3 +1925,6 @@ SHIP8 (SHIP7+K4AD) 27/22/2.310.
   (one cross becomes a phantom). Cost not lower → **fail**; not shipped.
 - **TEST read of SHIP8 (reported; TEST gold unchanged):** SHIP7+K4AD 23 hits / 29 wrong (4/20/5) / 2.568 vs B0r 21/40/2.909;
   d −0.341 [−0.636, −0.045], one-sided p 0.017 → better. Same cost as SHIP7 on TEST (24/31): −1 hit, −2 wrong.
+- **Correction (Adam, 1 Oct 00:59):** tg_d120 caterwaul's source is a clock, not the cat on screen → back to needed. Round 2
+  control therefore changes 0 of 20 sounds (0 %) vs round 1's 3 of 14. Final merged DEV (58 needed): B0r 18/51/3.690;
+  SHIP7 28/24/2.366; **SHIP8 28/58, 21 wrong (6/13/2), 2.282**.

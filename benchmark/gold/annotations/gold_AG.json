@@ -36887,7 +36887,7 @@
      "label": "caterwauling",
      "start": 0.3,
      "end": 2.2,
-     "visible": true,
+     "visible": false,
      "obvious": false,
      "masked": false,
      "importance": 2,
@@ -36895,7 +36895,7 @@
      "from_suggestion": false,
      "from_annotators": true,
      "family": "Caterwaul",
-     "recheck2_2026_09_30": "class changed by Adam's blind control re-check"
+     "recheck2_2026_10_01": "Adam 1 Oct: the source is a clock (not the cat on screen); needed, a picture should be shown"
     },
     {
      "label": "Meow",
