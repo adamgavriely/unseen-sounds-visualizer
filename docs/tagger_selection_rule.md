@@ -34,3 +34,5 @@ Nothing below reads Adam's tags or any gold label of DEV, TEST, TEST2, the 415 o
   with `labels.same_source`), plus BEATs n_sounds >= 2 as before. Same pool, exclusions, seed and order; the fresh set
   stays untouched.
 - Target: 53 clips (a001–a053), so the tool lists 100. `tagger_refresh.py` uses MAX_AUDIOSET = 53 and no web clips.
+- Disclosure: eval split only, so BEATs/PANNs (trained on AudioSet train) see unseen clips; DASM's checkpoint was picked
+  on AudioSet-Strong eval (`docs/prereg_round6_dasm.md`), so these clips slightly favour DASM.
