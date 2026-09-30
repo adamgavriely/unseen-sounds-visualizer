@@ -844,3 +844,19 @@ DEV 49 (job 31564918): 18 / 24 / 2.45, identical to the base. Merged DEV (job 31
 23 / 48 / 3.16 — loses one needed hit on the tagger DEV part (4 vs 5). Fails the pre-set rule.
 Merged TEST preparation (job 31564931, gold-free): DASM for the old TEST 60; old TEST stage 4/5 of B0r and TO1+F7F8 in
 data/work/r16final, gates pass; tagger TEST part (28 clips) stage 4/5 of B0r and TO1+F7F8, D0 56/56, D5 28/28. Not scored.
+
+## Round 17 (night, 2026-09-30; Fable consult 3; written BEFORE any number of these arms)
+Base TO1+F7F8; the Round-16 pass rule (merged DEV, hits ≥ 23, wrong ≤ 48 + 2 × gain, cost < 3.155, no needed hit lost on
+either part; tagger part reported alone). Disclosure: R1 and R3 were shaped by reading the base's wrong pictures on the
+tagger DEV part. TEST stays TO1+F7F8 (a passing arm is prepared gold-free on merged TEST only, not scored).
+- **R1 relabel, don't drop (`RELABEL_2L`):** for a drawn BEATs-origin span (not rescued) whose P1 cut both open-inventory
+  listeners answered (Qwen3-Omni V4, same prompt/decoding as amendment A, new job on P1 cuts; Audio Flamingo Next V4, cached):
+  if neither names the span's own family and both name the same depictable family F (the V4 matcher — word or cosine > 0.6 —
+  run against every depictable family), the span's label becomes F (first such F in Qwen's order). Extra pass: cross ≤ base − 3.
+- **R3 co-onset arbitration (`CO_ONSET_ARB`):** two drawn spans of different families whose starts are within ±0.3 s: keep
+  only the one with the higher FlexSED family peak inside its own span (F5's evidence, now on all spans), unless the listener
+  (P1 V12/yes-no as F7) accepts both. Extra pass: wrong ≤ base − 2.
+- Checked and closed without an arm: the two late onsets on the tagger part (Crying 1.25 s vs 0.0; Thunder 8.75 vs 7.4) are
+  detection limits, not a bug (BEATs < 0.175 before 1.25 s; the Thunder 8.0 span is below the display bar); hysteresis onsets
+  were tried on 14 and 22 Sept (ledger). The 0.25-s uniform lead (screened: +1 hit, −1 wrong on merged DEV for both B0r and
+  the base) is not an arm: a 2-value sweep on the selection set, reported as a screen only.
