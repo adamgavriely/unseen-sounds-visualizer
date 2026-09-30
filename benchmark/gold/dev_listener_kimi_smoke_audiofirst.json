@@ -1,0 +1,467 @@
+{
+ "_meta": {
+  "prereg": "round 16 N3 (docs/prereg_round13_detector_push.md)",
+  "split": "dev",
+  "model": "moonshotai/Kimi-Audio-7B-Instruct",
+  "snapshot": "/home/dsi/adamg/.cache/huggingface/hub/models--moonshotai--Kimi-Audio-7B-Instruct/snapshots/9a82a84c37ad9eb1307fb6ed8d7b397862ef9e6b",
+  "code": "github.com/MoonshotAI/Kimi-Audio kimia_infer (KimiAudio, load_detokenizer=False)",
+  "transformers": "4.51.3",
+  "torch": "2.5.1+cu121",
+  "candidates": "/home/dsi/adamg/MscProj_r13/benchmark/gold/dev_listener_v.json pools ('P2', 'PV')",
+  "audio": "item run_audio from /home/dsi/adamg/MscProj/data/work/devcand/wav16",
+  "V4": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+  "V4_decoding": "output_type text, text_temperature 0 (greedy), max_new_tokens 64, text_repetition_penalty 1.0 (README default)",
+  "chat": "[user audio, user text V4_Q] (the Qwen / AF order)",
+  "load_seconds": 286.4,
+  "seconds_gen": 5.1,
+  "unique_cuts": 5,
+  "V4_rule": "some line matches X (listener_afnext.v4_match: match_names word match, else all-mpnet-base-v2 cosine > 0.6)",
+  "match_root": "/home/dsi/adamg/MscProj_r13",
+  "match_device": "cuda:0",
+  "null": "the item's cached null_family on the same text",
+  "V4_norm": "accept_norm / null_accept_norm: the same v4_match on the Kimi text with ',' -> newline and '_' -> space (Kimi answers with an AudioSet tag string, not one sound per line)"
+ },
+ "items": [
+  {
+   "clip": "b3_construction_site",
+   "pool": "P2",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 0.0,
+   "end": 10.0,
+   "run_start": 0.0,
+   "run_end": 10.0,
+   "cut_start": 0.0,
+   "cut_end": 10.0,
+   "run_audio": [
+    0.0,
+    11.0
+   ],
+   "run_len": 10.0,
+   "peak": 0.64208984375,
+   "depictable": true,
+   "null_family": "Sanding",
+   "kimi_v4_text": "Engine",
+   "accept": {
+    "V4": false
+   },
+   "null_accept": {
+    "V4": false
+   },
+   "accept_norm": {
+    "V4": false
+   },
+   "null_accept_norm": {
+    "V4": false
+   },
+   "kimi_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3920802175998688
+    ]
+   },
+   "kimi_v4_x_norm": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3920802175998688
+    ]
+   },
+   "kimi_v4_null": {
+    "names": [
+     "sanding",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.18134619295597076
+    ]
+   },
+   "kimi_v4_null_norm": {
+    "names": [
+     "sanding",
+     "tools"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.18134619295597076
+    ]
+   }
+  },
+  {
+   "clip": "b3_favela_rio",
+   "pool": "PV",
+   "family": "Bicycle",
+   "label": "Bicycle",
+   "start": 18.52,
+   "end": 19.52,
+   "run_start": 0.0,
+   "run_end": 28.0,
+   "cut_start": 0.0,
+   "cut_end": 28.0,
+   "run_audio": [
+    0.0,
+    28.0
+   ],
+   "run_len": 28.0,
+   "peak": 0.8369140625,
+   "depictable": true,
+   "null_family": "Natural sounds",
+   "run_from_cache": true,
+   "kimi_v4_text": "Bicycle,Vehicle",
+   "accept": {
+    "V4": true
+   },
+   "null_accept": {
+    "V4": false
+   },
+   "accept_norm": {
+    "V4": true
+   },
+   "null_accept_norm": {
+    "V4": false
+   },
+   "kimi_v4_x": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [
+     "Bicycle,Vehicle"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.8113155364990234
+    ]
+   },
+   "kimi_v4_x_norm": {
+    "names": [
+     "bicycle",
+     "bicycle bell",
+     "non-motorized land vehicle"
+    ],
+    "matched_word": [
+     "Bicycle"
+    ],
+    "matched_cos": [],
+    "cos": [
+     1.0,
+     0.5922152400016785
+    ]
+   },
+   "kimi_v4_null": {
+    "names": [
+     "fire",
+     "natural sounds",
+     "thunderstorm",
+     "water",
+     "wind"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1317102462053299
+    ]
+   },
+   "kimi_v4_null_norm": {
+    "names": [
+     "fire",
+     "natural sounds",
+     "thunderstorm",
+     "water",
+     "wind"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.1784934401512146,
+     0.14137591421604156
+    ]
+   }
+  },
+  {
+   "clip": "b3_carnival_parade",
+   "pool": "P2",
+   "family": "Air brake",
+   "label": "Air brake",
+   "start": 15.0,
+   "end": 15.399999999999999,
+   "run_start": 15.0,
+   "run_end": 15.399999999999999,
+   "cut_start": 14.799999999999999,
+   "cut_end": 15.799999999999999,
+   "run_audio": [
+    13.799999999999999,
+    16.799999999999997
+   ],
+   "run_len": 0.3999999999999986,
+   "peak": 0.5361328125,
+   "depictable": true,
+   "null_family": "Rattle",
+   "kimi_v4_text": "Bicycle,Vehicle",
+   "accept": {
+    "V4": false
+   },
+   "null_accept": {
+    "V4": false
+   },
+   "accept_norm": {
+    "V4": false
+   },
+   "null_accept_norm": {
+    "V4": false
+   },
+   "kimi_v4_x": {
+    "names": [
+     "air brake",
+     "truck"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.41988736391067505
+    ]
+   },
+   "kimi_v4_x_norm": {
+    "names": [
+     "air brake",
+     "truck"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.4091228246688843,
+     0.41762691736221313
+    ]
+   },
+   "kimi_v4_null": {
+    "names": [
+     "onomatopoeia",
+     "rattle",
+     "snake"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.12836165726184845
+    ]
+   },
+   "kimi_v4_null_norm": {
+    "names": [
+     "onomatopoeia",
+     "rattle",
+     "snake"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.24818216264247894,
+     0.2609119713306427
+    ]
+   }
+  },
+  {
+   "clip": "b3_golf_course",
+   "pool": "PV",
+   "family": "Insect",
+   "label": "Insect",
+   "start": 10.0,
+   "end": 10.56,
+   "run_start": 0.0,
+   "run_end": 22.56,
+   "cut_start": 0.0,
+   "cut_end": 22.56,
+   "run_audio": [
+    0.0,
+    23.56
+   ],
+   "run_len": 22.56,
+   "peak": 0.91943359375,
+   "depictable": true,
+   "null_family": "Sigh",
+   "run_from_cache": true,
+   "kimi_v4_text": "Bird,Wild_animals,Animal",
+   "accept": {
+    "V4": false
+   },
+   "null_accept": {
+    "V4": false
+   },
+   "accept_norm": {
+    "V4": true
+   },
+   "null_accept_norm": {
+    "V4": false
+   },
+   "kimi_v4_x": {
+    "names": [
+     "bee",
+     "cricket",
+     "etc.",
+     "fly",
+     "housefly",
+     "insect",
+     "mosquito",
+     "wasp",
+     "wild animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.31150874495506287
+    ]
+   },
+   "kimi_v4_x_norm": {
+    "names": [
+     "bee",
+     "cricket",
+     "etc.",
+     "fly",
+     "housefly",
+     "insect",
+     "mosquito",
+     "wasp",
+     "wild animals"
+    ],
+    "matched_word": [
+     "Wild animals"
+    ],
+    "matched_cos": [],
+    "cos": [
+     0.4832817614078522,
+     0.36871856451034546,
+     0.4888279438018799
+    ]
+   },
+   "kimi_v4_null": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.07273327559232712
+    ]
+   },
+   "kimi_v4_null_norm": {
+    "names": [
+     "human voice",
+     "sigh"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.17602777481079102,
+     0.10023117065429688,
+     0.14050447940826416
+    ]
+   }
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "pool": "P2",
+   "family": "Chipmunk",
+   "label": "Chipmunk",
+   "start": 1.08,
+   "end": 1.6400000000000001,
+   "run_start": 1.08,
+   "run_end": 1.6400000000000001,
+   "cut_start": 0.6400000000000001,
+   "cut_end": 1.6400000000000001,
+   "run_audio": [
+    0.0,
+    2.64
+   ],
+   "run_len": 0.56,
+   "peak": 0.50634765625,
+   "depictable": true,
+   "null_family": "Donkey, ass",
+   "kimi_v4_text": "Bird,Wild_animals,Animal",
+   "accept": {
+    "V4": false
+   },
+   "null_accept": {
+    "V4": false
+   },
+   "accept_norm": {
+    "V4": false
+   },
+   "null_accept_norm": {
+    "V4": false
+   },
+   "kimi_v4_x": {
+    "names": [
+     "chipmunk",
+     "mice",
+     "rats",
+     "rodents"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.3136037588119507
+    ]
+   },
+   "kimi_v4_x_norm": {
+    "names": [
+     "chipmunk",
+     "mice",
+     "rats",
+     "rodents"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.44554802775382996,
+     0.3236561417579651,
+     0.42514562606811523
+    ]
+   },
+   "kimi_v4_null": {
+    "names": [
+     "ass",
+     "donkey",
+     "farm animals",
+     "livestock",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.260351300239563
+    ]
+   },
+   "kimi_v4_null_norm": {
+    "names": [
+     "ass",
+     "donkey",
+     "farm animals",
+     "livestock",
+     "working animals"
+    ],
+    "matched_word": [],
+    "matched_cos": [],
+    "cos": [
+     0.2592045068740845,
+     0.26139381527900696,
+     0.4377952814102173
+    ]
+   }
+  }
+ ]
+}
