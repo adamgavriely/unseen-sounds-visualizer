@@ -1777,3 +1777,19 @@ open audio-LLM, so it is screened once in the same seat, the same way.
   AF already answered; 29 hit_needed / 43 none / 202 other_gold by the `dev_listener.json` gold field): MOSS yes-rate on
   hit_needed vs none, next to Qwen's and AF's on the same cuts (`qwen_fams` / `af_fams`). A listener that says yes to
   everything is not an ear; the P2/PV null-accept rate is reported for the same reason.
+### Round 34 result — MOSS-Audio-8B-Thinking listener: STOP on both rules (job 31597407, H200, 1.6 h for 1278 items; `benchmark/gold/{dev,dev2}_listener_moss.json`, `dev_listener_p1_moss.json`, `moss_screen.json`)
+The Thinking model ran as it is (no Instruct fallback: 4 s per cut, thinking 170–185 tokens on average, 3 / 1278 forced
+closes, 17.8 GiB, rule identity 602/602 + 402/402 for the Qwen / AF flags). Merged-DEV P2/PV candidates on gold clips: 1004
+(35 needed); shipped TIER accepts 24 needed / 94 other; MOSS alone says yes to 19 needed / 125 other (null accept 2).
+(a) MOSS replaces Qwen: needed +4 −9, other +63 −50 → **STOP** (it loses snow-walk Laughter, tg_d016 Throat clearing,
+tg_d133 Fart ×2, tg_d125 Clapping, nyc Hammer …; it names steady scene sounds — crowd chatter, rushing water, chewing,
+bird chirping — on every cut of them).
+(b) third ear (Q OR (A AND M) high; (Q AND A) OR (M AND (Q OR A)) low): needed +2 (tg_d107 Laughter 8.40 and Giggle 8.80 —
+the same gold laugh, the one known miss the ears refused), other +39, lost 0 → **STOP** (39 > 2 × 2; the additions are the
+AF-alone crowd / bird / water / chewing candidates that MOSS co-signs).
+Known misses: as_explosion Gasp 6.7 — MOSS yes (Q no, A no: only rule (a) reaches it); Footsteps 2.1 no ('Explosion, Beep');
+carnival Whistle 6.1 no ('train'); tg_d032 Thunder no on all five cuts ('heavy rain', 'rushing water'); nyc Air horn 3.8 and
+tg_d033 Siren have no P2/PV candidate for any ear. P1 sanity (274 drawn spans, same cuts): yes-rate hit_needed 15/29 (0.52)
+vs none 15/43 (0.35) — MOSS 0.52 / 0.35, Qwen 0.55 / 0.44, AF 0.66 / 0.63: MOSS is the most selective ear on the drawn
+spans but not a better one on the needed side. Listener seat stays closed; `~/venv_moss` and the 18 GB weights remain on
+the cluster (delete on request).
