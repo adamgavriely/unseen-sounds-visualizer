@@ -1166,3 +1166,9 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
   V4 prompt is asked again (Qwen3-Omni, greedy, 64 tokens, same matcher). GO to an arm iff, on merged-DEV candidates, V4D adds
   ≥ 2 needed-class accepts beyond Qwen V4 with ≤ 2× that many other-class accepts added. The arm would then let the Qwen leg
   of TIER accept on V4 OR V4D.
+- **GA (gate audio-identity veto; Fable; written before any number):** for each cached DEV gate stretch whose majority says
+  "seen" and whose name vote named a visible thing ("macaws", "church bell", "boxer dog"), Qwen3-Omni hears the stretch audio
+  (stretch ± 1 s, NO frames) and answers an a/b in both orderings: "(a) this is the sound of {named} (b) this is a different
+  {family} sound or something else". A firm "b" in both orderings vetoes the "seen" vote for that stretch. Screen on the DEV
+  judge clips (43 seen, 36 needed; shipped majority 16 / 31). GO to a full arm iff ≥ 3 more needed kept with ≤ 1 fewer seen
+  silenced. Otherwise report-only.
