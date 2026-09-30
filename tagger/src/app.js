@@ -148,7 +148,6 @@
       var del = el("button", "", "✕"); del.type = "button"; del.title = "delete this row";
       del.addEventListener("click", function (ev) {
         ev.stopPropagation();
-        if ((s.label || s.start != null) && !confirm("Delete row " + (i + 1) + (s.label ? " (" + s.label + ")" : "") + "?")) return;
         r.sounds.splice(i, 1); sel = Math.min(sel, r.sounds.length - 1); touch(); renderSounds();
       });
       ops.appendChild(play); ops.appendChild(del);
