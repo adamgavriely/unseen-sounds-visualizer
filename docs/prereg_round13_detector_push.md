@@ -1664,3 +1664,17 @@ it passes. GO → arm on the real pipeline (a `src/` flag: not this thread's rem
   on BEATs tagger frames 12/55, 19, 2.958 (13 hits lost) — coarser 1-s windows have no usable change points.
   **Closed.** Reading: on this benchmark the wrong pictures are not "onsets that aren't there" more often than the hits are;
   the misses are dominated by families never drawn (23/30), which no post-processing of frame scores can reach.
+- **Ledger plumbing note (before any number was read as final):** the first run read DEV specs from the tagger out-dir
+  (`tagger_prep.configure` redirects `R.R13`); fixed to explicit roots. Rescued pictures are matched to their P2/PV item by
+  `same_family` (the motorcycle Explosion 13.92 picture is the rescued Gunshot child span) and to the SpotSound record by the
+  item's own key. Miss order corrected as registered above (rescue filter / listener before "timing"; a BEATs span >= the display
+  bar in the window with no B0r row = a B0 veto, FlexSED clip veto when the family's FlexSED clip max < 0.3).
+- **K4A-4E (one new idea; written BEFORE its number, after reading the ledger's wrong side).** K4AO (round 30: a drawn
+  non-rescued span is dropped when both open-inventory listeners were asked on its P1 cut and neither names its family or a kind
+  of it) passed only the fewer-pictures clause on SHIP7 (24/24/2.423: -1 hit, -3 wrong; held). **Rule K4A-4E:** K4AO, except the
+  span is KEPT when a non-LLM ear hears the family at the span: DASM family max over [start - 0.5, end + 0.5] >= 0.575 (F8's bar)
+  OR FineLAP family max over [start, end] >= 0.329 (FLAP's bar) — the two shipped bars, not re-fit; four ears must all be silent.
+  Screen on the saved SHIP7 pictures (`ship7_errors.py`): a placed non-rescued picture is dropped iff EVERY same-family stage-4 row
+  under it (conf >= 0.35, non-rescued) fails the test; K4AO alone is reported beside as the check against its arm (24/24).
+  **GO bar = the combined rule vs SHIP7** (old: hits >= 25, wrong <= 27 + 2 x gain, cost < 2.451, no needed hit lost on either
+  part; OR fewer-pictures: cost < 2.451, wrong <= 27 - 3 x lost, hits >= 22). If GO, the arm needs a `src/` flag (Adam's call).
