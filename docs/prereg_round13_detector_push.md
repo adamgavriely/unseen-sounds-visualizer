@@ -1908,3 +1908,7 @@ seen and 10 needed (benchmark/gold/visibility_recheck2_items.json), re-judged bl
 0.5 s before to 0.5 s after, Adam 23:43). Same applying rule (unsure keeps the old value). Report: the flip rate here vs
 round 1 (3/14); if this sample flips at a similar rate, the round-1 corrections are a general label-noise fix, not a
 pipeline-favouring one. Flips here are applied to the gold too and every system re-scored.
+- **Round 2 (control) result:** 1 of 20 random sounds changes class (5 %): tg_d120 Caterwaul 0.3 needed → seen (cat on
+  screen); it counts against the pipeline (its Cat picture was a hit). Round 1 (pipeline-disagreement sample): 3 of 14 (21 %).
+  Reading: random label noise is about 5 %; disagreement cases hold more label errors, as expected, so round 1's gain is
+  partly a selection effect — both rounds are applied and disclosed. Merged DEV now 57 needed.

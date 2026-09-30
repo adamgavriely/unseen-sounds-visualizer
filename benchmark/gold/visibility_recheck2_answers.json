@@ -1,0 +1,186 @@
+{
+ "made": "2026-09-30T23:49:02.159Z",
+ "items": [
+  {
+   "id": "r2_01",
+   "clip": "mv_storm_scene_house",
+   "sound": "Siren",
+   "start": 2.6,
+   "end": 11,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_02",
+   "clip": "b3_botanic_garden",
+   "sound": "Footsteps",
+   "start": 0,
+   "end": 13.3,
+   "visible": "no",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_03",
+   "clip": "tg_d095",
+   "sound": "Clicking",
+   "start": 2.3,
+   "end": 3.2,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_04",
+   "clip": "ambient_snow_walk_930",
+   "sound": "laughter",
+   "start": 8.1,
+   "end": 9.4,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_05",
+   "clip": "tg_d022",
+   "sound": "Chopping (food)",
+   "start": 0,
+   "end": 2,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_06",
+   "clip": "b3_golf_course",
+   "sound": "Whip",
+   "start": 11.2,
+   "end": 12,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_07",
+   "clip": "ambient_citywalk_nyc_1689",
+   "sound": "construction , hammering on metal",
+   "start": 8.1,
+   "end": 10.7,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_08",
+   "clip": "tg_d120",
+   "sound": "Caterwaul",
+   "start": 0.3,
+   "end": 2.2,
+   "visible": "yes",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_09",
+   "clip": "tg_d033",
+   "sound": "Siren",
+   "start": 0,
+   "end": 18,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_10",
+   "clip": "b3_bakery_morning",
+   "sound": "crumpling",
+   "start": 10,
+   "end": 12.1,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_11",
+   "clip": "tg_d007",
+   "sound": "Door",
+   "start": 7.3,
+   "end": 7.6,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_12",
+   "clip": "tg_d121",
+   "sound": "Explosion",
+   "start": 3.2,
+   "end": 3.3,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_13",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "distant explosion / boom",
+   "start": 2.8,
+   "end": 4.2,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_14",
+   "clip": "b3_bakery_morning",
+   "sound": "Door",
+   "start": 3.9,
+   "end": 9.3,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_15",
+   "clip": "mv_tornado_scene",
+   "sound": "Horse",
+   "start": 17.1,
+   "end": 19.8,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_16",
+   "clip": "mv_protest_scene_movie",
+   "sound": "Baby cry, infant cry",
+   "start": 3.2,
+   "end": 5.1,
+   "visible": "yes",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_17",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "distant explosion / boom",
+   "start": 9.1,
+   "end": 10.9,
+   "visible": "no",
+   "obvious": "no"
+  },
+  {
+   "id": "r2_18",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "Footsteps",
+   "start": 2.1,
+   "end": 11.3,
+   "obvious": "unsure",
+   "visible": "no",
+   "note": "viewer need to know this type of game and know they have footsteps sounds otherwise he wouldnt know"
+  },
+  {
+   "id": "r2_19",
+   "clip": "tg_d075",
+   "sound": "Water",
+   "start": 0.6,
+   "end": 3.6,
+   "visible": "yes",
+   "obvious": "yes"
+  },
+  {
+   "id": "r2_20",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "Explosion",
+   "start": 5.6,
+   "end": 6.7,
+   "visible": "no",
+   "obvious": "no"
+  }
+ ]
+}

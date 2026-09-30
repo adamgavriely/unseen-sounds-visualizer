@@ -1834,14 +1834,15 @@
      "label": "caterwauling",
      "start": 0.3,
      "end": 2.2,
-     "visible": false,
+     "visible": true,
      "obvious": false,
      "masked": false,
      "importance": 2,
      "added": "2026-09-30T03:04:16.430Z",
      "from_suggestion": false,
      "from_annotators": true,
-     "family": "Caterwaul"
+     "family": "Caterwaul",
+     "recheck2_2026_09_30": "class changed by Adam's blind control re-check"
     },
     {
      "label": "Meow",
