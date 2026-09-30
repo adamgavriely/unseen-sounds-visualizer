@@ -1220,3 +1220,6 @@ N2c on the new base, DV-G on the new base, then new mechanisms (re-time instead 
 - **BTP arm result (merged DEV):** SHIP4+BTP 25/55, 33 wrong (9/21/3), cost 2.620; old DEV 18/18 unchanged, tagger 7/15 vs
   6/16; no needed hit lost. **Passes the old rule → shipped as SHIP5** (config.use_shipped BAND_TWIN_PULL 0.5). TEST read
   follows (reported). Next on SHIP5: K4AO, N2c, DV-G under the combined rule.
+- **RT (re-time instead of drop; GO bar pre-registered: 0 hits lost, cross −3, wrong not up):** on saved SHIP5 pictures, 30
+  drawn non-rescued pictures meet the DV-G condition; none has a family DASM peak ≥ 0.575 within ±3 s (max 0.516). No picture
+  moves. **STOP** — these pictures are not mistimed; DASM does not hear the family nearby at all.
