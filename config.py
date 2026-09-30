@@ -522,7 +522,10 @@ def use_shipped() -> dict:
                  ("KEEP_NEEDS_V4", True),
                  # round 28 DV (new DEV best 30 Sept): a span DASM never hears in the clip (family max < 0.084, the round-6
                  # calibrated clip bar) is dropped unless a listener keeps it. Merged DEV 24 / 34 / 2.704
-                 ("DASM_CLIP_VETO", 0.08392333984375)):
+                 ("DASM_CLIP_VETO", 0.08392333984375),
+                 # round 30 BTP (new DEV best 30 Sept): a drawn span whose family has a FlexSED run >= 0.5 ending 0-1 s
+                 # before it and starting 0-1.5 s before it starts at that run. Merged DEV 25 / 33 / 2.620
+                 ("BAND_TWIN_PULL", 0.5)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

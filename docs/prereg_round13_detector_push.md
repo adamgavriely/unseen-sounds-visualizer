@@ -1214,3 +1214,9 @@ base wrong − 3 × hits lost (3:1 is a fixed 50% margin over the cost's 2:1 bre
 The paired bootstrap CI is reported, not required (as for every earlier ship). Disclosure: DV-G (19/21/2.620, 2.6:1, 5 lost)
 motivated the change and fails (c) and (d); it is re-run only on a new base and judged as any other arm. Order: BTP, K4A,
 N2c on the new base, DV-G on the new base, then new mechanisms (re-time instead of drop first).
+- **K4A result (merged DEV):** exact and onto identical: 23/55, 31 wrong (9/19/3), cost 2.676 vs SHIP4 24/34/2.704 (old DEV
+  17/18 vs 18/18: one needed hit lost). Fails the old rule; passes the fewer-pictures clause vs SHIP4 (−1 hit, −3 wrong,
+  3:1, cost down). Re-judged on the new base (SHIP5+K4AO).
+- **BTP arm result (merged DEV):** SHIP4+BTP 25/55, 33 wrong (9/21/3), cost 2.620; old DEV 18/18 unchanged, tagger 7/15 vs
+  6/16; no needed hit lost. **Passes the old rule → shipped as SHIP5** (config.use_shipped BAND_TWIN_PULL 0.5). TEST read
+  follows (reported). Next on SHIP5: K4AO, N2c, DV-G under the combined rule.
