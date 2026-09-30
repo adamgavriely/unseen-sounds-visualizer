@@ -811,3 +811,8 @@ N2 removes 6 wrong pictures (london Vehicle and motorcycle Fireworks visible, ha
 phantoms, explosion Gunshot and favela Train cross; 2 come back re-cut) but loses the bakery Door 3.9 hit: lower cost, yet
 it fails the pre-set rule (a needed hit lost on a part). N4 lets 7 more cross pictures through: fails. N1's first run was
 void (SCENE_FIT_ALL was not in the harness's stage-5 keys; fixed, re-run as job 31564722).
+**N3 clarification (written after the Kimi answers exist, before any N3 arm number).** Kimi-Audio answers the V4 prompt with
+one comma-separated line of AudioSet-style tags (`Bird,Wild_animals,Animal`) instead of one sound per line. The V4 rule is
+applied to its list read as items (commas → lines, `_` → spaces; flag `accept_norm.V4`), the faithful parse of the prompt's
+"one per line". Its audio cut is each item's `run_audio` (the cut Qwen and AF heard). Candidate-level counts seen (DEV P2+PV):
+Kimi-norm accepts 141 (null 27), Qwen 68 (null 3), AF 129 (null 16). Arm TO1F7F8+N3 = TO1+F7F8 with rule TIER3.

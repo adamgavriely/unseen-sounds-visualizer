@@ -933,6 +933,11 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
     # Round 14 amendment C: the second listener (Audio Flamingo Next, LISTENER_AFCACHE, same keys) -- rule AGREE_V4 =
     # Qwen V4 AND AF V4, AGREE_V12 = Qwen V12 AND AF V4; an item AF did not score is not accepted by AGREE
     afp = getattr(config, "LISTENER_AFCACHE", None)
+    kcp, kfield = getattr(config, "LISTENER_KCACHE", None), getattr(config, "LISTENER_KFIELD", "accept_norm")
+    kc = None
+    if kcp:
+        kc = {(x.get("pool"), x["family"], x.get("label"), round(x["start"], 2), round(x["end"], 2)): x
+              for x in _cache_items(kcp) if x.get("clip") == clip}
     af = {}
     if afp:
         for x in _cache_items(afp):
@@ -965,6 +970,14 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
             ayn = (a or {}).get("afn_yn_x")
             acc["QV4_AFYN"] = bool(acc.get("V4", False)) and ayn is not None and float(ayn) > 0
             acc["AF_missing"] = a is None
+            # Round 16 N3: a third open-inventory listener (Kimi-Audio, LISTENER_KCACHE, flag LISTENER_KFIELD) -- TIER3: at peak
+            # >= 0.6 at least 2 of {Qwen V4, AF V4, Kimi V4}; below, all 3
+            if kc is not None:
+                k = kc.get((it["pool"], it["family"], it.get("label"), round(it["start"], 2), round(it["end"], 2)))
+                kv4 = bool(((k or {}).get(kfield) or {}).get("V4", False))
+                acc["KIMI_V4"] = kv4
+                votes = int(bool(acc.get("V4", False))) + int(av4) + int(kv4)
+                acc["TIER3"] = votes >= 2 if pk >= 0.6 else votes == 3
             it = {**it, "accept": acc}
         return it
     return look

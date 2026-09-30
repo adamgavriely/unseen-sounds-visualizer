@@ -61,6 +61,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
+        "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm",
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
         "FLEXSED_EXTRA": False, "FLEXSED_EXTRA_DIR": None, "FLEXSED_EXTRA_QUERIES": None,
@@ -177,6 +178,8 @@ ARMS["TO1F7F8+O"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_DIR": str(WORK / "wat_ca
 ARMS["TO1F7F8+N1"] = {**ARMS["TO1+F7F8"], "SCENE_FIT_ALL": True}
 ARMS["TO1F7F8+N2"] = {**ARMS["TO1+F7F8"], "MASKED_WEAK_VETO": True}
 ARMS["TO1F7F8+N4"] = {**ARMS["TO1+F7F8"], "LISTENER_DASM_RANK": 3}
+ARMS["TO1F7F8+N3"] = {**ARMS["TO1+F7F8"], "LISTENER_RULE": "TIER3",
+                      "LISTENER_KCACHE": str(_ROOT / "benchmark" / "gold" / "dev_listener_kimi.json")}
 # amendment G: one shipped rule loosened at a time, on B0r and on the amendment-F / H bases ("<base>~G<k>"); G2 (the
 # picture floor) is a no-op on these bases (the scored config has no floor) and is not run; G6 = MERGE_GAP 2.0 -> 1.0
 GRULES = {"G1": {"DISPLAY_THRESHOLD": 0.30, "AUGMENT_THRESHOLD": 0.30}, "G3": {"AED_MIN_DUR": 0.3},
