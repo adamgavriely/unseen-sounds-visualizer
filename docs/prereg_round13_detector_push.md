@@ -1180,3 +1180,6 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
 - **V4D screen result (merged DEV P2/PV, 1004 candidates):** V4D adds 2 needed-class accepts beyond Qwen V4 (nyc_1689 Air
   horn 3.8, carnival Whistle 6.3) and 53 other-class accepts. Bar ≤ 2× → **STOP.** Ducking makes Qwen say yes much more
   often, mostly to wrong or already-drawn sounds.
+- **DV-L / DV-G results (merged DEV):** DV-L = SHIP4 exactly (24/55, 34, 2.704; no span changed — the clip veto already
+  covers it). DV-G 19/55, 21 wrong (8/12/1), cost 2.620: −13 wrong but −5 hits. **Fail** (hits drop). Noted as a
+  fewer-pictures option only.
