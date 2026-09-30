@@ -21,23 +21,25 @@ def main() -> None:
     ap.add_argument("--input", required=True, help="path to input video clip")
     ap.add_argument("--work-dir", default=str(config.WORK_DIR),
                     help="where to write intermediate artifacts")
-    ap.add_argument("--whisper-model", default=config.WHISPER_MODEL,
-                    help="tiny|base|small|medium|large-v3")
-    ap.add_argument("--device", default=config.DEVICE, help="cpu|cuda")
-    ap.add_argument("--generator", default=config.GEN_BACKEND,
-                    choices=["retrieve", "placeholder", "diffusion"],
-                    help="how Stage 6 produces images (v1=retrieve)")
-    ap.add_argument("--video-backend", default=config.VIDEO_BACKEND, choices=["siglip", "owlv2", "vlm"],
-                    help="Stage 2 object finder; the evaluated configuration (v3) used owlv2")
+    ap.add_argument("--raw-config", action="store_true",
+                    help="use the bare config.py defaults instead of the shipped system (config.use_shipped())")
+    ap.add_argument("--whisper-model", default=None, help="tiny|base|small|medium|large-v3")
+    ap.add_argument("--device", default=None, help="cpu|cuda")
+    ap.add_argument("--generator", default=None, choices=["retrieve", "placeholder", "diffusion"],
+                    help="how Stage 6 produces images")
+    ap.add_argument("--video-backend", default=None, choices=["siglip", "owlv2", "vlm"],
+                    help="Stage 2 object finder")
     ap.add_argument("--debug-panel", action="store_true",
                     help="print the phrase and every raw detection with the gate's verdict under the panel")
     args = ap.parse_args()
 
-    # allow CLI overrides of the shared config
-    config.WHISPER_MODEL = args.whisper_model
-    config.DEVICE = args.device
-    config.GEN_BACKEND = args.generator
-    config.VIDEO_BACKEND = args.video_backend
+    # the shipped system by default (Qwen-Image pictures, scored detector stack, PANNs veto); CLI flags override it
+    if not args.raw_config:
+        config.use_shipped()
+    for k, v in (("WHISPER_MODEL", args.whisper_model), ("DEVICE", args.device), ("GEN_BACKEND", args.generator),
+                 ("VIDEO_BACKEND", args.video_backend)):
+        if v is not None:
+            setattr(config, k, v)
     if args.debug_panel:
         config.SHOW_PROMPT = True
         config.SHOW_DEBUG_SOUNDS = True
