@@ -10,7 +10,7 @@ Nothing in src/ or config.py is edited; no picture is changed on disk; CPU only.
   O5 family    relabel a cross picture to the gold sound whose onset window holds it
   O6 recall    misses no model hears at all (BEATs / FlexSED / DASM / FineLAP all under their lowest bar)
   O7 doubt     needed / visible calls of the gold that are doubtful (annotator flags + the prereg readings)
-  waterfall    shipped -> each oracle alone -> all together (5 -> 4 -> 5+4 joint -> 1 -> 3 -> 2 with filters lifted) -> residual
+  waterfall    shipped -> each oracle alone -> all together (4 -> 5 -> 5+4 joint -> 1 -> 3 -> 2 with filters lifted) -> residual
 
     TG_ARMS="SHIP6+FLAP SHIP7 ..." python benchmark/gold/ceiling_ship7.py      # from ~/MscProj_tg (msproj)
 """
@@ -212,7 +212,9 @@ def o2_listener(clips, pics_of, caches, lift_filters=False):
                    "qwen_v4": (x.get("accept") or {}).get("V4"), "gold": g["label"], "gold_start": g["start"], "dasm_span": r3(ds), "finelap_span": r3(fl),
                    "gate_proxy": why, "blocked_by": block}
             if not block:
-                keep.append((x["label"], a, b)); added_fams.add(fam)
+                keep.append((x["label"], a, b))
+            if not block or all(bl.startswith("gate") for bl in block):
+                added_fams.add(fam)                 # ONCE runs at stage 4, before the gate: a gate-silenced first rescue still counts
             log.append(rec)
         new[c.st] = keep
     return new, log
@@ -429,8 +431,9 @@ def main():
         b["d_cost"] = round(b["cost"] - b0["cost"], 3); b["d_hits"] = b["hits"] - b0["hits"]; b["d_wrong"] = b["wrong"] - b0["wrong"]
         res["alone"][name] = b; res["logs"][name] = log
         print(f"{name:28s} {fmt(X)}  dcost {b['d_cost']:+.3f}  ({len(log)} log lines)")
-    # combined, in sequence: family -> timing -> family+timing joint -> gate -> vetoes -> listener
-    seq = [("O5_family", lambda p: o5_family(clips, p)), ("O4_timing", lambda p: o4_timing(clips, p)), ("O54_family_plus_timing", lambda p: o54_joint(clips, p)),
+    # combined, in sequence: timing -> family -> family+timing joint -> gate -> vetoes -> listener (timing first: a cross picture
+    # with an own-family gold is a timing error, not a family error)
+    seq = [("O4_timing", lambda p: o4_timing(clips, p)), ("O5_family", lambda p: o5_family(clips, p)), ("O54_family_plus_timing", lambda p: o54_joint(clips, p)),
            ("O1_gate", lambda p: o1_gate(clips, p)), ("O3_vetoes", lambda p: o3_vetoes(clips, p)),
            ("O2_listener (filters perfect after O3)", lambda p: o2_listener(clips, p, caches, lift_filters=True))]
     cur = base_pics; prev = b0; water = [{"step": "shipped SHIP7", **b0}]

@@ -71,43 +71,43 @@
    "d_wrong": -9
   },
   "O2_listener": {
-   "hits": 27,
+   "hits": 26,
    "n": 55,
    "wrong": 24,
    "visible": 7,
    "cross": 15,
    "phantom": 2,
-   "cost": 2.254,
+   "cost": 2.31,
    "dev": [
     17,
     14
    ],
    "dev2": [
-    10,
+    9,
     10
    ],
-   "d_cost": -0.197,
-   "d_hits": 2,
+   "d_cost": -0.141,
+   "d_hits": 1,
    "d_wrong": -3
   },
   "O2_listener_filters_lifted": {
-   "hits": 35,
+   "hits": 34,
    "n": 55,
    "wrong": 24,
    "visible": 7,
    "cross": 15,
    "phantom": 2,
-   "cost": 1.803,
+   "cost": 1.859,
    "dev": [
     23,
     14
    ],
    "dev2": [
-    12,
+    11,
     10
    ],
-   "d_cost": -0.648,
-   "d_hits": 10,
+   "d_cost": -0.592,
+   "d_hits": 9,
    "d_wrong": -3
   },
   "O3_vetoes": {
@@ -523,7 +523,9 @@
     "dasm_span": 0.578,
     "finelap_span": 0.776,
     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
-    "blocked_by": []
+    "blocked_by": [
+     "ONCE (family already rescued in the clip)"
+    ]
    }
   ],
   "O2_listener_filters_lifted": [
@@ -724,7 +726,9 @@
     "dasm_span": 0.578,
     "finelap_span": 0.776,
     "gate_proxy": "no same-family spec within 0.5 s: treated as drawn",
-    "blocked_by": []
+    "blocked_by": [
+     "ONCE (family already rescued in the clip)"
+    ]
    }
   ],
   "O3_vetoes": [
@@ -1059,134 +1063,6 @@
    }
   ],
   "combined": {
-   "O5_family": [
-    {
-     "clip": "as_explosion_XJ8lc3I6",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Gunshot",
-     "start": 8.25
-    },
-    {
-     "clip": "b3_barbershop",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Electric shaver, electric razor",
-     "start": 16.0
-    },
-    {
-     "clip": "b3_crossing_bells",
-     "act": "relabel",
-     "label": "Steam",
-     "start": 0.22,
-     "to": "Train",
-     "gold_needed": false,
-     "gold_visible": true,
-     "gold_importance": 2,
-     "new_class": "visible"
-    },
-    {
-     "clip": "b3_golf_course",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Bird",
-     "start": 18.84
-    },
-    {
-     "clip": "ly_applause_62ZYD0u",
-     "act": "relabel",
-     "label": "Crowd",
-     "start": 0.0,
-     "to": "Laughter",
-     "gold_needed": false,
-     "gold_visible": true,
-     "gold_importance": 2,
-     "new_class": "visible"
-    },
-    {
-     "clip": "mv_detective_crime_scene",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Alarm",
-     "start": 3.36
-    },
-    {
-     "clip": "mv_detective_crime_scene",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Alarm",
-     "start": 9.08
-    },
-    {
-     "clip": "mv_protest_scene_movie",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Glass",
-     "start": 4.75
-    },
-    {
-     "clip": "tg_d022",
-     "act": "relabel",
-     "label": "Pant",
-     "start": 7.0,
-     "to": "Chopping (food)",
-     "gold_needed": false,
-     "gold_visible": true,
-     "gold_importance": 2,
-     "new_class": "visible"
-    },
-    {
-     "clip": "tg_d022",
-     "act": "relabel",
-     "label": "Dog",
-     "start": 7.25,
-     "to": "Chopping (food)",
-     "gold_needed": false,
-     "gold_visible": true,
-     "gold_importance": 2,
-     "new_class": "dup"
-    },
-    {
-     "clip": "tg_d029",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Goose",
-     "start": 11.0
-    },
-    {
-     "clip": "tg_d088",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Thunder",
-     "start": 8.5
-    },
-    {
-     "clip": "tg_d088",
-     "act": "relabel",
-     "label": "Explosion",
-     "start": 10.75,
-     "to": "Thunder",
-     "gold_needed": false,
-     "gold_visible": true,
-     "gold_importance": 2,
-     "new_class": "visible"
-    },
-    {
-     "clip": "tg_d088",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Thunder",
-     "start": 13.25
-    },
-    {
-     "clip": "tg_d107",
-     "act": "relabel",
-     "label": "Screaming",
-     "start": 7.0,
-     "to": "Bird vocalization, bird call, bird song",
-     "gold_needed": false,
-     "gold_visible": true,
-     "gold_importance": 2,
-     "new_class": "visible"
-    },
-    {
-     "clip": "tg_d128",
-     "act": "cannot relabel: no gold onset window holds the picture start",
-     "label": "Hammer",
-     "start": 9.0
-    }
-   ],
    "O4_timing": [
     {
      "clip": "as_explosion_XJ8lc3I6",
@@ -1223,6 +1099,18 @@
      "gold_visible": false,
      "gold_importance": 1,
      "new_class": "dontcare"
+    },
+    {
+     "clip": "ly_applause_62ZYD0u",
+     "act": "move to gold onset",
+     "label": "Crowd",
+     "from": 0.0,
+     "to": 1.9,
+     "gold": "Crowd",
+     "gold_needed": true,
+     "gold_visible": false,
+     "gold_importance": 2,
+     "new_class": "hit"
     },
     {
      "clip": "mv_detective_crime_scene",
@@ -1270,7 +1158,7 @@
      "gold_needed": false,
      "gold_visible": true,
      "gold_importance": 2,
-     "new_class": "dup"
+     "new_class": "visible"
     },
     {
      "clip": "tg_d088",
@@ -1283,6 +1171,75 @@
      "gold_visible": true,
      "gold_importance": 2,
      "new_class": "dup"
+    }
+   ],
+   "O5_family": [
+    {
+     "clip": "b3_crossing_bells",
+     "act": "relabel",
+     "label": "Steam",
+     "start": 0.22,
+     "to": "Train",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d022",
+     "act": "relabel",
+     "label": "Pant",
+     "start": 7.0,
+     "to": "Chopping (food)",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d022",
+     "act": "relabel",
+     "label": "Dog",
+     "start": 7.25,
+     "to": "Chopping (food)",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "dup"
+    },
+    {
+     "clip": "tg_d029",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Goose",
+     "start": 11.0
+    },
+    {
+     "clip": "tg_d088",
+     "act": "relabel",
+     "label": "Explosion",
+     "start": 10.75,
+     "to": "Thunder",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d107",
+     "act": "relabel",
+     "label": "Screaming",
+     "start": 7.0,
+     "to": "Bird vocalization, bird call, bird song",
+     "gold_needed": false,
+     "gold_visible": true,
+     "gold_importance": 2,
+     "new_class": "visible"
+    },
+    {
+     "clip": "tg_d128",
+     "act": "cannot relabel: no gold onset window holds the picture start",
+     "label": "Hammer",
+     "start": 9.0
     }
    ],
    "O54_family_plus_timing": [
@@ -1373,12 +1330,6 @@
      "act": "drop visible picture",
      "label": "Vehicle",
      "start": 0.25
-    },
-    {
-     "clip": "ly_applause_62ZYD0u",
-     "act": "drop visible picture",
-     "label": "Laughter",
-     "start": 0.0
     },
     {
      "clip": "un_driving_motorcycle_DgdHSmwA",
@@ -1664,121 +1615,121 @@
    ]
   },
   {
-   "step": "O5_family",
-   "hits": 25,
+   "step": "O4_timing",
+   "hits": 26,
    "n": 55,
-   "wrong": 26,
-   "visible": 14,
-   "cross": 10,
+   "wrong": 20,
+   "visible": 11,
+   "cross": 7,
    "phantom": 2,
-   "cost": 2.423,
+   "cost": 2.197,
    "dev": [
-    17,
-    16
+    18,
+    10
    ],
    "dev2": [
     8,
     10
    ],
-   "marginal_cost": -0.028,
-   "marginal_hits": 0,
-   "marginal_wrong": -1
+   "marginal_cost": -0.254,
+   "marginal_hits": 1,
+   "marginal_wrong": -7
   },
   {
-   "step": "O4_timing",
-   "hits": 25,
+   "step": "O5_family",
+   "hits": 26,
    "n": 55,
-   "wrong": 19,
-   "visible": 15,
+   "wrong": 18,
+   "visible": 14,
    "cross": 2,
    "phantom": 2,
-   "cost": 2.225,
+   "cost": 2.141,
    "dev": [
-    17,
-    11
+    18,
+    10
    ],
    "dev2": [
     8,
     8
    ],
-   "marginal_cost": -0.198,
+   "marginal_cost": -0.056,
    "marginal_hits": 0,
-   "marginal_wrong": -7
+   "marginal_wrong": -2
   },
   {
    "step": "O54_family_plus_timing",
-   "hits": 26,
+   "hits": 27,
    "n": 55,
-   "wrong": 18,
-   "visible": 15,
+   "wrong": 17,
+   "visible": 14,
    "cross": 1,
    "phantom": 2,
-   "cost": 2.141,
+   "cost": 2.056,
    "dev": [
-    17,
-    11
+    18,
+    10
    ],
    "dev2": [
     9,
     7
    ],
-   "marginal_cost": -0.084,
+   "marginal_cost": -0.085,
    "marginal_hits": 1,
    "marginal_wrong": -1
   },
   {
    "step": "O1_gate",
-   "hits": 31,
+   "hits": 32,
    "n": 55,
    "wrong": 3,
    "visible": 0,
    "cross": 1,
    "phantom": 2,
-   "cost": 1.437,
+   "cost": 1.38,
    "dev": [
-    20,
+    21,
     2
    ],
    "dev2": [
     11,
     1
    ],
-   "marginal_cost": -0.704,
+   "marginal_cost": -0.676,
    "marginal_hits": 5,
-   "marginal_wrong": -15
+   "marginal_wrong": -14
   },
   {
    "step": "O3_vetoes",
-   "hits": 35,
+   "hits": 36,
    "n": 55,
    "wrong": 3,
    "visible": 0,
    "cross": 1,
    "phantom": 2,
-   "cost": 1.211,
+   "cost": 1.155,
    "dev": [
-    23,
+    24,
     2
    ],
    "dev2": [
     12,
     1
    ],
-   "marginal_cost": -0.226,
+   "marginal_cost": -0.225,
    "marginal_hits": 4,
    "marginal_wrong": 0
   },
   {
    "step": "O2_listener (filters perfect after O3)",
-   "hits": 42,
+   "hits": 43,
    "n": 55,
    "wrong": 3,
    "visible": 0,
    "cross": 1,
    "phantom": 2,
-   "cost": 0.817,
+   "cost": 0.761,
    "dev": [
-    27,
+    28,
     2
    ],
    "dev2": [
@@ -1870,14 +1821,6 @@
     "start": 7.3,
     "importance": 2,
     "removed_by": "removed by N2b masked-weak veto (present in TO1+F7F8, row conf 0.32 < floor anyway)"
-   },
-   {
-    "part": "dev",
-    "clip": "ly_applause_62ZYD0u",
-    "label": "Crowd",
-    "start": 1.9,
-    "importance": 2,
-    "removed_by": "stage-4 timing (row overlaps the sound, start outside the window)"
    },
    {
     "part": "dev",

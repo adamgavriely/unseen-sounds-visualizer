@@ -11,55 +11,56 @@ so one wrong picture = 0.028, one miss = 0.056.
 |---|---|---|---|---|---|
 | shipped SHIP7 | 25 | 27 (9/16/2) | 2.451 | — | |
 | O1 perfect visibility gate | 30 | 18 (0/16/2) | 1.915 | **−0.536** | drops the 9 visible pictures; gives back 5 gate-silenced needed sounds (macaws, pet-shop birds, church bell, boxer dog ×2) |
-| O2 perfect listener (F8 / FLAP / gate as shipped) | 27 | 24 (7/15/2) | 2.254 | −0.197 | rejects 3 wrong rescues; 11 needed candidates accepted, but 8 are then blocked by F8 (DASM < 0.575), 1 by the gate; only Laughter 8.4 and Fart 5.7 get through |
-| O2 with F8 / FLAP lifted | 35 | 24 (7/15/2) | 1.803 | −0.648 | the same 11 candidates, filters off: +10 hits |
+| O2 perfect listener (ONCE / F8 / FLAP / gate as shipped) | 26 | 24 (7/15/2) | 2.310 | −0.141 | rejects 3 wrong rescues; 11 needed candidates accepted, but 8 are then blocked by F8 (DASM < 0.575), 1 by the gate (Fart 0.08) and 1 by ONCE (Fart 5.7, the family's second rescue); only Laughter 8.4 gets through |
+| O2 with F8 / FLAP lifted | 34 | 24 (7/15/2) | 1.859 | −0.592 | the same 11 candidates, filters off: +9 hits (gate and ONCE still block the two Farts) |
 | O3 perfect vetoes / filters | 30 | 27 (9/16/2) | 2.169 | −0.282 | gives back Hammer 13.8 and Explosion 2.8 (F8), Cat 2.9 (ONCE), Train 14.7 (CONT), Chicken 6.9 (B0 FlexSED clip veto). Vehicle 8.25 (0.32) and Dishes 16.5 (0.37) are under the 0.40 floor: not restorable |
 | O4 perfect timing | 26 | 20 (11/7/2) | 2.197 | −0.254 | moves 9 cross pictures of the right family to their gold onset: +1 hit (applause Crowd 1.9); 6 late repeats become free duplicates (Shaver, Alarm ×2, Glass, Thunder 13.25, golf Bird); 2 land on a visible sound (Gunshot → Machine gun, Thunder 8.5 → 11.1) |
 | O5 perfect family | 25 | 26 (14/10/2) | 2.423 | −0.028 | relabels 6 cross pictures; every gold at that moment is visible (Steam → Train, Pant/Dog → Chopping, Explosion → Thunder, Screaming → Bird, Crowd → Laughter): cross becomes visible, cost almost unchanged |
 | O5+O4 family AND timing | 27 | 25 (9/14/2) | 2.282 | −0.169 | two pictures need both: Gunshot 8.25 → Footsteps 2.1, Goose 11.0 → Chicken 6.9 |
 
-## Waterfall (all oracles together, applied in sequence)
+## Waterfall (all oracles together, applied in sequence: timing → family → both → gate → vetoes → listener)
 
 | step | hits | wrong (v/c/p) | cost | marginal Δ | the stage is responsible for |
 |---|---|---|---|---|---|
 | shipped SHIP7 | 25 | 27 (9/16/2) | 2.451 | | |
-| + O5 family | 25 | 26 (14/10/2) | 2.423 | −0.028 | 1 wrong |
-| + O4 timing | 25 | 19 (15/2/2) | 2.225 | −0.198 | 7 wrong (6 are repeats of a sound already drawn) |
-| + O5+O4 joint | 26 | 18 (15/1/2) | 2.141 | −0.084 | 1 hit, 1 wrong |
-| + O1 gate | 31 | 3 (0/1/2) | 1.437 | **−0.704** | 5 hits + 15 wrong (all visible pictures, including the 5 that O5 / O4 turned from cross into visible) |
-| + O3 vetoes | 35 | 3 (0/1/2) | 1.211 | −0.226 | 4 hits |
-| + O2 listener (filters perfect) | 42 | 3 (0/1/2) | 0.817 | −0.394 | 7 hits |
-| **ceiling of the pipeline on this data** | **42 / 55** | **3** | **0.817** | | |
+| + O4 timing | 26 | 20 (11/7/2) | 2.197 | −0.254 | 1 hit, 7 wrong (6 are repeats of a sound already drawn) |
+| + O5 family | 26 | 18 (14/2/2) | 2.141 | −0.056 | 2 wrong (5 cross pictures become visible pictures) |
+| + O5+O4 joint | 27 | 17 (14/1/2) | 2.056 | −0.085 | 1 hit, 1 wrong |
+| + O1 gate | 32 | 3 (0/1/2) | 1.380 | **−0.676** | 5 hits + 14 wrong (all visible pictures, including the 5 that O5 / O4 turned from cross into visible) |
+| + O3 vetoes | 36 | 3 (0/1/2) | 1.155 | −0.225 | 4 hits |
+| + O2 listener (filters perfect) | 43 | 3 (0/1/2) | 0.761 | −0.394 | 7 hits |
+| **ceiling of the pipeline on this data** | **43 / 55** | **3** | **0.761** | | |
 
-The order matters for the split between O5/O4 and O1: a cross picture at the moment of a visible sound is "family wrong" AND "visible";
-here family/timing get it first. Read the "alone" table for the order-free view.
+The order matters for the split between O4/O5 and O1: a cross picture at the moment of a visible sound is "family wrong" AND "visible";
+here timing/family get it first (timing before family: a cross picture with an own-family gold is a timing error). Read the "alone" table
+for the order-free view. In O4, barbershop Shaver and detective Alarm 3.36 read `new_class: hit` in the log because the moved copy takes the
+nearest-onset match and the original picture becomes the duplicate: net zero, not a gain.
 
-## What no oracle reaches (the residual: 13 misses, 3 wrong)
+## What no oracle reaches (the residual: 12 misses, 3 wrong)
 
 - **5 unheard** (O6): nyc Hammer 8.1 (BEATs 0.006, FlexSED 0.005, DASM 0.003, FineLAP 0.031), tg_d125 Explosion 5.4 (BEATs 0.004,
   FlexSED 0.03, DASM 0.15, FineLAP not queried), nyc_2627 Clang 3.8 and golf Whack ×2 (BEATs ≤ 0.015; FlexSED / DASM / FineLAP never
   queried for these families). 4 of 5 are under every model's lowest bar; the Explosion only clears DASM's 0.084 clip bar.
 - **8 faint or mistimed**: below LO 0.5 (rainforest Bird 0.435, storm siren 0.42), under the picture floor (birds_forest Bird 0.22, tg_d032
-  Thunder 7.4 0.27, ambulance Vehicle 0.32, tg_d095 Dishes 0.37), applause Crowd 1.9 (the span starts at 0.0 and no cross picture is left to move
-  after O4 — it is the same picture), tg_d032 Thunder 2.8 (P2 run starts 2.04, outside the window). These need a lower bar, and every lower bar
-  tried (CV54–CV76, PMC, N2c) bought wrong pictures.
+  Thunder 7.4 0.27, ambulance Vehicle 0.32, tg_d095 Dishes 0.37), tg_d032 Thunder 2.8 (P2 run starts 2.04, outside the window). These need a
+  lower bar, and every lower bar tried (CV54–CV76, PMC, N2c) bought wrong pictures. (That is 7; the 8th "faint" item, tg_d029 Chicken, O3 restores.)
 - **3 wrong**: 2 phantoms (laundromat Train 1.0, hair-dryer Computer keyboard 11.25 — nothing in the gold at that time) and tg_d128 Hammer 9.0
   (a Clang is on screen since 5.6: wrong family AND late; no relabel or move fixes it).
 
 ## The three biggest ceilings
 
-1. **The visibility gate: −0.70 of the 2.45 cost** (alone −0.54). 9 wrong pictures are of sounds the annotator calls visible, and 5 needed
+1. **The visibility gate: −0.68 of the 2.45 cost** (alone −0.54). 9 wrong pictures are of sounds the annotator calls visible, and 5 needed
    sounds are silenced because a same-family thing is on screen. Every gate idea (M / N / GA / Gemma / SUBJ / OM / PIC-SIM / SSL-SaN) failed:
    the frames cannot tell "this bell" from "that bell". This is also the group where the gold itself is a judgement call (see O7).
-2. **The listener + F8 pair: −0.39 (with filters lifted −0.65 alone).** 11 needed sounds have a P2/PV candidate in the right window; the shipped
-   ears refuse 8 of them, and even a perfect ear would lose 8 to F8 (DASM under 0.575: Air horn 0.05, Whistle 0.02, Gasp 0.07, Siren 0.20,
+2. **The listener + F8 pair: −0.39 (with filters lifted −0.59 alone).** 11 needed sounds have a P2/PV candidate in the right window; the shipped
+   ears refuse 7 of them (the ledger's "listener refused" rows), and even a perfect ear would lose 8 to F8 (DASM under 0.575: Air horn 0.05, Whistle 0.02, Gasp 0.07, Siren 0.20,
    Footsteps 0.26, Hammer 0.28, Clapping 0.35, Explosion 0.52). F8 stays because every relaxation (F8-U, K1, FLAP-F8) bought 3–10 wrong per hit.
 3. **Vetoes and timing: −0.23 and −0.20.** Five needed sounds are removed by a veto that was shipped because it removed more wrong than right
    (F8 ×2, ONCE, CONT, B0 clip veto). Six wrong pictures are late repeats of a sound already drawn: a "one picture per sound" rule would remove
    them, but RPT-S (screen GO, arm fail) shows the arm-level version costs a hit.
 
 Detector recall (O6) is the floor: 5 of 55 needed sounds (9 %) are heard by no model, and 8 more are heard too faintly. So even a perfect
-decision layer tops out at 42 / 55 hits on this data.
+decision layer tops out at 43 / 55 hits on this data.
 
 ## O7 — how sure is the gold?
 
@@ -70,8 +71,8 @@ decision layer tops out at 42 / 55 hits on this data.
   are in the unheard group — no model was asked for that family.
 - The 9 visible-wrong pictures are scene sounds (rainstorm thunder ×3, church bell, fire alarm, protest air horn, starter's bang, bath water,
   kids' laughter) and the 5 gate-silenced needed sounds have a same-family thing on screen (macaws, robin, church tower, boxer dog ×2). Both
-  groups sit one tick away from the other class. If all 14 were ticked the other way SHIP7 would read ~30 hits / 18 wrong (cost ~1.9) with
-  no pipeline change — the whole size of the O1 ceiling. Low estimate of doubtful items: 3 (labels); high: 14 + 10 masked = 24 of the 55 needed + 27 wrong.
+  groups sit one tick away from the other class. If all 14 were ticked the other way the cost would land near 1.9 with no pipeline change
+  (hit and needed counts both shift: two of the visible golds are importance 1 and one is "obvious", not "visible") — the whole size of the O1 ceiling. Low estimate of doubtful items: 3 (labels); high: 14 + 10 masked = 24 of the 55 needed + 27 wrong.
 
 ## TEST
 
