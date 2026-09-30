@@ -1010,3 +1010,10 @@ audio LLMs, adds a needed sound without adding wrong pictures overall. Merged in
 
 Δ cost vs B0r −0.205 [−0.455, +0.023], one-sided p 0.051 → "same" by the rule's p < 0.05 (third read; reported only). DR2
 adds 2 needed hits on the old TEST for 2 more wrong pictures than N2b: the lowest TEST cost of any version so far.
+
+## Round 21 (base = shipped SHIP2 = TO1+F7F8 + N2b + DR2, merged DEV 24 / 44 / 2.986; Fable ideas; written before numbers)
+Pass rule vs the base: hits ≥ 24, wrong ≤ 44 + 2 × gain, cost < 2.986, no needed hit lost on either part.
+- **N2e:** the N2 veto triggers on weak (< 0.5), untwinned BEATs-only spans whose family PANNs does not reach its clip-veto
+  bar (0.05) inside the span (instead of "under speech/music"); kept if Qwen (P1 rule) or AF V4 names it.
+- **N2c-D:** N2c (every weak untwinned BEATs-only span needs a second opinion) with two more keeps: DASM ≥ 0.575 for the
+  family within the span ± 0.5 s, or no cached listener answer for the span.

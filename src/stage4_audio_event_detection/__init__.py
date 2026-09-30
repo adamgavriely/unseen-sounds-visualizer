@@ -750,10 +750,25 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 if getattr(config, "MASKED_WEAK_NEED_MASK", True) and (
                         not m.any() or float(np.asarray(framewise)[m][:, sm].max()) < 0.3):
                     continue                                     # round 18 N2c drops the masking condition
-                if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
+                if getattr(config, "MASKED_WEAK_PANNS", False):
+                    # round 21 N2e: the trigger is "PANNs does not reach its clip-veto bar for the family inside the span"
+                    try:
+                        pfw, pt, pl = _panns()
+                        pc = [i for i, lab_ in enumerate(pl) if canonical(lab_) == canonical(e.label)]
+                        pm = (np.asarray(pt) >= e.start - 1e-6) & (np.asarray(pt) <= e.end + 1e-6)
+                        if pc and pm.any() and float(np.asarray(pfw)[pm][:, pc].max()) >= float(getattr(config, "PANNS_VETO", 0.05) or 0.05):
+                            continue
+                    except RuntimeError:
+                        continue
+                ok, how = listener_p1(e.label, e.start, e.end) if listener_p1 is not None else (False, "missing")
+                if ok:
                     continue
                 if getattr(config, "MASKED_WEAK_AF", False) and _af_p1_accepts(e):   # round 18 N2b: or AF V4 on the P1 cut
                     continue
+                if getattr(config, "MASKED_WEAK_MISSING_KEEP", False) and how == "missing":
+                    continue                                     # round 21 N2c-D: no second opinion was asked -> keep
+                if getattr(config, "MASKED_WEAK_DASM_KEEP", False) and _dasm_keeps(e):
+                    continue                                     # round 21 N2c-D: DASM >= F8's bar in the span +- 0.5 s
                 gone.append(e)
         if getattr(config, "FLEX_ONLY_CONFIRM", False):
             # round 18 N2d: a FlexSED-only span (no BEATs span of its family) is kept only if BEATs hears its family at all
@@ -1064,6 +1079,27 @@ def dasm_rescue_events(clip: str, present=None):
     if out:
         print(f"       [stage4] DASM rescue: {len(out)} span(s) {[(e.label, round(e.start, 2)) for e in out]}", flush=True)
     return out
+
+
+_DASMC = {}
+
+
+def _dasm_keeps(e) -> bool:
+    """round 21 N2c-D: DASM gives e's family >= LISTENER_DASM_BAR (0.575) within the span +- 0.5 s (config.LISTENER_DASM_DIR)"""
+    from src.labels import canonical
+    d, clip = getattr(config, "LISTENER_DASM_DIR", None), getattr(config, "_CURRENT_CLIP", None)
+    if not d or clip is None:
+        return False
+    f = Path(d) / f"{clip}.npz"
+    if f not in _DASMC:
+        _DASMC[f] = np.load(f, allow_pickle=True) if f.exists() else None
+    z = _DASMC[f]
+    if z is None:
+        return False
+    fw, t, L = z["fw"], z["times"], [str(x) for x in z["labels"]]
+    cols = [i for i, l in enumerate(L) if canonical(l) == canonical(e.label)]
+    m = (t >= e.start - 0.5) & (t <= e.end + 0.5)
+    return bool(cols) and bool(m.any()) and float(fw[m][:, cols].max()) >= float(getattr(config, "LISTENER_DASM_BAR", 0.575))
 
 
 _AFP1 = {}
