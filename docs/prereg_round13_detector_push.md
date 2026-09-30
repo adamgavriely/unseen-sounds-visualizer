@@ -1560,3 +1560,7 @@ would-drop list (same family, picture start inside [row start − 1.5, row end])
   `FINELAP_CLIP_VETO2` 0.4331 applied by a wrapper around the harness's `fuse_flexsed` call — the pipeline's own code plus
   the one veto, listener keep as DV; `slurm/job_flap_dv2.sh`, after the FLR job). DV2 joins the CV selection set. To ship it
   would need a `src/` flag (not this thread's remit): reported as an Adam decision.
+- **TEST read of SHIP7 (reported):** SHIP6+FLAP 24 hits / 31 wrong (5/21/5) / 2.568 vs B0r 21/40/2.909; d −0.341
+  [−0.636, −0.045], one-sided p 0.015 → **better** (benchmark/gold/final_test_ship7.md).
+- **SHIP7+K4AO:** 24/55, 24 wrong (9/13/2), 2.423 vs SHIP7 25/27/2.451: −1 hit (old DEV), −3 wrong. Passes the
+  fewer-pictures clause at exactly 3:1; held for Adam's word (his 16:20 message puts hits first).
