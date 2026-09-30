@@ -1527,3 +1527,23 @@ clips; the procedure's held-out cost vs fixed SHIP6. The full-merged-DEV argmin 
 the CV cost <= SHIP6's CV cost AND it passes the combined rule. If the argmin is SHIP6: stable, STOP. No TEST read.
 - **TEST read of SHIP6 (reported):** SHIP5+CONT 24 hits / 32 wrong (5/22/5) / 2.591 vs B0r 21/40/2.909; d −0.318
   [−0.614, −0.023], one-sided p 0.025 → **better** (benchmark/gold/final_test_ship6.md).
+### Round 32 results — screens (CPU, `benchmark/gold/flap_joint_sim.json`; cache 2 job 31596346)
+- **Cache 2 / bars:** 71 clips, every cache-1 score reproduced (71/71 equal); P1 hit_needed n 59; span bar 0.3292 (= FLAP);
+  **clip bar 0.4331** (`finelap_full.json`; 54/59 kept under each).
+- **(A) FLAP-F8 at arm level** (base re-placed = 25/28/2.479 exactly): of the 51 SHIP6 F8-dropped spans, 24 survive FineLAP +
+  ONCE (candidate level had 56: the london_protest horns, applause laughs, tg_d088 thunders etc. collapse to one per family).
+  5 are needed-class, but 3 of them the gate silences (snow_walk Giggle, tg_d127 Giggle / Chuckle: the laughing people are on
+  screen); Hammer 13.76 and Explosion 2.84 are drawn (the Explosion displaces the kept 5.68 hit under ONCE: net +2 hits).
+  11 other-class restored pictures are drawn (Train, Car, Coin, Water, Bird, Alarm, Sigh, Thump ×2, Toilet flush, Chewing).
+  **OR: 27/55, 39 wrong (9/27/3), 2.676. R (FineLAP alone): 27/55, 38 (9/26/3), 2.648** (3 kept rescues newly dropped, none a
+  drawn hit). Both fail (wrong +11 / +10 for +2 hits, cost up) → **STOP**; even with the 3 no-proxy spans gated, wrong ≥ 36.
+  CV: the procedure picks SHIP6 in 20/20 halves and 50/50 folds (held-out 2.476 = fixed SHIP6).
+- **(B) DV seat with the FineLAP clip bar 0.4331:** 43 non-rescued rows (conf ≥ 0.40) would be dropped with no listener keep —
+  most are non-depictable (Speech, Music, Hum, Animal: never pictures); the picture-level ones are tg_d022 Dog 7.25 and tg_d128
+  Hammer 9.0 (both cross-group X pictures), tg_d129 Scissors, un_people_clapping Guitar/Instrument, and **tg_d120 Domestic
+  animals 2.97 = the needed Cat hit** (FineLAP clip max 0.031 for the cat: lost). 2 DASM-DV-dropped rows come back (Sigh,
+  Hammer; other_gold). The seat swap trades ~3 cross pictures for 1 needed hit + 2 possible wrong: no gain by the cost.
+- **(C) ONCE-dropped (record):** 10 spans (golf Bird ×3, arrest Footsteps/Locomotion ×5, tg_d120 Cat ×2, one of them
+  needed-class but already hit by the non-rescued Domestic-animals span).
+- **Arms SHIP6+FLR / SHIP6+FLR+F1** (job 31596369, queued after the other thread's r16dev / tgarms; real pipeline, both parts)
+  are reported below when they finish; the screen's expectation is STOP for both (F8 seat +2 hits / +10 wrong, DV seat −1 hit).

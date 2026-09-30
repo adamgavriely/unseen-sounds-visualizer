@@ -1,0 +1,1138 @@
+{
+ "base": {
+  "merged": {
+   "hits": 25,
+   "n": 55,
+   "wrong": 28,
+   "visible": 9,
+   "cross": 17,
+   "phantom": 2,
+   "cost": 2.4788732394366195
+  },
+  "dev": {
+   "hits": 17,
+   "n": 36,
+   "wrong": 17,
+   "visible": 6,
+   "cross": 9,
+   "phantom": 2,
+   "cost": 2.2448979591836733
+  },
+  "dev2": {
+   "hits": 8,
+   "n": 19,
+   "wrong": 11,
+   "visible": 3,
+   "cross": 8,
+   "phantom": 0,
+   "cost": 3.0
+  }
+ },
+ "span_bar": 0.32922908663749695,
+ "clip_bar": 0.43305474519729614,
+ "A": {
+  "OR": {
+   "rows": {
+    "merged": {
+     "hits": 27,
+     "n": 55,
+     "wrong": 39,
+     "visible": 9,
+     "cross": 27,
+     "phantom": 3,
+     "cost": 2.676056338028169
+    },
+    "dev": {
+     "hits": 19,
+     "n": 36,
+     "wrong": 23,
+     "visible": 6,
+     "cross": 15,
+     "phantom": 2,
+     "cost": 2.326530612244898
+    },
+    "dev2": {
+     "hits": 8,
+     "n": 19,
+     "wrong": 16,
+     "visible": 3,
+     "cross": 12,
+     "phantom": 1,
+     "cost": 3.4545454545454546
+    }
+   },
+   "verdict": "STOP",
+   "hits_lost": [],
+   "restored": [
+    [
+     "dev",
+     "ambient_citywalk_nyc_1689",
+     "Hammer",
+     13.76,
+     15.96,
+     0.747,
+     "drawn",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_citywalk_nyc_2627",
+     "Train",
+     10.0,
+     16.0,
+     0.772,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_market_marrakech_3102",
+     "Car passing by",
+     13.52,
+     15.16,
+     0.602,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_nature_rainforest_2179",
+     "Water",
+     4.6,
+     10.0,
+     0.741,
+     "gated",
+     "none",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_snow_walk_930",
+     "Giggle",
+     8.04,
+     9.4,
+     0.727,
+     "gated",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_snow_walk_930",
+     "Water",
+     13.64,
+     16.0,
+     0.704,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "as_explosion_XJ8lc3I6",
+     "Explosion",
+     2.84,
+     3.64,
+     0.621,
+     "drawn",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev",
+     "as_glass_oHil9Ip_",
+     "Coin (dropping)",
+     9.0,
+     9.56,
+     0.9,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "b3_construction_site",
+     "Air horn, truck horn",
+     0.36,
+     1.36,
+     0.5,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "b3_crossing_bells",
+     "Water",
+     10.0,
+     17.0,
+     0.676,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "b3_favela_rio",
+     "Bird",
+     10.08,
+     11.08,
+     0.5,
+     "drawn",
+     "other_gold",
+     "no-proxy"
+    ],
+    [
+     "dev",
+     "ly_applause_62ZYD0u",
+     "Giggle",
+     0.0,
+     1.04,
+     0.54,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ly_applause_62ZYD0u",
+     "Belly laugh",
+     7.4,
+     13.36,
+     0.734,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "mv_tornado_scene",
+     "Alarm",
+     10.0,
+     16.16,
+     0.556,
+     "drawn",
+     "other_gold",
+     "no-proxy"
+    ],
+    [
+     "dev2",
+     "tg_d033",
+     "Sigh",
+     6.76,
+     7.76,
+     0.5,
+     "drawn",
+     "other_gold",
+     "no-proxy"
+    ],
+    [
+     "dev2",
+     "tg_d054",
+     "Engine knocking",
+     0.0,
+     10.0,
+     0.868,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d075",
+     "Thump, thud",
+     2.4,
+     3.4,
+     0.5,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d085",
+     "Giggle",
+     11.6,
+     12.16,
+     0.866,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d088",
+     "Water",
+     0.0,
+     10.0,
+     0.722,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d095",
+     "Thump, thud",
+     0.16,
+     1.16,
+     0.5,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d095",
+     "Toilet flush",
+     7.72,
+     10.0,
+     0.706,
+     "drawn",
+     "none",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d127",
+     "Giggle",
+     9.4,
+     9.96,
+     0.924,
+     "gated",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d127",
+     "Chuckle, chortle",
+     9.4,
+     9.96,
+     0.786,
+     "gated",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d129",
+     "Chewing, mastication",
+     4.0,
+     5.0,
+     0.713,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ]
+   ],
+   "displaced": [
+    [
+     "dev",
+     "as_explosion_XJ8lc3I6",
+     "Explosion",
+     5.68,
+     "hit_needed"
+    ]
+   ],
+   "newly_dropped": [],
+   "no_conf": 8,
+   "no_gate": 3
+  },
+  "R": {
+   "rows": {
+    "merged": {
+     "hits": 27,
+     "n": 55,
+     "wrong": 38,
+     "visible": 9,
+     "cross": 26,
+     "phantom": 3,
+     "cost": 2.647887323943662
+    },
+    "dev": {
+     "hits": 19,
+     "n": 36,
+     "wrong": 22,
+     "visible": 6,
+     "cross": 14,
+     "phantom": 2,
+     "cost": 2.2857142857142856
+    },
+    "dev2": {
+     "hits": 8,
+     "n": 19,
+     "wrong": 16,
+     "visible": 3,
+     "cross": 12,
+     "phantom": 1,
+     "cost": 3.4545454545454546
+    }
+   },
+   "verdict": "STOP",
+   "hits_lost": [],
+   "restored": [
+    [
+     "dev",
+     "ambient_citywalk_nyc_1689",
+     "Hammer",
+     13.76,
+     15.96,
+     0.747,
+     "drawn",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_citywalk_nyc_2627",
+     "Train",
+     10.0,
+     16.0,
+     0.772,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_market_marrakech_3102",
+     "Car passing by",
+     13.52,
+     15.16,
+     0.602,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_nature_rainforest_2179",
+     "Water",
+     4.6,
+     10.0,
+     0.741,
+     "gated",
+     "none",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_snow_walk_930",
+     "Giggle",
+     8.04,
+     9.4,
+     0.727,
+     "gated",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ambient_snow_walk_930",
+     "Water",
+     13.64,
+     16.0,
+     0.704,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "as_explosion_XJ8lc3I6",
+     "Explosion",
+     2.84,
+     3.64,
+     0.621,
+     "drawn",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev",
+     "as_glass_oHil9Ip_",
+     "Coin (dropping)",
+     9.0,
+     9.56,
+     0.9,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "b3_construction_site",
+     "Air horn, truck horn",
+     0.36,
+     1.36,
+     0.5,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "b3_crossing_bells",
+     "Water",
+     10.0,
+     17.0,
+     0.676,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "b3_favela_rio",
+     "Bird",
+     10.08,
+     11.08,
+     0.5,
+     "drawn",
+     "other_gold",
+     "no-proxy"
+    ],
+    [
+     "dev",
+     "ly_applause_62ZYD0u",
+     "Giggle",
+     0.0,
+     1.04,
+     0.54,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "ly_applause_62ZYD0u",
+     "Belly laugh",
+     7.4,
+     13.36,
+     0.734,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev",
+     "mv_tornado_scene",
+     "Alarm",
+     10.0,
+     16.16,
+     0.556,
+     "drawn",
+     "other_gold",
+     "no-proxy"
+    ],
+    [
+     "dev2",
+     "tg_d033",
+     "Sigh",
+     6.76,
+     7.76,
+     0.5,
+     "drawn",
+     "other_gold",
+     "no-proxy"
+    ],
+    [
+     "dev2",
+     "tg_d054",
+     "Engine knocking",
+     0.0,
+     10.0,
+     0.868,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d075",
+     "Thump, thud",
+     2.4,
+     3.4,
+     0.5,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d085",
+     "Giggle",
+     11.6,
+     12.16,
+     0.866,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d088",
+     "Water",
+     0.0,
+     10.0,
+     0.722,
+     "gated",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d095",
+     "Thump, thud",
+     0.16,
+     1.16,
+     0.5,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d095",
+     "Toilet flush",
+     7.72,
+     10.0,
+     0.706,
+     "drawn",
+     "none",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d127",
+     "Giggle",
+     9.4,
+     9.96,
+     0.924,
+     "gated",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d127",
+     "Chuckle, chortle",
+     9.4,
+     9.96,
+     0.786,
+     "gated",
+     "hit_needed",
+     "proxy"
+    ],
+    [
+     "dev2",
+     "tg_d129",
+     "Chewing, mastication",
+     4.0,
+     5.0,
+     0.713,
+     "drawn",
+     "other_gold",
+     "proxy"
+    ]
+   ],
+   "displaced": [
+    [
+     "dev",
+     "as_explosion_XJ8lc3I6",
+     "Explosion",
+     5.68,
+     "hit_needed"
+    ]
+   ],
+   "newly_dropped": [
+    [
+     "dev",
+     "movie_blueplanet_115",
+     "Laughter",
+     0.0,
+     1.2,
+     "other_gold"
+    ],
+    [
+     "dev",
+     "mv_arrest_street_scene",
+     "Human locomotion",
+     0.1,
+     0.36,
+     "other_gold"
+    ],
+    [
+     "dev2",
+     "tg_d133",
+     "Digestive",
+     0.06,
+     0.92,
+     "hit_needed"
+    ]
+   ],
+   "no_conf": 8,
+   "no_gate": 3
+  }
+ },
+ "B": {
+  "would_drop": [
+   [
+    "dev",
+    "ambient_citywalk_nyc_1689",
+    "Music",
+    14.5,
+    0.222,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "as_fire_alarm_kGKZ0YK4",
+    "Animal",
+    3.39,
+    0.029,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "as_fire_alarm_kGKZ0YK4",
+    "Domestic animals, pets",
+    3.56,
+    0.002,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_bakery_morning",
+    "Speech",
+    2.5,
+    0.044,
+    "none"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Mains hum",
+    0.14,
+    0.025,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Hum",
+    0.14,
+    0.026,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Mains hum",
+    2.5,
+    0.025,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Hum",
+    2.5,
+    0.026,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Mains hum",
+    12.3,
+    0.025,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Hum",
+    12.3,
+    0.026,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Hum",
+    19.25,
+    0.026,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Mains hum",
+    19.25,
+    0.025,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Mains hum",
+    21.75,
+    0.025,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_barbershop",
+    "Hum",
+    21.75,
+    0.026,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "b3_pet_shop",
+    "Environmental noise",
+    3.55,
+    0.106,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "london_protest_01",
+    "Speech",
+    1.0,
+    0.396,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "mv_protest_scene_movie",
+    "Speech",
+    1.0,
+    0.259,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "un_driving_motorcycle_DgdHSmwA",
+    "Music",
+    1.25,
+    0.4,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "un_driving_motorcycle_DgdHSmwA",
+    "Animal",
+    3.0,
+    0.044,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "un_driving_motorcycle_DgdHSmwA",
+    "Animal",
+    5.5,
+    0.044,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "un_driving_motorcycle_DgdHSmwA",
+    "Music",
+    12.5,
+    0.4,
+    "other_gold"
+   ],
+   [
+    "dev",
+    "un_people_clapping__bAVmK7n",
+    "Guitar",
+    14.25,
+    0.101,
+    "none"
+   ],
+   [
+    "dev",
+    "un_people_clapping__bAVmK7n",
+    "Musical instrument",
+    14.25,
+    0.228,
+    "none"
+   ],
+   [
+    "dev",
+    "un_people_clapping__bAVmK7n",
+    "Plucked string instrument",
+    14.25,
+    0.005,
+    "none"
+   ],
+   [
+    "dev2",
+    "tg_d016",
+    "Speech",
+    0.0,
+    0.333,
+    "none"
+   ],
+   [
+    "dev2",
+    "tg_d022",
+    "Animal",
+    7.25,
+    0.064,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d022",
+    "Dog",
+    7.25,
+    0.378,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d022",
+    "Domestic animals, pets",
+    7.25,
+    0.041,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d054",
+    "Speech",
+    1.0,
+    0.215,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d054",
+    "Speech",
+    13.05,
+    0.215,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d075",
+    "Music",
+    2.25,
+    0.282,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d075",
+    "Music",
+    12.5,
+    0.282,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d107",
+    "Domestic animals, pets",
+    6.0,
+    0.022,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d120",
+    "Domestic animals, pets",
+    2.97,
+    0.031,
+    "hit_needed"
+   ],
+   [
+    "dev2",
+    "tg_d120",
+    "Speech",
+    5.0,
+    0.317,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d128",
+    "Livestock, farm animals, working animals",
+    1.5,
+    0.004,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d128",
+    "Livestock, farm animals, working animals",
+    7.5,
+    0.004,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d128",
+    "Hammer",
+    9.0,
+    0.154,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d129",
+    "Speech",
+    0.06,
+    0.202,
+    "none"
+   ],
+   [
+    "dev2",
+    "tg_d129",
+    "Scissors",
+    2.64,
+    0.177,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d129",
+    "Speech",
+    5.0,
+    0.202,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d133",
+    "Animal",
+    2.75,
+    0.034,
+    "none"
+   ],
+   [
+    "dev2",
+    "tg_d133",
+    "Domestic animals, pets",
+    2.75,
+    0.003,
+    "none"
+   ]
+  ],
+  "kept_back": [
+   [
+    "dev",
+    "mv_detective_crime_scene",
+    "Sigh",
+    0.14,
+    0.512,
+    "other_gold"
+   ],
+   [
+    "dev2",
+    "tg_d095",
+    "Hammer",
+    2.5,
+    0.58,
+    "other_gold"
+   ]
+  ],
+  "unqueried": 0
+ },
+ "C": [
+  [
+   "dev",
+   "b3_golf_course",
+   "Bird",
+   20.0,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "b3_golf_course",
+   "Bird",
+   25.08,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "b3_golf_course",
+   "Bird",
+   27.4,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "mv_arrest_street_scene",
+   "Footsteps",
+   1.0,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "mv_arrest_street_scene",
+   "Human locomotion",
+   1.66,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "mv_arrest_street_scene",
+   "Footsteps",
+   2.04,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "mv_arrest_street_scene",
+   "Human locomotion",
+   7.3,
+   "other_gold"
+  ],
+  [
+   "dev",
+   "mv_arrest_street_scene",
+   "Footsteps",
+   10.12,
+   "other_gold"
+  ],
+  [
+   "dev2",
+   "tg_d120",
+   "Cat",
+   2.94,
+   "hit_needed"
+  ],
+  [
+   "dev2",
+   "tg_d120",
+   "Cat",
+   3.94,
+   "other_gold"
+  ]
+ ],
+ "cv": {
+  "half": {
+   "procedure": 2.476349206349206,
+   "fixed_ship": 2.476349206349206,
+   "picks": {
+    "SHIP6": 20
+   }
+  },
+  "5fold": {
+   "procedure": 2.485245421245421,
+   "fixed_ship": 2.485245421245421,
+   "picks": {
+    "SHIP6": 50
+   }
+  },
+  "full_argmin": "SHIP6"
+ }
+}
