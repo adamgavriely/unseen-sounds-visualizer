@@ -1118,3 +1118,10 @@ Qwen V4 while accepting no more other-class candidates; the arm would then repla
 It answers the V4 prompt with one caption per cut, not a list (mean 1.0 lines). On the merged-DEV P2/PV candidates it names 19
 of 35 needed-class candidates (Qwen V4 24, AF 15) and 95 of 969 others (Qwen 107, AF 189): fewer needed than Qwen, so the
 pre-set GO bar fails. Files: `benchmark/gold/dev{,2}_listener_step.json`, `listener_step.py`, env `~/venvs/stepaudio`.
+
+## Round 27 — prompt ensemble for the Qwen ear (general; written before its answers exist)
+The V4 inventory names the loudest sounds and drops quiet ones under them (Gasp, Footsteps under explosions). A second,
+class-uniform prompt V4b: "List every distinct non-speech sound you hear in this recording, including quiet or background
+sounds, one per line." (same model, cut, greedy decoding, 64 tokens, same matcher) on the P2/PV cuts. **Arm QE (base SHIP3):**
+the Qwen leg of TIER accepts if V4 OR V4b names the family (AF leg unchanged). Standard pass rule (hits ≥ 24, wrong ≤ 41 +
+2 × gain, cost < 2.901, no needed hit lost on either part).
