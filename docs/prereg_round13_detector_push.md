@@ -1177,3 +1177,6 @@ never asked (below LO / covered) 3; timing 2; a veto removed a strong span 2; un
 - **GA screen result (DEV judge clips):** majority 16/43 seen silenced, 31/36 needed kept; GA 9/43 and 32/36. +1 needed kept
   (bell_miami Bell) for 7 fewer seen silenced (the listener says "not the named thing" on real visible sounds: Water, Vehicle,
   Laughter, Machine gun). **STOP.** The listener cannot tell a named visible source from another of the same family.
+- **V4D screen result (merged DEV P2/PV, 1004 candidates):** V4D adds 2 needed-class accepts beyond Qwen V4 (nyc_1689 Air
+  horn 3.8, carnival Whistle 6.3) and 53 other-class accepts. Bar ≤ 2× → **STOP.** Ducking makes Qwen say yes much more
+  often, mostly to wrong or already-drawn sounds.
