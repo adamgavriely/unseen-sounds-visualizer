@@ -1,0 +1,1114 @@
+[
+ {
+  "kind": "miss_gate_visible",
+  "part": "dev",
+  "clip": "ambient_nature_rainforest_7629",
+  "gold": {
+   "label": "Bird",
+   "start": 0.1,
+   "end": 16.0,
+   "visible": false,
+   "obvious": false,
+   "importance": 2
+  },
+  "votes": [
+   {
+    "label": "Bird",
+    "start": 0.81,
+    "end": 4.75,
+    "confidence": 0.4582521915435791,
+    "stretch": [
+     0.81,
+     4.75
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "macaws"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Bird",
+    "start": 0.81,
+    "end": 4.75,
+    "confidence": 0.4582521915435791,
+    "augment": false,
+    "rescued": false,
+    "reason": "source visible on screen (macaws) - stay silent",
+    "spans": [
+     [
+      0.81,
+      4.75
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/00_ambient_nature_rainforest_7629_Bird.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev",
+  "clip": "ambient_weather_storm_16200",
+  "pic": [
+   "Thunder",
+   0.06,
+   15.75
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Thunder",
+    "start": 0.3,
+    "end": 7.5,
+    "visible": true,
+    "obvious": true,
+    "importance": 2,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Thunder",
+    "start": 0.06,
+    "end": 8.25,
+    "confidence": 0.6302454471588135,
+    "stretch": [
+     0.06,
+     4.154999999999999
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Thunder",
+    "start": 0.06,
+    "end": 8.25,
+    "confidence": 0.6302454471588135,
+    "stretch": [
+     4.154999999999999,
+     8.25
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Thunder",
+    "start": 0.06,
+    "end": 8.25,
+    "confidence": 0.6302454471588135,
+    "stretch": [
+     10.25,
+     15.75
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Thunder",
+    "start": 0.06,
+    "end": 8.25,
+    "confidence": 0.6302454471588135,
+    "augment": true,
+    "rescued": false,
+    "reason": "salient non-speech sound, source not visible -> augment | depiction: Sky rumbles",
+    "spans": [
+     [
+      0.06,
+      8.25
+     ],
+     [
+      10.25,
+      15.75
+     ]
+    ]
+   }
+  ],
+  "frames_end": "/home/dsi/adamg/gate_frames/01_ambient_weather_storm_16200_end.jpg",
+  "frames": "/home/dsi/adamg/gate_frames/01_ambient_weather_storm_16200_Thunder.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev",
+  "clip": "ambient_weather_storm_7200",
+  "pic": [
+   "Thunder",
+   0.06,
+   15.75
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Thunder",
+    "start": 0.1,
+    "end": 15.8,
+    "visible": true,
+    "obvious": true,
+    "importance": 2,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Thunder",
+    "start": 0.06,
+    "end": 15.75,
+    "confidence": 0.6210123896598816,
+    "stretch": [
+     0.06,
+     5.289999999999999
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Thunder",
+    "start": 0.06,
+    "end": 15.75,
+    "confidence": 0.6210123896598816,
+    "stretch": [
+     5.289999999999999,
+     10.52
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Thunder",
+    "start": 0.06,
+    "end": 15.75,
+    "confidence": 0.6210123896598816,
+    "stretch": [
+     10.52,
+     15.75
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Thunder",
+    "start": 0.06,
+    "end": 15.75,
+    "confidence": 0.6210123896598816,
+    "augment": true,
+    "rescued": false,
+    "reason": "salient non-speech sound, source not visible -> augment | depiction: Sky rumbles",
+    "spans": [
+     [
+      0.06,
+      15.75
+     ]
+    ]
+   }
+  ],
+  "frames_end": "/home/dsi/adamg/gate_frames/02_ambient_weather_storm_7200_end.jpg",
+  "frames": "/home/dsi/adamg/gate_frames/02_ambient_weather_storm_7200_Thunder.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev",
+  "clip": "as_church_bell_pJRAWkLM",
+  "pic": [
+   "Bell",
+   0.14,
+   13.75
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Bell",
+    "start": 0.0,
+    "end": 15.2,
+    "visible": true,
+    "obvious": false,
+    "importance": 3,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Bell",
+    "start": 0.14,
+    "end": 13.75,
+    "confidence": 0.714217245578766,
+    "stretch": [
+     0.14,
+     4.676666666666666
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Bell",
+    "start": 0.14,
+    "end": 13.75,
+    "confidence": 0.714217245578766,
+    "stretch": [
+     4.676666666666666,
+     9.213333333333333
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Bell",
+    "start": 0.14,
+    "end": 13.75,
+    "confidence": 0.714217245578766,
+    "stretch": [
+     9.213333333333333,
+     13.75
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Bell",
+    "start": 0.14,
+    "end": 13.75,
+    "confidence": 0.714217245578766,
+    "augment": true,
+    "rescued": false,
+    "reason": "stage 2 saw the source somewhere in the clip; VLM to confirm | depiction: Bell swinging",
+    "spans": [
+     [
+      0.14,
+      13.75
+     ]
+    ]
+   }
+  ],
+  "frames_end": "/home/dsi/adamg/gate_frames/03_as_church_bell_pJRAWkLM_end.jpg",
+  "frames": "/home/dsi/adamg/gate_frames/03_as_church_bell_pJRAWkLM_Bell.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev",
+  "clip": "as_fire_alarm_kGKZ0YK4",
+  "pic": [
+   "Alarm",
+   8.89,
+   19.75
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Alarm",
+    "start": 9.0,
+    "end": 19.8,
+    "visible": true,
+    "obvious": false,
+    "importance": 3,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Alarm",
+    "start": 8.89,
+    "end": 19.75,
+    "confidence": 0.6964980959892273,
+    "stretch": [
+     8.89,
+     14.32
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Alarm",
+    "start": 8.89,
+    "end": 19.75,
+    "confidence": 0.6964980959892273,
+    "stretch": [
+     14.32,
+     19.75
+    ],
+    "seen": false,
+    "name": true,
+    "ab": false,
+    "desc": false,
+    "named": "fire alarm"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Alarm",
+    "start": 8.89,
+    "end": 19.75,
+    "confidence": 0.6964980959892273,
+    "augment": true,
+    "rescued": false,
+    "reason": "stage 2 saw the source somewhere in the clip; VLM to confirm | depiction: Fire alarm ringing",
+    "spans": [
+     [
+      8.89,
+      19.75
+     ]
+    ]
+   }
+  ],
+  "frames_end": "/home/dsi/adamg/gate_frames/04_as_fire_alarm_kGKZ0YK4_end.jpg",
+  "frames": "/home/dsi/adamg/gate_frames/04_as_fire_alarm_kGKZ0YK4_Alarm.jpg"
+ },
+ {
+  "kind": "miss_gate_visible",
+  "part": "dev",
+  "clip": "b3_pet_shop",
+  "gold": {
+   "label": "Bird",
+   "start": 0.1,
+   "end": 27.8,
+   "visible": false,
+   "obvious": false,
+   "importance": 2
+  },
+  "votes": [
+   {
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "stretch": [
+     0.14,
+     4.741666666666666
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "a small bird"
+   },
+   {
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "stretch": [
+     4.741666666666666,
+     9.343333333333334
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "a small bird"
+   },
+   {
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "stretch": [
+     9.343333333333334,
+     13.945
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "a small bird"
+   },
+   {
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "stretch": [
+     13.945,
+     18.546666666666667
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "European robin"
+   },
+   {
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "stretch": [
+     18.546666666666667,
+     23.148333333333337
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "a small bird"
+   },
+   {
+    "label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "stretch": [
+     23.148333333333337,
+     27.75
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "birds"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Bird",
+    "start": 0.14,
+    "end": 27.75,
+    "confidence": 0.8557490110397339,
+    "augment": false,
+    "rescued": false,
+    "reason": "source visible on screen (birds) - stay silent",
+    "spans": [
+     [
+      0.14,
+      27.75
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/05_b3_pet_shop_Bird.jpg"
+ },
+ {
+  "kind": "miss_gate_visible",
+  "part": "dev",
+  "clip": "bell_miami",
+  "gold": {
+   "label": "Bell",
+   "start": 0.2,
+   "end": 14.5,
+   "visible": false,
+   "obvious": false,
+   "importance": 3
+  },
+  "votes": [
+   {
+    "label": "Bell",
+    "start": 0.22,
+    "end": 14.5,
+    "confidence": 0.6988480091094971,
+    "stretch": [
+     0.22,
+     4.9799999999999995
+    ],
+    "seen": true,
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "church bell"
+   },
+   {
+    "label": "Bell",
+    "start": 0.22,
+    "end": 14.5,
+    "confidence": 0.6988480091094971,
+    "stretch": [
+     4.9799999999999995,
+     9.74
+    ],
+    "seen": true,
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "church bell"
+   },
+   {
+    "label": "Bell",
+    "start": 0.22,
+    "end": 14.5,
+    "confidence": 0.6988480091094971,
+    "stretch": [
+     9.74,
+     14.5
+    ],
+    "seen": true,
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "church bell"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Bell",
+    "start": 0.22,
+    "end": 14.5,
+    "confidence": 0.6988480091094971,
+    "augment": false,
+    "rescued": false,
+    "reason": "source visible on screen (church bell) - stay silent",
+    "spans": [
+     [
+      0.22,
+      14.5
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/06_bell_miami_Bell.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev",
+  "clip": "london_protest_01",
+  "pic": [
+   "Vehicle",
+   0.25,
+   1.75
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Air horn, truck horn",
+    "start": 0.4,
+    "end": 11.1,
+    "visible": true,
+    "obvious": true,
+    "importance": 2,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Vehicle",
+    "start": 0.25,
+    "end": 1.5,
+    "confidence": 0.3759448528289795,
+    "stretch": [
+     0.25,
+     1.5
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Vehicle",
+    "start": 0.25,
+    "end": 1.5,
+    "confidence": 0.3759448528289795,
+    "augment": true,
+    "rescued": false,
+    "reason": "salient non-speech sound, source not visible -> augment | depiction: Train moving",
+    "spans": [
+     [
+      0.25,
+      1.5
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/07_london_protest_01_Vehicle.jpg"
+ },
+ {
+  "kind": "miss_gate_visible",
+  "part": "dev",
+  "clip": "ly_ambulance_(siren)_-yPSgCn",
+  "gold": {
+   "label": "Vehicle",
+   "start": 7.3,
+   "end": 8.8,
+   "visible": false,
+   "obvious": false,
+   "importance": 2
+  },
+  "votes": [
+   {
+    "label": "Vehicle",
+    "start": 0.0,
+    "end": 14.75,
+    "confidence": 0.6105870604515076,
+    "stretch": [
+     0.0,
+     4.916666666666667
+    ],
+    "seen": true,
+    "name": true,
+    "ab": true,
+    "desc": true,
+    "named": "white car"
+   },
+   {
+    "label": "Vehicle",
+    "start": 0.0,
+    "end": 14.75,
+    "confidence": 0.6105870604515076,
+    "stretch": [
+     4.916666666666667,
+     9.833333333333334
+    ],
+    "seen": true,
+    "name": false,
+    "ab": true,
+    "desc": true,
+    "named": "nothing"
+   },
+   {
+    "label": "Vehicle",
+    "start": 0.0,
+    "end": 14.75,
+    "confidence": 0.6105870604515076,
+    "stretch": [
+     9.833333333333334,
+     14.75
+    ],
+    "seen": true,
+    "name": false,
+    "ab": true,
+    "desc": true,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Vehicle",
+    "start": 0.0,
+    "end": 14.75,
+    "confidence": 0.6105870604515076,
+    "augment": false,
+    "rescued": false,
+    "reason": "source visible on screen (nothing) - stay silent",
+    "spans": [
+     [
+      0.0,
+      14.75
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/08_ly_ambulance_(siren)_-yPSgCn_Vehicle.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev",
+  "clip": "un_driving_motorcycle_DgdHSmwA",
+  "pic": [
+   "Explosion",
+   13.52,
+   15.42
+  ],
+  "rescued": true,
+  "gold": [
+   {
+    "label": "Fireworks",
+    "start": 13.9,
+    "end": 14.2,
+    "visible": false,
+    "obvious": true,
+    "importance": 2,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Explosion",
+    "start": 13.92,
+    "end": 14.32,
+    "confidence": 0.886,
+    "stretch": [
+     13.92,
+     14.32
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Fireworks",
+    "start": 13.97,
+    "end": 15.25,
+    "confidence": 0.40810754895210266,
+    "stretch": [
+     13.97,
+     15.25
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Explosion",
+    "start": 13.92,
+    "end": 14.32,
+    "confidence": 0.886,
+    "augment": true,
+    "rescued": true,
+    "reason": "salient non-speech sound, source not visible -> augment | depiction: Bomb exploding",
+    "spans": [
+     [
+      13.52,
+      14.52
+     ],
+     [
+      13.92,
+      14.32
+     ]
+    ]
+   },
+   {
+    "event_label": "Fireworks",
+    "start": 13.97,
+    "end": 15.25,
+    "confidence": 0.40810754895210266,
+    "augment": false,
+    "rescued": false,
+    "reason": "no depiction reads as this sound - dropped",
+    "spans": [
+     [
+      13.97,
+      15.25
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/09_un_driving_motorcycle_DgdHSmwA_Explosion.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev2",
+  "clip": "tg_d088",
+  "pic": [
+   "Thunder",
+   1.0,
+   2.5
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Thunder",
+    "start": 1.3,
+    "end": 2.7,
+    "visible": true,
+    "obvious": true,
+    "importance": 2,
+    "needed": false
+   }
+  ],
+  "votes": [],
+  "specs": [
+   {
+    "event_label": "Thunder",
+    "start": 13.25,
+    "end": 14.75,
+    "confidence": 0.9378687143325806,
+    "augment": true,
+    "rescued": false,
+    "reason": "stage 2 saw the source somewhere in the clip; VLM to confirm | depiction: Clouds rumble",
+    "spans": [
+     [
+      1.0,
+      2.0
+     ],
+     [
+      8.5,
+      10.5
+     ],
+     [
+      13.25,
+      14.75
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/10_tg_d088_Thunder.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev2",
+  "clip": "tg_d127",
+  "pic": [
+   "Water",
+   0.14,
+   5.0
+  ],
+  "rescued": false,
+  "gold": [
+   {
+    "label": "Water",
+    "start": 0.0,
+    "end": 3.8,
+    "visible": true,
+    "obvious": true,
+    "importance": 1,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Water",
+    "start": 0.14,
+    "end": 5.0,
+    "confidence": 0.6908617615699768,
+    "stretch": [
+     0.14,
+     5.0
+    ],
+    "seen": false,
+    "name": false,
+    "ab": true,
+    "desc": false,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Water",
+    "start": 0.14,
+    "end": 5.0,
+    "confidence": 0.6908617615699768,
+    "augment": true,
+    "rescued": false,
+    "reason": "salient non-speech sound, source not visible -> augment | depiction: Water pouring",
+    "spans": [
+     [
+      0.14,
+      5.0
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/11_tg_d127_Water.jpg"
+ },
+ {
+  "kind": "visible_wrong",
+  "part": "dev2",
+  "clip": "tg_d128",
+  "pic": [
+   "Laughter",
+   3.08,
+   4.58
+  ],
+  "rescued": true,
+  "gold": [
+   {
+    "label": "Laughter",
+    "start": 3.5,
+    "end": 4.0,
+    "visible": true,
+    "obvious": true,
+    "importance": 1,
+    "needed": false
+   }
+  ],
+  "votes": [
+   {
+    "label": "Laughter",
+    "start": 3.08,
+    "end": 4.02,
+    "confidence": 0.897,
+    "stretch": [
+     3.08,
+     4.02
+    ],
+    "seen": false,
+    "name": false,
+    "ab": null,
+    "desc": true,
+    "named": "nothing"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Laughter",
+    "start": 3.08,
+    "end": 4.02,
+    "confidence": 0.897,
+    "augment": true,
+    "rescued": true,
+    "reason": "salient non-speech sound, source not visible -> augment | depiction: People laughing",
+    "spans": [
+     [
+      3.08,
+      4.02
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/12_tg_d128_Laughter.jpg"
+ },
+ {
+  "kind": "miss_gate_visible",
+  "part": "dev2",
+  "clip": "tg_d133",
+  "gold": {
+   "label": "Fart",
+   "start": 0.0,
+   "end": 1.1,
+   "visible": false,
+   "obvious": false,
+   "importance": 2
+  },
+  "votes": [
+   {
+    "label": "Digestive",
+    "start": 0.06,
+    "end": 0.92,
+    "confidence": 0.985,
+    "stretch": [
+     0.06,
+     0.9200000000000002
+    ],
+    "seen": false,
+    "name": false,
+    "ab": false,
+    "desc": false,
+    "named": "nothing"
+   },
+   {
+    "label": "Fart",
+    "start": 0.22,
+    "end": 2.5,
+    "confidence": 0.9363572001457214,
+    "stretch": [
+     0.22,
+     2.5
+    ],
+    "seen": true,
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "boxer dog"
+   },
+   {
+    "label": "Fart",
+    "start": 0.22,
+    "end": 2.5,
+    "confidence": 0.9363572001457214,
+    "stretch": [
+     6.3,
+     8.0
+    ],
+    "seen": true,
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "boxer dog"
+   }
+  ],
+  "specs": [
+   {
+    "event_label": "Digestive",
+    "start": 0.06,
+    "end": 0.92,
+    "confidence": 0.985,
+    "augment": false,
+    "rescued": true,
+    "reason": "a kind of Fart, whose source is visible - stay silent",
+    "spans": [
+     [
+      0.06,
+      0.92
+     ]
+    ]
+   },
+   {
+    "event_label": "Fart",
+    "start": 0.22,
+    "end": 2.5,
+    "confidence": 0.9363572001457214,
+    "augment": false,
+    "rescued": false,
+    "reason": "source visible on screen (boxer dog) - stay silent",
+    "spans": [
+     [
+      0.22,
+      2.5
+     ],
+     [
+      6.3,
+      8.0
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/13_tg_d133_Fart.jpg"
+ },
+ {
+  "kind": "miss_gate_visible",
+  "part": "dev2",
+  "clip": "tg_d133",
+  "gold": {
+   "label": "Fart",
+   "start": 5.6,
+   "end": 6.4,
+   "visible": false,
+   "obvious": false,
+   "importance": 2
+  },
+  "votes": [],
+  "specs": [
+   {
+    "event_label": "Fart",
+    "start": 0.22,
+    "end": 2.5,
+    "confidence": 0.9363572001457214,
+    "augment": false,
+    "rescued": false,
+    "reason": "source visible on screen (boxer dog) - stay silent",
+    "spans": [
+     [
+      0.22,
+      2.5
+     ],
+     [
+      6.3,
+      8.0
+     ]
+    ]
+   }
+  ],
+  "frames": "/home/dsi/adamg/gate_frames/14_tg_d133_Fart.jpg"
+ }
+]

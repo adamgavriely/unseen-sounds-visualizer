@@ -1,0 +1,1236 @@
+{
+ "k": 3.0,
+ "base": {
+  "hits": 25,
+  "n": 55,
+  "wrong": 33,
+  "visible": 9,
+  "cross": 21,
+  "phantom": 3,
+  "cost": 2.619718309859155
+ },
+ "OM": {
+  "hits": 25,
+  "n": 55,
+  "wrong": 33,
+  "visible": 9,
+  "cross": 21,
+  "phantom": 3,
+  "cost": 2.619718309859155
+ },
+ "dropped": [],
+ "hits_lost": [],
+ "GO": false,
+ "rows": [
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "pic": [
+    "Insect",
+    0.14,
+    6.0
+   ],
+   "spec": "Insect",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "pic": [
+    "Laughter",
+    8.08,
+    9.58
+   ],
+   "spec": "Laughter",
+   "n_stretch": 1,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      8.08,
+      8.76
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "nothing",
+     "onset_change": 0.07,
+     "clip_median": 0.0819,
+     "ratio": 0.85,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "pic": [
+    "Thunder",
+    0.06,
+    15.75
+   ],
+   "spec": "Thunder",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "pic": [
+    "Thunder",
+    0.06,
+    15.75
+   ],
+   "spec": "Thunder",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_church_bell_pJRAWkLM",
+   "pic": [
+    "Bell",
+    0.14,
+    13.75
+   ],
+   "spec": "Bell",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "pic": [
+    "Gunshot",
+    0.0,
+    1.5
+   ],
+   "spec": "Gunshot",
+   "n_stretch": 4,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "pic": [
+    "Explosion",
+    5.68,
+    7.18
+   ],
+   "spec": "Explosion",
+   "n_stretch": 2,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "pic": [
+    "Gunshot",
+    8.25,
+    19.5
+   ],
+   "spec": "Gunshot",
+   "n_stretch": 4,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "pic": [
+    "Explosion",
+    9.25,
+    10.75
+   ],
+   "spec": "Explosion",
+   "n_stretch": 2,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "pic": [
+    "Alarm",
+    8.89,
+    19.75
+   ],
+   "spec": "Alarm",
+   "n_stretch": 2,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      14.32,
+      19.75
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "fire alarm",
+     "onset_change": 0.2173,
+     "clip_median": 0.0454,
+     "ratio": 4.79,
+     "seen_now": true
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_bakery_morning",
+   "pic": [
+    "Door",
+    4.25,
+    5.75
+   ],
+   "spec": "Door",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "pic": [
+    "Electric shaver, electric razor",
+    0.14,
+    13.25
+   ],
+   "spec": "Electric shaver, electric razor",
+   "n_stretch": 4,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "pic": [
+    "Electric shaver, electric razor",
+    16.0,
+    23.25
+   ],
+   "spec": "Electric shaver, electric razor",
+   "n_stretch": 4,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "pic": [
+    "Bird",
+    1.0,
+    9.75
+   ],
+   "spec": "Bird",
+   "n_stretch": 2,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "pic": [
+    "Steam",
+    0.22,
+    9.0
+   ],
+   "spec": "Steam",
+   "n_stretch": 2,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      4.609999999999999,
+      9.0
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "nothing",
+     "onset_change": 0.0284,
+     "clip_median": 0.0398,
+     "ratio": 0.71,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "pic": [
+    "Train",
+    14.72,
+    16.5
+   ],
+   "spec": "Train",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "pic": [
+    "Bird",
+    18.84,
+    20.34
+   ],
+   "spec": "Bird",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "pic": [
+    "Train",
+    1.0,
+    2.5
+   ],
+   "spec": "Train",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "pic": [
+    "Bird",
+    10.25,
+    14.0
+   ],
+   "spec": "Bird",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "pic": [
+    "Vehicle",
+    0.25,
+    1.75
+   ],
+   "spec": "Vehicle",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "pic": [
+    "Siren",
+    0.0,
+    17.75
+   ],
+   "spec": "Siren",
+   "n_stretch": 4,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "pic": [
+    "Crowd",
+    0.0,
+    7.75
+   ],
+   "spec": "Crowd",
+   "n_stretch": 2,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      3.875,
+      7.75
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "nothing",
+     "onset_change": 0.0813,
+     "clip_median": 0.0514,
+     "ratio": 1.58,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "pic": [
+    "Vehicle",
+    0.14,
+    17.75
+   ],
+   "spec": "Vehicle",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "pic": [
+    "Laughter",
+    0.0,
+    1.5
+   ],
+   "spec": "Laughter",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "pic": [
+    "Alarm",
+    0.04,
+    1.54
+   ],
+   "spec": "Alarm",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "pic": [
+    "Alarm",
+    3.36,
+    6.12
+   ],
+   "spec": "Alarm",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "pic": [
+    "Alarm",
+    9.08,
+    10.58
+   ],
+   "spec": "Alarm",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "pic": [
+    "Crowd",
+    0.0,
+    20.42
+   ],
+   "spec": "Crowd",
+   "n_stretch": 5,
+   "n_split": 2,
+   "split": [
+    {
+     "stretch": [
+      0.0,
+      1.08
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "crowd of people",
+     "onset_change": 0.0165,
+     "clip_median": 0.013,
+     "ratio": 1.27,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      5.96,
+      11.12
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "group of people",
+     "onset_change": 0.0278,
+     "clip_median": 0.013,
+     "ratio": 2.14,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "pic": [
+    "Glass",
+    4.75,
+    6.25
+   ],
+   "spec": "Glass",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "pic": [
+    "Glass",
+    10.75,
+    13.75
+   ],
+   "spec": "Glass",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "pic": [
+    "Glass",
+    16.89,
+    20.0
+   ],
+   "spec": "Glass",
+   "n_stretch": 3,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "pic": [
+    "Siren",
+    22.75,
+    24.024
+   ],
+   "spec": "Siren",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "pic": [
+    "Alarm",
+    2.18,
+    11.5
+   ],
+   "spec": "Alarm",
+   "n_stretch": 2,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "pic": [
+    "Siren",
+    9.25,
+    16.0
+   ],
+   "spec": "Siren",
+   "n_stretch": 2,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      9.25,
+      13.0
+     ],
+     "votes": [
+      true,
+      null,
+      false
+     ],
+     "named": "air raid siren",
+     "onset_change": 0.0901,
+     "clip_median": 0.0885,
+     "ratio": 1.02,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "pic": [
+    "Laughter",
+    13.36,
+    14.86
+   ],
+   "spec": "Laughter",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "pic": [
+    "Explosion",
+    13.52,
+    15.42
+   ],
+   "spec": "Explosion",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev",
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "pic": [
+    "Computer keyboard",
+    11.25,
+    12.75
+   ],
+   "spec": "Computer keyboard",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "pic": [
+    "Cough",
+    5.75,
+    7.25
+   ],
+   "spec": "Cough",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "pic": [
+    "Rain",
+    2.0,
+    3.5
+   ],
+   "spec": "Rain",
+   "n_stretch": 4,
+   "n_split": 3,
+   "split": [
+    {
+     "stretch": [
+      7.0,
+      7.75
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "wet pavement",
+     "onset_change": 0.065,
+     "clip_median": 0.0494,
+     "ratio": 1.32,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      9.5,
+      10.5
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "rain",
+     "onset_change": 0.0749,
+     "clip_median": 0.0494,
+     "ratio": 1.51,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      12.75,
+      14.5
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "rain",
+     "onset_change": 0.0288,
+     "clip_median": 0.0494,
+     "ratio": 0.58,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "pic": [
+    "Rain",
+    7.0,
+    11.0
+   ],
+   "spec": "Rain",
+   "n_stretch": 4,
+   "n_split": 3,
+   "split": [
+    {
+     "stretch": [
+      7.0,
+      7.75
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "wet pavement",
+     "onset_change": 0.065,
+     "clip_median": 0.0494,
+     "ratio": 1.32,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      9.5,
+      10.5
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "rain",
+     "onset_change": 0.0749,
+     "clip_median": 0.0494,
+     "ratio": 1.51,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      12.75,
+      14.5
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "rain",
+     "onset_change": 0.0288,
+     "clip_median": 0.0494,
+     "ratio": 0.58,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "pic": [
+    "Rain",
+    12.75,
+    14.5
+   ],
+   "spec": "Rain",
+   "n_stretch": 4,
+   "n_split": 3,
+   "split": [
+    {
+     "stretch": [
+      7.0,
+      7.75
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "wet pavement",
+     "onset_change": 0.065,
+     "clip_median": 0.0494,
+     "ratio": 1.32,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      9.5,
+      10.5
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "rain",
+     "onset_change": 0.0749,
+     "clip_median": 0.0494,
+     "ratio": 1.51,
+     "seen_now": false
+    },
+    {
+     "stretch": [
+      12.75,
+      14.5
+     ],
+     "votes": [
+      true,
+      false,
+      false
+     ],
+     "named": "rain",
+     "onset_change": 0.0288,
+     "clip_median": 0.0494,
+     "ratio": 0.58,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d022",
+   "pic": [
+    "Pant",
+    7.0,
+    8.5
+   ],
+   "spec": "Pant",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d022",
+   "pic": [
+    "Dog",
+    7.25,
+    8.75
+   ],
+   "spec": "Dog",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "pic": [
+    "Goose",
+    11.0,
+    12.5
+   ],
+   "spec": "Goose",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "pic": [
+    "Vehicle",
+    13.5,
+    15.0
+   ],
+   "spec": "Vehicle",
+   "n_stretch": 1,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      13.5,
+      14.75
+     ],
+     "votes": [
+      true,
+      null,
+      false
+     ],
+     "named": "motorbike",
+     "onset_change": 0.081,
+     "clip_median": 0.1198,
+     "ratio": 0.68,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "pic": [
+    "Thunder",
+    13.75,
+    15.0
+   ],
+   "spec": "Thunder",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "pic": [
+    "Alarm",
+    0.14,
+    9.25
+   ],
+   "spec": "Alarm",
+   "n_stretch": 2,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "pic": [
+    "Thunder",
+    1.0,
+    2.5
+   ],
+   "spec": "Thunder",
+   "n_stretch": 3,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      13.25,
+      14.75
+     ],
+     "votes": [
+      true,
+      null,
+      false
+     ],
+     "named": "lightning bolt",
+     "onset_change": 0.0454,
+     "clip_median": 0.0479,
+     "ratio": 0.95,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "pic": [
+    "Thunder",
+    8.5,
+    10.5
+   ],
+   "spec": "Thunder",
+   "n_stretch": 3,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      13.25,
+      14.75
+     ],
+     "votes": [
+      true,
+      null,
+      false
+     ],
+     "named": "lightning bolt",
+     "onset_change": 0.0454,
+     "clip_median": 0.0479,
+     "ratio": 0.95,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "pic": [
+    "Explosion",
+    10.75,
+    12.75
+   ],
+   "spec": "Explosion",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "pic": [
+    "Thunder",
+    13.25,
+    14.75
+   ],
+   "spec": "Thunder",
+   "n_stretch": 3,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      13.25,
+      14.75
+     ],
+     "votes": [
+      true,
+      null,
+      false
+     ],
+     "named": "lightning bolt",
+     "onset_change": 0.0454,
+     "clip_median": 0.0479,
+     "ratio": 0.95,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "pic": [
+    "Crying, sobbing",
+    0.3800000000000001,
+    5.5
+   ],
+   "spec": "Crying, sobbing",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "pic": [
+    "Screaming",
+    7.0,
+    9.0
+   ],
+   "spec": "Screaming",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "pic": [
+    "Cat",
+    0.56,
+    2.24
+   ],
+   "spec": "Cat",
+   "n_stretch": 1,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      0.56,
+      2.24
+     ],
+     "votes": [
+      false,
+      false,
+      true
+     ],
+     "named": "nothing",
+     "onset_change": 0.0888,
+     "clip_median": 0.0546,
+     "ratio": 1.63,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "pic": [
+    "Water",
+    0.14,
+    5.0
+   ],
+   "spec": "Water",
+   "n_stretch": 1,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      0.14,
+      5.0
+     ],
+     "votes": [
+      false,
+      true,
+      false
+     ],
+     "named": "nothing",
+     "onset_change": 0.0424,
+     "clip_median": 0.0541,
+     "ratio": 0.78,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "pic": [
+    "Laughter",
+    9.32,
+    10.01
+   ],
+   "spec": "Laughter",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "pic": [
+    "Laughter",
+    3.08,
+    4.58
+   ],
+   "spec": "Laughter",
+   "n_stretch": 1,
+   "n_split": 1,
+   "split": [
+    {
+     "stretch": [
+      3.08,
+      4.02
+     ],
+     "votes": [
+      false,
+      null,
+      true
+     ],
+     "named": "nothing",
+     "onset_change": 0.0976,
+     "clip_median": 0.0962,
+     "ratio": 1.01,
+     "seen_now": false
+    }
+   ],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "pic": [
+    "Hammer",
+    9.0,
+    10.0
+   ],
+   "spec": "Hammer",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "pic": [
+    "Bee, wasp, etc.",
+    1.25,
+    3.75
+   ],
+   "spec": "Bee, wasp, etc.",
+   "n_stretch": 1,
+   "n_split": 0,
+   "split": [],
+   "flip": false
+  }
+ ]
+}
