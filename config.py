@@ -515,7 +515,10 @@ def use_shipped() -> dict:
                  ("DASM_RESCUE", True), ("DASM_RESCUE_NEW_ONLY", True),
                  # round 21 K-V4 (new DEV best 30 Sept): a disputed BEATs picture (F7 / N2b keep) also needs an open-inventory
                  # naming by Qwen or Audio Flamingo on its cut. Merged DEV 24 / 41 / 2.901. Its answers: set_listener_split
-                 ("KEEP_NEEDS_V4", True)):
+                 ("KEEP_NEEDS_V4", True),
+                 # round 28 DV (new DEV best 30 Sept): a span DASM never hears in the clip (family max < 0.084, the round-6
+                 # calibrated clip bar) is dropped unless a listener keeps it. Merged DEV 24 / 34 / 2.704
+                 ("DASM_CLIP_VETO", 0.08392333984375)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

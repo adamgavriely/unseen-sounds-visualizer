@@ -1138,3 +1138,8 @@ do not separate them. **DV:** a non-rescued stage-4 span whose family DASM never
 v = 0.084 anywhere in the clip (the 280-clip calibration, same construction as the FlexSED veto 0.3) is dropped, unless
 Qwen (F7's P1 rule) or Audio Flamingo V4 accepts it. Base SHIP3; pass rule hits ≥ 24, wrong ≤ 41 + 2 × gain, cost < 2.901,
 no needed hit lost on either part.
+
+### Round 28 DV — PASSES; new shipped best
+DEV 49 (job 31595098): 18 / 18 (6 / 9 / 3) / 2.20 vs base 18 / 20 / 2.29. Merged DEV (job 31595099): **24 hits / 34 wrong
+(9 / 22 / 3) / 2.704** vs base 24 / 41 / 2.901; no needed hit lost on either part (old DEV 18 / 18, tagger DEV 6 / 16).
+Merged into `use_shipped()`; TEST read 5 prepared and reported below.
