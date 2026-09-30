@@ -914,3 +914,11 @@ identical to the shipcheck run (yes/no 95/95, variants 37/37, AF 37/37).
 ## Round 18 (exploratory; TEST is spent — any result here is DEV-only and cannot be shipped without new data)
 - **N2b:** N2 (masked weak BEATs veto) with the keep rule widened to either listener: the span is kept if Qwen (F7's P1 rule)
   OR Audio Flamingo Next V4 (P1 cut, cached) names its family. Written before its number; same pass rule as round 16.
+
+### Round 18 N2b — PASSES the pre-set rule on merged DEV (exploratory: TEST is spent)
+DEV 49 (job 31565770): 18 hits / 22 wrong (6 / 11 / 5) / 2.37 vs base 18 / 24 / 2.45. Merged DEV (job 31565771): **23 hits /
+44 wrong (8 / 30 / 6) / 3.042** vs base 23 / 48 / 3.155 (Δ vs B0r −0.65 [−1.10, −0.25]); no needed hit lost on either part
+(old DEV 18 / 22, tagger DEV 5 / 22 vs 18 / 24, 5 / 24). N2 lost the bakery Door because only Qwen was asked; with Audio
+Flamingo as a second keep vote the Door stays and 4 wrong pictures still go. Status: a DEV-only improvement found after TEST
+was spent — it cannot be confirmed on TEST (one exposure used). Shipping it is Adam's call; its TEST stage 4/5 are prepared
+gold-free (not scored) in case he wants a descriptive read, which would be a second TEST look and must be labelled so.
