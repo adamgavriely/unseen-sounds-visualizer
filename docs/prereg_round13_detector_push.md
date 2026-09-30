@@ -932,3 +932,5 @@ DEV 49 (job 31565819): 18 / 21 (6 / 11 / 4) / 2.33. Merged DEV (job 31565832): *
 lost). Fails the pre-set rule. Note for Adam: it is the cheapest arm on merged DEV (10 fewer wrong pictures for one hit) —
 a "fewer false pictures" setting if he prefers precision; DEV-only, TEST spent.
 N2b on the tagger TEST part and old TEST: stage 4/5 built gold-free (job 31565818, D0 56/56, D5 28/28; old TEST gates pass).
+- **N2d (exploratory, written before its number):** N2b plus the same confirmation for FlexSED-only spans (not rescued):
+  kept only if BEATs gives the family ≥ its own bar (0.175) somewhere inside, or either listener accepts it. Same rule.

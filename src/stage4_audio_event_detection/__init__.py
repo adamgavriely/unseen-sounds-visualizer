@@ -748,6 +748,22 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 if getattr(config, "MASKED_WEAK_AF", False) and _af_p1_accepts(e):   # round 18 N2b: or AF V4 on the P1 cut
                     continue
                 gone.append(e)
+        if getattr(config, "FLEX_ONLY_CONFIRM", False):
+            # round 18 N2d: a FlexSED-only span (no BEATs span of its family) is kept only if BEATs hears its family at all
+            # inside it (>= the tagger's own bar) or either listener accepts it (Qwen P1 rule / AF V4 on the P1 cut)
+            from src.labels import canonical as _can
+            T = np.asarray(times)
+            ab = float(getattr(config, "AED_THRESHOLD", 0.175))
+            for e in [e for e in events if id(e) in flex_ids and not getattr(e, "rescued", False)]:
+                cols = [i for i, lab_ in enumerate(labels) if _can(lab_) == _can(e.label)]
+                m = (T >= e.start - 1e-6) & (T <= e.end + 1e-6)
+                if cols and m.any() and float(np.asarray(framewise)[m][:, cols].max()) >= ab:
+                    continue
+                if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
+                    continue
+                if _af_p1_accepts(e):
+                    continue
+                gone.append(e)
         events = [e for e in events if e not in gone]
         trace("masked_weak_veto", gone, "N2 dropped")
         print(f"       [stage4] N2 masked weak BEATs: dropped {len(gone)} span(s)", flush=True)

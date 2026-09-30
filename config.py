@@ -413,6 +413,7 @@ LISTENER_KCACHE = None           # N3: third listener (Kimi-Audio) answers; rule
 LISTENER_KFIELD = "accept_norm"
 CO_ONSET_ARB = False              # round 17 R3
 MASKED_WEAK_AF = False            # round 18 N2b
+FLEX_ONLY_CONFIRM = False         # round 18 N2d
 MASKED_WEAK_NEED_MASK = True      # round 18 N2c: False = every weak BEATs-only span needs FlexSED or a listener
 RELABEL_2L = False                # round 17 R1
 RELABEL_P1V4 = None               # round 17 R1: benchmark/gold/<split>_listener_p1v4.json
