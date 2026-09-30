@@ -1798,3 +1798,28 @@ the cluster (delete on request).
 'Air horn, truck horn' 3.76 (peak 0.71, hit_needed) IS a P2 candidate — Q no, A yes, MOSS no ('slamming, humming'); tg_d033
 has no Siren-family P2/PV item (its Alarm 0.0–10.0 cut: MOSS 'heavy breathing'). Siren stays unreachable by any ear; Air horn
 is refused by MOSS too.
+
+## Round 35 DBX — DASM back-extension of late picture starts (written 2026-10-01 BEFORE any DBX number)
+**Motivation.** b3_barbershop: gold "Electric shaver" 0.1–27.8 s (needed). The shipped SHIP7 picture starts at 16.0 because BEATs is
+only confident from 16 s, while DASM's shaver family score is >= 0.93 in every frame from 0 s. A late onset like this costs a miss
+AND a wrong (late-repeat cross): re-timing the start to where DASM's evidence begins turns both.
+**Base = SHIP7** (saved arm `SHIP6+FLAP|proposed`, rows = `SHIP7|proposed`): merged DEV 71 clips, 25/55 hits, 27 wrong (9/16/2),
+cost 2.451; the screen MUST reproduce this before any DBX line is read.
+**Rule DBX (one rule; every constant is a shipped one, none fitted).** For each placed NON-rescued picture (label L, start a,
+end b; `rescued` = the representative spec's flag, as BTP): family evidence e(t) = max over the DASM cache columns whose canonical
+family is canonical(L) (`data/work/devcand/dasm_cache` for DEV, `data/work/dasm_dev2` for tagger DEV, frames 0.02 s); no column
+or no cache -> untouched (the rule is silent; counted). Runs = frames with e >= 0.575 (LISTENER_DASM_BAR, F8's bar), gaps
+<= 0.24 s (LISTEN_RUN_GAP) merged, the pipeline's `_runs`; run end = last frame + dt. Take the run [s, r] that covers a
+(s - 1e-6 <= a <= r + 1e-6); none -> untouched. If a - s >= 1.0 s (MAX_AFTER_END, the shipped 1.0) the start moves to s
+(new picture [s, b], label and end unchanged; s = 0.0 allowed); otherwise untouched. Rescued pictures are never moved.
+**DBX-S (variant, report only, not decisive):** as DBX, but a picture is left untouched when any other placed picture of the
+clip (any rescue status) has the same canonical family, an original start < a and an original end > s (the moved picture would
+overlap an earlier picture of its family).
+**Screen** (`benchmark/gold/dbx_screen.py`, CPU, `~/MscProj_tg`, `TG_ARMS=SHIP6+FLAP`, pictures via `btp_screen.parts` and
+`btp_screen.placed`, DASM roots explicit from `cross_group.PARTS`; rescored with `score_per_sound`; nothing in `src/` or
+`config.py` edited). Reported: base per part and merged; DBX and DBX-S per part and merged; every moved picture (part, clip, family,
+old -> new start, class before -> after via `cross_group.classify`), hits lost per part. Known risk: a hit whose start moves
+more than 0.5 s (EARLY) before its gold onset becomes an early cross.
+**Pass = the combined rule vs SHIP7 (25/55, 27, 2.451):** old rule (hits >= 25, wrong <= 27 + 2 x gain, cost < 2.451, no needed
+hit lost on either part) OR fewer-pictures clause (cost < 2.451, wrong <= 27 - 3 x hits lost, hits >= 22). DBX decides; DBX-S is
+recorded beside. GO -> an arm on the real pipeline is a `src/` flag = Adam's decision; STOP -> recorded, closed.
