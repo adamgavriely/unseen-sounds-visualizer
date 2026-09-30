@@ -695,3 +695,14 @@ Same direction as DEV (+1 hit, same wrong), on 3 needed sounds: not a test. `ben
 
 M silences one more seen sound (crossing_bells Train 0.0) and one needed one (as_explosion Gunshot 0.0): below the GO bar
 (>= 3 more seen, <= 1 needed lost). The close-up crops do not see the sources the whole frame misses. `gate_gold/som_summary.json`.
+
+### Round 15 amendment N result, DEV screen, job 31563443 — STOP
+| rule | seen silenced / 43 | needed kept / 36 |
+|---|---|---|
+| majority (shipped) | 16 | 31 |
+| N | 21 | 28 |
+| N-any (report only) | 26 | 25 |
+
+N silences 5 more seen sounds but 3 needed ones (explosion Gunshot 0.0, golf Whack 24.4, motorcycle Laughter 12.7): below the
+GO bar (<= 1 needed lost) and below the β = 2 break-even (2 seen per needed). Hearing the sound makes the VLM say "visible"
+more often for both classes; it does not separate them. With M this closes Fable's gate ideas 2 and 4.
