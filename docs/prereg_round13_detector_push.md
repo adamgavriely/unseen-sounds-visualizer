@@ -868,3 +868,12 @@ P1 V4 job (31565000, 26 min): Qwen V4 on the P1 cuts of DEV 274, tagger DEV 102,
 listeners' family lists (`benchmark/gold/*_listener_p1v4.json`). Candidate-level count seen before the R1 arm: the R1 rule
 would relabel 21 DEV and 13 tagger-DEV P1 spans (e.g. bell_miami Train → Bell, helicopter Vehicle → Aircraft, waterfall
 Vehicle → Water, tg_d120 Screaming → Cat; also many → Alarm, "Natural sounds", "Arrow").
+
+### Round 17 R1 (relabel via two listeners) — fails
+DEV 49 (job 31565655): 18 / 24 / 2.45, unchanged (3 clips relabelled: bell_miami Train → Bell at 8.0 s, helicopter Vehicle →
+Aircraft, glass Glass → Alarm; none changes a hit). Merged DEV (job 31565656): 23 / 49 / 3.18 — one more wrong picture on the
+tagger part. Fails.
+
+### Merged TEST — the one exposure (decided 2026-09-30 ~07:50 UTC, before reading any TEST number)
+All night arms (N1–N4, R1, R3) failed on merged DEV, so the single TEST candidate is the pre-set merged-DEV pick TO1+F7F8 vs
+B0r, as registered. Scored now with `benchmark/gold/final_test.py score` (stages built gold-free by job 31564931).
