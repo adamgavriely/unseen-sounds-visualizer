@@ -1465,3 +1465,16 @@ general rules on this data.
   hits lost, wrong −5). **Shipped as SHIP6** (config.use_shipped CONTINUATION_VETO 0.5). Next on SHIP6: K4AO, FLAP; TEST read.
 - **SPOT screen result:** (a) +8 needed / +324 other → STOP. (b) veto of V4 accepts: 2 needed lost (Belly laugh ×2), 12
   other removed (10 other_gold, 2 phantom) → GO on paper; held until the FLAP veto arm (same slot) reports.
+
+## Round 31 FLAP-F8 (written 2026-09-30 BEFORE any FLAP-F8 number; FineLAP frame cache from the FLAP screen)
+**Idea.** F8 drops a listener-accepted rescue when DASM's family max over the span ± 0.5 s is < 0.575; the hit group shows
+needed sounds DASM is deaf to (nyc Air horn 3.8: DASM 0.05). **Rule FLAP-F8:** F8 passes iff DASM ≥ 0.575 OR FineLAP family
+max over [start, end] ≥ 0.329 (the FLAP P1-calibrated bar, not re-fit). **Variant FLAP-R (reported):** FineLAP replaces
+DASM (pass iff FineLAP ≥ 0.329).
+**Screen** (`benchmark/gold/finelap_f8_screen.py`, CPU, existing caches). Candidates: merged-DEV P2/PV items accepted by the
+candidate-level TIER (`_tier({"V4", "AF_V4"}, peak)`, as the FLAP screen). F8 test as `filter_rescued`: DASM columns whose
+`canonical` equals the family, frames with time in [start − 0.5, end + 0.5], max ≥ 0.575; no column / no frame → 0 (drop);
+no DASM file → kept. DASM dir: `set_listener_split(split)` → `data/work/dasm_dev2` for tagger DEV; DEV has no `dasm_dev`, so
+`data/work/devcand/dasm_cache` (DCC.DASM_DIR, the arms' F8 input). FineLAP score and gold class as the FLAP screen.
+Restored = F8 drops, rule passes; newly dropped (FLAP-R only) = F8 passes, FineLAP < bar. **GO (FLAP-F8) iff needed
+restored ≥ 2 AND other restored ≤ 2 × needed restored.** Candidate level only (ONCE, veto order not modelled).
