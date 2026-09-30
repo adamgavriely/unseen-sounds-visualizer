@@ -1,0 +1,551 @@
+{
+ "base": {
+  "merged": {
+   "hits": 28,
+   "n": 58,
+   "wrong": 24,
+   "visible": 6,
+   "cross": 16,
+   "phantom": 2,
+   "cost": 2.3661971830985915
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 14,
+   "visible": 4,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.122448979591837
+  },
+  "dev2": {
+   "hits": 9,
+   "n": 20,
+   "wrong": 10,
+   "visible": 2,
+   "cross": 8,
+   "phantom": 0,
+   "cost": 2.909090909090909
+  }
+ },
+ "bar": 0.575,
+ "rows": {
+  "merged": {
+   "hits": 28,
+   "n": 58,
+   "wrong": 23,
+   "visible": 6,
+   "cross": 15,
+   "phantom": 2,
+   "cost": 2.3380281690140845
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 13,
+   "visible": 4,
+   "cross": 7,
+   "phantom": 2,
+   "cost": 2.0816326530612246
+  },
+  "dev2": {
+   "hits": 9,
+   "n": 20,
+   "wrong": 10,
+   "visible": 2,
+   "cross": 8,
+   "phantom": 0,
+   "cost": 2.909090909090909
+  }
+ },
+ "dropped": [
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "label": "Electric shaver, electric razor",
+   "family": "Electric shaver, electric razor",
+   "start": 16.0,
+   "end": 23.25,
+   "prev_end": 13.25,
+   "before": "cross",
+   "clip_before": "h1 v0 c1 p0 d0",
+   "clip_after": "h1 v0 c0 p0 d0"
+  }
+ ],
+ "hits_lost": [],
+ "untouched": {
+  "first of family": 44,
+  "rescued": 0,
+  "no DASM evidence": 0,
+  "overlap": 0,
+  "DASM gap not covered": 8
+ },
+ "old_rule": true,
+ "fewer_pictures": true,
+ "verdict": "GO (old rule)",
+ "flat_placed": [
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "families": [
+    "Electric shaver, electric razor"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "families": [
+    "Train"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "families": [
+    "Siren"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "families": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "families": [
+    "Hammer"
+   ]
+  }
+ ],
+ "flat_any": [
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "n": 183,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "n": 197,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "n": 176,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "n": 184,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "n": 188,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "n": 196,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "n": 200,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "n": 205,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "n": 211,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "n": 213,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "as_church_bell_pJRAWkLM",
+   "n": 199,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "n": 186,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "n": 199,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "as_glass_oHil9Ip_",
+   "n": 200,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "n": 203,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "n": 177,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_bakery_morning",
+   "n": 181,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "n": 209,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "n": 159,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_carnival_parade",
+   "n": 191,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "n": 177,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "n": 180,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "n": 198,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "n": 165,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "n": 180,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "n": 172,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "n": 190,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "n": 207,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "n": 196,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "n": 201,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "n": 196,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "helicopter_ossetia",
+   "n": 182,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "kit_piano",
+   "n": 197,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "n": 178,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "n": 201,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "n": 192,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "n": 209,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "n": 176,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "n": 164,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "n": 180,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "n": 138,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "n": 169,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "n": 178,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "n": 165,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "n": 171,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "n": 182,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "un_people_clapping__bAVmK7n",
+   "n": 192,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "n": 204,
+   "of": 215
+  },
+  {
+   "part": "dev",
+   "clip": "waves_herzliya",
+   "n": 215,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "n": 178,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "n": 184,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "n": 210,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d022",
+   "n": 171,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "n": 191,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "n": 184,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "n": 201,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "n": 183,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d054",
+   "n": 201,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "n": 164,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "n": 191,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "n": 201,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "n": 147,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "n": 181,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "n": 193,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "n": 197,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "n": 164,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "n": 195,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "n": 173,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d129",
+   "n": 190,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "n": 201,
+   "of": 215
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "n": 189,
+   "of": 215
+  }
+ ]
+}

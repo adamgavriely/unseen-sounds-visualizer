@@ -1880,3 +1880,16 @@ lost hit.
 **Pass = vs SHIP7 on the corrected gold (28/58, 24, 2.366):** old rule (hits >= 28, wrong <= 24 + 2 x gain, cost < 2.366, no needed
 hit lost on either part) OR fewer-pictures clause (cost < 2.366, wrong <= 24 - 3 x hits lost, hits lost <= 3). GO -> an arm on the
 real pipeline is a `src/` flag = Adam's decision; STOP -> recorded, closed.
+### Round 35 result — DBR: GO (old rule) (CPU, `~/MscProj_tg`, `benchmark/gold/dbr_screen.py` -> `dbr_screen.json`)
+Base reproduced exactly on the corrected gold: merged 28/58, 24 (6/16/2), 2.366; DEV 19/38, 14 (4/8/2), 2.122; tagger DEV
+9/20, 10 (2/8/0), 2.909. 53 placed pictures (8 rescued); every clip has a DASM cache. 44 pictures are first of their family,
+8 repeats have a DASM gap that is not covered, 0 overlap, 1 dropped.
+**DBR: merged 28/58, 23 (6/15/2), 2.338 | DEV 19/38, 13 (4/7/2), 2.082 | tagger DEV unchanged 9/20, 10, 2.909 -> GO (old rule)**
+(hits equal, wrong −1, cost down, no hit lost on either part). Dropped: b3_barbershop Electric shaver 16.0–23.25 (earlier picture
+ends 13.25; DASM shaver 0.926–0.945 in every frame): cross -> gone, clip h1 c1 -> h1 (−1 wrong).
+**Data-quality note (flat DASM family score, max − min < 0.05 over the whole clip):** 5 of 71 clips on a placed-picture family —
+b3_barbershop shaver (0.93–0.95, flat HIGH: DASM never sees the 12–16 s dip BEATs sees), b3_laundromat Train (0.23–0.26),
+ambulance Siren (0.15–0.19), helicopter Vehicle (0.12–0.15), tg_d128 Hammer (0.00–0.05) — the last four are flat low, below
+the bar, so the rule never fires on them. Every one of the 71 clips has some flat family (absent families sit near 0); only the
+placed-family count is informative. The one drop rests on a DASM score that is constant for 28 s, so DBR's win is one picture
+on one clip; the merged TEST is spent and cannot confirm it. GO = a `src/` flag on the real pipeline is Adam's decision.
