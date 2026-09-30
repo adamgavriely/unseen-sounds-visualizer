@@ -910,3 +910,7 @@ with different pictures), netting zero change there; the gain is on the tagger T
 Qwen3-Omni, Audio Flamingo Next, DASM) as a one-clip split; `main.py` calls it when no `--listener-split` is given, so the
 shipped TO1+F7F8 runs on any new video with no manual step. Check (job 31565735, 5 min): as_explosion_XJ8lc3I6 answers
 identical to the shipcheck run (yes/no 95/95, variants 37/37, AF 37/37).
+
+## Round 18 (exploratory; TEST is spent — any result here is DEV-only and cannot be shipped without new data)
+- **N2b:** N2 (masked weak BEATs veto) with the keep rule widened to either listener: the span is kept if Qwen (F7's P1 rule)
+  OR Audio Flamingo Next V4 (P1 cut, cached) names its family. Written before its number; same pass rule as round 16.

@@ -236,6 +236,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             ffw, ftimes, flabels = FX.infer_flexsed(Path(wav_path), device)
             if getattr(config, "FLEXSED_EXTRA", False):
                 ffw, ftimes, flabels = add_flexsed_extra(ffw, ftimes, flabels, Path(wav_path).parent.name)
+            config._CURRENT_CLIP = Path(wav_path).parent.name       # round 18 N2b: the clip id for per-clip caches
             events, flex_ids, ffw = fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur,
                                                  backend=backend, panns=lambda: _infer(Path(wav_path), device),
                                                  listener=_pipeline_listener(wav_path),
@@ -743,6 +744,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     continue
                 if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
                     continue
+                if getattr(config, "MASKED_WEAK_AF", False) and _af_p1_accepts(e):   # round 18 N2b: or AF V4 on the P1 cut
+                    continue
                 gone.append(e)
         events = [e for e in events if e not in gone]
         trace("masked_weak_veto", gone, "N2 dropped")
@@ -1018,6 +1021,25 @@ def _family_match(a: str, b: str) -> bool:
         return True
     ca, cb = canonical(a), canonical(b)
     return is_descendant(ca, cb) or is_descendant(cb, ca) or is_descendant(a, cb) or is_descendant(b, ca)
+
+
+_AFP1 = {}
+
+
+def _af_p1_accepts(e) -> bool:
+    """round 18 N2b: Audio Flamingo Next V4 accepts this span's family on its P1 cut (config.LISTENER_AFCACHE, P1 items;
+    same match as listener_p1_lookup: family, end within 0.02 s, start inside the span)"""
+    from src.labels import canonical
+    p = getattr(config, "LISTENER_AFCACHE", None)
+    clip = getattr(config, "_CURRENT_CLIP", None)
+    if not p or clip is None:
+        return False
+    key = (p, clip)
+    if key not in _AFP1:
+        _AFP1[key] = [x for x in _cache_items(p) if x.get("clip") == clip and x.get("pool") == "P1"]
+    fam = canonical(e.label)
+    c = [x for x in _AFP1[key] if x["family"] == fam and abs(x["end"] - e.end) <= 0.02 and e.start - 0.02 <= x["start"] <= e.end]
+    return bool(c) and bool(((min(c, key=lambda x: abs(x["start"] - e.start)).get("accept")) or {}).get("V4", False))
 
 
 def post_rules(events, ffw, ftimes, flabels, clip: str, origin=None, listener_p1=None):
