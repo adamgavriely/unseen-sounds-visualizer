@@ -12,6 +12,8 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 
 - [ ] Merged sets (Adam 30 Sept): DEV = DEV + DEV2, TEST = TEST + TEST2; final candidate scored once on merged TEST at the end. Build merged scoring after the batch-2 prep chain (jobs 31563919-23).
 
+- [ ] Thesis: insert `docs/thesis/detector_rounds_13_15.md` after §5.8 of ch5; ch5 §5.14 add the R13-1 TEST exposure (29 Sept, 11th), §5.15 row 11; §5.7 stale 'not re-autopsied' line (TO1+F7F8 has a full trace). Arm count on DEV = 106 full-pipeline arms (not ~60).
+
 ## Later
 - [ ] Thesis limitation note: `src/audioset_parents.json` keeps one parent per label, but the official ontology has 38 multi-parent labels (e.g. Hiss → Cat/Snake/Steam). Scoring's same_family and the stage-5 family rule use the single-parent file (frozen, not changed); state it and, if time, count how many scored sounds are multi-parent labels (DEV only).
 - [ ] (Only if a fixed generic method wins a new test) mistake mining for all 215 labels at night. Possible fixes for a new test: more specific object slot, allow hands for human-action makers, better mining judge.
