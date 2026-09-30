@@ -877,3 +877,18 @@ tagger part. Fails.
 ### Merged TEST — the one exposure (decided 2026-09-30 ~07:50 UTC, before reading any TEST number)
 All night arms (N1–N4, R1, R3) failed on merged DEV, so the single TEST candidate is the pre-set merged-DEV pick TO1+F7F8 vs
 B0r, as registered. Scored now with `benchmark/gold/final_test.py score` (stages built gold-free by job 31564931).
+
+### Merged TEST result (one exposure, 2026-09-30 ~08:00 UTC) — verdict **same**
+Old TEST 60 (test_bench) + tagger TEST 28 = 88 clips, 65 needed sounds. `benchmark/gold/final_test.{json,md}`.
+(A first attempt stopped before any gold was read: the tagger part's flag mapping refused TEST-mapped paths; fixed so both
+parts map from the DEV originals. No `.started` marker existed before the scored run.)
+
+| arm | hits | misses | wrong (v / c / p) | cost | old TEST hits / wrong | tagger TEST hits / wrong |
+|---|---|---|---|---|---|---|
+| B0r (old shipped) | 21 | 44 | 40 (2 / 31 / 7) | 2.909 | 16 / 25 | 5 / 15 |
+| TO1+F7F8 (shipped now) | 22 | 43 | 38 (2 / 30 / 6) | 2.818 | 16 / 25 | 6 / 13 |
+
+Δ cost −0.091 [−0.250, +0.045], one-sided p 0.132 → **same** (hits not lower, wrong lower, but p ≥ 0.05). The best version ran
+as intended on the old TEST (46 band rescues accepted, 24 removed by the filters, 13 PANNs-vetoed spans kept, 5 of 60 clips
+with different pictures), netting zero change there; the gain is on the tagger TEST part (+1 hit, −2 wrong).
+**Decision (Adam's rule: switch back only if TEST shows it is worse):** TO1+F7F8 stays the shipped setting.

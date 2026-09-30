@@ -44,7 +44,15 @@ def guard():
             raise SystemExit(f"ONE EXPOSURE: {p} exists; refusing")
 
 
+_ARMS0 = {}
+
+
 def old_setup(arm):
+    from benchmark.gold import round13_dev as R0
+    for k in ("B0r", "B1", arm):                              # every setup starts from the DEV originals
+        if k in R0.ARMS:
+            _ARMS0.setdefault(k, dict(R0.ARMS[k]))
+            R0.ARMS[k] = dict(_ARMS0[k])
     from benchmark.gold import r13_test_final as F
     a = argparse.Namespace(arm=arm, flags=None, cache_map=CMAP, stage5_keys=None, dry_run=False)
     T, R, arms, fin = F.setup(a)
@@ -85,6 +93,9 @@ def score(arm):
         P1[arm] = {st: S.load_pictures(fin / f"{arm}_proposed", st, "proposed") or [] for st in stems1}
     # tagger TEST part (tagger_prep's own outputs; its configure() re-points round13_dev, so pictures are read first)
     from benchmark.gold import tagger_prep as TP
+    for k, v in _ARMS0.items():                               # tagger_prep maps from the DEV originals too
+        R.ARMS[k] = dict(v)
+    TP._ORIG.clear()
     _D2, R2, stems2 = TP.configure("test2")
     o2 = TP.out("test2")
     P2 = {"B0r": {st: S.load_pictures(o2 / "B0r_proposed", st, "proposed") or [] for st in stems2}}
