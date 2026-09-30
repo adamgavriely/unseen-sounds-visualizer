@@ -1085,3 +1085,9 @@ judge that passed the trust checks) was never asked the gate's questions. Screen
 --dev-only` (same six frames, same three votes, majority rule) on the DEV judge clips, scored like amendment M against
 Qwen3.8-27B. GO to a full arm iff Gemma silences ≥ 3 more seen sounds AND keeps ≥ as many needed sounds (the gate's
 known failure is missed visible sources and wrongly silenced needed ones — the Fart / pet-shop / bell cases).
+
+### Round 24 result — Gemma-4-31B gate: NO GO (job 31594011, 27 min, judge venv torch 2.7)
+DEV judge clips (79 sounds: 43 seen, 36 needed), majority rule: Gemma silences 24/43 seen (Qwen3.8 16/43) but keeps only
+26/36 needed (Qwen3.8 31/36) — 8 more leaks caught for 5 needed sounds lost, below the break-even and the pre-set bar
+(keep ≥ as many needed). Unanimous: 10/43 and 33/36; obvious: 18/43 and 31/36 (+2 seen, same needed, below the ≥ 3 bar).
+A fourth VLM moves the gate along the same trade-off line, as the 26 Sept panel predicted.
