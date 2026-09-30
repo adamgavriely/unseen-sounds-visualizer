@@ -706,3 +706,13 @@ M silences one more seen sound (crossing_bells Train 0.0) and one needed one (as
 N silences 5 more seen sounds but 3 needed ones (explosion Gunshot 0.0, golf Whack 24.4, motorcycle Laughter 12.7): below the
 GO bar (<= 1 needed lost) and below the β = 2 break-even (2 seen per needed). Hearing the sound makes the VLM say "visible"
 more often for both classes; it does not separate them. With M this closes Fable's gate ideas 2 and 4.
+
+**Confirmation set 1 — batch 2 (Adam, 2026-09-30; fixed and committed before any pipeline run or output on these
+clips).** 15 more clips from Adam's export `tagger_AG_2026-09-30_0347.json` (done, not broken; 2 broken to `_bad/`),
+added to `tagger_AG.json` / `data/input/tagger_set/` by `benchmark/gold/tagger_set.py`. Adam asked to split them using
+the tags, so from batch 2 on each NEW batch is split **tag-balanced** by `benchmark/gold/tagger_split.py` (ranked by
+needed sounds, then all sounds, then sha256; consecutive pairs, alternating which side gets the richer clip). Only
+batch 2's own tags were read; batch 1 stays exactly as it was (sha256 % 2; TEST2 tags never read).
+Batch 2: **DEV2** = tg_d022, d029, d030, d032, d054, d085, d095 (7; 6 needed sounds); **TEST2** = tg_d009, d014, d019,
+d023, d031, d045, d046, d068 (8; 7 needed). Totals: DEV2 13, TEST2 18. Membership: `benchmark/gold/tagger_split.json`.
+Disclosure: Adam opened the BEATs-only suggestions on most batch-2 clips before tagging (`suggestions_shown_at`).

@@ -38,6 +38,21 @@ TAGGER_ALIASES = {
     "screams": "Screaming",                              # unresolved
     "car winker": "Tick",                                # a car's turn indicator ticking; unresolved
     "soazzle (sand raking)": "Scrape",                   # unresolved
+    # export 2026-09-30_0347
+    "luggage dragged on pavement": "Scrape",             # unresolved (suitcase wheels rolling)
+    "claps": "Clapping",                                 # unresolved
+    "knife slicing on wood": "Chopping (food)",          # -> "Wood"
+    "knife slicing meat": "Chopping (food)",             # unresolved
+    "sizzling": "Sizzle",                                # unresolved
+    "ambulance": "Ambulance (siren)",                    # unresolved
+    "rickshaw driving": "Engine",                        # unresolved (auto-rickshaw engine)
+    "beep (rickshaw horn)": "Vehicle horn, car horn, honking",   # unresolved
+    "tractor engine": "Engine",                          # resolves to Engine already; kept explicit
+    "cows": "Cattle, bovinae",                           # unresolved
+    "whisk eggs": "Stir",                                # unresolved (whisking in a bowl)
+    "stovetop gas start": "Clicking",                    # unresolved (the igniter's clicks)
+    "tongs": "Cutlery, silverware",                      # unresolved
+    "plate": "Dishes, pots, and pans",                   # unresolved
 }
 
 
