@@ -729,6 +729,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             back = []
             for e in dropped:
                 ok, how = listener_p1(e.label, e.start, e.end)
+                if ok and getattr(config, "KEEP_NEEDS_V4", False):
+                    ok = _v4_names(e)                              # round 21 K-V4
                 LISTENER_STATS.setdefault("f7", []).append([e.label, round(e.start, 2), round(e.end, 2), ok, how])
                 if ok:
                     back.append(e)
@@ -761,6 +763,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     except RuntimeError:
                         continue
                 ok, how = listener_p1(e.label, e.start, e.end) if listener_p1 is not None else (False, "missing")
+                if ok and getattr(config, "KEEP_NEEDS_V4", False):
+                    ok = _v4_names(e)                              # round 21 K-V4
                 if ok:
                     continue
                 if getattr(config, "MASKED_WEAK_AF", False) and _af_p1_accepts(e):   # round 18 N2b: or AF V4 on the P1 cut
@@ -1079,6 +1083,25 @@ def dasm_rescue_events(clip: str, present=None):
     if out:
         print(f"       [stage4] DASM rescue: {len(out)} span(s) {[(e.label, round(e.start, 2)) for e in out]}", flush=True)
     return out
+
+
+_P1V4 = {}
+
+
+def _v4_names(e) -> bool:
+    """round 21 K-V4: an open-inventory listener names e's family on its P1 cut (Qwen V4 family list in config.RELABEL_P1V4,
+    or Audio Flamingo V4 in LISTENER_AFCACHE)"""
+    from src.labels import canonical
+    p, clip = getattr(config, "RELABEL_P1V4", None), getattr(config, "_CURRENT_CLIP", None)
+    if p and clip is not None:
+        key = (p, clip)
+        if key not in _P1V4:
+            _P1V4[key] = [x for x in _cache_items(p) if x.get("clip") == clip]
+        fam = canonical(e.label)
+        c = [x for x in _P1V4[key] if x["family"] == fam and abs(x["end"] - e.end) <= 0.02 and e.start - 0.02 <= x["start"] <= e.end]
+        if c and fam in (min(c, key=lambda x: abs(x["start"] - e.start)).get("qwen_fams") or []):
+            return True
+    return _af_p1_accepts(e)
 
 
 _DASMC = {}

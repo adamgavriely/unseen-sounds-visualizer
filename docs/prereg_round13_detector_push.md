@@ -1017,3 +1017,13 @@ Pass rule vs the base: hits ≥ 24, wrong ≤ 44 + 2 × gain, cost < 2.986, no n
   bar (0.05) inside the span (instead of "under speech/music"); kept if Qwen (P1 rule) or AF V4 names it.
 - **N2c-D:** N2c (every weak untwinned BEATs-only span needs a second opinion) with two more keeps: DASM ≥ 0.575 for the
   family within the span ± 0.5 s, or no cached listener answer for the span.
+
+### Round 21 results — both fail (one needed hit lost on the tagger part: tg_d032 Thunder 12.8, a weak BEATs span no second opinion confirms)
+| arm | merged hits | wrong (v / c / p) | cost | old DEV | tagger DEV |
+|---|---|---|---|---|---|
+| SHIP2 (base) | 24 | 44 (9 / 29 / 6) | 2.986 | 18 / 21 | 6 / 23 |
+| SHIP2+N2e | 23 | 38 (9 / 25 / 4) | 2.873 | 18 / 20 | 5 / 18 |
+| SHIP2+N2c-D | 23 | 40 (9 / 26 / 5) | 2.930 | 18 / 20 | 5 / 20 |
+(jobs 31593633 / 31593634). Lower cost, but the rule forbids losing a needed hit.
+- **K-V4 (written before its number):** base SHIP2; the F7 and N2b keeps additionally need an open-inventory naming of the
+  span's family on its P1 cut (Qwen V4 from `*_listener_p1v4.json` or AF V4). Same pass rule.
