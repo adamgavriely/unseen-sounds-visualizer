@@ -271,10 +271,32 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
     return events
 
 
+def _require_caches(wav_path):
+    """LISTENER_REQUIRE_CACHES (set by use_shipped when the listener rescue ships): a clip with no listener answers or no
+    DASM scores must not quietly fall back to the plain detector -- stop instead. The answers come from slurm/run_best.sh."""
+    if not getattr(config, "LISTENER_REQUIRE_CACHES", False):
+        return
+    clip = Path(wav_path).parent.name
+    miss = []
+    for k in ("LISTENER_CACHE", "LISTENER_VCACHE", "LISTENER_AFCACHE"):
+        p = getattr(config, k, None)
+        if not p or not all(Path(x).exists() for x in str(p).split(";")):
+            miss.append(f"{k} (no file)")
+        elif not any(x.get("clip") == clip for x in _cache_items(p)):
+            miss.append(f"{k} (no items for {clip})")
+    d = getattr(config, "LISTENER_DASM_DIR", None)
+    if getattr(config, "LISTENER_DASM_VOTE", False) and not (d and (Path(d) / f"{clip}.npz").exists()):
+        miss.append(f"LISTENER_DASM_DIR (no {clip}.npz)")
+    if miss:
+        raise RuntimeError(f"[stage4] {clip}: the shipped listener rescue needs precomputed answers "
+                           f"(run slurm/run_best.sh on this clip first): missing {miss}")
+
+
 def _pipeline_listener(wav_path):
     """R13-3 in the pipeline: the listener cache (config.LISTENER_CACHE) for this clip (its work dir name = the clip id)"""
     if not getattr(config, "LISTENER_RESCUE", False):
         return None
+    _require_caches(wav_path)
     if getattr(config, "LISTENER_RULE", None):
         vpath = getattr(config, "LISTENER_VCACHE", None)
         return listener_from_vcache(vpath, Path(wav_path).parent.name) if vpath else None
