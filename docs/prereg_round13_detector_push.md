@@ -1463,3 +1463,5 @@ general rules on this data.
 - **CONT arm (merged DEV):** SHIP5+CONT 25/55, 28 wrong (9/17/2), cost 2.479 vs SHIP5 25/33/2.620; old DEV 17/17 (one hit
   lost), tagger 8/11 (one gained). Old rule fails (a hit lost on old DEV); **fewer-pictures clause passes** (cost down, 0 net
   hits lost, wrong −5). **Shipped as SHIP6** (config.use_shipped CONTINUATION_VETO 0.5). Next on SHIP6: K4AO, FLAP; TEST read.
+- **SPOT screen result:** (a) +8 needed / +324 other → STOP. (b) veto of V4 accepts: 2 needed lost (Belly laugh ×2), 12
+  other removed (10 other_gold, 2 phantom) → GO on paper; held until the FLAP veto arm (same slot) reports.
