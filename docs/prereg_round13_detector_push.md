@@ -1564,3 +1564,22 @@ would-drop list (same family, picture start inside [row start − 1.5, row end])
   [−0.636, −0.045], one-sided p 0.015 → **better** (benchmark/gold/final_test_ship7.md).
 - **SHIP7+K4AO:** 24/55, 24 wrong (9/13/2), 2.423 vs SHIP7 25/27/2.451: −1 hit (old DEV), −3 wrong. Passes the
   fewer-pictures clause at exactly 3:1; held for Adam's word (his 16:20 message puts hits first).
+### Round 32 arm results — all STOP (jobs 31596369 FLR / FLR+F1, 31596404 DV2; `benchmark/gold/flap_joint_arms.json`)
+Merged DEV (71 clips, 55 needed), real pipeline on both parts, Δ = paired clip bootstrap vs SHIP6:
+| arm | hits | wrong (v/c/p) | cost | old DEV | tagger DEV | Δ cost vs SHIP6 [95 % CI] | verdict |
+|---|---|---|---|---|---|---|---|
+| SHIP6 | 25 | 28 (9/17/2) | 2.479 | 17/17 | 8/11 | — | base |
+| SHIP6+FLR (FineLAP in F8 + DV, bars 0.329 / 0.4331) | 25 | 39 (9/27/3) | 2.789 | 18/22 | 7/17 | +0.31 [+0.03, +0.62] | STOP (tg_d032 Thunder lost; +11 wrong) |
+| SHIP6+FLR+F1 | 23 | 39 (9/27/3) | 2.901 | 16/22 | 7/17 | +0.42 [+0.08, +0.82] | STOP |
+| SHIP6+DV2 (FineLAP second clip veto) | 24 | 28 (9/17/2) | 2.535 | 17/17 | 7/11 | +0.06 [0.00, +0.17] | STOP (Thunder lost, no wrong removed) |
+CV (split-half 10 seeds; 5-fold 10 seeds) over {SHIP6, FLR, FLR+F1, DV2}: the procedure picks SHIP6 in 20/20 halves and
+50/50 folds; held-out cost 2.476 = fixed SHIP6. **Full argmin SHIP6: stable, nothing adopted, no TEST read.**
+**Why the DV2 screen said GO and the arm says STOP.** The pipeline's P1 keep (`listener_p1_lookup`) falls back to the
+R13-3 yes/no score > 3 when a span has no V4/V12 item; on tg_d022 Dog / Domestic animals and tg_d128 Livestock that fallback
+keeps the rows (Qwen yes/no says yes), so the arm removes only the undrawn Animal / Livestock 7.5 rows and no picture. The
+screen's keep used V4/V12 + AF only (no yes/no fallback) — a screen flaw, recorded; the arm is the truth. The FineLAP clip
+bar also removes the weak Thunder 13.75 (conf 0.376, FineLAP clip max < 0.433, no keep) that is the tg_d032 hit.
+**Reading.** The swap is worse than the vote: FineLAP in F8's seat re-admits 24 rescues after ONCE (11 drawn other-class:
+Train, Car, Coin, Water ×2, Bird, Alarm, Sigh, Thump ×2, Toilet flush, Chewing) for +1 old-DEV hit (Hammer; the Explosion
+2.84 displaces the 5.68 hit), and in DV's seat it is deaf to a needed Thunder. FineLAP's calibrated clip bar (0.433) sits
+far above DASM's (0.084): FineLAP's clip-wide scores separate needed P1 items from others worse than DASM's do.
