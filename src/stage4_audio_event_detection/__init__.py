@@ -986,6 +986,9 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
     # Round 14 amendment C: the second listener (Audio Flamingo Next, LISTENER_AFCACHE, same keys) -- rule AGREE_V4 =
     # Qwen V4 AND AF V4, AGREE_V12 = Qwen V12 AND AF V4; an item AF did not score is not accepted by AGREE
     afp = getattr(config, "LISTENER_AFCACHE", None)
+    qbp = getattr(config, "LISTENER_V4B_CACHE", None)
+    qb = ({(x.get("pool"), x["family"], x.get("label"), round(x["start"], 2), round(x["end"], 2)): x
+           for x in _cache_items(qbp) if x.get("clip") == clip} if qbp else None)
     kcp, kfield = getattr(config, "LISTENER_KCACHE", None), getattr(config, "LISTENER_KFIELD", "accept_norm")
     kc = None
     if kcp:
@@ -1019,6 +1022,9 @@ def listener_from_vcache(path, clip: str, tol: float = 0.02):
             acc["AGREE_V12"] = bool(acc.get("V12", False)) and av4
             # amendment E: TIER = Qwen V4, and below a FlexSED run peak of 0.6 also AF V4; QV4_AFYN = Qwen V4 AND AF yes/no > 0
             pk = float(it.get("peak", 1.0) if it.get("peak") is not None else 1.0)
+            if qb is not None:                                   # round 27 QE: the Qwen leg = V4 OR the V4b prompt
+                b = qb.get((it["pool"], it["family"], it.get("label"), round(it["start"], 2), round(it["end"], 2)))
+                acc["V4"] = bool(acc.get("V4", False)) or bool(((b or {}).get("accept") or {}).get("V4B", False))
             acc["TIER"] = _tier(acc, pk)
             if getattr(config, "TIER_2OF3_DASM", False):       # round 22 TD: or two of {Qwen V4, AF V4, DASM >= bar}
                 from src.types import AudioEvent as _AE
