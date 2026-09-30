@@ -538,7 +538,10 @@ def use_shipped() -> dict:
                  # round 31 FLAP (new DEV best 30 Sept): a rescued span whose family FineLAP (ACL 2026, AndreasXi/FineLAP)
                  # scores < 0.329 over the span (bar calibrated on drawn P1 spans) is dropped. Merged DEV 25 / 27 / 2.451.
                  # Its frame scores: FINELAP_DIR from set_listener_split
-                 ("FINELAP_VETO", 0.329)):
+                 ("FINELAP_VETO", 0.329),
+                 # round 35 K4A-D (new DEV best 1 Oct, corrected gold): a drawn span neither open-inventory listener names
+                 # on its cut is dropped unless DASM hears it (>= 0.575 in the span +- 0.5 s). Merged DEV 28 / 21 / 2.282
+                 ("KEEP_NEEDS_V4_ALL", "onto"), ("KEEP_NEEDS_V4_ALL_DASM_KEEP", True)):
         changed[k] = (getattr(me, k, None), v)
         setattr(me, k, v)
     return changed

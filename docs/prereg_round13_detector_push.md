@@ -1896,3 +1896,7 @@ on one clip; the merged TEST is spent and cannot confirm it. GO = a `src/` flag 
 - **DBR arm (after its GO screen):** stage-4 flag `REPEAT_DASM_BRIDGE` 0.575 (before CONT): same rule on stage-4 spans ≥ the
   display bar. Arm SHIP7+DBR on the corrected merged DEV; old rule vs SHIP7. Disclosure: the screen fired only on the
   motivating clip (b3_barbershop).
+- **K4A-D result (corrected merged DEV):** SHIP7+K4AD 28/58, 21 wrong (6/13/2), cost 2.282 vs SHIP7 28/24/2.366; old DEV
+  19/14 and tagger 9/7; no needed hit lost on either part → **passes the old rule; shipped as SHIP8** (use_shipped
+  KEEP_NEEDS_V4_ALL "onto" + KEEP_NEEDS_V4_ALL_DASM_KEEP). K4AO alone 27/21/2.338 (the DASM keep saves the insect hit).
+  DBR re-queued on SHIP8; TEST read of SHIP8 follows.
