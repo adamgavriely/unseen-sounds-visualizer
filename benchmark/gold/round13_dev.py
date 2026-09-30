@@ -213,6 +213,7 @@ ARMS["SHIP4+DVG"] = {**ARMS["SHIP4"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP
 ARMS["SHIP4+K4A"] = {**ARMS["SHIP4"], "KEEP_NEEDS_V4_ALL": "exact"}      # round 30 K4A
 ARMS["SHIP4+K4AO"] = {**ARMS["SHIP4"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP4+BTP"] = {**ARMS["SHIP4"], "BAND_TWIN_PULL": 0.5}                # round 30 BTP
+ARMS["SHIP4+N2c"] = {**ARMS["SHIP4"], "MASKED_WEAK_NEED_MASK": False}      # re-judged under the fewer-pictures clause
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
 ARMS["TO1F7F8+R1"] = {**ARMS["TO1+F7F8"], "RELABEL_2L": True,
                       "RELABEL_P1V4": str(_ROOT / "benchmark" / "gold" / "dev_listener_p1v4.json")}
