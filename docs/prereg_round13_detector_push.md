@@ -2355,3 +2355,5 @@ votes, GO/STOP. GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed
 **Files:** `benchmark/gold/sync_gate.py` (`smoke` / `run` = GPU, one JSON per clip in `gate_gold/sync/`, resumable /
 `score` = CPU, laptop, -> `gate_gold/sync_summary.json`), `slurm/job_sync_gate.sh` (H200-4h / A100-4h). Stop rule for
 the setup: if Synchformer could not run within ~1 h, report why instead — it did (above).
+- **Round 39 MAKER-VIS result:** merged 19/58, 15 wrong (4/10/1), cost 2.620 vs SHIP8 28/21/2.282. The maker is "visible"
+  for 15 pictures, 9 of them hits (the VLM sees people, sky, clouds for needed off-screen sounds). **STOP.**
