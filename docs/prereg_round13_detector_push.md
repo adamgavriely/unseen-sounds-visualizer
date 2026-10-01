@@ -2996,3 +2996,16 @@ Base reproduced: SHIP8 TEST 23/65, 29 wrong (4/20/5), cost 2.568. Answers on the
 p 1.000.** The DEV gain (2 phantoms + 2 wrong dropped for 1 hit) came from 5 un-nameable answers ("swing", "washing machine", "click",
 "bull", "tram"); on TEST every answer names some depictable family. The signal does not carry; nothing changes in `src/`.
 Files: `benchmark/gold/avname_test.json`, `benchmark/gold/avname/test_answers.json`.
+
+### Round 43b result — HUMAN-2: STOP on both variants; (b) one seen short of the bar (job 31599056, H200; `human2_gate.py` -> `gate_gold/human2_summary.json`, votes in `gate_gold/human2_Qwen38-27B/`, gitignored)
+Base reproduced (16/41, 33/38). **(a) HUMAN-2 alone: 5/41 seen silenced, 38/38 needed kept -> STOP. (b) fourth vote: 18/41,
+32/38 -> STOP (GO needs 19/32).** The format fix worked: "none" on 98 of 145 stretches (was 105 literal "nothing" + 35 truncated),
+only 4 raw replies over 5 words, candidates are now real ("the golfer", "the church", "the bird on the wire", "the rain").
+Step (3) now does its job on the targets: golf Whack 6.5 — "the golfer" named, (b) split -> KEPT (base silenced); Whack 24.4
+same; bell_miami — "the church" ×3, (b) no -> KEPT (base silenced); pet-shop Bird — "the bird" ×6, (b) no/split -> KEPT (base
+silenced). But (b) also says no/split for visible sources: aviary Bird (6 stretches, 0 yes), the marrakech motorcycle, the
+flea-market hands, the tornado horse; (b) yes on 12 stretches only (storm Rain ×3, golf-club Whip, the protest man, …). Fourth
+vote: +3 silenced (carnival Drum, crossing Train — seen; rainforest_7629 Bird "the macaws" — NEEDED, lost), −1 kept. Reading:
+the annotator's question is answered right for the off-screen whack, bell and bird, and wrong for on-screen animals and
+engines whose "action" is subtle at ±0.3 s; the net on this bar is one seen sound short. Not GO; no full-pipeline arm. A
+follow-up (not run): (b) yes OR shipped majority per stretch, i.e. HUMAN-2 as an ADD-seen rule like SYNC-2. Closed.
