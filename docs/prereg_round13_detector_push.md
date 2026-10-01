@@ -2990,3 +2990,9 @@ then majority of stretches. Pass bar, report (table, flips vs base with raw repl
 raw replies exceed 5 words) as Round 43. Files: `benchmark/gold/human2_gate.py` (imports Round 43's helpers; `run` GPU ->
 `gate_gold/human2_Qwen38-27B/`, `score` CPU -> `gate_gold/human2_summary.json`), `slurm/job_human2_gate.sh`; `src/` untouched.
 Note: this commit also carries the Round 44 TEST-read pre-registration another thread had appended but not yet committed.
+### Round 44 TEST read — result (job 31599055, H200; 51 pictures in 84 s; reported, not selected on)
+Base reproduced: SHIP8 TEST 23/65, 29 wrong (4/20/5), cost 2.568. Answers on the 51 TEST pictures: 18 same family, 33 other family,
+**0 NONE, 0 unmapped** (31 ambiguous) — so variant (b) drops nothing: **AVNAME(b) TEST = base, 23/65, 29 (4/20/5), 2.568, d cost +0.000,
+p 1.000.** The DEV gain (2 phantoms + 2 wrong dropped for 1 hit) came from 5 un-nameable answers ("swing", "washing machine", "click",
+"bull", "tram"); on TEST every answer names some depictable family. The signal does not carry; nothing changes in `src/`.
+Files: `benchmark/gold/avname_test.json`, `benchmark/gold/avname/test_answers.json`.
