@@ -3661,3 +3661,24 @@ DASM clip max < 0.0839 (what the DV exemption saves): **6, 0 correct = 0.000** (
 sub-display 522, 0.556; literal rule (partner at 0.8) G 183, 0.574; case-2 short FlexSED spans 315, 0.279. Reading: most of G is a
 short BEATs blip inside a long FlexSED band run (226 of 235), so the 415 pass mostly measures FlexSED band runs; the DV-exempt subset
 is tiny and all wrong on the 415.
+
+## Round 53c WEAK-WITNESS-3 — one ear is a witness (written 2026-10-01 BEFORE any 415 or DEV number of it; follows Round 53b's 415 split)
+**Why.** Round 53b's 415 split (proxy whole-clip ears): one-ear spans 170, precision 0.365 (≈ raw 0.375), no-ear spans 349, 0.218,
+both 235, 0.617 — one ear is a real witness; the weak group is the no-ear spans.
+**Rule (existing code, no src change): SHIP8+MD3 + `DASM_LOCAL_VETO` b0 + `DASM_LOCAL_KEEP` "either"** (Round 29 DV-L mode): a
+non-rescued span is kept iff DASM >= b0 OR at least one ear accepts it — the code's "either" ears are the Qwen P1 listener
+(`listener_p1(...)[0]`) OR AF V4 (`_af_p1_accepts`); note the Qwen ear here is the P1 listener yes, not the V4 'onto' naming of
+"both". Same window/span set/no-column handling as Round 53.
+**Known before writing (Round 53 DEV, ear status per coordinator's reading of the stage-4 rows):** of Round 53's 5 removed wrongs,
+tg_d128 Hammer (AF only) and tg_d107 Screaming (Qwen only) have one ear -> would be KEPT under "either"; mv_protest Glass 4.75,
+b3_laundromat Train, tg_d022 Dog have no ear -> droppable if their DASM < b0. Lost hits tg_d032 Thunder (Qwen only) / tg_d075 Alarm
+(AF only) have one ear -> kept. **Expected if b0 >= 0.35: ~29/15, cost ~2.056** (3 wrong removed, no hit lost).
+**Step 1 — b0 from the held-out 415 (`benchmark/gold/weakwitness3_415.py`, CPU; reuses `weakwitness2_415.json` rows).** NO-EAR spans
+only (family named by neither whole-clip list — proxy, disclosed as in Round 53b). Bins of 0.05, cumulative precision (Round 42
+rule) of no-ear spans with DASM < e; **b0 = the highest edge e in {0.05 … 0.60} with cumulative precision <= 0.20; STOP unless
+0.1 < b0 < 0.6.**
+**Step 2 — DEV (only if b0 exists).** `ARMS["SHIP8+MD3+WW3"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": b0, "DASM_LOCAL_KEEP":
+"either"}`; r16dev (~/MscProj_r13) then tgarms (~/MscProj_tg), PICTURE_MIN_CONF None. Base must reproduce **29/58, 18 (6/10/2),
+2.141**. **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR
+fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row
+(`floor_check_arm.py`), changed pictures. Stacking with Round 56 as pre-registered in Round 53b. TEST not read.
