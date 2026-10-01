@@ -1,0 +1,1460 @@
+{
+ "arm": "SHIP8",
+ "weak": {
+  "beats": 0.1,
+  "flex": 0.3,
+  "dasm": 0.3
+ },
+ "display_threshold": 0.35,
+ "stage4_bars": {
+  "beats": 0.175,
+  "flex": 0.8
+ },
+ "augment_threshold": 0.35,
+ "window": [
+  -0.5,
+  1.0
+ ],
+ "buckets": {
+  "A": 4,
+  "B": 16,
+  "C": 8,
+  "D": 2
+ },
+ "notes": [],
+ "misses": [
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "sound": "Vehicle",
+   "family": "Vehicle",
+   "at": 3.8,
+   "end": 4.3,
+   "beats_win": 0.1,
+   "beats_span": 0.082,
+   "flex_win": 0.708,
+   "flex_span": 0.708,
+   "dasm_win": 0.718,
+   "dasm_span": 0.718,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Hammer"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Door",
+    "Vehicle",
+    "Hammer"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "sound": "Hammer",
+   "family": "Hammer",
+   "at": 8.1,
+   "end": 10.7,
+   "beats_win": 0.01,
+   "beats_span": 0.017,
+   "flex_win": 0.005,
+   "flex_span": 0.194,
+   "dasm_win": 0.003,
+   "dasm_span": 0.043,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Hammer"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Door",
+    "Vehicle",
+    "Hammer"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "sound": "Hammer",
+   "family": "Hammer",
+   "at": 13.7,
+   "end": 16.0,
+   "beats_win": 0.032,
+   "beats_span": 0.055,
+   "flex_win": 0.7,
+   "flex_span": 0.747,
+   "dasm_win": 0.273,
+   "dasm_span": 0.281,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Hammer"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Door",
+    "Vehicle",
+    "Hammer"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "sound": "Clang",
+   "family": "Clang",
+   "at": 3.8,
+   "end": 4.4,
+   "beats_win": 0.015,
+   "beats_span": 0.006,
+   "flex_win": null,
+   "flex_span": null,
+   "dasm_win": null,
+   "dasm_span": null,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Mechanical fan"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Vehicle",
+    "Door"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": false,
+   "bucket": "A"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "sound": "Bird",
+   "family": "Bird",
+   "at": 6.5,
+   "end": 16.0,
+   "beats_win": 0.033,
+   "beats_span": 0.065,
+   "flex_win": 0.435,
+   "flex_span": 0.462,
+   "dasm_win": 0.495,
+   "dasm_span": 0.613,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Water"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Water",
+    "Bird"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "sound": "Bird",
+   "family": "Bird",
+   "at": 0.1,
+   "end": 16.0,
+   "beats_win": 0.42,
+   "beats_span": 0.458,
+   "flex_win": 0.682,
+   "flex_span": 0.771,
+   "dasm_win": 0.544,
+   "dasm_span": 0.583,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Bird"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Bird"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.14,
+     "end": 0.5,
+     "conf": 0.263,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 0.14,
+     "end": 0.5,
+     "conf": 0.259,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.89,
+     "end": 3.25,
+     "conf": 0.458,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 0.81,
+     "end": 3.0,
+     "conf": 0.356,
+     "origin": "tagger"
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 0.89,
+     "end": 2.75,
+     "conf": 0.342,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 2.72,
+     "end": 4.75,
+     "conf": 0.357,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 2.72,
+     "end": 4.5,
+     "conf": 0.268,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 8.05,
+     "end": 10.0,
+     "conf": 0.346,
+     "origin": "tagger"
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 8.05,
+     "end": 8.25,
+     "conf": 0.257,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 8.05,
+     "end": 8.25,
+     "conf": 0.228,
+     "origin": "tagger"
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 8.5,
+     "end": 9.25,
+     "conf": 0.234,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 15.55,
+     "end": 15.75,
+     "conf": 0.231,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [],
+   "kill": [
+    "Bird vocalization, bird call, bird song@0.14 conf 0.26: below display threshold 0.35",
+    "Bird@0.14 conf 0.26: below display threshold 0.35",
+    "Bird vocalization, bird call, bird song@0.89 conf 0.46: stage 5 augment=false (source visible on screen (macaws) - stay silent)",
+    "Bird@0.81 conf 0.36: stage 5 augment=false (source visible on screen (macaws) - stay silent)",
+    "Chirp, tweet@0.89 conf 0.34: below display threshold 0.35",
+    "Bird vocalization, bird call, bird song@2.72 conf 0.36: stage 5 augment=false (source visible on screen (macaws) - stay silent)",
+    "Bird@2.72 conf 0.27: below display threshold 0.35",
+    "Bird vocalization, bird call, bird song@8.05 conf 0.35: below display threshold 0.35",
+    "Chirp, tweet@8.05 conf 0.26: below display threshold 0.35",
+    "Bird@8.05 conf 0.23: below display threshold 0.35",
+    "Chirp, tweet@8.50 conf 0.23: below display threshold 0.35",
+    "Bird vocalization, bird call, bird song@15.55 conf 0.23: below display threshold 0.35"
+   ],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "Walk, footsteps",
+   "family": "Footsteps",
+   "at": 2.1,
+   "end": 11.3,
+   "beats_win": 0.008,
+   "beats_span": 0.016,
+   "flex_win": 0.658,
+   "flex_span": 0.695,
+   "dasm_win": 0.262,
+   "dasm_span": 0.559,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Explosion",
+    "Footsteps",
+    "Gunshot"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Gunshot",
+    "Explosion",
+    "Footsteps",
+    "Honk",
+    "Car passing by",
+    "Alarm",
+    "Vehicle"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "Explosion",
+   "family": "Explosion",
+   "at": 2.8,
+   "end": 4.2,
+   "beats_win": 0.137,
+   "beats_span": 0.137,
+   "flex_win": 0.621,
+   "flex_span": 0.621,
+   "dasm_win": 0.516,
+   "dasm_span": 0.516,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Explosion",
+    "Footsteps",
+    "Gunshot"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Gunshot",
+    "Explosion",
+    "Footsteps",
+    "Honk",
+    "Car passing by",
+    "Alarm",
+    "Vehicle"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [
+    "Fusillade@8.25 (0.53)",
+    "Machine gun@8.50 (0.31)",
+    "Gunshot, gunfire@8.50 (0.21)",
+    "Boom@9.25 (0.45)",
+    "Fusillade@10.00 (0.44)",
+    "Fusillade@11.40 (0.43)",
+    "Machine gun@13.00 (0.22)",
+    "Gunshot, gunfire@13.00 (0.20)",
+    "Fusillade@14.25 (0.28)",
+    "Gunshot, gunfire@15.14 (0.41)",
+    "Fusillade@15.00 (0.38)",
+    "Machine gun@15.14 (0.34)",
+    "Fusillade@16.00 (0.28)",
+    "Machine gun@18.00 (0.70)",
+    "Fusillade@18.00 (0.29)",
+    "Gunshot, gunfire@18.50 (0.44)",
+    "Fusillade@18.75 (0.28)",
+    "Explosion@5.68 (0.56)"
+   ],
+   "kill": [],
+   "placed_same_family": [
+    "Explosion@5.68",
+    "Explosion@9.25"
+   ],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "sound": "Gasp",
+   "family": "Gasp",
+   "at": 6.7,
+   "end": 7.0,
+   "beats_win": 0.415,
+   "beats_span": 0.037,
+   "flex_win": 0.758,
+   "flex_span": 0.758,
+   "dasm_win": 0.065,
+   "dasm_span": 0.065,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Explosion",
+    "Footsteps",
+    "Gunshot"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Gunshot",
+    "Explosion",
+    "Footsteps",
+    "Honk",
+    "Car passing by",
+    "Alarm",
+    "Vehicle"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "above stage-4 bar (BEATs), no row: filtered/vetoed (which veto not recorded)"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_carnival_parade",
+   "sound": "Whistle",
+   "family": "Whistle",
+   "at": 6.1,
+   "end": 7.4,
+   "beats_win": 0.006,
+   "beats_span": 0.006,
+   "flex_win": 0.585,
+   "flex_span": 0.585,
+   "dasm_win": 0.372,
+   "dasm_span": 0.372,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [],
+   "qwen_names": false,
+   "afn_fams": [],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "sound": "Train",
+   "family": "Train",
+   "at": 14.6,
+   "end": 28.0,
+   "beats_win": 0.076,
+   "beats_span": 0.429,
+   "flex_win": 0.871,
+   "flex_span": 0.901,
+   "dasm_win": 0.242,
+   "dasm_span": 0.242,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Train"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Bird",
+    "Footsteps"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "above stage-4 bar (BEATs, FlexSED), no row: filtered/vetoed (which veto not recorded)"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "sound": "Whack, thwack",
+   "family": "Whack, thwack",
+   "at": 6.5,
+   "end": 7.1,
+   "beats_win": 0.006,
+   "beats_span": 0.006,
+   "flex_win": null,
+   "flex_span": null,
+   "dasm_win": null,
+   "dasm_span": null,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Bird"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Bird",
+    "Footsteps"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": false,
+   "bucket": "A"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "sound": "Whack, thwack",
+   "family": "Whack, thwack",
+   "at": 24.4,
+   "end": 25.1,
+   "beats_win": 0.005,
+   "beats_span": 0.005,
+   "flex_win": null,
+   "flex_span": null,
+   "dasm_win": null,
+   "dasm_span": null,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Bird"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Bird",
+    "Footsteps"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": false,
+   "bucket": "A"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "sound": "Bird",
+   "family": "Bird",
+   "at": 0.1,
+   "end": 27.8,
+   "beats_win": 0.839,
+   "beats_span": 0.856,
+   "flex_win": 0.682,
+   "flex_span": 0.756,
+   "dasm_win": 0.718,
+   "dasm_span": 0.798,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Bird"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Bird"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 0.22,
+     "end": 27.75,
+     "conf": 0.856,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 0.14,
+     "end": 27.75,
+     "conf": 0.792,
+     "origin": "tagger"
+    },
+    {
+     "label": "Chirp, tweet",
+     "start": 0.3,
+     "end": 27.75,
+     "conf": 0.783,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [],
+   "kill": [
+    "Bird vocalization, bird call, bird song@0.22 conf 0.86: stage 5 augment=false (source visible on screen (birds) - stay silent)",
+    "Bird@0.14 conf 0.79: stage 5 augment=false (source visible on screen (birds) - stay silent)",
+    "Chirp, tweet@0.30 conf 0.78: stage 5 augment=false (source visible on screen (birds) - stay silent)"
+   ],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "sound": "Bell",
+   "family": "Bell",
+   "at": 0.2,
+   "end": 14.5,
+   "beats_win": 0.699,
+   "beats_span": 0.699,
+   "flex_win": 0.978,
+   "flex_span": 0.981,
+   "dasm_win": 0.92,
+   "dasm_span": 0.92,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Bell",
+    "Vehicle"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Bell"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Church bell",
+     "start": 0.22,
+     "end": 14.5,
+     "conf": 0.699,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bell",
+     "start": 0.22,
+     "end": 13.25,
+     "conf": 0.535,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [],
+   "kill": [
+    "Church bell@0.22 conf 0.70: stage 5 augment=false (source visible on screen (church bell) - stay silent)",
+    "Bell@0.22 conf 0.53: stage 5 augment=false (source visible on screen (church bell) - stay silent)"
+   ],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "sound": "Bird",
+   "family": "Bird",
+   "at": 1.3,
+   "end": 18.0,
+   "beats_win": 0.211,
+   "beats_span": 0.649,
+   "flex_win": 0.708,
+   "flex_span": 0.75,
+   "dasm_win": 0.599,
+   "dasm_span": 0.637,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Bird"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Bird"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Bird",
+     "start": 2.22,
+     "end": 2.75,
+     "conf": 0.221,
+     "origin": "tagger"
+    },
+    {
+     "label": "Crowing, cock-a-doodle-doo",
+     "start": 6.25,
+     "end": 6.75,
+     "conf": 0.295,
+     "origin": "tagger"
+    },
+    {
+     "label": "Chicken, rooster",
+     "start": 6.25,
+     "end": 6.75,
+     "conf": 0.209,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 8.22,
+     "end": 12.0,
+     "conf": 0.332,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 8.8,
+     "end": 9.25,
+     "conf": 0.225,
+     "origin": "tagger"
+    },
+    {
+     "label": "Crowing, cock-a-doodle-doo",
+     "start": 10.25,
+     "end": 14.0,
+     "conf": 0.649,
+     "origin": "tagger"
+    },
+    {
+     "label": "Fowl",
+     "start": 10.25,
+     "end": 14.0,
+     "conf": 0.475,
+     "origin": "tagger"
+    },
+    {
+     "label": "Chicken, rooster",
+     "start": 10.75,
+     "end": 14.0,
+     "conf": 0.643,
+     "origin": "tagger"
+    },
+    {
+     "label": "Cluck",
+     "start": 11.75,
+     "end": 12.5,
+     "conf": 0.234,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird",
+     "start": 14.05,
+     "end": 17.75,
+     "conf": 0.343,
+     "origin": "tagger"
+    },
+    {
+     "label": "Bird vocalization, bird call, bird song",
+     "start": 14.06,
+     "end": 15.25,
+     "conf": 0.258,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [],
+   "kill": [
+    "Bird@2.22 conf 0.22: below display threshold 0.35",
+    "Crowing, cock-a-doodle-doo@6.25 conf 0.30: below display threshold 0.35",
+    "Chicken, rooster@6.25 conf 0.21: below display threshold 0.35",
+    "Bird@8.22 conf 0.33: below display threshold 0.35",
+    "Bird vocalization, bird call, bird song@8.80 conf 0.23: below display threshold 0.35",
+    "Crowing, cock-a-doodle-doo@10.25 conf 0.65: placed at 10.25, outside hit window",
+    "Fowl@10.25 conf 0.48: placed at 10.25, outside hit window",
+    "Chicken, rooster@10.75 conf 0.64: placed at 10.25, outside hit window",
+    "Cluck@11.75 conf 0.23: below display threshold 0.35",
+    "Bird@14.05 conf 0.34: below display threshold 0.35",
+    "Bird vocalization, bird call, bird song@14.06 conf 0.26: below display threshold 0.35"
+   ],
+   "placed_same_family": [
+    "Bird@10.25"
+   ],
+   "heard": true,
+   "bucket": "D"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "sound": "Vehicle",
+   "family": "Vehicle",
+   "at": 7.3,
+   "end": 8.8,
+   "beats_win": 0.544,
+   "beats_span": 0.611,
+   "flex_win": 0.929,
+   "flex_span": 0.939,
+   "dasm_win": 0.599,
+   "dasm_span": 0.599,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Siren",
+    "Vehicle"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Siren",
+    "Vehicle"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Emergency vehicle",
+     "start": 0.0,
+     "end": 17.75,
+     "conf": 0.796,
+     "origin": "tagger"
+    },
+    {
+     "label": "Ambulance (siren)",
+     "start": 0.0,
+     "end": 8.5,
+     "conf": 0.747,
+     "origin": "tagger"
+    },
+    {
+     "label": "Vehicle",
+     "start": 0.0,
+     "end": 14.75,
+     "conf": 0.611,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [
+    "Car@0.00 (0.33)",
+    "Police car (siren)@0.00 (0.23)"
+   ],
+   "kill": [
+    "Emergency vehicle@0.00 conf 0.80: gate seen (named 'white car')",
+    "Ambulance (siren)@0.00 conf 0.75: gate seen (named 'white car')",
+    "Vehicle@0.00 conf 0.61: gate seen (named 'white car')"
+   ],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "sound": "Crowd",
+   "family": "Crowd",
+   "at": 1.9,
+   "end": 10.0,
+   "beats_win": 0.005,
+   "beats_span": 0.453,
+   "flex_win": 0.886,
+   "flex_span": 0.946,
+   "dasm_win": 0.474,
+   "dasm_span": 0.474,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Clapping",
+    "Laughter"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Laughter",
+    "Clapping"
+   ],
+   "afn_names": false,
+   "stage4_near": [
+    {
+     "label": "Applause",
+     "start": 1.12,
+     "end": 7.75,
+     "conf": 0.453,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [
+    "Crowd@0.00 (0.87)"
+   ],
+   "kill": [
+    "Applause@1.12 conf 0.45: placed at 0.00, outside hit window"
+   ],
+   "placed_same_family": [
+    "Crowd@0.00"
+   ],
+   "heard": true,
+   "bucket": "D"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "sound": "Civil defense siren",
+   "family": "Siren",
+   "at": 16.9,
+   "end": 20.4,
+   "beats_win": 0.006,
+   "beats_span": 0.006,
+   "flex_win": 0.42,
+   "flex_span": 0.408,
+   "dasm_win": 0.022,
+   "dasm_span": 0.034,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Explosion",
+    "Siren"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Siren",
+    "Explosion",
+    "Gunshot",
+    "Shout",
+    "Footsteps",
+    "Glass"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [
+    "Siren@2.60 (0.79)",
+    "Civil defense siren@2.60 (0.80)",
+    "Alarm@2.18 (0.83)"
+   ],
+   "kill": [],
+   "placed_same_family": [
+    "Alarm@2.18"
+   ],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "sound": "Chicken, rooster",
+   "family": "Bird",
+   "at": 6.9,
+   "end": 14.8,
+   "beats_win": 0.813,
+   "beats_span": 0.813,
+   "flex_win": 0.258,
+   "flex_span": 0.258,
+   "dasm_win": 0.107,
+   "dasm_span": 0.134,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Goose"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Goose",
+    "Bird",
+    "Dog",
+    "Horse"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "above stage-4 bar (BEATs), no row: filtered/vetoed (which veto not recorded)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "sound": "Thunder",
+   "family": "Thunder",
+   "at": 2.8,
+   "end": 5.3,
+   "beats_win": 0.015,
+   "beats_span": 0.079,
+   "flex_win": 0.646,
+   "flex_span": 0.646,
+   "dasm_win": 0.013,
+   "dasm_span": 0.013,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Water"
+   ],
+   "qwen_names": false,
+   "afn_fams": [],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [
+    "Thunder@8.00 (0.27)",
+    "Thunder@13.75 (0.38)"
+   ],
+   "kill": [],
+   "placed_same_family": [
+    "Thunder@13.75"
+   ],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "sound": "Thunder",
+   "family": "Thunder",
+   "at": 7.4,
+   "end": 10.4,
+   "beats_win": 0.426,
+   "beats_span": 0.727,
+   "flex_win": 0.73,
+   "flex_span": 0.73,
+   "dasm_win": 0.013,
+   "dasm_span": 0.294,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Water"
+   ],
+   "qwen_names": false,
+   "afn_fams": [],
+   "afn_names": false,
+   "stage4_near": [
+    {
+     "label": "Thunder",
+     "start": 8.0,
+     "end": 8.5,
+     "conf": 0.269,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [
+    "Thunder@13.75 (0.38)"
+   ],
+   "kill": [
+    "Thunder@8.00 conf 0.27: below display threshold 0.35"
+   ],
+   "placed_same_family": [
+    "Thunder@13.75"
+   ],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "sound": "Siren",
+   "family": "Siren",
+   "at": 0.0,
+   "end": 18.0,
+   "beats_win": 0.025,
+   "beats_span": 0.059,
+   "flex_win": 0.59,
+   "flex_span": 0.608,
+   "dasm_win": 0.257,
+   "dasm_span": 0.257,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Footsteps"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Footsteps",
+    "Door"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "below stage-4 bars (BEATs < 0.175, FlexSED < 0.8)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "sound": "Dishes, pots, and pans",
+   "family": "Dishes",
+   "at": 16.6,
+   "end": 17.0,
+   "beats_win": 0.373,
+   "beats_span": 0.288,
+   "flex_win": 0.311,
+   "flex_span": 0.311,
+   "dasm_win": 0.193,
+   "dasm_span": 0.193,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Door",
+    "Toilet flush",
+    "Water"
+   ],
+   "qwen_names": false,
+   "afn_fams": [
+    "Door",
+    "Water",
+    "Toilet flush"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "above stage-4 bar (BEATs), no row: filtered/vetoed (which veto not recorded)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "sound": "Laughter",
+   "family": "Laughter",
+   "at": 8.2,
+   "end": 9.7,
+   "beats_win": 0.252,
+   "beats_span": 0.252,
+   "flex_win": 0.886,
+   "flex_span": 0.886,
+   "dasm_win": 0.887,
+   "dasm_span": 0.89,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Alarm",
+    "Clapping",
+    "Cough",
+    "Crying, sobbing",
+    "Gasp",
+    "Laughter",
+    "Sneeze",
+    "Throat clearing",
+    "Whistle"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Laughter",
+    "Pig"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [
+    "Laughter@0.30 (0.34)",
+    "Giggle@0.14 (0.23)"
+   ],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "above stage-4 bar (BEATs, FlexSED), no row: filtered/vetoed (which veto not recorded)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "sound": "Meow",
+   "family": "Cat",
+   "at": 2.9,
+   "end": 5.6,
+   "beats_win": 0.805,
+   "beats_span": 0.83,
+   "flex_win": 0.117,
+   "flex_span": 0.134,
+   "dasm_win": 0.924,
+   "dasm_span": 0.952,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Cat"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Cat"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Domestic animals, pets",
+     "start": 2.97,
+     "end": 6.75,
+     "conf": 0.644,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [
+    "Cat@0.56 (0.89)"
+   ],
+   "kill": [
+    "Domestic animals, pets@2.97 conf 0.64: no stage-5 spec holds it (merged/deduped away)"
+   ],
+   "placed_same_family": [
+    "Cat@0.56"
+   ],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "sound": "Explosion",
+   "family": "Explosion",
+   "at": 5.4,
+   "end": 5.7,
+   "beats_win": 0.008,
+   "beats_span": 0.004,
+   "flex_win": 0.032,
+   "flex_span": 0.031,
+   "dasm_win": 0.152,
+   "dasm_span": 0.151,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [],
+   "qwen_names": false,
+   "afn_fams": [
+    "Clapping"
+   ],
+   "afn_names": false,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": false,
+   "bucket": "A"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "sound": "Clapping",
+   "family": "Clapping",
+   "at": 8.5,
+   "end": 10.0,
+   "beats_win": 0.017,
+   "beats_span": 0.017,
+   "flex_win": 0.792,
+   "flex_span": 0.802,
+   "dasm_win": 0.338,
+   "dasm_span": 0.349,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [],
+   "qwen_names": false,
+   "afn_fams": [
+    "Clapping"
+   ],
+   "afn_names": true,
+   "stage4_near": [],
+   "stage4_far": [],
+   "kill": [],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "B",
+   "b_reason": "above stage-4 bar (FlexSED), no row: filtered/vetoed (which veto not recorded)"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "sound": "Fart",
+   "family": "Fart",
+   "at": 0.0,
+   "end": 1.1,
+   "beats_win": 0.908,
+   "beats_span": 0.908,
+   "flex_win": 0.869,
+   "flex_span": 0.869,
+   "dasm_win": 0.612,
+   "dasm_span": 0.612,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Fart"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Fart",
+    "Snoring"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Fart",
+     "start": 0.22,
+     "end": 2.5,
+     "conf": 0.936,
+     "origin": "tagger"
+    },
+    {
+     "label": "Digestive",
+     "start": 0.06,
+     "end": 0.92,
+     "conf": 0.985,
+     "origin": "flex"
+    }
+   ],
+   "stage4_far": [
+    "Fart@6.30 (0.91)"
+   ],
+   "kill": [
+    "Fart@0.22 conf 0.94: stage 5 augment=false (a kind of Fart, whose source is visible - stay silent)",
+    "Digestive@0.06 conf 0.98: stage 5 augment=false (a kind of Fart, whose source is visible - stay silent)"
+   ],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "C"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "sound": "Fart",
+   "family": "Fart",
+   "at": 5.6,
+   "end": 6.4,
+   "beats_win": 0.863,
+   "beats_span": 0.863,
+   "flex_win": 0.86,
+   "flex_span": 0.86,
+   "dasm_win": 0.578,
+   "dasm_span": 0.578,
+   "cache": {
+    "beats": true,
+    "flex": true,
+    "dasm": true
+   },
+   "qwen_fams": [
+    "Fart"
+   ],
+   "qwen_names": true,
+   "afn_fams": [
+    "Fart",
+    "Snoring"
+   ],
+   "afn_names": true,
+   "stage4_near": [
+    {
+     "label": "Fart",
+     "start": 6.3,
+     "end": 8.0,
+     "conf": 0.908,
+     "origin": "tagger"
+    }
+   ],
+   "stage4_far": [
+    "Fart@0.22 (0.94)",
+    "Digestive@0.06 (0.98)"
+   ],
+   "kill": [
+    "Fart@6.30 conf 0.91: stage 5 augment=false (source visible on screen (boxer dog) - stay silent)"
+   ],
+   "placed_same_family": [],
+   "heard": true,
+   "bucket": "C"
+  }
+ ]
+}
