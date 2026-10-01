@@ -4044,3 +4044,16 @@ secondary (it is not a ship candidate on its own). Reported: floor 0.40 rows (`f
 Omni's raw context answer for each (`context.py diff` -> `context_diff.json`), refused / context-accepted counts per split
 (`context_build.json`). Jobs: `slurm/job_context_q.sh` (array: 415 halves, DEV, DEV2), then `slurm/job_context_arm.sh`
 (gate -> build + replay -> r13 / tagger stage 4 / 5 / gates -> merged -> floor -> diff). TEST not read.
+### Round 59 CONTEXT — step 1 result (415): STOP
+Video input worked (mode `video` on every item; Qwen3-Omni often appends junk lines such as ".com" or "Assistant: ..." after
+the first item; the frozen first-mapped-item rule reads the first line). Round 58's 800 band runs: base precision 0.175
+(140/800); **guard population** (family named by neither whole-clip list) 679, base 0.138; **unconfirmed AND context-accept:
+n 9, 3 correct, precision 0.333 < 0.60 -> STOP** (by peak >= 0.6: 2/7; < 0.6: 1/2). Context-refused 91/670 = 0.136. Guard
+set with DASM >= 0.575 (the F8 survivors of rule a): **n 0**. Reported only: same_family mapping 10/37 = 0.27; Round 58's
+actual padded-TIER refusals 101/707 = 0.143, of which context-accepted 12/27 = 0.444; shipped rescue (padded-TIER accepted)
+39/93 = 0.419; all 800 context-accepted 27/55 = 0.491. The 9 guard items: Tap, Shuffling cards, Printer correct; Chink/clink
+wrong time; Rattle, Alarm ("Buzzer"), Turkey, Bicycle, Cough with the family absent from the strong labels — Turkey and Bicycle
+look like the expected failure: Omni names what it SEES, and the onset sound is something else. The DEV / DEV2 context answers
+(512 + 314 refused candidates, `context_ask_{dev,dev2}.json` on the cluster) were generated but NOT read: the arm job stopped at
+the gate (exit 3) before building override caches; no DEV arm was run. `CONTEXT_F8_BYPASS` stays None (off). Nothing ships;
+TEST not read. Result file: `benchmark/gold/context_415.json`.
