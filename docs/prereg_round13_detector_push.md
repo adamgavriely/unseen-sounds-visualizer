@@ -3365,3 +3365,20 @@ other-family query in the span is >= 0.7 with own family < 0.4. Precision under 
 window, depictable families). **Bar: precision >= 0.375 (raw BEATs on the 415).** Below -> STOP.
 **Step 2 — DEV (only if Step 1 passes).** Arm SHIP8+MD3+SK7 vs SHIP8+MD3 (29/58, 18 (6/10/2), 2.141), full stage 4 + 5, main rule /
 fewer-pictures clause, scored at PICTURE_MIN_CONF None (and 0.40 reported). TEST once after a DEV pass, reported only.
+
+### Round 52 step 1 result (held-out 415, 1 Oct; `benchmark/gold/strongkeep_415.py` -> `strongkeep_415.json`)
+Loader check: raw BEATs (min 0.5, display bar) reproduces the reference **754 / 283 = 0.375**. Raw BEATs spans >= 0.7 (min span
+0.3 s, as MD3): 205, 113 correct = **0.551**. **The proxy set (conf >= 0.7 AND (i) cross-detector OR (ii) mirror would remove it):
+64 spans, 27 correct (13 wrong time, 24 family absent) = 0.422 >= 0.375 -> PASS.** Split: (i) only 4/17 = 0.235, (ii) only
+7/10 = 0.70, both 16/37 = 0.432. Both parts need a FlexSED query of the family (as the two vetoes in stage 4). Largest families:
+Bird 6/11, Horse 4/8, Cat 2/6. Note: the set is small (n 64) and well below the strong-span average (0.551) -- the vetoes do pick
+the weaker strong spans, but they are still above the raw-BEATs bar. Step 2 (DEV) runs.
+
+### Round 52 step 2 result (merged DEV, 1 Oct; jobs 31601867 r16dev + 31601868 tgarms; `benchmark/gold/floor_check_arm.py`)
+Base reproduces: SHIP8+MD3 **29/58, 18 (6/10/2), 2.141**. **SHIP8+MD3+SK7: 29/58, 22 (7/12/3), 2.254** (DEV 19/11 same,
+DEV2 10/7 -> 10/11). Floor 0.40 (reported): base 27/58, 15 (5/10/0), 2.169; SK7 28/58, 19 (6/12/1), 2.225. Changed pictures
+(floor None): **+1 hit** tg_d029 Bird 6.89 (the targeted rooster miss, now a Bird hit); **-1 needed hit** tg_d120 Cat (0.56 picture
+replaced by a Cat at 2.25 -> phantom); +1 cross tg_d022 Pant 0.22; +1 cross tg_d032 Thunder 8.75; +1 visible tg_d128 Cattle 1.5;
+longer spans, same score: mv_protest_scene_movie Glass, tg_d088 Thunder, tg_d149 Bee. (At 0.40 tg_d032 also gains a Thunder hit
+at 13.75.) **Verdict: FAIL.** Main rule fails (a needed hit lost, cost 2.254 > 2.141); fewer-pictures clause fails (a): cost not
+below base. STRONG_BEATS_KEEP stays None; no TEST (no DEV pass).
