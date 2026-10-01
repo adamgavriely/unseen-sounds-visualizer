@@ -3917,3 +3917,14 @@ used: the same split restricted to DASM < 0.35 (the spans the rule touches), no-
 **29/58, 18 (6/9/3), 2.141** (filled caches). **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 +
 2 × hits gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26).
 Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures. TEST not read.
+
+### Round 58b FLEX-WITNESS step 1 result — held-out 415 (`benchmark/gold/flexwitness_415.py` -> `flexwitness_415.json`, CPU, login node): **STOP**
+Same 754 spans (283 correct, 0.375); every span has a FlexSED own-family column (0 without). One-ear spans (proxy ears) 170:
+**FlexSED >= 0.5: 69, 32 correct = 0.464 (>= 0.375, passes); FlexSED < 0.5: 101, 30 correct = 0.297 (> 0.20, FAILS)** -> **STOP as
+pre-registered: no src/config/arm change, no DEV run, no scp.** One-ear by FlexSED bin (n, precision): 0–0.1 20, 0.100; 0.1–0.2 23,
+0.478; 0.2–0.3 10, 0.100; 0.3–0.4 19, 0.526; 0.4–0.5 29, 0.207; 0.5–0.6 14, 0.571; 0.6–0.7 14, 0.286; 0.7–0.8 19, 0.526; 0.8–0.9 13,
+0.308; >= 0.9 9, 0.667 — not monotone; FlexSED does not sort one-ear spans into good and bad. Reported, not used: restricted to
+DASM < 0.35 (the spans the rule touches), one-ear FlexSED >= 0.5 20, **0.250** (kept by the clause) vs < 0.5 70, 0.300 (dropped) —
+the clause would keep the WORSE group on the 415. By ears: 0 ears >= 0.5 127, 0.394 / < 0.5 222, 0.117; 2 ears 142, 0.606 / 93,
+0.634. Drop set on the 415: Round 53 both-only 339 at 0.150; with the clause 319 at 0.144. Reading: the DEV pattern (2 lost hits
+high, 2 of 4 one-ear-or-no-ear wrongs low) is not borne out on the 415; Round 53 stays FAIL, DASM_LOCAL_VETO stays None. TEST not read.
