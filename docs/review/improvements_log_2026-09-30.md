@@ -60,3 +60,5 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | MAKER-VIS | gate asks whether the picture's own maker ("train", "parrot") is on screen, not the sound | running (job 31598551) |
 | CONTRAST | ask the listener "(a) X (b) strongest other sound (c) neither", both orders, on refused faint sounds | running |
 | DETACHED-ADD | add a 2-s picture where a drawn family is heard again, far from its picture | fires only on repeat textures: 28 / 28, +7 wrong, targets untouched: rejected |
+
+**Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.

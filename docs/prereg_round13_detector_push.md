@@ -2308,3 +2308,9 @@ Siren), 4 seen newly silenced (bakery Crumpling, crossing Train, ia Water), 4 se
 — one stretch splits — , tornado Cellphone). (b) flips only Gunshot 0.0 and golf Whack 24.4, both needed -> silenced. Reading:
 the gold's Q2 asked of a VLM is the leak — it answers "a viewer would already know" for explosions, gunfire and applause whose
 makers are off screen; Q1 alone is closer to the shipped gate but splits on bells. Closed.
+
+### Found 1 Oct (measurement vs shipped mismatch)
+The detector harness scores every arm with MERGE_GAP 2.0 (round13_dev BASE), but config.use_shipped() sets MERGE_GAP 1.5
+(commit 8ffd06f, "join repeats within 1.5 s (reviewer)"). SHIP8 merged DEV: at 2.0 → 28/58, 21 wrong (6/13/2), 2.282; at
+1.5 → 28/58, 23 wrong (7/14/2), 2.338. All DEV/TEST numbers today are at 2.0. Not changed overnight (display decision is
+Adam's): either ship 2.0 (shipped = measured, −2 wrong) or re-score the chain at 1.5.
