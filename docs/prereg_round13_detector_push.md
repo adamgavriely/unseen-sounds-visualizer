@@ -2888,3 +2888,41 @@ decision); STOP -> recorded, closed.
 **Files:** `benchmark/gold/human_gate.py` (`run` GPU -> `gate_gold/human_Qwen38-27B/`, resumable; `score` CPU ->
 `gate_gold/human_summary.json`, asserts 49 files and the base), `slurm/job_human_gate.sh` (H200-4h,A100-4h); run in
 `~/MscProj` (holds the cf cache and the identical gold); nothing in `src/` or `config.py` edited.
+
+## Round 44 AVNAME — name the sound from audio AND the frames of that moment (written 2026-10-01 BEFORE any number)
+**Idea (Adam).** People understand a sound by combining what they hear with what they see: a generic "whack" plus golfers on screen
+means a golf strike. The shipped pipeline names sounds from audio alone (BEATs / FlexSED / listeners) and uses the video only for the
+visibility gate. This round asks whether an audio-visual NAMER fixes the wrong-family pictures of `docs/review/ledger_ship8.md`
+(Steam on a train crossing, Dog on chopping, Glass on a baby cry, Hammer on a clang, Screaming on birds, Explosion on thunder, Bird
+during footsteps) without inventing new ones. Names and drops only: picture times, the gate and everything in `src/` are untouched
+(the visibility side is Round 43's ground, not repeated here).
+**Rule.** For EVERY placed SHIP8 picture on merged DEV (saved pictures as `expect_screen.parts()` = `btp_screen.parts` with
+`B.ARM = "SHIP8"`, `TG_ARMS=SHIP8`; rescued pictures included; gold `benchmark/gold/annotations/gold_AG.json` + the tagger DEV2 gold;
+base 28/58 hits, 21 wrong (6/13/2), cost 2.282 must reproduce first) Qwen3-Omni-30B-A3B-Instruct (`listener_round.MODEL`, the shipped
+listener) gets BOTH the audio cut and the video frames of the window **picture start − 0.5 s … + 1.5 s** and one fixed question:
+*"A sound starts at the middle of this clip. Using both what you hear and what you see, what most likely makes this sound? Answer with
+one short sound name."* Disclosed: the window puts the onset at 25 % of the cut, not the middle; the text is kept as given by Adam and
+the window is not moved to make it true.
+**Input format, fixed by the login-node smoke test (processor call succeeds, 616 tokens):** audio = 16-kHz mono cut of the shipped wav
+(`data/work/devcand/wav16`, `r13dev2/wav16`), clamped at the clip edges and zero-padded so every cut is exactly 2.0 s with the onset at
+0.5 s, passed as `audio=[cut]`; video = **8 frames** at window start + (i + 0.5) × 0.25 s (`_sample_frames_at`, ffmpeg, clamped to the
+clip), each resized so the long side is **448 px**, passed as `videos=[frames]` with `video_metadata` fps 4.0 and
+`cap_pixels_per_frame=False` (explicit); `use_audio_in_video=False` (the audio is the separate cut, never the mp4 track). Chat content
+order video, audio, text. Decode: `model.thinker.generate`, greedy, 16 new tokens; the answer is lower-cased, outer punctuation,
+leading articles and a trailing "sound(s)" / "noise(s)" stripped (`expect_a_screen.items_of` style).
+**Map to a family F (the shipped matcher, no cosine).** For each depictable family in `expect_screen.FAMILIES` (215), the name set
+is `listener_variants.match_names(Onto(), family)`; a family matches when some name matches the answer whole-word with the V4 regex
+(`\b name (s|es)? \b`). Several families may match: tie-break fixed now — (1) a family whose own `label_names` match, (2) the longest
+matched name, (3) alphabetical; the number of ambiguous answers is reported. Answers matching `nothing | silence | silent | none |
+no sound | quiet` are "NONE". An answer that matches no family is "unmapped".
+**Variants (scored with `score_per_sound.score_clip`, as every round).** (a) relabel the picture to F when F is a family and F ≠
+`canonical(label)` (time unchanged; an unmapped or NONE answer leaves the picture as is); (b) drop the picture when the answer is NONE
+or unmapped (a mapped answer leaves the picture as is, name included); (a)+(b) both. Reported for each: merged / DEV / DEV2 line, every
+changed picture (clip, old → new name or dropped, class before → after by `cross_group.classify`), and the three verdicts.
+**Pass/fail (each variant, as Round 40).** Main rule: hits >= 28, **no needed hit lost** — the set of matched needed gold sounds
+(ledger_ship8 `items` matching) of every clip after ⊇ before, on both parts, so a swap of one hit for another in a clip fails — and
+cost at w = 2 lower than 2.282. More-hits rule: hits up, cross / phantom not up on either part, cost at w = 1 lower than the base at
+w = 1. GO means a `src/` flag is Adam's decision; merged TEST is spent.
+**Known before this entry:** the 21 wrong pictures and 28 hits of the ledger; no Qwen3-Omni AV answer on any of them has been seen.
+**Files:** `benchmark/gold/avname_screen.py` (`ask` GPU msproj -> `benchmark/gold/avname/answers.json`, gold never read;
+`score` CPU) -> `benchmark/gold/avname_screen.json`; `slurm/job_avname.sh` (H200-4h,A100-4h, 1 h).
