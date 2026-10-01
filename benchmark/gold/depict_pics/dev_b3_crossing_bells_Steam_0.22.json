@@ -1,0 +1,45 @@
+{
+ "part": "dev",
+ "clip": "b3_crossing_bells",
+ "label": "Steam",
+ "start": 0.22,
+ "subject": "Train releases steam",
+ "makers": [
+  "steam train"
+ ],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/b3_crossing_bells.mp4",
+ "event_prompts": [
+  "Is \"Train releases steam\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Train releases steam\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "Yes.",
+  "No."
+ ],
+ "pair": [
+  "yes",
+  "no"
+ ],
+ "event": true,
+ "n_frames": 6,
+ "lookalike": [
+  {
+   "B": "steam train",
+   "prompts": [
+    "Could the sound of steam train be mistaken for the sound of steam? Answer yes or no.",
+    "Could the sound of steam be mistaken for the sound of steam train? Answer yes or no."
+   ],
+   "replies": [
+    "Yes",
+    "Yes"
+   ],
+   "answers": [
+    "yes",
+    "yes"
+   ],
+   "yes": true
+  }
+ ],
+ "lookalike_yes": true,
+ "silenced": true
+}

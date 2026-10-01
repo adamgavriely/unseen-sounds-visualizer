@@ -1,0 +1,26 @@
+{
+ "part": "dev",
+ "clip": "ly_applause_62ZYD0u",
+ "label": "Crowd",
+ "start": 0.0,
+ "subject": "Crowd clapping hands",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ly_applause_62ZYD0u.mp4",
+ "event_prompts": [
+  "Is \"Crowd clapping hands\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Crowd clapping hands\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

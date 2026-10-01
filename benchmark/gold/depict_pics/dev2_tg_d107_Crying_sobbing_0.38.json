@@ -1,0 +1,26 @@
+{
+ "part": "dev2",
+ "clip": "tg_d107",
+ "label": "Crying, sobbing",
+ "start": 0.38,
+ "subject": "Person crying",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d107.mp4",
+ "event_prompts": [
+  "Is \"Person crying\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Person crying\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No",
+  "Yes"
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

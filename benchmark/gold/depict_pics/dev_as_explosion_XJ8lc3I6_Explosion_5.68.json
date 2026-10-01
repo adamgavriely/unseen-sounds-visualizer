@@ -1,0 +1,26 @@
+{
+ "part": "dev",
+ "clip": "as_explosion_XJ8lc3I6",
+ "label": "Explosion",
+ "start": 5.68,
+ "subject": "Bomb explodes",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/as_explosion_XJ8lc3I6.mp4",
+ "event_prompts": [
+  "Is \"Bomb explodes\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Bomb explodes\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

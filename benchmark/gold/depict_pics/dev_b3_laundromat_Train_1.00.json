@@ -1,0 +1,26 @@
+{
+ "part": "dev",
+ "clip": "b3_laundromat",
+ "label": "Train",
+ "start": 1.0,
+ "subject": "Train moving",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_laundromat.mp4",
+ "event_prompts": [
+  "Is \"Train moving\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Train moving\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

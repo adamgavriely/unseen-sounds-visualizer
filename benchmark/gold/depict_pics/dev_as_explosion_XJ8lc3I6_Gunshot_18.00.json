@@ -1,0 +1,62 @@
+{
+ "part": "dev",
+ "clip": "as_explosion_XJ8lc3I6",
+ "label": "Gunshot",
+ "start": 18.0,
+ "subject": "Machine gun firing",
+ "makers": [
+  "AK-47 rifle",
+  "ak-47 rifle"
+ ],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/as_explosion_XJ8lc3I6.mp4",
+ "event_prompts": [
+  "Is \"Machine gun firing\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Machine gun firing\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [
+  {
+   "B": "AK-47 rifle",
+   "prompts": [
+    "Could the sound of AK-47 rifle be mistaken for the sound of gunshot? Answer yes or no.",
+    "Could the sound of gunshot be mistaken for the sound of AK-47 rifle? Answer yes or no."
+   ],
+   "replies": [
+    "No",
+    "No"
+   ],
+   "answers": [
+    "no",
+    "no"
+   ],
+   "yes": false
+  },
+  {
+   "B": "ak-47 rifle",
+   "prompts": [
+    "Could the sound of ak-47 rifle be mistaken for the sound of gunshot? Answer yes or no.",
+    "Could the sound of gunshot be mistaken for the sound of ak-47 rifle? Answer yes or no."
+   ],
+   "replies": [
+    "No",
+    "No"
+   ],
+   "answers": [
+    "no",
+    "no"
+   ],
+   "yes": false
+  }
+ ],
+ "lookalike_yes": false,
+ "silenced": false
+}

@@ -1,0 +1,26 @@
+{
+ "part": "dev2",
+ "clip": "tg_d127",
+ "label": "Laughter",
+ "start": 9.32,
+ "subject": "People laughing",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d127.mp4",
+ "event_prompts": [
+  "Is \"People laughing\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"People laughing\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

@@ -1,0 +1,26 @@
+{
+ "part": "dev2",
+ "clip": "tg_d016",
+ "label": "Cough",
+ "start": 5.75,
+ "subject": "Person coughing",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d016.mp4",
+ "event_prompts": [
+  "Is \"Person coughing\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Person coughing\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

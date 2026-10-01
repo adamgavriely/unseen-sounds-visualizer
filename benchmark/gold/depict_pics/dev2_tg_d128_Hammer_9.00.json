@@ -1,0 +1,26 @@
+{
+ "part": "dev2",
+ "clip": "tg_d128",
+ "label": "Hammer",
+ "start": 9.0,
+ "subject": "Hammer striking",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d128.mp4",
+ "event_prompts": [
+  "Is \"Hammer striking\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Hammer striking\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

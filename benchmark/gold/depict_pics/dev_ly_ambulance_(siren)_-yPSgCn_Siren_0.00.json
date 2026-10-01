@@ -1,0 +1,26 @@
+{
+ "part": "dev",
+ "clip": "ly_ambulance_(siren)_-yPSgCn",
+ "label": "Siren",
+ "start": 0.0,
+ "subject": "Emergency vehicle siren",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ly_ambulance_(siren)_-yPSgCn.mp4",
+ "event_prompts": [
+  "Is \"Emergency vehicle siren\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Emergency vehicle siren\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No",
+  "No."
+ ],
+ "pair": [
+  "no",
+  "no"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

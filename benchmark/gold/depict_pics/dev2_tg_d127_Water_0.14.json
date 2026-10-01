@@ -1,0 +1,26 @@
+{
+ "part": "dev2",
+ "clip": "tg_d127",
+ "label": "Water",
+ "start": 0.14,
+ "subject": "Water pouring",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d127.mp4",
+ "event_prompts": [
+  "Is \"Water pouring\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Water pouring\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "No."
+ ],
+ "pair": [
+  "no",
+  "no"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

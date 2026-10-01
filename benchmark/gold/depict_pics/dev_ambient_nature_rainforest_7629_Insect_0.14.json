@@ -1,0 +1,26 @@
+{
+ "part": "dev",
+ "clip": "ambient_nature_rainforest_7629",
+ "label": "Insect",
+ "start": 0.14,
+ "subject": "Insect buzzing",
+ "makers": [],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_nature_rainforest_7629.mp4",
+ "event_prompts": [
+  "Is \"Insect buzzing\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Insect buzzing\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No",
+  "Yes."
+ ],
+ "pair": [
+  "no",
+  "yes"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [],
+ "lookalike_yes": false,
+ "silenced": false
+}

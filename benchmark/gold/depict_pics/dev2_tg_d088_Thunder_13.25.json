@@ -1,0 +1,62 @@
+{
+ "part": "dev2",
+ "clip": "tg_d088",
+ "label": "Thunder",
+ "start": 13.25,
+ "subject": "Clouds rumble",
+ "makers": [
+  "rain",
+  "lightning bolt"
+ ],
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d088.mp4",
+ "event_prompts": [
+  "Is \"Clouds rumble\" visibly happening in these frames? Answer yes or no.",
+  "Do these frames show no \"Clouds rumble\" happening? Answer yes or no."
+ ],
+ "event_replies": [
+  "No.",
+  "No."
+ ],
+ "pair": [
+  "no",
+  "no"
+ ],
+ "event": false,
+ "n_frames": 6,
+ "lookalike": [
+  {
+   "B": "rain",
+   "prompts": [
+    "Could the sound of rain be mistaken for the sound of thunder? Answer yes or no.",
+    "Could the sound of thunder be mistaken for the sound of rain? Answer yes or no."
+   ],
+   "replies": [
+    "No",
+    "No"
+   ],
+   "answers": [
+    "no",
+    "no"
+   ],
+   "yes": false
+  },
+  {
+   "B": "lightning bolt",
+   "prompts": [
+    "Could the sound of lightning bolt be mistaken for the sound of thunder? Answer yes or no.",
+    "Could the sound of thunder be mistaken for the sound of lightning bolt? Answer yes or no."
+   ],
+   "replies": [
+    "No",
+    "No"
+   ],
+   "answers": [
+    "no",
+    "no"
+   ],
+   "yes": false
+  }
+ ],
+ "lookalike_yes": false,
+ "silenced": false
+}
