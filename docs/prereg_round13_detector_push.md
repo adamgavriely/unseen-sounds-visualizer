@@ -2926,3 +2926,17 @@ w = 1. GO means a `src/` flag is Adam's decision; merged TEST is spent.
 **Known before this entry:** the 21 wrong pictures and 28 hits of the ledger; no Qwen3-Omni AV answer on any of them has been seen.
 **Files:** `benchmark/gold/avname_screen.py` (`ask` GPU msproj -> `benchmark/gold/avname/answers.json`, gold never read;
 `score` CPU) -> `benchmark/gold/avname_screen.json`; `slurm/job_avname.sh` (H200-4h,A100-4h, 1 h).
+
+### Round 43 result — HUMAN: STOP on both variants (job 31598974, H200, 7 min; `benchmark/gold/human_gate.py` -> `gate_gold/human_summary.json`, votes in `gate_gold/human_Qwen38-27B/`, gitignored like every gate cache)
+49 clips, 145 stretches, base reproduced (16/41, 33/38). **(a) HUMAN alone: seen silenced 0/41, needed kept 38/38 -> STOP. (b) fourth
+vote: 16/41, 33/38 — identical to base on every sound -> STOP.** Why: the open question (a) answers "nothing" on 105 of 145 stretches,
+including on-screen rain (storm_7200), waves, the motorcycle, the flea-market rustle; of the 40 stretches with a candidate, (b)
+says yes on 6 (the laughing woman ×2, the waterfall, …), no on 24, split on 10. A second failure, disclosed: on 17 stretches the
+open reply starts "Based on the visual evidence…" and `_clean_phrase` keeps that clause as the candidate (the onset-dense,
+captioned layout invites an explanation); (b) then answers no/split. Named set: golf Whack 6.5 kept (the target flip, but only
+because nothing was named — Whack 24.4, the bells, every Bird are "nothing" too), storm Thunder ×3 and london air horn kept as
+before, storm Rain and aviary Bird newly kept (visible calls lost). tg_d133 Fart / tg_d127 Water / tg_d128 Laughter outside the
+set. Reading: Adam's step (3) — "is the source visibly acting at that moment" — was reached on only 40 stretches and never
+silenced a sound the shipped gate keeps; the VLM does not take the first step (name a plausible source at the onset) when a
+"nothing" escape is offered on six near-identical frames. (a) with the shipped wide frames, or (b) alone on the shipped
+"named" candidate, would be a new round; not run tonight. Closed.
