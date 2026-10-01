@@ -2428,7 +2428,7 @@ the 7 targets (as foreseen above). (1) ambient_weather_storm_7200 Thunder → Ra
 visible → dropped. (2) ly_applause_62ZYD0u Crowd → Baby laughter @0.0 (cached: Laughter 0.0–13.8 seen 3/3): cross → dropped.
 (3) tg_d088 Thunder → Rain @1.0 (live gate: seen 3/3, "a brown and white cow stands in the rain"): **hit → dropped**. Merged
 27/58, 19 wrong (5/12/2), cost 2.2817 = base 2.2817 (not lower); DEV 19/38, 12 (3/7/2), 2.041; DEV2 8/20, 7 (2/5/0), 2.818.
-Main rule fails (hit lost, cost not lower); fewer-pictures clause fails (19 > 21 − 3). Reading: when the listeners agree on
+Main rule fails (hit lost, cost not lower); fewer-pictures clause fails (19 > 21 − 3). (The job log's "GO (fewer-pictures clause)" line came from the script's first version importing `passes` from dbr_screen with its SHIP7 base 2.366; fixed in 40c0c42 and re-scored on CPU before this number.) Reading: when the listeners agree on
 another sound it is a seen texture (rain, laughter) under the detector's event, and the gate then silences a true hit with it.
 Closed.
 
