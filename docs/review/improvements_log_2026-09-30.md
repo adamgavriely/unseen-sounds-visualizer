@@ -57,5 +57,6 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | E1 SYNC | does on-screen motion move in time with the sound (Synchformer) | running |
 | E4 CF | ask the VLM the annotator's own two questions | no better (15/41 seen, 32/38 needed vs 16/41, 33/38): rejected |
 | E5 GBTP | start a late picture where any detector first hears its sound | most pictures just move to 0 s; one hit lost (27 / 22): rejected |
+| MAKER-VIS | gate asks whether the picture's own maker ("train", "parrot") is on screen, not the sound | running (job 31598551) |
 | CONTRAST | ask the listener "(a) X (b) strongest other sound (c) neither", both orders, on refused faint sounds | running |
 | DETACHED-ADD | add a 2-s picture where a drawn family is heard again, far from its picture | fires only on repeat textures: 28 / 28, +7 wrong, targets untouched: rejected |
