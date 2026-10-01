@@ -3244,3 +3244,7 @@ fails (cost up, wrong 24 > 18 − 3); more-hits (secondary) fails. The held-out 
 are mostly continuous Bird beds in bird scenes, which the gold scores as cross or don't-care. Disclosed mechanics: added pictures carry
 the family label, so MERGE_GAP chains them only with same-label SHIP8 specs; GROUP has no cached answer for pairs with an added picture
 (never grouped). No TEST read (did not pass).
+### Round 48 TEST read — MD3 (job 31600094 prep, `test_vs_ship8.py`; reported, not selected on)
+Base = current SHIP8 (TEST renders SHIP7+K4AD read with MERGE_GAP 2.5 + GROUP): 23/65, 28 (4/19/5), 2.545 reproduced. **SHIP8+MD3 TEST:
+23/65, 28 (4/19/5), 2.545, d 0.000** — no TEST picture changes. Adam's rule (DEV tunes, TEST scores; DEV better + TEST same ->
+ship): **shipped** (`config.use_shipped` AED_MIN_DUR 0.3). New base = SHIP8 + MD3: merged DEV 29/58, 18 (6/10/2), 2.141; TEST 23/65, 28, 2.545.

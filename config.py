@@ -504,7 +504,8 @@ def use_shipped() -> dict:
     setattr(me, "PICTURE_MIN_CONF", 0.40)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 4.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")),
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 4.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3),
+                 # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
                  # GROUP (Round 47, Adam 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)
                  # MERGE_GAP 2.5 (Adam, 1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545
                  # (2.0: 28/21/2.282, 23/29/2.568; 3.0 joins two dog barks 3 s apart); benchmark/gold/merge_gap_items.py

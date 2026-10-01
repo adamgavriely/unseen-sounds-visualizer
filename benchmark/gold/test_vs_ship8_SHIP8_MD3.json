@@ -1,0 +1,29 @@
+{
+ "arm": "SHIP8+MD3",
+ "rows": {
+  "SHIP7+K4AD": {
+   "hits": 23,
+   "misses": 42,
+   "wrong": 28,
+   "visible": 4,
+   "cross": 19,
+   "phantom": 5,
+   "viewer_cost": 2.5454545454545454
+  },
+  "SHIP8+MD3": {
+   "hits": 23,
+   "misses": 42,
+   "wrong": 28,
+   "visible": 4,
+   "cross": 19,
+   "phantom": 5,
+   "viewer_cost": 2.5454545454545454
+  }
+ },
+ "d_vs_ship8": [
+  0.0,
+  0.0,
+  0.0,
+  1.0
+ ]
+}
