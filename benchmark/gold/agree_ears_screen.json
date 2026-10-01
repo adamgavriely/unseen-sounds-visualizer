@@ -1,0 +1,3359 @@
+{
+ "round": "Round 45 AGREE-EARS",
+ "heldout": {
+  "base": {
+   "n": 92,
+   "correct": 74,
+   "precision": 0.804
+  },
+  "variants": {
+   "agree": {
+    "n": 78,
+    "correct": 65,
+    "precision": 0.833,
+    "correct_kept_share": 0.878,
+    "wrong_removed": 5,
+    "vouched": false
+   },
+   "agree_yn": {
+    "n": 69,
+    "correct": 59,
+    "precision": 0.855,
+    "correct_kept_share": 0.797,
+    "wrong_removed": 8,
+    "vouched": true
+   }
+  },
+  "per_family": {
+   "Alarm": {
+    "n": 2,
+    "correct": 2,
+    "agree": 2,
+    "agree_correct": 2
+   },
+   "Bell": {
+    "n": 4,
+    "correct": 4,
+    "agree": 4,
+    "agree_correct": 4
+   },
+   "Bird": {
+    "n": 5,
+    "correct": 3,
+    "agree": 5,
+    "agree_correct": 3
+   },
+   "Boat": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Car passing by": {
+    "n": 1,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   },
+   "Cat": {
+    "n": 3,
+    "correct": 1,
+    "agree": 2,
+    "agree_correct": 1
+   },
+   "Cattle": {
+    "n": 2,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Cough": {
+    "n": 4,
+    "correct": 4,
+    "agree": 4,
+    "agree_correct": 4
+   },
+   "Crowd": {
+    "n": 9,
+    "correct": 8,
+    "agree": 9,
+    "agree_correct": 8
+   },
+   "Dog": {
+    "n": 5,
+    "correct": 5,
+    "agree": 5,
+    "agree_correct": 5
+   },
+   "Drill": {
+    "n": 1,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   },
+   "Electric toothbrush": {
+    "n": 1,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   },
+   "Explosion": {
+    "n": 2,
+    "correct": 2,
+    "agree": 2,
+    "agree_correct": 2
+   },
+   "Foghorn": {
+    "n": 1,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   },
+   "Frog": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Goose": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Gunshot": {
+    "n": 5,
+    "correct": 1,
+    "agree": 4,
+    "agree_correct": 1
+   },
+   "Helicopter": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Hiccup": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Insect": {
+    "n": 2,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   },
+   "Knock": {
+    "n": 1,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   },
+   "Laughter": {
+    "n": 10,
+    "correct": 9,
+    "agree": 10,
+    "agree_correct": 9
+   },
+   "Owl": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Printer": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Shout": {
+    "n": 2,
+    "correct": 2,
+    "agree": 2,
+    "agree_correct": 2
+   },
+   "Skateboard": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Snoring": {
+    "n": 2,
+    "correct": 2,
+    "agree": 2,
+    "agree_correct": 2
+   },
+   "Spray": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Thunder": {
+    "n": 1,
+    "correct": 0,
+    "agree": 1,
+    "agree_correct": 0
+   },
+   "Toilet flush": {
+    "n": 3,
+    "correct": 3,
+    "agree": 3,
+    "agree_correct": 3
+   },
+   "Train": {
+    "n": 2,
+    "correct": 2,
+    "agree": 2,
+    "agree_correct": 2
+   },
+   "Typewriter": {
+    "n": 1,
+    "correct": 0,
+    "agree": 1,
+    "agree_correct": 0
+   },
+   "Typing": {
+    "n": 3,
+    "correct": 2,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Vacuum cleaner": {
+    "n": 1,
+    "correct": 1,
+    "agree": 1,
+    "agree_correct": 1
+   },
+   "Vehicle": {
+    "n": 6,
+    "correct": 5,
+    "agree": 5,
+    "agree_correct": 4
+   },
+   "Water": {
+    "n": 3,
+    "correct": 1,
+    "agree": 3,
+    "agree_correct": 1
+   },
+   "Whoop": {
+    "n": 1,
+    "correct": 1,
+    "agree": 0,
+    "agree_correct": 0
+   }
+  },
+  "detections": [
+   {
+    "clip": "WVfrcJWnOXs_30000",
+    "family": "Hiccup",
+    "onset": 8.64,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter",
+     "Hiccup"
+    ],
+    "afn_items": [
+     "hiccups",
+     "laughter",
+     "hiccup"
+    ]
+   },
+   {
+    "clip": "e_qmjD8QlK4_79000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Crowd"
+    ],
+    "afn_items": [
+     "crowd",
+     "speech noise",
+     "speech babble"
+    ]
+   },
+   {
+    "clip": "U5ToBXQYEy0_30000",
+    "family": "Laughter",
+    "onset": 4.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter"
+    ],
+    "afn_items": [
+     "laughter",
+     "human voice"
+    ]
+   },
+   {
+    "clip": "GuUPAjaacnY_120000",
+    "family": "Laughter",
+    "onset": 1.6,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Clapping",
+     "Laughter"
+    ],
+    "afn_items": [
+     "clapping",
+     "laughter",
+     "speech"
+    ]
+   },
+   {
+    "clip": "cbNtpgQbn-4_30000",
+    "family": "Typing",
+    "onset": 8.48,
+    "class": "family absent",
+    "agree": false,
+    "yn": 0.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Clock",
+     "Computer keyboard"
+    ],
+    "afn_items": [
+     "clock ticking",
+     "keyboard typing"
+    ]
+   },
+   {
+    "clip": "cy8lehO7nqg_30000",
+    "family": "Bird",
+    "onset": 5.44,
+    "class": "wrong time",
+    "agree": true,
+    "yn": -2.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Bird"
+    ],
+    "afn_items": [
+     "bird vocalization and bird call and bird song",
+     "bird",
+     "wild animals",
+     "animal"
+    ]
+   },
+   {
+    "clip": "ZFs03gCSB_g_270000",
+    "family": "Typing",
+    "onset": 1.12,
+    "class": "correct",
+    "agree": false,
+    "yn": 1.75,
+    "agree_yn": false,
+    "afn_families": [
+     "Computer keyboard"
+    ],
+    "afn_items": [
+     "keyboard typing",
+     "mouse clicking"
+    ]
+   },
+   {
+    "clip": "HCC9JldRsNc_0",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 0.0,
+    "agree_yn": false,
+    "afn_families": [
+     "Crowd",
+     "Basketball bounce",
+     "Honk",
+     "Explosion"
+    ],
+    "afn_items": [
+     "squeal",
+     "crowd",
+     "basketball bounce",
+     "car horn",
+     "explosion"
+    ]
+   },
+   {
+    "clip": "cWZLGpaVwwE_30000",
+    "family": "Typing",
+    "onset": 2.24,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Typing"
+    ],
+    "afn_items": [
+     "typing",
+     "clicking",
+     "speech"
+    ]
+   },
+   {
+    "clip": "x0fI4QXOz9M_30000",
+    "family": "Dog",
+    "onset": 9.28,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Dog"
+    ],
+    "afn_items": [
+     "dog",
+     "speech",
+     "barking",
+     "motor"
+    ]
+   },
+   {
+    "clip": "yIx3ml9_nsQ_60000",
+    "family": "Laughter",
+    "onset": 5.76,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Sneeze",
+     "Laughter"
+    ],
+    "afn_items": [
+     "sneeze",
+     "laughter",
+     "human voice"
+    ]
+   },
+   {
+    "clip": "eOrV9yNuT3o_30000",
+    "family": "Bird",
+    "onset": 7.04,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.0,
+    "agree_yn": true,
+    "afn_families": [
+     "Screaming",
+     "Horse",
+     "Bird"
+    ],
+    "afn_items": [
+     "screaming",
+     "horse",
+     "bird",
+     "horse galloping",
+     "bird chirping"
+    ]
+   },
+   {
+    "clip": "5yNsNnsuj_k_30000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "wrong time",
+    "agree": true,
+    "yn": 0.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Crowd",
+     "Clapping"
+    ],
+    "afn_items": [
+     "cheering",
+     "clapping",
+     "crowd",
+     "whooping"
+    ]
+   },
+   {
+    "clip": "4gTHEt6np5o_30000",
+    "family": "Electric toothbrush",
+    "onset": 4.48,
+    "class": "correct",
+    "agree": false,
+    "yn": 0.875,
+    "agree_yn": false,
+    "afn_families": [
+     "Buzz"
+    ],
+    "afn_items": [
+     "vibration",
+     "buzzing",
+     "motor",
+     "hum",
+     "electronic music",
+     "cymbal"
+    ]
+   },
+   {
+    "clip": "wTOSS0cx50s_170000",
+    "family": "Shout",
+    "onset": 3.2,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.3125,
+    "agree_yn": true,
+    "afn_families": [
+     "Footsteps",
+     "Shout"
+    ],
+    "afn_items": [
+     "wind",
+     "run",
+     "shout",
+     "music",
+     "speech"
+    ]
+   },
+   {
+    "clip": "cbmaM2VhdAU_30000",
+    "family": "Goose",
+    "onset": 8.8,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Duck",
+     "Quack",
+     "Bird",
+     "Water",
+     "Goose"
+    ],
+    "afn_items": [
+     "duck",
+     "quack",
+     "bird",
+     "fly",
+     "wind",
+     "water",
+     "fowl",
+     "goose"
+    ]
+   },
+   {
+    "clip": "jlmyAZSidOQ_290000",
+    "family": "Toilet flush",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Toilet flush",
+     "Water"
+    ],
+    "afn_items": [
+     "toilet flush",
+     "female speech",
+     "water"
+    ]
+   },
+   {
+    "clip": "BQ86IY0M860_30000",
+    "family": "Water",
+    "onset": 0.0,
+    "class": "family absent",
+    "agree": true,
+    "yn": -0.125,
+    "agree_yn": false,
+    "afn_families": [
+     "Water",
+     "Boat"
+    ],
+    "afn_items": [
+     "wind",
+     "water",
+     "boat",
+     "people"
+    ]
+   },
+   {
+    "clip": "BQ86IY0M860_30000",
+    "family": "Boat",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 0.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Water",
+     "Boat"
+    ],
+    "afn_items": [
+     "wind",
+     "water",
+     "boat",
+     "people"
+    ]
+   },
+   {
+    "clip": "KOVw582M79I_220000",
+    "family": "Vehicle",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Vehicle",
+     "Door"
+    ],
+    "afn_items": [
+     "car engine",
+     "door slam"
+    ]
+   },
+   {
+    "clip": "wh7-5G4cBEo_30000",
+    "family": "Frog",
+    "onset": 9.44,
+    "class": "correct",
+    "agree": true,
+    "yn": -0.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Frog"
+    ],
+    "afn_items": [
+     "frog",
+     "electronic music"
+    ]
+   },
+   {
+    "clip": "PVgL5wFOKMs_30000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Crowd",
+     "Whistle"
+    ],
+    "afn_items": [
+     "cheering",
+     "skating",
+     "whistling",
+     "music",
+     "speech"
+    ]
+   },
+   {
+    "clip": "ENCPkF4K9zU_30000",
+    "family": "Laughter",
+    "onset": 3.52,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter"
+    ],
+    "afn_items": [
+     "laughing",
+     "burping"
+    ]
+   },
+   {
+    "clip": "KbOySeP46l4_570000",
+    "family": "Laughter",
+    "onset": 1.6,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter"
+    ],
+    "afn_items": [
+     "laughter",
+     "child speech and kid speaking"
+    ]
+   },
+   {
+    "clip": "KT-rYg9B_CM_420000",
+    "family": "Skateboard",
+    "onset": 6.4,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Skateboard"
+    ],
+    "afn_items": [
+     "skateboard",
+     "thump",
+     "thud"
+    ]
+   },
+   {
+    "clip": "Xb7lSqbJYog_490000",
+    "family": "Helicopter",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 0.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Helicopter"
+    ],
+    "afn_items": [
+     "helicopter"
+    ]
+   },
+   {
+    "clip": "UCycMYxXIw4_0",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Crowd",
+     "Shout"
+    ],
+    "afn_items": [
+     "cheering",
+     "shout",
+     "female speech"
+    ]
+   },
+   {
+    "clip": "Lg1HG6D_0Qk_30000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": -0.75,
+    "agree_yn": false,
+    "afn_families": [
+     "Crowd",
+     "Whoop",
+     "Shout"
+    ],
+    "afn_items": [
+     "music",
+     "crowd",
+     "whoop",
+     "shout",
+     "male speech"
+    ]
+   },
+   {
+    "clip": "N1c73HkaxvY_0",
+    "family": "Dog",
+    "onset": 6.88,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Dog",
+     "Bell"
+    ],
+    "afn_items": [
+     "dog barking",
+     "bell",
+     "wind"
+    ]
+   },
+   {
+    "clip": "GRjdL6M63m4_60000",
+    "family": "Gunshot",
+    "onset": 5.28,
+    "class": "family absent",
+    "agree": false,
+    "yn": 2.75,
+    "agree_yn": false,
+    "afn_families": [
+     "Glass"
+    ],
+    "afn_items": [
+     "shatter",
+     "glass"
+    ]
+   },
+   {
+    "clip": "Q2X9L8akKgE_30000",
+    "family": "Bird",
+    "onset": 5.44,
+    "class": "wrong time",
+    "agree": true,
+    "yn": 0.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Bird"
+    ],
+    "afn_items": [
+     "bird vocalization and bird call and bird song",
+     "bird",
+     "wild animals",
+     "animal",
+     "human voice",
+     "music"
+    ]
+   },
+   {
+    "clip": "Rdu3_LWIlgE_400000",
+    "family": "Train",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": -1.625,
+    "agree_yn": false,
+    "afn_families": [
+     "Train",
+     "Steam",
+     "Cat",
+     "Whistle"
+    ],
+    "afn_items": [
+     "train",
+     "steam",
+     "hiss",
+     "whistle",
+     "train horn"
+    ]
+   },
+   {
+    "clip": "8vasA2D2_Kc_30000",
+    "family": "Dog",
+    "onset": 5.44,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.8125,
+    "agree_yn": true,
+    "afn_families": [
+     "Dog"
+    ],
+    "afn_items": [
+     "dog",
+     "television",
+     "male speech",
+     "female speech"
+    ]
+   },
+   {
+    "clip": "QhF0CFyzzAc_30000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Screaming",
+     "Crowd",
+     "Shout"
+    ],
+    "afn_items": [
+     "screaming",
+     "crowd",
+     "music",
+     "shout"
+    ]
+   },
+   {
+    "clip": "QhF0CFyzzAc_30000",
+    "family": "Whoop",
+    "onset": 3.04,
+    "class": "correct",
+    "agree": false,
+    "yn": 1.375,
+    "agree_yn": false,
+    "afn_families": [
+     "Screaming",
+     "Crowd",
+     "Shout"
+    ],
+    "afn_items": [
+     "screaming",
+     "crowd",
+     "music",
+     "shout"
+    ]
+   },
+   {
+    "clip": "1bKf5nrT4DQ_90000",
+    "family": "Vehicle",
+    "onset": 1.44,
+    "class": "wrong time",
+    "agree": true,
+    "yn": 2.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Honk",
+     "Vehicle",
+     "Train"
+    ],
+    "afn_items": [
+     "car horn",
+     "vehicle",
+     "speech",
+     "train horn"
+    ]
+   },
+   {
+    "clip": "PVGChCsrCuk_20000",
+    "family": "Bell",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Bell"
+    ],
+    "afn_items": [
+     "church bells",
+     "change ringing",
+     "bells"
+    ]
+   },
+   {
+    "clip": "1009ux1xbkg_0",
+    "family": "Water",
+    "onset": 0.0,
+    "class": "wrong time",
+    "agree": true,
+    "yn": 1.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Water",
+     "Splash, splatter"
+    ],
+    "afn_items": [
+     "slosh",
+     "splash",
+     "splat",
+     "water"
+    ]
+   },
+   {
+    "clip": "upX4cNt_Reo_10000",
+    "family": "Cat",
+    "onset": 9.12,
+    "class": "wrong time",
+    "agree": true,
+    "yn": -1.875,
+    "agree_yn": false,
+    "afn_families": [
+     "Cat"
+    ],
+    "afn_items": [
+     "cat purring",
+     "whispering",
+     "human voice",
+     "cat meowing",
+     "human speech"
+    ]
+   },
+   {
+    "clip": "YFXSbPFaxcA_30000",
+    "family": "Printer",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": -0.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Printer"
+    ],
+    "afn_items": [
+     "printer",
+     "mechanisms",
+     "squeal",
+     "scrape"
+    ]
+   },
+   {
+    "clip": "Dkfcal9MGPs_400000",
+    "family": "Bird",
+    "onset": 1.12,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Bird"
+    ],
+    "afn_items": [
+     "bird vocalization and bird call and bird song",
+     "bird",
+     "wild animals",
+     "animal"
+    ]
+   },
+   {
+    "clip": "D1tl1eS7ubI_0",
+    "family": "Cough",
+    "onset": 3.2,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Cough"
+    ],
+    "afn_items": [
+     "cough",
+     "television",
+     "female speech",
+     "male speech"
+    ]
+   },
+   {
+    "clip": "W68jUDP5qAk_18000",
+    "family": "Laughter",
+    "onset": 6.24,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.3125,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter",
+     "Baby cry, infant cry"
+    ],
+    "afn_items": [
+     "laughing",
+     "baby crying",
+     "human voice"
+    ]
+   },
+   {
+    "clip": "-7YESdyyHVw_10000",
+    "family": "Cattle",
+    "onset": 1.76,
+    "class": "family absent",
+    "agree": false,
+    "yn": 0.25,
+    "agree_yn": false,
+    "afn_families": [],
+    "afn_items": [
+     "cowbell",
+     "wind chime"
+    ]
+   },
+   {
+    "clip": "MAhYAMZ50VI_100000",
+    "family": "Cat",
+    "onset": 6.72,
+    "class": "wrong time",
+    "agree": false,
+    "yn": 0.0,
+    "agree_yn": false,
+    "afn_families": [
+     "Dog",
+     "Alarm"
+    ],
+    "afn_items": [
+     "dog bark",
+     "alarm",
+     "child speaking",
+     "electronic music",
+     "human voice"
+    ]
+   },
+   {
+    "clip": "OtAdneAfzcc_140000",
+    "family": "Shout",
+    "onset": 1.92,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Screaming",
+     "Shout",
+     "Crowd"
+    ],
+    "afn_items": [
+     "screaming",
+     "shouting",
+     "crowd",
+     "music"
+    ]
+   },
+   {
+    "clip": "NUFypHg_WCg_60000",
+    "family": "Gunshot",
+    "onset": 4.16,
+    "class": "wrong time",
+    "agree": true,
+    "yn": 2.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Vehicle",
+     "Explosion",
+     "Gunshot",
+     "Door",
+     "Glass",
+     "Groan",
+     "Grunt"
+    ],
+    "afn_items": [
+     "vehicle",
+     "explosion",
+     "gunshot",
+     "thud",
+     "creak",
+     "crash",
+     "shatter",
+     "groan",
+     "grunt",
+     "whoosh",
+     "thump"
+    ]
+   },
+   {
+    "clip": "u_Nxu8TvonA_580000",
+    "family": "Gunshot",
+    "onset": 1.12,
+    "class": "family absent",
+    "agree": true,
+    "yn": 2.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Gunshot"
+    ],
+    "afn_items": [
+     "gunshot and gunfire",
+     "speech",
+     "human voice"
+    ]
+   },
+   {
+    "clip": "MYxhRD4RVmQ_10000",
+    "family": "Vacuum cleaner",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Vacuum cleaner"
+    ],
+    "afn_items": [
+     "vacuum cleaner",
+     "child speaking"
+    ]
+   },
+   {
+    "clip": "TQhi4PH6vdA_30000",
+    "family": "Laughter",
+    "onset": 3.68,
+    "class": "correct",
+    "agree": true,
+    "yn": 0.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter"
+    ],
+    "afn_items": [
+     "hissing",
+     "beeping",
+     "laughter",
+     "male speech",
+     "female speech"
+    ]
+   },
+   {
+    "clip": "ql66pp0iq_4_40000",
+    "family": "Snoring",
+    "onset": 9.76,
+    "class": "correct",
+    "agree": true,
+    "yn": -0.375,
+    "agree_yn": false,
+    "afn_families": [
+     "Snoring"
+    ],
+    "afn_items": [
+     "snoring"
+    ]
+   },
+   {
+    "clip": "JOai9BJwKtc_230000",
+    "family": "Drill",
+    "onset": 3.52,
+    "class": "correct",
+    "agree": false,
+    "yn": 3.25,
+    "agree_yn": false,
+    "afn_families": [
+     "Vehicle",
+     "Honk"
+    ],
+    "afn_items": [
+     "car engine",
+     "car horn",
+     "car crash"
+    ]
+   },
+   {
+    "clip": "_yrTKvc4mh8_30000",
+    "family": "Alarm",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Alarm"
+    ],
+    "afn_items": [
+     "alarm",
+     "speech"
+    ]
+   },
+   {
+    "clip": "RFeU64gTvGQ_0",
+    "family": "Laughter",
+    "onset": 0.16,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter",
+     "Cough"
+    ],
+    "afn_items": [
+     "laughter",
+     "cough"
+    ]
+   },
+   {
+    "clip": "RFeU64gTvGQ_0",
+    "family": "Cough",
+    "onset": 7.04,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.4375,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter",
+     "Cough"
+    ],
+    "afn_items": [
+     "laughter",
+     "cough"
+    ]
+   },
+   {
+    "clip": "10V4g8MXF-Y_6000",
+    "family": "Laughter",
+    "onset": 7.84,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.1875,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter",
+     "Explosion"
+    ],
+    "afn_items": [
+     "laughing",
+     "explosion",
+     "hissing"
+    ]
+   },
+   {
+    "clip": "3tUlhM80ObM_0",
+    "family": "Knock",
+    "onset": 6.4,
+    "class": "correct",
+    "agree": false,
+    "yn": 4.625,
+    "agree_yn": false,
+    "afn_families": [
+     "Door"
+    ],
+    "afn_items": [
+     "door knock"
+    ]
+   },
+   {
+    "clip": "JQwirnKysXI_30000",
+    "family": "Dog",
+    "onset": 8.16,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.8125,
+    "agree_yn": true,
+    "afn_families": [
+     "Dog",
+     "Tap"
+    ],
+    "afn_items": [
+     "dog",
+     "television",
+     "male speech",
+     "female speech",
+     "growling",
+     "barking",
+     "tap",
+     "generic impact sounds"
+    ]
+   },
+   {
+    "clip": "utg0tK7cDbE_30000",
+    "family": "Train",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Train",
+     "Steam whistle",
+     "Steam"
+    ],
+    "afn_items": [
+     "train",
+     "steam whistle",
+     "steam"
+    ]
+   },
+   {
+    "clip": "_P96ibCmCt0_140000",
+    "family": "Typewriter",
+    "onset": 6.08,
+    "class": "family absent",
+    "agree": true,
+    "yn": 1.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Typewriter"
+    ],
+    "afn_items": [
+     "typewriter",
+     "speech",
+     "background noise"
+    ]
+   },
+   {
+    "clip": "I1GC1yWdM_c_30000",
+    "family": "Cat",
+    "onset": 5.76,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Cat"
+    ],
+    "afn_items": [
+     "bee",
+     "fly",
+     "cat meow"
+    ]
+   },
+   {
+    "clip": "6BPC__fbhPk_21000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Crowd",
+     "Clapping",
+     "Shout",
+     "Whistle"
+    ],
+    "afn_items": [
+     "cheering",
+     "clapping",
+     "shouting",
+     "whistling"
+    ]
+   },
+   {
+    "clip": "Bdz-NtAD2SU_30000",
+    "family": "Gunshot",
+    "onset": 9.6,
+    "class": "wrong time",
+    "agree": true,
+    "yn": 0.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Gunshot",
+     "Explosion"
+    ],
+    "afn_items": [
+     "gunshot and gunfire",
+     "explosion"
+    ]
+   },
+   {
+    "clip": "YJdBwuIn4Ec_30000",
+    "family": "Car passing by",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": false,
+    "yn": 3.875,
+    "agree_yn": false,
+    "afn_families": [
+     "Vehicle"
+    ],
+    "afn_items": [
+     "car"
+    ]
+   },
+   {
+    "clip": "YJdBwuIn4Ec_30000",
+    "family": "Vehicle",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.8125,
+    "agree_yn": true,
+    "afn_families": [
+     "Vehicle"
+    ],
+    "afn_items": [
+     "car"
+    ]
+   },
+   {
+    "clip": "jaI41fTAM54_30000",
+    "family": "Bell",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.0,
+    "agree_yn": true,
+    "afn_families": [
+     "Bell"
+    ],
+    "afn_items": [
+     "church bell"
+    ]
+   },
+   {
+    "clip": "hiy7mHFnU1Y_30000",
+    "family": "Dog",
+    "onset": 3.04,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Dog",
+     "Bird",
+     "Door"
+    ],
+    "afn_items": [
+     "dog",
+     "bird",
+     "squeak"
+    ]
+   },
+   {
+    "clip": "cPzezkikR-0_30000",
+    "family": "Insect",
+    "onset": 6.4,
+    "class": "wrong time",
+    "agree": false,
+    "yn": -0.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Mosquito"
+    ],
+    "afn_items": [
+     "mosquito"
+    ]
+   },
+   {
+    "clip": "3AJuHcjE31w_30000",
+    "family": "Crowd",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Screaming",
+     "Crowd",
+     "Shout"
+    ],
+    "afn_items": [
+     "screaming",
+     "crowd",
+     "speech",
+     "shout"
+    ]
+   },
+   {
+    "clip": "EzfZMHnL1o8_160000",
+    "family": "Vehicle",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Vehicle",
+     "Honk"
+    ],
+    "afn_items": [
+     "large sounding engine",
+     "speech",
+     "car horn",
+     "human voice"
+    ]
+   },
+   {
+    "clip": "ZkH7dC0CdrE_130000",
+    "family": "Snoring",
+    "onset": 6.08,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.0,
+    "agree_yn": true,
+    "afn_families": [
+     "Snoring"
+    ],
+    "afn_items": [
+     "snoring"
+    ]
+   },
+   {
+    "clip": "sfxQfmtrKDg_4000",
+    "family": "Cough",
+    "onset": 8.48,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.3125,
+    "agree_yn": true,
+    "afn_families": [
+     "Cough"
+    ],
+    "afn_items": [
+     "cough"
+    ]
+   },
+   {
+    "clip": "2A63oYgod8Y_560000",
+    "family": "Gunshot",
+    "onset": 3.84,
+    "class": "correct",
+    "agree": true,
+    "yn": 0.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Gunshot",
+     "Explosion"
+    ],
+    "afn_items": [
+     "gunshot and gunfire",
+     "explosion"
+    ]
+   },
+   {
+    "clip": "UBAlsmLwYn8_8000",
+    "family": "Explosion",
+    "onset": 0.64,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.0,
+    "agree_yn": true,
+    "afn_families": [
+     "Explosion",
+     "Glass",
+     "Door"
+    ],
+    "afn_items": [
+     "explosion",
+     "glass shatter",
+     "door slam",
+     "male speech"
+    ]
+   },
+   {
+    "clip": "pFTAenV8ksU_30000",
+    "family": "Bird",
+    "onset": 7.52,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.375,
+    "agree_yn": true,
+    "afn_families": [
+     "Bird"
+    ],
+    "afn_items": [
+     "bird vocalization",
+     "bird call",
+     "bird song",
+     "bird flight",
+     "flapping wings"
+    ]
+   },
+   {
+    "clip": "TIASpLtI8ks_20000",
+    "family": "Bell",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Bell"
+    ],
+    "afn_items": [
+     "church bells"
+    ]
+   },
+   {
+    "clip": "Qaqqxq9E9p8_20000",
+    "family": "Alarm",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Alarm",
+     "Bird"
+    ],
+    "afn_items": [
+     "alarm",
+     "beep",
+     "bird"
+    ]
+   },
+   {
+    "clip": "8AYXpxT4jcs_90000",
+    "family": "Laughter",
+    "onset": 5.44,
+    "class": "family absent",
+    "agree": true,
+    "yn": 1.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Screaming",
+     "Laughter",
+     "Door",
+     "Honk"
+    ],
+    "afn_items": [
+     "screaming",
+     "laughter",
+     "door slam",
+     "car horn"
+    ]
+   },
+   {
+    "clip": "XUmVBjjaPG8_30000",
+    "family": "Foghorn",
+    "onset": 3.68,
+    "class": "correct",
+    "agree": false,
+    "yn": 3.875,
+    "agree_yn": false,
+    "afn_families": [
+     "Boat"
+    ],
+    "afn_items": [
+     "ship horn"
+    ]
+   },
+   {
+    "clip": "F-Ly8CI7-Pc_20000",
+    "family": "Explosion",
+    "onset": 5.12,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Explosion"
+    ],
+    "afn_items": [
+     "explosion"
+    ]
+   },
+   {
+    "clip": "ff21Bursam0_160000",
+    "family": "Cattle",
+    "onset": 6.72,
+    "class": "correct",
+    "agree": true,
+    "yn": 3.6875,
+    "agree_yn": true,
+    "afn_families": [
+     "Cattle",
+     "Door"
+    ],
+    "afn_items": [
+     "cow",
+     "door",
+     "thump",
+     "thud",
+     "rustle",
+     "clank",
+     "creak",
+     "scrape",
+     "slam",
+     "th"
+    ]
+   },
+   {
+    "clip": "QSQFiq17MQA_30000",
+    "family": "Vehicle",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.8125,
+    "agree_yn": true,
+    "afn_families": [
+     "Dog",
+     "Vehicle"
+    ],
+    "afn_items": [
+     "dog barking",
+     "truck engine"
+    ]
+   },
+   {
+    "clip": "TslB1VMKXmM_10000",
+    "family": "Toilet flush",
+    "onset": 0.32,
+    "class": "correct",
+    "agree": true,
+    "yn": 5.5,
+    "agree_yn": true,
+    "afn_families": [
+     "Toilet flush",
+     "Water"
+    ],
+    "afn_items": [
+     "toilet flush",
+     "water"
+    ]
+   },
+   {
+    "clip": "IZ51tUuibq8_30000",
+    "family": "Owl",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Owl",
+     "Hoot"
+    ],
+    "afn_items": [
+     "owl",
+     "hoot"
+    ]
+   },
+   {
+    "clip": "IZ51tUuibq8_30000",
+    "family": "Insect",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": false,
+    "yn": -1.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Owl",
+     "Hoot"
+    ],
+    "afn_items": [
+     "owl",
+     "hoot"
+    ]
+   },
+   {
+    "clip": "yfoV23simOs_30000",
+    "family": "Bell",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 0.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Bell"
+    ],
+    "afn_items": [
+     "church bell"
+    ]
+   },
+   {
+    "clip": "zHfwBfNR7us_30000",
+    "family": "Spray",
+    "onset": 8.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 2.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Spray",
+     "Vehicle"
+    ],
+    "afn_items": [
+     "spray",
+     "motor vehicle (road)",
+     "vehicle"
+    ]
+   },
+   {
+    "clip": "TpX4tu7GrUw_90000",
+    "family": "Toilet flush",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Toilet flush",
+     "Water"
+    ],
+    "afn_items": [
+     "toilet flush",
+     "water"
+    ]
+   },
+   {
+    "clip": "R6EbA_Is4gc_520000",
+    "family": "Cough",
+    "onset": 9.44,
+    "class": "correct",
+    "agree": true,
+    "yn": 1.0,
+    "agree_yn": true,
+    "afn_families": [
+     "Cough",
+     "Bell"
+    ],
+    "afn_items": [
+     "cough",
+     "music",
+     "speech",
+     "tabla",
+     "drum",
+     "percussion",
+     "bell",
+     "gong",
+     "cymbal"
+    ]
+   },
+   {
+    "clip": "V54-dh4RQdQ_0",
+    "family": "Thunder",
+    "onset": 6.56,
+    "class": "family absent",
+    "agree": true,
+    "yn": 1.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Thunder",
+     "Explosion"
+    ],
+    "afn_items": [
+     "gong",
+     "thunder",
+     "explosion"
+    ]
+   },
+   {
+    "clip": "mWe-2qfdJD4_140000",
+    "family": "Water",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": true,
+    "yn": 4.4375,
+    "agree_yn": true,
+    "afn_families": [
+     "Water",
+     "Splash, splatter",
+     "Boat",
+     "Tick"
+    ],
+    "afn_items": [
+     "water",
+     "gurgling",
+     "splash",
+     "slop",
+     "motorboat",
+     "boat",
+     "water vehicle",
+     "speech",
+     "male speech",
+     "female speech",
+     "child speech",
+     "tick"
+    ]
+   },
+   {
+    "clip": "ctsq33oUBT8_30000",
+    "family": "Vehicle",
+    "onset": 0.0,
+    "class": "correct",
+    "agree": false,
+    "yn": 4.0,
+    "agree_yn": false,
+    "afn_families": [
+     "Honk"
+    ],
+    "afn_items": [
+     "car horn"
+    ]
+   }
+  ]
+ },
+ "dev": {
+  "pictures": [
+   {
+    "part": "dev",
+    "clip": "ambient_nature_rainforest_7629",
+    "family": "Bird",
+    "start": 15.52,
+    "dasm": 0.583,
+    "class": "cross",
+    "agree": true,
+    "yn": 2.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Bird"
+    ],
+    "afn_items": [
+     "bird vocalization and bird call and bird song",
+     "bird",
+     "wild animals",
+     "animal"
+    ]
+   },
+   {
+    "part": "dev",
+    "clip": "bell_miami",
+    "family": "Bell",
+    "start": 0.0,
+    "dasm": 0.92,
+    "class": "hit",
+    "agree": true,
+    "yn": 3.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Bell"
+    ],
+    "afn_items": [
+     "church bell",
+     "bell"
+    ]
+   },
+   {
+    "part": "dev",
+    "clip": "mv_arrest_street_scene",
+    "family": "Footsteps",
+    "start": 13.76,
+    "dasm": 0.583,
+    "class": "cross",
+    "agree": true,
+    "yn": 1.125,
+    "agree_yn": true,
+    "afn_families": [
+     "Footsteps",
+     "Door",
+     "Glass",
+     "Vehicle",
+     "Honk",
+     "Alarm"
+    ],
+    "afn_items": [
+     "footsteps",
+     "door",
+     "glass shatter",
+     "car engine",
+     "car horn",
+     "car alarm",
+     "car door",
+     "car tire"
+    ]
+   },
+   {
+    "part": "dev",
+    "clip": "mv_storm_scene_house",
+    "family": "Explosion",
+    "start": 12.96,
+    "dasm": 0.612,
+    "class": "cross",
+    "agree": true,
+    "yn": 3.1875,
+    "agree_yn": true,
+    "afn_families": [
+     "Siren",
+     "Explosion",
+     "Gunshot",
+     "Shout",
+     "Footsteps",
+     "Glass"
+    ],
+    "afn_items": [
+     "siren",
+     "explosion",
+     "gunfire",
+     "shouting",
+     "debris",
+     "footsteps",
+     "metallic clatter",
+     "heavy thud",
+     "high-pitched screech",
+     "low rumble",
+     "urgent male voice",
+     "urgent female voice",
+     "panicked male voice",
+     "panicked female voice",
+     "heavy breathing",
+     "sharp metallic clang",
+     "rapid gunfire",
+     "sharp metallic ricochet",
+     "deep resonant boom",
+     "sharp high-frequency crack",
+     "chaotic metallic crash",
+     "shattering glass",
+     "heavy debris impact",
+     "low-frequency rumble",
+     "high-pitched metallic scree"
+    ]
+   },
+   {
+    "part": "dev",
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "family": "Gunshot",
+    "start": 13.92,
+    "dasm": 0.723,
+    "class": "cross",
+    "agree": false,
+    "yn": 2.125,
+    "agree_yn": false,
+    "afn_families": [
+     "Crowd",
+     "Explosion"
+    ],
+    "afn_items": [
+     "crowd",
+     "explosion"
+    ]
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d020",
+    "family": "Rain",
+    "start": 0.0,
+    "dasm": 0.87,
+    "class": "visible",
+    "agree": false,
+    "yn": -0.875,
+    "agree_yn": false,
+    "afn_families": [
+     "Fire"
+    ],
+    "afn_items": [
+     "fire"
+    ]
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "family": "Laughter",
+    "start": 8.48,
+    "dasm": 0.847,
+    "class": "hit",
+    "agree": true,
+    "yn": 4.3125,
+    "agree_yn": true,
+    "afn_families": [
+     "Laughter",
+     "Pig"
+    ],
+    "afn_items": [
+     "baby cry",
+     "laughter",
+     "oink"
+    ]
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d133",
+    "family": "Fart",
+    "start": 0.0,
+    "dasm": 0.612,
+    "class": "hit",
+    "agree": true,
+    "yn": 4.4375,
+    "agree_yn": true,
+    "afn_families": [
+     "Fart",
+     "Snoring"
+    ],
+    "afn_items": [
+     "fart",
+     "female speech",
+     "snoring"
+    ]
+   }
+  ],
+  "variants": {
+   "a4": {
+    "rows": {
+     "merged": {
+      "hits": 31,
+      "n": 58,
+      "wrong": 26,
+      "visible": 7,
+      "cross": 17,
+      "phantom": 2,
+      "cost": 2.2535211267605635
+     },
+     "dev": {
+      "hits": 20,
+      "n": 38,
+      "wrong": 18,
+      "visible": 4,
+      "cross": 12,
+      "phantom": 2,
+      "cost": 2.204081632653061
+     },
+     "dev2": {
+      "hits": 11,
+      "n": 20,
+      "wrong": 8,
+      "visible": 3,
+      "cross": 5,
+      "phantom": 0,
+      "cost": 2.3636363636363638
+     }
+    },
+    "cost": {
+     "1": [
+      2.197,
+      2.155
+     ],
+     "2": [
+      2.282,
+      2.254
+     ]
+    },
+    "kept": 8,
+    "hits_lost": [],
+    "main_GO": true,
+    "fewer_pictures_GO": false
+   },
+   "agree": {
+    "rows": {
+     "merged": {
+      "hits": 31,
+      "n": 58,
+      "wrong": 24,
+      "visible": 6,
+      "cross": 16,
+      "phantom": 2,
+      "cost": 2.1971830985915495
+     },
+     "dev": {
+      "hits": 20,
+      "n": 38,
+      "wrong": 17,
+      "visible": 4,
+      "cross": 11,
+      "phantom": 2,
+      "cost": 2.163265306122449
+     },
+     "dev2": {
+      "hits": 11,
+      "n": 20,
+      "wrong": 7,
+      "visible": 2,
+      "cross": 5,
+      "phantom": 0,
+      "cost": 2.272727272727273
+     }
+    },
+    "cost": {
+     "1": [
+      2.197,
+      2.113
+     ],
+     "2": [
+      2.282,
+      2.197
+     ]
+    },
+    "kept": 6,
+    "hits_lost": [],
+    "main_GO": true,
+    "fewer_pictures_GO": false
+   },
+   "agree_yn": {
+    "rows": {
+     "merged": {
+      "hits": 31,
+      "n": 58,
+      "wrong": 24,
+      "visible": 6,
+      "cross": 16,
+      "phantom": 2,
+      "cost": 2.1971830985915495
+     },
+     "dev": {
+      "hits": 20,
+      "n": 38,
+      "wrong": 17,
+      "visible": 4,
+      "cross": 11,
+      "phantom": 2,
+      "cost": 2.163265306122449
+     },
+     "dev2": {
+      "hits": 11,
+      "n": 20,
+      "wrong": 7,
+      "visible": 2,
+      "cross": 5,
+      "phantom": 0,
+      "cost": 2.272727272727273
+     }
+    },
+    "cost": {
+     "1": [
+      2.197,
+      2.113
+     ],
+     "2": [
+      2.282,
+      2.197
+     ]
+    },
+    "kept": 6,
+    "hits_lost": [],
+    "main_GO": true,
+    "fewer_pictures_GO": false
+   }
+  },
+  "base": {
+   "merged": {
+    "hits": 28,
+    "n": 58,
+    "wrong": 21,
+    "visible": 6,
+    "cross": 13,
+    "phantom": 2,
+    "cost": 2.2816901408450705
+   },
+   "dev": {
+    "hits": 19,
+    "n": 38,
+    "wrong": 14,
+    "visible": 4,
+    "cross": 8,
+    "phantom": 2,
+    "cost": 2.122448979591837
+   },
+   "dev2": {
+    "hits": 9,
+    "n": 20,
+    "wrong": 7,
+    "visible": 2,
+    "cross": 5,
+    "phantom": 0,
+    "cost": 2.6363636363636362
+   }
+  },
+  "clip_costs": {
+   "base": [
+    12.0,
+    4.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    14.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    10.0,
+    0.0,
+    2.0,
+    4.0,
+    4.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    2.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    6.0,
+    4.0,
+    0.0,
+    8.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    0.0
+   ],
+   "a4": [
+    12.0,
+    4.0,
+    0.0,
+    0.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    14.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    10.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    2.0,
+    6.0,
+    0.0,
+    0.0,
+    4.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    2.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0
+   ],
+   "agree": [
+    12.0,
+    4.0,
+    0.0,
+    0.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    14.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    10.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    2.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    2.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0
+   ],
+   "agree_yn": [
+    12.0,
+    4.0,
+    0.0,
+    0.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    14.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    10.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    2.0,
+    6.0,
+    0.0,
+    0.0,
+    2.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    2.0,
+    4.0,
+    0.0,
+    8.0,
+    2.0,
+    4.0,
+    0.0,
+    4.0,
+    0.0
+   ]
+  }
+ },
+ "test": {
+  "pictures": [
+   {
+    "part": "test",
+    "clip": "b3_aquarium_walk",
+    "family": "Water",
+    "start": 0.0,
+    "dasm": 0.791,
+    "class": "visible",
+    "agree": true,
+    "yn": 2.625,
+    "agree_yn": true,
+    "afn_families": [
+     "Water"
+    ],
+    "afn_items": [
+     "water",
+     "piano"
+    ]
+   },
+   {
+    "part": "test",
+    "clip": "lx_chainsaw_and_power_tool_BBukw6J",
+    "family": "Chainsaw",
+    "start": 0.0,
+    "dasm": 0.898,
+    "class": "phantom",
+    "agree": true,
+    "yn": 4.75,
+    "agree_yn": true,
+    "afn_families": [
+     "Chainsaw"
+    ],
+    "afn_items": [
+     "chainsaw"
+    ]
+   },
+   {
+    "part": "test",
+    "clip": "m4_airsoft_24a",
+    "family": "Laughter",
+    "start": 2.88,
+    "dasm": 0.965,
+    "class": "phantom",
+    "agree": true,
+    "yn": 0.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Gunshot",
+     "Laughter",
+     "Explosion",
+     "Footsteps"
+    ],
+    "afn_items": [
+     "gunshot",
+     "laughter",
+     "explosion",
+     "gunfire",
+     "footsteps",
+     "metallic clank",
+     "mechanical hum",
+     "low rumble",
+     "sharp metallic clank",
+     "high-pitched electronic whine",
+     "brief high-pitched electronic beep",
+     "low-frequency electronic hum"
+    ]
+   },
+   {
+    "part": "test",
+    "clip": "m4_live_fire_26a",
+    "family": "Explosion",
+    "start": 2.08,
+    "dasm": 0.864,
+    "class": "cross",
+    "agree": true,
+    "yn": 4.25,
+    "agree_yn": true,
+    "afn_families": [
+     "Gunshot",
+     "Explosion"
+    ],
+    "afn_items": [
+     "gunshot and gunfire",
+     "explosion"
+    ]
+   },
+   {
+    "part": "test",
+    "clip": "m5_doc_restrepo_138b",
+    "family": "Gunshot",
+    "start": 0.0,
+    "dasm": 0.989,
+    "class": "hit",
+    "agree": true,
+    "yn": 0.875,
+    "agree_yn": true,
+    "afn_families": [
+     "Gunshot",
+     "Helicopter"
+    ],
+    "afn_items": [
+     "gunfire",
+     "helicopter",
+     "radio",
+     "speech"
+    ]
+   },
+   {
+    "part": "test",
+    "clip": "mv_air_raid_scene",
+    "family": "Bird",
+    "start": 1.28,
+    "dasm": 0.909,
+    "class": "cross",
+    "agree": true,
+    "yn": 3.0,
+    "agree_yn": true,
+    "afn_families": [
+     "Siren",
+     "Bird",
+     "Footsteps"
+    ],
+    "afn_items": [
+     "siren",
+     "bird vocalization",
+     "bird call",
+     "bird song",
+     "human voice",
+     "footsteps"
+    ]
+   },
+   {
+    "part": "test2",
+    "clip": "tg_d045",
+    "family": "Vehicle",
+    "start": 0.0,
+    "dasm": 0.616,
+    "class": "cross",
+    "agree": true,
+    "yn": -0.75,
+    "agree_yn": false,
+    "afn_families": [
+     "Siren",
+     "Bird",
+     "Vehicle"
+    ],
+    "afn_items": [
+     "siren",
+     "bird",
+     "car",
+     "people"
+    ]
+   },
+   {
+    "part": "test2",
+    "clip": "tg_d101",
+    "family": "Bird",
+    "start": 5.12,
+    "dasm": 0.706,
+    "class": "hit",
+    "agree": false,
+    "yn": -0.5,
+    "agree_yn": false,
+    "afn_families": [
+     "Honk"
+    ],
+    "afn_items": [
+     "car horn",
+     "wind"
+    ]
+   }
+  ],
+  "variants": {
+   "a4": {
+    "metrics": {
+     "hits": 25,
+     "misses": 40,
+     "visible": 5,
+     "cross": 23,
+     "phantom": 7,
+     "dup": 0,
+     "F1": 0.4,
+     "P": 0.4166666666666667,
+     "R": 0.38461538461538464,
+     "viewer_cost": 2.6136363636363638,
+     "coverage": 0.29683818711171145,
+     "wrong": 35
+    },
+    "parts": {
+     "test": {
+      "hits": 19,
+      "misses": 24,
+      "visible": 3,
+      "cross": 17,
+      "phantom": 4,
+      "dup": 0,
+      "F1": 0.4418604651162791,
+      "P": 0.4418604651162791,
+      "R": 0.4418604651162791,
+      "viewer_cost": 2.4,
+      "coverage": 0.33678838285848467,
+      "wrong": 24
+     },
+     "test2": {
+      "hits": 6,
+      "misses": 16,
+      "visible": 2,
+      "cross": 6,
+      "phantom": 3,
+      "dup": 0,
+      "F1": 0.30769230769230765,
+      "P": 0.35294117647058826,
+      "R": 0.2727272727272727,
+      "viewer_cost": 3.0714285714285716,
+      "coverage": 0.21875371360665471,
+      "wrong": 11
+     }
+    },
+    "cost": {
+     "w2": [
+      2.568,
+      2.614
+     ],
+     "w1": [
+      2.523,
+      2.557
+     ]
+    },
+    "delta_cost_vs_base": [
+     0.045454545454545456,
+     -0.11363636363636363,
+     0.20454545454545456,
+     0.7575
+    ],
+    "kept": 8,
+    "hits_lost": []
+   },
+   "agree": {
+    "metrics": {
+     "hits": 24,
+     "misses": 41,
+     "visible": 5,
+     "cross": 23,
+     "phantom": 7,
+     "dup": 0,
+     "F1": 0.38709677419354843,
+     "P": 0.4067796610169492,
+     "R": 0.36923076923076925,
+     "viewer_cost": 2.659090909090909,
+     "coverage": 0.2817954520689764,
+     "wrong": 35
+    },
+    "parts": {
+     "test": {
+      "hits": 19,
+      "misses": 24,
+      "visible": 3,
+      "cross": 17,
+      "phantom": 4,
+      "dup": 0,
+      "F1": 0.4418604651162791,
+      "P": 0.4418604651162791,
+      "R": 0.4418604651162791,
+      "viewer_cost": 2.4,
+      "coverage": 0.33678838285848467,
+      "wrong": 24
+     },
+     "test2": {
+      "hits": 5,
+      "misses": 17,
+      "visible": 2,
+      "cross": 6,
+      "phantom": 3,
+      "dup": 0,
+      "F1": 0.2631578947368421,
+      "P": 0.3125,
+      "R": 0.22727272727272727,
+      "viewer_cost": 3.2142857142857144,
+      "coverage": 0.17430926916221032,
+      "wrong": 11
+     }
+    },
+    "cost": {
+     "w2": [
+      2.568,
+      2.659
+     ],
+     "w1": [
+      2.523,
+      2.602
+     ]
+    },
+    "delta_cost_vs_base": [
+     0.09090909090909091,
+     -0.045454545454545456,
+     0.22727272727272727,
+     0.9155
+    ],
+    "kept": 7,
+    "hits_lost": []
+   },
+   "agree_yn": {
+    "metrics": {
+     "hits": 24,
+     "misses": 41,
+     "visible": 5,
+     "cross": 22,
+     "phantom": 7,
+     "dup": 0,
+     "F1": 0.39024390243902446,
+     "P": 0.41379310344827586,
+     "R": 0.36923076923076925,
+     "viewer_cost": 2.6363636363636362,
+     "coverage": 0.2817954520689764,
+     "wrong": 34
+    },
+    "parts": {
+     "test": {
+      "hits": 19,
+      "misses": 24,
+      "visible": 3,
+      "cross": 17,
+      "phantom": 4,
+      "dup": 0,
+      "F1": 0.4418604651162791,
+      "P": 0.4418604651162791,
+      "R": 0.4418604651162791,
+      "viewer_cost": 2.4,
+      "coverage": 0.33678838285848467,
+      "wrong": 24
+     },
+     "test2": {
+      "hits": 5,
+      "misses": 17,
+      "visible": 2,
+      "cross": 5,
+      "phantom": 3,
+      "dup": 0,
+      "F1": 0.27027027027027023,
+      "P": 0.3333333333333333,
+      "R": 0.22727272727272727,
+      "viewer_cost": 3.142857142857143,
+      "coverage": 0.17430926916221032,
+      "wrong": 10
+     }
+    },
+    "cost": {
+     "w2": [
+      2.568,
+      2.636
+     ],
+     "w1": [
+      2.523,
+      2.58
+     ]
+    },
+    "delta_cost_vs_base": [
+     0.06818181818181818,
+     -0.06818181818181818,
+     0.20454545454545456,
+     0.879
+    ],
+    "kept": 6,
+    "hits_lost": []
+   }
+  },
+  "clips": 88,
+  "base": {
+   "hits": 23,
+   "misses": 42,
+   "visible": 4,
+   "cross": 20,
+   "phantom": 5,
+   "dup": 0,
+   "F1": 0.39316239316239315,
+   "P": 0.4423076923076923,
+   "R": 0.35384615384615387,
+   "viewer_cost": 2.5681818181818183,
+   "coverage": 0.266410836684361,
+   "wrong": 29
+  },
+  "clip_costs": {
+   "base": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    8.0,
+    4.0,
+    2.0,
+    14.0,
+    4.0,
+    4.0,
+    16.0,
+    8.0,
+    0.0,
+    4.0,
+    2.0,
+    8.0,
+    0.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    10.0,
+    12.0,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    2.0,
+    6.0,
+    0.0,
+    6.0,
+    18.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    6.0,
+    4.0,
+    0.0,
+    8.0,
+    0.0,
+    4.0,
+    2.0
+   ],
+   "a4": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    8.0,
+    10.0,
+    4.0,
+    2.0,
+    14.0,
+    4.0,
+    4.0,
+    18.0,
+    4.0,
+    0.0,
+    4.0,
+    2.0,
+    8.0,
+    0.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    10.0,
+    12.0,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    2.0,
+    6.0,
+    0.0,
+    8.0,
+    18.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    0.0,
+    4.0,
+    4.0,
+    0.0,
+    6.0,
+    4.0,
+    0.0,
+    8.0,
+    0.0,
+    4.0,
+    2.0
+   ],
+   "agree": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    8.0,
+    10.0,
+    4.0,
+    2.0,
+    14.0,
+    4.0,
+    4.0,
+    18.0,
+    4.0,
+    0.0,
+    4.0,
+    2.0,
+    8.0,
+    0.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    10.0,
+    12.0,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    2.0,
+    6.0,
+    0.0,
+    8.0,
+    18.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    6.0,
+    4.0,
+    0.0,
+    8.0,
+    0.0,
+    4.0,
+    2.0
+   ],
+   "agree_yn": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    8.0,
+    10.0,
+    4.0,
+    2.0,
+    14.0,
+    4.0,
+    4.0,
+    18.0,
+    4.0,
+    0.0,
+    4.0,
+    2.0,
+    8.0,
+    0.0,
+    0.0,
+    4.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    0.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    8.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    10.0,
+    12.0,
+    0.0,
+    0.0,
+    0.0,
+    6.0,
+    2.0,
+    0.0,
+    0.0,
+    0.0,
+    2.0,
+    0.0,
+    2.0,
+    6.0,
+    0.0,
+    6.0,
+    18.0,
+    2.0,
+    0.0,
+    0.0,
+    4.0,
+    4.0,
+    0.0,
+    8.0,
+    4.0,
+    0.0,
+    6.0,
+    4.0,
+    0.0,
+    8.0,
+    0.0,
+    4.0,
+    2.0
+   ]
+  }
+ },
+ "pooled": {
+  "a4": {
+   "clips": 159,
+   "boot": [
+    0.012578616352201259,
+    -0.12578616352201258,
+    0.1509433962264151,
+    0.625
+   ]
+  },
+  "agree": {
+   "clips": 159,
+   "boot": [
+    0.012578616352201259,
+    -0.12578616352201258,
+    0.12578616352201258,
+    0.622
+   ]
+  },
+  "agree_yn": {
+   "clips": 159,
+   "boot": [
+    0.0,
+    -0.13836477987421383,
+    0.11320754716981132,
+    0.546
+   ]
+  }
+ }
+}

@@ -3099,3 +3099,22 @@ whole-clip list exists for any clip (the Round 14 C caches are per-cut). GO -> a
 **Files:** `benchmark/gold/agree_ears_screen.py` (`listen` GPU msproj -> `benchmark/gold/agree_ears/{dev,test,heldout}/<clip>.json`,
 resumable; `score` CPU, dev and test in separate processes as `expect_a5_screen.py`) -> `benchmark/gold/agree_ears_screen.json`;
 `slurm/job_agree_ears.sh` (H200-4h,A100-4h,L4-4h; from `~/MscProj_tg`, `TG_ARMS=SHIP8`).
+### Round 45 result — AGREE-EARS: DEV GO on the main rule, TEST worse, held-out not vouched: STOP (job 31599149, H200, 2.5 min for 574 clips; `agree_ears_screen.py` -> `agree_ears_screen.json`, lists in `agree_ears/` on the cluster)
+AFN's whole-clip lists are clean (no repetition loop, e.g. 'Toilet flush, Female speech, Water'). **(i) Held-out 415 (read first):** AGREE
+keeps 78 of 92, 65 of 74 correct survive, **precision 0.833** (base 0.804), only 5 of 18 wrong removed -> **not vouched** (bar 0.85).
+AGREE+YN (secondary): 69 kept, 59 correct, precision 0.855, 8 of 18 wrong removed -> vouched on the bar, at the price of 15 of 74 correct.
+Per family: AFN agrees with every Bird (5/5, 3 correct), Water (3/3, 1 correct) and 4 of 5 Gunshot (1 correct) — the second ear hears the
+same wrong families the first one does. **(ii) DEV** (base reproduced 28/58, 21 (6/13/2), 2.282): AGREE keeps 6 of 8 — the 3 hits (bell,
+laughter, fart) and 3 cross (rainforest Bird, arrest Footsteps, storm Explosion); drops the motorcycle Gunshot (cross; AFN: Crowd,
+Explosion) and the tg_d020 Rain (visible; AFN: Fire). **31/58, 24 (6/16/2), cost 2.197** (w = 1: 2.113 vs 2.197): main rule GO (31 >= 28,
+no hit lost, 2.197 < 2.282), fewer-pictures STOP (wrong up). AGREE+YN identical on DEV (every agreed picture has margin > 0). **(iii) TEST**
+(base reproduced 23/65, 29 (4/20/5), 2.568): AGREE keeps 7 of 8 — every wrong one (aquarium Water, chainsaw phantom, airsoft Laughter,
+live_fire Explosion, air_raid Bird, d045 Vehicle) is also named by AFN, and the one picture it drops is a HIT (tg_d101 Bird; AFN: Honk).
+**24/65, 35 (5/23/7), cost 2.659; d cost vs base +0.091 [−0.045, +0.227], one-sided p 0.915** — worse than EXPECT-A4 (2.614, p 0.757).
+AGREE+YN: 24/65, 34 (5/22/7), 2.636, d +0.068 [−0.068, +0.205], p 0.879 (the d045 Vehicle goes, margin −0.75). **(iv) Pooled DEV + TEST,
+159 clips** (secondary): EXPECT-A4 d +0.013 [−0.126, +0.151] p 0.625; AGREE +0.013 [−0.126, +0.126] p 0.622; AGREE+YN +0.000 [−0.138,
++0.113] p 0.546 — no EXPECT variant has a positive expected effect across both splits. **Reading:** a second ear of a different family
+agrees with the first on the wrong off-screen names (chainsaw, laughter, explosion, bird are really audible — the gold does not time
+them there, or the maker is on screen); the EXPECT errors are not listener hallucinations, so no audio-side agreement can remove them.
+With Round 42b this closes the gold-free selectors for EXPECT: family prior (42b) and second-ear agreement (45) both clean DEV and
+both fail TEST. STOP; nothing shipped; `src/` untouched.
