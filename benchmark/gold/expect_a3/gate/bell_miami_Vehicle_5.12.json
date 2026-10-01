@@ -1,0 +1,31 @@
+{
+ "part": "dev",
+ "clip": "bell_miami",
+ "family": "Vehicle",
+ "omni_match": true,
+ "flap_max": 0.851,
+ "outcome": "candidate",
+ "onset": 5.12,
+ "from": "flap",
+ "run": [
+  5.12,
+  15.68
+ ],
+ "run_max": 0.851,
+ "n_runs": 1,
+ "gate": "ask",
+ "times": [
+  4.12,
+  4.52,
+  4.92,
+  5.32,
+  5.72,
+  6.12
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

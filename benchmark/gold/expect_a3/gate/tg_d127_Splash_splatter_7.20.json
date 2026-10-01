@@ -1,0 +1,31 @@
+{
+ "part": "dev2",
+ "clip": "tg_d127",
+ "family": "Splash, splatter",
+ "omni_match": true,
+ "flap_max": 0.949,
+ "outcome": "candidate",
+ "onset": 7.2,
+ "from": "flap",
+ "run": [
+  7.2,
+  9.92
+ ],
+ "run_max": 0.949,
+ "n_runs": 2,
+ "gate": "ask",
+ "times": [
+  6.2,
+  6.6,
+  7.0,
+  7.4,
+  7.8,
+  8.2
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "baby elephant",
+ "name": true,
+ "ab": false,
+ "desc": true
+}

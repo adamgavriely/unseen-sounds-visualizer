@@ -1,0 +1,31 @@
+{
+ "part": "dev",
+ "clip": "mv_arrest_street_scene",
+ "family": "Footsteps",
+ "omni_match": true,
+ "flap_max": 0.811,
+ "outcome": "candidate",
+ "onset": 13.76,
+ "from": "flap",
+ "run": [
+  13.76,
+  14.08
+ ],
+ "run_max": 0.811,
+ "n_runs": 11,
+ "gate": "ask",
+ "times": [
+  12.76,
+  13.16,
+  13.56,
+  13.96,
+  14.36,
+  14.76
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": null,
+ "desc": true
+}

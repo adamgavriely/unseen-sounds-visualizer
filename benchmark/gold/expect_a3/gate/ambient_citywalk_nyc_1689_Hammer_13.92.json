@@ -1,0 +1,35 @@
+{
+ "part": "dev",
+ "clip": "ambient_citywalk_nyc_1689",
+ "family": "Hammer",
+ "how": "map:hammer",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 13.92,
+ "from": "flap",
+ "onsets": {
+  "flex": 13.72
+ },
+ "times": [
+  12.72,
+  13.12,
+  13.52,
+  13.92,
+  14.32,
+  14.72
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false,
+ "flap_max": 0.775,
+ "run": [
+  13.92,
+  16.0
+ ],
+ "run_max": 0.775,
+ "n_runs": 1,
+ "gate_reused_from": 13.72
+}

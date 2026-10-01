@@ -1,0 +1,31 @@
+{
+ "part": "dev2",
+ "clip": "tg_d029",
+ "family": "Goose",
+ "omni_match": true,
+ "flap_max": 0.696,
+ "outcome": "candidate",
+ "onset": 10.88,
+ "from": "flap",
+ "run": [
+  10.88,
+  11.84
+ ],
+ "run_max": 0.696,
+ "n_runs": 7,
+ "gate": "ask",
+ "times": [
+  9.88,
+  10.28,
+  10.68,
+  11.08,
+  11.48,
+  11.88
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

@@ -1,0 +1,31 @@
+{
+ "part": "dev2",
+ "clip": "tg_d007",
+ "family": "Vehicle",
+ "omni_match": true,
+ "flap_max": 0.532,
+ "outcome": "candidate",
+ "onset": 6.4,
+ "from": "flap",
+ "run": [
+  6.4,
+  10.24
+ ],
+ "run_max": 0.532,
+ "n_runs": 2,
+ "gate": "ask",
+ "times": [
+  5.4,
+  5.8,
+  6.2,
+  6.6,
+  7.0,
+  7.4
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

@@ -1,0 +1,31 @@
+{
+ "part": "dev2",
+ "clip": "tg_d095",
+ "family": "Water",
+ "omni_match": true,
+ "flap_max": 0.823,
+ "outcome": "candidate",
+ "onset": 7.68,
+ "from": "flap",
+ "run": [
+  7.68,
+  11.2
+ ],
+ "run_max": 0.823,
+ "n_runs": 2,
+ "gate": "ask",
+ "times": [
+  6.68,
+  7.08,
+  7.48,
+  7.88,
+  8.28,
+  8.68
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": null,
+ "desc": false
+}

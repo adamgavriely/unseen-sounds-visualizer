@@ -1,0 +1,31 @@
+{
+ "part": "dev2",
+ "clip": "tg_d033",
+ "family": "Footsteps",
+ "omni_match": true,
+ "flap_max": 0.434,
+ "outcome": "candidate",
+ "onset": 4.16,
+ "from": "flap",
+ "run": [
+  4.16,
+  4.64
+ ],
+ "run_max": 0.434,
+ "n_runs": 3,
+ "gate": "ask",
+ "times": [
+  3.16,
+  3.56,
+  3.96,
+  4.36,
+  4.76,
+  5.16
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "people",
+ "name": true,
+ "ab": false,
+ "desc": true
+}

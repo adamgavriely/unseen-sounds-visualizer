@@ -1,0 +1,37 @@
+{
+ "part": "dev",
+ "clip": "waterfall_kawaida_01",
+ "family": "Water",
+ "how": "map:waterfall",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flap",
+ "onsets": {
+  "flex": 0.04,
+  "beats": 1.25,
+  "dasm": 0.06
+ },
+ "times": [
+  -0.96,
+  -0.56,
+  -0.16,
+  0.24,
+  0.64,
+  1.04
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "waterfall",
+ "name": true,
+ "ab": true,
+ "desc": true,
+ "flap_max": 0.917,
+ "run": [
+  0.0,
+  11.36
+ ],
+ "run_max": 0.917,
+ "n_runs": 1,
+ "gate_reused_from": 0.04
+}

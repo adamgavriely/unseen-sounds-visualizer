@@ -1,0 +1,35 @@
+{
+ "part": "dev",
+ "clip": "b3_airport_terminal",
+ "family": "Crowd",
+ "how": "map:crowd noise",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flap",
+ "onsets": {
+  "flex": 0.0
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "people",
+ "name": true,
+ "ab": true,
+ "desc": true,
+ "flap_max": 0.962,
+ "run": [
+  0.0,
+  28.0
+ ],
+ "run_max": 0.962,
+ "n_runs": 1,
+ "gate_reused_from": 0.0
+}

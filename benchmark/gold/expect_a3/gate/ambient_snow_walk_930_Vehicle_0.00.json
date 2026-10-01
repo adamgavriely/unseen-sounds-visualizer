@@ -1,0 +1,36 @@
+{
+ "part": "dev",
+ "clip": "ambient_snow_walk_930",
+ "family": "Vehicle",
+ "how": "map:traffic noise",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flap",
+ "onsets": {
+  "flex": 0.0,
+  "beats": 0.0
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false,
+ "flap_max": 0.7,
+ "run": [
+  0.0,
+  8.8
+ ],
+ "run_max": 0.7,
+ "n_runs": 3,
+ "gate_reused_from": 0.0
+}

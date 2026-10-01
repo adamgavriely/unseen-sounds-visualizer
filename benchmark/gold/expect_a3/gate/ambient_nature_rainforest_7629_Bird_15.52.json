@@ -1,0 +1,31 @@
+{
+ "part": "dev",
+ "clip": "ambient_nature_rainforest_7629",
+ "family": "Bird",
+ "omni_match": true,
+ "flap_max": 0.433,
+ "outcome": "candidate",
+ "onset": 15.52,
+ "from": "flap",
+ "run": [
+  15.52,
+  15.84
+ ],
+ "run_max": 0.433,
+ "n_runs": 4,
+ "gate": "ask",
+ "times": [
+  14.52,
+  14.92,
+  15.32,
+  15.72,
+  16.12,
+  16.52
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

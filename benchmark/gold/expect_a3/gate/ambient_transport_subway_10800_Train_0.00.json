@@ -1,0 +1,36 @@
+{
+ "part": "dev",
+ "clip": "ambient_transport_subway_10800",
+ "family": "Train",
+ "how": "map:train",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flap",
+ "onsets": {
+  "flex": 0.0,
+  "beats": 0.25
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "train",
+ "name": true,
+ "ab": false,
+ "desc": true,
+ "flap_max": 0.997,
+ "run": [
+  0.0,
+  16.0
+ ],
+ "run_max": 0.997,
+ "n_runs": 1,
+ "gate_reused_from": 0.0
+}

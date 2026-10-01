@@ -109,7 +109,7 @@ def cmd_cands():
             else:
                 tally["gate_to_ask"] += 1; row["gate"] = "ask"
         rows.append(row)
-    (DIR / "cands.json").write_text(json.dumps({"tally": tally, "rows": rows}, indent=1), encoding="utf-8")
+    (DIR / "cands.json").write_text(json.dumps({"tally": tally, "caches_missing": {}, "rows": rows}, indent=1), encoding="utf-8")
     print(tally)
     for r in rows:
         print(f"   {r['part']:4s} {r['clip']} {r['family']} max {r['flap_max']} -> {r['outcome']} "

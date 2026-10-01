@@ -2733,3 +2733,18 @@ more-hits rule hits up, cross / phantom not up on either part, w = 1 cost lower)
 **Files:** `benchmark/gold/expect_a3_screen.py` (`flap` GPU in venv_flap -> `expect_a3/flap/<clip>.npz`; `cands` / `score` CPU msproj;
 `gate` GPU msproj for the unmatched onsets) -> `benchmark/gold/expect_a3_screen.json`; `slurm/job_expect_a3.sh` (L4-4h / A100-4h /
 H200-4h).
+### Round 40d result — EXPECT-A3: STOP on both rules (job 31598858 FineLAP + 17 live gates; score re-run on the login node after a JSON-key crash, numbers identical to the job's printed line)
+Base reproduced (28/58, 21 (6/13/2), 2.282). **SHIP8+EXPECT-A3: merged 33/58, 39 wrong (12/22/5), cost 2.507 at w = 2 (base 2.282),
+2.338 at w = 1 (base 2.197)** | DEV 22/38, 26 (8/15/3) | tagger DEV2 11/20, 13 (4/7/2). No hit lost. Funnel: 61 pairs -> 13 below the
+FineLAP bar -> 48 candidates (31 gate answers re-used within 0.5 s, 17 asked) -> 25 gate-seen, 23 added: **5 hits — nyc_1689 Hammer
+13.92 (FineLAP max 0.775, run 13.92–16.0), favela Train 15.04 (0.936, run 15.04–25.6: the placement 40c got wrong at 0.0 is now
+right), bell_miami Bell 0.0, tg_d107 Laughter 8.48 (0.978), tg_d133 Fart 0.0** — plus 6 visible, 9 cross, 3 phantom. Main rule: cost up
+-> STOP. More hits: +5 but 9 cross + 3 phantom -> FAIL. The wrong pictures are the same off-screen wrong names the gate cannot refuse
+(nyc_2627 Mechanical fan, harbour Footsteps 9.76, botanic_garden Footsteps, storm Explosion, motorcycle Gunshot, d029 Goose 10.88
+(gold Chicken 6.9–14.8 but a different family), d095 Door / Water, d007 Vehicle) and visible ones the gate missed (snow_walk Vehicle,
+ia_youtube Water, arrest Glass, d075 Glass, d020 Rain, motorcycle Crowd). rainforest_7629 Bird: FineLAP run 15.52–15.84 (0.433), gate
+not seen there, but gold Bird starts 0.1 s -> cross; pet_shop Bird 0.0 gate-seen (re-used). Closed.
+**Across Rounds 40–40d.** The whole-clip listener + a frozen name map + FineLAP placement reaches 5 of the 14 unreachable needed
+sounds (hammer, train, bell, laughter, fart) with no hit lost — the best recall any screen since Round 13 has shown on these — but
+each variant adds 2–4 wrong pictures per hit, so none passes the cost rule; the limiting part is now the gate's blindness to an
+off-screen WRONG name, not detection or placement.
