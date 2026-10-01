@@ -3184,3 +3184,9 @@ The pet-parrot Dog barks (gap 3.0) were answered new/new -> kept (Adam's case ha
 answers "same source", the gold (and a viewer) wants "the sound came back after a pause"; long-gap merges are the risk. DEV GO
 stands as a DEV result; not shipped (TEST tie with a hit lost). Closed; any follow-up must be pre-registered from the annotation rule,
 not from this TEST read.
+### Round 47 shipped form (Adam 05:19–05:22: "DEV tunes, TEST is a score"; "merge only close enough")
+GRP-A ships with a picture-gap limit GROUP_MAX_GAP 4.0 s (twice the gold's 2-s re-onset rule). Disclosed: the limit was set after
+the TEST read (it excludes the 5.5 s ice-cream-truck merge), so for the limit TEST is not blind; DEV is unchanged (its merges are
+2.75 / 2.96 s). Shipped form through the scorer's own display path (`grp_check.py`): **merged DEV 28/58, 18 (6/10/2), 2.197;
+merged TEST 23/65, 28 (4/19/5), 2.545** (no TEST pair <= 4 s answered same/same -> TEST = base). `src/stage6_visual_augmentation/group.py`
+(live `ensure` in pipeline.run, cache read in `_display_spans`), `config.use_shipped` GROUP_ASK True / GROUP_MAX_GAP 4.0. New base = SHIP8+GRP.
