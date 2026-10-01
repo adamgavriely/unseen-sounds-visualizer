@@ -3158,3 +3158,15 @@ real but listed elsewhere (late/early pictures of a gold sound); 9 not heard. Sa
 "wrong" pictures (either arm) is a real, wanted, unlisted off-screen sound, so absolute costs are a little pessimistic for every arm,
 but EXPECT-A4's TEST loss is not gold incompleteness. EXPECT-A4 stays unshipped. Adam's notes: tg_d001 "Honk" sounds like a goose
 (label/map issue); oc_distant_traffic_hill is a poor clip (music over faint rain), candidate for removal.
+
+## Round 47 GROUP — should two same-sound pictures a few seconds apart be one? (Adam's idea; written 2026-10-01 BEFORE any number of it)
+**Base:** SHIP8 at the shipped MERGE_GAP 2.5 (merged DEV 28/58, 20 wrong (6/12/2), cost 2.254; must reproduce). **Candidates:** every
+pair of consecutive same-family SHIP8 pictures in a clip with gap (next start − previous picture end) in (0, 8] s. **GRP-A (audio):**
+Qwen3-Omni (thinker, greedy, 4 new tokens) hears previous end − 1.0 s … next start + 1.5 s and answers "same" (one continuing sound
+with a pause) or "new" (a separate event); asked in both option orders, merge only if BOTH say same. **GRP-L (sound type):** Qwen3-Omni
+text only: is '{label}' usually one continuing sound or separate short events (both orders, merge every pair of that label only if
+BOTH say continuing). **GRP-LA:** both. A merged pair = one picture (first start, second end); chains merge in time order. Pictures
+are only removed, never added. **Pass (DEV, vs base):** main rule (hits >= 28, no needed hit lost, cost lower) OR the fewer-pictures
+clause (cost lower, >= 3 wrong removed per hit lost, <= 3 lost); best passing arm by cost; w = 1 secondary reported. **TEST** (base
+SHIP8 at 2.5: 23/65, 28, 2.545) is read ONCE for the DEV winner only, after this verdict is written, reported not selected on.
+**Files:** `benchmark/gold/grp_screen.py` (`pairs` CPU, `ask` GPU msproj, `score` CPU) -> `benchmark/gold/grp/`; `slurm/job_grp.sh`.
