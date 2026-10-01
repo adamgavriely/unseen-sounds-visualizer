@@ -230,7 +230,8 @@ ARMS["SHIP7"] = {**ARMS["SHIP6+FLAP"]}                 # the shipped default sin
 ARMS["SHIP7+K4AO"] = {**ARMS["SHIP7"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP7+K4AD"] = {**ARMS["SHIP7+K4AO"], "KEEP_NEEDS_V4_ALL_DASM_KEEP": True}   # round 35 K4A-D
 ARMS["SHIP7+DBR"] = {**ARMS["SHIP7"], "REPEAT_DASM_BRIDGE": 0.575}              # round 35 DBR
-ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5}  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct (Adam)
+ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5, "GROUP_ASK": True, "GROUP_MAX_GAP": 4.0,
+                 "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct (Adam)
 # (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 4.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form

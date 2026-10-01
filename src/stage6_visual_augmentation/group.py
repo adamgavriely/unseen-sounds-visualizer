@@ -2,7 +2,8 @@
 
 Two pictures of the same sound family that are close in time (picture gap in (0, GROUP_MAX_GAP] s) may be one sound
 with a pause (an alarm, a shaver) or two events (two barks). Qwen3-Omni hears the stretch between them and answers "same"
-or "new", in both option orders; only same + same merges them into one picture (first start, second end). Merging only
+or "new", in both option orders; only same + same merges them into one picture (first start, second end). Limitation: no chaining (after a+b merge, the pair b->c is not
+re-asked as a->c); no DEV/TEST clip had a chain. Merging only
 removes pictures, never adds one. The answers are computed once per clip (`ask`) and cached; the display step
 (`_display_spans`) reads the cache, so the scorer and the renderer see the same pictures.
 
@@ -141,7 +142,7 @@ def main(argv=None):
     root, wavd = Path(a[0]), Path(a[1])
     config.use_shipped()                          # the shipped display flags (MERGE_GAP 2.5, MIN_DWELL, ...)
     config.GROUP_ASK = True
-    config.GROUP_CACHE = a[2] if len(a) > 2 else str(root / "group_answers.json")
+    config.GROUP_CACHE = a[2] if len(a) > 2 else config.GROUP_CACHE    # default: the shipped WORK_DIR/group_answers.json
     for d in sorted(p for p in root.iterdir() if (p / "augmentations.json").exists()):
         specs = [AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]),
                                   end=float(s["end"]), augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)),

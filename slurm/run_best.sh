@@ -40,5 +40,5 @@ python $P --split $NAME stage4 --arms B0r "$ARM"
 python $P --split $NAME stage5 --arms B0r "$ARM"
 python $P --split $NAME gates --arms B0r "$ARM"
 # Round 47 GROUP (shipped 1 Oct): Omni same/new answers for close repeats, read at display time via config.GROUP_CACHE
-python -m src.stage6_visual_augmentation.group "data/work/r13$NAME/${ARM}_proposed" "data/work/r13$NAME/wav16" "benchmark/gold/${NAME}_group.json"
+python -m src.stage6_visual_augmentation.group "data/work/r13$NAME/${ARM}_proposed" "data/work/r13$NAME/wav16"   # -> WORK_DIR/group_answers.json (use_shipped GROUP_CACHE)
 echo "DONE runbest $NAME $ARM"
