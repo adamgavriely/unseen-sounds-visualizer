@@ -3141,3 +3141,10 @@ d_corr = d − 2·k/88; the same for DEV (2·k/71). SHIP8's own wrongs are commo
 general incompleteness rate. Whether EXPECT-A4 ships on the corrected view is Adam's decision after he sees the table; `src/` untouched.
 **Files:** `benchmark/gold/gold_scope_items.py` -> `benchmark/gold/gold_scope_items.json` (hidden key) + `docs/review/gold_scope_recheck.html`
 (+ clip media in `docs/review/recheck_media/`); answers -> `benchmark/gold/gold_scope_answers.json`; `gold_scope_items.py score`.
+**Round 46 amendment 1 (written BEFORE any answer exists; the rating page is unchanged).** (a) "Real-unlisted" also needs the clip's
+gold to hold NO sound of the same family anywhere (`score_per_sound.same_family`, the scorer's own matcher). A Q1∧¬Q2∧Q3 item whose
+family the gold lists at another time is reported separately as "real, gold times it elsewhere" (a gold onset error or a late
+repeat; Adam decides per clip) and does NOT enter d_corr. Known at writing: 5 of the 11 E items are listed-elsewhere (arrest
+Footsteps, rainforest_7629 Bird, tg_d020 Rain, air_raid Bird, tg_d045 Vehicle), so at most 3 DEV / 4 TEST E items can move d_corr.
+(b) Items with onset 0.0 play 0–3.0 s (not −0.5–2.5). (c) Media are in `docs/review/gold_scope_media/`. (d) The hidden key
+`gold_scope_items.json` must not be opened before rating.

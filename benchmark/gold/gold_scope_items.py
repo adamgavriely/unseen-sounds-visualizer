@@ -109,13 +109,19 @@ def score():
     print(f"control Q1-yes {c_yes}/{len(C)} (bar <= 2)")
     if c_yes > 2:
         print("STOP: control fails; nothing else computed (pre-registered)"); return
+    from benchmark.gold import score_per_sound as S
+    gold = gold_by_clip()
+    listed = lambda x: any(S.same_family(x["family"], g) for g in gold.get(x["clip"], []))   # amendment 1: gold times it elsewhere
     for s in ("E", "S"):
         ids = [i for i, x in items.items() if x["set"] == s]
-        k = sum(real(ans.get(i, {})) for i in ids)
+        lst = [i for i in ids if real(ans.get(i, {})) and listed(items[i])]
+        print(f"{s}: real, but the gold lists this family elsewhere in the clip: {len(lst)} {lst}")
+        k = sum(real(ans.get(i, {})) for i in ids if not listed(items[i]))
+        print(f"{s}: real-unlisted (no same-family gold in the clip) {k}/{len(ids)}")
         print(f"{s}: real-unlisted {k}/{len(ids)} = {k / len(ids):.2f} {wilson(k, len(ids))}")
         if s == "E":
             for sp, d in (("dev", -0.028), ("test", +0.045)):
-                kk = sum(real(ans.get(i, {})) for i in ids if items[i]["split"] == sp)
+                kk = sum(real(ans.get(i, {})) for i in ids if items[i]["split"] == sp and not listed(items[i]))
                 print(f"  EXPECT-A4 {sp}: d {d:+.3f} -> d_corr {d - 2 * kk / CLIPS[sp]:+.3f} (k = {kk})")
         for i in ids:
             x = items[i]
