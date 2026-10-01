@@ -2046,3 +2046,12 @@ every flipped sound with gold class, counts of none / crop-no / unparsed / uncha
 of every bell_miami stretch and of every flipped sound (`docs/review/box_crops/`). Script `benchmark/gold/box_gate.py`,
 job `slurm/job_box_gate.sh`; nothing in `src/` or `config.py` edited. GO -> a `src/` flag is Adam's decision; STOP ->
 recorded, closed.
+
+### Declared secondary: visible-weighted cost (Adam, 1 Oct 01:04–01:06; written before re-scoring)
+Adam: a picture of a sound whose source is on screen is roughly half as bad as an unrelated one; show it as a scale.
+Secondary cost per clip = (4·miss + w·visible + 2·cross + 2·phantom) / clips, reported as a sweep w ∈ {0, 1, 2} (w = 2 is the
+primary). Weights are the owner's elicited value, not literature-derived (precedent for class-weighted errors: PSDS
+cross-trigger weight; caption-error severity metrics). Disclosure: docs/metric_per_sound.md recorded the September decision
+"visible = full false alarm"; this is a partial, post-hoc reversal, so the primary stays unchanged and every past decision
+stays judged on it. Cross is not split (it includes late same-family pictures the onset rule exists to punish). Re-scored for
+the whole shipped chain on merged DEV and on TEST (aggregates already reported); sensitivity only, no new "better" claim.
