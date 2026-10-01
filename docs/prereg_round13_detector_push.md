@@ -3550,3 +3550,18 @@ reproduces 29/58, 18 (6/10/2), 2.141; **SIGN: 29/58, 18 (6/10/2), 2.141** (DEV 1
 2.141, (2) 0 wrong removed, (3) neither main rule nor fewer-pictures clause. Reading: with this wording the shipped gate VLM
 does not answer the a/b at all (a letter habit, not a judgement), so the source-free "sign" leak gap is untested rather than
 refuted; a rewording would be a new round. Nothing ships; TEST not read.
+
+## Round 54b SIGN-2 — Round 54 with yes/no questions of opposite polarity (written 2026-10-01 BEFORE any SIGN-2 number; Round 54's a/b format was answered "(a)" by position on 88 % of stretches)
+**Questions (fixed, verbatim, label filled in).** Same VLM (Qwen3.8-27B, profile 5), greedy, max_new 4, same frames as Round 54
+(6 per stretch, stretch − 1 s .. + 1 s). Q1 "Do these frames visibly show {label} happening — its effect or motion (for example
+a flash, splash, spray, moving mouth), even with no audio? Answer yes or no." Q2 "Are these frames free of any visible sign that
+{label} is happening? Answer yes or no." A reply is yes / no by its first word (after stripping quotes, brackets, "*"); anything
+else = unparsed. **sign = Q1 yes AND Q2 no**; anything else (incl. unparsed) = no sign; < 2 frames = no sign.
+**Rule, steps, pass: as Round 54** (SIGN_add primary: seen iff shipped seen OR sign on EVERY stretch; SIGN_stretch / SIGN_4th
+reported). Step 1 gate-gold (`benchmark/gold/sign2_gate.py`, base 16/41, 33/38 must reproduce) reported, does not gate step 2.
+Step 2 (`benchmark/gold/sign2_screen.py`) on the same 43 saved SHIP8+MD3 merged-DEV specs / 72 stretches, re-placed and scored
+as `sign_screen.py`; base 29/58, 18 (6/10/2), 2.141 must reproduce. Pass: cost < 2.141 AND wrong removed >= 2 × needed hits
+lost (>= 1 if none lost) AND (main rule OR fewer-pictures clause: wrong <= 18 − 3 × lost, hits >= 26).
+**Step 0 — sanity (decides whether the round runs).** Before steps 1–2, the 10 step-2 stretches at positions 0, 7, …, 63 of the
+fixed ask order are asked and their raw replies printed. If >= 9 of the 10 give the same (Q1, Q2) answer pair -> STOP:
+"untestable with this VLM", steps 1–2 not run. The (Q1, Q2) pair distribution of every later run is reported too.
