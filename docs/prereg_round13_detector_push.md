@@ -3616,3 +3616,28 @@ SHIP8+MD3+TS" sbatch --dependency=afterany:<j> slurm/job_tagger_arms.sh`; PICTUR
 OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row
 (`floor_check_arm.py`), the changed pictures (`benchmark/gold/twinshort_dev.py diff`), the TWIN-SHORT stage-4 counts. Expectation
 (panel, not selection): +1 hit (Gasp 6.7), +0–2 wrong (risk: gunshot-type crosses; the long-partner sub-cases). TEST not read.
+
+## Round 53b WEAK-WITNESS-2 — tiered witness (written 2026-10-01 BEFORE any 415 or DEV number of it; refines Round 53, which failed 2.5:1 < 3:1)
+**Known before writing (Round 53 DEV, `weakwitness_diff.json`, step 0).** DASM_LOCAL_VETO 0.35 keep "both" removed 5 wrong (b3_laundromat
+Train 1.0, mv_protest Glass 4.75, tg_d022 Dog 7.25, tg_d107 Screaming 6.52, tg_d128 Hammer 9.0) and lost 2 needed hits that only ONE
+ear names: tg_d032 Thunder (DASM 0.309, Qwen V4 yes / AF no) and tg_d075 Alarm (DASM 0.296, Qwen no / AF yes) -> 27/58, 13, 2.113.
+**Rule (one new flag, default off: `DASM_LOCAL_ONE_EAR` = b1; new `DASM_LOCAL_KEEP` mode "tiered").** Same place, window and span set
+as Round 53 (non-rescued spans, DASM family max over [start − 0.5, end + 0.5], no-column / no-frame / no-cache -> kept). A span is
+KEPT iff DASM >= b (0.35, unchanged) OR both ears name it (Qwen V4 'onto' AND AF V4 accepts, as now) OR (exactly one ear names it AND
+DASM >= b1). Otherwise dropped (no ear -> dropped below b, as Round 53).
+**Step 1 — b1 from the held-out 415 (`benchmark/gold/weakwitness2_415.py`, CPU).** Same raw BEATs spans as Round 53 step 1 (bar 0.35,
+low 0.175, min 0.3 s, depictable, DASM window as above). Ear proxy: a span is "one-ear" iff its family is named by EXACTLY ONE of the
+two whole-clip lists of that clip — Qwen3-Omni (`heldout_a4/listen/<id>.json` items -> `expect_a_screen.map_item`) and AFN
+(`agree_ears/heldout/<id>.json` families). **Disclosed limitation: these are whole-clip lists, a proxy for the span-level V4 asks the
+DEV rule uses (no P1 listener cache on the 415).** Zero-ear and two-ear spans are reported, not used. Bins of 0.05, cumulative
+precision (Round 42 rule) of one-ear spans with DASM < e; **b1 = the highest edge e in {0.05 … 0.60} with cumulative precision <=
+0.20; STOP unless 0.1 < b1 < 0.35** (b1 in {0.15, 0.20, 0.25, 0.30}).
+**Expected outcome by b1 (from the facts above, not selection):** b1 <= 0.19 -> both lost hits return (0.296 / 0.309 >= b1) and Glass
+4.75 may return too (~29/14); 0.19 < b1 <= 0.29 -> both hits return, ~29/13, cost ~2.000; b1 = 0.30 -> tg_d032 returns, tg_d075
+(0.296) still lost (28 hits, main rule fails); b1 > 0.30 -> STOP (would equal Round 53, fail).
+**Step 2 — DEV (only if b1 exists).** `ARMS["SHIP8+MD3+WW2"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP":
+"tiered", "DASM_LOCAL_ONE_EAR": b1}`; r16dev (~/MscProj_r13) then tgarms (~/MscProj_tg), PICTURE_MIN_CONF None. Base must reproduce
+**29/58, 18 (6/10/2), 2.141**. **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained,
+cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row
+(`floor_check_arm.py`), changed pictures. **Stacking (pre-registered):** if Round 56 TWIN-SHORT also passes, a stack must exempt
+twin-short spans from the witness (as they are exempt from the DASM clip veto). TEST not read.
