@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d085",
+ "family": "Giggle",
+ "how": "matcher:laughter",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 11.44,
+ "from": "flex",
+ "onsets": {
+  "flex": 11.44
+ },
+ "times": [
+  10.44,
+  10.84,
+  11.24,
+  11.64,
+  12.04,
+  12.44
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "woman in blue sari",
+ "name": true,
+ "ab": null,
+ "desc": true
+}

@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d133",
+ "family": "Digestive",
+ "how": "matcher:fart",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.06,
+ "from": "dasm",
+ "onsets": {
+  "dasm": 0.06
+ },
+ "times": [
+  -0.94,
+  -0.54,
+  -0.14,
+  0.26,
+  0.66,
+  1.06
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

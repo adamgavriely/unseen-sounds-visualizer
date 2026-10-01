@@ -1,0 +1,28 @@
+{
+ "part": "dev2",
+ "clip": "tg_d107",
+ "family": "Belly laugh",
+ "how": "matcher:laughter",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flex",
+ "onsets": {
+  "flex": 0.0,
+  "beats": 0.75
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

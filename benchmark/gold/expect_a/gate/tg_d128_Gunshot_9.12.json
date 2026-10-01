@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d128",
+ "family": "Gunshot",
+ "how": "map:gunshot",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 9.12,
+ "from": "flex",
+ "onsets": {
+  "flex": 9.12
+ },
+ "times": [
+  8.12,
+  8.52,
+  8.92,
+  9.32,
+  9.72,
+  10.12
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

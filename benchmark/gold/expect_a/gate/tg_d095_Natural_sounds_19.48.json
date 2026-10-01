@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d095",
+ "family": "Natural sounds",
+ "how": "matcher:water running",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 19.48,
+ "from": "flex",
+ "onsets": {
+  "flex": 19.48
+ },
+ "times": [
+  18.48,
+  18.88,
+  19.28,
+  19.68,
+  20.08,
+  20.48
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "frying pan",
+ "name": false,
+ "ab": null,
+ "desc": false
+}

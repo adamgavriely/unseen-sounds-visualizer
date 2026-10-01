@@ -1,0 +1,14 @@
+{
+ "part": "dev2",
+ "clip": "tg_d085",
+ "seconds": 17.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter\nAssistant: waves, laughter",
+ "items": [
+  "waves",
+  "laughter",
+  "assistant: waves"
+ ]
+}

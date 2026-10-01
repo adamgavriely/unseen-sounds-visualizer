@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d054",
+ "family": "Engine knocking",
+ "how": "map:engine knocking",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flex",
+ "onsets": {
+  "flex": 0.0
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "John Deere tractors",
+ "name": true,
+ "ab": null,
+ "desc": true
+}

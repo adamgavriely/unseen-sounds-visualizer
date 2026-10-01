@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "birds_forest",
+ "family": "Natural sounds",
+ "how": "matcher:wind",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 13.6,
+ "from": "flex",
+ "onsets": {
+  "flex": 13.6
+ },
+ "times": [
+  12.6,
+  13.0,
+  13.4,
+  13.8,
+  14.2,
+  14.6
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

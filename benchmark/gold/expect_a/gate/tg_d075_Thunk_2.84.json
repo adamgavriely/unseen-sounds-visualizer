@@ -1,0 +1,28 @@
+{
+ "part": "dev2",
+ "clip": "tg_d075",
+ "family": "Thunk",
+ "how": "matcher:thud",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 2.84,
+ "from": "flex",
+ "onsets": {
+  "flex": 2.84,
+  "beats": 3.5
+ },
+ "times": [
+  1.84,
+  2.24,
+  2.64,
+  3.04,
+  3.44,
+  3.84
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "blue box",
+ "name": true,
+ "ab": null,
+ "desc": false
+}

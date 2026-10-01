@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "mv_tornado_scene",
+ "family": "Air horn, truck horn",
+ "how": "matcher:horn",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 17.44,
+ "from": "flex",
+ "onsets": {
+  "flex": 17.44
+ },
+ "times": [
+  16.44,
+  16.84,
+  17.24,
+  17.64,
+  18.04,
+  18.44
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

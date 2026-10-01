@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d121",
+ "family": "Vehicle",
+ "how": "map:car",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 7.75,
+ "from": "beats",
+ "onsets": {
+  "beats": 7.75
+ },
+ "times": [
+  6.75,
+  7.15,
+  7.55,
+  7.95,
+  8.35,
+  8.75
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "movie_blueplanet_115",
+ "family": "Natural sounds",
+ "how": "matcher:thunderstorm",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 2.52,
+ "from": "flex",
+ "onsets": {
+  "flex": 2.52
+ },
+ "times": [
+  1.52,
+  1.92,
+  2.32,
+  2.72,
+  3.12,
+  3.52
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "crashing waves",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

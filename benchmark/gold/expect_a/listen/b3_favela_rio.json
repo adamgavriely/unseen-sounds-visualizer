@@ -1,0 +1,16 @@
+{
+ "part": "dev",
+ "clip": "b3_favela_rio",
+ "seconds": 28.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "Train wheels squealing, Train horn, Clickety-clack\nAssistant: Train wheels squealing, Train horn, Clickety-clack\nAssistant: Train wheels squealing, Train horn, Clickety-clack\nAssistant: Train wheels squealing, Train horn, Clickety-clack\nAssistant: Train wheels squealing, Train horn, Clickety-clack\nAssistant: Train wheels squealing, Train",
+ "items": [
+  "train wheels squealing",
+  "train horn",
+  "clickety-clack",
+  "assistant: train wheels squealing",
+  "train"
+ ]
+}

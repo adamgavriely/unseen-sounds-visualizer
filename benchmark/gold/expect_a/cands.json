@@ -1,0 +1,3743 @@
+{
+ "tally": {
+  "items": 306,
+  "named": 326,
+  "by_map": 94,
+  "by_matcher": 232,
+  "already_drawn": 61,
+  "no_run": 135,
+  "candidate": 130
+ },
+ "caches_missing": {
+  "flex": 0,
+  "beats": 0,
+  "dasm": 0
+ },
+ "rows": [
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Hammer",
+   "how": "map:hammer",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 13.72,
+   "from": "flex",
+   "onsets": {
+    "flex": 13.72
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Air conditioning",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Camera",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Cash register",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Clock",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Gears",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Jackhammer",
+   "how": "matcher:hammer",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Mechanical fan",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Printer",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.8,
+   "from": "flex",
+   "onsets": {
+    "flex": 3.8
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Pulleys",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Ratchet, pawl",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Sewing machine",
+   "how": "matcher:mechanisms",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Tools",
+   "how": "matcher:hammer",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "family": "Mechanical fan",
+   "how": "map:mechanical fan",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "family": "Clunk",
+   "how": "matcher:clatter",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Footsteps",
+   "how": "map:footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.12,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.12
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Human locomotion",
+   "how": "matcher:footsteps",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Natural sounds",
+   "how": "matcher:wind|assistant: wind",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Vehicle",
+   "how": "map:motorcycle",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 10.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.0,
+    "beats": 12.25,
+    "dasm": 10.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Bicycle",
+   "how": "matcher:motorcycle",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Water",
+   "how": "map:stream",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 4.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 4.6
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Air horn, truck horn",
+   "how": "matcher:wind chime",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Bell",
+   "how": "matcher:wind chime|assistant: wind chime",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 15.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Doorbell",
+   "how": "matcher:wind chime",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 10.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.6
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Natural sounds",
+   "how": "matcher:wind chime|assistant: wind chime",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Steam whistle",
+   "how": "matcher:wind chime",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "family": "Bird",
+   "how": "map:birdsong",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "beats",
+   "onsets": {
+    "flex": 0.36,
+    "beats": 0.0,
+    "dasm": 12.66
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Vehicle",
+   "how": "map:traffic noise",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Screaming",
+   "how": "matcher:hissing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "family": "Train",
+   "how": "map:train",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.25
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Rain",
+   "how": "map:rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Thunder",
+   "how": "map:thunder",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Thunder"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Water",
+   "how": "matcher:rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 9.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 9.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Rain",
+   "how": "map:rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Thunder",
+   "how": "map:thunder",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Thunder"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Boat",
+   "how": "map:ship",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Water",
+   "how": "matcher:rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "as_church_bell_pJRAWkLM",
+   "family": "Bell",
+   "how": "map:church bell",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bell"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_church_bell_pJRAWkLM",
+   "family": "Doorbell",
+   "how": "matcher:church bell",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Gunshot",
+    "Gunshot"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Explosion",
+    "Explosion"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Footsteps",
+   "how": "map:footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.08,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.08
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Burst, pop",
+   "how": "matcher:explosion",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Explosion",
+    "Explosion"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Fireworks",
+   "how": "matcher:explosion",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Explosion",
+    "Explosion"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Human locomotion",
+   "how": "matcher:footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 8.5,
+   "from": "dasm",
+   "onsets": {
+    "dasm": 8.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Alarm",
+   "how": "map:fire alarm",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Air horn, truck horn",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Crackle",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Doorbell",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Fire",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Foghorn",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Natural sounds",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Siren",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Telephone",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Whistle",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Wildfire",
+   "how": "matcher:fire alarm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "family": "Crowd",
+   "how": "map:crowd noise",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "family": "Insect",
+   "how": "matcher:ant",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Bird",
+   "how": "map:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Bird flight, flapping wings",
+   "how": "matcher:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.48,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.48
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Crow",
+   "how": "matcher:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Gull, seagull",
+   "how": "matcher:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Owl",
+   "how": "matcher:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 6.4,
+   "from": "dasm",
+   "onsets": {
+    "dasm": 6.4
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Squawk",
+   "how": "matcher:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_bakery_morning",
+   "family": "Drawer open or close",
+   "how": "matcher:drawer open|drawer close",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 5.0,
+   "from": "beats",
+   "onsets": {
+    "beats": 5.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "family": "Electric shaver, electric razor",
+   "how": "matcher:electric shaver",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Electric shaver, electric razor",
+    "Electric shaver, electric razor"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "family": "Electric toothbrush",
+   "how": "matcher:electric shaver",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Bird",
+   "how": "map:bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Footsteps",
+   "how": "map:walk - footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.36,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.36
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Vehicle",
+   "how": "map:vehicle",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 10.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Aircraft",
+   "how": "matcher:vehicle|assistant: vehicle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Bird flight, flapping wings",
+   "how": "matcher:bird vocalization - bird call - bird song|assistant: bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Boat",
+   "how": "matcher:vehicle|assistant: vehicle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Crow",
+   "how": "matcher:bird vocalization - bird call - bird song|assistant: bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Gull, seagull",
+   "how": "matcher:bird vocalization - bird call - bird song|assistant: bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Human locomotion",
+   "how": "matcher:walk - footsteps|assistant: walk - footsteps|walk -",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Non-motorized land vehicle",
+   "how": "matcher:vehicle|assistant: vehicle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Owl",
+   "how": "matcher:bird vocalization - bird call - bird song|assistant: bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Squawk",
+   "how": "matcher:bird vocalization - bird call - bird song|assistant: bird vocalization - bird call - bird song",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_carnival_parade",
+   "family": "Glass",
+   "how": "matcher:assistant: cymbal crash",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Vehicle",
+   "how": "map:truck",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Air brake",
+   "how": "matcher:truck|assistant: truck",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 1.75,
+   "from": "beats",
+   "onsets": {
+    "beats": 1.75
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Air horn, truck horn",
+   "how": "matcher:truck|assistant: truck",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.8,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.8
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Engine knocking",
+   "how": "matcher:engine",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Ice cream truck, ice cream van",
+   "how": "matcher:truck|assistant: truck",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Cattle",
+   "how": "map:cow mooing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Donkey, ass",
+   "how": "matcher:farm animals|livestock",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Horse",
+   "how": "matcher:farm animals|livestock",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Natural sounds",
+   "how": "matcher:animal sounds",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Pig",
+   "how": "matcher:farm animals|livestock",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 1.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 1.56
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Sheep",
+   "how": "matcher:farm animals|livestock|cattle",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 13.5,
+   "from": "beats",
+   "onsets": {
+    "beats": 13.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Whale vocalization",
+   "how": "matcher:animal sounds",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Wolf-whistling",
+   "how": "matcher:cow mooing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Yak",
+   "how": "matcher:cattle|beef cattle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Train",
+   "how": "map:train",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.25,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Cat",
+   "how": "map:hiss",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "beats",
+   "onsets": {
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Snake",
+   "how": "matcher:hiss",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Steam",
+   "how": "matcher:hiss",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Steam"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Train",
+   "how": "map:train wheels squealing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 3.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Air horn, truck horn",
+   "how": "matcher:train horn",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Clunk",
+   "how": "matcher:clickety-clack",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Insect",
+   "how": "map:insect buzzing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Bee, wasp, etc.",
+   "how": "matcher:insect buzzing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Cricket",
+   "how": "matcher:insect buzzing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Fly, housefly",
+   "how": "matcher:insect buzzing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Mosquito",
+   "how": "matcher:insect buzzing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "family": "Bird",
+   "how": "map:chirp",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "family": "Squawk",
+   "how": "matcher:chirp",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Water",
+   "how": "map:water tap",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 24.5,
+   "from": "beats",
+   "onsets": {
+    "beats": 24.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Door",
+   "how": "matcher:water tap",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 27.4,
+   "from": "flex",
+   "onsets": {
+    "flex": 27.4
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Natural sounds",
+   "how": "matcher:water tap",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Rain",
+   "how": "matcher:water tap",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Steam",
+   "how": "matcher:water tap",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Tap",
+   "how": "matcher:water tap",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 21.16,
+   "from": "flex",
+   "onsets": {
+    "flex": 21.16
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "family": "Train",
+   "how": "map:train",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Train"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Bird",
+   "how": "map:birdsong",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Crow",
+   "how": "matcher:assistant: caw",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.36,
+   "from": "dasm",
+   "onsets": {
+    "flex": 15.08,
+    "dasm": 0.36
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Squawk",
+   "how": "matcher:assistant: squawk",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Bell",
+   "how": "map:church bell",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.25,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Vehicle",
+   "how": "map:traffic noise",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 10.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.0,
+    "beats": 12.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Doorbell",
+   "how": "matcher:church bell",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Bird",
+   "how": "map:chicken",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Bird flight, flapping wings",
+   "how": "matcher:bird vocalization - bird call - bird song|bird vocalization - bird",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Crow",
+   "how": "matcher:bird vocalization - bird call - bird song|bird vocalization - bird|rooster",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Gull, seagull",
+   "how": "matcher:bird vocalization - bird call - bird song|bird vocalization - bird",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Natural sounds",
+   "how": "matcher:wind",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 13.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 13.6
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Owl",
+   "how": "matcher:bird vocalization - bird call - bird song|bird vocalization - bird",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Squawk",
+   "how": "matcher:bird vocalization - bird call - bird song|bird vocalization - bird",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Honk",
+   "how": "map:air horn",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.44,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.44
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Air horn, truck horn",
+   "how": "matcher:air horn",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Alarm",
+   "how": "matcher:air horn",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 6.08,
+   "from": "flex",
+   "onsets": {
+    "flex": 6.08
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Steam whistle",
+   "how": "matcher:air horn",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Siren",
+   "how": "map:siren",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Siren"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Vehicle",
+   "how": "map:vehicle",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.12
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Aircraft",
+   "how": "matcher:vehicle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Alarm",
+   "how": "matcher:siren|assistant: siren",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Siren"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Boat",
+   "how": "matcher:vehicle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Non-motorized land vehicle",
+   "how": "matcher:vehicle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Clapping",
+   "how": "map:applause",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Baby laughter",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 12.4,
+   "from": "flex",
+   "onsets": {
+    "flex": 12.4
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Belly laugh",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Chuckle, chortle",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "beats",
+   "onsets": {
+    "flex": 12.36,
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Crowd",
+   "how": "matcher:applause",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Crowd"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Giggle",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 12.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Snicker",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "beats",
+   "onsets": {
+    "flex": 10.04,
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "family": "Helicopter",
+   "how": "map:helicopter",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "family": "Aircraft",
+   "how": "matcher:helicopter",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Thunder",
+   "how": "map:thunderstorm",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 6.36,
+   "from": "flex",
+   "onsets": {
+    "flex": 6.36
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Natural sounds",
+   "how": "matcher:thunderstorm",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.52,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.52
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Rain",
+   "how": "matcher:thunderstorm",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Glass",
+   "how": "map:shatter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 11.25,
+   "from": "beats",
+   "onsets": {
+    "beats": 11.25
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Footsteps",
+   "how": "map:footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "dasm": 0.12
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Human locomotion",
+   "how": "matcher:footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.1,
+   "from": "dasm",
+   "onsets": {
+    "dasm": 0.1
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Alarm",
+   "how": "map:alarm clock",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm",
+    "Alarm",
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Air horn, truck horn",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Arrow",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Clock",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Clunk",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Doorbell",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Foghorn",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm",
+    "Alarm",
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Siren",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm",
+    "Alarm",
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Telephone",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm",
+    "Alarm",
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Thump, thud",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 6.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 6.56
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Thunk",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Tick",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 1.16,
+   "from": "flex",
+   "onsets": {
+    "flex": 1.16
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Tick-tock",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Whistle",
+   "how": "matcher:alarm clock",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm",
+    "Alarm",
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "family": "Sheep",
+   "how": "map:sheep",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "family": "Glass",
+   "how": "map:shatter",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Glass",
+    "Glass",
+    "Glass"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "family": "Cattle",
+   "how": "matcher:sheep",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "family": "Natural sounds",
+   "how": "matcher:wind",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 12.16,
+   "from": "flex",
+   "onsets": {
+    "flex": 12.16
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Siren",
+   "how": "map:siren",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 13.25,
+   "from": "beats",
+   "onsets": {
+    "flex": 13.32,
+    "beats": 13.25,
+    "dasm": 13.44
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Alarm",
+   "how": "matcher:siren",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Burst, pop",
+   "how": "matcher:explosion",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Fireworks",
+   "how": "matcher:explosion",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Gunshot",
+   "how": "matcher:explosion",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 13.72,
+   "from": "flex",
+   "onsets": {
+    "flex": 13.72
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Honk",
+   "how": "map:horn",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.56
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Air horn, truck horn",
+   "how": "matcher:horn",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 17.44,
+   "from": "flex",
+   "onsets": {
+    "flex": 17.44
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Stomach rumble",
+   "how": "matcher:rumble",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Thunder",
+   "how": "matcher:rumble",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 7.68,
+   "from": "flex",
+   "onsets": {
+    "flex": 7.68
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Vehicle",
+   "how": "map:vehicle horn",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 1.25,
+    "dasm": 10.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Air horn, truck horn",
+   "how": "matcher:vehicle horn",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.28,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.28,
+    "dasm": 4.96
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Aircraft",
+   "how": "matcher:vehicle horn",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Alarm",
+   "how": "matcher:vehicle horn",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Boat",
+   "how": "matcher:vehicle horn",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Non-motorized land vehicle",
+   "how": "matcher:vehicle horn",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 13.75,
+   "from": "beats",
+   "onsets": {
+    "flex": 13.88,
+    "beats": 13.75,
+    "dasm": 13.94
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.12,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.12,
+    "beats": 1.25
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Explosion",
+   "how": "matcher:gunshot|assistant: gunshot",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Explosion"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "family": "Hair dryer",
+   "how": "map:hair dryer",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "family": "Vacuum cleaner",
+   "how": "matcher:hair dryer",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Water",
+   "how": "map:waterfall",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.04,
+    "beats": 1.25,
+    "dasm": 0.06
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "waves_herzliya",
+   "family": "Water",
+   "how": "map:ocean waves",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Door",
+   "how": "map:door closing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.88,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.88,
+    "beats": 4.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Vehicle",
+   "how": "map:car door slamming",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 4.75,
+   "from": "beats",
+   "onsets": {
+    "beats": 4.75,
+    "dasm": 7.36
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Car passing by",
+   "how": "matcher:car door slamming",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Doorbell",
+   "how": "matcher:door closing|car door slamming",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Engine knocking",
+   "how": "matcher:car door slamming",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Knock",
+   "how": "matcher:door closing|car door slamming",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Power windows, electric windows",
+   "how": "matcher:car door slamming",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 4.68,
+   "from": "flex",
+   "onsets": {
+    "flex": 4.68,
+    "beats": 4.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Sliding door",
+   "how": "matcher:door closing|car door slamming",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 4.52,
+   "from": "flex",
+   "onsets": {
+    "flex": 4.52,
+    "beats": 4.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Tap",
+   "how": "matcher:door closing|car door slamming",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 16.24,
+   "from": "flex",
+   "onsets": {
+    "flex": 16.24
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "family": "Cough",
+   "how": "map:cough",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Cough"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "family": "Throat clearing",
+   "how": "matcher:cough|assistant: cough",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Cough"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "family": "Rain",
+   "how": "map:rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 1.5,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "family": "Water",
+   "how": "matcher:rain",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Goose",
+   "how": "map:goose",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 4.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Bird",
+   "how": "matcher:goose",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.75,
+   "from": "beats",
+   "onsets": {
+    "beats": 3.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Duck",
+   "how": "matcher:goose",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Honk",
+   "how": "matcher:goose",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.8,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.8,
+    "beats": 4.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Insect",
+   "how": "matcher:ant",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Natural sounds",
+   "how": "matcher:wind",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Car passing by",
+   "how": "map:car passing by",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Vehicle",
+   "how": "map:motor vehicle (road)",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Aircraft",
+   "how": "matcher:motor vehicle (road)",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Boat",
+   "how": "matcher:motor vehicle (road)",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Non-motorized land vehicle",
+   "how": "matcher:motor vehicle (road)",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Power windows, electric windows",
+   "how": "matcher:car passing by|assistant: car passing by",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Water",
+   "how": "map:waves",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Natural sounds",
+   "how": "matcher:wind",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Footsteps",
+   "how": "map:footsteps",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 3.04
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Gasp",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 6.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 6.56,
+    "beats": 7.25
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Human locomotion",
+   "how": "matcher:footsteps",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Pant",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 4.28,
+   "from": "flex",
+   "onsets": {
+    "flex": 4.28
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Snoring",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Snort",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Wheeze",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d054",
+   "family": "Vehicle",
+   "how": "map:engine",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d054",
+   "family": "Engine knocking",
+   "how": "map:engine knocking",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Glass",
+   "how": "map:shatter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.25,
+   "from": "beats",
+   "onsets": {
+    "beats": 3.25
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Dog",
+   "how": "map:dog",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Arrow",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Bay",
+   "how": "matcher:dog",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Cat",
+   "how": "matcher:dog",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.0,
+   "from": "beats",
+   "onsets": {
+    "beats": 2.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Clunk",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Thump, thud",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.84,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.84
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Thunk",
+   "how": "matcher:thud",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 2.84,
+   "from": "flex",
+   "onsets": {
+    "flex": 2.84,
+    "beats": 3.5
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Water",
+   "how": "map:waves",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 2.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 11.4,
+   "from": "dasm",
+   "onsets": {
+    "flex": 11.44,
+    "dasm": 11.4
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Baby laughter",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Belly laugh",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 11.52,
+   "from": "flex",
+   "onsets": {
+    "flex": 11.52
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Chuckle, chortle",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 11.8,
+   "from": "flex",
+   "onsets": {
+    "flex": 11.8
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Giggle",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 11.44,
+   "from": "flex",
+   "onsets": {
+    "flex": 11.44
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Snicker",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Rain",
+   "how": "map:rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Thunder",
+   "how": "map:thunderstorm",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Thunder",
+    "Thunder"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Natural sounds",
+   "how": "matcher:thunderstorm",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Water",
+   "how": "matcher:rain|assistant: rain",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Door",
+   "how": "map:door slam",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.6
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Water",
+   "how": "map:water running",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 4.0,
+   "from": "beats",
+   "onsets": {
+    "beats": 4.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Toilet flush",
+   "how": "map:toilet flush",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.04,
+    "beats": 4.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Doorbell",
+   "how": "matcher:door slam",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Knock",
+   "how": "matcher:door slam",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Natural sounds",
+   "how": "matcher:water running",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 19.48,
+   "from": "flex",
+   "onsets": {
+    "flex": 19.48
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Rain",
+   "how": "matcher:water running",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 8.75,
+   "from": "beats",
+   "onsets": {
+    "beats": 8.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Sliding door",
+   "how": "matcher:door slam",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.6
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Steam",
+   "how": "matcher:water running",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 10.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Tap",
+   "how": "matcher:door slam",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.6
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Crying, sobbing",
+   "how": "map:crying",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Crying, sobbing"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.75,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Cough",
+   "how": "map:cough",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Sneeze",
+   "how": "map:sneeze",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Clapping",
+   "how": "map:clapping",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Alarm",
+   "how": "map:buzzer",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Gasp",
+   "how": "map:gasp",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.56
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Whistle",
+   "how": "map:whistle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Throat clearing",
+   "how": "map:throat clearing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Baby cry, infant cry",
+   "how": "matcher:crying|baby cry",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Crying, sobbing"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Baby laughter",
+   "how": "matcher:laughter|baby cry",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Belly laugh",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Booing",
+   "how": "matcher:clapping",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Chuckle, chortle",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Doorbell",
+   "how": "matcher:buzzer",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Giggle",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Hands",
+   "how": "matcher:clapping",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Kettle whistle",
+   "how": "matcher:whistle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Screaming",
+   "how": "matcher:crying",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Screaming"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Snicker",
+   "how": "matcher:laughter",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 9.0,
+   "from": "beats",
+   "onsets": {
+    "beats": 9.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Steam whistle",
+   "how": "matcher:whistle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Tick",
+   "how": "matcher:clicking",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Whimper",
+   "how": "matcher:crying",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Crying, sobbing"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Wolf-whistling",
+   "how": "matcher:whistle",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "family": "Cat",
+   "how": "map:cat",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Cat"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "family": "Caterwaul",
+   "how": "matcher:cat",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Cat"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "family": "Dog",
+   "how": "matcher:cat",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.36,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.36
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Vehicle",
+   "how": "map:car",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 7.75,
+   "from": "beats",
+   "onsets": {
+    "beats": 7.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Car passing by",
+   "how": "matcher:car",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Knock",
+   "how": "matcher:generic impact sounds",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Power windows, electric windows",
+   "how": "matcher:car",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Specific impact sounds",
+   "how": "matcher:generic impact sounds",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.24,
+   "from": "dasm",
+   "onsets": {
+    "dasm": 3.24
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Tap",
+   "how": "matcher:generic impact sounds",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Thump, thud",
+   "how": "matcher:generic impact sounds",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "family": "Arrow",
+   "how": "matcher:thump|assistant: thump",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "family": "Clunk",
+   "how": "matcher:thump|assistant: thump",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 5.48,
+   "from": "flex",
+   "onsets": {
+    "flex": 5.48
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "family": "Thump, thud",
+   "how": "matcher:thump|assistant: thump",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 3.56
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d125",
+   "family": "Thunk",
+   "how": "matcher:thump|assistant: thump",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.56,
+   "from": "flex",
+   "onsets": {
+    "flex": 3.56
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Splash, splatter",
+   "how": "map:splash",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Water",
+   "how": "map:water",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Water"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Insect",
+   "how": "matcher:ant",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.04
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Natural sounds",
+   "how": "matcher:water",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Rain",
+   "how": "matcher:water",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Water"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Steam",
+   "how": "matcher:water",
+   "omni_match": true,
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Water"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 9.12,
+   "from": "flex",
+   "onsets": {
+    "flex": 9.12
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Sheep",
+   "how": "map:sheep",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Bird",
+   "how": "matcher:animal",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 3.92,
+   "from": "flex",
+   "onsets": {
+    "flex": 3.92
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Cat",
+   "how": "matcher:animal",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Cattle",
+   "how": "matcher:animals|sheep",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 1.5,
+   "from": "beats",
+   "onsets": {
+    "beats": 1.5,
+    "dasm": 1.5
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Clunk",
+   "how": "matcher:clatter",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Dog",
+   "how": "matcher:animal",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Explosion",
+   "how": "matcher:gunshot|assistant: gunshot|assistant: gunshots|assistant: gunfire",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Horse",
+   "how": "matcher:animal",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Pig",
+   "how": "matcher:animal",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "family": "Fart",
+   "how": "map:fart",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "beats",
+   "onsets": {
+    "flex": 0.04,
+    "beats": 0.0,
+    "dasm": 0.1
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "family": "Digestive",
+   "how": "matcher:fart",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.06,
+   "from": "dasm",
+   "onsets": {
+    "dasm": 0.06
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Arrow",
+   "how": "matcher:thump",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Clunk",
+   "how": "matcher:thump",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": [
+    "beats"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Gasp",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 7.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 7.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Pant",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 0.25,
+   "from": "beats",
+   "onsets": {
+    "flex": 0.44,
+    "beats": 0.25
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Snoring",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 7.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 7.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Snort",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Thump, thud",
+   "how": "matcher:thump",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Thunk",
+   "how": "matcher:thump",
+   "omni_match": true,
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d149",
+   "family": "Wheeze",
+   "how": "matcher:breathing|assistant: breathing",
+   "omni_match": true,
+   "outcome": "candidate",
+   "onset": 7.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 7.04
+   }
+  }
+ ]
+}

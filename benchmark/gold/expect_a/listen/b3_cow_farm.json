@@ -1,0 +1,33 @@
+{
+ "part": "dev",
+ "clip": "b3_cow_farm",
+ "seconds": 28.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "cow mooing\nably\nable\ncattle\nanimal sounds\nfarm animals\nmoo\ncow\ndairy farm\ncalves\nherd\nbovine\nlivestock\npasture\nagriculture\nranch\nbarnyard\nfarming\nanimals\ndomesticated animals\nbeef cattle\ndairy cows",
+ "items": [
+  "cow mooing",
+  "ably",
+  "able",
+  "cattle",
+  "animal sounds",
+  "farm animals",
+  "moo",
+  "cow",
+  "dairy farm",
+  "calves",
+  "herd",
+  "bovine",
+  "livestock",
+  "pasture",
+  "agriculture",
+  "ranch",
+  "barnyard",
+  "farming",
+  "animals",
+  "domesticated animals",
+  "beef cattle",
+  "dairy cows"
+ ]
+}

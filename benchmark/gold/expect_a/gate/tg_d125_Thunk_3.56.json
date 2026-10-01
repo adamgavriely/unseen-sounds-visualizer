@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d125",
+ "family": "Thunk",
+ "how": "matcher:thump|assistant: thump",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 3.56,
+ "from": "flex",
+ "onsets": {
+  "flex": 3.56
+ },
+ "times": [
+  2.56,
+  2.96,
+  3.36,
+  3.76,
+  4.16,
+  4.56
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": null,
+ "desc": false
+}

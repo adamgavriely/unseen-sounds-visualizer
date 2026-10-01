@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "b3_ia_youtube_skxtz9foauw_0",
+ "family": "Door",
+ "how": "matcher:water tap",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 27.4,
+ "from": "flex",
+ "onsets": {
+  "flex": 27.4
+ },
+ "times": [
+  26.4,
+  26.8,
+  27.2,
+  27.6,
+  28.0,
+  28.4
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

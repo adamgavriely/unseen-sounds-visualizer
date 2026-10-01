@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "b3_pet_shop",
+ "seconds": 28.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "birdsong\nAssistant: birdsong\nAssistant: birdsong\nAssistant: birdcall\nAssistant: chirp\nAssistant: warble\nAssistant: tweet\nAssistant: trill\nAssistant: peep\nAssistant: coo\nAssistant: caw\nAssistant: squawk\nAssistant: ch",
+ "items": [
+  "birdsong",
+  "assistant: birdsong",
+  "assistant: birdcall",
+  "assistant: chirp",
+  "assistant: warble",
+  "assistant: tweet",
+  "assistant: trill",
+  "assistant: peep",
+  "assistant: coo",
+  "assistant: caw",
+  "assistant: squawk",
+  "assistant: ch"
+ ]
+}

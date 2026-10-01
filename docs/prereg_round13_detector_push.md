@@ -2670,3 +2670,24 @@ families, candidate onset, gate votes, outcome; funnel totals; both verdicts. GO
 Nothing in `src/` or `config.py` edited.
 **Files:** `benchmark/gold/expect_a_screen.py` (`listen` GPU / `cands` CPU / `gate` GPU / `score` CPU, re-using
 `expect_screen.cmd_gate` / `cmd_score` on `benchmark/gold/expect_a/`) -> `benchmark/gold/expect_a_screen.json`; `slurm/job_expect_a.sh`.
+### Round 40b result — EXPECT-A: STOP on both rules (job 31598712, H200)
+Base reproduced (28/58, 21 (6/13/2), 2.282). **SHIP8+EXPECT-A: merged 33/58, 104 wrong (16/64/24), cost 4.338 at w = 2 (base 2.282),
+4.113 at w = 1 (base 2.197)** | DEV 22/38, 54 (11/32/11) | tagger DEV2 11/20, 50 (5/32/13). No hit lost. Funnel: 306 Omni items ->
+326 family namings (94 frozen map, 232 shipped matcher) -> 61 already drawn, 135 no weak-bar run -> 130 candidates -> gate seen 41,
+added 89. **5 new hits: nyc_1689 Hammer 13.72 s (map "hammer"; gold Hammer 13.7–16.0), bell_miami Bell 0.0, pet_shop Crow 0.36 (via
+"caw", same family as the gold Bird; the Bird candidate itself was gate-seen 3/3), tg_d107 Snicker 9.0 (matcher from "laughter"),
+tg_d133 Fart 0.0 (map).** But 83 wrong pictures: the matcher's cosine > 0.6 on short items spreads every heard sound over its ontology
+neighbours (tg_d095 "door slam, water running" -> Door, Sliding door, Tap, Toilet flush, Water, Rain, Steam, Natural sounds = 8 wrong;
+tg_d107 "laughter" -> Laughter, Belly laugh, Chuckle, Giggle, Gasp; nyc_1689 "mechanisms" -> Printer), and the gate passes most of
+them because their makers are indeed off-screen. Main rule: cost up -> STOP. More hits: +5 hits but 64 cross + 24 phantom -> FAIL.
+**Target clips.** nyc_1689: "Hammer, Mechanisms" -> Hammer 13.72 added = HIT (+ Printer cross). nyc_2627: "mechanical fan, clatter"
+-> Mechanical fan 0.0 (no gold Clang). rainforest_2179: "wind chime, stream" -> Water gate-seen, Bell phantom, Doorbell cross; Bird
+never named. rainforest_7629: "birdsong, piano" -> Bird 0.0 gate SEEN 3/3 (the frames show a bird) -> nothing. pet_shop: "birdsong" ->
+Bird gate-seen 3/3, Crow 0.36 passes = HIT. favela: "train wheels squealing, train horn" -> Train onset 0.0 (FlexSED run at the start;
+gold 14.6 s) -> cross. bell_miami: Bell HIT, Vehicle gate-seen. tg_d029: "wind, goose" -> Goose 0.0, Bird 3.75, Honk 0.8 all phantom
+(gold Chicken 6.9 s; no early run matches). tg_d033: "breathing, footsteps" -> Footsteps/Gasp gate-seen, Pant cross; Siren never named.
+tg_d095: 8 wrong, Dishes never named. tg_d107: Snicker HIT, 5 cross. tg_d125: Clunk/Thump/Thunk wrong, Explosion/Clapping never named.
+tg_d133: Fart HIT. mv_storm: Explosion/Gunshot cross (Siren already drawn as Alarm). golf, as_explosion, carnival, ambulance: nothing new.
+**Finding.** The ears alone find 5 of the 14 unreachable needed sounds at the first weak run, which no earlier round did; the price is
+the open-inventory match (ontology neighbours) and a gate that cannot refuse an off-screen wrong family. Closed as pre-registered;
+a stricter name match (frozen map only, no cosine) would be a new round, not this one (map-only candidates: 59 of 130).

@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "b3_crossing_bells",
+ "family": "Cat",
+ "how": "map:hiss",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "beats",
+ "onsets": {
+  "beats": 0.0
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

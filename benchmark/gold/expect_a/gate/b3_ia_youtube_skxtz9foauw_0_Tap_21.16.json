@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "b3_ia_youtube_skxtz9foauw_0",
+ "family": "Tap",
+ "how": "matcher:water tap",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 21.16,
+ "from": "flex",
+ "onsets": {
+  "flex": 21.16
+ },
+ "times": [
+  20.16,
+  20.56,
+  20.96,
+  21.36,
+  21.76,
+  22.16
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "camera",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

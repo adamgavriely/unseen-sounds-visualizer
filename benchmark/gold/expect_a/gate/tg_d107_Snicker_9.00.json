@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d107",
+ "family": "Snicker",
+ "how": "matcher:laughter",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 9.0,
+ "from": "beats",
+ "onsets": {
+  "beats": 9.0
+ },
+ "times": [
+  8.0,
+  8.4,
+  8.8,
+  9.2,
+  9.6,
+  10.0
+ ],
+ "n_frames": 5,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

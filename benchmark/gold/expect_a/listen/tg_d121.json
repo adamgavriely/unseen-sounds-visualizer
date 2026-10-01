@@ -1,0 +1,15 @@
+{
+ "part": "dev2",
+ "clip": "tg_d121",
+ "seconds": 9.51,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "Car, Tire squeal, Generic impact sounds\nAssistant\nCar, Tire squeal, Generic impact sounds\nAssistant\nCar, Tire squeal, Generic impact sounds\nAssistant\nCar, Tire squeal, Generic impact sounds\nAssistant\nCar, Tire squeal, Generic impact sounds\nAssistant\nCar, Tire squeal, Generic impact sounds\nAssistant\nCar, Tire squeal,",
+ "items": [
+  "car",
+  "tire squeal",
+  "generic impact sounds",
+  "assistant"
+ ]
+}

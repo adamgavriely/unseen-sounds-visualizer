@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "mv_detective_crime_scene",
+ "family": "Tick",
+ "how": "matcher:alarm clock",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 1.16,
+ "from": "flex",
+ "onsets": {
+  "flex": 1.16
+ },
+ "times": [
+  0.16,
+  0.56,
+  0.96,
+  1.36,
+  1.76,
+  2.16
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

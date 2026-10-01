@@ -1,0 +1,29 @@
+{
+ "part": "dev2",
+ "clip": "tg_d133",
+ "family": "Fart",
+ "how": "map:fart",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "beats",
+ "onsets": {
+  "flex": 0.04,
+  "beats": 0.0,
+  "dasm": 0.1
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": true
+}

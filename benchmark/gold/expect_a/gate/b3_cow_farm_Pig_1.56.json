@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "b3_cow_farm",
+ "family": "Pig",
+ "how": "matcher:farm animals|livestock",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 1.56,
+ "from": "flex",
+ "onsets": {
+  "flex": 1.56
+ },
+ "times": [
+  0.56,
+  0.96,
+  1.36,
+  1.76,
+  2.16,
+  2.56
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

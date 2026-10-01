@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "b3_bakery_morning",
+ "family": "Drawer open or close",
+ "how": "matcher:drawer open|drawer close",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 5.0,
+ "from": "beats",
+ "onsets": {
+  "beats": 5.0
+ },
+ "times": [
+  4.0,
+  4.4,
+  4.8,
+  5.2,
+  5.6,
+  6.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

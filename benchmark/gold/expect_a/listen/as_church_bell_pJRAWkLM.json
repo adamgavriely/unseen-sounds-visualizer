@@ -1,0 +1,13 @@
+{
+ "part": "dev",
+ "clip": "as_church_bell_pJRAWkLM",
+ "seconds": 20.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "church bell\n-by\n-by\n-by\n...\n-by\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...\n...",
+ "items": [
+  "church bell",
+  "by"
+ ]
+}

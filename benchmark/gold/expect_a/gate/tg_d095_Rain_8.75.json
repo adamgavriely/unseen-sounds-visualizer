@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d095",
+ "family": "Rain",
+ "how": "matcher:water running",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 8.75,
+ "from": "beats",
+ "onsets": {
+  "beats": 8.75
+ },
+ "times": [
+  7.75,
+  8.15,
+  8.55,
+  8.95,
+  9.35,
+  9.75
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

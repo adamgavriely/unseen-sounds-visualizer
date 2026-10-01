@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "mv_tornado_scene",
+ "family": "Honk",
+ "how": "map:horn",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 2.56,
+ "from": "flex",
+ "onsets": {
+  "flex": 2.56
+ },
+ "times": [
+  1.56,
+  1.96,
+  2.36,
+  2.76,
+  3.16,
+  3.56
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

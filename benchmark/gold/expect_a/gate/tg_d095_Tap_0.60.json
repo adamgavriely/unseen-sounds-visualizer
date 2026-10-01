@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d095",
+ "family": "Tap",
+ "how": "matcher:door slam",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.6,
+ "from": "flex",
+ "onsets": {
+  "flex": 0.6
+ },
+ "times": [
+  -0.4,
+  0.0,
+  0.4,
+  0.8,
+  1.2,
+  1.6
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

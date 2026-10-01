@@ -1,0 +1,27 @@
+{
+ "part": "dev2",
+ "clip": "tg_d033",
+ "family": "Pant",
+ "how": "matcher:breathing|assistant: breathing",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 4.28,
+ "from": "flex",
+ "onsets": {
+  "flex": 4.28
+ },
+ "times": [
+  3.28,
+  3.68,
+  4.08,
+  4.48,
+  4.88,
+  5.28
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

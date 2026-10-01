@@ -1,0 +1,28 @@
+{
+ "part": "dev2",
+ "clip": "tg_d149",
+ "family": "Pant",
+ "how": "matcher:breathing|assistant: breathing",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.25,
+ "from": "beats",
+ "onsets": {
+  "flex": 0.44,
+  "beats": 0.25
+ },
+ "times": [
+  -0.75,
+  -0.35,
+  0.05,
+  0.45,
+  0.85,
+  1.25
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}
