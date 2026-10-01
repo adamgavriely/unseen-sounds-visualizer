@@ -196,11 +196,15 @@ def cmd_run():
     from benchmark.gold import sign_screen as SS
     CACHE.mkdir(parents=True, exist_ok=True)
     S = [x for x in specs() if not (CACHE / f"{SS.key(*x)}.json").exists()]
+    if os.environ.get("EXPLAIN_REVERSE"):         # second worker on another card: same asks, reverse order (cache skip)
+        S = S[::-1]
     print(len(S), "specs to ask", flush=True)
     if not S:
         return
     reason, (mdl, proc) = _load()
     for x in S:
+        if (CACHE / f"{SS.key(*x)}.json").exists():   # written meanwhile by the other worker
+            continue
         r = ask(reason, mdl, proc, *x)
         (CACHE / f"{SS.key(*x)}.json").write_text(json.dumps(r, indent=1), encoding="utf-8")
         print(r["part"], r["clip"], r["label"], r["start"], "Q1", r["q1_replies"], r.get("q1_reprompt"), r["q1"], "| Q2",
