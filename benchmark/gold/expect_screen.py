@@ -69,8 +69,13 @@ def parse_families(reply: str):
             items = [str(x) for x in json.loads(m.group(0))]
         except Exception:
             items = [x.strip().strip('"\'') for x in m.group(0).strip("[]").split(",")]
-    else:
-        items = [x.strip().strip('"\'-* ') for x in reply.splitlines()]
+    else:                                                       # amendment 1: whole-word family names, order of first appearance
+        low = reply.lower(); hits = []
+        for f in FAMILIES:
+            m2 = re.search(r"(?<![a-z])" + re.escape(f.lower()) + r"(?![a-z])", low)
+            if m2:
+                hits.append((m2.start(), f))
+        items = [f for _p, f in sorted(hits)]
     kept, disc = [], []
     for it in items:
         it = it.strip()
@@ -163,6 +168,8 @@ def cmd_cands():
         if not (pf.exists() and lf.exists()):
             print("missing stage output", pt, st); continue
         P = json.loads(pf.read_text(encoding="utf-8")); L = json.loads(lf.read_text(encoding="utf-8"))
+        P["families"], P["discarded"] = parse_families(P["reply"])          # amendment 1: re-parse from the stored reply
+        pf.write_text(json.dumps(P, indent=1), encoding="utf-8")
         cs = G.caches(pt, st)
         for m in D.BARS:
             missing[m] += cs[m] is None
