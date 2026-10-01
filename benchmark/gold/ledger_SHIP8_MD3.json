@@ -1,0 +1,498 @@
+{
+ "arm": "SHIP8+MD3",
+ "misses": [
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "kind": "miss",
+   "sound": "Vehicle",
+   "at": 3.8,
+   "end": 4.3,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "kind": "miss",
+   "sound": "Hammer",
+   "at": 8.1,
+   "end": 10.7,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "kind": "miss",
+   "sound": "Hammer",
+   "at": 13.7,
+   "end": 16.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "ambient_citywalk_nyc_2627",
+   "kind": "miss",
+   "sound": "Clang",
+   "at": 3.8,
+   "end": 4.4,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "ambient_nature_rainforest_2179",
+   "kind": "miss",
+   "sound": "Bird",
+   "at": 6.5,
+   "end": 16.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "kind": "miss",
+   "sound": "Bird",
+   "at": 0.1,
+   "end": 16.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "kind": "miss",
+   "sound": "Walk, footsteps",
+   "at": 2.1,
+   "end": 11.3,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "kind": "miss",
+   "sound": "Explosion",
+   "at": 2.8,
+   "end": 4.2,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Explosion",
+     5.68
+    ],
+    [
+     "Explosion",
+     9.25
+    ]
+   ],
+   "part": "dev"
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "kind": "miss",
+   "sound": "Gasp",
+   "at": 6.7,
+   "end": 7.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "b3_carnival_parade",
+   "kind": "miss",
+   "sound": "Whistle",
+   "at": 6.1,
+   "end": 7.4,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "b3_favela_rio",
+   "kind": "miss",
+   "sound": "Train",
+   "at": 14.6,
+   "end": 28.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "b3_golf_course",
+   "kind": "miss",
+   "sound": "Whack, thwack",
+   "at": 6.5,
+   "end": 7.1,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "b3_golf_course",
+   "kind": "miss",
+   "sound": "Whack, thwack",
+   "at": 24.4,
+   "end": 25.1,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "b3_pet_shop",
+   "kind": "miss",
+   "sound": "Bird",
+   "at": 0.1,
+   "end": 27.8,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "bell_miami",
+   "kind": "miss",
+   "sound": "Bell",
+   "at": 0.2,
+   "end": 14.5,
+   "importance": 3,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "birds_forest",
+   "kind": "miss",
+   "sound": "Bird",
+   "at": 1.3,
+   "end": 18.0,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Bird",
+     10.25
+    ]
+   ],
+   "part": "dev"
+  },
+  {
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "kind": "miss",
+   "sound": "Vehicle",
+   "at": 7.3,
+   "end": 8.8,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev"
+  },
+  {
+   "clip": "ly_applause_62ZYD0u",
+   "kind": "miss",
+   "sound": "Crowd",
+   "at": 1.9,
+   "end": 10.0,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Crowd",
+     0.0
+    ]
+   ],
+   "part": "dev"
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "kind": "miss",
+   "sound": "Civil defense siren",
+   "at": 16.9,
+   "end": 20.4,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Alarm",
+     2.18
+    ]
+   ],
+   "part": "dev"
+  },
+  {
+   "clip": "tg_d029",
+   "kind": "miss",
+   "sound": "Chicken, rooster",
+   "at": 6.9,
+   "end": 14.8,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d032",
+   "kind": "miss",
+   "sound": "Thunder",
+   "at": 2.8,
+   "end": 5.3,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Thunder",
+     13.75
+    ]
+   ],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d032",
+   "kind": "miss",
+   "sound": "Thunder",
+   "at": 7.4,
+   "end": 10.4,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Thunder",
+     13.75
+    ]
+   ],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d033",
+   "kind": "miss",
+   "sound": "Siren",
+   "at": 0.0,
+   "end": 18.0,
+   "importance": 3,
+   "same_family_pictures": [],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d095",
+   "kind": "miss",
+   "sound": "Dishes, pots, and pans",
+   "at": 16.6,
+   "end": 17.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d120",
+   "kind": "miss",
+   "sound": "Meow",
+   "at": 2.9,
+   "end": 5.6,
+   "importance": 2,
+   "same_family_pictures": [
+    [
+     "Cat",
+     0.56
+    ]
+   ],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d125",
+   "kind": "miss",
+   "sound": "Explosion",
+   "at": 5.4,
+   "end": 5.7,
+   "importance": 3,
+   "same_family_pictures": [],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d125",
+   "kind": "miss",
+   "sound": "Clapping",
+   "at": 8.5,
+   "end": 10.0,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d133",
+   "kind": "miss",
+   "sound": "Fart",
+   "at": 0.0,
+   "end": 1.1,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d133",
+   "kind": "miss",
+   "sound": "Fart",
+   "at": 5.6,
+   "end": 6.4,
+   "importance": 2,
+   "same_family_pictures": [],
+   "part": "dev2"
+  }
+ ],
+ "wrong": [
+  {
+   "clip": "ambient_weather_storm_16200",
+   "kind": "wrong",
+   "type": "visible",
+   "picture": "Thunder",
+   "at": 0.06,
+   "gold": "Thunder",
+   "part": "dev"
+  },
+  {
+   "clip": "ambient_weather_storm_7200",
+   "kind": "wrong",
+   "type": "visible",
+   "picture": "Thunder",
+   "at": 0.06,
+   "gold": "Thunder",
+   "part": "dev"
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Gunshot",
+   "at": 8.25,
+   "gold": "Walk, footsteps 2.1-11.3",
+   "part": "dev"
+  },
+  {
+   "clip": "b3_crossing_bells",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Steam",
+   "at": 0.22,
+   "gold": "Train 0.0-17.0 (seen)",
+   "part": "dev"
+  },
+  {
+   "clip": "b3_golf_course",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Bird",
+   "at": 18.84,
+   "gold": "Bird 0.0-28.0, Walk, footsteps 17.1-19.3 (seen)",
+   "part": "dev"
+  },
+  {
+   "clip": "b3_laundromat",
+   "kind": "wrong",
+   "type": "phantom",
+   "picture": "Train",
+   "at": 1.0,
+   "gold": "",
+   "part": "dev"
+  },
+  {
+   "clip": "london_protest_01",
+   "kind": "wrong",
+   "type": "visible",
+   "picture": "Vehicle",
+   "at": 0.25,
+   "gold": "Air horn, truck horn",
+   "part": "dev"
+  },
+  {
+   "clip": "ly_applause_62ZYD0u",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Crowd",
+   "at": 0.0,
+   "gold": "Laughter 0.0-13.8 (seen)",
+   "part": "dev"
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Glass",
+   "at": 4.75,
+   "gold": "Crowd 0.0-20.0, Baby cry, infant cry 3.2-5.1 (seen)",
+   "part": "dev"
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "kind": "wrong",
+   "type": "visible",
+   "picture": "Explosion",
+   "at": 13.52,
+   "gold": "Fireworks",
+   "part": "dev"
+  },
+  {
+   "clip": "un_hair_dryer_drying_WWu24rJs",
+   "kind": "wrong",
+   "type": "phantom",
+   "picture": "Computer keyboard",
+   "at": 11.25,
+   "gold": "",
+   "part": "dev"
+  },
+  {
+   "clip": "tg_d022",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Dog",
+   "at": 7.25,
+   "gold": "Chopping (food) 7.0-8.3 (seen)",
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d088",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Explosion",
+   "at": 10.75,
+   "gold": "Rain 0.0-14.8 (seen), Thunder 11.1-14.7 (seen)",
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d088",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Thunder",
+   "at": 13.25,
+   "gold": "Rain 0.0-14.8 (seen), Thunder 11.1-14.7 (seen)",
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d107",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Screaming",
+   "at": 6.52,
+   "gold": "Bird vocalization, bird call, bird song 6.0-8.9 (seen)",
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d127",
+   "kind": "wrong",
+   "type": "visible",
+   "picture": "Water",
+   "at": 0.14,
+   "gold": "Water",
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d128",
+   "kind": "wrong",
+   "type": "visible",
+   "picture": "Laughter",
+   "at": 3.08,
+   "gold": "Laughter",
+   "part": "dev2"
+  },
+  {
+   "clip": "tg_d128",
+   "kind": "wrong",
+   "type": "cross",
+   "picture": "Hammer",
+   "at": 9.0,
+   "gold": "Clang 5.6-10.0 (seen)",
+   "part": "dev2"
+  }
+ ]
+}
