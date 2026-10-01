@@ -91,3 +91,8 @@ bell, laughter, fart), but TEST 25 / 35 / 2.614 vs 23 / 29 / 2.568 (+2 hits, +6 
 What the night showed: the missing sounds can be found (the listener names hammer, train, bell, fart on the whole clip), but
 every way of adding them brings 2–4 wrong pictures per hit, because the visibility check cannot tell a wrong off-screen
 sound from a right one. The visibility check itself trades needed sounds for visible ones about 1:1 under every variant tried.
+
+**Held-out check (415 AudioSet clips, not DEV/TEST):** the sound part of EXPECT-A4 (listener names a sound on the whole clip →
+FineLAP times it → DASM confirms) is right 80 % of the time (74 of 92), vs 38–39 % for our raw detectors on the same clips.
+So the listener-proposed sounds are mostly real; on DEV/TEST they turn into wrong pictures because the visibility check passes
+them or because the gold only lists the salient sounds.
