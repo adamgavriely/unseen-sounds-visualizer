@@ -3009,3 +3009,16 @@ vote: +3 silenced (carnival Drum, crossing Train — seen; rainforest_7629 Bird 
 the annotator's question is answered right for the off-screen whack, bell and bird, and wrong for on-screen animals and
 engines whose "action" is subtle at ±0.3 s; the net on this bar is one seen sound short. Not GO; no full-pipeline arm. A
 follow-up (not run): (b) yes OR shipped majority per stretch, i.e. HUMAN-2 as an ADD-seen rule like SYNC-2. Closed.
+### Round 42 HELDOUT-A4 result — the audio chain is PRECISE without the gate (job 31598973, H200, 23 min; `heldout_a4_screen.json`)
+All 415 clips (every cache present; the DASM folder's 416th file is the Round 6 log, not a clip). Funnel: 1819 listener items -> 409
+mapped -> 334 first-two pairs on 257 clips -> 115 below the FineLAP bar -> 219 placed -> 0 without a DASM column, 127 below DASM ->
+**92 kept**. **Kept precision 74/92 = 0.804** (10 wrong time, 8 family absent); FineLAP-placed before DASM 130/219 = 0.594 (DASM
+removes 89 wrong for 56 right). Per family (>= 3): Laughter 9/10, Crowd 8/9, Vehicle 5/6, Dog 5/5, Bell 4/4, Cough 4/4, Toilet flush
+3/3, Bird 3/5, Typing 2/3, Gunshot 1/5, Cat 1/3, Water 1/3; 25 thin families 27/32. 34 of the 92 onsets are 0.0 s (31 correct).
+**Raw detectors, same rule, depictable families: FlexSED 117/297 = 0.394, BEATs 283/754 = 0.375** (PRIOR415 strict: 0.517 / 0.376).
+Same families: BEATs Bird 29/53, Gunshot 6/25, Cat 5/17, Water 8/35, Dog 24/32; FlexSED Laughter 18/23, Crowd 17/29, Bell 10/17.
+**Reading (pre-registered rule): the chain's precision (0.80) is clearly above the raw detectors' (0.39 / 0.38) on the same clips, so
+the DEV/TEST wrong pictures of EXPECT-A4 are the gate's problem, not the audio part's.** Caveats: AudioSet-Strong clips are 10 s and
+mostly single-scene (DEV/TEST are longer, off-screen-rich walks), and "correct" here is audio timing only — a right, well-timed sound
+whose maker is on screen is still a wrong picture in gold (the 1 visible of 8 on TEST, 1 of 8 on DEV). The weak families on the 415
+(Gunshot 1/5, Cat 1/3, Water 1/3) are the same ones that produced cross pictures on DEV/TEST. Diagnostic only; nothing selected.

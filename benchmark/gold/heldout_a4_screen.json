@@ -1,0 +1,4618 @@
+{
+ "round": "Round 42 HELDOUT-A4",
+ "clips": 415,
+ "rule": "correct iff a same_family strong event starts in [onset-0.5, onset+1.0]",
+ "funnel": {
+  "clips": 415,
+  "items": 1819,
+  "named": 409,
+  "kept2": 334,
+  "clips_with_pair": 257,
+  "pairs": 334,
+  "below_flap": 115,
+  "no_dasm_column": 0,
+  "below_dasm": 127,
+  "kept": 92
+ },
+ "kept": {
+  "n": 92,
+  "correct": 74,
+  "wrong_time": 10,
+  "absent": 8,
+  "precision": 0.804
+ },
+ "placed_before_dasm": {
+  "n": 219,
+  "correct": 130,
+  "wrong_time": 25,
+  "absent": 64,
+  "precision": 0.594
+ },
+ "per_family_kept": {
+  "Laughter": {
+   "n": 10,
+   "correct": 9,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.9
+  },
+  "Crowd": {
+   "n": 9,
+   "correct": 8,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.889
+  },
+  "Vehicle": {
+   "n": 6,
+   "correct": 5,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.833
+  },
+  "Bird": {
+   "n": 5,
+   "correct": 3,
+   "wrong_time": 2,
+   "absent": 0,
+   "precision": 0.6
+  },
+  "Dog": {
+   "n": 5,
+   "correct": 5,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Gunshot": {
+   "n": 5,
+   "correct": 1,
+   "wrong_time": 2,
+   "absent": 2,
+   "precision": 0.2
+  },
+  "Bell": {
+   "n": 4,
+   "correct": 4,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Cough": {
+   "n": 4,
+   "correct": 4,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Cat": {
+   "n": 3,
+   "correct": 1,
+   "wrong_time": 2,
+   "absent": 0,
+   "precision": 0.333
+  },
+  "Toilet flush": {
+   "n": 3,
+   "correct": 3,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Typing": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.667
+  },
+  "Water": {
+   "n": 3,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 1,
+   "precision": 0.333
+  }
+ },
+ "thin_kept": {
+  "Alarm": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Cattle": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.5
+  },
+  "Explosion": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Insect": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.5
+  },
+  "Shout": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Snoring": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Train": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Boat": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Car passing by": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Drill": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Electric toothbrush": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Foghorn": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Frog": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Goose": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Helicopter": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Hiccup": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Knock": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Owl": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Printer": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Skateboard": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Spray": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Thunder": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Typewriter": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Vacuum cleaner": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Whoop": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  }
+ },
+ "per_family_placed": {
+  "Crowd": {
+   "n": 20,
+   "correct": 12,
+   "wrong_time": 2,
+   "absent": 6,
+   "precision": 0.6
+  },
+  "Laughter": {
+   "n": 16,
+   "correct": 12,
+   "wrong_time": 2,
+   "absent": 2,
+   "precision": 0.75
+  },
+  "Explosion": {
+   "n": 10,
+   "correct": 5,
+   "wrong_time": 0,
+   "absent": 5,
+   "precision": 0.5
+  },
+  "Gunshot": {
+   "n": 10,
+   "correct": 2,
+   "wrong_time": 2,
+   "absent": 6,
+   "precision": 0.2
+  },
+  "Vehicle": {
+   "n": 10,
+   "correct": 7,
+   "wrong_time": 2,
+   "absent": 1,
+   "precision": 0.7
+  },
+  "Water": {
+   "n": 10,
+   "correct": 4,
+   "wrong_time": 3,
+   "absent": 3,
+   "precision": 0.4
+  },
+  "Clapping": {
+   "n": 9,
+   "correct": 5,
+   "wrong_time": 1,
+   "absent": 3,
+   "precision": 0.556
+  },
+  "Bird": {
+   "n": 8,
+   "correct": 5,
+   "wrong_time": 3,
+   "absent": 0,
+   "precision": 0.625
+  },
+  "Dog": {
+   "n": 7,
+   "correct": 5,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.714
+  },
+  "Bell": {
+   "n": 6,
+   "correct": 5,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.833
+  },
+  "Cough": {
+   "n": 6,
+   "correct": 6,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Train": {
+   "n": 6,
+   "correct": 3,
+   "wrong_time": 2,
+   "absent": 1,
+   "precision": 0.5
+  },
+  "Cat": {
+   "n": 5,
+   "correct": 1,
+   "wrong_time": 2,
+   "absent": 2,
+   "precision": 0.2
+  },
+  "Screaming": {
+   "n": 5,
+   "correct": 3,
+   "wrong_time": 1,
+   "absent": 1,
+   "precision": 0.6
+  },
+  "Alarm": {
+   "n": 4,
+   "correct": 3,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.75
+  },
+  "Tap": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 4,
+   "precision": 0.0
+  },
+  "Whistle": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Camera": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.667
+  },
+  "Cooking": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.667
+  },
+  "Drill": {
+   "n": 3,
+   "correct": 3,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Sawing": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Siren": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.667
+  },
+  "Toilet flush": {
+   "n": 3,
+   "correct": 3,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Typewriter": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Typing": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.667
+  },
+  "Cattle": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.5
+  },
+  "Clock": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Dial tone": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Helicopter": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.5
+  },
+  "Insect": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.5
+  },
+  "Mechanical fan": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Microwave oven": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.5
+  },
+  "Power tool": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Shout": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Skateboard": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.5
+  },
+  "Snoring": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Air brake": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Aircraft": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Basketball bounce": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Boat": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Buzz": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Car passing by": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Chink, clink": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Cricket": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Crying, sobbing": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Door": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Duck": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Electric toothbrush": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Foghorn": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Footsteps": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Frog": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Glass": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Goose": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Hair dryer": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Hiccup": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Knock": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Owl": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Printer": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Pump (liquid)": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Rain": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Roar": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Sheep": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Sneeze": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Splash, splatter": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Spray": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Telephone": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Thunder": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Vacuum cleaner": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Whoop": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  }
+ },
+ "raw_detectors_same_rule": {
+  "flexsed": {
+   "summary": {
+    "n": 297,
+    "correct": 117,
+    "wrong_time": 57,
+    "absent": 123,
+    "precision": 0.394
+   },
+   "per_family": {
+    "Crowd": {
+     "n": 29,
+     "correct": 17,
+     "wrong_time": 2,
+     "absent": 10,
+     "precision": 0.586
+    },
+    "Ratchet, pawl": {
+     "n": 26,
+     "correct": 5,
+     "wrong_time": 8,
+     "absent": 13,
+     "precision": 0.192
+    },
+    "Laughter": {
+     "n": 23,
+     "correct": 18,
+     "wrong_time": 3,
+     "absent": 2,
+     "precision": 0.783
+    },
+    "Alarm": {
+     "n": 21,
+     "correct": 9,
+     "wrong_time": 5,
+     "absent": 7,
+     "precision": 0.429
+    },
+    "Bell": {
+     "n": 17,
+     "correct": 10,
+     "wrong_time": 1,
+     "absent": 6,
+     "precision": 0.588
+    },
+    "Bicycle": {
+     "n": 15,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 15,
+     "precision": 0.0
+    },
+    "Sewing machine": {
+     "n": 11,
+     "correct": 3,
+     "wrong_time": 7,
+     "absent": 1,
+     "precision": 0.273
+    },
+    "Effects unit": {
+     "n": 9,
+     "correct": 4,
+     "wrong_time": 0,
+     "absent": 5,
+     "precision": 0.444
+    },
+    "Vehicle": {
+     "n": 9,
+     "correct": 2,
+     "wrong_time": 7,
+     "absent": 0,
+     "precision": 0.222
+    },
+    "Electric shaver, electric razor": {
+     "n": 8,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 8,
+     "precision": 0.0
+    },
+    "Insect": {
+     "n": 8,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 7,
+     "precision": 0.125
+    },
+    "Snoring": {
+     "n": 7,
+     "correct": 6,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.857
+    },
+    "Baby cry, infant cry": {
+     "n": 6,
+     "correct": 3,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.5
+    },
+    "Lawn mower": {
+     "n": 6,
+     "correct": 4,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.667
+    },
+    "Mechanical fan": {
+     "n": 6,
+     "correct": 1,
+     "wrong_time": 5,
+     "absent": 0,
+     "precision": 0.167
+    },
+    "Power tool": {
+     "n": 5,
+     "correct": 5,
+     "wrong_time": 0,
+     "absent": 0,
+     "precision": 1.0
+    },
+    "Steam whistle": {
+     "n": 5,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 5,
+     "precision": 0.0
+    },
+    "Chorus effect": {
+     "n": 4,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.5
+    },
+    "Engine knocking": {
+     "n": 4,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 2,
+     "precision": 0.25
+    },
+    "Foghorn": {
+     "n": 4,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 4,
+     "precision": 0.0
+    },
+    "Vacuum cleaner": {
+     "n": 4,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.25
+    },
+    "Chewing, mastication": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 3,
+     "absent": 0,
+     "precision": 0.0
+    },
+    "Drill": {
+     "n": 3,
+     "correct": 3,
+     "wrong_time": 0,
+     "absent": 0,
+     "precision": 1.0
+    },
+    "Hair dryer": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.0
+    },
+    "Helicopter": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.333
+    },
+    "Roar": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.0
+    },
+    "Skateboard": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.333
+    },
+    "Toilet flush": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 0,
+     "precision": 0.667
+    },
+    "Train": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.333
+    },
+    "Water": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 0,
+     "precision": 0.667
+    }
+   }
+  },
+  "beats": {
+   "summary": {
+    "n": 754,
+    "correct": 283,
+    "wrong_time": 186,
+    "absent": 285,
+    "precision": 0.375
+   },
+   "per_family": {
+    "Vehicle": {
+     "n": 76,
+     "correct": 32,
+     "wrong_time": 32,
+     "absent": 12,
+     "precision": 0.421
+    },
+    "Bird": {
+     "n": 53,
+     "correct": 29,
+     "wrong_time": 17,
+     "absent": 7,
+     "precision": 0.547
+    },
+    "Water": {
+     "n": 35,
+     "correct": 8,
+     "wrong_time": 15,
+     "absent": 12,
+     "precision": 0.229
+    },
+    "Dog": {
+     "n": 32,
+     "correct": 24,
+     "wrong_time": 1,
+     "absent": 7,
+     "precision": 0.75
+    },
+    "Train": {
+     "n": 30,
+     "correct": 16,
+     "wrong_time": 11,
+     "absent": 3,
+     "precision": 0.533
+    },
+    "Gunshot": {
+     "n": 25,
+     "correct": 6,
+     "wrong_time": 4,
+     "absent": 15,
+     "precision": 0.24
+    },
+    "Horse": {
+     "n": 19,
+     "correct": 4,
+     "wrong_time": 2,
+     "absent": 13,
+     "precision": 0.211
+    },
+    "Cat": {
+     "n": 17,
+     "correct": 5,
+     "wrong_time": 3,
+     "absent": 9,
+     "precision": 0.294
+    },
+    "Glass": {
+     "n": 16,
+     "correct": 2,
+     "wrong_time": 2,
+     "absent": 12,
+     "precision": 0.125
+    },
+    "Siren": {
+     "n": 16,
+     "correct": 12,
+     "wrong_time": 1,
+     "absent": 3,
+     "precision": 0.75
+    },
+    "Alarm": {
+     "n": 15,
+     "correct": 11,
+     "wrong_time": 2,
+     "absent": 2,
+     "precision": 0.733
+    },
+    "Bell": {
+     "n": 12,
+     "correct": 7,
+     "wrong_time": 2,
+     "absent": 3,
+     "precision": 0.583
+    },
+    "Boat": {
+     "n": 11,
+     "correct": 2,
+     "wrong_time": 6,
+     "absent": 3,
+     "precision": 0.182
+    },
+    "Chink, clink": {
+     "n": 9,
+     "correct": 1,
+     "wrong_time": 3,
+     "absent": 5,
+     "precision": 0.111
+    },
+    "Crowd": {
+     "n": 9,
+     "correct": 6,
+     "wrong_time": 2,
+     "absent": 1,
+     "precision": 0.667
+    },
+    "Helicopter": {
+     "n": 9,
+     "correct": 2,
+     "wrong_time": 4,
+     "absent": 3,
+     "precision": 0.222
+    },
+    "Scissors": {
+     "n": 9,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 9,
+     "precision": 0.0
+    },
+    "Steam": {
+     "n": 9,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 7,
+     "precision": 0.111
+    },
+    "Aircraft": {
+     "n": 8,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 5,
+     "precision": 0.125
+    },
+    "Printer": {
+     "n": 8,
+     "correct": 2,
+     "wrong_time": 5,
+     "absent": 1,
+     "precision": 0.25
+    },
+    "Tools": {
+     "n": 8,
+     "correct": 2,
+     "wrong_time": 4,
+     "absent": 2,
+     "precision": 0.25
+    },
+    "Cooking": {
+     "n": 7,
+     "correct": 2,
+     "wrong_time": 2,
+     "absent": 3,
+     "precision": 0.286
+    },
+    "Dishes": {
+     "n": 7,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 5,
+     "precision": 0.286
+    },
+    "Effects unit": {
+     "n": 7,
+     "correct": 3,
+     "wrong_time": 1,
+     "absent": 3,
+     "precision": 0.429
+    },
+    "Explosion": {
+     "n": 7,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 6,
+     "precision": 0.143
+    },
+    "Telephone": {
+     "n": 7,
+     "correct": 0,
+     "wrong_time": 1,
+     "absent": 6,
+     "precision": 0.0
+    },
+    "Busy signal": {
+     "n": 6,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 6,
+     "precision": 0.0
+    },
+    "Fly, housefly": {
+     "n": 6,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 4,
+     "precision": 0.167
+    },
+    "Heart murmur": {
+     "n": 6,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 3,
+     "precision": 0.333
+    },
+    "Heart sounds, heartbeat": {
+     "n": 6,
+     "correct": 4,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.667
+    },
+    "Insect": {
+     "n": 6,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 3,
+     "precision": 0.333
+    },
+    "Toilet flush": {
+     "n": 6,
+     "correct": 4,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.667
+    },
+    "Typewriter": {
+     "n": 6,
+     "correct": 4,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.667
+    },
+    "Wood": {
+     "n": 6,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 3,
+     "precision": 0.167
+    },
+    "Air horn, truck horn": {
+     "n": 5,
+     "correct": 3,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.6
+    },
+    "Basketball bounce": {
+     "n": 5,
+     "correct": 3,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.6
+    },
+    "Boiling": {
+     "n": 5,
+     "correct": 0,
+     "wrong_time": 3,
+     "absent": 2,
+     "precision": 0.0
+    },
+    "Cattle": {
+     "n": 5,
+     "correct": 3,
+     "wrong_time": 1,
+     "absent": 1,
+     "precision": 0.6
+    },
+    "Electric shaver, electric razor": {
+     "n": 5,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 4,
+     "precision": 0.2
+    },
+    "Goose": {
+     "n": 5,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.4
+    },
+    "Mosquito": {
+     "n": 5,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.4
+    },
+    "Pump (liquid)": {
+     "n": 5,
+     "correct": 2,
+     "wrong_time": 3,
+     "absent": 0,
+     "precision": 0.4
+    },
+    "Sawing": {
+     "n": 5,
+     "correct": 0,
+     "wrong_time": 2,
+     "absent": 3,
+     "precision": 0.0
+    },
+    "Sheep": {
+     "n": 5,
+     "correct": 3,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.6
+    },
+    "Steam whistle": {
+     "n": 5,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 5,
+     "precision": 0.0
+    },
+    "Whistle": {
+     "n": 5,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 2,
+     "precision": 0.2
+    },
+    "Bee, wasp, etc.": {
+     "n": 4,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 2,
+     "precision": 0.25
+    },
+    "Clapping": {
+     "n": 4,
+     "correct": 3,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.75
+    },
+    "Coin (dropping)": {
+     "n": 4,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 4,
+     "precision": 0.0
+    },
+    "Dial tone": {
+     "n": 4,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 4,
+     "precision": 0.0
+    },
+    "Footsteps": {
+     "n": 4,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 4,
+     "precision": 0.0
+    },
+    "Honk": {
+     "n": 4,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.5
+    },
+    "Lawn mower": {
+     "n": 4,
+     "correct": 2,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.5
+    },
+    "Single-lens reflex camera": {
+     "n": 4,
+     "correct": 3,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.75
+    },
+    "Whoosh, swoosh, swish": {
+     "n": 4,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 1,
+     "precision": 0.25
+    },
+    "Baby cry, infant cry": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 1,
+     "absent": 2,
+     "precision": 0.0
+    },
+    "Children playing": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 3,
+     "absent": 0,
+     "precision": 0.0
+    },
+    "Clock": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 0,
+     "precision": 0.667
+    },
+    "Computer keyboard": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.667
+    },
+    "Cough": {
+     "n": 3,
+     "correct": 3,
+     "wrong_time": 0,
+     "absent": 0,
+     "precision": 1.0
+    },
+    "Door": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.333
+    },
+    "Electric toothbrush": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 1,
+     "absent": 2,
+     "precision": 0.0
+    },
+    "Filing (rasp)": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 1,
+     "precision": 0.333
+    },
+    "Gears": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 0,
+     "precision": 0.667
+    },
+    "Hair dryer": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 2,
+     "absent": 0,
+     "precision": 0.333
+    },
+    "Owl": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 1,
+     "precision": 0.333
+    },
+    "Power tool": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 0,
+     "absent": 2,
+     "precision": 0.333
+    },
+    "Quack": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 1,
+     "absent": 0,
+     "precision": 0.667
+    },
+    "Roar": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 1,
+     "precision": 0.333
+    },
+    "Sewing machine": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.667
+    },
+    "Snake": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.0
+    },
+    "Snoring": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.667
+    },
+    "Sonar": {
+     "n": 3,
+     "correct": 0,
+     "wrong_time": 0,
+     "absent": 3,
+     "precision": 0.0
+    },
+    "Turkey": {
+     "n": 3,
+     "correct": 1,
+     "wrong_time": 1,
+     "absent": 1,
+     "precision": 0.333
+    },
+    "Zipper (clothing)": {
+     "n": 3,
+     "correct": 2,
+     "wrong_time": 0,
+     "absent": 1,
+     "precision": 0.667
+    }
+   }
+  }
+ },
+ "prior415_strict": {
+  "flexsed": {
+   "runs": 120,
+   "correct": 62,
+   "precision": 0.517
+  },
+  "beats": {
+   "runs": 1151,
+   "correct": 433,
+   "precision": 0.376
+  }
+ },
+ "detections": [
+  {
+   "clip": "I1N1eIQubFc_0",
+   "family": "Tap",
+   "how": "map:tap",
+   "outcome": "below DASM bar",
+   "flap_max": 0.636,
+   "onset": 0.48,
+   "run": [
+    0.48,
+    0.64
+   ],
+   "dasm_onset": 0.222,
+   "class": "family absent"
+  },
+  {
+   "clip": "CMzLTmZsUGo_0",
+   "family": "Water",
+   "how": "map:water",
+   "outcome": "below DASM bar",
+   "flap_max": 0.475,
+   "onset": 4.0,
+   "run": [
+    4.0,
+    8.0
+   ],
+   "dasm_onset": 0.307,
+   "class": "family absent"
+  },
+  {
+   "clip": "FFUSdzyhgZo_290000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.84,
+   "onset": 1.92,
+   "run": [
+    1.92,
+    3.84
+   ],
+   "dasm_onset": 0.241,
+   "class": "family absent"
+  },
+  {
+   "clip": "ax7iCns3xz8_90000",
+   "family": "Whistle",
+   "how": "map:whistle",
+   "outcome": "below DASM bar",
+   "flap_max": 0.96,
+   "onset": 7.68,
+   "run": [
+    7.68,
+    9.28
+   ],
+   "dasm_onset": 0.383,
+   "class": "family absent"
+  },
+  {
+   "clip": "WVfrcJWnOXs_30000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.955,
+   "onset": 9.12,
+   "run": [
+    9.12,
+    9.6
+   ],
+   "dasm_onset": 0.075,
+   "class": "wrong time"
+  },
+  {
+   "clip": "WVfrcJWnOXs_30000",
+   "family": "Hiccup",
+   "how": "map:hiccup",
+   "outcome": "kept",
+   "flap_max": 0.957,
+   "onset": 8.64,
+   "run": [
+    8.64,
+    8.8
+   ],
+   "dasm_onset": 0.863,
+   "class": "correct"
+  },
+  {
+   "clip": "e_qmjD8QlK4_79000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.974,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    9.12
+   ],
+   "dasm_onset": 0.615,
+   "class": "correct"
+  },
+  {
+   "clip": "-mN6UH1Gd40_30000",
+   "family": "Chink, clink",
+   "how": "map:clinking",
+   "outcome": "below DASM bar",
+   "flap_max": 0.56,
+   "onset": 0.8,
+   "run": [
+    0.8,
+    0.96
+   ],
+   "dasm_onset": 0.088,
+   "class": "family absent"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "family": "Typewriter",
+   "how": "map:typewriter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.916,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    10.08
+   ],
+   "dasm_onset": 0.011,
+   "class": "family absent"
+  },
+  {
+   "clip": "U5ToBXQYEy0_30000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.955,
+   "onset": 4.0,
+   "run": [
+    4.0,
+    5.92
+   ],
+   "dasm_onset": 0.926,
+   "class": "correct"
+  },
+  {
+   "clip": "GuUPAjaacnY_120000",
+   "family": "Clapping",
+   "how": "map:clapping",
+   "outcome": "below DASM bar",
+   "flap_max": 0.863,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.92
+   ],
+   "dasm_onset": 0.525,
+   "class": "correct"
+  },
+  {
+   "clip": "GuUPAjaacnY_120000",
+   "family": "Laughter",
+   "how": "map:assistant: laughter",
+   "outcome": "kept",
+   "flap_max": 0.986,
+   "onset": 1.6,
+   "run": [
+    1.6,
+    4.0
+   ],
+   "dasm_onset": 0.984,
+   "class": "correct"
+  },
+  {
+   "clip": "cbNtpgQbn-4_30000",
+   "family": "Typing",
+   "how": "map:typing",
+   "outcome": "kept",
+   "flap_max": 0.589,
+   "onset": 8.48,
+   "run": [
+    8.48,
+    9.28
+   ],
+   "dasm_onset": 0.723,
+   "class": "family absent"
+  },
+  {
+   "clip": "cFgcYZU6RUM_310000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "below DASM bar",
+   "flap_max": 0.92,
+   "onset": 1.28,
+   "run": [
+    1.28,
+    10.08
+   ],
+   "dasm_onset": 0.489,
+   "class": "family absent"
+  },
+  {
+   "clip": "cy8lehO7nqg_30000",
+   "family": "Bird",
+   "how": "map:birdsong",
+   "outcome": "kept",
+   "flap_max": 0.703,
+   "onset": 5.44,
+   "run": [
+    5.44,
+    7.52
+   ],
+   "dasm_onset": 0.643,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ZFs03gCSB_g_270000",
+   "family": "Typing",
+   "how": "map:typing",
+   "outcome": "kept",
+   "flap_max": 0.751,
+   "onset": 1.12,
+   "run": [
+    1.12,
+    1.28
+   ],
+   "dasm_onset": 0.853,
+   "class": "correct"
+  },
+  {
+   "clip": "Gc01CEIQnM0_10000",
+   "family": "Bell",
+   "how": "map:ding",
+   "outcome": "below DASM bar",
+   "flap_max": 0.366,
+   "onset": 9.76,
+   "run": [
+    9.76,
+    10.08
+   ],
+   "dasm_onset": 0.143,
+   "class": "family absent"
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.994,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.728,
+   "class": "correct"
+  },
+  {
+   "clip": "GoMFJIOLkKA_420000",
+   "family": "Water",
+   "how": "map:water",
+   "outcome": "below DASM bar",
+   "flap_max": 0.953,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.128,
+   "class": "correct"
+  },
+  {
+   "clip": "RI_Pg4peJw8_10000",
+   "family": "Sheep",
+   "how": "map:bleat",
+   "outcome": "below DASM bar",
+   "flap_max": 0.526,
+   "onset": 8.32,
+   "run": [
+    8.32,
+    8.64
+   ],
+   "dasm_onset": 0.316,
+   "class": "correct"
+  },
+  {
+   "clip": "1MeeK0kD_ys_11000",
+   "family": "Camera",
+   "how": "map:camera shutter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.635,
+   "onset": 3.04,
+   "run": [
+    3.04,
+    3.36
+   ],
+   "dasm_onset": 0.465,
+   "class": "correct"
+  },
+  {
+   "clip": "cWZLGpaVwwE_30000",
+   "family": "Typing",
+   "how": "map:typing",
+   "outcome": "kept",
+   "flap_max": 0.755,
+   "onset": 2.24,
+   "run": [
+    2.24,
+    2.88
+   ],
+   "dasm_onset": 0.779,
+   "class": "correct"
+  },
+  {
+   "clip": "x0fI4QXOz9M_30000",
+   "family": "Dog",
+   "how": "map:dog barking",
+   "outcome": "kept",
+   "flap_max": 0.368,
+   "onset": 9.28,
+   "run": [
+    9.28,
+    9.44
+   ],
+   "dasm_onset": 0.94,
+   "class": "correct"
+  },
+  {
+   "clip": "xgqhURbWHCU_30000",
+   "family": "Drill",
+   "how": "map:drill",
+   "outcome": "below DASM bar",
+   "flap_max": 0.877,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.28
+   ],
+   "dasm_onset": 0.528,
+   "class": "correct"
+  },
+  {
+   "clip": "vlNuy9e-79o_30000",
+   "family": "Crowd",
+   "how": "map:assistant: crowd",
+   "outcome": "below DASM bar",
+   "flap_max": 0.667,
+   "onset": 6.08,
+   "run": [
+    6.08,
+    10.08
+   ],
+   "dasm_onset": 0.404,
+   "class": "family absent"
+  },
+  {
+   "clip": "yIx3ml9_nsQ_60000",
+   "family": "Sneeze",
+   "how": "map:sneeze",
+   "outcome": "below DASM bar",
+   "flap_max": 0.625,
+   "onset": 4.96,
+   "run": [
+    4.96,
+    5.28
+   ],
+   "dasm_onset": 0.112,
+   "class": "correct"
+  },
+  {
+   "clip": "yIx3ml9_nsQ_60000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.978,
+   "onset": 5.76,
+   "run": [
+    5.76,
+    9.28
+   ],
+   "dasm_onset": 0.622,
+   "class": "correct"
+  },
+  {
+   "clip": "zTyDJurqO-Q_200000",
+   "family": "Water",
+   "how": "map:water spray",
+   "outcome": "below DASM bar",
+   "flap_max": 0.925,
+   "onset": 2.72,
+   "run": [
+    2.72,
+    10.08
+   ],
+   "dasm_onset": 0.043,
+   "class": "correct"
+  },
+  {
+   "clip": "FRwFfq3Tl1g_310000",
+   "family": "Skateboard",
+   "how": "map:skateboard",
+   "outcome": "below DASM bar",
+   "flap_max": 0.677,
+   "onset": 9.12,
+   "run": [
+    9.12,
+    10.08
+   ],
+   "dasm_onset": 0.025,
+   "class": "wrong time"
+  },
+  {
+   "clip": "eOrV9yNuT3o_30000",
+   "family": "Screaming",
+   "how": "map:screaming",
+   "outcome": "below DASM bar",
+   "flap_max": 0.894,
+   "onset": 2.72,
+   "run": [
+    2.72,
+    5.6
+   ],
+   "dasm_onset": 0.155,
+   "class": "wrong time"
+  },
+  {
+   "clip": "eOrV9yNuT3o_30000",
+   "family": "Bird",
+   "how": "map:bird vocalization (chirp)",
+   "outcome": "kept",
+   "flap_max": 0.619,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    8.96
+   ],
+   "dasm_onset": 0.65,
+   "class": "correct"
+  },
+  {
+   "clip": "h5HZG_BcOB0_30000",
+   "family": "Train",
+   "how": "map:train wheels squealing",
+   "outcome": "below DASM bar",
+   "flap_max": 0.73,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.103,
+   "class": "family absent"
+  },
+  {
+   "clip": "hqRF-k1SFDQ_140000",
+   "family": "Bell",
+   "how": "map:chime",
+   "outcome": "below DASM bar",
+   "flap_max": 0.639,
+   "onset": 6.72,
+   "run": [
+    6.72,
+    10.08
+   ],
+   "dasm_onset": 0.54,
+   "class": "correct"
+  },
+  {
+   "clip": "43-Ju5yJxjA_120000",
+   "family": "Power tool",
+   "how": "map:power tool",
+   "outcome": "below DASM bar",
+   "flap_max": 0.766,
+   "onset": 2.88,
+   "run": [
+    2.88,
+    4.0
+   ],
+   "dasm_onset": 0.118,
+   "class": "correct"
+  },
+  {
+   "clip": "5yNsNnsuj_k_30000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.986,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.595,
+   "class": "wrong time"
+  },
+  {
+   "clip": "5yNsNnsuj_k_30000",
+   "family": "Clapping",
+   "how": "map:applause",
+   "outcome": "below DASM bar",
+   "flap_max": 0.781,
+   "onset": 4.96,
+   "run": [
+    4.96,
+    7.04
+   ],
+   "dasm_onset": 0.283,
+   "class": "family absent"
+  },
+  {
+   "clip": "g6qq3GHA9t0_150000",
+   "family": "Cooking",
+   "how": "map:sizzle",
+   "outcome": "below DASM bar",
+   "flap_max": 0.915,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.327,
+   "class": "correct"
+  },
+  {
+   "clip": "lDpJ-RBGMQc_180000",
+   "family": "Water",
+   "how": "map:water tap - faucet",
+   "outcome": "below DASM bar",
+   "flap_max": 0.905,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    5.44
+   ],
+   "dasm_onset": 0.037,
+   "class": "wrong time"
+  },
+  {
+   "clip": "8nFiV2Xrzps_220000",
+   "family": "Typewriter",
+   "how": "map:typewriter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.504,
+   "onset": 5.28,
+   "run": [
+    5.28,
+    8.8
+   ],
+   "dasm_onset": 0.016,
+   "class": "family absent"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "family": "Pump (liquid)",
+   "how": "map:pump (liquid)",
+   "outcome": "below DASM bar",
+   "flap_max": 0.835,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.306,
+   "class": "correct"
+  },
+  {
+   "clip": "4gTHEt6np5o_30000",
+   "family": "Electric toothbrush",
+   "how": "map:electric toothbrush",
+   "outcome": "kept",
+   "flap_max": 0.982,
+   "onset": 4.48,
+   "run": [
+    4.48,
+    10.08
+   ],
+   "dasm_onset": 0.867,
+   "class": "correct"
+  },
+  {
+   "clip": "wTOSS0cx50s_170000",
+   "family": "Shout",
+   "how": "map:shout",
+   "outcome": "kept",
+   "flap_max": 0.934,
+   "onset": 3.2,
+   "run": [
+    3.2,
+    4.16
+   ],
+   "dasm_onset": 0.87,
+   "class": "correct"
+  },
+  {
+   "clip": "4Z2Tt3NInDM_30000",
+   "family": "Water",
+   "how": "map:water",
+   "outcome": "below DASM bar",
+   "flap_max": 0.404,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    7.36
+   ],
+   "dasm_onset": 0.052,
+   "class": "family absent"
+  },
+  {
+   "clip": "0Xe2zCJNjvk_160000",
+   "family": "Cricket",
+   "how": "map:cricket",
+   "outcome": "below DASM bar",
+   "flap_max": 0.424,
+   "onset": 0.16,
+   "run": [
+    0.16,
+    1.28
+   ],
+   "dasm_onset": 0.041,
+   "class": "family absent"
+  },
+  {
+   "clip": "atMTZNNC_GA_60000",
+   "family": "Cooking",
+   "how": "map:sizzle",
+   "outcome": "below DASM bar",
+   "flap_max": 0.978,
+   "onset": 4.0,
+   "run": [
+    4.0,
+    10.08
+   ],
+   "dasm_onset": 0.04,
+   "class": "correct"
+  },
+  {
+   "clip": "cbmaM2VhdAU_30000",
+   "family": "Goose",
+   "how": "map:goose",
+   "outcome": "kept",
+   "flap_max": 0.86,
+   "onset": 8.8,
+   "run": [
+    8.8,
+    10.08
+   ],
+   "dasm_onset": 0.894,
+   "class": "correct"
+  },
+  {
+   "clip": "FEbXA_j4m00_30000",
+   "family": "Camera",
+   "how": "map:camera",
+   "outcome": "below DASM bar",
+   "flap_max": 0.704,
+   "onset": 9.28,
+   "run": [
+    9.28,
+    9.92
+   ],
+   "dasm_onset": 0.136,
+   "class": "family absent"
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "family": "Toilet flush",
+   "how": "map:toilet flush",
+   "outcome": "kept",
+   "flap_max": 0.991,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    5.12
+   ],
+   "dasm_onset": 0.968,
+   "class": "correct"
+  },
+  {
+   "clip": "n7yLkcSfiuM_90000",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "below DASM bar",
+   "flap_max": 0.801,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    2.88
+   ],
+   "dasm_onset": 0.107,
+   "class": "family absent"
+  },
+  {
+   "clip": "1hUNSCMZi9o_20000",
+   "family": "Telephone",
+   "how": "map:telephone dialing",
+   "outcome": "below DASM bar",
+   "flap_max": 0.775,
+   "onset": 6.72,
+   "run": [
+    6.72,
+    7.84
+   ],
+   "dasm_onset": 0.163,
+   "class": "correct"
+  },
+  {
+   "clip": "1hUNSCMZi9o_20000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.782,
+   "onset": 9.44,
+   "run": [
+    9.44,
+    9.76
+   ],
+   "dasm_onset": 0.211,
+   "class": "family absent"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "family": "Water",
+   "how": "map:waves",
+   "outcome": "kept",
+   "flap_max": 0.979,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.614,
+   "class": "family absent"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "family": "Boat",
+   "how": "map:boat",
+   "outcome": "kept",
+   "flap_max": 0.971,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.695,
+   "class": "correct"
+  },
+  {
+   "clip": "5ol5kAhO2BI_0",
+   "family": "Whistle",
+   "how": "map:whistling",
+   "outcome": "below DASM bar",
+   "flap_max": 0.885,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.44
+   ],
+   "dasm_onset": 0.234,
+   "class": "family absent"
+  },
+  {
+   "clip": "5ol5kAhO2BI_0",
+   "family": "Microwave oven",
+   "how": "map:microwave oven",
+   "outcome": "below DASM bar",
+   "flap_max": 0.439,
+   "onset": 9.44,
+   "run": [
+    9.44,
+    10.08
+   ],
+   "dasm_onset": 0.08,
+   "class": "family absent"
+  },
+  {
+   "clip": "FauOsBt_IFA_160000",
+   "family": "Crowd",
+   "how": "map:cheering",
+   "outcome": "below DASM bar",
+   "flap_max": 0.991,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.507,
+   "class": "correct"
+  },
+  {
+   "clip": "FauOsBt_IFA_160000",
+   "family": "Clapping",
+   "how": "map:applause",
+   "outcome": "below DASM bar",
+   "flap_max": 0.772,
+   "onset": 1.76,
+   "run": [
+    1.76,
+    9.6
+   ],
+   "dasm_onset": 0.211,
+   "class": "correct"
+  },
+  {
+   "clip": "XjkUtn062ho_0",
+   "family": "Bird",
+   "how": "map:bird vocalization - bird call - bird song",
+   "outcome": "below DASM bar",
+   "flap_max": 0.342,
+   "onset": 2.88,
+   "run": [
+    2.88,
+    3.04
+   ],
+   "dasm_onset": 0.507,
+   "class": "correct"
+  },
+  {
+   "clip": "KOVw582M79I_220000",
+   "family": "Door",
+   "how": "map:door",
+   "outcome": "below DASM bar",
+   "flap_max": 0.621,
+   "onset": 9.76,
+   "run": [
+    9.76,
+    9.92
+   ],
+   "dasm_onset": 0.238,
+   "class": "family absent"
+  },
+  {
+   "clip": "KOVw582M79I_220000",
+   "family": "Vehicle",
+   "how": "map:car",
+   "outcome": "kept",
+   "flap_max": 0.71,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.726,
+   "class": "correct"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.927,
+   "onset": 1.6,
+   "run": [
+    1.6,
+    4.16
+   ],
+   "dasm_onset": 0.574,
+   "class": "correct"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "family": "Screaming",
+   "how": "map:screaming",
+   "outcome": "below DASM bar",
+   "flap_max": 0.342,
+   "onset": 8.8,
+   "run": [
+    8.8,
+    8.96
+   ],
+   "dasm_onset": 0.082,
+   "class": "family absent"
+  },
+  {
+   "clip": "wh7-5G4cBEo_30000",
+   "family": "Frog",
+   "how": "map:assistant: frog",
+   "outcome": "kept",
+   "flap_max": 0.552,
+   "onset": 9.44,
+   "run": [
+    9.44,
+    10.08
+   ],
+   "dasm_onset": 0.967,
+   "class": "correct"
+  },
+  {
+   "clip": "3e927DjM6Iw_90000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.756,
+   "onset": 0.64,
+   "run": [
+    0.64,
+    2.56
+   ],
+   "dasm_onset": 0.33,
+   "class": "correct"
+  },
+  {
+   "clip": "IbSYTVRyOLw_160000",
+   "family": "Whistle",
+   "how": "map:whistling",
+   "outcome": "below DASM bar",
+   "flap_max": 0.679,
+   "onset": 0.16,
+   "run": [
+    0.16,
+    4.16
+   ],
+   "dasm_onset": 0.147,
+   "class": "family absent"
+  },
+  {
+   "clip": "IbSYTVRyOLw_160000",
+   "family": "Water",
+   "how": "map:water",
+   "outcome": "below DASM bar",
+   "flap_max": 0.946,
+   "onset": 5.92,
+   "run": [
+    5.92,
+    9.28
+   ],
+   "dasm_onset": 0.53,
+   "class": "wrong time"
+  },
+  {
+   "clip": "PVgL5wFOKMs_30000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.998,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.601,
+   "class": "correct"
+  },
+  {
+   "clip": "ENCPkF4K9zU_30000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.983,
+   "onset": 3.52,
+   "run": [
+    3.52,
+    5.6
+   ],
+   "dasm_onset": 0.914,
+   "class": "correct"
+  },
+  {
+   "clip": "KbOySeP46l4_570000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.972,
+   "onset": 1.6,
+   "run": [
+    1.6,
+    2.88
+   ],
+   "dasm_onset": 0.834,
+   "class": "correct"
+  },
+  {
+   "clip": "KT-rYg9B_CM_420000",
+   "family": "Skateboard",
+   "how": "map:skateboard",
+   "outcome": "kept",
+   "flap_max": 0.842,
+   "onset": 6.4,
+   "run": [
+    6.4,
+    9.28
+   ],
+   "dasm_onset": 0.645,
+   "class": "correct"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "family": "Helicopter",
+   "how": "map:helicopter",
+   "outcome": "kept",
+   "flap_max": 0.99,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.814,
+   "class": "correct"
+  },
+  {
+   "clip": "MKocTMZZnTs_40000",
+   "family": "Camera",
+   "how": "map:camera shutter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.491,
+   "onset": 0.16,
+   "run": [
+    0.16,
+    0.64
+   ],
+   "dasm_onset": 0.534,
+   "class": "correct"
+  },
+  {
+   "clip": "UCycMYxXIw4_0",
+   "family": "Crowd",
+   "how": "map:cheering",
+   "outcome": "kept",
+   "flap_max": 0.993,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.619,
+   "class": "correct"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "family": "Roar",
+   "how": "map:roar",
+   "outcome": "below DASM bar",
+   "flap_max": 0.638,
+   "onset": 4.8,
+   "run": [
+    4.8,
+    5.92
+   ],
+   "dasm_onset": 0.09,
+   "class": "family absent"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.728,
+   "onset": 3.84,
+   "run": [
+    3.84,
+    4.8
+   ],
+   "dasm_onset": 0.478,
+   "class": "family absent"
+  },
+  {
+   "clip": "Lg1HG6D_0Qk_30000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.992,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.655,
+   "class": "correct"
+  },
+  {
+   "clip": "A-Mg-FwSkiU_30000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.449,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    9.44
+   ],
+   "dasm_onset": 0.039,
+   "class": "family absent"
+  },
+  {
+   "clip": "N1c73HkaxvY_0",
+   "family": "Dog",
+   "how": "map:dog",
+   "outcome": "kept",
+   "flap_max": 0.465,
+   "onset": 6.88,
+   "run": [
+    6.88,
+    7.2
+   ],
+   "dasm_onset": 0.757,
+   "class": "correct"
+  },
+  {
+   "clip": "pbDAz2Bi4rI_0",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "below DASM bar",
+   "flap_max": 0.967,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.467,
+   "class": "correct"
+  },
+  {
+   "clip": "GRjdL6M63m4_60000",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "kept",
+   "flap_max": 0.529,
+   "onset": 5.28,
+   "run": [
+    5.28,
+    5.76
+   ],
+   "dasm_onset": 0.587,
+   "class": "family absent"
+  },
+  {
+   "clip": "Q2X9L8akKgE_30000",
+   "family": "Bird",
+   "how": "map:birdsong",
+   "outcome": "kept",
+   "flap_max": 0.632,
+   "onset": 5.44,
+   "run": [
+    5.44,
+    5.92
+   ],
+   "dasm_onset": 0.676,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1DWt70gTqHc_0",
+   "family": "Dial tone",
+   "how": "map:dial tone",
+   "outcome": "below DASM bar",
+   "flap_max": 0.468,
+   "onset": 2.4,
+   "run": [
+    2.4,
+    4.16
+   ],
+   "dasm_onset": 0.264,
+   "class": "family absent"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "family": "Train",
+   "how": "map:train wheels squealing",
+   "outcome": "kept",
+   "flap_max": 0.996,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.623,
+   "class": "correct"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "family": "Dog",
+   "how": "map:bark",
+   "outcome": "kept",
+   "flap_max": 0.62,
+   "onset": 5.44,
+   "run": [
+    5.44,
+    6.24
+   ],
+   "dasm_onset": 0.835,
+   "class": "correct"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.995,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.602,
+   "class": "correct"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "family": "Whoop",
+   "how": "map:whoop",
+   "outcome": "kept",
+   "flap_max": 0.605,
+   "onset": 3.04,
+   "run": [
+    3.04,
+    3.84
+   ],
+   "dasm_onset": 0.618,
+   "class": "correct"
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "family": "Clock",
+   "how": "map:clock chime",
+   "outcome": "below DASM bar",
+   "flap_max": 0.341,
+   "onset": 3.52,
+   "run": [
+    3.52,
+    3.68
+   ],
+   "dasm_onset": 0.328,
+   "class": "correct"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "family": "Train",
+   "how": "map:train engine",
+   "outcome": "below DASM bar",
+   "flap_max": 0.937,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.332,
+   "class": "correct"
+  },
+  {
+   "clip": "AIDJFkDURPY_30000",
+   "family": "Vehicle",
+   "how": "map:engine",
+   "outcome": "below DASM bar",
+   "flap_max": 0.574,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.299,
+   "class": "family absent"
+  },
+  {
+   "clip": "XdRtfqwj2cg_160000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.841,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    2.4
+   ],
+   "dasm_onset": 0.46,
+   "class": "family absent"
+  },
+  {
+   "clip": "iybJCHMT3jg_100000",
+   "family": "Screaming",
+   "how": "map:screaming",
+   "outcome": "below DASM bar",
+   "flap_max": 0.993,
+   "onset": 5.76,
+   "run": [
+    5.76,
+    7.2
+   ],
+   "dasm_onset": 0.488,
+   "class": "correct"
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.939,
+   "onset": 5.44,
+   "run": [
+    5.44,
+    7.04
+   ],
+   "dasm_onset": 0.341,
+   "class": "wrong time"
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "family": "Dial tone",
+   "how": "map:dial tone",
+   "outcome": "below DASM bar",
+   "flap_max": 0.733,
+   "onset": 7.2,
+   "run": [
+    7.2,
+    8.0
+   ],
+   "dasm_onset": 0.237,
+   "class": "family absent"
+  },
+  {
+   "clip": "OO7bdz6VsKg_22000",
+   "family": "Bird",
+   "how": "map:chirping birds",
+   "outcome": "below DASM bar",
+   "flap_max": 0.504,
+   "onset": 5.6,
+   "run": [
+    5.6,
+    6.56
+   ],
+   "dasm_onset": 0.54,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1bKf5nrT4DQ_90000",
+   "family": "Vehicle",
+   "how": "map:vehicle horn",
+   "outcome": "kept",
+   "flap_max": 0.746,
+   "onset": 1.44,
+   "run": [
+    1.44,
+    9.92
+   ],
+   "dasm_onset": 0.603,
+   "class": "wrong time"
+  },
+  {
+   "clip": "sgpV3BLD0YQ_20000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.825,
+   "onset": 5.12,
+   "run": [
+    5.12,
+    8.96
+   ],
+   "dasm_onset": 0.53,
+   "class": "correct"
+  },
+  {
+   "clip": "PVGChCsrCuk_20000",
+   "family": "Bell",
+   "how": "map:church bell",
+   "outcome": "kept",
+   "flap_max": 0.713,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.938,
+   "class": "correct"
+  },
+  {
+   "clip": "SfLJGEIaeRw_460000",
+   "family": "Crowd",
+   "how": "map:cheering",
+   "outcome": "below DASM bar",
+   "flap_max": 0.62,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.76
+   ],
+   "dasm_onset": 0.157,
+   "class": "family absent"
+  },
+  {
+   "clip": "SfLJGEIaeRw_460000",
+   "family": "Clapping",
+   "how": "map:applause",
+   "outcome": "below DASM bar",
+   "flap_max": 0.736,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.76
+   ],
+   "dasm_onset": 0.488,
+   "class": "correct"
+  },
+  {
+   "clip": "PhACFsEjsiI_40000",
+   "family": "Tap",
+   "how": "map:tap",
+   "outcome": "below DASM bar",
+   "flap_max": 0.359,
+   "onset": 4.8,
+   "run": [
+    4.8,
+    4.96
+   ],
+   "dasm_onset": 0.317,
+   "class": "family absent"
+  },
+  {
+   "clip": "XRXJSsbC_kI_10000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "below DASM bar",
+   "flap_max": 0.973,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    5.28
+   ],
+   "dasm_onset": 0.552,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "family": "Water",
+   "how": "map:water",
+   "outcome": "kept",
+   "flap_max": 0.978,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.585,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "family": "Splash, splatter",
+   "how": "map:splash",
+   "outcome": "below DASM bar",
+   "flap_max": 0.95,
+   "onset": 3.84,
+   "run": [
+    3.84,
+    10.08
+   ],
+   "dasm_onset": 0.193,
+   "class": "wrong time"
+  },
+  {
+   "clip": "upX4cNt_Reo_10000",
+   "family": "Cat",
+   "how": "map:purr",
+   "outcome": "kept",
+   "flap_max": 0.408,
+   "onset": 9.12,
+   "run": [
+    9.12,
+    10.08
+   ],
+   "dasm_onset": 0.94,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Cpwy_3wUjSc_330000",
+   "family": "Mechanical fan",
+   "how": "map:mechanical fan",
+   "outcome": "below DASM bar",
+   "flap_max": 0.754,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.081,
+   "class": "correct"
+  },
+  {
+   "clip": "D668Jl6zuAk_190000",
+   "family": "Clapping",
+   "how": "map:clapping",
+   "outcome": "below DASM bar",
+   "flap_max": 0.889,
+   "onset": 8.96,
+   "run": [
+    8.96,
+    10.08
+   ],
+   "dasm_onset": 0.037,
+   "class": "correct"
+  },
+  {
+   "clip": "YFXSbPFaxcA_30000",
+   "family": "Printer",
+   "how": "map:printer",
+   "outcome": "kept",
+   "flap_max": 0.994,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.832,
+   "class": "correct"
+  },
+  {
+   "clip": "nu3ky6UEasw_6000",
+   "family": "Cat",
+   "how": "map:meow",
+   "outcome": "below DASM bar",
+   "flap_max": 0.631,
+   "onset": 8.32,
+   "run": [
+    8.32,
+    9.44
+   ],
+   "dasm_onset": 0.055,
+   "class": "family absent"
+  },
+  {
+   "clip": "27rw1ni1k0c_1000",
+   "family": "Crowd",
+   "how": "map:cheering",
+   "outcome": "below DASM bar",
+   "flap_max": 0.989,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    9.12
+   ],
+   "dasm_onset": 0.57,
+   "class": "correct"
+  },
+  {
+   "clip": "27rw1ni1k0c_1000",
+   "family": "Clapping",
+   "how": "map:clapping",
+   "outcome": "below DASM bar",
+   "flap_max": 0.841,
+   "onset": 0.8,
+   "run": [
+    0.8,
+    8.32
+   ],
+   "dasm_onset": 0.231,
+   "class": "correct"
+  },
+  {
+   "clip": "Dkfcal9MGPs_400000",
+   "family": "Bird",
+   "how": "map:bird vocalization (chirping)",
+   "outcome": "kept",
+   "flap_max": 0.677,
+   "onset": 1.12,
+   "run": [
+    1.12,
+    3.2
+   ],
+   "dasm_onset": 0.671,
+   "class": "correct"
+  },
+  {
+   "clip": "PTUxCvCz8Bc_170000",
+   "family": "Cooking",
+   "how": "map:sizzle",
+   "outcome": "below DASM bar",
+   "flap_max": 0.621,
+   "onset": 7.2,
+   "run": [
+    7.2,
+    10.08
+   ],
+   "dasm_onset": 0.362,
+   "class": "wrong time"
+  },
+  {
+   "clip": "D1tl1eS7ubI_0",
+   "family": "Cough",
+   "how": "map:cough",
+   "outcome": "kept",
+   "flap_max": 0.922,
+   "onset": 3.2,
+   "run": [
+    3.2,
+    4.0
+   ],
+   "dasm_onset": 0.793,
+   "class": "correct"
+  },
+  {
+   "clip": "W68jUDP5qAk_18000",
+   "family": "Cough",
+   "how": "map:cough",
+   "outcome": "below DASM bar",
+   "flap_max": 0.447,
+   "onset": 7.2,
+   "run": [
+    7.2,
+    7.52
+   ],
+   "dasm_onset": 0.129,
+   "class": "correct"
+  },
+  {
+   "clip": "W68jUDP5qAk_18000",
+   "family": "Laughter",
+   "how": "map:assistant: laughter",
+   "outcome": "kept",
+   "flap_max": 0.967,
+   "onset": 6.24,
+   "run": [
+    6.24,
+    7.52
+   ],
+   "dasm_onset": 0.954,
+   "class": "correct"
+  },
+  {
+   "clip": "lkv2qFT7slY_30000",
+   "family": "Basketball bounce",
+   "how": "map:basketball bounce",
+   "outcome": "below DASM bar",
+   "flap_max": 0.35,
+   "onset": 2.24,
+   "run": [
+    2.24,
+    2.4
+   ],
+   "dasm_onset": 0.412,
+   "class": "correct"
+  },
+  {
+   "clip": "lkv2qFT7slY_30000",
+   "family": "Crowd",
+   "how": "map:crowd noise",
+   "outcome": "below DASM bar",
+   "flap_max": 0.919,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.421,
+   "class": "family absent"
+  },
+  {
+   "clip": "-7YESdyyHVw_10000",
+   "family": "Cattle",
+   "how": "map:assistant: cow",
+   "outcome": "kept",
+   "flap_max": 0.633,
+   "onset": 1.76,
+   "run": [
+    1.76,
+    2.56
+   ],
+   "dasm_onset": 0.677,
+   "class": "family absent"
+  },
+  {
+   "clip": "MAhYAMZ50VI_100000",
+   "family": "Cat",
+   "how": "map:cat hissing",
+   "outcome": "kept",
+   "flap_max": 0.607,
+   "onset": 6.72,
+   "run": [
+    6.72,
+    9.6
+   ],
+   "dasm_onset": 0.747,
+   "class": "wrong time"
+  },
+  {
+   "clip": "iQfPmJ19ZUc_450000",
+   "family": "Footsteps",
+   "how": "map:footsteps",
+   "outcome": "below DASM bar",
+   "flap_max": 0.868,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    5.44
+   ],
+   "dasm_onset": 0.446,
+   "class": "correct"
+  },
+  {
+   "clip": "xe4dvQKF9p0_30000",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "below DASM bar",
+   "flap_max": 0.66,
+   "onset": 2.24,
+   "run": [
+    2.24,
+    4.0
+   ],
+   "dasm_onset": 0.491,
+   "class": "correct"
+  },
+  {
+   "clip": "36E3XXqab40_40000",
+   "family": "Water",
+   "how": "map:water tap - faucet",
+   "outcome": "below DASM bar",
+   "flap_max": 0.912,
+   "onset": 5.6,
+   "run": [
+    5.6,
+    10.08
+   ],
+   "dasm_onset": 0.1,
+   "class": "correct"
+  },
+  {
+   "clip": "OtAdneAfzcc_140000",
+   "family": "Crowd",
+   "how": "map:assistant: crowd",
+   "outcome": "below DASM bar",
+   "flap_max": 0.848,
+   "onset": 1.92,
+   "run": [
+    1.92,
+    10.08
+   ],
+   "dasm_onset": 0.284,
+   "class": "family absent"
+  },
+  {
+   "clip": "OtAdneAfzcc_140000",
+   "family": "Shout",
+   "how": "map:assistant: shouting",
+   "outcome": "kept",
+   "flap_max": 0.843,
+   "onset": 1.92,
+   "run": [
+    1.92,
+    10.08
+   ],
+   "dasm_onset": 0.731,
+   "class": "correct"
+  },
+  {
+   "clip": "NUFypHg_WCg_60000",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "kept",
+   "flap_max": 0.596,
+   "onset": 4.16,
+   "run": [
+    4.16,
+    4.8
+   ],
+   "dasm_onset": 0.975,
+   "class": "wrong time"
+  },
+  {
+   "clip": "-vBj0PZ1RF0_9000",
+   "family": "Clapping",
+   "how": "map:applause",
+   "outcome": "below DASM bar",
+   "flap_max": 0.863,
+   "onset": 3.84,
+   "run": [
+    3.84,
+    9.6
+   ],
+   "dasm_onset": 0.237,
+   "class": "family absent"
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "family": "Sawing",
+   "how": "map:sawing",
+   "outcome": "below DASM bar",
+   "flap_max": 0.891,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.44
+   ],
+   "dasm_onset": 0.227,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "family": "Gunshot",
+   "how": "map:gunfire",
+   "outcome": "kept",
+   "flap_max": 0.769,
+   "onset": 1.12,
+   "run": [
+    1.12,
+    5.44
+   ],
+   "dasm_onset": 0.59,
+   "class": "family absent"
+  },
+  {
+   "clip": "qA7n1AOFwiU_30000",
+   "family": "Microwave oven",
+   "how": "map:microwave oven",
+   "outcome": "below DASM bar",
+   "flap_max": 0.776,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    3.84
+   ],
+   "dasm_onset": 0.045,
+   "class": "correct"
+  },
+  {
+   "clip": "I1Ed5gIkcp8_10000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.872,
+   "onset": 1.44,
+   "run": [
+    1.44,
+    2.88
+   ],
+   "dasm_onset": 0.203,
+   "class": "correct"
+  },
+  {
+   "clip": "8v9ggmYDE7I_220000",
+   "family": "Crying, sobbing",
+   "how": "map:crying",
+   "outcome": "below DASM bar",
+   "flap_max": 0.864,
+   "onset": 4.96,
+   "run": [
+    4.96,
+    6.4
+   ],
+   "dasm_onset": 0.371,
+   "class": "family absent"
+  },
+  {
+   "clip": "MYxhRD4RVmQ_10000",
+   "family": "Vacuum cleaner",
+   "how": "map:vacuum cleaner",
+   "outcome": "kept",
+   "flap_max": 0.993,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.886,
+   "class": "correct"
+  },
+  {
+   "clip": "TQhi4PH6vdA_30000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.936,
+   "onset": 3.68,
+   "run": [
+    3.68,
+    4.48
+   ],
+   "dasm_onset": 0.862,
+   "class": "correct"
+  },
+  {
+   "clip": "ql66pp0iq_4_40000",
+   "family": "Snoring",
+   "how": "map:snoring",
+   "outcome": "kept",
+   "flap_max": 0.953,
+   "onset": 9.76,
+   "run": [
+    9.76,
+    10.08
+   ],
+   "dasm_onset": 0.922,
+   "class": "correct"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "family": "Drill",
+   "how": "map:drill",
+   "outcome": "kept",
+   "flap_max": 0.756,
+   "onset": 3.52,
+   "run": [
+    3.52,
+    9.6
+   ],
+   "dasm_onset": 0.803,
+   "class": "correct"
+  },
+  {
+   "clip": "SvRtOYGMWV8_50000",
+   "family": "Rain",
+   "how": "map:rain",
+   "outcome": "below DASM bar",
+   "flap_max": 0.982,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.476,
+   "class": "correct"
+  },
+  {
+   "clip": "_yrTKvc4mh8_30000",
+   "family": "Alarm",
+   "how": "map:alarm clock",
+   "outcome": "kept",
+   "flap_max": 0.968,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.901,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "family": "Siren",
+   "how": "map:siren",
+   "outcome": "below DASM bar",
+   "flap_max": 0.847,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.145,
+   "class": "correct"
+  },
+  {
+   "clip": "wjmMSonpdT0_30000",
+   "family": "Aircraft",
+   "how": "map:jet engine",
+   "outcome": "below DASM bar",
+   "flap_max": 0.708,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.218,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "family": "Siren",
+   "how": "map:siren",
+   "outcome": "below DASM bar",
+   "flap_max": 0.988,
+   "onset": 3.2,
+   "run": [
+    3.2,
+    5.6
+   ],
+   "dasm_onset": 0.385,
+   "class": "correct"
+  },
+  {
+   "clip": "DApzZBcMD34_30000",
+   "family": "Clock",
+   "how": "map:clock chime",
+   "outcome": "below DASM bar",
+   "flap_max": 0.963,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.427,
+   "class": "correct"
+  },
+  {
+   "clip": "RFeU64gTvGQ_0",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.945,
+   "onset": 0.16,
+   "run": [
+    0.16,
+    6.08
+   ],
+   "dasm_onset": 0.869,
+   "class": "correct"
+  },
+  {
+   "clip": "RFeU64gTvGQ_0",
+   "family": "Cough",
+   "how": "map:cough",
+   "outcome": "kept",
+   "flap_max": 0.963,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    8.64
+   ],
+   "dasm_onset": 0.798,
+   "class": "correct"
+  },
+  {
+   "clip": "10V4g8MXF-Y_6000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.95,
+   "onset": 7.84,
+   "run": [
+    7.84,
+    10.08
+   ],
+   "dasm_onset": 0.94,
+   "class": "correct"
+  },
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "family": "Helicopter",
+   "how": "map:helicopter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.956,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.464,
+   "class": "family absent"
+  },
+  {
+   "clip": "3tUlhM80ObM_0",
+   "family": "Knock",
+   "how": "map:knock",
+   "outcome": "kept",
+   "flap_max": 0.929,
+   "onset": 6.4,
+   "run": [
+    6.4,
+    7.2
+   ],
+   "dasm_onset": 0.839,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "family": "Dog",
+   "how": "map:dog growling",
+   "outcome": "kept",
+   "flap_max": 0.828,
+   "onset": 8.16,
+   "run": [
+    8.16,
+    10.08
+   ],
+   "dasm_onset": 0.903,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "family": "Train",
+   "how": "map:train whistle",
+   "outcome": "kept",
+   "flap_max": 0.991,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.782,
+   "class": "correct"
+  },
+  {
+   "clip": "jPIEgoO4cL0_24000",
+   "family": "Dog",
+   "how": "map:dog",
+   "outcome": "below DASM bar",
+   "flap_max": 0.481,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    7.36
+   ],
+   "dasm_onset": 0.053,
+   "class": "family absent"
+  },
+  {
+   "clip": "_P96ibCmCt0_140000",
+   "family": "Typewriter",
+   "how": "map:typewriter",
+   "outcome": "kept",
+   "flap_max": 0.577,
+   "onset": 6.08,
+   "run": [
+    6.08,
+    7.04
+   ],
+   "dasm_onset": 0.619,
+   "class": "family absent"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "family": "Cat",
+   "how": "map:meow",
+   "outcome": "kept",
+   "flap_max": 0.856,
+   "onset": 5.76,
+   "run": [
+    5.76,
+    7.36
+   ],
+   "dasm_onset": 0.973,
+   "class": "correct"
+  },
+  {
+   "clip": "6BPC__fbhPk_21000",
+   "family": "Crowd",
+   "how": "map:cheering",
+   "outcome": "kept",
+   "flap_max": 0.997,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    9.92
+   ],
+   "dasm_onset": 0.604,
+   "class": "correct"
+  },
+  {
+   "clip": "6BPC__fbhPk_21000",
+   "family": "Clapping",
+   "how": "map:applause",
+   "outcome": "below DASM bar",
+   "flap_max": 0.908,
+   "onset": 4.32,
+   "run": [
+    4.32,
+    9.92
+   ],
+   "dasm_onset": 0.456,
+   "class": "family absent"
+  },
+  {
+   "clip": "Bdz-NtAD2SU_30000",
+   "family": "Gunshot",
+   "how": "map:machine gun",
+   "outcome": "kept",
+   "flap_max": 0.795,
+   "onset": 9.6,
+   "run": [
+    9.6,
+    10.08
+   ],
+   "dasm_onset": 0.832,
+   "class": "wrong time"
+  },
+  {
+   "clip": "4F66HK5DZe8_540000",
+   "family": "Whistle",
+   "how": "map:whistle",
+   "outcome": "below DASM bar",
+   "flap_max": 0.776,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.404,
+   "class": "wrong time"
+  },
+  {
+   "clip": "YJdBwuIn4Ec_30000",
+   "family": "Car passing by",
+   "how": "map:car passing by",
+   "outcome": "kept",
+   "flap_max": 0.865,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    4.32
+   ],
+   "dasm_onset": 0.83,
+   "class": "correct"
+  },
+  {
+   "clip": "YJdBwuIn4Ec_30000",
+   "family": "Vehicle",
+   "how": "map:car",
+   "outcome": "kept",
+   "flap_max": 0.41,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    8.48
+   ],
+   "dasm_onset": 0.984,
+   "class": "correct"
+  },
+  {
+   "clip": "jaI41fTAM54_30000",
+   "family": "Bell",
+   "how": "map:bell",
+   "outcome": "kept",
+   "flap_max": 0.975,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.829,
+   "class": "correct"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "family": "Dog",
+   "how": "map:bark",
+   "outcome": "kept",
+   "flap_max": 0.713,
+   "onset": 3.04,
+   "run": [
+    3.04,
+    6.08
+   ],
+   "dasm_onset": 0.913,
+   "class": "correct"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "family": "Bird",
+   "how": "map:bird vocalization - bird call - bird song",
+   "outcome": "below DASM bar",
+   "flap_max": 0.738,
+   "onset": 4.32,
+   "run": [
+    4.32,
+    6.08
+   ],
+   "dasm_onset": 0.551,
+   "class": "correct"
+  },
+  {
+   "clip": "cPzezkikR-0_30000",
+   "family": "Buzz",
+   "how": "map:buzz",
+   "outcome": "below DASM bar",
+   "flap_max": 0.971,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.238,
+   "class": "family absent"
+  },
+  {
+   "clip": "cPzezkikR-0_30000",
+   "family": "Insect",
+   "how": "map:assistant: insect",
+   "outcome": "kept",
+   "flap_max": 0.411,
+   "onset": 6.4,
+   "run": [
+    6.4,
+    6.88
+   ],
+   "dasm_onset": 0.87,
+   "class": "wrong time"
+  },
+  {
+   "clip": "tz0avWZoqjg_0",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "below DASM bar",
+   "flap_max": 0.877,
+   "onset": 4.96,
+   "run": [
+    4.96,
+    6.4
+   ],
+   "dasm_onset": 0.239,
+   "class": "family absent"
+  },
+  {
+   "clip": "3AJuHcjE31w_30000",
+   "family": "Screaming",
+   "how": "map:screaming",
+   "outcome": "below DASM bar",
+   "flap_max": 0.856,
+   "onset": 4.96,
+   "run": [
+    4.96,
+    5.76
+   ],
+   "dasm_onset": 0.313,
+   "class": "correct"
+  },
+  {
+   "clip": "3AJuHcjE31w_30000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "kept",
+   "flap_max": 0.995,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.583,
+   "class": "correct"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "family": "Vehicle",
+   "how": "map:truck",
+   "outcome": "kept",
+   "flap_max": 0.813,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.67,
+   "class": "correct"
+  },
+  {
+   "clip": "rVymW4Nb4NU_0",
+   "family": "Alarm",
+   "how": "map:alarm clock",
+   "outcome": "below DASM bar",
+   "flap_max": 0.574,
+   "onset": 1.28,
+   "run": [
+    1.28,
+    1.92
+   ],
+   "dasm_onset": 0.529,
+   "class": "correct"
+  },
+  {
+   "clip": "kivK_R03Ek0_0",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.682,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    4.8
+   ],
+   "dasm_onset": 0.113,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZkH7dC0CdrE_130000",
+   "family": "Snoring",
+   "how": "map:snoring",
+   "outcome": "kept",
+   "flap_max": 0.956,
+   "onset": 6.08,
+   "run": [
+    6.08,
+    7.52
+   ],
+   "dasm_onset": 0.889,
+   "class": "correct"
+  },
+  {
+   "clip": "yBpYu5A-Jus_20000",
+   "family": "Dog",
+   "how": "map:dog",
+   "outcome": "below DASM bar",
+   "flap_max": 0.635,
+   "onset": 6.56,
+   "run": [
+    6.56,
+    7.2
+   ],
+   "dasm_onset": 0.363,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "family": "Glass",
+   "how": "map:shatter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.393,
+   "onset": 2.56,
+   "run": [
+    2.56,
+    2.72
+   ],
+   "dasm_onset": 0.07,
+   "class": "family absent"
+  },
+  {
+   "clip": "sfxQfmtrKDg_4000",
+   "family": "Cough",
+   "how": "map:cough",
+   "outcome": "kept",
+   "flap_max": 0.977,
+   "onset": 8.48,
+   "run": [
+    8.48,
+    9.44
+   ],
+   "dasm_onset": 0.934,
+   "class": "correct"
+  },
+  {
+   "clip": "CYRnb2F9ekQ_280000",
+   "family": "Duck",
+   "how": "map:duck",
+   "outcome": "below DASM bar",
+   "flap_max": 0.342,
+   "onset": 6.4,
+   "run": [
+    6.4,
+    6.56
+   ],
+   "dasm_onset": 0.127,
+   "class": "family absent"
+  },
+  {
+   "clip": "2A63oYgod8Y_560000",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "kept",
+   "flap_max": 0.712,
+   "onset": 3.84,
+   "run": [
+    3.84,
+    4.48
+   ],
+   "dasm_onset": 0.607,
+   "class": "correct"
+  },
+  {
+   "clip": "ZaUaqnLdg6k_30000",
+   "family": "Crowd",
+   "how": "map:crowd",
+   "outcome": "below DASM bar",
+   "flap_max": 0.372,
+   "onset": 9.92,
+   "run": [
+    9.92,
+    10.08
+   ],
+   "dasm_onset": 0.043,
+   "class": "family absent"
+  },
+  {
+   "clip": "humEMjHElG0_0",
+   "family": "Tap",
+   "how": "map:tap",
+   "outcome": "below DASM bar",
+   "flap_max": 0.564,
+   "onset": 0.96,
+   "run": [
+    0.96,
+    1.76
+   ],
+   "dasm_onset": 0.18,
+   "class": "family absent"
+  },
+  {
+   "clip": "OR926HIiUOs_280000",
+   "family": "Train",
+   "how": "map:train",
+   "outcome": "below DASM bar",
+   "flap_max": 0.613,
+   "onset": 3.52,
+   "run": [
+    3.52,
+    10.08
+   ],
+   "dasm_onset": 0.511,
+   "class": "wrong time"
+  },
+  {
+   "clip": "HMnF8n9c5-Y_30000",
+   "family": "Cough",
+   "how": "map:cough",
+   "outcome": "below DASM bar",
+   "flap_max": 0.847,
+   "onset": 7.36,
+   "run": [
+    7.36,
+    8.0
+   ],
+   "dasm_onset": 0.429,
+   "class": "correct"
+  },
+  {
+   "clip": "NJIgQjKDVUg_50000",
+   "family": "Power tool",
+   "how": "map:power tool",
+   "outcome": "below DASM bar",
+   "flap_max": 0.786,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.416,
+   "class": "correct"
+  },
+  {
+   "clip": "UBAlsmLwYn8_8000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "kept",
+   "flap_max": 0.969,
+   "onset": 0.64,
+   "run": [
+    0.64,
+    5.76
+   ],
+   "dasm_onset": 0.746,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "family": "Bird",
+   "how": "map:bird flight - flapping wings",
+   "outcome": "kept",
+   "flap_max": 0.722,
+   "onset": 7.52,
+   "run": [
+    7.52,
+    8.96
+   ],
+   "dasm_onset": 0.95,
+   "class": "correct"
+  },
+  {
+   "clip": "TIASpLtI8ks_20000",
+   "family": "Bell",
+   "how": "map:bell",
+   "outcome": "kept",
+   "flap_max": 0.836,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.966,
+   "class": "correct"
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "family": "Cat",
+   "how": "map:cat",
+   "outcome": "below DASM bar",
+   "flap_max": 0.499,
+   "onset": 9.76,
+   "run": [
+    9.76,
+    10.08
+   ],
+   "dasm_onset": 0.008,
+   "class": "family absent"
+  },
+  {
+   "clip": "Qaqqxq9E9p8_20000",
+   "family": "Alarm",
+   "how": "map:alarm clock",
+   "outcome": "kept",
+   "flap_max": 0.85,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.729,
+   "class": "correct"
+  },
+  {
+   "clip": "ijc6Ma6c4O0_90000",
+   "family": "Gunshot",
+   "how": "map:gunshot",
+   "outcome": "below DASM bar",
+   "flap_max": 0.734,
+   "onset": 9.76,
+   "run": [
+    9.76,
+    10.08
+   ],
+   "dasm_onset": 0.082,
+   "class": "family absent"
+  },
+  {
+   "clip": "5Rd5TPJD6ho_180000",
+   "family": "Vehicle",
+   "how": "map:engine",
+   "outcome": "below DASM bar",
+   "flap_max": 0.505,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.271,
+   "class": "correct"
+  },
+  {
+   "clip": "8AYXpxT4jcs_90000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "kept",
+   "flap_max": 0.83,
+   "onset": 5.44,
+   "run": [
+    5.44,
+    8.48
+   ],
+   "dasm_onset": 0.785,
+   "class": "family absent"
+  },
+  {
+   "clip": "XUmVBjjaPG8_30000",
+   "family": "Foghorn",
+   "how": "map:foghorn",
+   "outcome": "kept",
+   "flap_max": 0.971,
+   "onset": 3.68,
+   "run": [
+    3.68,
+    8.16
+   ],
+   "dasm_onset": 0.965,
+   "class": "correct"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "family": "Drill",
+   "how": "map:drill",
+   "outcome": "below DASM bar",
+   "flap_max": 0.661,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    5.76
+   ],
+   "dasm_onset": 0.145,
+   "class": "correct"
+  },
+  {
+   "clip": "cJmFB69HNFs_21000",
+   "family": "Mechanical fan",
+   "how": "map:mechanical fan",
+   "outcome": "below DASM bar",
+   "flap_max": 0.761,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    9.6
+   ],
+   "dasm_onset": 0.029,
+   "class": "correct"
+  },
+  {
+   "clip": "W0o0CFsIcGA_110000",
+   "family": "Alarm",
+   "how": "map:alarm clock",
+   "outcome": "below DASM bar",
+   "flap_max": 0.633,
+   "onset": 2.56,
+   "run": [
+    2.56,
+    7.84
+   ],
+   "dasm_onset": 0.569,
+   "class": "family absent"
+  },
+  {
+   "clip": "1WGmeX6CLas_0",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "below DASM bar",
+   "flap_max": 0.985,
+   "onset": 3.04,
+   "run": [
+    3.04,
+    3.84
+   ],
+   "dasm_onset": 0.347,
+   "class": "correct"
+  },
+  {
+   "clip": "1WGmeX6CLas_0",
+   "family": "Gunshot",
+   "how": "map:assistant: gunshot",
+   "outcome": "below DASM bar",
+   "flap_max": 0.78,
+   "onset": 3.2,
+   "run": [
+    3.2,
+    3.84
+   ],
+   "dasm_onset": 0.219,
+   "class": "family absent"
+  },
+  {
+   "clip": "SVsg07esckU_80000",
+   "family": "Hair dryer",
+   "how": "map:hair dryer",
+   "outcome": "below DASM bar",
+   "flap_max": 0.994,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.44,
+   "class": "correct"
+  },
+  {
+   "clip": "F-Ly8CI7-Pc_20000",
+   "family": "Explosion",
+   "how": "map:explosion",
+   "outcome": "kept",
+   "flap_max": 0.953,
+   "onset": 5.12,
+   "run": [
+    5.12,
+    6.72
+   ],
+   "dasm_onset": 0.771,
+   "class": "correct"
+  },
+  {
+   "clip": "x08pzuGeBFg_170000",
+   "family": "Screaming",
+   "how": "map:scream",
+   "outcome": "below DASM bar",
+   "flap_max": 0.97,
+   "onset": 4.0,
+   "run": [
+    4.0,
+    4.64
+   ],
+   "dasm_onset": 0.43,
+   "class": "correct"
+  },
+  {
+   "clip": "ff21Bursam0_160000",
+   "family": "Cattle",
+   "how": "map:moo",
+   "outcome": "kept",
+   "flap_max": 0.573,
+   "onset": 6.72,
+   "run": [
+    6.72,
+    8.8
+   ],
+   "dasm_onset": 0.759,
+   "class": "correct"
+  },
+  {
+   "clip": "QSQFiq17MQA_30000",
+   "family": "Air brake",
+   "how": "map:air brake",
+   "outcome": "below DASM bar",
+   "flap_max": 0.977,
+   "onset": 2.88,
+   "run": [
+    2.88,
+    3.68
+   ],
+   "dasm_onset": 0.375,
+   "class": "correct"
+  },
+  {
+   "clip": "QSQFiq17MQA_30000",
+   "family": "Vehicle",
+   "how": "map:engine",
+   "outcome": "kept",
+   "flap_max": 0.686,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.719,
+   "class": "correct"
+  },
+  {
+   "clip": "TslB1VMKXmM_10000",
+   "family": "Toilet flush",
+   "how": "map:toilet flush",
+   "outcome": "kept",
+   "flap_max": 0.99,
+   "onset": 0.32,
+   "run": [
+    0.32,
+    6.56
+   ],
+   "dasm_onset": 0.918,
+   "class": "correct"
+  },
+  {
+   "clip": "IZ51tUuibq8_30000",
+   "family": "Owl",
+   "how": "map:owl",
+   "outcome": "kept",
+   "flap_max": 0.9,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    5.92
+   ],
+   "dasm_onset": 0.859,
+   "class": "correct"
+  },
+  {
+   "clip": "IZ51tUuibq8_30000",
+   "family": "Insect",
+   "how": "map:insect",
+   "outcome": "kept",
+   "flap_max": 0.914,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.828,
+   "class": "correct"
+  },
+  {
+   "clip": "yfoV23simOs_30000",
+   "family": "Bell",
+   "how": "map:church bell",
+   "outcome": "kept",
+   "flap_max": 0.872,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.748,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "family": "Train",
+   "how": "map:train horn",
+   "outcome": "below DASM bar",
+   "flap_max": 0.894,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    8.0
+   ],
+   "dasm_onset": 0.382,
+   "class": "wrong time"
+  },
+  {
+   "clip": "UUuXfyfCaL4_170000",
+   "family": "Crowd",
+   "how": "map:cheering",
+   "outcome": "below DASM bar",
+   "flap_max": 0.998,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.523,
+   "class": "correct"
+  },
+  {
+   "clip": "UUuXfyfCaL4_170000",
+   "family": "Clapping",
+   "how": "map:applause",
+   "outcome": "below DASM bar",
+   "flap_max": 0.887,
+   "onset": 1.12,
+   "run": [
+    1.12,
+    10.08
+   ],
+   "dasm_onset": 0.075,
+   "class": "wrong time"
+  },
+  {
+   "clip": "zHfwBfNR7us_30000",
+   "family": "Spray",
+   "how": "map:spray",
+   "outcome": "kept",
+   "flap_max": 0.926,
+   "onset": 8.0,
+   "run": [
+    8.0,
+    9.92
+   ],
+   "dasm_onset": 0.62,
+   "class": "correct"
+  },
+  {
+   "clip": "zHfwBfNR7us_30000",
+   "family": "Vehicle",
+   "how": "map:car",
+   "outcome": "below DASM bar",
+   "flap_max": 0.696,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.331,
+   "class": "correct"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "family": "Toilet flush",
+   "how": "map:toilet flush",
+   "outcome": "kept",
+   "flap_max": 0.996,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.757,
+   "class": "correct"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "family": "Sawing",
+   "how": "map:sawing",
+   "outcome": "below DASM bar",
+   "flap_max": 0.376,
+   "onset": 0.64,
+   "run": [
+    0.64,
+    1.28
+   ],
+   "dasm_onset": 0.219,
+   "class": "family absent"
+  },
+  {
+   "clip": "R6EbA_Is4gc_520000",
+   "family": "Cough",
+   "how": "map:cough",
+   "outcome": "kept",
+   "flap_max": 0.993,
+   "onset": 9.44,
+   "run": [
+    9.44,
+    10.08
+   ],
+   "dasm_onset": 0.94,
+   "class": "correct"
+  },
+  {
+   "clip": "V54-dh4RQdQ_0",
+   "family": "Thunder",
+   "how": "map:thunder",
+   "outcome": "kept",
+   "flap_max": 0.969,
+   "onset": 6.56,
+   "run": [
+    6.56,
+    10.08
+   ],
+   "dasm_onset": 0.602,
+   "class": "family absent"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "family": "Water",
+   "how": "map:water",
+   "outcome": "kept",
+   "flap_max": 0.981,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.892,
+   "class": "correct"
+  },
+  {
+   "clip": "LD6nP2qlsRI_30000",
+   "family": "Sawing",
+   "how": "map:sawing",
+   "outcome": "below DASM bar",
+   "flap_max": 0.42,
+   "onset": 7.04,
+   "run": [
+    7.04,
+    7.2
+   ],
+   "dasm_onset": 0.341,
+   "class": "family absent"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "family": "Vehicle",
+   "how": "map:assistant: engine",
+   "outcome": "kept",
+   "flap_max": 0.546,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    10.08
+   ],
+   "dasm_onset": 0.591,
+   "class": "correct"
+  },
+  {
+   "clip": "wk_FrMLjTOM_30000",
+   "family": "Siren",
+   "how": "map:siren",
+   "outcome": "below DASM bar",
+   "flap_max": 0.954,
+   "onset": 0.0,
+   "run": [
+    0.0,
+    1.28
+   ],
+   "dasm_onset": 0.077,
+   "class": "family absent"
+  },
+  {
+   "clip": "Y_Mz8HfaT2U_30000",
+   "family": "Laughter",
+   "how": "map:laughter",
+   "outcome": "below DASM bar",
+   "flap_max": 0.865,
+   "onset": 1.6,
+   "run": [
+    1.6,
+    2.56
+   ],
+   "dasm_onset": 0.228,
+   "class": "correct"
+  },
+  {
+   "clip": "Y_Mz8HfaT2U_30000",
+   "family": "Tap",
+   "how": "map:tap",
+   "outcome": "below DASM bar",
+   "flap_max": 0.337,
+   "onset": 5.92,
+   "run": [
+    5.92,
+    6.08
+   ],
+   "dasm_onset": 0.176,
+   "class": "family absent"
+  },
+  {
+   "clip": "uUVA22zeu7A_30000",
+   "family": "Vehicle",
+   "how": "map:engine",
+   "outcome": "below DASM bar",
+   "flap_max": 0.622,
+   "onset": 3.36,
+   "run": [
+    3.36,
+    10.08
+   ],
+   "dasm_onset": 0.115,
+   "class": "wrong time"
+  }
+ ]
+}
