@@ -3022,3 +3022,12 @@ the DEV/TEST wrong pictures of EXPECT-A4 are the gate's problem, not the audio p
 mostly single-scene (DEV/TEST are longer, off-screen-rich walks), and "correct" here is audio timing only — a right, well-timed sound
 whose maker is on screen is still a wrong picture in gold (the 1 visible of 8 on TEST, 1 of 8 on DEV). The weak families on the 415
 (Gunshot 1/5, Cat 1/3, Water 1/3) are the same ones that produced cross pictures on DEV/TEST. Diagnostic only; nothing selected.
+
+## Round 43c HUMAN-ADD — HUMAN-2 as an ADD-seen rule (written 2026-10-01 BEFORE computing; CPU only, from the cached Round 43b replies; the shape was suggested by 43b's flips — HUMAN-2 never silenced a needed sound on its own, so it can only add "seen")
+**Rule.** A sound is seen iff the shipped majority says seen (every stretch, as base) OR HUMAN-2 (b) is yes in both letter
+orders on MORE THAN HALF of its stretches (`human2_gate.sound_majority` over `human_gate.seen_human`). Same set, truth, base
+(asserted 16/41, 33/38) and bar (GO iff seen silenced >= 19 with needed kept >= 32, or needed kept >= 35 with seen silenced
+>= 15). Report: table, flips vs base with raw + (b) replies. If GO: the SHIP8 placed pictures whose sound has a cached HUMAN-2
+stretch (same stem / resolved label, picture start inside a stretch's onset ± 0.5 s) and would now be silenced, by gold class;
+pictures on clips or sounds without a cache are listed as not readable. Script `benchmark/gold/human_add_screen.py` ->
+`benchmark/gold/human_add_screen.json`; `src/` untouched.
