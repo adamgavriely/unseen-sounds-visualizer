@@ -62,6 +62,7 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | MAKER-VIS | ask if the picture's maker (train, parrot) is on screen | 9 hits lost (19 / 15): rejected |
 | CONTRAST | ask the listener "(a) X (b) strongest other sound (c) neither" on refused faint sounds | +1 needed, +142 other accepts: rejected |
 | DETACHED-ADD | add a 2-s picture where a drawn family is heard again, far from its picture | fires only on repeat textures: 28 / 28, +7 wrong, targets untouched: rejected |
+| EXPECT | the scene VLM names sounds one would expect off-screen; the listener must name the same; shipped gate at the first weak detector run | running |
 | RELABEL-GATE | rename a picture to the sound both listeners heard, then ask if that is on screen | fires on 3 pictures, none of the 7 targets; drops 2 wrong but also a true hit (27 / 19, cost same): rejected |
 
 **Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.
