@@ -145,11 +145,123 @@ def run(device="cuda"):
         (OUT / f.name).write_text(json.dumps(d, indent=1), encoding="utf-8")
 
 
-def seen_box(st) -> bool:
+REPROMPT_Q = ("These frames (numbered 1..{n}) are from the moment a sound of {label} was heard. Reply ONLY with JSON, no "
+              "other text, no tools: {{\"frame\": k, \"bbox_2d\": [x1, y1, x2, y2]}} on a 0-1000 grid of frame k (1000 = "
+              "full width or height), or {{\"bbox_2d\": null}} if the object making that sound is not visible.")
+
+
+def parse_reprompt(reply: str, n_frames: int):
+    """Round 38 BOX-2: like parse_box, plus {"bbox_2d": null} -> ("null", None)."""
+    t = reply.strip()
+    m = re.search(r"\{.*\}", t, re.S)
+    if m:
+        try:
+            j = json.loads(m.group(0))
+            if j.get("bbox_2d", 0) is None:
+                return "null", None
+        except Exception:
+            pass
+    return parse_box(reply, n_frames)
+
+
+def reprompt(device="cuda"):
+    """Round 38 BOX-2 step B: re-ask every round-37 `unparsed` stretch once with the strict prompt; crop + two
+    label-free questions as round 37. Writes the answer under st['box']['reprompt'] (status parsed/null/unparsed)."""
+    config.use_v4("5")
+    from src.stage2_video_understanding import _sample_frames_at
+    from src.stage5_cross_modal_analysis import reason
+    mdl, proc = reason._load(MODEL, device)
+    names = {stem: name for name, stem, _ in G.gold_sounds()}
+    for f in sorted(OUT.glob("*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        todo = [(si, s, ti, st) for si, s in enumerate(d["sounds"]) for ti, st in enumerate(s["stretches"])
+                if st.get("box") and st["box"]["status"] == "unparsed" and "reprompt" not in st["box"]]
+        if not todo:
+            continue
+        p = G.clip_path(names.get(f.stem, d["clip"]))
+        for si, s, ti, st in todo:
+            obj = object_of(s["label"])
+            lo, hi = st["start"] - 1.0, st["end"] + 1.0
+            times = [max(0.0, lo + (hi - lo) * t / 5) for t in range(6)]
+            frames = _sample_frames_at(p, times)
+            reply = reason._ask(mdl, proc, REPROMPT_Q.format(n=len(frames), label=s["label"]), images=frames, max_new=64)
+            status, parsed = parse_reprompt(reply, len(frames))
+            rec = {"status": status, "reply": reply, "flip": False}
+            if status == "box":
+                k, bb = parsed
+                img = frames[k - 1]; px = to_pixels(bb, img)
+                rec.update({"frame": k, "bbox_1000": bb, "bbox_px": [round(v, 1) for v in px], "size": list(img.size)})
+                cr = crops(img, [px])
+                if not cr:
+                    rec["status"] = "unparsed"; rec["note"] = "degenerate box"
+                else:
+                    cr = cr[0]
+                    tag = f"{f.stem}__{si}_{s['label'].replace(' ', '_').replace(',', '')}_{ti}_re"
+                    cr.save(CROPS / f"{tag}_crop.jpg", quality=90); img.save(CROPS / f"{tag}_frame.jpg", quality=85)
+                    direct = reason._ask(mdl, proc, DIRECT_Q.format(obj=obj), images=[cr], max_new=8)
+                    ab = reason._ab(mdl, proc, AB_Q, obj, "something else", frames=[cr])
+                    rec.update({"direct": direct, "direct_no": direct.strip().lower().startswith("n"), "ab": ab,
+                                "crop_file": f"{tag}_crop.jpg", "flip": bool(direct.strip().lower().startswith("n") and ab is False)})
+            st["box"]["reprompt"] = rec
+            print(f.stem, s["label"], st["start"], "reprompt", rec["status"], "flip" if rec["flip"] else "-", "|",
+                  reply[:70].replace("\n", " "), "|", rec.get("direct"), rec.get("ab"), flush=True)
+        f.write_text(json.dumps(d, indent=1), encoding="utf-8")
+
+
+def seen_box(st, rule="BOX") -> bool:
     if not majority(st):
         return False
     b = st.get("box") or {}
-    return not bool(b.get("flip"))
+    if rule == "BOX":
+        return not bool(b.get("flip"))
+    # BOX2 (round 38): only a parsed box whose both crop checks say no flips; `none` never flips;
+    # BOX2 reads the re-prompt of an unparsed stretch, BOX2-A (cached only) does not
+    if b.get("status") == "box":
+        return not bool(b.get("flip"))
+    if rule == "BOX2" and b.get("status") == "unparsed" and (b.get("reprompt") or {}).get("status") == "box":
+        return not bool(b["reprompt"].get("flip"))
+    return True
+
+
+def score2():
+    gold = gold_index()
+    files = sorted(OUT.glob("*.json"))
+    res = {}
+    for rule in ("majority", "BOX2-A", "BOX2"):
+        c = {"seen": 0, "seen_sil": 0, "needed": 0, "needed_kept": 0}; flips = []
+        for f in files:
+            d = json.loads(f.read_text(encoding="utf-8"))
+            for s in d["sounds"]:
+                g = gold.get((f.stem, s["label"], round(s["start"], 2)))
+                if g is None or g["importance"] < 2:
+                    continue
+                pred = all(majority(st) if rule == "majority" else seen_box(st, rule) for st in s["stretches"])
+                base = all(majority(st) for st in s["stretches"])
+                if g["seen"]:
+                    c["seen"] += 1; c["seen_sil"] += pred
+                else:
+                    c["needed"] += 1; c["needed_kept"] += not pred
+                if pred != base:
+                    flips.append([f.stem, s["label"], s["start"], "seen" if g["seen"] else "NEEDED", "silenced" if pred else "kept"])
+        res[rule] = {**c, "flips": flips}
+        print(f"[{rule:8s}] clips {len(files)} | seen silenced {c['seen_sil']}/{c['seen']} | needed kept {c['needed_kept']}/{c['needed']}")
+        for x in flips:
+            print("   ", x)
+    rp = {"parsed": 0, "null": 0, "unparsed": 0, "flip": 0}
+    for f in files:
+        d = json.loads(f.read_text(encoding="utf-8"))
+        for s in d["sounds"]:
+            g = gold.get((f.stem, s["label"], round(s["start"], 2)))
+            if g is None or g["importance"] < 2:
+                continue
+            for st in s["stretches"]:
+                r = (st.get("box") or {}).get("reprompt")
+                if r:
+                    rp["parsed" if r["status"] == "box" else r["status"]] += 1; rp["flip"] += bool(r.get("flip"))
+    b, m = res["majority"], res["BOX2"]
+    go = (m["needed_kept"] - b["needed_kept"] >= 2) and (b["seen_sil"] - m["seen_sil"] <= 1)
+    res.update({"reprompt": rp, "go": go}); print("reprompt:", rp); print("Round 38 BOX-2 screen:", "GO" if go else "STOP")
+    (G.OUT_DIR / "box2_summary.json").write_text(json.dumps(res, indent=1), encoding="utf-8")
 
 
 def score():
@@ -203,6 +315,6 @@ def score():
 
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
-    ap.add_argument("step", choices=("run", "score"))
+    ap.add_argument("step", choices=("run", "score", "reprompt", "score2"))
     a = ap.parse_args()
-    run() if a.step == "run" else score()
+    {"run": run, "score": score, "reprompt": reprompt, "score2": score2}[a.step]()
