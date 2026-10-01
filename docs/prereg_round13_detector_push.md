@@ -2773,3 +2773,21 @@ phantom); it cannot change the verdict and is reported as pre-registered. Caveat
 (3 hits bought with 5 wrong pictures); DEV alone is worse (2.204 vs 2.122), the gain is on tagger DEV2 (2.364 vs 2.636). As every
 round today, GO means a `src/` flag (whole-clip Qwen3-Omni list -> frozen map, first two families -> FineLAP placement >= 0.329 ->
 DASM >= 0.575 at onset ± 0.5 s -> shipped gate -> 2-s picture) is Adam's decision; merged TEST is spent and would be read once at the end.
+
+## Round 40e TEST read (reported, not selected on; written 2026-10-01 BEFORE any TEST number)
+Rounds 40 → 40e were tuned in sequence on merged DEV, so EXPECT-A4 is read ONCE on the merged TEST exactly as frozen in Rounds 40b–40e
+(no change of prompt, decode, map, cap, bars, windows or gate): old TEST (60 clips, `test_stems.txt`) + tagger TEST (28,
+`test2_stems.txt`). **Base = the shipped SHIP8 TEST pictures** as `final_test.py` reads them (old TEST arm `SHIP7+K4AD` under
+`data/work/r16final`, tagger part under `tagger_prep.out("test2")`, display flags of `arm_cfg("SHIP7+K4AD")`): 23 hits / 42 misses /
+29 wrong (4/20/5) / cost 2.568 on 88 clips (`final_test_ship8.json`) must reproduce first. Per TEST clip: Qwen3-Omni whole-clip list
+(`expect_a_screen.LIST_Q`, 96 tokens, repetition_penalty 1.2, wav `data/work/r13test/wav16` / `r13test2/wav16`) -> `map_item` (frozen
+map + exact names, no cosine) -> first two distinct families -> not already drawn by the SHIP8 TEST pictures -> FineLAP
+(`finelap_screen.frame_scores`, query = family name) >= 0.329, onset = start of the highest-max run (gap <= 0.24 s) -> DASM
+(`data/work/dasm_test`, `dasm_test2`) >= 0.575 within onset ± 0.5 s (no column -> not kept) -> shipped gate at onset − 1 … + 1 s
+(live, no cache exists for TEST) -> 2-s picture. **Gold is read only at the final score step** (gold_AG `test_bench` subset; tagger
+gold filtered to the test2 stems), as `final_test.score` does; every earlier stage runs with the gold stubbed. Report: base row,
+EXPECT-A4 row (hits, wrong v/c/p, cost at w = 2 and w = 1), paired clip bootstrap of d cost vs base (`DCC.boot`, 2000 draws, seed 0,
+one-sided p), every added picture with its class. This is a report, not a selection: the DEV verdict (Round 40e GO on the main rule)
+is not revised by it; Adam reads both.
+**Files:** `benchmark/gold/expect_test.py` (`listen` GPU msproj / `cands` CPU / `flap` GPU venv_flap / `dasm` CPU / `gate` GPU msproj /
+`score` CPU, stage outputs under `benchmark/gold/expect_test/`) -> `benchmark/gold/expect_test.json`; `slurm/job_expect_test.sh`.
