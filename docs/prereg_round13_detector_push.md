@@ -3982,3 +3982,14 @@ screen (storm Thunder ×2, tg_d088 Thunder 13.25, tg_d107 Screaming, tg_d127 Wat
 gold row (as_explosion Gunshot 8.25, ly_applause Crowd 0.0), 1 unsure (tg_d128 Laughter, "too short to want a picture"). No clean
 real-unlisted item -> no gold correction. Adam's idea (notes h11, h12): sounds he recognises only from what is seen LATER in the clip
 (motorcycle, bees) -> clip-level visual context as evidence for an earlier sound.
+
+### Round 58 step 1 result — held-out 415 (jobs 31603121 Qwen + 31603122 AF asks, 31603123 gate; `tightcut.py` -> `tightcut_415.json`): **STOP**
+Sample 800 of 3022 band runs (301 clips; `random.Random(58)`); no window needed the zero-pad fallback. All 800: precision 0.175.
+Padded cut accepted (the shipped rescue on the 415): 93, **0.419**; padded refused 707, 0.143. **NEW (refused padded, accepted on the
+tight cut): 10, 4 correct = 0.400 < 0.60 -> STOP** (n >= 5, so judged). By peak: >= 0.6 8, 0.500; < 0.6 2, 0.000. Overlap rule (reported)
+0.400. NEW with DASM >= 0.575 (would survive F8): 1, 1 correct (Air horn 1.24–4.16, DASM 0.823). Reported, not the rule: the tight cut
+alone would refuse 36 of the 93 padded accepts (0.361 correct among them). Reading: cutting the pad rarely changes the ears' answer
+(10 / 707 refusals flip, 1.4 %), and the flips are no more precise than the shipped rescue (0.40 vs 0.42), far below the 0.60 bar;
+with F8 on top only 1 of 10 would remain. The DEV / DEV2 tight answers were asked in parallel (476 + 294 refused band items,
+`tightcut_ask_{dev,dev2}_{q,af}.json` on the cluster) but were NOT read: the arm job stopped at the gate (exit 3) before building
+override caches; no DEV arm was run. Nothing ships; TEST not read.
