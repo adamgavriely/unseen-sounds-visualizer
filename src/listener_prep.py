@@ -25,19 +25,36 @@ def split_name(video: Path) -> str:
     return "live_" + re.sub(r"[^A-Za-z0-9_]", "_", video.stem)
 
 
-def ready(split: str, stem: str) -> bool:
+def ready(split: str, stem: str, flap: bool = True) -> bool:
     g = _ROOT / "benchmark" / "gold"
     need = [g / f"{split}_listener.json", g / f"{split}_listener_v.json", g / f"{split}_listener_afn.json",
             _ROOT / "data" / "work" / f"dasm_{split}" / f"{stem}.npz", g / f"{split}_listener_p4.json",
-            g / f"{split}_listener_p1v4.json"]
+            g / f"{split}_listener_p1v4.json"] + ([_ROOT / "data" / "work" / f"finelap_{split}" / f"{stem}.npz"] if flap else [])
     return all(p.exists() for p in need)
 
 
+def finelap(split: str, stem: str) -> None:
+    """round 31 FLAP: FineLAP frame scores of the clip's rescue families (benchmark/gold/finelap_screen.py, the same
+    rule as DEV/TEST). FineLAP needs transformers 4.51 -> its own venv (FINELAP_PYTHON, default ~/venv_flap)."""
+    if (_ROOT / "data" / "work" / f"finelap_{split}" / f"{stem}.npz").exists():
+        return
+    py = os.environ.get("FINELAP_PYTHON") or str(Path.home() / "venv_flap" / "bin" / "python")
+    if not Path(py).exists():
+        raise RuntimeError(f"[listener-prep] FineLAP venv not found at {py} (set FINELAP_PYTHON)")
+    print(f"       [listener-prep] {split}: finelap", flush=True)
+    env = {**os.environ, "HF_HUB_OFFLINE": "1", "TRANSFORMERS_OFFLINE": "1"}
+    subprocess.run([py, str(_ROOT / "benchmark" / "gold" / "finelap_screen.py"), "split", split, stem],
+                   check=True, cwd=str(_ROOT), env=env)
+
+
 def ensure_listener_inputs(video: Path) -> str:
-    """build (once) the listener answers and DASM scores of this clip; returns the split name for set_listener_split"""
+    """build (once) the listener answers, DASM and FineLAP scores of this clip; returns the split name for set_listener_split"""
     video = Path(video).resolve()
     split, stem = split_name(video), video.stem
     if ready(split, stem):
+        return split
+    if ready(split, stem, flap=False):                    # built before the FineLAP step existed
+        finelap(split, stem)
         return split
     d = _ROOT / "data" / "input" / f"tagger_{split}"
     d.mkdir(parents=True, exist_ok=True)
@@ -69,6 +86,7 @@ def ensure_listener_inputs(video: Path) -> str:
     subprocess.run([sys.executable, str(gd / "listener_p1v4.py"),
                     f"{split}:{gd / f'{split}_listener_v.json'}:{gd / f'{split}_listener_afn.json'}:{w / f'r13{split}' / 'wav16'}:"
                     f"{gd / f'{split}_listener_p1v4.json'}"], check=True, cwd=str(_ROOT), env=env)
+    finelap(split, stem)
     if not ready(split, stem):
         raise RuntimeError(f"[listener-prep] {split}: inputs still missing after the harness ran")
     return split

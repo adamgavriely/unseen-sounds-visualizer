@@ -15,7 +15,6 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Thesis: insert `docs/thesis/detector_rounds_13_15.md` after §5.8 of ch5; ch5 §5.14 add the R13-1 TEST exposure (29 Sept, 11th), §5.15 row 11; §5.7 stale 'not re-autopsied' line (TO1+F7F8 has a full trace). Arm count on DEV = 106 full-pipeline arms (not ~60).
 
 
-- [ ] `src/listener_prep.py`: add the FineLAP step (AndreasXi/FineLAP in ~/venv_flap, transformers 4.51; benchmark/gold/finelap_screen.py) so new clips get `data/work/finelap_<split>/<clip>.npz`; the shipped FLAP veto (SHIP7) stops stage 4 without it.
 - [ ] ComfyUI nodes (`comfyui_nodes/__init__.py`) still configure `config.use_v4("590")` (the old shipping row): switch them to `config.use_shipped()` and call `src/listener_prep.ensure_listener_inputs` + `config.set_listener_split` before stage 4, so ComfyUI runs the shipped TO1+F7F8 + N2b + DR2 + K-V4.
 
 ## Later
@@ -36,6 +35,7 @@ commit) when it is finished; delete only if Adam drops it. Deadline: thesis 3 Oc
 - [ ] Supervisor meeting: second annotator, ethics for extra raters, thesis format/length, results chapter date.
 
 ## Done
+- 2026-10-01 FineLAP step in `src/listener_prep.py` (`finelap_screen.py split`, ~/venv_flap subprocess, skips existing npz; old live splits get only this step). Check (job 31598689): DEV tg_d007 npz identical to finelap_cache (labels, fs/fe/scores max diff 0); live as_explosion npz built, `_require_caches` passes under use_shipped.
 - 2026-09-30 On-the-spot listener inputs for new videos (ComfyUI): `src/listener_prep.py` runs the benchmark harness for one clip; `main.py` calls it when no `--listener-split` is given. Check: as_explosion answers identical to the shipcheck run (yes/no 95/95, variants 37/37, AF 37/37), ~5 min per clip on an H200.
 - 2026-09-30 `use_shipped()` reverted to the PANNs veto 0.05 (scored config); BEATs self-veto worse on DEV and TEST. Fable supports.
 - 2026-09-30 Round 14 amendments C, D, I, J, K (+K2 with the 27 missing listener answers, 58e9420) and the BEATs weak-band P3 screen: none beats TO1+F7F8 on DEV. `docs/prereg_round13_detector_push.md`

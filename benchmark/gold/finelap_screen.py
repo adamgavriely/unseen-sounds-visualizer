@@ -8,6 +8,7 @@ GO iff needed added >= 2 and other added <= needed added. (b) veto: TIER true AN
     python benchmark/gold/finelap_screen.py run     # GPU, ~/venv_flap (transformers 4.51.3), HF offline
     python benchmark/gold/finelap_screen.py score   # CPU, msproj env
     python benchmark/gold/finelap_screen.py run test test2   # TEST frame caches -> data/work/finelap_test{,2}/
+    python benchmark/gold/finelap_screen.py split live_x     # any tagger_prep split -> data/work/finelap_live_x/
 """
 from __future__ import annotations
 
@@ -100,7 +101,46 @@ def frame_scores(model, wav, phrases, device):
     return np.array(fs), np.array(fe), np.stack(sc)
 
 
+def split_part(name, out=None):
+    """any split built by tagger_prep (e.g. a one-clip live_<clip> split of src/listener_prep.py): same files, same rule"""
+    return {"p1": G / f"{name}_listener.json", "v": G / f"{name}_listener_v.json",
+            "wav": _ROOT / "data" / "work" / f"r13{name}" / "wav16",
+            "out": Path(out) if out else _ROOT / "data" / "work" / f"finelap_{name}"}
+
+
+def run_split(name, clips=(), out=None):
+    """frame caches for split <name> (only <clips> if given); a clip whose npz exists is skipped, a clip with no
+    candidates gets an empty npz (no family queried -> the FLAP veto keeps everything, as in stage 4)"""
+    TEST_PARTS[name] = c = split_part(name, out)
+    c["out"].mkdir(parents=True, exist_ok=True)
+    p1, cand = items(name)
+    want = {}
+    for x in p1 + cand:
+        want.setdefault(x["clip"], set()).add(canonical(x["label"]))
+    clips = list(clips) or sorted(want)
+    todo = [k for k in clips if not (c["out"] / f"{k}.npz").exists()]
+    for k in [k for k in todo if not want.get(k)]:
+        np.savez(c["out"] / f"{k}.npz", fs=np.zeros(0), fe=np.zeros(0), scores=np.zeros((0, 0), np.float32),
+                 labels=np.array([], dtype=str))
+        print(f"[run] {name} {k}: no candidates, empty cache", flush=True)
+    todo = [k for k in todo if want.get(k)]
+    if todo:
+        run_model([(name, c, {k: want[k] for k in todo})])
+
+
 def run(splits=None):
+    todo = {k: {**v, "out": CACHE} for k, v in PARTS.items()} if not splits else {k: TEST_PARTS[k] for k in splits}
+    jobs = []
+    for part, c in todo.items():
+        p1, cand = items(part)
+        want = {}
+        for x in p1 + cand:
+            want.setdefault(x["clip"], set()).add(canonical(x["label"]))
+        jobs.append((part, c, want))
+    run_model(jobs)
+
+
+def run_model(jobs):
     import torch
     from transformers import AutoModel
     dev = "cuda" if torch.cuda.is_available() else "cpu"
@@ -111,13 +151,8 @@ def run(splits=None):
         ref = type(model).load_audio(model, [str(smoke)], device=dev)[0, 0].cpu()
         mine = _mel(_load(smoke)[: int(WIN_S * SR)])
         print(f"[check] mel max abs diff vs load_audio: {float((ref - mine).abs().max()):.2e}", flush=True)
-    todo = {k: {**v, "out": CACHE} for k, v in PARTS.items()} if not splits else {k: TEST_PARTS[k] for k in splits}
-    for part, c in todo.items():
+    for part, c, want in jobs:
         c["out"].mkdir(parents=True, exist_ok=True)
-        p1, cand = items(part)
-        want = {}
-        for x in p1 + cand:
-            want.setdefault(x["clip"], set()).add(canonical(x["label"]))
         for clip, ph in sorted(want.items()):
             ph = sorted(ph)
             wp = c["wav"] / f"{clip}.wav"
@@ -216,5 +251,11 @@ def score():
 if __name__ == "__main__":
     if sys.argv[1] == "run":
         run(sys.argv[2:] or None)
+    elif sys.argv[1] == "split":                   # split <name> [--out DIR] [clip ...]   (src/listener_prep.py)
+        a = sys.argv[3:]
+        o = a[a.index("--out") + 1] if "--out" in a else None
+        if o:
+            i = a.index("--out"); a = a[:i] + a[i + 2:]
+        run_split(sys.argv[2], a, o)
     else:
         score()
