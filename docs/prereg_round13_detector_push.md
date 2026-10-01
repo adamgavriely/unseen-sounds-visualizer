@@ -4521,3 +4521,14 @@ Reading: the mean of three quantile-matched taggers lowers peaks wherever the ta
 Precision goes up (+0.07), but recall goes down (−0.045). This is the same trade a higher BEATs bar would make, and it does not add
 the missed onsets Fable A targeted. No DEV run; the `TAG_ENS` flag stays None (arm line `SHIP8+MD3+WW5+TE` is kept for the record).
 Per-video cost had it shipped: EAT 0.2–0.5 s and SSLAM 0.13–0.26 s per clip on one GPU, plus model loads. TEST not read.
+
+### Round 64 result — CONCEALED-ACTION: DEV **PASS (main rule)** (job 31697777, A100, ~25 min; `slurm/job_concealed.sh`, log `~/MscProj_tg/logs/conceal_31697777.out`, `merged_dev.py`)
+Base D reproduced: **SHIP8+MD3+WW5 29/58, 14 (6/6/2), 2.028** (DEV 19/9, DEV2 10/5).
+**CA (ship table {Bell}): 30/58, 14 (6/6/2), cost 1.972** (DEV 20/9, DEV2 10/5). Hits 30 >= 29, no needed hit lost, cost 1.972 < 2.028
+-> main rule PASS. Changed pictures (1, vs D): **+ bell_miami Bell 0.22–14.5 (hit)**; nothing removed, no new visible. Stage-5 log:
+"concealed-action kept Bell" fired only on bell_miami (b3_crossing_bells unchanged).
+**CAR (report-only, Digestive etc. included): 32/58, 14 (6/6/2), cost 1.859** (DEV 20/9, DEV2 12/5): + bell_miami Bell (hit) and
++ tg_d133 Digestive 0.06–2.5 and 6.3–8.0 (2 hits, "concealed-action kept Fart"). Not shipped: Fart etc. have no calibration instance
+(admission rule), so the +2 is in-sample DEV2 evidence only.
+Exactly as the honest expectation. The gain is one clip (bell_miami); Bell's "0 seen silenced" admission was 0 of 0, so a seen bell
+re-shown is the untested risk. GO -> shipping {Bell} is Adam's call (see the class note in the entry). TEST not read.
