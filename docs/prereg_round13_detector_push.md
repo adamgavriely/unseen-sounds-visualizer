@@ -4628,3 +4628,6 @@ removal side only, disclosed. Pass: main rule (hits >= 29, no needed hit lost, c
 **Named either way:** bell_miami (gate-gold: Bell ×3 stretches, Round 50 "church bell" crops; and on DEV if step 2 runs) — its crop
 margins printed and recorded. Script `benchmark/gold/humanbox_logit.py`, job `slurm/job_humanbox_logit.sh`. Flags default off; no
 src / config edit unless step 2 passes. TEST not read.
+### Round 60L / D' TEST read (job 31708734 + `test_vs_ship8.py SHIP8+MD3+WW5+SL`; reported, not selected on; ship decision written before it)
+B on TEST 22/65, 26 (4/17/5), 2.545. **D' (shipped): 24/65, 24 (4/15/5), 2.409; d cost −0.136 [−0.295, 0.000], one-sided p 0.034.**
+(D with the text readout read 24/65, 23, 2.386.) Shipped D': DEV 29/58, 15 (6/7/2), 2.056; TEST 24/65, 24, 2.409.
