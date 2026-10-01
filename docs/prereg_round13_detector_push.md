@@ -3682,3 +3682,15 @@ rule) of no-ear spans with DASM < e; **b0 = the highest edge e in {0.05 … 0.60
 2.141**. **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR
 fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row
 (`floor_check_arm.py`), changed pictures. Stacking with Round 56 as pre-registered in Round 53b. TEST not read.
+
+### Round 53c WEAK-WITNESS-3 step 1 result — held-out 415 (`benchmark/gold/weakwitness3_415.py` -> `weakwitness3_415.json`, CPU, login node): **STOP — no b0**
+No-ear spans (proxy): **349, 76 correct = 0.218.** By DASM bin (n, precision): 0–0.05 119, 0.034; 0.05–0.10 34, 0.206; 0.10–0.15 21,
+0.143; 0.15–0.20 33, 0.121; 0.20–0.25 10, 0.100; 0.25–0.30 13, 0.077; 0.30–0.35 19, 0.263; 0.35–0.40 20, 0.350; 0.40–0.45 8, 0.250;
+0.45–0.50 11, 0.636; 0.50–0.55 12, 0.500; 0.55–0.60 3, 0.667; >= 0.60 46, 0.587. Cumulative below the edge: 0.05 0.034; 0.10 0.072;
+0.20 0.087; 0.30 0.087; 0.35 0.100; 0.40 0.119; 0.50 0.142; **0.60 0.162 (303)** — <= 0.20 below EVERY edge, so the rule returns
+the top of its range: **b0 = 0.60, not in (0.1, 0.6) -> STOP as pre-registered; no src/config/arm change, no DEV run, no scp.**
+The curve never crosses 0.20 (the 415 gives no bar, it saturates); a value is not picked from the bins after the fact.
+Disclosure (reported, not used): at 0.60 the rule would drop 303 of 349 no-ear spans incl. 49 correct (0.162); the bins rise from
+0.35 (0.35, 0.25, 0.64, 0.50, 0.67), so the 415's weak zone for no-ear spans ends around 0.35–0.45. A successor would have to
+pre-register a FIXED b0 (e.g. Round 53's 0.35 or DV-G's 0.575) with "either" before any number. Caveat kept: "either" uses the P1
+listener yes for Qwen, while the known-before-writing ear statuses came from the "both"-mode (V4 'onto') step-0 trace. TEST not read.
