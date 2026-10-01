@@ -4542,3 +4542,40 @@ Vehicle -> Helicopter (hit), mv_protest Glass hit regrouped. Logit asks (DEV / D
 an explicit no (d −4.0), ambulance Siren tie (−1.0 / +0.13) -> not credible, as before; = the Round 62 recheck prediction.
 Shipped: `config.use_shipped` sets SCENE_FIT_LOGIT True (module default stays False, so every earlier arm reproduces). The shipped
 DEV row is now 29/58, 15 (6/7/2), 2.056 (the 2.028 included one truncation win). TEST not read.
+
+## Round 65 RETURN — PERCEPTUAL-ONSET RETURN (Fable C idea 2; written 2026-10-02 BEFORE any 415 or DEV number of this round)
+**Why.** The gold counts a same-family sound after a > 2-s pause as a NEW event (12/58 needed are such returns; D hits 3). Known
+before writing (from `docs/review/panel2_2026-10-01/dissection2.md`, D's misses with a same-family picture elsewhere): **tg_d032 Thunder
+7.4** (picture 13.75), **as_explosion Explosion 2.8** (pictures 5.68, 9.25), **birds_forest Bird 1.3** (picture 10.25), **tg_d120 Meow
+2.9** (Cat picture 0.56). Known risk: texture repeats (tg_d088 Rain / Thunder). 3 of the 4 targets lie BEFORE the drawn picture, so the
+gap rule is two-sided (below).
+**Rule (one flag, default None: `config.PERC_RETURN = k`; stage 4, online per video, after every stage-4 filter).** Audio: the clip's
+wav at 16 kHz mono (librosa.load). Envelope: `librosa.onset.onset_strength(y, sr=16000)` (defaults: hop 512, mel flux, mean over
+bands); peaks: `scipy.signal.find_peaks(env, distance=3 frames)` (~0.1 s); m = median height over ALL picked peaks; a peak at time p
+qualifies iff height >= k × m. Families: canonical families with at least one stage-4 row that is drawable (`is_salient_nonspeech`) and
+>= DISPLAY_THRESHOLD (0.35) ("drawn"). Peaks are processed in time order; for each family, a peak p makes a RET row iff (i) sub-bar
+same-family evidence within [p − 0.3, p + 0.3]: the family's BEATs columns >= 0.2 (a window's score held over [t, t + hop)) OR its
+FlexSED family/child queries >= 0.5; and (ii) the distance from p to every same-family span (all stage-4 rows of the family at any
+confidence, plus RET rows already made) is >= 2.0 s, distance = p − raw end for a span before p, span start − p for a span after p, 0 if
+p is inside. RET row: label = family, start = p, end = min(p + 0.5, clip end), confidence = the family's highest stage-4 confidence.
+**Exemptions (only RET rows; marked by zero-length breaks at their own start and end, which nothing else produces).** The breaks stop
+the stage-5 burst merge and the display MERGE_GAP from joining a RET picture with its neighbours (by construction they are >= 2.0 s
+apart raw); stage 5 (`plan_augmentations`) takes each RET row out before `consolidate_families` and gives it its OWN spec, so the
+visibility gate is asked once on its own stretch (its verdict never revives or carries the family's other pictures); GROUP
+(`group.apply`) never pairs a RET picture. Disclosed: the DEV harness rebuilds stage-4 rows itself, so besides the arm line it needs one
+hook in `round13_dev.stage4` (after `add_breaks`: RET rows added as rows with their breaks, wav = `DCC.wav_of`); the stage-5/6 hooks act
+on the marker, not on the flag (no marker without the flag). RET rows enter after `filter_rescued`, so no stage-4 veto sees them.
+**415 guard (before any DEV run; `benchmark/gold/perc_return.py`, CPU).** The 415 AudioSet-Strong clips, Round 63's seed-63 halves
+(207 A / 208 B), audio = `tagens/audio/*.npy` (16 kHz, msproj decode). "Drawn" proxy (no pipeline pictures exist there, disclosed: no
+gate, listener or vetoes): raw BEATs spans (peak >= 0.35, hysteresis 0.175, min dur 0.3) and FlexSED 0.8 runs (min dur 0.3) of
+depictable families (`expect_screen.FAMILIES`). RET candidates built by the same function. Truth: a candidate (family f, p) is correct
+iff a strong event e with `same_family(f, e)` starts in [p − 0.5, p + 1.0] (Round 42 window) AND e is a NEW event: no other same-family
+strong event starts before e and ends after e.start − 2.0 (first-in-clip or after a > 2-s pause). k: grid {1, 1.5, 2, 3, 4, 6}; on half
+A, the k with the highest precision among k with >= 20 candidates (ties -> smaller k). **Half B GO iff >= 20 candidates AND precision
+>= 0.42, else STOP (no DEV run).** Reported beside it on half B: RET under the plain Round 42 rule (any same-family event in the window),
+and the raw BEATs spans' precision under both rules (compare-to-pipeline). Disclosed: 10-s clips truncate returns (a pause plus a
+return must fit in 10 s), so the 415 under-samples long-pause returns.
+**DEV (only on GO).** Arm `SHIP8+MD3+WW5+RET` = D + PERC_RETURN = k. Real stage-4 / stage-5 job as Round 64 (old DEV ~/MscProj_r13,
+DEV2 ~/MscProj_tg, `merged_dev.py`). D must reproduce **29/58, 14 (6/6/2), 2.028**. **PASS iff** cost < 2.028 AND (main rule: hits >=
+29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × hits lost, hits >= 26). Listed: every RET row made, every changed
+picture vs D with its class, per-video cost (onset envelope ~CPU s per clip + the gate/depiction VLM asks of the new specs). TEST not read.
