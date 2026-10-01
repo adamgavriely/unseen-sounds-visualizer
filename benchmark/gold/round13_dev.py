@@ -57,7 +57,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "LISTENER_CONFIRMED_MIRROR": False, "LISTENER_DASM_VOTE": False, "LISTENER_DASM_DIR": None,
         "LISTENER_DASM_BAR": 0.575, "LISTENER_DASM_PAD": 0.5,
         "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority", "GATE_BOX_CHECK": False,
-        "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None,
+        "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None, "GROUP_ASK": False, "GROUP_MAX_GAP": 4.0, "GROUP_CACHE": None,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
@@ -232,6 +232,8 @@ ARMS["SHIP7+K4AD"] = {**ARMS["SHIP7+K4AO"], "KEEP_NEEDS_V4_ALL_DASM_KEEP": True}
 ARMS["SHIP7+DBR"] = {**ARMS["SHIP7"], "REPEAT_DASM_BRIDGE": 0.575}              # round 35 DBR
 ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5}  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct (Adam)
 # (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
+ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 4.0,
+                     "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
 ARMS["SHIP8+DBR"] = {**ARMS["SHIP8"], "REPEAT_DASM_BRIDGE": 0.575}
 ARMS["SHIP8+BOX2"] = {**ARMS["SHIP8"], "GATE_BOX_CHECK": True}    # round 38 BOX-2 arm (gate box + crop check)
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}
@@ -257,7 +259,7 @@ if GSTACK.exists():
     ARMS["GSTACK"] = _c
 STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT", "FIX_GATE", "LISTENER_ARBITER", "DISPLAY_THRESHOLD",
                "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE", "SCENE_FIT_ALL", "GATE_BOX_CHECK")  # arm flags read after stage 4
-DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF")                           # read by _display_spans at score time
+DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF", "GROUP_ASK", "GROUP_MAX_GAP", "GROUP_CACHE")                           # read by _display_spans at score time
 
 
 @contextlib.contextmanager

@@ -118,6 +118,9 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
                                    device=config.DEVICE)
     _dump(work / "augmentations.json", [s.to_dict() for s in specs])
 
+    config.GROUP_CLIP = video_path.stem          # Round 47 GROUP: Omni-confirmed repeats shown as one picture
+    from src.stage6_visual_augmentation.group import ensure as _group_ensure
+    _group_ensure(video_path.stem, work / "audio.wav", specs, media.duration)
     try:        # the window the viewer really gets: what stage 6 will draw, before it draws it
         from src.stage6_visual_augmentation import _display_spans
         shown = _display_spans(specs, media.duration)

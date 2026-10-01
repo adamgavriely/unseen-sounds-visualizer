@@ -172,7 +172,7 @@ def load_pictures(work_root: Path, stem: str, system: str):
                              breaks=[tuple(x) for x in s.get("breaks", [])])
         objs.append(o)
     d = dur or max((o.end for o in objs), default=0.0) + 5.0
-    spans = _display_spans(objs, d, require_image=(system != "audio_caption"))
+    spans = _display_spans(objs, d, require_image=(system != "audio_caption"), clip=stem)
     if system == "audio_caption":                      # text tags have no row limit
         return [(lab, float(a), float(b)) for lab, a, b, _ in spans]
     placed, _ = _assign_rows(spans)

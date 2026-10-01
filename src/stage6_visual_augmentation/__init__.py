@@ -662,7 +662,7 @@ MIN_DWELL = 1.5
 MERGE_GAP = 0.8
 
 
-def _display_spans(specs: List[AugmentationSpec], duration: float, require_image: bool = True):
+def _display_spans(specs: List[AugmentationSpec], duration: float, require_image: bool = True, clip: str = None):
     """(label, start, end, spec) intervals to actually put on screen.
 
     Merges repeats of the same sound that are closer together than MERGE_GAP, and gives
@@ -713,6 +713,9 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
             sp[2] = min(sp[2], sp[1] + float(cap))
         if after is not None:
             sp[2] = min(sp[2], max(cur_raw[id(sp)], sp[1]) + float(after))
+    if getattr(config, "GROUP_ASK", False):          # Round 47 GROUP (Adam, 1 Oct): Omni-confirmed repeats -> one picture
+        from src.stage6_visual_augmentation.group import apply as _group
+        spans = _group(spans, clip)
     return [tuple(sp) for sp in sorted(spans, key=lambda sp: sp[1])]
 
 
