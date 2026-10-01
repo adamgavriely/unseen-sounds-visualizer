@@ -20,9 +20,11 @@ F=benchmark/gold/scenemargin.py
 A="SHIP8+MD3 SHIP8+MD3+WW SHIP8+MD3+WW5"
 export TG_ARMS="$A"
 cd "$HOME/MscProj_tg"
-python $F videos
-python $F sanity
-python $F gate
+if [ -z "${FROM_DEV:-}" ]; then   # FROM_DEV=1: steps 0 / 1 already passed (their json files exist)
+  python $F videos
+  python $F sanity
+  python $F gate
+fi
 cd "$HOME/MscProj_r13"
 python benchmark/gold/round13_dev.py stage4 --arms $A
 python benchmark/gold/round13_dev.py stage5 --arms $A

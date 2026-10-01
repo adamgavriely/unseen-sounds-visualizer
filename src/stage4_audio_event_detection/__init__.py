@@ -1391,10 +1391,14 @@ def _scene_margin(e) -> bool:
         if vid and Path(vid).exists():
             import torch
             from src.stage5_cross_modal_analysis import reason
-            mdl, proc = reason._load(getattr(config, "VLM_MODEL", "Qwen/Qwen3.8-27B"),
-                                     "cuda" if torch.cuda.is_available() else "cpu")
-            verdict = reason._scene_fit(SimpleNamespace(spans=[(float(e.start), float(e.end))], start=float(e.start),
-                                                        end=float(e.end), event_label=fam), vid, mdl, proc, log=log)
+            # the shipped gate VLM, thinking off (stage 4 runs before use_scored's stage-5 VLM settings are read)
+            mdl, proc = reason._load("Qwen/Qwen3.8-27B", "cuda" if torch.cuda.is_available() else "cpu")
+            th, config.VLM_THINKING = getattr(config, "VLM_THINKING", False), False
+            try:
+                verdict = reason._scene_fit(SimpleNamespace(spans=[(float(e.start), float(e.end))], start=float(e.start),
+                                                            end=float(e.end), event_label=fam), vid, mdl, proc, log=log)
+            finally:
+                config.VLM_THINKING = th
         memo[key] = verdict
         with logp.open("a", encoding="utf-8") as fh:
             fh.write(_j.dumps({"key": list(key), "label": e.label, "verdict": verdict, "answers": log, "video": vid}) + "\n")
