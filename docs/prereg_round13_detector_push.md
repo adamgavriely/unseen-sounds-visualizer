@@ -3716,3 +3716,33 @@ then tgarms (~/MscProj_tg), PICTURE_MIN_CONF None. Base must reproduce **29/58, 
 no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong
 <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures, and for every lost hit its
 rows' DASM and ears. Stacking with Round 56 as pre-registered in Round 53b. TEST not read.
+
+## Round 52b KIN-KEEP — a strong span is kept only when FlexSED's winner is its ontology relative (written 2026-10-01 BEFORE any number of it; from `docs/review/round52_nearmiss.md`)
+**Why.** Round 52 STRONG-KEEP (conf >= 0.7 skips the mirror veto and the cross-detector veto) gained tg_d029 rooster but lost
+tg_d120 Cat and added 3 wrong pictures. The near-miss diagnosis (`docs/review/round52_nearmiss.md`) found one stage-4 separator:
+the rooster's mirror competitor is FlexSED Goose 0.852, which shares the non-root ancestor Fowl with Chicken (FlexSED heard the same
+source under a sibling name; the "other family" is the canonical map Chicken -> Bird, Goose -> Goose). The new wrongs' winners are
+unrelated (Pant/Alarm, Thunder/Bicycle, Cattle/Laughter). The Cat loss came from Meow (cross veto only, no competitor >= 0.7) being
+kept, which made Cat "present" and switched off the DASM rescue at 0.56 (`DASM_RESCUE_NEW_ONLY`).
+**Rule (one flag `KIN_KEEP`, default None = off; values "nonroot" / "parent").** A span with conf >= b (b = MIRROR_VETO = 0.7,
+inherited, not tuned) skips the mirror veto and the cross-detector veto only if, over the FlexSED frames in [start, end) (nearest frame
+to the midpoint if none), the top query of a DIFFERENT canonical family scores >= b AND is ontology kin of the span's label:
+- "nonroot": the deepest common AudioSet ancestor of the two labels (`labels._common_parent`, itself included) exists and is not a
+  top-level root (a label with no parent);
+- "parent" (stricter): that common ancestor is the label itself or its direct parent, for BOTH labels.
+Nothing else changes. Spans with no competitor >= 0.7 (all of Round 52's "cross only" part) are never kept.
+**Step 1 — closeness level from the held-out 415 (`benchmark/gold/kinkeep_415.py`, CPU).** The 64 Round 52 proxy spans
+(`strongkeep_415.py`: raw BEATs conf >= 0.7, min span 0.3 s, depictable families, (i) cross OR (ii) mirror would remove it),
+re-derived with the top other-family FlexSED query LABEL. For each level: kin subset K (spans the rule keeps) and the rest R.
+**A level qualifies iff precision(K) >= 0.375 with n(K) >= 10 AND precision(R) < 0.375** (Round 42 rule, as Round 52). Pick the
+qualifying level with the higher precision(K); tie -> "parent". **No level qualifies -> STOP (no src/config/arm change, no DEV).**
+**Known before writing (DEV2, from the near-miss rebuild; not a forecast of the score).** rooster tg_d029 Chicken/Fowl/Cluck
+6.75: competitor Goose 0.852 (common ancestor Fowl: kin at both levels; Cluck vs Goose is "nonroot" only) -> kept. tg_d120 Meow:
+no competitor >= 0.7 (Dog 0.577) -> vetoed as base -> DASM Cat 0.56 comes back. tg_d022 Pant (Alarm 0.80), tg_d032 Thunder 8.75
+(Bicycle 0.819; Rain 0.813 shares only the root), tg_d128 Cattle (Laughter 0.916) -> vetoed as base. **Expected if nothing else
+moves: 30/58, 18 (base + the rooster hit), cost < 2.141.** Other DEV clips were not traced.
+**Step 2 — DEV (only if a level qualifies).** `ARMS["SHIP8+MD3+KK"] = {**ARMS["SHIP8+MD3"], "KIN_KEEP": <level>}`; r16dev
+(~/MscProj_r13) then tgarms (~/MscProj_tg), PICTURE_MIN_CONF None. Base must reproduce **29/58, 18 (6/10/2), 2.141**. **Pass:** main
+rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR fewer-pictures clause ((a) cost
+< 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures, the
+mechanism of any lost hit. TEST not read.
