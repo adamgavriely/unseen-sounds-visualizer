@@ -2748,3 +2748,15 @@ not seen there, but gold Bird starts 0.1 s -> cross; pet_shop Bird 0.0 gate-seen
 sounds (hammer, train, bell, laughter, fart) with no hit lost — the best recall any screen since Round 13 has shown on these — but
 each variant adds 2–4 wrong pictures per hit, so none passes the cost rule; the limiting part is now the gate's blindness to an
 off-screen WRONG name, not detection or placement.
+
+## Round 40e EXPECT-A4 — 40d's added pictures, each confirmed by DASM (written 2026-10-01 BEFORE any number; motivated by 40d: right placement, wrong off-screen names the gate cannot refuse)
+**Rule (CPU only, existing caches).** Start from exactly the 23 pictures Round 40d ADDED (`expect_a3_screen.json["added"]`; the 25
+gate-dropped ones stay dropped). A picture is kept iff its family's DASM score — max over the DASM columns whose `canonical` equals the
+family (`load_fr` on `data/work/devcand/dasm_cache/<clip>.npz` for DEV, `data/work/dasm_dev2/<clip>.npz` for tagger DEV2) — is
+**>= 0.575** (`LISTENER_DASM_BAR`, F8's bar) in some frame with **onset − 0.5 s <= t <= onset + 0.5 s**. A family DASM has no column
+for in that clip is reported separately and NOT kept (fixed). Disclosed: the shipped `_dasm_keeps` tests span ± 0.5 s, i.e. for a 2-s
+picture onset − 0.5 … onset + 2.5 s; that wider window is reported as a secondary number and cannot change the verdict. Score = SHIP8 +
+the kept pictures, `score_per_sound.score_clip` as every round today; base 28/58, 21, 2.282 must reproduce. **Pass** as Round 40 (main:
+hits >= 28, no needed hit lost, w = 2 cost lower; more-hits: hits up, cross / phantom not up on either part, w = 1 cost lower). Known
+before this entry: the 40d hits are Hammer 13.92, Train 15.04, Bell 0.0, Laughter 8.48, Fart 0.0; no DASM value for any of the 23 has
+been looked at. **Files:** `benchmark/gold/expect_a4_screen.py` -> `benchmark/gold/expect_a4_screen.json`.
