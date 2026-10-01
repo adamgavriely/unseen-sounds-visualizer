@@ -2962,3 +2962,17 @@ gone (laundromat "washing machine", hair-dryer "click"), golf Bird ("swing") and
 AV namer is right where the audio was already right (Thunder, Siren, Fireworks) and wrong elsewhere; the one useful signal is "cannot
 name it" = phantom (4 of 5 unmapped pictures were wrong), too small to pass. No `src/` change. Files: `benchmark/gold/avname_screen.json`,
 `benchmark/gold/avname/answers.json`.
+**Standing combined rule (coordinator, after the numbers above; the project's pass rule since 30 Sept 16:02 = old rule OR fewer-pictures
+clause: cost lower, wrong <= base wrong − 3 × hits lost, <= 3 hits lost).** (a) relabel: 13 hits lost -> FAIL. (b) drop unmapped:
+1 hit lost, wrong 17 <= 21 − 3 = 18, cost 2.225 < 2.282 -> **PASSES the fewer-pictures clause** (fails this round's main rule, recorded
+both ways). (a)+(b): 14 hits lost -> FAIL. So variant (b) gets a TEST read.
+
+## Round 44 TEST read — AVNAME variant (b), frozen (reported, not selected on; written 2026-10-01 BEFORE any TEST number)
+Exactly the Round 44 (b) rule on the merged TEST (old TEST 60 + tagger TEST 28 = 88 clips, as `expect_test.parts()`: shipped SHIP8 TEST
+pictures, arm `SHIP7+K4AD` under `data/work/r16final` + `tagger_prep.out("test2")`; base 23 hits / 42 misses / 29 wrong (4/20/5) /
+cost 2.568 must reproduce). Every placed picture: same model, cut (`r13test/wav16`, `r13test2/wav16`), 8 frames, question, decode,
+matcher and tie-break as Round 44; a picture is DROPPED iff its answer is NONE or unmapped; nothing is renamed. Gold is read only in
+`score` (`final_test` loading, as `expect_test.cmd_score`). Reported: base and new rows (hits, wrong v/c/p, cost at w = 2 and w = 1),
+per part, paired clip bootstrap of d cost vs base (`DCC.boot`, 2000 draws, seed 0, one-sided p), every dropped picture with its class
+and answer, hits lost. This is a report: the DEV verdict is not revised by it. **Files:** `benchmark/gold/avname_test.py` (`ask` GPU
+msproj -> `benchmark/gold/avname/test_answers.json`; `score` CPU) -> `benchmark/gold/avname_test.json`; `slurm/job_avname_test.sh`.
