@@ -3328,3 +3328,10 @@ grounding is not the bottleneck, the "making the sound right now" judgement on a
 Already tested in Round 14 amendment D: FlexSED got the 120 folded labels (incl. "Chicken, rooster", "Crowing") as extra queries;
 the unheard misses stayed unheard (Whack 0.09, Clang 0.01, Hammer 0.00) and XQ did not beat the base. Whack and Clang are outside the
 depictable vocabulary (bucket b). So bucket A (4 misses no model hears) is a true ceiling of the current detectors; no Round 51.
+
+### Correction (1 Oct 12:30, Adam: "you should not optimize based on test")
+Two choices today used TEST and are undone: (1) the GROUP 4.0 s limit (set after the TEST read) -> back to the pre-registered,
+DEV-selected MAX_GAP 8.0 s; DEV is identical (29/58, 18, 2.141), TEST reads 22/65, 26, 2.545 (reported only). (2) The picture-floor
+recommendation is now made on DEV only: drop the floor (DEV 29/18/2.141 vs 27/15/2.169); the TEST rows stay recorded, not used.
+Rule from here: every choice (rules, limits, thresholds, config keep/drop) is made on DEV or the held-out 415; TEST is read once
+per shipped change and only reported.

@@ -7,7 +7,7 @@ re-asked as a->c); no DEV/TEST clip had a chain. Merging only
 removes pictures, never adds one. The answers are computed once per clip (`ask`) and cached; the display step
 (`_display_spans`) reads the cache, so the scorer and the renderer see the same pictures.
 
-GROUP_MAX_GAP = 4.0 s (Adam: merge only when close enough; twice the gold's 2-s "sound starts again" rule).
+GROUP_MAX_GAP = 8.0 s, as pre-registered and selected on DEV (a 4.0 s limit chosen after the TEST read was reverted).
 """
 from __future__ import annotations
 

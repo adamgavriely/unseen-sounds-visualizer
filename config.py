@@ -290,7 +290,7 @@ MERGE_GAP = 2.0   # amendment 3 (2026-09-21): measured from the sound's real end
                   # so barks 2.2 s apart chained into one picture); 2 s = the annotation rule
                   # "one row per continuous sound, split at pauses > 2 s" (docs/metric_per_sound.md)
 GROUP_ASK = False      # Round 47 GROUP: Qwen3-Omni decides whether two close same-family pictures are one sound
-GROUP_MAX_GAP = 4.0    # merge only pictures at most this far apart (Adam: "only close enough")
+GROUP_MAX_GAP = 8.0    # Round 47 as pre-registered and selected on DEV (the 4.0 limit was set after a TEST read; reverted 1 Oct, Adam: never tune on TEST)
 GROUP_CACHE = None     # json {clip: {"label|start": [answer, answer]}}; None -> WORK_DIR/group_answers.json when live
 GROUP_CLIP = None      # set by pipeline.run to the clip stem
 GROUP_LIVE = False     # True: pipeline.run loads Qwen3-Omni itself; default the separate step (python -m src.stage6_visual_augmentation.group) fills GROUP_CACHE
@@ -504,7 +504,7 @@ def use_shipped() -> dict:
     setattr(me, "PICTURE_MIN_CONF", 0.40)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 4.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3),
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3),
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
                  # GROUP (Round 47, Adam 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)
                  # MERGE_GAP 2.5 (Adam, 1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545
