@@ -3973,3 +3973,12 @@ gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 1
 0.40 row (`floor_check_arm.py`), changed pictures (`tightcut.py diff` -> `tightcut_diff.json`), number of re-asked / tight-accepted
 items per split (`tightcut_build.json`). Jobs: Qwen on H200/A100, AF on a smaller GPU, then one arm job (gate -> build + replay ->
 r13 stage 4/5/score -> tagger stage 4/5/gates -> merged -> floor -> diff). TEST not read.
+### Round 46b result (Adam's answers 1 Oct 17:13, 29/29)
+Controls (15 current hits): 11 real/off-screen/wanted, 1 not heard (bakery Door 3.9), 3 unsure/seen (tornado Siren horns on screen;
+tg_d030 Motorcycle and tg_d149 Bee only recognisable from later in the clip) — gold mostly confirmed. Round-53 lost hits: tg_d032
+Thunder 13.75 real/off-screen/wanted; tg_d075 Alarm "a fire alarm, off-screen, a DHH viewer would want it". Current wrongs (12):
+4 not heard (london_protest Vehicle, tg_d022 Dog, tg_d128 Hammer, motorcycle "Explosion" = really a gunshot), 5 real but source on
+screen (storm Thunder ×2, tg_d088 Thunder 13.25, tg_d107 Screaming, tg_d127 Water), 2 real/off-screen/wanted but timed away from the
+gold row (as_explosion Gunshot 8.25, ly_applause Crowd 0.0), 1 unsure (tg_d128 Laughter, "too short to want a picture"). No clean
+real-unlisted item -> no gold correction. Adam's idea (notes h11, h12): sounds he recognises only from what is seen LATER in the clip
+(motorcycle, bees) -> clip-level visual context as evidence for an earlier sound.
