@@ -139,6 +139,7 @@ def main(argv=None):
     from src.types import AugmentationSpec
     a = list(sys.argv[1:] if argv is None else argv)
     root, wavd = Path(a[0]), Path(a[1])
+    config.use_shipped()                          # the shipped display flags (MERGE_GAP 2.5, MIN_DWELL, ...)
     config.GROUP_ASK = True
     config.GROUP_CACHE = a[2] if len(a) > 2 else str(root / "group_answers.json")
     for d in sorted(p for p in root.iterdir() if (p / "augmentations.json").exists()):
