@@ -1,0 +1,633 @@
+{
+ "asked": 14,
+ "credible": 9,
+ "not": 3,
+ "none": 2,
+ "answers": [
+  {
+   "key": [
+    "b3_aviary_birds",
+    "Insect",
+    3.75,
+    4.5
+   ],
+   "label": "Insect",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      3.75,
+      4.5
+     ],
+     "answer": "yes."
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/mixed/b3_aviary_birds.mp4"
+  },
+  {
+   "key": [
+    "b3_favela_rio",
+    "Train",
+    14.72,
+    16.5
+   ],
+   "label": "Train",
+   "verdict": false,
+   "answers": [
+    {
+     "stretch": [
+      14.72,
+      16.5
+     ],
+     "answer": "no."
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/b3_favela_rio.mp4"
+  },
+  {
+   "key": [
+    "b3_laundromat",
+    "Train",
+    1.0,
+    1.75
+   ],
+   "label": "Train",
+   "verdict": false,
+   "answers": [
+    {
+     "stretch": [
+      1.0,
+      1.75
+     ],
+     "answer": "no.\n\nthe"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/no_ambient/b3_laundromat.mp4"
+  },
+  {
+   "key": [
+    "ly_ambulance_(siren)_-yPSgCn",
+    "Siren",
+    0.0,
+    8.5
+   ],
+   "label": "Ambulance (siren)",
+   "verdict": false,
+   "answers": [
+    {
+     "stretch": [
+      0.0,
+      4.25
+     ],
+     "answer": "no."
+    },
+    {
+     "stretch": [
+      4.25,
+      8.5
+     ],
+     "answer": "yes.\n\nbased"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/mixed/ly_ambulance_(siren)_-yPSgCn.mp4"
+  },
+  {
+   "key": [
+    "mv_detective_crime_scene",
+    "Sigh",
+    3.0,
+    3.75
+   ],
+   "label": "Sigh",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      3.0,
+      3.75
+     ],
+     "answer": "yes.\n\nthe"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_detective_crime_scene.mp4"
+  },
+  {
+   "key": [
+    "mv_protest_scene_movie",
+    "Baby cry, infant cry",
+    4.0,
+    4.75
+   ],
+   "label": "Baby cry, infant cry",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      4.0,
+      4.75
+     ],
+     "answer": "yes.\n\nthe"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4"
+  },
+  {
+   "key": [
+    "mv_protest_scene_movie",
+    "Glass",
+    4.75,
+    5.25
+   ],
+   "label": "Shatter",
+   "verdict": null,
+   "answers": [
+    {
+     "stretch": [
+      4.75,
+      5.25
+     ],
+     "answer": "based on the"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4"
+  },
+  {
+   "key": [
+    "mv_protest_scene_movie",
+    "Baby cry, infant cry",
+    5.0,
+    6.0
+   ],
+   "label": "Baby cry, infant cry",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      5.0,
+      6.0
+     ],
+     "answer": "yes.\n\nbased"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4"
+  },
+  {
+   "key": [
+    "tg_d032",
+    "Thunder",
+    8.0,
+    8.5
+   ],
+   "label": "Thunder",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      8.0,
+      8.5
+     ],
+     "answer": "yes."
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d032.mp4"
+  },
+  {
+   "key": [
+    "tg_d032",
+    "Thunder",
+    13.75,
+    14.75
+   ],
+   "label": "Thunder",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      13.75,
+      14.75
+     ],
+     "answer": "yes."
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d032.mp4"
+  },
+  {
+   "key": [
+    "tg_d033",
+    "Gasp",
+    7.25,
+    7.75
+   ],
+   "label": "Gasp",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      7.25,
+      7.75
+     ],
+     "answer": "yes.\n\nthe"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d033.mp4"
+  },
+  {
+   "key": [
+    "tg_d075",
+    "Alarm",
+    0.0,
+    9.25
+   ],
+   "label": "Alarm clock",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      0.0,
+      4.625
+     ],
+     "answer": "yes."
+    },
+    {
+     "stretch": [
+      4.625,
+      9.25
+     ],
+     "answer": "yes."
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d075.mp4"
+  },
+  {
+   "key": [
+    "tg_d107",
+    "Screaming",
+    7.2,
+    9.0
+   ],
+   "label": "Screaming",
+   "verdict": true,
+   "answers": [
+    {
+     "stretch": [
+      7.2,
+      9.0
+     ],
+     "answer": "yes.\n\nthe"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d107.mp4"
+  },
+  {
+   "key": [
+    "tg_d128",
+    "Hammer",
+    9.0,
+    9.75
+   ],
+   "label": "Hammer",
+   "verdict": null,
+   "answers": [
+    {
+     "stretch": [
+      9.0,
+      9.75
+     ],
+     "answer": "based on the"
+    }
+   ],
+   "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d128.mp4"
+  }
+ ],
+ "vs": {
+  "SHIP8+MD3": [
+   {
+    "part": "dev",
+    "clip": "b3_laundromat",
+    "only_SHIP8+MD3+WW5": [],
+    "only_SHIP8+MD3": [
+     [
+      "Train",
+      1.0,
+      2.5,
+      "phantom"
+     ]
+    ],
+    "scene_asks": [
+     {
+      "key": [
+       "b3_laundromat",
+       "Train",
+       1.0,
+       1.75
+      ],
+      "label": "Train",
+      "verdict": false,
+      "answers": [
+       {
+        "stretch": [
+         1.0,
+         1.75
+        ],
+        "answer": "no.\n\nthe"
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/benchmark/no_ambient/b3_laundromat.mp4"
+     }
+    ]
+   },
+   {
+    "part": "dev",
+    "clip": "ly_helicopter_-v62cK1",
+    "only_SHIP8+MD3+WW5": [
+     [
+      "Helicopter",
+      0.0,
+      18.0,
+      "hit"
+     ]
+    ],
+    "only_SHIP8+MD3": [
+     [
+      "Vehicle",
+      0.0,
+      18.0,
+      "hit"
+     ]
+    ],
+    "scene_asks": []
+   },
+   {
+    "part": "dev",
+    "clip": "mv_protest_scene_movie",
+    "only_SHIP8+MD3+WW5": [
+     [
+      "Glass",
+      17.5,
+      19.0,
+      "hit"
+     ]
+    ],
+    "only_SHIP8+MD3": [
+     [
+      "Glass",
+      4.75,
+      6.25,
+      "cross"
+     ],
+     [
+      "Glass",
+      16.89,
+      20.0,
+      "hit"
+     ]
+    ],
+    "scene_asks": [
+     {
+      "key": [
+       "mv_protest_scene_movie",
+       "Baby cry, infant cry",
+       4.0,
+       4.75
+      ],
+      "label": "Baby cry, infant cry",
+      "verdict": true,
+      "answers": [
+       {
+        "stretch": [
+         4.0,
+         4.75
+        ],
+        "answer": "yes.\n\nthe"
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4"
+     },
+     {
+      "key": [
+       "mv_protest_scene_movie",
+       "Glass",
+       4.75,
+       5.25
+      ],
+      "label": "Shatter",
+      "verdict": null,
+      "answers": [
+       {
+        "stretch": [
+         4.75,
+         5.25
+        ],
+        "answer": "based on the"
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4"
+     },
+     {
+      "key": [
+       "mv_protest_scene_movie",
+       "Baby cry, infant cry",
+       5.0,
+       6.0
+      ],
+      "label": "Baby cry, infant cry",
+      "verdict": true,
+      "answers": [
+       {
+        "stretch": [
+         5.0,
+         6.0
+        ],
+        "answer": "yes.\n\nbased"
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/benchmark/unseen_ambient/mv_protest_scene_movie.mp4"
+     }
+    ]
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d022",
+    "only_SHIP8+MD3+WW5": [],
+    "only_SHIP8+MD3": [
+     [
+      "Dog",
+      7.25,
+      8.75,
+      "cross"
+     ]
+    ],
+    "scene_asks": []
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d128",
+    "only_SHIP8+MD3+WW5": [],
+    "only_SHIP8+MD3": [
+     [
+      "Hammer",
+      9.0,
+      10.0,
+      "cross"
+     ]
+    ],
+    "scene_asks": [
+     {
+      "key": [
+       "tg_d128",
+       "Hammer",
+       9.0,
+       9.75
+      ],
+      "label": "Hammer",
+      "verdict": null,
+      "answers": [
+       {
+        "stretch": [
+         9.0,
+         9.75
+        ],
+        "answer": "based on the"
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d128.mp4"
+     }
+    ]
+   }
+  ],
+  "SHIP8+MD3+WW": [
+   {
+    "part": "dev2",
+    "clip": "tg_d032",
+    "only_SHIP8+MD3+WW5": [
+     [
+      "Thunder",
+      13.75,
+      15.0,
+      "hit"
+     ]
+    ],
+    "only_SHIP8+MD3+WW": [],
+    "scene_asks": [
+     {
+      "key": [
+       "tg_d032",
+       "Thunder",
+       8.0,
+       8.5
+      ],
+      "label": "Thunder",
+      "verdict": true,
+      "answers": [
+       {
+        "stretch": [
+         8.0,
+         8.5
+        ],
+        "answer": "yes."
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d032.mp4"
+     },
+     {
+      "key": [
+       "tg_d032",
+       "Thunder",
+       13.75,
+       14.75
+      ],
+      "label": "Thunder",
+      "verdict": true,
+      "answers": [
+       {
+        "stretch": [
+         13.75,
+         14.75
+        ],
+        "answer": "yes."
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d032.mp4"
+     }
+    ]
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d075",
+    "only_SHIP8+MD3+WW5": [
+     [
+      "Alarm",
+      0.14,
+      9.25,
+      "hit"
+     ]
+    ],
+    "only_SHIP8+MD3+WW": [],
+    "scene_asks": [
+     {
+      "key": [
+       "tg_d075",
+       "Alarm",
+       0.0,
+       9.25
+      ],
+      "label": "Alarm clock",
+      "verdict": true,
+      "answers": [
+       {
+        "stretch": [
+         0.0,
+         4.625
+        ],
+        "answer": "yes."
+       },
+       {
+        "stretch": [
+         4.625,
+         9.25
+        ],
+        "answer": "yes."
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d075.mp4"
+     }
+    ]
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "only_SHIP8+MD3+WW5": [
+     [
+      "Screaming",
+      6.52,
+      9.0,
+      "cross"
+     ]
+    ],
+    "only_SHIP8+MD3+WW": [],
+    "scene_asks": [
+     {
+      "key": [
+       "tg_d107",
+       "Screaming",
+       7.2,
+       9.0
+      ],
+      "label": "Screaming",
+      "verdict": true,
+      "answers": [
+       {
+        "stretch": [
+         7.2,
+         9.0
+        ],
+        "answer": "yes.\n\nthe"
+       }
+      ],
+      "video": "/home/dsi/adamg/MscProj/data/input/tagger_set/tg_d107.mp4"
+     }
+    ]
+   }
+  ]
+ }
+}

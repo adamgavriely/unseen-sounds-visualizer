@@ -30,6 +30,15 @@ def _family(a: str, b: str) -> bool:
     return a == b or canonical(a) == canonical(b) or is_descendant(a, b) or is_descendant(b, a)
 
 
+def _ret(p) -> bool:
+    """Round 65 RETURN: the picture's spec carries a zero-length break at its own start (only a RET row; config.PERC_RETURN)"""
+    sp = p[3] if len(p) > 3 else None
+    if sp is None or not getattr(sp, "breaks", None):
+        return False
+    from src.stage4_audio_event_detection import is_return_row
+    return is_return_row(sp.start, sp.breaks)
+
+
 def key(label: str, a_start: float) -> str:
     return f"{label}|{a_start:.2f}"
 
@@ -40,6 +49,8 @@ def pairs(spans, max_gap: float):
     out = []
     for i, p in enumerate(ps):
         nxt = [q for q in ps[i + 1:] if _family(q[0], p[0])]
+        if nxt and (_ret(p) or _ret(nxt[0])):
+            continue                               # Round 65 RETURN: a RET picture is never grouped
         if nxt and 0 < nxt[0][1] - p[2] <= max_gap:
             out.append((p, nxt[0]))
     return out

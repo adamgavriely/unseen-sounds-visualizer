@@ -1,0 +1,1392 @@
+{
+ "n_think": 34,
+ "q1_pairs": {
+  "['likely', 'likely']": 14,
+  "['unlikely', 'unlikely']": 14,
+  "[None, 'unlikely']": 1,
+  "['likely', 'unlikely']": 2,
+  "['likely', None]": 1,
+  "['unlikely', 'likely']": 2
+ },
+ "q1_pairs_with_none": 2,
+ "q1_reprompts_used": 13,
+ "q1_replies_not_bare_verdict": 16,
+ "n_changed": 19,
+ "changed": [
+  {
+   "key": "dev2_tg_d016_Cough_5.75",
+   "part": "dev2",
+   "clip": "tg_d016",
+   "label": "Cough",
+   "start": 5.75,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "likely",
+    "likely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 5.75,
+     "end": 6.75,
+     "dasm_win": 0.792,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev2_tg_d107_Crying_sobbing_0.38",
+   "part": "dev2",
+   "clip": "tg_d107",
+   "label": "Crying, sobbing",
+   "start": 0.38,
+   "diff": [
+    "drop_61b"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "parrot",
+    "q3": [
+     "yes",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "parrot",
+    "q3": [
+     "yes",
+     "yes"
+    ],
+    "drop_61b": true
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "the parrot",
+    null
+   ],
+   "think_q3": [
+    [
+     "Yes",
+     "Yes"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 0.08,
+     "end": 2.75,
+     "dasm_win": 0.416,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev2_tg_d120_Cat_0.56",
+   "part": "dev2",
+   "clip": "tg_d120",
+   "label": "Cat",
+   "start": 0.56,
+   "diff": [
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "alarm clock",
+    "q3": [
+     "yes",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "alarm clock",
+    null
+   ],
+   "think_q3": [
+    [
+     "Yes",
+     "No"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 0.56,
+     "end": 2.24,
+     "dasm_win": 0.891,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev2_tg_d127_Laughter_9.32",
+   "part": "dev2",
+   "clip": "tg_d127",
+   "label": "Laughter",
+   "start": 9.32,
+   "diff": [
+    "q1_unlikely",
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "elephant",
+    "q3": [
+     "no",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     null,
+     "unlikely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "Let me structure the thinking: observe scene, identify subjects (baby elephant, no humans), consider on-screen source (elephant can't laugh), consider off-screen source (no evidence of humans, framing suggests focused animal recording), conclude the laughter detection",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    "If the scene shows an elephant and no human, the most natural sound source is the elephant. The detector saying \"laughter\" is suspicious because elephants don't laugh. So the detector is probably",
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 9.32,
+     "end": 10.0,
+     "dasm_win": 0.753,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev2_tg_d128_Hammer_9.00",
+   "part": "dev2",
+   "clip": "tg_d128",
+   "label": "Hammer",
+   "start": 9.0,
+   "diff": [
+    "q2",
+    "drop_61b"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "metal railing",
+    "q3": [
+     "yes",
+     "yes"
+    ],
+    "drop_61b": true
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "metal railing",
+    null
+   ],
+   "think_q3": [
+    [
+     "Yes",
+     "Yes"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 9.0,
+     "end": 9.75,
+     "dasm_win": 0.031,
+     "qwen_v4": false,
+     "af_v4": true,
+     "ears": 1,
+     "unsure": true
+    }
+   ],
+   "unsure": true
+  },
+  {
+   "key": "dev_ambient_nature_rainforest_7629_Insect_0.14",
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Insect",
+   "start": 0.14,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "likely",
+    "likely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 0.0,
+     "end": 5.0,
+     "dasm_win": 0.592,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    },
+    {
+     "pre_start": 0.0,
+     "end": 6.0,
+     "dasm_win": 0.593,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_ambient_snow_walk_930_Laughter_8.08",
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "label": "Laughter",
+   "start": 8.08,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "likely",
+    "likely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 8.08,
+     "end": 8.76,
+     "dasm_win": 0.901,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_as_explosion_XJ8lc3I6_Explosion_5.68",
+   "part": "dev",
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "start": 5.68,
+   "diff": [
+    "q2",
+    "drop_61b"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "rifle",
+    "q3": [
+     "yes",
+     "yes"
+    ],
+    "drop_61b": true
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "Unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "I think the most reasonable answer, given the visible weapon and the context of a FPS, is the gun/rifle. But the question asks for a \"short noun phrase\". So \"the rifle\" or \"the gun\" or \"the",
+    "rifle"
+   ],
+   "think_q3": [
+    [
+     "Yes",
+     "Yes"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 5.68,
+     "end": 6.2,
+     "dasm_win": 0.866,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_b3_bakery_morning_Door_4.25",
+   "part": "dev",
+   "clip": "b3_bakery_morning",
+   "label": "Door",
+   "start": 4.25,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     null
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "I think the most reasonable",
+    "Yes, I think that's it. The"
+   ],
+   "think_q1_reprompt": [
+    "likely",
+    "Given the ambiguity, I need to make a decision. Let me"
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 4.25,
+     "end": 5.25,
+     "dasm_win": 0.015,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_b3_barbershop_Electric_shaver_electric_razor_16.00",
+   "part": "dev",
+   "clip": "b3_barbershop",
+   "label": "Electric shaver, electric razor",
+   "start": 16.0,
+   "diff": [
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "in this",
+    "q3": [
+     "no",
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "Actually, the user instruction: \"Think it through, then end with only the final answer on the last line.\" So I should put my thinking in the",
+    "In this"
+   ],
+   "think_q3": [
+    [
+     "No",
+     "Maybe \"in this\" is a mishearing of \"a [something]\"? For example, \"the sound of [a] in this\" could be \"the sound of [a] in this\" = \"the sound of [a] in this\" maybe \"the sound of [a] in this\" is \"the sound of [a]"
+    ],
+    [
+     null,
+     "Could be from a prompt: \"Could the sound of electric shaver, electric razor be mistaken for the sound of [class] in this?\" The [class] might be missing due to a formatting error: maybe \"in this\" is actually \"in this\" (a class name?) There is a sound class \"In this\"? Let's search memory: AudioSet ontology includes \"In this\"? I know classes: \"Alarm clock, clock,"
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 15.25,
+     "end": 15.75,
+     "dasm_win": 0.933,
+     "qwen_v4": true,
+     "af_v4": false,
+     "ears": 1,
+     "unsure": false
+    },
+    {
+     "pre_start": 16.0,
+     "end": 23.25,
+     "dasm_win": 0.945,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_b3_golf_course_Bird_3.80",
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "label": "Bird",
+   "start": 3.8,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "Let me think about the meta-level. The question is from a set where they test if the model can use visual context to judge sound plausibility. The \"bird\" sound in a driving range scene: I'd lean towards \"unlikely\" because the scene is full of human golf activity and no birds are visible, and the typical sounds would be golf-related. But the \"off screen\" clause makes it tricky",
+    "Let me look at the frames again. The man's swing: in"
+   ],
+   "think_q1_reprompt": [
+    null,
+    "likely"
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 3.8,
+     "end": 5.84,
+     "dasm_win": 0.607,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_b3_laundromat_Train_1.00",
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "label": "Train",
+   "start": 1.0,
+   "diff": [
+    "drop_61b"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "washing machine",
+    "q3": [
+     "yes",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "washing machine",
+    "q3": [
+     "yes",
+     "yes"
+    ],
+    "drop_61b": true
+   },
+   "think_q1_replies": [
+    "Unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "I think the safest, most encompassing answer that a",
+    "washing machine"
+   ],
+   "think_q3": [
+    [
+     "Yes",
+     "Yes"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 1.0,
+     "end": 1.75,
+     "dasm_win": 0.229,
+     "qwen_v4": true,
+     "af_v4": false,
+     "ears": 1,
+     "unsure": true
+    }
+   ],
+   "unsure": true
+  },
+  {
+   "key": "dev_birds_forest_Bird_10.25",
+   "part": "dev",
+   "clip": "birds_forest",
+   "label": "Bird",
+   "start": 10.25,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "likely",
+    "likely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 8.0,
+     "end": 12.0,
+     "dasm_win": 0.635,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 10.25,
+     "end": 14.0,
+     "dasm_win": 0.635,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 10.25,
+     "end": 14.0,
+     "dasm_win": 0.635,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 10.75,
+     "end": 14.0,
+     "dasm_win": 0.552,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_london_protest_01_Vehicle_0.25",
+   "part": "dev",
+   "clip": "london_protest_01",
+   "label": "Vehicle",
+   "start": 0.25,
+   "diff": [
+    "q1_unlikely",
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "red air horn",
+    "q3": [
+     "no",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "likely",
+    "likely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 0.25,
+     "end": 1.5,
+     "dasm_win": 0.407,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 1.0,
+     "end": 1.5,
+     "dasm_win": 0.407,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_ly_ambulance_(siren)_-yPSgCn_Siren_0.00",
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "label": "Siren",
+   "start": 0.0,
+   "diff": [
+    "q2",
+    "drop_61b"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "car horn",
+    "q3": [
+     "yes",
+     "yes"
+    ],
+    "drop_61b": true
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "Alternatively, the question might be testing the opposite: the model should notice"
+   ],
+   "think_q1_reprompt": [
+    null,
+    "unlikely"
+   ],
+   "think_q2": [
+    "car horn",
+    null
+   ],
+   "think_q3": [
+    [
+     "Yes",
+     "Yes"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 0.0,
+     "end": 17.75,
+     "dasm_win": 0.188,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 0.0,
+     "end": 8.5,
+     "dasm_win": 0.156,
+     "qwen_v4": true,
+     "af_v4": false,
+     "ears": 1,
+     "unsure": true
+    },
+    {
+     "pre_start": 0.0,
+     "end": 17.75,
+     "dasm_win": 0.188,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 0.0,
+     "end": 2.0,
+     "dasm_win": 0.156,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    }
+   ],
+   "unsure": true
+  },
+  {
+   "key": "dev_ly_applause_62ZYD0u_Crowd_0.00",
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "label": "Crowd",
+   "start": 0.0,
+   "diff": [
+    "q1_unlikely"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "likely",
+     "unlikely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "But let",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    "likely",
+    null
+   ],
+   "think_q2": [
+    null,
+    null
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 0.0,
+     "end": 1.04,
+     "dasm_win": 0.471,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_ly_helicopter_-v62cK1_Vehicle_6.31",
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "label": "Vehicle",
+   "start": 6.31,
+   "diff": [
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "what about the white",
+    "q3": [
+     "no",
+     "yes"
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "What about the white",
+    null
+   ],
+   "think_q3": [
+    [
+     "Maybe \"what about the white\" sounds like \"vehicle\" in some accent?",
+     "Maybe the phrase \"what about the white\" is from a template: \"Could the sound of [A] be mistaken for the sound of"
+    ],
+    [
+     "No",
+     "yes"
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 6.25,
+     "end": 9.0,
+     "dasm_win": 0.148,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": true
+    }
+   ],
+   "unsure": true
+  },
+  {
+   "key": "dev_mv_detective_crime_scene_Alarm_3.36",
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "label": "Alarm",
+   "start": 3.36,
+   "diff": [
+    "q1_unlikely",
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "likely"
+    ],
+    "q1_unlikely": false,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "glass bottle",
+    "q3": [
+     "no",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "unlikely"
+   ],
+   "think_q1_reprompt": [
+    null,
+    null
+   ],
+   "think_q2": [
+    "Maybe the scene is from a movie where a character is hiding and a \"detector\" (like a police sound detector) picks up a sound. The visible object that made the sound: maybe the bottle was dropped, making a clink that the detector mistook for a glass breaking (which would be an alarm for a break-in).",
+    "glass bottle"
+   ],
+   "think_q3": [
+    [
+     "No",
+     "No"
+    ],
+    [
+     null,
+     null
+    ]
+   ],
+   "rows": [
+    {
+     "pre_start": 3.36,
+     "end": 6.12,
+     "dasm_win": 0.473,
+     "qwen_v4": false,
+     "af_v4": false,
+     "ears": 0,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  },
+  {
+   "key": "dev_mv_protest_scene_movie_Glass_10.75",
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "label": "Glass",
+   "start": 10.75,
+   "diff": [
+    "q2"
+   ],
+   "short": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": "candle flame",
+    "q3": [
+     "no",
+     "no"
+    ],
+    "drop_61b": false
+   },
+   "think": {
+    "q1": [
+     "unlikely",
+     "unlikely"
+    ],
+    "q1_unlikely": true,
+    "q2": null,
+    "q3": [
+     null,
+     null
+    ],
+    "drop_61b": false
+   },
+   "think_q1_replies": [
+    "unlikely",
+    "Let me double check by examining the right side of the table. There's the candelabra. There's a small object that might be a glass. But it's stationary. No one is touching"
+   ],
+   "think_q1_reprompt": [
+    null,
+    "unlikely"
+   ],
+   "think_q2": [
+    "Let me think about typical confusions in sound classification. In AudioSet, the class \"Glass or metal clinking\" is one class. There's also \"Glass breaking.\" A detector might confuse \"metal clinking\" with \"glass clinking.\" So a metal object clinking (like a candelabra or a spoon or a",
+    "The phrase \"mistake for glass\" strongly suggests a clink sound. The visible clinkable objects: glassware and candelabra. Since the detector would correctly identify"
+   ],
+   "think_q3": [
+    [],
+    []
+   ],
+   "rows": [
+    {
+     "pre_start": 10.75,
+     "end": 13.75,
+     "dasm_win": 0.193,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 11.0,
+     "end": 13.75,
+     "dasm_win": 0.193,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    },
+    {
+     "pre_start": 11.5,
+     "end": 12.25,
+     "dasm_win": 0.193,
+     "qwen_v4": true,
+     "af_v4": true,
+     "ears": 2,
+     "unsure": false
+    }
+   ],
+   "unsure": false
+  }
+ ]
+}

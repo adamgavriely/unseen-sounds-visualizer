@@ -433,6 +433,8 @@ ONCE_GAP = None                   # round 22 ONCE-G (2.0)
 LISTENER_V4B_CACHE = None         # round 27 QE: second Qwen inventory prompt answers
 DASM_LOCAL_VETO = None            # round 29 DV-L (0.084) / DV-G (0.575)
 DASM_LOCAL_KEEP = "either"        # round 29: 'either' listener or 'both'
+DASM_LOCAL_SCENE = None          # Round 60 SCENE-MARGIN: clip->mp4 map path; with keep "both", one ear + F3 scene-fit yes also keeps
+SCENE_FIT_LOGIT = False          # Round 60L SCENE-LOGIT: _scene_fit reads d = s(Q) - s(twin) at the first answer token (no text parse)
 DASM_CLIP_VETO = None             # round 28 DV (0.084, round-6 calibrated)
 KEEP_NEEDS_V4_ALL = None   # round 30 K4A: "exact" | "onto" (off)
 KEEP_NEEDS_V4_ALL_DASM_KEEP = False   # round 35 K4A-D: DASM (F8 bar) keeps a K4A drop
@@ -453,6 +455,7 @@ ONSET_RELOC = False           # Round 14 amendment I1: picture start at the stee
 TIER_SPECIFIC = False         # Round 14 amendment I5: TIER peak includes the specific (folded) child queries (evidence only)
 ACTIVITY_GATE = False         # Round 14 amendment I2: a gate-visible sound is kept if its source is not visibly producing it
 F8_BYPASS_BOTH = False        # Round 14 amendment K1: no DASM vote for a rescue both Qwen V4 and AF V4 accept
+CONTEXT_F8_BYPASS = None       # Round 59 CONTEXT (b): JSON of context-accepted spans that skip the F8 DASM vote (off)
 RESCUE_COVERED = False        # Round 14 amendment K2: a sub-display BEATs span does not hide a FlexSED band run from the rescue
 TIER_HIGH_OR = False          # Round 14 amendment K3: TIER, peak >= 0.6: Qwen V4 OR AF V4
 FIX_FAM = False               # Round 14 amendment F: F4 compares families (sibling/child queries = own family)
@@ -460,6 +463,8 @@ FIX_EARLY = False             # Round 14 amendment F: F1 keeps the earliest acce
 FIX_CTRL = False              # Round 14 amendment F: V12 = V1 alone when V2 has no control window
 FIX_GATE = False              # Round 14 amendment F: a gate "visible" verdict naming no object counts as not visible
 GATE_BOX_CHECK = False        # Round 38 BOX-2 arm: a "seen" stretch whose box crop is twice "not the object" -> not seen
+CONCEALED_ACTION = None       # Round 64: tuple of labels whose sound-making is hidden inside the visible source; the gate (vote + kinship) may not silence them
+PERC_RETURN = None            # Round 65 RETURN: k; a drawn family gets a NEW picture at an onset-strength peak >= k x the clip's median peak with sub-bar same-family evidence, >= 2 s from its other spans
 LISTENER_ARBITER = False      # Round 14 amendment F: Qwen V4 & AF V4 but V12 no -> the VLM arbiter decides in stage 5
 LISTENER_SCENE_FIT = False      # Round 14 F3: the gate VLM must say the rescued sound could plausibly be heard in the scene
 LISTENER_BEATS_TH = None      # R13-3 (c): also a short BEATs run (peak 0.175-0.35, not covered) at the display bar if score > this
@@ -504,11 +509,15 @@ def use_shipped() -> dict:
     changed.update(use_final_pictures(2))
     changed["CONFIDENCE_FADE"] = (getattr(me, "CONFIDENCE_FADE", True), False)
     setattr(me, "CONFIDENCE_FADE", False)
-    changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
-    setattr(me, "PICTURE_MIN_CONF", 0.40)
+    # picture floor 0.40 (28 Sept) dropped 1 Oct with Round 60: every scored arm since Round 13 has no floor; shipped = scored
+    changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), None)
+    setattr(me, "PICTURE_MIN_CONF", None)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DASM_LOCAL_VETO", 0.35), ("DASM_LOCAL_KEEP", "both"),
+                 ("DASM_LOCAL_SCENE", str(WORK_DIR / "scene_videos.json")),
+                 ("SCENE_FIT_LOGIT", True),   # Round 60L SCENE-LOGIT (2 Oct): scene check read as the bias-cancelled logit margin; DEV 29/15/2.056, passes vs B (29/18/2.141)
+                 # Round 53+60 WEAK-WITNESS + SCENE-MARGIN (1 Oct): DEV 29/14/2.028 (was 29/18/2.141); see prereg doc ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
                  # DEPICT_EVENT (Round 57, Adam OK 1 Oct 15:34): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
                  # GROUP (Round 47, Adam 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)

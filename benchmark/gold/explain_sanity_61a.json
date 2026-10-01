@@ -1,0 +1,255 @@
+{
+ "rows": [
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "label": "Train",
+   "start": 1.0,
+   "X": "train",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_laundromat.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Based on the",
+    "Based on the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Insect",
+   "start": 0.14,
+   "X": "insect",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_nature_rainforest_7629.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Looking at the",
+    "Looking at the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "as_church_bell_pJRAWkLM",
+   "label": "Bell",
+   "start": 0.14,
+   "X": "bell",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/as_church_bell_pJRAWkLM.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Looking at the",
+    "Looking at the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_bakery_morning",
+   "label": "Door",
+   "start": 4.25,
+   "X": "door",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_bakery_morning.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Looking at the",
+    "Looking at the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "label": "Vehicle",
+   "start": 20.0,
+   "X": "vehicle",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_flea_market.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Based on the",
+    "Based on the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "label": "Vehicle",
+   "start": 0.25,
+   "X": "vehicle",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/london_protest_01.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Based on the",
+    "Based on the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "label": "Alarm",
+   "start": 3.36,
+   "X": "alarm",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/mv_detective_crime_scene.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Looking at the",
+    "To determine if"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "label": "Siren",
+   "start": 9.25,
+   "X": "siren",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/mv_tornado_scene.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Looking at the",
+    "To determine if"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "label": "Cough",
+   "start": 5.75,
+   "X": "cough",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d016.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Based on the",
+    "Based on the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "label": "Alarm",
+   "start": 0.14,
+   "X": "alarm",
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d075.mp4",
+   "n_frames": 6,
+   "q1_replies": [
+    "Based on the",
+    "Based on the"
+   ],
+   "q1": [
+    null,
+    null
+   ],
+   "q1_unlikely": false,
+   "q2_reply": null,
+   "q2_thing": null,
+   "q3_replies": [],
+   "q3": null,
+   "q3_yes": false,
+   "silenced": false
+  }
+ ],
+ "q1_pairs": {
+  "[None, None]": 10
+ },
+ "stop": true,
+ "prompts": {
+  "Q1A": "A sound detector says it heard {X} here. Looking at this scene, is a real {X} likely to be the source, on or off screen? Answer likely or unlikely.",
+  "Q1B": "A sound detector says it heard {X} here. Looking at this scene, is a real {X} likely to be the source, on or off screen? Answer unlikely or likely.",
+  "Q2": "What visible thing in this scene most likely made a sound that a detector could mistake for {X}? Answer with a short noun phrase, or 'nothing'.",
+  "L1": "Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.",
+  "L2": "Could the sound of {A} be mistaken for the sound of {B}? Answer yes or no."
+ }
+}

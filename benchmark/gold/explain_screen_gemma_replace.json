@@ -1,0 +1,638 @@
+{
+ "mode": "replace",
+ "r57_steam_also_dropped": false,
+ "base": {
+  "merged": {
+   "hits": 29,
+   "n": 58,
+   "wrong": 19,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 3,
+   "cost": 2.1690140845070425
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 12,
+   "visible": 4,
+   "cross": 5,
+   "phantom": 3,
+   "cost": 2.0408163265306123
+  },
+  "dev2": {
+   "hits": 10,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.4545454545454546
+  }
+ },
+ "rows": {
+  "merged": {
+   "hits": 25,
+   "n": 58,
+   "wrong": 15,
+   "visible": 6,
+   "cross": 7,
+   "phantom": 2,
+   "cost": 2.2816901408450705
+  },
+  "dev": {
+   "hits": 18,
+   "n": 38,
+   "wrong": 10,
+   "visible": 4,
+   "cross": 4,
+   "phantom": 2,
+   "cost": 2.0408163265306123
+  },
+  "dev2": {
+   "hits": 7,
+   "n": 20,
+   "wrong": 5,
+   "visible": 2,
+   "cross": 3,
+   "phantom": 0,
+   "cost": 2.8181818181818183
+  }
+ },
+ "vs_C": {
+  "d_hits": -2,
+  "d_wrong": 2,
+  "d_cost": 0.169
+ },
+ "C": {
+  "hits": 27,
+  "wrong": 13,
+  "cost": 2.113
+ },
+ "q1_pairs": {
+  "['unlikely', 'unlikely']": 21,
+  "['likely', 'likely']": 21,
+  "['likely', 'unlikely']": 2
+ },
+ "funnel": {
+  "q1_unlikely": 21,
+  "q2_named": 8,
+  "q3_yes": 8,
+  "silenced": 8
+ },
+ "q1_unlikely": [
+  [
+   "tg_d016",
+   "Cough",
+   5.75,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "tg_d022",
+   "Dog",
+   7.25,
+   "cross",
+   "nothing",
+   null
+  ],
+  [
+   "tg_d075",
+   "Alarm",
+   0.14,
+   "hit",
+   "water jug",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "tg_d088",
+   "Explosion",
+   10.75,
+   "cross",
+   "lightning bolt",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "tg_d107",
+   "Crying, sobbing",
+   0.38,
+   "hit",
+   "the parrot",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "tg_d120",
+   "Cat",
+   0.56,
+   "hit",
+   "alarm clock",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "tg_d128",
+   "Hammer",
+   9.0,
+   "cross",
+   "metal gate",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "tg_d149",
+   "Bee, wasp, etc.",
+   1.25,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "as_explosion_XJ8lc3I6",
+   "Explosion",
+   5.68,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "as_explosion_XJ8lc3I6",
+   "Gunshot",
+   18.0,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "as_fire_alarm_kGKZ0YK4",
+   "Alarm",
+   8.89,
+   "hit",
+   "hammer",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "b3_bakery_morning",
+   "Door",
+   4.25,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "b3_barbershop",
+   "Electric shaver, electric razor",
+   16.0,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "b3_laundromat",
+   "Train",
+   1.0,
+   "phantom",
+   "washing machine",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "ly_applause_62ZYD0u",
+   "Crowd",
+   0.0,
+   "cross",
+   "the woman's laughter",
+   [
+    "yes",
+    "yes"
+   ]
+  ],
+  [
+   "ly_helicopter_-v62cK1",
+   "Vehicle",
+   6.31,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "mv_detective_crime_scene",
+   "Alarm",
+   3.36,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "mv_storm_scene_house",
+   "Alarm",
+   2.18,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "un_driving_motorcycle_4O3bZRYO",
+   "Laughter",
+   13.36,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "un_driving_motorcycle_DgdHSmwA",
+   "Explosion",
+   13.92,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "un_hair_dryer_drying_WWu24rJs",
+   "Computer keyboard",
+   11.25,
+   "phantom",
+   "nothing",
+   null
+  ]
+ ],
+ "dropped": [
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "label": "Alarm",
+   "start": 0.14,
+   "class": "hit",
+   "q1": [
+    "unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "water jug",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "label": "Explosion",
+   "start": 10.75,
+   "class": "cross",
+   "q1": [
+    "Unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "lightning bolt",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "label": "Crying, sobbing",
+   "start": 0.38,
+   "class": "hit",
+   "q1": [
+    "unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "the parrot",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "label": "Cat",
+   "start": 0.56,
+   "class": "hit",
+   "q1": [
+    "unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "alarm clock",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "label": "Hammer",
+   "start": 9.0,
+   "class": "cross",
+   "q1": [
+    "unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "metal gate",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "label": "Alarm",
+   "start": 8.89,
+   "class": "hit",
+   "q1": [
+    "unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "hammer",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "label": "Train",
+   "start": 1.0,
+   "class": "phantom",
+   "q1": [
+    "Unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "washing machine",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "label": "Crowd",
+   "start": 0.0,
+   "class": "cross",
+   "q1": [
+    "unlikely",
+    "unlikely"
+   ],
+   "q1_reprompt": [
+    null,
+    null
+   ],
+   "q2": "the woman's laughter",
+   "q2_reprompt": null,
+   "q3": [
+    "Yes.",
+    "Yes."
+   ],
+   "q3_reprompt": [
+    null,
+    null
+   ]
+  }
+ ],
+ "changed": [
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "removed": [
+    [
+     "Alarm",
+     8.89,
+     19.75,
+     "hit"
+    ]
+   ],
+   "added": [],
+   "before": "h1 v0 c0 p0 d0",
+   "after": "h0 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "removed": [
+    [
+     "Train",
+     1.0,
+     2.5,
+     "phantom"
+    ]
+   ],
+   "added": [],
+   "before": "h0 v0 c0 p1 d0",
+   "after": "h0 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "removed": [
+    [
+     "Crowd",
+     0.0,
+     7.75,
+     "cross"
+    ]
+   ],
+   "added": [],
+   "before": "h0 v0 c1 p0 d0",
+   "after": "h0 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "removed": [
+    [
+     "Alarm",
+     0.14,
+     9.25,
+     "hit"
+    ]
+   ],
+   "added": [],
+   "before": "h1 v0 c0 p0 d0",
+   "after": "h0 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "removed": [
+    [
+     "Explosion",
+     10.75,
+     12.75,
+     "cross"
+    ]
+   ],
+   "added": [],
+   "before": "h1 v0 c2 p0 d0",
+   "after": "h1 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "removed": [
+    [
+     "Crying, sobbing",
+     0.38,
+     2.75,
+     "hit"
+    ]
+   ],
+   "added": [],
+   "before": "h2 v0 c1 p0 d0",
+   "after": "h1 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d120",
+   "removed": [
+    [
+     "Cat",
+     0.56,
+     2.24,
+     "hit"
+    ]
+   ],
+   "added": [],
+   "before": "h1 v0 c0 p0 d0",
+   "after": "h0 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "removed": [
+    [
+     "Hammer",
+     9.0,
+     10.0,
+     "cross"
+    ]
+   ],
+   "added": [],
+   "before": "h0 v1 c1 p0 d0",
+   "after": "h0 v1 c0 p0 d0"
+  }
+ ],
+ "hits_lost": [
+  [
+   "dev",
+   "as_fire_alarm_kGKZ0YK4",
+   1
+  ],
+  [
+   "dev2",
+   "tg_d075",
+   1
+  ],
+  [
+   "dev2",
+   "tg_d107",
+   1
+  ],
+  [
+   "dev2",
+   "tg_d120",
+   1
+  ]
+ ],
+ "wrong_removed": 3,
+ "cheaper": false,
+ "cost_unit": false,
+ "main_rule": false,
+ "fewer_pictures": false,
+ "verdict": "FAIL",
+ "model": "google/gemma-4-31B-it",
+ "variant": "gemma",
+ "prompts": {
+  "Q1A": "A sound detector says it heard {X} here. Looking at this scene, is a real {X} likely to be the source, on or off screen? Answer likely or unlikely.",
+  "Q1B": "A sound detector says it heard {X} here. Looking at this scene, is a real {X} likely to be the source, on or off screen? Answer unlikely or likely.",
+  "Q2": "What visible thing in this scene most likely made a sound that a detector could mistake for {X}? Answer with a short noun phrase, or 'nothing'.",
+  "L1": "Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.",
+  "L2": "Could the sound of {A} be mistaken for the sound of {B}? Answer yes or no."
+ }
+}

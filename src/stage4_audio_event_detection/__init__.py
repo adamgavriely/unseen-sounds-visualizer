@@ -237,6 +237,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             if getattr(config, "FLEXSED_EXTRA", False):
                 ffw, ftimes, flabels = add_flexsed_extra(ffw, ftimes, flabels, Path(wav_path).parent.name)
             config._CURRENT_CLIP = Path(wav_path).parent.name       # round 18 N2b: the clip id for per-clip caches
+            config._CURRENT_WAV = str(wav_path)                     # round 63 TAG-ENS: live tagger pass if uncached
             events, flex_ids, ffw = fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur,
                                                  backend=backend, panns=lambda: _infer(Path(wav_path), device),
                                                  listener=_pipeline_listener(wav_path),
@@ -270,6 +271,12 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                                   listener_p1=_pipeline_listener_p1(wav_path))
     if getattr(config, "RETRIGGER", None):
         attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels)
+    if getattr(config, "PERC_RETURN", None):               # Round 65 RETURN: after every stage-4 filter
+        import librosa
+        _y, _ = librosa.load(str(wav_path), sr=RET_SR, mono=True)
+        _ret = perceptual_returns(events, framewise, times, labels, ffw, ftimes, flabels, _y)
+        events = events + _ret
+        trace("return", _ret, "Round 65 RETURN rows")
     n_classes = len({e.label for e in events})
     print(f"       [stage4] {backend} SED: {len(events)} event span(s) over "
           f"{n_classes} class(es) (threshold={threshold}).")
@@ -600,6 +607,79 @@ def attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels) -> Non
         e.breaks = list(memo[fam])
 
 
+# Round 65 RETURN (config.PERC_RETURN = k; docs/prereg_round13_detector_push.md "Round 65 RETURN")
+RET_GAP, RET_WIN, RET_LEN, RET_TAG_LOW, RET_FLEX_LOW, RET_SR = 2.0, 0.3, 0.5, 0.2, 0.5, 16000
+
+
+def onset_peaks(audio, sr: int = RET_SR):
+    """librosa onset-strength envelope (defaults: hop 512, mel flux) -> (peak times, peak heights, median peak height)"""
+    import librosa
+    from scipy.signal import find_peaks
+    env = librosa.onset.onset_strength(y=np.asarray(audio, np.float32), sr=sr)
+    idx, _ = find_peaks(env, distance=3)
+    if not len(idx):
+        return np.zeros(0), np.zeros(0), 0.0
+    h = env[idx].astype(float)
+    return librosa.frames_to_time(idx, sr=sr), h, float(np.median(h))
+
+
+def is_return_row(start, breaks) -> bool:
+    """a RET row carries a zero-length break at its own start (nothing else makes one)"""
+    return any(abs(float(b[0]) - float(b[1])) < 1e-6 and abs(float(b[0]) - float(start)) < 1e-3 for b in (breaks or ()))
+
+
+def perceptual_returns(events, framewise, times, labels, ffw, ftimes, flabels, audio, k=None, sr: int = RET_SR):
+    """Round 65 RETURN: new rows (AudioEvent) for drawn families at qualifying onset-strength peaks. A peak p (height >= k x
+    the clip's median peak) makes a row of family f iff f has sub-bar evidence within p +- 0.3 s (BEATs columns >= 0.2,
+    held over [t, t + hop), or FlexSED family/child queries >= 0.5) and p is >= 2.0 s from every span of f (all stage-4 rows
+    of f at any confidence, plus the RET rows already made; peaks in time order). Row: [p, p + 0.5], confidence = f's
+    highest stage-4 confidence, breaks = zero-length markers at its start and end (no merge joins it; stage 5 gives it its
+    own spec; GROUP never pairs it)."""
+    from src.labels import canonical, is_salient_nonspeech
+    k = float(getattr(config, "PERC_RETURN", None) if k is None else k)
+    disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+    clip_end = len(audio) / float(sr)
+    old = config.LABEL_FILTER
+    config.LABEL_FILTER = "depictable"                     # the pipeline's label filter (as filter_rescued)
+    try:
+        fams = {}
+        for e in events:
+            fams.setdefault(canonical(e.label), []).append(e)
+        drawn = {f: ee for f, ee in fams.items()
+                 if any(is_salient_nonspeech(x.label) and x.confidence >= disp for x in ee)}
+    finally:
+        config.LABEL_FILTER = old
+    if not drawn:
+        return []
+    pt, ph, med = onset_peaks(audio, sr)
+    if med <= 0:
+        return []
+    tt = np.asarray(times, float)
+    hop = (tt[1] - tt[0]) if len(tt) > 1 else 0.25
+    spans = {f: [(float(x.start), float(x.end)) for x in ee] for f, ee in drawn.items()}
+    out = []
+    for p, h in sorted(zip(pt, ph)):
+        p = round(float(p), 3)
+        if h < k * med:
+            continue
+        for f in sorted(drawn):
+            d = min((p - b if b <= p else a - p if a >= p else 0.0) for a, b in spans[f])
+            if d < RET_GAP - 1e-6:
+                continue
+            tc = [i for i, l in enumerate(labels) if canonical(l) == f]
+            m = (tt < p + RET_WIN) & (tt + hop > p - RET_WIN)
+            ev = bool(tc and m.any() and float(np.asarray(framewise)[m][:, tc].max()) >= RET_TAG_LOW)
+            if not ev and ffw is not None:
+                ev = _family_peak(f, p - RET_WIN, p + RET_WIN + 1e-6, ffw, ftimes, flabels) >= RET_FLEX_LOW
+            if not ev:
+                continue
+            end = round(min(p + RET_LEN, clip_end), 3)
+            conf = max(float(x.confidence) for x in drawn[f])
+            out.append(AudioEvent(f, p, end, conf, breaks=[(p, p), (end, end)]))
+            spans[f].append((p, end))
+    return out
+
+
 def twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, band, twin_max=True, disp=0.35):
     """Round 56 TWIN-SHORT (docs/prereg_round13_detector_push.md): agreement before the minimum span.
 
@@ -638,6 +718,36 @@ def twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, ba
     return c1, c2
 
 
+_TAGENS: dict = {}
+
+
+def tag_ens_frames(framewise, times, labels, clip, wav=None):
+    """Round 63 TAG-ENS: mean(BEATs, calibrated taggers) on BEATs' 2-s / 0.25-s grid. config.TAG_ENS = the frozen
+    tagens_calib.json (taggers, cache folder, labels); its .npz holds per-label quantiles {m}_qT / {m}_qB [2001, 527] fitted
+    label-free on 415 half A. Tagger frames come from <cache>/<model>/<clip>.npz or, if absent, are scored live from `wav`."""
+    cj = Path(config.TAG_ENS)
+    if _TAGENS.get("path") != str(cj):
+        z = np.load(cj.with_suffix(".npz"))
+        _TAGENS.clear()
+        _TAGENS.update(path=str(cj), meta=json.loads(cj.read_text(encoding="utf-8")), q={k: z[k] for k in z.files})
+    meta = _TAGENS["meta"]
+    assert list(labels) == meta["labels"], "TAG_ENS: label order differs from BEATs'"
+    parts = [np.asarray(framewise, np.float32)]
+    for m in meta["taggers"]:
+        p = Path(meta["cache"]) / m / f"{clip}.npz"
+        if not p.exists():
+            if not wav:
+                raise FileNotFoundError(f"TAG_ENS: no {m} frames for {clip} at {p} and no wav to score")
+            from benchmark.gold import tagens as _TE      # live: one pass of the tagger over BEATs' windows
+            _TE.score_to(m, Path(wav), np.asarray(times), p)
+        z = np.load(p)
+        fw = z["fw"].astype(np.float32)
+        assert fw.shape == parts[0].shape and np.allclose(z["times"], times, atol=1e-3), f"TAG_ENS grid mismatch {m} {clip}"
+        qT, qB = _TAGENS["q"][f"{m}_qT"], _TAGENS["q"][f"{m}_qB"]
+        parts.append(np.stack([np.interp(fw[:, c], qT[:, c], qB[:, c]) for c in range(fw.shape[1])], axis=1))
+    return np.mean(parts, axis=0)
+
+
 def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur, backend: str = "BEATs",
                  panns=None, listener=None, listener_p1=None, extra=None):
     """The union of the tagger's spans with FlexSED's, and the vetoes (amendments 8, 10, 11, 16, 22; round 4; round 13).
@@ -648,6 +758,15 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
     ids of the spans FlexSED raised alone and ffw the (possibly per-family rescaled) FlexSED scores. `listener` (R13-3,
     config.LISTENER_RESCUE) is a lookup(label, start, end, contain=False) -> the cached listener item or None."""
     from src.labels import canonical
+    # Round 63 TAG-ENS (docs/prereg_round13_detector_push.md): the tagger spans are re-cut from the mean of BEATs and the
+    # quantile-calibrated EAT / SSLAM frames on BEATs' grid; every veto below keeps reading the raw BEATs `framewise`.
+    if getattr(config, "TAG_ENS", None) and backend == "BEATs":
+        fw_e = tag_ens_frames(framewise, times, labels, getattr(config, "_CURRENT_CLIP", None),
+                              getattr(config, "_CURRENT_WAV", None))
+        thr = float(getattr(config, "AED_THRESHOLD", 0.175))
+        events = _extract_events(fw_e, times, labels, thr, None, min_dur,
+                                 low=thr * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+        trace("tag_ens", events, "R63 spans from the calibrated tagger mean")
     fbar = float(getattr(config, "FLEXSED_BAR", 0) or 0)
     flex_ids = set()
     _pc = {}
@@ -902,8 +1021,11 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 if not cols or not m.any() or float(dfw[m][:, cols].max()) >= float(lv):
                     continue
                 if mode == "both":
-                    if _v4_names_qwen(e) and _af_p1_accepts(e):
+                    q_, a_ = _v4_names_qwen(e), _af_p1_accepts(e)
+                    if q_ and a_:
                         continue
+                    if q_ != a_ and getattr(config, "DASM_LOCAL_SCENE", None) and _scene_margin(e):
+                        continue                              # Round 60 SCENE-MARGIN: one ear + the VLM: credible here
                 else:
                     if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
                         continue
@@ -1360,6 +1482,55 @@ def _p1v4_lists(e):
     return it.get("qwen_fams"), it.get("af_fams")
 
 
+_SCENE_MEMO: dict = {}
+
+
+def _scene_margin(e) -> bool:
+    """Round 60 SCENE-MARGIN: the Round 14 F3 scene question (reason._scene_fit: per 5-s stretch of THIS span, 6 frames from
+    1 s before to 1 s after, majority yes) on the clip's video. config.DASM_LOCAL_SCENE = a JSON clip -> mp4 map; every ask is
+    memoised in and logged to <map>.answers.jsonl. No video / no frames -> None -> not credible."""
+    import json as _j
+    from types import SimpleNamespace
+    from src.labels import canonical
+    mp, clip = Path(str(config.DASM_LOCAL_SCENE)), getattr(config, "_CURRENT_CLIP", None)
+    # Round 60L: the logit readout memoises in its own file, never mixed with the text answers
+    logp = mp.with_name(mp.name + (".logit_answers.jsonl" if getattr(config, "SCENE_FIT_LOGIT", False) else ".answers.jsonl"))
+    if str(logp) not in _SCENE_MEMO:
+        memo = {}
+        if logp.exists():
+            for ln in logp.read_text(encoding="utf-8").splitlines():
+                if ln.strip():
+                    r = _j.loads(ln)
+                    memo[tuple(r["key"])] = r["verdict"]
+        _SCENE_MEMO[str(logp)] = (_j.loads(mp.read_text(encoding="utf-8")) if mp.exists() else {}, memo)
+    vids, memo = _SCENE_MEMO[str(logp)]
+    fam = canonical(e.label)
+    key = (str(clip), fam, round(float(e.start), 3), round(float(e.end), 3))
+    if key not in memo:
+        vid, log, verdict = vids.get(str(clip)), [], None
+        if not vid:                                      # live path / new splits: the running video, else data/input/**/<clip>.mp4
+            vid = getattr(config, "_CURRENT_VIDEO", None)
+            if not vid or Path(vid).stem != str(clip):
+                hits = [q for q in (Path(config.DATA) / "input").rglob(f"{clip}.mp4")] if clip else []
+                vid = str(hits[0]) if hits else None
+        if vid and Path(vid).exists():
+            import torch
+            from src.stage5_cross_modal_analysis import reason
+            # the shipped gate VLM, thinking off (stage 4 runs before use_scored's stage-5 VLM settings are read)
+            mdl, proc = reason._load("Qwen/Qwen3.8-27B", "cuda" if torch.cuda.is_available() else "cpu")
+            th, config.VLM_THINKING = getattr(config, "VLM_THINKING", False), False
+            try:
+                verdict = reason._scene_fit(SimpleNamespace(spans=[(float(e.start), float(e.end))], start=float(e.start),
+                                                            end=float(e.end), event_label=fam), vid, mdl, proc, log=log)
+            finally:
+                config.VLM_THINKING = th
+        memo[key] = verdict
+        with logp.open("a", encoding="utf-8") as fh:
+            fh.write(_j.dumps({"key": list(key), "label": e.label, "verdict": verdict, "answers": log, "video": vid}) + "\n")
+    print(f"       [stage4] scene margin {key}: {memo[key]}", flush=True)
+    return memo[key] is True
+
+
 def _v4_names_qwen(e) -> bool:
     """Qwen V4 (P1 open inventory, config.RELABEL_P1V4) names e's family on its P1 cut"""
     from src.labels import canonical
@@ -1467,6 +1638,24 @@ def post_rules(events, ffw, ftimes, flabels, clip: str, origin=None, listener_p1
     return events, log
 
 
+_CTX_CACHE: dict = {}
+
+
+def _ctx_bypass(e) -> bool:
+    """Round 59 CONTEXT variant (b), CONTEXT_F8_BYPASS (a JSON path {clip: [[family, start, end], ...]}; default None = off):
+    a rescued span whose refused band run / vetoed span Qwen3-Omni's +-5 s audio + video context accepted (same family,
+    start and end within 0.02 s, clip = config._CURRENT_CLIP) skips the F8 DASM vote"""
+    p = getattr(config, "CONTEXT_F8_BYPASS", None)
+    if not p:
+        return False
+    from src.labels import canonical
+    if p not in _CTX_CACHE:
+        _CTX_CACHE[p] = json.loads(Path(p).read_text(encoding="utf-8"))
+    fam = canonical(e.label)
+    return any(f == fam and abs(a - e.start) <= 0.02 and abs(b - e.end) <= 0.02
+               for f, a, b in _CTX_CACHE[p].get(getattr(config, "_CURRENT_CLIP", None), []))
+
+
 def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
     """Round 14 precision filters on RESCUED spans only (docs/prereg_round13_detector_push.md, Round 14 + addendum), run
     after onset refinement so the B0 onsets are final. Order: F4, F6, F5, F8, then F1 (F1 picks among the survivors).
@@ -1571,6 +1760,8 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
                 continue
             if getattr(config, "F8_BYPASS_BOTH", False) and getattr(e, "agree", False):
                 dropped.setdefault("F8_bypassed", []).append(sig(e)); continue   # amendment K1: two audio LLMs outvote one SED
+            if _ctx_bypass(e):
+                dropped.setdefault("F8_ctx_bypassed", []).append(sig(e)); continue   # Round 59 CONTEXT (b)
             if dasm is None:
                 dropped.setdefault("F8_no_dasm", []).append(sig(e)); continue
             dfw, dts, dl = dasm

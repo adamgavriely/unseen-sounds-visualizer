@@ -1,0 +1,337 @@
+{
+ "mode": "replace",
+ "r57_steam_also_dropped": false,
+ "base": {
+  "merged": {
+   "hits": 29,
+   "n": 58,
+   "wrong": 19,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 3,
+   "cost": 2.1690140845070425
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 12,
+   "visible": 4,
+   "cross": 5,
+   "phantom": 3,
+   "cost": 2.0408163265306123
+  },
+  "dev2": {
+   "hits": 10,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.4545454545454546
+  }
+ },
+ "rows": {
+  "merged": {
+   "hits": 29,
+   "n": 58,
+   "wrong": 19,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 3,
+   "cost": 2.1690140845070425
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 12,
+   "visible": 4,
+   "cross": 5,
+   "phantom": 3,
+   "cost": 2.0408163265306123
+  },
+  "dev2": {
+   "hits": 10,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.4545454545454546
+  }
+ },
+ "vs_C": {
+  "d_hits": 2,
+  "d_wrong": 6,
+  "d_cost": 0.056
+ },
+ "C": {
+  "hits": 27,
+  "wrong": 13,
+  "cost": 2.113
+ },
+ "q1_pairs": {
+  "['unlikely', 'unlikely']": 27,
+  "['likely', 'unlikely']": 5,
+  "['likely', 'likely']": 10,
+  "['unlikely', 'likely']": 2
+ },
+ "funnel": {
+  "q1_unlikely": 27,
+  "q2_named": 6,
+  "q3_yes": 0,
+  "silenced": 0
+ },
+ "q1_unlikely": [
+  [
+   "tg_d016",
+   "Cough",
+   5.75,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "tg_d022",
+   "Dog",
+   7.25,
+   "cross",
+   "nothing",
+   null
+  ],
+  [
+   "tg_d107",
+   "Crying, sobbing",
+   0.38,
+   "hit",
+   "parrot",
+   [
+    "yes",
+    "no"
+   ]
+  ],
+  [
+   "tg_d120",
+   "Cat",
+   0.56,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "tg_d127",
+   "Laughter",
+   9.32,
+   "hit",
+   "elephant",
+   [
+    "no",
+    "no"
+   ]
+  ],
+  [
+   "tg_d128",
+   "Hammer",
+   9.0,
+   "cross",
+   "nothing",
+   null
+  ],
+  [
+   "tg_d149",
+   "Bee, wasp, etc.",
+   1.25,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "ambient_nature_rainforest_7629",
+   "Insect",
+   0.14,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "ambient_snow_walk_930",
+   "Laughter",
+   8.08,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "as_church_bell_pJRAWkLM",
+   "Bell",
+   0.14,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "as_explosion_XJ8lc3I6",
+   "Explosion",
+   5.68,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "as_explosion_XJ8lc3I6",
+   "Gunshot",
+   18.0,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "as_fire_alarm_kGKZ0YK4",
+   "Alarm",
+   8.89,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "b3_bakery_morning",
+   "Door",
+   4.25,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "b3_barbershop",
+   "Electric shaver, electric razor",
+   16.0,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "b3_golf_course",
+   "Bird",
+   3.8,
+   "cross",
+   "nothing",
+   null
+  ],
+  [
+   "b3_laundromat",
+   "Train",
+   1.0,
+   "phantom",
+   "washing machine",
+   [
+    "yes",
+    "no"
+   ]
+  ],
+  [
+   "birds_forest",
+   "Bird",
+   10.25,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "london_protest_01",
+   "Vehicle",
+   0.25,
+   "visible",
+   "red air horn",
+   [
+    "no",
+    "no"
+   ]
+  ],
+  [
+   "ly_ambulance_(siren)_-yPSgCn",
+   "Siren",
+   0.0,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "ly_applause_62ZYD0u",
+   "Crowd",
+   0.0,
+   "cross",
+   "nothing",
+   null
+  ],
+  [
+   "ly_helicopter_-v62cK1",
+   "Vehicle",
+   6.31,
+   null,
+   "nothing",
+   null
+  ],
+  [
+   "mv_protest_scene_movie",
+   "Glass",
+   10.75,
+   "hit",
+   "candle flame",
+   [
+    "no",
+    "no"
+   ]
+  ],
+  [
+   "mv_storm_scene_house",
+   "Alarm",
+   2.18,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "un_driving_motorcycle_4O3bZRYO",
+   "Laughter",
+   13.36,
+   "hit",
+   "nothing",
+   null
+  ],
+  [
+   "un_driving_motorcycle_DgdHSmwA",
+   "Explosion",
+   13.92,
+   null,
+   "balloon",
+   [
+    "yes",
+    "no"
+   ]
+  ],
+  [
+   "un_hair_dryer_drying_WWu24rJs",
+   "Computer keyboard",
+   11.25,
+   "phantom",
+   "nothing",
+   null
+  ]
+ ],
+ "dropped": [],
+ "changed": [],
+ "hits_lost": [],
+ "wrong_removed": -1,
+ "cheaper": false,
+ "cost_unit": false,
+ "main_rule": false,
+ "fewer_pictures": false,
+ "verdict": "FAIL",
+ "model": "Qwen/Qwen3.8-27B",
+ "prompts": {
+  "Q1A": "A sound detector says it heard {X} here. Looking at this scene, is a real {X} likely to be the source, on or off screen? Answer likely or unlikely.",
+  "Q1B": "A sound detector says it heard {X} here. Looking at this scene, is a real {X} likely to be the source, on or off screen? Answer unlikely or likely.",
+  "Q2": "What visible thing in this scene most likely made a sound that a detector could mistake for {X}? Answer with a short noun phrase, or 'nothing'.",
+  "L1": "Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.",
+  "L2": "Could the sound of {A} be mistaken for the sound of {B}? Answer yes or no."
+ }
+}

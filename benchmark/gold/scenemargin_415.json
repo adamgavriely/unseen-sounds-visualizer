@@ -1,0 +1,2161 @@
+{
+ "what": "Round 60 SCENE-MARGIN step 1 (415)",
+ "all": {
+  "n": 90,
+  "correct": 26,
+  "wrong_time": 23,
+  "absent": 41,
+  "precision": 0.289
+ },
+ "credible": {
+  "n": 56,
+  "correct": 23,
+  "wrong_time": 14,
+  "absent": 19,
+  "precision": 0.411
+ },
+ "not_credible": {
+  "n": 26,
+  "correct": 2,
+  "wrong_time": 7,
+  "absent": 17,
+  "precision": 0.077
+ },
+ "none": 8,
+ "credible_omni_only": {
+  "n": 18,
+  "correct": 5,
+  "wrong_time": 2,
+  "absent": 11,
+  "precision": 0.278
+ },
+ "credible_afn_only": {
+  "n": 38,
+  "correct": 18,
+  "wrong_time": 12,
+  "absent": 8,
+  "precision": 0.474
+ },
+ "not_credible_omni_only": {
+  "n": 9,
+  "correct": 1,
+  "wrong_time": 2,
+  "absent": 6,
+  "precision": 0.111
+ },
+ "not_credible_afn_only": {
+  "n": 17,
+  "correct": 1,
+  "wrong_time": 5,
+  "absent": 11,
+  "precision": 0.059
+ },
+ "by_class": {
+  "correct": {
+   "credible": 23,
+   "not": 2
+  },
+  "family absent": {
+   "credible": 19,
+   "not": 17
+  },
+  "wrong time": {
+   "credible": 14,
+   "not": 7
+  }
+ },
+ "go": true,
+ "rows": [
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.847,
+   "dasm_win": 0.3081,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      4.875
+     ],
+     "answer": "yes.\n\nbased"
+    },
+    {
+     "stretch": [
+      4.875,
+      9.75
+     ],
+     "answer": "yes.\n\nbased"
+    }
+   ]
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 3.25,
+   "conf": 0.415,
+   "dasm_win": 0.0251,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      2.5,
+      3.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 5.5,
+   "end": 6.0,
+   "conf": 0.441,
+   "dasm_win": 0.0277,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.5,
+      6.0
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.409,
+   "dasm_win": 0.3062,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      0.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 1.0,
+   "end": 4.25,
+   "conf": 0.798,
+   "dasm_win": 0.3062,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      4.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 8.25,
+   "conf": 0.771,
+   "dasm_win": 0.1068,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      8.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 2.25,
+   "end": 5.0,
+   "conf": 0.475,
+   "dasm_win": 0.1068,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      2.25,
+      5.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 5.0,
+   "end": 6.0,
+   "conf": 0.513,
+   "dasm_win": 0.3062,
+   "class": "wrong time",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.0,
+      6.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.438,
+   "dasm_win": 0.3062,
+   "class": "wrong time",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.5,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4Z2Tt3NInDM_30000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 2.5,
+   "conf": 0.46,
+   "dasm_win": 0.0315,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.25,
+      2.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "4Z2Tt3NInDM_30000",
+   "label": "Clip-clop",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 2.5,
+   "conf": 0.456,
+   "dasm_win": 0.0315,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.25,
+      2.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 1.75,
+   "end": 5.0,
+   "conf": 0.798,
+   "dasm_win": 0.1787,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.75,
+      5.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 4.75,
+   "end": 7.25,
+   "conf": 0.841,
+   "dasm_win": 0.0914,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.75,
+      7.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 5.25,
+   "end": 7.25,
+   "conf": 0.75,
+   "dasm_win": 0.0914,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.25,
+      7.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 5.25,
+   "end": 7.25,
+   "conf": 0.692,
+   "dasm_win": 0.0914,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.25,
+      7.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Cluck",
+   "family": "Bird",
+   "onset": 5.5,
+   "end": 6.75,
+   "conf": 0.636,
+   "dasm_win": 0.0849,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.5,
+      6.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 7.5,
+   "end": 8.0,
+   "conf": 0.511,
+   "dasm_win": 0.0914,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.5,
+      8.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 8.5,
+   "end": 9.0,
+   "conf": 0.372,
+   "dasm_win": 0.0372,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.5,
+      9.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "6WDfhQNFgCM_30000",
+   "label": "Buzz",
+   "family": "Buzz",
+   "onset": 1.25,
+   "end": 8.0,
+   "conf": 0.54,
+   "dasm_win": 0.0939,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.25,
+      8.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "6WDfhQNFgCM_30000",
+   "label": "Buzz",
+   "family": "Buzz",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.521,
+   "dasm_win": 0.0924,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.25,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Clock",
+   "family": "Clock",
+   "onset": 2.5,
+   "end": 6.25,
+   "conf": 0.699,
+   "dasm_win": 0.3306,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      2.5,
+      6.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Clock",
+   "family": "Clock",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.415,
+   "dasm_win": 0.3271,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.75,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "8VCi0bFQ2bQ_30000",
+   "label": "Beep, bleep",
+   "family": "Alarm",
+   "onset": 1.5,
+   "end": 4.0,
+   "conf": 0.576,
+   "dasm_win": 0.2915,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.5,
+      4.0
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 0.75,
+   "end": 1.25,
+   "conf": 0.417,
+   "dasm_win": 0.1769,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.75,
+      1.25
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 7.0,
+   "end": 7.75,
+   "conf": 0.606,
+   "dasm_win": 0.1678,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.0,
+      7.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Cap gun",
+   "family": "Gunshot",
+   "onset": 7.0,
+   "end": 8.0,
+   "conf": 0.506,
+   "dasm_win": 0.1678,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.0,
+      8.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Cap gun",
+   "family": "Gunshot",
+   "onset": 8.25,
+   "end": 9.0,
+   "conf": 0.478,
+   "dasm_win": 0.027,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.25,
+      9.0
+     ],
+     "answer": "yes"
+    }
+   ]
+  },
+  {
+   "clip": "9l9QXgsJSfo_120000",
+   "label": "Vehicle horn, car horn, honking",
+   "family": "Vehicle",
+   "onset": 5.25,
+   "end": 9.75,
+   "conf": 0.388,
+   "dasm_win": 0.0161,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.25,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "A-Mg-FwSkiU_30000",
+   "label": "Eruption",
+   "family": "Explosion",
+   "onset": 8.25,
+   "end": 9.5,
+   "conf": 0.375,
+   "dasm_win": 0.0401,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.25,
+      9.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 6.0,
+   "end": 7.5,
+   "conf": 0.462,
+   "dasm_win": 0.3318,
+   "class": "wrong time",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      6.0,
+      7.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 6.5,
+   "end": 7.25,
+   "conf": 0.351,
+   "dasm_win": 0.3318,
+   "class": "wrong time",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      6.5,
+      7.25
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "GRjdL6M63m4_60000",
+   "label": "Explosion",
+   "family": "Explosion",
+   "onset": 1.75,
+   "end": 3.25,
+   "conf": 0.514,
+   "dasm_win": 0.3232,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.75,
+      3.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "Gc01CEIQnM0_10000",
+   "label": "Camera",
+   "family": "Camera",
+   "onset": 0.0,
+   "end": 3.0,
+   "conf": 0.625,
+   "dasm_win": 0.1158,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      3.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "H8c0X5xfV4g_350000",
+   "label": "Telephone",
+   "family": "Telephone",
+   "onset": 1.0,
+   "end": 3.0,
+   "conf": 0.6,
+   "dasm_win": 0.021,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      3.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "H8c0X5xfV4g_350000",
+   "label": "Telephone",
+   "family": "Telephone",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.528,
+   "dasm_win": 0.0695,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.25,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.878,
+   "dasm_win": 0.0778,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      0.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 0.75,
+   "end": 7.25,
+   "conf": 0.939,
+   "dasm_win": 0.3445,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.75,
+      7.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.634,
+   "dasm_win": 0.0975,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      9.25,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 3.25,
+   "end": 4.5,
+   "conf": 0.592,
+   "dasm_win": 0.0072,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      3.25,
+      4.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 5.25,
+   "end": 9.75,
+   "conf": 0.734,
+   "dasm_win": 0.0086,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.25,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Cluck",
+   "family": "Bird",
+   "onset": 5.75,
+   "end": 6.25,
+   "conf": 0.354,
+   "dasm_win": 0.0086,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.75,
+      6.25
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 7.5,
+   "end": 9.0,
+   "conf": 0.357,
+   "dasm_win": 0.1445,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.5,
+      9.0
+     ],
+     "answer": "no"
+    }
+   ]
+  },
+  {
+   "clip": "LD6nP2qlsRI_30000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 8.75,
+   "end": 9.5,
+   "conf": 0.641,
+   "dasm_win": 0.3413,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.75,
+      9.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 1.25,
+   "end": 7.75,
+   "conf": 0.5,
+   "dasm_win": 0.0085,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.25,
+      7.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 1.0,
+   "end": 2.5,
+   "conf": 0.798,
+   "dasm_win": 0.0116,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      2.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 4.0,
+   "end": 5.75,
+   "conf": 0.671,
+   "dasm_win": 0.0452,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.0,
+      5.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 6.25,
+   "end": 7.5,
+   "conf": 0.591,
+   "dasm_win": 0.2593,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      6.25,
+      7.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Chopping (food)",
+   "family": "Cooking",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.958,
+   "dasm_win": 0.0394,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.25,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.968,
+   "dasm_win": 0.1122,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      0.5
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.903,
+   "dasm_win": 0.1122,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      0.5
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Roar",
+   "family": "Roar",
+   "onset": 0.5,
+   "end": 1.0,
+   "conf": 0.661,
+   "dasm_win": 0.079,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.5,
+      1.0
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 1.0,
+   "end": 3.25,
+   "conf": 0.977,
+   "dasm_win": 0.2206,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      3.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 1.0,
+   "end": 3.25,
+   "conf": 0.914,
+   "dasm_win": 0.2206,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      3.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 4.75,
+   "end": 7.25,
+   "conf": 0.959,
+   "dasm_win": 0.2681,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.75,
+      7.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 4.75,
+   "end": 7.25,
+   "conf": 0.875,
+   "dasm_win": 0.2681,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.75,
+      7.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.397,
+   "dasm_win": 0.2391,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.75,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.361,
+   "dasm_win": 0.2391,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.75,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Motorcycle",
+   "family": "Vehicle",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.486,
+   "dasm_win": 0.2391,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      9.0,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "label": "Dial tone",
+   "family": "Dial tone",
+   "onset": 6.75,
+   "end": 8.0,
+   "conf": 0.431,
+   "dasm_win": 0.2372,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      6.75,
+      8.0
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "PTUxCvCz8Bc_170000",
+   "label": "Pour",
+   "family": "Water",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.522,
+   "dasm_win": 0.0605,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      0.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "PTUxCvCz8Bc_170000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 3.5,
+   "end": 5.25,
+   "conf": 0.369,
+   "dasm_win": 0.0601,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      3.5,
+      5.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 0.5,
+   "end": 1.25,
+   "conf": 0.382,
+   "dasm_win": 0.1576,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.5,
+      1.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.5,
+   "end": 9.75,
+   "conf": 0.46,
+   "dasm_win": 0.1589,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.5,
+      5.625
+     ],
+     "answer": "yes."
+    },
+    {
+     "stretch": [
+      5.625,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "TslB1VMKXmM_10000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 2.75,
+   "end": 6.25,
+   "conf": 0.41,
+   "dasm_win": 0.0804,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      2.75,
+      6.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "b-zIVLtiIXY_140000",
+   "label": "Squeak",
+   "family": "Door",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.717,
+   "dasm_win": 0.006,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      8.5,
+      9.75
+     ],
+     "answer": "no"
+    }
+   ]
+  },
+  {
+   "clip": "cbmaM2VhdAU_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.732,
+   "dasm_win": 0.1852,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      4.875
+     ],
+     "answer": "yes."
+    },
+    {
+     "stretch": [
+      4.875,
+      9.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "cfEKOEmFxp0_40000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 2.25,
+   "conf": 0.581,
+   "dasm_win": 0.0829,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      2.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "cfEKOEmFxp0_40000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 1.75,
+   "conf": 0.532,
+   "dasm_win": 0.0829,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      1.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "gPekns88rQA_270000",
+   "label": "Sheep",
+   "family": "Sheep",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.622,
+   "dasm_win": 0.014,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      2.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "gPekns88rQA_270000",
+   "label": "Goat",
+   "family": "Sheep",
+   "onset": 0.25,
+   "end": 3.75,
+   "conf": 0.401,
+   "dasm_win": 0.014,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.25,
+      3.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "hqRF-k1SFDQ_140000",
+   "label": "Doorbell",
+   "family": "Doorbell",
+   "onset": 5.5,
+   "end": 6.25,
+   "conf": 0.708,
+   "dasm_win": 0.0428,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.5,
+      6.25
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "jbe3VM-5xdc_30000",
+   "label": "Breaking",
+   "family": "Glass",
+   "onset": 4.0,
+   "end": 4.75,
+   "conf": 0.449,
+   "dasm_win": 0.0806,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.0,
+      4.75
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "jbe3VM-5xdc_30000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 4.0,
+   "end": 5.0,
+   "conf": 0.406,
+   "dasm_win": 0.0806,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.0,
+      5.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "label": "Fill (with liquid)",
+   "family": "Water",
+   "onset": 0.75,
+   "end": 1.25,
+   "conf": 0.36,
+   "dasm_win": 0.1083,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.75,
+      1.25
+     ],
+     "answer": "yes.\n\nthe"
+    }
+   ]
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 5.25,
+   "conf": 0.494,
+   "dasm_win": 0.1094,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      1.0,
+      5.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "mSLgj6uy-yE_80000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 7.5,
+   "end": 8.25,
+   "conf": 0.432,
+   "dasm_win": 0.105,
+   "class": "correct",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.5,
+      8.25
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.365,
+   "dasm_win": 0.2686,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      0.5
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 0.75,
+   "end": 4.25,
+   "conf": 0.516,
+   "dasm_win": 0.2686,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.75,
+      4.25
+     ],
+     "answer": "no"
+    }
+   ]
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 6.0,
+   "end": 9.75,
+   "conf": 0.67,
+   "dasm_win": 0.2686,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      6.0,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.821,
+   "dasm_win": 0.2272,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      0.0,
+      2.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "nyjXFx0GSX8_150000",
+   "label": "Ding",
+   "family": "Bell",
+   "onset": 4.0,
+   "end": 4.5,
+   "conf": 0.376,
+   "dasm_win": 0.1541,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.0,
+      4.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "rvbmYs4Kl3Y_200000",
+   "label": "Sanding",
+   "family": "Sanding",
+   "onset": 2.25,
+   "end": 3.5,
+   "conf": 0.487,
+   "dasm_win": 0.0338,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      2.25,
+      3.5
+     ],
+     "answer": "no"
+    }
+   ]
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 5.0,
+   "end": 8.0,
+   "conf": 0.438,
+   "dasm_win": 0.2336,
+   "class": "correct",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.0,
+      8.0
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Liquid",
+   "family": "Water",
+   "onset": 3.0,
+   "end": 6.5,
+   "conf": 0.502,
+   "dasm_win": 0.0484,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": true,
+   "scene_raw": [
+    {
+     "stretch": [
+      3.0,
+      6.5
+     ],
+     "answer": "yes."
+    }
+   ]
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Liquid",
+   "family": "Water",
+   "onset": 7.25,
+   "end": 9.5,
+   "conf": 0.504,
+   "dasm_win": 0.0483,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.25,
+      9.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.55,
+   "dasm_win": 0.0483,
+   "class": "wrong time",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.75,
+      9.75
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "yBpYu5A-Jus_20000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 7.75,
+   "end": 8.5,
+   "conf": 0.512,
+   "dasm_win": 0.1775,
+   "class": "family absent",
+   "omni": true,
+   "afn": false,
+   "ears": 1,
+   "scene": false,
+   "scene_raw": [
+    {
+     "stretch": [
+      7.75,
+      8.5
+     ],
+     "answer": "no."
+    }
+   ]
+  },
+  {
+   "clip": "yEahPgS0Kes_30000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 3.25,
+   "end": 4.25,
+   "conf": 0.612,
+   "dasm_win": 0.0029,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      3.25,
+      4.25
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "yEahPgS0Kes_30000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 4.75,
+   "end": 5.25,
+   "conf": 0.444,
+   "dasm_win": 0.0015,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      4.75,
+      5.25
+     ],
+     "answer": "based on the"
+    }
+   ]
+  },
+  {
+   "clip": "yEahPgS0Kes_30000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 5.5,
+   "end": 8.75,
+   "conf": 0.729,
+   "dasm_win": 0.0049,
+   "class": "family absent",
+   "omni": false,
+   "afn": true,
+   "ears": 1,
+   "scene": null,
+   "scene_raw": [
+    {
+     "stretch": [
+      5.5,
+      8.75
+     ],
+     "answer": "based on the"
+    }
+   ]
+  }
+ ]
+}

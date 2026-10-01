@@ -1358,7 +1358,32 @@ def _not_producing(spec, video_path, mdl, proc) -> bool:
     return ans.startswith("n")
 
 
-def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
+SCENE_FIT_TWIN = "Could the sound of {label} NOT plausibly be heard in this scene? Answer yes or no."
+
+
+def _yes_no_margin(mdl, proc, prompt, images=None) -> float:
+    """Round 60L: one forward pass, no generation; max logit over 'yes' ids minus max logit over 'no' ids at the first
+    answer position (the chat built as _ask builds it, thinking off: the template's empty think block precedes it)."""
+    import torch
+    tok = proc.tokenizer
+    yes = sorted({tok.encode(w, add_special_tokens=False)[0] for w in ("yes", "Yes", " yes", " Yes")})
+    no = sorted({tok.encode(w, add_special_tokens=False)[0] for w in ("no", "No", " no", " No")})
+    content = [{"type": "image"} for _ in (images or [])] + [{"type": "text", "text": prompt}]
+    try:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
+                                        add_generation_prompt=True, enable_thinking=False)
+    except TypeError:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True)
+    kw = {"text": [text], "return_tensors": "pt"}
+    if images:
+        kw["images"] = images
+    inputs = proc(**kw).to(mdl.device)
+    with torch.inference_mode():
+        lg = mdl(**inputs).logits[0, -1].float()
+    return float(lg[yes].max() - lg[no].max())
+
+
+def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4, log=None):
     """Round 14 F3: per stretch (VISIBILITY_STRETCH cuts, 1 s before to 1 s after, >= 6 frames, as the gate), the question
     SCENE_FIT_PROMPT; True iff yes > no over the stretches, None if no frames."""
     from src.stage2_video_understanding import _sample_frames_at
@@ -1377,7 +1402,16 @@ def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
         win = _sample_frames_at(Path(video_path), times)
         if not win:
             continue
-        ans = _ask(mdl, proc, SCENE_FIT_PROMPT.format(label=label), images=win, max_new=4).strip().lower()
+        if getattr(config, "SCENE_FIT_LOGIT", False):        # Round 60L: bias-cancelled margin, no generation / truncation
+            d = (_yes_no_margin(mdl, proc, SCENE_FIT_PROMPT.format(label=label), win)
+                 - _yes_no_margin(mdl, proc, SCENE_FIT_TWIN.format(label=label), win))
+            ans = "yes" if d > 0 else ("no" if d < 0 else "")
+            if log is not None:
+                log.append({"stretch": [round(a, 3), round(b, 3)], "answer": ans, "d": round(d, 4)})
+        else:
+            ans = _ask(mdl, proc, SCENE_FIT_PROMPT.format(label=label), images=win, max_new=4).strip().lower()
+            if log is not None:                              # Round 60: the raw answer per stretch
+                log.append({"stretch": [round(a, 3), round(b, 3)], "answer": ans})
         if ans.startswith("y"):
             yes += 1
         elif ans.startswith("n"):
@@ -1642,6 +1676,12 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 kept = pieces[:1]
                 spec.reason += " | gate: visible, but not visibly producing it at the onset (I2) - kept"
                 print("       [stage5] I2 kept " + spec.event_label + ": visible but not producing it", flush=True)
+            if not kept and spec.event_label in (getattr(config, "CONCEALED_ACTION", None) or ()):
+                # Round 64 CONCEALED-ACTION: the source is on screen but the action making the sound is hidden inside it
+                # (a bell's clapper, a body's fart) -> seeing the source is not seeing the sound; kept, as the I2 keep
+                kept = pieces[:1]
+                spec.reason += " | gate: source visible, sound-making hidden inside it (Round 64) - kept"
+                print("       [stage5] concealed-action kept " + spec.event_label, flush=True)
             if not kept:
                 spec.augment = False
                 spec.subject = ""
@@ -1679,6 +1719,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 directed = getattr(config, "KINSHIP_DIRECTED", False)
                 if directed and not (g.event_label == spec.event_label or _desc(g.event_label, spec.event_label)):
                     continue
+                if spec.event_label in (getattr(config, "CONCEALED_ACTION", None) or ()):
+                    continue                     # Round 64: never silenced as a kind of a visible source
                 if same_source(spec.event_label, g.event_label) and _overlap(spec, g):
                     spec.augment = False
                     spec.subject = ""

@@ -56,14 +56,14 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "LISTENER_SHADOW": False, "LISTENER_SHADOW_S": 0.2, "LISTENER_EDGE": False, "LISTENER_EDGE_S": 0.3,
         "LISTENER_CONFIRMED_MIRROR": False, "LISTENER_DASM_VOTE": False, "LISTENER_DASM_DIR": None,
         "LISTENER_DASM_BAR": 0.575, "LISTENER_DASM_PAD": 0.5,
-        "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority", "GATE_BOX_CHECK": False,
+        "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority", "GATE_BOX_CHECK": False, "CONCEALED_ACTION": None,
         "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None, "GROUP_ASK": False, "GROUP_MAX_GAP": 4.0, "GROUP_CACHE": None, "DEPICT_EVENT": False, "DEPICT_CACHE": None,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
         "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False, "MASKED_WEAK_NEED_MASK": True, "FLEX_ONLY_CONFIRM": False,
         "DASM_RESCUE": False, "DASM_P4_CACHE": None, "DASM_RESCUE_NEW_ONLY": False, "MASKED_WEAK_PANNS": False,
-        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6, "LISTENER_V4B_CACHE": None, "DASM_CLIP_VETO": None, "DASM_LOCAL_VETO": None, "DASM_LOCAL_KEEP": "either",
+        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6, "LISTENER_V4B_CACHE": None, "DASM_CLIP_VETO": None, "DASM_LOCAL_VETO": None, "SCENE_FIT_LOGIT": False, "DASM_LOCAL_KEEP": "either",
         "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
@@ -238,6 +238,11 @@ ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3, "DEPICT_EVENT": True,
 ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Round 52 STRONG-KEEP
 ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP": "both"}   # Round 53 WEAK-WITNESS (b from the 415)
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
+ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
+ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
+ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": "/home/dsi/adamg/MscProj/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
+ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
+ARMS["SHIP8+MD3+WW5+RET"] = {**ARMS["SHIP8+MD3+WW5"], "PERC_RETURN": None}   # Round 65 RETURN (k from the 415 half A; set on GO)
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
@@ -265,7 +270,7 @@ if GSTACK.exists():
         _c.update(GRULES[_g])
     ARMS["GSTACK"] = _c
 STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT", "FIX_GATE", "LISTENER_ARBITER", "DISPLAY_THRESHOLD",
-               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE", "SCENE_FIT_ALL", "GATE_BOX_CHECK")  # arm flags read after stage 4
+               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE", "SCENE_FIT_ALL", "GATE_BOX_CHECK", "CONCEALED_ACTION")  # arm flags read after stage 4
 DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF", "GROUP_ASK", "GROUP_MAX_GAP", "GROUP_CACHE", "DEPICT_EVENT", "DEPICT_CACHE")                           # read by _display_spans at score time
 
 
@@ -482,6 +487,21 @@ def add_breaks(rows, arm, C, ffw):
         r["breaks"] = [list(b) for b in e.breaks]
 
 
+def ret_rows(rows, arm, C, ffw, st):
+    """Round 65 RETURN: src.stage4_audio_event_detection.perceptual_returns on the final rows, audio = the clip's wav"""
+    import librosa
+    from src.stage4_audio_event_detection import perceptual_returns, RET_SR
+    wav = DCC.wav_of(st)
+    assert Path(wav).exists(), f"RET: no wav for {st}: {wav}"
+    y, _ = librosa.load(str(wav), sr=RET_SR, mono=True)
+    with flags(arm_cfg(arm)):
+        evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"]) for r in rows]
+        new = perceptual_returns(evs, C["beats"][0], C["beats"][1], C["beats"][2], ffw, C["flex"][1], C["flex"][2], y)
+    return [{"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": "ret",
+             "rescued": False, "arbiter": False, "agree": False, "pre_start": float(e.start), "refine": "none (RET)",
+             "breaks": [list(b) for b in e.breaks]} for e in new]
+
+
 def stage4(arms, offline=False):
     if offline:
         loc = Path(os.environ["R13_LOCAL"])
@@ -533,6 +553,8 @@ def stage4(arms, offline=False):
                 rows = reloc_rows(rows, arm, C2, info, res, k, st)
                 rows = filter_rows(rows, arm, C2, info["ffw"], res, k, st)
                 add_breaks(rows, arm, C2, info["ffw"])
+                if arm_cfg(arm).get("PERC_RETURN"):     # Round 65 RETURN (the harness rebuilds stage-4 rows, so the hook is here too)
+                    rows = rows + ret_rows(rows, arm, C2, info["ffw"], st)
                 res["arms"][k][st] = rows
         if not offline:
             DCC.dump(STAGE4, res)

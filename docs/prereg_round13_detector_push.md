@@ -3973,3 +3973,672 @@ gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 1
 0.40 row (`floor_check_arm.py`), changed pictures (`tightcut.py diff` -> `tightcut_diff.json`), number of re-asked / tight-accepted
 items per split (`tightcut_build.json`). Jobs: Qwen on H200/A100, AF on a smaller GPU, then one arm job (gate -> build + replay ->
 r13 stage 4/5/score -> tagger stage 4/5/gates -> merged -> floor -> diff). TEST not read.
+### Round 46b result (Adam's answers 1 Oct 17:13, 29/29)
+Controls (15 current hits): 11 real/off-screen/wanted, 1 not heard (bakery Door 3.9), 3 unsure/seen (tornado Siren horns on screen;
+tg_d030 Motorcycle and tg_d149 Bee only recognisable from later in the clip) — gold mostly confirmed. Round-53 lost hits: tg_d032
+Thunder 13.75 real/off-screen/wanted; tg_d075 Alarm "a fire alarm, off-screen, a DHH viewer would want it". Current wrongs (12):
+4 not heard (london_protest Vehicle, tg_d022 Dog, tg_d128 Hammer, motorcycle "Explosion" = really a gunshot), 5 real but source on
+screen (storm Thunder ×2, tg_d088 Thunder 13.25, tg_d107 Screaming, tg_d127 Water), 2 real/off-screen/wanted but timed away from the
+gold row (as_explosion Gunshot 8.25, ly_applause Crowd 0.0), 1 unsure (tg_d128 Laughter, "too short to want a picture"). No clean
+real-unlisted item -> no gold correction. Adam's idea (notes h11, h12): sounds he recognises only from what is seen LATER in the clip
+(motorcycle, bees) -> clip-level visual context as evidence for an earlier sound.
+
+### Round 58 step 1 result — held-out 415 (jobs 31603121 Qwen + 31603122 AF asks, 31603123 gate; `tightcut.py` -> `tightcut_415.json`): **STOP**
+Sample 800 of 3022 band runs (301 clips; `random.Random(58)`); no window needed the zero-pad fallback. All 800: precision 0.175.
+Padded cut accepted (the shipped rescue on the 415): 93, **0.419**; padded refused 707, 0.143. **NEW (refused padded, accepted on the
+tight cut): 10, 4 correct = 0.400 < 0.60 -> STOP** (n >= 5, so judged). By peak: >= 0.6 8, 0.500; < 0.6 2, 0.000. Overlap rule (reported)
+0.400. NEW with DASM >= 0.575 (would survive F8): 1, 1 correct (Air horn 1.24–4.16, DASM 0.823). Reported, not the rule: the tight cut
+alone would refuse 36 of the 93 padded accepts (0.361 correct among them). Reading: cutting the pad rarely changes the ears' answer
+(10 / 707 refusals flip, 1.4 %), and the flips are no more precise than the shipped rescue (0.40 vs 0.42), far below the 0.60 bar;
+with F8 on top only 1 of 10 would remain. The DEV / DEV2 tight answers were asked in parallel (476 + 294 refused band items,
+`tightcut_ask_{dev,dev2}_{q,af}.json` on the cluster) but were NOT read: the arm job stopped at the gate (exit 3) before building
+override caches; no DEV arm was run. Nothing ships; TEST not read.
+### Round 59 CONTEXT — pre-registration (1 Oct, before any context answer is generated)
+**Idea (Adam, 1 Oct 17:16; notes h11/h12).** "When you are not sure about a sound, look 5 seconds before or after": he
+recognised tg_d030 Motorcycle and tg_d149 Bee only from what is SEEN later in the clip. **Uncertain candidates** = what the
+listeners were asked about and REFUSED (cached answers, caches complete after today's fill): (i) P2 band runs, FlexSED
+0.5 <= peak < 0.8, cached TIER False at the cached peak (peak >= 0.6: Qwen V4 no; below: Qwen V4 AND AF V4 not both yes);
+(ii) PV items (FlexSED spans the PANNs clip veto drops unless the listener accepts), cached TIER False. K4A refusals
+(P1 lists on drawn spans) are NOT in scope (disclosed). **New evidence:** Qwen3-Omni (`listener_variants.MODEL`, thinker only,
+greedy, 64 new tokens) gets the 16-kHz audio of **[max(0, onset − 5), min(dur, onset + 5)]** AND **8 video frames** of the same
+window (ffmpeg, scale 640 wide, times a + (b − a)(i + 0.5)/8) passed as ONE video (`videos=[frames]`, fps = 8 / (b − a),
+`use_audio_in_video=False`); if the processor rejects video input on a smoke call (first 415 clip, window [0, 10], a
+non-candidate), ALL asks use the 8 frames as images instead (mode recorded per item). Question, verbatim: "A sound starts about
+{k} seconds into this clip. Using what you hear and what you see anywhere in the clip, what is making that sound? Answer with
+a short sound name." with k = onset − window start (one decimal). Onset = where stage 4 would place the picture: P2 run start,
+or the 1-s cut start when the run < 0.5 s; PV span start. **Mapping (frozen):** `expect_a_screen.items_of(answer)`, then
+`map_item` on each item; the FIRST item that maps gives the context family; **context-accept iff it == the candidate family**
+(same_family ancestor/descendant counted only as a reported row).
+**Rule (a), arm `SHIP8+MD3+CTX` (no src change):** a refused candidate counts as listener-accepted iff context-accept;
+everything downstream unchanged (F8 DASM vote 0.575, ONCE, FLAP, K4A, vetoes, gate, GROUP, DEPICT). Implemented as override
+copies of the DEV / DEV2 listener caches (`benchmark/gold/context/{v,afn}_{dev,dev2}.json`): for a context-accepted item the
+legs `_tier` reads at its peak are set yes (Qwen V4; below 0.6 also AF V4); a CPU replay through `listener_from_vcache` must give
+TIER = base OR context on every asked item and an identical accept dict on every other P2 / PV item. **Variant (b), secondary
+only, arm `SHIP8+MD3+CTXB`:** (a) plus context-accepted rescues skip F8 — new flag `CONTEXT_F8_BYPASS` (config.py, default
+None = off; src/stage4 `_ctx_bypass`: same clip, family, start/end within 0.02 s of the context-accepted span); NOT
+`F8_BYPASS_BOTH` (that would also bypass every naturally agreeing rescue, K1). Arms registered at run time by
+`benchmark/gold/context.py` (no round13_dev edit). DEPICT / GROUP answers are not re-asked for new pictures (missing = kept /
+not grouped, disclosed).
+**Honest ceiling (a).** With F8 unchanged only refused misses with DASM >= 0.575 can become hits. Of the known refused needed
+misses (Round 58 list): nyc_1689 Air horn 3.76 (DASM 0.051), as_explosion Footsteps 2.08 (0.262), Gasp 6.72 (0.065),
+b3_carnival_parade Steam whistle / Whistle 6.32 (0.021 / 0.372) all fail F8; only **nyc_1689 Vehicle (run 0.0–10.0, DASM
+0.718/0.719)** can pass, so **+1 hit is the ceiling of (a)** and it needs both a context-accept and the 0.0-onset picture to
+score against the 3.8-s gold row (not pre-judged). (b) can do more. **Expected wrong-side risk:** "recognised because seen"
+means the source is often ON SCREEN — the class of 5 of Adam's 12 current wrongs (Round 46b); context accepts may add
+on-screen pictures that the gate then has to catch.
+**Step 1 — held-out 415 (`context.py ask 415 0|1` + `gate`).** Population = Round 58's seeded 800 band runs
+(`tightcut.held_sample()`, random.Random(58), 0.4 runs, gaps <= 0.24 merged, 0.5 <= peak < 0.8, depictable families), all
+asked. **Refusal proxy (as instructed, disclosed): band runs whose family neither whole-clip list names** (Qwen3-Omni
+`heldout_a4/listen`, AF Next `agree_ears/heldout`, `bandlist_415.fams_of`; AF list missing -> Qwen alone). Correctness = Round 42
+(`heldout_a4_screen.classify`: same family, onset in [onset − 0.5, onset + 1.0]). **Guard: STOP iff n(unconfirmed AND
+context-accept) >= 5 and its precision < 0.60**; n < 5 = not judged, DEV runs. Reported (not the guard): base rates (all 800,
+unconfirmed), context-refused, guard set with DASM >= 0.575 (F8 survivors), by peak side, same_family mapping, and Round 58's
+ACTUAL padded-TIER refusals on the same 800 (`tightcut_415/held_{q,af}.json`) with and without context-accept, plus the
+shipped rescue (padded-TIER accepted). Disclosed: on 10-s AudioSet clips the ±5 s window is ~the whole clip, so step 1 tests
+"whole-clip audio + video names the family" more than local context.
+**Step 2 — merged DEV (only if step 1 does not STOP; DEV / DEV2 answers are generated in parallel but read only by the arm job
+after the gate).** Base SHIP8+MD3 (floor None, DEPICT on, filled caches) must reproduce **29/58, 18 (6/9/3), 2.141**. **Pass
+(a):** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR fewer-pictures
+clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). (b) is scored by the same rule but reported as
+secondary (it is not a ship candidate on its own). Reported: floor 0.40 rows (`floor_check_arm.py`), changed pictures with
+Omni's raw context answer for each (`context.py diff` -> `context_diff.json`), refused / context-accepted counts per split
+(`context_build.json`). Jobs: `slurm/job_context_q.sh` (array: 415 halves, DEV, DEV2), then `slurm/job_context_arm.sh`
+(gate -> build + replay -> r13 / tagger stage 4 / 5 / gates -> merged -> floor -> diff). TEST not read.
+### Round 59 CONTEXT — step 1 result (415): STOP
+Video input worked (mode `video` on every item; Qwen3-Omni often appends junk lines such as ".com" or "Assistant: ..." after
+the first item; the frozen first-mapped-item rule reads the first line). Round 58's 800 band runs: base precision 0.175
+(140/800); **guard population** (family named by neither whole-clip list) 679, base 0.138; **unconfirmed AND context-accept:
+n 9, 3 correct, precision 0.333 < 0.60 -> STOP** (by peak >= 0.6: 2/7; < 0.6: 1/2). Context-refused 91/670 = 0.136. Guard
+set with DASM >= 0.575 (the F8 survivors of rule a): **n 0**. Reported only: same_family mapping 10/37 = 0.27; Round 58's
+actual padded-TIER refusals 101/707 = 0.143, of which context-accepted 12/27 = 0.444; shipped rescue (padded-TIER accepted)
+39/93 = 0.419; all 800 context-accepted 27/55 = 0.491. The 9 guard items: Tap, Shuffling cards, Printer correct; Chink/clink
+wrong time; Rattle, Alarm ("Buzzer"), Turkey, Bicycle, Cough with the family absent from the strong labels — Turkey and Bicycle
+look like the expected failure: Omni names what it SEES, and the onset sound is something else. The DEV / DEV2 context answers
+(512 + 314 refused candidates, `context_ask_{dev,dev2}.json` on the cluster) were generated but NOT read: the arm job stopped at
+the gate (exit 3) before building override caches; no DEV arm was run. `CONTEXT_F8_BYPASS` stays None (off). Nothing ships;
+TEST not read. Result file: `benchmark/gold/context_415.json`.
+
+## Round 61 SCENE-EXPLAIN — the VLM explains a wrong label by a visible look-alike (written 2026-10-01 BEFORE any Round 61 answer; Adam 19:14: "in B the laundromat Train should be removed — there is no train and no chance of one there, so it is probably the washing machine ... why can't the VLM?")
+**Why / what is new vs prior art.** Round 16 N1 (`SCENE_FIT_ALL`, "Could the sound of {X} plausibly be heard in this scene?")
+dropped every implausible sound and lost 4 hits: real off-screen sounds look implausible from the frames. Round 57 DEPICT-EVENT
+needs the depicted event to be visibly happening (fired once). Round 61 adds the second reasoning step N1 lacked: a picture is
+dropped only if the VLM ALSO names a visible thing in the scene that could have made a sound the detector mistook for {X}, and a
+text-only check agrees the two sounds are confusable. **Known risk (written now):** N1 lost off-screen hits; this rule needs a
+NAMED VISIBLE confuser, which a real off-screen sound should lack (Q2 -> "nothing") — but Round 57's look-alike text check said
+(yes, yes) on 5 of 12 pairs, so Q3 is a generous filter and the real protection is Q2 answering "nothing" on hits; Rounds 54/54b
+showed this VLM can answer by option position or collapse to one answer — step 0 exists for that. Any hit silenced is reported
+by name with its raw replies as the failure mode.
+**Unit.** The **44 drawn specs / 74 stretches** of the SAVED SHIP8+MD3 merged-DEV arm (DEPICT on, listener caches filled), in
+`sign_screen.asked(parts())` order (harness check run before any answer on the login node: 71 clips, 48 placed pictures, 44 drawn
+specs, 74 stretches, 0 fallbacks; base **29/58, 18 (6/9/3), 2.141** reproduced). Script `benchmark/gold/explain_screen.py`,
+job `slurm/job_explain.sh` (from ~/MscProj_tg). No src/ or config.py edit.
+**Questions (Qwen3.8-27B, `sign_screen.MODEL`, `reason._ask`, greedy).** X = pipeline label lower-cased. Frames = 6 evenly over
+[spec start − 1 s, spec start + 1 s] (`depict_screen._frames`, unclamped); < 2 frames -> no drop.
+- Q1 (frames, max_new 4), two option orders, verbatim: Q1a `A sound detector says it heard {X} here. Looking at this scene, is a
+  real {X} likely to be the source, on or off screen? Answer likely or unlikely.` and Q1b = same ending `Answer unlikely or
+  likely.` Parse: lower-case, first 3 words stripped of punctuation; "unlikely" present -> unlikely, else "likely" -> likely,
+  else unparsed (counts as not unlikely). **Q1 unlikely iff both orders = unlikely.**
+- Q2 (frames, max_new 16), only if Q1 unlikely: `What visible thing in this scene most likely made a sound that a detector could
+  mistake for {X}? Answer with a short noun phrase, or 'nothing'.` Parse: first line, lower-case, quotes/punctuation stripped,
+  leading article removed; empty or starting "nothing" / "none" / "no " -> no confuser; else the phrase is B.
+- Q3 (text only, max_new 4), only if Q2 names B, both orders as Round 57's L1/L2 (the sounds swapped; Q3 text is L1 verbatim):
+  `Could the sound of {B} be mistaken for the sound of {X}? Answer yes or no.` and `Could the sound of {X} be mistaken for the
+  sound of {B}? Answer yes or no.` Parse as 57's `yn`. **Q3 yes iff both yes.**
+**Rule.** Drop the picture (spec augment = False) iff Q1 unlikely (both orders) AND Q2 names a thing AND Q3 yes (both orders).
+Re-placement `_display_spans(clip=stem)` and scoring exactly as `sign_screen.cmd_score` (unit 44).
+**Step 0 — sanity (decides whether the round runs).** 10 specs: dev b3_laundromat Train + the first 9 of positions 0, 4, …, 36 of
+the asked order that are not it; Q1a/Q1b (and Q2/Q3 where reached) with exact prompts and raw replies printed. **If >= 9 of the
+10 give the same (Q1a, Q1b) pair -> STOP "untestable with this VLM"**, nothing else run.
+**Selection (merged DEV, vs B = 29/58, 18 (6/9/3), 2.141).** PASS iff cost < 2.141 AND wrong removed >= 2 × needed hits lost
+(>= 1 if none lost) AND (main rule: hits >= 29, no needed hit lost, cost < 2.141; OR fewer-pictures clause: wrong <= 18 − 3 ×
+lost, hits >= 26). Also reported next to C (Round 53 WW, no floor: 27/13/2.113; not recomputed). Reported: every dropped
+picture with its class (hit / visible / cross / phantom) and raw Q1–Q3 replies, the (Q1a, Q1b) pair distribution over all 44,
+the funnel (Q1 unlikely -> Q2 named -> Q3 yes), every Q1-unlikely spec with class and Q2 reply, laundromat Train by name.
+**Amendment (coordinator, written before any number): 61 vs 57.** Round 61 is a superset of Round 57 (57 needs the event visibly
+happening; 61 only a visible look-alike). If 61 passes it REPLACES 57 in use_shipped (not both). So the **decisive row is the
+REPLACE form**: SHIP8+MD3 with DEPICT_EVENT off in the display flags and 61's drops applied (`explain_screen.py score_replace`),
+judged by the rule above against the same B constants 29/18/2.141. The STACK form (61 on B, DEPICT on; `score`) is reported. The
+result states whether 61 also makes 57's one DEV drop (b3_crossing_bells Steam); if it does, the two forms are identical on DEV.
+If Rounds 60 and 61 both pass, any stack is a new pre-registered round with its own DEV run, not a post-hoc combination. TEST is
+not read in this round.
+
+## Round 60 SCENE-MARGIN — one ear + the VLM says the sound fits the scene (written 2026-10-01 BEFORE any Round 60 answer; Adam 19:13: "if there is some gap from the listeners AND the VLM approved the sound as credible for the scene, give some margin")
+**Base C = Round 53 WEAK-WITNESS** (`SHIP8+MD3+WW`: DASM_LOCAL_VETO 0.35, keep "both" — a non-rescued span is kept iff family
+DASM >= 0.35 within [start − 0.5, end + 0.5] OR both ears name it: Qwen V4 `_v4_names_qwen` AND AF V4 `_af_p1_accepts`).
+**Rule C' (one new flag, default None/off: `DASM_LOCAL_SCENE`, next to DASM_LOCAL_KEEP in stage 4).** Same place, window and span
+set as Round 53. A span C would drop is ALSO kept iff exactly ONE ear names it AND the VLM judges the sound credible for the scene.
+Scene question = the project's pre-registered Round 14 F3 question, unchanged: `reason.SCENE_FIT_PROMPT` "Could the sound of {label}
+plausibly be heard in this scene? Answer yes or no." asked through `reason._scene_fit` itself (one implementation): per stretch of
+the span (VISIBILITY_STRETCH 5 s cuts), 6 frames from 1 s before to 1 s after (the gate's recipe), answers combined by majority
+(yes > no); shipped VLM Qwen/Qwen3.8-27B, thinking off; label = the canonical family. **Where:** stage 4, per span (not stage 5),
+because stage 5 sees merged specs: `group_bursts` merges every firing of one family in a clip into one spec, so a stage-5 question
+would also judge (and could drop) the family's strong bursts (concrete DEV case: mv_protest Glass 4.75 shares a spec with the needed
+hit Glass 16.89–20.0). Stage 4 therefore loads the VLM lazily and asks on THE SPAN's own stretches; disclosed: these are the gate's
+frame recipe on the span, not the cached frames of the gate's (merged-spec) stretches. Video path per clip from a clip -> mp4 map
+(the flag's value; built from the SHIP8+MD3 media.json of DEV / DEV2). No frames / no video / no cache -> None -> not credible ->
+dropped (= C). Every ask (clip, family, span, per-stretch raw answer, verdict) is logged to `<map>.answers.jsonl` and memoised by
+key (blind and proposed passes and re-runs read the same answer).
+**Known before writing (DEV, Round 53 diff, ear status from the task brief):** C removed vs B: b3_laundromat Train 1.0 (phantom,
+no ear), tg_d022 Dog 7.25 (cross, no ear), tg_d128 Hammer 9.0 (cross, AF only, DASM 0.03), tg_d107 Screaming 6.52 (cross, Qwen
+only, 0.09), mv_protest Glass 4.75 (cross, Qwen only, 0.19); C lost needed hits tg_d032 Thunder 13.75 (Qwen only, 0.309) and
+tg_d075 Alarm clock 0.14 (AF only, 0.296). C = 27/58, 13 (6/5/2), 2.113; B = SHIP8+MD3 = 29/58, 18 (6/9/3), 2.141. The two
+no-ear spans (Train, Dog) cannot return under C'. 415 population for step 1 (`weakwitness2_415.json` rows, ears = whole-clip
+lists): one-ear raw BEATs spans with DASM < 0.35: **n 90 — 26 correct, 23 wrong time, 41 family absent; base precision 0.289**.
+**Expected DEV outcome by cases (from the facts above, not selection):** Thunder AND Alarm credible, Hammer / Screaming / Glass not
+-> **29/13** (best case); + Glass (a protest) credible -> 29/14; + Hammer (a workshop / clang scene) credible as well -> **29/15
+(the realistic case)**; all three crosses credible -> 29/16; only one of Thunder / Alarm credible -> 28 hits -> main rule fails;
+neither -> = C (27/13). Other one-ear spans that change no picture in C (sub-display, visible to the gate, or inside a merged
+burst — e.g. the mv_protest Glass 16.89 -> 17.5 start and ly_helicopter Vehicle -> Helicopter label changes of Round 53) may move
+display spans / labels; reported in the diff.
+**Step 0 — sanity (GPU, before step 1; STOP guard).** 10 fixed one-ear spans: the 5 DEV spans above (tg_d032 Thunder 13.75–15.0,
+tg_d075 Alarm 0.14–9.25, tg_d128 Hammer 9.0–10.0, tg_d107 Screaming 6.52–9.0, mv_protest Glass 4.75–6.25; display spans of the
+Round 53 diff) + the first 5 rows of the 415 step-1 population sorted by (clip, onset). Each asked with the F3 frames in BOTH
+option orders ("Answer yes or no." and "Answer no or yes."); raw replies printed. Answer pair = (verdict order 1, verdict order 2).
+**STOP as untestable if >= 9 of the 10 spans (>= 90 %) give the identical answer pair** (the VLM is constant: letter bias /
+always-no / always-yes, seen on three scene / frame questions today). Order agreement is reported. Only order 1 (the shipped
+prompt) is used by the rule.
+**Step 1 — held-out 415 (GPU, from ~/MscProj_tg; `benchmark/gold/scenemargin.py gate`).** Population = the 90 spans above (Round
+53 step-1 spans: raw BEATs, bar 0.35, low 0.175, min 0.3 s, depictable, family DASM max over [onset − 0.5, end + 0.5]; one-ear =
+family named by exactly one of the whole-clip Qwen3-Omni / AFN lists — **disclosed proxy for the span-level V4 asks of DEV**);
+mp4 `data/input/audioset_heldout/<id>.mp4`; `_scene_fit` on spans [(onset, end)]; correctness = Round 42 rule (`class`).
+**GO iff n(credible) >= 10 AND n(not credible) >= 10 AND precision(credible) >= 0.375 AND precision(not credible) <= 0.20; else
+STOP** (either group n < 10 = undetermined -> STOP, Round 52b precedent). None answers are excluded from both groups and counted.
+Reported: per-class counts per group, Omni-only / AFN-only split.
+**Step 2 — merged DEV (only if steps 0 and 1 GO).** `ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": <map>}`;
+arms SHIP8+MD3, SHIP8+MD3+WW, SHIP8+MD3+WW5 on old DEV (~/MscProj_r13) and DEV2 (~/MscProj_tg), merged, PICTURE_MIN_CONF None,
+filled caches. B must reproduce **29/58, 18 (6/9/3), 2.141** and C **27/58, 13, 2.113**. **Pass vs B:** main rule (hits >= 29, no
+needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141). Vs C: reported. Reported: floor 0.40 rows
+(`floor_check_arm.py`) for all three; changed pictures vs B and vs C with the VLM's raw scene answers for each asked span; the
+stage-4 ask count (asked / credible / None). TEST not read.
+
+### Round 61 step 0 result (job 31622947, H200; `explain_sanity.json` -> kept on the cluster as `explain_sanity_61a.json`): HARNESS STOP, not a VLM verdict
+Harness check reproduced (71 clips, 48 placed, 44 drawn specs, 74 stretches, 0 fallbacks; base 29/58, 18 (6/9/3), 2.141). STOP by
+the letter (10/10 the same Q1 pair), but the pair is (unparsed, unparsed) on all 10: with max_new 4 every Q1 reply was cut inside
+a preamble ("Based on the" x13, "Looking at the" x5, "To determine if" x2); **no reply contained "likely" or "unlikely"**, so no
+answer information exists. Unparsed is not "identical answers"; this is a token-budget defect (Round 57's E1/E2 got terse replies at
+max_new 4; this prompt invites prose). Precedents: Round 16 N1 first run voided as a harness fault; Round 38 BOX-2 re-prompt once.
+
+## Round 61b SCENE-EXPLAIN — harness amendment (written 2026-10-01 after the 61 step 0 HARNESS STOP, BEFORE any parsed answer)
+Prompts, unit, rule, selection, REPLACE-57 decisive form and step 0 sample are Round 61's, unchanged. Changed (harness only):
+- **Q1** max_new 4 -> **48**. Parse = whole reply lower-cased, `re.findall(r"\b(not likely|unlikely|likely)\b")`, the **last**
+  match decides ("not likely" = unlikely); none -> unparsed. (Disclosed bias: a rationale ending "...the likely source is" reads as
+  likely, i.e. toward keeping.)
+- **Q2** max_new 16 -> **48**. Parse: "nothing" / "none" as a whole word anywhere -> no confuser; else the last non-empty line,
+  stripped of markdown / quotes / punctuation / a leading "answer:" and article, if <= 6 words -> B; else unparsed.
+- **Re-prompt once** on an unparsed reply (BOX-2 precedent), same prompt + verbatim suffix: Q1 ` Reply with one word only.`
+  (max_new 8), Q2 ` Reply with the noun phrase only.` (max_new 16), Q3 ` Reply yes or no only.` (max_new 4; Q3 stays max_new 4).
+  Still unparsed -> not unlikely / no confuser / not yes (never a drop). Both raw replies recorded.
+- **Step 0 STOP redefined:** >= 9 of 10 identical PARSED (Q1a, Q1b) pairs -> STOP "untestable with this VLM"; >= 9 of 10 still
+  unparsed after the re-prompt -> "harness STOP" (reported, no verdict on the rule). Same 10 specs. TEST not read.
+
+## Round 61c SCENE-EXPLAIN variants v-think and v-gemma (Adam 19:31 "is the VLM smart enough?"; written 2026-10-01 BEFORE any variant answer and before the 61b main result is read)
+Same 44 specs, frames, three questions verbatim, 61b parsing + one re-prompt, rule, step 0 sample, selection rule, REPLACE-57
+decisive form, STACK reported. `EXPLAIN_VARIANT` selects the asker; caches `explain_pics_{think,gemma}/`, outputs
+`explain_screen_{think,gemma}{,_replace}.json`, `explain_sanity_{think,gemma}.json`. Spec list frozen by the msproj env into
+`explain_specs.json` (same `sign_screen.asked` order; asserted 44). On the cluster the variant jobs run a copy
+`explain_screen_v.py` (identical to the committed `explain_screen.py`) so the running 61b main job's script is not touched.
+- **v-think:** Qwen3.8-27B with `config.VLM_THINKING = True`, `VLM_THINKING_TOKENS = 2048` (the shipped `reason._ask` path:
+  appends " Think it through, then end with only the final answer on the last line.", `enable_thinking=True`, budget
+  max(max_new, 2048), keeps the text after `</think>`, then its last non-empty line with "final answer:" / "answer:" dropped);
+  the 61b parsers read that line. Job `slurm/job_explain_think.sh`.
+- **v-gemma:** `google/gemma-4-31B-it` (cached) via the same `reason._load` / `_ask` (AutoModelForImageTextToText, thinking off),
+  run with the judge venv python (`~/venvs/judge/bin/python`, torch 2.7) as Round 24; specs and scoring in msproj. Job
+  `slurm/job_explain_gemma.sh`.
+- **Step 0 per variant** as 61b (>= 9/10 identical parsed Q1 pairs -> that variant untestable; >= 9/10 unparsed -> harness STOP).
+- **Selection.** The main 61b variant stays PRIMARY. Each variant is judged by the same pass rule on its REPLACE row vs B
+  29/18/2.141. **Tie-break if more than one passes: lowest merged-DEV cost, then fewest needed hits lost** (then the primary).
+  Reported per variant: laundromat Train raw replies (Q1a/Q1b, Q2, Q3), dropped pictures with class and raw replies, funnel.
+  TEST not read.
+
+### Round 61b SCENE-EXPLAIN main result (job 31626159, H200; `explain_screen{,_replace}.json`, `explain_sanity.json`, cache `explain_pics/` on the cluster): **FAIL — 0 pictures dropped**
+Step 0 GO: 10/10 parsed, (Q1a, Q1b) pairs (unlikely, unlikely) 6, (likely, likely) 2, split 2. Full 44: Q1 pairs (unlikely,
+unlikely) **27**, (likely, likely) 10, split 7. Funnel: Q1 unlikely 27 -> Q2 named a thing 6 -> Q3 yes both orders **0** -> dropped 0.
+STACK = REPLACE base (61 drops nothing): REPLACE row = SHIP8+MD3 with DEPICT off, **29/58, 19 (6/10/3), 2.169** (> 2.141, Steam
+back) -> FAIL; STACK row 29/58, 18, 2.141 (= B, not cheaper, 0 wrong removed) -> FAIL. 61 does NOT make 57's drop (crossing_bells
+Steam: Q1 not unlikely in both orders). vs C (27/13/2.113): +2 hits, +5 wrong, +0.028 cost (stack).
+**Laundromat Train (phantom), raw:** Q1a/Q1b both "Based on the visual evidence, it is **unlikely** that a real train is the
+source ... clearly an indoor laundromat"; Q2 "washing machine"; Q3 L1 "Could the sound of washing machine be mistaken for the
+sound of train?" -> **Yes**; L2 "Could the sound of train be mistaken for the sound of washing machine?" -> **No** -> kept. The VLM
+does the reasoning Adam described (no train here; the washing machine); the asymmetric reverse look-alike question blocks it.
+Q2 named things (all 6, with class and Q3 pair): laundromat Train phantom "washing machine" (yes, no); tg_d107 Crying, sobbing HIT
+"parrot" (yes, no); un_driving_motorcycle_DgdHSmwA Explosion (merged picture) "balloon" (yes, no); london_protest_01 Vehicle
+visible "red air horn" (no, no); mv_protest Glass HIT "candle flame" (no, no); tg_d127 Laughter HIT "elephant" (no, no).
+Reading (not selection): Q1 alone said unlikely on 27/44 incl. 17 hits (the N1 failure again: off-screen real sounds look
+unlikely); Q2 "nothing" protected 21 of those. A one-order Q3 (L1 only; NOT the pre-registered rule) would drop laundromat
+Train (phantom) + Explosion + tg_d107 Crying (a hit) -> a needed hit lost with <= 2 wrong removed -> fails the main rule and the
+fewer-pictures clause (needs wrong <= 15) either way. Nothing ships; TEST not read. Variants v-think / v-gemma (61c) running.
+
+### Round 60 SCENE-MARGIN — results (steps 0, 1, 2): PASS vs B (main rule)
+**Step 0 (job 31625219, `scenemargin_sanity.json`): GO.** Answer pairs over the 10 fixed spans: (yes, yes) 5, (None, None) 2,
+(yes, no) 1, (no, None) 1, (yes, None) 1 -> most common pair 5/10 < 9; order agreement 7/10. Thunder, Alarm, Screaming: yes in
+the shipped order; Hammer: "based on the" (the frozen F3 parser reads max 4 tokens) -> None.
+**Step 1 (415, `scenemargin_415.json`): GO.** All 90 one-ear spans DASM < 0.35: 0.289. **Credible n 56, 23 correct = 0.411
+(>= 0.375); not credible n 26, 2 correct = 0.077 (<= 0.20)**; None 8 (excluded). By class: correct 23 / 2, wrong time 14 / 7,
+family absent 19 / 17 (credible / not).
+**Step 2 (merged DEV; job 31625219 crashed in stage 4 before any DEV answer — stage 4 read config.VLM_MODEL = the Qwen2.5-VL default,
+not cached offline; fixed to load Qwen3.8-27B explicitly, thinking off; re-run job 31627524 from DEV only).** B reproduces
+**29/58, 18 (6/9/3), 2.141**; C reproduces **27/58, 13 (6/5/2), 2.113**. **SHIP8+MD3+WW5: 29/58, 14 (6/6/2), 2.028** (DEV 19/9,
+DEV2 10/5). **Main rule vs B: hits 29 >= 29, no needed hit lost on either part, wrong 14 <= 18, cost 2.028 < 2.141 -> PASS.**
+Vs C (reported): +2 hits (tg_d032 Thunder 13.75, tg_d075 Alarm 0.14), +1 wrong (tg_d107 Screaming 6.52 cross), cost 2.113 -> 2.028.
+Floor 0.40 (reported): B 27/58, 15 (5/9/1), 2.169; C 26/58, 11 (5/5/1), 2.113; WW5 27/58, 12 (5/6/1), 2.085.
+Changed pictures vs B = C's removals minus Screaming: laundromat Train 1.0 (phantom) gone, tg_d022 Dog 7.25 gone, tg_d128 Hammer 9.0
+gone, mv_protest Glass 4.75 gone (hit Glass 16.89–20.0 -> 17.5–19.0, still a hit), ly_helicopter Vehicle -> Helicopter (hit).
+Stage-4 asks (`scenemargin_diff.json`, raw): 14 asked, 9 credible, 3 not, 2 None. Thunder 13.75–14.75 "yes."; Thunder 8.0–8.5
+"yes."; Alarm 0.0–9.25 "yes." / "yes."; Screaming 7.2–9.0 "yes."; Glass 4.75–5.25 "based on the" (None); Hammer 9.0–9.75 "based on
+the" (None); laundromat Train 1.0–1.75 "no." (this sub-span had ONE ear, unlike the brief's "no ear" — same outcome); favela Train
+14.72 "no."; ambulance Siren 0.0–8.5 "no." / "yes." (tie -> not credible); aviary Insect 3.75, detective Sigh 3.0, protest Baby
+cry 4.0 / 5.0, tg_d033 Gasp 7.25 "yes." (no picture change). Outcome = the pre-registered case "Thunder + Alarm credible" with
+one cross (Screaming) also credible -> 29/14. Disclosed: Hammer and Glass were dropped by the parser's None (truncated reply), not
+by an explicit "no". Ship decision is Adam's; TEST not read.
+
+### Round 60 shipped (1 Oct ~20:00, under the standing rule "pre-registered DEV pass -> ship; TEST read once after, reported")
+D = SHIP8+MD3+WW5 (Round 53 WEAK-WITNESS 0.35/"both" + Round 60 SCENE-MARGIN): merged DEV 29/58, 14 (6/6/2), 2.028 vs B 29/18/2.141.
+Disclosed: for tg_d128 Hammer and mv_protest Glass 4.75 the F3 reply was cut at the 4-token cap ("based on the") and the frozen
+parser read None = not credible; their removal is by that frozen rule, not by a "no". `config.use_shipped`: DASM_LOCAL_VETO 0.35,
+DASM_LOCAL_KEEP "both", DASM_LOCAL_SCENE (clip->video map; live path falls back to the running video / data/input/**/<clip>.mp4),
+and the picture floor dropped (PICTURE_MIN_CONF None) so shipped = scored (parity_check SHIP8+MD3+WW5: OK). Base arm for new
+rounds = SHIP8+MD3+WW5. TEST read next, once, reported only.
+### Round 60 / D TEST read (job 31634752 + `test_vs_ship8.py SHIP8+MD3+WW5`; reported, not selected on; ship decision written before it)
+Base (B on TEST: SHIP7+K4AD renders at SHIP8 display keys) 22/65, 26 (4/17/5), 2.545. **D: 24/65, 23 (4/14/5), 2.386; d cost −0.159
+[−0.341, −0.023], one-sided p 0.0145.** +2 hits, −3 wrong on TEST, in the same direction as DEV (29/14/2.028 vs 29/18/2.141).
+
+## Round 61d SCENE-EXPLAIN — symmetric-polarity Q3 (written 2026-10-02 BEFORE any 61d answer; Adam 21:47 "why do we need the asymmetry?")
+**Disclosure:** prompted by the 61b laundromat Train raw replies (Q3 L1 "washing machine -> train" yes, L2 "train -> washing
+machine" no). 61/61b's "both orders" swapped the two sounds, which is a different, directional question, not a bias check. 61d
+replaces it with a polarity twin of the same direction. **Frozen from 61b:** Qwen3.8-27B shipped settings (thinking off), the same
+44 B pictures, frames, Q1 (both orders unlikely) and Q2 (names a thing), and the CACHED Q1 / Q2 / L1 answers in `explain_pics/`.
+**New Q3 (text only):** L1 `Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.` (cached 61b reply reused)
+AND twin L1n `Is the sound of {B} clearly distinguishable from the sound of {A}? Answer yes or no.` (max_new 4, `yn`, one
+re-prompt " Reply yes or no only." if unparsed). **Drop iff Q1 unlikely (both) AND Q2 names B AND L1 yes AND L1n no.**
+**Arms.** B = SHIP8+MD3 (29/58, 18 (6/9/3), 2.141) and **D = SHIP8+MD3+WW5, the shipped base (29/58, 14 (6/6/2), 2.028)**; spec
+lists by `sign_screen.asked` (B 44; D 41 drawn specs, base reproduced on the login node before any 61d answer; D's only spec not
+in the 61b cache, ly_helicopter Helicopter 0.14, gets the 61b Q1 / Q2 / L1 asks fresh, into `explain_d_new/`). Forms as 61:
+STACK (61d on the arm, DEPICT on) and REPLACE-57 (arm with DEPICT_EVENT off + 61d's drops), each judged against the arm's
+constants. **Pass decision = D REPLACE vs D (29/14/2.028)**: cost < 2.028 AND wrong removed >= 2 × needed hits lost (>= 1 if
+none) AND (main rule: hits >= 29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × lost, hits >= 26). B+61d
+(stack, replace) and D stack reported. **Variants (report only, same rule):** the same Q3 fix on the v-think and v-gemma cached
+Q1 / Q2 (their own model and settings ask L1n; L1 reused from their cache), on the B specs they answered; D-only specs are not
+asked for variants. Script `benchmark/gold/explain_d.py`, job `slurm/job_explain_d.sh`. Listed: every dropped picture with
+class and raw Q1–Q3 replies. TEST not read.
+
+### Round 61d targets (coordinator note, written BEFORE any 61d answer is read): D's 14 remaining wrong pictures
+D already lacks laundromat Train, tg_d022 Dog, tg_d128 Hammer, mv_protest Glass 4.75 (Round 60), so B+61d is illustrative
+only. D's wrongs (merged DEV, `cross_group.classify`): visible 6 — ambient_weather_storm_16200 Thunder 0.06, ambient_weather_
+storm_7200 Thunder 0.06, london_protest_01 Vehicle 0.25, un_driving_motorcycle_DgdHSmwA Explosion 13.52, tg_d127 Water 0.14,
+tg_d128 Laughter 3.08; cross 6 — as_explosion Gunshot 8.25, b3_golf_course Bird 3.8, ly_applause Crowd 0.0, tg_d088 Explosion
+10.75, tg_d088 Thunder 13.25, tg_d107 Screaming 6.52; phantom 2 — b3_flea_market Vehicle 20.0, un_hair_dryer Computer keyboard
+11.25. Of these, 61b's cached Q2 named a thing only for london Vehicle ("red air horn") and un_driving Explosion ("balloon"), so
+the realistic expectation for D+61d is 0–2 drops.
+
+### Round 61c v-gemma result (job 31632634; `explain_screen_gemma{,_replace}.json`, `explain_sanity_gemma.json`): **FAIL — 4 hits lost**
+Step 0 GO (parsed 10/10; (unlikely, unlikely) 5, (likely, likely) 4, split 1). Full 44: Q1 (unlikely, unlikely) 21, (likely,
+likely) 21, split 2; funnel Q1 unlikely 21 -> Q2 named 8 -> Q3 yes both orders 8 (Gemma said "Yes." to every L1 / L2) -> 8
+dropped. **REPLACE 25/58, 15 (6/7/2), 2.282; STACK 25/58, 14 (6/6/2), 2.254 vs B 29/18/2.141 -> FAIL** (4 needed hits lost).
+Dropped (class, Q2 reply): tg_d075 Alarm 0.14 HIT "water jug"; tg_d107 Crying, sobbing 0.38 HIT "the parrot"; tg_d120 Cat 0.56
+HIT "alarm clock"; as_fire_alarm Alarm 8.89 HIT "hammer"; laundromat Train phantom "washing machine"; tg_d088 Explosion 10.75 cross
+"lightning bolt"; tg_d128 Hammer 9.0 cross "metal gate"; ly_applause Crowd 0.0 cross "the woman's laughter". Laundromat Train raw:
+Q1 "Unlikely" / "unlikely", Q2 "washing machine", L1 "Yes.", L2 "Yes." -> dropped. Steam (57's drop) not made. Gemma names a
+confuser more readily and never says no to a look-alike: the Q3 filter is inert with it.
+
+### Round 61c v-think result: **STOPPED EARLY (Adam 21:49, too slow), partial n = 34 / 44** (jobs 31632633 + 31640428 cancelled; cache `explain_pics_think/` kept; `explain_think_diff.py` -> `explain_think_diff.json`)
+~5 min per picture on one H200 with 2048 thinking tokens. Parser check (coordinator): (Q1a, Q1b) pairs on 34: (likely, likely) 14,
+(unlikely, unlikely) 14, split 4, with None 2; 16 of 68 Q1 replies were not a bare verdict (the 2048-token budget ended before
+`</think>`, so `reason._ask` returned a mid-thought line); 13 of those were re-prompted (61b rule) and the rest parsed a verdict word
+from the thought line (e.g. as_explosion Gunshot "Maybe the benchmark is ..."). None does not dominate; the cut-thinking parse is
+a disclosed weakness, not fixed (job stopped). Not scored (partial). **Diff vs the short answers (19 of 34 pictures change a verdict;
+"unsure" = a stage-4 span with DASM < 0.35 and not both ears):** Q1 unlikely -> likely on 9 (tg_d016 Cough hit, rainforest Insect
+hit, snow_walk Laughter hit, bakery Door hit, golf Bird cross, birds_forest Bird hit, london Vehicle visible, applause Crowd cross,
+tg_d127 Laughter hit — all not unsure); 61b-rule drops under thinking 5: laundromat Train phantom (unsure, DASM 0.229, 1 ear),
+tg_d128 Hammer cross "metal railing" (unsure, 0.031, 1 ear), ly_ambulance Siren 0.0 HIT "car horn" (unsure, 0.156–0.188, 1–2
+ears), as_explosion Explosion 5.68 HIT "rifle" (not unsure, 0.866), tg_d107 Crying HIT "parrot" (not unsure, 0.416, 2 ears);
+other Q2 changes: tg_d120 Cat hit "alarm clock" (L1 yes, L2 no), mv_detective Alarm "glass bottle" (no, no), barbershop shaver
+"in this" / helicopter Vehicle "what about the white" (cut thoughts, Q3 no), mv_protest Glass hit "candle flame" -> none. Thinking
+restricted to unsure spans would have dropped laundromat Train + tg_d128 Hammer (both already gone in D) and lost the ambulance
+Siren hit. Input for Adam's next round; nothing ships.
+
+### Round 61d result (job 31684412, H200; `explain_d.py` -> `explain_d_{D,B}_{replace,stack}{,_gemma}.json`, caches `explain_d/`, `explain_d_gemma/`, `explain_d_new/`): **FAIL — loses the tg_d107 Crying hit**
+Specs: B 44, D 41 (+ ly_helicopter Helicopter 0.14 asked fresh: Q1 not unlikely). Main (Qwen3.8-27B, shipped settings) funnel on
+D: Q1 unlikely 23 -> Q2 named 5 -> (L1, L1n) = (yes, no) 2, (no, yes) 2, (no, no) 1 -> **2 dropped: un_driving_motorcycle_DgdHSmwA
+Explosion 13.92 (visible) "balloon", L1 "Yes", L1n "No"; tg_d107 Crying, sobbing 0.38 (HIT) "parrot", L1 "Yes", L1n "No".**
+**Decisive D REPLACE: 28/58, 14 (5/7/2), 2.085 vs D 29/14/2.028 -> FAIL** (1 needed hit lost, 0 wrong removed; D with DEPICT off =
+29/15 (6/7/2), 2.056). D STACK 28/58, 13 (5/6/2), 2.056 -> FAIL. B (illustrative): STACK 28/58, 16 (5/9/2), 2.141; REPLACE 28/58,
+17, 2.169 — drops laundromat Train (phantom; "washing machine", L1 "Yes", L1n "No"), the Explosion and tg_d107 Crying. Kept with a
+named thing: london Vehicle "red air horn" (No, Yes), tg_d127 Laughter "elephant" (No, Yes), mv_protest Glass "candle flame" (No,
+No). **So the symmetric Q3 does remove Adam's laundromat Train (in B), but the same reasoning also explains away a real crying sound
+by the visible parrot; on D (where Train is already gone) the net is −1 hit, −1 visible.** v-gemma (report only): drops tg_d088
+Explosion 10.75 cross ("lightning bolt", Yes. / No.) and the same tg_d107 Crying hit (Yes. / No.); Gemma answers L1n "Yes" for
+laundromat Train (kept), fire_alarm, tg_d075, tg_d120, tg_d128, applause; D REPLACE 28/14/2.085, STACK 28/13/2.056 -> FAIL.
+v-think: not run (stopped early, 61c). Nothing ships; D stays the shipped base; TEST not read.
+Correction (Round 61b result line "Q1 alone said unlikely on 27/44 incl. 17 hits"): the count is **16 hits** (recounted from `explain_screen.json` q1_unlikely classes).
+
+## Round 62 LOGIT-GATE — read P(yes) − P(no) at the first answer token instead of parsing generated text (written 2026-10-02 BEFORE any Round 62 number; Panel 2 Fable B idea 1, `docs/review/panel2_2026-10-01/fB_vision.md`, with Fable D's SIGN-3 lexicon, `fD_redteam.md`)
+**Why.** Every Qwen3.8-27B gate question so far (`_ask` / `_ab` / `_sound_is_visible`, SIGN, SIGN-2, HUMAN*, SCENE_FIT, 61 Q1/Q3)
+was greedy text + first-letter / first-word parse with a 4–6-token cap. The day's VLM "failures" (letter position 88 %, the
+(no, no) habit 9/10, "Based on the" truncation) are failures of that readout. No gate round has read the margin.
+**Readout (fixed).** Shipped gate VLM Qwen3.8-27B (config profile 5), loaded by `reason._load`; the chat is built as `reason._ask`
+builds it (6 image items, then the text), `apply_chat_template(add_generation_prompt=True, enable_thinking=False)`; ONE forward
+pass, no generation; s = max logit over the 'yes' ids − max logit over the 'no' ids at the last prompt position (ids = first
+token of "yes", "Yes", " yes", " Yes" / "no", "No", " no", " No", dev_listener convention). d = s(Q) − s(¬Q) with the fixed
+opposite-polarity twin below; high d = "visible". Questions (verbatim, label filled in):
+(a) Q "Is the thing making the {label} sound visible in these frames? Answer yes or no." / ¬Q "Is the thing making the {label}
+sound NOT visible in these frames? Answer yes or no."
+(b) Q "Is {sign} visible in these frames? Answer yes or no." / ¬Q "Is {sign} NOT visible in these frames? Answer yes or no.",
+{sign} = Fable D's fixed lexicon where the label has an entry (case-insensitive exact label match): Thunder -> "a lightning
+flash", Water -> "water flowing or splashing", Laughter -> "a person visibly laughing", Explosion -> "a burst of fire or light",
+Vehicle -> "a vehicle moving"; else "the visible effect of {label}".
+Frames: gate-gold = the gate's own 6 per cached stretch (`sign_gate.gate_times`, stretch −1 s .. +1 s, clamped at 0); DEV = the
+pipeline's 6 (`sign2_screen._frames`, decide_subjects, unclamped). < 2 frames -> d = None (stretch skipped in the mean; a sound
+with no d is never silenced by this rule).
+**Harness check (STOP, before any number is read).** On the first gate-gold stretch the job prints the template tail (if the
+Qwen3 non-thinking template emits an empty `<think></think>` block it must sit BEFORE the read position), the top-5 tokens at the
+read position, and a 4-token greedy `generate` from the same inputs. STOP ("harness wrong") if the greedy first token is not the
+argmax at the read position. Reported across all stretches: the share whose argmax is a yes/no id (low = the readout reads noise).
+**Step 0 — gate-gold (`benchmark/gold/logit_gate.py gold`, from ~/MscProj; 49 DEV judge clips, cached `gate_gold/Qwen38-27B`
+stretches, gold labels, importance >= 2: 41 seen / 38 needed; base shipped majority 16/41 silenced, 33/38 kept must reproduce).**
+Per stretch d for (a) and (b); per sound aggregate D = mean d over its stretches. AUROC (rank-based, ties 0.5) of D, seen = positive.
+STOP for a question if its AUROC < 0.65. Per-stretch AUROC reported only. as_explosion_XJ8lc3I6 listed by name (D per sound).
+**Step 1 — threshold (selection rule written now).** Best question = the higher AUROC among those >= 0.65 (tie -> (a)). Candidate t =
+midpoints of the sorted unique D values plus +inf. **ADD-seen (primary):** a sound is silenced iff the shipped majority silences
+it OR D > t. Bar: (silenced >= 19 AND kept >= 32) OR (silenced >= 15 AND kept >= 35). ADD-seen only raises silenced and lowers
+kept from 16/33, so the 15/35 branch is unreachable: the live bar is >= 3 of the 25 shipped-kept seen above t with <= 1 of the 33
+shipped-kept needed above t — far stronger than AUROC 0.65; honest expectation: step 1 FAIL. Pick t maximising silenced under the
+bar; ties -> larger kept -> larger t. No t meets the bar -> step 1 FAIL, step 2 not run. **Full replacement (report only):** silenced
+iff D > t', t' chosen on its own curve by the same rule (both branches reachable). Not selected on.
+**Step 2 (only if step 1 passes) — DEV arm (`logit_gate.py dev` / `score_dev`, from ~/MscProj_tg).** D = SHIP8+MD3+WW5 saved merged-DEV
+pictures (49 DEV + DEV2), STACK form (DEPICT on, as shipped); base must reproduce 29/58, 14 (6/6/2), 2.028. Every drawn spec (41)
+is asked on its own gate stretches (`sign_screen.asked`: gate_votes.json, label + start within 0.011 s; fallback re-cut flagged and
+counted) with the PIPELINE label; a spec is silenced iff its D > t (step 1's question and t). Silenced specs are set augment =
+False, pictures re-placed (`sign_screen.parts` mask, `_display_spans(clip=stem)`), scored with `score_per_sound` on merged DEV.
+Kinship silencing not simulated. **Full replacement cannot be simulated on DEV** (a shipped-silenced spec has no image to
+re-place) -> gate-gold only. **Pass (as explain_d.cmd_score, vs D 29/14/2.028):** cost < 2.028 AND wrong removed >= 2 × needed
+hits lost (>= 1 if none) AND (main rule: hits >= 29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × lost,
+hits >= 26). Listed: every changed picture with its class and D; as_explosion_XJ8lc3I6 by name. Both questions' D are computed on
+DEV (cheap); only the step-1 winner is scored for the verdict, the other is listed, not selected on.
+**Targets (named now).** D's 6 visible wrongs: ambient_weather_storm_16200 Thunder 0.06, ambient_weather_storm_7200 Thunder 0.06,
+london_protest_01 Vehicle 0.25, un_driving_motorcycle_DgdHSmwA Explosion 13.52, tg_d127 Water 0.14, tg_d128 Laughter 3.08; loss
+risk as_explosion_XJ8lc3I6 (needed sounds, gate said "nothing"). **Disclosure:** the 5 lexicon labels are exactly the labels of
+these 6 targets (lexicon written by Fable D after seeing them), so a (b) win on DEV is in-sample; (a) is the clean test.
+**Cost per video:** prefill passes only, chosen question = stretches × 2 per drawn sound (no generation); the per-clip count on
+D's DEV specs is reported. Job `slurm/job_logit_gate.sh` (gold -> score_gold, exit 0 only on step-1 PASS -> dev -> score_dev).
+TEST is not read.
+
+## Round 63 TAG-ENS — calibrated tagger ensemble as the BEATs span source (written 2026-10-02 BEFORE any Round 63 number; Panel 2 Fable A idea 1, `docs/review/panel2_2026-10-01/fA_audio.md`, `dissection2.md`)
+**Idea.** Lone-model spikes make wrong BEATs spans and BEATs alone misses some onsets (nyc Vehicle 3.8, as_explosion Explosion 2.8,
+tg_d032 Thunder 7.4, rainforest_7629 Bird, Gasp). Average BEATs with other AudioSet taggers put on BEATs' score scale, then cut spans
+from the average. **Online per video:** every step uses only that video's audio plus constants frozen here from the 415 (half A).
+**Taggers.** EAT-large (`worstchan/EAT-large_epoch20_finetune_AS2M`, `benchmark/detector_round5.eat_model`, fp32) and SSLAM
+(`ta012/SSLAM_AS2M_Finetuned`, `sslam_infer.load_model` + `mel`, sigmoid). CED: not used (the only CED frame cache, `benchmark/gold/ced_fw`,
+holds 139 clips, not the 415 / DEV). Dasheng: not in Fable A's pick, not added. **Windows = BEATs' own** (`detector_round5.windows`, 2 s /
+0.25 s, stamps as `infer_beats`), times asserted equal to the clip's BEATs cache on every clip. **Disclosed deviation:** SSLAM was trained
+on 10-s inputs; a 2-s window is zero-padded by `sslam_infer.mel` from 198 to 1024 mel frames (EAT pads 198 -> 208). Labels: EAT and SSLAM
+columns are re-ordered to BEATs' 527 names via the mid -> name map `src/audioset_mid_names.json`; every BEATs name must be found.
+**Split (label-free).** The 415 ids of `benchmark/gold/audioset_heldout.json` in file order, `random.Random(63).shuffle`, first 207 = half A
+(calibration + inclusion check), the other 208 = half B (decision).
+**Calibration (label-free, half A).** Per tagger T and label column c: q_T = quantiles of T's half-A frames at 2001 evenly spaced levels
+0..1, q_B = the same quantiles of BEATs' half-A frames; T' = `np.interp(T, q_T, q_B)` (clamped at the ends). Frozen to
+`benchmark/gold/tagens_calib.npz` (+ `tagens_calib.json` with the split, the taggers kept and the cache folder) before half B is read.
+**Span source.** fw_E = mean(BEATs, T'_kept...) on BEATs' grid; spans = `_extract_events(fw_E, ..., 0.175, min span 0.3 s, hysteresis
+1.0)` and the display bar 0.35 on the span peak (the span's confidence = fw_E peak). Everything downstream unchanged: FlexSED union,
+every veto, band rescue, CAM onsets, WW5, DEPICT, GROUP read the RAW BEATs frames as now.
+**Half-A inclusion check (written now, before any number; protects half B from a mechanical SSLAM failure).** Each tagger alone (T'
+as the span source, same extractor and scoring as step 1) on half A must have precision >= BEATs' half-A precision − 0.05 and span count
+within ±25 % of BEATs' half-A count; a tagger failing it is dropped from the mean (if both fail: STOP, nothing runs on half B).
+**Step 1 — 415 half B (Round 42 rule, depictable families `expect_screen.FAMILIES`).** Spans: depictable canonical family; raw BEATs and
+TAG-ENS with the same extractor (0.175 / 0.35 / 0.3 s; NOT Round 42's 0.5-s row: 754 / 0.375 is all-415 at 0.5 s and is quoted only).
+Precision = correct / spans, correct iff a `score_per_sound.same_family` strong event (masked included) starts in [onset − 0.5, onset + 1.0].
+Onset recall = share of half-B strong events with `canonical(label)` depictable that have a same_family span starting in that window.
+**GO iff** TAG-ENS span count within ±10 % of raw BEATs' half-B count AND precision >= 0.42 AND onset recall >= raw BEATs' half-B recall.
+**Step 2 — merged DEV (only if GO).** Arm SHIP8+MD3+WW5+TE = D + `TAG_ENS` (the flag = path of the frozen `tagens_calib.json`) vs D;
+D must reproduce **29/58, 14 (6/6/2), 2.028** (no picture floor) first. **PASS iff** cost < 2.028 AND (main rule: hits >= 29 and no needed
+hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × needed hits lost and hits >= 26). New spans have no cached listener answers ->
+no rescue (as Round 48), and WW5 / scene answers missing for a new span are treated as the shipped code treats a missing answer;
+gate / DEPICT / GROUP questions for new spans are asked live. Listed: every changed picture with class. Per-video cost stated (one EAT
+and one SSLAM pass over BEATs' windows, seconds per clip measured). TEST not read.
+**Hook (disclosed).** `src/stage4_audio_event_detection/__init__.py`: one flag `TAG_ENS` (default None = off). The DEV harness `build()`
+extracts BEATs spans itself and then calls `fuse_flexsed`, so the swap is done at the top of `fuse_flexsed` (the first place both the
+live path and the harness share): with TAG_ENS set, the incoming tagger spans are re-cut from fw_E for clip `config._CURRENT_CLIP`;
+tagger frames are read from the cache folder or, if absent, scored live from the clip's wav and cached. `round13_dev.py`: one arm line.
+Files: `benchmark/gold/tagens.py` (cache / fit / step1 / diff), `slurm/job_tagens.sh`.
+
+## Round 64 CONCEALED-ACTION — the gate may not silence a sound whose making is hidden inside its visible source (written 2026-10-02 BEFORE any Round 64 DEV number; Panel 2 Fable C idea 1, `docs/review/panel2_2026-10-01/fC_perception.md`)
+**Principle (general, not per case).** For some sources, seeing the object is not seeing the sound being made: a bell's clapper
+is inside the bell or tower, a fart / burp / hiccup / stomach rumble is inside the body on screen. For these, "the source is on
+screen" does not tell the viewer the sound happened, so the visibility gate must not silence them. **Online, per video:** a fixed
+table of pipeline labels (AudioSet names, as `spec.event_label` holds them at stage 5; `resolve_label` keeps all of them unchanged),
+no gold, no per-clip input.
+**Candidate list (fixed now from the ontology, Fable C's list, no additions):** Bell, Church bell, Bicycle bell, Change ringing;
+Fart, "Burping, eructation", Hiccup, Stomach rumble. **Excluded (action visible from outside):** Cowbell, Jingle bell, Chime, Tuning fork,
+"Chewing, mastication", Biting, Gargling. **Unit = the exact pipeline label** (not `score_per_sound.same_family`, which folds Bicycle
+bell, Jingle bell, Chime and Tuning fork into Bell and would contradict the exclusion list).
+**Admission (per label) on the gate-gold CALIBRATION sounds** = the non-judge (test85) part of `benchmark/gold/gate_gold/Qwen38-27B`
+(90 clips, 176 sounds of importance >= 2; none is a DEV clip), cached shipped votes, shipped rule (`gate_gold.decide(..., "majority")`:
+silenced iff every stretch is seen by majority), seen = gold visible or obvious. A label is **admitted** iff >= 1 needed sound is
+silenced AND 0 seen sounds are silenced; a label with no calibration instance is **report-only** (never shipped); else **rejected**.
+**Disclosed: the calibration tally was computed during orientation, before this entry** (it is the admission data, not the decision
+data; DEV has not been run):
+- **Bell: 3 needed (bell_kazansky, m5_horror_conjuring_82, tyrj_wZor4U_0), 1 silenced (tyrj 1.0); 0 seen -> ADMITTED.** Honest caveat:
+  "0 seen silenced" is 0 of 0 — no seen Bell exists in calibration, so the protective clause has no power for Bell; the cost of the
+  exemption (a seen bell re-shown) is unobserved, not shown absent.
+- **Bicycle bell: 1 needed, silenced (mYI2QzLce_s 9.0); 3 seen, all 3 silenced (1ghXWnSJibU_0, mYI2QzLce_s 0.5, tyrj 3.4) -> REJECTED.**
+  (A ringing bicycle bell is a thumb on a lever, visible; the admission rule removes it, which is its job.)
+- Church bell, Change ringing, Fart, "Burping, eructation", Hiccup, Stomach rumble: no calibration instance -> report-only.
+- **Fable C's "Bell 2 needed / 0 seen" does not reproduce:** exact label gives 1 / 0; Bell + Bicycle bell together give 2 needed / 3 seen.
+**Ship table (CA) = {Bell}.** Report-only table (CAR) = {Bell, Church bell, Change ringing, Fart, "Burping, eructation", Hiccup,
+Stomach rumble} (every label not rejected; this is "the arm with Digestive included").
+**Exemption point (both kill paths, at the stage-5 verdict, `reason.decide_subjects`):** (1) VLM vote: a sound in the table whose
+every stretch is voted seen keeps its first stretch (as the I2 keep: `kept = pieces[:1]`; the picture then spans the burst as any
+partly-kept sound; the votes are still logged); (2) kinship: a sound in the table is never silenced as "a kind of X whose source is
+visible". Nothing else changes (scene fit, WW5, DEPICT, GROUP, dedup run as shipped on the kept sound).
+**Hook (disclosed):** one flag `CONCEALED_ACTION` in `config.py` (default None = off; a tuple of labels) read only in
+`src/stage5_cross_modal_analysis/reason.py`. Harness minimum in `benchmark/gold/round13_dev.py` (beyond the arm line): the key is
+added to `BASE` (None) and to `STAGE5_KEYS`, else `stage5()` never applies it; arms `SHIP8+MD3+WW5+CA` and `SHIP8+MD3+WW5+CAR`.
+**DEV arm (merged DEV = old DEV via `round13_dev.py` in ~/MscProj_r13 + DEV2 via `tagger_prep.py --split dev2` in ~/MscProj_tg, then
+`merged_dev.py`).** Base D = SHIP8+MD3+WW5 must reproduce **29/58, 14 (6/6/2), 2.028** (no picture floor) first; else STOP.
+**PASS (CA, vs D) iff** cost < 2.028 AND (main rule: hits >= 29 and no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 ×
+needed hits lost and hits >= 26). CAR is scored and reported, never selected on. Listed: every changed picture with its class.
+**Honest expectation:** CA re-shows bell_miami Bell (gate 2-1 seen ×3, "the church") -> +1 hit, **about 30/58, 14, ~1.97**, unless
+another DEV Bell is silenced while seen (then +1 visible). CAR: tg_d133 Fart ×2 if they are gate-killed there; Digestive is
+report-only whatever it does. **For Adam:** these kills (the source is on screen, the action that makes the sound is hidden) are a
+different class from the look-alike kills he accepted on 28 Sept (a visible thing that is NOT the source, e.g. a washing machine for
+Train); accepting those does not imply accepting these. Per-video cost: 0 (a table look-up). Job `slurm/job_concealed.sh`. TEST not read.
+### Round 62 secondary — SCENE-RECHECK of the shipped D (coordinator 2 Oct; written while the step-0 job runs, BEFORE any Round 62 number is read; reported row, not a selection)
+D's SCENE-MARGIN (Round 60) reads `reason._scene_fit`'s F3 prompt "Could the sound of {label} plausibly be heard in this scene?
+Answer yes or no." greedy with max_new 4; tg_d128 Hammer 9.0 and mv_protest Glass 4.75 were dropped by a truncated "based on the"
+-> None. Re-read through the Round 62 logit harness, same model, same stretches (VISIBILITY_STRETCH cuts of the memoised span),
+same 6 frames (stretch −1 s .. +1 s, as `_scene_fit`), same lower-cased family label, prompt unchanged: per stretch s = max
+logit(yes) − max logit(no) at the first answer token; **verdict per span = (#stretches s > 0) > (#stretches s < 0)**, i.e. the
+shipped rule with only the parser replaced (no truncation, no None). Population = the DEV / DEV2 rows of
+`data/work/scenemargin/videos.json.answers.jsonl` (clip in the DEV + DEV2 clip map; Round 60 reported 14 such asks); any non-DEV row
+is skipped unread. Reported only (not used by the rule): a bias-cancelled d = s(Q) − s(twin), twin "Could the sound of {label}
+NOT plausibly be heard in this scene? Answer yes or no.". Outcome: every span whose logit verdict differs from the stored verdict
+(incl. the two None); **if none differs (Hammer and Glass read not credible), D's 29/58, 14 (6/6/2), 2.028 reproduces under the
+truncation-free readout**; if Hammer and / or Glass read credible, they return as they were in B (both cross pictures there:
+expected +1 wrong each, hits unchanged) and the row is computed only if it is trivially re-scorable from the saved arms, else the
+expected row is stated as such. Script `logit_gate.py scene` (GPU, ~/MscProj_tg), job `slurm/job_logit_scene.sh`. TEST not read.
+
+### Round 62 LOGIT-GATE result (job 31692810, H200; `logit_gate.py`, `benchmark/gold/logit_gate_gold.json`, cache `gate_gold/logit_Qwen38-27B/`): **STOP at step 0 — both questions under the 0.65 AUROC bar; steps 1–2 not run**
+Harness check GO: the Qwen3 non-thinking template ends `<|im_start|>assistant\n<think>\n\n</think>\n\n`, so the read position is
+after the empty think block; greedy first token = argmax at the read position on all 4 sanity reads (top-5 e.g. No 31.1, no 27.3,
+Yes 25.0, Based 23.1). The "no" habit is real in the logits (Q and ¬Q both argmax "No" on the sanity stretch); the twin cancels
+it. Argmax is a yes/no id on 577/580 gate-gold reads (99.5 %). Base 16/41, 33/38 reproduced; 145 stretches, 0 without frames.
+**AUROC (seen vs needed, per-sound mean d): (a) source-visible 0.647 (per stretch 0.646) -> STOP; (b) sign/effect 0.627 (per
+stretch 0.662) -> STOP.** Step 1 (threshold) and step 2 (DEV arm on D) not run, as pre-registered. Disclosed, not acted on: (a)
+missed the bar by 0.003, and its ADD-seen curve alone would have met the step-1 bar at t = 0.25 (23/41 silenced, 32/38 kept: + london
+Air horn 3.94, crossing Train 3.46, bakery Crumpling ×2, carnival Drum, ia_youtube Water, protest Baby cry; − golf Whack 1.00
+NEEDED). (b) on ADD-seen never meets the bar; full replacement meets it only for (b) at t' = −1.09 (20/32), (a) never.
+as_explosion_XJ8lc3I6 (gold, D_a / D_b): Gunshot −1.25 / −1.25, Footsteps −3.13 / −3.25, Explosion −2.75 / −3.13, −4.38 / −3.25,
+0.00 / 0.38, Gasp −5.25 / −3.50 (all needed, all below 0.25); Machine gun (seen, shipped-silenced) −3.50 / −0.44. Per-video cost
+(had it passed): prefill passes only, one question × 2 polarities × stretches = 2–18 passes per gate-gold clip (median 6), no
+generation. Nothing ships; D stays the shipped base; TEST not read.
+
+### Round 62 secondary SCENE-RECHECK result (job 31699528; `benchmark/gold/logit_scene_recheck.json`): **D does NOT reproduce under the truncation-free readout — mv_protest Glass 4.75 returns: 29/58, 15 (6/7/2), 2.056 vs D 29/14/2.028**
+Harness note: the first run (job 31698980, kept as `logit_scene_recheck_v1_wronglabel.json` on the cluster) read the row's raw
+`label` ("Alarm clock") instead of the family stage 4 passed (`key[1]`, "Alarm"); fixed to the pre-registered family label and
+re-run; only the corrected run is reported. 14 DEV / DEV2 asks; logit verdict = stored verdict on 12. Changed: **mv_protest Glass
+4.75–5.25: stored None ("based on the") -> credible (s = +2.00, argmax "Based", twin d +1.25)**; **tg_d128 Hammer 9.0–9.75: stored
+None -> not credible (s = −2.62, twin d −4.12)**, i.e. Hammer's removal holds by an explicit no. Others: Thunder ×2 +7.25 / +7.5,
+Alarm +3.12 / +3.00, Screaming +8.12, laundromat Train −3.0, favela Train −5.0, ambulance Siren −0.12 / +1.25 (tie -> not credible,
+= stored). Row (trivially re-scorable: in the saved arms the only mv_protest difference between B and D is that Glass span, so D's
+mv_protest pictures were replaced by B's placed under D's display flags; `logit_gate.py scene_row`): D 29/58, 14 (6/6/2), 2.028
+-> **29/58, 15 (6/7/2), 2.056** (+ Glass 4.75–6.25 cross; Glass 16.89–20.0 back to B's grouping, still a hit). So 1 of D's 4 wrong
+removed vs B (Glass 4.75) was won by the truncation, not by the model's verdict. Reported only; D unchanged; TEST not read.
+
+## Round 60L SCENE-LOGIT — D's scene question read as a bias-cancelled logit margin (written 2026-10-02 BEFORE any 60L arm number; coordinator decision after the Round 62 SCENE-RECHECK)
+**Why.** D's shipped SCENE-MARGIN (Round 60) reads `reason._scene_fit`'s F3 answer by greedy text with max_new 4 and a first-letter
+parse; a reply cut inside a preamble ("based on the") is None = not credible. On DEV that artifact decided 2 of 14 asks (tg_d128
+Hammer, mv_protest Glass 4.75). Its error direction on new videos is always the same: a one-ear real sound whose scene answer starts
+with a preamble is dropped. The live system needs the truncation-free readout; the recheck showed the readout is well-formed
+(argmax a yes/no id on 99.5 % of gate reads).
+**Rule (one flag, default off: `config.SCENE_FIT_LOGIT`).** In `_scene_fit`, per stretch (same VISIBILITY_STRETCH cuts, same 6
+frames stretch −1 s .. +1 s, same lower-cased family label, same model Qwen3.8-27B, thinking off), instead of generating: one
+forward pass each for the shipped prompt Q "Could the sound of {label} plausibly be heard in this scene? Answer yes or no." and its
+fixed twin ¬Q "Could the sound of {label} NOT plausibly be heard in this scene? Answer yes or no."; s = max logit(yes ids) − max
+logit(no ids) at the first answer position (after the empty think block); **d = s(Q) − s(¬Q); a stretch votes credible iff d > 0,
+not credible iff d < 0; span credible iff credible votes > not-credible votes** (as shipped). No frames -> None (as shipped). Stage 4
+memoises the logit verdicts in a separate file (`<map>.logit_answers.jsonl`), so the text memo is never mixed in. Everything else
+of D unchanged. Arm `SHIP8+MD3+WW5+SL` = D + SCENE_FIT_LOGIT.
+**Run.** A real stage-4 / stage-5 DEV job as Round 60 (`slurm/job_scenelogit.sh`): old DEV from ~/MscProj_r13 (`round13_dev.py
+stage4 / stage5 / score`), DEV2 from ~/MscProj_tg (`tagger_prep.py --split dev2 stage4 / stage5 / gates`), `merged_dev.py` with B =
+SHIP8+MD3, D = SHIP8+MD3+WW5 and SL in the same scoring. B must reproduce **29/58, 18 (6/9/3), 2.141** and D **29/58, 14 (6/6/2),
+2.028**. Listed: every changed picture of SL vs D and vs B (with class), and every logit scene ask (key, d per stretch, verdict).
+**Pass rule (fixed now): ship SL in place of D's text readout iff SL passes vs B under the main rule** — hits >= 29, no needed hit
+lost on either part vs B, wrong <= 18 + 2 × hits gained, cost < 2.141. **D's own 2.028 is deliberately NOT the bar**: part of D's
+gain over B (mv_protest Glass 4.75 cross removed) was produced by the truncation artifact, not by a model verdict, so holding SL to
+2.028 would hold a correct readout to an artifact's score. Vs D: reported. **Expected (from the Round 62 recheck, same model and
+frames, recheck used s(Q) not d for the verdict; d agreed on all 14): 29/58, 15 (6/7/2), 2.056** — Glass 4.75 returns as a cross,
+Hammer stays out by an explicit no, the other 12 asks unchanged. TEST not read.
+
+### Round 63 TAG-ENS result — step 1 (415 half B): **STOP** (job 31701451 caches + `tagens.py fit / step1` on the login node; `tagens_calib.json`, `tagens_415.json`)
+Caches: EAT-large and SSLAM on BEATs' 2-s / 0.25-s windows for the 415, DEV 49 and DEV2 22 (`~/MscProj/data/work/tagens/`), every
+clip's times asserted equal to its BEATs cache. Disclosed run details: SSLAM's remote code does not load under msproj's transformers
+(job 31695844: `all_tied_weights_keys`), so SSLAM ran in the `sota` env on audio decoded in msproj (`tagens.py decode`; a sota-side
+decode gave a different window count); the live path therefore needs the sota env for SSLAM. `expect_screen.py` exists only in
+~/MscProj_tg, so fit / step1 ran there (calibration copied to ~/MscProj). **Half-A inclusion check:** BEATs 363 spans, p 0.369;
+EAT alone (calibrated) 401, p 0.342; SSLAM alone 372, p 0.344 -> both within 0.05 and ±25 % -> both kept.
+**Half B:** raw BEATs 391 spans, 149 correct, **p 0.381**, onset recall 140/712 = **0.197**; **TAG-ENS 261 spans (−33 %), 118 correct,
+p 0.452, recall 108/712 = 0.152**. GO conditions: count within ±10 % NO; precision >= 0.42 YES; recall >= BEATs' NO -> **STOP**.
+Reading: the mean of three quantile-matched taggers lowers peaks wherever the taggers disagree, so fewer spans cross the 0.35 bar.
+Precision goes up (+0.07), but recall goes down (−0.045). This is the same trade a higher BEATs bar would make, and it does not add
+the missed onsets Fable A targeted. No DEV run; the `TAG_ENS` flag stays None (arm line `SHIP8+MD3+WW5+TE` is kept for the record).
+Per-video cost had it shipped: EAT 0.2–0.5 s and SSLAM 0.13–0.26 s per clip on one GPU, plus model loads. TEST not read.
+
+### Round 64 result — CONCEALED-ACTION: DEV **PASS (main rule)** (job 31697777, A100, ~25 min; `slurm/job_concealed.sh`, log `~/MscProj_tg/logs/conceal_31697777.out`, `merged_dev.py`)
+Base D reproduced: **SHIP8+MD3+WW5 29/58, 14 (6/6/2), 2.028** (DEV 19/9, DEV2 10/5).
+**CA (ship table {Bell}): 30/58, 14 (6/6/2), cost 1.972** (DEV 20/9, DEV2 10/5). Hits 30 >= 29, no needed hit lost, cost 1.972 < 2.028
+-> main rule PASS. Changed pictures (1, vs D): **+ bell_miami Bell 0.22–14.5 (hit)**; nothing removed, no new visible. Stage-5 log:
+"concealed-action kept Bell" fired only on bell_miami (b3_crossing_bells unchanged).
+**CAR (report-only, Digestive etc. included): 32/58, 14 (6/6/2), cost 1.859** (DEV 20/9, DEV2 12/5): + bell_miami Bell (hit) and
++ tg_d133 Digestive 0.06–2.5 and 6.3–8.0 (2 hits, "concealed-action kept Fart"). Not shipped: Fart etc. have no calibration instance
+(admission rule), so the +2 is in-sample DEV2 evidence only.
+Exactly as the honest expectation. The gain is one clip (bell_miami); Bell's "0 seen silenced" admission was 0 of 0, so a seen bell
+re-shown is the untested risk. GO -> shipping {Bell} is Adam's call (see the class note in the entry). TEST not read.
+
+### Round 60L SCENE-LOGIT result (job 31702470; `benchmark/gold/scenelogit_dev.json`): **PASS vs B -> shipped in place of D's text readout**
+Same scoring: B 29/58, 18 (6/9/3), 2.141 and D 29/58, 14 (6/6/2), 2.028 reproduced. **SL = 29/58, 15 (6/7/2), 2.056.** Main rule vs
+B: hits 29 >= 29, no needed hit lost on any clip, wrong 15 <= 18, cost 2.056 < 2.141 -> PASS. Vs D (reported): one change, mv_protest
+Glass 4.75–6.25 cross returns (d +0.63; D had dropped it on a truncated "based on the"); Glass 16.89–20.0 regroups to 17.5–19.0
+exactly as in D (still a hit). Vs B: laundromat Train phantom, tg_d022 Dog cross and tg_d128 Hammer cross gone, ly_helicopter
+Vehicle -> Helicopter (hit), mv_protest Glass hit regrouped. Logit asks (DEV / DEV2) 14: credible 10, not 4, None 0 — Hammer now
+an explicit no (d −4.0), ambulance Siren tie (−1.0 / +0.13) -> not credible, as before; = the Round 62 recheck prediction.
+Shipped: `config.use_shipped` sets SCENE_FIT_LOGIT True (module default stays False, so every earlier arm reproduces). The shipped
+DEV row is now 29/58, 15 (6/7/2), 2.056 (the 2.028 included one truncation win). TEST not read.
+
+## Round 65 RETURN — PERCEPTUAL-ONSET RETURN (Fable C idea 2; written 2026-10-02 BEFORE any 415 or DEV number of this round)
+**Why.** The gold counts a same-family sound after a > 2-s pause as a NEW event (12/58 needed are such returns; D hits 3). Known
+before writing (from `docs/review/panel2_2026-10-01/dissection2.md`, D's misses with a same-family picture elsewhere): **tg_d032 Thunder
+7.4** (picture 13.75), **as_explosion Explosion 2.8** (pictures 5.68, 9.25), **birds_forest Bird 1.3** (picture 10.25), **tg_d120 Meow
+2.9** (Cat picture 0.56). Known risk: texture repeats (tg_d088 Rain / Thunder). 3 of the 4 targets lie BEFORE the drawn picture, so the
+gap rule is two-sided (below).
+**Rule (one flag, default None: `config.PERC_RETURN = k`; stage 4, online per video, after every stage-4 filter).** Audio: the clip's
+wav at 16 kHz mono (librosa.load). Envelope: `librosa.onset.onset_strength(y, sr=16000)` (defaults: hop 512, mel flux, mean over
+bands); peaks: `scipy.signal.find_peaks(env, distance=3 frames)` (~0.1 s); m = median height over ALL picked peaks; a peak at time p
+qualifies iff height >= k × m. Families: canonical families with at least one stage-4 row that is drawable (`is_salient_nonspeech`) and
+>= DISPLAY_THRESHOLD (0.35) ("drawn"). Peaks are processed in time order; for each family, a peak p makes a RET row iff (i) sub-bar
+same-family evidence within [p − 0.3, p + 0.3]: the family's BEATs columns >= 0.2 (a window's score held over [t, t + hop)) OR its
+FlexSED family/child queries >= 0.5; and (ii) the distance from p to every same-family span (all stage-4 rows of the family at any
+confidence, plus RET rows already made) is >= 2.0 s, distance = p − raw end for a span before p, span start − p for a span after p, 0 if
+p is inside. RET row: label = family, start = p, end = min(p + 0.5, clip end), confidence = the family's highest stage-4 confidence.
+**Exemptions (only RET rows; marked by zero-length breaks at their own start and end, which nothing else produces).** The breaks stop
+the stage-5 burst merge and the display MERGE_GAP from joining a RET picture with its neighbours (by construction they are >= 2.0 s
+apart raw); stage 5 (`plan_augmentations`) takes each RET row out before `consolidate_families` and gives it its OWN spec, so the
+visibility gate is asked once on its own stretch (its verdict never revives or carries the family's other pictures); GROUP
+(`group.apply`) never pairs a RET picture. Disclosed: the DEV harness rebuilds stage-4 rows itself, so besides the arm line it needs one
+hook in `round13_dev.stage4` (after `add_breaks`: RET rows added as rows with their breaks, wav = `DCC.wav_of`); the stage-5/6 hooks act
+on the marker, not on the flag (no marker without the flag). RET rows enter after `filter_rescued`, so no stage-4 veto sees them.
+**415 guard (before any DEV run; `benchmark/gold/perc_return.py`, CPU).** The 415 AudioSet-Strong clips, Round 63's seed-63 halves
+(207 A / 208 B), audio = `tagens/audio/*.npy` (16 kHz, msproj decode). "Drawn" proxy (no pipeline pictures exist there, disclosed: no
+gate, listener or vetoes): raw BEATs spans (peak >= 0.35, hysteresis 0.175, min dur 0.3) and FlexSED 0.8 runs (min dur 0.3) of
+depictable families (`expect_screen.FAMILIES`). RET candidates built by the same function. Truth: a candidate (family f, p) is correct
+iff a strong event e with `same_family(f, e)` starts in [p − 0.5, p + 1.0] (Round 42 window) AND e is a NEW event: no other same-family
+strong event starts before e and ends after e.start − 2.0 (first-in-clip or after a > 2-s pause). k: grid {1, 1.5, 2, 3, 4, 6}; on half
+A, the k with the highest precision among k with >= 20 candidates (ties -> smaller k). **Half B GO iff >= 20 candidates AND precision
+>= 0.42, else STOP (no DEV run).** Reported beside it on half B: RET under the plain Round 42 rule (any same-family event in the window),
+and the raw BEATs spans' precision under both rules (compare-to-pipeline). Disclosed: 10-s clips truncate returns (a pause plus a
+return must fit in 10 s), so the 415 under-samples long-pause returns.
+**DEV (only on GO).** Arm `SHIP8+MD3+WW5+RET` = D + PERC_RETURN = k. Real stage-4 / stage-5 job as Round 64 (old DEV ~/MscProj_r13,
+DEV2 ~/MscProj_tg, `merged_dev.py`). D must reproduce **29/58, 14 (6/6/2), 2.028**. **PASS iff** cost < 2.028 AND (main rule: hits >=
+29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × hits lost, hits >= 26). Listed: every RET row made, every changed
+picture vs D with its class, per-video cost (onset envelope ~CPU s per clip + the gate/depiction VLM asks of the new specs). TEST not read.
+
+### Round 65 RETURN result — 415 guard: **STOP** (login node, CPU; `benchmark/gold/perc_return.py guard`, `perc_return_415.json`)
+Half A (207 clips; candidates / new-event correct / precision): k 1: 131 / 16 / 0.122; 1.5: 101 / 14 / 0.139; 2: 73 / 10 / 0.137;
+3: 52 / 9 / 0.173; **4: 33 / 7 / 0.212 (chosen: highest precision with >= 20)**; 6: 15 (< 20). **Half B (208), k 4: 26 candidates, 3
+correct, p 0.115** (plain Round 42 rule also 3 / 26 = 0.115) — far below the 0.42 bar -> **STOP, no DEV run.** Compare-to-pipeline (half
+B): the raw BEATs spans are 391, p 0.292 under the new-event truth and 0.381 under the plain rule, i.e. RET candidates are ~3x less
+precise than the detector's own spans. Reading: a loud clip-relative onset with sub-bar same-family evidence nearby is mostly ANOTHER
+sound (half-B candidates: Insect ×4, Bell, shaver, Crowd, Explosion, Chink ×2 each; 3 of 26 at the clip's first 0.2 s, where the
+envelope always peaks). Disclosed: the 10-s clips truncate returns, and the "drawn" set is raw spans (no gate / listener / vetoes), so
+the 415 under-samples long-pause returns and over-supplies drawn families; the gap (0.12 vs 0.42) is too large for either to close.
+Cost had it shipped: ~0.18 s CPU per clip for all six k (onset envelope + peaks), plus the gate / depiction asks of each new spec.
+Code kept default-off: `config.PERC_RETURN = None`; arm line `SHIP8+MD3+WW5+RET` kept with PERC_RETURN None; stage-5 / GROUP hooks act
+only on RET-marked rows (none exist with the flag off). Known targets (tg_d032 Thunder 7.4, as_explosion Explosion 2.8, birds_forest
+Bird 1.3, tg_d120 Meow 2.9) not checked on DEV (no DEV run after STOP). TEST not read.
+
+## Round 50L HUMAN-BOX-LOGIT — Round 50's crop question read as a bias-cancelled logit margin (written 2026-10-02 BEFORE any 50L number; Adam 22:51 "do you see it / what is it / find the specific thing", coordinator: that chain is Round 50, read by text and hit the "no" habit)
+**Reuse (nothing re-asked except the crop question).** Round 50's caches in ~/MscProj `gate_gold/humanbox_Qwen38-27B/` (49 judge
+clips, 145 stretches): the Round 43b named phrase (`hbox.cand`), the grounding box (`bbox_px`, frame k), status. The crop is
+rebuilt exactly as Round 50 built it (re-sample HUMAN-2's cached frame times with `_sample_frames_at`, frame k,
+`som_gate.crops(img, [bbox_px])`: 20 % margin, short side up to 224), not read back from the saved JPEG (quality 90).
+**Readout (the Round 62 / 60L harness).** Qwen3.8-27B, one forward pass per prompt, no generation, crop as the only image;
+s = max logit(yes ids) − max logit(no ids) at the first answer position; **m = s(Q) − s(¬Q)**, Q = Round 50's CROP_Q verbatim "This is
+a close-up cut from a video frame. Is this {phrase} making the {label} sound right now? Answer yes or no.", ¬Q "This is a close-up
+cut from a video frame. Is this {phrase} NOT making the {label} sound right now? Answer yes or no." (gold label, as Round 50). A
+stretch without a crop (unnamed 98, null box 1, degenerate / < 2 frames) has no m and counts as NOT seen, as in Round 50.
+**Step 0 — AUROC (STOP < 0.65).** Per-sound aggregate A = the ⌊n/2⌋+1-th largest stretch margin of the sound's n stretches (no crop
+= −inf), so that "A > t" is exactly Round 43b's "more than half the stretches seen" at threshold t (ties at −inf count 0.5). AUROC
+of A, seen (41) vs needed (38), importance >= 2, gold as Round 50; base 16/41, 33/38 must reproduce. Reported only: AUROC of the
+mean m over a sound's cropped stretches (sounds with >= 1 crop), per-stretch AUROC on the 46 crops, and the share of reads whose
+argmax is a yes/no id. **Honest odds:** Round 62's whole-frame margin reached 0.647; here 98 / 145 stretches have no crop, so most
+sounds tie at −inf and A can only separate the few sounds with a named, boxed source on most stretches — expected AUROC 0.55–0.65,
+i.e. STOP is the likely outcome; a crop may still separate better than whole frames on the sounds it does cover.
+**Step 1 — threshold, selection rule (fixed now).** Candidate t = midpoints of the sorted unique crop margins plus ±inf. Per stretch
+vote v_t = (crop exists AND m > t). (a) REPLACE: sound silenced iff more than half its stretches have v_t (= A > t). (b) 4TH VOTE:
+per stretch, v_t beside the cached name / ab / desc (True vs False, None excluded, tie -> shipped majority), sound silenced iff more
+than half its stretches are seen (Round 50's `seen_hb_b` + `sound_majority`, v_t in place of the text crop verdict). Bar: (silenced
+>= 19 AND kept >= 32) OR (silenced >= 15 AND kept >= 35). Per variant, t = the candidate meeting the bar with the most silenced;
+ties -> more kept -> larger t. Step 1 passes iff at least one variant meets the bar; if both, the one with more silenced (tie ->
+more kept -> (b)) goes to step 2. Not passed -> step 2 not run.
+**Step 2 (only if step 1 passes) — DEV arm vs D' = SHIP8+MD3+WW5+SL (shipped; must reproduce 29/58, 15 (6/7/2), 2.056).** On every
+drawn spec of D''s saved merged-DEV pictures, with the PIPELINE label, on its own gate stretches (`sign_screen.asked`, frames
+`decide_subjects` 6 over stretch ± 1 s): the full chain fresh — Round 43b's open naming (human2_gate's prompt, frames and parse),
+Round 50's grounding prompt and crop rule, then the logit crop margin; the chosen variant and t decide silencing. Silenced specs
+re-placed and scored as `sign_screen` / Round 62 (kinship not simulated). Re-adding a spec D' silenced is not simulable (no image):
+removal side only, disclosed. Pass: main rule (hits >= 29, no needed hit lost, cost < 2.056) or fewer-pictures clause (cost <
+2.056, wrong removed >= 2 × lost, wrong <= 15 − 3 × lost, hits >= 26). Listed: changed pictures with m per stretch.
+**Named either way:** bell_miami (gate-gold: Bell ×3 stretches, Round 50 "church bell" crops; and on DEV if step 2 runs) — its crop
+margins printed and recorded. Script `benchmark/gold/humanbox_logit.py`, job `slurm/job_humanbox_logit.sh`. Flags default off; no
+src / config edit unless step 2 passes. TEST not read.
+### Round 60L / D' TEST read (job 31708734 + `test_vs_ship8.py SHIP8+MD3+WW5+SL`; reported, not selected on; ship decision written before it)
+B on TEST 22/65, 26 (4/17/5), 2.545. **D' (shipped): 24/65, 24 (4/15/5), 2.409; d cost −0.136 [−0.295, 0.000], one-sided p 0.034.**
+(D with the text readout read 24/65, 23, 2.386.) Shipped D': DEV 29/58, 15 (6/7/2), 2.056; TEST 24/65, 24, 2.409.
+
+### Round 50L HUMAN-BOX-LOGIT result (job 31714167, H200; `benchmark/gold/humanbox_logit_gold.json`, cache `gate_gold/humanbox_logit_Qwen38-27B/`): **STOP at step 0 — AUROC of the per-sound aggregate 0.597 < 0.65; steps 1–2 not run**
+Base 16/41, 33/38 reproduced; 46 crops rebuilt (26 on seen sounds, 20 on needed); argmax a yes/no id on 87/92 reads. **AUROC of A
+(the more-than-half order statistic) 0.597 -> STOP.** Reported only: on the sounds that do have a crop the margin separates well
+(mean over crops AUROC 0.771 on 25 sounds; per-crop 0.756) — the bottleneck is coverage, not the crop readout: 98 / 145 stretches
+have no named phrase, so most sounds tie at −inf. For completeness (not selected on): no t meets the bar in either variant — (a)
+REPLACE at best 9/41 silenced with 38/38 kept; (b) 4TH VOTE at best 18/41, 32/38 (the same as Round 50's text readout). Top margins:
+waterfall Water +2.6, flea-market Rustle +2.3 / +0.75, waves Water +1.6, storm_7200 Rain +1.5 (all seen); highest needed:
+mv_protest Crowd −1.9, pet-shop Bird −2.5. **bell_miami Bell 0.2 (NEEDED): phrase "the church" on all 3 stretches, m −5.63 / −6.00
+/ −6.25 (A −6.0) — the crop margin says the church is clearly NOT making the bell sound right now** (Round 50 text: no, no, no), so a
+crop-margin rule would keep bell_miami's needed bell. Nothing ships; no src / config edit; TEST not read.

@@ -1,0 +1,27 @@
+{
+ "round": "Round 63 TAG-ENS step 1 (415 half B)",
+ "taggers": [
+  "eat",
+  "sslam"
+ ],
+ "beats": {
+  "spans": 391,
+  "correct": 149,
+  "precision": 0.3811,
+  "events": 712,
+  "recalled": 140,
+  "recall": 0.1966
+ },
+ "tag_ens": {
+  "spans": 261,
+  "correct": 118,
+  "precision": 0.4521,
+  "events": 712,
+  "recalled": 108,
+  "recall": 0.1517
+ },
+ "count_within_10pct": false,
+ "precision_ge_0.42": true,
+ "recall_ge_beats": false,
+ "GO": false
+}

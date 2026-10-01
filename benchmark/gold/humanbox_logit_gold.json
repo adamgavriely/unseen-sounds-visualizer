@@ -1,0 +1,2812 @@
+{
+ "base": {
+  "seen": 41,
+  "seen_sil": 16,
+  "needed": 38,
+  "needed_kept": 33
+ },
+ "auroc_A": 0.5965982028241335,
+ "auroc_mean_crop": 0.7708333333333334,
+ "auroc_per_crop": 0.7557692307692307,
+ "stop": true,
+ "best": {
+  "a": null,
+  "b": null
+ },
+ "chosen": null,
+ "step1": "not run (step 0 STOP)",
+ "yn_argmax": [
+  87,
+  92
+ ],
+ "ranked": [
+  [
+   "waterfall_kawaida_01",
+   "Water",
+   0.0,
+   "seen",
+   2.625,
+   [
+    3.375,
+    2.625
+   ]
+  ],
+  [
+   "b3_flea_market",
+   "Rustle",
+   0.0,
+   "seen",
+   2.25,
+   [
+    2.25
+   ]
+  ],
+  [
+   "waves_herzliya",
+   "Water",
+   0.0,
+   "seen",
+   1.625,
+   [
+    1.625,
+    1.875,
+    1.5
+   ]
+  ],
+  [
+   "ambient_weather_storm_7200",
+   "Rain",
+   0.1,
+   "seen",
+   1.5,
+   [
+    2.0,
+    0.75,
+    1.5
+   ]
+  ],
+  [
+   "b3_flea_market",
+   "Rustle",
+   1.2,
+   "seen",
+   0.75,
+   [
+    0.75
+   ]
+  ],
+  [
+   "ly_applause_62ZYD0u",
+   "Laughter",
+   0.0,
+   "seen",
+   0.0,
+   [
+    null,
+    0.0,
+    4.125
+   ]
+  ],
+  [
+   "as_glass_oHil9Ip_",
+   "Glass",
+   18.8,
+   "seen",
+   -0.125,
+   [
+    -0.125
+   ]
+  ],
+  [
+   "un_driving_motorcycle_4O3bZRYO",
+   "Motorcycle",
+   16.2,
+   "seen",
+   -0.5,
+   [
+    -0.5
+   ]
+  ],
+  [
+   "as_glass_oHil9Ip_",
+   "Glass",
+   9.0,
+   "seen",
+   -1.375,
+   [
+    -1.375
+   ]
+  ],
+  [
+   "mv_protest_scene_movie",
+   "Crowd",
+   0.0,
+   "NEEDED",
+   -1.875,
+   [
+    -1.875,
+    -1.875,
+    -2.25,
+    -1.25
+   ]
+  ],
+  [
+   "b3_pet_shop",
+   "Bird",
+   0.1,
+   "NEEDED",
+   -2.5,
+   [
+    -1.625,
+    -2.5,
+    -4.25,
+    -2.25,
+    -1.25,
+    -2.5
+   ]
+  ],
+  [
+   "b3_golf_course",
+   "Whip",
+   11.2,
+   "seen",
+   -2.75,
+   [
+    -2.75
+   ]
+  ],
+  [
+   "ambient_nature_rainforest_7629",
+   "Bird",
+   0.1,
+   "NEEDED",
+   -2.875,
+   [
+    -2.875,
+    -1.5,
+    null
+   ]
+  ],
+  [
+   "mv_tornado_scene",
+   "Siren",
+   8.9,
+   "NEEDED",
+   -3.75,
+   [
+    -3.75
+   ]
+  ],
+  [
+   "b3_aviary_birds",
+   "Bird",
+   0.0,
+   "seen",
+   -4.625,
+   [
+    -0.375,
+    -4.625,
+    null,
+    -4.5,
+    null,
+    -3.0
+   ]
+  ],
+  [
+   "ambient_market_marrakech_3102",
+   "Motorcycle",
+   12.7,
+   "seen",
+   -4.75,
+   [
+    -4.75
+   ]
+  ],
+  [
+   "b3_crossing_bells",
+   "Train",
+   0.0,
+   "seen",
+   -4.875,
+   [
+    -4.25,
+    -4.875,
+    null
+   ]
+  ],
+  [
+   "bell_miami",
+   "Bell",
+   0.2,
+   "NEEDED",
+   -6.0,
+   [
+    -5.625,
+    -6.0,
+    -6.25
+   ]
+  ],
+  [
+   "b3_golf_course",
+   "Whack, thwack",
+   6.5,
+   "NEEDED",
+   -6.375,
+   [
+    -6.375
+   ]
+  ],
+  [
+   "b3_golf_course",
+   "Whack, thwack",
+   24.4,
+   "NEEDED",
+   -6.75,
+   [
+    -6.75
+   ]
+  ],
+  [
+   "mv_protest_scene_movie",
+   "Baby cry, infant cry",
+   3.2,
+   "seen",
+   -7.5,
+   [
+    -7.5
+   ]
+  ]
+ ],
+ "named": [
+  {
+   "clip": "bell_miami",
+   "label": "Bell",
+   "start": 0.2,
+   "seen": false,
+   "shipped_silenced": true,
+   "A": -6.0,
+   "m": [
+    -5.625,
+    -6.0,
+    -6.25
+   ],
+   "mean_crop": -5.958333333333333,
+   "phrases": [
+    "the church",
+    "the church",
+    "the church"
+   ],
+   "text_crop": [
+    false,
+    false,
+    false
+   ],
+   "votes": [
+    [
+     true,
+     false,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ]
+   ]
+  }
+ ],
+ "sounds": [
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Vehicle",
+   "start": 3.8,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Hammer",
+   "start": 13.7,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_citywalk_nyc_1689",
+   "label": "Hammer",
+   "start": 8.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_citywalk_nyc_2627",
+   "label": "Clang",
+   "start": 3.8,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_market_marrakech_3102",
+   "label": "Motorcycle",
+   "start": 12.7,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -4.75,
+   "m": [
+    -4.75
+   ],
+   "mean_crop": -4.75,
+   "phrases": [
+    "the man on the motorcycle"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_nature_rainforest_2179",
+   "label": "Bird",
+   "start": 6.5,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Bird",
+   "start": 0.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -2.875,
+   "m": [
+    -2.875,
+    -1.5,
+    null
+   ],
+   "mean_crop": -2.1875,
+   "phrases": [
+    "the macaws",
+    "the parrots",
+    null
+   ],
+   "text_crop": [
+    false,
+    false,
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_nature_rainforest_7629",
+   "label": "Cricket",
+   "start": 0.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_snow_walk_930",
+   "label": "Laughter",
+   "start": 8.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_weather_storm_16200",
+   "label": "Thunder",
+   "start": 0.3,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_weather_storm_16200",
+   "label": "Thunder",
+   "start": 10.4,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_weather_storm_7200",
+   "label": "Thunder",
+   "start": 0.1,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ambient_weather_storm_7200",
+   "label": "Rain",
+   "start": 0.1,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": 1.5,
+   "m": [
+    2.0,
+    0.75,
+    1.5
+   ],
+   "mean_crop": 1.4166666666666667,
+   "phrases": [
+    "the rain",
+    "the rain",
+    "the rain"
+   ],
+   "text_crop": [
+    true,
+    true,
+    true
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "as_church_bell_pJRAWkLM",
+   "label": "Bell",
+   "start": 0.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Gunshot, gunfire",
+   "start": 0.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     null,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Walk, footsteps",
+   "start": 2.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    -1.125,
+    null
+   ],
+   "mean_crop": -1.125,
+   "phrases": [
+    "the enemy soldier",
+    null
+   ],
+   "text_crop": [
+    false,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     true
+    ],
+    [
+     false,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "start": 2.8,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "start": 5.6,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Gasp",
+   "start": 6.7,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Explosion",
+   "start": 9.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "as_explosion_XJ8lc3I6",
+   "label": "Machine gun",
+   "start": 10.1,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "label": "Alarm",
+   "start": 9.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     true,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "as_glass_oHil9Ip_",
+   "label": "Glass",
+   "start": 9.0,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -1.375,
+   "m": [
+    -1.375
+   ],
+   "mean_crop": -1.375,
+   "phrases": [
+    "the man"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "as_glass_oHil9Ip_",
+   "label": "Chink, clink",
+   "start": 18.5,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "as_glass_oHil9Ip_",
+   "label": "Glass",
+   "start": 18.8,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -0.125,
+   "m": [
+    -0.125
+   ],
+   "mean_crop": -0.125,
+   "phrases": [
+    "the woman"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_aviary_birds",
+   "label": "Bird",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -4.625,
+   "m": [
+    -0.375,
+    -4.625,
+    null,
+    -4.5,
+    null,
+    -3.0
+   ],
+   "mean_crop": -3.125,
+   "phrases": [
+    "the bird",
+    "the bird",
+    null,
+    "the birds",
+    null,
+    "the bird on the wire"
+   ],
+   "text_crop": [
+    false,
+    false,
+    null,
+    false,
+    null,
+    false
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     null,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Door",
+   "start": 3.9,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Crumpling, crinkling",
+   "start": 10.0,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Crumpling, crinkling",
+   "start": 14.1,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Frying (food)",
+   "start": 17.6,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Chink, clink",
+   "start": 20.3,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_bakery_morning",
+   "label": "Tap",
+   "start": 20.7,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_barbershop",
+   "label": "Electric shaver, electric razor",
+   "start": 0.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "label": "Walk, footsteps",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_botanic_garden",
+   "label": "Rustle",
+   "start": 24.8,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_carnival_parade",
+   "label": "Whistle",
+   "start": 6.1,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_carnival_parade",
+   "label": "Drum",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ],
+    [
+     false,
+     false,
+     true
+    ],
+    [
+     true,
+     false,
+     false
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_construction_site",
+   "label": "Honk",
+   "start": 0.7,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_crossing_bells",
+   "label": "Train",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -4.875,
+   "m": [
+    -4.25,
+    -4.875,
+    null
+   ],
+   "mean_crop": -4.5625,
+   "phrases": [
+    "the train",
+    "the train",
+    null
+   ],
+   "text_crop": [
+    false,
+    false,
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_favela_rio",
+   "label": "Walk, footsteps",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    -1.875,
+    null,
+    null,
+    null
+   ],
+   "mean_crop": -1.875,
+   "phrases": [
+    null,
+    null,
+    "the man standing",
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    false,
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     true,
+     null,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     false,
+     false,
+     true
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_favela_rio",
+   "label": "Train",
+   "start": 14.6,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_flea_market",
+   "label": "Rustle",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": 2.25,
+   "m": [
+    2.25
+   ],
+   "mean_crop": 2.25,
+   "phrases": [
+    "the hands holding the cash"
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_flea_market",
+   "label": "Rustle",
+   "start": 1.2,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": 0.75,
+   "m": [
+    0.75
+   ],
+   "mean_crop": 0.75,
+   "phrases": [
+    "the hands holding the money"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Whack, thwack",
+   "start": 6.5,
+   "seen": false,
+   "shipped_silenced": true,
+   "A": -6.375,
+   "m": [
+    -6.375
+   ],
+   "mean_crop": -6.375,
+   "phrases": [
+    "the golfer"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Whip",
+   "start": 11.2,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -2.75,
+   "m": [
+    -2.75
+   ],
+   "mean_crop": -2.75,
+   "phrases": [
+    "the golf club"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Arrow",
+   "start": 19.7,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_golf_course",
+   "label": "Whack, thwack",
+   "start": 24.4,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -6.75,
+   "m": [
+    -6.75
+   ],
+   "mean_crop": -6.75,
+   "phrases": [
+    "the golfer"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "label": "Water",
+   "start": 24.6,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     true,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "label": "Tap",
+   "start": 27.3,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "b3_pet_shop",
+   "label": "Bird",
+   "start": 0.1,
+   "seen": false,
+   "shipped_silenced": true,
+   "A": -2.5,
+   "m": [
+    -1.625,
+    -2.5,
+    -4.25,
+    -2.25,
+    -1.25,
+    -2.5
+   ],
+   "mean_crop": -2.3958333333333335,
+   "phrases": [
+    "the bird",
+    "the bird",
+    "the robin",
+    "the bird",
+    "the bird",
+    "the bird"
+   ],
+   "text_crop": [
+    false,
+    null,
+    false,
+    false,
+    null,
+    false
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "bell_miami",
+   "label": "Bell",
+   "start": 0.2,
+   "seen": false,
+   "shipped_silenced": true,
+   "A": -6.0,
+   "m": [
+    -5.625,
+    -6.0,
+    -6.25
+   ],
+   "mean_crop": -5.958333333333333,
+   "phrases": [
+    "the church",
+    "the church",
+    "the church"
+   ],
+   "text_crop": [
+    false,
+    false,
+    false
+   ],
+   "votes": [
+    [
+     true,
+     false,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "birds_forest",
+   "label": "Crowing, cock-a-doodle-doo",
+   "start": 10.4,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "birds_forest",
+   "label": "Bird",
+   "start": 1.3,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "london_protest_01",
+   "label": "Air horn, truck horn",
+   "start": 0.4,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    1.125,
+    null
+   ],
+   "mean_crop": 1.125,
+   "phrases": [
+    "the man in the high",
+    null
+   ],
+   "text_crop": [
+    true,
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "label": "Siren",
+   "start": 0.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "label": "Vehicle",
+   "start": 7.3,
+   "seen": false,
+   "shipped_silenced": true,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "ly_applause_62ZYD0u",
+   "label": "Laughter",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": 0.0,
+   "m": [
+    null,
+    0.0,
+    4.125
+   ],
+   "mean_crop": 2.0625,
+   "phrases": [
+    "the woman in the white",
+    "the woman",
+    "the woman in the white"
+   ],
+   "text_crop": [
+    null,
+    true,
+    true
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "ly_applause_62ZYD0u",
+   "label": "Crowd",
+   "start": 1.9,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "ly_helicopter_-v62cK1",
+   "label": "Helicopter",
+   "start": 0.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "movie_blueplanet_115",
+   "label": "Quack",
+   "start": 0.2,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "movie_blueplanet_115",
+   "label": "Duck",
+   "start": 2.3,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_arrest_street_scene",
+   "label": "Glass",
+   "start": 11.3,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_detective_crime_scene",
+   "label": "Telephone",
+   "start": 0.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    -3.0,
+    null
+   ],
+   "mean_crop": -3.0,
+   "phrases": [
+    "the woman on the bed",
+    null
+   ],
+   "text_crop": [
+    false,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Crowd",
+   "start": 0.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -1.875,
+   "m": [
+    -1.875,
+    -1.875,
+    -2.25,
+    -1.25
+   ],
+   "mean_crop": -1.8125,
+   "phrases": [
+    "the crowd of people",
+    "the group of people",
+    "the group of people",
+    "the group of people"
+   ],
+   "text_crop": [
+    false,
+    false,
+    false,
+    false
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     true,
+     null,
+     true
+    ],
+    [
+     true,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Baby cry, infant cry",
+   "start": 3.2,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -7.5,
+   "m": [
+    -7.5
+   ],
+   "mean_crop": -7.5,
+   "phrases": [
+    "the baby"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Glass",
+   "start": 11.0,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_protest_scene_movie",
+   "label": "Shatter",
+   "start": 16.9,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "label": "Siren",
+   "start": 2.6,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "label": "Ding",
+   "start": 13.3,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null,
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null,
+    null
+   ],
+   "text_crop": [
+    null,
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ],
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_storm_scene_house",
+   "label": "Civil defense siren",
+   "start": 16.9,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "mv_tornado_scene",
+   "label": "Cellphone buzz, vibrating alert",
+   "start": 1.4,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "mv_tornado_scene",
+   "label": "Siren",
+   "start": 8.9,
+   "seen": false,
+   "shipped_silenced": true,
+   "A": -3.75,
+   "m": [
+    -3.75
+   ],
+   "mean_crop": -3.75,
+   "phrases": [
+    "the siren speaker array"
+   ],
+   "text_crop": [
+    false
+   ],
+   "votes": [
+    [
+     true,
+     null,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "mv_tornado_scene",
+   "label": "Horse",
+   "start": 17.1,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "label": "Vehicle",
+   "start": 4.8,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "label": "Laughter",
+   "start": 12.7,
+   "seen": false,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     true,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "label": "Motorcycle",
+   "start": 16.2,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": -0.5,
+   "m": [
+    -0.5
+   ],
+   "mean_crop": -0.5,
+   "phrases": [
+    "the motorcycle"
+   ],
+   "text_crop": [
+    true
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "label": "Fireworks",
+   "start": 13.9,
+   "seen": true,
+   "shipped_silenced": false,
+   "A": -Infinity,
+   "m": [
+    null
+   ],
+   "mean_crop": null,
+   "phrases": [
+    null
+   ],
+   "text_crop": [
+    null
+   ],
+   "votes": [
+    [
+     false,
+     false,
+     false
+    ]
+   ]
+  },
+  {
+   "clip": "waterfall_kawaida_01",
+   "label": "Water",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": 2.625,
+   "m": [
+    3.375,
+    2.625
+   ],
+   "mean_crop": 3.0,
+   "phrases": [
+    "the waterfall",
+    "the waterfall"
+   ],
+   "text_crop": [
+    true,
+    true
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  },
+  {
+   "clip": "waves_herzliya",
+   "label": "Water",
+   "start": 0.0,
+   "seen": true,
+   "shipped_silenced": true,
+   "A": 1.625,
+   "m": [
+    1.625,
+    1.875,
+    1.5
+   ],
+   "mean_crop": 1.6666666666666667,
+   "phrases": [
+    "the ocean waves",
+    "the ocean waves",
+    "the ocean waves"
+   ],
+   "text_crop": [
+    false,
+    null,
+    null
+   ],
+   "votes": [
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ],
+    [
+     true,
+     true,
+     true
+    ]
+   ]
+  }
+ ],
+ "q": [
+  "This is a close-up cut from a video frame. Is this {phrase} making the {label} sound right now? Answer yes or no.",
+  "This is a close-up cut from a video frame. Is this {phrase} NOT making the {label} sound right now? Answer yes or no."
+ ]
+}
