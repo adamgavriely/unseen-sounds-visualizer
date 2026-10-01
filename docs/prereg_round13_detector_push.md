@@ -3427,3 +3427,31 @@ old DEV (r16dev, ~/MscProj_r13) then tagger DEV + merged scoring (tgarms, ~/MscP
 either part, wrong <= 18 + 2 × gain, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost,
 (d) hits >= 26). Expectation (panel proxy, not selection): b <= 0.29 -> 29/15, 2.056; a bar of 0.30–0.35 risks tg_d075 / tg_d032.
 Not combinable with STRONG-KEEP (Round 52 failed anyway). TEST is not read in this round.
+
+## Round 54 SIGN — effect-centric, source-free gate vote used as ADD-seen (written 2026-10-01 BEFORE any SIGN number; panelist 2's P1, `docs/review/panel_2026-10-01/p2_visibility.md`, voted #2 in `round2_votes.md`)
+**Why.** 18 of the 25 gate leaks name "nothing" on every stretch: every closed gate question needs a SOURCE object first, and
+thunder, air horn, fireworks, POV footsteps have none. SIGN asks for the sound's visible EFFECT instead, and can only ADD "seen".
+**Question (fixed).** Shipped gate VLM Qwen3.8-27B (config profile 5), greedy, letter answer, max_new 6, both letter orders as
+`reason._ab` (raw replies logged): stem "These frames are from a video. Which is true?", (a) "the visible SIGN of {label} — the
+effect or motion that this sound makes — is in these frames, even with no audio", (b) "nothing in the frames shows that sound
+happening". sign = True only if both orders pick (a); a split or (b) = False; a stretch with < 2 frames = False. Frames: the
+gate's own 6 per stretch, stretch start − 1 s .. end + 1 s evenly (step 1 as `cf_gate.py`, clamped at 0; step 2 as
+`decide_subjects`, unclamped). **Rule (primary, SIGN_add):** a sound is seen iff the shipped rule says seen OR sign on EVERY
+stretch. Reported only: SIGN_stretch (per stretch majority OR sign, all stretches) and SIGN_4th (sign as a 4th vote beside
+name/ab/desc, ties -> shipped majority).
+**Step 1 — gate-gold screen** (`benchmark/gold/sign_gate.py`, 49 DEV judge clips, cached `gate_gold/Qwen38-27B` stretches, gold
+labels). Base must reproduce 16/41 seen silenced, 33/38 needed kept. Reported: seen silenced / needed kept per rule, per-clip
+needed loss, as_explosion_XJ8lc3I6 by name (tg_d088 is a DEV2 tagger clip, not in the gate-gold set: named in step 2). Step 1
+does NOT gate step 2 (the gate-gold screen cannot see 9/18 DEV wrongs: gold labels, not stage-4 labels).
+**Step 2 — the real test** (`benchmark/gold/sign_screen.py`, from ~/MscProj_tg, TG_ARMS=SHIP8+MD3). On the SAVED SHIP8+MD3 merged
+DEV arm (49 DEV + DEV2; harness check before any SIGN answer: 71 clips, 48 placed pictures, 43 drawn specs, 72 stretches, 0
+fallbacks, base 29/58, 18 (6/10/2), 2.141 reproduced), every drawn spec (augment + image) is asked on its own gate stretches
+from the clip's `gate_votes.json` (label + spec start within 0.011 s; fallback: re-cut from its spans by VISIBILITY_STRETCH,
+flagged) with the PIPELINE label. A spec is silenced iff sign = (a) on every stretch (it is already shipped-unseen, so this is
+SIGN_add). Silenced specs are set augment = False and the pictures re-placed with `_display_spans(clip=stem)` (grouping cache as
+scored), PICTURE_MIN_CONF None, scored with `score_per_sound` on merged DEV. Kinship silencing of other sounds (a silenced
+spec's "visible" reason also silencing same-source overlaps) is NOT simulated (conservative). Base must reproduce 29/58, 18
+(6/10/2), 2.141. **Pass (all three):** (1) cost < 2.141; (2) Fable panel's cost unit: wrong removed >= 2 × needed hits lost
+(with 0 lost: >= 1 wrong removed); (3) main rule (hits >= 29, no needed hit lost, cost < 2.141) OR fewer-pictures clause (cost
+< 2.141, wrong <= 18 − 3 × hits lost, hits >= 26). Report every silenced picture with its class (hit / visible / cross /
+phantom), and as_explosion_XJ8lc3I6 and tg_d088 by name. TEST is not read in this round.
