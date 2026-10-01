@@ -99,3 +99,28 @@ sound from a right one. The visibility check itself trades needed sounds for vis
 FineLAP times it → DASM confirms) is right 80 % of the time (74 of 92), vs 38–39 % for our raw detectors on the same clips.
 So the listener-proposed sounds are mostly real; on DEV/TEST they turn into wrong pictures because the visibility check passes
 them or because the gold only lists the salient sounds.
+
+## Merge gap sensitivity (for Adam's decision)
+
+Shipped config joins repeats within MERGE_GAP 1.5 s; every score so far used 2.0. Same saved pictures, re-read at each gap
+(benchmark/gold/merge_gap_sens.py; reported, not selected on). 1.0 = 1.5 because the gap is floored at MIN_DWELL 1.5.
+
+**Merged DEV (58 sounds)**
+
+| gap | SHIP8 hits | SHIP8 wrong (v/c/p) | SHIP8 cost | B0r hits | B0r wrong (v/c/p) | B0r cost |
+|---|---|---|---|---|---|---|
+| 1.0 | 28 | 23 (7/14/2) | 2.338 | 18 | 57 (6/42/9) | 3.859 |
+| 1.5 | 28 | 23 (7/14/2) | 2.338 | 18 | 57 (6/42/9) | 3.859 |
+| 2.0 | 28 | 21 (6/13/2) | 2.282 | 18 | 51 (5/37/9) | 3.690 |
+| 3.0 | 28 | 18 (6/10/2) | 2.197 | 17 | 43 (5/31/7) | 3.521 |
+
+**Merged TEST (65 sounds)**
+
+| gap | SHIP8 hits | SHIP8 wrong (v/c/p) | SHIP8 cost | B0r hits | B0r wrong (v/c/p) | B0r cost |
+|---|---|---|---|---|---|---|
+| 1.0 | 23 | 30 (4/21/5) | 2.591 | 21 | 44 (2/35/7) | 3.000 |
+| 1.5 | 23 | 30 (4/21/5) | 2.591 | 21 | 44 (2/35/7) | 3.000 |
+| 2.0 | 23 | 29 (4/20/5) | 2.568 | 21 | 40 (2/31/7) | 2.909 |
+| 3.0 | 22 | 27 (4/18/5) | 2.568 | 20 | 33 (2/24/7) | 2.795 |
+
+At 1.5 SHIP8 still beats B0r by a similar margin (DEV −1.52 cost, TEST −0.41) as at 2.0 (−1.41, −0.34).

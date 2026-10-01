@@ -1,0 +1,24 @@
+{
+ "set": "dev",
+ "gap": 2.0,
+ "rows": {
+  "B0r": {
+   "hits": 18,
+   "misses": 40,
+   "wrong": 51,
+   "visible": 5,
+   "cross": 37,
+   "phantom": 9,
+   "viewer_cost": 3.6901408450704225
+  },
+  "SHIP8": {
+   "hits": 28,
+   "misses": 30,
+   "wrong": 21,
+   "visible": 6,
+   "cross": 13,
+   "phantom": 2,
+   "viewer_cost": 2.2816901408450705
+  }
+ }
+}
