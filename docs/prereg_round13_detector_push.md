@@ -2715,3 +2715,21 @@ remain: the first weak run is 0 s for most clips (favela Train 0.0 vs gold 14.6 
 Chicken 6.9 s; Honk/Clapping/Thunder/Explosion/Gunshot at some other moment), and the gate passes an off-screen wrong name. The
 Omni-only hits reachable in this family are Hammer, Bell, Fart; Bird in rainforest_7629 / pet_shop is gate-seen 3/3 (a bird is in
 frame), Siren (tg_d033), Dishes (d095), Chicken (d029), Whistle, Clapping (d125) are never named by the whole-clip listener. Closed.
+
+## Round 40d EXPECT-A3 — the 40c names, placed and confirmed by FineLAP (written 2026-10-01 BEFORE any number; motivated by 40c: right names at the first weak run = wrong moment)
+**Candidates** = exactly the Round 40c (clip, family) pairs that survived "not already drawn" (`expect_a2/cands.json` rows with outcome
+`candidate` or `no run at weak bars` — the weak-bar rule no longer decides anything), 61 pairs expected.
+**FineLAP** (text-queried SED, `AndreasXi/FineLAP`, `~/venv_flap`, exactly `finelap_screen.frame_scores`: 10.24-s windows, hop
+5.12 s, last window aligned to the end, 0.16-s frames, query phrase = the canonical family name as the shipped FINELAP cache):
+frame score at time t = max over the windows covering t, on a 0.16-s grid from 0 to the clip end. Keep a candidate iff its family
+score reaches the shipped bar **0.329** (`FINELAP_VETO`) in some frame; **onset = start of the run >= 0.329 (runs merged when the gap
+is <= 0.24 s, `_runs` with LISTEN_RUN_GAP) whose maximum frame score is highest** (ties: the earliest). Below the bar everywhere ->
+nothing (counted).
+**Gate**: shipped visibility gate at onset − 1 … + 1 s (6 frames, majority) as Rounds 40–40c; the Round 40b cached answer for the same
+(clip, family) is re-used iff |onset − cached onset| <= 0.5 s, otherwise asked (GPU; counted). Seen -> dropped, else a 2-s picture.
+**Score / pass** as Round 40 (base 28/58, 21, 2.282 must reproduce; main rule hits >= 28, no needed hit lost, w = 2 cost lower;
+more-hits rule hits up, cross / phantom not up on either part, w = 1 cost lower). Known before this entry: the 40c hits were Hammer
+13.72 (FlexSED), Bell 0.0, Fart 0.0; nothing is known about FineLAP on these pairs.
+**Files:** `benchmark/gold/expect_a3_screen.py` (`flap` GPU in venv_flap -> `expect_a3/flap/<clip>.npz`; `cands` / `score` CPU msproj;
+`gate` GPU msproj for the unmatched onsets) -> `benchmark/gold/expect_a3_screen.json`; `slurm/job_expect_a3.sh` (L4-4h / A100-4h /
+H200-4h).
