@@ -1358,6 +1358,31 @@ def _not_producing(spec, video_path, mdl, proc) -> bool:
     return ans.startswith("n")
 
 
+SCENE_FIT_TWIN = "Could the sound of {label} NOT plausibly be heard in this scene? Answer yes or no."
+
+
+def _yes_no_margin(mdl, proc, prompt, images=None) -> float:
+    """Round 60L: one forward pass, no generation; max logit over 'yes' ids minus max logit over 'no' ids at the first
+    answer position (the chat built as _ask builds it, thinking off: the template's empty think block precedes it)."""
+    import torch
+    tok = proc.tokenizer
+    yes = sorted({tok.encode(w, add_special_tokens=False)[0] for w in ("yes", "Yes", " yes", " Yes")})
+    no = sorted({tok.encode(w, add_special_tokens=False)[0] for w in ("no", "No", " no", " No")})
+    content = [{"type": "image"} for _ in (images or [])] + [{"type": "text", "text": prompt}]
+    try:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False,
+                                        add_generation_prompt=True, enable_thinking=False)
+    except TypeError:
+        text = proc.apply_chat_template([{"role": "user", "content": content}], tokenize=False, add_generation_prompt=True)
+    kw = {"text": [text], "return_tensors": "pt"}
+    if images:
+        kw["images"] = images
+    inputs = proc(**kw).to(mdl.device)
+    with torch.inference_mode():
+        lg = mdl(**inputs).logits[0, -1].float()
+    return float(lg[yes].max() - lg[no].max())
+
+
 def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4, log=None):
     """Round 14 F3: per stretch (VISIBILITY_STRETCH cuts, 1 s before to 1 s after, >= 6 frames, as the gate), the question
     SCENE_FIT_PROMPT; True iff yes > no over the stretches, None if no frames."""
@@ -1377,9 +1402,16 @@ def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4, log=None)
         win = _sample_frames_at(Path(video_path), times)
         if not win:
             continue
-        ans = _ask(mdl, proc, SCENE_FIT_PROMPT.format(label=label), images=win, max_new=4).strip().lower()
-        if log is not None:                                  # Round 60: the raw answer per stretch
-            log.append({"stretch": [round(a, 3), round(b, 3)], "answer": ans})
+        if getattr(config, "SCENE_FIT_LOGIT", False):        # Round 60L: bias-cancelled margin, no generation / truncation
+            d = (_yes_no_margin(mdl, proc, SCENE_FIT_PROMPT.format(label=label), win)
+                 - _yes_no_margin(mdl, proc, SCENE_FIT_TWIN.format(label=label), win))
+            ans = "yes" if d > 0 else ("no" if d < 0 else "")
+            if log is not None:
+                log.append({"stretch": [round(a, 3), round(b, 3)], "answer": ans, "d": round(d, 4)})
+        else:
+            ans = _ask(mdl, proc, SCENE_FIT_PROMPT.format(label=label), images=win, max_new=4).strip().lower()
+            if log is not None:                              # Round 60: the raw answer per stretch
+                log.append({"stretch": [round(a, 3), round(b, 3)], "answer": ans})
         if ans.startswith("y"):
             yes += 1
         elif ans.startswith("n"):

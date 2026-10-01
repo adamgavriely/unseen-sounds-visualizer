@@ -1414,16 +1414,17 @@ def _scene_margin(e) -> bool:
     from types import SimpleNamespace
     from src.labels import canonical
     mp, clip = Path(str(config.DASM_LOCAL_SCENE)), getattr(config, "_CURRENT_CLIP", None)
-    logp = mp.with_name(mp.name + ".answers.jsonl")
-    if str(mp) not in _SCENE_MEMO:
+    # Round 60L: the logit readout memoises in its own file, never mixed with the text answers
+    logp = mp.with_name(mp.name + (".logit_answers.jsonl" if getattr(config, "SCENE_FIT_LOGIT", False) else ".answers.jsonl"))
+    if str(logp) not in _SCENE_MEMO:
         memo = {}
         if logp.exists():
             for ln in logp.read_text(encoding="utf-8").splitlines():
                 if ln.strip():
                     r = _j.loads(ln)
                     memo[tuple(r["key"])] = r["verdict"]
-        _SCENE_MEMO[str(mp)] = (_j.loads(mp.read_text(encoding="utf-8")) if mp.exists() else {}, memo)
-    vids, memo = _SCENE_MEMO[str(mp)]
+        _SCENE_MEMO[str(logp)] = (_j.loads(mp.read_text(encoding="utf-8")) if mp.exists() else {}, memo)
+    vids, memo = _SCENE_MEMO[str(logp)]
     fam = canonical(e.label)
     key = (str(clip), fam, round(float(e.start), 3), round(float(e.end), 3))
     if key not in memo:

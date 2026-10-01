@@ -63,7 +63,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "SCENE_FIT_ALL": False, "MASKED_WEAK_VETO": False, "LISTENER_DASM_RANK": None, "LISTENER_REQUIRE_CACHES": False,
         "LISTENER_KCACHE": None, "LISTENER_KFIELD": "accept_norm", "CO_ONSET_ARB": False, "RELABEL_2L": False, "MASKED_WEAK_AF": False, "MASKED_WEAK_NEED_MASK": True, "FLEX_ONLY_CONFIRM": False,
         "DASM_RESCUE": False, "DASM_P4_CACHE": None, "DASM_RESCUE_NEW_ONLY": False, "MASKED_WEAK_PANNS": False,
-        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6, "LISTENER_V4B_CACHE": None, "DASM_CLIP_VETO": None, "DASM_LOCAL_VETO": None, "DASM_LOCAL_KEEP": "either",
+        "MASKED_WEAK_MISSING_KEEP": False, "MASKED_WEAK_DASM_KEEP": False, "KEEP_NEEDS_V4": False, "TIER_2OF3_DASM": False, "ONCE_GAP": None, "TIER_SPLIT": 0.6, "LISTENER_V4B_CACHE": None, "DASM_CLIP_VETO": None, "DASM_LOCAL_VETO": None, "SCENE_FIT_LOGIT": False, "DASM_LOCAL_KEEP": "either",
         "RELABEL_P1V4": None,
         "LISTENER_ONCE": False, "FIX_FAM": False, "FIX_EARLY": False, "FIX_CTRL": False, "FIX_GATE": False,
         "LISTENER_ARBITER": False,
@@ -239,6 +239,7 @@ ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Roun
 ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP": "both"}   # Round 53 WEAK-WITNESS (b from the 415)
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
 ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
+ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
 ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": "/home/dsi/adamg/MscProj/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
 ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)
