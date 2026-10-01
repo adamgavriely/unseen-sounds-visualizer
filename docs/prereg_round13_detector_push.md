@@ -3190,3 +3190,8 @@ the TEST read (it excludes the 5.5 s ice-cream-truck merge), so for the limit TE
 2.75 / 2.96 s). Shipped form through the scorer's own display path (`grp_check.py`): **merged DEV 28/58, 18 (6/10/2), 2.197;
 merged TEST 23/65, 28 (4/19/5), 2.545** (no TEST pair <= 4 s answered same/same -> TEST = base). `src/stage6_visual_augmentation/group.py`
 (live `ensure` in pipeline.run, cache read in `_display_spans`), `config.use_shipped` GROUP_ASK True / GROUP_MAX_GAP 4.0. New base = SHIP8+GRP.
+Live path smoke (job 31599990): `group.ensure` on barbershop + detective gives the same answers as the cache (same/same) -> PASS.
+**Diagnostic (1 Oct, not a round): BOX-2 + DASM >= 0.575 at onset as a "more hits" profile.** BOX-2 adds 6 pictures over SHIP8
+(both at 2.5): bell_miami Bell (hit, DASM 0.92), aviary Bird (visible, 0.82), construction Vehicle (phantom, 0.67), tg_d085 Laughter
+(cross, 0.94), as_glass Chink (visible, 0.14), tg_d054 Vehicle (visible, 0.47). The DASM bar keeps the hit but also the cross and
+the phantom -> still disqualified for the "more hits" profile (Adam: no extra cross/phantom). Closed (`box2_dasm.py`).
