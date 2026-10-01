@@ -4696,3 +4696,35 @@ image); it is counted on D''s gate-silenced specs when their stretches are logge
 **Cost per video (online):** per stretch 1 × 40-token naming + <= 4 × 64-token grounding generations + 2 prefill passes per crop
 (+ 2 attention passes when ViCrop fires); s0 cached per label; describe already computed by the gate. Counts reported.
 Script `benchmark/gold/nameall.py`, job `slurm/job_nameall.sh`. No src / config edit unless step 2 passes. TEST not read.
+
+### Round 66 amendment — external proposers B / A, arm V PRODUCTION-VETO, and Round 62b PRIOR (written while the NAME-ALL gate-gold job 31720679 runs, BEFORE any Round 66 number is read; coordinator, from `vlm_panel_2026-10-01/f4_hallucination.md` and `f1_audit.md`)
+**Proposers (same crop readout as NAME-ALL: m = [s(Q+) − s0(Q+)] − [s(Q−) − s0(Q−)], Q+ / Q− = CROP_Q / NOT twin, s0 per label on grey).**
+B = OWLv2 label box: `google/owlv2-base-patch16-ensemble` on the 6 gate frames with the label's detect query (`som_gate.phrase_of`),
+the single highest-scoring box over the 6 frames above BOX_BAR 0.1 (recomputed: the Round 38 cache dropped the frame index), crop by
+`som_gate.crops`, phrase = the query phrase; labels without a query or no box -> no B crop. A = SSL-SaN audio-driven box: the Round 33
+model and inputs (`gate_sslsan.cosine_maps`, stretch audio ±1 s), the frame with the highest map peak, box = the 3×3 cells around its
+14×14 arg-max (cell -> frame coordinates through the 224×224 squash), crop by `som_gate.crops`, phrase "thing". One crop per stretch
+each. **Step-0 AUROC reported for NAME-ALL (its picked aggregation), B, A and the union (stretch margin = max over NAME-ALL's crops,
+B and A); the proposer for step 1 = the highest AUROC among the four, which must be >= 0.65 (else STOP); ties -> NAME-ALL > B > A >
+union. Step 1 (two-sided t_lo / t_hi, bar, tie rules) and step 2 exactly as written for NAME-ALL, on the chosen proposer.** The
+NAME-ALL-only score printed by job 31720679 is a report; the binding selection is this one (`benchmark/gold/nameall_ext.py score`).
+Cost per video, each: B = 6 OWLv2 passes + 2 prefill per stretch; A = 6 SSL-SaN passes + 2 prefill per stretch.
+**Arm V PRODUCTION-VETO (separate rule, separately reported).** On every stretch the shipped majority calls seen with a cached gate
+phrase (`named` != nothing), the 6 gate frames, Qv "Is this {named} making the {label} sound right now? Answer yes or no." and twin
+"Is this {named} NOT making the {label} sound right now? Answer yes or no.", null-calibrated on 6 grey 224×224 frames with phrase
+"thing": mV = [s(Qv) − s0] − [s(Qv−) − s0−]. Rule: FIX_GATE on (a seen stretch naming nothing is not seen) AND a seen named stretch
+with mV < t_lo is not seen; everything else shipped (a sound is silenced iff every stretch is seen). **Step 0:** AUROC of mV over the
+shipped-seen named stretches, gold-seen sounds' stretches vs gold-needed sounds' stretches; STOP < 0.65. **Step 1:** t_lo over
+midpoints of the mV values (plus −inf = off), bar (silenced >= 19 AND kept >= 32) OR (silenced >= 15 AND kept >= 35) — a veto only
+lowers silenced from 16, so the 15/35 branch is the live one; pick the t_lo meeting the bar with the most silenced, ties -> more
+kept -> smaller t_lo. Pass -> **step 2 = one full DEV pipeline arm D' + V** (a stage-5 flag, default off; built only then, compatible
+with `docs/inspector2/HOOKS.md` of branch claude/project-thread-4rwrnp), scored with `merged_dev.py` vs D' 29/58, 15 (6/7/2), 2.056 by
+the main rule or fewer-pictures clause. Risk class named now: weak-action correct silences (alarm clock, cellphone buzz, flea-market
+Rustle, motorcycle). **mV reported by name:** bell_miami Bell, b3_golf_course Whack, ly_ambulance, as_explosion Gunshot (gate-gold);
+tg_d133 Fart ×2 only if step 2 runs (DEV2, not in gate-gold).
+### Round 62b PRIOR — PriDe-style image-free per-label prior on Round 62's margins (own round, same bar; written BEFORE any number)
+For each gold label, Round 62's (a) and (b) Q and ¬Q are prefilled with NO image (text only, same template): prior_label = s(Q) −
+s(¬Q); d' = d − prior_label per stretch (Round 62 cache, no re-read of frames). **Step 0: per-sound mean d' AUROC (seen vs needed) per
+question; STOP < 0.65.** A per-label constant cannot reorder sounds within one label, only across labels (disclosed). GO -> Round 62's
+step 1 rule unchanged with d' (ADD-seen, bar, t selection), then its step 2 on D' (= SHIP8+MD3+WW5+SL, 29/58, 15 (6/7/2), 2.056) with
+the DEV d computed by `logit_gate.py dev` and the same prior. Script `nameall_ext.py` (prior pass in the same GPU job). TEST not read.
