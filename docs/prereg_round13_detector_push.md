@@ -2976,3 +2976,17 @@ matcher and tie-break as Round 44; a picture is DROPPED iff its answer is NONE o
 per part, paired clip bootstrap of d cost vs base (`DCC.boot`, 2000 draws, seed 0, one-sided p), every dropped picture with its class
 and answer, hits lost. This is a report: the DEV verdict is not revised by it. **Files:** `benchmark/gold/avname_test.py` (`ask` GPU
 msproj -> `benchmark/gold/avname/test_answers.json`; `score` CPU) -> `benchmark/gold/avname_test.json`; `slurm/job_avname_test.sh`.
+
+## Round 43b HUMAN-2 — Round 43 with a strict open-question format and majority-of-stretches aggregation (written 2026-10-01 BEFORE any HUMAN-2 number; follows the Round 43 audit: that failure was mechanical — truncated explanations and a free "nothing" escape — not the idea)
+**Changes from Round 43 (everything else identical: set, truth, frames, captions, `ask_seq`, (b) wording, both letter orders,
+`Qwen/Qwen3.8-27B` greedy).** (a) open question, strict format: "Answer with ONLY a short noun phrase naming the most likely
+visible source of the {label} sound in these frames (e.g. 'the golfer', 'the waterfall'), or exactly 'none' if no plausible
+source is visible." — max 24 new tokens, the RAW reply stored; candidate = `_clean_phrase` (<= 5 words) of it; a reply starting
+none/nothing/no/not -> no candidate -> stretch not seen. Stretch seen iff (b) yes in both orders. **Sound verdict = seen iff a
+MAJORITY of the sound's stretches are seen** (more than half; Round 43 and the shipped gate need every stretch — disclosed; the
+base stays the shipped all-stretches rule, 16/41, 33/38, asserted). Variants: (a) HUMAN-2 replaces the shipped per-stretch
+majority (then majority of stretches); (b) HUMAN-2 is a fourth per-stretch vote next to name/ab/desc (ties -> shipped majority),
+then majority of stretches. Pass bar, report (table, flips vs base with raw reply + (b) replies, named set, counts incl. how many
+raw replies exceed 5 words) as Round 43. Files: `benchmark/gold/human2_gate.py` (imports Round 43's helpers; `run` GPU ->
+`gate_gold/human2_Qwen38-27B/`, `score` CPU -> `gate_gold/human2_summary.json`), `slurm/job_human2_gate.sh`; `src/` untouched.
+Note: this commit also carries the Round 44 TEST-read pre-registration another thread had appended but not yet committed.
