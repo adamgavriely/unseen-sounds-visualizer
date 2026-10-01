@@ -4441,3 +4441,17 @@ another DEV Bell is silenced while seen (then +1 visible). CAR: tg_d133 Fart ×2
 report-only whatever it does. **For Adam:** these kills (the source is on screen, the action that makes the sound is hidden) are a
 different class from the look-alike kills he accepted on 28 Sept (a visible thing that is NOT the source, e.g. a washing machine for
 Train); accepting those does not imply accepting these. Per-video cost: 0 (a table look-up). Job `slurm/job_concealed.sh`. TEST not read.
+### Round 62 secondary — SCENE-RECHECK of the shipped D (coordinator 2 Oct; written while the step-0 job runs, BEFORE any Round 62 number is read; reported row, not a selection)
+D's SCENE-MARGIN (Round 60) reads `reason._scene_fit`'s F3 prompt "Could the sound of {label} plausibly be heard in this scene?
+Answer yes or no." greedy with max_new 4; tg_d128 Hammer 9.0 and mv_protest Glass 4.75 were dropped by a truncated "based on the"
+-> None. Re-read through the Round 62 logit harness, same model, same stretches (VISIBILITY_STRETCH cuts of the memoised span),
+same 6 frames (stretch −1 s .. +1 s, as `_scene_fit`), same lower-cased family label, prompt unchanged: per stretch s = max
+logit(yes) − max logit(no) at the first answer token; **verdict per span = (#stretches s > 0) > (#stretches s < 0)**, i.e. the
+shipped rule with only the parser replaced (no truncation, no None). Population = the DEV / DEV2 rows of
+`data/work/scenemargin/videos.json.answers.jsonl` (clip in the DEV + DEV2 clip map; Round 60 reported 14 such asks); any non-DEV row
+is skipped unread. Reported only (not used by the rule): a bias-cancelled d = s(Q) − s(twin), twin "Could the sound of {label}
+NOT plausibly be heard in this scene? Answer yes or no.". Outcome: every span whose logit verdict differs from the stored verdict
+(incl. the two None); **if none differs (Hammer and Glass read not credible), D's 29/58, 14 (6/6/2), 2.028 reproduces under the
+truncation-free readout**; if Hammer and / or Glass read credible, they return as they were in B (both cross pictures there:
+expected +1 wrong each, hits unchanged) and the row is computed only if it is trivially re-scorable from the saved arms, else the
+expected row is stated as such. Script `logit_gate.py scene` (GPU, ~/MscProj_tg), job `slurm/job_logit_scene.sh`. TEST not read.
