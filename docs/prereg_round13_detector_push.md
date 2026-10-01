@@ -2009,3 +2009,40 @@ unnamed / split / none. A STOP with most peaks in the first bin means the idea f
 the third bin means frames alone cannot name an off-screen impact.
 **Files:** `benchmark/gold/imp_v_screen.py` (`run` = GPU, one JSON per peak in `benchmark/gold/imp_v/`, resumable; `score` =
 CPU -> `imp_v_screen.json`), `slurm/job_imp_v.sh` (H200-4h / A100-4h, from `~/MscProj_tg`, `TG_ARMS=SHIP8`).
+
+## Round 37 BOX — the gate's own box checks its "seen" (Adam's idea, 1 Oct; written BEFORE any BOX number)
+**Motivation (Adam):** "the church bell is not seen on screen, we just see the church but no bell. Ask the model for a
+rectangle around the object that makes the noise when it says yes (visible), then ask only on that rectangle: is that an X?"
+The gate silences needed sounds when a same-type THING is on screen (bell_miami Bell 0.2: tower, no bell; b3_pet_shop
+Bird 0.1; tg_d133 Fart). Unlike amendment M (OWLv2 crops used to ADD "seen"), BOX uses the gate VLM's OWN box to CHECK
+a "seen" decision; it can only flip seen -> not seen.
+**Rule BOX (one rule).** For every stretch whose shipped majority (name/ab/desc, yes > no, cached run
+`benchmark/gold/gate_gold/Qwen38-27B`) says seen, the same VLM (Qwen3.8-27B, greedy, `reason._ask`) gets the stretch's
+frames (`gate_gold.run_vlm` times: stretch ± 1 s, 6 frames; `_sample_frames_at` may return fewer, frame numbers index the
+returned list) and: "These frames (numbered 1..N) are from the moment a sound of {label} was heard. Find the object that is
+making that sound. Answer with JSON only: {"frame": k, "bbox_2d": [x1, y1, x2, y2]} on a 0-1000 grid of that frame
+(1000 = full width or height). If no such object is visible, answer exactly: none." Reply parse: `none` (first word)
+-> no box; a JSON with frame in 1..N and 4 numbers -> box, rescaled to pixels and clamped; anything else -> `unparsed`,
+stretch unchanged (garbage cannot masquerade as a flip). The box is cropped (20 % margin, >= 224 px short side after
+upscaling, `som_gate.crops`) and asked two LABEL-FREE questions (no sound word, so the crop cannot be re-primed):
+direct "This is a close-up cut from a video frame. Is this {obj}? Answer yes or no." (no = reply starts with "n") and
+a/b `reason._ab("This is a close-up cut from a video frame. What is it?", "{obj}", "something else")` (no = False;
+None = split = not no). **A stretch flips to not-seen iff the box is `none`, or BOTH crop answers are no.** Clip verdict
+unchanged: silent only if every stretch is seen. `{obj}` = OBJECT_OF[canonical family] — a NEW table, not DETECT_QUERY
+(whose Bell entry is "a church bell tower", the trap itself): Bird "a bird"; Water "water (a river, the sea, waves or a
+tap)"; Rain "rain falling"; Drum "a drum"; Walk, footsteps "a person's feet or legs stepping"; Bell "a bell (the bell
+itself)"; Laughter "a person laughing"; Motorcycle "a motorcycle"; Machine gun "a gun being fired"; Train "a train";
+Rustle "something rustling (leaves, paper or cloth being moved)"; Vehicle "a car or truck"; Crowd "a crowd of people";
+Chink, clink "glasses or cutlery touching"; Glass "glass"; Whack, thwack "something being hit"; Whip "a whip"; Air horn,
+truck horn "a truck or vehicle horn"; Cellphone buzz, vibrating alert "a mobile phone"; Siren "an emergency vehicle";
+Horse "a horse"; any other family: "the thing that makes the sound of {label}".
+**Truth = CURRENT gold** (`gold_AG.json`, re-checked 30 Sept / 1 Oct): seen = visible or obvious, re-derived per sound by
+matching clip stem / resolved label / start (the `seen` stored in the cache files is NOT read). Importance >= 2 only.
+**Screen set:** DEV judge clips (JUDGE100 ∩ cached = 49 clips). No gate cache exists for any tg_* (dev2 tagger) clip, so
+tg_d133 Fart cannot be screened; stated, not re-run. Base (shipped majority, cache vs current gold, computed before the
+rule was written): seen 41 / silenced 16, needed 38 / kept 33; 54 seen-majority stretches to box.
+**Pass:** GO iff needed kept rises by >= 2 (>= 35) AND seen silenced drops by <= 1 (>= 15). Report: table (base vs BOX),
+every flipped sound with gold class, counts of none / crop-no / unparsed / unchanged-seen, the raw box replies and crops
+of every bell_miami stretch and of every flipped sound (`docs/review/box_crops/`). Script `benchmark/gold/box_gate.py`,
+job `slurm/job_box_gate.sh`; nothing in `src/` or `config.py` edited. GO -> a `src/` flag is Adam's decision; STOP ->
+recorded, closed.
