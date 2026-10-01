@@ -55,7 +55,7 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | BOX (Adam) | VLM boxes the sound's source; "is this an X?" on the crop | fixes the church bell, un-silences 7 visible sounds: rejected |
 | BOX-2 (screen) | BOX, but "no box" no longer flips; strict re-ask | +2 needed kept (church bell, siren), 3 visible calls lost: rejected (one too many) |
 | BOX-2 arm | BOX-2 inside the full pipeline (SHIP8+BOX2) | 29 hits (+1, church bell) but 26 wrong (+5: 3 visible, 1 cross, 1 phantom), cost 2.282 → 2.366: rejected under both rules |
-| E1 SYNC | does on-screen motion move in time with the sound (Synchformer) | running |
+| E1 SYNC | does on-screen motion move in time with the sound (Synchformer) | as a veto: +3 needed kept (church bell, golf whack, ambulance) but 5 visible calls lost: rejected; strong signal for visible sounds (sync ≥ 0.88 = on screen), two-sided version next |
 | E4 CF | ask the VLM the annotator's own two questions | no better (15/41 seen, 32/38 needed vs 16/41, 33/38): rejected |
 | E5 GBTP | start a late picture where any detector first hears its sound | most pictures just move to 0 s; one hit lost (27 / 22): rejected |
 | MAKER-VIS | ask if the picture's maker (train, parrot) is on screen | 9 hits lost (19 / 15): rejected |
