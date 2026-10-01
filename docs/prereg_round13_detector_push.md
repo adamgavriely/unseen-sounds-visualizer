@@ -4482,3 +4482,28 @@ Alarm +3.12 / +3.00, Screaming +8.12, laundromat Train −3.0, favela Train −5
 mv_protest pictures were replaced by B's placed under D's display flags; `logit_gate.py scene_row`): D 29/58, 14 (6/6/2), 2.028
 -> **29/58, 15 (6/7/2), 2.056** (+ Glass 4.75–6.25 cross; Glass 16.89–20.0 back to B's grouping, still a hit). So 1 of D's 4 wrong
 removed vs B (Glass 4.75) was won by the truncation, not by the model's verdict. Reported only; D unchanged; TEST not read.
+
+## Round 60L SCENE-LOGIT — D's scene question read as a bias-cancelled logit margin (written 2026-10-02 BEFORE any 60L arm number; coordinator decision after the Round 62 SCENE-RECHECK)
+**Why.** D's shipped SCENE-MARGIN (Round 60) reads `reason._scene_fit`'s F3 answer by greedy text with max_new 4 and a first-letter
+parse; a reply cut inside a preamble ("based on the") is None = not credible. On DEV that artifact decided 2 of 14 asks (tg_d128
+Hammer, mv_protest Glass 4.75). Its error direction on new videos is always the same: a one-ear real sound whose scene answer starts
+with a preamble is dropped. The live system needs the truncation-free readout; the recheck showed the readout is well-formed
+(argmax a yes/no id on 99.5 % of gate reads).
+**Rule (one flag, default off: `config.SCENE_FIT_LOGIT`).** In `_scene_fit`, per stretch (same VISIBILITY_STRETCH cuts, same 6
+frames stretch −1 s .. +1 s, same lower-cased family label, same model Qwen3.8-27B, thinking off), instead of generating: one
+forward pass each for the shipped prompt Q "Could the sound of {label} plausibly be heard in this scene? Answer yes or no." and its
+fixed twin ¬Q "Could the sound of {label} NOT plausibly be heard in this scene? Answer yes or no."; s = max logit(yes ids) − max
+logit(no ids) at the first answer position (after the empty think block); **d = s(Q) − s(¬Q); a stretch votes credible iff d > 0,
+not credible iff d < 0; span credible iff credible votes > not-credible votes** (as shipped). No frames -> None (as shipped). Stage 4
+memoises the logit verdicts in a separate file (`<map>.logit_answers.jsonl`), so the text memo is never mixed in. Everything else
+of D unchanged. Arm `SHIP8+MD3+WW5+SL` = D + SCENE_FIT_LOGIT.
+**Run.** A real stage-4 / stage-5 DEV job as Round 60 (`slurm/job_scenelogit.sh`): old DEV from ~/MscProj_r13 (`round13_dev.py
+stage4 / stage5 / score`), DEV2 from ~/MscProj_tg (`tagger_prep.py --split dev2 stage4 / stage5 / gates`), `merged_dev.py` with B =
+SHIP8+MD3, D = SHIP8+MD3+WW5 and SL in the same scoring. B must reproduce **29/58, 18 (6/9/3), 2.141** and D **29/58, 14 (6/6/2),
+2.028**. Listed: every changed picture of SL vs D and vs B (with class), and every logit scene ask (key, d per stretch, verdict).
+**Pass rule (fixed now): ship SL in place of D's text readout iff SL passes vs B under the main rule** — hits >= 29, no needed hit
+lost on either part vs B, wrong <= 18 + 2 × hits gained, cost < 2.141. **D's own 2.028 is deliberately NOT the bar**: part of D's
+gain over B (mv_protest Glass 4.75 cross removed) was produced by the truncation artifact, not by a model verdict, so holding SL to
+2.028 would hold a correct readout to an artifact's score. Vs D: reported. **Expected (from the Round 62 recheck, same model and
+frames, recheck used s(Q) not d for the verdict; d agreed on all 14): 29/58, 15 (6/7/2), 2.056** — Glass 4.75 returns as a cross,
+Hammer stays out by an explicit no, the other 12 asks unchanged. TEST not read.
