@@ -3226,3 +3226,6 @@ within onset ± 0.5 s: 38/55 = 0.691** (raw FlexSED >= 0.8: 0.394; EXPECT-A4 cha
 within ± 2 s -> candidate; the shipped stage-5 gate at onset − 1 … + 1 s (as Round 40e) -> 2-s picture added; then GROUP/MERGE_GAP as
 shipped. **Pass vs SHIP8 (28/58, 18 (6/10/2), 2.197):** main rule or fewer-pictures clause; w = 1 and more-hits secondary. TEST once if
 it passes. Files: `benchmark/gold/bandlist_screen.py` (cands CPU / gate GPU / score CPU) -> `benchmark/gold/bandlist/`.
+### Round 48 result — MD3 DEV (jobs 31600047 + 31600048, H200): **GO on the main rule**
+Base reproduced (SHIP8 28/58, 18 (6/10/2), 2.197). **SHIP8+MD3: 29/58, 18 (6/10/2), cost 2.141** | DEV 19/11 (same), DEV2 10/7
+(+1 hit, no wrong added). Main rule: hits 29 >= 28, no needed hit lost, cost 2.141 < 2.197 -> GO. TEST read next (once, frozen).
