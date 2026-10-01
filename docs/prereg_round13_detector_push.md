@@ -4532,3 +4532,13 @@ Base D reproduced: **SHIP8+MD3+WW5 29/58, 14 (6/6/2), 2.028** (DEV 19/9, DEV2 10
 (admission rule), so the +2 is in-sample DEV2 evidence only.
 Exactly as the honest expectation. The gain is one clip (bell_miami); Bell's "0 seen silenced" admission was 0 of 0, so a seen bell
 re-shown is the untested risk. GO -> shipping {Bell} is Adam's call (see the class note in the entry). TEST not read.
+
+### Round 60L SCENE-LOGIT result (job 31702470; `benchmark/gold/scenelogit_dev.json`): **PASS vs B -> shipped in place of D's text readout**
+Same scoring: B 29/58, 18 (6/9/3), 2.141 and D 29/58, 14 (6/6/2), 2.028 reproduced. **SL = 29/58, 15 (6/7/2), 2.056.** Main rule vs
+B: hits 29 >= 29, no needed hit lost on any clip, wrong 15 <= 18, cost 2.056 < 2.141 -> PASS. Vs D (reported): one change, mv_protest
+Glass 4.75–6.25 cross returns (d +0.63; D had dropped it on a truncated "based on the"); Glass 16.89–20.0 regroups to 17.5–19.0
+exactly as in D (still a hit). Vs B: laundromat Train phantom, tg_d022 Dog cross and tg_d128 Hammer cross gone, ly_helicopter
+Vehicle -> Helicopter (hit), mv_protest Glass hit regrouped. Logit asks (DEV / DEV2) 14: credible 10, not 4, None 0 — Hammer now
+an explicit no (d −4.0), ambulance Siren tie (−1.0 / +0.13) -> not credible, as before; = the Round 62 recheck prediction.
+Shipped: `config.use_shipped` sets SCENE_FIT_LOGIT True (module default stays False, so every earlier arm reproduces). The shipped
+DEV row is now 29/58, 15 (6/7/2), 2.056 (the 2.028 included one truncation win). TEST not read.

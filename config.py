@@ -515,6 +515,7 @@ def use_shipped() -> dict:
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
     for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DASM_LOCAL_VETO", 0.35), ("DASM_LOCAL_KEEP", "both"),
                  ("DASM_LOCAL_SCENE", str(WORK_DIR / "scene_videos.json")),
+                 ("SCENE_FIT_LOGIT", True),   # Round 60L SCENE-LOGIT (2 Oct): scene check read as the bias-cancelled logit margin; DEV 29/15/2.056, passes vs B (29/18/2.141)
                  # Round 53+60 WEAK-WITNESS + SCENE-MARGIN (1 Oct): DEV 29/14/2.028 (was 29/18/2.141); see prereg doc ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
                  # DEPICT_EVENT (Round 57, Adam OK 1 Oct 15:34): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
