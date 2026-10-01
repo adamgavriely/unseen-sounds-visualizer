@@ -72,6 +72,7 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | PRIOR415 | per-family precision of each detector on 415 held-out AudioSet clips (strong labels); drop a picture whose family the detector gets wrong > 70 % of the time, unless a listener heard it | lists frozen first (BEATs: 24 bad families, e.g. Glass, Gunshot, Water; FlexSED: Vehicle + 4 rare ones); 8 SHIP8 pictures hit a bad family but every one was heard by a listener, so nothing dropped (28 / 21, cost same): rejected |
 | AGREE | a seen call flips only when the SYNC veto AND BOX-2 both say so | 15/41 seen, 34/38 needed: church bell rescued, phone buzz lost; below both bars: rejected |
 | NAMED-VETO | drop a picture when the gate says a different thing makes the sound at that moment | 6 of 50 pictures judged, all dropped: 4 wrong gone but 2 true hits lost (26 / 17, cost same 2.282): rejected |
+| AVNAME | Qwen3-Omni names each drawn picture's sound from the audio AND the frames of that moment (Adam: ears + eyes name a sound together); rename / drop | job 31599021 running |
 
 **Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.
 
