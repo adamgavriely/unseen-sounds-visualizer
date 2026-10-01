@@ -144,11 +144,12 @@ def screen():
     print(f"BASE SHIP8: merged {B.fmt(Bm['merged'])} | DEV {B.fmt(Bm['dev'])} | DEV2 {B.fmt(Bm['dev2'])}")
     assert (Bm["merged"]["hits"], Bm["merged"]["wrong"]) == (BASE["hits"], BASE["wrong"]), Bm["merged"]
     assert abs(Bm["merged"]["cost"] - BASE["cost"]) < 0.001, Bm["merged"]
-    assert abs(cost_w(Bm["merged"], Bm["merged"]["n"], 2) - Bm["merged"]["cost"]) < 1e-9
+    n_clips = {"merged": len(P), "dev": sum(1 for p in P if p[0] == "dev"), "dev2": sum(1 for p in P if p[0] == "dev2")}
+    assert abs(cost_w(Bm["merged"], n_clips["merged"], 2) - Bm["merged"]["cost"]) < 1e-9     # cost is per CLIP
     BASE["cost"] = Bm["merged"]["cost"]
     s4 = {pt: json.loads(CG.PARTS[pt]["stage4"].read_text(encoding="utf-8"))["arms"]["SHIP8|proposed"] for pt in CG.PARTS}
 
-    rows = {"dev": [], "dev2": []}; dropped = []; lost = []
+    rows = {"dev": [], "dev2": []}; dropped = []; lost = []; kept_named = []
     why_n = Counter(); named_n = Counter()
     for pt, st, g, pics in P:
         config._CURRENT_CLIP = st
@@ -178,6 +179,9 @@ def screen():
                     if fam in names:
                         why = "listener names family"
                         named_n["kept: named"] += 1
+                        kept_named.append({"part": pt, "clip": st, "label": l, "family": fam, "start": round(a, 2),
+                                           "end": round(b, 2), "model": model, "p1_items": n_items, "names": sorted(names),
+                                           "before": before[(l, round(a, 3))]})
                     else:
                         why = "dropped"
                         named_n["no P1 item" if n_items == 0 else "P1 item, not named"] += 1
@@ -197,7 +201,7 @@ def screen():
             lost.append((pt, st, r0["hit"] - r1["hit"]))
     X = {"merged": B.summ(rows["dev"] + rows["dev2"]), "dev": B.summ(rows["dev"]), "dev2": B.summ(rows["dev2"])}
     for k in X:
-        X[k]["cost_w1"] = cost_w(X[k], X[k]["n"], 1)
+        X[k]["cost_w1"] = cost_w(X[k], n_clips[k], 1)
     ln = sum(x[2] for x in lost)
     old, few = passes(X["merged"], lost, ln)
     verdict = "GO (main rule)" if old else "GO (fewer-pictures clause)" if few else "STOP"
@@ -206,6 +210,9 @@ def screen():
     for d in dropped:
         print(f"   {d['part']:4s} {d['clip']} {d['label']} {d['start']}-{d['end']} [{d['model']}] p1 items {d['p1_items']} "
               f"names {d['names']}: {d['before']} dropped   clip {d['clip_before']} -> {d['clip_after']}")
+    for d in kept_named:
+        print(f"   kept (named) {d['part']:4s} {d['clip']} {d['label']} {d['start']}-{d['end']} [{d['model']}] p1 items "
+              f"{d['p1_items']} names {d['names']}: {d['before']}")
 
     # RELIABLE: list only, not scored -- needed SHIP8 misses a RELIABLE family's raw run would reach
     allow = []
@@ -228,7 +235,7 @@ def screen():
         print(f"   {x['part']:4s} {x['clip']} {x['sound']} @{x['at']} [{x['model']}] run {x['run']}")
     res = {"base": Bm, "lists": {m: {"UNRELIABLE": sorted(UNREL[m]), "RELIABLE": sorted(REL[m])} for m in UNREL},
            "rows": X, "dropped": dropped, "hits_lost": lost, "untouched": dict(why_n), "exception": dict(named_n),
-           "main_rule": old, "fewer_pictures": few, "verdict": verdict, "reliable_would_allow": allow}
+           "kept_named": kept_named, "main_rule": old, "fewer_pictures": few, "verdict": verdict, "reliable_would_allow": allow}
     OUT.write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")
     print(OUT)
 

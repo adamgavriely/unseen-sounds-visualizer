@@ -2612,3 +2612,22 @@ d.p.: 2 hits lost against 4 wrong removed at visible weight 2). Main rule fails 
 fewer-pictures clause fails (cost not lower; 17 > 21 - 3*2). Reading: the gate names the maker of the GOLD sound it was
 asked about, which is a different sound from the picture's whenever two sounds overlap — a crowd on screen does not make a
 picture of breaking glass wrong. The rule is a sound-overlap detector, not a wrong-family detector. Closed.
+### Round 41 PRIOR415 result — STOP (no picture dropped; `benchmark/gold/prior415_lists.json`, `prior415_screen.json`, CPU)
+**Step 1 (frozen, commit 31d4ff4).** 415 clips cached for both models, 70 families with >= 10 strong events. FlexSED (0.8 runs,
+only 14 families fire at all): UNRELIABLE Groan, Rattle, Shout, Typewriter (1-2 runs each, thin), Vehicle (2/9 = 0.22);
+RELIABLE Explosion (1/1, thin), Power tool (5/5). BEATs (0.35 spans): UNRELIABLE 24 families, among the non-thin ones Animal
+0.23, Cat 0.29, Dishes 0.29, Domestic animals 0.14, Explosion 0.14, Glass 0.13, Gunshot 0.24, Mechanisms 0/5, Livestock 0/5,
+Silence 0/16, Singing 0.19, Speech 0.13, Telephone 0/7, Tools 0.13, Water 0.23 (+ 9 thin: Female singing, Finger snapping,
+Footsteps, Groan, Narration, Screaming, Tick, Whoop, Whoosh); RELIABLE Cough, Male speech, Sound effect, Spray, Wind noise
+(all thin, 1-7 runs). Vehicle (BEATs 0.36), Bird (0.47), Train (0.53), Dog (0.72), Alarm (0.73), Music (0.67) are in neither.
+**Step 2.** Base reproduced (28/58, 21 (6/13/2), 2.282; cost_w(2) = viewer cost, per clip). 50 placed pictures: 8 rescued,
+26 BEATs + 8 FlexSED pictures of a non-UNRELIABLE family, **8 pictures of an UNRELIABLE family (all BEATs) and every one is
+named by a listener on a P1 cut** (the P1 caches do cover BEATs rows, contrary to the expectation written above): as_explosion
+Gunshot 8.25 (cross) and Explosion 9.25 (hit), mv_protest Glass 4.75 (cross), 10.75 (hit), 16.89 (hit), tg_d088 Explosion
+10.75 (cross), tg_d107 Screaming 7.0 (cross), tg_d127 Water 0.14 (visible). Dropped 0 -> 28/58, 21, 2.282 = base: main rule
+fails (cost not lower), fewer-pictures fails. **STOP.** Without the listener exception the 8 would go: 3 hits lost, 5 wrong
+fewer (25/58, 16 wrong) — fails both rules too (wrong 16 > 21 − 9). RELIABLE would allow nothing: of the 30 needed SHIP8
+misses only the two Explosions (as_explosion 2.8, tg_d125 5.4) have a RELIABLE family (FlexSED), and neither has a raw 0.8
+FlexSED run at its onset. Reading: the held-out precision prior separates families the listener already arbitrates; the
+cross pictures it flags (Gunshot/Glass/Explosion/Screaming) are heard by both listeners, so the error is placement or
+kinship, not the family. Closed.
