@@ -3746,3 +3746,13 @@ moves: 30/58, 18 (base + the rooster hit), cost < 2.141.** Other DEV clips were 
 rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR fewer-pictures clause ((a) cost
 < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures, the
 mechanism of any lost hit. TEST not read.
+
+### Round 52b KIN-KEEP step 1 result — held-out 415 (`benchmark/gold/kinkeep_415.py` -> `kinkeep_415.json`, CPU, login node): **STOP — no closeness level qualifies**
+Loader check: the Round 52 proxy set reproduces **64 spans, 27 correct = 0.422**. **"nonroot": kept 13, 7 correct = 0.538 (>= 0.375,
+n >= 10) but rest 51, 20 correct = 0.392, NOT < 0.375 -> fails. "parent": kept 9, 4 correct = 0.444, n 9 < 10 -> fails (rest 55,
+0.418).** As pre-registered: STOP — no src/config/arm change, no scp, no DEV run (the `kin_labels` function lives in the script only).
+Reading (reported, not used): the kin rule picks a better-than-average subset (0.538 vs 0.422), but what it leaves out is still
+above the raw-BEATs bar, so on the 415 the vetoed strong spans are not "kin = right, non-kin = wrong"; the excluded part is the
+problem Round 52 had, not one KIN-KEEP removes. The 13 kin spans: 9 in both (i)+(ii), 4 mirror only; competitors e.g. Goose for
+Fowl (correct), Helicopter for Vehicle (correct), Cough for Throat clearing (correct), Alarm for Whistle / Busy signal (wrong),
+Bird flight for Bird / Pigeon (wrong time). The DEV2 rooster stays a known miss. TEST not read.
