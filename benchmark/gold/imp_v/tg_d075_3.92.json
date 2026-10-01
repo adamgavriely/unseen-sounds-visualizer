@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d075",
+ "t": 3.92,
+ "peak": 0.616,
+ "inside_existing": [],
+ "frame_times": [
+  2.92,
+  3.32,
+  3.72,
+  4.12,
+  4.52,
+  4.92
+ ],
+ "vlm_raw": [
+  "c)",
+  "i)"
+ ],
+ "vlm_family_fwd": "Knock",
+ "vlm_family_rev": "Slam",
+ "family": null,
+ "decision": "no picture: none / split"
+}

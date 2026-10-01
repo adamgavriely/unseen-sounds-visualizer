@@ -1,0 +1,35 @@
+{
+ "part": "dev2",
+ "clip": "tg_d075",
+ "t": 9.86,
+ "peak": 0.799,
+ "inside_existing": [],
+ "frame_times": [
+  8.86,
+  9.26,
+  9.66,
+  10.06,
+  10.46,
+  10.86
+ ],
+ "vlm_raw": [
+  "j)",
+  "c)"
+ ],
+ "vlm_family_fwd": "Thump, thud",
+ "vlm_family_rev": "Thump, thud",
+ "family": "Thump, thud",
+ "gate_seen": false,
+ "gate_votes": {
+  "name": false,
+  "ab": null,
+  "desc": false,
+  "named": "fire extinguisher"
+ },
+ "decision": "picture",
+ "picture": [
+  "Thump, thud",
+  9.86,
+  11.86
+ ]
+}

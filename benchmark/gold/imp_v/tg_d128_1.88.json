@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d128",
+ "t": 1.88,
+ "peak": 0.611,
+ "inside_existing": [],
+ "frame_times": [
+  0.88,
+  1.28,
+  1.68,
+  2.08,
+  2.48,
+  2.88
+ ],
+ "vlm_raw": [
+  "a)",
+  "a)"
+ ],
+ "vlm_family_fwd": "Whack, thwack",
+ "vlm_family_rev": null,
+ "family": null,
+ "decision": "no picture: none / split"
+}

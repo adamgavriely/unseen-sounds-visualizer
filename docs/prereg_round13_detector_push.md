@@ -2055,3 +2055,14 @@ cross-trigger weight; caption-error severity metrics). Disclosure: docs/metric_p
 "visible = full false alarm"; this is a partial, post-hoc reversal, so the primary stays unchanged and every past decision
 stays judged on it. Cross is not split (it includes late same-family pictures the onset rule exists to punish). Re-scored for
 the whole shipped chain on merged DEV and on TEST (aggregates already reported); sensitivity only, no new "better" claim.
+### Round 37 result — IMP-V: STOP (H200, job 31598456, `benchmark/gold/imp_v_screen.py` -> `imp_v_screen.json`, votes in `imp_v/`)
+Base reproduced: SHIP8 merged 28/58, 21 (6/13/2), 2.282; DEV 19/38, 14, 2.122; tagger DEV 9/20, 7, 2.636. 30 peaks: 5 inside an
+existing impact-type SHIP8 picture (mv_protest Glass x4, motorcycle Explosion); 25 asked. Both orders agreed on a family 8 times:
+6 -> gate SEEN (no picture: construction Thump 6.4; golf Whack 6.7 / 11.5 / 19.8 / 24.7 — the golfer is on screen, name+desc
+votes yes, a/b split; tg_d128 Clang 5.8 "metal gate"); 2 -> drawn (tg_d075 Thump/thud 1.4 and 9.9, gate not seen: named "water
+bottle" / "fire extinguisher") — both score CROSS. 17 split/none, incl. the targets tg_d095 Dishes 16.9 (fwd Whack, rev none).
+**IMP-V: merged 28/58, 23 wrong (6/15/2), cost 2.338 | DEV unchanged | tagger DEV 9/20, 9, 2.818 -> STOP** (hits equal, +2 wrong,
+cost up). Reading, as pre-stated: the three targets never become pictures — the golf Whacks are named correctly but the gate
+(rightly, by its own rule) sees the golfer, i.e. the idea folds into the gate; Dishes is unnamed. Position bias note: the
+forward reply was "(a)" (= Whack, first option) in 13 of 25 asks and the reversed reply "(a)" (= none, first option) in 9 of
+25 — the two-order agreement rule did its job (only 8 accepted) but the closed question itself is mostly letter bias.

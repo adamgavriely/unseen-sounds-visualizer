@@ -1,0 +1,14 @@
+{
+ "part": "dev",
+ "clip": "mv_protest_scene_movie",
+ "t": 17.52,
+ "peak": 0.637,
+ "inside_existing": [
+  [
+   "Glass",
+   16.89,
+   20.0
+  ]
+ ],
+ "decision": "skip: inside existing impact-type picture"
+}

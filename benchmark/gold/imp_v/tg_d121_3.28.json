@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d121",
+ "t": 3.28,
+ "peak": 0.613,
+ "inside_existing": [],
+ "frame_times": [
+  2.28,
+  2.68,
+  3.08,
+  3.48,
+  3.88,
+  4.28
+ ],
+ "vlm_raw": [
+  "e)",
+  "a)"
+ ],
+ "vlm_family_fwd": "Clang",
+ "vlm_family_rev": null,
+ "family": null,
+ "decision": "no picture: none / split"
+}

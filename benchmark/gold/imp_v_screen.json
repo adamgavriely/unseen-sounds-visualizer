@@ -1,0 +1,841 @@
+{
+ "base": {
+  "merged": {
+   "hits": 28,
+   "n": 58,
+   "wrong": 21,
+   "visible": 6,
+   "cross": 13,
+   "phantom": 2,
+   "cost": 2.2816901408450705
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 14,
+   "visible": 4,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.122448979591837
+  },
+  "dev2": {
+   "hits": 9,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.6363636363636362
+  }
+ },
+ "rows": {
+  "merged": {
+   "hits": 28,
+   "n": 58,
+   "wrong": 23,
+   "visible": 6,
+   "cross": 15,
+   "phantom": 2,
+   "cost": 2.3380281690140845
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 14,
+   "visible": 4,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.122448979591837
+  },
+  "dev2": {
+   "hits": 9,
+   "n": 20,
+   "wrong": 9,
+   "visible": 2,
+   "cross": 7,
+   "phantom": 0,
+   "cost": 2.8181818181818183
+  }
+ },
+ "bins": {
+  "inside existing": 5,
+  "named -> gate seen": 6,
+  "named -> duplicate": 0,
+  "named -> drawn": 2,
+  "unnamed / split / none": 17
+ },
+ "hits_lost": [],
+ "old_rule": false,
+ "fewer_pictures": false,
+ "verdict": "STOP",
+ "model": "Qwen/Qwen3.8-27B",
+ "options": [
+  [
+   "a whack or thwack -- a club, bat, racket or hand striking something",
+   "Whack, thwack"
+  ],
+  [
+   "a hammer striking",
+   "Hammer"
+  ],
+  [
+   "a knock -- knuckles on a door or wood",
+   "Knock"
+  ],
+  [
+   "a door slamming",
+   "Slam"
+  ],
+  [
+   "a clang -- metal struck",
+   "Clang"
+  ],
+  [
+   "something smashing or crashing, glass breaking",
+   "Smash, crash"
+  ],
+  [
+   "dishes, pots or pans clattering",
+   "Dishes, pots, and pans"
+  ],
+  [
+   "a gunshot",
+   "Gunshot, gunfire"
+  ],
+  [
+   "an explosion",
+   "Explosion"
+  ],
+  [
+   "a thump or thud -- a heavy object landing",
+   "Thump, thud"
+  ],
+  [
+   "a door opening or closing",
+   "Door"
+  ],
+  [
+   "none of these / cannot tell",
+   null
+  ]
+ ],
+ "peaks": [
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "t": 6.44,
+   "peak": 0.588,
+   "inside_existing": [],
+   "frame_times": [
+    5.44,
+    5.84,
+    6.24,
+    6.64,
+    7.04,
+    7.44
+   ],
+   "vlm_raw": [
+    "j)",
+    "c)"
+   ],
+   "vlm_family_fwd": "Thump, thud",
+   "vlm_family_rev": "Thump, thud",
+   "family": "Thump, thud",
+   "gate_seen": true,
+   "gate_votes": {
+    "name": true,
+    "ab": null,
+    "desc": true,
+    "named": "excavator bucket"
+   },
+   "decision": "no picture: gate says seen"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 6.74,
+   "peak": 0.692,
+   "inside_existing": [],
+   "frame_times": [
+    5.74,
+    6.14,
+    6.54,
+    6.94,
+    7.34,
+    7.74
+   ],
+   "vlm_raw": [
+    "a)",
+    "l)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Whack, thwack",
+   "family": "Whack, thwack",
+   "gate_seen": true,
+   "gate_votes": {
+    "name": true,
+    "ab": null,
+    "desc": true,
+    "named": "golf club"
+   },
+   "decision": "no picture: gate says seen"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 11.46,
+   "peak": 0.702,
+   "inside_existing": [],
+   "frame_times": [
+    10.46,
+    10.86,
+    11.26,
+    11.66,
+    12.06,
+    12.46
+   ],
+   "vlm_raw": [
+    "a)",
+    "l)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Whack, thwack",
+   "family": "Whack, thwack",
+   "gate_seen": true,
+   "gate_votes": {
+    "name": true,
+    "ab": null,
+    "desc": true,
+    "named": "golf club"
+   },
+   "decision": "no picture: gate says seen"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 19.84,
+   "peak": 0.631,
+   "inside_existing": [],
+   "frame_times": [
+    18.84,
+    19.24,
+    19.64,
+    20.04,
+    20.44,
+    20.84
+   ],
+   "vlm_raw": [
+    "a)",
+    "l)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Whack, thwack",
+   "family": "Whack, thwack",
+   "gate_seen": true,
+   "gate_votes": {
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "golf club"
+   },
+   "decision": "no picture: gate says seen"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 24.72,
+   "peak": 0.581,
+   "inside_existing": [],
+   "frame_times": [
+    23.72,
+    24.12,
+    24.52,
+    24.92,
+    25.32,
+    25.72
+   ],
+   "vlm_raw": [
+    "a)",
+    "l)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Whack, thwack",
+   "family": "Whack, thwack",
+   "gate_seen": true,
+   "gate_votes": {
+    "name": true,
+    "ab": null,
+    "desc": true,
+    "named": "golf club"
+   },
+   "decision": "no picture: gate says seen"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "t": 11.54,
+   "peak": 0.853,
+   "inside_existing": [],
+   "frame_times": [
+    10.54,
+    10.94,
+    11.34,
+    11.74,
+    12.14,
+    12.54
+   ],
+   "vlm_raw": [
+    "c)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Knock",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 5.66,
+   "peak": 0.656,
+   "inside_existing": [
+    [
+     "Glass",
+     4.75,
+     6.25
+    ]
+   ],
+   "decision": "skip: inside existing impact-type picture"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 11.16,
+   "peak": 0.642,
+   "inside_existing": [
+    [
+     "Glass",
+     10.75,
+     13.75
+    ]
+   ],
+   "decision": "skip: inside existing impact-type picture"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 17.52,
+   "peak": 0.637,
+   "inside_existing": [
+    [
+     "Glass",
+     16.89,
+     20.0
+    ]
+   ],
+   "decision": "skip: inside existing impact-type picture"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 18.8,
+   "peak": 0.63,
+   "inside_existing": [
+    [
+     "Glass",
+     16.89,
+     20.0
+    ]
+   ],
+   "decision": "skip: inside existing impact-type picture"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 22.82,
+   "peak": 0.592,
+   "inside_existing": [],
+   "frame_times": [
+    21.82,
+    22.22,
+    22.62,
+    23.02,
+    23.42,
+    23.82
+   ],
+   "vlm_raw": [
+    "a)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "t": 14.04,
+   "peak": 0.596,
+   "inside_existing": [
+    [
+     "Explosion",
+     13.52,
+     15.42
+    ]
+   ],
+   "decision": "skip: inside existing impact-type picture"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 1.42,
+   "peak": 0.602,
+   "inside_existing": [],
+   "frame_times": [
+    0.42,
+    0.82,
+    1.22,
+    1.62,
+    2.02,
+    2.42
+   ],
+   "vlm_raw": [
+    "j)",
+    "c)"
+   ],
+   "vlm_family_fwd": "Thump, thud",
+   "vlm_family_rev": "Thump, thud",
+   "family": "Thump, thud",
+   "gate_seen": false,
+   "gate_votes": {
+    "name": false,
+    "ab": null,
+    "desc": false,
+    "named": "water bottle"
+   },
+   "decision": "picture",
+   "picture": [
+    "Thump, thud",
+    1.42,
+    3.42
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c2 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 2.54,
+   "peak": 0.714,
+   "inside_existing": [],
+   "frame_times": [
+    1.54,
+    1.94,
+    2.34,
+    2.74,
+    3.14,
+    3.54
+   ],
+   "vlm_raw": [
+    "a)",
+    "c)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Thump, thud",
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 3.92,
+   "peak": 0.616,
+   "inside_existing": [],
+   "frame_times": [
+    2.92,
+    3.32,
+    3.72,
+    4.12,
+    4.52,
+    4.92
+   ],
+   "vlm_raw": [
+    "c)",
+    "i)"
+   ],
+   "vlm_family_fwd": "Knock",
+   "vlm_family_rev": "Slam",
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 4.94,
+   "peak": 0.73,
+   "inside_existing": [],
+   "frame_times": [
+    3.94,
+    4.34,
+    4.74,
+    5.14,
+    5.54,
+    5.94
+   ],
+   "vlm_raw": [
+    "c)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Knock",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 5.58,
+   "peak": 0.694,
+   "inside_existing": [],
+   "frame_times": [
+    4.58,
+    4.98,
+    5.38,
+    5.78,
+    6.18,
+    6.58
+   ],
+   "vlm_raw": [
+    "a)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 7.4,
+   "peak": 0.657,
+   "inside_existing": [],
+   "frame_times": [
+    6.4,
+    6.8,
+    7.2,
+    7.6,
+    8.0,
+    8.4
+   ],
+   "vlm_raw": [
+    "c)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Knock",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 8.54,
+   "peak": 0.681,
+   "inside_existing": [],
+   "frame_times": [
+    7.54,
+    7.94,
+    8.34,
+    8.74,
+    9.14,
+    9.54
+   ],
+   "vlm_raw": [
+    "a)",
+    "c)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Thump, thud",
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 9.86,
+   "peak": 0.799,
+   "inside_existing": [],
+   "frame_times": [
+    8.86,
+    9.26,
+    9.66,
+    10.06,
+    10.46,
+    10.86
+   ],
+   "vlm_raw": [
+    "j)",
+    "c)"
+   ],
+   "vlm_family_fwd": "Thump, thud",
+   "vlm_family_rev": "Thump, thud",
+   "family": "Thump, thud",
+   "gate_seen": false,
+   "gate_votes": {
+    "name": false,
+    "ab": null,
+    "desc": false,
+    "named": "fire extinguisher"
+   },
+   "decision": "picture",
+   "picture": [
+    "Thump, thud",
+    9.86,
+    11.86
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c2 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 0.62,
+   "peak": 0.725,
+   "inside_existing": [],
+   "frame_times": [
+    0.0,
+    0.02,
+    0.42,
+    0.82,
+    1.22,
+    1.62
+   ],
+   "vlm_raw": [
+    "a)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 1.92,
+   "peak": 0.639,
+   "inside_existing": [],
+   "frame_times": [
+    0.92,
+    1.32,
+    1.72,
+    2.12,
+    2.52,
+    2.92
+   ],
+   "vlm_raw": [
+    "a)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 2.38,
+   "peak": 0.585,
+   "inside_existing": [],
+   "frame_times": [
+    1.38,
+    1.78,
+    2.18,
+    2.58,
+    2.98,
+    3.38
+   ],
+   "vlm_raw": [
+    "g)",
+    "h)"
+   ],
+   "vlm_family_fwd": "Dishes, pots, and pans",
+   "vlm_family_rev": "Clang",
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 16.88,
+   "peak": 0.588,
+   "inside_existing": [],
+   "frame_times": [
+    15.88,
+    16.28,
+    16.68,
+    17.08,
+    17.48,
+    17.88
+   ],
+   "vlm_raw": [
+    "a)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "t": 3.28,
+   "peak": 0.613,
+   "inside_existing": [],
+   "frame_times": [
+    2.28,
+    2.68,
+    3.08,
+    3.48,
+    3.88,
+    4.28
+   ],
+   "vlm_raw": [
+    "e)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Clang",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 1.88,
+   "peak": 0.611,
+   "inside_existing": [],
+   "frame_times": [
+    0.88,
+    1.28,
+    1.68,
+    2.08,
+    2.48,
+    2.88
+   ],
+   "vlm_raw": [
+    "a)",
+    "a)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": null,
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 2.42,
+   "peak": 0.608,
+   "inside_existing": [],
+   "frame_times": [
+    1.42,
+    1.82,
+    2.22,
+    2.62,
+    3.02,
+    3.42
+   ],
+   "vlm_raw": [
+    "a)",
+    "h)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Clang",
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 5.82,
+   "peak": 0.591,
+   "inside_existing": [],
+   "frame_times": [
+    4.82,
+    5.22,
+    5.62,
+    6.02,
+    6.42,
+    6.82
+   ],
+   "vlm_raw": [
+    "e)",
+    "h)"
+   ],
+   "vlm_family_fwd": "Clang",
+   "vlm_family_rev": "Clang",
+   "family": "Clang",
+   "gate_seen": true,
+   "gate_votes": {
+    "name": true,
+    "ab": false,
+    "desc": true,
+    "named": "metal gate"
+   },
+   "decision": "no picture: gate says seen"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 6.24,
+   "peak": 0.628,
+   "inside_existing": [],
+   "frame_times": [
+    5.24,
+    5.64,
+    6.04,
+    6.44,
+    6.84,
+    7.24
+   ],
+   "vlm_raw": [
+    "a)",
+    "h)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Clang",
+   "family": null,
+   "decision": "no picture: none / split"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 8.08,
+   "peak": 0.683,
+   "inside_existing": [],
+   "frame_times": [
+    7.08,
+    7.48,
+    7.88,
+    8.28,
+    8.68,
+    9.08
+   ],
+   "vlm_raw": [
+    "a)",
+    "h)"
+   ],
+   "vlm_family_fwd": "Whack, thwack",
+   "vlm_family_rev": "Clang",
+   "family": null,
+   "decision": "no picture: none / split"
+  }
+ ]
+}

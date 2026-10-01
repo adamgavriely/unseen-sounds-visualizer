@@ -1,0 +1,30 @@
+{
+ "part": "dev",
+ "clip": "b3_golf_course",
+ "t": 24.72,
+ "peak": 0.581,
+ "inside_existing": [],
+ "frame_times": [
+  23.72,
+  24.12,
+  24.52,
+  24.92,
+  25.32,
+  25.72
+ ],
+ "vlm_raw": [
+  "a)",
+  "l)"
+ ],
+ "vlm_family_fwd": "Whack, thwack",
+ "vlm_family_rev": "Whack, thwack",
+ "family": "Whack, thwack",
+ "gate_seen": true,
+ "gate_votes": {
+  "name": true,
+  "ab": null,
+  "desc": true,
+  "named": "golf club"
+ },
+ "decision": "no picture: gate says seen"
+}
