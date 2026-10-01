@@ -1,0 +1,397 @@
+{
+ "tg_d016": {
+  "Cough|5.75": {
+   "subject": "Person coughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d022": {
+  "Dog|7.25": {
+   "subject": "Dog barking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d030": {
+  "Vehicle|0.00": {
+   "subject": "Car driving",
+   "makers": [
+    "scooter"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  }
+ },
+ "tg_d032": {
+  "Thunder|13.75": {
+   "subject": "Sky rumbles",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d075": {
+  "Alarm|0.14": {
+   "subject": "Alarm clock ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d088": {
+  "Explosion|10.75": {
+   "subject": "Bomb explodes",
+   "makers": [
+    "lightning"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  },
+  "Thunder|13.25": {
+   "subject": "Clouds rumble",
+   "makers": [
+    "rain",
+    "lightning bolt"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d107": {
+  "Crying, sobbing|0.38": {
+   "subject": "Person crying",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Laughter|8.92": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Screaming|6.52": {
+   "subject": "Parrot screaming",
+   "makers": [
+    "green parrot"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d120": {
+  "Cat|0.56": {
+   "subject": "Cat meowing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d127": {
+  "Laughter|9.32": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Water|0.14": {
+   "subject": "Water pouring",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d128": {
+  "Hammer|9.00": {
+   "subject": "Hammer striking",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Laughter|3.08": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "tg_d149": {
+  "Bee, wasp, etc.|1.25": {
+   "subject": "Bee buzzing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_nature_rainforest_7629": {
+  "Insect|0.14": {
+   "subject": "Insect buzzing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_snow_walk_930": {
+  "Laughter|8.08": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_weather_storm_16200": {
+  "Thunder|0.06": {
+   "subject": "Sky rumbles",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ambient_weather_storm_7200": {
+  "Thunder|0.06": {
+   "subject": "Sky rumbles",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_church_bell_pJRAWkLM": {
+  "Bell|0.14": {
+   "subject": "Bell swinging",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_explosion_XJ8lc3I6": {
+  "Explosion|5.68": {
+   "subject": "Bomb explodes",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Gunshot|18.00": {
+   "subject": "Machine gun firing",
+   "makers": [
+    "AK-47 rifle",
+    "ak-47 rifle"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "as_fire_alarm_kGKZ0YK4": {
+  "Alarm|8.89": {
+   "subject": "Fire alarm ringing",
+   "makers": [
+    "fire alarm"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  }
+ },
+ "b3_bakery_morning": {
+  "Door|4.25": {
+   "subject": "Cupboard door closing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_barbershop": {
+  "Electric shaver, electric razor|16.00": {
+   "subject": "Man shaves face",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_botanic_garden": {
+  "Bird|1.00": {
+   "subject": "Bird chirping",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_crossing_bells": {
+  "Steam|0.22": {
+   "subject": "Train releases steam",
+   "makers": [
+    "steam train"
+   ],
+   "event": true,
+   "lookalike_yes": true,
+   "silenced": true
+  }
+ },
+ "b3_golf_course": {
+  "Bird|18.84": {
+   "subject": "Bird flying",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "b3_laundromat": {
+  "Train|1.00": {
+   "subject": "Train moving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "birds_forest": {
+  "Bird|10.25": {
+   "subject": "Rooster crows",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "london_protest_01": {
+  "Vehicle|0.25": {
+   "subject": "Train moving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ly_ambulance_(siren)_-yPSgCn": {
+  "Siren|0.00": {
+   "subject": "Emergency vehicle siren",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ly_applause_62ZYD0u": {
+  "Crowd|0.00": {
+   "subject": "Crowd clapping hands",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "ly_helicopter_-v62cK1": {
+  "Vehicle|6.31": {
+   "subject": "Car driving",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_detective_crime_scene": {
+  "Alarm|3.36": {
+   "subject": "Alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_protest_scene_movie": {
+  "Crowd|0.00": {
+   "subject": "Crowd cheering",
+   "makers": [
+    "crowd of people"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  },
+  "Glass|10.75": {
+   "subject": "Glass shatters",
+   "makers": [
+    "candles"
+   ],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_storm_scene_house": {
+  "Alarm|2.18": {
+   "subject": "Alarm ringing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "mv_tornado_scene": {
+  "Siren|9.25": {
+   "subject": "Siren sounding",
+   "makers": [
+    "air raid siren"
+   ],
+   "event": false,
+   "lookalike_yes": true,
+   "silenced": false
+  }
+ },
+ "un_driving_motorcycle_4O3bZRYO": {
+  "Laughter|13.36": {
+   "subject": "People laughing",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "un_driving_motorcycle_DgdHSmwA": {
+  "Explosion|13.92": {
+   "subject": "Bomb exploding",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ },
+ "un_hair_dryer_drying_WWu24rJs": {
+  "Computer keyboard|11.25": {
+   "subject": "Fingers strike keyboard",
+   "makers": [],
+   "event": false,
+   "lookalike_yes": false,
+   "silenced": false
+  }
+ }
+}

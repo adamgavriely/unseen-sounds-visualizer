@@ -47,4 +47,6 @@ python $P --split $NAME stage5 --arms B0r "$ARM"
 python $P --split $NAME gates --arms B0r "$ARM"
 # Round 47 GROUP (shipped 1 Oct): Omni same/new answers for close repeats, read at display time via config.GROUP_CACHE
 python -m src.stage6_visual_augmentation.group "data/work/r13$NAME/${ARM}_proposed" "data/work/r13$NAME/wav16"   # -> WORK_DIR/group_answers.json (use_shipped GROUP_CACHE)
+# Round 57 DEPICT-EVENT (shipped 1 Oct): VLM event + look-alike answers, read at display time via config.DEPICT_CACHE
+python -m src.stage6_visual_augmentation.depict "data/work/r13$NAME/${ARM}_proposed"
 echo "DONE runbest $NAME $ARM"

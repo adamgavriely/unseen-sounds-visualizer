@@ -668,6 +668,9 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
     Merges repeats of the same sound that are closer together than MERGE_GAP, and gives
     every appearance at least MIN_DWELL on screen.
     """
+    if getattr(config, "DEPICT_EVENT", False):       # Round 57 DEPICT-EVENT: drop pictures of a visibly happening, look-alike event
+        from src.stage6_visual_augmentation.depict import filter_specs as _depict
+        specs = _depict(specs, clip)
     dwell = float(getattr(config, "MIN_DWELL", MIN_DWELL))
     after = getattr(config, "MAX_AFTER_END", None)
     # gap < the stretched tail would put one label in two rows at once; with MAX_AFTER_END the tail is at most that long

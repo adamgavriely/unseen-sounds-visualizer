@@ -293,6 +293,8 @@ GROUP_ASK = False      # Round 47 GROUP: Qwen3-Omni decides whether two close sa
 GROUP_MAX_GAP = 8.0    # Round 47 as pre-registered and selected on DEV (the 4.0 limit was set after a TEST read; reverted 1 Oct, Adam: never tune on TEST)
 GROUP_CACHE = None     # json {clip: {"label|start": [answer, answer]}}; None -> WORK_DIR/group_answers.json when live
 GROUP_CLIP = None      # set by pipeline.run to the clip stem
+DEPICT_EVENT = False   # Round 57: drop a picture whose depicted event is visibly happening AND the gate's named maker could sound like it
+DEPICT_CACHE = None    # json {clip: {"label|start": {...,"silenced": bool}}}; None -> WORK_DIR/depict_answers.json
 GROUP_LIVE = False     # True: pipeline.run loads Qwen3-Omni itself; default the separate step (python -m src.stage6_visual_augmentation.group) fills GROUP_CACHE
 # Rows in the panel = the most sounds heard AT ONCE, capped here. Three sounds that
 # never overlap share one full-size cell in turn rather than splitting the panel into
@@ -506,7 +508,8 @@ def use_shipped() -> dict:
     setattr(me, "PICTURE_MIN_CONF", 0.40)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3),
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
+                 # DEPICT_EVENT (Round 57, Adam OK 1 Oct 15:34): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
                  # GROUP (Round 47, Adam 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)
                  # MERGE_GAP 2.5 (Adam, 1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545

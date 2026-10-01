@@ -3828,3 +3828,10 @@ src/config in this round (scripts only); shipping is the coordinator's call. TES
 **Honest reading (coordinator + Fable, 1 Oct, added after the result):** the event question said "no" on 42/43 pictures; the gain
 is one picture (b3_crossing_bells Steam, a cross), at the noise floor; hit safety is untested, not shown (no hit ever reached
 event = yes). Decision: ships under the standing rule "DEV pass -> ship; TEST read once afterwards, reported only".
+
+### Round 57 shipped (Adam's OK 1 Oct 15:34, written BEFORE the TEST read)
+Wired as `src/stage6_visual_augmentation/depict.py` (separate per-clip step; cache WORK_DIR/depict_answers.json; drop applied in
+`_display_spans` by clip), `config.use_shipped` DEPICT_EVENT True, `run_best.sh` step after GROUP, ARMS["SHIP8+MD3"] carries it.
+Checks: shipped form through the scorer = merged DEV **29/58, 17 (6/9/2), 2.113** (the screen's number); flags off (SHIP8) =
+28/18/2.197 as before; parity_check flags only PICTURE_MIN_CONF (pending Adam). Implementation note: the VLM is not asked when the
+gate named no maker (the rule cannot fire there) — same decisions as the screen. TEST read next, once, reported only.
