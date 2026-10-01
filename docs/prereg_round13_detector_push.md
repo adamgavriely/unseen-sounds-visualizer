@@ -3835,3 +3835,5 @@ Wired as `src/stage6_visual_augmentation/depict.py` (separate per-clip step; cac
 Checks: shipped form through the scorer = merged DEV **29/58, 17 (6/9/2), 2.113** (the screen's number); flags off (SHIP8) =
 28/18/2.197 as before; parity_check flags only PICTURE_MIN_CONF (pending Adam). Implementation note: the VLM is not asked when the
 gate named no maker (the rule cannot fire there) — same decisions as the screen. TEST read next, once, reported only.
+### Round 57 TEST read (job 31602874 answers + `test_vs_ship8.py SHIP8+MD3`; reported, not selected on)
+Base 22/65, 26 (4/17/5), 2.545 reproduced. With DEPICT-EVENT: **22/65, 26, 2.545, d 0.000** — the rule silenced no TEST picture.
