@@ -3653,3 +3653,11 @@ to 0.20, so the 415 gives no bar that separates bad one-ear spans; the only drop
 tg_d075 / tg_d032 (0.296 / 0.309) and would leave Round 53's DEV outcome almost unchanged. Disclosure: at b1 0.05 the tiered rule
 would drop 276 spans on the 415 at 0.101 precision vs Round 53's both-only 339 at 0.150 (proxy ears). Round 53 stays FAIL;
 DASM_LOCAL_VETO stays None. TEST not read.
+
+### Round 56 step 1 result — held-out 415 (`benchmark/gold/twinshort_415.py` -> `twinshort_415.json`, CPU, login node): no STOP
+Loader check reproduces raw BEATs (display bar, min 0.5) **754 / 283 = 0.375**. **G (case-1 unions, partner band 0.5, conf >= 0.35):
+235, 158 correct = 0.672 >= 0.375 -> no STOP, GO to step 2.** By sub-case: short+short 9, 0.889; shortB+longF 226, 0.664. G with family
+DASM clip max < 0.0839 (what the DV exemption saves): **6, 0 correct = 0.000** (reported, not a guard). All case-1 unions incl.
+sub-display 522, 0.556; literal rule (partner at 0.8) G 183, 0.574; case-2 short FlexSED spans 315, 0.279. Reading: most of G is a
+short BEATs blip inside a long FlexSED band run (226 of 235), so the 415 pass mostly measures FlexSED band runs; the DV-exempt subset
+is tiny and all wrong on the 415.
