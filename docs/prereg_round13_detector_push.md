@@ -3886,3 +3886,34 @@ ly_helicopter Vehicle 0.14-17.75 -> 0.0-18.0 (hit either way). **Merged DEV SHIP
 (6/9/3), 2.141** vs 29/17 (6/9/2), 2.113 before the fill (DEV 19/11, DEV2 10/7 unchanged). Reading: with every asked run
 answered, the shipped arm's honest DEV number is 2.141 (one more phantom); the gap hid a wrong picture, not a hit. No rule
 changed; TEST not read. `cachefill_post_dev{,2}.json` hold the per-clip before/after.
+
+## Round 58b FLEX-WITNESS — one ear + FlexSED as the witness (written 2026-10-01 BEFORE any 415 or DEV number of it; follows Round 53 / 53b / 53c)
+**Rule (one new flag, default off: `DASM_LOCAL_FLEX_ONE_EAR` = 0.5).** SHIP8+MD3 + `DASM_LOCAL_VETO` 0.35 + `DASM_LOCAL_KEEP` "both"
+(Round 53, unchanged) + the new clause: a non-rescued span with family DASM max over [start − 0.5, end + 0.5] < 0.35 is KEPT iff
+both ears name it (Qwen V4 'onto' AND AF V4 accepts, as Round 53) OR (exactly one of the two ears names it AND FlexSED's own-family
+frame max over [start − 0.5, end + 0.5] >= 0.5). Otherwise dropped (no ear -> dropped, as Round 53). FlexSED own-family = the
+clip's FlexSED columns with canonical(column) == canonical(span label) (the frames stage 4 already has: main queries, plus extra
+columns when FLEXSED_EXTRA is on); no FlexSED column / no frame -> the clause cannot keep the span. Both bars are pre-existing:
+0.35 = Round 53's DASM bar (from the 415), 0.5 = the shipped FlexSED band bar. No value is read from new data.
+**Known before writing (DEV, mechanism only; `benchmark/gold/flexwitness_dev.py` -> `flexwitness_dev.json`, commit ffdb442).**
+FlexSED own-family max (span ±0.5) on Round 53's 7 changed pictures: lost hits tg_d032 Thunder 0.683 (Qwen only), tg_d075 Alarm
+0.914 (AF only); removed wrongs b3_laundromat Train 0.711 (no ear: AF "engine" -> Vehicle is an ancestor, not 'onto'),
+mv_protest Glass 4.75 0.318 (Qwen only), tg_d022 Dog 0.564 (no ear), tg_d107 Screaming 0.898 (one ear), tg_d128 Hammer 0.481 (AF
+only). Ear status from Round 53 step 0 / Round 53c's table (coordinator's reading). Under the combined rule: Thunder, Alarm and
+Screaming kept; Train, Glass, Dog, Hammer dropped -> **expected DEV ~29 hits, 4 wrong fewer than base** (if no other span changes).
+**Disclosure:** the Step-A gate was first stated on FlexSED alone ("lost hits >= 0.5 and most removed wrongs < 0.5"); on those
+values it failed (3 of 5 removed wrongs >= 0.5). The coordinator then restated the test on the combined rule (one-ear gating)
+AFTER the 7 values were seen; this round is therefore a DEV-informed rule and the 415 gate below is its only independent check.
+**Step 1 — held-out 415 (`benchmark/gold/flexwitness_415.py`, CPU, login node).** Span set = Round 53 step 1 (`weakwitness_415.json`
+rows: raw BEATs spans, bar 0.35, low 0.175, min 0.3 s, depictable, Round 42 class). Ears = Round 53b's whole-clip list proxy
+(Qwen3-Omni list items -> `expect_a_screen.map_item`, AFN list families; one-ear = family named by exactly one list) —
+**disclosed limitation: whole-clip lists stand in for the span-level V4 asks the DEV rule uses.** FlexSED own-family max over
+[onset − 0.5, end + 0.5] from `data/work/flexsed_heldout/<id>.npz`, columns with canonical(column) == span family. **GO iff
+one-ear spans with FlexSED >= 0.5 have precision >= 0.375 (the raw-span reference) AND one-ear spans with FlexSED < 0.5 (incl.
+no FlexSED column) have precision <= 0.20 (Round 53's drop bar).** Else STOP: no src/config/arm change, no DEV run. Reported, not
+used: the same split restricted to DASM < 0.35 (the spans the rule touches), no-column counts, 0-ear / 2-ear spans by FlexSED.
+**Step 2 — DEV (only if GO).** `ARMS["SHIP8+MD3+FW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP": "both",
+"DASM_LOCAL_FLEX_ONE_EAR": 0.5}`; r16dev (~/MscProj_r13) then tgarms (~/MscProj_tg), as Round 53. Base SHIP8+MD3 must reproduce
+**29/58, 18 (6/9/3), 2.141** (filled caches). **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 +
+2 × hits gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26).
+Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures. TEST not read.
