@@ -237,6 +237,7 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             if getattr(config, "FLEXSED_EXTRA", False):
                 ffw, ftimes, flabels = add_flexsed_extra(ffw, ftimes, flabels, Path(wav_path).parent.name)
             config._CURRENT_CLIP = Path(wav_path).parent.name       # round 18 N2b: the clip id for per-clip caches
+            config._CURRENT_WAV = str(wav_path)                     # round 63 TAG-ENS: live tagger pass if uncached
             events, flex_ids, ffw = fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur,
                                                  backend=backend, panns=lambda: _infer(Path(wav_path), device),
                                                  listener=_pipeline_listener(wav_path),
@@ -638,6 +639,36 @@ def twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, ba
     return c1, c2
 
 
+_TAGENS: dict = {}
+
+
+def tag_ens_frames(framewise, times, labels, clip, wav=None):
+    """Round 63 TAG-ENS: mean(BEATs, calibrated taggers) on BEATs' 2-s / 0.25-s grid. config.TAG_ENS = the frozen
+    tagens_calib.json (taggers, cache folder, labels); its .npz holds per-label quantiles {m}_qT / {m}_qB [2001, 527] fitted
+    label-free on 415 half A. Tagger frames come from <cache>/<model>/<clip>.npz or, if absent, are scored live from `wav`."""
+    cj = Path(config.TAG_ENS)
+    if _TAGENS.get("path") != str(cj):
+        z = np.load(cj.with_suffix(".npz"))
+        _TAGENS.clear()
+        _TAGENS.update(path=str(cj), meta=json.loads(cj.read_text(encoding="utf-8")), q={k: z[k] for k in z.files})
+    meta = _TAGENS["meta"]
+    assert list(labels) == meta["labels"], "TAG_ENS: label order differs from BEATs'"
+    parts = [np.asarray(framewise, np.float32)]
+    for m in meta["taggers"]:
+        p = Path(meta["cache"]) / m / f"{clip}.npz"
+        if not p.exists():
+            if not wav:
+                raise FileNotFoundError(f"TAG_ENS: no {m} frames for {clip} at {p} and no wav to score")
+            from benchmark.gold import tagens as _TE      # live: one pass of the tagger over BEATs' windows
+            _TE.score_to(m, Path(wav), np.asarray(times), p)
+        z = np.load(p)
+        fw = z["fw"].astype(np.float32)
+        assert fw.shape == parts[0].shape and np.allclose(z["times"], times, atol=1e-3), f"TAG_ENS grid mismatch {m} {clip}"
+        qT, qB = _TAGENS["q"][f"{m}_qT"], _TAGENS["q"][f"{m}_qB"]
+        parts.append(np.stack([np.interp(fw[:, c], qT[:, c], qB[:, c]) for c in range(fw.shape[1])], axis=1))
+    return np.mean(parts, axis=0)
+
+
 def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur, backend: str = "BEATs",
                  panns=None, listener=None, listener_p1=None, extra=None):
     """The union of the tagger's spans with FlexSED's, and the vetoes (amendments 8, 10, 11, 16, 22; round 4; round 13).
@@ -648,6 +679,15 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
     ids of the spans FlexSED raised alone and ffw the (possibly per-family rescaled) FlexSED scores. `listener` (R13-3,
     config.LISTENER_RESCUE) is a lookup(label, start, end, contain=False) -> the cached listener item or None."""
     from src.labels import canonical
+    # Round 63 TAG-ENS (docs/prereg_round13_detector_push.md): the tagger spans are re-cut from the mean of BEATs and the
+    # quantile-calibrated EAT / SSLAM frames on BEATs' grid; every veto below keeps reading the raw BEATs `framewise`.
+    if getattr(config, "TAG_ENS", None) and backend == "BEATs":
+        fw_e = tag_ens_frames(framewise, times, labels, getattr(config, "_CURRENT_CLIP", None),
+                              getattr(config, "_CURRENT_WAV", None))
+        thr = float(getattr(config, "AED_THRESHOLD", 0.175))
+        events = _extract_events(fw_e, times, labels, thr, None, min_dur,
+                                 low=thr * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+        trace("tag_ens", events, "R63 spans from the calibrated tagger mean")
     fbar = float(getattr(config, "FLEXSED_BAR", 0) or 0)
     flex_ids = set()
     _pc = {}
