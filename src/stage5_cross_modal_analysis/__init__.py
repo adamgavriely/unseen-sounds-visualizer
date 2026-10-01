@@ -45,6 +45,11 @@ def plan_augmentations(scene: SceneContext,
     # below the bar was dropped here. A marginal firing never extends or details a strong
     # family (the "reversing tractor" case), because the two sets are consolidated apart.
     drawable = [e for e in events if is_salient_nonspeech(e.label)]
+    # Round 65 RETURN: a RET row (marked by a zero-length break at its start; only config.PERC_RETURN makes one) is its own
+    # candidate -- never merged into its family's spec, so the gate judges its stretch alone
+    from src.stage4_audio_event_detection import is_return_row as _isret
+    rets = [e for e in drawable if _isret(e.start, getattr(e, "breaks", None))]
+    drawable = [e for e in drawable if not _isret(e.start, getattr(e, "breaks", None))]
     strong_bar = min_confidence("", display_threshold)
     candidates = consolidate_families(drawable, threshold=strong_bar)
     strong_families = {c.label for c in candidates}
@@ -52,6 +57,8 @@ def plan_augmentations(scene: SceneContext,
     marginal = [e for e in drawable if 0.5 * strong_bar <= e.confidence < strong_bar
                 and _canon(e.label) not in strong_families]
     candidates += consolidate_families(marginal, threshold=0.5 * strong_bar)
+    for e in rets:                                   # Round 65 RETURN: one spec each (consolidate_families of one row)
+        candidates += consolidate_families([e], threshold=0.0)
 
     specs: List[AugmentationSpec] = []
     for i, ev in enumerate(candidates):

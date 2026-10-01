@@ -271,6 +271,12 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
                                   listener_p1=_pipeline_listener_p1(wav_path))
     if getattr(config, "RETRIGGER", None):
         attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels)
+    if getattr(config, "PERC_RETURN", None):               # Round 65 RETURN: after every stage-4 filter
+        import librosa
+        _y, _ = librosa.load(str(wav_path), sr=RET_SR, mono=True)
+        _ret = perceptual_returns(events, framewise, times, labels, ffw, ftimes, flabels, _y)
+        events = events + _ret
+        trace("return", _ret, "Round 65 RETURN rows")
     n_classes = len({e.label for e in events})
     print(f"       [stage4] {backend} SED: {len(events)} event span(s) over "
           f"{n_classes} class(es) (threshold={threshold}).")
@@ -599,6 +605,79 @@ def attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels) -> Non
         if fam not in memo:
             memo[fam] = family_absences(fam, framewise, times, labels, ffw, ftimes, flabels, gap, fl, tl)
         e.breaks = list(memo[fam])
+
+
+# Round 65 RETURN (config.PERC_RETURN = k; docs/prereg_round13_detector_push.md "Round 65 RETURN")
+RET_GAP, RET_WIN, RET_LEN, RET_TAG_LOW, RET_FLEX_LOW, RET_SR = 2.0, 0.3, 0.5, 0.2, 0.5, 16000
+
+
+def onset_peaks(audio, sr: int = RET_SR):
+    """librosa onset-strength envelope (defaults: hop 512, mel flux) -> (peak times, peak heights, median peak height)"""
+    import librosa
+    from scipy.signal import find_peaks
+    env = librosa.onset.onset_strength(y=np.asarray(audio, np.float32), sr=sr)
+    idx, _ = find_peaks(env, distance=3)
+    if not len(idx):
+        return np.zeros(0), np.zeros(0), 0.0
+    h = env[idx].astype(float)
+    return librosa.frames_to_time(idx, sr=sr), h, float(np.median(h))
+
+
+def is_return_row(start, breaks) -> bool:
+    """a RET row carries a zero-length break at its own start (nothing else makes one)"""
+    return any(abs(float(b[0]) - float(b[1])) < 1e-6 and abs(float(b[0]) - float(start)) < 1e-3 for b in (breaks or ()))
+
+
+def perceptual_returns(events, framewise, times, labels, ffw, ftimes, flabels, audio, k=None, sr: int = RET_SR):
+    """Round 65 RETURN: new rows (AudioEvent) for drawn families at qualifying onset-strength peaks. A peak p (height >= k x
+    the clip's median peak) makes a row of family f iff f has sub-bar evidence within p +- 0.3 s (BEATs columns >= 0.2,
+    held over [t, t + hop), or FlexSED family/child queries >= 0.5) and p is >= 2.0 s from every span of f (all stage-4 rows
+    of f at any confidence, plus the RET rows already made; peaks in time order). Row: [p, p + 0.5], confidence = f's
+    highest stage-4 confidence, breaks = zero-length markers at its start and end (no merge joins it; stage 5 gives it its
+    own spec; GROUP never pairs it)."""
+    from src.labels import canonical, is_salient_nonspeech
+    k = float(getattr(config, "PERC_RETURN", None) if k is None else k)
+    disp = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+    clip_end = len(audio) / float(sr)
+    old = config.LABEL_FILTER
+    config.LABEL_FILTER = "depictable"                     # the pipeline's label filter (as filter_rescued)
+    try:
+        fams = {}
+        for e in events:
+            fams.setdefault(canonical(e.label), []).append(e)
+        drawn = {f: ee for f, ee in fams.items()
+                 if any(is_salient_nonspeech(x.label) and x.confidence >= disp for x in ee)}
+    finally:
+        config.LABEL_FILTER = old
+    if not drawn:
+        return []
+    pt, ph, med = onset_peaks(audio, sr)
+    if med <= 0:
+        return []
+    tt = np.asarray(times, float)
+    hop = (tt[1] - tt[0]) if len(tt) > 1 else 0.25
+    spans = {f: [(float(x.start), float(x.end)) for x in ee] for f, ee in drawn.items()}
+    out = []
+    for p, h in sorted(zip(pt, ph)):
+        p = round(float(p), 3)
+        if h < k * med:
+            continue
+        for f in sorted(drawn):
+            d = min((p - b if b <= p else a - p if a >= p else 0.0) for a, b in spans[f])
+            if d < RET_GAP - 1e-6:
+                continue
+            tc = [i for i, l in enumerate(labels) if canonical(l) == f]
+            m = (tt < p + RET_WIN) & (tt + hop > p - RET_WIN)
+            ev = bool(tc and m.any() and float(np.asarray(framewise)[m][:, tc].max()) >= RET_TAG_LOW)
+            if not ev and ffw is not None:
+                ev = _family_peak(f, p - RET_WIN, p + RET_WIN + 1e-6, ffw, ftimes, flabels) >= RET_FLEX_LOW
+            if not ev:
+                continue
+            end = round(min(p + RET_LEN, clip_end), 3)
+            conf = max(float(x.confidence) for x in drawn[f])
+            out.append(AudioEvent(f, p, end, conf, breaks=[(p, p), (end, end)]))
+            spans[f].append((p, end))
+    return out
 
 
 def twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, band, twin_max=True, disp=0.35):

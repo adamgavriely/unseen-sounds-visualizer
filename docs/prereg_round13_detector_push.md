@@ -4579,3 +4579,17 @@ return must fit in 10 s), so the 415 under-samples long-pause returns.
 DEV2 ~/MscProj_tg, `merged_dev.py`). D must reproduce **29/58, 14 (6/6/2), 2.028**. **PASS iff** cost < 2.028 AND (main rule: hits >=
 29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × hits lost, hits >= 26). Listed: every RET row made, every changed
 picture vs D with its class, per-video cost (onset envelope ~CPU s per clip + the gate/depiction VLM asks of the new specs). TEST not read.
+
+### Round 65 RETURN result — 415 guard: **STOP** (login node, CPU; `benchmark/gold/perc_return.py guard`, `perc_return_415.json`)
+Half A (207 clips; candidates / new-event correct / precision): k 1: 131 / 16 / 0.122; 1.5: 101 / 14 / 0.139; 2: 73 / 10 / 0.137;
+3: 52 / 9 / 0.173; **4: 33 / 7 / 0.212 (chosen: highest precision with >= 20)**; 6: 15 (< 20). **Half B (208), k 4: 26 candidates, 3
+correct, p 0.115** (plain Round 42 rule also 3 / 26 = 0.115) — far below the 0.42 bar -> **STOP, no DEV run.** Compare-to-pipeline (half
+B): the raw BEATs spans are 391, p 0.292 under the new-event truth and 0.381 under the plain rule, i.e. RET candidates are ~3x less
+precise than the detector's own spans. Reading: a loud clip-relative onset with sub-bar same-family evidence nearby is mostly ANOTHER
+sound (half-B candidates: Insect ×4, Bell, shaver, Crowd, Explosion, Chink ×2 each; 3 of 26 at the clip's first 0.2 s, where the
+envelope always peaks). Disclosed: the 10-s clips truncate returns, and the "drawn" set is raw spans (no gate / listener / vetoes), so
+the 415 under-samples long-pause returns and over-supplies drawn families; the gap (0.12 vs 0.42) is too large for either to close.
+Cost had it shipped: ~0.18 s CPU per clip for all six k (onset envelope + peaks), plus the gate / depiction asks of each new spec.
+Code kept default-off: `config.PERC_RETURN = None`; arm line `SHIP8+MD3+WW5+RET` kept with PERC_RETURN None; stage-5 / GROUP hooks act
+only on RET-marked rows (none exist with the flag off). Known targets (tg_d032 Thunder 7.4, as_explosion Explosion 2.8, birds_forest
+Bird 1.3, tg_d120 Meow 2.9) not checked on DEV (no DEV run after STOP). TEST not read.

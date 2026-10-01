@@ -464,6 +464,7 @@ FIX_CTRL = False              # Round 14 amendment F: V12 = V1 alone when V2 has
 FIX_GATE = False              # Round 14 amendment F: a gate "visible" verdict naming no object counts as not visible
 GATE_BOX_CHECK = False        # Round 38 BOX-2 arm: a "seen" stretch whose box crop is twice "not the object" -> not seen
 CONCEALED_ACTION = None       # Round 64: tuple of labels whose sound-making is hidden inside the visible source; the gate (vote + kinship) may not silence them
+PERC_RETURN = None            # Round 65 RETURN: k; a drawn family gets a NEW picture at an onset-strength peak >= k x the clip's median peak with sub-bar same-family evidence, >= 2 s from its other spans
 LISTENER_ARBITER = False      # Round 14 amendment F: Qwen V4 & AF V4 but V12 no -> the VLM arbiter decides in stage 5
 LISTENER_SCENE_FIT = False      # Round 14 F3: the gate VLM must say the rescued sound could plausibly be heard in the scene
 LISTENER_BEATS_TH = None      # R13-3 (c): also a short BEATs run (peak 0.175-0.35, not covered) at the display bar if score > this

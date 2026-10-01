@@ -242,6 +242,7 @@ ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/
 ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
 ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": "/home/dsi/adamg/MscProj/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
 ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
+ARMS["SHIP8+MD3+WW5+RET"] = {**ARMS["SHIP8+MD3+WW5"], "PERC_RETURN": None}   # Round 65 RETURN (k from the 415 half A; set on GO)
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
@@ -486,6 +487,21 @@ def add_breaks(rows, arm, C, ffw):
         r["breaks"] = [list(b) for b in e.breaks]
 
 
+def ret_rows(rows, arm, C, ffw, st):
+    """Round 65 RETURN: src.stage4_audio_event_detection.perceptual_returns on the final rows, audio = the clip's wav"""
+    import librosa
+    from src.stage4_audio_event_detection import perceptual_returns, RET_SR
+    wav = DCC.wav_of(st)
+    assert Path(wav).exists(), f"RET: no wav for {st}: {wav}"
+    y, _ = librosa.load(str(wav), sr=RET_SR, mono=True)
+    with flags(arm_cfg(arm)):
+        evs = [AudioEvent(r["label"], r["start"], r["end"], r["conf"]) for r in rows]
+        new = perceptual_returns(evs, C["beats"][0], C["beats"][1], C["beats"][2], ffw, C["flex"][1], C["flex"][2], y)
+    return [{"label": e.label, "start": float(e.start), "end": float(e.end), "conf": float(e.confidence), "origin": "ret",
+             "rescued": False, "arbiter": False, "agree": False, "pre_start": float(e.start), "refine": "none (RET)",
+             "breaks": [list(b) for b in e.breaks]} for e in new]
+
+
 def stage4(arms, offline=False):
     if offline:
         loc = Path(os.environ["R13_LOCAL"])
@@ -537,6 +553,8 @@ def stage4(arms, offline=False):
                 rows = reloc_rows(rows, arm, C2, info, res, k, st)
                 rows = filter_rows(rows, arm, C2, info["ffw"], res, k, st)
                 add_breaks(rows, arm, C2, info["ffw"])
+                if arm_cfg(arm).get("PERC_RETURN"):     # Round 65 RETURN (the harness rebuilds stage-4 rows, so the hook is here too)
+                    rows = rows + ret_rows(rows, arm, C2, info["ffw"], st)
                 res["arms"][k][st] = rows
         if not offline:
             DCC.dump(STAGE4, res)
