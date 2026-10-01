@@ -3217,3 +3217,12 @@ now handles at display. **Arm SHIP8+MD3** = shipped SHIP8 (MERGE_GAP 2.5, GROUP)
 merged DEV (job_round16_dev + job_tagger_arms). **Pass vs SHIP8 (28/58, 18 (6/10/2), 2.197):** main rule or fewer-pictures clause
 as Round 47; w = 1 secondary. TEST once if it passes. New rows have no cached listener answers: the TIER rule treats them as the
 shipped code does (missing answer = no rescue), disclosed.
+
+## Round 49 BANDLIST — weak FlexSED runs that both the whole-clip list and DASM back (written 2026-10-01 BEFORE any DEV number; selection set = held-out 415, `bandlist_415.json`)
+**Held-out (read first, selects the rule):** FlexSED runs with max in [0.5, 0.8), >= 0.5 s, depictable family: 223/1421 = 0.157
+precise; named by the Qwen3-Omni whole-clip list (`expect_a_screen.LIST_Q`, frozen map): 69/166 = 0.416; **named AND DASM >= 0.575
+within onset ± 0.5 s: 38/55 = 0.691** (raw FlexSED >= 0.8: 0.394; EXPECT-A4 chain 0.80). Rule frozen from that row.
+**Arm SHIP8+BANDLIST (DEV):** per merged-DEV clip, every such run (onset = run start) whose family has no SHIP8 picture starting
+within ± 2 s -> candidate; the shipped stage-5 gate at onset − 1 … + 1 s (as Round 40e) -> 2-s picture added; then GROUP/MERGE_GAP as
+shipped. **Pass vs SHIP8 (28/58, 18 (6/10/2), 2.197):** main rule or fewer-pictures clause; w = 1 and more-hits secondary. TEST once if
+it passes. Files: `benchmark/gold/bandlist_screen.py` (cands CPU / gate GPU / score CPU) -> `benchmark/gold/bandlist/`.
