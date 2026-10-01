@@ -1,0 +1,26 @@
+{
+ "base": {
+  "seen": 41,
+  "seen_sil": 16,
+  "needed": 38,
+  "needed_kept": 33
+ },
+ "human_add": {
+  "seen": 41,
+  "seen_sil": 16,
+  "needed": 38,
+  "needed_kept": 33
+ },
+ "go": false,
+ "flips": [],
+ "pictures": {
+  "counts": {
+   "pictures": 50,
+   "no cached clip": 16,
+   "no matching sound": 11,
+   "matched, not seen": 23,
+   "silenced": 0
+  },
+  "silenced": []
+ }
+}

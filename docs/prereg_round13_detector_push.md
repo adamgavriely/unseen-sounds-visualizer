@@ -3046,3 +3046,11 @@ draws, seed 0, one-sided p); not selected on. Disclosed honestly: the per-pictur
 Round 40e result sections above, so this round's outcome is deducible before running; it is pre-registered so the family list, not
 the gold, is what selects. GO -> a `src/` flag is Adam's decision. **Files:** `benchmark/gold/expect_a5_screen.py` (CPU, from
 `~/MscProj_tg`, `TG_ARMS=SHIP8`) -> `benchmark/gold/expect_a5_screen.json`.
+
+### Round 43c result — HUMAN-ADD: STOP, no change at all (CPU, laptop, `benchmark/gold/human_add_screen.py` -> `human_add_screen.json`)
+Base reproduced (16/41, 33/38). **ADD-seen: 16/41 seen silenced, 33/38 needed kept — identical to base, no sound flips.** Every
+sound HUMAN-2 silences on its own (storm Rain, golf-club Whip, …, 5 of 41) is one the shipped majority already silences; the
+13 visible sounds HUMAN-2 gets right but the shipped gate does not are not reached because HUMAN-2 never reaches a majority of
+their stretches. SHIP8 placed pictures (merged DEV, 50): 16 on clips without a HUMAN-2 cache (all tg_*: d127 Water, d128
+Laughter not readable), 11 with no same-family gold sound at the picture onset ± 0.5 s, 23 matched but HUMAN-2 not seen
+(storm Thunder ×2, protest Vehicle/air horn among them), **0 silenced**. Not GO; no full arm warranted. Closed.
