@@ -2,7 +2,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
 <style>
-/* Layout: one reading column, sections in the order a supervisor checks a thesis (task, method, result, errors, limits, sign-off). Same look as the 28 Sept page. */
+/* Layout: one reading column, sections in the order a supervisor checks a thesis (task, method, result, errors, limits, sign-off). Results first, detail in fold-outs. */
 :root{
   --bg:#f5f6f8; --paper:#ffffff; --ink:#1d2433; --muted:#5d6678; --line:#dde1e8; --chip:#eef1f6;
   --ours:#2f6fdb; --base:#8a93a3; --good:#1f7f58; --bad:#b83c33; --warn:#94600f;
@@ -111,6 +111,13 @@ textarea{width:100%; min-height:3.2em; font:inherit; font-size:.92rem; padding:8
 #copyout{display:block; width:100%; margin-top:10px}
 footer{margin-top:56px; font-size:.86rem; color:var(--muted); max-width:86ch}
 code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1px 4px; border-radius:3px; word-break:break-word}
+details .dbody{padding:0 14px 14px}
+details .dbody .tw{border:1px solid var(--line); border-radius:10px}
+.inspect{display:grid; grid-template-columns:1fr auto; gap:6px 16px; align-items:center; background:var(--look-bg); border:2px solid var(--ours); border-radius:12px; padding:14px 16px; margin:4px 0 18px}
+.inspect p{margin:4px 0 0; font-size:.93rem}
+.inspect .btn{text-decoration:none; text-align:center}
+.inspect .note{grid-column:1/-1; margin:0}
+@media (max-width:600px){.inspect{grid-template-columns:1fr}}
 </style>
 
 <div class="wrap">
@@ -120,26 +127,8 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
   <h1>Seeing Off-Screen Sound</h1>
   <p class="lede">A deaf or hard-of-hearing viewer misses sounds they cannot hear and cannot see the source of. The system finds those sounds in a video and shows a small picture of each one beside it. No model was trained; existing models are chained.</p>
   <div class="oneline"><b>In one line:</b> on the 88 TEST clips the final system finds 22 of 65 needed sounds and shows 26 wrong pictures. Its viewer cost is 2.55 against 2.96 for showing nothing and 2.91 for the old pipeline. Most remaining errors are sounds no model hears clearly, or cases where the models disagree at about chance.</div>
-  <nav class="toc" aria-label="Sections">
-    <a href="#changed">0 Since 28 Sept</a><a href="#task">1 Task</a><a href="#method">2 Method</a><a href="#system">3 System</a><a href="#results">4 Results</a><a href="#errors">5 Errors</a><a href="#why">6 Why</a><a href="#tried">7 What we tried</a><a href="#limits">8 Limits</a><a href="#pending">9 Still open</a><a href="#approve">10 Approve</a>
-  </nav>
+  <nav class="toc" aria-label="Sections"><a href="#task">1 The task</a><a href="#results">2 Results</a><a href="#errors">3 Every error</a><a href="#why">4 Why we cannot simply do better</a><a href="#method">5 Methodology</a><a href="#system">6 The system</a><a href="#limits">7 Honest limits</a><a href="#pending">8 Still open today</a><a href="#approve">9 What I ask you to approve</a></nav>
 </header>
-
-<section id="changed">
-  <div class="num-h">0 · What changed since the 28 Sept page</div>
-  <h2>Bigger test sets, one gold file, a stricter cost, and a stronger sound detector</h2>
-  <div class="tw"><table>
-    <thead><tr><th>Topic</th><th>28 Sept page</th><th>Now (1 Oct)</th></tr></thead>
-    <tbody>
-      <tr><td>Clips</td><td>DEV 49, TEST 60</td><td>DEV 71, TEST 88 (50 new clips labelled by a human tagger, split between the two)</td></tr>
-      <tr><td>Labels</td><td>several label files</td><td>one gold file (<code>benchmark/gold/annotations/gold_AG.json</code>), with two disclosed visibility re-checks</td></tr>
-      <tr><td>Cost</td><td>4 per miss + 2 per wrong (β = 2)</td><td>same weights, so 1 miss = 2 wrong pictures; plus a sweep where an on-screen wrong costs 0, 1 or 2</td></tr>
-      <tr><td>Sound detection</td><td>BEATs + FlexSED + PANNs cross-check</td><td>adds two audio-language "listeners" (Qwen3-Omni, Audio Flamingo) and three newer checkers (DASM, FineLAP, timing and grouping rules)</td></tr>
-      <tr><td>Main comparison</td><td>gate vs no gate (F1 tie)</td><td>final system vs show nothing and vs the old pipeline, on the bigger sets</td></tr>
-    </tbody>
-  </table></div>
-  <p class="note">The 28 Sept page stays in the repo (<code>docs/supervisor_2026-09-26/</code>) with its videos and the frozen 60-clip table. Its picture results (section 8 there) still hold and are summarised in section 3 here.</p>
-</section>
 
 <section id="task">
   <div class="num-h">1 · The task</div>
@@ -152,85 +141,8 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
   <p class="note">The hard part is two questions at once: which sound is it and when does it start (audio), and is its source on screen (vision). A look-alike is the classic trap: a bird is on screen but a different bird sings.</p>
 </section>
 
-<section id="method">
-  <div class="num-h">2 · Methodology</div>
-  <h2>Choose on DEV, check on held-out clips, read TEST once per change as a report</h2>
-
-  <h3>Data</h3>
-  <div class="grid g4">
-    <div class="tile"><div class="k">DEV · for choosing</div><div class="v">71 <small>clips</small></div><div class="s">58 needed sounds</div></div>
-    <div class="tile"><div class="k">TEST · score only</div><div class="v">88 <small>clips</small></div><div class="s">65 needed sounds</div></div>
-    <div class="tile"><div class="k">Held-out guard</div><div class="v">415 <small>clips</small></div><div class="s">AudioSet-Strong, timed audio labels; checks audio rules before DEV</div></div>
-    <div class="tile"><div class="k">Gold labels</div><div class="v">1 <small>file</small></div><div class="s">each sound: type, start, end, visible?, obvious?, needed?</div></div>
-  </div>
-  <p class="note">Clips: city walks, nature, AudioSet events, film scenes and web clips. 109 clips were labelled by me; 50 newer clips by a human tagger in 3 batches (batch 3 with the AudioSet labels visible, disclosed). A sound is <b>needed</b> when it is non-speech and its source is not visible during the sound.</p>
-
-  <h3>How a picture is scored</h3>
-  <div class="tw"><table>
-    <thead><tr><th>Outcome</th><th>Rule</th></tr></thead>
-    <tbody>
-      <tr><td><span class="tag good">hit</span></td><td>A picture of the same sound family that starts between 0.5 s before and 1.0 s after the needed sound starts. One hit per needed sound.</td></tr>
-      <tr><td><span class="tag bad">miss</span></td><td>A needed sound with no hit.</td></tr>
-      <tr><td><span class="tag warn">wrong · visible</span></td><td>A picture of a sound whose source is on screen.</td></tr>
-      <tr><td><span class="tag warn">wrong · cross</span></td><td>The wrong sound type at that moment, or the right type at the wrong time, or a second picture of a sound already drawn.</td></tr>
-      <tr><td><span class="tag warn">wrong · phantom</span></td><td>Nothing is there.</td></tr>
-    </tbody>
-  </table></div>
-  <div class="look"><b>Viewer cost per clip</b> = (4 × misses + 2 × wrong pictures) ÷ clips. Lower is better. One miss weighs as much as two wrong pictures. Show nothing scores 4 × needed ÷ clips. A second sweep counts an on-screen wrong picture as 0, 1 or 2, since a viewer minds a picture of something they can see less than a false one.</div>
-
-  <h3>How a change is accepted</h3>
-  <ul class="tight">
-    <li><b>Written down first.</b> Every change has its rule and pass bar committed before any number (<code>docs/prereg_round13_detector_push.md</code>, 74 rounds).</li>
-    <li><b>Held-out guard.</b> Audio rules are first checked on the 415 AudioSet clips; a fail there stops the round before DEV.</li>
-    <li><b>DEV decides.</b> Pass = no needed hit lost, cost lower, and at most 2 extra wrong per hit gained. Or: lose at most 3 hits, but remove at least 3 wrong pictures per hit lost, and cost still falls.</li>
-    <li><b>TEST reports.</b> A change that wins DEV ships; TEST is then read once and reported. No setting is picked from TEST.</li>
-    <li><b>General rules only.</b> No rule may name a clip or a video-specific case.</li>
-  </ul>
-</section>
-
-<section id="system">
-  <div class="num-h">3 · The system</div>
-  <h2>Six steps; the framed ones are where the work of this month went</h2>
-  <div class="pipe" role="list">
-    <div class="st" role="listitem"><b>Audio + speech out</b><i>ffmpeg · Whisper</i></div>
-    <div class="st core" role="listitem"><b>Which sounds, when?</b><i>BEATs + FlexSED detect; Qwen3-Omni and Audio Flamingo confirm weak ones</i></div>
-    <div class="st core" role="listitem"><b>Remove false alarms</b><i>DASM, FineLAP, PANNs checks; drop pieces of a sound already drawn</i></div>
-    <div class="st core" role="listitem"><b>Source on screen?</b><i>Qwen3.8-27B looks at frames, 3 questions, majority</i></div>
-    <div class="st" role="listitem"><b>What to draw</b><i>fixed word lists, word cards for sounds with no object</i></div>
-    <div class="st" role="listitem"><b>Draw, check, show</b><i>Qwen-Image-2512, picture check, display rules</i></div>
-  </div>
-
-  <h3>How the shipped version was built (merged DEV and TEST)</h3>
-  <div class="tw"><table>
-    <thead><tr><th>Step added</th><th>What it does</th><th class="n">DEV hits / wrong / cost</th><th class="n">TEST hits / wrong / cost</th></tr></thead>
-    <tbody>
-      <tr><td>Old pipeline</td><td>end of the 28 Sept work</td><td class="n">18 / 51 / 3.690</td><td class="n">21 / 40 / 2.909</td></tr>
-      <tr><td>Listeners</td><td>audio-language models rescue weak detections</td><td class="n">26 / 45 / 3.070</td><td class="n">22 / 38 / 2.818</td></tr>
-      <tr><td>Listener checks</td><td>on weak or masked sounds</td><td class="n">27 / 38 / 2.817</td><td class="n">23 / 36 / 2.727</td></tr>
-      <tr><td>DASM clip check</td><td>drop a sound DASM never hears in the clip</td><td class="n">27 / 31 / 2.620</td><td class="n">23 / 34 / 2.682</td></tr>
-      <tr><td>Earlier start</td><td>move a late picture to an earlier weak run of the same sound</td><td class="n">28 / 30 / 2.535</td><td class="n">23 / 33 / 2.659</td></tr>
-      <tr><td>Continuation rule</td><td>drop a picture that is only a later piece of a sound already drawn</td><td class="n">28 / 25 / 2.394</td><td class="n">24 / 32 / 2.591</td></tr>
-      <tr><td>FineLAP check</td><td>a 2026 detector double-checks rescued sounds</td><td class="n">28 / 24 / 2.366</td><td class="n">24 / 31 / 2.568</td></tr>
-      <tr><td>Listener agreement</td><td>drop a picture neither listener names, unless DASM hears it</td><td class="n">28 / 21 / 2.282</td><td class="n">23 / 29 / 2.568</td></tr>
-      <tr><td>Repeat merge 2.5 s</td><td>a sound with short breaks gets one picture</td><td class="n">28 / 20 / 2.254</td><td class="n">23 / 28 / 2.545</td></tr>
-      <tr><td>Smart grouping</td><td>Qwen3-Omni: one continuing sound or a new event? (≤ 8 s apart)</td><td class="n">28 / 18 / 2.197</td><td class="n">23 / 28 / 2.545</td></tr>
-      <tr><td>Shortest sound 0.3 s</td><td>short real sounds (a laugh burst) are no longer thrown away</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
-      <tr><td>Event on screen</td><td>drop a picture when its event is visibly happening and the visible thing could make it</td><td class="n">29 / 17 / 2.113</td><td class="n">22 / 26 / 2.545</td></tr>
-      <tr class="ours"><td>Shipped, honest DEV</td><td>same version after filling 24 missing listener answers (evaluation gap; found one more wrong)</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
-    </tbody>
-  </table></div>
-  <p class="note">Each row passed DEV under its pre-written rule. TEST did not move on every step; it is shown as read, not chosen on. Details per step: <code>docs/review/improvements_log_2026-09-30.md</code>.</p>
-
-  <h3>Pictures (unchanged since 28 Sept)</h3>
-  <div class="grid g3">
-    <div class="card"><h4>Image model</h4><p>Qwen-Image-2512. In a blind 1.5-second glance test I recognised 26 of 54 pictures, against 14 of 54 for the older FLUX model (significant; one rater).</p></div>
-    <div class="card"><h4>Picture check</h4><p>The vision model must pick the right object from shuffled choices, or the picture is redrawn (up to 5 tries, then a word card). Caught 7/7 known bad and 33/33 planted wrong pictures; wrongly rejected 3 of 68 good ones.</p></div>
-    <div class="card"><h4>Scores ignore the picture</h4><p>A hit asks only "right sound, right time?". The picture model changes what the viewer sees, not the scores above.</p></div>
-  </div>
-</section>
-
 <section id="results">
-  <div class="num-h">4 · Results</div>
+  <div class="num-h">2 · Results</div>
   <h2>The final system beats showing nothing and the old pipeline on both sets</h2>
   <div class="grid g4">
     <div class="tile"><div class="k">TEST · needed sounds found</div><div class="v">22 <small>/ 65</small></div><div class="s">34 %. DEV: 29 / 58 (50 %)</div></div>
@@ -245,8 +157,8 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
     <p class="note" style="margin-top:12px">Show nothing = every needed sound missed. Old pipeline = the 28 Sept system scored on the same merged sets.</p>
   </div>
 
-  <h3>Same numbers as a table</h3>
-  <div class="tw"><table>
+  
+  <details><summary>Same numbers as a table</summary><div class="dbody"><div class="tw"><table>
     <thead><tr><th>System</th><th>Set</th><th class="n">Hits</th><th class="n">Misses</th><th class="n">Wrong (visible / cross / phantom)</th><th class="n">Cost</th></tr></thead>
     <tbody>
       <tr><td>Show nothing</td><td>DEV 71</td><td class="n">0</td><td class="n">58</td><td class="n">0</td><td class="n">3.268</td></tr>
@@ -258,13 +170,13 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
     </tbody>
   </table></div>
 
-  <h3>Statistics</h3>
+  </div></details><details><summary>Statistics, and other weights for an on-screen wrong picture</summary><div class="dbody">
   <ul class="tight">
     <li>Paired clip bootstrap (2000 draws) vs the old pipeline on TEST, for the version of this morning (23 / 29 / 2.568): cost −0.341 [−0.636, −0.045], one-sided p = 0.017. The final version has a lower TEST cost (2.545); its own bootstrap is <span class="tag warn">to run</span>.</li>
     <li>Earlier frozen table (26 Sept, 60-clip TEST, old system): against a published detector that draws every sound it finds (PretrainedSED, ICASSP 2025), F1 +0.248 [+0.100, +0.421], significant. The visibility gate halved wrong pictures (−0.52 per clip, Holm p &lt; 0.001).</li>
   </ul>
 
-  <h3>If an on-screen wrong picture costs less (secondary)</h3>
+  <h3>If an on-screen wrong picture costs less</h3>
   <div class="tw"><table>
     <thead><tr><th>Set</th><th class="n">On-screen wrong = 0</th><th class="n">= 1 (half)</th><th class="n">= 2 (main)</th></tr></thead>
     <tbody>
@@ -273,11 +185,17 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
     </tbody>
   </table></div>
   <p class="note">Full sweep for every version: <code>benchmark/gold/visible_weight_sweep.md</code>. The ranking of versions does not change with the weight.</p>
-</section>
+</div></details></section>
 
 <section id="errors">
-  <div class="num-h">5 · Every error, by reason</div>
+  <div class="num-h">3 · Every error, by reason</div>
   <h2>DEV: 29 misses and 18 wrong pictures, each traced to the step that caused it</h2>
+  <div class="inspect">
+    <div><b>Cases with videos: the Results Inspector</b>
+    <p>Every clip, every sound and picture, a video player and a reason for each mistake. It runs from the project folder on my laptop, where the videos are; I can open any case in the meeting. It shows the 28 Sept version (old 49 + 60 clip sets), so its numbers are older than this page.</p></div>
+    <a class="btn" href="../inspector/index.html#/mistakes">Open the inspector</a>
+    <p class="note">If the button does not open: <code>MscProj/docs/inspector/index.html</code></p>
+  </div>
 
   <h3>Why needed sounds are missed (29 on DEV)</h3>
   <div class="split" role="img" aria-label="Misses: 10 heard too weakly, 5 removed by a filter, 4 no model hears, 5 judged on screen, 3 below picture bar or merged, 2 wrong time">
@@ -329,7 +247,7 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
 </section>
 
 <section id="why">
-  <div class="num-h">6 · Why we cannot simply do better</div>
+  <div class="num-h">4 · Why we cannot simply do better</div>
   <h2>Three findings that explain the remaining errors</h2>
   <div class="grid g3">
     <div class="card"><h4>1 · Models disagree at chance</h4><p>On the 415 held-out clips, a detected sound that no listener names is right 22 % of the time, one listener 37 %, both 62 %. The remaining errors sit where the models disagree, so any rule that keeps more sounds also keeps more wrong ones.</p></div>
@@ -337,7 +255,7 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
     <div class="card"><h4>3 · Gold lists only salient sounds</h4><p>In my blind re-rating of 41 pictures with hidden controls, about 1 in 6 "wrong" pictures was a real, wanted off-screen sound the gold does not list. Costs are a little pessimistic for every system alike.</p></div>
   </div>
 
-  <h3>Ceiling study: what if one step were perfect?</h3>
+  <details><summary>Ceiling study: what if one step were perfect?</summary><div class="dbody">
   <div class="tw"><table>
     <thead><tr><th>Make perfect (using the gold)</th><th class="n">Hits</th><th class="n">Wrong</th><th class="n">Cost</th></tr></thead>
     <tbody>
@@ -349,12 +267,8 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
       <tr><td>every step</td><td class="n">43</td><td class="n">3</td><td class="n">0.761</td></tr>
     </tbody>
   </table></div>
-  <p class="note">Run on the 30 Sept version and DEV labels before the last re-check (55 needed sounds), so the numbers differ slightly from section 4. The largest single gain is a perfect vision check; 12 misses stay out of reach for every step. Source: <code>benchmark/gold/ceiling_ship7.md</code>.</p>
-</section>
-
-<section id="tried">
-  <div class="num-h">7 · What was tried</div>
-  <h2>About 130 tests, each with a bar set in advance; most failed and all are reported</h2>
+  <p class="note">Run on the 30 Sept version and DEV labels before the last re-check (55 needed sounds), so the numbers differ slightly from section 2. The largest single gain is a perfect vision check; 12 misses stay out of reach for every step. Source: <code>benchmark/gold/ceiling_ship7.md</code>.</p>
+</div></details><details><summary>Everything that was tried (about 130 tests)</summary><div class="dbody">
   <div class="tw"><table>
     <thead><tr><th>Area</th><th>Kept</th><th>Tried and dropped (examples)</th></tr></thead>
     <tbody>
@@ -366,10 +280,87 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
     </tbody>
   </table></div>
   <p class="note">Every round: <code>docs/prereg_round13_detector_push.md</code> (74 rounds since 28 Sept) and <code>docs/LEDGER_2026-09-26.md</code> (the ~60 before). A 5-expert panel on 1 Oct proposed 5 more ideas; one passed and shipped ("event on screen").</p>
+</div></details></section>
+
+<section id="method">
+  <div class="num-h">5 · Methodology</div>
+  <h2>Choose on DEV, check on held-out clips, read TEST once per change as a report</h2>
+
+  <h3>Data</h3>
+  <div class="grid g4">
+    <div class="tile"><div class="k">DEV · for choosing</div><div class="v">71 <small>clips</small></div><div class="s">58 needed sounds</div></div>
+    <div class="tile"><div class="k">TEST · score only</div><div class="v">88 <small>clips</small></div><div class="s">65 needed sounds</div></div>
+    <div class="tile"><div class="k">Held-out guard</div><div class="v">415 <small>clips</small></div><div class="s">AudioSet-Strong, timed audio labels; checks audio rules before DEV</div></div>
+    <div class="tile"><div class="k">Gold labels</div><div class="v">1 <small>file</small></div><div class="s">each sound: type, start, end, visible?, obvious?, needed?</div></div>
+  </div>
+  <p class="note">Clips: city walks, nature, AudioSet events, film scenes and web clips. 109 clips were labelled by me; 50 newer clips by a human tagger in 3 batches (batch 3 with the AudioSet labels visible, disclosed). A sound is <b>needed</b> when it is non-speech and its source is not visible during the sound.</p>
+
+  <h3>How a picture is scored</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Outcome</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag good">hit</span></td><td>A picture of the same sound family that starts between 0.5 s before and 1.0 s after the needed sound starts. One hit per needed sound.</td></tr>
+      <tr><td><span class="tag bad">miss</span></td><td>A needed sound with no hit.</td></tr>
+      <tr><td><span class="tag warn">wrong · visible</span></td><td>A picture of a sound whose source is on screen.</td></tr>
+      <tr><td><span class="tag warn">wrong · cross</span></td><td>The wrong sound type at that moment, or the right type at the wrong time, or a second picture of a sound already drawn.</td></tr>
+      <tr><td><span class="tag warn">wrong · phantom</span></td><td>Nothing is there.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="look"><b>Viewer cost per clip</b> = (4 × misses + 2 × wrong pictures) ÷ clips. Lower is better. One miss weighs as much as two wrong pictures. Show nothing scores 4 × needed ÷ clips. A second sweep counts an on-screen wrong picture as 0, 1 or 2, since a viewer minds a picture of something they can see less than a false one.</div>
+
+  <h3>How a change is accepted</h3>
+  <ul class="tight">
+    <li><b>Written down first.</b> Every change has its rule and pass bar committed before any number (<code>docs/prereg_round13_detector_push.md</code>, 74 rounds).</li>
+    <li><b>Held-out guard.</b> Audio rules are first checked on the 415 AudioSet clips; a fail there stops the round before DEV.</li>
+    <li><b>DEV decides.</b> Pass = no needed hit lost, cost lower, and at most 2 extra wrong per hit gained. Or: lose at most 3 hits, but remove at least 3 wrong pictures per hit lost, and cost still falls.</li>
+    <li><b>TEST reports.</b> A change that wins DEV ships; TEST is then read once and reported. No setting is picked from TEST.</li>
+    <li><b>General rules only.</b> No rule may name a clip or a video-specific case.</li>
+  </ul>
 </section>
 
+<section id="system">
+  <div class="num-h">6 · The system</div>
+  <h2>Six steps; the framed ones are where the work of this month went</h2>
+  <div class="pipe" role="list">
+    <div class="st" role="listitem"><b>Audio + speech out</b><i>ffmpeg · Whisper</i></div>
+    <div class="st core" role="listitem"><b>Which sounds, when?</b><i>BEATs + FlexSED detect; Qwen3-Omni and Audio Flamingo confirm weak ones</i></div>
+    <div class="st core" role="listitem"><b>Remove false alarms</b><i>DASM, FineLAP, PANNs checks; drop pieces of a sound already drawn</i></div>
+    <div class="st core" role="listitem"><b>Source on screen?</b><i>Qwen3.8-27B looks at frames, 3 questions, majority</i></div>
+    <div class="st" role="listitem"><b>What to draw</b><i>fixed word lists, word cards for sounds with no object</i></div>
+    <div class="st" role="listitem"><b>Draw, check, show</b><i>Qwen-Image-2512, picture check, display rules</i></div>
+  </div>
+
+  <details><summary>How the shipped version was built, step by step (DEV and TEST)</summary><div class="dbody">
+  <div class="tw"><table>
+    <thead><tr><th>Step added</th><th>What it does</th><th class="n">DEV hits / wrong / cost</th><th class="n">TEST hits / wrong / cost</th></tr></thead>
+    <tbody>
+      <tr><td>Old pipeline</td><td>end of the 28 Sept work</td><td class="n">18 / 51 / 3.690</td><td class="n">21 / 40 / 2.909</td></tr>
+      <tr><td>Listeners</td><td>audio-language models rescue weak detections</td><td class="n">26 / 45 / 3.070</td><td class="n">22 / 38 / 2.818</td></tr>
+      <tr><td>Listener checks</td><td>on weak or masked sounds</td><td class="n">27 / 38 / 2.817</td><td class="n">23 / 36 / 2.727</td></tr>
+      <tr><td>DASM clip check</td><td>drop a sound DASM never hears in the clip</td><td class="n">27 / 31 / 2.620</td><td class="n">23 / 34 / 2.682</td></tr>
+      <tr><td>Earlier start</td><td>move a late picture to an earlier weak run of the same sound</td><td class="n">28 / 30 / 2.535</td><td class="n">23 / 33 / 2.659</td></tr>
+      <tr><td>Continuation rule</td><td>drop a picture that is only a later piece of a sound already drawn</td><td class="n">28 / 25 / 2.394</td><td class="n">24 / 32 / 2.591</td></tr>
+      <tr><td>FineLAP check</td><td>a 2026 detector double-checks rescued sounds</td><td class="n">28 / 24 / 2.366</td><td class="n">24 / 31 / 2.568</td></tr>
+      <tr><td>Listener agreement</td><td>drop a picture neither listener names, unless DASM hears it</td><td class="n">28 / 21 / 2.282</td><td class="n">23 / 29 / 2.568</td></tr>
+      <tr><td>Repeat merge 2.5 s</td><td>a sound with short breaks gets one picture</td><td class="n">28 / 20 / 2.254</td><td class="n">23 / 28 / 2.545</td></tr>
+      <tr><td>Smart grouping</td><td>Qwen3-Omni: one continuing sound or a new event? (≤ 8 s apart)</td><td class="n">28 / 18 / 2.197</td><td class="n">23 / 28 / 2.545</td></tr>
+      <tr><td>Shortest sound 0.3 s</td><td>short real sounds (a laugh burst) are no longer thrown away</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
+      <tr><td>Event on screen</td><td>drop a picture when its event is visibly happening and the visible thing could make it</td><td class="n">29 / 17 / 2.113</td><td class="n">22 / 26 / 2.545</td></tr>
+      <tr class="ours"><td>Shipped, honest DEV</td><td>same version after filling 24 missing listener answers (evaluation gap; found one more wrong)</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Each row passed DEV under its pre-written rule. TEST did not move on every step; it is shown as read, not chosen on. Details per step: <code>docs/review/improvements_log_2026-09-30.md</code>.</p>
+
+  </div></details><details><summary>Pictures: image model and picture check</summary><div class="dbody">
+  <div class="grid g3">
+    <div class="card"><h4>Image model</h4><p>Qwen-Image-2512. In a blind 1.5-second glance test I recognised 26 of 54 pictures, against 14 of 54 for the older FLUX model (significant; one rater).</p></div>
+    <div class="card"><h4>Picture check</h4><p>The vision model must pick the right object from shuffled choices, or the picture is redrawn (up to 5 tries, then a word card). Caught 7/7 known bad and 33/33 planted wrong pictures; wrongly rejected 3 of 68 good ones.</p></div>
+    <div class="card"><h4>Scores ignore the picture</h4><p>A hit asks only "right sound, right time?". The picture model changes what the viewer sees, not the scores above.</p></div>
+  </div>
+</div></details></section>
+
 <section id="limits">
-  <div class="num-h">8 · Honest limits</div>
+  <div class="num-h">7 · Honest limits</div>
   <h2>What an examiner will ask, and the answer</h2>
   <div class="tw"><table>
     <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
@@ -386,7 +377,7 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
 </section>
 
 <section id="pending">
-  <div class="num-h">9 · Still open today (1 Oct)</div>
+  <div class="num-h">8 · Still open today (1 Oct)</div>
   <h2>Detector work ends today; these items are not decided yet</h2>
   <div class="tw"><table>
     <thead><tr><th>Item</th><th>Options</th><th>Status</th></tr></thead>
@@ -397,11 +388,11 @@ code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1
       <tr><td>Final TEST bootstrap</td><td>p-value for the final version vs show nothing and the old pipeline</td><td><span class="tag cmp">to run</span></td></tr>
     </tbody>
   </table></div>
-  <p class="note">This page shows option B everywhere, since it is the version that was scored. If another option is chosen, section 4 changes by a few pictures.</p>
+  <p class="note">This page shows option B everywhere, since it is the version that was scored. If another option is chosen, section 2 changes by a few pictures.</p>
 </section>
 
 <section id="approve">
-  <div class="num-h">10 · What I ask you to approve</div>
+  <div class="num-h">9 · What I ask you to approve</div>
   <h2>Five yes/no questions</h2>
   <p class="note">Your choices are kept in this browser only. Press "Copy answers" and paste them into an email.</p>
   <div class="grid" id="qs"></div>
