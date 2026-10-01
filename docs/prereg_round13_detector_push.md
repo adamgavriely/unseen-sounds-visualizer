@@ -2165,8 +2165,9 @@ for all 71 clips. 42 non-rescued pictures; 20 moved (earliest onset from FlexSED
 (the family's run is on from the clip's first frame). 19 moves keep their class (hit -> hit 11, visible 3, cross 2, phantom 2,
 dontcare 1); 1 flips: tg_d149 Bees (gold 1.0 s) picture 1.25 -> 0.0, now 1.0 s early (> 0.5 s tolerance): hit -> phantom.
 **GBTP: merged 27/58, 22 wrong (6/13/3), cost 2.366 | DEV unchanged 19/38, 14, 2.122 | tagger DEV 8/20, 8, 2.909 -> STOP**
-(one needed hit lost, hits < 28, cost up). Sweep: w = 1 base 2.197 -> 2.282; w = 2 base 2.282 -> 2.366. as_explosion: the
-run reaching the drawn picture starts at 9.12, not near the 2.8 s onset — no model's run bridges 2.68..5.68. The listed
+(one needed hit lost, hits < 28, cost up). Sweep: w = 1 base 2.197 -> 2.282; w = 2 base 2.282 -> 2.366. as_explosion (checked after the run): the saved SHIP8 arm does have the Explosion picture at 5.68 (plus 9.25). FlexSED has an
+Explosion run 2.88-3.44 at the true onset, but it ends 2.2 s before the picture (no continuation); the runs at the picture
+start just AFTER 5.68 (FlexSED 5.76, DASM 5.70; BEATs none), so nothing qualifies and the 5.68 picture stays (still a miss). The listed
 mistimed misses are untouched, as predicted by construction. Reading: the frame scores are already "on" at the picture's
 start in most cases; pulling to the earliest onset mostly shifts to 0.0 s without changing class, and the one real move on
 a target hurts. Closed.
