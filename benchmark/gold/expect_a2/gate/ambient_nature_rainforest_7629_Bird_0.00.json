@@ -1,0 +1,29 @@
+{
+ "part": "dev",
+ "clip": "ambient_nature_rainforest_7629",
+ "family": "Bird",
+ "how": "map:birdsong",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "beats",
+ "onsets": {
+  "flex": 0.36,
+  "beats": 0.0,
+  "dasm": 12.66
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "two macaws",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

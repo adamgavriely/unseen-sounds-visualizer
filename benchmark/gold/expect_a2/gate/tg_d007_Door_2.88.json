@@ -1,0 +1,28 @@
+{
+ "part": "dev2",
+ "clip": "tg_d007",
+ "family": "Door",
+ "how": "map:door closing",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 2.88,
+ "from": "flex",
+ "onsets": {
+  "flex": 2.88,
+  "beats": 4.75
+ },
+ "times": [
+  1.88,
+  2.28,
+  2.68,
+  3.08,
+  3.48,
+  3.88
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

@@ -1,0 +1,27 @@
+{
+ "part": "dev",
+ "clip": "movie_blueplanet_115",
+ "family": "Thunder",
+ "how": "map:thunderstorm",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 6.36,
+ "from": "flex",
+ "onsets": {
+  "flex": 6.36
+ },
+ "times": [
+  5.36,
+  5.76,
+  6.16,
+  6.56,
+  6.96,
+  7.36
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

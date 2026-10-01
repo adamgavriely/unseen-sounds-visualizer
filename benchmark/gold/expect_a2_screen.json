@@ -1,0 +1,843 @@
+{
+ "base": {
+  "merged": {
+   "hits": 28,
+   "n": 58,
+   "wrong": 21,
+   "visible": 6,
+   "cross": 13,
+   "phantom": 2,
+   "cost": 2.2816901408450705
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 14,
+   "visible": 4,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.122448979591837
+  },
+  "dev2": {
+   "hits": 9,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.6363636363636362
+  }
+ },
+ "rows": {
+  "merged": {
+   "hits": 31,
+   "n": 58,
+   "wrong": 47,
+   "visible": 12,
+   "cross": 29,
+   "phantom": 6,
+   "cost": 2.8450704225352115
+  },
+  "dev": {
+   "hits": 21,
+   "n": 38,
+   "wrong": 29,
+   "visible": 9,
+   "cross": 17,
+   "phantom": 3,
+   "cost": 2.5714285714285716
+  },
+  "dev2": {
+   "hits": 10,
+   "n": 20,
+   "wrong": 18,
+   "visible": 3,
+   "cross": 12,
+   "phantom": 3,
+   "cost": 3.4545454545454546
+  }
+ },
+ "added": [
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Hammer",
+   "start": 13.72,
+   "end": 15.72,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "hit",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "family": "Mechanical fan",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Vehicle",
+   "start": 10.0,
+   "end": 12.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "phantom",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c0 p1 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Vehicle",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "visible",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v1 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Footsteps",
+   "start": 0.36,
+   "end": 2.36,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "visible",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v1 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Cat",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c1 p0 d0",
+   "clip_after": "h0 v0 c2 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Train",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Water",
+   "start": 24.5,
+   "end": 26.5,
+   "from": "beats",
+   "votes": [
+    false,
+    true,
+    false
+   ],
+   "class": "visible",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v1 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Bell",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "hit",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Honk",
+   "start": 0.44,
+   "end": 2.44,
+   "from": "flex",
+   "votes": [
+    true,
+    null,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v1 c0 p0 d0",
+   "clip_after": "h0 v1 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Clapping",
+   "start": 2.0,
+   "end": 4.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    true
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c1 p0 d0",
+   "clip_after": "h0 v0 c2 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Thunder",
+   "start": 6.36,
+   "end": 8.36,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Glass",
+   "start": 11.25,
+   "end": 13.25,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    true
+   ],
+   "class": "visible",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v1 c0 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Explosion",
+   "start": 13.25,
+   "end": 15.25,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Honk",
+   "start": 2.56,
+   "end": 4.56,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Gunshot",
+   "start": 13.75,
+   "end": 15.75,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v1 c0 p0 d0",
+   "clip_after": "h0 v2 c1 p0 d0"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Crowd",
+   "start": 0.12,
+   "end": 2.12,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "visible",
+   "clip_before": "h0 v1 c0 p0 d0",
+   "clip_after": "h0 v2 c1 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Door",
+   "start": 2.88,
+   "end": 4.88,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "phantom",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p1 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Vehicle",
+   "start": 4.75,
+   "end": 6.75,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    true
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p1 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "family": "Rain",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "visible",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v1 c0 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Goose",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "phantom",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c0 p1 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Glass",
+   "start": 3.25,
+   "end": 5.25,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Door",
+   "start": 0.6,
+   "end": 2.6,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p1 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Water",
+   "start": 4.0,
+   "end": 6.0,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "phantom",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p1 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Laughter",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c1 p0 d0",
+   "clip_after": "h1 v0 c2 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "family": "Vehicle",
+   "start": 7.75,
+   "end": 9.75,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c1 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Splash, splatter",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h1 v1 c0 p0 d0",
+   "clip_after": "h1 v1 c1 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Gunshot",
+   "start": 9.12,
+   "end": 11.12,
+   "from": "flex",
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v1 c1 p0 d0",
+   "clip_after": "h0 v1 c2 p0 d0"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "family": "Fart",
+   "start": 0.0,
+   "end": 2.0,
+   "from": "beats",
+   "votes": [
+    false,
+    false,
+    true
+   ],
+   "class": "hit",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c0 p0 d0"
+  }
+ ],
+ "gate_dropped": [
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Footsteps",
+   "onset": 0.12,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Water",
+   "onset": 4.6,
+   "votes": [
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "family": "Bird",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "family": "Train",
+   "onset": 0.0,
+   "votes": [
+    true,
+    false,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Rain",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Rain",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "family": "Crowd",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Bird",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Train",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Bird",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Vehicle",
+   "onset": 10.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Laughter",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Footsteps",
+   "onset": 0.0,
+   "votes": [
+    true,
+    null,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Water",
+   "onset": 0.04,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "waves_herzliya",
+   "family": "Water",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "family": "Crowd",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Water",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Footsteps",
+   "onset": 3.04,
+   "votes": [
+    true,
+    false,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d054",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d054",
+   "family": "Engine knocking",
+   "onset": 0.0,
+   "votes": [
+    true,
+    null,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Water",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Laughter",
+   "onset": 11.4,
+   "votes": [
+    true,
+    null,
+    true
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Rain",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "hits_lost": [],
+ "unasked": 0,
+ "tally": {
+  "items": 306,
+  "named": 94,
+  "kept2": 83,
+  "already_drawn": 22,
+  "no_run": 6,
+  "candidate": 55,
+  "gate_cached": 55,
+  "gate_uncached": 0
+ },
+ "caches_missing": {
+  "flex": 0,
+  "beats": 0,
+  "dasm": 0
+ },
+ "cost": {
+  "1": {
+   "base": 2.197,
+   "new": 2.676
+  },
+  "2": {
+   "base": 2.282,
+   "new": 2.845
+  }
+ },
+ "main_GO": false,
+ "more_hits_PASS": false
+}

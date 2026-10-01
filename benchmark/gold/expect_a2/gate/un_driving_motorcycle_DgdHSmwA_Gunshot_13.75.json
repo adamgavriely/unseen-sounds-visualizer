@@ -1,0 +1,29 @@
+{
+ "part": "dev",
+ "clip": "un_driving_motorcycle_DgdHSmwA",
+ "family": "Gunshot",
+ "how": "map:gunshot",
+ "omni_match": true,
+ "outcome": "candidate",
+ "onset": 13.75,
+ "from": "beats",
+ "onsets": {
+  "flex": 13.88,
+  "beats": 13.75,
+  "dasm": 13.94
+ },
+ "times": [
+  12.75,
+  13.15,
+  13.55,
+  13.95,
+  14.35,
+  14.75
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

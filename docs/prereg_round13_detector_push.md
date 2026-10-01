@@ -2705,3 +2705,13 @@ cost lower; more-hits rule hits up, cross / phantom not up on either part, w = 1
 map-only candidates were 59 of 130, and the 40b hits Hammer, Bell, Fart came from the map while Crow and Snicker came from the cosine
 matcher and cannot appear here; the two-per-clip cap and the order are fixed now, not after seeing which ones survive.
 **Files:** `benchmark/gold/expect_a2_screen.py` (`cands` / `score`, CPU) -> `benchmark/gold/expect_a2_screen.json`.
+### Round 40c result — EXPECT-A2: STOP on both rules (CPU, login node; every gate answer re-used from the 40b cache)
+Base reproduced (28/58, 21 (6/13/2), 2.282). **SHIP8+EXPECT-A2: merged 31/58, 47 wrong (12/29/6), cost 2.845 at w = 2 (base 2.282),
+2.676 at w = 1 (base 2.197)** | DEV 21/38, 29 (9/17/3) | tagger DEV2 10/20, 18 (3/12/3). No hit lost. Funnel: 306 items -> 94 map
+namings -> 83 kept (first two per clip) -> 22 already drawn, 6 no run -> 55 candidates (55/55 gate-cached, 0 asked) -> 26 gate-seen,
+29 added: **3 hits (nyc_1689 Hammer 13.72, bell_miami Bell 0.0, tg_d133 Fart 0.0)**, 6 visible, 16 cross, 4 phantom. Main rule: cost up
+-> STOP. More hits: +3 but 16 cross + 4 phantom -> FAIL. The flood is gone (104 -> 47 wrong) but the right names at the wrong time
+remain: the first weak run is 0 s for most clips (favela Train 0.0 vs gold 14.6 s; crossing_bells Cat "hiss" 0.0; d029 Goose 0.0 vs
+Chicken 6.9 s; Honk/Clapping/Thunder/Explosion/Gunshot at some other moment), and the gate passes an off-screen wrong name. The
+Omni-only hits reachable in this family are Hammer, Bell, Fart; Bird in rainforest_7629 / pet_shop is gate-seen 3/3 (a bird is in
+frame), Siren (tg_d033), Dishes (d095), Chicken (d029), Whistle, Clapping (d125) are never named by the whole-clip listener. Closed.
