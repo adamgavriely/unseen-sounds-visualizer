@@ -3195,3 +3195,16 @@ Live path smoke (job 31599990): `group.ensure` on barbershop + detective gives t
 (both at 2.5): bell_miami Bell (hit, DASM 0.92), aviary Bird (visible, 0.82), construction Vehicle (phantom, 0.67), tg_d085 Laughter
 (cross, 0.94), as_glass Chink (visible, 0.14), tg_d054 Vehicle (visible, 0.47). The DASM bar keeps the hit but also the cross and
 the phantom -> still disqualified for the "more hits" profile (Adam: no extra cross/phantom). Closed (`box2_dasm.py`).
+
+### Round 46 amendment 2 — EXPECT-A4 as the "more hits" profile, judged with Adam's ratings (written BEFORE this computation; a post-hoc reading of Round 46 suggested by Fable)
+Adam's blind Round 46 answers measure what each EXPECT-A4 extra picture IS. Mapping: Q1 yes ∧ Q2 yes -> **visible** (a real sound
+whose maker is on screen); Q1 yes ∧ Q2 no ∧ Q3 yes ∧ no same-family gold in the clip -> **neutral** (a real, wanted, unlisted
+sound); everything else keeps its scored class. Base = shipped SHIP8+GRP (DEV 28/58, 18 (6/10/2); TEST 23/65, 28 (4/19/5)); the
+EXPECT-A4 extras (3 DEV / 2 TEST hits, Round 40e) are added unchanged. Report hits, wrong (v/c/p), cost at w = 2 and w = 1 on DEV
+and TEST. "More hits" profile rule (Adam, memory two-profiles-w1): hits up, every extra wrong visible-type, w = 1 cost lower ->
+second profile `use_more_hits()` + git tag; Adam decides.
+**Result (amendment 2).** DEV: +3 hits, +4 wrong (2 visible / 2 cross), 1 neutral -> **cost 2.141 vs 2.197 (w = 2), 2.028 vs 2.113
+(w = 1)**. TEST: +2 hits, +5 wrong (5 visible / 0 cross / 0 phantom), 1 neutral -> **2.568 vs 2.545 (w = 2), 2.466 vs 2.500 (w = 1)**.
+The 2 DEV cross: arrest Footsteps 13.76 (Adam: not heard) and rainforest_7629 Bird 15.52 (heard, off-screen, wanted, but a late
+picture of the gold Bird 0.1–16.0). Letter of the more-hits rule: TEST qualifies (all extras visible, w = 1 lower); DEV fails by
+these 2 pictures. Adam decides.

@@ -130,3 +130,27 @@ def ensure(clip: str, wav_path: Path, specs, duration: float) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(allc, indent=1), encoding="utf-8")
     _CACHE.pop(str(path), None)
+
+
+def main(argv=None):
+    """separate-process step for a rendered arm folder (one model on the GPU at a time, as listener_prep):
+        python -m src.stage6_visual_augmentation.group <arm work root> <wav16 dir> [cache.json]"""
+    import sys
+    from src.types import AugmentationSpec
+    a = list(sys.argv[1:] if argv is None else argv)
+    root, wavd = Path(a[0]), Path(a[1])
+    config.GROUP_ASK = True
+    config.GROUP_CACHE = a[2] if len(a) > 2 else str(root / "group_answers.json")
+    for d in sorted(p for p in root.iterdir() if (p / "augmentations.json").exists()):
+        specs = [AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]),
+                                  end=float(s["end"]), augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)),
+                                  image_path=s.get("image_path"), talked_about=bool(s.get("talked_about")),
+                                  spans=[tuple(x) for x in s.get("spans", [])], breaks=[tuple(x) for x in s.get("breaks", [])])
+                 for s in json.loads((d / "augmentations.json").read_text(encoding="utf-8"))]
+        dur = float(json.loads((d / "media.json").read_text(encoding="utf-8"))["duration"])
+        ensure(d.name, wavd / f"{d.name}.wav", specs, dur)
+        print("group", d.name, json.loads(Path(config.GROUP_CACHE).read_text(encoding="utf-8")).get(d.name), flush=True)
+
+
+if __name__ == "__main__":
+    main()
