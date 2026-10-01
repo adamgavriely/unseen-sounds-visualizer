@@ -3641,3 +3641,15 @@ precision (Round 42 rule) of one-ear spans with DASM < e; **b1 = the highest edg
 cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row
 (`floor_check_arm.py`), changed pictures. **Stacking (pre-registered):** if Round 56 TWIN-SHORT also passes, a stack must exempt
 twin-short spans from the witness (as they are exempt from the DASM clip veto). TEST not read.
+
+### Round 53b WEAK-WITNESS-2 step 1 result — held-out 415 (`benchmark/gold/weakwitness2_415.py` -> `weakwitness2_415.json`, CPU, login node): **STOP — no b1**
+Same 754 spans (283 correct, 0.375). By whole-clip ears (proxy): **0 ears 349, 0.218; one ear 170, 0.365 (Omni-only 65, 0.292;
+AFN-only 105, 0.410); both 235, 0.617.** One-ear spans by DASM bin (n, precision): 0–0.05 27, 0.111; 0.05–0.10 18, 0.389; 0.10–0.15
+9, 0.222; 0.15–0.20 9, 0.222; 0.20–0.25 8, 0.375; 0.25–0.30 7, 0.571; 0.30–0.35 12, 0.417; 0.35–0.40 8, 0.250; >= 0.60 32, 0.656.
+Cumulative below the edge: **0.05 0.111 (27)**; 0.10 0.222 (45); 0.15 0.222; 0.20 0.222; 0.25 0.239; 0.30 0.269; 0.35 0.289.
+**b1 = 0.05** (the only edge <= 0.20), **not in (0.1, 0.35) -> STOP as pre-registered; no src/config change, no DEV run.**
+Reading: on the 415 a one-ear span is not much worse than a raw span (0.365 vs 0.375) and above DASM 0.05 its precision never falls
+to 0.20, so the 415 gives no bar that separates bad one-ear spans; the only drop it supports (one-ear + DASM < 0.05) is far below
+tg_d075 / tg_d032 (0.296 / 0.309) and would leave Round 53's DEV outcome almost unchanged. Disclosure: at b1 0.05 the tiered rule
+would drop 276 spans on the 415 at 0.101 precision vs Round 53's both-only 339 at 0.150 (proxy ears). Round 53 stays FAIL;
+DASM_LOCAL_VETO stays None. TEST not read.
