@@ -1,0 +1,67 @@
+{
+ "what": "Round 55 step 4: shipped GRP-A vs the chain-fixed apply copy on merged DEV",
+ "rows": {
+  "base": {
+   "hits": 29,
+   "misses": 29,
+   "wrong": 18,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 2,
+   "viewer_cost": 2.140845070422535
+  },
+  "base_chain": {
+   "hits": 29,
+   "misses": 29,
+   "wrong": 18,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 2,
+   "viewer_cost": 2.140845070422535
+  }
+ },
+ "parts": {
+  "base": {
+   "dev": {
+    "hits": 19,
+    "misses": 19,
+    "wrong": 11,
+    "visible": 4,
+    "cross": 5,
+    "phantom": 2,
+    "viewer_cost": 2.0
+   },
+   "dev2": {
+    "hits": 10,
+    "misses": 10,
+    "wrong": 7,
+    "visible": 2,
+    "cross": 5,
+    "phantom": 0,
+    "viewer_cost": 2.4545454545454546
+   }
+  },
+  "base_chain": {
+   "dev": {
+    "hits": 19,
+    "misses": 19,
+    "wrong": 11,
+    "visible": 4,
+    "cross": 5,
+    "phantom": 2,
+    "viewer_cost": 2.0
+   },
+   "dev2": {
+    "hits": 10,
+    "misses": 10,
+    "wrong": 7,
+    "visible": 2,
+    "cross": 5,
+    "phantom": 0,
+    "viewer_cost": 2.4545454545454546
+   }
+  }
+ },
+ "chain_fix_changes_dev": false,
+ "base_reproduced": true
+}

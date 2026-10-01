@@ -266,5 +266,26 @@ def cmd_scoredev():
     print("VERDICT", res["rule"], flush=True)
 
 
+def cmd_chaindev():
+    """step 4 (independent of step 1): the shipped GRP-A base vs the same through the chain-fixed apply copy; no FP rule"""
+    import config
+    from benchmark.gold import grpp_screen as GP
+    from src.stage6_visual_augmentation import group as G
+    orig_apply = G.apply
+    G.apply = lambda spans, clip: apply_chain(spans, clip, G, config) if GP.MODE["m"].endswith("_chain") else orig_apply(spans, clip)
+    M = GP.setup_dev()
+    sc = GP.score_modes(M, ["base", "base_chain"])
+    res = {"what": "Round 55 step 4: shipped GRP-A vs the chain-fixed apply copy on merged DEV", "rows": {}, "parts": {}}
+    for m in sc:
+        res["rows"][m] = GP.row_of([r for p in ("dev", "dev2") for _s, r in sc[m][p]])
+        res["parts"][m] = {p: GP.row_of([r for _s, r in sc[m][p]]) for p in ("dev", "dev2")}
+    res["chain_fix_changes_dev"] = res["rows"]["base"] != res["rows"]["base_chain"]
+    res["base_reproduced"] = tuple(res["rows"]["base"][k] for k in ("hits", "wrong", "visible", "cross", "phantom")) == (29, 18, 6, 10, 2)
+    _dump(DIR / "chain_dev.json", res)
+    for m in sc:
+        print(f"merged DEV {m:10s} {GP.fmt(res['rows'][m])}", flush=True)
+    print("base reproduced:", res["base_reproduced"], "| chain fix changes DEV:", res["chain_fix_changes_dev"], flush=True)
+
+
 if __name__ == "__main__":
-    {"calib415": cmd_calib415, "scoredev": cmd_scoredev}[sys.argv[1]]()
+    {"calib415": cmd_calib415, "scoredev": cmd_scoredev, "chaindev": cmd_chaindev}[sys.argv[1]]()

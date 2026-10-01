@@ -3488,3 +3488,39 @@ span, to a fixed point); the shipped `apply` skips it (`a in out` fails), checke
 the f grid come from the gold definition and the 415, not from these rows; whatever f* is, the alarm pair is likely un-merged, so a
 DEV STOP (29/19) is the expected outcome and is written here in advance. Files: `benchmark/gold/framepause_screen.py`
 (`calib415` CPU, `scoredev` CPU, login node, conda msproj) -> `benchmark/gold/framepause/`.
+
+### Round 53 step 0 result — mechanism check (cached SHIP8+MD3 stage-4 rows; `benchmark/gold/weakwitness_dev.py step0` -> `weakwitness_step0.json`; done BEFORE the 415)
+All 29 hit pictures traced to their stage-4 rows (code window = [pre_start − 0.5, end + 0.5]; a picture survives if any row of its
+family survives). The panel's low-DASM hits: **Door** (b3_bakery, Cupboard row, DASM 0.015) — both ears name it -> **protected**.
+**Glass 10.75** (mv_protest; Shatter/Breaking/Glass rows, 0.193) — both ears on all three -> **protected**. **Glass 16.89** (Shatter row
+0.204, ears no -> dropped at any b > 0.204; the Glass row 17.5–18.75, conf 0.366, both ears, survives) -> **at risk of an onset shift
+for b >= 0.25** (17.5 may still sit in the window). **ambulance Siren** (Emergency vehicle / Siren rows 0.188, both ears; the
+Ambulance row 0.156 has AF no) -> **protected**. **tg_d075 Alarm** (Alarm clock, only row, 0.296, Qwen no / AF yes) -> **dropped iff
+b > 0.296 (b >= 0.30)**. **tg_d032 Thunder** (only row, 0.309, Qwen yes / AF no) -> **dropped iff b >= 0.35**. **tg_d088 Thunder**
+(two rows 0.397, neither both-named) -> dropped only at b >= 0.40, outside the allowed range -> safe. ly_helicopter Vehicle comes
+from Helicopter rows (0.49 / 0.61) -> safe. All other hits are rescued or have DASM >= 0.41. None of the at-risk rows is FlexSED.
+So: b in {0.15, 0.20} touches no hit; 0.25 risks the Glass 16.89 onset; 0.30 loses tg_d075; 0.35 also loses tg_d032.
+
+### Round 55 step 1 result — FlexSED hole vs the 2-s truth on the held-out 415 (login node CPU, 1 Oct): **FAIL -> STOP**
+`benchmark/gold/framepause_screen.py calib415` -> `benchmark/gold/framepause/calib_415.json`. Side P (gap > 2 s, speech/music
+excluded): 169 pairs, 60 without a FlexSED query for the family -> **109**; side C (joined non-speech/music segments >= 3 s): 443,
+196 without a query -> **247**. Balanced accuracy peaks at **f* = 0.30: acc_P 0.798, acc_C 0.733 -> below the bar (>= 0.75 both)**.
+The trade-off is monotone: f 0.10 0.606/0.846, 0.20 0.688/0.781, 0.25 0.743/0.777, 0.30 0.798/0.733, 0.40 0.844/0.648, 0.50
+0.890/0.551, 0.80 0.972/0.259 — no floor separates a dropout from a pause at 0.75 on both sides. Disclosure (not the verdict):
+unmasked only at 0.30 = 0.818 / 0.820 (both above the bar; the masked continuous segments are where FlexSED loses the family).
+acc_P by gap at 0.30: 2–4 s 0.75, 4–8 s 0.892. Y* (reported): the dropout share of holes >= L at f* RISES with L (2 s 0.43, 3 s 0.49,
+4 s 0.58, 6 s 0.79, 8 s 1.0) — within 10-s clips a long FlexSED hole is more often a dropout inside a continuous segment than a real
+return, so no cap length can be read off the 415 this way. **Step 2 (DEV) not run; the cap stays 8 s; GRP-A unchanged. No TEST.**
+Step 4 (`chaindev`, independent of step 1): shipped GRP-A base through the chain-fixed `apply` copy on merged DEV: **base 29/58, 18
+(6/10/2), 2.141 reproduced; chain fix 29/58, 18 (6/10/2), 2.141 — no DEV change** (no DEV family has two consecutive same/same pairs;
+`framepause/chain_dev.json`). The fix stays a live-path correctness item (`group.apply` skips b->c after a absorbs b), not a round.
+
+### Round 53 step 1 result — held-out 415 (`benchmark/gold/weakwitness_415.py` -> `weakwitness_415.json`, CPU, login node)
+Span set (threshold 0.35, low 0.175, min 0.3 s, depictable): **754 spans, 283 correct = 0.375** (= the Round 42 reference exactly);
+every span has a DASM column (0 excluded). Precision by DASM max over [start − 0.5, end + 0.5] (n, precision): 0–0.05 154, 0.045;
+0.05–0.10 57, 0.246; 0.10–0.15 46, 0.326; 0.15–0.20 43, 0.163; 0.20–0.25 28, 0.393; 0.25–0.30 27, 0.259; 0.30–0.35 37, 0.405;
+0.35–0.40 42, 0.524; 0.40–0.45 26, 0.269; 0.45–0.50 24, 0.458; 0.50–0.55 20, 0.550; 0.55–0.60 25, 0.520; >= 0.60 225, 0.636.
+Cumulative below the edge: 0.10 0.100 (211); 0.15 0.140 (257); 0.20 0.143 (300); 0.25 0.165 (328); 0.30 0.172 (355); **0.35 0.194
+(392)**; 0.40 0.226 (434); 0.45 0.228; 0.50 0.240; 0.60 0.265. **b = 0.35** (highest edge with cumulative <= 0.20), inside (0.1, 0.4)
+-> **GO to step 2.** Per step 0, b = 0.35 is expected to lose tg_d075 Alarm and tg_d032 Thunder (both single-ear rows) — written
+here before the DEV run; the arm is run as pre-registered (b is not moved).
