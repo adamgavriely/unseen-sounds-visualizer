@@ -124,3 +124,17 @@ Shipped config joins repeats within MERGE_GAP 1.5 s; every score so far used 2.0
 | 3.0 | 22 | 27 (4/18/5) | 2.568 | 20 | 33 (2/24/7) | 2.795 |
 
 At 1.5 SHIP8 still beats B0r by a similar margin (DEV −1.52 cost, TEST −0.41) as at 2.0 (−1.41, −0.34).
+
+## 1 Oct day — shipped improvements (merged DEV 71 clips / 58 needed; merged TEST 88 / 65)
+
+| # | change | why | DEV hits / wrong / cost | TEST hits / wrong / cost |
+|---|---|---|---|---|
+| 0 | SHIP8 (start of day, gap 2.0) | — | 28 / 21 / 2.282 | 23 / 29 / 2.568 |
+| 1 | Repeat-merge gap 2.5 s (Adam's proposal) | continuing sounds with short breaks drew a second, wrong picture | 28 / 20 / 2.254 | 23 / 28 / 2.545 |
+| 2 | Smart grouping: Qwen3-Omni hears two same-sound pictures ≤ 4 s apart and says "same sound" or "new event" (Round 47) | an alarm or shaver pausing is one sound; two barks are two | 28 / 18 / 2.197 | 23 / 28 / 2.545 |
+| 3 | Shortest detected sound 0.5 → 0.3 s (Round 48) | short real sounds (a laugh burst) were thrown away | **29 / 18 / 2.141** | **23 / 28 / 2.545** |
+
+Closed today (pre-registered, not shipped): Round 46 gold-scope (Adam's blind ratings: ~1 in 6 "wrong" pictures is a real wanted
+unlisted sound for every version; EXPECT not special), Round 49 BANDLIST (weak FlexSED + Omni list + DASM: 69 % precise on the
+held-out 415, but on DEV 0 hits and +6 wrong), BOX-2 + DASM "more hits" (keeps a cross and a phantom). Grouping limit 4.0 s was set
+after the TEST read of the unlimited version (disclosed in the prereg doc). Open: EXPECT as a "more hits" profile (Adam).
