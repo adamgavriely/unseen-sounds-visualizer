@@ -4507,3 +4507,17 @@ gain over B (mv_protest Glass 4.75 cross removed) was produced by the truncation
 2.028 would hold a correct readout to an artifact's score. Vs D: reported. **Expected (from the Round 62 recheck, same model and
 frames, recheck used s(Q) not d for the verdict; d agreed on all 14): 29/58, 15 (6/7/2), 2.056** — Glass 4.75 returns as a cross,
 Hammer stays out by an explicit no, the other 12 asks unchanged. TEST not read.
+
+### Round 63 TAG-ENS result — step 1 (415 half B): **STOP** (job 31701451 caches + `tagens.py fit / step1` on the login node; `tagens_calib.json`, `tagens_415.json`)
+Caches: EAT-large and SSLAM on BEATs' 2-s / 0.25-s windows for the 415, DEV 49 and DEV2 22 (`~/MscProj/data/work/tagens/`), every
+clip's times asserted equal to its BEATs cache. Disclosed run details: SSLAM's remote code does not load under msproj's transformers
+(job 31695844: `all_tied_weights_keys`), so SSLAM ran in the `sota` env on audio decoded in msproj (`tagens.py decode`; a sota-side
+decode gave a different window count); the live path therefore needs the sota env for SSLAM. `expect_screen.py` exists only in
+~/MscProj_tg, so fit / step1 ran there (calibration copied to ~/MscProj). **Half-A inclusion check:** BEATs 363 spans, p 0.369;
+EAT alone (calibrated) 401, p 0.342; SSLAM alone 372, p 0.344 -> both within 0.05 and ±25 % -> both kept.
+**Half B:** raw BEATs 391 spans, 149 correct, **p 0.381**, onset recall 140/712 = **0.197**; **TAG-ENS 261 spans (−33 %), 118 correct,
+p 0.452, recall 108/712 = 0.152**. GO conditions: count within ±10 % NO; precision >= 0.42 YES; recall >= BEATs' NO -> **STOP**.
+Reading: the mean of three quantile-matched taggers lowers peaks wherever the taggers disagree, so fewer spans cross the 0.35 bar.
+Precision goes up (+0.07), but recall goes down (−0.045). This is the same trade a higher BEATs bar would make, and it does not add
+the missed onsets Fable A targeted. No DEV run; the `TAG_ENS` flag stays None (arm line `SHIP8+MD3+WW5+TE` is kept for the record).
+Per-video cost had it shipped: EAT 0.2–0.5 s and SSLAM 0.13–0.26 s per clip on one GPU, plus model loads. TEST not read.
