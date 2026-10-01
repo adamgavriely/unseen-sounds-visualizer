@@ -499,7 +499,9 @@ def use_shipped() -> dict:
     setattr(me, "PICTURE_MIN_CONF", 0.40)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 1.5), ("KINSHIP_DIRECTED", True),
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True),
+                 # MERGE_GAP 2.5 (Adam, 1 Oct, proposed before any 2.5 number): merged DEV 28/20/2.254, TEST 23/28/2.545
+                 # (2.0: 28/21/2.282, 23/29/2.568; 3.0 joins two dog barks 3 s apart); benchmark/gold/merge_gap_items.py
                  # picture check-and-redraw (Adam, 28 Sept: on after validation; round 1: 7/7 named bad, 32/33 wrong,
                  # 2/68 good rejected, 115/115 same on reshuffle; round 2, all generic options + trumpet-horn confusion
                  # + umbrella rain template: 7/7, 33/33, 3/68, 113/115; src/stage6_visual_augmentation/verify.py).

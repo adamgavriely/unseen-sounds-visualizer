@@ -230,7 +230,8 @@ ARMS["SHIP7"] = {**ARMS["SHIP6+FLAP"]}                 # the shipped default sin
 ARMS["SHIP7+K4AO"] = {**ARMS["SHIP7"], "KEEP_NEEDS_V4_ALL": "onto"}
 ARMS["SHIP7+K4AD"] = {**ARMS["SHIP7+K4AO"], "KEEP_NEEDS_V4_ALL_DASM_KEEP": True}   # round 35 K4A-D
 ARMS["SHIP7+DBR"] = {**ARMS["SHIP7"], "REPEAT_DASM_BRIDGE": 0.575}              # round 35 DBR
-ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"]}                 # the shipped default since round 35 K4A-D
+ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5}  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct (Adam)
+# (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
 ARMS["SHIP8+DBR"] = {**ARMS["SHIP8"], "REPEAT_DASM_BRIDGE": 0.575}
 ARMS["SHIP8+BOX2"] = {**ARMS["SHIP8"], "GATE_BOX_CHECK": True}    # round 38 BOX-2 arm (gate box + crop check)
 ARMS["TO1F7F8+R3"] = {**ARMS["TO1+F7F8"], "CO_ONSET_ARB": True}

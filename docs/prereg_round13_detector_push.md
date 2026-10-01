@@ -3148,3 +3148,13 @@ repeat; Adam decides per clip) and does NOT enter d_corr. Known at writing: 5 of
 Footsteps, rainforest_7629 Bird, tg_d020 Rain, air_raid Bird, tg_d045 Vehicle), so at most 3 DEV / 4 TEST E items can move d_corr.
 (b) Items with onset 0.0 play 0–3.0 s (not −0.5–2.5). (c) Media are in `docs/review/gold_scope_media/`. (d) The hidden key
 `gold_scope_items.json` must not be opened before rating.
+### Round 46 result — GOLD-SCOPE (Adam's answers 2026-10-01 04:56, 41/41 items)
+Control: Q1-yes **0/10** (bar <= 2) -> the check is informative. **(E) EXPECT-A4 extra wrongs: real-unlisted 2/11 (0.18, Wilson
+0.05–0.48)** — tg-free: airsoft Laughter 2.88, motorcycle Gunshot 13.92; 1 more real but the gold lists Bird elsewhere
+(rainforest_7629 15.52); 6 real but source on screen / not wanted (tank fire, storm Explosion, air_raid Bird, d045 Vehicle, chainsaw,
+aquarium Water, tg_d020 Rain); 1 not heard (arrest Footsteps). **(S) SHIP8 wrongs: real-unlisted 3/20 (0.15, 0.05–0.36)**; 5 more
+real but listed elsewhere (late/early pictures of a gold sound); 9 not heard. Same rate in E and S -> no arm-specific gold gap.
+**d_corr: EXPECT-A4 DEV −0.028 -> −0.056 (k 1); TEST +0.045 -> +0.022 (k 1)** — still not better on TEST. Reading: about 1 in 6
+"wrong" pictures (either arm) is a real, wanted, unlisted off-screen sound, so absolute costs are a little pessimistic for every arm,
+but EXPECT-A4's TEST loss is not gold incompleteness. EXPECT-A4 stays unshipped. Adam's notes: tg_d001 "Honk" sounds like a goose
+(label/map issue); oc_distant_traffic_hill is a poor clip (music over faint rain), candidate for removal.
