@@ -3866,3 +3866,10 @@ arm folders backed up). **DEPICT / GROUP rule (fixed now):** for a recomputed cl
 GROUP cache entries are removed (backup) and re-asked with the existing `depict.py` / `group.py` steps before merged scoring; a
 clip with unchanged pictures keeps its entries. Reported: the new merged DEV row vs 29/17/2.113, every changed picture, and
 a_missing / b_missing after the fill (target 0). Not a selection step; TEST is not read.
+
+## Round 46b GOLD-SCOPE-2 — Adam rates the remaining DEV mistakes (written 1 Oct 16:05 BEFORE any answer; not a pipeline round)
+Items (`gold_scope2_items.py`, seed 1): (W) 12 current SHIP8+MD3 DEV wrong pictures not rated in Round 46 (and not the Steam that
+Round 57 drops), (L) the 2 hits Round 53 loses (tg_d032 Thunder 13.75, tg_d075 Alarm 0.14), (C) 15 random current DEV hits as
+blind controls. Same three questions as Round 46 + free text "what do you actually hear?". Uses fixed now: (a) a gold correction
+only through the established blind-with-controls process and only on Adam's say-so (controls must read as real/needed at the Round
+46 level, else no correction); (b) the thesis error taxonomy. No pipeline rule is selected on these answers. TEST untouched.

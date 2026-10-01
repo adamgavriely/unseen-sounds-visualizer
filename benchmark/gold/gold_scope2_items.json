@@ -1,0 +1,236 @@
+{
+ "items": [
+  {
+   "set": "C",
+   "clip": "ly_helicopter_-v62cK1",
+   "family": "Helicopter",
+   "at": 0.0,
+   "cls": "hit (control)",
+   "id": "h01"
+  },
+  {
+   "set": "W",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Gunshot",
+   "at": 8.25,
+   "cls": "cross",
+   "id": "h02"
+  },
+  {
+   "set": "W",
+   "clip": "tg_d128",
+   "family": "Hammer",
+   "at": 9.0,
+   "cls": "cross",
+   "id": "h03"
+  },
+  {
+   "set": "W",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Thunder",
+   "at": 0.06,
+   "cls": "visible",
+   "id": "h04"
+  },
+  {
+   "set": "W",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Crowd",
+   "at": 0.0,
+   "cls": "cross",
+   "id": "h05"
+  },
+  {
+   "set": "C",
+   "clip": "mv_tornado_scene",
+   "family": "Siren",
+   "at": 8.9,
+   "cls": "hit (control)",
+   "id": "h06"
+  },
+  {
+   "set": "W",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Explosion",
+   "at": 13.52,
+   "cls": "visible",
+   "id": "h07"
+  },
+  {
+   "set": "W",
+   "clip": "tg_d127",
+   "family": "Water",
+   "at": 0.14,
+   "cls": "visible",
+   "id": "h08"
+  },
+  {
+   "set": "C",
+   "clip": "tg_d088",
+   "family": "Thunder",
+   "at": 1.3,
+   "cls": "hit (control)",
+   "id": "h09"
+  },
+  {
+   "set": "W",
+   "clip": "tg_d022",
+   "family": "Dog",
+   "at": 7.25,
+   "cls": "cross",
+   "id": "h10"
+  },
+  {
+   "set": "C",
+   "clip": "tg_d030",
+   "family": "Motorcycle",
+   "at": 0.3,
+   "cls": "hit (control)",
+   "id": "h11"
+  },
+  {
+   "set": "C",
+   "clip": "tg_d149",
+   "family": "Bee, wasp, etc.",
+   "at": 1.0,
+   "cls": "hit (control)",
+   "id": "h12"
+  },
+  {
+   "set": "C",
+   "clip": "tg_d107",
+   "family": "Laughter",
+   "at": 8.2,
+   "cls": "hit (control)",
+   "id": "h13"
+  },
+  {
+   "set": "C",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Explosion",
+   "at": 5.6,
+   "cls": "hit (control)",
+   "id": "h14"
+  },
+  {
+   "set": "C",
+   "clip": "tg_d127",
+   "family": "Laughter",
+   "at": 8.9,
+   "cls": "hit (control)",
+   "id": "h15"
+  },
+  {
+   "set": "C",
+   "clip": "mv_detective_crime_scene",
+   "family": "Telephone",
+   "at": 0.0,
+   "cls": "hit (control)",
+   "id": "h16"
+  },
+  {
+   "set": "W",
+   "clip": "tg_d128",
+   "family": "Laughter",
+   "at": 3.08,
+   "cls": "visible",
+   "id": "h17"
+  },
+  {
+   "set": "W",
+   "clip": "london_protest_01",
+   "family": "Vehicle",
+   "at": 0.25,
+   "cls": "visible",
+   "id": "h18"
+  },
+  {
+   "set": "C",
+   "clip": "tg_d075",
+   "family": "Fire alarm",
+   "at": 0.0,
+   "cls": "hit (control)",
+   "id": "h19"
+  },
+  {
+   "set": "W",
+   "clip": "tg_d088",
+   "family": "Thunder",
+   "at": 13.25,
+   "cls": "cross",
+   "id": "h20"
+  },
+  {
+   "set": "W",
+   "clip": "tg_d107",
+   "family": "Screaming",
+   "at": 6.52,
+   "cls": "cross",
+   "id": "h21"
+  },
+  {
+   "set": "C",
+   "clip": "b3_botanic_garden",
+   "family": "Bird",
+   "at": 0.3,
+   "cls": "hit (control)",
+   "id": "h22"
+  },
+  {
+   "set": "C",
+   "clip": "b3_bakery_morning",
+   "family": "Door",
+   "at": 3.9,
+   "cls": "hit (control)",
+   "id": "h23"
+  },
+  {
+   "set": "C",
+   "clip": "as_explosion_XJ8lc3I6",
+   "family": "Gunshot, gunfire",
+   "at": 0.0,
+   "cls": "hit (control)",
+   "id": "h24"
+  },
+  {
+   "set": "L",
+   "clip": "tg_d075",
+   "family": "Alarm",
+   "at": 0.14,
+   "cls": "hit (lost by Round 53)",
+   "id": "h25"
+  },
+  {
+   "set": "L",
+   "clip": "tg_d032",
+   "family": "Thunder",
+   "at": 13.75,
+   "cls": "hit (lost by Round 53)",
+   "id": "h26"
+  },
+  {
+   "set": "C",
+   "clip": "birds_forest",
+   "family": "Crowing, cock-a-doodle-doo",
+   "at": 10.4,
+   "cls": "hit (control)",
+   "id": "h27"
+  },
+  {
+   "set": "W",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Thunder",
+   "at": 0.06,
+   "cls": "visible",
+   "id": "h28"
+  },
+  {
+   "set": "C",
+   "clip": "mv_protest_scene_movie",
+   "family": "Shatter",
+   "at": 16.9,
+   "cls": "hit (control)",
+   "id": "h29"
+  }
+ ]
+}
