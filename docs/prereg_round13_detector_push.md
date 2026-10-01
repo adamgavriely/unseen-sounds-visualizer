@@ -2272,3 +2272,30 @@ Otherwise STOP, recorded, closed.
 - **Round 38 E4 CF result:** base 16/41 seen silenced, 33/38 needed kept. CF_a (annotator's Q1/Q2 replace the majority)
   15/41, 32/38; CF_b (fourth vote) 16/41, 31/38. **STOP** both. The VLM's Q2 ("would a viewer know") is split in 30 of 145
   stretches; the bias control removes most of its signal.
+### Round 39 MAKER-VIS — the gate asks about the depiction's MAKER, not the sound (pre-registered 1 Oct, before numbers)
+**Why.** The shipped gate asks whether the SOUND's source is visible ("is Steam visible?"), but the picture's own depiction
+already names a maker ("Train releases steam", "Parrot screaming", "Hammer striking"). If that maker is on screen the picture
+only repeats what the viewer sees (visible-type wrong). This screen asks about the maker instead, label-free.
+**Rule (fixed, no gold read).** For every placed picture of the saved SHIP8 arm on merged DEV (49 DEV + 22 tagger DEV2 = 71
+clips, `btp_screen.parts()` with `TG_ARMS=SHIP8`; placed display spans incl. rescued ones, 50 pictures), the depiction =
+the spec's `subject` (fallback: the text after "depiction:" in `reason`), matched to the placed span by label + start.
+Maker = the grammatical subject by a fixed whitespace-token rule (`maker_vis_screen.maker_of`; no parser on the cluster):
+all tokens before the first VERB token, where token i >= 1 is a verb if (i) it ends in "ing" (> 4 letters), or (ii) it ends
+in "s" (not "ss") and the previous token is not plural, or (iii) it does not end in "s" and the previous token is plural
+(plural = ends in "s" not "ss", or "people"). No verb -> the whole depiction. Lower-cased. Options: "{a/an} {maker} is
+visible in these frames" / "no {maker} is visible"; plural head -> no article + "are"; mass set {water, sky, rain, steam,
+snow, wind, fire, smoke, thunder, glass, traffic, people} -> no article. Stem: "These frames are from a video. Judge from
+the frames alone." Frames: 6 at picture start -1 s .. +1 s (step 0.4 s, `_sample_frames_at`, as the gate). Asked by the
+shipped gate VLM Qwen3.8-27B through `reason._ab` (both option orders); both orders "visible" -> picture dropped; "not
+visible" or split -> kept. Frozen table (`makers` command, run before the GPU job): 50 pictures, all matched exactly;
+makers: people x5, sky x3, bomb x4, machine gun x2, alarm x4, glass x3, train x3, crowd x2, clouds x2, man x2, person x2,
+and bell, fire alarm, cupboard door, bird x2, rooster, emergency vehicle siren (no verb found), car x2, siren, fingers,
+insect, dog, alarm clock, parrot, cat, water, hammer, bee.
+**Screen.** `benchmark/gold/maker_vis_screen.py run` (GPU, `slurm/job_maker_vis.sh`, one JSON per picture with both raw
+replies, resumable) then `score` (CPU), rescored with `score_per_sound` on `gold_AG.json`. Base must reproduce SHIP8 merged
+28/58 hits, 21 wrong (6/13/2), cost 2.282 (asserted). Nothing in `src/` or `config.py` edited.
+**Reported.** Per dropped picture: clip, label, depiction, maker, class before (`cross_group.classify`), rescued flag, clip
+hits before -> after; counts visible / not visible / split; merged DEV per part.
+**Pass.** Main rule: GO iff merged hits >= 28 AND no clip on either part has fewer hits than under SHIP8 AND cost at
+visible weight w = 2 is lower than 2.282. Fewer-pictures clause: cost lower AND wrong <= 21 - 3 x (hits lost) AND hits
+lost <= 3. GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed.
