@@ -1,0 +1,529 @@
+<title>Seeing Off-Screen Sound · Final Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+/* Layout: one reading column, sections in the order a supervisor checks a thesis (task, method, result, errors, limits, sign-off). Same look as the 28 Sept page. */
+:root{
+  --bg:#f5f6f8; --paper:#ffffff; --ink:#1d2433; --muted:#5d6678; --line:#dde1e8; --chip:#eef1f6;
+  --ours:#2f6fdb; --base:#8a93a3; --good:#1f7f58; --bad:#b83c33; --warn:#94600f;
+  --good-bg:#e5f5ee; --bad-bg:#fbeceb; --warn-bg:#fbf3e4; --look-bg:#eaf1fd;
+  --sans:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#11151d; --paper:#1a1f2a; --ink:#e7eaf0; --muted:#9aa3b5; --line:#2c3342; --chip:#232a37;
+    --ours:#6b9bf0; --base:#7c8597; --good:#43c08e; --bad:#ec7a70; --warn:#e0a54a;
+    --good-bg:#15332a; --bad-bg:#3a1f1d; --warn-bg:#382c17; --look-bg:#1b2940; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#11151d; --paper:#1a1f2a; --ink:#e7eaf0; --muted:#9aa3b5; --line:#2c3342; --chip:#232a37;
+  --ours:#6b9bf0; --base:#7c8597; --good:#43c08e; --bad:#ec7a70; --warn:#e0a54a;
+  --good-bg:#15332a; --bad-bg:#3a1f1d; --warn-bg:#382c17; --look-bg:#1b2940; color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.5; margin:0}
+.wrap{max-width:1040px; margin:0 auto; padding-inline:20px; padding-block:32px 80px}
+h1{font-size:2.1rem; line-height:1.15; margin:0 0 6px; text-wrap:balance}
+.meta{font:500 .8rem/1.4 var(--mono); color:var(--muted); margin:0 0 14px}
+.lede{font-size:1.1rem; margin:0; max-width:66ch}
+.oneline{margin-top:18px; background:var(--paper); border:2px solid var(--ours); border-radius:12px; padding:14px 18px; max-width:82ch}
+.oneline b{color:var(--ours)}
+.toc{margin-top:20px; display:flex; flex-wrap:wrap; gap:8px}
+.toc a{font:600 .78rem/1 var(--mono); color:var(--ink); text-decoration:none; background:var(--chip); padding:8px 10px; border-radius:6px}
+.toc a:hover,.toc a:focus-visible{outline:2px solid var(--ours)}
+section{margin-top:52px; scroll-margin-top:24px}
+.num-h{font:600 .74rem/1 var(--mono); letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+h2{font-size:1.5rem; line-height:1.25; margin:6px 0 12px; text-wrap:balance; max-width:46ch}
+h3{font-size:1.08rem; margin:26px 0 8px}
+p{max-width:78ch}
+.note{color:var(--muted); font-size:.93rem; max-width:82ch}
+.look{background:var(--look-bg); border-radius:10px; padding:10px 14px; margin:0 0 14px; max-width:82ch}
+.grid{display:grid; gap:14px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+.card{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:14px 16px; min-width:0}
+.card h4{margin:0 0 6px; font-size:1rem}
+.card p{margin:0; font-size:.95rem}
+.tile{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.tile .k{font:600 .72rem/1.2 var(--mono); letter-spacing:.07em; text-transform:uppercase; color:var(--muted)}
+.tile .v{font-size:1.9rem; font-weight:700; line-height:1.1; margin-top:6px; font-variant-numeric:tabular-nums}
+.tile .v small{font-size:1rem; font-weight:400; color:var(--muted)}
+.tile .s{font-size:.9rem; color:var(--muted); margin-top:4px}
+.tw{overflow-x:auto; background:var(--paper); border:1px solid var(--line); border-radius:10px}
+table{border-collapse:collapse; width:100%; font-size:.93rem}
+th,td{text-align:left; padding:8px 12px; border-bottom:1px solid var(--line); vertical-align:top}
+th{font:600 .74rem/1.3 var(--mono); letter-spacing:.05em; text-transform:uppercase; color:var(--muted); background:var(--chip)}
+tr:last-child td{border-bottom:0}
+td.n,th.n{text-align:right; font-variant-numeric:tabular-nums; white-space:nowrap}
+tr.ours td{font-weight:700}
+.tag{display:inline-block; font:600 .68rem/1 var(--mono); letter-spacing:.05em; text-transform:uppercase; padding:4px 6px; border-radius:4px; white-space:nowrap}
+.tag.good{background:var(--good-bg); color:var(--good)}
+.tag.bad{background:var(--bad-bg); color:var(--bad)}
+.tag.warn{background:var(--warn-bg); color:var(--warn)}
+.tag.cmp{background:var(--chip); color:var(--muted)}
+/* pipeline */
+.pipe{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr)); gap:8px; counter-reset:st}
+.st{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:10px 12px; font-size:.9rem; min-width:0}
+.st.core{border:2px solid var(--ours)}
+.st b{display:block; font-size:.95rem}
+.st i{display:block; color:var(--muted); font-style:normal; font-size:.82rem; margin-top:4px}
+.st::before{counter-increment:st; content:counter(st); font:600 .72rem/1 var(--mono); color:var(--muted)}
+/* bars */
+.bars{display:grid; gap:18px}
+.bgrp h4{margin:0 0 8px; font-size:.95rem}
+.brow{display:grid; grid-template-columns:minmax(0,9.5rem) 1fr; gap:10px; align-items:center; margin-bottom:6px; font-size:.9rem}
+.btrack{position:relative; height:24px}
+.bar{height:100%; border-radius:0 4px 4px 0; background:var(--base); min-width:2px}
+.bar.ours{background:var(--ours)}
+.bval{position:absolute; top:3px; font:600 .8rem/1 var(--mono); color:var(--ink); padding-left:6px; font-variant-numeric:tabular-nums; margin-top:2px}
+.axis{font:500 .72rem/1 var(--mono); color:var(--muted); margin-left:calc(9.5rem + 10px)}
+/* split bar for error buckets */
+.split{display:flex; height:30px; border-radius:6px; overflow:hidden; gap:2px; margin:6px 0 8px}
+.split div{display:flex; align-items:center; justify-content:center; font:600 .76rem/1 var(--mono); color:#fff; min-width:0; overflow:hidden; white-space:nowrap}
+.legend{display:flex; flex-wrap:wrap; gap:6px 16px; font-size:.86rem; color:var(--muted)}
+.legend span::before{content:""; display:inline-block; width:.8em; height:.8em; border-radius:2px; margin-right:6px; vertical-align:-1px; background:var(--c)}
+.c1{--c:#7a4fc9} .c2{--c:#2f6fdb} .c3{--c:#c9772b} .c4{--c:#1f8a8a} .c5{--c:#b83c33} .c6{--c:#6b7385}
+.split .c1{background:#7a4fc9} .split .c2{background:#2f6fdb} .split .c3{background:#c9772b} .split .c4{background:#1f8a8a} .split .c5{background:#b83c33} .split .c6{background:#6b7385}
+details{background:var(--paper); border:1px solid var(--line); border-radius:10px; margin-top:10px}
+details>summary{cursor:pointer; padding:10px 14px; font-weight:700}
+details>summary:focus-visible{outline:2px solid var(--ours)}
+details .tw{border:0; border-top:1px solid var(--line); border-radius:0 0 10px 10px}
+ul.tight{margin:6px 0 0; padding-left:1.2em; max-width:80ch}
+ul.tight li{margin:3px 0}
+/* approval */
+.q{background:var(--paper); border:1px solid var(--line); border-radius:10px; padding:12px 14px; display:grid; gap:8px}
+.q .qt{font-weight:700}
+.q .qd{font-size:.9rem; color:var(--muted)}
+.opts{display:flex; flex-wrap:wrap; gap:6px}
+.opts label{font:600 .8rem/1 var(--mono); border:1px solid var(--line); border-radius:6px; padding:8px 10px; cursor:pointer; background:var(--chip)}
+.opts input{position:absolute; opacity:0; pointer-events:none}
+.opts input:checked+span{color:var(--ours)}
+.opts label:has(input:checked){border-color:var(--ours); outline:1px solid var(--ours)}
+.opts label:has(input:focus-visible){outline:2px solid var(--ours)}
+textarea{width:100%; min-height:3.2em; font:inherit; font-size:.92rem; padding:8px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink)}
+.btn{font:600 .85rem/1 var(--mono); padding:10px 14px; border-radius:8px; border:1px solid var(--ours); background:var(--ours); color:#fff; cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--look-bg)}
+#copyout{display:block; width:100%; margin-top:10px}
+footer{margin-top:56px; font-size:.86rem; color:var(--muted); max-width:86ch}
+code{font-family:var(--mono); font-size:.84em; background:var(--chip); padding:1px 4px; border-radius:3px; word-break:break-word}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="meta">MSc final project · Adam Gavriely · Bar-Ilan · status 1 Oct 2026</p>
+  <h1>Seeing Off-Screen Sound</h1>
+  <p class="lede">A deaf or hard-of-hearing viewer misses sounds they cannot hear and cannot see the source of. The system finds those sounds in a video and shows a small picture of each one beside it. No model was trained; existing models are chained.</p>
+  <div class="oneline"><b>In one line:</b> on the 88 TEST clips the final system finds 22 of 65 needed sounds and shows 26 wrong pictures. Its viewer cost is 2.55 against 2.96 for showing nothing and 2.91 for the old pipeline. Most remaining errors are sounds no model hears clearly, or cases where the models disagree at about chance.</div>
+  <nav class="toc" aria-label="Sections">
+    <a href="#changed">0 Since 28 Sept</a><a href="#task">1 Task</a><a href="#method">2 Method</a><a href="#system">3 System</a><a href="#results">4 Results</a><a href="#errors">5 Errors</a><a href="#why">6 Why</a><a href="#tried">7 What we tried</a><a href="#limits">8 Limits</a><a href="#pending">9 Still open</a><a href="#approve">10 Approve</a>
+  </nav>
+</header>
+
+<section id="changed">
+  <div class="num-h">0 · What changed since the 28 Sept page</div>
+  <h2>Bigger test sets, one gold file, a stricter cost, and a stronger sound detector</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Topic</th><th>28 Sept page</th><th>Now (1 Oct)</th></tr></thead>
+    <tbody>
+      <tr><td>Clips</td><td>DEV 49, TEST 60</td><td>DEV 71, TEST 88 (50 new clips labelled by a human tagger, split between the two)</td></tr>
+      <tr><td>Labels</td><td>several label files</td><td>one gold file (<code>benchmark/gold/annotations/gold_AG.json</code>), with two disclosed visibility re-checks</td></tr>
+      <tr><td>Cost</td><td>4 per miss + 2 per wrong (β = 2)</td><td>same weights, so 1 miss = 2 wrong pictures; plus a sweep where an on-screen wrong costs 0, 1 or 2</td></tr>
+      <tr><td>Sound detection</td><td>BEATs + FlexSED + PANNs cross-check</td><td>adds two audio-language "listeners" (Qwen3-Omni, Audio Flamingo) and three newer checkers (DASM, FineLAP, timing and grouping rules)</td></tr>
+      <tr><td>Main comparison</td><td>gate vs no gate (F1 tie)</td><td>final system vs show nothing and vs the old pipeline, on the bigger sets</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">The 28 Sept page stays in the repo (<code>docs/supervisor_2026-09-26/</code>) with its videos and the frozen 60-clip table. Its picture results (section 8 there) still hold and are summarised in section 3 here.</p>
+</section>
+
+<section id="task">
+  <div class="num-h">1 · The task</div>
+  <h2>Draw a sound only when the viewer can neither hear it nor see where it comes from</h2>
+  <div class="grid g3">
+    <div class="card"><h4><span class="tag good">needed</span> Heard, not seen</h4><p>A siren is heard, no ambulance on screen. A picture of an ambulance appears.</p></div>
+    <div class="card"><h4><span class="tag cmp">not needed</span> Heard and seen</h4><p>A waterfall is on screen. A picture of it adds nothing, so nothing is drawn.</p></div>
+    <div class="card"><h4><span class="tag cmp">not in scope</span> Speech and music</h4><p>Speech goes to subtitles. Only non-speech sounds are drawn.</p></div>
+  </div>
+  <p class="note">The hard part is two questions at once: which sound is it and when does it start (audio), and is its source on screen (vision). A look-alike is the classic trap: a bird is on screen but a different bird sings.</p>
+</section>
+
+<section id="method">
+  <div class="num-h">2 · Methodology</div>
+  <h2>Choose on DEV, check on held-out clips, read TEST once per change as a report</h2>
+
+  <h3>Data</h3>
+  <div class="grid g4">
+    <div class="tile"><div class="k">DEV · for choosing</div><div class="v">71 <small>clips</small></div><div class="s">58 needed sounds</div></div>
+    <div class="tile"><div class="k">TEST · score only</div><div class="v">88 <small>clips</small></div><div class="s">65 needed sounds</div></div>
+    <div class="tile"><div class="k">Held-out guard</div><div class="v">415 <small>clips</small></div><div class="s">AudioSet-Strong, timed audio labels; checks audio rules before DEV</div></div>
+    <div class="tile"><div class="k">Gold labels</div><div class="v">1 <small>file</small></div><div class="s">each sound: type, start, end, visible?, obvious?, needed?</div></div>
+  </div>
+  <p class="note">Clips: city walks, nature, AudioSet events, film scenes and web clips. 109 clips were labelled by me; 50 newer clips by a human tagger in 3 batches (batch 3 with the AudioSet labels visible, disclosed). A sound is <b>needed</b> when it is non-speech and its source is not visible during the sound.</p>
+
+  <h3>How a picture is scored</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Outcome</th><th>Rule</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag good">hit</span></td><td>A picture of the same sound family that starts between 0.5 s before and 1.0 s after the needed sound starts. One hit per needed sound.</td></tr>
+      <tr><td><span class="tag bad">miss</span></td><td>A needed sound with no hit.</td></tr>
+      <tr><td><span class="tag warn">wrong · visible</span></td><td>A picture of a sound whose source is on screen.</td></tr>
+      <tr><td><span class="tag warn">wrong · cross</span></td><td>The wrong sound type at that moment, or the right type at the wrong time, or a second picture of a sound already drawn.</td></tr>
+      <tr><td><span class="tag warn">wrong · phantom</span></td><td>Nothing is there.</td></tr>
+    </tbody>
+  </table></div>
+  <div class="look"><b>Viewer cost per clip</b> = (4 × misses + 2 × wrong pictures) ÷ clips. Lower is better. One miss weighs as much as two wrong pictures. Show nothing scores 4 × needed ÷ clips. A second sweep counts an on-screen wrong picture as 0, 1 or 2, since a viewer minds a picture of something they can see less than a false one.</div>
+
+  <h3>How a change is accepted</h3>
+  <ul class="tight">
+    <li><b>Written down first.</b> Every change has its rule and pass bar committed before any number (<code>docs/prereg_round13_detector_push.md</code>, 74 rounds).</li>
+    <li><b>Held-out guard.</b> Audio rules are first checked on the 415 AudioSet clips; a fail there stops the round before DEV.</li>
+    <li><b>DEV decides.</b> Pass = no needed hit lost, cost lower, and at most 2 extra wrong per hit gained. Or: lose at most 3 hits, but remove at least 3 wrong pictures per hit lost, and cost still falls.</li>
+    <li><b>TEST reports.</b> A change that wins DEV ships; TEST is then read once and reported. No setting is picked from TEST.</li>
+    <li><b>General rules only.</b> No rule may name a clip or a video-specific case.</li>
+  </ul>
+</section>
+
+<section id="system">
+  <div class="num-h">3 · The system</div>
+  <h2>Six steps; the framed ones are where the work of this month went</h2>
+  <div class="pipe" role="list">
+    <div class="st" role="listitem"><b>Audio + speech out</b><i>ffmpeg · Whisper</i></div>
+    <div class="st core" role="listitem"><b>Which sounds, when?</b><i>BEATs + FlexSED detect; Qwen3-Omni and Audio Flamingo confirm weak ones</i></div>
+    <div class="st core" role="listitem"><b>Remove false alarms</b><i>DASM, FineLAP, PANNs checks; drop pieces of a sound already drawn</i></div>
+    <div class="st core" role="listitem"><b>Source on screen?</b><i>Qwen3.8-27B looks at frames, 3 questions, majority</i></div>
+    <div class="st" role="listitem"><b>What to draw</b><i>fixed word lists, word cards for sounds with no object</i></div>
+    <div class="st" role="listitem"><b>Draw, check, show</b><i>Qwen-Image-2512, picture check, display rules</i></div>
+  </div>
+
+  <h3>How the shipped version was built (merged DEV and TEST)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Step added</th><th>What it does</th><th class="n">DEV hits / wrong / cost</th><th class="n">TEST hits / wrong / cost</th></tr></thead>
+    <tbody>
+      <tr><td>Old pipeline</td><td>end of the 28 Sept work</td><td class="n">18 / 51 / 3.690</td><td class="n">21 / 40 / 2.909</td></tr>
+      <tr><td>Listeners</td><td>audio-language models rescue weak detections</td><td class="n">26 / 45 / 3.070</td><td class="n">22 / 38 / 2.818</td></tr>
+      <tr><td>Listener checks</td><td>on weak or masked sounds</td><td class="n">27 / 38 / 2.817</td><td class="n">23 / 36 / 2.727</td></tr>
+      <tr><td>DASM clip check</td><td>drop a sound DASM never hears in the clip</td><td class="n">27 / 31 / 2.620</td><td class="n">23 / 34 / 2.682</td></tr>
+      <tr><td>Earlier start</td><td>move a late picture to an earlier weak run of the same sound</td><td class="n">28 / 30 / 2.535</td><td class="n">23 / 33 / 2.659</td></tr>
+      <tr><td>Continuation rule</td><td>drop a picture that is only a later piece of a sound already drawn</td><td class="n">28 / 25 / 2.394</td><td class="n">24 / 32 / 2.591</td></tr>
+      <tr><td>FineLAP check</td><td>a 2026 detector double-checks rescued sounds</td><td class="n">28 / 24 / 2.366</td><td class="n">24 / 31 / 2.568</td></tr>
+      <tr><td>Listener agreement</td><td>drop a picture neither listener names, unless DASM hears it</td><td class="n">28 / 21 / 2.282</td><td class="n">23 / 29 / 2.568</td></tr>
+      <tr><td>Repeat merge 2.5 s</td><td>a sound with short breaks gets one picture</td><td class="n">28 / 20 / 2.254</td><td class="n">23 / 28 / 2.545</td></tr>
+      <tr><td>Smart grouping</td><td>Qwen3-Omni: one continuing sound or a new event? (≤ 8 s apart)</td><td class="n">28 / 18 / 2.197</td><td class="n">23 / 28 / 2.545</td></tr>
+      <tr><td>Shortest sound 0.3 s</td><td>short real sounds (a laugh burst) are no longer thrown away</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
+      <tr><td>Event on screen</td><td>drop a picture when its event is visibly happening and the visible thing could make it</td><td class="n">29 / 17 / 2.113</td><td class="n">22 / 26 / 2.545</td></tr>
+      <tr class="ours"><td>Shipped, honest DEV</td><td>same version after filling 24 missing listener answers (evaluation gap; found one more wrong)</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Each row passed DEV under its pre-written rule. TEST did not move on every step; it is shown as read, not chosen on. Details per step: <code>docs/review/improvements_log_2026-09-30.md</code>.</p>
+
+  <h3>Pictures (unchanged since 28 Sept)</h3>
+  <div class="grid g3">
+    <div class="card"><h4>Image model</h4><p>Qwen-Image-2512. In a blind 1.5-second glance test I recognised 26 of 54 pictures, against 14 of 54 for the older FLUX model (significant; one rater).</p></div>
+    <div class="card"><h4>Picture check</h4><p>The vision model must pick the right object from shuffled choices, or the picture is redrawn (up to 5 tries, then a word card). Caught 7/7 known bad and 33/33 planted wrong pictures; wrongly rejected 3 of 68 good ones.</p></div>
+    <div class="card"><h4>Scores ignore the picture</h4><p>A hit asks only "right sound, right time?". The picture model changes what the viewer sees, not the scores above.</p></div>
+  </div>
+</section>
+
+<section id="results">
+  <div class="num-h">4 · Results</div>
+  <h2>The final system beats showing nothing and the old pipeline on both sets</h2>
+  <div class="grid g4">
+    <div class="tile"><div class="k">TEST · needed sounds found</div><div class="v">22 <small>/ 65</small></div><div class="s">34 %. DEV: 29 / 58 (50 %)</div></div>
+    <div class="tile"><div class="k">TEST · wrong pictures</div><div class="v">26</div><div class="s">0.30 per clip; old pipeline 40. DEV: 18 (old 51)</div></div>
+    <div class="tile"><div class="k">TEST · pictures that are right</div><div class="v">46 <small>%</small></div><div class="s">22 of 48 shown. DEV: 62 %</div></div>
+    <div class="tile"><div class="k">TEST · viewer cost</div><div class="v">2.55</div><div class="s">show nothing 2.96 · old 2.91</div></div>
+  </div>
+
+  <h3>Viewer cost per clip (lower is better)</h3>
+  <div class="card">
+    <div class="bars" id="bars"></div>
+    <p class="note" style="margin-top:12px">Show nothing = every needed sound missed. Old pipeline = the 28 Sept system scored on the same merged sets.</p>
+  </div>
+
+  <h3>Same numbers as a table</h3>
+  <div class="tw"><table>
+    <thead><tr><th>System</th><th>Set</th><th class="n">Hits</th><th class="n">Misses</th><th class="n">Wrong (visible / cross / phantom)</th><th class="n">Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Show nothing</td><td>DEV 71</td><td class="n">0</td><td class="n">58</td><td class="n">0</td><td class="n">3.268</td></tr>
+      <tr><td>Old pipeline</td><td>DEV 71</td><td class="n">18</td><td class="n">40</td><td class="n">51 (5 / 37 / 9)</td><td class="n">3.690</td></tr>
+      <tr class="ours"><td>Final system</td><td>DEV 71</td><td class="n">29</td><td class="n">29</td><td class="n">18 (6 / 9 / 3)</td><td class="n">2.141</td></tr>
+      <tr><td>Show nothing</td><td>TEST 88</td><td class="n">0</td><td class="n">65</td><td class="n">0</td><td class="n">2.955</td></tr>
+      <tr><td>Old pipeline</td><td>TEST 88</td><td class="n">21</td><td class="n">44</td><td class="n">40 (2 / 31 / 7)</td><td class="n">2.909</td></tr>
+      <tr class="ours"><td>Final system</td><td>TEST 88</td><td class="n">22</td><td class="n">43</td><td class="n">26 (4 / 17 / 5)</td><td class="n">2.545</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Statistics</h3>
+  <ul class="tight">
+    <li>Paired clip bootstrap (2000 draws) vs the old pipeline on TEST, for the version of this morning (23 / 29 / 2.568): cost −0.341 [−0.636, −0.045], one-sided p = 0.017. The final version has a lower TEST cost (2.545); its own bootstrap is <span class="tag warn">to run</span>.</li>
+    <li>Earlier frozen table (26 Sept, 60-clip TEST, old system): against a published detector that draws every sound it finds (PretrainedSED, ICASSP 2025), F1 +0.248 [+0.100, +0.421], significant. The visibility gate halved wrong pictures (−0.52 per clip, Holm p &lt; 0.001).</li>
+  </ul>
+
+  <h3>If an on-screen wrong picture costs less (secondary)</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Set</th><th class="n">On-screen wrong = 0</th><th class="n">= 1 (half)</th><th class="n">= 2 (main)</th></tr></thead>
+    <tbody>
+      <tr><td>DEV, this morning's version</td><td class="n">2.113</td><td class="n">2.197</td><td class="n">2.282</td></tr>
+      <tr><td>TEST, this morning's version</td><td class="n">2.477</td><td class="n">2.523</td><td class="n">2.568</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Full sweep for every version: <code>benchmark/gold/visible_weight_sweep.md</code>. The ranking of versions does not change with the weight.</p>
+</section>
+
+<section id="errors">
+  <div class="num-h">5 · Every error, by reason</div>
+  <h2>DEV: 29 misses and 18 wrong pictures, each traced to the step that caused it</h2>
+
+  <h3>Why needed sounds are missed (29 on DEV)</h3>
+  <div class="split" role="img" aria-label="Misses: 10 heard too weakly, 5 removed by a filter, 4 no model hears, 5 judged on screen, 3 below picture bar or merged, 2 wrong time">
+    <div class="c1" style="flex:10">10</div><div class="c2" style="flex:5">5</div><div class="c6" style="flex:4">4</div><div class="c3" style="flex:5">5</div><div class="c4" style="flex:3">3</div><div class="c5" style="flex:2">2</div>
+  </div>
+  <div class="legend"><span class="c1">heard too weakly (below detector bars)</span><span class="c2">removed by a false-alarm filter</span><span class="c6">no model hears it</span><span class="c3">vision check said "on screen"</span><span class="c4">below picture bar or merged away</span><span class="c5">picture at the wrong time</span></div>
+
+  <div class="tw" style="margin-top:12px"><table>
+    <thead><tr><th>Reason</th><th class="n">Count</th><th>Examples</th><th>Why it happens</th></tr></thead>
+    <tbody>
+      <tr><td>Heard too weakly</td><td class="n">10</td><td>car horn and hammering in a city walk, distant sirens, a whistle in a parade, thunder</td><td>Under speech, music or street noise the detectors score them below their bars. Lowering the bars brings ~3 wrong pictures per extra hit.</td></tr>
+      <tr><td>Removed by a filter</td><td class="n">5</td><td>a gasp, a train, a rooster, dishes, clapping</td><td>The filters that cut false alarms also cut these. Each filter removes far more wrong pictures than real ones, so it stays.</td></tr>
+      <tr><td>No model hears it</td><td class="n">4</td><td>golf club whack ×2, a metal clang, a short explosion</td><td>No detector or listener gives any signal. Out of reach for every model tried.</td></tr>
+      <tr><td>Judged "on screen"</td><td class="n">5</td><td>church bell, pet-shop birds, ambulance, dog fart ×2</td><td>A look-alike is visible (a bell tower, other birds, a white car, the dog). Accepted earlier as a known gate limit.</td></tr>
+      <tr><td>Below picture bar / merged</td><td class="n">3</td><td>rainforest birds, a second thunder, a cat</td><td>Detected, but with low confidence or folded into another picture.</td></tr>
+      <tr><td>Wrong time</td><td class="n">2</td><td>forest birds, applause crowd</td><td>The picture is right but starts outside the −0.5 to +1.0 s window.</td></tr>
+    </tbody>
+  </table></div>
+
+  <h3>Why wrong pictures appear (18 on DEV)</h3>
+  <div class="split" role="img" aria-label="Wrong pictures: 9 cross, 6 visible, 3 phantom">
+    <div class="c3" style="flex:9">9 cross</div><div class="c2" style="flex:6">6 visible</div><div class="c5" style="flex:3">3 phantom</div>
+  </div>
+  <div class="tw" style="margin-top:12px"><table>
+    <thead><tr><th>Type</th><th class="n">Count</th><th>Examples</th><th>Why it happens</th></tr></thead>
+    <tbody>
+      <tr><td>Cross: wrong sound or wrong moment</td><td class="n">9</td><td>footsteps drawn as a gunshot, chopping drawn as a dog, a bird drawn as screaming, laughter drawn as a crowd</td><td>The detector names a related but wrong sound, or draws a sound again while it still plays. Most of them sit on a sound that is itself visible.</td></tr>
+      <tr><td>Visible source</td><td class="n">6</td><td>thunder in a storm video, water, laughter, a truck horn at a protest</td><td>The vision check did not see the source (lightning, the laughing person) at the moment of the sound.</td></tr>
+      <tr><td>Phantom</td><td class="n">3</td><td>a train in a laundromat, a keyboard under a hair dryer, traffic at a flea market</td><td>Machine noise that sounds like the drawn thing.</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note"><b>"Wrong" is strict.</b> It counts every unneeded picture: on-screen sources, repeats and early or late pictures, not only false ones. Only 3 of 18 are true phantoms.</p>
+
+  <details>
+    <summary>All 29 DEV misses, one row each</summary>
+    <div class="tw"><table>
+      <thead><tr><th>Clip</th><th>Needed sound</th><th class="n">Time (s)</th><th>Reason</th></tr></thead>
+      <tbody id="misses"></tbody>
+    </table></div>
+  </details>
+  <details>
+    <summary>All 18 DEV wrong pictures, one row each</summary>
+    <div class="tw"><table>
+      <thead><tr><th>Type</th><th>Clip</th><th>Picture (start s)</th><th>What the gold has there</th></tr></thead>
+      <tbody id="wrongs"></tbody>
+    </table></div>
+  </details>
+  <p class="note">TEST, counts only (not dissected, to avoid tuning on it): 43 misses; 26 wrong = 4 visible, 17 cross, 5 phantom.</p>
+</section>
+
+<section id="why">
+  <div class="num-h">6 · Why we cannot simply do better</div>
+  <h2>Three findings that explain the remaining errors</h2>
+  <div class="grid g3">
+    <div class="card"><h4>1 · Models disagree at chance</h4><p>On the 415 held-out clips, a detected sound that no listener names is right 22 % of the time, one listener 37 %, both 62 %. The remaining errors sit where the models disagree, so any rule that keeps more sounds also keeps more wrong ones.</p></div>
+    <div class="card"><h4>2 · Seeing a thing ≠ seeing the source</h4><p>Every vision variant tried (pointing, cropping, motion-sound sync, asking "is it acting now?") moves along one line: silence more on-screen sounds and you lose needed ones about one for one.</p></div>
+    <div class="card"><h4>3 · Gold lists only salient sounds</h4><p>In my blind re-rating of 41 pictures with hidden controls, about 1 in 6 "wrong" pictures was a real, wanted off-screen sound the gold does not list. Costs are a little pessimistic for every system alike.</p></div>
+  </div>
+
+  <h3>Ceiling study: what if one step were perfect?</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Make perfect (using the gold)</th><th class="n">Hits</th><th class="n">Wrong</th><th class="n">Cost</th></tr></thead>
+    <tbody>
+      <tr><td>nothing (version of 30 Sept)</td><td class="n">25 / 55</td><td class="n">27</td><td class="n">2.451</td></tr>
+      <tr><td>vision check only</td><td class="n">30</td><td class="n">18</td><td class="n">1.915</td></tr>
+      <tr><td>false-alarm filters only</td><td class="n">30</td><td class="n">27</td><td class="n">2.169</td></tr>
+      <tr><td>timing only</td><td class="n">26</td><td class="n">20</td><td class="n">2.197</td></tr>
+      <tr><td>listeners only</td><td class="n">26</td><td class="n">24</td><td class="n">2.310</td></tr>
+      <tr><td>every step</td><td class="n">43</td><td class="n">3</td><td class="n">0.761</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Run on the 30 Sept version and DEV labels before the last re-check (55 needed sounds), so the numbers differ slightly from section 4. The largest single gain is a perfect vision check; 12 misses stay out of reach for every step. Source: <code>benchmark/gold/ceiling_ship7.md</code>.</p>
+</section>
+
+<section id="tried">
+  <div class="num-h">7 · What was tried</div>
+  <h2>About 130 tests, each with a bar set in advance; most failed and all are reported</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Area</th><th>Kept</th><th>Tried and dropped (examples)</th></tr></thead>
+    <tbody>
+      <tr><td>Sound detectors</td><td>BEATs, FlexSED, DASM, FineLAP</td><td>PANNs alone, PretrainedSED ×5, EAT, Dasheng, AST, CED, CLAP, PE-A-Frame, SAM-Audio separation, Demucs, SEBB onset fix</td></tr>
+      <tr><td>Listeners</td><td>Qwen3-Omni, Audio Flamingo Next</td><td>Kimi-Audio, Step-Audio-2, MOSS-Audio, SpotSound, whole-clip sound lists (find real sounds, but 2–4 wrong per hit on DEV)</td></tr>
+      <tr><td>Vision check</td><td>Qwen3.8-27B, 3 questions</td><td>CLIP, SigLIP, OWLv2, SAM 3, Gemma-4-31B, Qwen2.5-VL, box-and-crop, Synchformer sync, "is it acting now?"</td></tr>
+      <tr><td>Display and timing</td><td>2.5 s repeat merge, smart grouping, 0.3 s minimum</td><td>stricter repeat rules, re-timing late pictures, pause detection</td></tr>
+      <tr><td>Pictures</td><td>Qwen-Image-2512 + check</td><td>photo search, SDXL, PixArt-Σ, FLUX, Qwen-Image-2.1, free-text prompts</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Every round: <code>docs/prereg_round13_detector_push.md</code> (74 rounds since 28 Sept) and <code>docs/LEDGER_2026-09-26.md</code> (the ~60 before). A 5-expert panel on 1 Oct proposed 5 more ideas; one passed and shipped ("event on screen").</p>
+</section>
+
+<section id="limits">
+  <div class="num-h">8 · Honest limits</div>
+  <h2>What an examiner will ask, and the answer</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Limit</th><th>What it means</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag bad">TEST seen often</span></td><td>TEST was read about 43 times since 29 Sept (once per shipped change, each logged). No setting was picked from it, but the final TEST number is a report on a seen set, not a blind one. One grouping limit (4 s) was set after a TEST read; it was undone and replaced by the pre-written 8 s.</td></tr>
+      <tr><td><span class="tag warn">Labels</span></td><td>One annotator (me) for 109 clips, a human tagger for 50; no overlap, so no agreement score. Tagger batch 3 was labelled with the AudioSet labels visible.</td></tr>
+      <tr><td><span class="tag warn">Re-checks</span></td><td>I re-checked visibility twice, blind: 14 disputed sounds (3 changed) and 20 random DEV sounds as a control (0 changed). Both are disclosed.</td></tr>
+      <tr><td><span class="tag warn">Small sets</span></td><td>On ~70 clips one or two pictures decide a DEV win; several DEV wins did not carry to TEST.</td></tr>
+      <tr><td><span class="tag warn">Cost is a model</span></td><td>"1 miss = 2 wrong" is a stated choice, not measured. The sweep shows other weights.</td></tr>
+      <tr><td><span class="tag cmp">No viewer study</span></td><td>No deaf or hard-of-hearing viewer used the system. All results are against labels.</td></tr>
+      <tr><td><span class="tag cmp">Strict "wrong"</span></td><td>Repeats and on-screen pictures count as wrong; about 1 in 6 wrong pictures is a real unlisted sound.</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<section id="pending">
+  <div class="num-h">9 · Still open today (1 Oct)</div>
+  <h2>Detector work ends today; these items are not decided yet</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>Options</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>Picture confidence floor</td><td>A: keep floor 0.40, DEV 27 / 15 / 2.169 · B: no floor, DEV 29 / 18 / 2.141 (scored version) · C: two-witness rule, DEV 27 / 13 / 2.113 (fails the 3-per-hit rule by one picture)</td><td><span class="tag warn">Adam to choose</span></td></tr>
+      <tr><td>Second blind gold check</td><td>29 moments (12 wrong pictures, 2 lost hits, 15 controls) on <code>docs/review/gold_scope2_recheck.html</code></td><td><span class="tag warn">Adam to rate</span></td></tr>
+      <tr><td>Last detector round</td><td>Round 58, tight re-ask of refused sounds</td><td><span class="tag cmp">running</span></td></tr>
+      <tr><td>Final TEST bootstrap</td><td>p-value for the final version vs show nothing and the old pipeline</td><td><span class="tag cmp">to run</span></td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">This page shows option B everywhere, since it is the version that was scored. If another option is chosen, section 4 changes by a few pictures.</p>
+</section>
+
+<section id="approve">
+  <div class="num-h">10 · What I ask you to approve</div>
+  <h2>Five yes/no questions</h2>
+  <p class="note">Your choices are kept in this browser only. Press "Copy answers" and paste them into an email.</p>
+  <div class="grid" id="qs"></div>
+  <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap; align-items:center">
+    <button class="btn" id="copy" type="button">Copy answers</button><span class="note" id="copymsg" aria-live="polite"></span>
+  </div>
+  <textarea id="copyout" hidden readonly aria-label="Answers as text"></textarea>
+</section>
+
+<footer>
+  Numbers come from committed files in the repo: shipped chain and rounds <code>docs/review/improvements_log_2026-09-30.md</code>; every rule written before its result <code>docs/prereg_round13_detector_push.md</code>; per-item errors <code>docs/review/ledger_ship8_md3.md</code> and <code>docs/review/panel_2026-10-01/dissection.md</code>; TEST reads <code>benchmark/gold/final_test_ship8.md</code>; cost sweep <code>benchmark/gold/visible_weight_sweep.md</code>; ceiling <code>benchmark/gold/ceiling_ship7.md</code>. The earlier page with videos and the 60-clip frozen table: <code>docs/supervisor_2026-09-26/index.html</code>. A results inspector with every clip, sound and picture runs locally (<code>docs/inspector/index.html</code>).
+</footer>
+</div>
+
+<script>
+(function(){
+  // cost bars
+  var groups=[
+    {set:"DEV · 71 clips", rows:[["Show nothing",3.268,0],["Old pipeline",3.690,0],["Final system",2.141,1]]},
+    {set:"TEST · 88 clips", rows:[["Show nothing",2.955,0],["Old pipeline",2.909,0],["Final system",2.545,1]]}
+  ];
+  var max=4, el=document.getElementById("bars"), h="";
+  groups.forEach(function(g){
+    h+='<div class="bgrp"><h4>'+g.set+'</h4>';
+    g.rows.forEach(function(r){
+      var w=(r[1]/max*100).toFixed(1);
+      h+='<div class="brow"><span>'+r[0]+'</span><div class="btrack" title="'+r[0]+', '+g.set+': cost '+r[1].toFixed(3)+'"><div class="bar'+(r[2]?' ours':'')+'" style="width:'+w+'%"></div><span class="bval" style="left:'+w+'%">'+r[1].toFixed(2)+'</span></div></div>';
+    });
+    h+='</div>';
+  });
+  h+='<div class="axis">scale 0 to 4</div>';
+  el.innerHTML=h;
+
+  // misses
+  var M=[
+   ["ambient_citywalk_nyc_1689","Vehicle (car horn)","3.8","heard too weakly"],
+   ["ambient_citywalk_nyc_1689","Hammer","8.1","heard too weakly"],
+   ["ambient_citywalk_nyc_1689","Hammer","13.7","heard too weakly"],
+   ["ambient_citywalk_nyc_2627","Clang","3.8","no model hears it"],
+   ["ambient_nature_rainforest_2179","Bird","6.5","heard too weakly"],
+   ["ambient_nature_rainforest_7629","Bird","0.1","below picture bar"],
+   ["as_explosion_XJ8lc3I6","Footsteps","2.1","heard too weakly"],
+   ["as_explosion_XJ8lc3I6","Explosion","2.8","heard too weakly"],
+   ["as_explosion_XJ8lc3I6","Gasp","6.7","removed by a filter"],
+   ["b3_carnival_parade","Whistle","6.1","heard too weakly"],
+   ["b3_favela_rio","Train","14.6","removed by a filter"],
+   ["b3_golf_course","Whack","6.5","no model hears it"],
+   ["b3_golf_course","Whack","24.4","no model hears it"],
+   ["b3_pet_shop","Bird","0.1","judged on screen (other birds visible)"],
+   ["bell_miami","Bell","0.2","judged on screen (bell tower visible)"],
+   ["birds_forest","Bird","1.3","wrong time"],
+   ["ly_ambulance_(siren)","Vehicle","7.3","judged on screen (white car visible)"],
+   ["ly_applause","Crowd","1.9","wrong time"],
+   ["mv_storm_scene_house","Civil defense siren","16.9","heard too weakly"],
+   ["tg_d029","Rooster","6.9","removed by a filter"],
+   ["tg_d032","Thunder","2.8","heard too weakly"],
+   ["tg_d032","Thunder","7.4","below picture bar"],
+   ["tg_d033","Siren","0.0","heard too weakly"],
+   ["tg_d095","Dishes","16.6","removed by a filter"],
+   ["tg_d120","Meow","2.9","merged into another picture"],
+   ["tg_d125","Explosion","5.4","no model hears it"],
+   ["tg_d125","Clapping","8.5","removed by a filter"],
+   ["tg_d133","Fart","0.0","judged on screen (dog visible)"],
+   ["tg_d133","Fart","5.6","judged on screen (dog visible)"]
+  ];
+  document.getElementById("misses").innerHTML=M.map(function(r){return "<tr><td>"+r[0]+"</td><td>"+r[1]+'</td><td class="n">'+r[2]+"</td><td>"+r[3]+"</td></tr>";}).join("");
+
+  var W=[
+   ["visible","ambient_weather_storm_16200","Thunder (0.06)","Thunder, visible"],
+   ["visible","ambient_weather_storm_7200","Thunder (0.06)","Thunder, visible"],
+   ["visible","london_protest_01","Vehicle (0.25)","Air horn, visible"],
+   ["visible","un_driving_motorcycle","Explosion (13.52)","Fireworks, visible"],
+   ["visible","tg_d127","Water (0.14)","Water, visible"],
+   ["visible","tg_d128","Laughter (3.08)","Laughter, visible"],
+   ["cross","as_explosion_XJ8lc3I6","Gunshot (8.25)","Footsteps 2.1–11.3"],
+   ["cross","b3_golf_course","Bird (3.8)","Bird from 0.0 (picture starts too late)"],
+   ["cross","ly_applause","Crowd (0.0)","Laughter 0–13.8, visible"],
+   ["cross","mv_protest_scene_movie","Glass (4.75)","Crowd; baby cry 3.2–5.1, visible"],
+   ["cross","tg_d022","Dog (7.25)","Chopping 7.0–8.3, visible"],
+   ["cross","tg_d088","Explosion (10.75)","Rain and thunder, visible"],
+   ["cross","tg_d088","Thunder (13.25)","Rain and thunder, visible"],
+   ["cross","tg_d107","Screaming (6.52)","Bird call 6.0–8.9, visible"],
+   ["cross","tg_d128","Hammer (9.0)","Clang 5.6–10.0, visible"],
+   ["phantom","b3_laundromat","Train (1.0)","nothing"],
+   ["phantom","un_hair_dryer_drying","Computer keyboard (11.25)","nothing"],
+   ["phantom","b3_flea_market","Vehicle (20.0)","nothing"]
+  ];
+  var cls={visible:"warn",cross:"warn",phantom:"bad"};
+  document.getElementById("wrongs").innerHTML=W.map(function(r){return '<tr><td><span class="tag '+cls[r[0]]+'">'+r[0]+"</span></td><td>"+r[1]+"</td><td>"+r[2]+"</td><td>"+r[3]+"</td></tr>";}).join("");
+
+  // approval questions
+  var Q=[
+    ["method","Is the method sound enough for a final thesis?","Choose on DEV, guard on 415 held-out clips, read TEST once per shipped change as a report; every rule written before its numbers."],
+    ["result","Can the result be reported as final?","TEST: 22/65 found, 26 wrong, cost 2.55 vs 2.96 show nothing and 2.91 old pipeline. DEV: 29/58, 18 wrong, 2.14."],
+    ["test","Is a TEST set read ~43 times acceptable if disclosed?","Nothing was tuned on it; each read is logged. It will be called \"a report on a seen set\", not blind."],
+    ["labels","Are the label limits acceptable as disclosed?","One annotator for 109 clips, a tagger for 50 (batch 3 with labels visible), two blind visibility re-checks."],
+    ["errors","Is the error analysis complete enough?","Every DEV miss and wrong picture has a cause; ceiling study; model-disagreement finding; gold-scope re-rating."]
+  ];
+  var store={}; try{store=JSON.parse(localStorage.getItem("sup_ans_1oct")||"{}")}catch(e){}
+  function save(){try{localStorage.setItem("sup_ans_1oct",JSON.stringify(store))}catch(e){}}
+  var qs=document.getElementById("qs");
+  qs.innerHTML=Q.map(function(q,i){
+    var opts=["Yes","No","Needs changes"].map(function(o){
+      var id="q_"+q[0]+"_"+o.replace(/\s/g,"");
+      return '<label for="'+id+'"><input type="radio" name="q_'+q[0]+'" id="'+id+'" value="'+o+'"><span>'+o+'</span></label>';
+    }).join("");
+    return '<div class="q"><div class="qt">'+(i+1)+'. '+q[1]+'</div><div class="qd">'+q[2]+'</div><div class="opts">'+opts+'</div><textarea id="n_'+q[0]+'" placeholder="Comment (optional)" aria-label="Comment on question '+(i+1)+'"></textarea></div>';
+  }).join("");
+  Q.forEach(function(q){
+    var s=store[q[0]]||{};
+    if(s.a){var r=document.getElementById("q_"+q[0]+"_"+s.a.replace(/\s/g,""));if(r)r.checked=true}
+    var t=document.getElementById("n_"+q[0]); t.value=s.n||"";
+    qs.querySelectorAll('input[name="q_'+q[0]+'"]').forEach(function(r){r.addEventListener("change",function(){store[q[0]]=store[q[0]]||{};store[q[0]].a=r.value;save()})});
+    t.addEventListener("input",function(){store[q[0]]=store[q[0]]||{};store[q[0]].n=t.value;save()});
+  });
+  document.getElementById("copy").addEventListener("click",function(){
+    var txt=Q.map(function(q,i){var s=store[q[0]]||{};return (i+1)+". "+q[1]+" "+(s.a||"(no answer)")+(s.n?" | "+s.n:"")}).join("\n");
+    var out=document.getElementById("copyout"), msg=document.getElementById("copymsg");
+    out.value=txt;
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(txt).then(function(){msg.textContent="Copied."},function(){out.hidden=false;out.select();msg.textContent="Select the text below and copy it."});
+    } else {out.hidden=false;out.select();msg.textContent="Select the text below and copy it."}
+  });
+})();
+</script>
