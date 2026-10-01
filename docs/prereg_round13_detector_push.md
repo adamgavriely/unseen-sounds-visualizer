@@ -2431,3 +2431,40 @@ visible → dropped. (2) ly_applause_62ZYD0u Crowd → Baby laughter @0.0 (cache
 Main rule fails (hit lost, cost not lower); fewer-pictures clause fails (19 > 21 − 3). Reading: when the listeners agree on
 another sound it is a seen texture (rain, laughter) under the detector's event, and the gate then silences a true hit with it.
 Closed.
+
+## Round 40 EXPECT — the scene proposes likely off-screen sounds, the ears confirm (written 2026-10-01 BEFORE any number)
+**Motivation.** 12 needed SHIP8 misses have no detector run at all and 2 sit below the band floor (`ledger_ship8.json`: nyc_1689
+Hammer, favela Train, rainforest_2179 Bird, tg_d033 Siren, tg_d029 Chicken/rooster, ...). A detector cannot be pushed lower
+without a flood; instead the scene VLM is asked what one would EXPECT to hear off-screen in this place, and the open-inventory
+listener must independently name the same family. Known before this entry: nothing — no VLM proposal or Omni whole-clip answer
+exists for these clips; the DASM/BEATs/FlexSED caches exist and were read by earlier screens (DETACHED-ADD).
+**Rule (merged DEV = 49 DEV + 22 tagger DEV2 clips, saved SHIP8 pictures, gold `gold_AG.json`, display at MERGE_GAP 2.0 as
+every number today).** Per clip:
+1. **Propose** (GPU, Qwen3.8-27B via `reason._load/_ask`, the shipped gate VLM): 8 frames at `dur * (i + 0.5) / 8`, i = 0..7
+   (`media_duration`, `_sample_frames_at`). One question (verbatim in `expect_screen.PROPOSE_Q`): name at most 5 sound sources
+   one would likely HEAR in this scene but whose maker is NOT visible in the frames, answered as names copied from the provided
+   list = `depictable_vocab.json["families"]` (215 names, Speech and Music absent), JSON list only. Parse: each answer matched
+   case-insensitively to a listed family; else `canonical()` of a depictable label; else discarded (counted). First 5 kept, deduped.
+2. **Listen** (GPU, Qwen3-Omni `listener_round.MODEL`): the WHOLE clip wav (dev `data/work/devcand/wav16`, dev2
+   `data/work/r13dev2/wav16`), the unchanged V4 open question `listener_variants.V4_Q`, greedy, `V4_NEW` = 64 tokens exactly as
+   `listener_v4d.gen` (64 tokens may truncate a long list — accepted, disclosed).
+3. **Candidate** (CPU): a VLM family F is "named by both" iff `listener_afnext.v4_match(O, emb, v4_text, F)` is True (the shipped
+   V4 matcher: a listed name word-matches a line, or mpnet cosine > 0.6). F is "already drawn" iff any placed SHIP8 picture in the
+   clip (rescued included) has `canonical(label) == F` or `same_family(label, F)`; such F is skipped. One candidate per (clip, F).
+   Onset = the smallest run start over the three frame caches (`gbtp_screen.caches`: BEATs >= 0.175, FlexSED >= 0.3, DASM >= 0.575;
+   family evidence = max over same-family columns; `_runs` with LISTEN_RUN_GAP 0.24 s; **no minimum run length**). No run in any
+   cache -> no picture (counted, with the per-model cache-missing count).
+4. **Gate** (GPU, same VLM): `reason._sound_is_visible(F, 6 frames at onset − 1 + 0.4 k, k = 0..5)` under the shipped majority rule
+   (`VISIBILITY_RULE` = majority in SHIP8), exactly as `gate_gold.run_vlm`. Seen -> dropped; else a picture (F, onset, onset + 2 s)
+   is ADDED to the clip's SHIP8 pictures.
+**Score.** `score_per_sound.score_clip` per clip as `dbr_screen` / `detached_add_screen`; base must reproduce 28/58, 21 (6/13/2),
+2.282 first. Cost at visible weight w via `gbtp_screen.cost_w` (w = 2 is the shipped cost).
+**Pass.** Main rule: hits >= 28 AND no needed hit lost on either part AND cost(w = 2) < 2.282. "More hits" rule: hits > 28 AND
+cross and phantom not up on either part (every extra wrong picture visible-type) AND cost(w = 1) < base cost(w = 1). GO on either ->
+a `src/` flag is Adam's decision; STOP -> recorded, closed. Nothing in `src/` or `config.py` edited.
+**Report.** Per target clip: VLM list, Omni lines, intersection, candidate onset (which cache), gate votes, outcome; totals; verdicts.
+Noted in advance: birds_forest Bird, tg_d032 Thunder, tg_d120 Meow/Cat, ly_applause Crowd, as_explosion Explosion are excluded by
+the "already drawn" clause by design (a same-family picture exists); this round cannot fix those.
+**Files:** `benchmark/gold/expect_screen.py` (`propose` / `listen` / `gate` = GPU, `cands` / `score` = CPU, one JSON per clip per
+stage under `benchmark/gold/expect/`, resumable) -> `benchmark/gold/expect_screen.json`; `slurm/job_expect.sh` (H200-4h/A100-4h,
+one job chaining the five, models unloaded between stages).
