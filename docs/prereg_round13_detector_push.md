@@ -2110,3 +2110,18 @@ from base with gold class and all four raw replies, stretch counts (Q1 yes, Q2 y
 Script `benchmark/gold/cf_gate.py` (`run` GPU -> `gate_gold/cf_Qwen38-27B/`, resumable; `score` CPU ->
 `gate_gold/cf_summary.json`), job `slurm/job_cf_gate.sh`; nothing in `src/` or `config.py` edited. GO -> a `src/`
 flag is Adam's decision; STOP -> recorded, closed.
+
+## Round 38 BOX-2 — BOX without the `none` flip, unparsed replies re-prompted once (written BEFORE any BOX-2 number)
+Refinement of Round 37 (same screen: 49 DEV judge clips, importance >= 2, truth = current gold, base = shipped majority
+16/41 seen silenced, 33/38 needed kept; same GO bar: needed kept >= 35 AND seen silenced >= 15). Changes: (1) a `none`
+box NO LONGER flips a stretch — the model declining to box is not evidence the source is absent; (2) every stretch whose
+round-37 reply was `unparsed` (prose or `<tool_call>` text; 15 in scored sounds, 17 in all) is re-asked ONCE on the same
+frames with a strict prompt: "These frames (numbered 1..N) are from the moment a sound of {label} was heard. Reply ONLY
+with JSON, no other text, no tools: {"frame": k, "bbox_2d": [x1, y1, x2, y2]} on a 0-1000 grid of frame k (1000 = full
+width or height), or {"bbox_2d": null} if the object making that sound is not visible." A still-unparsed reply (or
+`null`) leaves the stretch unchanged; a parsed box gets the round-37 crop + the two label-free crop questions unchanged;
+(3) a stretch flips to not-seen ONLY when a box was parsed AND both crop checks say no (direct "n…" AND a/b False).
+Step A (CPU, cached round-37 answers, rule (1)+(3) without re-prompts) is computed and reported first; step B (GPU,
+`box_gate.py reprompt`, job `slurm/job_box_gate2.sh`) adds the re-prompted stretches and is the BOX-2 line. Pass as
+round 37. Reported: table (base / BOX-2 step A / BOX-2), every flipped sound with gold class, re-prompt outcomes
+(parsed / null / still unparsed). Nothing in `src/` or `config.py` edited.
