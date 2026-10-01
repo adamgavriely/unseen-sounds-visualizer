@@ -19,7 +19,7 @@ Buckets (first that applies): **D** a placed same-family picture overlaps the go
 | 1 | ambient_citywalk_nyc_1689 | Vehicle | 3.8-4.3 | 0.10 / 0.08 | 0.71 / 0.71 | 0.72 / 0.72 | no | yes | none - below stage-4 bars (BEATs < 0.175, FlexSED < 0.8) | **B** |
 | 2 | ambient_citywalk_nyc_1689 | Hammer | 8.1-10.7 | 0.01 / 0.02 | 0.01 / 0.19 | 0.00 / 0.04 | yes | yes | none - below stage-4 bars (BEATs < 0.175, FlexSED < 0.8) | **B** |
 | 3 | ambient_citywalk_nyc_1689 | Hammer | 13.7-16.0 | 0.03 / 0.06 | 0.70 / 0.75 | 0.27 / 0.28 | yes | yes | none - below stage-4 bars (BEATs < 0.175, FlexSED < 0.8) | **B** |
-| 4 | ambient_citywalk_nyc_2627 | Clang | 3.8-4.4 | 0.01 / 0.01 | n/a / n/a | n/a / n/a | no | no | none -  | **A** |
+| 4 | ambient_citywalk_nyc_2627 | Clang | 3.8-4.4 | 0.01 / 0.01 | n/a / n/a | n/a / n/a | no | no | none - no ear above weak levels | **A** |
 | 5 | ambient_nature_rainforest_2179 | Bird | 6.5-16.0 | 0.03 / 0.07 | 0.43 / 0.46 | 0.49 / 0.61 | no | yes | none - below stage-4 bars (BEATs < 0.175, FlexSED < 0.8) | **B** |
 | 6 | ambient_nature_rainforest_7629 | Bird | 0.1-16.0 | 0.42 / 0.46 | 0.68 / 0.77 | 0.54 / 0.58 | yes | yes | 12 rows (max conf 0.46 Bird vocalization, bird call, bird song@0.89): 9x below display threshold 0.35; 3x stage 5 augment=false (source visible on screen (macaws) - stay silent) | **C** |
 | 7 | as_explosion_XJ8lc3I6 | Walk, footsteps | 2.1-11.3 | 0.01 / 0.02 | 0.66 / 0.69 | 0.26 / 0.56 | yes | yes | none - below stage-4 bars (BEATs < 0.175, FlexSED < 0.8) | **B** |
@@ -27,8 +27,8 @@ Buckets (first that applies): **D** a placed same-family picture overlaps the go
 | 9 | as_explosion_XJ8lc3I6 | Gasp | 6.7-7.0 | 0.41 / 0.04 | 0.76 / 0.76 | 0.07 / 0.07 | no | no | none - above stage-4 bar (BEATs), no row: filtered/vetoed (which veto not recorded) | **B** |
 | 10 | b3_carnival_parade | Whistle | 6.1-7.4 | 0.01 / 0.01 | 0.58 / 0.58 | 0.37 / 0.37 | no | no | none - below stage-4 bars (BEATs < 0.175, FlexSED < 0.8) | **B** |
 | 11 | b3_favela_rio | Train | 14.6-28.0 | 0.08 / 0.43 | 0.87 / 0.90 | 0.24 / 0.24 | yes | no | none - above stage-4 bar (BEATs, FlexSED), no row: filtered/vetoed (which veto not recorded) | **B** |
-| 12 | b3_golf_course | Whack, thwack | 6.5-7.1 | 0.01 / 0.01 | n/a / n/a | n/a / n/a | no | no | none -  | **A** |
-| 13 | b3_golf_course | Whack, thwack | 24.4-25.1 | 0.01 / 0.01 | n/a / n/a | n/a / n/a | no | no | none -  | **A** |
+| 12 | b3_golf_course | Whack, thwack | 6.5-7.1 | 0.01 / 0.01 | n/a / n/a | n/a / n/a | no | no | none - no ear above weak levels | **A** |
+| 13 | b3_golf_course | Whack, thwack | 24.4-25.1 | 0.01 / 0.01 | n/a / n/a | n/a / n/a | no | no | none - no ear above weak levels | **A** |
 | 14 | b3_pet_shop | Bird | 0.1-27.8 | 0.84 / 0.86 | 0.68 / 0.76 | 0.72 / 0.80 | yes | yes | 3 rows (max conf 0.86 Bird vocalization, bird call, bird song@0.22): 3x stage 5 augment=false (source visible on screen (birds) - stay silent) | **C** |
 | 15 | bell_miami | Bell | 0.2-14.5 | 0.70 / 0.70 | 0.98 / 0.98 | 0.92 / 0.92 | yes | yes | 2 rows (max conf 0.70 Church bell@0.22): 2x stage 5 augment=false (source visible on screen (church bell) - stay silent) | **C** |
 | 16 | birds_forest | Bird | 1.3-18.0 | 0.21 / 0.65 | 0.71 / 0.75 | 0.60 / 0.64 | yes | yes | 11 rows (max conf 0.65 Crowing, cock-a-doodle-doo@10.25): 8x below display threshold 0.35; 3x placed at 10.25, outside hit window [placed same family: Bird@10.25] | **D** |
@@ -42,7 +42,7 @@ Buckets (first that applies): **D** a placed same-family picture overlaps the go
 | 24 | tg_d095 | Dishes, pots, and pans | 16.6-17.0 | 0.37 / 0.29 | 0.31 / 0.31 | 0.19 / 0.19 | no | no | none - above stage-4 bar (BEATs), no row: filtered/vetoed (which veto not recorded) | **B** |
 | 25 | tg_d107 | Laughter | 8.2-9.7 | 0.25 / 0.25 | 0.89 / 0.89 | 0.89 / 0.89 | yes | yes | none - above stage-4 bar (BEATs, FlexSED), no row: filtered/vetoed (which veto not recorded) | **B** |
 | 26 | tg_d120 | Meow | 2.9-5.6 | 0.81 / 0.83 | 0.12 / 0.13 | 0.92 / 0.95 | yes | yes | 1 rows (max conf 0.64 Domestic animals, pets@2.97): 1x no stage-5 spec holds it (merged/deduped away) [placed same family: Cat@0.56] | **C** |
-| 27 | tg_d125 | Explosion | 5.4-5.7 | 0.01 / 0.00 | 0.03 / 0.03 | 0.15 / 0.15 | no | no | none -  | **A** |
+| 27 | tg_d125 | Explosion | 5.4-5.7 | 0.01 / 0.00 | 0.03 / 0.03 | 0.15 / 0.15 | no | no | none - no ear above weak levels | **A** |
 | 28 | tg_d125 | Clapping | 8.5-10.0 | 0.02 / 0.02 | 0.79 / 0.80 | 0.34 / 0.35 | no | yes | none - above stage-4 bar (FlexSED), no row: filtered/vetoed (which veto not recorded) | **B** |
 | 29 | tg_d133 | Fart | 0.0-1.1 | 0.91 / 0.91 | 0.87 / 0.87 | 0.61 / 0.61 | yes | yes | 2 rows (max conf 0.98 Digestive@0.06): 2x stage 5 augment=false (a kind of Fart, whose source is visible - stay silent) | **C** |
 | 30 | tg_d133 | Fart | 5.6-6.4 | 0.86 / 0.86 | 0.86 / 0.86 | 0.58 / 0.58 | yes | yes | 1 rows (max conf 0.91 Fart@6.3): 1x stage 5 augment=false (source visible on screen (boxer dog) - stay silent) | **C** |
