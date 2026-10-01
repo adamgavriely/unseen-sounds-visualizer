@@ -3783,3 +3783,30 @@ cross 0.0–7.75 -> 0.0–1.5. mv_detective Alarm (pre-registered risk) survived
 lost, cost 2.225 > 2.141); fewer-pictures clause fails ((a) cost not below 2.141; (c) 17 > 18 − 3 × 2 = 12). Reading: with the P1
 listener as the Qwen ear, "either" keeps most crosses (an ear says yes to them) and still drops two hits, so the one-ear witness
 helps neither way on DEV; the four Round 53 witness variants (53, 53b, 53c, 53d) are closed. DASM_LOCAL_VETO stays None; TEST not read.
+
+## Round 57 DEPICT-EVENT + LOOK-ALIKE — drop a picture whose own depicted event is on screen AND whose seen maker sounds like it (written 2026-10-01 BEFORE any Round 57 number; panelist 2's P3 DEPICT-EVENT, `docs/review/panel_2026-10-01/p2_visibility.md`, merged with panelist 3's P2 LOOK-ALIKE, `p3_wrongs.md`, "drop only when both say yes", `round2_votes.md`)
+**Why.** Rounds 54/54b showed Qwen3.8-27B cannot answer a source-free "visible sign of {label}" question (a/b by position; yes/no
+"no" to both polarities). DEPICT-EVENT asks about the picture's OWN depicted event (a concrete scene, "Train releases steam"), and
+LOOK-ALIKE (text only) checks that what the gate saw could be the sound's real maker; both must agree before a picture is dropped.
+**Unit.** The 43 drawn specs of the SAVED SHIP8+MD3 merged-DEV arm, exactly Round 54 step 2's set (`sign_screen.asked(parts())`;
+harness check before any answer: 71 clips, 48 placed pictures, 43 drawn specs, 72 stretches, 0 fallbacks; base 29/58, 18
+(6/10/2), 2.141 must reproduce). Script `benchmark/gold/depict_screen.py`, job `slurm/job_depict.sh` (from ~/MscProj_tg).
+**Q-event (VLM, per picture).** Event = the spec's `subject` field verbatim (the depiction the image prompt came from; fallback
+`image_prompt`; none -> no drop). Frames: 6 evenly over [spec start − 1 s, spec start + 1 s] (`_sample_frames_at`, unclamped, as
+54b); < 2 frames -> no drop. Qwen3.8-27B (profile 5), greedy, max_new 4, two questions, verbatim: E1 `Is "{event}" visibly
+happening in these frames? Answer yes or no.` and the opposite-polarity twin E2 `Do these frames show no "{event}" happening?
+Answer yes or no.` (the task's "Is a {event} …" template reworded once, for all 43, so a clause-form subject slots in). Parse: first
+word as 54b's `yn` (yes / no / unparsed). event = (E1, E2) == (yes, no).
+**Q-lookalike (text only, same model, no images, max_new 4).** A = the pipeline label, lower-cased. B = each distinct gate `named`
+maker != "nothing" over the spec's own `gate_votes.json` stretches (label + start within 0.011 s, as `stretches_of`). Both orders,
+verbatim: L1 `Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.` and L2 `Could the sound of {A} be mistaken
+for the sound of {B}? Answer yes or no.` lookalike = ANY B with L1 yes AND L2 yes. A spec with no B (all "nothing") has lookalike =
+no and can never drop (coverage reported).
+**Rule.** Drop the picture (spec augment = False) iff event AND lookalike. Dropped specs re-placed with `_display_spans(clip=stem)`
+and scored on merged DEV exactly as `sign_screen.cmd_score` (as 54b, CACHE/OUT re-pointed). **Pass:** cost < 2.141 AND wrong
+removed >= 2 × needed hits lost (>= 1 if none lost) AND (main rule: hits >= 29, no needed hit lost, cost < 2.141; OR fewer-pictures
+clause: wrong <= 18 − 3 × lost, hits >= 26). Reported: every dropped picture with its class (hit / visible / cross / phantom), the
+(E1, E2) pair distribution over all 43, look-alike coverage and answers, as_explosion_XJ8lc3I6 and tg_d088 by name.
+**Step 0 — sanity (decides whether the round runs).** The 10 specs at positions 0, 4, …, 36 of the fixed asked order get E1/E2
+(and L1/L2 where a B exists); exact prompts and raw replies printed. If >= 9 of the 10 give the same (E1, E2) pair -> STOP:
+"untestable with this VLM" (as 54b), nothing else run. TEST is not read in this round.
