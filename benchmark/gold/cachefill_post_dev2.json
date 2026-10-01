@@ -1,0 +1,51 @@
+{
+ "changed": [],
+ "clips": {
+  "tg_d075": {
+   "drawn_changed": false,
+   "pictures_old": [
+    [
+     "Alarm",
+     0.14,
+     9.25
+    ]
+   ],
+   "pictures_new": [
+    [
+     "Alarm",
+     0.14,
+     9.25
+    ]
+   ],
+   "old": {
+    "hit": 1,
+    "visible": 0,
+    "cross": 0,
+    "phantom": 0
+   },
+   "new": {
+    "hit": 1,
+    "visible": 0,
+    "cross": 0,
+    "phantom": 0
+   }
+  },
+  "tg_d121": {
+   "drawn_changed": false,
+   "pictures_old": [],
+   "pictures_new": [],
+   "old": {
+    "hit": 0,
+    "visible": 0,
+    "cross": 0,
+    "phantom": 0
+   },
+   "new": {
+    "hit": 0,
+    "visible": 0,
+    "cross": 0,
+    "phantom": 0
+   }
+  }
+ }
+}

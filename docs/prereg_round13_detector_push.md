@@ -3873,3 +3873,16 @@ Round 57 drops), (L) the 2 hits Round 53 loses (tg_d032 Thunder 13.75, tg_d075 A
 blind controls. Same three questions as Round 46 + free text "what do you actually hear?". Uses fixed now: (a) a gold correction
 only through the established blind-with-controls process and only on Adam's say-so (controls must read as real/needed at the Round
 46 level, else no correction); (b) the thesis error taxonomy. No pipeline rule is selected on these answers. TEST untouched.
+
+### Cache fill 1 Oct result (jobs 31602933 ask, 31602934 r16dev, 31602935 tgarms, 31602936 post)
+Asked 24 DEV items (15 P2 + 9 PV) and 2 DEV2 PV items; appended (`dev_listener_v.json` / `_afn.json` 876 -> 900 items, DEV2
+504 -> 506; supplements `dev{,2}_listener_fill{,_afn}.json`); replay 26/26 found with a TIER + AF answer. TIER yes on 9 of the
+26 (snow_walk Crowd + Train, flea_market Vehicle 20-28, golf_course Bird x3, applause Belly laugh, helicopter Aircraft,
+storm_house Vehicle); the motivating nyc_1689 Vehicle 0-10 run is a TIER no (Qwen V4 no, AF V4 no), so the 3.8 s car horn
+stays missed. After re-running SHIP8+MD3 stage 4/5 on the 17 + 2 clips: **a_missing 0 / b_missing 0** (DEV a 0/524, b 0/17;
+DEV2 a 0/296, b 0/10). Drawn pictures changed on 2 clips (DEPICT / GROUP re-asked there per the rule: nothing silenced, no
+pair): **b3_flea_market + Vehicle 20.0-28.0 (phantom)**; **b3_golf_course Bird 18.84 -> Bird 3.8 (cross -> cross)**;
+ly_helicopter Vehicle 0.14-17.75 -> 0.0-18.0 (hit either way). **Merged DEV SHIP8+MD3 (DEPICT on, floor none): 29/58, 18
+(6/9/3), 2.141** vs 29/17 (6/9/2), 2.113 before the fill (DEV 19/11, DEV2 10/7 unchanged). Reading: with every asked run
+answered, the shipped arm's honest DEV number is 2.141 (one more phantom); the gap hid a wrong picture, not a hit. No rule
+changed; TEST not read. `cachefill_post_dev{,2}.json` hold the per-clip before/after.
