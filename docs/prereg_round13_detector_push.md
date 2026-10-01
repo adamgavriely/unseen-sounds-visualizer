@@ -3064,3 +3064,38 @@ Added 2, both wrong: m4_airsoft_24a Laughter 2.88 (phantom; DASM 0.965), tg_d045
 (restrepo Gunshot, tg_d101 Bird — both excluded families), Water visible, Chainsaw phantom, Explosion cross, Bird cross. Reading: the
 held-out list cleans DEV (its two kept pictures are the DEV hits) but on TEST the two kept families are wrong and the two hits are in
 excluded families; 4 pictures in all, 2 right — the held-out selector does not transfer. Not shipped; Adam's call as every GO today.
+
+## Round 45 AGREE-EARS — a second, independent ear must also name the EXPECT sound on the whole clip (written 2026-10-01 BEFORE any number)
+**Why.** Of the 16 pictures EXPECT-A4 added (DEV 8 + TEST 8), 2 are visible and 9 are cross / phantom: the wrong ones are mostly
+AUDIO-side (a sound named that is not there, or not then), which no visibility vote can reach (HUMAN-2 at the EXPECT onsets could touch
+at most the 2 visible ones). The held-out 415 (Round 42) showed the audio chain is 80 % precise, so what is needed is a selector that
+(1) does not read DEV/TEST gold and (2) can be checked on the 415 first. Rule: a picture of the EXPECT-A4 chain is kept only if a
+SECOND listener of a different family — **Audio Flamingo Next** (`nvidia/audio-flamingo-next-hf`, the Round 14 C second ear) — also
+names its family on the whole clip, independently of Qwen3-Omni.
+**Listen (GPU msproj, one model load).** Every clip of merged DEV (71: `expect_a/listen/*.json` parts dev / dev2), merged TEST (88:
+`expect_test/listen/*.json`) and the 415 held-out (`heldout_a4_screen.ids()`), whole 16-kHz wav (`devcand/wav16`, `r13dev2/wav16`,
+`r13test/wav16`, `r13test2/wav16`, `heldout_a4/wav16`), the SAME question as Omni (`expect_a_screen.LIST_Q`), AFN decode as Round 14 C
+(`listener_afnext.load_model()["gen"]`: greedy, no repetition penalty; 96 new tokens as Omni). Disclosed: Omni used repetition_penalty
+1.2, AFN does not (the Round 14 C choice), so only the ear differs, not the question or the map. Parsed with `expect_a_screen.items_of`
+-> `map_item` (imported, the frozen Round 40b map, no cosine) -> the clip's AFN family set. Secondary, one forward pass per candidate:
+AFN yes/no (`benchmark.listener_round.QUESTION`, logit yes − no as Round 14 C) on the cut [onset − 1, onset + 3] s (the 2-s picture
+± 1 s, clipped to the clip).
+**Primary rule (AGREE).** An EXPECT-A4 picture is kept iff its family is in the clip's AFN family set. Nothing else re-run: DEV = the 8
+`outcome == "kept"` pictures of `expect_a4_screen.json`, TEST = the 8 `added` of `expect_test.json`, held-out = the 92 `outcome ==
+"kept"` detections of `heldout_a4_screen.json` (classes already recorded there). Secondary (AGREE+YN): kept iff AGREE and the yes/no
+margin > 0 at the onset cut; reported on all three sets, never decides.
+**Reads, in this order.** (i) Held-out 415 first: precision of the agreed subset vs 0.804 and how many of the 74 correct survive; reading
+rule written now: the selector is "vouched" if agreed precision >= 0.85 with >= half of the 74 correct kept, "not vouched" otherwise
+(reported either way; the DEV/TEST reads follow regardless, as pre-registered). (ii) DEV: SHIP8 base 28/58, 21 (6/13/2), 2.282 must
+reproduce; main rule (hits >= 28, no needed hit lost on either part, w = 2 cost < 2.282) and the fewer-pictures clause (cost lower,
+wrong <= 21 − 3·hits lost, hits lost <= 3), as Round 42b. (iii) TEST: base 23/65, 29 (4/20/5), 2.568 must reproduce; reported with the
+paired clip bootstrap of d cost vs base (`DCC.boot`, 2000 draws, seed 0, one-sided p), not selected on. (iv) Pooled DEV + TEST (159
+clips, one paired bootstrap over all clips) for EXPECT-A4 and for AGREE, reported as a secondary honesty number (the question of
+whether any EXPECT variant has a positive expected effect across both splits); it decides nothing.
+**Disclosed honestly** (as Round 42b): the per-picture classes of all three sets are already recorded, so once the AFN lists exist the
+outcome is deducible; the AFN list, not the gold, selects. Known before this entry: the DEV kept pictures are Bird, Bell, Footsteps,
+Explosion, Gunshot, Rain, Laughter, Fart; the TEST added are Water, Chainsaw, Laughter, Explosion, Gunshot, Bird, Vehicle, Bird. No AFN
+whole-clip list exists for any clip (the Round 14 C caches are per-cut). GO -> a `src/` flag is Adam's decision; `src/` untouched.
+**Files:** `benchmark/gold/agree_ears_screen.py` (`listen` GPU msproj -> `benchmark/gold/agree_ears/{dev,test,heldout}/<clip>.json`,
+resumable; `score` CPU, dev and test in separate processes as `expect_a5_screen.py`) -> `benchmark/gold/agree_ears_screen.json`;
+`slurm/job_agree_ears.sh` (H200-4h,A100-4h,L4-4h; from `~/MscProj_tg`, `TG_ARMS=SHIP8`).
