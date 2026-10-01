@@ -2468,3 +2468,20 @@ the "already drawn" clause by design (a same-family picture exists); this round 
 **Files:** `benchmark/gold/expect_screen.py` (`propose` / `listen` / `gate` = GPU, `cands` / `score` = CPU, one JSON per clip per
 stage under `benchmark/gold/expect/`, resumable) -> `benchmark/gold/expect_screen.json`; `slurm/job_expect.sh` (H200-4h/A100-4h,
 one job chaining the five, models unloaded between stages).
+
+## Round 38 SYNC-2 — Synchformer sync as an ADD-seen rule (written 2026-10-01 BEFORE any SYNC-2 number)
+**Disclosure.** The rule SHAPE was suggested by the Round 38 DEV flips (every "good" not-seen -> seen flip of plain sync had
+sync >= 0.88, the one bad one 0.81), so the DEV judge set has already informed the idea; the threshold therefore comes from the
+NON-judge cached clips only (90 clips, 98 seen / 77 needed sounds), and DEV is read once. Same truth (current gold, seen =
+visible or obvious, re-derived per sound), same base (16/41 silenced, 33/38 kept), same GO bar (silenced >= 19 & kept >= 32,
+or kept >= 35 & silenced >= 15), same score path (`sync_gate.py score2`, CPU, laptop).
+**Rule (1) ADD-seen.** A sound the shipped majority keeps (not seen) becomes seen iff its sound-level sync (MIN over stretches,
+p(|offset| <= 0.2 s) as in Round 38) >= t_hi, where t_hi = the smallest observed non-judge sync value at which >= 95 % of the
+non-judge sounds with sync >= t_hi are gold-seen (if no value reaches 0.95 the rule is void and reported as such). Sounds the
+majority already silences are unchanged.
+**Rule (2)** = Round 38 (b) veto, unchanged (seen iff majority AND (sync >= t OR unanimous), t = 0.761 from Round 38's
+calibration). Reported: (1) alone and (1)+(2) (= veto OR add). Every flip listed with gold class and votes.
+**Pictures.** From saved SHIP8 data (`btp_screen.parts`, `TG_ARMS=SHIP8`, DEV part only; the gate cache covers no tg_* clip)
+every placed picture whose `cross_group.classify` match is a gold sound that flips under (1) or (1)+(2) is listed with its
+class (hit / visible / collision / dontcare): a flip to seen would silence it, a flip to not-seen would let it through.
+Report only; the arm is not re-run.

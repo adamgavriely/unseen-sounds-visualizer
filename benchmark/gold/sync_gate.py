@@ -334,9 +334,132 @@ def score():
     SUMMARY.write_text(json.dumps(out, indent=1), encoding="utf-8")
 
 
+# ------------------------------------------------------------------------------------------- Round 38 SYNC-2 (ADD-seen)
+SUMMARY2 = G.OUT_DIR / "sync2_summary.json"
+
+
+def decide2(stretches, rule: str, t_hi: float, t: float) -> bool:
+    """add: majority OR (every stretch has sync, MIN >= t_hi); add+veto: the veto applied to the majority part only"""
+    vals = [sync_of(st) for st in stretches]
+    add = bool(vals) and all(v is not None for v in vals) and min(vals) >= t_hi
+    maj = decide(stretches, "majority", t)
+    if rule == "majority":
+        return maj
+    if rule == "add":
+        return maj or add
+    if rule == "add+veto":
+        return decide(stretches, "veto", t) or add
+    raise ValueError(rule)
+
+
+def _rates2(rows, rule, t_hi, t):
+    seen_sil = n_seen = kept = n_needed = 0
+    for s in rows:
+        pred = decide2(s["stretches"], rule, t_hi, t)
+        if s["_seen"]:
+            n_seen += 1; seen_sil += int(pred)
+        else:
+            n_needed += 1; kept += int(not pred)
+    return seen_sil, n_seen, kept, n_needed
+
+
+def _load_rows():
+    from benchmark.gold.box_gate import gold_index
+    gold = gold_index()
+    judge = set(G.JUDGE100.read_text().split())
+    dev, cal = [], []
+    for f in sorted(OUT.glob("*.json")):
+        d = json.loads(f.read_text(encoding="utf-8"))
+        for s in d["sounds"]:
+            g = gold.get((f.stem, s["label"], round(s["start"], 2)))
+            if g is None or g["importance"] < 2:
+                continue
+            s["_seen"] = bool(g["seen"]); s["_stem"] = f.stem
+            (dev if f.stem in judge else cal).append(s)
+    return dev, cal
+
+
+def pictures_on_flips(flips):
+    """saved SHIP8 pictures (DEV part) whose classify match is a flipped gold sound"""
+    os.environ.setdefault("TG_ARMS", "SHIP8")
+    from benchmark.gold import btp_screen as B
+    from benchmark.gold import cross_group as CG
+    from benchmark.gold import score_per_sound as S
+    B.ARM = "SHIP8"
+    out = []
+    by_stem = {}
+    for x in flips:
+        by_stem.setdefault(x["clip"], []).append(x)
+    for part, st, gold, pics in B.parts():
+        if part != "dev" or st not in by_stem:
+            continue
+        cls = CG.classify(gold, [p[:3] for p in pics])
+        gs = sorted(gold, key=lambda g: g["start"])
+        for lab, a, b, c, i in cls:
+            if i is None:
+                continue
+            g = gs[i]
+            for x in by_stem[st]:
+                if abs(g["start"] - x["start"]) < 0.05 and S.same_family(x["label"], g["label"]):
+                    out.append({"clip": st, "picture": [lab, round(a, 2), round(b, 2)], "class": c, "gold": [g["label"], g["start"]],
+                                "flip": x["base_seen"] and "seen->not seen" or "not seen->seen", "gold_seen": x["gold_seen"]})
+    return out
+
+
+def score2():
+    dev, cal = _load_rows()
+    t = json.loads(SUMMARY.read_text(encoding="utf-8"))["t"]           # Round 38 veto threshold, unchanged
+    # t_hi on the non-judge clips: smallest observed sync value with precision >= 0.95 for "seen" among sounds >= it
+    vals = sorted({sound_sync(s) for s in cal})
+    t_hi = None; prec = None; n_sel = 0
+    for v in vals:
+        sel = [s for s in cal if sound_sync(s) >= v]
+        pr = sum(s["_seen"] for s in sel) / len(sel)
+        if pr >= 0.95:
+            t_hi, prec, n_sel = v, pr, len(sel); break
+    print(f"t_hi = {t_hi} (precision {prec}, n >= t_hi: {n_sel} of {len(cal)}); veto t = {t:.4f}")
+    out = {"t_hi": t_hi, "t_hi_precision": prec, "n_at_or_above_t_hi": n_sel, "t": t, "dev": {}, "flips": {}}
+    if t_hi is None:
+        out["void"] = True; print("rule void: no threshold reaches 0.95 precision")
+        SUMMARY2.write_text(json.dumps(out, indent=1), encoding="utf-8"); return
+    base = {id(s): decide2(s["stretches"], "majority", t_hi, t) for s in dev}
+    for rule in ("majority", "add", "add+veto"):
+        a, na, b, nb = _rates2(dev, rule, t_hi, t)
+        out["dev"][rule] = {"seen_silenced": a, "seen": na, "needed_kept": b, "needed": nb}
+        flips = []
+        for s in dev:
+            pred = decide2(s["stretches"], rule, t_hi, t)
+            if pred != base[id(s)]:
+                flips.append({"clip": s["_stem"], "label": s["label"], "start": s["start"], "gold_seen": s["_seen"],
+                              "base_seen": base[id(s)], "new_seen": pred, "sync": [sync_of(st) for st in s["stretches"]],
+                              "votes": [_votes(st) for st in s["stretches"]]})
+        out["flips"][rule] = flips
+        print(f"DEV judge  {rule:9s} seen silenced {a}/{na}  needed kept {b}/{nb}  flips {len(flips)}")
+        for x in flips:
+            tag = "good" if x["new_seen"] == x["gold_seen"] else "BAD "
+            print(f"   {tag} {x['clip']} {x['label']} {x['start']:.1f}s gold_seen={x['gold_seen']} "
+                  f"{x['base_seen']}->{x['new_seen']} sync={x['sync']} votes={x['votes']}")
+    b0 = out["dev"]["majority"]
+
+    def _go(r):
+        return ((r["seen_silenced"] >= b0["seen_silenced"] + 3 and r["needed_kept"] >= b0["needed_kept"] - 1) or
+                (r["needed_kept"] >= b0["needed_kept"] + 2 and r["seen_silenced"] >= b0["seen_silenced"] - 1))
+    out["GO"] = {r: _go(out["dev"][r]) for r in ("add", "add+veto")}
+    print("Round 38 SYNC-2:", "GO" if any(out["GO"].values()) else "STOP", out["GO"])
+    try:
+        out["pictures"] = {r: pictures_on_flips(out["flips"][r]) for r in ("add", "add+veto")}
+        for r in ("add", "add+veto"):
+            print(f"SHIP8 pictures on {r} flips:", len(out["pictures"][r]))
+            for x in out["pictures"][r]:
+                print("   ", x)
+    except Exception as e:
+        out["pictures_error"] = repr(e)[:300]; print("pictures: not available from saved data:", repr(e)[:300])
+    SUMMARY2.write_text(json.dumps(out, indent=1), encoding="utf-8")
+
+
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["smoke", "run", "score"])
+    ap.add_argument("cmd", choices=["smoke", "run", "score", "score2"])
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--stems", nargs="*", default=None)
@@ -346,6 +469,8 @@ def main():
         smoke(a.device, a.clip)
     elif a.cmd == "run":
         run(a.device, a.limit, set(a.stems) if a.stems else None)
+    elif a.cmd == "score2":
+        score2()
     else:
         score()
 
