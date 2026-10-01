@@ -2406,3 +2406,6 @@ orders), tg_d107 Laughter 8.4 (B Screaming both orders), tg_d125 Clapping 8.3 (T
 candidate: not in the pool). Reading: the forced choice does not lean to "neither" — it names the louder competitor
 (B wins 413 of 886), so the faint target is still refused; the 143 A-wins are mostly wrong or already-drawn sounds
 (142 other-class). Closed.
+- **Round 39 CONTRAST result:** the base assertion (24/94, from the MOSS screen) fails only because the gold was corrected
+  tonight (TIER base now 26 needed / 92 other on 1004 items). Forced choice on 886 refused candidates: **+1 needed, +142
+  other → STOP** (bar ≥ 3 needed with ≤ 2× other).
