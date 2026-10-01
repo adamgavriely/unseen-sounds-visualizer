@@ -2231,3 +2231,17 @@ model(s), class from `cross_group.classify`, clip hits before -> after); dup cou
 clip on either part has fewer hits than SHIP8. "More hits" rule: PASS iff merged hits > 28 AND cross and phantom counts not
 above SHIP8 on each part (every extra wrong picture visible-type) AND cost at w = 1 (base 2.197) lower.
 cost(w) = (4 miss + w visible + 2 cross + 2 phantom) / 71. GO -> a `src/` flag is Adam's decision; neither -> closed.
+### Round 39 result — DETACHED-ADD: STOP (CPU, login node, `benchmark/gold/detached_add_screen.py` -> `detached_add_screen.json`)
+Base reproduced: SHIP8 merged 28/58, 21 (6/13/2), 2.282; DEV 19/38, 14, 2.122; tagger DEV 9/20, 7, 2.636; all caches present.
+34 (clip, family) pairs eligible; 8 pictures added (earliest from FlexSED 5, BEATs 2, DASM 1): as_explosion Explosion 0.12 (dup),
+b3_bakery_morning Door 8.25 (cross), b3_botanic_garden Bird 23.24 (cross), mv_detective_crime_scene Alarm 17.68 (phantom),
+un_driving_motorcycle Laughter 9.12 (cross), tg_d022 Dog 0.0 (cross), tg_d088 Thunder 7.08 (cross), tg_d128 Hammer 1.48 (cross).
+**DETACHED-ADD: merged 28/58, 28 wrong (6/19/3), cost 2.479 | DEV 19/38, 18, 2.286 | tagger DEV 9/20, 10, 2.909 -> STOP on
+both rules** (hits unchanged, +7 wrong, none visible-type; w = 1 2.197 -> 2.394). No needed hit lost. None of the targets
+got a picture: tg_d032 Thunder — FlexSED (0.3) runs at 0.68 and 6.04 are far enough, but the family is never below the weak
+bars for 1.5 s between them and the 13.75 picture (longest quiet stretch 1.49 s, 10.76-12.25); birds_forest Bird — FlexSED on
+0.0-6.68 and 7.12-10.32, continuous into the picture; as_explosion — the true-onset run 2.84-3.84 is 2.84 s from the 5.68
+picture (< 3.0), the 0.12 run is a dup; ly_applause Crowd — FlexSED on 0.0-13.56 (the 0.0 picture is 1.9 s early, no gap);
+tg_d120 — the Cat picture is rescued (family not eligible) and DASM is on 0.56-5.64 anyway. Reading: at the weak bars the
+detectors hear the mistimed families almost continuously, so "heard again, detached" never fires on the targets and fires
+only on repeat textures elsewhere (7 of 8 wrong). Closed.

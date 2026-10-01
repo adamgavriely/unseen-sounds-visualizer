@@ -57,3 +57,4 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | E1 SYNC | does on-screen motion move in time with the sound (Synchformer) | running |
 | E4 CF | ask the VLM the annotator's own two questions | running |
 | E5 GBTP | start a late picture where any detector first hears its sound | most pictures just move to 0 s; one hit lost (27 / 22): rejected |
+| DETACHED-ADD | add a 2-s picture where a drawn family is heard again, far from its picture | fires only on repeat textures: 28 / 28, +7 wrong, targets untouched: rejected |
