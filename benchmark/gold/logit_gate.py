@@ -338,5 +338,80 @@ def cmd_score_dev():
     print(DEV_OUT)
 
 
+SCENE_TWIN = "Could the sound of {label} NOT plausibly be heard in this scene? Answer yes or no."
+
+
+def cmd_scene():
+    """Round 62 secondary SCENE-RECHECK: the DEV / DEV2 rows of D's memoised F3 asks re-read through the logit harness."""
+    from src.stage5_cross_modal_analysis import reason
+    from src.stage2_video_understanding import _sample_frames_at
+    mp = Path.home() / "MscProj" / "data" / "work" / "scenemargin" / "videos.json"
+    devclips = set(json.loads(mp.read_text(encoding="utf-8")))
+    rows = []
+    for ln in mp.with_name(mp.name + ".answers.jsonl").read_text(encoding="utf-8").splitlines():
+        if ln.strip():
+            x = json.loads(ln)
+            if x["key"][0] in devclips:                       # non-DEV rows skipped unread
+                rows.append(x)
+    print(len(rows), "DEV / DEV2 asks", flush=True)
+    R = Reader()
+    out, changed = [], []
+    for x in rows:
+        label = str(x["key"][1]).split(",")[0].split("(")[0].strip().lower()     # the family stage 4 passed (key), not e.label
+        q, tw = reason.SCENE_FIT_PROMPT.format(label=label), SCENE_TWIN.format(label=label)
+        sts = []
+        for a_ in x["answers"]:
+            a, b = a_["stretch"]
+            lo, hi = a - 1.0, b + 1.0
+            fr = _sample_frames_at(Path(x["video"]), [lo + (hi - lo) * t / 5 for t in range(6)])
+            if not fr:
+                sts.append({"stretch": [a, b], "s": None}); continue
+            s, am, _ = R.s(q, fr)
+            st_, _, _ = R.s(tw, fr)
+            sts.append({"stretch": [a, b], "stored": a_["answer"], "s": s, "argmax": R.tok.decode([am]), "d_twin": s - st_})
+        y, n = sum(1 for z in sts if z["s"] is not None and z["s"] > 0), sum(1 for z in sts if z["s"] is not None and z["s"] < 0)
+        v = None if y + n == 0 else y > n
+        rec = {"key": x["key"], "label": label, "stored_verdict": x["verdict"], "logit_verdict": v, "stretches": sts}
+        out.append(rec)
+        if v != x["verdict"]:
+            changed.append(rec)
+        print(x["key"], "stored", x["verdict"], [z.get("stored") for z in sts], "| logit", v,
+              [(round(z["s"], 2), z["argmax"], round(z["d_twin"], 2)) for z in sts if z["s"] is not None], flush=True)
+    print("SCENE-RECHECK:", len(rows), "asks;", len(changed), "verdicts differ:", [(c["key"], c["stored_verdict"], c["logit_verdict"]) for c in changed])
+    (G / "logit_scene_recheck.json").write_text(json.dumps({"asks": out, "changed": changed, "twin": SCENE_TWIN,
+                                                             "prompt": reason.SCENE_FIT_PROMPT}, indent=1, default=float), encoding="utf-8")
+
+
+def cmd_scene_row():
+    """Round 62 secondary: D's merged-DEV row with mv_protest Glass 4.75 returned (logit F3 = credible). In the saved arms the
+    only mv_protest difference between B (SHIP8+MD3, span kept) and D (span dropped) is that Glass span (scenemargin_diff.json),
+    so D's mv_protest pictures are replaced by B's work-root pictures placed under D's display flags."""
+    from benchmark.gold import score_per_sound as S
+    from benchmark.gold import round13_dev as R13
+    from benchmark.gold import btp_screen as Bt
+    from benchmark.gold.cross_group import classify
+    SS = _arm()
+    clip = "mv_protest_scene_movie"
+    with R13.flags({k: R13.arm_cfg(SS.ARM)[k] for k in R13.DISPLAY_KEYS}):     # before parts(): it re-points R13 to DEV2
+        pB = SS.placed(R13.R13 / "SHIP8+MD3_proposed", clip)
+    rows = SS.parts()
+    base, new = [], []
+    for pt, st, g, w, pics, _ in rows:
+        base.append(S.score_clip(g, pics))
+        if pt == "dev" and st == clip:
+            print("D  ", [x[:4] for x in classify(g, pics)])
+            print("D+G", [x[:4] for x in classify(g, pB)])
+            new.append(S.score_clip(g, pB))
+        else:
+            new.append(S.score_clip(g, pics))
+    Bm, M = SS.summ_fmt(base)[0], SS.summ_fmt(new)[0]
+    assert (Bm["hits"], Bm["wrong"]) == (BASE_D["hits"], BASE_D["wrong"]) and abs(Bm["cost"] - BASE_D["cost"]) < 0.001, Bm
+    print(f"SCENE-RECHECK row: D {Bt.fmt(Bm)} -> D with Glass 4.75 back {Bt.fmt(M)}")
+    f = G / "logit_scene_recheck.json"
+    d = json.loads(f.read_text(encoding="utf-8")) if f.exists() else {}
+    d["row"] = {"D": Bm, "D_glass_back": M}
+    f.write_text(json.dumps(d, indent=1, default=float), encoding="utf-8")
+
+
 if __name__ == "__main__":
-    {"sanity": cmd_sanity, "gold": cmd_gold, "score_gold": cmd_score_gold, "dev": cmd_dev, "score_dev": cmd_score_dev}[sys.argv[1]]()
+    {"scene_row": cmd_scene_row, "scene": cmd_scene, "sanity": cmd_sanity, "gold": cmd_gold, "score_gold": cmd_score_gold, "dev": cmd_dev, "score_dev": cmd_score_dev}[sys.argv[1]]()

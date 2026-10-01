@@ -4455,3 +4455,30 @@ NOT plausibly be heard in this scene? Answer yes or no.". Outcome: every span wh
 truncation-free readout**; if Hammer and / or Glass read credible, they return as they were in B (both cross pictures there:
 expected +1 wrong each, hits unchanged) and the row is computed only if it is trivially re-scorable from the saved arms, else the
 expected row is stated as such. Script `logit_gate.py scene` (GPU, ~/MscProj_tg), job `slurm/job_logit_scene.sh`. TEST not read.
+
+### Round 62 LOGIT-GATE result (job 31692810, H200; `logit_gate.py`, `benchmark/gold/logit_gate_gold.json`, cache `gate_gold/logit_Qwen38-27B/`): **STOP at step 0 — both questions under the 0.65 AUROC bar; steps 1–2 not run**
+Harness check GO: the Qwen3 non-thinking template ends `<|im_start|>assistant\n<think>\n\n</think>\n\n`, so the read position is
+after the empty think block; greedy first token = argmax at the read position on all 4 sanity reads (top-5 e.g. No 31.1, no 27.3,
+Yes 25.0, Based 23.1). The "no" habit is real in the logits (Q and ¬Q both argmax "No" on the sanity stretch); the twin cancels
+it. Argmax is a yes/no id on 577/580 gate-gold reads (99.5 %). Base 16/41, 33/38 reproduced; 145 stretches, 0 without frames.
+**AUROC (seen vs needed, per-sound mean d): (a) source-visible 0.647 (per stretch 0.646) -> STOP; (b) sign/effect 0.627 (per
+stretch 0.662) -> STOP.** Step 1 (threshold) and step 2 (DEV arm on D) not run, as pre-registered. Disclosed, not acted on: (a)
+missed the bar by 0.003, and its ADD-seen curve alone would have met the step-1 bar at t = 0.25 (23/41 silenced, 32/38 kept: + london
+Air horn 3.94, crossing Train 3.46, bakery Crumpling ×2, carnival Drum, ia_youtube Water, protest Baby cry; − golf Whack 1.00
+NEEDED). (b) on ADD-seen never meets the bar; full replacement meets it only for (b) at t' = −1.09 (20/32), (a) never.
+as_explosion_XJ8lc3I6 (gold, D_a / D_b): Gunshot −1.25 / −1.25, Footsteps −3.13 / −3.25, Explosion −2.75 / −3.13, −4.38 / −3.25,
+0.00 / 0.38, Gasp −5.25 / −3.50 (all needed, all below 0.25); Machine gun (seen, shipped-silenced) −3.50 / −0.44. Per-video cost
+(had it passed): prefill passes only, one question × 2 polarities × stretches = 2–18 passes per gate-gold clip (median 6), no
+generation. Nothing ships; D stays the shipped base; TEST not read.
+
+### Round 62 secondary SCENE-RECHECK result (job 31699528; `benchmark/gold/logit_scene_recheck.json`): **D does NOT reproduce under the truncation-free readout — mv_protest Glass 4.75 returns: 29/58, 15 (6/7/2), 2.056 vs D 29/14/2.028**
+Harness note: the first run (job 31698980, kept as `logit_scene_recheck_v1_wronglabel.json` on the cluster) read the row's raw
+`label` ("Alarm clock") instead of the family stage 4 passed (`key[1]`, "Alarm"); fixed to the pre-registered family label and
+re-run; only the corrected run is reported. 14 DEV / DEV2 asks; logit verdict = stored verdict on 12. Changed: **mv_protest Glass
+4.75–5.25: stored None ("based on the") -> credible (s = +2.00, argmax "Based", twin d +1.25)**; **tg_d128 Hammer 9.0–9.75: stored
+None -> not credible (s = −2.62, twin d −4.12)**, i.e. Hammer's removal holds by an explicit no. Others: Thunder ×2 +7.25 / +7.5,
+Alarm +3.12 / +3.00, Screaming +8.12, laundromat Train −3.0, favela Train −5.0, ambulance Siren −0.12 / +1.25 (tie -> not credible,
+= stored). Row (trivially re-scorable: in the saved arms the only mv_protest difference between B and D is that Glass span, so D's
+mv_protest pictures were replaced by B's placed under D's display flags; `logit_gate.py scene_row`): D 29/58, 14 (6/6/2), 2.028
+-> **29/58, 15 (6/7/2), 2.056** (+ Glass 4.75–6.25 cross; Glass 16.89–20.0 back to B's grouping, still a hit). So 1 of D's 4 wrong
+removed vs B (Glass 4.75) was won by the truncation, not by the model's verdict. Reported only; D unchanged; TEST not read.
