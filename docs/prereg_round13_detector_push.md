@@ -2422,3 +2422,12 @@ all 2-1 votes with sync 0.02-0.23) but un-silences five seen sounds with flat sy
 gun, as_glass Glass 18.8, b3_aviary Bird, mv_tornado Cellphone buzz). Structural note, stated after the fact: variant (a) as
 written cannot flip anything — a fourth vote next to three can only make a 2-2 tie, which the rule returns to the shipped
 majority; it is identical to the base by construction (the same holds for SSL-SaN's vote4 rule, Round 33). Closed; no `src/` change.
+### Round 39 RELABEL-GATE result — STOP (`benchmark/gold/relabel_gate_screen.json`; live gate job 31598609, H200)
+50 placed pictures: 8 rescued, 13 no answered P1 cut, 19 both listeners name A, 7 no shared candidate, **3 relabelled** — none of
+the 7 targets (as foreseen above). (1) ambient_weather_storm_7200 Thunder → Rain @0.06 (cached gate: Rain 0.1–15.8 seen 3/3):
+visible → dropped. (2) ly_applause_62ZYD0u Crowd → Baby laughter @0.0 (cached: Laughter 0.0–13.8 seen 3/3): cross → dropped.
+(3) tg_d088 Thunder → Rain @1.0 (live gate: seen 3/3, "a brown and white cow stands in the rain"): **hit → dropped**. Merged
+27/58, 19 wrong (5/12/2), cost 2.2817 = base 2.2817 (not lower); DEV 19/38, 12 (3/7/2), 2.041; DEV2 8/20, 7 (2/5/0), 2.818.
+Main rule fails (hit lost, cost not lower); fewer-pictures clause fails (19 > 21 − 3). Reading: when the listeners agree on
+another sound it is a seen texture (rain, laughter) under the detector's event, and the gate then silences a true hit with it.
+Closed.
