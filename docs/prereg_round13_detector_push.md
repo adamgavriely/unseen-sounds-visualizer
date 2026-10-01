@@ -2171,3 +2171,16 @@ start just AFTER 5.68 (FlexSED 5.76, DASM 5.70; BEATs none), so nothing qualifie
 mistimed misses are untouched, as predicted by construction. Reading: the frame scores are already "on" at the picture's
 start in most cases; pulling to the earliest onset mostly shifts to 0.0 s without changing class, and the one real move on
 a target hurts. Closed.
+### Round 38 result — BOX-2: STOP (step A CPU from the round-37 cache; step B job 31598492, H200, 3 min; `box2_summary.json`)
+| rule | seen silenced / 41 | needed kept / 38 |
+|---|---|---|
+| majority (shipped) | 16 | 33 |
+| BOX-2 step A (cache, no `none` flip) | 14 | 35 |
+| BOX-2 (+ re-prompted unparsed) | 13 | 35 |
+
+Needed kept +2 (bar met: bell_miami Bell 0.2, mv_tornado_scene Siren 8.9) but seen silenced −2 at step A (bar <= 1; lost:
+mv_tornado Cellphone buzz 1.4, un_driving_motorcycle_4O3bZRYO Motorcycle 16.2 — a box was found, the crop said "no") and
+−3 after step B (+ as_glass Chink, clink 18.5: re-prompt boxed a 25×133 strip, crop "no") → **STOP** by one seen sound.
+Re-prompt of the 15 unparsed scored stretches: 11 parsed boxes (1 flip), 4 `null`, 0 still unparsed — the strict prompt
+fixes the format. The `none` flip was the main damage in round 37 (7 → 2 seen lost); what remains is crops of small boxes
+answered "no" on truly visible sources. Closed.
