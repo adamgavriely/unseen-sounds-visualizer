@@ -4361,3 +4361,41 @@ these 6 targets (lexicon written by Fable D after seeing them), so a (b) win on 
 **Cost per video:** prefill passes only, chosen question = stretches × 2 per drawn sound (no generation); the per-clip count on
 D's DEV specs is reported. Job `slurm/job_logit_gate.sh` (gold -> score_gold, exit 0 only on step-1 PASS -> dev -> score_dev).
 TEST is not read.
+
+## Round 63 TAG-ENS — calibrated tagger ensemble as the BEATs span source (written 2026-10-02 BEFORE any Round 63 number; Panel 2 Fable A idea 1, `docs/review/panel2_2026-10-01/fA_audio.md`, `dissection2.md`)
+**Idea.** Lone-model spikes make wrong BEATs spans and BEATs alone misses some onsets (nyc Vehicle 3.8, as_explosion Explosion 2.8,
+tg_d032 Thunder 7.4, rainforest_7629 Bird, Gasp). Average BEATs with other AudioSet taggers put on BEATs' score scale, then cut spans
+from the average. **Online per video:** every step uses only that video's audio plus constants frozen here from the 415 (half A).
+**Taggers.** EAT-large (`worstchan/EAT-large_epoch20_finetune_AS2M`, `benchmark/detector_round5.eat_model`, fp32) and SSLAM
+(`ta012/SSLAM_AS2M_Finetuned`, `sslam_infer.load_model` + `mel`, sigmoid). CED: not used (the only CED frame cache, `benchmark/gold/ced_fw`,
+holds 139 clips, not the 415 / DEV). Dasheng: not in Fable A's pick, not added. **Windows = BEATs' own** (`detector_round5.windows`, 2 s /
+0.25 s, stamps as `infer_beats`), times asserted equal to the clip's BEATs cache on every clip. **Disclosed deviation:** SSLAM was trained
+on 10-s inputs; a 2-s window is zero-padded by `sslam_infer.mel` from 198 to 1024 mel frames (EAT pads 198 -> 208). Labels: EAT and SSLAM
+columns are re-ordered to BEATs' 527 names via the mid -> name map `src/audioset_mid_names.json`; every BEATs name must be found.
+**Split (label-free).** The 415 ids of `benchmark/gold/audioset_heldout.json` in file order, `random.Random(63).shuffle`, first 207 = half A
+(calibration + inclusion check), the other 208 = half B (decision).
+**Calibration (label-free, half A).** Per tagger T and label column c: q_T = quantiles of T's half-A frames at 2001 evenly spaced levels
+0..1, q_B = the same quantiles of BEATs' half-A frames; T' = `np.interp(T, q_T, q_B)` (clamped at the ends). Frozen to
+`benchmark/gold/tagens_calib.npz` (+ `tagens_calib.json` with the split, the taggers kept and the cache folder) before half B is read.
+**Span source.** fw_E = mean(BEATs, T'_kept...) on BEATs' grid; spans = `_extract_events(fw_E, ..., 0.175, min span 0.3 s, hysteresis
+1.0)` and the display bar 0.35 on the span peak (the span's confidence = fw_E peak). Everything downstream unchanged: FlexSED union,
+every veto, band rescue, CAM onsets, WW5, DEPICT, GROUP read the RAW BEATs frames as now.
+**Half-A inclusion check (written now, before any number; protects half B from a mechanical SSLAM failure).** Each tagger alone (T'
+as the span source, same extractor and scoring as step 1) on half A must have precision >= BEATs' half-A precision − 0.05 and span count
+within ±25 % of BEATs' half-A count; a tagger failing it is dropped from the mean (if both fail: STOP, nothing runs on half B).
+**Step 1 — 415 half B (Round 42 rule, depictable families `expect_screen.FAMILIES`).** Spans: depictable canonical family; raw BEATs and
+TAG-ENS with the same extractor (0.175 / 0.35 / 0.3 s; NOT Round 42's 0.5-s row: 754 / 0.375 is all-415 at 0.5 s and is quoted only).
+Precision = correct / spans, correct iff a `score_per_sound.same_family` strong event (masked included) starts in [onset − 0.5, onset + 1.0].
+Onset recall = share of half-B strong events with `canonical(label)` depictable that have a same_family span starting in that window.
+**GO iff** TAG-ENS span count within ±10 % of raw BEATs' half-B count AND precision >= 0.42 AND onset recall >= raw BEATs' half-B recall.
+**Step 2 — merged DEV (only if GO).** Arm SHIP8+MD3+WW5+TE = D + `TAG_ENS` (the flag = path of the frozen `tagens_calib.json`) vs D;
+D must reproduce **29/58, 14 (6/6/2), 2.028** (no picture floor) first. **PASS iff** cost < 2.028 AND (main rule: hits >= 29 and no needed
+hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × needed hits lost and hits >= 26). New spans have no cached listener answers ->
+no rescue (as Round 48), and WW5 / scene answers missing for a new span are treated as the shipped code treats a missing answer;
+gate / DEPICT / GROUP questions for new spans are asked live. Listed: every changed picture with class. Per-video cost stated (one EAT
+and one SSLAM pass over BEATs' windows, seconds per clip measured). TEST not read.
+**Hook (disclosed).** `src/stage4_audio_event_detection/__init__.py`: one flag `TAG_ENS` (default None = off). The DEV harness `build()`
+extracts BEATs spans itself and then calls `fuse_flexsed`, so the swap is done at the top of `fuse_flexsed` (the first place both the
+live path and the harness share): with TAG_ENS set, the incoming tagger spans are re-cut from fw_E for clip `config._CURRENT_CLIP`;
+tagger frames are read from the cache folder or, if absent, scored live from the clip's wav and cached. `round13_dev.py`: one arm line.
+Files: `benchmark/gold/tagens.py` (cache / fit / step1 / diff), `slurm/job_tagens.sh`.
