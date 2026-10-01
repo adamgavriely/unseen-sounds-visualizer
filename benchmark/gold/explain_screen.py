@@ -23,9 +23,17 @@ _ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(_ROOT))
 os.environ.setdefault("TG_ARMS", "SHIP8+MD3")
 
-CACHE = _ROOT / "benchmark" / "gold" / "explain_pics"
-OUT = _ROOT / "benchmark" / "gold" / "explain_screen.json"
-SANITY = _ROOT / "benchmark" / "gold" / "explain_sanity.json"      # 61a (max_new 4) result kept as explain_sanity_61a.json
+# variants (coordinator / Adam 19:31): EXPLAIN_VARIANT=main (Qwen3.8-27B, thinking off; primary) | think (Qwen3.8-27B,
+# config.VLM_THINKING True, VLM_THINKING_TOKENS 2048; reason._ask keeps the last line after </think>) | gemma
+# (google/gemma-4-31B-it via reason._load, run with the judge venv python as Round 24)
+VARIANT = os.environ.get("EXPLAIN_VARIANT", "main")
+assert VARIANT in ("main", "think", "gemma"), VARIANT
+_SUF = "" if VARIANT == "main" else "_" + VARIANT
+MODEL = {"main": "Qwen/Qwen3.8-27B", "think": "Qwen/Qwen3.8-27B", "gemma": "google/gemma-4-31B-it"}[VARIANT]
+CACHE = _ROOT / "benchmark" / "gold" / f"explain_pics{_SUF}"
+OUT = _ROOT / "benchmark" / "gold" / f"explain_screen{_SUF}.json"
+SANITY = _ROOT / "benchmark" / "gold" / f"explain_sanity{_SUF}.json"
+SPECS = _ROOT / "benchmark" / "gold" / "explain_specs.json"     # written by `specs` (msproj env); read by sanity / run      # 61a (max_new 4) result kept as explain_sanity_61a.json
 N_SPECS, N_STRETCH = 44, 74
 BASE = {"hits": 29, "wrong": 18, "cost": 2.141}
 C_ROW = {"hits": 27, "wrong": 13, "cost": 2.113}
@@ -73,7 +81,11 @@ def thing(reply: str):
 
 
 def specs():
-    """[(part, stem, label, start)] in sign_screen.asked order (the 44 drawn specs)"""
+    """[(part, stem, label, start)] in sign_screen.asked order (the 44 drawn specs); from SPECS when written"""
+    if SPECS.exists():
+        S = [tuple(x) for x in json.loads(SPECS.read_text(encoding="utf-8"))]
+        assert len(S) == N_SPECS, len(S)
+        return S
     from benchmark.gold import sign_screen as SS
     A = SS.asked(SS.parts())
     assert len(A) == N_SPECS and sum(len(a[5]) for a in A) == N_STRETCH, (len(A), sum(len(a[5]) for a in A))
@@ -127,14 +139,25 @@ def ask(reason, mdl, proc, pt, st, lab, a0):
 
 
 def _load():
+    import config
     from src.stage5_cross_modal_analysis import reason
-    from benchmark.gold import sign_screen as SS
-    return reason, reason._load(SS.MODEL, "cuda")
+    if VARIANT == "think":
+        config.VLM_THINKING, config.VLM_THINKING_TOKENS = True, 2048
+    print("VARIANT", VARIANT, MODEL, "thinking", bool(getattr(config, "VLM_THINKING", False)), flush=True)
+    return reason, reason._load(MODEL, "cuda")
 
 
 def cmd_specs():
     from benchmark.gold import sign_screen as SS
-    SS.cmd_specs()      # parts() may run only once per process; laundromat Train is asserted in sanity
+    from benchmark.gold import score_per_sound as S
+    rows = SS.parts()                   # parts() may run only once per process
+    A = SS.asked(rows)
+    print(f"{len(rows)} clips, {sum(len(r[4]) for r in rows)} placed pictures, {len(A)} drawn specs, "
+          f"{sum(len(a[5]) for a in A)} stretches, fallback specs {sum(a[6] == 'fallback' for a in A)}")
+    print("BASE", SS.ARM, SS.summ_fmt([S.score_clip(g, pics) for pt, st, g, w, pics, _ in rows])[1])
+    assert len(A) == N_SPECS and sum(len(a[5]) for a in A) == N_STRETCH
+    SPECS.write_text(json.dumps([[pt, st, lab, a0] for pt, st, w, lab, a0, sts, src in A]), encoding="utf-8")
+    print("laundromat Train:", [a[:5] for a in A if (a[0], a[1], a[3]) == LAUND])
 
 
 def cmd_sanity():
@@ -142,10 +165,14 @@ def cmd_sanity():
     li = [i for i, x in enumerate(S) if (x[0], x[1], x[2]) == LAUND]
     assert li, "laundromat Train not among the drawn specs"
     pick = [S[li[0]]] + [S[i] for i in range(0, 37, 4) if i != li[0]][:9]
+    from benchmark.gold import sign_screen as SS
+    CACHE.mkdir(parents=True, exist_ok=True)
     reason, (mdl, proc) = _load()
     rows = []
     for x in pick:
-        r = ask(reason, mdl, proc, *x)
+        f = CACHE / f"{SS.key(*x)}.json"
+        r = json.loads(f.read_text(encoding="utf-8")) if f.exists() else ask(reason, mdl, proc, *x)
+        f.write_text(json.dumps(r, indent=1), encoding="utf-8")
         rows.append(r)
         print("SANITY", r["part"], r["clip"], r["label"], r["start"], "Q1", r["q1_replies"], r.get("q1_reprompt"), r["q1"],
               "| Q2", repr(r.get("q2_reply")), repr(r.get("q2_reprompt")), r.get("q2_thing"), "| Q3", r.get("q3_replies"),
@@ -159,6 +186,7 @@ def cmd_sanity():
     why = "STOP (untestable with this VLM)" if top >= 9 else ("HARNESS STOP (unparsed)" if unparsed >= 9 else "GO")
     print("SANITY Q1 pairs", dict(c), "parsed", dict(parsed), "unparsed", unparsed, "->", why, flush=True)
     SANITY.write_text(json.dumps({"rows": rows, "q1_pairs": dict(c), "stop": stop, "why": why,
+                                  "variant": VARIANT, "model": MODEL,
                                   "prompts": {"Q1A": Q1A, "Q1B": Q1B, "Q2": Q2, "L1": L1, "L2": L2}}, indent=1),
                       encoding="utf-8")
     sys.exit(3 if stop else 0)
@@ -258,7 +286,7 @@ def cmd_score(replace=False):
     print("Round 57 drop (b3_crossing_bells Steam) also made by 61:", bool(steam))
     res = {"mode": "replace" if replace else "stack", "r57_steam_also_dropped": bool(steam), "base": Bm, "rows": X, "vs_C": vsC, "C": C_ROW, "q1_pairs": dict(q1pairs), "funnel": funnel, "q1_unlikely": unlikely,
            "dropped": dropped, "changed": changed, "hits_lost": lost, "wrong_removed": removed_wrong, "cheaper": cheaper,
-           "cost_unit": unit, "main_rule": main, "fewer_pictures": few, "verdict": verdict, "model": SS.MODEL,
+           "cost_unit": unit, "main_rule": main, "fewer_pictures": few, "verdict": verdict, "model": MODEL, "variant": VARIANT,
            "prompts": {"Q1A": Q1A, "Q1B": Q1B, "Q2": Q2, "L1": L1, "L2": L2}}
     out = OUT.with_name(OUT.stem + ("_replace" if replace else "") + ".json")
     out.write_text(json.dumps(res, indent=1, default=float), encoding="utf-8")

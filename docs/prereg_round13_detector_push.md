@@ -4170,3 +4170,22 @@ Prompts, unit, rule, selection, REPLACE-57 decisive form and step 0 sample are R
   Still unparsed -> not unlikely / no confuser / not yes (never a drop). Both raw replies recorded.
 - **Step 0 STOP redefined:** >= 9 of 10 identical PARSED (Q1a, Q1b) pairs -> STOP "untestable with this VLM"; >= 9 of 10 still
   unparsed after the re-prompt -> "harness STOP" (reported, no verdict on the rule). Same 10 specs. TEST not read.
+
+## Round 61c SCENE-EXPLAIN variants v-think and v-gemma (Adam 19:31 "is the VLM smart enough?"; written 2026-10-01 BEFORE any variant answer and before the 61b main result is read)
+Same 44 specs, frames, three questions verbatim, 61b parsing + one re-prompt, rule, step 0 sample, selection rule, REPLACE-57
+decisive form, STACK reported. `EXPLAIN_VARIANT` selects the asker; caches `explain_pics_{think,gemma}/`, outputs
+`explain_screen_{think,gemma}{,_replace}.json`, `explain_sanity_{think,gemma}.json`. Spec list frozen by the msproj env into
+`explain_specs.json` (same `sign_screen.asked` order; asserted 44). On the cluster the variant jobs run a copy
+`explain_screen_v.py` (identical to the committed `explain_screen.py`) so the running 61b main job's script is not touched.
+- **v-think:** Qwen3.8-27B with `config.VLM_THINKING = True`, `VLM_THINKING_TOKENS = 2048` (the shipped `reason._ask` path:
+  appends " Think it through, then end with only the final answer on the last line.", `enable_thinking=True`, budget
+  max(max_new, 2048), keeps the text after `</think>`, then its last non-empty line with "final answer:" / "answer:" dropped);
+  the 61b parsers read that line. Job `slurm/job_explain_think.sh`.
+- **v-gemma:** `google/gemma-4-31B-it` (cached) via the same `reason._load` / `_ask` (AutoModelForImageTextToText, thinking off),
+  run with the judge venv python (`~/venvs/judge/bin/python`, torch 2.7) as Round 24; specs and scoring in msproj. Job
+  `slurm/job_explain_gemma.sh`.
+- **Step 0 per variant** as 61b (>= 9/10 identical parsed Q1 pairs -> that variant untestable; >= 9/10 unparsed -> harness STOP).
+- **Selection.** The main 61b variant stays PRIMARY. Each variant is judged by the same pass rule on its REPLACE row vs B
+  29/18/2.141. **Tie-break if more than one passes: lowest merged-DEV cost, then fewest needed hits lost** (then the primary).
+  Reported per variant: laundromat Train raw replies (Q1a/Q1b, Q2, Q3), dropped pictures with class and raw replies, funnel.
+  TEST not read.
