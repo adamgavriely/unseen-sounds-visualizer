@@ -4309,3 +4309,4 @@ by the visible parrot; on D (where Train is already gone) the net is âˆ’1 hit, â
 Explosion 10.75 cross ("lightning bolt", Yes. / No.) and the same tg_d107 Crying hit (Yes. / No.); Gemma answers L1n "Yes" for
 laundromat Train (kept), fire_alarm, tg_d075, tg_d120, tg_d128, applause; D REPLACE 28/14/2.085, STACK 28/13/2.056 -> FAIL.
 v-think: not run (stopped early, 61c). Nothing ships; D stays the shipped base; TEST not read.
+Correction (Round 61b result line "Q1 alone said unlikely on 27/44 incl. 17 hits"): the count is **16 hits** (recounted from `explain_screen.json` q1_unlikely classes).
