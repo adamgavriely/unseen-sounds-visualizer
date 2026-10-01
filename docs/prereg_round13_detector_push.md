@@ -4310,3 +4310,54 @@ Explosion 10.75 cross ("lightning bolt", Yes. / No.) and the same tg_d107 Crying
 laundromat Train (kept), fire_alarm, tg_d075, tg_d120, tg_d128, applause; D REPLACE 28/14/2.085, STACK 28/13/2.056 -> FAIL.
 v-think: not run (stopped early, 61c). Nothing ships; D stays the shipped base; TEST not read.
 Correction (Round 61b result line "Q1 alone said unlikely on 27/44 incl. 17 hits"): the count is **16 hits** (recounted from `explain_screen.json` q1_unlikely classes).
+
+## Round 62 LOGIT-GATE — read P(yes) − P(no) at the first answer token instead of parsing generated text (written 2026-10-02 BEFORE any Round 62 number; Panel 2 Fable B idea 1, `docs/review/panel2_2026-10-01/fB_vision.md`, with Fable D's SIGN-3 lexicon, `fD_redteam.md`)
+**Why.** Every Qwen3.8-27B gate question so far (`_ask` / `_ab` / `_sound_is_visible`, SIGN, SIGN-2, HUMAN*, SCENE_FIT, 61 Q1/Q3)
+was greedy text + first-letter / first-word parse with a 4–6-token cap. The day's VLM "failures" (letter position 88 %, the
+(no, no) habit 9/10, "Based on the" truncation) are failures of that readout. No gate round has read the margin.
+**Readout (fixed).** Shipped gate VLM Qwen3.8-27B (config profile 5), loaded by `reason._load`; the chat is built as `reason._ask`
+builds it (6 image items, then the text), `apply_chat_template(add_generation_prompt=True, enable_thinking=False)`; ONE forward
+pass, no generation; s = max logit over the 'yes' ids − max logit over the 'no' ids at the last prompt position (ids = first
+token of "yes", "Yes", " yes", " Yes" / "no", "No", " no", " No", dev_listener convention). d = s(Q) − s(¬Q) with the fixed
+opposite-polarity twin below; high d = "visible". Questions (verbatim, label filled in):
+(a) Q "Is the thing making the {label} sound visible in these frames? Answer yes or no." / ¬Q "Is the thing making the {label}
+sound NOT visible in these frames? Answer yes or no."
+(b) Q "Is {sign} visible in these frames? Answer yes or no." / ¬Q "Is {sign} NOT visible in these frames? Answer yes or no.",
+{sign} = Fable D's fixed lexicon where the label has an entry (case-insensitive exact label match): Thunder -> "a lightning
+flash", Water -> "water flowing or splashing", Laughter -> "a person visibly laughing", Explosion -> "a burst of fire or light",
+Vehicle -> "a vehicle moving"; else "the visible effect of {label}".
+Frames: gate-gold = the gate's own 6 per cached stretch (`sign_gate.gate_times`, stretch −1 s .. +1 s, clamped at 0); DEV = the
+pipeline's 6 (`sign2_screen._frames`, decide_subjects, unclamped). < 2 frames -> d = None (stretch skipped in the mean; a sound
+with no d is never silenced by this rule).
+**Harness check (STOP, before any number is read).** On the first gate-gold stretch the job prints the template tail (if the
+Qwen3 non-thinking template emits an empty `<think></think>` block it must sit BEFORE the read position), the top-5 tokens at the
+read position, and a 4-token greedy `generate` from the same inputs. STOP ("harness wrong") if the greedy first token is not the
+argmax at the read position. Reported across all stretches: the share whose argmax is a yes/no id (low = the readout reads noise).
+**Step 0 — gate-gold (`benchmark/gold/logit_gate.py gold`, from ~/MscProj; 49 DEV judge clips, cached `gate_gold/Qwen38-27B`
+stretches, gold labels, importance >= 2: 41 seen / 38 needed; base shipped majority 16/41 silenced, 33/38 kept must reproduce).**
+Per stretch d for (a) and (b); per sound aggregate D = mean d over its stretches. AUROC (rank-based, ties 0.5) of D, seen = positive.
+STOP for a question if its AUROC < 0.65. Per-stretch AUROC reported only. as_explosion_XJ8lc3I6 listed by name (D per sound).
+**Step 1 — threshold (selection rule written now).** Best question = the higher AUROC among those >= 0.65 (tie -> (a)). Candidate t =
+midpoints of the sorted unique D values plus +inf. **ADD-seen (primary):** a sound is silenced iff the shipped majority silences
+it OR D > t. Bar: (silenced >= 19 AND kept >= 32) OR (silenced >= 15 AND kept >= 35). ADD-seen only raises silenced and lowers
+kept from 16/33, so the 15/35 branch is unreachable: the live bar is >= 3 of the 25 shipped-kept seen above t with <= 1 of the 33
+shipped-kept needed above t — far stronger than AUROC 0.65; honest expectation: step 1 FAIL. Pick t maximising silenced under the
+bar; ties -> larger kept -> larger t. No t meets the bar -> step 1 FAIL, step 2 not run. **Full replacement (report only):** silenced
+iff D > t', t' chosen on its own curve by the same rule (both branches reachable). Not selected on.
+**Step 2 (only if step 1 passes) — DEV arm (`logit_gate.py dev` / `score_dev`, from ~/MscProj_tg).** D = SHIP8+MD3+WW5 saved merged-DEV
+pictures (49 DEV + DEV2), STACK form (DEPICT on, as shipped); base must reproduce 29/58, 14 (6/6/2), 2.028. Every drawn spec (41)
+is asked on its own gate stretches (`sign_screen.asked`: gate_votes.json, label + start within 0.011 s; fallback re-cut flagged and
+counted) with the PIPELINE label; a spec is silenced iff its D > t (step 1's question and t). Silenced specs are set augment =
+False, pictures re-placed (`sign_screen.parts` mask, `_display_spans(clip=stem)`), scored with `score_per_sound` on merged DEV.
+Kinship silencing not simulated. **Full replacement cannot be simulated on DEV** (a shipped-silenced spec has no image to
+re-place) -> gate-gold only. **Pass (as explain_d.cmd_score, vs D 29/14/2.028):** cost < 2.028 AND wrong removed >= 2 × needed
+hits lost (>= 1 if none) AND (main rule: hits >= 29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × lost,
+hits >= 26). Listed: every changed picture with its class and D; as_explosion_XJ8lc3I6 by name. Both questions' D are computed on
+DEV (cheap); only the step-1 winner is scored for the verdict, the other is listed, not selected on.
+**Targets (named now).** D's 6 visible wrongs: ambient_weather_storm_16200 Thunder 0.06, ambient_weather_storm_7200 Thunder 0.06,
+london_protest_01 Vehicle 0.25, un_driving_motorcycle_DgdHSmwA Explosion 13.52, tg_d127 Water 0.14, tg_d128 Laughter 3.08; loss
+risk as_explosion_XJ8lc3I6 (needed sounds, gate said "nothing"). **Disclosure:** the 5 lexicon labels are exactly the labels of
+these 6 targets (lexicon written by Fable D after seeing them), so a (b) win on DEV is in-sample; (a) is the clean test.
+**Cost per video:** prefill passes only, chosen question = stretches × 2 per drawn sound (no generation); the per-clip count on
+D's DEV specs is reported. Job `slurm/job_logit_gate.sh` (gold -> score_gold, exit 0 only on step-1 PASS -> dev -> score_dev).
+TEST is not read.
