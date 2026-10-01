@@ -3810,3 +3810,18 @@ clause: wrong <= 18 − 3 × lost, hits >= 26). Reported: every dropped picture 
 **Step 0 — sanity (decides whether the round runs).** The 10 specs at positions 0, 4, …, 36 of the fixed asked order get E1/E2
 (and L1/L2 where a B exists); exact prompts and raw replies printed. If >= 9 of the 10 give the same (E1, E2) pair -> STOP:
 "untestable with this VLM" (as 54b), nothing else run. TEST is not read in this round.
+
+### Round 57 DEPICT-EVENT result (1 Oct; job 31602390, GPU; `depict_screen.py` -> `depict_sanity.json`, `depict_screen.json`, cache `depict_pics/` on the cluster): **PASS (pre-registered rule; n = 1 picture)**
+Harness check reproduces: 71 clips, 48 placed pictures, 43 drawn specs, 72 stretches, 0 fallbacks; base SHIP8+MD3 **29/58, 18
+(6/10/2), 2.141**. **Step 0 GO:** 10 fixed specs, (E1, E2) pairs (no, yes) 7, (no, no) 3 (top 7 < 9). **Full run, 43 specs:** (E1, E2)
+= (no, yes) 31, (no, no) 11, (yes, no) 1 — E1 "visibly happening?" was "yes" on ONE picture only (b3_crossing_bells "Train releases
+steam"); E2 tracked E1 on 32 and was a double "no" on 11. Look-alike coverage 10/43 (33 specs had only "nothing"); answer pairs
+(yes, yes) 5, (no, no) 6, (yes, no) 1; look-alike yes: crossing_bells Steam ("steam train"), as_explosion Gunshot ("AK-47 rifle"),
+as_fire_alarm Alarm ("fire alarm"), mv_tornado Siren ("air raid siren"), tg_d030 Vehicle ("scooter"), tg_d088 Explosion
+("lightning") — all but Steam have event = no, so are kept. **Dropped: 1 — b3_crossing_bells Steam 0.22–9.0 (cross).**
+**SHIP8+MD3+DEPICT: 29/58, 17 (6/9/2), 2.113** (DEV 19/11 -> 19/10, DEV2 10/7 unchanged). 0 needed hits lost; wrong removed 1 (unit
+>= 1 met); main rule met (29 >= 29, no hit lost, 2.113 < 2.141); fewer-pictures clause also met. as_explosion_XJ8lc3I6 and tg_d088
+unchanged (tg_d088 Thunder: rain / lightning bolt = look-alike no; tg_d088 Explosion: lightning = yes but event no). **Verdict: PASS**
+by the pre-registered rule. Reading: the effect is a single picture, the motivating Steam case; Qwen3.8-27B said "no" to E1 on 42/43
+pictures, so DEPICT-EVENT is near-inert beyond it, and its yes rate on hits is untested (0 hits had event = yes). Not wired into
+src/config in this round (scripts only); shipping is the coordinator's call. TEST not read.

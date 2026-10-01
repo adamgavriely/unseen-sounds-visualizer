@@ -1,0 +1,179 @@
+{
+ "base": {
+  "merged": {
+   "hits": 29,
+   "n": 58,
+   "wrong": 18,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 2,
+   "cost": 2.140845070422535
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 11,
+   "visible": 4,
+   "cross": 5,
+   "phantom": 2,
+   "cost": 2.0
+  },
+  "dev2": {
+   "hits": 10,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.4545454545454546
+  }
+ },
+ "rows": {
+  "merged": {
+   "hits": 29,
+   "n": 58,
+   "wrong": 17,
+   "visible": 6,
+   "cross": 9,
+   "phantom": 2,
+   "cost": 2.112676056338028
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 10,
+   "visible": 4,
+   "cross": 4,
+   "phantom": 2,
+   "cost": 1.9591836734693877
+  },
+  "dev2": {
+   "hits": 10,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.4545454545454546
+  }
+ },
+ "spec_tally": {
+  "silenced": 1,
+  "kept": 42
+ },
+ "silenced_specs": [
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "label": "Steam",
+   "start": 0.22,
+   "subject": "Train releases steam",
+   "makers": [
+    "steam train"
+   ],
+   "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/b3_crossing_bells.mp4",
+   "event_prompts": [
+    "Is \"Train releases steam\" visibly happening in these frames? Answer yes or no.",
+    "Do these frames show no \"Train releases steam\" happening? Answer yes or no."
+   ],
+   "event_replies": [
+    "Yes.",
+    "No."
+   ],
+   "pair": [
+    "yes",
+    "no"
+   ],
+   "event": true,
+   "n_frames": 6,
+   "lookalike": [
+    {
+     "B": "steam train",
+     "prompts": [
+      "Could the sound of steam train be mistaken for the sound of steam? Answer yes or no.",
+      "Could the sound of steam be mistaken for the sound of steam train? Answer yes or no."
+     ],
+     "replies": [
+      "Yes",
+      "Yes"
+     ],
+     "answers": [
+      "yes",
+      "yes"
+     ],
+     "yes": true
+    }
+   ],
+   "lookalike_yes": true,
+   "silenced": true
+  }
+ ],
+ "changed": [
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "removed": [
+    [
+     "Steam",
+     0.22,
+     9.0,
+     "cross"
+    ]
+   ],
+   "added": [],
+   "before": "h0 v0 c1 p0 d0",
+   "after": "h0 v0 c0 p0 d0"
+  }
+ ],
+ "hits_lost": [],
+ "wrong_removed": 1,
+ "cheaper": true,
+ "cost_unit": true,
+ "main_rule": true,
+ "fewer_pictures": true,
+ "verdict": "PASS",
+ "named": {
+  "as_explosion_XJ8lc3I6": "unchanged",
+  "tg_d088": "unchanged"
+ },
+ "model": "Qwen/Qwen3.8-27B",
+ "event_pairs": {
+  "['no', 'yes']": 31,
+  "['no', 'no']": 11,
+  "['yes', 'no']": 1
+ },
+ "event_yes": 1,
+ "lookalike_coverage": 10,
+ "lookalike_answer_pairs": {
+  "['yes', 'yes']": 5,
+  "['no', 'no']": 6,
+  "['yes', 'no']": 1
+ },
+ "lookalike_yes": 5,
+ "dropped": [
+  [
+   "dev",
+   "b3_crossing_bells",
+   "Steam",
+   0.22,
+   "Train releases steam",
+   [
+    "steam train"
+   ]
+  ]
+ ],
+ "event_yes_specs": [
+  [
+   "b3_crossing_bells",
+   "Steam",
+   0.22,
+   "Train releases steam"
+  ]
+ ],
+ "prompts": {
+  "E1": "Is \"{event}\" visibly happening in these frames? Answer yes or no.",
+  "E2": "Do these frames show no \"{event}\" happening? Answer yes or no.",
+  "L1": "Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.",
+  "L2": "Could the sound of {A} be mistaken for the sound of {B}? Answer yes or no."
+ }
+}
