@@ -3208,3 +3208,12 @@ second profile `use_more_hits()` + git tag; Adam decides.
 The 2 DEV cross: arrest Footsteps 13.76 (Adam: not heard) and rainforest_7629 Bird 15.52 (heard, off-screen, wanted, but a late
 picture of the gold Bird 0.1–16.0). Letter of the more-hits rule: TEST qualifies (all extras visible, w = 1 lower); DEV fails by
 these 2 pictures. Adam decides.
+
+## Round 48 MD3 — minimum detected span 0.5 -> 0.3 s (written 2026-10-01 BEFORE any pipeline number; motivated by `kill_flags_ship8.md`)
+The CPU kill-flag table (stage-4 rows only, no gate, no onset refinement) found one cheap general change: AED_MIN_DUR 0.5 -> 0.3 s
+restores tg_d107 Laughter (FlexSED 0.886, span 0.48 s) for 3 extra stage-4 rows above display and 1 SHIP8 row lost over all 71
+DEV clips. Short real sounds (a laugh burst, a clink) are shorter than 0.5 s; the 0.5 floor was set for flicker, which MIN_DWELL
+now handles at display. **Arm SHIP8+MD3** = shipped SHIP8 (MERGE_GAP 2.5, GROUP) + AED_MIN_DUR 0.3, full stage 4 + stage 5 on
+merged DEV (job_round16_dev + job_tagger_arms). **Pass vs SHIP8 (28/58, 18 (6/10/2), 2.197):** main rule or fewer-pictures clause
+as Round 47; w = 1 secondary. TEST once if it passes. New rows have no cached listener answers: the TIER rule treats them as the
+shipped code does (missing answer = no rescue), disclosed.
