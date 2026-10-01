@@ -2496,3 +2496,9 @@ Bell, golf Whack, ambulance Vehicle 7.3) have no SHIP8 picture either (ambulance
 hits / wrong would not change on DEV. Reading: a confident in-sync peak is a precise but rare "on screen" signal (5/175 on the
 calibration set, 3 of 25 kept-but-seen sounds on DEV); the GO is a 3-sound gain on the bar with a threshold set by 5 sounds, and
 it changes no shipped picture. Adoption as a `src/` flag is Adam's decision; the shape disclosure above applies.
+**Round 40 EXPECT amendment 1 (2026-10-01, written while the GPU job ran stage 1, BEFORE any candidate, gate or score).** The VLM
+sometimes ignores "JSON list only" and answers prose with bold family names (seen on the 2nd clip, nyc_2627: a numbered list
+"**Vehicle**: ..."), which the parse rule of step 1 discards wholesale. Fallback adopted: when the reply contains no JSON list,
+the families are the depictable family names that appear as whole words (case-insensitive) anywhere in the reply, in order of
+first appearance, first 5. Replies are stored raw, so `cands` re-parses every clip from the stored reply with this rule; the GPU
+proposal stage is not re-run. No other change.
