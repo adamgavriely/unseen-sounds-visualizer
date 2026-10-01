@@ -2802,3 +2802,40 @@ column -> 21 candidates -> 13 gate-seen (clay-shoot Gunshot/Laughter, war_fury G
 0.997 / DASM 0.898 — a needed sound the gold does not time there; airsoft Laughter 2.88). Read as pre-registered: the Round 40e DEV
 verdict (GO, main rule) stands as a DEV result; on TEST the same frozen rule is +2 hits, +6 wrong, cost +0.045 (n.s.). Adam's call on
 any `src/` flag; this TEST read is recorded here and in `benchmark/gold/expect_test.json`, nothing re-tuned.
+
+## Round 42 HELDOUT-A4 — is the EXPECT-A4 audio chain precise without the gate? (written 2026-10-01 BEFORE any number)
+**Question.** Round 40e EXPECT-A4 added +3 hits / +5 wrong on merged DEV and +2 / +6 on merged TEST. Either the AUDIO part (listener
+-> map -> FineLAP -> DASM) is precise and the visibility gate lets wrong off-screen names through, or the audio part itself is imprecise.
+Gold cannot answer this (every DEV/TEST read is spent and the gate is entangled); the 415 held-out AudioSet-Strong clips
+(`benchmark/gold/audioset_heldout.json`, strong labels with times, disjoint from DEV/TEST, 10 s each) can, with no gate at all.
+**Clips.** All 415 (compute fits: the Round 40e TEST job listened to 88 clips in 7:40 including model load, so ~25 min for 415; the
+150-clip subset clause of the task is NOT triggered). Asserted before any stage: every clip has an mp4 under
+`data/input/audioset_heldout/`, a FlexSED cache (`~/MscProj_tg/data/work/flexsed_heldout`), a BEATs cache and a DASM cache
+(`~/MscProj/benchmark/audioset_heldout_windows/{beats,dasm_cache}`); the DASM folder holds 416 files, the stray one is ignored.
+**DASM frame scores are NOT recomputed:** the Round 6 held-out cache (`benchmark/detector_round6.py cache --set heldout`: the same
+`_Dasm` scorer, the same query file `data/work/dasm_text_queries.pt` and 215-label vocab as every DEV/TEST DASM cache; `fw [215, 500]`
+fp16 at 50 fps, read by `dev_candidates_check.load_fr`) is that code's output and is used as is.
+**Chain (frozen exactly as Round 40e TEST, no gate).** 16-kHz mono wav by ffmpeg from the mp4 -> Qwen3-Omni whole-clip list
+(`expect_a_screen.LIST_Q`, 96 tokens, greedy, repetition_penalty 1.2, `items_of`) -> `expect_a_screen.map_item` (frozen map + exact names,
+no cosine) -> first two distinct families -> FineLAP (`finelap_screen.frame_scores`, query = family name, `expect_a3_screen.grid_scores`)
+>= 0.329, onset = start of the highest-max run (gap 0.24 s, `_runs`) -> DASM (`expect_a4_screen.dasm_max`) >= 0.575 within onset ± 0.5 s
+(no column -> not kept, counted). One deviation, disclosed: there are no SHIP8 pictures on these clips, so the "not already drawn"
+filter of Rounds 40c–40e is a no-op; every first-two family goes forward. Strong labels are read ONLY in `score`; the earlier stages read
+clip ids alone.
+**Scoring (per kept detection = (family, onset)).** `correct` iff some strong event (masked included; Speech/Music included — the map
+never yields them) with `score_per_sound.same_family(family, event.label)` has `start` in [onset − 0.5, onset + 1.0] (the gold window
+of every round); else `wrong time` iff a same_family event exists anywhere in the clip; else `family absent`. Precision = correct / kept.
+Reported: overall; per family with >= 3 detections (families with fewer are listed, not judged); the funnel (items, mapped, first-two,
+below FineLAP, no DASM column, below DASM, kept); and the same three classes for the FineLAP-placed candidates BEFORE the DASM check
+(secondary: how much DASM buys).
+**Comparison with the shipped detectors on the same clips (cheap, caches only).** Round 41 PRIOR415 scored FlexSED 0.8 runs and
+BEATs 0.35 spans by canonical EQUALITY on families with >= 10 instances; those numbers are quoted as recorded. For a like-for-like row,
+the same raw runs (`prior415_screen.flex_runs` / `beats_runs` under `shipped_flags()`) are re-scored under THIS round's rule
+(`same_family`, window [−0.5, +1.0], all families) restricted to runs whose canonical family is depictable (`expect_screen.FAMILIES`) —
+the only runs that could become pictures. Both detectors are RAW (before vetoes and the listener), as disclosed in Round 41.
+**Pass/fail.** None — this is a diagnostic, nothing is selected and no `src/` change follows from it. Reading rule, written now: if the
+audio chain's precision on the 415 is clearly above the raw detectors' like-for-like precision, the DEV/TEST wrong pictures are the
+gate's problem (right sound, placed on screen or on a visible twin); if it is at or below them, the audio part itself is imprecise.
+**Files:** `benchmark/gold/heldout_a4_screen.py` (`wav` CPU / `listen` GPU msproj / `cands` CPU / `flap` GPU venv_flap / `dasm` CPU /
+`score` CPU; stage outputs under `benchmark/gold/heldout_a4/`) -> `benchmark/gold/heldout_a4_screen.json`; `slurm/job_heldout_a4.sh`
+(H200-4h,A100-4h, 3 h).
