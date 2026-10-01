@@ -3257,3 +3257,46 @@ output today draws 2 hits and 3 wrong pictures fewer than the scored numbers. Ad
 TEST row (`test_vs_ship8.py SHIP8+MD3 0.40`, floor forced on base and arm): **floor 0.40: 23/65, 22 (3/15/4), 2.409; no floor:
 23/65, 28 (4/19/5), 2.545**. So the floor costs 2 hits and saves 3 wrong on DEV (+0.028 cost), and saves 6 wrong at no hit on TEST
 (−0.136); it was also adopted on the held-out 415 (dC −0.227). Reported for Adam's decision; nothing selected.
+
+## Round 50 HUMAN-BOX — ground HUMAN-2's named source, then ask the crop (written 2026-10-01 BEFORE any HUMAN-BOX number)
+**Idea.** Round 43b's open answer names the likely source well ("the golfer", "the church") but its step-(3) question on six
+whole frames says no for small on-screen sources. Round 38 BOX-2 can box a source. HUMAN-BOX joins them: ground the NAMED
+phrase, crop it, and ask the crop whether that thing is making the sound right now.
+**Set, truth, base (as Round 43/43b).** The 49 cached DEV judge clips, every stretch of every gold sound, importance >= 2, truth =
+current gold (`gold_AG.json`). Base = shipped all-stretches majority from the cached name/ab/desc votes, asserted to be exactly
+16/41 seen silenced, 33/38 needed kept (`human_gate.BASE`) before any Round 50 number prints.
+**Rule (per stretch).** Input = the cached Round 43b reply (`gate_gold/human2_Qwen38-27B/`, never re-asked). If the candidate
+is None (reply none/nothing/no/not, or < 2 frames) -> stretch NOT seen, nothing asked. Else, with `Qwen/Qwen3.8-27B` greedy
+(`reason._load`, `reason._ask`, `reason._ab`):
+(1) grounding — the SAME six frames HUMAN-2 named the phrase on (the cached `human.frames` times, re-sampled by
+`_sample_frames_at`, passed uncaptioned in time order as BOX-2 passes its frames), BOX-2's strict re-prompt form with the phrase
+in place of "the object making that sound": "These frames (numbered 1..N) are from the moment a sound of {label} was heard.
+Reply ONLY with JSON, no other text, no tools: {"frame": k, "bbox_2d": [x1, y1, x2, y2]} around {phrase} on a 0-1000 grid of
+frame k (1000 = full width or height), or {"bbox_2d": null} if {phrase} is not visible." One ask, no re-prompt; parsed by
+`box_gate.parse_reprompt`. Deviation from BOX-2, disclosed: BOX-2 used six frames spread over stretch ± 1 s; here the frames are
+HUMAN-2's onset frames, because the phrase was named on them and "right now" refers to that onset. Fewer frames returned than
+cached (< 2) -> no box.
+(2) crop — BOX-2's rule (`box_gate.to_pixels` + `som_gate.crops`: 20 % margin, short side up-scaled to 224); a degenerate box
+(no crop) = no box.
+(3) crop question — `reason._ab` on the crop alone (both letter orders, the HUMAN-2 / BOX-2 order flip), question "This is a
+close-up cut from a video frame. Is this {phrase} making the {label} sound right now? Answer yes or no.", options yes / no.
+Crop says yes iff yes in BOTH orders (split or no -> not yes). Deviation, disclosed: BOX-2's crop questions were label-free;
+this one names the phrase and the sound.
+**Stretch seen iff phrase named AND box found AND crop says yes.** `null` / unparsed / degenerate = box not found = not seen
+(BOX-2 argued a refusal to box is not evidence of absence; the rule here is the task's and is kept; counts reported).
+**Variants (aggregation as Round 43b, `human2_gate.sound_majority`: sound seen iff MORE than half its stretches are seen).**
+(a) HUMAN-BOX replaces the shipped per-stretch majority; (b) HUMAN-BOX is a 4th per-stretch vote next to name/ab/desc (True vs
+False, None excluded; tie -> shipped majority). Clip verdict as shipped.
+**Pass bar (Round 43, quoted; Round 43b used it unchanged):** "GO iff seen silenced >= 19 with needed kept >= 32, or needed
+kept >= 35 with seen silenced >= 15." Round GO if either variant passes. (Round 43b's shorthand "GO needs 19/32" is the first
+clause; both clauses apply.)
+**Known risks, stated before running.** Only the ~47 of 145 stretches with a named phrase can be seen in (a) (98 were "none"
+in 43b), so (a) cannot silence much. 43b's (b) lost rainforest_7629 Bird "the macaws" (NEEDED); BOX-2 lost mv_tornado Cellphone
+buzz and the un_driving motorcycle Motorcycle (seen) on small crops answered "no" — the same failure can recur here.
+**Report.** Table base / (a) / (b) (silenced/41, kept/38), every sound whose verdict differs from base with gold class and the
+per-stretch phrase / box status / crop replies, stretch counts (named, box / null / unparsed / degenerate, crop yes / no /
+split). GO -> a full-pipeline arm is a separate pre-registration; STOP -> recorded, closed. No DEV pipeline arm is run.
+**Files.** `benchmark/gold/humanbox_gate.py` (`run` GPU -> `gate_gold/humanbox_Qwen38-27B/` (copies of the HUMAN-2 JSONs with a
+new per-stretch `hbox` key; the human2 cache is not written), `score` CPU -> `gate_gold/humanbox_summary.json`),
+`slurm/job_humanbox_gate.sh` (H200-4h,A100-4h). Runs in `~/MscProj` like 43/43b because the HUMAN-2 cache lives there
+(`~/MscProj_tg` has none). Nothing in `src/` or `config.py` edited.
