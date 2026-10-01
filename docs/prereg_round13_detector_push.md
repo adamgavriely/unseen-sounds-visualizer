@@ -2357,3 +2357,9 @@ votes, GO/STOP. GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed
 the setup: if Synchformer could not run within ~1 h, report why instead — it did (above).
 - **Round 39 MAKER-VIS result:** merged 19/58, 15 wrong (4/10/1), cost 2.620 vs SHIP8 28/21/2.282. The maker is "visible"
   for 15 pictures, 9 of them hits (the VLM sees people, sky, clouds for needed off-screen sounds). **STOP.**
+### Round 38 result — BOX-2 arm: STOP on both rules (jobs 31598526 DEV + 31598527 tagger DEV, H200)
+Base reproduced (SHIP8 merged 28/58, 21 (6/13/2), 2.282). **SHIP8+BOX2: merged 29/58, 26 wrong (9/14/3), cost 2.366 at w = 2
+(base 2.282), 2.239 at w = 1 (base 2.197)** | DEV 20/38, 17 (6/8/3), 2.163 (base 19/38, 14, 2.122) | tagger DEV 9/20, 9 (3/6/0),
+2.818 (base 9/20, 7, 2.636). No clip lost a hit. Changes: + hit bell_miami; + visible as_glass_oHil9Ip_, b3_aviary_birds,
+tg_d054; + cross tg_d085; + phantom b3_construction_site. Main rule: cost up -> STOP. "More hits": hits +1 but the extra wrong
+pictures include 1 cross + 1 phantom and w = 1 cost is up -> FAIL. mv_tornado Siren (gained in the screen) did not turn into a hit. Closed.
