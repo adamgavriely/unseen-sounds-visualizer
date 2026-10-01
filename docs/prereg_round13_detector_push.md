@@ -4631,3 +4631,14 @@ src / config edit unless step 2 passes. TEST not read.
 ### Round 60L / D' TEST read (job 31708734 + `test_vs_ship8.py SHIP8+MD3+WW5+SL`; reported, not selected on; ship decision written before it)
 B on TEST 22/65, 26 (4/17/5), 2.545. **D' (shipped): 24/65, 24 (4/15/5), 2.409; d cost −0.136 [−0.295, 0.000], one-sided p 0.034.**
 (D with the text readout read 24/65, 23, 2.386.) Shipped D': DEV 29/58, 15 (6/7/2), 2.056; TEST 24/65, 24, 2.409.
+
+### Round 50L HUMAN-BOX-LOGIT result (job 31714167, H200; `benchmark/gold/humanbox_logit_gold.json`, cache `gate_gold/humanbox_logit_Qwen38-27B/`): **STOP at step 0 — AUROC of the per-sound aggregate 0.597 < 0.65; steps 1–2 not run**
+Base 16/41, 33/38 reproduced; 46 crops rebuilt (26 on seen sounds, 20 on needed); argmax a yes/no id on 87/92 reads. **AUROC of A
+(the more-than-half order statistic) 0.597 -> STOP.** Reported only: on the sounds that do have a crop the margin separates well
+(mean over crops AUROC 0.771 on 25 sounds; per-crop 0.756) — the bottleneck is coverage, not the crop readout: 98 / 145 stretches
+have no named phrase, so most sounds tie at −inf. For completeness (not selected on): no t meets the bar in either variant — (a)
+REPLACE at best 9/41 silenced with 38/38 kept; (b) 4TH VOTE at best 18/41, 32/38 (the same as Round 50's text readout). Top margins:
+waterfall Water +2.6, flea-market Rustle +2.3 / +0.75, waves Water +1.6, storm_7200 Rain +1.5 (all seen); highest needed:
+mv_protest Crowd −1.9, pet-shop Bird −2.5. **bell_miami Bell 0.2 (NEEDED): phrase "the church" on all 3 stretches, m −5.63 / −6.00
+/ −6.25 (A −6.0) — the crop margin says the church is clearly NOT making the bell sound right now** (Round 50 text: no, no, no), so a
+crop-margin rule would keep bell_miami's needed bell. Nothing ships; no src / config edit; TEST not read.
