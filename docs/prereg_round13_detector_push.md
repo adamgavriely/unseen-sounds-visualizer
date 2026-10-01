@@ -4642,3 +4642,57 @@ waterfall Water +2.6, flea-market Rustle +2.3 / +0.75, waves Water +1.6, storm_7
 mv_protest Crowd −1.9, pet-shop Bird −2.5. **bell_miami Bell 0.2 (NEEDED): phrase "the church" on all 3 stretches, m −5.63 / −6.00
 / −6.25 (A −6.0) — the crop margin says the church is clearly NOT making the bell sound right now** (Round 50 text: no, no, no), so a
 crop-margin rule would keep bell_miami's needed bell. Nothing ships; no src / config edit; TEST not read.
+
+## Round 66 NAME-ALL — forced top-3 naming + describe phrases -> ground + crop -> null-calibrated logit crop margin, two-sided (written 2026-10-02 BEFORE any Round 66 answer; VLM panel first pick, `docs/review/vlm_panel_2026-10-01/f2_prompts.md` ideas #1 + #2)
+### (A) Twin check (panel #2's 10-min CPU check; recorded BEFORE step 0; data = Round 62's cache `gate_gold/logit_Qwen38-27B/`, 145 stretches)
+Pre-stated rule (panel): corr(sQ, sN) > 0.8 AND AUROC(sQ) >= AUROC(d) -> the NOT twin subtracts signal -> use the negation-free
+affirmative twin; else keep the twin. **Result:** (a) corr(sQ, sN) = **−0.83**, per-stretch AUROC sQ 0.624 < d 0.646 (−sN alone
+0.658); per-sound mean sQ 0.602 < d 0.647 (−sN 0.680). (b) corr −0.77, sQ 0.642 < d 0.662; per sound 0.586 < 0.627. The NOT twin
+moves OPPOSITE to Q (Qwen3.8 does read the negation here) and adds signal -> **rule says keep the NOT twin**. Round 66's crop twin
+is therefore Round 50L's NOT twin, not the affirmative "just sitting there ..." wording (disclosed: NegBench's concern is not borne
+out for this model on this cache; the check is whole-frame, the use is crop — a proxy).
+### (B) Design (fixed now)
+**Set / truth / base:** gate-gold, 49 DEV judge clips, 145 stretches of the cached `gate_gold/Qwen38-27B` sounds, importance >= 2,
+41 seen / 38 needed, gold labels; base 16/41, 33/38 must reproduce. Frames per stretch: the gate's 6 (`sign_gate.gate_times`).
+Model Qwen3.8-27B, thinking off, greedy for the generations.
+**Candidates (per stretch, no escape).** Prompt N (max_new 40): "A {label} sound is heard while these frames are on screen. List the
+3 visible things most likely to be making it, most likely first, one short noun phrase per line. Always give 3, even if none fits
+well." Parse: first 3 non-empty lines (leading numbering / bullets stripped; a single line with commas / semicolons is split),
+each `reason._clean_phrase(max_words=5)`. Plus noun phrases from the gate's describe answer: **disclosed deviation — gate-gold
+caches only the desc VOTE, not its text, so the benchmark re-asks `reason.DESCRIBE_PROMPT` once per stretch (greedy, max_new 48, the
+gate's own call; online it is already computed, 0 extra asks)**; noun phrases by a fixed heuristic (no spaCy on the cluster): after
+a determiner / number / possessive, up to 4 words, stopping at a preposition, conjunction, auxiliary verb, an -ing word after the
+first word, or punctuation. Ranked list = N's phrases then desc phrases, case-insensitive dedupe, first 4 kept.
+**Ground + crop (Round 50):** each candidate grounded with Round 50's `GROUND_Q` on the same 6 frames (max_new 64,
+`box_gate.parse_reprompt`), crop by `box_gate.to_pixels` + `som_gate.crops` (20 % margin, short side 224). **ViCrop fallback** where
+no candidate yields a crop: one language-free crop of the middle frame (index 2) from the model's own relative attention (2502.17422
+rel-att): last-token attention to the image tokens under Q+ with phrase "the thing", divided by the same under "Describe this image
+briefly.", averaged over heads and the middle third of the decoder layers (eager attention for those two passes only), 3×3-smoothed;
+crop = a box of 40 % of the frame's width and height centred on the arg-max cell, then `som_gate.crops`. A fallback that errors =
+no crop (counted).
+**Readout (Rounds 62 / 50L harness):** per crop m = [s(Q+) − s0(Q+)] − [s(Q−) − s0(Q−)], s = max logit(yes ids) − max logit(no ids)
+at the first answer token, Q+ = Round 50's CROP_Q verbatim, Q− = Round 50L's NOT twin (per (A)); s0 = the same prompt on a uniform
+grey 224×224 image with phrase "this thing", once per label (cached; a disclosed approximation of a per-phrase prior — it shifts
+labels against each other, never sounds within one label).
+**Aggregation (both computed, one picked on step-0 AUROC, tie -> rank-1):** stretch margin = rank-1 (m of the first candidate in
+rank order that has a crop; the ViCrop crop if none) or max (max m over the stretch's crops). No crop -> −inf. Sound A = the
+⌊n/2⌋+1-th largest stretch margin (Round 50L).
+**Step 0:** AUROC of A (seen vs needed) for both aggregations; **STOP if the picked one < 0.65.** Reported: crop coverage (stretches
+with >= 1 crop, target >= 120/145 — a report, not a STOP), ViCrop count, yes/no-argmax share, per-crop AUROC.
+**Step 1 (two-sided rule; REPLACE reported only):** silenced iff (shipped majority AND NOT (A finite AND A < t_lo)) OR A > t_hi,
+i.e. ADD-seen above t_hi, un-silence below t_lo; a sound with A = −inf is never un-silenced (no crop = no evidence). Candidates:
+midpoints of the sorted finite A values, t_lo also −inf (off), t_hi also +inf (off), t_lo <= t_hi. Bar: (silenced >= 19 AND kept >=
+32) OR (silenced >= 15 AND kept >= 35). Pick the pair meeting the bar with the most silenced; ties -> more kept -> larger t_hi ->
+smaller t_lo. None -> FAIL, step 2 not run. REPLACE (silenced iff A > t, t by the same rule) reported only. Disclosed: two
+thresholds on 79 sounds is a fit; DEV is the test.
+**Step 2 (only if step 1 passes) — DEV on D' = SHIP8+MD3+WW5+SL (must reproduce 29/58, 15 (6/7/2), 2.056).** Removal side only:
+every drawn spec, PIPELINE label, its own gate stretches (`sign_screen.asked`, `decide_subjects` frames), the whole chain fresh (N,
+describe re-ask, grounding, ViCrop, margins); a spec is silenced iff A > t_hi; re-placed and scored as Round 62 / `sign_screen`.
+Pass: main rule (hits >= 29, no needed hit lost, cost < 2.056) or fewer-pictures clause (cost < 2.056, wrong removed >= 2 × lost,
+wrong <= 15 − 3 × lost, hits >= 26). Un-silencing (A < t_lo on a shipped-silenced sound) cannot be scored on saved pictures (no
+image); it is counted on D''s gate-silenced specs when their stretches are logged, and what a full stage-5 arm needs is stated.
+**Witnesses (named now):** kept-needed as_explosion_XJ8lc3I6 ×6, b3_golf_course Whack (both), bell_miami Bell, b3_pet_shop Bird
+(un-silence via t_lo); silenced-seen b3_aviary_birds Bird, ambient_market_marrakech Motorcycle, storm Rain (ambient_weather_storm_7200).
+**Cost per video (online):** per stretch 1 × 40-token naming + <= 4 × 64-token grounding generations + 2 prefill passes per crop
+(+ 2 attention passes when ViCrop fires); s0 cached per label; describe already computed by the gate. Counts reported.
+Script `benchmark/gold/nameall.py`, job `slurm/job_nameall.sh`. No src / config edit unless step 2 passes. TEST not read.
