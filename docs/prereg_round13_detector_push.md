@@ -3993,3 +3993,54 @@ alone would refuse 36 of the 93 padded accepts (0.361 correct among them). Readi
 with F8 on top only 1 of 10 would remain. The DEV / DEV2 tight answers were asked in parallel (476 + 294 refused band items,
 `tightcut_ask_{dev,dev2}_{q,af}.json` on the cluster) but were NOT read: the arm job stopped at the gate (exit 3) before building
 override caches; no DEV arm was run. Nothing ships; TEST not read.
+### Round 59 CONTEXT — pre-registration (1 Oct, before any context answer is generated)
+**Idea (Adam, 1 Oct 17:16; notes h11/h12).** "When you are not sure about a sound, look 5 seconds before or after": he
+recognised tg_d030 Motorcycle and tg_d149 Bee only from what is SEEN later in the clip. **Uncertain candidates** = what the
+listeners were asked about and REFUSED (cached answers, caches complete after today's fill): (i) P2 band runs, FlexSED
+0.5 <= peak < 0.8, cached TIER False at the cached peak (peak >= 0.6: Qwen V4 no; below: Qwen V4 AND AF V4 not both yes);
+(ii) PV items (FlexSED spans the PANNs clip veto drops unless the listener accepts), cached TIER False. K4A refusals
+(P1 lists on drawn spans) are NOT in scope (disclosed). **New evidence:** Qwen3-Omni (`listener_variants.MODEL`, thinker only,
+greedy, 64 new tokens) gets the 16-kHz audio of **[max(0, onset − 5), min(dur, onset + 5)]** AND **8 video frames** of the same
+window (ffmpeg, scale 640 wide, times a + (b − a)(i + 0.5)/8) passed as ONE video (`videos=[frames]`, fps = 8 / (b − a),
+`use_audio_in_video=False`); if the processor rejects video input on a smoke call (first 415 clip, window [0, 10], a
+non-candidate), ALL asks use the 8 frames as images instead (mode recorded per item). Question, verbatim: "A sound starts about
+{k} seconds into this clip. Using what you hear and what you see anywhere in the clip, what is making that sound? Answer with
+a short sound name." with k = onset − window start (one decimal). Onset = where stage 4 would place the picture: P2 run start,
+or the 1-s cut start when the run < 0.5 s; PV span start. **Mapping (frozen):** `expect_a_screen.items_of(answer)`, then
+`map_item` on each item; the FIRST item that maps gives the context family; **context-accept iff it == the candidate family**
+(same_family ancestor/descendant counted only as a reported row).
+**Rule (a), arm `SHIP8+MD3+CTX` (no src change):** a refused candidate counts as listener-accepted iff context-accept;
+everything downstream unchanged (F8 DASM vote 0.575, ONCE, FLAP, K4A, vetoes, gate, GROUP, DEPICT). Implemented as override
+copies of the DEV / DEV2 listener caches (`benchmark/gold/context/{v,afn}_{dev,dev2}.json`): for a context-accepted item the
+legs `_tier` reads at its peak are set yes (Qwen V4; below 0.6 also AF V4); a CPU replay through `listener_from_vcache` must give
+TIER = base OR context on every asked item and an identical accept dict on every other P2 / PV item. **Variant (b), secondary
+only, arm `SHIP8+MD3+CTXB`:** (a) plus context-accepted rescues skip F8 — new flag `CONTEXT_F8_BYPASS` (config.py, default
+None = off; src/stage4 `_ctx_bypass`: same clip, family, start/end within 0.02 s of the context-accepted span); NOT
+`F8_BYPASS_BOTH` (that would also bypass every naturally agreeing rescue, K1). Arms registered at run time by
+`benchmark/gold/context.py` (no round13_dev edit). DEPICT / GROUP answers are not re-asked for new pictures (missing = kept /
+not grouped, disclosed).
+**Honest ceiling (a).** With F8 unchanged only refused misses with DASM >= 0.575 can become hits. Of the known refused needed
+misses (Round 58 list): nyc_1689 Air horn 3.76 (DASM 0.051), as_explosion Footsteps 2.08 (0.262), Gasp 6.72 (0.065),
+b3_carnival_parade Steam whistle / Whistle 6.32 (0.021 / 0.372) all fail F8; only **nyc_1689 Vehicle (run 0.0–10.0, DASM
+0.718/0.719)** can pass, so **+1 hit is the ceiling of (a)** and it needs both a context-accept and the 0.0-onset picture to
+score against the 3.8-s gold row (not pre-judged). (b) can do more. **Expected wrong-side risk:** "recognised because seen"
+means the source is often ON SCREEN — the class of 5 of Adam's 12 current wrongs (Round 46b); context accepts may add
+on-screen pictures that the gate then has to catch.
+**Step 1 — held-out 415 (`context.py ask 415 0|1` + `gate`).** Population = Round 58's seeded 800 band runs
+(`tightcut.held_sample()`, random.Random(58), 0.4 runs, gaps <= 0.24 merged, 0.5 <= peak < 0.8, depictable families), all
+asked. **Refusal proxy (as instructed, disclosed): band runs whose family neither whole-clip list names** (Qwen3-Omni
+`heldout_a4/listen`, AF Next `agree_ears/heldout`, `bandlist_415.fams_of`; AF list missing -> Qwen alone). Correctness = Round 42
+(`heldout_a4_screen.classify`: same family, onset in [onset − 0.5, onset + 1.0]). **Guard: STOP iff n(unconfirmed AND
+context-accept) >= 5 and its precision < 0.60**; n < 5 = not judged, DEV runs. Reported (not the guard): base rates (all 800,
+unconfirmed), context-refused, guard set with DASM >= 0.575 (F8 survivors), by peak side, same_family mapping, and Round 58's
+ACTUAL padded-TIER refusals on the same 800 (`tightcut_415/held_{q,af}.json`) with and without context-accept, plus the
+shipped rescue (padded-TIER accepted). Disclosed: on 10-s AudioSet clips the ±5 s window is ~the whole clip, so step 1 tests
+"whole-clip audio + video names the family" more than local context.
+**Step 2 — merged DEV (only if step 1 does not STOP; DEV / DEV2 answers are generated in parallel but read only by the arm job
+after the gate).** Base SHIP8+MD3 (floor None, DEPICT on, filled caches) must reproduce **29/58, 18 (6/9/3), 2.141**. **Pass
+(a):** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR fewer-pictures
+clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). (b) is scored by the same rule but reported as
+secondary (it is not a ship candidate on its own). Reported: floor 0.40 rows (`floor_check_arm.py`), changed pictures with
+Omni's raw context answer for each (`context.py diff` -> `context_diff.json`), refused / context-accepted counts per split
+(`context_build.json`). Jobs: `slurm/job_context_q.sh` (array: 415 halves, DEV, DEV2), then `slurm/job_context_arm.sh`
+(gate -> build + replay -> r13 / tagger stage 4 / 5 / gates -> merged -> floor -> diff). TEST not read.

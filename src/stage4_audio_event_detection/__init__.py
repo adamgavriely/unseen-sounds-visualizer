@@ -1467,6 +1467,24 @@ def post_rules(events, ffw, ftimes, flabels, clip: str, origin=None, listener_p1
     return events, log
 
 
+_CTX_CACHE: dict = {}
+
+
+def _ctx_bypass(e) -> bool:
+    """Round 59 CONTEXT variant (b), CONTEXT_F8_BYPASS (a JSON path {clip: [[family, start, end], ...]}; default None = off):
+    a rescued span whose refused band run / vetoed span Qwen3-Omni's +-5 s audio + video context accepted (same family,
+    start and end within 0.02 s, clip = config._CURRENT_CLIP) skips the F8 DASM vote"""
+    p = getattr(config, "CONTEXT_F8_BYPASS", None)
+    if not p:
+        return False
+    from src.labels import canonical
+    if p not in _CTX_CACHE:
+        _CTX_CACHE[p] = json.loads(Path(p).read_text(encoding="utf-8"))
+    fam = canonical(e.label)
+    return any(f == fam and abs(a - e.start) <= 0.02 and abs(b - e.end) <= 0.02
+               for f, a, b in _CTX_CACHE[p].get(getattr(config, "_CURRENT_CLIP", None), []))
+
+
 def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
     """Round 14 precision filters on RESCUED spans only (docs/prereg_round13_detector_push.md, Round 14 + addendum), run
     after onset refinement so the B0 onsets are final. Order: F4, F6, F5, F8, then F1 (F1 picks among the survivors).
@@ -1571,6 +1589,8 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
                 continue
             if getattr(config, "F8_BYPASS_BOTH", False) and getattr(e, "agree", False):
                 dropped.setdefault("F8_bypassed", []).append(sig(e)); continue   # amendment K1: two audio LLMs outvote one SED
+            if _ctx_bypass(e):
+                dropped.setdefault("F8_ctx_bypassed", []).append(sig(e)); continue   # Round 59 CONTEXT (b)
             if dasm is None:
                 dropped.setdefault("F8_no_dasm", []).append(sig(e)); continue
             dfw, dts, dl = dasm
