@@ -3323,3 +3323,8 @@ silenced — the known 43b loss, again). These are exactly Round 43b (b)'s numbe
 sound beyond what the majority-of-stretches aggregation already does (carnival Drum has no named phrase at all), because the
 crop says yes too rarely to break a tie. Reading: the named-phrase crop is more conservative than HUMAN-2's step (3), not less;
 grounding is not the bottleneck, the "making the sound right now" judgement on a still crop is. Closed; no full-pipeline arm.
+
+### Vocabulary check (1 Oct 09:45, not a round; Fable's "detector vocabulary" lead)
+Already tested in Round 14 amendment D: FlexSED got the 120 folded labels (incl. "Chicken, rooster", "Crowing") as extra queries;
+the unheard misses stayed unheard (Whack 0.09, Clang 0.01, Hammer 0.00) and XQ did not beat the base. Whack and Clang are outside the
+depictable vocabulary (bucket b). So bucket A (4 misses no model hears) is a true ceiling of the current detectors; no Round 51.
