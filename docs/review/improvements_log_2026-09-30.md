@@ -138,3 +138,10 @@ Closed today (pre-registered, not shipped): Round 46 gold-scope (Adam's blind ra
 unlisted sound for every version; EXPECT not special), Round 49 BANDLIST (weak FlexSED + Omni list + DASM: 69 % precise on the
 held-out 415, but on DEV 0 hits and +6 wrong), BOX-2 + DASM "more hits" (keeps a cross and a phantom). Grouping limit 4.0 s was set
 after the TEST read of the unlimited version (disclosed in the prereg doc). Open: EXPECT as a "more hits" profile (Adam).
+
+**1 Oct afternoon (closing).** A 5-Fable panel (`docs/review/panel_2026-10-01/`: dissection, 5 proposals, debate, votes) and
+11 pre-registered rounds, every choice on DEV or the held-out 415, TEST unread: Round 51 GRP-P (Omni cannot time a 2-s pause),
+52 STRONG-KEEP (+rooster, −cat, +3 wrong), 52b KIN-KEEP (415 STOP), 53 WEAK-WITNESS (27/13/2.113: −5 wrong, −2 hits, fails the 3:1
+clause), 53b/53c (415 STOP), 53d (27/17/2.225), 54/54b SIGN (VLM letter bias / always "no"), 55 FRAME-PAUSE (415 STOP), 56 TWIN-SHORT
+(27/36/2.761). None ships. Held-out finding: a BEATs span no listener names is right 22 % of the time, one listener 37 %, both 62 %
+— the remaining errors sit where the models disagree at about chance. Shipped base unchanged: SHIP8+MD3, DEV 29/18/2.141.
