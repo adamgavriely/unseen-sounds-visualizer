@@ -23,3 +23,9 @@
 - On SIGN: must be judged as a full DEV arm; as_explosion holds 3 current hits whose visible signs are on screen.
 
 ## Consensus (4 of 4 votes so far): #1 WEAK-WITNESS. Next: SIGN (GPU, full DEV arm, cost-unit GO) and agreement-first twins.
+
+## Panelist 4 (grouping/timing) — arrived after the consensus line
+- Top 3: (1) WEAK-WITNESS (29/15, 2.056 if b <= 0.29; 28/15, 2.113 if b 0.30–0.31); (2) agreement-first twins — **interaction: Gasp is exactly what WEAK-WITNESS drops; stack only with twins exempt from the witness**; (3) Round 51 read + chain fix.
+- Objects to SIGN (kill-side only, against hits-first; as_explosion risk). Withdrew own proposal A and B for the window (expected DEV 0), but runs A as Round 55 at the coordinator's request.
+- Pattern: a held-out pass predicts nothing on DEV (BANDLIST, Round 52); every candidate needs the DEV main rule.
+**Final: 5/5 rank WEAK-WITNESS first.**
