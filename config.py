@@ -506,11 +506,14 @@ def use_shipped() -> dict:
     changed.update(use_final_pictures(2))
     changed["CONFIDENCE_FADE"] = (getattr(me, "CONFIDENCE_FADE", True), False)
     setattr(me, "CONFIDENCE_FADE", False)
-    changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), 0.40)
-    setattr(me, "PICTURE_MIN_CONF", 0.40)
+    # picture floor 0.40 (28 Sept) dropped 1 Oct with Round 60: every scored arm since Round 13 has no floor; shipped = scored
+    changed["PICTURE_MIN_CONF"] = (getattr(me, "PICTURE_MIN_CONF", None), None)
+    setattr(me, "PICTURE_MIN_CONF", None)
     # veto: the scored PANNs clip veto 0.05 (from use_scored) is kept; the BEATs self-veto (0.1218, PANNs off) was worse
     # on DEV (3.10 vs 2.78) and TEST (2.83 vs 2.63, p 0.043), reverted 30 Sept 2026 (TODO "Waiting on Adam", Fable yes)
-    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
+    for k, v in (("MAX_AFTER_END", 1.0), ("MERGE_GAP", 2.5), ("KINSHIP_DIRECTED", True), ("GROUP_ASK", True), ("GROUP_MAX_GAP", 8.0), ("GROUP_CACHE", str(WORK_DIR / "group_answers.json")), ("AED_MIN_DUR", 0.3), ("DEPICT_EVENT", True), ("DASM_LOCAL_VETO", 0.35), ("DASM_LOCAL_KEEP", "both"),
+                 ("DASM_LOCAL_SCENE", str(WORK_DIR / "scene_videos.json")),
+                 # Round 53+60 WEAK-WITNESS + SCENE-MARGIN (1 Oct): DEV 29/14/2.028 (was 29/18/2.141); see prereg doc ("DEPICT_CACHE", str(WORK_DIR / "depict_answers.json")),
                  # DEPICT_EVENT (Round 57, Adam OK 1 Oct 15:34): DEV 29/17/2.113 (was 29/18/2.141); fires rarely (event "no" on 42/43)
                  # AED_MIN_DUR 0.3 (Round 48 MD3, 1 Oct): merged DEV 29/58, 18, 2.141 (was 28/18/2.197); TEST 23/65, 28, 2.545 (same)
                  # GROUP (Round 47, Adam 1 Oct): Qwen3-Omni same/new on repeats <= 4 s apart (src/stage6_visual_augmentation/group.py)

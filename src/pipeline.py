@@ -51,6 +51,7 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     work.mkdir(parents=True, exist_ok=True)
 
     print("[1/7] extracting audio (ffmpeg)...")
+    config._CURRENT_VIDEO = str(video_path)          # Round 60 SCENE-MARGIN: the scene question reads this video
     media = extract_audio(video_path, work / "audio.wav", config.SAMPLE_RATE)
     _dump(work / "media.json", media.to_dict())
     print(f"       {media.duration:.1f}s @ {media.sample_rate} Hz")

@@ -4230,3 +4230,11 @@ the" (None); laundromat Train 1.0–1.75 "no." (this sub-span had ONE ear, unlik
 cry 4.0 / 5.0, tg_d033 Gasp 7.25 "yes." (no picture change). Outcome = the pre-registered case "Thunder + Alarm credible" with
 one cross (Screaming) also credible -> 29/14. Disclosed: Hammer and Glass were dropped by the parser's None (truncated reply), not
 by an explicit "no". Ship decision is Adam's; TEST not read.
+
+### Round 60 shipped (1 Oct ~20:00, under the standing rule "pre-registered DEV pass -> ship; TEST read once after, reported")
+D = SHIP8+MD3+WW5 (Round 53 WEAK-WITNESS 0.35/"both" + Round 60 SCENE-MARGIN): merged DEV 29/58, 14 (6/6/2), 2.028 vs B 29/18/2.141.
+Disclosed: for tg_d128 Hammer and mv_protest Glass 4.75 the F3 reply was cut at the 4-token cap ("based on the") and the frozen
+parser read None = not credible; their removal is by that frozen rule, not by a "no". `config.use_shipped`: DASM_LOCAL_VETO 0.35,
+DASM_LOCAL_KEEP "both", DASM_LOCAL_SCENE (clip->video map; live path falls back to the running video / data/input/**/<clip>.mp4),
+and the picture floor dropped (PICTURE_MIN_CONF None) so shipped = scored (parity_check SHIP8+MD3+WW5: OK). Base arm for new
+rounds = SHIP8+MD3+WW5. TEST read next, once, reported only.

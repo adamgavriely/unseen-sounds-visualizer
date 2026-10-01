@@ -1388,6 +1388,11 @@ def _scene_margin(e) -> bool:
     key = (str(clip), fam, round(float(e.start), 3), round(float(e.end), 3))
     if key not in memo:
         vid, log, verdict = vids.get(str(clip)), [], None
+        if not vid:                                      # live path / new splits: the running video, else data/input/**/<clip>.mp4
+            vid = getattr(config, "_CURRENT_VIDEO", None)
+            if not vid or Path(vid).stem != str(clip):
+                hits = [q for q in (Path(config.DATA) / "input").rglob(f"{clip}.mp4")] if clip else []
+                vid = str(hits[0]) if hits else None
         if vid and Path(vid).exists():
             import torch
             from src.stage5_cross_modal_analysis import reason

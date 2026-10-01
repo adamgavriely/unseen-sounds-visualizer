@@ -238,7 +238,7 @@ ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3, "DEPICT_EVENT": True,
 ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Round 52 STRONG-KEEP
 ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP": "both"}   # Round 53 WEAK-WITNESS (b from the 415)
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
-ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes)
+ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
