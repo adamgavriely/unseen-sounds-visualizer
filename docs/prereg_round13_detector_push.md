@@ -2363,3 +2363,34 @@ Base reproduced (SHIP8 merged 28/58, 21 (6/13/2), 2.282). **SHIP8+BOX2: merged 2
 2.818 (base 9/20, 7, 2.636). No clip lost a hit. Changes: + hit bell_miami; + visible as_glass_oHil9Ip_, b3_aviary_birds,
 tg_d054; + cross tg_d085; + phantom b3_construction_site. Main rule: cost up -> STOP. "More hits": hits +1 but the extra wrong
 pictures include 1 cross + 1 phantom and w = 1 cost is up -> FAIL. mv_tornado Siren (gained in the screen) did not turn into a hit. Closed.
+
+## Round 39 RELABEL-GATE — listener relabel of a placed picture, then the shipped visibility gate on the new name (written 2026-10-01 BEFORE any number)
+**Motivation.** Of SHIP8's 21 wrong pictures, 7 draw the wrong sound at a real moment (Steam for Train, Dog for Chopping, Glass
+for Baby cry, Hammer for Clang, Screaming for Bird, Explosion for Thunder, Bird during footsteps); in most, the real sound there
+is a SEEN gold sound. If the two open-inventory listeners agree on what the moment really is, the picture can be renamed, and the
+shipped gate can then silence it when its true maker is on screen. Known before this entry: the round-31 listing
+(`benchmark/gold/cross_group.json`, SHIP5 rows, same stage-4 cuts) is on disk and was read; on its P1 lists the rule below does not
+fire on any of the 7 targets (both listeners name A for Steam and d088 Explosion; qwen and AF disjoint for Glass, Hammer,
+Screaming; no cut for d022 Dog; golf Bird is rescued). The rule is kept as given — it runs over EVERY placed non-rescued SHIP8
+picture (hits included), re-derived from `SHIP8|proposed`, so the score can still move; it is not relaxed to make it fire.
+**Rule (CPU, saved SHIP8 pictures, merged DEV, gold `gold_AG.json`, display at `arm_cfg` MERGE_GAP 2.0 as every number today).**
+For each placed NON-rescued picture of family A (`btp_screen.parts`, `canonical(label)`):
+1. P1 cut = the stage-4 rows of `SHIP8|proposed` with `canonical == A` overlapping [start−0.1, end+0.1] (cross_group's match);
+   each row's `(qwen_fams, af_fams)` via `_p1v4_lists` on `{dev,dev2}_listener_p1v4.json`; of the rows with a non-None answer,
+   the one whose start is nearest the picture start. No answered row → untouched.
+2. "names A" = any listed family with `same_family(x, A)`. Candidates B = families in qwen_fams ∩ af_fams with not
+   `same_family(B, A)`, B in `depictable_vocab.json["families"]` (Speech/Music absent), `_specific(B)`. Relabel to B iff
+   candidates exist AND at most one listener names A; B = the first candidate in `qwen_fams` order (its prompt lists most
+   prominent first). Several candidates → the first one, the rest ignored.
+3. Gate on B at the picture: cached iff `gate_gold/Qwen38-27B/<stem>.json` has a gold sound with `same_family(B, label)` and
+   picture start in [g.start−0.5, g.end]; verdict = yes > no over name/ab/desc in every stretch overlapping [start−1, start+1]
+   (none overlapping → every stretch of the sound); seen only if every such stretch is seen. The cached `seen` fields are not
+   read. Not cached (all dev2 `tg_*` clips, no cache) → live gate: `reason._sound_is_visible(B, 6 frames at start−1 … start+1,
+   Qwen3.8-27B)` as `gate_gold.run_vlm`, one stretch, same majority; a GPU job (H200-4h/A100-4h, 128G) only for exactly those.
+4. Seen → the picture is dropped; not seen → kept, renamed B, same span.
+**Score.** `score_per_sound.score_clip` per clip as `dbr_screen`; base must reproduce 28/58, 21 (6/13/2), 2.282 first.
+**Pass** (dbr_screen `passes`): main rule — hits ≥ 28, no needed hit lost on either part, cost (visible weight 2) < 2.282;
+fewer-pictures clause — cost lower AND wrong ≤ 21 − 3 × (hits lost) AND hits lost ≤ 3. GO → a `src/` flag is Adam's decision;
+STOP → recorded, closed. Nothing in `src/` or `config.py` edited.
+**Files:** `benchmark/gold/relabel_gate_screen.py` (`scan` = CPU: relabels + cached gates + which need GPU, `gate` = GPU for the
+rest, `score` = CPU) → `benchmark/gold/relabel_gate_screen.json`; `slurm/job_relabel_gate.sh` only if a live gate is needed.
