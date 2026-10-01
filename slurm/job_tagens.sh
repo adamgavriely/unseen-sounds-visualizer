@@ -18,11 +18,8 @@ export PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 P=benchmark/gold/tagens.py
 conda activate msproj
-for s in heldout dev dev2; do python $P cache --set $s --model eat || exit 1; done
-SENV=msproj
-python $P cache --set heldout --model sslam || { echo "SSLAM failed in msproj; using sota"; SENV=sota; }
-conda activate $SENV
-echo "SSLAM env: $SENV"
+for s in heldout dev dev2; do python $P cache --set $s --model eat || exit 1; python $P decode --set $s || exit 1; done
+conda activate sota          # SSLAM's remote code does not load under msproj's transformers (job 31695844); audio decoded in msproj
 for s in heldout dev dev2; do python $P cache --set $s --model sslam || exit 1; done
 conda activate msproj
 python $P fit || { echo "STOP at fit"; exit 3; }

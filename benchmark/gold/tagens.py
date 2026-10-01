@@ -108,11 +108,12 @@ def _scorer(model, device="cuda"):
     return _M[model]
 
 
-def score_to(model, wav: Path, times, out: Path, beats_labels=None, batch=32):
+def score_to(model, wav: Path, times, out: Path, beats_labels=None, batch=32, audio=None):
     """one tagger pass over BEATs' windows of `wav`; columns in BEATs' label order; saved fp16 (the calibration's input format)"""
-    import librosa
     score, names = _scorer(model)
-    audio, _ = librosa.load(str(wav), sr=SR, mono=True)
+    if audio is None:
+        import librosa
+        audio, _ = librosa.load(str(wav), sr=SR, mono=True)
     chunks, t = windows(audio)
     assert len(t) == len(times) and np.allclose(t, times, atol=1e-3), f"window mismatch {wav}"
     fw = np.concatenate([score(chunks[i:i + batch]) for i in range(0, len(chunks), batch)], axis=0)
@@ -154,6 +155,27 @@ def cmd_manifest(set_name):
     print(f"[manifest] {set_name}: {len(rows)} clips", flush=True)
 
 
+def cmd_decode(set_name):
+    """16-kHz mono float32 audio per clip, exactly as score_to loads it in msproj, for a tagger run in another env"""
+    import librosa
+    rows = json.loads((CACHE / f"manifest_{set_name}.json").read_text(encoding="utf-8"))
+    (CACHE / "audio").mkdir(parents=True, exist_ok=True)
+    with tempfile.TemporaryDirectory() as td:
+        for r in rows:
+            dst = CACHE / "audio" / f"{r['clip']}.npy"
+            if dst.exists():
+                continue
+            wav = Path(r["media"])
+            if wav.suffix != ".wav":
+                wav = Path(td) / "a.wav"
+                subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", r["media"], "-vn", "-ac", "1", "-ar", str(SR), str(wav)], check=True)
+            audio, _ = librosa.load(str(wav), sr=SR, mono=True)
+            _c, t = windows(audio)
+            assert np.allclose(t, _load_fr(r["beats"])[1], atol=1e-3), r["clip"]
+            np.save(dst, audio.astype(np.float32))
+    print(f"[decode] {set_name}: {len(rows)} clips", flush=True)
+
+
 def cmd_cache(set_name, model):
     rows = json.loads((CACHE / f"manifest_{set_name}.json").read_text(encoding="utf-8"))
     secs, n = [], 0
@@ -164,6 +186,13 @@ def cmd_cache(set_name, model):
                 continue
             _bf, bt, bl = _load_fr(r["beats"])
             wav = Path(r["media"])
+            npy = CACHE / "audio" / f"{r['clip']}.npy"         # decoded once in msproj (the sota env decodes differently)
+            if npy.exists():
+                t0 = time.time()
+                score_to(model, wav, bt, dst, beats_labels=bl, audio=np.load(npy))
+                secs += [time.time() - t0] if n else []
+                n += 1
+                continue
             if wav.suffix != ".wav":
                 wav = Path(td) / "a.wav"
                 subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", r["media"], "-vn", "-ac", "1", "-ar", str(SR), str(wav)], check=True)
@@ -323,6 +352,8 @@ if __name__ == "__main__":
     kw = {a[i].lstrip("-"): a[i + 1] for i in range(1, len(a) - 1) if a[i].startswith("--")}
     if a[0] == "manifest":
         cmd_manifest(kw["set"])
+    elif a[0] == "decode":
+        cmd_decode(kw["set"])
     elif a[0] == "cache":
         cmd_cache(kw["set"], kw["model"])
     elif a[0] == "fit":
