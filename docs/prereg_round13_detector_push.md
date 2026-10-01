@@ -4241,3 +4241,22 @@ rounds = SHIP8+MD3+WW5. TEST read next, once, reported only.
 ### Round 60 / D TEST read (job 31634752 + `test_vs_ship8.py SHIP8+MD3+WW5`; reported, not selected on; ship decision written before it)
 Base (B on TEST: SHIP7+K4AD renders at SHIP8 display keys) 22/65, 26 (4/17/5), 2.545. **D: 24/65, 23 (4/14/5), 2.386; d cost −0.159
 [−0.341, −0.023], one-sided p 0.0145.** +2 hits, −3 wrong on TEST, in the same direction as DEV (29/14/2.028 vs 29/18/2.141).
+
+## Round 61d SCENE-EXPLAIN — symmetric-polarity Q3 (written 2026-10-02 BEFORE any 61d answer; Adam 21:47 "why do we need the asymmetry?")
+**Disclosure:** prompted by the 61b laundromat Train raw replies (Q3 L1 "washing machine -> train" yes, L2 "train -> washing
+machine" no). 61/61b's "both orders" swapped the two sounds, which is a different, directional question, not a bias check. 61d
+replaces it with a polarity twin of the same direction. **Frozen from 61b:** Qwen3.8-27B shipped settings (thinking off), the same
+44 B pictures, frames, Q1 (both orders unlikely) and Q2 (names a thing), and the CACHED Q1 / Q2 / L1 answers in `explain_pics/`.
+**New Q3 (text only):** L1 `Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no.` (cached 61b reply reused)
+AND twin L1n `Is the sound of {B} clearly distinguishable from the sound of {A}? Answer yes or no.` (max_new 4, `yn`, one
+re-prompt " Reply yes or no only." if unparsed). **Drop iff Q1 unlikely (both) AND Q2 names B AND L1 yes AND L1n no.**
+**Arms.** B = SHIP8+MD3 (29/58, 18 (6/9/3), 2.141) and **D = SHIP8+MD3+WW5, the shipped base (29/58, 14 (6/6/2), 2.028)**; spec
+lists by `sign_screen.asked` (B 44; D 41 drawn specs, base reproduced on the login node before any 61d answer; D's only spec not
+in the 61b cache, ly_helicopter Helicopter 0.14, gets the 61b Q1 / Q2 / L1 asks fresh, into `explain_d_new/`). Forms as 61:
+STACK (61d on the arm, DEPICT on) and REPLACE-57 (arm with DEPICT_EVENT off + 61d's drops), each judged against the arm's
+constants. **Pass decision = D REPLACE vs D (29/14/2.028)**: cost < 2.028 AND wrong removed >= 2 × needed hits lost (>= 1 if
+none) AND (main rule: hits >= 29, no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 × lost, hits >= 26). B+61d
+(stack, replace) and D stack reported. **Variants (report only, same rule):** the same Q3 fix on the v-think and v-gemma cached
+Q1 / Q2 (their own model and settings ask L1n; L1 reused from their cache), on the B specs they answered; D-only specs are not
+asked for variants. Script `benchmark/gold/explain_d.py`, job `slurm/job_explain_d.sh`. Listed: every dropped picture with
+class and raw Q1–Q3 replies. TEST not read.
