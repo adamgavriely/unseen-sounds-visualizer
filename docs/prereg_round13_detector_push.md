@@ -4057,3 +4057,47 @@ look like the expected failure: Omni names what it SEES, and the onset sound is 
 (512 + 314 refused candidates, `context_ask_{dev,dev2}.json` on the cluster) were generated but NOT read: the arm job stopped at
 the gate (exit 3) before building override caches; no DEV arm was run. `CONTEXT_F8_BYPASS` stays None (off). Nothing ships;
 TEST not read. Result file: `benchmark/gold/context_415.json`.
+
+## Round 61 SCENE-EXPLAIN — the VLM explains a wrong label by a visible look-alike (written 2026-10-01 BEFORE any Round 61 answer; Adam 19:14: "in B the laundromat Train should be removed — there is no train and no chance of one there, so it is probably the washing machine ... why can't the VLM?")
+**Why / what is new vs prior art.** Round 16 N1 (`SCENE_FIT_ALL`, "Could the sound of {X} plausibly be heard in this scene?")
+dropped every implausible sound and lost 4 hits: real off-screen sounds look implausible from the frames. Round 57 DEPICT-EVENT
+needs the depicted event to be visibly happening (fired once). Round 61 adds the second reasoning step N1 lacked: a picture is
+dropped only if the VLM ALSO names a visible thing in the scene that could have made a sound the detector mistook for {X}, and a
+text-only check agrees the two sounds are confusable. **Known risk (written now):** N1 lost off-screen hits; this rule needs a
+NAMED VISIBLE confuser, which a real off-screen sound should lack (Q2 -> "nothing") — but Round 57's look-alike text check said
+(yes, yes) on 5 of 12 pairs, so Q3 is a generous filter and the real protection is Q2 answering "nothing" on hits; Rounds 54/54b
+showed this VLM can answer by option position or collapse to one answer — step 0 exists for that. Any hit silenced is reported
+by name with its raw replies as the failure mode.
+**Unit.** The **44 drawn specs / 74 stretches** of the SAVED SHIP8+MD3 merged-DEV arm (DEPICT on, listener caches filled), in
+`sign_screen.asked(parts())` order (harness check run before any answer on the login node: 71 clips, 48 placed pictures, 44 drawn
+specs, 74 stretches, 0 fallbacks; base **29/58, 18 (6/9/3), 2.141** reproduced). Script `benchmark/gold/explain_screen.py`,
+job `slurm/job_explain.sh` (from ~/MscProj_tg). No src/ or config.py edit.
+**Questions (Qwen3.8-27B, `sign_screen.MODEL`, `reason._ask`, greedy).** X = pipeline label lower-cased. Frames = 6 evenly over
+[spec start − 1 s, spec start + 1 s] (`depict_screen._frames`, unclamped); < 2 frames -> no drop.
+- Q1 (frames, max_new 4), two option orders, verbatim: Q1a `A sound detector says it heard {X} here. Looking at this scene, is a
+  real {X} likely to be the source, on or off screen? Answer likely or unlikely.` and Q1b = same ending `Answer unlikely or
+  likely.` Parse: lower-case, first 3 words stripped of punctuation; "unlikely" present -> unlikely, else "likely" -> likely,
+  else unparsed (counts as not unlikely). **Q1 unlikely iff both orders = unlikely.**
+- Q2 (frames, max_new 16), only if Q1 unlikely: `What visible thing in this scene most likely made a sound that a detector could
+  mistake for {X}? Answer with a short noun phrase, or 'nothing'.` Parse: first line, lower-case, quotes/punctuation stripped,
+  leading article removed; empty or starting "nothing" / "none" / "no " -> no confuser; else the phrase is B.
+- Q3 (text only, max_new 4), only if Q2 names B, both orders as Round 57's L1/L2 (the sounds swapped; Q3 text is L1 verbatim):
+  `Could the sound of {B} be mistaken for the sound of {X}? Answer yes or no.` and `Could the sound of {X} be mistaken for the
+  sound of {B}? Answer yes or no.` Parse as 57's `yn`. **Q3 yes iff both yes.**
+**Rule.** Drop the picture (spec augment = False) iff Q1 unlikely (both orders) AND Q2 names a thing AND Q3 yes (both orders).
+Re-placement `_display_spans(clip=stem)` and scoring exactly as `sign_screen.cmd_score` (unit 44).
+**Step 0 — sanity (decides whether the round runs).** 10 specs: dev b3_laundromat Train + the first 9 of positions 0, 4, …, 36 of
+the asked order that are not it; Q1a/Q1b (and Q2/Q3 where reached) with exact prompts and raw replies printed. **If >= 9 of the
+10 give the same (Q1a, Q1b) pair -> STOP "untestable with this VLM"**, nothing else run.
+**Selection (merged DEV, vs B = 29/58, 18 (6/9/3), 2.141).** PASS iff cost < 2.141 AND wrong removed >= 2 × needed hits lost
+(>= 1 if none lost) AND (main rule: hits >= 29, no needed hit lost, cost < 2.141; OR fewer-pictures clause: wrong <= 18 − 3 ×
+lost, hits >= 26). Also reported next to C (Round 53 WW, no floor: 27/13/2.113; not recomputed). Reported: every dropped
+picture with its class (hit / visible / cross / phantom) and raw Q1–Q3 replies, the (Q1a, Q1b) pair distribution over all 44,
+the funnel (Q1 unlikely -> Q2 named -> Q3 yes), every Q1-unlikely spec with class and Q2 reply, laundromat Train by name.
+**Amendment (coordinator, written before any number): 61 vs 57.** Round 61 is a superset of Round 57 (57 needs the event visibly
+happening; 61 only a visible look-alike). If 61 passes it REPLACES 57 in use_shipped (not both). So the **decisive row is the
+REPLACE form**: SHIP8+MD3 with DEPICT_EVENT off in the display flags and 61's drops applied (`explain_screen.py score_replace`),
+judged by the rule above against the same B constants 29/18/2.141. The STACK form (61 on B, DEPICT on; `score`) is reported. The
+result states whether 61 also makes 57's one DEV drop (b3_crossing_bells Steam); if it does, the two forms are identical on DEV.
+If Rounds 60 and 61 both pass, any stack is a new pre-registered round with its own DEV run, not a post-hoc combination. TEST is
+not read in this round.
