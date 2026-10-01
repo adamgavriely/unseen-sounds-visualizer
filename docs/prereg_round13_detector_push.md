@@ -1928,3 +1928,33 @@ SHIP8 (SHIP7+K4AD) 27/22/2.310.
 - **Correction (Adam, 1 Oct 00:59):** tg_d120 caterwaul's source is a clock, not the cat on screen → back to needed. Round 2
   control therefore changes 0 of 20 sounds (0 %) vs round 1's 3 of 14. Final merged DEV (58 needed): B0r 18/51/3.690;
   SHIP7 28/24/2.366; **SHIP8 28/58, 21 wrong (6/13/2), 2.282**.
+
+### Round 36 IMP — DASM impact-type peaks as a listener trigger (written before any number)
+**Motivation:** b3_golf_course "Whack, thwack" (6.5 s, 24.4 s) is unheard by BEATs/FlexSED but DASM "Specific impact sounds"
+peaks 0.69 / 0.58 there; other SHIP8 misses are short impacts (Clang nyc_2627 3.8, Hammer nyc_1689 8.1/13.7, Explosion
+tg_d125 5.4, Dishes tg_d095 16.6). Base = **SHIP8 on the final merged DEV: 28/58 hits, 21 wrong, cost 2.282**
+(`benchmark/gold/ledger_ship8.json`, 30 misses listed incl. importance-1). Nothing in `src/` or `config.py` is edited.
+**Step 1 (CPU, candidate level, `benchmark/gold/imp_screen.py` -> `imp_screen.json`).** DASM impact-type labels = exact names
+present in the 215-label cache: `Specific impact sounds`, `Thump, thud`, `Knock`, `Tap`, `Hammer`. Asked for but absent
+from DASM's list: Bang, Slam, Smash/crash, Whack/thwack, Clang. Near-matches deliberately NOT used (named here so they are
+not added later): Jackhammer, Engine knocking, Chink/clink, Crack, Crackle, Snap, Burst/pop, Finger snapping. Peak = one
+per merged run of the UNION column (max over the 5 columns) >= 0.575 (F8 bar), runs merged over gaps <= LISTEN_RUN_GAP
+0.24 s (the pipeline's `_runs`); peak time = argmax frame; per-label firing reported as a breakdown only. Clips = merged
+DEV (DCC.dev_stems 49 + dev2_stems.txt 22), DASM caches from `cross_group.PARTS` roots (copied to the laptop unchanged;
+assert every clip has one). Each peak goes to ONE bucket, first that applies, window = the scorer's picture-start window
+[g.start − 0.5, g.start + 1.0]: (a) ledger miss (needed, in `ledger_ship8.json` misses); (b) needed importance >= 2 sound
+SHIP8 already hits (would be a duplicate); (c) needed importance-1 (don't-care); (d) seen (non-needed) sound; (e) nothing.
+For every (a) peak print the gold family next to the firing DASM label(s).
+**Trigger for step 2:** DISTINCT ledger misses with >= 1 peak >= 3 AND peaks in (b)+(d)+(e) <= 3 x that number. Below
+that: STOP, recorded, closed — no GPU job.
+**Step 2 (GPU, only if triggered): `benchmark/gold/imp_listen.py` + `slurm/job_imp_listen.sh`.** At every peak (all buckets;
+the rule cannot see the gold) ask Qwen3-Omni the shipped V4 open question (`listener_variants.V4_Q`, no ducking,
+`listener_v4d.py` loader) on a 2-s cut centred on the peak; map names with `listener_variants.match_names`; a picture is
+added (start = peak time, 2 s long) iff the FIRST matched family is impact-type (the gold families above or the 5 DASM
+labels' canonical names) and no SHIP8 picture of that family starts within 1.0 s. Arm = saved SHIP8 pictures ("SHIP8"
+via `btp_screen.parts`) + added pictures, rescored with `score_per_sound` per part and merged (dbr_screen style).
+**Pass vs SHIP8 (28/58, 21, 2.282):** old rule (hits >= 28, wrong <= 21 + 2 x gain, cost < 2.282, no needed hit lost on
+either part) OR fewer-pictures clause (cost < 2.282, wrong <= 21 − 3 x hits lost, hits lost <= 3). Known structural
+limit, stated before running: a hit needs the drawn family == the gold's canonical family (Whack thwack, Clang, Hammer,
+Explosion, Dishes); "Specific impact sounds" is its own family, so a Qwen answer that only names a generic impact cannot
+score — step 1 therefore also reports whether Qwen could name each (a) family at all (step 2 reports the name it gave).
