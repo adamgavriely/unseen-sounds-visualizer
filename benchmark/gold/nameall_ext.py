@@ -58,7 +58,11 @@ def run():
     grey6 = [grey1.copy() for _ in range(6)]
     R = Reader()
     omdl, oproc = owl_load(OWL, "cuda")
-    sm = SS.load_model("cuda")
+    try:                                     # SSL-SaN repo + checkpoint are no longer on the cluster (arm A dropped, disclosed)
+        sm = SS.load_model("cuda")
+    except Exception as e:
+        print("ARM A DROPPED: SSL-SaN cannot load:", repr(e)[:200], flush=True)
+        sm = None
 
     def consts(lab):
         if lab not in C:
@@ -115,7 +119,7 @@ def run():
                             ext["B"].update({"score": best[0], "frame": best[1], "phrase": ph})
                 a, b = float(st["start"]), float(st["end"])                    # A: SSL-SaN audio-driven box
                 seg = w[int(max(0.0, a - 1.0) * SS.SR):int((b + 1.0) * SS.SR)] if w is not None else []
-                if len(seg) >= SS.SR // 2:
+                if sm is not None and len(seg) >= SS.SR // 2:
                     M = SS.cosine_maps(sm, fr, SS.spectrogram(seg), "cuda")    # (n, 14, 14)
                     fi = int(M.flatten(1).max(1).values.argmax())
                     i, j = divmod(int(M[fi].argmax()), 14)
