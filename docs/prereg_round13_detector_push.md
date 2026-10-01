@@ -2940,3 +2940,12 @@ set. Reading: Adam's step (3) — "is the source visibly acting at that moment" 
 silenced a sound the shipped gate keeps; the VLM does not take the first step (name a plausible source at the onset) when a
 "nothing" escape is offered on six near-identical frames. (a) with the shipped wide frames, or (b) alone on the shipped
 "named" candidate, would be a new round; not run tonight. Closed.
+**Round 43 audit (coordinator's question, read from the cached replies, no re-ask).** Not a scoring bug: the letter map is
+`reason._ab`'s (order 1 wants "(a)" = yes, order 2 wants "(b)" = yes) and the 6 both-yes stretches (waterfall Water 2nd
+stretch, the laughing woman ×2, …) are read as seen. The 0/41 comes from the clip rule (silent only if EVERY stretch is seen):
+only 6 of 96 sounds have a candidate on every stretch (the waterfall's first stretch is "nothing"), so at most 6 could be
+silenced, and none has (b) yes on all its stretches. (b) answer distribution over the 47 candidate stretches — order 1 (a =
+yes): (a) 16, (b) 31; order 2 (a = no): (a) 36, (b) 9, unparsed "Based…" 2. Of the 47 candidates, 35 are the truncated
+explanation "Based on the visual evidence" (`_clean_phrase` keeps the first clause; the raw open reply was not stored, so it
+cannot be re-parsed from cache); the 141 "nothing" replies are the literal word. The question set, not the parser or the
+scorer, is what fails: the open question takes the "nothing" escape and (b) says no even for visible sources.
