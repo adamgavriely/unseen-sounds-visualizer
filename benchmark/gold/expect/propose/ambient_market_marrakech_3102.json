@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "ambient_market_marrakech_3102",
+ "duration": 16.02,
+ "times": [
+  1.0,
+  3.0,
+  5.01,
+  7.01,
+  9.01,
+  11.01,
+  13.01,
+  15.02
+ ],
+ "n_frames": 8,
+ "reply": "[\n \"Crowd\",\n \"Vehicle\",\n \"Footsteps\",\n \"Bell\",\n \"Shout\"\n]",
+ "families": [
+  "Crowd",
+  "Vehicle",
+  "Footsteps",
+  "Bell",
+  "Shout"
+ ],
+ "discarded": []
+}

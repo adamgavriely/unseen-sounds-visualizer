@@ -1,0 +1,22 @@
+{
+ "part": "dev",
+ "clip": "birds_forest",
+ "duration": 18.0,
+ "times": [
+  1.13,
+  3.38,
+  5.63,
+  7.88,
+  10.13,
+  12.38,
+  14.63,
+  16.88
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a dark, wooded area at dusk or dawn (the \"blue hour\"), the most likely sounds a person standing there would hear from off-screen sources are:\n\n1.  **Bird**: Even in low light, forests are often filled with bird calls (dawn chorus or dusk settling).\n2.  **Insect**: Crickets or other insects are very common in such environments, especially as it gets dark.\n3. ",
+ "families": [
+  "Bird",
+  "Insect"
+ ],
+ "discarded": []
+}

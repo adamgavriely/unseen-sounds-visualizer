@@ -1,0 +1,42 @@
+{
+ "part": "dev",
+ "clip": "waterfall_kawaida_01",
+ "family": "Insect",
+ "omni_match": true,
+ "matched": [
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant",
+  "ant"
+ ],
+ "outcome": "candidate",
+ "onset": 0.04,
+ "from": "flex",
+ "onsets": {
+  "flex": 0.04
+ },
+ "times": [
+  -0.96,
+  -0.56,
+  -0.16,
+  0.24,
+  0.64,
+  1.04
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

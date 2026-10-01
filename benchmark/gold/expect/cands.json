@@ -1,0 +1,1874 @@
+{
+ "tally": {
+  "proposed": 177,
+  "both": 45,
+  "already_drawn": 13,
+  "no_run": 3,
+  "candidate": 29
+ },
+ "caches_missing": {
+  "flex": 0,
+  "beats": 0,
+  "dasm": 0
+ },
+ "rows": [
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Car passing by",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Dog",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Vehicle",
+    "Vehicle",
+    "Vehicle",
+    "Vehicle",
+    "Vehicle",
+    "Vehicle",
+    "Vehicle"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Water",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Gull, seagull",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Motor vehicle (road)"
+   ],
+   "outcome": "candidate",
+   "onset": 10.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.0,
+    "beats": 12.25,
+    "dasm": 10.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Bell",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_market_marrakech_3102",
+   "family": "Shout",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Stream",
+    "Stream",
+    "Stream",
+    "Stream",
+    "Stream",
+    "Stream",
+    "Stream"
+   ],
+   "outcome": "candidate",
+   "onset": 4.6,
+   "from": "flex",
+   "onsets": {
+    "flex": 4.6
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Frog",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_2179",
+   "family": "Cricket",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "family": "Natural sounds",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Rain",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Car passing by",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "family": "Train",
+   "omni_match": true,
+   "matched": [
+    "Train",
+    "Train wheels squealing",
+    "Train",
+    "Train wheels squealing",
+    "Train",
+    "Train wheels squealing",
+    "Train",
+    "Train wheels squealing",
+    "Train",
+    "Train wheels squealing",
+    "Train",
+    "Train wheels squealing"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.25
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "family": "Air conditioning",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_transport_subway_10800",
+   "family": "Door",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Rain",
+   "omni_match": true,
+   "matched": [
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Thunder",
+   "omni_match": true,
+   "matched": [
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Thunder"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_16200",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain"
+   ],
+   "outcome": "candidate",
+   "onset": 9.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 9.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Rain",
+   "omni_match": true,
+   "matched": [
+    "Rain"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Thunder",
+   "omni_match": true,
+   "matched": [
+    "Thunder"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Thunder"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_weather_storm_7200",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Rain"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "as_church_bell_pJRAWkLM",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Fire",
+   "omni_match": true,
+   "matched": [
+    "Fire alarm"
+   ],
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Alarm",
+   "omni_match": true,
+   "matched": [
+    "Fire alarm"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Siren",
+   "omni_match": true,
+   "matched": [
+    "Fire alarm"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "as_fire_alarm_kGKZ0YK4",
+   "family": "Bell",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "as_glass_oHil9Ip_",
+   "family": "Glass",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "as_glass_oHil9Ip_",
+   "family": "Air conditioning",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "as_glass_oHil9Ip_",
+   "family": "Miscellaneous sources",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "as_glass_oHil9Ip_",
+   "family": "Buzz",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "family": "Aircraft",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_airport_terminal",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_aviary_birds",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Bird",
+   "omni_match": true,
+   "matched": [
+    "Birds chirping"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Natural sounds",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_carnival_parade",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_carnival_parade",
+   "family": "Camera",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Truck"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Engine knocking",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Crack",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Clunk",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "family": "Whoosh, swoosh, swish",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_cow_farm",
+   "family": "Cattle",
+   "omni_match": true,
+   "matched": [
+    "Cattle mooing"
+   ],
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev",
+   "clip": "b3_crossing_bells",
+   "family": "Train",
+   "omni_match": true,
+   "matched": [
+    "Train",
+    "Train",
+    "Train",
+    "Train",
+    "Train",
+    "Train"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.25,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_flea_market",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "family": "Bird",
+   "omni_match": true,
+   "matched": [
+    "Birds chirping",
+    "Birds chirping",
+    "Birds chirping",
+    "Birds chirping",
+    "Birds chirping"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "family": "Cricket",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Camera",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Computer keyboard",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Typing",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "family": "Air conditioning",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "family": "Cellphone buzz, vibrating alert",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "family": "Laughter",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_laundromat",
+   "family": "Water",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Natural sounds",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_pet_shop",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Car"
+   ],
+   "outcome": "candidate",
+   "onset": 10.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 10.0,
+    "beats": 12.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Bell",
+   "omni_match": true,
+   "matched": [
+    "Church bell"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.25,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Bird",
+   "omni_match": true,
+   "matched": [
+    "Rooster crowing",
+    "Birds chirping"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Bird"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "birds_forest",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "helicopter_ossetia",
+   "family": "Helicopter",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "helicopter_ossetia",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "helicopter_ossetia",
+   "family": "Dog",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "kit_piano",
+   "family": "Air conditioning",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "kit_piano",
+   "family": "Footsteps",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "london_protest_01",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Rain",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_ambulance_(siren)_-yPSgCn",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Laughter",
+   "omni_match": true,
+   "matched": [
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Crowd",
+   "omni_match": true,
+   "matched": [
+    "Applause"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Crowd"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Giggle",
+   "omni_match": true,
+   "matched": [
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 12.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_applause_62ZYD0u",
+   "family": "Snicker",
+   "omni_match": true,
+   "matched": [
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter",
+    "Laughter"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "beats",
+   "onsets": {
+    "flex": 10.04,
+    "beats": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "family": "Cricket",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "ly_helicopter_-v62cK1",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Gull, seagull",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Water",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Bird",
+   "omni_match": true,
+   "matched": [
+    "Duck"
+   ],
+   "outcome": "candidate",
+   "onset": 1.5,
+   "from": "beats",
+   "onsets": {
+    "beats": 1.5
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Roar",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "movie_blueplanet_115",
+   "family": "Splash, splatter",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Shout",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Footsteps",
+   "omni_match": true,
+   "matched": [
+    "Footsteps"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "dasm": 0.12
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Telephone",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Crying, sobbing",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_detective_crime_scene",
+   "family": "Hands",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "family": "Fire",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Thunder",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Siren",
+   "omni_match": true,
+   "matched": [
+    "Siren",
+    "Siren",
+    "Siren",
+    "Siren"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Alarm"
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Roar",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Crowd",
+   "omni_match": true,
+   "matched": [
+    "Crowd"
+   ],
+   "outcome": "candidate",
+   "onset": 4.44,
+   "from": "flex",
+   "onsets": {
+    "flex": 4.44
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "mv_tornado_scene",
+   "family": "Horse",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Vehicle horn"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 1.25,
+    "dasm": 10.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_4O3bZRYO",
+   "family": "Car passing by",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Crowd",
+   "omni_match": true,
+   "matched": [
+    "Crowd noise"
+   ],
+   "outcome": "candidate",
+   "onset": 0.12,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.12,
+    "beats": 1.25
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Waterfall"
+   ],
+   "outcome": "candidate",
+   "onset": 0.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.04,
+    "beats": 1.25,
+    "dasm": 0.06
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Insect",
+   "omni_match": true,
+   "matched": [
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant",
+    "ant"
+   ],
+   "outcome": "candidate",
+   "onset": 0.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.04
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Frog",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "waterfall_kawaida_01",
+   "family": "Children playing",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "waves_herzliya",
+   "family": "Gull, seagull",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev",
+   "clip": "waves_herzliya",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev",
+   "clip": "waves_herzliya",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Car passing by",
+   "omni_match": true,
+   "matched": [
+    "Car door closing",
+    "Car door opening"
+   ],
+   "outcome": "no run at weak bars",
+   "no_evidence": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Car door closing",
+    "Car door opening"
+   ],
+   "outcome": "candidate",
+   "onset": 4.75,
+   "from": "beats",
+   "onsets": {
+    "beats": 4.75,
+    "dasm": 7.36
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d016",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "family": "Rain",
+   "omni_match": true,
+   "matched": [
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 1.5,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d022",
+   "family": "Chop",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d022",
+   "family": "Mechanical fan",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Cattle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Vehicle",
+   "omni_match": true,
+   "matched": [
+    "Race car engine",
+    "Tire squeal"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d030",
+   "family": "Car passing by",
+   "omni_match": true,
+   "matched": [
+    "Race car engine"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Vehicle"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Rain",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves",
+    "Ocean waves"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.75
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Thunder",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d032",
+   "family": "Frog",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Footsteps",
+   "omni_match": true,
+   "matched": [
+    "Footsteps"
+   ],
+   "outcome": "candidate",
+   "onset": 3.04,
+   "from": "flex",
+   "onsets": {
+    "flex": 3.04
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Shout",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d033",
+   "family": "Yell",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Fire",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Alarm",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Screaming",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Waves crashing"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 2.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Gull, seagull",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Horse",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d085",
+   "family": "Cattle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Thunder",
+   "omni_match": true,
+   "matched": [
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder",
+    "Thunder"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Thunder",
+    "Thunder"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Rain",
+   "omni_match": true,
+   "matched": [
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain",
+    "Rain"
+   ],
+   "outcome": "candidate",
+   "onset": 0.0,
+   "from": "flex",
+   "onsets": {
+    "flex": 0.0,
+    "beats": 0.0,
+    "dasm": 0.0
+   }
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Cattle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "family": "Frog",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Cooking",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Stir",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Splash, splatter",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Water",
+   "omni_match": true,
+   "matched": [
+    "Water splashing",
+    "Water splashing",
+    "Water splashing",
+    "Water splashing",
+    "Water splashing",
+    "Water splashing",
+    "Water splashing"
+   ],
+   "outcome": "already drawn",
+   "drawn_as": [
+    "Water"
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d127",
+   "family": "Cattle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Cattle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Crowd",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Shout",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "family": "Vehicle",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d129",
+   "family": "Tools",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d129",
+   "family": "Bird",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d129",
+   "family": "Insect",
+   "omni_match": false,
+   "matched": [],
+   "outcome": "omni does not name it"
+  }
+ ]
+}

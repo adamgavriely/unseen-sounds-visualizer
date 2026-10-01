@@ -1,0 +1,8 @@
+{
+ "part": "dev",
+ "clip": "b3_botanic_garden",
+ "seconds": 28.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Birds chirping\nFootsteps on gravel\nDistant traffic\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com"
+}

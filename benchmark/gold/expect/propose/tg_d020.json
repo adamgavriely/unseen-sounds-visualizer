@@ -1,0 +1,22 @@
+{
+ "part": "dev2",
+ "clip": "tg_d020",
+ "duration": 17.0,
+ "times": [
+  1.06,
+  3.19,
+  5.31,
+  7.44,
+  9.56,
+  11.69,
+  13.81,
+  15.94
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a rainy city street with traffic and pedestrians, here are the most likely sounds a person standing there would hear from off-screen sources:\n\n1.  **Rain**: The ground is wet and reflective, indicating it is raining or has just rained heavily. The sound of rain falling is a constant background noise in such conditions.\n2.  **Vehicle**: There are cars visible in the distance and moving through the intersection. The sound of",
+ "families": [
+  "Rain",
+  "Vehicle"
+ ],
+ "discarded": []
+}

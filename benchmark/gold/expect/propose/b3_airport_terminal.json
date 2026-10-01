@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "b3_airport_terminal",
+ "duration": 28.03,
+ "times": [
+  1.75,
+  5.26,
+  8.76,
+  12.26,
+  15.77,
+  19.27,
+  22.77,
+  26.28
+ ],
+ "n_frames": 8,
+ "reply": "Based on the setting of a busy airport terminal, here are the most likely sounds a person would hear that originate from off-screen sources (not visible in the frames):\n\n1.  **Aircraft**: The sound of planes taking off or landing is a constant background noise in an airport.\n2.  **Crowd**: The general murmur and chatter of many people moving around the terminal.\n3.  **Footsteps**: The sound of many people walking on",
+ "families": [
+  "Aircraft",
+  "Crowd",
+  "Footsteps"
+ ],
+ "discarded": []
+}

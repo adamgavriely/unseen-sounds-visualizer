@@ -1,0 +1,36 @@
+{
+ "part": "dev",
+ "clip": "b3_crossing_bells",
+ "family": "Train",
+ "omni_match": true,
+ "matched": [
+  "Train",
+  "Train",
+  "Train",
+  "Train",
+  "Train",
+  "Train"
+ ],
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "flex",
+ "onsets": {
+  "flex": 0.0,
+  "beats": 0.25,
+  "dasm": 0.0
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "train",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

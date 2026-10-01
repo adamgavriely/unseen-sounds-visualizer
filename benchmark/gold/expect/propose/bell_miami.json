@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "bell_miami",
+ "duration": 15.58,
+ "times": [
+  0.97,
+  2.92,
+  4.87,
+  6.82,
+  8.77,
+  10.71,
+  12.66,
+  14.61
+ ],
+ "n_frames": 8,
+ "reply": "[\n \"Vehicle\",\n \"Footsteps\",\n \"Crowd\",\n \"Bell\",\n \"Bird\"\n]",
+ "families": [
+  "Vehicle",
+  "Footsteps",
+  "Crowd",
+  "Bell",
+  "Bird"
+ ],
+ "discarded": []
+}

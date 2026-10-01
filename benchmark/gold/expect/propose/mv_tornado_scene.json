@@ -1,0 +1,22 @@
+{
+ "part": "dev",
+ "clip": "mv_tornado_scene",
+ "duration": 20.02,
+ "times": [
+  1.25,
+  3.75,
+  6.26,
+  8.76,
+  11.26,
+  13.76,
+  16.27,
+  18.77
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a rodeo or country fair event at night with a crowd, a speaker system, and a horse in the arena, here are the most likely off-screen sounds:\n\n1.  **Crowd**: The audience is visible in the stands and would be making noise (talking, cheering).\n2.  **Horse**: While one horse is visible in the last frame, the sounds of horses (hoofbeats,",
+ "families": [
+  "Crowd",
+  "Horse"
+ ],
+ "discarded": []
+}

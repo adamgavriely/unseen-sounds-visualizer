@@ -1,0 +1,8 @@
+{
+ "part": "dev",
+ "clip": "as_fire_alarm_kGKZ0YK4",
+ "seconds": 20.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Fire alarm\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com\n.com"
+}

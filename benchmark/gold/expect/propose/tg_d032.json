@@ -1,0 +1,25 @@
+{
+ "part": "dev2",
+ "clip": "tg_d032",
+ "duration": 15.0,
+ "times": [
+  0.94,
+  2.81,
+  4.69,
+  6.56,
+  8.44,
+  10.31,
+  12.19,
+  14.06
+ ],
+ "n_frames": 8,
+ "reply": "[\n  \"Rain\",\n  \"Water\",\n  \"Thunder\",\n  \"Bird\",\n  \"Frog\"\n]",
+ "families": [
+  "Rain",
+  "Water",
+  "Thunder",
+  "Bird",
+  "Frog"
+ ],
+ "discarded": []
+}

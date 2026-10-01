@@ -1,0 +1,8 @@
+{
+ "part": "dev2",
+ "clip": "tg_d121",
+ "seconds": 9.51,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Car\nTire squeal\ny\n with a car\n with a car\n with a car\n with a car\n\n with a car\n\n with a car\n\n with a car\n\n with a car"
+}

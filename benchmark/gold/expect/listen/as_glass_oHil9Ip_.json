@@ -1,0 +1,8 @@
+{
+ "part": "dev",
+ "clip": "as_glass_oHil9Ip_",
+ "seconds": 20.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Dice rolling\nBeep\nAssistant\nDice rolling\nAssistant\nBeep\nAssistant\nDice rolling\nAssistant\nBeep\nAssistant\nDice rolling\nAssistant\nBeep\nAssistant\nDice rolling\nAssistant\nBe"
+}

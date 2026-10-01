@@ -1,0 +1,8 @@
+{
+ "part": "dev",
+ "clip": "waterfall_kawaida_01",
+ "seconds": 11.25,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Waterfall\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant"
+}

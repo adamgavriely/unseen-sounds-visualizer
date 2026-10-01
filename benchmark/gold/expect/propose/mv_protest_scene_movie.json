@@ -1,0 +1,22 @@
+{
+ "part": "dev",
+ "clip": "mv_protest_scene_movie",
+ "duration": 24.02,
+ "times": [
+  1.5,
+  4.5,
+  7.51,
+  10.51,
+  13.51,
+  16.52,
+  19.52,
+  22.52
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a historical drama scene (likely set in the 18th or 19th century) featuring a formal gathering that is being interrupted by a chaotic event outside (indicated by the final frame showing a building at night with fire and a crowd), here are the most likely off-screen sounds:\n\n1.  **Crowd**: The final frame clearly shows a large group of people outside, likely a mob or protesters, which would generate",
+ "families": [
+  "Fire",
+  "Crowd"
+ ],
+ "discarded": []
+}

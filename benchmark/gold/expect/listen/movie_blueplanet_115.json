@@ -1,0 +1,8 @@
+{
+ "part": "dev",
+ "clip": "movie_blueplanet_115",
+ "seconds": 16.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Music\nDuck\nExplosion\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust\nust"
+}

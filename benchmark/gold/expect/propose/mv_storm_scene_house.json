@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "mv_storm_scene_house",
+ "duration": 24.02,
+ "times": [
+  1.5,
+  4.5,
+  7.51,
+  10.51,
+  13.51,
+  16.52,
+  19.52,
+  22.52
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a tornado approaching and hitting a town, the most likely off-screen sounds a person standing there would hear are:\n\n1.  **Thunder**: Tornadoes are associated with severe thunderstorms.\n2.  **Siren**: Emergency sirens are typically activated when a tornado warning is issued.\n3.  **Roar**: A tornado itself produces a loud, distinctive roaring sound, often described as sounding like a freight",
+ "families": [
+  "Thunder",
+  "Siren",
+  "Roar"
+ ],
+ "discarded": []
+}

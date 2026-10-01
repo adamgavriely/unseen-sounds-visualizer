@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "ly_helicopter_-v62cK1",
+ "duration": 18.05,
+ "times": [
+  1.13,
+  3.38,
+  5.64,
+  7.9,
+  10.15,
+  12.41,
+  14.67,
+  16.92
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a night-vision view of a rural or semi-rural landscape (hills, fields) at night, the most likely off-screen sounds would be natural nocturnal sounds.\n\n1.  **Cricket**: Very common in rural/field settings at night.\n2.  **Insect**: General term for other nocturnal insects (moths, etc.).\n3.  **Bird**: Some birds are active at night",
+ "families": [
+  "Cricket",
+  "Insect",
+  "Bird"
+ ],
+ "discarded": []
+}

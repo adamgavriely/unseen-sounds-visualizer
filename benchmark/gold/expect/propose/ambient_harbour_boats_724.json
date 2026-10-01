@@ -1,0 +1,22 @@
+{
+ "part": "dev",
+ "clip": "ambient_harbour_boats_724",
+ "duration": 16.02,
+ "times": [
+  1.0,
+  3.0,
+  5.0,
+  7.01,
+  9.01,
+  11.01,
+  13.01,
+  15.01
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a harbor/dockside setting with boats, water, and open sky, here are the most likely sounds a person would hear from off-screen sources:\n\n1.  **Water**: The sound of waves lapping against the dock or boats is constant in such an environment.\n2.  **Gull, seagull**: Seagulls are ubiquitous in harbor areas and their calls are very common.\n3. ",
+ "families": [
+  "Water",
+  "Gull, seagull"
+ ],
+ "discarded": []
+}

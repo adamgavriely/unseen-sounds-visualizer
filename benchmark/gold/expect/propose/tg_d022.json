@@ -1,0 +1,22 @@
+{
+ "part": "dev2",
+ "clip": "tg_d022",
+ "duration": 17.0,
+ "times": [
+  1.06,
+  3.19,
+  5.31,
+  7.44,
+  9.56,
+  11.69,
+  13.81,
+  15.94
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence in the frames:\n\n1.  **Chop**: The first six frames show a person actively chopping meat with a cleaver on a wooden board. The sound of the knife hitting the board and cutting through the meat is a primary auditory component.\n2.  **Mechanical fan**: In the last two frames, a large white portable air cooler (evaporative cooler) is visible on the left. These devices typically have a fan that",
+ "families": [
+  "Chop",
+  "Mechanical fan"
+ ],
+ "discarded": []
+}

@@ -1,0 +1,22 @@
+{
+ "part": "dev2",
+ "clip": "tg_d030",
+ "duration": 17.0,
+ "times": [
+  1.06,
+  3.19,
+  5.31,
+  7.44,
+  9.56,
+  11.69,
+  13.81,
+  15.94
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a busy outdoor street market in what appears to be Thailand (indicated by the Thai script on signs), here are the most likely sounds a person would hear that originate from off-screen sources:\n\n1.  **Vehicle**: The street is lined with shops and has traffic (motorbikes are visible in some frames, but the general hum of traffic or a car passing by on the main road would be a constant background",
+ "families": [
+  "Vehicle",
+  "Car passing by"
+ ],
+ "discarded": []
+}

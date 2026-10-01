@@ -1,0 +1,24 @@
+{
+ "part": "dev2",
+ "clip": "tg_d128",
+ "duration": 10.0,
+ "times": [
+  0.62,
+  1.88,
+  3.12,
+  4.38,
+  5.62,
+  6.88,
+  8.12,
+  9.38
+ ],
+ "n_frames": 8,
+ "reply": "[\n    \"Cattle\",\n    \"Crowd\",\n    \"Shout\",\n    \"Vehicle\"\n]",
+ "families": [
+  "Cattle",
+  "Crowd",
+  "Shout",
+  "Vehicle"
+ ],
+ "discarded": []
+}

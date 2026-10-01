@@ -1,0 +1,22 @@
+{
+ "part": "dev",
+ "clip": "un_driving_motorcycle_DgdHSmwA",
+ "duration": 17.04,
+ "times": [
+  1.06,
+  3.19,
+  5.32,
+  7.46,
+  9.58,
+  11.71,
+  13.84,
+  15.97
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a public running event (marathon or race) taking place on a city street, here are the most likely sounds a person standing there would hear from off-screen sources:\n\n1.  **Crowd**: There are many spectators visible, and typically in such events, the crowd noise (cheering, talking) is a dominant ambient sound, often coming from areas not fully captured in the frame.\n2.  **Vehicle**: While a",
+ "families": [
+  "Crowd",
+  "Vehicle"
+ ],
+ "discarded": []
+}

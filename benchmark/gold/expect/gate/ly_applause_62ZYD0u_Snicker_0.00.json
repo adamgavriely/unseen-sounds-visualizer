@@ -1,0 +1,37 @@
+{
+ "part": "dev",
+ "clip": "ly_applause_62ZYD0u",
+ "family": "Snicker",
+ "omni_match": true,
+ "matched": [
+  "Laughter",
+  "Laughter",
+  "Laughter",
+  "Laughter",
+  "Laughter",
+  "Laughter",
+  "Laughter",
+  "Laughter"
+ ],
+ "outcome": "candidate",
+ "onset": 0.0,
+ "from": "beats",
+ "onsets": {
+  "flex": 10.04,
+  "beats": 0.0
+ },
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "woman",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

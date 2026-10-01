@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d129",
+ "duration": 10.01,
+ "times": [
+  0.63,
+  1.88,
+  3.13,
+  4.38,
+  5.63,
+  6.88,
+  8.13,
+  9.38
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of two men working in a backyard garden, pruning a tree's root ball with hand tools (pruners/secateurs), here are the most likely off-screen sounds:\n\n1.  **Bird**: It is a sunny day in a residential backyard with a fence and grass. Birds are very common in such environments.\n2.  **Insect**: Insects like bees, wasps, or flies are often present in gardens, especially around",
+ "families": [
+  "Tools",
+  "Bird",
+  "Insect"
+ ],
+ "discarded": []
+}

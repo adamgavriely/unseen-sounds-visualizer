@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d075",
+ "duration": 19.0,
+ "times": [
+  1.19,
+  3.56,
+  5.94,
+  8.31,
+  10.69,
+  13.06,
+  15.44,
+  17.81
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a fire in an office setting (smoke, use of a fire extinguisher, people reacting with panic), here are the most likely sounds a person would hear that originate from off-screen sources or are general ambient sounds not directly tied to a visible object's mechanical action in the frame:\n\n1.  **Alarm**: A fire alarm is almost certainly sounding in an office building during a fire.\n2.  **Screaming**: People",
+ "families": [
+  "Fire",
+  "Alarm",
+  "Screaming"
+ ],
+ "discarded": []
+}

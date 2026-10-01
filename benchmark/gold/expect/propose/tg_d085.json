@@ -1,0 +1,25 @@
+{
+ "part": "dev2",
+ "clip": "tg_d085",
+ "duration": 17.0,
+ "times": [
+  1.06,
+  3.19,
+  5.31,
+  7.44,
+  9.56,
+  11.69,
+  13.81,
+  15.94
+ ],
+ "n_frames": 8,
+ "reply": "[\n \"Water\",\n \"Gull, seagull\",\n \"Crowd\",\n \"Horse\",\n \"Cattle\"\n]",
+ "families": [
+  "Water",
+  "Gull, seagull",
+  "Crowd",
+  "Horse",
+  "Cattle"
+ ],
+ "discarded": []
+}

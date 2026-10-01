@@ -2631,3 +2631,42 @@ misses only the two Explosions (as_explosion 2.8, tg_d125 5.4) have a RELIABLE f
 FlexSED run at its onset. Reading: the held-out precision prior separates families the listener already arbitrates; the
 cross pictures it flags (Gunshot/Glass/Explosion/Screaming) are heard by both listeners, so the error is placement or
 kinship, not the family. Closed.
+### Round 40 result — EXPECT: STOP on both rules (jobs 31598632 propose + 31598677 listen/cands/gate/score, H200)
+Base reproduced (28/58, 21 (6/13/2), 2.282). **SHIP8+EXPECT: merged 29/58, 26 wrong (8/15/3), cost 2.366 at w = 2 (base 2.282),
+2.254 at w = 1 (base 2.197)** | DEV 20/38, 17 (5/9/3) | tagger DEV2 9/20, 9 (3/6/0). No hit lost. Funnel: 177 proposals (33/71
+replies were JSON lists, the rest parsed by amendment 1) → 45 also named by Omni → 13 already drawn, 3 no run → 29 candidates →
+gate seen 23, added 6: **bell_miami Bell 0.0 s HIT** (votes no/no/no); un_driving_motorcycle_DgdHSmwA Crowd 0.12 visible; tg_d020 Rain
+0.0 visible; marrakech Vehicle 10.0 phantom; waterfall Insect 0.04 cross; tg_d007 Vehicle 4.75 cross. Main rule: cost up -> STOP.
+More hits: +1 hit but 2 cross + 1 phantom and w = 1 cost up -> FAIL.
+**Target clips.** nyc_1689: VLM Car passing by/Footsteps/Dog/Bird/Vehicle, Omni "Hammering" then junk -> no intersection (the ears
+heard the Hammer, the scene never proposed it). nyc_2627: VLM Vehicle, Omni Vehicle/Clicking -> candidate 0.0 s (flex), gate seen
+3/3 -> dropped (gold Clang untouched). rainforest_2179: VLM Bird/Water/Insect/Frog/Cricket, Omni "Piano / Stream" -> Water 4.6 s,
+gate seen 2/3 -> dropped; Bird not named by Omni. rainforest_7629 / pet_shop: VLM Bird, Omni "Birdsong" -> no word/cos match for
+Bird -> nothing. favela: VLM Vehicle/Crowd, Omni "Train wheels squealing / Train moving on tracks" -> no intersection. bell_miami: VLM
+Vehicle/Footsteps/Crowd/Bell/Bird, Omni "Church bell / Car" -> Bell 0.0 s added = HIT (the one gain); Vehicle 10.0 s gate seen.
+golf: VLM Bird/Cricket, Bird already drawn. tg_d029: VLM Cattle, Omni "Goose honking" -> nothing. tg_d033: VLM Footsteps/Shout/Yell,
+Omni "Breathing / Footsteps" -> Footsteps 3.04 s gate seen (Siren never proposed). tg_d095: VLM Cooking/Stir/Splash, Omni "Toilet
+flush / Water running" -> nothing. mv_storm: Siren proposed and heard but "already drawn" (Alarm picture). as_explosion, carnival,
+ambulance, tg_d107/d125/d133: no intersection.
+**Found (not a rule change):** the whole-clip V4 answer (64 tokens, greedy) names 1–2 sounds and then loops on junk tokens ("ive /
+ive", "Assistant", ".com") in most clips — the listener's top sound is right on several targets (Hammering, Train, Church bell,
+Birdsong, Goose) while the scene VLM proposes generic city/nature families. Closed; motivates Round 40b.
+
+## Round 40b EXPECT-A — the ears alone propose (written 2026-10-01 BEFORE any number; motivated by the Round 40 Omni replies above)
+**Rule (merged DEV, saved SHIP8 pictures, gold `gold_AG.json`, MERGE_GAP 2.0).** No VLM proposal. (1) **Listen** (GPU, Qwen3-Omni
+`listener_round.MODEL`, whole clip wav as Round 40): one question `expect_a_screen.LIST_Q` ("List every distinct non-speech sound
+you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with
+the list only."), greedy, 96 new tokens, repetition_penalty 1.2. Items = the reply split on commas / newlines / semicolons,
+bullets and numbers stripped, lower-cased, leading article dropped. (2) **Families named** = (a) the frozen word map
+`expect_a_screen.MAP` (whole item, item without trailing "sound(s)/noise", then each word and its -s/-es singular; Birdsong -> Bird,
+Hammering -> Hammer, church bell -> Bell, traffic -> Vehicle, ...; music / speech / wind / breathing -> none), a depictable label or
+family name as a whole item (canonical family); PLUS (b) the shipped matcher `listener_afnext.v4_match` over the items (one line
+each) for every depictable family. (3) Not already drawn by SHIP8 (canonical / `same_family` vs any placed picture, rescued
+included). (4) Onset = earliest weak-bar run over the three caches exactly as Round 40 (no minimum length); no run -> nothing.
+(5) Shipped gate at onset − 1 … + 1 s (6 frames, majority) exactly as Round 40; seen -> dropped, else a 2-s picture.
+**Score / pass** exactly as Round 40 (base 28/58, 21, 2.282 must reproduce; main rule hits >= 28, no needed hit lost, w = 2 cost
+lower; more-hits rule hits up, cross/phantom not up per part, w = 1 cost lower). Report: per target clip Omni list, mapped
+families, candidate onset, gate votes, outcome; funnel totals; both verdicts. GO -> a `src/` flag is Adam's decision; STOP -> closed.
+Nothing in `src/` or `config.py` edited.
+**Files:** `benchmark/gold/expect_a_screen.py` (`listen` GPU / `cands` CPU / `gate` GPU / `score` CPU, re-using
+`expect_screen.cmd_gate` / `cmd_score` on `benchmark/gold/expect_a/`) -> `benchmark/gold/expect_a_screen.json`; `slurm/job_expect_a.sh`.

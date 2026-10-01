@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "b3_botanic_garden",
+ "duration": 28.03,
+ "times": [
+  1.75,
+  5.26,
+  8.76,
+  12.26,
+  15.77,
+  19.27,
+  22.77,
+  26.28
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a forest path with trees, bushes, and flowers, the most likely sounds a person would hear from off-screen sources are:\n\n1.  **Bird**: Forests are typically filled with bird calls.\n2.  **Insect**: Insects like crickets or cicadas are common in such environments.\n3.  **Wind** (not in list, but \"Natural sounds\" or specific wind-related terms might apply, though",
+ "families": [
+  "Bird",
+  "Insect",
+  "Natural sounds"
+ ],
+ "discarded": []
+}

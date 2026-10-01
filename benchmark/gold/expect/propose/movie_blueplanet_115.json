@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "movie_blueplanet_115",
+ "duration": 16.0,
+ "times": [
+  1.0,
+  3.0,
+  5.0,
+  7.0,
+  9.0,
+  11.0,
+  13.0,
+  15.0
+ ],
+ "n_frames": 8,
+ "reply": "[\"Gull, seagull\", \"Water\", \"Bird\", \"Roar\", \"Splash, splatter\"]",
+ "families": [
+  "Gull, seagull",
+  "Water",
+  "Bird",
+  "Roar",
+  "Splash, splatter"
+ ],
+ "discarded": []
+}

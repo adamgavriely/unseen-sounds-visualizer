@@ -1,0 +1,22 @@
+{
+ "part": "dev2",
+ "clip": "tg_d016",
+ "duration": 18.0,
+ "times": [
+  1.12,
+  3.38,
+  5.62,
+  7.88,
+  10.12,
+  12.38,
+  14.62,
+  16.88
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a busy urban street scene with pedestrians, shops, and traffic, here are the most likely sounds a person standing there would hear from off-screen sources:\n\n1.  **Crowd**: The street is filled with many people walking and talking, creating a general murmur of voices.\n2.  **Vehicle**: Although cars are visible, the sound of engines, tires on pavement, and general traffic noise from vehicles further down the street or",
+ "families": [
+  "Crowd",
+  "Vehicle"
+ ],
+ "discarded": []
+}

@@ -1,0 +1,8 @@
+{
+ "part": "dev",
+ "clip": "ambient_snow_walk_930",
+ "seconds": 16.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording, one per line, most prominent first.",
+ "max_new": 64,
+ "v4_text": "Train\nTrain wheels squealing\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant\nant"
+}

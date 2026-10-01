@@ -1,0 +1,22 @@
+{
+ "part": "dev",
+ "clip": "london_protest_01",
+ "duration": 11.13,
+ "times": [
+  0.7,
+  2.09,
+  3.48,
+  4.87,
+  6.26,
+  7.65,
+  9.05,
+  10.44
+ ],
+ "n_frames": 8,
+ "reply": "Based on the visual evidence of a street protest in an urban environment (Leicester Square, London, as indicated by the Underground sign and \"Angus Steak Houses\"), here are the most likely sounds a person would hear that originate from off-screen sources:\n\n1.  **Vehicle**: Traffic is a constant presence in such a location, even if specific cars aren't the focus of every frame.\n2.  **Crowd**: The murmur and general noise of a",
+ "families": [
+  "Vehicle",
+  "Crowd"
+ ],
+ "discarded": []
+}
