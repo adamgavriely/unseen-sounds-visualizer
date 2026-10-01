@@ -3837,3 +3837,32 @@ Checks: shipped form through the scorer = merged DEV **29/58, 17 (6/9/2), 2.113*
 gate named no maker (the rule cannot fire there) — same decisions as the screen. TEST read next, once, reported only.
 ### Round 57 TEST read (job 31602874 answers + `test_vs_ship8.py SHIP8+MD3`; reported, not selected on)
 Base 22/65, 26 (4/17/5), 2.545 reproduced. With DEPICT-EVENT: **22/65, 26, 2.545, d 0.000** — the rule silenced no TEST picture.
+
+## Cache fill 1 Oct (not a round; evaluation gap) — written BEFORE any answer is asked
+The shipped arm SHIP8+MD3 (DEPICT on, floor none; merged DEV **29/58, 17 (6/9/2), 2.113**) asks the listener about spans that
+have no cached answer, so they can never be rescued on the benchmark, while the live path (`src/listener_prep.py`) asks every
+run. Stage-4 listener stats of the arm (identical for proposed and blind_a2i): old DEV a_missing 15 / b_missing 9, DEV2 0 / 2.
+- **a (band runs, P2 lookup; label start-end peak):** ambient_citywalk_nyc_1689 Vehicle 0.0-10.0 0.564; ambient_snow_walk_930
+  Crowd 8.6-16.0 0.703, Train 0.0-10.0 0.775; as_glass_oHil9Ip_ Chink, clink 8.96-9.56 0.751, Glass 18.48-19.36 0.773;
+  b3_favela_rio Footsteps 3.96-4.44 0.571; b3_flea_market Vehicle 20.0-28.0 0.661; b3_golf_course Bird 3.8-5.84 0.744,
+  6.24-10.36 0.789, 10.76-11.4 0.707; bell_miami Vehicle 10.0-15.56 0.682; london_protest_01 Crowd 0.04-11.12 0.796;
+  ly_helicopter_-v62cK1 Aircraft 0.0-18.0 0.622; mv_storm_scene_house Vehicle 0.12-10.0 0.609; un_driving_motorcycle_DgdHSmwA
+  Vehicle 1.56-17.0 0.641.
+- **b (PANNs-vetoed FlexSED spans, PV lookup):** ambient_citywalk_nyc_1689 Train 9.36-10.4, 11.04-11.4;
+  ambient_market_marrakech_3102 Crowd 0.96-1.32; b3_ia_youtube_skxtz9foauw_0 Gasp 22.44-22.76; birds_forest Insect
+  13.36-13.84; ly_applause_62ZYD0u Belly laugh 0.44-0.92; mv_tornado_scene Crowd 19.68-20.0; un_people_clapping__bAVmK7n
+  Shout 8.4-8.76, 9.52-9.84. DEV2: tg_d075 Shout 0.2-0.6; tg_d121 Vacuum cleaner 0.04-0.52.
+**Method (the K2-supplement steps, no new prompt or rule).** `benchmark/gold/listener_fill.py` builds a-items exactly as
+`listener_k2.pool` (P2; run bounds asserted within 0.02 s of the asked run) and b-items exactly as `listener_variants.build`'s
+PV branch (the vetoed span, asked on its containing P2 run from the base cache, else `run_from_flex`); null family
+`gold_free_null`, V1 distractors, V2 control, V3 cut as there. Scored with the unchanged Qwen3-Omni code
+(`listener_variants.score`, V1-V4) and Audio Flamingo Next (`listener_afnext.run`, V4 + yes/no), then APPENDED to the base caches
+(`dev_listener_v.json` / `dev_listener_afn.json`; DEV2 `dev2_listener_v.json` / `dev2_listener_afn.json`; backups kept); a CPU
+replay asserts every listed item is now found by the stage-4 lookup with a TIER answer. Only these two caches are needed: the
+band / veto rescue reads P2/PV items only, and K4A / P1V4 / DASM P4 skip rescued spans (no new P1V4 or P4 ask arises). FineLAP
+already scores every listed family on these clips (checked), so the FLAP veto applies as on the live path. The arm is re-scored
+as-is (no flag changes): stage 4/5 are recomputed only for the 17 DEV clips and tg_d075 / tg_d121 (both systems; stage4.json and
+arm folders backed up). **DEPICT / GROUP rule (fixed now):** for a recomputed clip whose drawn pictures changed, its DEPICT and
+GROUP cache entries are removed (backup) and re-asked with the existing `depict.py` / `group.py` steps before merged scoring; a
+clip with unchanged pictures keeps its entries. Reported: the new merged DEV row vs 29/17/2.113, every changed picture, and
+a_missing / b_missing after the fill (target 0). Not a selection step; TEST is not read.
