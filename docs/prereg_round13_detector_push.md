@@ -3825,3 +3825,6 @@ unchanged (tg_d088 Thunder: rain / lightning bolt = look-alike no; tg_d088 Explo
 by the pre-registered rule. Reading: the effect is a single picture, the motivating Steam case; Qwen3.8-27B said "no" to E1 on 42/43
 pictures, so DEPICT-EVENT is near-inert beyond it, and its yes rate on hits is untested (0 hits had event = yes). Not wired into
 src/config in this round (scripts only); shipping is the coordinator's call. TEST not read.
+**Honest reading (coordinator + Fable, 1 Oct, added after the result):** the event question said "no" on 42/43 pictures; the gain
+is one picture (b3_crossing_bells Steam, a cross), at the noise floor; hit safety is untested, not shown (no hit ever reached
+event = yes). Decision: ships under the standing rule "DEV pass -> ship; TEST read once afterwards, reported only".
