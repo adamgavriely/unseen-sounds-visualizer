@@ -3455,3 +3455,36 @@ spec's "visible" reason also silencing same-source overlaps) is NOT simulated (c
 (with 0 lost: >= 1 wrong removed); (3) main rule (hits >= 29, no needed hit lost, cost < 2.141) OR fewer-pictures clause (cost
 < 2.141, wrong <= 18 − 3 × hits lost, hits >= 26). Report every silenced picture with its class (hit / visible / cross /
 phantom), and as_explosion_XJ8lc3I6 and tg_d088 by name. TEST is not read in this round.
+
+## Round 55 FRAME-PAUSE — the pause measured on FlexSED frames, not asked of Omni (panelist 4; written 2026-10-01 BEFORE any number of it; follows Round 51's FAIL: Omni answers "no pause" whatever the gap)
+**Why.** The gold rule is "one row per continuous sound, split at pauses > 2 s"; GRP-A's "same" answers "same source" and would merge a
+true return (a hit lost), while Round 51 showed Omni cannot time a pause (g > 2: 0.069). The detector frames can: FlexSED scores the
+family 25 times a second through the gap between two pictures. RPT-S (Round 31) reused the 0.5 bar and a 1-s hole and could not tell a
+dropout from a pause (every DEV repeat had a >= 1 s hole at 0.5); here the floor f is calibrated on the held-out 415 against the
+2-s truth, the rule lives at display time inside GROUP (never a stage-4 drop), and the hole length is the gold's own 2 s.
+**Rule (scoring-time post-process in a new script; no src/config change).** For every GROUP candidate pair (same-family pictures,
+0 < picture gap <= 8 s, the shipped cap) whose GRP-A answers are same/same (the shipped cache), take the family's FlexSED frame max
+(queries with canonical(query) == canonical(label), as BTP/RPT-S) in the window [first picture end − 1.0 s, second picture start]
+(−1.0 = the GRP-A cut's PRE); hole = longest contiguous stretch with max < f. **Merge iff same/same AND hole < 2.0 s.** No FlexSED query
+for the family -> the pause test abstains and GRP-A stands (count disclosed). Pairs not same/same are untouched. Cap stays 8 s.
+**Step 1 — calibration on the held-out 415 (selection set, read first), truth from the strong labels.** Side P (truth "pause > 2 s"):
+the Round 51 pairs with 2 < g <= 8 (`grpp/pairs_415.json`, speech/music excluded), window [seg1 end − 1.0, seg2 start]; predicted
+pause iff hole >= 2.0. Side C (truth "continuous"): every joined same-label strong segment >= 3.0 s long of a non-speech/music label,
+window [segment start, segment end]; predicted pause iff the longest internal hole >= 2.0. Why side C and not Round 51's g <= 2
+side: a hole cannot exceed its window, so every g <= 2 pair is correct at any f by construction; the error that costs on DEV is a
+continuing sound read as a pause (a detector dropout -> un-merge -> an extra picture), which only within-segment windows measure.
+Both sides keep only labels with a FlexSED query (excluded counts disclosed); masked-only and unmasked splits disclosed, not the verdict.
+f grid 0.05 … 0.80 step 0.05; **f* = argmax of the balanced accuracy (mean of acc_P and acc_C), ties -> the lower f. Bar: acc_P >= 0.75
+AND acc_C >= 0.75 at f*; below -> STOP** (the cap stays 8 s, GRP-A unchanged). Reported, not a verdict: Y* = the smallest hole length L
+(2 … 8 s, step 0.5) at which, among all holes >= L at f* on both sides, fewer than half lie inside a continuous segment (dropouts).
+**Step 2 — merged DEV (only if step 1 passes).** The shipped path (`grpp_screen.setup_dev`: GRP-A cache, GROUP_MAX_GAP 8, floor None):
+base = SHIP8+MD3 as shipped (must reproduce 29/58, 18 (6/10/2), 2.141) vs FP (same/same AND hole < 2 at f*). Main rule (hits >= 29, no
+needed hit lost, cost lower) OR the fewer-pictures clause (cost lower, >= 3 wrong removed per hit lost, <= 3 lost); a tie (identical
+hits, wrong by type, cost) -> FP by the Round 51 tie-break (the rule that matches the gold definition), shipped as the post-process.
+Also reported: both arms through a copy of `group.apply` with the chain fix (after a absorbs b, the pair b->c is applied to the merged
+span, to a fixed point); the shipped `apply` skips it (`a in out` fails), checked on a 3-span example. TEST never read.
+**Disclosure.** While checking the cache format, before writing this, I printed the family FlexSED frames across the two DEV merges
+(barbershop shaver 12–16.5 s: 0.13–0.21 throughout; detective alarm 5–9.5 s: ~0.0 for about 3 s). The rule, the window, the 2 s and
+the f grid come from the gold definition and the 415, not from these rows; whatever f* is, the alarm pair is likely un-merged, so a
+DEV STOP (29/19) is the expected outcome and is written here in advance. Files: `benchmark/gold/framepause_screen.py`
+(`calib415` CPU, `scoredev` CPU, login node, conda msproj) -> `benchmark/gold/framepause/`.
