@@ -2125,3 +2125,37 @@ Step A (CPU, cached round-37 answers, rule (1)+(3) without re-prompts) is comput
 `box_gate.py reprompt`, job `slurm/job_box_gate2.sh`) adds the re-prompted stretches and is the BOX-2 line. Pass as
 round 37. Reported: table (base / BOX-2 step A / BOX-2), every flipped sound with gold class, re-prompt outcomes
 (parsed / null / still unparsed). Nothing in `src/` or `config.py` edited.
+
+### Round 38 E5 GBTP — generalised band-twin pull (pre-registered 1 Oct, before numbers)
+**Why.** The shipped BTP (round 30) pulls a non-rescued picture's start back to a FlexSED run >= 0.5 of its family that ends
+0-1 s before the picture and starts <= 1.5 s before it. Mistimed misses remain (picture drawn, onset outside the hit window
+[onset - 0.5, onset + 1.0]): as_explosion Explosion 2.8 (picture 5.68), ly_applause Crowd 1.9 (picture 0.0, early), tg_d032
+Thunder 2.8 and 7.4 (picture 13.75), tg_d120 Meow 2.9 (Cat picture 0.56), birds_forest Bird 1.3 (picture 10.25).
+**Rule GBTP (one rule; every constant is a shipped one, none fitted).** For each placed picture of the saved SHIP8 arm whose
+spec is not `rescued`, fam = `canonical(label)`. For each of the three frame-score caches the evidence is the max over the
+cache columns whose `canonical(column label) == fam` (exact family equality, as the shipped BTP); runs = the pipeline's
+`_runs(evidence, times, bar, LISTEN_RUN_GAP = 0.24 s)`, run = (s = first frame time, e = last frame time + frame step).
+Bars: FlexSED 0.5 (= the shipped `BAND_TWIN_PULL`, read from `round13_dev.arm_cfg("SHIP8")`), BEATs 0.35
+(= `config.DISPLAY_THRESHOLD`), DASM 0.575 (= `config.LISTENER_DASM_BAR`, the F8 bar); the script asserts these values.
+A run QUALIFIES for a picture starting at a iff `a - 3.0 <= s < a` AND `e >= a - 0.24` (it continues, with gaps <= 0.24 s,
+up to the picture's start). A run whose onset is earlier than a - 3.0 does NOT qualify even if it reaches a (the onset must lie
+within the 3.0 s). New start = the smallest s over all qualifying runs of all three models; no qualifying run -> unchanged.
+The start never moves forward; the end is unchanged. No guard against overlapping an earlier same-family picture (the shipped
+BTP has none); any dup change is reported. Rescued pictures are never moved (as shipped).
+**Caches.** FlexSED `data/work/flexsed_cache/<clip>.npz` (25 fps; `fw` stored [labels, frames], `DCC.load_fr` transposes);
+DASM `cross_group.PARTS[part]["dasm"]/<clip>.npz` (`fw` [frames, labels], `times`); BEATs `cross_group.PARTS[part]["beats"]`
+= `data/work/j2_dev_beats` / `j2_dev2_beats` (the shipped `infer_beats`: 2-s window, 0.25-s hop, stamped at window end - 0.5 s,
+so a BEATs onset is late-biased and the pull from it is conservative; hop 0.25 > 0.24 means BEATs runs are never gap-merged).
+A clip missing one model's cache contributes no runs from that model (counts reported). Truth = `gold_AG.json` (current).
+**Reachable by construction** (3.0 s back, never forward): only as_explosion (5.68 - 3.0 = 2.68 <= 2.8) can become a hit.
+ly_applause and tg_d120 have the picture BEFORE the sound; tg_d032 (13.75 - 7.4 = 6.35 s) and birds_forest (8.95 s) are out of
+reach. Stated before running, so the result is read as "what the rule does to the whole set", not as a fix of these five.
+**Screen.** `benchmark/gold/gbtp_screen.py` (CPU, from `~/MscProj_tg`, `TG_ARMS=SHIP8`), on the saved `SHIP8_proposed`
+pictures of merged DEV (49 DEV + 22 tagger DEV2 = 71 clips) via `btp_screen.parts()`, rescored with `score_per_sound`;
+base must reproduce 28/58 hits, 21 wrong (6/13/2), cost 2.282 (asserted) before the rule runs. Nothing in `src/` or
+`config.py` edited. Reported: merged DEV per part; every moved picture (clip, family, old -> new start, per-picture class
+before -> after from `cross_group.classify`, clip hits before -> after).
+**Pass.** GO iff merged hits >= 28 AND no clip on either part has fewer hits than before (clip-level, so a gain on one clip
+cannot offset a loss on another) AND cost at visible weight w = 2 (primary, = 2.282 base) goes down. Secondary: cost(w) =
+(4 miss + w visible + 2 cross + 2 phantom) / 71 for w in {1, 2} (base w = 1: 156/71 = 2.197) for the "more hits" profile.
+GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed.
