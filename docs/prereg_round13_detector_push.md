@@ -4238,3 +4238,6 @@ parser read None = not credible; their removal is by that frozen rule, not by a 
 DASM_LOCAL_KEEP "both", DASM_LOCAL_SCENE (clip->video map; live path falls back to the running video / data/input/**/<clip>.mp4),
 and the picture floor dropped (PICTURE_MIN_CONF None) so shipped = scored (parity_check SHIP8+MD3+WW5: OK). Base arm for new
 rounds = SHIP8+MD3+WW5. TEST read next, once, reported only.
+### Round 60 / D TEST read (job 31634752 + `test_vs_ship8.py SHIP8+MD3+WW5`; reported, not selected on; ship decision written before it)
+Base (B on TEST: SHIP7+K4AD renders at SHIP8 display keys) 22/65, 26 (4/17/5), 2.545. **D: 24/65, 23 (4/14/5), 2.386; d cost −0.159
+[−0.341, −0.023], one-sided p 0.0145.** +2 hits, −3 wrong on TEST, in the same direction as DEV (29/14/2.028 vs 29/18/2.141).
