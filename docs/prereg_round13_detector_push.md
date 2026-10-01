@@ -2314,3 +2314,44 @@ The detector harness scores every arm with MERGE_GAP 2.0 (round13_dev BASE), but
 (commit 8ffd06f, "join repeats within 1.5 s (reviewer)"). SHIP8 merged DEV: at 2.0 → 28/58, 21 wrong (6/13/2), 2.282; at
 1.5 → 28/58, 23 wrong (7/14/2), 2.338. All DEV/TEST numbers today are at 2.0. Not changed overnight (display decision is
 Adam's): either ship 2.0 (shipped = measured, −2 wrong) or re-score the chain at 1.5.
+
+## Round 38 E1 SYNC — audio-visual synchrony (Synchformer) as a gate vote (written 2026-10-01 BEFORE any gold number)
+**Motivation.** Every failed gate vote so far (SSL-SaN, PIC-SIM, GA, BOX pending) tested a semantic match between the
+sound word and the frames. Synchrony is a different signal: a visible source that is MAKING the sound moves with it (a
+pan dropping, a face laughing, lightning with thunder), an off-screen source over a static picture (bell over a tower,
+birds over a still macaw) does not. Amendment 19 (prereg_v4) measured hand-rolled box-local frame difference and was
+barely measurable (5/22); this round uses a trained model. Synchformer (Iashin et al. 2024, github v-iashin/Synchformer,
+MIT, AudioSet checkpoint `24-01-04T16-39-21`, Acc@1 47.2 % / ±1 class 67.4 % on its own test set) predicts the audio-visual
+offset of a 5-s window on a 21-class grid, −2 .. +2 s in 0.2 s steps (class 10 = 0 s).
+**Wiring (checked on NON-gold clips before this entry, CPU, login node).** Repo cloned to `~/Synchformer`, run inside env
+`msproj` (torch 2.5.1, transformers current) with three shims in `benchmark/gold/sync_gate.py`: stubs for the two removed
+head-pruning helpers and `PreTrainedModel.get_head_mask` (never called at inference), `scripts/train_utils.py` loaded by
+file path (our repo's `scripts/` package shadows the name). Controls, `smoke` subcommand: `ev_kitchen_pan_drop` (visible pan
+drop) gives argmax −0.2 s with p 0.74 at offset 0, +0.8 s at an injected +1.0 s, −1.0 s at −1.0 s; `fx_people_clapping`
+and `ambient_harbour_boats` give near-flat distributions (p max 0.06–0.11). The model runs and follows the offset.
+**Score per stretch.** For every stretch of the cached shipped gate run (`gate_gold/Qwen38-27B`, all 139 cached gold
+clips) the clip's 5-s window centred on the stretch (`(start+end)/2 − 2.5`, clamped to `[0, dur − 5]`; a clip shorter than
+5 s is right-padded by cloning the last frame and silence — the demo has no padding rule, this is ours), cut and re-encoded
+as the demo does (ffmpeg 25 fps, short side 256, even dims, 16 kHz mono; 5.5 s cut, the model's own test transform slices
+exactly 125 frames / 80 000 samples from 0), scored at offset 0 with the test-time transform, half precision on GPU.
+**sync = p(|offset| ≤ 0.2 s)** = the summed softmax of classes 9/10/11. Chosen before any gold number because the in-sync
+control above peaks at −0.2 s (p(0) = 0.25, p(±0.2) = 0.996): a one-class encode latency must not count as off-screen.
+p(0) alone is reported as a secondary (own calibrated t, same table, cannot change GO/STOP). The full 21-class vector and
+argmax are stored per stretch; a failed window counts as sync < t. Sound-level sync = MIN over its stretches (the gate
+silences only when every stretch is seen).
+**Truth = CURRENT gold** (`gold_AG.json`; seen = visible or obvious; re-derived per sound by clip stem / resolved label /
+start as `box_gate.gold_index`; the `seen` stored in the cache is not read). Importance ≥ 2 only.
+**Calibration.** ONE threshold t = best balanced accuracy of "seen iff sync ≥ t" on the NON-judge cached clips (90 clips,
+98 seen / 77 needed sounds, 246 stretches; highest t on ties). The DEV judge clips (JUDGE100 ∩ cached = 49 clips, 41 seen /
+38 needed, 145 stretches) are never used to pick t.
+**Variants on the DEV judge set, per stretch (clip verdict = every stretch seen):** (a) **vote4**: sync ≥ t is a fourth
+vote next to name / a-b / desc; seen iff yes4 > no4; a 2–2 tie keeps the shipped majority decision. (b) **veto**: seen iff
+the shipped majority says seen AND (sync ≥ t OR name = ab = desc = True — unanimous, `_ab` None counts as not unanimous).
+**Base = shipped majority on current gold, computed before this entry: seen silenced 16/41, needed kept 33/38.**
+**Pass (either variant): GO iff seen silenced ≥ 19 with needed kept ≥ 32, or needed kept ≥ 35 with seen silenced ≥ 15.**
+Report: base, quartiles of the sound-level sync for seen vs needed sounds (DEV and calibration, plus the fraction of
+stretches whose argmax is 0 s), calibration t and its balanced accuracy, both variants, every flip with gold class and
+votes, GO/STOP. GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed. Nothing in `src/` or `config.py` edited.
+**Files:** `benchmark/gold/sync_gate.py` (`smoke` / `run` = GPU, one JSON per clip in `gate_gold/sync/`, resumable /
+`score` = CPU, laptop, -> `gate_gold/sync_summary.json`), `slurm/job_sync_gate.sh` (H200-4h / A100-4h). Stop rule for
+the setup: if Synchformer could not run within ~1 h, report why instead — it did (above).
