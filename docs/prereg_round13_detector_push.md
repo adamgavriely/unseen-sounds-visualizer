@@ -3382,3 +3382,16 @@ replaced by a Cat at 2.25 -> phantom); +1 cross tg_d022 Pant 0.22; +1 cross tg_d
 longer spans, same score: mv_protest_scene_movie Glass, tg_d088 Thunder, tg_d149 Bee. (At 0.40 tg_d032 also gains a Thunder hit
 at 13.75.) **Verdict: FAIL.** Main rule fails (a needed hit lost, cost 2.254 > 2.141); fewer-pictures clause fails (a): cost not
 below base. STRONG_BEATS_KEEP stays None; no TEST (no DEV pass).
+
+### Round 51 step 1 result — GRP-P pause question on the held-out 415 (job 31601858, H200, 21 min): **FAIL -> STOP**
+`benchmark/gold/grpp_screen.py` (`pairs415` / `ask415` / `score415`) -> `benchmark/gold/grpp/`; `slurm/job_grpp.sh`. Pairs: every
+consecutive same-label AudioSet-Strong segment pair with 0 < g <= 8 s (overlapping/touching same-label segments joined first: 11
+joins; 5 gaps > 8 s left out): **2185 pairs** (g <= 2: 1882; g > 2: 303). Prompt asked (both orders, greedy, 4 new tokens, cut =
+seg1 end − 1.0 … seg2 start + 1.5 s): "Does the {lab} sound stop completely for more than 2 seconds before it is heard again?
+Answer with exactly one word: yes or no." / "... no or yes." Correct = both orders agree AND match truth (g > 2.0 -> yes).
+Accuracy by bin: **<= 1 s 0.995 (1539/1547); 1–2 s 0.973 (326/335); 2–4 s 0.066 (14/212); 4–8 s 0.077 (7/91); fuzzy 1.5–2.5 s
+0.559 (119/213).** Sides: **g <= 2: 0.991 (1865/1882); g > 2: 0.069 (21/303).** Orders agree on 96–99 % of pairs; Omni says "no"
+almost always (agreed "yes" on 6.9 % of the g > 2 pairs, 0.3 % of g <= 2). Disclosure (not the verdict): without speech/music
+g > 2 = 0.036 (6/169); unmasked only g > 2 = 0.105 (20/190). **Bar (>= 0.75 on both sides): FAIL** (0.991 / 0.069). Omni cannot
+time pauses: it answers "no pause" regardless of the gap. Step 2 not run (no DEV GRP-P score exists; the DEV pair list was only
+built to check the code path, base reproduced 29/58, 18 (6/10/2), 2.141). The picture-gap cap stays 8 s; GRP-A unchanged. No TEST.
