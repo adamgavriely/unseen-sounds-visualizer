@@ -534,6 +534,9 @@ def _mirror_veto(events, keep_ids, ffw, ftimes, flabels, bar: float, own_max: fl
     for e in events:
         if id(e) in keep_ids:
             out.append(e); continue
+        sk = getattr(config, "STRONG_BEATS_KEEP", None)     # Round 52: a span BEATs is this sure of is not vetoed here
+        if sk is not None and float(e.confidence) >= float(sk):
+            out.append(e); continue
         own = [i for i, f in enumerate(fams) if f == canonical(e.label)]
         if not own:
             out.append(e); continue
@@ -975,7 +978,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
         for i, lab in enumerate(flabels):
             peak[canonical(lab)] = max(peak.get(canonical(lab), 0.0), float(ffw[:, i].max()))
         before = len(events)
-        events = [e for e in events if peak.get(key(e), 1.0) >= veto]
+        sk = getattr(config, "STRONG_BEATS_KEEP", None)     # Round 52: a span BEATs is this sure of is not vetoed here
+        events = [e for e in events if peak.get(key(e), 1.0) >= veto or (sk is not None and float(e.confidence) >= float(sk))]
         print(f"       [stage4] cross-detector veto (tau {veto}): dropped {before - len(events)} span(s)", flush=True)
     # Amendment 16 (2026-09-23): the veto above is one-sided -- it asks FlexSED about
     # labels BEATs raised alone. Nothing asked about labels FLEXSED raised alone, and after

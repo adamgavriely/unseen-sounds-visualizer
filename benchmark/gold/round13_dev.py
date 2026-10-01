@@ -45,7 +45,7 @@ SYSTEMS = DCC.SYSTEMS
 # the stage-4 part of B0 (config.use_scored(), job logs of the scored DEV run), set explicitly in every arm
 BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35, "AED_MIN_DUR": 0.5,
         "AED_HYSTERESIS": 1.0, "AED_RELEASE": None, "FLEXSED_BAR": 0.8, "FLEXSED_FAMILY_BARS": None,
-        "FLEXSED_VETO": 0.3, "PANNS_VETO": 0.05, "BEATS_SELF_VETO": 0.0, "FLEXSED_CORROB": None,
+        "FLEXSED_VETO": 0.3, "STRONG_BEATS_KEEP": None, "PANNS_VETO": 0.05, "BEATS_SELF_VETO": 0.0, "FLEXSED_CORROB": None,
         "UNION_WEAK_TWIN": "absorb", "UNION_START": "min", "BEATS_LOWBAND_CORROB": None, "ONSET_CAM": True,
         "ONSET_MONOTONE": True, "MAX_SPAN": None, "MERGE_START": "earliest",
         "TWIN_MAX": False, "MIRROR_VETO": None, "MIRROR_OWN_MAX": 0.4, "IMPULSE_MIN_SPAN": None,
@@ -234,6 +234,7 @@ ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5, "GROUP_ASK": True, "GRO
                  "GROUP_CACHE": str(_ROOT / "data" / "work" / "group_answers.json")}   # = use_shipped; holds bench + live answers  # shipped since round 35 K4A-D; display gap 2.5 since 1 Oct (Adam)
 # (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
 ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3}     # Round 48 MD3 (kill_flags: restores tg_d107 Laughter, +3 rows)
+ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Round 52 STRONG-KEEP
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
 ARMS["SHIP8+DBR"] = {**ARMS["SHIP8"], "REPEAT_DASM_BRIDGE": 0.575}

@@ -3352,3 +3352,16 @@ agreement required, disagreement = "no answer" counted wrong).** Below the bar -
 **Step 2 — DEV (only if Step 1 passes).** GRP-P vs shipped GRP-A (base SHIP8+MD3 29/58, 18, 2.141), main rule / fewer-pictures
 clause; **tie-break fixed now: on a DEV tie, ship the rule that matches the gold definition (GRP-P)**. TEST read once afterwards,
 reported only. Files: `benchmark/gold/grpp_screen.py` -> `benchmark/gold/grpp/`, `slurm/job_grpp.sh`.
+
+## Round 52 STRONG-KEEP — a span BEATs is very sure of is not removed by the FlexSED-based vetoes (written 2026-10-01 13:00 BEFORE any number of it; from `kill_flags_ship8.md`)
+**Why.** The strongest unrowed DEV miss (tg_d029 Chicken/rooster, BEATs 0.813) is removed by the mirror veto (MIRROR_VETO 0.7:
+FlexSED's top query is another family >= 0.7) and behind it by the cross-detector veto (FLEXSED_VETO 0.3: FlexSED's clip peak for
+the family < 0.3). Both act regardless of how sure BEATs is. **Rule (flag STRONG_BEATS_KEEP = 0.7, the mirror veto's own bar):**
+a span with conf >= 0.7 skips both vetoes. Nothing else changes. Prior art checked: only PANNS_VETO_SKIP_ABOVE (G5) exists; no
+FlexSED analogue was run.
+**Step 1 — held-out 415 (selection set, read first).** Proxy for "spans the two vetoes remove": raw BEATs spans with conf >= 0.7
+(BEATs bar 0.175, min span 0.3 s, as shipped MD3) whose family FlexSED never reaches 0.3 in the clip OR where FlexSED's top
+other-family query in the span is >= 0.7 with own family < 0.4. Precision under the Round 42 rule (same family, onset in the hit
+window, depictable families). **Bar: precision >= 0.375 (raw BEATs on the 415).** Below -> STOP.
+**Step 2 — DEV (only if Step 1 passes).** Arm SHIP8+MD3+SK7 vs SHIP8+MD3 (29/58, 18 (6/10/2), 2.141), full stage 4 + 5, main rule /
+fewer-pictures clause, scored at PICTURE_MIN_CONF None (and 0.40 reported). TEST once after a DEV pass, reported only.

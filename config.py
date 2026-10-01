@@ -375,6 +375,7 @@ TWIN_MAX = False              # R13-1: a BEATs span that absorbed a same-family 
                               # bar-normalised evidence (displayable if BEATs >= 0.35 OR FlexSED >= its 0.8 bar)
 MIRROR_VETO = None            # R13-2: b; drop a BEATs-only span where FlexSED's top query is another family >= b ...
 MIRROR_OWN_MAX = 0.4          #        ... and the span's own family's FlexSED score is < this
+STRONG_BEATS_KEEP = None      # Round 52: spans with conf >= this skip the mirror veto and the FlexSED cross-detector veto
 IMPULSE_MIN_SPAN = None       # R13-5: seconds (0.2); FlexSED min span for the impulsive queries below (else AED_MIN_DUR)
 # the impulsive families, fixed by physics; FlexSED has queries for Gunshot, Gasp, Hammer, Explosion, Knock (no
 # Whack/Clang/Slam/Bang query; "Slam" is not the Door family, so Door queries are not affected)
