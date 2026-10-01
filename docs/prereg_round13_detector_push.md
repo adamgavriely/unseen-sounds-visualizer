@@ -3118,3 +3118,26 @@ agrees with the first on the wrong off-screen names (chainsaw, laughter, explosi
 them there, or the maker is on screen); the EXPECT errors are not listener hallucinations, so no audio-side agreement can remove them.
 With Round 42b this closes the gold-free selectors for EXPECT: family prior (42b) and second-ear agreement (45) both clean DEV and
 both fail TEST. STOP; nothing shipped; `src/` untouched.
+
+## Round 46 GOLD-SCOPE — are EXPECT-A4's extra "wrong" pictures real sounds the gold does not list? (written 2026-10-01 BEFORE any item list is built or any answer seen; follows Round 45's reading that the EXPECT wrongs are audible)
+**Why.** EXPECT-A4 (Round 40e) adds 3 DEV / 2 TEST hits but every added wrong picture is a sound two independent ears agree on
+(Round 45). If some of those are real, salient, off-screen sounds that the gold simply does not list at that moment, "wrong" there is
+gold incompleteness, not a pipeline error. Checking only the arm's extras would favour the arm, so the same blind set also holds
+SHIP8's own wrong pictures and random no-picture moments as controls.
+**Items (fixed here; built by `benchmark/gold/gold_scope_items.py`, seed 0).** (E) every EXPECT-A4 added picture scored wrong: DEV 5
+(`expect_a4_screen.json` kept, class != hit) + TEST 6 (`expect_test.json["added"]`, class != hit) = 11. (S) a seed-0 random sample of
+20 SHIP8 wrong pictures (cross or phantom; visible ones are already "real sound, source seen") from the DEV ledger
+(`ledger_ship8.json`, 15) + the TEST ledger (`ledger_ship8_test.json`, 25, built by `ledger_ship8_test.py`, a reporting re-read of the
+spent TEST, no selection). (C) 10 control moments: a seed-0 random DEV/TEST clip and time with no picture within ± 2 s, named with a
+family drawn at random from the (E)+(S) family pool that the clip's gold does not list. 41 items, shuffled, set and arm hidden.
+**Question per item** (clip plays onset − 0.5 … onset + 2.5 s, the 2-s picture's span): Q1 "Do you hear a {family} sound start or
+play here?" (yes / no / unsure). Q2 (if yes) "Is the thing making it on screen?" (yes / no / unsure). Q3 (if yes) "Would a deaf viewer
+want a picture for it?" (yes / no / unsure). **Real-unlisted** = Q1 yes AND Q2 no AND Q3 yes.
+**Check before reading (E).** Control (C) Q1-yes rate must be <= 2/10 (the Round 1 visibility control was 0/20); otherwise the check
+is uninformative and nothing below is computed.
+**Report (no gold edit, no re-selection).** Real-unlisted counts for (E) and (S), side by side (rate and 95 % Wilson interval). A
+corrected EXPECT-A4 TEST d cost: each (E) TEST picture rated real-unlisted is counted neutral (neither hit nor wrong), so
+d_corr = d − 2·k/88; the same for DEV (2·k/71). SHIP8's own wrongs are common to both arms and cancel in d, so (S) only gives the gold's
+general incompleteness rate. Whether EXPECT-A4 ships on the corrected view is Adam's decision after he sees the table; `src/` untouched.
+**Files:** `benchmark/gold/gold_scope_items.py` -> `benchmark/gold/gold_scope_items.json` (hidden key) + `docs/review/gold_scope_recheck.html`
+(+ clip media in `docs/review/recheck_media/`); answers -> `benchmark/gold/gold_scope_answers.json`; `gold_scope_items.py score`.
