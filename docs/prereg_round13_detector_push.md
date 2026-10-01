@@ -3928,3 +3928,48 @@ DASM < 0.35 (the spans the rule touches), one-ear FlexSED >= 0.5 20, **0.250** (
 the clause would keep the WORSE group on the 415. By ears: 0 ears >= 0.5 127, 0.394 / < 0.5 222, 0.117; 2 ears 142, 0.606 / 93,
 0.634. Drop set on the 415: Round 53 both-only 339 at 0.150; with the clause 319 at 0.144. Reading: the DEV pattern (2 lost hits
 high, 2 of 4 one-ear-or-no-ear wrongs low) is not borne out on the 415; Round 53 stays FAIL, DASM_LOCAL_VETO stays None. TEST not read.
+
+## Round 58 TIGHT-CUT — tight listener cut for refused band runs (written 2026-10-01 BEFORE any 415 or DEV answer of it; panelist 1's P3, `docs/review/panel_2026-10-01/p1_detection.md`)
+**Why.** The band rescue's listener hears the run's cut padded by 1 s each side (`[cut − 1, cut + 1]`, `dev_listener` /
+`listener_variants` `run_audio`); for a refused band run the pad can let a louder neighbour win (as_explosion Footsteps
+2.08–2.72: Qwen V4 "Explosion / Gunshot", the Explosion is at 2.84; Gasp 6.72–6.92: "Explosion / Gunshot / Screaming").
+**Step 0 — what the caches say (read BEFORE the rule was fixed; no new answer).** DEV P2 band items (0.5 <= peak < 0.8) with
+TIER = refusal and cache gold `hit_needed`: nyc_1689 Air horn 3.76–4.40 (peak 0.708, Qwen "Door closing", AF yes; F8 DASM on its
+own column 0.051), as_explosion Footsteps 2.08–2.72 (0.658; DASM 0.262), Gasp 6.72–6.92 (0.758; 0.065), b3_carnival_parade Steam
+whistle / Whistle 6.32–7.16 (0.585 / 0.502; 0.021 / 0.372). The cache-fill item nyc_1689 Vehicle 0.0–10.0 (peak 0.564, both ears no,
+no gold field) has DASM Vehicle **0.719**; DEV2 items carry no gold field (the panel's tg_d033 Siren / Clapping / Laughter are not
+traced here). **Honest ceiling:** F8 (DASM >= 0.575 in span ± 0.5) still applies after a rescue; of the refused needed misses only
+nyc_1689 Vehicle clears it (the coordinator's "Vehicle 3.8, DASM 0.718"), so **+1 hit is the realistic ceiling** — and that run's
+tight cut (0.0–10.0) is its padded cut (0.0–11.0) minus the last second, so **0 is likely**; whether a 0.0-onset picture would score
+as the 3.8-s sound is not pre-judged.
+**Rule (scoring-time arm `SHIP8+MD3+TC`, no src / config change).** Re-ask ONLY refused band runs: cached P2 items with
+0.5 <= peak < 0.8 (LISTENER_LO, FLEXSED_BAR) whose cached TIER is a refusal (peak >= 0.6: Qwen V4 no; below: Qwen V4 AND AF V4 not
+both yes; TIER_SPECIFIC / TIER_HIGH_OR / K1 are off in the base, asserted). Tight window = **[max(0, min(start − 0.25, end − 0.6)),
+end]** from the RUN bounds (not the 1-s cut): no trailing pad; a window shorter than 0.6 s grows BACKWARD; only when the start clips
+at 0 does the end move, to 0.6 s. The audio is sliced directly (the shared `cut()` would re-extend < 1 s windows forward). Same
+models and prompt as the cache: Qwen3-Omni and Audio Flamingo Next, V4 open inventory (`listener_variants.V4_Q`, greedy, 64 tokens),
+matched by the unchanged `listener_afnext.v4_match`. If a processor rejects a < 1 s window, that window is zero-padded (silence) to
+1 s and counted. **Accept iff TIER(padded) OR TIER(tight)**, each TIER on ONE cut at the cached peak (no mixing of legs across cuts).
+Everything downstream unchanged (F8 DASM vote 0.575, ONCE, FLAP, K4A, DEPICT, GROUP, display). Implemented as override copies of the
+listener caches (`benchmark/gold/tightcut/{v,afn}_{dev,dev2}.json`): for a re-asked item with TIER(tight) yes, exactly the legs
+`_tier` reads at that peak are set to the tight answers (Qwen V4; below 0.6 also AF V4); a CPU replay through
+`listener_from_vcache` must give TIER = pad OR tight on every re-asked item and an identical accept dict on every other P2 / PV item.
+The arm is registered by `benchmark/gold/tightcut.py` before calling the unchanged `round13_dev` / `tagger_prep` / `merged_dev` /
+`floor_check_arm` (no edit to existing files). DEPICT / GROUP answers are NOT re-asked for new arm pictures (missing answer = kept /
+not grouped, disclosed).
+**Step 1 — held-out 415 (`tightcut.py held q|af` + `gate`).** No span-level listener cache exists on the 415, so refusals are built
+there: all FlexSED band runs of depictable families (0.4 runs, gaps <= 0.24 s merged, 0.5 <= peak < 0.8; 3022 runs, 379 clips; no
+"covered by a same-family span" filter — no pipeline events there, disclosed), a **seeded subsample of 800** (`random.Random(58)`,
+because one big GPU is free), each asked on the padded cut (the `dev_listener` P2 cut: 1-s cut centred on the peak when the run is
+< 1 s, then ± 1 s) and on the tight cut, both models. Picture onset as stage 4 places it (run start; the 1-s cut start when the run
+< 0.5 s); correctness = Round 42 (`heldout_a4_screen.classify`: same family, onset in [start − 0.5, start + 1.0]). **Guard: NEW =
+refused on the padded cut AND accepted on the tight cut; STOP iff n(NEW) >= 5 and precision(NEW) < 0.60;** n < 5 = not judged, DEV
+runs (disclosed). Reported beside it: padded-accepted precision (the shipped rescue on the 415), padded-refused, NEW by peak side,
+NEW with DASM >= 0.575 (F8 survivors), NEW by an overlap rule, and padded-accepted runs the tight cut would refuse (not the rule).
+**Step 2 — merged DEV (only if step 1 does not STOP).** DEV / DEV2 tight answers are asked in parallel with step 1 but not read
+before its verdict (the arm job runs `gate` first and exits on STOP). Base SHIP8+MD3 (floor None, DEPICT on, filled caches) must
+reproduce **29/58, 18 (6/9/3), 2.141**. **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits
+gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor
+0.40 row (`floor_check_arm.py`), changed pictures (`tightcut.py diff` -> `tightcut_diff.json`), number of re-asked / tight-accepted
+items per split (`tightcut_build.json`). Jobs: Qwen on H200/A100, AF on a smaller GPU, then one arm job (gate -> build + replay ->
+r13 stage 4/5/score -> tagger stage 4/5/gates -> merged -> floor -> diff). TEST not read.
