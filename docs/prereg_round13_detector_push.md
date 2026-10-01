@@ -2081,3 +2081,32 @@ computer-use garbage — left unchanged by rule), seen kept 17. bell_miami (`doc
 stretches 2–3 box the IHS medallion / a sign sliver on the tower (1080×1920 frame; boxes 13×30 and 33×30 on the 0–1000
 grid), crop answers "no" + a/b False → flipped, as Adam predicted — the mechanism works on the motivating clip but the box
 question is too eager to say `none` elsewhere. tg_d133 Fart not screened (no tg_* gate cache). Closed.
+
+## Round 38 E4 CF — the gate VLM answers the gold's own two questions (written 2026-10-01 BEFORE any CF number)
+**Motivation:** the shipped gate (`reason._sound_is_visible`: name / a/b / describe, majority) asks questions that differ
+from the gold's. The gold's re-check tool (`docs/review/visibility_recheck.html`) asks Q1 "Is the thing that makes THIS
+sound on screen while you hear it? A look-alike counts as no" and Q2 "With the sound off, would a viewer already know
+this sound is happening?"; gold seen = Q1 yes or Q2 yes. CF asks the same VLM the gold's questions verbatim.
+**Rule CF (one design, fixed here).** Same VLM (`Qwen/Qwen3.8-27B` via `reason._load`, greedy `reason._ask`), same 6
+frames per stretch as the cached shipped run (`gate_gold.run_vlm`: stretch − 1 s .. end + 1 s, 6 times, clamped at 0,
+`_sample_frames_at`), on EVERY stretch of every gold sound of the DEV judge clips (`benchmark/gold/gate_gold/Qwen38-27B`
+∩ JUDGE100 = 49 clips; no tg_* cache exists, as in BOX). Two questions, each a closed a/b in BOTH letter orders
+(`reason._ab` logic, options "yes" / "no", "Answer with the letter only."), prefixed by one context line:
+Q1 = "These frames are from the moment a sound of {label} was heard. Is the thing that makes THIS sound on screen while
+you hear it? A look-alike counts as no."; Q2 = "These frames are from the moment a sound of {label} was heard. With the
+sound off, would a viewer already know this sound is happening?". A question is YES only if both orders say yes; both
+no, or a split (None) -> that question = no. No frames returned -> both no. **stretch seen_CF = Q1 yes OR Q2 yes.**
+Clip verdict as shipped: silent only if every stretch is seen.
+**Variants.** (a) CF replaces the shipped majority (name/ab/desc) on every stretch. (b) CF is a fourth vote next to the
+three cached votes: count True vs False over [name, ab, desc, CF] (cached None excluded); more True -> seen, more
+False -> not seen, equal -> the shipped majority decision for that stretch.
+**Truth = CURRENT gold** (`gold_AG.json`, seen = visible or obvious, re-derived per sound by stem / resolved label /
+start; importance >= 2). **Base (computed before the rule was written, same as BOX): seen 41 / silenced 16, needed 38 /
+kept 33.** Both the local and the cluster copies of the gold are checked identical before the job runs; `score` is run
+on the laptop on the copied-back votes.
+**Pass (per variant):** GO iff seen silenced >= 19 with needed kept >= 32, or needed kept >= 35 with seen silenced >= 15.
+Round GO if either variant passes (which one is reported). Report: table (base, a, b), every sound whose verdict differs
+from base with gold class and all four raw replies, stretch counts (Q1 yes, Q2 yes, splits, CF seen vs majority seen).
+Script `benchmark/gold/cf_gate.py` (`run` GPU -> `gate_gold/cf_Qwen38-27B/`, resumable; `score` CPU ->
+`gate_gold/cf_summary.json`), job `slurm/job_cf_gate.sh`; nothing in `src/` or `config.py` edited. GO -> a `src/`
+flag is Adam's decision; STOP -> recorded, closed.
