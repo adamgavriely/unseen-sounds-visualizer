@@ -4593,3 +4593,38 @@ Cost had it shipped: ~0.18 s CPU per clip for all six k (onset envelope + peaks)
 Code kept default-off: `config.PERC_RETURN = None`; arm line `SHIP8+MD3+WW5+RET` kept with PERC_RETURN None; stage-5 / GROUP hooks act
 only on RET-marked rows (none exist with the flag off). Known targets (tg_d032 Thunder 7.4, as_explosion Explosion 2.8, birds_forest
 Bird 1.3, tg_d120 Meow 2.9) not checked on DEV (no DEV run after STOP). TEST not read.
+
+## Round 50L HUMAN-BOX-LOGIT — Round 50's crop question read as a bias-cancelled logit margin (written 2026-10-02 BEFORE any 50L number; Adam 22:51 "do you see it / what is it / find the specific thing", coordinator: that chain is Round 50, read by text and hit the "no" habit)
+**Reuse (nothing re-asked except the crop question).** Round 50's caches in ~/MscProj `gate_gold/humanbox_Qwen38-27B/` (49 judge
+clips, 145 stretches): the Round 43b named phrase (`hbox.cand`), the grounding box (`bbox_px`, frame k), status. The crop is
+rebuilt exactly as Round 50 built it (re-sample HUMAN-2's cached frame times with `_sample_frames_at`, frame k,
+`som_gate.crops(img, [bbox_px])`: 20 % margin, short side up to 224), not read back from the saved JPEG (quality 90).
+**Readout (the Round 62 / 60L harness).** Qwen3.8-27B, one forward pass per prompt, no generation, crop as the only image;
+s = max logit(yes ids) − max logit(no ids) at the first answer position; **m = s(Q) − s(¬Q)**, Q = Round 50's CROP_Q verbatim "This is
+a close-up cut from a video frame. Is this {phrase} making the {label} sound right now? Answer yes or no.", ¬Q "This is a close-up
+cut from a video frame. Is this {phrase} NOT making the {label} sound right now? Answer yes or no." (gold label, as Round 50). A
+stretch without a crop (unnamed 98, null box 1, degenerate / < 2 frames) has no m and counts as NOT seen, as in Round 50.
+**Step 0 — AUROC (STOP < 0.65).** Per-sound aggregate A = the ⌊n/2⌋+1-th largest stretch margin of the sound's n stretches (no crop
+= −inf), so that "A > t" is exactly Round 43b's "more than half the stretches seen" at threshold t (ties at −inf count 0.5). AUROC
+of A, seen (41) vs needed (38), importance >= 2, gold as Round 50; base 16/41, 33/38 must reproduce. Reported only: AUROC of the
+mean m over a sound's cropped stretches (sounds with >= 1 crop), per-stretch AUROC on the 46 crops, and the share of reads whose
+argmax is a yes/no id. **Honest odds:** Round 62's whole-frame margin reached 0.647; here 98 / 145 stretches have no crop, so most
+sounds tie at −inf and A can only separate the few sounds with a named, boxed source on most stretches — expected AUROC 0.55–0.65,
+i.e. STOP is the likely outcome; a crop may still separate better than whole frames on the sounds it does cover.
+**Step 1 — threshold, selection rule (fixed now).** Candidate t = midpoints of the sorted unique crop margins plus ±inf. Per stretch
+vote v_t = (crop exists AND m > t). (a) REPLACE: sound silenced iff more than half its stretches have v_t (= A > t). (b) 4TH VOTE:
+per stretch, v_t beside the cached name / ab / desc (True vs False, None excluded, tie -> shipped majority), sound silenced iff more
+than half its stretches are seen (Round 50's `seen_hb_b` + `sound_majority`, v_t in place of the text crop verdict). Bar: (silenced
+>= 19 AND kept >= 32) OR (silenced >= 15 AND kept >= 35). Per variant, t = the candidate meeting the bar with the most silenced;
+ties -> more kept -> larger t. Step 1 passes iff at least one variant meets the bar; if both, the one with more silenced (tie ->
+more kept -> (b)) goes to step 2. Not passed -> step 2 not run.
+**Step 2 (only if step 1 passes) — DEV arm vs D' = SHIP8+MD3+WW5+SL (shipped; must reproduce 29/58, 15 (6/7/2), 2.056).** On every
+drawn spec of D''s saved merged-DEV pictures, with the PIPELINE label, on its own gate stretches (`sign_screen.asked`, frames
+`decide_subjects` 6 over stretch ± 1 s): the full chain fresh — Round 43b's open naming (human2_gate's prompt, frames and parse),
+Round 50's grounding prompt and crop rule, then the logit crop margin; the chosen variant and t decide silencing. Silenced specs
+re-placed and scored as `sign_screen` / Round 62 (kinship not simulated). Re-adding a spec D' silenced is not simulable (no image):
+removal side only, disclosed. Pass: main rule (hits >= 29, no needed hit lost, cost < 2.056) or fewer-pictures clause (cost <
+2.056, wrong removed >= 2 × lost, wrong <= 15 − 3 × lost, hits >= 26). Listed: changed pictures with m per stretch.
+**Named either way:** bell_miami (gate-gold: Bell ×3 stretches, Round 50 "church bell" crops; and on DEV if step 2 runs) — its crop
+margins printed and recorded. Script `benchmark/gold/humanbox_logit.py`, job `slurm/job_humanbox_logit.sh`. Flags default off; no
+src / config edit unless step 2 passes. TEST not read.
