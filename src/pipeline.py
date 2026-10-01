@@ -127,6 +127,8 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
         else:                                            # default: a fresh process, as listener_prep runs each model
             from src.stage6_visual_augmentation.group import ensure_subprocess as _group_sub
             _group_sub(video_path.stem, work, work / "audio.wav", media.duration)
+    from src.stage6_visual_augmentation.depict import ensure_subprocess as _depict_sub   # Round 57 DEPICT-EVENT, live
+    _depict_sub(video_path.stem, work)
     try:        # the window the viewer really gets: what stage 6 will draw, before it draws it
         from src.stage6_visual_augmentation import _display_spans
         shown = _display_spans(specs, media.duration)

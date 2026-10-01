@@ -94,6 +94,25 @@ def ask_clip(reason, mdl, proc, d: Path):
     return out
 
 
+def ensure_subprocess(clip: str, work: Path) -> None:
+    """pipeline.run: ask for this clip in a fresh process (only the VLM on the GPU there) unless already cached"""
+    import subprocess
+    import sys
+    if not getattr(config, "DEPICT_EVENT", False):
+        return
+    p = _path()
+    if p.exists() and clip in json.loads(p.read_text(encoding="utf-8")):
+        return
+    code = ("import config, json; config.use_shipped(); config.DEPICT_CACHE = %r; from pathlib import Path; "
+            "from src.stage6_visual_augmentation import depict as D; from src.stage5_cross_modal_analysis import reason; "
+            "mdl, proc = reason._load(config.VLM_MODEL, 'cuda'); p = Path(%r); "
+            "allc = json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}; "
+            "allc[%r] = D.ask_clip(reason, mdl, proc, Path(%r)); p.parent.mkdir(parents=True, exist_ok=True); "
+            "p.write_text(json.dumps(allc, indent=1), encoding='utf-8')" % (str(p), str(p), clip, str(work)))
+    subprocess.run([sys.executable, "-c", code], check=True, cwd=str(Path(__file__).resolve().parents[2]))
+    _CACHE.pop(str(p), None)
+
+
 def main(argv=None):
     import sys
     a = list(sys.argv[1:] if argv is None else argv)
