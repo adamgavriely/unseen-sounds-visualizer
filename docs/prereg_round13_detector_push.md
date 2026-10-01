@@ -3176,3 +3176,11 @@ Base reproduced (28/58, 20 (6/12/2), 2.254); 6 candidate pairs. **GRP-A: 28/58, 
 0.04+9.08 (2.96); Glass pairs (protest) answered new/same -> kept. GRP-L / GRP-LA: 28/58, 19, 2.225 (Alarm only; the sound-type
 answers split on Shaver). No hit lost. **Main rule: hits 28 >= 28, cost 2.197 < 2.254 -> GO; best arm GRP-A.** TEST read next, once,
 frozen (same prompt, orders, window, MAX_GAP 8).
+### Round 47 TEST read — GRP-A (job 31599527, H200; reported, not selected on)
+Base reproduced (SHIP8 at 2.5: 23/65, 28 (4/19/5), 2.545). **GRP-A TEST: 22/65, 26 (4/17/5), cost 2.545, d 0.000 [−0.136, +0.136],
+p 0.649** — a tie: merges air_raid Siren 5.50+15.25 (gap 8.0) and Shofar 7.75+16.75 (−2 cross) and ice-cream-truck 0.06+9.97 (gap
+5.47), which LOSES a needed hit: the gold has the jingle as two needed rows (0.0–5.8, 10.3–18.0) because it stops and comes back.
+The pet-parrot Dog barks (gap 3.0) were answered new/new -> kept (Adam's case handled). GRP-L/LA: 22/65, 27, 2.568. Reading: Omni
+answers "same source", the gold (and a viewer) wants "the sound came back after a pause"; long-gap merges are the risk. DEV GO
+stands as a DEV result; not shipped (TEST tie with a hit lost). Closed; any follow-up must be pre-registered from the annotation rule,
+not from this TEST read.

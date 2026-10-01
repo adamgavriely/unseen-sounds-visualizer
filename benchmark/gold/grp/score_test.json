@@ -1,0 +1,93 @@
+{
+ "rows": {
+  "base": {
+   "hits": 23,
+   "misses": 42,
+   "wrong": 28,
+   "visible": 4,
+   "cross": 19,
+   "phantom": 5,
+   "viewer_cost": 2.5454545454545454
+  },
+  "GRP-A": {
+   "hits": 22,
+   "misses": 43,
+   "wrong": 26,
+   "visible": 4,
+   "cross": 17,
+   "phantom": 5,
+   "viewer_cost": 2.5454545454545454
+  },
+  "GRP-L": {
+   "hits": 22,
+   "misses": 43,
+   "wrong": 27,
+   "visible": 4,
+   "cross": 18,
+   "phantom": 5,
+   "viewer_cost": 2.5681818181818183
+  },
+  "GRP-LA": {
+   "hits": 22,
+   "misses": 43,
+   "wrong": 27,
+   "visible": 4,
+   "cross": 18,
+   "phantom": 5,
+   "viewer_cost": 2.5681818181818183
+  }
+ },
+ "parts": {
+  "base": {
+   "test": 2.2666666666666666,
+   "test2": 3.142857142857143
+  },
+  "GRP-A": {
+   "test": 2.2666666666666666,
+   "test2": 3.142857142857143
+  },
+  "GRP-L": {
+   "test": 2.3,
+   "test2": 3.142857142857143
+  },
+  "GRP-LA": {
+   "test": 2.3,
+   "test2": 3.142857142857143
+  }
+ },
+ "merged": {
+  "GRP-A": [
+   "mv_air_raid_scene Siren 5.50+15.25 (gap 8.0)",
+   "mv_air_raid_scene Shofar 7.75+16.75 (gap 7.25)",
+   "w8_kids_ice_cream_truck_2a Ice cream truck, ice cream van 0.06+9.97 (gap 5.47)"
+  ],
+  "GRP-L": [
+   "mv_air_raid_scene Siren 5.50+15.25 (gap 8.0)",
+   "w8_kids_ice_cream_truck_2a Ice cream truck, ice cream van 0.06+9.97 (gap 5.47)"
+  ],
+  "GRP-LA": [
+   "mv_air_raid_scene Siren 5.50+15.25 (gap 8.0)",
+   "w8_kids_ice_cream_truck_2a Ice cream truck, ice cream van 0.06+9.97 (gap 5.47)"
+  ]
+ },
+ "d_vs_base": {
+  "GRP-A": [
+   0.0,
+   -0.13636363636363635,
+   0.13636363636363635,
+   0.649
+  ],
+  "GRP-L": [
+   0.022727272727272728,
+   -0.06818181818181818,
+   0.13636363636363635,
+   0.7385
+  ],
+  "GRP-LA": [
+   0.022727272727272728,
+   -0.06818181818181818,
+   0.13636363636363635,
+   0.7385
+  ]
+ }
+}

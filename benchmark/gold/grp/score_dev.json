@@ -1,0 +1,90 @@
+{
+ "rows": {
+  "base": {
+   "hits": 28,
+   "misses": 30,
+   "wrong": 20,
+   "visible": 6,
+   "cross": 12,
+   "phantom": 2,
+   "viewer_cost": 2.2535211267605635
+  },
+  "GRP-A": {
+   "hits": 28,
+   "misses": 30,
+   "wrong": 18,
+   "visible": 6,
+   "cross": 10,
+   "phantom": 2,
+   "viewer_cost": 2.1971830985915495
+  },
+  "GRP-L": {
+   "hits": 28,
+   "misses": 30,
+   "wrong": 19,
+   "visible": 6,
+   "cross": 11,
+   "phantom": 2,
+   "viewer_cost": 2.2253521126760565
+  },
+  "GRP-LA": {
+   "hits": 28,
+   "misses": 30,
+   "wrong": 19,
+   "visible": 6,
+   "cross": 11,
+   "phantom": 2,
+   "viewer_cost": 2.2253521126760565
+  }
+ },
+ "parts": {
+  "base": {
+   "dev": 2.0816326530612246,
+   "dev2": 2.6363636363636362
+  },
+  "GRP-A": {
+   "dev": 2.0,
+   "dev2": 2.6363636363636362
+  },
+  "GRP-L": {
+   "dev": 2.0408163265306123,
+   "dev2": 2.6363636363636362
+  },
+  "GRP-LA": {
+   "dev": 2.0408163265306123,
+   "dev2": 2.6363636363636362
+  }
+ },
+ "merged": {
+  "GRP-A": [
+   "b3_barbershop Electric shaver, electric razor 0.14+16.00 (gap 2.75)",
+   "mv_detective_crime_scene Alarm 0.04+9.08 (gap 2.96)"
+  ],
+  "GRP-L": [
+   "mv_detective_crime_scene Alarm 0.04+9.08 (gap 2.96)"
+  ],
+  "GRP-LA": [
+   "mv_detective_crime_scene Alarm 0.04+9.08 (gap 2.96)"
+  ]
+ },
+ "d_vs_base": {
+  "GRP-A": [
+   -0.056338028169014086,
+   -0.14084507042253522,
+   0.0,
+   0.133
+  ],
+  "GRP-L": [
+   -0.028169014084507043,
+   -0.08450704225352113,
+   0.0,
+   0.3755
+  ],
+  "GRP-LA": [
+   -0.028169014084507043,
+   -0.08450704225352113,
+   0.0,
+   0.3755
+  ]
+ }
+}

@@ -1,0 +1,50 @@
+{
+ "audio": {
+  "as_explosion_XJ8lc3I6|Gunshot|0.00": [
+   "new",
+   "new"
+  ],
+  "as_explosion_XJ8lc3I6|Explosion|5.68": [
+   "new",
+   "new"
+  ],
+  "b3_barbershop|Electric shaver, electric razor|0.14": [
+   "same",
+   "same"
+  ],
+  "mv_detective_crime_scene|Alarm|0.04": [
+   "same",
+   "same"
+  ],
+  "mv_protest_scene_movie|Glass|4.75": [
+   "new",
+   "same"
+  ],
+  "mv_protest_scene_movie|Glass|10.75": [
+   "new",
+   "same"
+  ]
+ },
+ "label": {
+  "Alarm": [
+   "continuing",
+   "continuing"
+  ],
+  "Electric shaver, electric razor": [
+   "continuing",
+   "separate"
+  ],
+  "Explosion": [
+   "separate",
+   "separate"
+  ],
+  "Glass": [
+   "separate",
+   "separate"
+  ],
+  "Gunshot": [
+   "separate",
+   "separate"
+  ]
+ }
+}
