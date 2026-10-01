@@ -2691,3 +2691,17 @@ tg_d133: Fart HIT. mv_storm: Explosion/Gunshot cross (Siren already drawn as Ala
 **Finding.** The ears alone find 5 of the 14 unreachable needed sounds at the first weak run, which no earlier round did; the price is
 the open-inventory match (ontology neighbours) and a gate that cannot refuse an off-screen wrong family. Closed as pre-registered;
 a stricter name match (frozen map only, no cosine) would be a new round, not this one (map-only candidates: 59 of 130).
+
+## Round 40c EXPECT-A2 — map-only, two families per clip (written 2026-10-01 BEFORE any number; motivated by the Round 40b flood)
+**Rule (merged DEV, saved SHIP8 pictures, gold `gold_AG.json`, MERGE_GAP 2.0; the Round 40b Omni replies in `expect_a/listen/` are
+re-used, nothing is re-listened).** Per clip, walk the Round 40b items in list order; a family is named iff `expect_a_screen.map_item`
+returns one (the frozen word map, or an exact case-insensitive depictable family / label name as the whole item — NO cosine matcher);
+keep the FIRST TWO distinct families so named (an already-drawn family still counts as one of the two). Then exactly as Round 40b: not
+already drawn by SHIP8 (canonical / `same_family`), onset = earliest weak-bar run over the three caches (no run -> nothing), shipped
+gate at onset − 1 … + 1 s (majority) — every such candidate is a Round 40b candidate with the same onset, so its cached gate answer in
+`expect_a/gate/` is re-used verbatim (none re-asked; any uncached one would be asked on GPU, counted); seen -> dropped, else a 2-s
+picture. **Score / pass** as Round 40 / 40b (base 28/58, 21, 2.282 must reproduce; main rule hits >= 28, no needed hit lost, w = 2
+cost lower; more-hits rule hits up, cross / phantom not up on either part, w = 1 cost lower). Known before this entry (from 40b):
+map-only candidates were 59 of 130, and the 40b hits Hammer, Bell, Fart came from the map while Crow and Snicker came from the cosine
+matcher and cannot appear here; the two-per-clip cap and the order are fixed now, not after seeing which ones survive.
+**Files:** `benchmark/gold/expect_a2_screen.py` (`cands` / `score`, CPU) -> `benchmark/gold/expect_a2_screen.json`.
