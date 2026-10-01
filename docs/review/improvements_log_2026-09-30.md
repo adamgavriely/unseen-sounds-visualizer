@@ -64,5 +64,7 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | DETACHED-ADD | add a 2-s picture where a drawn family is heard again, far from its picture | fires only on repeat textures: 28 / 28, +7 wrong, targets untouched: rejected |
 | EXPECT | the scene VLM names sounds one would expect off-screen; the listener must name the same; shipped gate at the first weak detector run | running |
 | RELABEL-GATE | rename a picture to the sound both listeners heard, then ask if that is on screen | fires on 3 pictures, none of the 7 targets; drops 2 wrong but also a true hit (27 / 19, cost same): rejected |
+| AGREE | a seen call flips only when the SYNC veto AND BOX-2 both say so | 15/41 seen, 34/38 needed: church bell rescued, phone buzz lost; below both bars: rejected |
+| NAMED-VETO | drop a picture when the gate says a different thing makes the sound at that moment | 6 of 50 pictures judged, all dropped: 4 wrong gone but 2 true hits lost (26 / 17, cost same 2.282): rejected |
 
 **Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.

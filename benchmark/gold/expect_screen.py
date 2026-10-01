@@ -122,9 +122,9 @@ def cmd_listen():
     import torch
     from transformers import Qwen3OmniMoeForConditionalGeneration, Qwen3OmniMoeProcessor
     from benchmark.gold import listener_variants as LV
-    LV.S.load_gold = LV._no_gold
     d = DIR / "listen"; d.mkdir(parents=True, exist_ok=True)
-    todo = [(pt, st) for pt, st in stems_only() if not (d / f"{st}.json").exists()]
+    todo = [(pt, st) for pt, st in stems_only() if not (d / f"{st}.json").exists()]      # stems first: parts() loads the gold
+    LV.S.load_gold = LV._no_gold                                                          # ...and nothing after this may
     print(f"{len(todo)} clips to listen", flush=True)
     if not todo:
         return

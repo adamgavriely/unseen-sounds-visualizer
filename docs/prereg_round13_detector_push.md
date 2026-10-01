@@ -2551,3 +2551,64 @@ no needed hit lost on either part, wrong <= 21 + 2*max(gain,0), cost(w = 2) < 2.
 wrong <= 21 - 3 * hits lost, hits lost <= 3). Every dropped picture listed with its class, the covering stretches and their
 `named`. **Files:** `benchmark/gold/named_veto_screen.py` -> `benchmark/gold/named_veto_screen.json`. CPU, laptop; nothing in
 `src/` or `config.py` edited.
+
+## Round 41 PRIOR415 — an independent per-family precision prior from the held-out 415 (written 2026-10-01 BEFORE any number)
+**Motivation.** 13 of SHIP8's 21 wrong pictures are cross (another sound was there) and the detectors' per-family precision
+is unknown for merged DEV; the held-out 415 AudioSet-Strong clips (`benchmark/gold/audioset_heldout.json`, strong labels,
+disjoint from DEV/TEST, caches present: FlexSED `~/MscProj_tg/data/work/flexsed_heldout`, BEATs
+`~/MscProj/benchmark/audioset_heldout_windows/beats`, 415 each) give one per family and per model without touching gold.
+Known before this entry: the SHIP8 base (28/58, 21 (6/13/2), 2.282) and the ledger of its misses; no per-family precision
+of either model on the 415 has been read.
+**Step 1 (frozen BEFORE any DEV read; `benchmark/gold/prior415_screen.py prior` -> `benchmark/gold/prior415_lists.json`,
+committed before step 2).** Clips = the 415 with a cache file for the model (count reported per model). Instances =
+strong-label EVENTS (masked included, Speech/Music included — they are never drawn), family = `src.labels.canonical(label)`.
+Families with >= 10 instances are scored. FlexSED runs = `_extract_events(ffw, ftimes, flabels, 0.8, None, 0.5, low=0.8)`,
+the `fuse_flexsed` line under the shipped flags (`config.use_shipped()`; asserted and dumped: `FLEXSED_FAMILY_BARS None`,
+`IMPULSE_MIN_SPAN None`, `AED_HYSTERESIS 1.0`, `AED_MIN_DUR 0.5`). BEATs spans = `_extract_events(fw, times, labels, 0.35,
+None, 0.5, low=0.175)` = extraction at `AED_THRESHOLD` 0.175 keeping peak >= 0.35 (= `audioset_detector_eval._spans`
+at the display bar). Both are the RAW extractions: before ONSET_CAM, the FlexSED/PANNs/mirror vetoes and the listener,
+which need audio and models (disclosed). A run of family F = `canonical(run.label)` is correct iff some event with
+`canonical(event.label) == F` has `start` in [run.start − 0.5, run.start + 1.0] (family equality only, no descendant
+matching). precision_F = correct / runs. Lists per model: UNRELIABLE = precision < 0.3, RELIABLE = precision > 0.8;
+a scored family with 0 runs is in neither (undefined). No minimum run count (the task's rule as given); `n_runs`,
+`n_correct`, `n_instances` are recorded per family and every list member with `n_runs < 5` is flagged in the report.
+**Step 2 rule (`prior415_screen.py screen`, CPU, `TG_ARMS=SHIP8`, from `~/MscProj_tg`).** Saved SHIP8 pictures of merged
+DEV (`btp_screen.parts`, roots from `cross_group.PARTS`), gold `gold_AG.json`, display at MERGE_GAP 2.0; base must
+reproduce 28/58, 21 (6/13/2), cost 2.282 (asserted, and `gbtp_screen.cost_w(w=2)` asserted equal to it). Per placed
+picture (label, a, b): rescued -> untouched. Contributing rows = `stage4.json["arms"]["SHIP8|proposed"]` rows of the clip
+with `canonical(label) == canonical(picture label)` overlapping [a − 0.1, b + 0.1] (cross_group's criterion); no row ->
+untouched (counted). Model = `origin` of the row whose start is nearest a (`tagger` = BEATs, `flex` = FlexSED; a BEATs
+row that absorbed a FlexSED twin under TWIN_MAX carries `tagger` — disclosed). The picture is DROPPED iff its family is in
+that model's UNRELIABLE list AND no listener names its family on the P1 cut of any contributing row: names =
+`_p1v4_lists(row)` (`config.RELABEL_P1V4` = `<part>_listener_p1v4.json`, `_CURRENT_CLIP` = clip) over `qwen_fams ∪
+af_fams`, named iff `canonical(x) == family` for some x; a row with no P1 item = not named (P1 items exist only for
+FlexSED 0.5–0.8 candidates, so BEATs pictures are rarely covered — the counts "no P1 item" vs "P1 item, not named" are
+reported). Scored per clip with `score_per_sound.score_clip` as `dbr_screen`; hit loss per part = any clip with fewer
+hits than base. **Verdict** = `passes` COPIED into the script with BASE = {28, 21, 2.282} (never imported from
+`dbr_screen`, whose BASE is SHIP7): main rule (hits >= 28, no needed hit lost on either part, wrong <= 21 + 2·max(gain, 0),
+cost(w = 2) < 2.282) or fewer-pictures clause (cost lower, wrong <= 21 − 3·hits lost, hits lost <= 3). GO -> a `src/`
+flag is Adam's decision; STOP -> closed. **RELIABLE, list only, not scored:** every needed SHIP8 miss in
+`ledger_ship8.json` whose family is RELIABLE for a model that has a raw run (same extraction as step 1, DEV caches
+`cross_group.PARTS[part]["beats"]`, `btp_screen.FLEX_DIR`) with start within [onset − 0.5, onset + 1.0] of the miss
+(e.g. a FlexSED clip-veto skip for tg_d029 Chicken) — reported as what RELIABLE would allow. Report: the frozen lists,
+every dropped picture with its class before and the clip's counts after, totals, verdict. Nothing in `src/` or
+`config.py` edited. **Files:** `benchmark/gold/prior415_screen.py`, `prior415_lists.json` (frozen), `prior415_screen.json`.
+### Round 41 AGREE result — STOP (CPU, `agree_screen.py` -> `gate_gold/agree_summary.json`)
+Base reproduced (16/41, 33/38; 145 stretches, all with a box record). Stretch flips: veto 17, BOX-2 7, both 4. **AGREE:
+15/41 seen silenced, 34/38 needed kept, 2 sound flips** — exactly the sound-level bound disclosed above: bell_miami Bell
+0.2 s (needed, good: votes 2-1 x3, sync 0.13/0.12/0.05, box none/box/box) and mv_tornado_scene Cellphone buzz 1.4 s (seen,
+BAD: votes 2-0, sync 0.014, box parsed + crops "no"). Neither bar reached (needs 19 & 32, or 35 & 15). The two checks fail
+on different seen sounds (sync on the 5 static-looking seen sources, BOX-2 on glass / motorcycle), so requiring both removes
+most of the damage but also 2 of the 3 rescues (golf whack, ambulance vehicle: no BOX-2 flip). No SHIP8 picture question
+arises (STOP).
+### Round 41 NAMED-VETO result — STOP (CPU, `named_veto_screen.py` -> `named_veto_screen.json`)
+Base reproduced (28/58, 21 (6/13/2), 2.282). Of the 50 placed SHIP8 pictures: 16 are on dev2 (tg_*) clips with no gate
+cache, 5 fall outside every cached stretch, 23 are covered only by stretches naming nothing / people / an unresolved noun,
+**6 could be judged and all 6 fired** (the "own family named" protection never applied, so primary = secondary): 3 visible
+pictures dropped (storm Thunder over "heavy rain", london_protest Vehicle over "crowd of people", motorcycle Explosion over
+"crowd of spectators"), 1 cross dropped (crossing_bells Steam over "train"), and **2 HITS lost** (snow_walk Laughter 8.1 s
+over "tram", protest Glass 16.9 s over "crowd of people"). **Merged 26/58, 17 wrong (3/12/2), cost 2.282** (unchanged to 3
+d.p.: 2 hits lost against 4 wrong removed at visible weight 2). Main rule fails (hits < 28, needed hits lost on DEV);
+fewer-pictures clause fails (cost not lower; 17 > 21 - 3*2). Reading: the gate names the maker of the GOLD sound it was
+asked about, which is a different sound from the picture's whenever two sounds overlap — a crowd on screen does not make a
+picture of breaking glass wrong. The rule is a sound-overlap detector, not a wrong-family detector. Closed.
