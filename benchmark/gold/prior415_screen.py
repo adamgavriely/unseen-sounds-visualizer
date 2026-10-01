@@ -36,11 +36,9 @@ ORIGIN_MODEL = {"tagger": "beats", "flex": "flexsed"}
 
 
 def _load(p):
-    z = np.load(p)
-    fw = z["fw"].astype(np.float32)
-    labs = [str(x) for x in z["labels"]]
-    t = z["times"].astype(np.float64)
-    return fw, t, labs
+    """dev_candidates_check.load_fr: (fw [T, Q] float32, times, labels); FlexSED caches store fw.T + fps, BEATs times"""
+    from benchmark.gold import dev_candidates_check as DCC
+    return DCC.load_fr(p)
 
 
 def shipped_flags():
