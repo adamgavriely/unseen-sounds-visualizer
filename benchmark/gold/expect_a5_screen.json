@@ -1,0 +1,327 @@
+{
+ "round": "Round 42b EXPECT-A5",
+ "families": [
+  "Bell",
+  "Cough",
+  "Crowd",
+  "Dog",
+  "Laughter",
+  "Toilet flush",
+  "Vehicle"
+ ],
+ "dev": {
+  "base": {
+   "merged": {
+    "hits": 28,
+    "n": 58,
+    "wrong": 21,
+    "visible": 6,
+    "cross": 13,
+    "phantom": 2,
+    "cost": 2.2816901408450705
+   },
+   "dev": {
+    "hits": 19,
+    "n": 38,
+    "wrong": 14,
+    "visible": 4,
+    "cross": 8,
+    "phantom": 2,
+    "cost": 2.122448979591837
+   },
+   "dev2": {
+    "hits": 9,
+    "n": 20,
+    "wrong": 7,
+    "visible": 2,
+    "cross": 5,
+    "phantom": 0,
+    "cost": 2.6363636363636362
+   }
+  },
+  "rows": {
+   "merged": {
+    "hits": 30,
+    "n": 58,
+    "wrong": 21,
+    "visible": 6,
+    "cross": 13,
+    "phantom": 2,
+    "cost": 2.1690140845070425
+   },
+   "dev": {
+    "hits": 20,
+    "n": 38,
+    "wrong": 14,
+    "visible": 4,
+    "cross": 8,
+    "phantom": 2,
+    "cost": 2.0408163265306123
+   },
+   "dev2": {
+    "hits": 10,
+    "n": 20,
+    "wrong": 7,
+    "visible": 2,
+    "cross": 5,
+    "phantom": 0,
+    "cost": 2.4545454545454546
+   }
+  },
+  "cost": {
+   "1": [
+    2.197,
+    2.085
+   ],
+   "2": [
+    2.282,
+    2.169
+   ]
+  },
+  "added": [
+   {
+    "part": "dev",
+    "clip": "bell_miami",
+    "family": "Bell",
+    "start": 0.0,
+    "dasm": 0.92,
+    "class": "hit",
+    "clip_before": "h0 v0 c0 p0 d0",
+    "clip_after": "h1 v0 c0 p0 d0"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d107",
+    "family": "Laughter",
+    "start": 8.48,
+    "dasm": 0.847,
+    "class": "hit",
+    "clip_before": "h1 v0 c1 p0 d0",
+    "clip_after": "h2 v0 c1 p0 d0"
+   }
+  ],
+  "skipped": [
+   {
+    "part": "dev",
+    "clip": "ambient_nature_rainforest_7629",
+    "family": "Bird",
+    "start": 15.52,
+    "class_40e": "cross"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_arrest_street_scene",
+    "family": "Footsteps",
+    "start": 13.76,
+    "class_40e": "cross"
+   },
+   {
+    "part": "dev",
+    "clip": "mv_storm_scene_house",
+    "family": "Explosion",
+    "start": 12.96,
+    "class_40e": "cross"
+   },
+   {
+    "part": "dev",
+    "clip": "un_driving_motorcycle_DgdHSmwA",
+    "family": "Gunshot",
+    "start": 13.92,
+    "class_40e": "cross"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d020",
+    "family": "Rain",
+    "start": 0.0,
+    "class_40e": "visible"
+   },
+   {
+    "part": "dev2",
+    "clip": "tg_d133",
+    "family": "Fart",
+    "start": 0.0,
+    "class_40e": "hit"
+   }
+  ],
+  "hits_lost": [],
+  "main_GO": true,
+  "fewer_pictures_GO": true
+ },
+ "test": {
+  "clips": 88,
+  "base": {
+   "hits": 23,
+   "misses": 42,
+   "visible": 4,
+   "cross": 20,
+   "phantom": 5,
+   "dup": 0,
+   "F1": 0.39316239316239315,
+   "P": 0.4423076923076923,
+   "R": 0.35384615384615387,
+   "viewer_cost": 2.5681818181818183,
+   "coverage": 0.266410836684361,
+   "wrong": 29
+  },
+  "new": {
+   "hits": 23,
+   "misses": 42,
+   "visible": 4,
+   "cross": 21,
+   "phantom": 6,
+   "dup": 0,
+   "F1": 0.38655462184873957,
+   "P": 0.42592592592592593,
+   "R": 0.35384615384615387,
+   "viewer_cost": 2.6136363636363638,
+   "coverage": 0.266410836684361,
+   "wrong": 31
+  },
+  "parts": {
+   "base": {
+    "test": {
+     "hits": 18,
+     "misses": 25,
+     "visible": 2,
+     "cross": 15,
+     "phantom": 2,
+     "dup": 0,
+     "F1": 0.45,
+     "P": 0.4864864864864865,
+     "R": 0.4186046511627907,
+     "viewer_cost": 2.3,
+     "coverage": 0.3135325689049963,
+     "wrong": 19
+    },
+    "test2": {
+     "hits": 5,
+     "misses": 17,
+     "visible": 2,
+     "cross": 5,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.27027027027027023,
+     "P": 0.3333333333333333,
+     "R": 0.22727272727272727,
+     "viewer_cost": 3.142857142857143,
+     "coverage": 0.17430926916221032,
+     "wrong": 10
+    }
+   },
+   "new": {
+    "test": {
+     "hits": 18,
+     "misses": 25,
+     "visible": 2,
+     "cross": 15,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.4444444444444444,
+     "P": 0.47368421052631576,
+     "R": 0.4186046511627907,
+     "viewer_cost": 2.3333333333333335,
+     "coverage": 0.3135325689049963,
+     "wrong": 20
+    },
+    "test2": {
+     "hits": 5,
+     "misses": 17,
+     "visible": 2,
+     "cross": 6,
+     "phantom": 3,
+     "dup": 0,
+     "F1": 0.2631578947368421,
+     "P": 0.3125,
+     "R": 0.22727272727272727,
+     "viewer_cost": 3.2142857142857144,
+     "coverage": 0.17430926916221032,
+     "wrong": 11
+    }
+   }
+  },
+  "cost": {
+   "w2": [
+    2.568,
+    2.614
+   ],
+   "w1": [
+    2.523,
+    2.568
+   ]
+  },
+  "delta_cost_vs_base": [
+   0.045454545454545456,
+   0.0,
+   0.11363636363636363,
+   1.0
+  ],
+  "added": [
+   {
+    "part": "test",
+    "clip": "m4_airsoft_24a",
+    "family": "Laughter",
+    "start": 2.88,
+    "dasm": 0.965,
+    "class": "phantom",
+    "clip_before": "h1 v0 c0 p0 d0",
+    "clip_after": "h1 v0 c0 p1 d0"
+   },
+   {
+    "part": "test2",
+    "clip": "tg_d045",
+    "family": "Vehicle",
+    "start": 0.0,
+    "dasm": 0.616,
+    "class": "cross",
+    "clip_before": "h0 v0 c1 p0 d0",
+    "clip_after": "h0 v0 c2 p0 d0"
+   }
+  ],
+  "skipped": [
+   {
+    "part": "test",
+    "clip": "b3_aquarium_walk",
+    "family": "Water",
+    "start": 0.0,
+    "class_40e": "visible"
+   },
+   {
+    "part": "test",
+    "clip": "lx_chainsaw_and_power_tool_BBukw6J",
+    "family": "Chainsaw",
+    "start": 0.0,
+    "class_40e": "phantom"
+   },
+   {
+    "part": "test",
+    "clip": "m4_live_fire_26a",
+    "family": "Explosion",
+    "start": 2.08,
+    "class_40e": "cross"
+   },
+   {
+    "part": "test",
+    "clip": "m5_doc_restrepo_138b",
+    "family": "Gunshot",
+    "start": 0.0,
+    "class_40e": "hit"
+   },
+   {
+    "part": "test",
+    "clip": "mv_air_raid_scene",
+    "family": "Bird",
+    "start": 1.28,
+    "class_40e": "cross"
+   },
+   {
+    "part": "test2",
+    "clip": "tg_d101",
+    "family": "Bird",
+    "start": 5.12,
+    "class_40e": "hit"
+   }
+  ],
+  "hits_lost": []
+ }
+}

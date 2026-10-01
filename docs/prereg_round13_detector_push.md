@@ -3054,3 +3054,13 @@ sound HUMAN-2 silences on its own (storm Rain, golf-club Whip, …, 5 of 41) is 
 their stretches. SHIP8 placed pictures (merged DEV, 50): 16 on clips without a HUMAN-2 cache (all tg_*: d127 Water, d128
 Laughter not readable), 11 with no same-family gold sound at the picture onset ± 0.5 s, 23 matched but HUMAN-2 not seen
 (storm Thunder ×2, protest Vehicle/air horn among them), **0 silenced**. Not GO; no full arm warranted. Closed.
+### Round 42b EXPECT-A5 result — DEV **GO on both rules**, TEST worse (CPU, login node; `expect_a5_screen.json`)
+Family list asserted = {Laughter, Crowd, Vehicle, Dog, Bell, Cough, Toilet flush}. **DEV** (base reproduced 28/58, 21 (6/13/2), 2.282):
+**30/58, 21 (6/13/2), cost 2.169 at w = 2 (2.085 at w = 1, base 2.197)** | DEV 20/38, 14, 2.041 | DEV2 10/20, 7, 2.455; no hit lost.
+Added 2, both hits: bell_miami Bell 0.0, tg_d107 Laughter 8.48. Skipped 6 (not in the list): the 4 cross (Bird, Footsteps, Explosion,
+Gunshot), the visible Rain and the tg_d133 Fart hit. Main rule GO (30 >= 28, cost 2.169 < 2.282), fewer-pictures GO. **TEST** (base
+reproduced 23/65, 29 (4/20/5), 2.568): **23/65, 31 (4/21/6), cost 2.614; d cost +0.045 [+0.000, +0.114], one-sided p 1.000** — worse.
+Added 2, both wrong: m4_airsoft_24a Laughter 2.88 (phantom; DASM 0.965), tg_d045 Vehicle 0.0 (cross). Skipped 6: the two TEST hits
+(restrepo Gunshot, tg_d101 Bird — both excluded families), Water visible, Chainsaw phantom, Explosion cross, Bird cross. Reading: the
+held-out list cleans DEV (its two kept pictures are the DEV hits) but on TEST the two kept families are wrong and the two hits are in
+excluded families; 4 pictures in all, 2 right — the held-out selector does not transfer. Not shipped; Adam's call as every GO today.
