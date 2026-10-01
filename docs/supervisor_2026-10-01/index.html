@@ -123,10 +123,10 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
 <div class="wrap">
 
 <header>
-  <p class="meta">MSc final project · Adam Gavriely · Bar-Ilan · status 1 Oct 2026</p>
+  <p class="meta">MSc final project · Adam Gavriely · Bar-Ilan · status 1 Oct 2026, evening</p>
   <h1>Seeing Off-Screen Sound</h1>
   <p class="lede">A deaf or hard-of-hearing viewer misses sounds they cannot hear and cannot see the source of. The system finds those sounds in a video and shows a small picture of each one beside it. No model was trained; existing models are chained.</p>
-  <div class="oneline"><b>In one line:</b> on the 88 TEST clips the final system finds 22 of 65 needed sounds and shows 26 wrong pictures. Its viewer cost is 2.55 against 2.96 for showing nothing and 2.91 for the old pipeline. Most remaining errors are sounds no model hears clearly, or cases where the models disagree at about chance.</div>
+  <div class="oneline"><b>In one line:</b> on the 88 TEST clips the final system finds 24 of 65 needed sounds and shows 23 wrong pictures. Its viewer cost is 2.39 against 2.96 for showing nothing and 2.91 for the old pipeline. Most remaining errors are sounds no model hears clearly, or cases where the models disagree at about chance.</div>
   <nav class="toc" aria-label="Sections"><a href="#task">1 The task</a><a href="#results">2 Results</a><a href="#errors">3 Every error</a><a href="#why">4 Why we cannot simply do better</a><a href="#method">5 Methodology</a><a href="#system">6 The system</a><a href="#limits">7 Honest limits</a><a href="#pending">8 Still open today</a><a href="#approve">9 What I ask you to approve</a></nav>
 </header>
 
@@ -145,10 +145,10 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
   <div class="num-h">2 · Results</div>
   <h2>The final system beats showing nothing and the old pipeline on both sets</h2>
   <div class="grid g4">
-    <div class="tile"><div class="k">TEST · needed sounds found</div><div class="v">22 <small>/ 65</small></div><div class="s">34 %. DEV: 29 / 58 (50 %)</div></div>
-    <div class="tile"><div class="k">TEST · wrong pictures</div><div class="v">26</div><div class="s">0.30 per clip; old pipeline 40. DEV: 18 (old 51)</div></div>
-    <div class="tile"><div class="k">TEST · pictures that are right</div><div class="v">46 <small>%</small></div><div class="s">22 of 48 shown. DEV: 62 %</div></div>
-    <div class="tile"><div class="k">TEST · viewer cost</div><div class="v">2.55</div><div class="s">show nothing 2.96 · old 2.91</div></div>
+    <div class="tile"><div class="k">TEST · needed sounds found</div><div class="v">24 <small>/ 65</small></div><div class="s">37 %. DEV: 29 / 58 (50 %)</div></div>
+    <div class="tile"><div class="k">TEST · wrong pictures</div><div class="v">23</div><div class="s">0.26 per clip; old pipeline 40. DEV: 14 (old 51)</div></div>
+    <div class="tile"><div class="k">TEST · pictures that are right</div><div class="v">51 <small>%</small></div><div class="s">24 of 47 shown. DEV: 67 %</div></div>
+    <div class="tile"><div class="k">TEST · viewer cost</div><div class="v">2.39</div><div class="s">show nothing 2.96 · old 2.91</div></div>
   </div>
 
   <h3>Viewer cost per clip (lower is better)</h3>
@@ -163,16 +163,16 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
     <tbody>
       <tr><td>Show nothing</td><td>DEV 71</td><td class="n">0</td><td class="n">58</td><td class="n">0</td><td class="n">3.268</td></tr>
       <tr><td>Old pipeline</td><td>DEV 71</td><td class="n">18</td><td class="n">40</td><td class="n">51 (5 / 37 / 9)</td><td class="n">3.690</td></tr>
-      <tr class="ours"><td>Final system</td><td>DEV 71</td><td class="n">29</td><td class="n">29</td><td class="n">18 (6 / 9 / 3)</td><td class="n">2.141</td></tr>
+      <tr class="ours"><td>Final system</td><td>DEV 71</td><td class="n">29</td><td class="n">29</td><td class="n">14 (6 / 6 / 2)</td><td class="n">2.028</td></tr>
       <tr><td>Show nothing</td><td>TEST 88</td><td class="n">0</td><td class="n">65</td><td class="n">0</td><td class="n">2.955</td></tr>
       <tr><td>Old pipeline</td><td>TEST 88</td><td class="n">21</td><td class="n">44</td><td class="n">40 (2 / 31 / 7)</td><td class="n">2.909</td></tr>
-      <tr class="ours"><td>Final system</td><td>TEST 88</td><td class="n">22</td><td class="n">43</td><td class="n">26 (4 / 17 / 5)</td><td class="n">2.545</td></tr>
+      <tr class="ours"><td>Final system</td><td>TEST 88</td><td class="n">24</td><td class="n">41</td><td class="n">23 (4 / 14 / 5)</td><td class="n">2.386</td></tr>
     </tbody>
   </table></div>
 
   </div></details><details><summary>Statistics, and other weights for an on-screen wrong picture</summary><div class="dbody">
   <ul class="tight">
-    <li>Paired clip bootstrap (2000 draws) vs the old pipeline on TEST, for the version of this morning (23 / 29 / 2.568): cost −0.341 [−0.636, −0.045], one-sided p = 0.017. The final version has a lower TEST cost (2.545); its own bootstrap is <span class="tag warn">to run</span>.</li>
+    <li>Paired clip bootstrap (2000 draws) vs the old pipeline on TEST, for the version of this morning (23 / 29 / 2.568): cost −0.341 [−0.636, −0.045], one-sided p = 0.017. The final version (D) against the afternoon version (B) on TEST: cost −0.159 [−0.341, −0.023], one-sided p = 0.015 (+2 hits, −3 wrong). D against the old pipeline directly is <span class="tag warn">to run</span>.</li>
     <li>Earlier frozen table (26 Sept, 60-clip TEST, old system): against a published detector that draws every sound it finds (PretrainedSED, ICASSP 2025), F1 +0.248 [+0.100, +0.421], significant. The visibility gate halved wrong pictures (−0.52 per clip, Holm p &lt; 0.001).</li>
   </ul>
 
@@ -189,7 +189,7 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
 
 <section id="errors">
   <div class="num-h">3 · Every error, by reason</div>
-  <h2>DEV: 29 misses and 18 wrong pictures, each traced to the step that caused it</h2>
+  <h2>DEV: 29 misses and 14 wrong pictures, each traced to the step that caused it</h2>
   <div class="inspect">
     <div><b>Cases with videos: the Results Inspector</b>
     <p>Every clip, every sound and picture, a video player and a reason for each mistake. It runs from the project folder on my laptop, where the videos are; I can open any case in the meeting. It shows the 28 Sept version (old 49 + 60 clip sets), so its numbers are older than this page.</p></div>
@@ -215,19 +215,19 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
     </tbody>
   </table></div>
 
-  <h3>Why wrong pictures appear (18 on DEV)</h3>
-  <div class="split" role="img" aria-label="Wrong pictures: 9 cross, 6 visible, 3 phantom">
-    <div class="c3" style="flex:9">9 cross</div><div class="c2" style="flex:6">6 visible</div><div class="c5" style="flex:3">3 phantom</div>
+  <h3>Why wrong pictures appear (14 on DEV)</h3>
+  <div class="split" role="img" aria-label="Wrong pictures: 6 cross, 6 visible, 2 phantom">
+    <div class="c3" style="flex:6">6 cross</div><div class="c2" style="flex:6">6 visible</div><div class="c5" style="flex:2">2 phantom</div>
   </div>
   <div class="tw" style="margin-top:12px"><table>
     <thead><tr><th>Type</th><th class="n">Count</th><th>Examples</th><th>Why it happens</th></tr></thead>
     <tbody>
-      <tr><td>Cross: wrong sound or wrong moment</td><td class="n">9</td><td>footsteps drawn as a gunshot, chopping drawn as a dog, a bird drawn as screaming, laughter drawn as a crowd</td><td>The detector names a related but wrong sound, or draws a sound again while it still plays. Most of them sit on a sound that is itself visible.</td></tr>
+      <tr><td>Cross: wrong sound or wrong moment</td><td class="n">6</td><td>footsteps drawn as a gunshot, a bird drawn as screaming, laughter drawn as a crowd, a thunder drawn again</td><td>The detector names a related but wrong sound, or draws a sound again while it still plays. Most of them sit on a sound that is itself visible.</td></tr>
       <tr><td>Visible source</td><td class="n">6</td><td>thunder in a storm video, water, laughter, a truck horn at a protest</td><td>The vision check did not see the source (lightning, the laughing person) at the moment of the sound.</td></tr>
-      <tr><td>Phantom</td><td class="n">3</td><td>a train in a laundromat, a keyboard under a hair dryer, traffic at a flea market</td><td>Machine noise that sounds like the drawn thing.</td></tr>
+      <tr><td>Phantom</td><td class="n">2</td><td>a keyboard under a hair dryer, traffic at a flea market</td><td>Machine noise that sounds like the drawn thing.</td></tr>
     </tbody>
   </table></div>
-  <p class="note"><b>"Wrong" is strict.</b> It counts every unneeded picture: on-screen sources, repeats and early or late pictures, not only false ones. Only 3 of 18 are true phantoms.</p>
+  <p class="note"><b>"Wrong" is strict.</b> It counts every unneeded picture: on-screen sources, repeats and early or late pictures, not only false ones. Only 2 of 14 are true phantoms. In my blind re-rating of 12 of them, 2 were real wanted sounds timed away from the gold row and 5 were real sounds with the source on screen.</p>
 
   <details>
     <summary>All 29 DEV misses, one row each</summary>
@@ -237,7 +237,7 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
     </table></div>
   </details>
   <details>
-    <summary>All 18 DEV wrong pictures, one row each</summary>
+    <summary>All 14 DEV wrong pictures, one row each</summary>
     <div class="tw"><table>
       <thead><tr><th>Type</th><th>Clip</th><th>Picture (start s)</th><th>What the gold has there</th></tr></thead>
       <tbody id="wrongs"></tbody>
@@ -346,7 +346,8 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
       <tr><td>Smart grouping</td><td>Qwen3-Omni: one continuing sound or a new event? (≤ 8 s apart)</td><td class="n">28 / 18 / 2.197</td><td class="n">23 / 28 / 2.545</td></tr>
       <tr><td>Shortest sound 0.3 s</td><td>short real sounds (a laugh burst) are no longer thrown away</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
       <tr><td>Event on screen</td><td>drop a picture when its event is visibly happening and the visible thing could make it</td><td class="n">29 / 17 / 2.113</td><td class="n">22 / 26 / 2.545</td></tr>
-      <tr class="ours"><td>Shipped, honest DEV</td><td>same version after filling 24 missing listener answers (evaluation gap; found one more wrong)</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
+      <tr><td>Version B (afternoon)</td><td>same version after filling 24 missing listener answers (evaluation gap; found one more wrong)</td><td class="n">29 / 18 / 2.141</td><td class="n">22 / 26 / 2.545</td></tr>
+      <tr class="ours"><td>D: two witnesses + scene check (shipped)</td><td>a weak detection needs DASM or both listeners; with only one listener it stays if the vision model finds the sound credible for the scene. Picture floor dropped, so shipped = scored</td><td class="n">29 / 14 / 2.028</td><td class="n">24 / 23 / 2.386</td></tr>
     </tbody>
   </table></div>
   <p class="note">Each row passed DEV under its pre-written rule. TEST did not move on every step; it is shown as read, not chosen on. Details per step: <code>docs/review/improvements_log_2026-09-30.md</code>.</p>
@@ -368,6 +369,7 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
       <tr><td><span class="tag bad">TEST seen often</span></td><td>TEST was read about 43 times since 29 Sept (once per shipped change, each logged). No setting was picked from it, but the final TEST number is a report on a seen set, not a blind one. One grouping limit (4 s) was set after a TEST read; it was undone and replaced by the pre-written 8 s.</td></tr>
       <tr><td><span class="tag warn">Labels</span></td><td>One annotator (me) for 109 clips, a human tagger for 50; no overlap, so no agreement score. Tagger batch 3 was labelled with the AudioSet labels visible.</td></tr>
       <tr><td><span class="tag warn">Re-checks</span></td><td>I re-checked visibility twice, blind: 14 disputed sounds (3 changed) and 20 random DEV sounds as a control (0 changed). Both are disclosed.</td></tr>
+      <tr><td><span class="tag warn">Cut-off answers</span></td><td>In the final step, the vision model's reply was cut off after 4 words for two pictures (hammer, glass). The rule fixed in advance counts that as "not credible", so both were dropped. Both were wrong pictures, but the drop came from the rule, not from a "no".</td></tr>
       <tr><td><span class="tag warn">Small sets</span></td><td>On ~70 clips one or two pictures decide a DEV win; several DEV wins did not carry to TEST.</td></tr>
       <tr><td><span class="tag warn">Cost is a model</span></td><td>"1 miss = 2 wrong" is a stated choice, not measured. The sweep shows other weights.</td></tr>
       <tr><td><span class="tag cmp">No viewer study</span></td><td>No deaf or hard-of-hearing viewer used the system. All results are against labels.</td></tr>
@@ -377,18 +379,18 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
 </section>
 
 <section id="pending">
-  <div class="num-h">8 · Still open today (1 Oct)</div>
-  <h2>Detector work ends today; these items are not decided yet</h2>
+  <div class="num-h">8 · Still open (1 Oct, evening)</div>
+  <h2>The shipped version is decided; two small items remain</h2>
   <div class="tw"><table>
-    <thead><tr><th>Item</th><th>Options</th><th>Status</th></tr></thead>
+    <thead><tr><th>Item</th><th>Outcome</th><th>Status</th></tr></thead>
     <tbody>
-      <tr><td>Picture confidence floor</td><td>A: keep floor 0.40, DEV 27 / 15 / 2.169 · B: no floor, DEV 29 / 18 / 2.141 (scored version) · C: two-witness rule, DEV 27 / 13 / 2.113 (fails the 3-per-hit rule by one picture)</td><td><span class="tag warn">Adam to choose</span></td></tr>
-      <tr><td>Second blind gold check</td><td>29 moments (12 wrong pictures, 2 lost hits, 15 controls) on <code>docs/review/gold_scope2_recheck.html</code></td><td><span class="tag warn">Adam to rate</span></td></tr>
-      <tr><td>Last detector round</td><td>Round 58, tight re-ask of refused sounds</td><td><span class="tag cmp">running</span></td></tr>
-      <tr><td>Final TEST bootstrap</td><td>p-value for the final version vs show nothing and the old pipeline</td><td><span class="tag cmp">to run</span></td></tr>
+      <tr><td>Picture confidence floor</td><td>Dropped. The shipped version D is exactly the scored version.</td><td><span class="tag good">done</span></td></tr>
+      <tr><td>Second blind gold check</td><td>29 moments rated. Controls mostly confirm the gold; no gold label changed.</td><td><span class="tag good">done</span></td></tr>
+      <tr><td>Round 58 (tight re-ask)</td><td>Stopped at the held-out guard.</td><td><span class="tag good">closed</span></td></tr>
+      <tr><td>Final TEST bootstrap</td><td>D vs the old pipeline and vs show nothing</td><td><span class="tag cmp">to run</span></td></tr>
+      <tr><td>Inspector for D</td><td>The case pages with videos show the 28 Sept version; D needs its pictures drawn on the GPU first</td><td><span class="tag warn">Adam to decide</span></td></tr>
     </tbody>
   </table></div>
-  <p class="note">This page shows option B everywhere, since it is the version that was scored. If another option is chosen, section 2 changes by a few pictures.</p>
 </section>
 
 <section id="approve">
@@ -411,8 +413,8 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
 (function(){
   // cost bars
   var groups=[
-    {set:"DEV · 71 clips", rows:[["Show nothing",3.268,0],["Old pipeline",3.690,0],["Final system",2.141,1]]},
-    {set:"TEST · 88 clips", rows:[["Show nothing",2.955,0],["Old pipeline",2.909,0],["Final system",2.545,1]]}
+    {set:"DEV · 71 clips", rows:[["Show nothing",3.268,0],["Old pipeline",3.690,0],["Final system",2.028,1]]},
+    {set:"TEST · 88 clips", rows:[["Show nothing",2.955,0],["Old pipeline",2.909,0],["Final system",2.386,1]]}
   ];
   var max=4, el=document.getElementById("bars"), h="";
   groups.forEach(function(g){
@@ -470,13 +472,9 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
    ["cross","as_explosion_XJ8lc3I6","Gunshot (8.25)","Footsteps 2.1–11.3"],
    ["cross","b3_golf_course","Bird (3.8)","Bird from 0.0 (picture starts too late)"],
    ["cross","ly_applause","Crowd (0.0)","Laughter 0–13.8, visible"],
-   ["cross","mv_protest_scene_movie","Glass (4.75)","Crowd; baby cry 3.2–5.1, visible"],
-   ["cross","tg_d022","Dog (7.25)","Chopping 7.0–8.3, visible"],
    ["cross","tg_d088","Explosion (10.75)","Rain and thunder, visible"],
    ["cross","tg_d088","Thunder (13.25)","Rain and thunder, visible"],
    ["cross","tg_d107","Screaming (6.52)","Bird call 6.0–8.9, visible"],
-   ["cross","tg_d128","Hammer (9.0)","Clang 5.6–10.0, visible"],
-   ["phantom","b3_laundromat","Train (1.0)","nothing"],
    ["phantom","un_hair_dryer_drying","Computer keyboard (11.25)","nothing"],
    ["phantom","b3_flea_market","Vehicle (20.0)","nothing"]
   ];
@@ -486,7 +484,7 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
   // approval questions
   var Q=[
     ["method","Is the method sound enough for a final thesis?","Choose on DEV, guard on 415 held-out clips, read TEST once per shipped change as a report; every rule written before its numbers."],
-    ["result","Can the result be reported as final?","TEST: 22/65 found, 26 wrong, cost 2.55 vs 2.96 show nothing and 2.91 old pipeline. DEV: 29/58, 18 wrong, 2.14."],
+    ["result","Can the result be reported as final?","TEST: 24/65 found, 23 wrong, cost 2.39 vs 2.96 show nothing and 2.91 old pipeline. DEV: 29/58, 14 wrong, 2.03."],
     ["test","Is a TEST set read ~43 times acceptable if disclosed?","Nothing was tuned on it; each read is logged. It will be called \"a report on a seen set\", not blind."],
     ["labels","Are the label limits acceptable as disclosed?","One annotator for 109 clips, a tagger for 50 (batch 3 with labels visible), two blind visibility re-checks."],
     ["errors","Is the error analysis complete enough?","Every DEV miss and wrong picture has a cause; ceiling study; model-disagreement finding; gold-scope re-rating."]
