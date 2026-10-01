@@ -2394,3 +2394,15 @@ fewer-pictures clause — cost lower AND wrong ≤ 21 − 3 × (hits lost) AND h
 STOP → recorded, closed. Nothing in `src/` or `config.py` edited.
 **Files:** `benchmark/gold/relabel_gate_screen.py` (`scan` = CPU: relabels + cached gates + which need GPU, `gate` = GPU for the
 rest, `score` = CPU) → `benchmark/gold/relabel_gate_screen.json`; `slurm/job_relabel_gate.sh` only if a live gate is needed.
+### Round 39 result — CONTRAST: STOP (job 31598550, H200, 12 min; `contrast_screen.json`)
+Base: 1004 P2/PV candidates on gold clips (602 DEV + 402 tagger DEV2), 118 TIER accepts (26 needed / 92 other under the
+current `gold_AG.json`; the MOSS screen had the same 118 as 24 / 92 — the assert was relaxed to the total, no answer changed).
+886 TIER-rejected items asked, `no_B` 0, unparsed 0. Order-consistent answers: B in both orders 413, A in both 143, neither
+in both 177, order-dependent 153. **Needed added 1, other added 142 -> STOP** (bar: >= 3 with <= 2x other).
+The one needed accept: tg_d107 Crying, sobbing 0.04-0.44 (B Laughter, FlexSED 0.86; "(a) Crying" / "(b) Crying").
+The seven known refused needed sounds: nyc Air horn 3.8 (B Sliding door; "neither" / Sliding door), as_explosion Footsteps 2.1
+(B Gunshot both orders), as_explosion Gasp 6.7 (B Explosion / Gasp: order-dependent), carnival Whistle 6.3 (B Train both
+orders), tg_d107 Laughter 8.4 (B Screaming both orders), tg_d033 Siren and tg_d125 Clapping (TIER-accepted or not in the
+P2/PV pool: not in the rejected set). Reading: the forced choice does not lean to "neither" — it names the louder competitor
+(B wins 413 of 886), so the faint target is still refused; the 143 A-wins are mostly wrong or already-drawn sounds
+(142 other-class). Closed.

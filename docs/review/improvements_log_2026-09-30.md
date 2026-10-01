@@ -59,7 +59,7 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | E4 CF | ask the VLM the annotator's own two questions | no better (15/41 seen, 32/38 needed vs 16/41, 33/38): rejected |
 | E5 GBTP | start a late picture where any detector first hears its sound | most pictures just move to 0 s; one hit lost (27 / 22): rejected |
 | MAKER-VIS | ask if the picture's maker (train, parrot) is on screen | 9 hits lost (19 / 15): rejected |
-| CONTRAST | ask the listener "(a) X (b) strongest other sound (c) neither", both orders, on refused faint sounds | running |
+| CONTRAST | ask the listener "(a) X (b) strongest other sound (c) neither", both orders, on refused faint sounds | 1 needed added (tg_d107 Crying) for 142 wrong; the listener names the louder sound, not the faint one: rejected |
 | DETACHED-ADD | add a 2-s picture where a drawn family is heard again, far from its picture | fires only on repeat textures: 28 / 28, +7 wrong, targets untouched: rejected |
 
 **Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.
