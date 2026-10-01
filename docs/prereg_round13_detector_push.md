@@ -2159,3 +2159,14 @@ before -> after from `cross_group.classify`, clip hits before -> after).
 cannot offset a loss on another) AND cost at visible weight w = 2 (primary, = 2.282 base) goes down. Secondary: cost(w) =
 (4 miss + w visible + 2 cross + 2 phantom) / 71 for w in {1, 2} (base w = 1: 156/71 = 2.197) for the "more hits" profile.
 GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed.
+### Round 38 result — GBTP: STOP (CPU, login node, `benchmark/gold/gbtp_screen.py` -> `gbtp_screen.json`)
+Base reproduced: SHIP8 merged 28/58, 21 (6/13/2), 2.282; DEV 19/38, 14, 2.122; tagger DEV 9/20, 7, 2.636. All three caches present
+for all 71 clips. 42 non-rescued pictures; 20 moved (earliest onset from FlexSED 16, BEATs 3, DASM 1); 11 of them to 0.0 s
+(the family's run is on from the clip's first frame). 19 moves keep their class (hit -> hit 11, visible 3, cross 2, phantom 2,
+dontcare 1); 1 flips: tg_d149 Bees (gold 1.0 s) picture 1.25 -> 0.0, now 1.0 s early (> 0.5 s tolerance): hit -> phantom.
+**GBTP: merged 27/58, 22 wrong (6/13/3), cost 2.366 | DEV unchanged 19/38, 14, 2.122 | tagger DEV 8/20, 8, 2.909 -> STOP**
+(one needed hit lost, hits < 28, cost up). Sweep: w = 1 base 2.197 -> 2.282; w = 2 base 2.282 -> 2.366. as_explosion: the
+run reaching the drawn picture starts at 9.12, not near the 2.8 s onset — no model's run bridges 2.68..5.68. The listed
+mistimed misses are untouched, as predicted by construction. Reading: the frame scores are already "on" at the picture's
+start in most cases; pulling to the earliest onset mostly shifts to 0.0 s without changing class, and the one real move on
+a target hurts. Closed.
