@@ -2839,3 +2839,52 @@ gate's problem (right sound, placed on screen or on a visible twin); if it is at
 **Files:** `benchmark/gold/heldout_a4_screen.py` (`wav` CPU / `listen` GPU msproj / `cands` CPU / `flap` GPU venv_flap / `dasm` CPU /
 `score` CPU; stage outputs under `benchmark/gold/heldout_a4/`) -> `benchmark/gold/heldout_a4_screen.json`; `slurm/job_heldout_a4.sh`
 (H200-4h,A100-4h, 3 h).
+
+## Round 43 HUMAN — the gate asks the annotator's three steps at the onset (written 2026-10-01 BEFORE any HUMAN number)
+**Motivation.** Adam on how he labelled visibility: "I watch the video, hear a sound — even a generic one like a tick or a
+whack — then I look at the image and understand what is happening, e.g. a person hitting the ball. If I hear whacks WITHOUT
+seeing him doing it at that moment, I understand it is other people (off-screen) hitting balls." Three steps: (1) hear a
+generic sound and its moment, (2) use the scene to name its most likely source, (3) seen iff that source is visibly ACTING at
+that exact moment — not merely present. The shipped gate (name / a/b / desc, majority on 6 frames spread over stretch ± 1 s)
+tests presence over a 7-s window, which is why the golfer silences the off-screen whack and the storm clouds do not silence
+on-screen thunder. HUMAN samples frames densely AT the onset and asks (2) and (3) directly.
+**Set, truth, base (all as Round 38 CF / BOX).** The 49 cached DEV judge clips (`gate_gold/Qwen38-27B` ∩ JUDGE100), every
+stretch of every gold sound, importance >= 2; truth = CURRENT gold (`gold_AG.json`, md5 8cbaf53c, identical locally and in
+`~/MscProj`; seen = visible or obvious). Base recomputed from the cached name/ab/desc votes and asserted to be exactly
+**seen 41 / silenced 16, needed 38 / kept 33** before any HUMAN number prints. Disclosed: no tg_* cache exists, so tg_d133 Fart,
+tg_d127 Water and tg_d128 Laughter are OUTSIDE this screen (extending the set would change the base); the named-flip set the
+report must list is golf Whack ×2, bell_miami Bell, as_church_bell, Bird (birds_forest, b3_pet_shop, rainforest ×2, b3_aviary_birds),
+ambient_weather_storm ×2 Thunder, london_protest_01.
+**Frames (one rule).** onset = the stretch start t0 (gold onset for the first stretch of a sound; for later stretches of a long
+sound the stretch start, so variant (b) lines up with the cached per-stretch votes — the question's verb is "starts" for the
+first stretch and "is still going on" for later ones). Six frames by `_sample_frames_at`, in time order: one CONTEXT frame at
+t0 − 1.0 s (t0 + 1.0 s when t0 < 1.0 s), then t0 − 0.3, t0 − 0.1, t0, t0 + 0.1, t0 + 0.3 s, each clamped at 0 (an onset
+< 0.3 s collapses the early frames onto 0 s; disclosed, not special-cased). Deviation from the shipped layout, disclosed:
+every frame is preceded by a short caption ("context, 1 s before" / "−0.3 s" / … / "0 s: the moment") in the same user turn
+(`ask_seq`, a local copy of `reason._ask`'s template + greedy generation with an interleaved content list; `src/` untouched),
+so the question can point at "the 0 s frame" without the model counting unlabeled images; a frame ffmpeg fails to return drops
+its caption with it. Fewer than 2 frames returned -> not seen.
+**Questions (fixed here; `Qwen/Qwen3.8-27B` via `reason._load`, greedy).**
+(a) open naming (24 tokens, `_clean_phrase` <= 5 words): "A sound of {label} {starts|is still going on} at the 0 s frame.
+Which object, animal or person in these frames could be making that sound? Answer with a short noun phrase of at most 5
+words, or exactly: nothing." A reply starting nothing/none/no/not -> candidate = none -> stretch NOT seen, (b) not asked
+(as `_sound_is_visible`).
+(b) closed, `reason._ab` in BOTH letter orders, options yes/no, context "{candidate} was named as the likely source of the
+{label} that {starts|is still going on} at the 0 s frame. Look at the 0 s frame and its neighbours." yes-option = "at that
+moment {candidate} is visibly DOING or UNDERGOING the thing that makes {label} (striking, swinging, flowing, flashing, running,
+calling...) — the action itself shows in the frames", no-option = "{candidate} is only present, or the action is not visible
+at that moment". Both orders yes -> seen; both no or a split -> not seen (the task's rule: seen iff (b) yes in both orders).
+Processes count as actions on purpose: thunder's flash, water's flow, an engine running — otherwise the question un-silences
+every ambient visible sound, the BOX/SYNC failure.
+**Variants.** (a) HUMAN replaces the shipped majority on every stretch; (b) HUMAN is a fourth vote next to the cached
+name/ab/desc (True vs False, None excluded; equal -> the shipped majority). Clip verdict as shipped: silent only if every
+stretch is seen.
+**Pass (per variant, the standing gate bar):** GO iff seen silenced >= 19 with needed kept >= 32, or needed kept >= 35 with
+seen silenced >= 15. Round GO if either variant passes. Report: table (base, a, b), every sound whose verdict differs from
+base with gold class, the named candidate and the two raw (b) replies per stretch, the named-flip set above, and stretch counts
+(nothing-named, (b) yes / no / split, HUMAN seen vs majority seen). GO -> a full-pipeline arm is a separate pre-registration
+(the pipeline's onset is the picture start, not the gold start; a frame-sampler + question-set switch in `reason.py` is Adam's
+decision); STOP -> recorded, closed.
+**Files:** `benchmark/gold/human_gate.py` (`run` GPU -> `gate_gold/human_Qwen38-27B/`, resumable; `score` CPU ->
+`gate_gold/human_summary.json`, asserts 49 files and the base), `slurm/job_human_gate.sh` (H200-4h,A100-4h); run in
+`~/MscProj` (holds the cf cache and the identical gold); nothing in `src/` or `config.py` edited.
