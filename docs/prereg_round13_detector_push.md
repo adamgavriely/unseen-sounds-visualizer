@@ -4295,3 +4295,17 @@ other Q2 changes: tg_d120 Cat hit "alarm clock" (L1 yes, L2 no), mv_detective Al
 "in this" / helicopter Vehicle "what about the white" (cut thoughts, Q3 no), mv_protest Glass hit "candle flame" -> none. Thinking
 restricted to unsure spans would have dropped laundromat Train + tg_d128 Hammer (both already gone in D) and lost the ambulance
 Siren hit. Input for Adam's next round; nothing ships.
+
+### Round 61d result (job 31684412, H200; `explain_d.py` -> `explain_d_{D,B}_{replace,stack}{,_gemma}.json`, caches `explain_d/`, `explain_d_gemma/`, `explain_d_new/`): **FAIL — loses the tg_d107 Crying hit**
+Specs: B 44, D 41 (+ ly_helicopter Helicopter 0.14 asked fresh: Q1 not unlikely). Main (Qwen3.8-27B, shipped settings) funnel on
+D: Q1 unlikely 23 -> Q2 named 5 -> (L1, L1n) = (yes, no) 2, (no, yes) 2, (no, no) 1 -> **2 dropped: un_driving_motorcycle_DgdHSmwA
+Explosion 13.92 (visible) "balloon", L1 "Yes", L1n "No"; tg_d107 Crying, sobbing 0.38 (HIT) "parrot", L1 "Yes", L1n "No".**
+**Decisive D REPLACE: 28/58, 14 (5/7/2), 2.085 vs D 29/14/2.028 -> FAIL** (1 needed hit lost, 0 wrong removed; D with DEPICT off =
+29/15 (6/7/2), 2.056). D STACK 28/58, 13 (5/6/2), 2.056 -> FAIL. B (illustrative): STACK 28/58, 16 (5/9/2), 2.141; REPLACE 28/58,
+17, 2.169 — drops laundromat Train (phantom; "washing machine", L1 "Yes", L1n "No"), the Explosion and tg_d107 Crying. Kept with a
+named thing: london Vehicle "red air horn" (No, Yes), tg_d127 Laughter "elephant" (No, Yes), mv_protest Glass "candle flame" (No,
+No). **So the symmetric Q3 does remove Adam's laundromat Train (in B), but the same reasoning also explains away a real crying sound
+by the visible parrot; on D (where Train is already gone) the net is −1 hit, −1 visible.** v-gemma (report only): drops tg_d088
+Explosion 10.75 cross ("lightning bolt", Yes. / No.) and the same tg_d107 Crying hit (Yes. / No.); Gemma answers L1n "Yes" for
+laundromat Train (kept), fire_alarm, tg_d075, tg_d120, tg_d128, applause; D REPLACE 28/14/2.085, STACK 28/13/2.056 -> FAIL.
+v-think: not run (stopped early, 61c). Nothing ships; D stays the shipped base; TEST not read.

@@ -1,0 +1,116 @@
+{
+ "arm": "SHIP8+MD3",
+ "form": "replace",
+ "variant": "gemma",
+ "base_loaded": {
+  "hits": 29,
+  "n": 58,
+  "wrong": 19,
+  "visible": 6,
+  "cross": 10,
+  "phantom": 3,
+  "cost": 2.1690140845070425
+ },
+ "row": {
+  "hits": 28,
+  "n": 58,
+  "wrong": 18,
+  "visible": 6,
+  "cross": 9,
+  "phantom": 3,
+  "cost": 2.1971830985915495
+ },
+ "ref": {
+  "tag": "B",
+  "hits": 29,
+  "wrong": 18,
+  "cost": 2.141,
+  "cls": [
+   6,
+   9,
+   3
+  ]
+ },
+ "hits_lost": [
+  [
+   "dev2",
+   "tg_d107",
+   1
+  ]
+ ],
+ "wrong_removed": 0,
+ "cheaper": false,
+ "unit": false,
+ "main_rule": false,
+ "fewer_pictures": false,
+ "verdict": "FAIL",
+ "dropped": [
+  {
+   "clip": "tg_d088",
+   "label": "Explosion",
+   "start": 10.75,
+   "q2_thing": "lightning bolt",
+   "l1_reply": [
+    "Yes.",
+    null
+   ],
+   "l1n_reply": [
+    "No.",
+    null
+   ]
+  },
+  {
+   "clip": "tg_d107",
+   "label": "Crying, sobbing",
+   "start": 0.38,
+   "q2_thing": "parrot",
+   "l1_reply": [
+    "Yes.",
+    null
+   ],
+   "l1n_reply": [
+    "No.",
+    null
+   ]
+  }
+ ],
+ "changed": [
+  {
+   "part": "dev2",
+   "clip": "tg_d088",
+   "removed": [
+    [
+     "Explosion",
+     10.75,
+     12.75,
+     "cross"
+    ]
+   ],
+   "added": []
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "removed": [
+    [
+     "Crying, sobbing",
+     0.38,
+     2.75,
+     "hit"
+    ]
+   ],
+   "added": []
+  }
+ ],
+ "funnel": {
+  "specs": 44,
+  "answered": 44,
+  "q1_unlikely": 21,
+  "q2_named": 8,
+  "l1_yes": 8,
+  "l1n_no": 2,
+  "dropped": 2
+ },
+ "missing": [],
+ "L1N": "Is the sound of {B} clearly distinguishable from the sound of {A}? Answer yes or no."
+}
