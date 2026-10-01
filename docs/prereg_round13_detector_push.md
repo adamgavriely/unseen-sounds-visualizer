@@ -2409,3 +2409,16 @@ candidate: not in the pool). Reading: the forced choice does not lean to "neithe
 - **Round 39 CONTRAST result:** the base assertion (24/94, from the MOSS screen) fails only because the gold was corrected
   tonight (TIER base now 26 needed / 92 other on 1004 items). Forced choice on 886 refused candidates: **+1 needed, +142
   other → STOP** (bar ≥ 3 needed with ≤ 2× other).
+### Round 38 result — E1 SYNC: STOP (H200, job 31598563, `benchmark/gold/sync_gate.py` -> `gate_gold/sync/`, `sync_summary.json`)
+391 windows, 0 failed. Calibration (175 non-judge sounds): t = 0.761, seen silenced 46/98, needed kept 58/77, balanced 0.611
+(secondary p0: t = 0.122, balanced 0.604). Sound-level sync quartiles (q1 / median / q3): calibration seen 0.11 / 0.61 / 0.98 vs
+needed 0.09 / 0.19 / 0.79; DEV seen 0.11 / 0.23 / 0.96 vs needed 0.06 / 0.11 / 0.19; argmax = 0 s on 28 % (cal) / 21 % (DEV) of seen
+stretches vs 16 % / 11 % of needed. A real but weak signal: a confident in-sync peak (sync > 0.9) is near-specific to seen
+sources (bakery crumpling / frying / tap, kitchen water / tap, glass), but most seen sources are static and flat
+(rain, waves, waterfall, aviary birds, motorcycles).
+**DEV judge (base 16/41 silenced, 33/38 kept): (a) vote4 16/41, 33/38, 0 flips; (b) veto 11/41, 36/38, 8 flips; sync alone
+13/41, 36/38 -> STOP.** Veto rescues the three target misses (bell_miami Bell, b3_golf_course Whack, ly_ambulance Vehicle:
+all 2-1 votes with sync 0.02-0.23) but un-silences five seen sounds with flat sync (marrakech Motorcycle, as_explosion Machine
+gun, as_glass Glass 18.8, b3_aviary Bird, mv_tornado Cellphone buzz). Structural note, stated after the fact: variant (a) as
+written cannot flip anything — a fourth vote next to three can only make a 2-2 tie, which the rule returns to the shipped
+majority; it is identical to the base by construction (the same holds for SSL-SaN's vote4 rule, Round 33). Closed; no `src/` change.
