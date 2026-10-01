@@ -3395,3 +3395,35 @@ almost always (agreed "yes" on 6.9 % of the g > 2 pairs, 0.3 % of g <= 2). Discl
 g > 2 = 0.036 (6/169); unmasked only g > 2 = 0.105 (20/190). **Bar (>= 0.75 on both sides): FAIL** (0.991 / 0.069). Omni cannot
 time pauses: it answers "no pause" regardless of the gap. Step 2 not run (no DEV GRP-P score exists; the DEV pair list was only
 built to check the code path, base reproduced 29/58, 18 (6/10/2), 2.141). The picture-gap cap stays 8 s; GRP-A unchanged. No TEST.
+
+## Round 53 WEAK-WITNESS — two witnesses, DASM bar from the held-out 415 (written 2026-10-01 BEFORE any number of it; panel 1 Oct first choice, `docs/review/panel_2026-10-01/p3_wrongs.md`, `round2_votes.md`)
+**Why.** 7 of the 12 cross/phantom pictures of SHIP8+MD3 have family DASM 0.03–0.34 at the onset (panelist 3); Round 29 DV-G used
+the same test with bar 0.575 (19/21/2.620, 5 hits lost). Here the bar comes from the held-out 415, not from DEV.
+**Rule (existing flags, no src change): shipped SHIP8+MD3 + `DASM_LOCAL_VETO` b + `DASM_LOCAL_KEEP` "both".** As the code does it
+(`src/stage4_audio_event_detection/__init__.py` lines 832–855, inside `fuse_flexsed`, after the N2 masked-weak veto and the DASM clip
+veto 0.084 "either" that SHIP8+MD3 already has, before K4A-D / BTP / DBR / CONT, so on the pre-refine span): every NON-RESCUED span
+in the event list — BEATs-origin AND FlexSED-origin (no origin check) — is dropped iff (1) its family has a DASM column, (2) at least
+one DASM frame lies in [start − 0.5, end + 0.5], (3) the family's DASM max over those frames is < b, and (4) NOT (Qwen V4 names the
+family on the span's P1 cut AND Audio Flamingo V4 accepts it on its P1 cut) — each matched by (family, end within 0.02 s, start
+inside the span). **A span never asked on a P1 cut has neither ear -> it is dropped** (opposite of K4A's "unasked -> kept"). Spans
+without a DASM column / frame / cache file are kept. Rescued spans (listener or DR rescue) are never touched.
+**Step 0 — mechanism check on cached data (not selection; b is fixed by the 415 alone).** For the low-DASM DEV hits named by the
+panel (Door 0.02, Glass 0.18 / 0.20, ambulance Siren 0.16, tg_d075 Alarm 0.294, tg_d032 Thunder 0.308, tg_d088 Thunder 0.40 —
+these are hit-window maxima from the dissection, not the code's span ± 0.5 window) report from the SHIP8+MD3|proposed stage-4 rows:
+origin (BEATs / FlexSED), rescued, DASM max over [pre_start − 0.5, end + 0.5] (the code's window; stage-4 end spans, so approximate),
+Qwen V4 names / AF V4 accepts, and whether the rule could drop it at some b in (0.1, 0.4).
+**Step 1 — selection, held-out 415 (`benchmark/gold/weakwitness_415.py`, CPU).** Raw BEATs spans as Round 52 / shipped MD3
+(`_extract_events` threshold 0.35, low 0.175, min span 0.3 s, one span per BEATs label, depictable families), correctness =
+Round 42 rule (same-family strong event starting in [onset − 0.5, onset + 1.0]). Per span: DASM max of its family over
+[start − 0.5, end + 0.5] (heldout DASM cache); spans whose family has no DASM column are excluded (the veto keeps them; count
+reported). Bins of 0.05 on [0, 0.6) (+ a >= 0.6 bin), n and precision per bin, cumulative precision of all spans below each edge.
+**b = the single highest edge e in {0.05, …, 0.60} whose cumulative precision (spans with DASM < e) is <= 0.20** (half of the raw
+0.375 reference). **STOP unless 0.1 < b < 0.4** (b in {0.15 … 0.35}). Limitations (pre-registered): the 415 has no P1 listener
+cache, so the curve is the precision of what the veto removes WITHOUT the both-ears keep, and only BEATs spans (the DEV rule also
+touches non-rescued FlexSED spans). The span set's own raw precision is reported beside 0.375.
+**Step 2 — DEV (only if a b exists).** `ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": b, "DASM_LOCAL_KEEP": "both"}`,
+old DEV (r16dev, ~/MscProj_r13) then tagger DEV + merged scoring (tgarms, ~/MscProj_tg), PICTURE_MIN_CONF None; floor 0.40 reported
+(`floor_check_arm.py`). Base must reproduce 29/58, 18 (6/10/2), 2.141. **Pass:** main rule (hits >= 29, no needed hit lost on
+either part, wrong <= 18 + 2 × gain, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost,
+(d) hits >= 26). Expectation (panel proxy, not selection): b <= 0.29 -> 29/15, 2.056; a bar of 0.30–0.35 risks tg_d075 / tg_d032.
+Not combinable with STRONG-KEEP (Round 52 failed anyway). TEST is not read in this round.
