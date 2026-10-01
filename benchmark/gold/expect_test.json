@@ -1,0 +1,394 @@
+{
+ "arm": "SHIP8+EXPECT-A4 (TEST read)",
+ "clips": 88,
+ "base": {
+  "hits": 23,
+  "misses": 42,
+  "visible": 4,
+  "cross": 20,
+  "phantom": 5,
+  "dup": 0,
+  "F1": 0.39316239316239315,
+  "P": 0.4423076923076923,
+  "R": 0.35384615384615387,
+  "viewer_cost": 2.5681818181818183,
+  "coverage": 0.266410836684361,
+  "wrong": 29
+ },
+ "new": {
+  "hits": 25,
+  "misses": 40,
+  "visible": 5,
+  "cross": 23,
+  "phantom": 7,
+  "dup": 0,
+  "F1": 0.4,
+  "P": 0.4166666666666667,
+  "R": 0.38461538461538464,
+  "viewer_cost": 2.6136363636363638,
+  "coverage": 0.29683818711171145,
+  "wrong": 35
+ },
+ "parts": {
+  "base": {
+   "test": {
+    "hits": 18,
+    "misses": 25,
+    "visible": 2,
+    "cross": 15,
+    "phantom": 2,
+    "dup": 0,
+    "F1": 0.45,
+    "P": 0.4864864864864865,
+    "R": 0.4186046511627907,
+    "viewer_cost": 2.3,
+    "coverage": 0.3135325689049963,
+    "wrong": 19
+   },
+   "test2": {
+    "hits": 5,
+    "misses": 17,
+    "visible": 2,
+    "cross": 5,
+    "phantom": 3,
+    "dup": 0,
+    "F1": 0.27027027027027023,
+    "P": 0.3333333333333333,
+    "R": 0.22727272727272727,
+    "viewer_cost": 3.142857142857143,
+    "coverage": 0.17430926916221032,
+    "wrong": 10
+   }
+  },
+  "new": {
+   "test": {
+    "hits": 19,
+    "misses": 24,
+    "visible": 3,
+    "cross": 17,
+    "phantom": 4,
+    "dup": 0,
+    "F1": 0.4418604651162791,
+    "P": 0.4418604651162791,
+    "R": 0.4418604651162791,
+    "viewer_cost": 2.4,
+    "coverage": 0.33678838285848467,
+    "wrong": 24
+   },
+   "test2": {
+    "hits": 6,
+    "misses": 16,
+    "visible": 2,
+    "cross": 6,
+    "phantom": 3,
+    "dup": 0,
+    "F1": 0.30769230769230765,
+    "P": 0.35294117647058826,
+    "R": 0.2727272727272727,
+    "viewer_cost": 3.0714285714285716,
+    "coverage": 0.21875371360665471,
+    "wrong": 11
+   }
+  }
+ },
+ "cost": {
+  "w2": [
+   2.568,
+   2.614
+  ],
+  "w1": [
+   2.523,
+   2.557
+  ]
+ },
+ "delta_cost_vs_base": [
+  0.045454545454545456,
+  -0.11363636363636363,
+  0.20454545454545456,
+  0.7575
+ ],
+ "added": [
+  {
+   "part": "test",
+   "clip": "b3_aquarium_walk",
+   "family": "Water",
+   "start": 0.0,
+   "flap_max": 0.987,
+   "dasm": 0.791,
+   "votes": [
+    false,
+    null,
+    true
+   ],
+   "class": "visible",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v1 c0 p0 d0"
+  },
+  {
+   "part": "test",
+   "clip": "lx_chainsaw_and_power_tool_BBukw6J",
+   "family": "Chainsaw",
+   "start": 0.0,
+   "flap_max": 0.997,
+   "dasm": 0.898,
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "phantom",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h0 v0 c0 p1 d0"
+  },
+  {
+   "part": "test",
+   "clip": "m4_airsoft_24a",
+   "family": "Laughter",
+   "start": 2.88,
+   "flap_max": 0.961,
+   "dasm": 0.965,
+   "votes": [
+    false,
+    false,
+    true
+   ],
+   "class": "phantom",
+   "clip_before": "h1 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c0 p1 d0"
+  },
+  {
+   "part": "test",
+   "clip": "m4_live_fire_26a",
+   "family": "Explosion",
+   "start": 2.08,
+   "flap_max": 0.77,
+   "dasm": 0.864,
+   "votes": [
+    false,
+    false,
+    true
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c2 p0 d0",
+   "clip_after": "h0 v0 c3 p0 d0"
+  },
+  {
+   "part": "test",
+   "clip": "m5_doc_restrepo_138b",
+   "family": "Gunshot",
+   "start": 0.0,
+   "flap_max": 0.607,
+   "dasm": 0.989,
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "hit",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c0 p0 d0"
+  },
+  {
+   "part": "test",
+   "clip": "mv_air_raid_scene",
+   "family": "Bird",
+   "start": 1.28,
+   "flap_max": 0.535,
+   "dasm": 0.909,
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h1 v0 c3 p0 d0",
+   "clip_after": "h1 v0 c4 p0 d0"
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d045",
+   "family": "Vehicle",
+   "start": 0.0,
+   "flap_max": 0.749,
+   "dasm": 0.616,
+   "votes": [
+    true,
+    null,
+    false
+   ],
+   "class": "cross",
+   "clip_before": "h0 v0 c1 p0 d0",
+   "clip_after": "h0 v0 c2 p0 d0"
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d101",
+   "family": "Bird",
+   "start": 5.12,
+   "flap_max": 0.427,
+   "dasm": 0.706,
+   "votes": [
+    false,
+    false,
+    false
+   ],
+   "class": "hit",
+   "clip_before": "h0 v0 c0 p0 d0",
+   "clip_after": "h1 v0 c0 p0 d0"
+  }
+ ],
+ "gate_dropped": [
+  {
+   "part": "test",
+   "clip": "ambient_market_bangkok_4332",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "as_alarm_71Xl_uAS",
+   "family": "Alarm",
+   "onset": 9.12,
+   "votes": [
+    true,
+    null,
+    true
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "lx_chainsaw_and_power_tool_W1VYWwY",
+   "family": "Chainsaw",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "m4_clay_shoot_11a",
+   "family": "Gunshot",
+   "onset": 12.16,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "m4_clay_shoot_11a",
+   "family": "Laughter",
+   "onset": 5.12,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "m4_film_blackhawk_32a",
+   "family": "Vehicle",
+   "onset": 9.44,
+   "votes": [
+    true,
+    false,
+    true
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "m5_war_fury_25b",
+   "family": "Gunshot",
+   "onset": 5.28,
+   "votes": [
+    true,
+    null,
+    true
+   ]
+  },
+  {
+   "part": "test",
+   "clip": "m5_war_fury_25b",
+   "family": "Explosion",
+   "onset": 10.24,
+   "votes": [
+    true,
+    null,
+    true
+   ]
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d031",
+   "family": "Laughter",
+   "onset": 8.16,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d068",
+   "family": "Cattle",
+   "onset": 5.12,
+   "votes": [
+    true,
+    true,
+    false
+   ]
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d103",
+   "family": "Gunshot",
+   "onset": 8.8,
+   "votes": [
+    true,
+    false,
+    true
+   ]
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d104",
+   "family": "Gunshot",
+   "onset": 7.68,
+   "votes": [
+    true,
+    false,
+    true
+   ]
+  },
+  {
+   "part": "test2",
+   "clip": "tg_d109",
+   "family": "Train",
+   "onset": 0.0,
+   "votes": [
+    true,
+    true,
+    true
+   ]
+  }
+ ],
+ "hits_lost": [],
+ "unasked": 0,
+ "tally": {
+  "pairs": 85,
+  "below_flap": 25,
+  "no_dasm_column": 0,
+  "below_dasm": 39,
+  "candidate": 21
+ }
+}

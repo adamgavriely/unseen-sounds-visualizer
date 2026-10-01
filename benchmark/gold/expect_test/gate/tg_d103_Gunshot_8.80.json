@@ -1,0 +1,29 @@
+{
+ "part": "test2",
+ "clip": "tg_d103",
+ "family": "Gunshot",
+ "how": "map:gunshot",
+ "outcome": "candidate",
+ "flap_max": 0.465,
+ "onset": 8.8,
+ "from": "flap",
+ "run": [
+  8.8,
+  9.28
+ ],
+ "dasm_onset": 0.953,
+ "times": [
+  7.8,
+  8.2,
+  8.6,
+  9.0,
+  9.4,
+  9.8
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "military vehicle",
+ "name": true,
+ "ab": false,
+ "desc": true
+}

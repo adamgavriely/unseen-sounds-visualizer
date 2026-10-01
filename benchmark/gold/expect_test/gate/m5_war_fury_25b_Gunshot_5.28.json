@@ -1,0 +1,29 @@
+{
+ "part": "test",
+ "clip": "m5_war_fury_25b",
+ "family": "Gunshot",
+ "how": "map:gunshot",
+ "outcome": "candidate",
+ "flap_max": 0.918,
+ "onset": 5.28,
+ "from": "flap",
+ "run": [
+  5.28,
+  6.08
+ ],
+ "dasm_onset": 0.595,
+ "times": [
+  4.28,
+  4.68,
+  5.08,
+  5.48,
+  5.88,
+  6.28
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "tank cannon",
+ "name": true,
+ "ab": null,
+ "desc": true
+}

@@ -1,0 +1,25 @@
+{
+ "part": "test",
+ "clip": "m5_war_fury_25b",
+ "seconds": 15.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "gunshot, explosion, helicopter, music\nimiento: gunshot, explosion, helicopter, music\nimiento: gunshots, explosions, helicopters, music\n\nLet me re-evaluate based on what I actually heard.\n\nThe sounds are:\n- Gunfire (multiple instances)\n- Explosion(s) - there's at least one large explosion around 0:12 and possibly others mixed with gunfire\n- Helicopter rotor blades\n- Music playing throughout",
+ "items": [
+  "gunshot",
+  "explosion",
+  "helicopter",
+  "music",
+  "imiento: gunshot",
+  "imiento: gunshots",
+  "explosions",
+  "helicopters",
+  "let me re-evaluate based on what i actually heard",
+  "sounds are:",
+  "gunfire (multiple instances)",
+  "explosion(s) - there's at least one large explosion around 0:12 and possibly others mixed with gunfire",
+  "helicopter rotor blades",
+  "music playing throughout"
+ ]
+}

@@ -1,0 +1,29 @@
+{
+ "part": "test2",
+ "clip": "tg_d045",
+ "family": "Vehicle",
+ "how": "map:vehicle horn",
+ "outcome": "candidate",
+ "flap_max": 0.749,
+ "onset": 0.0,
+ "from": "flap",
+ "run": [
+  0.0,
+  18.08
+ ],
+ "dasm_onset": 0.616,
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "black honda sedan",
+ "name": true,
+ "ab": null,
+ "desc": false
+}

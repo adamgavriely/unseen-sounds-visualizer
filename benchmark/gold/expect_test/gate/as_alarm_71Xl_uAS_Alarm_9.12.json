@@ -1,0 +1,29 @@
+{
+ "part": "test",
+ "clip": "as_alarm_71Xl_uAS",
+ "family": "Alarm",
+ "how": "map:buzzer",
+ "outcome": "candidate",
+ "flap_max": 0.718,
+ "onset": 9.12,
+ "from": "flap",
+ "run": [
+  9.12,
+  9.6
+ ],
+ "dasm_onset": 0.629,
+ "times": [
+  8.12,
+  8.52,
+  8.92,
+  9.32,
+  9.72,
+  10.12
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "sony alarm clock",
+ "name": true,
+ "ab": null,
+ "desc": true
+}

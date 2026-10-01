@@ -1,0 +1,29 @@
+{
+ "part": "test",
+ "clip": "ambient_market_bangkok_4332",
+ "family": "Vehicle",
+ "how": "map:motorcycle",
+ "outcome": "candidate",
+ "flap_max": 0.596,
+ "onset": 0.0,
+ "from": "flap",
+ "run": [
+  0.0,
+  16.0
+ ],
+ "dasm_onset": 0.915,
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "tuk-tuks",
+ "name": true,
+ "ab": true,
+ "desc": false
+}

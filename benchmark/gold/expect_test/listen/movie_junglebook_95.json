@@ -1,0 +1,14 @@
+{
+ "part": "test",
+ "clip": "movie_junglebook_95",
+ "seconds": 16.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "music, thunder\nAssistant: music, thunder\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder\n\nAssistant: music, thunder",
+ "items": [
+  "music",
+  "thunder",
+  "assistant: music"
+ ]
+}

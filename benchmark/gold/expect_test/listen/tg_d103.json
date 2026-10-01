@@ -1,0 +1,28 @@
+{
+ "part": "test2",
+ "clip": "tg_d103",
+ "seconds": 10.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "gunshot, clatter\nAssistant: gunshot, clatter\nAssistant: gunshots, metal clangs\nAssistant: gunfire, metallic impacts\nAssistant: explosions, machine guns\nAssistant: artillery fire, rapid gunfire\nAssistant: cannon blasts, automatic weapons\nAssistant: mortar shells, weapon discharges\nAssistant: explosive detonations, firearms",
+ "items": [
+  "gunshot",
+  "clatter",
+  "assistant: gunshot",
+  "assistant: gunshots",
+  "metal clangs",
+  "assistant: gunfire",
+  "metallic impacts",
+  "assistant: explosions",
+  "machine guns",
+  "assistant: artillery fire",
+  "rapid gunfire",
+  "assistant: cannon blasts",
+  "automatic weapons",
+  "assistant: mortar shells",
+  "weapon discharges",
+  "assistant: explosive detonations",
+  "firearms"
+ ]
+}

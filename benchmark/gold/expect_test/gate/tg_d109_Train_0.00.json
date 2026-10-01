@@ -1,0 +1,29 @@
+{
+ "part": "test2",
+ "clip": "tg_d109",
+ "family": "Train",
+ "how": "map:train horn",
+ "outcome": "candidate",
+ "flap_max": 0.997,
+ "onset": 0.0,
+ "from": "flap",
+ "run": [
+  0.0,
+  10.08
+ ],
+ "dasm_onset": 0.7,
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "train",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

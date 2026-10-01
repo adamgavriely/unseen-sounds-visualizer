@@ -1,0 +1,26 @@
+{
+ "part": "test",
+ "clip": "ly_alarm_qCVdVav",
+ "seconds": 18.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "buzzer, engine starting, hissing\nAssistant: buzzer, engine starting, hissing\nAssistant: buzz, car start, steam\nAssistant: buzzer, engine turning over, hiss\nAssistant: buzzer, starter motor, exhaust\nAssistant: buzzer, ignition, hiss\nAssistant: buzzer, engine cranking, air brake release\nAssistant",
+ "items": [
+  "buzzer",
+  "engine starting",
+  "hissing",
+  "assistant: buzzer",
+  "assistant: buzz",
+  "car start",
+  "steam",
+  "engine turning over",
+  "hiss",
+  "starter motor",
+  "exhaust",
+  "ignition",
+  "engine cranking",
+  "air brake release",
+  "assistant"
+ ]
+}

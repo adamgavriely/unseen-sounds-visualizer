@@ -1,0 +1,29 @@
+{
+ "part": "test",
+ "clip": "m5_war_fury_25b",
+ "family": "Explosion",
+ "how": "map:explosion",
+ "outcome": "candidate",
+ "flap_max": 0.85,
+ "onset": 10.24,
+ "from": "flap",
+ "run": [
+  10.24,
+  11.84
+ ],
+ "dasm_onset": 0.83,
+ "times": [
+  9.24,
+  9.64,
+  10.04,
+  10.44,
+  10.84,
+  11.24
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "tank",
+ "name": true,
+ "ab": null,
+ "desc": true
+}

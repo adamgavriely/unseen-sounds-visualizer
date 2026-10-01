@@ -2791,3 +2791,14 @@ one-sided p), every added picture with its class. This is a report, not a select
 is not revised by it; Adam reads both.
 **Files:** `benchmark/gold/expect_test.py` (`listen` GPU msproj / `cands` CPU / `flap` GPU venv_flap / `dasm` CPU / `gate` GPU msproj /
 `score` CPU, stage outputs under `benchmark/gold/expect_test/`) -> `benchmark/gold/expect_test.json`; `slurm/job_expect_test.sh`.
+### Round 40e TEST read — result (job 31598892, H200; reported, not selected on)
+Base reproduced: **SHIP8 TEST 23 hits / 42 misses / 29 wrong (4/20/5) / cost 2.568** on 88 clips (old TEST 18/43, 19; tagger TEST
+5/22, 10). **SHIP8+EXPECT-A4 TEST: 25/65, 35 wrong (5/23/7), cost 2.614 at w = 2 (2.557 at w = 1, base 2.523)** | old TEST 19/43,
+24 (3/17/4), 2.400 | tagger TEST 6/22, 11 (2/6/3), 3.071. No hit lost. **d cost vs base +0.045 [−0.114, +0.205], one-sided p 0.757**:
+not better; the DEV win (−0.028) does not carry to TEST. Funnel: 85 pairs -> 25 below the FineLAP bar, 39 below DASM, 0 without a
+column -> 21 candidates -> 13 gate-seen (clay-shoot Gunshot/Laughter, war_fury Gunshot/Explosion, chainsaw, tg_d109 Train, ...) ->
+8 added: **2 hits (m5_doc_restrepo_138b Gunshot 0.0 — FineLAP 0.607, DASM 0.989; tg_d101 Bird 5.12)**, 1 visible (aquarium Water
+0.0), 3 cross (live_fire Explosion 2.08, air_raid Bird 1.28, tg_d045 Vehicle 0.0), 2 phantom (chainsaw clip Chainsaw 0.0 at FineLAP
+0.997 / DASM 0.898 — a needed sound the gold does not time there; airsoft Laughter 2.88). Read as pre-registered: the Round 40e DEV
+verdict (GO, main rule) stands as a DEV result; on TEST the same frozen rule is +2 hits, +6 wrong, cost +0.045 (n.s.). Adam's call on
+any `src/` flag; this TEST read is recorded here and in `benchmark/gold/expect_test.json`, nothing re-tuned.

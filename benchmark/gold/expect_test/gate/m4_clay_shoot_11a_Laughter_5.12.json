@@ -1,0 +1,29 @@
+{
+ "part": "test",
+ "clip": "m4_clay_shoot_11a",
+ "family": "Laughter",
+ "how": "map:laughter",
+ "outcome": "candidate",
+ "flap_max": 0.951,
+ "onset": 5.12,
+ "from": "flap",
+ "run": [
+  5.12,
+  6.24
+ ],
+ "dasm_onset": 0.974,
+ "times": [
+  4.12,
+  4.52,
+  4.92,
+  5.32,
+  5.72,
+  6.12
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "man in black jacket",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

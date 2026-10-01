@@ -1,0 +1,29 @@
+{
+ "part": "test",
+ "clip": "b3_aquarium_walk",
+ "family": "Water",
+ "how": "map:water",
+ "outcome": "candidate",
+ "flap_max": 0.987,
+ "onset": 0.0,
+ "from": "flap",
+ "run": [
+  0.0,
+  28.0
+ ],
+ "dasm_onset": 0.791,
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "fish",
+ "name": false,
+ "ab": null,
+ "desc": true
+}

@@ -1,0 +1,29 @@
+{
+ "part": "test2",
+ "clip": "tg_d104",
+ "family": "Gunshot",
+ "how": "map:gunshot",
+ "outcome": "candidate",
+ "flap_max": 0.707,
+ "onset": 7.68,
+ "from": "flap",
+ "run": [
+  7.68,
+  9.28
+ ],
+ "dasm_onset": 0.887,
+ "times": [
+  6.68,
+  7.08,
+  7.48,
+  7.88,
+  8.28,
+  8.68
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "rifle",
+ "name": true,
+ "ab": false,
+ "desc": true
+}

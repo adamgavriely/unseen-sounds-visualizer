@@ -1,0 +1,15 @@
+{
+ "part": "test2",
+ "clip": "tg_d110",
+ "seconds": 10.0,
+ "prompt": "List every distinct non-speech sound you hear in this recording as a comma-separated list of short sound names, most prominent first. Name each sound once. Answer with the list only.",
+ "max_new": 96,
+ "repetition_penalty": 1.2,
+ "text": "shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: shatter, ding\nhand: sh",
+ "items": [
+  "shatter",
+  "ding",
+  "hand: shatter",
+  "hand: sh"
+ ]
+}

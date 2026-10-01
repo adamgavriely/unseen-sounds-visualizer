@@ -1,0 +1,29 @@
+{
+ "part": "test2",
+ "clip": "tg_d031",
+ "family": "Laughter",
+ "how": "map:laughter",
+ "outcome": "candidate",
+ "flap_max": 0.943,
+ "onset": 8.16,
+ "from": "flap",
+ "run": [
+  8.16,
+  10.24
+ ],
+ "dasm_onset": 0.971,
+ "times": [
+  7.16,
+  7.56,
+  7.96,
+  8.36,
+  8.76,
+  9.16
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "four people",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

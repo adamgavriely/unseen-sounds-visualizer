@@ -1,0 +1,29 @@
+{
+ "part": "test2",
+ "clip": "tg_d068",
+ "family": "Cattle",
+ "how": "map:cow",
+ "outcome": "candidate",
+ "flap_max": 0.584,
+ "onset": 5.12,
+ "from": "flap",
+ "run": [
+  5.12,
+  6.72
+ ],
+ "dasm_onset": 0.945,
+ "times": [
+  4.12,
+  4.52,
+  4.92,
+  5.32,
+  5.72,
+  6.12
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "cattle",
+ "name": true,
+ "ab": true,
+ "desc": false
+}
