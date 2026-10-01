@@ -433,6 +433,7 @@ ONCE_GAP = None                   # round 22 ONCE-G (2.0)
 LISTENER_V4B_CACHE = None         # round 27 QE: second Qwen inventory prompt answers
 DASM_LOCAL_VETO = None            # round 29 DV-L (0.084) / DV-G (0.575)
 DASM_LOCAL_KEEP = "either"        # round 29: 'either' listener or 'both'
+DASM_LOCAL_SCENE = None          # Round 60 SCENE-MARGIN: clip->mp4 map path; with keep "both", one ear + F3 scene-fit yes also keeps
 DASM_CLIP_VETO = None             # round 28 DV (0.084, round-6 calibrated)
 KEEP_NEEDS_V4_ALL = None   # round 30 K4A: "exact" | "onto" (off)
 KEEP_NEEDS_V4_ALL_DASM_KEEP = False   # round 35 K4A-D: DASM (F8 bar) keeps a K4A drop

@@ -1358,7 +1358,7 @@ def _not_producing(spec, video_path, mdl, proc) -> bool:
     return ans.startswith("n")
 
 
-def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
+def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4, log=None):
     """Round 14 F3: per stretch (VISIBILITY_STRETCH cuts, 1 s before to 1 s after, >= 6 frames, as the gate), the question
     SCENE_FIT_PROMPT; True iff yes > no over the stretches, None if no frames."""
     from src.stage2_video_understanding import _sample_frames_at
@@ -1378,6 +1378,8 @@ def _scene_fit(spec, video_path, mdl, proc, frames_per_sound: int = 4):
         if not win:
             continue
         ans = _ask(mdl, proc, SCENE_FIT_PROMPT.format(label=label), images=win, max_new=4).strip().lower()
+        if log is not None:                                  # Round 60: the raw answer per stretch
+            log.append({"stretch": [round(a, 3), round(b, 3)], "answer": ans})
         if ans.startswith("y"):
             yes += 1
         elif ans.startswith("n"):

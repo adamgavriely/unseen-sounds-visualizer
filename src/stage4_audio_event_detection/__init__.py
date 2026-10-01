@@ -902,8 +902,11 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 if not cols or not m.any() or float(dfw[m][:, cols].max()) >= float(lv):
                     continue
                 if mode == "both":
-                    if _v4_names_qwen(e) and _af_p1_accepts(e):
+                    q_, a_ = _v4_names_qwen(e), _af_p1_accepts(e)
+                    if q_ and a_:
                         continue
+                    if q_ != a_ and getattr(config, "DASM_LOCAL_SCENE", None) and _scene_margin(e):
+                        continue                              # Round 60 SCENE-MARGIN: one ear + the VLM: credible here
                 else:
                     if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
                         continue
@@ -1358,6 +1361,45 @@ def _p1v4_lists(e):
         return None, None
     it = min(c, key=lambda x: abs(x["start"] - e.start))
     return it.get("qwen_fams"), it.get("af_fams")
+
+
+_SCENE_MEMO: dict = {}
+
+
+def _scene_margin(e) -> bool:
+    """Round 60 SCENE-MARGIN: the Round 14 F3 scene question (reason._scene_fit: per 5-s stretch of THIS span, 6 frames from
+    1 s before to 1 s after, majority yes) on the clip's video. config.DASM_LOCAL_SCENE = a JSON clip -> mp4 map; every ask is
+    memoised in and logged to <map>.answers.jsonl. No video / no frames -> None -> not credible."""
+    import json as _j
+    from types import SimpleNamespace
+    from src.labels import canonical
+    mp, clip = Path(str(config.DASM_LOCAL_SCENE)), getattr(config, "_CURRENT_CLIP", None)
+    logp = mp.with_name(mp.name + ".answers.jsonl")
+    if str(mp) not in _SCENE_MEMO:
+        memo = {}
+        if logp.exists():
+            for ln in logp.read_text(encoding="utf-8").splitlines():
+                if ln.strip():
+                    r = _j.loads(ln)
+                    memo[tuple(r["key"])] = r["verdict"]
+        _SCENE_MEMO[str(mp)] = (_j.loads(mp.read_text(encoding="utf-8")) if mp.exists() else {}, memo)
+    vids, memo = _SCENE_MEMO[str(mp)]
+    fam = canonical(e.label)
+    key = (str(clip), fam, round(float(e.start), 3), round(float(e.end), 3))
+    if key not in memo:
+        vid, log, verdict = vids.get(str(clip)), [], None
+        if vid and Path(vid).exists():
+            import torch
+            from src.stage5_cross_modal_analysis import reason
+            mdl, proc = reason._load(getattr(config, "VLM_MODEL", "Qwen/Qwen3.8-27B"),
+                                     "cuda" if torch.cuda.is_available() else "cpu")
+            verdict = reason._scene_fit(SimpleNamespace(spans=[(float(e.start), float(e.end))], start=float(e.start),
+                                                        end=float(e.end), event_label=fam), vid, mdl, proc, log=log)
+        memo[key] = verdict
+        with logp.open("a", encoding="utf-8") as fh:
+            fh.write(_j.dumps({"key": list(key), "label": e.label, "verdict": verdict, "answers": log, "video": vid}) + "\n")
+    print(f"       [stage4] scene margin {key}: {memo[key]}", flush=True)
+    return memo[key] is True
 
 
 def _v4_names_qwen(e) -> bool:
