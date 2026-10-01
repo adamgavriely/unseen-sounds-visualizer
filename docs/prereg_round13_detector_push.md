@@ -2502,3 +2502,52 @@ sometimes ignores "JSON list only" and answers prose with bold family names (see
 the families are the depictable family names that appear as whole words (case-insensitive) anywhere in the reply, in order of
 first appearance, first 5. Replies are stored raw, so `cands` re-parses every clip from the stored reply with this rule; the GPU
 proposal stage is not re-run. No other change.
+
+## Round 41 AGREE — the SYNC veto and BOX-2 must BOTH flip (written 2026-10-01 BEFORE any AGREE number)
+**Disclosure.** The shape ("flip a seen stretch to not-seen only when two independent checks agree") was chosen AFTER reading
+the Round 38 (b) veto flip list (`gate_gold/sync_summary.json`, 8 flips: 3 needed rescued, 5 seen lost) and the Round 38
+BOX-2 flip list (`gate_gold/box2_summary.json`, 5 flips: 2 needed rescued, 3 seen lost). At SOUND level those lists share
+only bell_miami Bell (needed, good) and mv_tornado_scene Cellphone buzz (seen, bad), so the sound-level intersection is
+already known to be at most 15/41 silenced, 34/38 kept — below both GO bars. The screen computes the exact STRETCH-level
+rule (which can only agree on fewer stretches, never more) and records it; a STOP here is a confirmation of that bound, not
+a fresh finding. DEV judge clips (49) only, since the box cache covers only them.
+**Rule.** Per stretch: shipped majority seen (name/ab/desc, yes > no, `gate_gold/Qwen38-27B`); veto flip (Round 38 (b)) iff
+majority AND NOT unanimous AND (sync < t = 0.76131 or the sync window failed) (`gate_gold/sync/<stem>.json`, key p_pm02);
+BOX-2 flip iff `box_gate.seen_box(st, "BOX2")` is False while `box_gate.majority(st)` is True (parsed box, both crop checks
+"no"; the strict re-ask of an unparsed box counts; no box record -> no flip) (`gate_gold/box_Qwen38-27B/<stem>.json`).
+AGREE: stretch seen iff majority AND NOT (veto flip AND BOX-2 flip). Records are matched by (clip stem, label, sound start,
+stretch start). Sound seen iff every stretch seen (the pipeline rule). Truth = current gold (`gold_AG.json`, seen = visible
+or obvious, importance >= 2), base 16/41 seen silenced, 33/38 needed kept, which the script must reproduce first.
+**GO** iff silenced >= 19 & kept >= 32, or kept >= 35 & silenced >= 15 (the Round 38 bar). Every flip listed with gold class,
+votes, sync and box status. If GO: the SHIP8 misses (saved pictures, `~/MscProj_tg` -> local `data/work/r13*/SHIP8_proposed`,
+`cross_group.classify`) whose gold sound flips to not-seen are listed as the sounds a full-pipeline arm could draw; the arm
+itself is not built here. **Files:** `benchmark/gold/agree_screen.py` -> `gate_gold/agree_summary.json`. CPU, laptop.
+
+## Round 41 NAMED-VETO — drop a placed picture when the gate names another maker (written 2026-10-01 BEFORE any number)
+**Idea.** Every cached gate stretch stores `named` = the VLM's answer to "what makes this sound" (an object noun: "church
+bell", "black suv", "chainsaw", "nothing"). A placed SHIP8 picture whose onset falls inside a stretch where the VLM says a
+DIFFERENT depictable thing makes the sound is likely a wrong-family picture (cross-trigger) and is dropped.
+**Canonicalisation of `named`** (declared here; tuned by eye on the 118 distinct `named` strings of the cache — NOT on any
+picture or score): (1) empty / "nothing" -> no family. (2) `score_per_sound.ALIASES` on the whole lower-cased text, then a
+small declared noun table for things AudioSet hides or lacks: locomotive, tram, streetcar -> Train; taxi, suv, sedan -> Car;
+van, pickup -> Truck; ambulance -> Ambulance (siren); rifle, shotgun, ak-47, gun -> Gunshot, gunfire; tank main gun, tank ->
+Artillery fire; cellphone, phone -> Cellphone buzz, vibrating alert; fountain, waves -> Water; cockpit -> Helicopter;
+loudspeaker -> Loudspeaker. (3) Otherwise every ontology name (or a comma part of one) that appears as a WHOLE word or phrase in
+the text (singular/plural tolerant); among matches a THING name (not in `src.labels.ACTION_LABELS`) beats an action word,
+then the longest wins — so "breaking waves" -> Waves, surf (via the table), "cracking glass" -> Glass, "steam locomotive" ->
+Train (table), never "yellow taxi" -> Yell (the substring bug of `resolve_label` on free text). (4) The result must be
+depictable: `src.labels.is_salient_nonspeech` under `LABEL_FILTER = "depictable"` (set explicitly; `DISPLAY_KEYS` does not
+carry it); people ("man", "woman", "the boy") and unresolved nouns are NOT depictable -> the rule does not fire.
+**Rule (primary).** For a placed SHIP8 picture (label L, scored placed start a, from `btp_screen.placed`, `TG_ARMS=SHIP8`),
+the covering stretches are every cached stretch of that clip with start <= a <= end (any gold sound). The picture is DROPPED
+iff at least one covering stretch names a depictable family F with NOT `score_per_sound.same_family(L, F)` AND no covering
+stretch names a family that IS same_family with L (the VLM naming the picture's own maker protects it). No covering stretch,
+or only "nothing"/unresolved/non-depictable names -> the rule does not fire (counted and reported: the cache holds only
+gold-sound stretches, so pictures at other times, and every tg_* (dev2) clip, cannot be judged). Secondary, report only:
+the plain variant (any covering stretch naming a different depictable family drops, no protection).
+**Score.** `score_per_sound.score_clip` per clip on the kept pictures, both parts, as `dbr_screen`; base must reproduce
+28/58 hits, 21 wrong (6/13/2), cost 2.282 first. **Verdict** = `dbr_screen.passes` with BASE = SHIP8: main rule (hits >= 28,
+no needed hit lost on either part, wrong <= 21 + 2*max(gain,0), cost(w = 2) < 2.282) or fewer-pictures clause (cost lower,
+wrong <= 21 - 3 * hits lost, hits lost <= 3). Every dropped picture listed with its class, the covering stretches and their
+`named`. **Files:** `benchmark/gold/named_veto_screen.py` -> `benchmark/gold/named_veto_screen.json`. CPU, laptop; nothing in
+`src/` or `config.py` edited.
