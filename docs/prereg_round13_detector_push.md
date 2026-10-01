@@ -3756,3 +3756,16 @@ above the raw-BEATs bar, so on the 415 the vetoed strong spans are not "kin = ri
 problem Round 52 had, not one KIN-KEEP removes. The 13 kin spans: 9 in both (i)+(ii), 4 mirror only; competitors e.g. Goose for
 Fowl (correct), Helicopter for Vehicle (correct), Cough for Throat clearing (correct), Alarm for Whistle / Busy signal (wrong),
 Bird flight for Bird / Pigeon (wrong time). The DEV2 rooster stays a known miss. TEST not read.
+
+### Round 56 step 2 result — merged DEV (jobs 31602200 r16dev + 31602201 tgarms; `floor_check_arm.py`; `twinshort_dev.py diff` -> `twinshort_diff.json`): **FAIL**
+Base reproduces: SHIP8+MD3 **29/58, 18 (6/10/2), 2.141**. **SHIP8+MD3+TS: 27/58, 36 (7/26/3), 2.761** (DEV 19/11 -> 19/18, DEV2 10/7 ->
+8/18). Floor 0.40 (reported): base 27/58, 15 (5/10/0), 2.169; TS 25/58, 22 (5/16/1), 2.479. Changed pictures (floor None): **+1 needed
+hit as_explosion Gasp 6.5** (the motivating case, recovered as designed); **−3 needed hits**: as_explosion Gunshot 0.0 (gone),
+tg_d030 Vehicle 0.0 (gone), tg_d088 Thunder 1.0 (now 0.06 -> cross, the union pulled the start early); **+18 wrong**, all new
+pictures from short BEATs blips joined to long FlexSED band runs or long spans: subway Train (visible), as_glass Coin, crossing_bells
+Spray, favela Train, bell_miami Train, blueplanet Goose, detective Alarm 9.08, tg_d020 Rain (visible), tg_d022 Pant, tg_d029 Honk ×2 +
+Goose, tg_d032 Thunder 6.52, tg_d095 Insect + Rattle, tg_d107 Laughter 0.34 + Dog, tg_d121 Siren; −1 visible (tg_d127 Water); several
+hits re-timed/lengthened by the hull (Insect, Bell, Crowd, Alarm, Cough). **Verdict: FAIL** — main rule fails (27 < 29, 3 needed
+hits lost, cost 2.761 > 2.141); fewer-pictures clause fails ((a) cost up, (c) 36 > 18 − 9). As the 415 split hinted (226 of 235 G
+unions are shortB+longF), a 0.5 FlexSED band run is too permissive a partner: it turns sub-0.3-s BEATs blips into long twinned
+pictures that skip the mirror veto and N2. TWIN_SHORT stays None; nothing ships; TEST not read.
