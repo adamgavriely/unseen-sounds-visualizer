@@ -3565,3 +3565,10 @@ lost (>= 1 if none lost) AND (main rule OR fewer-pictures clause: wrong <= 18 �
 **Step 0 — sanity (decides whether the round runs).** Before steps 1–2, the 10 step-2 stretches at positions 0, 7, …, 63 of the
 fixed ask order are asked and their raw replies printed. If >= 9 of the 10 give the same (Q1, Q2) answer pair -> STOP:
 "untestable with this VLM", steps 1–2 not run. The (Q1, Q2) pair distribution of every later run is reported too.
+
+### Round 54b SIGN-2 result (1 Oct; job 31602129, H200; `sign2_screen.py sanity` -> `sign2_sanity.json`): **STOP — untestable with this VLM**
+Step 0, 10 fixed DEV stretches (positions 0, 7, …, 63 of the 72): answer pairs (Q1, Q2) = **(no, no) 9**, (no, yes) 1
+(b3_barbershop Electric shaver). Q1 "visibly show …?" was "No." on all 10; Q2 "free of any visible sign …?" was also "No." on 9
+(a plain "no" habit: both polarities denied). 9/10 share one pair (>= 9) -> STOP as pre-registered; steps 1 and 2 not run.
+Together with Round 54 (a/b: "(a)" by position on 88 %), Qwen3.8-27B gives no usable answer to a source-free "visible sign"
+question in either format. Nothing ships; TEST not read.
