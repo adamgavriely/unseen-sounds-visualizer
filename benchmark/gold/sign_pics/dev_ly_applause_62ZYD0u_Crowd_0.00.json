@@ -1,0 +1,35 @@
+{
+ "part": "dev",
+ "clip": "ly_applause_62ZYD0u",
+ "label": "Crowd",
+ "start": 0.0,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ly_applause_62ZYD0u.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.0,
+    3.875
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    3.875,
+    7.75
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

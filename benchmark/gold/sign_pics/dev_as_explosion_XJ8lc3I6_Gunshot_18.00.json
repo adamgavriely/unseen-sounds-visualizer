@@ -1,0 +1,59 @@
+{
+ "part": "dev",
+ "clip": "as_explosion_XJ8lc3I6",
+ "label": "Gunshot",
+ "start": 18.0,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/as_explosion_XJ8lc3I6.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.0,
+    1.0
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    8.25,
+    12.375
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    12.375,
+    16.5
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    18.0,
+    19.5
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

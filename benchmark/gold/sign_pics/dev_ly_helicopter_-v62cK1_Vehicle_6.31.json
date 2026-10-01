@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "ly_helicopter_-v62cK1",
+ "label": "Vehicle",
+ "start": 6.31,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/ly_helicopter_-v62cK1.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    6.31,
+    9.0
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d127",
+ "label": "Water",
+ "start": 0.14,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d127.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.14,
+    5.0
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

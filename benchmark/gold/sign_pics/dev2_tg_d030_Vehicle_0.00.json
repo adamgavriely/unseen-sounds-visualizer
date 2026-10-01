@@ -1,0 +1,47 @@
+{
+ "part": "dev2",
+ "clip": "tg_d030",
+ "label": "Vehicle",
+ "start": 0.0,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d030.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.0,
+    5.666666666666667
+   ],
+   "sign": false,
+   "replies": [
+    "(b)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    5.666666666666667,
+    11.333333333333334
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    11.333333333333334,
+    17.0
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "ambient_snow_walk_930",
+ "label": "Laughter",
+ "start": 8.08,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/mixed/ambient_snow_walk_930.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    8.08,
+    8.76
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

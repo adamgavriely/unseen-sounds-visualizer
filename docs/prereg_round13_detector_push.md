@@ -3536,3 +3536,17 @@ unchanged (6). **Verdict: FAIL.** Main rule fails (2 needed hits lost). Fewer-pi
 27 >= 26 passes, **(c) fails: wrong 13 > 18 − 3 × 2 = 12** (5 wrong removed per 2 hits = 2.5:1, below the fixed 3:1). DASM_LOCAL_VETO
 stays None; no TEST. Reading: the 415 bar (0.35) lands just above the two single-ear DEV hits; the both-ears keep protects the
 panel's lowest-DASM hits (Door, Glass, Siren) but not a hit only one ear names. The bar is not moved after the fact.
+
+### Round 54 SIGN results (1 Oct; jobs 31602003 (step 1; its step 2 died on an import) + 31602050 (step 2 asks); `sign_gate.py`, `sign_screen.py` -> `sign_screen.json`, `sign_pics/`): **FAIL**
+**Step 1 (gate-gold, 49 DEV judge clips, 145 importance >= 2 stretches).** Base reproduces 16/41 seen silenced, 33/38 needed
+kept. **SIGN_add 16/41, 33/38; SIGN_stretch 16/41, 33/38; SIGN_4th 16/41, 33/38: zero flips under every rule.** Per-clip needed
+loss: none. as_explosion_XJ8lc3I6: 0 of its 6 needed sounds lost, 0 seen added. tg_d088: not in the gate-gold set. Stretch
+answers: sign yes 6, no 17, **split 122**. Raw letter pairs over all 188 cached stretches: (a)/(a) 165, (b)/(a) 17, (a)/(b) 6 —
+Qwen3.8-27B answers "(a)" in both orders on 88 % of stretches (position bias; the long effect option never survives the swap).
+**Step 2 (saved SHIP8+MD3 merged DEV, 43 drawn specs, 72 stretches from gate_votes.json, 0 fallbacks, pipeline labels).** Letter
+pairs: (a)/(a) 61 (split), (b)/(a) 11 (sign no); **sign = (a) both orders on 0 stretches -> 0 specs silenced.** Base
+reproduces 29/58, 18 (6/10/2), 2.141; **SIGN: 29/58, 18 (6/10/2), 2.141** (DEV 19/38, 11 (4/5/2), 2.000; DEV2 10/20, 7 (2/5/0),
+2.455), identical. No picture silenced; as_explosion_XJ8lc3I6 and tg_d088 unchanged. **Verdict: FAIL** — (1) cost not below
+2.141, (2) 0 wrong removed, (3) neither main rule nor fewer-pictures clause. Reading: with this wording the shipped gate VLM
+does not answer the a/b at all (a letter habit, not a judgement), so the source-free "sign" leak gap is untested rather than
+refuted; a rewording would be a new round. Nothing ships; TEST not read.

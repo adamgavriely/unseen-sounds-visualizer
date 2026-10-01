@@ -1,0 +1,47 @@
+{
+ "part": "dev",
+ "clip": "ambient_weather_storm_7200",
+ "label": "Thunder",
+ "start": 0.06,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/ambient_weather_storm_7200.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.06,
+    5.289999999999999
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    5.289999999999999,
+    10.52
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    10.52,
+    15.75
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

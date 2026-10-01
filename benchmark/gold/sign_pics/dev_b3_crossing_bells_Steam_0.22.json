@@ -1,0 +1,35 @@
+{
+ "part": "dev",
+ "clip": "b3_crossing_bells",
+ "label": "Steam",
+ "start": 0.22,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/seen_ambient/b3_crossing_bells.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.22,
+    4.609999999999999
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    4.609999999999999,
+    9.0
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

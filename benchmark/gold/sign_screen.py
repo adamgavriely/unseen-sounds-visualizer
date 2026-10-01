@@ -134,7 +134,22 @@ def cmd_run(device="cuda"):
     from src.stage5_cross_modal_analysis import reason
     from src.stage2_video_understanding import _sample_frames_at
     from benchmark.gold.imp_v_screen import clip_file
-    from benchmark.gold.sign_gate import ab_logged, STEM, OPT_YES, OPT_NO
+    # sign_gate.py's question and ab_logged, inlined (sign_gate imports box_gate, absent from ~/MscProj_tg)
+    STEM = "These frames are from a video. Which is true?"
+    OPT_YES = ("the visible SIGN of {label} — the effect or motion that this sound makes — is in these frames, "
+               "even with no audio")
+    OPT_NO = "nothing in the frames shows that sound happening"
+
+    def ab_logged(reason, mdl, proc, question, opt_yes, opt_no, frames):
+        replies, votes = [], []
+        for flip in (False, True):
+            a, b = (opt_no, opt_yes) if flip else (opt_yes, opt_no)
+            want = "b" if flip else "a"
+            reply = reason._ask(mdl, proc, question + chr(10) + "(a) " + a + chr(10) + "(b) " + b
+                                + chr(10) + "Answer with the letter only.", images=frames, max_new=6)
+            replies.append(reply)
+            votes.append(reply.strip().lower().lstrip("(")[:1] == want)
+        return (True if all(votes) else (False if not any(votes) else None)), replies
     CACHE.mkdir(parents=True, exist_ok=True)
     A = [a for a in asked(parts()) if not (CACHE / f"{key(a[0], a[1], a[3], a[4])}.json").exists()]
     print(len(A), "specs to ask", flush=True)
@@ -162,18 +177,16 @@ def cmd_run(device="cuda"):
 def cmd_score():
     from benchmark.gold import score_per_sound as S
     from benchmark.gold.cross_group import classify
-    rows0 = parts()
-    A = asked(rows0)
-    mask, tally, recs = {}, {"silenced": 0, "kept": 0, "unasked": 0}, []
-    for pt, st, w, lab, a0, sts, src in A:
-        f = CACHE / f"{key(pt, st, lab, a0)}.json"
-        if not f.exists():
-            tally["unasked"] += 1; continue
+    # parts() may run only once per process (tagger_prep.configure re-points the DEV loaders), so the mask is read from
+    # the cache files directly; the asked-spec count is checked against the 43 of `specs`
+    mask, tally, recs = {}, {"silenced": 0, "kept": 0}, []
+    for f in sorted(CACHE.glob("*.json")):
         r = json.loads(f.read_text(encoding="utf-8"))
         tally["silenced" if r["silenced"] else "kept"] += 1
         if r["silenced"]:
-            mask.setdefault((pt, st), set()).add((lab, round(a0, 3)))
+            mask.setdefault((r["part"], r["clip"]), set()).add((r["label"], round(float(r["start"]), 3)))
             recs.append(r)
+    assert sum(tally.values()) == 43, tally
     mask = {k: frozenset(v) for k, v in mask.items()}
     rows = parts(mask)
     base, new = {"dev": [], "dev2": []}, {"dev": [], "dev2": []}

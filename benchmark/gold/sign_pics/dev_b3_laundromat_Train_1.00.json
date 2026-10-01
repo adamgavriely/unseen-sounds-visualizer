@@ -1,0 +1,23 @@
+{
+ "part": "dev",
+ "clip": "b3_laundromat",
+ "label": "Train",
+ "start": 1.0,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/no_ambient/b3_laundromat.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    1.0,
+    1.75
+   ],
+   "sign": null,
+   "replies": [
+    "(a)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

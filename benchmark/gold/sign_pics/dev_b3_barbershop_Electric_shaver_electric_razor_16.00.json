@@ -1,0 +1,59 @@
+{
+ "part": "dev",
+ "clip": "b3_barbershop",
+ "label": "Electric shaver, electric razor",
+ "start": 16.0,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/benchmark/unseen_ambient/b3_barbershop.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    0.14,
+    4.51
+   ],
+   "sign": false,
+   "replies": [
+    "(b)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    4.51,
+    8.88
+   ],
+   "sign": false,
+   "replies": [
+    "(b)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    8.88,
+    13.25
+   ],
+   "sign": false,
+   "replies": [
+    "(b)",
+    "(a)"
+   ],
+   "n_frames": 6
+  },
+  {
+   "stretch": [
+    16.0,
+    23.25
+   ],
+   "sign": false,
+   "replies": [
+    "(b)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}

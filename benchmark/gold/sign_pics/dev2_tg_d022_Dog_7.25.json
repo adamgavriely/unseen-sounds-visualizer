@@ -1,0 +1,23 @@
+{
+ "part": "dev2",
+ "clip": "tg_d022",
+ "label": "Dog",
+ "start": 7.25,
+ "source": "gate_votes",
+ "clip_file": "/home/dsi/adamg/MscProj_tg/data/input/tagger_set/tg_d022.mp4",
+ "stretches": [
+  {
+   "stretch": [
+    7.25,
+    8.25
+   ],
+   "sign": false,
+   "replies": [
+    "(b)",
+    "(a)"
+   ],
+   "n_frames": 6
+  }
+ ],
+ "silenced": false
+}
