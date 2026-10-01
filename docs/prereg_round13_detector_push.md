@@ -2245,3 +2245,30 @@ picture (< 3.0), the 0.12 run is a dup; ly_applause Crowd — FlexSED on 0.0-13.
 tg_d120 — the Cat picture is rescued (family not eligible) and DASM is on 0.56-5.64 anyway. Reading: at the weak bars the
 detectors hear the mistimed families almost continuously, so "heard again, detached" never fires on the targets and fires
 only on repeat textures elsewhere (7 of 8 wrong). Closed.
+### Round 39 CONTRAST — forced choice for the refused faint sounds (pre-registered 1 Oct, before any answer)
+**Why.** A yes/no or an open inventory on a faint sound leans to "no" (nyc Air horn 3.8, tg_d107 Laughter 8.4, carnival
+Whistle 6.1, as_explosion Footsteps 2.1 / Gasp 6.7, tg_d033 Siren, tg_d125 Clapping are all TIER-refused needed sounds). A
+forced choice between the candidate's family and the strongest competing family in the same cut may rescue them.
+**Rule.** For every merged-DEV P2/PV candidate (`~/MscProj_r13/.../dev_listener_v.json` 49 clips, `dev2_listener_v.json` 22
+tagger clips) that the shipped TIER rule REJECTS (peak >= `TIER_SPLIT` 0.6: Qwen V4; below: Qwen V4 AND AF V4 from
+`dev{,2}_listener_afn.json`; exactly `moss_screen.rules`): A = the candidate's family; B = the family with the highest raw
+frame score inside the candidate's listener cut `run_audio` (the audio Qwen hears) over the FlexSED (`flexsed_cache`), BEATs
+(`j2_dev{,2}_beats`) and DASM (`devcand/dasm_cache`, `dasm_dev2`) caches — max over the family's columns and the three
+models, scores taken as stored (each in [0, 1], no recalibration) — excluding families related to A
+(`listener_variants.related`: same canonical family, `same_family`, ontology descendant either way) and speech / music
+(`SPEECH_LABELS` and their descendants, `is_music`, Singing and its descendants). Tie-break: equal score -> FlexSED before
+BEATs before DASM -> alphabetical family name. No B (no cache file, nothing left) -> the item is not asked (`no_B`, reported).
+Qwen3-Omni (same model, cut and greedy decoding as `listener_v4d`, no ducking, `max_new_tokens` 8) is asked on the cut
+"Which sound is in this recording? (a) {A} (b) {B} (c) neither" and again with A and B swapped ((c) stays last). The answer is
+the first "(a)" / "(b)" / "(c)" (or lone letter a / b / c) in the reply; unparsed = not A. Accept iff A is chosen in BOTH orders.
+**Screen.** `benchmark/gold/listener_contrast.py` (GPU, `slurm/job_contrast.sh`, from `~/MscProj_tg`) writes
+`dev{,2}_listener_contrast.json`; `benchmark/gold/contrast_screen.py` (CPU) counts, on the clips with gold
+(`annotations/gold_AG.json`, `dev_listener.gold_class`), needed-class (hit_needed) and other-class (other_gold + none)
+accepts ADDED on TIER-rejected items (nothing can be lost: TIER accepts are untouched). The TIER base must reproduce the
+MOSS screen's 1004 items, 24 needed / 94 other TIER accepts. Reported: both counts, every needed-class accept with its B and
+both raw answers, the seven known refused needed sounds with their B and answers, `no_B`.
+**Pass.** GO to an arm (TIER's Qwen leg accepts on V4 OR CONTRAST) iff needed added >= 3 AND other added <= 2 x needed added.
+Otherwise STOP, recorded, closed.
+- **Round 38 E4 CF result:** base 16/41 seen silenced, 33/38 needed kept. CF_a (annotator's Q1/Q2 replace the majority)
+  15/41, 32/38; CF_b (fourth vote) 16/41, 31/38. **STOP** both. The VLM's Q2 ("would a viewer know") is split in 30 of 145
+  stretches; the bias control removes most of its signal.
