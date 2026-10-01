@@ -3254,3 +3254,6 @@ ship): **shipped** (`config.use_shipped` AED_MIN_DUR 0.3). New base = SHIP8 + MD
 PICTURE_MIN_CONF 0.40 (adopted 28 Sept on the held-out 415, Adam's yes); every scored arm since Round 13 has none** (the harness
 BASE). Merged DEV (`floor_check.py`): no floor 29/58, 18 (6/10/2), 2.141; **floor 0.40: 27/58, 15 (5/10/0), 2.169**. So the shipped
 output today draws 2 hits and 3 wrong pictures fewer than the scored numbers. Adam decides whether the shipped config drops the floor.
+TEST row (`test_vs_ship8.py SHIP8+MD3 0.40`, floor forced on base and arm): **floor 0.40: 23/65, 22 (3/15/4), 2.409; no floor:
+23/65, 28 (4/19/5), 2.545**. So the floor costs 2 hits and saves 3 wrong on DEV (+0.028 cost), and saves 6 wrong at no hit on TEST
+(−0.136); it was also adopted on the held-out 415 (dC −0.227). Reported for Adam's decision; nothing selected.

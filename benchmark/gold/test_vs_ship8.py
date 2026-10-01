@@ -11,12 +11,16 @@ from benchmark.gold import final_test as FT
 from benchmark.gold import score_per_sound as S
 
 ARM, BASE = sys.argv[1], "SHIP7+K4AD"
+FLOOR = float(sys.argv[2]) if len(sys.argv) > 2 else None   # optional: force PICTURE_MIN_CONF on both (parity check)
 
 
 def main():
     from benchmark.gold import dev_candidates_check as DCC
     F, T, R, _a, fin = FT.old_setup(ARM)
     disp = {k: R.arm_cfg("SHIP8")[k] for k in R.DISPLAY_KEYS}
+    if FLOOR is not None:
+        disp["PICTURE_MIN_CONF"] = FLOOR
+        R.ARMS[ARM]["PICTURE_MIN_CONF"] = FLOOR
     stems1 = list(T.STEMS)
     P1 = {}
     for a in (BASE, ARM):
@@ -28,6 +32,8 @@ def main():
     TP._ORIG.clear()
     _D2, R2, stems2 = TP.configure("test2")
     o2 = TP.out("test2")
+    if FLOOR is not None:
+        R2.ARMS[ARM]["PICTURE_MIN_CONF"] = FLOOR
     P2 = {}
     for a in (BASE, ARM):
         with R2.flags(disp if a == BASE else {k: R2.arm_cfg(a)[k] for k in R2.DISPLAY_KEYS}):
@@ -46,7 +52,7 @@ def main():
         res["rows"][a] = {k: m[k] for k in ("hits", "misses", "wrong", "visible", "cross", "phantom", "viewer_cost")}
         cost[a] = [DCC.clip_cost(r) for r in rr]
     res["d_vs_ship8"] = DCC.boot(np.subtract(cost[ARM], cost[BASE]))
-    (_ROOT / "benchmark" / "gold" / f"test_vs_ship8_{ARM.replace('+', '_')}.json").write_text(json.dumps(res, indent=1, default=float))
+    (_ROOT / "benchmark" / "gold" / f"test_vs_ship8_{ARM.replace('+', '_')}{'' if FLOOR is None else '_floor' + str(FLOOR)}.json").write_text(json.dumps(res, indent=1, default=float))
     print(json.dumps(res, default=float))
 
 
