@@ -4189,3 +4189,21 @@ decisive form, STACK reported. `EXPLAIN_VARIANT` selects the asker; caches `expl
   29/18/2.141. **Tie-break if more than one passes: lowest merged-DEV cost, then fewest needed hits lost** (then the primary).
   Reported per variant: laundromat Train raw replies (Q1a/Q1b, Q2, Q3), dropped pictures with class and raw replies, funnel.
   TEST not read.
+
+### Round 61b SCENE-EXPLAIN main result (job 31626159, H200; `explain_screen{,_replace}.json`, `explain_sanity.json`, cache `explain_pics/` on the cluster): **FAIL — 0 pictures dropped**
+Step 0 GO: 10/10 parsed, (Q1a, Q1b) pairs (unlikely, unlikely) 6, (likely, likely) 2, split 2. Full 44: Q1 pairs (unlikely,
+unlikely) **27**, (likely, likely) 10, split 7. Funnel: Q1 unlikely 27 -> Q2 named a thing 6 -> Q3 yes both orders **0** -> dropped 0.
+STACK = REPLACE base (61 drops nothing): REPLACE row = SHIP8+MD3 with DEPICT off, **29/58, 19 (6/10/3), 2.169** (> 2.141, Steam
+back) -> FAIL; STACK row 29/58, 18, 2.141 (= B, not cheaper, 0 wrong removed) -> FAIL. 61 does NOT make 57's drop (crossing_bells
+Steam: Q1 not unlikely in both orders). vs C (27/13/2.113): +2 hits, +5 wrong, +0.028 cost (stack).
+**Laundromat Train (phantom), raw:** Q1a/Q1b both "Based on the visual evidence, it is **unlikely** that a real train is the
+source ... clearly an indoor laundromat"; Q2 "washing machine"; Q3 L1 "Could the sound of washing machine be mistaken for the
+sound of train?" -> **Yes**; L2 "Could the sound of train be mistaken for the sound of washing machine?" -> **No** -> kept. The VLM
+does the reasoning Adam described (no train here; the washing machine); the asymmetric reverse look-alike question blocks it.
+Q2 named things (all 6, with class and Q3 pair): laundromat Train phantom "washing machine" (yes, no); tg_d107 Crying, sobbing HIT
+"parrot" (yes, no); un_driving_motorcycle_DgdHSmwA Explosion (merged picture) "balloon" (yes, no); london_protest_01 Vehicle
+visible "red air horn" (no, no); mv_protest Glass HIT "candle flame" (no, no); tg_d127 Laughter HIT "elephant" (no, no).
+Reading (not selection): Q1 alone said unlikely on 27/44 incl. 17 hits (the N1 failure again: off-screen real sounds look
+unlikely); Q2 "nothing" protected 21 of those. A one-order Q3 (L1 only; NOT the pre-registered rule) would drop laundromat
+Train (phantom) + Explosion + tg_d107 Crying (a hit) -> a needed hit lost with <= 2 wrong removed -> fails the main rule and the
+fewer-pictures clause (needs wrong <= 15) either way. Nothing ships; TEST not read. Variants v-think / v-gemma (61c) running.
