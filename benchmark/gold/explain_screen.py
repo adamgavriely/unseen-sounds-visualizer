@@ -111,9 +111,7 @@ def _load():
 
 def cmd_specs():
     from benchmark.gold import sign_screen as SS
-    SS.cmd_specs()
-    S = specs()
-    print("laundromat Train specs:", [x for x in S if (x[0], x[1], x[2]) == LAUND])
+    SS.cmd_specs()      # parts() may run only once per process; laundromat Train is asserted in sanity
 
 
 def cmd_sanity():
