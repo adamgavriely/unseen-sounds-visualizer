@@ -4260,3 +4260,38 @@ none) AND (main rule: hits >= 29, no needed hit lost; OR fewer-pictures clause: 
 Q1 / Q2 (their own model and settings ask L1n; L1 reused from their cache), on the B specs they answered; D-only specs are not
 asked for variants. Script `benchmark/gold/explain_d.py`, job `slurm/job_explain_d.sh`. Listed: every dropped picture with
 class and raw Q1–Q3 replies. TEST not read.
+
+### Round 61d targets (coordinator note, written BEFORE any 61d answer is read): D's 14 remaining wrong pictures
+D already lacks laundromat Train, tg_d022 Dog, tg_d128 Hammer, mv_protest Glass 4.75 (Round 60), so B+61d is illustrative
+only. D's wrongs (merged DEV, `cross_group.classify`): visible 6 — ambient_weather_storm_16200 Thunder 0.06, ambient_weather_
+storm_7200 Thunder 0.06, london_protest_01 Vehicle 0.25, un_driving_motorcycle_DgdHSmwA Explosion 13.52, tg_d127 Water 0.14,
+tg_d128 Laughter 3.08; cross 6 — as_explosion Gunshot 8.25, b3_golf_course Bird 3.8, ly_applause Crowd 0.0, tg_d088 Explosion
+10.75, tg_d088 Thunder 13.25, tg_d107 Screaming 6.52; phantom 2 — b3_flea_market Vehicle 20.0, un_hair_dryer Computer keyboard
+11.25. Of these, 61b's cached Q2 named a thing only for london Vehicle ("red air horn") and un_driving Explosion ("balloon"), so
+the realistic expectation for D+61d is 0–2 drops.
+
+### Round 61c v-gemma result (job 31632634; `explain_screen_gemma{,_replace}.json`, `explain_sanity_gemma.json`): **FAIL — 4 hits lost**
+Step 0 GO (parsed 10/10; (unlikely, unlikely) 5, (likely, likely) 4, split 1). Full 44: Q1 (unlikely, unlikely) 21, (likely,
+likely) 21, split 2; funnel Q1 unlikely 21 -> Q2 named 8 -> Q3 yes both orders 8 (Gemma said "Yes." to every L1 / L2) -> 8
+dropped. **REPLACE 25/58, 15 (6/7/2), 2.282; STACK 25/58, 14 (6/6/2), 2.254 vs B 29/18/2.141 -> FAIL** (4 needed hits lost).
+Dropped (class, Q2 reply): tg_d075 Alarm 0.14 HIT "water jug"; tg_d107 Crying, sobbing 0.38 HIT "the parrot"; tg_d120 Cat 0.56
+HIT "alarm clock"; as_fire_alarm Alarm 8.89 HIT "hammer"; laundromat Train phantom "washing machine"; tg_d088 Explosion 10.75 cross
+"lightning bolt"; tg_d128 Hammer 9.0 cross "metal gate"; ly_applause Crowd 0.0 cross "the woman's laughter". Laundromat Train raw:
+Q1 "Unlikely" / "unlikely", Q2 "washing machine", L1 "Yes.", L2 "Yes." -> dropped. Steam (57's drop) not made. Gemma names a
+confuser more readily and never says no to a look-alike: the Q3 filter is inert with it.
+
+### Round 61c v-think result: **STOPPED EARLY (Adam 21:49, too slow), partial n = 34 / 44** (jobs 31632633 + 31640428 cancelled; cache `explain_pics_think/` kept; `explain_think_diff.py` -> `explain_think_diff.json`)
+~5 min per picture on one H200 with 2048 thinking tokens. Parser check (coordinator): (Q1a, Q1b) pairs on 34: (likely, likely) 14,
+(unlikely, unlikely) 14, split 4, with None 2; 16 of 68 Q1 replies were not a bare verdict (the 2048-token budget ended before
+`</think>`, so `reason._ask` returned a mid-thought line); 13 of those were re-prompted (61b rule) and the rest parsed a verdict word
+from the thought line (e.g. as_explosion Gunshot "Maybe the benchmark is ..."). None does not dominate; the cut-thinking parse is
+a disclosed weakness, not fixed (job stopped). Not scored (partial). **Diff vs the short answers (19 of 34 pictures change a verdict;
+"unsure" = a stage-4 span with DASM < 0.35 and not both ears):** Q1 unlikely -> likely on 9 (tg_d016 Cough hit, rainforest Insect
+hit, snow_walk Laughter hit, bakery Door hit, golf Bird cross, birds_forest Bird hit, london Vehicle visible, applause Crowd cross,
+tg_d127 Laughter hit — all not unsure); 61b-rule drops under thinking 5: laundromat Train phantom (unsure, DASM 0.229, 1 ear),
+tg_d128 Hammer cross "metal railing" (unsure, 0.031, 1 ear), ly_ambulance Siren 0.0 HIT "car horn" (unsure, 0.156–0.188, 1–2
+ears), as_explosion Explosion 5.68 HIT "rifle" (not unsure, 0.866), tg_d107 Crying HIT "parrot" (not unsure, 0.416, 2 ears);
+other Q2 changes: tg_d120 Cat hit "alarm clock" (L1 yes, L2 no), mv_detective Alarm "glass bottle" (no, no), barbershop shaver
+"in this" / helicopter Vehicle "what about the white" (cut thoughts, Q3 no), mv_protest Glass hit "candle flame" -> none. Thinking
+restricted to unsure spans would have dropped laundromat Train + tg_d128 Hammer (both already gone in D) and lost the ambulance
+Siren hit. Input for Adam's next round; nothing ships.
