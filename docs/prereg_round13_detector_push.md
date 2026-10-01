@@ -2949,3 +2949,16 @@ yes): (a) 16, (b) 31; order 2 (a = no): (a) 36, (b) 9, unparsed "Based…" 2. Of
 explanation "Based on the visual evidence" (`_clean_phrase` keeps the first clause; the raw open reply was not stored, so it
 cannot be re-parsed from cache); the 141 "nothing" replies are the literal word. The question set, not the parser or the
 scorer, is what fails: the open question takes the "nothing" escape and (b) says no even for visible sources.
+### Round 44 result — AVNAME: STOP on both rules, all three variants (job 31599021, H200; 50 pictures asked in 75 s)
+Base reproduced (28/58, 21 (6/13/2), 2.282). Answers: 18 same family, 27 other family, 0 NONE, 5 unmapped, 23 ambiguous matches
+(tie-break applied). Qwen3-Omni with audio + 8 frames mostly names the LOUDEST or most visible thing in the 2-s window, not the
+picture's sound. **(a) relabel: 15/58, 34 wrong (9/23/2), cost 3.380** — 27 pictures renamed, 13 needed hits lost (Explosion -> Gunshot
+x2, Vehicle -> Explosion, Alarm -> Sigh, Crowd -> Cough, Cough -> Car, Thunder -> Rain x2, Alarm -> Sneeze, Crying -> Bird, Cat -> Alarm,
+Laughter -> Splash, Bee -> Sneeze); of the 7 ledger targets it fixes none outright: Steam -> Train (cross -> visible: the right sound,
+but it is on screen), Dog -> Cooking and Explosion -> Thunder likewise cross -> visible, Glass -> Chink/clink, Hammer -> Door, Screaming
+-> Door stay cross, Bird (footsteps) unmapped ("swing"). **(b) drop unmapped: 27/58, 17 (5/12/0), cost 2.225** — 5 drops: both phantoms
+gone (laundromat "washing machine", hair-dryer "click"), golf Bird ("swing") and tg_d128 Laughter ("bull") gone, but snow_walk Laughter
+("tram") was a hit -> main FAIL (hit lost, hits 27 < 28); more-hits FAIL. **(a)+(b): 14/58, 30 (8/22/0), cost 3.324.** Reading: the
+AV namer is right where the audio was already right (Thunder, Siren, Fireworks) and wrong elsewhere; the one useful signal is "cannot
+name it" = phantom (4 of 5 unmapped pictures were wrong), too small to pass. No `src/` change. Files: `benchmark/gold/avname_screen.json`,
+`benchmark/gold/avname/answers.json`.
