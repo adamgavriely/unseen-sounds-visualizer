@@ -76,3 +76,14 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 **Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.
 
 **Engineering (1 Oct night):** new clips now build their FineLAP scores automatically (src/listener_prep.py), so the shipped pipeline runs on clips outside DEV/TEST (needed for ComfyUI). Checked: identical scores on a DEV clip; stage-4 cache check passes on a live clip.
+
+## Night 1 Oct — summary
+
+18 pre-registered ideas tried (vision checks, listener prompts, timing rules, new models: Synchformer, SSL-SaN, FineLAP
+placement, MOSS-Audio). None beats the shipped K4A-D on both DEV and TEST. Closest: EXPECT-A4 (the listener names sounds on the
+whole clip → FineLAP times them → DASM confirms → visibility check): DEV 31 / 26 / 2.254 vs 28 / 21 / 2.282 (+3 hits: church
+bell, laughter, fart), but TEST 25 / 35 / 2.614 vs 23 / 29 / 2.568 (+2 hits, +6 wrong, not better). Not shipped.
+
+What the night showed: the missing sounds can be found (the listener names hammer, train, bell, fart on the whole clip), but
+every way of adding them brings 2–4 wrong pictures per hit, because the visibility check cannot tell a wrong off-screen
+sound from a right one. The visibility check itself trades needed sounds for visible ones about 1:1 under every variant tried.
