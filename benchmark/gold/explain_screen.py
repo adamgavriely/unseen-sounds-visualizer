@@ -25,7 +25,7 @@ os.environ.setdefault("TG_ARMS", "SHIP8+MD3")
 
 CACHE = _ROOT / "benchmark" / "gold" / "explain_pics"
 OUT = _ROOT / "benchmark" / "gold" / "explain_screen.json"
-SANITY = _ROOT / "benchmark" / "gold" / "explain_sanity.json"
+SANITY = _ROOT / "benchmark" / "gold" / "explain_sanity.json"      # 61a (max_new 4) result kept as explain_sanity_61a.json
 N_SPECS, N_STRETCH = 44, 74
 BASE = {"hits": 29, "wrong": 18, "cost": 2.141}
 C_ROW = {"hits": 27, "wrong": 13, "cost": 2.113}
@@ -38,6 +38,7 @@ Q2 = ("What visible thing in this scene most likely made a sound that a detector
       "Answer with a short noun phrase, or 'nothing'.")
 L1 = "Could the sound of {B} be mistaken for the sound of {A}? Answer yes or no."
 L2 = "Could the sound of {A} be mistaken for the sound of {B}? Answer yes or no."
+RE_Q1, RE_Q2, RE_Q3 = " Reply with one word only.", " Reply with the noun phrase only.", " Reply yes or no only."   # 61b
 
 
 def yn(reply: str):
@@ -47,23 +48,28 @@ def yn(reply: str):
 
 
 def lu(reply: str):
-    """'unlikely' checked before 'likely', in the first 3 words; else None (unparsed)"""
-    w = [x.strip(".,!*\"'()[]:") for x in reply.strip().lower().split()[:3]]
-    if "unlikely" in w:
-        return "unlikely"
-    if "likely" in w:
-        return "likely"
-    return None
+    """Round 61b: whole reply, last of 'not likely' / 'unlikely' / 'likely' (verdict follows rationale); else None"""
+    m = re.findall(r"\b(not likely|unlikely|likely)\b", reply.lower())
+    if not m:
+        return None
+    return "likely" if m[-1] == "likely" else "unlikely"
 
 
 def thing(reply: str):
-    """Q2 reply -> confuser phrase, or None for nothing/none/no .../empty"""
-    t = reply.strip().splitlines()[0] if reply.strip() else ""
-    t = t.strip().strip("*\"'`.,!;:()[] ").lower()
+    """Round 61b Q2 parse -> (phrase | None, parsed): 'nothing'/'none' as a whole word anywhere -> (None, True);
+    else the stripped last non-empty line if <= 6 words -> (phrase, True); else (None, False) = unparsed"""
+    low = reply.lower()
+    if re.search(r"\b(nothing|none)\b", low):
+        return None, True
+    lines = [x for x in reply.strip().splitlines() if x.strip()]
+    if not lines:
+        return None, False
+    t = lines[-1].strip().strip("*\"'`.,!;:()[] ").lower()
+    t = re.sub(r"^(answer|final answer)\s*:\s*", "", t).strip("*\"'` ")
     t = re.sub(r"^(a|an|the)\s+", "", t).strip()
-    if not t or t.startswith("nothing") or t.startswith("none") or t.startswith("no ") or t == "no":
-        return None
-    return t
+    if not t or len(t.split()) > 6:
+        return None, False
+    return t, True
 
 
 def specs():
@@ -85,20 +91,37 @@ def ask(reason, mdl, proc, pt, st, lab, a0):
     if len(fr) < 2:
         rec.update({"q1_replies": [], "q1": None, "q1_unlikely": False, "silenced": False, "note": "frames"})
         return rec
-    r1 = reason._ask(mdl, proc, Q1A.format(X=X), images=fr, max_new=4)
-    r2 = reason._ask(mdl, proc, Q1B.format(X=X), images=fr, max_new=4)
-    q1 = [lu(r1), lu(r2)]
-    rec.update({"q1_replies": [r1, r2], "q1": q1, "q1_unlikely": q1 == ["unlikely", "unlikely"]})
-    rec.update({"q2_reply": None, "q2_thing": None, "q3_replies": [], "q3": None, "q3_yes": False})
+    def q1(prompt):
+        r = reason._ask(mdl, proc, prompt, images=fr, max_new=48)
+        a, re_r = lu(r), None
+        if a is None:                                         # 61b: one re-prompt
+            re_r = reason._ask(mdl, proc, prompt + RE_Q1, images=fr, max_new=8)
+            a = lu(re_r)
+        return r, re_r, a
+    (r1, rr1, a1), (r2, rr2, a2) = q1(Q1A.format(X=X)), q1(Q1B.format(X=X))
+    q1v = [a1, a2]
+    rec.update({"q1_replies": [r1, r2], "q1_reprompt": [rr1, rr2], "q1": q1v, "q1_unlikely": q1v == ["unlikely", "unlikely"]})
+    rec.update({"q2_reply": None, "q2_reprompt": None, "q2_thing": None, "q3_replies": [], "q3_reprompt": [], "q3": None,
+                "q3_yes": False})
     if rec["q1_unlikely"]:
-        r = reason._ask(mdl, proc, Q2.format(X=X), images=fr, max_new=16)
-        B = thing(r)
-        rec.update({"q2_reply": r, "q2_thing": B})
+        r = reason._ask(mdl, proc, Q2.format(X=X), images=fr, max_new=48)
+        B, ok = thing(r)
+        rr = None
+        if not ok:
+            rr = reason._ask(mdl, proc, Q2.format(X=X) + RE_Q2, images=fr, max_new=16)
+            B, ok = thing(rr)
+        rec.update({"q2_reply": r, "q2_reprompt": rr, "q2_thing": B, "q2_parsed": ok})
         if B:
-            x1 = reason._ask(mdl, proc, L1.format(B=B, A=X), images=None, max_new=4)
-            x2 = reason._ask(mdl, proc, L2.format(B=B, A=X), images=None, max_new=4)
-            rec.update({"q3_prompts": [L1.format(B=B, A=X), L2.format(B=B, A=X)], "q3_replies": [x1, x2],
-                        "q3": [yn(x1), yn(x2)], "q3_yes": yn(x1) == "yes" and yn(x2) == "yes"})
+            out, rrs = [], []
+            for q in (L1.format(B=B, A=X), L2.format(B=B, A=X)):
+                x = reason._ask(mdl, proc, q, images=None, max_new=4)
+                xr = None
+                if yn(x) is None:
+                    xr = reason._ask(mdl, proc, q + RE_Q3, images=None, max_new=4)
+                out.append(x); rrs.append(xr)
+            ans = [yn(x) if yn(x) is not None else (yn(xr) if xr else None) for x, xr in zip(out, rrs)]
+            rec.update({"q3_prompts": [L1.format(B=B, A=X), L2.format(B=B, A=X)], "q3_replies": out, "q3_reprompt": rrs,
+                        "q3": ans, "q3_yes": ans == ["yes", "yes"]})
     rec["silenced"] = bool(rec["q1_unlikely"] and rec["q2_thing"] and rec["q3_yes"])
     return rec
 
@@ -124,13 +147,18 @@ def cmd_sanity():
     for x in pick:
         r = ask(reason, mdl, proc, *x)
         rows.append(r)
-        print("SANITY", r["part"], r["clip"], r["label"], r["start"], "Q1", r["q1_replies"], r["q1"], "| Q2",
-              repr(r.get("q2_reply")), r.get("q2_thing"), "| Q3", r.get("q3_replies"), "->",
+        print("SANITY", r["part"], r["clip"], r["label"], r["start"], "Q1", r["q1_replies"], r.get("q1_reprompt"), r["q1"],
+              "| Q2", repr(r.get("q2_reply")), repr(r.get("q2_reprompt")), r.get("q2_thing"), "| Q3", r.get("q3_replies"),
+              r.get("q3_reprompt"), "->",
               "DROP" if r["silenced"] else "kept", flush=True)
     c = collections.Counter(str(r["q1"]) for r in rows)
-    stop = c.most_common(1)[0][1] >= 9
-    print("SANITY Q1 pairs", dict(c), "->", "STOP (untestable with this VLM)" if stop else "GO", flush=True)
-    SANITY.write_text(json.dumps({"rows": rows, "q1_pairs": dict(c), "stop": stop,
+    parsed = collections.Counter(str(r["q1"]) for r in rows if r["q1"] and None not in r["q1"])
+    unparsed = sum(1 for r in rows if not r["q1"] or None in r["q1"])
+    top = parsed.most_common(1)[0][1] if parsed else 0
+    stop = top >= 9 or unparsed >= 9
+    why = "STOP (untestable with this VLM)" if top >= 9 else ("HARNESS STOP (unparsed)" if unparsed >= 9 else "GO")
+    print("SANITY Q1 pairs", dict(c), "parsed", dict(parsed), "unparsed", unparsed, "->", why, flush=True)
+    SANITY.write_text(json.dumps({"rows": rows, "q1_pairs": dict(c), "stop": stop, "why": why,
                                   "prompts": {"Q1A": Q1A, "Q1B": Q1B, "Q2": Q2, "L1": L1, "L2": L2}}, indent=1),
                       encoding="utf-8")
     sys.exit(3 if stop else 0)
@@ -147,8 +175,9 @@ def cmd_run():
     for x in S:
         r = ask(reason, mdl, proc, *x)
         (CACHE / f"{SS.key(*x)}.json").write_text(json.dumps(r, indent=1), encoding="utf-8")
-        print(r["part"], r["clip"], r["label"], r["start"], "Q1", r["q1_replies"], "| Q2", repr(r.get("q2_reply")),
-              "| Q3", r.get("q3_replies"), "->", "DROP" if r["silenced"] else "kept", flush=True)
+        print(r["part"], r["clip"], r["label"], r["start"], "Q1", r["q1_replies"], r.get("q1_reprompt"), r["q1"], "| Q2",
+              repr(r.get("q2_reply")), repr(r.get("q2_reprompt")), r.get("q2_thing"), "| Q3", r.get("q3_replies"),
+              r.get("q3_reprompt"), r.get("q3"), "->", "DROP" if r["silenced"] else "kept", flush=True)
 
 
 def cmd_score(replace=False):
@@ -213,7 +242,8 @@ def cmd_score(replace=False):
             if k is None:      # placed start != spec start: take the classes of this label's removed pictures
                 k = [x[3] for c in changed if c["clip"] == r["clip"] for x in c["removed"] if x[0] == r["label"]] or None
             dropped.append({"part": r["part"], "clip": r["clip"], "label": r["label"], "start": r["start"], "class": k,
-                            "q1": r["q1_replies"], "q2": r["q2_reply"], "q3": r["q3_replies"]})
+                            "q1": r["q1_replies"], "q1_reprompt": r.get("q1_reprompt"), "q2": r["q2_reply"],
+                            "q2_reprompt": r.get("q2_reprompt"), "q3": r["q3_replies"], "q3_reprompt": r.get("q3_reprompt")})
             print("DROPPED", r["part"], r["clip"], r["label"], r["start"], k, "| Q1", r["q1_replies"], "| Q2",
                   repr(r["q2_reply"]), "| Q3", r["q3_replies"])
     q1pairs = collections.Counter(str(r.get("q1")) for r in R)

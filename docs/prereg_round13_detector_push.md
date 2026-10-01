@@ -4150,3 +4150,23 @@ filled caches. B must reproduce **29/58, 18 (6/9/3), 2.141** and C **27/58, 13, 
 needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141). Vs C: reported. Reported: floor 0.40 rows
 (`floor_check_arm.py`) for all three; changed pictures vs B and vs C with the VLM's raw scene answers for each asked span; the
 stage-4 ask count (asked / credible / None). TEST not read.
+
+### Round 61 step 0 result (job 31622947, H200; `explain_sanity.json` -> kept on the cluster as `explain_sanity_61a.json`): HARNESS STOP, not a VLM verdict
+Harness check reproduced (71 clips, 48 placed, 44 drawn specs, 74 stretches, 0 fallbacks; base 29/58, 18 (6/9/3), 2.141). STOP by
+the letter (10/10 the same Q1 pair), but the pair is (unparsed, unparsed) on all 10: with max_new 4 every Q1 reply was cut inside
+a preamble ("Based on the" x13, "Looking at the" x5, "To determine if" x2); **no reply contained "likely" or "unlikely"**, so no
+answer information exists. Unparsed is not "identical answers"; this is a token-budget defect (Round 57's E1/E2 got terse replies at
+max_new 4; this prompt invites prose). Precedents: Round 16 N1 first run voided as a harness fault; Round 38 BOX-2 re-prompt once.
+
+## Round 61b SCENE-EXPLAIN — harness amendment (written 2026-10-01 after the 61 step 0 HARNESS STOP, BEFORE any parsed answer)
+Prompts, unit, rule, selection, REPLACE-57 decisive form and step 0 sample are Round 61's, unchanged. Changed (harness only):
+- **Q1** max_new 4 -> **48**. Parse = whole reply lower-cased, `re.findall(r"\b(not likely|unlikely|likely)\b")`, the **last**
+  match decides ("not likely" = unlikely); none -> unparsed. (Disclosed bias: a rationale ending "...the likely source is" reads as
+  likely, i.e. toward keeping.)
+- **Q2** max_new 16 -> **48**. Parse: "nothing" / "none" as a whole word anywhere -> no confuser; else the last non-empty line,
+  stripped of markdown / quotes / punctuation / a leading "answer:" and article, if <= 6 words -> B; else unparsed.
+- **Re-prompt once** on an unparsed reply (BOX-2 precedent), same prompt + verbatim suffix: Q1 ` Reply with one word only.`
+  (max_new 8), Q2 ` Reply with the noun phrase only.` (max_new 16), Q3 ` Reply yes or no only.` (max_new 4; Q3 stays max_new 4).
+  Still unparsed -> not unlikely / no confuser / not yes (never a drop). Both raw replies recorded.
+- **Step 0 STOP redefined:** >= 9 of 10 identical PARSED (Q1a, Q1b) pairs -> STOP "untestable with this VLM"; >= 9 of 10 still
+  unparsed after the re-prompt -> "harness STOP" (reported, no verdict on the rule). Same 10 specs. TEST not read.
