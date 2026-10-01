@@ -3248,3 +3248,9 @@ the family label, so MERGE_GAP chains them only with same-label SHIP8 specs; GRO
 Base = current SHIP8 (TEST renders SHIP7+K4AD read with MERGE_GAP 2.5 + GROUP): 23/65, 28 (4/19/5), 2.545 reproduced. **SHIP8+MD3 TEST:
 23/65, 28 (4/19/5), 2.545, d 0.000** — no TEST picture changes. Adam's rule (DEV tunes, TEST scores; DEV better + TEST same ->
 ship): **shipped** (`config.use_shipped` AED_MIN_DUR 0.3). New base = SHIP8 + MD3: merged DEV 29/58, 18 (6/10/2), 2.141; TEST 23/65, 28, 2.545.
+
+### Parity check (1 Oct, not a round): shipped config vs the scored arm
+`config.use_shipped()` vs `arm_cfg("SHIP8+MD3")`, every non-cache key: one real difference — **use_shipped sets the picture floor
+PICTURE_MIN_CONF 0.40 (adopted 28 Sept on the held-out 415, Adam's yes); every scored arm since Round 13 has none** (the harness
+BASE). Merged DEV (`floor_check.py`): no floor 29/58, 18 (6/10/2), 2.141; **floor 0.40: 27/58, 15 (5/10/0), 2.169**. So the shipped
+output today draws 2 hits and 3 wrong pictures fewer than the scored numbers. Adam decides whether the shipped config drops the floor.
