@@ -1644,6 +1644,12 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 kept = pieces[:1]
                 spec.reason += " | gate: visible, but not visibly producing it at the onset (I2) - kept"
                 print("       [stage5] I2 kept " + spec.event_label + ": visible but not producing it", flush=True)
+            if not kept and spec.event_label in (getattr(config, "CONCEALED_ACTION", None) or ()):
+                # Round 64 CONCEALED-ACTION: the source is on screen but the action making the sound is hidden inside it
+                # (a bell's clapper, a body's fart) -> seeing the source is not seeing the sound; kept, as the I2 keep
+                kept = pieces[:1]
+                spec.reason += " | gate: source visible, sound-making hidden inside it (Round 64) - kept"
+                print("       [stage5] concealed-action kept " + spec.event_label, flush=True)
             if not kept:
                 spec.augment = False
                 spec.subject = ""
@@ -1681,6 +1687,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 directed = getattr(config, "KINSHIP_DIRECTED", False)
                 if directed and not (g.event_label == spec.event_label or _desc(g.event_label, spec.event_label)):
                     continue
+                if spec.event_label in (getattr(config, "CONCEALED_ACTION", None) or ()):
+                    continue                     # Round 64: never silenced as a kind of a visible source
                 if same_source(spec.event_label, g.event_label) and _overlap(spec, g):
                     spec.augment = False
                     spec.subject = ""

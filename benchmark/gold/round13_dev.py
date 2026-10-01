@@ -56,7 +56,7 @@ BASE = {"AED_MODEL": "beats", "AED_THRESHOLD": 0.175, "DISPLAY_THRESHOLD": 0.35,
         "LISTENER_SHADOW": False, "LISTENER_SHADOW_S": 0.2, "LISTENER_EDGE": False, "LISTENER_EDGE_S": 0.3,
         "LISTENER_CONFIRMED_MIRROR": False, "LISTENER_DASM_VOTE": False, "LISTENER_DASM_DIR": None,
         "LISTENER_DASM_BAR": 0.575, "LISTENER_DASM_PAD": 0.5,
-        "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority", "GATE_BOX_CHECK": False,
+        "PANNS_VETO_SKIP_ABOVE": None, "AUGMENT_THRESHOLD": 0.35, "DEDUP_SIM": 0.80, "VISIBILITY_RULE": "majority", "GATE_BOX_CHECK": False, "CONCEALED_ACTION": None,
         "MERGE_GAP": 2.0, "PICTURE_MIN_CONF": None, "GROUP_ASK": False, "GROUP_MAX_GAP": 4.0, "GROUP_CACHE": None, "DEPICT_EVENT": False, "DEPICT_CACHE": None,
         "ONSET_RELOC": False, "TIER_SPECIFIC": False, "ACTIVITY_GATE": False,
         "F8_BYPASS_BOTH": False, "RESCUE_COVERED": False, "TIER_HIGH_OR": False,
@@ -240,6 +240,7 @@ ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCA
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
 ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
 ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": "/home/dsi/adamg/MscProj/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
+ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
 ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}   # Round 56 TWIN-SHORT (partner = FlexSED band run >= 0.5)
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
@@ -267,7 +268,7 @@ if GSTACK.exists():
         _c.update(GRULES[_g])
     ARMS["GSTACK"] = _c
 STAGE5_KEYS = ("RETRIGGER_RAW", "LISTENER_SCENE_FIT", "FIX_GATE", "LISTENER_ARBITER", "DISPLAY_THRESHOLD",
-               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE", "SCENE_FIT_ALL", "GATE_BOX_CHECK")  # arm flags read after stage 4
+               "AUGMENT_THRESHOLD", "DEDUP_SIM", "VISIBILITY_RULE", "ACTIVITY_GATE", "SCENE_FIT_ALL", "GATE_BOX_CHECK", "CONCEALED_ACTION")  # arm flags read after stage 4
 DISPLAY_KEYS = ("MERGE_GAP", "PICTURE_MIN_CONF", "GROUP_ASK", "GROUP_MAX_GAP", "GROUP_CACHE", "DEPICT_EVENT", "DEPICT_CACHE")                           # read by _display_spans at score time
 
 
