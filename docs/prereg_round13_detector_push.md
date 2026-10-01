@@ -3170,3 +3170,9 @@ are only removed, never added. **Pass (DEV, vs base):** main rule (hits >= 28, n
 clause (cost lower, >= 3 wrong removed per hit lost, <= 3 lost); best passing arm by cost; w = 1 secondary reported. **TEST** (base
 SHIP8 at 2.5: 23/65, 28, 2.545) is read ONCE for the DEV winner only, after this verdict is written, reported not selected on.
 **Files:** `benchmark/gold/grp_screen.py` (`pairs` CPU, `ask` GPU msproj, `score` CPU) -> `benchmark/gold/grp/`; `slurm/job_grp.sh`.
+### Round 47 result — DEV (job 31599504, H200): **GRP-A GO on the main rule**
+Base reproduced (28/58, 20 (6/12/2), 2.254); 6 candidate pairs. **GRP-A: 28/58, 18 wrong (6/10/2), cost 2.197** (d −0.056
+[−0.141, 0.000], p 0.133; DEV 2.000 vs 2.082, DEV2 same) — merges barbershop Shaver 0.14+16.00 (gap 2.75) and detective Alarm
+0.04+9.08 (2.96); Glass pairs (protest) answered new/same -> kept. GRP-L / GRP-LA: 28/58, 19, 2.225 (Alarm only; the sound-type
+answers split on Shaver). No hit lost. **Main rule: hits 28 >= 28, cost 2.197 < 2.254 -> GO; best arm GRP-A.** TEST read next, once,
+frozen (same prompt, orders, window, MAX_GAP 8).
