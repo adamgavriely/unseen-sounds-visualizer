@@ -1,0 +1,635 @@
+{
+ "bar": 0.575,
+ "gap": 0.24,
+ "impact_labels": [
+  "Specific impact sounds",
+  "Thump, thud",
+  "Knock",
+  "Tap",
+  "Hammer"
+ ],
+ "asked_absent": [
+  "Bang",
+  "Slam",
+  "Smash, crash",
+  "Whack, thwack",
+  "Clang"
+ ],
+ "n_clips": 71,
+ "buckets": {
+  "a_miss": 3,
+  "b_needed_hit": 2,
+  "c_needed_imp1": 0,
+  "d_seen": 16,
+  "e_nothing": 9
+ },
+ "per_label": {
+  "Specific impact sounds": 30,
+  "Thump, thud": 0,
+  "Knock": 0,
+  "Tap": 0,
+  "Hammer": 0
+ },
+ "distinct_misses": [
+  [
+   "b3_golf_course",
+   "Whack, thwack",
+   6.5
+  ],
+  [
+   "b3_golf_course",
+   "Whack, thwack",
+   24.4
+  ],
+  [
+   "tg_d095",
+   "Dishes, pots, and pans",
+   16.6
+  ]
+ ],
+ "elsewhere": 27,
+ "trigger": false,
+ "peaks": [
+  {
+   "part": "dev",
+   "clip": "b3_construction_site",
+   "t": 6.44,
+   "run": [
+    6.4,
+    6.56
+   ],
+   "peak": 0.588,
+   "labels": {
+    "Specific impact sounds": 0.588
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 6.74,
+   "run": [
+    6.7,
+    6.84
+   ],
+   "peak": 0.692,
+   "labels": {
+    "Specific impact sounds": 0.692
+   },
+   "bucket": "a_miss",
+   "gold": [
+    [
+     "Whack, thwack",
+     6.5,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 11.46,
+   "run": [
+    11.4,
+    11.58
+   ],
+   "peak": 0.702,
+   "labels": {
+    "Specific impact sounds": 0.702
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Whip",
+     11.2,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 19.84,
+   "run": [
+    19.82,
+    19.92
+   ],
+   "peak": 0.631,
+   "labels": {
+    "Specific impact sounds": 0.631
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Arrow",
+     19.7,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "b3_golf_course",
+   "t": 24.72,
+   "run": [
+    24.7,
+    24.74
+   ],
+   "peak": 0.581,
+   "labels": {
+    "Specific impact sounds": 0.581
+   },
+   "bucket": "a_miss",
+   "gold": [
+    [
+     "Whack, thwack",
+     24.4,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "t": 11.54,
+   "run": [
+    11.16,
+    12.16
+   ],
+   "peak": 0.853,
+   "labels": {
+    "Specific impact sounds": 0.853
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Glass",
+     11.3,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 5.66,
+   "run": [
+    5.06,
+    6.24
+   ],
+   "peak": 0.656,
+   "labels": {
+    "Specific impact sounds": 0.656
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 11.16,
+   "run": [
+    11.12,
+    11.94
+   ],
+   "peak": 0.642,
+   "labels": {
+    "Specific impact sounds": 0.642
+   },
+   "bucket": "b_needed_hit",
+   "gold": [
+    [
+     "Glass",
+     11.0,
+     3
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 17.52,
+   "run": [
+    17.04,
+    17.92
+   ],
+   "peak": 0.637,
+   "labels": {
+    "Specific impact sounds": 0.637
+   },
+   "bucket": "b_needed_hit",
+   "gold": [
+    [
+     "Shatter",
+     16.9,
+     3
+    ]
+   ]
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 18.8,
+   "run": [
+    18.66,
+    18.9
+   ],
+   "peak": 0.63,
+   "labels": {
+    "Specific impact sounds": 0.63
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev",
+   "clip": "mv_protest_scene_movie",
+   "t": 22.82,
+   "run": [
+    22.78,
+    22.9
+   ],
+   "peak": 0.592,
+   "labels": {
+    "Specific impact sounds": 0.592
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "t": 14.04,
+   "run": [
+    14.0,
+    14.16
+   ],
+   "peak": 0.596,
+   "labels": {
+    "Specific impact sounds": 0.596
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Fireworks",
+     13.9,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 1.42,
+   "run": [
+    1.4,
+    1.48
+   ],
+   "peak": 0.602,
+   "labels": {
+    "Specific impact sounds": 0.602
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Water",
+     0.6,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 2.54,
+   "run": [
+    2.26,
+    2.62
+   ],
+   "peak": 0.714,
+   "labels": {
+    "Specific impact sounds": 0.714
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 3.92,
+   "run": [
+    3.5,
+    3.98
+   ],
+   "peak": 0.616,
+   "labels": {
+    "Specific impact sounds": 0.616
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 4.94,
+   "run": [
+    4.9,
+    5.04
+   ],
+   "peak": 0.73,
+   "labels": {
+    "Specific impact sounds": 0.73
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Shatter",
+     5.4,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 5.58,
+   "run": [
+    5.54,
+    6.0
+   ],
+   "peak": 0.694,
+   "labels": {
+    "Specific impact sounds": 0.694
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Shatter",
+     5.4,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 7.4,
+   "run": [
+    7.34,
+    7.48
+   ],
+   "peak": 0.657,
+   "labels": {
+    "Specific impact sounds": 0.657
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Glass",
+     7.0,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 8.54,
+   "run": [
+    7.88,
+    8.7
+   ],
+   "peak": 0.681,
+   "labels": {
+    "Specific impact sounds": 0.681
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "t": 9.86,
+   "run": [
+    9.62,
+    10.0
+   ],
+   "peak": 0.799,
+   "labels": {
+    "Specific impact sounds": 0.799
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 0.62,
+   "run": [
+    0.28,
+    1.26
+   ],
+   "peak": 0.725,
+   "labels": {
+    "Specific impact sounds": 0.725
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Stir",
+     0.0,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 1.92,
+   "run": [
+    1.88,
+    1.96
+   ],
+   "peak": 0.639,
+   "labels": {
+    "Specific impact sounds": 0.639
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Clicking",
+     2.3,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 2.38,
+   "run": [
+    2.36,
+    2.42
+   ],
+   "peak": 0.585,
+   "labels": {
+    "Specific impact sounds": 0.585
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Clicking",
+     2.3,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "t": 16.88,
+   "run": [
+    16.86,
+    16.92
+   ],
+   "peak": 0.588,
+   "labels": {
+    "Specific impact sounds": 0.588
+   },
+   "bucket": "a_miss",
+   "gold": [
+    [
+     "Dishes, pots, and pans",
+     16.6,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d121",
+   "t": 3.28,
+   "run": [
+    3.24,
+    3.36
+   ],
+   "peak": 0.613,
+   "labels": {
+    "Specific impact sounds": 0.613
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Explosion",
+     3.2,
+     2
+    ],
+    [
+     "Engine",
+     3.3,
+     1
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 1.88,
+   "run": [
+    1.66,
+    2.08
+   ],
+   "peak": 0.611,
+   "labels": {
+    "Specific impact sounds": 0.611
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Moo",
+     1.6,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 2.42,
+   "run": [
+    2.34,
+    2.54
+   ],
+   "peak": 0.608,
+   "labels": {
+    "Specific impact sounds": 0.608
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Moo",
+     1.6,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 5.82,
+   "run": [
+    5.8,
+    5.88
+   ],
+   "peak": 0.591,
+   "labels": {
+    "Specific impact sounds": 0.591
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Clang",
+     5.6,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 6.24,
+   "run": [
+    6.2,
+    6.38
+   ],
+   "peak": 0.628,
+   "labels": {
+    "Specific impact sounds": 0.628
+   },
+   "bucket": "d_seen",
+   "gold": [
+    [
+     "Clang",
+     5.6,
+     2
+    ]
+   ]
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d128",
+   "t": 8.08,
+   "run": [
+    7.24,
+    9.48
+   ],
+   "peak": 0.683,
+   "labels": {
+    "Specific impact sounds": 0.683
+   },
+   "bucket": "e_nothing",
+   "gold": null
+  }
+ ]
+}

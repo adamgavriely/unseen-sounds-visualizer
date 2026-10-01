@@ -1958,3 +1958,14 @@ either part) OR fewer-pictures clause (cost < 2.282, wrong <= 21 − 3 x hits lo
 limit, stated before running: a hit needs the drawn family == the gold's canonical family (Whack thwack, Clang, Hammer,
 Explosion, Dishes); "Specific impact sounds" is its own family, so a Qwen answer that only names a generic impact cannot
 score — step 1 therefore also reports whether Qwen could name each (a) family at all (step 2 reports the name it gave).
+### Round 36 result — IMP step 1: STOP (CPU, laptop, `benchmark/gold/imp_screen.py` -> `imp_screen.json`)
+71 clips, every one with a DASM cache. 30 union peaks >= 0.575; every one is `Specific impact sounds` alone (Thump/thud, Knock,
+Tap, Hammer never reach the bar on merged DEV). Buckets: (a) SHIP8 miss 3, (b) needed already hit 2 (mv_protest Glass 11.0,
+Shatter 16.9 = would be duplicates), (c) 0, (d) seen 16, (e) nothing 9. Distinct misses with a peak = 3 (b3_golf_course
+Whack thwack 6.5 -> peak 6.74 @0.692 and 24.4 -> 24.72 @0.581; tg_d095 Dishes 16.6 -> 16.88 @0.588): the >= 3 half of the
+trigger is met, but elsewhere = 27 > 3 x 3 = 9 -> **STOP, no GPU job, step 2 not built.** Elsewhere peaks sit on tg_d075 (8),
+mv_protest_scene_movie (5), tg_d128 (5), tg_d095 (3), b3_golf_course (2) + 4 singles; the seen sounds they land on are Glass,
+Shatter, Clicking, Moo, Clang, Whip, Arrow, Fireworks, Water, Stir, Explosion, Engine. The other impact-like misses have no peak:
+nyc_1689 Hammer 8.1 / 13.7 (union max in window 0.18 / 0.28), nyc_2627 Clang 3.8 (0.48), as_explosion Explosion 2.8 (0.31),
+tg_d125 Explosion 5.4 (0.569, just under the bar — noted, not re-run at a lower bar: that would be a post-hoc bar). Structural
+note stands: all three (a) peaks fire on the generic family, so even a triggered step 2 would need Qwen to name Whack/Dishes.
