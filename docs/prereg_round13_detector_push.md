@@ -2485,3 +2485,14 @@ calibration). Reported: (1) alone and (1)+(2) (= veto OR add). Every flip listed
 every placed picture whose `cross_group.classify` match is a gold sound that flips under (1) or (1)+(2) is listed with its
 class (hit / visible / collision / dontcare): a flip to seen would silence it, a flip to not-seen would let it through.
 Report only; the arm is not re-run.
+### Round 38 SYNC-2 result — (1) ADD-seen alone: GO on the bar; (1)+(2): STOP (CPU, `sync_gate.py score2` -> `gate_gold/sync2_summary.json`)
+t_hi = 0.9976 (precision 1.00 on the non-judge set: all 5 of 175 sounds with sync >= t_hi are gold-seen — a thin calibration).
+**DEV judge (base 16/41 silenced, 33/38 kept): (1) add 19/41, 33/38, 3 flips, all correct** (b3_bakery_morning Crumpling 14.1
+sync 0.999 votes 0-3; b3_ia_youtube_skxtz9foauw_0 Water 24.6 and Tap 27.3, sync 0.9995, votes 1-2) **= GO, exactly on the bar
+(silenced >= 19 with kept >= 32)**. (1)+(2) add+veto 14/41, 36/38, 11 flips (the 3 above + Round 38's veto flips: 3 needed rescued,
+5 seen lost) = STOP. Pictures: on the cluster (`~/MscProj_tg`, SHIP8_proposed, 34 DEV pictures) NO SHIP8 picture is matched to
+any flipped sound under either variant — the three newly silenced sounds were never drawn, and the three veto rescues (bell_miami
+Bell, golf Whack, ambulance Vehicle 7.3) have no SHIP8 picture either (ambulance's is Siren 0.0, golf's Bird 18.8), so the arm's
+hits / wrong would not change on DEV. Reading: a confident in-sync peak is a precise but rare "on screen" signal (5/175 on the
+calibration set, 3 of 25 kept-but-seen sounds on DEV); the GO is a 3-sound gain on the bar with a threshold set by 5 sounds, and
+it changes no shipped picture. Adoption as a `src/` flag is Adam's decision; the shape disclosure above applies.
