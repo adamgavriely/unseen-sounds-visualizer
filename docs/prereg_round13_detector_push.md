@@ -2760,3 +2760,16 @@ the kept pictures, `score_per_sound.score_clip` as every round today; base 28/58
 hits >= 28, no needed hit lost, w = 2 cost lower; more-hits: hits up, cross / phantom not up on either part, w = 1 cost lower). Known
 before this entry: the 40d hits are Hammer 13.92, Train 15.04, Bell 0.0, Laughter 8.48, Fart 0.0; no DASM value for any of the 23 has
 been looked at. **Files:** `benchmark/gold/expect_a4_screen.py` -> `benchmark/gold/expect_a4_screen.json`.
+### Round 40e result — EXPECT-A4: **GO on the main rule**, FAIL on more-hits (CPU, login node, existing DASM caches)
+Base reproduced (28/58, 21 (6/13/2), 2.282). **SHIP8+EXPECT-A4: merged 31/58, 26 wrong (7/17/2), cost 2.254 at w = 2 (base 2.282),
+2.155 at w = 1 (base 2.197)** | DEV 20/38, 18 (4/12/2), 2.204 (base 2.122) | tagger DEV2 11/20, 8 (3/5/0), 2.364 (base 2.636). No hit
+lost. DASM within onset ± 0.5 s keeps 8 of the 23 added pictures (no family without a column): **3 hits kept — bell_miami Bell 0.0
+(DASM 0.92), tg_d107 Laughter 8.48 (0.847), tg_d133 Fart 0.0 (0.612)** — plus 1 visible (tg_d020 Rain 0.87) and 4 cross
+(rainforest_7629 Bird 0.583, arrest Footsteps 0.583, storm Explosion 0.612, motorcycle Gunshot 0.723). Dropped below the bar: the two
+FineLAP-placed hits nyc_1689 Hammer (0.273) and favela Train (0.242) and 13 wrong ones (incl. all 3 phantoms, 5 of 6 visible).
+**Main rule: hits 31 >= 28, no needed hit lost, cost 2.254 < 2.282 -> GO.** More hits: +3 but cross 13 -> 17 (DEV 8 -> 12) -> FAIL.
+Secondary (the shipped span ± 0.5 s window): 31/58, 27 (7/17/3), cost 2.282 — a tie with SHIP8 (tg_d007 Vehicle 0.612 enters as a
+phantom); it cannot change the verdict and is reported as pre-registered. Caveat for Adam: the margin is 0.028 cost on 71 clips
+(3 hits bought with 5 wrong pictures); DEV alone is worse (2.204 vs 2.122), the gain is on tagger DEV2 (2.364 vs 2.636). As every
+round today, GO means a `src/` flag (whole-clip Qwen3-Omni list -> frozen map, first two families -> FineLAP placement >= 0.329 ->
+DASM >= 0.575 at onset ± 0.5 s -> shipped gate -> 2-s picture) is Adam's decision; merged TEST is spent and would be read once at the end.

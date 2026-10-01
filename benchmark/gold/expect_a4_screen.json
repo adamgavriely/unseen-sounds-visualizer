@@ -1,0 +1,340 @@
+{
+ "base": {
+  "merged": {
+   "hits": 28,
+   "n": 58,
+   "wrong": 21,
+   "visible": 6,
+   "cross": 13,
+   "phantom": 2,
+   "cost": 2.2816901408450705
+  },
+  "dev": {
+   "hits": 19,
+   "n": 38,
+   "wrong": 14,
+   "visible": 4,
+   "cross": 8,
+   "phantom": 2,
+   "cost": 2.122448979591837
+  },
+  "dev2": {
+   "hits": 9,
+   "n": 20,
+   "wrong": 7,
+   "visible": 2,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.6363636363636362
+  }
+ },
+ "rows": {
+  "merged": {
+   "hits": 31,
+   "n": 58,
+   "wrong": 26,
+   "visible": 7,
+   "cross": 17,
+   "phantom": 2,
+   "cost": 2.2535211267605635
+  },
+  "dev": {
+   "hits": 20,
+   "n": 38,
+   "wrong": 18,
+   "visible": 4,
+   "cross": 12,
+   "phantom": 2,
+   "cost": 2.204081632653061
+  },
+  "dev2": {
+   "hits": 11,
+   "n": 20,
+   "wrong": 8,
+   "visible": 3,
+   "cross": 5,
+   "phantom": 0,
+   "cost": 2.3636363636363638
+  }
+ },
+ "rows_span_window": {
+  "merged": {
+   "hits": 31,
+   "n": 58,
+   "wrong": 27,
+   "visible": 7,
+   "cross": 17,
+   "phantom": 3,
+   "cost": 2.2816901408450705
+  },
+  "dev": {
+   "hits": 20,
+   "n": 38,
+   "wrong": 18,
+   "visible": 4,
+   "cross": 12,
+   "phantom": 2,
+   "cost": 2.204081632653061
+  },
+  "dev2": {
+   "hits": 11,
+   "n": 20,
+   "wrong": 9,
+   "visible": 3,
+   "cross": 5,
+   "phantom": 1,
+   "cost": 2.4545454545454546
+  }
+ },
+ "pictures": [
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_1689",
+   "family": "Hammer",
+   "start": 13.92,
+   "class_40d": "hit",
+   "dasm_onset": 0.273,
+   "dasm_span": 0.281,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_citywalk_nyc_2627",
+   "family": "Mechanical fan",
+   "start": 0.0,
+   "class_40d": "cross",
+   "dasm_onset": 0.061,
+   "dasm_span": 0.061,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_harbour_boats_724",
+   "family": "Footsteps",
+   "start": 9.76,
+   "class_40d": "phantom",
+   "dasm_onset": 0.215,
+   "dasm_span": 0.215,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_nature_rainforest_7629",
+   "family": "Bird",
+   "start": 15.52,
+   "class_40d": "cross",
+   "dasm_onset": 0.583,
+   "dasm_span": 0.583,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev",
+   "clip": "ambient_snow_walk_930",
+   "family": "Vehicle",
+   "start": 0.0,
+   "class_40d": "visible",
+   "dasm_onset": 0.455,
+   "dasm_span": 0.455,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_botanic_garden",
+   "family": "Footsteps",
+   "start": 8.48,
+   "class_40d": "cross",
+   "dasm_onset": 0.395,
+   "dasm_span": 0.395,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_favela_rio",
+   "family": "Train",
+   "start": 15.04,
+   "class_40d": "hit",
+   "dasm_onset": 0.242,
+   "dasm_span": 0.242,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "b3_ia_youtube_skxtz9foauw_0",
+   "family": "Water",
+   "start": 24.8,
+   "class_40d": "visible",
+   "dasm_onset": 0.047,
+   "dasm_span": 0.047,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Bell",
+   "start": 0.0,
+   "class_40d": "hit",
+   "dasm_onset": 0.92,
+   "dasm_span": 0.92,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev",
+   "clip": "bell_miami",
+   "family": "Vehicle",
+   "start": 5.12,
+   "class_40d": "cross",
+   "dasm_onset": 0.058,
+   "dasm_span": 0.058,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Glass",
+   "start": 11.52,
+   "class_40d": "visible",
+   "dasm_onset": 0.059,
+   "dasm_span": 0.059,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_arrest_street_scene",
+   "family": "Footsteps",
+   "start": 13.76,
+   "class_40d": "cross",
+   "dasm_onset": 0.583,
+   "dasm_span": 0.583,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev",
+   "clip": "mv_storm_scene_house",
+   "family": "Explosion",
+   "start": 12.96,
+   "class_40d": "cross",
+   "dasm_onset": 0.612,
+   "dasm_span": 0.692,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Gunshot",
+   "start": 13.92,
+   "class_40d": "cross",
+   "dasm_onset": 0.723,
+   "dasm_span": 0.723,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev",
+   "clip": "un_driving_motorcycle_DgdHSmwA",
+   "family": "Crowd",
+   "start": 0.0,
+   "class_40d": "visible",
+   "dasm_onset": 0.476,
+   "dasm_span": 0.478,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d007",
+   "family": "Vehicle",
+   "start": 6.4,
+   "class_40d": "phantom",
+   "dasm_onset": 0.554,
+   "dasm_span": 0.612,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d020",
+   "family": "Rain",
+   "start": 0.0,
+   "class_40d": "visible",
+   "dasm_onset": 0.87,
+   "dasm_span": 0.87,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d029",
+   "family": "Goose",
+   "start": 10.88,
+   "class_40d": "cross",
+   "dasm_onset": 0.152,
+   "dasm_span": 0.152,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d075",
+   "family": "Glass",
+   "start": 5.44,
+   "class_40d": "visible",
+   "dasm_onset": 0.079,
+   "dasm_span": 0.079,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Door",
+   "start": 0.48,
+   "class_40d": "cross",
+   "dasm_onset": 0.278,
+   "dasm_span": 0.284,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d095",
+   "family": "Water",
+   "start": 7.68,
+   "class_40d": "phantom",
+   "dasm_onset": 0.374,
+   "dasm_span": 0.387,
+   "outcome": "below bar"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d107",
+   "family": "Laughter",
+   "start": 8.48,
+   "class_40d": "hit",
+   "dasm_onset": 0.847,
+   "dasm_span": 0.89,
+   "outcome": "kept"
+  },
+  {
+   "part": "dev2",
+   "clip": "tg_d133",
+   "family": "Fart",
+   "start": 0.0,
+   "class_40d": "hit",
+   "dasm_onset": 0.612,
+   "dasm_span": 0.612,
+   "outcome": "kept"
+  }
+ ],
+ "tally": {
+  "kept": 8,
+  "below": 15,
+  "no_column": 0,
+  "kept_span": 9
+ },
+ "hits_lost": [],
+ "cost": {
+  "1": {
+   "base": 2.197,
+   "new": 2.155
+  },
+  "2": {
+   "base": 2.282,
+   "new": 2.254
+  }
+ },
+ "main_GO": true,
+ "more_hits_PASS": false
+}
