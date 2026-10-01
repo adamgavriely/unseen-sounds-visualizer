@@ -3335,3 +3335,20 @@ DEV-selected MAX_GAP 8.0 s; DEV is identical (29/58, 18, 2.141), TEST reads 22/6
 recommendation is now made on DEV only: drop the floor (DEV 29/18/2.141 vs 27/15/2.169); the TEST rows stay recorded, not used.
 Rule from here: every choice (rules, limits, thresholds, config keep/drop) is made on DEV or the held-out 415; TEST is read once
 per shipped change and only reported.
+
+## Round 51 GRP-P — smart grouping from the gold's own continuity rule (written 2026-10-01 12:40 BEFORE any number of it; Adam: "a grouping limit, the number from DEV, maybe a smart grouping")
+**Why.** DEV cannot pick a picture-gap limit: every limit 3–8 s gives the same merged-DEV score (merges at 2.75 / 2.96 s; Omni
+refused the wider pairs), and needed same-family returns in the DEV gold occur at every gap (0.6, 1.4, 2.1, 2.4, 3.0, 3.2, 4.1,
+4.5, 5.9 s). The project's annotation rule is "one row per continuous sound, split at pauses > 2 s" (`docs/prereg_round12_v2.md`
+l. 40; `docs/setup_audit_2026-09-28.md` l. 18). Disclosed: revisiting grouping was prompted by today's TEST reads (the ice-cream-truck
+return); the rule's content and its 2-s value predate them and come from the annotation protocol, not from any clip.
+**Rule.** Keep GRP-A (same/new, both orders, picture-gap cap 8 s as pre-registered) and add a pause question on the same cut:
+"Does the {lab} sound stop completely for more than 2 seconds before it is heard again? Answer yes or no." (both option orders).
+Merge iff same/same AND no/no.
+**Step 1 — calibration on the held-out 415 (selection set, read first).** Every pair of consecutive same-label AudioSet-Strong
+segments with gap 0 < g <= 8 s; cut = seg1 end − 1.0 … seg2 start + 1.5 s (as GRP); truth = g > 2.0. Report accuracy by bin
+(<= 1, 1–2, 2–4, 4–8 s; 1.5–2.5 as the fuzzy zone). **Bar: accuracy >= 0.75 on BOTH sides of 2 s (g <= 2 and g > 2, both-orders
+agreement required, disagreement = "no answer" counted wrong).** Below the bar -> STOP (Omni cannot time pauses; the cap stays 8 s).
+**Step 2 — DEV (only if Step 1 passes).** GRP-P vs shipped GRP-A (base SHIP8+MD3 29/58, 18, 2.141), main rule / fewer-pictures
+clause; **tie-break fixed now: on a DEV tie, ship the rule that matches the gold definition (GRP-P)**. TEST read once afterwards,
+reported only. Files: `benchmark/gold/grpp_screen.py` -> `benchmark/gold/grpp/`, `slurm/job_grpp.sh`.
