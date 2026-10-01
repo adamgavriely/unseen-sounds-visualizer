@@ -69,3 +69,5 @@ when on-screen pictures count half, and only if every extra wrong picture is an 
 | NAMED-VETO | drop a picture when the gate says a different thing makes the sound at that moment | 6 of 50 pictures judged, all dropped: 4 wrong gone but 2 true hits lost (26 / 17, cost same 2.282): rejected |
 
 **Found:** the shipped display joins repeats within 1.5 s, but every score today was measured at 2.0 s. At 1.5 s the best has 2 more wrong pictures (28 / 23 / 2.338). Needs Adam's call: ship 2.0 s, or re-score at 1.5 s.
+
+**Engineering (1 Oct night):** new clips now build their FineLAP scores automatically (src/listener_prep.py), so the shipped pipeline runs on clips outside DEV/TEST (needed for ComfyUI). Checked: identical scores on a DEV clip; stage-4 cache check passes on a live clip.
