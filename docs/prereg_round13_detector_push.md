@@ -4399,3 +4399,45 @@ extracts BEATs spans itself and then calls `fuse_flexsed`, so the swap is done a
 live path and the harness share): with TAG_ENS set, the incoming tagger spans are re-cut from fw_E for clip `config._CURRENT_CLIP`;
 tagger frames are read from the cache folder or, if absent, scored live from the clip's wav and cached. `round13_dev.py`: one arm line.
 Files: `benchmark/gold/tagens.py` (cache / fit / step1 / diff), `slurm/job_tagens.sh`.
+
+## Round 64 CONCEALED-ACTION — the gate may not silence a sound whose making is hidden inside its visible source (written 2026-10-02 BEFORE any Round 64 DEV number; Panel 2 Fable C idea 1, `docs/review/panel2_2026-10-01/fC_perception.md`)
+**Principle (general, not per case).** For some sources, seeing the object is not seeing the sound being made: a bell's clapper
+is inside the bell or tower, a fart / burp / hiccup / stomach rumble is inside the body on screen. For these, "the source is on
+screen" does not tell the viewer the sound happened, so the visibility gate must not silence them. **Online, per video:** a fixed
+table of pipeline labels (AudioSet names, as `spec.event_label` holds them at stage 5; `resolve_label` keeps all of them unchanged),
+no gold, no per-clip input.
+**Candidate list (fixed now from the ontology, Fable C's list, no additions):** Bell, Church bell, Bicycle bell, Change ringing;
+Fart, "Burping, eructation", Hiccup, Stomach rumble. **Excluded (action visible from outside):** Cowbell, Jingle bell, Chime, Tuning fork,
+"Chewing, mastication", Biting, Gargling. **Unit = the exact pipeline label** (not `score_per_sound.same_family`, which folds Bicycle
+bell, Jingle bell, Chime and Tuning fork into Bell and would contradict the exclusion list).
+**Admission (per label) on the gate-gold CALIBRATION sounds** = the non-judge (test85) part of `benchmark/gold/gate_gold/Qwen38-27B`
+(90 clips, 176 sounds of importance >= 2; none is a DEV clip), cached shipped votes, shipped rule (`gate_gold.decide(..., "majority")`:
+silenced iff every stretch is seen by majority), seen = gold visible or obvious. A label is **admitted** iff >= 1 needed sound is
+silenced AND 0 seen sounds are silenced; a label with no calibration instance is **report-only** (never shipped); else **rejected**.
+**Disclosed: the calibration tally was computed during orientation, before this entry** (it is the admission data, not the decision
+data; DEV has not been run):
+- **Bell: 3 needed (bell_kazansky, m5_horror_conjuring_82, tyrj_wZor4U_0), 1 silenced (tyrj 1.0); 0 seen -> ADMITTED.** Honest caveat:
+  "0 seen silenced" is 0 of 0 — no seen Bell exists in calibration, so the protective clause has no power for Bell; the cost of the
+  exemption (a seen bell re-shown) is unobserved, not shown absent.
+- **Bicycle bell: 1 needed, silenced (mYI2QzLce_s 9.0); 3 seen, all 3 silenced (1ghXWnSJibU_0, mYI2QzLce_s 0.5, tyrj 3.4) -> REJECTED.**
+  (A ringing bicycle bell is a thumb on a lever, visible; the admission rule removes it, which is its job.)
+- Church bell, Change ringing, Fart, "Burping, eructation", Hiccup, Stomach rumble: no calibration instance -> report-only.
+- **Fable C's "Bell 2 needed / 0 seen" does not reproduce:** exact label gives 1 / 0; Bell + Bicycle bell together give 2 needed / 3 seen.
+**Ship table (CA) = {Bell}.** Report-only table (CAR) = {Bell, Church bell, Change ringing, Fart, "Burping, eructation", Hiccup,
+Stomach rumble} (every label not rejected; this is "the arm with Digestive included").
+**Exemption point (both kill paths, at the stage-5 verdict, `reason.decide_subjects`):** (1) VLM vote: a sound in the table whose
+every stretch is voted seen keeps its first stretch (as the I2 keep: `kept = pieces[:1]`; the picture then spans the burst as any
+partly-kept sound; the votes are still logged); (2) kinship: a sound in the table is never silenced as "a kind of X whose source is
+visible". Nothing else changes (scene fit, WW5, DEPICT, GROUP, dedup run as shipped on the kept sound).
+**Hook (disclosed):** one flag `CONCEALED_ACTION` in `config.py` (default None = off; a tuple of labels) read only in
+`src/stage5_cross_modal_analysis/reason.py`. Harness minimum in `benchmark/gold/round13_dev.py` (beyond the arm line): the key is
+added to `BASE` (None) and to `STAGE5_KEYS`, else `stage5()` never applies it; arms `SHIP8+MD3+WW5+CA` and `SHIP8+MD3+WW5+CAR`.
+**DEV arm (merged DEV = old DEV via `round13_dev.py` in ~/MscProj_r13 + DEV2 via `tagger_prep.py --split dev2` in ~/MscProj_tg, then
+`merged_dev.py`).** Base D = SHIP8+MD3+WW5 must reproduce **29/58, 14 (6/6/2), 2.028** (no picture floor) first; else STOP.
+**PASS (CA, vs D) iff** cost < 2.028 AND (main rule: hits >= 29 and no needed hit lost; OR fewer-pictures clause: wrong <= 14 − 3 ×
+needed hits lost and hits >= 26). CAR is scored and reported, never selected on. Listed: every changed picture with its class.
+**Honest expectation:** CA re-shows bell_miami Bell (gate 2-1 seen ×3, "the church") -> +1 hit, **about 30/58, 14, ~1.97**, unless
+another DEV Bell is silenced while seen (then +1 visible). CAR: tg_d133 Fart ×2 if they are gate-killed there; Digestive is
+report-only whatever it does. **For Adam:** these kills (the source is on screen, the action that makes the sound is hidden) are a
+different class from the look-alike kills he accepted on 28 Sept (a visible thing that is NOT the source, e.g. a washing machine for
+Train); accepting those does not imply accepting these. Per-video cost: 0 (a table look-up). Job `slurm/job_concealed.sh`. TEST not read.
