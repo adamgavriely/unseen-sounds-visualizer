@@ -1969,3 +1969,43 @@ Shatter, Clicking, Moo, Clang, Whip, Arrow, Fireworks, Water, Stir, Explosion, E
 nyc_1689 Hammer 8.1 / 13.7 (union max in window 0.18 / 0.28), nyc_2627 Clang 3.8 (0.48), as_explosion Explosion 2.8 (0.31),
 tg_d125 Explosion 5.4 (0.569, just under the bar — noted, not re-run at a lower bar: that would be a post-hoc bar). Structural
 note stands: all three (a) peaks fire on the generic family, so even a triggered step 2 would need Qwen to name Whack/Dishes.
+
+### Round 37 IMP-V — the gate names the maker of a DASM impact peak (written 2026-10-01 BEFORE any number)
+**Motivation (Adam):** Round 36 stopped because 27 of 30 DASM impact peaks fall on seen sounds or on nothing — but it never
+applied the pipeline's own visibility gate, which is what silences seen sounds. Idea: when DASM hears a generic impact, let
+the video frames (the gate VLM) name what made it (golf swing -> whack), then let the gate decide as usual. Base = **SHIP8 on
+the final merged DEV: 28/58 hits, 21 wrong, cost 2.282** (the screen must reproduce it before any IMP-V line is read).
+Nothing in `src/` or `config.py` is edited.
+**Peaks.** Exactly Round 36's: `imp_screen.peaks` on the DASM caches from `cross_group.PARTS` (71 merged-DEV clips, union of
+the 5 impact-type columns >= 0.575, runs merged over LISTEN_RUN_GAP, peak = argmax frame); assert the same 30 (clip, t) as
+`imp_screen.json`. The rule never reads the gold.
+**Skip (no question asked).** A placed SHIP8 picture (`btp_screen.parts`, `TG_ARMS=SHIP8`) whose canonical family is impact-type
+(IMPACT_FAMS = canonical of the option labels below + "Specific impact sounds") with start <= t <= end -> "inside existing".
+**Closed question (one, both orders).** Frames = the gate's own stretch sampling with a = b = t: 6 frames at t − 1 + 2i/5,
+i = 0..5 (`_sample_frames_at`, clamped at 0), clip from `detector_dry.clip_path` (DEV) / `tagger_prep.CLIPS` (tagger DEV).
+Model = the shipped gate VLM `Qwen/Qwen3.8-27B` via `reason._load`, `reason._ask(..., images=frames, max_new=6)`, thinking off.
+Prompt: "A short impact sound is heard at this moment. Which of these most likely made it?" + lettered options (a)…(l),
+"Answer with the letter only." Options (phrase -> drawn AudioSet label): a whack or thwack — a club, bat, racket or hand
+striking something -> `Whack, thwack`; a hammer striking -> `Hammer`; a knock, knuckles on a door or wood -> `Knock`;
+a door slamming -> `Slam`; a clang, metal struck -> `Clang`; something smashing or crashing, glass breaking -> `Smash, crash`;
+dishes, pots or pans clattering -> `Dishes, pots, and pans`; a gunshot -> `Gunshot, gunfire`; an explosion -> `Explosion`;
+a thump or thud, a heavy object landing -> `Thump, thud`; a door opening or closing -> `Door`; none of these / cannot tell.
+Asked in the forward order and in the fully reversed order (the model's letter-position bias, `reason._ab`); the reply's first
+letter after `lstrip("(")` is read. ACCEPT iff both orders map to the same label and it is not "none"; split or none -> no
+picture (reported as such).
+**Gate.** On the SAME frames, `reason._sound_is_visible(label, frames, mdl, proc)` exactly as `gate_gold.run_vlm` (three votes,
+majority = config.VISIBILITY_RULE; `LAST_VOTES` saved). Seen -> no picture. Not seen -> a picture (label, t, t + 2.0 s),
+unless a SHIP8 picture of the same canonical family starts within 1.0 s of t (would be a duplicate; skipped, reported).
+**Score (CPU, `dbr_screen` style).** Arm = saved SHIP8 pictures + the new pictures, `score_per_sound.score_clip` per part and
+merged, class of each new picture by `cross_group.classify`, hits lost per part by per-clip comparison.
+**Pass vs SHIP8 (28/58, 21, 2.282):** old rule (hits >= 28, wrong <= 21 + 2 x gain, cost < 2.282, no needed hit lost on either
+part) OR fewer-pictures clause (cost < 2.282, wrong <= 21 − 3 x hits lost, hits lost <= 3). GO -> a `src/` flag is Adam's
+decision; STOP -> recorded, closed.
+**Structural risk, stated before running:** the naming question can only succeed when the frames SHOW the maker — which is
+close to the gate's own "name" vote. So the peaks where the VLM names a family are the ones the gate is most likely to silence,
+while the three target misses (golf Whack 6.5 / 24.4, tg_d095 Dishes 16.6) are needed precisely because the maker is not
+plainly on screen. The screen therefore reports three outcome counts: named -> gate seen (silent); named -> drawn (with class);
+unnamed / split / none. A STOP with most peaks in the first bin means the idea folds into the gate; a STOP with the targets in
+the third bin means frames alone cannot name an off-screen impact.
+**Files:** `benchmark/gold/imp_v_screen.py` (`run` = GPU, one JSON per peak in `benchmark/gold/imp_v/`, resumable; `score` =
+CPU -> `imp_v_screen.json`), `slurm/job_imp_v.sh` (H200-4h / A100-4h, from `~/MscProj_tg`, `TG_ARMS=SHIP8`).
