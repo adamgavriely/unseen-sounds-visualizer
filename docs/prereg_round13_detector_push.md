@@ -2299,3 +2299,12 @@ hits before -> after; counts visible / not visible / split; merged DEV per part.
 **Pass.** Main rule: GO iff merged hits >= 28 AND no clip on either part has fewer hits than under SHIP8 AND cost at
 visible weight w = 2 is lower than 2.282. Fewer-pictures clause: cost lower AND wrong <= 21 - 3 x (hits lost) AND hits
 lost <= 3. GO -> a `src/` flag is Adam's decision; STOP -> recorded, closed.
+### Round 38 result — E4 CF: STOP on both variants (H200, job 31598491, `benchmark/gold/cf_gate.py` -> `gate_gold/cf_summary.json`, votes in `gate_gold/cf_Qwen38-27B/`)
+49 clips, 145 stretches. Base seen 16/41 silenced, needed 33/38 kept. **(a) CF alone: 15/41, 32/38 -> STOP. (b) fourth vote: 16/41,
+31/38 -> STOP.** Q1 yes 30 / split 12; Q2 yes 46 / split 30; CF seen 53 stretches vs majority 54 — same volume, different sounds.
+(a) flips 14 sounds: 4 needed newly silenced (as_explosion Gunshot 0.0 + Explosion 9.1, golf Whack 24.4, applause Crowd 1.9 —
+all through Q2 "obvious" = yes while Q1 said no), 3 needed newly kept (bell_miami Bell: Q1 split x3; ambulance Vehicle; tornado
+Siren), 4 seen newly silenced (bakery Crumpling, crossing Train, ia Water), 4 seen newly kept (Machine gun, Glass, aviary Bird
+— one stretch splits — , tornado Cellphone). (b) flips only Gunshot 0.0 and golf Whack 24.4, both needed -> silenced. Reading:
+the gold's Q2 asked of a VLM is the leak — it answers "a viewer would already know" for explosions, gunfire and applause whose
+makers are off screen; Q1 alone is closer to the shipped gate but splits on bells. Closed.
