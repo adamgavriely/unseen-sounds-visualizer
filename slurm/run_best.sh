@@ -16,7 +16,7 @@
 set -euo pipefail
 cd "$SLURM_SUBMIT_DIR"
 mkdir -p logs
-NAME="${1:?name}"; SRC="${2:?clip folder}"; ARM="${3:-SHIP8+MD3}"
+NAME="${1:?name}"; SRC="${2:?clip folder}"; ARM="${3:-SHIP8+MD3+WW5}"
 source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate msproj
 export PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TG_EXTRA_SPLITS="$NAME" TG_ARMS="$ARM"   # TG_ARMS: re-point the arm's cache paths to this split
