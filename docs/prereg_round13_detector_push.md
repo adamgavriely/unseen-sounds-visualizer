@@ -3524,3 +3524,15 @@ Cumulative below the edge: 0.10 0.100 (211); 0.15 0.140 (257); 0.20 0.143 (300);
 (392)**; 0.40 0.226 (434); 0.45 0.228; 0.50 0.240; 0.60 0.265. **b = 0.35** (highest edge with cumulative <= 0.20), inside (0.1, 0.4)
 -> **GO to step 2.** Per step 0, b = 0.35 is expected to lose tg_d075 Alarm and tg_d032 Thunder (both single-ear rows) — written
 here before the DEV run; the arm is run as pre-registered (b is not moved).
+
+### Round 53 step 2 result — merged DEV (jobs 31602015 r16dev + 31602016 tgarms; `floor_check_arm.py`; `weakwitness_dev.py diff` -> `weakwitness_diff.json`)
+Base reproduces: SHIP8+MD3 **29/58, 18 (6/10/2), 2.141**. **SHIP8+MD3+WW (b 0.35, keep both): 27/58, 13 (6/6/1), 2.113** (DEV 19/11 ->
+19/9, DEV2 10/7 -> 8/4). Floor 0.40 (reported): base 27/58, 15 (5/10/0), 2.169; WW 26/58, 11 (5/6/0), 2.113. Changed pictures
+(floor None): **−5 wrong** — b3_laundromat Train 1.0 (phantom), mv_protest Glass 4.75 (cross), tg_d022 Dog 7.25 (cross), tg_d107
+Screaming 6.52 (cross), tg_d128 Hammer 9.0 (cross); **−2 needed hits** — tg_d032 Thunder 13.75 and tg_d075 Alarm 0.14 (both exactly
+as step 0 predicted: single-ear rows at DASM 0.309 / 0.296); same outcome, moved: mv_protest Glass 16.89 -> 17.5 (still a hit; the
+Shatter row dropped, the both-named Glass row kept), ly_helicopter Vehicle -> Helicopter label (still a hit). Visible pictures
+unchanged (6). **Verdict: FAIL.** Main rule fails (2 needed hits lost). Fewer-pictures clause: (a) cost 2.113 < 2.141 passes, (d)
+27 >= 26 passes, **(c) fails: wrong 13 > 18 − 3 × 2 = 12** (5 wrong removed per 2 hits = 2.5:1, below the fixed 3:1). DASM_LOCAL_VETO
+stays None; no TEST. Reading: the 415 bar (0.35) lands just above the two single-ear DEV hits; the both-ears keep protects the
+panel's lowest-DASM hits (Door, Glass, Siren) but not a hit only one ear names. The bar is not moved after the fact.

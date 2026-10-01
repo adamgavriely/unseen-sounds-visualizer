@@ -235,6 +235,7 @@ ARMS["SHIP8"] = {**ARMS["SHIP7+K4AD"], "MERGE_GAP": 2.5, "GROUP_ASK": True, "GRO
 # (TEST renders are named SHIP7+K4AD and read at 2.0 by final_test.py; read them at 2.5 with merge_gap_sens.py test --gap 2.5)
 ARMS["SHIP8+MD3"] = {**ARMS["SHIP8"], "AED_MIN_DUR": 0.3}     # Round 48 MD3 (kill_flags: restores tg_d107 Laughter, +3 rows)
 ARMS["SHIP8+MD3+SK7"] = {**ARMS["SHIP8+MD3"], "STRONG_BEATS_KEEP": 0.7}   # Round 52 STRONG-KEEP
+ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCAL_KEEP": "both"}   # Round 53 WEAK-WITNESS (b from the 415)
 ARMS["SHIP8+GRP"] = {**ARMS["SHIP8"], "GROUP_ASK": True, "GROUP_MAX_GAP": 8.0,
                      "GROUP_CACHE": str(_ROOT / "benchmark" / "gold" / "grp" / "group_answers_bench.json")}   # Round 47 shipped form
 ARMS["SHIP8+DBR"] = {**ARMS["SHIP8"], "REPEAT_DASM_BRIDGE": 0.575}

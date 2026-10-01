@@ -1,0 +1,8577 @@
+{
+ "what": "Round 53 WEAK-WITNESS step 1 (docs/prereg_round13_detector_push.md \"Round 53 WEAK-WITNESS\"), CPU, held-out 415 AudioSet-Strong",
+ "clips": 415,
+ "flags": {
+  "AED_THRESHOLD": 0.175,
+  "AED_HYSTERESIS": 1.0,
+  "AED_MIN_DUR": 0.3,
+  "AED_RELEASE": null,
+  "DISPLAY_THRESHOLD": 0.35
+ },
+ "rule": "correct iff a same_family strong event starts in [onset-0.5, onset+1.0] (heldout_a4_screen.classify)",
+ "params": {
+  "window": "[start-0.5, end+0.5]",
+  "cap": 0.2,
+  "edges": [
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.25,
+   0.3,
+   0.35,
+   0.4,
+   0.45,
+   0.5,
+   0.55,
+   0.6
+  ],
+  "beats": "threshold 0.35, low 0.175, min span 0.3 s, one span per BEATs label"
+ },
+ "reference_raw_beats_min0.5": {
+  "n": 754,
+  "correct": 283,
+  "wrong_time": 186,
+  "absent": 285,
+  "precision": 0.375
+ },
+ "spans_with_dasm": {
+  "n": 754,
+  "correct": 283,
+  "wrong_time": 186,
+  "absent": 285,
+  "precision": 0.375
+ },
+ "spans_no_dasm_column": {
+  "n": 0,
+  "correct": 0,
+  "wrong_time": 0,
+  "absent": 0,
+  "precision": null
+ },
+ "bins": [
+  {
+   "bin": [
+    0.0,
+    0.05
+   ],
+   "n": 154,
+   "correct": 7,
+   "wrong_time": 29,
+   "absent": 118,
+   "precision": 0.045
+  },
+  {
+   "bin": [
+    0.05,
+    0.1
+   ],
+   "n": 57,
+   "correct": 14,
+   "wrong_time": 9,
+   "absent": 34,
+   "precision": 0.246
+  },
+  {
+   "bin": [
+    0.1,
+    0.15
+   ],
+   "n": 46,
+   "correct": 15,
+   "wrong_time": 11,
+   "absent": 20,
+   "precision": 0.326
+  },
+  {
+   "bin": [
+    0.15,
+    0.2
+   ],
+   "n": 43,
+   "correct": 7,
+   "wrong_time": 9,
+   "absent": 27,
+   "precision": 0.163
+  },
+  {
+   "bin": [
+    0.2,
+    0.25
+   ],
+   "n": 28,
+   "correct": 11,
+   "wrong_time": 2,
+   "absent": 15,
+   "precision": 0.393
+  },
+  {
+   "bin": [
+    0.25,
+    0.3
+   ],
+   "n": 27,
+   "correct": 7,
+   "wrong_time": 6,
+   "absent": 14,
+   "precision": 0.259
+  },
+  {
+   "bin": [
+    0.3,
+    0.35
+   ],
+   "n": 37,
+   "correct": 15,
+   "wrong_time": 12,
+   "absent": 10,
+   "precision": 0.405
+  },
+  {
+   "bin": [
+    0.35,
+    0.4
+   ],
+   "n": 42,
+   "correct": 22,
+   "wrong_time": 15,
+   "absent": 5,
+   "precision": 0.524
+  },
+  {
+   "bin": [
+    0.4,
+    0.45
+   ],
+   "n": 26,
+   "correct": 7,
+   "wrong_time": 12,
+   "absent": 7,
+   "precision": 0.269
+  },
+  {
+   "bin": [
+    0.45,
+    0.5
+   ],
+   "n": 24,
+   "correct": 11,
+   "wrong_time": 5,
+   "absent": 8,
+   "precision": 0.458
+  },
+  {
+   "bin": [
+    0.5,
+    0.55
+   ],
+   "n": 20,
+   "correct": 11,
+   "wrong_time": 3,
+   "absent": 6,
+   "precision": 0.55
+  },
+  {
+   "bin": [
+    0.55,
+    0.6
+   ],
+   "n": 25,
+   "correct": 13,
+   "wrong_time": 12,
+   "absent": 0,
+   "precision": 0.52
+  },
+  {
+   "bin": [
+    0.6,
+    null
+   ],
+   "n": 225,
+   "correct": 143,
+   "wrong_time": 61,
+   "absent": 21,
+   "precision": 0.636
+  }
+ ],
+ "cumulative_below_edge": [
+  {
+   "edge": 0.05,
+   "n": 154,
+   "correct": 7,
+   "wrong_time": 29,
+   "absent": 118,
+   "precision": 0.045
+  },
+  {
+   "edge": 0.1,
+   "n": 211,
+   "correct": 21,
+   "wrong_time": 38,
+   "absent": 152,
+   "precision": 0.1
+  },
+  {
+   "edge": 0.15,
+   "n": 257,
+   "correct": 36,
+   "wrong_time": 49,
+   "absent": 172,
+   "precision": 0.14
+  },
+  {
+   "edge": 0.2,
+   "n": 300,
+   "correct": 43,
+   "wrong_time": 58,
+   "absent": 199,
+   "precision": 0.143
+  },
+  {
+   "edge": 0.25,
+   "n": 328,
+   "correct": 54,
+   "wrong_time": 60,
+   "absent": 214,
+   "precision": 0.165
+  },
+  {
+   "edge": 0.3,
+   "n": 355,
+   "correct": 61,
+   "wrong_time": 66,
+   "absent": 228,
+   "precision": 0.172
+  },
+  {
+   "edge": 0.35,
+   "n": 392,
+   "correct": 76,
+   "wrong_time": 78,
+   "absent": 238,
+   "precision": 0.194
+  },
+  {
+   "edge": 0.4,
+   "n": 434,
+   "correct": 98,
+   "wrong_time": 93,
+   "absent": 243,
+   "precision": 0.226
+  },
+  {
+   "edge": 0.45,
+   "n": 460,
+   "correct": 105,
+   "wrong_time": 105,
+   "absent": 250,
+   "precision": 0.228
+  },
+  {
+   "edge": 0.5,
+   "n": 484,
+   "correct": 116,
+   "wrong_time": 110,
+   "absent": 258,
+   "precision": 0.24
+  },
+  {
+   "edge": 0.55,
+   "n": 504,
+   "correct": 127,
+   "wrong_time": 113,
+   "absent": 264,
+   "precision": 0.252
+  },
+  {
+   "edge": 0.6,
+   "n": 529,
+   "correct": 140,
+   "wrong_time": 125,
+   "absent": 264,
+   "precision": 0.265
+  }
+ ],
+ "b": 0.35,
+ "go": true,
+ "per_family_below_0.35": {
+  "Water": {
+   "n": 30,
+   "correct": 6,
+   "wrong_time": 12,
+   "absent": 12,
+   "precision": 0.2
+  },
+  "Vehicle": {
+   "n": 29,
+   "correct": 10,
+   "wrong_time": 7,
+   "absent": 12,
+   "precision": 0.345
+  },
+  "Bird": {
+   "n": 24,
+   "correct": 8,
+   "wrong_time": 9,
+   "absent": 7,
+   "precision": 0.333
+  },
+  "Horse": {
+   "n": 19,
+   "correct": 4,
+   "wrong_time": 2,
+   "absent": 13,
+   "precision": 0.211
+  },
+  "Glass": {
+   "n": 15,
+   "correct": 2,
+   "wrong_time": 1,
+   "absent": 12,
+   "precision": 0.133
+  },
+  "Dog": {
+   "n": 12,
+   "correct": 5,
+   "wrong_time": 0,
+   "absent": 7,
+   "precision": 0.417
+  },
+  "Cat": {
+   "n": 9,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 9,
+   "precision": 0.0
+  },
+  "Chink, clink": {
+   "n": 9,
+   "correct": 1,
+   "wrong_time": 3,
+   "absent": 5,
+   "precision": 0.111
+  },
+  "Steam": {
+   "n": 9,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 7,
+   "precision": 0.111
+  },
+  "Gunshot": {
+   "n": 8,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 8,
+   "precision": 0.0
+  },
+  "Siren": {
+   "n": 8,
+   "correct": 4,
+   "wrong_time": 1,
+   "absent": 3,
+   "precision": 0.5
+  },
+  "Dishes": {
+   "n": 7,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 5,
+   "precision": 0.286
+  },
+  "Scissors": {
+   "n": 7,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 7,
+   "precision": 0.0
+  },
+  "Explosion": {
+   "n": 6,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 6,
+   "precision": 0.0
+  },
+  "Fly, housefly": {
+   "n": 6,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 4,
+   "precision": 0.167
+  },
+  "Tools": {
+   "n": 6,
+   "correct": 2,
+   "wrong_time": 3,
+   "absent": 1,
+   "precision": 0.333
+  },
+  "Helicopter": {
+   "n": 5,
+   "correct": 0,
+   "wrong_time": 4,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Printer": {
+   "n": 5,
+   "correct": 1,
+   "wrong_time": 3,
+   "absent": 1,
+   "precision": 0.2
+  },
+  "Pump (liquid)": {
+   "n": 5,
+   "correct": 2,
+   "wrong_time": 3,
+   "absent": 0,
+   "precision": 0.4
+  },
+  "Train": {
+   "n": 5,
+   "correct": 0,
+   "wrong_time": 2,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Wood": {
+   "n": 5,
+   "correct": 1,
+   "wrong_time": 2,
+   "absent": 2,
+   "precision": 0.2
+  },
+  "Aircraft": {
+   "n": 4,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.25
+  },
+  "Alarm": {
+   "n": 4,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 2,
+   "precision": 0.25
+  },
+  "Bee, wasp, etc.": {
+   "n": 4,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 2,
+   "precision": 0.25
+  },
+  "Bell": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Coin (dropping)": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 4,
+   "precision": 0.0
+  },
+  "Dial tone": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 4,
+   "precision": 0.0
+  },
+  "Heart sounds, heartbeat": {
+   "n": 4,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.5
+  },
+  "Insect": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Mosquito": {
+   "n": 4,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.25
+  },
+  "Sawing": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 2,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Sheep": {
+   "n": 4,
+   "correct": 2,
+   "wrong_time": 2,
+   "absent": 0,
+   "precision": 0.5
+  },
+  "Telephone": {
+   "n": 4,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 4,
+   "precision": 0.0
+  },
+  "Basketball bounce": {
+   "n": 3,
+   "correct": 1,
+   "wrong_time": 2,
+   "absent": 0,
+   "precision": 0.333
+  },
+  "Boat": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Boiling": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Cooking": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Crowd": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.667
+  },
+  "Door": {
+   "n": 3,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.333
+  },
+  "Electric shaver, electric razor": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Heart murmur": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Sewing machine": {
+   "n": 3,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.667
+  },
+  "Sonar": {
+   "n": 3,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 3,
+   "precision": 0.0
+  },
+  "Turkey": {
+   "n": 3,
+   "correct": 1,
+   "wrong_time": 1,
+   "absent": 1,
+   "precision": 0.333
+  },
+  "Busy signal": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Buzz": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Cash register": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Clock": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Crack": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Doorbell": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Effects unit": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Electric toothbrush": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Goose": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Honk": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Owl": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Rain": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 2,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Roar": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Single-lens reflex camera": {
+   "n": 2,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.5
+  },
+  "Snicker": {
+   "n": 2,
+   "correct": 2,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Sniff": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Steam whistle": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Thunder": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Thunk": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Wail, moan": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 2,
+   "precision": 0.0
+  },
+  "Whoosh, swoosh, swish": {
+   "n": 2,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Air brake": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Baby cry, infant cry": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Bicycle": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Camera": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Caterwaul": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Cattle": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Chainsaw": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Dental drill, dentist's drill": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Ding-dong": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Electronic tuner": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Finger snapping": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Foghorn": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Footsteps": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Gears": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Gobble": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Groan": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Hair dryer": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Hoot": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Jackhammer": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Keys jangling": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Power tool": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Pulleys": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Ratchet, pawl": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Roaring cats (lions, tigers)": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Rodents, rats, mice": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Sanding": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Screaming": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Shuffling cards": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Sigh": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Snake": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Snoring": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Squawk": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Throat clearing": {
+   "n": 1,
+   "correct": 1,
+   "wrong_time": 0,
+   "absent": 0,
+   "precision": 1.0
+  },
+  "Toothbrush": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Typewriter": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Wheeze": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Whimper": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Whoop": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  },
+  "Yell": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 1,
+   "absent": 0,
+   "precision": 0.0
+  },
+  "Zipper (clothing)": {
+   "n": 1,
+   "correct": 0,
+   "wrong_time": 0,
+   "absent": 1,
+   "precision": 0.0
+  }
+ },
+ "rows": [
+  {
+   "clip": "FFUSdzyhgZo_290000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 1.0,
+   "end": 1.5,
+   "conf": 0.504,
+   "dasm_win": 0.002,
+   "class": "family absent"
+  },
+  {
+   "clip": "FFUSdzyhgZo_290000",
+   "label": "Roar",
+   "family": "Roar",
+   "onset": 4.75,
+   "end": 5.75,
+   "conf": 0.507,
+   "dasm_win": 0.5225,
+   "class": "correct"
+  },
+  {
+   "clip": "FFUSdzyhgZo_290000",
+   "label": "Thunk",
+   "family": "Thunk",
+   "onset": 5.75,
+   "end": 6.75,
+   "conf": 0.42,
+   "dasm_win": 0.0083,
+   "class": "family absent"
+  },
+  {
+   "clip": "FFUSdzyhgZo_290000",
+   "label": "Roar",
+   "family": "Roar",
+   "onset": 6.5,
+   "end": 7.75,
+   "conf": 0.498,
+   "dasm_win": 0.1207,
+   "class": "wrong time"
+  },
+  {
+   "clip": "jbe3VM-5xdc_30000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.518,
+   "dasm_win": 0.6313,
+   "class": "correct"
+  },
+  {
+   "clip": "jbe3VM-5xdc_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.376,
+   "dasm_win": 0.6313,
+   "class": "correct"
+  },
+  {
+   "clip": "jbe3VM-5xdc_30000",
+   "label": "Breaking",
+   "family": "Glass",
+   "onset": 4.0,
+   "end": 4.75,
+   "conf": 0.449,
+   "dasm_win": 0.0806,
+   "class": "family absent"
+  },
+  {
+   "clip": "jbe3VM-5xdc_30000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 4.0,
+   "end": 5.0,
+   "conf": 0.406,
+   "dasm_win": 0.0806,
+   "class": "family absent"
+  },
+  {
+   "clip": "rSZ86H06ABo_30000",
+   "label": "Zipper (clothing)",
+   "family": "Zipper (clothing)",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.596,
+   "dasm_win": 0.0368,
+   "class": "family absent"
+  },
+  {
+   "clip": "rSZ86H06ABo_30000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 5.5,
+   "end": 9.75,
+   "conf": 0.584,
+   "dasm_win": 0.0955,
+   "class": "family absent"
+  },
+  {
+   "clip": "rSZ86H06ABo_30000",
+   "label": "Hiss",
+   "family": "Cat",
+   "onset": 6.0,
+   "end": 9.75,
+   "conf": 0.402,
+   "dasm_win": 0.0106,
+   "class": "family absent"
+  },
+  {
+   "clip": "pEUp-2atU5I_130000",
+   "label": "Coin (dropping)",
+   "family": "Coin (dropping)",
+   "onset": 0.25,
+   "end": 1.25,
+   "conf": 0.394,
+   "dasm_win": 0.0029,
+   "class": "family absent"
+  },
+  {
+   "clip": "pEUp-2atU5I_130000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 7.0,
+   "end": 7.75,
+   "conf": 0.592,
+   "dasm_win": 0.6055,
+   "class": "family absent"
+  },
+  {
+   "clip": "nw-ECOC7GUs_220000",
+   "label": "Gears",
+   "family": "Gears",
+   "onset": 4.75,
+   "end": 6.75,
+   "conf": 0.486,
+   "dasm_win": 0.5088,
+   "class": "correct"
+  },
+  {
+   "clip": "nw-ECOC7GUs_220000",
+   "label": "Gears",
+   "family": "Gears",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.881,
+   "dasm_win": 0.5098,
+   "class": "correct"
+  },
+  {
+   "clip": "nw-ECOC7GUs_220000",
+   "label": "Ratchet, pawl",
+   "family": "Ratchet, pawl",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.844,
+   "dasm_win": 0.2834,
+   "class": "wrong time"
+  },
+  {
+   "clip": "WVfrcJWnOXs_30000",
+   "label": "Hiccup",
+   "family": "Hiccup",
+   "onset": 3.75,
+   "end": 5.75,
+   "conf": 0.638,
+   "dasm_win": 0.8389,
+   "class": "correct"
+  },
+  {
+   "clip": "ECVzhzOC5Q0_30000",
+   "label": "Cluck",
+   "family": "Bird",
+   "onset": 0.5,
+   "end": 3.0,
+   "conf": 0.646,
+   "dasm_win": 0.1398,
+   "class": "correct"
+  },
+  {
+   "clip": "ECVzhzOC5Q0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 0.5,
+   "end": 4.0,
+   "conf": 0.509,
+   "dasm_win": 0.1398,
+   "class": "correct"
+  },
+  {
+   "clip": "ECVzhzOC5Q0_30000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 0.75,
+   "end": 3.0,
+   "conf": 0.623,
+   "dasm_win": 0.1357,
+   "class": "correct"
+  },
+  {
+   "clip": "ECVzhzOC5Q0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.736,
+   "dasm_win": 0.1392,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ECVzhzOC5Q0_30000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.544,
+   "dasm_win": 0.1392,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ECVzhzOC5Q0_30000",
+   "label": "Cluck",
+   "family": "Bird",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.5,
+   "dasm_win": 0.1392,
+   "class": "wrong time"
+  },
+  {
+   "clip": "3zntWbS9XeI_70000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.709,
+   "dasm_win": 0.7686,
+   "class": "wrong time"
+  },
+  {
+   "clip": "3zntWbS9XeI_70000",
+   "label": "Chorus effect",
+   "family": "Chorus effect",
+   "onset": 0.75,
+   "end": 9.75,
+   "conf": 0.462,
+   "dasm_win": 0.6514,
+   "class": "wrong time"
+  },
+  {
+   "clip": "9VE1-3q27Qg_20000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 8.75,
+   "end": 9.25,
+   "conf": 0.499,
+   "dasm_win": 0.0084,
+   "class": "family absent"
+  },
+  {
+   "clip": "gPekns88rQA_270000",
+   "label": "Sheep",
+   "family": "Sheep",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.622,
+   "dasm_win": 0.014,
+   "class": "wrong time"
+  },
+  {
+   "clip": "gPekns88rQA_270000",
+   "label": "Goat",
+   "family": "Sheep",
+   "onset": 0.25,
+   "end": 3.75,
+   "conf": 0.401,
+   "dasm_win": 0.014,
+   "class": "wrong time"
+  },
+  {
+   "clip": "gPekns88rQA_270000",
+   "label": "Sheep",
+   "family": "Sheep",
+   "onset": 4.5,
+   "end": 8.25,
+   "conf": 0.656,
+   "dasm_win": 0.4714,
+   "class": "correct"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 2.0,
+   "end": 3.75,
+   "conf": 0.534,
+   "dasm_win": 0.4734,
+   "class": "family absent"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Power tool",
+   "family": "Power tool",
+   "onset": 2.25,
+   "end": 2.75,
+   "conf": 0.444,
+   "dasm_win": 0.2161,
+   "class": "family absent"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Sewing machine",
+   "family": "Sewing machine",
+   "onset": 7.0,
+   "end": 8.5,
+   "conf": 0.738,
+   "dasm_win": 0.1833,
+   "class": "correct"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.397,
+   "dasm_win": 0.2391,
+   "class": "family absent"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.361,
+   "dasm_win": 0.2391,
+   "class": "family absent"
+  },
+  {
+   "clip": "M61BBJpvvx8_30000",
+   "label": "Motorcycle",
+   "family": "Vehicle",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.486,
+   "dasm_win": 0.2391,
+   "class": "family absent"
+  },
+  {
+   "clip": "U5ToBXQYEy0_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 7.75,
+   "end": 8.25,
+   "conf": 0.584,
+   "dasm_win": 0.0466,
+   "class": "family absent"
+  },
+  {
+   "clip": "U5ToBXQYEy0_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 7.75,
+   "end": 8.25,
+   "conf": 0.364,
+   "dasm_win": 0.0466,
+   "class": "family absent"
+  },
+  {
+   "clip": "GuUPAjaacnY_120000",
+   "label": "Clapping",
+   "family": "Clapping",
+   "onset": 0.5,
+   "end": 3.0,
+   "conf": 0.668,
+   "dasm_win": 0.5552,
+   "class": "correct"
+  },
+  {
+   "clip": "GuUPAjaacnY_120000",
+   "label": "Clapping",
+   "family": "Clapping",
+   "onset": 3.5,
+   "end": 5.5,
+   "conf": 0.463,
+   "dasm_win": 0.5054,
+   "class": "correct"
+  },
+  {
+   "clip": "GuUPAjaacnY_120000",
+   "label": "Clapping",
+   "family": "Clapping",
+   "onset": 6.5,
+   "end": 9.25,
+   "conf": 0.753,
+   "dasm_win": 0.5444,
+   "class": "correct"
+  },
+  {
+   "clip": "cbNtpgQbn-4_30000",
+   "label": "Computer keyboard",
+   "family": "Computer keyboard",
+   "onset": 5.0,
+   "end": 8.25,
+   "conf": 0.621,
+   "dasm_win": 0.6934,
+   "class": "family absent"
+  },
+  {
+   "clip": "cbNtpgQbn-4_30000",
+   "label": "Typing",
+   "family": "Typing",
+   "onset": 5.0,
+   "end": 8.25,
+   "conf": 0.533,
+   "dasm_win": 0.7339,
+   "class": "family absent"
+  },
+  {
+   "clip": "b-zIVLtiIXY_140000",
+   "label": "Squeak",
+   "family": "Door",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.717,
+   "dasm_win": 0.006,
+   "class": "correct"
+  },
+  {
+   "clip": "MSqQKf3O3vY_30000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 5.75,
+   "end": 7.25,
+   "conf": 0.762,
+   "dasm_win": 0.2522,
+   "class": "family absent"
+  },
+  {
+   "clip": "MSqQKf3O3vY_30000",
+   "label": "Meow",
+   "family": "Cat",
+   "onset": 5.75,
+   "end": 7.25,
+   "conf": 0.718,
+   "dasm_win": 0.2522,
+   "class": "family absent"
+  },
+  {
+   "clip": "_BxysKhZIsI_250000",
+   "label": "Coin (dropping)",
+   "family": "Coin (dropping)",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.471,
+   "dasm_win": 0.0184,
+   "class": "family absent"
+  },
+  {
+   "clip": "_BxysKhZIsI_250000",
+   "label": "Coin (dropping)",
+   "family": "Coin (dropping)",
+   "onset": 3.75,
+   "end": 5.5,
+   "conf": 0.68,
+   "dasm_win": 0.019,
+   "class": "family absent"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 2.5,
+   "end": 4.5,
+   "conf": 0.595,
+   "dasm_win": 0.0369,
+   "class": "wrong time"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Cutlery, silverware",
+   "family": "Dishes",
+   "onset": 3.25,
+   "end": 4.75,
+   "conf": 0.619,
+   "dasm_win": 0.2559,
+   "class": "family absent"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Glass",
+   "family": "Glass",
+   "onset": 3.25,
+   "end": 4.5,
+   "conf": 0.361,
+   "dasm_win": 0.3809,
+   "class": "wrong time"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Dishes, pots, and pans",
+   "family": "Dishes",
+   "onset": 3.75,
+   "end": 4.75,
+   "conf": 0.407,
+   "dasm_win": 0.2477,
+   "class": "family absent"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Gears",
+   "family": "Gears",
+   "onset": 5.5,
+   "end": 6.5,
+   "conf": 0.484,
+   "dasm_win": 0.0633,
+   "class": "wrong time"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Pulleys",
+   "family": "Pulleys",
+   "onset": 5.5,
+   "end": 6.5,
+   "conf": 0.402,
+   "dasm_win": 0.064,
+   "class": "wrong time"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Cutlery, silverware",
+   "family": "Dishes",
+   "onset": 6.75,
+   "end": 9.25,
+   "conf": 0.54,
+   "dasm_win": 0.1586,
+   "class": "family absent"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Dishes, pots, and pans",
+   "family": "Dishes",
+   "onset": 7.0,
+   "end": 8.25,
+   "conf": 0.544,
+   "dasm_win": 0.1586,
+   "class": "family absent"
+  },
+  {
+   "clip": "9DyTx0hvmqE_60000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 8.25,
+   "end": 9.25,
+   "conf": 0.375,
+   "dasm_win": 0.0231,
+   "class": "correct"
+  },
+  {
+   "clip": "cVbfA2yZ5b4_30000",
+   "label": "Heart sounds, heartbeat",
+   "family": "Heart sounds, heartbeat",
+   "onset": 1.0,
+   "end": 4.0,
+   "conf": 0.399,
+   "dasm_win": 0.0943,
+   "class": "correct"
+  },
+  {
+   "clip": "cVbfA2yZ5b4_30000",
+   "label": "Heart sounds, heartbeat",
+   "family": "Heart sounds, heartbeat",
+   "onset": 4.75,
+   "end": 7.5,
+   "conf": 0.409,
+   "dasm_win": 0.0906,
+   "class": "correct"
+  },
+  {
+   "clip": "ZFs03gCSB_g_270000",
+   "label": "Typing",
+   "family": "Typing",
+   "onset": 1.0,
+   "end": 3.0,
+   "conf": 0.562,
+   "dasm_win": 0.853,
+   "class": "correct"
+  },
+  {
+   "clip": "ZFs03gCSB_g_270000",
+   "label": "Computer keyboard",
+   "family": "Computer keyboard",
+   "onset": 1.0,
+   "end": 3.0,
+   "conf": 0.548,
+   "dasm_win": 0.8457,
+   "class": "correct"
+  },
+  {
+   "clip": "ZFs03gCSB_g_270000",
+   "label": "Computer keyboard",
+   "family": "Computer keyboard",
+   "onset": 3.75,
+   "end": 5.75,
+   "conf": 0.466,
+   "dasm_win": 0.7642,
+   "class": "correct"
+  },
+  {
+   "clip": "Gc01CEIQnM0_10000",
+   "label": "Single-lens reflex camera",
+   "family": "Single-lens reflex camera",
+   "onset": 0.0,
+   "end": 3.75,
+   "conf": 0.711,
+   "dasm_win": 0.1361,
+   "class": "correct"
+  },
+  {
+   "clip": "Gc01CEIQnM0_10000",
+   "label": "Camera",
+   "family": "Camera",
+   "onset": 0.0,
+   "end": 3.0,
+   "conf": 0.625,
+   "dasm_win": 0.1158,
+   "class": "correct"
+  },
+  {
+   "clip": "Gc01CEIQnM0_10000",
+   "label": "Ding-dong",
+   "family": "Ding-dong",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.401,
+   "dasm_win": 0.4534,
+   "class": "correct"
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.878,
+   "dasm_win": 0.0778,
+   "class": "wrong time"
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 0.75,
+   "end": 7.25,
+   "conf": 0.939,
+   "dasm_win": 0.3445,
+   "class": "wrong time"
+  },
+  {
+   "clip": "HCC9JldRsNc_0",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.634,
+   "dasm_win": 0.0975,
+   "class": "correct"
+  },
+  {
+   "clip": "6WDfhQNFgCM_30000",
+   "label": "Electric shaver, electric razor",
+   "family": "Electric shaver, electric razor",
+   "onset": 1.0,
+   "end": 9.75,
+   "conf": 0.705,
+   "dasm_win": 0.5312,
+   "class": "correct"
+  },
+  {
+   "clip": "6WDfhQNFgCM_30000",
+   "label": "Buzz",
+   "family": "Buzz",
+   "onset": 1.25,
+   "end": 8.0,
+   "conf": 0.54,
+   "dasm_win": 0.0939,
+   "class": "family absent"
+  },
+  {
+   "clip": "6WDfhQNFgCM_30000",
+   "label": "Buzz",
+   "family": "Buzz",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.521,
+   "dasm_win": 0.0924,
+   "class": "family absent"
+  },
+  {
+   "clip": "RI_Pg4peJw8_10000",
+   "label": "Bleat",
+   "family": "Sheep",
+   "onset": 0.0,
+   "end": 1.5,
+   "conf": 0.527,
+   "dasm_win": 0.1641,
+   "class": "correct"
+  },
+  {
+   "clip": "RI_Pg4peJw8_10000",
+   "label": "Goat",
+   "family": "Sheep",
+   "onset": 2.75,
+   "end": 6.0,
+   "conf": 0.361,
+   "dasm_win": 0.3477,
+   "class": "correct"
+  },
+  {
+   "clip": "1MeeK0kD_ys_11000",
+   "label": "Single-lens reflex camera",
+   "family": "Single-lens reflex camera",
+   "onset": 1.0,
+   "end": 2.75,
+   "conf": 0.78,
+   "dasm_win": 0.3555,
+   "class": "correct"
+  },
+  {
+   "clip": "1MeeK0kD_ys_11000",
+   "label": "Single-lens reflex camera",
+   "family": "Single-lens reflex camera",
+   "onset": 3.0,
+   "end": 4.5,
+   "conf": 0.774,
+   "dasm_win": 0.3555,
+   "class": "correct"
+  },
+  {
+   "clip": "x0fI4QXOz9M_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 9.75,
+   "conf": 0.721,
+   "dasm_win": 0.9873,
+   "class": "correct"
+  },
+  {
+   "clip": "x0fI4QXOz9M_30000",
+   "label": "Bark",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 9.75,
+   "conf": 0.674,
+   "dasm_win": 0.9873,
+   "class": "correct"
+  },
+  {
+   "clip": "x0fI4QXOz9M_30000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 9.75,
+   "conf": 0.561,
+   "dasm_win": 0.9873,
+   "class": "correct"
+  },
+  {
+   "clip": "xgqhURbWHCU_30000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 0.0,
+   "end": 4.75,
+   "conf": 0.69,
+   "dasm_win": 0.3252,
+   "class": "correct"
+  },
+  {
+   "clip": "xgqhURbWHCU_30000",
+   "label": "Power tool",
+   "family": "Power tool",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.588,
+   "dasm_win": 0.7637,
+   "class": "correct"
+  },
+  {
+   "clip": "xgqhURbWHCU_30000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 2.25,
+   "end": 4.5,
+   "conf": 0.649,
+   "dasm_win": 0.3909,
+   "class": "family absent"
+  },
+  {
+   "clip": "xgqhURbWHCU_30000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 5.0,
+   "end": 5.75,
+   "conf": 0.525,
+   "dasm_win": 0.0081,
+   "class": "wrong time"
+  },
+  {
+   "clip": "XQ8YArt9cSI_120000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.44,
+   "dasm_win": 0.0541,
+   "class": "family absent"
+  },
+  {
+   "clip": "XQ8YArt9cSI_120000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 4.75,
+   "end": 5.75,
+   "conf": 0.474,
+   "dasm_win": 0.0583,
+   "class": "family absent"
+  },
+  {
+   "clip": "XQ8YArt9cSI_120000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 6.0,
+   "end": 6.5,
+   "conf": 0.394,
+   "dasm_win": 0.0534,
+   "class": "family absent"
+  },
+  {
+   "clip": "XQ8YArt9cSI_120000",
+   "label": "Coin (dropping)",
+   "family": "Coin (dropping)",
+   "onset": 8.25,
+   "end": 8.75,
+   "conf": 0.612,
+   "dasm_win": 0.024,
+   "class": "family absent"
+  },
+  {
+   "clip": "yIx3ml9_nsQ_60000",
+   "label": "Rodents, rats, mice",
+   "family": "Rodents, rats, mice",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.416,
+   "dasm_win": 0.0089,
+   "class": "family absent"
+  },
+  {
+   "clip": "LF9q44DJgxY_30000",
+   "label": "Duck",
+   "family": "Duck",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.811,
+   "dasm_win": 0.6206,
+   "class": "correct"
+  },
+  {
+   "clip": "LF9q44DJgxY_30000",
+   "label": "Quack",
+   "family": "Quack",
+   "onset": 0.0,
+   "end": 2.0,
+   "conf": 0.365,
+   "dasm_win": 0.6182,
+   "class": "correct"
+  },
+  {
+   "clip": "LF9q44DJgxY_30000",
+   "label": "Quack",
+   "family": "Quack",
+   "onset": 2.75,
+   "end": 4.75,
+   "conf": 0.38,
+   "dasm_win": 0.6182,
+   "class": "correct"
+  },
+  {
+   "clip": "LF9q44DJgxY_30000",
+   "label": "Quack",
+   "family": "Quack",
+   "onset": 6.5,
+   "end": 9.75,
+   "conf": 0.438,
+   "dasm_win": 0.6182,
+   "class": "wrong time"
+  },
+  {
+   "clip": "zTyDJurqO-Q_200000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 4.25,
+   "end": 9.5,
+   "conf": 0.633,
+   "dasm_win": 0.0433,
+   "class": "wrong time"
+  },
+  {
+   "clip": "zTyDJurqO-Q_200000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 4.75,
+   "end": 9.5,
+   "conf": 0.768,
+   "dasm_win": 0.0433,
+   "class": "wrong time"
+  },
+  {
+   "clip": "zTyDJurqO-Q_200000",
+   "label": "Sink (filling or washing)",
+   "family": "Water",
+   "onset": 5.75,
+   "end": 9.5,
+   "conf": 0.766,
+   "dasm_win": 0.0433,
+   "class": "wrong time"
+  },
+  {
+   "clip": "FRwFfq3Tl1g_310000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 3.0,
+   "conf": 0.417,
+   "dasm_win": 0.5654,
+   "class": "correct"
+  },
+  {
+   "clip": "eOrV9yNuT3o_30000",
+   "label": "Screaming",
+   "family": "Screaming",
+   "onset": 0.25,
+   "end": 1.0,
+   "conf": 0.495,
+   "dasm_win": 0.1499,
+   "class": "wrong time"
+  },
+  {
+   "clip": "eOrV9yNuT3o_30000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 5.5,
+   "end": 7.0,
+   "conf": 0.654,
+   "dasm_win": 0.0025,
+   "class": "family absent"
+  },
+  {
+   "clip": "hqRF-k1SFDQ_140000",
+   "label": "Doorbell",
+   "family": "Doorbell",
+   "onset": 5.5,
+   "end": 6.25,
+   "conf": 0.708,
+   "dasm_win": 0.0428,
+   "class": "family absent"
+  },
+  {
+   "clip": "43-Ju5yJxjA_120000",
+   "label": "Filing (rasp)",
+   "family": "Filing (rasp)",
+   "onset": 4.75,
+   "end": 8.5,
+   "conf": 0.662,
+   "dasm_win": 0.6055,
+   "class": "family absent"
+  },
+  {
+   "clip": "XfhwdUdGLrU_20000",
+   "label": "Dishes, pots, and pans",
+   "family": "Dishes",
+   "onset": 0.5,
+   "end": 2.25,
+   "conf": 0.702,
+   "dasm_win": 0.0686,
+   "class": "correct"
+  },
+  {
+   "clip": "XfhwdUdGLrU_20000",
+   "label": "Cutlery, silverware",
+   "family": "Dishes",
+   "onset": 0.5,
+   "end": 2.0,
+   "conf": 0.483,
+   "dasm_win": 0.0686,
+   "class": "correct"
+  },
+  {
+   "clip": "XfhwdUdGLrU_20000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 1.75,
+   "end": 3.75,
+   "conf": 0.613,
+   "dasm_win": 0.0336,
+   "class": "wrong time"
+  },
+  {
+   "clip": "XfhwdUdGLrU_20000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.647,
+   "dasm_win": 0.039,
+   "class": "wrong time"
+  },
+  {
+   "clip": "5yNsNnsuj_k_30000",
+   "label": "Shout",
+   "family": "Shout",
+   "onset": 2.0,
+   "end": 5.25,
+   "conf": 0.724,
+   "dasm_win": 0.812,
+   "class": "correct"
+  },
+  {
+   "clip": "5yNsNnsuj_k_30000",
+   "label": "Cheering",
+   "family": "Crowd",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.548,
+   "dasm_win": 0.6582,
+   "class": "correct"
+  },
+  {
+   "clip": "5yNsNnsuj_k_30000",
+   "label": "Crowd",
+   "family": "Crowd",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.417,
+   "dasm_win": 0.6582,
+   "class": "correct"
+  },
+  {
+   "clip": "Q19VErS2iH4_20000",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 0.5,
+   "end": 9.75,
+   "conf": 0.84,
+   "dasm_win": 0.5503,
+   "class": "correct"
+  },
+  {
+   "clip": "Q19VErS2iH4_20000",
+   "label": "Slam",
+   "family": "Door",
+   "onset": 4.75,
+   "end": 5.75,
+   "conf": 0.401,
+   "dasm_win": 0.002,
+   "class": "family absent"
+  },
+  {
+   "clip": "Q19VErS2iH4_20000",
+   "label": "Slam",
+   "family": "Door",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.425,
+   "dasm_win": 0.0008,
+   "class": "family absent"
+  },
+  {
+   "clip": "g6qq3GHA9t0_150000",
+   "label": "Frying (food)",
+   "family": "Cooking",
+   "onset": 1.0,
+   "end": 8.0,
+   "conf": 0.871,
+   "dasm_win": 0.4067,
+   "class": "correct"
+  },
+  {
+   "clip": "g6qq3GHA9t0_150000",
+   "label": "Sizzle",
+   "family": "Cooking",
+   "onset": 1.0,
+   "end": 7.75,
+   "conf": 0.684,
+   "dasm_win": 0.4067,
+   "class": "correct"
+  },
+  {
+   "clip": "g6qq3GHA9t0_150000",
+   "label": "Frying (food)",
+   "family": "Cooking",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.488,
+   "dasm_win": 0.4028,
+   "class": "wrong time"
+  },
+  {
+   "clip": "g6qq3GHA9t0_150000",
+   "label": "Boiling",
+   "family": "Boiling",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.47,
+   "dasm_win": 0.0635,
+   "class": "family absent"
+  },
+  {
+   "clip": "lDpJ-RBGMQc_180000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.376,
+   "dasm_win": 0.0372,
+   "class": "wrong time"
+  },
+  {
+   "clip": "lDpJ-RBGMQc_180000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 6.75,
+   "conf": 0.682,
+   "dasm_win": 0.0375,
+   "class": "wrong time"
+  },
+  {
+   "clip": "lDpJ-RBGMQc_180000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 5.25,
+   "end": 6.25,
+   "conf": 0.463,
+   "dasm_win": 0.0375,
+   "class": "wrong time"
+  },
+  {
+   "clip": "tmkOomSM_So_80000",
+   "label": "Wind chime",
+   "family": "Bell",
+   "onset": 3.5,
+   "end": 5.0,
+   "conf": 0.538,
+   "dasm_win": 0.2384,
+   "class": "family absent"
+  },
+  {
+   "clip": "tmkOomSM_So_80000",
+   "label": "Chime",
+   "family": "Bell",
+   "onset": 3.5,
+   "end": 4.75,
+   "conf": 0.456,
+   "dasm_win": 0.2343,
+   "class": "family absent"
+  },
+  {
+   "clip": "6HvJzsvx8Io_120000",
+   "label": "Baby cry, infant cry",
+   "family": "Baby cry, infant cry",
+   "onset": 1.25,
+   "end": 5.5,
+   "conf": 0.714,
+   "dasm_win": 0.6377,
+   "class": "family absent"
+  },
+  {
+   "clip": "6HvJzsvx8Io_120000",
+   "label": "Crying, sobbing",
+   "family": "Crying, sobbing",
+   "onset": 1.25,
+   "end": 5.5,
+   "conf": 0.438,
+   "dasm_win": 0.7861,
+   "class": "family absent"
+  },
+  {
+   "clip": "6HvJzsvx8Io_120000",
+   "label": "Whimper",
+   "family": "Whimper",
+   "onset": 2.5,
+   "end": 4.25,
+   "conf": 0.402,
+   "dasm_win": 0.0624,
+   "class": "family absent"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.409,
+   "dasm_win": 0.3062,
+   "class": "correct"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Sewing machine",
+   "family": "Sewing machine",
+   "onset": 0.5,
+   "end": 1.0,
+   "conf": 0.383,
+   "dasm_win": 0.0214,
+   "class": "correct"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 1.0,
+   "end": 4.25,
+   "conf": 0.798,
+   "dasm_win": 0.3062,
+   "class": "correct"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 8.25,
+   "conf": 0.771,
+   "dasm_win": 0.1068,
+   "class": "family absent"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 2.25,
+   "end": 5.0,
+   "conf": 0.475,
+   "dasm_win": 0.1068,
+   "class": "family absent"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 5.0,
+   "end": 6.0,
+   "conf": 0.513,
+   "dasm_win": 0.3062,
+   "class": "wrong time"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Boiling",
+   "family": "Boiling",
+   "onset": 8.25,
+   "end": 9.25,
+   "conf": 0.573,
+   "dasm_win": 0.2216,
+   "class": "family absent"
+  },
+  {
+   "clip": "2v1rSA4FqlM_100000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.438,
+   "dasm_win": 0.3062,
+   "class": "wrong time"
+  },
+  {
+   "clip": "4gTHEt6np5o_30000",
+   "label": "Electric shaver, electric razor",
+   "family": "Electric shaver, electric razor",
+   "onset": 5.25,
+   "end": 5.75,
+   "conf": 0.375,
+   "dasm_win": 0.3364,
+   "class": "family absent"
+  },
+  {
+   "clip": "4gTHEt6np5o_30000",
+   "label": "Electric toothbrush",
+   "family": "Electric toothbrush",
+   "onset": 5.5,
+   "end": 9.75,
+   "conf": 0.956,
+   "dasm_win": 0.8667,
+   "class": "wrong time"
+  },
+  {
+   "clip": "cfEKOEmFxp0_40000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 2.25,
+   "conf": 0.581,
+   "dasm_win": 0.0829,
+   "class": "correct"
+  },
+  {
+   "clip": "cfEKOEmFxp0_40000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 1.75,
+   "conf": 0.532,
+   "dasm_win": 0.0829,
+   "class": "correct"
+  },
+  {
+   "clip": "wTOSS0cx50s_170000",
+   "label": "Clip-clop",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 1.75,
+   "conf": 0.539,
+   "dasm_win": 0.0228,
+   "class": "family absent"
+  },
+  {
+   "clip": "wTOSS0cx50s_170000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 1.75,
+   "conf": 0.453,
+   "dasm_win": 0.0228,
+   "class": "family absent"
+  },
+  {
+   "clip": "tu3g4ZBt3o0_30000",
+   "label": "Typewriter",
+   "family": "Typewriter",
+   "onset": 5.75,
+   "end": 6.25,
+   "conf": 0.427,
+   "dasm_win": 0.488,
+   "class": "correct"
+  },
+  {
+   "clip": "tu3g4ZBt3o0_30000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 6.25,
+   "end": 6.75,
+   "conf": 0.39,
+   "dasm_win": 0.1294,
+   "class": "family absent"
+  },
+  {
+   "clip": "tu3g4ZBt3o0_30000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 7.0,
+   "end": 7.75,
+   "conf": 0.581,
+   "dasm_win": 0.122,
+   "class": "family absent"
+  },
+  {
+   "clip": "tu3g4ZBt3o0_30000",
+   "label": "Typewriter",
+   "family": "Typewriter",
+   "onset": 7.25,
+   "end": 8.0,
+   "conf": 0.567,
+   "dasm_win": 0.4878,
+   "class": "correct"
+  },
+  {
+   "clip": "tu3g4ZBt3o0_30000",
+   "label": "Typewriter",
+   "family": "Typewriter",
+   "onset": 8.25,
+   "end": 9.0,
+   "conf": 0.767,
+   "dasm_win": 0.4885,
+   "class": "correct"
+  },
+  {
+   "clip": "tu3g4ZBt3o0_30000",
+   "label": "Typewriter",
+   "family": "Typewriter",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.775,
+   "dasm_win": 0.4885,
+   "class": "correct"
+  },
+  {
+   "clip": "4Z2Tt3NInDM_30000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 2.5,
+   "conf": 0.46,
+   "dasm_win": 0.0315,
+   "class": "family absent"
+  },
+  {
+   "clip": "4Z2Tt3NInDM_30000",
+   "label": "Clip-clop",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 2.5,
+   "conf": 0.456,
+   "dasm_win": 0.0315,
+   "class": "family absent"
+  },
+  {
+   "clip": "D5FCG0RaFn8_250000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.604,
+   "dasm_win": 0.4282,
+   "class": "family absent"
+  },
+  {
+   "clip": "0Xe2zCJNjvk_160000",
+   "label": "Squawk",
+   "family": "Squawk",
+   "onset": 4.25,
+   "end": 4.75,
+   "conf": 0.369,
+   "dasm_win": 0.0057,
+   "class": "family absent"
+  },
+  {
+   "clip": "0Xe2zCJNjvk_160000",
+   "label": "Electric shaver, electric razor",
+   "family": "Electric shaver, electric razor",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.707,
+   "dasm_win": 0.7979,
+   "class": "family absent"
+  },
+  {
+   "clip": "3eBoAlHnttY_30000",
+   "label": "Clapping",
+   "family": "Clapping",
+   "onset": 4.0,
+   "end": 5.5,
+   "conf": 0.455,
+   "dasm_win": 0.4292,
+   "class": "family absent"
+  },
+  {
+   "clip": "7_yBcHaoR0w_50000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 0.0,
+   "end": 2.25,
+   "conf": 0.476,
+   "dasm_win": 0.5532,
+   "class": "correct"
+  },
+  {
+   "clip": "rkapTdi8NTQ_30000",
+   "label": "Drip",
+   "family": "Water",
+   "onset": 1.25,
+   "end": 1.75,
+   "conf": 0.429,
+   "dasm_win": 0.0083,
+   "class": "family absent"
+  },
+  {
+   "clip": "rkapTdi8NTQ_30000",
+   "label": "Drip",
+   "family": "Water",
+   "onset": 2.0,
+   "end": 2.75,
+   "conf": 0.569,
+   "dasm_win": 0.0083,
+   "class": "family absent"
+  },
+  {
+   "clip": "rkapTdi8NTQ_30000",
+   "label": "Drip",
+   "family": "Water",
+   "onset": 4.0,
+   "end": 5.25,
+   "conf": 0.515,
+   "dasm_win": 0.0082,
+   "class": "family absent"
+  },
+  {
+   "clip": "rkapTdi8NTQ_30000",
+   "label": "Drip",
+   "family": "Water",
+   "onset": 5.5,
+   "end": 7.75,
+   "conf": 0.537,
+   "dasm_win": 0.0082,
+   "class": "family absent"
+  },
+  {
+   "clip": "cbmaM2VhdAU_30000",
+   "label": "Honk",
+   "family": "Honk",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.801,
+   "dasm_win": 0.8174,
+   "class": "correct"
+  },
+  {
+   "clip": "cbmaM2VhdAU_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.732,
+   "dasm_win": 0.1852,
+   "class": "correct"
+  },
+  {
+   "clip": "cbmaM2VhdAU_30000",
+   "label": "Goose",
+   "family": "Goose",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.731,
+   "dasm_win": 0.8965,
+   "class": "correct"
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "label": "Toilet flush",
+   "family": "Toilet flush",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.933,
+   "dasm_win": 0.9678,
+   "class": "correct"
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "label": "Fill (with liquid)",
+   "family": "Water",
+   "onset": 0.75,
+   "end": 1.25,
+   "conf": 0.36,
+   "dasm_win": 0.1083,
+   "class": "family absent"
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "label": "Toilet flush",
+   "family": "Toilet flush",
+   "onset": 1.0,
+   "end": 6.25,
+   "conf": 0.975,
+   "dasm_win": 0.9678,
+   "class": "correct"
+  },
+  {
+   "clip": "jlmyAZSidOQ_290000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.0,
+   "end": 5.25,
+   "conf": 0.494,
+   "dasm_win": 0.1094,
+   "class": "family absent"
+  },
+  {
+   "clip": "1hUNSCMZi9o_20000",
+   "label": "Busy signal",
+   "family": "Busy signal",
+   "onset": 4.5,
+   "end": 6.25,
+   "conf": 0.446,
+   "dasm_win": 0.0082,
+   "class": "family absent"
+  },
+  {
+   "clip": "1hUNSCMZi9o_20000",
+   "label": "Telephone dialing, DTMF",
+   "family": "Telephone",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.474,
+   "dasm_win": 0.6108,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.25,
+   "end": 3.5,
+   "conf": 0.387,
+   "dasm_win": 0.3359,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 1.5,
+   "end": 3.75,
+   "conf": 0.676,
+   "dasm_win": 0.6958,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Sailboat, sailing ship",
+   "family": "Boat",
+   "onset": 1.5,
+   "end": 3.5,
+   "conf": 0.42,
+   "dasm_win": 0.6958,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Clip-clop",
+   "family": "Horse",
+   "onset": 3.5,
+   "end": 5.25,
+   "conf": 0.42,
+   "dasm_win": 0.015,
+   "class": "family absent"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 3.5,
+   "end": 5.25,
+   "conf": 0.419,
+   "dasm_win": 0.015,
+   "class": "family absent"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 4.5,
+   "end": 5.75,
+   "conf": 0.508,
+   "dasm_win": 0.6958,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Sailboat, sailing ship",
+   "family": "Boat",
+   "onset": 4.5,
+   "end": 5.5,
+   "conf": 0.352,
+   "dasm_win": 0.6958,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 6.5,
+   "end": 7.5,
+   "conf": 0.723,
+   "dasm_win": 0.6958,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Sailboat, sailing ship",
+   "family": "Boat",
+   "onset": 6.5,
+   "end": 7.5,
+   "conf": 0.474,
+   "dasm_win": 0.6958,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 6.5,
+   "end": 7.5,
+   "conf": 0.359,
+   "dasm_win": 0.3359,
+   "class": "wrong time"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Bicycle",
+   "family": "Bicycle",
+   "onset": 7.5,
+   "end": 8.0,
+   "conf": 0.424,
+   "dasm_win": 0.0396,
+   "class": "family absent"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Clip-clop",
+   "family": "Horse",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.651,
+   "dasm_win": 0.0152,
+   "class": "family absent"
+  },
+  {
+   "clip": "BQ86IY0M860_30000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.539,
+   "dasm_win": 0.0152,
+   "class": "family absent"
+  },
+  {
+   "clip": "9rXAmXuAOw8_0",
+   "label": "Wail, moan",
+   "family": "Wail, moan",
+   "onset": 1.0,
+   "end": 1.75,
+   "conf": 0.355,
+   "dasm_win": 0.0317,
+   "class": "family absent"
+  },
+  {
+   "clip": "KSxTxynXiBs_30000",
+   "label": "Ding-dong",
+   "family": "Ding-dong",
+   "onset": 3.75,
+   "end": 6.25,
+   "conf": 0.538,
+   "dasm_win": 0.2369,
+   "class": "correct"
+  },
+  {
+   "clip": "mxJJB7Y__Ao_30000",
+   "label": "Hair dryer",
+   "family": "Hair dryer",
+   "onset": 6.25,
+   "end": 6.75,
+   "conf": 0.399,
+   "dasm_win": 0.0768,
+   "class": "correct"
+  },
+  {
+   "clip": "XjkUtn062ho_0",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 6.25,
+   "end": 7.75,
+   "conf": 0.357,
+   "dasm_win": 0.7007,
+   "class": "correct"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "label": "Children shouting",
+   "family": "Crowd",
+   "onset": 1.75,
+   "end": 2.5,
+   "conf": 0.487,
+   "dasm_win": 0.3242,
+   "class": "correct"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "label": "Children playing",
+   "family": "Children playing",
+   "onset": 5.75,
+   "end": 7.5,
+   "conf": 0.443,
+   "dasm_win": 0.3562,
+   "class": "wrong time"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "label": "Children playing",
+   "family": "Children playing",
+   "onset": 7.75,
+   "end": 8.25,
+   "conf": 0.408,
+   "dasm_win": 0.3567,
+   "class": "wrong time"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "label": "Children shouting",
+   "family": "Crowd",
+   "onset": 8.25,
+   "end": 8.75,
+   "conf": 0.36,
+   "dasm_win": 0.3242,
+   "class": "correct"
+  },
+  {
+   "clip": "d4HRC_ef1X8_50000",
+   "label": "Children playing",
+   "family": "Children playing",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.43,
+   "dasm_win": 0.3567,
+   "class": "wrong time"
+  },
+  {
+   "clip": "K6UW_LgkIjs_30000",
+   "label": "Crow",
+   "family": "Crow",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.909,
+   "dasm_win": 0.8462,
+   "class": "correct"
+  },
+  {
+   "clip": "K6UW_LgkIjs_30000",
+   "label": "Caw",
+   "family": "Bird",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.829,
+   "dasm_win": 0.9443,
+   "class": "correct"
+  },
+  {
+   "clip": "K6UW_LgkIjs_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 2.25,
+   "end": 5.25,
+   "conf": 0.43,
+   "dasm_win": 0.9419,
+   "class": "wrong time"
+  },
+  {
+   "clip": "YElBZnW40Ng_21000",
+   "label": "Insect",
+   "family": "Insect",
+   "onset": 3.0,
+   "end": 4.0,
+   "conf": 0.465,
+   "dasm_win": 0.2432,
+   "class": "family absent"
+  },
+  {
+   "clip": "YElBZnW40Ng_21000",
+   "label": "Fly, housefly",
+   "family": "Fly, housefly",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.417,
+   "dasm_win": 0.0592,
+   "class": "family absent"
+  },
+  {
+   "clip": "YElBZnW40Ng_21000",
+   "label": "Mosquito",
+   "family": "Mosquito",
+   "onset": 3.0,
+   "end": 3.5,
+   "conf": 0.388,
+   "dasm_win": 0.0798,
+   "class": "family absent"
+  },
+  {
+   "clip": "YElBZnW40Ng_21000",
+   "label": "Insect",
+   "family": "Insect",
+   "onset": 4.25,
+   "end": 6.75,
+   "conf": 0.635,
+   "dasm_win": 0.1787,
+   "class": "family absent"
+  },
+  {
+   "clip": "YElBZnW40Ng_21000",
+   "label": "Mosquito",
+   "family": "Mosquito",
+   "onset": 4.75,
+   "end": 6.75,
+   "conf": 0.699,
+   "dasm_win": 0.0572,
+   "class": "family absent"
+  },
+  {
+   "clip": "YElBZnW40Ng_21000",
+   "label": "Fly, housefly",
+   "family": "Fly, housefly",
+   "onset": 4.75,
+   "end": 6.75,
+   "conf": 0.616,
+   "dasm_win": 0.0504,
+   "class": "family absent"
+  },
+  {
+   "clip": "wh7-5G4cBEo_30000",
+   "label": "Frog",
+   "family": "Frog",
+   "onset": 0.25,
+   "end": 9.75,
+   "conf": 0.983,
+   "dasm_win": 0.9668,
+   "class": "correct"
+  },
+  {
+   "clip": "wh7-5G4cBEo_30000",
+   "label": "Croak",
+   "family": "Croak",
+   "onset": 0.25,
+   "end": 9.75,
+   "conf": 0.981,
+   "dasm_win": 0.8472,
+   "class": "correct"
+  },
+  {
+   "clip": "rvbmYs4Kl3Y_200000",
+   "label": "Sanding",
+   "family": "Sanding",
+   "onset": 2.25,
+   "end": 3.5,
+   "conf": 0.487,
+   "dasm_win": 0.0338,
+   "class": "family absent"
+  },
+  {
+   "clip": "IbSYTVRyOLw_160000",
+   "label": "Pour",
+   "family": "Water",
+   "onset": 6.75,
+   "end": 8.0,
+   "conf": 0.603,
+   "dasm_win": 0.5308,
+   "class": "correct"
+  },
+  {
+   "clip": "IbSYTVRyOLw_160000",
+   "label": "Pour",
+   "family": "Water",
+   "onset": 8.25,
+   "end": 9.0,
+   "conf": 0.371,
+   "dasm_win": 0.5303,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ZHK2VTTMMWs_370000",
+   "label": "Chopping (food)",
+   "family": "Cooking",
+   "onset": 1.75,
+   "end": 2.25,
+   "conf": 0.67,
+   "dasm_win": 0.0283,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZHK2VTTMMWs_370000",
+   "label": "Chopping (food)",
+   "family": "Cooking",
+   "onset": 2.5,
+   "end": 3.5,
+   "conf": 0.51,
+   "dasm_win": 0.0305,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZHK2VTTMMWs_370000",
+   "label": "Cash register",
+   "family": "Cash register",
+   "onset": 2.5,
+   "end": 3.0,
+   "conf": 0.394,
+   "dasm_win": 0.0038,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZHK2VTTMMWs_370000",
+   "label": "Dishes, pots, and pans",
+   "family": "Dishes",
+   "onset": 2.5,
+   "end": 3.0,
+   "conf": 0.373,
+   "dasm_win": 0.0052,
+   "class": "family absent"
+  },
+  {
+   "clip": "PVgL5wFOKMs_30000",
+   "label": "Cheering",
+   "family": "Crowd",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.443,
+   "dasm_win": 0.6011,
+   "class": "correct"
+  },
+  {
+   "clip": "ENCPkF4K9zU_30000",
+   "label": "Cash register",
+   "family": "Cash register",
+   "onset": 8.0,
+   "end": 9.5,
+   "conf": 0.409,
+   "dasm_win": 0.0078,
+   "class": "family absent"
+  },
+  {
+   "clip": "KbOySeP46l4_570000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 0.5,
+   "end": 1.0,
+   "conf": 0.563,
+   "dasm_win": 0.0308,
+   "class": "family absent"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.928,
+   "dasm_win": 0.8145,
+   "class": "correct"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.632,
+   "dasm_win": 0.5068,
+   "class": "correct"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Jackhammer",
+   "family": "Jackhammer",
+   "onset": 0.25,
+   "end": 1.25,
+   "conf": 0.812,
+   "dasm_win": 0.1175,
+   "class": "family absent"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 1.0,
+   "end": 9.75,
+   "conf": 0.983,
+   "dasm_win": 0.8145,
+   "class": "correct"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 9.75,
+   "conf": 0.887,
+   "dasm_win": 0.5068,
+   "class": "correct"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Aircraft",
+   "family": "Aircraft",
+   "onset": 1.25,
+   "end": 9.75,
+   "conf": 0.68,
+   "dasm_win": 0.6484,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Xb7lSqbJYog_490000",
+   "label": "Aircraft engine",
+   "family": "Aircraft",
+   "onset": 7.5,
+   "end": 9.75,
+   "conf": 0.367,
+   "dasm_win": 0.6484,
+   "class": "wrong time"
+  },
+  {
+   "clip": "MKocTMZZnTs_40000",
+   "label": "Camera",
+   "family": "Camera",
+   "onset": 3.25,
+   "end": 4.25,
+   "conf": 0.517,
+   "dasm_win": 0.4456,
+   "class": "wrong time"
+  },
+  {
+   "clip": "UCycMYxXIw4_0",
+   "label": "Crowd",
+   "family": "Crowd",
+   "onset": 6.5,
+   "end": 7.75,
+   "conf": 0.417,
+   "dasm_win": 0.6221,
+   "class": "wrong time"
+  },
+  {
+   "clip": "yEahPgS0Kes_30000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 3.25,
+   "end": 4.25,
+   "conf": 0.612,
+   "dasm_win": 0.0029,
+   "class": "family absent"
+  },
+  {
+   "clip": "yEahPgS0Kes_30000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 4.75,
+   "end": 5.25,
+   "conf": 0.444,
+   "dasm_win": 0.0015,
+   "class": "family absent"
+  },
+  {
+   "clip": "yEahPgS0Kes_30000",
+   "label": "Smash, crash",
+   "family": "Glass",
+   "onset": 5.5,
+   "end": 8.75,
+   "conf": 0.729,
+   "dasm_win": 0.0049,
+   "class": "family absent"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.968,
+   "dasm_win": 0.1122,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.903,
+   "dasm_win": 0.1122,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Roar",
+   "family": "Roar",
+   "onset": 0.5,
+   "end": 1.0,
+   "conf": 0.661,
+   "dasm_win": 0.079,
+   "class": "family absent"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 1.0,
+   "end": 3.25,
+   "conf": 0.977,
+   "dasm_win": 0.2206,
+   "class": "correct"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 1.0,
+   "end": 3.25,
+   "conf": 0.914,
+   "dasm_win": 0.2206,
+   "class": "correct"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Fart",
+   "family": "Fart",
+   "onset": 3.0,
+   "end": 5.0,
+   "conf": 0.793,
+   "dasm_win": 0.5977,
+   "class": "correct"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 4.75,
+   "end": 7.25,
+   "conf": 0.959,
+   "dasm_win": 0.2681,
+   "class": "correct"
+  },
+  {
+   "clip": "LaiJ0mPbbdk_16000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 4.75,
+   "end": 7.25,
+   "conf": 0.875,
+   "dasm_win": 0.2681,
+   "class": "correct"
+  },
+  {
+   "clip": "Lg1HG6D_0Qk_30000",
+   "label": "Shout",
+   "family": "Shout",
+   "onset": 5.0,
+   "end": 5.5,
+   "conf": 0.514,
+   "dasm_win": 0.4954,
+   "class": "wrong time"
+  },
+  {
+   "clip": "pk75WDyNZKc_30000",
+   "label": "Air horn, truck horn",
+   "family": "Air horn, truck horn",
+   "onset": 8.5,
+   "end": 9.25,
+   "conf": 0.66,
+   "dasm_win": 0.6187,
+   "class": "correct"
+  },
+  {
+   "clip": "A-Mg-FwSkiU_30000",
+   "label": "Rain",
+   "family": "Rain",
+   "onset": 2.0,
+   "end": 2.75,
+   "conf": 0.406,
+   "dasm_win": 0.105,
+   "class": "wrong time"
+  },
+  {
+   "clip": "A-Mg-FwSkiU_30000",
+   "label": "Rain on surface",
+   "family": "Rain",
+   "onset": 2.0,
+   "end": 2.75,
+   "conf": 0.373,
+   "dasm_win": 0.105,
+   "class": "wrong time"
+  },
+  {
+   "clip": "A-Mg-FwSkiU_30000",
+   "label": "Eruption",
+   "family": "Explosion",
+   "onset": 8.25,
+   "end": 9.5,
+   "conf": 0.375,
+   "dasm_win": 0.0401,
+   "class": "family absent"
+  },
+  {
+   "clip": "87NvADAjdYo_51000",
+   "label": "Telephone dialing, DTMF",
+   "family": "Telephone",
+   "onset": 3.75,
+   "end": 5.25,
+   "conf": 0.468,
+   "dasm_win": 0.1952,
+   "class": "family absent"
+  },
+  {
+   "clip": "87NvADAjdYo_51000",
+   "label": "Beep, bleep",
+   "family": "Alarm",
+   "onset": 6.0,
+   "end": 6.75,
+   "conf": 0.589,
+   "dasm_win": 0.4631,
+   "class": "correct"
+  },
+  {
+   "clip": "ABSLnckbB8w_30000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 1.0,
+   "end": 1.75,
+   "conf": 0.511,
+   "dasm_win": 0.0031,
+   "class": "family absent"
+  },
+  {
+   "clip": "ABSLnckbB8w_30000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 2.0,
+   "end": 2.5,
+   "conf": 0.438,
+   "dasm_win": 0.0028,
+   "class": "family absent"
+  },
+  {
+   "clip": "N1c73HkaxvY_0",
+   "label": "Cattle, bovinae",
+   "family": "Cattle",
+   "onset": 4.75,
+   "end": 5.75,
+   "conf": 0.418,
+   "dasm_win": 0.0701,
+   "class": "family absent"
+  },
+  {
+   "clip": "zHPegoquV5I_20000",
+   "label": "Police car (siren)",
+   "family": "Siren",
+   "onset": 3.75,
+   "end": 5.5,
+   "conf": 0.41,
+   "dasm_win": 0.0811,
+   "class": "family absent"
+  },
+  {
+   "clip": "zHPegoquV5I_20000",
+   "label": "Siren",
+   "family": "Siren",
+   "onset": 3.75,
+   "end": 5.25,
+   "conf": 0.385,
+   "dasm_win": 0.0811,
+   "class": "family absent"
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 0.75,
+   "end": 1.25,
+   "conf": 0.417,
+   "dasm_win": 0.1769,
+   "class": "family absent"
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 7.0,
+   "end": 7.75,
+   "conf": 0.606,
+   "dasm_win": 0.1678,
+   "class": "family absent"
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Cap gun",
+   "family": "Gunshot",
+   "onset": 7.0,
+   "end": 8.0,
+   "conf": 0.506,
+   "dasm_win": 0.1678,
+   "class": "family absent"
+  },
+  {
+   "clip": "8x6K9Hd1D9k_10000",
+   "label": "Cap gun",
+   "family": "Gunshot",
+   "onset": 8.25,
+   "end": 9.0,
+   "conf": 0.478,
+   "dasm_win": 0.027,
+   "class": "family absent"
+  },
+  {
+   "clip": "X5gSlfpDDnQ_45000",
+   "label": "Artillery fire",
+   "family": "Gunshot",
+   "onset": 0.25,
+   "end": 0.75,
+   "conf": 0.428,
+   "dasm_win": 0.1843,
+   "class": "family absent"
+  },
+  {
+   "clip": "X5gSlfpDDnQ_45000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 0.25,
+   "end": 1.0,
+   "conf": 0.364,
+   "dasm_win": 0.5063,
+   "class": "family absent"
+  },
+  {
+   "clip": "GRjdL6M63m4_60000",
+   "label": "Explosion",
+   "family": "Explosion",
+   "onset": 1.75,
+   "end": 3.25,
+   "conf": 0.514,
+   "dasm_win": 0.3232,
+   "class": "family absent"
+  },
+  {
+   "clip": "GRjdL6M63m4_60000",
+   "label": "Crack",
+   "family": "Crack",
+   "onset": 3.25,
+   "end": 4.0,
+   "conf": 0.49,
+   "dasm_win": 0.1065,
+   "class": "family absent"
+  },
+  {
+   "clip": "GRjdL6M63m4_60000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 4.75,
+   "end": 9.75,
+   "conf": 0.902,
+   "dasm_win": 0.0524,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1DWt70gTqHc_0",
+   "label": "Dial tone",
+   "family": "Dial tone",
+   "onset": 2.5,
+   "end": 3.75,
+   "conf": 0.517,
+   "dasm_win": 0.2847,
+   "class": "family absent"
+  },
+  {
+   "clip": "1DWt70gTqHc_0",
+   "label": "Busy signal",
+   "family": "Busy signal",
+   "onset": 4.25,
+   "end": 5.75,
+   "conf": 0.849,
+   "dasm_win": 0.5347,
+   "class": "family absent"
+  },
+  {
+   "clip": "x-2Abohj8VY_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 1.0,
+   "conf": 0.427,
+   "dasm_win": 0.3977,
+   "class": "correct"
+  },
+  {
+   "clip": "x-2Abohj8VY_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.25,
+   "end": 9.75,
+   "conf": 0.703,
+   "dasm_win": 0.3977,
+   "class": "wrong time"
+  },
+  {
+   "clip": "x-2Abohj8VY_30000",
+   "label": "Bus",
+   "family": "Vehicle",
+   "onset": 8.75,
+   "end": 9.25,
+   "conf": 0.461,
+   "dasm_win": 0.3967,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.923,
+   "dasm_win": 0.623,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.907,
+   "dasm_win": 0.623,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train wheels squealing",
+   "family": "Train",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.9,
+   "dasm_win": 0.623,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.882,
+   "dasm_win": 0.623,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 0.75,
+   "end": 4.5,
+   "conf": 0.949,
+   "dasm_win": 0.624,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 0.75,
+   "end": 4.5,
+   "conf": 0.925,
+   "dasm_win": 0.624,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train wheels squealing",
+   "family": "Train",
+   "onset": 0.75,
+   "end": 3.5,
+   "conf": 0.925,
+   "dasm_win": 0.624,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 0.75,
+   "end": 4.5,
+   "conf": 0.923,
+   "dasm_win": 0.624,
+   "class": "correct"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 3.25,
+   "end": 5.75,
+   "conf": 0.498,
+   "dasm_win": 0.2035,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train wheels squealing",
+   "family": "Train",
+   "onset": 3.75,
+   "end": 4.25,
+   "conf": 0.628,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Aircraft",
+   "family": "Aircraft",
+   "onset": 4.5,
+   "end": 5.0,
+   "conf": 0.359,
+   "dasm_win": 0.1279,
+   "class": "family absent"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 4.75,
+   "end": 8.0,
+   "conf": 0.703,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 4.75,
+   "end": 8.0,
+   "conf": 0.693,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 4.75,
+   "end": 8.0,
+   "conf": 0.656,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 6.75,
+   "end": 9.75,
+   "conf": 0.484,
+   "dasm_win": 0.2042,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.741,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.728,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.714,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Rdu3_LWIlgE_400000",
+   "label": "Train wheels squealing",
+   "family": "Train",
+   "onset": 8.25,
+   "end": 9.25,
+   "conf": 0.492,
+   "dasm_win": 0.624,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ihcAiSvZOyU_30000",
+   "label": "Buzzer",
+   "family": "Alarm",
+   "onset": 6.5,
+   "end": 9.0,
+   "conf": 0.479,
+   "dasm_win": 0.6562,
+   "class": "correct"
+  },
+  {
+   "clip": "pIE-3sIPlvY_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.25,
+   "end": 6.75,
+   "conf": 0.442,
+   "dasm_win": 0.9766,
+   "class": "wrong time"
+  },
+  {
+   "clip": "pIE-3sIPlvY_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.436,
+   "dasm_win": 0.7964,
+   "class": "wrong time"
+  },
+  {
+   "clip": "bKS_m7JObxg_30000",
+   "label": "Electronic tuner",
+   "family": "Electronic tuner",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.614,
+   "dasm_win": 0.5435,
+   "class": "family absent"
+  },
+  {
+   "clip": "Ts3ZcUaELzA_30000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.49,
+   "dasm_win": 0.3767,
+   "class": "correct"
+  },
+  {
+   "clip": "rNQ0EBdxPvM_30000",
+   "label": "Chainsaw",
+   "family": "Chainsaw",
+   "onset": 7.5,
+   "end": 8.75,
+   "conf": 0.485,
+   "dasm_win": 0.1891,
+   "class": "family absent"
+  },
+  {
+   "clip": "rNQ0EBdxPvM_30000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 7.75,
+   "end": 8.75,
+   "conf": 0.407,
+   "dasm_win": 0.1942,
+   "class": "family absent"
+  },
+  {
+   "clip": "rNQ0EBdxPvM_30000",
+   "label": "Power tool",
+   "family": "Power tool",
+   "onset": 7.75,
+   "end": 8.75,
+   "conf": 0.372,
+   "dasm_win": 0.4026,
+   "class": "family absent"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 0.75,
+   "end": 9.75,
+   "conf": 0.905,
+   "dasm_win": 0.959,
+   "class": "wrong time"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "label": "Bark",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 6.75,
+   "conf": 0.575,
+   "dasm_win": 0.8354,
+   "class": "correct"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 6.75,
+   "conf": 0.454,
+   "dasm_win": 0.8354,
+   "class": "correct"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "label": "Wheeze",
+   "family": "Wheeze",
+   "onset": 7.0,
+   "end": 7.75,
+   "conf": 0.387,
+   "dasm_win": 0.0045,
+   "class": "family absent"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "label": "Bark",
+   "family": "Dog",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.552,
+   "dasm_win": 0.959,
+   "class": "correct"
+  },
+  {
+   "clip": "8vasA2D2_Kc_30000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.458,
+   "dasm_win": 0.959,
+   "class": "correct"
+  },
+  {
+   "clip": "rUSTXUis_ys_170000",
+   "label": "Snake",
+   "family": "Snake",
+   "onset": 2.75,
+   "end": 3.5,
+   "conf": 0.674,
+   "dasm_win": 0.3994,
+   "class": "family absent"
+  },
+  {
+   "clip": "rUSTXUis_ys_170000",
+   "label": "Snake",
+   "family": "Snake",
+   "onset": 4.25,
+   "end": 5.5,
+   "conf": 0.761,
+   "dasm_win": 0.3989,
+   "class": "family absent"
+  },
+  {
+   "clip": "rUSTXUis_ys_170000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.762,
+   "dasm_win": 0.1707,
+   "class": "family absent"
+  },
+  {
+   "clip": "rUSTXUis_ys_170000",
+   "label": "Hiss",
+   "family": "Cat",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.709,
+   "dasm_win": 0.0212,
+   "class": "family absent"
+  },
+  {
+   "clip": "xvXexfUWqqA_1000",
+   "label": "Fusillade",
+   "family": "Gunshot",
+   "onset": 4.5,
+   "end": 5.25,
+   "conf": 0.431,
+   "dasm_win": 0.0264,
+   "class": "family absent"
+  },
+  {
+   "clip": "xvXexfUWqqA_1000",
+   "label": "Whoosh, swoosh, swish",
+   "family": "Whoosh, swoosh, swish",
+   "onset": 6.25,
+   "end": 6.75,
+   "conf": 0.389,
+   "dasm_win": 0.2844,
+   "class": "wrong time"
+  },
+  {
+   "clip": "lqnw0Q13tDc_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 2.0,
+   "end": 4.75,
+   "conf": 0.692,
+   "dasm_win": 0.9497,
+   "class": "correct"
+  },
+  {
+   "clip": "lqnw0Q13tDc_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 2.0,
+   "end": 4.75,
+   "conf": 0.631,
+   "dasm_win": 0.9497,
+   "class": "correct"
+  },
+  {
+   "clip": "lqnw0Q13tDc_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 5.0,
+   "end": 9.75,
+   "conf": 0.75,
+   "dasm_win": 0.9604,
+   "class": "wrong time"
+  },
+  {
+   "clip": "lqnw0Q13tDc_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 5.5,
+   "end": 9.75,
+   "conf": 0.708,
+   "dasm_win": 0.9604,
+   "class": "wrong time"
+  },
+  {
+   "clip": "lqnw0Q13tDc_30000",
+   "label": "Coo",
+   "family": "Bird",
+   "onset": 6.75,
+   "end": 8.5,
+   "conf": 0.411,
+   "dasm_win": 0.9604,
+   "class": "correct"
+  },
+  {
+   "clip": "SeA3T6WvW1E_160000",
+   "label": "Beep, bleep",
+   "family": "Alarm",
+   "onset": 5.0,
+   "end": 5.75,
+   "conf": 0.443,
+   "dasm_win": 0.1595,
+   "class": "wrong time"
+  },
+  {
+   "clip": "SeA3T6WvW1E_160000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 7.0,
+   "end": 7.5,
+   "conf": 0.467,
+   "dasm_win": 0.0055,
+   "class": "family absent"
+  },
+  {
+   "clip": "SeA3T6WvW1E_160000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 7.0,
+   "end": 7.5,
+   "conf": 0.456,
+   "dasm_win": 0.0055,
+   "class": "family absent"
+  },
+  {
+   "clip": "SeA3T6WvW1E_160000",
+   "label": "Beep, bleep",
+   "family": "Alarm",
+   "onset": 7.5,
+   "end": 8.0,
+   "conf": 0.546,
+   "dasm_win": 0.3682,
+   "class": "correct"
+  },
+  {
+   "clip": "SeA3T6WvW1E_160000",
+   "label": "Dial tone",
+   "family": "Dial tone",
+   "onset": 7.5,
+   "end": 8.25,
+   "conf": 0.351,
+   "dasm_win": 0.0611,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Bang",
+   "family": "Explosion",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.458,
+   "dasm_win": 0.0061,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Yell",
+   "family": "Yell",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.377,
+   "dasm_win": 0.0867,
+   "class": "wrong time"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Bang",
+   "family": "Explosion",
+   "onset": 0.75,
+   "end": 1.75,
+   "conf": 0.602,
+   "dasm_win": 0.0059,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Heart murmur",
+   "family": "Heart murmur",
+   "onset": 1.25,
+   "end": 4.5,
+   "conf": 0.838,
+   "dasm_win": 0.0041,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Heart sounds, heartbeat",
+   "family": "Heart sounds, heartbeat",
+   "onset": 1.5,
+   "end": 3.75,
+   "conf": 0.819,
+   "dasm_win": 0.0035,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Bang",
+   "family": "Explosion",
+   "onset": 3.5,
+   "end": 5.5,
+   "conf": 0.767,
+   "dasm_win": 0.0151,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Heart murmur",
+   "family": "Heart murmur",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.795,
+   "dasm_win": 0.004,
+   "class": "family absent"
+  },
+  {
+   "clip": "QhF0CFyzzAc_30000",
+   "label": "Heart sounds, heartbeat",
+   "family": "Heart sounds, heartbeat",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.624,
+   "dasm_win": 0.0039,
+   "class": "family absent"
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Alarm clock",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.633,
+   "dasm_win": 0.3125,
+   "class": "family absent"
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Doorbell",
+   "family": "Doorbell",
+   "onset": 0.0,
+   "end": 1.25,
+   "conf": 0.543,
+   "dasm_win": 0.055,
+   "class": "family absent"
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Alarm clock",
+   "family": "Alarm",
+   "onset": 1.25,
+   "end": 9.75,
+   "conf": 0.631,
+   "dasm_win": 0.313,
+   "class": "family absent"
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Clock",
+   "family": "Clock",
+   "onset": 2.5,
+   "end": 6.25,
+   "conf": 0.699,
+   "dasm_win": 0.3306,
+   "class": "correct"
+  },
+  {
+   "clip": "7TkvzwbNYwU_60000",
+   "label": "Clock",
+   "family": "Clock",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.415,
+   "dasm_win": 0.3271,
+   "class": "correct"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.729,
+   "dasm_win": 0.4609,
+   "class": "correct"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 1.25,
+   "end": 2.75,
+   "conf": 0.531,
+   "dasm_win": 0.0256,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 3.0,
+   "end": 6.75,
+   "conf": 0.488,
+   "dasm_win": 0.0256,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 6.0,
+   "end": 7.5,
+   "conf": 0.462,
+   "dasm_win": 0.3318,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 6.5,
+   "end": 7.25,
+   "conf": 0.351,
+   "dasm_win": 0.3318,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 7.75,
+   "end": 9.25,
+   "conf": 0.681,
+   "dasm_win": 0.0256,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.418,
+   "dasm_win": 0.2703,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EVxByLO_6cA_30000",
+   "label": "Steam whistle",
+   "family": "Steam whistle",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.455,
+   "dasm_win": 0.0673,
+   "class": "family absent"
+  },
+  {
+   "clip": "AIDJFkDURPY_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.667,
+   "dasm_win": 0.2991,
+   "class": "family absent"
+  },
+  {
+   "clip": "jWgDbXbS5X8_80000",
+   "label": "Sigh",
+   "family": "Sigh",
+   "onset": 5.0,
+   "end": 6.25,
+   "conf": 0.474,
+   "dasm_win": 0.0391,
+   "class": "family absent"
+  },
+  {
+   "clip": "XdRtfqwj2cg_160000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 2.75,
+   "end": 4.25,
+   "conf": 0.547,
+   "dasm_win": 0.5791,
+   "class": "correct"
+  },
+  {
+   "clip": "w5qf9O6c20o_30000",
+   "label": "Mosquito",
+   "family": "Mosquito",
+   "onset": 4.75,
+   "end": 5.25,
+   "conf": 0.507,
+   "dasm_win": 0.0038,
+   "class": "family absent"
+  },
+  {
+   "clip": "iybJCHMT3jg_100000",
+   "label": "Screaming",
+   "family": "Screaming",
+   "onset": 7.5,
+   "end": 8.5,
+   "conf": 0.597,
+   "dasm_win": 0.488,
+   "class": "wrong time"
+  },
+  {
+   "clip": "KxzuJRh9GaQ_30000",
+   "label": "Hoot",
+   "family": "Hoot",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.507,
+   "dasm_win": 0.0069,
+   "class": "correct"
+  },
+  {
+   "clip": "KxzuJRh9GaQ_30000",
+   "label": "Owl",
+   "family": "Owl",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.466,
+   "dasm_win": 0.0045,
+   "class": "wrong time"
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "label": "Busy signal",
+   "family": "Busy signal",
+   "onset": 6.75,
+   "end": 9.5,
+   "conf": 0.738,
+   "dasm_win": 0.4724,
+   "class": "family absent"
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "label": "Dial tone",
+   "family": "Dial tone",
+   "onset": 6.75,
+   "end": 8.0,
+   "conf": 0.431,
+   "dasm_win": 0.2372,
+   "class": "family absent"
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "label": "Telephone",
+   "family": "Telephone",
+   "onset": 6.75,
+   "end": 7.5,
+   "conf": 0.369,
+   "dasm_win": 0.6753,
+   "class": "family absent"
+  },
+  {
+   "clip": "NQM5nygVn2w_210000",
+   "label": "Telephone bell ringing",
+   "family": "Telephone",
+   "onset": 7.0,
+   "end": 7.5,
+   "conf": 0.388,
+   "dasm_win": 0.6753,
+   "class": "family absent"
+  },
+  {
+   "clip": "OO7bdz6VsKg_22000",
+   "label": "Foghorn",
+   "family": "Foghorn",
+   "onset": 0.0,
+   "end": 1.25,
+   "conf": 0.531,
+   "dasm_win": 0.2299,
+   "class": "family absent"
+  },
+  {
+   "clip": "OO7bdz6VsKg_22000",
+   "label": "Bee, wasp, etc.",
+   "family": "Bee, wasp, etc.",
+   "onset": 2.5,
+   "end": 7.75,
+   "conf": 0.85,
+   "dasm_win": 0.1171,
+   "class": "family absent"
+  },
+  {
+   "clip": "OO7bdz6VsKg_22000",
+   "label": "Insect",
+   "family": "Insect",
+   "onset": 2.5,
+   "end": 7.75,
+   "conf": 0.567,
+   "dasm_win": 0.3225,
+   "class": "wrong time"
+  },
+  {
+   "clip": "OO7bdz6VsKg_22000",
+   "label": "Fly, housefly",
+   "family": "Fly, housefly",
+   "onset": 2.5,
+   "end": 7.75,
+   "conf": 0.554,
+   "dasm_win": 0.0223,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1bKf5nrT4DQ_90000",
+   "label": "Vehicle horn, car horn, honking",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 4.25,
+   "conf": 0.578,
+   "dasm_win": 0.6074,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1bKf5nrT4DQ_90000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 2.5,
+   "end": 4.25,
+   "conf": 0.402,
+   "dasm_win": 0.6074,
+   "class": "correct"
+  },
+  {
+   "clip": "1bKf5nrT4DQ_90000",
+   "label": "Toot",
+   "family": "Vehicle",
+   "onset": 3.75,
+   "end": 4.25,
+   "conf": 0.447,
+   "dasm_win": 0.6074,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1bKf5nrT4DQ_90000",
+   "label": "Vehicle horn, car horn, honking",
+   "family": "Vehicle",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.399,
+   "dasm_win": 0.6035,
+   "class": "wrong time"
+  },
+  {
+   "clip": "2YQPwRLB1s0_30000",
+   "label": "Zipper (clothing)",
+   "family": "Zipper (clothing)",
+   "onset": 4.75,
+   "end": 6.5,
+   "conf": 0.867,
+   "dasm_win": 0.8794,
+   "class": "correct"
+  },
+  {
+   "clip": "2YQPwRLB1s0_30000",
+   "label": "Zipper (clothing)",
+   "family": "Zipper (clothing)",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.925,
+   "dasm_win": 0.8833,
+   "class": "correct"
+  },
+  {
+   "clip": "sgpV3BLD0YQ_20000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 0.25,
+   "end": 0.75,
+   "conf": 0.382,
+   "dasm_win": 0.0343,
+   "class": "family absent"
+  },
+  {
+   "clip": "sgpV3BLD0YQ_20000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 0.75,
+   "end": 1.5,
+   "conf": 0.427,
+   "dasm_win": 0.3081,
+   "class": "family absent"
+  },
+  {
+   "clip": "8VCi0bFQ2bQ_30000",
+   "label": "Beep, bleep",
+   "family": "Alarm",
+   "onset": 1.5,
+   "end": 4.0,
+   "conf": 0.576,
+   "dasm_win": 0.2915,
+   "class": "correct"
+  },
+  {
+   "clip": "PhACFsEjsiI_40000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 7.75,
+   "end": 8.5,
+   "conf": 0.551,
+   "dasm_win": 0.0293,
+   "class": "family absent"
+  },
+  {
+   "clip": "PhACFsEjsiI_40000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 7.75,
+   "end": 8.5,
+   "conf": 0.55,
+   "dasm_win": 0.0293,
+   "class": "family absent"
+  },
+  {
+   "clip": "XRXJSsbC_kI_10000",
+   "label": "Crowd",
+   "family": "Crowd",
+   "onset": 1.5,
+   "end": 3.0,
+   "conf": 0.414,
+   "dasm_win": 0.5537,
+   "class": "wrong time"
+  },
+  {
+   "clip": "9l9QXgsJSfo_120000",
+   "label": "Air horn, truck horn",
+   "family": "Air horn, truck horn",
+   "onset": 0.5,
+   "end": 9.75,
+   "conf": 0.964,
+   "dasm_win": 0.8257,
+   "class": "correct"
+  },
+  {
+   "clip": "9l9QXgsJSfo_120000",
+   "label": "Vehicle horn, car horn, honking",
+   "family": "Vehicle",
+   "onset": 5.25,
+   "end": 9.75,
+   "conf": 0.388,
+   "dasm_win": 0.0161,
+   "class": "correct"
+  },
+  {
+   "clip": "mSLgj6uy-yE_80000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 7.5,
+   "end": 8.25,
+   "conf": 0.432,
+   "dasm_win": 0.105,
+   "class": "correct"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "label": "Liquid",
+   "family": "Water",
+   "onset": 1.5,
+   "end": 4.25,
+   "conf": 0.55,
+   "dasm_win": 0.646,
+   "class": "correct"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "label": "Hiss",
+   "family": "Cat",
+   "onset": 5.5,
+   "end": 6.75,
+   "conf": 0.869,
+   "dasm_win": 0.0168,
+   "class": "family absent"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 5.75,
+   "end": 6.25,
+   "conf": 0.907,
+   "dasm_win": 0.0588,
+   "class": "family absent"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "label": "Steam whistle",
+   "family": "Steam whistle",
+   "onset": 5.75,
+   "end": 6.25,
+   "conf": 0.617,
+   "dasm_win": 0.0054,
+   "class": "family absent"
+  },
+  {
+   "clip": "1009ux1xbkg_0",
+   "label": "Slosh",
+   "family": "Water",
+   "onset": 6.25,
+   "end": 8.25,
+   "conf": 0.586,
+   "dasm_win": 0.6475,
+   "class": "wrong time"
+  },
+  {
+   "clip": "upX4cNt_Reo_10000",
+   "label": "Purr",
+   "family": "Cat",
+   "onset": 0.0,
+   "end": 8.0,
+   "conf": 0.922,
+   "dasm_win": 0.9648,
+   "class": "correct"
+  },
+  {
+   "clip": "upX4cNt_Reo_10000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 0.0,
+   "end": 3.0,
+   "conf": 0.738,
+   "dasm_win": 0.9648,
+   "class": "correct"
+  },
+  {
+   "clip": "upX4cNt_Reo_10000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 4.25,
+   "end": 6.75,
+   "conf": 0.402,
+   "dasm_win": 0.9512,
+   "class": "wrong time"
+  },
+  {
+   "clip": "YFXSbPFaxcA_30000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 0.0,
+   "end": 2.0,
+   "conf": 0.956,
+   "dasm_win": 0.8315,
+   "class": "correct"
+  },
+  {
+   "clip": "YFXSbPFaxcA_30000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 3.0,
+   "end": 5.75,
+   "conf": 0.971,
+   "dasm_win": 0.8452,
+   "class": "wrong time"
+  },
+  {
+   "clip": "YFXSbPFaxcA_30000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 6.75,
+   "end": 9.5,
+   "conf": 0.978,
+   "dasm_win": 0.8477,
+   "class": "wrong time"
+  },
+  {
+   "clip": "QaL51pYn4uQ_20000",
+   "label": "Goose",
+   "family": "Goose",
+   "onset": 1.5,
+   "end": 2.5,
+   "conf": 0.489,
+   "dasm_win": 0.2737,
+   "class": "family absent"
+  },
+  {
+   "clip": "nu3ky6UEasw_6000",
+   "label": "Boiling",
+   "family": "Boiling",
+   "onset": 6.5,
+   "end": 7.5,
+   "conf": 0.419,
+   "dasm_win": 0.0114,
+   "class": "wrong time"
+  },
+  {
+   "clip": "nu3ky6UEasw_6000",
+   "label": "Baby cry, infant cry",
+   "family": "Baby cry, infant cry",
+   "onset": 8.5,
+   "end": 9.41,
+   "conf": 0.358,
+   "dasm_win": 0.2015,
+   "class": "family absent"
+  },
+  {
+   "clip": "NhUTaGJcnBA_60000",
+   "label": "Busy signal",
+   "family": "Busy signal",
+   "onset": 5.25,
+   "end": 7.75,
+   "conf": 0.794,
+   "dasm_win": 0.3123,
+   "class": "family absent"
+  },
+  {
+   "clip": "27rw1ni1k0c_1000",
+   "label": "Run",
+   "family": "Footsteps",
+   "onset": 0.0,
+   "end": 5.25,
+   "conf": 0.784,
+   "dasm_win": 0.3752,
+   "class": "family absent"
+  },
+  {
+   "clip": "27rw1ni1k0c_1000",
+   "label": "Run",
+   "family": "Footsteps",
+   "onset": 6.5,
+   "end": 8.75,
+   "conf": 0.842,
+   "dasm_win": 0.3848,
+   "class": "family absent"
+  },
+  {
+   "clip": "Dkfcal9MGPs_400000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 1.0,
+   "end": 4.5,
+   "conf": 0.678,
+   "dasm_win": 0.6729,
+   "class": "correct"
+  },
+  {
+   "clip": "Dkfcal9MGPs_400000",
+   "label": "Chirp, tweet",
+   "family": "Bird",
+   "onset": 1.0,
+   "end": 3.75,
+   "conf": 0.588,
+   "dasm_win": 0.6729,
+   "class": "correct"
+  },
+  {
+   "clip": "Dkfcal9MGPs_400000",
+   "label": "Bird vocalization, bird call, bird song",
+   "family": "Bird",
+   "onset": 1.0,
+   "end": 3.75,
+   "conf": 0.579,
+   "dasm_win": 0.6729,
+   "class": "correct"
+  },
+  {
+   "clip": "PTUxCvCz8Bc_170000",
+   "label": "Pour",
+   "family": "Water",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.522,
+   "dasm_win": 0.0605,
+   "class": "family absent"
+  },
+  {
+   "clip": "PTUxCvCz8Bc_170000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 3.5,
+   "end": 5.25,
+   "conf": 0.369,
+   "dasm_win": 0.0601,
+   "class": "family absent"
+  },
+  {
+   "clip": "PTUxCvCz8Bc_170000",
+   "label": "Frying (food)",
+   "family": "Cooking",
+   "onset": 6.5,
+   "end": 9.0,
+   "conf": 0.503,
+   "dasm_win": 0.3865,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ZjdaZKpDwdU_170000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.571,
+   "dasm_win": 0.2605,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZjdaZKpDwdU_170000",
+   "label": "Electronic tuner",
+   "family": "Electronic tuner",
+   "onset": 0.25,
+   "end": 4.0,
+   "conf": 0.883,
+   "dasm_win": 0.3413,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZjdaZKpDwdU_170000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 2.5,
+   "end": 4.5,
+   "conf": 0.512,
+   "dasm_win": 0.2673,
+   "class": "family absent"
+  },
+  {
+   "clip": "D1tl1eS7ubI_0",
+   "label": "Throat clearing",
+   "family": "Throat clearing",
+   "onset": 3.0,
+   "end": 5.5,
+   "conf": 0.794,
+   "dasm_win": 0.0773,
+   "class": "correct"
+  },
+  {
+   "clip": "D1tl1eS7ubI_0",
+   "label": "Cough",
+   "family": "Cough",
+   "onset": 3.25,
+   "end": 5.5,
+   "conf": 0.418,
+   "dasm_win": 0.814,
+   "class": "correct"
+  },
+  {
+   "clip": "lkv2qFT7slY_30000",
+   "label": "Basketball bounce",
+   "family": "Basketball bounce",
+   "onset": 2.25,
+   "end": 3.5,
+   "conf": 0.39,
+   "dasm_win": 0.4124,
+   "class": "correct"
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 3.25,
+   "end": 4.5,
+   "conf": 0.592,
+   "dasm_win": 0.0072,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 5.25,
+   "end": 9.75,
+   "conf": 0.734,
+   "dasm_win": 0.0086,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Cluck",
+   "family": "Bird",
+   "onset": 5.75,
+   "end": 6.25,
+   "conf": 0.354,
+   "dasm_win": 0.0086,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ITYq5xoDGK0_30000",
+   "label": "Turkey",
+   "family": "Turkey",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.391,
+   "dasm_win": 0.1616,
+   "class": "wrong time"
+  },
+  {
+   "clip": "AFwtBviVhhM_30000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.755,
+   "dasm_win": 0.7642,
+   "class": "correct"
+  },
+  {
+   "clip": "AFwtBviVhhM_30000",
+   "label": "Chorus effect",
+   "family": "Chorus effect",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.412,
+   "dasm_win": 0.3662,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Ky8aKwI522Q_50000",
+   "label": "Ding",
+   "family": "Bell",
+   "onset": 7.5,
+   "end": 8.25,
+   "conf": 0.438,
+   "dasm_win": 0.1971,
+   "class": "wrong time"
+  },
+  {
+   "clip": "MAhYAMZ50VI_100000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 5.25,
+   "end": 7.25,
+   "conf": 0.553,
+   "dasm_win": 0.8491,
+   "class": "correct"
+  },
+  {
+   "clip": "MAhYAMZ50VI_100000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 7.0,
+   "end": 9.5,
+   "conf": 0.901,
+   "dasm_win": 0.7466,
+   "class": "wrong time"
+  },
+  {
+   "clip": "MAhYAMZ50VI_100000",
+   "label": "Caterwaul",
+   "family": "Caterwaul",
+   "onset": 7.25,
+   "end": 9.25,
+   "conf": 0.767,
+   "dasm_win": 0.3096,
+   "class": "wrong time"
+  },
+  {
+   "clip": "MAhYAMZ50VI_100000",
+   "label": "Meow",
+   "family": "Cat",
+   "onset": 7.25,
+   "end": 9.5,
+   "conf": 0.65,
+   "dasm_win": 0.7466,
+   "class": "wrong time"
+  },
+  {
+   "clip": "AeDNy6Ff7VE_30000",
+   "label": "Run",
+   "family": "Footsteps",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.508,
+   "dasm_win": 0.1641,
+   "class": "family absent"
+  },
+  {
+   "clip": "AeDNy6Ff7VE_30000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 1.25,
+   "end": 2.25,
+   "conf": 0.441,
+   "dasm_win": 0.0139,
+   "class": "family absent"
+  },
+  {
+   "clip": "AeDNy6Ff7VE_30000",
+   "label": "Clip-clop",
+   "family": "Horse",
+   "onset": 1.75,
+   "end": 2.25,
+   "conf": 0.43,
+   "dasm_win": 0.0106,
+   "class": "family absent"
+  },
+  {
+   "clip": "iQfPmJ19ZUc_450000",
+   "label": "Thunk",
+   "family": "Thunk",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.397,
+   "dasm_win": 0.1127,
+   "class": "family absent"
+  },
+  {
+   "clip": "xe4dvQKF9p0_30000",
+   "label": "Fusillade",
+   "family": "Gunshot",
+   "onset": 1.0,
+   "end": 1.75,
+   "conf": 0.625,
+   "dasm_win": 0.459,
+   "class": "correct"
+  },
+  {
+   "clip": "xe4dvQKF9p0_30000",
+   "label": "Fusillade",
+   "family": "Gunshot",
+   "onset": 2.0,
+   "end": 3.0,
+   "conf": 0.689,
+   "dasm_win": 0.491,
+   "class": "correct"
+  },
+  {
+   "clip": "36E3XXqab40_40000",
+   "label": "Sink (filling or washing)",
+   "family": "Water",
+   "onset": 5.75,
+   "end": 8.75,
+   "conf": 0.867,
+   "dasm_win": 0.101,
+   "class": "correct"
+  },
+  {
+   "clip": "36E3XXqab40_40000",
+   "label": "Water tap, faucet",
+   "family": "Water",
+   "onset": 5.75,
+   "end": 9.75,
+   "conf": 0.847,
+   "dasm_win": 0.101,
+   "class": "correct"
+  },
+  {
+   "clip": "36E3XXqab40_40000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 5.75,
+   "end": 9.75,
+   "conf": 0.793,
+   "dasm_win": 0.101,
+   "class": "correct"
+  },
+  {
+   "clip": "36E3XXqab40_40000",
+   "label": "Sink (filling or washing)",
+   "family": "Water",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.708,
+   "dasm_win": 0.101,
+   "class": "wrong time"
+  },
+  {
+   "clip": "OtAdneAfzcc_140000",
+   "label": "Battle cry",
+   "family": "Battle cry",
+   "onset": 2.75,
+   "end": 9.75,
+   "conf": 0.766,
+   "dasm_win": 0.9419,
+   "class": "correct"
+  },
+  {
+   "clip": "OtAdneAfzcc_140000",
+   "label": "Crowd",
+   "family": "Crowd",
+   "onset": 2.75,
+   "end": 9.75,
+   "conf": 0.703,
+   "dasm_win": 0.2854,
+   "class": "family absent"
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.821,
+   "dasm_win": 0.2272,
+   "class": "family absent"
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.667,
+   "dasm_win": 0.0268,
+   "class": "family absent"
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "label": "Filing (rasp)",
+   "family": "Filing (rasp)",
+   "onset": 2.0,
+   "end": 2.75,
+   "conf": 0.418,
+   "dasm_win": 0.5508,
+   "class": "wrong time"
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "label": "Filing (rasp)",
+   "family": "Filing (rasp)",
+   "onset": 3.25,
+   "end": 6.75,
+   "conf": 0.683,
+   "dasm_win": 0.5552,
+   "class": "correct"
+  },
+  {
+   "clip": "nTatpBIdTmQ_180000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 5.0,
+   "end": 6.25,
+   "conf": 0.621,
+   "dasm_win": 0.0103,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "label": "Fusillade",
+   "family": "Gunshot",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.379,
+   "dasm_win": 0.4558,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "label": "Fusillade",
+   "family": "Gunshot",
+   "onset": 1.0,
+   "end": 6.25,
+   "conf": 0.718,
+   "dasm_win": 0.9746,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 1.25,
+   "end": 7.0,
+   "conf": 0.43,
+   "dasm_win": 0.9746,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "label": "Machine gun",
+   "family": "Gunshot",
+   "onset": 5.75,
+   "end": 7.0,
+   "conf": 0.359,
+   "dasm_win": 0.8472,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "label": "Fusillade",
+   "family": "Gunshot",
+   "onset": 7.5,
+   "end": 9.75,
+   "conf": 0.629,
+   "dasm_win": 0.9619,
+   "class": "family absent"
+  },
+  {
+   "clip": "u_Nxu8TvonA_580000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 7.5,
+   "end": 9.75,
+   "conf": 0.381,
+   "dasm_win": 0.9619,
+   "class": "family absent"
+  },
+  {
+   "clip": "rxhnnJ_hJyk_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.413,
+   "dasm_win": 0.2216,
+   "class": "correct"
+  },
+  {
+   "clip": "rxhnnJ_hJyk_30000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 0.25,
+   "end": 1.25,
+   "conf": 0.354,
+   "dasm_win": 0.2216,
+   "class": "correct"
+  },
+  {
+   "clip": "VKVk7kyU4qA_30000",
+   "label": "Civil defense siren",
+   "family": "Siren",
+   "onset": 3.75,
+   "end": 9.25,
+   "conf": 0.863,
+   "dasm_win": 0.9258,
+   "class": "correct"
+  },
+  {
+   "clip": "VKVk7kyU4qA_30000",
+   "label": "Siren",
+   "family": "Siren",
+   "onset": 3.75,
+   "end": 9.75,
+   "conf": 0.81,
+   "dasm_win": 0.9258,
+   "class": "correct"
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Boiling",
+   "family": "Boiling",
+   "onset": 1.25,
+   "end": 6.5,
+   "conf": 0.971,
+   "dasm_win": 0.3977,
+   "class": "wrong time"
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Liquid",
+   "family": "Water",
+   "onset": 3.0,
+   "end": 6.5,
+   "conf": 0.502,
+   "dasm_win": 0.0484,
+   "class": "wrong time"
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Boiling",
+   "family": "Boiling",
+   "onset": 7.25,
+   "end": 9.0,
+   "conf": 0.736,
+   "dasm_win": 0.3977,
+   "class": "wrong time"
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Liquid",
+   "family": "Water",
+   "onset": 7.25,
+   "end": 9.5,
+   "conf": 0.504,
+   "dasm_win": 0.0483,
+   "class": "wrong time"
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.55,
+   "dasm_win": 0.0483,
+   "class": "wrong time"
+  },
+  {
+   "clip": "vWXjyCSGEFM_160000",
+   "label": "Pump (liquid)",
+   "family": "Pump (liquid)",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.606,
+   "dasm_win": 0.1919,
+   "class": "wrong time"
+  },
+  {
+   "clip": "I1Ed5gIkcp8_10000",
+   "label": "Heart sounds, heartbeat",
+   "family": "Heart sounds, heartbeat",
+   "onset": 3.75,
+   "end": 8.25,
+   "conf": 0.89,
+   "dasm_win": 0.9834,
+   "class": "correct"
+  },
+  {
+   "clip": "I1Ed5gIkcp8_10000",
+   "label": "Heart murmur",
+   "family": "Heart murmur",
+   "onset": 3.75,
+   "end": 5.25,
+   "conf": 0.684,
+   "dasm_win": 0.9502,
+   "class": "correct"
+  },
+  {
+   "clip": "I1Ed5gIkcp8_10000",
+   "label": "Heart murmur",
+   "family": "Heart murmur",
+   "onset": 5.5,
+   "end": 8.25,
+   "conf": 0.717,
+   "dasm_win": 0.9497,
+   "class": "wrong time"
+  },
+  {
+   "clip": "29WrIcP3l44_30000",
+   "label": "Lawn mower",
+   "family": "Lawn mower",
+   "onset": 1.25,
+   "end": 5.25,
+   "conf": 0.438,
+   "dasm_win": 0.4312,
+   "class": "wrong time"
+  },
+  {
+   "clip": "29WrIcP3l44_30000",
+   "label": "Light engine (high frequency)",
+   "family": "Vehicle",
+   "onset": 1.25,
+   "end": 4.0,
+   "conf": 0.427,
+   "dasm_win": 0.4016,
+   "class": "wrong time"
+  },
+  {
+   "clip": "29WrIcP3l44_30000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 1.5,
+   "end": 5.75,
+   "conf": 0.353,
+   "dasm_win": 0.4016,
+   "class": "wrong time"
+  },
+  {
+   "clip": "29WrIcP3l44_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 2.0,
+   "end": 9.75,
+   "conf": 0.545,
+   "dasm_win": 0.4016,
+   "class": "wrong time"
+  },
+  {
+   "clip": "29WrIcP3l44_30000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 7.5,
+   "end": 9.75,
+   "conf": 0.721,
+   "dasm_win": 0.4016,
+   "class": "wrong time"
+  },
+  {
+   "clip": "29WrIcP3l44_30000",
+   "label": "Idling",
+   "family": "Vehicle",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.523,
+   "dasm_win": 0.4016,
+   "class": "wrong time"
+  },
+  {
+   "clip": "MYxhRD4RVmQ_10000",
+   "label": "Vacuum cleaner",
+   "family": "Vacuum cleaner",
+   "onset": 1.25,
+   "end": 3.75,
+   "conf": 0.653,
+   "dasm_win": 0.8862,
+   "class": "wrong time"
+  },
+  {
+   "clip": "MYxhRD4RVmQ_10000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.388,
+   "dasm_win": 0.0186,
+   "class": "wrong time"
+  },
+  {
+   "clip": "TQhi4PH6vdA_30000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 2.0,
+   "end": 3.75,
+   "conf": 0.487,
+   "dasm_win": 0.0627,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ql66pp0iq_4_40000",
+   "label": "Snoring",
+   "family": "Snoring",
+   "onset": 0.0,
+   "end": 8.25,
+   "conf": 0.975,
+   "dasm_win": 0.9204,
+   "class": "correct"
+  },
+  {
+   "clip": "ql66pp0iq_4_40000",
+   "label": "Sniff",
+   "family": "Sniff",
+   "onset": 8.75,
+   "end": 9.5,
+   "conf": 0.908,
+   "dasm_win": 0.0077,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 5.25,
+   "end": 5.75,
+   "conf": 0.541,
+   "dasm_win": 0.0293,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Hiss",
+   "family": "Cat",
+   "onset": 5.25,
+   "end": 5.75,
+   "conf": 0.513,
+   "dasm_win": 0.0171,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 5.25,
+   "end": 6.0,
+   "conf": 0.457,
+   "dasm_win": 0.0133,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 5.25,
+   "end": 6.0,
+   "conf": 0.408,
+   "dasm_win": 0.0133,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 5.25,
+   "end": 6.0,
+   "conf": 0.376,
+   "dasm_win": 0.0133,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Drill",
+   "family": "Drill",
+   "onset": 6.25,
+   "end": 7.5,
+   "conf": 0.575,
+   "dasm_win": 0.8057,
+   "class": "correct"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Dental drill, dentist's drill",
+   "family": "Dental drill, dentist's drill",
+   "onset": 6.25,
+   "end": 7.0,
+   "conf": 0.509,
+   "dasm_win": 0.0046,
+   "class": "family absent"
+  },
+  {
+   "clip": "JOai9BJwKtc_230000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 7.5,
+   "end": 9.0,
+   "conf": 0.357,
+   "dasm_win": 0.1445,
+   "class": "family absent"
+  },
+  {
+   "clip": "jaQ48brABIk_340000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 2.75,
+   "end": 3.25,
+   "conf": 0.563,
+   "dasm_win": 0.1871,
+   "class": "family absent"
+  },
+  {
+   "clip": "jaQ48brABIk_340000",
+   "label": "Goose",
+   "family": "Goose",
+   "onset": 3.0,
+   "end": 8.25,
+   "conf": 0.703,
+   "dasm_win": 0.1571,
+   "class": "family absent"
+  },
+  {
+   "clip": "jaQ48brABIk_340000",
+   "label": "Honk",
+   "family": "Honk",
+   "onset": 3.0,
+   "end": 8.25,
+   "conf": 0.644,
+   "dasm_win": 0.0177,
+   "class": "family absent"
+  },
+  {
+   "clip": "jaQ48brABIk_340000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 3.0,
+   "end": 8.25,
+   "conf": 0.601,
+   "dasm_win": 0.585,
+   "class": "correct"
+  },
+  {
+   "clip": "fmYTYOxwuIk_50000",
+   "label": "Smoke detector, smoke alarm",
+   "family": "Alarm",
+   "onset": 6.75,
+   "end": 7.5,
+   "conf": 0.554,
+   "dasm_win": 0.4844,
+   "class": "correct"
+  },
+  {
+   "clip": "QPR_tghZjAI_30000",
+   "label": "Chewing, mastication",
+   "family": "Chewing, mastication",
+   "onset": 5.5,
+   "end": 9.75,
+   "conf": 0.444,
+   "dasm_win": 0.5356,
+   "class": "wrong time"
+  },
+  {
+   "clip": "2JXesKiAqbs_14000",
+   "label": "Snoring",
+   "family": "Snoring",
+   "onset": 0.0,
+   "end": 1.5,
+   "conf": 0.792,
+   "dasm_win": 0.0388,
+   "class": "family absent"
+  },
+  {
+   "clip": "2JXesKiAqbs_14000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 1.5,
+   "end": 2.5,
+   "conf": 0.582,
+   "dasm_win": 0.0055,
+   "class": "family absent"
+  },
+  {
+   "clip": "2JXesKiAqbs_14000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 3.0,
+   "end": 3.75,
+   "conf": 0.506,
+   "dasm_win": 0.007,
+   "class": "family absent"
+  },
+  {
+   "clip": "_yrTKvc4mh8_30000",
+   "label": "Alarm",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.792,
+   "dasm_win": 0.9014,
+   "class": "correct"
+  },
+  {
+   "clip": "_yrTKvc4mh8_30000",
+   "label": "Fire alarm",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.433,
+   "dasm_win": 0.9014,
+   "class": "correct"
+  },
+  {
+   "clip": "_yrTKvc4mh8_30000",
+   "label": "Fire alarm",
+   "family": "Alarm",
+   "onset": 1.5,
+   "end": 3.25,
+   "conf": 0.433,
+   "dasm_win": 0.9014,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Emergency vehicle",
+   "family": "Siren",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.862,
+   "dasm_win": 0.1449,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Fire engine, fire truck (siren)",
+   "family": "Siren",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.835,
+   "dasm_win": 0.1449,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.764,
+   "dasm_win": 0.5962,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Ambulance (siren)",
+   "family": "Siren",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.681,
+   "dasm_win": 0.1449,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Siren",
+   "family": "Siren",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.6,
+   "dasm_win": 0.1449,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Truck",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 9.75,
+   "conf": 0.587,
+   "dasm_win": 0.5962,
+   "class": "correct"
+  },
+  {
+   "clip": "Ia6C4k0o2hc_20000",
+   "label": "Police car (siren)",
+   "family": "Siren",
+   "onset": 3.25,
+   "end": 6.25,
+   "conf": 0.384,
+   "dasm_win": 0.1449,
+   "class": "wrong time"
+  },
+  {
+   "clip": "wjmMSonpdT0_30000",
+   "label": "Jet engine",
+   "family": "Aircraft",
+   "onset": 0.0,
+   "end": 2.25,
+   "conf": 0.416,
+   "dasm_win": 0.218,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "label": "Police car (siren)",
+   "family": "Siren",
+   "onset": 3.25,
+   "end": 7.0,
+   "conf": 0.848,
+   "dasm_win": 0.3855,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "label": "Emergency vehicle",
+   "family": "Siren",
+   "onset": 3.25,
+   "end": 7.0,
+   "conf": 0.796,
+   "dasm_win": 0.3855,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "label": "Siren",
+   "family": "Siren",
+   "onset": 3.25,
+   "end": 7.0,
+   "conf": 0.735,
+   "dasm_win": 0.3855,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "label": "Ambulance (siren)",
+   "family": "Siren",
+   "onset": 3.25,
+   "end": 6.75,
+   "conf": 0.703,
+   "dasm_win": 0.3855,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "label": "Police car (siren)",
+   "family": "Siren",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.589,
+   "dasm_win": 0.3855,
+   "class": "correct"
+  },
+  {
+   "clip": "QZKH9-7cpq8_470000",
+   "label": "Siren",
+   "family": "Siren",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.496,
+   "dasm_win": 0.3855,
+   "class": "correct"
+  },
+  {
+   "clip": "DApzZBcMD34_30000",
+   "label": "Tick-tock",
+   "family": "Tick-tock",
+   "onset": 2.5,
+   "end": 9.75,
+   "conf": 0.665,
+   "dasm_win": 0.5562,
+   "class": "wrong time"
+  },
+  {
+   "clip": "DApzZBcMD34_30000",
+   "label": "Tick",
+   "family": "Tick",
+   "onset": 3.25,
+   "end": 9.75,
+   "conf": 0.437,
+   "dasm_win": 0.5493,
+   "class": "wrong time"
+  },
+  {
+   "clip": "DApzZBcMD34_30000",
+   "label": "Clock",
+   "family": "Clock",
+   "onset": 5.75,
+   "end": 9.75,
+   "conf": 0.683,
+   "dasm_win": 0.5771,
+   "class": "wrong time"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.583,
+   "dasm_win": 0.6787,
+   "class": "correct"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.75,
+   "end": 8.75,
+   "conf": 0.703,
+   "dasm_win": 0.6621,
+   "class": "correct"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Motorcycle",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 3.0,
+   "conf": 0.604,
+   "dasm_win": 0.645,
+   "class": "correct"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Accelerating, revving, vroom",
+   "family": "Vehicle",
+   "onset": 1.5,
+   "end": 4.0,
+   "conf": 0.398,
+   "dasm_win": 0.5996,
+   "class": "correct"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Motorcycle",
+   "family": "Vehicle",
+   "onset": 3.75,
+   "end": 5.75,
+   "conf": 0.493,
+   "dasm_win": 0.5952,
+   "class": "wrong time"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Accelerating, revving, vroom",
+   "family": "Vehicle",
+   "onset": 4.25,
+   "end": 8.0,
+   "conf": 0.371,
+   "dasm_win": 0.6045,
+   "class": "wrong time"
+  },
+  {
+   "clip": "WLX3Db60418_20000",
+   "label": "Motorcycle",
+   "family": "Vehicle",
+   "onset": 7.75,
+   "end": 8.75,
+   "conf": 0.541,
+   "dasm_win": 0.6143,
+   "class": "wrong time"
+  },
+  {
+   "clip": "3lFZ-QSUeHo_10000",
+   "label": "Whoosh, swoosh, swish",
+   "family": "Whoosh, swoosh, swish",
+   "onset": 7.25,
+   "end": 8.75,
+   "conf": 0.356,
+   "dasm_win": 0.2023,
+   "class": "family absent"
+  },
+  {
+   "clip": "RFeU64gTvGQ_0",
+   "label": "Snicker",
+   "family": "Snicker",
+   "onset": 0.0,
+   "end": 3.75,
+   "conf": 0.604,
+   "dasm_win": 0.1713,
+   "class": "correct"
+  },
+  {
+   "clip": "10V4g8MXF-Y_6000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 6.0,
+   "end": 9.0,
+   "conf": 0.665,
+   "dasm_win": 0.333,
+   "class": "family absent"
+  },
+  {
+   "clip": "10V4g8MXF-Y_6000",
+   "label": "Hiss",
+   "family": "Cat",
+   "onset": 6.0,
+   "end": 9.0,
+   "conf": 0.588,
+   "dasm_win": 0.022,
+   "class": "family absent"
+  },
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.847,
+   "dasm_win": 0.3081,
+   "class": "correct"
+  },
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "label": "Propeller, airscrew",
+   "family": "Aircraft",
+   "onset": 1.25,
+   "end": 9.75,
+   "conf": 0.699,
+   "dasm_win": 0.6963,
+   "class": "family absent"
+  },
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "label": "Aircraft",
+   "family": "Aircraft",
+   "onset": 1.25,
+   "end": 9.75,
+   "conf": 0.646,
+   "dasm_win": 0.6963,
+   "class": "family absent"
+  },
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 1.25,
+   "end": 5.0,
+   "conf": 0.613,
+   "dasm_win": 0.4636,
+   "class": "family absent"
+  },
+  {
+   "clip": "0PQYNtIBVf4_70000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 5.5,
+   "end": 9.75,
+   "conf": 0.446,
+   "dasm_win": 0.4636,
+   "class": "family absent"
+  },
+  {
+   "clip": "3tUlhM80ObM_0",
+   "label": "Heart murmur",
+   "family": "Heart murmur",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.45,
+   "dasm_win": 0.0028,
+   "class": "family absent"
+  },
+  {
+   "clip": "3tUlhM80ObM_0",
+   "label": "Knock",
+   "family": "Knock",
+   "onset": 0.5,
+   "end": 3.0,
+   "conf": 0.888,
+   "dasm_win": 0.8428,
+   "class": "correct"
+  },
+  {
+   "clip": "3tUlhM80ObM_0",
+   "label": "Knock",
+   "family": "Knock",
+   "onset": 6.0,
+   "end": 7.57,
+   "conf": 0.901,
+   "dasm_win": 0.8389,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 0.0,
+   "end": 3.0,
+   "conf": 0.891,
+   "dasm_win": 0.3657,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Whimper (dog)",
+   "family": "Dog",
+   "onset": 1.25,
+   "end": 2.75,
+   "conf": 0.487,
+   "dasm_win": 0.2426,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Yip",
+   "family": "Dog",
+   "onset": 1.25,
+   "end": 2.75,
+   "conf": 0.387,
+   "dasm_win": 0.2426,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Growling",
+   "family": "Dog",
+   "onset": 1.5,
+   "end": 2.75,
+   "conf": 0.501,
+   "dasm_win": 0.2426,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Canidae, dogs, wolves",
+   "family": "Dog",
+   "onset": 1.5,
+   "end": 2.75,
+   "conf": 0.364,
+   "dasm_win": 0.2426,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.911,
+   "dasm_win": 0.9028,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Bark",
+   "family": "Dog",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.618,
+   "dasm_win": 0.9028,
+   "class": "correct"
+  },
+  {
+   "clip": "JQwirnKysXI_30000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.433,
+   "dasm_win": 0.9028,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Steam whistle",
+   "family": "Steam whistle",
+   "onset": 0.0,
+   "end": 2.5,
+   "conf": 0.393,
+   "dasm_win": 0.5327,
+   "class": "family absent"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.351,
+   "dasm_win": 0.7822,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Train whistle",
+   "family": "Train",
+   "onset": 1.0,
+   "end": 2.5,
+   "conf": 0.353,
+   "dasm_win": 0.7837,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Train",
+   "family": "Train",
+   "onset": 1.5,
+   "end": 4.5,
+   "conf": 0.562,
+   "dasm_win": 0.7837,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 1.5,
+   "end": 4.5,
+   "conf": 0.525,
+   "dasm_win": 0.7837,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 2.75,
+   "end": 3.5,
+   "conf": 0.496,
+   "dasm_win": 0.7798,
+   "class": "wrong time"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Steam whistle",
+   "family": "Steam whistle",
+   "onset": 4.0,
+   "end": 9.75,
+   "conf": 0.432,
+   "dasm_win": 0.543,
+   "class": "family absent"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 5.0,
+   "end": 8.0,
+   "conf": 0.438,
+   "dasm_win": 0.2336,
+   "class": "correct"
+  },
+  {
+   "clip": "utg0tK7cDbE_30000",
+   "label": "Hiss",
+   "family": "Cat",
+   "onset": 5.5,
+   "end": 8.0,
+   "conf": 0.4,
+   "dasm_win": 0.0016,
+   "class": "family absent"
+  },
+  {
+   "clip": "jPIEgoO4cL0_24000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 3.25,
+   "end": 4.0,
+   "conf": 0.46,
+   "dasm_win": 0.2095,
+   "class": "family absent"
+  },
+  {
+   "clip": "jPIEgoO4cL0_24000",
+   "label": "Neigh, whinny",
+   "family": "Horse",
+   "onset": 6.0,
+   "end": 7.25,
+   "conf": 0.813,
+   "dasm_win": 0.0185,
+   "class": "family absent"
+  },
+  {
+   "clip": "jPIEgoO4cL0_24000",
+   "label": "Horse",
+   "family": "Horse",
+   "onset": 6.0,
+   "end": 7.25,
+   "conf": 0.717,
+   "dasm_win": 0.0185,
+   "class": "family absent"
+  },
+  {
+   "clip": "jPIEgoO4cL0_24000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 7.5,
+   "end": 8.0,
+   "conf": 0.47,
+   "dasm_win": 0.0898,
+   "class": "family absent"
+  },
+  {
+   "clip": "_P96ibCmCt0_140000",
+   "label": "Keys jangling",
+   "family": "Keys jangling",
+   "onset": 1.75,
+   "end": 3.0,
+   "conf": 0.512,
+   "dasm_win": 0.0119,
+   "class": "family absent"
+  },
+  {
+   "clip": "_P96ibCmCt0_140000",
+   "label": "Typewriter",
+   "family": "Typewriter",
+   "onset": 5.25,
+   "end": 6.25,
+   "conf": 0.444,
+   "dasm_win": 0.6187,
+   "class": "family absent"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Insect",
+   "family": "Insect",
+   "onset": 0.0,
+   "end": 6.0,
+   "conf": 0.979,
+   "dasm_win": 0.6245,
+   "class": "correct"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Fly, housefly",
+   "family": "Fly, housefly",
+   "onset": 0.0,
+   "end": 6.0,
+   "conf": 0.971,
+   "dasm_win": 0.1956,
+   "class": "correct"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Mosquito",
+   "family": "Mosquito",
+   "onset": 0.0,
+   "end": 6.0,
+   "conf": 0.927,
+   "dasm_win": 0.2827,
+   "class": "correct"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Bee, wasp, etc.",
+   "family": "Bee, wasp, etc.",
+   "onset": 0.0,
+   "end": 2.0,
+   "conf": 0.776,
+   "dasm_win": 0.1727,
+   "class": "correct"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 3.25,
+   "end": 4.25,
+   "conf": 0.359,
+   "dasm_win": 0.9512,
+   "class": "correct"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Bee, wasp, etc.",
+   "family": "Bee, wasp, etc.",
+   "onset": 4.5,
+   "end": 5.75,
+   "conf": 0.395,
+   "dasm_win": 0.1725,
+   "class": "wrong time"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 5.25,
+   "end": 9.75,
+   "conf": 0.893,
+   "dasm_win": 0.981,
+   "class": "correct"
+  },
+  {
+   "clip": "I1GC1yWdM_c_30000",
+   "label": "Meow",
+   "family": "Cat",
+   "onset": 5.25,
+   "end": 9.75,
+   "conf": 0.82,
+   "dasm_win": 0.981,
+   "class": "correct"
+  },
+  {
+   "clip": "Bdz-NtAD2SU_30000",
+   "label": "Artillery fire",
+   "family": "Gunshot",
+   "onset": 7.5,
+   "end": 9.5,
+   "conf": 0.582,
+   "dasm_win": 0.832,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Bdz-NtAD2SU_30000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 7.5,
+   "end": 9.5,
+   "conf": 0.523,
+   "dasm_win": 0.832,
+   "class": "wrong time"
+  },
+  {
+   "clip": "Bdz-NtAD2SU_30000",
+   "label": "Machine gun",
+   "family": "Gunshot",
+   "onset": 7.5,
+   "end": 8.0,
+   "conf": 0.407,
+   "dasm_win": 0.8281,
+   "class": "wrong time"
+  },
+  {
+   "clip": "4F66HK5DZe8_540000",
+   "label": "Whistle",
+   "family": "Whistle",
+   "onset": 1.0,
+   "end": 1.5,
+   "conf": 0.502,
+   "dasm_win": 0.4075,
+   "class": "correct"
+  },
+  {
+   "clip": "4F66HK5DZe8_540000",
+   "label": "Whistle",
+   "family": "Whistle",
+   "onset": 5.25,
+   "end": 7.25,
+   "conf": 0.721,
+   "dasm_win": 0.4124,
+   "class": "wrong time"
+  },
+  {
+   "clip": "4F66HK5DZe8_540000",
+   "label": "Whistle",
+   "family": "Whistle",
+   "onset": 8.5,
+   "end": 9.5,
+   "conf": 0.713,
+   "dasm_win": 0.4121,
+   "class": "wrong time"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Sniff",
+   "family": "Sniff",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.554,
+   "dasm_win": 0.0011,
+   "class": "family absent"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 1.75,
+   "end": 8.25,
+   "conf": 0.956,
+   "dasm_win": 0.9351,
+   "class": "correct"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 1.75,
+   "end": 8.25,
+   "conf": 0.82,
+   "dasm_win": 0.9351,
+   "class": "correct"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Coo",
+   "family": "Bird",
+   "onset": 2.0,
+   "end": 8.25,
+   "conf": 0.739,
+   "dasm_win": 0.9351,
+   "class": "correct"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Bird vocalization, bird call, bird song",
+   "family": "Bird",
+   "onset": 2.25,
+   "end": 8.25,
+   "conf": 0.503,
+   "dasm_win": 0.9351,
+   "class": "correct"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 8.25,
+   "end": 8.75,
+   "conf": 0.568,
+   "dasm_win": 0.7349,
+   "class": "wrong time"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 8.25,
+   "end": 8.75,
+   "conf": 0.547,
+   "dasm_win": 0.7349,
+   "class": "wrong time"
+  },
+  {
+   "clip": "3NGZcpAZcl0_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 8.25,
+   "end": 8.75,
+   "conf": 0.491,
+   "dasm_win": 0.7349,
+   "class": "wrong time"
+  },
+  {
+   "clip": "25AgUnkPr2I_28000",
+   "label": "Cap gun",
+   "family": "Gunshot",
+   "onset": 6.0,
+   "end": 7.0,
+   "conf": 0.826,
+   "dasm_win": 0.0656,
+   "class": "family absent"
+  },
+  {
+   "clip": "25AgUnkPr2I_28000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 6.0,
+   "end": 7.0,
+   "conf": 0.709,
+   "dasm_win": 0.0656,
+   "class": "family absent"
+  },
+  {
+   "clip": "YJdBwuIn4Ec_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.637,
+   "dasm_win": 0.9854,
+   "class": "correct"
+  },
+  {
+   "clip": "YJdBwuIn4Ec_30000",
+   "label": "Car",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 6.75,
+   "conf": 0.45,
+   "dasm_win": 0.9854,
+   "class": "correct"
+  },
+  {
+   "clip": "jaI41fTAM54_30000",
+   "label": "Bell",
+   "family": "Bell",
+   "onset": 0.75,
+   "end": 9.75,
+   "conf": 0.628,
+   "dasm_win": 0.8286,
+   "class": "correct"
+  },
+  {
+   "clip": "jaI41fTAM54_30000",
+   "label": "Church bell",
+   "family": "Bell",
+   "onset": 0.75,
+   "end": 9.75,
+   "conf": 0.616,
+   "dasm_win": 0.8286,
+   "class": "correct"
+  },
+  {
+   "clip": "-1UWSisR2zo_30000",
+   "label": "Bang",
+   "family": "Explosion",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.432,
+   "dasm_win": 0.0704,
+   "class": "family absent"
+  },
+  {
+   "clip": "awTVK3Q4ygs_0",
+   "label": "Whoosh, swoosh, swish",
+   "family": "Whoosh, swoosh, swish",
+   "onset": 2.75,
+   "end": 3.5,
+   "conf": 0.392,
+   "dasm_win": 0.4702,
+   "class": "wrong time"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 0.5,
+   "end": 9.75,
+   "conf": 0.889,
+   "dasm_win": 0.9614,
+   "class": "correct"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "label": "Bow-wow",
+   "family": "Dog",
+   "onset": 0.5,
+   "end": 9.75,
+   "conf": 0.594,
+   "dasm_win": 0.9614,
+   "class": "correct"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "label": "Yip",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 9.75,
+   "conf": 0.4,
+   "dasm_win": 0.9614,
+   "class": "correct"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "label": "Whimper (dog)",
+   "family": "Dog",
+   "onset": 3.75,
+   "end": 7.25,
+   "conf": 0.386,
+   "dasm_win": 0.9614,
+   "class": "correct"
+  },
+  {
+   "clip": "hiy7mHFnU1Y_30000",
+   "label": "Bark",
+   "family": "Dog",
+   "onset": 5.75,
+   "end": 9.75,
+   "conf": 0.36,
+   "dasm_win": 0.9497,
+   "class": "correct"
+  },
+  {
+   "clip": "cPzezkikR-0_30000",
+   "label": "Mosquito",
+   "family": "Mosquito",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.991,
+   "dasm_win": 0.543,
+   "class": "correct"
+  },
+  {
+   "clip": "cPzezkikR-0_30000",
+   "label": "Insect",
+   "family": "Insect",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.982,
+   "dasm_win": 0.8706,
+   "class": "correct"
+  },
+  {
+   "clip": "cPzezkikR-0_30000",
+   "label": "Fly, housefly",
+   "family": "Fly, housefly",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.98,
+   "dasm_win": 0.1598,
+   "class": "family absent"
+  },
+  {
+   "clip": "tz0avWZoqjg_0",
+   "label": "Owl",
+   "family": "Owl",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.49,
+   "dasm_win": 0.15,
+   "class": "family absent"
+  },
+  {
+   "clip": "tz0avWZoqjg_0",
+   "label": "Turkey",
+   "family": "Turkey",
+   "onset": 2.25,
+   "end": 2.75,
+   "conf": 0.709,
+   "dasm_win": 0.1183,
+   "class": "family absent"
+  },
+  {
+   "clip": "tz0avWZoqjg_0",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 2.25,
+   "end": 2.75,
+   "conf": 0.57,
+   "dasm_win": 0.7349,
+   "class": "correct"
+  },
+  {
+   "clip": "tz0avWZoqjg_0",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 2.5,
+   "end": 4.75,
+   "conf": 0.397,
+   "dasm_win": 0.7354,
+   "class": "correct"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.841,
+   "dasm_win": 0.6699,
+   "class": "correct"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 1.0,
+   "end": 3.75,
+   "conf": 0.708,
+   "dasm_win": 0.4116,
+   "class": "correct"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Motorboat, speedboat",
+   "family": "Boat",
+   "onset": 1.0,
+   "end": 3.5,
+   "conf": 0.596,
+   "dasm_win": 0.4116,
+   "class": "correct"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Ocean",
+   "family": "Water",
+   "onset": 1.5,
+   "end": 2.5,
+   "conf": 0.458,
+   "dasm_win": 0.1633,
+   "class": "family absent"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Waves, surf",
+   "family": "Water",
+   "onset": 1.5,
+   "end": 2.25,
+   "conf": 0.39,
+   "dasm_win": 0.1633,
+   "class": "family absent"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Air brake",
+   "family": "Air brake",
+   "onset": 3.75,
+   "end": 6.0,
+   "conf": 0.464,
+   "dasm_win": 0.0074,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Truck",
+   "family": "Vehicle",
+   "onset": 4.0,
+   "end": 6.0,
+   "conf": 0.5,
+   "dasm_win": 0.6694,
+   "class": "wrong time"
+  },
+  {
+   "clip": "EzfZMHnL1o8_160000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 6.0,
+   "end": 9.0,
+   "conf": 0.661,
+   "dasm_win": 0.2783,
+   "class": "wrong time"
+  },
+  {
+   "clip": "rVymW4Nb4NU_0",
+   "label": "Smoke detector, smoke alarm",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 3.5,
+   "conf": 0.917,
+   "dasm_win": 0.5674,
+   "class": "correct"
+  },
+  {
+   "clip": "rVymW4Nb4NU_0",
+   "label": "Beep, bleep",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 1.75,
+   "conf": 0.485,
+   "dasm_win": 0.5674,
+   "class": "correct"
+  },
+  {
+   "clip": "rVymW4Nb4NU_0",
+   "label": "Ringtone",
+   "family": "Telephone",
+   "onset": 5.5,
+   "end": 6.5,
+   "conf": 0.403,
+   "dasm_win": 0.1479,
+   "class": "family absent"
+  },
+  {
+   "clip": "kivK_R03Ek0_0",
+   "label": "Rumble",
+   "family": "Thunder",
+   "onset": 0.0,
+   "end": 1.0,
+   "conf": 0.468,
+   "dasm_win": 0.0304,
+   "class": "family absent"
+  },
+  {
+   "clip": "kivK_R03Ek0_0",
+   "label": "Rumble",
+   "family": "Thunder",
+   "onset": 2.0,
+   "end": 3.25,
+   "conf": 0.431,
+   "dasm_win": 0.0304,
+   "class": "family absent"
+  },
+  {
+   "clip": "kivK_R03Ek0_0",
+   "label": "Sonar",
+   "family": "Sonar",
+   "onset": 2.75,
+   "end": 5.75,
+   "conf": 0.41,
+   "dasm_win": 0.0437,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZkH7dC0CdrE_130000",
+   "label": "Snoring",
+   "family": "Snoring",
+   "onset": 0.0,
+   "end": 8.75,
+   "conf": 0.917,
+   "dasm_win": 0.8887,
+   "class": "correct"
+  },
+  {
+   "clip": "yBpYu5A-Jus_20000",
+   "label": "Shuffle",
+   "family": "Footsteps",
+   "onset": 0.0,
+   "end": 1.25,
+   "conf": 0.536,
+   "dasm_win": 0.4294,
+   "class": "family absent"
+  },
+  {
+   "clip": "yBpYu5A-Jus_20000",
+   "label": "Snake",
+   "family": "Snake",
+   "onset": 1.5,
+   "end": 3.0,
+   "conf": 0.426,
+   "dasm_win": 0.0909,
+   "class": "family absent"
+  },
+  {
+   "clip": "yBpYu5A-Jus_20000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 7.75,
+   "end": 8.5,
+   "conf": 0.512,
+   "dasm_win": 0.1775,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Breaking",
+   "family": "Glass",
+   "onset": 0.5,
+   "end": 3.0,
+   "conf": 0.542,
+   "dasm_win": 0.0762,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Glass",
+   "family": "Glass",
+   "onset": 1.0,
+   "end": 9.75,
+   "conf": 0.903,
+   "dasm_win": 0.0762,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 1.25,
+   "end": 7.75,
+   "conf": 0.5,
+   "dasm_win": 0.0085,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Crack",
+   "family": "Crack",
+   "onset": 1.25,
+   "end": 2.5,
+   "conf": 0.429,
+   "dasm_win": 0.1499,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Breaking",
+   "family": "Glass",
+   "onset": 3.25,
+   "end": 9.75,
+   "conf": 0.893,
+   "dasm_win": 0.0762,
+   "class": "family absent"
+  },
+  {
+   "clip": "LHkkJM-LjHs_0",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.598,
+   "dasm_win": 0.0247,
+   "class": "family absent"
+  },
+  {
+   "clip": "A6FWTmMEGEA_30000",
+   "label": "Drill",
+   "family": "Drill",
+   "onset": 4.5,
+   "end": 5.75,
+   "conf": 0.388,
+   "dasm_win": 0.9551,
+   "class": "correct"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Bee, wasp, etc.",
+   "family": "Bee, wasp, etc.",
+   "onset": 4.25,
+   "end": 4.75,
+   "conf": 0.519,
+   "dasm_win": 0.0206,
+   "class": "family absent"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Fly, housefly",
+   "family": "Fly, housefly",
+   "onset": 4.25,
+   "end": 4.75,
+   "conf": 0.461,
+   "dasm_win": 0.0009,
+   "class": "family absent"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Insect",
+   "family": "Insect",
+   "onset": 4.25,
+   "end": 4.75,
+   "conf": 0.426,
+   "dasm_win": 0.022,
+   "class": "family absent"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Engine starting",
+   "family": "Vehicle",
+   "onset": 6.25,
+   "end": 8.5,
+   "conf": 0.85,
+   "dasm_win": 0.3423,
+   "class": "correct"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 6.25,
+   "end": 8.5,
+   "conf": 0.725,
+   "dasm_win": 0.3423,
+   "class": "correct"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 6.5,
+   "end": 9.0,
+   "conf": 0.516,
+   "dasm_win": 0.343,
+   "class": "correct"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Car",
+   "family": "Vehicle",
+   "onset": 6.5,
+   "end": 7.5,
+   "conf": 0.356,
+   "dasm_win": 0.3423,
+   "class": "correct"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Typewriter",
+   "family": "Typewriter",
+   "onset": 8.5,
+   "end": 9.75,
+   "conf": 0.756,
+   "dasm_win": 0.0046,
+   "class": "family absent"
+  },
+  {
+   "clip": "WsKJwVVs-MY_0",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 9.25,
+   "end": 9.76,
+   "conf": 0.39,
+   "dasm_win": 0.3447,
+   "class": "wrong time"
+  },
+  {
+   "clip": "kSdH9z8snac_180000",
+   "label": "Effects unit",
+   "family": "Effects unit",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.686,
+   "dasm_win": 0.4158,
+   "class": "family absent"
+  },
+  {
+   "clip": "A49MX2yGR_s_110000",
+   "label": "Wail, moan",
+   "family": "Wail, moan",
+   "onset": 0.0,
+   "end": 1.0,
+   "conf": 0.396,
+   "dasm_win": 0.0007,
+   "class": "family absent"
+  },
+  {
+   "clip": "CYRnb2F9ekQ_280000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 3.75,
+   "end": 9.75,
+   "conf": 0.766,
+   "dasm_win": 0.4973,
+   "class": "wrong time"
+  },
+  {
+   "clip": "CYRnb2F9ekQ_280000",
+   "label": "Honk",
+   "family": "Honk",
+   "onset": 3.75,
+   "end": 9.75,
+   "conf": 0.751,
+   "dasm_win": 0.6104,
+   "class": "correct"
+  },
+  {
+   "clip": "CYRnb2F9ekQ_280000",
+   "label": "Goose",
+   "family": "Goose",
+   "onset": 3.75,
+   "end": 9.75,
+   "conf": 0.709,
+   "dasm_win": 0.7495,
+   "class": "correct"
+  },
+  {
+   "clip": "2A63oYgod8Y_560000",
+   "label": "Scissors",
+   "family": "Scissors",
+   "onset": 0.0,
+   "end": 0.75,
+   "conf": 0.601,
+   "dasm_win": 0.0108,
+   "class": "family absent"
+  },
+  {
+   "clip": "ZaUaqnLdg6k_30000",
+   "label": "Skateboard",
+   "family": "Skateboard",
+   "onset": 8.25,
+   "end": 8.75,
+   "conf": 0.439,
+   "dasm_win": 0.9692,
+   "class": "correct"
+  },
+  {
+   "clip": "GwxSvUoYSZg_10000",
+   "label": "Sonar",
+   "family": "Sonar",
+   "onset": 0.25,
+   "end": 1.0,
+   "conf": 0.356,
+   "dasm_win": 0.0016,
+   "class": "family absent"
+  },
+  {
+   "clip": "GwxSvUoYSZg_10000",
+   "label": "Sonar",
+   "family": "Sonar",
+   "onset": 5.75,
+   "end": 8.75,
+   "conf": 0.595,
+   "dasm_win": 0.001,
+   "class": "family absent"
+  },
+  {
+   "clip": "H8c0X5xfV4g_350000",
+   "label": "Telephone",
+   "family": "Telephone",
+   "onset": 1.0,
+   "end": 3.0,
+   "conf": 0.6,
+   "dasm_win": 0.021,
+   "class": "family absent"
+  },
+  {
+   "clip": "H8c0X5xfV4g_350000",
+   "label": "Telephone",
+   "family": "Telephone",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.528,
+   "dasm_win": 0.0695,
+   "class": "family absent"
+  },
+  {
+   "clip": "ziYJq9ULiVE_40000",
+   "label": "Ratchet, pawl",
+   "family": "Ratchet, pawl",
+   "onset": 3.25,
+   "end": 5.25,
+   "conf": 0.759,
+   "dasm_win": 0.3574,
+   "class": "wrong time"
+  },
+  {
+   "clip": "HMnF8n9c5-Y_30000",
+   "label": "Crying, sobbing",
+   "family": "Crying, sobbing",
+   "onset": 0.0,
+   "end": 7.0,
+   "conf": 0.795,
+   "dasm_win": 0.8599,
+   "class": "wrong time"
+  },
+  {
+   "clip": "HMnF8n9c5-Y_30000",
+   "label": "Baby cry, infant cry",
+   "family": "Baby cry, infant cry",
+   "onset": 0.0,
+   "end": 6.5,
+   "conf": 0.646,
+   "dasm_win": 0.8574,
+   "class": "wrong time"
+  },
+  {
+   "clip": "HMnF8n9c5-Y_30000",
+   "label": "Cough",
+   "family": "Cough",
+   "onset": 6.25,
+   "end": 7.0,
+   "conf": 0.49,
+   "dasm_win": 0.3701,
+   "class": "correct"
+  },
+  {
+   "clip": "HMnF8n9c5-Y_30000",
+   "label": "Cough",
+   "family": "Cough",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.527,
+   "dasm_win": 0.4287,
+   "class": "correct"
+  },
+  {
+   "clip": "NJIgQjKDVUg_50000",
+   "label": "Electric toothbrush",
+   "family": "Electric toothbrush",
+   "onset": 0.0,
+   "end": 3.0,
+   "conf": 0.643,
+   "dasm_win": 0.0306,
+   "class": "family absent"
+  },
+  {
+   "clip": "NJIgQjKDVUg_50000",
+   "label": "Electric shaver, electric razor",
+   "family": "Electric shaver, electric razor",
+   "onset": 4.0,
+   "end": 5.75,
+   "conf": 0.58,
+   "dasm_win": 0.0269,
+   "class": "family absent"
+  },
+  {
+   "clip": "NJIgQjKDVUg_50000",
+   "label": "Electric toothbrush",
+   "family": "Electric toothbrush",
+   "onset": 6.5,
+   "end": 8.0,
+   "conf": 0.519,
+   "dasm_win": 0.0306,
+   "class": "family absent"
+  },
+  {
+   "clip": "UBAlsmLwYn8_8000",
+   "label": "Explosion",
+   "family": "Explosion",
+   "onset": 0.75,
+   "end": 2.25,
+   "conf": 0.42,
+   "dasm_win": 0.7456,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.393,
+   "dasm_win": 0.3826,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Bird flight, flapping wings",
+   "family": "Bird flight, flapping wings",
+   "onset": 1.5,
+   "end": 5.25,
+   "conf": 0.922,
+   "dasm_win": 0.8896,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Bird",
+   "family": "Bird",
+   "onset": 3.25,
+   "end": 9.75,
+   "conf": 0.801,
+   "dasm_win": 0.9497,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 3.25,
+   "end": 4.5,
+   "conf": 0.625,
+   "dasm_win": 0.9326,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 4.75,
+   "end": 5.75,
+   "conf": 0.614,
+   "dasm_win": 0.6514,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Bird vocalization, bird call, bird song",
+   "family": "Bird",
+   "onset": 4.75,
+   "end": 6.0,
+   "conf": 0.422,
+   "dasm_win": 0.6514,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Bird flight, flapping wings",
+   "family": "Bird flight, flapping wings",
+   "onset": 7.0,
+   "end": 9.75,
+   "conf": 0.851,
+   "dasm_win": 0.8916,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Chirp, tweet",
+   "family": "Bird",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.392,
+   "dasm_win": 0.9497,
+   "class": "correct"
+  },
+  {
+   "clip": "pFTAenV8ksU_30000",
+   "label": "Pigeon, dove",
+   "family": "Bird",
+   "onset": 8.5,
+   "end": 9.5,
+   "conf": 0.515,
+   "dasm_win": 0.9443,
+   "class": "wrong time"
+  },
+  {
+   "clip": "fESsP6ZnVKA_20000",
+   "label": "Busy signal",
+   "family": "Busy signal",
+   "onset": 0.0,
+   "end": 2.25,
+   "conf": 0.807,
+   "dasm_win": 0.4058,
+   "class": "family absent"
+  },
+  {
+   "clip": "fESsP6ZnVKA_20000",
+   "label": "Dial tone",
+   "family": "Dial tone",
+   "onset": 6.75,
+   "end": 8.25,
+   "conf": 0.395,
+   "dasm_win": 0.3069,
+   "class": "family absent"
+  },
+  {
+   "clip": "fESsP6ZnVKA_20000",
+   "label": "Busy signal",
+   "family": "Busy signal",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.938,
+   "dasm_win": 0.4604,
+   "class": "family absent"
+  },
+  {
+   "clip": "TIASpLtI8ks_20000",
+   "label": "Church bell",
+   "family": "Bell",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.755,
+   "dasm_win": 0.9663,
+   "class": "correct"
+  },
+  {
+   "clip": "TIASpLtI8ks_20000",
+   "label": "Change ringing (campanology)",
+   "family": "Bell",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.604,
+   "dasm_win": 0.9663,
+   "class": "correct"
+  },
+  {
+   "clip": "TIASpLtI8ks_20000",
+   "label": "Bell",
+   "family": "Bell",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.548,
+   "dasm_win": 0.9663,
+   "class": "correct"
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "label": "Dog",
+   "family": "Dog",
+   "onset": 2.5,
+   "end": 3.25,
+   "conf": 0.415,
+   "dasm_win": 0.0251,
+   "class": "correct"
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "label": "Cat",
+   "family": "Cat",
+   "onset": 5.5,
+   "end": 6.0,
+   "conf": 0.441,
+   "dasm_win": 0.0277,
+   "class": "family absent"
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.452,
+   "dasm_win": 0.0416,
+   "class": "family absent"
+  },
+  {
+   "clip": "2rW2I6KmWhw_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 9.25,
+   "end": 9.75,
+   "conf": 0.381,
+   "dasm_win": 0.0416,
+   "class": "family absent"
+  },
+  {
+   "clip": "nyjXFx0GSX8_150000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 1.0,
+   "end": 2.75,
+   "conf": 0.534,
+   "dasm_win": 0.2646,
+   "class": "family absent"
+  },
+  {
+   "clip": "nyjXFx0GSX8_150000",
+   "label": "Ding",
+   "family": "Bell",
+   "onset": 4.0,
+   "end": 4.5,
+   "conf": 0.376,
+   "dasm_win": 0.1541,
+   "class": "family absent"
+  },
+  {
+   "clip": "Qaqqxq9E9p8_20000",
+   "label": "Alarm clock",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.932,
+   "dasm_win": 0.7563,
+   "class": "correct"
+  },
+  {
+   "clip": "Qaqqxq9E9p8_20000",
+   "label": "Alarm",
+   "family": "Alarm",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.471,
+   "dasm_win": 0.7563,
+   "class": "correct"
+  },
+  {
+   "clip": "5Rd5TPJD6ho_180000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.392,
+   "dasm_win": 0.2708,
+   "class": "correct"
+  },
+  {
+   "clip": "5Rd5TPJD6ho_180000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.75,
+   "end": 9.75,
+   "conf": 0.573,
+   "dasm_win": 0.2734,
+   "class": "correct"
+  },
+  {
+   "clip": "5Rd5TPJD6ho_180000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 1.5,
+   "end": 2.0,
+   "conf": 0.404,
+   "dasm_win": 0.4548,
+   "class": "family absent"
+  },
+  {
+   "clip": "5Rd5TPJD6ho_180000",
+   "label": "Light engine (high frequency)",
+   "family": "Vehicle",
+   "onset": 2.25,
+   "end": 3.5,
+   "conf": 0.382,
+   "dasm_win": 0.272,
+   "class": "wrong time"
+  },
+  {
+   "clip": "5Rd5TPJD6ho_180000",
+   "label": "Light engine (high frequency)",
+   "family": "Vehicle",
+   "onset": 6.75,
+   "end": 8.5,
+   "conf": 0.503,
+   "dasm_win": 0.2732,
+   "class": "wrong time"
+  },
+  {
+   "clip": "QkkZxpD9CZY_20000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 0.25,
+   "end": 0.75,
+   "conf": 0.534,
+   "dasm_win": 0.1193,
+   "class": "correct"
+  },
+  {
+   "clip": "8AYXpxT4jcs_90000",
+   "label": "Groan",
+   "family": "Groan",
+   "onset": 0.0,
+   "end": 2.0,
+   "conf": 0.428,
+   "dasm_win": 0.1279,
+   "class": "family absent"
+  },
+  {
+   "clip": "XUmVBjjaPG8_30000",
+   "label": "Foghorn",
+   "family": "Foghorn",
+   "onset": 4.0,
+   "end": 4.5,
+   "conf": 0.38,
+   "dasm_win": 0.9648,
+   "class": "correct"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Electric shaver, electric razor",
+   "family": "Electric shaver, electric razor",
+   "onset": 0.25,
+   "end": 1.0,
+   "conf": 0.665,
+   "dasm_win": 0.0473,
+   "class": "family absent"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 1.0,
+   "end": 2.5,
+   "conf": 0.798,
+   "dasm_win": 0.0116,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 1.0,
+   "end": 2.5,
+   "conf": 0.575,
+   "dasm_win": 0.344,
+   "class": "correct"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 1.25,
+   "end": 2.25,
+   "conf": 0.391,
+   "dasm_win": 0.1715,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 3.75,
+   "end": 5.5,
+   "conf": 0.505,
+   "dasm_win": 0.377,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 4.0,
+   "end": 5.75,
+   "conf": 0.671,
+   "dasm_win": 0.0452,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 5.0,
+   "end": 5.75,
+   "conf": 0.521,
+   "dasm_win": 0.1722,
+   "class": "wrong time"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Wood",
+   "family": "Wood",
+   "onset": 6.25,
+   "end": 7.5,
+   "conf": 0.591,
+   "dasm_win": 0.2593,
+   "class": "correct"
+  },
+  {
+   "clip": "LPnYdHIg0eM_80000",
+   "label": "Chopping (food)",
+   "family": "Cooking",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.958,
+   "dasm_win": 0.0394,
+   "class": "family absent"
+  },
+  {
+   "clip": "JqrYxQ6_eak_470000",
+   "label": "Skateboard",
+   "family": "Skateboard",
+   "onset": 8.25,
+   "end": 9.75,
+   "conf": 0.803,
+   "dasm_win": 0.7358,
+   "class": "family absent"
+  },
+  {
+   "clip": "1WGmeX6CLas_0",
+   "label": "Whoop",
+   "family": "Whoop",
+   "onset": 3.0,
+   "end": 3.53,
+   "conf": 0.374,
+   "dasm_win": 0.03,
+   "class": "family absent"
+  },
+  {
+   "clip": "SVsg07esckU_80000",
+   "label": "Jet engine",
+   "family": "Aircraft",
+   "onset": 0.0,
+   "end": 1.25,
+   "conf": 0.594,
+   "dasm_win": 0.0338,
+   "class": "family absent"
+  },
+  {
+   "clip": "SVsg07esckU_80000",
+   "label": "Vacuum cleaner",
+   "family": "Vacuum cleaner",
+   "onset": 1.5,
+   "end": 3.5,
+   "conf": 0.435,
+   "dasm_win": 0.4517,
+   "class": "family absent"
+  },
+  {
+   "clip": "SVsg07esckU_80000",
+   "label": "Jet engine",
+   "family": "Aircraft",
+   "onset": 2.0,
+   "end": 2.75,
+   "conf": 0.385,
+   "dasm_win": 0.0338,
+   "class": "family absent"
+  },
+  {
+   "clip": "SVsg07esckU_80000",
+   "label": "Hair dryer",
+   "family": "Hair dryer",
+   "onset": 4.25,
+   "end": 7.0,
+   "conf": 0.814,
+   "dasm_win": 0.4402,
+   "class": "wrong time"
+  },
+  {
+   "clip": "SVsg07esckU_80000",
+   "label": "Hair dryer",
+   "family": "Hair dryer",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.534,
+   "dasm_win": 0.4397,
+   "class": "wrong time"
+  },
+  {
+   "clip": "F-Ly8CI7-Pc_20000",
+   "label": "Artillery fire",
+   "family": "Gunshot",
+   "onset": 1.25,
+   "end": 4.5,
+   "conf": 0.895,
+   "dasm_win": 0.7319,
+   "class": "correct"
+  },
+  {
+   "clip": "F-Ly8CI7-Pc_20000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 1.5,
+   "end": 4.5,
+   "conf": 0.537,
+   "dasm_win": 0.7319,
+   "class": "correct"
+  },
+  {
+   "clip": "F-Ly8CI7-Pc_20000",
+   "label": "Artillery fire",
+   "family": "Gunshot",
+   "onset": 5.0,
+   "end": 6.75,
+   "conf": 0.698,
+   "dasm_win": 0.7329,
+   "class": "correct"
+  },
+  {
+   "clip": "F-Ly8CI7-Pc_20000",
+   "label": "Gunshot, gunfire",
+   "family": "Gunshot",
+   "onset": 5.75,
+   "end": 6.5,
+   "conf": 0.372,
+   "dasm_win": 0.7329,
+   "class": "correct"
+  },
+  {
+   "clip": "F-Ly8CI7-Pc_20000",
+   "label": "Artillery fire",
+   "family": "Gunshot",
+   "onset": 7.0,
+   "end": 8.0,
+   "conf": 0.467,
+   "dasm_win": 0.7202,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ff21Bursam0_160000",
+   "label": "Roaring cats (lions, tigers)",
+   "family": "Roaring cats (lions, tigers)",
+   "onset": 3.25,
+   "end": 4.5,
+   "conf": 0.383,
+   "dasm_win": 0.1887,
+   "class": "family absent"
+  },
+  {
+   "clip": "ff21Bursam0_160000",
+   "label": "Cattle, bovinae",
+   "family": "Cattle",
+   "onset": 6.5,
+   "end": 8.5,
+   "conf": 0.714,
+   "dasm_win": 0.7598,
+   "class": "correct"
+  },
+  {
+   "clip": "ff21Bursam0_160000",
+   "label": "Moo",
+   "family": "Cattle",
+   "onset": 6.5,
+   "end": 7.0,
+   "conf": 0.455,
+   "dasm_win": 0.7598,
+   "class": "correct"
+  },
+  {
+   "clip": "ff21Bursam0_160000",
+   "label": "Moo",
+   "family": "Cattle",
+   "onset": 7.25,
+   "end": 8.5,
+   "conf": 0.64,
+   "dasm_win": 0.7598,
+   "class": "correct"
+  },
+  {
+   "clip": "ff21Bursam0_160000",
+   "label": "Cattle, bovinae",
+   "family": "Cattle",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.399,
+   "dasm_win": 0.7573,
+   "class": "wrong time"
+  },
+  {
+   "clip": "QSQFiq17MQA_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.75,
+   "end": 2.75,
+   "conf": 0.393,
+   "dasm_win": 0.7275,
+   "class": "correct"
+  },
+  {
+   "clip": "QSQFiq17MQA_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 3.5,
+   "end": 7.25,
+   "conf": 0.372,
+   "dasm_win": 0.7275,
+   "class": "correct"
+  },
+  {
+   "clip": "tAfucDIyRiM_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.763,
+   "dasm_win": 0.7896,
+   "class": "correct"
+  },
+  {
+   "clip": "tAfucDIyRiM_30000",
+   "label": "Car",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.659,
+   "dasm_win": 0.7896,
+   "class": "correct"
+  },
+  {
+   "clip": "TslB1VMKXmM_10000",
+   "label": "Sewing machine",
+   "family": "Sewing machine",
+   "onset": 0.25,
+   "end": 0.75,
+   "conf": 0.443,
+   "dasm_win": 0.0048,
+   "class": "family absent"
+  },
+  {
+   "clip": "TslB1VMKXmM_10000",
+   "label": "Toilet flush",
+   "family": "Toilet flush",
+   "onset": 1.5,
+   "end": 6.25,
+   "conf": 0.979,
+   "dasm_win": 0.9907,
+   "class": "wrong time"
+  },
+  {
+   "clip": "TslB1VMKXmM_10000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 2.75,
+   "end": 6.25,
+   "conf": 0.41,
+   "dasm_win": 0.0804,
+   "class": "wrong time"
+  },
+  {
+   "clip": "IZ51tUuibq8_30000",
+   "label": "Hoot",
+   "family": "Hoot",
+   "onset": 0.0,
+   "end": 7.5,
+   "conf": 0.974,
+   "dasm_win": 0.9175,
+   "class": "correct"
+  },
+  {
+   "clip": "IZ51tUuibq8_30000",
+   "label": "Owl",
+   "family": "Owl",
+   "onset": 0.0,
+   "end": 7.5,
+   "conf": 0.968,
+   "dasm_win": 0.9717,
+   "class": "correct"
+  },
+  {
+   "clip": "yfoV23simOs_30000",
+   "label": "Siren",
+   "family": "Siren",
+   "onset": 0.25,
+   "end": 1.25,
+   "conf": 0.382,
+   "dasm_win": 0.0372,
+   "class": "family absent"
+  },
+  {
+   "clip": "yfoV23simOs_30000",
+   "label": "Church bell",
+   "family": "Bell",
+   "onset": 1.0,
+   "end": 7.0,
+   "conf": 0.706,
+   "dasm_win": 0.7695,
+   "class": "correct"
+  },
+  {
+   "clip": "yfoV23simOs_30000",
+   "label": "Bell",
+   "family": "Bell",
+   "onset": 1.25,
+   "end": 9.75,
+   "conf": 0.626,
+   "dasm_win": 0.7695,
+   "class": "wrong time"
+  },
+  {
+   "clip": "yfoV23simOs_30000",
+   "label": "Church bell",
+   "family": "Bell",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.761,
+   "dasm_win": 0.7632,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Whistle",
+   "family": "Whistle",
+   "onset": 2.25,
+   "end": 3.0,
+   "conf": 0.448,
+   "dasm_win": 0.6333,
+   "class": "family absent"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Whistle",
+   "family": "Whistle",
+   "onset": 3.25,
+   "end": 5.25,
+   "conf": 0.706,
+   "dasm_win": 0.6353,
+   "class": "family absent"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Train",
+   "family": "Train",
+   "onset": 5.5,
+   "end": 7.75,
+   "conf": 0.507,
+   "dasm_win": 0.3826,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 5.5,
+   "end": 7.75,
+   "conf": 0.37,
+   "dasm_win": 0.3552,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Rail transport",
+   "family": "Train",
+   "onset": 6.25,
+   "end": 7.75,
+   "conf": 0.413,
+   "dasm_win": 0.3826,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Railroad car, train wagon",
+   "family": "Train",
+   "onset": 6.25,
+   "end": 7.75,
+   "conf": 0.375,
+   "dasm_win": 0.3826,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Train horn",
+   "family": "Train",
+   "onset": 6.25,
+   "end": 7.75,
+   "conf": 0.361,
+   "dasm_win": 0.3826,
+   "class": "correct"
+  },
+  {
+   "clip": "ClaW4rHT6t0_0",
+   "label": "Steam whistle",
+   "family": "Steam whistle",
+   "onset": 7.0,
+   "end": 7.75,
+   "conf": 0.421,
+   "dasm_win": 0.4348,
+   "class": "family absent"
+  },
+  {
+   "clip": "UUuXfyfCaL4_170000",
+   "label": "Snicker",
+   "family": "Snicker",
+   "onset": 0.0,
+   "end": 1.0,
+   "conf": 0.482,
+   "dasm_win": 0.3489,
+   "class": "correct"
+  },
+  {
+   "clip": "UUuXfyfCaL4_170000",
+   "label": "Applause",
+   "family": "Crowd",
+   "onset": 2.5,
+   "end": 9.75,
+   "conf": 0.584,
+   "dasm_win": 0.5239,
+   "class": "correct"
+  },
+  {
+   "clip": "zHfwBfNR7us_30000",
+   "label": "Single-lens reflex camera",
+   "family": "Single-lens reflex camera",
+   "onset": 0.75,
+   "end": 1.5,
+   "conf": 0.469,
+   "dasm_win": 0.0161,
+   "class": "family absent"
+  },
+  {
+   "clip": "zHfwBfNR7us_30000",
+   "label": "Spray",
+   "family": "Spray",
+   "onset": 1.5,
+   "end": 4.25,
+   "conf": 0.824,
+   "dasm_win": 0.625,
+   "class": "correct"
+  },
+  {
+   "clip": "zHfwBfNR7us_30000",
+   "label": "Spray",
+   "family": "Spray",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.583,
+   "dasm_win": 0.6265,
+   "class": "correct"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Toilet flush",
+   "family": "Toilet flush",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.446,
+   "dasm_win": 0.7583,
+   "class": "correct"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 0.5,
+   "end": 1.25,
+   "conf": 0.382,
+   "dasm_win": 0.1576,
+   "class": "correct"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Toilet flush",
+   "family": "Toilet flush",
+   "onset": 0.75,
+   "end": 3.75,
+   "conf": 0.959,
+   "dasm_win": 0.7588,
+   "class": "correct"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Toothbrush",
+   "family": "Toothbrush",
+   "onset": 1.25,
+   "end": 1.75,
+   "conf": 0.405,
+   "dasm_win": 0.0035,
+   "class": "family absent"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 1.5,
+   "end": 9.75,
+   "conf": 0.46,
+   "dasm_win": 0.1589,
+   "class": "wrong time"
+  },
+  {
+   "clip": "TpX4tu7GrUw_90000",
+   "label": "Toilet flush",
+   "family": "Toilet flush",
+   "onset": 4.25,
+   "end": 9.5,
+   "conf": 0.972,
+   "dasm_win": 0.7563,
+   "class": "wrong time"
+  },
+  {
+   "clip": "5asfoHsxI2w_30000",
+   "label": "Finger snapping",
+   "family": "Finger snapping",
+   "onset": 1.75,
+   "end": 2.25,
+   "conf": 0.389,
+   "dasm_win": 0.0356,
+   "class": "family absent"
+  },
+  {
+   "clip": "5asfoHsxI2w_30000",
+   "label": "Chink, clink",
+   "family": "Chink, clink",
+   "onset": 3.75,
+   "end": 6.0,
+   "conf": 0.566,
+   "dasm_win": 0.1384,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.0,
+   "end": 3.75,
+   "conf": 0.598,
+   "dasm_win": 0.1758,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 1.5,
+   "end": 3.5,
+   "conf": 0.375,
+   "dasm_win": 0.1198,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 1.75,
+   "end": 3.5,
+   "conf": 0.356,
+   "dasm_win": 0.1758,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 4.0,
+   "end": 5.25,
+   "conf": 0.452,
+   "dasm_win": 0.1758,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 4.25,
+   "end": 5.25,
+   "conf": 0.542,
+   "dasm_win": 0.3462,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 4.75,
+   "end": 7.0,
+   "conf": 0.479,
+   "dasm_win": 0.1758,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Tools",
+   "family": "Tools",
+   "onset": 7.0,
+   "end": 7.5,
+   "conf": 0.386,
+   "dasm_win": 0.3464,
+   "class": "wrong time"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.601,
+   "dasm_win": 0.1758,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Steam",
+   "family": "Steam",
+   "onset": 7.25,
+   "end": 8.25,
+   "conf": 0.4,
+   "dasm_win": 0.1198,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 8.0,
+   "end": 9.5,
+   "conf": 0.462,
+   "dasm_win": 0.1758,
+   "class": "family absent"
+  },
+  {
+   "clip": "1UFU5SfQOX4_200000",
+   "label": "Helicopter",
+   "family": "Helicopter",
+   "onset": 9.0,
+   "end": 9.75,
+   "conf": 0.774,
+   "dasm_win": 0.0852,
+   "class": "family absent"
+  },
+  {
+   "clip": "vGZf134zNbk_30000",
+   "label": "Shatter",
+   "family": "Glass",
+   "onset": 4.75,
+   "end": 5.25,
+   "conf": 0.494,
+   "dasm_win": 0.0179,
+   "class": "correct"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Splash, splatter",
+   "family": "Splash, splatter",
+   "onset": 0.0,
+   "end": 7.0,
+   "conf": 0.659,
+   "dasm_win": 0.4985,
+   "class": "wrong time"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 0.0,
+   "end": 0.5,
+   "conf": 0.365,
+   "dasm_win": 0.2686,
+   "class": "family absent"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 0.75,
+   "end": 4.25,
+   "conf": 0.516,
+   "dasm_win": 0.2686,
+   "class": "family absent"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Water",
+   "family": "Water",
+   "onset": 4.25,
+   "end": 6.5,
+   "conf": 0.382,
+   "dasm_win": 0.8916,
+   "class": "wrong time"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Boat, Water vehicle",
+   "family": "Boat",
+   "onset": 6.0,
+   "end": 9.75,
+   "conf": 0.67,
+   "dasm_win": 0.2686,
+   "class": "family absent"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 6.0,
+   "end": 9.75,
+   "conf": 0.456,
+   "dasm_win": 0.2549,
+   "class": "family absent"
+  },
+  {
+   "clip": "mWe-2qfdJD4_140000",
+   "label": "Rowboat, canoe, kayak",
+   "family": "Rowboat, canoe, kayak",
+   "onset": 6.75,
+   "end": 9.25,
+   "conf": 0.372,
+   "dasm_win": 0.5249,
+   "class": "family absent"
+  },
+  {
+   "clip": "KudZV90pNas_550000",
+   "label": "Heart sounds, heartbeat",
+   "family": "Heart sounds, heartbeat",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.934,
+   "dasm_win": 0.9526,
+   "class": "correct"
+  },
+  {
+   "clip": "KudZV90pNas_550000",
+   "label": "Heart murmur",
+   "family": "Heart murmur",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.825,
+   "dasm_win": 0.9424,
+   "class": "correct"
+  },
+  {
+   "clip": "I1d76evqjwU_150000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 0.0,
+   "end": 9.75,
+   "conf": 0.695,
+   "dasm_win": 0.3757,
+   "class": "correct"
+  },
+  {
+   "clip": "I1d76evqjwU_150000",
+   "label": "Lawn mower",
+   "family": "Lawn mower",
+   "onset": 0.5,
+   "end": 2.5,
+   "conf": 0.625,
+   "dasm_win": 0.3896,
+   "class": "correct"
+  },
+  {
+   "clip": "I1d76evqjwU_150000",
+   "label": "Engine",
+   "family": "Vehicle",
+   "onset": 3.75,
+   "end": 4.75,
+   "conf": 0.404,
+   "dasm_win": 0.3738,
+   "class": "wrong time"
+  },
+  {
+   "clip": "I1d76evqjwU_150000",
+   "label": "Lawn mower",
+   "family": "Lawn mower",
+   "onset": 4.25,
+   "end": 6.0,
+   "conf": 0.366,
+   "dasm_win": 0.3892,
+   "class": "correct"
+  },
+  {
+   "clip": "I1d76evqjwU_150000",
+   "label": "Lawn mower",
+   "family": "Lawn mower",
+   "onset": 8.0,
+   "end": 9.75,
+   "conf": 0.406,
+   "dasm_win": 0.3899,
+   "class": "wrong time"
+  },
+  {
+   "clip": "I1d76evqjwU_150000",
+   "label": "Light engine (high frequency)",
+   "family": "Vehicle",
+   "onset": 8.75,
+   "end": 9.75,
+   "conf": 0.463,
+   "dasm_win": 0.3757,
+   "class": "wrong time"
+  },
+  {
+   "clip": "pAvk3k0LPtI_220000",
+   "label": "Shuffling cards",
+   "family": "Shuffling cards",
+   "onset": 0.0,
+   "end": 1.25,
+   "conf": 0.861,
+   "dasm_win": 0.0476,
+   "class": "family absent"
+  },
+  {
+   "clip": "LD6nP2qlsRI_30000",
+   "label": "Sawing",
+   "family": "Sawing",
+   "onset": 8.75,
+   "end": 9.5,
+   "conf": 0.641,
+   "dasm_win": 0.3413,
+   "class": "family absent"
+  },
+  {
+   "clip": "oUxyg_DFMfM_4000",
+   "label": "Whoosh, swoosh, swish",
+   "family": "Whoosh, swoosh, swish",
+   "onset": 0.0,
+   "end": 8.75,
+   "conf": 0.772,
+   "dasm_win": 0.8662,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 1.75,
+   "end": 5.0,
+   "conf": 0.798,
+   "dasm_win": 0.1787,
+   "class": "wrong time"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Turkey",
+   "family": "Turkey",
+   "onset": 1.75,
+   "end": 2.25,
+   "conf": 0.676,
+   "dasm_win": 0.1337,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Gobble",
+   "family": "Gobble",
+   "onset": 1.75,
+   "end": 2.25,
+   "conf": 0.669,
+   "dasm_win": 0.0799,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Honk",
+   "family": "Honk",
+   "onset": 2.25,
+   "end": 4.75,
+   "conf": 0.861,
+   "dasm_win": 0.1248,
+   "class": "family absent"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Goose",
+   "family": "Goose",
+   "onset": 2.25,
+   "end": 4.75,
+   "conf": 0.767,
+   "dasm_win": 0.6196,
+   "class": "family absent"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Chicken, rooster",
+   "family": "Bird",
+   "onset": 4.75,
+   "end": 7.25,
+   "conf": 0.841,
+   "dasm_win": 0.0914,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 5.25,
+   "end": 7.25,
+   "conf": 0.75,
+   "dasm_win": 0.0914,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Fowl",
+   "family": "Bird",
+   "onset": 5.25,
+   "end": 7.25,
+   "conf": 0.692,
+   "dasm_win": 0.0914,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Cluck",
+   "family": "Bird",
+   "onset": 5.5,
+   "end": 6.75,
+   "conf": 0.636,
+   "dasm_win": 0.0849,
+   "class": "correct"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 7.5,
+   "end": 8.0,
+   "conf": 0.511,
+   "dasm_win": 0.0914,
+   "class": "wrong time"
+  },
+  {
+   "clip": "4jDqaqqvLVQ_30000",
+   "label": "Crowing, cock-a-doodle-doo",
+   "family": "Bird",
+   "onset": 8.5,
+   "end": 9.0,
+   "conf": 0.372,
+   "dasm_win": 0.0372,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Air horn, truck horn",
+   "family": "Air horn, truck horn",
+   "onset": 0.0,
+   "end": 2.0,
+   "conf": 0.937,
+   "dasm_win": 0.791,
+   "class": "correct"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 1.25,
+   "end": 2.0,
+   "conf": 0.665,
+   "dasm_win": 0.5908,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Truck",
+   "family": "Vehicle",
+   "onset": 1.25,
+   "end": 2.0,
+   "conf": 0.654,
+   "dasm_win": 0.5908,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Air horn, truck horn",
+   "family": "Air horn, truck horn",
+   "onset": 3.0,
+   "end": 6.5,
+   "conf": 0.886,
+   "dasm_win": 0.791,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 3.0,
+   "end": 6.5,
+   "conf": 0.604,
+   "dasm_win": 0.5898,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Truck",
+   "family": "Vehicle",
+   "onset": 4.0,
+   "end": 5.0,
+   "conf": 0.499,
+   "dasm_win": 0.5898,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Vehicle",
+   "family": "Vehicle",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.817,
+   "dasm_win": 0.5923,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Air horn, truck horn",
+   "family": "Air horn, truck horn",
+   "onset": 7.25,
+   "end": 9.75,
+   "conf": 0.732,
+   "dasm_win": 0.791,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Truck",
+   "family": "Vehicle",
+   "onset": 7.75,
+   "end": 9.75,
+   "conf": 0.758,
+   "dasm_win": 0.5923,
+   "class": "wrong time"
+  },
+  {
+   "clip": "ctsq33oUBT8_30000",
+   "label": "Toot",
+   "family": "Vehicle",
+   "onset": 8.0,
+   "end": 8.75,
+   "conf": 0.461,
+   "dasm_win": 0.585,
+   "class": "wrong time"
+  },
+  {
+   "clip": "wk_FrMLjTOM_30000",
+   "label": "Printer",
+   "family": "Printer",
+   "onset": 8.5,
+   "end": 9.25,
+   "conf": 0.579,
+   "dasm_win": 0.0773,
+   "class": "wrong time"
+  }
+ ],
+ "rows_no_dasm": []
+}

@@ -1,0 +1,824 @@
+[
+ {
+  "part": "dev",
+  "clip": "ambient_nature_rainforest_7629",
+  "picture": [
+   "Insect",
+   0.14,
+   6.0
+  ],
+  "rows": [
+   {
+    "label": "Insect",
+    "pre_start": 0.0,
+    "end": 5.0,
+    "conf": 0.406,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.592,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   },
+   {
+    "label": "Insect",
+    "pre_start": 0.0,
+    "end": 6.0,
+    "conf": 0.406,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.593,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "ambient_snow_walk_930",
+  "picture": [
+   "Laughter",
+   8.08,
+   9.58
+  ],
+  "rows": [
+   {
+    "label": "Laughter",
+    "pre_start": 8.08,
+    "end": 8.76,
+    "conf": 0.919,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.901,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "as_church_bell_pJRAWkLM",
+  "picture": [
+   "Bell",
+   0.14,
+   13.75
+  ],
+  "rows": [
+   {
+    "label": "Church bell",
+    "pre_start": 0.0,
+    "end": 13.75,
+    "conf": 0.714,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.932,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Bell",
+    "pre_start": 0.0,
+    "end": 2.75,
+    "conf": 0.41,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.932,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "as_explosion_XJ8lc3I6",
+  "picture": [
+   "Gunshot",
+   0.0,
+   1.5
+  ],
+  "rows": [
+   {
+    "label": "Gunshot",
+    "pre_start": 0.0,
+    "end": 1.0,
+    "conf": 0.549,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.902,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "as_explosion_XJ8lc3I6",
+  "picture": [
+   "Explosion",
+   5.68,
+   7.18
+  ],
+  "rows": [
+   {
+    "label": "Explosion",
+    "pre_start": 5.68,
+    "end": 6.2,
+    "conf": 0.557,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.866,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "as_explosion_XJ8lc3I6",
+  "picture": [
+   "Explosion",
+   9.25,
+   10.75
+  ],
+  "rows": [
+   {
+    "label": "Boom",
+    "pre_start": 9.25,
+    "end": 9.75,
+    "conf": 0.448,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.983,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "as_fire_alarm_kGKZ0YK4",
+  "picture": [
+   "Alarm",
+   8.89,
+   19.75
+  ],
+  "rows": [
+   {
+    "label": "Fire alarm",
+    "pre_start": 8.75,
+    "end": 19.75,
+    "conf": 0.696,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.825,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Smoke detector, smoke alarm",
+    "pre_start": 8.75,
+    "end": 12.5,
+    "conf": 0.404,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.825,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "b3_bakery_morning",
+  "picture": [
+   "Door",
+   4.25,
+   5.75
+  ],
+  "rows": [
+   {
+    "label": "Cupboard open or close",
+    "pre_start": 4.25,
+    "end": 5.25,
+    "conf": 0.442,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.015,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "b3_barbershop",
+  "picture": [
+   "Electric shaver, electric razor",
+   0.14,
+   23.25
+  ],
+  "rows": [
+   {
+    "label": "Electric shaver, electric razor",
+    "pre_start": 0.0,
+    "end": 13.25,
+    "conf": 0.79,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.933,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "birds_forest",
+  "picture": [
+   "Bird",
+   10.25,
+   14.0
+  ],
+  "rows": [
+   {
+    "label": "Bird",
+    "pre_start": 8.0,
+    "end": 12.0,
+    "conf": 0.332,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.635,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Crowing, cock-a-doodle-doo",
+    "pre_start": 10.25,
+    "end": 14.0,
+    "conf": 0.649,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.635,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Fowl",
+    "pre_start": 10.25,
+    "end": 14.0,
+    "conf": 0.475,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.635,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Chicken, rooster",
+    "pre_start": 10.75,
+    "end": 14.0,
+    "conf": 0.643,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.552,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "ly_ambulance_(siren)_-yPSgCn",
+  "picture": [
+   "Siren",
+   0.0,
+   17.75
+  ],
+  "rows": [
+   {
+    "label": "Emergency vehicle",
+    "pre_start": 0.0,
+    "end": 17.75,
+    "conf": 0.796,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.188,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Ambulance (siren)",
+    "pre_start": 0.0,
+    "end": 8.5,
+    "conf": 0.747,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.156,
+    "qwen_v4": true,
+    "af_v4": false,
+    "droppable": true
+   },
+   {
+    "label": "Siren",
+    "pre_start": 0.0,
+    "end": 17.75,
+    "conf": 0.741,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.188,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Police car (siren)",
+    "pre_start": 0.0,
+    "end": 2.0,
+    "conf": 0.233,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.156,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "ly_helicopter_-v62cK1",
+  "picture": [
+   "Vehicle",
+   0.14,
+   17.75
+  ],
+  "rows": []
+ },
+ {
+  "part": "dev",
+  "clip": "mv_detective_crime_scene",
+  "picture": [
+   "Alarm",
+   0.04,
+   10.58
+  ],
+  "rows": [
+   {
+    "label": "Alarm",
+    "pre_start": 0.04,
+    "end": 1.04,
+    "conf": 0.904,
+    "origin": "flex",
+    "rescued": false,
+    "dasm_win": 0.49,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "mv_protest_scene_movie",
+  "picture": [
+   "Crowd",
+   0.0,
+   1.5
+  ],
+  "rows": [
+   {
+    "label": "Crowd",
+    "pre_start": 0.0,
+    "end": 1.08,
+    "conf": 0.882,
+    "origin": "flex",
+    "rescued": false,
+    "dasm_win": 0.468,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "mv_protest_scene_movie",
+  "picture": [
+   "Glass",
+   10.75,
+   13.75
+  ],
+  "rows": [
+   {
+    "label": "Shatter",
+    "pre_start": 10.75,
+    "end": 13.75,
+    "conf": 0.877,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.193,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Breaking",
+    "pre_start": 11.0,
+    "end": 13.75,
+    "conf": 0.414,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.193,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Glass",
+    "pre_start": 11.5,
+    "end": 12.25,
+    "conf": 0.34,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.193,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "mv_protest_scene_movie",
+  "picture": [
+   "Glass",
+   16.89,
+   20.0
+  ],
+  "rows": [
+   {
+    "label": "Shatter",
+    "pre_start": 16.75,
+    "end": 20.0,
+    "conf": 0.675,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.204,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": true
+   },
+   {
+    "label": "Glass",
+    "pre_start": 17.5,
+    "end": 18.75,
+    "conf": 0.366,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.204,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "mv_storm_scene_house",
+  "picture": [
+   "Alarm",
+   2.18,
+   11.5
+  ],
+  "rows": [
+   {
+    "label": "Alarm",
+    "pre_start": 2.18,
+    "end": 10.0,
+    "conf": 0.834,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.834,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "mv_tornado_scene",
+  "picture": [
+   "Siren",
+   9.25,
+   13.0
+  ],
+  "rows": [
+   {
+    "label": "Siren",
+    "pre_start": 9.25,
+    "end": 13.0,
+    "conf": 0.654,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.923,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   },
+   {
+    "label": "Civil defense siren",
+    "pre_start": 9.5,
+    "end": 13.0,
+    "conf": 0.599,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.923,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "un_driving_motorcycle_4O3bZRYO",
+  "picture": [
+   "Laughter",
+   13.36,
+   14.86
+  ],
+  "rows": [
+   {
+    "label": "Laughter",
+    "pre_start": 13.36,
+    "end": 14.68,
+    "conf": 0.928,
+    "origin": "flex",
+    "rescued": false,
+    "dasm_win": 0.947,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d016",
+  "picture": [
+   "Cough",
+   5.75,
+   7.25
+  ],
+  "rows": [
+   {
+    "label": "Cough",
+    "pre_start": 5.75,
+    "end": 6.75,
+    "conf": 0.409,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.792,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d030",
+  "picture": [
+   "Vehicle",
+   0.0,
+   17.0
+  ],
+  "rows": [
+   {
+    "label": "Vehicle",
+    "pre_start": 0.0,
+    "end": 17.0,
+    "conf": 0.79,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.802,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d032",
+  "picture": [
+   "Thunder",
+   13.75,
+   15.0
+  ],
+  "rows": [
+   {
+    "label": "Thunder",
+    "pre_start": 13.75,
+    "end": 14.75,
+    "conf": 0.376,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.309,
+    "qwen_v4": true,
+    "af_v4": false,
+    "droppable": true
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d075",
+  "picture": [
+   "Alarm",
+   0.14,
+   9.25
+  ],
+  "rows": [
+   {
+    "label": "Alarm clock",
+    "pre_start": 0.0,
+    "end": 9.25,
+    "conf": 0.409,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.296,
+    "qwen_v4": false,
+    "af_v4": true,
+    "droppable": true
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d088",
+  "picture": [
+   "Thunder",
+   1.0,
+   2.5
+  ],
+  "rows": [
+   {
+    "label": "Thunder",
+    "pre_start": 1.0,
+    "end": 2.0,
+    "conf": 0.617,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.397,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": true
+   },
+   {
+    "label": "Thunderstorm",
+    "pre_start": 1.0,
+    "end": 1.75,
+    "conf": 0.519,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.397,
+    "qwen_v4": true,
+    "af_v4": false,
+    "droppable": true
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d107",
+  "picture": [
+   "Crying, sobbing",
+   0.38,
+   2.75
+  ],
+  "rows": [
+   {
+    "label": "Crying, sobbing",
+    "pre_start": 0.08,
+    "end": 2.75,
+    "conf": 0.393,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.416,
+    "qwen_v4": true,
+    "af_v4": true,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d107",
+  "picture": [
+   "Laughter",
+   8.92,
+   9.73
+  ],
+  "rows": [
+   {
+    "label": "Laughter",
+    "pre_start": 8.92,
+    "end": 9.4,
+    "conf": 0.886,
+    "origin": "flex",
+    "rescued": false,
+    "dasm_win": 0.89,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d120",
+  "picture": [
+   "Cat",
+   0.56,
+   2.24
+  ],
+  "rows": [
+   {
+    "label": "Cat",
+    "pre_start": 0.56,
+    "end": 2.24,
+    "conf": 0.891,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.891,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d127",
+  "picture": [
+   "Laughter",
+   9.32,
+   10.01
+  ],
+  "rows": [
+   {
+    "label": "Laughter",
+    "pre_start": 9.32,
+    "end": 10.0,
+    "conf": 0.96,
+    "origin": "flex",
+    "rescued": true,
+    "dasm_win": 0.753,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d149",
+  "picture": [
+   "Bee, wasp, etc.",
+   1.25,
+   3.75
+  ],
+  "rows": [
+   {
+    "label": "Bee, wasp, etc.",
+    "pre_start": 1.25,
+    "end": 3.75,
+    "conf": 0.9,
+    "origin": "tagger",
+    "rescued": false,
+    "dasm_win": 0.616,
+    "qwen_v4": false,
+    "af_v4": false,
+    "droppable": false
+   }
+  ]
+ }
+]
