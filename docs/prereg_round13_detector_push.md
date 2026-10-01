@@ -3300,3 +3300,26 @@ split). GO -> a full-pipeline arm is a separate pre-registration; STOP -> record
 new per-stretch `hbox` key; the human2 cache is not written), `score` CPU -> `gate_gold/humanbox_summary.json`),
 `slurm/job_humanbox_gate.sh` (H200-4h,A100-4h). Runs in `~/MscProj` like 43/43b because the HUMAN-2 cache lives there
 (`~/MscProj_tg` has none). Nothing in `src/` or `config.py` edited.
+
+### Round 50 result — HUMAN-BOX: STOP on both variants (job 31600543, H200; `humanbox_gate.py` -> `gate_gold/humanbox_summary.json`, replies + crops in `gate_gold/humanbox_Qwen38-27B/`, gitignored)
+Base reproduced (16/41, 33/38; 49 clips, 145 stretches).
+
+| rule | seen silenced / 41 | needed kept / 38 |
+|---|---|---|
+| majority (shipped, all stretches) | 16 | 33 |
+| (a) HUMAN-BOX alone, majority of stretches | 4 | 38 |
+| (b) HUMAN-BOX as 4th vote, majority of stretches | 18 | 32 |
+
+**(a) 4/41, 38/38 -> STOP; (b) 18/41, 32/38 -> STOP (GO needs 19/32 or 15/35).** Stretches: 47 named (98 none), 46 boxes,
+1 `null`, 0 unparsed, 0 degenerate; crop yes 9, no 32, split 5 -> HUMAN-BOX seen on 9 stretches (shipped majority: 54).
+Grounding works (every named phrase boxed), but the crop question says no on most visible sources: aviary Bird ×4, pet-shop
+Bird, waves Water, the marrakech "man on the motorcycle", the protest crowd (full-frame box), flea-market hands. Crop yes:
+the waterfall ×2, un_driving_motorcycle Motorcycle 16.2 (BOX-2's lost small crop is now yes), and 6 others.
+(a) flips vs base (all to kept): seen lost — marrakech Motorcycle, as_explosion Machine gun, as_glass Chink + Glass, aviary
+Bird, flea-market Rustle ×2, golf Whip, tornado Cellphone (unnamed, BOX-2's known loss) and Horse, un_driving_motorcycle_4O3
+Vehicle, waves Water; needed rescued — golf Whack 6.5, pet-shop Bird, bell_miami Bell, ly_ambulance Vehicle, tornado Siren.
+(b) flips vs base: carnival Drum (seen, silenced), crossing Train (seen, silenced), rainforest_7629 Bird "the macaws" (NEEDED,
+silenced — the known 43b loss, again). These are exactly Round 43b (b)'s numbers and flips: in (b) the 4th vote changes no
+sound beyond what the majority-of-stretches aggregation already does (carnival Drum has no named phrase at all), because the
+crop says yes too rarely to break a tie. Reading: the named-phrase crop is more conservative than HUMAN-2's step (3), not less;
+grounding is not the bottleneck, the "making the sound right now" judgement on a still crop is. Closed; no full-pipeline arm.
