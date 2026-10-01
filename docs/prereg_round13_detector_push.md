@@ -4101,3 +4101,52 @@ judged by the rule above against the same B constants 29/18/2.141. The STACK for
 result states whether 61 also makes 57's one DEV drop (b3_crossing_bells Steam); if it does, the two forms are identical on DEV.
 If Rounds 60 and 61 both pass, any stack is a new pre-registered round with its own DEV run, not a post-hoc combination. TEST is
 not read in this round.
+
+## Round 60 SCENE-MARGIN — one ear + the VLM says the sound fits the scene (written 2026-10-01 BEFORE any Round 60 answer; Adam 19:13: "if there is some gap from the listeners AND the VLM approved the sound as credible for the scene, give some margin")
+**Base C = Round 53 WEAK-WITNESS** (`SHIP8+MD3+WW`: DASM_LOCAL_VETO 0.35, keep "both" — a non-rescued span is kept iff family
+DASM >= 0.35 within [start − 0.5, end + 0.5] OR both ears name it: Qwen V4 `_v4_names_qwen` AND AF V4 `_af_p1_accepts`).
+**Rule C' (one new flag, default None/off: `DASM_LOCAL_SCENE`, next to DASM_LOCAL_KEEP in stage 4).** Same place, window and span
+set as Round 53. A span C would drop is ALSO kept iff exactly ONE ear names it AND the VLM judges the sound credible for the scene.
+Scene question = the project's pre-registered Round 14 F3 question, unchanged: `reason.SCENE_FIT_PROMPT` "Could the sound of {label}
+plausibly be heard in this scene? Answer yes or no." asked through `reason._scene_fit` itself (one implementation): per stretch of
+the span (VISIBILITY_STRETCH 5 s cuts), 6 frames from 1 s before to 1 s after (the gate's recipe), answers combined by majority
+(yes > no); shipped VLM Qwen/Qwen3.8-27B, thinking off; label = the canonical family. **Where:** stage 4, per span (not stage 5),
+because stage 5 sees merged specs: `group_bursts` merges every firing of one family in a clip into one spec, so a stage-5 question
+would also judge (and could drop) the family's strong bursts (concrete DEV case: mv_protest Glass 4.75 shares a spec with the needed
+hit Glass 16.89–20.0). Stage 4 therefore loads the VLM lazily and asks on THE SPAN's own stretches; disclosed: these are the gate's
+frame recipe on the span, not the cached frames of the gate's (merged-spec) stretches. Video path per clip from a clip -> mp4 map
+(the flag's value; built from the SHIP8+MD3 media.json of DEV / DEV2). No frames / no video / no cache -> None -> not credible ->
+dropped (= C). Every ask (clip, family, span, per-stretch raw answer, verdict) is logged to `<map>.answers.jsonl` and memoised by
+key (blind and proposed passes and re-runs read the same answer).
+**Known before writing (DEV, Round 53 diff, ear status from the task brief):** C removed vs B: b3_laundromat Train 1.0 (phantom,
+no ear), tg_d022 Dog 7.25 (cross, no ear), tg_d128 Hammer 9.0 (cross, AF only, DASM 0.03), tg_d107 Screaming 6.52 (cross, Qwen
+only, 0.09), mv_protest Glass 4.75 (cross, Qwen only, 0.19); C lost needed hits tg_d032 Thunder 13.75 (Qwen only, 0.309) and
+tg_d075 Alarm clock 0.14 (AF only, 0.296). C = 27/58, 13 (6/5/2), 2.113; B = SHIP8+MD3 = 29/58, 18 (6/9/3), 2.141. The two
+no-ear spans (Train, Dog) cannot return under C'. 415 population for step 1 (`weakwitness2_415.json` rows, ears = whole-clip
+lists): one-ear raw BEATs spans with DASM < 0.35: **n 90 — 26 correct, 23 wrong time, 41 family absent; base precision 0.289**.
+**Expected DEV outcome by cases (from the facts above, not selection):** Thunder AND Alarm credible, Hammer / Screaming / Glass not
+-> **29/13** (best case); + Glass (a protest) credible -> 29/14; + Hammer (a workshop / clang scene) credible as well -> **29/15
+(the realistic case)**; all three crosses credible -> 29/16; only one of Thunder / Alarm credible -> 28 hits -> main rule fails;
+neither -> = C (27/13). Other one-ear spans that change no picture in C (sub-display, visible to the gate, or inside a merged
+burst — e.g. the mv_protest Glass 16.89 -> 17.5 start and ly_helicopter Vehicle -> Helicopter label changes of Round 53) may move
+display spans / labels; reported in the diff.
+**Step 0 — sanity (GPU, before step 1; STOP guard).** 10 fixed one-ear spans: the 5 DEV spans above (tg_d032 Thunder 13.75–15.0,
+tg_d075 Alarm 0.14–9.25, tg_d128 Hammer 9.0–10.0, tg_d107 Screaming 6.52–9.0, mv_protest Glass 4.75–6.25; display spans of the
+Round 53 diff) + the first 5 rows of the 415 step-1 population sorted by (clip, onset). Each asked with the F3 frames in BOTH
+option orders ("Answer yes or no." and "Answer no or yes."); raw replies printed. Answer pair = (verdict order 1, verdict order 2).
+**STOP as untestable if >= 9 of the 10 spans (>= 90 %) give the identical answer pair** (the VLM is constant: letter bias /
+always-no / always-yes, seen on three scene / frame questions today). Order agreement is reported. Only order 1 (the shipped
+prompt) is used by the rule.
+**Step 1 — held-out 415 (GPU, from ~/MscProj_tg; `benchmark/gold/scenemargin.py gate`).** Population = the 90 spans above (Round
+53 step-1 spans: raw BEATs, bar 0.35, low 0.175, min 0.3 s, depictable, family DASM max over [onset − 0.5, end + 0.5]; one-ear =
+family named by exactly one of the whole-clip Qwen3-Omni / AFN lists — **disclosed proxy for the span-level V4 asks of DEV**);
+mp4 `data/input/audioset_heldout/<id>.mp4`; `_scene_fit` on spans [(onset, end)]; correctness = Round 42 rule (`class`).
+**GO iff n(credible) >= 10 AND n(not credible) >= 10 AND precision(credible) >= 0.375 AND precision(not credible) <= 0.20; else
+STOP** (either group n < 10 = undetermined -> STOP, Round 52b precedent). None answers are excluded from both groups and counted.
+Reported: per-class counts per group, Omni-only / AFN-only split.
+**Step 2 — merged DEV (only if steps 0 and 1 GO).** `ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": <map>}`;
+arms SHIP8+MD3, SHIP8+MD3+WW, SHIP8+MD3+WW5 on old DEV (~/MscProj_r13) and DEV2 (~/MscProj_tg), merged, PICTURE_MIN_CONF None,
+filled caches. B must reproduce **29/58, 18 (6/9/3), 2.141** and C **27/58, 13, 2.113**. **Pass vs B:** main rule (hits >= 29, no
+needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141). Vs C: reported. Reported: floor 0.40 rows
+(`floor_check_arm.py`) for all three; changed pictures vs B and vs C with the VLM's raw scene answers for each asked span; the
+stage-4 ask count (asked / credible / None). TEST not read.
