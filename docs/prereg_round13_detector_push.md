@@ -3031,3 +3031,18 @@ orders on MORE THAN HALF of its stretches (`human2_gate.sound_majority` over `hu
 stretch (same stem / resolved label, picture start inside a stretch's onset ± 0.5 s) and would now be silenced, by gold class;
 pictures on clips or sounds without a cache are listed as not readable. Script `benchmark/gold/human_add_screen.py` ->
 `benchmark/gold/human_add_screen.json`; `src/` untouched.
+
+## Round 42b EXPECT-A5 — EXPECT-A4 restricted to the families the held-out 415 vouch for (written 2026-10-01 BEFORE any DEV/TEST number of this round)
+**Selector (independent of gold).** From `heldout_a4_screen.json["per_family_kept"]` (Round 42, strong labels only): families with
+held-out precision >= 0.8 AND n >= 3 — **Laughter (9/10), Crowd (8/9), Vehicle (5/6), Dog (5/5), Bell (4/4), Cough (4/4), Toilet flush
+(3/3)**; every thin family (n < 3) excluded; Bird (3/5), Typing (2/3), Gunshot, Cat, Water excluded. Frozen here, copied into the script.
+**Rule.** EXPECT-A4 exactly as frozen (Rounds 40b–40e, 40e TEST read): the same cached candidates and gate answers, nothing re-run; a
+picture is added iff it was added by EXPECT-A4 AND its family is in the list above. DEV: the 8 `outcome == "kept"` pictures of
+`expect_a4_screen.json` (SHIP8 base 28/58, 21 (6/13/2), 2.282 must reproduce). TEST: the 8 `added` pictures of `expect_test.json`
+(SHIP8 TEST base 23/65, 29 (4/20/5), 2.568 must reproduce). Scored with `score_per_sound.score_clip` as every round.
+**Verdicts.** DEV: main rule (hits >= 28, no needed hit lost on either part, w = 2 cost < 2.282) and the fewer-pictures clause (cost
+lower, wrong <= 21 − 3·hits lost, hits lost <= 3). TEST: reported with the paired clip bootstrap of d cost vs base (`DCC.boot`, 2000
+draws, seed 0, one-sided p); not selected on. Disclosed honestly: the per-picture classes of both sets are already recorded in the
+Round 40e result sections above, so this round's outcome is deducible before running; it is pre-registered so the family list, not
+the gold, is what selects. GO -> a `src/` flag is Adam's decision. **Files:** `benchmark/gold/expect_a5_screen.py` (CPU, from
+`~/MscProj_tg`, `TG_ARMS=SHIP8`) -> `benchmark/gold/expect_a5_screen.json`.
