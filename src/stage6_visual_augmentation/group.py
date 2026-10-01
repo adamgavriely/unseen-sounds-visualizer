@@ -133,6 +133,30 @@ def ensure(clip: str, wav_path: Path, specs, duration: float) -> None:
     _CACHE.pop(str(path), None)
 
 
+def _load_specs(d: Path):
+    from src.types import AugmentationSpec
+    return [AugmentationSpec(index=s.get("index", 0), event_label=s["event_label"], start=float(s["start"]), end=float(s["end"]),
+                             augment=bool(s.get("augment")), confidence=float(s.get("confidence", 0)), image_path=s.get("image_path"),
+                             talked_about=bool(s.get("talked_about")), spans=[tuple(x) for x in s.get("spans", [])],
+                             breaks=[tuple(x) for x in s.get("breaks", [])])
+            for s in json.loads((Path(d) / "augmentations.json").read_text(encoding="utf-8"))]
+
+
+def ensure_subprocess(clip: str, work: Path, wav: Path, duration: float) -> None:
+    """pipeline.run's default: ask in a fresh process (only Omni on the GPU there), then read the cache here"""
+    import subprocess
+    import sys
+    path = Path(getattr(config, "GROUP_CACHE", None) or (Path(config.WORK_DIR) / "group_answers.json"))
+    if path.exists() and clip in json.loads(path.read_text(encoding="utf-8")):
+        return
+    code = ("import config; config.use_shipped(); config.GROUP_CACHE = %r; from pathlib import Path; "
+            "from src.stage6_visual_augmentation import group as G; "
+            "G.ensure(%r, Path(%r), G._load_specs(Path(%r)), %r)" % (str(path), clip, str(wav), str(work), float(duration)))
+    subprocess.run([sys.executable, "-c", code], check=True, cwd=str(Path(__file__).resolve().parents[2]))
+    config.GROUP_CACHE = str(path)
+    _CACHE.pop(str(path), None)
+
+
 def main(argv=None):
     """separate-process step for a rendered arm folder (one model on the GPU at a time, as listener_prep):
         python -m src.stage6_visual_augmentation.group <arm work root> <wav16 dir> [cache.json]"""

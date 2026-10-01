@@ -120,8 +120,12 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
 
     config.GROUP_CLIP = video_path.stem          # Round 47 GROUP: Omni-confirmed repeats shown as one picture
     from src.stage6_visual_augmentation.group import ensure as _group_ensure
-    if getattr(config, "GROUP_LIVE", False):
-        _group_ensure(video_path.stem, work / "audio.wav", specs, media.duration)
+    if getattr(config, "GROUP_ASK", False):
+        if getattr(config, "GROUP_LIVE", False):         # in this process (models of earlier stages may still be loaded)
+            _group_ensure(video_path.stem, work / "audio.wav", specs, media.duration)
+        else:                                            # default: a fresh process, as listener_prep runs each model
+            from src.stage6_visual_augmentation.group import ensure_subprocess as _group_sub
+            _group_sub(video_path.stem, work, work / "audio.wav", media.duration)
     try:        # the window the viewer really gets: what stage 6 will draw, before it draws it
         from src.stage6_visual_augmentation import _display_spans
         shown = _display_spans(specs, media.duration)
