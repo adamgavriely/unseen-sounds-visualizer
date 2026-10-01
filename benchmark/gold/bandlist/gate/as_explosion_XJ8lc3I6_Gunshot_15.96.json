@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "as_explosion_XJ8lc3I6",
+ "family": "Gunshot",
+ "label": "Gunshot",
+ "onset": 15.96,
+ "end": 16.84,
+ "max": 0.63,
+ "dasm_onset": 0.979,
+ "outcome": "candidate",
+ "times": [
+  14.96,
+  15.36,
+  15.76,
+  16.16,
+  16.56,
+  16.96
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "AK-47 rifle",
+ "name": true,
+ "ab": false,
+ "desc": true
+}

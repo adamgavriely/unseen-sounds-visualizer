@@ -3229,3 +3229,18 @@ it passes. Files: `benchmark/gold/bandlist_screen.py` (cands CPU / gate GPU / sc
 ### Round 48 result — MD3 DEV (jobs 31600047 + 31600048, H200): **GO on the main rule**
 Base reproduced (SHIP8 28/58, 18 (6/10/2), 2.197). **SHIP8+MD3: 29/58, 18 (6/10/2), cost 2.141** | DEV 19/11 (same), DEV2 10/7
 (+1 hit, no wrong added). Main rule: hits 29 >= 28, no needed hit lost, cost 2.141 < 2.197 -> GO. TEST read next (once, frozen).
+### Round 49 result — DEV: **STOP** (job 31600082, H200, 3 min; `bandlist_screen.py` -> `bandlist_screen.json`, `bandlist/`)
+Base reproduced (SHIP8 through `score_per_sound.load_pictures` with clip = stem, i.e. MERGE_GAP 2.5 + GROUP bench answers: 28/58,
+18 (6/10/2), 2.197). **SHIP8+BANDLIST: merged 27/58, 24 wrong (6/16/2), cost 2.423 at w = 2 (base 2.197), 2.338 at w = 1 (base
+2.113)** | DEV 18/38, 15 (4/9/2), 2.245 (base 2.000) | tagger DEV2 9/20, 9 (2/7/0), 2.818 (base 2.636). **One needed hit lost:**
+birds_forest — the added Bird run at 4.96 s chains (MERGE_GAP, same label "Bird") with SHIP8's Bird picture at 10.25 s into one picture
+4.96–14.0 s, which no longer hits the needed Crowing at 10.4 s. Funnel: 2955 band runs (0.5 <= max < 0.8, depictable) -> 416 >= 0.5 s ->
+90 named by the Omni list -> 41 DASM >= 0.575 at onset ± 0.5 s (0 without a column) -> 5 near a same-family SHIP8 picture (± 2 s) ->
+36 candidates -> gate: 23 seen (dropped), 13 added. Added pictures (class after display): b3_botanic_garden Bird 3.68 / 6.24 / 6.92
+(merged into one span 1.0–9.75, don't-care) and 16.6 (cross); b3_golf_course Bird 0.0 / 3.92 / 6.84 (one span 0.0–8.84, don't-care) and
+27.44 (cross); b3_pet_shop Bird 11.08 (cross); birds_forest Bird 4.96 + 7.2 (cross, and the lost hit above); tg_d107 Laughter 0.8
+(cross); tg_d127 Splash 0.8 (cross). **0 new hits, +6 cross.** Main rule fails (27 < 28, a hit lost, cost up); fewer-pictures clause
+fails (cost up, wrong 24 > 18 − 3); more-hits (secondary) fails. The held-out 0.691 precision does not carry: on DEV the named band runs
+are mostly continuous Bird beds in bird scenes, which the gold scores as cross or don't-care. Disclosed mechanics: added pictures carry
+the family label, so MERGE_GAP chains them only with same-label SHIP8 specs; GROUP has no cached answer for pairs with an added picture
+(never grouped). No TEST read (did not pass).

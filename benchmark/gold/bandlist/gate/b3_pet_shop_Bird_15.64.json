@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "b3_pet_shop",
+ "family": "Bird",
+ "label": "Bird",
+ "onset": 15.64,
+ "end": 19.48,
+ "max": 0.694,
+ "dasm_onset": 0.68,
+ "outcome": "candidate",
+ "times": [
+  14.64,
+  15.04,
+  15.44,
+  15.84,
+  16.24,
+  16.64
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "a small bird",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

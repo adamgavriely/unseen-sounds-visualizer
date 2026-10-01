@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "b3_botanic_garden",
+ "family": "Bird",
+ "label": "Bird",
+ "onset": 16.6,
+ "end": 17.4,
+ "max": 0.696,
+ "dasm_onset": 0.695,
+ "outcome": "candidate",
+ "times": [
+  15.6,
+  16.0,
+  16.4,
+  16.8,
+  17.2,
+  17.6
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

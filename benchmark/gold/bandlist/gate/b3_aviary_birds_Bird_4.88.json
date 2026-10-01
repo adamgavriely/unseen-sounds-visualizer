@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "b3_aviary_birds",
+ "family": "Bird",
+ "label": "Bird",
+ "onset": 4.88,
+ "end": 6.32,
+ "max": 0.735,
+ "dasm_onset": 0.823,
+ "outcome": "candidate",
+ "times": [
+  3.88,
+  4.28,
+  4.68,
+  5.08,
+  5.48,
+  5.88
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "bird",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

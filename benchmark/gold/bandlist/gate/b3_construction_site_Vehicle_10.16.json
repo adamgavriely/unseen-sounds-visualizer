@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "b3_construction_site",
+ "family": "Vehicle",
+ "label": "Vehicle",
+ "onset": 10.16,
+ "end": 18.8,
+ "max": 0.615,
+ "dasm_onset": 0.773,
+ "outcome": "candidate",
+ "times": [
+  9.16,
+  9.56,
+  9.96,
+  10.36,
+  10.76,
+  11.16
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "excavator",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

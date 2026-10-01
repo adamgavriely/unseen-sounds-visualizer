@@ -1,0 +1,25 @@
+{
+ "part": "dev2",
+ "clip": "tg_d107",
+ "family": "Laughter",
+ "label": "Laughter",
+ "onset": 0.8,
+ "end": 1.6,
+ "max": 0.77,
+ "dasm_onset": 0.626,
+ "outcome": "candidate",
+ "times": [
+  -0.2,
+  0.2,
+  0.6,
+  1.0,
+  1.4,
+  1.8
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

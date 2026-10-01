@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "un_driving_motorcycle_4O3bZRYO",
+ "family": "Vehicle",
+ "label": "Vehicle",
+ "onset": 9.88,
+ "end": 12.04,
+ "max": 0.691,
+ "dasm_onset": 0.608,
+ "outcome": "candidate",
+ "times": [
+  8.88,
+  9.28,
+  9.68,
+  10.08,
+  10.48,
+  10.88
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "white car",
+ "name": true,
+ "ab": true,
+ "desc": true
+}

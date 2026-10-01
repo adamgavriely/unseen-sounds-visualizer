@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "b3_golf_course",
+ "family": "Bird",
+ "label": "Bird",
+ "onset": 3.92,
+ "end": 5.8,
+ "max": 0.744,
+ "dasm_onset": 0.597,
+ "outcome": "candidate",
+ "times": [
+  2.92,
+  3.32,
+  3.72,
+  4.12,
+  4.52,
+  4.92
+ ],
+ "n_frames": 6,
+ "seen": false,
+ "named": "nothing",
+ "name": false,
+ "ab": false,
+ "desc": false
+}

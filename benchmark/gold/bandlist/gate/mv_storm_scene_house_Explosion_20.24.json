@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "mv_storm_scene_house",
+ "family": "Explosion",
+ "label": "Explosion",
+ "onset": 20.24,
+ "end": 20.88,
+ "max": 0.656,
+ "dasm_onset": 0.643,
+ "outcome": "candidate",
+ "times": [
+  19.24,
+  19.64,
+  20.04,
+  20.44,
+  20.84,
+  21.24
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "tornado",
+ "name": false,
+ "ab": true,
+ "desc": true
+}

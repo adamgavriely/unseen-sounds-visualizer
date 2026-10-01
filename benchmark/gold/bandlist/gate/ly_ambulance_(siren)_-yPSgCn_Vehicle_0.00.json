@@ -1,0 +1,25 @@
+{
+ "part": "dev",
+ "clip": "ly_ambulance_(siren)_-yPSgCn",
+ "family": "Vehicle",
+ "label": "Vehicle",
+ "onset": 0.0,
+ "end": 10.0,
+ "max": 0.757,
+ "dasm_onset": 0.585,
+ "outcome": "candidate",
+ "times": [
+  -1.0,
+  -0.6,
+  -0.2,
+  0.2,
+  0.6,
+  1.0
+ ],
+ "n_frames": 6,
+ "seen": true,
+ "named": "car",
+ "name": true,
+ "ab": true,
+ "desc": true
+}
