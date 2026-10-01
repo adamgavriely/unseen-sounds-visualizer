@@ -2066,3 +2066,18 @@ cost up). Reading, as pre-stated: the three targets never become pictures — th
 (rightly, by its own rule) sees the golfer, i.e. the idea folds into the gate; Dishes is unnamed. Position bias note: the
 forward reply was "(a)" (= Whack, first option) in 13 of 25 asks and the reversed reply "(a)" (= none, first option) in 9 of
 25 — the two-order agreement rule did its job (only 8 accepted) but the closed question itself is mostly letter bias.
+### Round 37 result — BOX: STOP (job 31598457, H200, 5 min; `benchmark/gold/box_gate.py` -> `gate_gold/box_Qwen38-27B/`, `box_summary.json`)
+| rule | seen silenced / 41 | needed kept / 38 |
+|---|---|---|
+| majority (shipped) | 16 | 33 |
+| BOX | 9 | 35 |
+
+Needed kept +2 (bar met: bell_miami Bell 0.2, mv_tornado_scene Siren 8.9) but seen silenced −7 (bar <= 1) → **STOP**. The 7 seen
+sounds un-silenced: marrakech_3102 Motorcycle 12.7, storm_7200 Rain 0.1, as_explosion Machine gun 10.1, b3_golf_course
+Whip 11.2, mv_tornado Cellphone buzz 1.4 + Horse 17.1, un_driving_motorcycle_4O3bZRYO Motorcycle 16.2 — 5 of them by a
+`none` box on a source the majority vote (and the gold) sees; the model declines to box what it just said it saw.
+54 seen stretches: none 16, crop-no 6, unparsed 15 (replies "Based on the visual evidence…" prose or `<tool_call>`
+computer-use garbage — left unchanged by rule), seen kept 17. bell_miami (`docs/review/box_crops/`): stretch 1 `none`;
+stretches 2–3 box the IHS medallion / a sign sliver on the tower (1080×1920 frame; boxes 13×30 and 33×30 on the 0–1000
+grid), crop answers "no" + a/b False → flipped, as Adam predicted — the mechanism works on the motivating clip but the box
+question is too eager to say `none` elsewhere. tg_d133 Fart not screened (no tg_* gate cache). Closed.
