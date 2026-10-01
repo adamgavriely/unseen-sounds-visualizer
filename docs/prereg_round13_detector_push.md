@@ -2205,3 +2205,29 @@ part (clip-level: no clip on DEV or tagger DEV has fewer hits than under SHIP8).
 counts not above SHIP8, on each part) AND merged cost at w = 1 is lower than SHIP8.
 Both verdicts are reported. GO on the main rule -> the flag is a shipping candidate (Adam decides; merged TEST stays sealed).
 PASS only on the profile rule -> recorded as the "more hits" option for Adam. Neither -> closed.
+### Round 39 DETACHED-ADD — a second picture where a drawn family is heard again, far from its picture (pre-registered 1 Oct, before numbers)
+**Why.** Six merged-DEV misses are mistimed: the right family IS drawn in the clip, but at another moment (tg_d032 Thunder
+2.8 & 7.4, picture 13.75; birds_forest Bird 1.3, picture 10.25; as_explosion Explosion 2.8, pictures 5.68 / 9.25; also
+listed: tg_d120 Meow 2.9, ly_applause Crowd 1.9 — if SHIP8 draws no picture of that family there, the rule cannot touch
+them by construction, which is reported, not patched). GBTP (round 38) moved pictures and lost a hit; this rule ADDS one
+picture per family and clip instead, only where the family is heard again in a detached run.
+**Rule (constants reused, none new).** For each clip and each family that SHIP8 already draws there with a NON-rescued
+picture: take the family's evidence (max over same-family columns) in each of the three frame caches at the WEAK bars —
+BEATs >= `config.AED_THRESHOLD` = 0.175 (half the display bar), FlexSED >= `FLEXSED_VETO` = 0.3 (the clip-veto bar),
+DASM >= `config.LISTENER_DASM_BAR` = 0.575 (F8); runs = the pipeline's `_runs` with gaps <= `LISTEN_RUN_GAP` = 0.24 s
+merged; a candidate run must be >= 0.24 s long. A run qualifies iff its onset s is > 3.0 s from the start of EVERY
+same-family picture (rescued ones included) AND it is DETACHED from every same-family picture: between the run and the
+picture (run end -> picture start if the run precedes, picture end -> run onset if it follows) there is a stretch
+>= `MERGE_GAP` = 1.5 s where the family is below its weak bar in all three models (checked on a 0.04 s grid, nearest
+frame per model; a missing cache counts as "below"). ONE picture per (clip, family): the earliest qualifying onset over
+the three models; label = the existing picture's label, start = s, end = s + 2.0 s, appended to the placed list
+(`_display_spans`/`_assign_rows` not re-run — an approximation, disclosed). Rescued pictures untouched; nothing in `src/`
+or `config.py` edited.
+**Screen.** `benchmark/gold/detached_add_screen.py` (copy of `gbtp_screen.py`'s loaders; CPU, `~/MscProj_tg`,
+`TG_ARMS=SHIP8`), saved `SHIP8_proposed` pictures of merged DEV (71 clips), `score_per_sound`; base must reproduce 28/58,
+21 (6/13/2), 2.282 (asserted). Reported: merged DEV per part; every added picture (part, clip, family, start, source
+model(s), class from `cross_group.classify`, clip hits before -> after); dup counts separately (a dup is not "wrong").
+**Pass.** Main rule: GO iff merged hits >= 29 AND wrong <= 21 + 2 x (hits - 28) AND cost at w = 2 (base 2.282) lower AND no
+clip on either part has fewer hits than SHIP8. "More hits" rule: PASS iff merged hits > 28 AND cross and phantom counts not
+above SHIP8 on each part (every extra wrong picture visible-type) AND cost at w = 1 (base 2.197) lower.
+cost(w) = (4 miss + w visible + 2 cross + 2 phantom) / 71. GO -> a `src/` flag is Adam's decision; neither -> closed.
