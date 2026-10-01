@@ -1,0 +1,101 @@
+[
+ {
+  "part": "dev",
+  "clip": "ambient_weather_storm_16200",
+  "only_SHIP8+MD3": [
+   [
+    "Thunder",
+    0.06,
+    15.75,
+    "visible"
+   ]
+  ],
+  "only_SHIP8+MD3+WW4": [
+   [
+    "Thunder",
+    0.06,
+    8.25,
+    "visible"
+   ]
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "ambient_weather_storm_7200",
+  "only_SHIP8+MD3": [
+   [
+    "Thunder",
+    0.06,
+    15.75,
+    "visible"
+   ]
+  ],
+  "only_SHIP8+MD3+WW4": [
+   [
+    "Thunder",
+    0.44,
+    8.25,
+    "visible"
+   ]
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "b3_laundromat",
+  "only_SHIP8+MD3": [
+   [
+    "Train",
+    1.0,
+    2.5,
+    "phantom"
+   ]
+  ],
+  "only_SHIP8+MD3+WW4": []
+ },
+ {
+  "part": "dev",
+  "clip": "ly_applause_62ZYD0u",
+  "only_SHIP8+MD3": [
+   [
+    "Crowd",
+    0.0,
+    7.75,
+    "cross"
+   ]
+  ],
+  "only_SHIP8+MD3+WW4": [
+   [
+    "Crowd",
+    0.0,
+    1.5,
+    "cross"
+   ]
+  ]
+ },
+ {
+  "part": "dev",
+  "clip": "mv_protest_scene_movie",
+  "only_SHIP8+MD3": [
+   [
+    "Crowd",
+    0.0,
+    1.5,
+    "hit"
+   ]
+  ],
+  "only_SHIP8+MD3+WW4": []
+ },
+ {
+  "part": "dev2",
+  "clip": "tg_d032",
+  "only_SHIP8+MD3": [
+   [
+    "Thunder",
+    13.75,
+    15.0,
+    "hit"
+   ]
+  ],
+  "only_SHIP8+MD3+WW4": []
+ }
+]

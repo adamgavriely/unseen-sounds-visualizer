@@ -3769,3 +3769,17 @@ hits re-timed/lengthened by the hull (Insect, Bell, Crowd, Alarm, Cough). **Verd
 hits lost, cost 2.761 > 2.141); fewer-pictures clause fails ((a) cost up, (c) 36 > 18 − 9). As the 415 split hinted (226 of 235 G
 unions are shortB+longF), a 0.5 FlexSED band run is too permissive a partner: it turns sub-0.3-s BEATs blips into long twinned
 pictures that skip the mirror veto and N2. TWIN_SHORT stays None; nothing ships; TEST not read.
+
+### Round 53d WEAK-WITNESS-4 result — merged DEV (jobs 31602291 r16dev + 31602292 tgarms; `floor_check_arm.py`; `weakwitness_dev.py diff` -> `weakwitness4_diff.json`): **FAIL**
+Base reproduces: SHIP8+MD3 **29/58, 18 (6/10/2), 2.141**. **SHIP8+MD3+WW4 (DASM_LOCAL_VETO 0.575, keep "either"): 27/58, 17 (6/10/1),
+2.225** (DEV 19/11 -> 18/10, DEV2 10/7 -> 9/7). Floor 0.40 (reported): base 27/58, 15 (5/10/0), 2.169; WW4 26/58, 15 (5/10/0), 2.225.
+Changed pictures (floor None): **−1 wrong** — b3_laundromat Train 1.0 (phantom; no ear, as Round 53). **−2 needed hits:**
+**mv_protest Crowd 0.0** (only row Crowd, DASM 0.468 over the window, not rescued, Qwen V4 no / AF V4 no — the pre-registered risk;
+the P1 listener did not say yes either, or it would have been kept) and **tg_d032 Thunder 13.75** (only row Thunder, DASM 0.309,
+Qwen V4 'onto' yes / AF V4 no — kept under "both"-style naming but here the Qwen ear is the P1 listener, which did not say yes, so
+no ear under "either"). Not removed (an ear kept them): mv_protest Glass 4.75, tg_d022 Dog, tg_d107 Screaming, tg_d128 Hammer.
+Moved, same class: two storm Thunder visible pictures shortened (15.75 -> 8.25 ends; 7200 onset 0.06 -> 0.44), ly_applause Crowd
+cross 0.0–7.75 -> 0.0–1.5. mv_detective Alarm (pre-registered risk) survived. **Verdict: FAIL** — main rule fails (2 needed hits
+lost, cost 2.225 > 2.141); fewer-pictures clause fails ((a) cost not below 2.141; (c) 17 > 18 − 3 × 2 = 12). Reading: with the P1
+listener as the Qwen ear, "either" keeps most crosses (an ear says yes to them) and still drops two hits, so the one-ear witness
+helps neither way on DEV; the four Round 53 witness variants (53, 53b, 53c, 53d) are closed. DASM_LOCAL_VETO stays None; TEST not read.
