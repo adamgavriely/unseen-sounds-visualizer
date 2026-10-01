@@ -435,6 +435,7 @@ DASM_CLIP_VETO = None             # round 28 DV (0.084, round-6 calibrated)
 KEEP_NEEDS_V4_ALL = None   # round 30 K4A: "exact" | "onto" (off)
 KEEP_NEEDS_V4_ALL_DASM_KEEP = False   # round 35 K4A-D: DASM (F8 bar) keeps a K4A drop
 BAND_TWIN_PULL = None      # round 30 BTP: FlexSED run bar for the start pull (off)
+TWIN_SHORT = None          # round 56 TWIN-SHORT: FlexSED partner-run bar for joining two short agreeing spans before the min span (off)
 REPEAT_NEEDS_SILENCE = None   # round 31 RPT-S: FlexSED bar of the >= 1 s silence a repeat needs (off)
 CONTINUATION_VETO = None   # round 31 CONT: FlexSED bar of the run a continuation span sits in (off)
 REPEAT_DASM_BRIDGE = None  # round 35 DBR: DASM bar a gap between two same-family spans must stay above (off)

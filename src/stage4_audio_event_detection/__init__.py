@@ -600,6 +600,44 @@ def attach_breaks(events, framewise, times, labels, ffw, ftimes, flabels) -> Non
         e.breaks = list(memo[fam])
 
 
+def twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, band, twin_max=True, disp=0.35):
+    """Round 56 TWIN-SHORT (docs/prereg_round13_detector_push.md): agreement before the minimum span.
+
+    Case 1: a BEATs span shorter than min_dur (AED_THRESHOLD, hysteresis low, min span 0) with a same-family FlexSED run
+    >= `band` (any length) within the twin tolerance (b.start - 1 <= f.end and f.start - 1 <= b.end) becomes the hull of
+    itself and all such runs, kept iff the hull >= min_dur; confidence as the twin rule (TWIN_MAX) gives it.
+    Case 2: a FlexSED span shorter than min_dur (at fbar, min span 0) with a same-family BEATs span (min span 0, any length)
+    within the tolerance whose hull with it is >= min_dur: returned for the twin loop (it is dropped there unless it twins).
+    Returns (case1 events with .ts_case / .ts_partner_peak set, case2 FlexSED events). Pure."""
+    from src.labels import canonical
+    hys = float(getattr(config, "AED_HYSTERESIS", 1.0))
+    thr = float(getattr(config, "AED_THRESHOLD", 0.175))
+    B0 = _extract_events(framewise, times, labels, thr, None, 0.0, low=thr * hys)
+    F0 = _extract_events(ffw, ftimes, flabels, fbar, None, 0.0, low=fbar * hys)
+    FB = _extract_events(ffw, ftimes, flabels, float(band), None, 0.0, low=float(band))
+    near = lambda a, b: canonical(a.label) == canonical(b.label) and a.start - 1.0 <= b.end and b.start - 1.0 <= a.end
+    c1 = []
+    for b in [b for b in B0 if b.end - b.start < min_dur - 1e-9]:
+        ps = [f for f in FB if near(b, f)]
+        if not ps:
+            continue
+        s, e = min([b.start] + [f.start for f in ps]), max([b.end] + [f.end for f in ps])
+        if e - s < min_dur - 1e-9:
+            continue
+        fpk = max(f.confidence for f in ps)
+        conf = min(1.0, disp * max(b.confidence / disp, fpk / fbar)) if (twin_max and fbar > 0) else b.confidence
+        u = AudioEvent(label=b.label, start=s, end=e, confidence=float(conf))
+        u.ts_case = "short+short" if all(f.end - f.start < min_dur - 1e-9 for f in ps) else "shortB+longF"
+        u.ts_partner_peak = float(fpk)
+        u.ts_beats = (round(b.start, 3), round(b.end, 3), round(float(b.confidence), 3))
+        c1.append(u)
+    c2 = []
+    for f in [f for f in F0 if f.end - f.start < min_dur - 1e-9]:
+        if any(near(f, b) and max(f.end, b.end) - min(f.start, b.start) >= min_dur - 1e-9 for b in B0):
+            c2.append(f)
+    return c1, c2
+
+
 def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur, backend: str = "BEATs",
                  panns=None, listener=None, listener_p1=None, extra=None):
     """The union of the tagger's spans with FlexSED's, and the vetoes (amendments 8, 10, 11, 16, 22; round 4; round 13).
@@ -667,6 +705,21 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
     twinned = set()          # tagger spans that absorbed a same-family FlexSED span
     twin_max = bool(getattr(config, "TWIN_MAX", False))
     disp_bar = float(getattr(config, "DISPLAY_THRESHOLD", 0.35))
+    # Round 56 TWIN-SHORT (config.TWIN_SHORT = FlexSED partner bar; None = off): two short agreeing detections are joined
+    # before the minimum span kills them separately (twin_short above); case-1 unions are twins (skip mirror and N2) and
+    # are exempt from the DASM clip veto; case-2 short FlexSED spans enter the twin loop and are dropped if they do not twin.
+    ts_bar = getattr(config, "TWIN_SHORT", None)
+    ts_ids, ts_f = set(), set()
+    if ts_bar:
+        c1, c2 = twin_short(framewise, times, labels, ffw, ftimes, flabels, min_dur, fbar, float(ts_bar),
+                            twin_max=twin_max, disp=disp_bar)
+        events = events + c1
+        ts_ids = {id(u) for u in c1}
+        twinned |= ts_ids
+        fev = fev + c2
+        ts_f = {id(f) for f in c2}
+        trace("twin_short", c1 + c2, f"R56 case-1 unions and case-2 short FlexSED spans (band {ts_bar})")
+        print(f"       [stage4] TWIN-SHORT ({ts_bar}): {len(c1)} union(s), {len(c2)} short FlexSED span(s)", flush=True)
     fresh = []
     for e in fev:
         twin = [b for b in events if key(b) == key(e) and b.start - 1.0 <= e.end and e.start - 1.0 <= b.end]
@@ -699,6 +752,8 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     b.start = min(b.start, e.start)
         else:
             fresh.append(e)
+    if ts_f:
+        fresh = [e for e in fresh if id(e) not in ts_f]          # R56: a case-2 short FlexSED span that did not twin
     # Detector round 2026-09-27 (docs/prereg_v4.md amendment 22): at a LOWER FlexSED bar, a span FlexSED
     # raised alone is admitted only if another detector rises for the same family near it in time --
     # BEATs >= b or PANNs >= p within `win` seconds of the span. Off unless FLEXSED_CORROB = (b, p, win).
@@ -720,7 +775,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                  or (cfw is not None and _near(cfw, ct, cl, e, p_min))]
         print(f"       [stage4] corroboration (BEATs {b_min} / PANNs {p_min} within {win} s): kept {len(fresh)} of {n0} FlexSED-only span(s)", flush=True)
     print(f"       [stage4] FlexSED (bar {fbar}): {len(fev)} span(s), {len(fresh)} new family/moment(s)", flush=True)
-    trace("flexsed_raw", fev, "FlexSED spans as extracted")
+    trace("flexsed_raw", [e for e in fev if id(e) not in ts_f], "FlexSED spans as extracted")
     events = events + fresh
     flex_ids |= {id(e) for e in fresh}
     trace("union", events, "after the twin rule kept the earlier start")
@@ -820,7 +875,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 dpk[canonical(lab_)] = max(dpk.get(canonical(lab_), 0.0), float(z["fw"][:, i].max()))
             gone = []
             for e in events:
-                if getattr(e, "rescued", False) or dpk.get(canonical(e.label), 1.0) >= float(dv):
+                if getattr(e, "rescued", False) or dpk.get(canonical(e.label), 1.0) >= float(dv) or id(e) in ts_ids:
                     continue
                 if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
                     continue

@@ -3572,3 +3572,47 @@ Step 0, 10 fixed DEV stretches (positions 0, 7, …, 63 of the 72): answer pairs
 (a plain "no" habit: both polarities denied). 9/10 share one pair (>= 9) -> STOP as pre-registered; steps 1 and 2 not run.
 Together with Round 54 (a/b: "(a)" by position on 88 %), Qwen3.8-27B gives no usable answer to a source-free "visible sign"
 question in either format. Nothing ships; TEST not read.
+
+## Round 56 TWIN-SHORT — agreement before the minimum span (written 2026-10-01 BEFORE any 415 or DEV number of it; panelist 1's P1, `docs/review/panel_2026-10-01/p1_detection.md`, ranked 2nd-3rd in `round2_votes.md`)
+**Why.** `fuse_flexsed` gets BEATs spans already cut at AED_MIN_DUR (0.3 s, MD3) and extracts FlexSED at the same minimum, so
+two short detections of one family at one moment die separately before the twin union can join them (merged-DEV miss
+as_explosion_XJ8lc3I6 Gasp 6.7; then N2 and the DASM clip veto, DASM clip max 0.065 < 0.084).
+**Step 0 — mechanism (done BEFORE the rule was fixed; cached DEV frames of that one clip, no scoring).** BEATs Gasp at
+AED_THRESHOLD 0.175, min span 0: **6.50–6.75, peak 0.415** (one 0.25-s frame). FlexSED Gasp at the shipped bar 0.8: **no span at any
+min span** (peak 0.758 < 0.8). FlexSED Gasp run at 0.5: **6.76–6.92 (0.758)**; hull with the BEATs span 6.50–6.92 = 0.42 s >= 0.3.
+So the panel's "FlexSED 6.72–6.92 @0.758" is a band run, not a FlexSED span. **Deviation from P1's wording (disclosed):** P1 /
+the task pair a short span with a *span* of the other detector; read literally (FlexSED at 0.8) the rule cannot recover its own
+motivating case. The FlexSED partner of a short BEATs span is therefore a same-family FlexSED run >= **0.5**, the shipped band bar
+BTP and CONT already use as "FlexSED hears this family here" (not a number chosen for this round). The literal rule (partner at
+0.8) is reported on the 415 as a reference row only.
+**Rule (`config.TWIN_SHORT` = FlexSED partner bar, None = off = shipped; arm value 0.5; `twin_short()` + `fuse_flexsed` in
+`src/stage4_audio_event_detection/__init__.py`).** Tolerance = the twin loop's own: b.start − 1 <= f.end and f.start − 1 <= b.end, same
+canonical family.
+- **Case 1** — a BEATs span shorter than AED_MIN_DUR (extracted at AED_THRESHOLD, hysteresis low, min span 0) with >= 1 same-family
+  FlexSED run >= TWIN_SHORT (min span 0, any length) within tolerance becomes the **hull** (min start, max end) of itself and all
+  such runs; kept iff hull >= AED_MIN_DUR. Confidence as the twin rule gives it (TWIN_MAX: 0.35 × max(BEATs/0.35, FlexSED peak/0.8)),
+  so a sub-display BEATs short whose partner is below 0.8 stays undrawn. It enters the event list as a **twin** (skips the mirror
+  veto and N2, as every twin) and is **exempt from the DASM clip veto (DV) only** (no other veto skipped). Sub-cases tallied:
+  short+short (every partner run < 0.3 s) / shortB+longF.
+- **Case 2** — a FlexSED span shorter than AED_MIN_DUR (at FLEXSED_BAR 0.8, min span 0) with a same-family BEATs span (min span 0, any
+  length) within tolerance and hull >= AED_MIN_DUR enters the existing twin loop; if it does not twin there it is dropped (singles
+  unchanged). When it twins with an existing (long) BEATs span, that span becomes a twin as shipped (start pulled, TWIN_MAX confidence,
+  skips mirror / N2) but is **not** DV-exempt (sub-case shortF+longB, tallied).
+- Everything else unchanged: spans without a partner are not admitted; long spans are untouched except through the twin status above.
+**Step 1 — held-out 415 (`benchmark/gold/twinshort_415.py`, CPU, from ~/MscProj_tg; report only + STOP guard).** Shipped flags
+(`config.use_shipped()`: AED_THRESHOLD 0.175, hysteresis 1.0, AED_MIN_DUR 0.3, FLEXSED_BAR 0.8, no family bars, no impulse span,
+TWIN_MAX, display 0.35); BEATs / FlexSED / DASM held-out caches (`heldout_a4_screen` paths, `DCC.load_fr`); `twin_short()` itself
+is called (one implementation). Correctness = Round 42 rule (`heldout_a4_screen.classify`: a same_family strong event starts in
+[onset − 0.5, onset + 1.0]); onset = union start (case 1) / short FlexSED span start (case 2); depictable families only
+(`expect_screen.FAMILIES`). **Guarded set G = case-1 unions at partner bar 0.5, displayable (confidence >= 0.35).** STOP if
+n(G) >= 3 and precision(G) < 0.375; n(G) < 3 = not judged, no STOP (the panel: a 415 pass predicts little on DEV, so this is a guard,
+not a GO). Reported beside it: G by sub-case; G with family DASM clip max < 0.08392333984375 (the spans the DV exemption saves);
+all case-1 unions (incl. sub-display); the literal rule (partner bar 0.8) G row; case-2 spans (n, precision); loader check: raw BEATs
+at the display bar, min 0.5 (`prior415_screen.beats_runs`) must give 754 / 283 (Round 42).
+**Step 2 — merged DEV (only if step 1 does not STOP).** `ARMS["SHIP8+MD3+TS"] = {**ARMS["SHIP8+MD3"], "TWIN_SHORT": 0.5}`; from
+~/MscProj_r13 `ARMS="SHIP8+MD3 SHIP8+MD3+TS" sbatch slurm/job_round16_dev.sh`, then from ~/MscProj_tg `TG_ARMS="SHIP8+MD3
+SHIP8+MD3+TS" sbatch --dependency=afterany:<j> slurm/job_tagger_arms.sh`; PICTURE_MIN_CONF None. Base must reproduce **29/58, 18
+(6/10/2), 2.141**. **Pass:** main rule (hits >= 29, no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141)
+OR fewer-pictures clause ((a) cost < 2.141, (c) wrong <= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row
+(`floor_check_arm.py`), the changed pictures (`benchmark/gold/twinshort_dev.py diff`), the TWIN-SHORT stage-4 counts. Expectation
+(panel, not selection): +1 hit (Gasp 6.7), +0–2 wrong (risk: gunshot-type crosses; the long-partner sub-cases). TEST not read.
