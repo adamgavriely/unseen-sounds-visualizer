@@ -3694,3 +3694,25 @@ Disclosure (reported, not used): at 0.60 the rule would drop 303 of 349 no-ear s
 0.35 (0.35, 0.25, 0.64, 0.50, 0.67), so the 415's weak zone for no-ear spans ends around 0.35–0.45. A successor would have to
 pre-register a FIXED b0 (e.g. Round 53's 0.35 or DV-G's 0.575) with "either" before any number. Caveat kept: "either" uses the P1
 listener yes for Qwen, while the known-before-writing ear statuses came from the "both"-mode (V4 'onto') step-0 trace. TEST not read.
+
+## Round 53d WEAK-WITNESS-4 — "either" with the project's standard DASM bar (written 2026-10-01 BEFORE any DEV number of it; coordinator's choice after Round 53c's saturated curve)
+**Rule (existing code, no src change): SHIP8+MD3 + `DASM_LOCAL_VETO` 0.575 + `DASM_LOCAL_KEEP` "either".** b0 = 0.575 is FIXED, not
+read from any new number: it is the project's standard DASM bar (LISTENER_DASM_BAR, F8 / K4A-D; Round 29 DV-G). Justification from
+the already-published Round 53c curve: on the 415 the no-ear spans below 0.60 have cumulative precision <= 0.162 (303 spans), far
+below the raw 0.375, so dropping no-ear spans with DASM < 0.575 removes a weak set. A non-rescued span is kept iff DASM >= 0.575 OR
+the Qwen P1 listener says yes (`listener_p1(...)[0]` — the P1 listener yes, NOT the V4 'onto' naming of "both") OR AF V4 accepts
+(`_af_p1_accepts`). Same window ([start − 0.5, end + 0.5]), span set and no-column / no-cache handling as Round 53.
+**Known before writing (Round 53 step-0 trace `weakwitness_step0.json`, V4 ear flags as a proxy for the "either" ears, and Round 53
+DEV).** Wrongs: Round 53 removed laundromat Train, protest Glass 4.75, tg_d022 Dog (no ear -> droppable here), tg_d128 Hammer (AF
+only), tg_d107 Screaming (Qwen only) -> kept here; other wrongs between 0.35 and 0.575 with no ear may also go (not traced).
+**Hits at risk (no V4 ear, DASM < 0.575, not rescued, the picture's only rows): mv_detective_crime_scene Alarm (0.49) and
+mv_protest Crowd 0.0 (0.468)** — lost unless the P1 listener says yes. Safe on the trace: rainforest Insect (0.592), tg_d149 Bee
+(0.616), tg_d032 / tg_d075 / tg_d088 / tg_d107 Crying / Door / both Glass hits / Siren (one or two ears), birds Bird (0.635 rows);
+ly_helicopter Vehicle comes from Helicopter rows (0.49 / 0.61), so it survives through the 0.61 row (maybe relabelled).
+**Expected:** >= 3 wrong removed (~29/15 if no hit is lost, cost ~2.056); if both at-risk hits go, 27 hits -> main rule fails and the
+fewer-pictures clause needs wrong <= 12 (>= 6 wrong removed).
+**DEV.** `ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}`; r16dev (~/MscProj_r13)
+then tgarms (~/MscProj_tg), PICTURE_MIN_CONF None. Base must reproduce **29/58, 18 (6/10/2), 2.141**. **Pass:** main rule (hits >= 29,
+no needed hit lost on either part, wrong <= 18 + 2 × hits gained, cost < 2.141) OR fewer-pictures clause ((a) cost < 2.141, (c) wrong
+<= 18 − 3 × hits lost, (d) hits >= 26). Reported: floor 0.40 row (`floor_check_arm.py`), changed pictures, and for every lost hit its
+rows' DASM and ears. Stacking with Round 56 as pre-registered in Round 53b. TEST not read.
