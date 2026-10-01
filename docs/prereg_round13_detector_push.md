@@ -4207,3 +4207,26 @@ Reading (not selection): Q1 alone said unlikely on 27/44 incl. 17 hits (the N1 f
 unlikely); Q2 "nothing" protected 21 of those. A one-order Q3 (L1 only; NOT the pre-registered rule) would drop laundromat
 Train (phantom) + Explosion + tg_d107 Crying (a hit) -> a needed hit lost with <= 2 wrong removed -> fails the main rule and the
 fewer-pictures clause (needs wrong <= 15) either way. Nothing ships; TEST not read. Variants v-think / v-gemma (61c) running.
+
+### Round 60 SCENE-MARGIN — results (steps 0, 1, 2): PASS vs B (main rule)
+**Step 0 (job 31625219, `scenemargin_sanity.json`): GO.** Answer pairs over the 10 fixed spans: (yes, yes) 5, (None, None) 2,
+(yes, no) 1, (no, None) 1, (yes, None) 1 -> most common pair 5/10 < 9; order agreement 7/10. Thunder, Alarm, Screaming: yes in
+the shipped order; Hammer: "based on the" (the frozen F3 parser reads max 4 tokens) -> None.
+**Step 1 (415, `scenemargin_415.json`): GO.** All 90 one-ear spans DASM < 0.35: 0.289. **Credible n 56, 23 correct = 0.411
+(>= 0.375); not credible n 26, 2 correct = 0.077 (<= 0.20)**; None 8 (excluded). By class: correct 23 / 2, wrong time 14 / 7,
+family absent 19 / 17 (credible / not).
+**Step 2 (merged DEV; job 31625219 crashed in stage 4 before any DEV answer — stage 4 read config.VLM_MODEL = the Qwen2.5-VL default,
+not cached offline; fixed to load Qwen3.8-27B explicitly, thinking off; re-run job 31627524 from DEV only).** B reproduces
+**29/58, 18 (6/9/3), 2.141**; C reproduces **27/58, 13 (6/5/2), 2.113**. **SHIP8+MD3+WW5: 29/58, 14 (6/6/2), 2.028** (DEV 19/9,
+DEV2 10/5). **Main rule vs B: hits 29 >= 29, no needed hit lost on either part, wrong 14 <= 18, cost 2.028 < 2.141 -> PASS.**
+Vs C (reported): +2 hits (tg_d032 Thunder 13.75, tg_d075 Alarm 0.14), +1 wrong (tg_d107 Screaming 6.52 cross), cost 2.113 -> 2.028.
+Floor 0.40 (reported): B 27/58, 15 (5/9/1), 2.169; C 26/58, 11 (5/5/1), 2.113; WW5 27/58, 12 (5/6/1), 2.085.
+Changed pictures vs B = C's removals minus Screaming: laundromat Train 1.0 (phantom) gone, tg_d022 Dog 7.25 gone, tg_d128 Hammer 9.0
+gone, mv_protest Glass 4.75 gone (hit Glass 16.89–20.0 -> 17.5–19.0, still a hit), ly_helicopter Vehicle -> Helicopter (hit).
+Stage-4 asks (`scenemargin_diff.json`, raw): 14 asked, 9 credible, 3 not, 2 None. Thunder 13.75–14.75 "yes."; Thunder 8.0–8.5
+"yes."; Alarm 0.0–9.25 "yes." / "yes."; Screaming 7.2–9.0 "yes."; Glass 4.75–5.25 "based on the" (None); Hammer 9.0–9.75 "based on
+the" (None); laundromat Train 1.0–1.75 "no." (this sub-span had ONE ear, unlike the brief's "no ear" — same outcome); favela Train
+14.72 "no."; ambulance Siren 0.0–8.5 "no." / "yes." (tie -> not credible); aviary Insect 3.75, detective Sigh 3.0, protest Baby
+cry 4.0 / 5.0, tg_d033 Gasp 7.25 "yes." (no picture change). Outcome = the pre-registered case "Thunder + Alarm credible" with
+one cross (Screaming) also credible -> 29/14. Disclosed: Hammer and Glass were dropped by the parser's None (truncated reply), not
+by an explicit "no". Ship decision is Adam's; TEST not read.
