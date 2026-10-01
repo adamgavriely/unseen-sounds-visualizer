@@ -19,7 +19,7 @@ mkdir -p logs
 NAME="${1:?name}"; SRC="${2:?clip folder}"; ARM="${3:-SHIP8+MD3}"
 source "$HOME/miniconda3/etc/profile.d/conda.sh"
 conda activate msproj
-export PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TG_EXTRA_SPLITS="$NAME"
+export PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 TG_EXTRA_SPLITS="$NAME" TG_ARMS="$ARM"   # TG_ARMS: re-point the arm's cache paths to this split
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
 D="data/input/tagger_$NAME"; mkdir -p "$D"
 for f in "$SRC"/*.mp4; do [ -e "$D/$(basename "$f")" ] || ln -s "$(readlink -f "$f")" "$D/$(basename "$f")"; done
@@ -36,6 +36,12 @@ python $P --split $NAME lpool
 python $P --split $NAME qwen
 python $P --split $NAME afn
 python $P --split $NAME dasm
+# shipped-arm inputs (as src/listener_prep.py): DR2 DASM-rescue pool + listeners, K-V4 P1 inventory, FineLAP per clip
+G=benchmark/gold; W=data/work
+python $G/dasm_rescue.py pool "$NAME" "$W/r13$NAME/stage4.json" "$W/dasm_$NAME" "$W/r13$NAME/wav16" "$G/${NAME}_listener_p4.json"
+python $G/dasm_rescue.py listen "$G/${NAME}_listener_p4.json"
+python $G/listener_p1v4.py "$NAME:$G/${NAME}_listener_v.json:$G/${NAME}_listener_afn.json:$W/r13$NAME/wav16:$G/${NAME}_listener_p1v4.json"
+python -c "import sys; from src.listener_prep import finelap; [finelap('$NAME', s.strip()) for s in open('$G/${NAME}_stems.txt') if s.strip()]"
 python $P --split $NAME stage4 --arms B0r "$ARM"
 python $P --split $NAME stage5 --arms B0r "$ARM"
 python $P --split $NAME gates --arms B0r "$ARM"
