@@ -1423,6 +1423,106 @@ def _talked_about(label: str, speech: str, mdl, proc, flip: bool = False) -> boo
     return verdict
 
 
+# Round 38 BOX-2 arm (docs/prereg_round13_detector_push.md), config.GATE_BOX_CHECK, off by default. A copy of the
+# screened rule in benchmark/gold/box_gate.py (BOX_Q, re-asked once with REPROMPT_Q if unparsed; crop with 20 % margin,
+# short side >= 224 px; two label-free crop questions). Only a parsed box whose crop is "no" twice turns seen -> not seen.
+BOX_OBJECT_OF = {
+    "Bird": "a bird", "Water": "water (a river, the sea, waves or a tap)", "Rain": "rain falling", "Drum": "a drum",
+    "Walk, footsteps": "a person's feet or legs stepping", "Bell": "a bell (the bell itself)",
+    "Laughter": "a person laughing", "Motorcycle": "a motorcycle", "Machine gun": "a gun being fired",
+    "Train": "a train", "Rustle": "something rustling (leaves, paper or cloth being moved)",
+    "Vehicle": "a car or truck", "Crowd": "a crowd of people", "Chink, clink": "glasses or cutlery touching",
+    "Glass": "glass", "Whack, thwack": "something being hit", "Whip": "a whip",
+    "Air horn, truck horn": "a truck or vehicle horn", "Cellphone buzz, vibrating alert": "a mobile phone",
+    "Siren": "an emergency vehicle", "Horse": "a horse",
+}
+BOX_Q = ("These frames (numbered 1..{n}) are from the moment a sound of {label} was heard. Find the object that is "
+         "making that sound. Answer with JSON only: {{\"frame\": k, \"bbox_2d\": [x1, y1, x2, y2]}} on a 0-1000 grid of "
+         "that frame (1000 = full width or height). If no such object is visible, answer exactly: none.")
+BOX_REPROMPT_Q = ("These frames (numbered 1..{n}) are from the moment a sound of {label} was heard. Reply ONLY with JSON, no "
+                  "other text, no tools: {{\"frame\": k, \"bbox_2d\": [x1, y1, x2, y2]}} on a 0-1000 grid of frame k (1000 = "
+                  "full width or height), or {{\"bbox_2d\": null}} if the object making that sound is not visible.")
+BOX_CROP_PRE = "This is a close-up cut from a video frame."
+BOX_DIRECT_Q = BOX_CROP_PRE + " Is this {obj}? Answer yes or no."
+BOX_AB_Q = BOX_CROP_PRE + " What is it?"
+BOX_MARGIN, BOX_MIN_SIDE = 0.2, 224
+
+
+def _box_object_of(label: str) -> str:
+    from src.labels import canonical
+    return (BOX_OBJECT_OF.get(canonical(label)) or BOX_OBJECT_OF.get(label)
+            or f"the thing that makes the sound of {label}")
+
+
+def _box_parse(reply: str, n_frames: int, strict: bool = False):
+    """-> ("none"|"null"|"unparsed", None) | ("box", (k, [x1,y1,x2,y2] on 0-1000)); as box_gate.parse_box/_reprompt"""
+    import json as _json
+    import re as _re
+    t = (reply or "").strip()
+    m = _re.search(r"\{.*\}", t, _re.S)
+    if strict and m:
+        try:
+            if _json.loads(m.group(0)).get("bbox_2d", 0) is None:
+                return "null", None
+        except Exception:
+            pass
+    if _re.match(r"^\W*none\b", t, _re.I):
+        return "none", None
+    if m:
+        try:
+            j = _json.loads(m.group(0))
+            k = int(j.get("frame", 0)); bb = [float(v) for v in j.get("bbox_2d", [])]
+            if 1 <= k <= n_frames and len(bb) == 4 and bb[2] > bb[0] and bb[3] > bb[1]:
+                return "box", (k, bb)
+        except Exception:
+            pass
+    return "unparsed", None
+
+
+def _box_crop(img, bb):
+    """0-1000 box -> the crop (20 % margin, short side >= 224 px), or None if degenerate (som_gate.crops)"""
+    W, H = img.size
+    x0, y0, x1, y1 = (max(0.0, min(W, bb[0] / 1000 * W)), max(0.0, min(H, bb[1] / 1000 * H)),
+                      max(0.0, min(W, bb[2] / 1000 * W)), max(0.0, min(H, bb[3] / 1000 * H)))
+    w, h = x1 - x0, y1 - y0
+    a, b = max(0, int(x0 - BOX_MARGIN * w)), max(0, int(y0 - BOX_MARGIN * h))
+    c, d = min(W, int(x1 + BOX_MARGIN * w)), min(H, int(y1 + BOX_MARGIN * h))
+    if c - a < 4 or d - b < 4:
+        return None
+    cr = img.crop((a, b, c, d))
+    s = BOX_MIN_SIDE / min(cr.size)
+    if s > 1:
+        cr = cr.resize((int(cr.size[0] * s), int(cr.size[1] * s)))
+    return cr
+
+
+def _box_check(label: str, frames, mdl, proc) -> dict:
+    """Round 38 BOX-2 for one stretch the gate called seen. Returns {"status", "reply", "flip", ...}; flip=True means
+    the crop of the VLM's own box was twice "not the object" -> the stretch is not seen. Calls go through _ask/_ab
+    (module globals), so the harness's ask memo keys them by prompt + images like every other question."""
+    if not frames:
+        return {"status": "unparsed", "reply": "", "flip": False, "note": "no frames"}
+    obj = _box_object_of(label)
+    reply = _ask(mdl, proc, BOX_Q.format(n=len(frames), label=label), images=frames, max_new=64)
+    status, parsed = _box_parse(reply, len(frames))
+    rec = {"status": status, "reply": reply[:120], "flip": False}
+    if status == "unparsed":
+        reply = _ask(mdl, proc, BOX_REPROMPT_Q.format(n=len(frames), label=label), images=frames, max_new=64)
+        status, parsed = _box_parse(reply, len(frames), strict=True)
+        rec.update({"status": status, "reprompt": True, "reply": reply[:120]})
+    if status == "box":
+        k, bb = parsed
+        cr = _box_crop(frames[k - 1], bb)
+        if cr is None:
+            rec.update({"status": "unparsed", "note": "degenerate box"})
+            return rec
+        direct = _ask(mdl, proc, BOX_DIRECT_Q.format(obj=obj), images=[cr], max_new=8)
+        ab = _ab(mdl, proc, BOX_AB_Q, obj, "something else", frames=[cr])
+        rec.update({"frame": k, "bbox_1000": bb, "direct": direct, "ab": ab,
+                    "flip": bool(direct.strip().lower().startswith("n") and ab is False)})
+    return rec
+
+
 def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                     model: str = "Qwen/Qwen2.5-VL-7B-Instruct",
                     device: str = "cuda", frames_per_sound: int = 4,
@@ -1518,11 +1618,21 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 fixed = False
                 if seen and getattr(config, "FIX_GATE", False) and (not named or str(named).strip().lower() == "nothing"):
                     seen, fixed = False, True
+                # Round 38 BOX-2 arm (off by default): the gate VLM boxes the source of a "seen" stretch; a crop it
+                # twice calls "not the object" -> not seen. none / null / unparsed boxes change nothing.
+                box = None
+                if seen and getattr(config, "GATE_BOX_CHECK", False):
+                    box = _box_check(spec.event_label, win, mdl, proc)
+                    if box.get("flip"):
+                        seen = False
+                    print("       [stage5] box check " + spec.event_label + ": " + box["status"]
+                          + (" -> NOT seen" if box.get("flip") else " -> unchanged"), flush=True)
                 # raw votes per sound per stretch, dumped by the pipeline to gate_votes.json so
                 # that the silence rule (majority / unanimous) can be re-decided on CPU later
                 VOTE_LOG.append({"label": spec.event_label, "start": spec.start, "end": spec.end,
                                  "confidence": spec.confidence, "stretch": [a, b], "seen": bool(seen),
-                                 **{k: v for k, v in LAST_VOTES.items()}, **({"fix_gate": True} if fixed else {})})
+                                 **{k: v for k, v in LAST_VOTES.items()}, **({"fix_gate": True} if fixed else {}),
+                                 **({"box": {k: v for k, v in box.items() if k != "bbox_1000"}} if box else {})})
                 if seen:
                     named_any = named
                 else:

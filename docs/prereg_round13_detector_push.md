@@ -2184,3 +2184,24 @@ mv_tornado Cellphone buzz 1.4, un_driving_motorcycle_4O3bZRYO Motorcycle 16.2 �
 Re-prompt of the 15 unparsed scored stretches: 11 parsed boxes (1 flip), 4 `null`, 0 still unparsed — the strict prompt
 fixes the format. The `none` flip was the main damage in round 37 (7 → 2 seen lost); what remains is crops of small boxes
 answered "no" on truly visible sources. Closed.
+### Round 38 BOX-2 arm — full-pipeline arm of the BOX-2 gate check (pre-registered 1 Oct, before numbers)
+**Why.** The BOX-2 screen (above) stopped by one seen sound at gold level (needed kept +2: bell_miami Bell, mv_tornado_scene
+Siren; seen silenced −3). In the pipeline that should mean more hits for a few extra on-screen (visible) wrong pictures, which
+Adam accepts for a "more hits" profile only if every extra wrong picture is visible-type. This arm measures it end to end.
+**Arm.** SHIP8+BOX2 = SHIP8 + `config.GATE_BOX_CHECK = True` (new flag, default False; shipped behaviour unchanged). In
+`reason.decide_subjects`, after the gate verdict (and FIX_GATE) of each stretch, a stretch still called seen gets the BOX-2
+rule exactly as screened (`box_gate.py` run + reprompt, copied into `reason._box_check`): the gate VLM (Qwen3.8-27B) is asked
+`BOX_Q` on the stretch's same 6 frames; if unparsed, once more with the strict `REPROMPT_Q`; a parsed box is cropped (20 %
+margin, short side >= 224 px) and asked `DIRECT_Q` ("Is this {object}?") and the a/b crop question; both "no" -> the stretch
+is not seen. `none` / `null` / still unparsed / degenerate box -> unchanged. The harness's cached gate verdicts are reused as
+before; the new questions go through `_ask` and are memoised under their own prompt + image keys (`ask_memo.json`).
+**Run.** `~/MscProj_r13`: `ARMS="SHIP3+DV SHIP8 SHIP8+BOX2" slurm/job_round16_dev.sh` (old DEV 49); then `~/MscProj_tg`:
+`TG_ARMS="SHIP3+DV SHIP8 SHIP8+BOX2" slurm/job_tagger_arms.sh` (tagger dev2 22; merged DEV lines). Base must reproduce
+SHIP8 merged 28/58 hits, 21 wrong (visible 6 / cross 13 / phantom 2), cost 2.282 at w = 2 (2.197 at w = 1); DEV 19/38, 14,
+2.122; tagger DEV 9/20, 7, 2.636. cost(w) = (4 miss + w visible + 2 cross + 2 phantom) / 71.
+**Main rule (ship).** GO iff merged cost at w = 2 is lower than SHIP8 AND merged hits >= 28 AND no needed hit is lost on either
+part (clip-level: no clip on DEV or tagger DEV has fewer hits than under SHIP8).
+**"More hits" rule (profile).** PASS iff merged hits go up AND every extra wrong picture is visible-type (cross and phantom
+counts not above SHIP8, on each part) AND merged cost at w = 1 is lower than SHIP8.
+Both verdicts are reported. GO on the main rule -> the flag is a shipping candidate (Adam decides; merged TEST stays sealed).
+PASS only on the profile rule -> recorded as the "more hits" option for Adam. Neither -> closed.
