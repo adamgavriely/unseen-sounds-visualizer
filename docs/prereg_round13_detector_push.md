@@ -4758,3 +4758,24 @@ case; Gunshot is shipped-kept); tg_d133 Fart not in gate-gold. Lowest seen-sound
 re-place harness, sharded by clip over 2–3 GPUs when approved. The un-silence side (bell_miami-type rescues, A < t_lo on a
 gate-silenced spec) needs a full stage-5 arm: a default-off flag in `reason.decide_subjects` running the NAME-ALL chain on seen
 stretches, then stage 5 + stage 6 image generation for the re-added specs and `merged_dev.py` scoring. TEST not read.
+
+### Round 66 step 2 — DEV arm (Adam approved 00:19; written BEFORE any DEV number)
+**Only the pre-registered winner runs:** NAME-ALL, max aggregation, two-sided rule with t_lo 0.4375 and t_hi 6.0625 (step 1). Rank-1,
+B, A, V and REPLACE are not re-run. **Full stage-5 arm** (not the re-place harness): a default-off flag `config.NAME_ALL = (t_lo, t_hi)`
+read in `reason.decide_subjects`; per stretch of every gated spec, after the shipped gate's own verdict (reused votes, as every
+arm), the NAME-ALL chain on the gate's own 6 frames (`src/stage5_cross_modal_analysis/nameall.py`: prompt N, the gate's describe
+prompt, Round 50 grounding (`_box_parse` strict + `_box_crop`), ViCrop fallback, null-calibrated logit crop margin with the NOT twin,
+max over candidates); spec A = the ⌊n/2⌋+1-th largest stretch margin (no crop = −inf). Silenced iff (shipped silenced AND NOT (A
+finite AND A < t_lo)) OR A > t_hi. An un-silenced spec is shown as the I2 / Round 64 keeps are (first stretch kept, picture
+throughout) and is exempt from kinship silencing; a NAME-ALL silence is an ordinary "source visible" silence (it silences its kinds,
+as the gate does — not simulated on gate-gold, disclosed). Per-stretch margins and the per-clip VLM cost (generations, prefill
+passes) are written into gate_votes.json rows (key `nameall`). Pictures are placeholders (scoring needs no image), as Round 64.
+Arm `SHIP8+MD3+WW5+SL+NA` = D' + NAME_ALL; old DEV (~/MscProj_r13) and DEV2 (~/MscProj_tg); stage 5 sharded by clip over 3 GPU
+jobs (`R13_SHARD=i/3`: identical code and config, each shard its own ask-memo copy and stage-5 log; per-clip processing is
+independent), then one scoring: round13_dev score, tagger_prep gates, `merged_dev.py`. **Base D' must reproduce exactly 29/58, 15
+(6/7/2), 2.056** in the same scoring. Disclosed: gate-gold frames were clamped at 0 s, the pipeline's are not.
+**Pass rule (standing main rule vs D'):** hits >= 29 with NO needed hit lost on any clip (a swap — one hit lost, another gained —
+counts as a loss), cost < 2.056; OR the fewer-pictures clause (cost < 2.056, wrong removed >= 2 × hits lost, wrong <= 15 − 3 × lost,
+hits >= 26). **Expected outcomes, fixed now:** as_explosion_XJ8lc3I6 Explosion 9.25 survives and bell_miami Bell is rescued -> ~30/13,
+1.944 -> PASS; Explosion lost and the bell gained -> ~29/13, 2.000 -> **FAIL by the letter** (a needed hit lost), no net-hits
+reinterpretation later. Listed: every changed picture (class, A, stretch margins). TEST not read.
