@@ -51,3 +51,15 @@ ComfyUI: `ssh -N -L 7860:<node>:7860 adamg@slurm-login1.lnx.biu.ac.il`, then htt
 Checks (2 Oct): DEV clips tg_d088 (ComfyUI), mv_protest_scene_movie (ComfyUI) and un_driving_motorcycle_DgdHSmwA
 (through the page) give exactly the frozen inspector signatures (docs/inspector/media/bysig/DEV/*.sig.json).
 
+## Any video (2 Oct, after two Fable reviews)
+
+* Every upload becomes `<stem>.mp4` (a phone .MOV, .webm or .MP4 is re-encoded to H.264 + AAC), because the listener
+  harness only finds lower-case *.mp4 files. Videos with no sound, no picture or under 1 s are refused with a plain
+  message. Tested: .MOV (end to end, 0 pictures, 7 min), .webm, muted, audio-only, 0.5 s.
+* A clip with no listener items (FlexSED finds no band run) has empty answer files; `run_frozen.py` sets
+  `LISTENER_REQUIRE_CACHES = False` after the listener prep, as the scored D' arm does.
+* Picture option on the node: "new drawing each run" (default; a random seed offset, same sounds and times) or
+  "same as the frozen run" (seed from clip name, sound and time).
+* Not fixed (frozen src, CLI only): `main.py` on non-.mp4 input, on a video without sound, and on a re-used file name
+  with new content; the depict step loads the VLM even with 0 pictures; Whisper is forced to English.
+
