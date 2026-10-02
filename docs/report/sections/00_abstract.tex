@@ -6,15 +6,16 @@ that finds those sounds and shows a generated picture of each one beside the vid
 
 Nothing is trained. The system chains ready-made open models: two sound detectors find candidate sounds, two
 audio-language models (``listeners'', asked for example ``is a siren present?'') confirm weak ones, a
-vision--language model checks whether the source is visible on screen, and a text-to-image model draws the
-picture. Every rule that joins them was fixed on a development set before it was tested.
+vision-language model checks whether the source is visible on screen, and a text-to-image model draws the
+picture. Every rule that joins them was fixed on a development set before it was tested; two choices influenced by
+a look at the test set were reverted.
 
 Scored per sound against human labels, the final system finds 24 of 65 needed off-screen sounds on a test set of
-88 clips with 24 wrong pictures, a viewer cost of 2.41 per clip (a miss costs 4, a wrong picture 2). The baselines named
+88 clips with 24 wrong pictures, a viewer cost of 2.409 per clip (a miss costs 4, a wrong picture 2). The baselines named
 in the project proposal do worse: generating a picture directly from the audio for every heard sound (or captioning it)
-costs 3.18, and showing nothing costs 2.96. The differences are significant (final system minus direct audio-to-image
-$-0.77$ per clip, 95\,\% interval $[-1.05, -0.50]$, $p < 0.001$; minus showing nothing $-0.55$, $[-1.07, -0.02]$,
-$p = 0.041$). The gain comes from the on-screen check: it keeps most of the right pictures and removes most of the wrong
+costs 3.182, and showing nothing costs 2.955. Both differences are significant on their own (two-sided, uncorrected:
+final system minus direct audio-to-image $-0.773$ per clip, 95\,\% interval $[-1.045, -0.500]$, $p < 0.001$; minus
+showing nothing $-0.545$, $[-1.068, -0.023]$, $p = 0.041$). The gain comes from the on-screen check: it keeps most of the right pictures and removes most of the wrong
 ones.
 
 Two limits remain. About one needed sound in five cannot be found even with perfect decisions, because the detectors

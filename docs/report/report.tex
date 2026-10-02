@@ -42,10 +42,13 @@ Bar-Ilan University, Department of Computer Science\\
 MSc final project, submitted to Oren Glickman}
 \date{3 October 2026\\[2pt]\small Code and data: \url{https://github.com/adamgavriely/MscFinalProject}, release v1.1.0}
 
+\hypersetup{pdftitle={Visual Augmentation of Audio Semantics for Accessibility},pdfauthor={Adam Gavriely}}
 \begin{document}
 \maketitle
+\thispagestyle{empty}
 
 \input{sections/00_abstract}
+\clearpage
 \tableofcontents
 \clearpage
 
@@ -60,12 +63,14 @@ MSc final project, submitted to Oren Glickman}
 \input{sections/09_limits}
 \input{sections/10_conclusion}
 
+\clearpage
+\phantomsection\addcontentsline{toc}{section}{References}
+\input{sections/bib}
+
 \appendix
 \input{sections/A_prompts}
 \input{sections/B_config}
 \input{sections/C_sources}
 \input{sections/D_glossary}
 \input{sections/E_history}
-
-\input{sections/bib}
 \end{document}

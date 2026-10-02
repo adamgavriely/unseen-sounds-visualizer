@@ -12,7 +12,7 @@ rescued spans in \cfgv{filter_rescued}.
 \paragraph{Models}
 \begin{description}[style=nextline]
   \item[BEATs] iter3+ fine-tuned on AudioSet-2M (checkpoint
-        \texttt{BEATs\_iter3\_plus\_AS2M\_finetuned\_on\_AS2M\_cpt2}). It scores a whole window, so it is run on 2-s
+        \fp{BEATs_iter3_plus_AS2M_finetuned_on_AS2M_cpt2}). It scores a whole window, so it is run on 2-s
         windows every 0.25\,s; the first two seconds are mirror-padded so a sound at the very start can be heard; each
         window's score is stamped 0.5\,s before the window ends, so a detected start is never earlier than the true one.
   \item[FlexSED] an open-vocabulary, frame-level detector~\cite{hai2025flexsed}: a self-supervised audio encoder plus
@@ -28,7 +28,7 @@ rescued spans in \cfgv{filter_rescued}.
         this recording, one per line, most prominent first.''). An inventory line names a family if it matches its name,
         an AudioSet synonym, a parent or a child, or else has sentence-embedding cosine $>0.6$
         (\texttt{all-mpnet-base-v2}). The audio cut is the candidate span $\pm 1$\,s, at least 1\,s long.
-  \item[FineLAP] (\texttt{AndreasXi/FineLAP}, MIT) a frame-level audio--text model used as a last veto on rescued sounds.
+  \item[FineLAP] (\texttt{AndreasXi/FineLAP}, MIT) a frame-level audio-text model used as a last veto on rescued sounds.
 \end{description}
 
 \paragraph{Steps in execution order}
@@ -64,7 +64,7 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 
 The DASM thresholds 0.0839 and 0.575 and the FineLAP bar 0.329 were calibrated during development
 (Appendix~\ref{app:history}); every other threshold was set once and not tuned on the test set. Steps 4--8 and 12--16 depend on listener answers that are computed from a first pass
-with the September version of the system (the candidate ``pools''), so the final detector cannot run without that pass
+with an earlier configuration (\cfgv{use_scored()}; the candidate ``pools''), so the final detector cannot run without that pass
 (Section~\ref{sec:repro}).
 
 \paragraph{The scene check}\label{sec:scenecheck}
@@ -97,7 +97,7 @@ these known ways:
         either direction. This was a deliberate logic fix made after the scored tables; its effect on the final
         numbers was not re-measured.
   \item \textbf{Picture end.} Live pictures end at most 1\,s after their sound; scored pictures had no cap. Starts --
-        the scored quantity -- are identical; on 3 TEST clips a picture ends 0.04--0.38\,s earlier live.
+        the scored quantity -- are identical; on 3 test clips a picture ends 0.04--0.38\,s earlier live.
   \item \textbf{Subject path.} \fp{main.py} runs planning, the on-screen check and the duplicate check with the
         scored settings and switches to the final picture settings only for drawing, so the pictures it shows are
         designed to match the scored run.

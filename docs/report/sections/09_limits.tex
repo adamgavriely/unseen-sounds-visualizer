@@ -23,7 +23,8 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
   \item \textbf{No viewer study.} The cost model assumes that a wrong picture harms a viewer half as much as a missed
         sound. No deaf or hard-of-hearing viewer has confirmed this, or that a generated picture is understood faster than
         a caption in brackets. The metric is therefore a model of the viewer, not a measurement;
-        Figure~\ref{fig:beta} shows that the main conclusion holds for any weight up to 4.
+        Figure~\ref{fig:beta} shows that, on point estimates, the main conclusion holds for any weight of a wrong picture
+        below that of a miss.
   \item \textbf{One annotator.} All labels are the author's; inter-annotator agreement is unknown.
   \item \textbf{Strict ``wrong''.} It counts redundant and late pictures, and about 1 in 6 ``wrong'' pictures is a real
         off-screen sound missing from the labels.
@@ -33,16 +34,16 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
 
 \subsection{Threats to validity}
 \begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
-  \item \textbf{The test set was seen.} It was read after each accepted change, about 19 times in the last week (its 60
-        older clips 11 times before that). Twice a choice was influenced by a test read; both were undone. About a third
+  \item \textbf{The test set was seen.} It was read after each accepted change, about 19 times in the last week, counted from the pre-registration log (its
+        60 older clips 11 times before that). Twice a choice was influenced by a test read; both were undone. About a third
         of the development gain carried over to the test set (Appendix~\ref{app:history}), which is consistent with
         selection on the development set. The test numbers are a report on a seen set, not a blind confirmation.
   \item \textbf{Small sets.} With 71 and 88 clips, one or two pictures can decide a development comparison, and the test
-        set detects only cost differences of about 0.19 per clip or more.
+        set's 95\,\% intervals are 0.5 to 1.0 per clip wide.
   \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
         0 of 20 random controls changed), which may favour the system; test labels were never changed. Newer clips were
         labelled with detector suggestions visible, and 19 AudioSet clips with the AudioSet labels visible.
-  \item \textbf{One baseline not run.} The video-conditioned generator suggested by the supervisor (for example
+  \item \textbf{One baseline not run.} A video-conditioned generator raised during supervision (for example
         MiniMax-H3) creates new video; the per-sound score cannot evaluate it, so it was not compared.
   \item \textbf{Scored versus live system.} The scoring harness and the live pipeline differ in four small ways that do
         not change when a picture starts; one of them (the direction of a family rule) was not re-scored

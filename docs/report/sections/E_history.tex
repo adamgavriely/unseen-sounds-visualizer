@@ -24,7 +24,7 @@ batches: 31 YouTube clips found by scene type and 19 AudioSet-Strong evaluation 
 development (``DEV2'') and 28 test (``TEST2'') clips by a hash of the clip name or by balanced pairs, and merged on
 30 Sept into the development set (49 + 22 = 71 clips) and the test set (60 + 28 = 88 clips) used in the body.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering\small
 \caption{Parts of the two evaluation sets.}
 \begin{tabular}{lrrrrrl}
@@ -57,7 +57,7 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
         bar, and commit it. Results are appended below the pre-registration, never edited into it.
   \item \textbf{Decide on development data only.} The development set (or, for audio-only rules, the held-out 415)
         decides. The test set is read after a change ships and is only reported. The rule was re-affirmed on 1 October
-        after one test-informed choice was identified and reverted (Section~\ref{sec:disclosures}).
+        after two test-informed choices were identified and reverted (Section~\ref{sec:disclosures}).
   \item \textbf{General rules only.} A rule must make sense for any video, run on one video at a time, and not name a
         clip or a single sound class (a rule that only ever fires on bells was rejected for this reason, Round 64).
   \item \textbf{Compare with the shipped pipeline.} Every candidate is scored as a full-pipeline variant on the same
@@ -65,7 +65,7 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
         ship it.
   \item \textbf{Hits first.} Losing a few hits is acceptable only if many wrong pictures go (the fewer-pictures
         clause, Section~\ref{sec:passrules}).
-  \item \textbf{Consult and record.} Major choices were reviewed by panels of independent model reviewers (Claude, with assigned roles, two to five per panel, one to four rounds), whose reports are in
+  \item \textbf{Consult and record.} Major choices were reviewed by panels of large-language-model reviewers (Claude, with assigned roles, two to five per panel, one to four rounds), whose reports are in
         \fp{docs/history/review/} and \fp{docs/panel_*.md}; every decision and its reason is in a dated log.
 \end{enumerate}
 
@@ -80,7 +80,7 @@ dates & system & scored by & outcome and why it changed \\
 6 Aug & proposal: 7 stages (audio, VLM, ASR, BEATs/PANNs, reasoning, FLUX/SDXL, evaluation) & planned: VLM describes, LLM writes reference, LLM judges & pivot from an earlier speech-illustration project \\
 7 Aug & v1: PANNs (bar 0.15) $\to$ Openverse image retrieval $\to$ side panel; no gate & demo clips & needed a ``not seen'' decision \\
 7 Aug--7 Sep & CLIP zero-shot visibility gate; clip-level benchmark (274 clips) & clip-level gate accuracy & CLIP gate 49.3\,\%: 71 of 103 seen clips still augmented -- ``object presence is not event visibility'' \\
-08--11 Sep & PANNs + OWLv2 + per-sound VLM gate (Qwen2.5-VL-7B, ``name it, don't confirm''); SDXL & 100 clips $\times$ 3 systems, Mistral-7B judge 0--4, model-written reference & blind 2.94 $>$ caption 2.68 $>$ gated 2.41; retrieval beat SDXL by $+0.17$/$+0.18$; reference later found circular \\
+8--11 Sep & PANNs + OWLv2 + per-sound VLM gate (Qwen2.5-VL-7B, ``name it, don't confirm''); SDXL & 100 clips $\times$ 3 systems, Mistral-7B judge 0--4, model-written reference & blind 2.94 $>$ caption 2.68 $>$ gated 2.41; retrieval beat SDXL by $+0.17$/$+0.18$; reference later found circular \\
 12--17 Sep & v3: BEATs (replaced PANNs after 11 of 14 complaints traced to its labels), hysteresis + occlusion onsets, 7B gate with 3 votes, FLUX.1-schnell & human-grounded judge reference, dev 174 / test 100 & tie 3.17 vs 3.16; gate wins where nothing is due ($+0.26$), loses where a picture is due ($-0.24$) \\
 18--21 Sep & v4: one state-of-the-art swap per stage; Qwen3.8-27B gate; FLAM and PretrainedSED detectors tried; rubric-enforced judge & judge with a cap on redundant pictures & PretrainedSED rejected three times; 13 silent bugs found (amendment 3), all earlier judge rows kept as history only \\
 22--23 Sep & per-sound gold (139 clips); BEATs $\cup$ FlexSED (bar 0.8), FlexSED veto 0.3, PANNs veto 0.05 & per-sound F1, then viewer cost (amendment 9) & F1 difference null ($+0.028$); wrong pictures and precision significant \\
@@ -111,21 +111,21 @@ old pipeline (B0r) & September test-table system: BEATs $\cup$ FlexSED, FlexSED 
 TO1+F7F8 (R14) & listener rescue of weak FlexSED runs (tiered: Qwen alone above 0.6, both listeners below), one rescue per family, mirror veto with listener keep, DASM vote on rescues & 26 / 45 / 3.070 & 22 / 38 / 2.818 \\
 + N2b, DR2, K-V4 (R16--21) & masked-weak veto; DASM rescue of new families; a listener keep must also be named in an inventory & 27 / 38 / 2.817 & 23 / 36 / 2.727 \\
 + DV (R28) & drop a sound DASM never hears in the clip & 27 / 31 / 2.620 & 23 / 34 / 2.682 \\
-+ BTP (R30) & start a late picture at an earlier weak run of the same sound & 28 / 30 / 2.535 & 23 / 33 / 2.659 ($p$ 0.033) \\
-+ CONT (R31) & drop a picture that is only a later piece of a sound already going on & 28 / 25 / 2.394 & 24 / 32 / 2.591 ($p$ 0.025) \\
-+ FineLAP veto (R31) & a 2025 frame-level model double-checks rescued sounds & 28 / 24 / 2.366 & 24 / 31 / 2.568 ($p$ 0.015) \\
-+ K4A-D = SHIP8 (R35) & drop a picture neither listener names, unless DASM clearly hears it & 28 / 21 / 2.282 & 23 / 29 / 2.568 ($p$ 0.017) \\
++ BTP (R30) & start a late picture at an earlier weak run of the same sound & 28 / 30 / 2.535 & 23 / 33 / 2.659 ($p = 0.033$) \\
++ CONT (R31) & drop a picture that is only a later piece of a sound already going on & 28 / 25 / 2.394 & 24 / 32 / 2.591 ($p = 0.025$) \\
++ FineLAP veto (R31) & a 2025 frame-level model double-checks rescued sounds & 28 / 24 / 2.366 & 24 / 31 / 2.568 ($p = 0.015$) \\
++ K4A-D = SHIP8 (R35) & drop a picture neither listener names, unless DASM clearly hears it & 28 / 21 / 2.282 & 23 / 29 / 2.568 ($p = 0.017$) \\
 + merge gap 2.5\,s & continuing sounds with short breaks no longer drew a second picture & 28 / 20 / 2.254 & 23 / 28 / 2.545 \\
 + grouping $\leq$8\,s (R47) & Qwen3-Omni: same continuing sound or a new event? & 28 / 18 / 2.197 & 22 / 26 / 2.545 \\
 + shortest sound 0.3\,s (R48) & short real sounds (a laugh burst) were thrown away & 29 / 18 / 2.141 & 22 / 26 / 2.545 \\
 + depict-event (R57) & drop a picture whose event is visibly happening & 29 / 17 $\to$ 18$^{a}$ / 2.141 & 22 / 26 / 2.545 \\
 = \textbf{B} (SHIP8+MD3) & base of the last rounds & \textbf{29 / 18 / 2.141} & \textbf{22 / 26 / 2.545} \\
 + witness rule + scene check (R53+R60) = D & weak sounds need DASM, both listeners, or one listener and a plausible scene & 29 / 14 / 2.028$^{b}$ & 24 / 23 / 2.386 \\
-+ logit readout (R60L) = \textbf{final system} & scene check read as a probability, no cut-off answers & \textbf{29 / 15 / 2.056} & \textbf{24 / 24 / 2.409} ($p$ 0.034 vs B) \\
++ logit readout (R60L) = \textbf{final system} & scene check read as a probability, no cut-off answers & \textbf{29 / 15 / 2.056} & \textbf{24 / 24 / 2.409} ($p = 0.034$ vs B) \\
 \end{longtable}
 }
 \noindent\footnotesize $^{a}$ Round 57 scored 29/17 with 26 listener answers missing from a cache; after the cache
-was filled (1 Oct evening) the same system scores 29/18/2.141, so its net development effect is zero.
+was filled (1 October) the same system scores 29/18/2.141, so its net development effect is zero.
 $^{b}$ D's 2.028 contains one gain caused by a cut-off answer (``based on the'') that removed a wrong \emph{Glass}
 picture; the logit readout of the final system cannot be cut off, so that picture returns (+1 wrong). The pass bar of Round 60L
 was set against B, not against D, for this reason.
@@ -230,12 +230,12 @@ the gap is expected, because changes were chosen on the development set.
 
 The last step deserves a note. The witness rule was first scored with its scene question read as text, which gave 2.028
 (development) and 2.386 (test). That text answer was sometimes cut off after four words, and one cut-off answer happened
-to remove a wrong picture -- a lucky accident, not a property of the rule. The final system reads the same question from
-the model's yes/no scores, which cannot be cut off; this brings the wrong picture back and gives the honest numbers 2.056
+to remove a wrong picture -- an artefact of truncation, not a property of the rule. The final system reads the same question from
+the model's yes/no scores, which cannot be cut off; this brings the wrong picture back and gives the reported numbers 2.056
 and 2.409. The final system was accepted because it beats the version before the witness rule (2.141 on development),
 which was the pre-set bar; the text-read result is therefore not plotted as a separate step.
 
-\begin{figure}[h]
+\begin{figure}[htbp]
 \centering
 \includegraphics[width=\linewidth]{figures/progression.pdf}
 \caption{Cost per clip after each accepted change. Decisions were made on the development set; the test set was read
@@ -267,7 +267,7 @@ The final development phase compared each accepted change with the version befor
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2000 draws; $d$ = mean per-clip cost difference;
 one-sided $p$ (a two-sided value is about twice as large).
 \begin{center}\small
-\begin{tabular}{lrrl}
+\resizebox{\linewidth}{!}{\begin{tabular}{lrrl}
 \toprule
 comparison & $d$ & 95\,\% interval & one-sided $p$ \\
 \midrule
@@ -276,7 +276,7 @@ same, scene check read as text (D) vs B & $-0.159$ & $[-0.341,\ -0.023]$ & 0.014
 intermediate version (SHIP8) vs September baseline & $-0.341$ & $[-0.636,\ -0.045]$ & 0.017 \\
 first listener stack (TO1+F7F8) vs September baseline, pre-registered & $-0.091$ & $[-0.250,\ +0.045]$ & 0.132 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{center}
 Version B scored 29 / 18 / 2.141 (development) and 22 / 26 / 2.545 (test); D scored 29 / 14 / 2.028 and
 24 / 23 / 2.386. The four early test reads of 30 Sept were also corrected for multiplicity (Holm); none was
@@ -300,6 +300,9 @@ the baseline (gap 2.0\,s) is not a like-for-like comparison.
 
 % ======================================================================
 \subsection{Round-by-round record}\label{app:rounds}
+Verdicts: shipped = accepted into the system; rejected = failed its development rule; stop = failed its screen on the
+screening set; hold = parked; no-op = changed no picture.
+
 One row per round or main arm, in order. Results are hits / wrong / cost on merged DEV (55 or 58 needed, see
 Appendix~\ref{app:datahistory}) unless marked; ``415'' = held-out AudioSet-Strong screen; ``old DEV'' = DEV-49. Full text,
 bars and line numbers: \fp{docs/history/preregistrations/prereg_v4.md} (amendments), \fp{docs/prereg_round4..12*.md},
@@ -323,7 +326,7 @@ am.\ 11--15 & per-family bars; speech-removed view; family silence; any-stretch 
 am.\ 16 & PANNs veto 0.05 & 3.02 / 3.10 & shipped \\
 am.\ 17 & tagger ensemble & CED mis-scaled & rejected \\
 am.\ 18--20 & visibility signals (video, SAM 3, synchrony) & all at break-even 2:1 & rejected \\
-am.\ 21 & final September TEST table & Table~\ref{sec:sept-table} & reported \\
+am.\ 21 & final September TEST table & Section~\ref{sec:sept-table} & reported \\
 am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUROC 0.53; AUROC 0.661 & rejected \\
 \multicolumn{4}{l}{\emph{Rounds 4--12 (AudioSet harness, 28 Sept)}} \\
 4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV and TEST (2.83 vs 2.63, $p$ 0.043) & reverted 30 Sept \\
@@ -337,7 +340,7 @@ am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUR
 12 & cost v2 on AudioSet & shipped 1.650 vs nothing 0.986 & harness retired \\
 \multicolumn{4}{l}{\emph{Rounds 13--28 (29--30 Sept)}} \\
 13 & listener rescue, many question forms; R13-1 twin-max & ${\sim}3$ wrong per extra hit; R13-1 TEST = B0r & R13-1 kept inside TO1 \\
-14 & TO1+F7F8 & old DEV 18/24/2.45 vs 2.78; merged 23/48/3.155; TEST 22/38/2.818 ($p$ 0.13) & shipped (SHIP1) \\
+14 & TO1+F7F8 & old DEV 18/24/2.45 vs 2.78; merged 23/48/3.155; TEST 22/38/2.818 ($p = 0.13$) & shipped (SHIP1) \\
 16 & N2b masked-weak veto & 23/44/3.042; TEST 22/35/2.750 & shipped \\
 19--20 & DR2 DASM rescue & 24/44/2.986 & shipped (SHIP2) \\
 21 & K-V4 inventory keep & 24/41/2.901 & shipped (SHIP3) \\
@@ -355,7 +358,7 @@ am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUR
 34 & MOSS-Audio as listener & +4/$-9$ needed, +63 other & rejected \\
 35 & DBX, DBR & premise wrong; cost not lower & rejected \\
 re-check & visibility re-check (gold) & 3/14 flips; control 0/20 & gold change \\
-35 & K4A-D (K4AO + DASM keep) & 28/58, 21/2.282; TEST 23/29/2.568 ($p$ 0.017) & shipped (SHIP8) \\
+35 & K4A-D (K4AO + DASM keep) & 28/58, 21/2.282; TEST 23/29/2.568 ($p = 0.017$) & shipped (SHIP8) \\
 36--37 & DASM impact peaks + VLM naming; BOX gate & +2 cross; $-7$ seen silenced & rejected \\
 38 & CF, BOX-2, GBTP, SHIP8+BOX2, SYNC, SYNC-2 & best BOX-2 arm 29/26/2.366 & rejected \\
 39 & DETACHED-ADD, CONTRAST, MAKER-VIS, RELABEL-GATE & +7 wrong; +142 other; $-9$ hits; hit lost & rejected \\
@@ -382,10 +385,10 @@ re-check & visibility re-check (gold) & 3/14 flips; control 0/20 & gold change \
 \multicolumn{4}{l}{\emph{Rounds 58--66 (1--2 Oct)}} \\
 58, 58b & tight listener cut; FlexSED witness & 415 precision 0.400, 0.297 & stop \\
 59 & context $\pm$5\,s & 415 0.333 & stop \\
-60 & SCENE-MARGIN + witness (= D) & 29/14/2.028; TEST 24/23/2.386 ($p$ 0.0145) & shipped \\
+60 & SCENE-MARGIN + witness (= D) & 29/14/2.028; TEST 24/23/2.386 ($p = 0.0145$) & shipped \\
 61b--d & look-alike reasoning (Qwen, Gemma) & hits lost in every variant & fail \\
 62, 62b & logit gate; PRIOR & AUROC 0.647 / 0.644 $<$ 0.65 & stop \\
-60L & scene check by logit margin (= the final system) & 29/15/2.056; TEST 24/24/2.409 ($p$ 0.034) & \textbf{shipped, frozen} \\
+60L & scene check by logit margin (= the final system) & 29/15/2.056; TEST 24/24/2.409 ($p = 0.034$) & \textbf{shipped, frozen} \\
 63 & tagger ensemble & 415 recall 0.152 vs 0.197 & stop \\
 64 & concealed action \{Bell\} & 30/14/1.972 (one clip) & not general, not shipped \\
 65 & perceptual-onset return & 415 0.115 & stop \\

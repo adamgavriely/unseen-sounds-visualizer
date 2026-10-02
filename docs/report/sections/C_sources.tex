@@ -31,8 +31,10 @@ final picture settings. A folder of clips is processed by calling \fp{main.py} o
 \paragraph{Reproducing the reported numbers.} The scoring harness reads the gold labels and the cached model outputs of
 each clip and replays the pipeline's own decision functions:
 \begin{verbatim}
-python benchmark/gold/final_vs_baselines.py          # Table 3: final system and baselines
-python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL # configuration check
+# Table 3: final system and baselines
+python benchmark/gold/final_vs_baselines.py
+# configuration check
+python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
    --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
 \end{verbatim}

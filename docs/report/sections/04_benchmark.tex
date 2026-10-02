@@ -8,10 +8,10 @@ All results use two sets of short video clips (10--20\,s), labelled per sound as
 \end{description}
 The clips come from Wikimedia Commons, the Internet Archive, UnAV-100~\cite{geng2023unav100}, VGGSound~\cite{chen2020vggsound},
 YouTube (city walks, markets, home, transport, incidents, film scenes) and the AudioSet-Strong evaluation split. New
-clips were assigned to development or test by a hash of the clip name or by balanced pairs, never by looking at
-results; Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are for research use only.
+clips were assigned to development or test by a hash of the clip name or in pairs matched by scene, one to each set, never by
+looking at results; Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are for research use only.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering\small
 \caption{The two evaluation sets. Scenario counts: \emph{unseen} (an ambient source is off screen), \emph{mixed}
 (some sources visible, some not), \emph{seen} (all sources on screen), \emph{none} (speech or music only).}
@@ -27,13 +27,14 @@ Test & 88 & 154 & 65 & 43 & 21 / 23 / 22 / 22 \\
 \end{table}
 
 About half of the clips have no needed sound; on those, the best possible behaviour is to show nothing. Three needed
-development sounds (a clang and two golf-club strikes) belong to labels the system never draws, so they are misses for
-every system.
+development sounds (a clang and two golf-club strikes) belong to labels the system never draws (the label filter removes
+generic impact sounds, Appendix~\ref{app:config}), so they are misses for every system.
 
 \paragraph{Label quality.} All labels are the author's; a second annotator was planned but did not return labels, so
 inter-annotator agreement is unknown (on the earlier clip-level labels, a blind relabelling by the author agreed 78\,\% of the
-time, Cohen's $\kappa = 0.60$). The labelling tool showed detector suggestions on many clips, and a blind check of pictures
-counted as wrong found that about 1 in 6 is a real off-screen sound the labels miss. These and other caveats are listed
+time, Cohen's $\kappa = 0.60$; this is not a measure of per-sound agreement, which remains unknown). The labelling tool showed detector suggestions on many clips, which tilts the labels toward sounds the detectors
+hear and so flatters every detector-based system against showing nothing. Two blind checks of pictures counted as
+wrong found that about 1 in 6 is a real off-screen sound the labels miss. These and other caveats are listed
 in Section~\ref{sec:limits}.
 
 \paragraph{Screening set.} 415 clips of the AudioSet-Strong evaluation split, which already have timed labels, were

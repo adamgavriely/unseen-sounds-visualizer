@@ -1,33 +1,33 @@
 % ======================================================================
 \section{The system}\label{sec:system}
 
-This section describes the final system as the code runs it (\cfgv{config.use_shipped()} in \fp{config.py}).
+This section describes the final system as the released code runs it.
 Appendix~\ref{app:config} gives every step and threshold.
 
 \subsection{Overview}
-Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an output. For one video:
+Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an output. For one video (the step numbers here are not the stage numbers of Figure~\ref{fig:pipeline}):
 \begin{enumerate}
   \item \textbf{Hear candidates.} Two sound detectors listen to the whole clip: BEATs (a tagger for the 527 AudioSet
         classes) and FlexSED (a detector that is asked one sound name at a time). Anything either hears strongly enough
         for at least 0.3\,s becomes a candidate with a start and an end.
-  \item \textbf{Check candidates.} A candidate that only one model claims is removed. Weak sounds that the detectors
-        almost missed get second opinions from two listeners (Qwen3-Omni and Audio Flamingo Next) and a third audio
+  \item \textbf{Check candidates.} A candidate heard by only one detector, or heard weakly, is treated as doubtful.
+        Doubtful candidates get second opinions from two listeners (Qwen3-Omni and Audio Flamingo Next) and a third audio
         model, the Detect Any Sound Model (DASM).
   \item \textbf{Witness rule.} A remaining weak candidate survives if one of three witnesses backs it: DASM clearly
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.
-  \item \textbf{On-screen check (the gate).} A vision--language model (Qwen3.8-27B) looks at frames around the sound.
+  \item \textbf{On-screen check (the gate).} A vision-language model (Qwen3.8-27B) looks at frames around the sound.
         If the thing making the sound is visibly making it, no picture is shown.
   \item \textbf{Clean the display.} Repeats close together become one picture; a listener decides whether two
-        same-family pictures up to 8\,s apart are one continuing sound; a picture is dropped when its event is visibly
-        happening.
+        same-family pictures up to 8\,s apart are one continuing sound; a picture is also dropped when the vision model says the drawn event itself (for example
+        ``a door slamming'') is visibly happening -- a second check that asks about the event rather than its source.
   \item \textbf{Draw.} A short, guarded prompt is written for each remaining sound; Qwen-Image draws it; the vision
         model checks that the picture shows the intended thing and it is redrawn up to five times.
   \item \textbf{Compose.} Pictures appear in up to three fixed slots beside the video while their sound plays (at least
         1.5\,s).
 \end{enumerate}
 
-\begin{figure}[t]
+\begin{figure}[tbp]
 \centering
 \resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
@@ -68,11 +68,13 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
 \end{tikzpicture}}
 \caption{The final pipeline. Blue: detection (stage 4); orange: the on-screen decision (stage 5); green: pictures and
 display. Dashed: context only (objects and transcript never decide on their own). The scene check of the witness
-rule in stage 4b also uses Qwen3.8-27B.}
+rule in stage 4b also uses Qwen3.8-27B. Vetoes: rules that drop a candidate when another audio model does not hear it.
+Rescue: a listener adding a sound the detectors almost missed. Kinship: a sound is also silenced when a more specific
+sound of the same family is visible. Depict-event: dropping a picture whose event is visibly happening.}
 \label{fig:pipeline}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}[tbp]
 \centering
 \includegraphics[width=\linewidth]{figures/example_fire_alarm.jpg}
 \caption{Output of the final system on a development clip (AudioSet-Strong, a corridor). A fire alarm rings
@@ -83,25 +85,29 @@ scoring this is a hit.}
 \end{figure}
 
 \subsection{Models at a glance}
-\begin{table}[h]
+\begin{table}[htbp]
 \centering\small
-\caption{Stages, models and key parameters of the final system (in the order of \fp{src/pipeline.py}).}
+\caption{Stages, models and key parameters of the final system .}
 \label{tab:stages}
 \begin{tabular}{L{0.4cm}L{2.4cm}L{5.0cm}L{6.4cm}}
 \toprule
 \# & stage & model / tool & key parameters \\
 \midrule
-1 & audio & ffmpeg & mono WAV, 16 kHz (\cfgv{SAMPLE_RATE}) \\
+1 & audio & ffmpeg & mono WAV, 16\,kHz (\cfgv{SAMPLE_RATE}) \\
 2 & frames, objects & OWLv2 (\fp{owlv2-base-patch16-ensemble}) & 6 frames, threshold 0.20; context only, never silences a sound \\
 3 & speech & faster-whisper \texttt{base}, int8 & transcript used only to ask whether people react to a sound; never drawn \\
 4 & sound events & BEATs iter3+ AS2M; FlexSED; PANNs CNN14; DASM; Qwen3-Omni-30B-A3B; Audio Flamingo Next; FineLAP & 16 ordered steps, Table~\ref{tab:stage4} \\
-5 & on-screen gate & \texttt{Qwen/Qwen3.8-27B}, greedy, thinking off & 6 frames per $\leq$5-s stretch, 3 votes, majority; silenced only if every stretch is visible \\
+5 & on-screen gate & Qwen3.8-27B, greedy, thinking off & 6 frames per $\leq$5-s stretch, 3 votes, majority; silenced only if every stretch is visible \\
 5b & subject & Qwen3.8-27B + word lists & 2--6 word phrase; speech text never used \\
-6 & picture & \texttt{Qwen/Qwen-Image-2512} & 1024$^2$, 50 steps, true CFG 4.0; check-and-redraw $\leq$5 tries \\
+6 & picture & Qwen-Image-2512 & 1024 $\times$ 1024, 50 steps, true CFG 4.0; check-and-redraw $\leq$5 tries \\
 6b & display & Qwen3-Omni (group), Qwen3.8 (depict) & merge gap 2.5\,s, min.\ 1.5\,s on screen, $\leq$1\,s past the end, group $\leq$8\,s, 3 slots \\
-7 & composite & ffmpeg libx264 & 720-px panel, 25 fps \\
+7 & composite & ffmpeg libx264 & 720\,px panel, 25 fps \\
 \bottomrule
 \end{tabular}
+
+\smallskip
+\footnotesize Greedy: always the most likely next word. Thinking off: no hidden reasoning text. int8: reduced numeric
+precision for speed. CFG: how strongly the picture follows the prompt.
 \end{table}
 
 
@@ -109,9 +115,7 @@ scoring this is a hit.}
 The two detectors complement each other: BEATs is strong on clear sounds, FlexSED hears quiet sounds under speech and
 music far better. Most of the development effort went into deciding which weak candidates to keep. The listeners are
 asked about each weak candidate in two ways -- a yes/no question (``Is the sound of a siren present in this
-recording?'') and an open list (``List every distinct non-speech sound you hear''). On the screening set, a detection
-that neither listener names is a real sound only 22\,\% of the time, one named by one listener 37\,\%, and one named by
-both 62\,\%; the witness rule is built on this. Speech and music are never drawn; human sounds and all other sound
+recording?'') and an open list (``List every distinct non-speech sound you hear''). The witness rule rests on how often the listeners agree (Section~\ref{sec:hard}). Speech and music are never drawn; human sounds and all other sound
 families with a clear source are (Appendix~\ref{app:config}).
 
 \subsection{The on-screen check}\label{sec:gate}
@@ -133,8 +137,9 @@ The picture prompt is built from the detected label, not from free text: the vis
 qualifier words to the source's name, word lists remove people and places, and an action is drawn with its maker (a
 \emph{bark} becomes a barking dog). A fixed tail asks for one large subject on a plain white background. Qwen-Image-2512
 draws it at 1024$\times$1024; the vision model then gets a multiple-choice question about what the picture shows, and
-a picture that fails (or contains text) is redrawn, up to five times. In a blind glance test by the author, Qwen-Image
-pictures were recognised 26 of 54 times against 14 for the earlier FLUX.1 pictures ($+0.22$, interval $[+0.07, +0.37]$).
+a picture that fails (or contains text) is redrawn, up to five times. In a blind test, the author saw each picture for a
+moment and named the sound without being shown the label; Qwen-Image pictures were named right 26 of 54 times,
+against 14 of 54 for the earlier FLUX.1 pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
 On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays at least 1.5\,s and
 at most 1\,s after its sound ends, and at most three pictures are shown at once.
 

@@ -14,8 +14,8 @@ viewer nothing new. A siren over a crowd looking up \emph{is} the scene. This pr
 
 \subsection{Problem}\label{sec:problem}
 Given a video, produce the same video with a side panel that shows a picture of a sound \emph{while} the sound is
-heard and its source is \emph{not} on screen, and shows nothing otherwise. Speech and music are never drawn (they have
-their own channels); human sounds such as laughter, coughing or a scream are. No model may be trained, and the system
+heard and its source is \emph{not} on screen, and shows nothing otherwise. Speech and music are never drawn (speech has
+subtitles, and music is marked in ordinary captions); human sounds such as laughter, coughing or a scream are. No model may be trained, and the system
 must work on one video at a time. For every sound this means four questions:
 \begin{enumerate}
   \item \textbf{Is there a sound, and when does it start?}
@@ -43,14 +43,16 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
   \item \textbf{A working system} built only from open models, runnable on one video (Section~\ref{sec:system}).
   \item \textbf{Results and an error analysis} that show where today's open models stop
         (Sections~\ref{sec:results}--\ref{sec:analysis}).
-  \item \textbf{A complete, pre-registered development record} of every idea tried (Appendix~\ref{app:history}).
+  \item \textbf{A dated development record} of the ideas tried, with the acceptance rule written down before each
+        run (Appendix~\ref{app:history}).
 \end{enumerate}
 
 \paragraph{Results in brief.} On a test set of 88 clips the final system finds 24 of the 65 sounds a deaf viewer would
-need, and half of its 48 pictures are right. Its cost to a viewer (a miss costs 4, a wrong picture 2) is 2.409 per clip.
+need, and half of its pictures are right (24 right, 24 wrong). Its cost to a viewer (a miss costs 4, a wrong picture 2) is 2.409 per clip.
 The baselines of the project proposal do worse: drawing a picture for every heard sound without looking at the video
 (direct audio-to-image generation, or audio captioning) costs 3.182, because only 30\,\% of its pictures are right, and
-showing nothing costs 2.955. Both differences are significant ($p < 0.001$ and $p = 0.041$). Most remaining misses are
+showing nothing costs 2.955. Both differences are significant on their own ($p < 0.001$ and $p = 0.041$, two-sided,
+uncorrected). Most remaining misses are
 sounds the detectors barely hear under speech or music; most remaining wrong pictures show another sound, or an object
 that is visible but is not the one making the sound.
 

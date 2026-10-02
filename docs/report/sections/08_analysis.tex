@@ -5,17 +5,19 @@ This section looks at the remaining errors of the final system in detail, using 
 error lists and an audit of the on-screen check (sources in Appendix~\ref{app:sources}).
 
 \subsection{Ceiling analysis}\label{sec:ceiling}
-Table~\ref{tab:ceiling} gives the numbers behind Figure~\ref{fig:ceiling}: each row makes one stage perfect on its own.
+Figure~\ref{fig:ceiling} makes the stages perfect one after another; Table~\ref{tab:ceiling} instead makes each stage
+perfect on its own, leaving the rest as they are, so the two give different numbers for the same stage.
 The analysis needs saved pictures, so it was run on a slightly older version of the system (25 hits and 27 wrong on the
 development set, 55 needed sounds); the proportions, not the exact numbers, are the point.
 
-\begin{table}[h]
+\begin{table}[htbp]
 \centering\small
-\caption{One stage made perfect at a time (development set, slightly older version).}
+\caption{One stage made perfect at a time (development set, older version with 25 hits, 27 wrong and cost 2.451 on
+earlier labels with 55 needed sounds; 2.451 equals the development cost of direct audio-to-image only by coincidence).}
 \label{tab:ceiling}
 \begin{tabular}{lrrr}
 \toprule
-Stage made perfect & Hits & Wrong & Cost (from 2.451) \\
+Stage made perfect & Hits & Wrong & Cost \\
 \midrule
 On-screen check & 30 & 18 & 1.915 \\
 Listeners and their filters & 34 & 24 & 1.859 \\
@@ -28,8 +30,8 @@ All stages perfect & 43 & 3 & 0.761 \\
 \end{table}
 
 The on-screen check and the listeners are the two largest losses. Even with every stage perfect, 12 of 55 needed
-sounds stay missed: five are heard by no model at all (a hammer, an explosion, a clang and two golf-club strikes) and
-seven are too faint or too badly timed.
+sounds stay missed: five are heard by no model at all (a hammer, an explosion, a clang and two golf-club strikes; the last three are also families the system never draws)
+and seven are too faint or too badly timed.
 
 \subsection{The on-screen check in detail}\label{sec:presence}
 The audit of the gate's decisions found two kinds of error. The more common one (23 of 36 gate errors) is
@@ -45,7 +47,7 @@ list, and several others were real sounds with the source on screen. Absolute co
 the comparison between systems is not affected, because the same labels score all of them.
 
 \subsection{Worked example}
-Clip \fp{bell_miami} (development set) has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
+A development clip of a church bell (\fp{bell_miami} in the repository) has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
 detectors find it. The gate cuts the 14-s sound into three stretches. In each, the name question answers ``church
 bell'' (it shares the word \emph{bell}, so this vote says visible), the a/b question says not visibly happening, and the
 description vote says visible. Two of three votes in every stretch: the sound is silenced and the needed bell is missed.

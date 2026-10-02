@@ -91,9 +91,9 @@ ax.spines[["top", "right"]].set_visible(False)
 save(fig, "progression.pdf")
 
 # 4. Error breakdown of the final system -- docs/inspector2/data.js (lost_at of each miss; verdict of each picture)
-miss = {"DEV": {"never heard": 6, "listeners and their filters": 10, "on-screen check": 6, "vetoes": 2,
+miss = {"DEV": {"never heard": 6, "listeners and their filters": 10, "on-screen check": 5, "vetoes": 3,
                 "timing and grouping": 5},
-        "TEST": {"never heard": 6, "listeners and their filters": 12, "on-screen check": 4, "vetoes": 9,
+        "TEST": {"never heard": 6, "listeners and their filters": 12, "on-screen check": 3, "vetoes": 10,
                  "timing and grouping": 10}}
 wrong = {"DEV": {"other sound": 7, "on screen": 6, "nothing": 2}, "TEST": {"other sound": 15, "on screen": 4, "nothing": 5}}
 cols_m = ["#555555", "#2a6f97", "#e07a5f", "#9ec5dd", "#c9b18a"]
