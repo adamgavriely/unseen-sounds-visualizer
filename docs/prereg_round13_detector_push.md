@@ -4728,3 +4728,33 @@ s(¬Q); d' = d − prior_label per stretch (Round 62 cache, no re-read of frames
 question; STOP < 0.65.** A per-label constant cannot reorder sounds within one label, only across labels (disclosed). GO -> Round 62's
 step 1 rule unchanged with d' (ADD-seen, bar, t selection), then its step 2 on D' (= SHIP8+MD3+WW5+SL, 29/58, 15 (6/7/2), 2.056) with
 the DEV d computed by `logit_gate.py dev` and the same prior. Script `nameall_ext.py` (prior pass in the same GPU job). TEST not read.
+
+### Round 66 / 62b gate-gold results (jobs 31720679 NAME-ALL, 31732018 ext; `benchmark/gold/nameall_gold.json`, `nameall_ext_gold.json`; caches `gate_gold/nameall{,_ext}_Qwen38-27B/`) — **NAME-ALL GO at step 0 and PASS at step 1; V STOP; 62b STOP; DEV NOT started (Adam 23:27: report first)**
+**Arm A dropped (disclosed):** the SSL-SaN repo and checkpoint (`third_party/SSL_SaN`) are no longer on the cluster (`No module named
+'models'`; no `model_ssltie.py` / `sslsan.pth.tar` under ~). Re-fetching them would be a download; not done. A's AUROC is printed as
+0.5 (all −inf) and A is out of the selection.
+**Coverage (NAME-ALL):** 145/145 stretches have a crop (target >= 120; 50L had 47); ViCrop fired on 5 (0 errors); yes/no argmax 885/892.
+**Step 0 AUROC (seen vs needed, per-sound A):** NAME-ALL rank-1 0.553, **NAME-ALL max 0.666**, B (OWLv2 label box, 63/145 crops) 0.487,
+union 0.643 -> picked NAME-ALL max -> GO (>= 0.65). Per-crop AUROC 0.624 (50L's named-only crops: 0.756).
+**Step 1 (two-sided, NAME-ALL max): PASS — t_lo 0.4375, t_hi 6.0625 -> 21/41 silenced, 33/38 kept** (base 16/33; bar branch 19/32).
+Flips: ADD-seen (A > 6.06) storm_16200 Thunder 0.3 and 10.4 (6.63), storm_7200 Thunder 0.1 (6.25), b3_carnival_parade Drum 0.0
+(6.75), movie_blueplanet_115 Duck 2.3 (6.75) — all seen; **as_explosion_XJ8lc3I6 Explosion 9.1 NEEDED lost** (crop "Enemy" 7.88);
+un-silence (A < 0.44) **bell_miami Bell 0.2 NEEDED rescued** (A 0.375). REPLACE (report): no t meets the bar. **Disclosed fit:** t_lo
+moves exactly one sound (bell_miami, A 0.375 just under 0.4375); t_hi is set by 5 seen sounds vs 1 needed above 6.06. Two thresholds
+on 79 sounds — the DEV step is the test.
+**Witnesses (A_max):** as_explosion Gunshot 4.25, Footsteps 5.88, Explosion 2.8 0.50, 5.6 4.75, Gasp 4.38 (all kept, < t_hi), Explosion
+9.1 7.88 (LOST), Machine gun 6.25 (seen, shipped-silenced); golf Whack 6.5 5.00 (shipped-silenced, not rescued: >= t_lo), 24.4 4.88
+(kept); bell_miami 0.38 (rescued); pet-shop Bird 2.00 (not rescued); aviary Bird 3.38, marrakech Motorcycle 4.50, storm_7200 Rain
+10.50 (all seen, shipped-silenced, stay silenced).
+**Cost per gate-gold clip (all its sounds):** generations (naming + grounding) min 5 / median 20 / max 60; prefill passes 8 / 24 / 76;
+describe is the gate's own call online. ≈ 10–15 s per stretch on an H200.
+**Arm V PRODUCTION-VETO: STOP** — 53 shipped-seen named stretches (38 on seen sounds, 15 on needed); AUROC 0.622 < 0.65. Reported:
+FIX_GATE alone 16/41, 34/38. mV by name: **bell_miami Bell "church bell" −11.9 / −9.1 / −9.9** (the three lowest of all 53); golf Whack
+6.5 "golf club" −1.75; ly_ambulance and as_explosion Gunshot have no shipped-seen named stretch (ambulance is FIX_GATE's "nothing"
+case; Gunshot is shipped-kept); tg_d133 Fart not in gate-gold. Lowest seen-sound margins (the named risk class): crossing Train
+−5.0, favela Footsteps −4.75, flea-market Rustle "plastic bags" −4.75, carnival Drum −3.25 / −2.5, marrakech Motorcycle −2.88.
+**Round 62b PRIOR: STOP** — per-sound mean d' AUROC (a) 0.644, (b) 0.639 (Round 62 without the prior: 0.647, 0.627).
+**Next (not started, Adam's call):** Round 66 step 2 = DEV on D' (SHIP8+MD3+WW5+SL), removal side (A > t_hi) via the `sign_screen`
+re-place harness, sharded by clip over 2–3 GPUs when approved. The un-silence side (bell_miami-type rescues, A < t_lo on a
+gate-silenced spec) needs a full stage-5 arm: a default-off flag in `reason.decide_subjects` running the NAME-ALL chain on seen
+stretches, then stage 5 + stage 6 image generation for the re-added specs and `merged_dev.py` scoring. TEST not read.
