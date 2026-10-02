@@ -228,6 +228,13 @@ Figure~\ref{fig:progression} shows the cost after each accepted change, from the
 (``September version'') to the final system. The development cost fell by 1.634 per clip and the test cost by 0.500;
 the gap is expected, because changes were chosen on the development set.
 
+The last step deserves a note. The witness rule was first scored with its scene question read as text, which gave 2.028
+(development) and 2.386 (test). That text answer was sometimes cut off after four words, and one cut-off answer happened
+to remove a wrong picture -- a lucky accident, not a property of the rule. The final system reads the same question from
+the model's yes/no scores, which cannot be cut off; this brings the wrong picture back and gives the honest numbers 2.056
+and 2.409. The final system was accepted because it beats the version before the witness rule (2.141 on development),
+which was the pre-set bar; the text-read result is therefore not plotted as a separate step.
+
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{figures/progression.pdf}

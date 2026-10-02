@@ -73,7 +73,11 @@ chain = [("Sept.\nbaseline", 3.690, 2.909), ("listener\nrescue", 3.070, 2.818), 
          ("DASM\nrescue", 2.901, 2.705), ("inventory\nkeep", 2.817, 2.727), ("DASM clip\nveto", 2.620, 2.682),
          ("onset\npull", 2.535, 2.659), ("continuation\nveto", 2.394, 2.591), ("FineLAP\nveto", 2.366, 2.568),
          ("inventory\n+ DASM", 2.282, 2.568), ("merge\n2.5 s", 2.254, 2.545), ("grouping", 2.197, 2.545),
-         ("min. 0.3 s", 2.141, 2.545), ("witness\nrule", 2.028, 2.386), ("final\nsystem", 2.056, 2.409)]
+         ("min. 0.3 s", 2.141, 2.545), ("witness rule\n= final", 2.056, 2.409)]
+# The witness rule was first scored with its scene question read as text (2.028 / 2.386). That reading was cut off on a
+# few answers, and one cut-off answer happened to remove a wrong picture. The final system reads the same question
+# from the model's yes/no scores, which cannot be cut off; its honest numbers are the last point. The text-read
+# point is not a real step and is not plotted (see the history appendix).
 fig, ax = plt.subplots(figsize=(9.2, 3.4))
 x = range(len(chain))
 ax.plot(x, [c[1] for c in chain], "o-", color=DARK, label="development set (decisions made here)")
