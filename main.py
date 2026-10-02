@@ -87,6 +87,9 @@ def main() -> None:
             # no precomputed answers named: compute them on the spot (same harness as the benchmark, slow)
             from src.listener_prep import ensure_listener_inputs
             config.set_listener_split(ensure_listener_inputs(Path(args.input)))
+            # the inputs were just built for this clip; a clip with no weak candidate sounds legitimately has empty
+            # listener files, which the cache check would treat as missing (the scored runs ran with the check off)
+            config.LISTENER_REQUIRE_CACHES = False
     for k, v in (("WHISPER_MODEL", args.whisper_model), ("DEVICE", args.device), ("GEN_BACKEND", args.generator),
                  ("VIDEO_BACKEND", args.video_backend)):
         if v is not None:
