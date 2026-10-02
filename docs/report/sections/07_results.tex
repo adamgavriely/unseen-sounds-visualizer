@@ -36,7 +36,8 @@ there. Sources: \fp{docs/review/detector_final_2026-10-02.md}; \fp{docs/review/i
 \begin{itemize}
   \item On the development set \Dp{} finds half of the needed sounds and two out of three of its pictures are right.
         On the test set it finds 37\,\% and half of its pictures are right.
-  \item The old pipeline was \emph{worse than showing nothing} on the development set (3.690 vs 3.268) and only
+  \item The old pipeline was \emph{worse than showing nothing} on the development set (3.690 vs 3.268; still 3.521
+        with a 3-s repeat merge, Section~\ref{sec:mergegap}) and only
         slightly better on the test set (2.909 vs 2.955). \Dp{} is clearly cheaper than showing nothing on both
         (2.056 vs 3.268; 2.409 vs 2.955).
   \item On the test set most wrong pictures of \Dp{} belong to another sound (15 of 24); pictures of on-screen sounds
@@ -56,7 +57,6 @@ comparison & $d$ & 95\,\% interval & one-sided $p$ \\
 \Dp{} vs B & $-0.136$ & $[-0.295,\ 0.000]$ & 0.034 \\
 D vs B & $-0.159$ & $[-0.341,\ -0.023]$ & 0.0145 \\
 SHIP8 vs old pipeline B0r & $-0.341$ & $[-0.636,\ -0.045]$ & 0.017 \\
-SHIP7 vs B0r & $-0.341$ & $[-0.636,\ -0.045]$ & 0.015 \\
 first pre-registered exposure: TO1+F7F8 vs B0r & $-0.091$ & $[-0.250,\ +0.045]$ & 0.132 \\
 \Dp{} vs B0r & \multicolumn{3}{l}{\emph{not yet computed} (see below)} \\
 \bottomrule
