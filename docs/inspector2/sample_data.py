@@ -193,6 +193,8 @@ data = {"meta": {"version": "D′", "arm": "SHIP8+MD3+WW5+SL", "built": "sample,
         "steps": steps, "clips": clips,
         "build": BUILD, "lesson": LESSON, "build_steps": [dict(zip(("change", "dev", "test", "note"), r)) for r in BUILD_STEPS],
         "tried": [dict(zip(("part", "idea", "why", "shipped"), r)) for r in TRIED]}
-out = Path(__file__).with_name("data.js")
-out.write_text("window.INSPECTOR2 = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
-print("wrote", out)
+content = {"build": data.pop("build"), "lesson": data.pop("lesson"), "build_steps": data.pop("build_steps"), "tried": data.pop("tried")}
+for name, var, obj in (("content.js", "INSPECTOR2_CONTENT", content), ("data_sample.js", "INSPECTOR2", data)):
+    out = Path(__file__).with_name(name)
+    out.write_text("window." + var + " = " + json.dumps(obj, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
+    print("wrote", out)

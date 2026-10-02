@@ -2,11 +2,14 @@
 (function () {
   'use strict';
   var D = window.INSPECTOR2, app = document.getElementById('app');
+  var C = window.INSPECTOR2_CONTENT || {};
+  if (D) ['build', 'build_steps', 'tried', 'lesson'].forEach(function (k) { if (D[k] == null && C[k] != null) D[k] = C[k]; });
   if (!D) { app.innerHTML = '<div class="banner"><b>data.js is missing.</b> Run <code>python docs/inspector2/export.py</code>, then reload.</div>'; return; }
 
   // ---------------------------------------------------------------- helpers
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
   function t1(x) { return x == null ? '—' : (Math.round(x * 100) / 100).toFixed(2); }
+  function shortWhy(w) { w = String(w || ''); var a = w.split(' | ')[0].split(' Also near the onset')[0]; return a.length < w.length ? a + ' … (open the row for the full trail)' : a; }
   function chip(k, txt) { return '<span class="chip c-' + esc(k) + '">' + esc(txt || k) + '</span>'; }
   var STEP = {}; (D.steps || []).forEach(function (s, i) { s.order = i; STEP[s.id] = s; });
   function stepName(id) { return STEP[id] ? STEP[id].name : (id || '—'); }
@@ -31,7 +34,7 @@
       if (st.value != null || st.bar != null) vb = '<span class="vb">' + (st.value != null ? 'value ' + esc(st.value) : '') + (st.bar != null ? '  ·  bar ' + esc(st.bar) : '') + '</span>';
       h += '<div class="tstep ' + esc(st.res) + '"><div class="thead"><b>' + stepTag(st.step) + '</b>' + chip(st.res) + vb + '</div>';
       (st.asks || []).forEach(function (a) {
-        h += '<div class="ask">' + (a.who ? '<div class="note">' + esc(a.who) + '</div>' : '') + '<div class="q">' + esc(a.q) + '</div><div class="a">Answer: <code>' + esc(a.a) + '</code>' + (a.vote ? '  → ' + chip(a.vote === 'seen' || a.vote === 'no' ? 'drop' : 'pass', a.vote) : '') + '</div></div>';
+        h += '<div class="ask">' + (a.who ? '<div class="note">' + esc(a.who) + '</div>' : '') + '<div class="q">' + esc(a.q) + '</div><div class="a">Answer: <code>' + esc(String(a.a || '').replace(/\s*\[raw (answers?|description) not stored[^\]]*\]/, '') || '—') + '</code>' + (/raw (answers?|description) not stored/.test(a.a || '') ? ' ' + chip('skip', 'vote only') : '') + (a.vote ? '  → ' + chip(a.vote === 'seen' || a.vote === 'no' ? 'drop' : 'pass', a.vote) : '') + '</div></div>';
       });
       if (st.note) h += '<div class="note">' + esc(st.note) + '</div>';
       h += '</div>';
@@ -55,12 +58,29 @@
     return out;
   }
 
+
+  function gapsBox() {
+    var cs = clips(), nh = 0, sc = 0, noTrail = 0;
+    cs.forEach(function (c) {
+      (c.gold || []).forEach(function (g) { if (g.outcome === 'miss') { if (g.lost_at === 'never_heard') nh++; else if (g.lost_at === 'scorer') sc++; } });
+      (c.pictures || []).forEach(function (p) { if (p.verdict !== 'hit' && !p.cand) noTrail++; });
+    });
+    return '<h2>What this data does not show</h2><div class="tw"><table><tbody>' +
+      '<tr><td><b>On-screen check, raw answers</b></td><td>Across DEV + TEST, 86 of 156 on-screen decisions show the three votes and the object named, but not the model\'s full sentence. Those verdicts were reused from the stored run, which kept only the votes. The decision itself is exact. Marked <span class="chip c-skip">vote only</span> in the trail.</td></tr>' +
+      '<tr><td><b>"Visibly happening" look-alike replies</b></td><td>For the display step that drops a picture whose event is visibly happening, only the final yes/no was stored, not the look-alike replies. The event questions are shown.</td></tr>' +
+      '<tr><td><b>Never heard</b></td><td>' + nh + ' missed sounds: no detector produced a span of that type near the start, so no step ever decided anything. Their sub-bar scores are not logged.</td></tr>' +
+      '<tr><td><b>Timing / matching</b></td><td>' + sc + ' missed sounds: a span of the right type existed, but no picture started inside −0.5 … +1.0 s. The note names the nearest span and what happened to it.</td></tr>' +
+      (noTrail ? '<tr><td><b>Wrong picture without a trail</b></td><td>' + noTrail + ' wrong picture(s): no kept span of its type overlaps it, so it is shown without a trail.</td></tr>' : '') +
+      '</tbody></table></div>';
+  }
+
   // ---------------------------------------------------------------- views
   function vOverview() {
     var m = D.meta || {}, h = '';
     if (m.sample) h += '<div class="banner"><b>Sample data.</b> This page shows the layout with a few real cases from the 1 Oct error dissection; some values are illustrative. The full data for the final version comes from the pipeline log after the detector is frozen.</div>';
     h += testWarn();
     h += '<h1>Where each sound is won or lost</h1><p class="lede">Every needed sound and every picture, traced through the pipeline step by step: the value, the bar, and for model steps the exact question and answer. New here? Start with <a href="#build">the build in five parts</a> and <a href="#tried">what did not ship</a>.</p>';
+    if (m.parity) h += '<p class="note">Parity check: re-running the frozen version with logging on gives exactly the reported numbers (DEV ' + esc(m.parity.DEV) + ', TEST ' + esc(m.parity.TEST) + '; 0 clips differ).</p>';
     var keys = setSel.value === 'ALL' ? ['DEV', 'TEST'] : [setSel.value];
     keys.forEach(function (k) {
       var s = (D.sets || {})[k]; if (!s) return;
@@ -86,7 +106,7 @@
       if (!wb[k]) return; var w = (wb[k] / wm * 92).toFixed(1);
       h += '<div class="frow"><span class="lab">' + chip(k) + '</span><a class="ftrack" href="#wrongs/' + k + '"><div class="fbar w" style="width:' + w + '%"></div><span class="fval" style="left:' + w + '%">' + wb[k] + '</span></a></div>';
     });
-    h += '</div><p class="note">A wrong picture passed every step. Its trail shows how close each value was to the bar, which tells you which step could have caught it.</p>';
+    h += '</div><p class="note">A wrong picture passed every step. Its trail shows how close each value was to the bar, which tells you which step could have caught it.</p>' + (m.sample ? '' : gapsBox());
     app.innerHTML = h;
   }
   function tile(k, v) { return '<div class="tile"><div class="k">' + esc(k) + '</div><div class="v">' + v + '</div></div>'; }
@@ -117,7 +137,7 @@
     if (step) ms = ms.filter(function (x) { return (x.g.lost_at || 'never_heard') === step; });
     var h = testWarn() + '<h1>Misses' + (step ? ' lost at ' + esc(stepName(step)) : '') + '</h1><p class="lede">Needed sounds with no picture in time. Click a row to see every candidate span near the sound and the step that removed it.' + (step ? ' <a href="#misses">Show all</a>' : '') + '</p>';
     h += expandableTable(['Clip', 'Sound', 'Time (s)', 'Lost at', 'Exact reason'], ms, function (x) {
-      return '<td><a href="' + clipHref(x.c) + '">' + esc(x.c.clip) + '</a></td><td>' + esc(x.g.label) + '</td><td class="n">' + t1(x.g.start) + '</td><td>' + stepTag(x.g.lost_at || 'never_heard') + '</td><td>' + esc(x.g.why || '') + '</td>';
+      return '<td><a href="' + clipHref(x.c) + '">' + esc(x.c.clip) + '</a></td><td>' + esc(x.g.label) + '</td><td class="n">' + t1(x.g.start) + '</td><td>' + stepTag(x.g.lost_at || 'never_heard') + '</td><td title="' + esc(x.g.why || '') + '">' + esc(shortWhy(x.g.why)) + '</td>';
     }, function (x) {
       var cs = (x.g.cands || []).map(function (id) { return candOf(x.c, id); }).filter(Boolean);
       return cs.length ? cs.map(function (cd) { return candCard(x.c, cd); }).join('') : '<p class="empty">No detector produced a candidate of this sound family near its start.</p>' + (x.g.heard ? '<div class="note">' + esc(x.g.heard) + '</div>' : '');

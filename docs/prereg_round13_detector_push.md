@@ -4642,3 +4642,156 @@ waterfall Water +2.6, flea-market Rustle +2.3 / +0.75, waves Water +1.6, storm_7
 mv_protest Crowd −1.9, pet-shop Bird −2.5. **bell_miami Bell 0.2 (NEEDED): phrase "the church" on all 3 stretches, m −5.63 / −6.00
 / −6.25 (A −6.0) — the crop margin says the church is clearly NOT making the bell sound right now** (Round 50 text: no, no, no), so a
 crop-margin rule would keep bell_miami's needed bell. Nothing ships; no src / config edit; TEST not read.
+
+## Round 66 NAME-ALL — forced top-3 naming + describe phrases -> ground + crop -> null-calibrated logit crop margin, two-sided (written 2026-10-02 BEFORE any Round 66 answer; VLM panel first pick, `docs/review/vlm_panel_2026-10-01/f2_prompts.md` ideas #1 + #2)
+### (A) Twin check (panel #2's 10-min CPU check; recorded BEFORE step 0; data = Round 62's cache `gate_gold/logit_Qwen38-27B/`, 145 stretches)
+Pre-stated rule (panel): corr(sQ, sN) > 0.8 AND AUROC(sQ) >= AUROC(d) -> the NOT twin subtracts signal -> use the negation-free
+affirmative twin; else keep the twin. **Result:** (a) corr(sQ, sN) = **−0.83**, per-stretch AUROC sQ 0.624 < d 0.646 (−sN alone
+0.658); per-sound mean sQ 0.602 < d 0.647 (−sN 0.680). (b) corr −0.77, sQ 0.642 < d 0.662; per sound 0.586 < 0.627. The NOT twin
+moves OPPOSITE to Q (Qwen3.8 does read the negation here) and adds signal -> **rule says keep the NOT twin**. Round 66's crop twin
+is therefore Round 50L's NOT twin, not the affirmative "just sitting there ..." wording (disclosed: NegBench's concern is not borne
+out for this model on this cache; the check is whole-frame, the use is crop — a proxy).
+### (B) Design (fixed now)
+**Set / truth / base:** gate-gold, 49 DEV judge clips, 145 stretches of the cached `gate_gold/Qwen38-27B` sounds, importance >= 2,
+41 seen / 38 needed, gold labels; base 16/41, 33/38 must reproduce. Frames per stretch: the gate's 6 (`sign_gate.gate_times`).
+Model Qwen3.8-27B, thinking off, greedy for the generations.
+**Candidates (per stretch, no escape).** Prompt N (max_new 40): "A {label} sound is heard while these frames are on screen. List the
+3 visible things most likely to be making it, most likely first, one short noun phrase per line. Always give 3, even if none fits
+well." Parse: first 3 non-empty lines (leading numbering / bullets stripped; a single line with commas / semicolons is split),
+each `reason._clean_phrase(max_words=5)`. Plus noun phrases from the gate's describe answer: **disclosed deviation — gate-gold
+caches only the desc VOTE, not its text, so the benchmark re-asks `reason.DESCRIBE_PROMPT` once per stretch (greedy, max_new 48, the
+gate's own call; online it is already computed, 0 extra asks)**; noun phrases by a fixed heuristic (no spaCy on the cluster): after
+a determiner / number / possessive, up to 4 words, stopping at a preposition, conjunction, auxiliary verb, an -ing word after the
+first word, or punctuation. Ranked list = N's phrases then desc phrases, case-insensitive dedupe, first 4 kept.
+**Ground + crop (Round 50):** each candidate grounded with Round 50's `GROUND_Q` on the same 6 frames (max_new 64,
+`box_gate.parse_reprompt`), crop by `box_gate.to_pixels` + `som_gate.crops` (20 % margin, short side 224). **ViCrop fallback** where
+no candidate yields a crop: one language-free crop of the middle frame (index 2) from the model's own relative attention (2502.17422
+rel-att): last-token attention to the image tokens under Q+ with phrase "the thing", divided by the same under "Describe this image
+briefly.", averaged over heads and the middle third of the decoder layers (eager attention for those two passes only), 3×3-smoothed;
+crop = a box of 40 % of the frame's width and height centred on the arg-max cell, then `som_gate.crops`. A fallback that errors =
+no crop (counted).
+**Readout (Rounds 62 / 50L harness):** per crop m = [s(Q+) − s0(Q+)] − [s(Q−) − s0(Q−)], s = max logit(yes ids) − max logit(no ids)
+at the first answer token, Q+ = Round 50's CROP_Q verbatim, Q− = Round 50L's NOT twin (per (A)); s0 = the same prompt on a uniform
+grey 224×224 image with phrase "this thing", once per label (cached; a disclosed approximation of a per-phrase prior — it shifts
+labels against each other, never sounds within one label).
+**Aggregation (both computed, one picked on step-0 AUROC, tie -> rank-1):** stretch margin = rank-1 (m of the first candidate in
+rank order that has a crop; the ViCrop crop if none) or max (max m over the stretch's crops). No crop -> −inf. Sound A = the
+⌊n/2⌋+1-th largest stretch margin (Round 50L).
+**Step 0:** AUROC of A (seen vs needed) for both aggregations; **STOP if the picked one < 0.65.** Reported: crop coverage (stretches
+with >= 1 crop, target >= 120/145 — a report, not a STOP), ViCrop count, yes/no-argmax share, per-crop AUROC.
+**Step 1 (two-sided rule; REPLACE reported only):** silenced iff (shipped majority AND NOT (A finite AND A < t_lo)) OR A > t_hi,
+i.e. ADD-seen above t_hi, un-silence below t_lo; a sound with A = −inf is never un-silenced (no crop = no evidence). Candidates:
+midpoints of the sorted finite A values, t_lo also −inf (off), t_hi also +inf (off), t_lo <= t_hi. Bar: (silenced >= 19 AND kept >=
+32) OR (silenced >= 15 AND kept >= 35). Pick the pair meeting the bar with the most silenced; ties -> more kept -> larger t_hi ->
+smaller t_lo. None -> FAIL, step 2 not run. REPLACE (silenced iff A > t, t by the same rule) reported only. Disclosed: two
+thresholds on 79 sounds is a fit; DEV is the test.
+**Step 2 (only if step 1 passes) — DEV on D' = SHIP8+MD3+WW5+SL (must reproduce 29/58, 15 (6/7/2), 2.056).** Removal side only:
+every drawn spec, PIPELINE label, its own gate stretches (`sign_screen.asked`, `decide_subjects` frames), the whole chain fresh (N,
+describe re-ask, grounding, ViCrop, margins); a spec is silenced iff A > t_hi; re-placed and scored as Round 62 / `sign_screen`.
+Pass: main rule (hits >= 29, no needed hit lost, cost < 2.056) or fewer-pictures clause (cost < 2.056, wrong removed >= 2 × lost,
+wrong <= 15 − 3 × lost, hits >= 26). Un-silencing (A < t_lo on a shipped-silenced sound) cannot be scored on saved pictures (no
+image); it is counted on D''s gate-silenced specs when their stretches are logged, and what a full stage-5 arm needs is stated.
+**Witnesses (named now):** kept-needed as_explosion_XJ8lc3I6 ×6, b3_golf_course Whack (both), bell_miami Bell, b3_pet_shop Bird
+(un-silence via t_lo); silenced-seen b3_aviary_birds Bird, ambient_market_marrakech Motorcycle, storm Rain (ambient_weather_storm_7200).
+**Cost per video (online):** per stretch 1 × 40-token naming + <= 4 × 64-token grounding generations + 2 prefill passes per crop
+(+ 2 attention passes when ViCrop fires); s0 cached per label; describe already computed by the gate. Counts reported.
+Script `benchmark/gold/nameall.py`, job `slurm/job_nameall.sh`. No src / config edit unless step 2 passes. TEST not read.
+
+### Round 66 amendment — external proposers B / A, arm V PRODUCTION-VETO, and Round 62b PRIOR (written while the NAME-ALL gate-gold job 31720679 runs, BEFORE any Round 66 number is read; coordinator, from `vlm_panel_2026-10-01/f4_hallucination.md` and `f1_audit.md`)
+**Proposers (same crop readout as NAME-ALL: m = [s(Q+) − s0(Q+)] − [s(Q−) − s0(Q−)], Q+ / Q− = CROP_Q / NOT twin, s0 per label on grey).**
+B = OWLv2 label box: `google/owlv2-base-patch16-ensemble` on the 6 gate frames with the label's detect query (`som_gate.phrase_of`),
+the single highest-scoring box over the 6 frames above BOX_BAR 0.1 (recomputed: the Round 38 cache dropped the frame index), crop by
+`som_gate.crops`, phrase = the query phrase; labels without a query or no box -> no B crop. A = SSL-SaN audio-driven box: the Round 33
+model and inputs (`gate_sslsan.cosine_maps`, stretch audio ±1 s), the frame with the highest map peak, box = the 3×3 cells around its
+14×14 arg-max (cell -> frame coordinates through the 224×224 squash), crop by `som_gate.crops`, phrase "thing". One crop per stretch
+each. **Step-0 AUROC reported for NAME-ALL (its picked aggregation), B, A and the union (stretch margin = max over NAME-ALL's crops,
+B and A); the proposer for step 1 = the highest AUROC among the four, which must be >= 0.65 (else STOP); ties -> NAME-ALL > B > A >
+union. Step 1 (two-sided t_lo / t_hi, bar, tie rules) and step 2 exactly as written for NAME-ALL, on the chosen proposer.** The
+NAME-ALL-only score printed by job 31720679 is a report; the binding selection is this one (`benchmark/gold/nameall_ext.py score`).
+Cost per video, each: B = 6 OWLv2 passes + 2 prefill per stretch; A = 6 SSL-SaN passes + 2 prefill per stretch.
+**Arm V PRODUCTION-VETO (separate rule, separately reported).** On every stretch the shipped majority calls seen with a cached gate
+phrase (`named` != nothing), the 6 gate frames, Qv "Is this {named} making the {label} sound right now? Answer yes or no." and twin
+"Is this {named} NOT making the {label} sound right now? Answer yes or no.", null-calibrated on 6 grey 224×224 frames with phrase
+"thing": mV = [s(Qv) − s0] − [s(Qv−) − s0−]. Rule: FIX_GATE on (a seen stretch naming nothing is not seen) AND a seen named stretch
+with mV < t_lo is not seen; everything else shipped (a sound is silenced iff every stretch is seen). **Step 0:** AUROC of mV over the
+shipped-seen named stretches, gold-seen sounds' stretches vs gold-needed sounds' stretches; STOP < 0.65. **Step 1:** t_lo over
+midpoints of the mV values (plus −inf = off), bar (silenced >= 19 AND kept >= 32) OR (silenced >= 15 AND kept >= 35) — a veto only
+lowers silenced from 16, so the 15/35 branch is the live one; pick the t_lo meeting the bar with the most silenced, ties -> more
+kept -> smaller t_lo. Pass -> **step 2 = one full DEV pipeline arm D' + V** (a stage-5 flag, default off; built only then, compatible
+with `docs/inspector2/HOOKS.md` of branch claude/project-thread-4rwrnp), scored with `merged_dev.py` vs D' 29/58, 15 (6/7/2), 2.056 by
+the main rule or fewer-pictures clause. Risk class named now: weak-action correct silences (alarm clock, cellphone buzz, flea-market
+Rustle, motorcycle). **mV reported by name:** bell_miami Bell, b3_golf_course Whack, ly_ambulance, as_explosion Gunshot (gate-gold);
+tg_d133 Fart ×2 only if step 2 runs (DEV2, not in gate-gold).
+### Round 62b PRIOR — PriDe-style image-free per-label prior on Round 62's margins (own round, same bar; written BEFORE any number)
+For each gold label, Round 62's (a) and (b) Q and ¬Q are prefilled with NO image (text only, same template): prior_label = s(Q) −
+s(¬Q); d' = d − prior_label per stretch (Round 62 cache, no re-read of frames). **Step 0: per-sound mean d' AUROC (seen vs needed) per
+question; STOP < 0.65.** A per-label constant cannot reorder sounds within one label, only across labels (disclosed). GO -> Round 62's
+step 1 rule unchanged with d' (ADD-seen, bar, t selection), then its step 2 on D' (= SHIP8+MD3+WW5+SL, 29/58, 15 (6/7/2), 2.056) with
+the DEV d computed by `logit_gate.py dev` and the same prior. Script `nameall_ext.py` (prior pass in the same GPU job). TEST not read.
+
+### Round 66 / 62b gate-gold results (jobs 31720679 NAME-ALL, 31732018 ext; `benchmark/gold/nameall_gold.json`, `nameall_ext_gold.json`; caches `gate_gold/nameall{,_ext}_Qwen38-27B/`) — **NAME-ALL GO at step 0 and PASS at step 1; V STOP; 62b STOP; DEV NOT started (Adam 23:27: report first)**
+**Arm A dropped (disclosed):** the SSL-SaN repo and checkpoint (`third_party/SSL_SaN`) are no longer on the cluster (`No module named
+'models'`; no `model_ssltie.py` / `sslsan.pth.tar` under ~). Re-fetching them would be a download; not done. A's AUROC is printed as
+0.5 (all −inf) and A is out of the selection.
+**Coverage (NAME-ALL):** 145/145 stretches have a crop (target >= 120; 50L had 47); ViCrop fired on 5 (0 errors); yes/no argmax 885/892.
+**Step 0 AUROC (seen vs needed, per-sound A):** NAME-ALL rank-1 0.553, **NAME-ALL max 0.666**, B (OWLv2 label box, 63/145 crops) 0.487,
+union 0.643 -> picked NAME-ALL max -> GO (>= 0.65). Per-crop AUROC 0.624 (50L's named-only crops: 0.756).
+**Step 1 (two-sided, NAME-ALL max): PASS — t_lo 0.4375, t_hi 6.0625 -> 21/41 silenced, 33/38 kept** (base 16/33; bar branch 19/32).
+Flips: ADD-seen (A > 6.06) storm_16200 Thunder 0.3 and 10.4 (6.63), storm_7200 Thunder 0.1 (6.25), b3_carnival_parade Drum 0.0
+(6.75), movie_blueplanet_115 Duck 2.3 (6.75) — all seen; **as_explosion_XJ8lc3I6 Explosion 9.1 NEEDED lost** (crop "Enemy" 7.88);
+un-silence (A < 0.44) **bell_miami Bell 0.2 NEEDED rescued** (A 0.375). REPLACE (report): no t meets the bar. **Disclosed fit:** t_lo
+moves exactly one sound (bell_miami, A 0.375 just under 0.4375); t_hi is set by 5 seen sounds vs 1 needed above 6.06. Two thresholds
+on 79 sounds — the DEV step is the test.
+**Witnesses (A_max):** as_explosion Gunshot 4.25, Footsteps 5.88, Explosion 2.8 0.50, 5.6 4.75, Gasp 4.38 (all kept, < t_hi), Explosion
+9.1 7.88 (LOST), Machine gun 6.25 (seen, shipped-silenced); golf Whack 6.5 5.00 (shipped-silenced, not rescued: >= t_lo), 24.4 4.88
+(kept); bell_miami 0.38 (rescued); pet-shop Bird 2.00 (not rescued); aviary Bird 3.38, marrakech Motorcycle 4.50, storm_7200 Rain
+10.50 (all seen, shipped-silenced, stay silenced).
+**Cost per gate-gold clip (all its sounds):** generations (naming + grounding) min 5 / median 20 / max 60; prefill passes 8 / 24 / 76;
+describe is the gate's own call online. ≈ 10–15 s per stretch on an H200.
+**Arm V PRODUCTION-VETO: STOP** — 53 shipped-seen named stretches (38 on seen sounds, 15 on needed); AUROC 0.622 < 0.65. Reported:
+FIX_GATE alone 16/41, 34/38. mV by name: **bell_miami Bell "church bell" −11.9 / −9.1 / −9.9** (the three lowest of all 53); golf Whack
+6.5 "golf club" −1.75; ly_ambulance and as_explosion Gunshot have no shipped-seen named stretch (ambulance is FIX_GATE's "nothing"
+case; Gunshot is shipped-kept); tg_d133 Fart not in gate-gold. Lowest seen-sound margins (the named risk class): crossing Train
+−5.0, favela Footsteps −4.75, flea-market Rustle "plastic bags" −4.75, carnival Drum −3.25 / −2.5, marrakech Motorcycle −2.88.
+**Round 62b PRIOR: STOP** — per-sound mean d' AUROC (a) 0.644, (b) 0.639 (Round 62 without the prior: 0.647, 0.627).
+**Next (not started, Adam's call):** Round 66 step 2 = DEV on D' (SHIP8+MD3+WW5+SL), removal side (A > t_hi) via the `sign_screen`
+re-place harness, sharded by clip over 2–3 GPUs when approved. The un-silence side (bell_miami-type rescues, A < t_lo on a
+gate-silenced spec) needs a full stage-5 arm: a default-off flag in `reason.decide_subjects` running the NAME-ALL chain on seen
+stretches, then stage 5 + stage 6 image generation for the re-added specs and `merged_dev.py` scoring. TEST not read.
+
+### Round 66 step 2 — DEV arm (Adam approved 00:19; written BEFORE any DEV number)
+**Only the pre-registered winner runs:** NAME-ALL, max aggregation, two-sided rule with t_lo 0.4375 and t_hi 6.0625 (step 1). Rank-1,
+B, A, V and REPLACE are not re-run. **Full stage-5 arm** (not the re-place harness): a default-off flag `config.NAME_ALL = (t_lo, t_hi)`
+read in `reason.decide_subjects`; per stretch of every gated spec, after the shipped gate's own verdict (reused votes, as every
+arm), the NAME-ALL chain on the gate's own 6 frames (`src/stage5_cross_modal_analysis/nameall.py`: prompt N, the gate's describe
+prompt, Round 50 grounding (`_box_parse` strict + `_box_crop`), ViCrop fallback, null-calibrated logit crop margin with the NOT twin,
+max over candidates); spec A = the ⌊n/2⌋+1-th largest stretch margin (no crop = −inf). Silenced iff (shipped silenced AND NOT (A
+finite AND A < t_lo)) OR A > t_hi. An un-silenced spec is shown as the I2 / Round 64 keeps are (first stretch kept, picture
+throughout) and is exempt from kinship silencing; a NAME-ALL silence is an ordinary "source visible" silence (it silences its kinds,
+as the gate does — not simulated on gate-gold, disclosed). Per-stretch margins and the per-clip VLM cost (generations, prefill
+passes) are written into gate_votes.json rows (key `nameall`). Pictures are placeholders (scoring needs no image), as Round 64.
+Arm `SHIP8+MD3+WW5+SL+NA` = D' + NAME_ALL; old DEV (~/MscProj_r13) and DEV2 (~/MscProj_tg); stage 5 sharded by clip over 3 GPU
+jobs (`R13_SHARD=i/3`: identical code and config, each shard its own ask-memo copy and stage-5 log; per-clip processing is
+independent), then one scoring: round13_dev score, tagger_prep gates, `merged_dev.py`. **Base D' must reproduce exactly 29/58, 15
+(6/7/2), 2.056** in the same scoring. Disclosed: gate-gold frames were clamped at 0 s, the pipeline's are not.
+**Pass rule (standing main rule vs D'):** hits >= 29 with NO needed hit lost on any clip (a swap — one hit lost, another gained —
+counts as a loss), cost < 2.056; OR the fewer-pictures clause (cost < 2.056, wrong removed >= 2 × hits lost, wrong <= 15 − 3 × lost,
+hits >= 26). **Expected outcomes, fixed now:** as_explosion_XJ8lc3I6 Explosion 9.25 survives and bell_miami Bell is rescued -> ~30/13,
+1.944 -> PASS; Explosion lost and the bell gained -> ~29/13, 2.000 -> **FAIL by the letter** (a needed hit lost), no net-hits
+reinterpretation later. Listed: every changed picture (class, A, stretch margins). TEST not read.
+
+### Round 66 step 2 DEV result (jobs 31753011 stage 4, 31753012–14 stage-5 shards 0–2/3, 31753015 scoring + `nameall_dev.py`; `benchmark/gold/nameall_dev.json`): **FAIL — 3 needed hits lost, cost up**
+Same scoring (`merged_dev.py`): **D' = SHIP8+MD3+WW5+SL 29/58, 15 (6/7/2), 2.056 reproduced; D' + NAME-ALL 26/58, 12 (5/4/3), 2.141**
+(DEV 18/8, DEV2 8/4). Main rule: hits 26 < 29, needed hits lost on 3 clips -> no; fewer-pictures: cost 2.141 >= 2.056 -> no -> FAIL.
+(The scoring job's own `nameall_dev.py` call crashed on an import order — tagger_prep imported before the DEV gold read; fixed and
+re-run on the login node on the same outputs; `merged_dev.py` in the job printed the same rows.)
+**Changed pictures (A = NAME-ALL sound score):** silenced by A > 6.06 — storm_16200 Thunder (visible, 6.62), storm_7200 Thunder
+(visible, 6.50), ly_applause Crowd (cross, 6.88), tg_d088 Explosion 10.75 (cross, 7.88), tg_d127 Water (visible, 7.62) = 5 wrong
+removed; **as_explosion_XJ8lc3I6 Gunshot spec (A 6.25: hit 0.0–1.5 and cross 8.25–19.5 both gone), tg_d107 Laughter 8.92 (HIT, 8.12),
+tg_d149 Bee (HIT, 6.75) = 3 needed hits lost.** Un-silenced by A < 0.44 — ambient_citywalk_nyc_2627 Vehicle (visible, 0.25),
+un_driving_motorcycle_4O3bZRYO Air horn (visible, −0.25), tg_d016 Vehicle (phantom, −0.12) = 3 wrong added. **bell_miami Bell NOT
+rescued on DEV frames: stretch margins 0.25 / 2.88 / 1.12, A 1.12 >= t_lo** (gate-gold, clamped frames: 0.38). as_explosion
+Explosion 5.68: A −0.62 (kept, unchanged). Neither pre-written outcome happened: the bell was not gained and three hits were lost.
+**Per-video VLM cost (47 gated clips):** stretches median 3 (max 8); generations median 15 (max 40); prefill passes median 14 (max
+44) — about 10–15 s per stretch on an H200, on top of the shipped gate. Nothing ships; D' stays the shipped base; NAME_ALL stays
+default-off in `config.py`; TEST not read.

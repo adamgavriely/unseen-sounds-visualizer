@@ -527,12 +527,14 @@ def _ab(mdl, proc, question: str, opt_yes: str, opt_no: str, frames=None):
     with "cannot tell" -- usually ask an open question instead.
     """
     votes = []
+    global LAST_AB
+    LAST_AB = []                                          # Decision Inspector: the raw replies (logging only)
     for flip in (False, True):
         a, b = (opt_no, opt_yes) if flip else (opt_yes, opt_no)
         want = "b" if flip else "a"
-        reply = _ask(mdl, proc, question + chr(10) + "(a) " + a + chr(10) + "(b) " + b
-                     + chr(10) + "Answer with the letter only.",
-                     images=frames, max_new=6).strip().lower().lstrip("(")
+        q_ = question + chr(10) + "(a) " + a + chr(10) + "(b) " + b + chr(10) + "Answer with the letter only."
+        reply = _ask(mdl, proc, q_, images=frames, max_new=6).strip().lower().lstrip("(")
+        LAST_AB.append({"q": q_, "a": reply, "want": want})
         votes.append(reply[:1] == want)
     if all(votes):
         return True
@@ -548,6 +550,9 @@ DESCRIBE_PROMPT = (
 
 
 LAST_VOTES: dict = {}
+LAST_RAW = None              # Decision Inspector: raw answers of the last live _sound_is_visible (None = not asked live)
+LAST_AB: list = []           # Decision Inspector: raw replies of the last _ab
+LAST_TALK: list = []         # Decision Inspector: raw replies of the last _talked_about
 VOTE_LOG: list = []          # every (sound, stretch) verdict of the current clip, see decide_subjects
 
 
@@ -571,16 +576,21 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     """
     if not frames:
         return False, ""
-    named = _clean_phrase(_ask(mdl, proc, VISIBLE_PROMPT.format(label=label),
-                               images=frames, max_new=24), max_words=5)
+    global LAST_RAW
+    raw = {}                                              # Decision Inspector: every raw answer (logging only)
+    raw["name_q"] = VISIBLE_PROMPT.format(label=label)
+    raw["name_a"] = _ask(mdl, proc, raw["name_q"], images=frames, max_new=24)
+    named = _clean_phrase(raw["name_a"], max_words=5)
     low = named.lower()
     by_name = None
     if named and not low.startswith(("nothing", "none", "no ", "not ")):
         if _about_the_sound(named, label):
             by_name = True
+            raw["name_how"] = "the named thing shares a word with the sound"
         else:
-            reply = _ask(mdl, proc, MAKES_SOUND_PROMPT.format(named=named, label=label),
-                         max_new=6).strip().lower()
+            raw["name_ms_q"] = MAKES_SOUND_PROMPT.format(named=named, label=label)
+            reply = _ask(mdl, proc, raw["name_ms_q"], max_new=6).strip().lower()
+            raw["name_ms_a"] = reply
             by_name = reply.startswith("y")
     else:
         by_name = False
@@ -593,12 +603,13 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
                 "frames and visibly making that sound",
                 label + " is not visibly happening in these frames",
                 frames=frames)
+    raw["ab"] = list(LAST_AB)
 
     # Three independent readings of the same frames, majority wins. A cascade (decide
     # on two, consult the third only on a split) flipped between runs on a half-second
     # change in frame timing; three votes every time is steadier, and costs one call.
-    desc = _clean_phrase(_ask(mdl, proc, DESCRIBE_PROMPT, images=frames, max_new=48),
-                         max_words=25)
+    raw["desc_a"] = _ask(mdl, proc, DESCRIBE_PROMPT, images=frames, max_new=48)
+    desc = _clean_phrase(raw["desc_a"], max_words=25)
     # The description names things, not sounds: "a police car with its lights" is the
     # siren's source and "a gun on the back seat" is the gunshot's, and neither contains
     # the sound's word. So a description that does not name the sound outright is put to
@@ -606,9 +617,14 @@ def _sound_is_visible(label: str, frames, mdl, proc, device: str = "cpu"):
     by_desc = _about_the_sound(desc, label) or (
         named != "nothing" and by_name is True and _about_the_sound(desc, named))
     if not by_desc and desc:
-        reply = _ask(mdl, proc, MAKES_SOUND_PROMPT.format(named=desc, label=label),
-                     max_new=6).strip().lower()
+        raw["desc_ms_q"] = MAKES_SOUND_PROMPT.format(named=desc, label=label)
+        reply = _ask(mdl, proc, raw["desc_ms_q"], max_new=6).strip().lower()
+        raw["desc_ms_a"] = reply
         by_desc = reply.startswith("y")
+    elif by_desc:
+        raw["desc_how"] = "the description names the sound (or the named thing)"
+    raw["desc"] = desc
+    LAST_RAW = raw
     votes = [by_name, by_ab, by_desc]
     # exposed for benchmark/gate_dev_sweep.py, which re-decides from the raw votes;
     # nothing on the inference path reads it
@@ -738,8 +754,12 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
                     break
                 left = _subtract(fam, mem)
                 if left:
+                    _o = (fam.event_label, fam.start, fam.end, fam.confidence)
                     fam.spans = left
                     fam.start, fam.end = left[0]
+                    _trail_note("dedup", _o, "move" if (_o[1], _o[2]) != (fam.start, fam.end) else "pass", new_span=fam,
+                                value="bursts kept: " + ", ".join(format(x, ".2f") + "-" + format(y, ".2f") for x, y in left),
+                                note="family " + fam.event_label + " keeps only its bursts outside " + mem.event_label)
                     print("       [stage5] " + fam.event_label + " keeps "
                           + str(len(left)) + " burst(s) outside " + mem.event_label,
                           flush=True)
@@ -769,6 +789,10 @@ def _dedup(active, mdl, proc, device: str = "cpu") -> None:
         mine = list(getattr(spec, "spans", None) or [(spec.start, spec.end)])
         theirs = list(getattr(keep_spec, "spans", None) or [(keep_spec.start, keep_spec.end)])
         keep_spec.spans = sorted(set(theirs + mine))
+        _trail_note("dedup", spec, "merge", new_span=keep_spec,
+                    value=(format(float(score), ".3f") if why.startswith(("same sound", "similarity")) else why),
+                    bar="SigLIP similarity of the two depictions >= " + format(sure, ".2f") + " (or same family / identical)",
+                    note="same picture as " + keep_spec.event_label + " (" + why + "): shown during both sounds' bursts")
         spec.augment = False
         spec.subject = ""
         spec.image_prompt = ""
@@ -827,19 +851,29 @@ def _disambiguate(specs, video_path, mdl, proc, frames_per_sound: int = 4) -> No
             if not win:
                 continue
             # both orderings, agreement required -- the 7B model has a letter bias
-            picks = []
+            picks, _asks = [], []
             for first, second in ((a, b), (b, a)):
-                reply = _ask(mdl, proc, DISAMBIG_PROMPT.format(
-                    a=first.event_label, b=second.event_label), images=win,
-                    max_new=6).strip().lower().lstrip("(")[:1]
+                _q = DISAMBIG_PROMPT.format(a=first.event_label, b=second.event_label)
+                _full = _ask(mdl, proc, _q, images=win, max_new=6)
+                reply = _full.strip().lower().lstrip("(")[:1]
+                _pk = {"a": first, "b": second}.get(reply)
+                _asks.append({"who": "Qwen3.8-27B on " + str(len(win)) + " frames", "q": _q, "a": _full,
+                              "vote": _pk.event_label if _pk is not None else "cannot tell"})
                 picks.append({"a": first, "b": second}.get(reply))
             winner = picks[0] if picks[0] is not None and picks[0] is picks[1] else None
             print("       [stage5] one sound, two names? " + a.event_label + " / "
                   + b.event_label + " -> "
                   + (winner.event_label if winner else "kept both"), flush=True)
             if winner is None:
+                for _s in (a, b):
+                    _trail_note("disambiguate", _s, "pass", asks=_asks, bar="both orders pick the same label",
+                                note="one sound, two names? the frames do not settle it: both kept")
                 continue
             loser = b if winner is a else a
+            _trail_note("disambiguate", loser, "drop", asks=_asks, bar="both orders pick the same label",
+                        note="same sound as " + winner.event_label + "; the frames say it is that one")
+            _trail_note("disambiguate", winner, "pass", asks=_asks, bar="both orders pick the same label",
+                        note="the frames pick this label over " + loser.event_label)
             loser.augment = False
             loser.subject = ""
             loser.image_prompt = ""
@@ -1442,12 +1476,14 @@ def _talked_about(label: str, speech: str, mdl, proc, flip: bool = False) -> boo
     costs one extra short call per sound that has speech near it.
     """
     votes = []
+    global LAST_TALK
+    LAST_TALK = []
     for fl in (False, True):
         opt_a, opt_b = (SPEECH_NO, SPEECH_YES) if fl else (SPEECH_YES, SPEECH_NO)
         want = "b" if fl else "a"
-        reply = _ask(mdl, proc, SPEECH_PROMPT.format(label=label, speech=speech,
-                                                     opt_a=opt_a, opt_b=opt_b),
-                     max_new=6).strip().lower().lstrip("(")
+        q_ = SPEECH_PROMPT.format(label=label, speech=speech, opt_a=opt_a, opt_b=opt_b)
+        reply = _ask(mdl, proc, q_, max_new=6).strip().lower().lstrip("(")
+        LAST_TALK.append({"q": q_, "a": reply, "want": want})
         votes.append(reply[:1] == want)
     verdict = all(votes)
     print("       [stage5] talked about? " + label + " <- \"" + speech[:60]
@@ -1569,6 +1605,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     pictures ("Hiccup on the phone, slow down, how many"). Speech is evidence for the
     gate, never material for the illustrator.
     """
+    global LAST_RAW
     VOTE_LOG.clear()
     from src.stage2_video_understanding import _sample_frames, _sample_frames_at
     active = [s for s in specs if s.augment]
@@ -1595,7 +1632,10 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
             # had recorded only the confidence reason.
             if not spec.augment and "visible" in spec.reason:
                 continue
-            if _talked_about(spec.event_label, said, mdl, proc):
+            _was = spec.augment
+            _tk = _talked_about(spec.event_label, said, mdl, proc)
+            _trail_speech(spec, said, _tk, _was)
+            if _tk:
                 spec.talked_about = True
                 if not spec.augment:
                     spec.augment = True
@@ -1628,6 +1668,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     # where its source is on screen.
     if getattr(config, "VLM_VISIBILITY", True):
         STRETCH = float(getattr(config, "VISIBILITY_STRETCH", 5.0))
+        name_all = getattr(config, "NAME_ALL", None)      # Round 66: (t_lo, t_hi) or None
+        na_keep = set()                                   # ids of specs NAME-ALL un-silenced (exempt from kinship)
         for spec in active:
             bursts = list(getattr(spec, "spans", None) or [(spec.start, spec.end)])
             pieces = []
@@ -1635,7 +1677,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 k = max(1, int(round((b - a) / STRETCH)))
                 edges = [a + (b - a) * i / k for i in range(k + 1)]
                 pieces += list(zip(edges, edges[1:]))
-            kept, named_any = [], ""
+            kept, named_any, na_m, na_best = [], "", [], ""
+            _gst = []                                     # Decision Inspector: per-stretch votes + raw answers
             for a, b in pieces:
                 # a second before to a second after each stretch, six frames: a short
                 # sound is not one frame, and the cause is often legible from what
@@ -1646,7 +1689,10 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 win = _sample_frames_at(Path(video_path), times)
                 if id(spec) not in spec_frames:
                     spec_frames[id(spec)] = win
+                LAST_RAW = None
                 seen, named = _sound_is_visible(spec.event_label, win, mdl, proc, sim_device)
+                _gst.append({"stretch": (a, b), "seen": bool(seen), "votes": dict(LAST_VOTES), "raw": LAST_RAW,
+                             "frames": [round(t, 2) for t in times], "n_frames": len(win or [])})
                 # Round 14 amendment F, FIX-GATE: a "visible" verdict that names no object on screen is not a sighting
                 # (the ambulance Vehicle: voted seen, named nothing) -> not visible
                 fixed = False
@@ -1663,14 +1709,35 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                           + (" -> NOT seen" if box.get("flip") else " -> unchanged"), flush=True)
                 # raw votes per sound per stretch, dumped by the pipeline to gate_votes.json so
                 # that the silence rule (majority / unanimous) can be re-decided on CPU later
+                na = None
+                if name_all:                                  # Round 66 NAME-ALL: the stretch's crop margin (logged)
+                    from src.stage5_cross_modal_analysis import nameall as _NA
+                    na = _NA.stretch_margin(spec.event_label, win, mdl, proc)
+                    na_m.append(na["m"])
+                    if na["m"] is not None and na["cands"] and not na_best:
+                        na_best = max((c for c in na["cands"] if "m" in c), key=lambda c: c["m"], default={}).get("phrase", "")
                 VOTE_LOG.append({"label": spec.event_label, "start": spec.start, "end": spec.end,
                                  "confidence": spec.confidence, "stretch": [a, b], "seen": bool(seen),
                                  **{k: v for k, v in LAST_VOTES.items()}, **({"fix_gate": True} if fixed else {}),
-                                 **({"box": {k: v for k, v in box.items() if k != "bbox_1000"}} if box else {})})
+                                 **({"box": {k: v for k, v in box.items() if k != "bbox_1000"}} if box else {}),
+                                 **({"nameall": na} if na is not None else {})})
                 if seen:
                     named_any = named
                 else:
                     kept.append((a, b))
+            if name_all:
+                # Round 66 NAME-ALL, two-sided: A = the floor(n/2)+1-th largest stretch margin; silenced iff (gate silenced
+                # AND NOT A < t_lo) OR A > t_hi. A sound with no crop on most stretches (A = -inf) is never un-silenced.
+                from src.stage5_cross_modal_analysis import nameall as _NA
+                A, (t_lo, t_hi) = _NA.sound_score(na_m), name_all
+                if not kept and A != float("-inf") and A < t_lo:
+                    kept = pieces[:1]
+                    na_keep.add(id(spec))
+                    spec.reason += f" | gate: visible, but NAME-ALL crop margin {A:.2f} < {t_lo} (Round 66) - kept"
+                    print(f"       [stage5] NAME-ALL kept {spec.event_label}: A {A:.2f}", flush=True)
+                elif kept and A > t_hi:
+                    kept, named_any = [], (na_best or "NAME-ALL crop")
+                    print(f"       [stage5] NAME-ALL silenced {spec.event_label}: A {A:.2f} ({named_any})", flush=True)
             if not kept and getattr(config, "ACTIVITY_GATE", False) and _not_producing(spec, video_path, mdl, proc):
                 # Round 14 amendment I2: the source is on screen but not visibly PRODUCING the sound at its onset -> keep
                 kept = pieces[:1]
@@ -1682,6 +1749,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 kept = pieces[:1]
                 spec.reason += " | gate: source visible, sound-making hidden inside it (Round 64) - kept"
                 print("       [stage5] concealed-action kept " + spec.event_label, flush=True)
+            _trail_gate(spec, _gst, pieces, kept)
             if not kept:
                 spec.augment = False
                 spec.subject = ""
@@ -1721,7 +1789,10 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                     continue
                 if spec.event_label in (getattr(config, "CONCEALED_ACTION", None) or ()):
                     continue                     # Round 64: never silenced as a kind of a visible source
+                if id(spec) in na_keep:
+                    continue                     # Round 66: NAME-ALL un-silenced it on its own crops
                 if same_source(spec.event_label, g.event_label) and _overlap(spec, g):
+                    _trail_kin(spec, g)
                     spec.augment = False
                     spec.subject = ""
                     spec.image_prompt = ""
@@ -1840,6 +1911,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 phrase = with_maker(spec, phrase, spec_frames.get(id(spec)), mdl, proc,
                                     codetected=codetected_for(spec, specs))
             spec.subject = phrase
+            _trail_note("depiction", spec, "pass", note="picture subject: " + phrase,
+                        value="source " + (getattr(spec, "source", "") or "-"))
             spec.reason += " | depiction (v3, source " + (getattr(spec, "source", "") or "-") + "): " + phrase
             spec.image_prompt = spec.subject
             print("       [stage5] " + spec.event_label + " [" + (getattr(spec, "source", "") or "-")
@@ -1903,3 +1976,89 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     active = [s for s in specs if s.augment]
     if active:
         _dedup(active, mdl, proc, sim_device)
+
+
+# ----------------------------------------------------------------------------- Decision Inspector hooks (logging only)
+def _trail_note(step, spec, res, **kw):
+    try:
+        from src import trail as _T
+        _T.decide(step, spec, res, **kw)
+    except Exception:
+        pass
+
+
+def _trail_speech(spec, said, talked, was_shown):
+    try:
+        from src import trail as _T
+        asks = [{"who": "Qwen3.8-27B (text), order " + str(i + 1), "q": r["q"], "a": r["a"],
+                 "vote": "reacting" if r["a"][:1] == r["want"] else "not referring"} for i, r in enumerate(LAST_TALK)]
+        if talked and not was_shown:
+            res, note = "rescue", "marginal sound people react to: shown"
+        elif talked:
+            res, note = "pass", "people react to it (row priority)"
+        else:
+            res, note = ("pass" if was_shown else "skip"), "not both orders say 'reacting'"
+        _T.decide("speech_rescue", spec, res, asks=asks, value='speech: "' + said + '"', bar="both orders say 'reacting'",
+                  note=note)
+    except Exception:
+        pass
+
+
+def _yn(t):
+    return {True: "seen", False: "not seen", None: "split"}.get(t, str(t))
+
+
+def _trail_gate(spec, stretches, pieces, kept):
+    """one gate record per sound: the stretch votes (name / a-b / describe) with every raw answer when asked live"""
+    try:
+        from src import trail as _T
+        asks = []
+        n_seen = sum(1 for x in stretches if x["seen"])
+        lab = spec.event_label
+        for k, x in enumerate(stretches):
+            a, b = x["stretch"]
+            v, r = x["votes"] or {}, x["raw"]
+            tag = ("stretch " + str(k + 1) + " (" + format(a, ".2f") + "-" + format(b, ".2f") + " s, "
+                   + str(x["n_frames"]) + " frames " + format(x["frames"][0], ".2f") + "-" + format(x["frames"][-1], ".2f") + " s)")
+            if r is None:                                 # verdict reused from a stored gate run: votes only
+                asks.append({"who": "Q-name, " + tag, "q": VISIBLE_PROMPT.format(label=lab),
+                             "a": str(v.get("named")) + "  [raw answer not stored: verdict reused]", "vote": _yn(v.get("name"))})
+                asks.append({"who": "Q-ab (both orders), " + tag,
+                             "q": "These frames are from the moment a sound of " + lab + " was heard. Judge from the frames alone. "
+                                  "(a) you can SEE " + lab + " happening on screen -- the source is in the frames and visibly making "
+                                  "that sound (b) " + lab + " is not visibly happening in these frames. Answer with the letter only.",
+                             "a": "[raw answers not stored: verdict reused]", "vote": _yn(v.get("ab"))})
+                asks.append({"who": "Q-desc, " + tag, "q": DESCRIBE_PROMPT, "a": "[raw description not stored: verdict reused]",
+                             "vote": _yn(v.get("desc"))})
+                continue
+            asks.append({"who": "Q-name, " + tag, "q": r.get("name_q", ""), "a": r.get("name_a", ""), "vote": _yn(v.get("name"))})
+            if r.get("name_ms_q"):
+                asks.append({"who": "Q-name follow-up, " + tag, "q": r["name_ms_q"], "a": r.get("name_ms_a", ""),
+                             "vote": _yn(v.get("name"))})
+            for i, ab in enumerate(r.get("ab") or []):
+                asks.append({"who": "Q-ab order " + str(i + 1) + ", " + tag, "q": ab["q"], "a": ab["a"],
+                             "vote": "seen" if ab["a"][:1] == ab["want"] else "not seen"})
+            asks.append({"who": "Q-desc, " + tag, "q": DESCRIBE_PROMPT, "a": r.get("desc_a", ""), "vote": _yn(v.get("desc"))})
+            if r.get("desc_ms_q"):
+                asks.append({"who": "Q-desc follow-up, " + tag, "q": r["desc_ms_q"], "a": r.get("desc_ms_a", ""),
+                             "vote": _yn(v.get("desc"))})
+        yn3 = lambda t: {True: "yes", False: "no", None: "split"}.get(t, "?")
+        detail = "; ".join("stretch " + str(k + 1) + ": " + ("seen" if x["seen"] else "not seen") + " (name "
+                           + yn3((x["votes"] or {}).get("name")) + ", a/b " + yn3((x["votes"] or {}).get("ab")) + ", desc "
+                           + yn3((x["votes"] or {}).get("desc")) + "; named '" + str((x["votes"] or {}).get("named")) + "')"
+                           for k, x in enumerate(stretches))
+        live = all(x["raw"] is not None for x in stretches)
+        _T.decide("gate", spec, "pass" if kept else "drop", asks=asks,
+                  value=str(n_seen) + " of " + str(len(pieces)) + " stretches seen",
+                  bar="silenced only if every stretch is seen (majority of the 3 questions per stretch)",
+                  note=detail + ("" if live else " | verdicts reused from the stored gate run (raw answers not stored)"),
+                  live="yes" if live else "no")
+    except Exception as ex:
+        _trail_note("trail_error", ("", 0.0, 0.0), "skip", note="gate: " + type(ex).__name__ + ": " + str(ex))
+
+
+def _trail_kin(spec, g):
+    _trail_note("family_rule", spec, "drop", value="overlaps " + g.event_label + " " + format(g.start, ".2f") + "-"
+                + format(g.end, ".2f") + " s, which the gate found visible",
+                bar="a visible sound silences the same label or a more general one at the same moment",
+                note="a kind of " + g.event_label + ", whose source is visible - stay silent")

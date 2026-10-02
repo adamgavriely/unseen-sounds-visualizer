@@ -23,6 +23,72 @@ import numpy as np
 
 import config
 from src.types import AudioEvent
+from src import trail as _T
+from src import trail_ctx as _C
+
+
+def _tr(fn) -> None:
+    """Decision Inspector hook (src/trail.py): run a logging callable; an error is recorded, never raised (logging only)."""
+    try:
+        fn()
+    except Exception as ex:                                   # pragma: no cover - a hook must never change the run
+        _T.decide("trail_error", ("", 0.0, 0.0), "skip", note=f"{type(ex).__name__}: {ex}")
+
+
+def log_refine(a, b) -> None:
+    """onset refinement: a = the span before, b = after (logging only)"""
+    if abs(float(a.start) - float(b.start)) > 1e-9:
+        _T.decide("onset_refine", a, "move", value=f"start {a.start:.2f} -> {b.start:.2f}",
+                  bar="occlusion onset: first cut removing 10 % of the evidence; later only", new_span=b)
+
+
+def log_twin(e, olds) -> None:
+    """twin rule: FlexSED span e absorbed by its BEATs twin(s); olds = [(b, (label, start, end, conf) before)]"""
+    for b, o in olds:
+        moved = abs(float(o[1]) - float(b.start)) > 1e-9
+        _T.decide("twin_union", o, "move" if moved else "pass",
+                  value=f"conf {o[3]:.3f} -> {b.confidence:.3f}; start {o[1]:.2f} -> {b.start:.2f}",
+                  bar="same family within 1 s; earlier start; conf = max(BEATs/0.35, FlexSED/0.8) x 0.35",
+                  note=f"absorbed FlexSED {e.label} {e.start:.2f}-{e.end:.2f} (peak {e.confidence:.3f})",
+                  new_span=b if moved else None, origin="beats + flexsed")
+    if olds:
+        b = olds[0][0]
+        _T.decide("twin_union", e, "merge", note=f"absorbed into the BEATs span {b.label} {b.start:.2f}-{b.end:.2f}",
+                  new_span=b, origin="flexsed")
+
+
+def log_listener_keep(step, e, ok, ok1, how) -> None:
+    """F7: a mirror-vetoed span kept by the listener (P1 rule how, then K-V4)"""
+    asks = _C.p1_rule(e, how)
+    kv4 = bool(getattr(config, "KEEP_NEEDS_V4", False))
+    if ok1 and kv4:
+        asks += [_C.qwen_v4_p1(e), _C.af_v4_p1(e)]
+    _T.decide(step, e, "rescue" if ok else "skip", asks=asks,
+              bar=f"Qwen rule {how} accepts" + (" and an open list names it (K-V4)" if kv4 else ""),
+              note="kept by the listener" if ok else ("the Qwen rule accepts but no open list names it" if ok1
+                                                      else "the listener does not accept it: the drop stands"))
+
+
+def log_panns(pre, flex_only, ppeak, veto2, keep_b, bit, listen_on, key) -> None:
+    """PANNs clip veto on FlexSED-only spans + the listener keep (b)"""
+    for e in pre:
+        if id(e) not in flex_only:
+            continue
+        v = ppeak.get(key(e))
+        val = f"PANNs clip max of {key(e)} {v:.3f}" if v is not None else "PANNs has no class for this family (1.0)"
+        if v is None or v >= veto2:
+            _T.decide("panns_clip_veto", e, "pass", value=val, bar=f">= {veto2}")
+            continue
+        _T.decide("panns_clip_veto", e, "drop", value=val, bar=f">= {veto2}, else the listeners must keep it")
+        if not listen_on:
+            continue
+        it = bit.get(id(e))
+        if it is None:
+            _T.decide("listener_keep", e, "skip", note="no listener answers cached for this span (not asked): the drop stands")
+        else:
+            _T.decide("listener_keep", e, "rescue" if id(e) in keep_b else "skip", asks=_C.tier_item(it),
+                      bar="TIER on the PV item: peak >= 0.6 Qwen V4; below Qwen V4 AND AF V4",
+                      note="kept by the listeners (rescued)" if id(e) in keep_b else "the listeners do not confirm it")
 
 # Onset provenance (2026-09-24). Three reviewers gave three different accounts of which step moves
 # an onset earlier, and none of them reconciles with the cached detector scores end to end: the
@@ -71,7 +137,7 @@ def _infer(wav_path: Path, device: str = "cpu") -> Tuple[np.ndarray, np.ndarray,
 
 
 def _extract_events(framewise, times, labels, threshold, top_k, min_dur,
-                    low: float = None) -> List[AudioEvent]:
+                    low: float = None, step: str = None) -> List[AudioEvent]:
     """Turn framewise probabilities into contiguous (label, start, end) spans.
 
     Double threshold (hysteresis), the standard SED post-processing: a span counts only
@@ -119,6 +185,15 @@ def _extract_events(framewise, times, labels, threshold, top_k, min_dur,
             if end - start >= min_dur:
                 events.append(AudioEvent(label=labels[c], start=start, end=end,
                                          confidence=float(framewise[i:j, c].max())))
+                if step:                                   # Decision Inspector (logging only)
+                    _tr(lambda: _T.decide(step, events[-1], "pass", value=f"peak {events[-1].confidence:.3f}, {end - start:.2f} s",
+                                          bar=f"peak >= {threshold:.3f}, length >= {min_dur:.2f} s",
+                                          origin="beats" if step == "beats_extract" else "flexsed"))
+            elif step:
+                _tr(lambda: _T.decide(step, (labels[c], start, end, float(framewise[i:j, c].max())), "drop",
+                                      value=f"length {end - start:.2f} s (peak {float(framewise[i:j, c].max()):.3f})",
+                                      bar=f"length >= {min_dur:.2f} s", note="too short",
+                                      origin="beats" if step == "beats_extract" else "flexsed"))
             i = j
     events.sort(key=lambda e: (e.start, -e.confidence))
     return events
@@ -220,7 +295,8 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
         return []
 
     low = threshold * float(getattr(config, "AED_HYSTERESIS", 1.0))
-    events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low)
+    events = _extract_events(framewise, times, labels, threshold, top_k, min_dur, low=low,
+                             step="beats_extract" if backend == "BEATs" else None)
     TRACE.clear()
     trace("extract", events, backend)
     flex_ids = set()          # spans FlexSED raised alone: frame-level already, never re-anchored
@@ -252,9 +328,11 @@ def detect_events(wav_path: Path, threshold: float = 0.2, top_k: int = None,
             print(f"       [stage4] FlexSED cache missing ({e}); BEATs alone", flush=True)
     trace("veto", events, "after the cross-detector and PANNs vetoes")
     if backend == "BEATs" and getattr(config, "ONSET_CAM", True):
+        _pre = list(events)
         events = _refine_onsets_cam(Path(wav_path), events, labels, device,
                                     skip_ids=flex_ids)
         trace("refine", events, "after occlusion onset refinement")
+        _tr(lambda: [log_refine(a, b) for a, b in zip(_pre, events)])
     cap = getattr(config, "MAX_SPAN", None)      # v4ab3/v4b3: a picture never stays longer than this (docs/prereg_v4.md)
     if cap:
         for e in events:
@@ -546,15 +624,20 @@ def _mirror_veto(events, keep_ids, ffw, ftimes, flabels, bar: float, own_max: fl
             out.append(e); continue
         own = [i for i, f in enumerate(fams) if f == canonical(e.label)]
         if not own:
+            _tr(lambda: _T.decide("mirror_veto", e, "pass", note="FlexSED has no query for this family"))
             out.append(e); continue
         m = (ft >= e.start) & (ft < e.end)
         if not m.any():
             m = np.zeros(len(ft), bool); m[int(np.argmin(np.abs(ft - 0.5 * (e.start + e.end))))] = True
         pk = ffw[m].max(axis=0)
         top = int(np.argmax(pk))
+        _val = lambda: (f"FlexSED top here: {flabels[top]} ({fams[top]}) {float(pk[top]):.3f}; "
+                        f"own family {canonical(e.label)} {float(pk[own].max()):.3f}")
         if fams[top] != canonical(e.label) and float(pk[top]) >= bar and float(pk[own].max()) < own_max:
+            _tr(lambda: _T.decide("mirror_veto", e, "drop", value=_val(), bar=f"drop if another family >= {bar} and own < {own_max}"))
             dropped.append(e)
             continue
+        _tr(lambda: _T.decide("mirror_veto", e, "pass", value=_val(), bar=f"drop if another family >= {bar} and own < {own_max}"))
         out.append(e)
     return out, dropped
 
@@ -805,7 +888,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 n += 1
         print(f"       [stage4] per-family bars applied to {n} of {len(flabels)} queries", flush=True)
     fev = _extract_events(ffw, ftimes, flabels, fbar, None, min_dur,
-                          low=fbar * float(getattr(config, "AED_HYSTERESIS", 1.0)))
+                          low=fbar * float(getattr(config, "AED_HYSTERESIS", 1.0)), step="flexsed_extract")
     # Round 13, R13-5 (docs/prereg_round13_detector_push.md): an impulsive sound (gunshot, gasp, hammer, explosion,
     # knock) is short by physics, so the 0.5-s minimum span cuts it; for those FlexSED queries the minimum is
     # IMPULSE_MIN_SPAN instead (same bar, same vetoes). None = off.
@@ -856,6 +939,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             # (1 s), since a start 4-14 s earlier is by definition a different moment; "beats"
             # keeps BEATs' own start and lets FlexSED only confirm.
             rule = str(getattr(config, "UNION_START", "min"))
+            _olds = [(b, (b.label, b.start, b.end, b.confidence)) for b in twin]     # Decision Inspector (logging only)
             for b in twin:
                 twinned.add(id(b))
                 # Round 13, R13-1: the merged span keeps the stronger side's evidence, each side normalised by its own
@@ -869,8 +953,11 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     b.start = max(min(b.start, e.start), b.start - 1.0)
                 else:
                     b.start = min(b.start, e.start)
+            _tr(lambda: log_twin(e, _olds))
         else:
             fresh.append(e)
+            _tr(lambda: _T.decide("twin_union", e, "pass", note="no BEATs span of this family within 1 s: FlexSED-only span",
+                                  origin="flexsed"))
     if ts_f:
         fresh = [e for e in fresh if id(e) not in ts_f]          # R56: a case-2 short FlexSED span that did not twin
     # Detector round 2026-09-27 (docs/prereg_v4.md amendment 22): at a LOWER FlexSED bar, a span FlexSED
@@ -912,8 +999,10 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             back = []
             for e in dropped:
                 ok, how = listener_p1(e.label, e.start, e.end)
+                ok1 = ok
                 if ok and getattr(config, "KEEP_NEEDS_V4", False):
                     ok = _v4_names(e)                              # round 21 K-V4
+                _tr(lambda: log_listener_keep("mirror_keep", e, ok, ok1, how))
                 LISTENER_STATS.setdefault("f7", []).append([e.label, round(e.start, 2), round(e.end, 2), ok, how])
                 if ok:
                     back.append(e)
@@ -932,8 +1021,12 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             tw = locals().get("twinned", set())
             for e in [e for e in events if id(e) not in flex_ids and id(e) not in tw and e.confidence < 0.5]:
                 m = (T >= e.start - 1e-6) & (T <= e.end + 1e-6)
+                _mv = (lambda: f"BEATs conf {e.confidence:.3f} < 0.5; Speech/Music max in span "
+                       + (f"{float(np.asarray(framewise)[m][:, sm].max()):.3f}" if m.any() else "n/a"))
                 if getattr(config, "MASKED_WEAK_NEED_MASK", True) and (
                         not m.any() or float(np.asarray(framewise)[m][:, sm].max()) < 0.3):
+                    _tr(lambda: _T.decide("masked_weak", e, "pass", value=_mv(), bar="applies when Speech/Music >= 0.3",
+                                          note="not under speech or music"))
                     continue                                     # round 18 N2c drops the masking condition
                 if getattr(config, "MASKED_WEAK_PANNS", False):
                     # round 21 N2e: the trigger is "PANNs does not reach its clip-veto bar for the family inside the span"
@@ -946,16 +1039,27 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     except RuntimeError:
                         continue
                 ok, how = listener_p1(e.label, e.start, e.end) if listener_p1 is not None else (False, "missing")
+                ok1 = ok
                 if ok and getattr(config, "KEEP_NEEDS_V4", False):
                     ok = _v4_names(e)                              # round 21 K-V4
+                _n2asks = lambda: (_C.p1_rule(e, how) + ([_C.qwen_v4_p1(e)] if ok1 and getattr(config, "KEEP_NEEDS_V4", False) else [])
+                                   + [_C.af_v4_p1(e)])
+                _n2bar = "dropped unless the listener rule (P1 V12, and an open list names it) or AF V4 accepts"
                 if ok:
+                    _tr(lambda: _T.decide("masked_weak", e, "pass", value=_mv(), bar=_n2bar, asks=_n2asks(),
+                                          note=f"kept: Qwen rule {how} accepts"
+                                          + (" and an open list names it (K-V4)" if getattr(config, "KEEP_NEEDS_V4", False) else "")))
                     continue
                 if getattr(config, "MASKED_WEAK_AF", False) and _af_p1_accepts(e):   # round 18 N2b: or AF V4 on the P1 cut
+                    _tr(lambda: _T.decide("masked_weak", e, "pass", value=_mv(), bar=_n2bar, asks=_n2asks(),
+                                          note="kept: Audio Flamingo V4 accepts on the P1 cut"))
                     continue
                 if getattr(config, "MASKED_WEAK_MISSING_KEEP", False) and how == "missing":
                     continue                                     # round 21 N2c-D: no second opinion was asked -> keep
                 if getattr(config, "MASKED_WEAK_DASM_KEEP", False) and _dasm_keeps(e):
                     continue                                     # round 21 N2c-D: DASM >= F8's bar in the span +- 0.5 s
+                _tr(lambda: _T.decide("masked_weak", e, "drop", value=_mv(), bar=_n2bar, asks=_n2asks(),
+                                      note="weak BEATs-only span under speech or music; no listener keeps it"))
                 gone.append(e)
         if getattr(config, "FLEX_ONLY_CONFIRM", False):
             # round 18 N2d: a FlexSED-only span (no BEATs span of its family) is kept only if BEATs hears its family at all
@@ -994,12 +1098,26 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                 dpk[canonical(lab_)] = max(dpk.get(canonical(lab_), 0.0), float(z["fw"][:, i].max()))
             gone = []
             for e in events:
+                _dv = (lambda: f"DASM clip max of {canonical(e.label)} " + (f"{dpk[canonical(e.label)]:.4f}"
+                       if canonical(e.label) in dpk else "n/a (no DASM query: 1.0)"))
+                _dbar = f"clip max >= {float(dv):.4f}, else a listener must keep it"
                 if getattr(e, "rescued", False) or dpk.get(canonical(e.label), 1.0) >= float(dv) or id(e) in ts_ids:
+                    if not getattr(e, "rescued", False):
+                        _tr(lambda: _T.decide("dasm_clip_veto", e, "pass", value=_dv(), bar=_dbar))
                     continue
                 if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
+                    _tr(lambda: _T.decide("dasm_clip_veto", e, "pass", value=_dv(), bar=_dbar,
+                                          asks=_C.p1_rule(e, listener_p1(e.label, e.start, e.end)[1]),
+                                          note="below the bar, kept by the Qwen listener rule"))
                     continue
                 if _af_p1_accepts(e):
+                    _tr(lambda: _T.decide("dasm_clip_veto", e, "pass", value=_dv(), bar=_dbar, asks=[_C.af_v4_p1(e)],
+                                          note="below the bar, kept by Audio Flamingo V4"))
                     continue
+                _tr(lambda: _T.decide("dasm_clip_veto", e, "drop", value=_dv(), bar=_dbar,
+                                      asks=(_C.p1_rule(e, listener_p1(e.label, e.start, e.end)[1]) if listener_p1 is not None
+                                            else []) + [_C.af_v4_p1(e)],
+                                      note="DASM never hears this family in the clip; neither listener keeps it"))
                 gone.append(e)
             events = [e for e in events if e not in gone]
             print(f"       [stage4] DASM clip veto ({dv}): dropped {len(gone)} span(s)", flush=True)
@@ -1018,19 +1136,41 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     continue
                 cols = [i for i, l in enumerate(dl) if canonical(l) == canonical(e.label)]
                 m = (dt >= e.start - 0.5) & (dt <= e.end + 0.5)
+                _lv = (lambda: f"DASM max of {canonical(e.label)} in span +- 0.5 s "
+                       + (f"{float(dfw[m][:, cols].max()):.3f}" if cols and m.any() else "n/a (no DASM query or frames)"))
+                _lbar = (f"DASM >= {float(lv)}, else both listeners name it (one listener + scene check)" if mode == "both"
+                         else f"DASM >= {float(lv)}, else a listener keeps it")
                 if not cols or not m.any() or float(dfw[m][:, cols].max()) >= float(lv):
+                    _tr(lambda: _T.decide("dasm_local_veto", e, "pass", value=_lv(), bar=_lbar))
                     continue
                 if mode == "both":
                     q_, a_ = _v4_names_qwen(e), _af_p1_accepts(e)
+                    _wa = lambda: [_C.qwen_v4_p1(e), _C.af_v4_p1(e)]
                     if q_ and a_:
+                        _tr(lambda: _T.decide("dasm_local_veto", e, "pass", value=_lv(), bar=_lbar, asks=_wa(),
+                                              note="DASM below the bar; both listeners name it"))
                         continue
                     if q_ != a_ and getattr(config, "DASM_LOCAL_SCENE", None) and _scene_margin(e):
+                        _tr(lambda: _T.decide("dasm_local_veto", e, "pass", value=_lv(), bar=_lbar, asks=_wa(),
+                                              note="DASM below the bar; one listener names it ("
+                                              + ("Qwen" if q_ else "Audio Flamingo") + ") and the scene check says plausible"))
+                        _tr(lambda: _T.decide("scene_margin", e, "pass", asks=_C.scene_asks(e),
+                                              bar="yes-margin minus twin margin > 0 on most stretches", note="plausible: kept"))
                         continue                              # Round 60 SCENE-MARGIN: one ear + the VLM: credible here
+                    _sm = q_ != a_ and getattr(config, "DASM_LOCAL_SCENE", None)
+                    _tr(lambda: _T.decide("dasm_local_veto", e, "drop", value=_lv(), bar=_lbar, asks=_wa(),
+                                          note="DASM below the bar; " + ("one listener names it (" + ("Qwen" if q_ else "Audio Flamingo")
+                                                                         + ") but the scene check says not plausible"
+                                                                         if _sm else "neither listener names it")))
+                    if _sm:
+                        _tr(lambda: _T.decide("scene_margin", e, "drop", asks=_C.scene_asks(e),
+                                              bar="yes-margin minus twin margin > 0 on most stretches", note="not plausible: dropped"))
                 else:
                     if listener_p1 is not None and listener_p1(e.label, e.start, e.end)[0]:
                         continue
                     if _af_p1_accepts(e):
                         continue
+                    _tr(lambda: _T.decide("dasm_local_veto", e, "drop", value=_lv(), bar=_lbar))
                 gone.append(e)
             events = [e for e in events if e not in gone]
             print(f"       [stage4] DASM local veto ({lv}, keep {mode}): dropped {len(gone)} span(s)", flush=True)
@@ -1045,14 +1185,25 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             if getattr(e, "rescued", False) or e.confidence < disp:
                 continue
             q, a = _p1v4_lists(e)
+            _kbar = "an open list names the family (or a kind of it), else DASM >= 0.575 in span +- 0.5 s"
             if q is None or a is None:
+                _tr(lambda: _T.decide("k4a_inventory", e, "pass", bar=_kbar, note="not asked (no P1 open lists): kept"))
                 continue
             fam = canonical(e.label)
             names = set(q) | set(a)
+            _kv = lambda: "Qwen list: " + (", ".join(q) or "nothing") + "; AF list: " + (", ".join(a) or "nothing")
             if fam in names or (kall == "onto" and any(is_descendant(n, fam) for n in names)):
+                _tr(lambda: _T.decide("k4a_inventory", e, "pass", value=_kv(), bar=_kbar,
+                                      asks=[_C.qwen_v4_p1(e), _C.af_v4_p1(e)]))
                 continue
             if getattr(config, "KEEP_NEEDS_V4_ALL_DASM_KEEP", False) and _dasm_keeps(e):
+                _tr(lambda: _T.decide("k4a_inventory", e, "pass", value=_kv() + f"; DASM {_C.dasm_max(e):.3f}", bar=_kbar,
+                                      asks=[_C.qwen_v4_p1(e), _C.af_v4_p1(e)], note="no list names it; DASM keeps it"))
                 continue                                   # round 35 K4A-D: DASM >= F8's bar in the span +- 0.5 s keeps it
+            _tr(lambda: _T.decide("k4a_inventory", e, "drop",
+                                  value=_kv() + "; DASM " + (f"{_C.dasm_max(e):.3f}" if _C.dasm_max(e) is not None else "n/a"),
+                                  bar=_kbar, asks=[_C.qwen_v4_p1(e), _C.af_v4_p1(e)],
+                                  note="neither listener's open list names this family, and DASM does not hear it clearly"))
             gone.append(e)
         events = [e for e in events if e not in gone]
         print(f"       [stage4] K4A ({kall}): dropped {len(gone)} span(s)", flush=True)
@@ -1073,7 +1224,11 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
                     if 0.0 <= e.start - re_ <= 1.0 and 0.0 <= e.start - rs <= 1.5 and (best is None or rs > best):
                         best = rs
             if best is not None:
+                _o = (e.label, e.start, e.end, e.confidence)
                 e.start = best; n += 1
+                _tr(lambda: _T.decide("band_twin_pull", _o, "move", value=f"start {_o[1]:.2f} -> {best:.2f}",
+                                      bar=f"FlexSED run >= {btp} of the family ending 0-1.0 s before the start",
+                                      new_span=e))
         print(f"       [stage4] BTP ({btp}): pulled {n} span start(s)", flush=True)
     rps = getattr(config, "REPEAT_NEEDS_SILENCE", None)
     if rps and ffw is not None:
@@ -1137,16 +1292,25 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
         fa, ft = np.asarray(ffw), np.asarray(ftimes)
         gone = []
         for e in events:
+            _cbar = f"dropped if a FlexSED run (>= {cv}) of the family began >= 1.5 s earlier and is still going"
             if e.start < 1.5:
+                _tr(lambda: _T.decide("continuation_veto", e, "pass", bar=_cbar, note="starts in the first 1.5 s: exempt"))
                 continue
             hit = False
+            _hr = []
             for c in [i for i, lab_ in enumerate(flabels) if canonical(lab_) == canonical(e.label)]:
                 rr, dt = _runs(fa[:, c], ft, float(cv), LISTEN_RUN_GAP)
                 for i, j in rr:
                     if float(ft[i]) <= e.start - 1.5 and float(ft[j - 1]) + dt >= e.start:
                         hit = True
+                        _hr.append((flabels[c], float(ft[i]), float(ft[j - 1]) + dt, float(fa[i:j, c].max())))
             if hit:
+                _tr(lambda: _T.decide("continuation_veto", e, "drop", bar=_cbar,
+                                      value="; ".join(f"FlexSED {q} run {a:.2f}-{b:.2f} s (peak {p:.3f})" for q, a, b, p in _hr),
+                                      note="a later piece of a sound already going on"))
                 gone.append(e)
+            else:
+                _tr(lambda: _T.decide("continuation_veto", e, "pass", bar=_cbar))
         events = [e for e in events if e not in gone]
         print(f"       [stage4] CONT ({cv}): dropped {len(gone)} continuation span(s)", flush=True)
     veto = float(getattr(config, "FLEXSED_VETO", 0) or 0)
@@ -1156,6 +1320,12 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             peak[canonical(lab)] = max(peak.get(canonical(lab), 0.0), float(ffw[:, i].max()))
         before = len(events)
         sk = getattr(config, "STRONG_BEATS_KEEP", None)     # Round 52: a span BEATs is this sure of is not vetoed here
+        _tr(lambda: [_T.decide("flexsed_cross_veto", e,
+                               "pass" if (peak.get(key(e), 1.0) >= veto or (sk is not None and float(e.confidence) >= float(sk)))
+                               else "drop",
+                               value=(f"FlexSED clip max of {key(e)} {peak[key(e)]:.3f}" if key(e) in peak
+                                      else "FlexSED has no query for this family (1.0)"),
+                               bar=f"clip max >= {veto}") for e in events])
         events = [e for e in events if peak.get(key(e), 1.0) >= veto or (sk is not None and float(e.confidence) >= float(sk))]
         print(f"       [stage4] cross-detector veto (tau {veto}): dropped {before - len(events)} span(s)", flush=True)
     # Amendment 16 (2026-09-23): the veto above is one-sided -- it asks FlexSED about
@@ -1195,12 +1365,14 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             # guard exists to prevent.
             flex_only = {id(e) for e in fresh}          # raised by FlexSED, no BEATs twin
             before2 = len(events)
+            _pre2, _bit = list(events), {}              # Decision Inspector (logging only)
             if listen_on:
                 # R13-3 (b): a FlexSED >= bar span the PANNs clip veto would drop is kept when the listener, asked about
                 # the FlexSED 0.4-run that contains it, says the family is there (score > LISTENER_TH)
                 for e in events:
                     if id(e) in flex_only and ppeak.get(key(e), 1.0) < veto2:
                         it = listener(e.label, e.start, e.end, contain=True)
+                        _bit[id(e)] = it
                         LISTENER_STATS["b_asked"] += 1
                         if it is None:
                             LISTENER_STATS["b_missing"] += 1
@@ -1216,6 +1388,7 @@ def fuse_flexsed(events, framewise, times, labels, ffw, ftimes, flabels, min_dur
             events = [e for e in events
                       if id(e) not in flex_only or ppeak.get(key(e), 1.0) >= veto2 or id(e) in keep_b
                       or (skip is not None and e.confidence >= float(skip))]
+            _tr(lambda: log_panns(_pre2, flex_only, ppeak, veto2, keep_b, _bit, listen_on, key))
             print(f"       [stage4] PANNs veto (tau2 {veto2}) on FlexSED-only spans: "
                   f"dropped {before2 - len(events)} span(s)", flush=True)
         except Exception as e2:
@@ -1436,11 +1609,21 @@ def dasm_rescue_events(clip: str, present=None):
     if not (getattr(config, "DASM_RESCUE", False) and p):
         return []
     out = []
+    _sp = lambda x: (x["family"], float(x["start"]), float(x["end"]), float(x.get("peak") or 0.0))
+    _rbar = "both open lists (Qwen V4 and AF V4) name the family; family not already found in the clip"
     for x in _cache_items(p):
+        if x.get("clip") == clip and not (x.get("qwen_v4") and (x.get("accept") or {}).get("V4")):
+            _tr(lambda: _T.decide("dasm_rescue", _sp(x), "drop", value=f"DASM run peak {float(x.get('peak') or 0):.3f}",
+                                  bar=_rbar, asks=_C.p4_asks(x), origin="dasm", note="not both listeners name it"))
         if x.get("clip") == clip and x.get("qwen_v4") and (x.get("accept") or {}).get("V4"):
             if getattr(config, "DASM_RESCUE_NEW_ONLY", False) and present is not None and x["family"] in present:
+                _tr(lambda: _T.decide("dasm_rescue", _sp(x), "drop", value=f"DASM run peak {float(x.get('peak') or 0):.3f}",
+                                      bar=_rbar, asks=_C.p4_asks(x), origin="dasm",
+                                      note="both name it, but the family is already found in the clip (DR2: new families only)"))
                 continue                                              # round 20 DR2: new families only
             out.append(AudioEvent(x["family"], float(x["start"]), float(x["end"]), float(x["peak"]), rescued=True, agree=True))
+            _tr(lambda: _T.decide("dasm_rescue", _sp(x), "rescue", value=f"DASM run peak {float(x['peak']):.3f}", bar=_rbar,
+                                  asks=_C.p4_asks(x), origin="dasm", new_span=out[-1]))
     if out:
         print(f"       [stage4] DASM rescue: {len(out)} span(s) {[(e.label, round(e.start, 2)) for e in out]}", flush=True)
     return out
@@ -1689,8 +1872,13 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
             if getattr(e, "rescued", False) and canonical(e.label) in fl:
                 c = fl.index(canonical(e.label))
                 m = (fe_ > e.start) & (fs_ < e.end)
+                _fv = lambda: f"FineLAP max {float(sc[m, c].max()):.3f}" if m.any() else "no FineLAP segment overlaps"
                 if m.any() and float(sc[m, c].max()) < float(flv):
+                    _tr(lambda: _T.decide("finelap_veto", e, "drop", value=_fv(), bar=f">= {flv}"))
                     dropped["FLAP"].append([e.label, round(e.start, 2)]); continue
+                _tr(lambda: _T.decide("finelap_veto", e, "pass", value=_fv(), bar=f">= {flv}"))
+            elif getattr(e, "rescued", False):
+                _tr(lambda: _T.decide("finelap_veto", e, "pass", note="FineLAP has no label for this family"))
             keep.append(e)
         events = keep
     resc = [e for e in events if getattr(e, "rescued", False)]
@@ -1763,6 +1951,7 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
             if _ctx_bypass(e):
                 dropped.setdefault("F8_ctx_bypassed", []).append(sig(e)); continue   # Round 59 CONTEXT (b)
             if dasm is None:
+                _tr(lambda: _T.decide("dasm_vote", e, "pass", note="no DASM scores for this clip: kept"))
                 dropped.setdefault("F8_no_dasm", []).append(sig(e)); continue
             dfw, dts, dl = dasm
             cols = [i for i, l in enumerate(dl) if canonical(l) == canonical(e.label)]
@@ -1775,6 +1964,9 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
                 kth = np.sort(sub, axis=1)[:, -int(rk)]
                 v = 1.0 if bool((sub[:, cols].max(axis=1) >= kth).any()) else 0.0
                 bar = 0.5
+            _tr(lambda: _T.decide("dasm_vote", e, "drop" if v < bar else "pass",
+                                  value=(f"DASM max {v:.3f} in span +- {pad} s" if cols else "no DASM query for this family"),
+                                  bar=f">= {bar}"))
             if v < bar:
                 drop.add(id(e)); dropped["F8"].append(sig(e) + [round(v, 3) if cols else "no DASM query"])
     if f1:
@@ -1804,8 +1996,11 @@ def filter_rescued(events, ffw, ftimes, flabels, dasm=None):
         for e in sorted([e for e in resc if id(e) not in drop], key=lambda e: (e.start, e.end)):
             fam = canonical(e.label)
             if fam in first and (gap is None or e.start - first[fam].start <= float(gap)):
+                _tr(lambda: _T.decide("rescue_once", e, "drop", bar="earliest rescued span per family",
+                                      value=f"an earlier rescued {fam} at {first[fam].start:.2f}-{first[fam].end:.2f} s"))
                 drop.add(id(e)); dropped["ONCE"].append(sig(e) + ["not the first"])
             else:
+                _tr(lambda: _T.decide("rescue_once", e, "pass", bar="earliest rescued span per family"))
                 first[fam] = e
     return [e for e in events if id(e) not in drop], dropped
 
@@ -1840,7 +2035,10 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 continue
             LISTENER_STATS["a_asked"] += 1
             it = listener(lab, a, b)
+            _bbar = f"FlexSED run peak in [{lo}, {fbar}); TIER: peak >= {getattr(config, 'TIER_SPLIT', 0.6)} Qwen V4, below Qwen V4 AND AF V4"
             if it is None:
+                _tr(lambda: _T.decide("band_rescue", (lab, a, b, pk), "drop", value=f"FlexSED run peak {pk:.3f}", bar=_bbar,
+                                      note="no listener answers cached for this run (not asked)", origin="flexsed band"))
                 LISTENER_STATS["a_missing"] += 1
                 LISTENER_STATS["a_missing_list"].append([lab, round(a, 2), round(b, 2), round(pk, 3)])
                 continue
@@ -1858,7 +2056,13 @@ def _listener_band(events, flex_ids, framewise, times, labels, ffw, ftimes, flab
                 s, e_ = (a, b) if b - a >= LISTEN_SHORT else (float(it["cut_start"]), float(it["cut_end"]))
                 add.append(AudioEvent(lab, s, e_, pk, rescued=True, arbiter=arb,
                                       agree=bool((it.get("accept") or {}).get("AGREE_V4", False))))
+                _tr(lambda: _T.decide("band_rescue", (lab, a, b, pk), "rescue", value=f"FlexSED run peak {pk:.3f}", bar=_bbar,
+                                      asks=_C.tier_item(it), new_span=add[-1], origin="flexsed band",
+                                      note="added as a rescued span" + ("" if (s, e_) == (a, b) else " (listener's 1-s cut: run < 0.5 s)")))
                 LISTENER_STATS["a_added"].append([lab, round(s, 2), round(e_, 2), round(pk, 3), it.get("score")])
+            else:
+                _tr(lambda: _T.decide("band_rescue", (lab, a, b, pk), "drop", value=f"FlexSED run peak {pk:.3f}", bar=_bbar,
+                                      asks=_C.tier_item(it), origin="flexsed band", note="the listeners did not confirm it"))
     events = events + add
     flex_ids |= {id(e) for e in add}
     bth = getattr(config, "LISTENER_BEATS_TH", None)

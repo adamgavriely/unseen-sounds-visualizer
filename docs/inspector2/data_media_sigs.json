@@ -1,0 +1,1327 @@
+{
+ "DEV/ambient_citywalk_nyc_1689": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/ambient_citywalk_nyc_2627": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/ambient_harbour_boats_724": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/ambient_market_marrakech_3102": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/ambient_nature_rainforest_2179": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/ambient_nature_rainforest_7629": {
+  "sig": [
+   [
+    "Insect",
+    0.14,
+    6.0
+   ]
+  ],
+  "hash": "a576556c99",
+  "part": "dev"
+ },
+ "DEV/ambient_snow_walk_930": {
+  "sig": [
+   [
+    "Laughter",
+    8.08,
+    9.58
+   ]
+  ],
+  "hash": "f3adefbba5",
+  "part": "dev"
+ },
+ "DEV/ambient_transport_subway_10800": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/ambient_weather_storm_16200": {
+  "sig": [
+   [
+    "Thunder",
+    0.06,
+    15.75
+   ]
+  ],
+  "hash": "ff591581d8",
+  "part": "dev"
+ },
+ "DEV/ambient_weather_storm_7200": {
+  "sig": [
+   [
+    "Thunder",
+    0.06,
+    15.75
+   ]
+  ],
+  "hash": "ff591581d8",
+  "part": "dev"
+ },
+ "DEV/as_church_bell_pJRAWkLM": {
+  "sig": [
+   [
+    "Bell",
+    0.14,
+    13.75
+   ]
+  ],
+  "hash": "848a221043",
+  "part": "dev"
+ },
+ "DEV/as_explosion_XJ8lc3I6": {
+  "sig": [
+   [
+    "Explosion",
+    5.68,
+    7.18
+   ],
+   [
+    "Explosion",
+    9.25,
+    10.75
+   ],
+   [
+    "Gunshot",
+    0.0,
+    1.5
+   ],
+   [
+    "Gunshot",
+    8.25,
+    19.5
+   ]
+  ],
+  "hash": "db1d490f3a",
+  "part": "dev"
+ },
+ "DEV/as_fire_alarm_kGKZ0YK4": {
+  "sig": [
+   [
+    "Alarm",
+    8.89,
+    19.75
+   ]
+  ],
+  "hash": "c48db71c99",
+  "part": "dev"
+ },
+ "DEV/as_glass_oHil9Ip_": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_airport_terminal": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_aviary_birds": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_bakery_morning": {
+  "sig": [
+   [
+    "Door",
+    4.25,
+    5.75
+   ]
+  ],
+  "hash": "bdc3c5bc09",
+  "part": "dev"
+ },
+ "DEV/b3_barbershop": {
+  "sig": [
+   [
+    "Electric shaver, electric razor",
+    0.14,
+    23.25
+   ]
+  ],
+  "hash": "b266b7335f",
+  "part": "dev"
+ },
+ "DEV/b3_botanic_garden": {
+  "sig": [
+   [
+    "Bird",
+    1.0,
+    9.75
+   ]
+  ],
+  "hash": "252a2a53a3",
+  "part": "dev"
+ },
+ "DEV/b3_carnival_parade": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_construction_site": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_cow_farm": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_crossing_bells": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_favela_rio": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_flea_market": {
+  "sig": [
+   [
+    "Vehicle",
+    20.0,
+    28.0
+   ]
+  ],
+  "hash": "9d398a4974",
+  "part": "dev"
+ },
+ "DEV/b3_golf_course": {
+  "sig": [
+   [
+    "Bird",
+    3.8,
+    5.84
+   ]
+  ],
+  "hash": "9c03d7a8a2",
+  "part": "dev"
+ },
+ "DEV/b3_ia_youtube_skxtz9foauw_0": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_laundromat": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/b3_pet_shop": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/bell_miami": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/birds_forest": {
+  "sig": [
+   [
+    "Bird",
+    10.25,
+    14.0
+   ]
+  ],
+  "hash": "ec73efa06d",
+  "part": "dev"
+ },
+ "DEV/helicopter_ossetia": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/kit_piano": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/london_protest_01": {
+  "sig": [
+   [
+    "Vehicle",
+    0.25,
+    1.75
+   ]
+  ],
+  "hash": "48d0796737",
+  "part": "dev"
+ },
+ "DEV/ly_ambulance_(siren)_-yPSgCn": {
+  "sig": [
+   [
+    "Siren",
+    0.0,
+    17.75
+   ]
+  ],
+  "hash": "309ce53ff2",
+  "part": "dev"
+ },
+ "DEV/ly_applause_62ZYD0u": {
+  "sig": [
+   [
+    "Crowd",
+    0.0,
+    7.75
+   ]
+  ],
+  "hash": "56cffb645c",
+  "part": "dev"
+ },
+ "DEV/ly_helicopter_-v62cK1": {
+  "sig": [
+   [
+    "Helicopter",
+    0.0,
+    18.0
+   ]
+  ],
+  "hash": "a86f0ad728",
+  "part": "dev"
+ },
+ "DEV/movie_blueplanet_115": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/mv_arrest_street_scene": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/mv_detective_crime_scene": {
+  "sig": [
+   [
+    "Alarm",
+    0.04,
+    10.58
+   ]
+  ],
+  "hash": "8e9a37204d",
+  "part": "dev"
+ },
+ "DEV/mv_protest_scene_movie": {
+  "sig": [
+   [
+    "Crowd",
+    0.0,
+    1.5
+   ],
+   [
+    "Glass",
+    4.75,
+    6.25
+   ],
+   [
+    "Glass",
+    10.75,
+    13.75
+   ],
+   [
+    "Glass",
+    17.5,
+    19.0
+   ]
+  ],
+  "hash": "89a169fc13",
+  "part": "dev"
+ },
+ "DEV/mv_storm_scene_house": {
+  "sig": [
+   [
+    "Alarm",
+    2.18,
+    11.5
+   ]
+  ],
+  "hash": "1ee0217396",
+  "part": "dev"
+ },
+ "DEV/mv_tornado_scene": {
+  "sig": [
+   [
+    "Siren",
+    9.25,
+    13.0
+   ]
+  ],
+  "hash": "9fc3fff97b",
+  "part": "dev"
+ },
+ "DEV/un_driving_motorcycle_4O3bZRYO": {
+  "sig": [
+   [
+    "Laughter",
+    13.36,
+    14.86
+   ]
+  ],
+  "hash": "22ba558b00",
+  "part": "dev"
+ },
+ "DEV/un_driving_motorcycle_DgdHSmwA": {
+  "sig": [
+   [
+    "Explosion",
+    13.52,
+    15.42
+   ]
+  ],
+  "hash": "433451303a",
+  "part": "dev"
+ },
+ "DEV/un_hair_dryer_drying_WWu24rJs": {
+  "sig": [
+   [
+    "Computer keyboard",
+    11.25,
+    12.75
+   ]
+  ],
+  "hash": "8c4511ceb4",
+  "part": "dev"
+ },
+ "DEV/un_people_clapping__bAVmK7n": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/waterfall_kawaida_01": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/waves_herzliya": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev"
+ },
+ "DEV/tg_d007": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d016": {
+  "sig": [
+   [
+    "Cough",
+    5.75,
+    7.25
+   ]
+  ],
+  "hash": "04cad9b3e6",
+  "part": "dev2"
+ },
+ "DEV/tg_d020": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d022": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d029": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d030": {
+  "sig": [
+   [
+    "Vehicle",
+    0.0,
+    17.0
+   ]
+  ],
+  "hash": "fbe72b81d9",
+  "part": "dev2"
+ },
+ "DEV/tg_d032": {
+  "sig": [
+   [
+    "Thunder",
+    13.75,
+    15.0
+   ]
+  ],
+  "hash": "5b057289e0",
+  "part": "dev2"
+ },
+ "DEV/tg_d033": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d054": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d075": {
+  "sig": [
+   [
+    "Alarm",
+    0.14,
+    9.25
+   ]
+  ],
+  "hash": "3b69b0bfac",
+  "part": "dev2"
+ },
+ "DEV/tg_d085": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d088": {
+  "sig": [
+   [
+    "Explosion",
+    10.75,
+    12.75
+   ],
+   [
+    "Thunder",
+    1.0,
+    2.5
+   ],
+   [
+    "Thunder",
+    13.25,
+    14.75
+   ]
+  ],
+  "hash": "3ca9770077",
+  "part": "dev2"
+ },
+ "DEV/tg_d095": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d107": {
+  "sig": [
+   [
+    "Crying, sobbing",
+    0.38,
+    2.75
+   ],
+   [
+    "Laughter",
+    8.92,
+    9.73
+   ],
+   [
+    "Screaming",
+    6.52,
+    9.0
+   ]
+  ],
+  "hash": "734aa2ff81",
+  "part": "dev2"
+ },
+ "DEV/tg_d120": {
+  "sig": [
+   [
+    "Cat",
+    0.56,
+    2.24
+   ]
+  ],
+  "hash": "d680ceda36",
+  "part": "dev2"
+ },
+ "DEV/tg_d121": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d125": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d127": {
+  "sig": [
+   [
+    "Laughter",
+    9.32,
+    10.01
+   ],
+   [
+    "Water",
+    0.14,
+    5.0
+   ]
+  ],
+  "hash": "346ec51eb3",
+  "part": "dev2"
+ },
+ "DEV/tg_d128": {
+  "sig": [
+   [
+    "Laughter",
+    3.08,
+    4.58
+   ]
+  ],
+  "hash": "84ea5cb08a",
+  "part": "dev2"
+ },
+ "DEV/tg_d129": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d133": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "dev2"
+ },
+ "DEV/tg_d149": {
+  "sig": [
+   [
+    "Bee, wasp, etc.",
+    1.25,
+    3.75
+   ]
+  ],
+  "hash": "8a1cfb43ca",
+  "part": "dev2"
+ },
+ "TEST/ambient_everyday_farm_2166": {
+  "sig": [
+   [
+    "Bird",
+    0.14,
+    6.5
+   ]
+  ],
+  "hash": "68f59e85d5",
+  "part": "test"
+ },
+ "TEST/ambient_market_bangkok_1237": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/ambient_market_bangkok_4332": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/ambient_nature_savanna_7706": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/ambient_nightlife_neon_97": {
+  "sig": [
+   [
+    "Computer keyboard",
+    0.66,
+    3.0
+   ]
+  ],
+  "hash": "c9c1063d3d",
+  "part": "test"
+ },
+ "TEST/ambient_temple_india_1438": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/ambient_waterfall_hike_18078": {
+  "sig": [
+   [
+    "Bird",
+    0.14,
+    15.75
+   ]
+  ],
+  "hash": "b737c29c9d",
+  "part": "test"
+ },
+ "TEST/as_alarm_71Xl_uAS": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/as_fireworks_jZ9mYtCA": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/as_glass_GAGt_UEF": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/b3_aquarium_walk": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/b3_balloon_burner": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/b3_ia_62934flighttothesuncountryvw_1": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/b3_ia_87954yourchancetolivenuclear_1": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/b3_ia_alcf_heydari_0005_0": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/b3_leafblower_fall": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/bell_kazansky": {
+  "sig": [
+   [
+    "Bell",
+    0.14,
+    17.75
+   ]
+  ],
+  "hash": "4b1ef470cf",
+  "part": "test"
+ },
+ "TEST/dutch_traffic_kids": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/ev_smoke_alarm_kitchen": {
+  "sig": [
+   [
+    "Alarm",
+    10.0,
+    24.75
+   ]
+  ],
+  "hash": "457bbd7a9b",
+  "part": "test"
+ },
+ "TEST/lx_chainsaw_and_power_tool_BBukw6J": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/lx_chainsaw_and_power_tool_W1VYWwY": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/ly_alarm_qCVdVav": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/m4_airsoft_24a": {
+  "sig": [
+   [
+    "Explosion",
+    4.5,
+    6.0
+   ]
+  ],
+  "hash": "a716995457",
+  "part": "test"
+ },
+ "TEST/m4_clay_shoot_11a": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/m4_dog_doorbell_cam_30a": {
+  "sig": [
+   [
+    "Dog",
+    3.0,
+    17.75
+   ]
+  ],
+  "hash": "5e4ef1d29f",
+  "part": "test"
+ },
+ "TEST/m4_film_1917_33a": {
+  "sig": [
+   [
+    "Explosion",
+    10.88,
+    13.75
+   ],
+   [
+    "Gunshot",
+    1.75,
+    7.75
+   ],
+   [
+    "Gunshot",
+    11.5,
+    13.0
+   ]
+  ],
+  "hash": "33d438dd0d",
+  "part": "test"
+ },
+ "TEST/m4_film_blackhawk_32a": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/m4_fire_bodycam_23a": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/m4_live_fire_26a": {
+  "sig": [
+   [
+    "Gunshot",
+    2.5,
+    6.0
+   ],
+   [
+    "Gunshot",
+    8.64,
+    12.5
+   ]
+  ],
+  "hash": "d9e3132d8d",
+  "part": "test"
+ },
+ "TEST/m5_doc_restrepo_138b": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/m5_horror_conjuring_82": {
+  "sig": [
+   [
+    "Bell",
+    4.88,
+    12.75
+   ]
+  ],
+  "hash": "1781d478c0",
+  "part": "test"
+ },
+ "TEST/m5_war_fury_25b": {
+  "sig": [
+   [
+    "Helicopter",
+    0.24,
+    4.25
+   ]
+  ],
+  "hash": "5e18a75d3d",
+  "part": "test"
+ },
+ "TEST/mc_break_in_scene": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/mc_bridge_scene": {
+  "sig": [
+   [
+    "Dog",
+    0.1,
+    1.6
+   ],
+   [
+    "Helicopter",
+    9.22,
+    16.0
+   ]
+  ],
+  "hash": "9232102951",
+  "part": "test"
+ },
+ "TEST/mc_flood_scene": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/mc_riot_scene": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/mc_thriller_basement": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/movie_bladerunner_49": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/movie_interstellar_98": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/movie_junglebook_51": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/movie_junglebook_95": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/movie_madmax_57": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/movie_planetearth_58": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/mv_air_raid_scene": {
+  "sig": [
+   [
+    "Shofar",
+    7.75,
+    18.25
+   ],
+   [
+    "Siren",
+    5.5,
+    16.75
+   ]
+  ],
+  "hash": "a0dbbbed66",
+  "part": "test"
+ },
+ "TEST/mv_bank_robbery_alarm": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/oc_distant_traffic_hill": {
+  "sig": [
+   [
+    "Rain",
+    0.04,
+    10.0
+   ]
+  ],
+  "hash": "7e4d305554",
+  "part": "test"
+ },
+ "TEST/pdfilm_duckcover_90": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/un_dog_barking_3doKyrCe": {
+  "sig": [
+   [
+    "Siren",
+    0.06,
+    4.5
+   ]
+  ],
+  "hash": "04da336849",
+  "part": "test"
+ },
+ "TEST/un_hair_dryer_drying_jmlpavrE": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/un_wind_noise_1OctTl0h": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/w8_dashcam_ambulance_behind_1a": {
+  "sig": [
+   [
+    "Shofar",
+    3.0,
+    8.25
+   ],
+   [
+    "Siren",
+    0.22,
+    3.0
+   ],
+   [
+    "Siren",
+    11.0,
+    13.0
+   ]
+  ],
+  "hash": "bac1c3a034",
+  "part": "test"
+ },
+ "TEST/w8_dashcam_avalanche_road_2b": {
+  "sig": [
+   [
+    "Siren",
+    7.75,
+    9.25
+   ]
+  ],
+  "hash": "48fb2567cc",
+  "part": "test"
+ },
+ "TEST/w8_dog_fireworks_window_2a": {
+  "sig": [
+   [
+    "Explosion",
+    0.0,
+    16.0
+   ]
+  ],
+  "hash": "113b3e87fc",
+  "part": "test"
+ },
+ "TEST/w8_duel_diner_horn_1a": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/w8_film_hunt_for_red_october_1b": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test"
+ },
+ "TEST/w8_helmetcam_chainsaw_roof_2b": {
+  "sig": [
+   [
+    "Chainsaw",
+    0.06,
+    9.5
+   ],
+   [
+    "Vehicle",
+    0.0,
+    17.0
+   ]
+  ],
+  "hash": "fbc0624fb5",
+  "part": "test"
+ },
+ "TEST/w8_hide_wolves_howl_1a": {
+  "sig": [
+   [
+    "Baby cry, infant cry",
+    4.0,
+    7.82
+   ],
+   [
+    "Human locomotion",
+    10.0,
+    11.5
+   ]
+  ],
+  "hash": "c52a641c4a",
+  "part": "test"
+ },
+ "TEST/w8_kids_fire_alarm_school_1b": {
+  "sig": [
+   [
+    "Alarm",
+    0.0,
+    17.75
+   ]
+  ],
+  "hash": "78dc3a7ee6",
+  "part": "test"
+ },
+ "TEST/w8_kids_ice_cream_truck_2a": {
+  "sig": [
+   [
+    "Ice cream truck, ice cream van",
+    0.06,
+    12.75
+   ]
+  ],
+  "hash": "7fe72930a8",
+  "part": "test"
+ },
+ "TEST/w8_pet_parrot_phone_ring_2b": {
+  "sig": [
+   [
+    "Dog",
+    0.14,
+    13.0
+   ],
+   [
+    "Dog",
+    16.0,
+    17.0
+   ]
+  ],
+  "hash": "cd0e9ee493",
+  "part": "test"
+ },
+ "TEST/tg_d001": {
+  "sig": [
+   [
+    "Duck",
+    0.14,
+    5.25
+   ],
+   [
+    "Honk",
+    5.12,
+    7.25
+   ]
+  ],
+  "hash": "1771d4d6d3",
+  "part": "test2"
+ },
+ "TEST/tg_d009": {
+  "sig": [
+   [
+    "Laughter",
+    8.7,
+    10.2
+   ]
+  ],
+  "hash": "dd2d204a5d",
+  "part": "test2"
+ },
+ "TEST/tg_d011": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d013": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d014": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d017": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d019": {
+  "sig": [
+   [
+    "Siren",
+    2.25,
+    4.75
+   ]
+  ],
+  "hash": "0ebcdd8fd8",
+  "part": "test2"
+ },
+ "TEST/tg_d023": {
+  "sig": [
+   [
+    "Bee, wasp, etc.",
+    10.25,
+    11.75
+   ]
+  ],
+  "hash": "699ae7025b",
+  "part": "test2"
+ },
+ "TEST/tg_d031": {
+  "sig": [
+   [
+    "Bird",
+    17.5,
+    19.0
+   ]
+  ],
+  "hash": "ee36faf249",
+  "part": "test2"
+ },
+ "TEST/tg_d040": {
+  "sig": [
+   [
+    "Crowd",
+    14.48,
+    20.0
+   ]
+  ],
+  "hash": "f259219cba",
+  "part": "test2"
+ },
+ "TEST/tg_d045": {
+  "sig": [
+   [
+    "Siren",
+    5.44,
+    8.75
+   ]
+  ],
+  "hash": "e284e79c8a",
+  "part": "test2"
+ },
+ "TEST/tg_d046": {
+  "sig": [
+   [
+    "Vehicle",
+    1.0,
+    14.75
+   ]
+  ],
+  "hash": "35fb1f4ad2",
+  "part": "test2"
+ },
+ "TEST/tg_d068": {
+  "sig": [
+   [
+    "Vehicle",
+    6.75,
+    8.5
+   ]
+  ],
+  "hash": "800fb7f68d",
+  "part": "test2"
+ },
+ "TEST/tg_d076": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d077": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d078": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d079": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d080": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d101": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d103": {
+  "sig": [
+   [
+    "Explosion",
+    8.8,
+    10.0
+   ]
+  ],
+  "hash": "b931029c54",
+  "part": "test2"
+ },
+ "TEST/tg_d104": {
+  "sig": [
+   [
+    "Explosion",
+    2.72,
+    10.0
+   ]
+  ],
+  "hash": "d126f12af1",
+  "part": "test2"
+ },
+ "TEST/tg_d105": {
+  "sig": [
+   [
+    "Vehicle",
+    0.3,
+    2.25
+   ]
+  ],
+  "hash": "084b8b3b29",
+  "part": "test2"
+ },
+ "TEST/tg_d106": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d109": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d110": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d112": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d141": {
+  "sig": [],
+  "hash": "97d170e155",
+  "part": "test2"
+ },
+ "TEST/tg_d146": {
+  "sig": [
+   [
+    "Water",
+    0.0,
+    2.8
+   ]
+  ],
+  "hash": "06dab39a34",
+  "part": "test2"
+ }
+}

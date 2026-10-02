@@ -58,5 +58,7 @@ left out.
 3. **Videos.** Rendered once per shipped version into `media/<split>/<clip>.mp4`. A clip is re-rendered only when its
    pictures change, using the display span signature (label, start, end) as the key.
 
-The `data.js` checked in now is a **sample** (`meta.sample = true`). It shows the layout with a few cases taken from the
-1 Oct error dissection, and some of its values are illustrative.
+`data.js` holds the real D′ data (159 clips), written on the cluster by `benchmark/gold/inspector_trail_export.py`
+(see `docs/review/inspector_trail_ready.md`; parity exact). Videos: `../inspector/media/bysig/<split>/<clip>.<sig>.mp4`.
+`content.js` (Build and Tried tabs) and `data_sample.js` (the old sample) are written by `sample_data.py`; regenerating
+them never touches `data.js`. The Overview's "What this data does not show" table lists the known gaps in the log.

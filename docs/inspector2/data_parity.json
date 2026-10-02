@@ -1,0 +1,61 @@
+{
+ "sets": {
+  "DEV": {
+   "needed": 58,
+   "misses": 29,
+   "miss_with_reason": 20,
+   "miss_trail": 23,
+   "clips": 71,
+   "clips_without_trail": 0,
+   "hits": 29,
+   "wrong_with_trail": 15,
+   "wrong": 15,
+   "visible": 6,
+   "cross": 7,
+   "phantom": 2,
+   "cost": 2.056,
+   "pictures_differ_from_frozen": 0
+  },
+  "TEST": {
+   "needed": 65,
+   "hits": 24,
+   "clips": 88,
+   "clips_without_trail": 0,
+   "misses": 41,
+   "miss_with_reason": 32,
+   "miss_trail": 35,
+   "wrong_with_trail": 23,
+   "wrong": 24,
+   "visible": 4,
+   "cross": 15,
+   "phantom": 5,
+   "cost": 2.409,
+   "pictures_differ_from_frozen": 0
+  }
+ },
+ "differ": {
+  "DEV": [],
+  "TEST": []
+ },
+ "expect": {
+  "DEV": [
+   29,
+   58,
+   15,
+   6,
+   7,
+   2,
+   2.056
+  ],
+  "TEST": [
+   24,
+   65,
+   24,
+   4,
+   15,
+   5,
+   2.409
+  ]
+ },
+ "exact": true
+}

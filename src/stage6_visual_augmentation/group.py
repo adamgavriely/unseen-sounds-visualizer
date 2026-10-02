@@ -74,10 +74,38 @@ def apply(spans, clip: str):
     out = sorted(spans, key=lambda p: p[1])
     for a, b in pairs(out, float(getattr(config, "GROUP_MAX_GAP", 4.0))):
         rep = ans.get(key(a[0], a[1]), [])
+        _pa, _pb = (a[0], a[1], a[2]), (b[0], b[1], b[2])
         if rep and all(str(x).lower().startswith("same") for x in rep) and b in out and a in out:
             a[2] = max(a[2], b[2])
             out.remove(b)
+            _trail(a, b, _pa, _pb, rep, True)
+        else:
+            _trail(a, b, _pa, _pb, rep, False)
     return out
+
+
+def _trail(a, b, pa, pb, rep, merged):
+    """Decision Inspector (src/trail.py): one GROUP pair, both answers (logging only)"""
+    try:
+        from src import trail as _T
+        lab = pa[0].lower()
+        asks = []
+        for (w1, w2), r in zip(ORDERS, rep or []):
+            asks.append({"who": "Qwen3-Omni-30B-A3B on " + format(max(0.0, pa[2] - PRE), ".2f") + "-" + format(pb[1] + POST, ".2f") + " s",
+                         "q": A_Q.format(lab=lab, o1=A_OPT[w1], o2=A_OPT[w2], w1=w1, w2=w2), "a": str(r),
+                         "vote": "same" if str(r).lower().startswith("same") else "new"})
+        if not rep:
+            asks.append({"who": "Qwen3-Omni-30B-A3B", "q": "(no cached answer for this pair)", "a": "", "vote": "-"})
+        sb = b[3] if len(b) > 3 else (pb[0], pb[1], pb[2])
+        _T.decide("group", sb, "merge" if merged else "pass", asks=asks,
+                  value="gap " + format(pb[1] - pa[2], ".2f") + " s to the picture at " + format(pa[1], ".2f") + "-" + format(pa[2], ".2f") + " s",
+                  bar="merged iff both orders answer 'same' (gap <= " + str(getattr(config, "GROUP_MAX_GAP", 4.0)) + " s)",
+                  note=("heard as the same continuing sound: this picture joins the earlier one" if merged
+                        else "heard as a new event: its own picture"),
+                  burst=format(pb[1], ".2f") + "-" + format(pb[2], ".2f"), picture=format(pb[1], ".2f") + "-" + format(pb[2], ".2f"),
+                  into=format(pa[1], ".2f") + "-" + format(max(pa[2], pb[2]) if merged else pa[2], ".2f"))
+    except Exception:
+        pass
 
 
 def ask(wav, sr: int, spans, gen, max_gap: float = None):

@@ -80,6 +80,8 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     _dump(work / "segments.json", [s.to_dict() for s in segments])
 
     print("[4/7] audio event detection...")
+    from src import trail as _trail                  # Decision Inspector: one decision trail per clip (logging only)
+    _trail.reset()
     events = detect_events(Path(media.wav_path), threshold=config.AED_THRESHOLD,
                            min_dur=config.AED_MIN_DUR, model=config.AED_MODEL,
                            device=config.DEVICE, plot_path=work / "events_plot.png",
@@ -136,6 +138,12 @@ def run(video_path: Path, work_root: Path = None) -> PipelineResult:
     except Exception as ex:
         print(f"       [trace] display spans unavailable ({type(ex).__name__}: {ex})")
     _dump(work / "onset_trace.json", list(_TRACE))
+    try:        # Decision Inspector: the panel's row limit (pure), then the clip's trail next to onset_trace.json
+        from src.stage6_visual_augmentation import _assign_rows
+        _assign_rows(shown)
+    except Exception as ex:
+        print(f"       [trail] row check unavailable ({type(ex).__name__}: {ex})")
+    _trail.dump(work, _trail.snapshot())
 
     print(f"[7/7] compositing alongside the video (mode={config.RENDER_MODE})...")
     out_mp4 = config.OUTPUT_DIR / f"{video_path.stem}_augmented.mp4"
