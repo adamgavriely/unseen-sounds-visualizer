@@ -1628,6 +1628,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
     # where its source is on screen.
     if getattr(config, "VLM_VISIBILITY", True):
         STRETCH = float(getattr(config, "VISIBILITY_STRETCH", 5.0))
+        name_all = getattr(config, "NAME_ALL", None)      # Round 66: (t_lo, t_hi) or None
+        na_keep = set()                                   # ids of specs NAME-ALL un-silenced (exempt from kinship)
         for spec in active:
             bursts = list(getattr(spec, "spans", None) or [(spec.start, spec.end)])
             pieces = []
@@ -1635,7 +1637,7 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                 k = max(1, int(round((b - a) / STRETCH)))
                 edges = [a + (b - a) * i / k for i in range(k + 1)]
                 pieces += list(zip(edges, edges[1:]))
-            kept, named_any = [], ""
+            kept, named_any, na_m, na_best = [], "", [], ""
             for a, b in pieces:
                 # a second before to a second after each stretch, six frames: a short
                 # sound is not one frame, and the cause is often legible from what
@@ -1663,14 +1665,35 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                           + (" -> NOT seen" if box.get("flip") else " -> unchanged"), flush=True)
                 # raw votes per sound per stretch, dumped by the pipeline to gate_votes.json so
                 # that the silence rule (majority / unanimous) can be re-decided on CPU later
+                na = None
+                if name_all:                                  # Round 66 NAME-ALL: the stretch's crop margin (logged)
+                    from src.stage5_cross_modal_analysis import nameall as _NA
+                    na = _NA.stretch_margin(spec.event_label, win, mdl, proc)
+                    na_m.append(na["m"])
+                    if na["m"] is not None and na["cands"] and not na_best:
+                        na_best = max((c for c in na["cands"] if "m" in c), key=lambda c: c["m"], default={}).get("phrase", "")
                 VOTE_LOG.append({"label": spec.event_label, "start": spec.start, "end": spec.end,
                                  "confidence": spec.confidence, "stretch": [a, b], "seen": bool(seen),
                                  **{k: v for k, v in LAST_VOTES.items()}, **({"fix_gate": True} if fixed else {}),
-                                 **({"box": {k: v for k, v in box.items() if k != "bbox_1000"}} if box else {})})
+                                 **({"box": {k: v for k, v in box.items() if k != "bbox_1000"}} if box else {}),
+                                 **({"nameall": na} if na is not None else {})})
                 if seen:
                     named_any = named
                 else:
                     kept.append((a, b))
+            if name_all:
+                # Round 66 NAME-ALL, two-sided: A = the floor(n/2)+1-th largest stretch margin; silenced iff (gate silenced
+                # AND NOT A < t_lo) OR A > t_hi. A sound with no crop on most stretches (A = -inf) is never un-silenced.
+                from src.stage5_cross_modal_analysis import nameall as _NA
+                A, (t_lo, t_hi) = _NA.sound_score(na_m), name_all
+                if not kept and A != float("-inf") and A < t_lo:
+                    kept = pieces[:1]
+                    na_keep.add(id(spec))
+                    spec.reason += f" | gate: visible, but NAME-ALL crop margin {A:.2f} < {t_lo} (Round 66) - kept"
+                    print(f"       [stage5] NAME-ALL kept {spec.event_label}: A {A:.2f}", flush=True)
+                elif kept and A > t_hi:
+                    kept, named_any = [], (na_best or "NAME-ALL crop")
+                    print(f"       [stage5] NAME-ALL silenced {spec.event_label}: A {A:.2f} ({named_any})", flush=True)
             if not kept and getattr(config, "ACTIVITY_GATE", False) and _not_producing(spec, video_path, mdl, proc):
                 # Round 14 amendment I2: the source is on screen but not visibly PRODUCING the sound at its onset -> keep
                 kept = pieces[:1]
@@ -1721,6 +1744,8 @@ def decide_subjects(video_path, specs, transcript: str = "", segments=None,
                     continue
                 if spec.event_label in (getattr(config, "CONCEALED_ACTION", None) or ()):
                     continue                     # Round 64: never silenced as a kind of a visible source
+                if id(spec) in na_keep:
+                    continue                     # Round 66: NAME-ALL un-silenced it on its own crops
                 if same_source(spec.event_label, g.event_label) and _overlap(spec, g):
                     spec.augment = False
                     spec.subject = ""
