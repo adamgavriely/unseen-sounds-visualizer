@@ -263,18 +263,39 @@ def export_clip(stem, split, trail, pics, gold, sidx, order, video):
     return {"clip": stem, "split": split, "video": video, "gold": g_out, "pictures": p_out, "cands": cands}, stats
 
 
+def _sound_label(c):
+    """the stage-5 sound a candidate became (label of its last family merge / dedup / twin target), else its own label"""
+    lab = c["label"]
+    for _s, r in c["_recs"]:
+        if r.get("to") and r["step"] in ("family_merge", "dedup"):
+            lab = r["to"]["label"]
+    return lab
+
+
+def _short_fate(c, sidx):
+    if c["fate"] == "drawn":
+        return f"{c['label']} {float(c['start']):.2f} s (kept)"
+    return f"{c['label']} {float(c['start']):.2f} s (lost at {sidx.get(c.get('at'), {}).get('name', c.get('at'))})"
+
+
 def lost(g, near, pics, sidx, order):
-    """the step where a missed needed sound was lost"""
+    """the step where a missed needed sound was lost. Candidates whose start could give a picture at the sound's onset
+    (start within 1 s of it) decide; among dead ones the closest family wins, then the step reached last."""
+    from src.labels import canonical
     if not near:
         return "never_heard", "No detector produced a span of this sound type near its start."
-    dead = [c for c in near if c["fate"] != "drawn"]
-    if len(dead) == len(near):
-        far = max(dead, key=lambda c: order.get(c.get("at"), -1))
-        return far.get("at"), far.get("why", "")
-    lo, hi = g["start"] - S.EARLY, g["start"] + S.LATE
-    for c in near:                                       # alive: a display step may have hidden the burst at its onset
-        if c["fate"] != "drawn":
-            continue
+    g0 = float(g["start"])
+    onset = [c for c in near if g0 - 1.0 <= float(c["start"]) <= g0 + S.LATE]
+    if not onset:
+        c = min(near, key=lambda c: abs(float(c["start"]) - g0))
+        return "scorer", (f"No span of this type starts near {g0:.2f} s; the nearest is {_short_fate(c, sidx)}, so no picture "
+                          f"could start inside the -0.5 ... +1.0 s window.")
+    alive = [c for c in onset if c["fate"] == "drawn"]
+    dead = [c for c in onset if c["fate"] != "drawn"]
+    also = lambda keep: ("" if not [c for c in onset if c is not keep] else
+                         " Also near the onset: " + "; ".join(_short_fate(c, sidx) for c in onset if c is not keep)[:600] + ".")
+    lo, hi = g0 - S.EARLY, g0 + S.LATE
+    for c in alive:                                      # a display step may have hidden the burst at its onset
         for _s, r in c["_recs"]:
             if not is_burst(r):
                 continue
@@ -285,20 +306,34 @@ def lost(g, near, pics, sidx, order):
             except Exception:
                 continue
             if r["step"] == "display_join" and ex.get("joined") == "yes" and lo - 1.0 <= a0 <= hi:
-                return "display_join", (f"Its burst at {b} s was joined to the picture already on screen from {ex.get('into')} s "
-                                        f"({r.get('value', '')}; {r.get('bar', '')}), so no new picture started at the sound.")
+                return "display_join", (f"{c['label']} at {b} s was joined to the picture already on screen from {ex.get('into')} s "
+                                        f"({r.get('value', '')}; {r.get('bar', '')}), so no new picture started at the sound."
+                                        + also(c))
             if r["step"] == "group" and r["res"] == "merge" and lo <= a0 <= hi:
-                return "group", why_of(r, sidx)
+                return "group", why_of(r, sidx) + also(c)
             if r["step"] == "max_slots" and lo <= a0 <= hi:
-                return "max_slots", why_of(r, sidx)
+                return "max_slots", why_of(r, sidx) + also(c)
+    for c in alive:                                      # kept, but drawn as another sound type
+        lab = _sound_label(c)
+        if not S.same_family(lab, g["label"]):
+            pic = [p for p in pics if p[0] == lab and p[1] <= hi + 1.0 and p[2] >= lo]
+            return "family_merge", (f"{c['label']} {float(c['start']):.2f}-{float(c['end']):.2f} s was kept, but grouped under "
+                                    f"{lab} and drawn as a {lab} picture" + (f" at {pic[0][1]:.2f} s" if pic else "")
+                                    + f"; a {g['label']} picture was needed." + also(c))
+    if dead and not alive:
+        gc = canonical(g["label"])
+        far = max(dead, key=lambda c: (canonical(c["label"]) == gc or canonical(_sound_label(c)) == gc,
+                                       order.get(c.get("at"), -1)))
+        return far.get("at"), far.get("why", "") + also(far)
     fam = [p for p in pics if S.same_family(p[0], g["label"])]
     if fam:
-        near_p = min(fam, key=lambda p: abs(p[1] - g["start"]))
-        return "scorer", (f"A {near_p[0]} picture was drawn at {near_p[1]:.2f}-{near_p[2]:.2f} s; the sound starts at "
-                          f"{g['start']:.2f} s, so the picture is outside the -0.5 ... +1.0 s window (or it was matched to another "
-                          f"sound of the family).")
-    c = near[0]
-    return "scorer", f"A candidate survived ({c['label']} {c['start']:.2f}-{c['end']:.2f} s) but no picture of this type was drawn."
+        near_p = min(fam, key=lambda p: abs(p[1] - g0))
+        return "scorer", (f"A {near_p[0]} picture was drawn at {near_p[1]:.2f}-{near_p[2]:.2f} s; the sound starts at {g0:.2f} s, "
+                          f"so the picture is outside the -0.5 ... +1.0 s window or was matched to another sound of the family."
+                          + (also(None) if dead else ""))
+    c = alive[0]
+    return "scorer", (f"{c['label']} {float(c['start']):.2f} s was kept to the end of stage 5, but no picture of this type is on "
+                      f"screen at the sound." + also(c))
 
 
 # ============================================================================= the four parts of merged DEV / merged TEST
