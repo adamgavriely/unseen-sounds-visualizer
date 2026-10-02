@@ -73,7 +73,8 @@ class MscAugmentVideo:
 
     @classmethod
     def INPUT_TYPES(cls):
-        return {"required": {"video": ("VIDEO", {"tooltip": "Connect the Load Video node here."})}}
+        return {"required": {"video": ("VIDEO", {"tooltip": "Connect the Load Video node here."})},
+                "hidden": {"unique_id": "UNIQUE_ID"}}
 
     RETURN_TYPES = ("VIDEO", "STRING")
     RETURN_NAMES = ("video_with_pictures", "what_was_drawn")
@@ -82,8 +83,9 @@ class MscAugmentVideo:
     DESCRIPTION = ("Adds pictures of the sounds you cannot see. Runs the whole frozen pipeline on the uploaded "
                    "video (about 10-15 minutes on one H200).")
 
-    def run(self, video):
+    def run(self, video, unique_id=None):
         import hashlib
+        import time
         import json
         import re
         import shutil
@@ -115,18 +117,48 @@ class MscAugmentVideo:
             env.pop(k, None)
         print(f"[MscProj] running the frozen pipeline on {inp.name}", flush=True)
         tail = []
+        t0 = time.time()
+        server = None
+        try:
+            from server import PromptServer
+            server = PromptServer.instance
+        except Exception:
+            pass
+
+        def say(text):                   # the current step, in words, under the node
+            if server is not None and unique_id is not None:
+                try:
+                    server.send_progress_text(f"{(time.time() - t0) / 60:.0f} min - {text}", unique_id)
+                except Exception:
+                    pass
+
+        say("starting (a short clip takes about 20-25 minutes)")
+        in_prep, prep_last = False, False
         proc = subprocess.Popen(cmd, cwd=str(_ROOT), env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                 text=True, bufsize=1)
         for line in proc.stdout:
             print("[MscProj] " + line.rstrip(), flush=True)
             tail = (tail + [line.rstrip()])[-40:]
-            m = re.match(r"\[(\d)/7\]", line.strip())
-            if m and pbar is not None:
-                pbar.update_absolute(int(m.group(1)) - 1, 7)
+            s = line.strip()
+            p = re.search(r"\[listener-prep\] [^:]+: (.+)$", s)
+            if p:
+                in_prep, prep_last = True, p.group(1).startswith("finelap")
+                say("part 1 of 2: the sound listeners listen (" + p.group(1) + ")")
+                continue
+            m = re.match(r"\[(\d)/7\] (.*?)(\.\.\.)?$", s)
+            if m:
+                if in_prep and prep_last and m.group(1) == "1":
+                    in_prep = False
+                if in_prep:
+                    continue
+                say(f"part 2 of 2, step {m.group(1)} of 7: {m.group(2)}")
+                if pbar is not None:
+                    pbar.update_absolute(int(m.group(1)) - 1, 7)
         if proc.wait() != 0 or not summary.exists():
             raise RuntimeError("The pipeline stopped. Last lines:\n" + "\n".join(tail[-15:]))
         if pbar is not None:
             pbar.update_absolute(7, 7)
+        say("done")
         res = json.loads(summary.read_text(encoding="utf-8"))
         lines = [f"Heard: {', '.join(res['heard']) or 'nothing'}", "",
                  f"Pictures shown ({len(res['shown'])}):"]

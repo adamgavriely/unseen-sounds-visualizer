@@ -38,4 +38,12 @@ echo "   ssh -N -L ${PORT}:$(hostname):${PORT} adamg@slurm-login1.lnx.biu.ac.il"
 echo " then open:  http://127.0.0.1:${PORT}"
 echo "=================================================================="
 nvidia-smi --query-gpu=name,memory.total --format=csv,noheader
-python comfyui_nodes/comfy_start.py --listen 0.0.0.0 --port "$PORT" --disable-auto-launch --disable-cuda-malloc
+python comfyui_nodes/comfy_start.py --listen 0.0.0.0 --port "$PORT" --disable-auto-launch --disable-cuda-malloc &
+COMFY_PID=$!
+# the simple public page (comfyui_nodes/public_page.py): its https://....gradio.live link is printed in
+# logs/comfy_<jobid>.err ("Running on public URL"). PUBLIC=0 skips it.
+if [ "${PUBLIC:-1}" = "1" ] && [ -x "$HOME/venv_gradio/bin/python" ]; then
+    until curl -s -o /dev/null "http://127.0.0.1:${PORT}/object_info/MscAugmentVideo"; do sleep 10; done
+    "$HOME/venv_gradio/bin/python" comfyui_nodes/public_page.py --comfy "http://127.0.0.1:${PORT}" --share &
+fi
+wait "$COMFY_PID"

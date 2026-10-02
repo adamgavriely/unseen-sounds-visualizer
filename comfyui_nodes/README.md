@@ -37,3 +37,17 @@ Explosion into Thunder, while the frozen run shows both. The copy of the video i
 Then: click "choose video to upload" in box 1, press Run, wait about 10-15 minutes per short clip.
 The new video is saved in ComfyUI's output folder (`~/ComfyUI/output/video/MscProj_*`) and also in
 `~/MscProj/data/output/<stem>_augmented.mp4`.
+
+## The simple page (for other people)
+
+`comfyui_nodes/public_page.py` is a small Gradio page on top of ComfyUI: upload a video, press one button, get the
+new video and the list of pictures. It never shows the ComfyUI graph. One video at a time; others wait in line.
+`slurm/job_comfy.sh` starts it next to ComfyUI (port 7860) from `~/venv_gradio` (gradio, requests, websockets).
+
+Public link: the BIU firewall blocks Gradio's share link (port 7000) and Cloudflare quick tunnels (port 7844).
+ngrok (port 443) gets through but needs a free account token from Adam. Until then the page is reached like
+ComfyUI: `ssh -N -L 7860:<node>:7860 adamg@slurm-login1.lnx.biu.ac.il`, then http://127.0.0.1:7860.
+
+Checks (2 Oct): DEV clips tg_d088 (ComfyUI), mv_protest_scene_movie (ComfyUI) and un_driving_motorcycle_DgdHSmwA
+(through the page) give exactly the frozen inspector signatures (docs/inspector/media/bysig/DEV/*.sig.json).
+
