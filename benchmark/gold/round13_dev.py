@@ -34,6 +34,7 @@ from src.stage4_audio_event_detection import (TRACE, LISTENER_STATS, _extract_ev
                                               listener_p1_lookup, add_flexsed_extra, load_extra_evidence,
                                               relocate_onsets)
 from src.types import AudioEvent
+from src import trail as TRAIL_LOG                 # Decision Inspector: per-clip decision trail (logging only)
 
 WORK = DCC.WORK
 R13 = WORK / "r13"
@@ -240,6 +241,7 @@ ARMS["SHIP8+MD3+WW"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.35, "DASM_LOCA
 ARMS["SHIP8+MD3+WW4"] = {**ARMS["SHIP8+MD3"], "DASM_LOCAL_VETO": 0.575, "DASM_LOCAL_KEEP": "either"}   # Round 53d WEAK-WITNESS-4 (fixed standard DASM bar, either ear)
 ARMS["SHIP8+MD3+WW5"] = {**ARMS["SHIP8+MD3+WW"], "DASM_LOCAL_SCENE": "/home/dsi/adamg/MscProj/data/work/scenemargin/videos.json"}   # Round 60 SCENE-MARGIN (one ear + F3 scene-fit yes); SHIPPED 1 Oct = the base arm for new rounds
 ARMS["SHIP8+MD3+WW5+SL"] = {**ARMS["SHIP8+MD3+WW5"], "SCENE_FIT_LOGIT": True}   # Round 60L SCENE-LOGIT (D with the scene question read as the bias-cancelled logit margin)
+ARMS["SHIP8+MD3+WW5+SL_trail"] = dict(ARMS["SHIP8+MD3+WW5+SL"])   # D' re-run with the Decision Inspector hooks (identical flags; new output folders)
 ARMS["SHIP8+MD3+WW5+SL+NA"] = {**ARMS["SHIP8+MD3+WW5+SL"], "NAME_ALL": (0.4375, 6.0625)}   # Round 66 NAME-ALL (D' + two-sided crop-margin gate, t_lo / t_hi from gate-gold step 1)
 ARMS["SHIP8+MD3+WW5+TE"] = {**ARMS["SHIP8+MD3+WW5"], "TAG_ENS": "/home/dsi/adamg/MscProj/benchmark/gold/tagens_calib.json"}   # Round 63 TAG-ENS (D + calibrated EAT/SSLAM mean as the span source)
 ARMS["SHIP8+MD3+WW5+CA"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell",)}; ARMS["SHIP8+MD3+WW5+CAR"] = {**ARMS["SHIP8+MD3+WW5"], "CONCEALED_ACTION": ("Bell", "Church bell", "Change ringing", "Fart", "Burping, eructation", "Hiccup", "Stomach rumble")}   # Round 64 CONCEALED-ACTION (CA ship table / CAR report-only)
@@ -367,8 +369,9 @@ def build(st, sysn, arm, C, tr, offline=False):
     info = {}
     with flags(cfg):
         TRACE.clear()
+        TRAIL_LOG.reset()
         events = _extract_events(Bfr[0], Bfr[1], Bfr[2], config.AED_THRESHOLD, None, config.AED_MIN_DUR,
-                                 low=config.AED_THRESHOLD * float(config.AED_HYSTERESIS))
+                                 low=config.AED_THRESHOLD * float(config.AED_HYSTERESIS), step="beats_extract")
         TRACE.extend({"step": "extract", "label": e.label, "start": round(e.start, 3), "end": round(e.end, 3),
                       "conf": round(e.confidence, 3)} for e in events)
         prov = trace_provider(tr) if offline else panns_provider(st)
@@ -550,6 +553,12 @@ def stage4(arms, offline=False):
                         out = _refine_onsets_cam(DCC.wav_of(st), ev, C["beats"][2], "cuda", skip_ids=set())
                     for r, e in zip(live, out):
                         r["start"] = float(e.start)
+                for r in rows:                              # Decision Inspector: the onset refinement (trace or live)
+                    if abs(r["start"] - r["pre_start"]) > 1e-9:
+                        TRAIL_LOG.decide("onset_refine", (r["label"], r["pre_start"], r["end"], r["conf"]), "move",
+                                         value=f"start {r['pre_start']:.2f} -> {r['start']:.2f}",
+                                         bar="occlusion onset: first cut removing 10 % of the evidence; later only",
+                                         new_span=(r["label"], r["start"], r["end"], r["conf"]), how=r["refine"])
                 C2 = {**C, "flex": info["flex"]}
                 rows = reloc_rows(rows, arm, C2, info, res, k, st)
                 rows = filter_rows(rows, arm, C2, info["ffw"], res, k, st)
@@ -557,6 +566,10 @@ def stage4(arms, offline=False):
                 if arm_cfg(arm).get("PERC_RETURN"):     # Round 65 RETURN (the harness rebuilds stage-4 rows, so the hook is here too)
                     rows = rows + ret_rows(rows, arm, C2, info["ffw"], st)
                 res["arms"][k][st] = rows
+                if not offline:                             # Decision Inspector: the stage-4 trail, next to the arm's clip folder
+                    td = R13 / f"{arm}_{sysn}" / st
+                    td.mkdir(parents=True, exist_ok=True)
+                    (td / "trail_s4.json").write_text(json.dumps(TRAIL_LOG.snapshot(), ensure_ascii=False), encoding="utf-8")
         if not offline:
             DCC.dump(STAGE4, res)
         print(f"[stage4] {st} done", flush=True)
@@ -646,6 +659,11 @@ def stage5(arms):
                 R.votes = json.loads(gv.read_text(encoding="utf-8")) if gv.exists() else []
                 R.stats = {}
                 print(f"[stage5] {arm} {sysn} {st}: {len(events)} events", flush=True)
+                TRAIL_LOG.reset()                           # Decision Inspector: stage-4 trail + this stage's decisions
+                t4 = d / "trail_s4.json"
+                TRAIL_LOG.extend(json.loads(t4.read_text(encoding="utf-8")) if t4.exists() else
+                                 [{"step": "trail_error", "res": "skip", "label": "", "start": 0.0, "end": 0.0,
+                                   "note": "no stage-4 trail for this clip"}])
                 specs = plan_augmentations(scene, segments, events, threshold=config.AED_THRESHOLD,
                                            gate_enabled=config.GATE_ENABLED, display_threshold=config.DISPLAY_THRESHOLD,
                                            augment_threshold=config.AUGMENT_THRESHOLD)
@@ -661,6 +679,7 @@ def stage5(arms):
                 shutil.copy(src / "media.json", d / "media.json")
                 (d / "gate_votes.json").write_text(json.dumps(votes, indent=1), encoding="utf-8")
                 (d / "augmentations.json").write_text(json.dumps([s.to_dict() for s in specs], indent=1), encoding="utf-8")
+                TRAIL_LOG.dump(d, TRAIL_LOG.snapshot())
                 log[st] = R.stats
                 DCC.dump(logp, log)
                 R.save()

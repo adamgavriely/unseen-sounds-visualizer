@@ -51,7 +51,43 @@ def filter_specs(specs, clip: str):
     if not getattr(config, "DEPICT_EVENT", False):
         return specs
     drop = silenced(clip or getattr(config, "GROUP_CLIP", None))
+    _trail(specs, clip or getattr(config, "GROUP_CLIP", None), drop)
     return [s for s in specs if key(s.event_label, s.start) not in drop] if drop else specs
+
+
+def _trail(specs, clip, drop):
+    """Decision Inspector (src/trail.py): the cached DEPICT-EVENT answers of each drawn spec (logging only)"""
+    try:
+        from src import trail as _T
+        recs = _CACHE.get(str(_path()), {}).get(clip or "", {})
+        for s in specs:
+            if not s.augment:
+                continue
+            r = recs.get(key(s.event_label, s.start))
+            if r is None:
+                _T.decide("depict_event", s, "pass", note="no cached DEPICT answers for this picture: kept")
+                continue
+            subj, mk = r.get("subject", ""), r.get("makers") or []
+            asks = []
+            rep = r.get("event_replies") or []
+            if rep:
+                asks.append({"who": "Qwen3.8-27B on 6 frames, start -1 .. +1 s", "q": E1.format(event=subj), "a": rep[0],
+                             "vote": str(yn(rep[0]))})
+                if len(rep) > 1:
+                    asks.append({"who": "Qwen3.8-27B (twin)", "q": E2.format(event=subj), "a": rep[1], "vote": str(yn(rep[1]))})
+            for B in mk:
+                for q in (L1, L2):
+                    asks.append({"who": "Qwen3.8-27B (text)", "q": q.format(B=B, A=s.event_label.lower()),
+                                 "a": "(reply not stored; any maker answering yes twice: " + str(bool(r.get("lookalike_yes"))) + ")",
+                                 "vote": "-"})
+            gone = key(s.event_label, s.start) in drop
+            _T.decide("depict_event", s, "drop" if gone else "pass", asks=asks,
+                      value="event visibly happening: " + str(bool(r.get("event"))) + "; gate-named makers: "
+                            + (", ".join(mk) or "none") + "; a maker could sound like it: " + str(bool(r.get("lookalike_yes"))),
+                      bar="dropped iff E1 yes AND E2 no, AND a gate-named maker answers yes in both look-alike orders",
+                      note="picture subject: " + subj + ("" if mk else " (no maker named by the gate: not asked)"))
+    except Exception:
+        pass
 
 
 def ask_clip(reason, mdl, proc, d: Path):

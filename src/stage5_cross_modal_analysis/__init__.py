@@ -119,4 +119,58 @@ def plan_augmentations(scene: SceneContext,
         ))
     # Deduplication now happens in reason.py, on the depictions the VLM chose,
     # rather than on a hand-written synonym table.
+    try:                                             # Decision Inspector (logging only)
+        _trail_plan(events, rets, strong_bar, strong_families, len(candidates), specs, display_threshold)
+    except Exception as ex:
+        from src import trail as _T
+        _T.decide("trail_error", ("", 0.0, 0.0), "skip", note=f"plan: {type(ex).__name__}: {ex}")
     return specs
+
+
+def _trail_plan(events, rets, strong_bar, strong_families, n_cand, specs, display_threshold):
+    """Decision Inspector (src/trail.py): label filter, family grouping and display bar of every stage-4 span. Pure: reads
+    the plan's inputs and outputs, decides nothing."""
+    from src import trail as _T
+    from src.labels import canonical as _canon
+    from src import trail_ctx as _C
+    ret_ids = {id(e) for e in rets}
+    strong = {}
+    marg = {}
+    for s in specs:
+        (strong if s.event_label in strong_families and s.confidence >= strong_bar else marg).setdefault(s.event_label, s)
+    for e in events:
+        if not is_salient_nonspeech(e.label):
+            _T.decide("label_filter", e, "drop", value=_C.label_rule(e.label), bar="drawable sound types only",
+                      note="not a drawable sound type")
+            continue
+        fam = _canon(e.label)
+        if id(e) in ret_ids:
+            sp = next((s for s in specs if s.event_label == fam and abs(s.start - e.start) < 1e-6), None)
+        elif e.confidence >= strong_bar:
+            sp = strong.get(fam)
+        elif fam in strong_families:
+            _T.decide("family_merge", e, "drop", value=f"conf {e.confidence:.3f}",
+                      bar=f"a weak firing (< {strong_bar}) of a family that also has a strong one is not used",
+                      note=f"{fam} has a firing >= {strong_bar} elsewhere; this weak one neither shows nor extends it")
+            continue
+        elif e.confidence >= 0.5 * strong_bar:
+            sp = marg.get(fam)
+        else:
+            _T.decide("display_bar", e, "drop", value=f"conf {e.confidence:.3f}", bar=f">= {0.5 * strong_bar:.3f} to be considered")
+            continue
+        if sp is None:
+            _T.decide("family_merge", e, "skip", note=f"no plan entry found for {fam} (log only)")
+            continue
+        burst = next(((a, b) for a, b in (sp.spans or [(sp.start, sp.end)]) if a - 1e-6 <= e.start <= b + 1e-6), None)
+        _T.decide("family_merge", e, "relabel", new_span=sp,
+                  value=f"{e.label} -> {fam}" + (f", burst {burst[0]:.2f}-{burst[1]:.2f}" if burst else ""),
+                  bar="one entry per family; firings within 1 s join one burst",
+                  note=f"sound {fam}: strongest burst {sp.start:.2f}-{sp.end:.2f}, {len(sp.spans or [1])} burst(s)",
+                  burst=(f"{burst[0]:.2f}-{burst[1]:.2f}" if burst else None))
+    for s in specs:
+        if s.augment:
+            _T.decide("display_bar", s, "pass", value=f"conf {s.confidence:.3f}", bar=f">= {display_threshold}",
+                      note=s.reason)
+        else:
+            _T.decide("display_bar", s, "drop", value=f"conf {s.confidence:.3f}", bar=f">= {display_threshold}",
+                      note=s.reason)

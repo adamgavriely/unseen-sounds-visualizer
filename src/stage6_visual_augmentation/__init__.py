@@ -702,6 +702,7 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
             # runs past its first start + MAX_SPAN -- the stage-4 cap was undone here.
             if cur and a - raw_end <= gap and (not cap or a < cur[1] + cap) and not (brk and crosses_break(brk, raw_end, a0)):
                 # same sound again, right away: extend rather than blink
+                _trail_join(s, a0, b0, cur, a - raw_end, gap)
                 cur[2] = max(cur[2], b)
                 raw_end = max(raw_end, b0)
                 if s.confidence > cur[3].confidence:
@@ -716,6 +717,7 @@ def _display_spans(specs: List[AugmentationSpec], duration: float, require_image
             sp[2] = min(sp[2], sp[1] + float(cap))
         if after is not None:
             sp[2] = min(sp[2], max(cur_raw[id(sp)], sp[1]) + float(after))
+    _trail_windows(spans, dwell, after, gap)
     if getattr(config, "GROUP_ASK", False):          # Round 47 GROUP (Adam, 1 Oct): Omni-confirmed repeats -> one picture
         from src.stage6_visual_augmentation.group import apply as _group
         spans = _group(spans, clip)
@@ -762,6 +764,8 @@ def _assign_rows(spans):
                 depth += d; peak = max(peak, depth)
             if peak <= limit:
                 chosen.append(cand)
+            else:
+                _trail_slot(cand, limit)
         rows, placed = [], []
         for _, label, a, b, spec in sorted(chosen, key=lambda p: p[2]):
             for r, free_at in enumerate(rows):
@@ -1041,3 +1045,41 @@ def composite_alongside(video_path: Path, specs: List[AugmentationSpec],
         "-crf", "28", "-pix_fmt", "yuv420p", "-c:a", "aac", "-shortest", str(out_path)],
         check=True, capture_output=True)
     return out_path
+
+
+# ----------------------------------------------------------------------------- Decision Inspector hooks (logging only)
+def _trail_join(s, a0, b0, cur, g, gap):
+    try:
+        from src import trail as _T
+        _T.decide("display_join", s, "pass", value="gap " + format(g, ".2f") + " s after the real end of the picture from "
+                  + format(cur[1], ".2f") + " s", bar="joined if the gap <= " + format(gap, ".2f") + " s",
+                  note="this burst does not start a new picture: it extends the one already on screen",
+                  burst=format(a0, ".2f") + "-" + format(b0, ".2f"), joined="yes", into=format(cur[1], ".2f"))
+    except Exception:
+        pass
+
+
+def _trail_windows(spans, dwell, after, gap):
+    try:
+        from src import trail as _T
+        for sp in spans:
+            _T.decide("display_join", sp[3], "pass", value="picture " + format(sp[1], ".2f") + "-" + format(sp[2], ".2f") + " s",
+                      bar="at least " + format(dwell, ".1f") + " s on screen, at most "
+                          + ("-" if after is None else format(float(after), ".1f")) + " s past the real end; repeats within "
+                          + format(gap, ".2f") + " s join",
+                      note="a picture starts here", picture=format(sp[1], ".2f") + "-" + format(sp[2], ".2f"),
+                      burst=format(sp[1], ".2f") + "-" + format(sp[2], ".2f"))
+    except Exception:
+        pass
+
+
+def _trail_slot(cand, limit):
+    try:
+        from src import trail as _T
+        _r, label, a, b, spec = cand
+        _T.decide("max_slots", spec, "drop", value="more than " + str(limit) + " pictures at once",
+                  bar="keep by (people react to it, then confidence " + format(float(spec.confidence), ".3f") + ")",
+                  note="the weakest picture at a crowded moment is not shown", picture=format(a, ".2f") + "-" + format(b, ".2f"),
+                  burst=format(a, ".2f") + "-" + format(b, ".2f"))
+    except Exception:
+        pass
