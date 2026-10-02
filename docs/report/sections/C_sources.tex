@@ -32,7 +32,9 @@ python main.py --input clip.mp4 --device cuda
 \fp{main.py} applies \cfgv{use_shipped()}. Without \texttt{--listener-split}, \fp{src/listener_prep.py} first builds the
 per-clip inputs the detector needs (FlexSED scores, a first pass with the September baseline, BEATs and PANNs scores, the
 listener pools and answers, DASM and FineLAP scores) -- about 5 minutes on an H200 -- and then runs
-\texttt{pipeline.run}. The output is \fp{data/output/<stem>_augmented.mp4}.
+\texttt{pipeline.run}. The output is \fp{data/output/<stem>_augmented.mp4}. Note: \fp{main.py} does not reproduce the
+scored pictures exactly on every clip (Appendix~\ref{sec:parity}); use the scoring harness below to reproduce the
+reported numbers, and the ComfyUI nodes to reproduce the scored pictures on a new video.
 
 \paragraph{Running a folder of clips on the cluster}
 \begin{verbatim}

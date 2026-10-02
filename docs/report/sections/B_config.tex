@@ -99,8 +99,10 @@ four known ways:
   \item \textbf{Picture end.} Live pictures end at most 1\,s after their sound; scored pictures had no cap. Starts --
         the scored quantity -- are identical; on 3 TEST clips a picture ends 0.04--0.38\,s earlier live.
   \item \textbf{Subject path.} The scored runs used the older depiction path, which can drop a sound whose depiction
-        fails twice and feeds a similarity-based merge; the live path never drops a sound at this step. No end-to-end
-        equality test of \fp{main.py} against the scored numbers exists.
+        fails twice and feeds a similarity-based merge; \fp{main.py} uses the newer picture-wording path before the
+        on-screen check, so on some clips it shows different pictures from the scored run (for example, clip
+        \fp{tg_d088} loses its \emph{Explosion} picture). The ComfyUI nodes in \fp{comfyui_nodes/} reproduce the scored
+        pictures exactly on the clips checked (three, including \fp{tg_d088}).
   \item \textbf{Pictures.} Scored runs used placeholder or FLUX.1-schnell pictures; the live system uses Qwen-Image
         with the check. Pictures are not part of the per-sound score.
 \end{itemize}
