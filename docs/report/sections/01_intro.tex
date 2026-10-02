@@ -1,0 +1,93 @@
+% ======================================================================
+\section{Introduction}\label{sec:intro}
+
+\subsection{Motivation}
+Deaf and hard-of-hearing (DHH) viewers receive speech through subtitles and, where available, sign language.
+Neither channel is built for the rest of the soundtrack. Subtitles for the deaf and hard of hearing (SDH) may
+name a sound effect in brackets, but the DCMP Captioning Key~\cite{dcmp} tells captioners that the source of a
+sound ``may be omitted if it can be clearly seen onscreen'', and that background effects are written only when
+they matter to the plot. A study of more than 715{,}000 YouTube videos found hand-written non-speech captions in
+only 5--7\,\% of them, and environmental sounds in 2--3\,\%~\cite{may2024unspoken}. Field studies of
+sound-awareness tools~\cite{jain2019home,homesound,soundwatch} show that DHH users want to know about exactly the
+sounds that carry information -- knocks, alarms, sirens, a baby crying, a dog barking -- and interviews on
+non-speech captions report that viewers want the type and the timing of story-relevant sounds~\cite{may2025choices}.
+
+The information a hearing viewer gets from an ambient sound is therefore lost in proportion to how far its
+source is from the frame. A siren over a visible ambulance tells the viewer nothing new; a siren over a crowd
+looking up \emph{is} the scene. This project targets the second case. It differs from audio-to-image generation
+\cite{sungbin2023sound2scene,biner2024sonicdiffusion}, which turns a whole soundtrack into a picture regardless of
+the video, and from sound-source localisation~\cite{senocak2023alignment,um2025objaware}, which asks where in the
+frame a sound comes from but not whether the viewer needs to be told about it.
+
+\subsection{Problem statement}\label{sec:problem}
+Given a video, produce the same video with a side panel that shows, while an ambient sound is heard whose source
+the viewer cannot see, a picture of that sound -- and shows nothing otherwise. Speech and music are never drawn
+(they have their own channels). Human non-word sounds such as laughter, coughing or a scream \emph{are} drawn.
+No model is trained or fine-tuned: the system is an inference pipeline over open models, and human work is
+limited to the labels used for evaluation. The system must run on one video at a time (``online''): every rule
+has to work without seeing other clips, and every expensive step needs a fixed trigger.
+
+Concretely, for every sound in a clip the system must answer four questions:
+\begin{enumerate}
+  \item \textbf{Is there a sound?} Find each non-speech, non-music sound and when it starts.
+  \item \textbf{What is it?} Name it at a level a picture can show (for example \emph{dog bark}, not \emph{animal}).
+  \item \textbf{Can the viewer already see it?} If the thing making the sound is visibly making it, stay silent.
+  \item \textbf{What should the picture show, and for how long?}
+\end{enumerate}
+
+\subsection{Research questions}\label{sec:rqs}
+The research questions are those of the project proposal (6 August 2026); Section~\ref{sec:conclusion} gives
+the answer to each.
+\begin{enumerate}[label=RQ\arabic*.]
+  \item Which types of audio information contribute most to scene understanding when presented visually?
+  \item What level of semantic granularity should be used to represent ambient sounds?
+  \item Can automatically generated visual augmentations improve accessibility beyond subtitles?
+  \item How should semantic audio augmentation systems be evaluated?
+  \item How does the proposed pipeline compare with representative audio-to-visual approaches?
+\end{enumerate}
+
+\subsection{Contributions}
+\begin{enumerate}
+  \item \textbf{A task definition} with a precise rule for when a picture is due: a sound is \emph{needed} when
+        it is neither visible (``seen making the sound now'') nor obvious (``with the sound off, the viewer
+        would still know it is happening''), and it is an event, not steady background
+        (Section~\ref{sec:task}).
+  \item \textbf{A per-sound benchmark}: 189 human-labelled clips, of which 159 form the merged development
+        (71) and test (88) sets used for the final numbers, with timed labels, visibility and importance per
+        sound (Section~\ref{sec:benchmark}).
+  \item \textbf{A metric that matches the decision}: hits, wrong pictures split by cause, and a viewer cost
+        that prices a missed sound at twice a wrong picture, with a sensitivity scale for on-screen pictures
+        (Section~\ref{sec:metric}).
+  \item \textbf{A working pipeline} (\Dp) of open models with no training, runnable on one video
+        (\fp{main.py}; a ComfyUI wrapper lives in \fp{comfyui_nodes/}) (Section~\ref{sec:system}).
+  \item \textbf{A complete, pre-registered development record}: every idea, its pass bar written before the run,
+        its result and the reason it was kept or dropped (Section~\ref{sec:history}, Appendix~\ref{app:rounds}).
+  \item \textbf{An error analysis} that locates the limit of today's open models for this task: sounds no model
+        hears, and the confusion between an object being present and the object making the sound
+        (Section~\ref{sec:analysis}).
+  \item \textbf{Negative results about automatic evaluation}: references written by models are circular or decide
+        visibility at chance, and LLM judges cannot tell a picture from a text tag (Section~\ref{sec:judge-era}).
+\end{enumerate}
+
+\subsection{How to read this report}
+This is a technical report in the sense of the course guidelines: it aims at a depth that lets a reader
+reproduce the system and its numbers. Section~\ref{sec:related} places the work. Sections~\ref{sec:task}
+and~\ref{sec:benchmark} define the task, the metric and the data. Section~\ref{sec:system} describes the frozen
+system stage by stage with every threshold. Section~\ref{sec:history} gives the development process and history,
+Section~\ref{sec:results} the results (raw counts and derived scores), Section~\ref{sec:analysis} the error
+analysis, Section~\ref{sec:disclosures} the disclosures, Section~\ref{sec:limits} limitations and future work, and
+Section~\ref{sec:repro} exact reproduction steps. The appendices hold the prompts, the full configuration, the
+round-by-round table and a glossary.
+
+\paragraph{Plain-language summary.} The system listens to a video and looks at it. When it hears something
+(for example a dog barking) it asks: can the viewer already see the dog barking? If yes, it does nothing. If
+no, it draws a picture of a barking dog and shows it next to the video while the bark is heard. On new test
+videos it finds about 37\,\% of the sounds a deaf viewer would need, and about half of the pictures it shows are
+right. Most of what it misses, it misses because no current open model hears the sound under speech and music,
+or because the vision model believes a visible object is the source when it is not.
+
+\paragraph{Repository map.} The code is in \fp{src/} (one package per stage), the entry point is
+\fp{main.py}, the configuration is \fp{config.py} (\cfgv{use_shipped()} sets the frozen system), the benchmark
+and scoring harness are in \fp{benchmark/} and \fp{benchmark/gold/}, cluster job scripts in \fp{slurm/}, and every
+pre-registration, panel and decision log in \fp{docs/}. Appendix~\ref{app:glossary} explains the internal names
+(B0r, SHIP8, WW5, \ldots) that appear in the logs.

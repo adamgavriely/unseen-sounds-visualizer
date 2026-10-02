@@ -1,0 +1,42 @@
+% ======================================================================
+\section{Prompts}\label{app:prompts}
+All questions are asked with greedy decoding and, for Qwen3.8-27B, thinking off. $\langle$label$\rangle$ is the family
+name, lower-cased and cut before a comma or bracket. Source: \fp{src/stage5_cross_modal_analysis/reason.py},
+\fp{benchmark/listener_round.py}, \fp{benchmark/gold/listener_variants.py}, \fp{src/stage6_visual_augmentation/group.py},
+\fp{depict.py}, \fp{verify.py}, \fp{gen_screen.py}.
+
+\begin{description}[style=nextline]
+\item[Gate: name vote] ``These frames are from the moment a sound of $\langle$label$\rangle$ was heard. Name the thing
+  in these frames that is making that sound. Answer with a short noun phrase of at most 5 words. If nothing that could
+  make that sound is visible in these frames, answer exactly: nothing.''
+\item[Gate: follow-up (text only)] ``Sound heard: $\langle$label$\rangle$ / Thing visible in the video:
+  $\langle$named$\rangle$ / Could that thing be what is making that sound? Answer yes or no.''
+\item[Gate: a/b vote (asked in both orders)] ``These frames are from the moment a sound of $\langle$label$\rangle$ was
+  heard. Judge from the frames alone. (a) you can SEE $\langle$label$\rangle$ happening on screen -- the source is in the
+  frames and visibly making that sound (b) $\langle$label$\rangle$ is not visibly happening in these frames. Answer with
+  the letter only.''
+\item[Gate: describe vote] ``Describe what is happening in these frames in one sentence. Name what you see and what it
+  is doing. No more than 25 words.''
+\item[Speech context (text only, both orders)] ``\ldots{} Are they (a) reacting to that sound or talking about it, or
+  (b) not referring to that sound?''
+\item[Scene check (witness rule; logit read)] ``Could the sound of $\langle$label$\rangle$ plausibly be heard in this
+  scene? Answer yes or no.'' and the twin ``Could the sound of $\langle$label$\rangle$ NOT plausibly be heard in this
+  scene? Answer yes or no.''
+\item[Listener yes/no (Qwen3-Omni, AF Next)] ``Is the sound of $\langle$family$\rangle$ present in this recording? Answer
+  yes or no.''
+\item[Listener inventory] ``List every distinct non-speech sound you hear in this recording, one per line, most prominent
+  first.'' (64 new tokens)
+\item[Grouping (Qwen3-Omni, both orders)] ``You hear a $\langle$lab$\rangle$ sound near the start and again near the end
+  of this recording. Is the $\langle$lab$\rangle$ near the end $\langle o_1\rangle$, or $\langle o_2\rangle$? Answer with
+  exactly one word: $\langle w_1\rangle$ or $\langle w_2\rangle$.'' with the options ``the same continuing sound as at the
+  start (for example one alarm or engine with a short pause)'' and ``a new, separate event (for example a second bark,
+  knock or shot)''.
+\item[Depict-event] ``Is "$\langle$event$\rangle$" visibly happening in these frames? Answer yes or no.'' and ``Do these
+  frames show no "$\langle$event$\rangle$" happening? \ldots''; then (text only) ``Could the sound of $\langle$B$\rangle$ be
+  mistaken for the sound of $\langle$A$\rangle$?'' in both directions.
+\item[Picture check] ``Look at this picture. What is the main thing shown in it? Choose exactly one option. \ldots{}
+  Answer with the letter only.''
+\item[Picture prompt tail] ``, the whole thing fully in frame, caught at the moment it makes the sound with its visible
+  effect, one large subject filling the picture, plain white background''; negative prompt: scenery, landscape,
+  background scene, room interior, street, buildings, sky background, text, letters, watermark.
+\end{description}

@@ -1,0 +1,85 @@
+% ======================================================================
+\section{Error analysis}\label{sec:analysis}
+
+This section explains \emph{why} the remaining errors happen, using the per-item ledgers
+(\fp{benchmark/gold/ledger_SHIP8_MD3_WW5.json}), the VLM gate audit of 1 Oct
+(\fp{docs/review/vlm_panel_2026-10-01/}), the two expert panels of 1 Oct (\fp{docs/review/panel_2026-10-01/},
+\fp{docs/review/panel2_2026-10-01/}) and the Decision Inspector.
+
+\subsection{Failure modes}
+\begin{enumerate}
+  \item \textbf{Presence taken for production.} The gate's commonest error: an object being in the frame is taken as
+        that object making the sound now. Examples from the development set: a church tower is visible, so the ringing
+        bell is silenced although nothing in the frames shows it ringing; a golfer stands over the ball, so the whack
+        that happens later is called visible; perched macaws are taken as the source of a bird call made off screen.
+        In the audit this class explains 23 of 36 gate errors across development and test. Two of the three votes
+        effectively measure presence (``name the thing'' echoes the label on 30 of 54 development ``seen'' stretches,
+        and the follow-up ``could that thing make it?'' is answered from world knowledge), so the majority vote measures
+        presence too.
+  \item \textbf{The ``nothing'' escape.} The naming question allows ``nothing'', and the VLM answers it on 42\,\% of the
+        stretches the gold calls seen (32 of 76): the maker is small, hidden, or its action is fine (a hand, a coin), the
+        camera is the walker (footsteps), or only the rain is visible during thunder. These sounds keep their picture;
+        this explains 32 of the 38 development gate misses (wrongly kept on-screen sounds).
+  \item \textbf{Masking.} Needed sounds under speech or music are scored low by BEATs, whose top labels there are
+        \emph{Speech} or \emph{Music}. FlexSED hears more of them but mostly below its bar; the listener rescue recovers
+        some, at a price in wrong pictures (Section~\ref{sec:history}).
+  \item \textbf{Cross pictures.} On the test set 15 of 24 wrong pictures belong to another sound. Examples from the
+        development ledger: a gunshot picture over footsteps, a crowd picture over laughter, a scream picture over a
+        bird call. These are mostly confident
+        detector errors with a plausible scene, which neither the witness rule nor the gate can refuse.
+  \item \textbf{Timing and repeats.} A sound that pauses for more than 2\,s and returns is a new labelled event; the
+        system either merges it (a miss) or draws a late second picture of a long sound (a cross). Neither the listener
+        nor the detectors can tell a 2-s pause from a dropout (Rounds 51, 55).
+  \item \textbf{Read-out artefacts.} Asked to answer ``(a)'' or ``(b)'', the 27B model favours a position (``(a)'' on
+        88\,\% of answers in Round 54); asked yes/no, it has a ``no'' habit; asked for free text, its answer can be cut off.
+        The fix used in \Dp{} is to read the yes/no logits of the first token, minus those of a negated twin question.
+        This removes the artefacts but not the underlying weakness: as a gate signal the logit margin reaches AUROC
+        0.647, under the pre-set 0.65 bar.
+\end{enumerate}
+
+\subsection{The central limit: ``present'' is not ``making the sound''}\label{sec:presence}
+Every attempt to improve the gate in the project landed on the same trade-off line. In September an OWLv2 vote, a SAM 3
+vote and a looser silence rule each removed exactly two wrong pictures for every real needed sound they lost, which is
+break-even at $\beta = 2$. In the October rounds a box-and-crop check, an audio-visual synchrony model, an
+audio-visual localiser, a human-style ``name, find, zoom, ask'' chain and a larger or different VLM each silenced
+more on-screen sounds only by silencing about as many needed ones. A model swap from Qwen2.5-VL-7B to Qwen3.8-27B moved
+balanced accuracy from 0.61 to 0.62, and Gemma-4-31B moved along the same line. The VLM audit concluded ``not the
+model'': what is asked of the frames -- \emph{is this object making this sound right now?} -- is a question about an
+action at an instant, and still frames from open VLMs verify presence well and action poorly.
+
+Two observations make the limit concrete. First, the gold's own notion of \emph{obvious} encodes inference the
+gate does not do: a bell in a tower is \emph{not} obvious (one cannot see it ring), thunder under visible rain
+\emph{is}. A rule that treats ``concealed actions'' as not visible passed the development test (Round 64: 30 / 14 /
+1.972) but in practice fired only on bells, and was not shipped as a general rule. Second, a larger vision model
+(Qwen3-VL-235B) was the only untested lever named by every panel; it does not fit the available disk and is left as
+future work. The audit's own reading is that a larger model should be tested on the presence-versus-production
+question, not assumed to fix it.
+
+\subsection{The detector floor}
+The ceiling analysis (Section~\ref{sec:ceiling}) puts a hard limit on any decision layer: about one needed sound in
+eleven is heard by no model at all, and about one in eight more is too faint or too mistimed to recover. Every
+attempt to hear more of them (Section~\ref{sec:rejected}) found real sounds -- 80\,\% of what the best listener chain
+proposed on the held-out set was real -- but brought two to four wrong pictures per new hit on the video benchmark.
+The reason is the combination of the two limits: a newly heard sound still has to pass the gate, and the gate cannot
+tell a right off-screen sound from a wrong one.
+
+\subsection{Is the gold too strict?}
+Two human checks bound the effect of the strict ``wrong'' rule. In Round 46 the author rated, blind, samples of
+``wrong'' pictures: about one in six (2/11 and 3/20) is a real, wanted, off-screen sound the gold does not list.
+In Round 46b, 12 current wrong pictures were rated: 4 not heard, 5 real but with the source on screen, 2 real and
+off-screen but timed away from the gold row, 1 unsure; no clean case for a gold edit was found. The ceiling analysis
+adds that the 14 borderline gate-side items sit one judgement away from the other class: flipping all of them would
+bring SHIP7's cost from 2.451 to about 1.9 with no change to the system. The absolute costs are therefore somewhat
+pessimistic for every system; the comparisons between systems are not affected, because the same gold scores all of
+them.
+
+\subsection{A worked example}
+Clip \fp{bell_miami} (development) has one needed sound: a \emph{Bell} from 0.2 to 14.5\,s, importance 3, labelled
+not visible. Its trail in the Decision Inspector (\fp{docs/inspector2/data.js}) reads as follows. Stage 4 keeps
+several \emph{Bell} and \emph{Church bell} candidates. The gate cuts the 14-s burst into three stretches of about
+4.8\,s. In each, the name vote answers ``church bell'' (it shares the word \emph{bell} with the label: yes), the a/b vote
+says not visibly happening (no), and the description vote says yes. Two of three in every stretch: the sound is
+silenced, and the needed bell is a miss lost at the gate. The frames show the church; they do not show the bell
+swinging. This single sound is the whole development gain of the bell rule of Round 64 (``a concealed action is not
+visible''), and a clean example of presence taken for production: the one vote that asks about the action got it
+right, and was outvoted by two votes that measure presence.

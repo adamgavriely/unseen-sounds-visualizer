@@ -1,0 +1,59 @@
+% ======================================================================
+\section{Configuration of \Dp}\label{app:config}
+Values set by \cfgv{config.use_shipped()} (\fp{config.py}, lines 503--572), read by running it. ``$\to$'' gives the
+module default and the shipped value.
+
+{\small
+\begin{longtable}{L{5.2cm}L{3.0cm}L{6.4cm}}
+\toprule
+variable & value & meaning \\
+\midrule\endfirsthead
+\toprule variable & value & meaning \\ \midrule\endhead
+\bottomrule\endfoot
+\cfgv{AED_THRESHOLD} & 0.175 & BEATs extraction bar \\
+\cfgv{AED_MIN_DUR} & 0.5 $\to$ 0.3 & shortest span (s) \\
+\cfgv{DISPLAY_THRESHOLD} & 0.35 & display bar (stage 5) \\
+\cfgv{FLEXSED_BAR} & 0.8 & FlexSED extraction bar \\
+\cfgv{FLEXSED_VETO} & 0 $\to$ 0.3 & FlexSED clip veto \\
+\cfgv{PANNS_VETO} & 0.05 & PANNs clip veto on FlexSED-only spans \\
+\cfgv{TWIN_MAX} & True & twin confidence = stronger side \\
+\cfgv{MIRROR_VETO} & 0.7 & mirror veto bar \\
+\cfgv{LISTENER_CONFIRMED_MIRROR} & True & listener can undo the mirror veto \\
+\cfgv{KEEP_NEEDS_V4} & True & a keep must also be named in an inventory \\
+\cfgv{MASKED_WEAK_VETO}, \cfgv{_AF} & True & masked-weak veto \\
+\cfgv{DASM_CLIP_VETO} & 0.0839 & DASM clip veto \\
+\cfgv{DASM_LOCAL_VETO} & 0.35 & witness rule bar \\
+\cfgv{DASM_LOCAL_KEEP} & both & both listeners can witness \\
+\cfgv{SCENE_FIT_LOGIT} & True & scene check by logit margin \\
+\cfgv{KEEP_NEEDS_V4_ALL} & onto & inventory keep incl.\ descendants \\
+\cfgv{KEEP_NEEDS_V4_ALL_DASM_KEEP} & True & DASM can keep it \\
+\cfgv{BAND_TWIN_PULL} & 0.5 & band-twin pull \\
+\cfgv{CONTINUATION_VETO} & 0.5 & continuation veto \\
+\cfgv{LISTENER_RESCUE} & True & band rescue \\
+\cfgv{LISTENER_LO} & 0.4 $\to$ 0.5 & lowest FlexSED peak rescued \\
+\cfgv{LISTENER_RULE} & TIER & Qwen alone $\geq$0.6, both below \\
+\cfgv{DASM_RESCUE}, \cfgv{_NEW_ONLY} & True & DASM rescue of new families \\
+\cfgv{FINELAP_VETO} & 0.329 & FineLAP veto on rescued spans \\
+\cfgv{LISTENER_DASM_VOTE} / \cfgv{_BAR} & True / 0.575 & DASM vote on rescued spans \\
+\cfgv{LISTENER_ONCE} & True & one rescue per family per clip \\
+\cfgv{ONSET_CAM}, \cfgv{ONSET_MONOTONE} & True & occlusion onsets, never earlier \\
+\cfgv{MAX_SPAN} & 8.0 $\to$ None & no length cap \\
+\cfgv{LABEL_FILTER} & depictable & what may be drawn \\
+\cfgv{VLM_MODEL} & Qwen/Qwen3.8-27B & gate, subject, checks \\
+\cfgv{VLM_THINKING} & False & thinking off \\
+\cfgv{VISIBILITY_STRETCH} / \cfgv{_RULE} & 5.0 / majority & gate stretches and vote \\
+\cfgv{KINSHIP_DIRECTED} & True (scored: False) & kinship direction \\
+\cfgv{VIDEO_BACKEND} & owlv2 & stage-2 objects \\
+\cfgv{DEPICT_EVENT} & True & depict-event drop \\
+\cfgv{MERGE_GAP} & 2.0 $\to$ 2.5 & repeat merge (s) \\
+\cfgv{MIN_DWELL} & 1.5 & minimum on screen (s) \\
+\cfgv{MAX_AFTER_END} & 1.0 (scored: None) & cap past the real end (s) \\
+\cfgv{GROUP_ASK} / \cfgv{GROUP_MAX_GAP} & True / 8.0 & grouping by Qwen3-Omni \\
+\cfgv{MAX_SLOTS} & 3 & simultaneous pictures \\
+\cfgv{GEN_MODEL} & Qwen/Qwen-Image-2512 & picture model (FLUX retired) \\
+\cfgv{RESOLUTION} & 1024 $\times$ 1024 & picture size \\
+\cfgv{PICTURE_V3}, \cfgv{_SCENE}, \cfgv{_FINAL}, \cfgv{_MAKER} & True & subject writing \\
+\cfgv{PICTURE_VERIFY} / \cfgv{_TRIES} & True / 5 & check and redraw \\
+\cfgv{CONFIDENCE_FADE} & False & full opacity \\
+\end{longtable}
+}

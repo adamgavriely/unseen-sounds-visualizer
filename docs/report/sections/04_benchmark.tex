@@ -1,0 +1,130 @@
+% ======================================================================
+\section{Benchmark and labels}\label{sec:benchmark}
+
+\subsection{History of the data}
+The benchmark went through three stages. Table~\ref{tab:datasets} lists every set used in the project.
+
+\paragraph{Clip-level benchmark (August--September).} 274 short clips (10--20\,s) were labelled by the author into
+four scenarios: \emph{unseen ambient} (an ambient sound whose source is off screen; 48 clips), \emph{mixed}
+(some sources visible, some not; 25), \emph{seen ambient} (every ambient source on screen; 132) and \emph{no ambient}
+(speech or music only; 69) (\fp{benchmark/tags.json}). Clips came from Wikimedia Commons (CC), the Internet Archive
+(public domain), UnAV-100~\cite{geng2023unav100} (CC-BY), VGGSound~\cite{chen2020vggsound} controls and YouTube
+(\fp{benchmark/README.md}). Four sourcing strategies (keyword scraping, AudioSet strong segments, curated film scenes,
+UnAV-100 overlap moments) and an automatic filter all landed at 15--20\,\% usable clips, which is why the set stopped
+at 274 rather than the planned 300. A test set of 100 clips (25 per scenario) was fixed. The only reliability number
+for these labels is intra-rater: 60 clips relabelled blind, 78\,\% agreement, Cohen's $\kappa = 0.60$.
+
+\paragraph{Per-sound gold (22 September).} After the judge-based evaluation was abandoned
+(Section~\ref{sec:judge-era}), the author labelled clips \emph{per sound} with the fields of
+Section~\ref{sec:needed} (\fp{benchmark/gold/annotations/gold_AG.json}). The first export had 139 clips: 109
+benchmark clips plus 30 ``slice B'' clips from the AudioSet-Strong evaluation split in which a consequential sound is
+at least half covered by speech or music. The 109 benchmark clips were split by provenance: \textbf{DEV-49} = the gold
+clips that had been in the old 100-clip test set (already touched by earlier runs), and \textbf{TEST-60} = the clips
+labelled after the pipeline was frozen. Slice B is always reported separately.
+
+\paragraph{Tagger clips and the merged sets (29 September -- 1 October).} To make both halves larger, new clips were
+labelled with a stand-alone tool (\fp{tagger/}): 100 YouTube clips (d001--d100, one 15--20-s cut per upload, found
+by scene type: transport, city walk, market, nature, home, incident, work event, water, film/TV) and 50 AudioSet-Strong
+evaluation clips (d101--d150, 10\,s). 50 clips were labelled in three batches and split into DEV2 (22) and TEST2 (28)
+by a hash of the clip name (batch 1) or by balanced pairs (batches 2--3). On 30 Sept the halves were merged:
+\textbf{merged DEV = DEV-49 + DEV2 = 71 clips} and \textbf{merged TEST = TEST-60 + TEST2 = 88 clips}. All final
+numbers in this report are on these two sets.
+
+\begin{table}[t]
+\centering\small
+\caption{Data sets. ``Needed'' = needed sounds of importance 2--3 (the scored denominator). Counts for the gold sets
+were recomputed with the scorer's own loader (\fp{score_per_sound.py}) on the current gold file.}
+\label{tab:datasets}
+\begin{tabular}{L{3.0cm}rrL{7.2cm}}
+\toprule
+set & clips & needed & what it is / how it was used \\
+\midrule
+clip-level benchmark & 274 & -- & four scenarios, clip labels; v1--v3 judge era (Aug--16 Sept) \\
+DEV-49 & 49 & 38 & gold clips from the old 100-clip test set; development \\
+TEST-60 & 60 & 43 & gold clips labelled after the freeze; September test table \\
+DEV2 / TEST2 & 22 / 28 & 20 / 22 & tagger clips (31 web, 19 AudioSet-Strong) \\
+\textbf{merged DEV} & \textbf{71} & \textbf{58} & selection set for every final decision \\
+\textbf{merged TEST} & \textbf{88} & \textbf{65} & reported once per shipped change \\
+slice B & 30 & 31 & AudioSet-Strong clips with a masked sound; reported separately \\
+AudioSet calibration & 280 & -- & fitting set for detector rounds 4--12 (retired, round 12) \\
+held-out AudioSet & 415 & -- & screening set for audio rules (252 complex, 163 random) \\
+fresh confirmation & 422 & -- & built 28 Sept for a final detector check; never scored \\
+DCASE 2025 Task 3 & 258 ev. & -- & external check of the September gate (on/off-screen labels) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The merged sets in numbers}
+\begin{table}[h]
+\centering\small
+\caption{Composition of the merged sets (recomputed from \fp{gold_AG.json}).}
+\label{tab:merged}
+\begin{tabular}{lrrrrrl}
+\toprule
+set & clips & sounds & needed & imp.~3 & clips w.\ needed & unseen/mixed/seen/none \\
+\midrule
+DEV-49 & 49 & 95 & 38 & 14 & 24 & 16/9/16/8 \\
+TEST-60 & 60 & 94 & 43 & 11 & 28 & 13/15/12/20 \\
+DEV2 & 22 & 59 & 20 & 3 & 14 & 8/7/7/0 \\
+TEST2 & 28 & 60 & 22 & 2 & 15 & 8/8/10/2 \\
+\midrule
+merged DEV & 71 & 154 & 58 & 17 & 38 & 24/16/23/8 \\
+merged TEST & 88 & 154 & 65 & 13 & 43 & 21/23/22/22 \\
+\bottomrule
+\end{tabular}
+\end{table}
+Merged DEV is 49 old benchmark clips, 13 web tagger clips and 9 AudioSet-Strong tagger clips; merged TEST is 60 old
+clips, 18 web and 10 AudioSet-Strong. Of the 109 benchmark clips, 81 have a source record (50 YouTube of which 12 are
+film scenes, 13 AudioSet-Strong, 7 UnAV-100, 7 Wikimedia Commons, 4 Internet Archive); 28 older clips have none. Most
+clips are for research use only and are not redistributed.
+
+\paragraph{Needed-sound count history.} The merged DEV count moved during the last week: 55 at the first merged
+scoring, 58 after the author's blind visibility re-check (three sounds changed from seen to needed), 57 after a
+control round, and back to 58 after a correction (Section~\ref{sec:recheck}). Every system was re-scored on each
+version. The test labels were never changed.
+
+\paragraph{Three unreachable sounds.} The gold loader keeps every non-speech label, while the shipped label filter
+(Section~\ref{sec:labelfilter}) never draws three of the needed DEV labels: \emph{Clang} in
+\fp{ambient_citywalk_nyc_2627} and two \emph{Whack, thwack} rows in \fp{b3_golf_course}. They are misses for every
+system by construction; without them merged DEV would have 55 needed sounds.
+
+\subsection{Label quality}\label{sec:recheck}
+All gold labels are the author's. A packet of 30 clips for a second annotator (stratified, 15 DEV + 15 TEST) was built
+on 27 Sept (\fp{benchmark/gold/build_second_annotator.py}) but no labels came back, so inter-rater agreement is
+unknown. The tagger package was also sent to a hired annotator; no export from that person is in the gold.
+Three further facts bear on label quality:
+\begin{itemize}
+  \item \textbf{Anchoring.} Benchmark clips were pre-filled from the system under test, and the tagger tool showed
+        detector suggestions on 37 of 50 clips. Batch 3 (AudioSet-Strong clips) was labelled with the AudioSet
+        labels visible behind a button on 16 of its 19 clips.
+  \item \textbf{Visibility re-check.} On 30 Sept the author re-judged, blind to the old tick, 14 borderline DEV
+        sounds where the pipeline and the gold disagreed (9 visible-wrong pictures, 5 gate-silenced needed sounds).
+        Three changed from seen to needed (\fp{as_church_bell} Bell 0.0\,s, \fp{as_fire_alarm} Alarm 9.0\,s,
+        \fp{tg_d088} Thunder 1.3\,s). A control round on 20 random DEV sounds changed 0 of 20 (first read 1/20,
+        then corrected by the author). The first round's changes are therefore partly a selection effect; both
+        rounds were applied and are disclosed (\fp{docs/prereg_round13_detector_push.md}, lines 1841--1930).
+  \item \textbf{Gold scope (Round 46).} The author rated, blind, pictures counted ``wrong'': about 1 in 6 is a real,
+        wanted, off-screen sound the gold does not list (2 of 11 and 3 of 20 in two samples). No gold edit was made;
+        absolute costs are therefore slightly pessimistic for every system alike.
+\end{itemize}
+The tagger guide also added two rules the earlier gold tool did not state: a sound that stops for more than about
+2\,s and comes back gets a new row, and a long sound whose visibility changes is split into two rows.
+
+\subsection{Held-out AudioSet-Strong sets}\label{sec:heldout}
+For audio-only questions (``is this candidate a real sound?'') the project used clips from the AudioSet-Strong
+evaluation split, whose 0.1-s labels need no new annotation. A \emph{calibration} set of 280 clips was used in
+rounds 4--12 with a cost on timed labels. Round 12 found that under a corrected version of that cost the shipped
+detector was worse than showing nothing (1.650 vs 0.986 per clip, $d = +0.664\ [+0.379, +0.950]$): AudioSet labels
+only a few consequential sounds per clip, so every correct but unlabelled detection counts as false. The harness was
+retired as a decision test (\fp{docs/prereg_round12_v2.md}). A separate \emph{held-out} set of 415 clips (seed 23;
+252 ``complex'' clips where speech or music covers half the clip and a sound lies under it, 163 random) was kept for
+screening single rules in the October rounds, for example ``how often is a BEATs detection that no listener names a
+real sound?'' (22\,\%; Section~\ref{sec:analysis}). A \emph{fresh} set of 422 clips was built for one last confirmation
+and never scored.
+
+\subsection{External check: DCASE 2025 Task 3}
+For the September gate the DCASE 2025 Task 3 data set, which marks every event as on- or off-screen, was used as an
+outside check. On 258 events the Qwen2.5-VL-7B gate of that time agreed with the label 66.7\,\% of the time: it
+almost never silenced an off-screen sound (97\,\%) but silenced only 35\,\% of on-screen ones
+(\fp{benchmark/eval_dcase_visibility.json}). The DCASE label is geometric (the source direction falls inside a
+100-degree field of view), not ``the viewer can see it making the sound'', so it only bounds the gate loosely.

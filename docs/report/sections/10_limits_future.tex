@@ -1,0 +1,38 @@
+% ======================================================================
+\section{Limitations and future work}\label{sec:limits}
+
+\subsection{Limitations}
+\begin{itemize}
+  \item \textbf{Small benchmark.} 71 development and 88 test clips; one or two pictures decide a development
+        comparison, and the test set can detect only cost differences of about 0.19 per clip.
+  \item \textbf{One annotator; no viewer study} (Section~\ref{sec:disclosures}, D5, D13).
+  \item \textbf{Detector floor.} About one needed sound in eleven is heard by no model, mostly under speech or music.
+  \item \textbf{Gate limit.} Balanced accuracy about 0.62; presence is taken for production; ``nothing'' is used as an
+        escape.
+  \item \textbf{Runtime.} The shipped pipeline is heavy: listener inputs take about 5 minutes per clip on an H200,
+        a picture about 20\,s per try (up to five tries), and the gate and scene check call a 27B model many times.
+        It is an offline tool, not a live captioning system.
+  \item \textbf{Vocabulary.} The 527 AudioSet classes and the 215 drawable families have no word for some sounds
+        (``phone alert''); the scorer's single-parent ontology file ignores 38 multi-parent labels.
+  \item \textbf{Licences.} Most clips are for research use and are not redistributed; Audio Flamingo Next has a
+        non-commercial licence.
+\end{itemize}
+
+\subsection{Future work}
+In order of expected value:
+\begin{enumerate}
+  \item \textbf{A study with DHH viewers}, as designed in \fp{docs/beta_specification.md}: 5--10 viewers, one
+        question per clip (``helped / hurt / neither''), and an ordinal regression of the answer on misses and wrong
+        pictures, which measures $\beta$ instead of assuming it.
+  \item \textbf{A second annotator} for 30 clips (the packet exists), with $\kappa$ on the needed decision; below 0.4
+        the definition itself would need work.
+  \item \textbf{The presence-versus-production question}: test a larger VLM (Qwen3-VL-235B) on exactly this question;
+        a production veto read as a logit margin on the named phrase; a temporal contrast (the onset frame against a
+        control window); an external grounding box with a crop.
+  \item \textbf{A detector that hears under speech and music}, trained on mixtures, tested on the unread fresh set of
+        422 AudioSet-Strong clips.
+  \item \textbf{Benchmark v2}: at least 300 clips, at least two annotators, the two tagger-guide rules (2-s return,
+        visibility split) written into the guideline, and a sealed test split with a submission scorer.
+  \item \textbf{Display}: a picture with a word, and a ``tentative'' style for low-confidence pictures, both of which
+        need viewers to evaluate.
+\end{enumerate}

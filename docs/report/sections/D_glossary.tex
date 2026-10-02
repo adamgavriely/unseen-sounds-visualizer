@@ -1,0 +1,42 @@
+% ======================================================================
+\section{Glossary of internal names}\label{app:glossary}
+{\small
+\begin{longtable}{L{2.8cm}L{12.0cm}}
+\toprule
+name & meaning \\
+\midrule\endfirsthead
+\toprule name & meaning \\ \midrule\endhead
+\bottomrule\endfoot
+B0, B0r & the old pipeline, \cfgv{config.use_scored()} (September test table); B0r = B0 re-run in the same job as a candidate \\
+B1 & B0 with the BEATs self-veto in place of the PANNs veto (rejected) \\
+B & SHIP8+MD3: the base of the last rounds (DEV 29/18/2.141) \\
+D, \Dp & B + witness rule + scene check; \Dp{} reads the scene check by logits (frozen) \\
+DEV-49, TEST-60 & per-sound gold halves of 22 Sept \\
+DEV2, TEST2 & tagger clips added 29 Sept -- 1 Oct \\
+merged DEV / TEST & DEV-49 + DEV2 (71 clips); TEST-60 + TEST2 (88 clips) \\
+needed & a sound neither visible nor obvious, importance 2--3 \\
+hit, miss & a needed sound with / without a matching picture \\
+wrong: visible / cross / phantom & a picture of an on-screen sound / another sound / nothing \\
+cost & $(4\cdot\text{missed} + 2\cdot\text{wrong})/\text{clips}$ \\
+listener & an audio-language model asked about a candidate sound (Qwen3-Omni, Audio Flamingo Next) \\
+V4 / inventory & the listener's open list of heard sounds \\
+TIER & rescue rule: Qwen alone for strong FlexSED runs, both listeners for weak ones \\
+TO1+F7F8 & first shipped listener stack (tiered rescue, once per family, twin-max, mirror veto + listener keep, DASM vote) \\
+N2b & masked-weak veto \\
+DR2 & DASM rescue of new families \\
+K-V4 & a listener keep must also be named in an inventory \\
+DV & DASM clip veto \\
+BTP & band-twin pull (start a late picture at an earlier weak run) \\
+CONT & continuation veto \\
+FLAP & FineLAP veto on rescued spans \\
+K4AO, K4A-D & drop a picture neither inventory names (K4A-D: unless DASM hears it) \\
+SHIP1--SHIP8 & successive shipped configurations (Table~\ref{tab:shipchain}) \\
+MD3 & shortest span 0.5 $\to$ 0.3\,s \\
+GRP / GROUP & grouping of same-family pictures by Qwen3-Omni \\
+WW, WW5 & weak-witness rule; WW5 = WW with the scene check \\
+SL & scene check read as a logit margin (Round 60L) \\
+DEPICT & depict-event drop (Round 57) \\
+415 & held-out AudioSet-Strong screening set \\
+EXPECT & idea family: name sounds expected off screen, then confirm (rejected) \\
+\end{longtable}
+}
