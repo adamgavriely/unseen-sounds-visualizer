@@ -56,8 +56,8 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
   \item \textbf{Pre-register.} Before a run, write the idea, the exact rule, the data it is decided on and the pass
         bar, and commit it. Results are appended below the pre-registration, never edited into it.
   \item \textbf{Decide on development data only.} The development set (or, for audio-only rules, the held-out 415)
-        decides. The test set is read after a change ships and is only reported. The author had to restate this rule
-        on 1 Oct after a test-informed choice (Section~\ref{sec:disclosures}).
+        decides. The test set is read after a change ships and is only reported. The rule was re-affirmed on 1 October
+        after one test-informed choice was identified and reverted (Section~\ref{sec:disclosures}).
   \item \textbf{General rules only.} A rule must make sense for any video, run on one video at a time, and not name a
         clip or a single sound class (a rule that only ever fires on bells was rejected for this reason, Round 64).
   \item \textbf{Compare with the shipped pipeline.} Every candidate is scored as a full-pipeline variant on the same
@@ -65,8 +65,7 @@ From 13 Sept the following rules governed every change (\fp{docs/history/plans/p
         ship it.
   \item \textbf{Hits first.} Losing a few hits is acceptable only if many wrong pictures go (the fewer-pictures
         clause, Section~\ref{sec:passrules}).
-  \item \textbf{Consult and record.} Major choices were reviewed by panels of independent model reviewers (Claude
-        instances with assigned roles, two to five per panel, one to four rounds), whose reports are in
+  \item \textbf{Consult and record.} Major choices were reviewed by panels of independent model reviewers (Claude, with assigned roles, two to five per panel, one to four rounds), whose reports are in
         \fp{docs/history/review/} and \fp{docs/panel_*.md}; every decision and its reason is in a dated log.
 \end{enumerate}
 
@@ -78,9 +77,9 @@ dates & system & scored by & outcome and why it changed \\
 \midrule\endfirsthead
 \toprule dates & system & scored by & outcome and why it changed \\ \midrule\endhead
 \bottomrule\endfoot
-06 Aug & proposal: 7 stages (audio, VLM, ASR, BEATs/PANNs, reasoning, FLUX/SDXL, evaluation) & planned: VLM describes, LLM writes reference, LLM judges & pivot from an earlier speech-illustration project \\
-07 Aug & v1: PANNs (bar 0.15) $\to$ Openverse image retrieval $\to$ side panel; no gate & demo clips & needed a ``not seen'' decision \\
-07 Aug--07 Sep & CLIP zero-shot visibility gate; clip-level benchmark (274 clips) & clip-level gate accuracy & CLIP gate 49.3\,\%: 71 of 103 seen clips still augmented -- ``object presence is not event visibility'' \\
+6 Aug & proposal: 7 stages (audio, VLM, ASR, BEATs/PANNs, reasoning, FLUX/SDXL, evaluation) & planned: VLM describes, LLM writes reference, LLM judges & pivot from an earlier speech-illustration project \\
+7 Aug & v1: PANNs (bar 0.15) $\to$ Openverse image retrieval $\to$ side panel; no gate & demo clips & needed a ``not seen'' decision \\
+7 Aug--7 Sep & CLIP zero-shot visibility gate; clip-level benchmark (274 clips) & clip-level gate accuracy & CLIP gate 49.3\,\%: 71 of 103 seen clips still augmented -- ``object presence is not event visibility'' \\
 08--11 Sep & PANNs + OWLv2 + per-sound VLM gate (Qwen2.5-VL-7B, ``name it, don't confirm''); SDXL & 100 clips $\times$ 3 systems, Mistral-7B judge 0--4, model-written reference & blind 2.94 $>$ caption 2.68 $>$ gated 2.41; retrieval beat SDXL by $+0.17$/$+0.18$; reference later found circular \\
 12--17 Sep & v3: BEATs (replaced PANNs after 11 of 14 complaints traced to its labels), hysteresis + occlusion onsets, 7B gate with 3 votes, FLUX.1-schnell & human-grounded judge reference, dev 174 / test 100 & tie 3.17 vs 3.16; gate wins where nothing is due ($+0.26$), loses where a picture is due ($-0.24$) \\
 18--21 Sep & v4: one state-of-the-art swap per stage; Qwen3.8-27B gate; FLAM and PretrainedSED detectors tried; rubric-enforced judge & judge with a cap on redundant pictures & PretrainedSED rejected three times; 13 silent bugs found (amendment 3), all earlier judge rows kept as history only \\
@@ -90,7 +89,7 @@ dates & system & scored by & outcome and why it changed \\
 28 Sep & rounds 4--12 on AudioSet sets: EAT, Dasheng, DASM, SAM-Audio, 17 ideas, local contrast, DASM rescue, masker tests & cost on AudioSet labels & all failed on the 415; round 12 showed the AudioSet cost cannot track the task: harness retired \\
 28--30 Sep & rounds 13--14: listener rescue (Qwen3-Omni, Audio Flamingo Next) + DASM vote; tagger clips added & DEV-49, then merged DEV & first gains in hits (TO1+F7F8) \\
 30 Sep--01 Oct & ship chain SHIP1--SHIP8 on merged DEV/TEST & merged DEV, pass rules & DEV 18/51/3.690 $\to$ 28/21/2.282 (Table~\ref{tab:shipchain}) \\
-01--02 Oct & rounds 46--66: display rules, witness rule, scene check, many gate ideas & merged DEV, held-out 415 & the final system: DEV 29/15/2.056; frozen 2 Oct 01:20 UTC \\
+01--02 Oct & rounds 46--66: display rules, witness rule, scene check, many gate ideas & merged DEV, held-out 415 & the final system: DEV 29/15/2.056; frozen on 2 Oct \\
 \end{longtable}
 
 \subsection{The shipped chain}\label{sec:shipchain}
@@ -129,13 +128,13 @@ TO1+F7F8 (R14) & listener rescue of weak FlexSED runs (tiered: Qwen alone above 
 was filled (1 Oct evening) the same system scores 29/18/2.141, so its net development effect is zero.
 $^{b}$ D's 2.028 contains one gain caused by a cut-off answer (``based on the'') that removed a wrong \emph{Glass}
 picture; the logit readout of the final system cannot be cut off, so that picture returns (+1 wrong). The pass bar of Round 60L
-was set against B, not against D, for this reason (prereg lines 4504--4542).
+was set against B, not against D, for this reason.
 \normalsize
 
 \paragraph{What the table shows.} From the old pipeline to the final system the development set gained 11 hits and lost 36 wrong
 pictures (cost $3.690 \to 2.056$). The test set gained 3 hits and lost 16 wrong pictures ($2.909 \to 2.409$). About a
 third of the development gain in cost carried over to the test set; with well over a hundred development variants
-tried, some of the development gain is expected to be selection luck (``winner's curse''), and the test numbers are
+tried, some of the development gain is expected to be selection bias (the winner's curse), and the test numbers are
 the better estimate of what a new video would see.
 
 \subsection{What was tried and rejected}\label{sec:rejected}
@@ -154,7 +153,7 @@ idea (round) & what it did & why it failed \\
 other detectors (Sep, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CED, SSLAM, EAT, Dasheng, PE-A-Frame, CLAP verifier, tagger ensembles & recall rose only with many more false spans; PretrainedSED lost three times; ensembles mis-scaled \\
 source separation (Sep, R7) & Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
-newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound said ``Yes'' to everything \\
+newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
 EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254 (+3 hits), but TEST 25/35/2.614 (worse); the gate cannot refuse a wrong off-screen name \\
 short twins, band lists (R49, R56) & add weak or short detections both models half-hear & BANDLIST 0 hits, +6 wrong; TWIN-SHORT 27/36/2.761 \\
 tagger ensemble (R63) & calibrated EAT/SSLAM ensemble on BEATs windows & on the 415: 33\,\% fewer spans but recall 0.152 vs 0.197 \\

@@ -16,7 +16,7 @@ history is in its Appendix E.
 
 | | |
 |---|---|
-| Code version | git tag `detector-frozen-2026-10-02` |
+| Code version | release **v1.0.0** (scored code frozen under tag `detector-frozen-2026-10-02`) |
 | Configuration | `config.use_shipped()` in [`config.py`](config.py) |
 | Run one video | `python main.py --input clip.mp4 --device cuda` |
 | Output | `data/output/<clip>_augmented.mp4` (video with a picture panel) |
@@ -26,6 +26,9 @@ FlexSED, checked by the Qwen3-Omni and Audio Flamingo Next listeners, DASM and F
 (Qwen3.8-27B) → picture (Qwen-Image-2512, checked and redrawn up to five times) → side-by-side video.
 
 ## Results
+
+![Hits and wrong pictures per system](docs/report/figures/results_bars.png)
+
 
 Scored per sound against human labels (hit = right kind of sound, picture starting 0.5 s before to 1 s after
 it; cost = (4 × missed + 2 × wrong pictures) / clips, lower is better).
@@ -39,7 +42,7 @@ it; cost = (4 × missed + 2 × wrong pictures) / clips, lower is better).
 On the test set the final system is significantly cheaper than showing nothing (−0.55 per clip,
 95 % interval [−1.09, −0.02], p = 0.047, `benchmark/gold/final_vs_show_nothing.py`), and the on-screen check
 removes about half a wrong picture per clip (p < 0.001). The test set was read after each accepted change, so it
-is a report on a seen set; see the report's Section 8 for this and the other threats to validity.
+is a report on a seen set; see Section 9 of the report (limits and threats to validity).
 
 ## Repository layout
 
@@ -68,7 +71,7 @@ Older notes and code comments may refer to `docs/<file>.md`; those files now liv
 
 - Conda environment `msproj` (PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper,
   panns-inference, easyocr, sentence-transformers); FineLAP runs in a separate `~/venv_flap`
-  (transformers 4.51.3). Details in the report, Section 10.
+  (transformers 4.51.3). Details in Appendix C of the report.
 - GPU work runs on the BIU SLURM cluster (H200 / A100). Qwen-Image needs about 57 GB in bf16.
 - FFmpeg on the path.
 

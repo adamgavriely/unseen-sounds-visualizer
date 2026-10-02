@@ -12,7 +12,7 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
         for at least 0.3\,s becomes a candidate with a start and an end.
   \item \textbf{Check candidates.} A candidate that only one model claims is removed. Weak sounds that the detectors
         almost missed get second opinions from two listeners (Qwen3-Omni and Audio Flamingo Next) and a third audio
-        model (DASM).
+        model, the Detect Any Sound Model (DASM).
   \item \textbf{Witness rule.} A remaining weak candidate survives if one of three witnesses backs it: DASM clearly
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.

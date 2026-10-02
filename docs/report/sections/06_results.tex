@@ -23,15 +23,15 @@ two-sided $p$).}
 \resizebox{\linewidth}{!}{%
 \begin{tabular}{llrrrl}
 \toprule
-set & system & hits & wrong & cost & vs.\ show nothing \\
+Set & System & Hits & Wrong & Cost & Difference from show nothing \\
 \midrule
 development & show nothing & 0 / 58 & 0 & 3.268 & \\
-(71 clips) & September baseline$^{a}$ & 18 / 58 & 51 (5/37/9) & 3.690 & $+0.42$ (worse) \\
- & \textbf{final system} & \textbf{29 / 58} & \textbf{15 (6/7/2)} & \textbf{2.056} & $\mathbf{-1.21\ [-1.83, -0.62]}$, $p < 0.001$ \\
+(71 clips) & September baseline$^{a}$ & 18 / 58 & 51 (5/37/9) & 3.690 & $+0.423$ (worse) \\
+ & \textbf{final system} & 29 / 58 & 15 (6/7/2) & 2.056 & $-1.211\ [-1.831, -0.620]$, $p < 0.001$ \\
 \midrule
 test & show nothing & 0 / 65 & 0 & 2.955 & \\
-(88 clips) & September baseline$^{a}$ & 21 / 65 & 40 (2/31/7) & 2.909 & $-0.05$ \\
- & \textbf{final system} & \textbf{24 / 65} & \textbf{24 (4/15/5)} & \textbf{2.409} & $\mathbf{-0.55\ [-1.09, -0.02]}$, $p = 0.047$ \\
+(88 clips) & September baseline$^{a}$ & 21 / 65 & 40 (2/31/7) & 2.909 & $-0.045$ \\
+ & \textbf{final system} & 24 / 65 & 24 (4/15/5) & 2.409 & $-0.545\ [-1.091, -0.023]$, $p = 0.047$ \\
 \bottomrule
 \end{tabular}}
 
@@ -40,30 +40,29 @@ test & show nothing & 0 / 65 & 0 & 2.955 & \\
 costs 3.521 (development) and 2.795 (test).
 \end{table}
 
-In words: on the test set the final system finds 37\,\% of the needed sounds and half of its pictures are right; on the
+On the test set the final system finds 37\,\% of the needed sounds and half of its pictures are right; on the
 development set the numbers are 50\,\% and two thirds. The September baseline was worse than showing nothing on the
 development set and about equal to it on the test set. The final system is significantly better than showing nothing on
 both.
 
-\begin{center}
-\fbox{\begin{minipage}{0.93\linewidth}\small
-\textbf{What is and is not statistically supported.}
-\textbf{(1) Tested and significant:} the final system costs less than showing nothing, on the development set
-($p < 0.001$) and on the test set ($p = 0.047$, two-sided). The on-screen check removes wrong pictures
-(Table~\ref{tab:sept}, $p < 0.001$ after Holm correction).
-\textbf{(2) Supported indirectly:} the final system costs less than the September baseline. The direct paired test was
-not run (the baseline's per-clip rows are on the cluster), but an intermediate version of the final system was already
-significantly cheaper than the baseline ($-0.34$ per clip, $[-0.64, -0.05]$, $p \approx 0.03$ two-sided), and the final
-system is cheaper than that version on both sets.
-\textbf{(3) Descriptive only:} the development numbers (many variants were chosen on that set), and every test number
-as a blind estimate, because the test set was read after each accepted change (Section~\ref{sec:limits}).
-\end{minipage}}
-\end{center}
+\subsection{What the statistical tests support}\label{sec:support}
+\begin{description}
+  \item[Tested and significant.] The final system costs less than showing nothing, on the development set
+        ($p < 0.001$) and on the test set ($p = 0.047$, two-sided). The on-screen check removes wrong pictures
+        (Table~\ref{tab:sept}, $p < 0.001$ after Holm correction).
+  \item[Supported indirectly.] The final system costs less than the September baseline. The direct paired test was not
+        run, because the baseline's per-clip results are stored on the computing cluster; but an intermediate version of
+        the final system was already significantly cheaper than the baseline ($-0.341$ per clip, 95\,\% interval
+        $[-0.636, -0.045]$, $p = 0.03$ two-sided), and the final system is cheaper than that version on both sets.
+  \item[Descriptive only.] The development numbers, because many variants were chosen on that set; and the test numbers
+        as a blind estimate, because the test set was read after each accepted change (Section~\ref{sec:limits}).
+\end{description}
 
-\subsection{Does the on-screen check help?}\label{sec:sept-table}
-The gate is the central idea of the system: draw a sound only if its source is not visible. Its value was measured
-directly on the September test set (60 clips, the baseline's detector, the same gate model and rule) by comparing the
-system with and without the gate:
+\subsection{Value of the on-screen check}\label{sec:sept-table}
+The on-screen check (the gate) is the central idea of the system: draw a sound only if its source is not visible.
+Its value was measured directly on the September test set (60 clips, the baseline's detector, the same gate model and
+rule) by comparing the system with and without the gate. The system without the gate stands in for audio-to-image
+approaches, which draw every sound they hear.
 
 \begin{table}[h]
 \centering\small
@@ -71,30 +70,70 @@ system with and without the gate:
 \label{tab:sept}
 \begin{tabular}{lrrl}
 \toprule
-measure & difference & 95\,\% interval & Holm $p$ \\
+Measure & Difference & 95\,\% interval & Holm $p$ \\
 \midrule
-wrong pictures per clip & $-0.517$ & $[-0.800,\ -0.283]$ & $<0.001$ \\
-viewer cost per clip & $-0.833$ & & 0.012 \\
-precision (share of pictures that are right) & $+0.137$ & & 0.010 \\
-clips handled perfectly & $+0.219$ & & 0.006 \\
-F1 (counts a miss and a wrong picture the same) & $+0.059$ & $[-0.030,\ +0.144]$ & 0.18 (not significant) \\
+Wrong pictures per clip & $-0.517$ & $[-0.800,\ -0.283]$ & $<0.001$ \\
+Viewer cost per clip & $-0.833$ & & $0.012$ \\
+Precision (share of pictures that are right) & $+0.137$ & & $0.010$ \\
+Clips handled perfectly & $+0.219$ & & $0.006$ \\
+F1 (counts a miss and a wrong picture the same) & $+0.059$ & $[-0.030,\ +0.144]$ & $0.18$ (not significant) \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The gate removes about half a wrong picture per clip and loses little: F1 does not move because what the gate gains
+The gate removes about half a wrong picture per clip and loses little. F1 does not move, because what the gate gains
 lies almost entirely in the pictures it does \emph{not} show. On clips whose sound is off screen, the gated system was
-also far cheaper than showing nothing ($-3.08$ per clip, $p < 0.001$). The comparison was not repeated with the final
+also far cheaper than showing nothing ($-3.077$ per clip, $p < 0.001$). The comparison was not repeated with the final
 detector.
 
-\subsection{Sensitivity}\label{sec:sensitivity}
-If an on-screen picture costs 1 or 0 instead of 2 (Eq.~\ref{eq:costw}), the final system costs 1.97 or 1.89
-(development) and 2.36 or 2.32 (test); every accepted change lowered the cost at every such weight, so no decision depends
-on it. On the September test set the gated system was the cheapest option for any wrong-picture weight between 0.39 and
-2.56 (2 is the one used here).
+\subsection{Sensitivity to the cost of a wrong picture}\label{sec:sensitivity}
+The weight of a wrong picture relative to a missed sound ($\beta$) is the one number in the metric that only deaf and
+hard-of-hearing viewers can set. A viewer study to measure it was designed but not run, so the main analysis assumes
+$\beta = 2$. Figure~\ref{fig:beta} shows how the conclusions change if $\beta$ is different.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/beta_sensitivity.pdf}
+\caption{Cost per clip as the cost of a wrong picture ($\beta$) varies, with a missed sound fixed at 4. Dots mark where a
+system breaks even with showing nothing. On the test set the final system is cheaper than showing nothing for every
+$\beta < 4.0$, that is, until a wrong picture hurts as much as a missed sound (on the development set until
+$\beta = 7.7$, off the chart). The September baseline breaks even already at $\beta = 2.1$ (test) and $1.4$ (development).
+The final system is cheaper than the baseline at every $\beta$, because it has both fewer misses and fewer wrong
+pictures.}
+\label{fig:beta}
+\end{figure}
+
+The result therefore does not depend on the exact value of $\beta$: as long as viewers judge a wrong picture to be less
+harmful than a missed sound, the final system is better than showing nothing, and it is better than the September
+baseline for any weight. A second sensitivity check weighs only on-screen pictures less (Eq.~\ref{eq:costw}): with $w=1$
+or $w=0$ the final system costs 1.972 or 1.887 (development) and 2.364 or 2.318 (test), and every accepted change lowered
+the cost at every such weight.
+
+\subsection{How the system improved during development}\label{sec:progression}
+Figure~\ref{fig:progression} shows the cost after each accepted change, from the September baseline to the final system
+(the changes are described in Appendix~\ref{app:history}). The development cost fell by 1.634 per clip; the test cost by
+0.500. The gap is expected: changes were chosen on the development set, so part of each development gain is selection
+luck, and the test numbers are the better estimate for new videos.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/progression.pdf}
+\caption{Cost per clip after each accepted change. Decisions were made on the development set; the test set was read
+after each change and only reported. Dotted lines: showing nothing.}
+\label{fig:progression}
+\end{figure}
 
 \subsection{Where the errors come from}\label{sec:errors}
-Of the 41 test misses, 32 were heard as candidates and then removed by a later rule (most often because the listeners
-did not confirm a weak detection), 6 were heard by no detector, and 3 were heard but timed outside the window. Of the 24
-test wrong pictures, 15 show another sound, 5 show nothing and 4 show an on-screen sound. Section~\ref{sec:analysis}
-explains why.
+Figure~\ref{fig:errors} breaks down the misses and wrong pictures of the final system, from its logged decision trail.
+Most misses are sounds that were heard as candidates and then removed by a later rule -- most often because the
+listeners did not confirm a weak detection. Each of these rules was accepted because, overall, it removed more wrong
+pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
+Most wrong pictures on the test set show another sound (15 of 24). Section~\ref{sec:hard} explains why these errors are
+hard to remove.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/error_breakdown.pdf}
+\caption{Misses of the final system by the step where the sound was lost (left), and wrong pictures by kind (right).}
+\label{fig:errors}
+\end{figure}

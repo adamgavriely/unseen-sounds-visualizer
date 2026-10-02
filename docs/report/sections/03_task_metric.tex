@@ -1,23 +1,22 @@
 % ======================================================================
 \section{Task and metric}\label{sec:task}
 
-\begin{center}
-\fbox{\begin{minipage}{0.93\linewidth}\small
-\textbf{Words used in this report.}
-\emph{Final system}: the code at git tag \texttt{detector-frozen-2026-10-02}.
-\emph{September baseline}: the version used for the September test table.
-\emph{Show nothing}: a system that never shows a picture.
-\emph{Gate} (on-screen check): the step that decides whether a sound's source is visible.
-\emph{Blind}: the same system without the gate, drawing every sound it hears.
-\emph{Listener}: an audio-language model asked about a sound (``is a siren present?'', ``list what you hear'').
-\emph{Family}: a sound and its parents in the AudioSet tree (\emph{Bark} belongs to the family \emph{Dog}).
-\emph{Span}: the time interval of one detected sound.
-\emph{Bootstrap}: resampling the clips many times to see how much a difference could change by chance.
-\emph{Holm correction}: a stricter $p$-value bar used when several comparisons are made at once.
-\end{minipage}}
-\end{center}
+\subsection{Terminology}\label{sec:terms}
+\begin{description}[itemsep=1pt]
+  \item[Final system] the system described in this report (release v1.0.0 of the code).
+  \item[September baseline] the version used for the September test table.
+  \item[Show nothing] a system that never shows a picture.
+  \item[Gate (on-screen check)] the step that decides whether a sound's source is visible.
+  \item[Blind] the same system without the gate, drawing every sound it hears.
+  \item[Listener] an audio-language model asked about a sound (``is a siren present?'', ``list what you hear'').
+  \item[Family] a sound and its parents in the AudioSet tree (\emph{Bark} belongs to the family \emph{Dog}).
+  \item[Span] the time interval of one detected sound.
+  \item[Bootstrap] resampling the clips many times to see how much a difference could change by chance.
+  \item[Holm correction] a stricter $p$-value bar used when several comparisons are made at once.
+\end{description}
 
-\subsection{When is a picture needed?}\label{sec:needed}
+
+\subsection{Needed sounds}\label{sec:needed}
 The unit of evaluation is one sound in one clip. For every sound the annotator records its label, its start and end
 (about 0.5-s precision) and three judgements:
 \begin{description}

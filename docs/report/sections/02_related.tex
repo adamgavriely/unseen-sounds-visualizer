@@ -6,7 +6,7 @@ does not already show it; this is the visibility rule used here. Viewers want im
 and a choice~\cite{may2025choices,alonzo2022beyond}; captions lose emotional information~\cite{revuelta2020eeg};
 visual styling is welcome when it is readable and calm~\cite{delacerdapataca2024royale,prosodycaptions}. Sound-awareness
 tools~\cite{jain2015hmd,homesound,soundwatch,protosound} show that users want urgent sounds fast and are bothered by
-false alarms, which is why a wrong picture has a cost in our metric. None of this work generates pictures for ambient
+false alarms, which is why a wrong picture has a cost in the metric used here. None of this work generates pictures for ambient
 sound in recorded video, chosen automatically by what is already visible.
 
 \paragraph{Sound event detection.} Almost all sound taggers use the AudioSet label set~\cite{gemmeke2017audioset}
@@ -14,12 +14,12 @@ sound in recorded video, chosen automatically by what is already visible.
 PANNs~\cite{kong2020panns}, AST~\cite{gong2021ast} and BEATs~\cite{chen2023beats} say \emph{what} is heard;
 text-queried detectors such as CLAP~\cite{elizalde2023clap}, FLAM~\cite{wu2025flam} and FlexSED~\cite{hai2025flexsed}
 score a sound name frame by frame. Detection is usually scored with event-based F1 and a time tolerance
-(``collar'')~\cite{mesaros2016metrics,bilen2020psds}; our metric keeps the onset tolerance but reports a cost instead of
+(``collar'')~\cite{mesaros2016metrics,bilen2020psds}; the metric used here keeps the onset tolerance but reports a cost instead of
 F1, in the spirit of cost curves~\cite{drummond2006costcurves}. A known weakness matters here: a quiet sound under speech
 or music is ranked below \emph{Speech} or \emph{Music}.
 
 \paragraph{Audio-language and vision-language models.} Audio-language models such as Qwen2-Audio~\cite{chu2024qwen2audio}
-and Qwen3-Omni~\cite{xu2025qwen3omni} answer questions about audio; we use two of them as ``listeners''.
+and Qwen3-Omni~\cite{xu2025qwen3omni} answer questions about audio; the system uses two of them as ``listeners''.
 Vision-language models such as Qwen2.5-VL~\cite{bai2025qwen25vl} and LLaVA~\cite{liu2023llava} answer questions about
 frames and are the only tool that can decide, for any sound, whether its source is visible. Their known failures matter:
 a preference for some answer letters~\cite{zheng2024pride}, weak handling of negation~\cite{alhamoud2025negbench}, and
@@ -30,6 +30,6 @@ models~\cite{senocak2023alignment,um2025objaware} find \emph{where} in the frame
 off-screen or silent audio~\cite{juanola2025critical}, so they do not answer \emph{whether} it is visible.
 Audio-to-image models~\cite{sungbin2023sound2scene,biner2024sonicdiffusion,ge2026audiocanvas} draw a picture from a whole
 soundtrack, so they draw the scene rather than the one unseen source and cannot be told to leave a visible object out.
-We therefore use a text-to-image model (Qwen-Image~\cite{wu2025qwenimage}) with a short, guarded prompt, and measure the
-value of the on-screen check against a \emph{blind} baseline that uses the same detector and generator but draws every
+A text-to-image model (Qwen-Image~\cite{wu2025qwenimage}) with a short, guarded prompt is therefore used, and the
+value of the on-screen check is measured against a \emph{blind} baseline that uses the same detector and generator but draws every
 sound. Model judges~\cite{zheng2023judge} were tried for evaluation and failed (Appendix~\ref{app:judge}).

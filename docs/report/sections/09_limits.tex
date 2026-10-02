@@ -1,0 +1,61 @@
+% ======================================================================
+\section{Limits, threats to validity and future work}\label{sec:limits}\label{sec:disclosures}
+
+This section separates three things: what the approach itself cannot do, what the evaluation cannot show, and what
+could make the reported numbers wrong. Section~\ref{sec:hard} explains the first in detail.
+
+\subsection{Limits of the approach}
+\begin{itemize}
+  \item \textbf{Detector floor.} About one needed sound in five cannot be found with today's open detectors, mostly
+        because it is quiet under speech or music. No later rule can recover it.
+  \item \textbf{Presence is not production.} The on-screen check confuses an object being visible with the object
+        making the sound; every alternative tried traded one error for the other.
+  \item \textbf{No stage can tell a right off-screen name from a wrong one}, so adding more candidate sounds adds wrong
+        pictures at about the same rate as hits.
+  \item \textbf{Offline only.} A 15-s clip needs about five minutes of GPU time (one NVIDIA H200) before the first picture
+        is drawn, and each picture try takes about 20\,s. The system cannot caption live television.
+  \item \textbf{Design choices.} No model is trained; speech and music are never drawn; one picture is shown per sound,
+        without words.
+\end{itemize}
+
+\subsection{Limits of the evaluation}
+\begin{itemize}
+  \item \textbf{No viewer study.} The cost model assumes that a wrong picture harms a viewer half as much as a missed
+        sound. No deaf or hard-of-hearing viewer has confirmed this, or that a generated picture is understood faster than
+        a caption in brackets. The metric is therefore a model of the viewer, not a measurement;
+        Figure~\ref{fig:beta} shows that the main conclusion holds for any weight up to 4.
+  \item \textbf{One annotator.} All labels are the author's; inter-annotator agreement is unknown.
+  \item \textbf{Strict ``wrong''.} It counts redundant and late pictures, and about 1 in 6 ``wrong'' pictures is a real
+        off-screen sound missing from the labels.
+  \item \textbf{Pictures checked by the author only.} The picture result rests on one blind glance test by the author; the
+        automatic picture check was validated on known cases, not against a human rater.
+\end{itemize}
+
+\subsection{Threats to validity}
+\begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
+  \item \textbf{The test set was seen.} It was read after each accepted change, about 19 times in the last week (its 60
+        older clips 11 times before that). Twice a choice was influenced by a test read; both were undone. About a third
+        of the development gain carried over to the test set (Figure~\ref{fig:progression}), which is consistent with
+        selection on the development set. The test numbers are a report on a seen set, not a blind confirmation.
+  \item \textbf{Small sets.} With 71 and 88 clips, one or two pictures can decide a development comparison, and the test
+        set detects only cost differences of about 0.19 per clip or more.
+  \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
+        0 of 20 random controls changed), which may favour the system; test labels were never changed. Newer clips were
+        labelled with detector suggestions visible, and 19 AudioSet clips with the AudioSet labels visible.
+  \item \textbf{Final versus baseline not tested directly}, and the baseline was scored with a shorter repeat merge
+        (Section~\ref{sec:headline}).
+  \item \textbf{Scored versus live system.} The scoring harness and the live pipeline differ in four small ways that do
+        not change when a picture starts; one of them (the direction of a family rule) was not re-scored
+        (Appendix~\ref{app:config}).
+\end{enumerate}
+
+\subsection{Future work}
+Each item addresses one of the limits above.
+\begin{enumerate}
+  \item \textbf{Measure the viewer's costs}: a study with 5--10 DHH viewers (``helped / hurt / neither'' per clip) that
+        estimates the weight of a wrong picture instead of assuming it.
+  \item \textbf{A second annotator} for 30 clips (the packet exists), to measure label agreement.
+  \item \textbf{The presence-versus-production question}: a much larger vision model, a comparison of the frame at the
+        sound's onset with a frame just before it, or an external box around the named object.
+  \item \textbf{A detector that hears sounds under speech and music}, tested on the unused set of 422 AudioSet clips.
+\end{enumerate}

@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use this code or the labels, please cite the technical report."
+title: "Visual Augmentation of Audio Semantics for Accessibility"
+authors:
+  - family-names: Gavriely
+    given-names: Adam
+    affiliation: "Bar-Ilan University, Department of Computer Science"
+version: 1.0.0
+date-released: 2026-10-02
+repository-code: "https://github.com/adamgavriely/MscFinalProject"
+type: software

@@ -1,9 +1,9 @@
 % ======================================================================
-\section{Reproduction and sources of the numbers}\label{app:sources}
+\section{Reproducibility and sources of the numbers}\label{app:sources}
 \subsection{Reproduction}\label{sec:repro}
 
 \paragraph{Code state}
-Check out the tag \texttt{detector-frozen-2026-10-02}. \cfgv{config.use_shipped()} sets the final system and
+Check out release v1.0.0 (git tag \texttt{v1.0.0}; the code was frozen for the scored results under the earlier tag \texttt{detector-frozen-2026-10-02}). \cfgv{config.use_shipped()} sets the final system and
 \cfgv{config.use_scored()} the September baseline. The scoring code names variants by short internal codes; the final
 system is the variant \texttt{SHIP8+MD3+WW5+SL} in \fp{benchmark/gold/round13_dev.py}, and this code is used in the
 commands below (Appendix~\ref{app:glossary} explains it). The cluster copies used for scoring are not git
@@ -21,7 +21,7 @@ repositories; the frozen code was synced from the tag.
         \fp{nvidia/audio-flamingo-next-hf}; \fp{AndreasXi/FineLAP} (revision b419aa2); \fp{CPF2/detect_any_sound};
         \fp{Qwen/Qwen-Image-2512}; \fp{google/owlv2-base-patch16-ensemble}; BEATs iter3+ AS2M cpt2; PANNs CNN14.
         Revisions other than FineLAP are not pinned; the Hugging Face cache was used offline.
-  \item Hardware: Bar-Ilan SLURM cluster, partitions with H200 and A100 GPUs. Qwen-Image needs about 57\,GB in bf16; the
+  \item Hardware: one NVIDIA H200 GPU (or two A100 80\,GB) on the Bar-Ilan computing cluster. Qwen-Image needs about 57\,GB in bf16; the
         picture check needs the generator and the VLM on one H200 or two cards.
 \end{itemize}
 
@@ -36,10 +36,10 @@ listener pools and answers, DASM and FineLAP scores) -- about 5 minutes on an H2
 
 \paragraph{Running a folder of clips on the cluster}
 \begin{verbatim}
-sbatch slurm/run_best.sh NAME /path/to/clips      # stages 1-5
-python scripts/best_to_protocol.py --name NAME --arm SHIP8+MD3+WW5+SL
-python scripts/repaint_shipped.py --tag NAMEbest_v33 --verify
-python scripts/recomposite.py --root data/work/shipped_v_NAMEbest_v33 \
+sbatch slurm/run_best.sh <name> <clip-folder>      # stages 1-5
+python scripts/best_to_protocol.py --name <name> --arm SHIP8+MD3+WW5+SL
+python scripts/repaint_shipped.py --tag <name>best_v33 --verify
+python scripts/recomposite.py --root data/work/shipped_v_<name>best_v33 \
        --shipped --require-local-images --modes clean --out OUT
 \end{verbatim}
 The batch runner stops at the list of pictures; the three scripts draw and compose them.
@@ -53,8 +53,7 @@ python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
 python benchmark/gold/inspector_trail_export.py \
    --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
 \end{verbatim}
-The last command re-runs the final system with logging on every decision and fails unless the counts match exactly; it passed on
-2 Oct (0 of 159 clips differ). The test against showing nothing is \fp{benchmark/gold/final_vs_show_nothing.py} (it needs only
+The last command re-runs the final system with logging on every decision and fails unless the counts match exactly; it passes (0 of 159 clips differ). The test against showing nothing is \fp{benchmark/gold/final_vs_show_nothing.py} (it needs only
 \fp{docs/inspector2/data.js}). The direct test against the September baseline has not been run; it needs
 \fp{benchmark/gold/final_test.py} (\texttt{score}) with the final variant on the cluster, where both per-clip rows exist.
 

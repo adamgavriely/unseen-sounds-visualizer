@@ -16,23 +16,23 @@ results; Appendix~\ref{app:datahistory} describes how the sets grew. Most clips 
 \caption{The two evaluation sets. Scenario counts: \emph{unseen} (an ambient source is off screen), \emph{mixed}
 (some sources visible, some not), \emph{seen} (all sources on screen), \emph{none} (speech or music only).}
 \label{tab:sets}
-\begin{tabular}{lrrrrl}
+\resizebox{\linewidth}{!}{\begin{tabular}{lrrrrl}
 \toprule
-set & clips & labelled sounds & needed sounds & clips with a needed sound & unseen / mixed / seen / none \\
+Set & Clips & Labelled sounds & Needed sounds & Clips with a needed sound & Unseen / mixed / seen / none \\
 \midrule
-development & 71 & 154 & 58 & 38 & 24 / 16 / 23 / 8 \\
-test & 88 & 154 & 65 & 43 & 21 / 23 / 22 / 22 \\
+Development & 71 & 154 & 58 & 38 & 24 / 16 / 23 / 8 \\
+Test & 88 & 154 & 65 & 43 & 21 / 23 / 22 / 22 \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}
 
 About half of the clips have no needed sound; on those, the best possible behaviour is to show nothing. Three needed
-development sounds (a clang and two golf-club whacks) belong to labels the system never draws, so they are misses for
+development sounds (a clang and two golf-club strikes) belong to labels the system never draws, so they are misses for
 every system.
 
 \paragraph{Label quality.} All labels are the author's; a second annotator was planned but did not return labels, so
-inter-annotator agreement is unknown (the author agreed with his own earlier clip-level labels 78\,\% of the time,
-Cohen's $\kappa = 0.60$). The labelling tool showed detector suggestions on many clips, and a blind check of pictures
+inter-annotator agreement is unknown (on the earlier clip-level labels, a blind relabelling by the author agreed 78\,\% of the
+time, Cohen's $\kappa = 0.60$). The labelling tool showed detector suggestions on many clips, and a blind check of pictures
 counted as wrong found that about 1 in 6 is a real off-screen sound the labels miss. These and other caveats are listed
 in Section~\ref{sec:limits}.
 
