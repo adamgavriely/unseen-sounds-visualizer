@@ -101,6 +101,7 @@ STEPS_EXTRA = [
 AFTER = {"depiction": "disambiguate"}
 
 DROP_LIKE = {"drop"}
+SHIPPED_MAX_AFTER_END = 1.0                      # config.use_shipped(): a picture stays at most 1.0 s past the sound's real end
 EDGE_STEPS = {"family_merge"}                    # a relabel into a stage-5 sound: always a join, never a continuation
 EXTRA_TO_STEPS = {"twin_union", "dedup", "group"}  # merges with a target: the candidate lives on inside the target
 
@@ -383,7 +384,12 @@ def run(arm, frozen, out, expect, media_prefix, splits):
                     pf = S.load_pictures(base / f"{frozen}_proposed", st, "proposed") or []
                 if DCC.pics_sig(pf) != DCC.pics_sig(pics):
                     parity[split].append([st, DCC.pics_sig(pf), DCC.pics_sig(pics)])
-            sig = DCC.pics_sig(pics)
+            # the video key: the pictures as the SHIPPED display shows them (use_shipped: MAX_AFTER_END 1.0, which the
+            # scoring harness leaves at None -- only picture ends differ, never a start), = render_trail_media.py's key
+            TRAIL_LOG.reset()
+            with R.flags({**disp, "MAX_AFTER_END": SHIPPED_MAX_AFTER_END}):
+                sig = DCC.pics_sig(S.load_pictures(root, st, "proposed") or [])
+            TRAIL_LOG.reset()
             h = hashlib.sha1(json.dumps(sig).encode()).hexdigest()[:10]
             sigs[f"{split}/{st}"] = {"sig": sig, "hash": h, "part": part}
             video = f"{media_prefix}/{split}/{st}.{h}.mp4"

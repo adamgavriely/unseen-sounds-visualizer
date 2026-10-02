@@ -10,6 +10,13 @@ sha1 of the clip's picture list [(label, start, end)], first 10 hex digits. A `.
 is re-rendered only when its signature changes, so older versions' videos stay. They are rendered by
 `benchmark/gold/render_trail_media.py` (job `slurm/job_trail_media.sh`) and copied to `docs/inspector/media/bysig/`.
 
+**Media status (2 Oct):** 159 videos (DEV 71, TEST 88), 350 MB, in `docs/inspector/media/bysig/{DEV,TEST}/`. The folder is
+gitignored. All 159 passed the check that the compositor's display spans equal the clip's signature, and every `data.js`
+video path resolves. The videos use the shipped display (`use_shipped`: a picture stays at most 1.0 s past the sound's
+real end). The scoring harness leaves that limit off, so on 3 TEST clips the scored picture ends 0.04-0.38 s later than
+in the video. Starts and labels are identical, and only starts are scored. The video key therefore uses the shipped
+display (`SHIPPED_MAX_AFTER_END` in the exporter).
+
 ## How it was made
 - Logging calls (`src/trail.py`, `src/trail_ctx.py`) sit at every D′ decision site of docs/inspector2/HOOKS.md. They only log.
   The DEV/TEST harness writes `trail_s4.json` + `trail.json` per clip. The exporter adds the stage-6 display records, which it
