@@ -70,6 +70,7 @@
       '<tr><td><b>"Visibly happening" look-alike replies</b></td><td>For the display step that drops a picture whose event is visibly happening, only the final yes/no was stored, not the look-alike replies. The event questions are shown.</td></tr>' +
       '<tr><td><b>Never heard</b></td><td>' + nh + ' missed sounds: no detector produced a span of that type near the start, so no step ever decided anything. Their sub-bar scores are not logged.</td></tr>' +
       '<tr><td><b>Timing / matching</b></td><td>' + sc + ' missed sounds: a span of the right type existed, but no picture started inside −0.5 … +1.0 s. The note names the nearest span and what happened to it.</td></tr>' +
+      '<tr><td><b>Video end times</b></td><td>In the videos each picture stays until 1.0 s after its sound ends, as the live system shows it. Scoring uses start times only, so on 3 TEST clips an end differs by under 0.4 s from the scored list; hits and wrong pictures are the same.</td></tr>' +
       (noTrail ? '<tr><td><b>Wrong picture without a trail</b></td><td>' + noTrail + ' wrong picture(s): no kept span of its type overlaps it, so it is shown without a trail.</td></tr>' : '') +
       '</tbody></table></div>';
   }
@@ -200,7 +201,7 @@
     }).join('');
     app.innerHTML = h;
     var v = document.getElementById('vid'), vn = document.getElementById('vnote');
-    v.onerror = function () { vn.hidden = false; vn.innerHTML = 'Video not available here.<br><code>' + esc(c.video || '') + '</code>'; };
+    v.onerror = function () { vn.hidden = false; vn.innerHTML = 'Video not found. Videos live in docs/inspector/media/bysig/ on the project laptop (not in git).<br><code>' + esc(c.video || '') + '</code>'; };
     if (c.video) v.src = c.video; else v.onerror();
     var side = document.getElementById('side');
     app.querySelectorAll('rect.s').forEach(function (r) {
