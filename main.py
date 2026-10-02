@@ -53,6 +53,42 @@ def _run_stage5_as_scored() -> None:
     pipeline.generate_augmentations = wrap(pipeline.generate_augmentations, to_final, lambda: None)
 
 
+def _stage_input(video: Path) -> Path:
+    """Copy (or convert) any input video to data/input/live/<stem>_<content hash>.mp4.
+
+    The per-clip caches are keyed by file name, so the content hash keeps a new video with an old name from reusing old
+    answers; the .mp4 extension (lower case) is what the cache builder looks for. A video without an audio track has no
+    sounds to detect, so it stops with a clear message instead of a decoder error."""
+    import hashlib
+    import re
+    import shutil
+    import subprocess
+    video = Path(video).resolve()
+    if not video.is_file():
+        raise SystemExit(f"input not found: {video}")
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "a", "-show_entries", "stream=index",
+                            "-of", "csv=p=0", str(video)], capture_output=True, text=True)
+    if probe.returncode != 0:
+        raise SystemExit(f"cannot read {video.name} as a video (ffprobe: {probe.stderr.strip()[:200]})")
+    if not probe.stdout.strip():
+        raise SystemExit(f"{video.name} has no audio track: there are no sounds to show. Nothing was written.")
+    h = hashlib.sha1()
+    with open(video, "rb") as f:
+        for block in iter(lambda: f.read(1 << 20), b""):
+            h.update(block)
+    stem = re.sub(r"[^A-Za-z0-9_-]+", "_", video.stem).strip("_") or "clip"
+    dest = Path(__file__).resolve().parent / "data" / "input" / "live" / f"{stem}_{h.hexdigest()[:8]}.mp4"
+    if dest.exists():
+        return dest
+    dest.parent.mkdir(parents=True, exist_ok=True)
+    if video.suffix == ".mp4":
+        shutil.copy2(video, dest)
+    else:                                   # .MP4, .mov, .mkv, .webm, ...: re-encode to a plain H.264/AAC mp4
+        subprocess.run(["ffmpeg", "-y", "-v", "error", "-i", str(video), "-c:v", "libx264", "-pix_fmt", "yuv420p",
+                        "-c:a", "aac", str(dest)], check=True)
+    return dest
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--input", required=True, help="path to input video clip")
@@ -75,6 +111,11 @@ def main() -> None:
                     help="print the phrase and every raw detection with the gate's verdict under the panel")
     args = ap.parse_args()
 
+    video = Path(args.input)
+    if not args.listener_split:             # precomputed splits are keyed by the original file name: use it as is
+        video = _stage_input(video)
+        print(f"input: {video}", flush=True)
+
     # the final system by default (Qwen-Image pictures, scored detector stack, PANNs veto); CLI flags override it
     if not args.raw_config:
         config.use_shipped()
@@ -86,7 +127,7 @@ def main() -> None:
         else:
             # no precomputed answers named: compute them on the spot (same harness as the benchmark, slow)
             from src.listener_prep import ensure_listener_inputs
-            config.set_listener_split(ensure_listener_inputs(Path(args.input)))
+            config.set_listener_split(ensure_listener_inputs(video))
             # the inputs were just built for this clip; a clip with no weak candidate sounds legitimately has empty
             # listener files, which the cache check would treat as missing (the scored runs ran with the check off)
             config.LISTENER_REQUIRE_CACHES = False
@@ -104,7 +145,7 @@ def main() -> None:
     except ImportError:
         pass
 
-    pipeline.run(Path(args.input), work_root=Path(args.work_dir))
+    pipeline.run(video, work_root=Path(args.work_dir))
 
 
 if __name__ == "__main__":
