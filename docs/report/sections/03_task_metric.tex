@@ -1,116 +1,72 @@
 % ======================================================================
-\section{Task definition and metric}\label{sec:task}
+\section{Task and metric}\label{sec:task}
 
-\subsection{What counts as a needed sound}\label{sec:needed}
-The unit of evaluation is one sound in one clip. For every sound the annotator records a label (mapped to the
-AudioSet ontology), its onset and offset (about 0.5-s precision), and four judgements
-(\fp{benchmark/gold/tool_template.html}, \fp{docs/history/plans/metric_per_sound.md}):
+\begin{center}
+\fbox{\begin{minipage}{0.93\linewidth}\small
+\textbf{Words used in this report.}
+\emph{Final system}: the code at git tag \texttt{detector-frozen-2026-10-02}.
+\emph{September baseline}: the version used for the September test table.
+\emph{Show nothing}: a system that never shows a picture.
+\emph{Gate} (on-screen check): the step that decides whether a sound's source is visible.
+\emph{Blind}: the same system without the gate, drawing every sound it hears.
+\emph{Listener}: an audio-language model asked about a sound (``is a siren present?'', ``list what you hear'').
+\emph{Family}: a sound and its parents in the AudioSet tree (\emph{Bark} belongs to the family \emph{Dog}).
+\emph{Span}: the time interval of one detected sound.
+\emph{Bootstrap}: resampling the clips many times to see how much a difference could change by chance.
+\emph{Holm correction}: a stricter $p$-value bar used when several comparisons are made at once.
+\end{minipage}}
+\end{center}
 
-\begin{description}[style=nextline]
-  \item[visible] the thing making the sound is \emph{seen making it now}. A barking dog on screen is visible; a
-        baby held quietly is not visibly crying; an alarm box on a wall is not visibly ringing. If the source is
-        visible for only part of the sound, tick visible only if it is visible for most of it.
-  \item[obvious] ``with the sound off, would a viewer still know this sound is happening now?'' (for example
-        waves when the sea fills the frame).
-  \item[importance] a property of the sound, rated as if the screen were black: 1 = steady noise of the place,
-        no clear start or end; 2 = an event that can be said in one sentence; 3 = danger or a key story moment
-        (siren, alarm, explosion, gunshot, glass, baby crying, doorbell, phone, horn, scream). When unsure, the
-        lower value.
-  \item[masked] the sound is covered by speech or music (recorded, not used in scoring).
-\end{description}
-
-A sound is \textbf{needed} if it is neither visible nor obvious (\fp{benchmark/gold/score_per_sound.py},
-\cfgv{load_gold}), and it is \textbf{scored} if its importance is 2 or 3 (\cfgv{MIN_IMPORTANCE = 2}). A needed
-sound of importance 1 is ``don't care'': a picture on it is neither a hit nor wrong. Speech and music are never
-sounds. Every heard sound is labelled, not only the needed ones, because a picture with no labelled sound under it
-counts as wrong.
-
-\paragraph{Example.} In a clip of a street at night, a police siren is heard while the camera shows a crowd
-looking up. The siren is not visible and not obvious from the picture, and it is importance 3: it is
-\emph{needed}. If the police car then drives into view with its lights on, a second siren row is labelled visible.
-
-\subsection{Matching pictures to sounds}\label{sec:matching}
-Pictures are scored as they are \emph{displayed}: the scorer replays the compositor's display rules (repeat merge,
-minimum time on screen, grouping, at most three slots) before matching (\cfgv{load_pictures}). The rules, from
-\cfgv{score_clip}:
-\begin{enumerate}
-  \item \textbf{Onset window.} A picture can match a sound only if the picture \emph{starts} within
-        $[t_\text{onset}-0.5\,\text{s},\ t_\text{onset}+1.0\,\text{s}]$. The end of the picture is not scored.
-        (A scoring panel first proposed $+2$\,s; the author set $+1.0$\,s on 19 Sept, before any per-sound score.)
-  \item \textbf{Same family.} The picture's label and the sound's label must be the same, or one must be an
-        ontology ancestor of the other, and both must be below the top level of the ontology (depth $\geq 1$):
-        \emph{Vehicle} matches \emph{Car}, but the top-level \emph{Sounds of things} matches nothing.
-  \item \textbf{One to one.} Each sound takes at most one picture (the nearest in time). Extra pictures on a sound
-        already taken are \emph{duplicates}: not credited, not counted as wrong.
-\end{enumerate}
-
-Each scored needed sound is a \textbf{hit} or a \textbf{miss}. Each picture that is not a hit or a duplicate is
-\textbf{wrong}, of one of three kinds:
+\subsection{When is a picture needed?}\label{sec:needed}
+The unit of evaluation is one sound in one clip. For every sound the annotator records its label, its start and end
+(about 0.5-s precision) and three judgements:
 \begin{description}
-  \item[on screen (``visible'')] it matches a sound that is not needed (visible or obvious). The viewer could see
-        it; the picture is redundant.
-  \item[other sound (``cross'')] no same-family sound starts in its window, but some labelled sound is playing or
-        starting there. This includes a second picture of a long sound that started earlier and is still playing --
-        the \emph{strict} rule.
-  \item[nothing (``phantom'')] no labelled sound at all is there.
+  \item[visible] the thing making the sound is \emph{seen making it now}. A barking dog on screen is visible; a baby
+        held quietly is not visibly crying; an alarm box on a wall is not visibly ringing.
+  \item[obvious] with the sound off, a viewer would still know it is happening (waves when the sea fills the frame).
+  \item[importance] rated as if the screen were black: 1 = steady background noise; 2 = an event one can say in a
+        sentence; 3 = danger or a key moment (siren, alarm, gunshot, glass, baby crying, scream).
 \end{description}
-``Wrong'' is therefore strict: it counts unneeded pictures, not only false ones. Section~\ref{sec:disclosures}
-gives a human check of how often a ``wrong'' picture is in fact a real sound the labels missed.
+A sound is \textbf{needed} if it is neither visible nor obvious and has importance 2 or 3. \emph{Example}: a police
+siren is heard while the camera shows a crowd looking up -- needed. When the police car drives into view with its
+lights on, the siren becomes visible -- not needed. Every heard sound is labelled, because a picture over an unlabelled
+moment counts as wrong.
+
+\subsection{Scoring a picture}\label{sec:matching}
+Pictures are scored as they are shown on screen. A picture \textbf{hits} a needed sound if it is of the same family
+and \emph{starts} between 0.5\,s before and 1\,s after the sound starts; each sound takes at most one picture. Every
+other picture is \textbf{wrong}, of one of three kinds:
+\begin{description}
+  \item[on screen] it shows a sound whose source is visible (the viewer could see it);
+  \item[other sound] it shows the wrong sound -- something else is heard there (a gunshot picture over footsteps), or
+        it is a late second picture of a long sound already shown;
+  \item[nothing] there is no labelled sound there at all.
+\end{description}
+``Wrong'' is therefore strict: it includes redundant pictures, not only false ones.
 
 \subsection{Viewer cost}\label{sec:metric}
-The decision metric is the viewer cost per clip,
+The main score is the cost per clip,
 \begin{equation}
-  C \;=\; \frac{4\cdot\#\text{missed} \;+\; \beta\cdot\#\text{wrong}}{\#\text{clips}},\qquad \beta = 2,
+  C \;=\; \frac{4\cdot\#\text{missed needed sounds} \;+\; 2\cdot\#\text{wrong pictures}}{\#\text{clips}},
   \label{eq:cost}
 \end{equation}
-lower is better (\cfgv{COST_MISS, COST_FA = 4.0, 2.0} in \fp{score_per_sound.py}). A missed needed sound costs
-twice a wrong picture: one hit pays for at most two wrong pictures, so a picture is worth showing when the chance
-that it is right exceeds $\beta/(4+\beta) = 1/3$. The weights come from the rubric of the September judge
-(a withheld picture scored 0 where one was due, a redundant one about 3 of 4) and were declared for a gate sweep
-before any per-sound result; they were promoted to a reported outcome only after per-sound F1 came out null
-(22 Sept), so the choice of $\beta = 2$ is \emph{post hoc} and is reported with sensitivity.
-
-\paragraph{On-screen weight $w$.} A picture of a sound whose source is on screen is less harmful than a picture of
-nothing. From 1 Oct the cost is also reported as
+lower is better. A miss costs twice a wrong picture, so one right picture pays for two wrong ones, and a picture is
+worth showing when it is right at least one time in three. These weights are an assumption, not a measurement: they
+were chosen in September for another purpose and became the main score only after F1 showed no difference between
+systems. Section~\ref{sec:sensitivity} therefore also reports other weights, including a version in which an on-screen
+picture costs only 1 or 0 (it is less harmful than a picture of nothing):
 \begin{equation}
-  C_w \;=\; \frac{4\cdot\#\text{missed} + w\cdot\#\text{visible} + 2\cdot\#\text{cross} + 2\cdot\#\text{phantom}}{\#\text{clips}},
-  \qquad w\in\{0,1,2\},
+  C_w \;=\; \frac{4\cdot\#\text{missed} + w\cdot\#\text{on screen} + 2\cdot\#\text{other sound} + 2\cdot\#\text{nothing}}{\#\text{clips}},
+  \qquad w\in\{0,1,2\}.
   \label{eq:costw}
 \end{equation}
-with $w=2$ (Eq.~\ref{eq:cost}) as the primary. Wins that hold only at $w=1$ were to go to a separate ``more hits''
-profile, never to the main system.
+\emph{Why not F1?} F1 counts a miss and a wrong picture the same, while the gate's value lies almost entirely in the
+wrong pictures it removes; F1 is still computed and reported in Section~\ref{sec:sept-table}.
 
-\paragraph{Why not F1.} Per-sound F1 on the same labels was the pre-registered headline from 22 Sept. It weighs a
-miss and a wrong picture equally, and the gate's value lies almost entirely in the wrong pictures it removes, so the
-F1 difference between the gated system and the blind baseline was null in every version (for example
-$+0.059\ [-0.030, +0.144]$, $p = 0.18$, on the September test table) while the number of wrong pictures fell
-significantly (Section~\ref{sec:sept-table}). F1, precision and recall are still computed by the scorer.
-
-\subsection{Statistics}\label{sec:stats}
-All comparisons are paired by clip. A \textbf{paired clip bootstrap} (2000 draws, seed 0) resamples clips and scores
-every system on the same resampled clips. Two read-outs are used, and the report always says which:
-\begin{itemize}
-  \item \emph{Development comparisons}: mean per-clip cost
-        difference $d$, a 95\,\% percentile interval, and a \textbf{one-sided} $p$ = share of draws with
-        $d \geq 0$. All $p$-values of the final development phase are of this kind; a two-sided value is about
-        twice as large.
-  \item \emph{September test table}: \textbf{two-sided}
-        $p = \min(1, 2\min(P(d\geq0), P(d\leq0)))$ with Holm step-down correction at $\alpha = 0.05$ over two
-        pre-declared families (7 and 3 comparisons).
-\end{itemize}
-With 88 test clips the smallest cost difference this design can detect is about 0.19 per clip; a difference of
-0.09 would need about 385 clips. Most single changes made during development (Appendix~\ref{app:history}) are smaller
-than that, which is why decisions were made on pre-declared rules on the development set and not on test
-significance.
-
-\subsection{Pass rules on the development set}\label{sec:passrules}
-A change to the system was accepted only if it passed a rule written before its run, on the development set:
-\begin{description}
-  \item[main rule] hits $\geq$ before, wrong $\leq$ before $+\,2\times$(hits gained), cost $<$ before, and no needed
-        hit lost;
-  \item[fewer-pictures rule] cost $<$ before, at least three wrong pictures removed per hit lost, and at most three
-        hits lost;
-  \item[screening] a rule about the audio alone could first be screened on the screening set
-        (Section~\ref{sec:benchmark}) and stopped there, but never accepted on it.
-\end{description}
-The test set was read only after a change was accepted, and only reported. Section~\ref{sec:disclosures} counts how often that happened.
+\subsection{How decisions were made}\label{sec:passrules}
+Comparisons are paired by clip and tested with a paired clip bootstrap. A change to the system was accepted only if
+it passed a rule written down \emph{before} its run, on the development set: at least as many hits, at most two extra
+wrong pictures per extra hit, and a lower cost (or, losing at most three hits, at least three fewer wrong pictures per
+hit lost). Rules about the audio alone could first be screened on a separate set of AudioSet clips. The test set was
+read only after a change was accepted, and only reported. With 88 test clips the smallest cost difference the design
+can detect is about 0.19 per clip, so most single changes could only be judged on the development rules.

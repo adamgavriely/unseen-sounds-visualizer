@@ -36,8 +36,10 @@ it; cost = (4 × missed + 2 × wrong pictures) / clips, lower is better).
 | September baseline | 18 / 58 found, 51 wrong, cost 3.690 | 21 / 65 found, 40 wrong, cost 2.909 |
 | **final system** | **29 / 58 found, 15 wrong, cost 2.056** | **24 / 65 found, 24 wrong, cost 2.409** |
 
-The test set was read after each accepted change, so it is a report on a seen set; see the report's
-Section 8 for this and the other threats to validity.
+On the test set the final system is significantly cheaper than showing nothing (−0.55 per clip,
+95 % interval [−1.09, −0.02], p = 0.047, `benchmark/gold/final_vs_show_nothing.py`), and the on-screen check
+removes about half a wrong picture per clip (p < 0.001). The test set was read after each accepted change, so it
+is a report on a seen set; see the report's Section 8 for this and the other threats to validity.
 
 ## Repository layout
 

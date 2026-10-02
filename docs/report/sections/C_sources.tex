@@ -1,5 +1,90 @@
 % ======================================================================
-\section{Sources of the numbers}\label{app:sources}
+\section{Reproduction and sources of the numbers}\label{app:sources}
+\subsection{Reproduction}\label{sec:repro}
+
+\paragraph{Code state}
+Check out the tag \texttt{detector-frozen-2026-10-02}. \cfgv{config.use_shipped()} sets the final system and
+\cfgv{config.use_scored()} the September baseline. The scoring code names variants by short internal codes; the final
+system is the variant \texttt{SHIP8+MD3+WW5+SL} in \fp{benchmark/gold/round13_dev.py}, and this code is used in the
+commands below (Appendix~\ref{app:glossary} explains it). The cluster copies used for scoring are not git
+repositories; the frozen code was synced from the tag.
+
+\paragraph{Environment and models}
+\begin{itemize}
+  \item Conda environment \texttt{msproj}: PyTorch 2.5.1, transformers 5.16.1 (Qwen3.x VLMs need $\geq$ 5.8), diffusers,
+        faster-whisper, panns-inference, easyocr, sentence-transformers. FineLAP needs transformers 4.51.3 and runs in a
+        separate \texttt{\textasciitilde/venv\_flap} called as a subprocess. The ComfyUI environment is recorded in
+        \fp{docs/envs/comfy.yml}. The \fp{requirements.txt} file predates the final stack and is incomplete.
+  \item FlexSED and DASM run from their own repositories (\texttt{\textasciitilde/FlexSED}, Transformer4SED), imported in
+        process.
+  \item Model identifiers (Hugging Face): \fp{Qwen/Qwen3.8-27B}; \fp{Qwen/Qwen3-Omni-30B-A3B-Instruct};
+        \fp{nvidia/audio-flamingo-next-hf}; \fp{AndreasXi/FineLAP} (revision b419aa2); \fp{CPF2/detect_any_sound};
+        \fp{Qwen/Qwen-Image-2512}; \fp{google/owlv2-base-patch16-ensemble}; BEATs iter3+ AS2M cpt2; PANNs CNN14.
+        Revisions other than FineLAP are not pinned; the Hugging Face cache was used offline.
+  \item Hardware: Bar-Ilan SLURM cluster, partitions with H200 and A100 GPUs. Qwen-Image needs about 57\,GB in bf16; the
+        picture check needs the generator and the VLM on one H200 or two cards.
+\end{itemize}
+
+\paragraph{Running one video}
+\begin{verbatim}
+python main.py --input clip.mp4 --device cuda
+\end{verbatim}
+\fp{main.py} applies \cfgv{use_shipped()}. Without \texttt{--listener-split}, \fp{src/listener_prep.py} first builds the
+per-clip inputs the detector needs (FlexSED scores, a first pass with the September baseline, BEATs and PANNs scores, the
+listener pools and answers, DASM and FineLAP scores) -- about 5 minutes on an H200 -- and then runs
+\texttt{pipeline.run}. The output is \fp{data/output/<stem>_augmented.mp4}.
+
+\paragraph{Running a folder of clips on the cluster}
+\begin{verbatim}
+sbatch slurm/run_best.sh NAME /path/to/clips      # stages 1-5
+python scripts/best_to_protocol.py --name NAME --arm SHIP8+MD3+WW5+SL
+python scripts/repaint_shipped.py --tag NAMEbest_v33 --verify
+python scripts/recomposite.py --root data/work/shipped_v_NAMEbest_v33 \
+       --shipped --require-local-images --modes clean --out OUT
+\end{verbatim}
+The batch runner stops at the list of pictures; the three scripts draw and compose them.
+
+\paragraph{Reproducing the scores}
+\begin{verbatim}
+python benchmark/gold/round13_dev.py stage4   # then stage5, score
+python benchmark/gold/merged_dev.py
+python benchmark/gold/test_vs_ship8.py
+python benchmark/gold/parity_check.py SHIP8+MD3+WW5+SL
+python benchmark/gold/inspector_trail_export.py \
+   --expect DEV=29/58/15/6/7/2/2.056 --expect TEST=24/65/24/4/15/5/2.409
+\end{verbatim}
+The last command re-runs the final system with logging on every decision and fails unless the counts match exactly; it passed on
+2 Oct (0 of 159 clips differ). The test against showing nothing is \fp{benchmark/gold/final_vs_show_nothing.py} (it needs only
+\fp{docs/inspector2/data.js}). The direct test against the September baseline has not been run; it needs
+\fp{benchmark/gold/final_test.py} (\texttt{score}) with the final variant on the cluster, where both per-clip rows exist.
+
+\paragraph{The Decision Inspector}
+\fp{docs/inspector2/} is a static page over \fp{data.js} (12.8\,MB, 159 clips) that shows, for every gold sound and every
+candidate of the final system, each step it passed or failed, the value, the bar and the model answers, next to the rendered video
+(\fp{docs/inspector/media/bysig/}, 350\,MB, not in git). The logging hooks (\fp{src/trail.py}) only record and never
+change a decision. Known gaps: 86 of 156 gate decisions reuse stored verdicts without the raw answers; the depict-event
+look-alike replies are not stored.
+
+\paragraph{Where the records are}
+\begin{center}\small
+\begin{tabular}{L{6.4cm}L{8.4cm}}
+\toprule
+file & content \\
+\midrule
+\fp{docs/history/preregistrations/prereg_round13_detector_push.md} & every pre-registration and result, rounds 13--66 \\
+\fp{docs/history/preregistrations/} & v4 amendments 1--25, rounds 4--12 \\
+\fp{docs/history/review/detector_final_2026-10-02.md} & plain-language summary of the final system and the last day \\
+\fp{docs/history/review/improvements_log_2026-09-30.md} & ship chain and rejected ideas, 30 Sept -- 1 Oct \\
+\fp{docs/history/panels/}, \fp{docs/history/review/} & expert panels \\
+\fp{benchmark/gold/annotations/gold_AG.json} & the gold labels \\
+\fp{benchmark/gold/ledger_*.json} & per-item misses and wrong pictures \\
+\fp{benchmark/gold/ceiling_ship7.md}, \fp{visible_weight_sweep.md} & ceiling and sensitivity analyses \\
+\fp{docs/history/daily_notes/LEDGER_2026-09-26.md} & audit ledger of the September phase \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Sources of the numbers}
 Every number in the main body comes from one of the files below (paths relative to the repository root). Counts of the
 final system are also reproduced exactly by the decision-trail export (\fp{docs/inspector2/data_parity.json},
 \texttt{"exact": true}).
@@ -18,8 +103,9 @@ bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benc
 final system, Table~\ref{tab:headline} & \fp{docs/history/review/detector_final_2026-10-02.md}; \fp{docs/inspector2/data_parity.json} \\
 September baseline, Table~\ref{tab:headline} & \fp{docs/history/review/improvements_log_2026-09-30.md}; \fp{benchmark/gold/final_test_ship8.json} \\
 intermediate-version $p$ (Section~\ref{sec:headline}) & \fp{benchmark/gold/final_test_ship8.md} \\
+final system vs show nothing (Table~\ref{tab:headline}) & \fp{benchmark/gold/final_vs_show_nothing.py}, \fp{.txt} \\
 on-screen weight (Section~\ref{sec:sensitivity}) & derived from Table~\ref{tab:headline}; earlier versions in \fp{benchmark/gold/visible_weight_sweep.md} \\
-Table~\ref{tab:misses} (fate of misses) & \fp{docs/history/review/inspector_trail_ready.md}; \fp{docs/inspector2/data.js} \\
+fate of misses (Section~\ref{sec:errors}) & \fp{docs/history/review/inspector_trail_ready.md}; \fp{docs/inspector2/data.js} \\
 Table~\ref{tab:ceiling} (ceiling) & \fp{benchmark/gold/ceiling_ship7.md} \\
 Table~\ref{tab:sept} (gate value) & \fp{benchmark/gold/holm_test_final_v33_test_bench.json} \\
 gate accuracy, failure modes & \fp{docs/history/review/vlm_panel_2026-10-01/f1_audit.md} \\

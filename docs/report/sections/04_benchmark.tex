@@ -1,73 +1,41 @@
 % ======================================================================
-\section{Benchmark and labels}\label{sec:benchmark}
+\section{Data}\label{sec:benchmark}
 
-\subsection{Data sets}
-All final numbers are on two sets of short video clips (10--20\,s) labelled per sound with the fields of
-Section~\ref{sec:needed}:
+All results use two sets of short video clips (10--20\,s), labelled per sound as in Section~\ref{sec:needed}:
 \begin{description}
-  \item[The development set] 71 clips with 58 needed sounds. Every design decision was made on this set.
-  \item[The test set] 88 clips with 65 needed sounds, read after a change was accepted and only reported.
+  \item[Development set] 71 clips, 58 needed sounds. Every design decision was made on this set.
+  \item[Test set] 88 clips, 65 needed sounds. Read only after a change was accepted.
 \end{description}
-Both sets mix three sources: clips of an earlier clip-level benchmark (Wikimedia Commons, the Internet Archive,
-UnAV-100~\cite{geng2023unav100}, VGGSound~\cite{chen2020vggsound} controls and YouTube, including film scenes); new
-YouTube clips found by scene type (transport, city walk, market, nature, home, incident, work event, water, film/TV;
-one 15--20-s cut per upload); and 10-s clips from the AudioSet-Strong evaluation split. The sets grew in two steps,
-described in Appendix~\ref{app:datahistory}; new clips were assigned to development or test by a hash of the clip
-name or by balanced pairs, never by looking at results. Most clips are for research use only and are not
-redistributed.
+The clips come from Wikimedia Commons, the Internet Archive, UnAV-100~\cite{geng2023unav100}, VGGSound~\cite{chen2020vggsound},
+YouTube (city walks, markets, home, transport, incidents, film scenes) and the AudioSet-Strong evaluation split. New
+clips were assigned to development or test by a hash of the clip name or by balanced pairs, never by looking at
+results; Appendix~\ref{app:datahistory} describes how the sets grew. Most clips are for research use only.
 
 \begin{table}[h]
 \centering\small
-\caption{The two evaluation sets (recomputed from \fp{benchmark/gold/annotations/gold_AG.json} with the scorer's own
-loader). ``Needed'' = needed sounds of importance 2--3, the scored denominator.}
+\caption{The two evaluation sets. Scenario counts: \emph{unseen} (an ambient source is off screen), \emph{mixed}
+(some sources visible, some not), \emph{seen} (all sources on screen), \emph{none} (speech or music only).}
 \label{tab:sets}
-\begin{tabular}{lrrrrrl}
+\begin{tabular}{lrrrrl}
 \toprule
-set & clips & sounds & needed & imp.~3 & clips w.\ needed & unseen/mixed/seen/none \\
+set & clips & labelled sounds & needed sounds & clips with a needed sound & unseen / mixed / seen / none \\
 \midrule
-development set & 71 & 154 & 58 & 17 & 38 & 24/16/23/8 \\
-test set & 88 & 154 & 65 & 13 & 43 & 21/23/22/22 \\
+development & 71 & 154 & 58 & 38 & 24 / 16 / 23 / 8 \\
+test & 88 & 154 & 65 & 43 & 21 / 23 / 22 / 22 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-The last column counts clips by scenario: \emph{unseen} (an ambient sound whose source is off screen), \emph{mixed}
-(some sources visible, some not), \emph{seen} (every source on screen) and \emph{none} (speech or music only). About half
-of the clips (33 of 71 and 45 of 88) have no needed sound at all; on them, the best a system can do is show nothing.
+About half of the clips have no needed sound; on those, the best possible behaviour is to show nothing. Three needed
+development sounds (a clang and two golf-club whacks) belong to labels the system never draws, so they are misses for
+every system.
 
-\paragraph{Three unreachable sounds.} The labels keep every non-speech sound, while the final system's label filter
-(Section~\ref{sec:labelfilter}) never draws three of the development labels (\emph{Clang} in one clip and two
-\emph{Whack, thwack} rows in another). They are misses for every system by construction; without them the development
-set would have 55 needed sounds.
+\paragraph{Label quality.} All labels are the author's; a second annotator was planned but did not return labels, so
+inter-annotator agreement is unknown (the author agreed with his own earlier clip-level labels 78\,\% of the time,
+Cohen's $\kappa = 0.60$). The labelling tool showed detector suggestions on many clips, and a blind check of pictures
+counted as wrong found that about 1 in 6 is a real off-screen sound the labels miss. These and other caveats are listed
+in Section~\ref{sec:limits}.
 
-\paragraph{Other data.} Two further sets were used for narrower questions:
-\begin{description}
-  \item[The screening set] 415 clips from the AudioSet-Strong evaluation split (252 ``complex'' clips where speech or
-        music covers half the clip and a sound lies under it, 163 random). Its 0.1-s labels need no new annotation, so
-        it was used to screen rules about the audio alone (for example ``how often is a detection that no listener
-        names a real sound?''). It never decided a change by itself, because AudioSet labels only a few sounds per clip:
-        a cost computed on it counted most correct detections as false.
-  \item[DCASE 2025 Task 3] 258 events with on/off-screen labels, used once as an outside check of the on-screen
-        decision of an earlier version (66.7\,\% agreement; the DCASE label is geometric, so it bounds the gate only
-        loosely).
-\end{description}
-
-\subsection{Label quality}\label{sec:recheck}
-All labels are the author's. A packet of 30 clips for a second annotator (stratified, half development, half test)
-was built but no labels came back, so inter-rater agreement is unknown. The only reliability number is intra-rater,
-on the earlier clip-level labels: 60 clips relabelled blind, 78\,\% agreement, Cohen's $\kappa = 0.60$. Three
-further facts bear on label quality (all listed again in Section~\ref{sec:disclosures}):
-\begin{itemize}
-  \item \textbf{Anchoring.} Earlier clips were pre-filled from the system under test, the labelling tool showed
-        detector suggestions on 37 of the 50 newest clips, and the 19 AudioSet-Strong clips were labelled with the
-        AudioSet labels available behind a button (shown on 16 of 19).
-  \item \textbf{Visibility re-check.} The author re-judged, blind to the old answer, 14 borderline development sounds
-        where the system and the labels disagreed; 3 changed from seen to needed (a church bell, a fire alarm, a
-        thunder clap). A control round on 20 random development sounds changed none. The test labels were never
-        changed.
-  \item \textbf{Missing sounds.} In a blind check of pictures counted as wrong, about 1 in 6 turned out to be a real,
-        wanted, off-screen sound the labels do not list. No label was edited; absolute costs are therefore slightly
-        pessimistic for every system alike.
-\end{itemize}
-The labelling guide for the newest clips adds two rules: a sound that stops for more than about 2\,s and comes back
-gets a new row, and a long sound whose visibility changes is split into two rows.
+\paragraph{Screening set.} 415 clips of the AudioSet-Strong evaluation split, which already have timed labels, were
+used to screen rules about audio alone (for example: how often is a detection that no listener names a real sound?).
+AudioSet labels only a few sounds per clip, so this set was never used to accept a change.

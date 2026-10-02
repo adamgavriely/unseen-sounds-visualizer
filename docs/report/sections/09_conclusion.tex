@@ -1,14 +1,12 @@
 % ======================================================================
 \section{Conclusion}\label{sec:conclusion}
 
-A deaf viewer of a video misses the sounds whose sources are not on screen, and no existing channel supplies them
-automatically. This project built a pipeline that does -- detection by two detectors checked by two listeners and a
-witness model, an on-screen decision from the frames, a guarded picture beside the video -- from open models with no
-training; a per-sound benchmark of 159 scored clips; and a metric that prices what a viewer loses. The frozen system
-finds half of the needed sounds on the development set and 37\,\% on the test set, with two thirds and one half of its
-pictures right, and is far cheaper than both showing nothing and the September pipeline. The remaining errors sit
-where today's open models reach their limit: sounds no model hears under speech and music, and a vision model that
-takes ``the object is there'' for ``the object is making the sound''.
+A deaf viewer misses the sounds whose source is not on screen, and no existing channel supplies them automatically.
+This project built a system that does, from open models with no training, together with a labelled benchmark and a
+metric that prices what a viewer loses. On the test set the final system finds 37\,\% of the needed sounds, half of its
+pictures are right, and its cost is significantly lower than showing nothing ($p = 0.047$) and lower than the September
+version. The remaining errors sit where today's open models stop: sounds the detectors barely hear under speech and
+music, and a vision model that takes ``the object is there'' for ``the object is making the sound''.
 
 \paragraph{Answers to the research questions.}
 \begin{description}[style=nextline]

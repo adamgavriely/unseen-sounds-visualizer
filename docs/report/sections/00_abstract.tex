@@ -1,28 +1,23 @@
 \begin{abstract}
-Subtitles carry speech. The other sounds of a video -- a siren behind the camera, a dog barking in the next
-room, glass breaking off screen -- reach a deaf or hard-of-hearing viewer only if a captioner chose to write them
-down, and captioning practice says to leave out any sound whose source can be seen. This project builds and
-evaluates a system that fills this gap automatically. Given a video, it detects the non-speech, non-music
-sounds, decides for each one whether its source is already visible, and shows a generated picture of the sound
-beside the video only while an \emph{off-screen} sound is heard. No model is trained: the system is a chain of
-open models (two sound detectors, two audio-language models used as listeners, a third audio model used as a
-witness, a 27-billion-parameter vision--language model for the on-screen decision, and a text-to-image model),
-joined by rules that were each fixed on a development set before being tested.
+Subtitles carry speech, but a deaf or hard-of-hearing viewer still misses the other sounds of a video: a siren
+behind the camera, a dog barking in the next room. Captioning practice leaves out any sound whose source can be
+seen, so the sounds that matter most are the ones whose source is \emph{off screen}. This project builds a system
+that finds those sounds and shows a generated picture of each one beside the video while it is heard.
 
-The system is scored per sound against human labels on a development set of 71 clips and a test set of 88
-clips. A \emph{hit} is a picture of the right kind of sound that starts between 0.5\,s before and 1\,s after the
-sound; a \emph{wrong} picture shows a sound whose source is on screen, belongs to another sound, or has no sound
-under it; the cost per clip is $(4\cdot\text{missed} + 2\cdot\text{wrong})/\text{clips}$. The final system finds
-29 of 58 needed sounds with 15 wrong pictures on the development set (cost 2.056) and 24 of 65 with 24 wrong on
-the test set (cost 2.409). The September baseline scored 3.690 and 2.909 on the same sets, and showing nothing at
-all costs 3.268 and 2.955. The test set was read after every accepted change during development, so the test
-numbers are a report on a seen set, not a blind confirmation; Section~\ref{sec:disclosures} lists this and the
-other threats to validity.
+Nothing is trained. The system chains ready-made open models: two sound detectors find candidate sounds, two
+audio-language models (``listeners'', asked for example ``is a siren present?'') confirm weak ones, a
+vision--language model checks whether the source is visible on screen, and a text-to-image model draws the
+picture. Every rule that joins them was fixed on a development set before it was tested.
 
-The largest remaining losses are well located. With every stage made perfect on the same detections, the
-pipeline would still miss about a fifth of the needed sounds, because no model hears them under speech and music;
-and the single largest decision loss is the on-screen check, where today's open vision--language models confuse
-``the object is in the frame'' with ``the object is making this sound now''. The development record -- about
-seventy pre-registered rounds of experiments -- is given in Appendix~\ref{app:history}. A study with deaf viewers
-was not run, so the claim that the pictures help is untested.
+Scored per sound against human labels, the final system finds 24 of 65 needed off-screen sounds on a test set of
+88 clips with 24 wrong pictures, a viewer cost of 2.41 per clip (a miss costs 4, a wrong picture 2). This is
+significantly cheaper than showing nothing (2.96; difference $-0.55$, 95\,\% interval $[-1.09, -0.02]$, $p = 0.047$)
+and cheaper than the September version of the system (2.91), which on the development set was worse than showing
+nothing. The on-screen check is the reason: on the September test set it removed about half a wrong picture per clip
+compared with drawing every sound ($p < 0.001$, Holm-corrected).
+
+Two limits remain. About one needed sound in five cannot be found even with perfect decisions, because the detectors
+barely hear it under speech or music; and the vision
+model confuses ``the object is in the frame'' with ``the object is making this sound now''. The test set was read after
+each accepted change, so the test numbers are a report on a seen set, and no study with deaf viewers was run.
 \end{abstract}

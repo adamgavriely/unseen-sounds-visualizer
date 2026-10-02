@@ -1,0 +1,2 @@
+DEV: clips 71 hits 29 misses 29 wrong 15 | final 2.056 nothing 3.268 d -1.211 95% [-1.831, -0.620] two-sided p 0.0000 (draws with d>=0: 0.0)
+TEST: clips 88 hits 24 misses 41 wrong 24 | final 2.409 nothing 2.955 d -0.545 95% [-1.091, -0.023] two-sided p 0.0474 (draws with d>=0: 0.0237)

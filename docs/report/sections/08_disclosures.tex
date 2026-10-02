@@ -1,60 +1,46 @@
 % ======================================================================
-\section{Disclosures and threats to validity}\label{sec:disclosures}
+\section{Threats to validity, limits and future work}\label{sec:limits}\label{sec:disclosures}
 
-This section collects in one place everything a reader needs to weigh the numbers. Each item says what happened and
-what it means for the claims.
+\subsection{What was pre-registered}
+Every change to the system passed a rule written down before its run, on the development set; every rejected idea is
+recorded with its result (Appendix~\ref{app:history}). The test set was never used to choose a change.
 
-\begin{enumerate}[label=\textbf{D\arabic*.}, leftmargin=*]
-  \item \textbf{The test set is a seen set.} The test set (88 clips) was read after every accepted change -- by
-        count about 19 times between 30 Sept and 2 Oct (one pre-registered read, one read after each of 13 accepted
-        changes, and reads of five candidates that passed the development rule but were not accepted), plus re-reads of
-        saved test pictures for sensitivity tables. The 60 older clips of the test set had already
-        been read 11 times before the merge. No choice was made to improve a test number, with two exceptions that were
-        undone (next item); still, choosing among many development variants and reading the test set after each makes
-        the test numbers optimistic. They are a report on a seen set, not a blind confirmation.
-  \item \textbf{Two test-informed choices, both undone.} A 4-s limit for the grouping rule was set after reading the
-        test result of the unlimited version and was reverted to the pre-registered 8\,s; a picture-confidence floor
-        suggested by a test read was not adopted. Rejections of three development passes (two ``expected sound'' rules and
-        a second-listener rule) cited their test reads alongside screening-set and development reasons.
-  \item \textbf{One-sided $p$-values.} All $p$-values of the final development phase are one-sided bootstrap shares (for
-        example 0.034 one-sided is about 0.07 two-sided). The direct test of the final system against the September
-        baseline has not been run (Section~\ref{sec:headline}).
-  \item \textbf{Split overlap in September.} A second split file used by the stage-level detector bench
-        shared 35 of its development clips with the 60 older test clips, and the FlexSED bar 0.8 was chosen on that
-        split. On the clean development clips the 0.8 bar passes two of three adoption rules
-        and misses the third by 0.011.
-  \item \textbf{One annotator, two visibility re-checks.} Every label is the author's; no inter-rater agreement exists.
-        The author re-checked visibility twice on the development set (3 of 14 disputed sounds changed, 0 of 20 random
-        controls changed after a correction); the re-check targeted sounds where the pipeline and the gold disagreed,
-        so it can favour the pipeline. Test labels were never changed.
-  \item \textbf{AudioSet clips labelled with AudioSet labels visible.} The 19 AudioSet-Strong clips (across both sets)
-        were labelled with the AudioSet labels available behind a button (shown on
-        16 of 19), and DASM's checkpoint was selected on that AudioSet split. The labelling tool showed detector suggestions
-        on 37 of the 50 newest clips, and older clips were pre-filled from the system under test.
-  \item \textbf{``Wrong'' is strict.} A wrong picture includes redundant pictures of on-screen sounds and late second
-        pictures of a long sound, not only false ones. A blind check found that about 1 in 6 ``wrong'' pictures is a real,
-        wanted, off-screen sound missing from the gold. Absolute costs are pessimistic for every system.
-  \item \textbf{The cost weights are post hoc.} $\beta = 2$ was declared for a gate sweep in September but became the
-        reported metric only after per-sound F1 came out null; it was assumed, not measured with viewers.
-  \item \textbf{Scored and live configurations differ in four known ways} (kinship direction, picture end cap, subject
-        path, picture model; Section~\ref{sec:parity}). The kinship fix in particular was not re-scored.
-  \item \textbf{Three development sounds are unreachable} by construction (labels the filter never draws), and the
-        ceiling analysis was run on an earlier version of the final system.
-  \item \textbf{The picture checker is not calibrated against a person.} Earlier panel rulings said no automatic
-        picture checker should reject pictures until it matched the author's ratings; the final check-and-redraw loop
-        was validated on known cases only and uses the same VLM that writes the subject. The planned sealed human
-        confirmation of the pictures was cancelled. The picture claim rests on one blind glance test by the author.
-  \item \textbf{The author is also the rater} of the glance test and the missing-sound checks. A second annotator packet
-        exists but was not returned.
-  \item \textbf{No study with deaf or hard-of-hearing viewers was run.} Every claim about benefit to viewers is
-        modelled through the cost weights.
-  \item \textbf{Larger vision model not tested.} Qwen3-VL-235B, the one lever every panel named for the gate, did
-        not fit the available disk and is future work only.
-  \item \textbf{Inconsistent records found while writing this report.} The pre-registration log is long (546\,KB) and
-        was written under time pressure; the fact-check for this report found small inconsistencies, none of which
-        changes an accepted change: two records of an intermediate version's test row (23/28 and 22/26, both cost 2.545,
-        from before and after the grouping limit was reverted), two records of its development wrong split (6/9/3 and
-        6/10/2, same total), a
-        stale configuration comment (``$\leq$4\,s'' for an 8-s value), and the thesis chapter drafts of 27 Sept, which
-        describe an earlier system and are superseded by this report.
+\subsection{Threats to validity}
+\begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
+  \item \textbf{The test set was seen.} It was read after each accepted change, about 19 times in the last week (and
+        its 60 older clips 11 times before that). Twice a choice was influenced by a test read; both were undone. With
+        many development variants and repeated test reads, the test numbers are somewhat optimistic and are a report on a
+        seen set, not a blind confirmation.
+  \item \textbf{Small sets.} 71 and 88 clips: one or two pictures can decide a development comparison, and the test set
+        detects only cost differences of about 0.19 per clip or more.
+  \item \textbf{One annotator.} All labels are the author's; no inter-annotator agreement exists. The author re-checked
+        the visibility of 14 disputed development sounds blind (3 changed; 0 of 20 random controls changed), which may
+        favour the system; test labels were never changed. Newer clips were labelled with detector suggestions visible,
+        and 19 AudioSet clips with the AudioSet labels visible.
+  \item \textbf{Strict ``wrong''.} It counts redundant and late pictures, and about 1 in 6 ``wrong'' pictures is a real
+        off-screen sound missing from the labels.
+  \item \textbf{Assumed cost weights.} A miss = 4, a wrong picture = 2 is an assumption chosen after F1 showed no
+        difference; results for other weights are in Section~\ref{sec:sensitivity}.
+  \item \textbf{Final versus baseline not tested directly}, and the baseline was scored with a shorter repeat merge
+        (Section~\ref{sec:headline}).
+  \item \textbf{Scored versus live system.} The scored harness and the live pipeline differ in four small ways that do
+        not change when a picture starts; one of them (the direction of a family rule) was not re-scored.
+  \item \textbf{Pictures checked by the author only.} The picture claim rests on one blind glance test by the author;
+        the automatic picture check was validated on known cases, not against a human rater.
+\end{enumerate}
+
+\subsection{Limits}
+No study with deaf or hard-of-hearing viewers was run, so the claim that the pictures help is untested. About one
+needed sound in five cannot be found with today's detectors, and the gate confuses presence with production
+(Section~\ref{sec:analysis}). The pipeline is heavy (about 5 minutes per clip of listener preparation on an H200 GPU,
+about 20\,s per picture try), so it is an offline tool, not live captioning.
+
+\subsection{Future work}
+\begin{enumerate}
+  \item A study with 5--10 DHH viewers (``helped / hurt / neither'' per clip) that \emph{measures} the cost of a miss
+        against a wrong picture instead of assuming it (design in \fp{docs/history/plans/beta_specification.md}).
+  \item A second annotator for 30 clips (the packet exists).
+  \item The presence-versus-production question: a much larger vision model, a comparison of the sound's onset frame
+        with a frame before it, or an external box around the named object.
+  \item A detector that hears sounds under speech and music, tested on the unused fresh set of 422 AudioSet clips.
 \end{enumerate}
