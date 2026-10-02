@@ -196,6 +196,12 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
     <a class="btn" href="../inspector/index.html#/mistakes">Open the inspector</a>
     <p class="note">If the button does not open: <code>MscProj/docs/inspector/index.html</code></p>
   </div>
+  <div class="inspect">
+    <div><b>The final version, step by step: the Decision Inspector</b>
+    <p>For D′: the build in five plain parts, how each change moved the numbers, and every idea that did not ship with the reason. For each miss and wrong picture it shows the exact step, the value against its bar, and the model's exact question and answer. The per-clip trails and videos are added from the frozen pipeline's log.</p></div>
+    <a class="btn" href="../inspector2/index.html#build">Open the Decision Inspector</a>
+    <p class="note">If the button does not open: <code>MscProj/docs/inspector2/index.html</code></p>
+  </div>
 
   <h3>Why needed sounds are missed (29 on DEV)</h3>
   <div class="split" role="img" aria-label="Misses: 10 heard too weakly, 5 removed by a filter, 4 no model hears, 5 judged on screen, 3 below picture bar or merged, 2 wrong time">
@@ -286,6 +292,7 @@ details .dbody .tw{border:1px solid var(--line); border-radius:10px}
     <tbody>
       <tr><td>Bell rule (Round 64): a sound whose maker is hidden inside a visible thing</td><td>Passed DEV: 30 / 14 / 1.972</td><td>In practice it covers one sound type (bells). Only general rules are allowed, so it stays out.</td></tr>
       <tr><td>Look-alike reasoning (Round 61): the vision model explains which visible thing makes the sound</td><td>Failed</td><td>It also explained away a real crying sound by pointing at a visible parrot.</td></tr>
+      <tr><td>Name it, zoom in, ask "is it making the sound now?" (Round 66)</td><td>Failed: 26 / 12 / 2.141</td><td>3 fewer wrong pictures than D′, but 3 real hits lost, and the bell was still not rescued.</td></tr>
     </tbody>
   </table></div>
 </div></details></section>

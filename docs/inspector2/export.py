@@ -37,7 +37,10 @@ def load_steps():
     src = (HERE / "sample_data.py").read_text(encoding="utf-8")
     ns: dict = {}
     exec(src.split("P = lambda")[0], ns)           # only the STEPS block, not the sample cases or the write
-    return [dict(id=a, stage=b, name=c, plain=d, bar=e, model=f, question=g) for a, b, c, d, e, f, g in ns["STEPS"]]
+    steps = [dict(id=a, stage=b, name=c, plain=d, bar=e, model=f, question=g) for a, b, c, d, e, f, g in ns["STEPS"]]
+    content = {"build": ns["BUILD"], "lesson": ns["LESSON"], "build_steps": [dict(zip(("change", "dev", "test", "note"), r)) for r in ns["BUILD_STEPS"]],
+               "tried": [dict(zip(("part", "idea", "why", "shipped"), r)) for r in ns["TRIED"]]}
+    return steps, content
 
 
 def key(r):
@@ -83,7 +86,7 @@ def why_text(c, steps):
 
 
 def export(roots, version, arm, out, expect=None):
-    steps = load_steps()
+    steps, content = load_steps()
     sidx = {s["id"]: s for s in steps}
     order = {s["id"]: i for i, s in enumerate(steps)}
     gold_all = S.load_gold([GOLD])
@@ -144,7 +147,7 @@ def export(roots, version, arm, out, expect=None):
     data = {"meta": {"version": version, "arm": arm, "built": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC"),
                      "sample": False, "window": [S.EARLY, S.LATE], "cost": "(4·miss + 2·wrong)/clips",
                      "clips_without_trail": sum(1 for c in clips if not c["has_trail"])},
-            "sets": {k: dict(v) for k, v in sets.items()}, "steps": steps, "clips": clips}
+            "sets": {k: dict(v) for k, v in sets.items()}, "steps": steps, "clips": clips, **content}
     if expect:
         for k, (h, w) in expect.items():
             got = sets[k]

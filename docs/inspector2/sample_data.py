@@ -53,6 +53,69 @@ STEPS = [
 ]
 steps = [dict(id=a, stage=b, name=c, plain=d, bar=e, model=f, question=g) for a, b, c, d, e, f, g in STEPS]
 
+
+# ---- the current build in plain words (shown on the Build tab); stage numbers match STEPS
+BUILD = [
+ {"part": "1 · Hear", "stages": [4], "what": "Find every non-speech sound and when it starts.",
+  "how": "Two sound detectors scan the audio: BEATs (2-s windows) and FlexSED (frame by frame, 215 sound types). A candidate must be heard strongly enough and last at least 0.3 s. Speech is transcribed by Whisper and goes to subtitles, not pictures.",
+  "models": "BEATs, FlexSED, Whisper"},
+ {"part": "2 · Confirm", "stages": [4], "what": "Throw out false alarms; win back real sounds the detectors heard only weakly.",
+  "how": "Two audio-language models (Qwen3-Omni and Audio Flamingo) listen and list the sounds they hear. Two more detectors (DASM, FineLAP) double-check. A sound needs two witnesses: DASM, or both listeners. If only one listener names it, the vision model checks that the sound is credible in the scene.",
+  "models": "Qwen3-Omni, Audio Flamingo Next, DASM, FineLAP, PANNs"},
+ {"part": "3 · Is it needed?", "stages": [5], "what": "Keep only sounds a deaf viewer cannot see the source of.",
+  "how": "Speech, music and background textures are skipped. Weak sounds (confidence < 0.35) are skipped. A vision model looks at frames around the sound and asks three questions (name the source; is it visibly happening; describe the scene). If the source is visible in every stretch, the sound is silenced.",
+  "models": "Qwen3.8-27B (vision)"},
+ {"part": "4 · Draw", "stages": [5, 6], "what": "Choose what to draw and draw it clearly.",
+  "how": "The thing to draw comes from fixed word lists (so no invented objects). Qwen-Image draws it. The vision model checks the picture with a multiple-choice question; a wrong picture is redrawn up to 5 times, then replaced by a word card (e.g. WHOOSH).",
+  "models": "Qwen-Image-2512, Qwen3.8-27B"},
+ {"part": "5 · Show", "stages": [6], "what": "Show each picture once, at the right moment.",
+  "how": "Repeats of one sound within 2.5 s become one picture. Qwen3-Omni decides if two pictures up to 8 s apart are one continuing sound. A picture is dropped if its event is visibly happening on screen. At most 3 pictures at once; each stays 1.5 s, at most 1 s past the sound.",
+  "models": "Qwen3-Omni, Qwen3.8-27B"},
+]
+BUILD_STEPS = [
+ ("Old pipeline (28 Sept)", "18 / 51 / 3.690", "21 / 40 / 2.909", "before this month's detector work"),
+ ("+ listeners rescue weak sounds", "26 / 45 / 3.070", "22 / 38 / 2.818", ""),
+ ("+ listener and DASM checks, continuation rule, FineLAP", "28 / 24 / 2.366", "24 / 31 / 2.568", ""),
+ ("+ listener agreement", "28 / 21 / 2.282", "23 / 29 / 2.568", ""),
+ ("+ repeat merge 2.5 s, smart grouping, 0.3-s minimum", "29 / 18 / 2.141", "22 / 26 / 2.545", "version B"),
+ ("+ two witnesses + scene check", "29 / 14 / 2.028", "24 / 23 / 2.386", "version D"),
+ ("scene check read from probabilities (shipped)", "29 / 15 / 2.056", "24 / 24 / 2.409", "version D′, frozen 2 Oct"),
+]
+LESSON = ("The remaining errors are where the models disagree at about chance level, and where 'the object is on screen' is not "
+          "'you can see the sound happening' (church tower vs ringing bell). That is the honest limit of today's open models.")
+# ---- what was tried and why it failed (Tried tab). result = DEV hits / wrong / cost where known
+TRIED = [
+ ("Hear", "Newer sound taggers (EAT-large, Dasheng)", "found more sounds, more false alarms; failed the held-out check", "no"),
+ ("Hear", "Meta PE-A-Frame detector", "near chance on held-out clips (AUROC 0.53)", "no"),
+ ("Hear", "DASM as the main detector", "its confidence is flat, so it cannot time a sound", "no"),
+ ("Hear", "Lower FlexSED bar", "+3 hits but +7 wrong pictures", "no"),
+ ("Hear", "Sound separation first (SAM-Audio, Demucs)", "music was not removed (quality check failed)", "no"),
+ ("Hear", "Onset clean-up (SEBB, 2024)", "lost 7 hits", "no"),
+ ("Hear", "Short-sound path (Round 56)", "+1 hit (a gasp) but +18 wrong (27 / 36 / 2.761)", "no"),
+ ("Hear", "Hear more weak sounds (band runs, tagger ensemble, rooster rule, tighter listener cut; Rounds 58, 63)", "the extra sounds are mostly wrong: a sound no listener names is right only 22 % of the time (held-out)", "no"),
+ ("Confirm", "Listen with ±5 s of audio and video context (Round 59)", "Omni names what it SEES, not what it hears (3 of 9 right on held-out)", "no"),
+ ("Confirm", "Newer audio LLMs as listeners (Kimi-Audio, Step-Audio-2, MOSS-Audio, SpotSound)", "3 to 10 wrong pictures per extra hit", "no"),
+ ("Confirm", "Listener lists the whole clip's sounds (EXPECT)", "DEV +3 hits, but on TEST +2 hits and +6 wrong; the gate cannot refuse a wrong off-screen name", "no"),
+ ("Confirm", "Second listener must agree (Round 45)", "the second listener hears the same wrong names", "no"),
+ ("Confirm", "Two witnesses alone (Round 53)", "−5 wrong but −2 hits; fixed later by the scene check (shipped as D)", "partly"),
+ ("Confirm", "FlexSED as a witness, tight re-ask (Rounds 58, 58b)", "stopped at the held-out check", "no"),
+ ("Is it needed?", "Object detectors for visibility (CLIP, SigLIP, OWLv2, SAM 3)", "about chance: seeing an object is not seeing a sound's source", "no"),
+ ("Is it needed?", "Other vision models (Gemma-4-31B, Qwen2.5-VL)", "lower agreement with the human labels", "no"),
+ ("Is it needed?", "Box the source and ask about the crop (BOX, BOX-2)", "+1 hit (church bell) but +5 wrong", "no"),
+ ("Is it needed?", "Motion-sound sync (Synchformer)", "kept 3 needed sounds but lost 5 correct 'visible' calls", "no"),
+ ("Is it needed?", "Ask 'is the source acting right now?' (HUMAN-2)", "one sound short of the bar set in advance", "no"),
+ ("Is it needed?", "Look-alike reasoning (Round 61)", "it also explained away a real crying sound by a visible parrot", "no"),
+ ("Is it needed?", "Name the top 3 candidates, zoom, ask 'making the sound now?' (Round 66)", "26 / 12 / 2.141 vs D′ 29 / 15: −3 wrong but −3 hits; the bell was not rescued", "no"),
+ ("Is it needed?", "Bell rule: sound from a hidden part of a visible thing (Round 64)", "passed DEV (30 / 14 / 1.972) but in practice covers one sound type; only general rules are allowed", "not shipped"),
+ ("Is it needed?", "Does the visible effect show the sound? (Rounds 54, 62)", "the vision model answered by letter position or always 'no'; read as a probability it was just under the bar (0.647 vs 0.65)", "no"),
+ ("Is it needed?", "Multi-step: name it, find it (box), zoom, 'making the sound now?' (Rounds 50, 50L)", "the zoom works when a source is named, but naming and zoomed answers are too noisy", "no"),
+ ("Is it needed?", "Bigger or other vision models (model research panel)", "every model moves along the same trade-off; the question (object present vs object making the sound) is the limit. A 235B model is future work (no disk)", "no"),
+ ("Show", "Stricter repeat rules (RPT-S, DBR)", "no net gain", "no"),
+ ("Show", "Detect pauses inside a sound (Rounds 51, 55)", "the models cannot time a 2-s pause", "no"),
+ ("Show", "Move late pictures to the first faint trace (GBTP)", "lost a hit", "no"),
+ ("Show", "Rename a picture to what the listener hears (AVNAME)", "the namer names the loudest thing: −13 hits", "no"),
+]
+
 P = lambda step, res, value=None, bar=None, note=None, asks=None: {k: v for k, v in dict(step=step, res=res, value=value, bar=bar, note=note, asks=asks).items() if v is not None}
 ILL = "illustrative answer (sample)"
 clips = [
@@ -127,7 +190,9 @@ data = {"meta": {"version": "D′", "arm": "SHIP8+MD3+WW5+SL", "built": "sample,
                  "cost": "(4·miss + 2·wrong)/clips"},
         "sets": {"DEV": {"clips": 71, "needed": 58, "hits": 29, "wrong": 15, "visible": 6, "cross": 7, "phantom": 2, "cost": 2.056},
                  "TEST": {"clips": 88, "needed": 65, "hits": 24, "wrong": 24, "visible": 4, "cross": 15, "phantom": 5, "cost": 2.409}},
-        "steps": steps, "clips": clips}
+        "steps": steps, "clips": clips,
+        "build": BUILD, "lesson": LESSON, "build_steps": [dict(zip(("change", "dev", "test", "note"), r)) for r in BUILD_STEPS],
+        "tried": [dict(zip(("part", "idea", "why", "shipped"), r)) for r in TRIED]}
 out = Path(__file__).with_name("data.js")
 out.write_text("window.INSPECTOR2 = " + json.dumps(data, ensure_ascii=False, indent=1) + ";\n", encoding="utf-8")
 print("wrote", out)

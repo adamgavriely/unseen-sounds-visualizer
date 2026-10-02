@@ -60,7 +60,7 @@
     var m = D.meta || {}, h = '';
     if (m.sample) h += '<div class="banner"><b>Sample data.</b> This page shows the layout with a few real cases from the 1 Oct error dissection; some values are illustrative. The full data for the final version comes from the pipeline log after the detector is frozen.</div>';
     h += testWarn();
-    h += '<h1>Where each sound is won or lost</h1><p class="lede">Every needed sound and every picture, traced through the pipeline step by step: the value, the bar, and for model steps the exact question and answer.</p>';
+    h += '<h1>Where each sound is won or lost</h1><p class="lede">Every needed sound and every picture, traced through the pipeline step by step: the value, the bar, and for model steps the exact question and answer. New here? Start with <a href="#build">the build in five parts</a> and <a href="#tried">what did not ship</a>.</p>';
     var keys = setSel.value === 'ALL' ? ['DEV', 'TEST'] : [setSel.value];
     keys.forEach(function (k) {
       var s = (D.sets || {})[k]; if (!s) return;
@@ -212,12 +212,40 @@
     if (sel) { var el = document.getElementById('st-' + sel); if (el) el.scrollIntoView({ block: 'center' }); }
   }
 
+  function vBuild() {
+    var m = D.meta || {}, h = '<h1>The current build: ' + esc(m.version || '?') + '</h1><p class="lede">What the system does with one video, in five parts. Each part runs per video, with fixed rules, so it can run live.</p>';
+    h += '<div class="tw"><table><thead><tr><th>Part</th><th>Goal</th><th>How</th><th>Models</th></tr></thead><tbody>';
+    (D.build || []).forEach(function (b) {
+      h += '<tr><td><b>' + esc(b.part) + '</b><div class="vb">stage ' + esc((b.stages || []).join(', ')) + '</div></td><td>' + esc(b.what) + '</td><td>' + esc(b.how) + '</td><td>' + esc(b.models) + '</td></tr>';
+    });
+    h += '</tbody></table></div><p class="note">Every single decision point, with its bar and exact question, is in <a href="#steps">Steps</a>.</p>';
+    h += '<h2>How we got here</h2><p class="lede">Each row adds one change. Numbers are hits / wrong pictures / cost (lower cost is better). Changes were chosen on DEV only; TEST was read afterwards as a report.</p>';
+    h += '<div class="tw"><table><thead><tr><th>Change</th><th>DEV (71 clips, 58 needed)</th><th>TEST (88 clips, 65 needed)</th><th>Note</th></tr></thead><tbody>';
+    var bs = D.build_steps || [];
+    bs.forEach(function (r, i) { var last = i === bs.length - 1; h += '<tr' + (last ? ' class="open"' : '') + '><td>' + (last ? '<b>' + esc(r.change) + '</b>' : esc(r.change)) + '</td><td class="n">' + esc(r.dev) + '</td><td class="n">' + esc(r.test) + '</td><td>' + esc(r.note) + '</td></tr>'; });
+    app.innerHTML = h + '</tbody></table></div><p class="note">Showing nothing at all would cost 3.268 on DEV and 2.955 on TEST.</p>';
+  }
+
+  function vTried() {
+    var h = '<h1>What we tried that did not ship</h1><p class="lede">Every idea was set in advance with a pass rule and judged on DEV or the 415 held-out clips, never on TEST.</p>';
+    if (D.lesson) h += '<div class="banner"><b>Main lesson.</b> ' + esc(D.lesson) + '</div>';
+    var parts = [];
+    (D.tried || []).forEach(function (t) { if (parts.indexOf(t.part) < 0) parts.push(t.part); });
+    parts.forEach(function (pt) {
+      var rows = (D.tried || []).filter(function (t) { return t.part === pt; });
+      h += '<h2>' + esc(pt) + ' <span class="vb">' + rows.length + ' ideas</span></h2><div class="tw"><table><thead><tr><th>Idea</th><th>Why it failed</th><th>Shipped?</th></tr></thead><tbody>';
+      rows.forEach(function (t) { h += '<tr><td>' + esc(t.idea) + '</td><td>' + esc(t.why) + '</td><td>' + chip(t.shipped === 'no' ? 'no' : 'visible', t.shipped) + '</td></tr>'; });
+      h += '</tbody></table></div>';
+    });
+    app.innerHTML = h;
+  }
+
   // ---------------------------------------------------------------- router, theme
   function route() {
     var hs = decodeURIComponent((location.hash || '#overview').slice(1)).split('/'), v = hs[0] || 'overview';
     document.querySelectorAll('#nav a').forEach(function (a) { a.classList.toggle('on', a.dataset.v === v || (v === 'clip' && a.dataset.v === 'clips')); });
     if (v === 'misses') vMisses(hs[1]); else if (v === 'wrongs') vWrongs(hs[1]); else if (v === 'clips') vClips();
-    else if (v === 'clip') vClip(hs[1], hs.slice(2).join('/')); else if (v === 'steps') vSteps(hs[1]); else vOverview();
+    else if (v === 'clip') vClip(hs[1], hs.slice(2).join('/')); else if (v === 'steps') vSteps(hs[1]); else if (v === 'build') vBuild(); else if (v === 'tried') vTried(); else vOverview();
     window.scrollTo(0, 0);
   }
   var m = D.meta || {};

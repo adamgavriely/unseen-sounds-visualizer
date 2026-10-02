@@ -9,7 +9,7 @@ Examples: "dropped at DASM local veto: DASM max 0.21 < bar 0.35; Qwen3-Omni said
 Open `index.html` by double-click. It needs no server, since the data loads as a script (`data.js`). Videos load from
 `media/<split>/<clip>.mp4`, next to the page.
 
-Page tabs: **Overview** (where needed sounds are lost, step by step, and which steps the wrong pictures passed),
+Page tabs: **Overview**, **Build** (the current version in five plain parts and the version chain), **Tried** (ideas that did not ship and why), (where needed sounds are lost, step by step, and which steps the wrong pictures passed),
 **Misses**, **Wrong pictures**, **Clips** (video + timeline + every candidate), **Steps** (what each step does, its bar,
 its question).
 
