@@ -17,9 +17,9 @@ def save(fig, name):
 
 # 1. Ceiling waterfall -- benchmark/gold/ceiling_ship7.md (older version, development set, 55 needed sounds)
 steps = [("version\nas run", 2.451, 25), ("+ perfect\ntiming", 2.197, 26), ("+ perfect\nfamily", 2.141, 26),
-         ("+ timing and\nfamily jointly", 2.056, 27), ("+ perfect\non-screen check", 1.380, 32),
+         ("+ timing and\nfamily\njointly", 2.056, 27), ("+ perfect\non-screen\ncheck", 1.380, 32),
          ("+ perfect\nvetoes", 1.155, 36), ("+ perfect\nlisteners", 0.761, 43)]
-fig, ax = plt.subplots(figsize=(8.6, 3.2))
+fig, ax = plt.subplots(figsize=(7.6, 3.4))
 prev = None
 for i, (lab, c, h) in enumerate(steps):
     if prev is None:
@@ -32,7 +32,7 @@ for i, (lab, c, h) in enumerate(steps):
 ax.bar(len(steps), steps[-1][1], color=DARK, width=0.6)
 ax.text(len(steps), steps[-1][1] + 0.06, "floor\n12 missed", ha="center", va="bottom", fontsize=7.5)
 ax.set_xticks(range(len(steps) + 1))
-ax.set_xticklabels([s[0] for s in steps] + ["what no rule\ncan recover"], fontsize=7.5)
+ax.set_xticklabels([s[0] for s in steps] + ["what no rule\ncan recover"], fontsize=6.8)
 ax.set_ylabel("cost per clip"); ax.set_ylim(0, 3.1)
 ax.spines[["top", "right"]].set_visible(False)
 save(fig, "ceiling_waterfall.pdf")
@@ -43,9 +43,9 @@ pts = [("final system", 16, 33), ("synchrony veto", 11, 36), ("synchrony add", 1
        ("annotator's questions", 15, 32), ("human-style chain", 0, 38), ("human-style, alone", 5, 38),
        ("human-style, 4th vote", 18, 32), ("box and crop", 9, 35), ("box and crop v2", 13, 35),
        ("both must agree", 15, 34), ("name-all + crop", 21, 33)]
-OFFS = {"synchrony veto": (-4, 4), "synchrony both": (4, 4), "synchrony add": (4, 6), "name-all + crop": (4, -9),
+OFFS = {"synchrony veto": (-4, 4), "synchrony both": (4, 4), "synchrony add": (4, 6), "name-all + crop": (-4, -11),
         "annotator's questions": (-4, -9), "human-style, 4th vote": (4, -9), "final system": (-5, -10),
-        "box and crop": (-4, 4), "box and crop v2": (4, 4), "both must agree": (4, 3), "human-style chain": (4, 4),
+        "box and crop": (-4, 4), "box and crop v2": (4, -10), "both must agree": (4, 3), "human-style chain": (4, 4),
         "human-style, alone": (4, -9)}
 fig, ax = plt.subplots(figsize=(6.2, 4.0))
 xs = [p[1] for p in pts]; ys = [p[2] for p in pts]
@@ -78,7 +78,7 @@ chain = [("Sept.\nbaseline", 3.690, 2.909), ("listener\nrescue", 3.070, 2.818), 
 # few answers, and one cut-off answer happened to remove a wrong picture. The final system reads the same question
 # from the model's yes/no scores, which cannot be cut off; its honest numbers are the last point. The text-read
 # point is not a real step and is not plotted (see the history appendix).
-fig, ax = plt.subplots(figsize=(9.2, 4.0))
+fig, ax = plt.subplots(figsize=(7.2, 3.9))
 x = range(len(chain))
 ax.plot(x, [c[1] for c in chain], "o-", color=DARK, label="development set (decisions made here)")
 ax.plot(x, [c[2] for c in chain], "s-", color=RED, label="test set (read after each change)")
@@ -139,7 +139,7 @@ miss = miss_counts()
 wrong = {"DEV": {"other sound": 7, "on screen": 6, "nothing": 2}, "TEST": {"other sound": 15, "on screen": 4, "nothing": 5}}
 cols_m = ["#555555", "#2a6f97", "#e07a5f", "#9ec5dd", "#c9b18a"]
 cols_w = ["#e07a5f", "#9ec5dd", "#555555"]
-fig, axes = plt.subplots(1, 2, figsize=(9.2, 2.6))
+fig, axes = plt.subplots(1, 2, figsize=(7.4, 2.9))
 for ax, data, cols, title in ((axes[0], miss, cols_m, "missed needed sounds, by where they were lost"),
                               (axes[1], wrong, cols_w, "wrong pictures, by kind")):
     for row, sp in enumerate(("TEST", "DEV")):
@@ -151,7 +151,7 @@ for ax, data, cols, title in ((axes[0], miss, cols_m, "missed needed sounds, by 
             left += v
     ax.set_yticks([0, 1]); ax.set_yticklabels(["test", "development"])
     ax.set_title(title, fontsize=9); ax.spines[["top", "right"]].set_visible(False)
-    ax.legend(frameon=False, fontsize=7, loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=3)
+    ax.legend(frameon=False, fontsize=7.5, loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=2)
 save(fig, "error_breakdown.pdf")
 
 # 5. Listener agreement -- improvements log (held-out AudioSet-Strong screening set, 415 clips)

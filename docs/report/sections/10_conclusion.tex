@@ -15,8 +15,9 @@ music, and a vision model that takes ``the object is there'' for ``the object is
         alarms, bells, a baby crying, glass, a knock. The benchmark's importance rule (an event one can say in a
         sentence, or danger) captures them; steady place noise (wind, traffic hum) is excluded by design, and it is
         also where detectors, gate and labels disagree most. Whether DHH viewers rank sounds the same way is untested.
-  \item[RQ2 -- what granularity?] Decide and score at the level of the sound's \emph{family} (one level below the top
-        of the AudioSet tree: \emph{Dog} rather than \emph{Bark} or \emph{Animal}), and draw the specific source.
+  \item[RQ2 -- what granularity?] Decide and score by \emph{family} (two labels match if one lies under the other in
+        the AudioSet tree, so \emph{Bark} matches \emph{Dog}, while a vague label such as \emph{Animal} matches nothing),
+        and draw the specific source.
         Matching by family was the one rule, both for merging repeated pictures and for scoring, that worked on new
         clips without a tuned threshold. The picture names the maker (a barking dog, not ``bark'') from a hand-written
         table; on seven known cases only, the table was right 7 times and the vision model's own wording 3 times.
@@ -31,7 +32,8 @@ music, and a vision model that takes ``the object is there'' for ``the object is
   \item[RQ5 -- comparison with audio-to-visual approaches?] Against the proposal's direct audio-to-image baseline (the
         final system without the on-screen check, drawing every detected sound), the final system costs 0.773 less per clip on the test set
         ($p < 0.001$): it has two fewer hits but 38 fewer wrong pictures. Audio captioning scores the same as direct
-        audio-to-image under the per-sound metric; whether pictures beat text needs viewers.
+        audio-to-image under the per-sound metric (a separate captioning model was not run; the captioning baseline is
+        the same decisions shown as text); whether pictures beat text needs viewers.
 \end{description}
 
 \paragraph{Code and data availability.}\label{sec:availability}

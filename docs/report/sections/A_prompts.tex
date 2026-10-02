@@ -22,12 +22,12 @@ name, lower-cased and cut before a comma or bracket. Source: \fp{src/stage5_cros
 \item[Scene check (witness rule; logit read)] ``Could the sound of $\langle$label$\rangle$ plausibly be heard in this
   scene? Answer yes or no.'' and the twin ``Could the sound of $\langle$label$\rangle$ NOT plausibly be heard in this
   scene? Answer yes or no.''
-\item[Listener yes/no (Qwen3-Omni, Audio Flamingo Next)] ``Is the sound of $\langle$family$\rangle$ present in this recording? Answer
+\item[Listener yes/no (Qwen3-Omni, Audio Flamingo Next)] ``Is the sound of $\langle$label$\rangle$ present in this recording? Answer
   yes or no.''
 \item[Listener inventory] ``List every distinct non-speech sound you hear in this recording, one per line, most prominent
-  first.'' (64 new tokens)
-\item[Grouping (Qwen3-Omni, both orders)] ``You hear a $\langle$lab$\rangle$ sound near the start and again near the end
-  of this recording. Is the $\langle$lab$\rangle$ near the end $\langle o_1\rangle$, or $\langle o_2\rangle$? Answer with
+  first.'' (answer limited to 64 tokens, about 50 words)
+\item[Grouping (Qwen3-Omni, both orders)] ``You hear a $\langle$label$\rangle$ sound near the start and again near the end
+  of this recording. Is the $\langle$label$\rangle$ near the end $\langle o_1\rangle$, or $\langle o_2\rangle$? Answer with
   exactly one word: $\langle w_1\rangle$ or $\langle w_2\rangle$.'' with the options ``the same continuing sound as at the
   start (for example one alarm or engine with a short pause)'' and ``a new, separate event (for example a second bark,
   knock or shot)''.

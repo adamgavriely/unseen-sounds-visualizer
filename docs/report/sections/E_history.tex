@@ -79,16 +79,16 @@ Dates & System & Scored by & Outcome and why it changed \\
 \bottomrule\endfoot
 6 Aug & proposal: 7 stages (audio, VLM, ASR, BEATs/PANNs, reasoning, FLUX/SDXL, evaluation) & planned: VLM describes, LLM writes reference, LLM judges & pivot from an earlier speech-illustration project \\
 7 Aug & v1: PANNs (bar 0.15) $\to$ Openverse image retrieval $\to$ side panel; no gate & demo clips & needed a ``not seen'' decision \\
-7 Aug--7 Sep & CLIP zero-shot visibility gate; clip-level benchmark (274 clips) & clip-level gate accuracy & CLIP gate 49.3\,\%: 71 of 103 seen clips still augmented -- ``object presence is not event visibility'' \\
-8--11 Sep & PANNs + OWLv2 + per-sound VLM gate (Qwen2.5-VL-7B, ``name it, don't confirm''); SDXL & 100 clips $\times$ 3 systems, Mistral-7B judge 0--4, model-written reference & blind 2.94 $>$ caption 2.68 $>$ gated 2.41; retrieval beat SDXL by $+0.17$/$+0.18$; reference later found circular \\
-12--17 Sep & v3: BEATs (replaced PANNs after 11 of 14 complaints traced to its labels), hysteresis + occlusion onsets, 7B gate with 3 votes, FLUX.1-schnell & human-grounded judge reference, dev 174 / test 100 & tie 3.17 vs 3.16; gate wins where nothing is due ($+0.26$), loses where a picture is due ($-0.24$) \\
-18--21 Sep & v4: one state-of-the-art swap per stage; Qwen3.8-27B gate; FLAM and PretrainedSED detectors tried; rubric-enforced judge & judge with a cap on redundant pictures & PretrainedSED rejected three times; 13 silent bugs found (amendment 3), all earlier judge rows kept as history only \\
-22--23 Sep & per-sound gold (139 clips); BEATs $\cup$ FlexSED (bar 0.8), FlexSED veto 0.3, PANNs veto 0.05 & per-sound F1, then viewer cost (amendment 9) & F1 difference null ($+0.028$); wrong pictures and precision significant \\
-24--27 Sep & monotone onsets, no length cap; final September test table (amendment 21); Qwen-Image frozen as picture setup & Holm-corrected table on TEST-60 & ``Holm wins, F1 null'' (Section~\ref{sec:sept-table}) \\
-27 Sep & detector rounds 1--3: cascade, PE-A-Frame, Qwen3-Omni as verifier & DEV-49 + AudioSet 280 / 415 & none passed; detection declared closed, reopened next day \\
-28 Sep & rounds 4--12 on AudioSet sets: EAT, Dasheng, DASM, SAM-Audio, 17 ideas, local contrast, DASM rescue, masker tests & cost on AudioSet labels & all failed on the 415; round 12 showed the AudioSet cost cannot track the task: harness retired \\
-28--30 Sep & rounds 13--14: listener rescue (Qwen3-Omni, Audio Flamingo Next) + DASM vote; tagger clips added & DEV-49, then merged DEV & first gains in hits (TO1+F7F8) \\
-30 Sep--1 Oct & ship chain SHIP1--SHIP8 on merged DEV/TEST & merged DEV, pass rules & DEV 18/51/3.690 $\to$ 28/21/2.282 (Table~\ref{tab:shipchain}) \\
+7 Aug--7 Sept & CLIP zero-shot visibility gate; clip-level benchmark (274 clips) & clip-level gate accuracy & CLIP gate 49.3\,\%: 71 of 103 seen clips still augmented -- ``object presence is not event visibility'' \\
+8--11 Sept & PANNs + OWLv2 + per-sound VLM gate (Qwen2.5-VL-7B, ``name it, don't confirm''); SDXL & 100 clips $\times$ 3 systems, Mistral-7B judge 0--4, model-written reference & blind 2.94 $>$ caption 2.68 $>$ gated 2.41; retrieval beat SDXL by $+0.17$/$+0.18$; reference later found circular \\
+12--17 Sept & v3: BEATs (replaced PANNs after 11 of 14 complaints traced to its labels), hysteresis + occlusion onsets, 7B gate with 3 votes, FLUX.1-schnell & human-grounded judge reference, dev 174 / test 100 & tie 3.17 vs 3.16; gate wins where nothing is due ($+0.26$), loses where a picture is due ($-0.24$) \\
+18--21 Sept & v4: one state-of-the-art swap per stage; Qwen3.8-27B gate; FLAM and PretrainedSED detectors tried; rubric-enforced judge & judge with a cap on redundant pictures & PretrainedSED rejected three times; 13 silent bugs found (amendment 3), all earlier judge rows kept as history only \\
+22--23 Sept & per-sound gold (139 clips); BEATs $\cup$ FlexSED (bar 0.8), FlexSED veto 0.3, PANNs veto 0.05 & per-sound F1, then viewer cost (amendment 9) & F1 difference null ($+0.028$); wrong pictures and precision significant \\
+24--27 Sept & monotone onsets, no length cap; final September test table (amendment 21); Qwen-Image frozen as picture setup & Holm-corrected table on TEST-60 & ``Holm wins, F1 null'' (Section~\ref{sec:sept-table}) \\
+27 Sept & detector rounds 1--3: cascade, PE-A-Frame, Qwen3-Omni as verifier & DEV-49 + AudioSet 280 / 415 & none passed; detection declared closed, reopened next day \\
+28 Sept & rounds 4--12 on AudioSet sets: EAT, Dasheng, DASM, SAM-Audio, 17 ideas, local contrast, DASM rescue, masker tests & cost on AudioSet labels & all failed on the 415; round 12 showed the AudioSet cost cannot track the task: harness retired \\
+28--30 Sept & rounds 13--14: listener rescue (Qwen3-Omni, Audio Flamingo Next) + DASM vote; tagger clips added & DEV-49, then merged DEV & first gains in hits (TO1+F7F8) \\
+30 Sept--1 Oct & ship chain SHIP1--SHIP8 on merged DEV/TEST & merged DEV, pass rules & DEV 18/51/3.690 $\to$ 28/21/2.282 (Table~\ref{tab:shipchain}) \\
 1--2 Oct & rounds 46--66: display rules, witness rule, scene check, many gate ideas & merged DEV, held-out 415 & the final system: DEV 29/15/2.056; frozen on 2 Oct \\
 \end{longtable}
 
@@ -124,12 +124,15 @@ TO1+F7F8 (R14) & listener rescue of weak FlexSED runs (tiered: Qwen alone above 
 + logit readout (R60L) = \textbf{final system} & scene check read as a probability, no cut-off answers & \textbf{29 / 15 / 2.056} & \textbf{24 / 24 / 2.409} ($p = 0.034$ vs B) \\
 \end{longtable}
 }
+
 \noindent\footnotesize $^{a}$ Round 57 scored 29/17 with 26 listener answers missing from a cache; after the cache
 was filled (1 October) the same system scores 29/18/2.141, so its net development effect is zero.
 $^{b}$ D's 2.028 contains one gain caused by a cut-off answer (``based on the'') that removed a wrong \emph{Glass}
 picture; the logit readout of the final system cannot be cut off, so that picture returns (+1 wrong). The pass bar of Round 60L
 was set against B, not against D, for this reason.
 \normalsize
+
+The later per-step test $p$-values are uncorrected and were never used to accept a change.
 
 \paragraph{What the table shows.} From the old pipeline to the final system the development set gained 11 hits and lost 36 wrong
 pictures (cost $3.690 \to 2.056$). The test set gained 3 hits and lost 16 wrong pictures ($2.909 \to 2.409$). About a
@@ -150,8 +153,8 @@ Idea (round) & What it did & Why it failed \\
 \toprule Idea & What it did & Why it failed \\ \midrule\endhead
 \bottomrule\endfoot
 \multicolumn{3}{l}{\emph{Hear more sounds}} \\
-other detectors (Sep, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CED, SSLAM, EAT, Dasheng, PE-A-Frame, CLAP verifier, tagger ensembles & recall rose only with many more false spans; PretrainedSED lost three times; ensembles mis-scaled \\
-source separation (Sep, R7) & Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
+other detectors (Sept, rounds 1--8) & FLAM, PretrainedSED (5 backbones), AST, CED, SSLAM, EAT, Dasheng, PE-A-Frame, CLAP verifier, tagger ensembles & recall rose only with many more false spans; PretrainedSED lost three times; ensembles mis-scaled \\
+source separation (Sept, R7) & Demucs, SAM-Audio in front of BEATs & separated audio is out of the detectors' training distribution: recall under speech fell 9.5\,\% $\to$ 4.8\,\%; SAM-Audio failed its quality check (music never removed) \\
 listener as verifier (R13) & ask Qwen3-Omni yes/no, multiple choice, open list on every weak candidate & finds 5--8 dropped real sounds but adds about 3 wrong pictures per hit \\
 newer listeners (R31--34) & MOSS-Audio, SpotSound, Kimi, Step-Audio & 3--10 wrong per extra hit; SpotSound answered yes to every query \\
 EXPECT chain (R40--42b) & the scene VLM or a listener names sounds expected off screen; FineLAP times them; DASM confirms & best DEV 31/26/2.254 (+3 hits), but TEST 25/35/2.614 (worse); the gate cannot refuse a wrong off-screen name \\
@@ -162,7 +165,7 @@ stricter witnesses (R53 variants) & require DASM or both listeners for every wea
 named veto, relabel gate (R39--41) & drop or rename a picture when the gate or the listeners name a different sound & real hits lost for no cost gain \\
 held-out family prior (R41) & drop families a detector gets wrong $>70\,\%$ of the time on the 415 & every affected picture had been heard by a listener: no change \\
 \multicolumn{3}{l}{\emph{Better on-screen decision}} \\
-other gate signals (Sep, am.\ 14--20) & OWLv2 or SAM 3 vote, video input, synchrony, ``any stretch'' rule & each removed exactly as many needed sounds as wrong pictures it saved (break-even at $\beta = 2$) \\
+other gate signals (Sept, am.\ 14--20) & OWLv2 or SAM 3 vote, video input, synchrony, ``any stretch'' rule & each removed exactly as many needed sounds as wrong pictures it saved (break-even at $\beta = 2$) \\
 SSL-SaN, SigLIP, BOX (R30--38) & audio-visual localiser; picture-vs-frame similarity; VLM draws a box on the source and checks the crop & each un-silenced real visible sounds; BOX-2 in the full pipeline 29/26/2.366 \\
 synchrony (R38) & Synchformer: does on-screen motion move with the sound? & as a veto, +3 needed kept but 5 visible calls lost; as an ``add seen'' vote, on the bar but changed no shipped picture \\
 human-style chain (HUMAN, R50, R66) & name the source, find it, zoom, ask ``is it making the sound now?'' & the VLM names ``nothing'' on most stretches; NAME-ALL passed its gate screen but lost 3 real hits in the pipeline (26/12/2.141) \\
@@ -174,6 +177,7 @@ change-point onsets (R33) & SEBB onset post-processing & 7 hits lost \\
 earliest onset (R38), repeat rules (R31, R35) & start at the first detector to hear a sound; require silence before a repeat & hits lost or no net gain \\
 pause questions (R51, R55) & ask whether a 2-s gap is a pause or a new sound & neither the listener nor the detectors can tell a pause from a dropout \\
 context $\pm$5\,s (R59) & give the listener more context & it names what it \emph{sees}, not what it hears \\
+4-s grouping limit (1 Oct) & group same-family pictures only up to 4\,s apart & chosen after a test read; undone, the 8-s limit kept \\
 \end{longtable}
 }
 
@@ -205,7 +209,7 @@ was built and run, and it failed in instructive ways:
 \begin{enumerate}
   \item \textbf{A reference written by the system's own models is circular.} The first reference was written by the
         system's VLM from the system's detections; it rewarded whichever system repeated the detector (blind 2.94 $>$
-        caption 2.68 $>$ gated 2.41 on 9 Sep). A second judge of another family agreed with the first
+        caption 2.68 $>$ gated 2.41 on 9 Sept). A second judge of another family agreed with the first
         (quadratic $\kappa = 0.753$), which shows only that two judges can share a bias.
   \item \textbf{A reference written by independent models cannot decide visibility.} A reference built by an audio
         LLM, CLAP, a different VLM and a different LLM agreed with the human ``nothing is missing'' label on 55 of 100
@@ -243,10 +247,13 @@ after each change and only reported. Dotted lines: showing nothing.}
 \label{fig:progression}
 \end{figure}
 
+\FloatBarrier
 \subsection{The September comparison of the on-screen check}\label{sec:sept-table}
 Before the final detector existed, the on-screen check was compared with and without it on the 60 older test clips
-(same gate model and rule, the September detector). Two-sided $p$-values with Holm correction:
-\begin{center}\small
+(same gate model and rule, the September detector); Table~\ref{tab:septgate} gives two-sided $p$-values with Holm
+correction.
+\begin{table}[htbp]\centering\small
+\caption{The September comparison of the on-screen check (60 older test clips).}\label{tab:septgate}
 \begin{tabular}{lrrl}
 \toprule
 Measure & With minus without & 95\,\% interval & Holm $p$ \\
@@ -258,15 +265,16 @@ Clips handled perfectly & $+0.219$ & & $0.006$ \\
 F1 & $+0.059$ & $[-0.030,\ +0.144]$ & $0.18$ (not significant) \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table}
 The same pattern holds for the final system (Table~\ref{tab:headline}): the check removes many wrong pictures at the
 price of a few hits, which F1, weighing both equally, does not reward.
 
 \subsection{Comparisons between versions}\label{app:versions}
 The final development phase compared each accepted change with the version before it and, early on, with the
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2{,}000 draws; $d$ = mean per-clip cost difference;
-one-sided $p$ (a two-sided value is about twice as large).
-\begin{center}\small
+one-sided $p$ (a two-sided value is about twice as large); see Table~\ref{tab:versions}.
+\begin{table}[htbp]\centering\small
+\caption{Comparisons between versions (test set, one-sided).}\label{tab:versions}
 \resizebox{\linewidth}{!}{\begin{tabular}{lrrl}
 \toprule
 Comparison & $d$ & 95\,\% interval & One-sided $p$ \\
@@ -277,14 +285,15 @@ intermediate version (SHIP8) vs September baseline & $-0.341$ & $[-0.636,\ -0.04
 first listener stack (TO1+F7F8) vs September baseline, pre-registered & $-0.091$ & $[-0.250,\ +0.045]$ & 0.132 \\
 \bottomrule
 \end{tabular}}
-\end{center}
+\end{table}
 Version B scored 29 / 18 / 2.141 (development) and 22 / 26 / 2.545 (test); D scored 29 / 14 / 2.028 and
 24 / 23 / 2.386. The four early test reads of 30 Sept were also corrected for multiplicity (Holm); none was
 significant after correction.
 
 \paragraph{Repeat-merge gap.} Re-reading the same saved pictures at different merge gaps moves wrong-picture counts but
-not the ranking (hits / wrong / cost):
-\begin{center}\small
+not the ranking (Table~\ref{tab:mergegap}).
+\begin{table}[htbp]\centering\small
+\caption{Repeat-merge gap: hits / wrong / cost at three gaps.}\label{tab:mergegap}
 \begin{tabular}{lcccc}
 \toprule
 Gap (s) & SHIP8, dev. & Baseline, dev. & SHIP8, test & Baseline, test \\
@@ -294,11 +303,12 @@ Gap (s) & SHIP8, dev. & Baseline, dev. & SHIP8, test & Baseline, test \\
 3.0 & 28 / 18 / 2.197 & 17 / 43 / 3.521 & 22 / 27 / 2.568 & 20 / 33 / 2.795 \\
 \bottomrule
 \end{tabular}
-\end{center}
+\end{table}
 The baseline gains more from a longer gap (many of its pictures are repeats), so the final system (gap 2.5\,s) against
 the baseline (gap 2.0\,s) is not a like-for-like comparison.
 
 % ======================================================================
+\FloatBarrier
 \subsection{Round-by-round record}\label{app:rounds}
 Verdicts: shipped = accepted into the system; rejected = failed its development rule; stop = failed its screen on the
 screening set; hold = parked; no-op = changed no picture.
@@ -347,7 +357,7 @@ am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUR
 21 & K-V4 inventory keep & 24/41/2.901 & shipped (SHIP3) \\
 22--27 & N2c, stacks, K2 variants & N2c 22/38/2.930 lost a hit & rejected \\
 28 & DV DASM clip veto & 24/34/2.704; TEST 23/34/2.682 & shipped (SHIP4) \\
-\multicolumn{4}{l}{\emph{Rounds 29--41 (30 Sep -- 1 Oct)}} \\
+\multicolumn{4}{l}{\emph{Rounds 29--41 (30 Sept -- 1 Oct)}} \\
 29 & F8-U, DV-L, DV-G; V4D; GA & +2 hits for +7 wrong; no-op; $-5$ hits; STOP; STOP & rejected \\
 30 & BTP band-twin pull & 25/33/2.620; TEST 23/33/2.659 & shipped (SHIP5) \\
 30 & K4AO; PIC-SIM; RT & held; nothing flips; no-op & held / rejected \\

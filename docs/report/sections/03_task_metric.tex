@@ -9,7 +9,8 @@
   \item[Show nothing] a system that never shows a picture.
   \item[Gate (on-screen check)] the step that decides whether a sound's source is visible.
   \item[Listener] an audio-language model asked about a sound (``is a siren present?'', ``list what you hear'').
-  \item[Family] a sound and its parents in the AudioSet tree (\emph{Bark} belongs to the family \emph{Dog}).
+  \item[Family] two labels are in the same family if they are equal or one lies under the other in the AudioSet tree
+    (\emph{Bark} and \emph{Dog}), and neither is a vague label near the top of the tree such as \emph{Animal}.
   \item[Span] the time interval of one detected sound.
   \item[Stretch] a piece of a span, about 5\,s long; the on-screen check judges each stretch separately.
   \item[Bootstrap] resampling the clips many times to see how much a difference could change by chance (for example,
@@ -66,12 +67,12 @@ wrong pictures it removes. F1 is reported alongside the cost (Table~\ref{tab:hea
 
 \subsection{How decisions were made}\label{sec:passrules}
 Comparisons are paired by clip and tested with a paired clip bootstrap. A change to the system was accepted only if
-it passed a rule written down \emph{before} its run, on the development set. It passed if either
+it passed a rule written down \emph{before} its run, on the development set (the rule and its pass bar were
+committed to the repository first; this is called pre-registration). It passed if either
 \begin{enumerate}[label=(\alph*)]
   \item it kept or raised the hits, added at most two wrong pictures per extra hit, and lowered the cost; or
   \item it lost at most three hits and removed at least three wrong pictures per hit lost.
 \end{enumerate}
 Rules about the audio alone could first be screened on the screening set (Section~\ref{sec:benchmark}). The test set
 was read only after a change was accepted, and only reported, with two exceptions that were reversed
-(Section~\ref{sec:limits}, T1). On the test set the 95\,\% intervals of the main comparisons are 0.5 to 1.0 per clip
-wide, so small single changes could only be judged on the development rules.
+(Section~\ref{sec:limits}, T1). The 95\,\% intervals of the main comparisons are 0.5 to 1.2 per clip wide on both sets, so small single changes could only be judged on the development rules.

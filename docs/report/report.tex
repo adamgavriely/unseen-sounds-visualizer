@@ -21,19 +21,20 @@
 \usepackage{tikz}
 \usetikzlibrary{positioning,arrows.meta,fit,calc,shapes.geometric}
 \usepackage[hidelinks]{hyperref}
-\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\_\do\-\do\.}
+\expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\_\do\-}
 \usepackage{caption}
 \usepackage[section]{placeins}
 \captionsetup{font=small,labelfont=bf}
 \setlist{itemsep=2pt,topsep=3pt}
 \renewcommand{\arraystretch}{1.12}
+\renewcommand{\floatpagefraction}{.8}\renewcommand{\topfraction}{.9}\renewcommand{\textfraction}{.1}
 \makeatletter
 \setlength{\@fptop}{0pt}\setlength{\@fpsep}{12pt}\setlength{\@fpbot}{0pt plus 1fil}
 \makeatother
 
 \newcommand{\Dp}{D$'$}
-\newcommand{\fp}[1]{\nolinkurl{#1}}   % file path (breaks at / _ .)
-\newcommand{\cfgv}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\fp}[1]{\nolinkurl{#1}}   % file path (breaks at / _ -)
+\newcommand{\cfgv}[1]{\nolinkurl{#1}}   % code name (breaks at _ and -)
 \newcommand{\hwc}[3]{#1\,/\,#2\,/\,#3}   % hits / wrong / cost
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
@@ -52,7 +53,7 @@ MSc final project, submitted to Oren Glickman}
 
 \input{sections/00_abstract}
 \clearpage
-\tableofcontents
+{\small\tableofcontents}
 \clearpage
 
 \input{sections/01_intro}
@@ -66,12 +67,11 @@ MSc final project, submitted to Oren Glickman}
 \input{sections/09_limits}
 \input{sections/10_conclusion}
 
-\clearpage
 \phantomsection\addcontentsline{toc}{section}{References}
 \input{sections/bib}
 
 \appendix
-\sloppy   % long file paths in the appendices
+\setlength{\emergencystretch}{3em}   % long file paths in the appendices
 \addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
 \clearpage\input{sections/A_prompts}
 \clearpage\input{sections/B_config}
