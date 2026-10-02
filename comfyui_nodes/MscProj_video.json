@@ -1,0 +1,57 @@
+{
+  "last_node_id": 5,
+  "last_link_id": 3,
+  "nodes": [
+    {
+      "id": 5, "type": "Note", "pos": [40, 40], "size": [1180, 120], "flags": {}, "order": 0, "mode": 0,
+      "inputs": [], "outputs": [], "properties": {},
+      "title": "How to use",
+      "widgets_values": ["1. In 'Load Video', click 'choose video to upload' and pick your video.\n2. Press the blue Run button (top right).\n3. Wait about 10-15 minutes. The finished video with the sound pictures appears in 'Save Video'; the list of pictures appears in 'What was drawn'.\nThe video is saved in ComfyUI's output folder (video/MscProj_...)."],
+      "color": "#432", "bgcolor": "#653"
+    },
+    {
+      "id": 1, "type": "LoadVideo", "pos": [40, 200], "size": [340, 420], "flags": {}, "order": 1, "mode": 0,
+      "inputs": [],
+      "outputs": [{"name": "VIDEO", "type": "VIDEO", "links": [1]}],
+      "properties": {"Node name for S&R": "LoadVideo"},
+      "title": "1. Load your video",
+      "widgets_values": ["", "image"]
+    },
+    {
+      "id": 2, "type": "MscAugmentVideo", "pos": [420, 200], "size": [380, 120], "flags": {}, "order": 2, "mode": 0,
+      "inputs": [{"name": "video", "type": "VIDEO", "link": 1}],
+      "outputs": [
+        {"name": "video_with_pictures", "type": "VIDEO", "links": [2]},
+        {"name": "what_was_drawn", "type": "STRING", "links": [3]}
+      ],
+      "properties": {"Node name for S&R": "MscAugmentVideo"},
+      "title": "2. Add sound pictures (whole pipeline)",
+      "widgets_values": []
+    },
+    {
+      "id": 3, "type": "SaveVideo", "pos": [840, 200], "size": [380, 420], "flags": {}, "order": 3, "mode": 0,
+      "inputs": [{"name": "video", "type": "VIDEO", "link": 2}],
+      "outputs": [],
+      "properties": {"Node name for S&R": "SaveVideo"},
+      "title": "3. Your new video",
+      "widgets_values": ["video/MscProj", "auto", "auto"]
+    },
+    {
+      "id": 4, "type": "PreviewAny", "pos": [420, 360], "size": [380, 260], "flags": {}, "order": 4, "mode": 0,
+      "inputs": [{"name": "source", "type": "*", "link": 3}],
+      "outputs": [],
+      "properties": {"Node name for S&R": "PreviewAny"},
+      "title": "What was drawn",
+      "widgets_values": []
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "VIDEO"],
+    [2, 2, 0, 3, 0, "VIDEO"],
+    [3, 2, 1, 4, 0, "STRING"]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {"ds": {"scale": 1, "offset": [0, 0]}},
+  "version": 0.4
+}

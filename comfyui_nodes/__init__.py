@@ -46,6 +46,102 @@ def _free():
         pass
 
 
+# --------------------------------------------------------------------------- the one-click node (frozen D')
+def _video_file(video) -> Path:
+    """The uploaded video as a file on disk (ComfyUI's VIDEO is usually a path, sometimes bytes)."""
+    import tempfile
+    src = video.get_stream_source() if hasattr(video, "get_stream_source") else video
+    if isinstance(src, (str, Path)):
+        return Path(src)
+    tmp = Path(tempfile.mkdtemp()) / "upload.mp4"
+    video.save_to(str(tmp))
+    return tmp
+
+
+class MscAugmentVideo:
+    """Video in, video out: the frozen pipeline (D', tag detector-frozen-2026-10-02) on a new video.
+
+    `main.py`'s code path (use_shipped + on-the-spot listener inputs), with stage 5 run under the scored D' flags
+    (picture wording and KINSHIP_DIRECTED off, as benchmark/gold/round13_dev.py) and the pictures under the shipped
+    flags, the same split as the inspector renderer (benchmark/gold/render_trail_media.py). See run_frozen.py.
+
+    Every stage is computed on the spot for the new video (audio, what is on screen, the four listeners, sound
+    detection, the cross-modal gate, Qwen-Image pictures with the picture check, grouping, the compositor). It runs in
+    a fresh process (comfyui_nodes/run_frozen.py), so the ComfyUI server never holds the big models. A copy of the video is named after its content, so per-clip answers from an older upload with
+    the same file name are never reused.
+    """
+
+    @classmethod
+    def INPUT_TYPES(cls):
+        return {"required": {"video": ("VIDEO", {"tooltip": "Connect the Load Video node here."})}}
+
+    RETURN_TYPES = ("VIDEO", "STRING")
+    RETURN_NAMES = ("video_with_pictures", "what_was_drawn")
+    FUNCTION = "run"
+    CATEGORY = "MscProj"
+    DESCRIPTION = ("Adds pictures of the sounds you cannot see. Runs the whole frozen pipeline on the uploaded "
+                   "video (about 10-15 minutes on one H200).")
+
+    def run(self, video):
+        import hashlib
+        import json
+        import re
+        import shutil
+        src = _video_file(video)
+        h = hashlib.sha1()
+        with open(src, "rb") as f:
+            for chunk in iter(lambda: f.read(1 << 20), b""):
+                h.update(chunk)
+        name = re.sub(r"[^A-Za-z0-9_]+", "_", src.stem).strip("_")[:40] or "video"
+        stem = f"comfy_{name}_{h.hexdigest()[:8]}"
+        inp = _ROOT / "data" / "input" / "comfy" / f"{stem}{src.suffix or '.mp4'}"
+        inp.parent.mkdir(parents=True, exist_ok=True)
+        if not inp.exists():
+            shutil.copy(src, inp)
+        summary = Path(config.WORK_DIR) / "comfy" / f"{stem}.summary.json"
+        summary.parent.mkdir(parents=True, exist_ok=True)
+        summary.unlink(missing_ok=True)       # never show an older run's result
+
+        pbar = None
+        try:
+            import comfy.utils
+            pbar = comfy.utils.ProgressBar(7)
+        except Exception:
+            pass
+        cmd = [sys.executable, "-u", str(_ROOT / "comfyui_nodes" / "run_frozen.py"),
+               "--input", str(inp), "--summary", str(summary)]
+        env = dict(os.environ)
+        for k in ("PYTHONPATH",):        # ComfyUI's own packages must not leak into the pipeline's process
+            env.pop(k, None)
+        print(f"[MscProj] running the frozen pipeline on {inp.name}", flush=True)
+        tail = []
+        proc = subprocess.Popen(cmd, cwd=str(_ROOT), env=env, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+                                text=True, bufsize=1)
+        for line in proc.stdout:
+            print("[MscProj] " + line.rstrip(), flush=True)
+            tail = (tail + [line.rstrip()])[-40:]
+            m = re.match(r"\[(\d)/7\]", line.strip())
+            if m and pbar is not None:
+                pbar.update_absolute(int(m.group(1)) - 1, 7)
+        if proc.wait() != 0 or not summary.exists():
+            raise RuntimeError("The pipeline stopped. Last lines:\n" + "\n".join(tail[-15:]))
+        if pbar is not None:
+            pbar.update_absolute(7, 7)
+        res = json.loads(summary.read_text(encoding="utf-8"))
+        lines = [f"Heard: {', '.join(res['heard']) or 'nothing'}", "",
+                 f"Pictures shown ({len(res['shown'])}):"]
+        lines += [f"  {l}  {a:.1f}-{b:.1f} s" for l, a, b in res["shown"]] or ["  none"]
+        if res["skipped"]:
+            lines += ["", "Not drawn:"] + [f"  {s['label']} at {s['start']:.1f} s: {s['reason']}" for s in res["skipped"]]
+        try:
+            from comfy_api.latest import InputImpl
+            out_video = InputImpl.VideoFromFile(res["video"])
+        except Exception:
+            from comfy_api.input_impl import VideoFromFile
+            out_video = VideoFromFile(res["video"])
+        return (out_video, "\n".join(lines))
+
+
 # --------------------------------------------------------------------------- 0. the system switch
 class MscSystem:
     """Which system is being demonstrated. Runs BEFORE every stage and sets the flags.
@@ -67,7 +163,7 @@ class MscSystem:
     RETURN_TYPES = ("MSC_CFG", "STRING")
     RETURN_NAMES = ("cfg", "system")
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     @classmethod
     def IS_CHANGED(cls, gate_enabled):
@@ -97,7 +193,7 @@ class MscLoadVideo:
     RETURN_TYPES = ("MSC_MEDIA",)
     RETURN_NAMES = ("media",)
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, cfg, video_path):
         from src.stage1_audio_extraction import extract_audio
@@ -124,7 +220,7 @@ class MscSceneUnderstanding:
     RETURN_TYPES = ("MSC_SCENE", "STRING")
     RETURN_NAMES = ("scene", "visible_entities")
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, media, backend, num_frames):
         from src.stage2_video_understanding import analyze
@@ -150,7 +246,7 @@ class MscTranscribe:
     RETURN_TYPES = ("MSC_SEGMENTS", "STRING")
     RETURN_NAMES = ("segments", "transcript")
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, media, enabled):
         if not enabled:
@@ -183,7 +279,7 @@ class MscDetectEvents:
     RETURN_TYPES = ("MSC_EVENTS", "STRING")
     RETURN_NAMES = ("events", "heard")
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, media, flexsed_bar, cross_detector_veto, panns_veto):
         from src.stage4_audio_event_detection import detect_events
@@ -229,7 +325,7 @@ class MscCrossModalGate:
     RETURN_TYPES = ("MSC_SPECS", "STRING")
     RETURN_NAMES = ("specs", "decisions")
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, media, scene, segments, events, cfg):
         from src.stage5_cross_modal_analysis import plan_augmentations, reason
@@ -267,7 +363,7 @@ class MscGeneratePictures:
     RETURN_TYPES = ("MSC_SPECS", "IMAGE")
     RETURN_NAMES = ("specs", "preview")
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, media, specs, backend):
         import numpy as np
@@ -309,7 +405,7 @@ class MscComposite:
     RETURN_NAMES = ("output_video",)
     OUTPUT_NODE = True
     FUNCTION = "run"
-    CATEGORY = "MscProj"
+    CATEGORY = "MscProj/old setup (not the frozen pipeline)"
 
     def run(self, media, specs, events):
         from src.stage6_visual_augmentation import composite_alongside
@@ -323,6 +419,7 @@ class MscComposite:
 
 
 NODE_CLASS_MAPPINGS = {
+    "MscAugmentVideo": MscAugmentVideo,
     "MscSystem": MscSystem,
     "MscLoadVideo": MscLoadVideo,
     "MscSceneUnderstanding": MscSceneUnderstanding,
@@ -334,14 +431,15 @@ NODE_CLASS_MAPPINGS = {
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MscSystem": "0 · System: gate ON = ours, OFF = blind baseline",
-    "MscLoadVideo": "1 · Load video + extract audio",
-    "MscSceneUnderstanding": "2 · What is on screen",
-    "MscTranscribe": "3 · Speech recognition",
-    "MscDetectEvents": "4 · Sound detection (+ the two vetoes)",
-    "MscCrossModalGate": "5 · Cross-modal gate  ← the contribution",
-    "MscGeneratePictures": "6 · Generate pictures",
-    "MscComposite": "7 · Composite beside the video",
+    "MscAugmentVideo": "Add sound pictures to video (MscProj, frozen pipeline)",
+    "MscSystem": "(old setup) 0 · System: gate ON = ours, OFF = blind baseline",
+    "MscLoadVideo": "(old setup) 1 · Load video + extract audio",
+    "MscSceneUnderstanding": "(old setup) 2 · What is on screen",
+    "MscTranscribe": "(old setup) 3 · Speech recognition",
+    "MscDetectEvents": "(old setup) 4 · Sound detection (+ the two vetoes)",
+    "MscCrossModalGate": "(old setup) 5 · Cross-modal gate  ← the contribution",
+    "MscGeneratePictures": "(old setup) 6 · Generate pictures",
+    "MscComposite": "(old setup) 7 · Composite beside the video",
 }
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS"]
