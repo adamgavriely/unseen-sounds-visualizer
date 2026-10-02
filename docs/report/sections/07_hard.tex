@@ -10,9 +10,10 @@ might expect, what actually happens, and the evidence.
 \subsection{Hearing the sound at all}
 \emph{Expected:} a modern tagger hears a hammer or a door. \emph{Actually:} under speech or music it often does not.
 The tagger's own score for \emph{Speech} or \emph{Music} is higher than for the quiet sound, so the sound never becomes
-a candidate. Even with every later stage made perfect, about one needed sound in five stays missed, because no model hears it
-clearly (Figure~\ref{fig:ceiling}; numbers in Section~\ref{sec:ceiling}). Removing the speech first with a source
-separation model made it worse: on a public sound-event benchmark (DCASE), the share of sounds found under speech
+a candidate. In a ceiling analysis of an earlier version, even with every later stage made perfect about one needed
+sound in five (12 of 55) stayed missed, because no model heard it clearly (Figure~\ref{fig:ceiling}; numbers in
+Section~\ref{sec:ceiling}). Removing the speech first with a source separation model made it worse: on DCASE data (a
+public challenge set of everyday sound events), the share of sounds found under speech
 fell from 9.5\,\% to 4.8\,\%, because the
 detectors were never trained on separated audio.
 
@@ -32,9 +33,10 @@ weak evidence. On the screening set, a weak detection that neither listener name
 one named by one listener 37\,\%, and one named by both 62\,\% (Figure~\ref{fig:listeners}). Raw detector output is right
 under 40\,\% of the time; a full chain of listener, timing and DASM checks reaches 80\,\%, but only on the sounds it
 keeps. Every way to add more
-sounds found real ones but paid two to four wrong pictures per new hit: the best such rule gained 3 hits on the
-development set (31 hits, 26 wrong, against 29 and 15 for the final system) and lost on the test set (25 hits, 35 wrong, against 24
-and 24). Nothing later in the chain can tell a
+sounds found real ones but paid two to five wrong pictures per new hit. The best such rule found two more hits than the
+final system on the development set, at about five extra wrong pictures each (31 hits and 26 wrong, against 29 and 15),
+so it failed the development rule; its test result, reported only, was no better (25 hits and 35 wrong, against 24 and
+24). Nothing later in the chain can tell a
 right off-screen name from a wrong one.
 
 
@@ -51,7 +53,8 @@ shown for reference.}
 \subsection{``It is there'' is not ``it is making the sound now''}
 \emph{Expected:} a vision-language model can answer ``is this bell ringing?''. \emph{Actually:} it answers ``is there a
 bell?''. A church tower on screen silences a bell heard off screen; perched birds are taken as the source of a call
-made elsewhere. In a hand audit of the gate's wrong decisions (Section~\ref{sec:presence}), this explains 23 of 36 errors. The opposite failure is also large: asked to name the
+made elsewhere. In a hand audit of 36 stretches the gate silenced wrongly (Section~\ref{sec:presence}), 31 had in the
+frame either the named object, present but not making the sound, or another thing of the same kind. The opposite failure is also large: asked to name the
 source, the model answers ``nothing'' on 42\,\% of the stretches the labels call visible (a hand, the footsteps of the
 person holding the camera). The problem is old: an early image-text matching check (CLIP) was right only about half the time. Moving from a
 7-billion- to a 27-billion-parameter vision model raised balanced accuracy (the mean of the success rates on visible
@@ -68,8 +71,8 @@ losing one needed sound costs 4: no gain. Localisation models also react to off-
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.8\linewidth]{figures/gate_tradeoff.pdf}
-\caption{Every variant of the on-screen check that was tried, scored on the development sounds labelled by the author
-(41 on-screen sounds, 38 needed sounds). The dashed line has the same cost as the final system: silencing two more
+\caption{Every variant of the on-screen check that was tried, scored on the subset of development sounds that reach
+the check and whose stretches the author labelled (41 on-screen sounds, 38 needed sounds). The dashed line has the same cost as the final system: silencing two more
 on-screen sounds is worth losing one needed sound. All variants lie near this line, and none reached the pass region
 fixed before the tests. Labels name the extra tool tried: an object box, a crop around the named object, an audio-visual
 synchrony model, a longer human-style question chain, or a fourth vote.}
@@ -81,22 +84,24 @@ synchrony model, a longer human-style question chain, or a fourth vote.}
 (a) 88\,\% of the time in one test; asked yes/no, it leans to ``no''; asked for free text, its answer can be cut off.
 The scene check of the witness rule therefore reads how strongly the model prefers ``yes'' over ``no'' at the first
 word, minus the same for the opposite question; the on-screen check itself asks its a/b question in both orders and
-abstains when they disagree. This removes the habits but reveals the real weakness: as a signal for separating visible
-from needed sounds on the labelled development stretches, it reaches an AUROC of only 0.647 (0.5 is a coin flip,
-1 is perfect). The habits were hiding a weakness, not causing it.
+abstains when they disagree. Reading answers as scores removes the habits but reveals the real weakness: when the
+on-screen check's own a/b question is read the same way, as a score, it separates visible from needed sounds on the
+labelled development stretches with an AUROC of only 0.647 (the chance that a random visible stretch scores higher
+than a random needed one; 0.5 is a coin flip, 1 is perfect). The habits were hiding a weakness, not causing it.
 
 \subsection{Drawing one unseen source, not a scene}
 \emph{Expected:} an audio-to-image model can draw what is heard. \emph{Actually:} such models draw the whole soundtrack
 as a scene and cannot be told to leave out the dog that is already on screen. The system therefore draws from the label
-with a guarded text prompt -- and even then a picture is recognised at a glance only about half the time
-(Section~\ref{sec:pictures}). A richer prompt reached 32 but invented objects (a thud drawn as a door).
+with a guarded text prompt -- and even then a picture was named right at a glance in only 26 of 54 tries
+(Section~\ref{sec:pictures}). A richer prompt reached 32 of 54 but invented objects (a thud drawn as a door).
 
 \subsection{Measuring success is hard too}
 \emph{Expected:} a model judge can score the output. \emph{Actually:} a reference written by the system's own models
 rewards the system; one written by independent models agreed with the human ``nothing is missing'' label on 55 of
 100 clips, which is chance; and the best judge scored a picture and a text tag the same (Appendix~\ref{app:judge}).
-Existing labels do not help either: AudioSet names only a few sounds per clip, so on AudioSet labels the system looked
-worse than showing nothing (1.650 against 0.986 per clip), although on full labels it is clearly better. Even full human
+Existing labels do not help either: AudioSet names only a few sounds per clip, so on an AudioSet calibration set an
+earlier version of the system looked worse than showing nothing (1.650 against 0.986 per clip), although on full
+labels it is clearly better. Even full human
 labels miss some sounds: about 1 in 6 ``wrong'' pictures is a real off-screen sound, and 14 borderline development
 sounds sit one judgement away from the other class.
 

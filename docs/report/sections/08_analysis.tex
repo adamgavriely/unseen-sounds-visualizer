@@ -8,7 +8,9 @@ error lists and an audit of the on-screen check (sources in Appendix~\ref{app:so
 Figure~\ref{fig:ceiling} makes the stages perfect one after another; Table~\ref{tab:ceiling} instead makes each stage
 perfect on its own, leaving the rest as they are, so the two give different numbers for the same stage.
 The analysis needs saved pictures, so it was run on a slightly older version of the system (25 hits and 27 wrong on the
-development set, 55 needed sounds); the proportions, not the exact numbers, are the point.
+development set, 55 needed sounds); the proportions, not the exact numbers, are the point. ``Perfect timing'' moves
+each picture to the labelled start of its sound; ``perfect family'' gives each picture the family of the labelled
+sound it overlaps.
 
 \begin{table}[htbp]
 \centering\small
@@ -34,8 +36,10 @@ sounds stay missed: five are heard by no model at all (a hammer, an explosion, a
 and seven are too faint or too badly timed.
 
 \subsection{The on-screen check in detail}\label{sec:presence}
-The audit of the gate's decisions found two kinds of error. The more common one (23 of 36 gate errors) is
-\emph{presence taken for production}: an object in the frame is taken as the object making the sound. This follows from
+A hand audit of the stretches the gate silenced wrongly (36 stretches: 16 development, 20 test) found two kinds of
+error. In 31 of the 36 the gate took \emph{presence for production}: either the named object was in the frame but not
+making the sound (14, such as a church tower for a ringing bell), or another thing of the same kind was (17, such as a
+perched bird for a call made elsewhere). This follows from
 how the vote is built. Two of the three questions effectively test presence -- naming an object, and asking whether that
 object \emph{could} make the sound -- and only the a/b question asks whether the sound is visibly happening, so the
 majority tests presence too. The second error is the opposite: the name question answers ``nothing'' on 42\,\% of the
@@ -43,11 +47,14 @@ stretches the labels call visible, when the source is small, hidden, or its acti
 
 \subsection{Label strictness}
 In two blind checks, about 1 in 6 pictures counted as wrong was a real, wanted, off-screen sound that the labels do not
-list, and several others were real sounds with the source on screen. Absolute costs are therefore somewhat pessimistic;
-the comparison between systems is not affected, because the same labels score all of them.
+list, and several others were real sounds with the source on screen. Absolute costs are therefore somewhat pessimistic.
+The same labels score every system, but not equally: direct audio-to-image shows more wrong pictures, so it gains more.
+If one in six wrong pictures of each system were not counted, the gap between the final system and direct
+audio-to-image would shrink by about 0.14 per clip on the test set and 0.11 on the development set, and the gap to
+showing nothing would grow.
 
 \subsection{Worked example}
-A development clip of a church bell (\fp{bell_miami} in the repository) has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
+A development clip filmed outside a church in Miami (clip \fp{bell_miami}) has one needed sound: a bell from 0.2 to 14.5\,s, labelled not visible. The
 detectors find it. The gate cuts the 14-s sound into three stretches. In each, the name question answers ``church
 bell'' (it shares the word \emph{bell}, so this vote says visible), the a/b question says not visibly happening, and the
 description vote says visible. Two of three votes in every stretch: the sound is silenced and the needed bell is missed.

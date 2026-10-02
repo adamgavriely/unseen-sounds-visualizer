@@ -5,13 +5,14 @@ this table maps each code to the plain name used in the report.
 
 {\small
 \begin{longtable}{L{3.2cm}L{11.4cm}}
+\caption{Internal codes and their plain names.}\label{tab:glossary}\\
 \toprule
-code & plain name / meaning \\
+Code & Plain name / meaning \\
 \midrule\endfirsthead
-\toprule code & plain name / meaning \\ \midrule\endhead
+\toprule Code & Plain name / meaning \\ \midrule\endhead
 \bottomrule\endfoot
 \multicolumn{2}{l}{\emph{Systems and versions}} \\
-D$'$, \texttt{SHIP8+MD3+WW5+SL} & the final system (release v1.1.0, \cfgv{config.use_shipped()}) \\
+D$'$, \texttt{SHIP8+MD3+WW5+SL} & the final system (release v1.2.0, \cfgv{config.use_shipped()}) \\
 D & the final system with the scene check read as text \\
 B, \texttt{SHIP8+MD3} & the version before the last three rules (witness rule, scene check, logit reading) \\
 B0, B0r & the September baseline (\cfgv{config.use_scored()}); B0r = B0 re-run in the same job as a candidate \\

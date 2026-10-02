@@ -15,11 +15,12 @@ Scored per sound against human labels, the final system finds 24 of 65 needed of
 in the project proposal do worse: generating a picture directly from the audio for every heard sound (or captioning it)
 costs 3.182, and showing nothing costs 2.955. Both differences are significant on their own (two-sided, uncorrected:
 final system minus direct audio-to-image $-0.773$ per clip, 95\,\% interval $[-1.045, -0.500]$, $p < 0.001$; minus
-showing nothing $-0.545$, $[-1.068, -0.023]$, $p = 0.041$). The gain comes from the on-screen check: it keeps most of the right pictures and removes most of the wrong
-ones.
+showing nothing $-0.545$, $[-1.068, -0.023]$, $p = 0.041$; after a Holm correction over the four comparisons of the
+final system with the two baselines on both sets, $p = 0.082$). The gain comes from the steps that read the video,
+chiefly the on-screen check: they keep most of the right pictures and remove most of the wrong ones.
 
-Two limits remain. About one needed sound in five cannot be found even with perfect decisions, because the detectors
-barely hear it under speech or music; and the vision
+Two limits remain. In a ceiling analysis of an earlier version, about one needed sound in five could not be found even
+with perfect decisions, because the detectors barely hear it under speech or music; and the vision
 model confuses ``the object is in the frame'' with ``the object is making this sound now''. The test set was read after
 each accepted change, so the test numbers are a report on a seen set, and no study with deaf viewers was run.
 \end{abstract}

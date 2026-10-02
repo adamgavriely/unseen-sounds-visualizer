@@ -39,9 +39,9 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 \begin{longtable}{L{0.4cm}L{2.8cm}L{7.9cm}L{3.2cm}}
 \caption{Stage 4 of the final system, step by step.}\label{tab:stage4}\\
 \toprule
-\# & step & rule & variable(s) \\
+\# & Step & Rule & Variable(s) \\
 \midrule\endfirsthead
-\toprule \# & step & rule & variable(s) \\ \midrule\endhead
+\toprule \# & Step & Rule & Variable(s) \\ \midrule\endhead
 \bottomrule\endfoot
 1 & BEATs spans & a span of any class where the window score $\geq 0.175$; kept if $\geq 0.3$\,s long; confidence = peak & \cfgv{AED_THRESHOLD} 0.175, \cfgv{AED_MIN_DUR} 0.3 \\
 2 & FlexSED spans & same extractor on FlexSED frames at bar 0.8, $\geq 0.3$\,s & \cfgv{FLEXSED_BAR} 0.8 \\
@@ -111,10 +111,11 @@ module default and the shipped value.
 
 {\small
 \begin{longtable}{L{5.2cm}L{3.0cm}L{6.4cm}}
+\caption{Configuration values of the final system.}\label{tab:config}\\
 \toprule
-variable & value & meaning \\
+Variable & Value & Meaning \\
 \midrule\endfirsthead
-\toprule variable & value & meaning \\ \midrule\endhead
+\toprule Variable & Value & Meaning \\ \midrule\endhead
 \bottomrule\endfoot
 \cfgv{AED_THRESHOLD} & 0.175 & BEATs extraction bar \\
 \cfgv{AED_MIN_DUR} & 0.5 $\to$ 0.3 & shortest span (s) \\

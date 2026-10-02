@@ -2,7 +2,7 @@
 \section{Reproducibility and sources of the numbers}\label{app:sources}
 \subsection{Reproduction}\label{sec:repro}
 
-\paragraph{Code.} Release v1.1.0 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
+\paragraph{Code.} Release v1.2.0 of the repository. The final system is the configuration \cfgv{config.use_shipped()}
 in \fp{config.py}; in the scoring harness it is the variant \texttt{SHIP8+MD3+WW5+SL} (Appendix~\ref{app:glossary}).
 
 \paragraph{Environment.} Python 3 with PyTorch 2.5.1, transformers 5.16.1, diffusers, faster-whisper, panns-inference,
@@ -57,10 +57,11 @@ final system are also reproduced exactly by the decision-trail export (\fp{docs/
 
 {\small
 \begin{longtable}{L{5.6cm}L{9.0cm}}
+\caption{Source file of every number in the report.}\label{tab:sources}\\
 \toprule
-numbers & file \\
+Numbers & File \\
 \midrule\endfirsthead
-\toprule numbers & file \\ \midrule\endhead
+\toprule Numbers & File \\ \midrule\endhead
 \bottomrule\endfoot
 Table~\ref{tab:sets} (set sizes, needed sounds) & \fp{benchmark/gold/annotations/gold_AG.json}, counted with \fp{benchmark/gold/score_per_sound.py} \\
 labelling rules (Section~\ref{sec:needed}) & \fp{benchmark/gold/tool_template.html}, \fp{tagger/index.html}, \fp{docs/history/plans/metric_per_sound.md} \\
@@ -68,10 +69,12 @@ scoring rules, cost (Section~\ref{sec:task}) & \fp{benchmark/gold/score_per_soun
 bootstrap and pass rules & \fp{benchmark/gold/dev_candidates_check.py}; \fp{benchmark/gold/holm_table.py} \\
 final system and baselines, Table~\ref{tab:headline} & \fp{benchmark/gold/final_vs_baselines.json}; \fp{docs/history/review/detector_final_2026-10-02.md}; \fp{docs/inspector2/data_parity.json} \\
 on-screen weight (Section~\ref{sec:sensitivity}) & derived from Table~\ref{tab:headline}; earlier versions in \fp{benchmark/gold/visible_weight_sweep.md} \\
-fate of misses (Section~\ref{sec:errors}) & \fp{docs/history/review/inspector_trail_ready.md}; \fp{docs/inspector2/data.js} \\
+fate of misses (Section~\ref{sec:errors}, Figure~\ref{fig:errors}) & \fp{docs/inspector2/data.js} (field \cfgv{lost_at}), grouped into bars by \cfgv{LOST_AT_BAR} in \fp{docs/report/figures/make_analysis_figures.py}; \fp{docs/history/review/inspector_trail_ready.md} \\
 Table~\ref{tab:ceiling} (ceiling) & \fp{benchmark/gold/ceiling_ship7.md} \\
 September gate comparison (Appendix~\ref{app:history}) & \fp{benchmark/gold/holm_test_final_v33_test_bench.json} \\
-gate accuracy, failure modes & \fp{docs/history/review/vlm_panel_2026-10-01/f1_audit.md} \\
+gate accuracy, failure modes (31 of 36 wrong silences: 14 of class i, 17 of class ii; 42\,\% ``nothing'') & \fp{docs/history/review/vlm_panel_2026-10-01/f1_audit.md} , sections 4--7 \\
+AudioSet calibration set (1.650 against 0.986) & \fp{docs/history/preregistrations/prereg_round12_v2.md} \\
+AUROC 0.647 of the a/b question read as a score & \fp{benchmark/gold/logit_gate_gold.json}; round 62 in \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\
 listener agreement on the screening set & \fp{docs/history/review/improvements_log_2026-09-30.md}; \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\
 onset timing & \fp{benchmark/eval_dcase_onset.json} \\
 DCASE visibility check & \fp{benchmark/eval_dcase_visibility.json} \\

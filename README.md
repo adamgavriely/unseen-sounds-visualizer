@@ -10,7 +10,7 @@ heard**. No model is trained; the system is a chain of open models joined by rul
 
 **The technical report is [`docs/report/report.pdf`](docs/report/report.pdf).** It describes the system, the
 benchmark, the results, why the problem is hard for today's models, and how to reproduce everything. Code version:
-release **v1.1.0**.
+release **v1.2.0**.
 
 ## Usage
 

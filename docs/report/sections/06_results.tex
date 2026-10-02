@@ -5,11 +5,15 @@
 Section~7 of the project proposal (``Baseline systems'') names the systems the method is compared against. All are run
 on exactly the same clips and scored with exactly the same rules:
 \begin{description}
-  \item[Direct audio-to-image generation] draws a picture for every sound it hears, without looking at the video. It is
-        implemented as the final system with the on-screen check removed: the same detection stack, listeners, display
-        rules and picture model, with every surviving sound drawn. It therefore isolates the contribution the proposal
-        asks about -- reasoning about what the video already shows -- but it is an ablation: its detection rules were
-        chosen for the gated system and were not re-tuned for it. (Published audio-to-image models draw a whole scene
+  \item[Direct audio-to-image generation] draws a picture for every sound it detects, without checking whether the
+        source is on screen. It is implemented as the final system with the on-screen check switched off, together with
+        the steps that depend on it: the vision model's reasoning about what to draw, the transcript context, and the
+        depict-event check (which needs the on-screen check's votes, so it never fires). The detection stack, listeners,
+        display rules and picture model are the same, and every surviving sound is drawn. One step that reads frames
+        stays, because it is part of detection: the scene question of the witness rule. The baseline therefore isolates
+        the contribution the proposal asks about -- reasoning about what the video already shows -- but it is an
+        ablation (the final system with one part switched off): its detection rules were chosen for the gated system and
+        were not re-tuned for it. (Published audio-to-image models draw a whole scene
         from the soundtrack and cannot be scored per sound; Section~\ref{sec:related}.)
   \item[Audio captioning] describes the same sounds in text instead of pictures. Under the per-sound score a caption is
         right or wrong at exactly the same moments as the audio-to-image picture, so it has the same score; the
@@ -43,11 +47,11 @@ and a two-sided $p$-value, uncorrected.}
 \toprule
 Set & System & Hits & Wrong & F1 & Cost & Difference (final $-$ this) [95\,\% CI] & $p$ \\
 \midrule
-Development & Show nothing & 0 / 58 & 0 & -- & 3.268 & $-1.211\ [-1.831, -0.620]$ & $< 0.001$ \\
+Development & Show nothing & 0 / 58 & 0 & 0.00 & 3.268 & $-1.211\ [-1.831, -0.620]$ & $< 0.001$ \\
 (71 clips) & Direct audio-to-image$^{a}$ & 34 / 58 & 39 (20/14/5) & 0.52 & 2.451 & $-0.394\ [-0.789, +0.056]$ & $0.088$ \\
  & \textbf{Final system} & 29 / 58 & 15 (6/7/2) & 0.57 & 2.056 & & \\
 \midrule
-Test & Show nothing & 0 / 65 & 0 & -- & 2.955 & $-0.545\ [-1.068, -0.023]$ & $0.041$ \\
+Test & Show nothing & 0 / 65 & 0 & 0.00 & 2.955 & $-0.545\ [-1.068, -0.023]$ & $0.041$ \\
 (88 clips) & Direct audio-to-image$^{a}$ & 26 / 65 & 62 (16/32/14) & 0.34 & 3.182 & $-0.773\ [-1.045, -0.500]$ & $< 0.001$ \\
  & \textbf{Final system} & 24 / 65 & 24 (4/15/5) & 0.43 & 2.409 & & \\
 \bottomrule
@@ -63,8 +67,10 @@ sound finds 26, but only 30\,\% of its pictures are right, and on the test set i
 ($+0.227$ per clip, $[-0.386, +0.818]$, $p = 0.49$). The final system is cheaper than both: by 0.773 per clip than
 direct audio-to-image generation ($p < 0.001$) and by 0.545 than showing nothing ($p = 0.041$). On the development set
 the direction is the same; the difference from direct audio-to-image is smaller there ($-0.394$, $p = 0.088$), partly
-because direct audio-to-image shows fewer wrong pictures per clip on that set (0.55 against 0.70). F1, which weighs a
-miss and a wrong picture equally, also favours the final system on both sets.
+because direct audio-to-image shows fewer wrong pictures per clip on that set (0.55 against 0.70), and partly because
+the check costs more hits there: the final system has five fewer hits than direct audio-to-image on the development
+set, but only two fewer on the test set. F1, which weighs a miss and a wrong picture equally, is also higher for the
+final system on both sets (0.57 against 0.52, and 0.43 against 0.34); no interval is computed for F1 here.
 
 \subsection{What the statistical tests support}\label{sec:support}
 \begin{description}
@@ -72,7 +78,8 @@ miss and a wrong picture equally, also favours the final system on both sets.
         captioning ($p < 0.001$) and less than showing nothing ($p = 0.041$). On the development set it costs less than
         showing nothing ($p < 0.001$).
   \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.088$).
-  \item[Multiple comparisons.] The four comparisons are reported without correction. With a Holm correction over the
+  \item[Multiple comparisons.] The four comparisons of the final system (two baselines, two sets) are reported without
+        correction. With a Holm correction over the
         two test-set comparisons both stand (adjusted $p < 0.001$ and $p = 0.041$); over all four, the test-set
         difference from showing nothing becomes $p = 0.082$.
   \item[Caveat.] The test set was read after each accepted change during development, so the test numbers are a report
@@ -96,10 +103,12 @@ is cheaper than direct audio-to-image generation for every $\beta$ above 0.2 (te
 \label{fig:beta}
 \end{figure}
 
-The conclusion therefore does not depend on the exact value of $\beta$. Drawing every sound is only preferable if wrong
+On point estimates, the conclusion therefore does not depend on the exact value of $\beta$; but already at
+$\beta = 2$ the interval of the test-set difference from showing nothing comes close to zero, so for a larger $\beta$
+that comparison would not be significant. Drawing every sound is only preferable if wrong
 pictures are almost free ($\beta$ below 0.2 on the test set); the final system beats showing nothing as long as a wrong
 picture is judged less harmful than a missed sound. A second check weighs only on-screen pictures less
-(Eq.~\ref{eq:costw}). With $w = 1$ the final system costs 1.972 (development) and 2.364 (test), against 2.169 and 3.000
+(Equation~\ref{eq:costw}). With $w = 1$ the final system costs 1.972 (development) and 2.364 (test), against 2.169 and 3.000
 for direct audio-to-image; with $w = 0$ it costs 1.887 and 2.318, against 1.887 and 2.818. So if an on-screen picture
 is judged harmless, the two systems tie on the development set, and the final system still wins on the test set.
 
@@ -107,8 +116,9 @@ is judged harmless, the two systems tie on the development set, and the final sy
 Figure~\ref{fig:errors} breaks down the misses and wrong pictures of the final system, from its logged decision trail.
 Most misses are sounds that were heard as candidates and then removed by a later rule -- most often because the
 listeners did not confirm a weak detection. Each of these rules was accepted because, overall, it removed more wrong
-pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector
-(final system, 58 and 65 needed sounds; the ceiling analysis of Section~\ref{sec:ceiling} is on an older run with 55).
+pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
+(These counts are for the final system, with 58 and 65 needed sounds; the ceiling analysis of
+Section~\ref{sec:ceiling} used an older run with 55.)
 Most wrong pictures on the test set show another sound (15 of 24). Section~\ref{sec:hard} explains why these errors are
 hard to remove.
 
@@ -117,6 +127,8 @@ hard to remove.
 \includegraphics[width=\linewidth]{figures/error_breakdown.pdf}
 \caption{Misses of the final system by the step where the sound was lost (left), and wrong pictures by kind (right).
 Vetoes are rules that drop a candidate because another audio model does not hear it; listeners are the audio-language
-models that confirm or add weak sounds.}
+models that confirm or add weak sounds; ``timing, length and grouping'' covers pictures that start too early or late,
+sounds too short to show, and sounds merged into a neighbour. The mapping from logged step to bar is in
+\fp{docs/report/figures/make_analysis_figures.py}.}
 \label{fig:errors}
 \end{figure}

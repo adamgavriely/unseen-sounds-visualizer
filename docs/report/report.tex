@@ -1,5 +1,5 @@
 % Technical report -- Visual Augmentation of Audio Semantics for Accessibility.
-% Final system: git tag detector-frozen-2026-10-02. Main body = final system only; history in Appendix E.
+% Final system: release v1.2.0 (config.use_shipped()). Main body = final system only; history in Appendix E.
 % The 16 Sept (v3) version of this file is in git history (commit 23a8c3a and earlier).
 % Every number is copied from a result file or a dated record in the repository; the source
 % path is given next to it in the text, in a table note, or in Appendix C.
@@ -27,6 +27,9 @@
 \captionsetup{font=small,labelfont=bf}
 \setlist{itemsep=2pt,topsep=3pt}
 \renewcommand{\arraystretch}{1.12}
+\makeatletter
+\setlength{\@fptop}{0pt}\setlength{\@fpsep}{12pt}\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother
 
 \newcommand{\Dp}{D$'$}
 \newcommand{\fp}[1]{\nolinkurl{#1}}   % file path (breaks at / _ .)
@@ -40,7 +43,7 @@
 \author{Adam Gavriely\\
 Bar-Ilan University, Department of Computer Science\\
 MSc final project, submitted to Oren Glickman}
-\date{3 October 2026\\[2pt]\small Code and data: \url{https://github.com/adamgavriely/MscFinalProject}, release v1.1.0}
+\date{3 October 2026\\[2pt]\small Code and data: \url{https://github.com/adamgavriely/MscFinalProject}, release v1.2.0}
 
 \hypersetup{pdftitle={Visual Augmentation of Audio Semantics for Accessibility},pdfauthor={Adam Gavriely}}
 \begin{document}
@@ -68,9 +71,11 @@ MSc final project, submitted to Oren Glickman}
 \input{sections/bib}
 
 \appendix
-\input{sections/A_prompts}
-\input{sections/B_config}
-\input{sections/C_sources}
-\input{sections/D_glossary}
-\input{sections/E_history}
+\sloppy   % long file paths in the appendices
+\addtocontents{toc}{\protect\setcounter{tocdepth}{1}}
+\clearpage\input{sections/A_prompts}
+\clearpage\input{sections/B_config}
+\clearpage\input{sections/C_sources}
+\clearpage\input{sections/D_glossary}
+\clearpage\input{sections/E_history}
 \end{document}

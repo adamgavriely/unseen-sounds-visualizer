@@ -78,23 +78,64 @@ chain = [("Sept.\nbaseline", 3.690, 2.909), ("listener\nrescue", 3.070, 2.818), 
 # few answers, and one cut-off answer happened to remove a wrong picture. The final system reads the same question
 # from the model's yes/no scores, which cannot be cut off; its honest numbers are the last point. The text-read
 # point is not a real step and is not plotted (see the history appendix).
-fig, ax = plt.subplots(figsize=(9.2, 3.4))
+fig, ax = plt.subplots(figsize=(9.2, 4.0))
 x = range(len(chain))
 ax.plot(x, [c[1] for c in chain], "o-", color=DARK, label="development set (decisions made here)")
 ax.plot(x, [c[2] for c in chain], "s-", color=RED, label="test set (read after each change)")
 ax.axhline(3.268, color=DARK, ls=":", lw=1); ax.axhline(2.955, color=RED, ls=":", lw=1)
 ax.text(len(chain) - 0.6, 3.29, "show nothing (dev.)", ha="right", fontsize=7.5, color=DARK)
 ax.text(len(chain) - 0.6, 2.975, "show nothing (test)", ha="right", fontsize=7.5, color=RED)
-ax.set_xticks(list(x)); ax.set_xticklabels([c[0] for c in chain], fontsize=7)
+ax.set_xticks(list(x)); ax.set_xticklabels([c[0].replace("\n", " ") for c in chain], fontsize=8.5, rotation=35, ha="right")
 ax.set_ylabel("cost per clip"); ax.legend(frameon=False, fontsize=8, loc="lower left")
 ax.spines[["top", "right"]].set_visible(False)
 save(fig, "progression.pdf")
 
 # 4. Error breakdown of the final system -- docs/inspector2/data.js (lost_at of each miss; verdict of each picture)
-miss = {"DEV": {"never heard": 6, "listeners and their filters": 10, "on-screen check": 5, "vetoes": 3,
-                "timing and grouping": 5},
-        "TEST": {"never heard": 6, "listeners and their filters": 12, "on-screen check": 3, "vetoes": 10,
-                 "timing and grouping": 10}}
+# Each logged step where a needed sound was lost (its "lost_at" value) is put in one bar:
+LOST_AT_BAR = {
+    "never_heard": "never heard",
+    # listeners and the filters on their answers
+    "band_rescue": "listeners and their filters", "dasm_vote": "listeners and their filters",
+    "dasm_rescue": "listeners and their filters", "rescue_once": "listeners and their filters",
+    "scene_margin": "listeners and their filters", "k4a_inventory": "listeners and their filters",
+    "dasm_local_veto": "listeners and their filters",
+    "gate": "on-screen check",
+    # vetoes: another audio model does not hear the candidate
+    "mirror_veto": "vetoes", "masked_weak": "vetoes", "finelap_veto": "vetoes", "continuation_veto": "vetoes",
+    # timing, length and grouping: picture outside the onset window, too short, or merged into a neighbour
+    "scorer": "timing, length and grouping", "family_merge": "timing, length and grouping",
+    "group": "timing, length and grouping", "beats_extract": "timing, length and grouping",
+}
+BARS = ["never heard", "listeners and their filters", "on-screen check", "vetoes", "timing, length and grouping"]
+
+
+def miss_counts(path=os.path.join(OUT, "..", "..", "inspector2", "data.js")):
+    """Recount the misses per bar from the decision trail (falls back to the stored counts if it is absent)."""
+    stored = {"DEV": [6, 10, 5, 3, 5], "TEST": [6, 12, 3, 10, 10]}
+    if not os.path.exists(path):
+        return {sp: dict(zip(BARS, v)) for sp, v in stored.items()}
+    import json
+    s = open(path, encoding="utf-8").read()
+    d = json.loads(s[s.index("{"):s.rstrip().rstrip(";").rindex("}") + 1])
+    out = {sp: dict.fromkeys(BARS, 0) for sp in ("DEV", "TEST")}
+
+    def walk(x, sp):
+        if isinstance(x, dict):
+            if x.get("lost_at"):
+                out[sp][LOST_AT_BAR[x["lost_at"]]] += 1
+            for v in x.values():
+                walk(v, sp)
+        elif isinstance(x, list):
+            for v in x:
+                walk(v, sp)
+    for c in d["clips"]:
+        walk(c["gold"], c["split"])
+    for sp in out:
+        assert list(out[sp].values()) == stored[sp], (sp, out[sp])
+    return out
+
+
+miss = miss_counts()
 wrong = {"DEV": {"other sound": 7, "on screen": 6, "nothing": 2}, "TEST": {"other sound": 15, "on screen": 4, "nothing": 5}}
 cols_m = ["#555555", "#2a6f97", "#e07a5f", "#9ec5dd", "#c9b18a"]
 cols_w = ["#e07a5f", "#9ec5dd", "#555555"]

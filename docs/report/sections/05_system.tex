@@ -12,7 +12,9 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
         for at least 0.3\,s becomes a candidate with a start and an end.
   \item \textbf{Check candidates.} A candidate heard by only one detector, or heard weakly, is treated as doubtful.
         Doubtful candidates get second opinions from two listeners (Qwen3-Omni and Audio Flamingo Next) and a third audio
-        model, the Detect Any Sound Model (DASM).
+        model, the Detect Any Sound Model (DASM). Two kinds of rule act on them. A \emph{veto} drops a candidate when
+        another audio model does not hear it: PANNs (a second AudioSet tagger) or FineLAP (a model that matches a
+        sound name to each short piece of audio). A \emph{rescue} keeps a weak candidate because a listener names it.
   \item \textbf{Witness rule.} A remaining weak candidate survives if one of three witnesses backs it: DASM clearly
         hears it at that time; or both listeners list it; or one listener lists it and the vision model says the sound
         fits the scene.
@@ -29,11 +31,11 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
 
 \begin{figure}[tbp]
 \centering
-\resizebox{\linewidth}{!}{%
+\resizebox{\linewidth}{!}{%
 \begin{tikzpicture}[
-  node distance=4mm and 6mm,
-  box/.style={draw, rounded corners=2pt, align=center, font=\scriptsize, minimum height=8mm, text width=2.5cm, fill=white},
-  model/.style={font=\tiny\itshape, text=gray!70!black, align=center},
+  node distance=5mm and 6mm,
+  box/.style={draw, rounded corners=2pt, align=center, font=\footnotesize, minimum height=8mm, text width=2.5cm, fill=white},
+  model/.style={font=\scriptsize\itshape, text=gray!70!black, align=center},
   arr/.style={-{Stealth[length=2mm]}, thick}]
 \node[box, fill=gray!10] (in) {video (mp4)};
 \node[box, right=of in] (s1) {1 audio\\16 kHz mono};
@@ -46,7 +48,7 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
 \node[box, below=of s5, text width=2.9cm, fill=orange!8] (s5b) {5b kinship, subject\\(what to draw)};
 \node[box, below=of s5b, text width=2.9cm, fill=green!7] (s6) {6 picture + check\\(up to 5 tries)};
 \node[box, below=of s6, text width=2.9cm, fill=green!7] (s6b) {6b display: merge,\\group, depict-event};
-\node[box, left=of s6b, text width=3.0cm, fill=gray!10] (out) {7 side-by-side video};
+\node[box, below=of s6b, text width=2.9cm, fill=gray!10] (out) {7 side-by-side video};
 \draw[arr] (in) -- (s1);
 \draw[arr] (in) -- (s2);
 \draw[arr] (s1) -- (s3);
@@ -61,10 +63,10 @@ Figure~\ref{fig:pipeline} shows the data flow and Figure~\ref{fig:example} an ou
 \draw[arr] (s6b) -- (out);
 \draw[arr, dashed, gray] (s2.south) |- ++(0,-4mm) -| (s5b.south west);
 \draw[arr, dashed, gray] (s3.east) -- (s4b.west);
-\node[model, below=0.5mm of s4c] {BEATs, FlexSED, PANNs, DASM,\\Qwen3-Omni, Audio Flamingo Next, FineLAP};
+\node[model, below=1mm of s4c, text width=3.6cm] {BEATs, FlexSED, PANNs, DASM, Qwen3-Omni, Audio Flamingo Next, FineLAP};
 \node[model, above=0.5mm of s5] {Qwen3.8-27B};
-\node[model, right=0.5mm of s6, text width=1.6cm] {Qwen-Image-2512 + Qwen3.8 + EasyOCR};
-\node[model, right=0.5mm of s6b, text width=1.6cm] {Qwen3-Omni (group), Qwen3.8 (depict)};
+\node[model, right=1mm of s6, text width=, align=left] {Qwen-Image-2512,\\Qwen3.8,\\EasyOCR};
+\node[model, right=1mm of s6b, text width=, align=left] {Qwen3-Omni (group),\\Qwen3.8 (depict)};
 \end{tikzpicture}}
 \caption{The final pipeline. Blue: detection (stage 4); orange: the on-screen decision (stage 5); green: pictures and
 display. Dashed: context only (objects and transcript never decide on their own). The scene check of the witness
@@ -85,13 +87,14 @@ scoring this is a hit.}
 \end{figure}
 
 \subsection{Models at a glance}
+Table~\ref{tab:stages} lists the model and the main settings of every stage.
 \begin{table}[htbp]
 \centering\small
-\caption{Stages, models and key parameters of the final system .}
+\caption{Stages, models and key parameters of the final system.}
 \label{tab:stages}
 \begin{tabular}{L{0.4cm}L{2.4cm}L{5.0cm}L{6.4cm}}
 \toprule
-\# & stage & model / tool & key parameters \\
+\# & Stage & Model / tool & Key parameters \\
 \midrule
 1 & audio & ffmpeg & mono WAV, 16\,kHz (\cfgv{SAMPLE_RATE}) \\
 2 & frames, objects & OWLv2 (\fp{owlv2-base-patch16-ensemble}) & 6 frames, threshold 0.20; context only, never silences a sound \\
@@ -138,7 +141,7 @@ qualifier words to the source's name, word lists remove people and places, and a
 \emph{bark} becomes a barking dog). A fixed tail asks for one large subject on a plain white background. Qwen-Image-2512
 draws it at 1024$\times$1024; the vision model then gets a multiple-choice question about what the picture shows, and
 a picture that fails (or contains text) is redrawn, up to five times. In a blind test, the author saw each picture for a
-moment and named the sound without being shown the label; Qwen-Image pictures were named right 26 of 54 times,
+moment and named the sound without being shown the label (one test, by the author only); Qwen-Image pictures were named right 26 of 54 times,
 against 14 of 54 for the earlier FLUX.1 pictures (difference $+0.22$, 95\,\% interval $[+0.07, +0.37]$).
 On screen, repeats of one sound less than 2.5\,s apart become one appearance, every picture stays at least 1.5\,s and
 at most 1\,s after its sound ends, and at most three pictures are shown at once.
