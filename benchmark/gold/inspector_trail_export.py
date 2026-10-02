@@ -35,7 +35,14 @@ from benchmark.gold import score_per_sound as S              # noqa: E402
 
 _REAL_LOAD_GOLD = S.load_gold                                 # before any harness module installs its gold stub
 GOLD_FILE = _ROOT / "benchmark" / "gold" / "annotations" / "gold_AG.json"
-GOLD_ALL = _REAL_LOAD_GOLD([GOLD_FILE]) if __name__ == "__main__" else {}
+GOLD_ALL: dict = {}
+
+
+def load_gold_all():
+    """the one gold file (old DEV / old TEST / tagger parts), read with the real loader"""
+    if not GOLD_ALL:
+        GOLD_ALL.update(_REAL_LOAD_GOLD([GOLD_FILE]))
+    return GOLD_ALL
 from benchmark.gold.inspector_data import classify          # noqa: E402
 from src import trail as TRAIL_LOG                           # noqa: E402
 
@@ -298,6 +305,7 @@ def lost(g, near, pics, sidx, order):
 def parts(arm):
     """(split, part, arm folder parent, stems) in the order merged_dev.py / test_vs_ship8.py read them"""
     from benchmark.gold import dev_candidates_check as DCC
+    load_gold_all()
     subsets = S.subsets_of(GOLD_ALL)
     out = [("DEV", "dev", Path(os.environ.get("TRAIL_DEV_ROOT") or (DCC.WORK / "r13")), sorted(subsets["dev"]))]
     from benchmark.gold import tagger_prep as TP           # (installs its gold stub; GOLD_ALL is already read)
