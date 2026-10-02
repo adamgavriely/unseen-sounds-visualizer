@@ -85,7 +85,7 @@ final system on both sets (0.57 against 0.52, and 0.43 against 0.34); no interva
         correction. They form the family because they carry the report's claims; the two tests of one baseline against
         the other are descriptive. With a Holm correction over the
         two test-set comparisons both stand (adjusted $p < 0.001$ and $p = 0.041$); over all four, the test-set
-        difference from showing nothing becomes $p = 0.082$.
+        difference from showing nothing becomes $p = 0.083$.
   \item[Caveat.] The test set was read after each accepted change during development, so the test numbers are a report
         on a seen set rather than a blind confirmation (Section~\ref{sec:limits}).
 \end{description}
@@ -118,8 +118,9 @@ is judged harmless, the two systems tie on the development set, and the final sy
 
 \subsection{Where the errors come from}\label{sec:errors}
 Figure~\ref{fig:errors} breaks down the misses and wrong pictures of the final system, from its logged decision trail.
-Most misses are sounds that were heard as candidates and then removed by a later rule -- most often because the
-listeners did not confirm a weak detection. Each of these rules was accepted because, overall, it removed more wrong
+Most misses are sounds that were heard as candidates and then removed by a later rule -- on the development set most often because
+the listeners did not confirm a weak detection; on the test set listeners, vetoes and timing account for about equal
+shares. Each of these rules was accepted because, overall, it removed more wrong
 pictures than real ones; the sounds it removes are the price. Six needed sounds in each set were heard by no detector.
 (These counts are for the final system, with 58 and 65 needed sounds; the ceiling analysis of
 Section~\ref{sec:ceiling} used an older run with 55.)
@@ -130,7 +131,8 @@ hard to remove.
 \centering
 \includegraphics[width=\linewidth]{figures/error_breakdown.pdf}
 \caption{Misses of the final system by the step where the sound was lost (left), and wrong pictures by kind (right).
-Vetoes are rules that drop a candidate because another audio model does not hear it; listeners are the audio-language
+Vetoes are rules that drop a candidate because another audio model does not hear it, or because it is a later piece
+of a sound already going on (the continuation veto); listeners are the audio-language
 models that confirm or add weak sounds; ``timing, length and grouping'' covers pictures that start too early or late,
 sounds too short to show, and sounds merged into a neighbour. The mapping from logged step to bar is in
 \fp{docs/report/figures/make_analysis_figures.py}.}

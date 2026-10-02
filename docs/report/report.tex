@@ -23,6 +23,7 @@
 \usepackage[hidelinks]{hyperref}
 \expandafter\def\expandafter\UrlBreaks\expandafter{\UrlBreaks\do\_\do\-}
 \usepackage{caption}
+\usepackage[titles]{tocloft}
 \usepackage[section]{placeins}
 \captionsetup{font=small,labelfont=bf}
 \setlist{itemsep=2pt,topsep=3pt}
@@ -53,7 +54,7 @@ MSc final project, submitted to Oren Glickman}
 
 \input{sections/00_abstract}
 \clearpage
-{\small\tableofcontents}
+{\small\setlength{\cftbeforesecskip}{0.5em}\tableofcontents}
 \clearpage
 
 \input{sections/01_intro}

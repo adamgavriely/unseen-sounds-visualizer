@@ -55,8 +55,10 @@ Every number in the main body comes from one of the files below (paths relative 
 final system are also reproduced exactly by the decision-trail export (\fp{docs/inspector2/data_parity.json},
 \texttt{"exact": true}).
 
-{\small
-\begin{longtable}{L{5.6cm}L{9.0cm}}
+The configuration of Appendix~\ref{app:config} is \fp{config.py} (\cfgv{use_shipped()}); the development history of Appendix~\ref{app:history} is in \fp{docs/history/} (pre-registrations, panels, daily notes, reviews).
+
+{\footnotesize
+\begin{longtable}{L{4.6cm}L{10.2cm}}
 \caption{Source file of every number in the report.}\label{tab:sources}\\
 \toprule
 Numbers & File \\
@@ -79,10 +81,14 @@ listener agreement on the screening set & \fp{docs/history/review/improvements_l
 onset timing & \fp{benchmark/eval_dcase_onset.json} \\
 DCASE visibility check & \fp{benchmark/eval_dcase_visibility.json} \\
 picture glance test & \fp{docs/history/preregistrations/picture_v3_prereg.md} \\
+speech removal on DCASE data (9.5\,\% to 4.8\,\%) & \fp{docs/history/daily_notes/LEDGER_2026-09-26.md}; \fp{docs/history/panels/fable_briefs/2026-09-16_ten_fable_panel_addendum.md} \\
+earlier label agreement (78\,\%, $\kappa = 0.60$) & \fp{docs/history/daily_notes/HANDOFF_2026-09-08.md}; \fp{docs/history/earlier_drafts/thesis/ch4_benchmark.md} \\
+gate balanced accuracy 0.61 to 0.62 & \fp{docs/history/analyses/GOLD_RERUN_2026-09-22.md} \\
+independent reference at chance (55 of 100) & \fp{docs/history/daily_notes/night_report_2026-09-14.md} \\
+letter bias (a) 88\,\% & round 54 in \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\
+CLIP gate about half right & Table~\ref{tab:eras} (49.3\,\%) \\
 picture check validation & \fp{docs/history/preregistrations/freeze_picture_setup_2026-09-25.md} \\
 label re-checks, missing-sound checks & \fp{docs/history/preregistrations/prereg_round13_detector_push.md} \\
 test-set reads (Section~\ref{sec:disclosures}) & \fp{docs/history/preregistrations/prereg_round13_detector_push.md}; \fp{docs/history/earlier_drafts/thesis/ch5_results.md} \\
-configuration (Appendix~\ref{app:config}) & \fp{config.py} (\cfgv{use_shipped()}) \\
-development history (Appendix~\ref{app:history}) & \fp{docs/history/} (preregistrations, panels, daily notes, review) \\
 \end{longtable}
 }

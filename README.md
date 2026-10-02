@@ -48,7 +48,7 @@ proposal.
 
 On the test set the final system is significantly cheaper than direct audio-to-image generation
 (−0.773 per clip, 95 % interval [−1.045, −0.500], p < 0.001) and than showing nothing (−0.545, [−1.068, −0.023],
-p = 0.041; p = 0.082 after a Holm correction over the four comparisons of the final system). The test set was read after each accepted change, so it is a report on a seen set; see Section 9 of the
+p = 0.041; p = 0.083 after a Holm correction over the four comparisons of the final system). The test set was read after each accepted change, so it is a report on a seen set; see Section 9 of the
 report.
 
 ## Repository layout
