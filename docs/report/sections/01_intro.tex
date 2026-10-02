@@ -47,16 +47,17 @@ From the project proposal (6 August 2026); Section~\ref{sec:conclusion} answers 
 \end{enumerate}
 
 \paragraph{Results in brief.} On a test set of 88 clips the final system finds 24 of the 65 sounds a deaf viewer would
-need, and half of its 48 pictures are right. Its cost to a viewer (a miss costs 4, a wrong picture 2) is 2.409 per
-clip, significantly lower than showing nothing (2.955, $p = 0.047$) and lower than the September version of the system
-(2.909). The on-screen check is what makes the difference: it removes about half a wrong picture per clip
-($p < 0.001$). Most remaining misses are sounds the detectors barely hear under speech or music; most remaining wrong
-pictures show another sound, or an object that is visible but is not the one making the sound.
+need, and half of its 48 pictures are right. Its cost to a viewer (a miss costs 4, a wrong picture 2) is 2.409 per clip.
+The baselines of the project proposal do worse: drawing a picture for every heard sound without looking at the video
+(direct audio-to-image generation, or audio captioning) costs 3.182, because only 30\,\% of its pictures are right, and
+showing nothing costs 2.955. Both differences are significant ($p < 0.001$ and $p = 0.041$). Most remaining misses are
+sounds the detectors barely hear under speech or music; most remaining wrong pictures show another sound, or an object
+that is visible but is not the one making the sound.
 
 \paragraph{How the report is organised.} Sections~\ref{sec:task}--\ref{sec:system} define the task, the data and
 the system; Section~\ref{sec:results} gives the results, Section~\ref{sec:hard} explains why the problem is hard for today's
 models and Section~\ref{sec:analysis} analyses the remaining errors;
 Section~\ref{sec:limits} lists every threat to validity and the limits. The appendices hold the prompts, the detection
 details and configuration, reproduction steps with the source of every number, a glossary of internal names, and the
-full development history. The code, labels and report sources are published as release v1.0.0 of the project repository
+full development history. The code, labels and report sources are published as release v1.1.0 of the project repository
 (Section~\ref{sec:availability}).

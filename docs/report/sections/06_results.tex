@@ -1,90 +1,74 @@
 % ======================================================================
 \section{Results}\label{sec:results}
 
-\subsection{Main result}\label{sec:headline}
-Figure~\ref{fig:results} and Table~\ref{tab:headline} compare the final system with the September baseline and with
-showing nothing. All counts are raw scorer output; Appendix~\ref{app:sources} gives the file behind each number.
+\subsection{Baselines}\label{sec:baselines}
+The project proposal (Section 7, ``Baseline systems'') names the systems the method is compared against. All are run
+on exactly the same clips and scored with exactly the same rules:
+\begin{description}
+  \item[Direct audio-to-image generation] generates a picture for every sound it hears, without looking at the video.
+        It uses the same detector and the same picture model as the final system, so the only difference is the
+        on-screen check and the display rules that depend on it. This isolates the contribution the proposal asks
+        about: reasoning about what the video already shows. (Published audio-to-image models draw a whole scene from the
+        soundtrack and cannot be scored per sound; Section~\ref{sec:related}.)
+  \item[Audio captioning] describes the same sounds in text instead of pictures. Under the per-sound score a caption is
+        right or wrong at exactly the same moments as the audio-to-image picture, so it has the same score; the
+        difference between text and pictures can only be measured with viewers (Section~\ref{sec:limits}).
+  \item[Show nothing] no augmentation at all: the situation of a viewer with subtitles only.
+\end{description}
+The supervisor also suggested a generator conditioned on the video and audio that would ``generate what is not seen''
+(for example MiniMax-H3). It produces whole new video, which the per-sound score cannot evaluate, so it was not run as a
+baseline (Section~\ref{sec:limits}).
 
+\subsection{Main result}\label{sec:headline}
 \begin{figure}[h]
 \centering
 \includegraphics[width=\linewidth]{figures/results_bars.pdf}
 \caption{Hits (right pictures of needed sounds) and wrong pictures for each system, with the cost per clip above each
-group (lower is better). The final system finds more needed sounds than the September baseline and shows far fewer
-wrong pictures.}
+group (lower is better). Drawing every heard sound finds a few more needed sounds but shows two to three times as many
+wrong pictures; the final system keeps most of the hits and removes most of the wrong pictures.}
 \label{fig:results}
 \end{figure}
 
 \begin{table}[h]
 \centering\small
-\caption{Main result. Wrong pictures are split into on screen / other sound / nothing. The last column is the
-difference in cost per clip from showing nothing, with a 95\,\% interval from a paired clip bootstrap (10{,}000 draws,
-two-sided $p$).}
+\caption{Main result. Wrong pictures are split into on screen / other sound / nothing. Differences are in cost per clip,
+with a 95\,\% interval from a paired clip bootstrap (10{,}000 draws) and a two-sided $p$-value.}
 \label{tab:headline}
 \resizebox{\linewidth}{!}{%
-\begin{tabular}{llrrrl}
+\begin{tabular}{llrrrll}
 \toprule
-Set & System & Hits & Wrong & Cost & Difference from show nothing \\
+Set & System & Hits & Wrong & Cost & Final system minus this & \\
 \midrule
-development & show nothing & 0 / 58 & 0 & 3.268 & \\
-(71 clips) & September baseline$^{a}$ & 18 / 58 & 51 (5/37/9) & 3.690 & $+0.423$ (worse) \\
- & \textbf{final system} & 29 / 58 & 15 (6/7/2) & 2.056 & $-1.211\ [-1.831, -0.620]$, $p < 0.001$ \\
+Development & show nothing & 0 / 58 & 0 & 3.268 & $-1.211\ [-1.831, -0.620]$ & $p < 0.001$ \\
+(71 clips) & direct audio-to-image$^{a}$ & 34 / 58 & 39 (20/14/5) & 2.451 & $-0.394\ [-0.789, +0.056]$ & $p = 0.088$ \\
+ & \textbf{final system} & 29 / 58 & 15 (6/7/2) & 2.056 & & \\
 \midrule
-test & show nothing & 0 / 65 & 0 & 2.955 & \\
-(88 clips) & September baseline$^{a}$ & 21 / 65 & 40 (2/31/7) & 2.909 & $-0.045$ \\
- & \textbf{final system} & 24 / 65 & 24 (4/15/5) & 2.409 & $-0.545\ [-1.091, -0.023]$, $p = 0.047$ \\
+Test & show nothing & 0 / 65 & 0 & 2.955 & $-0.545\ [-1.068, -0.023]$ & $p = 0.041$ \\
+(88 clips) & direct audio-to-image$^{a}$ & 26 / 65 & 62 (16/32/14) & 3.182 & $-0.773\ [-1.045, -0.500]$ & $p < 0.001$ \\
+ & \textbf{final system} & 24 / 65 & 24 (4/15/5) & 2.409 & & \\
 \bottomrule
 \end{tabular}}
 
 \smallskip
-\footnotesize $^{a}$ Scored with a 2.0-s repeat merge (the final system uses 2.5\,s); with a 3.0-s merge the baseline
-costs 3.521 (development) and 2.795 (test).
+\footnotesize $^{a}$ Audio captioning has the same score (same decisions, shown as text).
 \end{table}
 
-On the test set the final system finds 37\,\% of the needed sounds and half of its pictures are right; on the
-development set the numbers are 50\,\% and two thirds. The September baseline was worse than showing nothing on the
-development set and about equal to it on the test set. The final system is significantly better than showing nothing on
-both.
+On the test set the final system finds 24 of 65 needed sounds and half of its pictures are right. Drawing every heard
+sound finds 26, but only 30\,\% of its pictures are right, and on the test set it is no better than showing nothing
+($+0.227$ per clip, $[-0.386, +0.818]$, $p = 0.49$). The final system is significantly cheaper than both: by 0.773 per
+clip against direct audio-to-image generation ($p < 0.001$) and by 0.545 against showing nothing ($p = 0.041$). On the
+development set the direction is the same; the difference from direct audio-to-image is smaller there ($-0.394$,
+$p = 0.088$) because the detector heard more of the needed sounds on that set.
 
 \subsection{What the statistical tests support}\label{sec:support}
 \begin{description}
-  \item[Tested and significant.] The final system costs less than showing nothing, on the development set
-        ($p < 0.001$) and on the test set ($p = 0.047$, two-sided). The on-screen check removes wrong pictures
-        (Table~\ref{tab:sept}, $p < 0.001$ after Holm correction).
-  \item[Supported indirectly.] The final system costs less than the September baseline. The direct paired test was not
-        run, because the baseline's per-clip results are stored on the computing cluster; but an intermediate version of
-        the final system was already significantly cheaper than the baseline ($-0.341$ per clip, 95\,\% interval
-        $[-0.636, -0.045]$, $p = 0.03$ two-sided), and the final system is cheaper than that version on both sets.
-  \item[Descriptive only.] The development numbers, because many variants were chosen on that set; and the test numbers
-        as a blind estimate, because the test set was read after each accepted change (Section~\ref{sec:limits}).
+  \item[Tested and significant.] On the test set the final system costs less than direct audio-to-image generation and
+        audio captioning ($p < 0.001$) and less than showing nothing ($p = 0.041$). On the development set it costs less
+        than showing nothing ($p < 0.001$).
+  \item[Not significant.] On the development set, the difference from direct audio-to-image generation ($p = 0.088$).
+  \item[Caveat.] The test set was read after each accepted change during development, so the test numbers are a report
+        on a seen set rather than a blind confirmation (Section~\ref{sec:limits}).
 \end{description}
-
-\subsection{Value of the on-screen check}\label{sec:sept-table}
-The on-screen check (the gate) is the central idea of the system: draw a sound only if its source is not visible.
-Its value was measured directly on the September test set (60 clips, the baseline's detector, the same gate model and
-rule) by comparing the system with and without the gate. The system without the gate stands in for audio-to-image
-approaches, which draw every sound they hear.
-
-\begin{table}[h]
-\centering\small
-\caption{With minus without the on-screen check (September test set, 60 clips). Two-sided $p$ with Holm correction.}
-\label{tab:sept}
-\begin{tabular}{lrrl}
-\toprule
-Measure & Difference & 95\,\% interval & Holm $p$ \\
-\midrule
-Wrong pictures per clip & $-0.517$ & $[-0.800,\ -0.283]$ & $<0.001$ \\
-Viewer cost per clip & $-0.833$ & & $0.012$ \\
-Precision (share of pictures that are right) & $+0.137$ & & $0.010$ \\
-Clips handled perfectly & $+0.219$ & & $0.006$ \\
-F1 (counts a miss and a wrong picture the same) & $+0.059$ & $[-0.030,\ +0.144]$ & $0.18$ (not significant) \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The gate removes about half a wrong picture per clip and loses little. F1 does not move, because what the gate gains
-lies almost entirely in the pictures it does \emph{not} show. On clips whose sound is off screen, the gated system was
-also far cheaper than showing nothing ($-3.077$ per clip, $p < 0.001$). The comparison was not repeated with the final
-detector.
 
 \subsection{Sensitivity to the cost of a wrong picture}\label{sec:sensitivity}
 The weight of a wrong picture relative to a missed sound ($\beta$) is the one number in the metric that only deaf and
@@ -96,32 +80,18 @@ $\beta = 2$. Figure~\ref{fig:beta} shows how the conclusions change if $\beta$ i
 \includegraphics[width=\linewidth]{figures/beta_sensitivity.pdf}
 \caption{Cost per clip as the cost of a wrong picture ($\beta$) varies, with a missed sound fixed at 4. Dots mark where a
 system breaks even with showing nothing. On the test set the final system is cheaper than showing nothing for every
-$\beta < 4.0$, that is, until a wrong picture hurts as much as a missed sound (on the development set until
-$\beta = 7.7$, off the chart). The September baseline breaks even already at $\beta = 2.1$ (test) and $1.4$ (development).
-The final system is cheaper than the baseline at every $\beta$, because it has both fewer misses and fewer wrong
-pictures.}
+$\beta < 4.0$, i.e.\ until a wrong picture hurts as much as a missed sound (on the development set until $\beta = 7.7$,
+off the chart). Direct audio-to-image generation breaks even already at $\beta = 1.7$ (test) and $3.5$ (development).
+The final system is cheaper than direct audio-to-image generation for every $\beta$ above 0.2 (test) or 0.8
+(development).}
 \label{fig:beta}
 \end{figure}
 
-The result therefore does not depend on the exact value of $\beta$: as long as viewers judge a wrong picture to be less
-harmful than a missed sound, the final system is better than showing nothing, and it is better than the September
-baseline for any weight. A second sensitivity check weighs only on-screen pictures less (Eq.~\ref{eq:costw}): with $w=1$
-or $w=0$ the final system costs 1.972 or 1.887 (development) and 2.364 or 2.318 (test), and every accepted change lowered
-the cost at every such weight.
-
-\subsection{How the system improved during development}\label{sec:progression}
-Figure~\ref{fig:progression} shows the cost after each accepted change, from the September baseline to the final system
-(the changes are described in Appendix~\ref{app:history}). The development cost fell by 1.634 per clip; the test cost by
-0.500. The gap is expected: changes were chosen on the development set, so part of each development gain is selection
-luck, and the test numbers are the better estimate for new videos.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=\linewidth]{figures/progression.pdf}
-\caption{Cost per clip after each accepted change. Decisions were made on the development set; the test set was read
-after each change and only reported. Dotted lines: showing nothing.}
-\label{fig:progression}
-\end{figure}
+The conclusion therefore does not depend on the exact value of $\beta$. Drawing every sound is only preferable if wrong
+pictures are almost free ($\beta$ below 0.2 on the test set); the final system beats showing nothing as long as a wrong
+picture is judged less harmful than a missed sound. A second check weighs only on-screen pictures less
+(Eq.~\ref{eq:costw}): with $w = 1$ or $w = 0$ the final system costs 1.972 or 1.887 (development) and 2.364 or 2.318
+(test).
 
 \subsection{Where the errors come from}\label{sec:errors}
 Figure~\ref{fig:errors} breaks down the misses and wrong pictures of the final system, from its logged decision trail.

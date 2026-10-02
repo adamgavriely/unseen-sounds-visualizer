@@ -10,11 +10,12 @@ vision--language model checks whether the source is visible on screen, and a tex
 picture. Every rule that joins them was fixed on a development set before it was tested.
 
 Scored per sound against human labels, the final system finds 24 of 65 needed off-screen sounds on a test set of
-88 clips with 24 wrong pictures, a viewer cost of 2.41 per clip (a miss costs 4, a wrong picture 2). This is
-significantly cheaper than showing nothing (2.96; difference $-0.55$, 95\,\% interval $[-1.09, -0.02]$, $p = 0.047$)
-and cheaper than the September version of the system (2.91), which on the development set was worse than showing
-nothing. The on-screen check is the reason: on the September test set it removed about half a wrong picture per clip
-compared with drawing every sound ($p < 0.001$, Holm-corrected).
+88 clips with 24 wrong pictures, a viewer cost of 2.41 per clip (a miss costs 4, a wrong picture 2). The baselines named
+in the project proposal do worse: generating a picture directly from the audio for every heard sound (or captioning it)
+costs 3.18, and showing nothing costs 2.96. The differences are significant (final system minus direct audio-to-image
+$-0.77$ per clip, 95\,\% interval $[-1.05, -0.50]$, $p < 0.001$; minus showing nothing $-0.55$, $[-1.07, -0.02]$,
+$p = 0.041$). The gain comes from the on-screen check: it keeps most of the right pictures and removes most of the wrong
+ones.
 
 Two limits remain. About one needed sound in five cannot be found even with perfect decisions, because the detectors
 barely hear it under speech or music; and the vision

@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 
 DATA = {  # system: (hits, wrong, cost) per set
     "development set (71 clips, 58 needed sounds)": {"needed": 58, "rows": [
-        ("show\nnothing", 0, 0, 3.268), ("September\nbaseline", 18, 51, 3.690), ("final\nsystem", 29, 15, 2.056)]},
+        ("show\nnothing", 0, 0, 3.268), ("direct\naudio-to-image", 34, 39, 2.451), ("final\nsystem", 29, 15, 2.056)]},
     "test set (88 clips, 65 needed sounds)": {"needed": 65, "rows": [
-        ("show\nnothing", 0, 0, 2.955), ("September\nbaseline", 21, 40, 2.909), ("final\nsystem", 24, 24, 2.409)]},
+        ("show\nnothing", 0, 0, 2.955), ("direct\naudio-to-image", 26, 62, 3.182), ("final\nsystem", 24, 24, 2.409)]},
 }
 HIT, WRONG, INK = "#2a6f97", "#e07a5f", "#333333"
 fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.4), sharey=True)

@@ -9,18 +9,18 @@ import matplotlib.pyplot as plt
 
 SETS = {
     "development set (71 clips)": {"clips": 71, "needed": 58,
-        "final system": (29, 15), "September baseline": (18, 51)},
+        "final system": (29, 15), "direct audio-to-image": (34, 39)},
     "test set (88 clips)": {"clips": 88, "needed": 65,
-        "final system": (24, 24), "September baseline": (21, 40)},
+        "final system": (24, 24), "direct audio-to-image": (26, 62)},
 }
-COL = {"final system": "#2a6f97", "September baseline": "#e07a5f", "show nothing": "#777777"}
+COL = {"final system": "#2a6f97", "direct audio-to-image": "#e07a5f", "show nothing": "#777777"}
 b = np.linspace(0, 6, 301)
 fig, axes = plt.subplots(1, 2, figsize=(9.0, 3.5), sharey=True)
 for ax, (title, d) in zip(axes, SETS.items()):
     n, need = d["clips"], d["needed"]
     nothing = 4 * need / n
     ax.plot(b, np.full_like(b, nothing), color=COL["show nothing"], lw=2, ls="--", label="show nothing")
-    for name in ("September baseline", "final system"):
+    for name in ("direct audio-to-image", "final system"):
         hits, wrong = d[name]
         miss = need - hits
         cost = (4 * miss + b * wrong) / n
@@ -45,6 +45,6 @@ out = os.path.join(os.path.dirname(os.path.abspath(__file__)), "beta_sensitivity
 fig.savefig(out); print(out)
 for title, d in SETS.items():
     n, need = d["clips"], d["needed"]
-    for name in ("September baseline", "final system"):
+    for name in ("direct audio-to-image", "final system"):
         hits, wrong = d[name]; miss = need - hits
         print(title, name, "break-even vs nothing at beta =", round(4 * hits / wrong, 2))

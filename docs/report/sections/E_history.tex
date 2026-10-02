@@ -222,6 +222,39 @@ was built and run, and it failed in instructive ways:
 A five-reviewer scoring panel on 19 Sept moved the primary score to per-sound matching against human labels
 (Section~\ref{sec:task}) and kept the judge as a secondary instrument. The answer to RQ4 is built on this history.
 
+
+\subsection{How the cost changed during development}\label{app:progression}
+Figure~\ref{fig:progression} shows the cost after each accepted change, from the system of the September test table
+(``September version'') to the final system. The development cost fell by 1.634 per clip and the test cost by 0.500;
+the gap is expected, because changes were chosen on the development set.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/progression.pdf}
+\caption{Cost per clip after each accepted change. Decisions were made on the development set; the test set was read
+after each change and only reported. Dotted lines: showing nothing.}
+\label{fig:progression}
+\end{figure}
+
+\subsection{The September comparison of the on-screen check}\label{sec:sept-table}
+Before the final detector existed, the on-screen check was compared with and without it on the 60 older test clips
+(same gate model and rule, the September detector). Two-sided $p$-values with Holm correction:
+\begin{center}\small
+\begin{tabular}{lrrl}
+\toprule
+Measure & With minus without & 95\,\% interval & Holm $p$ \\
+\midrule
+Wrong pictures per clip & $-0.517$ & $[-0.800,\ -0.283]$ & $<0.001$ \\
+Viewer cost per clip & $-0.833$ & & $0.012$ \\
+Precision & $+0.137$ & & $0.010$ \\
+Clips handled perfectly & $+0.219$ & & $0.006$ \\
+F1 & $+0.059$ & $[-0.030,\ +0.144]$ & $0.18$ (not significant) \\
+\bottomrule
+\end{tabular}
+\end{center}
+The same pattern holds for the final system (Table~\ref{tab:headline}): the check removes many wrong pictures at the
+price of a few hits, which F1, weighing both equally, does not reward.
+
 \subsection{Comparisons between versions}\label{app:versions}
 The final development phase compared each accepted change with the version before it and, early on, with the
 September baseline (``B0r''). Paired clip bootstrap on the test set, 2000 draws; $d$ = mean per-clip cost difference;
@@ -283,7 +316,7 @@ am.\ 11--15 & per-family bars; speech-removed view; family silence; any-stretch 
 am.\ 16 & PANNs veto 0.05 & 3.02 / 3.10 & shipped \\
 am.\ 17 & tagger ensemble & CED mis-scaled & rejected \\
 am.\ 18--20 & visibility signals (video, SAM 3, synchrony) & all at break-even 2:1 & rejected \\
-am.\ 21 & final September TEST table & Table~\ref{tab:sept} & reported \\
+am.\ 21 & final September TEST table & Table~\ref{sec:sept-table} & reported \\
 am.\ 22--25 & cascade, PE-A-Frame, Qwen3-Omni verifier & 17 hits, cost 4.82; AUROC 0.53; AUROC 0.661 & rejected \\
 \multicolumn{4}{l}{\emph{Rounds 4--12 (AudioSet harness, 28 Sept)}} \\
 4 & BEATs self-veto replaces PANNs veto & 415 neutral; later worse on DEV and TEST (2.83 vs 2.63, $p$ 0.043) & reverted 30 Sept \\

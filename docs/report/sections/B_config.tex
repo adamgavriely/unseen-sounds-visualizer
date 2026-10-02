@@ -64,7 +64,7 @@ listener after the detectors missed it; a \emph{twinned} span is one both detect
 
 The DASM thresholds 0.0839 and 0.575 and the FineLAP bar 0.329 were calibrated during development
 (Appendix~\ref{app:history}); every other threshold was set once and not tuned on the test set. Steps 4--8 and 12--16 depend on listener answers that are computed from a first pass
-with the September baseline (the candidate ``pools''), so the final detector cannot run without that pass
+with the September version of the system (the candidate ``pools''), so the final detector cannot run without that pass
 (Section~\ref{sec:repro}).
 
 \paragraph{The scene check}\label{sec:scenecheck}
@@ -91,18 +91,16 @@ The numbers in this report come from the scoring harness, which runs the pipelin
 model scores and replays the gate answers of a full run. A parity check (\fp{benchmark/gold/parity_check.py}) and an
 independent re-export of every decision (the Decision Inspector, Section~\ref{sec:repro}) reproduce the published
 counts exactly (0 of 159 clips differ). The live configuration \cfgv{use_shipped()} differs from the scored one in
-four known ways:
+these known ways:
 \begin{itemize}
   \item \textbf{Kinship direction.} Live: a visible label silences only the same or a more specific label. Scored:
         either direction. This was a deliberate logic fix made after the scored tables; its effect on the final
         numbers was not re-measured.
   \item \textbf{Picture end.} Live pictures end at most 1\,s after their sound; scored pictures had no cap. Starts --
         the scored quantity -- are identical; on 3 TEST clips a picture ends 0.04--0.38\,s earlier live.
-  \item \textbf{Subject path.} The scored runs used the older depiction path, which can drop a sound whose depiction
-        fails twice and feeds a similarity-based merge; \fp{main.py} uses the newer picture-wording path before the
-        on-screen check, so on some clips it shows different pictures from the scored run (for example, clip
-        \fp{tg_d088} loses its \emph{Explosion} picture). The ComfyUI nodes in \fp{comfyui_nodes/} reproduce the scored
-        pictures exactly on the clips checked (three, including \fp{tg_d088}).
+  \item \textbf{Subject path.} \fp{main.py} runs planning, the on-screen check and the duplicate check with the
+        scored settings and switches to the final picture settings only for drawing, so the pictures it shows are
+        designed to match the scored run.
   \item \textbf{Pictures.} Scored runs used placeholder or FLUX.1-schnell pictures; the live system uses Qwen-Image
         with the check. Pictures are not part of the per-sound score.
 \end{itemize}

@@ -1,0 +1,95 @@
+{
+ "arm": "SHIP8+MD3+WW5+SL",
+ "development": {
+  "rows": {
+   "proposed": {
+    "hits": 29,
+    "misses": 29,
+    "wrong": 15,
+    "visible": 6,
+    "cross": 7,
+    "phantom": 2,
+    "viewer_cost": 2.056338028169014
+   },
+   "blind_a2i": {
+    "hits": 34,
+    "misses": 24,
+    "wrong": 39,
+    "visible": 20,
+    "cross": 14,
+    "phantom": 5,
+    "viewer_cost": 2.4507042253521125
+   },
+   "show_nothing": {
+    "viewer_cost": 3.267605633802817
+   }
+  },
+  "diff": {
+   "final_vs_audio_to_image": [
+    -0.39436619718309857,
+    -0.7887323943661971,
+    0.056338028169014086,
+    0.0882
+   ],
+   "final_vs_show_nothing": [
+    -1.2112676056338028,
+    -1.8309859154929577,
+    -0.6197183098591549,
+    0.0
+   ],
+   "audio_to_image_vs_show_nothing": [
+    -0.8169014084507042,
+    -1.5774647887323943,
+    -0.08450704225352113,
+    0.0316
+   ]
+  },
+  "clips": 71
+ },
+ "test": {
+  "rows": {
+   "proposed": {
+    "hits": 24,
+    "misses": 41,
+    "wrong": 24,
+    "visible": 4,
+    "cross": 15,
+    "phantom": 5,
+    "viewer_cost": 2.409090909090909
+   },
+   "blind_a2i": {
+    "hits": 26,
+    "misses": 39,
+    "wrong": 62,
+    "visible": 16,
+    "cross": 32,
+    "phantom": 14,
+    "viewer_cost": 3.1818181818181817
+   },
+   "show_nothing": {
+    "viewer_cost": 2.9545454545454546
+   }
+  },
+  "diff": {
+   "final_vs_audio_to_image": [
+    -0.7727272727272727,
+    -1.0454545454545454,
+    -0.5,
+    0.0
+   ],
+   "final_vs_show_nothing": [
+    -0.5454545454545454,
+    -1.0681818181818181,
+    -0.022727272727272728,
+    0.0414
+   ],
+   "audio_to_image_vs_show_nothing": [
+    0.22727272727272727,
+    -0.38636363636363635,
+    0.8181818181818182,
+    0.4918
+   ]
+  },
+  "clips": 88
+ }
+}

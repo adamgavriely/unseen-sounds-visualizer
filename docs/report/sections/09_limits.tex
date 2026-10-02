@@ -35,15 +35,15 @@ could make the reported numbers wrong. Section~\ref{sec:hard} explains the first
 \begin{enumerate}[label=\textbf{T\arabic*.}, leftmargin=*]
   \item \textbf{The test set was seen.} It was read after each accepted change, about 19 times in the last week (its 60
         older clips 11 times before that). Twice a choice was influenced by a test read; both were undone. About a third
-        of the development gain carried over to the test set (Figure~\ref{fig:progression}), which is consistent with
+        of the development gain carried over to the test set (Appendix~\ref{app:history}), which is consistent with
         selection on the development set. The test numbers are a report on a seen set, not a blind confirmation.
   \item \textbf{Small sets.} With 71 and 88 clips, one or two pictures can decide a development comparison, and the test
         set detects only cost differences of about 0.19 per clip or more.
   \item \textbf{Label changes.} The author re-checked the visibility of 14 disputed development sounds blind (3 changed;
         0 of 20 random controls changed), which may favour the system; test labels were never changed. Newer clips were
         labelled with detector suggestions visible, and 19 AudioSet clips with the AudioSet labels visible.
-  \item \textbf{Final versus baseline not tested directly}, and the baseline was scored with a shorter repeat merge
-        (Section~\ref{sec:headline}).
+  \item \textbf{One baseline not run.} The video-conditioned generator suggested by the supervisor (for example
+        MiniMax-H3) creates new video; the per-sound score cannot evaluate it, so it was not compared.
   \item \textbf{Scored versus live system.} The scoring harness and the live pipeline differ in four small ways that do
         not change when a picture starts; one of them (the direction of a family rule) was not re-scored
         (Appendix~\ref{app:config}).
