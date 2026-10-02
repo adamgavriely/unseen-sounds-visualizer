@@ -72,7 +72,7 @@ def main():
     done = skipped = bad = 0
     for split, root, st in todo:
         d = root / st
-        with R.flags(disp):
+        with R.flags({**disp, "MAX_AFTER_END": X.SHIPPED_MAX_AFTER_END}):   # the shipped display (= the exporter's video key)
             pics = S.load_pictures(root, st, "proposed") or []
         sig = DCC.pics_sig(pics)
         h = sig_hash(sig)
