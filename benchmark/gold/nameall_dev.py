@@ -21,13 +21,13 @@ OUT = _ROOT / "benchmark" / "gold" / "nameall_dev.json"
 
 def main():
     from benchmark.gold import round13_dev as R
-    from benchmark.gold import tagger_prep as T
     from benchmark.gold import weakwitness_dev as W
     from benchmark.gold import score_per_sound as S
     from benchmark.gold import btp_screen as Bt
     from src.stage5_cross_modal_analysis.nameall import sound_score
     roots = {"dev": R.R13 / f"{NA}_proposed"}                    # before W.parts re-points R13 to DEV2
     P = W.parts([DP, NA])
+    from benchmark.gold import tagger_prep as T                 # after the DEV gold is read (it blocks gold reads at import)
     roots["dev2"] = T.out("dev2") / f"{NA}_proposed"
     rows = {DP: [], NA: []}
     hits = {}

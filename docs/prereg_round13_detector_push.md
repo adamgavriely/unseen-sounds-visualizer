@@ -4779,3 +4779,19 @@ counts as a loss), cost < 2.056; OR the fewer-pictures clause (cost < 2.056, wro
 hits >= 26). **Expected outcomes, fixed now:** as_explosion_XJ8lc3I6 Explosion 9.25 survives and bell_miami Bell is rescued -> ~30/13,
 1.944 -> PASS; Explosion lost and the bell gained -> ~29/13, 2.000 -> **FAIL by the letter** (a needed hit lost), no net-hits
 reinterpretation later. Listed: every changed picture (class, A, stretch margins). TEST not read.
+
+### Round 66 step 2 DEV result (jobs 31753011 stage 4, 31753012–14 stage-5 shards 0–2/3, 31753015 scoring + `nameall_dev.py`; `benchmark/gold/nameall_dev.json`): **FAIL — 3 needed hits lost, cost up**
+Same scoring (`merged_dev.py`): **D' = SHIP8+MD3+WW5+SL 29/58, 15 (6/7/2), 2.056 reproduced; D' + NAME-ALL 26/58, 12 (5/4/3), 2.141**
+(DEV 18/8, DEV2 8/4). Main rule: hits 26 < 29, needed hits lost on 3 clips -> no; fewer-pictures: cost 2.141 >= 2.056 -> no -> FAIL.
+(The scoring job's own `nameall_dev.py` call crashed on an import order — tagger_prep imported before the DEV gold read; fixed and
+re-run on the login node on the same outputs; `merged_dev.py` in the job printed the same rows.)
+**Changed pictures (A = NAME-ALL sound score):** silenced by A > 6.06 — storm_16200 Thunder (visible, 6.62), storm_7200 Thunder
+(visible, 6.50), ly_applause Crowd (cross, 6.88), tg_d088 Explosion 10.75 (cross, 7.88), tg_d127 Water (visible, 7.62) = 5 wrong
+removed; **as_explosion_XJ8lc3I6 Gunshot spec (A 6.25: hit 0.0–1.5 and cross 8.25–19.5 both gone), tg_d107 Laughter 8.92 (HIT, 8.12),
+tg_d149 Bee (HIT, 6.75) = 3 needed hits lost.** Un-silenced by A < 0.44 — ambient_citywalk_nyc_2627 Vehicle (visible, 0.25),
+un_driving_motorcycle_4O3bZRYO Air horn (visible, −0.25), tg_d016 Vehicle (phantom, −0.12) = 3 wrong added. **bell_miami Bell NOT
+rescued on DEV frames: stretch margins 0.25 / 2.88 / 1.12, A 1.12 >= t_lo** (gate-gold, clamped frames: 0.38). as_explosion
+Explosion 5.68: A −0.62 (kept, unchanged). Neither pre-written outcome happened: the bell was not gained and three hits were lost.
+**Per-video VLM cost (47 gated clips):** stretches median 3 (max 8); generations median 15 (max 40); prefill passes median 14 (max
+44) — about 10–15 s per stretch on an H200, on top of the shipped gate. Nothing ships; D' stays the shipped base; NAME_ALL stays
+default-off in `config.py`; TEST not read.
